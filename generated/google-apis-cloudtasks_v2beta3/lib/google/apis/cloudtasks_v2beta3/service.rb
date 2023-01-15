@@ -576,6 +576,52 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates and buffers a new task without the need to explicitly define a Task
+        # message. The queue must have HTTP target. To create the task with a custom ID,
+        # use the following format and set TASK_ID to your desired ID: projects/
+        # PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID:buffer To
+        # create the task with an automatically generated ID, use the following format:
+        # projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks:buffer. Note:
+        # This feature is in its experimental stage. You must request access to the API
+        # through the [Cloud Tasks BufferTask Experiment Signup form](https://forms.gle/
+        # X8Zr5hiXH5tTGFqh8).
+        # @param [String] queue
+        #   Required. The parent queue name. For example: projects/PROJECT_ID/locations/
+        #   LOCATION_ID/queues/QUEUE_ID` The queue must already exist.
+        # @param [String] task_id
+        #   Optional. Task ID for the task being created. If not provided, a random task
+        #   ID is assigned to the task.
+        # @param [Google::Apis::CloudtasksV2beta3::BufferTaskRequest] buffer_task_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudtasksV2beta3::BufferTaskResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudtasksV2beta3::BufferTaskResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def buffer_task(queue, task_id, buffer_task_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2beta3/{+queue}/tasks/{taskId}:buffer', options)
+          command.request_representation = Google::Apis::CloudtasksV2beta3::BufferTaskRequest::Representation
+          command.request_object = buffer_task_request_object
+          command.response_representation = Google::Apis::CloudtasksV2beta3::BufferTaskResponse::Representation
+          command.response_class = Google::Apis::CloudtasksV2beta3::BufferTaskResponse
+          command.params['queue'] = queue unless queue.nil?
+          command.params['taskId'] = task_id unless task_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a task and adds it to a queue. Tasks cannot be updated after creation;
         # there is no UpdateTask command. * The maximum task size is 100KB.
         # @param [String] parent

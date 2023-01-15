@@ -361,6 +361,59 @@ module Google
         end
       end
       
+      # Request message for BufferTask.
+      class BufferTaskRequest
+        include Google::Apis::Core::Hashable
+      
+        # Message that represents an arbitrary HTTP body. It should only be used for
+        # payload formats that can't be represented as JSON, such as raw binary or an
+        # HTML page. This message can be used both in streaming and non-streaming API
+        # methods in the request as well as the response. It can be used as a top-level
+        # request field, which is convenient if one wants to extract parameters from
+        # either the URL or HTTP template into the request fields and also want access
+        # to the raw HTTP body. Example: message GetResourceRequest ` // A unique
+        # request id. string request_id = 1; // The raw HTTP body is bound to this field.
+        # google.api.HttpBody http_body = 2; ` service ResourceService ` rpc
+        # GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc
+        # UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); ` Example
+        # with streaming methods: service CaldavService ` rpc GetCalendar(stream google.
+        # api.HttpBody) returns (stream google.api.HttpBody); rpc UpdateCalendar(stream
+        # google.api.HttpBody) returns (stream google.api.HttpBody); ` Use of this type
+        # only changes how the request and response bodies are handled, all other
+        # features will continue to work unchanged.
+        # Corresponds to the JSON property `body`
+        # @return [Google::Apis::CloudtasksV2beta3::HttpBody]
+        attr_accessor :body
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @body = args[:body] if args.key?(:body)
+        end
+      end
+      
+      # Response message for BufferTask.
+      class BufferTaskResponse
+        include Google::Apis::Core::Hashable
+      
+        # A unit of scheduled work.
+        # Corresponds to the JSON property `task`
+        # @return [Google::Apis::CloudtasksV2beta3::Task]
+        attr_accessor :task
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @task = args[:task] if args.key?(:task)
+        end
+      end
+      
       # Request message for CreateTask.
       class CreateTaskRequest
         include Google::Apis::Core::Hashable
@@ -508,6 +561,98 @@ module Google
         end
       end
       
+      # Defines a header message. A header can have a key and a value.
+      class Header
+        include Google::Apis::Core::Hashable
+      
+        # The Key of the header.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # The Value of the header.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Wraps the Header object.
+      class HeaderOverride
+        include Google::Apis::Core::Hashable
+      
+        # Defines a header message. A header can have a key and a value.
+        # Corresponds to the JSON property `header`
+        # @return [Google::Apis::CloudtasksV2beta3::Header]
+        attr_accessor :header
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @header = args[:header] if args.key?(:header)
+        end
+      end
+      
+      # Message that represents an arbitrary HTTP body. It should only be used for
+      # payload formats that can't be represented as JSON, such as raw binary or an
+      # HTML page. This message can be used both in streaming and non-streaming API
+      # methods in the request as well as the response. It can be used as a top-level
+      # request field, which is convenient if one wants to extract parameters from
+      # either the URL or HTTP template into the request fields and also want access
+      # to the raw HTTP body. Example: message GetResourceRequest ` // A unique
+      # request id. string request_id = 1; // The raw HTTP body is bound to this field.
+      # google.api.HttpBody http_body = 2; ` service ResourceService ` rpc
+      # GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc
+      # UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); ` Example
+      # with streaming methods: service CaldavService ` rpc GetCalendar(stream google.
+      # api.HttpBody) returns (stream google.api.HttpBody); rpc UpdateCalendar(stream
+      # google.api.HttpBody) returns (stream google.api.HttpBody); ` Use of this type
+      # only changes how the request and response bodies are handled, all other
+      # features will continue to work unchanged.
+      class HttpBody
+        include Google::Apis::Core::Hashable
+      
+        # The HTTP Content-Type header value specifying the content type of the body.
+        # Corresponds to the JSON property `contentType`
+        # @return [String]
+        attr_accessor :content_type
+      
+        # The HTTP request/response body as raw binary.
+        # Corresponds to the JSON property `data`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :data
+      
+        # Application specific response metadata. Must be set in the first response for
+        # streaming APIs.
+        # Corresponds to the JSON property `extensions`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :extensions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_type = args[:content_type] if args.key?(:content_type)
+          @data = args[:data] if args.key?(:data)
+          @extensions = args[:extensions] if args.key?(:extensions)
+        end
+      end
+      
       # HTTP request. The task will be pushed to the worker as an HTTP request. If the
       # worker or the redirected worker acknowledges the task by returning a
       # successful HTTP response code ([`200` - `299`]), the task will be removed from
@@ -597,6 +742,56 @@ module Google
           @oauth_token = args[:oauth_token] if args.key?(:oauth_token)
           @oidc_token = args[:oidc_token] if args.key?(:oidc_token)
           @url = args[:url] if args.key?(:url)
+        end
+      end
+      
+      # HTTP target. When specified as a Queue, all the tasks with [HttpRequest] will
+      # be overridden according to the target.
+      class HttpTarget
+        include Google::Apis::Core::Hashable
+      
+        # HTTP target headers. This map contains the header field names and values.
+        # Headers will be set when running the CreateTask and/or BufferTask. These
+        # headers represent a subset of the headers that will be configured for the task'
+        # s HTTP request. Some HTTP request headers will be ignored or replaced. A
+        # partial list of headers that will be ignored or replaced is: * Several
+        # predefined headers, prefixed with "X-Google-Cloud-Tasks-", can be used to
+        # define properties of the task. * Host: This will be computed by Cloud Tasks
+        # and derived from HttpRequest.url. * Content-Length: This will be computed by
+        # Cloud Tasks. `Content-Type` won't be set by Cloud Tasks. You can explicitly
+        # set `Content-Type` to a media type when the task is created. For example,`
+        # Content-Type` can be set to `"application/octet-stream"` or `"application/json"
+        # `. The default value is set to "application/json"`. * User-Agent: This will be
+        # set to `"Google-Cloud-Tasks"`. Headers which can have multiple values (
+        # according to RFC2616) can be specified using comma-separated values. The size
+        # of the headers must be less than 80KB. Queue-level headers to override headers
+        # of all the tasks in the queue.
+        # Corresponds to the JSON property `headerOverrides`
+        # @return [Array<Google::Apis::CloudtasksV2beta3::HeaderOverride>]
+        attr_accessor :header_overrides
+      
+        # The HTTP method to use for the request. When specified, it will override
+        # HttpRequest for the task. Note that if the value is set to HttpMethod the
+        # HttpRequest of the task will be ignored at execution time.
+        # Corresponds to the JSON property `httpMethod`
+        # @return [String]
+        attr_accessor :http_method
+      
+        # URI Override. When specified, all the HTTP tasks inside the queue will be
+        # partially or fully overridden depending on the configured values.
+        # Corresponds to the JSON property `uriOverride`
+        # @return [Google::Apis::CloudtasksV2beta3::UriOverride]
+        attr_accessor :uri_override
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @header_overrides = args[:header_overrides] if args.key?(:header_overrides)
+          @http_method = args[:http_method] if args.key?(:http_method)
+          @uri_override = args[:uri_override] if args.key?(:uri_override)
         end
       end
       
@@ -789,6 +984,25 @@ module Google
         end
       end
       
+      # PathOverride. Path message defines path override for HTTP targets.
+      class PathOverride
+        include Google::Apis::Core::Hashable
+      
+        # The URI path (e.g., a/b/c). Default is Empty string.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @path = args[:path] if args.key?(:path)
+        end
+      end
+      
       # Request message for PauseQueue.
       class PauseQueueRequest
         include Google::Apis::Core::Hashable
@@ -938,6 +1152,25 @@ module Google
         end
       end
       
+      # QueryOverride. Query message defines query override for HTTP targets.
+      class QueryOverride
+        include Google::Apis::Core::Hashable
+      
+        # The query parameters (e.g., qparam1=123&qparam2=456). Default is Empty string.
+        # Corresponds to the JSON property `queryParams`
+        # @return [String]
+        attr_accessor :query_params
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @query_params = args[:query_params] if args.key?(:query_params)
+        end
+      end
+      
       # A queue is a container of related tasks. Queues are configured to manage how
       # those tasks are dispatched. Configurable properties include rate limits, retry
       # options, queue types, and others.
@@ -954,6 +1187,12 @@ module Google
         # Corresponds to the JSON property `appEngineHttpQueue`
         # @return [Google::Apis::CloudtasksV2beta3::AppEngineHttpQueue]
         attr_accessor :app_engine_http_queue
+      
+        # HTTP target. When specified as a Queue, all the tasks with [HttpRequest] will
+        # be overridden according to the target.
+        # Corresponds to the JSON property `httpTarget`
+        # @return [Google::Apis::CloudtasksV2beta3::HttpTarget]
+        attr_accessor :http_target
       
         # Caller-specified and required in CreateQueue, after which it becomes output
         # only. The queue name. The queue name must have the following format: `projects/
@@ -1048,6 +1287,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @app_engine_http_queue = args[:app_engine_http_queue] if args.key?(:app_engine_http_queue)
+          @http_target = args[:http_target] if args.key?(:http_target)
           @name = args[:name] if args.key?(:name)
           @purge_time = args[:purge_time] if args.key?(:purge_time)
           @rate_limits = args[:rate_limits] if args.key?(:rate_limits)
@@ -1606,6 +1846,64 @@ module Google
         # Update properties of this object
         def update!(**args)
           @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
+      # URI Override. When specified, all the HTTP tasks inside the queue will be
+      # partially or fully overridden depending on the configured values.
+      class UriOverride
+        include Google::Apis::Core::Hashable
+      
+        # Host override. When specified, will replace the host part of the task URL. For
+        # example, if the task URL is "https://www.google.com", and host value is set to
+        # "example.net", the overridden URI will be changed to "https://example.net".
+        # Host value cannot be an empty string.
+        # Corresponds to the JSON property `host`
+        # @return [String]
+        attr_accessor :host
+      
+        # PathOverride. Path message defines path override for HTTP targets.
+        # Corresponds to the JSON property `pathOverride`
+        # @return [Google::Apis::CloudtasksV2beta3::PathOverride]
+        attr_accessor :path_override
+      
+        # Port override. When specified, will replace the port part of the task URI. For
+        # instance, for a URI http://www.google.com/foo and port=123, the overridden URI
+        # becomes http://www.google.com:123/foo. Note that the port value must be a
+        # positive integer. Setting the port to 0 (Zero) clears the URI port.
+        # Corresponds to the JSON property `port`
+        # @return [Fixnum]
+        attr_accessor :port
+      
+        # QueryOverride. Query message defines query override for HTTP targets.
+        # Corresponds to the JSON property `queryOverride`
+        # @return [Google::Apis::CloudtasksV2beta3::QueryOverride]
+        attr_accessor :query_override
+      
+        # Scheme override. When specified, the task URI scheme is replaced by the
+        # provided value (HTTP or HTTPS).
+        # Corresponds to the JSON property `scheme`
+        # @return [String]
+        attr_accessor :scheme
+      
+        # URI Override Enforce Mode When specified, determines the Target UriOverride
+        # mode. If not specified, it defaults to ALWAYS.
+        # Corresponds to the JSON property `uriOverrideEnforceMode`
+        # @return [String]
+        attr_accessor :uri_override_enforce_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @host = args[:host] if args.key?(:host)
+          @path_override = args[:path_override] if args.key?(:path_override)
+          @port = args[:port] if args.key?(:port)
+          @query_override = args[:query_override] if args.key?(:query_override)
+          @scheme = args[:scheme] if args.key?(:scheme)
+          @uri_override_enforce_mode = args[:uri_override_enforce_mode] if args.key?(:uri_override_enforce_mode)
         end
       end
     end
