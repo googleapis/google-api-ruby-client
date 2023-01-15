@@ -6,15 +6,15 @@ Gem::Specification.new do |gem|
   gem.version = gem_version
   gem.authors = ["Google LLC"]
   gem.email = "googleapis-packages@google.com"
-  gem.summary = "Simple REST client for Migrate to Virtual Machines API V1alpha1"
+  gem.summary = "Simple REST client for VM Migration API V1alpha1"
   gem.description =
-      "This is the simple REST client for Migrate to Virtual Machines API V1alpha1." \
+      "This is the simple REST client for VM Migration API V1alpha1." \
       " Simple REST clients are Ruby client libraries that provide access to" \
       " Google services via their HTTP REST API endpoints. These libraries are" \
       " generated and updated automatically based on the discovery documents" \
       " published by the service, and they handle most concerns such as" \
       " authentication, pagination, retry, timeouts, and logging. You can use" \
-      " this client to access the Migrate to Virtual Machines API, but note that some" \
+      " this client to access the VM Migration API, but note that some" \
       " services may provide a separate modern client that is easier to use."
   gem.homepage = "https://github.com/google/google-api-ruby-client"
   gem.license = "Apache-2.0"

@@ -522,17 +522,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :access_key_creds, as: 'accessKeyCreds', class: Google::Apis::VmmigrationV1alpha1::AccessKeyCredentials, decorator: Google::Apis::VmmigrationV1alpha1::AccessKeyCredentials::Representation
       
-          property :access_key_id, as: 'accessKeyId'
           property :aws_region, as: 'awsRegion'
           property :error, as: 'error', class: Google::Apis::VmmigrationV1alpha1::Status, decorator: Google::Apis::VmmigrationV1alpha1::Status::Representation
       
           collection :inventory_security_group_names, as: 'inventorySecurityGroupNames'
           collection :inventory_tag_list, as: 'inventoryTagList', class: Google::Apis::VmmigrationV1alpha1::Tag, decorator: Google::Apis::VmmigrationV1alpha1::Tag::Representation
       
-          hash :inventory_tags, as: 'inventoryTags'
           hash :migration_resources_user_tags, as: 'migrationResourcesUserTags'
           property :public_ip, as: 'publicIp'
-          property :secret_access_key, as: 'secretAccessKey'
           property :state, as: 'state'
         end
       end
