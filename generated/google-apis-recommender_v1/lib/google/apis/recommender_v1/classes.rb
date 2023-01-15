@@ -418,6 +418,25 @@ module Google
         end
       end
       
+      # Request for the `MarkRecommendationDismissed` Method.
+      class GoogleCloudRecommenderV1MarkRecommendationDismissedRequest
+        include Google::Apis::Core::Hashable
+      
+        # Fingerprint of the Recommendation. Provides optimistic locking.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+        end
+      end
+      
       # Request for the `MarkRecommendationFailed` Method.
       class GoogleCloudRecommenderV1MarkRecommendationFailedRequest
         include Google::Apis::Core::Hashable

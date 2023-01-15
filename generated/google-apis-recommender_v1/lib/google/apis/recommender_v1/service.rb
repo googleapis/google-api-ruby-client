@@ -461,6 +461,43 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Mark the Recommendation State as Dismissed. Users can use this method to
+        # indicate to the Recommender API that an ACTIVE recommendation has to be marked
+        # back as DISMISSED. MarkRecommendationDismissed can be applied to
+        # recommendations in ACTIVE state. Requires the recommender.*.update IAM
+        # permission for the specified recommender.
+        # @param [String] name
+        #   Name of the recommendation.
+        # @param [Google::Apis::RecommenderV1::GoogleCloudRecommenderV1MarkRecommendationDismissedRequest] google_cloud_recommender_v1_mark_recommendation_dismissed_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RecommenderV1::GoogleCloudRecommenderV1Recommendation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RecommenderV1::GoogleCloudRecommenderV1Recommendation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def mark_billing_account_location_recommender_recommendation_dismissed(name, google_cloud_recommender_v1_mark_recommendation_dismissed_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:markDismissed', options)
+          command.request_representation = Google::Apis::RecommenderV1::GoogleCloudRecommenderV1MarkRecommendationDismissedRequest::Representation
+          command.request_object = google_cloud_recommender_v1_mark_recommendation_dismissed_request_object
+          command.response_representation = Google::Apis::RecommenderV1::GoogleCloudRecommenderV1Recommendation::Representation
+          command.response_class = Google::Apis::RecommenderV1::GoogleCloudRecommenderV1Recommendation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Marks the Recommendation State as Failed. Users can use this method to
         # indicate to the Recommender API that they have applied the recommendation
         # themselves, and the operation failed. This stops the recommendation content
@@ -788,6 +825,43 @@ module Google
           command = make_simple_command(:post, 'v1/{+name}:markClaimed', options)
           command.request_representation = Google::Apis::RecommenderV1::GoogleCloudRecommenderV1MarkRecommendationClaimedRequest::Representation
           command.request_object = google_cloud_recommender_v1_mark_recommendation_claimed_request_object
+          command.response_representation = Google::Apis::RecommenderV1::GoogleCloudRecommenderV1Recommendation::Representation
+          command.response_class = Google::Apis::RecommenderV1::GoogleCloudRecommenderV1Recommendation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Mark the Recommendation State as Dismissed. Users can use this method to
+        # indicate to the Recommender API that an ACTIVE recommendation has to be marked
+        # back as DISMISSED. MarkRecommendationDismissed can be applied to
+        # recommendations in ACTIVE state. Requires the recommender.*.update IAM
+        # permission for the specified recommender.
+        # @param [String] name
+        #   Name of the recommendation.
+        # @param [Google::Apis::RecommenderV1::GoogleCloudRecommenderV1MarkRecommendationDismissedRequest] google_cloud_recommender_v1_mark_recommendation_dismissed_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RecommenderV1::GoogleCloudRecommenderV1Recommendation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RecommenderV1::GoogleCloudRecommenderV1Recommendation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def mark_folder_location_recommender_recommendation_dismissed(name, google_cloud_recommender_v1_mark_recommendation_dismissed_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:markDismissed', options)
+          command.request_representation = Google::Apis::RecommenderV1::GoogleCloudRecommenderV1MarkRecommendationDismissedRequest::Representation
+          command.request_object = google_cloud_recommender_v1_mark_recommendation_dismissed_request_object
           command.response_representation = Google::Apis::RecommenderV1::GoogleCloudRecommenderV1Recommendation::Representation
           command.response_class = Google::Apis::RecommenderV1::GoogleCloudRecommenderV1Recommendation
           command.params['name'] = name unless name.nil?
@@ -1286,6 +1360,43 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Mark the Recommendation State as Dismissed. Users can use this method to
+        # indicate to the Recommender API that an ACTIVE recommendation has to be marked
+        # back as DISMISSED. MarkRecommendationDismissed can be applied to
+        # recommendations in ACTIVE state. Requires the recommender.*.update IAM
+        # permission for the specified recommender.
+        # @param [String] name
+        #   Name of the recommendation.
+        # @param [Google::Apis::RecommenderV1::GoogleCloudRecommenderV1MarkRecommendationDismissedRequest] google_cloud_recommender_v1_mark_recommendation_dismissed_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RecommenderV1::GoogleCloudRecommenderV1Recommendation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RecommenderV1::GoogleCloudRecommenderV1Recommendation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def mark_organization_location_recommender_recommendation_dismissed(name, google_cloud_recommender_v1_mark_recommendation_dismissed_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:markDismissed', options)
+          command.request_representation = Google::Apis::RecommenderV1::GoogleCloudRecommenderV1MarkRecommendationDismissedRequest::Representation
+          command.request_object = google_cloud_recommender_v1_mark_recommendation_dismissed_request_object
+          command.response_representation = Google::Apis::RecommenderV1::GoogleCloudRecommenderV1Recommendation::Representation
+          command.response_class = Google::Apis::RecommenderV1::GoogleCloudRecommenderV1Recommendation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Marks the Recommendation State as Failed. Users can use this method to
         # indicate to the Recommender API that they have applied the recommendation
         # themselves, and the operation failed. This stops the recommendation content
@@ -1768,6 +1879,43 @@ module Google
           command = make_simple_command(:post, 'v1/{+name}:markClaimed', options)
           command.request_representation = Google::Apis::RecommenderV1::GoogleCloudRecommenderV1MarkRecommendationClaimedRequest::Representation
           command.request_object = google_cloud_recommender_v1_mark_recommendation_claimed_request_object
+          command.response_representation = Google::Apis::RecommenderV1::GoogleCloudRecommenderV1Recommendation::Representation
+          command.response_class = Google::Apis::RecommenderV1::GoogleCloudRecommenderV1Recommendation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Mark the Recommendation State as Dismissed. Users can use this method to
+        # indicate to the Recommender API that an ACTIVE recommendation has to be marked
+        # back as DISMISSED. MarkRecommendationDismissed can be applied to
+        # recommendations in ACTIVE state. Requires the recommender.*.update IAM
+        # permission for the specified recommender.
+        # @param [String] name
+        #   Name of the recommendation.
+        # @param [Google::Apis::RecommenderV1::GoogleCloudRecommenderV1MarkRecommendationDismissedRequest] google_cloud_recommender_v1_mark_recommendation_dismissed_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RecommenderV1::GoogleCloudRecommenderV1Recommendation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RecommenderV1::GoogleCloudRecommenderV1Recommendation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def mark_project_location_recommender_recommendation_dismissed(name, google_cloud_recommender_v1_mark_recommendation_dismissed_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:markDismissed', options)
+          command.request_representation = Google::Apis::RecommenderV1::GoogleCloudRecommenderV1MarkRecommendationDismissedRequest::Representation
+          command.request_object = google_cloud_recommender_v1_mark_recommendation_dismissed_request_object
           command.response_representation = Google::Apis::RecommenderV1::GoogleCloudRecommenderV1Recommendation::Representation
           command.response_class = Google::Apis::RecommenderV1::GoogleCloudRecommenderV1Recommendation
           command.params['name'] = name unless name.nil?
