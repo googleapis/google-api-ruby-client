@@ -1318,9 +1318,9 @@ module Google
       class Instance
         include Google::Apis::Core::Hashable
       
-        # Output only. A server-assigned timestamp representing when this Instance was
-        # created. For instances created before this field was added (August 2021), this
-        # value is `seconds: 0, nanos: 1`.
+        # Output only. A commit timestamp representing when this Instance was created.
+        # For instances created before this field was added (August 2021), this value is
+        # `seconds: 0, nanos: 1`.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
