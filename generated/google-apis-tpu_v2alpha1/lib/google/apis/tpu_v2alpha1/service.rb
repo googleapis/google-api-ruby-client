@@ -470,7 +470,7 @@ module Google
         
         # Starts a node.
         # @param [String] name
-        #   The resource name.
+        #   Required. The resource name.
         # @param [Google::Apis::TpuV2alpha1::StartNodeRequest] start_node_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -503,7 +503,7 @@ module Google
         
         # Stops a node. This operation is only available with single TPU nodes.
         # @param [String] name
-        #   The resource name.
+        #   Required. The resource name.
         # @param [Google::Apis::TpuV2alpha1::StopNodeRequest] stop_node_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
