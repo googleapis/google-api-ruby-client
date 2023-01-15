@@ -226,6 +226,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAuthenticationSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GroupLicense
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -786,6 +792,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :administrator, as: 'administrator', class: Google::Apis::AndroidenterpriseV1::Administrator, decorator: Google::Apis::AndroidenterpriseV1::Administrator::Representation
       
+          property :google_authentication_settings, as: 'googleAuthenticationSettings', class: Google::Apis::AndroidenterpriseV1::GoogleAuthenticationSettings, decorator: Google::Apis::AndroidenterpriseV1::GoogleAuthenticationSettings::Representation
+      
           property :id, as: 'id'
           property :name, as: 'name'
           property :primary_domain, as: 'primaryDomain'
@@ -835,6 +843,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :entitlement, as: 'entitlement', class: Google::Apis::AndroidenterpriseV1::Entitlement, decorator: Google::Apis::AndroidenterpriseV1::Entitlement::Representation
       
+        end
+      end
+      
+      class GoogleAuthenticationSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dedicated_devices_allowed, as: 'dedicatedDevicesAllowed'
+          property :google_authentication_required, as: 'googleAuthenticationRequired'
         end
       end
       
