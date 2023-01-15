@@ -1764,6 +1764,13 @@ module Google
       class GoogleCloudDialogflowCxV3ResponseMessage
         include Google::Apis::Core::Hashable
       
+        # The channel which the response is associated with. Clients can specify the
+        # channel via QueryParameters.channel, and only associated channel response will
+        # be returned.
+        # Corresponds to the JSON property `channel`
+        # @return [String]
+        attr_accessor :channel
+      
         # Indicates that the conversation succeeded, i.e., the bot handled the issue
         # that the customer talked to it about. Dialogflow only uses this to determine
         # which conversations should be counted as successful and doesn't process the
@@ -1835,6 +1842,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @channel = args[:channel] if args.key?(:channel)
           @conversation_success = args[:conversation_success] if args.key?(:conversation_success)
           @end_interaction = args[:end_interaction] if args.key?(:end_interaction)
           @live_agent_handoff = args[:live_agent_handoff] if args.key?(:live_agent_handoff)
@@ -4781,6 +4789,13 @@ module Google
       class GoogleCloudDialogflowCxV3beta1ResponseMessage
         include Google::Apis::Core::Hashable
       
+        # The channel which the response is associated with. Clients can specify the
+        # channel via QueryParameters.channel, and only associated channel response will
+        # be returned.
+        # Corresponds to the JSON property `channel`
+        # @return [String]
+        attr_accessor :channel
+      
         # Indicates that the conversation succeeded, i.e., the bot handled the issue
         # that the customer talked to it about. Dialogflow only uses this to determine
         # which conversations should be counted as successful and doesn't process the
@@ -4852,6 +4867,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @channel = args[:channel] if args.key?(:channel)
           @conversation_success = args[:conversation_success] if args.key?(:conversation_success)
           @end_interaction = args[:end_interaction] if args.key?(:end_interaction)
           @live_agent_handoff = args[:live_agent_handoff] if args.key?(:live_agent_handoff)
