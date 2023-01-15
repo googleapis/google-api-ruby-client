@@ -1709,7 +1709,7 @@ module Google
         #   Required. The cluster name.
         # @param [Google::Apis::DataprocV1::Cluster] cluster_object
         # @param [String] graceful_decommission_timeout
-        #   Optional. Timeout for graceful YARN decomissioning. Graceful decommissioning
+        #   Optional. Timeout for graceful YARN decommissioning. Graceful decommissioning
         #   allows removing nodes from the cluster without interrupting jobs in progress.
         #   Timeout specifies how long to wait for jobs in progress to finish before
         #   forcefully removing nodes (and potentially interrupting jobs). Default timeout

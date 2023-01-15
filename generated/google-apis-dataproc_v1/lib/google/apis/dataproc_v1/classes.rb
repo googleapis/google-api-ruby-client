@@ -1268,7 +1268,9 @@ module Google
         # this threshold will cause the session to be terminated. Minimum value is 10
         # minutes; maximum value is 14 days (see JSON representation of Duration (https:/
         # /developers.google.com/protocol-buffers/docs/proto3#json)). Defaults to 4
-        # hours if not set.
+        # hours if not set. If both ttl and idle_ttl are specified, the conditions are
+        # treated as and OR: the workload will be terminated when it has been idle for
+        # idle_ttl or when the ttl has passed, whichever comes first.
         # Corresponds to the JSON property `idleTtl`
         # @return [String]
         attr_accessor :idle_ttl
@@ -3943,7 +3945,7 @@ module Google
         # @return [String]
         attr_accessor :cluster_uuid
       
-        # Optional. Timeout for graceful YARN decomissioning. Graceful decommissioning
+        # Optional. Timeout for graceful YARN decommissioning. Graceful decommissioning
         # facilitates the removal of cluster nodes without interrupting jobs in progress.
         # The timeout specifies the amount of time to wait for jobs finish before
         # forcefully removing nodes. The default timeout is 0 for forceful
