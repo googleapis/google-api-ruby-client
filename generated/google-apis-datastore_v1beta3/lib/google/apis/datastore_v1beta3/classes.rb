@@ -398,6 +398,12 @@ module Google
       class EntityResult
         include Google::Apis::Core::Hashable
       
+        # The time at which the entity was created. This field is set for `FULL` entity
+        # results. If this entity is missing, this field will not be set.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
         # A cursor that points to the position after the result entity. Set only when
         # the `EntityResult` is part of a `QueryResultBatch` message.
         # Corresponds to the JSON property `cursor`
@@ -433,6 +439,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
           @cursor = args[:cursor] if args.key?(:cursor)
           @entity = args[:entity] if args.key?(:entity)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -1391,6 +1398,11 @@ module Google
         attr_accessor :conflict_detected
         alias_method :conflict_detected?, :conflict_detected
       
+        # The create time of the entity. This field will not be set after a 'delete'.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
         # A unique identifier for an entity. If a key's partition ID or any of its path
         # kinds or names are reserved/read-only, the key is reserved/read-only. A
         # reserved/read-only key is forbidden in certain documented contexts.
@@ -1422,6 +1434,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @conflict_detected = args[:conflict_detected] if args.key?(:conflict_detected)
+          @create_time = args[:create_time] if args.key?(:create_time)
           @key = args[:key] if args.key?(:key)
           @update_time = args[:update_time] if args.key?(:update_time)
           @version = args[:version] if args.key?(:version)

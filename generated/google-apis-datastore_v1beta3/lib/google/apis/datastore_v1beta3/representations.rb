@@ -531,6 +531,7 @@ module Google
       class EntityResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
           property :cursor, :base64 => true, as: 'cursor'
           property :entity, as: 'entity', class: Google::Apis::DatastoreV1beta3::Entity, decorator: Google::Apis::DatastoreV1beta3::Entity::Representation
       
@@ -817,6 +818,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :conflict_detected, as: 'conflictDetected'
+          property :create_time, as: 'createTime'
           property :key, as: 'key', class: Google::Apis::DatastoreV1beta3::Key, decorator: Google::Apis::DatastoreV1beta3::Key::Representation
       
           property :update_time, as: 'updateTime'
