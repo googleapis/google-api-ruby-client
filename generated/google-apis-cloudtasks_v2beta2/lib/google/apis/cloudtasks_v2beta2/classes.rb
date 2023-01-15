@@ -1148,6 +1148,25 @@ module Google
         end
       end
       
+      # PathOverride. Path message defines path override for HTTP targets.
+      class PathOverride
+        include Google::Apis::Core::Hashable
+      
+        # The URI path (e.g., a/b/c). Default is Empty string.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @path = args[:path] if args.key?(:path)
+        end
+      end
+      
       # Request message for PauseQueue.
       class PauseQueueRequest
         include Google::Apis::Core::Hashable
@@ -1310,6 +1329,25 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # QueryOverride. Query message defines query override for HTTP targets.
+      class QueryOverride
+        include Google::Apis::Core::Hashable
+      
+        # The query parameters (e.g., qparam1=123&qparam2=456). Default is Empty string.
+        # Corresponds to the JSON property `queryParams`
+        # @return [String]
+        attr_accessor :query_params
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @query_params = args[:query_params] if args.key?(:query_params)
         end
       end
       
@@ -1996,38 +2034,40 @@ module Google
       class UriOverride
         include Google::Apis::Core::Hashable
       
-        # Host override. When specified, the host part of url will be overridden. For
-        # example, if the original Uri is "https://www.google.com", and host is set to "
-        # example.net", the overridden Uri will be "https://example.net".
+        # Host override. When specified, will replace the host part of the task URL. For
+        # example, if the task URL is "https://www.google.com", and host value is set to
+        # "example.net", the overridden URI will be changed to "https://example.net".
+        # Host value cannot be an empty string.
         # Corresponds to the JSON property `host`
         # @return [String]
         attr_accessor :host
       
-        # Uri path. Will be used as the path for the current Uri (replaces any existing
-        # path of the task url).
-        # Corresponds to the JSON property `path`
-        # @return [String]
-        attr_accessor :path
+        # PathOverride. Path message defines path override for HTTP targets.
+        # Corresponds to the JSON property `pathOverride`
+        # @return [Google::Apis::CloudtasksV2beta2::PathOverride]
+        attr_accessor :path_override
       
-        # Port override. When specified, the port part of Uri will be replaced by the
-        # provided value. For instance, for a Uri http://www.google.com/foo and port=123
-        # the overridden Uri becomes http://www.google.com:123/foo.
+        # Port override. When specified, will replace the port part of the task URI. For
+        # instance, for a URI http://www.google.com/foo and port=123, the overridden URI
+        # becomes http://www.google.com:123/foo. Note that the port value must be a
+        # positive integer. Setting the port to 0 (Zero) clears the URI port.
         # Corresponds to the JSON property `port`
         # @return [Fixnum]
         attr_accessor :port
       
-        # Uri Query. Will replace the query part of the task uri.
-        # Corresponds to the JSON property `query`
-        # @return [String]
-        attr_accessor :query
+        # QueryOverride. Query message defines query override for HTTP targets.
+        # Corresponds to the JSON property `queryOverride`
+        # @return [Google::Apis::CloudtasksV2beta2::QueryOverride]
+        attr_accessor :query_override
       
-        # Scheme override. When specified, the Uri scheme is replaced by the provided
-        # value.
+        # Scheme override. When specified, the task URI scheme is replaced by the
+        # provided value (HTTP or HTTPS).
         # Corresponds to the JSON property `scheme`
         # @return [String]
         attr_accessor :scheme
       
-        # Uri Override Enforce Mode Determines the Target UriOverride mode.
+        # URI Override Enforce Mode When specified, determines the Target UriOverride
+        # mode. If not specified, it defaults to ALWAYS.
         # Corresponds to the JSON property `uriOverrideEnforceMode`
         # @return [String]
         attr_accessor :uri_override_enforce_mode
@@ -2039,9 +2079,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @host = args[:host] if args.key?(:host)
-          @path = args[:path] if args.key?(:path)
+          @path_override = args[:path_override] if args.key?(:path_override)
           @port = args[:port] if args.key?(:port)
-          @query = args[:query] if args.key?(:query)
+          @query_override = args[:query_override] if args.key?(:query_override)
           @scheme = args[:scheme] if args.key?(:scheme)
           @uri_override_enforce_mode = args[:uri_override_enforce_mode] if args.key?(:uri_override_enforce_mode)
         end
