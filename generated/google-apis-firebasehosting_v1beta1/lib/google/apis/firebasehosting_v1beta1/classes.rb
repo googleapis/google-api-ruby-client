@@ -995,9 +995,9 @@ module Google
       class Site
         include Google::Apis::Core::Hashable
       
-        # Optional. The [ID of a Web App](https://firebase.google.com/docs/projects/api/
-        # reference/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id) associated with
-        # the Hosting site.
+        # Optional. The [ID of a Web App](https://firebase.google.com/docs/reference/
+        # firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
+        # associated with the Hosting site.
         # Corresponds to the JSON property `appId`
         # @return [String]
         attr_accessor :app_id
@@ -1014,12 +1014,12 @@ module Google
       
         # Output only. The fully-qualified resource name of the Hosting site, in the
         # format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the
-        # Firebase project's [`ProjectNumber`](https://firebase.google.com/docs/projects/
-        # api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number) ***(
-        # recommended)*** or its [`ProjectId`](https://firebase.google.com/docs/projects/
-        # api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id). Learn
-        # more about using project identifiers in Google's [AIP 2510 standard](https://
-        # google.aip.dev/cloud/2510).
+        # Firebase project's [`ProjectNumber`](https://firebase.google.com/docs/
+        # reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.
+        # project_number) ***(recommended)*** or its [`ProjectId`](https://firebase.
+        # google.com/docs/reference/firebase-management/rest/v1beta1/projects#
+        # FirebaseProject.FIELDS.project_id). Learn more about using project identifiers
+        # in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510).
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
