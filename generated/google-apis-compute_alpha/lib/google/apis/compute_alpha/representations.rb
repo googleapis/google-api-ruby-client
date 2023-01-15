@@ -172,6 +172,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AllocationAggregateReservation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AllocationAggregateReservationReservedResourceInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AllocationAggregateReservationReservedResourceInfoAccelerator
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AllocationResourceStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2290,7 +2308,43 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceTemplateAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceTemplateList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceTemplatesScopedList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
         class Warning
@@ -4912,6 +4966,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResourceStatusServiceIntegrationStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourceStatusServiceIntegrationStatusBackupDrStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ResourceStatusUpcomingMaintenance
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5520,6 +5586,18 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServiceIntegrationSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServiceIntegrationSpecBackupDrSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -7175,6 +7253,33 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ip_cidr_range, as: 'ipCidrRange'
           property :subnetwork_range_name, as: 'subnetworkRangeName'
+        end
+      end
+      
+      class AllocationAggregateReservation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :in_use_resources, as: 'inUseResources', class: Google::Apis::ComputeAlpha::AllocationAggregateReservationReservedResourceInfo, decorator: Google::Apis::ComputeAlpha::AllocationAggregateReservationReservedResourceInfo::Representation
+      
+          collection :reserved_resources, as: 'reservedResources', class: Google::Apis::ComputeAlpha::AllocationAggregateReservationReservedResourceInfo, decorator: Google::Apis::ComputeAlpha::AllocationAggregateReservationReservedResourceInfo::Representation
+      
+          property :vm_family, as: 'vmFamily'
+        end
+      end
+      
+      class AllocationAggregateReservationReservedResourceInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :accelerator, as: 'accelerator', class: Google::Apis::ComputeAlpha::AllocationAggregateReservationReservedResourceInfoAccelerator, decorator: Google::Apis::ComputeAlpha::AllocationAggregateReservationReservedResourceInfoAccelerator::Representation
+      
+        end
+      end
+      
+      class AllocationAggregateReservationReservedResourceInfoAccelerator
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :accelerator_count, as: 'acceleratorCount'
+          property :accelerator_type, as: 'acceleratorType'
         end
       end
       
@@ -9597,6 +9702,7 @@ module Google
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
+          collection :source_regions, as: 'sourceRegions'
           property :ssl_health_check, as: 'sslHealthCheck', class: Google::Apis::ComputeAlpha::SslHealthCheck, decorator: Google::Apis::ComputeAlpha::SslHealthCheck::Representation
       
           property :tcp_health_check, as: 'tcpHealthCheck', class: Google::Apis::ComputeAlpha::TcpHealthCheck, decorator: Google::Apis::ComputeAlpha::TcpHealthCheck::Representation
@@ -10332,6 +10438,8 @@ module Google
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
           collection :service_accounts, as: 'serviceAccounts', class: Google::Apis::ComputeAlpha::ServiceAccount, decorator: Google::Apis::ComputeAlpha::ServiceAccount::Representation
+      
+          hash :service_integration_specs, as: 'serviceIntegrationSpecs', class: Google::Apis::ComputeAlpha::ServiceIntegrationSpec, decorator: Google::Apis::ComputeAlpha::ServiceIntegrationSpec::Representation
       
           property :shielded_instance_config, as: 'shieldedInstanceConfig', class: Google::Apis::ComputeAlpha::ShieldedInstanceConfig, decorator: Google::Apis::ComputeAlpha::ShieldedInstanceConfig::Representation
       
@@ -11282,6 +11390,8 @@ module Google
           collection :secure_tags, as: 'secureTags'
           collection :service_accounts, as: 'serviceAccounts', class: Google::Apis::ComputeAlpha::ServiceAccount, decorator: Google::Apis::ComputeAlpha::ServiceAccount::Representation
       
+          hash :service_integration_specs, as: 'serviceIntegrationSpecs', class: Google::Apis::ComputeAlpha::ServiceIntegrationSpec, decorator: Google::Apis::ComputeAlpha::ServiceIntegrationSpec::Representation
+      
           property :shielded_instance_config, as: 'shieldedInstanceConfig', class: Google::Apis::ComputeAlpha::ShieldedInstanceConfig, decorator: Google::Apis::ComputeAlpha::ShieldedInstanceConfig::Representation
       
           property :shielded_vm_config, as: 'shieldedVmConfig', class: Google::Apis::ComputeAlpha::ShieldedVmConfig, decorator: Google::Apis::ComputeAlpha::ShieldedVmConfig::Representation
@@ -11325,6 +11435,38 @@ module Google
         end
       end
       
+      class InstanceTemplateAggregatedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeAlpha::InstanceTemplatesScopedList, decorator: Google::Apis::ComputeAlpha::InstanceTemplatesScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::InstanceTemplateAggregatedList::Warning, decorator: Google::Apis::ComputeAlpha::InstanceTemplateAggregatedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::InstanceTemplateAggregatedList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::InstanceTemplateAggregatedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
       class InstanceTemplateList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -11343,6 +11485,34 @@ module Google
           class Representation < Google::Apis::Core::JsonRepresentation
             property :code, as: 'code'
             collection :data, as: 'data', class: Google::Apis::ComputeAlpha::InstanceTemplateList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::InstanceTemplateList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class InstanceTemplatesScopedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instance_templates, as: 'instanceTemplates', class: Google::Apis::ComputeAlpha::InstanceTemplate, decorator: Google::Apis::ComputeAlpha::InstanceTemplate::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::InstanceTemplatesScopedList::Warning, decorator: Google::Apis::ComputeAlpha::InstanceTemplatesScopedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::InstanceTemplatesScopedList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::InstanceTemplatesScopedList::Warning::Datum::Representation
         
             property :message, as: 'message'
           end
@@ -15620,6 +15790,8 @@ module Google
       class Reservation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :aggregate_reservation, as: 'aggregateReservation', class: Google::Apis::ComputeAlpha::AllocationAggregateReservation, decorator: Google::Apis::ComputeAlpha::AllocationAggregateReservation::Representation
+      
           property :commitment, as: 'commitment'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
@@ -16054,6 +16226,8 @@ module Google
           property :physical_host, as: 'physicalHost'
           property :scheduling, as: 'scheduling', class: Google::Apis::ComputeAlpha::ResourceStatusScheduling, decorator: Google::Apis::ComputeAlpha::ResourceStatusScheduling::Representation
       
+          hash :service_integration_statuses, as: 'serviceIntegrationStatuses', class: Google::Apis::ComputeAlpha::ResourceStatusServiceIntegrationStatus, decorator: Google::Apis::ComputeAlpha::ResourceStatusServiceIntegrationStatus::Representation
+      
           property :upcoming_maintenance, as: 'upcomingMaintenance', class: Google::Apis::ComputeAlpha::ResourceStatusUpcomingMaintenance, decorator: Google::Apis::ComputeAlpha::ResourceStatusUpcomingMaintenance::Representation
       
         end
@@ -16064,6 +16238,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :availability_domain, as: 'availabilityDomain'
           property :termination_timestamp, as: 'terminationTimestamp'
+        end
+      end
+      
+      class ResourceStatusServiceIntegrationStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_dr, as: 'backupDr', class: Google::Apis::ComputeAlpha::ResourceStatusServiceIntegrationStatusBackupDrStatus, decorator: Google::Apis::ComputeAlpha::ResourceStatusServiceIntegrationStatusBackupDrStatus::Representation
+      
+        end
+      end
+      
+      class ResourceStatusServiceIntegrationStatusBackupDrStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :integration_details, as: 'integrationDetails'
+          property :state, as: 'state'
         end
       end
       
@@ -17268,6 +17458,21 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class ServiceIntegrationSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_dr, as: 'backupDr', class: Google::Apis::ComputeAlpha::ServiceIntegrationSpecBackupDrSpec, decorator: Google::Apis::ComputeAlpha::ServiceIntegrationSpecBackupDrSpec::Representation
+      
+        end
+      end
+      
+      class ServiceIntegrationSpecBackupDrSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :plan, as: 'plan'
         end
       end
       
