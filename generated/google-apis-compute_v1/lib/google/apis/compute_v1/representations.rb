@@ -166,6 +166,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AllocationResourceStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AllocationResourceStatusSpecificSkuAllocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AllocationSpecificSkuAllocationAllocatedInstancePropertiesReservedDisk
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5989,6 +6001,21 @@ module Google
         end
       end
       
+      class AllocationResourceStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :specific_sku_allocation, as: 'specificSkuAllocation', class: Google::Apis::ComputeV1::AllocationResourceStatusSpecificSkuAllocation, decorator: Google::Apis::ComputeV1::AllocationResourceStatusSpecificSkuAllocation::Representation
+      
+        end
+      end
+      
+      class AllocationResourceStatusSpecificSkuAllocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :source_instance_template_id, as: 'sourceInstanceTemplateId'
+        end
+      end
+      
       class AllocationSpecificSkuAllocationAllocatedInstancePropertiesReservedDisk
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6018,6 +6045,7 @@ module Google
           property :in_use_count, :numeric_string => true, as: 'inUseCount'
           property :instance_properties, as: 'instanceProperties', class: Google::Apis::ComputeV1::AllocationSpecificSkuAllocationReservedInstanceProperties, decorator: Google::Apis::ComputeV1::AllocationSpecificSkuAllocationReservedInstanceProperties::Representation
       
+          property :source_instance_template, as: 'sourceInstanceTemplate'
         end
       end
       
@@ -10865,6 +10893,7 @@ module Google
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :network, as: 'network'
+          property :network_attachment, as: 'networkAttachment'
           property :network_ip, as: 'networkIP'
           property :nic_type, as: 'nicType'
           property :queue_count, as: 'queueCount'
@@ -12681,6 +12710,8 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          property :resource_status, as: 'resourceStatus', class: Google::Apis::ComputeV1::AllocationResourceStatus, decorator: Google::Apis::ComputeV1::AllocationResourceStatus::Representation
+      
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
           property :share_settings, as: 'shareSettings', class: Google::Apis::ComputeV1::ShareSettings, decorator: Google::Apis::ComputeV1::ShareSettings::Representation
