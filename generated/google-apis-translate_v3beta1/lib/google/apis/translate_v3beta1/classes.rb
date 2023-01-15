@@ -64,6 +64,14 @@ module Google
       class BatchTranslateDocumentRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. This flag is to support user customized attribution. If not provided,
+        # the default is `Machine Translated by Google`. Customized attribution should
+        # follow rules in https://cloud.google.com/translate/attribution#
+        # attribution_and_logos
+        # Corresponds to the JSON property `customizedAttribution`
+        # @return [String]
+        attr_accessor :customized_attribution
+      
         # Optional.
         # Corresponds to the JSON property `formatConversions`
         # @return [Hash<String,String>]
@@ -117,6 +125,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @customized_attribution = args[:customized_attribution] if args.key?(:customized_attribution)
           @format_conversions = args[:format_conversions] if args.key?(:format_conversions)
           @glossaries = args[:glossaries] if args.key?(:glossaries)
           @input_configs = args[:input_configs] if args.key?(:input_configs)
@@ -944,6 +953,13 @@ module Google
         # @return [Google::Apis::TranslateV3beta1::DocumentOutputConfig]
         attr_accessor :document_output_config
       
+        # Optional. If true, use the text removal server to remove the shadow text on
+        # background image for native pdf translation.
+        # Corresponds to the JSON property `enableShadowRemovalNativePdf`
+        # @return [Boolean]
+        attr_accessor :enable_shadow_removal_native_pdf
+        alias_method :enable_shadow_removal_native_pdf?, :enable_shadow_removal_native_pdf
+      
         # Configures which glossary should be used for a specific target language, and
         # defines options for applying that glossary.
         # Corresponds to the JSON property `glossaryConfig`
@@ -1002,6 +1018,7 @@ module Google
           @customized_attribution = args[:customized_attribution] if args.key?(:customized_attribution)
           @document_input_config = args[:document_input_config] if args.key?(:document_input_config)
           @document_output_config = args[:document_output_config] if args.key?(:document_output_config)
+          @enable_shadow_removal_native_pdf = args[:enable_shadow_removal_native_pdf] if args.key?(:enable_shadow_removal_native_pdf)
           @glossary_config = args[:glossary_config] if args.key?(:glossary_config)
           @is_translate_native_pdf_only = args[:is_translate_native_pdf_only] if args.key?(:is_translate_native_pdf_only)
           @labels = args[:labels] if args.key?(:labels)
