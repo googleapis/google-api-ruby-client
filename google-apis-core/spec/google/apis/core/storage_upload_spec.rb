@@ -22,7 +22,7 @@ RSpec.describe Google::Apis::Core::StorageUploadCommand do
 
   let(:command) do
     command = Google::Apis::Core::StorageUploadCommand.new(:post, 'https://www.googleapis.com/zoo/animals')
-    command.upload_source = StringIO.new('Hello world')
+    command.upload_source = file
     command.upload_content_type = 'text/plain'
     command
   end
@@ -43,20 +43,12 @@ RSpec.describe Google::Apis::Core::StorageUploadCommand do
       expect(client).to receive(:put).with(anything, hash_including(body: kind_of(StringIO)))
 
       command.execute(client)
-      expect(a_request(:post, 'https://www.googleapis.com/zoo/animals?uploadType=resumable')
-        .with { |req| req.headers['Content-Length'].include?('11') }).to have_been_made
+      expect(a_request(:post, 'https://www.googleapis.com/zoo/animals?uploadType=resumable')).to have_been_made
 
       expect(a_request(:post, 'https://www.googleapis.com/zoo/animals?uploadType=resumable')
         .with { |req| req.headers['Content-Type'].include?('application/json') }).to have_been_made
 
-      expect(a_request(:put, 'https://www.googleapis.com/zoo/animals')
-        .with{ |req| req.headers['Content-Length'].include?('11')}).to have_been_made
-    end
-
-    it 'should send upload content' do
-      command.execute(client)
-      expect(a_request(:put, 'https://www.googleapis.com/zoo/animals')
-        .with(body: 'Hello world')).to have_been_made
+      expect(a_request(:put, 'https://www.googleapis.com/zoo/animals')).to have_been_made
     end
 
     it 'should generate a proper opencensus span' do
@@ -70,9 +62,18 @@ RSpec.describe Google::Apis::Core::StorageUploadCommand do
     end
   end
 
+  shared_examples 'should upload content' do
+    it 'should send upload content' do
+      command.execute(client)
+      expect(a_request(:put, 'https://www.googleapis.com/zoo/animals')
+        .with(body: 'Hello world')).to have_been_made
+    end
+  end
+
   context('with StringIO input') do
     let(:file) { StringIO.new("Hello world") }
     include_examples 'should upload'
+    include_examples 'should upload content'
   end
 
   context('with empty StringIO input') do
@@ -83,6 +84,7 @@ RSpec.describe Google::Apis::Core::StorageUploadCommand do
   context('with IO input') do
     let(:file) { File.open(File.join(FIXTURES_DIR, 'files', 'test.txt'), 'r') }
     include_examples 'should upload'
+    include_examples 'should upload content'
 
     it 'should not close stream' do
       expect(file.closed?).to be false
@@ -97,9 +99,38 @@ RSpec.describe Google::Apis::Core::StorageUploadCommand do
   context('with file path input') do
     let(:file) { File.join(FIXTURES_DIR, 'files', 'test.txt') }
     include_examples 'should upload'
+    include_examples 'should upload content'
+  end
+
+  context('with files larger than 100 MB') do
+    let(:file) { StringIO.new("Hello world" * 2 )}
+    before(:example) do
+      stub_request(:post, 'https://www.googleapis.com/zoo/animals?uploadType=resumable')
+        .to_return(headers: { 'Location' => 'https://www.googleapis.com/zoo/animals' }, body: %(OK))
+    end
+
+    before(:example) do
+      stub_request(:put, 'https://www.googleapis.com/zoo/animals')
+        .with(headers: { 'Content-Range' => 'bytes 0-10/22' })
+        .to_return(status: [308, 'Resume Incomplete'])
+    end
+
+    before(:example) do
+      stub_request(:put, 'https://www.googleapis.com/zoo/animals')
+        .with(headers: { 'Content-Range' => 'bytes 11-21/22' })
+        .to_return(body: %(OK))
+    end    
+
+    it 'should make requests multiple times' do
+      command.options.upload_chunk_size = 11
+      command.execute(client)
+      expect(a_request(:put, 'https://www.googleapis.com/zoo/animals')
+        .with(body: "Hello world")).to have_been_made.twice
+    end
   end
 
   context 'with retriable error on start' do
+    let(:file) { StringIO.new "Hello world"}
     before(:example) do
       stub_request(:post, 'https://www.googleapis.com/zoo/animals?uploadType=resumable')
         .to_timeout
@@ -120,6 +151,7 @@ RSpec.describe Google::Apis::Core::StorageUploadCommand do
   end
 
   context 'with non-retriable authorization error on start' do
+    let(:file) { StringIO.new }
     before(:example) do
       stub_request(:post, 'https://www.googleapis.com/zoo/animals?uploadType=resumable')
         .to_return(status: [401, 'Unauthorized'], body: %(Unauthorized))
@@ -143,6 +175,7 @@ RSpec.describe Google::Apis::Core::StorageUploadCommand do
   end
 
   context 'with interruption' do
+    let(:file) { StringIO.new }
     before(:example) do
       stub_request(:post, 'https://www.googleapis.com/zoo/animals?uploadType=resumable')
         .to_return(status: [500, 'Server error'])

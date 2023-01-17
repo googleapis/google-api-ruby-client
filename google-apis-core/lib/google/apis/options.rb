@@ -40,7 +40,8 @@ module Google
       :use_opencensus,
       :quota_project,
       :query,
-      :add_invocation_id_header)
+      :add_invocation_id_header,
+      :upload_chunk_size)
 
     # General client options
     class ClientOptions
@@ -98,6 +99,8 @@ module Google
       #   @return [Hash<String,String>] Additional HTTP URL query parameters to include in requests.
       # @!attribute [rw] add_invocation_id_header
       #   @return [Boolean] True if the header gccl-invocation-id need to be set
+      # @!attribute [rw] upload_chunk_size
+      #   @return [Integer] The chunk size of storage upload. The default value is 100 MB.
 
       # Get the default options
       # @return [Google::Apis::RequestOptions]
@@ -133,5 +136,6 @@ module Google
     RequestOptions.default.use_opencensus = true
     RequestOptions.default.quota_project = nil
     RequestOptions.default.add_invocation_id_header = false
+    RequestOptions.default.upload_chunk_size = 100 * 1024 * 1024 # 100 MB
   end
 end

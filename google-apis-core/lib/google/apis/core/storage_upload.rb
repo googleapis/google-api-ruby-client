@@ -32,7 +32,6 @@ module Google
         CONTENT_RANGE_HEADER = "Content-Range"
         RESUMABLE = "resumable"
         OK_STATUS = 200
-        CHUNK_SIZE = 8 * 1024 * 1024 # 8 MB
 
         # File name or IO containing the content to upload
         # @return [String, File, #read]
@@ -45,6 +44,10 @@ module Google
         # Content, as UploadIO
         # @return [Google::Apis::Core::UploadIO]
         attr_accessor :upload_io
+
+        # Upload chunk size
+        # @return [Integer]
+        attr_accessor :upload_chunk_size
 
         # Ensure the content is readable and wrapped in an IO instance.
         #
@@ -92,6 +95,7 @@ module Google
         def execute(client)
           prepare!
           opencensus_begin_span
+          @upload_chunk_size = options.upload_chunk_size
 
           do_retry :initiate_resumable_upload, client
           while @upload_incomplete
@@ -137,7 +141,7 @@ module Google
           logger.debug { sprintf('Sending upload command to %s', @upload_url) }
 
           remaining_content_size = upload_io.size - @offset
-          current_chunk_size = remaining_content_size < CHUNK_SIZE ? remaining_content_size : CHUNK_SIZE
+          current_chunk_size = remaining_content_size < @upload_chunk_size ? remaining_content_size : @upload_chunk_size
 
           request_header = header.dup
           request_header[CONTENT_RANGE_HEADER] = get_content_range_header current_chunk_size
