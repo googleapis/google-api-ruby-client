@@ -100,7 +100,7 @@ module Google
       # @!attribute [rw] add_invocation_id_header
       #   @return [Boolean] True if the header gccl-invocation-id need to be set
       # @!attribute [rw] upload_chunk_size
-      #   @return [Fixnum] The chunk size of storage upload.
+      #   @return [Integer] The chunk size of storage upload. The default value is 100 MB.
 
       # Get the default options
       # @return [Google::Apis::RequestOptions]

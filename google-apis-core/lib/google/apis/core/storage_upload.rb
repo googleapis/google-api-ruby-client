@@ -46,7 +46,7 @@ module Google
         attr_accessor :upload_io
 
         # Upload chunk size
-        # @return [Fixnum]
+        # @return [Integer]
         attr_accessor :upload_chunk_size
 
         # Ensure the content is readable and wrapped in an IO instance.
