@@ -129,6 +129,18 @@ RSpec.describe Google::Apis::Core::StorageUploadCommand do
     end
   end
 
+  context('with chunking disabled') do
+    let(:file) { StringIO.new("Hello world")}
+    include_examples 'should upload'
+
+    it 'should upload content in one request' do
+      command.options.upload_chunk_size = 0
+      command.execute(client)
+      expect(a_request(:put, 'https://www.googleapis.com/zoo/animals')
+        .with(body: "Hello world")).to have_been_made
+    end
+  end
+
   context 'with retriable error on start' do
     let(:file) { StringIO.new "Hello world"}
     before(:example) do
