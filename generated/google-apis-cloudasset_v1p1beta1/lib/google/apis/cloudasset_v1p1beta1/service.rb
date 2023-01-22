@@ -22,7 +22,8 @@ module Google
     module CloudassetV1p1beta1
       # Cloud Asset API
       #
-      # The cloud asset API manages the history and inventory of cloud resources.
+      # The Cloud Asset API manages the history and inventory of Google Cloud
+      #  resources.
       #
       # @example
       #    require 'google/apis/cloudasset_v1p1beta1'
@@ -49,17 +50,17 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Searches all the IAM policies within a given accessible CRM scope (project/
-        # folder/organization). This RPC gives callers especially administrators the
-        # ability to search all the IAM policies within a scope, even if they don't have
-        # `.getIamPolicy` permission of all the IAM policies. Callers should have `cloud.
-        # assets.SearchAllIamPolicies` permission on the requested scope, otherwise the
-        # request will be rejected.
+        # Searches all the IAM policies within a given accessible Resource Manager scope
+        # (project/folder/organization). This RPC gives callers especially
+        # administrators the ability to search all the IAM policies within a scope, even
+        # if they don't have `.getIamPolicy` permission of all the IAM policies. Callers
+        # should have `cloud.assets.SearchAllIamPolicies` permission on the requested
+        # scope, otherwise the request will be rejected.
         # @param [String] scope
         #   Required. The relative name of an asset. The search is limited to the
         #   resources within the `scope`. The allowed value must be: * Organization number
-        #   (such as "organizations/123") * Folder number(such as "folders/1234") *
-        #   Project number (such as "projects/12345") * Project id (such as "projects/abc")
+        #   (such as "organizations/123") * Folder number (such as "folders/1234") *
+        #   Project number (such as "projects/12345") * Project ID (such as "projects/abc")
         # @param [Fixnum] page_size
         #   Optional. The page size for search result pagination. Page size is capped at
         #   500 even if a larger value is given. If set to zero, server will pick an
@@ -103,17 +104,17 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Searches all the resources within a given accessible CRM scope (project/folder/
-        # organization). This RPC gives callers especially administrators the ability to
-        # search all the resources within a scope, even if they don't have `.get`
-        # permission of all the resources. Callers should have `cloud.assets.
+        # Searches all the resources within a given accessible Resource Manager scope (
+        # project/folder/organization). This RPC gives callers especially administrators
+        # the ability to search all the resources within a scope, even if they don't
+        # have `.get` permission of all the resources. Callers should have `cloud.assets.
         # SearchAllResources` permission on the requested scope, otherwise the request
         # will be rejected.
         # @param [String] scope
         #   Required. The relative name of an asset. The search is limited to the
         #   resources within the `scope`. The allowed value must be: * Organization number
-        #   (such as "organizations/123") * Folder number(such as "folders/1234") *
-        #   Project number (such as "projects/12345") * Project id (such as "projects/abc")
+        #   (such as "organizations/123") * Folder number (such as "folders/1234") *
+        #   Project number (such as "projects/12345") * Project ID (such as "projects/abc")
         # @param [Array<String>, String] asset_types
         #   Optional. A list of asset types that this request searches for. If empty, it
         #   will search all the supported asset types.

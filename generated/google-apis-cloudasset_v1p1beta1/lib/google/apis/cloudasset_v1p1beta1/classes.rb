@@ -23,7 +23,7 @@ module Google
     module CloudassetV1p1beta1
       
       # Represents the metadata of the longrunning operation for the
-      # AnalyzeIamPolicyLongrunning rpc.
+      # AnalyzeIamPolicyLongrunning RPC.
       class AnalyzeIamPolicyLongrunningMetadata
         include Google::Apis::Core::Hashable
       
@@ -283,8 +283,8 @@ module Google
       # resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-
       # platform-resource-hierarchy), a resource outside the Google Cloud resource
       # hierarchy (such as Google Kubernetes Engine clusters and objects), or a policy
-      # (e.g. Cloud IAM policy). See [Supported asset types](https://cloud.google.com/
-      # asset-inventory/docs/supported-asset-types) for more information.
+      # (e.g. IAM policy). See [Supported asset types](https://cloud.google.com/asset-
+      # inventory/docs/supported-asset-types) for more information.
       class GoogleCloudAssetV1p7beta1Asset
         include Google::Apis::Core::Hashable
       
@@ -421,9 +421,9 @@ module Google
       # An asset can be any resource in the Google Cloud [resource hierarchy](https://
       # cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy), a
       # resource outside the Google Cloud resource hierarchy (such as Google
-      # Kubernetes Engine clusters and objects), or a policy (e.g. Cloud IAM policy).
-      # See [Supported asset types](https://cloud.google.com/asset-inventory/docs/
-      # supported-asset-types) for more information.
+      # Kubernetes Engine clusters and objects), or a policy (e.g. IAM policy). See [
+      # Supported asset types](https://cloud.google.com/asset-inventory/docs/supported-
+      # asset-types) for more information.
       class GoogleCloudAssetV1p7beta1RelatedAsset
         include Google::Apis::Core::Hashable
       
@@ -562,7 +562,7 @@ module Google
         # The full name of the immediate parent of this resource. See [Resource Names](
         # https://cloud.google.com/apis/design/resource_names#full_resource_name) for
         # more information. For Google Cloud assets, this value is the parent resource
-        # defined in the [Cloud IAM policy hierarchy](https://cloud.google.com/iam/docs/
+        # defined in the [IAM policy hierarchy](https://cloud.google.com/iam/docs/
         # overview#policy_hierarchy). Example: `//cloudresourcemanager.googleapis.com/
         # projects/my_project_123` For third-party assets, this field may be set
         # differently.
@@ -1441,10 +1441,11 @@ module Google
       
         # A Google Cloud resource that is allowed to ingress the perimeter. Requests
         # from these resources will be allowed to access perimeter data. Currently only
-        # projects are allowed. Format: `projects/`project_number`` The project may be
-        # in any Google Cloud organization, not just the organization that the perimeter
-        # is defined in. `*` is not allowed, the case of allowing all Google Cloud
-        # resources only is not supported.
+        # projects and VPCs are allowed. Project format: `projects/`project_number`` VPC
+        # format: `//compute.googleapis.com/projects/`PROJECT_ID`/global/networks/`NAME``
+        # . The project may be in any Google Cloud organization, not just the
+        # organization that the perimeter is defined in. `*` is not allowed, the case of
+        # allowing all Google Cloud resources only is not supported.
         # Corresponds to the JSON property `resource`
         # @return [String]
         attr_accessor :resource
@@ -1669,7 +1670,9 @@ module Google
         attr_accessor :ingress_policies
       
         # A list of Google Cloud resources that are inside of the service perimeter.
-        # Currently only projects are allowed. Format: `projects/`project_number``
+        # Currently only projects and VPCs are allowed. Project format: `projects/`
+        # project_number`` VPC format: `//compute.googleapis.com/projects/`PROJECT_ID`/
+        # global/networks/`NAME``.
         # Corresponds to the JSON property `resources`
         # @return [Array<String>]
         attr_accessor :resources
@@ -1924,8 +1927,8 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # A list of IamPolicy that match the search query. Related information such as
-        # the associated resource is returned along with the policy.
+        # A list of IAM policies that match the search query. Related information such
+        # as the associated resource is returned along with the policy.
         # Corresponds to the JSON property `results`
         # @return [Array<Google::Apis::CloudassetV1p1beta1::IamPolicySearchResult>]
         attr_accessor :results
@@ -1995,7 +1998,7 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Labels associated with this resource. See [Labelling and grouping GCP
+        # Labels associated with this resource. See [Labelling and grouping Google Cloud
         # resources](https://cloud.google.com/blog/products/gcp/labelling-and-grouping-
         # your-google-cloud-platform-resources) for more information.
         # Corresponds to the JSON property `labels`
@@ -2016,9 +2019,9 @@ module Google
         attr_accessor :name
       
         # Network tags associated with this resource. Like labels, network tags are a
-        # type of annotations used to group GCP resources. See [Labelling GCP resources](
-        # lhttps://cloud.google.com/blog/products/gcp/labelling-and-grouping-your-google-
-        # cloud-platform-resources) for more information.
+        # type of annotations used to group Google Cloud resources. See [Labelling
+        # Google Cloud resources](lhttps://cloud.google.com/blog/products/gcp/labelling-
+        # and-grouping-your-google-cloud-platform-resources) for more information.
         # Corresponds to the JSON property `networkTags`
         # @return [Array<String>]
         attr_accessor :network_tags
