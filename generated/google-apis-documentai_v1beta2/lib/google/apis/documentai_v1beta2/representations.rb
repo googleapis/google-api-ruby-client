@@ -238,6 +238,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiUiv1beta3RevisionRef
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiUiv1beta3RevisionReference
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1380,6 +1386,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gcs_managed_doc_id, as: 'gcsManagedDocId', class: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3DocumentIdGcsManagedDocumentId, decorator: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3DocumentIdGcsManagedDocumentId::Representation
       
+          property :revision_ref, as: 'revisionRef', class: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3RevisionRef, decorator: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3RevisionRef::Representation
+      
           property :revision_reference, as: 'revisionReference', class: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3RevisionReference, decorator: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3RevisionReference::Representation
       
         end
@@ -1547,6 +1555,15 @@ module Google
       class GoogleCloudDocumentaiUiv1beta3ResyncDatasetResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3RevisionRef
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :latest_processor_version, as: 'latestProcessorVersion'
+          property :revision_case, as: 'revisionCase'
+          property :revision_id, as: 'revisionId'
         end
       end
       
