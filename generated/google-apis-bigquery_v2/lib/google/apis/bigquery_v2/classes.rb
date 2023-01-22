@@ -593,6 +593,12 @@ module Google
       
         # [Output-only] Specifies which mode of BI Engine acceleration was performed (if
         # any).
+        # Corresponds to the JSON property `accelerationMode`
+        # @return [String]
+        attr_accessor :acceleration_mode
+      
+        # [Output-only] Specifies which mode of BI Engine acceleration was performed (if
+        # any).
         # Corresponds to the JSON property `biEngineMode`
         # @return [String]
         attr_accessor :bi_engine_mode
@@ -610,6 +616,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @acceleration_mode = args[:acceleration_mode] if args.key?(:acceleration_mode)
           @bi_engine_mode = args[:bi_engine_mode] if args.key?(:bi_engine_mode)
           @bi_engine_reasons = args[:bi_engine_reasons] if args.key?(:bi_engine_reasons)
         end
