@@ -100,6 +100,9 @@ module Google
         #   The current etag of the Database. If an etag is provided and does not match
         #   the current etag of the database, deletion will be blocked and a
         #   FAILED_PRECONDITION error will be returned.
+        # @param [Boolean] free_id
+        #   If set, will free the database_id associated with this database. uid will be
+        #   used as the resource id to identify this deleted database.
         # @param [Boolean] validate_only
         #   If set, validate the request and preview the response, but do not actually
         #   delete the database.
@@ -120,13 +123,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_database(name, allow_missing: nil, etag: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_project_database(name, allow_missing: nil, etag: nil, free_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::FirestoreV1::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::FirestoreV1::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
           command.query['allowMissing'] = allow_missing unless allow_missing.nil?
           command.query['etag'] = etag unless etag.nil?
+          command.query['freeId'] = free_id unless free_id.nil?
           command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

@@ -814,6 +814,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :collection_ids, as: 'collectionIds'
           property :end_time, as: 'endTime'
+          collection :namespace_ids, as: 'namespaceIds'
           property :operation_state, as: 'operationState'
           property :output_uri_prefix, as: 'outputUriPrefix'
           property :progress_bytes, as: 'progressBytes', class: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1Progress, decorator: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1Progress::Representation
@@ -875,6 +876,7 @@ module Google
           collection :collection_ids, as: 'collectionIds'
           property :end_time, as: 'endTime'
           property :input_uri_prefix, as: 'inputUriPrefix'
+          collection :namespace_ids, as: 'namespaceIds'
           property :operation_state, as: 'operationState'
           property :progress_bytes, as: 'progressBytes', class: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1Progress, decorator: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1Progress::Representation
       
