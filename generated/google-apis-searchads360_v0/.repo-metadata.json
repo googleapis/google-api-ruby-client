@@ -1,0 +1,7 @@
+{
+    "api_id": "searchads360:v0",
+    "name_pretty": "Search Ads 360 Reporting API",
+    "distribution_name": "google-apis-searchads360_v0",
+    "language": "ruby",
+    "library_type": "REST"
+}
