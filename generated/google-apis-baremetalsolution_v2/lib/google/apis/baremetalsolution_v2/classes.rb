@@ -2237,6 +2237,12 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Input only. Name of the storage aggregate pool to allocate the volume in. Can
+        # be used only for VOLUME_PERFORMANCE_TIER_ASSIGNED volumes.
+        # Corresponds to the JSON property `storageAggregatePool`
+        # @return [String]
+        attr_accessor :storage_aggregate_pool
+      
         # The storage type for this volume.
         # Corresponds to the JSON property `storageType`
         # @return [String]
@@ -2273,6 +2279,7 @@ module Google
           @snapshot_reservation_detail = args[:snapshot_reservation_detail] if args.key?(:snapshot_reservation_detail)
           @snapshot_schedule_policy = args[:snapshot_schedule_policy] if args.key?(:snapshot_schedule_policy)
           @state = args[:state] if args.key?(:state)
+          @storage_aggregate_pool = args[:storage_aggregate_pool] if args.key?(:storage_aggregate_pool)
           @storage_type = args[:storage_type] if args.key?(:storage_type)
           @workload_profile = args[:workload_profile] if args.key?(:workload_profile)
         end
@@ -2335,6 +2342,12 @@ module Google
         attr_accessor :snapshots_enabled
         alias_method :snapshots_enabled?, :snapshots_enabled
       
+        # Input only. Name of the storage aggregate pool to allocate the volume in. Can
+        # be used only for VOLUME_PERFORMANCE_TIER_ASSIGNED volumes.
+        # Corresponds to the JSON property `storageAggregatePool`
+        # @return [String]
+        attr_accessor :storage_aggregate_pool
+      
         # The type of this Volume.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -2362,6 +2375,7 @@ module Google
           @protocol = args[:protocol] if args.key?(:protocol)
           @size_gb = args[:size_gb] if args.key?(:size_gb)
           @snapshots_enabled = args[:snapshots_enabled] if args.key?(:snapshots_enabled)
+          @storage_aggregate_pool = args[:storage_aggregate_pool] if args.key?(:storage_aggregate_pool)
           @type = args[:type] if args.key?(:type)
           @user_note = args[:user_note] if args.key?(:user_note)
         end
