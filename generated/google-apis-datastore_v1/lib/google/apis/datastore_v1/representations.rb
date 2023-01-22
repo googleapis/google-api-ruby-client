@@ -545,6 +545,8 @@ module Google
           property :mode, as: 'mode'
           collection :mutations, as: 'mutations', class: Google::Apis::DatastoreV1::Mutation, decorator: Google::Apis::DatastoreV1::Mutation::Representation
       
+          property :single_use_transaction, as: 'singleUseTransaction', class: Google::Apis::DatastoreV1::TransactionOptions, decorator: Google::Apis::DatastoreV1::TransactionOptions::Representation
+      
           property :transaction, :base64 => true, as: 'transaction'
         end
       end
@@ -930,6 +932,7 @@ module Google
           collection :missing, as: 'missing', class: Google::Apis::DatastoreV1::EntityResult, decorator: Google::Apis::DatastoreV1::EntityResult::Representation
       
           property :read_time, as: 'readTime'
+          property :transaction, :base64 => true, as: 'transaction'
         end
       end
       
@@ -1059,6 +1062,8 @@ module Google
       class ReadOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :new_transaction, as: 'newTransaction', class: Google::Apis::DatastoreV1::TransactionOptions, decorator: Google::Apis::DatastoreV1::TransactionOptions::Representation
+      
           property :read_consistency, as: 'readConsistency'
           property :read_time, as: 'readTime'
           property :transaction, :base64 => true, as: 'transaction'
@@ -1123,6 +1128,7 @@ module Google
       
           property :query, as: 'query', class: Google::Apis::DatastoreV1::AggregationQuery, decorator: Google::Apis::DatastoreV1::AggregationQuery::Representation
       
+          property :transaction, :base64 => true, as: 'transaction'
         end
       end
       
@@ -1148,6 +1154,7 @@ module Google
       
           property :query, as: 'query', class: Google::Apis::DatastoreV1::Query, decorator: Google::Apis::DatastoreV1::Query::Representation
       
+          property :transaction, :base64 => true, as: 'transaction'
         end
       end
       
