@@ -1487,8 +1487,7 @@ module Google
         # Creates and configures a client-side encryption identity that's authorized to
         # send mail from the user account. Google publishes the S/MIME certificate to a
         # shared domain-wide directory so that people within a Google Workspace
-        # organization can encrypt and send mail to the identity. [Beta](https://
-        # workspace.google.com/terms/service-terms/index.html).
+        # organization can encrypt and send mail to the identity.
         # @param [String] user_id
         #   The requester's primary email address. To indicate the authenticated user, you
         #   can use the special value `me`.
@@ -1525,8 +1524,7 @@ module Google
         # Deletes a client-side encryption identity. The authenticated user can no
         # longer use the identity to send encrypted messages. You cannot restore the
         # identity after you delete it. Instead, use the CreateCseIdentity method to
-        # create another identity with the same configuration. [Beta](https://workspace.
-        # google.com/terms/service-terms/index.html).
+        # create another identity with the same configuration.
         # @param [String] user_id
         #   The requester's primary email address. To indicate the authenticated user, you
         #   can use the special value `me`.
@@ -1559,8 +1557,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a client-side encryption identity configuration. [Beta](https://
-        # workspace.google.com/terms/service-terms/index.html).
+        # Retrieves a client-side encryption identity configuration.
         # @param [String] user_id
         #   The requester's primary email address. To indicate the authenticated user, you
         #   can use the special value `me`.
@@ -1595,8 +1592,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the client-side encrypted identities for an authenticated user. [Beta](
-        # https://workspace.google.com/terms/service-terms/index.html).
+        # Lists the client-side encrypted identities for an authenticated user.
         # @param [String] user_id
         #   The requester's primary email address. To indicate the authenticated user, you
         #   can use the special value `me`.
@@ -1637,8 +1633,7 @@ module Google
         
         # Associates a different key pair with an existing client-side encryption
         # identity. The updated key pair must validate against Google's [S/MIME
-        # certificate profiles](https://support.google.com/a/answer/7300887). [Beta](
-        # https://workspace.google.com/terms/service-terms/index.html).
+        # certificate profiles](https://support.google.com/a/answer/7300887).
         # @param [String] user_id
         #   The requester's primary email address. To indicate the authenticated user, you
         #   can use the special value `me`.
@@ -1676,8 +1671,7 @@ module Google
         end
         
         # Creates and uploads a client-side encryption S/MIME public key certificate
-        # chain and private key metadata for the authenticated user. [Beta](https://
-        # workspace.google.com/terms/service-terms/index.html).
+        # chain and private key metadata for the authenticated user.
         # @param [String] user_id
         #   The requester's primary email address. To indicate the authenticated user, you
         #   can use the special value `me`.
@@ -1715,8 +1709,7 @@ module Google
         # longer use the key pair to decrypt incoming CSE message texts or sign outgoing
         # CSE mail. To regain access, use the EnableCseKeyPair to turn on the key pair.
         # After 30 days, you can permanently delete the key pair by using the
-        # ObliterateCseKeyPair method. [Beta](https://workspace.google.com/terms/service-
-        # terms/index.html).
+        # ObliterateCseKeyPair method.
         # @param [String] user_id
         #   The requester's primary email address. To indicate the authenticated user, you
         #   can use the special value `me`.
@@ -1754,8 +1747,7 @@ module Google
         end
         
         # Turns on a client-side encryption key pair that was turned off. The key pair
-        # becomes active again for any associated client-side encryption identities. [
-        # Beta](https://workspace.google.com/terms/service-terms/index.html).
+        # becomes active again for any associated client-side encryption identities.
         # @param [String] user_id
         #   The requester's primary email address. To indicate the authenticated user, you
         #   can use the special value `me`.
@@ -1792,8 +1784,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an existing client-side encryption key pair. [Beta](https://
-        # workspace.google.com/terms/service-terms/index.html).
+        # Retrieves an existing client-side encryption key pair.
         # @param [String] user_id
         #   The requester's primary email address. To indicate the authenticated user, you
         #   can use the special value `me`.
@@ -1827,8 +1818,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists client-side encryption key pairs for an authenticated user. [Beta](https:
-        # //workspace.google.com/terms/service-terms/index.html).
+        # Lists client-side encryption key pairs for an authenticated user.
         # @param [String] user_id
         #   The requester's primary email address. To indicate the authenticated user, you
         #   can use the special value `me`.
@@ -1872,8 +1862,7 @@ module Google
         # days. To turn off a key pair, use the DisableCseKeyPair method. Gmail can't
         # restore or decrypt any messages that were encrypted by an obliterated key.
         # Authenticated users and Google Workspace administrators lose access to reading
-        # the encrypted messages. [Beta](https://workspace.google.com/terms/service-
-        # terms/index.html).
+        # the encrypted messages.
         # @param [String] user_id
         #   The requester's primary email address. To indicate the authenticated user, you
         #   can use the special value `me`.
