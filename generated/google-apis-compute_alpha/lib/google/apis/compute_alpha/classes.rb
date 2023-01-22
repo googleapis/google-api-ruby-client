@@ -27262,6 +27262,12 @@ module Google
         # @return [String]
         attr_accessor :nic_type
       
+        # Name of the parent network interface of a VLAN based nic. If this field is
+        # specified, vlan must be set.
+        # Corresponds to the JSON property `parentNicName`
+        # @return [String]
+        attr_accessor :parent_nic_name
+      
         # The networking queue count that's specified by users for the network interface.
         # Both Rx and Tx queues will be set to this number. It'll be empty if not
         # specified by the users.
@@ -27296,6 +27302,13 @@ module Google
         # @return [String]
         attr_accessor :subnetwork
       
+        # VLAN tag of a VLAN based network interface, must be in range from 2 to 4094
+        # inclusively. This field is mandatory if the parent network interface name is
+        # set.
+        # Corresponds to the JSON property `vlan`
+        # @return [Fixnum]
+        attr_accessor :vlan
+      
         def initialize(**args)
            update!(**args)
         end
@@ -27315,10 +27328,12 @@ module Google
           @network_attachment = args[:network_attachment] if args.key?(:network_attachment)
           @network_ip = args[:network_ip] if args.key?(:network_ip)
           @nic_type = args[:nic_type] if args.key?(:nic_type)
+          @parent_nic_name = args[:parent_nic_name] if args.key?(:parent_nic_name)
           @queue_count = args[:queue_count] if args.key?(:queue_count)
           @stack_type = args[:stack_type] if args.key?(:stack_type)
           @subinterfaces = args[:subinterfaces] if args.key?(:subinterfaces)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
+          @vlan = args[:vlan] if args.key?(:vlan)
         end
       end
       
@@ -43500,7 +43515,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Attached disks configuration. If not provided, defaults are applied: For boot
-        # disk and any other R/W disks, new custom images will be created from each disk.
+        # disk and any other R/W disks, the source images for each disk will be used.
         # For read-only disks, they will be attached in read-only mode. Local SSD disks
         # will be created as blank volumes.
         # Corresponds to the JSON property `diskConfigs`
