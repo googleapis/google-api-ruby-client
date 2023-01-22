@@ -280,6 +280,13 @@ module Google
         # @return [Array<Google::Apis::DatastoreV1::Mutation>]
         attr_accessor :mutations
       
+        # Options for beginning a new transaction. Transactions can be created
+        # explicitly with calls to Datastore.BeginTransaction or implicitly by setting
+        # ReadOptions.new_transaction in read requests.
+        # Corresponds to the JSON property `singleUseTransaction`
+        # @return [Google::Apis::DatastoreV1::TransactionOptions]
+        attr_accessor :single_use_transaction
+      
         # The identifier of the transaction associated with the commit. A transaction
         # identifier is returned by a call to Datastore.BeginTransaction.
         # Corresponds to the JSON property `transaction`
@@ -296,6 +303,7 @@ module Google
           @database_id = args[:database_id] if args.key?(:database_id)
           @mode = args[:mode] if args.key?(:mode)
           @mutations = args[:mutations] if args.key?(:mutations)
+          @single_use_transaction = args[:single_use_transaction] if args.key?(:single_use_transaction)
           @transaction = args[:transaction] if args.key?(:transaction)
         end
       end
@@ -1643,6 +1651,14 @@ module Google
         # @return [String]
         attr_accessor :read_time
       
+        # The identifier of the transaction that was started as part of this Lookup
+        # request. Set only when ReadOptions.begin_transaction was set in LookupRequest.
+        # read_options.
+        # Corresponds to the JSON property `transaction`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :transaction
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1653,6 +1669,7 @@ module Google
           @found = args[:found] if args.key?(:found)
           @missing = args[:missing] if args.key?(:missing)
           @read_time = args[:read_time] if args.key?(:read_time)
+          @transaction = args[:transaction] if args.key?(:transaction)
         end
       end
       
@@ -2121,6 +2138,13 @@ module Google
       class ReadOptions
         include Google::Apis::Core::Hashable
       
+        # Options for beginning a new transaction. Transactions can be created
+        # explicitly with calls to Datastore.BeginTransaction or implicitly by setting
+        # ReadOptions.new_transaction in read requests.
+        # Corresponds to the JSON property `newTransaction`
+        # @return [Google::Apis::DatastoreV1::TransactionOptions]
+        attr_accessor :new_transaction
+      
         # The non-transactional read consistency to use.
         # Corresponds to the JSON property `readConsistency`
         # @return [String]
@@ -2145,6 +2169,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @new_transaction = args[:new_transaction] if args.key?(:new_transaction)
           @read_consistency = args[:read_consistency] if args.key?(:read_consistency)
           @read_time = args[:read_time] if args.key?(:read_time)
           @transaction = args[:transaction] if args.key?(:transaction)
@@ -2319,6 +2344,14 @@ module Google
         # @return [Google::Apis::DatastoreV1::AggregationQuery]
         attr_accessor :query
       
+        # The identifier of the transaction that was started as part of this
+        # RunAggregationQuery request. Set only when ReadOptions.begin_transaction was
+        # set in RunAggregationQueryRequest.read_options.
+        # Corresponds to the JSON property `transaction`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :transaction
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2327,6 +2360,7 @@ module Google
         def update!(**args)
           @batch = args[:batch] if args.key?(:batch)
           @query = args[:query] if args.key?(:query)
+          @transaction = args[:transaction] if args.key?(:transaction)
         end
       end
       
@@ -2397,6 +2431,14 @@ module Google
         # @return [Google::Apis::DatastoreV1::Query]
         attr_accessor :query
       
+        # The identifier of the transaction that was started as part of this RunQuery
+        # request. Set only when ReadOptions.begin_transaction was set in
+        # RunQueryRequest.read_options.
+        # Corresponds to the JSON property `transaction`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :transaction
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2405,6 +2447,7 @@ module Google
         def update!(**args)
           @batch = args[:batch] if args.key?(:batch)
           @query = args[:query] if args.key?(:query)
+          @transaction = args[:transaction] if args.key?(:transaction)
         end
       end
       
