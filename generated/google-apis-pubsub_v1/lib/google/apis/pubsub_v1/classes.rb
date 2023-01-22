@@ -175,6 +175,25 @@ module Google
         end
       end
       
+      # Request for CommitSchema method.
+      class CommitSchemaRequest
+        include Google::Apis::Core::Hashable
+      
+        # A schema resource.
+        # Corresponds to the JSON property `schema`
+        # @return [Google::Apis::PubsubV1::Schema]
+        attr_accessor :schema
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @schema = args[:schema] if args.key?(:schema)
+        end
+      end
+      
       # Request for the `CreateSnapshot` method.
       class CreateSnapshotRequest
         include Google::Apis::Core::Hashable
@@ -351,6 +370,32 @@ module Google
           @expression = args[:expression] if args.key?(:expression)
           @location = args[:location] if args.key?(:location)
           @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # Response for the `ListSchemaRevisions` method.
+      class ListSchemaRevisionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token that can be sent as `page_token` to retrieve the next page. If this
+        # field is empty, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The revisions of the schema.
+        # Corresponds to the JSON property `schemas`
+        # @return [Array<Google::Apis::PubsubV1::Schema>]
+        attr_accessor :schemas
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @schemas = args[:schemas] if args.key?(:schemas)
         end
       end
       
@@ -993,6 +1038,26 @@ module Google
         def update!(**args)
           @maximum_backoff = args[:maximum_backoff] if args.key?(:maximum_backoff)
           @minimum_backoff = args[:minimum_backoff] if args.key?(:minimum_backoff)
+        end
+      end
+      
+      # Request for the `RollbackSchema` method.
+      class RollbackSchemaRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The revision ID to roll back to. It must be a revision of the same
+        # schema. Example: c7cfa2a8
+        # Corresponds to the JSON property `revisionId`
+        # @return [String]
+        attr_accessor :revision_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @revision_id = args[:revision_id] if args.key?(:revision_id)
         end
       end
       
