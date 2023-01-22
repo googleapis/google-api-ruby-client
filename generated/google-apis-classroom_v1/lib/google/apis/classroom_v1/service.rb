@@ -56,8 +56,9 @@ module Google
         # `PERMISSION_DENIED` if the requesting user is not permitted to create courses
         # or for access errors. * `NOT_FOUND` if the primary teacher is not a valid user.
         # * `FAILED_PRECONDITION` if the course owner's account is disabled or for the
-        # following request errors: * UserGroupsMembershipLimitReached * `ALREADY_EXISTS`
-        # if an alias was specified in the `id` and already exists.
+        # following request errors: * UserCannotOwnCourse *
+        # UserGroupsMembershipLimitReached * `ALREADY_EXISTS` if an alias was specified
+        # in the `id` and already exists.
         # @param [Google::Apis::ClassroomV1::Course] course_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

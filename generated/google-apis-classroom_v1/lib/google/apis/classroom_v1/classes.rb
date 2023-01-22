@@ -2284,7 +2284,9 @@ module Google
       class UserProfile
         include Google::Apis::Core::Hashable
       
-        # Email address of the user. Read-only.
+        # Email address of the user. Must request `https://www.googleapis.com/auth/
+        # classroom.profile.emails` scope for this field to be populated in a response
+        # body. Read-only.
         # Corresponds to the JSON property `emailAddress`
         # @return [String]
         attr_accessor :email_address
@@ -2304,14 +2306,17 @@ module Google
         # @return [Array<Google::Apis::ClassroomV1::GlobalPermission>]
         attr_accessor :permissions
       
-        # URL of user's profile photo. Read-only.
+        # URL of user's profile photo. Must request `https://www.googleapis.com/auth/
+        # classroom.profile.photos` scope for this field to be populated in a response
+        # body. Read-only.
         # Corresponds to the JSON property `photoUrl`
         # @return [String]
         attr_accessor :photo_url
       
-        # Represents whether a G Suite for Education user's domain administrator has
-        # explicitly verified them as being a teacher. If the user is not a member of a
-        # G Suite for Education domain, than this field is always false. Read-only
+        # Represents whether a Google Workspace for Education user's domain
+        # administrator has explicitly verified them as being a teacher. This field is
+        # always false if the user is not a member of a Google Workspace for Education
+        # domain. Read-only
         # Corresponds to the JSON property `verifiedTeacher`
         # @return [Boolean]
         attr_accessor :verified_teacher
