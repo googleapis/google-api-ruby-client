@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CommitSchemaRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CreateSnapshotRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -71,6 +77,12 @@ module Google
       end
       
       class Expr
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListSchemaRevisionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -185,6 +197,12 @@ module Google
       end
       
       class RetryPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RollbackSchemaRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -320,6 +338,14 @@ module Google
         end
       end
       
+      class CommitSchemaRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :schema, as: 'schema', class: Google::Apis::PubsubV1::Schema, decorator: Google::Apis::PubsubV1::Schema::Representation
+      
+        end
+      end
+      
       class CreateSnapshotRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -362,6 +388,15 @@ module Google
           property :expression, as: 'expression'
           property :location, as: 'location'
           property :title, as: 'title'
+        end
+      end
+      
+      class ListSchemaRevisionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :schemas, as: 'schemas', class: Google::Apis::PubsubV1::Schema, decorator: Google::Apis::PubsubV1::Schema::Representation
+      
         end
       end
       
@@ -525,6 +560,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :maximum_backoff, as: 'maximumBackoff'
           property :minimum_backoff, as: 'minimumBackoff'
+        end
+      end
+      
+      class RollbackSchemaRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :revision_id, as: 'revisionId'
         end
       end
       

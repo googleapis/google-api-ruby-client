@@ -49,6 +49,40 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Commits a new schema revision to an existing schema.
+        # @param [String] name
+        #   Required. The name of the schema we are revising. Format is `projects/`project`
+        #   /schemas/`schema``.
+        # @param [Google::Apis::PubsubV1::CommitSchemaRequest] commit_schema_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PubsubV1::Schema] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PubsubV1::Schema]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def commit_schema(name, commit_schema_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:commit', options)
+          command.request_representation = Google::Apis::PubsubV1::CommitSchemaRequest::Representation
+          command.request_object = commit_schema_request_object
+          command.response_representation = Google::Apis::PubsubV1::Schema::Representation
+          command.response_class = Google::Apis::PubsubV1::Schema
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a schema.
         # @param [String] parent
         #   Required. The name of the project in which to create the schema. Format is `
@@ -114,6 +148,41 @@ module Google
           command.response_representation = Google::Apis::PubsubV1::Empty::Representation
           command.response_class = Google::Apis::PubsubV1::Empty
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a specific schema revision.
+        # @param [String] name
+        #   Required. The name of the schema revision to be deleted, with a revision ID
+        #   explicitly included. Example: projects/123/schemas/my-schema@c7cfa2a8
+        # @param [String] revision_id
+        #   Required. The revision ID to roll back to. It must be a revision of the same
+        #   schema. Example: c7cfa2a8
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PubsubV1::Schema] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PubsubV1::Schema]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_schema_revision(name, revision_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}:deleteRevision', options)
+          command.response_representation = Google::Apis::PubsubV1::Schema::Representation
+          command.response_class = Google::Apis::PubsubV1::Schema
+          command.params['name'] = name unless name.nil?
+          command.query['revisionId'] = revision_id unless revision_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -238,6 +307,81 @@ module Google
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all schema revisions for the named schema.
+        # @param [String] name
+        #   Required. The name of the schema to list revisions for.
+        # @param [Fixnum] page_size
+        #   The maximum number of revisions to return per page.
+        # @param [String] page_token
+        #   The page token, received from a previous ListSchemaRevisions call. Provide
+        #   this to retrieve the subsequent page.
+        # @param [String] view
+        #   The set of Schema fields to return in the response. If not set, returns
+        #   Schemas with `name` and `type`, but not `definition`. Set to `FULL` to
+        #   retrieve all fields.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PubsubV1::ListSchemaRevisionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PubsubV1::ListSchemaRevisionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_schema_revisions(name, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:listRevisions', options)
+          command.response_representation = Google::Apis::PubsubV1::ListSchemaRevisionsResponse::Representation
+          command.response_class = Google::Apis::PubsubV1::ListSchemaRevisionsResponse
+          command.params['name'] = name unless name.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new schema revision that is a copy of the provided revision_id.
+        # @param [String] name
+        #   Required. The schema being rolled back with revision id.
+        # @param [Google::Apis::PubsubV1::RollbackSchemaRequest] rollback_schema_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PubsubV1::Schema] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PubsubV1::Schema]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def rollback_schema(name, rollback_schema_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:rollback', options)
+          command.request_representation = Google::Apis::PubsubV1::RollbackSchemaRequest::Representation
+          command.request_object = rollback_schema_request_object
+          command.response_representation = Google::Apis::PubsubV1::Schema::Representation
+          command.response_class = Google::Apis::PubsubV1::Schema
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
