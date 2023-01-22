@@ -122,6 +122,121 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Create a DataAttributeBinding resource.
+        # @param [String] parent
+        #   Required. The resource name of the parent data taxonomy projects/`
+        #   project_number`/locations/`location_id`
+        # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataAttributeBinding] google_cloud_dataplex_v1_data_attribute_binding_object
+        # @param [String] data_attribute_binding_id
+        #   Required. DataAttributeBinding identifier. * Must contain only lowercase
+        #   letters, numbers and hyphens. * Must start with a letter. * Must be between 1-
+        #   63 characters. * Must end with a number or a letter. * Must be unique within
+        #   the Location.
+        # @param [Boolean] validate_only
+        #   Optional. Only validate the request, but do not perform mutations. The default
+        #   is false.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_data_attribute_binding(parent, google_cloud_dataplex_v1_data_attribute_binding_object = nil, data_attribute_binding_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/dataAttributeBindings', options)
+          command.request_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1DataAttributeBinding::Representation
+          command.request_object = google_cloud_dataplex_v1_data_attribute_binding_object
+          command.response_representation = Google::Apis::DataplexV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['dataAttributeBindingId'] = data_attribute_binding_id unless data_attribute_binding_id.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a DataAttributeBinding resource. All attributes within the
+        # DataAttributeBinding must be deleted before the DataAttributeBinding can be
+        # deleted.
+        # @param [String] name
+        #   Required. The resource name of the DataAttributeBinding: projects/`
+        #   project_number`/locations/`location_id`/dataAttributeBindings/`
+        #   data_attribute_binding_id`
+        # @param [String] etag
+        #   Required. If the client provided etag value does not match the current etag
+        #   value, the DeleteDataAttributeBindingRequest method returns an ABORTED error
+        #   response. Etags must be used when calling the DeleteDataAttributeBinding.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_data_attribute_binding(name, etag: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DataplexV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['etag'] = etag unless etag.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a DataAttributeBinding resource.
+        # @param [String] name
+        #   Required. The resource name of the DataAttributeBinding: projects/`
+        #   project_number`/locations/`location_id`/dataAttributeBindings/`
+        #   data_attribute_binding_id`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataAttributeBinding] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataAttributeBinding]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_data_attribute_binding(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1DataAttributeBinding::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleCloudDataplexV1DataAttributeBinding
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the access control policy for a resource. Returns an empty policy if the
         # resource exists and does not have a policy set.
         # @param [String] resource
@@ -162,6 +277,99 @@ module Google
           command.response_class = Google::Apis::DataplexV1::GoogleIamV1Policy
           command.params['resource'] = resource unless resource.nil?
           command.query['options.requestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists DataAttributeBinding resources in a project and location.
+        # @param [String] parent
+        #   Required. The resource name of the Location: projects/`project_number`/
+        #   locations/`location_id`
+        # @param [String] filter
+        #   Optional. Filter request. Filter using resource: filter=resource:"resource-
+        #   name" Filter using attribute: filter=attributes:"attribute-name" Filter using
+        #   attribute in paths list: filter=paths.attributes:"attribute-name"
+        # @param [String] order_by
+        #   Optional. Order by fields for the result.
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of DataAttributeBindings to return. The service may
+        #   return fewer than this value. If unspecified, at most 10 DataAttributeBindings
+        #   will be returned. The maximum value is 1000; values above 1000 will be coerced
+        #   to 1000.
+        # @param [String] page_token
+        #   Optional. Page token received from a previous ListDataAttributeBindings call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to ListDataAttributeBindings must match the call that
+        #   provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleCloudDataplexV1ListDataAttributeBindingsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1ListDataAttributeBindingsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_data_attribute_bindings(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/dataAttributeBindings', options)
+          command.response_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1ListDataAttributeBindingsResponse::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleCloudDataplexV1ListDataAttributeBindingsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a DataAttributeBinding resource.
+        # @param [String] name
+        #   Output only. The relative resource name of the Data Attribute Binding, of the
+        #   form: projects/`project_number`/locations/`location`/dataAttributeBindings/`
+        #   data_attribute_binding_id`
+        # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataAttributeBinding] google_cloud_dataplex_v1_data_attribute_binding_object
+        # @param [String] update_mask
+        #   Required. Mask of fields to update.
+        # @param [Boolean] validate_only
+        #   Optional. Only validate the request, but do not perform mutations. The default
+        #   is false.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_data_attribute_binding(name, google_cloud_dataplex_v1_data_attribute_binding_object = nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1DataAttributeBinding::Representation
+          command.request_object = google_cloud_dataplex_v1_data_attribute_binding_object
+          command.response_representation = Google::Apis::DataplexV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -673,6 +881,118 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Create a DataTaxonomy resource.
+        # @param [String] parent
+        #   Required. The resource name of the data taxonomy location, of the form:
+        #   projects/`project_number`/locations/`location_id` where location_id refers to
+        #   a GCP region.
+        # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataTaxonomy] google_cloud_dataplex_v1_data_taxonomy_object
+        # @param [String] data_taxonomy_id
+        #   Required. DataTaxonomy identifier. * Must contain only lowercase letters,
+        #   numbers and hyphens. * Must start with a letter. * Must be between 1-63
+        #   characters. * Must end with a number or a letter. * Must be unique within the
+        #   Project.
+        # @param [Boolean] validate_only
+        #   Optional. Only validate the request, but do not perform mutations. The default
+        #   is false.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_data_taxonomy(parent, google_cloud_dataplex_v1_data_taxonomy_object = nil, data_taxonomy_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/dataTaxonomies', options)
+          command.request_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1DataTaxonomy::Representation
+          command.request_object = google_cloud_dataplex_v1_data_taxonomy_object
+          command.response_representation = Google::Apis::DataplexV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['dataTaxonomyId'] = data_taxonomy_id unless data_taxonomy_id.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a DataTaxonomy resource. All attributes within the DataTaxonomy must
+        # be deleted before the DataTaxonomy can be deleted.
+        # @param [String] name
+        #   Required. The resource name of the DataTaxonomy: projects/`project_number`/
+        #   locations/`location_id`/dataTaxonomies/`data_taxonomy_id`
+        # @param [String] etag
+        #   Optional. If the client provided etag value does not match the current etag
+        #   value,the DeleteDataTaxonomy method returns an ABORTED error.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_data_taxonomy(name, etag: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DataplexV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['etag'] = etag unless etag.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a DataTaxonomy resource.
+        # @param [String] name
+        #   Required. The resource name of the DataTaxonomy: projects/`project_number`/
+        #   locations/`location_id`/dataTaxonomies/`data_taxonomy_id`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataTaxonomy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataTaxonomy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_data_taxonomy(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1DataTaxonomy::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleCloudDataplexV1DataTaxonomy
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the access control policy for a resource. Returns an empty policy if the
         # resource exists and does not have a policy set.
         # @param [String] resource
@@ -713,6 +1033,97 @@ module Google
           command.response_class = Google::Apis::DataplexV1::GoogleIamV1Policy
           command.params['resource'] = resource unless resource.nil?
           command.query['options.requestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists DataTaxonomy resources in a project and location.
+        # @param [String] parent
+        #   Required. The resource name of the DataTaxonomy location, of the form:
+        #   projects/`project_number`/locations/`location_id` where location_id refers to
+        #   a GCP region.
+        # @param [String] filter
+        #   Optional. Filter request.
+        # @param [String] order_by
+        #   Optional. Order by fields for the result.
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of DataTaxonomies to return. The service may return
+        #   fewer than this value. If unspecified, at most 10 DataTaxonomies will be
+        #   returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   Optional. Page token received from a previous ListDataTaxonomies call. Provide
+        #   this to retrieve the subsequent page. When paginating, all other parameters
+        #   provided to ListDataTaxonomies must match the call that provided the page
+        #   token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleCloudDataplexV1ListDataTaxonomiesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1ListDataTaxonomiesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_data_taxonomies(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/dataTaxonomies', options)
+          command.response_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1ListDataTaxonomiesResponse::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleCloudDataplexV1ListDataTaxonomiesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a DataTaxonomy resource.
+        # @param [String] name
+        #   Output only. The relative resource name of the DataTaxonomy, of the form:
+        #   projects/`project_number`/locations/`location_id`/dataTaxonomies/`
+        #   data_taxonomy_id`.
+        # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataTaxonomy] google_cloud_dataplex_v1_data_taxonomy_object
+        # @param [String] update_mask
+        #   Required. Mask of fields to update.
+        # @param [Boolean] validate_only
+        #   Optional. Only validate the request, but do not perform mutations. The default
+        #   is false.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_data_taxonomy(name, google_cloud_dataplex_v1_data_taxonomy_object = nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1DataTaxonomy::Representation
+          command.request_object = google_cloud_dataplex_v1_data_taxonomy_object
+          command.response_representation = Google::Apis::DataplexV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -794,6 +1205,118 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Create a DataAttribute resource.
+        # @param [String] parent
+        #   Required. The resource name of the parent data taxonomy projects/`
+        #   project_number`/locations/`location_id`/dataTaxonomies/`data_taxonomy_id`
+        # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataAttribute] google_cloud_dataplex_v1_data_attribute_object
+        # @param [String] data_attribute_id
+        #   Required. DataAttribute identifier. * Must contain only lowercase letters,
+        #   numbers and hyphens. * Must start with a letter. * Must be between 1-63
+        #   characters. * Must end with a number or a letter. * Must be unique within the
+        #   DataTaxonomy.
+        # @param [Boolean] validate_only
+        #   Optional. Only validate the request, but do not perform mutations. The default
+        #   is false.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_data_taxonomy_attribute(parent, google_cloud_dataplex_v1_data_attribute_object = nil, data_attribute_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/attributes', options)
+          command.request_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1DataAttribute::Representation
+          command.request_object = google_cloud_dataplex_v1_data_attribute_object
+          command.response_representation = Google::Apis::DataplexV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['dataAttributeId'] = data_attribute_id unless data_attribute_id.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a Data Attribute resource.
+        # @param [String] name
+        #   Required. The resource name of the DataAttribute: projects/`project_number`/
+        #   locations/`location_id`/dataTaxonomies/`dataTaxonomy`/attributes/`
+        #   data_attribute_id`
+        # @param [String] etag
+        #   Optional. If the client provided etag value does not match the current etag
+        #   value, the DeleteDataAttribute method returns an ABORTED error response.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_data_taxonomy_attribute(name, etag: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DataplexV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['etag'] = etag unless etag.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a Data Attribute resource.
+        # @param [String] name
+        #   Required. The resource name of the dataAttribute: projects/`project_number`/
+        #   locations/`location_id`/dataTaxonomies/`dataTaxonomy`/attributes/`
+        #   data_attribute_id`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataAttribute] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataAttribute]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_data_taxonomy_attribute(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1DataAttribute::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleCloudDataplexV1DataAttribute
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the access control policy for a resource. Returns an empty policy if the
         # resource exists and does not have a policy set.
         # @param [String] resource
@@ -834,6 +1357,96 @@ module Google
           command.response_class = Google::Apis::DataplexV1::GoogleIamV1Policy
           command.params['resource'] = resource unless resource.nil?
           command.query['options.requestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists Data Attribute resources in a DataTaxonomy.
+        # @param [String] parent
+        #   Required. The resource name of the DataTaxonomy: projects/`project_number`/
+        #   locations/`location_id`/dataTaxonomies/`data_taxonomy_id`
+        # @param [String] filter
+        #   Optional. Filter request.
+        # @param [String] order_by
+        #   Optional. Order by fields for the result.
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of DataAttributes to return. The service may return
+        #   fewer than this value. If unspecified, at most 10 dataAttributes will be
+        #   returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   Optional. Page token received from a previous ListDataAttributes call. Provide
+        #   this to retrieve the subsequent page. When paginating, all other parameters
+        #   provided to ListDataAttributes must match the call that provided the page
+        #   token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleCloudDataplexV1ListDataAttributesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1ListDataAttributesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_data_taxonomy_attributes(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/attributes', options)
+          command.response_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1ListDataAttributesResponse::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleCloudDataplexV1ListDataAttributesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a DataAttribute resource.
+        # @param [String] name
+        #   Output only. The relative resource name of the dataAttribute, of the form:
+        #   projects/`project_number`/locations/`location_id`/dataTaxonomies/`dataTaxonomy`
+        #   /attributes/`data_attribute_id`.
+        # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataAttribute] google_cloud_dataplex_v1_data_attribute_object
+        # @param [String] update_mask
+        #   Required. Mask of fields to update.
+        # @param [Boolean] validate_only
+        #   Optional. Only validate the request, but do not perform mutations. The default
+        #   is false.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_data_taxonomy_attribute(name, google_cloud_dataplex_v1_data_attribute_object = nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1DataAttribute::Representation
+          command.request_object = google_cloud_dataplex_v1_data_attribute_object
+          command.response_representation = Google::Apis::DataplexV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

@@ -166,6 +166,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDataplexV1DataAccessSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataAttribute
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataAttributeBinding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataAttributeBindingPath
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDataplexV1DataProfileResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -346,6 +370,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDataplexV1DataTaxonomy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDataplexV1DiscoveryEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -484,6 +514,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDataplexV1ListDataAttributeBindingsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1ListDataAttributesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDataplexV1ListDataScanJobsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -491,6 +533,12 @@ module Google
       end
       
       class GoogleCloudDataplexV1ListDataScansResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1ListDataTaxonomiesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -551,6 +599,12 @@ module Google
       end
       
       class GoogleCloudDataplexV1Partition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1ResourceAccessSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1097,6 +1151,59 @@ module Google
         end
       end
       
+      class GoogleCloudDataplexV1DataAccessSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :readers, as: 'readers'
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataAttribute
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attribute_count, as: 'attributeCount'
+          property :create_time, as: 'createTime'
+          property :data_access_spec, as: 'dataAccessSpec', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataAccessSpec, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataAccessSpec::Representation
+      
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :etag, as: 'etag'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :parent_id, as: 'parentId'
+          property :resource_access_spec, as: 'resourceAccessSpec', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1ResourceAccessSpec, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1ResourceAccessSpec::Representation
+      
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataAttributeBinding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :attributes, as: 'attributes'
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :etag, as: 'etag'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          collection :paths, as: 'paths', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataAttributeBindingPath, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataAttributeBindingPath::Representation
+      
+          property :resource, as: 'resource'
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataAttributeBindingPath
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :attributes, as: 'attributes'
+          property :name, as: 'name'
+        end
+      end
+      
       class GoogleCloudDataplexV1DataProfileResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1428,6 +1535,21 @@ module Google
         end
       end
       
+      class GoogleCloudDataplexV1DataTaxonomy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attribute_count, as: 'attributeCount'
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :etag, as: 'etag'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class GoogleCloudDataplexV1DiscoveryEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1695,6 +1817,26 @@ module Google
         end
       end
       
+      class GoogleCloudDataplexV1ListDataAttributeBindingsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :data_attribute_bindings, as: 'dataAttributeBindings', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataAttributeBinding, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataAttributeBinding::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable_locations, as: 'unreachableLocations'
+        end
+      end
+      
+      class GoogleCloudDataplexV1ListDataAttributesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :data_attributes, as: 'dataAttributes', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataAttribute, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataAttribute::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable_locations, as: 'unreachableLocations'
+        end
+      end
+      
       class GoogleCloudDataplexV1ListDataScanJobsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1711,6 +1853,16 @@ module Google
       
           property :next_page_token, as: 'nextPageToken'
           collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class GoogleCloudDataplexV1ListDataTaxonomiesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :data_taxonomies, as: 'dataTaxonomies', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataTaxonomy, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataTaxonomy::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable_locations, as: 'unreachableLocations'
         end
       end
       
@@ -1808,6 +1960,15 @@ module Google
           property :location, as: 'location'
           property :name, as: 'name'
           collection :values, as: 'values'
+        end
+      end
+      
+      class GoogleCloudDataplexV1ResourceAccessSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :owners, as: 'owners'
+          collection :readers, as: 'readers'
+          collection :writers, as: 'writers'
         end
       end
       
