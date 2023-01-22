@@ -124,6 +124,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NoOverlapGpsFailureDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NotOutdoorsFailureDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -338,6 +344,16 @@ module Google
         end
       end
       
+      class NoOverlapGpsFailureDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gps_end_time, as: 'gpsEndTime'
+          property :gps_start_time, as: 'gpsStartTime'
+          property :video_end_time, as: 'videoEndTime'
+          property :video_start_time, as: 'videoStartTime'
+        end
+      end
+      
       class NotOutdoorsFailureDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -458,6 +474,8 @@ module Google
           property :imu_data_gap_details, as: 'imuDataGapDetails', class: Google::Apis::StreetviewpublishV1::ImuDataGapFailureDetails, decorator: Google::Apis::StreetviewpublishV1::ImuDataGapFailureDetails::Representation
       
           property :insufficient_gps_details, as: 'insufficientGpsDetails', class: Google::Apis::StreetviewpublishV1::InsufficientGpsFailureDetails, decorator: Google::Apis::StreetviewpublishV1::InsufficientGpsFailureDetails::Representation
+      
+          property :no_overlap_gps_details, as: 'noOverlapGpsDetails', class: Google::Apis::StreetviewpublishV1::NoOverlapGpsFailureDetails, decorator: Google::Apis::StreetviewpublishV1::NoOverlapGpsFailureDetails::Representation
       
           property :not_outdoors_details, as: 'notOutdoorsDetails', class: Google::Apis::StreetviewpublishV1::NotOutdoorsFailureDetails, decorator: Google::Apis::StreetviewpublishV1::NotOutdoorsFailureDetails::Representation
       

@@ -445,6 +445,43 @@ module Google
         end
       end
       
+      # Details related to PhotoSequenceProcessingFailureReason#NO_OVERLAP_GPS.
+      class NoOverlapGpsFailureDetails
+        include Google::Apis::Core::Hashable
+      
+        # Time of last recorded GPS point.
+        # Corresponds to the JSON property `gpsEndTime`
+        # @return [String]
+        attr_accessor :gps_end_time
+      
+        # Time of first recorded GPS point.
+        # Corresponds to the JSON property `gpsStartTime`
+        # @return [String]
+        attr_accessor :gps_start_time
+      
+        # End time of video.
+        # Corresponds to the JSON property `videoEndTime`
+        # @return [String]
+        attr_accessor :video_end_time
+      
+        # Start time of video.
+        # Corresponds to the JSON property `videoStartTime`
+        # @return [String]
+        attr_accessor :video_start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gps_end_time = args[:gps_end_time] if args.key?(:gps_end_time)
+          @gps_start_time = args[:gps_start_time] if args.key?(:gps_start_time)
+          @video_end_time = args[:video_end_time] if args.key?(:video_end_time)
+          @video_start_time = args[:video_start_time] if args.key?(:video_start_time)
+        end
+      end
+      
       # Details related to ProcessingFailureReason#NOT_OUTDOORS. If there are multiple
       # indoor frames found, the first frame is recorded here.
       class NotOutdoorsFailureDetails
@@ -923,6 +960,11 @@ module Google
         # @return [Google::Apis::StreetviewpublishV1::InsufficientGpsFailureDetails]
         attr_accessor :insufficient_gps_details
       
+        # Details related to PhotoSequenceProcessingFailureReason#NO_OVERLAP_GPS.
+        # Corresponds to the JSON property `noOverlapGpsDetails`
+        # @return [Google::Apis::StreetviewpublishV1::NoOverlapGpsFailureDetails]
+        attr_accessor :no_overlap_gps_details
+      
         # Details related to ProcessingFailureReason#NOT_OUTDOORS. If there are multiple
         # indoor frames found, the first frame is recorded here.
         # Corresponds to the JSON property `notOutdoorsDetails`
@@ -938,6 +980,7 @@ module Google
           @gps_data_gap_details = args[:gps_data_gap_details] if args.key?(:gps_data_gap_details)
           @imu_data_gap_details = args[:imu_data_gap_details] if args.key?(:imu_data_gap_details)
           @insufficient_gps_details = args[:insufficient_gps_details] if args.key?(:insufficient_gps_details)
+          @no_overlap_gps_details = args[:no_overlap_gps_details] if args.key?(:no_overlap_gps_details)
           @not_outdoors_details = args[:not_outdoors_details] if args.key?(:not_outdoors_details)
         end
       end
