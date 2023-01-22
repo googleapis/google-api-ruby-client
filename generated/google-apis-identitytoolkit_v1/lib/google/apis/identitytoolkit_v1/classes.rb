@@ -1097,6 +1097,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # The producer project number used to generate PIA tokens
+        # Corresponds to the JSON property `producerProjectNumber`
+        # @return [String]
+        attr_accessor :producer_project_number
+      
         # The reCAPTCHA v2 site key used to invoke the reCAPTCHA service. Always present.
         # Corresponds to the JSON property `recaptchaSiteKey`
         # @return [String]
@@ -1114,6 +1119,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @kind = args[:kind] if args.key?(:kind)
+          @producer_project_number = args[:producer_project_number] if args.key?(:producer_project_number)
           @recaptcha_site_key = args[:recaptcha_site_key] if args.key?(:recaptcha_site_key)
           @recaptcha_stoken = args[:recaptcha_stoken] if args.key?(:recaptcha_stoken)
         end

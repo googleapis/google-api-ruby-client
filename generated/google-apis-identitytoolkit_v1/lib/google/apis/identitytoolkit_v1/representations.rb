@@ -615,6 +615,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
+          property :producer_project_number, as: 'producerProjectNumber'
           property :recaptcha_site_key, as: 'recaptchaSiteKey'
           property :recaptcha_stoken, as: 'recaptchaStoken'
         end
