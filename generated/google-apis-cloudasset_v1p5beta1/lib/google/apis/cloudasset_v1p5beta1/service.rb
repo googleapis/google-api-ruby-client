@@ -22,7 +22,8 @@ module Google
     module CloudassetV1p5beta1
       # Cloud Asset API
       #
-      # The cloud asset API manages the history and inventory of cloud resources.
+      # The Cloud Asset API manages the history and inventory of Google Cloud
+      #  resources.
       #
       # @example
       #    require 'google/apis/cloudasset_v1p5beta1'

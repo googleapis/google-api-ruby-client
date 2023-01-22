@@ -21,7 +21,8 @@ module Google
   module Apis
     # Cloud Asset API
     #
-    # The cloud asset API manages the history and inventory of cloud resources.
+    # The Cloud Asset API manages the history and inventory of Google Cloud
+    # resources.
     #
     # @see https://cloud.google.com/asset-inventory/docs/quickstart
     module CloudassetV1p5beta1
