@@ -13506,11 +13506,13 @@ module Google
           property :network_attachment, as: 'networkAttachment'
           property :network_ip, as: 'networkIP'
           property :nic_type, as: 'nicType'
+          property :parent_nic_name, as: 'parentNicName'
           property :queue_count, as: 'queueCount'
           property :stack_type, as: 'stackType'
           collection :subinterfaces, as: 'subinterfaces', class: Google::Apis::ComputeAlpha::NetworkInterfaceSubInterface, decorator: Google::Apis::ComputeAlpha::NetworkInterfaceSubInterface::Representation
       
           property :subnetwork, as: 'subnetwork'
+          property :vlan, as: 'vlan'
         end
       end
       
