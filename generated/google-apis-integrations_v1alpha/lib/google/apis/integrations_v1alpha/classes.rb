@@ -4179,7 +4179,7 @@ module Google
       end
       
       # The task configuration details. This is not the implementation of Task. There
-      # might be multiple TaskConfigs for the same Task. Next available id: 27
+      # might be multiple TaskConfigs for the same Task.
       class EnterpriseCrmFrontendsEventbusProtoTaskConfig
         include Google::Apis::Core::Hashable
       
@@ -4321,8 +4321,7 @@ module Google
       
         # A string template that allows user to configure task parameters (with either
         # literal default values or tokens which will be resolved at execution time) for
-        # the task. It will eventually replace the old "parameters" field. Please refer
-        # to go/eventbus-task-spec-example for detailed usage example.
+        # the task. It will eventually replace the old "parameters" field.
         # Corresponds to the JSON property `taskSpec`
         # @return [String]
         attr_accessor :task_spec
@@ -8737,6 +8736,19 @@ module Google
           @trigger_id = args[:trigger_id] if args.key?(:trigger_id)
           @trigger_number = args[:trigger_number] if args.key?(:trigger_number)
           @trigger_type = args[:trigger_type] if args.key?(:trigger_type)
+        end
+      end
+      
+      # Request for UnpublishIntegrationVersion.
+      class GoogleCloudIntegrationsV1alphaUnpublishIntegrationVersionRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       

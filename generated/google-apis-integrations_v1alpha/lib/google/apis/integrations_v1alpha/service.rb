@@ -666,6 +666,36 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Delete the selected integration and all versions inside
+        # @param [String] name
+        #   Required. The location resource of the request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IntegrationsV1alpha::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IntegrationsV1alpha::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_integration(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::IntegrationsV1alpha::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::IntegrationsV1alpha::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Executes integrations synchronously by passing the trigger id in the request
         # body. The request is not returned until the requested executions are either
         # fulfilled or experienced an error. If the integration name is not specified (
@@ -1128,6 +1158,80 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Soft-deletes the integration. Changes the status of the integration to
+        # ARCHIVED. If the integration being ARCHIVED is tagged as "HEAD", the tag is
+        # removed from this snapshot and set to the previous non-ARCHIVED snapshot. The
+        # PUBLISH_REQUESTED, DUE_FOR_DELETION tags are removed too. This RPC throws an
+        # exception if the version being deleted is DRAFT, and if the `locked_by` user
+        # is not the same as the user performing the Delete. Audit fields updated
+        # include last_modified_timestamp, last_modified_by. Any existing lock is
+        # released when Deleting a integration. Currently, there is no undelete
+        # mechanism.
+        # @param [String] name
+        #   Required. The version to delete. Format: projects/`project`/locations/`
+        #   location`/integrations/`integration`/versions/`version`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IntegrationsV1alpha::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IntegrationsV1alpha::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_integration_version(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::IntegrationsV1alpha::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::IntegrationsV1alpha::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Downloads an integration. Retrieves the `IntegrationVersion` for a given `
+        # integration_id` and returns the response as a string.
+        # @param [String] name
+        #   Required. The version to download. Format: projects/`project`/locations/`
+        #   location`/integrations/`integration`/versions/`version`
+        # @param [String] file_format
+        #   File format for download request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaDownloadIntegrationVersionResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaDownloadIntegrationVersionResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def download_project_location_integration_version(name, file_format: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}:download', options)
+          command.response_representation = Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaDownloadIntegrationVersionResponse::Representation
+          command.response_class = Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaDownloadIntegrationVersionResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fileFormat'] = file_format unless file_format.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Get a integration in the specified project.
         # @param [String] name
         #   Required. The version to retrieve. Format: projects/`project`/locations/`
@@ -1338,6 +1442,80 @@ module Google
           command.response_representation = Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaTakeoverEditLockResponse::Representation
           command.response_class = Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaTakeoverEditLockResponse
           command.params['integrationVersion'] = integration_version unless integration_version.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets the status of the ACTIVE integration to SNAPSHOT with a new tag "
+        # PREVIOUSLY_PUBLISHED" after validating it. The "HEAD" and "PUBLISH_REQUESTED"
+        # tags do not change. This RPC throws an exception if the version being snapshot
+        # is not ACTIVE. Audit fields added include action, action_by, action_timestamp.
+        # @param [String] name
+        #   Required. The version to deactivate. Format: projects/`project`/locations/`
+        #   location`/integrations/`integration`/versions/`version`
+        # @param [Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaUnpublishIntegrationVersionRequest] google_cloud_integrations_v1alpha_unpublish_integration_version_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IntegrationsV1alpha::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IntegrationsV1alpha::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def unpublish_project_location_integration_version(name, google_cloud_integrations_v1alpha_unpublish_integration_version_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+name}:unpublish', options)
+          command.request_representation = Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaUnpublishIntegrationVersionRequest::Representation
+          command.request_object = google_cloud_integrations_v1alpha_unpublish_integration_version_request_object
+          command.response_representation = Google::Apis::IntegrationsV1alpha::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::IntegrationsV1alpha::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Uploads an integration. The content can be a previously downloaded integration.
+        # Performs the same function as CreateDraftIntegrationVersion, but accepts
+        # input in a string format, which holds the complete representation of the
+        # IntegrationVersion content.
+        # @param [String] parent
+        #   Required. The version to upload. Format: projects/`project`/locations/`
+        #   location`/integrations/`integration`
+        # @param [Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequest] google_cloud_integrations_v1alpha_upload_integration_version_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaUploadIntegrationVersionResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaUploadIntegrationVersionResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def upload_project_location_integration_version(parent, google_cloud_integrations_v1alpha_upload_integration_version_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+parent}/versions:upload', options)
+          command.request_representation = Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequest::Representation
+          command.request_object = google_cloud_integrations_v1alpha_upload_integration_version_request_object
+          command.response_representation = Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaUploadIntegrationVersionResponse::Representation
+          command.response_class = Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaUploadIntegrationVersionResponse
+          command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2496,6 +2674,45 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Soft-deletes the integration. Changes the status of the integration to
+        # ARCHIVED. If the integration being ARCHIVED is tagged as "HEAD", the tag is
+        # removed from this snapshot and set to the previous non-ARCHIVED snapshot. The
+        # PUBLISH_REQUESTED, DUE_FOR_DELETION tags are removed too. This RPC throws an
+        # exception if the version being deleted is DRAFT, and if the `locked_by` user
+        # is not the same as the user performing the Delete. Audit fields updated
+        # include last_modified_timestamp, last_modified_by. Any existing lock is
+        # released when Deleting a integration. Currently, there is no undelete
+        # mechanism.
+        # @param [String] name
+        #   Required. The version to delete. Format: projects/`project`/locations/`
+        #   location`/integrations/`integration`/versions/`version`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IntegrationsV1alpha::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IntegrationsV1alpha::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_product_integration_version(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::IntegrationsV1alpha::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::IntegrationsV1alpha::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Downloads an integration. Retrieves the `IntegrationVersion` for a given `
         # integration_id` and returns the response as a string.
         # @param [String] name
@@ -2772,6 +2989,43 @@ module Google
           command.response_representation = Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaTakeoverEditLockResponse::Representation
           command.response_class = Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaTakeoverEditLockResponse
           command.params['integrationVersion'] = integration_version unless integration_version.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets the status of the ACTIVE integration to SNAPSHOT with a new tag "
+        # PREVIOUSLY_PUBLISHED" after validating it. The "HEAD" and "PUBLISH_REQUESTED"
+        # tags do not change. This RPC throws an exception if the version being snapshot
+        # is not ACTIVE. Audit fields added include action, action_by, action_timestamp.
+        # @param [String] name
+        #   Required. The version to deactivate. Format: projects/`project`/locations/`
+        #   location`/integrations/`integration`/versions/`version`
+        # @param [Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaUnpublishIntegrationVersionRequest] google_cloud_integrations_v1alpha_unpublish_integration_version_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IntegrationsV1alpha::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IntegrationsV1alpha::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def unpublish_project_location_product_integration_version(name, google_cloud_integrations_v1alpha_unpublish_integration_version_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+name}:unpublish', options)
+          command.request_representation = Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaUnpublishIntegrationVersionRequest::Representation
+          command.request_object = google_cloud_integrations_v1alpha_unpublish_integration_version_request_object
+          command.response_representation = Google::Apis::IntegrationsV1alpha::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::IntegrationsV1alpha::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
