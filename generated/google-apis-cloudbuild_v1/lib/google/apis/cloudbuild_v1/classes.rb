@@ -828,7 +828,7 @@ module Google
         # Amount of time that this build should be allowed to run, to second granularity.
         # If this amount of time elapses, work on the build will cease and the build
         # status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default
-        # time is ten minutes.
+        # time is 60 minutes.
         # Corresponds to the JSON property `timeout`
         # @return [String]
         attr_accessor :timeout
@@ -2479,25 +2479,6 @@ module Google
         end
       end
       
-      # HTTPDelivery is the delivery configuration for an HTTP notification.
-      class HttpDelivery
-        include Google::Apis::Core::Hashable
-      
-        # The URI to which JSON-containing HTTP POST requests should be sent.
-        # Corresponds to the JSON property `uri`
-        # @return [String]
-        attr_accessor :uri
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @uri = args[:uri] if args.key?(:uri)
-        end
-      end
-      
       # Container message for hash values.
       class HashProp
         include Google::Apis::Core::Hashable
@@ -2891,198 +2872,6 @@ module Google
           @egress_option = args[:egress_option] if args.key?(:egress_option)
           @peered_network = args[:peered_network] if args.key?(:peered_network)
           @peered_network_ip_range = args[:peered_network_ip_range] if args.key?(:peered_network_ip_range)
-        end
-      end
-      
-      # Notification is the container which holds the data that is relevant to this
-      # particular notification.
-      class Notification
-        include Google::Apis::Core::Hashable
-      
-        # The filter string to use for notification filtering. Currently, this is
-        # assumed to be a CEL program. See https://opensource.google/projects/cel for
-        # more.
-        # Corresponds to the JSON property `filter`
-        # @return [String]
-        attr_accessor :filter
-      
-        # HTTPDelivery is the delivery configuration for an HTTP notification.
-        # Corresponds to the JSON property `httpDelivery`
-        # @return [Google::Apis::CloudbuildV1::HttpDelivery]
-        attr_accessor :http_delivery
-      
-        # SlackDelivery is the delivery configuration for delivering Slack messages via
-        # webhooks. See Slack webhook documentation at: https://api.slack.com/messaging/
-        # webhooks.
-        # Corresponds to the JSON property `slackDelivery`
-        # @return [Google::Apis::CloudbuildV1::SlackDelivery]
-        attr_accessor :slack_delivery
-      
-        # SMTPDelivery is the delivery configuration for an SMTP (email) notification.
-        # Corresponds to the JSON property `smtpDelivery`
-        # @return [Google::Apis::CloudbuildV1::SmtpDelivery]
-        attr_accessor :smtp_delivery
-      
-        # Escape hatch for users to supply custom delivery configs.
-        # Corresponds to the JSON property `structDelivery`
-        # @return [Hash<String,Object>]
-        attr_accessor :struct_delivery
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @filter = args[:filter] if args.key?(:filter)
-          @http_delivery = args[:http_delivery] if args.key?(:http_delivery)
-          @slack_delivery = args[:slack_delivery] if args.key?(:slack_delivery)
-          @smtp_delivery = args[:smtp_delivery] if args.key?(:smtp_delivery)
-          @struct_delivery = args[:struct_delivery] if args.key?(:struct_delivery)
-        end
-      end
-      
-      # NotifierConfig is the top-level configuration message.
-      class NotifierConfig
-        include Google::Apis::Core::Hashable
-      
-        # The API version of this configuration format.
-        # Corresponds to the JSON property `apiVersion`
-        # @return [String]
-        attr_accessor :api_version
-      
-        # The type of notifier to use (e.g. SMTPNotifier).
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # NotifierMetadata contains the data which can be used to reference or describe
-        # this notifier.
-        # Corresponds to the JSON property `metadata`
-        # @return [Google::Apis::CloudbuildV1::NotifierMetadata]
-        attr_accessor :metadata
-      
-        # NotifierSpec is the configuration container for notifications.
-        # Corresponds to the JSON property `spec`
-        # @return [Google::Apis::CloudbuildV1::NotifierSpec]
-        attr_accessor :spec
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @api_version = args[:api_version] if args.key?(:api_version)
-          @kind = args[:kind] if args.key?(:kind)
-          @metadata = args[:metadata] if args.key?(:metadata)
-          @spec = args[:spec] if args.key?(:spec)
-        end
-      end
-      
-      # NotifierMetadata contains the data which can be used to reference or describe
-      # this notifier.
-      class NotifierMetadata
-        include Google::Apis::Core::Hashable
-      
-        # The human-readable and user-given name for the notifier. For example: "repo-
-        # merge-email-notifier".
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # The string representing the name and version of notifier to deploy. Expected
-        # to be of the form of "/:". For example: "gcr.io/my-project/notifiers/smtp:1.2.
-        # 34".
-        # Corresponds to the JSON property `notifier`
-        # @return [String]
-        attr_accessor :notifier
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @name = args[:name] if args.key?(:name)
-          @notifier = args[:notifier] if args.key?(:notifier)
-        end
-      end
-      
-      # NotifierSecret is the container that maps a secret name (reference) to its
-      # Google Cloud Secret Manager resource path.
-      class NotifierSecret
-        include Google::Apis::Core::Hashable
-      
-        # Name is the local name of the secret, such as the verbatim string "my-smtp-
-        # password".
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Value is interpreted to be a resource path for fetching the actual (versioned)
-        # secret data for this secret. For example, this would be a Google Cloud Secret
-        # Manager secret version resource path like: "projects/my-project/secrets/my-
-        # secret/versions/latest".
-        # Corresponds to the JSON property `value`
-        # @return [String]
-        attr_accessor :value
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @name = args[:name] if args.key?(:name)
-          @value = args[:value] if args.key?(:value)
-        end
-      end
-      
-      # NotifierSecretRef contains the reference to a secret stored in the
-      # corresponding NotifierSpec.
-      class NotifierSecretRef
-        include Google::Apis::Core::Hashable
-      
-        # The value of `secret_ref` should be a `name` that is registered in a `Secret`
-        # in the `secrets` list of the `Spec`.
-        # Corresponds to the JSON property `secretRef`
-        # @return [String]
-        attr_accessor :secret_ref
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @secret_ref = args[:secret_ref] if args.key?(:secret_ref)
-        end
-      end
-      
-      # NotifierSpec is the configuration container for notifications.
-      class NotifierSpec
-        include Google::Apis::Core::Hashable
-      
-        # Notification is the container which holds the data that is relevant to this
-        # particular notification.
-        # Corresponds to the JSON property `notification`
-        # @return [Google::Apis::CloudbuildV1::Notification]
-        attr_accessor :notification
-      
-        # Configurations for secret resources used by this particular notifier.
-        # Corresponds to the JSON property `secrets`
-        # @return [Array<Google::Apis::CloudbuildV1::NotifierSecret>]
-        attr_accessor :secrets
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @notification = args[:notification] if args.key?(:notification)
-          @secrets = args[:secrets] if args.key?(:secrets)
         end
       end
       
@@ -3722,58 +3511,6 @@ module Google
         end
       end
       
-      # SMTPDelivery is the delivery configuration for an SMTP (email) notification.
-      class SmtpDelivery
-        include Google::Apis::Core::Hashable
-      
-        # This is the SMTP account/email that appears in the `From:` of the email. If
-        # empty, it is assumed to be sender.
-        # Corresponds to the JSON property `fromAddress`
-        # @return [String]
-        attr_accessor :from_address
-      
-        # NotifierSecretRef contains the reference to a secret stored in the
-        # corresponding NotifierSpec.
-        # Corresponds to the JSON property `password`
-        # @return [Google::Apis::CloudbuildV1::NotifierSecretRef]
-        attr_accessor :password
-      
-        # The SMTP port of the server.
-        # Corresponds to the JSON property `port`
-        # @return [String]
-        attr_accessor :port
-      
-        # This is the list of addresses to which we send the email (i.e. in the `To:` of
-        # the email).
-        # Corresponds to the JSON property `recipientAddresses`
-        # @return [Array<String>]
-        attr_accessor :recipient_addresses
-      
-        # This is the SMTP account/email that is used to send the message.
-        # Corresponds to the JSON property `senderAddress`
-        # @return [String]
-        attr_accessor :sender_address
-      
-        # The address of the SMTP server.
-        # Corresponds to the JSON property `server`
-        # @return [String]
-        attr_accessor :server
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @from_address = args[:from_address] if args.key?(:from_address)
-          @password = args[:password] if args.key?(:password)
-          @port = args[:port] if args.key?(:port)
-          @recipient_addresses = args[:recipient_addresses] if args.key?(:recipient_addresses)
-          @sender_address = args[:sender_address] if args.key?(:sender_address)
-          @server = args[:server] if args.key?(:server)
-        end
-      end
-      
       # Pairs a set of secret environment variables containing encrypted values with
       # the Cloud KMS key to use to decrypt the value. Note: Use `kmsKeyName` with `
       # available_secrets` instead of using `kmsKeyName` with `secret`. For
@@ -3876,28 +3613,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @service = args[:service] if args.key?(:service)
-        end
-      end
-      
-      # SlackDelivery is the delivery configuration for delivering Slack messages via
-      # webhooks. See Slack webhook documentation at: https://api.slack.com/messaging/
-      # webhooks.
-      class SlackDelivery
-        include Google::Apis::Core::Hashable
-      
-        # NotifierSecretRef contains the reference to a secret stored in the
-        # corresponding NotifierSpec.
-        # Corresponds to the JSON property `webhookUri`
-        # @return [Google::Apis::CloudbuildV1::NotifierSecretRef]
-        attr_accessor :webhook_uri
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @webhook_uri = args[:webhook_uri] if args.key?(:webhook_uri)
         end
       end
       
@@ -4396,7 +4111,7 @@ module Google
       
         # Size of the disk attached to the worker, in GB. See [Worker pool config file](
         # https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-
-        # schema). Specify a value of up to 1000. If `0` is specified, Cloud Build will
+        # schema). Specify a value of up to 2000. If `0` is specified, Cloud Build will
         # use a standard disk size.
         # Corresponds to the JSON property `diskSizeGb`
         # @return [Fixnum]
