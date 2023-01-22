@@ -1752,6 +1752,9 @@ module Google
         # permission to view.
         # @param [String] parent
         #   Required. Resource name of the project to list the taxonomies of.
+        # @param [String] filter
+        #   Supported field for filter is 'service' and value is 'dataplex'. Eg: service=
+        #   dataplex.
         # @param [Fixnum] page_size
         #   The maximum number of items to return. Must be a value between 1 and 1000. If
         #   not set, defaults to 50.
@@ -1775,11 +1778,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_taxonomies(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_taxonomies(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta1/{+parent}/taxonomies', options)
           command.response_representation = Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse::Representation
           command.response_class = Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
