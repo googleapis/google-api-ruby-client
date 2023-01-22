@@ -2831,6 +2831,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :policy_tag_count
       
+        # The source system of the Taxonomy.
+        # Corresponds to the JSON property `service`
+        # @return [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1TaxonomyService]
+        attr_accessor :service
+      
         # Timestamps associated with this resource in a particular system.
         # Corresponds to the JSON property `taxonomyTimestamps`
         # @return [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1SystemTimestamps]
@@ -2847,7 +2852,33 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
           @policy_tag_count = args[:policy_tag_count] if args.key?(:policy_tag_count)
+          @service = args[:service] if args.key?(:service)
           @taxonomy_timestamps = args[:taxonomy_timestamps] if args.key?(:taxonomy_timestamps)
+        end
+      end
+      
+      # The source system of the Taxonomy.
+      class GoogleCloudDatacatalogV1TaxonomyService
+        include Google::Apis::Core::Hashable
+      
+        # P4SA Identity of the service.
+        # Corresponds to the JSON property `identity`
+        # @return [String]
+        attr_accessor :identity
+      
+        # The GCP service name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @identity = args[:identity] if args.key?(:identity)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
