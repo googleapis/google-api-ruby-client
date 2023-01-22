@@ -798,6 +798,7 @@ module Google
           property :region, as: 'region'
           property :requested_address, as: 'requestedAddress'
           collection :requested_ranges, as: 'requestedRanges'
+          property :role, as: 'role'
           collection :secondary_ip_range_specs, as: 'secondaryIpRangeSpecs', class: Google::Apis::ServicenetworkingV1::SecondaryIpRangeSpec, decorator: Google::Apis::ServicenetworkingV1::SecondaryIpRangeSpec::Representation
       
           property :subnetwork, as: 'subnetwork'
