@@ -2787,6 +2787,27 @@ module Google
         end
       end
       
+      # The request message for Operations.WaitOperation.
+      class GoogleLongrunningWaitOperationRequest
+        include Google::Apis::Core::Hashable
+      
+        # The maximum duration to wait before timing out. If left blank, the wait will
+        # be at most the time permitted by the underlying HTTP/RPC protocol. If RPC
+        # context deadline is also specified, the shorter one will be used.
+        # Corresponds to the JSON property `timeout`
+        # @return [String]
+        attr_accessor :timeout
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @timeout = args[:timeout] if args.key?(:timeout)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
