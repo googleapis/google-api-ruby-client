@@ -347,7 +347,8 @@ module Google
         # Metrics is the map of user experience data available for the record defined in
         # the key field. Metrics are keyed on the metric name. Allowed key values: ["
         # first_contentful_paint", "first_input_delay", "largest_contentful_paint", "
-        # cumulative_layout_shift"]
+        # cumulative_layout_shift", "experimental_time_to_first_byte", "
+        # experimental_interaction_to_next_paint"]
         # Corresponds to the JSON property `metrics`
         # @return [Hash<String,Google::Apis::ChromeuxreportV1::Metric>]
         attr_accessor :metrics
