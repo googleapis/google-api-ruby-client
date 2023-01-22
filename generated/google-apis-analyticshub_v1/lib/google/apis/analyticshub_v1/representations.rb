@@ -136,6 +136,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RestrictedExportConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SetIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -316,6 +322,8 @@ module Google
           property :publisher, as: 'publisher', class: Google::Apis::AnalyticshubV1::Publisher, decorator: Google::Apis::AnalyticshubV1::Publisher::Representation
       
           property :request_access, as: 'requestAccess'
+          property :restricted_export_config, as: 'restrictedExportConfig', class: Google::Apis::AnalyticshubV1::RestrictedExportConfig, decorator: Google::Apis::AnalyticshubV1::RestrictedExportConfig::Representation
+      
           property :state, as: 'state'
         end
       end
@@ -350,6 +358,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :primary_contact, as: 'primaryContact'
+        end
+      end
+      
+      class RestrictedExportConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :restrict_direct_table_access, as: 'restrictDirectTableAccess'
+          property :restrict_query_result, as: 'restrictQueryResult'
         end
       end
       
