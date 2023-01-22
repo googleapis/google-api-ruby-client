@@ -1,0 +1,7 @@
+{
+    "api_id": "kmsinventory:v1",
+    "name_pretty": "KMS Inventory API",
+    "distribution_name": "google-apis-kmsinventory_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
