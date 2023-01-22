@@ -729,8 +729,9 @@ module Google
         # @return [Google::Apis::ChatV1::Space]
         attr_accessor :space
       
-        # The Chat app-defined key for the thread related to the event. See the
-        # thread_key field of the `spaces.message.create` request for more information.
+        # The Chat app-defined key for the thread related to the event. See [`spaces.
+        # messages.thread.threadKey`](/chat/api/reference/rest/v1/spaces.messages#Thread.
+        # FIELDS.thread_key) for more information.
         # Corresponds to the JSON property `threadKey`
         # @return [String]
         attr_accessor :thread_key
@@ -2201,9 +2202,9 @@ module Google
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Action]
         attr_accessor :auto_complete_action
       
-        # Text that appears inside the text input field meant to assist users by
-        # prompting them to enter a certain value. This text is not visible after users
-        # begin typing. Required if `label` is unspecified. Otherwise, optional.
+        # Text that appears below the text input field meant to assist users by
+        # prompting them to enter a certain value. This text is always visible. Required
+        # if `label` is unspecified. Otherwise, optional.
         # Corresponds to the JSON property `hintText`
         # @return [String]
         attr_accessor :hint_text
