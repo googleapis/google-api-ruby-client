@@ -334,12 +334,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class HttpDelivery
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class HashProp
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -413,42 +407,6 @@ module Google
       end
       
       class NetworkConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Notification
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class NotifierConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class NotifierMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class NotifierSecret
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class NotifierSecretRef
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class NotifierSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -556,12 +514,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class SmtpDelivery
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Secret
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -581,12 +533,6 @@ module Google
       end
       
       class ServiceDirectoryConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class SlackDelivery
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1318,13 +1264,6 @@ module Google
         end
       end
       
-      class HttpDelivery
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :uri, as: 'uri'
-        end
-      end
-      
       class HashProp
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1438,65 +1377,6 @@ module Google
           property :egress_option, as: 'egressOption'
           property :peered_network, as: 'peeredNetwork'
           property :peered_network_ip_range, as: 'peeredNetworkIpRange'
-        end
-      end
-      
-      class Notification
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :filter, as: 'filter'
-          property :http_delivery, as: 'httpDelivery', class: Google::Apis::CloudbuildV1::HttpDelivery, decorator: Google::Apis::CloudbuildV1::HttpDelivery::Representation
-      
-          property :slack_delivery, as: 'slackDelivery', class: Google::Apis::CloudbuildV1::SlackDelivery, decorator: Google::Apis::CloudbuildV1::SlackDelivery::Representation
-      
-          property :smtp_delivery, as: 'smtpDelivery', class: Google::Apis::CloudbuildV1::SmtpDelivery, decorator: Google::Apis::CloudbuildV1::SmtpDelivery::Representation
-      
-          hash :struct_delivery, as: 'structDelivery'
-        end
-      end
-      
-      class NotifierConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :api_version, as: 'apiVersion'
-          property :kind, as: 'kind'
-          property :metadata, as: 'metadata', class: Google::Apis::CloudbuildV1::NotifierMetadata, decorator: Google::Apis::CloudbuildV1::NotifierMetadata::Representation
-      
-          property :spec, as: 'spec', class: Google::Apis::CloudbuildV1::NotifierSpec, decorator: Google::Apis::CloudbuildV1::NotifierSpec::Representation
-      
-        end
-      end
-      
-      class NotifierMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :name, as: 'name'
-          property :notifier, as: 'notifier'
-        end
-      end
-      
-      class NotifierSecret
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :name, as: 'name'
-          property :value, as: 'value'
-        end
-      end
-      
-      class NotifierSecretRef
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :secret_ref, as: 'secretRef'
-        end
-      end
-      
-      class NotifierSpec
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :notification, as: 'notification', class: Google::Apis::CloudbuildV1::Notification, decorator: Google::Apis::CloudbuildV1::Notification::Representation
-      
-          collection :secrets, as: 'secrets', class: Google::Apis::CloudbuildV1::NotifierSecret, decorator: Google::Apis::CloudbuildV1::NotifierSecret::Representation
-      
         end
       end
       
@@ -1672,19 +1552,6 @@ module Google
         end
       end
       
-      class SmtpDelivery
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :from_address, as: 'fromAddress'
-          property :password, as: 'password', class: Google::Apis::CloudbuildV1::NotifierSecretRef, decorator: Google::Apis::CloudbuildV1::NotifierSecretRef::Representation
-      
-          property :port, as: 'port'
-          collection :recipient_addresses, as: 'recipientAddresses'
-          property :sender_address, as: 'senderAddress'
-          property :server, as: 'server'
-        end
-      end
-      
       class Secret
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1715,14 +1582,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :service, as: 'service'
-        end
-      end
-      
-      class SlackDelivery
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :webhook_uri, as: 'webhookUri', class: Google::Apis::CloudbuildV1::NotifierSecretRef, decorator: Google::Apis::CloudbuildV1::NotifierSecretRef::Representation
-      
         end
       end
       
