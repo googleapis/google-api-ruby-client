@@ -238,6 +238,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiUiv1beta3RevisionRef
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiUiv1beta3RevisionReference
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1426,6 +1432,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiV1beta3EvaluationReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiV1beta3FetchProcessorTypesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1848,6 +1860,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gcs_managed_doc_id, as: 'gcsManagedDocId', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3DocumentIdGcsManagedDocumentId, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3DocumentIdGcsManagedDocumentId::Representation
       
+          property :revision_ref, as: 'revisionRef', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3RevisionRef, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3RevisionRef::Representation
+      
           property :revision_reference, as: 'revisionReference', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3RevisionReference, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3RevisionReference::Representation
       
         end
@@ -2015,6 +2029,15 @@ module Google
       class GoogleCloudDocumentaiUiv1beta3ResyncDatasetResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3RevisionRef
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :latest_processor_version, as: 'latestProcessorVersion'
+          property :revision_case, as: 'revisionCase'
+          property :revision_id, as: 'revisionId'
         end
       end
       
@@ -4156,6 +4179,18 @@ module Google
         end
       end
       
+      class GoogleCloudDocumentaiV1beta3EvaluationReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aggregate_metrics, as: 'aggregateMetrics', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3EvaluationMetrics, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3EvaluationMetrics::Representation
+      
+          property :aggregate_metrics_exact, as: 'aggregateMetricsExact', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3EvaluationMetrics, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3EvaluationMetrics::Representation
+      
+          property :evaluation, as: 'evaluation'
+          property :operation, as: 'operation'
+        end
+      end
+      
       class GoogleCloudDocumentaiV1beta3FetchProcessorTypesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4329,6 +4364,8 @@ module Google
           property :google_managed, as: 'googleManaged'
           property :kms_key_name, as: 'kmsKeyName'
           property :kms_key_version_name, as: 'kmsKeyVersionName'
+          property :latest_evaluation, as: 'latestEvaluation', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3EvaluationReference, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3EvaluationReference::Representation
+      
           property :name, as: 'name'
           property :state, as: 'state'
         end
