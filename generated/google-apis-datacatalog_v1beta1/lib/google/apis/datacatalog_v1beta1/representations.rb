@@ -286,6 +286,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDatacatalogV1beta1TaxonomyService
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDatacatalogV1beta1UsageSignal
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -759,8 +765,18 @@ module Google
           property :display_name, as: 'displayName'
           property :name, as: 'name'
           property :policy_tag_count, as: 'policyTagCount'
+          property :service, as: 'service', class: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1TaxonomyService, decorator: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1TaxonomyService::Representation
+      
           property :taxonomy_timestamps, as: 'taxonomyTimestamps', class: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1SystemTimestamps, decorator: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1SystemTimestamps::Representation
       
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1beta1TaxonomyService
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :identity, as: 'identity'
+          property :name, as: 'name'
         end
       end
       
