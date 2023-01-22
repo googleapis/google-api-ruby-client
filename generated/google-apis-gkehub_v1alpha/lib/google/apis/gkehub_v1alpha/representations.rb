@@ -532,6 +532,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PolicyControllerBundleInstallSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PolicyControllerHubConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -557,6 +563,12 @@ module Google
       end
       
       class PolicyControllerOnClusterState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PolicyControllerPolicyContentSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1586,6 +1598,14 @@ module Google
         end
       end
       
+      class PolicyControllerBundleInstallSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :exempted_namespaces, as: 'exemptedNamespaces'
+          property :management, as: 'management'
+        end
+      end
+      
       class PolicyControllerHubConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1596,6 +1616,8 @@ module Google
           property :monitoring, as: 'monitoring', class: Google::Apis::GkehubV1alpha::PolicyControllerMonitoringConfig, decorator: Google::Apis::GkehubV1alpha::PolicyControllerMonitoringConfig::Representation
       
           property :mutation_enabled, as: 'mutationEnabled'
+          property :policy_content, as: 'policyContent', class: Google::Apis::GkehubV1alpha::PolicyControllerPolicyContentSpec, decorator: Google::Apis::GkehubV1alpha::PolicyControllerPolicyContentSpec::Representation
+      
           property :referential_rules_enabled, as: 'referentialRulesEnabled'
           property :template_library_config, as: 'templateLibraryConfig', class: Google::Apis::GkehubV1alpha::PolicyControllerTemplateLibraryConfig, decorator: Google::Apis::GkehubV1alpha::PolicyControllerTemplateLibraryConfig::Representation
       
@@ -1616,6 +1638,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :component_states, as: 'componentStates', class: Google::Apis::GkehubV1alpha::PolicyControllerOnClusterState, decorator: Google::Apis::GkehubV1alpha::PolicyControllerOnClusterState::Representation
       
+          hash :content_states, as: 'contentStates', class: Google::Apis::GkehubV1alpha::PolicyControllerOnClusterState, decorator: Google::Apis::GkehubV1alpha::PolicyControllerOnClusterState::Representation
+      
           property :state, as: 'state'
         end
       end
@@ -1632,6 +1656,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :details, as: 'details'
           property :state, as: 'state'
+        end
+      end
+      
+      class PolicyControllerPolicyContentSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :bundles, as: 'bundles', class: Google::Apis::GkehubV1alpha::PolicyControllerBundleInstallSpec, decorator: Google::Apis::GkehubV1alpha::PolicyControllerBundleInstallSpec::Representation
+      
         end
       end
       

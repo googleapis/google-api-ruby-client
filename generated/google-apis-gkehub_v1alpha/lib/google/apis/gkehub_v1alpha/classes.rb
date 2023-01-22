@@ -3273,6 +3273,32 @@ module Google
         end
       end
       
+      # BundleInstallSpec is the specification configuration for a single managed
+      # bundle.
+      class PolicyControllerBundleInstallSpec
+        include Google::Apis::Core::Hashable
+      
+        # the set of namespaces to be exempted from the bundle
+        # Corresponds to the JSON property `exemptedNamespaces`
+        # @return [Array<String>]
+        attr_accessor :exempted_namespaces
+      
+        # Management specifies how the bundle will be managed by the controller.
+        # Corresponds to the JSON property `management`
+        # @return [String]
+        attr_accessor :management
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exempted_namespaces = args[:exempted_namespaces] if args.key?(:exempted_namespaces)
+          @management = args[:management] if args.key?(:management)
+        end
+      end
+      
       # Configuration for Policy Controller
       class PolicyControllerHubConfig
         include Google::Apis::Core::Hashable
@@ -3316,6 +3342,12 @@ module Google
         attr_accessor :mutation_enabled
         alias_method :mutation_enabled?, :mutation_enabled
       
+        # PolicyContentSpec defines the user's desired content configuration on the
+        # cluster.
+        # Corresponds to the JSON property `policyContent`
+        # @return [Google::Apis::GkehubV1alpha::PolicyControllerPolicyContentSpec]
+        attr_accessor :policy_content
+      
         # Enables the ability to use Constraint Templates that reference to objects
         # other than the object currently being evaluated.
         # Corresponds to the JSON property `referentialRulesEnabled`
@@ -3340,6 +3372,7 @@ module Google
           @log_denies_enabled = args[:log_denies_enabled] if args.key?(:log_denies_enabled)
           @monitoring = args[:monitoring] if args.key?(:monitoring)
           @mutation_enabled = args[:mutation_enabled] if args.key?(:mutation_enabled)
+          @policy_content = args[:policy_content] if args.key?(:policy_content)
           @referential_rules_enabled = args[:referential_rules_enabled] if args.key?(:referential_rules_enabled)
           @template_library_config = args[:template_library_config] if args.key?(:template_library_config)
         end
@@ -3376,10 +3409,16 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Currently these include (also serving as map keys): 1. "admission" 2. "audit"
-        # 3. "mutation" 4. "constraint template library"
+        # 3. "mutation"
         # Corresponds to the JSON property `componentStates`
         # @return [Hash<String,Google::Apis::GkehubV1alpha::PolicyControllerOnClusterState>]
         attr_accessor :component_states
+      
+        # The state of the template library and any bundles included in the chosen
+        # version of the manifest
+        # Corresponds to the JSON property `contentStates`
+        # @return [Hash<String,Google::Apis::GkehubV1alpha::PolicyControllerOnClusterState>]
+        attr_accessor :content_states
       
         # The overall Policy Controller lifecycle state observed by the Hub Feature
         # controller.
@@ -3394,6 +3433,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @component_states = args[:component_states] if args.key?(:component_states)
+          @content_states = args[:content_states] if args.key?(:content_states)
           @state = args[:state] if args.key?(:state)
         end
       end
@@ -3442,6 +3482,28 @@ module Google
         def update!(**args)
           @details = args[:details] if args.key?(:details)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # PolicyContentSpec defines the user's desired content configuration on the
+      # cluster.
+      class PolicyControllerPolicyContentSpec
+        include Google::Apis::Core::Hashable
+      
+        # map of bundle name to BundleInstallSpec. The bundle name maps to the `
+        # bundleName` key in the `policycontroller.gke.io/constraintData` annotation on
+        # a constraint.
+        # Corresponds to the JSON property `bundles`
+        # @return [Hash<String,Google::Apis::GkehubV1alpha::PolicyControllerBundleInstallSpec>]
+        attr_accessor :bundles
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bundles = args[:bundles] if args.key?(:bundles)
         end
       end
       
