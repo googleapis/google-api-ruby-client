@@ -281,6 +281,10 @@ module Google
         #   policies/`constraint_name`` is also an acceptable name for API requests, but
         #   responses will return the name using the equivalent project number.
         # @param [Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2Policy] google_cloud_orgpolicy_v2_policy_object
+        # @param [String] update_mask
+        #   Field mask used to specify the fields to be overwritten in the policy by the
+        #   set. The fields specified in the update_mask are relative to the policy, not
+        #   the full request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -298,13 +302,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_folder_policy(name, google_cloud_orgpolicy_v2_policy_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_folder_policy(name, google_cloud_orgpolicy_v2_policy_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v2/{+name}', options)
           command.request_representation = Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2Policy::Representation
           command.request_object = google_cloud_orgpolicy_v2_policy_object
           command.response_representation = Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2Policy::Representation
           command.response_class = Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2Policy
           command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -722,6 +727,10 @@ module Google
         #   policies/`constraint_name`` is also an acceptable name for API requests, but
         #   responses will return the name using the equivalent project number.
         # @param [Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2Policy] google_cloud_orgpolicy_v2_policy_object
+        # @param [String] update_mask
+        #   Field mask used to specify the fields to be overwritten in the policy by the
+        #   set. The fields specified in the update_mask are relative to the policy, not
+        #   the full request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -739,13 +748,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_organization_policy(name, google_cloud_orgpolicy_v2_policy_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_organization_policy(name, google_cloud_orgpolicy_v2_policy_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v2/{+name}', options)
           command.request_representation = Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2Policy::Representation
           command.request_object = google_cloud_orgpolicy_v2_policy_object
           command.response_representation = Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2Policy::Representation
           command.response_class = Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2Policy
           command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -982,6 +992,10 @@ module Google
         #   policies/`constraint_name`` is also an acceptable name for API requests, but
         #   responses will return the name using the equivalent project number.
         # @param [Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2Policy] google_cloud_orgpolicy_v2_policy_object
+        # @param [String] update_mask
+        #   Field mask used to specify the fields to be overwritten in the policy by the
+        #   set. The fields specified in the update_mask are relative to the policy, not
+        #   the full request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -999,13 +1013,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_policy(name, google_cloud_orgpolicy_v2_policy_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_project_policy(name, google_cloud_orgpolicy_v2_policy_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v2/{+name}', options)
           command.request_representation = Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2Policy::Representation
           command.request_object = google_cloud_orgpolicy_v2_policy_object
           command.response_representation = Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2Policy::Representation
           command.response_class = Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2Policy
           command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

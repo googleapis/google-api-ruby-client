@@ -189,6 +189,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :alternate, as: 'alternate', class: Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2AlternatePolicySpec, decorator: Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2AlternatePolicySpec::Representation
       
+          property :dry_run_spec, as: 'dryRunSpec', class: Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2PolicySpec, decorator: Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2PolicySpec::Representation
+      
           property :name, as: 'name'
           property :spec, as: 'spec', class: Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2PolicySpec, decorator: Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2PolicySpec::Representation
       
