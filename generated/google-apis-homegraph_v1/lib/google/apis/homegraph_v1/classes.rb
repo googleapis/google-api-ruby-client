@@ -66,7 +66,7 @@ module Google
         end
       end
       
-      # Third-party device definition. Next ID = 14
+      # Third-party device definition.
       class Device
         include Google::Apis::Core::Hashable
       
