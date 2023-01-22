@@ -71,7 +71,7 @@ module Google
       
         # Required. Input only. The resource name of the account which will be the
         # primary owner of the account being created. It should be of the form `accounts/
-        # `account_id`/`.
+        # `account_id``.
         # Corresponds to the JSON property `primaryOwner`
         # @return [String]
         attr_accessor :primary_owner
