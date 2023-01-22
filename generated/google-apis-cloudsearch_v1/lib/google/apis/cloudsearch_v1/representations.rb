@@ -88,18 +88,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AppsDynamiteSharedAction
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteSharedActionActionParameter
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class AppsDynamiteSharedActivityFeedAnnotationData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -172,24 +160,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AppsDynamiteSharedBorderStyle
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteSharedButton
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteSharedButtonList
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class AppsDynamiteSharedCalendarEventAnnotationData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -226,31 +196,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AppsDynamiteSharedCard
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteSharedCardCardAction
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteSharedCardCardHeader
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class AppsDynamiteSharedCardClickSuggestion
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteSharedCardSection
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -298,24 +244,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AppsDynamiteSharedColumns
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteSharedColumnsColumn
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteSharedColumnsColumnWidgets
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class AppsDynamiteSharedContentReportType
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -328,31 +256,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AppsDynamiteSharedDateTimePicker
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteSharedDecoratedText
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteSharedDecoratedTextSwitchControl
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class AppsDynamiteSharedDimension
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteSharedDivider
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -382,18 +286,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AppsDynamiteSharedGrid
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteSharedGridGridItem
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class AppsDynamiteSharedGroupDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -401,30 +293,6 @@ module Google
       end
       
       class AppsDynamiteSharedGroupVisibility
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteSharedIcon
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteSharedImage
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteSharedImageComponent
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteSharedImageCropStyle
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -455,36 +323,6 @@ module Google
       end
       
       class AppsDynamiteSharedMessageIntegrationPayload
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteSharedOnClick
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteSharedOpenLink
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteSharedOpenLinkAppUri
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteSharedOpenLinkAppUriIntent
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteSharedOpenLinkAppUriIntentExtraData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -544,31 +382,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AppsDynamiteSharedSelectionInput
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteSharedSelectionInputSelectionItem
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class AppsDynamiteSharedSpaceInfo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteSharedSuggestions
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteSharedSuggestionsSuggestionItem
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -622,18 +436,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AppsDynamiteSharedTextInput
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteSharedTextParagraph
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class AppsDynamiteSharedUserBlockRelationship
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -646,7 +448,205 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AppsDynamiteSharedWidget
+      class AppsDynamiteStorageAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppsDynamiteStorageActionActionParameter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppsDynamiteStorageBorderStyle
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppsDynamiteStorageButton
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppsDynamiteStorageButtonList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppsDynamiteStorageCard
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppsDynamiteStorageCardCardAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppsDynamiteStorageCardCardHeader
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppsDynamiteStorageCardSection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppsDynamiteStorageColumns
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppsDynamiteStorageColumnsColumn
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppsDynamiteStorageColumnsColumnWidgets
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppsDynamiteStorageDateTimePicker
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppsDynamiteStorageDecoratedText
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppsDynamiteStorageDecoratedTextSwitchControl
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppsDynamiteStorageDivider
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppsDynamiteStorageGrid
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppsDynamiteStorageGridGridItem
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppsDynamiteStorageIcon
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppsDynamiteStorageImage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppsDynamiteStorageImageComponent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppsDynamiteStorageImageCropStyle
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppsDynamiteStorageOnClick
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppsDynamiteStorageOpenLink
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppsDynamiteStorageOpenLinkAppUri
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppsDynamiteStorageOpenLinkAppUriIntent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppsDynamiteStorageOpenLinkAppUriIntentExtraData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppsDynamiteStorageSelectionInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppsDynamiteStorageSelectionInputSelectionItem
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppsDynamiteStorageSuggestions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppsDynamiteStorageSuggestionsSuggestionItem
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppsDynamiteStorageTextInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppsDynamiteStorageTextParagraph
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppsDynamiteStorageWidget
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3623,25 +3623,6 @@ module Google
         end
       end
       
-      class AppsDynamiteSharedAction
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :function, as: 'function'
-          property :interaction, as: 'interaction'
-          property :load_indicator, as: 'loadIndicator'
-          collection :parameters, as: 'parameters', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedActionActionParameter, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedActionActionParameter::Representation
-      
-        end
-      end
-      
-      class AppsDynamiteSharedActionActionParameter
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :key, as: 'key'
-          property :value, as: 'value'
-        end
-      end
-      
       class AppsDynamiteSharedActivityFeedAnnotationData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3758,6 +3739,7 @@ module Google
       
           property :group_id, as: 'groupId', class: Google::Apis::CloudsearchV1::GroupId, decorator: Google::Apis::CloudsearchV1::GroupId::Representation
       
+          property :is_client_side_transcoded_video, as: 'isClientSideTranscodedVideo'
           property :original_dimension, as: 'originalDimension', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedDimension, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedDimension::Representation
       
           property :quote_reply_message_id, as: 'quoteReplyMessageId', class: Google::Apis::CloudsearchV1::MessageId, decorator: Google::Apis::CloudsearchV1::MessageId::Representation
@@ -3768,39 +3750,6 @@ module Google
           property :video_id, as: 'videoId'
           property :video_thumbnail_blob_id, as: 'videoThumbnailBlobId'
           property :virus_scan_result, as: 'virusScanResult'
-        end
-      end
-      
-      class AppsDynamiteSharedBorderStyle
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :corner_radius, as: 'cornerRadius'
-          property :stroke_color, as: 'strokeColor', class: Google::Apis::CloudsearchV1::Color, decorator: Google::Apis::CloudsearchV1::Color::Representation
-      
-          property :type, as: 'type'
-        end
-      end
-      
-      class AppsDynamiteSharedButton
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :alt_text, as: 'altText'
-          property :color, as: 'color', class: Google::Apis::CloudsearchV1::Color, decorator: Google::Apis::CloudsearchV1::Color::Representation
-      
-          property :disabled, as: 'disabled'
-          property :icon, as: 'icon', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedIcon, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedIcon::Representation
-      
-          property :on_click, as: 'onClick', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedOnClick, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedOnClick::Representation
-      
-          property :text, as: 'text'
-        end
-      end
-      
-      class AppsDynamiteSharedButtonList
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :buttons, as: 'buttons', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedButton, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedButton::Representation
-      
         end
       end
       
@@ -3859,55 +3808,11 @@ module Google
         end
       end
       
-      class AppsDynamiteSharedCard
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :card_actions, as: 'cardActions', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedCardCardAction, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedCardCardAction::Representation
-      
-          property :header, as: 'header', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedCardCardHeader, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedCardCardHeader::Representation
-      
-          property :name, as: 'name'
-          collection :sections, as: 'sections', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedCardSection, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedCardSection::Representation
-      
-        end
-      end
-      
-      class AppsDynamiteSharedCardCardAction
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :action_label, as: 'actionLabel'
-          property :on_click, as: 'onClick', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedOnClick, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedOnClick::Representation
-      
-        end
-      end
-      
-      class AppsDynamiteSharedCardCardHeader
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :image_alt_text, as: 'imageAltText'
-          property :image_type, as: 'imageType'
-          property :image_url, as: 'imageUrl'
-          property :subtitle, as: 'subtitle'
-          property :title, as: 'title'
-        end
-      end
-      
       class AppsDynamiteSharedCardClickSuggestion
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :action_id, as: 'actionId'
           property :suggestion_message_id, as: 'suggestionMessageId', class: Google::Apis::CloudsearchV1::MessageId, decorator: Google::Apis::CloudsearchV1::MessageId::Representation
-      
-        end
-      end
-      
-      class AppsDynamiteSharedCardSection
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :collapsible, as: 'collapsible'
-          property :header, as: 'header'
-          property :uncollapsible_widgets_count, as: 'uncollapsibleWidgetsCount'
-          collection :widgets, as: 'widgets', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedWidget, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedWidget::Representation
       
         end
       end
@@ -3975,46 +3880,6 @@ module Google
         end
       end
       
-      class AppsDynamiteSharedColumns
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :column_items, as: 'columnItems', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedColumnsColumn, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedColumnsColumn::Representation
-      
-          property :wrap_style, as: 'wrapStyle'
-        end
-      end
-      
-      class AppsDynamiteSharedColumnsColumn
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :horizontal_alignment, as: 'horizontalAlignment'
-          property :horizontal_size_style, as: 'horizontalSizeStyle'
-          property :vertical_alignment, as: 'verticalAlignment'
-          collection :widgets, as: 'widgets', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedColumnsColumnWidgets, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedColumnsColumnWidgets::Representation
-      
-        end
-      end
-      
-      class AppsDynamiteSharedColumnsColumnWidgets
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :button_list, as: 'buttonList', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedButtonList, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedButtonList::Representation
-      
-          property :date_time_picker, as: 'dateTimePicker', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedDateTimePicker, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedDateTimePicker::Representation
-      
-          property :decorated_text, as: 'decoratedText', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedDecoratedText, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedDecoratedText::Representation
-      
-          property :image, as: 'image', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedImage, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedImage::Representation
-      
-          property :selection_input, as: 'selectionInput', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedSelectionInput, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedSelectionInput::Representation
-      
-          property :text_input, as: 'textInput', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedTextInput, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedTextInput::Representation
-      
-          property :text_paragraph, as: 'textParagraph', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedTextParagraph, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedTextParagraph::Representation
-      
-        end
-      end
-      
       class AppsDynamiteSharedContentReportType
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4042,64 +3907,11 @@ module Google
         end
       end
       
-      class AppsDynamiteSharedDateTimePicker
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :label, as: 'label'
-          property :name, as: 'name'
-          property :on_change_action, as: 'onChangeAction', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedAction, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedAction::Representation
-      
-          property :timezone_offset_date, as: 'timezoneOffsetDate'
-          property :type, as: 'type'
-          property :value_ms_epoch, :numeric_string => true, as: 'valueMsEpoch'
-        end
-      end
-      
-      class AppsDynamiteSharedDecoratedText
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :bottom_label, as: 'bottomLabel'
-          property :button, as: 'button', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedButton, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedButton::Representation
-      
-          property :end_icon, as: 'endIcon', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedIcon, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedIcon::Representation
-      
-          property :icon, as: 'icon', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedIcon, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedIcon::Representation
-      
-          property :on_click, as: 'onClick', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedOnClick, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedOnClick::Representation
-      
-          property :start_icon, as: 'startIcon', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedIcon, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedIcon::Representation
-      
-          property :switch_control, as: 'switchControl', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedDecoratedTextSwitchControl, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedDecoratedTextSwitchControl::Representation
-      
-          property :text, as: 'text'
-          property :top_label, as: 'topLabel'
-          property :wrap_text, as: 'wrapText'
-        end
-      end
-      
-      class AppsDynamiteSharedDecoratedTextSwitchControl
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :control_type, as: 'controlType'
-          property :name, as: 'name'
-          property :on_change_action, as: 'onChangeAction', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedAction, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedAction::Representation
-      
-          property :selected, as: 'selected'
-          property :value, as: 'value'
-        end
-      end
-      
       class AppsDynamiteSharedDimension
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :height, as: 'height'
           property :width, as: 'width'
-        end
-      end
-      
-      class AppsDynamiteSharedDivider
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -4141,33 +3953,6 @@ module Google
         end
       end
       
-      class AppsDynamiteSharedGrid
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :border_style, as: 'borderStyle', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedBorderStyle, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedBorderStyle::Representation
-      
-          property :column_count, as: 'columnCount'
-          collection :items, as: 'items', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedGridGridItem, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedGridGridItem::Representation
-      
-          property :on_click, as: 'onClick', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedOnClick, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedOnClick::Representation
-      
-          property :title, as: 'title'
-        end
-      end
-      
-      class AppsDynamiteSharedGridGridItem
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :id, as: 'id'
-          property :image, as: 'image', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedImageComponent, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedImageComponent::Representation
-      
-          property :layout, as: 'layout'
-          property :subtitle, as: 'subtitle'
-          property :text_alignment, as: 'textAlignment'
-          property :title, as: 'title'
-        end
-      end
-      
       class AppsDynamiteSharedGroupDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4180,46 +3965,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :state, as: 'state'
-        end
-      end
-      
-      class AppsDynamiteSharedIcon
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :alt_text, as: 'altText'
-          property :icon_url, as: 'iconUrl'
-          property :image_type, as: 'imageType'
-          property :known_icon, as: 'knownIcon'
-        end
-      end
-      
-      class AppsDynamiteSharedImage
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :alt_text, as: 'altText'
-          property :image_url, as: 'imageUrl'
-          property :on_click, as: 'onClick', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedOnClick, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedOnClick::Representation
-      
-        end
-      end
-      
-      class AppsDynamiteSharedImageComponent
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :alt_text, as: 'altText'
-          property :border_style, as: 'borderStyle', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedBorderStyle, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedBorderStyle::Representation
-      
-          property :crop_style, as: 'cropStyle', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedImageCropStyle, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedImageCropStyle::Representation
-      
-          property :image_uri, as: 'imageUri'
-        end
-      end
-      
-      class AppsDynamiteSharedImageCropStyle
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :aspect_ratio, as: 'aspectRatio'
-          property :type, as: 'type'
         end
       end
       
@@ -4268,58 +4013,6 @@ module Google
           property :tasks_message_integration_payload, as: 'tasksMessageIntegrationPayload', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedTasksMessageIntegrationPayload, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedTasksMessageIntegrationPayload::Representation
       
           property :type, as: 'type'
-        end
-      end
-      
-      class AppsDynamiteSharedOnClick
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :action, as: 'action', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedAction, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedAction::Representation
-      
-          property :host_app_action, as: 'hostAppAction', class: Google::Apis::CloudsearchV1::HostAppActionMarkup, decorator: Google::Apis::CloudsearchV1::HostAppActionMarkup::Representation
-      
-          property :open_dynamic_link_action, as: 'openDynamicLinkAction', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedAction, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedAction::Representation
-      
-          property :open_link, as: 'openLink', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedOpenLink, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedOpenLink::Representation
-      
-        end
-      end
-      
-      class AppsDynamiteSharedOpenLink
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :app_uri, as: 'appUri', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedOpenLinkAppUri, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedOpenLinkAppUri::Representation
-      
-          property :on_close, as: 'onClose'
-          property :open_as, as: 'openAs'
-          property :url, as: 'url'
-        end
-      end
-      
-      class AppsDynamiteSharedOpenLinkAppUri
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :android_intent, as: 'androidIntent', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedOpenLinkAppUriIntent, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedOpenLinkAppUriIntent::Representation
-      
-          property :companion_uri, as: 'companionUri'
-          property :ios_uri, as: 'iosUri'
-        end
-      end
-      
-      class AppsDynamiteSharedOpenLinkAppUriIntent
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :extra_data, as: 'extraData', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedOpenLinkAppUriIntentExtraData, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedOpenLinkAppUriIntentExtraData::Representation
-      
-          property :intent_action, as: 'intentAction'
-        end
-      end
-      
-      class AppsDynamiteSharedOpenLinkAppUriIntentExtraData
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :key, as: 'key'
-          property :value, as: 'value'
         end
       end
       
@@ -4401,28 +4094,6 @@ module Google
         end
       end
       
-      class AppsDynamiteSharedSelectionInput
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :items, as: 'items', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedSelectionInputSelectionItem, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedSelectionInputSelectionItem::Representation
-      
-          property :label, as: 'label'
-          property :name, as: 'name'
-          property :on_change_action, as: 'onChangeAction', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedAction, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedAction::Representation
-      
-          property :type, as: 'type'
-        end
-      end
-      
-      class AppsDynamiteSharedSelectionInputSelectionItem
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :selected, as: 'selected'
-          property :text, as: 'text'
-          property :value, as: 'value'
-        end
-      end
-      
       class AppsDynamiteSharedSpaceInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4437,21 +4108,6 @@ module Google
           property :name, as: 'name'
           property :num_members, as: 'numMembers'
           property :user_membership_state, as: 'userMembershipState'
-        end
-      end
-      
-      class AppsDynamiteSharedSuggestions
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :items, as: 'items', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedSuggestionsSuggestionItem, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedSuggestionsSuggestionItem::Representation
-      
-        end
-      end
-      
-      class AppsDynamiteSharedSuggestionsSuggestionItem
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :text, as: 'text'
         end
       end
       
@@ -4527,30 +4183,6 @@ module Google
         end
       end
       
-      class AppsDynamiteSharedTextInput
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :auto_complete_action, as: 'autoCompleteAction', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedAction, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedAction::Representation
-      
-          property :hint_text, as: 'hintText'
-          property :initial_suggestions, as: 'initialSuggestions', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedSuggestions, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedSuggestions::Representation
-      
-          property :label, as: 'label'
-          property :name, as: 'name'
-          property :on_change_action, as: 'onChangeAction', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedAction, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedAction::Representation
-      
-          property :type, as: 'type'
-          property :value, as: 'value'
-        end
-      end
-      
-      class AppsDynamiteSharedTextParagraph
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :text, as: 'text'
-        end
-      end
-      
       class AppsDynamiteSharedUserBlockRelationship
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4567,29 +4199,398 @@ module Google
         end
       end
       
-      class AppsDynamiteSharedWidget
+      class AppsDynamiteStorageAction
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :button_list, as: 'buttonList', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedButtonList, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedButtonList::Representation
+          property :function, as: 'function'
+          property :interaction, as: 'interaction'
+          property :load_indicator, as: 'loadIndicator'
+          collection :parameters, as: 'parameters', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageActionActionParameter, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageActionActionParameter::Representation
       
-          property :columns, as: 'columns', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedColumns, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedColumns::Representation
+        end
+      end
       
-          property :date_time_picker, as: 'dateTimePicker', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedDateTimePicker, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedDateTimePicker::Representation
+      class AppsDynamiteStorageActionActionParameter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :value, as: 'value'
+        end
+      end
       
-          property :decorated_text, as: 'decoratedText', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedDecoratedText, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedDecoratedText::Representation
+      class AppsDynamiteStorageBorderStyle
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :corner_radius, as: 'cornerRadius'
+          property :stroke_color, as: 'strokeColor', class: Google::Apis::CloudsearchV1::Color, decorator: Google::Apis::CloudsearchV1::Color::Representation
       
-          property :divider, as: 'divider', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedDivider, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedDivider::Representation
+          property :type, as: 'type'
+        end
+      end
       
-          property :grid, as: 'grid', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedGrid, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedGrid::Representation
+      class AppsDynamiteStorageButton
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alt_text, as: 'altText'
+          property :color, as: 'color', class: Google::Apis::CloudsearchV1::Color, decorator: Google::Apis::CloudsearchV1::Color::Representation
+      
+          property :disabled, as: 'disabled'
+          property :icon, as: 'icon', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageIcon, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageIcon::Representation
+      
+          property :on_click, as: 'onClick', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageOnClick, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageOnClick::Representation
+      
+          property :text, as: 'text'
+        end
+      end
+      
+      class AppsDynamiteStorageButtonList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :buttons, as: 'buttons', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageButton, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageButton::Representation
+      
+        end
+      end
+      
+      class AppsDynamiteStorageCard
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :card_actions, as: 'cardActions', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageCardCardAction, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageCardCardAction::Representation
+      
+          property :header, as: 'header', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageCardCardHeader, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageCardCardHeader::Representation
+      
+          property :name, as: 'name'
+          collection :sections, as: 'sections', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageCardSection, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageCardSection::Representation
+      
+        end
+      end
+      
+      class AppsDynamiteStorageCardCardAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action_label, as: 'actionLabel'
+          property :on_click, as: 'onClick', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageOnClick, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageOnClick::Representation
+      
+        end
+      end
+      
+      class AppsDynamiteStorageCardCardHeader
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :image_alt_text, as: 'imageAltText'
+          property :image_type, as: 'imageType'
+          property :image_url, as: 'imageUrl'
+          property :subtitle, as: 'subtitle'
+          property :title, as: 'title'
+        end
+      end
+      
+      class AppsDynamiteStorageCardSection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :collapsible, as: 'collapsible'
+          property :header, as: 'header'
+          property :uncollapsible_widgets_count, as: 'uncollapsibleWidgetsCount'
+          collection :widgets, as: 'widgets', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageWidget, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageWidget::Representation
+      
+        end
+      end
+      
+      class AppsDynamiteStorageColumns
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :column_items, as: 'columnItems', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageColumnsColumn, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageColumnsColumn::Representation
+      
+          property :wrap_style, as: 'wrapStyle'
+        end
+      end
+      
+      class AppsDynamiteStorageColumnsColumn
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :horizontal_alignment, as: 'horizontalAlignment'
+          property :horizontal_size_style, as: 'horizontalSizeStyle'
+          property :vertical_alignment, as: 'verticalAlignment'
+          collection :widgets, as: 'widgets', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageColumnsColumnWidgets, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageColumnsColumnWidgets::Representation
+      
+        end
+      end
+      
+      class AppsDynamiteStorageColumnsColumnWidgets
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :button_list, as: 'buttonList', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageButtonList, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageButtonList::Representation
+      
+          property :date_time_picker, as: 'dateTimePicker', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageDateTimePicker, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageDateTimePicker::Representation
+      
+          property :decorated_text, as: 'decoratedText', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageDecoratedText, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageDecoratedText::Representation
+      
+          property :image, as: 'image', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageImage, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageImage::Representation
+      
+          property :selection_input, as: 'selectionInput', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageSelectionInput, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageSelectionInput::Representation
+      
+          property :text_input, as: 'textInput', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageTextInput, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageTextInput::Representation
+      
+          property :text_paragraph, as: 'textParagraph', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageTextParagraph, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageTextParagraph::Representation
+      
+        end
+      end
+      
+      class AppsDynamiteStorageDateTimePicker
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :label, as: 'label'
+          property :name, as: 'name'
+          property :on_change_action, as: 'onChangeAction', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageAction, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageAction::Representation
+      
+          property :timezone_offset_date, as: 'timezoneOffsetDate'
+          property :type, as: 'type'
+          property :value_ms_epoch, :numeric_string => true, as: 'valueMsEpoch'
+        end
+      end
+      
+      class AppsDynamiteStorageDecoratedText
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bottom_label, as: 'bottomLabel'
+          property :button, as: 'button', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageButton, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageButton::Representation
+      
+          property :end_icon, as: 'endIcon', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageIcon, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageIcon::Representation
+      
+          property :icon, as: 'icon', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageIcon, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageIcon::Representation
+      
+          property :on_click, as: 'onClick', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageOnClick, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageOnClick::Representation
+      
+          property :start_icon, as: 'startIcon', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageIcon, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageIcon::Representation
+      
+          property :switch_control, as: 'switchControl', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageDecoratedTextSwitchControl, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageDecoratedTextSwitchControl::Representation
+      
+          property :text, as: 'text'
+          property :top_label, as: 'topLabel'
+          property :wrap_text, as: 'wrapText'
+        end
+      end
+      
+      class AppsDynamiteStorageDecoratedTextSwitchControl
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :control_type, as: 'controlType'
+          property :name, as: 'name'
+          property :on_change_action, as: 'onChangeAction', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageAction, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageAction::Representation
+      
+          property :selected, as: 'selected'
+          property :value, as: 'value'
+        end
+      end
+      
+      class AppsDynamiteStorageDivider
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class AppsDynamiteStorageGrid
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :border_style, as: 'borderStyle', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageBorderStyle, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageBorderStyle::Representation
+      
+          property :column_count, as: 'columnCount'
+          collection :items, as: 'items', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageGridGridItem, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageGridGridItem::Representation
+      
+          property :on_click, as: 'onClick', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageOnClick, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageOnClick::Representation
+      
+          property :title, as: 'title'
+        end
+      end
+      
+      class AppsDynamiteStorageGridGridItem
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :image, as: 'image', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageImageComponent, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageImageComponent::Representation
+      
+          property :layout, as: 'layout'
+          property :subtitle, as: 'subtitle'
+          property :text_alignment, as: 'textAlignment'
+          property :title, as: 'title'
+        end
+      end
+      
+      class AppsDynamiteStorageIcon
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alt_text, as: 'altText'
+          property :icon_url, as: 'iconUrl'
+          property :image_type, as: 'imageType'
+          property :known_icon, as: 'knownIcon'
+        end
+      end
+      
+      class AppsDynamiteStorageImage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alt_text, as: 'altText'
+          property :image_url, as: 'imageUrl'
+          property :on_click, as: 'onClick', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageOnClick, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageOnClick::Representation
+      
+        end
+      end
+      
+      class AppsDynamiteStorageImageComponent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alt_text, as: 'altText'
+          property :border_style, as: 'borderStyle', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageBorderStyle, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageBorderStyle::Representation
+      
+          property :crop_style, as: 'cropStyle', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageImageCropStyle, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageImageCropStyle::Representation
+      
+          property :image_uri, as: 'imageUri'
+        end
+      end
+      
+      class AppsDynamiteStorageImageCropStyle
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aspect_ratio, as: 'aspectRatio'
+          property :type, as: 'type'
+        end
+      end
+      
+      class AppsDynamiteStorageOnClick
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageAction, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageAction::Representation
+      
+          property :host_app_action, as: 'hostAppAction', class: Google::Apis::CloudsearchV1::HostAppActionMarkup, decorator: Google::Apis::CloudsearchV1::HostAppActionMarkup::Representation
+      
+          property :open_dynamic_link_action, as: 'openDynamicLinkAction', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageAction, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageAction::Representation
+      
+          property :open_link, as: 'openLink', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageOpenLink, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageOpenLink::Representation
+      
+        end
+      end
+      
+      class AppsDynamiteStorageOpenLink
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_uri, as: 'appUri', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageOpenLinkAppUri, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageOpenLinkAppUri::Representation
+      
+          property :on_close, as: 'onClose'
+          property :open_as, as: 'openAs'
+          property :url, as: 'url'
+        end
+      end
+      
+      class AppsDynamiteStorageOpenLinkAppUri
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :android_intent, as: 'androidIntent', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageOpenLinkAppUriIntent, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageOpenLinkAppUriIntent::Representation
+      
+          property :companion_uri, as: 'companionUri'
+          property :ios_uri, as: 'iosUri'
+        end
+      end
+      
+      class AppsDynamiteStorageOpenLinkAppUriIntent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :extra_data, as: 'extraData', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageOpenLinkAppUriIntentExtraData, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageOpenLinkAppUriIntentExtraData::Representation
+      
+          property :intent_action, as: 'intentAction'
+        end
+      end
+      
+      class AppsDynamiteStorageOpenLinkAppUriIntentExtraData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :value, as: 'value'
+        end
+      end
+      
+      class AppsDynamiteStorageSelectionInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageSelectionInputSelectionItem, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageSelectionInputSelectionItem::Representation
+      
+          property :label, as: 'label'
+          property :name, as: 'name'
+          property :on_change_action, as: 'onChangeAction', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageAction, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageAction::Representation
+      
+          property :type, as: 'type'
+        end
+      end
+      
+      class AppsDynamiteStorageSelectionInputSelectionItem
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :selected, as: 'selected'
+          property :text, as: 'text'
+          property :value, as: 'value'
+        end
+      end
+      
+      class AppsDynamiteStorageSuggestions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageSuggestionsSuggestionItem, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageSuggestionsSuggestionItem::Representation
+      
+        end
+      end
+      
+      class AppsDynamiteStorageSuggestionsSuggestionItem
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :text, as: 'text'
+        end
+      end
+      
+      class AppsDynamiteStorageTextInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_complete_action, as: 'autoCompleteAction', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageAction, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageAction::Representation
+      
+          property :hint_text, as: 'hintText'
+          property :initial_suggestions, as: 'initialSuggestions', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageSuggestions, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageSuggestions::Representation
+      
+          property :label, as: 'label'
+          property :name, as: 'name'
+          property :on_change_action, as: 'onChangeAction', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageAction, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageAction::Representation
+      
+          property :type, as: 'type'
+          property :value, as: 'value'
+        end
+      end
+      
+      class AppsDynamiteStorageTextParagraph
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :text, as: 'text'
+        end
+      end
+      
+      class AppsDynamiteStorageWidget
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :button_list, as: 'buttonList', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageButtonList, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageButtonList::Representation
+      
+          property :columns, as: 'columns', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageColumns, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageColumns::Representation
+      
+          property :date_time_picker, as: 'dateTimePicker', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageDateTimePicker, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageDateTimePicker::Representation
+      
+          property :decorated_text, as: 'decoratedText', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageDecoratedText, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageDecoratedText::Representation
+      
+          property :divider, as: 'divider', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageDivider, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageDivider::Representation
+      
+          property :grid, as: 'grid', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageGrid, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageGrid::Representation
       
           property :horizontal_alignment, as: 'horizontalAlignment'
-          property :image, as: 'image', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedImage, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedImage::Representation
+          property :image, as: 'image', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageImage, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageImage::Representation
       
-          property :selection_input, as: 'selectionInput', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedSelectionInput, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedSelectionInput::Representation
+          property :selection_input, as: 'selectionInput', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageSelectionInput, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageSelectionInput::Representation
       
-          property :text_input, as: 'textInput', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedTextInput, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedTextInput::Representation
+          property :text_input, as: 'textInput', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageTextInput, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageTextInput::Representation
       
-          property :text_paragraph, as: 'textParagraph', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedTextParagraph, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedTextParagraph::Representation
+          property :text_paragraph, as: 'textParagraph', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageTextParagraph, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageTextParagraph::Representation
       
         end
       end
@@ -4741,7 +4742,7 @@ module Google
           property :app_id, as: 'appId', class: Google::Apis::CloudsearchV1::UserId, decorator: Google::Apis::CloudsearchV1::UserId::Representation
       
           property :attachment_id, as: 'attachmentId'
-          property :card_add_on_data, as: 'cardAddOnData', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedCard, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedCard::Representation
+          property :card_add_on_data, as: 'cardAddOnData', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageCard, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageCard::Representation
       
           property :deprecated_add_on_data, as: 'deprecatedAddOnData', class: Google::Apis::CloudsearchV1::ContextualAddOnMarkup, decorator: Google::Apis::CloudsearchV1::ContextualAddOnMarkup::Representation
       
@@ -4959,6 +4960,7 @@ module Google
       
           collection :attached_documents, as: 'attachedDocuments', class: Google::Apis::CloudsearchV1::DocumentInfo, decorator: Google::Apis::CloudsearchV1::DocumentInfo::Representation
       
+          collection :available_access_types, as: 'availableAccessTypes'
           collection :available_reactions, as: 'availableReactions', class: Google::Apis::CloudsearchV1::ReactionInfo, decorator: Google::Apis::CloudsearchV1::ReactionInfo::Representation
       
           property :broadcast_session_info, as: 'broadcastSessionInfo', class: Google::Apis::CloudsearchV1::BroadcastSessionInfo, decorator: Google::Apis::CloudsearchV1::BroadcastSessionInfo::Representation
@@ -5701,7 +5703,9 @@ module Google
           property :freshness_score, as: 'freshnessScore'
           property :joined_space_affinity_score, as: 'joinedSpaceAffinityScore'
           property :message_age_in_days, as: 'messageAgeInDays'
+          property :message_sender_affinity_score, as: 'messageSenderAffinityScore'
           property :topicality_score, as: 'topicalityScore'
+          property :unjoined_space_affinity_score, as: 'unjoinedSpaceAffinityScore'
         end
       end
       
