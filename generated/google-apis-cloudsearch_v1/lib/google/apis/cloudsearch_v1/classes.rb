@@ -541,73 +541,6 @@ module Google
         end
       end
       
-      # An action that describes the behavior when the form is submitted. For example,
-      # an Apps Script can be invoked to handle the form.
-      class AppsDynamiteSharedAction
-        include Google::Apis::Core::Hashable
-      
-        # Apps Script function to invoke when the containing element is clicked/
-        # activated.
-        # Corresponds to the JSON property `function`
-        # @return [String]
-        attr_accessor :function
-      
-        # 
-        # Corresponds to the JSON property `interaction`
-        # @return [String]
-        attr_accessor :interaction
-      
-        # 
-        # Corresponds to the JSON property `loadIndicator`
-        # @return [String]
-        attr_accessor :load_indicator
-      
-        # List of action parameters.
-        # Corresponds to the JSON property `parameters`
-        # @return [Array<Google::Apis::CloudsearchV1::AppsDynamiteSharedActionActionParameter>]
-        attr_accessor :parameters
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @function = args[:function] if args.key?(:function)
-          @interaction = args[:interaction] if args.key?(:interaction)
-          @load_indicator = args[:load_indicator] if args.key?(:load_indicator)
-          @parameters = args[:parameters] if args.key?(:parameters)
-        end
-      end
-      
-      # List of string parameters to supply when the action method is invoked. For
-      # example, consider three snooze buttons: snooze now, snooze 1 day, snooze next
-      # week. You might use action method = snooze(), passing the snooze type and
-      # snooze time in the list of string parameters.
-      class AppsDynamiteSharedActionActionParameter
-        include Google::Apis::Core::Hashable
-      
-        # The name of the parameter for the action script.
-        # Corresponds to the JSON property `key`
-        # @return [String]
-        attr_accessor :key
-      
-        # The value of the parameter.
-        # Corresponds to the JSON property `value`
-        # @return [String]
-        attr_accessor :value
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @key = args[:key] if args.key?(:key)
-          @value = args[:value] if args.key?(:value)
-        end
-      end
-      
       # Next Id: 7
       class AppsDynamiteSharedActivityFeedAnnotationData
         include Google::Apis::Core::Hashable
@@ -956,6 +889,13 @@ module Google
         # @return [Google::Apis::CloudsearchV1::GroupId]
         attr_accessor :group_id
       
+        # If the uploaded file is a video that has been transcoded on the client side
+        # Next tag: 18
+        # Corresponds to the JSON property `isClientSideTranscodedVideo`
+        # @return [Boolean]
+        attr_accessor :is_client_side_transcoded_video
+        alias_method :is_client_side_transcoded_video?, :is_client_side_transcoded_video
+      
         # Dimension for the uploaded attachments.
         # Corresponds to the JSON property `originalDimension`
         # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedDimension]
@@ -1011,6 +951,7 @@ module Google
           @dlp_scan_outcome = args[:dlp_scan_outcome] if args.key?(:dlp_scan_outcome)
           @dlp_scan_summary = args[:dlp_scan_summary] if args.key?(:dlp_scan_summary)
           @group_id = args[:group_id] if args.key?(:group_id)
+          @is_client_side_transcoded_video = args[:is_client_side_transcoded_video] if args.key?(:is_client_side_transcoded_video)
           @original_dimension = args[:original_dimension] if args.key?(:original_dimension)
           @quote_reply_message_id = args[:quote_reply_message_id] if args.key?(:quote_reply_message_id)
           @sha256 = args[:sha256] if args.key?(:sha256)
@@ -1019,196 +960,6 @@ module Google
           @video_id = args[:video_id] if args.key?(:video_id)
           @video_thumbnail_blob_id = args[:video_thumbnail_blob_id] if args.key?(:video_thumbnail_blob_id)
           @virus_scan_result = args[:virus_scan_result] if args.key?(:virus_scan_result)
-        end
-      end
-      
-      # Represents the complete border style applied to widgets.
-      class AppsDynamiteSharedBorderStyle
-        include Google::Apis::Core::Hashable
-      
-        # The corner radius for the border.
-        # Corresponds to the JSON property `cornerRadius`
-        # @return [Fixnum]
-        attr_accessor :corner_radius
-      
-        # Represents a color in the RGBA color space. This representation is designed
-        # for simplicity of conversion to/from color representations in various
-        # languages over compactness. For example, the fields of this representation can
-        # be trivially provided to the constructor of `java.awt.Color` in Java; it can
-        # also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha`
-        # method in iOS; and, with just a little work, it can be easily formatted into a
-        # CSS `rgba()` string in JavaScript. This reference page doesn't carry
-        # information about the absolute color space that should be used to interpret
-        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
-        # applications should assume the sRGB color space. When color equality needs to
-        # be decided, implementations, unless documented otherwise, treat two colors as
-        # equal if all their red, green, blue, and alpha values each differ by at most
-        # 1e-5. Example (Java): import com.google.type.Color; // ... public static java.
-        # awt.Color fromProto(Color protocolor) ` float alpha = protocolor.hasAlpha() ?
-        # protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color( protocolor.
-        # getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); ` public static
-        # Color toProto(java.awt.Color color) ` float red = (float) color.getRed();
-        # float green = (float) color.getGreen(); float blue = (float) color.getBlue();
-        # float denominator = 255.0; Color.Builder resultBuilder = Color .newBuilder() .
-        # setRed(red / denominator) .setGreen(green / denominator) .setBlue(blue /
-        # denominator); int alpha = color.getAlpha(); if (alpha != 255) ` result.
-        # setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) / denominator) .
-        # build()); ` return resultBuilder.build(); ` // ... Example (iOS / Obj-C): // ..
-        # . static UIColor* fromProto(Color* protocolor) ` float red = [protocolor red];
-        # float green = [protocolor green]; float blue = [protocolor blue]; FloatValue*
-        # alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (alpha_wrapper !=
-        # nil) ` alpha = [alpha_wrapper value]; ` return [UIColor colorWithRed:red green:
-        # green blue:blue alpha:alpha]; ` static Color* toProto(UIColor* color) `
-        # CGFloat red, green, blue, alpha; if (![color getRed:&red green:&green blue:&
-        # blue alpha:&alpha]) ` return nil; ` Color* result = [[Color alloc] init]; [
-        # result setRed:red]; [result setGreen:green]; [result setBlue:blue]; if (alpha <
-        # = 0.9999) ` [result setAlpha:floatWrapperWithValue(alpha)]; ` [result
-        # autorelease]; return result; ` // ... Example (JavaScript): // ... var
-        # protoToCssColor = function(rgb_color) ` var redFrac = rgb_color.red || 0.0;
-        # var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0;
-        # var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255);
-        # var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) ` return
-        # rgbToCssColor(red, green, blue); ` var alphaFrac = rgb_color.alpha.value || 0.
-        # 0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',
-        # ', alphaFrac, ')'].join(''); `; var rgbToCssColor = function(red, green, blue)
-        # ` var rgbNumber = new Number((red << 16) | (green << 8) | blue); var hexString
-        # = rgbNumber.toString(16); var missingZeros = 6 - hexString.length; var
-        # resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) ` resultBuilder.
-        # push('0'); ` resultBuilder.push(hexString); return resultBuilder.join(''); `; /
-        # / ...
-        # Corresponds to the JSON property `strokeColor`
-        # @return [Google::Apis::CloudsearchV1::Color]
-        attr_accessor :stroke_color
-      
-        # The border type.
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @corner_radius = args[:corner_radius] if args.key?(:corner_radius)
-          @stroke_color = args[:stroke_color] if args.key?(:stroke_color)
-          @type = args[:type] if args.key?(:type)
-        end
-      end
-      
-      # A button. Can be a text button or an image button.
-      class AppsDynamiteSharedButton
-        include Google::Apis::Core::Hashable
-      
-        # The alternative text used for accessibility. Has no effect when an icon is set;
-        # use `icon.alt_text` instead.
-        # Corresponds to the JSON property `altText`
-        # @return [String]
-        attr_accessor :alt_text
-      
-        # Represents a color in the RGBA color space. This representation is designed
-        # for simplicity of conversion to/from color representations in various
-        # languages over compactness. For example, the fields of this representation can
-        # be trivially provided to the constructor of `java.awt.Color` in Java; it can
-        # also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha`
-        # method in iOS; and, with just a little work, it can be easily formatted into a
-        # CSS `rgba()` string in JavaScript. This reference page doesn't carry
-        # information about the absolute color space that should be used to interpret
-        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
-        # applications should assume the sRGB color space. When color equality needs to
-        # be decided, implementations, unless documented otherwise, treat two colors as
-        # equal if all their red, green, blue, and alpha values each differ by at most
-        # 1e-5. Example (Java): import com.google.type.Color; // ... public static java.
-        # awt.Color fromProto(Color protocolor) ` float alpha = protocolor.hasAlpha() ?
-        # protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color( protocolor.
-        # getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); ` public static
-        # Color toProto(java.awt.Color color) ` float red = (float) color.getRed();
-        # float green = (float) color.getGreen(); float blue = (float) color.getBlue();
-        # float denominator = 255.0; Color.Builder resultBuilder = Color .newBuilder() .
-        # setRed(red / denominator) .setGreen(green / denominator) .setBlue(blue /
-        # denominator); int alpha = color.getAlpha(); if (alpha != 255) ` result.
-        # setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) / denominator) .
-        # build()); ` return resultBuilder.build(); ` // ... Example (iOS / Obj-C): // ..
-        # . static UIColor* fromProto(Color* protocolor) ` float red = [protocolor red];
-        # float green = [protocolor green]; float blue = [protocolor blue]; FloatValue*
-        # alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (alpha_wrapper !=
-        # nil) ` alpha = [alpha_wrapper value]; ` return [UIColor colorWithRed:red green:
-        # green blue:blue alpha:alpha]; ` static Color* toProto(UIColor* color) `
-        # CGFloat red, green, blue, alpha; if (![color getRed:&red green:&green blue:&
-        # blue alpha:&alpha]) ` return nil; ` Color* result = [[Color alloc] init]; [
-        # result setRed:red]; [result setGreen:green]; [result setBlue:blue]; if (alpha <
-        # = 0.9999) ` [result setAlpha:floatWrapperWithValue(alpha)]; ` [result
-        # autorelease]; return result; ` // ... Example (JavaScript): // ... var
-        # protoToCssColor = function(rgb_color) ` var redFrac = rgb_color.red || 0.0;
-        # var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0;
-        # var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255);
-        # var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) ` return
-        # rgbToCssColor(red, green, blue); ` var alphaFrac = rgb_color.alpha.value || 0.
-        # 0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',
-        # ', alphaFrac, ')'].join(''); `; var rgbToCssColor = function(red, green, blue)
-        # ` var rgbNumber = new Number((red << 16) | (green << 8) | blue); var hexString
-        # = rgbNumber.toString(16); var missingZeros = 6 - hexString.length; var
-        # resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) ` resultBuilder.
-        # push('0'); ` resultBuilder.push(hexString); return resultBuilder.join(''); `; /
-        # / ...
-        # Corresponds to the JSON property `color`
-        # @return [Google::Apis::CloudsearchV1::Color]
-        attr_accessor :color
-      
-        # If true, the button is displayed in a disabled state and doesn't respond to
-        # user actions.
-        # Corresponds to the JSON property `disabled`
-        # @return [Boolean]
-        attr_accessor :disabled
-        alias_method :disabled?, :disabled
-      
-        # The icon image.
-        # Corresponds to the JSON property `icon`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedIcon]
-        attr_accessor :icon
-      
-        # The action to perform when the button is clicked.
-        # Corresponds to the JSON property `onClick`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedOnClick]
-        attr_accessor :on_click
-      
-        # The text of the button.
-        # Corresponds to the JSON property `text`
-        # @return [String]
-        attr_accessor :text
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @alt_text = args[:alt_text] if args.key?(:alt_text)
-          @color = args[:color] if args.key?(:color)
-          @disabled = args[:disabled] if args.key?(:disabled)
-          @icon = args[:icon] if args.key?(:icon)
-          @on_click = args[:on_click] if args.key?(:on_click)
-          @text = args[:text] if args.key?(:text)
-        end
-      end
-      
-      # A list of buttons layed out horizontally.
-      class AppsDynamiteSharedButtonList
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `buttons`
-        # @return [Array<Google::Apis::CloudsearchV1::AppsDynamiteSharedButton>]
-        attr_accessor :buttons
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @buttons = args[:buttons] if args.key?(:buttons)
         end
       end
       
@@ -1370,139 +1121,6 @@ module Google
         end
       end
       
-      # A card is a UI element that can contain UI widgets such as text and images.
-      # For more information, see Cards . For example, the following JSON creates a
-      # card that has a header with the name, position, icons, and link for a contact,
-      # followed by a section with contact information like email and phone number. ```
-      # ` "header": ` "title": "Heba Salam", "subtitle": "Software Engineer", "
-      # imageStyle": "ImageStyle.AVATAR", "imageUrl": "https://example.com/heba_salam.
-      # png", "imageAltText": "Avatar for Heba Salam" `, "sections" : [ ` "header": "
-      # Contact Info", "widgets": [ ` "decorated_text": ` "icon": ` "knownIcon": "
-      # EMAIL" `, "content": "heba.salam@example.com" ` `, ` "decoratedText": ` "icon":
-      # ` "knownIcon": "PERSON" `, "content": "Online" ` `, ` "decoratedText": ` "
-      # icon": ` "knownIcon": "PHONE" `, "content": "+1 (555) 555-1234" ` `, ` "
-      # buttons": [ ` "textButton": ` "text": "Share", `, "onClick": ` "openLink": ` "
-      # url": "https://example.com/share" ` ` `, ` "textButton": ` "text": "Edit", `, "
-      # onClick": ` "action": ` "function": "goToView", "parameters": [ ` "key": "
-      # viewType", "value": "EDIT" ` ], "loadIndicator": "LoadIndicator.SPINNER" ` ` `
-      # ] ` ], "collapsible": true, "uncollapsibleWidgetsCount": 3 ` ], "cardActions":
-      # [ ` "actionLabel": "Send Feedback", "onClick": ` "openLink": ` "url": "https://
-      # example.com/feedback" ` ` ` ], "name": "contact-card-K3wB6arF2H9L" ` ```
-      class AppsDynamiteSharedCard
-        include Google::Apis::Core::Hashable
-      
-        # The actions of this card. They are added to a card's generated toolbar menu.
-        # For example, the following JSON constructs a card action menu with Settings
-        # and Send Feedback options: ``` "card_actions": [ ` "actionLabel": "Setting", "
-        # onClick": ` "action": ` "functionName": "goToView", "parameters": [ ` "key": "
-        # viewType", "value": "SETTING" ` ], "loadIndicator": "LoadIndicator.SPINNER" ` `
-        # `, ` "actionLabel": "Send Feedback", "onClick": ` "openLink": ` "url": "https:
-        # //example.com/feedback" ` ` ` ] ```
-        # Corresponds to the JSON property `cardActions`
-        # @return [Array<Google::Apis::CloudsearchV1::AppsDynamiteSharedCardCardAction>]
-        attr_accessor :card_actions
-      
-        # The header of the card. A header usually contains a title and an image.
-        # Corresponds to the JSON property `header`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedCardCardHeader]
-        attr_accessor :header
-      
-        # Name of the card, which is used as a identifier for the card in card
-        # navigation.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Sections are separated by a line divider.
-        # Corresponds to the JSON property `sections`
-        # @return [Array<Google::Apis::CloudsearchV1::AppsDynamiteSharedCardSection>]
-        attr_accessor :sections
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @card_actions = args[:card_actions] if args.key?(:card_actions)
-          @header = args[:header] if args.key?(:header)
-          @name = args[:name] if args.key?(:name)
-          @sections = args[:sections] if args.key?(:sections)
-        end
-      end
-      
-      # A card action is the action associated with the card. For example, an invoice
-      # card might include actions such as delete invoice, email invoice, or open the
-      # invoice in a browser.
-      class AppsDynamiteSharedCardCardAction
-        include Google::Apis::Core::Hashable
-      
-        # The label that displays as the action menu item.
-        # Corresponds to the JSON property `actionLabel`
-        # @return [String]
-        attr_accessor :action_label
-      
-        # The onclick action for this action item.
-        # Corresponds to the JSON property `onClick`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedOnClick]
-        attr_accessor :on_click
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @action_label = args[:action_label] if args.key?(:action_label)
-          @on_click = args[:on_click] if args.key?(:on_click)
-        end
-      end
-      
-      # 
-      class AppsDynamiteSharedCardCardHeader
-        include Google::Apis::Core::Hashable
-      
-        # The alternative text of this image which is used for accessibility.
-        # Corresponds to the JSON property `imageAltText`
-        # @return [String]
-        attr_accessor :image_alt_text
-      
-        # The image's type.
-        # Corresponds to the JSON property `imageType`
-        # @return [String]
-        attr_accessor :image_type
-      
-        # The URL of the image in the card header.
-        # Corresponds to the JSON property `imageUrl`
-        # @return [String]
-        attr_accessor :image_url
-      
-        # The subtitle of the card header.
-        # Corresponds to the JSON property `subtitle`
-        # @return [String]
-        attr_accessor :subtitle
-      
-        # The title of the card header. The title must be specified. The header has a
-        # fixed height: if both a title and subtitle are specified, each takes up one
-        # line. If only the title is specified, it takes up both lines.
-        # Corresponds to the JSON property `title`
-        # @return [String]
-        attr_accessor :title
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @image_alt_text = args[:image_alt_text] if args.key?(:image_alt_text)
-          @image_type = args[:image_type] if args.key?(:image_type)
-          @image_url = args[:image_url] if args.key?(:image_url)
-          @subtitle = args[:subtitle] if args.key?(:subtitle)
-          @title = args[:title] if args.key?(:title)
-        end
-      end
-      
       # Card click which identifies one suggestion provided by the app/bot.
       class AppsDynamiteSharedCardClickSuggestion
         include Google::Apis::Core::Hashable
@@ -1527,51 +1145,6 @@ module Google
         def update!(**args)
           @action_id = args[:action_id] if args.key?(:action_id)
           @suggestion_message_id = args[:suggestion_message_id] if args.key?(:suggestion_message_id)
-        end
-      end
-      
-      # A section contains a collection of widgets that are rendered vertically in the
-      # order that they are specified. Across all platforms, cards have a narrow fixed
-      # width, so there is currently no need for layout properties, for example, float.
-      class AppsDynamiteSharedCardSection
-        include Google::Apis::Core::Hashable
-      
-        # Indicates whether this section is collapsible. If a section is collapsible,
-        # the description must be given.
-        # Corresponds to the JSON property `collapsible`
-        # @return [Boolean]
-        attr_accessor :collapsible
-        alias_method :collapsible?, :collapsible
-      
-        # The header of the section. Formatted text is supported.
-        # Corresponds to the JSON property `header`
-        # @return [String]
-        attr_accessor :header
-      
-        # The number of uncollapsible widgets. For example, when a section contains five
-        # widgets and the `numUncollapsibleWidget` is set to `2`, the first two widgets
-        # are always shown and the last three are collapsed as default. The `
-        # numUncollapsibleWidget` is taken into account only when collapsible is set to `
-        # true`.
-        # Corresponds to the JSON property `uncollapsibleWidgetsCount`
-        # @return [Fixnum]
-        attr_accessor :uncollapsible_widgets_count
-      
-        # A section must contain at least 1 widget.
-        # Corresponds to the JSON property `widgets`
-        # @return [Array<Google::Apis::CloudsearchV1::AppsDynamiteSharedWidget>]
-        attr_accessor :widgets
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @collapsible = args[:collapsible] if args.key?(:collapsible)
-          @header = args[:header] if args.key?(:header)
-          @uncollapsible_widgets_count = args[:uncollapsible_widgets_count] if args.key?(:uncollapsible_widgets_count)
-          @widgets = args[:widgets] if args.key?(:widgets)
         end
       end
       
@@ -1767,129 +1340,6 @@ module Google
         end
       end
       
-      # Represents a Columns widget that displays a single row of columns.
-      class AppsDynamiteSharedColumns
-        include Google::Apis::Core::Hashable
-      
-        # Each card supports up to 2 columns.
-        # Corresponds to the JSON property `columnItems`
-        # @return [Array<Google::Apis::CloudsearchV1::AppsDynamiteSharedColumnsColumn>]
-        attr_accessor :column_items
-      
-        # Controls how the column resizes based on screen width.
-        # Corresponds to the JSON property `wrapStyle`
-        # @return [String]
-        attr_accessor :wrap_style
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @column_items = args[:column_items] if args.key?(:column_items)
-          @wrap_style = args[:wrap_style] if args.key?(:wrap_style)
-        end
-      end
-      
-      # Represents a Column that consists of widgets stacked vertically.
-      class AppsDynamiteSharedColumnsColumn
-        include Google::Apis::Core::Hashable
-      
-        # The horizontal alignment of the column.
-        # Corresponds to the JSON property `horizontalAlignment`
-        # @return [String]
-        attr_accessor :horizontal_alignment
-      
-        # Specifies how the column content is sized horizontally.
-        # Corresponds to the JSON property `horizontalSizeStyle`
-        # @return [String]
-        attr_accessor :horizontal_size_style
-      
-        # The vertical alignment of the column.
-        # Corresponds to the JSON property `verticalAlignment`
-        # @return [String]
-        attr_accessor :vertical_alignment
-      
-        # LINT.ThenChange(//google/apps/card/v1/card.proto) Array of widgets included in
-        # the column.
-        # Corresponds to the JSON property `widgets`
-        # @return [Array<Google::Apis::CloudsearchV1::AppsDynamiteSharedColumnsColumnWidgets>]
-        attr_accessor :widgets
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @horizontal_alignment = args[:horizontal_alignment] if args.key?(:horizontal_alignment)
-          @horizontal_size_style = args[:horizontal_size_style] if args.key?(:horizontal_size_style)
-          @vertical_alignment = args[:vertical_alignment] if args.key?(:vertical_alignment)
-          @widgets = args[:widgets] if args.key?(:widgets)
-        end
-      end
-      
-      # LINT.IfChange The `column` widget can contain these widgets.
-      class AppsDynamiteSharedColumnsColumnWidgets
-        include Google::Apis::Core::Hashable
-      
-        # A list of buttons layed out horizontally.
-        # Corresponds to the JSON property `buttonList`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedButtonList]
-        attr_accessor :button_list
-      
-        # The widget that lets users to specify a date and time.
-        # Corresponds to the JSON property `dateTimePicker`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedDateTimePicker]
-        attr_accessor :date_time_picker
-      
-        # A widget that displays text with optional decorations such as a label above or
-        # below the text, an icon in front of the text, a selection widget or a button
-        # after the text.
-        # Corresponds to the JSON property `decoratedText`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedDecoratedText]
-        attr_accessor :decorated_text
-      
-        # An image that is specified by a URL and can have an onClick action.
-        # Corresponds to the JSON property `image`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedImage]
-        attr_accessor :image
-      
-        # A widget that creates a UI item (for example, a drop-down list) with options
-        # for users to select.
-        # Corresponds to the JSON property `selectionInput`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedSelectionInput]
-        attr_accessor :selection_input
-      
-        # A text input is a UI item where users can input text. A text input can also
-        # have an onChange action and suggestions.
-        # Corresponds to the JSON property `textInput`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedTextInput]
-        attr_accessor :text_input
-      
-        # A paragraph of text that supports formatting. See [Text formatting](workspace/
-        # add-ons/concepts/widgets#text_formatting") for details.
-        # Corresponds to the JSON property `textParagraph`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedTextParagraph]
-        attr_accessor :text_paragraph
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @button_list = args[:button_list] if args.key?(:button_list)
-          @date_time_picker = args[:date_time_picker] if args.key?(:date_time_picker)
-          @decorated_text = args[:decorated_text] if args.key?(:decorated_text)
-          @image = args[:image] if args.key?(:image)
-          @selection_input = args[:selection_input] if args.key?(:selection_input)
-          @text_input = args[:text_input] if args.key?(:text_input)
-          @text_paragraph = args[:text_paragraph] if args.key?(:text_paragraph)
-        end
-      end
-      
       # Denotes a type of content report a user can send.
       class AppsDynamiteSharedContentReportType
         include Google::Apis::Core::Hashable
@@ -2012,185 +1462,6 @@ module Google
         end
       end
       
-      # The widget that lets users to specify a date and time.
-      class AppsDynamiteSharedDateTimePicker
-        include Google::Apis::Core::Hashable
-      
-        # The label for the field that displays to the user.
-        # Corresponds to the JSON property `label`
-        # @return [String]
-        attr_accessor :label
-      
-        # The name of the text input that's used in formInput, and uniquely identifies
-        # this input.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # An action that describes the behavior when the form is submitted. For example,
-        # an Apps Script can be invoked to handle the form.
-        # Corresponds to the JSON property `onChangeAction`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedAction]
-        attr_accessor :on_change_action
-      
-        # The number representing the time zone offset from UTC, in minutes. If set, the
-        # `value_ms_epoch` is displayed in the specified time zone. If not set, it uses
-        # the user's time zone setting on the client side.
-        # Corresponds to the JSON property `timezoneOffsetDate`
-        # @return [Fixnum]
-        attr_accessor :timezone_offset_date
-      
-        # The type of the date/time picker.
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        # The value to display as the default value before user input or previous user
-        # input. It is represented in milliseconds (Epoch time). For `DATE_AND_TIME`
-        # type, the full epoch value is used. For `DATE_ONLY` type, only date of the
-        # epoch time is used. For `TIME_ONLY` type, only time of the epoch time is used.
-        # For example, you can set epoch time to `3 * 60 * 60 * 1000` to represent 3am.
-        # Corresponds to the JSON property `valueMsEpoch`
-        # @return [Fixnum]
-        attr_accessor :value_ms_epoch
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @label = args[:label] if args.key?(:label)
-          @name = args[:name] if args.key?(:name)
-          @on_change_action = args[:on_change_action] if args.key?(:on_change_action)
-          @timezone_offset_date = args[:timezone_offset_date] if args.key?(:timezone_offset_date)
-          @type = args[:type] if args.key?(:type)
-          @value_ms_epoch = args[:value_ms_epoch] if args.key?(:value_ms_epoch)
-        end
-      end
-      
-      # A widget that displays text with optional decorations such as a label above or
-      # below the text, an icon in front of the text, a selection widget or a button
-      # after the text.
-      class AppsDynamiteSharedDecoratedText
-        include Google::Apis::Core::Hashable
-      
-        # The formatted text label that shows below the main text.
-        # Corresponds to the JSON property `bottomLabel`
-        # @return [String]
-        attr_accessor :bottom_label
-      
-        # A button. Can be a text button or an image button.
-        # Corresponds to the JSON property `button`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedButton]
-        attr_accessor :button
-      
-        # An icon displayed after the text.
-        # Corresponds to the JSON property `endIcon`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedIcon]
-        attr_accessor :end_icon
-      
-        # Deprecated in favor of start_icon.
-        # Corresponds to the JSON property `icon`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedIcon]
-        attr_accessor :icon
-      
-        # Only the top and bottom label and content region are clickable.
-        # Corresponds to the JSON property `onClick`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedOnClick]
-        attr_accessor :on_click
-      
-        # The icon displayed in front of the text.
-        # Corresponds to the JSON property `startIcon`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedIcon]
-        attr_accessor :start_icon
-      
-        # A switch widget can be clicked to change its state or trigger an action.
-        # Corresponds to the JSON property `switchControl`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedDecoratedTextSwitchControl]
-        attr_accessor :switch_control
-      
-        # Required. The main widget formatted text. See Text formatting for details.
-        # Corresponds to the JSON property `text`
-        # @return [String]
-        attr_accessor :text
-      
-        # The formatted text label that shows above the main text.
-        # Corresponds to the JSON property `topLabel`
-        # @return [String]
-        attr_accessor :top_label
-      
-        # The wrap text setting. If `true`, the text is wrapped and displayed in
-        # multiline. Otherwise, the text is truncated.
-        # Corresponds to the JSON property `wrapText`
-        # @return [Boolean]
-        attr_accessor :wrap_text
-        alias_method :wrap_text?, :wrap_text
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @bottom_label = args[:bottom_label] if args.key?(:bottom_label)
-          @button = args[:button] if args.key?(:button)
-          @end_icon = args[:end_icon] if args.key?(:end_icon)
-          @icon = args[:icon] if args.key?(:icon)
-          @on_click = args[:on_click] if args.key?(:on_click)
-          @start_icon = args[:start_icon] if args.key?(:start_icon)
-          @switch_control = args[:switch_control] if args.key?(:switch_control)
-          @text = args[:text] if args.key?(:text)
-          @top_label = args[:top_label] if args.key?(:top_label)
-          @wrap_text = args[:wrap_text] if args.key?(:wrap_text)
-        end
-      end
-      
-      # 
-      class AppsDynamiteSharedDecoratedTextSwitchControl
-        include Google::Apis::Core::Hashable
-      
-        # The control type, either switch or checkbox.
-        # Corresponds to the JSON property `controlType`
-        # @return [String]
-        attr_accessor :control_type
-      
-        # The name of the switch widget that's used in formInput.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # An action that describes the behavior when the form is submitted. For example,
-        # an Apps Script can be invoked to handle the form.
-        # Corresponds to the JSON property `onChangeAction`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedAction]
-        attr_accessor :on_change_action
-      
-        # If the switch is selected.
-        # Corresponds to the JSON property `selected`
-        # @return [Boolean]
-        attr_accessor :selected
-        alias_method :selected?, :selected
-      
-        # The value is what is passed back in the callback.
-        # Corresponds to the JSON property `value`
-        # @return [String]
-        attr_accessor :value
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @control_type = args[:control_type] if args.key?(:control_type)
-          @name = args[:name] if args.key?(:name)
-          @on_change_action = args[:on_change_action] if args.key?(:on_change_action)
-          @selected = args[:selected] if args.key?(:selected)
-          @value = args[:value] if args.key?(:value)
-        end
-      end
-      
       # Dimension for the uploaded attachments.
       class AppsDynamiteSharedDimension
         include Google::Apis::Core::Hashable
@@ -2213,19 +1484,6 @@ module Google
         def update!(**args)
           @height = args[:height] if args.key?(:height)
           @width = args[:width] if args.key?(:width)
-        end
-      end
-      
-      # A divider that appears in between widgets.
-      class AppsDynamiteSharedDivider
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
         end
       end
       
@@ -2351,102 +1609,6 @@ module Google
         end
       end
       
-      # Represents a Grid widget that displays items in a configurable grid layout.
-      class AppsDynamiteSharedGrid
-        include Google::Apis::Core::Hashable
-      
-        # Represents the complete border style applied to widgets.
-        # Corresponds to the JSON property `borderStyle`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedBorderStyle]
-        attr_accessor :border_style
-      
-        # The number of columns to display in the grid. A default value is used if this
-        # field isn't specified, and that default value is different depending on where
-        # the grid is shown (dialog versus companion).
-        # Corresponds to the JSON property `columnCount`
-        # @return [Fixnum]
-        attr_accessor :column_count
-      
-        # The items to display in the grid.
-        # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::CloudsearchV1::AppsDynamiteSharedGridGridItem>]
-        attr_accessor :items
-      
-        # This callback is reused by each individual grid item, but with the item's
-        # identifier and index in the items list added to the callback's parameters.
-        # Corresponds to the JSON property `onClick`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedOnClick]
-        attr_accessor :on_click
-      
-        # The text that displays in the grid header.
-        # Corresponds to the JSON property `title`
-        # @return [String]
-        attr_accessor :title
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @border_style = args[:border_style] if args.key?(:border_style)
-          @column_count = args[:column_count] if args.key?(:column_count)
-          @items = args[:items] if args.key?(:items)
-          @on_click = args[:on_click] if args.key?(:on_click)
-          @title = args[:title] if args.key?(:title)
-        end
-      end
-      
-      # Represents a single item in the grid layout.
-      class AppsDynamiteSharedGridGridItem
-        include Google::Apis::Core::Hashable
-      
-        # A user-specified identifier for this grid item. This identifier is returned in
-        # the parent Grid's onClick callback parameters.
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
-      
-        # The image that displays in the grid item.
-        # Corresponds to the JSON property `image`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedImageComponent]
-        attr_accessor :image
-      
-        # The layout to use for the grid item.
-        # Corresponds to the JSON property `layout`
-        # @return [String]
-        attr_accessor :layout
-      
-        # The grid item's subtitle.
-        # Corresponds to the JSON property `subtitle`
-        # @return [String]
-        attr_accessor :subtitle
-      
-        # The horizontal alignment of the grid item's text.
-        # Corresponds to the JSON property `textAlignment`
-        # @return [String]
-        attr_accessor :text_alignment
-      
-        # The grid item's title.
-        # Corresponds to the JSON property `title`
-        # @return [String]
-        attr_accessor :title
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @id = args[:id] if args.key?(:id)
-          @image = args[:image] if args.key?(:image)
-          @layout = args[:layout] if args.key?(:layout)
-          @subtitle = args[:subtitle] if args.key?(:subtitle)
-          @text_alignment = args[:text_alignment] if args.key?(:text_alignment)
-          @title = args[:title] if args.key?(:title)
-        end
-      end
-      
       # NEXT TAG: 3 A GroupDetails proto will store the information pertaining to
       # single Group.
       class AppsDynamiteSharedGroupDetails
@@ -2491,138 +1653,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @state = args[:state] if args.key?(:state)
-        end
-      end
-      
-      # 
-      class AppsDynamiteSharedIcon
-        include Google::Apis::Core::Hashable
-      
-        # The description of the icon, used for accessibility. The default value is
-        # provided if you don't specify one.
-        # Corresponds to the JSON property `altText`
-        # @return [String]
-        attr_accessor :alt_text
-      
-        # The icon specified by a URL.
-        # Corresponds to the JSON property `iconUrl`
-        # @return [String]
-        attr_accessor :icon_url
-      
-        # The crop style applied to the image. In some cases, applying a `CIRCLE` crop
-        # causes the image to be drawn larger than a standard icon.
-        # Corresponds to the JSON property `imageType`
-        # @return [String]
-        attr_accessor :image_type
-      
-        # The icon specified by the string name of a list of known icons
-        # Corresponds to the JSON property `knownIcon`
-        # @return [String]
-        attr_accessor :known_icon
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @alt_text = args[:alt_text] if args.key?(:alt_text)
-          @icon_url = args[:icon_url] if args.key?(:icon_url)
-          @image_type = args[:image_type] if args.key?(:image_type)
-          @known_icon = args[:known_icon] if args.key?(:known_icon)
-        end
-      end
-      
-      # An image that is specified by a URL and can have an onClick action.
-      class AppsDynamiteSharedImage
-        include Google::Apis::Core::Hashable
-      
-        # The alternative text of this image, used for accessibility.
-        # Corresponds to the JSON property `altText`
-        # @return [String]
-        attr_accessor :alt_text
-      
-        # An image URL.
-        # Corresponds to the JSON property `imageUrl`
-        # @return [String]
-        attr_accessor :image_url
-      
-        # 
-        # Corresponds to the JSON property `onClick`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedOnClick]
-        attr_accessor :on_click
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @alt_text = args[:alt_text] if args.key?(:alt_text)
-          @image_url = args[:image_url] if args.key?(:image_url)
-          @on_click = args[:on_click] if args.key?(:on_click)
-        end
-      end
-      
-      # 
-      class AppsDynamiteSharedImageComponent
-        include Google::Apis::Core::Hashable
-      
-        # The accessibility label for the image.
-        # Corresponds to the JSON property `altText`
-        # @return [String]
-        attr_accessor :alt_text
-      
-        # Represents the complete border style applied to widgets.
-        # Corresponds to the JSON property `borderStyle`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedBorderStyle]
-        attr_accessor :border_style
-      
-        # Represents the crop style applied to an image.
-        # Corresponds to the JSON property `cropStyle`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedImageCropStyle]
-        attr_accessor :crop_style
-      
-        # The image URL.
-        # Corresponds to the JSON property `imageUri`
-        # @return [String]
-        attr_accessor :image_uri
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @alt_text = args[:alt_text] if args.key?(:alt_text)
-          @border_style = args[:border_style] if args.key?(:border_style)
-          @crop_style = args[:crop_style] if args.key?(:crop_style)
-          @image_uri = args[:image_uri] if args.key?(:image_uri)
-        end
-      end
-      
-      # Represents the crop style applied to an image.
-      class AppsDynamiteSharedImageCropStyle
-        include Google::Apis::Core::Hashable
-      
-        # The aspect ratio to use if the crop type is `RECTANGLE_CUSTOM`.
-        # Corresponds to the JSON property `aspectRatio`
-        # @return [Float]
-        attr_accessor :aspect_ratio
-      
-        # The crop type.
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @aspect_ratio = args[:aspect_ratio] if args.key?(:aspect_ratio)
-          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -2784,167 +1814,6 @@ module Google
           @project_number = args[:project_number] if args.key?(:project_number)
           @tasks_message_integration_payload = args[:tasks_message_integration_payload] if args.key?(:tasks_message_integration_payload)
           @type = args[:type] if args.key?(:type)
-        end
-      end
-      
-      # 
-      class AppsDynamiteSharedOnClick
-        include Google::Apis::Core::Hashable
-      
-        # An action that describes the behavior when the form is submitted. For example,
-        # an Apps Script can be invoked to handle the form.
-        # Corresponds to the JSON property `action`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedAction]
-        attr_accessor :action
-      
-        # Actions handled by individual host apps.
-        # Corresponds to the JSON property `hostAppAction`
-        # @return [Google::Apis::CloudsearchV1::HostAppActionMarkup]
-        attr_accessor :host_app_action
-      
-        # An action that describes the behavior when the form is submitted. For example,
-        # an Apps Script can be invoked to handle the form.
-        # Corresponds to the JSON property `openDynamicLinkAction`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedAction]
-        attr_accessor :open_dynamic_link_action
-      
-        # If specified, this onClick triggers an open link action.
-        # Corresponds to the JSON property `openLink`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedOpenLink]
-        attr_accessor :open_link
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @action = args[:action] if args.key?(:action)
-          @host_app_action = args[:host_app_action] if args.key?(:host_app_action)
-          @open_dynamic_link_action = args[:open_dynamic_link_action] if args.key?(:open_dynamic_link_action)
-          @open_link = args[:open_link] if args.key?(:open_link)
-        end
-      end
-      
-      # 
-      class AppsDynamiteSharedOpenLink
-        include Google::Apis::Core::Hashable
-      
-        # Represents the platform specific uri/intent to open for each client.
-        # Corresponds to the JSON property `appUri`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedOpenLinkAppUri]
-        attr_accessor :app_uri
-      
-        # 
-        # Corresponds to the JSON property `onClose`
-        # @return [String]
-        attr_accessor :on_close
-      
-        # 
-        # Corresponds to the JSON property `openAs`
-        # @return [String]
-        attr_accessor :open_as
-      
-        # The URL to open.
-        # Corresponds to the JSON property `url`
-        # @return [String]
-        attr_accessor :url
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @app_uri = args[:app_uri] if args.key?(:app_uri)
-          @on_close = args[:on_close] if args.key?(:on_close)
-          @open_as = args[:open_as] if args.key?(:open_as)
-          @url = args[:url] if args.key?(:url)
-        end
-      end
-      
-      # Represents the platform specific uri/intent to open for each client.
-      class AppsDynamiteSharedOpenLinkAppUri
-        include Google::Apis::Core::Hashable
-      
-        # Android intent.
-        # Corresponds to the JSON property `androidIntent`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedOpenLinkAppUriIntent]
-        attr_accessor :android_intent
-      
-        # A companion uri string to be opened in the chat companion window. on the web.
-        # Corresponds to the JSON property `companionUri`
-        # @return [String]
-        attr_accessor :companion_uri
-      
-        # A uri string to be opened in the corresponding iOS hosting app.
-        # Corresponds to the JSON property `iosUri`
-        # @return [String]
-        attr_accessor :ios_uri
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @android_intent = args[:android_intent] if args.key?(:android_intent)
-          @companion_uri = args[:companion_uri] if args.key?(:companion_uri)
-          @ios_uri = args[:ios_uri] if args.key?(:ios_uri)
-        end
-      end
-      
-      # Android intent.
-      class AppsDynamiteSharedOpenLinkAppUriIntent
-        include Google::Apis::Core::Hashable
-      
-        # A list of extra data for the android intent. For example, for a calendar event
-        # edit intent, the event title information can be passed as extra data.
-        # Corresponds to the JSON property `extraData`
-        # @return [Array<Google::Apis::CloudsearchV1::AppsDynamiteSharedOpenLinkAppUriIntentExtraData>]
-        attr_accessor :extra_data
-      
-        # An android intent action string for the `@link android.content.Intent` object.
-        # For example: for the view intent action type, a valid value will be android.
-        # content.Intent.ACTION_VIEW.
-        # Corresponds to the JSON property `intentAction`
-        # @return [String]
-        attr_accessor :intent_action
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @extra_data = args[:extra_data] if args.key?(:extra_data)
-          @intent_action = args[:intent_action] if args.key?(:intent_action)
-        end
-      end
-      
-      # Extra data for an android intent. Valid keys are defined in the hosting app
-      # contract.
-      class AppsDynamiteSharedOpenLinkAppUriIntentExtraData
-        include Google::Apis::Core::Hashable
-      
-        # A key for the intent extra data.
-        # Corresponds to the JSON property `key`
-        # @return [String]
-        attr_accessor :key
-      
-        # Value for the given extra data key.
-        # Corresponds to the JSON property `value`
-        # @return [String]
-        attr_accessor :value
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @key = args[:key] if args.key?(:key)
-          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -3174,86 +2043,6 @@ module Google
         end
       end
       
-      # A widget that creates a UI item (for example, a drop-down list) with options
-      # for users to select.
-      class AppsDynamiteSharedSelectionInput
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::CloudsearchV1::AppsDynamiteSharedSelectionInputSelectionItem>]
-        attr_accessor :items
-      
-        # The label displayed ahead of the switch control.
-        # Corresponds to the JSON property `label`
-        # @return [String]
-        attr_accessor :label
-      
-        # The name of the text input which is used in formInput.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # An action that describes the behavior when the form is submitted. For example,
-        # an Apps Script can be invoked to handle the form.
-        # Corresponds to the JSON property `onChangeAction`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedAction]
-        attr_accessor :on_change_action
-      
-        # 
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @items = args[:items] if args.key?(:items)
-          @label = args[:label] if args.key?(:label)
-          @name = args[:name] if args.key?(:name)
-          @on_change_action = args[:on_change_action] if args.key?(:on_change_action)
-          @type = args[:type] if args.key?(:type)
-        end
-      end
-      
-      # The item in the switch control. A radio button, at most one of the items is
-      # selected.
-      class AppsDynamiteSharedSelectionInputSelectionItem
-        include Google::Apis::Core::Hashable
-      
-        # If more than one item is selected for `RADIO_BUTTON` and `DROPDOWN`, the first
-        # selected item is treated as selected and the ones after are ignored.
-        # Corresponds to the JSON property `selected`
-        # @return [Boolean]
-        attr_accessor :selected
-        alias_method :selected?, :selected
-      
-        # The text to be displayed.
-        # Corresponds to the JSON property `text`
-        # @return [String]
-        attr_accessor :text
-      
-        # The value associated with this item. The client should use this as a form
-        # input value.
-        # Corresponds to the JSON property `value`
-        # @return [String]
-        attr_accessor :value
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @selected = args[:selected] if args.key?(:selected)
-          @text = args[:text] if args.key?(:text)
-          @value = args[:value] if args.key?(:value)
-        end
-      end
-      
       # Defines the representation of a single matching space.
       class AppsDynamiteSharedSpaceInfo
         include Google::Apis::Core::Hashable
@@ -3322,45 +2111,6 @@ module Google
           @name = args[:name] if args.key?(:name)
           @num_members = args[:num_members] if args.key?(:num_members)
           @user_membership_state = args[:user_membership_state] if args.key?(:user_membership_state)
-        end
-      end
-      
-      # A container wrapping elements necessary for showing suggestion items used in
-      # text input autocomplete.
-      class AppsDynamiteSharedSuggestions
-        include Google::Apis::Core::Hashable
-      
-        # A list of suggestions items which will be used in are used in autocomplete.
-        # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::CloudsearchV1::AppsDynamiteSharedSuggestionsSuggestionItem>]
-        attr_accessor :items
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @items = args[:items] if args.key?(:items)
-        end
-      end
-      
-      # A suggestion item. Only supports text for now.
-      class AppsDynamiteSharedSuggestionsSuggestionItem
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `text`
-        # @return [String]
-        attr_accessor :text
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @text = args[:text] if args.key?(:text)
         end
       end
       
@@ -3577,91 +2327,6 @@ module Google
         end
       end
       
-      # A text input is a UI item where users can input text. A text input can also
-      # have an onChange action and suggestions.
-      class AppsDynamiteSharedTextInput
-        include Google::Apis::Core::Hashable
-      
-        # An action that describes the behavior when the form is submitted. For example,
-        # an Apps Script can be invoked to handle the form.
-        # Corresponds to the JSON property `autoCompleteAction`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedAction]
-        attr_accessor :auto_complete_action
-      
-        # The hint text.
-        # Corresponds to the JSON property `hintText`
-        # @return [String]
-        attr_accessor :hint_text
-      
-        # A container wrapping elements necessary for showing suggestion items used in
-        # text input autocomplete.
-        # Corresponds to the JSON property `initialSuggestions`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedSuggestions]
-        attr_accessor :initial_suggestions
-      
-        # At least one of label and hintText must be specified.
-        # Corresponds to the JSON property `label`
-        # @return [String]
-        attr_accessor :label
-      
-        # The name of the text input which is used in formInput.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # An action that describes the behavior when the form is submitted. For example,
-        # an Apps Script can be invoked to handle the form.
-        # Corresponds to the JSON property `onChangeAction`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedAction]
-        attr_accessor :on_change_action
-      
-        # The style of the text, for example, a single line or multiple lines.
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        # The default value when there is no input from the user.
-        # Corresponds to the JSON property `value`
-        # @return [String]
-        attr_accessor :value
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @auto_complete_action = args[:auto_complete_action] if args.key?(:auto_complete_action)
-          @hint_text = args[:hint_text] if args.key?(:hint_text)
-          @initial_suggestions = args[:initial_suggestions] if args.key?(:initial_suggestions)
-          @label = args[:label] if args.key?(:label)
-          @name = args[:name] if args.key?(:name)
-          @on_change_action = args[:on_change_action] if args.key?(:on_change_action)
-          @type = args[:type] if args.key?(:type)
-          @value = args[:value] if args.key?(:value)
-        end
-      end
-      
-      # A paragraph of text that supports formatting. See [Text formatting](workspace/
-      # add-ons/concepts/widgets#text_formatting") for details.
-      class AppsDynamiteSharedTextParagraph
-        include Google::Apis::Core::Hashable
-      
-        # The text that's shown in the widget.
-        # Corresponds to the JSON property `text`
-        # @return [String]
-        attr_accessor :text
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @text = args[:text] if args.key?(:text)
-        end
-      end
-      
       # User-block relationship
       class AppsDynamiteSharedUserBlockRelationship
         include Google::Apis::Core::Hashable
@@ -3715,40 +2380,1383 @@ module Google
         end
       end
       
-      # A widget is a UI element that presents texts, images, etc.
-      class AppsDynamiteSharedWidget
+      # An action that describes the behavior when the form is submitted. For example,
+      # an Apps Script can be invoked to handle the form.
+      class AppsDynamiteStorageAction
+        include Google::Apis::Core::Hashable
+      
+        # Apps Script function to invoke when the containing element is clicked/
+        # activated.
+        # Corresponds to the JSON property `function`
+        # @return [String]
+        attr_accessor :function
+      
+        # 
+        # Corresponds to the JSON property `interaction`
+        # @return [String]
+        attr_accessor :interaction
+      
+        # 
+        # Corresponds to the JSON property `loadIndicator`
+        # @return [String]
+        attr_accessor :load_indicator
+      
+        # List of action parameters.
+        # Corresponds to the JSON property `parameters`
+        # @return [Array<Google::Apis::CloudsearchV1::AppsDynamiteStorageActionActionParameter>]
+        attr_accessor :parameters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @function = args[:function] if args.key?(:function)
+          @interaction = args[:interaction] if args.key?(:interaction)
+          @load_indicator = args[:load_indicator] if args.key?(:load_indicator)
+          @parameters = args[:parameters] if args.key?(:parameters)
+        end
+      end
+      
+      # List of string parameters to supply when the action method is invoked. For
+      # example, consider three snooze buttons: snooze now, snooze 1 day, snooze next
+      # week. You might use action method = snooze(), passing the snooze type and
+      # snooze time in the list of string parameters.
+      class AppsDynamiteStorageActionActionParameter
+        include Google::Apis::Core::Hashable
+      
+        # The name of the parameter for the action script.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # The value of the parameter.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Represents the complete border style applied to widgets.
+      class AppsDynamiteStorageBorderStyle
+        include Google::Apis::Core::Hashable
+      
+        # The corner radius for the border.
+        # Corresponds to the JSON property `cornerRadius`
+        # @return [Fixnum]
+        attr_accessor :corner_radius
+      
+        # Represents a color in the RGBA color space. This representation is designed
+        # for simplicity of conversion to/from color representations in various
+        # languages over compactness. For example, the fields of this representation can
+        # be trivially provided to the constructor of `java.awt.Color` in Java; it can
+        # also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha`
+        # method in iOS; and, with just a little work, it can be easily formatted into a
+        # CSS `rgba()` string in JavaScript. This reference page doesn't carry
+        # information about the absolute color space that should be used to interpret
+        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+        # applications should assume the sRGB color space. When color equality needs to
+        # be decided, implementations, unless documented otherwise, treat two colors as
+        # equal if all their red, green, blue, and alpha values each differ by at most
+        # 1e-5. Example (Java): import com.google.type.Color; // ... public static java.
+        # awt.Color fromProto(Color protocolor) ` float alpha = protocolor.hasAlpha() ?
+        # protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color( protocolor.
+        # getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); ` public static
+        # Color toProto(java.awt.Color color) ` float red = (float) color.getRed();
+        # float green = (float) color.getGreen(); float blue = (float) color.getBlue();
+        # float denominator = 255.0; Color.Builder resultBuilder = Color .newBuilder() .
+        # setRed(red / denominator) .setGreen(green / denominator) .setBlue(blue /
+        # denominator); int alpha = color.getAlpha(); if (alpha != 255) ` result.
+        # setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) / denominator) .
+        # build()); ` return resultBuilder.build(); ` // ... Example (iOS / Obj-C): // ..
+        # . static UIColor* fromProto(Color* protocolor) ` float red = [protocolor red];
+        # float green = [protocolor green]; float blue = [protocolor blue]; FloatValue*
+        # alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (alpha_wrapper !=
+        # nil) ` alpha = [alpha_wrapper value]; ` return [UIColor colorWithRed:red green:
+        # green blue:blue alpha:alpha]; ` static Color* toProto(UIColor* color) `
+        # CGFloat red, green, blue, alpha; if (![color getRed:&red green:&green blue:&
+        # blue alpha:&alpha]) ` return nil; ` Color* result = [[Color alloc] init]; [
+        # result setRed:red]; [result setGreen:green]; [result setBlue:blue]; if (alpha <
+        # = 0.9999) ` [result setAlpha:floatWrapperWithValue(alpha)]; ` [result
+        # autorelease]; return result; ` // ... Example (JavaScript): // ... var
+        # protoToCssColor = function(rgb_color) ` var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) ` return
+        # rgbToCssColor(red, green, blue); ` var alphaFrac = rgb_color.alpha.value || 0.
+        # 0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',
+        # ', alphaFrac, ')'].join(''); `; var rgbToCssColor = function(red, green, blue)
+        # ` var rgbNumber = new Number((red << 16) | (green << 8) | blue); var hexString
+        # = rgbNumber.toString(16); var missingZeros = 6 - hexString.length; var
+        # resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) ` resultBuilder.
+        # push('0'); ` resultBuilder.push(hexString); return resultBuilder.join(''); `; /
+        # / ...
+        # Corresponds to the JSON property `strokeColor`
+        # @return [Google::Apis::CloudsearchV1::Color]
+        attr_accessor :stroke_color
+      
+        # The border type.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @corner_radius = args[:corner_radius] if args.key?(:corner_radius)
+          @stroke_color = args[:stroke_color] if args.key?(:stroke_color)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # A button. Can be a text button or an image button.
+      class AppsDynamiteStorageButton
+        include Google::Apis::Core::Hashable
+      
+        # The alternative text used for accessibility. Has no effect when an icon is set;
+        # use `icon.alt_text` instead.
+        # Corresponds to the JSON property `altText`
+        # @return [String]
+        attr_accessor :alt_text
+      
+        # Represents a color in the RGBA color space. This representation is designed
+        # for simplicity of conversion to/from color representations in various
+        # languages over compactness. For example, the fields of this representation can
+        # be trivially provided to the constructor of `java.awt.Color` in Java; it can
+        # also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha`
+        # method in iOS; and, with just a little work, it can be easily formatted into a
+        # CSS `rgba()` string in JavaScript. This reference page doesn't carry
+        # information about the absolute color space that should be used to interpret
+        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+        # applications should assume the sRGB color space. When color equality needs to
+        # be decided, implementations, unless documented otherwise, treat two colors as
+        # equal if all their red, green, blue, and alpha values each differ by at most
+        # 1e-5. Example (Java): import com.google.type.Color; // ... public static java.
+        # awt.Color fromProto(Color protocolor) ` float alpha = protocolor.hasAlpha() ?
+        # protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color( protocolor.
+        # getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); ` public static
+        # Color toProto(java.awt.Color color) ` float red = (float) color.getRed();
+        # float green = (float) color.getGreen(); float blue = (float) color.getBlue();
+        # float denominator = 255.0; Color.Builder resultBuilder = Color .newBuilder() .
+        # setRed(red / denominator) .setGreen(green / denominator) .setBlue(blue /
+        # denominator); int alpha = color.getAlpha(); if (alpha != 255) ` result.
+        # setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) / denominator) .
+        # build()); ` return resultBuilder.build(); ` // ... Example (iOS / Obj-C): // ..
+        # . static UIColor* fromProto(Color* protocolor) ` float red = [protocolor red];
+        # float green = [protocolor green]; float blue = [protocolor blue]; FloatValue*
+        # alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (alpha_wrapper !=
+        # nil) ` alpha = [alpha_wrapper value]; ` return [UIColor colorWithRed:red green:
+        # green blue:blue alpha:alpha]; ` static Color* toProto(UIColor* color) `
+        # CGFloat red, green, blue, alpha; if (![color getRed:&red green:&green blue:&
+        # blue alpha:&alpha]) ` return nil; ` Color* result = [[Color alloc] init]; [
+        # result setRed:red]; [result setGreen:green]; [result setBlue:blue]; if (alpha <
+        # = 0.9999) ` [result setAlpha:floatWrapperWithValue(alpha)]; ` [result
+        # autorelease]; return result; ` // ... Example (JavaScript): // ... var
+        # protoToCssColor = function(rgb_color) ` var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) ` return
+        # rgbToCssColor(red, green, blue); ` var alphaFrac = rgb_color.alpha.value || 0.
+        # 0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',
+        # ', alphaFrac, ')'].join(''); `; var rgbToCssColor = function(red, green, blue)
+        # ` var rgbNumber = new Number((red << 16) | (green << 8) | blue); var hexString
+        # = rgbNumber.toString(16); var missingZeros = 6 - hexString.length; var
+        # resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) ` resultBuilder.
+        # push('0'); ` resultBuilder.push(hexString); return resultBuilder.join(''); `; /
+        # / ...
+        # Corresponds to the JSON property `color`
+        # @return [Google::Apis::CloudsearchV1::Color]
+        attr_accessor :color
+      
+        # If true, the button is displayed in a disabled state and doesn't respond to
+        # user actions.
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
+        # The icon image.
+        # Corresponds to the JSON property `icon`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteStorageIcon]
+        attr_accessor :icon
+      
+        # The action to perform when the button is clicked.
+        # Corresponds to the JSON property `onClick`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteStorageOnClick]
+        attr_accessor :on_click
+      
+        # The text of the button.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alt_text = args[:alt_text] if args.key?(:alt_text)
+          @color = args[:color] if args.key?(:color)
+          @disabled = args[:disabled] if args.key?(:disabled)
+          @icon = args[:icon] if args.key?(:icon)
+          @on_click = args[:on_click] if args.key?(:on_click)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # A list of buttons layed out horizontally.
+      class AppsDynamiteStorageButtonList
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `buttons`
+        # @return [Array<Google::Apis::CloudsearchV1::AppsDynamiteStorageButton>]
+        attr_accessor :buttons
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @buttons = args[:buttons] if args.key?(:buttons)
+        end
+      end
+      
+      # A card is a UI element that can contain UI widgets such as text and images.
+      # For more information, see Cards . For example, the following JSON creates a
+      # card that has a header with the name, position, icons, and link for a contact,
+      # followed by a section with contact information like email and phone number. ```
+      # ` "header": ` "title": "Heba Salam", "subtitle": "Software Engineer", "
+      # imageStyle": "ImageStyle.AVATAR", "imageUrl": "https://example.com/heba_salam.
+      # png", "imageAltText": "Avatar for Heba Salam" `, "sections" : [ ` "header": "
+      # Contact Info", "widgets": [ ` "decorated_text": ` "icon": ` "knownIcon": "
+      # EMAIL" `, "content": "heba.salam@example.com" ` `, ` "decoratedText": ` "icon":
+      # ` "knownIcon": "PERSON" `, "content": "Online" ` `, ` "decoratedText": ` "
+      # icon": ` "knownIcon": "PHONE" `, "content": "+1 (555) 555-1234" ` `, ` "
+      # buttons": [ ` "textButton": ` "text": "Share", `, "onClick": ` "openLink": ` "
+      # url": "https://example.com/share" ` ` `, ` "textButton": ` "text": "Edit", `, "
+      # onClick": ` "action": ` "function": "goToView", "parameters": [ ` "key": "
+      # viewType", "value": "EDIT" ` ], "loadIndicator": "LoadIndicator.SPINNER" ` ` `
+      # ] ` ], "collapsible": true, "uncollapsibleWidgetsCount": 3 ` ], "cardActions":
+      # [ ` "actionLabel": "Send Feedback", "onClick": ` "openLink": ` "url": "https://
+      # example.com/feedback" ` ` ` ], "name": "contact-card-K3wB6arF2H9L" ` ```
+      class AppsDynamiteStorageCard
+        include Google::Apis::Core::Hashable
+      
+        # The actions of this card. They are added to a card's generated toolbar menu.
+        # For example, the following JSON constructs a card action menu with Settings
+        # and Send Feedback options: ``` "card_actions": [ ` "actionLabel": "Setting", "
+        # onClick": ` "action": ` "functionName": "goToView", "parameters": [ ` "key": "
+        # viewType", "value": "SETTING" ` ], "loadIndicator": "LoadIndicator.SPINNER" ` `
+        # `, ` "actionLabel": "Send Feedback", "onClick": ` "openLink": ` "url": "https:
+        # //example.com/feedback" ` ` ` ] ```
+        # Corresponds to the JSON property `cardActions`
+        # @return [Array<Google::Apis::CloudsearchV1::AppsDynamiteStorageCardCardAction>]
+        attr_accessor :card_actions
+      
+        # The header of the card. A header usually contains a title and an image.
+        # Corresponds to the JSON property `header`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteStorageCardCardHeader]
+        attr_accessor :header
+      
+        # Name of the card, which is used as a identifier for the card in card
+        # navigation.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Sections are separated by a line divider.
+        # Corresponds to the JSON property `sections`
+        # @return [Array<Google::Apis::CloudsearchV1::AppsDynamiteStorageCardSection>]
+        attr_accessor :sections
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @card_actions = args[:card_actions] if args.key?(:card_actions)
+          @header = args[:header] if args.key?(:header)
+          @name = args[:name] if args.key?(:name)
+          @sections = args[:sections] if args.key?(:sections)
+        end
+      end
+      
+      # A card action is the action associated with the card. For example, an invoice
+      # card might include actions such as delete invoice, email invoice, or open the
+      # invoice in a browser.
+      class AppsDynamiteStorageCardCardAction
+        include Google::Apis::Core::Hashable
+      
+        # The label that displays as the action menu item.
+        # Corresponds to the JSON property `actionLabel`
+        # @return [String]
+        attr_accessor :action_label
+      
+        # The onclick action for this action item.
+        # Corresponds to the JSON property `onClick`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteStorageOnClick]
+        attr_accessor :on_click
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action_label = args[:action_label] if args.key?(:action_label)
+          @on_click = args[:on_click] if args.key?(:on_click)
+        end
+      end
+      
+      # 
+      class AppsDynamiteStorageCardCardHeader
+        include Google::Apis::Core::Hashable
+      
+        # The alternative text of this image which is used for accessibility.
+        # Corresponds to the JSON property `imageAltText`
+        # @return [String]
+        attr_accessor :image_alt_text
+      
+        # The image's type.
+        # Corresponds to the JSON property `imageType`
+        # @return [String]
+        attr_accessor :image_type
+      
+        # The URL of the image in the card header.
+        # Corresponds to the JSON property `imageUrl`
+        # @return [String]
+        attr_accessor :image_url
+      
+        # The subtitle of the card header.
+        # Corresponds to the JSON property `subtitle`
+        # @return [String]
+        attr_accessor :subtitle
+      
+        # The title of the card header. The title must be specified. The header has a
+        # fixed height: if both a title and subtitle are specified, each takes up one
+        # line. If only the title is specified, it takes up both lines.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @image_alt_text = args[:image_alt_text] if args.key?(:image_alt_text)
+          @image_type = args[:image_type] if args.key?(:image_type)
+          @image_url = args[:image_url] if args.key?(:image_url)
+          @subtitle = args[:subtitle] if args.key?(:subtitle)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # A section contains a collection of widgets that are rendered vertically in the
+      # order that they are specified. Across all platforms, cards have a narrow fixed
+      # width, so there is currently no need for layout properties, for example, float.
+      class AppsDynamiteStorageCardSection
+        include Google::Apis::Core::Hashable
+      
+        # Indicates whether this section is collapsible. If a section is collapsible,
+        # the description must be given.
+        # Corresponds to the JSON property `collapsible`
+        # @return [Boolean]
+        attr_accessor :collapsible
+        alias_method :collapsible?, :collapsible
+      
+        # The header of the section. Formatted text is supported.
+        # Corresponds to the JSON property `header`
+        # @return [String]
+        attr_accessor :header
+      
+        # The number of uncollapsible widgets. For example, when a section contains five
+        # widgets and the `numUncollapsibleWidget` is set to `2`, the first two widgets
+        # are always shown and the last three are collapsed as default. The `
+        # numUncollapsibleWidget` is taken into account only when collapsible is set to `
+        # true`.
+        # Corresponds to the JSON property `uncollapsibleWidgetsCount`
+        # @return [Fixnum]
+        attr_accessor :uncollapsible_widgets_count
+      
+        # A section must contain at least 1 widget.
+        # Corresponds to the JSON property `widgets`
+        # @return [Array<Google::Apis::CloudsearchV1::AppsDynamiteStorageWidget>]
+        attr_accessor :widgets
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @collapsible = args[:collapsible] if args.key?(:collapsible)
+          @header = args[:header] if args.key?(:header)
+          @uncollapsible_widgets_count = args[:uncollapsible_widgets_count] if args.key?(:uncollapsible_widgets_count)
+          @widgets = args[:widgets] if args.key?(:widgets)
+        end
+      end
+      
+      # Represents a Columns widget that displays a single row of columns.
+      class AppsDynamiteStorageColumns
+        include Google::Apis::Core::Hashable
+      
+        # Each card supports up to 2 columns.
+        # Corresponds to the JSON property `columnItems`
+        # @return [Array<Google::Apis::CloudsearchV1::AppsDynamiteStorageColumnsColumn>]
+        attr_accessor :column_items
+      
+        # Controls how the column resizes based on screen width.
+        # Corresponds to the JSON property `wrapStyle`
+        # @return [String]
+        attr_accessor :wrap_style
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @column_items = args[:column_items] if args.key?(:column_items)
+          @wrap_style = args[:wrap_style] if args.key?(:wrap_style)
+        end
+      end
+      
+      # Represents a Column that consists of widgets stacked vertically.
+      class AppsDynamiteStorageColumnsColumn
+        include Google::Apis::Core::Hashable
+      
+        # The horizontal alignment of the column.
+        # Corresponds to the JSON property `horizontalAlignment`
+        # @return [String]
+        attr_accessor :horizontal_alignment
+      
+        # Specifies how the column content is sized horizontally.
+        # Corresponds to the JSON property `horizontalSizeStyle`
+        # @return [String]
+        attr_accessor :horizontal_size_style
+      
+        # The vertical alignment of the column.
+        # Corresponds to the JSON property `verticalAlignment`
+        # @return [String]
+        attr_accessor :vertical_alignment
+      
+        # LINT.ThenChange(//depot/google3/google/apps/card/v1/card.proto) Array of
+        # widgets included in the column.
+        # Corresponds to the JSON property `widgets`
+        # @return [Array<Google::Apis::CloudsearchV1::AppsDynamiteStorageColumnsColumnWidgets>]
+        attr_accessor :widgets
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @horizontal_alignment = args[:horizontal_alignment] if args.key?(:horizontal_alignment)
+          @horizontal_size_style = args[:horizontal_size_style] if args.key?(:horizontal_size_style)
+          @vertical_alignment = args[:vertical_alignment] if args.key?(:vertical_alignment)
+          @widgets = args[:widgets] if args.key?(:widgets)
+        end
+      end
+      
+      # LINT.IfChange The `column` widget can contain these widgets.
+      class AppsDynamiteStorageColumnsColumnWidgets
         include Google::Apis::Core::Hashable
       
         # A list of buttons layed out horizontally.
         # Corresponds to the JSON property `buttonList`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedButtonList]
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteStorageButtonList]
         attr_accessor :button_list
-      
-        # Represents a Columns widget that displays a single row of columns.
-        # Corresponds to the JSON property `columns`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedColumns]
-        attr_accessor :columns
       
         # The widget that lets users to specify a date and time.
         # Corresponds to the JSON property `dateTimePicker`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedDateTimePicker]
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteStorageDateTimePicker]
         attr_accessor :date_time_picker
       
         # A widget that displays text with optional decorations such as a label above or
         # below the text, an icon in front of the text, a selection widget or a button
         # after the text.
         # Corresponds to the JSON property `decoratedText`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedDecoratedText]
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteStorageDecoratedText]
+        attr_accessor :decorated_text
+      
+        # An image that is specified by a URL and can have an onClick action.
+        # Corresponds to the JSON property `image`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteStorageImage]
+        attr_accessor :image
+      
+        # A widget that creates a UI item (for example, a drop-down list) with options
+        # for users to select.
+        # Corresponds to the JSON property `selectionInput`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteStorageSelectionInput]
+        attr_accessor :selection_input
+      
+        # A text input is a UI item where users can input text. A text input can also
+        # have an onChange action and suggestions.
+        # Corresponds to the JSON property `textInput`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteStorageTextInput]
+        attr_accessor :text_input
+      
+        # A paragraph of text that supports formatting. See [Text formatting](workspace/
+        # add-ons/concepts/widgets#text_formatting") for details.
+        # Corresponds to the JSON property `textParagraph`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteStorageTextParagraph]
+        attr_accessor :text_paragraph
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @button_list = args[:button_list] if args.key?(:button_list)
+          @date_time_picker = args[:date_time_picker] if args.key?(:date_time_picker)
+          @decorated_text = args[:decorated_text] if args.key?(:decorated_text)
+          @image = args[:image] if args.key?(:image)
+          @selection_input = args[:selection_input] if args.key?(:selection_input)
+          @text_input = args[:text_input] if args.key?(:text_input)
+          @text_paragraph = args[:text_paragraph] if args.key?(:text_paragraph)
+        end
+      end
+      
+      # The widget that lets users to specify a date and time.
+      class AppsDynamiteStorageDateTimePicker
+        include Google::Apis::Core::Hashable
+      
+        # The label for the field that displays to the user.
+        # Corresponds to the JSON property `label`
+        # @return [String]
+        attr_accessor :label
+      
+        # The name of the text input that's used in formInput, and uniquely identifies
+        # this input.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # An action that describes the behavior when the form is submitted. For example,
+        # an Apps Script can be invoked to handle the form.
+        # Corresponds to the JSON property `onChangeAction`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteStorageAction]
+        attr_accessor :on_change_action
+      
+        # The number representing the time zone offset from UTC, in minutes. If set, the
+        # `value_ms_epoch` is displayed in the specified time zone. If not set, it uses
+        # the user's time zone setting on the client side.
+        # Corresponds to the JSON property `timezoneOffsetDate`
+        # @return [Fixnum]
+        attr_accessor :timezone_offset_date
+      
+        # The type of the date/time picker.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # The value to display as the default value before user input or previous user
+        # input. It is represented in milliseconds (Epoch time). For `DATE_AND_TIME`
+        # type, the full epoch value is used. For `DATE_ONLY` type, only date of the
+        # epoch time is used. For `TIME_ONLY` type, only time of the epoch time is used.
+        # For example, you can set epoch time to `3 * 60 * 60 * 1000` to represent 3am.
+        # Corresponds to the JSON property `valueMsEpoch`
+        # @return [Fixnum]
+        attr_accessor :value_ms_epoch
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @label = args[:label] if args.key?(:label)
+          @name = args[:name] if args.key?(:name)
+          @on_change_action = args[:on_change_action] if args.key?(:on_change_action)
+          @timezone_offset_date = args[:timezone_offset_date] if args.key?(:timezone_offset_date)
+          @type = args[:type] if args.key?(:type)
+          @value_ms_epoch = args[:value_ms_epoch] if args.key?(:value_ms_epoch)
+        end
+      end
+      
+      # A widget that displays text with optional decorations such as a label above or
+      # below the text, an icon in front of the text, a selection widget or a button
+      # after the text.
+      class AppsDynamiteStorageDecoratedText
+        include Google::Apis::Core::Hashable
+      
+        # The formatted text label that shows below the main text.
+        # Corresponds to the JSON property `bottomLabel`
+        # @return [String]
+        attr_accessor :bottom_label
+      
+        # A button. Can be a text button or an image button.
+        # Corresponds to the JSON property `button`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteStorageButton]
+        attr_accessor :button
+      
+        # An icon displayed after the text.
+        # Corresponds to the JSON property `endIcon`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteStorageIcon]
+        attr_accessor :end_icon
+      
+        # Deprecated in favor of start_icon.
+        # Corresponds to the JSON property `icon`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteStorageIcon]
+        attr_accessor :icon
+      
+        # Only the top and bottom label and content region are clickable.
+        # Corresponds to the JSON property `onClick`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteStorageOnClick]
+        attr_accessor :on_click
+      
+        # The icon displayed in front of the text.
+        # Corresponds to the JSON property `startIcon`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteStorageIcon]
+        attr_accessor :start_icon
+      
+        # A switch widget can be clicked to change its state or trigger an action.
+        # Corresponds to the JSON property `switchControl`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteStorageDecoratedTextSwitchControl]
+        attr_accessor :switch_control
+      
+        # Required. The main widget formatted text. See Text formatting for details.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        # The formatted text label that shows above the main text.
+        # Corresponds to the JSON property `topLabel`
+        # @return [String]
+        attr_accessor :top_label
+      
+        # The wrap text setting. If `true`, the text is wrapped and displayed in
+        # multiline. Otherwise, the text is truncated.
+        # Corresponds to the JSON property `wrapText`
+        # @return [Boolean]
+        attr_accessor :wrap_text
+        alias_method :wrap_text?, :wrap_text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bottom_label = args[:bottom_label] if args.key?(:bottom_label)
+          @button = args[:button] if args.key?(:button)
+          @end_icon = args[:end_icon] if args.key?(:end_icon)
+          @icon = args[:icon] if args.key?(:icon)
+          @on_click = args[:on_click] if args.key?(:on_click)
+          @start_icon = args[:start_icon] if args.key?(:start_icon)
+          @switch_control = args[:switch_control] if args.key?(:switch_control)
+          @text = args[:text] if args.key?(:text)
+          @top_label = args[:top_label] if args.key?(:top_label)
+          @wrap_text = args[:wrap_text] if args.key?(:wrap_text)
+        end
+      end
+      
+      # 
+      class AppsDynamiteStorageDecoratedTextSwitchControl
+        include Google::Apis::Core::Hashable
+      
+        # The control type, either switch or checkbox.
+        # Corresponds to the JSON property `controlType`
+        # @return [String]
+        attr_accessor :control_type
+      
+        # The name of the switch widget that's used in formInput.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # An action that describes the behavior when the form is submitted. For example,
+        # an Apps Script can be invoked to handle the form.
+        # Corresponds to the JSON property `onChangeAction`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteStorageAction]
+        attr_accessor :on_change_action
+      
+        # If the switch is selected.
+        # Corresponds to the JSON property `selected`
+        # @return [Boolean]
+        attr_accessor :selected
+        alias_method :selected?, :selected
+      
+        # The value is what is passed back in the callback.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @control_type = args[:control_type] if args.key?(:control_type)
+          @name = args[:name] if args.key?(:name)
+          @on_change_action = args[:on_change_action] if args.key?(:on_change_action)
+          @selected = args[:selected] if args.key?(:selected)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # A divider that appears in between widgets.
+      class AppsDynamiteStorageDivider
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Represents a Grid widget that displays items in a configurable grid layout.
+      class AppsDynamiteStorageGrid
+        include Google::Apis::Core::Hashable
+      
+        # Represents the complete border style applied to widgets.
+        # Corresponds to the JSON property `borderStyle`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteStorageBorderStyle]
+        attr_accessor :border_style
+      
+        # The number of columns to display in the grid. A default value is used if this
+        # field isn't specified, and that default value is different depending on where
+        # the grid is shown (dialog versus companion).
+        # Corresponds to the JSON property `columnCount`
+        # @return [Fixnum]
+        attr_accessor :column_count
+      
+        # The items to display in the grid.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::CloudsearchV1::AppsDynamiteStorageGridGridItem>]
+        attr_accessor :items
+      
+        # This callback is reused by each individual grid item, but with the item's
+        # identifier and index in the items list added to the callback's parameters.
+        # Corresponds to the JSON property `onClick`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteStorageOnClick]
+        attr_accessor :on_click
+      
+        # The text that displays in the grid header.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @border_style = args[:border_style] if args.key?(:border_style)
+          @column_count = args[:column_count] if args.key?(:column_count)
+          @items = args[:items] if args.key?(:items)
+          @on_click = args[:on_click] if args.key?(:on_click)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # Represents a single item in the grid layout.
+      class AppsDynamiteStorageGridGridItem
+        include Google::Apis::Core::Hashable
+      
+        # A user-specified identifier for this grid item. This identifier is returned in
+        # the parent Grid's onClick callback parameters.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The image that displays in the grid item.
+        # Corresponds to the JSON property `image`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteStorageImageComponent]
+        attr_accessor :image
+      
+        # The layout to use for the grid item.
+        # Corresponds to the JSON property `layout`
+        # @return [String]
+        attr_accessor :layout
+      
+        # The grid item's subtitle.
+        # Corresponds to the JSON property `subtitle`
+        # @return [String]
+        attr_accessor :subtitle
+      
+        # The horizontal alignment of the grid item's text.
+        # Corresponds to the JSON property `textAlignment`
+        # @return [String]
+        attr_accessor :text_alignment
+      
+        # The grid item's title.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @image = args[:image] if args.key?(:image)
+          @layout = args[:layout] if args.key?(:layout)
+          @subtitle = args[:subtitle] if args.key?(:subtitle)
+          @text_alignment = args[:text_alignment] if args.key?(:text_alignment)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # 
+      class AppsDynamiteStorageIcon
+        include Google::Apis::Core::Hashable
+      
+        # The description of the icon, used for accessibility. The default value is
+        # provided if you don't specify one.
+        # Corresponds to the JSON property `altText`
+        # @return [String]
+        attr_accessor :alt_text
+      
+        # The icon specified by a URL.
+        # Corresponds to the JSON property `iconUrl`
+        # @return [String]
+        attr_accessor :icon_url
+      
+        # The crop style applied to the image. In some cases, applying a `CIRCLE` crop
+        # causes the image to be drawn larger than a standard icon.
+        # Corresponds to the JSON property `imageType`
+        # @return [String]
+        attr_accessor :image_type
+      
+        # The icon specified by the string name of a list of known icons
+        # Corresponds to the JSON property `knownIcon`
+        # @return [String]
+        attr_accessor :known_icon
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alt_text = args[:alt_text] if args.key?(:alt_text)
+          @icon_url = args[:icon_url] if args.key?(:icon_url)
+          @image_type = args[:image_type] if args.key?(:image_type)
+          @known_icon = args[:known_icon] if args.key?(:known_icon)
+        end
+      end
+      
+      # An image that is specified by a URL and can have an onClick action.
+      class AppsDynamiteStorageImage
+        include Google::Apis::Core::Hashable
+      
+        # The alternative text of this image, used for accessibility.
+        # Corresponds to the JSON property `altText`
+        # @return [String]
+        attr_accessor :alt_text
+      
+        # An image URL.
+        # Corresponds to the JSON property `imageUrl`
+        # @return [String]
+        attr_accessor :image_url
+      
+        # 
+        # Corresponds to the JSON property `onClick`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteStorageOnClick]
+        attr_accessor :on_click
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alt_text = args[:alt_text] if args.key?(:alt_text)
+          @image_url = args[:image_url] if args.key?(:image_url)
+          @on_click = args[:on_click] if args.key?(:on_click)
+        end
+      end
+      
+      # 
+      class AppsDynamiteStorageImageComponent
+        include Google::Apis::Core::Hashable
+      
+        # The accessibility label for the image.
+        # Corresponds to the JSON property `altText`
+        # @return [String]
+        attr_accessor :alt_text
+      
+        # Represents the complete border style applied to widgets.
+        # Corresponds to the JSON property `borderStyle`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteStorageBorderStyle]
+        attr_accessor :border_style
+      
+        # Represents the crop style applied to an image.
+        # Corresponds to the JSON property `cropStyle`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteStorageImageCropStyle]
+        attr_accessor :crop_style
+      
+        # The image URL.
+        # Corresponds to the JSON property `imageUri`
+        # @return [String]
+        attr_accessor :image_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alt_text = args[:alt_text] if args.key?(:alt_text)
+          @border_style = args[:border_style] if args.key?(:border_style)
+          @crop_style = args[:crop_style] if args.key?(:crop_style)
+          @image_uri = args[:image_uri] if args.key?(:image_uri)
+        end
+      end
+      
+      # Represents the crop style applied to an image.
+      class AppsDynamiteStorageImageCropStyle
+        include Google::Apis::Core::Hashable
+      
+        # The aspect ratio to use if the crop type is `RECTANGLE_CUSTOM`.
+        # Corresponds to the JSON property `aspectRatio`
+        # @return [Float]
+        attr_accessor :aspect_ratio
+      
+        # The crop type.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aspect_ratio = args[:aspect_ratio] if args.key?(:aspect_ratio)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # 
+      class AppsDynamiteStorageOnClick
+        include Google::Apis::Core::Hashable
+      
+        # An action that describes the behavior when the form is submitted. For example,
+        # an Apps Script can be invoked to handle the form.
+        # Corresponds to the JSON property `action`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteStorageAction]
+        attr_accessor :action
+      
+        # Actions handled by individual host apps.
+        # Corresponds to the JSON property `hostAppAction`
+        # @return [Google::Apis::CloudsearchV1::HostAppActionMarkup]
+        attr_accessor :host_app_action
+      
+        # An action that describes the behavior when the form is submitted. For example,
+        # an Apps Script can be invoked to handle the form.
+        # Corresponds to the JSON property `openDynamicLinkAction`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteStorageAction]
+        attr_accessor :open_dynamic_link_action
+      
+        # If specified, this onClick triggers an open link action.
+        # Corresponds to the JSON property `openLink`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteStorageOpenLink]
+        attr_accessor :open_link
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @host_app_action = args[:host_app_action] if args.key?(:host_app_action)
+          @open_dynamic_link_action = args[:open_dynamic_link_action] if args.key?(:open_dynamic_link_action)
+          @open_link = args[:open_link] if args.key?(:open_link)
+        end
+      end
+      
+      # 
+      class AppsDynamiteStorageOpenLink
+        include Google::Apis::Core::Hashable
+      
+        # Represents the platform specific uri/intent to open for each client.
+        # Corresponds to the JSON property `appUri`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteStorageOpenLinkAppUri]
+        attr_accessor :app_uri
+      
+        # 
+        # Corresponds to the JSON property `onClose`
+        # @return [String]
+        attr_accessor :on_close
+      
+        # 
+        # Corresponds to the JSON property `openAs`
+        # @return [String]
+        attr_accessor :open_as
+      
+        # The URL to open.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_uri = args[:app_uri] if args.key?(:app_uri)
+          @on_close = args[:on_close] if args.key?(:on_close)
+          @open_as = args[:open_as] if args.key?(:open_as)
+          @url = args[:url] if args.key?(:url)
+        end
+      end
+      
+      # Represents the platform specific uri/intent to open for each client.
+      class AppsDynamiteStorageOpenLinkAppUri
+        include Google::Apis::Core::Hashable
+      
+        # Android intent.
+        # Corresponds to the JSON property `androidIntent`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteStorageOpenLinkAppUriIntent]
+        attr_accessor :android_intent
+      
+        # A companion uri string to be opened in the chat companion window. on the web.
+        # Corresponds to the JSON property `companionUri`
+        # @return [String]
+        attr_accessor :companion_uri
+      
+        # A uri string to be opened in the corresponding iOS hosting app.
+        # Corresponds to the JSON property `iosUri`
+        # @return [String]
+        attr_accessor :ios_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @android_intent = args[:android_intent] if args.key?(:android_intent)
+          @companion_uri = args[:companion_uri] if args.key?(:companion_uri)
+          @ios_uri = args[:ios_uri] if args.key?(:ios_uri)
+        end
+      end
+      
+      # Android intent.
+      class AppsDynamiteStorageOpenLinkAppUriIntent
+        include Google::Apis::Core::Hashable
+      
+        # A list of extra data for the android intent. For example, for a calendar event
+        # edit intent, the event title information can be passed as extra data.
+        # Corresponds to the JSON property `extraData`
+        # @return [Array<Google::Apis::CloudsearchV1::AppsDynamiteStorageOpenLinkAppUriIntentExtraData>]
+        attr_accessor :extra_data
+      
+        # An android intent action string for the `@link android.content.Intent` object.
+        # For example: for the view intent action type, a valid value will be android.
+        # content.Intent.ACTION_VIEW.
+        # Corresponds to the JSON property `intentAction`
+        # @return [String]
+        attr_accessor :intent_action
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @extra_data = args[:extra_data] if args.key?(:extra_data)
+          @intent_action = args[:intent_action] if args.key?(:intent_action)
+        end
+      end
+      
+      # Extra data for an android intent. Valid keys are defined in the hosting app
+      # contract.
+      class AppsDynamiteStorageOpenLinkAppUriIntentExtraData
+        include Google::Apis::Core::Hashable
+      
+        # A key for the intent extra data.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Value for the given extra data key.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # A widget that creates a UI item (for example, a drop-down list) with options
+      # for users to select.
+      class AppsDynamiteStorageSelectionInput
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::CloudsearchV1::AppsDynamiteStorageSelectionInputSelectionItem>]
+        attr_accessor :items
+      
+        # The label displayed ahead of the switch control.
+        # Corresponds to the JSON property `label`
+        # @return [String]
+        attr_accessor :label
+      
+        # The name of the text input which is used in formInput.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # An action that describes the behavior when the form is submitted. For example,
+        # an Apps Script can be invoked to handle the form.
+        # Corresponds to the JSON property `onChangeAction`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteStorageAction]
+        attr_accessor :on_change_action
+      
+        # 
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @items = args[:items] if args.key?(:items)
+          @label = args[:label] if args.key?(:label)
+          @name = args[:name] if args.key?(:name)
+          @on_change_action = args[:on_change_action] if args.key?(:on_change_action)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # The item in the switch control. A radio button, at most one of the items is
+      # selected.
+      class AppsDynamiteStorageSelectionInputSelectionItem
+        include Google::Apis::Core::Hashable
+      
+        # If more than one item is selected for `RADIO_BUTTON` and `DROPDOWN`, the first
+        # selected item is treated as selected and the ones after are ignored.
+        # Corresponds to the JSON property `selected`
+        # @return [Boolean]
+        attr_accessor :selected
+        alias_method :selected?, :selected
+      
+        # The text to be displayed.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        # The value associated with this item. The client should use this as a form
+        # input value.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @selected = args[:selected] if args.key?(:selected)
+          @text = args[:text] if args.key?(:text)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # A container wrapping elements necessary for showing suggestion items used in
+      # text input autocomplete.
+      class AppsDynamiteStorageSuggestions
+        include Google::Apis::Core::Hashable
+      
+        # A list of suggestions items which will be used in are used in autocomplete.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::CloudsearchV1::AppsDynamiteStorageSuggestionsSuggestionItem>]
+        attr_accessor :items
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @items = args[:items] if args.key?(:items)
+        end
+      end
+      
+      # A suggestion item. Only supports text for now.
+      class AppsDynamiteStorageSuggestionsSuggestionItem
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # A text input is a UI item where users can input text. A text input can also
+      # have an onChange action and suggestions.
+      class AppsDynamiteStorageTextInput
+        include Google::Apis::Core::Hashable
+      
+        # An action that describes the behavior when the form is submitted. For example,
+        # an Apps Script can be invoked to handle the form.
+        # Corresponds to the JSON property `autoCompleteAction`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteStorageAction]
+        attr_accessor :auto_complete_action
+      
+        # The hint text.
+        # Corresponds to the JSON property `hintText`
+        # @return [String]
+        attr_accessor :hint_text
+      
+        # A container wrapping elements necessary for showing suggestion items used in
+        # text input autocomplete.
+        # Corresponds to the JSON property `initialSuggestions`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteStorageSuggestions]
+        attr_accessor :initial_suggestions
+      
+        # At least one of label and hintText must be specified.
+        # Corresponds to the JSON property `label`
+        # @return [String]
+        attr_accessor :label
+      
+        # The name of the text input which is used in formInput.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # An action that describes the behavior when the form is submitted. For example,
+        # an Apps Script can be invoked to handle the form.
+        # Corresponds to the JSON property `onChangeAction`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteStorageAction]
+        attr_accessor :on_change_action
+      
+        # The style of the text, for example, a single line or multiple lines.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # The default value when there is no input from the user.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_complete_action = args[:auto_complete_action] if args.key?(:auto_complete_action)
+          @hint_text = args[:hint_text] if args.key?(:hint_text)
+          @initial_suggestions = args[:initial_suggestions] if args.key?(:initial_suggestions)
+          @label = args[:label] if args.key?(:label)
+          @name = args[:name] if args.key?(:name)
+          @on_change_action = args[:on_change_action] if args.key?(:on_change_action)
+          @type = args[:type] if args.key?(:type)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # A paragraph of text that supports formatting. See [Text formatting](workspace/
+      # add-ons/concepts/widgets#text_formatting") for details.
+      class AppsDynamiteStorageTextParagraph
+        include Google::Apis::Core::Hashable
+      
+        # The text that's shown in the widget.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # A widget is a UI element that presents texts, images, etc.
+      class AppsDynamiteStorageWidget
+        include Google::Apis::Core::Hashable
+      
+        # A list of buttons layed out horizontally.
+        # Corresponds to the JSON property `buttonList`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteStorageButtonList]
+        attr_accessor :button_list
+      
+        # Represents a Columns widget that displays a single row of columns.
+        # Corresponds to the JSON property `columns`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteStorageColumns]
+        attr_accessor :columns
+      
+        # The widget that lets users to specify a date and time.
+        # Corresponds to the JSON property `dateTimePicker`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteStorageDateTimePicker]
+        attr_accessor :date_time_picker
+      
+        # A widget that displays text with optional decorations such as a label above or
+        # below the text, an icon in front of the text, a selection widget or a button
+        # after the text.
+        # Corresponds to the JSON property `decoratedText`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteStorageDecoratedText]
         attr_accessor :decorated_text
       
         # A divider that appears in between widgets.
         # Corresponds to the JSON property `divider`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedDivider]
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteStorageDivider]
         attr_accessor :divider
       
         # Represents a Grid widget that displays items in a configurable grid layout.
         # Corresponds to the JSON property `grid`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedGrid]
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteStorageGrid]
         attr_accessor :grid
       
         # The horizontal alignment of this widget.
@@ -3758,25 +3766,25 @@ module Google
       
         # An image that is specified by a URL and can have an onClick action.
         # Corresponds to the JSON property `image`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedImage]
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteStorageImage]
         attr_accessor :image
       
         # A widget that creates a UI item (for example, a drop-down list) with options
         # for users to select.
         # Corresponds to the JSON property `selectionInput`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedSelectionInput]
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteStorageSelectionInput]
         attr_accessor :selection_input
       
         # A text input is a UI item where users can input text. A text input can also
         # have an onChange action and suggestions.
         # Corresponds to the JSON property `textInput`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedTextInput]
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteStorageTextInput]
         attr_accessor :text_input
       
         # A paragraph of text that supports formatting. See [Text formatting](workspace/
         # add-ons/concepts/widgets#text_formatting") for details.
         # Corresponds to the JSON property `textParagraph`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedTextParagraph]
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteStorageTextParagraph]
         attr_accessor :text_paragraph
       
         def initialize(**args)
@@ -4362,7 +4370,7 @@ module Google
         # [ ` "actionLabel": "Send Feedback", "onClick": ` "openLink": ` "url": "https://
         # example.com/feedback" ` ` ` ], "name": "contact-card-K3wB6arF2H9L" ` ```
         # Corresponds to the JSON property `cardAddOnData`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedCard]
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteStorageCard]
         attr_accessor :card_add_on_data
       
         # The markup for developers to specify the contents of a contextual AddOn. A
@@ -5081,6 +5089,11 @@ module Google
         # @return [Array<Google::Apis::CloudsearchV1::DocumentInfo>]
         attr_accessor :attached_documents
       
+        # List of available access types of the conference.
+        # Corresponds to the JSON property `availableAccessTypes`
+        # @return [Array<String>]
+        attr_accessor :available_access_types
+      
         # Output only. The set of reactions that clients are allowed to send and can
         # expect to receive. Note that a device in the conference should have the
         # MAY_SEND_REACTIONS privilege to be able to send reactions.
@@ -5199,6 +5212,7 @@ module Google
           @abuse_reporting_config = args[:abuse_reporting_config] if args.key?(:abuse_reporting_config)
           @artifact_owner = args[:artifact_owner] if args.key?(:artifact_owner)
           @attached_documents = args[:attached_documents] if args.key?(:attached_documents)
+          @available_access_types = args[:available_access_types] if args.key?(:available_access_types)
           @available_reactions = args[:available_reactions] if args.key?(:available_reactions)
           @broadcast_session_info = args[:broadcast_session_info] if args.key?(:broadcast_session_info)
           @calendar_event_id = args[:calendar_event_id] if args.key?(:calendar_event_id)
@@ -7716,9 +7730,19 @@ module Google
         attr_accessor :message_age_in_days
       
         # 
+        # Corresponds to the JSON property `messageSenderAffinityScore`
+        # @return [Float]
+        attr_accessor :message_sender_affinity_score
+      
+        # 
         # Corresponds to the JSON property `topicalityScore`
         # @return [Float]
         attr_accessor :topicality_score
+      
+        # 
+        # Corresponds to the JSON property `unjoinedSpaceAffinityScore`
+        # @return [Float]
+        attr_accessor :unjoined_space_affinity_score
       
         def initialize(**args)
            update!(**args)
@@ -7730,7 +7754,9 @@ module Google
           @freshness_score = args[:freshness_score] if args.key?(:freshness_score)
           @joined_space_affinity_score = args[:joined_space_affinity_score] if args.key?(:joined_space_affinity_score)
           @message_age_in_days = args[:message_age_in_days] if args.key?(:message_age_in_days)
+          @message_sender_affinity_score = args[:message_sender_affinity_score] if args.key?(:message_sender_affinity_score)
           @topicality_score = args[:topicality_score] if args.key?(:topicality_score)
+          @unjoined_space_affinity_score = args[:unjoined_space_affinity_score] if args.key?(:unjoined_space_affinity_score)
         end
       end
       
@@ -15055,7 +15081,7 @@ module Google
       # classes in google3/security/credentials/public/principal.h google3/java/com/
       # google/security/credentials/Principal.java google3/security/credentials/go/
       # principal.go unless direct proto access is essential. If you update this
-      # protocol buffer, please update the wrapper classes as well.
+      # protocol buffer, please update the wrapper classes as well. LINT.IfChange
       class PrincipalProto
         include Google::Apis::Core::Hashable
       
@@ -15180,15 +15206,13 @@ module Google
         attr_accessor :postini_user
       
         # Principal associated with a given RBAC role. This principal is used by Sphinx
-        # Provisioning Service for RBAC (go/cedi-auth) provisionable (go/sphinx-rbacz-
-        # design).
+        # Provisioning Service for RBAC provisionable (go/sphinx-rbacz).
         # Corresponds to the JSON property `rbacRole`
         # @return [Google::Apis::CloudsearchV1::RbacRoleProto]
         attr_accessor :rbac_role
       
         # Principal associated with a given RBAC subject. This principal is used by
-        # Sphinx Provisioning Service for RBAC (go/cedi-auth) provisionable (go/sphinx-
-        # rbacz-design).
+        # Sphinx Provisioning Service for RBAC provisionable (go/sphinx-rbacz).
         # Corresponds to the JSON property `rbacSubject`
         # @return [Google::Apis::CloudsearchV1::RbacSubjectProto]
         attr_accessor :rbac_subject
@@ -15421,7 +15445,7 @@ module Google
       
         # Indicates that the property can be used for generating facets. Cannot be true
         # for properties whose type is object. IsReturnable must be true to set this
-        # option. Only supported for boolean, enum, and text properties.
+        # option. Only supported for boolean, enum, integer, and text properties.
         # Corresponds to the JSON property `isFacetable`
         # @return [Boolean]
         attr_accessor :is_facetable
@@ -16154,8 +16178,7 @@ module Google
       end
       
       # Principal associated with a given RBAC role. This principal is used by Sphinx
-      # Provisioning Service for RBAC (go/cedi-auth) provisionable (go/sphinx-rbacz-
-      # design).
+      # Provisioning Service for RBAC provisionable (go/sphinx-rbacz).
       class RbacRoleProto
         include Google::Apis::Core::Hashable
       
@@ -16174,8 +16197,10 @@ module Google
         # @return [String]
         attr_accessor :rbac_namespace
       
-        # Format: "RbacNamespaceName.RbacRoleName(/field=value)*", e.g., "hr.v1.Reader",
-        # "hr.v1.Reader/language=EN_US/country=USA/room=NYC-9th-11A201".
+        # Format: "role/z?" - "role" is the Sphinx globally unique name of the Sphinx
+        # role that provisions the RBAC role. - "/z?" suffix indicates which Zanzibar
+        # environment stores the role membership data ("/zd": dev, "/zs": staging, "/zp":
+        # prod, "/zt": local test instance). Example: "mysystem_myrole/zp"
         # Corresponds to the JSON property `rbacRoleName`
         # @return [String]
         attr_accessor :rbac_role_name
@@ -16194,8 +16219,7 @@ module Google
       end
       
       # Principal associated with a given RBAC subject. This principal is used by
-      # Sphinx Provisioning Service for RBAC (go/cedi-auth) provisionable (go/sphinx-
-      # rbacz-design).
+      # Sphinx Provisioning Service for RBAC provisionable (go/sphinx-rbacz).
       class RbacSubjectProto
         include Google::Apis::Core::Hashable
       
@@ -20852,7 +20876,7 @@ module Google
         # classes in google3/security/credentials/public/principal.h google3/java/com/
         # google/security/credentials/Principal.java google3/security/credentials/go/
         # principal.go unless direct proto access is essential. If you update this
-        # protocol buffer, please update the wrapper classes as well.
+        # protocol buffer, please update the wrapper classes as well. LINT.IfChange
         # Corresponds to the JSON property `user`
         # @return [Google::Apis::CloudsearchV1::PrincipalProto]
         attr_accessor :user
