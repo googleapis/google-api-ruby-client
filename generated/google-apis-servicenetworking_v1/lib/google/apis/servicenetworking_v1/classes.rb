@@ -321,6 +321,14 @@ module Google
         # @return [Array<String>]
         attr_accessor :requested_ranges
       
+        # Optional. Defines the role field of the subnet, e.g. 'ACTIVE'. For information
+        # about the roles that can be set using this field, see [subnetwork](https://
+        # cloud.google.com/compute/docs/reference/rest/v1/subnetworks) in the Compute
+        # API documentation.
+        # Corresponds to the JSON property `role`
+        # @return [String]
+        attr_accessor :role
+      
         # Optional. A list of secondary IP ranges to be created within the new
         # subnetwork.
         # Corresponds to the JSON property `secondaryIpRangeSpecs`
@@ -369,6 +377,7 @@ module Google
           @region = args[:region] if args.key?(:region)
           @requested_address = args[:requested_address] if args.key?(:requested_address)
           @requested_ranges = args[:requested_ranges] if args.key?(:requested_ranges)
+          @role = args[:role] if args.key?(:role)
           @secondary_ip_range_specs = args[:secondary_ip_range_specs] if args.key?(:secondary_ip_range_specs)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
           @subnetwork_users = args[:subnetwork_users] if args.key?(:subnetwork_users)
