@@ -333,6 +333,12 @@ module Google
         # @return [Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2AlternatePolicySpec]
         attr_accessor :alternate
       
+        # Defines a Cloud Organization `PolicySpec` which is used to specify `
+        # Constraints` for configurations of Cloud Platform resources.
+        # Corresponds to the JSON property `dryRunSpec`
+        # @return [Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2PolicySpec]
+        attr_accessor :dry_run_spec
+      
         # Immutable. The resource name of the Policy. Must be one of the following forms,
         # where constraint_name is the name of the constraint which this Policy
         # configures: * `projects/`project_number`/policies/`constraint_name`` * `
@@ -358,6 +364,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @alternate = args[:alternate] if args.key?(:alternate)
+          @dry_run_spec = args[:dry_run_spec] if args.key?(:dry_run_spec)
           @name = args[:name] if args.key?(:name)
           @spec = args[:spec] if args.key?(:spec)
         end
