@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AdUrl
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Adloox
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -155,6 +161,12 @@ module Google
       end
       
       class AudienceGroupAssignedTargetingOptionDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AudioAd
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -316,6 +328,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BulkListAdGroupAssignedTargetingOptionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BulkListAdvertiserAssignedTargetingOptionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -347,6 +365,12 @@ module Google
       end
       
       class BulkUpdateLineItemsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BumperAd
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -455,6 +479,12 @@ module Google
       end
       
       class CombinedAudienceTargetingSetting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CommonInStreamAttribute
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -604,6 +634,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CustomLabel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CustomList
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -689,6 +725,12 @@ module Google
       end
       
       class Dimensions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DisplayVideoSourceAd
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -953,6 +995,18 @@ module Google
       end
       
       class IdFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ImageAsset
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InStreamAd
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1288,6 +1342,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListYoutubeAdGroupAdsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListYoutubeAdGroupAssignedTargetingOptionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListYoutubeAdGroupsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LocationList
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1307,6 +1379,12 @@ module Google
       end
       
       class ManualTrigger
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MastheadAd
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1367,6 +1445,12 @@ module Google
       end
       
       class NegativeKeywordListAssignedTargetingOptionDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NonSkippableAd
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1522,6 +1606,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ProductFeedData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ProductMatchDimension
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ProximityLocationListAssignedTargetingOptionDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1624,6 +1720,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SessionPositionAssignedTargetingOptionDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Site
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1643,6 +1745,12 @@ module Google
       end
       
       class SubExchangeTargetingOptionDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TargetFrequency
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1750,6 +1858,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VideoDiscoveryAd
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VideoPerformanceAd
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VideoPlayerSizeAssignedTargetingOptionDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1769,6 +1889,24 @@ module Google
       end
       
       class ViewabilityTargetingOptionDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class YoutubeAdGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class YoutubeAdGroupAd
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class YoutubeAdGroupAssignedTargetingOption
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1798,6 +1936,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class YoutubeChannelAssignedTargetingOptionDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class YoutubeVideoAssignedTargetingOptionDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class YoutubeVideoDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ActivateManualTriggerRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1812,6 +1968,14 @@ module Google
           property :minimum_quartile, as: 'minimumQuartile'
           property :minimum_viewability, as: 'minimumViewability'
           property :minimum_volume, as: 'minimumVolume'
+        end
+      end
+      
+      class AdUrl
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
+          property :url, as: 'url'
         end
       end
       
@@ -2069,6 +2233,8 @@ module Google
       
           property :sensitive_category_exclusion_details, as: 'sensitiveCategoryExclusionDetails', class: Google::Apis::DisplayvideoV2::SensitiveCategoryAssignedTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV2::SensitiveCategoryAssignedTargetingOptionDetails::Representation
       
+          property :session_position_details, as: 'sessionPositionDetails', class: Google::Apis::DisplayvideoV2::SessionPositionAssignedTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV2::SessionPositionAssignedTargetingOptionDetails::Representation
+      
           property :sub_exchange_details, as: 'subExchangeDetails', class: Google::Apis::DisplayvideoV2::SubExchangeAssignedTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV2::SubExchangeAssignedTargetingOptionDetails::Representation
       
           property :targeting_type, as: 'targetingType'
@@ -2081,6 +2247,10 @@ module Google
           property :video_player_size_details, as: 'videoPlayerSizeDetails', class: Google::Apis::DisplayvideoV2::VideoPlayerSizeAssignedTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV2::VideoPlayerSizeAssignedTargetingOptionDetails::Representation
       
           property :viewability_details, as: 'viewabilityDetails', class: Google::Apis::DisplayvideoV2::ViewabilityAssignedTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV2::ViewabilityAssignedTargetingOptionDetails::Representation
+      
+          property :youtube_channel_details, as: 'youtubeChannelDetails', class: Google::Apis::DisplayvideoV2::YoutubeChannelAssignedTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV2::YoutubeChannelAssignedTargetingOptionDetails::Representation
+      
+          property :youtube_video_details, as: 'youtubeVideoDetails', class: Google::Apis::DisplayvideoV2::YoutubeVideoAssignedTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV2::YoutubeVideoAssignedTargetingOptionDetails::Representation
       
         end
       end
@@ -2109,6 +2279,17 @@ module Google
           collection :included_first_and_third_party_audience_groups, as: 'includedFirstAndThirdPartyAudienceGroups', class: Google::Apis::DisplayvideoV2::FirstAndThirdPartyAudienceGroup, decorator: Google::Apis::DisplayvideoV2::FirstAndThirdPartyAudienceGroup::Representation
       
           property :included_google_audience_group, as: 'includedGoogleAudienceGroup', class: Google::Apis::DisplayvideoV2::GoogleAudienceGroup, decorator: Google::Apis::DisplayvideoV2::GoogleAudienceGroup::Representation
+      
+        end
+      end
+      
+      class AudioAd
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_url, as: 'displayUrl'
+          property :final_url, as: 'finalUrl'
+          property :tracking_url, as: 'trackingUrl'
+          property :video, as: 'video', class: Google::Apis::DisplayvideoV2::YoutubeVideoDetails, decorator: Google::Apis::DisplayvideoV2::YoutubeVideoDetails::Representation
       
         end
       end
@@ -2350,6 +2531,15 @@ module Google
         end
       end
       
+      class BulkListAdGroupAssignedTargetingOptionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :youtube_ad_group_assigned_targeting_options, as: 'youtubeAdGroupAssignedTargetingOptions', class: Google::Apis::DisplayvideoV2::YoutubeAdGroupAssignedTargetingOption, decorator: Google::Apis::DisplayvideoV2::YoutubeAdGroupAssignedTargetingOption::Representation
+      
+        end
+      end
+      
       class BulkListAdvertiserAssignedTargetingOptionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2404,6 +2594,14 @@ module Google
           collection :failed_line_item_ids, as: 'failedLineItemIds'
           collection :skipped_line_item_ids, as: 'skippedLineItemIds'
           collection :updated_line_item_ids, as: 'updatedLineItemIds'
+        end
+      end
+      
+      class BumperAd
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :common_in_stream_attribute, as: 'commonInStreamAttribute', class: Google::Apis::DisplayvideoV2::CommonInStreamAttribute, decorator: Google::Apis::DisplayvideoV2::CommonInStreamAttribute::Representation
+      
         end
       end
       
@@ -2585,6 +2783,21 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :combined_audience_id, :numeric_string => true, as: 'combinedAudienceId'
+        end
+      end
+      
+      class CommonInStreamAttribute
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action_button_label, as: 'actionButtonLabel'
+          property :action_headline, as: 'actionHeadline'
+          property :companion_banner, as: 'companionBanner', class: Google::Apis::DisplayvideoV2::ImageAsset, decorator: Google::Apis::DisplayvideoV2::ImageAsset::Representation
+      
+          property :display_url, as: 'displayUrl'
+          property :final_url, as: 'finalUrl'
+          property :tracking_url, as: 'trackingUrl'
+          property :video, as: 'video', class: Google::Apis::DisplayvideoV2::YoutubeVideoDetails, decorator: Google::Apis::DisplayvideoV2::YoutubeVideoDetails::Representation
+      
         end
       end
       
@@ -2866,6 +3079,14 @@ module Google
         end
       end
       
+      class CustomLabel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :value, as: 'value'
+        end
+      end
+      
       class CustomList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2983,6 +3204,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :height_pixels, as: 'heightPixels'
           property :width_pixels, as: 'widthPixels'
+        end
+      end
+      
+      class DisplayVideoSourceAd
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creative_id, :numeric_string => true, as: 'creativeId'
         end
       end
       
@@ -3394,6 +3622,25 @@ module Google
           collection :insertion_order_ids, as: 'insertionOrderIds'
           collection :line_item_ids, as: 'lineItemIds'
           collection :media_product_ids, as: 'mediaProductIds'
+        end
+      end
+      
+      class ImageAsset
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :file_size, :numeric_string => true, as: 'fileSize'
+          property :full_size, as: 'fullSize', class: Google::Apis::DisplayvideoV2::Dimensions, decorator: Google::Apis::DisplayvideoV2::Dimensions::Representation
+      
+          property :mime_type, as: 'mimeType'
+        end
+      end
+      
+      class InStreamAd
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :common_in_stream_attribute, as: 'commonInStreamAttribute', class: Google::Apis::DisplayvideoV2::CommonInStreamAttribute, decorator: Google::Apis::DisplayvideoV2::CommonInStreamAttribute::Representation
+      
+          hash :custom_parameters, as: 'customParameters'
         end
       end
       
@@ -3990,6 +4237,33 @@ module Google
         end
       end
       
+      class ListYoutubeAdGroupAdsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :youtube_ad_group_ads, as: 'youtubeAdGroupAds', class: Google::Apis::DisplayvideoV2::YoutubeAdGroupAd, decorator: Google::Apis::DisplayvideoV2::YoutubeAdGroupAd::Representation
+      
+        end
+      end
+      
+      class ListYoutubeAdGroupAssignedTargetingOptionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :assigned_targeting_options, as: 'assignedTargetingOptions', class: Google::Apis::DisplayvideoV2::AssignedTargetingOption, decorator: Google::Apis::DisplayvideoV2::AssignedTargetingOption::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListYoutubeAdGroupsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :youtube_ad_groups, as: 'youtubeAdGroups', class: Google::Apis::DisplayvideoV2::YoutubeAdGroup, decorator: Google::Apis::DisplayvideoV2::YoutubeAdGroup::Representation
+      
+        end
+      end
+      
       class LocationList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4026,6 +4300,25 @@ module Google
           property :name, as: 'name'
           property :state, as: 'state'
           property :trigger_id, :numeric_string => true, as: 'triggerId'
+        end
+      end
+      
+      class MastheadAd
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :autoplay_video_duration, as: 'autoplayVideoDuration'
+          property :autoplay_video_start_millisecond, :numeric_string => true, as: 'autoplayVideoStartMillisecond'
+          property :call_to_action_button_label, as: 'callToActionButtonLabel'
+          property :call_to_action_final_url, as: 'callToActionFinalUrl'
+          property :call_to_action_tracking_url, as: 'callToActionTrackingUrl'
+          collection :companion_youtube_videos, as: 'companionYoutubeVideos', class: Google::Apis::DisplayvideoV2::YoutubeVideoDetails, decorator: Google::Apis::DisplayvideoV2::YoutubeVideoDetails::Representation
+      
+          property :description, as: 'description'
+          property :headline, as: 'headline'
+          property :show_channel_art, as: 'showChannelArt'
+          property :video, as: 'video', class: Google::Apis::DisplayvideoV2::YoutubeVideoDetails, decorator: Google::Apis::DisplayvideoV2::YoutubeVideoDetails::Representation
+      
+          property :video_aspect_ratio, as: 'videoAspectRatio'
         end
       end
       
@@ -4110,6 +4403,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :negative_keyword_list_id, :numeric_string => true, as: 'negativeKeywordListId'
+        end
+      end
+      
+      class NonSkippableAd
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :common_in_stream_attribute, as: 'commonInStreamAttribute', class: Google::Apis::DisplayvideoV2::CommonInStreamAttribute, decorator: Google::Apis::DisplayvideoV2::CommonInStreamAttribute::Representation
+      
+          hash :custom_parameters, as: 'customParameters'
         end
       end
       
@@ -4348,6 +4650,25 @@ module Google
         end
       end
       
+      class ProductFeedData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_feed_disabled, as: 'isFeedDisabled'
+          collection :product_match_dimensions, as: 'productMatchDimensions', class: Google::Apis::DisplayvideoV2::ProductMatchDimension, decorator: Google::Apis::DisplayvideoV2::ProductMatchDimension::Representation
+      
+          property :product_match_type, as: 'productMatchType'
+        end
+      end
+      
+      class ProductMatchDimension
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_label, as: 'customLabel', class: Google::Apis::DisplayvideoV2::CustomLabel, decorator: Google::Apis::DisplayvideoV2::CustomLabel::Representation
+      
+          property :product_offer_id, as: 'productOfferId'
+        end
+      end
+      
       class ProximityLocationListAssignedTargetingOptionDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4504,6 +4825,13 @@ module Google
         end
       end
       
+      class SessionPositionAssignedTargetingOptionDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :session_position, as: 'sessionPosition'
+        end
+      end
+      
       class Site
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4532,6 +4860,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
+        end
+      end
+      
+      class TargetFrequency
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :target_count, :numeric_string => true, as: 'targetCount'
+          property :time_unit, as: 'timeUnit'
+          property :time_unit_count, as: 'timeUnitCount'
         end
       end
       
@@ -4756,6 +5093,38 @@ module Google
         end
       end
       
+      class VideoDiscoveryAd
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description1, as: 'description1'
+          property :description2, as: 'description2'
+          property :headline, as: 'headline'
+          property :thumbnail, as: 'thumbnail'
+          property :video, as: 'video', class: Google::Apis::DisplayvideoV2::YoutubeVideoDetails, decorator: Google::Apis::DisplayvideoV2::YoutubeVideoDetails::Representation
+      
+        end
+      end
+      
+      class VideoPerformanceAd
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :action_button_labels, as: 'actionButtonLabels'
+          collection :companion_banners, as: 'companionBanners', class: Google::Apis::DisplayvideoV2::ImageAsset, decorator: Google::Apis::DisplayvideoV2::ImageAsset::Representation
+      
+          hash :custom_parameters, as: 'customParameters'
+          collection :descriptions, as: 'descriptions'
+          property :display_url_breadcrumb1, as: 'displayUrlBreadcrumb1'
+          property :display_url_breadcrumb2, as: 'displayUrlBreadcrumb2'
+          property :domain, as: 'domain'
+          property :final_url, as: 'finalUrl'
+          collection :headlines, as: 'headlines'
+          collection :long_headlines, as: 'longHeadlines'
+          property :tracking_url, as: 'trackingUrl'
+          collection :videos, as: 'videos', class: Google::Apis::DisplayvideoV2::YoutubeVideoDetails, decorator: Google::Apis::DisplayvideoV2::YoutubeVideoDetails::Representation
+      
+        end
+      end
+      
       class VideoPlayerSizeAssignedTargetingOptionDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4784,9 +5153,70 @@ module Google
         end
       end
       
+      class YoutubeAdGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ad_group_format, as: 'adGroupFormat'
+          property :ad_group_id, :numeric_string => true, as: 'adGroupId'
+          property :advertiser_id, :numeric_string => true, as: 'advertiserId'
+          property :bidding_strategy, as: 'biddingStrategy', class: Google::Apis::DisplayvideoV2::YoutubeAndPartnersBiddingStrategy, decorator: Google::Apis::DisplayvideoV2::YoutubeAndPartnersBiddingStrategy::Representation
+      
+          property :display_name, as: 'displayName'
+          property :entity_status, as: 'entityStatus'
+          property :line_item_id, :numeric_string => true, as: 'lineItemId'
+          property :name, as: 'name'
+          property :product_feed_data, as: 'productFeedData', class: Google::Apis::DisplayvideoV2::ProductFeedData, decorator: Google::Apis::DisplayvideoV2::ProductFeedData::Representation
+      
+          property :targeting_expansion, as: 'targetingExpansion', class: Google::Apis::DisplayvideoV2::TargetingExpansionConfig, decorator: Google::Apis::DisplayvideoV2::TargetingExpansionConfig::Representation
+      
+          collection :youtube_ad_ids, as: 'youtubeAdIds'
+        end
+      end
+      
+      class YoutubeAdGroupAd
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ad_group_ad_id, :numeric_string => true, as: 'adGroupAdId'
+          property :ad_group_id, :numeric_string => true, as: 'adGroupId'
+          collection :ad_urls, as: 'adUrls', class: Google::Apis::DisplayvideoV2::AdUrl, decorator: Google::Apis::DisplayvideoV2::AdUrl::Representation
+      
+          property :advertiser_id, :numeric_string => true, as: 'advertiserId'
+          property :audio_ad, as: 'audioAd', class: Google::Apis::DisplayvideoV2::AudioAd, decorator: Google::Apis::DisplayvideoV2::AudioAd::Representation
+      
+          property :bumper_ad, as: 'bumperAd', class: Google::Apis::DisplayvideoV2::BumperAd, decorator: Google::Apis::DisplayvideoV2::BumperAd::Representation
+      
+          property :display_name, as: 'displayName'
+          property :display_video_source_ad, as: 'displayVideoSourceAd', class: Google::Apis::DisplayvideoV2::DisplayVideoSourceAd, decorator: Google::Apis::DisplayvideoV2::DisplayVideoSourceAd::Representation
+      
+          property :entity_status, as: 'entityStatus'
+          property :in_stream_ad, as: 'inStreamAd', class: Google::Apis::DisplayvideoV2::InStreamAd, decorator: Google::Apis::DisplayvideoV2::InStreamAd::Representation
+      
+          property :masthead_ad, as: 'mastheadAd', class: Google::Apis::DisplayvideoV2::MastheadAd, decorator: Google::Apis::DisplayvideoV2::MastheadAd::Representation
+      
+          property :name, as: 'name'
+          property :non_skippable_ad, as: 'nonSkippableAd', class: Google::Apis::DisplayvideoV2::NonSkippableAd, decorator: Google::Apis::DisplayvideoV2::NonSkippableAd::Representation
+      
+          property :video_discover_ad, as: 'videoDiscoverAd', class: Google::Apis::DisplayvideoV2::VideoDiscoveryAd, decorator: Google::Apis::DisplayvideoV2::VideoDiscoveryAd::Representation
+      
+          property :video_performance_ad, as: 'videoPerformanceAd', class: Google::Apis::DisplayvideoV2::VideoPerformanceAd, decorator: Google::Apis::DisplayvideoV2::VideoPerformanceAd::Representation
+      
+        end
+      end
+      
+      class YoutubeAdGroupAssignedTargetingOption
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :assigned_targeting_option, as: 'assignedTargetingOption', class: Google::Apis::DisplayvideoV2::AssignedTargetingOption, decorator: Google::Apis::DisplayvideoV2::AssignedTargetingOption::Representation
+      
+          property :youtube_ad_group_id, :numeric_string => true, as: 'youtubeAdGroupId'
+        end
+      end
+      
       class YoutubeAndPartnersBiddingStrategy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :ad_group_effective_target_cpa_source, as: 'adGroupEffectiveTargetCpaSource'
+          property :ad_group_effective_target_cpa_value, :numeric_string => true, as: 'adGroupEffectiveTargetCpaValue'
           property :type, as: 'type'
           property :value, :numeric_string => true, as: 'value'
         end
@@ -4809,6 +5239,11 @@ module Google
           property :content_category, as: 'contentCategory'
           property :inventory_source_settings, as: 'inventorySourceSettings', class: Google::Apis::DisplayvideoV2::YoutubeAndPartnersInventorySourceConfig, decorator: Google::Apis::DisplayvideoV2::YoutubeAndPartnersInventorySourceConfig::Representation
       
+          property :lead_form_id, :numeric_string => true, as: 'leadFormId'
+          property :linked_merchant_id, :numeric_string => true, as: 'linkedMerchantId'
+          collection :related_video_ids, as: 'relatedVideoIds'
+          property :target_frequency, as: 'targetFrequency', class: Google::Apis::DisplayvideoV2::TargetFrequency, decorator: Google::Apis::DisplayvideoV2::TargetFrequency::Representation
+      
           property :third_party_measurement_settings, as: 'thirdPartyMeasurementSettings', class: Google::Apis::DisplayvideoV2::YoutubeAndPartnersThirdPartyMeasurementSettings, decorator: Google::Apis::DisplayvideoV2::YoutubeAndPartnersThirdPartyMeasurementSettings::Representation
       
           property :video_ad_sequence_settings, as: 'videoAdSequenceSettings', class: Google::Apis::DisplayvideoV2::VideoAdSequenceSettings, decorator: Google::Apis::DisplayvideoV2::VideoAdSequenceSettings::Representation
@@ -4829,6 +5264,30 @@ module Google
       
           collection :viewability_vendor_configs, as: 'viewabilityVendorConfigs', class: Google::Apis::DisplayvideoV2::ThirdPartyVendorConfig, decorator: Google::Apis::DisplayvideoV2::ThirdPartyVendorConfig::Representation
       
+        end
+      end
+      
+      class YoutubeChannelAssignedTargetingOptionDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :channel_id, as: 'channelId'
+          property :negative, as: 'negative'
+        end
+      end
+      
+      class YoutubeVideoAssignedTargetingOptionDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :negative, as: 'negative'
+          property :video_id, as: 'videoId'
+        end
+      end
+      
+      class YoutubeVideoDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :unavailable_reason, as: 'unavailableReason'
         end
       end
     end

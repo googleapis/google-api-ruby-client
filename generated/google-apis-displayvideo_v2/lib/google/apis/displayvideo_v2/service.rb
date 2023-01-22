@@ -3806,6 +3806,373 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets a YouTube ad group ad.
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the advertiser this ad group ad belongs to.
+        # @param [Fixnum] youtube_ad_group_ad_id
+        #   Required. The ID of the ad group ad to fetch.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV2::YoutubeAdGroupAd] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV2::YoutubeAdGroupAd]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_advertiser_youtube_ad_group_ad(advertiser_id, youtube_ad_group_ad_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/advertisers/{+advertiserId}/youtubeAdGroupAds/{+youtubeAdGroupAdId}', options)
+          command.response_representation = Google::Apis::DisplayvideoV2::YoutubeAdGroupAd::Representation
+          command.response_class = Google::Apis::DisplayvideoV2::YoutubeAdGroupAd
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.params['youtubeAdGroupAdId'] = youtube_ad_group_ad_id unless youtube_ad_group_ad_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists YouTube ad group ads.
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the advertiser the ad groups belongs to.
+        # @param [String] filter
+        #   Allows filtering by custom YouTube ad group ad fields. Supported syntax: *
+        #   Filter expressions are made up of one or more restrictions. * Restrictions can
+        #   be combined by `AND` and `OR`. Only the restrictions for * the same field can
+        #   be combined by `OR`. A sequence of restrictions * implicitly uses `AND`. * A
+        #   restriction has the form of ``field` `operator` `value``. * The operator must
+        #   be `EQUALS (=)`. * Supported properties: - `adGroupId` - `displayName` - `
+        #   entityStatus` - `adGroupAdId` Examples: * All ad group ads under an ad group: `
+        #   adGroupId="1234"` and its * entityStatus is `ENTITY_STATUS_ACTIVE` or `
+        #   ENTITY_STATUS_PAUSED`: `(entityStatus="ENTITY_STATUS_ACTIVE" OR entityStatus="
+        #   ENTITY_STATUS_PAUSED") AND adGroupId="12345"` The length of this field should
+        #   be no more than 500 characters.
+        # @param [String] order_by
+        #   Field by which to sort the list. Acceptable values are: * `displayName` (
+        #   default) * `entityStatus` The default sorting order is ascending. To specify
+        #   descending order for a field, a suffix "desc" should be added to the field
+        #   name. Example: `displayName desc`.
+        # @param [Fixnum] page_size
+        #   Requested page size. Must be between `1` and `100`. If unspecified will
+        #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is
+        #   specified.
+        # @param [String] page_token
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of next_page_token returned from the previous call to `
+        #   ListYoutubeAdGroupAds` method. If not specified, the first page of results
+        #   will be returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV2::ListYoutubeAdGroupAdsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV2::ListYoutubeAdGroupAdsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_advertiser_youtube_ad_group_ads(advertiser_id, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/advertisers/{+advertiserId}/youtubeAdGroupAds', options)
+          command.response_representation = Google::Apis::DisplayvideoV2::ListYoutubeAdGroupAdsResponse::Representation
+          command.response_class = Google::Apis::DisplayvideoV2::ListYoutubeAdGroupAdsResponse
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists assigned targeting options for multiple YouTube ad groups across
+        # targeting types.
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the advertiser the line items belongs to.
+        # @param [String] filter
+        #   Allows filtering by assigned targeting option properties. Supported syntax: *
+        #   Filter expressions are made up of one or more restrictions. * Restrictions can
+        #   be combined by the logical operator `OR` on the same field. * A restriction
+        #   has the form of ``field` `operator` `value``. * The operator must be `EQUALS (=
+        #   )`. * Supported fields: - `targetingType` Examples: * AssignedTargetingOptions
+        #   of targeting type TARGETING_TYPE_YOUTUBE_VIDEO or
+        #   TARGETING_TYPE_YOUTUBE_CHANNEL `targetingType="TARGETING_TYPE_YOUTUBE_VIDEO"
+        #   OR targetingType="TARGETING_TYPE_YOUTUBE_CHANNEL"` The length of this field
+        #   should be no more than 500 characters.
+        # @param [String] order_by
+        #   Field by which to sort the list. Acceptable values are: * `youtubeAdGroupId` (
+        #   default) * `assignedTargetingOption.targetingType` The default sorting order
+        #   is ascending. To specify descending order for a field, a suffix "desc" should
+        #   be added to the field name. Example: `targetingType desc`.
+        # @param [Fixnum] page_size
+        #   Requested page size. The size must be an integer between `1` and `5000`. If
+        #   unspecified, the default is '5000'. Returns error code `INVALID_ARGUMENT` if
+        #   an invalid value is specified.
+        # @param [String] page_token
+        #   A token that lets the client fetch the next page of results. Typically, this
+        #   is the value of next_page_token returned from the previous call to the `
+        #   BulkListAdGroupAssignedTargetingOptions` method. If not specified, the first
+        #   page of results will be returned.
+        # @param [Array<Fixnum>, Fixnum] youtube_ad_group_ids
+        #   Required. The IDs of the youtube ad groups to list assigned targeting options
+        #   for.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV2::BulkListAdGroupAssignedTargetingOptionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV2::BulkListAdGroupAssignedTargetingOptionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def bulk_advertiser_youtube_ad_group_list_ad_group_assigned_targeting_options(advertiser_id, filter: nil, order_by: nil, page_size: nil, page_token: nil, youtube_ad_group_ids: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/advertisers/{+advertiserId}/youtubeAdGroups:bulkListAdGroupAssignedTargetingOptions', options)
+          command.response_representation = Google::Apis::DisplayvideoV2::BulkListAdGroupAssignedTargetingOptionsResponse::Representation
+          command.response_class = Google::Apis::DisplayvideoV2::BulkListAdGroupAssignedTargetingOptionsResponse
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['youtubeAdGroupIds'] = youtube_ad_group_ids unless youtube_ad_group_ids.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a YouTube ad group.
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the advertiser this ad group belongs to.
+        # @param [Fixnum] youtube_ad_group_id
+        #   Required. The ID of the ad group to fetch.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV2::YoutubeAdGroup] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV2::YoutubeAdGroup]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_advertiser_youtube_ad_group(advertiser_id, youtube_ad_group_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/advertisers/{+advertiserId}/youtubeAdGroups/{+youtubeAdGroupId}', options)
+          command.response_representation = Google::Apis::DisplayvideoV2::YoutubeAdGroup::Representation
+          command.response_class = Google::Apis::DisplayvideoV2::YoutubeAdGroup
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.params['youtubeAdGroupId'] = youtube_ad_group_id unless youtube_ad_group_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists YouTube ad groups.
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the advertiser the ad groups belongs to.
+        # @param [String] filter
+        #   Allows filtering by custom YouTube ad group fields. Supported syntax: * Filter
+        #   expressions are made up of one or more restrictions. * Restrictions can be
+        #   combined by `AND` and `OR`. Only the restrictions for * the same field can be
+        #   combined by `OR`. A sequence of restrictions * implicitly uses `AND`. * A
+        #   restriction has the form of ``field` `operator` `value``. * The operator must
+        #   be `EQUALS (=)`. * Supported properties: - `adGroupId` - `displayName` - `
+        #   entityStatus` - `lineItemId` - `adGroupFormat` Examples: * All ad groups under
+        #   an line item: `lineItemId="1234"` * All `ENTITY_STATUS_ACTIVE` or `
+        #   ENTITY_STATUS_PAUSED` and `YOUTUBE_AND_PARTNERS_AD_GROUP_FORMAT_IN_STREAM` ad
+        #   groups under an advertiser: `(entityStatus="ENTITY_STATUS_ACTIVE" OR
+        #   entityStatus="ENTITY_STATUS_PAUSED") AND adGroupFormat="
+        #   YOUTUBE_AND_PARTNERS_AD_GROUP_FORMAT_IN_STREAM"` The length of this field
+        #   should be no more than 500 characters.
+        # @param [String] order_by
+        #   Field by which to sort the list. Acceptable values are: * `displayName` (
+        #   default) * `entityStatus` The default sorting order is ascending. To specify
+        #   descending order for a field, a suffix "desc" should be added to the field
+        #   name. Example: `displayName desc`.
+        # @param [Fixnum] page_size
+        #   Requested page size. Must be between `1` and `200`. If unspecified will
+        #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is
+        #   specified.
+        # @param [String] page_token
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of next_page_token returned from the previous call to `
+        #   ListYoutubeAdGroups` method. If not specified, the first page of results will
+        #   be returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV2::ListYoutubeAdGroupsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV2::ListYoutubeAdGroupsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_advertiser_youtube_ad_groups(advertiser_id, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/advertisers/{+advertiserId}/youtubeAdGroups', options)
+          command.response_representation = Google::Apis::DisplayvideoV2::ListYoutubeAdGroupsResponse::Representation
+          command.response_class = Google::Apis::DisplayvideoV2::ListYoutubeAdGroupsResponse
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a single targeting option assigned to a YouTube ad group. Inherited
+        # targeting is not included.
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the advertiser the ad group belongs to.
+        # @param [Fixnum] youtube_ad_group_id
+        #   Required. The ID of the ad group the assigned targeting option belongs to.
+        # @param [String] targeting_type
+        #   Required. Identifies the type of this assigned targeting option. Supported
+        #   targeting types include: * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_AGE_RANGE`
+        #   * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `
+        #   TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_URL` * `TARGETING_TYPE_APP` *
+        #   `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_KEYWORD` * `
+        #   TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_SESSION_POSITION` * `
+        #   TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_YOUTUBE_VIDEO`
+        # @param [String] assigned_targeting_option_id
+        #   Required. An identifier unique to the targeting type in this line item that
+        #   identifies the assigned targeting option being requested.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV2::AssignedTargetingOption] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV2::AssignedTargetingOption]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_advertiser_youtube_ad_group_targeting_type_assigned_targeting_option(advertiser_id, youtube_ad_group_id, targeting_type, assigned_targeting_option_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/advertisers/{+advertiserId}/youtubeAdGroups/{+youtubeAdGroupId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}', options)
+          command.response_representation = Google::Apis::DisplayvideoV2::AssignedTargetingOption::Representation
+          command.response_class = Google::Apis::DisplayvideoV2::AssignedTargetingOption
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.params['youtubeAdGroupId'] = youtube_ad_group_id unless youtube_ad_group_id.nil?
+          command.params['targetingType'] = targeting_type unless targeting_type.nil?
+          command.params['assignedTargetingOptionId'] = assigned_targeting_option_id unless assigned_targeting_option_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the targeting options assigned to a YouTube ad group. Inherited
+        # targeting is not included.
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the advertiser the ad group belongs to.
+        # @param [Fixnum] youtube_ad_group_id
+        #   Required. The ID of the ad group to list assigned targeting options for.
+        # @param [String] targeting_type
+        #   Required. Identifies the type of assigned targeting options to list. Supported
+        #   targeting types include: * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_AGE_RANGE`
+        #   * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `
+        #   TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_URL` * `TARGETING_TYPE_APP` *
+        #   `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_KEYWORD` * `
+        #   TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_SESSION_POSITION` * `
+        #   TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_YOUTUBE_VIDEO`
+        # @param [String] filter
+        #   Allows filtering by assigned targeting option properties. Supported syntax: *
+        #   Filter expressions are made up of one or more restrictions. * Restrictions can
+        #   be combined by the logical operator `OR`. * A restriction has the form of ``
+        #   field` `operator` `value``. * The operator must be `EQUALS (=)`. * Supported
+        #   fields: - `assignedTargetingOptionId` Examples: * AssignedTargetingOptions
+        #   with ID 1 or 2 `assignedTargetingOptionId="1" OR assignedTargetingOptionId="2"`
+        #   The length of this field should be no more than 500 characters.
+        # @param [String] order_by
+        #   Field by which to sort the list. Acceptable values are: * `
+        #   assignedTargetingOptionId` (default) The default sorting order is ascending.
+        #   To specify descending order for a field, a suffix "desc" should be added to
+        #   the field name. Example: `assignedTargetingOptionId desc`.
+        # @param [Fixnum] page_size
+        #   Requested page size. Must be between `1` and `5000`. If unspecified will
+        #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is
+        #   specified.
+        # @param [String] page_token
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of next_page_token returned from the previous call to `
+        #   ListYoutubeAdGroupAssignedTargetingOptions` method. If not specified, the
+        #   first page of results will be returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV2::ListYoutubeAdGroupAssignedTargetingOptionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV2::ListYoutubeAdGroupAssignedTargetingOptionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_advertiser_youtube_ad_group_targeting_type_assigned_targeting_options(advertiser_id, youtube_ad_group_id, targeting_type, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/advertisers/{+advertiserId}/youtubeAdGroups/{+youtubeAdGroupId}/targetingTypes/{+targetingType}/assignedTargetingOptions', options)
+          command.response_representation = Google::Apis::DisplayvideoV2::ListYoutubeAdGroupAssignedTargetingOptionsResponse::Representation
+          command.response_class = Google::Apis::DisplayvideoV2::ListYoutubeAdGroupAssignedTargetingOptionsResponse
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.params['youtubeAdGroupId'] = youtube_ad_group_id unless youtube_ad_group_id.nil?
+          command.params['targetingType'] = targeting_type unless targeting_type.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets a combined audience.
         # @param [Fixnum] combined_audience_id
         #   Required. The ID of the combined audience to fetch.

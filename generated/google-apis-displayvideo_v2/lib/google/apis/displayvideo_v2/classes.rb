@@ -86,6 +86,31 @@ module Google
         end
       end
       
+      # Additional URLs related to the ad, including beacons.
+      class AdUrl
+        include Google::Apis::Core::Hashable
+      
+        # The type of the AD url.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # The url value of the ad url.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
+          @url = args[:url] if args.key?(:url)
+        end
+      end
+      
       # Details of Adloox settings.
       class Adloox
         include Google::Apis::Core::Hashable
@@ -1022,6 +1047,13 @@ module Google
         # @return [Google::Apis::DisplayvideoV2::SensitiveCategoryAssignedTargetingOptionDetails]
         attr_accessor :sensitive_category_exclusion_details
       
+        # Details for session position assigned targeting option. This will be populated
+        # in the session_position_details field when targeting_type is `
+        # TARGETING_TYPE_SESSION_POSITION`.
+        # Corresponds to the JSON property `sessionPositionDetails`
+        # @return [Google::Apis::DisplayvideoV2::SessionPositionAssignedTargetingOptionDetails]
+        attr_accessor :session_position_details
+      
         # Details for assigned sub-exchange targeting option. This will be populated in
         # the details field of an AssignedTargetingOption when targeting_type is `
         # TARGETING_TYPE_SUB_EXCHANGE`.
@@ -1070,6 +1102,20 @@ module Google
         # Corresponds to the JSON property `viewabilityDetails`
         # @return [Google::Apis::DisplayvideoV2::ViewabilityAssignedTargetingOptionDetails]
         attr_accessor :viewability_details
+      
+        # Details for YouTube channel assigned targeting option. This will be populated
+        # in the youtube_channel_details field when targeting_type is `
+        # TARGETING_TYPE_YOUTUBE_CHANNEL`.
+        # Corresponds to the JSON property `youtubeChannelDetails`
+        # @return [Google::Apis::DisplayvideoV2::YoutubeChannelAssignedTargetingOptionDetails]
+        attr_accessor :youtube_channel_details
+      
+        # Details for YouTube video assigned targeting option. This will be populated in
+        # the youtube_video_details field when targeting_type is `
+        # TARGETING_TYPE_YOUTUBE_VIDEO`.
+        # Corresponds to the JSON property `youtubeVideoDetails`
+        # @return [Google::Apis::DisplayvideoV2::YoutubeVideoAssignedTargetingOptionDetails]
+        attr_accessor :youtube_video_details
       
         def initialize(**args)
            update!(**args)
@@ -1120,6 +1166,7 @@ module Google
           @proximity_location_list_details = args[:proximity_location_list_details] if args.key?(:proximity_location_list_details)
           @regional_location_list_details = args[:regional_location_list_details] if args.key?(:regional_location_list_details)
           @sensitive_category_exclusion_details = args[:sensitive_category_exclusion_details] if args.key?(:sensitive_category_exclusion_details)
+          @session_position_details = args[:session_position_details] if args.key?(:session_position_details)
           @sub_exchange_details = args[:sub_exchange_details] if args.key?(:sub_exchange_details)
           @targeting_type = args[:targeting_type] if args.key?(:targeting_type)
           @third_party_verifier_details = args[:third_party_verifier_details] if args.key?(:third_party_verifier_details)
@@ -1127,6 +1174,8 @@ module Google
           @user_rewarded_content_details = args[:user_rewarded_content_details] if args.key?(:user_rewarded_content_details)
           @video_player_size_details = args[:video_player_size_details] if args.key?(:video_player_size_details)
           @viewability_details = args[:viewability_details] if args.key?(:viewability_details)
+          @youtube_channel_details = args[:youtube_channel_details] if args.key?(:youtube_channel_details)
+          @youtube_video_details = args[:youtube_video_details] if args.key?(:youtube_video_details)
         end
       end
       
@@ -1229,6 +1278,43 @@ module Google
           @included_custom_list_group = args[:included_custom_list_group] if args.key?(:included_custom_list_group)
           @included_first_and_third_party_audience_groups = args[:included_first_and_third_party_audience_groups] if args.key?(:included_first_and_third_party_audience_groups)
           @included_google_audience_group = args[:included_google_audience_group] if args.key?(:included_google_audience_group)
+        end
+      end
+      
+      # The details for audio ad.
+      class AudioAd
+        include Google::Apis::Core::Hashable
+      
+        # The webpage address that appears with the ad.
+        # Corresponds to the JSON property `displayUrl`
+        # @return [String]
+        attr_accessor :display_url
+      
+        # The URL address of the webpage that people reach after they click the ad.
+        # Corresponds to the JSON property `finalUrl`
+        # @return [String]
+        attr_accessor :final_url
+      
+        # The URL address which is loaded in background for tracking purpose.
+        # Corresponds to the JSON property `trackingUrl`
+        # @return [String]
+        attr_accessor :tracking_url
+      
+        # Details of the YouTube video.
+        # Corresponds to the JSON property `video`
+        # @return [Google::Apis::DisplayvideoV2::YoutubeVideoDetails]
+        attr_accessor :video
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_url = args[:display_url] if args.key?(:display_url)
+          @final_url = args[:final_url] if args.key?(:final_url)
+          @tracking_url = args[:tracking_url] if args.key?(:tracking_url)
+          @video = args[:video] if args.key?(:video)
         end
       end
       
@@ -1997,6 +2083,36 @@ module Google
       end
       
       # 
+      class BulkListAdGroupAssignedTargetingOptionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token identifying the next page of results. This value should be specified
+        # as the pageToken in a subsequent call to `
+        # BulkListAdGroupAssignedTargetingOptions` to fetch the next page of results.
+        # This token will be absent if there are no more
+        # youtube_ad_group_assigned_targeting_options to return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of wrapper objects, each providing an assigned targeting option and
+        # the youtube ad group it is assigned to. This list will be absent if empty.
+        # Corresponds to the JSON property `youtubeAdGroupAssignedTargetingOptions`
+        # @return [Array<Google::Apis::DisplayvideoV2::YoutubeAdGroupAssignedTargetingOption>]
+        attr_accessor :youtube_ad_group_assigned_targeting_options
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @youtube_ad_group_assigned_targeting_options = args[:youtube_ad_group_assigned_targeting_options] if args.key?(:youtube_ad_group_assigned_targeting_options)
+        end
+      end
+      
+      # 
       class BulkListAdvertiserAssignedTargetingOptionsResponse
         include Google::Apis::Core::Hashable
       
@@ -2180,6 +2296,25 @@ module Google
           @failed_line_item_ids = args[:failed_line_item_ids] if args.key?(:failed_line_item_ids)
           @skipped_line_item_ids = args[:skipped_line_item_ids] if args.key?(:skipped_line_item_ids)
           @updated_line_item_ids = args[:updated_line_item_ids] if args.key?(:updated_line_item_ids)
+        end
+      end
+      
+      # Ad details for BumperAd.
+      class BumperAd
+        include Google::Apis::Core::Hashable
+      
+        # The common attributes for InStreamAd, NonSkippableAd and BumperAd.
+        # Corresponds to the JSON property `commonInStreamAttribute`
+        # @return [Google::Apis::DisplayvideoV2::CommonInStreamAttribute]
+        attr_accessor :common_in_stream_attribute
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_in_stream_attribute = args[:common_in_stream_attribute] if args.key?(:common_in_stream_attribute)
         end
       end
       
@@ -2871,6 +3006,61 @@ module Google
         # Update properties of this object
         def update!(**args)
           @combined_audience_id = args[:combined_audience_id] if args.key?(:combined_audience_id)
+        end
+      end
+      
+      # The common attributes for InStreamAd, NonSkippableAd and BumperAd.
+      class CommonInStreamAttribute
+        include Google::Apis::Core::Hashable
+      
+        # The text on the call-to-action button.
+        # Corresponds to the JSON property `actionButtonLabel`
+        # @return [String]
+        attr_accessor :action_button_label
+      
+        # The headline of the call-to-action banner.
+        # Corresponds to the JSON property `actionHeadline`
+        # @return [String]
+        attr_accessor :action_headline
+      
+        # The meta data of an image asset.
+        # Corresponds to the JSON property `companionBanner`
+        # @return [Google::Apis::DisplayvideoV2::ImageAsset]
+        attr_accessor :companion_banner
+      
+        # The webpage address that appears with the ad.
+        # Corresponds to the JSON property `displayUrl`
+        # @return [String]
+        attr_accessor :display_url
+      
+        # The URL address of the webpage that people reach after they click the ad.
+        # Corresponds to the JSON property `finalUrl`
+        # @return [String]
+        attr_accessor :final_url
+      
+        # The URL address which is loaded in background for tracking purpose.
+        # Corresponds to the JSON property `trackingUrl`
+        # @return [String]
+        attr_accessor :tracking_url
+      
+        # Details of the YouTube video.
+        # Corresponds to the JSON property `video`
+        # @return [Google::Apis::DisplayvideoV2::YoutubeVideoDetails]
+        attr_accessor :video
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action_button_label = args[:action_button_label] if args.key?(:action_button_label)
+          @action_headline = args[:action_headline] if args.key?(:action_headline)
+          @companion_banner = args[:companion_banner] if args.key?(:companion_banner)
+          @display_url = args[:display_url] if args.key?(:display_url)
+          @final_url = args[:final_url] if args.key?(:final_url)
+          @tracking_url = args[:tracking_url] if args.key?(:tracking_url)
+          @video = args[:video] if args.key?(:video)
         end
       end
       
@@ -4050,6 +4240,31 @@ module Google
         end
       end
       
+      # The key and value of a custom label.
+      class CustomLabel
+        include Google::Apis::Core::Hashable
+      
+        # The key of the label.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # The value of the label.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # Describes a custom list entity, such as a custom affinity or custom intent
       # audience list.
       class CustomList
@@ -4459,6 +4674,25 @@ module Google
         def update!(**args)
           @height_pixels = args[:height_pixels] if args.key?(:height_pixels)
           @width_pixels = args[:width_pixels] if args.key?(:width_pixels)
+        end
+      end
+      
+      # The ad of which source is DV360 creative.
+      class DisplayVideoSourceAd
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the source creative.
+        # Corresponds to the JSON property `creativeId`
+        # @return [Fixnum]
+        attr_accessor :creative_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creative_id = args[:creative_id] if args.key?(:creative_id)
         end
       end
       
@@ -5975,6 +6209,62 @@ module Google
           @insertion_order_ids = args[:insertion_order_ids] if args.key?(:insertion_order_ids)
           @line_item_ids = args[:line_item_ids] if args.key?(:line_item_ids)
           @media_product_ids = args[:media_product_ids] if args.key?(:media_product_ids)
+        end
+      end
+      
+      # The meta data of an image asset.
+      class ImageAsset
+        include Google::Apis::Core::Hashable
+      
+        # File size of the image asset in bytes.
+        # Corresponds to the JSON property `fileSize`
+        # @return [Fixnum]
+        attr_accessor :file_size
+      
+        # Dimensions.
+        # Corresponds to the JSON property `fullSize`
+        # @return [Google::Apis::DisplayvideoV2::Dimensions]
+        attr_accessor :full_size
+      
+        # MIME type of the image asset.
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_size = args[:file_size] if args.key?(:file_size)
+          @full_size = args[:full_size] if args.key?(:full_size)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+        end
+      end
+      
+      # Ad details for InStreamAd
+      class InStreamAd
+        include Google::Apis::Core::Hashable
+      
+        # The common attributes for InStreamAd, NonSkippableAd and BumperAd.
+        # Corresponds to the JSON property `commonInStreamAttribute`
+        # @return [Google::Apis::DisplayvideoV2::CommonInStreamAttribute]
+        attr_accessor :common_in_stream_attribute
+      
+        # The custom parameters to pass custom values to tracking url template.
+        # Corresponds to the JSON property `customParameters`
+        # @return [Hash<String,String>]
+        attr_accessor :custom_parameters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_in_stream_attribute = args[:common_in_stream_attribute] if args.key?(:common_in_stream_attribute)
+          @custom_parameters = args[:custom_parameters] if args.key?(:custom_parameters)
         end
       end
       
@@ -8102,6 +8392,89 @@ module Google
         end
       end
       
+      # Response message for YoutubeAdGroupAdService.ListYoutubeAdGroupAds.
+      class ListYoutubeAdGroupAdsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token to retrieve the next page of results. Pass this value in the
+        # page_token field in the subsequent call to `ListYoutubeAdGroupAds` method to
+        # retrieve the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of ad group ads. This list will be absent if empty.
+        # Corresponds to the JSON property `youtubeAdGroupAds`
+        # @return [Array<Google::Apis::DisplayvideoV2::YoutubeAdGroupAd>]
+        attr_accessor :youtube_ad_group_ads
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @youtube_ad_group_ads = args[:youtube_ad_group_ads] if args.key?(:youtube_ad_group_ads)
+        end
+      end
+      
+      # Response message for ListYoutubeAdGroupAssignedTargetingOptions.
+      class ListYoutubeAdGroupAssignedTargetingOptionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of assigned targeting options. This list will be absent if empty.
+        # Corresponds to the JSON property `assignedTargetingOptions`
+        # @return [Array<Google::Apis::DisplayvideoV2::AssignedTargetingOption>]
+        attr_accessor :assigned_targeting_options
+      
+        # A token identifying the next page of results. This value should be specified
+        # as the pageToken in a subsequent
+        # ListYoutubeAdGroupAssignedTargetingOptionsRequest to fetch the next page of
+        # results. This token will be absent if there are no more
+        # assigned_targeting_options to return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @assigned_targeting_options = args[:assigned_targeting_options] if args.key?(:assigned_targeting_options)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # 
+      class ListYoutubeAdGroupsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token to retrieve the next page of results. Pass this value in the
+        # page_token field in the subsequent call to `ListYoutubeAdGroups` method to
+        # retrieve the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of ad groups. This list will be absent if empty.
+        # Corresponds to the JSON property `youtubeAdGroups`
+        # @return [Array<Google::Apis::DisplayvideoV2::YoutubeAdGroup>]
+        attr_accessor :youtube_ad_groups
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @youtube_ad_groups = args[:youtube_ad_groups] if args.key?(:youtube_ad_groups)
+        end
+      end
+      
       # A list of locations used for targeting.
       class LocationList
         include Google::Apis::Core::Hashable
@@ -8252,6 +8625,87 @@ module Google
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
           @trigger_id = args[:trigger_id] if args.key?(:trigger_id)
+        end
+      end
+      
+      # The details for masthead ad.
+      class MastheadAd
+        include Google::Apis::Core::Hashable
+      
+        # Video will autoplay for certain period of time.
+        # Corresponds to the JSON property `autoplayVideoDuration`
+        # @return [String]
+        attr_accessor :autoplay_video_duration
+      
+        # Video will start to play after certain period of time in millisecond.
+        # Corresponds to the JSON property `autoplayVideoStartMillisecond`
+        # @return [Fixnum]
+        attr_accessor :autoplay_video_start_millisecond
+      
+        # The text on the call-to-action button.
+        # Corresponds to the JSON property `callToActionButtonLabel`
+        # @return [String]
+        attr_accessor :call_to_action_button_label
+      
+        # The destination URL for the call-to-action button.
+        # Corresponds to the JSON property `callToActionFinalUrl`
+        # @return [String]
+        attr_accessor :call_to_action_final_url
+      
+        # The tracking URL for the call-to-action button.
+        # Corresponds to the JSON property `callToActionTrackingUrl`
+        # @return [String]
+        attr_accessor :call_to_action_tracking_url
+      
+        # The videos (up to 2) that appear next to the Masthead ad on desktop.
+        # Corresponds to the JSON property `companionYoutubeVideos`
+        # @return [Array<Google::Apis::DisplayvideoV2::YoutubeVideoDetails>]
+        attr_accessor :companion_youtube_videos
+      
+        # The description of the ad.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The headline of the ad.
+        # Corresponds to the JSON property `headline`
+        # @return [String]
+        attr_accessor :headline
+      
+        # Whether to show a background or banner that appears at the top of a YouTube
+        # page.
+        # Corresponds to the JSON property `showChannelArt`
+        # @return [Boolean]
+        attr_accessor :show_channel_art
+        alias_method :show_channel_art?, :show_channel_art
+      
+        # Details of the YouTube video.
+        # Corresponds to the JSON property `video`
+        # @return [Google::Apis::DisplayvideoV2::YoutubeVideoDetails]
+        attr_accessor :video
+      
+        # Aspect ratio of the autoplaying YouTube video on the Masthead.
+        # Corresponds to the JSON property `videoAspectRatio`
+        # @return [String]
+        attr_accessor :video_aspect_ratio
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @autoplay_video_duration = args[:autoplay_video_duration] if args.key?(:autoplay_video_duration)
+          @autoplay_video_start_millisecond = args[:autoplay_video_start_millisecond] if args.key?(:autoplay_video_start_millisecond)
+          @call_to_action_button_label = args[:call_to_action_button_label] if args.key?(:call_to_action_button_label)
+          @call_to_action_final_url = args[:call_to_action_final_url] if args.key?(:call_to_action_final_url)
+          @call_to_action_tracking_url = args[:call_to_action_tracking_url] if args.key?(:call_to_action_tracking_url)
+          @companion_youtube_videos = args[:companion_youtube_videos] if args.key?(:companion_youtube_videos)
+          @description = args[:description] if args.key?(:description)
+          @headline = args[:headline] if args.key?(:headline)
+          @show_channel_art = args[:show_channel_art] if args.key?(:show_channel_art)
+          @video = args[:video] if args.key?(:video)
+          @video_aspect_ratio = args[:video_aspect_ratio] if args.key?(:video_aspect_ratio)
         end
       end
       
@@ -8565,6 +9019,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @negative_keyword_list_id = args[:negative_keyword_list_id] if args.key?(:negative_keyword_list_id)
+        end
+      end
+      
+      # Ad details for NonSkippableAd
+      class NonSkippableAd
+        include Google::Apis::Core::Hashable
+      
+        # The common attributes for InStreamAd, NonSkippableAd and BumperAd.
+        # Corresponds to the JSON property `commonInStreamAttribute`
+        # @return [Google::Apis::DisplayvideoV2::CommonInStreamAttribute]
+        attr_accessor :common_in_stream_attribute
+      
+        # The custom parameters to pass custom values to tracking url template.
+        # Corresponds to the JSON property `customParameters`
+        # @return [Hash<String,String>]
+        attr_accessor :custom_parameters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_in_stream_attribute = args[:common_in_stream_attribute] if args.key?(:common_in_stream_attribute)
+          @custom_parameters = args[:custom_parameters] if args.key?(:custom_parameters)
         end
       end
       
@@ -9498,6 +9977,63 @@ module Google
         end
       end
       
+      # The details of product feed.
+      class ProductFeedData
+        include Google::Apis::Core::Hashable
+      
+        # True if opt out of showing products.
+        # Corresponds to the JSON property `isFeedDisabled`
+        # @return [Boolean]
+        attr_accessor :is_feed_disabled
+        alias_method :is_feed_disabled?, :is_feed_disabled
+      
+        # A list of dimensions which are used to match products.
+        # Corresponds to the JSON property `productMatchDimensions`
+        # @return [Array<Google::Apis::DisplayvideoV2::ProductMatchDimension>]
+        attr_accessor :product_match_dimensions
+      
+        # The type of the way to select the products.
+        # Corresponds to the JSON property `productMatchType`
+        # @return [String]
+        attr_accessor :product_match_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @is_feed_disabled = args[:is_feed_disabled] if args.key?(:is_feed_disabled)
+          @product_match_dimensions = args[:product_match_dimensions] if args.key?(:product_match_dimensions)
+          @product_match_type = args[:product_match_type] if args.key?(:product_match_type)
+        end
+      end
+      
+      # The dimension which are used to match products.
+      class ProductMatchDimension
+        include Google::Apis::Core::Hashable
+      
+        # The key and value of a custom label.
+        # Corresponds to the JSON property `customLabel`
+        # @return [Google::Apis::DisplayvideoV2::CustomLabel]
+        attr_accessor :custom_label
+      
+        # The ID of the product offer to match the product with the same offer ID.
+        # Corresponds to the JSON property `productOfferId`
+        # @return [String]
+        attr_accessor :product_offer_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_label = args[:custom_label] if args.key?(:custom_label)
+          @product_offer_id = args[:product_offer_id] if args.key?(:product_offer_id)
+        end
+      end
+      
       # Targeting details for proximity location list. This will be populated in the
       # details field of an AssignedTargetingOption when targeting_type is `
       # TARGETING_TYPE_PROXIMITY_LOCATION_LIST`.
@@ -10008,6 +10544,27 @@ module Google
         end
       end
       
+      # Details for session position assigned targeting option. This will be populated
+      # in the session_position_details field when targeting_type is `
+      # TARGETING_TYPE_SESSION_POSITION`.
+      class SessionPositionAssignedTargetingOptionDetails
+        include Google::Apis::Core::Hashable
+      
+        # The position where the ad will show in a session.
+        # Corresponds to the JSON property `sessionPosition`
+        # @return [String]
+        attr_accessor :session_position
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @session_position = args[:session_position] if args.key?(:session_position)
+        end
+      end
+      
       # A single site. Sites are apps or websites belonging to a channel.
       class Site
         include Google::Apis::Core::Hashable
@@ -10113,6 +10670,42 @@ module Google
         # Update properties of this object
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
+        end
+      end
+      
+      # Setting that controls the average number of times the ads will show to the
+      # same person over a certain period of time.
+      class TargetFrequency
+        include Google::Apis::Core::Hashable
+      
+        # The target number of times, on average, the ads will be shown to the same
+        # person in the timespan dictated by time_unit and time_unit_count.
+        # Corresponds to the JSON property `targetCount`
+        # @return [Fixnum]
+        attr_accessor :target_count
+      
+        # The unit of time in which the target frequency will be applied. The following
+        # time unit is applicable: * `TIME_UNIT_WEEKS`
+        # Corresponds to the JSON property `timeUnit`
+        # @return [String]
+        attr_accessor :time_unit
+      
+        # The number of time_unit the target frequency will last. The following
+        # restrictions apply based on the value of time_unit: * `TIME_UNIT_WEEKS` - must
+        # be 1
+        # Corresponds to the JSON property `timeUnitCount`
+        # @return [Fixnum]
+        attr_accessor :time_unit_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @target_count = args[:target_count] if args.key?(:target_count)
+          @time_unit = args[:time_unit] if args.key?(:time_unit)
+          @time_unit_count = args[:time_unit_count] if args.key?(:time_unit_count)
         end
       end
       
@@ -10929,6 +11522,134 @@ module Google
         end
       end
       
+      # The details for video discovery ad.
+      class VideoDiscoveryAd
+        include Google::Apis::Core::Hashable
+      
+        # First text line for the ad.
+        # Corresponds to the JSON property `description1`
+        # @return [String]
+        attr_accessor :description1
+      
+        # Second text line for the ad.
+        # Corresponds to the JSON property `description2`
+        # @return [String]
+        attr_accessor :description2
+      
+        # The headline of the video discovery ad.
+        # Corresponds to the JSON property `headline`
+        # @return [String]
+        attr_accessor :headline
+      
+        # Thumbnail image to use in the ad.
+        # Corresponds to the JSON property `thumbnail`
+        # @return [String]
+        attr_accessor :thumbnail
+      
+        # Details of the YouTube video.
+        # Corresponds to the JSON property `video`
+        # @return [Google::Apis::DisplayvideoV2::YoutubeVideoDetails]
+        attr_accessor :video
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description1 = args[:description1] if args.key?(:description1)
+          @description2 = args[:description2] if args.key?(:description2)
+          @headline = args[:headline] if args.key?(:headline)
+          @thumbnail = args[:thumbnail] if args.key?(:thumbnail)
+          @video = args[:video] if args.key?(:video)
+        end
+      end
+      
+      # The details for video performance ad.
+      class VideoPerformanceAd
+        include Google::Apis::Core::Hashable
+      
+        # The list of text assets which show on the call-to-action button.
+        # Corresponds to the JSON property `actionButtonLabels`
+        # @return [Array<String>]
+        attr_accessor :action_button_labels
+      
+        # The list of companion banners of this ad.
+        # Corresponds to the JSON property `companionBanners`
+        # @return [Array<Google::Apis::DisplayvideoV2::ImageAsset>]
+        attr_accessor :companion_banners
+      
+        # The custom parameters to pass custom values to tracking url template.
+        # Corresponds to the JSON property `customParameters`
+        # @return [Hash<String,String>]
+        attr_accessor :custom_parameters
+      
+        # The list of descriptions which show on the call-to-action banner.
+        # Corresponds to the JSON property `descriptions`
+        # @return [Array<String>]
+        attr_accessor :descriptions
+      
+        # The first piece after the domain in the display url.
+        # Corresponds to the JSON property `displayUrlBreadcrumb1`
+        # @return [String]
+        attr_accessor :display_url_breadcrumb1
+      
+        # The second piece after the domain in the display url.
+        # Corresponds to the JSON property `displayUrlBreadcrumb2`
+        # @return [String]
+        attr_accessor :display_url_breadcrumb2
+      
+        # The domain of the display url
+        # Corresponds to the JSON property `domain`
+        # @return [String]
+        attr_accessor :domain
+      
+        # The URL address of the webpage that people reach after they click the ad.
+        # Corresponds to the JSON property `finalUrl`
+        # @return [String]
+        attr_accessor :final_url
+      
+        # The list of headlines which show on the call-to-action banner.
+        # Corresponds to the JSON property `headlines`
+        # @return [Array<String>]
+        attr_accessor :headlines
+      
+        # The list of lone headlines which show on the call-to-action banner.
+        # Corresponds to the JSON property `longHeadlines`
+        # @return [Array<String>]
+        attr_accessor :long_headlines
+      
+        # The URL address which is loaded in background for tracking purpose.
+        # Corresponds to the JSON property `trackingUrl`
+        # @return [String]
+        attr_accessor :tracking_url
+      
+        # The list of YouTube video assets in this ad.
+        # Corresponds to the JSON property `videos`
+        # @return [Array<Google::Apis::DisplayvideoV2::YoutubeVideoDetails>]
+        attr_accessor :videos
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action_button_labels = args[:action_button_labels] if args.key?(:action_button_labels)
+          @companion_banners = args[:companion_banners] if args.key?(:companion_banners)
+          @custom_parameters = args[:custom_parameters] if args.key?(:custom_parameters)
+          @descriptions = args[:descriptions] if args.key?(:descriptions)
+          @display_url_breadcrumb1 = args[:display_url_breadcrumb1] if args.key?(:display_url_breadcrumb1)
+          @display_url_breadcrumb2 = args[:display_url_breadcrumb2] if args.key?(:display_url_breadcrumb2)
+          @domain = args[:domain] if args.key?(:domain)
+          @final_url = args[:final_url] if args.key?(:final_url)
+          @headlines = args[:headlines] if args.key?(:headlines)
+          @long_headlines = args[:long_headlines] if args.key?(:long_headlines)
+          @tracking_url = args[:tracking_url] if args.key?(:tracking_url)
+          @videos = args[:videos] if args.key?(:videos)
+        end
+      end
+      
       # Video player size targeting option details. This will be populated in the
       # video_player_size_details field when targeting_type is `
       # TARGETING_TYPE_VIDEO_PLAYER_SIZE`. Explicitly targeting all options is not
@@ -11015,9 +11736,238 @@ module Google
         end
       end
       
+      # A single YouTube ad group associated with a YouTube and Partners line item.
+      class YoutubeAdGroup
+        include Google::Apis::Core::Hashable
+      
+        # The format of the ad group.
+        # Corresponds to the JSON property `adGroupFormat`
+        # @return [String]
+        attr_accessor :ad_group_format
+      
+        # The unique ID of the ad group. Assigned by the system.
+        # Corresponds to the JSON property `adGroupId`
+        # @return [Fixnum]
+        attr_accessor :ad_group_id
+      
+        # The unique ID of the advertiser the ad group belongs to.
+        # Corresponds to the JSON property `advertiserId`
+        # @return [Fixnum]
+        attr_accessor :advertiser_id
+      
+        # Settings that control the bid strategy for YouTube and Partners resources.
+        # Corresponds to the JSON property `biddingStrategy`
+        # @return [Google::Apis::DisplayvideoV2::YoutubeAndPartnersBiddingStrategy]
+        attr_accessor :bidding_strategy
+      
+        # The display name of the ad group. Must be UTF-8 encoded with a maximum size of
+        # 255 bytes.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Controls whether or not the ad group can spend its budget and bid on inventory.
+        # If the ad group's parent line item is not active, the ad group can't spend
+        # its budget even if its own status is `ENTITY_STATUS_ACTIVE`.
+        # Corresponds to the JSON property `entityStatus`
+        # @return [String]
+        attr_accessor :entity_status
+      
+        # The unique ID of the line item that the ad group belongs to.
+        # Corresponds to the JSON property `lineItemId`
+        # @return [Fixnum]
+        attr_accessor :line_item_id
+      
+        # The resource name of the ad group.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The details of product feed.
+        # Corresponds to the JSON property `productFeedData`
+        # @return [Google::Apis::DisplayvideoV2::ProductFeedData]
+        attr_accessor :product_feed_data
+      
+        # Settings that control the targeting expansion of the line item. Targeting
+        # expansion allows the line item to reach a larger audience based on the
+        # original audience list and the targeting expansion level. Beginning November 7,
+        # 2022, these settings may represent the [optimized targeting feature](//
+        # support.google.com/displayvideo/answer/12060859) in place of targeting
+        # expansion. This feature will be rolled out to all partners by November 9, 2022.
+        # Corresponds to the JSON property `targetingExpansion`
+        # @return [Google::Apis::DisplayvideoV2::TargetingExpansionConfig]
+        attr_accessor :targeting_expansion
+      
+        # The IDs of the YouTubeAds associated with the ad group.
+        # Corresponds to the JSON property `youtubeAdIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :youtube_ad_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ad_group_format = args[:ad_group_format] if args.key?(:ad_group_format)
+          @ad_group_id = args[:ad_group_id] if args.key?(:ad_group_id)
+          @advertiser_id = args[:advertiser_id] if args.key?(:advertiser_id)
+          @bidding_strategy = args[:bidding_strategy] if args.key?(:bidding_strategy)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @entity_status = args[:entity_status] if args.key?(:entity_status)
+          @line_item_id = args[:line_item_id] if args.key?(:line_item_id)
+          @name = args[:name] if args.key?(:name)
+          @product_feed_data = args[:product_feed_data] if args.key?(:product_feed_data)
+          @targeting_expansion = args[:targeting_expansion] if args.key?(:targeting_expansion)
+          @youtube_ad_ids = args[:youtube_ad_ids] if args.key?(:youtube_ad_ids)
+        end
+      end
+      
+      # A single YouTube ad group ad associated with a YouTube ad group.
+      class YoutubeAdGroupAd
+        include Google::Apis::Core::Hashable
+      
+        # The unique ID of the ad group ad. Assigned by the system.
+        # Corresponds to the JSON property `adGroupAdId`
+        # @return [Fixnum]
+        attr_accessor :ad_group_ad_id
+      
+        # The unique ID of the ad group that the ad group ad belongs to.
+        # Corresponds to the JSON property `adGroupId`
+        # @return [Fixnum]
+        attr_accessor :ad_group_id
+      
+        # The list of ad urls.
+        # Corresponds to the JSON property `adUrls`
+        # @return [Array<Google::Apis::DisplayvideoV2::AdUrl>]
+        attr_accessor :ad_urls
+      
+        # The unique ID of the advertiser the ad group ad belongs to.
+        # Corresponds to the JSON property `advertiserId`
+        # @return [Fixnum]
+        attr_accessor :advertiser_id
+      
+        # The details for audio ad.
+        # Corresponds to the JSON property `audioAd`
+        # @return [Google::Apis::DisplayvideoV2::AudioAd]
+        attr_accessor :audio_ad
+      
+        # Ad details for BumperAd.
+        # Corresponds to the JSON property `bumperAd`
+        # @return [Google::Apis::DisplayvideoV2::BumperAd]
+        attr_accessor :bumper_ad
+      
+        # The display name of the ad group ad. Must be UTF-8 encoded with a maximum size
+        # of 255 bytes.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The ad of which source is DV360 creative.
+        # Corresponds to the JSON property `displayVideoSourceAd`
+        # @return [Google::Apis::DisplayvideoV2::DisplayVideoSourceAd]
+        attr_accessor :display_video_source_ad
+      
+        # The entity status of the ad group ad.
+        # Corresponds to the JSON property `entityStatus`
+        # @return [String]
+        attr_accessor :entity_status
+      
+        # Ad details for InStreamAd
+        # Corresponds to the JSON property `inStreamAd`
+        # @return [Google::Apis::DisplayvideoV2::InStreamAd]
+        attr_accessor :in_stream_ad
+      
+        # The details for masthead ad.
+        # Corresponds to the JSON property `mastheadAd`
+        # @return [Google::Apis::DisplayvideoV2::MastheadAd]
+        attr_accessor :masthead_ad
+      
+        # The resource name of the ad group ad.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Ad details for NonSkippableAd
+        # Corresponds to the JSON property `nonSkippableAd`
+        # @return [Google::Apis::DisplayvideoV2::NonSkippableAd]
+        attr_accessor :non_skippable_ad
+      
+        # The details for video discovery ad.
+        # Corresponds to the JSON property `videoDiscoverAd`
+        # @return [Google::Apis::DisplayvideoV2::VideoDiscoveryAd]
+        attr_accessor :video_discover_ad
+      
+        # The details for video performance ad.
+        # Corresponds to the JSON property `videoPerformanceAd`
+        # @return [Google::Apis::DisplayvideoV2::VideoPerformanceAd]
+        attr_accessor :video_performance_ad
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ad_group_ad_id = args[:ad_group_ad_id] if args.key?(:ad_group_ad_id)
+          @ad_group_id = args[:ad_group_id] if args.key?(:ad_group_id)
+          @ad_urls = args[:ad_urls] if args.key?(:ad_urls)
+          @advertiser_id = args[:advertiser_id] if args.key?(:advertiser_id)
+          @audio_ad = args[:audio_ad] if args.key?(:audio_ad)
+          @bumper_ad = args[:bumper_ad] if args.key?(:bumper_ad)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @display_video_source_ad = args[:display_video_source_ad] if args.key?(:display_video_source_ad)
+          @entity_status = args[:entity_status] if args.key?(:entity_status)
+          @in_stream_ad = args[:in_stream_ad] if args.key?(:in_stream_ad)
+          @masthead_ad = args[:masthead_ad] if args.key?(:masthead_ad)
+          @name = args[:name] if args.key?(:name)
+          @non_skippable_ad = args[:non_skippable_ad] if args.key?(:non_skippable_ad)
+          @video_discover_ad = args[:video_discover_ad] if args.key?(:video_discover_ad)
+          @video_performance_ad = args[:video_performance_ad] if args.key?(:video_performance_ad)
+        end
+      end
+      
+      # Wrapper object associating an assigned_targeting_option resource and the
+      # youtube ad group it is assigned to.
+      class YoutubeAdGroupAssignedTargetingOption
+        include Google::Apis::Core::Hashable
+      
+        # A single assigned targeting option, which defines the state of a targeting
+        # option for an entity with targeting settings.
+        # Corresponds to the JSON property `assignedTargetingOption`
+        # @return [Google::Apis::DisplayvideoV2::AssignedTargetingOption]
+        attr_accessor :assigned_targeting_option
+      
+        # The ID of the youtube ad group the assigned targeting option is assigned to.
+        # Corresponds to the JSON property `youtubeAdGroupId`
+        # @return [Fixnum]
+        attr_accessor :youtube_ad_group_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @assigned_targeting_option = args[:assigned_targeting_option] if args.key?(:assigned_targeting_option)
+          @youtube_ad_group_id = args[:youtube_ad_group_id] if args.key?(:youtube_ad_group_id)
+        end
+      end
+      
       # Settings that control the bid strategy for YouTube and Partners resources.
       class YoutubeAndPartnersBiddingStrategy
         include Google::Apis::Core::Hashable
+      
+        # Output only. Source of the effective targetCpa value for AdGroup.
+        # Corresponds to the JSON property `adGroupEffectiveTargetCpaSource`
+        # @return [String]
+        attr_accessor :ad_group_effective_target_cpa_source
+      
+        # Output only. The effective targetCpa for AdGroup, in micros of advertiser's
+        # currency.
+        # Corresponds to the JSON property `adGroupEffectiveTargetCpaValue`
+        # @return [Fixnum]
+        attr_accessor :ad_group_effective_target_cpa_value
       
         # The type of the bidding strategy.
         # Corresponds to the JSON property `type`
@@ -11044,6 +11994,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ad_group_effective_target_cpa_source = args[:ad_group_effective_target_cpa_source] if args.key?(:ad_group_effective_target_cpa_source)
+          @ad_group_effective_target_cpa_value = args[:ad_group_effective_target_cpa_value] if args.key?(:ad_group_effective_target_cpa_value)
           @type = args[:type] if args.key?(:type)
           @value = args[:value] if args.key?(:value)
         end
@@ -11106,6 +12058,28 @@ module Google
         # @return [Google::Apis::DisplayvideoV2::YoutubeAndPartnersInventorySourceConfig]
         attr_accessor :inventory_source_settings
       
+        # The ID of the form to generate leads.
+        # Corresponds to the JSON property `leadFormId`
+        # @return [Fixnum]
+        attr_accessor :lead_form_id
+      
+        # The ID of the merchant which is linked to the line item for product feed.
+        # Corresponds to the JSON property `linkedMerchantId`
+        # @return [Fixnum]
+        attr_accessor :linked_merchant_id
+      
+        # The IDs of the videos appear below the primary video ad when the ad is playing
+        # in the YouTube app on mobile devices.
+        # Corresponds to the JSON property `relatedVideoIds`
+        # @return [Array<String>]
+        attr_accessor :related_video_ids
+      
+        # Setting that controls the average number of times the ads will show to the
+        # same person over a certain period of time.
+        # Corresponds to the JSON property `targetFrequency`
+        # @return [Google::Apis::DisplayvideoV2::TargetFrequency]
+        attr_accessor :target_frequency
+      
         # Settings that control what third-party vendors are measuring specific line
         # item metrics.
         # Corresponds to the JSON property `thirdPartyMeasurementSettings`
@@ -11132,6 +12106,10 @@ module Google
           @bidding_strategy = args[:bidding_strategy] if args.key?(:bidding_strategy)
           @content_category = args[:content_category] if args.key?(:content_category)
           @inventory_source_settings = args[:inventory_source_settings] if args.key?(:inventory_source_settings)
+          @lead_form_id = args[:lead_form_id] if args.key?(:lead_form_id)
+          @linked_merchant_id = args[:linked_merchant_id] if args.key?(:linked_merchant_id)
+          @related_video_ids = args[:related_video_ids] if args.key?(:related_video_ids)
+          @target_frequency = args[:target_frequency] if args.key?(:target_frequency)
           @third_party_measurement_settings = args[:third_party_measurement_settings] if args.key?(:third_party_measurement_settings)
           @video_ad_sequence_settings = args[:video_ad_sequence_settings] if args.key?(:video_ad_sequence_settings)
           @view_frequency_cap = args[:view_frequency_cap] if args.key?(:view_frequency_cap)
@@ -11183,6 +12161,87 @@ module Google
           @brand_safety_vendor_configs = args[:brand_safety_vendor_configs] if args.key?(:brand_safety_vendor_configs)
           @reach_vendor_configs = args[:reach_vendor_configs] if args.key?(:reach_vendor_configs)
           @viewability_vendor_configs = args[:viewability_vendor_configs] if args.key?(:viewability_vendor_configs)
+        end
+      end
+      
+      # Details for YouTube channel assigned targeting option. This will be populated
+      # in the youtube_channel_details field when targeting_type is `
+      # TARGETING_TYPE_YOUTUBE_CHANNEL`.
+      class YoutubeChannelAssignedTargetingOptionDetails
+        include Google::Apis::Core::Hashable
+      
+        # The YouTube uploader channel id or the channel code of a YouTube channel.
+        # Corresponds to the JSON property `channelId`
+        # @return [String]
+        attr_accessor :channel_id
+      
+        # Indicates if this option is being negatively targeted.
+        # Corresponds to the JSON property `negative`
+        # @return [Boolean]
+        attr_accessor :negative
+        alias_method :negative?, :negative
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @channel_id = args[:channel_id] if args.key?(:channel_id)
+          @negative = args[:negative] if args.key?(:negative)
+        end
+      end
+      
+      # Details for YouTube video assigned targeting option. This will be populated in
+      # the youtube_video_details field when targeting_type is `
+      # TARGETING_TYPE_YOUTUBE_VIDEO`.
+      class YoutubeVideoAssignedTargetingOptionDetails
+        include Google::Apis::Core::Hashable
+      
+        # Indicates if this option is being negatively targeted.
+        # Corresponds to the JSON property `negative`
+        # @return [Boolean]
+        attr_accessor :negative
+        alias_method :negative?, :negative
+      
+        # YouTube video id as it appears on the YouTube watch page.
+        # Corresponds to the JSON property `videoId`
+        # @return [String]
+        attr_accessor :video_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @negative = args[:negative] if args.key?(:negative)
+          @video_id = args[:video_id] if args.key?(:video_id)
+        end
+      end
+      
+      # Details of the YouTube video.
+      class YoutubeVideoDetails
+        include Google::Apis::Core::Hashable
+      
+        # The ID which can be searched on YouTube webpage.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The reason why the video data is not available.
+        # Corresponds to the JSON property `unavailableReason`
+        # @return [String]
+        attr_accessor :unavailable_reason
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @unavailable_reason = args[:unavailable_reason] if args.key?(:unavailable_reason)
         end
       end
     end
