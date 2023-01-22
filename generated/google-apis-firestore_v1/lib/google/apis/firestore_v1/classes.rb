@@ -936,12 +936,17 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
+        # Which namespace ids are being exported.
+        # Corresponds to the JSON property `namespaceIds`
+        # @return [Array<String>]
+        attr_accessor :namespace_ids
+      
         # The state of the export operation.
         # Corresponds to the JSON property `operationState`
         # @return [String]
         attr_accessor :operation_state
       
-        # Where the entities are being exported to.
+        # Where the documents are being exported to.
         # Corresponds to the JSON property `outputUriPrefix`
         # @return [String]
         attr_accessor :output_uri_prefix
@@ -971,6 +976,7 @@ module Google
         def update!(**args)
           @collection_ids = args[:collection_ids] if args.key?(:collection_ids)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @namespace_ids = args[:namespace_ids] if args.key?(:namespace_ids)
           @operation_state = args[:operation_state] if args.key?(:operation_state)
           @output_uri_prefix = args[:output_uri_prefix] if args.key?(:output_uri_prefix)
           @progress_bytes = args[:progress_bytes] if args.key?(:progress_bytes)
@@ -1183,6 +1189,11 @@ module Google
         # @return [String]
         attr_accessor :input_uri_prefix
       
+        # Which namespace ids are being imported.
+        # Corresponds to the JSON property `namespaceIds`
+        # @return [Array<String>]
+        attr_accessor :namespace_ids
+      
         # The state of the import operation.
         # Corresponds to the JSON property `operationState`
         # @return [String]
@@ -1214,6 +1225,7 @@ module Google
           @collection_ids = args[:collection_ids] if args.key?(:collection_ids)
           @end_time = args[:end_time] if args.key?(:end_time)
           @input_uri_prefix = args[:input_uri_prefix] if args.key?(:input_uri_prefix)
+          @namespace_ids = args[:namespace_ids] if args.key?(:namespace_ids)
           @operation_state = args[:operation_state] if args.key?(:operation_state)
           @progress_bytes = args[:progress_bytes] if args.key?(:progress_bytes)
           @progress_documents = args[:progress_documents] if args.key?(:progress_documents)
