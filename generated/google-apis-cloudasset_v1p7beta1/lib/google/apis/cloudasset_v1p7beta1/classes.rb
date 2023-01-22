@@ -23,7 +23,7 @@ module Google
     module CloudassetV1p7beta1
       
       # Represents the metadata of the longrunning operation for the
-      # AnalyzeIamPolicyLongrunning rpc.
+      # AnalyzeIamPolicyLongrunning RPC.
       class AnalyzeIamPolicyLongrunningMetadata
         include Google::Apis::Core::Hashable
       
@@ -260,8 +260,8 @@ module Google
       # resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-
       # platform-resource-hierarchy), a resource outside the Google Cloud resource
       # hierarchy (such as Google Kubernetes Engine clusters and objects), or a policy
-      # (e.g. Cloud IAM policy). See [Supported asset types](https://cloud.google.com/
-      # asset-inventory/docs/supported-asset-types) for more information.
+      # (e.g. IAM policy). See [Supported asset types](https://cloud.google.com/asset-
+      # inventory/docs/supported-asset-types) for more information.
       class GoogleCloudAssetV1p7beta1Asset
         include Google::Apis::Core::Hashable
       
@@ -535,7 +535,7 @@ module Google
       class GoogleCloudAssetV1p7beta1GcsDestination
         include Google::Apis::Core::Hashable
       
-        # The uri of the Cloud Storage object. It's the same uri that is used by gsutil.
+        # The URI of the Cloud Storage object. It's the same URI that is used by gsutil.
         # Example: "gs://bucket_name/object_name". See [Viewing and Editing Object
         # Metadata](https://cloud.google.com/storage/docs/viewing-editing-metadata) for
         # more information.
@@ -543,8 +543,8 @@ module Google
         # @return [String]
         attr_accessor :uri
       
-        # The uri prefix of all generated Cloud Storage objects. Example: "gs://
-        # bucket_name/object_name_prefix". Each object uri is in format: "gs://
+        # The URI prefix of all generated Cloud Storage objects. Example: "gs://
+        # bucket_name/object_name_prefix". Each object URI is in format: "gs://
         # bucket_name/object_name_prefix/`ASSET_TYPE`/`SHARD_NUMBER` and only contains
         # assets for that type. starts from 0. Example: "gs://bucket_name/
         # object_name_prefix/compute.googleapis.com/Disk/0" is the first shard of output
@@ -614,9 +614,9 @@ module Google
       # An asset can be any resource in the Google Cloud [resource hierarchy](https://
       # cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy), a
       # resource outside the Google Cloud resource hierarchy (such as Google
-      # Kubernetes Engine clusters and objects), or a policy (e.g. Cloud IAM policy).
-      # See [Supported asset types](https://cloud.google.com/asset-inventory/docs/
-      # supported-asset-types) for more information.
+      # Kubernetes Engine clusters and objects), or a policy (e.g. IAM policy). See [
+      # Supported asset types](https://cloud.google.com/asset-inventory/docs/supported-
+      # asset-types) for more information.
       class GoogleCloudAssetV1p7beta1RelatedAsset
         include Google::Apis::Core::Hashable
       
@@ -755,7 +755,7 @@ module Google
         # The full name of the immediate parent of this resource. See [Resource Names](
         # https://cloud.google.com/apis/design/resource_names#full_resource_name) for
         # more information. For Google Cloud assets, this value is the parent resource
-        # defined in the [Cloud IAM policy hierarchy](https://cloud.google.com/iam/docs/
+        # defined in the [IAM policy hierarchy](https://cloud.google.com/iam/docs/
         # overview#policy_hierarchy). Example: `//cloudresourcemanager.googleapis.com/
         # projects/my_project_123` For third-party assets, this field may be set
         # differently.
@@ -1634,10 +1634,11 @@ module Google
       
         # A Google Cloud resource that is allowed to ingress the perimeter. Requests
         # from these resources will be allowed to access perimeter data. Currently only
-        # projects are allowed. Format: `projects/`project_number`` The project may be
-        # in any Google Cloud organization, not just the organization that the perimeter
-        # is defined in. `*` is not allowed, the case of allowing all Google Cloud
-        # resources only is not supported.
+        # projects and VPCs are allowed. Project format: `projects/`project_number`` VPC
+        # format: `//compute.googleapis.com/projects/`PROJECT_ID`/global/networks/`NAME``
+        # . The project may be in any Google Cloud organization, not just the
+        # organization that the perimeter is defined in. `*` is not allowed, the case of
+        # allowing all Google Cloud resources only is not supported.
         # Corresponds to the JSON property `resource`
         # @return [String]
         attr_accessor :resource
@@ -1862,7 +1863,9 @@ module Google
         attr_accessor :ingress_policies
       
         # A list of Google Cloud resources that are inside of the service perimeter.
-        # Currently only projects are allowed. Format: `projects/`project_number``
+        # Currently only projects and VPCs are allowed. Project format: `projects/`
+        # project_number`` VPC format: `//compute.googleapis.com/projects/`PROJECT_ID`/
+        # global/networks/`NAME``.
         # Corresponds to the JSON property `resources`
         # @return [Array<String>]
         attr_accessor :resources
