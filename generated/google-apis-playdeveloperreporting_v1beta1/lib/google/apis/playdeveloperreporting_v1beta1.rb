@@ -28,6 +28,9 @@ module Google
       # Version of the Google Play Developer Reporting API this client connects to.
       # This is NOT the gem version.
       VERSION = 'V1beta1'
+
+      # See metrics and data about the apps in your Google Play Developer account
+      AUTH_PLAYDEVELOPERREPORTING = 'https://www.googleapis.com/auth/playdeveloperreporting'
     end
   end
 end
