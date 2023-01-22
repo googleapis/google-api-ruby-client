@@ -1170,6 +1170,7 @@ module Google
       class BiEngineStatistics
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :acceleration_mode, as: 'accelerationMode'
           property :bi_engine_mode, as: 'biEngineMode'
           collection :bi_engine_reasons, as: 'biEngineReasons', class: Google::Apis::BigqueryV2::BiEngineReason, decorator: Google::Apis::BigqueryV2::BiEngineReason::Representation
       
