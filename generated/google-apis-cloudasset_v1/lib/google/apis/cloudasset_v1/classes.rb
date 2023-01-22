@@ -51,7 +51,7 @@ module Google
       end
       
       # Represents the metadata of the longrunning operation for the
-      # AnalyzeIamPolicyLongrunning rpc.
+      # AnalyzeIamPolicyLongrunning RPC.
       class AnalyzeIamPolicyLongrunningMetadata
         include Google::Apis::Core::Hashable
       
@@ -164,7 +164,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The list of analyses returned from performing the intended resource move
-        # analysis. The analysis is grouped by different Cloud services.
+        # analysis. The analysis is grouped by different Google Cloud services.
         # Corresponds to the JSON property `moveAnalysis`
         # @return [Array<Google::Apis::CloudassetV1::MoveAnalysis>]
         attr_accessor :move_analysis
@@ -277,8 +277,8 @@ module Google
       end
       
       # This organization policy message is a modified version of the one defined in
-      # the OrgPolicy system. This message contains several fields defined in the
-      # original organization policy with some new fields for analysis purpose.
+      # the Organization Policy system. This message contains several fields defined
+      # in the original organization policy with some new fields for analysis purpose.
       class AnalyzerOrgPolicy
         include Google::Apis::Core::Hashable
       
@@ -365,7 +365,7 @@ module Google
       # resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-
       # platform-resource-hierarchy), a resource outside the Google Cloud resource
       # hierarchy (such as Google Kubernetes Engine clusters and objects), or a policy
-      # (e.g. Cloud IAM policy), or a relationship (e.g. an INSTANCE_TO_INSTANCEGROUP
+      # (e.g. IAM policy), or a relationship (e.g. an INSTANCE_TO_INSTANCEGROUP
       # relationship). See [Supported asset types](https://cloud.google.com/asset-
       # inventory/docs/supported-asset-types) for more information.
       class Asset
@@ -464,9 +464,9 @@ module Google
         # ancestors. An asset can be any resource in the Google Cloud [resource
         # hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-
         # resource-hierarchy), a resource outside the Google Cloud resource hierarchy (
-        # such as Google Kubernetes Engine clusters and objects), or a policy (e.g.
-        # Cloud IAM policy). See [Supported asset types](https://cloud.google.com/asset-
-        # inventory/docs/supported-asset-types) for more information.
+        # such as Google Kubernetes Engine clusters and objects), or a policy (e.g. IAM
+        # policy). See [Supported asset types](https://cloud.google.com/asset-inventory/
+        # docs/supported-asset-types) for more information.
         # Corresponds to the JSON property `relatedAsset`
         # @return [Google::Apis::CloudassetV1::RelatedAsset]
         attr_accessor :related_asset
@@ -1245,7 +1245,7 @@ module Google
       class GcsDestination
         include Google::Apis::Core::Hashable
       
-        # The uri of the Cloud Storage object. It's the same uri that is used by gsutil.
+        # The URI of the Cloud Storage object. It's the same URI that is used by gsutil.
         # Example: "gs://bucket_name/object_name". See [Viewing and Editing Object
         # Metadata](https://cloud.google.com/storage/docs/viewing-editing-metadata) for
         # more information. If the specified Cloud Storage object already exists and
@@ -1255,8 +1255,8 @@ module Google
         # @return [String]
         attr_accessor :uri
       
-        # The uri prefix of all generated Cloud Storage objects. Example: "gs://
-        # bucket_name/object_name_prefix". Each object uri is in format: "gs://
+        # The URI prefix of all generated Cloud Storage objects. Example: "gs://
+        # bucket_name/object_name_prefix". Each object URI is in format: "gs://
         # bucket_name/object_name_prefix// and only contains assets for that type.
         # starts from 0. Example: "gs://bucket_name/object_name_prefix/compute.
         # googleapis.com/Disk/0" is the first shard of output objects containing all
@@ -1363,14 +1363,14 @@ module Google
         end
       end
       
-      # Represents a GCP asset(resource or IAM policy) governed by the organization
-      # policies of the AnalyzeOrgPolicyGovernedAssetsRequest.constraint.
+      # Represents a Google Cloud asset(resource or IAM policy) governed by the
+      # organization policies of the AnalyzeOrgPolicyGovernedAssetsRequest.constraint.
       class GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAsset
         include Google::Apis::Core::Hashable
       
         # This organization policy message is a modified version of the one defined in
-        # the OrgPolicy system. This message contains several fields defined in the
-        # original organization policy with some new fields for analysis purpose.
+        # the Organization Policy system. This message contains several fields defined
+        # in the original organization policy with some new fields for analysis purpose.
         # Corresponds to the JSON property `consolidatedPolicy`
         # @return [Google::Apis::CloudassetV1::AnalyzerOrgPolicy]
         attr_accessor :consolidated_policy
@@ -1381,7 +1381,7 @@ module Google
         # @return [Google::Apis::CloudassetV1::GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedIamPolicy]
         attr_accessor :governed_iam_policy
       
-        # The GCP resources governed by the organization policies of the
+        # The Google Cloud resources governed by the organization policies of the
         # AnalyzeOrgPolicyGovernedAssetsRequest.constraint.
         # Corresponds to the JSON property `governedResource`
         # @return [Google::Apis::CloudassetV1::GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedResource]
@@ -1488,7 +1488,7 @@ module Google
         end
       end
       
-      # The GCP resources governed by the organization policies of the
+      # The Google Cloud resources governed by the organization policies of the
       # AnalyzeOrgPolicyGovernedAssetsRequest.constraint.
       class GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedResource
         include Google::Apis::Core::Hashable
@@ -1501,7 +1501,7 @@ module Google
         attr_accessor :folders
       
         # The [full resource name] (https://cloud.google.com/asset-inventory/docs/
-        # resource-name-format) of the GCP resource.
+        # resource-name-format) of the Google Cloud resource.
         # Corresponds to the JSON property `fullResourceName`
         # @return [String]
         attr_accessor :full_resource_name
@@ -1636,7 +1636,7 @@ module Google
         attr_accessor :display_name
       
         # A `Constraint` that allows or disallows a list of string values, which are
-        # configured by an Organization's policy administrator with a `Policy`.
+        # configured by an organization's policy administrator with a `Policy`.
         # Corresponds to the JSON property `listConstraint`
         # @return [Google::Apis::CloudassetV1::GoogleCloudAssetV1ListConstraint]
         attr_accessor :list_constraint
@@ -1671,7 +1671,7 @@ module Google
         # @return [String]
         attr_accessor :action_type
       
-        # Organization policy condition/expression. For example: `resource.instanceName.
+        # Organization Policy condition/expression. For example: `resource.instanceName.
         # matches("[production|test]_.*_(\d)+")'` or, `resource.management.auto_upgrade =
         # = true`
         # Corresponds to the JSON property `condition`
@@ -1754,7 +1754,7 @@ module Google
       class GoogleCloudAssetV1GcsDestination
         include Google::Apis::Core::Hashable
       
-        # Required. The uri of the Cloud Storage object. It's the same uri that is used
+        # Required. The URI of the Cloud Storage object. It's the same URI that is used
         # by gsutil. Example: "gs://bucket_name/object_name". See [Viewing and Editing
         # Object Metadata](https://cloud.google.com/storage/docs/viewing-editing-
         # metadata) for more information. If the specified Cloud Storage object already
@@ -1780,8 +1780,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # This organization policy message is a modified version of the one defined in
-        # the OrgPolicy system. This message contains several fields defined in the
-        # original organization policy with some new fields for analysis purpose.
+        # the Organization Policy system. This message contains several fields defined
+        # in the original organization policy with some new fields for analysis purpose.
         # Corresponds to the JSON property `consolidatedPolicy`
         # @return [Google::Apis::CloudassetV1::AnalyzerOrgPolicy]
         attr_accessor :consolidated_policy
@@ -1882,7 +1882,7 @@ module Google
       end
       
       # A `Constraint` that allows or disallows a list of string values, which are
-      # configured by an Organization's policy administrator with a `Policy`.
+      # configured by an organization's policy administrator with a `Policy`.
       class GoogleCloudAssetV1ListConstraint
         include Google::Apis::Core::Hashable
       
@@ -2071,8 +2071,8 @@ module Google
       # resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-
       # platform-resource-hierarchy), a resource outside the Google Cloud resource
       # hierarchy (such as Google Kubernetes Engine clusters and objects), or a policy
-      # (e.g. Cloud IAM policy). See [Supported asset types](https://cloud.google.com/
-      # asset-inventory/docs/supported-asset-types) for more information.
+      # (e.g. IAM policy). See [Supported asset types](https://cloud.google.com/asset-
+      # inventory/docs/supported-asset-types) for more information.
       class GoogleCloudAssetV1p7beta1Asset
         include Google::Apis::Core::Hashable
       
@@ -2209,9 +2209,9 @@ module Google
       # An asset can be any resource in the Google Cloud [resource hierarchy](https://
       # cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy), a
       # resource outside the Google Cloud resource hierarchy (such as Google
-      # Kubernetes Engine clusters and objects), or a policy (e.g. Cloud IAM policy).
-      # See [Supported asset types](https://cloud.google.com/asset-inventory/docs/
-      # supported-asset-types) for more information.
+      # Kubernetes Engine clusters and objects), or a policy (e.g. IAM policy). See [
+      # Supported asset types](https://cloud.google.com/asset-inventory/docs/supported-
+      # asset-types) for more information.
       class GoogleCloudAssetV1p7beta1RelatedAsset
         include Google::Apis::Core::Hashable
       
@@ -2350,7 +2350,7 @@ module Google
         # The full name of the immediate parent of this resource. See [Resource Names](
         # https://cloud.google.com/apis/design/resource_names#full_resource_name) for
         # more information. For Google Cloud assets, this value is the parent resource
-        # defined in the [Cloud IAM policy hierarchy](https://cloud.google.com/iam/docs/
+        # defined in the [IAM policy hierarchy](https://cloud.google.com/iam/docs/
         # overview#policy_hierarchy). Example: `//cloudresourcemanager.googleapis.com/
         # projects/my_project_123` For third-party assets, this field may be set
         # differently.
@@ -3229,10 +3229,11 @@ module Google
       
         # A Google Cloud resource that is allowed to ingress the perimeter. Requests
         # from these resources will be allowed to access perimeter data. Currently only
-        # projects are allowed. Format: `projects/`project_number`` The project may be
-        # in any Google Cloud organization, not just the organization that the perimeter
-        # is defined in. `*` is not allowed, the case of allowing all Google Cloud
-        # resources only is not supported.
+        # projects and VPCs are allowed. Project format: `projects/`project_number`` VPC
+        # format: `//compute.googleapis.com/projects/`PROJECT_ID`/global/networks/`NAME``
+        # . The project may be in any Google Cloud organization, not just the
+        # organization that the perimeter is defined in. `*` is not allowed, the case of
+        # allowing all Google Cloud resources only is not supported.
         # Corresponds to the JSON property `resource`
         # @return [String]
         attr_accessor :resource
@@ -3457,7 +3458,9 @@ module Google
         attr_accessor :ingress_policies
       
         # A list of Google Cloud resources that are inside of the service perimeter.
-        # Currently only projects are allowed. Format: `projects/`project_number``
+        # Currently only projects and VPCs are allowed. Project format: `projects/`
+        # project_number`` VPC format: `//compute.googleapis.com/projects/`PROJECT_ID`/
+        # global/networks/`NAME``.
         # Corresponds to the JSON property `resources`
         # @return [Array<String>]
         attr_accessor :resources
@@ -3790,8 +3793,8 @@ module Google
         # @return [Google::Apis::CloudassetV1::Policy]
         attr_accessor :policy
       
-        # The project that the associated GCP resource belongs to, in the form of
-        # projects/`PROJECT_NUMBER`. If an IAM policy is set on a resource (like VM
+        # The project that the associated Google Cloud resource belongs to, in the form
+        # of projects/`PROJECT_NUMBER`. If an IAM policy is set on a resource (like VM
         # instance, Cloud Storage bucket), the project field will indicate the project
         # that contains the resource. If an IAM policy is set on a folder or orgnization,
         # this field will be empty. To search against the `project`: * specify the `
@@ -4038,7 +4041,7 @@ module Google
         # @return [Google::Apis::CloudassetV1::MoveAnalysisResult]
         attr_accessor :analysis
       
-        # The user friendly display name of the analysis. E.g. IAM, Organization Policy
+        # The user friendly display name of the analysis. E.g. IAM, organization policy
         # etc.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -4182,19 +4185,19 @@ module Google
         # Optional. If true, the response will include access analysis from identities
         # to resources via service account impersonation. This is a very expensive
         # operation, because many derived queries will be executed. We highly recommend
-        # you use AssetService.AnalyzeIamPolicyLongrunning rpc instead. For example, if
+        # you use AssetService.AnalyzeIamPolicyLongrunning RPC instead. For example, if
         # the request analyzes for which resources user A has permission P, and there's
         # an IAM policy states user A has iam.serviceAccounts.getAccessToken permission
         # to a service account SA, and there's another IAM policy states service account
-        # SA has permission P to a GCP folder F, then user A potentially has access to
-        # the GCP folder F. And those advanced analysis results will be included in
-        # AnalyzeIamPolicyResponse.service_account_impersonation_analysis. Another
-        # example, if the request analyzes for who has permission P to a GCP folder F,
-        # and there's an IAM policy states user A has iam.serviceAccounts.actAs
-        # permission to a service account SA, and there's another IAM policy states
-        # service account SA has permission P to the GCP folder F, then user A
-        # potentially has access to the GCP folder F. And those advanced analysis
-        # results will be included in AnalyzeIamPolicyResponse.
+        # SA has permission P to a Google Cloud folder F, then user A potentially has
+        # access to the Google Cloud folder F. And those advanced analysis results will
+        # be included in AnalyzeIamPolicyResponse.service_account_impersonation_analysis.
+        # Another example, if the request analyzes for who has permission P to a Google
+        # Cloud folder F, and there's an IAM policy states user A has iam.
+        # serviceAccounts.actAs permission to a service account SA, and there's another
+        # IAM policy states service account SA has permission P to the Google Cloud
+        # folder F, then user A potentially has access to the Google Cloud folder F. And
+        # those advanced analysis results will be included in AnalyzeIamPolicyResponse.
         # service_account_impersonation_analysis. Only the following permissions are
         # considered in this analysis: * `iam.serviceAccounts.actAs` * `iam.
         # serviceAccounts.signBlob` * `iam.serviceAccounts.signJwt` * `iam.
@@ -4220,17 +4223,18 @@ module Google
         # specified, the resource section of the result will expand any resource
         # attached to an IAM policy to include resources lower in the resource hierarchy.
         # For example, if the request analyzes for which resources user A has
-        # permission P, and the results include an IAM policy with P on a GCP folder,
-        # the results will also include resources in that folder with permission P. If
-        # true and IamPolicyAnalysisQuery.resource_selector is specified, the resource
-        # section of the result will expand the specified resource to include resources
-        # lower in the resource hierarchy. Only project or lower resources are supported.
-        # Folder and organization resource cannot be used together with this option.
-        # For example, if the request analyzes for which users have permission P on a
-        # GCP project with this option enabled, the results will include all users who
-        # have permission P on that project or any lower resource. If true, the default
-        # max expansion per resource is 1000 for AssetService.AnalyzeIamPolicy][] and
-        # 100000 for AssetService.AnalyzeIamPolicyLongrunning][]. Default is false.
+        # permission P, and the results include an IAM policy with P on a Google Cloud
+        # folder, the results will also include resources in that folder with permission
+        # P. If true and IamPolicyAnalysisQuery.resource_selector is specified, the
+        # resource section of the result will expand the specified resource to include
+        # resources lower in the resource hierarchy. Only project or lower resources are
+        # supported. Folder and organization resources cannot be used together with this
+        # option. For example, if the request analyzes for which users have permission P
+        # on a Google Cloud project with this option enabled, the results will include
+        # all users who have permission P on that project or any lower resource. If true,
+        # the default max expansion per resource is 1000 for AssetService.
+        # AnalyzeIamPolicy][] and 100000 for AssetService.AnalyzeIamPolicyLongrunning][].
+        # Default is false.
         # Corresponds to the JSON property `expandResources`
         # @return [Boolean]
         attr_accessor :expand_resources
@@ -4281,8 +4285,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # This organization policy message is a modified version of the one defined in
-        # the OrgPolicy system. This message contains several fields defined in the
-        # original organization policy with some new fields for analysis purpose.
+        # the Organization Policy system. This message contains several fields defined
+        # in the original organization policy with some new fields for analysis purpose.
         # Corresponds to the JSON property `consolidatedPolicy`
         # @return [Google::Apis::CloudassetV1::AnalyzerOrgPolicy]
         attr_accessor :consolidated_policy
@@ -4807,9 +4811,9 @@ module Google
       # ancestors. An asset can be any resource in the Google Cloud [resource
       # hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-
       # resource-hierarchy), a resource outside the Google Cloud resource hierarchy (
-      # such as Google Kubernetes Engine clusters and objects), or a policy (e.g.
-      # Cloud IAM policy). See [Supported asset types](https://cloud.google.com/asset-
-      # inventory/docs/supported-asset-types) for more information.
+      # such as Google Kubernetes Engine clusters and objects), or a policy (e.g. IAM
+      # policy). See [Supported asset types](https://cloud.google.com/asset-inventory/
+      # docs/supported-asset-types) for more information.
       class RelatedAsset
         include Google::Apis::Core::Hashable
       
@@ -5006,7 +5010,7 @@ module Google
         # The full name of the immediate parent of this resource. See [Resource Names](
         # https://cloud.google.com/apis/design/resource_names#full_resource_name) for
         # more information. For Google Cloud assets, this value is the parent resource
-        # defined in the [Cloud IAM policy hierarchy](https://cloud.google.com/iam/docs/
+        # defined in the [IAM policy hierarchy](https://cloud.google.com/iam/docs/
         # overview#policy_hierarchy). Example: `//cloudresourcemanager.googleapis.com/
         # projects/my_project_123` For third-party assets, this field may be set
         # differently.
@@ -5052,14 +5056,14 @@ module Google
         # from one resource type to another. Examples: `projectId` for Project, `dnsName`
         # for DNS ManagedZone. This field contains a subset of the resource metadata
         # fields that are returned by the List or Get APIs provided by the corresponding
-        # GCP service (e.g., Compute Engine). see [API references and supported
+        # Google Cloud service (e.g., Compute Engine). see [API references and supported
         # searchable attributes](https://cloud.google.com/asset-inventory/docs/supported-
         # asset-types#searchable_asset_types) to see which fields are included. You can
         # search values of these fields through free text search. However, you should
         # not consume the field programically as the field names and values may change
-        # as the GCP service updates to a new incompatible API version. To search
-        # against the `additional_attributes`: * Use a free text query to match the
-        # attributes values. Example: to search `additional_attributes = ` dnsName: "
+        # as the Google Cloud service updates to a new incompatible API version. To
+        # search against the `additional_attributes`: * Use a free text query to match
+        # the attributes values. Example: to search `additional_attributes = ` dnsName: "
         # foobar" ``, you can issue a query `foobar`.
         # Corresponds to the JSON property `additionalAttributes`
         # @return [Hash<String,Object>]
@@ -5122,8 +5126,8 @@ module Google
         # projects.locations.keyRings.cryptoKeys) name or [CryptoKeyVersion](https://
         # cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.
         # cryptoKeys.cryptoKeyVersions) name. This field only presents for the purpose
-        # of backward compatibility. Please use the `kms_keys` field to retrieve KMS key
-        # information. This field is available only when the resource's Protobuf
+        # of backward compatibility. Please use the `kms_keys` field to retrieve Cloud
+        # KMS key information. This field is available only when the resource's Protobuf
         # contains it and will only be populated for [these resource types](https://
         # cloud.google.com/asset-inventory/docs/legacy-field-names#
         # resource_types_with_the_to_be_deprecated_kmskey_field) for backward compatible
@@ -5143,7 +5147,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :kms_keys
       
-        # Labels associated with this resource. See [Labelling and grouping GCP
+        # Labels associated with this resource. See [Labelling and grouping Google Cloud
         # resources](https://cloud.google.com/blog/products/gcp/labelling-and-grouping-
         # your-google-cloud-platform-resources) for more information. This field is
         # available only when the resource's Protobuf contains it. To search against the
@@ -5174,12 +5178,12 @@ module Google
         attr_accessor :name
       
         # Network tags associated with this resource. Like labels, network tags are a
-        # type of annotations used to group GCP resources. See [Labelling GCP resources](
-        # https://cloud.google.com/blog/products/gcp/labelling-and-grouping-your-google-
-        # cloud-platform-resources) for more information. This field is available only
-        # when the resource's Protobuf contains it. To search against the `network_tags`:
-        # * Use a field query. Example: `networkTags:internal` * Use a free text query.
-        # Example: `internal`
+        # type of annotations used to group Google Cloud resources. See [Labelling
+        # Google Cloud resources](https://cloud.google.com/blog/products/gcp/labelling-
+        # and-grouping-your-google-cloud-platform-resources) for more information. This
+        # field is available only when the resource's Protobuf contains it. To search
+        # against the `network_tags`: * Use a field query. Example: `networkTags:
+        # internal` * Use a free text query. Example: `internal`
         # Corresponds to the JSON property `networkTags`
         # @return [Array<String>]
         attr_accessor :network_tags
@@ -5234,7 +5238,7 @@ module Google
         # include PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED,
         # REPAIRING, and TERMINATED. See `status` definition in [API Reference](https://
         # cloud.google.com/compute/docs/reference/rest/v1/instances). If the resource is
-        # a project provided by Cloud Resource Manager, its state will include
+        # a project provided by Resource Manager, its state will include
         # LIFECYCLE_STATE_UNSPECIFIED, ACTIVE, DELETE_REQUESTED and DELETE_IN_PROGRESS.
         # See `lifecycleState` definition in [API Reference](https://cloud.google.com/
         # resource-manager/reference/rest/v1/projects). To search against the `state`: *
@@ -5424,8 +5428,8 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # A list of IamPolicy that match the search query. Related information such as
-        # the associated resource is returned along with the policy.
+        # A list of IAM policies that match the search query. Related information such
+        # as the associated resource is returned along with the policy.
         # Corresponds to the JSON property `results`
         # @return [Array<Google::Apis::CloudassetV1::IamPolicySearchResult>]
         attr_accessor :results
@@ -5658,7 +5662,7 @@ module Google
         # resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-
         # platform-resource-hierarchy), a resource outside the Google Cloud resource
         # hierarchy (such as Google Kubernetes Engine clusters and objects), or a policy
-        # (e.g. Cloud IAM policy), or a relationship (e.g. an INSTANCE_TO_INSTANCEGROUP
+        # (e.g. IAM policy), or a relationship (e.g. an INSTANCE_TO_INSTANCEGROUP
         # relationship). See [Supported asset types](https://cloud.google.com/asset-
         # inventory/docs/supported-asset-types) for more information.
         # Corresponds to the JSON property `asset`
@@ -5675,7 +5679,7 @@ module Google
         # resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-
         # platform-resource-hierarchy), a resource outside the Google Cloud resource
         # hierarchy (such as Google Kubernetes Engine clusters and objects), or a policy
-        # (e.g. Cloud IAM policy), or a relationship (e.g. an INSTANCE_TO_INSTANCEGROUP
+        # (e.g. IAM policy), or a relationship (e.g. an INSTANCE_TO_INSTANCEGROUP
         # relationship). See [Supported asset types](https://cloud.google.com/asset-
         # inventory/docs/supported-asset-types) for more information.
         # Corresponds to the JSON property `priorAsset`
