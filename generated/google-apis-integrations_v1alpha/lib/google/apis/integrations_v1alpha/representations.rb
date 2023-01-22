@@ -1372,6 +1372,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudIntegrationsV1alphaUnpublishIntegrationVersionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudIntegrationsV1alphaUpdateBundleRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3886,6 +3892,12 @@ module Google
           property :trigger_id, as: 'triggerId'
           property :trigger_number, as: 'triggerNumber'
           property :trigger_type, as: 'triggerType'
+        end
+      end
+      
+      class GoogleCloudIntegrationsV1alphaUnpublishIntegrationVersionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
