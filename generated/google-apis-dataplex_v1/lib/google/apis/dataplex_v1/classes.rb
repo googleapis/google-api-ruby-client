@@ -903,6 +903,255 @@ module Google
         end
       end
       
+      # DataAccessSpec holds the access control configuration to be enforced on data
+      # stored within resources (eg: rows, columns in BigQuery Tables). When
+      # associated with data,the data is only accessible to principals explicitly
+      # granted access through the DataAttribute. Principals with access to the
+      # containing resource are not implicitly granted access.
+      class GoogleCloudDataplexV1DataAccessSpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The format of strings follows the pattern followed by IAM in the
+        # bindings. user:`email`, serviceAccount:`email` group:`email`. The set of
+        # principals to be granted reader role on data stored within resources.
+        # Corresponds to the JSON property `readers`
+        # @return [Array<String>]
+        attr_accessor :readers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @readers = args[:readers] if args.key?(:readers)
+        end
+      end
+      
+      # Denotes one dataAttribute in a dataTaxonomy, for example, PII. DataAttribute
+      # resources can be defined in a hierarchy. A single dataAttribute resource can
+      # contain specs of multiple types PII - ResourceAccessSpec : - readers :foo@bar.
+      # com - DataAccessSpec : - readers :bar@foo.com
+      class GoogleCloudDataplexV1DataAttribute
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The number of child attributes present for this attribute.
+        # Corresponds to the JSON property `attributeCount`
+        # @return [Fixnum]
+        attr_accessor :attribute_count
+      
+        # Output only. The time when the DataAttribute was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # DataAccessSpec holds the access control configuration to be enforced on data
+        # stored within resources (eg: rows, columns in BigQuery Tables). When
+        # associated with data,the data is only accessible to principals explicitly
+        # granted access through the DataAttribute. Principals with access to the
+        # containing resource are not implicitly granted access.
+        # Corresponds to the JSON property `dataAccessSpec`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataAccessSpec]
+        attr_accessor :data_access_spec
+      
+        # Optional. Description of the DataAttribute.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. User friendly display name.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # This checksum is computed by the server based on the value of other fields,
+        # and may be sent on update and delete requests to ensure the client has an up-
+        # to-date value before proceeding.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Optional. User-defined labels for the DataAttribute.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. The relative resource name of the dataAttribute, of the form:
+        # projects/`project_number`/locations/`location_id`/dataTaxonomies/`dataTaxonomy`
+        # /attributes/`data_attribute_id`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. The ID of the parent DataAttribute resource, should belong to the
+        # same data taxonomy. Circular dependency in parent chain is not valid. Maximum
+        # depth of the hierarchy allowed is 4. a -> b -> c -> d -> e, depth = 4
+        # Corresponds to the JSON property `parentId`
+        # @return [String]
+        attr_accessor :parent_id
+      
+        # ResourceAccessSpec holds the access control configuration to be enforced on
+        # the resources, for example, Cloud Storage bucket, BigQuery dataset, BigQuery
+        # table.
+        # Corresponds to the JSON property `resourceAccessSpec`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1ResourceAccessSpec]
+        attr_accessor :resource_access_spec
+      
+        # Output only. System generated globally unique ID for the DataAttribute. This
+        # ID will be different if the DataAttribute is deleted and re-created with the
+        # same name.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. The time when the DataAttribute was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attribute_count = args[:attribute_count] if args.key?(:attribute_count)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @data_access_spec = args[:data_access_spec] if args.key?(:data_access_spec)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @etag = args[:etag] if args.key?(:etag)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @parent_id = args[:parent_id] if args.key?(:parent_id)
+          @resource_access_spec = args[:resource_access_spec] if args.key?(:resource_access_spec)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # DataAttributeBinding represents binding of attributes to resources. Eg: Bind '
+      # CustomerInfo' entity with 'PII' attribute.
+      class GoogleCloudDataplexV1DataAttributeBinding
+        include Google::Apis::Core::Hashable
+      
+        # Optional. List of attributes to be associated with the resource, provided in
+        # the form: projects/`project`/locations/`location`/dataTaxonomies/`dataTaxonomy`
+        # /attributes/`data_attribute_id`
+        # Corresponds to the JSON property `attributes`
+        # @return [Array<String>]
+        attr_accessor :attributes
+      
+        # Output only. The time when the DataAttributeBinding was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Description of the DataAttributeBinding.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. User friendly display name.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # This checksum is computed by the server based on the value of other fields,
+        # and may be sent on update and delete requests to ensure the client has an up-
+        # to-date value before proceeding. Etags must be used when calling the
+        # DeleteDataAttributeBinding and the UpdateDataAttributeBinding method.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Optional. User-defined labels for the DataAttributeBinding.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. The relative resource name of the Data Attribute Binding, of the
+        # form: projects/`project_number`/locations/`location`/dataAttributeBindings/`
+        # data_attribute_binding_id`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. The list of paths for items within the associated resource (eg.
+        # columns within a table) along with attribute bindings.
+        # Corresponds to the JSON property `paths`
+        # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1DataAttributeBindingPath>]
+        attr_accessor :paths
+      
+        # Optional. Immutable. The resource name of the resource that is binded to
+        # attributes. Presently, only entity resource is supported in the form: projects/
+        # `project`/locations/`location`/lakes/`lake`/zones/`zone`/entities/`entity_id`
+        # Must belong in the same project and region as the attribute binding, and there
+        # can only exist one active binding for a resource.
+        # Corresponds to the JSON property `resource`
+        # @return [String]
+        attr_accessor :resource
+      
+        # Output only. System generated globally unique ID for the DataAttributeBinding.
+        # This ID will be different if the DataAttributeBinding is deleted and re-
+        # created with the same name.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. The time when the DataAttributeBinding was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attributes = args[:attributes] if args.key?(:attributes)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @etag = args[:etag] if args.key?(:etag)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @paths = args[:paths] if args.key?(:paths)
+          @resource = args[:resource] if args.key?(:resource)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Represents a subresource of a given resource, and associated bindings with it.
+      class GoogleCloudDataplexV1DataAttributeBindingPath
+        include Google::Apis::Core::Hashable
+      
+        # Optional. List of attributes to be associated with the path of the resource,
+        # provided in the form: projects/`project`/locations/`location`/dataTaxonomies/`
+        # dataTaxonomy`/attributes/`data_attribute_id`
+        # Corresponds to the JSON property `attributes`
+        # @return [Array<String>]
+        attr_accessor :attributes
+      
+        # Required. The name identifier of the path. Nested columns should be of the
+        # form: 'country.state.city'.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attributes = args[:attributes] if args.key?(:attributes)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # DataProfileResult defines the output of DataProfileScan. Each field of the
       # table will have field type specific profile result.
       class GoogleCloudDataplexV1DataProfileResult
@@ -2081,6 +2330,81 @@ module Google
         end
       end
       
+      # DataTaxonomy represents a set of hierarchical DataAttributes resources,
+      # grouped with a common theme Eg: 'SensitiveDataTaxonomy' can have attributes to
+      # manage PII data. It is defined at project level.
+      class GoogleCloudDataplexV1DataTaxonomy
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The number of attributes in the DataTaxonomy.
+        # Corresponds to the JSON property `attributeCount`
+        # @return [Fixnum]
+        attr_accessor :attribute_count
+      
+        # Output only. The time when the DataTaxonomy was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Description of the DataTaxonomy.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. User friendly display name.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # This checksum is computed by the server based on the value of other fields,
+        # and may be sent on update and delete requests to ensure the client has an up-
+        # to-date value before proceeding.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Optional. User-defined labels for the DataTaxonomy.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. The relative resource name of the DataTaxonomy, of the form:
+        # projects/`project_number`/locations/`location_id`/dataTaxonomies/`
+        # data_taxonomy_id`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. System generated globally unique ID for the dataTaxonomy. This ID
+        # will be different if the DataTaxonomy is deleted and re-created with the same
+        # name.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. The time when the DataTaxonomy was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attribute_count = args[:attribute_count] if args.key?(:attribute_count)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @etag = args[:etag] if args.key?(:etag)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # The payload associated with Discovery data processing.
       class GoogleCloudDataplexV1DiscoveryEvent
         include Google::Apis::Core::Hashable
@@ -3084,6 +3408,70 @@ module Google
         end
       end
       
+      # List DataAttributeBindings response.
+      class GoogleCloudDataplexV1ListDataAttributeBindingsResponse
+        include Google::Apis::Core::Hashable
+      
+        # DataAttributeBindings under the given parent Location.
+        # Corresponds to the JSON property `dataAttributeBindings`
+        # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1DataAttributeBinding>]
+        attr_accessor :data_attribute_bindings
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachableLocations`
+        # @return [Array<String>]
+        attr_accessor :unreachable_locations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_attribute_bindings = args[:data_attribute_bindings] if args.key?(:data_attribute_bindings)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable_locations = args[:unreachable_locations] if args.key?(:unreachable_locations)
+        end
+      end
+      
+      # List DataAttributes response.
+      class GoogleCloudDataplexV1ListDataAttributesResponse
+        include Google::Apis::Core::Hashable
+      
+        # DataAttributes under the given parent DataTaxonomy.
+        # Corresponds to the JSON property `dataAttributes`
+        # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1DataAttribute>]
+        attr_accessor :data_attributes
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachableLocations`
+        # @return [Array<String>]
+        attr_accessor :unreachable_locations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_attributes = args[:data_attributes] if args.key?(:data_attributes)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable_locations = args[:unreachable_locations] if args.key?(:unreachable_locations)
+        end
+      end
+      
       # List DataScanJobs response.
       class GoogleCloudDataplexV1ListDataScanJobsResponse
         include Google::Apis::Core::Hashable
@@ -3139,6 +3527,38 @@ module Google
           @data_scans = args[:data_scans] if args.key?(:data_scans)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # List DataTaxonomies response.
+      class GoogleCloudDataplexV1ListDataTaxonomiesResponse
+        include Google::Apis::Core::Hashable
+      
+        # DataTaxonomies under the given parent location.
+        # Corresponds to the JSON property `dataTaxonomies`
+        # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1DataTaxonomy>]
+        attr_accessor :data_taxonomies
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachableLocations`
+        # @return [Array<String>]
+        attr_accessor :unreachable_locations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_taxonomies = args[:data_taxonomies] if args.key?(:data_taxonomies)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable_locations = args[:unreachable_locations] if args.key?(:unreachable_locations)
         end
       end
       
@@ -3461,6 +3881,41 @@ module Google
           @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
           @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # ResourceAccessSpec holds the access control configuration to be enforced on
+      # the resources, for example, Cloud Storage bucket, BigQuery dataset, BigQuery
+      # table.
+      class GoogleCloudDataplexV1ResourceAccessSpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The set of principals to be granted owner role on the resource.
+        # Corresponds to the JSON property `owners`
+        # @return [Array<String>]
+        attr_accessor :owners
+      
+        # Optional. The format of strings follows the pattern followed by IAM in the
+        # bindings. user:`email`, serviceAccount:`email` group:`email`. The set of
+        # principals to be granted reader role on the resource.
+        # Corresponds to the JSON property `readers`
+        # @return [Array<String>]
+        attr_accessor :readers
+      
+        # Optional. The set of principals to be granted writer role on the resource.
+        # Corresponds to the JSON property `writers`
+        # @return [Array<String>]
+        attr_accessor :writers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @owners = args[:owners] if args.key?(:owners)
+          @readers = args[:readers] if args.key?(:readers)
+          @writers = args[:writers] if args.key?(:writers)
         end
       end
       
