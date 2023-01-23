@@ -40,7 +40,7 @@ helpers do
   # Returns credentials authorized for the requested scopes. If no credentials are available,
   # redirects the user to authorize access.
   def credentials_for(scope)
-    authorizer = Google::Auth::WebUserAuthorizer.new(settings.client_id, scope, settings.token_store)
+    authorizer = Google::Auth::WebUserAuthorizer.new(settings.client_id, scope, settings.token_store, '/oauth2callback')
     user_id = session[:user_id]
     redirect LOGIN_URL if user_id.nil?
     credentials = authorizer.get_credentials(user_id, request)
@@ -66,14 +66,12 @@ end
 #
 post('/signin') do
   audience = settings.client_id.id
-  # Important: The google-id-token gem is not production ready. If using, consider fetching and
-  # supplying the valid keys separately rather than using the built-in certificate fetcher.
   validator = GoogleIDToken::Validator.new
-  claim = validator.check(params['id_token'], audience, audience)
+  claim = validator.check(params['credential'], audience, audience)
   if claim
     session[:user_id] = claim['sub']
     session[:user_email] = claim['email']
-    200
+    redirect back
   else
     logger.info('No valid identity token present')
     401

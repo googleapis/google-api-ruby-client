@@ -40,5 +40,7 @@ To start the server, run
 ruby app.rb
 ```
 
+Make sure you're running redis server locally at port `6379`
+
 Open `http://localhost:4567/` in your browser to explore the sample.
 

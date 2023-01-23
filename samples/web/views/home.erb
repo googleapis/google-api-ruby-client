@@ -13,22 +13,40 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 %>
-<div class="g-signin2" data-onsuccess="onSignIn"></div>
-<script>
-function onSignIn(googleUser) {
-  var id_token = googleUser.getAuthResponse().id_token;
-  var formData = new FormData();
-  formData.append('id_token', id_token);
-  var req = new XMLHttpRequest();
-  req.addEventListener("load", function() {
-    console.log("Log in successful");
-    // Successful login...
-  });
-  req.addEventListener("error", function() {
-    console.log("Log in failed");
-    // Handle error...
-  });
-  req.open("POST", "/signin");
-  req.send(formData);
-}
-</script>
+<html>
+  <head>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <div id="g_id_onload"
+         data-client_id="<%= @client_id %>"
+         data-context="signin"
+         data-ux_mode="popup"
+         data-login_uri="http://localhost:4567/signin"
+         data-auto_prompt="false">
+    </div>
+
+    <div class="g_id_signin"
+         data-type="standard"
+         data-shape="rectangular"
+         data-theme="outline"
+         data-text="signin_with"
+         data-size="large"
+         data-logo_alignment="left">
+    </div>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+      .navigation a {
+        padding: 10px;
+      }
+      .main {
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navigation">
+      <a href="/">Home</a>
+      <a href="/drive">Google Drive Sample</a>
+      <a href="/calendar">Google Calendar Sample</a>
+    </div>
+  </body>
+</html>
