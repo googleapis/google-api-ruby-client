@@ -141,7 +141,7 @@ module Google
           logger.debug { sprintf('Sending upload command to %s', @upload_url) }
 
           remaining_content_size = upload_io.size - @offset
-          current_chunk_size = remaining_content_size < @upload_chunk_size ? remaining_content_size : @upload_chunk_size
+          current_chunk_size = get_current_chunk_size remaining_content_size
 
           request_header = header.dup
           request_header[CONTENT_RANGE_HEADER] = get_content_range_header current_chunk_size
@@ -179,6 +179,15 @@ module Google
 
         def streamable?(upload_source)
           upload_source.is_a?(IO) || upload_source.is_a?(StringIO) || upload_source.is_a?(Tempfile)
+        end
+
+        def get_current_chunk_size remaining_content_size
+          # Disable chunking if the chunk size is set to zero.
+          if @upload_chunk_size == 0
+            remaining_content_size
+          else
+            remaining_content_size < @upload_chunk_size ? remaining_content_size : @upload_chunk_size
+          end
         end
 
         def get_content_range_header current_chunk_size
