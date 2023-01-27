@@ -1,5 +1,12 @@
 # Release History
 
+### 0.10.0 (2023-01-26)
+
+#### Features
+
+* Allow chunk size zero for storage resumable upload ([#13283](https://github.com/googleapis/google-api-ruby-client/issues/13283)) 
+* Make chunk size configurable ([#13216](https://github.com/googleapis/google-api-ruby-client/issues/13216)) 
+
 ### 0.9.5 (2023-01-12)
 
 #### Bug Fixes
