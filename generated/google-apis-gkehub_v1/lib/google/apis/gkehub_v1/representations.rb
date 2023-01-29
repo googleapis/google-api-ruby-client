@@ -82,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CommonFleetDefaultMemberConfigSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ConfigManagementConfigSync
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -620,6 +626,12 @@ module Google
         end
       end
       
+      class CommonFleetDefaultMemberConfigSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class ConfigManagementConfigSync
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -908,6 +920,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :delete_time, as: 'deleteTime'
+          property :fleet_default_member_config, as: 'fleetDefaultMemberConfig', class: Google::Apis::GkehubV1::CommonFleetDefaultMemberConfigSpec, decorator: Google::Apis::GkehubV1::CommonFleetDefaultMemberConfigSpec::Representation
+      
           hash :labels, as: 'labels'
           hash :membership_specs, as: 'membershipSpecs', class: Google::Apis::GkehubV1::MembershipFeatureSpec, decorator: Google::Apis::GkehubV1::MembershipFeatureSpec::Representation
       
