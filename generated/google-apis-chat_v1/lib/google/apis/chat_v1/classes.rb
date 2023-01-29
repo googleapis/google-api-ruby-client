@@ -1085,15 +1085,17 @@ module Google
       
       # A text, icon, or text + icon button that users can click. To make an image a
       # clickable button, specify an Image (not an ImageComponent) and set an `onClick`
-      # action.
+      # action. Currently supported in Chat apps (including [dialogs] (https://
+      # developers.google.com/chat/how-tos/dialogs) and [card messages] (https://
+      # developers.google.com/chat/api/guides/message-formats/cards)) and Google
+      # Workspace Add-ons.
       class GoogleAppsCardV1Button
         include Google::Apis::Core::Hashable
       
         # The alternative text used for accessibility. Set descriptive text that lets
         # users know what the button does. For example, if a button opens a hyperlink,
         # you might write: "Opens a new browser tab and navigates to the Google Chat
-        # developer documentation at https://developers.google.com/chat". Has no effect
-        # when an icon is set; use `icon.alt_text` instead.
+        # developer documentation at https://developers.google.com/chat".
         # Corresponds to the JSON property `altText`
         # @return [String]
         attr_accessor :alt_text
@@ -1336,14 +1338,20 @@ module Google
       
         # A text, icon, or text + icon button that users can click. To make an image a
         # clickable button, specify an Image (not an ImageComponent) and set an `onClick`
-        # action.
+        # action. Currently supported in Chat apps (including [dialogs] (https://
+        # developers.google.com/chat/how-tos/dialogs) and [card messages] (https://
+        # developers.google.com/chat/api/guides/message-formats/cards)) and Google
+        # Workspace Add-ons.
         # Corresponds to the JSON property `primaryButton`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Button]
         attr_accessor :primary_button
       
         # A text, icon, or text + icon button that users can click. To make an image a
         # clickable button, specify an Image (not an ImageComponent) and set an `onClick`
-        # action.
+        # action. Currently supported in Chat apps (including [dialogs] (https://
+        # developers.google.com/chat/how-tos/dialogs) and [card messages] (https://
+        # developers.google.com/chat/api/guides/message-formats/cards)) and Google
+        # Workspace Add-ons.
         # Corresponds to the JSON property `secondaryButton`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Button]
         attr_accessor :secondary_button
@@ -1485,7 +1493,10 @@ module Google
       
         # A text, icon, or text + icon button that users can click. To make an image a
         # clickable button, specify an Image (not an ImageComponent) and set an `onClick`
-        # action.
+        # action. Currently supported in Chat apps (including [dialogs] (https://
+        # developers.google.com/chat/how-tos/dialogs) and [card messages] (https://
+        # developers.google.com/chat/api/guides/message-formats/cards)) and Google
+        # Workspace Add-ons.
         # Corresponds to the JSON property `button`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Button]
         attr_accessor :button
@@ -1691,15 +1702,14 @@ module Google
       class GoogleAppsCardV1Icon
         include Google::Apis::Core::Hashable
       
-        # Optional. A description of the icon used for accessibility. If unspecified, a
-        # default value is provided. As a best practice, you should set a helpful
-        # description. For example, if an icon displays a user's account portrait, you
-        # could describe it as "A user's account portrait." If the icon displays in a
-        # Button, this alt text takes precedence and overwrites the button's alt text,
-        # so you should write alt text for the button: Set descriptive text that lets
-        # users know what the button does. For example, if a button opens a hyperlink,
-        # you might write: "Opens a new browser tab and navigates to the Google Chat
-        # developer documentation at https://developers.google.com/chat".
+        # Optional. A description of the icon used for accessibility. If unspecified,
+        # the default value "Button" is provided. As a best practice, you should set a
+        # helpful description for what the icon displays, and if applicable, what it
+        # does. For example, `A user's account portrait`, or `Opens a new browser tab
+        # and navigates to the Google Chat developer documentation at https://developers.
+        # google.com/chat`. If the icon is set in a Button, the `altText` appears as
+        # helper text when the user hovers over the button. However, if the button also
+        # sets `text`, the icon's `altText` is ignored.
         # Corresponds to the JSON property `altText`
         # @return [String]
         attr_accessor :alt_text
