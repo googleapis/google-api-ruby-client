@@ -274,6 +274,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :expires_in
       
+        # Google issued ID token in response to the OAuth token exchange request for ID
+        # token flow.
+        # Corresponds to the JSON property `id_token`
+        # @return [String]
+        attr_accessor :id_token
+      
         # A refresh token, issued by Google, in response to the OAuth token exchange
         # request for refresh token flow
         # Corresponds to the JSON property `refresh_token`
@@ -286,8 +292,7 @@ module Google
         attr_accessor :scope
       
         # The type of token. Field reserved for RFC compliance. See https://www.rfc-
-        # editor.org/rfc/rfc6749#section-5.1 Note: No token_type is returned for current
-        # implementation
+        # editor.org/rfc/rfc6749#section-5.1
         # Corresponds to the JSON property `token_type`
         # @return [String]
         attr_accessor :token_type
@@ -300,6 +305,7 @@ module Google
         def update!(**args)
           @access_token = args[:access_token] if args.key?(:access_token)
           @expires_in = args[:expires_in] if args.key?(:expires_in)
+          @id_token = args[:id_token] if args.key?(:id_token)
           @refresh_token = args[:refresh_token] if args.key?(:refresh_token)
           @scope = args[:scope] if args.key?(:scope)
           @token_type = args[:token_type] if args.key?(:token_type)
