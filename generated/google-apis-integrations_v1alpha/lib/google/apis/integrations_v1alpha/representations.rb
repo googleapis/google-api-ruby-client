@@ -826,30 +826,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudIntegrationsV1alphaArchiveBundleRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudIntegrationsV1alphaArchiveBundleResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudIntegrationsV1alphaArchiveIntegrationVersionRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudIntegrationsV1alphaArchiveIntegrationVersionResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudIntegrationsV1alphaAttemptStats
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -922,31 +898,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudIntegrationsV1alphaCreateBundleRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudIntegrationsV1alphaCreateBundleResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudIntegrationsV1alphaCredential
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudIntegrationsV1alphaDeactivateIntegrationVersionRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudIntegrationsV1alphaDeactivateIntegrationVersionResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1024,12 +976,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudIntegrationsV1alphaGetBundleResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudIntegrationsV1alphaIntParameterArray
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1049,12 +995,6 @@ module Google
       end
       
       class GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudIntegrationsV1alphaIntegrationBundleConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1126,12 +1066,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudIntegrationsV1alphaListExecutionSnapshotsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudIntegrationsV1alphaListExecutionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1181,12 +1115,6 @@ module Google
       end
       
       class GoogleCloudIntegrationsV1alphaListSuspensionsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudIntegrationsV1alphaListTaskEntitiesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1378,18 +1306,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudIntegrationsV1alphaUpdateBundleRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudIntegrationsV1alphaUpdateBundleResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1403,18 +1319,6 @@ module Google
       end
       
       class GoogleCloudIntegrationsV1alphaUsernameAndPassword
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudIntegrationsV1alphaValidateIntegrationVersionRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudIntegrationsV1alphaValidateIntegrationVersionResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2937,30 +2841,6 @@ module Google
         end
       end
       
-      class GoogleCloudIntegrationsV1alphaArchiveBundleRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class GoogleCloudIntegrationsV1alphaArchiveBundleResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class GoogleCloudIntegrationsV1alphaArchiveIntegrationVersionRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class GoogleCloudIntegrationsV1alphaArchiveIntegrationVersionResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
       class GoogleCloudIntegrationsV1alphaAttemptStats
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3079,24 +2959,6 @@ module Google
         end
       end
       
-      class GoogleCloudIntegrationsV1alphaCreateBundleRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :bundle_id, as: 'bundleId'
-          collection :integrations, as: 'integrations'
-          property :secondary_customer_org_id, as: 'secondaryCustomerOrgId'
-        end
-      end
-      
-      class GoogleCloudIntegrationsV1alphaCreateBundleResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :config, as: 'config', class: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaIntegrationBundleConfig, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaIntegrationBundleConfig::Representation
-      
-          property :trigger_id, as: 'triggerId'
-        end
-      end
-      
       class GoogleCloudIntegrationsV1alphaCredential
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3117,18 +2979,6 @@ module Google
       
           property :username_and_password, as: 'usernameAndPassword', class: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaUsernameAndPassword, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaUsernameAndPassword::Representation
       
-        end
-      end
-      
-      class GoogleCloudIntegrationsV1alphaDeactivateIntegrationVersionRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class GoogleCloudIntegrationsV1alphaDeactivateIntegrationVersionResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -3266,14 +3116,6 @@ module Google
         end
       end
       
-      class GoogleCloudIntegrationsV1alphaGetBundleResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :config, as: 'config', class: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaIntegrationBundleConfig, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaIntegrationBundleConfig::Representation
-      
-        end
-      end
-      
       class GoogleCloudIntegrationsV1alphaIntParameterArray
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3312,14 +3154,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :absolute, :numeric_string => true, as: 'absolute'
           property :percentage, as: 'percentage'
-        end
-      end
-      
-      class GoogleCloudIntegrationsV1alphaIntegrationBundleConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :integrations, as: 'integrations'
-          property :service_account, as: 'serviceAccount'
         end
       end
       
@@ -3461,15 +3295,6 @@ module Google
         end
       end
       
-      class GoogleCloudIntegrationsV1alphaListExecutionSnapshotsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :execution_snapshots, as: 'executionSnapshots', class: Google::Apis::IntegrationsV1alpha::EnterpriseCrmEventbusProtoEventExecutionSnapshot, decorator: Google::Apis::IntegrationsV1alpha::EnterpriseCrmEventbusProtoEventExecutionSnapshot::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
-        end
-      end
-      
       class GoogleCloudIntegrationsV1alphaListExecutionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3550,14 +3375,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :suspensions, as: 'suspensions', class: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaSuspension, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaSuspension::Representation
-      
-        end
-      end
-      
-      class GoogleCloudIntegrationsV1alphaListTaskEntitiesResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :task_entities, as: 'taskEntities', class: Google::Apis::IntegrationsV1alpha::EnterpriseCrmFrontendsEventbusProtoTaskEntity, decorator: Google::Apis::IntegrationsV1alpha::EnterpriseCrmFrontendsEventbusProtoTaskEntity::Representation
       
         end
       end
@@ -3901,22 +3718,6 @@ module Google
         end
       end
       
-      class GoogleCloudIntegrationsV1alphaUpdateBundleRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :config, as: 'config', class: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaIntegrationBundleConfig, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaIntegrationBundleConfig::Representation
-      
-        end
-      end
-      
-      class GoogleCloudIntegrationsV1alphaUpdateBundleResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :config, as: 'config', class: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaIntegrationBundleConfig, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaIntegrationBundleConfig::Representation
-      
-        end
-      end
-      
       class GoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3938,18 +3739,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :password, as: 'password'
           property :username, as: 'username'
-        end
-      end
-      
-      class GoogleCloudIntegrationsV1alphaValidateIntegrationVersionRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class GoogleCloudIntegrationsV1alphaValidateIntegrationVersionResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
