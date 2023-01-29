@@ -21418,13 +21418,20 @@ module Google
       class YouTubeLiveBroadcastEvent
         include Google::Apis::Core::Hashable
       
+        # Input only. If the channel_id is for a YouTube Channel owned by a Brand
+        # Account, client is required to populate this field with the obfuscated gaia id
+        # of the Brand account when starting the broadcast.
+        # Corresponds to the JSON property `brandAccountGaiaId`
+        # @return [String]
+        attr_accessor :brand_account_gaia_id
+      
         # Input only. The broadcast id, used to control the lifecycle of the event on
         # YouTube
         # Corresponds to the JSON property `broadcastId`
         # @return [String]
         attr_accessor :broadcast_id
       
-        # YouTube channel associated with the broadcast.
+        # YouTube Channel associated with the broadcast.
         # Corresponds to the JSON property `channelId`
         # @return [String]
         attr_accessor :channel_id
@@ -21441,6 +21448,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @brand_account_gaia_id = args[:brand_account_gaia_id] if args.key?(:brand_account_gaia_id)
           @broadcast_id = args[:broadcast_id] if args.key?(:broadcast_id)
           @channel_id = args[:channel_id] if args.key?(:channel_id)
           @view_url = args[:view_url] if args.key?(:view_url)
