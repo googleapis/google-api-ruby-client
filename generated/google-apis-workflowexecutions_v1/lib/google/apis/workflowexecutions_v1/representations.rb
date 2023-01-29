@@ -113,6 +113,7 @@ module Google
           property :end_time, as: 'endTime'
           property :error, as: 'error', class: Google::Apis::WorkflowexecutionsV1::Error, decorator: Google::Apis::WorkflowexecutionsV1::Error::Representation
       
+          hash :labels, as: 'labels'
           property :name, as: 'name'
           property :result, as: 'result'
           property :start_time, as: 'startTime'
