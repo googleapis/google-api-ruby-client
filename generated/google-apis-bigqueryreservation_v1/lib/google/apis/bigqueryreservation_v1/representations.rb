@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Autoscale
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BiReservation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -128,6 +134,14 @@ module Google
         end
       end
       
+      class Autoscale
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :current_slots, :numeric_string => true, as: 'currentSlots'
+          property :max_slots, :numeric_string => true, as: 'maxSlots'
+        end
+      end
+      
       class BiReservation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -144,6 +158,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :commitment_end_time, as: 'commitmentEndTime'
           property :commitment_start_time, as: 'commitmentStartTime'
+          property :edition, as: 'edition'
           property :failure_status, as: 'failureStatus', class: Google::Apis::BigqueryreservationV1::Status, decorator: Google::Apis::BigqueryreservationV1::Status::Representation
       
           property :multi_region_auxiliary, as: 'multiRegionAuxiliary'
@@ -205,8 +220,11 @@ module Google
       class Reservation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :autoscale, as: 'autoscale', class: Google::Apis::BigqueryreservationV1::Autoscale, decorator: Google::Apis::BigqueryreservationV1::Autoscale::Representation
+      
           property :concurrency, :numeric_string => true, as: 'concurrency'
           property :creation_time, as: 'creationTime'
+          property :edition, as: 'edition'
           property :ignore_idle_slots, as: 'ignoreIdleSlots'
           property :multi_region_auxiliary, as: 'multiRegionAuxiliary'
           property :name, as: 'name'
