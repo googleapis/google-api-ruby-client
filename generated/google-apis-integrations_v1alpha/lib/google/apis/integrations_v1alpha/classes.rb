@@ -122,8 +122,7 @@ module Google
       end
       
       # Attributes are additional options that can be associated with each event
-      # property. For more information, see go/integration-platform/event_bus/
-      # attributes_registry.md. Next available: 8
+      # property. For more information, see
       class EnterpriseCrmEventbusProtoAttributes
         include Google::Apis::Core::Hashable
       
@@ -154,8 +153,7 @@ module Google
       
         # The LogSettings define the logging attributes for an event property. These
         # attributes are used to map the property to the parameter in the log proto.
-        # Also used to define scrubbing/truncation behavior and PII information. See go/
-        # integration-platform/analytics/logging_task.md for details.
+        # Also used to define scrubbing/truncation behavior and PII information.
         # Corresponds to the JSON property `logSettings`
         # @return [Google::Apis::IntegrationsV1alpha::EnterpriseCrmEventbusProtoLogSettings]
         attr_accessor :log_settings
@@ -219,7 +217,7 @@ module Google
       # the duration threshold value should be specified in the threshold_duration_ms
       # member below. For *AVERAGE_DURATION metrics, these fields should not be set at
       # all. A different member, threshold_duration_ms, must be set in the
-      # EventAlertConfig or the TaskAlertConfig. See go/eventbus-alert-config-examples
+      # EventAlertConfig or the TaskAlertConfig.
       class EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValue
         include Google::Apis::Core::Hashable
       
@@ -744,8 +742,7 @@ module Google
       end
       
       # LINT.IfChange This message is used for storing key value pair properties for
-      # each Event / Task in the EventBus. Please see go/cloud-crm-eng/platform/
-      # event_bus.md for more details.
+      # each Event / Task in the EventBus.
       class EnterpriseCrmEventbusProtoEventBusProperties
         include Google::Apis::Core::Hashable
       
@@ -874,7 +871,7 @@ module Google
       
         # LINT.IfChange This message is used for processing and persisting (when
         # applicable) key value pair parameters for each event in the event bus. Please
-        # see go/integration-platform/event_bus.md for more details. Next id: 4
+        # see
         # Corresponds to the JSON property `diffParams`
         # @return [Google::Apis::IntegrationsV1alpha::EnterpriseCrmEventbusProtoEventParameters]
         attr_accessor :diff_params
@@ -896,7 +893,7 @@ module Google
       
         # LINT.IfChange This message is used for processing and persisting (when
         # applicable) key value pair parameters for each event in the event bus. Please
-        # see go/integration-platform/event_bus.md for more details. Next id: 4
+        # see
         # Corresponds to the JSON property `eventParams`
         # @return [Google::Apis::IntegrationsV1alpha::EnterpriseCrmEventbusProtoEventParameters]
         attr_accessor :event_params
@@ -981,7 +978,7 @@ module Google
       
       # LINT.IfChange This message is used for processing and persisting (when
       # applicable) key value pair parameters for each event in the event bus. Please
-      # see go/integration-platform/event_bus.md for more details. Next id: 4
+      # see
       class EnterpriseCrmEventbusProtoEventParameters
         include Google::Apis::Core::Hashable
       
@@ -1103,7 +1100,7 @@ module Google
         end
       end
       
-      # Information about the value and type of the field. Next Id: 8
+      # Information about the value and type of the field.
       class EnterpriseCrmEventbusProtoField
         include Google::Apis::Core::Hashable
       
@@ -1142,14 +1139,13 @@ module Google
         attr_accessor :reference_key
       
         # This is the transform expression to fetch the input field value. for e.g. $
-        # param1$.CONCAT('test'). See go/transform-functions-design for more details.
-        # Keep points - 1. Only input field can have a transform expression. 2. If a
-        # transform expression is provided, reference_key will be ignored. 3. If no
-        # value is returned after evaluation of transform expression, default_value can
-        # be mapped if provided. 4. The field_type should be the type of the final
-        # object returned after the transform expression is evaluated. Scrubs the
-        # transform expression before logging as value provided by user so may or may
-        # not contain PII or SPII data.
+        # param1$.CONCAT('test'). Keep points - 1. Only input field can have a transform
+        # expression. 2. If a transform expression is provided, reference_key will be
+        # ignored. 3. If no value is returned after evaluation of transform expression,
+        # default_value can be mapped if provided. 4. The field_type should be the type
+        # of the final object returned after the transform expression is evaluated.
+        # Scrubs the transform expression before logging as value provided by user so
+        # may or may not contain PII or SPII data.
         # Corresponds to the JSON property `transformExpression`
         # @return [Google::Apis::IntegrationsV1alpha::EnterpriseCrmEventbusProtoTransformExpression]
         attr_accessor :transform_expression
@@ -1170,7 +1166,7 @@ module Google
       end
       
       # Field Mapping Config to map multiple output fields values from input fields
-      # values. Next id: 2
+      # values.
       class EnterpriseCrmEventbusProtoFieldMappingConfig
         include Google::Apis::Core::Hashable
       
@@ -1397,8 +1393,7 @@ module Google
       
       # The LogSettings define the logging attributes for an event property. These
       # attributes are used to map the property to the parameter in the log proto.
-      # Also used to define scrubbing/truncation behavior and PII information. See go/
-      # integration-platform/analytics/logging_task.md for details.
+      # Also used to define scrubbing/truncation behavior and PII information.
       class EnterpriseCrmEventbusProtoLogSettings
         include Google::Apis::Core::Hashable
       
@@ -1488,16 +1483,16 @@ module Google
         end
       end
       
-      # Mapped field is a pair of input field and output field. Next Id: 3
+      # Mapped field is a pair of input field and output field.
       class EnterpriseCrmEventbusProtoMappedField
         include Google::Apis::Core::Hashable
       
-        # Information about the value and type of the field. Next Id: 8
+        # Information about the value and type of the field.
         # Corresponds to the JSON property `inputField`
         # @return [Google::Apis::IntegrationsV1alpha::EnterpriseCrmEventbusProtoField]
         attr_accessor :input_field
       
-        # Information about the value and type of the field. Next Id: 8
+        # Information about the value and type of the field.
         # Corresponds to the JSON property `outputField`
         # @return [Google::Apis::IntegrationsV1alpha::EnterpriseCrmEventbusProtoField]
         attr_accessor :output_field
@@ -2554,8 +2549,7 @@ module Google
       end
       
       # Message to be used to configure alerting in the `@code TaskConfig` protos for
-      # tasks in an event. See go/eventbus-alert-config-examples for examples of the
-      # different alerts that can be configured.
+      # tasks in an event.
       class EnterpriseCrmEventbusProtoTaskAlertConfig
         include Google::Apis::Core::Hashable
       
@@ -2633,7 +2627,7 @@ module Google
         # the duration threshold value should be specified in the threshold_duration_ms
         # member below. For *AVERAGE_DURATION metrics, these fields should not be set at
         # all. A different member, threshold_duration_ms, must be set in the
-        # EventAlertConfig or the TaskAlertConfig. See go/eventbus-alert-config-examples
+        # EventAlertConfig or the TaskAlertConfig.
         # Corresponds to the JSON property `thresholdValue`
         # @return [Google::Apis::IntegrationsV1alpha::EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValue]
         attr_accessor :threshold_value
@@ -2723,7 +2717,6 @@ module Google
       end
       
       # TaskMetadata are attributes that are associated to every common Task we have.
-      # Next available: 26
       class EnterpriseCrmEventbusProtoTaskMetadata
         include Google::Apis::Core::Hashable
       
@@ -2809,7 +2802,7 @@ module Google
       
         # URL to gstatic image icon for this task. This icon shows up on the task list
         # panel along with the task name in the Workflow Editor screen. Use the 24p, 2x,
-        # gray color icon image format. See go/icons.
+        # gray color icon image format.
         # Corresponds to the JSON property `iconLink`
         # @return [String]
         attr_accessor :icon_link
@@ -2910,8 +2903,7 @@ module Google
       
       # Task authors would use this type to configure the UI for a particular task by
       # specifying what UI config modules should be included to compose the UI. Learn
-      # more about config module framework: go/integration-platform-config-module-
-      # framework
+      # more about config module framework:
       class EnterpriseCrmEventbusProtoTaskUiConfig
         include Google::Apis::Core::Hashable
       
@@ -2991,14 +2983,13 @@ module Google
       
         # LINT.IfChange This message is used for processing and persisting (when
         # applicable) key value pair parameters for each event in the event bus. Please
-        # see go/integration-platform/event_bus.md for more details. Next id: 4
+        # see
         # Corresponds to the JSON property `parameters`
         # @return [Google::Apis::IntegrationsV1alpha::EnterpriseCrmEventbusProtoEventParameters]
         attr_accessor :parameters
       
         # LINT.IfChange This message is used for storing key value pair properties for
-        # each Event / Task in the EventBus. Please see go/cloud-crm-eng/platform/
-        # event_bus.md for more details.
+        # each Event / Task in the EventBus.
         # Corresponds to the JSON property `properties`
         # @return [Google::Apis::IntegrationsV1alpha::EnterpriseCrmEventbusProtoEventBusProperties]
         attr_accessor :properties
@@ -3086,7 +3077,7 @@ module Google
       
         # LINT.IfChange This message is used for processing and persisting (when
         # applicable) key value pair parameters for each event in the event bus. Please
-        # see go/integration-platform/event_bus.md for more details. Next id: 4
+        # see
         # Corresponds to the JSON property `parameters`
         # @return [Google::Apis::IntegrationsV1alpha::EnterpriseCrmEventbusProtoEventParameters]
         attr_accessor :parameters
@@ -3173,8 +3164,7 @@ module Google
       end
       
       # Message to be used to configure custom alerting in the `@code EventConfig`
-      # protos for an event. See go/eventbus-alert-config-examples for examples of the
-      # different alerts that can be configured.
+      # protos for an event.
       class EnterpriseCrmEventbusProtoWorkflowAlertConfig
         include Google::Apis::Core::Hashable
       
@@ -3252,7 +3242,7 @@ module Google
         # the duration threshold value should be specified in the threshold_duration_ms
         # member below. For *AVERAGE_DURATION metrics, these fields should not be set at
         # all. A different member, threshold_duration_ms, must be set in the
-        # EventAlertConfig or the TaskAlertConfig. See go/eventbus-alert-config-examples
+        # EventAlertConfig or the TaskAlertConfig.
         # Corresponds to the JSON property `thresholdValue`
         # @return [Google::Apis::IntegrationsV1alpha::EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValue]
         attr_accessor :threshold_value
@@ -3574,14 +3564,14 @@ module Google
       
         # LINT.IfChange This message is used for processing and persisting (when
         # applicable) key value pair parameters for each event in the event bus. Please
-        # see go/integration-platform/event_bus.md for more details. Next id: 4
+        # see
         # Corresponds to the JSON property `requestParams`
         # @return [Google::Apis::IntegrationsV1alpha::EnterpriseCrmFrontendsEventbusProtoEventParameters]
         attr_accessor :request_params
       
         # LINT.IfChange This message is used for processing and persisting (when
         # applicable) key value pair parameters for each event in the event bus. Please
-        # see go/integration-platform/event_bus.md for more details. Next id: 4
+        # see
         # Corresponds to the JSON property `responseParams`
         # @return [Google::Apis::IntegrationsV1alpha::EnterpriseCrmFrontendsEventbusProtoEventParameters]
         attr_accessor :response_params
@@ -3665,7 +3655,7 @@ module Google
       
         # LINT.IfChange This message is used for processing and persisting (when
         # applicable) key value pair parameters for each event in the event bus. Please
-        # see go/integration-platform/event_bus.md for more details. Next id: 4
+        # see
         # Corresponds to the JSON property `diffParams`
         # @return [Google::Apis::IntegrationsV1alpha::EnterpriseCrmFrontendsEventbusProtoEventParameters]
         attr_accessor :diff_params
@@ -3687,7 +3677,7 @@ module Google
       
         # LINT.IfChange This message is used for processing and persisting (when
         # applicable) key value pair parameters for each event in the event bus. Please
-        # see go/integration-platform/event_bus.md for more details. Next id: 4
+        # see
         # Corresponds to the JSON property `eventParams`
         # @return [Google::Apis::IntegrationsV1alpha::EnterpriseCrmFrontendsEventbusProtoEventParameters]
         attr_accessor :event_params
@@ -3728,7 +3718,7 @@ module Google
       
       # LINT.IfChange This message is used for processing and persisting (when
       # applicable) key value pair parameters for each event in the event bus. Please
-      # see go/integration-platform/event_bus.md for more details. Next id: 4
+      # see
       class EnterpriseCrmFrontendsEventbusProtoEventParameters
         include Google::Apis::Core::Hashable
       
@@ -4109,7 +4099,7 @@ module Google
       
         # LINT.IfChange This message is used for processing and persisting (when
         # applicable) key value pair parameters for each event in the event bus. Please
-        # see go/integration-platform/event_bus.md for more details. Next id: 4
+        # see
         # Corresponds to the JSON property `parameters`
         # @return [Google::Apis::IntegrationsV1alpha::EnterpriseCrmFrontendsEventbusProtoEventParameters]
         attr_accessor :parameters
@@ -4382,7 +4372,6 @@ module Google
         alias_method :disabled_for_vpc_sc?, :disabled_for_vpc_sc
       
         # TaskMetadata are attributes that are associated to every common Task we have.
-        # Next available: 26
         # Corresponds to the JSON property `metadata`
         # @return [Google::Apis::IntegrationsV1alpha::EnterpriseCrmEventbusProtoTaskMetadata]
         attr_accessor :metadata
@@ -4405,8 +4394,7 @@ module Google
       
         # Task authors would use this type to configure the UI for a particular task by
         # specifying what UI config modules should be included to compose the UI. Learn
-        # more about config module framework: go/integration-platform-config-module-
-        # framework
+        # more about config module framework:
         # Corresponds to the JSON property `uiConfig`
         # @return [Google::Apis::IntegrationsV1alpha::EnterpriseCrmEventbusProtoTaskUiConfig]
         attr_accessor :ui_config
@@ -4548,8 +4536,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Attributes are additional options that can be associated with each event
-        # property. For more information, see go/integration-platform/event_bus/
-        # attributes_registry.md. Next available: 8
+        # property. For more information, see
         # Corresponds to the JSON property `attributes`
         # @return [Google::Apis::IntegrationsV1alpha::EnterpriseCrmEventbusProtoAttributes]
         attr_accessor :attributes
@@ -4575,7 +4562,7 @@ module Google
         # @return [String]
         attr_accessor :in_out_type
       
-        # Whether this parameter is a transient parameter. go/ip-transient-parameters
+        # Whether this parameter is a transient parameter.
         # Corresponds to the JSON property `isTransient`
         # @return [Boolean]
         attr_accessor :is_transient
@@ -5335,58 +5322,6 @@ module Google
         end
       end
       
-      # Request for ArchiveBundle.
-      class GoogleCloudIntegrationsV1alphaArchiveBundleRequest
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # Response for ArchiveBundle.
-      class GoogleCloudIntegrationsV1alphaArchiveBundleResponse
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # Request for ArchiveIntegrationVersion.
-      class GoogleCloudIntegrationsV1alphaArchiveIntegrationVersionRequest
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # Response for ArchiveIntegrationVersion.
-      class GoogleCloudIntegrationsV1alphaArchiveIntegrationVersionResponse
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
       # Status for the execution attempt.
       class GoogleCloudIntegrationsV1alphaAttemptStats
         include Google::Apis::Core::Hashable
@@ -5853,68 +5788,6 @@ module Google
         end
       end
       
-      # PROTECT WITH A VISIBILITY LABEL. THIS METHOD WILL BE MOVED TO A SEPARATE
-      # SERVICE. Request to create a new Bundle.
-      class GoogleCloudIntegrationsV1alphaCreateBundleRequest
-        include Google::Apis::Core::Hashable
-      
-        # Required. name of the bundle that will be created
-        # Corresponds to the JSON property `bundleId`
-        # @return [String]
-        attr_accessor :bundle_id
-      
-        # A list of integrations that can be executed by the bundle
-        # Corresponds to the JSON property `integrations`
-        # @return [Array<String>]
-        attr_accessor :integrations
-      
-        # Optional. The prefix for the SA, it should be in the format "o". This is an
-        # optional field, and if empty service account will be created per project,
-        # where we are creating bundle. This should only be used as the org ID for which
-        # we want to run the integrations in the bundle.
-        # Corresponds to the JSON property `secondaryCustomerOrgId`
-        # @return [String]
-        attr_accessor :secondary_customer_org_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @bundle_id = args[:bundle_id] if args.key?(:bundle_id)
-          @integrations = args[:integrations] if args.key?(:integrations)
-          @secondary_customer_org_id = args[:secondary_customer_org_id] if args.key?(:secondary_customer_org_id)
-        end
-      end
-      
-      # Response for create bundle.
-      class GoogleCloudIntegrationsV1alphaCreateBundleResponse
-        include Google::Apis::Core::Hashable
-      
-        # This proto holds the core runner data in the bundle task. It is not expected
-        # to be directly edited by the user. Instead, a default value will be provided
-        # at the task creation time.
-        # Corresponds to the JSON property `config`
-        # @return [Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaIntegrationBundleConfig]
-        attr_accessor :config
-      
-        # trigger_id of the bundle task
-        # Corresponds to the JSON property `triggerId`
-        # @return [String]
-        attr_accessor :trigger_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @config = args[:config] if args.key?(:config)
-          @trigger_id = args[:trigger_id] if args.key?(:trigger_id)
-        end
-      end
-      
       # Defines parameters for a single, canonical credential.
       class GoogleCloudIntegrationsV1alphaCredential
         include Google::Apis::Core::Hashable
@@ -5992,32 +5865,6 @@ module Google
           @oidc_token = args[:oidc_token] if args.key?(:oidc_token)
           @service_account_credentials = args[:service_account_credentials] if args.key?(:service_account_credentials)
           @username_and_password = args[:username_and_password] if args.key?(:username_and_password)
-        end
-      end
-      
-      # Request for DeactivateIntegrationVersion.
-      class GoogleCloudIntegrationsV1alphaDeactivateIntegrationVersionRequest
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # Response for DeactivateIntegrationVersion.
-      class GoogleCloudIntegrationsV1alphaDeactivateIntegrationVersionResponse
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
         end
       end
       
@@ -6138,7 +5985,7 @@ module Google
       
         # LINT.IfChange This message is used for processing and persisting (when
         # applicable) key value pair parameters for each event in the event bus. Please
-        # see go/integration-platform/event_bus.md for more details. Next id: 4
+        # see
         # Corresponds to the JSON property `parameters`
         # @return [Google::Apis::IntegrationsV1alpha::EnterpriseCrmFrontendsEventbusProtoEventParameters]
         attr_accessor :parameters
@@ -6178,7 +6025,7 @@ module Google
       
         # LINT.IfChange This message is used for processing and persisting (when
         # applicable) key value pair parameters for each event in the event bus. Please
-        # see go/integration-platform/event_bus.md for more details. Next id: 4
+        # see
         # Corresponds to the JSON property `eventParameters`
         # @return [Google::Apis::IntegrationsV1alpha::EnterpriseCrmFrontendsEventbusProtoEventParameters]
         attr_accessor :event_parameters
@@ -6475,27 +6322,6 @@ module Google
         end
       end
       
-      # Response for GetBundle.
-      class GoogleCloudIntegrationsV1alphaGetBundleResponse
-        include Google::Apis::Core::Hashable
-      
-        # This proto holds the core runner data in the bundle task. It is not expected
-        # to be directly edited by the user. Instead, a default value will be provided
-        # at the task creation time.
-        # Corresponds to the JSON property `config`
-        # @return [Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaIntegrationBundleConfig]
-        attr_accessor :config
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @config = args[:config] if args.key?(:config)
-        end
-      end
-      
       # This message only contains a field of integer array.
       class GoogleCloudIntegrationsV1alphaIntParameterArray
         include Google::Apis::Core::Hashable
@@ -6672,34 +6498,6 @@ module Google
         def update!(**args)
           @absolute = args[:absolute] if args.key?(:absolute)
           @percentage = args[:percentage] if args.key?(:percentage)
-        end
-      end
-      
-      # This proto holds the core runner data in the bundle task. It is not expected
-      # to be directly edited by the user. Instead, a default value will be provided
-      # at the task creation time.
-      class GoogleCloudIntegrationsV1alphaIntegrationBundleConfig
-        include Google::Apis::Core::Hashable
-      
-        # A bundle of integrations that can be executed by the task at runtime.
-        # Corresponds to the JSON property `integrations`
-        # @return [Array<String>]
-        attr_accessor :integrations
-      
-        # Output only. The service account created and owned by IP and added to the
-        # customers GCP project.
-        # Corresponds to the JSON property `serviceAccount`
-        # @return [String]
-        attr_accessor :service_account
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @integrations = args[:integrations] if args.key?(:integrations)
-          @service_account = args[:service_account] if args.key?(:service_account)
         end
       end
       
@@ -7250,31 +7048,6 @@ module Google
         end
       end
       
-      # Response for listing the integration execution snapshot.
-      class GoogleCloudIntegrationsV1alphaListExecutionSnapshotsResponse
-        include Google::Apis::Core::Hashable
-      
-        # Required. The detailed information for the execution snapshot.
-        # Corresponds to the JSON property `executionSnapshots`
-        # @return [Array<Google::Apis::IntegrationsV1alpha::EnterpriseCrmEventbusProtoEventExecutionSnapshot>]
-        attr_accessor :execution_snapshots
-      
-        # The token returned in the previous response.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @execution_snapshots = args[:execution_snapshots] if args.key?(:execution_snapshots)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
       # Response for listing the integration execution data.
       class GoogleCloudIntegrationsV1alphaListExecutionsResponse
         include Google::Apis::Core::Hashable
@@ -7513,25 +7286,6 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @suspensions = args[:suspensions] if args.key?(:suspensions)
-        end
-      end
-      
-      # This is a UI only method and will be moved away. Response for ListTaskEntities.
-      class GoogleCloudIntegrationsV1alphaListTaskEntitiesResponse
-        include Google::Apis::Core::Hashable
-      
-        # The list of the tasks.
-        # Corresponds to the JSON property `taskEntities`
-        # @return [Array<Google::Apis::IntegrationsV1alpha::EnterpriseCrmFrontendsEventbusProtoTaskEntity>]
-        attr_accessor :task_entities
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @task_entities = args[:task_entities] if args.key?(:task_entities)
         end
       end
       
@@ -8061,7 +7815,7 @@ module Google
       
         # LINT.IfChange This message is used for processing and persisting (when
         # applicable) key value pair parameters for each event in the event bus. Please
-        # see go/integration-platform/event_bus.md for more details. Next id: 4
+        # see
         # Corresponds to the JSON property `parameters`
         # @return [Google::Apis::IntegrationsV1alpha::EnterpriseCrmEventbusProtoEventParameters]
         attr_accessor :parameters
@@ -8752,49 +8506,6 @@ module Google
         end
       end
       
-      # THIS METHOD WILL BE MOVED TO A SEPARATE SERVICE. Request message for Bundle
-      # update
-      class GoogleCloudIntegrationsV1alphaUpdateBundleRequest
-        include Google::Apis::Core::Hashable
-      
-        # This proto holds the core runner data in the bundle task. It is not expected
-        # to be directly edited by the user. Instead, a default value will be provided
-        # at the task creation time.
-        # Corresponds to the JSON property `config`
-        # @return [Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaIntegrationBundleConfig]
-        attr_accessor :config
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @config = args[:config] if args.key?(:config)
-        end
-      end
-      
-      # Response message for Bundle update
-      class GoogleCloudIntegrationsV1alphaUpdateBundleResponse
-        include Google::Apis::Core::Hashable
-      
-        # This proto holds the core runner data in the bundle task. It is not expected
-        # to be directly edited by the user. Instead, a default value will be provided
-        # at the task creation time.
-        # Corresponds to the JSON property `config`
-        # @return [Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaIntegrationBundleConfig]
-        attr_accessor :config
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @config = args[:config] if args.key?(:config)
-        end
-      end
-      
       # Request for UploadIntegrationVersion.
       class GoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequest
         include Google::Apis::Core::Hashable
@@ -8861,32 +8572,6 @@ module Google
         def update!(**args)
           @password = args[:password] if args.key?(:password)
           @username = args[:username] if args.key?(:username)
-        end
-      end
-      
-      # Request for ValidateIntegrationVersion.
-      class GoogleCloudIntegrationsV1alphaValidateIntegrationVersionRequest
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # Response for ValidateIntegrationVersion.
-      class GoogleCloudIntegrationsV1alphaValidateIntegrationVersionResponse
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
         end
       end
       
@@ -8984,7 +8669,7 @@ module Google
       
         # LINT.IfChange This message is used for processing and persisting (when
         # applicable) key value pair parameters for each event in the event bus. Please
-        # see go/integration-platform/event_bus.md for more details. Next id: 4
+        # see
         # Corresponds to the JSON property `parameters`
         # @return [Google::Apis::IntegrationsV1alpha::EnterpriseCrmEventbusProtoEventParameters]
         attr_accessor :parameters
