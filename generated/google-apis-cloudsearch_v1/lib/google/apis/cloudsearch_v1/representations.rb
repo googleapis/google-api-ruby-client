@@ -9556,6 +9556,7 @@ module Google
       class YouTubeLiveBroadcastEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :brand_account_gaia_id, as: 'brandAccountGaiaId'
           property :broadcast_id, as: 'broadcastId'
           property :channel_id, as: 'channelId'
           property :view_url, as: 'viewUrl'
