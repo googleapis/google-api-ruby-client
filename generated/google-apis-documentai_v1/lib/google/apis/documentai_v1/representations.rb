@@ -70,12 +70,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudDocumentaiUiv1beta3DeleteDataLabelingJobOperationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudDocumentaiUiv1beta3DeleteLabelerPoolOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -209,6 +203,18 @@ module Google
       end
       
       class GoogleCloudDocumentaiUiv1beta3ImportDocumentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3ImportProcessorVersionMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3ImportProcessorVersionResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1771,14 +1777,6 @@ module Google
         end
       end
       
-      class GoogleCloudDocumentaiUiv1beta3DeleteDataLabelingJobOperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :common_metadata, as: 'commonMetadata', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata::Representation
-      
-        end
-      end
-      
       class GoogleCloudDocumentaiUiv1beta3DeleteLabelerPoolOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1967,6 +1965,21 @@ module Google
       class GoogleCloudDocumentaiUiv1beta3ImportDocumentsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3ImportProcessorVersionMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :common_metadata, as: 'commonMetadata', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3ImportProcessorVersionResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :processor_version, as: 'processorVersion'
         end
       end
       
