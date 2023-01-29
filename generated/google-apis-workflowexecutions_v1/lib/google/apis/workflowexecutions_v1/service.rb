@@ -194,6 +194,15 @@ module Google
         # @param [String] parent
         #   Required. Name of the workflow for which the executions should be listed.
         #   Format: projects/`project`/locations/`location`/workflows/`workflow`
+        # @param [String] filter
+        #   Optional. Filters applied to the [Executions.ListExecutions] results. The
+        #   following fields are supported for filtering: executionID, state, startTime,
+        #   endTime, duration, workflowRevisionID, stepName, and label.
+        # @param [String] order_by
+        #   Optional. The orderding applied to the [Executions.ListExecutions] results. By
+        #   default the ordering is based on descending start time. The following fields
+        #   are supported for order by: executionID, startTime, endTime, duration, state,
+        #   and workflowRevisionID.
         # @param [Fixnum] page_size
         #   Maximum number of executions to return per call. Max supported value depends
         #   on the selected Execution view: it's 1000 for BASIC and 100 for FULL. The
@@ -223,11 +232,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_workflow_executions(parent, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_workflow_executions(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/executions', options)
           command.response_representation = Google::Apis::WorkflowexecutionsV1::ListExecutionsResponse::Representation
           command.response_class = Google::Apis::WorkflowexecutionsV1::ListExecutionsResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['view'] = view unless view.nil?

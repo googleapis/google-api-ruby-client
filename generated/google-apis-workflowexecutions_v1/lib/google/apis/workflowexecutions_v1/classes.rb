@@ -99,6 +99,14 @@ module Google
         # @return [Google::Apis::WorkflowexecutionsV1::Error]
         attr_accessor :error
       
+        # Labels associated with this execution. Labels can contain at most 64 entries.
+        # Keys and values can be no longer than 63 characters and can only contain
+        # lowercase letters, numeric characters, underscores and dashes. Label keys must
+        # start with a letter. International characters are allowed.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # Output only. The resource name of the execution. Format: projects/`project`/
         # locations/`location`/workflows/`workflow`/executions/`execution`
         # Corresponds to the JSON property `name`
@@ -142,6 +150,7 @@ module Google
           @duration = args[:duration] if args.key?(:duration)
           @end_time = args[:end_time] if args.key?(:end_time)
           @error = args[:error] if args.key?(:error)
+          @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @result = args[:result] if args.key?(:result)
           @start_time = args[:start_time] if args.key?(:start_time)
