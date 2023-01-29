@@ -6657,6 +6657,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable, as: 'enable'
+          collection :optional_fields, as: 'optionalFields'
+          property :optional_mode, as: 'optionalMode'
           property :sample_rate, as: 'sampleRate'
         end
       end
@@ -16238,6 +16240,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
+          property :sensitivity, as: 'sensitivity'
         end
       end
       
