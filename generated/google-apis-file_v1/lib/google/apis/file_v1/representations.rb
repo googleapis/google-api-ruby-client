@@ -245,6 +245,7 @@ module Google
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :download_bytes, :numeric_string => true, as: 'downloadBytes'
+          property :kms_key, as: 'kmsKey'
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :satisfies_pzs, as: 'satisfiesPzs'
