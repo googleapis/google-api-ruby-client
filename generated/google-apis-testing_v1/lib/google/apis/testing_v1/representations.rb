@@ -316,6 +316,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PerAndroidVersionInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PerIosVersionInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ProvidedSoftwareCatalog
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -532,6 +544,8 @@ module Google
           property :low_fps_video_recording, as: 'lowFpsVideoRecording'
           property :manufacturer, as: 'manufacturer'
           property :name, as: 'name'
+          collection :per_version_info, as: 'perVersionInfo', class: Google::Apis::TestingV1::PerAndroidVersionInfo, decorator: Google::Apis::TestingV1::PerAndroidVersionInfo::Representation
+      
           property :screen_density, as: 'screenDensity'
           property :screen_x, as: 'screenX'
           property :screen_y, as: 'screenY'
@@ -831,6 +845,8 @@ module Google
           property :form_factor, as: 'formFactor'
           property :id, as: 'id'
           property :name, as: 'name'
+          collection :per_version_info, as: 'perVersionInfo', class: Google::Apis::TestingV1::PerIosVersionInfo, decorator: Google::Apis::TestingV1::PerIosVersionInfo::Representation
+      
           property :screen_density, as: 'screenDensity'
           property :screen_x, as: 'screenX'
           property :screen_y, as: 'screenY'
@@ -962,6 +978,22 @@ module Google
           property :id, as: 'id'
           property :name, as: 'name'
           collection :tags, as: 'tags'
+        end
+      end
+      
+      class PerAndroidVersionInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_capacity, as: 'deviceCapacity'
+          property :version_id, as: 'versionId'
+        end
+      end
+      
+      class PerIosVersionInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_capacity, as: 'deviceCapacity'
+          property :version_id, as: 'versionId'
         end
       end
       

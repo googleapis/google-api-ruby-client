@@ -1,5 +1,9 @@
 # Release history for google-apis-testing_v1
 
+### v0.30.0 (2023-01-29)
+
+* Regenerated from discovery document revision 20230124
+
 ### v0.29.0 (2023-01-08)
 
 * Regenerated from discovery document revision 20230103
