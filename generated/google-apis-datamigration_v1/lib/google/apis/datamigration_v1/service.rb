@@ -703,7 +703,7 @@ module Google
         #   Request a specific commit id. If not specified, the entities from the latest
         #   commit are returned.
         # @param [String] filter
-        #   Filter the returned entities based on AIP-160 standard
+        #   Filter the returned entities based on AIP-160 standard.
         # @param [Fixnum] page_size
         #   The maximum number of entities to return. The service may return fewer than
         #   this value.
@@ -714,7 +714,7 @@ module Google
         #   other parameters provided to conversionWorkspace.describeDatabaseEntities must
         #   match the call that provided the page token.
         # @param [String] tree
-        #   The tree to fetch
+        #   The tree to fetch.
         # @param [Boolean] uncommitted
         #   Whether to retrieve the latest committed version of the entities or the latest
         #   version. This field is ignored if a specific commit_id is specified.
