@@ -1003,7 +1003,8 @@ module Google
         end
         
         # Sends the specified message to the recipients in the `To`, `Cc`, and `Bcc`
-        # headers.
+        # headers. For example usage, see [Sending email](https://developers.google.com/
+        # gmail/api/guides/sending).
         # @param [String] user_id
         #   The user's email address. The special value `me` can be used to indicate the
         #   authenticated user.
