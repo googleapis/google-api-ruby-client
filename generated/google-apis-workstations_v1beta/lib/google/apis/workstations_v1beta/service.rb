@@ -69,10 +69,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::WorkstationsV1beta::Empty] parsed result object
+        # @yieldparam result [Google::Apis::WorkstationsV1beta::GoogleProtobufEmpty] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::WorkstationsV1beta::Empty]
+        # @return [Google::Apis::WorkstationsV1beta::GoogleProtobufEmpty]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -81,8 +81,8 @@ module Google
           command = make_simple_command(:post, 'v1beta/{+name}:cancel', options)
           command.request_representation = Google::Apis::WorkstationsV1beta::CancelOperationRequest::Representation
           command.request_object = cancel_operation_request_object
-          command.response_representation = Google::Apis::WorkstationsV1beta::Empty::Representation
-          command.response_class = Google::Apis::WorkstationsV1beta::Empty
+          command.response_representation = Google::Apis::WorkstationsV1beta::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::WorkstationsV1beta::GoogleProtobufEmpty
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -104,18 +104,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::WorkstationsV1beta::Empty] parsed result object
+        # @yieldparam result [Google::Apis::WorkstationsV1beta::GoogleProtobufEmpty] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::WorkstationsV1beta::Empty]
+        # @return [Google::Apis::WorkstationsV1beta::GoogleProtobufEmpty]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_location_operation(name, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1beta/{+name}', options)
-          command.response_representation = Google::Apis::WorkstationsV1beta::Empty::Representation
-          command.response_class = Google::Apis::WorkstationsV1beta::Empty
+          command.response_representation = Google::Apis::WorkstationsV1beta::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::WorkstationsV1beta::GoogleProtobufEmpty
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

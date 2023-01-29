@@ -52,7 +52,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Empty
+      class CustomerEncryptionKey
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -95,6 +95,12 @@ module Google
       end
       
       class GenerateAccessTokenResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleProtobufEmpty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -271,9 +277,11 @@ module Google
         end
       end
       
-      class Empty
+      class CustomerEncryptionKey
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :kms_key, as: 'kmsKey'
+          property :kms_key_service_account, as: 'kmsKeyServiceAccount'
         end
       end
       
@@ -342,6 +350,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :access_token, as: 'accessToken'
           property :expire_time, as: 'expireTime'
+        end
+      end
+      
+      class GoogleProtobufEmpty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -428,10 +442,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api_version, as: 'apiVersion'
-          property :cancel_requested, as: 'cancelRequested'
           property :create_time, as: 'createTime'
           property :end_time, as: 'endTime'
-          property :status_detail, as: 'statusDetail'
+          property :requested_cancellation, as: 'requestedCancellation'
+          property :status_message, as: 'statusMessage'
           property :target, as: 'target'
           property :verb, as: 'verb'
         end
@@ -568,6 +582,8 @@ module Google
           property :degraded, as: 'degraded'
           property :delete_time, as: 'deleteTime'
           property :display_name, as: 'displayName'
+          property :encryption_key, as: 'encryptionKey', class: Google::Apis::WorkstationsV1beta::CustomerEncryptionKey, decorator: Google::Apis::WorkstationsV1beta::CustomerEncryptionKey::Representation
+      
           property :etag, as: 'etag'
           property :host, as: 'host', class: Google::Apis::WorkstationsV1beta::Host, decorator: Google::Apis::WorkstationsV1beta::Host::Representation
       

@@ -232,12 +232,24 @@ module Google
         end
       end
       
-      # A generic empty message that you can re-use to avoid defining duplicated empty
-      # messages in your APIs. A typical example is to use it as the request or the
-      # response type of an API method. For instance: service Foo ` rpc Bar(google.
-      # protobuf.Empty) returns (google.protobuf.Empty); `
-      class Empty
+      # A customer-specified encryption key for the Compute Engine resources of this
+      # workstation configuration.
+      class CustomerEncryptionKey
         include Google::Apis::Core::Hashable
+      
+        # The name of the encryption key that is stored in Google Cloud KMS, for example,
+        # `projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME`.
+        # Corresponds to the JSON property `kmsKey`
+        # @return [String]
+        attr_accessor :kms_key
+      
+        # The service account being used for the encryption request for the given KMS
+        # key. If absent, the Compute Engine default service account is used. However,
+        # it is recommended to use a separate service account and to follow KMS best
+        # practices mentioned at https://cloud.google.com/kms/docs/separation-of-duties
+        # Corresponds to the JSON property `kmsKeyServiceAccount`
+        # @return [String]
+        attr_accessor :kms_key_service_account
       
         def initialize(**args)
            update!(**args)
@@ -245,6 +257,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @kms_key = args[:kms_key] if args.key?(:kms_key)
+          @kms_key_service_account = args[:kms_key_service_account] if args.key?(:kms_key_service_account)
         end
       end
       
@@ -496,7 +510,7 @@ module Google
       
         # The generated bearer access token. To use this token, include it in an
         # Authorization header of an HTTP request sent to the associated workstation's
-        # hostname, e.g. "Authorization: Bearer ".
+        # hostname, for example, `Authorization: Bearer `.
         # Corresponds to the JSON property `accessToken`
         # @return [String]
         attr_accessor :access_token
@@ -514,6 +528,22 @@ module Google
         def update!(**args)
           @access_token = args[:access_token] if args.key?(:access_token)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
+        end
+      end
+      
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); `
+      class GoogleProtobufEmpty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -783,7 +813,7 @@ module Google
         end
       end
       
-      # Represents the metadata of the long-running operation.
+      # Metadata for long-running operations.
       class OperationMetadata
         include Google::Apis::Core::Hashable
       
@@ -792,29 +822,27 @@ module Google
         # @return [String]
         attr_accessor :api_version
       
-        # Output only. Identifies whether the user has requested cancellation of the
-        # operation. Operations that have been cancelled successfully have Operation.
-        # error value with a google.rpc.Status.code of 1, corresponding to `Code.
-        # CANCELLED`.
-        # Corresponds to the JSON property `cancelRequested`
-        # @return [Boolean]
-        attr_accessor :cancel_requested
-        alias_method :cancel_requested?, :cancel_requested
-      
-        # Output only. The time the operation was created.
+        # Output only. Time that the operation was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # Output only. The time the operation finished running.
+        # Output only. Time that the operation finished running.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
       
+        # Output only. Identifies whether the user has requested cancellation of the
+        # operation.
+        # Corresponds to the JSON property `requestedCancellation`
+        # @return [Boolean]
+        attr_accessor :requested_cancellation
+        alias_method :requested_cancellation?, :requested_cancellation
+      
         # Output only. Human-readable status of the operation, if any.
-        # Corresponds to the JSON property `statusDetail`
+        # Corresponds to the JSON property `statusMessage`
         # @return [String]
-        attr_accessor :status_detail
+        attr_accessor :status_message
       
         # Output only. Server-defined resource path for the target of the operation.
         # Corresponds to the JSON property `target`
@@ -833,10 +861,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @api_version = args[:api_version] if args.key?(:api_version)
-          @cancel_requested = args[:cancel_requested] if args.key?(:cancel_requested)
           @create_time = args[:create_time] if args.key?(:create_time)
           @end_time = args[:end_time] if args.key?(:end_time)
-          @status_detail = args[:status_detail] if args.key?(:status_detail)
+          @requested_cancellation = args[:requested_cancellation] if args.key?(:requested_cancellation)
+          @status_message = args[:status_message] if args.key?(:status_message)
           @target = args[:target] if args.key?(:target)
           @verb = args[:verb] if args.key?(:verb)
         end
@@ -982,9 +1010,9 @@ module Google
       
         # Output only. Service attachment URI for the workstation cluster. The service
         # attachemnt is created when private endpoint is enabled. To access workstations
-        # in the cluster, configure access to the managed service using (Private Service
-        # Connect)[https://cloud.google.com/vpc/docs/configure-private-service-connect-
-        # services].
+        # in the cluster, configure access to the managed service using [Private Service
+        # Connect](https://cloud.google.com/vpc/docs/configure-private-service-connect-
+        # services).
         # Corresponds to the JSON property `serviceAttachmentUri`
         # @return [String]
         attr_accessor :service_attachment_uri
@@ -1222,7 +1250,7 @@ module Google
         # Output only. Host to which clients can send HTTPS traffic that will be
         # received by the workstation. Authorized traffic will be received to the
         # workstation as HTTP on port 80. To send traffic to a different port, clients
-        # may prefix the host with the destination port in the format "`port`-`host`".
+        # may prefix the host with the destination port in the format ``port`-`host``.
         # Corresponds to the JSON property `host`
         # @return [String]
         attr_accessor :host
@@ -1439,6 +1467,12 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # A customer-specified encryption key for the Compute Engine resources of this
+        # workstation configuration.
+        # Corresponds to the JSON property `encryptionKey`
+        # @return [Google::Apis::WorkstationsV1beta::CustomerEncryptionKey]
+        attr_accessor :encryption_key
+      
         # Checksum computed by the server. May be sent on update and delete requests to
         # ensure that the client has an up-to-date value before proceeding.
         # Corresponds to the JSON property `etag`
@@ -1511,6 +1545,7 @@ module Google
           @degraded = args[:degraded] if args.key?(:degraded)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @encryption_key = args[:encryption_key] if args.key?(:encryption_key)
           @etag = args[:etag] if args.key?(:etag)
           @host = args[:host] if args.key?(:host)
           @idle_timeout = args[:idle_timeout] if args.key?(:idle_timeout)
