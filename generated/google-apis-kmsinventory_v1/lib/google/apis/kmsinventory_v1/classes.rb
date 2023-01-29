@@ -64,12 +64,23 @@ module Google
       
         # The name of the Cloud KMS [CryptoKeyVersion](https://cloud.google.com/kms/docs/
         # reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions?hl=
-        # en) used to protect this resource via CMEK. This field may be empty if the
+        # en) used to protect this resource via CMEK. This field is empty if the Google
         # Cloud product owning the resource does not provide key version data to Asset
-        # Inventory.
+        # Inventory. If there are multiple key versions protecting the resource, then
+        # this is same value as the first element of crypto_key_versions.
         # Corresponds to the JSON property `cryptoKeyVersion`
         # @return [String]
         attr_accessor :crypto_key_version
+      
+        # The names of the Cloud KMS [CryptoKeyVersion](https://cloud.google.com/kms/
+        # docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.
+        # cryptoKeyVersions?hl=en) used to protect this resource via CMEK. This field is
+        # empty if the Google Cloud product owning the resource does not provide key
+        # versions data to Asset Inventory. The first element of this field is stored in
+        # crypto_key_version.
+        # Corresponds to the JSON property `cryptoKeyVersions`
+        # @return [Array<String>]
+        attr_accessor :crypto_key_versions
       
         # A key-value pair of the resource's labels (v1) to their values.
         # Corresponds to the JSON property `labels`
@@ -111,6 +122,7 @@ module Google
           @cloud_product = args[:cloud_product] if args.key?(:cloud_product)
           @create_time = args[:create_time] if args.key?(:create_time)
           @crypto_key_version = args[:crypto_key_version] if args.key?(:crypto_key_version)
+          @crypto_key_versions = args[:crypto_key_versions] if args.key?(:crypto_key_versions)
           @labels = args[:labels] if args.key?(:labels)
           @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)

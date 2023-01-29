@@ -97,6 +97,7 @@ module Google
           property :cloud_product, as: 'cloudProduct'
           property :create_time, as: 'createTime'
           property :crypto_key_version, as: 'cryptoKeyVersion'
+          collection :crypto_key_versions, as: 'cryptoKeyVersions'
           hash :labels, as: 'labels'
           property :location, as: 'location'
           property :name, as: 'name'
