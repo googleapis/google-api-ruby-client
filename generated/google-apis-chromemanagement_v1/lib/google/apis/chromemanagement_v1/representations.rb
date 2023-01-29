@@ -232,6 +232,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromeManagementV1ListTelemetryUsersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromeManagementV1MemoryInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -269,6 +275,12 @@ module Google
       end
       
       class GoogleChromeManagementV1OsUpdateStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1PeripheralsReport
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -323,6 +335,18 @@ module Google
       end
       
       class GoogleChromeManagementV1TelemetryUsbPeripheralsEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1TelemetryUser
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1TelemetryUserDevice
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -760,6 +784,15 @@ module Google
         end
       end
       
+      class GoogleChromeManagementV1ListTelemetryUsersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :telemetry_users, as: 'telemetryUsers', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryUser, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryUser::Representation
+      
+        end
+      end
+      
       class GoogleChromeManagementV1MemoryInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -838,6 +871,15 @@ module Google
           property :new_platform_version, as: 'newPlatformVersion'
           property :new_requested_platform_version, as: 'newRequestedPlatformVersion'
           property :update_state, as: 'updateState'
+        end
+      end
+      
+      class GoogleChromeManagementV1PeripheralsReport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :report_time, as: 'reportTime'
+          collection :usb_peripheral_report, as: 'usbPeripheralReport', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1UsbPeripheralReport, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1UsbPeripheralReport::Representation
+      
         end
       end
       
@@ -960,6 +1002,30 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :usb_peripheral_report, as: 'usbPeripheralReport', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1UsbPeripheralReport, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1UsbPeripheralReport::Representation
+      
+        end
+      end
+      
+      class GoogleChromeManagementV1TelemetryUser
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer, as: 'customer'
+          property :name, as: 'name'
+          property :org_unit_id, as: 'orgUnitId'
+          collection :user_device, as: 'userDevice', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryUserDevice, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryUserDevice::Representation
+      
+          property :user_email, as: 'userEmail'
+          property :user_id, as: 'userId'
+        end
+      end
+      
+      class GoogleChromeManagementV1TelemetryUserDevice
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :audio_status_report, as: 'audioStatusReport', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1AudioStatusReport, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1AudioStatusReport::Representation
+      
+          property :device_id, as: 'deviceId'
+          collection :peripherals_report, as: 'peripheralsReport', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1PeripheralsReport, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1PeripheralsReport::Representation
       
         end
       end

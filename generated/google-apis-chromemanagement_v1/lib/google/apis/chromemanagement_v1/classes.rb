@@ -1426,7 +1426,7 @@ module Google
       # and this will change over time as the device is utilized. * Data for this
       # field is controlled via policy: [ReportDeviceGraphicsInfo](https://
       # chromeenterprise.google/policies/#ReportDeviceGraphicsInfo) * Data Collection
-      # Frequency: Only at Upload * Default Data Reporting Frequency: 3 hours - Policy
+      # Frequency: 3 hours. * Default Data Reporting Frequency: 3 hours - Policy
       # Controlled: Yes * Cache: If the device is offline, the collected data is
       # stored locally, and will be reported when the device is next online: No *
       # Reported for affiliated users only: N/A
@@ -1610,6 +1610,31 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @telemetry_events = args[:telemetry_events] if args.key?(:telemetry_events)
+        end
+      end
+      
+      # Response message for listing telemetry users for a customer.
+      class GoogleChromeManagementV1ListTelemetryUsersResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token to specify next page in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Telemetry users returned in the response.
+        # Corresponds to the JSON property `telemetryUsers`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryUser>]
+        attr_accessor :telemetry_users
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @telemetry_users = args[:telemetry_users] if args.key?(:telemetry_users)
         end
       end
       
@@ -1983,6 +2008,31 @@ module Google
           @new_platform_version = args[:new_platform_version] if args.key?(:new_platform_version)
           @new_requested_platform_version = args[:new_requested_platform_version] if args.key?(:new_requested_platform_version)
           @update_state = args[:update_state] if args.key?(:update_state)
+        end
+      end
+      
+      # Peripherals report.
+      class GoogleChromeManagementV1PeripheralsReport
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Timestamp of when the report was collected.
+        # Corresponds to the JSON property `reportTime`
+        # @return [String]
+        attr_accessor :report_time
+      
+        # Reports of all usb connected devices.
+        # Corresponds to the JSON property `usbPeripheralReport`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1UsbPeripheralReport>]
+        attr_accessor :usb_peripheral_report
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @report_time = args[:report_time] if args.key?(:report_time)
+          @usb_peripheral_report = args[:usb_peripheral_report] if args.key?(:usb_peripheral_report)
         end
       end
       
@@ -2419,6 +2469,89 @@ module Google
         # Update properties of this object
         def update!(**args)
           @usb_peripheral_report = args[:usb_peripheral_report] if args.key?(:usb_peripheral_report)
+        end
+      end
+      
+      # Telemetry data collected from a managed user.
+      class GoogleChromeManagementV1TelemetryUser
+        include Google::Apis::Core::Hashable
+      
+        # G Suite Customer whose enterprise enrolled the device.
+        # Corresponds to the JSON property `customer`
+        # @return [String]
+        attr_accessor :customer
+      
+        # Resource name of the user.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Organization unit of the user.
+        # Corresponds to the JSON property `orgUnitId`
+        # @return [String]
+        attr_accessor :org_unit_id
+      
+        # Telemetry data collected from a managed user and device.
+        # Corresponds to the JSON property `userDevice`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryUserDevice>]
+        attr_accessor :user_device
+      
+        # Email address of the user.
+        # Corresponds to the JSON property `userEmail`
+        # @return [String]
+        attr_accessor :user_email
+      
+        # Directory ID of the user.
+        # Corresponds to the JSON property `userId`
+        # @return [String]
+        attr_accessor :user_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @customer = args[:customer] if args.key?(:customer)
+          @name = args[:name] if args.key?(:name)
+          @org_unit_id = args[:org_unit_id] if args.key?(:org_unit_id)
+          @user_device = args[:user_device] if args.key?(:user_device)
+          @user_email = args[:user_email] if args.key?(:user_email)
+          @user_id = args[:user_id] if args.key?(:user_id)
+        end
+      end
+      
+      # Telemetry data collected for a managed user and device.
+      class GoogleChromeManagementV1TelemetryUserDevice
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Audio reports collected periodically sorted in a decreasing order
+        # of report_time.
+        # Corresponds to the JSON property `audioStatusReport`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1AudioStatusReport>]
+        attr_accessor :audio_status_report
+      
+        # The unique Directory API ID of the device. This value is the same as the Admin
+        # Console's Directory API ID in the ChromeOS Devices tab.
+        # Corresponds to the JSON property `deviceId`
+        # @return [String]
+        attr_accessor :device_id
+      
+        # Output only. Peripherals reports collected periodically sorted in a decreasing
+        # order of report_time.
+        # Corresponds to the JSON property `peripheralsReport`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1PeripheralsReport>]
+        attr_accessor :peripherals_report
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audio_status_report = args[:audio_status_report] if args.key?(:audio_status_report)
+          @device_id = args[:device_id] if args.key?(:device_id)
+          @peripherals_report = args[:peripherals_report] if args.key?(:peripherals_report)
         end
       end
       
