@@ -515,6 +515,11 @@ module Google
       class Verification
         include Google::Apis::Core::Hashable
       
+        # Optional. Response announcement set only if the method is VETTED_PARTNER.
+        # Corresponds to the JSON property `announcement`
+        # @return [String]
+        attr_accessor :announcement
+      
         # The timestamp when the verification is requested.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -541,6 +546,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @announcement = args[:announcement] if args.key?(:announcement)
           @create_time = args[:create_time] if args.key?(:create_time)
           @method_prop = args[:method_prop] if args.key?(:method_prop)
           @name = args[:name] if args.key?(:name)
@@ -558,6 +564,11 @@ module Google
         # Corresponds to the JSON property `addressData`
         # @return [Google::Apis::MybusinessverificationsV1::AddressVerificationData]
         attr_accessor :address_data
+      
+        # Set only if the method is VETTED_PARTNER.
+        # Corresponds to the JSON property `announcement`
+        # @return [String]
+        attr_accessor :announcement
       
         # Display data for verifications through email.
         # Corresponds to the JSON property `emailData`
@@ -582,6 +593,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @address_data = args[:address_data] if args.key?(:address_data)
+          @announcement = args[:announcement] if args.key?(:announcement)
           @email_data = args[:email_data] if args.key?(:email_data)
           @phone_number = args[:phone_number] if args.key?(:phone_number)
           @verification_method = args[:verification_method] if args.key?(:verification_method)
