@@ -166,6 +166,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ProductMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ProjectInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -485,6 +491,13 @@ module Google
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
           hash :response, as: 'response'
+        end
+      end
+      
+      class ProductMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :warning_messages, as: 'warningMessages'
         end
       end
       

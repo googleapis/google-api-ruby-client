@@ -1007,6 +1007,25 @@ module Google
         end
       end
       
+      # Metadata about a long-running Product operation.
+      class ProductMetadata
+        include Google::Apis::Core::Hashable
+      
+        # List of warnings related to the associated operation.
+        # Corresponds to the JSON property `warningMessages`
+        # @return [Array<String>]
+        attr_accessor :warning_messages
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @warning_messages = args[:warning_messages] if args.key?(:warning_messages)
+        end
+      end
+      
       # A reference to a Google Cloud Platform (GCP) `Project`.
       class ProjectInfo
         include Google::Apis::Core::Hashable
