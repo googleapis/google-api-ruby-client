@@ -2611,7 +2611,7 @@ module Google
         # @param [String] channel_id
         #   Return the playlists owned by the specified channel ID.
         # @param [String] hl
-        #   Returen content in specified language
+        #   Return content in specified language
         # @param [Array<String>, String] id
         #   Return the playlists with the given IDs for Stubby or Apiary.
         # @param [Fixnum] max_results
