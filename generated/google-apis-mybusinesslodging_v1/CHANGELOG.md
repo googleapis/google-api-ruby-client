@@ -1,5 +1,10 @@
 # Release history for google-apis-mybusinesslodging_v1
 
+### v0.15.0 (2023-01-29)
+
+* Regenerated from discovery document revision 20230124
+* Regenerated using generator version 0.11.1
+
 ### v0.14.0 (2022-11-25)
 
 * Regenerated from discovery document revision 20221124
