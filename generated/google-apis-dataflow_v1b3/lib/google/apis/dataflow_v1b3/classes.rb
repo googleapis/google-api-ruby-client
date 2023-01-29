@@ -2440,9 +2440,10 @@ module Google
       
       # JobMetrics contains a collection of metrics describing the detailed progress
       # of a Dataflow job. Metrics correspond to user-defined and system-defined
-      # metrics in the job. This resource captures only the most recent values of each
-      # metric; time-series data can be queried for them (under the same metric names)
-      # from Cloud Monitoring.
+      # metrics in the job. For more information, see [Dataflow job metrics] (https://
+      # cloud.google.com/dataflow/docs/guides/using-monitoring-intf). This resource
+      # captures only the most recent values of each metric; time-series data can be
+      # queried for them (under the same metric names) from Cloud Monitoring.
       class JobMetrics
         include Google::Apis::Core::Hashable
       
@@ -3749,25 +3750,6 @@ module Google
         end
       end
       
-      # Information about a validated query.
-      class QueryInfo
-        include Google::Apis::Core::Hashable
-      
-        # Includes an entry for each satisfied QueryProperty.
-        # Corresponds to the JSON property `queryProperty`
-        # @return [Array<String>]
-        attr_accessor :query_property
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @query_property = args[:query_property] if args.key?(:query_property)
-        end
-      end
-      
       # An instruction that reads records. Takes no inputs, produces one output.
       class ReadInstruction
         include Google::Apis::Core::Hashable
@@ -3943,100 +3925,102 @@ module Google
       class RuntimeEnvironment
         include Google::Apis::Core::Hashable
       
-        # Additional experiment flags for the job, specified with the `--experiments`
-        # option.
+        # Optional. Additional experiment flags for the job, specified with the `--
+        # experiments` option.
         # Corresponds to the JSON property `additionalExperiments`
         # @return [Array<String>]
         attr_accessor :additional_experiments
       
-        # Additional user labels to be specified for the job. Keys and values should
-        # follow the restrictions specified in the [labeling restrictions](https://cloud.
-        # google.com/compute/docs/labeling-resources#restrictions) page. An object
-        # containing a list of "key": value pairs. Example: ` "name": "wrench", "mass": "
-        # 1kg", "count": "3" `.
+        # Optional. Additional user labels to be specified for the job. Keys and values
+        # should follow the restrictions specified in the [labeling restrictions](https:/
+        # /cloud.google.com/compute/docs/labeling-resources#restrictions) page. An
+        # object containing a list of "key": value pairs. Example: ` "name": "wrench", "
+        # mass": "1kg", "count": "3" `.
         # Corresponds to the JSON property `additionalUserLabels`
         # @return [Hash<String,String>]
         attr_accessor :additional_user_labels
       
-        # Whether to bypass the safety checks for the job's temporary directory. Use
-        # with caution.
+        # Optional. Whether to bypass the safety checks for the job's temporary
+        # directory. Use with caution.
         # Corresponds to the JSON property `bypassTempDirValidation`
         # @return [Boolean]
         attr_accessor :bypass_temp_dir_validation
         alias_method :bypass_temp_dir_validation?, :bypass_temp_dir_validation
       
-        # Whether to enable Streaming Engine for the job.
+        # Optional. Whether to enable Streaming Engine for the job.
         # Corresponds to the JSON property `enableStreamingEngine`
         # @return [Boolean]
         attr_accessor :enable_streaming_engine
         alias_method :enable_streaming_engine?, :enable_streaming_engine
       
-        # Configuration for VM IPs.
+        # Optional. Configuration for VM IPs.
         # Corresponds to the JSON property `ipConfiguration`
         # @return [String]
         attr_accessor :ip_configuration
       
-        # Name for the Cloud KMS key for the job. Key format is: projects//locations//
-        # keyRings//cryptoKeys/
+        # Optional. Name for the Cloud KMS key for the job. Key format is: projects//
+        # locations//keyRings//cryptoKeys/
         # Corresponds to the JSON property `kmsKeyName`
         # @return [String]
         attr_accessor :kms_key_name
       
-        # The machine type to use for the job. Defaults to the value from the template
-        # if not specified.
+        # Optional. The machine type to use for the job. Defaults to the value from the
+        # template if not specified.
         # Corresponds to the JSON property `machineType`
         # @return [String]
         attr_accessor :machine_type
       
-        # The maximum number of Google Compute Engine instances to be made available to
-        # your pipeline during execution, from 1 to 1000.
+        # Optional. The maximum number of Google Compute Engine instances to be made
+        # available to your pipeline during execution, from 1 to 1000. The default value
+        # is 1.
         # Corresponds to the JSON property `maxWorkers`
         # @return [Fixnum]
         attr_accessor :max_workers
       
-        # Network to which VMs will be assigned. If empty or unspecified, the service
-        # will use the network "default".
+        # Optional. Network to which VMs will be assigned. If empty or unspecified, the
+        # service will use the network "default".
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
       
-        # The initial number of Google Compute Engine instances for the job.
+        # Optional. The initial number of Google Compute Engine instances for the job.
+        # The default value is 11.
         # Corresponds to the JSON property `numWorkers`
         # @return [Fixnum]
         attr_accessor :num_workers
       
-        # The email address of the service account to run the job as.
+        # Optional. The email address of the service account to run the job as.
         # Corresponds to the JSON property `serviceAccountEmail`
         # @return [String]
         attr_accessor :service_account_email
       
-        # Subnetwork to which VMs will be assigned, if desired. You can specify a
-        # subnetwork using either a complete URL or an abbreviated path. Expected to be
-        # of the form "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/
-        # regions/REGION/subnetworks/SUBNETWORK" or "regions/REGION/subnetworks/
-        # SUBNETWORK". If the subnetwork is located in a Shared VPC network, you must
-        # use the complete URL.
+        # Optional. Subnetwork to which VMs will be assigned, if desired. You can
+        # specify a subnetwork using either a complete URL or an abbreviated path.
+        # Expected to be of the form "https://www.googleapis.com/compute/v1/projects/
+        # HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK" or "regions/REGION/
+        # subnetworks/SUBNETWORK". If the subnetwork is located in a Shared VPC network,
+        # you must use the complete URL.
         # Corresponds to the JSON property `subnetwork`
         # @return [String]
         attr_accessor :subnetwork
       
-        # The Cloud Storage path to use for temporary files. Must be a valid Cloud
-        # Storage URL, beginning with `gs://`.
+        # Required. The Cloud Storage path to use for temporary files. Must be a valid
+        # Cloud Storage URL, beginning with `gs://`.
         # Corresponds to the JSON property `tempLocation`
         # @return [String]
         attr_accessor :temp_location
       
-        # The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/
-        # regions-zones) in which worker processing should occur, e.g. "us-west1".
-        # Mutually exclusive with worker_zone. If neither worker_region nor worker_zone
-        # is specified, default to the control plane's region.
+        # Required. The Compute Engine region (https://cloud.google.com/compute/docs/
+        # regions-zones/regions-zones) in which worker processing should occur, e.g. "us-
+        # west1". Mutually exclusive with worker_zone. If neither worker_region nor
+        # worker_zone is specified, default to the control plane's region.
         # Corresponds to the JSON property `workerRegion`
         # @return [String]
         attr_accessor :worker_region
       
-        # The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/
-        # regions-zones) in which worker processing should occur, e.g. "us-west1-a".
-        # Mutually exclusive with worker_region. If neither worker_region nor
+        # Optional. The Compute Engine zone (https://cloud.google.com/compute/docs/
+        # regions-zones/regions-zones) in which worker processing should occur, e.g. "us-
+        # west1-a". Mutually exclusive with worker_region. If neither worker_region nor
         # worker_zone is specified, a zone in the control plane's region is chosen based
         # on available capacity. If both `worker_zone` and `zone` are set, `worker_zone`
         # takes precedence.
@@ -4044,9 +4028,9 @@ module Google
         # @return [String]
         attr_accessor :worker_zone
       
-        # The Compute Engine [availability zone](https://cloud.google.com/compute/docs/
-        # regions-zones/regions-zones) for launching worker instances to run your
-        # pipeline. In the future, worker_zone will take precedence.
+        # Optional. The Compute Engine [availability zone](https://cloud.google.com/
+        # compute/docs/regions-zones/regions-zones) for launching worker instances to
+        # run your pipeline. In the future, worker_zone will take precedence.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -6031,31 +6015,6 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @output_collection_name = args[:output_collection_name] if args.key?(:output_collection_name)
-        end
-      end
-      
-      # Response to the validation request.
-      class ValidateResponse
-        include Google::Apis::Core::Hashable
-      
-        # Will be empty if validation succeeds.
-        # Corresponds to the JSON property `errorMessage`
-        # @return [String]
-        attr_accessor :error_message
-      
-        # Information about a validated query.
-        # Corresponds to the JSON property `queryInfo`
-        # @return [Google::Apis::DataflowV1b3::QueryInfo]
-        attr_accessor :query_info
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @error_message = args[:error_message] if args.key?(:error_message)
-          @query_info = args[:query_info] if args.key?(:query_info)
         end
       end
       
