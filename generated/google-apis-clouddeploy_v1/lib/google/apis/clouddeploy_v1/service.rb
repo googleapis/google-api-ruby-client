@@ -752,6 +752,9 @@ module Google
         #   UUID is not supported (00000000-0000-0000-0000-000000000000).
         # @param [String] rollout_id
         #   Required. ID of the `Rollout`.
+        # @param [String] starting_phase_id
+        #   Optional. The starting phase ID for the `Rollout`. If empty the `Rollout` will
+        #   start at the first phase.
         # @param [Boolean] validate_only
         #   Optional. If set to true, the request is validated and the user is provided
         #   with an expected result, but no actual change is made.
@@ -772,7 +775,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_delivery_pipeline_release_rollout(parent, rollout_object = nil, request_id: nil, rollout_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_location_delivery_pipeline_release_rollout(parent, rollout_object = nil, request_id: nil, rollout_id: nil, starting_phase_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/rollouts', options)
           command.request_representation = Google::Apis::ClouddeployV1::Rollout::Representation
           command.request_object = rollout_object
@@ -781,6 +784,7 @@ module Google
           command.params['parent'] = parent unless parent.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['rolloutId'] = rollout_id unless rollout_id.nil?
+          command.query['startingPhaseId'] = starting_phase_id unless starting_phase_id.nil?
           command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
