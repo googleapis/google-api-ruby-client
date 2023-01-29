@@ -2137,7 +2137,7 @@ module Google
         #   resource.
         # @param [String] regions_version_version
         #   Required. A string representing version of the available regions being used
-        #   for the specified resource. The current version is 2022/01.
+        #   for the specified resource. The current version is 2022/02.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2292,7 +2292,7 @@ module Google
         # @param [Google::Apis::AndroidpublisherV3::Subscription] subscription_object
         # @param [String] regions_version_version
         #   Required. A string representing version of the available regions being used
-        #   for the specified resource. The current version is 2022/01.
+        #   for the specified resource. The current version is 2022/02.
         # @param [String] update_mask
         #   Required. The list of fields to be updated.
         # @param [String] fields
@@ -2548,7 +2548,7 @@ module Google
         #   see the documentation of the offer_id field on the SubscriptionOffer resource.
         # @param [String] regions_version_version
         #   Required. A string representing version of the available regions being used
-        #   for the specified resource. The current version is 2022/01.
+        #   for the specified resource. The current version is 2022/02.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2767,7 +2767,7 @@ module Google
         # @param [Google::Apis::AndroidpublisherV3::SubscriptionOffer] subscription_offer_object
         # @param [String] regions_version_version
         #   Required. A string representing version of the available regions being used
-        #   for the specified resource. The current version is 2022/01.
+        #   for the specified resource. The current version is 2022/02.
         # @param [String] update_mask
         #   Required. The list of fields to be updated.
         # @param [String] fields
