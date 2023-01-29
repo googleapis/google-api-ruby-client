@@ -4666,6 +4666,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RegionNetworkEndpointGroupsAttachEndpointsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionNetworkEndpointGroupsDetachEndpointsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -7788,6 +7800,7 @@ module Google
           property :iap, as: 'iap', class: Google::Apis::ComputeAlpha::BackendServiceIap, decorator: Google::Apis::ComputeAlpha::BackendServiceIap::Representation
       
           property :id, :numeric_string => true, as: 'id'
+          property :ip_address_selection_policy, as: 'ipAddressSelectionPolicy'
           property :kind, as: 'kind'
           property :load_balancing_scheme, as: 'loadBalancingScheme'
           collection :locality_lb_policies, as: 'localityLbPolicies', class: Google::Apis::ComputeAlpha::BackendServiceLocalityLoadBalancingPolicyConfig, decorator: Google::Apis::ComputeAlpha::BackendServiceLocalityLoadBalancingPolicyConfig::Representation
@@ -12284,6 +12297,7 @@ module Google
           property :kind, as: 'kind'
           property :lacp, as: 'lacp'
           property :max_lag_size100_gbps, as: 'maxLagSize100Gbps'
+          property :max_lag_size10_gbps, as: 'maxLagSize10Gbps'
           property :name, as: 'name'
           property :peeringdb_facility_id, as: 'peeringdbFacilityId'
           collection :permitted_connections, as: 'permittedConnections', class: Google::Apis::ComputeAlpha::InterconnectRemoteLocationPermittedConnections, decorator: Google::Apis::ComputeAlpha::InterconnectRemoteLocationPermittedConnections::Representation
@@ -15724,6 +15738,22 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class RegionNetworkEndpointGroupsAttachEndpointsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :network_endpoints, as: 'networkEndpoints', class: Google::Apis::ComputeAlpha::NetworkEndpoint, decorator: Google::Apis::ComputeAlpha::NetworkEndpoint::Representation
+      
+        end
+      end
+      
+      class RegionNetworkEndpointGroupsDetachEndpointsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :network_endpoints, as: 'networkEndpoints', class: Google::Apis::ComputeAlpha::NetworkEndpoint, decorator: Google::Apis::ComputeAlpha::NetworkEndpoint::Representation
+      
         end
       end
       
@@ -19835,6 +19865,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
+          property :sensitivity, as: 'sensitivity'
         end
       end
       

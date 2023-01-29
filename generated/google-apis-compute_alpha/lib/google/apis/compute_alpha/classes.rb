@@ -1787,8 +1787,10 @@ module Google
         # @return [Fixnum]
         attr_accessor :provisioned_throughput
       
-        # URLs of the zones where the disk should be replicated to. Only applicable for
-        # regional resources. Replica zones must have 1 zone same as the instance zone.
+        # Required for each regional disk associated with the instance. Specify the URLs
+        # of the zones where the disk should be replicated to. You must provide exactly
+        # two replica zones, and one zone must be the same as the instance zone. You can'
+        # t use this option with boot disks.
         # Corresponds to the JSON property `replicaZones`
         # @return [Array<String>]
         attr_accessor :replica_zones
@@ -3659,6 +3661,27 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
+        # Specifies preference of traffic to the backend (from the proxy and from the
+        # client for proxyless gRPC). The possible values are: - IPV4_ONLY: Only send
+        # IPv4 traffic to the backends of the Backend Service (Instance Group, Managed
+        # Instance Group, Network Endpoint Group) regardless of traffic from the client
+        # to the proxy. Only IPv4 health-checks are used to check the health of the
+        # backends. This is the default setting. - PREFER_IPV6: Prioritize the
+        # connection to the endpoints IPv6 address over its IPv4 address (provided there
+        # is a healthy IPv6 address). - IPV6_ONLY: Only send IPv6 traffic to the
+        # backends of the Backend Service (Instance Group, Managed Instance Group,
+        # Network Endpoint Group) regardless of traffic from the client to the proxy.
+        # Only IPv6 health-checks are used to check the health of the backends. This
+        # field is applicable to either: - Advanced Global External HTTPS Load Balancing
+        # (load balancing scheme EXTERNAL_MANAGED), - Regional External HTTPS Load
+        # Balancing, - Internal TCP Proxy (load balancing scheme INTERNAL_MANAGED), -
+        # Regional Internal HTTPS Load Balancing (load balancing scheme INTERNAL_MANAGED)
+        # , - Traffic Director with Envoy proxies and proxyless gRPC (load balancing
+        # scheme INTERNAL_SELF_MANAGED).
+        # Corresponds to the JSON property `ipAddressSelectionPolicy`
+        # @return [String]
+        attr_accessor :ip_address_selection_policy
+      
         # [Output Only] Type of resource. Always compute#backendService for backend
         # services.
         # Corresponds to the JSON property `kind`
@@ -3672,11 +3695,14 @@ module Google
         # @return [String]
         attr_accessor :load_balancing_scheme
       
-        # A list of locality load balancing policies to be used in order of preference.
-        # Either the policy or the customPolicy field should be set. Overrides any value
-        # set in the localityLbPolicy field. localityLbPolicies is only supported when
-        # the BackendService is referenced by a URL Map that is referenced by a target
-        # gRPC proxy that has the validateForProxyless field set to true.
+        # A list of locality load-balancing policies to be used in order of preference.
+        # When you use localityLbPolicies, you must set at least one value for either
+        # the localityLbPolicies[].policy or the localityLbPolicies[].customPolicy field.
+        # localityLbPolicies overrides any value set in the localityLbPolicy field. For
+        # an example of how to use this field, see Define a list of preferred policies.
+        # Caution: This field and its children are intended for use in a service mesh
+        # that includes gRPC clients only. Envoy proxies can't use backend services that
+        # have this configuration.
         # Corresponds to the JSON property `localityLbPolicies`
         # @return [Array<Google::Apis::ComputeAlpha::BackendServiceLocalityLoadBalancingPolicyConfig>]
         attr_accessor :locality_lb_policies
@@ -3879,6 +3905,7 @@ module Google
           @health_checks = args[:health_checks] if args.key?(:health_checks)
           @iap = args[:iap] if args.key?(:iap)
           @id = args[:id] if args.key?(:id)
+          @ip_address_selection_policy = args[:ip_address_selection_policy] if args.key?(:ip_address_selection_policy)
           @kind = args[:kind] if args.key?(:kind)
           @load_balancing_scheme = args[:load_balancing_scheme] if args.key?(:load_balancing_scheme)
           @locality_lb_policies = args[:locality_lb_policies] if args.key?(:locality_lb_policies)
@@ -4628,12 +4655,13 @@ module Google
         # @return [String]
         attr_accessor :data
       
-        # Identifies the custom policy. The value should match the type the custom
-        # implementation is registered with on the gRPC clients. It should follow
-        # protocol buffer message naming conventions and include the full path (e.g.
-        # myorg.CustomLbPolicy). The maximum length is 256 characters. Note that
-        # specifying the same custom policy more than once for a backend is not a valid
-        # configuration and will be rejected.
+        # Identifies the custom policy. The value should match the name of a custom
+        # implementation registered on the gRPC clients. It should follow protocol
+        # buffer message naming conventions and include the full path (for example,
+        # myorg.CustomLbPolicy). The maximum length is 256 characters. Do not specify
+        # the same custom policy more than once for a backend. If you do, the
+        # configuration is rejected. For an example of how to use this field, see Use a
+        # custom policy.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -4653,11 +4681,10 @@ module Google
       class BackendServiceLocalityLoadBalancingPolicyConfigPolicy
         include Google::Apis::Core::Hashable
       
-        # The name of a locality load balancer policy to be used. The value should be
-        # one of the predefined ones as supported by localityLbPolicy, although at the
-        # moment only ROUND_ROBIN is supported. This field should only be populated when
-        # the customPolicy field is not used. Note that specifying the same policy more
-        # than once for a backend is not a valid configuration and will be rejected.
+        # The name of a locality load-balancing policy. Valid values include ROUND_ROBIN
+        # and, for Java clients, LEAST_REQUEST. For information about these values, see
+        # the description of localityLbPolicy. Do not specify the same policy more than
+        # once for a backend. If you do, the configuration is rejected.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -21043,7 +21070,7 @@ module Google
         # @return [String]
         attr_accessor :type
       
-        # The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only
+        # The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4093. Only
         # specified at creation time.
         # Corresponds to the JSON property `vlanTag8021q`
         # @return [Fixnum]
@@ -22510,6 +22537,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_lag_size100_gbps
       
+        # [Output Only] The maximum number of 10 Gbps ports supported in a link
+        # aggregation group (LAG). When linkType is 10 Gbps, requestedLinkCount cannot
+        # exceed max_lag_size_10_gbps.
+        # Corresponds to the JSON property `maxLagSize10Gbps`
+        # @return [Fixnum]
+        attr_accessor :max_lag_size10_gbps
+      
         # [Output Only] Name of the resource.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -22570,6 +22604,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @lacp = args[:lacp] if args.key?(:lacp)
           @max_lag_size100_gbps = args[:max_lag_size100_gbps] if args.key?(:max_lag_size100_gbps)
+          @max_lag_size10_gbps = args[:max_lag_size10_gbps] if args.key?(:max_lag_size10_gbps)
           @name = args[:name] if args.key?(:name)
           @peeringdb_facility_id = args[:peeringdb_facility_id] if args.key?(:peeringdb_facility_id)
           @permitted_connections = args[:permitted_connections] if args.key?(:permitted_connections)
@@ -35734,6 +35769,44 @@ module Google
       end
       
       # 
+      class RegionNetworkEndpointGroupsAttachEndpointsRequest
+        include Google::Apis::Core::Hashable
+      
+        # The list of network endpoints to be attached.
+        # Corresponds to the JSON property `networkEndpoints`
+        # @return [Array<Google::Apis::ComputeAlpha::NetworkEndpoint>]
+        attr_accessor :network_endpoints
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network_endpoints = args[:network_endpoints] if args.key?(:network_endpoints)
+        end
+      end
+      
+      # 
+      class RegionNetworkEndpointGroupsDetachEndpointsRequest
+        include Google::Apis::Core::Hashable
+      
+        # The list of network endpoints to be detached.
+        # Corresponds to the JSON property `networkEndpoints`
+        # @return [Array<Google::Apis::ComputeAlpha::NetworkEndpoint>]
+        attr_accessor :network_endpoints
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network_endpoints = args[:network_endpoints] if args.key?(:network_endpoints)
+        end
+      end
+      
+      # 
       class RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponse
         include Google::Apis::Core::Hashable
       
@@ -41088,16 +41161,17 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The Action to perform when the rule is matched. The following are the valid
-        # actions: - allow: allow access to target. - deny(): deny access to target,
-        # returns the HTTP response code specified (valid values are 403, 404, and 502).
-        # - rate_based_ban: limit client traffic to the configured threshold and ban the
-        # client if the traffic exceeds the threshold. Configure parameters for this
-        # action in RateLimitOptions. Requires rate_limit_options to be set. - redirect:
-        # redirect to a different target. This can either be an internal reCAPTCHA
-        # redirect, or an external URL-based redirect via a 302 response. Parameters for
-        # this action can be configured via redirectOptions. - throttle: limit client
-        # traffic to the configured threshold. Configure parameters for this action in
-        # rateLimitOptions. Requires rate_limit_options to be set for this.
+        # actions: - allow: allow access to target. - deny(STATUS): deny access to
+        # target, returns the HTTP response code specified. Valid values for `STATUS`
+        # are 403, 404, and 502. - rate_based_ban: limit client traffic to the
+        # configured threshold and ban the client if the traffic exceeds the threshold.
+        # Configure parameters for this action in RateLimitOptions. Requires
+        # rate_limit_options to be set. - redirect: redirect to a different target. This
+        # can either be an internal reCAPTCHA redirect, or an external URL-based
+        # redirect via a 302 response. Parameters for this action can be configured via
+        # redirectOptions. - throttle: limit client traffic to the configured threshold.
+        # Configure parameters for this action in rateLimitOptions. Requires
+        # rate_limit_options to be set for this.
         # Corresponds to the JSON property `action`
         # @return [String]
         attr_accessor :action
@@ -41708,9 +41782,9 @@ module Google
       
         # Action to take for requests that are above the configured rate limit threshold,
         # to either deny with a specified HTTP response code, or redirect to a
-        # different endpoint. Valid options are "deny(status)", where valid values for
-        # status are 403, 404, 429, and 502, and "redirect" where the redirect
-        # parameters come from exceedRedirectOptions below.
+        # different endpoint. Valid options are `deny(STATUS)`, where valid values for `
+        # STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect
+        # parameters come from `exceedRedirectOptions` below.
         # Corresponds to the JSON property `exceedAction`
         # @return [String]
         attr_accessor :exceed_action
@@ -52181,6 +52255,13 @@ module Google
         # @return [String]
         attr_accessor :id
       
+        # The sensitivity value associated with the WAF rule ID. This corresponds to the
+        # ModSecurity paranoia level, ranging from 1 to 4. 0 is reserved for opt-in only
+        # rules.
+        # Corresponds to the JSON property `sensitivity`
+        # @return [Fixnum]
+        attr_accessor :sensitivity
+      
         def initialize(**args)
            update!(**args)
         end
@@ -52188,6 +52269,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @id = args[:id] if args.key?(:id)
+          @sensitivity = args[:sensitivity] if args.key?(:sensitivity)
         end
       end
       
