@@ -316,6 +316,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Version-specific information of an Android model.
+        # Corresponds to the JSON property `perVersionInfo`
+        # @return [Array<Google::Apis::TestingV1::PerAndroidVersionInfo>]
+        attr_accessor :per_version_info
+      
         # Screen density in DPI. This corresponds to ro.sf.lcd_density
         # Corresponds to the JSON property `screenDensity`
         # @return [Fixnum]
@@ -370,6 +375,7 @@ module Google
           @low_fps_video_recording = args[:low_fps_video_recording] if args.key?(:low_fps_video_recording)
           @manufacturer = args[:manufacturer] if args.key?(:manufacturer)
           @name = args[:name] if args.key?(:name)
+          @per_version_info = args[:per_version_info] if args.key?(:per_version_info)
           @screen_density = args[:screen_density] if args.key?(:screen_density)
           @screen_x = args[:screen_x] if args.key?(:screen_x)
           @screen_y = args[:screen_y] if args.key?(:screen_y)
@@ -1330,6 +1336,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Version-specific information of an iOS model.
+        # Corresponds to the JSON property `perVersionInfo`
+        # @return [Array<Google::Apis::TestingV1::PerIosVersionInfo>]
+        attr_accessor :per_version_info
+      
         # Screen density in DPI.
         # Corresponds to the JSON property `screenDensity`
         # @return [Fixnum]
@@ -1365,6 +1376,7 @@ module Google
           @form_factor = args[:form_factor] if args.key?(:form_factor)
           @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
+          @per_version_info = args[:per_version_info] if args.key?(:per_version_info)
           @screen_density = args[:screen_density] if args.key?(:screen_density)
           @screen_x = args[:screen_x] if args.key?(:screen_x)
           @screen_y = args[:screen_y] if args.key?(:screen_y)
@@ -1779,6 +1791,56 @@ module Google
           @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
           @tags = args[:tags] if args.key?(:tags)
+        end
+      end
+      
+      # A version-specific information of an Android model.
+      class PerAndroidVersionInfo
+        include Google::Apis::Core::Hashable
+      
+        # The number of online devices for an Android version.
+        # Corresponds to the JSON property `deviceCapacity`
+        # @return [String]
+        attr_accessor :device_capacity
+      
+        # An Android version.
+        # Corresponds to the JSON property `versionId`
+        # @return [String]
+        attr_accessor :version_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_capacity = args[:device_capacity] if args.key?(:device_capacity)
+          @version_id = args[:version_id] if args.key?(:version_id)
+        end
+      end
+      
+      # A version-specific information of an iOS model.
+      class PerIosVersionInfo
+        include Google::Apis::Core::Hashable
+      
+        # The number of online devices for an iOS version.
+        # Corresponds to the JSON property `deviceCapacity`
+        # @return [String]
+        attr_accessor :device_capacity
+      
+        # An iOS version.
+        # Corresponds to the JSON property `versionId`
+        # @return [String]
+        attr_accessor :version_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_capacity = args[:device_capacity] if args.key?(:device_capacity)
+          @version_id = args[:version_id] if args.key?(:version_id)
         end
       end
       
