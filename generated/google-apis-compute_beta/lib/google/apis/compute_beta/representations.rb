@@ -6347,6 +6347,7 @@ module Google
           property :multi_writer, as: 'multiWriter'
           property :on_update_action, as: 'onUpdateAction'
           property :provisioned_iops, :numeric_string => true, as: 'provisionedIops'
+          property :provisioned_throughput, :numeric_string => true, as: 'provisionedThroughput'
           hash :resource_manager_tags, as: 'resourceManagerTags'
           collection :resource_policies, as: 'resourcePolicies'
           property :source_image, as: 'sourceImage'
@@ -6927,6 +6928,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable, as: 'enable'
+          collection :optional_fields, as: 'optionalFields'
+          property :optional_mode, as: 'optionalMode'
           property :sample_rate, as: 'sampleRate'
         end
       end
@@ -7337,6 +7340,7 @@ module Google
       
           property :physical_block_size_bytes, :numeric_string => true, as: 'physicalBlockSizeBytes'
           property :provisioned_iops, :numeric_string => true, as: 'provisionedIops'
+          property :provisioned_throughput, :numeric_string => true, as: 'provisionedThroughput'
           property :region, as: 'region'
           collection :replica_zones, as: 'replicaZones'
           collection :resource_policies, as: 'resourcePolicies'
@@ -16969,6 +16973,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
+          property :sensitivity, as: 'sensitivity'
         end
       end
       
