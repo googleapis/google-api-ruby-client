@@ -945,6 +945,13 @@ module Google
       class InstanceStatus
         include Google::Apis::Core::Hashable
       
+        # A new persistent disk or a local ssd. A VM can only have one local SSD setting
+        # but multiple local SSD partitions. https://cloud.google.com/compute/docs/disks#
+        # pdspecs. https://cloud.google.com/compute/docs/disks#localssds.
+        # Corresponds to the JSON property `bootDisk`
+        # @return [Google::Apis::BatchV1::Disk]
+        attr_accessor :boot_disk
+      
         # The Compute Engine machine type.
         # Corresponds to the JSON property `machineType`
         # @return [String]
@@ -966,6 +973,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @boot_disk = args[:boot_disk] if args.key?(:boot_disk)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @provisioning_model = args[:provisioning_model] if args.key?(:provisioning_model)
           @task_pack = args[:task_pack] if args.key?(:task_pack)
@@ -1900,6 +1908,12 @@ module Google
         # @return [String]
         attr_accessor :email
       
+        # List of scopes to be enabled for this service account on the VM, in addition
+        # to the cloud-platform API scope that will be added by default.
+        # Corresponds to the JSON property `scopes`
+        # @return [Array<String>]
+        attr_accessor :scopes
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1907,6 +1921,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @email = args[:email] if args.key?(:email)
+          @scopes = args[:scopes] if args.key?(:scopes)
         end
       end
       

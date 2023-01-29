@@ -617,6 +617,8 @@ module Google
       class InstanceStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :boot_disk, as: 'bootDisk', class: Google::Apis::BatchV1::Disk, decorator: Google::Apis::BatchV1::Disk::Representation
+      
           property :machine_type, as: 'machineType'
           property :provisioning_model, as: 'provisioningModel'
           property :task_pack, :numeric_string => true, as: 'taskPack'
@@ -870,6 +872,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :email, as: 'email'
+          collection :scopes, as: 'scopes'
         end
       end
       
