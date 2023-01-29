@@ -556,12 +556,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class QueryInfo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ReadInstruction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -923,12 +917,6 @@ module Google
       end
       
       class TransformSummary
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ValidateResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2046,13 +2034,6 @@ module Google
         end
       end
       
-      class QueryInfo
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :query_property, as: 'queryProperty'
-        end
-      end
-      
       class ReadInstruction
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2688,15 +2669,6 @@ module Google
           property :kind, as: 'kind'
           property :name, as: 'name'
           collection :output_collection_name, as: 'outputCollectionName'
-        end
-      end
-      
-      class ValidateResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :error_message, as: 'errorMessage'
-          property :query_info, as: 'queryInfo', class: Google::Apis::DataflowV1b3::QueryInfo, decorator: Google::Apis::DataflowV1b3::QueryInfo::Representation
-      
         end
       end
       

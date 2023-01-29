@@ -1470,45 +1470,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Validates a GoogleSQL query for Cloud Dataflow syntax. Will always confirm the
-        # given query parses correctly, and if able to look up schema information from
-        # DataCatalog, will validate that the query analyzes properly as well.
-        # @param [String] project_id
-        #   Required. The ID of the Cloud Platform project that the job belongs to.
-        # @param [String] location
-        #   The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/
-        #   regional-endpoints) to which to direct the request.
-        # @param [String] query
-        #   The sql query to validate.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DataflowV1b3::ValidateResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DataflowV1b3::ValidateResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def validate_project_location_sql(project_id, location, query: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1b3/projects/{projectId}/locations/{location}/sql:validate', options)
-          command.response_representation = Google::Apis::DataflowV1b3::ValidateResponse::Representation
-          command.response_class = Google::Apis::DataflowV1b3::ValidateResponse
-          command.params['projectId'] = project_id unless project_id.nil?
-          command.params['location'] = location unless location.nil?
-          command.query['query'] = query unless query.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Creates a Cloud Dataflow job from a template. Do not enter confidential
         # information when you supply string values using the API.
         # @param [String] project_id
