@@ -52,9 +52,10 @@ module Google
       class GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionRequest
         include Google::Apis::Core::Hashable
       
-        # Optional. If true, Google will cancel the subscription immediately, and issue
-        # a prorated refund for the remainder of the billing cycle. Otherwise, Google
-        # defers the cancelation at renewal_time, and therefore, will not issue a refund.
+        # Optional. If true, Google will cancel the subscription immediately, and may or
+        # may not (based on the contract) issue a prorated refund for the remainder of
+        # the billing cycle. Otherwise, Google defers the cancelation at renewal_time,
+        # and will not issue a refund.
         # Corresponds to the JSON property `cancelImmediately`
         # @return [Boolean]
         attr_accessor :cancel_immediately
