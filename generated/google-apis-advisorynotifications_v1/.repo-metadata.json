@@ -1,0 +1,7 @@
+{
+    "api_id": "advisorynotifications:v1",
+    "name_pretty": "Advisory Notifications API",
+    "distribution_name": "google-apis-advisorynotifications_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
