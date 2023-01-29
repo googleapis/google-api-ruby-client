@@ -250,6 +250,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReportInstanceEventRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ReportInstanceInfoRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -924,6 +930,15 @@ module Google
         end
       end
       
+      class ReportInstanceEventRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :event, as: 'event', class: Google::Apis::NotebooksV1::Event, decorator: Google::Apis::NotebooksV1::Event::Representation
+      
+          property :vm_id, as: 'vmId'
+        end
+      end
+      
       class ReportInstanceInfoRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -977,6 +992,7 @@ module Google
       
           property :create_time, as: 'createTime'
           property :health_state, as: 'healthState'
+          hash :labels, as: 'labels'
           property :metrics, as: 'metrics', class: Google::Apis::NotebooksV1::RuntimeMetrics, decorator: Google::Apis::NotebooksV1::RuntimeMetrics::Representation
       
           property :name, as: 'name'
