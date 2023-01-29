@@ -483,6 +483,26 @@ module Google
         end
       end
       
+      # CommonFleetDefaultMemberConfigSpec contains default configuration information
+      # for memberships of a fleet
+      class CommonFleetDefaultMemberConfigSpec
+        include Google::Apis::Core::Hashable
+      
+        # **Anthos Identity Service**: Configuration for a single Membership.
+        # Corresponds to the JSON property `identityservice`
+        # @return [Google::Apis::GkehubV1alpha::IdentityServiceMembershipSpec]
+        attr_accessor :identityservice
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @identityservice = args[:identityservice] if args.key?(:identityservice)
+        end
+      end
+      
       # Configuration for Binauthz
       class ConfigManagementBinauthzConfig
         include Google::Apis::Core::Hashable
@@ -1582,6 +1602,12 @@ module Google
         # @return [String]
         attr_accessor :delete_time
       
+        # CommonFleetDefaultMemberConfigSpec contains default configuration information
+        # for memberships of a fleet
+        # Corresponds to the JSON property `fleetDefaultMemberConfig`
+        # @return [Google::Apis::GkehubV1alpha::CommonFleetDefaultMemberConfigSpec]
+        attr_accessor :fleet_default_member_config
+      
         # GCP labels for this Feature.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
@@ -1671,6 +1697,7 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
+          @fleet_default_member_config = args[:fleet_default_member_config] if args.key?(:fleet_default_member_config)
           @labels = args[:labels] if args.key?(:labels)
           @membership_specs = args[:membership_specs] if args.key?(:membership_specs)
           @membership_states = args[:membership_states] if args.key?(:membership_states)
