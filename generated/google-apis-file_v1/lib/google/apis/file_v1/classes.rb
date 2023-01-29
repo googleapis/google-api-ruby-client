@@ -49,6 +49,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :download_bytes
       
+        # Immutable. KMS key name used for data encryption.
+        # Corresponds to the JSON property `kmsKey`
+        # @return [String]
+        attr_accessor :kms_key
+      
         # Resource labels to represent user provided metadata.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
@@ -106,6 +111,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @download_bytes = args[:download_bytes] if args.key?(:download_bytes)
+          @kms_key = args[:kms_key] if args.key?(:kms_key)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
@@ -301,14 +307,30 @@ module Google
         end
       end
       
-      # 
+      # Instance represents the interface for SLM services to actuate the state of
+      # control plane resources. Example Instance in JSON, where consumer-project-
+      # number=123456, producer-project-id=cloud-sql: ```json Instance: ` "name": "
+      # projects/123456/locations/us-east1/instances/prod-instance", "create_time": ` "
+      # seconds": 1526406431, `, "labels": ` "env": "prod", "foo": "bar" `, "state":
+      # READY, "software_versions": ` "software_update": "cloud-sql-09-28-2018", `, "
+      # maintenance_policy_names": ` "UpdatePolicy": "projects/123456/locations/us-
+      # east1/maintenancePolicies/prod-update-policy", ` "tenant_project_id": "cloud-
+      # sql-test-tenant", "producer_metadata": ` "cloud-sql-tier": "basic", "cloud-sql-
+      # instance-size": "1G", `, "provisioned_resources": [ ` "resource-type": "
+      # compute-instance", "resource-url": "https://www.googleapis.com/compute/v1/
+      # projects/cloud-sql/zones/us-east1-b/instances/vm-1", ` ], "
+      # maintenance_schedules": ` "csa_rollout": ` "start_time": ` "seconds":
+      # 1526406431, `, "end_time": ` "seconds": 1535406431, `, `, "ncsa_rollout": ` "
+      # start_time": ` "seconds": 1526406431, `, "end_time": ` "seconds": 1535406431, `
+      # , ` `, "consumer_defined_name": "my-sql-instance1", ` ``` LINT.IfChange
       class GoogleCloudSaasacceleratorManagementProvidersV1Instance
         include Google::Apis::Core::Hashable
       
-        # consumer_defined_name is the name that is set by the consumer. On the other
-        # hand Name field represents system-assigned id of an instance so consumers are
-        # not necessarily aware of it. consumer_defined_name is used for notification/UI
-        # purposes for consumer to recognize their instances.
+        # consumer_defined_name is the name of the instance set by the service consumers.
+        # Generally this is different from the `name` field which reperesents the
+        # system-assigned id of the instance which the service consumers do not
+        # recognize. This is a required field for tenants onboarding to Maintenance
+        # Window notifications (go/slm-rollout-maintenance-policies#prerequisites).
         # Corresponds to the JSON property `consumerDefinedName`
         # @return [String]
         attr_accessor :consumer_defined_name
@@ -335,10 +357,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Optional. Deprecated. The MaintenancePolicies that have been attached to the
-        # instance. The key must be of the type name of the oneof policy name defined in
+        # Optional. The MaintenancePolicies that have been attached to the instance. The
+        # key must be of the type name of the oneof policy name defined in
         # MaintenancePolicy, and the referenced policy must define the same policy type.
-        # For complete details of MaintenancePolicy, please refer to go/cloud-saas-mw-ug.
+        # For details, please refer to go/cloud-saas-mw-ug. Should not be set if
+        # maintenance_settings.maintenance_policies is set.
         # Corresponds to the JSON property `maintenancePolicyNames`
         # @return [Hash<String,String>]
         attr_accessor :maintenance_policy_names
@@ -521,8 +544,9 @@ module Google
         # Optional. The MaintenancePolicies that have been attached to the instance. The
         # key must be of the type name of the oneof policy name defined in
         # MaintenancePolicy, and the embedded policy must define the same policy type.
-        # For complete details of MaintenancePolicy, please refer to go/cloud-saas-mw-ug.
-        # If only the name is needed, then only populate MaintenancePolicy.name.
+        # For details, please refer to go/cloud-saas-mw-ug. Should not be set if
+        # maintenance_policy_names is set. If only the name is needed, then only
+        # populate MaintenancePolicy.name.
         # Corresponds to the JSON property `maintenancePolicies`
         # @return [Hash<String,Google::Apis::FileV1::MaintenancePolicy>]
         attr_accessor :maintenance_policies
