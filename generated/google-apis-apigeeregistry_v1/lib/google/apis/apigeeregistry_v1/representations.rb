@@ -285,6 +285,7 @@ module Google
           property :display_name, as: 'displayName'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :primary_spec, as: 'primarySpec'
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
         end
@@ -293,9 +294,11 @@ module Google
       class Artifact
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :annotations, as: 'annotations'
           property :contents, :base64 => true, as: 'contents'
           property :create_time, as: 'createTime'
           property :hash_prop, as: 'hash'
+          hash :labels, as: 'labels'
           property :mime_type, as: 'mimeType'
           property :name, as: 'name'
           property :size_bytes, as: 'sizeBytes'

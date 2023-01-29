@@ -1014,6 +1014,9 @@ module Google
         # order of revision creation time.
         # @param [String] name
         #   Required. The name of the deployment to list revisions for.
+        # @param [String] filter
+        #   An expression that can be used to filter the list. Filters use the Common
+        #   Expression Language and can refer to all message fields.
         # @param [Fixnum] page_size
         #   The maximum number of revisions to return per page.
         # @param [String] page_token
@@ -1036,11 +1039,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_api_deployment_revisions(name, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_api_deployment_revisions(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}:listRevisions', options)
           command.response_representation = Google::Apis::ApigeeregistryV1::ListApiDeploymentRevisionsResponse::Representation
           command.response_class = Google::Apis::ApigeeregistryV1::ListApiDeploymentRevisionsResponse
           command.params['name'] = name unless name.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2373,6 +2377,9 @@ module Google
         # revision creation time.
         # @param [String] name
         #   Required. The name of the spec to list revisions for.
+        # @param [String] filter
+        #   An expression that can be used to filter the list. Filters use the Common
+        #   Expression Language and can refer to all message fields.
         # @param [Fixnum] page_size
         #   The maximum number of revisions to return per page.
         # @param [String] page_token
@@ -2395,11 +2402,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_api_version_spec_revisions(name, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_api_version_spec_revisions(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}:listRevisions', options)
           command.response_representation = Google::Apis::ApigeeregistryV1::ListApiSpecRevisionsResponse::Representation
           command.response_class = Google::Apis::ApigeeregistryV1::ListApiSpecRevisionsResponse
           command.params['name'] = name unless name.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?

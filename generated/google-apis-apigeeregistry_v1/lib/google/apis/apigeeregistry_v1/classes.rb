@@ -133,7 +133,8 @@ module Google
       
         # The full resource name (including revision ID) of the spec of the API being
         # served by the deployment. Changes to this value will update the revision.
-        # Format: `apis/`api`/deployments/`deployment``
+        # Format: `projects/`project`/locations/`location`/apis/`api`/versions/`version`/
+        # specs/`spec@revision``
         # Corresponds to the JSON property `apiSpecRevision`
         # @return [String]
         attr_accessor :api_spec_revision
@@ -406,6 +407,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The primary spec for this version. Format: projects/`project`/locations/`
+        # location`/apis/`api`/versions/`version`/specs/`spec`
+        # Corresponds to the JSON property `primarySpec`
+        # @return [String]
+        attr_accessor :primary_spec
+      
         # A user-definable description of the lifecycle phase of this API version.
         # Format: free-form, but we expect single words that describe API maturity, e.g.,
         # "CONCEPT", "DESIGN", "DEVELOPMENT", "STAGING", "PRODUCTION", "DEPRECATED", "
@@ -431,6 +438,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @primary_spec = args[:primary_spec] if args.key?(:primary_spec)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -446,6 +454,14 @@ module Google
       # potentially-large) contents.
       class Artifact
         include Google::Apis::Core::Hashable
+      
+        # Annotations attach non-identifying metadata to resources. Annotation keys and
+        # values are less restricted than those of labels, but should be generally used
+        # for small values of broad interest. Larger, topic- specific metadata should be
+        # stored in Artifacts.
+        # Corresponds to the JSON property `annotations`
+        # @return [Hash<String,String>]
+        attr_accessor :annotations
       
         # Input only. The contents of the artifact. Provided by API callers when
         # artifacts are created or replaced. To access the contents of an artifact, use
@@ -465,6 +481,18 @@ module Google
         # Corresponds to the JSON property `hash`
         # @return [String]
         attr_accessor :hash_prop
+      
+        # Labels attach identifying metadata to resources. Identifying metadata can be
+        # used to filter list operations. Label keys and values can be no longer than 64
+        # characters (Unicode codepoints), can only contain lowercase letters, numeric
+        # characters, underscores and dashes. International characters are allowed. No
+        # more than 64 user labels can be associated with one resource (System labels
+        # are excluded). See https://goo.gl/xmQnxf for more information and examples of
+        # labels. System reserved label keys are prefixed with "registry.googleapis.com/"
+        # and cannot be changed.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
       
         # A content type specifier for the artifact. Content type specifiers are Media
         # Types (https://en.wikipedia.org/wiki/Media_type) with a possible "schema"
@@ -497,9 +525,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
           @contents = args[:contents] if args.key?(:contents)
           @create_time = args[:create_time] if args.key?(:create_time)
           @hash_prop = args[:hash_prop] if args.key?(:hash_prop)
+          @labels = args[:labels] if args.key?(:labels)
           @mime_type = args[:mime_type] if args.key?(:mime_type)
           @name = args[:name] if args.key?(:name)
           @size_bytes = args[:size_bytes] if args.key?(:size_bytes)
