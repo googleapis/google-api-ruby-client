@@ -64,6 +64,42 @@ module Google
         end
       end
       
+      # Auto scaling settings. max_slots and budget are mutually exclusive. If
+      # max_slots is set: * The system will create a dedicated `FLEX` capacity
+      # commitment to hold the slots for auto-scale. Users won't be able to manage it,
+      # to avoid conflicts. * Scale-up will happen if there are always pending tasks
+      # for the past 10 minutes. * Scale-down will happen, if the system detects that
+      # scale-up won't be triggered again. If budget is set: * The system will try to
+      # use more slots immediately. * At a particular moment, the number of slots
+      # scaled is determined by the sytsem, based on the remaining budget and system
+      # limit. But overall the usage will conform to the budget if there is enough
+      # traffic. * The system will round the slot usage every minute. **Note** this is
+      # an alpha feature.
+      class Autoscale
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The slot capacity added to this reservation when autoscale
+        # happens. Will be between [0, max_slots].
+        # Corresponds to the JSON property `currentSlots`
+        # @return [Fixnum]
+        attr_accessor :current_slots
+      
+        # Number of slots to be scaled when needed.
+        # Corresponds to the JSON property `maxSlots`
+        # @return [Fixnum]
+        attr_accessor :max_slots
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @current_slots = args[:current_slots] if args.key?(:current_slots)
+          @max_slots = args[:max_slots] if args.key?(:max_slots)
+        end
+      end
+      
       # Represents a BI Reservation.
       class BiReservation
         include Google::Apis::Core::Hashable
@@ -123,6 +159,11 @@ module Google
         # @return [String]
         attr_accessor :commitment_start_time
       
+        # Edition of the capacity commitment.
+        # Corresponds to the JSON property `edition`
+        # @return [String]
+        attr_accessor :edition
+      
         # The `Status` type defines a logical error model that is suitable for different
         # programming environments, including REST APIs and RPC APIs. It is used by [
         # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
@@ -181,6 +222,7 @@ module Google
         def update!(**args)
           @commitment_end_time = args[:commitment_end_time] if args.key?(:commitment_end_time)
           @commitment_start_time = args[:commitment_start_time] if args.key?(:commitment_start_time)
+          @edition = args[:edition] if args.key?(:edition)
           @failure_status = args[:failure_status] if args.key?(:failure_status)
           @multi_region_auxiliary = args[:multi_region_auxiliary] if args.key?(:multi_region_auxiliary)
           @name = args[:name] if args.key?(:name)
@@ -334,6 +376,21 @@ module Google
       class Reservation
         include Google::Apis::Core::Hashable
       
+        # Auto scaling settings. max_slots and budget are mutually exclusive. If
+        # max_slots is set: * The system will create a dedicated `FLEX` capacity
+        # commitment to hold the slots for auto-scale. Users won't be able to manage it,
+        # to avoid conflicts. * Scale-up will happen if there are always pending tasks
+        # for the past 10 minutes. * Scale-down will happen, if the system detects that
+        # scale-up won't be triggered again. If budget is set: * The system will try to
+        # use more slots immediately. * At a particular moment, the number of slots
+        # scaled is determined by the sytsem, based on the remaining budget and system
+        # limit. But overall the usage will conform to the budget if there is enough
+        # traffic. * The system will round the slot usage every minute. **Note** this is
+        # an alpha feature.
+        # Corresponds to the JSON property `autoscale`
+        # @return [Google::Apis::BigqueryreservationV1::Autoscale]
+        attr_accessor :autoscale
+      
         # Job concurrency target which sets a soft upper bound on the number of jobs
         # that can run concurrently in this reservation. This is a soft target due to
         # asynchronous nature of the system and various optimizations for small queries.
@@ -348,6 +405,11 @@ module Google
         # Corresponds to the JSON property `creationTime`
         # @return [String]
         attr_accessor :creation_time
+      
+        # Edition of the reservation.
+        # Corresponds to the JSON property `edition`
+        # @return [String]
+        attr_accessor :edition
       
         # If false, any query or pipeline job using this reservation will use idle slots
         # from other reservations within the same admin project. If true, a query or
@@ -399,8 +461,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @autoscale = args[:autoscale] if args.key?(:autoscale)
           @concurrency = args[:concurrency] if args.key?(:concurrency)
           @creation_time = args[:creation_time] if args.key?(:creation_time)
+          @edition = args[:edition] if args.key?(:edition)
           @ignore_idle_slots = args[:ignore_idle_slots] if args.key?(:ignore_idle_slots)
           @multi_region_auxiliary = args[:multi_region_auxiliary] if args.key?(:multi_region_auxiliary)
           @name = args[:name] if args.key?(:name)
