@@ -277,7 +277,8 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Output only. The unique identifier of the Google account of the customer.
+        # Output only. The unique identifier of the Google Workspace account of the
+        # customer.
         # Corresponds to the JSON property `customerId`
         # @return [String]
         attr_accessor :customer_id
@@ -387,7 +388,8 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Output only. The unique identifier of the Google account of the customer.
+        # Output only. The unique identifier of the Google Workspace account of the
+        # customer.
         # Corresponds to the JSON property `customerId`
         # @return [String]
         attr_accessor :customer_id
@@ -436,7 +438,8 @@ module Google
         # @return [String]
         attr_accessor :assignee
       
-        # Output only. The unique identifier of the Google account of the customer.
+        # Output only. The unique identifier of the Google Workspace account of the
+        # customer.
         # Corresponds to the JSON property `customerId`
         # @return [String]
         attr_accessor :customer_id
@@ -686,13 +689,16 @@ module Google
       class BatchDeleteAlertsRequest
         include Google::Apis::Core::Hashable
       
-        # Required. list of alert IDs.
+        # Required. The list of alert IDs to delete.
         # Corresponds to the JSON property `alertId`
         # @return [Array<String>]
         attr_accessor :alert_id
       
-        # Optional. The unique identifier of the Google Workspace organization account
-        # of the customer the alerts are associated with.
+        # Optional. The unique identifier of the Google Workspace account of the
+        # customer the alerts are associated with. The `customer_id` must have the
+        # initial "C" stripped (for example, `046psxkn`). Inferred from the caller
+        # identity if not provided. [Find your customer ID](https://support.google.com/
+        # cloudidentity/answer/10070793).
         # Corresponds to the JSON property `customerId`
         # @return [String]
         attr_accessor :customer_id
@@ -712,7 +718,7 @@ module Google
       class BatchDeleteAlertsResponse
         include Google::Apis::Core::Hashable
       
-        # The status details for each failed alert_id.
+        # The status details for each failed `alert_id`.
         # Corresponds to the JSON property `failedAlertStatus`
         # @return [Hash<String,Google::Apis::AlertcenterV1beta1::Status>]
         attr_accessor :failed_alert_status
@@ -737,13 +743,16 @@ module Google
       class BatchUndeleteAlertsRequest
         include Google::Apis::Core::Hashable
       
-        # Required. list of alert IDs.
+        # Required. The list of alert IDs to undelete.
         # Corresponds to the JSON property `alertId`
         # @return [Array<String>]
         attr_accessor :alert_id
       
-        # Optional. The unique identifier of the Google Workspace organization account
-        # of the customer the alerts are associated with.
+        # Optional. The unique identifier of the Google Workspace account of the
+        # customer the alerts are associated with. The `customer_id` must have the
+        # initial "C" stripped (for example, `046psxkn`). Inferred from the caller
+        # identity if not provided. [Find your customer ID](https://support.google.com/
+        # cloudidentity/answer/10070793).
         # Corresponds to the JSON property `customerId`
         # @return [String]
         attr_accessor :customer_id
@@ -763,7 +772,7 @@ module Google
       class BatchUndeleteAlertsResponse
         include Google::Apis::Core::Hashable
       
-        # The status details for each failed alert_id.
+        # The status details for each failed `alert_id`.
         # Corresponds to the JSON property `failedAlertStatus`
         # @return [Hash<String,Google::Apis::AlertcenterV1beta1::Status>]
         attr_accessor :failed_alert_status
@@ -2124,9 +2133,11 @@ module Google
       class UndeleteAlertRequest
         include Google::Apis::Core::Hashable
       
-        # Optional. The unique identifier of the Google Workspace organization account
-        # of the customer the alert is associated with. Inferred from the caller
-        # identity if not provided.
+        # Optional. The unique identifier of the Google Workspace account of the
+        # customer the alert is associated with. The `customer_id` must have the initial
+        # "C" stripped (for example, `046psxkn`). Inferred from the caller identity if
+        # not provided. [Find your customer ID](https://support.google.com/cloudidentity/
+        # answer/10070793).
         # Corresponds to the JSON property `customerId`
         # @return [String]
         attr_accessor :customer_id
