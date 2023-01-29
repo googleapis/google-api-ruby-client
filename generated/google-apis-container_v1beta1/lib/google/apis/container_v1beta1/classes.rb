@@ -284,7 +284,8 @@ module Google
         # @return [String]
         attr_accessor :disk_type
       
-        # The image type to use for NAP created node.
+        # The image type to use for NAP created node. Please see https://cloud.google.
+        # com/kubernetes-engine/docs/concepts/node-images for available image types.
         # Corresponds to the JSON property `imageType`
         # @return [String]
         attr_accessor :image_type
@@ -301,7 +302,7 @@ module Google
         # Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how
         # to specify min CPU platform](https://cloud.google.com/compute/docs/instances/
         # specify-min-cpu-platform). This field is deprecated, min_cpu_platform should
-        # be specified using https://cloud.google.com/requested-min-cpu-platform label
+        # be specified using `cloud.google.com/requested-min-cpu-platform` label
         # selector on the pod. To unset the min cpu platform field pass "automatic" as
         # field value.
         # Corresponds to the JSON property `minCpuPlatform`
@@ -3667,7 +3668,8 @@ module Google
         attr_accessor :gvnic
       
         # The image type to use for this node. Note that for a given image type, the
-        # latest version of it will be used.
+        # latest version of it will be used. Please see https://cloud.google.com/
+        # kubernetes-engine/docs/concepts/node-images for available image types.
         # Corresponds to the JSON property `imageType`
         # @return [String]
         attr_accessor :image_type
@@ -4227,7 +4229,9 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::UpgradeSettings]
         attr_accessor :upgrade_settings
       
-        # The version of the Kubernetes of this node.
+        # The version of Kubernetes running on this NodePool's nodes. If unspecified, it
+        # defaults as described [here](https://cloud.google.com/kubernetes-engine/
+        # versioning#specifying_node_version).
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
@@ -6359,7 +6363,9 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::VirtualNic]
         attr_accessor :gvnic
       
-        # Required. The desired image type for the node pool.
+        # Required. The desired image type for the node pool. Please see https://cloud.
+        # google.com/kubernetes-engine/docs/concepts/node-images for available image
+        # types.
         # Corresponds to the JSON property `imageType`
         # @return [String]
         attr_accessor :image_type
