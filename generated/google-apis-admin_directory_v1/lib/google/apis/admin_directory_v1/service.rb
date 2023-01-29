@@ -4115,9 +4115,12 @@ module Google
         end
         
         # Updates a user using patch semantics. The update method should be used instead,
-        # since it also supports patch semantics and has better performance. This
-        # method is unable to clear fields that contain repeated objects (`addresses`, `
-        # phones`, etc). Use the update method instead.
+        # because it also supports patch semantics and has better performance. If you'
+        # re mapping an external identity to a Google identity, use the [`update`](https:
+        # //developers.google.com/admin-sdk/directory/v1/reference/users/update) method
+        # instead of the `patch` method. This method is unable to clear fields that
+        # contain repeated objects (`addresses`, `phones`, etc). Use the update method
+        # instead.
         # @param [String] user_key
         #   Identifies the user in the API request. The value can be the user's primary
         #   email address, alias email address, or unique user ID.
