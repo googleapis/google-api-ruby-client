@@ -510,9 +510,9 @@ module Google
         # @return [Array<Google::Apis::RunV1::EnvFromSource>]
         attr_accessor :env_from
       
-        # Required. URL of the Container image in Google Container Registry or Google
-        # Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/
-        # images
+        # Required. Name of the container image in Dockerhub, Google Artifact Registry,
+        # or Google Container Registry. If the host is not provided, Dockerhub is
+        # assumed. More info: https://kubernetes.io/docs/concepts/containers/images
         # Corresponds to the JSON property `image`
         # @return [String]
         attr_accessor :image
