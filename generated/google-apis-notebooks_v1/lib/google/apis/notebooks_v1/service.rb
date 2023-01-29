@@ -363,7 +363,7 @@ module Google
         #   Required. Format: `parent=projects/`project_id`/locations/`location``
         # @param [String] filter
         #   Filter applied to resulting executions. Currently only supports filtering
-        #   executions by a specified schedule_id. Format: `schedule_id=`
+        #   executions by a specified `schedule_id`. Format: `schedule_id=`
         # @param [String] order_by
         #   Sort by field.
         # @param [Fixnum] page_size
@@ -746,6 +746,40 @@ module Google
           command = make_simple_command(:post, 'v1/{+name}:report', options)
           command.request_representation = Google::Apis::NotebooksV1::ReportInstanceInfoRequest::Representation
           command.request_object = report_instance_info_request_object
+          command.response_representation = Google::Apis::NotebooksV1::Operation::Representation
+          command.response_class = Google::Apis::NotebooksV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Reports and processes an instance event.
+        # @param [String] name
+        #   Required. Format: `projects/`project_id`/locations/`location`/instances/`
+        #   instance_id``
+        # @param [Google::Apis::NotebooksV1::ReportInstanceEventRequest] report_instance_event_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NotebooksV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NotebooksV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def report_project_location_instance_event(name, report_instance_event_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:reportEvent', options)
+          command.request_representation = Google::Apis::NotebooksV1::ReportInstanceEventRequest::Representation
+          command.request_object = report_instance_event_request_object
           command.response_representation = Google::Apis::NotebooksV1::Operation::Representation
           command.response_class = Google::Apis::NotebooksV1::Operation
           command.params['name'] = name unless name.nil?
@@ -1624,9 +1658,10 @@ module Google
         #   request body would specify the new value, as follows: ` "software_config":` "
         #   kernels": [` 'repository': 'gcr.io/deeplearning-platform-release/pytorch-gpu',
         #   'tag': 'latest' `], ` ` Currently, only the following fields can be updated: -
-        #   software_config.kernels - software_config.post_startup_script -
-        #   software_config.custom_gpu_driver_path - software_config.idle_shutdown -
-        #   software_config.idle_shutdown_timeout - software_config.disable_terminal
+        #   `software_config.kernels` - `software_config.post_startup_script` - `
+        #   software_config.custom_gpu_driver_path` - `software_config.idle_shutdown` - `
+        #   software_config.idle_shutdown_timeout` - `software_config.disable_terminal` - `
+        #   labels`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

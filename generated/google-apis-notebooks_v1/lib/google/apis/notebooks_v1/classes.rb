@@ -23,8 +23,9 @@ module Google
     module NotebooksV1
       
       # Definition of a hardware accelerator. Note that not all combinations of `type`
-      # and `core_count` are valid. Check [GPUs on Compute Engine](/compute/docs/gpus/#
-      # gpus-list) to find a valid combination. TPUs are not supported.
+      # and `core_count` are valid. Check [GPUs on Compute Engine](https://cloud.
+      # google.com/compute/docs/gpus/#gpus-list) to find a valid combination. TPUs are
+      # not supported.
       class AcceleratorConfig
         include Google::Apis::Core::Hashable
       
@@ -87,22 +88,22 @@ module Google
         # kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-
         # project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:`emailid``: An
         # email address that represents a Google group. For example, `admins@example.com`
-        # . * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
-        # identifier) representing a user that has been recently deleted. For example, `
-        # alice@example.com?uid=123456789012345678901`. If the user is recovered, this
-        # value reverts to `user:`emailid`` and the recovered user retains the role in
-        # the binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email
-        # address (plus unique identifier) representing a service account that has been
-        # recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
+        # . * `domain:`domain``: The G Suite domain (primary) that represents all the
+        # users of that domain. For example, `google.com` or `example.com`. * `deleted:
+        # user:`emailid`?uid=`uniqueid``: An email address (plus unique identifier)
+        # representing a user that has been recently deleted. For example, `alice@
+        # example.com?uid=123456789012345678901`. If the user is recovered, this value
+        # reverts to `user:`emailid`` and the recovered user retains the role in the
+        # binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email address
+        # (plus unique identifier) representing a service account that has been recently
+        # deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
         # 123456789012345678901`. If the service account is undeleted, this value
         # reverts to `serviceAccount:`emailid`` and the undeleted service account
         # retains the role in the binding. * `deleted:group:`emailid`?uid=`uniqueid``:
         # An email address (plus unique identifier) representing a Google group that has
         # been recently deleted. For example, `admins@example.com?uid=
         # 123456789012345678901`. If the group is recovered, this value reverts to `
-        # group:`emailid`` and the recovered group retains the role in the binding. * `
-        # domain:`domain``: The G Suite domain (primary) that represents all the users
-        # of that domain. For example, `google.com` or `example.com`.
+        # group:`emailid`` and the recovered group retains the role in the binding.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -311,8 +312,8 @@ module Google
         attr_accessor :boot
         alias_method :boot?, :boot
       
-        # Indicates a unique device name of your choice that is reflected into the /dev/
-        # disk/by-id/google-* tree of a Linux operating system running within the
+        # Indicates a unique device name of your choice that is reflected into the `/dev/
+        # disk/by-id/google-*` tree of a Linux operating system running within the
         # instance. This name can be used to reference the device for mounting, resizing,
         # and so on, from within the instance. If not specified, the server chooses a
         # default device name to apply to this disk, in the form persistent-disk-x,
@@ -345,8 +346,8 @@ module Google
         # SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and
         # the request will fail if you attempt to attach a persistent disk in any other
         # format than SCSI. Local SSDs can use either NVME or SCSI. For performance
-        # characteristics of SCSI over NVMe, see Local SSD performance. Valid values: *
-        # NVME * SCSI
+        # characteristics of SCSI over NVMe, see Local SSD performance. Valid values: * `
+        # NVME` * `SCSI`
         # Corresponds to the JSON property `interface`
         # @return [String]
         attr_accessor :interface
@@ -362,9 +363,9 @@ module Google
         # @return [Array<String>]
         attr_accessor :licenses
       
-        # The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not
-        # specified, the default is to attach the disk in READ_WRITE mode. Valid values:
-        # * READ_ONLY * READ_WRITE
+        # The mode in which to attach this disk, either `READ_WRITE` or `READ_ONLY`. If
+        # not specified, the default is to attach the disk in `READ_WRITE` mode. Valid
+        # values: * `READ_ONLY` * `READ_WRITE`
         # Corresponds to the JSON property `mode`
         # @return [String]
         attr_accessor :mode
@@ -374,8 +375,8 @@ module Google
         # @return [String]
         attr_accessor :source
       
-        # Indicates the type of the disk, either SCRATCH or PERSISTENT. Valid values: *
-        # PERSISTENT * SCRATCH
+        # Indicates the type of the disk, either `SCRATCH` or `PERSISTENT`. Valid values:
+        # * `PERSISTENT` * `SCRATCH`
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -825,9 +826,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The ID of a supported feature. Read Enabling guest operating system features
-        # to see a list of available options. Valid values: * FEATURE_TYPE_UNSPECIFIED *
-        # MULTI_IP_SUBNET * SECURE_BOOT * UEFI_COMPATIBLE * VIRTIO_SCSI_MULTIQUEUE *
-        # WINDOWS
+        # to see a list of available options. Valid values: * `FEATURE_TYPE_UNSPECIFIED`
+        # * `MULTI_IP_SUBNET` * `SECURE_BOOT` * `UEFI_COMPATIBLE` * `
+        # VIRTIO_SCSI_MULTIQUEUE` * `WINDOWS`
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -847,8 +848,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Definition of a hardware accelerator. Note that not all combinations of `type`
-        # and `core_count` are valid. Check [GPUs on Compute Engine](/compute/docs/gpus/#
-        # gpus-list) to find a valid combination. TPUs are not supported.
+        # and `core_count` are valid. Check [GPUs on Compute Engine](https://cloud.
+        # google.com/compute/docs/gpus/#gpus-list) to find a valid combination. TPUs are
+        # not supported.
         # Corresponds to the JSON property `acceleratorConfig`
         # @return [Google::Apis::NotebooksV1::AcceleratorConfig]
         attr_accessor :accelerator_config
@@ -948,8 +950,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Required. The [Compute Engine machine type](/compute/docs/machine-types) of
-        # this instance.
+        # Required. The [Compute Engine machine type](https://cloud.google.com/compute/
+        # docs/machine-types) of this instance.
         # Corresponds to the JSON property `machineType`
         # @return [String]
         attr_accessor :machine_type
@@ -1033,7 +1035,8 @@ module Google
         attr_accessor :service_account_scopes
       
         # A set of Shielded Instance options. Check [Images using supported Shielded VM
-        # features] Not all combinations are valid.
+        # features](https://cloud.google.com/compute/docs/instances/modifying-shielded-
+        # vm). Not all combinations are valid.
         # Corresponds to the JSON property `shieldedInstanceConfig`
         # @return [Google::Apis::NotebooksV1::ShieldedInstanceConfig]
         attr_accessor :shielded_instance_config
@@ -1265,8 +1268,8 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # Locations that could not be reached. For example, ['us-west1-a', 'us-central1-
-        # b']. A ListInstancesResponse will only contain either instances or
+        # Locations that could not be reached. For example, `['us-west1-a', 'us-central1-
+        # b']`. A ListInstancesResponse will only contain either instances or
         # unreachables,
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
@@ -1349,8 +1352,8 @@ module Google
         # @return [Array<Google::Apis::NotebooksV1::Runtime>]
         attr_accessor :runtimes
       
-        # Locations that could not be reached. For example, ['us-west1', 'us-central1'].
-        # A ListRuntimesResponse will only contain either runtimes or unreachables,
+        # Locations that could not be reached. For example, `['us-west1', 'us-central1']`
+        # . A ListRuntimesResponse will only contain either runtimes or unreachables,
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
@@ -1420,7 +1423,7 @@ module Google
         alias_method :boot?, :boot
       
         # Optional. Output only. Specifies a unique device name of your choice that is
-        # reflected into the /dev/disk/by-id/google-* tree of a Linux operating system
+        # reflected into the `/dev/disk/by-id/google-*` tree of a Linux operating system
         # running within the instance. This name can be used to reference the device for
         # mounting, resizing, and so on, from within the instance. If not specified, the
         # server chooses a default device name to apply to this disk, in the form
@@ -1456,8 +1459,8 @@ module Google
         # SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and
         # the request will fail if you attempt to attach a persistent disk in any other
         # format than SCSI. Local SSDs can use either NVME or SCSI. For performance
-        # characteristics of SCSI over NVMe, see Local SSD performance. Valid values: *
-        # NVME * SCSI
+        # characteristics of SCSI over NVMe, see Local SSD performance. Valid values: * `
+        # NVME` * `SCSI`
         # Corresponds to the JSON property `interface`
         # @return [String]
         attr_accessor :interface
@@ -1473,9 +1476,9 @@ module Google
         # @return [Array<String>]
         attr_accessor :licenses
       
-        # The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not
-        # specified, the default is to attach the disk in READ_WRITE mode. Valid values:
-        # * READ_ONLY * READ_WRITE
+        # The mode in which to attach this disk, either `READ_WRITE` or `READ_ONLY`. If
+        # not specified, the default is to attach the disk in `READ_WRITE` mode. Valid
+        # values: * `READ_ONLY` * `READ_WRITE`
         # Corresponds to the JSON property `mode`
         # @return [String]
         attr_accessor :mode
@@ -1485,8 +1488,9 @@ module Google
         # @return [String]
         attr_accessor :source
       
-        # Specifies the type of the disk, either SCRATCH or PERSISTENT. If not specified,
-        # the default is PERSISTENT. Valid values: * PERSISTENT * SCRATCH
+        # Specifies the type of the disk, either `SCRATCH` or `PERSISTENT`. If not
+        # specified, the default is `PERSISTENT`. Valid values: * `PERSISTENT` * `
+        # SCRATCH`
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -1893,6 +1897,32 @@ module Google
         end
       end
       
+      # Request for reporting a Managed Notebook Event.
+      class ReportInstanceEventRequest
+        include Google::Apis::Core::Hashable
+      
+        # The definition of an Event for a managed / semi-managed notebook instance.
+        # Corresponds to the JSON property `event`
+        # @return [Google::Apis::NotebooksV1::Event]
+        attr_accessor :event
+      
+        # Required. The VM hardware token for authenticating the VM. https://cloud.
+        # google.com/compute/docs/instances/verifying-instance-identity
+        # Corresponds to the JSON property `vmId`
+        # @return [String]
+        attr_accessor :vm_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event = args[:event] if args.key?(:event)
+          @vm_id = args[:vm_id] if args.key?(:vm_id)
+        end
+      end
+      
       # Request for notebook instances to report information to Notebooks API.
       class ReportInstanceInfoRequest
         include Google::Apis::Core::Hashable
@@ -2013,8 +2043,8 @@ module Google
       class RollbackInstanceRequest
         include Google::Apis::Core::Hashable
       
-        # Required. The snapshot for rollback. Example: "projects/test-project/global/
-        # snapshots/krwlzipynril".
+        # Required. The snapshot for rollback. Example: `projects/test-project/global/
+        # snapshots/krwlzipynril`.
         # Corresponds to the JSON property `targetSnapshot`
         # @return [String]
         attr_accessor :target_snapshot
@@ -2047,6 +2077,16 @@ module Google
         # Corresponds to the JSON property `healthState`
         # @return [String]
         attr_accessor :health_state
+      
+        # Optional. The labels to associate with this Managed Notebook or Runtime. Label
+        # **keys** must contain 1 to 63 characters, and must conform to [RFC 1035](https:
+        # //www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if
+        # present, must contain 1 to 63 characters, and must conform to [RFC 1035](https:
+        # //www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with
+        # a cluster.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
       
         # Contains runtime daemon metrics, such as OS and kernels and sessions stats.
         # Corresponds to the JSON property `metrics`
@@ -2091,6 +2131,7 @@ module Google
           @access_config = args[:access_config] if args.key?(:access_config)
           @create_time = args[:create_time] if args.key?(:create_time)
           @health_state = args[:health_state] if args.key?(:health_state)
+          @labels = args[:labels] if args.key?(:labels)
           @metrics = args[:metrics] if args.key?(:metrics)
           @name = args[:name] if args.key?(:name)
           @software_config = args[:software_config] if args.key?(:software_config)
@@ -2172,9 +2213,9 @@ module Google
       
         # The ID of a supported feature. Read [Enabling guest operating system features](
         # https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-
-        # images#guest-os-features) to see a list of available options. Valid values: *
-        # FEATURE_TYPE_UNSPECIFIED * MULTI_IP_SUBNET * SECURE_BOOT * UEFI_COMPATIBLE *
-        # VIRTIO_SCSI_MULTIQUEUE * WINDOWS
+        # images#guest-os-features) to see a list of available options. Valid values: * `
+        # FEATURE_TYPE_UNSPECIFIED` * `MULTI_IP_SUBNET` * `SECURE_BOOT` * `
+        # UEFI_COMPATIBLE` * `VIRTIO_SCSI_MULTIQUEUE` * `WINDOWS`
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -2362,7 +2403,7 @@ module Google
         attr_accessor :create_time
       
         # Cron-tab formatted schedule by which the job will execute. Format: minute,
-        # hour, day of month, month, day of week, e.g. 0 0 * * WED = every Wednesday
+        # hour, day of month, month, day of week, e.g. `0 0 * * WED` = every Wednesday
         # More examples: https://crontab.guru/examples.html
         # Corresponds to the JSON property `cronSchedule`
         # @return [String]
@@ -2374,7 +2415,7 @@ module Google
         attr_accessor :description
       
         # Output only. Display name used for UI purposes. Name can only contain
-        # alphanumeric characters, hyphens '-', and underscores '_'.
+        # alphanumeric characters, hyphens `-`, and underscores `_`.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -2577,7 +2618,8 @@ module Google
       end
       
       # A set of Shielded Instance options. Check [Images using supported Shielded VM
-      # features] Not all combinations are valid.
+      # features](https://cloud.google.com/compute/docs/instances/modifying-shielded-
+      # vm). Not all combinations are valid.
       class ShieldedInstanceConfig
         include Google::Apis::Core::Hashable
       
@@ -2873,7 +2915,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A set of Shielded Instance options. Check [Images using supported Shielded VM
-        # features] Not all combinations are valid.
+        # features](https://cloud.google.com/compute/docs/instances/modifying-shielded-
+        # vm). Not all combinations are valid.
         # Corresponds to the JSON property `shieldedInstanceConfig`
         # @return [Google::Apis::NotebooksV1::ShieldedInstanceConfig]
         attr_accessor :shielded_instance_config
@@ -2922,7 +2965,7 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # Target VM Image. Format: ainotebooks-vm/project/image-name/name.
+        # Target VM Image. Format: `ainotebooks-vm/project/image-name/name`.
         # Corresponds to the JSON property `targetImage`
         # @return [String]
         attr_accessor :target_image
@@ -3033,18 +3076,19 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Environment variables. At most 100 environment variables can be specified and
-        # unique. Example: GCP_BUCKET=gs://my-bucket/samples/
+        # unique. Example: `GCP_BUCKET=gs://my-bucket/samples/`
         # Corresponds to the JSON property `env`
         # @return [Hash<String,String>]
         attr_accessor :env
       
-        # The full name of the Compute Engine [network](/compute/docs/networks-and-
-        # firewalls#networks) to which the Job should be peered. For example, `projects/
-        # 12345/global/networks/myVPC`. [Format](https://cloud.google.com/compute/docs/
-        # reference/rest/v1/networks/insert) is of the form `projects/`project`/global/
-        # networks/`network``. Where `project` is a project number, as in `12345`, and `
-        # network` is a network name. Private services access must already be configured
-        # for the network. If left unspecified, the job is not peered with any network.
+        # The full name of the Compute Engine [network](https://cloud.google.com/compute/
+        # docs/networks-and-firewalls#networks) to which the Job should be peered. For
+        # example, `projects/12345/global/networks/myVPC`. [Format](https://cloud.google.
+        # com/compute/docs/reference/rest/v1/networks/insert) is of the form `projects/`
+        # project`/global/networks/`network``. Where ``project`` is a project number, as
+        # in `12345`, and ``network`` is a network name. Private services access must
+        # already be configured for the network. If left unspecified, the job is not
+        # peered with any network.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
