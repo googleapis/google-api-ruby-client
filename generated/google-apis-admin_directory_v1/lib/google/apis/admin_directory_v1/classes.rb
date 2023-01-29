@@ -1914,8 +1914,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The payload for the command result. The following commands respond with a
-        # payload: - DEVICE_START_CRD_SESSION: Payload is a stringified JSON object in
-        # the form: ` "url": url `. The URL provides a link to the CRD session.
+        # payload: * `DEVICE_START_CRD_SESSION`: Payload is a stringified JSON object in
+        # the form: ` "url": url `. The URL provides a link to the Chrome Remote Desktop
+        # session.
         # Corresponds to the JSON property `commandResultPayload`
         # @return [String]
         attr_accessor :command_result_payload
@@ -1959,14 +1960,13 @@ module Google
         attr_accessor :command_type
       
         # The payload for the command, provide it only if command supports it. The
-        # following commands support adding payload: - SET_VOLUME: Payload is a
+        # following commands support adding payload: * `SET_VOLUME`: Payload is a
         # stringified JSON object in the form: ` "volume": 50 `. The volume has to be an
-        # integer in the range [0,100]. - DEVICE_START_CRD_SESSION: Payload is
+        # integer in the range [0,100]. * `DEVICE_START_CRD_SESSION`: Payload is
         # optionally a stringified JSON object in the form: ` "ackedUserPresence": true `
-        # . ackedUserPresence is a boolean. If a device is being used, ackedUserPresence
-        # must be set to true to acknowledge that you want to start a CRD session
-        # anyways. It is false by default, so a CRD command will fail if used on an
-        # active device without this field.
+        # . `ackedUserPresence` is a boolean. By default, `ackedUserPresence` is set to `
+        # false`. To start a Chrome Remote Desktop session for an active device, set `
+        # ackedUserPresence` to `true`.
         # Corresponds to the JSON property `payload`
         # @return [String]
         attr_accessor :payload
