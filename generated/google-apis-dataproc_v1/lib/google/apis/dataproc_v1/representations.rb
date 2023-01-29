@@ -310,6 +310,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Interval
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Job
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1030,6 +1036,10 @@ module Google
       class DiagnoseClusterRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :diagnosis_interval, as: 'diagnosisInterval', class: Google::Apis::DataprocV1::Interval, decorator: Google::Apis::DataprocV1::Interval::Representation
+      
+          property :job, as: 'job'
+          property :yarn_application_id, as: 'yarnApplicationId'
         end
       end
       
@@ -1301,6 +1311,14 @@ module Google
           hash :parameters, as: 'parameters'
           property :request_id, as: 'requestId'
           property :version, as: 'version'
+        end
+      end
+      
+      class Interval
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :start_time, as: 'startTime'
         end
       end
       

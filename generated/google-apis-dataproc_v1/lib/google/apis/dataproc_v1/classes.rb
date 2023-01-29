@@ -35,14 +35,14 @@ module Google
       
         # Full URL, partial URI, or short name of the accelerator type resource to
         # expose to this instance. See Compute Engine AcceleratorTypes (https://cloud.
-        # google.com/compute/docs/reference/beta/acceleratorTypes).Examples: https://www.
-        # googleapis.com/compute/beta/projects/[project_id]/zones/us-east1-a/
-        # acceleratorTypes/nvidia-tesla-k80 projects/[project_id]/zones/us-east1-a/
-        # acceleratorTypes/nvidia-tesla-k80 nvidia-tesla-k80Auto Zone Exception: If you
-        # are using the Dataproc Auto Zone Placement (https://cloud.google.com/dataproc/
-        # docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement)
-        # feature, you must use the short name of the accelerator type resource, for
-        # example, nvidia-tesla-k80.
+        # google.com/compute/docs/reference/v1/acceleratorTypes).Examples: https://www.
+        # googleapis.com/compute/v1/projects/[project_id]/zones/[zone]/acceleratorTypes/
+        # nvidia-tesla-k80 projects/[project_id]/zones/[zone]/acceleratorTypes/nvidia-
+        # tesla-k80 nvidia-tesla-k80Auto Zone Exception: If you are using the Dataproc
+        # Auto Zone Placement (https://cloud.google.com/dataproc/docs/concepts/
+        # configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must
+        # use the short name of the accelerator type resource, for example, nvidia-tesla-
+        # k80.
         # Corresponds to the JSON property `acceleratorTypeUri`
         # @return [String]
         attr_accessor :accelerator_type_uri
@@ -630,7 +630,7 @@ module Google
       
         # The Dataproc cluster config for a cluster that does not directly control the
         # underlying compute resources, such as a Dataproc-on-GKE cluster (https://cloud.
-        # google.com/dataproc/docs/guides/dpgke/dataproc-gke).
+        # google.com/dataproc/docs/guides/dpgke/dataproc-gke-overview).
         # Corresponds to the JSON property `virtualClusterConfig`
         # @return [Google::Apis::DataprocV1::VirtualClusterConfig]
         attr_accessor :virtual_cluster_config
@@ -1069,12 +1069,35 @@ module Google
       class DiagnoseClusterRequest
         include Google::Apis::Core::Hashable
       
+        # Represents a time interval, encoded as a Timestamp start (inclusive) and a
+        # Timestamp end (exclusive).The start must be less than or equal to the end.
+        # When the start equals the end, the interval is empty (matches no time). When
+        # both start and end are unspecified, the interval matches any time.
+        # Corresponds to the JSON property `diagnosisInterval`
+        # @return [Google::Apis::DataprocV1::Interval]
+        attr_accessor :diagnosis_interval
+      
+        # Optional. DEPRECATED Specifies the job on which diagnosis is to be performed.
+        # Format: projects/`project`/regions/`region`/jobs/`job`
+        # Corresponds to the JSON property `job`
+        # @return [String]
+        attr_accessor :job
+      
+        # Optional. DEPRECATED Specifies the yarn application on which diagnosis is to
+        # be performed.
+        # Corresponds to the JSON property `yarnApplicationId`
+        # @return [String]
+        attr_accessor :yarn_application_id
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @diagnosis_interval = args[:diagnosis_interval] if args.key?(:diagnosis_interval)
+          @job = args[:job] if args.key?(:job)
+          @yarn_application_id = args[:yarn_application_id] if args.key?(:yarn_application_id)
         end
       end
       
@@ -1404,8 +1427,8 @@ module Google
         # it exists. Cannot be a "Custom Subnet Network" (see Using Subnetworks (https://
         # cloud.google.com/compute/docs/subnetworks) for more information).A full URL,
         # partial URI, or short name are valid. Examples: https://www.googleapis.com/
-        # compute/v1/projects/[project_id]/regions/global/default projects/[project_id]/
-        # regions/global/default default
+        # compute/v1/projects/[project_id]/regions/[region]/default projects/[project_id]
+        # /regions/[region]/default default
         # Corresponds to the JSON property `networkUri`
         # @return [String]
         attr_accessor :network_uri
@@ -1459,8 +1482,8 @@ module Google
         # Optional. The Compute Engine subnetwork to be used for machine communications.
         # Cannot be specified with network_uri.A full URL, partial URI, or short name
         # are valid. Examples: https://www.googleapis.com/compute/v1/projects/[
-        # project_id]/regions/us-east1/subnetworks/sub0 projects/[project_id]/regions/us-
-        # east1/subnetworks/sub0 sub0
+        # project_id]/regions/[region]/subnetworks/sub0 projects/[project_id]/regions/[
+        # region]/subnetworks/sub0 sub0
         # Corresponds to the JSON property `subnetworkUri`
         # @return [String]
         attr_accessor :subnetwork_uri
@@ -1471,13 +1494,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :tags
       
-        # Optional. The zone where the Compute Engine cluster will be located. On a
-        # create request, it is required in the "global" region. If omitted in a non-
-        # global Dataproc region, the service will pick a zone in the corresponding
-        # Compute Engine region. On a get request, zone will always be present.A full
-        # URL, partial URI, or short name are valid. Examples: https://www.googleapis.
-        # com/compute/v1/projects/[project_id]/zones/[zone] projects/[project_id]/zones/[
-        # zone] us-central1-f
+        # Optional. The Compute Engine zone where the Dataproc cluster will be located.
+        # If omitted, the service will pick a zone in the cluster's Compute Engine
+        # region. On a get request, zone will always be present.A full URL, partial URI,
+        # or short name are valid. Examples: https://www.googleapis.com/compute/v1/
+        # projects/[project_id]/zones/[zone] projects/[project_id]/zones/[zone] [zone]
         # Corresponds to the JSON property `zoneUri`
         # @return [String]
         attr_accessor :zone_uri
@@ -2055,10 +2076,10 @@ module Google
       
         # Optional. The Compute Engine image resource used for cluster instances.The URI
         # can represent an image or image family.Image examples: https://www.googleapis.
-        # com/compute/beta/projects/[project_id]/global/images/[image-id] projects/[
+        # com/compute/v1/projects/[project_id]/global/images/[image-id] projects/[
         # project_id]/global/images/[image-id] image-idImage family examples. Dataproc
         # will use the most recent image from the family: https://www.googleapis.com/
-        # compute/beta/projects/[project_id]/global/images/family/[custom-image-family-
+        # compute/v1/projects/[project_id]/global/images/family/[custom-image-family-
         # name] projects/[project_id]/global/images/family/[custom-image-family-name]If
         # the URI is unspecified, it will be inferred from SoftwareConfig.image_version
         # or the system default.
@@ -2085,12 +2106,12 @@ module Google
       
         # Optional. The Compute Engine machine type used for cluster instances.A full
         # URL, partial URI, or short name are valid. Examples: https://www.googleapis.
-        # com/compute/v1/projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-
-        # 2 projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2 n1-
-        # standard-2Auto Zone Exception: If you are using the Dataproc Auto Zone
-        # Placement (https://cloud.google.com/dataproc/docs/concepts/configuring-
-        # clusters/auto-zone#using_auto_zone_placement) feature, you must use the short
-        # name of the machine type resource, for example, n1-standard-2.
+        # com/compute/v1/projects/[project_id]/zones/[zone]/machineTypes/n1-standard-2
+        # projects/[project_id]/zones/[zone]/machineTypes/n1-standard-2 n1-standard-
+        # 2Auto Zone Exception: If you are using the Dataproc Auto Zone Placement (https:
+        # //cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#
+        # using_auto_zone_placement) feature, you must use the short name of the machine
+        # type resource, for example, n1-standard-2.
         # Corresponds to the JSON property `machineTypeUri`
         # @return [String]
         attr_accessor :machine_type_uri
@@ -2215,6 +2236,36 @@ module Google
           @parameters = args[:parameters] if args.key?(:parameters)
           @request_id = args[:request_id] if args.key?(:request_id)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Represents a time interval, encoded as a Timestamp start (inclusive) and a
+      # Timestamp end (exclusive).The start must be less than or equal to the end.
+      # When the start equals the end, the interval is empty (matches no time). When
+      # both start and end are unspecified, the interval matches any time.
+      class Interval
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Exclusive end of the interval.If specified, a Timestamp matching
+        # this interval will have to be before the end.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Optional. Inclusive start of the interval.If specified, a Timestamp matching
+        # this interval will have to be the same or after the start.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
@@ -3174,9 +3225,9 @@ module Google
         # Required. The URI of a sole-tenant node group resource (https://cloud.google.
         # com/compute/docs/reference/rest/v1/nodeGroups) that the cluster will be
         # created on.A full URL, partial URI, or node group name are valid. Examples:
-        # https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-central1-
-        # a/nodeGroups/node-group-1 projects/[project_id]/zones/us-central1-a/nodeGroups/
-        # node-group-1 node-group-1
+        # https://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone]/
+        # nodeGroups/node-group-1 projects/[project_id]/zones/[zone]/nodeGroups/node-
+        # group-1 node-group-1
         # Corresponds to the JSON property `nodeGroupUri`
         # @return [String]
         attr_accessor :node_group_uri
@@ -5181,7 +5232,7 @@ module Google
       
       # The Dataproc cluster config for a cluster that does not directly control the
       # underlying compute resources, such as a Dataproc-on-GKE cluster (https://cloud.
-      # google.com/dataproc/docs/guides/dpgke/dataproc-gke).
+      # google.com/dataproc/docs/guides/dpgke/dataproc-gke-overview).
       class VirtualClusterConfig
         include Google::Apis::Core::Hashable
       
