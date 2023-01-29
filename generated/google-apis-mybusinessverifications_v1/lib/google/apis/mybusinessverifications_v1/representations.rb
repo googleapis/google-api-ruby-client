@@ -283,6 +283,7 @@ module Google
       class Verification
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :announcement, as: 'announcement'
           property :create_time, as: 'createTime'
           property :method_prop, as: 'method'
           property :name, as: 'name'
@@ -295,6 +296,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :address_data, as: 'addressData', class: Google::Apis::MybusinessverificationsV1::AddressVerificationData, decorator: Google::Apis::MybusinessverificationsV1::AddressVerificationData::Representation
       
+          property :announcement, as: 'announcement'
           property :email_data, as: 'emailData', class: Google::Apis::MybusinessverificationsV1::EmailVerificationData, decorator: Google::Apis::MybusinessverificationsV1::EmailVerificationData::Representation
       
           property :phone_number, as: 'phoneNumber'
