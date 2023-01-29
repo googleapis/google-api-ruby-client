@@ -266,7 +266,8 @@ module Google
         # @return [String]
         attr_accessor :disk_type
       
-        # The image type to use for NAP created node.
+        # The image type to use for NAP created node. Please see https://cloud.google.
+        # com/kubernetes-engine/docs/concepts/node-images for available image types.
         # Corresponds to the JSON property `imageType`
         # @return [String]
         attr_accessor :image_type
@@ -283,7 +284,7 @@ module Google
         # Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how
         # to specify min CPU platform](https://cloud.google.com/compute/docs/instances/
         # specify-min-cpu-platform). This field is deprecated, min_cpu_platform should
-        # be specified using https://cloud.google.com/requested-min-cpu-platform label
+        # be specified using `cloud.google.com/requested-min-cpu-platform` label
         # selector on the pod. To unset the min cpu platform field pass "automatic" as
         # field value.
         # Corresponds to the JSON property `minCpuPlatform`
@@ -2264,6 +2265,11 @@ module Google
         # @return [String]
         attr_accessor :services_ipv4_cidr_block
       
+        # Output only. [Output only] The services IPv6 CIDR block for the cluster.
+        # Corresponds to the JSON property `servicesIpv6CidrBlock`
+        # @return [String]
+        attr_accessor :services_ipv6_cidr_block
+      
         # The name of the secondary range to be used as for the services CIDR block. The
         # secondary range will be used for service ClusterIPs. This must be an existing
         # secondary range associated with the cluster subnetwork. This field is only
@@ -2276,6 +2282,11 @@ module Google
         # Corresponds to the JSON property `stackType`
         # @return [String]
         attr_accessor :stack_type
+      
+        # Output only. [Output only] The subnet's IPv6 CIDR block used by nodes and pods.
+        # Corresponds to the JSON property `subnetIpv6CidrBlock`
+        # @return [String]
+        attr_accessor :subnet_ipv6_cidr_block
       
         # A custom subnetwork name to be used if `create_subnetwork` is true. If this
         # field is empty, then an automatic name will be chosen for the new subnetwork.
@@ -2328,8 +2339,10 @@ module Google
           @node_ipv4_cidr_block = args[:node_ipv4_cidr_block] if args.key?(:node_ipv4_cidr_block)
           @services_ipv4_cidr = args[:services_ipv4_cidr] if args.key?(:services_ipv4_cidr)
           @services_ipv4_cidr_block = args[:services_ipv4_cidr_block] if args.key?(:services_ipv4_cidr_block)
+          @services_ipv6_cidr_block = args[:services_ipv6_cidr_block] if args.key?(:services_ipv6_cidr_block)
           @services_secondary_range_name = args[:services_secondary_range_name] if args.key?(:services_secondary_range_name)
           @stack_type = args[:stack_type] if args.key?(:stack_type)
+          @subnet_ipv6_cidr_block = args[:subnet_ipv6_cidr_block] if args.key?(:subnet_ipv6_cidr_block)
           @subnetwork_name = args[:subnetwork_name] if args.key?(:subnetwork_name)
           @tpu_ipv4_cidr_block = args[:tpu_ipv4_cidr_block] if args.key?(:tpu_ipv4_cidr_block)
           @use_ip_aliases = args[:use_ip_aliases] if args.key?(:use_ip_aliases)
@@ -3265,7 +3278,8 @@ module Google
         attr_accessor :gvnic
       
         # The image type to use for this node. Note that for a given image type, the
-        # latest version of it will be used.
+        # latest version of it will be used. Please see https://cloud.google.com/
+        # kubernetes-engine/docs/concepts/node-images for available image types.
         # Corresponds to the JSON property `imageType`
         # @return [String]
         attr_accessor :image_type
@@ -3831,7 +3845,9 @@ module Google
         # @return [Google::Apis::ContainerV1::UpgradeSettings]
         attr_accessor :upgrade_settings
       
-        # The version of the Kubernetes of this node.
+        # The version of Kubernetes running on this NodePool's nodes. If unspecified, it
+        # defaults as described [here](https://cloud.google.com/kubernetes-engine/
+        # versioning#specifying_node_version).
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
@@ -5863,7 +5879,9 @@ module Google
         # @return [Google::Apis::ContainerV1::VirtualNic]
         attr_accessor :gvnic
       
-        # Required. The desired image type for the node pool.
+        # Required. The desired image type for the node pool. Please see https://cloud.
+        # google.com/kubernetes-engine/docs/concepts/node-images for available image
+        # types.
         # Corresponds to the JSON property `imageType`
         # @return [String]
         attr_accessor :image_type
