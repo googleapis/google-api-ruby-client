@@ -162,7 +162,8 @@ module Google
         # locations/us-central1/keyRings/my-ring/cryptoKeys/my-key/cryptoKeyVersions/1"
         # This is a read-only field used to convey the specific configured
         # CryptoKeyVersion of kms_key that has been configured. It will be populated in
-        # cases where the CMEK settings are bound to a single key version.
+        # cases where the CMEK settings are bound to a single key version.If this field
+        # is populated, the kms_key is tied to a specific CryptoKeyVersion.
         # Corresponds to the JSON property `kmsKeyVersionName`
         # @return [String]
         attr_accessor :kms_key_version_name
@@ -735,7 +736,8 @@ module Google
         # BUCKET_ID]/views/[VIEW_ID] billingAccounts/[BILLING_ACCOUNT_ID]/locations/[
         # LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID] folders/[FOLDER_ID]/locations/
         # [LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]Projects listed in the
-        # project_ids field are added to this list.
+        # project_ids field are added to this list. A maximum of 100 resources may be
+        # specified in a single request.
         # Corresponds to the JSON property `resourceNames`
         # @return [Array<String>]
         attr_accessor :resource_names
