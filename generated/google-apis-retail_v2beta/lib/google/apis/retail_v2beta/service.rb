@@ -618,8 +618,7 @@ module Google
         # returned Operations will be obsolete after 1 day, and GetOperation API will
         # return NOT_FOUND afterwards. If conflicting updates are issued, the Operations
         # associated with the stale updates will not be marked as done until being
-        # obsolete. This feature is only available for users who have Retail Search
-        # enabled. Enable Retail Search on Cloud Console before using this feature.
+        # obsolete.
         # @param [String] product
         #   Required. Full resource name of Product, such as `projects/*/locations/global/
         #   catalogs/default_catalog/branches/default_branch/products/some_product_id`. If
@@ -667,9 +666,7 @@ module Google
         # inventories. The returned Operations will be obsolete after 1 day, and
         # GetOperation API will return NOT_FOUND afterwards. If conflicting updates are
         # issued, the Operations associated with the stale updates will not be marked as
-        # done until being obsolete. This feature is only available for users who have
-        # Retail Search enabled. Enable Retail Search on Cloud Console before using this
-        # feature.
+        # done until being obsolete.
         # @param [String] product
         #   Required. Full resource name of Product, such as `projects/*/locations/global/
         #   catalogs/default_catalog/branches/default_branch/products/some_product_id`. If
@@ -979,8 +976,7 @@ module Google
         # returned Operations will be obsolete after 1 day, and GetOperation API will
         # return NOT_FOUND afterwards. If conflicting updates are issued, the Operations
         # associated with the stale updates will not be marked as done until being
-        # obsolete. This feature is only available for users who have Retail Search
-        # enabled. Enable Retail Search on Cloud Console before using this feature.
+        # obsolete.
         # @param [String] product
         #   Required. Full resource name of Product, such as `projects/*/locations/global/
         #   catalogs/default_catalog/branches/default_branch/products/some_product_id`. If
@@ -1026,9 +1022,7 @@ module Google
         # inventories. The returned Operations will be obsolete after 1 day, and
         # GetOperation API will return NOT_FOUND afterwards. If conflicting updates are
         # issued, the Operations associated with the stale updates will not be marked as
-        # done until being obsolete. This feature is only available for users who have
-        # Retail Search enabled. Enable Retail Search on Cloud Console before using this
-        # feature.
+        # done until being obsolete.
         # @param [String] product
         #   Required. Full resource name of Product, such as `projects/*/locations/global/
         #   catalogs/default_catalog/branches/default_branch/products/some_product_id`. If
@@ -1084,9 +1078,7 @@ module Google
         # RemoveFulfillmentPlaces. The returned Operations is obsolete after one day,
         # and the GetOperation API returns `NOT_FOUND` afterwards. If conflicting
         # updates are issued, the Operations associated with the stale updates are not
-        # marked as done until they are obsolete. This feature is only available for
-        # users who have Retail Search enabled. Enable Retail Search on Cloud Console
-        # before using this feature.
+        # marked as done until they are obsolete.
         # @param [String] name
         #   Immutable. Full resource name of the product, such as `projects/*/locations/
         #   global/catalogs/default_catalog/branches/default_branch/products/product_id`.

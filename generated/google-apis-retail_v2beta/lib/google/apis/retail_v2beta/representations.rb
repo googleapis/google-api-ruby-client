@@ -88,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2CreateModelMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2ImportCompletionDataResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -113,6 +119,18 @@ module Google
       end
       
       class GoogleCloudRetailV2ImportUserEventsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2Model
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2ModelServingConfigList
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -173,6 +191,18 @@ module Google
       end
       
       class GoogleCloudRetailV2SetInventoryResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2TuneModelMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2TuneModelResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -581,6 +611,18 @@ module Google
       end
       
       class GoogleCloudRetailV2betaCustomAttribute
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2betaExperimentInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2betaExperimentInfoServingConfigExperiment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1285,6 +1327,13 @@ module Google
         end
       end
       
+      class GoogleCloudRetailV2CreateModelMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :model, as: 'model'
+        end
+      end
+      
       class GoogleCloudRetailV2ImportCompletionDataResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1331,6 +1380,34 @@ module Google
       
           property :import_summary, as: 'importSummary', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2UserEventImportSummary, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2UserEventImportSummary::Representation
       
+        end
+      end
+      
+      class GoogleCloudRetailV2Model
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :data_state, as: 'dataState'
+          property :display_name, as: 'displayName'
+          property :filtering_option, as: 'filteringOption'
+          property :last_tune_time, as: 'lastTuneTime'
+          property :name, as: 'name'
+          property :optimization_objective, as: 'optimizationObjective'
+          property :periodic_tuning_state, as: 'periodicTuningState'
+          collection :serving_config_lists, as: 'servingConfigLists', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2ModelServingConfigList, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2ModelServingConfigList::Representation
+      
+          property :serving_state, as: 'servingState'
+          property :training_state, as: 'trainingState'
+          property :tuning_operation, as: 'tuningOperation'
+          property :type, as: 'type'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudRetailV2ModelServingConfigList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :serving_config_ids, as: 'servingConfigIds'
         end
       end
       
@@ -1391,6 +1468,19 @@ module Google
       end
       
       class GoogleCloudRetailV2SetInventoryResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudRetailV2TuneModelMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :model, as: 'model'
+        end
+      end
+      
+      class GoogleCloudRetailV2TuneModelResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -1985,6 +2075,23 @@ module Google
           collection :numbers, as: 'numbers'
           property :searchable, as: 'searchable'
           collection :text, as: 'text'
+        end
+      end
+      
+      class GoogleCloudRetailV2betaExperimentInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :experiment_name, as: 'experimentName'
+          property :serving_config_experiment, as: 'servingConfigExperiment', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaExperimentInfoServingConfigExperiment, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaExperimentInfoServingConfigExperiment::Representation
+      
+        end
+      end
+      
+      class GoogleCloudRetailV2betaExperimentInfoServingConfigExperiment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :experiment_serving_config, as: 'experimentServingConfig'
+          property :original_serving_config, as: 'originalServingConfig'
         end
       end
       
@@ -2773,6 +2880,8 @@ module Google
           collection :applied_controls, as: 'appliedControls'
           property :attribution_token, as: 'attributionToken'
           property :corrected_query, as: 'correctedQuery'
+          collection :experiment_info, as: 'experimentInfo', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaExperimentInfo, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaExperimentInfo::Representation
+      
           collection :facets, as: 'facets', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchResponseFacet, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchResponseFacet::Representation
       
           collection :invalid_condition_boost_specs, as: 'invalidConditionBoostSpecs', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchRequestBoostSpecConditionBoostSpec, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchRequestBoostSpecConditionBoostSpec::Representation
