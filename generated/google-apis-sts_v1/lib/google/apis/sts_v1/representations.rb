@@ -152,6 +152,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :access_token, as: 'access_token'
           property :expires_in, as: 'expires_in'
+          property :id_token, as: 'id_token'
           property :refresh_token, as: 'refresh_token'
           property :scope, as: 'scope'
           property :token_type, as: 'token_type'
