@@ -475,6 +475,7 @@ module Google
       class PrivateClusterConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_projects, as: 'allowedProjects'
           property :cluster_hostname, as: 'clusterHostname'
           property :enable_private_endpoint, as: 'enablePrivateEndpoint'
           property :service_attachment_uri, as: 'serviceAttachmentUri'
