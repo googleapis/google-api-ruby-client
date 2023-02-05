@@ -196,6 +196,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConfigManagementPolicyControllerMigration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ConfigManagementPolicyControllerMonitoring
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -835,6 +841,13 @@ module Google
         end
       end
       
+      class ConfigManagementPolicyControllerMigration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :stage, as: 'stage'
+        end
+      end
+      
       class ConfigManagementPolicyControllerMonitoring
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -846,6 +859,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :deployment_state, as: 'deploymentState', class: Google::Apis::GkehubV1::ConfigManagementGatekeeperDeploymentState, decorator: Google::Apis::GkehubV1::ConfigManagementGatekeeperDeploymentState::Representation
+      
+          property :migration, as: 'migration', class: Google::Apis::GkehubV1::ConfigManagementPolicyControllerMigration, decorator: Google::Apis::GkehubV1::ConfigManagementPolicyControllerMigration::Representation
       
           property :version, as: 'version', class: Google::Apis::GkehubV1::ConfigManagementPolicyControllerVersion, decorator: Google::Apis::GkehubV1::ConfigManagementPolicyControllerVersion::Representation
       
