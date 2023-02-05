@@ -2692,6 +2692,48 @@ module Google
         end
       end
       
+      # Request for fetching the opt out status for the automated GA4 setup process.
+      class GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The UA property to get the opt out status. Note this request uses
+        # the internal property ID, not the tracking ID of the form UA-XXXXXX-YY. Format:
+        # properties/`internalWebPropertyId` Example: properties/1234
+        # Corresponds to the JSON property `property`
+        # @return [String]
+        attr_accessor :property
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @property = args[:property] if args.key?(:property)
+        end
+      end
+      
+      # Response message for fetching the opt out status for the automated GA4 setup
+      # process.
+      class GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutResponse
+        include Google::Apis::Core::Hashable
+      
+        # The opt out status for the UA property.
+        # Corresponds to the JSON property `optOut`
+        # @return [Boolean]
+        attr_accessor :opt_out
+        alias_method :opt_out?, :opt_out
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @opt_out = args[:opt_out] if args.key?(:opt_out)
+        end
+      end
+      
       # A link between a GA4 property and a Firebase project.
       class GoogleAnalyticsAdminV1alphaFirebaseLink
         include Google::Apis::Core::Hashable
@@ -3867,6 +3909,48 @@ module Google
         def update!(**args)
           @change_history_events = args[:change_history_events] if args.key?(:change_history_events)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Request for setting the opt out status for the automated GA4 setup process.
+      class GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutRequest
+        include Google::Apis::Core::Hashable
+      
+        # The status to set.
+        # Corresponds to the JSON property `optOut`
+        # @return [Boolean]
+        attr_accessor :opt_out
+        alias_method :opt_out?, :opt_out
+      
+        # Required. The UA property to set the opt out status. Note this request uses
+        # the internal property ID, not the tracking ID of the form UA-XXXXXX-YY. Format:
+        # properties/`internalWebPropertyId` Example: properties/1234
+        # Corresponds to the JSON property `property`
+        # @return [String]
+        attr_accessor :property
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @opt_out = args[:opt_out] if args.key?(:opt_out)
+          @property = args[:property] if args.key?(:property)
+        end
+      end
+      
+      # Response message for setting the opt out status for the automated GA4 setup
+      # process.
+      class GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       

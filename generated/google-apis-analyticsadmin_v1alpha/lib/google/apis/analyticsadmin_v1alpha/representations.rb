@@ -490,6 +490,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1alphaFirebaseLink
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -677,6 +689,18 @@ module Google
       end
       
       class GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1486,6 +1510,20 @@ module Google
         end
       end
       
+      class GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :property, as: 'property'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :opt_out, as: 'optOut'
+        end
+      end
+      
       class GoogleAnalyticsAdminV1alphaFirebaseLink
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1810,6 +1848,20 @@ module Google
           collection :change_history_events, as: 'changeHistoryEvents', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaChangeHistoryEvent, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaChangeHistoryEvent::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :opt_out, as: 'optOut'
+          property :property, as: 'property'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
