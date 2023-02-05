@@ -217,22 +217,22 @@ module Google
         # kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-
         # project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:`emailid``: An
         # email address that represents a Google group. For example, `admins@example.com`
-        # . * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
-        # identifier) representing a user that has been recently deleted. For example, `
-        # alice@example.com?uid=123456789012345678901`. If the user is recovered, this
-        # value reverts to `user:`emailid`` and the recovered user retains the role in
-        # the binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email
-        # address (plus unique identifier) representing a service account that has been
-        # recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
+        # . * `domain:`domain``: The G Suite domain (primary) that represents all the
+        # users of that domain. For example, `google.com` or `example.com`. * `deleted:
+        # user:`emailid`?uid=`uniqueid``: An email address (plus unique identifier)
+        # representing a user that has been recently deleted. For example, `alice@
+        # example.com?uid=123456789012345678901`. If the user is recovered, this value
+        # reverts to `user:`emailid`` and the recovered user retains the role in the
+        # binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email address
+        # (plus unique identifier) representing a service account that has been recently
+        # deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
         # 123456789012345678901`. If the service account is undeleted, this value
         # reverts to `serviceAccount:`emailid`` and the undeleted service account
         # retains the role in the binding. * `deleted:group:`emailid`?uid=`uniqueid``:
         # An email address (plus unique identifier) representing a Google group that has
         # been recently deleted. For example, `admins@example.com?uid=
         # 123456789012345678901`. If the group is recovered, this value reverts to `
-        # group:`emailid`` and the recovered group retains the role in the binding. * `
-        # domain:`domain``: The G Suite domain (primary) that represents all the users
-        # of that domain. For example, `google.com` or `example.com`.
+        # group:`emailid`` and the recovered group retains the role in the binding.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -1170,6 +1170,25 @@ module Google
         end
       end
       
+      # State for the migration of PolicyController from ACM -> PoCo Hub.
+      class ConfigManagementPolicyControllerMigration
+        include Google::Apis::Core::Hashable
+      
+        # Stage of the migration.
+        # Corresponds to the JSON property `stage`
+        # @return [String]
+        attr_accessor :stage
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @stage = args[:stage] if args.key?(:stage)
+        end
+      end
+      
       # PolicyControllerMonitoring specifies the backends Policy Controller should
       # export metrics to. For example, to specify metrics should be exported to Cloud
       # Monitoring and Prometheus, specify backends: ["cloudmonitoring", "prometheus"]
@@ -1201,6 +1220,11 @@ module Google
         # @return [Google::Apis::GkehubV1beta::ConfigManagementGatekeeperDeploymentState]
         attr_accessor :deployment_state
       
+        # State for the migration of PolicyController from ACM -> PoCo Hub.
+        # Corresponds to the JSON property `migration`
+        # @return [Google::Apis::GkehubV1beta::ConfigManagementPolicyControllerMigration]
+        attr_accessor :migration
+      
         # The build version of Gatekeeper Policy Controller is using.
         # Corresponds to the JSON property `version`
         # @return [Google::Apis::GkehubV1beta::ConfigManagementPolicyControllerVersion]
@@ -1213,6 +1237,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @deployment_state = args[:deployment_state] if args.key?(:deployment_state)
+          @migration = args[:migration] if args.key?(:migration)
           @version = args[:version] if args.key?(:version)
         end
       end
@@ -2526,6 +2551,17 @@ module Google
         # @return [Fixnum]
         attr_accessor :audit_interval_seconds
       
+        # The maximum number of audit violations to be stored in a constraint. If not
+        # set, the internal default (currently 20) will be used.
+        # Corresponds to the JSON property `constraintViolationLimit`
+        # @return [Fixnum]
+        attr_accessor :constraint_violation_limit
+      
+        # Map of deployment configs to deployments (“admission”, “audit”, “mutation”).
+        # Corresponds to the JSON property `deploymentConfigs`
+        # @return [Hash<String,Google::Apis::GkehubV1beta::PolicyControllerPolicyControllerDeploymentConfig>]
+        attr_accessor :deployment_configs
+      
         # The set of namespaces that are excluded from Policy Controller checks.
         # Namespaces do not need to currently exist on the cluster.
         # Corresponds to the JSON property `exemptableNamespaces`
@@ -2584,6 +2620,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @audit_interval_seconds = args[:audit_interval_seconds] if args.key?(:audit_interval_seconds)
+          @constraint_violation_limit = args[:constraint_violation_limit] if args.key?(:constraint_violation_limit)
+          @deployment_configs = args[:deployment_configs] if args.key?(:deployment_configs)
           @exemptable_namespaces = args[:exemptable_namespaces] if args.key?(:exemptable_namespaces)
           @install_spec = args[:install_spec] if args.key?(:install_spec)
           @log_denies_enabled = args[:log_denies_enabled] if args.key?(:log_denies_enabled)
@@ -2721,6 +2759,88 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bundles = args[:bundles] if args.key?(:bundles)
+        end
+      end
+      
+      # Deployment-specific configuration.
+      class PolicyControllerPolicyControllerDeploymentConfig
+        include Google::Apis::Core::Hashable
+      
+        # ResourceRequirements describes the compute resource requirements.
+        # Corresponds to the JSON property `containerResources`
+        # @return [Google::Apis::GkehubV1beta::PolicyControllerResourceRequirements]
+        attr_accessor :container_resources
+      
+        # Pod anti-affinity enablement.
+        # Corresponds to the JSON property `podAntiAffinity`
+        # @return [Boolean]
+        attr_accessor :pod_anti_affinity
+        alias_method :pod_anti_affinity?, :pod_anti_affinity
+      
+        # Pod replica count.
+        # Corresponds to the JSON property `replicaCount`
+        # @return [Fixnum]
+        attr_accessor :replica_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @container_resources = args[:container_resources] if args.key?(:container_resources)
+          @pod_anti_affinity = args[:pod_anti_affinity] if args.key?(:pod_anti_affinity)
+          @replica_count = args[:replica_count] if args.key?(:replica_count)
+        end
+      end
+      
+      # ResourceList contains container resource requirements.
+      class PolicyControllerResourceList
+        include Google::Apis::Core::Hashable
+      
+        # CPU requirement expressed in Kubernetes resource units.
+        # Corresponds to the JSON property `cpu`
+        # @return [String]
+        attr_accessor :cpu
+      
+        # Memory requirement expressed in Kubernetes resource units.
+        # Corresponds to the JSON property `memory`
+        # @return [String]
+        attr_accessor :memory
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cpu = args[:cpu] if args.key?(:cpu)
+          @memory = args[:memory] if args.key?(:memory)
+        end
+      end
+      
+      # ResourceRequirements describes the compute resource requirements.
+      class PolicyControllerResourceRequirements
+        include Google::Apis::Core::Hashable
+      
+        # ResourceList contains container resource requirements.
+        # Corresponds to the JSON property `limits`
+        # @return [Google::Apis::GkehubV1beta::PolicyControllerResourceList]
+        attr_accessor :limits
+      
+        # ResourceList contains container resource requirements.
+        # Corresponds to the JSON property `requests`
+        # @return [Google::Apis::GkehubV1beta::PolicyControllerResourceList]
+        attr_accessor :requests
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @limits = args[:limits] if args.key?(:limits)
+          @requests = args[:requests] if args.key?(:requests)
         end
       end
       
