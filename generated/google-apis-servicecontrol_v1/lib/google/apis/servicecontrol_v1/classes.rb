@@ -622,6 +622,11 @@ module Google
         # @return [Google::Apis::ServicecontrolV1::CheckInfo]
         attr_accessor :check_info
       
+        # Esf migration server override during chemist check v2 migration
+        # Corresponds to the JSON property `esfMigrationServerOverride`
+        # @return [Google::Apis::ServicecontrolV1::EsfMigrationServerOverride]
+        attr_accessor :esf_migration_server_override
+      
         # The same operation_id value used in the CheckRequest. Used for logging and
         # diagnostics purposes.
         # Corresponds to the JSON property `operationId`
@@ -651,6 +656,7 @@ module Google
         def update!(**args)
           @check_errors = args[:check_errors] if args.key?(:check_errors)
           @check_info = args[:check_info] if args.key?(:check_info)
+          @esf_migration_server_override = args[:esf_migration_server_override] if args.key?(:esf_migration_server_override)
           @operation_id = args[:operation_id] if args.key?(:operation_id)
           @quota_info = args[:quota_info] if args.key?(:quota_info)
           @service_config_id = args[:service_config_id] if args.key?(:service_config_id)
@@ -778,6 +784,25 @@ module Google
           @mean = args[:mean] if args.key?(:mean)
           @minimum = args[:minimum] if args.key?(:minimum)
           @sum_of_squared_deviation = args[:sum_of_squared_deviation] if args.key?(:sum_of_squared_deviation)
+        end
+      end
+      
+      # Esf migration server override during chemist check v2 migration
+      class EsfMigrationServerOverride
+        include Google::Apis::Core::Hashable
+      
+        # Esf migration override mode
+        # Corresponds to the JSON property `overrideMode`
+        # @return [String]
+        attr_accessor :override_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @override_mode = args[:override_mode] if args.key?(:override_mode)
         end
       end
       
