@@ -238,22 +238,22 @@ module Google
         # kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-
         # project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:`emailid``: An
         # email address that represents a Google group. For example, `admins@example.com`
-        # . * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
-        # identifier) representing a user that has been recently deleted. For example, `
-        # alice@example.com?uid=123456789012345678901`. If the user is recovered, this
-        # value reverts to `user:`emailid`` and the recovered user retains the role in
-        # the binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email
-        # address (plus unique identifier) representing a service account that has been
-        # recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
+        # . * `domain:`domain``: The G Suite domain (primary) that represents all the
+        # users of that domain. For example, `google.com` or `example.com`. * `deleted:
+        # user:`emailid`?uid=`uniqueid``: An email address (plus unique identifier)
+        # representing a user that has been recently deleted. For example, `alice@
+        # example.com?uid=123456789012345678901`. If the user is recovered, this value
+        # reverts to `user:`emailid`` and the recovered user retains the role in the
+        # binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email address
+        # (plus unique identifier) representing a service account that has been recently
+        # deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
         # 123456789012345678901`. If the service account is undeleted, this value
         # reverts to `serviceAccount:`emailid`` and the undeleted service account
         # retains the role in the binding. * `deleted:group:`emailid`?uid=`uniqueid``:
         # An email address (plus unique identifier) representing a Google group that has
         # been recently deleted. For example, `admins@example.com?uid=
         # 123456789012345678901`. If the group is recovered, this value reverts to `
-        # group:`emailid`` and the recovered group retains the role in the binding. * `
-        # domain:`domain``: The G Suite domain (primary) that represents all the users
-        # of that domain. For example, `google.com` or `example.com`.
+        # group:`emailid`` and the recovered group retains the role in the binding.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -1103,6 +1103,25 @@ module Google
         end
       end
       
+      # State for the migration of PolicyController from ACM -> PoCo Hub.
+      class ConfigManagementPolicyControllerMigration
+        include Google::Apis::Core::Hashable
+      
+        # Stage of the migration.
+        # Corresponds to the JSON property `stage`
+        # @return [String]
+        attr_accessor :stage
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @stage = args[:stage] if args.key?(:stage)
+        end
+      end
+      
       # PolicyControllerMonitoring specifies the backends Policy Controller should
       # export metrics to. For example, to specify metrics should be exported to Cloud
       # Monitoring and Prometheus, specify backends: ["cloudmonitoring", "prometheus"]
@@ -1134,6 +1153,11 @@ module Google
         # @return [Google::Apis::GkehubV1::ConfigManagementGatekeeperDeploymentState]
         attr_accessor :deployment_state
       
+        # State for the migration of PolicyController from ACM -> PoCo Hub.
+        # Corresponds to the JSON property `migration`
+        # @return [Google::Apis::GkehubV1::ConfigManagementPolicyControllerMigration]
+        attr_accessor :migration
+      
         # The build version of Gatekeeper Policy Controller is using.
         # Corresponds to the JSON property `version`
         # @return [Google::Apis::GkehubV1::ConfigManagementPolicyControllerVersion]
@@ -1146,6 +1170,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @deployment_state = args[:deployment_state] if args.key?(:deployment_state)
+          @migration = args[:migration] if args.key?(:migration)
           @version = args[:version] if args.key?(:version)
         end
       end
