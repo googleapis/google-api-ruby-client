@@ -486,6 +486,45 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Lists exemplars relevant to a given PromQL query,
+        # @param [String] name
+        #   The project on which to execute the request. Data associcated with the project'
+        #   s workspace stored under the The format is: projects/PROJECT_ID_OR_NUMBER.
+        #   Open source API but used as a request path prefix to distinguish different
+        #   virtual Prometheus instances of Google Prometheus Engine.
+        # @param [String] location
+        #   Location of the resource information. Has to be "global" now.
+        # @param [Google::Apis::MonitoringV1::QueryExemplarsRequest] query_exemplars_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MonitoringV1::HttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MonitoringV1::HttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def query_v1_exemplars(name, location, query_exemplars_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}/location/{location}/prometheus/api/v1/query_exemplars', options)
+          command.request_representation = Google::Apis::MonitoringV1::QueryExemplarsRequest::Representation
+          command.request_object = query_exemplars_request_object
+          command.response_representation = Google::Apis::MonitoringV1::HttpBody::Representation
+          command.response_class = Google::Apis::MonitoringV1::HttpBody
+          command.params['name'] = name unless name.nil?
+          command.params['location'] = location unless location.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Evaluate a PromQL query with start, end time range.
         # @param [String] name
         #   The project on which to execute the request. Data associcated with the project'

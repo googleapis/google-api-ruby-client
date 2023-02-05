@@ -1041,6 +1041,41 @@ module Google
         end
       end
       
+      # QueryExemplarsRequest holds all parameters of the Prometheus upstream API for
+      # querying exemplars.
+      class QueryExemplarsRequest
+        include Google::Apis::Core::Hashable
+      
+        # The end time to evaluate the query for. Either floating point UNIX seconds or
+        # RFC3339 formatted timestamp.
+        # Corresponds to the JSON property `end`
+        # @return [String]
+        attr_accessor :end
+      
+        # A PromQL query string. Query lanauge documentation: https://prometheus.io/docs/
+        # prometheus/latest/querying/basics/.
+        # Corresponds to the JSON property `query`
+        # @return [String]
+        attr_accessor :query
+      
+        # The start time to evaluate the query for. Either floating point UNIX seconds
+        # or RFC3339 formatted timestamp.
+        # Corresponds to the JSON property `start`
+        # @return [String]
+        attr_accessor :start
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end = args[:end] if args.key?(:end)
+          @query = args[:query] if args.key?(:query)
+          @start = args[:start] if args.key?(:start)
+        end
+      end
+      
       # QueryInstantRequest holds all parameters of the Prometheus upstream instant
       # query API plus GCM specific parameters.
       class QueryInstantRequest

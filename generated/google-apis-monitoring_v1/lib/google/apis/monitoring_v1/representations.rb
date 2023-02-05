@@ -190,6 +190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class QueryExemplarsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class QueryInstantRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -593,6 +599,15 @@ module Google
           property :direction, as: 'direction'
           property :num_time_series, as: 'numTimeSeries'
           property :ranking_method, as: 'rankingMethod'
+        end
+      end
+      
+      class QueryExemplarsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end, as: 'end'
+          property :query, as: 'query'
+          property :start, as: 'start'
         end
       end
       
