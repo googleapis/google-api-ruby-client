@@ -1652,7 +1652,7 @@ module Google
         attr_accessor :read_time
       
         # The identifier of the transaction that was started as part of this Lookup
-        # request. Set only when ReadOptions.begin_transaction was set in LookupRequest.
+        # request. Set only when ReadOptions.new_transaction was set in LookupRequest.
         # read_options.
         # Corresponds to the JSON property `transaction`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
@@ -2345,8 +2345,8 @@ module Google
         attr_accessor :query
       
         # The identifier of the transaction that was started as part of this
-        # RunAggregationQuery request. Set only when ReadOptions.begin_transaction was
-        # set in RunAggregationQueryRequest.read_options.
+        # RunAggregationQuery request. Set only when ReadOptions.new_transaction was set
+        # in RunAggregationQueryRequest.read_options.
         # Corresponds to the JSON property `transaction`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -2432,8 +2432,8 @@ module Google
         attr_accessor :query
       
         # The identifier of the transaction that was started as part of this RunQuery
-        # request. Set only when ReadOptions.begin_transaction was set in
-        # RunQueryRequest.read_options.
+        # request. Set only when ReadOptions.new_transaction was set in RunQueryRequest.
+        # read_options.
         # Corresponds to the JSON property `transaction`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
