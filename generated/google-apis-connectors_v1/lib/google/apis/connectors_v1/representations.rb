@@ -410,6 +410,8 @@ module Google
           property :auth_type, as: 'authType'
           collection :config_variable_templates, as: 'configVariableTemplates', class: Google::Apis::ConnectorsV1::ConfigVariableTemplate, decorator: Google::Apis::ConnectorsV1::ConfigVariableTemplate::Representation
       
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
         end
       end
       
