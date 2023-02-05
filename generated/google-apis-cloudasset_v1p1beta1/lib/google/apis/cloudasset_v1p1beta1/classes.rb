@@ -164,22 +164,22 @@ module Google
         # kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-
         # project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:`emailid``: An
         # email address that represents a Google group. For example, `admins@example.com`
-        # . * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
-        # identifier) representing a user that has been recently deleted. For example, `
-        # alice@example.com?uid=123456789012345678901`. If the user is recovered, this
-        # value reverts to `user:`emailid`` and the recovered user retains the role in
-        # the binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email
-        # address (plus unique identifier) representing a service account that has been
-        # recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
+        # . * `domain:`domain``: The G Suite domain (primary) that represents all the
+        # users of that domain. For example, `google.com` or `example.com`. * `deleted:
+        # user:`emailid`?uid=`uniqueid``: An email address (plus unique identifier)
+        # representing a user that has been recently deleted. For example, `alice@
+        # example.com?uid=123456789012345678901`. If the user is recovered, this value
+        # reverts to `user:`emailid`` and the recovered user retains the role in the
+        # binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email address
+        # (plus unique identifier) representing a service account that has been recently
+        # deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
         # 123456789012345678901`. If the service account is undeleted, this value
         # reverts to `serviceAccount:`emailid`` and the undeleted service account
         # retains the role in the binding. * `deleted:group:`emailid`?uid=`uniqueid``:
         # An email address (plus unique identifier) representing a Google group that has
         # been recently deleted. For example, `admins@example.com?uid=
         # 123456789012345678901`. If the group is recovered, this value reverts to `
-        # group:`emailid`` and the recovered group retains the role in the binding. * `
-        # domain:`domain``: The G Suite domain (primary) that represents all the users
-        # of that domain. For example, `google.com` or `example.com`.
+        # group:`emailid`` and the recovered group retains the role in the binding.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -384,9 +384,10 @@ module Google
         # has a target outside of the `ServicePerimeter`, the request will be blocked.
         # Otherwise the request is allowed. There are two types of Service Perimeter -
         # Regular and Bridge. Regular Service Perimeters cannot overlap, a single Google
-        # Cloud project can only belong to a single regular Service Perimeter. Service
-        # Perimeter Bridges can contain only Google Cloud projects as members, a single
-        # Google Cloud project may belong to multiple Service Perimeter Bridges.
+        # Cloud project or VPC network can only belong to a single regular Service
+        # Perimeter. Service Perimeter Bridges can contain only Google Cloud projects as
+        # members, a single Google Cloud project may belong to multiple Service
+        # Perimeter Bridges.
         # Corresponds to the JSON property `servicePerimeter`
         # @return [Google::Apis::CloudassetV1p1beta1::GoogleIdentityAccesscontextmanagerV1ServicePerimeter]
         attr_accessor :service_perimeter
@@ -1442,10 +1443,10 @@ module Google
         # A Google Cloud resource that is allowed to ingress the perimeter. Requests
         # from these resources will be allowed to access perimeter data. Currently only
         # projects and VPCs are allowed. Project format: `projects/`project_number`` VPC
-        # format: `//compute.googleapis.com/projects/`PROJECT_ID`/global/networks/`NAME``
-        # . The project may be in any Google Cloud organization, not just the
-        # organization that the perimeter is defined in. `*` is not allowed, the case of
-        # allowing all Google Cloud resources only is not supported.
+        # network format: `//compute.googleapis.com/projects/`PROJECT_ID`/global/
+        # networks/`NAME``. The project may be in any Google Cloud organization, not
+        # just the organization that the perimeter is defined in. `*` is not allowed,
+        # the case of allowing all Google Cloud resources only is not supported.
         # Corresponds to the JSON property `resource`
         # @return [String]
         attr_accessor :resource
@@ -1564,9 +1565,10 @@ module Google
       # has a target outside of the `ServicePerimeter`, the request will be blocked.
       # Otherwise the request is allowed. There are two types of Service Perimeter -
       # Regular and Bridge. Regular Service Perimeters cannot overlap, a single Google
-      # Cloud project can only belong to a single regular Service Perimeter. Service
-      # Perimeter Bridges can contain only Google Cloud projects as members, a single
-      # Google Cloud project may belong to multiple Service Perimeter Bridges.
+      # Cloud project or VPC network can only belong to a single regular Service
+      # Perimeter. Service Perimeter Bridges can contain only Google Cloud projects as
+      # members, a single Google Cloud project may belong to multiple Service
+      # Perimeter Bridges.
       class GoogleIdentityAccesscontextmanagerV1ServicePerimeter
         include Google::Apis::Core::Hashable
       
@@ -1583,11 +1585,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Perimeter type indicator. A single project is allowed to be a member of single
-        # regular perimeter, but multiple service perimeter bridges. A project cannot be
-        # a included in a perimeter bridge without being included in regular perimeter.
-        # For perimeter bridges, the restricted service list as well as access level
-        # lists must be empty.
+        # Perimeter type indicator. A single project or VPC network is allowed to be a
+        # member of single regular perimeter, but multiple service perimeter bridges. A
+        # project cannot be a included in a perimeter bridge without being included in
+        # regular perimeter. For perimeter bridges, the restricted service list as well
+        # as access level lists must be empty.
         # Corresponds to the JSON property `perimeterType`
         # @return [String]
         attr_accessor :perimeter_type
@@ -1671,8 +1673,8 @@ module Google
       
         # A list of Google Cloud resources that are inside of the service perimeter.
         # Currently only projects and VPCs are allowed. Project format: `projects/`
-        # project_number`` VPC format: `//compute.googleapis.com/projects/`PROJECT_ID`/
-        # global/networks/`NAME``.
+        # project_number`` VPC network format: `//compute.googleapis.com/projects/`
+        # PROJECT_ID`/global/networks/`NAME``.
         # Corresponds to the JSON property `resources`
         # @return [Array<String>]
         attr_accessor :resources
