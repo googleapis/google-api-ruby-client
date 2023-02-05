@@ -388,6 +388,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WorkspaceCompilationOverrides
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WriteFileRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -888,6 +894,8 @@ module Google
       
           property :name, as: 'name'
           property :npmrc_environment_variables_secret_version, as: 'npmrcEnvironmentVariablesSecretVersion'
+          property :workspace_compilation_overrides, as: 'workspaceCompilationOverrides', class: Google::Apis::DataformV1beta1::WorkspaceCompilationOverrides, decorator: Google::Apis::DataformV1beta1::WorkspaceCompilationOverrides::Representation
+      
         end
       end
       
@@ -993,6 +1001,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
+        end
+      end
+      
+      class WorkspaceCompilationOverrides
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_database, as: 'defaultDatabase'
+          property :schema_suffix, as: 'schemaSuffix'
+          property :table_prefix, as: 'tablePrefix'
         end
       end
       

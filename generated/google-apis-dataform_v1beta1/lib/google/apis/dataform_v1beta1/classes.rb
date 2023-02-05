@@ -1663,6 +1663,18 @@ module Google
         # @return [String]
         attr_accessor :npmrc_environment_variables_secret_version
       
+        # Configures workspace compilation overrides for a repository. Primarily used by
+        # the UI (`console.cloud.google.com`). `schema_suffix` and `table_prefix` can
+        # have a special expression - `$`workspaceName``, which refers to the workspace
+        # name from which the compilation results will be created. API callers are
+        # expected to resolve the expression in these overrides and provide them
+        # explicitly in `code_compilation_config` (https://cloud.google.com/dataform/
+        # reference/rest/v1beta1/projects.locations.repositories.compilationResults#
+        # codecompilationconfig) when creating workspace-scoped compilation results.
+        # Corresponds to the JSON property `workspaceCompilationOverrides`
+        # @return [Google::Apis::DataformV1beta1::WorkspaceCompilationOverrides]
+        attr_accessor :workspace_compilation_overrides
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1672,6 +1684,7 @@ module Google
           @git_remote_settings = args[:git_remote_settings] if args.key?(:git_remote_settings)
           @name = args[:name] if args.key?(:name)
           @npmrc_environment_variables_secret_version = args[:npmrc_environment_variables_secret_version] if args.key?(:npmrc_environment_variables_secret_version)
+          @workspace_compilation_overrides = args[:workspace_compilation_overrides] if args.key?(:workspace_compilation_overrides)
         end
       end
       
@@ -2057,6 +2070,45 @@ module Google
         # Update properties of this object
         def update!(**args)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Configures workspace compilation overrides for a repository. Primarily used by
+      # the UI (`console.cloud.google.com`). `schema_suffix` and `table_prefix` can
+      # have a special expression - `$`workspaceName``, which refers to the workspace
+      # name from which the compilation results will be created. API callers are
+      # expected to resolve the expression in these overrides and provide them
+      # explicitly in `code_compilation_config` (https://cloud.google.com/dataform/
+      # reference/rest/v1beta1/projects.locations.repositories.compilationResults#
+      # codecompilationconfig) when creating workspace-scoped compilation results.
+      class WorkspaceCompilationOverrides
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The default database (Google Cloud project ID).
+        # Corresponds to the JSON property `defaultDatabase`
+        # @return [String]
+        attr_accessor :default_database
+      
+        # Optional. The suffix that should be appended to all schema (BigQuery dataset
+        # ID) names.
+        # Corresponds to the JSON property `schemaSuffix`
+        # @return [String]
+        attr_accessor :schema_suffix
+      
+        # Optional. The prefix that should be prepended to all table names.
+        # Corresponds to the JSON property `tablePrefix`
+        # @return [String]
+        attr_accessor :table_prefix
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_database = args[:default_database] if args.key?(:default_database)
+          @schema_suffix = args[:schema_suffix] if args.key?(:schema_suffix)
+          @table_prefix = args[:table_prefix] if args.key?(:table_prefix)
         end
       end
       
