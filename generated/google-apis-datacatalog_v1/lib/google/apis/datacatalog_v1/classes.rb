@@ -60,22 +60,22 @@ module Google
         # kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-
         # project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:`emailid``: An
         # email address that represents a Google group. For example, `admins@example.com`
-        # . * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
-        # identifier) representing a user that has been recently deleted. For example, `
-        # alice@example.com?uid=123456789012345678901`. If the user is recovered, this
-        # value reverts to `user:`emailid`` and the recovered user retains the role in
-        # the binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email
-        # address (plus unique identifier) representing a service account that has been
-        # recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
+        # . * `domain:`domain``: The G Suite domain (primary) that represents all the
+        # users of that domain. For example, `google.com` or `example.com`. * `deleted:
+        # user:`emailid`?uid=`uniqueid``: An email address (plus unique identifier)
+        # representing a user that has been recently deleted. For example, `alice@
+        # example.com?uid=123456789012345678901`. If the user is recovered, this value
+        # reverts to `user:`emailid`` and the recovered user retains the role in the
+        # binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email address
+        # (plus unique identifier) representing a service account that has been recently
+        # deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
         # 123456789012345678901`. If the service account is undeleted, this value
         # reverts to `serviceAccount:`emailid`` and the undeleted service account
         # retains the role in the binding. * `deleted:group:`emailid`?uid=`uniqueid``:
         # An email address (plus unique identifier) representing a Google group that has
         # been recently deleted. For example, `admins@example.com?uid=
         # 123456789012345678901`. If the group is recovered, this value reverts to `
-        # group:`emailid`` and the recovered group retains the role in the binding. * `
-        # domain:`domain``: The G Suite domain (primary) that represents all the users
-        # of that domain. For example, `google.com` or `example.com`.
+        # group:`emailid`` and the recovered group retains the role in the binding.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -1882,6 +1882,100 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
           @parent_policy_tag = args[:parent_policy_tag] if args.key?(:parent_policy_tag)
+        end
+      end
+      
+      # Metadata message for long-running operation returned by the ReconcileTags.
+      class GoogleCloudDatacatalogV1ReconcileTagsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Map that maps name of each tagged column (or empty string in case of sole
+        # entry) to tagging operation status.
+        # Corresponds to the JSON property `errors`
+        # @return [Hash<String,Google::Apis::DatacatalogV1::Status>]
+        attr_accessor :errors
+      
+        # State of the reconciliation operation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @errors = args[:errors] if args.key?(:errors)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Request message for ReconcileTags.
+      class GoogleCloudDatacatalogV1ReconcileTagsRequest
+        include Google::Apis::Core::Hashable
+      
+        # If set to true deletes from the entry tags related to given tag template and
+        # not mentioned in the tags source. If set to false only creates and updates of
+        # the tags mentioned in the source will take place. Other tags in that entry
+        # using the same tag template will be retained instead of being deleted.
+        # Corresponds to the JSON property `forceDeleteMissing`
+        # @return [Boolean]
+        attr_accessor :force_delete_missing
+        alias_method :force_delete_missing?, :force_delete_missing
+      
+        # Required. The name of the tag template, that will be used for reconciliation.
+        # Corresponds to the JSON property `tagTemplate`
+        # @return [String]
+        attr_accessor :tag_template
+      
+        # A list of tags to be applied on a given entry. Individual tags may specify tag
+        # template, but it must be the same as the one in the ReconcileTagsRequest. The
+        # sole entry and each of its columns must be mentioned at most once.
+        # Corresponds to the JSON property `tags`
+        # @return [Array<Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1Tag>]
+        attr_accessor :tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @force_delete_missing = args[:force_delete_missing] if args.key?(:force_delete_missing)
+          @tag_template = args[:tag_template] if args.key?(:tag_template)
+          @tags = args[:tags] if args.key?(:tags)
+        end
+      end
+      
+      # Request message for long-running operation returned by the ReconcileTags.
+      class GoogleCloudDatacatalogV1ReconcileTagsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Number of tags created in the request.
+        # Corresponds to the JSON property `createdTagsCount`
+        # @return [Fixnum]
+        attr_accessor :created_tags_count
+      
+        # Number of tags deleted in the request.
+        # Corresponds to the JSON property `deletedTagsCount`
+        # @return [Fixnum]
+        attr_accessor :deleted_tags_count
+      
+        # Number of tags updated in the request.
+        # Corresponds to the JSON property `updatedTagsCount`
+        # @return [Fixnum]
+        attr_accessor :updated_tags_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @created_tags_count = args[:created_tags_count] if args.key?(:created_tags_count)
+          @deleted_tags_count = args[:deleted_tags_count] if args.key?(:deleted_tags_count)
+          @updated_tags_count = args[:updated_tags_count] if args.key?(:updated_tags_count)
         end
       end
       

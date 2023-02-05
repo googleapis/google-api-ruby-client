@@ -1089,6 +1089,45 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Reconciles tags created with a given tag template on a given Entry.
+        # Reconciliation is an operation that given a list of tags creates or updates
+        # them on the entry. Additionally, the operation is also able to delete tags not
+        # mentioned in the tag list. It can be achieved by setting force_delete_missing
+        # parameter. Reconciliation is a long-running operation done in the background,
+        # so this method returns long-running operation resource. The resource can be
+        # queried with Operations.GetOperation which contains metadata and response.
+        # @param [String] parent
+        #   Required. Name of Entry to be tagged.
+        # @param [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1ReconcileTagsRequest] google_cloud_datacatalog_v1_reconcile_tags_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatacatalogV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatacatalogV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def reconcile_project_location_entry_group_entry_tag(parent, google_cloud_datacatalog_v1_reconcile_tags_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/tags:reconcile', options)
+          command.request_representation = Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1ReconcileTagsRequest::Representation
+          command.request_object = google_cloud_datacatalog_v1_reconcile_tags_request_object
+          command.response_representation = Google::Apis::DatacatalogV1::Operation::Representation
+          command.response_class = Google::Apis::DatacatalogV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a tag and assigns it to: * An Entry if the method name is `projects.
         # locations.entryGroups.entries.tags.create`. * Or EntryGroupif the method name
         # is `projects.locations.entryGroups.tags.create`. Note: The project identified
