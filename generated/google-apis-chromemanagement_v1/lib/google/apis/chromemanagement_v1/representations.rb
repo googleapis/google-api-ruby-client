@@ -952,6 +952,8 @@ module Google
           property :org_unit_id, as: 'orgUnitId'
           collection :os_update_status, as: 'osUpdateStatus', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1OsUpdateStatus, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1OsUpdateStatus::Representation
       
+          collection :peripherals_report, as: 'peripheralsReport', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1PeripheralsReport, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1PeripheralsReport::Representation
+      
           property :serial_number, as: 'serialNumber'
           property :storage_info, as: 'storageInfo', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1StorageInfo, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1StorageInfo::Representation
       
