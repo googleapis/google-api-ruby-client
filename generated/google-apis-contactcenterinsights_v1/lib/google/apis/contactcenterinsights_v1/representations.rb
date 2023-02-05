@@ -298,6 +298,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContactcenterinsightsV1IngestConversationsMetadataIngestConversationsStats
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContactcenterinsightsV1IngestConversationsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -623,6 +629,12 @@ module Google
       end
       
       class GoogleCloudContactcenterinsightsV1alpha1IngestConversationsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1IngestConversationsMetadataIngestConversationsStats
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1213,10 +1225,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :end_time, as: 'endTime'
+          property :ingest_conversations_stats, as: 'ingestConversationsStats', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1IngestConversationsMetadataIngestConversationsStats, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1IngestConversationsMetadataIngestConversationsStats::Representation
+      
           collection :partial_errors, as: 'partialErrors', class: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus, decorator: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus::Representation
       
           property :request, as: 'request', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1IngestConversationsRequest, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1IngestConversationsRequest::Representation
       
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1IngestConversationsMetadataIngestConversationsStats
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :duplicates_skipped_count, as: 'duplicatesSkippedCount'
+          property :failed_ingest_count, as: 'failedIngestCount'
+          property :processed_object_count, as: 'processedObjectCount'
+          property :successful_ingest_count, as: 'successfulIngestCount'
         end
       end
       
@@ -1743,10 +1767,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :end_time, as: 'endTime'
+          property :ingest_conversations_stats, as: 'ingestConversationsStats', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1IngestConversationsMetadataIngestConversationsStats, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1IngestConversationsMetadataIngestConversationsStats::Representation
+      
           collection :partial_errors, as: 'partialErrors', class: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus, decorator: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus::Representation
       
           property :request, as: 'request', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequest, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequest::Representation
       
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1IngestConversationsMetadataIngestConversationsStats
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :duplicates_skipped_count, as: 'duplicatesSkippedCount'
+          property :failed_ingest_count, as: 'failedIngestCount'
+          property :processed_object_count, as: 'processedObjectCount'
+          property :successful_ingest_count, as: 'successfulIngestCount'
         end
       end
       
