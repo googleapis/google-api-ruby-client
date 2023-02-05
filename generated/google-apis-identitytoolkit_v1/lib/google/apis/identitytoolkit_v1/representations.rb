@@ -889,11 +889,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
+          property :game_player_id, as: 'gamePlayerId'
           property :id_token, as: 'idToken'
           property :player_id, as: 'playerId'
           property :public_key_url, as: 'publicKeyUrl'
           property :salt, as: 'salt'
           property :signature, as: 'signature'
+          property :team_player_id, as: 'teamPlayerId'
           property :tenant_id, as: 'tenantId'
           property :timestamp, :numeric_string => true, as: 'timestamp'
         end
@@ -904,11 +906,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
           property :expires_in, :numeric_string => true, as: 'expiresIn'
+          property :game_player_id, as: 'gamePlayerId'
           property :id_token, as: 'idToken'
           property :is_new_user, as: 'isNewUser'
           property :local_id, as: 'localId'
           property :player_id, as: 'playerId'
           property :refresh_token, as: 'refreshToken'
+          property :team_player_id, as: 'teamPlayerId'
         end
       end
       

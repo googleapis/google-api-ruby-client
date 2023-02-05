@@ -2278,6 +2278,13 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # The user's Game Center game player ID. A unique identifier for a player of the
+        # game. https://developer.apple.com/documentation/gamekit/gkplayer/3113960-
+        # gameplayerid
+        # Corresponds to the JSON property `gamePlayerId`
+        # @return [String]
+        attr_accessor :game_player_id
+      
         # A valid ID token for an Identity Platform account. If present, this request
         # will link the Game Center player ID to the account represented by this ID
         # token.
@@ -2306,6 +2313,13 @@ module Google
         # @return [String]
         attr_accessor :signature
       
+        # The user's Game Center team player ID. A unique identifier for a player of all
+        # the games that you distribute using your developer account. https://developer.
+        # apple.com/documentation/gamekit/gkplayer/3174857-teamplayerid
+        # Corresponds to the JSON property `teamPlayerId`
+        # @return [String]
+        attr_accessor :team_player_id
+      
         # The ID of the Identity Platform tenant the user is signing in to.
         # Corresponds to the JSON property `tenantId`
         # @return [String]
@@ -2324,11 +2338,13 @@ module Google
         # Update properties of this object
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @game_player_id = args[:game_player_id] if args.key?(:game_player_id)
           @id_token = args[:id_token] if args.key?(:id_token)
           @player_id = args[:player_id] if args.key?(:player_id)
           @public_key_url = args[:public_key_url] if args.key?(:public_key_url)
           @salt = args[:salt] if args.key?(:salt)
           @signature = args[:signature] if args.key?(:signature)
+          @team_player_id = args[:team_player_id] if args.key?(:team_player_id)
           @tenant_id = args[:tenant_id] if args.key?(:tenant_id)
           @timestamp = args[:timestamp] if args.key?(:timestamp)
         end
@@ -2347,6 +2363,13 @@ module Google
         # Corresponds to the JSON property `expiresIn`
         # @return [Fixnum]
         attr_accessor :expires_in
+      
+        # The user's Game Center game player ID. A unique identifier for a player of the
+        # game. https://developer.apple.com/documentation/gamekit/gkplayer/3113960-
+        # gameplayerid
+        # Corresponds to the JSON property `gamePlayerId`
+        # @return [String]
+        attr_accessor :game_player_id
       
         # An Identity Platform ID token for the authenticated user.
         # Corresponds to the JSON property `idToken`
@@ -2374,6 +2397,13 @@ module Google
         # @return [String]
         attr_accessor :refresh_token
       
+        # The user's Game Center team player ID. A unique identifier for a player of all
+        # the games that you distribute using your developer account. https://developer.
+        # apple.com/documentation/gamekit/gkplayer/3174857-teamplayerid
+        # Corresponds to the JSON property `teamPlayerId`
+        # @return [String]
+        attr_accessor :team_player_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2382,11 +2412,13 @@ module Google
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
           @expires_in = args[:expires_in] if args.key?(:expires_in)
+          @game_player_id = args[:game_player_id] if args.key?(:game_player_id)
           @id_token = args[:id_token] if args.key?(:id_token)
           @is_new_user = args[:is_new_user] if args.key?(:is_new_user)
           @local_id = args[:local_id] if args.key?(:local_id)
           @player_id = args[:player_id] if args.key?(:player_id)
           @refresh_token = args[:refresh_token] if args.key?(:refresh_token)
+          @team_player_id = args[:team_player_id] if args.key?(:team_player_id)
         end
       end
       
