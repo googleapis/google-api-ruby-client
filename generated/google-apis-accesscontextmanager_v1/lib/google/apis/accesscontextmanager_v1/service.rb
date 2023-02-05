@@ -22,7 +22,8 @@ module Google
     module AccesscontextmanagerV1
       # Access Context Manager API
       #
-      # An API for setting attribute based access control to requests to GCP services.
+      # An API for setting attribute based access control to requests to Google Cloud
+      #  services.
       #
       # @example
       #    require 'google/apis/accesscontextmanager_v1'
@@ -604,8 +605,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a authorized orgs desc. The long-running operation from this RPC has a
-        # successful status after the authorized orgs desc propagates to long-lasting
+        # Creates an authorized orgs desc. The long-running operation from this RPC has
+        # a successful status after the authorized orgs desc propagates to long-lasting
         # storage. If a authorized orgs desc contains errors, an error response is
         # returned for the first error encountered. The name of this `AuthorizedOrgsDesc`
         # will be assigned during creation.
@@ -642,7 +643,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a authorized orgs desc based on the resource name. The long-running
+        # Deletes an authorized orgs desc based on the resource name. The long-running
         # operation from this RPC has a successful status after the authorized orgs desc
         # is removed from long-lasting storage.
         # @param [String] name
@@ -675,7 +676,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a authorized orgs desc based on the resource name.
+        # Gets an authorized orgs desc based on the resource name.
         # @param [String] name
         #   Required. Resource name for the Authorized Orgs Desc. Format: `accessPolicies/`
         #   policy_id`/authorizedOrgsDescs/`authorized_orgs_descs_id``
@@ -744,18 +745,18 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a authorized orgs desc. The long-running operation from this RPC has a
-        # successful status after the authorized orgs desc propagates to long-lasting
+        # Updates an authorized orgs desc. The long-running operation from this RPC has
+        # a successful status after the authorized orgs desc propagates to long-lasting
         # storage. If a authorized orgs desc contains errors, an error response is
         # returned for the first error encountered. Only the organization list in `
         # AuthorizedOrgsDesc` can be updated. The name, authorization_type, asset_type
         # and authorization_direction cannot be updated.
         # @param [String] name
-        #   Assigned by the server during creation. The last segment has an arbitrary
-        #   length and has only URI unreserved characters (as defined by [RFC 3986 Section
-        #   2.3](https://tools.ietf.org/html/rfc3986#section-2.3)). Should not be
-        #   specified by the client during creation. Example: "accessPolicies/122256/
-        #   authorizedOrgs/b3-BhcX_Ud5N"
+        #   Resource name for the `AuthorizedOrgsDesc`. Format: `accessPolicies/`
+        #   access_policy`/authorizedOrgsDescs/`authorized_orgs_desc``. The `
+        #   authorized_orgs_desc` component must begin with a letter, followed by
+        #   alphanumeric characters or `_`. After you create an `AuthorizedOrgsDesc`, you
+        #   cannot change its `name`.
         # @param [Google::Apis::AccesscontextmanagerV1::AuthorizedOrgsDesc] authorized_orgs_desc_object
         # @param [String] update_mask
         #   Required. Mask to control which fields get updated. Must be non-empty.

@@ -248,47 +248,49 @@ module Google
         end
       end
       
-      # `AuthorizedOrgsDesc` is a resource that contains a list of organizations for a
-      # authorization type and asset type and its authorization direction.
+      # `AuthorizedOrgsDesc` contains data for an organization's authorization policy.
       class AuthorizedOrgsDesc
         include Google::Apis::Core::Hashable
       
-        # The asset type of this authorized orgs desc. e.g. device, credential strength.
+        # The asset type of this authorized orgs desc. Valid values are `
+        # ASSET_TYPE_DEVICE`, and `ASSET_TYPE_CREDENTIAL_STRENGTH`.
         # Corresponds to the JSON property `assetType`
         # @return [String]
         attr_accessor :asset_type
       
-        # Authorization direction of this authorization relationship. i.e. Whether to
-        # allow specified orgs to evaluate this org's traffic, or allow specified orgs'
-        # traffic to be evaluated by this org. Orgs specified as `
-        # AUTHORIZATION_DIRECTION_TO` in this AuthorizedOrgsDesc[com.google.identity.
-        # accesscontextmanager.v1.AuthorizedOrgsDesc] must also specify this org as the `
-        # AUTHORIZATION_DIRECTION_FROM` in their own AuthorizedOrgsDesc in order for
-        # this relationship to take effect. Orgs specified as `
-        # AUTHORIZATION_DIRECTION_FROM` in this AuthorizedOrgsDesc[com.google.identity.
-        # accesscontextmanager.v1.AuthorizedOrgsDesc] must also specify this org as the `
-        # AUTHORIZATION_DIRECTION_TO` in their own AuthorizedOrgsDesc in order for this
-        # relationship to take effect.
+        # The direction of the authorization relationship between this organization and
+        # the organizations listed in the `orgs` field. The valid values for this field
+        # include the following: `AUTHORIZATION_DIRECTION_FROM`: Allows this
+        # organization to evaluate traffic in the organizations listed in the `orgs`
+        # field. `AUTHORIZATION_DIRECTION_TO`: Allows the organizations listed in the `
+        # orgs` field to evaluate the traffic in this organization. For the
+        # authorization relationship to take effect, all of the organizations must
+        # authorize and specify the appropriate relationship direction. For example, if
+        # organization A authorized organization B and C to evaluate its traffic, by
+        # specifying `AUTHORIZATION_DIRECTION_TO` as the authorization direction,
+        # organizations B and C must specify `AUTHORIZATION_DIRECTION_FROM` as the
+        # authorization direction in their `AuthorizedOrgsDesc` resource.
         # Corresponds to the JSON property `authorizationDirection`
         # @return [String]
         attr_accessor :authorization_direction
       
-        # The authorization type of this authorized orgs desc. e.g.authorization,
-        # troubleshooting or logging.
+        # A granular control type for authorization levels. Valid value is `
+        # AUTHORIZATION_TYPE_TRUST`.
         # Corresponds to the JSON property `authorizationType`
         # @return [String]
         attr_accessor :authorization_type
       
-        # Assigned by the server during creation. The last segment has an arbitrary
-        # length and has only URI unreserved characters (as defined by [RFC 3986 Section
-        # 2.3](https://tools.ietf.org/html/rfc3986#section-2.3)). Should not be
-        # specified by the client during creation. Example: "accessPolicies/122256/
-        # authorizedOrgs/b3-BhcX_Ud5N"
+        # Resource name for the `AuthorizedOrgsDesc`. Format: `accessPolicies/`
+        # access_policy`/authorizedOrgsDescs/`authorized_orgs_desc``. The `
+        # authorized_orgs_desc` component must begin with a letter, followed by
+        # alphanumeric characters or `_`. After you create an `AuthorizedOrgsDesc`, you
+        # cannot change its `name`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The list of organization ids in this AuthorizedOrgsDesc.
+        # The list of organization ids in this AuthorizedOrgsDesc. Format: `
+        # organizations/` Example: `organizations/123456`
         # Corresponds to the JSON property `orgs`
         # @return [Array<String>]
         attr_accessor :orgs
@@ -374,22 +376,22 @@ module Google
         # kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-
         # project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:`emailid``: An
         # email address that represents a Google group. For example, `admins@example.com`
-        # . * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
-        # identifier) representing a user that has been recently deleted. For example, `
-        # alice@example.com?uid=123456789012345678901`. If the user is recovered, this
-        # value reverts to `user:`emailid`` and the recovered user retains the role in
-        # the binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email
-        # address (plus unique identifier) representing a service account that has been
-        # recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
+        # . * `domain:`domain``: The G Suite domain (primary) that represents all the
+        # users of that domain. For example, `google.com` or `example.com`. * `deleted:
+        # user:`emailid`?uid=`uniqueid``: An email address (plus unique identifier)
+        # representing a user that has been recently deleted. For example, `alice@
+        # example.com?uid=123456789012345678901`. If the user is recovered, this value
+        # reverts to `user:`emailid`` and the recovered user retains the role in the
+        # binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email address
+        # (plus unique identifier) representing a service account that has been recently
+        # deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
         # 123456789012345678901`. If the service account is undeleted, this value
         # reverts to `serviceAccount:`emailid`` and the undeleted service account
         # retains the role in the binding. * `deleted:group:`emailid`?uid=`uniqueid``:
         # An email address (plus unique identifier) representing a Google group that has
         # been recently deleted. For example, `admins@example.com?uid=
         # 123456789012345678901`. If the group is recovered, this value reverts to `
-        # group:`emailid`` and the recovered group retains the role in the binding. * `
-        # domain:`domain``: The G Suite domain (primary) that represents all the users
-        # of that domain. For example, `google.com` or `example.com`.
+        # group:`emailid`` and the recovered group retains the role in the binding.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -1039,10 +1041,10 @@ module Google
         # A Google Cloud resource that is allowed to ingress the perimeter. Requests
         # from these resources will be allowed to access perimeter data. Currently only
         # projects and VPCs are allowed. Project format: `projects/`project_number`` VPC
-        # format: `//compute.googleapis.com/projects/`PROJECT_ID`/global/networks/`NAME``
-        # . The project may be in any Google Cloud organization, not just the
-        # organization that the perimeter is defined in. `*` is not allowed, the case of
-        # allowing all Google Cloud resources only is not supported.
+        # network format: `//compute.googleapis.com/projects/`PROJECT_ID`/global/
+        # networks/`NAME``. The project may be in any Google Cloud organization, not
+        # just the organization that the perimeter is defined in. `*` is not allowed,
+        # the case of allowing all Google Cloud resources only is not supported.
         # Corresponds to the JSON property `resource`
         # @return [String]
         attr_accessor :resource
@@ -1146,7 +1148,7 @@ module Google
       class ListAuthorizedOrgsDescsResponse
         include Google::Apis::Core::Hashable
       
-        # List of the Authorized Orgs Desc instances.
+        # List of all the Authorized Orgs Desc instances.
         # Corresponds to the JSON property `authorizedOrgsDescs`
         # @return [Array<Google::Apis::AccesscontextmanagerV1::AuthorizedOrgsDesc>]
         attr_accessor :authorized_orgs_descs
@@ -1576,9 +1578,10 @@ module Google
       # has a target outside of the `ServicePerimeter`, the request will be blocked.
       # Otherwise the request is allowed. There are two types of Service Perimeter -
       # Regular and Bridge. Regular Service Perimeters cannot overlap, a single Google
-      # Cloud project can only belong to a single regular Service Perimeter. Service
-      # Perimeter Bridges can contain only Google Cloud projects as members, a single
-      # Google Cloud project may belong to multiple Service Perimeter Bridges.
+      # Cloud project or VPC network can only belong to a single regular Service
+      # Perimeter. Service Perimeter Bridges can contain only Google Cloud projects as
+      # members, a single Google Cloud project may belong to multiple Service
+      # Perimeter Bridges.
       class ServicePerimeter
         include Google::Apis::Core::Hashable
       
@@ -1595,11 +1598,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Perimeter type indicator. A single project is allowed to be a member of single
-        # regular perimeter, but multiple service perimeter bridges. A project cannot be
-        # a included in a perimeter bridge without being included in regular perimeter.
-        # For perimeter bridges, the restricted service list as well as access level
-        # lists must be empty.
+        # Perimeter type indicator. A single project or VPC network is allowed to be a
+        # member of single regular perimeter, but multiple service perimeter bridges. A
+        # project cannot be a included in a perimeter bridge without being included in
+        # regular perimeter. For perimeter bridges, the restricted service list as well
+        # as access level lists must be empty.
         # Corresponds to the JSON property `perimeterType`
         # @return [String]
         attr_accessor :perimeter_type
@@ -1683,8 +1686,8 @@ module Google
       
         # A list of Google Cloud resources that are inside of the service perimeter.
         # Currently only projects and VPCs are allowed. Project format: `projects/`
-        # project_number`` VPC format: `//compute.googleapis.com/projects/`PROJECT_ID`/
-        # global/networks/`NAME``.
+        # project_number`` VPC network format: `//compute.googleapis.com/projects/`
+        # PROJECT_ID`/global/networks/`NAME``.
         # Corresponds to the JSON property `resources`
         # @return [Array<String>]
         attr_accessor :resources
