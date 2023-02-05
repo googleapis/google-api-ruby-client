@@ -708,6 +708,60 @@ module Google
         end
       end
       
+      # Egress traffic between two regions.
+      class InterRegionEgress
+        include Google::Apis::Core::Hashable
+      
+        # Which [region](https://cloud.google.com/compute/docs/regions-zones) the egress
+        # data goes to.
+        # Corresponds to the JSON property `destinationRegion`
+        # @return [String]
+        attr_accessor :destination_region
+      
+        # An amount of usage over a time frame.
+        # Corresponds to the JSON property `egressRate`
+        # @return [Google::Apis::CloudbillingV1beta::Usage]
+        attr_accessor :egress_rate
+      
+        # Which [region](https://cloud.google.com/compute/docs/regions-zones) the egress
+        # data comes from.
+        # Corresponds to the JSON property `sourceRegion`
+        # @return [String]
+        attr_accessor :source_region
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination_region = args[:destination_region] if args.key?(:destination_region)
+          @egress_rate = args[:egress_rate] if args.key?(:egress_rate)
+          @source_region = args[:source_region] if args.key?(:source_region)
+        end
+      end
+      
+      # Egress traffic within the same region. When source region and destination
+      # region are in the same zone, using the internal IP addresses, there isn't any
+      # egress charge.
+      class IntraRegionEgress
+        include Google::Apis::Core::Hashable
+      
+        # An amount of usage over a time frame.
+        # Corresponds to the JSON property `egressRate`
+        # @return [Google::Apis::CloudbillingV1beta::Usage]
+        attr_accessor :egress_rate
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @egress_rate = args[:egress_rate] if args.key?(:egress_rate)
+        end
+      end
+      
       # Specification of machine series, memory, and number of vCPUs.
       class MachineType
         include Google::Apis::Core::Hashable
@@ -1339,6 +1393,33 @@ module Google
         end
       end
       
+      # Specify VM to VM egress.
+      class VmToVmEgressWorkload
+        include Google::Apis::Core::Hashable
+      
+        # Egress traffic between two regions.
+        # Corresponds to the JSON property `interRegionEgress`
+        # @return [Google::Apis::CloudbillingV1beta::InterRegionEgress]
+        attr_accessor :inter_region_egress
+      
+        # Egress traffic within the same region. When source region and destination
+        # region are in the same zone, using the internal IP addresses, there isn't any
+        # egress charge.
+        # Corresponds to the JSON property `intraRegionEgress`
+        # @return [Google::Apis::CloudbillingV1beta::IntraRegionEgress]
+        attr_accessor :intra_region_egress
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @inter_region_egress = args[:inter_region_egress] if args.key?(:inter_region_egress)
+          @intra_region_egress = args[:intra_region_egress] if args.key?(:intra_region_egress)
+        end
+      end
+      
       # Specifies usage on a single Google Cloud product over a time frame. Each
       # Google Cloud product has its own message, containing specific product
       # configuration parameters of the product usage amounts along each dimension in
@@ -1401,6 +1482,11 @@ module Google
         # @return [Google::Apis::CloudbillingV1beta::StandardTierEgressWorkload]
         attr_accessor :standard_tier_egress_workload
       
+        # Specify VM to VM egress.
+        # Corresponds to the JSON property `vmToVmEgressWorkload`
+        # @return [Google::Apis::CloudbillingV1beta::VmToVmEgressWorkload]
+        attr_accessor :vm_to_vm_egress_workload
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1417,6 +1503,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @premium_tier_egress_workload = args[:premium_tier_egress_workload] if args.key?(:premium_tier_egress_workload)
           @standard_tier_egress_workload = args[:standard_tier_egress_workload] if args.key?(:standard_tier_egress_workload)
+          @vm_to_vm_egress_workload = args[:vm_to_vm_egress_workload] if args.key?(:vm_to_vm_egress_workload)
         end
       end
       
