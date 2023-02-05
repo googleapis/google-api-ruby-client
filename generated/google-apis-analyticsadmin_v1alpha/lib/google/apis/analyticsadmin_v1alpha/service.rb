@@ -791,6 +791,37 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Fetches the opt out status for the automated GA4 setup process for a UA
+        # property. Note: this has no effect on GA4 property.
+        # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutRequest] google_analytics_admin_v1alpha_fetch_automated_ga4_configuration_opt_out_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def fetch_property_automated_ga4_configuration_opt_out(google_analytics_admin_v1alpha_fetch_automated_ga4_configuration_opt_out_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/properties:fetchAutomatedGa4ConfigurationOptOut', options)
+          command.request_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutRequest::Representation
+          command.request_object = google_analytics_admin_v1alpha_fetch_automated_ga4_configuration_opt_out_request_object
+          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutResponse::Representation
+          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutResponse
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lookup for a single "GA4" Property.
         # @param [String] name
         #   Required. The name of the property to lookup. Format: properties/`property_id`
@@ -1050,6 +1081,37 @@ module Google
           command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaRunAccessReportResponse::Representation
           command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaRunAccessReportResponse
           command.params['entity'] = entity unless entity.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets the opt out status for the automated GA4 setup process for a UA property.
+        # Note: this has no effect on GA4 property.
+        # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutRequest] google_analytics_admin_v1alpha_set_automated_ga4_configuration_opt_out_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_property_automated_ga4_configuration_opt_out(google_analytics_admin_v1alpha_set_automated_ga4_configuration_opt_out_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/properties:setAutomatedGa4ConfigurationOptOut', options)
+          command.request_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutRequest::Representation
+          command.request_object = google_analytics_admin_v1alpha_set_automated_ga4_configuration_opt_out_request_object
+          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutResponse::Representation
+          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
