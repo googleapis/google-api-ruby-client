@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Build
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -316,6 +322,15 @@ module Google
         end
       end
       
+      class Build
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :commit_id, as: 'commitId'
+          property :commit_time, as: 'commitTime'
+          property :repo, as: 'repo'
+        end
+      end
+      
       class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -358,6 +373,8 @@ module Google
       class Instance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :build, as: 'build', class: Google::Apis::ApigeeregistryV1::Build, decorator: Google::Apis::ApigeeregistryV1::Build::Representation
+      
           property :config, as: 'config', class: Google::Apis::ApigeeregistryV1::Config, decorator: Google::Apis::ApigeeregistryV1::Config::Representation
       
           property :create_time, as: 'createTime'

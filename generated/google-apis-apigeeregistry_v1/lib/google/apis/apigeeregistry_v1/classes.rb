@@ -575,22 +575,22 @@ module Google
         # kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-
         # project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:`emailid``: An
         # email address that represents a Google group. For example, `admins@example.com`
-        # . * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
-        # identifier) representing a user that has been recently deleted. For example, `
-        # alice@example.com?uid=123456789012345678901`. If the user is recovered, this
-        # value reverts to `user:`emailid`` and the recovered user retains the role in
-        # the binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email
-        # address (plus unique identifier) representing a service account that has been
-        # recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
+        # . * `domain:`domain``: The G Suite domain (primary) that represents all the
+        # users of that domain. For example, `google.com` or `example.com`. * `deleted:
+        # user:`emailid`?uid=`uniqueid``: An email address (plus unique identifier)
+        # representing a user that has been recently deleted. For example, `alice@
+        # example.com?uid=123456789012345678901`. If the user is recovered, this value
+        # reverts to `user:`emailid`` and the recovered user retains the role in the
+        # binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email address
+        # (plus unique identifier) representing a service account that has been recently
+        # deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
         # 123456789012345678901`. If the service account is undeleted, this value
         # reverts to `serviceAccount:`emailid`` and the undeleted service account
         # retains the role in the binding. * `deleted:group:`emailid`?uid=`uniqueid``:
         # An email address (plus unique identifier) representing a Google group that has
         # been recently deleted. For example, `admins@example.com?uid=
         # 123456789012345678901`. If the group is recovered, this value reverts to `
-        # group:`emailid`` and the recovered group retains the role in the binding. * `
-        # domain:`domain``: The G Suite domain (primary) that represents all the users
-        # of that domain. For example, `google.com` or `example.com`.
+        # group:`emailid`` and the recovered group retains the role in the binding.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -610,6 +610,37 @@ module Google
           @condition = args[:condition] if args.key?(:condition)
           @members = args[:members] if args.key?(:members)
           @role = args[:role] if args.key?(:role)
+        end
+      end
+      
+      # Build information of the Instance if it's in `ACTIVE` state.
+      class Build
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Commit ID of the latest commit in the build.
+        # Corresponds to the JSON property `commitId`
+        # @return [String]
+        attr_accessor :commit_id
+      
+        # Output only. Commit time of the latest commit in the build.
+        # Corresponds to the JSON property `commitTime`
+        # @return [String]
+        attr_accessor :commit_time
+      
+        # Output only. Path of the open source repository: github.com/apigee/registry.
+        # Corresponds to the JSON property `repo`
+        # @return [String]
+        attr_accessor :repo
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @commit_id = args[:commit_id] if args.key?(:commit_id)
+          @commit_time = args[:commit_time] if args.key?(:commit_time)
+          @repo = args[:repo] if args.key?(:repo)
         end
       end
       
@@ -777,6 +808,11 @@ module Google
       class Instance
         include Google::Apis::Core::Hashable
       
+        # Build information of the Instance if it's in `ACTIVE` state.
+        # Corresponds to the JSON property `build`
+        # @return [Google::Apis::ApigeeregistryV1::Build]
+        attr_accessor :build
+      
         # Available configurations to provision an Instance.
         # Corresponds to the JSON property `config`
         # @return [Google::Apis::ApigeeregistryV1::Config]
@@ -814,6 +850,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @build = args[:build] if args.key?(:build)
           @config = args[:config] if args.key?(:config)
           @create_time = args[:create_time] if args.key?(:create_time)
           @name = args[:name] if args.key?(:name)
