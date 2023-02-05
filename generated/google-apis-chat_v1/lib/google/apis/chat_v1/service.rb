@@ -298,8 +298,9 @@ module Google
         # @param [String] thread_key
         #   Optional. Deprecated: Use thread.thread_key instead. Opaque thread identifier.
         #   To start or add to a thread, create a message and specify a `threadKey` or the
-        #   thread.name. For example usage, see [Start or reply to a message thread](/chat/
-        #   api/guides/crudl/messages#start_or_reply_to_a_message_thread).
+        #   thread.name. For example usage, see [Start or reply to a message thread](https:
+        #   //developers.google.com/chat/api/guides/crudl/messages#
+        #   start_or_reply_to_a_message_thread).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -527,8 +528,9 @@ module Google
         end
         
         # Gets the metadata of a message attachment. The attachment data is fetched
-        # using the media API. Requires [service account authentication](https://
-        # developers.google.com/chat/api/guides/auth/service-accounts).
+        # using the [media API](https://developers.google.com/chat/api/reference/rest/v1/
+        # media/download). Requires [service account authentication](https://developers.
+        # google.com/chat/api/guides/auth/service-accounts).
         # @param [String] name
         #   Required. Resource name of the attachment, in the form "spaces/*/messages/*/
         #   attachments/*".

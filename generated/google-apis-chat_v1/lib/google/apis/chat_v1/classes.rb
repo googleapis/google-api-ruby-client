@@ -50,7 +50,7 @@ module Google
         end
       end
       
-      # Parameters that a Chat app can use to configure how it's response is posted.
+      # Parameters that a Chat app can use to configure how its response is posted.
       class ActionResponse
         include Google::Apis::Core::Hashable
       
@@ -113,9 +113,9 @@ module Google
       # Annotations associated with the plain-text body of the message. Example plain-
       # text message body: ``` Hello @FooBot how are you!" ``` The corresponding
       # annotations metadata: ``` "annotations":[` "type":"USER_MENTION", "startIndex":
-      # 6, "length":7, "userMention": ` "user": ` "name":"users/107946847022116401880",
-      # "displayName":"FooBot", "avatarUrl":"https://goo.gl/aeDtrS", "type":"BOT" `, "
-      # type":"MENTION" ` `] ```
+      # 6, "length":7, "userMention": ` "user": ` "name":"users/`user`", "displayName":
+      # "FooBot", "avatarUrl":"https://goo.gl/aeDtrS", "type":"BOT" `, "type":"MENTION"
+      # ` `] ```
       class Annotation
         include Google::Apis::Core::Hashable
       
@@ -2729,7 +2729,7 @@ module Google
       class Message
         include Google::Apis::Core::Hashable
       
-        # Parameters that a Chat app can use to configure how it's response is posted.
+        # Parameters that a Chat app can use to configure how its response is posted.
         # Corresponds to the JSON property `actionResponse`
         # @return [Google::Apis::ChatV1::ActionResponse]
         attr_accessor :action_response
@@ -2744,7 +2744,7 @@ module Google
         # @return [String]
         attr_accessor :argument_text
       
-        # User uploaded attachment.
+        # User-uploaded attachment.
         # Corresponds to the JSON property `attachment`
         # @return [Array<Google::Apis::ChatV1::Attachment>]
         attr_accessor :attachment
@@ -2759,7 +2759,7 @@ module Google
       
         # Richly formatted and interactive cards that display UI elements and editable
         # widgets, such as: - Formatted text - Buttons - Clickable images - Checkboxes -
-        # Radio buttons - Input widgets. Cards are usually displayed below the text-body
+        # Radio buttons - Input widgets. Cards are usually displayed below the text body
         # of a Chat message, but can situationally appear other places, such as [dialogs]
         # (https://developers.google.com/chat/how-tos/dialogs). The `cardId` is a unique
         # identifier among cards in the same message and for identifying user input
@@ -3211,9 +3211,9 @@ module Google
       
         # Optional. Opaque thread identifier. To start or add to a thread, create a
         # message and specify a `threadKey` or the thread.name. For example usage, see [
-        # Start or reply to a message thread](/chat/api/guides/crudl/messages#
-        # start_or_reply_to_a_message_thread). For other requests, this is an output
-        # only field.
+        # Start or reply to a message thread](https://developers.google.com/chat/api/
+        # guides/crudl/messages#start_or_reply_to_a_message_thread). For other requests,
+        # this is an output only field.
         # Corresponds to the JSON property `threadKey`
         # @return [String]
         attr_accessor :thread_key
