@@ -388,6 +388,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiV1EvaluateProcessorVersionMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1EvaluateProcessorVersionResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiV1HumanReviewStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -413,6 +425,24 @@ module Google
       end
       
       class GoogleCloudDocumentaiV1SetDefaultProcessorVersionResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1TrainProcessorVersionMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1TrainProcessorVersionMetadataDatasetValidation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1TrainProcessorVersionResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1771,6 +1801,21 @@ module Google
         end
       end
       
+      class GoogleCloudDocumentaiV1EvaluateProcessorVersionMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :common_metadata, as: 'commonMetadata', class: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1CommonOperationMetadata, decorator: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1CommonOperationMetadata::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1EvaluateProcessorVersionResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :evaluation, as: 'evaluation'
+        end
+      end
+      
       class GoogleCloudDocumentaiV1HumanReviewStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1809,6 +1854,37 @@ module Google
       class GoogleCloudDocumentaiV1SetDefaultProcessorVersionResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1TrainProcessorVersionMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :common_metadata, as: 'commonMetadata', class: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1CommonOperationMetadata, decorator: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1CommonOperationMetadata::Representation
+      
+          property :test_dataset_validation, as: 'testDatasetValidation', class: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1TrainProcessorVersionMetadataDatasetValidation, decorator: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1TrainProcessorVersionMetadataDatasetValidation::Representation
+      
+          property :training_dataset_validation, as: 'trainingDatasetValidation', class: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1TrainProcessorVersionMetadataDatasetValidation, decorator: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1TrainProcessorVersionMetadataDatasetValidation::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1TrainProcessorVersionMetadataDatasetValidation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dataset_error_count, as: 'datasetErrorCount'
+          collection :dataset_errors, as: 'datasetErrors', class: Google::Apis::DocumentaiV1beta2::GoogleRpcStatus, decorator: Google::Apis::DocumentaiV1beta2::GoogleRpcStatus::Representation
+      
+          property :document_error_count, as: 'documentErrorCount'
+          collection :document_errors, as: 'documentErrors', class: Google::Apis::DocumentaiV1beta2::GoogleRpcStatus, decorator: Google::Apis::DocumentaiV1beta2::GoogleRpcStatus::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1TrainProcessorVersionResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :processor_version, as: 'processorVersion'
         end
       end
       

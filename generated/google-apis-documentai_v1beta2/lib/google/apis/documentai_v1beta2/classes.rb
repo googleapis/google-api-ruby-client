@@ -1469,6 +1469,44 @@ module Google
         end
       end
       
+      # Metadata of the EvaluateProcessorVersion method.
+      class GoogleCloudDocumentaiV1EvaluateProcessorVersionMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The common metadata for long running operations.
+        # Corresponds to the JSON property `commonMetadata`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1CommonOperationMetadata]
+        attr_accessor :common_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+        end
+      end
+      
+      # Metadata of the EvaluateProcessorVersion method.
+      class GoogleCloudDocumentaiV1EvaluateProcessorVersionResponse
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of the created evaluation.
+        # Corresponds to the JSON property `evaluation`
+        # @return [String]
+        attr_accessor :evaluation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @evaluation = args[:evaluation] if args.key?(:evaluation)
+        end
+      end
+      
       # The status of human review on a processed document.
       class GoogleCloudDocumentaiV1HumanReviewStatus
         include Google::Apis::Core::Hashable
@@ -1589,6 +1627,99 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # The metadata that represents a processor version being created.
+      class GoogleCloudDocumentaiV1TrainProcessorVersionMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The common metadata for long running operations.
+        # Corresponds to the JSON property `commonMetadata`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1CommonOperationMetadata]
+        attr_accessor :common_metadata
+      
+        # The dataset validation information. This includes any and all errors with
+        # documents and the dataset.
+        # Corresponds to the JSON property `testDatasetValidation`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1TrainProcessorVersionMetadataDatasetValidation]
+        attr_accessor :test_dataset_validation
+      
+        # The dataset validation information. This includes any and all errors with
+        # documents and the dataset.
+        # Corresponds to the JSON property `trainingDatasetValidation`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1TrainProcessorVersionMetadataDatasetValidation]
+        attr_accessor :training_dataset_validation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+          @test_dataset_validation = args[:test_dataset_validation] if args.key?(:test_dataset_validation)
+          @training_dataset_validation = args[:training_dataset_validation] if args.key?(:training_dataset_validation)
+        end
+      end
+      
+      # The dataset validation information. This includes any and all errors with
+      # documents and the dataset.
+      class GoogleCloudDocumentaiV1TrainProcessorVersionMetadataDatasetValidation
+        include Google::Apis::Core::Hashable
+      
+        # The total number of dataset errors.
+        # Corresponds to the JSON property `datasetErrorCount`
+        # @return [Fixnum]
+        attr_accessor :dataset_error_count
+      
+        # Error information for the dataset as a whole. A maximum of 10 dataset errors
+        # will be returned. A single dataset error is terminal for training.
+        # Corresponds to the JSON property `datasetErrors`
+        # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleRpcStatus>]
+        attr_accessor :dataset_errors
+      
+        # The total number of document errors.
+        # Corresponds to the JSON property `documentErrorCount`
+        # @return [Fixnum]
+        attr_accessor :document_error_count
+      
+        # Error information pertaining to specific documents. A maximum of 10 document
+        # errors will be returned. Any document with errors will not be used throughout
+        # training.
+        # Corresponds to the JSON property `documentErrors`
+        # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleRpcStatus>]
+        attr_accessor :document_errors
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataset_error_count = args[:dataset_error_count] if args.key?(:dataset_error_count)
+          @dataset_errors = args[:dataset_errors] if args.key?(:dataset_errors)
+          @document_error_count = args[:document_error_count] if args.key?(:document_error_count)
+          @document_errors = args[:document_errors] if args.key?(:document_errors)
+        end
+      end
+      
+      # The response for the TrainProcessorVersion method.
+      class GoogleCloudDocumentaiV1TrainProcessorVersionResponse
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of the processor version produced by training.
+        # Corresponds to the JSON property `processorVersion`
+        # @return [String]
+        attr_accessor :processor_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @processor_version = args[:processor_version] if args.key?(:processor_version)
         end
       end
       
