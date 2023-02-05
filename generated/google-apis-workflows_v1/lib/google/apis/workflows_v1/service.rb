@@ -312,6 +312,12 @@ module Google
         # @param [String] name
         #   Required. Name of the workflow for which information should be retrieved.
         #   Format: projects/`project`/locations/`location`/workflows/`workflow`
+        # @param [String] revision_id
+        #   Optional. Optional. The revision of the workflow to retrieve. If the
+        #   revision_id is empty, the latest revision is retrieved. The format is "000001-
+        #   a4d", where the first 6 characters define the zero-padded decimal revision
+        #   number. They are followed by a hyphen and 3 hexadecimal characters. (go/
+        #   wf_adr_clh_1)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -329,11 +335,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_workflow(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_location_workflow(name, revision_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::WorkflowsV1::Workflow::Representation
           command.response_class = Google::Apis::WorkflowsV1::Workflow
           command.params['name'] = name unless name.nil?
+          command.query['revisionId'] = revision_id unless revision_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
