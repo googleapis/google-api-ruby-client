@@ -5699,11 +5699,19 @@ module Google
       class DynamiteMessagesScoringInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :common_contact_count, :numeric_string => true, as: 'commonContactCount'
+          property :common_count_to_contact_list_count_ratio, as: 'commonCountToContactListCountRatio'
+          property :common_count_to_membership_count_ratio, as: 'commonCountToMembershipCountRatio'
+          property :creator_gaia_id, :numeric_string => true, as: 'creatorGaiaId'
+          property :creator_in_searcher_contact_list, as: 'creatorInSearcherContactList'
+          property :das_contact_count, :numeric_string => true, as: 'dasContactCount'
           property :final_score, as: 'finalScore'
           property :freshness_score, as: 'freshnessScore'
           property :joined_space_affinity_score, as: 'joinedSpaceAffinityScore'
           property :message_age_in_days, as: 'messageAgeInDays'
           property :message_sender_affinity_score, as: 'messageSenderAffinityScore'
+          property :space_id, :numeric_string => true, as: 'spaceId'
+          property :space_membership_count, :numeric_string => true, as: 'spaceMembershipCount'
           property :topicality_score, as: 'topicalityScore'
           property :unjoined_space_affinity_score, as: 'unjoinedSpaceAffinityScore'
         end

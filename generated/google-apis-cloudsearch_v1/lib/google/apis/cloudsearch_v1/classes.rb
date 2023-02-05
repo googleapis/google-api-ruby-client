@@ -7710,6 +7710,37 @@ module Google
         include Google::Apis::Core::Hashable
       
         # 
+        # Corresponds to the JSON property `commonContactCount`
+        # @return [Fixnum]
+        attr_accessor :common_contact_count
+      
+        # 
+        # Corresponds to the JSON property `commonCountToContactListCountRatio`
+        # @return [Float]
+        attr_accessor :common_count_to_contact_list_count_ratio
+      
+        # 
+        # Corresponds to the JSON property `commonCountToMembershipCountRatio`
+        # @return [Float]
+        attr_accessor :common_count_to_membership_count_ratio
+      
+        # 
+        # Corresponds to the JSON property `creatorGaiaId`
+        # @return [Fixnum]
+        attr_accessor :creator_gaia_id
+      
+        # 
+        # Corresponds to the JSON property `creatorInSearcherContactList`
+        # @return [Boolean]
+        attr_accessor :creator_in_searcher_contact_list
+        alias_method :creator_in_searcher_contact_list?, :creator_in_searcher_contact_list
+      
+        # 
+        # Corresponds to the JSON property `dasContactCount`
+        # @return [Fixnum]
+        attr_accessor :das_contact_count
+      
+        # 
         # Corresponds to the JSON property `finalScore`
         # @return [Float]
         attr_accessor :final_score
@@ -7735,6 +7766,16 @@ module Google
         attr_accessor :message_sender_affinity_score
       
         # 
+        # Corresponds to the JSON property `spaceId`
+        # @return [Fixnum]
+        attr_accessor :space_id
+      
+        # 
+        # Corresponds to the JSON property `spaceMembershipCount`
+        # @return [Fixnum]
+        attr_accessor :space_membership_count
+      
+        # 
         # Corresponds to the JSON property `topicalityScore`
         # @return [Float]
         attr_accessor :topicality_score
@@ -7750,11 +7791,19 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @common_contact_count = args[:common_contact_count] if args.key?(:common_contact_count)
+          @common_count_to_contact_list_count_ratio = args[:common_count_to_contact_list_count_ratio] if args.key?(:common_count_to_contact_list_count_ratio)
+          @common_count_to_membership_count_ratio = args[:common_count_to_membership_count_ratio] if args.key?(:common_count_to_membership_count_ratio)
+          @creator_gaia_id = args[:creator_gaia_id] if args.key?(:creator_gaia_id)
+          @creator_in_searcher_contact_list = args[:creator_in_searcher_contact_list] if args.key?(:creator_in_searcher_contact_list)
+          @das_contact_count = args[:das_contact_count] if args.key?(:das_contact_count)
           @final_score = args[:final_score] if args.key?(:final_score)
           @freshness_score = args[:freshness_score] if args.key?(:freshness_score)
           @joined_space_affinity_score = args[:joined_space_affinity_score] if args.key?(:joined_space_affinity_score)
           @message_age_in_days = args[:message_age_in_days] if args.key?(:message_age_in_days)
           @message_sender_affinity_score = args[:message_sender_affinity_score] if args.key?(:message_sender_affinity_score)
+          @space_id = args[:space_id] if args.key?(:space_id)
+          @space_membership_count = args[:space_membership_count] if args.key?(:space_membership_count)
           @topicality_score = args[:topicality_score] if args.key?(:topicality_score)
           @unjoined_space_affinity_score = args[:unjoined_space_affinity_score] if args.key?(:unjoined_space_affinity_score)
         end
