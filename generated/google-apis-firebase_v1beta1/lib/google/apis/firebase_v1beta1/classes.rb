@@ -230,6 +230,12 @@ module Google
         # @return [String]
         attr_accessor :etag
       
+        # Output only. Timestamp of when the App will be considered expired and cannot
+        # be undeleted. This value is only provided if the App is in the `DELETED` state.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
         # The resource name of the AndroidApp, in the format: projects/
         # PROJECT_IDENTIFIER/androidApps/APP_ID * PROJECT_IDENTIFIER: the parent Project'
         # s [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(
@@ -280,6 +286,7 @@ module Google
           @app_id = args[:app_id] if args.key?(:app_id)
           @display_name = args[:display_name] if args.key?(:display_name)
           @etag = args[:etag] if args.key?(:etag)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
           @name = args[:name] if args.key?(:name)
           @package_name = args[:package_name] if args.key?(:package_name)
           @project_id = args[:project_id] if args.key?(:project_id)
@@ -443,6 +450,12 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Output only. Timestamp of when the App will be considered expired and cannot
+        # be undeleted. This value is only provided if the App is in the `DELETED` state.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
         # The resource name of the Firebase App, in the format: projects/PROJECT_ID /
         # iosApps/APP_ID or projects/PROJECT_ID/androidApps/APP_ID or projects/
         # PROJECT_ID/webApps/APP_ID
@@ -480,6 +493,7 @@ module Google
           @api_key_id = args[:api_key_id] if args.key?(:api_key_id)
           @app_id = args[:app_id] if args.key?(:app_id)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
           @name = args[:name] if args.key?(:name)
           @namespace = args[:namespace] if args.key?(:namespace)
           @platform = args[:platform] if args.key?(:platform)
@@ -630,6 +644,12 @@ module Google
         # @return [String]
         attr_accessor :etag
       
+        # Output only. Timestamp of when the App will be considered expired and cannot
+        # be undeleted. This value is only provided if the App is in the `DELETED` state.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
         # The resource name of the IosApp, in the format: projects/PROJECT_IDENTIFIER /
         # iosApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../
         # projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`
@@ -671,6 +691,7 @@ module Google
           @bundle_id = args[:bundle_id] if args.key?(:bundle_id)
           @display_name = args[:display_name] if args.key?(:display_name)
           @etag = args[:etag] if args.key?(:etag)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
           @name = args[:name] if args.key?(:name)
           @project_id = args[:project_id] if args.key?(:project_id)
           @state = args[:state] if args.key?(:state)
@@ -1553,6 +1574,12 @@ module Google
         # @return [String]
         attr_accessor :etag
       
+        # Output only. Timestamp of when the App will be considered expired and cannot
+        # be undeleted. This value is only provided if the App is in the `DELETED` state.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
         # The resource name of the WebApp, in the format: projects/PROJECT_IDENTIFIER /
         # webApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../
         # projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`
@@ -1597,6 +1624,7 @@ module Google
           @app_urls = args[:app_urls] if args.key?(:app_urls)
           @display_name = args[:display_name] if args.key?(:display_name)
           @etag = args[:etag] if args.key?(:etag)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
           @name = args[:name] if args.key?(:name)
           @project_id = args[:project_id] if args.key?(:project_id)
           @state = args[:state] if args.key?(:state)
