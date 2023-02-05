@@ -1,0 +1,7 @@
+{
+    "api_id": "iam:v2",
+    "name_pretty": "Identity and Access Management (IAM) API",
+    "distribution_name": "google-apis-iam_v2",
+    "language": "ruby",
+    "library_type": "REST"
+}
