@@ -1704,6 +1704,11 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
+        # Statistics for IngestConversations operation.
+        # Corresponds to the JSON property `ingestConversationsStats`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1IngestConversationsMetadataIngestConversationsStats]
+        attr_accessor :ingest_conversations_stats
+      
         # Output only. Partial errors during ingest operation that might cause the
         # operation output to be incomplete.
         # Corresponds to the JSON property `partialErrors`
@@ -1723,8 +1728,49 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @ingest_conversations_stats = args[:ingest_conversations_stats] if args.key?(:ingest_conversations_stats)
           @partial_errors = args[:partial_errors] if args.key?(:partial_errors)
           @request = args[:request] if args.key?(:request)
+        end
+      end
+      
+      # Statistics for IngestConversations operation.
+      class GoogleCloudContactcenterinsightsV1IngestConversationsMetadataIngestConversationsStats
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The number of objects skipped because another conversation with
+        # the same transcript uri had already been ingested.
+        # Corresponds to the JSON property `duplicatesSkippedCount`
+        # @return [Fixnum]
+        attr_accessor :duplicates_skipped_count
+      
+        # Output only. The number of objects which were unable to be ingested due to
+        # errors. The errors are populated in the partial_errors field.
+        # Corresponds to the JSON property `failedIngestCount`
+        # @return [Fixnum]
+        attr_accessor :failed_ingest_count
+      
+        # Output only. The number of objects processed during the ingest operation.
+        # Corresponds to the JSON property `processedObjectCount`
+        # @return [Fixnum]
+        attr_accessor :processed_object_count
+      
+        # Output only. The number of new conversations added during this ingest
+        # operation.
+        # Corresponds to the JSON property `successfulIngestCount`
+        # @return [Fixnum]
+        attr_accessor :successful_ingest_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @duplicates_skipped_count = args[:duplicates_skipped_count] if args.key?(:duplicates_skipped_count)
+          @failed_ingest_count = args[:failed_ingest_count] if args.key?(:failed_ingest_count)
+          @processed_object_count = args[:processed_object_count] if args.key?(:processed_object_count)
+          @successful_ingest_count = args[:successful_ingest_count] if args.key?(:successful_ingest_count)
         end
       end
       
@@ -3460,6 +3506,11 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
+        # Statistics for IngestConversations operation.
+        # Corresponds to the JSON property `ingestConversationsStats`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1IngestConversationsMetadataIngestConversationsStats]
+        attr_accessor :ingest_conversations_stats
+      
         # Output only. Partial errors during ingest operation that might cause the
         # operation output to be incomplete.
         # Corresponds to the JSON property `partialErrors`
@@ -3479,8 +3530,49 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @ingest_conversations_stats = args[:ingest_conversations_stats] if args.key?(:ingest_conversations_stats)
           @partial_errors = args[:partial_errors] if args.key?(:partial_errors)
           @request = args[:request] if args.key?(:request)
+        end
+      end
+      
+      # Statistics for IngestConversations operation.
+      class GoogleCloudContactcenterinsightsV1alpha1IngestConversationsMetadataIngestConversationsStats
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The number of objects skipped because another conversation with
+        # the same transcript uri had already been ingested.
+        # Corresponds to the JSON property `duplicatesSkippedCount`
+        # @return [Fixnum]
+        attr_accessor :duplicates_skipped_count
+      
+        # Output only. The number of objects which were unable to be ingested due to
+        # errors. The errors are populated in the partial_errors field.
+        # Corresponds to the JSON property `failedIngestCount`
+        # @return [Fixnum]
+        attr_accessor :failed_ingest_count
+      
+        # Output only. The number of objects processed during the ingest operation.
+        # Corresponds to the JSON property `processedObjectCount`
+        # @return [Fixnum]
+        attr_accessor :processed_object_count
+      
+        # Output only. The number of new conversations added during this ingest
+        # operation.
+        # Corresponds to the JSON property `successfulIngestCount`
+        # @return [Fixnum]
+        attr_accessor :successful_ingest_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @duplicates_skipped_count = args[:duplicates_skipped_count] if args.key?(:duplicates_skipped_count)
+          @failed_ingest_count = args[:failed_ingest_count] if args.key?(:failed_ingest_count)
+          @processed_object_count = args[:processed_object_count] if args.key?(:processed_object_count)
+          @successful_ingest_count = args[:successful_ingest_count] if args.key?(:successful_ingest_count)
         end
       end
       
