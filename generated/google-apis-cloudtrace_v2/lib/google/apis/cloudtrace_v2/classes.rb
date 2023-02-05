@@ -281,7 +281,7 @@ module Google
       # form a trace tree. Often, a trace contains a root span that describes the end-
       # to-end latency, and one or more subspans for its sub-operations. A trace can
       # also contain multiple root spans, or none at all. Spans do not need to be
-      # contiguous—there might be gaps or overlaps between spans in a trace.
+      # contiguous. There might be gaps or overlaps between spans in a trace.
       class Span
         include Google::Apis::Core::Hashable
       
