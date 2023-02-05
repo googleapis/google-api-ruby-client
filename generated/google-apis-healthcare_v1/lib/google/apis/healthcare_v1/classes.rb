@@ -4392,7 +4392,8 @@ module Google
       class TextConfig
         include Google::Apis::Core::Hashable
       
-        # The transformations to apply to the detected data.
+        # The transformations to apply to the detected data. Deprecated. Use `
+        # additional_transformations` instead.
         # Corresponds to the JSON property `transformations`
         # @return [Array<Google::Apis::HealthcareV1::InfoTypeTransformation>]
         attr_accessor :transformations
