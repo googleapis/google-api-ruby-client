@@ -154,6 +154,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InterRegionEgress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IntraRegionEgress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MachineType
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -269,6 +281,12 @@ module Google
       end
       
       class VmResourceBasedCud
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VmToVmEgressWorkload
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -514,6 +532,24 @@ module Google
         end
       end
       
+      class InterRegionEgress
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :destination_region, as: 'destinationRegion'
+          property :egress_rate, as: 'egressRate', class: Google::Apis::CloudbillingV1beta::Usage, decorator: Google::Apis::CloudbillingV1beta::Usage::Representation
+      
+          property :source_region, as: 'sourceRegion'
+        end
+      end
+      
+      class IntraRegionEgress
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :egress_rate, as: 'egressRate', class: Google::Apis::CloudbillingV1beta::Usage, decorator: Google::Apis::CloudbillingV1beta::Usage::Representation
+      
+        end
+      end
+      
       class MachineType
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -705,6 +741,16 @@ module Google
         end
       end
       
+      class VmToVmEgressWorkload
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :inter_region_egress, as: 'interRegionEgress', class: Google::Apis::CloudbillingV1beta::InterRegionEgress, decorator: Google::Apis::CloudbillingV1beta::InterRegionEgress::Representation
+      
+          property :intra_region_egress, as: 'intraRegionEgress', class: Google::Apis::CloudbillingV1beta::IntraRegionEgress, decorator: Google::Apis::CloudbillingV1beta::IntraRegionEgress::Representation
+      
+        end
+      end
+      
       class Workload
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -726,6 +772,8 @@ module Google
           property :premium_tier_egress_workload, as: 'premiumTierEgressWorkload', class: Google::Apis::CloudbillingV1beta::PremiumTierEgressWorkload, decorator: Google::Apis::CloudbillingV1beta::PremiumTierEgressWorkload::Representation
       
           property :standard_tier_egress_workload, as: 'standardTierEgressWorkload', class: Google::Apis::CloudbillingV1beta::StandardTierEgressWorkload, decorator: Google::Apis::CloudbillingV1beta::StandardTierEgressWorkload::Representation
+      
+          property :vm_to_vm_egress_workload, as: 'vmToVmEgressWorkload', class: Google::Apis::CloudbillingV1beta::VmToVmEgressWorkload, decorator: Google::Apis::CloudbillingV1beta::VmToVmEgressWorkload::Representation
       
         end
       end
