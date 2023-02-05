@@ -238,6 +238,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConfigManagementPolicyControllerMigration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ConfigManagementPolicyControllerMonitoring
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -575,6 +581,24 @@ module Google
       end
       
       class PolicyControllerPolicyContentSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PolicyControllerPolicyControllerDeploymentConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PolicyControllerResourceList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PolicyControllerResourceRequirements
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1078,6 +1102,13 @@ module Google
         end
       end
       
+      class ConfigManagementPolicyControllerMigration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :stage, as: 'stage'
+        end
+      end
+      
       class ConfigManagementPolicyControllerMonitoring
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1089,6 +1120,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :deployment_state, as: 'deploymentState', class: Google::Apis::GkehubV1alpha::ConfigManagementGatekeeperDeploymentState, decorator: Google::Apis::GkehubV1alpha::ConfigManagementGatekeeperDeploymentState::Representation
+      
+          property :migration, as: 'migration', class: Google::Apis::GkehubV1alpha::ConfigManagementPolicyControllerMigration, decorator: Google::Apis::GkehubV1alpha::ConfigManagementPolicyControllerMigration::Representation
       
           property :version, as: 'version', class: Google::Apis::GkehubV1alpha::ConfigManagementPolicyControllerVersion, decorator: Google::Apis::GkehubV1alpha::ConfigManagementPolicyControllerVersion::Representation
       
@@ -1626,6 +1659,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :audit_interval_seconds, :numeric_string => true, as: 'auditIntervalSeconds'
+          property :constraint_violation_limit, :numeric_string => true, as: 'constraintViolationLimit'
+          hash :deployment_configs, as: 'deploymentConfigs', class: Google::Apis::GkehubV1alpha::PolicyControllerPolicyControllerDeploymentConfig, decorator: Google::Apis::GkehubV1alpha::PolicyControllerPolicyControllerDeploymentConfig::Representation
+      
           collection :exemptable_namespaces, as: 'exemptableNamespaces'
           property :install_spec, as: 'installSpec'
           property :log_denies_enabled, as: 'logDeniesEnabled'
@@ -1679,6 +1715,34 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :bundles, as: 'bundles', class: Google::Apis::GkehubV1alpha::PolicyControllerBundleInstallSpec, decorator: Google::Apis::GkehubV1alpha::PolicyControllerBundleInstallSpec::Representation
+      
+        end
+      end
+      
+      class PolicyControllerPolicyControllerDeploymentConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :container_resources, as: 'containerResources', class: Google::Apis::GkehubV1alpha::PolicyControllerResourceRequirements, decorator: Google::Apis::GkehubV1alpha::PolicyControllerResourceRequirements::Representation
+      
+          property :pod_anti_affinity, as: 'podAntiAffinity'
+          property :replica_count, :numeric_string => true, as: 'replicaCount'
+        end
+      end
+      
+      class PolicyControllerResourceList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cpu, as: 'cpu'
+          property :memory, as: 'memory'
+        end
+      end
+      
+      class PolicyControllerResourceRequirements
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :limits, as: 'limits', class: Google::Apis::GkehubV1alpha::PolicyControllerResourceList, decorator: Google::Apis::GkehubV1alpha::PolicyControllerResourceList::Representation
+      
+          property :requests, as: 'requests', class: Google::Apis::GkehubV1alpha::PolicyControllerResourceList, decorator: Google::Apis::GkehubV1alpha::PolicyControllerResourceList::Representation
       
         end
       end
