@@ -2274,6 +2274,12 @@ module Google
         # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1OsUpdateStatus>]
         attr_accessor :os_update_status
       
+        # Output only. Peripherals reports collected periodically sorted in a decreasing
+        # order of report_time.
+        # Corresponds to the JSON property `peripheralsReport`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1PeripheralsReport>]
+        attr_accessor :peripherals_report
+      
         # Output only. Device serial number. This value is the same as the Admin Console'
         # s Serial Number in the ChromeOS Devices tab.
         # Corresponds to the JSON property `serialNumber`
@@ -2326,6 +2332,7 @@ module Google
           @network_status_report = args[:network_status_report] if args.key?(:network_status_report)
           @org_unit_id = args[:org_unit_id] if args.key?(:org_unit_id)
           @os_update_status = args[:os_update_status] if args.key?(:os_update_status)
+          @peripherals_report = args[:peripherals_report] if args.key?(:peripherals_report)
           @serial_number = args[:serial_number] if args.key?(:serial_number)
           @storage_info = args[:storage_info] if args.key?(:storage_info)
           @storage_status_report = args[:storage_status_report] if args.key?(:storage_status_report)

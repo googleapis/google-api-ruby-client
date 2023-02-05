@@ -377,10 +377,10 @@ module Google
         #   Query string to filter results, AND-separated fields in EBNF syntax. Note: OR
         #   operations are not supported in this filter. Supported filter fields: *
         #   app_name * app_type * install_type * number_of_permissions *
-        #   total_install_count * latest_profile_active_date * permission_name
+        #   total_install_count * latest_profile_active_date * permission_name * app_id
         # @param [String] order_by
         #   Field used to order results. Supported order by fields: * app_name * app_type *
-        #   install_type * number_of_permissions * total_install_count
+        #   install_type * number_of_permissions * total_install_count * app_id
         # @param [String] org_unit_id
         #   The ID of the organizational unit.
         # @param [Fixnum] page_size
