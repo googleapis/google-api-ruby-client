@@ -370,6 +370,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDatacatalogV1ReconcileTagsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1ReconcileTagsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1ReconcileTagsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDatacatalogV1RenameTagTemplateFieldEnumValueRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1143,6 +1161,34 @@ module Google
           property :display_name, as: 'displayName'
           property :name, as: 'name'
           property :parent_policy_tag, as: 'parentPolicyTag'
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1ReconcileTagsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :errors, as: 'errors', class: Google::Apis::DatacatalogV1::Status, decorator: Google::Apis::DatacatalogV1::Status::Representation
+      
+          property :state, as: 'state'
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1ReconcileTagsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :force_delete_missing, as: 'forceDeleteMissing'
+          property :tag_template, as: 'tagTemplate'
+          collection :tags, as: 'tags', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1Tag, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1Tag::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1ReconcileTagsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :created_tags_count, :numeric_string => true, as: 'createdTagsCount'
+          property :deleted_tags_count, :numeric_string => true, as: 'deletedTagsCount'
+          property :updated_tags_count, :numeric_string => true, as: 'updatedTagsCount'
         end
       end
       
