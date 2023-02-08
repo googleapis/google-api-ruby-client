@@ -1,5 +1,5 @@
 {
-  "google-apis-core": "0.10.0",
+  "google-apis-core": "0.11.0",
   "google-apis-core+FILLER": "0.0.0",
   "google-apis-generator": "0.11.1",
   "google-apis-generator+FILLER": "0.0.0"
