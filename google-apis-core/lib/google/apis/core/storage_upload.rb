@@ -146,7 +146,12 @@ module Google
           request_header = header.dup
           request_header[CONTENT_RANGE_HEADER] = get_content_range_header current_chunk_size
           request_header[CONTENT_LENGTH_HEADER] = current_chunk_size
-          chunk_body = StringIO.new(upload_io.read(current_chunk_size))
+          chunk_body =
+            if @upload_chunk_size == 0
+              upload_io
+            else
+              StringIO.new(upload_io.read(current_chunk_size))
+            end
 
           response = client.put(@upload_url, body: chunk_body, header: request_header, follow_redirect: true)
 
