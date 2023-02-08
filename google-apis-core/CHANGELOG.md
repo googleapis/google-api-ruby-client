@@ -1,5 +1,11 @@
 # Release History
 
+### 0.11.0 (2023-02-08)
+
+#### Features
+
+* Optimize memory usage when upload chunk size is set to 0 
+
 ### 0.10.0 (2023-01-26)
 
 #### Features
