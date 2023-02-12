@@ -1,5 +1,9 @@
 # Release history for google-apis-clouddeploy_v1
 
+### v0.20.0 (2023-02-12)
+
+* Regenerated from discovery document revision 20230124
+
 ### v0.19.0 (2023-01-29)
 
 * Regenerated from discovery document revision 20230118
