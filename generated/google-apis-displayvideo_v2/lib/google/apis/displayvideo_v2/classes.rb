@@ -90,12 +90,12 @@ module Google
       class AdUrl
         include Google::Apis::Core::Hashable
       
-        # The type of the AD url.
+        # The type of the Ad URL.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
       
-        # The url value of the ad url.
+        # The URL string value.
         # Corresponds to the JSON property `url`
         # @return [String]
         attr_accessor :url
@@ -1281,7 +1281,7 @@ module Google
         end
       end
       
-      # The details for audio ad.
+      # Details for an audio ad.
       class AudioAd
         include Google::Apis::Core::Hashable
       
@@ -1295,12 +1295,12 @@ module Google
         # @return [String]
         attr_accessor :final_url
       
-        # The URL address which is loaded in background for tracking purpose.
+        # The URL address loaded in the background for tracking purposes.
         # Corresponds to the JSON property `trackingUrl`
         # @return [String]
         attr_accessor :tracking_url
       
-        # Details of the YouTube video.
+        # Details of a YouTube video.
         # Corresponds to the JSON property `video`
         # @return [Google::Apis::DisplayvideoV2::YoutubeVideoDetails]
         attr_accessor :video
@@ -1822,13 +1822,63 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The assigned targeting options to create in batch, specified as a list of
-        # CreateAssignedTargetingOptionsRequest.
+        # CreateAssignedTargetingOptionsRequest. Supported targeting types include: * `
+        # TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `
+        # TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUDIENCE_GROUP` * `
+        # TARGETING_TYPE_AUDIO_CONTENT_TYPE` * `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS`
+        # * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_BUSINESS_CHAIN` * `
+        # TARGETING_TYPE_CARRIER_AND_ISP` * `TARGETING_TYPE_CATEGORY` * `
+        # TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_CONTENT_DURATION` * `
+        # TARGETING_TYPE_CONTENT_GENRE` * `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` * `
+        # TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` * `
+        # TARGETING_TYPE_CONTENT_STREAM_TYPE` * `TARGETING_TYPE_DAY_AND_TIME` * `
+        # TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_DEVICE_TYPE` * `
+        # TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT`
+        # * `TARGETING_TYPE_EXCHANGE` * `TARGETING_TYPE_GENDER` * `
+        # TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `
+        # TARGETING_TYPE_INVENTORY_SOURCE` * `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `
+        # TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` * `
+        # TARGETING_TYPE_NATIVE_CONTENT_POSITION` * `
+        # TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OMID` * `
+        # TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_OPERATING_SYSTEM` * `
+        # TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_POI` * `
+        # TARGETING_TYPE_PROXIMITY_LOCATION_LIST` * `
+        # TARGETING_TYPE_REGIONAL_LOCATION_LIST` * `
+        # TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_SUB_EXCHANGE` *
+        # `TARGETING_TYPE_THIRD_PARTY_VERIFIER` * `TARGETING_TYPE_URL` * `
+        # TARGETING_TYPE_USER_REWARDED_CONTENT` * `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `
+        # TARGETING_TYPE_VIEWABILITY`
         # Corresponds to the JSON property `createRequests`
         # @return [Array<Google::Apis::DisplayvideoV2::CreateAssignedTargetingOptionsRequest>]
         attr_accessor :create_requests
       
         # The assigned targeting options to delete in batch, specified as a list of
-        # DeleteAssignedTargetingOptionsRequest.
+        # DeleteAssignedTargetingOptionsRequest. Supported targeting types include: * `
+        # TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `
+        # TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUDIENCE_GROUP` * `
+        # TARGETING_TYPE_AUDIO_CONTENT_TYPE` * `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS`
+        # * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_BUSINESS_CHAIN` * `
+        # TARGETING_TYPE_CARRIER_AND_ISP` * `TARGETING_TYPE_CATEGORY` * `
+        # TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_CONTENT_DURATION` * `
+        # TARGETING_TYPE_CONTENT_GENRE` * `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` * `
+        # TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` * `
+        # TARGETING_TYPE_CONTENT_STREAM_TYPE` * `TARGETING_TYPE_DAY_AND_TIME` * `
+        # TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_DEVICE_TYPE` * `
+        # TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT`
+        # * `TARGETING_TYPE_EXCHANGE` * `TARGETING_TYPE_GENDER` * `
+        # TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `
+        # TARGETING_TYPE_INVENTORY_SOURCE` * `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `
+        # TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` * `
+        # TARGETING_TYPE_NATIVE_CONTENT_POSITION` * `
+        # TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OMID` * `
+        # TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_OPERATING_SYSTEM` * `
+        # TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_POI` * `
+        # TARGETING_TYPE_PROXIMITY_LOCATION_LIST` * `
+        # TARGETING_TYPE_REGIONAL_LOCATION_LIST` * `
+        # TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_SUB_EXCHANGE` *
+        # `TARGETING_TYPE_THIRD_PARTY_VERIFIER` * `TARGETING_TYPE_URL` * `
+        # TARGETING_TYPE_USER_REWARDED_CONTENT` * `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `
+        # TARGETING_TYPE_VIEWABILITY`
         # Corresponds to the JSON property `deleteRequests`
         # @return [Array<Google::Apis::DisplayvideoV2::DeleteAssignedTargetingOptionsRequest>]
         attr_accessor :delete_requests
@@ -2299,11 +2349,11 @@ module Google
         end
       end
       
-      # Ad details for BumperAd.
+      # Details for a bumper ad.
       class BumperAd
         include Google::Apis::Core::Hashable
       
-        # The common attributes for InStreamAd, NonSkippableAd and BumperAd.
+        # Common attributes for in-stream, non-skippable and bumper ads.
         # Corresponds to the JSON property `commonInStreamAttribute`
         # @return [Google::Apis::DisplayvideoV2::CommonInStreamAttribute]
         attr_accessor :common_in_stream_attribute
@@ -3009,7 +3059,7 @@ module Google
         end
       end
       
-      # The common attributes for InStreamAd, NonSkippableAd and BumperAd.
+      # Common attributes for in-stream, non-skippable and bumper ads.
       class CommonInStreamAttribute
         include Google::Apis::Core::Hashable
       
@@ -3023,7 +3073,7 @@ module Google
         # @return [String]
         attr_accessor :action_headline
       
-        # The meta data of an image asset.
+        # Meta data of an image asset.
         # Corresponds to the JSON property `companionBanner`
         # @return [Google::Apis::DisplayvideoV2::ImageAsset]
         attr_accessor :companion_banner
@@ -3038,12 +3088,12 @@ module Google
         # @return [String]
         attr_accessor :final_url
       
-        # The URL address which is loaded in background for tracking purpose.
+        # The URL address loaded in the background for tracking purposes.
         # Corresponds to the JSON property `trackingUrl`
         # @return [String]
         attr_accessor :tracking_url
       
-        # Details of the YouTube video.
+        # Details of a YouTube video.
         # Corresponds to the JSON property `video`
         # @return [Google::Apis::DisplayvideoV2::YoutubeVideoDetails]
         attr_accessor :video
@@ -4677,7 +4727,7 @@ module Google
         end
       end
       
-      # The ad of which source is DV360 creative.
+      # The ad sourced from a DV360 creative.
       class DisplayVideoSourceAd
         include Google::Apis::Core::Hashable
       
@@ -6212,7 +6262,7 @@ module Google
         end
       end
       
-      # The meta data of an image asset.
+      # Meta data of an image asset.
       class ImageAsset
         include Google::Apis::Core::Hashable
       
@@ -6243,16 +6293,16 @@ module Google
         end
       end
       
-      # Ad details for InStreamAd
+      # Details for an in-stream ad.
       class InStreamAd
         include Google::Apis::Core::Hashable
       
-        # The common attributes for InStreamAd, NonSkippableAd and BumperAd.
+        # Common attributes for in-stream, non-skippable and bumper ads.
         # Corresponds to the JSON property `commonInStreamAttribute`
         # @return [Google::Apis::DisplayvideoV2::CommonInStreamAttribute]
         attr_accessor :common_in_stream_attribute
       
-        # The custom parameters to pass custom values to tracking url template.
+        # The custom parameters to pass custom values to tracking URL template.
         # Corresponds to the JSON property `customParameters`
         # @return [Hash<String,String>]
         attr_accessor :custom_parameters
@@ -8392,7 +8442,7 @@ module Google
         end
       end
       
-      # Response message for YoutubeAdGroupAdService.ListYoutubeAdGroupAds.
+      # 
       class ListYoutubeAdGroupAdsResponse
         include Google::Apis::Core::Hashable
       
@@ -8628,16 +8678,16 @@ module Google
         end
       end
       
-      # The details for masthead ad.
+      # Details for a Masthead Ad.
       class MastheadAd
         include Google::Apis::Core::Hashable
       
-        # Video will autoplay for certain period of time.
+        # The duration of time the video will autoplay.
         # Corresponds to the JSON property `autoplayVideoDuration`
         # @return [String]
         attr_accessor :autoplay_video_duration
       
-        # Video will start to play after certain period of time in millisecond.
+        # The amount of time in milliseconds after which the video will start to play.
         # Corresponds to the JSON property `autoplayVideoStartMillisecond`
         # @return [Fixnum]
         attr_accessor :autoplay_video_start_millisecond
@@ -8657,7 +8707,8 @@ module Google
         # @return [String]
         attr_accessor :call_to_action_tracking_url
       
-        # The videos (up to 2) that appear next to the Masthead ad on desktop.
+        # The videos that appear next to the Masthead Ad on desktop. Can be no more than
+        # two.
         # Corresponds to the JSON property `companionYoutubeVideos`
         # @return [Array<Google::Apis::DisplayvideoV2::YoutubeVideoDetails>]
         attr_accessor :companion_youtube_videos
@@ -8679,12 +8730,12 @@ module Google
         attr_accessor :show_channel_art
         alias_method :show_channel_art?, :show_channel_art
       
-        # Details of the YouTube video.
+        # Details of a YouTube video.
         # Corresponds to the JSON property `video`
         # @return [Google::Apis::DisplayvideoV2::YoutubeVideoDetails]
         attr_accessor :video
       
-        # Aspect ratio of the autoplaying YouTube video on the Masthead.
+        # The aspect ratio of the autoplaying YouTube video on the Masthead.
         # Corresponds to the JSON property `videoAspectRatio`
         # @return [String]
         attr_accessor :video_aspect_ratio
@@ -9022,16 +9073,16 @@ module Google
         end
       end
       
-      # Ad details for NonSkippableAd
+      # Details for a non-skippable ad.
       class NonSkippableAd
         include Google::Apis::Core::Hashable
       
-        # The common attributes for InStreamAd, NonSkippableAd and BumperAd.
+        # Common attributes for in-stream, non-skippable and bumper ads.
         # Corresponds to the JSON property `commonInStreamAttribute`
         # @return [Google::Apis::DisplayvideoV2::CommonInStreamAttribute]
         attr_accessor :common_in_stream_attribute
       
-        # The custom parameters to pass custom values to tracking url template.
+        # The custom parameters to pass custom values to tracking URL template.
         # Corresponds to the JSON property `customParameters`
         # @return [Hash<String,String>]
         attr_accessor :custom_parameters
@@ -9981,18 +10032,18 @@ module Google
       class ProductFeedData
         include Google::Apis::Core::Hashable
       
-        # True if opt out of showing products.
+        # Whether the product feed has opted-out of showing products.
         # Corresponds to the JSON property `isFeedDisabled`
         # @return [Boolean]
         attr_accessor :is_feed_disabled
         alias_method :is_feed_disabled?, :is_feed_disabled
       
-        # A list of dimensions which are used to match products.
+        # A list of dimensions used to match products.
         # Corresponds to the JSON property `productMatchDimensions`
         # @return [Array<Google::Apis::DisplayvideoV2::ProductMatchDimension>]
         attr_accessor :product_match_dimensions
       
-        # The type of the way to select the products.
+        # How products are selected by the product feed.
         # Corresponds to the JSON property `productMatchType`
         # @return [String]
         attr_accessor :product_match_type
@@ -10009,7 +10060,7 @@ module Google
         end
       end
       
-      # The dimension which are used to match products.
+      # A dimension used to match products.
       class ProductMatchDimension
         include Google::Apis::Core::Hashable
       
@@ -10018,7 +10069,7 @@ module Google
         # @return [Google::Apis::DisplayvideoV2::CustomLabel]
         attr_accessor :custom_label
       
-        # The ID of the product offer to match the product with the same offer ID.
+        # The ID of the product offer to match with a product with the same offer ID.
         # Corresponds to the JSON property `productOfferId`
         # @return [String]
         attr_accessor :product_offer_id
@@ -11522,7 +11573,7 @@ module Google
         end
       end
       
-      # The details for video discovery ad.
+      # Details for a video discovery ad.
       class VideoDiscoveryAd
         include Google::Apis::Core::Hashable
       
@@ -11536,17 +11587,17 @@ module Google
         # @return [String]
         attr_accessor :description2
       
-        # The headline of the video discovery ad.
+        # The headline of ad.
         # Corresponds to the JSON property `headline`
         # @return [String]
         attr_accessor :headline
       
-        # Thumbnail image to use in the ad.
+        # Thumbnail image used in the ad.
         # Corresponds to the JSON property `thumbnail`
         # @return [String]
         attr_accessor :thumbnail
       
-        # Details of the YouTube video.
+        # Details of a YouTube video.
         # Corresponds to the JSON property `video`
         # @return [Google::Apis::DisplayvideoV2::YoutubeVideoDetails]
         attr_accessor :video
@@ -11565,41 +11616,41 @@ module Google
         end
       end
       
-      # The details for video performance ad.
+      # Details for a video performance ad.
       class VideoPerformanceAd
         include Google::Apis::Core::Hashable
       
-        # The list of text assets which show on the call-to-action button.
+        # The list of text assets shown on the call-to-action button.
         # Corresponds to the JSON property `actionButtonLabels`
         # @return [Array<String>]
         attr_accessor :action_button_labels
       
-        # The list of companion banners of this ad.
+        # The list of companion banners used by this ad.
         # Corresponds to the JSON property `companionBanners`
         # @return [Array<Google::Apis::DisplayvideoV2::ImageAsset>]
         attr_accessor :companion_banners
       
-        # The custom parameters to pass custom values to tracking url template.
+        # The custom parameters to pass custom values to tracking URL template.
         # Corresponds to the JSON property `customParameters`
         # @return [Hash<String,String>]
         attr_accessor :custom_parameters
       
-        # The list of descriptions which show on the call-to-action banner.
+        # The list of descriptions shown on the call-to-action banner.
         # Corresponds to the JSON property `descriptions`
         # @return [Array<String>]
         attr_accessor :descriptions
       
-        # The first piece after the domain in the display url.
+        # The first piece after the domain in the display URL.
         # Corresponds to the JSON property `displayUrlBreadcrumb1`
         # @return [String]
         attr_accessor :display_url_breadcrumb1
       
-        # The second piece after the domain in the display url.
+        # The second piece after the domain in the display URL.
         # Corresponds to the JSON property `displayUrlBreadcrumb2`
         # @return [String]
         attr_accessor :display_url_breadcrumb2
       
-        # The domain of the display url
+        # The domain of the display URL.
         # Corresponds to the JSON property `domain`
         # @return [String]
         attr_accessor :domain
@@ -11609,22 +11660,22 @@ module Google
         # @return [String]
         attr_accessor :final_url
       
-        # The list of headlines which show on the call-to-action banner.
+        # The list of headlines shown on the call-to-action banner.
         # Corresponds to the JSON property `headlines`
         # @return [Array<String>]
         attr_accessor :headlines
       
-        # The list of lone headlines which show on the call-to-action banner.
+        # The list of lone headlines shown on the call-to-action banner.
         # Corresponds to the JSON property `longHeadlines`
         # @return [Array<String>]
         attr_accessor :long_headlines
       
-        # The URL address which is loaded in background for tracking purpose.
+        # The URL address loaded in the background for tracking purposes.
         # Corresponds to the JSON property `trackingUrl`
         # @return [String]
         attr_accessor :tracking_url
       
-        # The list of YouTube video assets in this ad.
+        # The list of YouTube video assets used by this ad.
         # Corresponds to the JSON property `videos`
         # @return [Array<Google::Apis::DisplayvideoV2::YoutubeVideoDetails>]
         attr_accessor :videos
@@ -11740,7 +11791,7 @@ module Google
       class YoutubeAdGroup
         include Google::Apis::Core::Hashable
       
-        # The format of the ad group.
+        # The format of the ads in the ad group.
         # Corresponds to the JSON property `adGroupFormat`
         # @return [String]
         attr_accessor :ad_group_format
@@ -11798,7 +11849,7 @@ module Google
         # @return [Google::Apis::DisplayvideoV2::TargetingExpansionConfig]
         attr_accessor :targeting_expansion
       
-        # The IDs of the YouTubeAds associated with the ad group.
+        # The IDs of the youtube_ad_group_ad resources associated with the ad group.
         # Corresponds to the JSON property `youtubeAdIds`
         # @return [Array<Fixnum>]
         attr_accessor :youtube_ad_ids
@@ -11823,82 +11874,82 @@ module Google
         end
       end
       
-      # A single YouTube ad group ad associated with a YouTube ad group.
+      # A single ad associated with a YouTube ad group.
       class YoutubeAdGroupAd
         include Google::Apis::Core::Hashable
       
-        # The unique ID of the ad group ad. Assigned by the system.
+        # The unique ID of the ad. Assigned by the system.
         # Corresponds to the JSON property `adGroupAdId`
         # @return [Fixnum]
         attr_accessor :ad_group_ad_id
       
-        # The unique ID of the ad group that the ad group ad belongs to.
+        # The unique ID of the ad group that the ad belongs to.
         # Corresponds to the JSON property `adGroupId`
         # @return [Fixnum]
         attr_accessor :ad_group_id
       
-        # The list of ad urls.
+        # List of URLs used by the ad.
         # Corresponds to the JSON property `adUrls`
         # @return [Array<Google::Apis::DisplayvideoV2::AdUrl>]
         attr_accessor :ad_urls
       
-        # The unique ID of the advertiser the ad group ad belongs to.
+        # The unique ID of the advertiser the ad belongs to.
         # Corresponds to the JSON property `advertiserId`
         # @return [Fixnum]
         attr_accessor :advertiser_id
       
-        # The details for audio ad.
+        # Details for an audio ad.
         # Corresponds to the JSON property `audioAd`
         # @return [Google::Apis::DisplayvideoV2::AudioAd]
         attr_accessor :audio_ad
       
-        # Ad details for BumperAd.
+        # Details for a bumper ad.
         # Corresponds to the JSON property `bumperAd`
         # @return [Google::Apis::DisplayvideoV2::BumperAd]
         attr_accessor :bumper_ad
       
-        # The display name of the ad group ad. Must be UTF-8 encoded with a maximum size
-        # of 255 bytes.
+        # The display name of the ad. Must be UTF-8 encoded with a maximum size of 255
+        # bytes.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # The ad of which source is DV360 creative.
+        # The ad sourced from a DV360 creative.
         # Corresponds to the JSON property `displayVideoSourceAd`
         # @return [Google::Apis::DisplayvideoV2::DisplayVideoSourceAd]
         attr_accessor :display_video_source_ad
       
-        # The entity status of the ad group ad.
+        # The entity status of the ad.
         # Corresponds to the JSON property `entityStatus`
         # @return [String]
         attr_accessor :entity_status
       
-        # Ad details for InStreamAd
+        # Details for an in-stream ad.
         # Corresponds to the JSON property `inStreamAd`
         # @return [Google::Apis::DisplayvideoV2::InStreamAd]
         attr_accessor :in_stream_ad
       
-        # The details for masthead ad.
+        # Details for a Masthead Ad.
         # Corresponds to the JSON property `mastheadAd`
         # @return [Google::Apis::DisplayvideoV2::MastheadAd]
         attr_accessor :masthead_ad
       
-        # The resource name of the ad group ad.
+        # The resource name of the ad.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Ad details for NonSkippableAd
+        # Details for a non-skippable ad.
         # Corresponds to the JSON property `nonSkippableAd`
         # @return [Google::Apis::DisplayvideoV2::NonSkippableAd]
         attr_accessor :non_skippable_ad
       
-        # The details for video discovery ad.
+        # Details for a video discovery ad.
         # Corresponds to the JSON property `videoDiscoverAd`
         # @return [Google::Apis::DisplayvideoV2::VideoDiscoveryAd]
         attr_accessor :video_discover_ad
       
-        # The details for video performance ad.
+        # Details for a video performance ad.
         # Corresponds to the JSON property `videoPerformanceAd`
         # @return [Google::Apis::DisplayvideoV2::VideoPerformanceAd]
         attr_accessor :video_performance_ad
@@ -12220,11 +12271,11 @@ module Google
         end
       end
       
-      # Details of the YouTube video.
+      # Details of a YouTube video.
       class YoutubeVideoDetails
         include Google::Apis::Core::Hashable
       
-        # The ID which can be searched on YouTube webpage.
+        # The YouTube video ID which can be searched on YouTube webpage.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
