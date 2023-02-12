@@ -106,6 +106,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromeManagementV1CountChromeBrowsersNeedingAttentionResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromeManagementV1CountChromeDevicesReachingAutoExpirationDateResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -562,6 +568,15 @@ module Google
           collection :requested_apps, as: 'requestedApps', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1ChromeAppRequest, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1ChromeAppRequest::Representation
       
           property :total_size, as: 'totalSize'
+        end
+      end
+      
+      class GoogleChromeManagementV1CountChromeBrowsersNeedingAttentionResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :no_recent_activity_count, :numeric_string => true, as: 'noRecentActivityCount'
+          property :pending_browser_update_count, :numeric_string => true, as: 'pendingBrowserUpdateCount'
+          property :recently_enrolled_count, :numeric_string => true, as: 'recentlyEnrolledCount'
         end
       end
       

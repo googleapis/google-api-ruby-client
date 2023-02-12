@@ -789,6 +789,37 @@ module Google
         end
       end
       
+      # Response containing counts for browsers that need attention.
+      class GoogleChromeManagementV1CountChromeBrowsersNeedingAttentionResponse
+        include Google::Apis::Core::Hashable
+      
+        # Number of browsers that haven’t had any recent activity
+        # Corresponds to the JSON property `noRecentActivityCount`
+        # @return [Fixnum]
+        attr_accessor :no_recent_activity_count
+      
+        # Number of browsers that are pending an OS update
+        # Corresponds to the JSON property `pendingBrowserUpdateCount`
+        # @return [Fixnum]
+        attr_accessor :pending_browser_update_count
+      
+        # Number of browsers that have been recently enrolled
+        # Corresponds to the JSON property `recentlyEnrolledCount`
+        # @return [Fixnum]
+        attr_accessor :recently_enrolled_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @no_recent_activity_count = args[:no_recent_activity_count] if args.key?(:no_recent_activity_count)
+          @pending_browser_update_count = args[:pending_browser_update_count] if args.key?(:pending_browser_update_count)
+          @recently_enrolled_count = args[:recently_enrolled_count] if args.key?(:recently_enrolled_count)
+        end
+      end
+      
       # Response containing a list of devices expiring in each month of a selected
       # time frame. Counts are grouped by model and Auto Update Expiration date.
       class GoogleChromeManagementV1CountChromeDevicesReachingAutoExpirationDateResponse
