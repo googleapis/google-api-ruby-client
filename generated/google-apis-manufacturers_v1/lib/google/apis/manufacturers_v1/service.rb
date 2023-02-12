@@ -49,6 +49,158 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Deletes a product certification by its name. This method can only be called by
+        # certification bodies.
+        # @param [String] name
+        #   Required. The name of the product certification to delete. Format: accounts/`
+        #   account`/languages/`language_code`/productCertifications/`id`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManufacturersV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManufacturersV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_account_language_product_certification(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ManufacturersV1::Empty::Representation
+          command.response_class = Google::Apis::ManufacturersV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a product certification by its name. This method can only be called by
+        # certification bodies.
+        # @param [String] name
+        #   Required. The name of the product certification to get. Format: accounts/`
+        #   account`/languages/`language_code`/productCertifications/`id`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManufacturersV1::ProductCertification] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManufacturersV1::ProductCertification]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_account_language_product_certification(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ManufacturersV1::ProductCertification::Representation
+          command.response_class = Google::Apis::ManufacturersV1::ProductCertification
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists product certifications from a specified certification body. This method
+        # can only be called by certification bodies.
+        # @param [String] parent
+        #   Required. The parent, which owns this collection of product certifications.
+        #   Format: accounts/`account`/languages/`language_code`
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of product certifications to return. The service
+        #   may return fewer than this value. If unspecified, at most 50 product
+        #   certifications will be returned. The maximum value is 1000; values above 1000
+        #   will be coerced to 1000.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListProductCertifications`
+        #   call. Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListProductCertifications` must match the call that
+        #   provided the page token. Required if requesting the second or higher page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManufacturersV1::ListProductCertificationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManufacturersV1::ListProductCertificationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_account_language_product_certifications(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/productCertifications', options)
+          command.response_representation = Google::Apis::ManufacturersV1::ListProductCertificationsResponse::Representation
+          command.response_class = Google::Apis::ManufacturersV1::ListProductCertificationsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates (or creates if allow_missing = true) a product certification which
+        # links certifications with products. This method can only be called by
+        # certification bodies.
+        # @param [String] name
+        #   Required. The unique name identifier of a product certification Format:
+        #   accounts/`account`/languages/`language_code`/productCertifications/`id` Where `
+        #   id` is a some unique identifier and `language_code` is a 2-letter ISO 639-1
+        #   code of a Shopping supported language according to https://support.google.com/
+        #   merchants/answer/160637.
+        # @param [Google::Apis::ManufacturersV1::ProductCertification] product_certification_object
+        # @param [String] update_mask
+        #   Optional. The list of fields to update according to aip.dev/134. However, only
+        #   full update is supported as of right now. Therefore, it can be either ignored
+        #   or set to "*". Setting any other values will returns UNIMPLEMENTED error.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManufacturersV1::ProductCertification] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManufacturersV1::ProductCertification]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_account_language_product_certification(name, product_certification_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ManufacturersV1::ProductCertification::Representation
+          command.request_object = product_certification_object
+          command.response_representation = Google::Apis::ManufacturersV1::ProductCertification::Representation
+          command.response_class = Google::Apis::ManufacturersV1::ProductCertification
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes the product from a Manufacturer Center account.
         # @param [String] parent
         #   Parent ID in the format `accounts/`account_id``. `account_id` - The ID of the

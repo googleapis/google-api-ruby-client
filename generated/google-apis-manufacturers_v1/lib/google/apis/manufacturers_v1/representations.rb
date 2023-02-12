@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Certification
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Count
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -82,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListProductCertificationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListProductsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -101,6 +113,12 @@ module Google
       end
       
       class Product
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ProductCertification
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -180,6 +198,18 @@ module Google
         end
       end
       
+      class Certification
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authority, as: 'authority'
+          property :link, as: 'link'
+          property :logo, as: 'logo'
+          property :name, as: 'name'
+          property :valid_until, as: 'validUntil'
+          property :value, as: 'value'
+        end
+      end
+      
       class Count
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -255,6 +285,15 @@ module Google
           property :timestamp, as: 'timestamp'
           property :title, as: 'title'
           property :type, as: 'type'
+        end
+      end
+      
+      class ListProductCertificationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :product_certifications, as: 'productCertifications', class: Google::Apis::ManufacturersV1::ProductCertification, decorator: Google::Apis::ManufacturersV1::ProductCertification::Representation
+      
         end
       end
       
@@ -361,6 +400,25 @@ module Google
           property :parent, as: 'parent'
           property :product_id, as: 'productId'
           property :target_country, as: 'targetCountry'
+        end
+      end
+      
+      class ProductCertification
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :brand, as: 'brand'
+          collection :certification, as: 'certification', class: Google::Apis::ManufacturersV1::Certification, decorator: Google::Apis::ManufacturersV1::Certification::Representation
+      
+          collection :country_code, as: 'countryCode'
+          collection :destination_statuses, as: 'destinationStatuses', class: Google::Apis::ManufacturersV1::DestinationStatus, decorator: Google::Apis::ManufacturersV1::DestinationStatus::Representation
+      
+          collection :issues, as: 'issues', class: Google::Apis::ManufacturersV1::Issue, decorator: Google::Apis::ManufacturersV1::Issue::Representation
+      
+          collection :mpn, as: 'mpn'
+          property :name, as: 'name'
+          collection :product_code, as: 'productCode'
+          collection :product_type, as: 'productType'
+          property :title, as: 'title'
         end
       end
       
