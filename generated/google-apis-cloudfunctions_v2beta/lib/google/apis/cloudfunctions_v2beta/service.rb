@@ -339,7 +339,10 @@ module Google
         #   list of fields. The default sorting oder is ascending. See https://google.aip.
         #   dev/132#ordering.
         # @param [Fixnum] page_size
-        #   Maximum number of functions to return per call.
+        #   Maximum number of functions to return per call. The largest allowed page_size
+        #   is 1,000, if the page_size is omitted or specified as greater than 1,000 then
+        #   it will be replaced as 1,000. The size of the list response can be less than
+        #   specified when used with filters.
         # @param [String] page_token
         #   The value returned by the last `ListFunctionsResponse`; indicates that this is
         #   a continuation of a prior `ListFunctions` call, and that the system should
