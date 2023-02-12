@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Assessment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Attestation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -706,6 +712,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Product
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Publisher
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Recipe
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -725,6 +743,12 @@ module Google
       end
       
       class RelationshipOccurrence
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Remediation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -832,7 +856,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Threat
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TimeSpan
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Uri
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -868,7 +904,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VexAssessment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Volume
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VulnerabilityAssessmentNote
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -906,6 +954,22 @@ module Google
           property :id, as: 'id'
           property :name, as: 'name'
           collection :names, as: 'names'
+        end
+      end
+      
+      class Assessment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cve, as: 'cve'
+          property :long_description, as: 'longDescription'
+          collection :related_uris, as: 'relatedUris', class: Google::Apis::ContaineranalysisV1alpha1::Uri, decorator: Google::Apis::ContaineranalysisV1alpha1::Uri::Representation
+      
+          collection :remediations, as: 'remediations', class: Google::Apis::ContaineranalysisV1alpha1::Remediation, decorator: Google::Apis::ContaineranalysisV1alpha1::Remediation::Representation
+      
+          property :short_description, as: 'shortDescription'
+          property :state, as: 'state'
+          collection :threats, as: 'threats', class: Google::Apis::ContaineranalysisV1alpha1::Threat, decorator: Google::Apis::ContaineranalysisV1alpha1::Threat::Representation
+      
         end
       end
       
@@ -2064,6 +2128,8 @@ module Google
           property :update_time, as: 'updateTime'
           property :upgrade, as: 'upgrade', class: Google::Apis::ContaineranalysisV1alpha1::UpgradeNote, decorator: Google::Apis::ContaineranalysisV1alpha1::UpgradeNote::Representation
       
+          property :vulnerability_assessment, as: 'vulnerabilityAssessment', class: Google::Apis::ContaineranalysisV1alpha1::VulnerabilityAssessmentNote, decorator: Google::Apis::ContaineranalysisV1alpha1::VulnerabilityAssessmentNote::Representation
+      
           property :vulnerability_type, as: 'vulnerabilityType', class: Google::Apis::ContaineranalysisV1alpha1::VulnerabilityType, decorator: Google::Apis::ContaineranalysisV1alpha1::VulnerabilityType::Representation
       
         end
@@ -2221,6 +2287,24 @@ module Google
         end
       end
       
+      class Product
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :generic_uri, as: 'genericUri'
+          property :id, as: 'id'
+          property :name, as: 'name'
+        end
+      end
+      
+      class Publisher
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :context, as: 'context'
+          property :issuing_authority, as: 'issuingAuthority'
+          property :name, as: 'name'
+        end
+      end
+      
       class Recipe
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2254,6 +2338,17 @@ module Google
           property :source, as: 'source'
           property :target, as: 'target'
           property :type, as: 'type'
+        end
+      end
+      
+      class Remediation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :details, as: 'details'
+          property :remediation_time, as: 'remediationTime'
+          property :remediation_type, as: 'remediationType'
+          property :remediation_uri, as: 'remediationUri', class: Google::Apis::ContaineranalysisV1alpha1::Uri, decorator: Google::Apis::ContaineranalysisV1alpha1::Uri::Representation
+      
         end
       end
       
@@ -2432,11 +2527,27 @@ module Google
         end
       end
       
+      class Threat
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :details, as: 'details'
+          property :threat_type, as: 'threatType'
+        end
+      end
+      
       class TimeSpan
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_time, as: 'endTime'
           property :start_time, as: 'startTime'
+        end
+      end
+      
+      class Uri
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :label, as: 'label'
+          property :uri, as: 'uri'
         end
       end
       
@@ -2492,6 +2603,21 @@ module Google
         end
       end
       
+      class VexAssessment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cve, as: 'cve'
+          property :note_name, as: 'noteName'
+          collection :related_uris, as: 'relatedUris', class: Google::Apis::ContaineranalysisV1alpha1::Uri, decorator: Google::Apis::ContaineranalysisV1alpha1::Uri::Representation
+      
+          collection :remediations, as: 'remediations', class: Google::Apis::ContaineranalysisV1alpha1::Remediation, decorator: Google::Apis::ContaineranalysisV1alpha1::Remediation::Representation
+      
+          property :state, as: 'state'
+          collection :threats, as: 'threats', class: Google::Apis::ContaineranalysisV1alpha1::Threat, decorator: Google::Apis::ContaineranalysisV1alpha1::Threat::Representation
+      
+        end
+      end
+      
       class Volume
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2500,17 +2626,38 @@ module Google
         end
       end
       
+      class VulnerabilityAssessmentNote
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :assessment, as: 'assessment', class: Google::Apis::ContaineranalysisV1alpha1::Assessment, decorator: Google::Apis::ContaineranalysisV1alpha1::Assessment::Representation
+      
+          property :language_code, as: 'languageCode'
+          property :long_description, as: 'longDescription'
+          property :product, as: 'product', class: Google::Apis::ContaineranalysisV1alpha1::Product, decorator: Google::Apis::ContaineranalysisV1alpha1::Product::Representation
+      
+          property :publisher, as: 'publisher', class: Google::Apis::ContaineranalysisV1alpha1::Publisher, decorator: Google::Apis::ContaineranalysisV1alpha1::Publisher::Representation
+      
+          property :short_description, as: 'shortDescription'
+          property :title, as: 'title'
+        end
+      end
+      
       class VulnerabilityDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cvss_score, as: 'cvssScore'
+          property :cvss_v2, as: 'cvssV2', class: Google::Apis::ContaineranalysisV1alpha1::Cvss, decorator: Google::Apis::ContaineranalysisV1alpha1::Cvss::Representation
+      
           property :cvss_v3, as: 'cvssV3', class: Google::Apis::ContaineranalysisV1alpha1::Cvss, decorator: Google::Apis::ContaineranalysisV1alpha1::Cvss::Representation
       
+          property :cvss_version, as: 'cvssVersion'
           property :effective_severity, as: 'effectiveSeverity'
           collection :package_issue, as: 'packageIssue', class: Google::Apis::ContaineranalysisV1alpha1::PackageIssue, decorator: Google::Apis::ContaineranalysisV1alpha1::PackageIssue::Representation
       
           property :severity, as: 'severity'
           property :type, as: 'type'
+          property :vex_assessment, as: 'vexAssessment', class: Google::Apis::ContaineranalysisV1alpha1::VexAssessment, decorator: Google::Apis::ContaineranalysisV1alpha1::VexAssessment::Representation
+      
         end
       end
       
@@ -2532,6 +2679,7 @@ module Google
           property :cvss_score, as: 'cvssScore'
           property :cvss_v2, as: 'cvssV2', class: Google::Apis::ContaineranalysisV1alpha1::Cvss, decorator: Google::Apis::ContaineranalysisV1alpha1::Cvss::Representation
       
+          property :cvss_version, as: 'cvssVersion'
           collection :cwe, as: 'cwe'
           collection :details, as: 'details', class: Google::Apis::ContaineranalysisV1alpha1::Detail, decorator: Google::Apis::ContaineranalysisV1alpha1::Detail::Representation
       
