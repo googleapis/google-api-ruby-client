@@ -1391,7 +1391,7 @@ module Google
         # request ID so that if you must retry your request, the server will know to
         # ignore the request if it has already been completed. The server will guarantee
         # that for at least 60 minutes since the first request. For example, consider a
-        # situation where you make an initial request and t he request times out. If you
+        # situation where you make an initial request and the request times out. If you
         # make the request again with the same request ID, the server can check if
         # original operation with the same request ID was received, and if so, will
         # ignore the second request. This prevents clients from accidentally creating
@@ -2128,22 +2128,22 @@ module Google
         # kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-
         # project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:`emailid``: An
         # email address that represents a Google group. For example, `admins@example.com`
-        # . * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
-        # identifier) representing a user that has been recently deleted. For example, `
-        # alice@example.com?uid=123456789012345678901`. If the user is recovered, this
-        # value reverts to `user:`emailid`` and the recovered user retains the role in
-        # the binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email
-        # address (plus unique identifier) representing a service account that has been
-        # recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
+        # . * `domain:`domain``: The G Suite domain (primary) that represents all the
+        # users of that domain. For example, `google.com` or `example.com`. * `deleted:
+        # user:`emailid`?uid=`uniqueid``: An email address (plus unique identifier)
+        # representing a user that has been recently deleted. For example, `alice@
+        # example.com?uid=123456789012345678901`. If the user is recovered, this value
+        # reverts to `user:`emailid`` and the recovered user retains the role in the
+        # binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email address
+        # (plus unique identifier) representing a service account that has been recently
+        # deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
         # 123456789012345678901`. If the service account is undeleted, this value
         # reverts to `serviceAccount:`emailid`` and the undeleted service account
         # retains the role in the binding. * `deleted:group:`emailid`?uid=`uniqueid``:
         # An email address (plus unique identifier) representing a Google group that has
         # been recently deleted. For example, `admins@example.com?uid=
         # 123456789012345678901`. If the group is recovered, this value reverts to `
-        # group:`emailid`` and the recovered group retains the role in the binding. * `
-        # domain:`domain``: The G Suite domain (primary) that represents all the users
-        # of that domain. For example, `google.com` or `example.com`.
+        # group:`emailid`` and the recovered group retains the role in the binding.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
