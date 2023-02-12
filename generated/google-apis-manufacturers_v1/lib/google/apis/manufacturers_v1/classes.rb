@@ -336,6 +336,55 @@ module Google
         end
       end
       
+      # Description of a certification.
+      class Certification
+        include Google::Apis::Core::Hashable
+      
+        # Required. Name of the certification body.
+        # Corresponds to the JSON property `authority`
+        # @return [String]
+        attr_accessor :authority
+      
+        # Optional. A URL link to the certification.
+        # Corresponds to the JSON property `link`
+        # @return [String]
+        attr_accessor :link
+      
+        # Optional. A URL link to the certification logo.
+        # Corresponds to the JSON property `logo`
+        # @return [String]
+        attr_accessor :logo
+      
+        # Required. Name of the certification.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. The expiration date (UTC).
+        # Corresponds to the JSON property `validUntil`
+        # @return [String]
+        attr_accessor :valid_until
+      
+        # Required. A custom value of the certification.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authority = args[:authority] if args.key?(:authority)
+          @link = args[:link] if args.key?(:link)
+          @logo = args[:logo] if args.key?(:logo)
+          @name = args[:name] if args.key?(:name)
+          @valid_until = args[:valid_until] if args.key?(:valid_until)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # The number of products in a single package. For more information, see https://
       # support.google.com/manufacturers/answer/6124116#count.
       class Count
@@ -620,6 +669,32 @@ module Google
           @timestamp = args[:timestamp] if args.key?(:timestamp)
           @title = args[:title] if args.key?(:title)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Response for ListProductCertifications method.
+      class ListProductCertificationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The product certifications from the specified certification body.
+        # Corresponds to the JSON property `productCertifications`
+        # @return [Array<Google::Apis::ManufacturersV1::ProductCertification>]
+        attr_accessor :product_certifications
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @product_certifications = args[:product_certifications] if args.key?(:product_certifications)
         end
       end
       
@@ -1011,6 +1086,87 @@ module Google
           @parent = args[:parent] if args.key?(:parent)
           @product_id = args[:product_id] if args.key?(:product_id)
           @target_country = args[:target_country] if args.key?(:target_country)
+        end
+      end
+      
+      # Product certification data.
+      class ProductCertification
+        include Google::Apis::Core::Hashable
+      
+        # Required. This is the product's brand name. The brand is used to help identify
+        # your product.
+        # Corresponds to the JSON property `brand`
+        # @return [String]
+        attr_accessor :brand
+      
+        # Required. A list of certifications to link to the described product.
+        # Corresponds to the JSON property `certification`
+        # @return [Array<Google::Apis::ManufacturersV1::Certification>]
+        attr_accessor :certification
+      
+        # Optional. A 2-letter country code (ISO 3166-1 Alpha 2).
+        # Corresponds to the JSON property `countryCode`
+        # @return [Array<String>]
+        attr_accessor :country_code
+      
+        # Output only. The statuses of the destinations.
+        # Corresponds to the JSON property `destinationStatuses`
+        # @return [Array<Google::Apis::ManufacturersV1::DestinationStatus>]
+        attr_accessor :destination_statuses
+      
+        # Output only. A server-generated list of issues associated with the product.
+        # Corresponds to the JSON property `issues`
+        # @return [Array<Google::Apis::ManufacturersV1::Issue>]
+        attr_accessor :issues
+      
+        # Optional. These are the Manufacturer Part Numbers (MPN). MPNs are used to
+        # uniquely identify a specific product among all products from the same
+        # manufacturer
+        # Corresponds to the JSON property `mpn`
+        # @return [Array<String>]
+        attr_accessor :mpn
+      
+        # Required. The unique name identifier of a product certification Format:
+        # accounts/`account`/languages/`language_code`/productCertifications/`id` Where `
+        # id` is a some unique identifier and `language_code` is a 2-letter ISO 639-1
+        # code of a Shopping supported language according to https://support.google.com/
+        # merchants/answer/160637.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Another name for GTIN.
+        # Corresponds to the JSON property `productCode`
+        # @return [Array<String>]
+        attr_accessor :product_code
+      
+        # Optional. These are your own product categorization system in your product
+        # data.
+        # Corresponds to the JSON property `productType`
+        # @return [Array<String>]
+        attr_accessor :product_type
+      
+        # Required. This is to clearly identify the product you are certifying.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @brand = args[:brand] if args.key?(:brand)
+          @certification = args[:certification] if args.key?(:certification)
+          @country_code = args[:country_code] if args.key?(:country_code)
+          @destination_statuses = args[:destination_statuses] if args.key?(:destination_statuses)
+          @issues = args[:issues] if args.key?(:issues)
+          @mpn = args[:mpn] if args.key?(:mpn)
+          @name = args[:name] if args.key?(:name)
+          @product_code = args[:product_code] if args.key?(:product_code)
+          @product_type = args[:product_type] if args.key?(:product_type)
+          @title = args[:title] if args.key?(:title)
         end
       end
       
