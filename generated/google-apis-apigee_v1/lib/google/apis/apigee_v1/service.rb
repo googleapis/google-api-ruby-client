@@ -4162,8 +4162,7 @@ module Google
         #   Use the following structure in your request: `organizations/`org``
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Environment] google_cloud_apigee_v1_environment_object
         # @param [String] name
-        #   Optional. Name of the environment. Alternatively, the name may be specified in
-        #   the request body in the name field.
+        #   Optional. Name of the environment.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
