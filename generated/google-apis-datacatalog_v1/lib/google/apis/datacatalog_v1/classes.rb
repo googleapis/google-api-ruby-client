@@ -1885,12 +1885,12 @@ module Google
         end
       end
       
-      # Metadata message for long-running operation returned by the ReconcileTags.
+      # Long-running operation metadata message returned by the ReconcileTags.
       class GoogleCloudDatacatalogV1ReconcileTagsMetadata
         include Google::Apis::Core::Hashable
       
-        # Map that maps name of each tagged column (or empty string in case of sole
-        # entry) to tagging operation status.
+        # Maps the name of each tagged column (or empty string for a sole entry) to
+        # tagging operation status.
         # Corresponds to the JSON property `errors`
         # @return [Hash<String,Google::Apis::DatacatalogV1::Status>]
         attr_accessor :errors
@@ -1915,23 +1915,21 @@ module Google
       class GoogleCloudDatacatalogV1ReconcileTagsRequest
         include Google::Apis::Core::Hashable
       
-        # If set to true deletes from the entry tags related to given tag template and
-        # not mentioned in the tags source. If set to false only creates and updates of
-        # the tags mentioned in the source will take place. Other tags in that entry
-        # using the same tag template will be retained instead of being deleted.
+        # If set to `true`, deletes entry tags related to a tag template not listed in
+        # the tags source from an entry. If set to `false`, unlisted tags are retained.
         # Corresponds to the JSON property `forceDeleteMissing`
         # @return [Boolean]
         attr_accessor :force_delete_missing
         alias_method :force_delete_missing?, :force_delete_missing
       
-        # Required. The name of the tag template, that will be used for reconciliation.
+        # Required. The name of the tag template, which is used for reconciliation.
         # Corresponds to the JSON property `tagTemplate`
         # @return [String]
         attr_accessor :tag_template
       
-        # A list of tags to be applied on a given entry. Individual tags may specify tag
-        # template, but it must be the same as the one in the ReconcileTagsRequest. The
-        # sole entry and each of its columns must be mentioned at most once.
+        # A list of tags to apply to an entry. A tag can specify a tag template, which
+        # must be the template specified in the `ReconcileTagsRequest`. The sole entry
+        # and each of its columns must be mentioned at most once.
         # Corresponds to the JSON property `tags`
         # @return [Array<Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1Tag>]
         attr_accessor :tags
@@ -1948,7 +1946,7 @@ module Google
         end
       end
       
-      # Request message for long-running operation returned by the ReconcileTags.
+      # Long-running operation response message returned by ReconcileTags.
       class GoogleCloudDatacatalogV1ReconcileTagsResponse
         include Google::Apis::Core::Hashable
       
@@ -2203,9 +2201,9 @@ module Google
       class GoogleCloudDatacatalogV1SearchCatalogRequestScope
         include Google::Apis::Core::Hashable
       
-        # If `true`, include Google Cloud Platform (GCP) public datasets in search
-        # results. By default, they are excluded. See [Google Cloud Public Datasets](/
-        # public-datasets) for more information.
+        # If `true`, include Google Cloud public datasets in search results. By default,
+        # they are excluded. See [Google Cloud Public Datasets](/public-datasets) for
+        # more information.
         # Corresponds to the JSON property `includeGcpPublicDatasets`
         # @return [Boolean]
         attr_accessor :include_gcp_public_datasets
@@ -2767,10 +2765,10 @@ module Google
       end
       
       # A tag template defines a tag that can have one or more typed fields. The
-      # template is used to create tags that are attached to GCP resources. [Tag
-      # template roles] (https://cloud.google.com/iam/docs/understanding-roles#data-
-      # catalog-roles) provide permissions to create, edit, and use the template. For
-      # example, see the [TagTemplate User] (https://cloud.google.com/data-catalog/
+      # template is used to create tags that are attached to Google Cloud resources. [
+      # Tag template roles] (https://cloud.google.com/iam/docs/understanding-roles#
+      # data-catalog-roles) provide permissions to create, edit, and use the template.
+      # For example, see the [TagTemplate User] (https://cloud.google.com/data-catalog/
       # docs/how-to/template-user) role that includes a permission to use the tag
       # template to tag resources.
       class GoogleCloudDatacatalogV1TagTemplate
@@ -2960,7 +2958,7 @@ module Google
         # @return [String]
         attr_accessor :identity
       
-        # The GCP service name.
+        # The Google Cloud service name.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

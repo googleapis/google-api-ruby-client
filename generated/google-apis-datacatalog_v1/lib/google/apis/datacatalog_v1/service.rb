@@ -625,13 +625,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Imports entries from some source (e.g. dump in a Cloud Storage bucket) to the
-        # Data Catalog. Dump here is a snapshot of the third-party system state, that
-        # needs to be ingested in the Data Catalog. Import of entries is a sync
-        # operation that reconciles state of the third-party system and Data Catalog.
-        # ImportEntries is a long-running operation done in the background, so this
-        # method returns long-running operation resource. The resource can be queried
-        # with Operations.GetOperation which contains metadata and response.
+        # Imports entries from a source, such as data previously dumped into a Cloud
+        # Storage bucket, into Data Catalog. `ImportEntries` accepts source data
+        # snapshots of third-party system state. Import of entries is a sync operation
+        # that reconciles the state of the third-party system with Data Catalog. `
+        # ImportEntries` returns a long-running operation resource that can be queried
+        # with Operations.GetOperation to return ImportEntriesMetadata and an
+        # ImportEntriesResponse message.
         # @param [String] parent
         #   Required. Target entry group for ingested entries.
         # @param [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1ImportEntriesRequest] google_cloud_datacatalog_v1_import_entries_request_object
@@ -1089,13 +1089,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Reconciles tags created with a given tag template on a given Entry.
-        # Reconciliation is an operation that given a list of tags creates or updates
-        # them on the entry. Additionally, the operation is also able to delete tags not
-        # mentioned in the tag list. It can be achieved by setting force_delete_missing
-        # parameter. Reconciliation is a long-running operation done in the background,
-        # so this method returns long-running operation resource. The resource can be
-        # queried with Operations.GetOperation which contains metadata and response.
+        # `ReconcileTags` creates or updates a list of tags on the entry. If the
+        # ReconcileTagsRequest.force_delete_missing parameter is set, the operation
+        # deletes tags not included in the input tag list. `ReconcileTags` returns a
+        # long-running operation resource that can be queried with Operations.
+        # GetOperation to return ReconcileTagsMetadata and a ReconcileTagsResponse
+        # message.
         # @param [String] parent
         #   Required. Name of Entry to be tagged.
         # @param [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1ReconcileTagsRequest] google_cloud_datacatalog_v1_reconcile_tags_request_object
