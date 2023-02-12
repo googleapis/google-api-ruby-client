@@ -522,22 +522,22 @@ module Google
         # cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
         # For example, my-project.svc.id.goog[my-namespace/my-kubernetes-sa]. group:`
         # emailid`: An email address that represents a Google group. For example, admins@
-        # example.com. deleted:user:`emailid`?uid=`uniqueid`: An email address (plus
-        # unique identifier) representing a user that has been recently deleted. For
-        # example, alice@example.com?uid=123456789012345678901. If the user is recovered,
-        # this value reverts to user:`emailid` and the recovered user retains the role
-        # in the binding. deleted:serviceAccount:`emailid`?uid=`uniqueid`: An email
-        # address (plus unique identifier) representing a service account that has been
-        # recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=
-        # 123456789012345678901. If the service account is undeleted, this value reverts
-        # to serviceAccount:`emailid` and the undeleted service account retains the role
-        # in the binding. deleted:group:`emailid`?uid=`uniqueid`: An email address (plus
-        # unique identifier) representing a Google group that has been recently deleted.
-        # For example, admins@example.com?uid=123456789012345678901. If the group is
+        # example.com. domain:`domain`: The G Suite domain (primary) that represents all
+        # the users of that domain. For example, google.com or example.com. deleted:user:
+        # `emailid`?uid=`uniqueid`: An email address (plus unique identifier)
+        # representing a user that has been recently deleted. For example, alice@example.
+        # com?uid=123456789012345678901. If the user is recovered, this value reverts to
+        # user:`emailid` and the recovered user retains the role in the binding. deleted:
+        # serviceAccount:`emailid`?uid=`uniqueid`: An email address (plus unique
+        # identifier) representing a service account that has been recently deleted. For
+        # example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901.
+        # If the service account is undeleted, this value reverts to serviceAccount:`
+        # emailid` and the undeleted service account retains the role in the binding.
+        # deleted:group:`emailid`?uid=`uniqueid`: An email address (plus unique
+        # identifier) representing a Google group that has been recently deleted. For
+        # example, admins@example.com?uid=123456789012345678901. If the group is
         # recovered, this value reverts to group:`emailid` and the recovered group
-        # retains the role in the binding. domain:`domain`: The G Suite domain (primary)
-        # that represents all the users of that domain. For example, google.com or
-        # example.com.
+        # retains the role in the binding.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -1318,10 +1318,33 @@ module Google
         # @return [String]
         attr_accessor :service_account
       
+        # Optional. A Cloud Storage bucket used to stage workload dependencies, config
+        # files, and store workload output and other ephemeral data, such as Spark
+        # history files. If you do not specify a staging bucket, Cloud Dataproc will
+        # determine a Cloud Storage location according to the region where your workload
+        # is running, and then create and manage project-level, per-location staging and
+        # temporary buckets. This field requires a Cloud Storage bucket name, not a gs://
+        # ... URI to a Cloud Storage bucket.
+        # Corresponds to the JSON property `stagingBucket`
+        # @return [String]
+        attr_accessor :staging_bucket
+      
         # Optional. Subnetwork URI to connect workload to.
         # Corresponds to the JSON property `subnetworkUri`
         # @return [String]
         attr_accessor :subnetwork_uri
+      
+        # Optional. The duration after which the workload will be terminated. When the
+        # workload passes this ttl, it will be unconditionally killed without waiting
+        # for ongoing work to finish. Minimum value is 10 minutes; maximum value is 14
+        # days (see JSON representation of Duration (https://developers.google.com/
+        # protocol-buffers/docs/proto3#json)). If both ttl and idle_ttl are specified,
+        # the conditions are treated as and OR: the workload will be terminated when it
+        # has been idle for idle_ttl or when the ttl has passed, whichever comes first.
+        # If ttl is not specified for a session, it defaults to 24h.
+        # Corresponds to the JSON property `ttl`
+        # @return [String]
+        attr_accessor :ttl
       
         def initialize(**args)
            update!(**args)
@@ -1334,7 +1357,9 @@ module Google
           @network_tags = args[:network_tags] if args.key?(:network_tags)
           @network_uri = args[:network_uri] if args.key?(:network_uri)
           @service_account = args[:service_account] if args.key?(:service_account)
+          @staging_bucket = args[:staging_bucket] if args.key?(:staging_bucket)
           @subnetwork_uri = args[:subnetwork_uri] if args.key?(:subnetwork_uri)
+          @ttl = args[:ttl] if args.key?(:ttl)
         end
       end
       
