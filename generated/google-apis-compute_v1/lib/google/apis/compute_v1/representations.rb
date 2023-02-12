@@ -12712,6 +12712,7 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          hash :resource_policies, as: 'resourcePolicies'
           property :resource_status, as: 'resourceStatus', class: Google::Apis::ComputeV1::AllocationResourceStatus, decorator: Google::Apis::ComputeV1::AllocationResourceStatus::Representation
       
           property :satisfies_pzs, as: 'satisfiesPzs'
