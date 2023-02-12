@@ -1763,7 +1763,8 @@ module Google
         alias_method :restrict_to_contacts?, :restrict_to_contacts
       
         # Flag that determines whether responses are sent to recipients who are outside
-        # of the user's domain. This feature is only available for G Suite users.
+        # of the user's domain. This feature is only available for Google Workspace
+        # users.
         # Corresponds to the JSON property `restrictToDomain`
         # @return [Boolean]
         attr_accessor :restrict_to_domain
