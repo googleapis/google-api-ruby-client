@@ -5708,6 +5708,7 @@ module Google
           property :final_score, as: 'finalScore'
           property :freshness_score, as: 'freshnessScore'
           property :joined_space_affinity_score, as: 'joinedSpaceAffinityScore'
+          property :last_read_timestamp_age_in_days, as: 'lastReadTimestampAgeInDays'
           property :message_age_in_days, as: 'messageAgeInDays'
           property :message_sender_affinity_score, as: 'messageSenderAffinityScore'
           property :space_id, :numeric_string => true, as: 'spaceId'

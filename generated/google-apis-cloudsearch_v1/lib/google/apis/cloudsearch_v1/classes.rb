@@ -382,9 +382,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :length
       
-        # A unique client-assigned ID for this annotation. This is helpful in matching
-        # the back-filled annotations to the original annotations on client side,
-        # without having to re-parse the message.
+        # * A client-assigned ID for this annotation. This is helpful in matching the
+        # back-filled annotations to the original annotations on client side, without
+        # having to re-parse the message. There is no guarantee an annotation has a
+        # local_id, it's a purely client used and controlled field with no guarantee of
+        # uniqueness.
         # Corresponds to the JSON property `localId`
         # @return [String]
         attr_accessor :local_id
@@ -434,8 +436,13 @@ module Google
         # @return [String]
         attr_accessor :type
       
-        # A unique server-assigned ID for this annotation. This is helpful in matching
-        # annotation objects when fetched from service.
+        # * A unique server-assigned ID for this annotation. This is helpful in matching
+        # annotation objects when fetched from service. All uploads should have a
+        # unique_id after the message they are attached to is successfully sent. Url
+        # annotations that originally were uploads (i.e. policy violations) will have a
+        # unique_id after the message they are attached to is successfully sent. No
+        # other url annotations should have a unique_id. All drive annotations should
+        # have a unique_id after the message they are attached to is successfully sent.
         # Corresponds to the JSON property `uniqueId`
         # @return [String]
         attr_accessor :unique_id
@@ -7756,6 +7763,11 @@ module Google
         attr_accessor :joined_space_affinity_score
       
         # 
+        # Corresponds to the JSON property `lastReadTimestampAgeInDays`
+        # @return [Float]
+        attr_accessor :last_read_timestamp_age_in_days
+      
+        # 
         # Corresponds to the JSON property `messageAgeInDays`
         # @return [Float]
         attr_accessor :message_age_in_days
@@ -7800,6 +7812,7 @@ module Google
           @final_score = args[:final_score] if args.key?(:final_score)
           @freshness_score = args[:freshness_score] if args.key?(:freshness_score)
           @joined_space_affinity_score = args[:joined_space_affinity_score] if args.key?(:joined_space_affinity_score)
+          @last_read_timestamp_age_in_days = args[:last_read_timestamp_age_in_days] if args.key?(:last_read_timestamp_age_in_days)
           @message_age_in_days = args[:message_age_in_days] if args.key?(:message_age_in_days)
           @message_sender_affinity_score = args[:message_sender_affinity_score] if args.key?(:message_sender_affinity_score)
           @space_id = args[:space_id] if args.key?(:space_id)
@@ -20434,8 +20447,9 @@ module Google
       class UploadMetadata
         include Google::Apis::Core::Hashable
       
-        # Opaque token. Clients shall simply pass it back to the Backend. This field
-        # will NOT be saved into storage.
+        # Opaque token. Clients shall simply pass it back to the Backend. There is no
+        # guarantee the attachment_token returned on subsequent reads is the same even
+        # if nothing has changed. This field will NOT be saved into storage.
         # Corresponds to the JSON property `attachmentToken`
         # @return [String]
         attr_accessor :attachment_token
