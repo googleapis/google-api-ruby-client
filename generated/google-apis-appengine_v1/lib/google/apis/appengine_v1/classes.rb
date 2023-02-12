@@ -1039,6 +1039,31 @@ module Google
         end
       end
       
+      # Runtime settings for the App Engine flexible environment.
+      class FlexibleRuntimeSettings
+        include Google::Apis::Core::Hashable
+      
+        # The operating system of the application runtime.
+        # Corresponds to the JSON property `operatingSystem`
+        # @return [String]
+        attr_accessor :operating_system
+      
+        # The runtime version of an App Engine flexible application.
+        # Corresponds to the JSON property `runtimeVersion`
+        # @return [String]
+        attr_accessor :runtime_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @operating_system = args[:operating_system] if args.key?(:operating_system)
+          @runtime_version = args[:runtime_version] if args.key?(:runtime_version)
+        end
+      end
+      
       # Metadata for the given google.cloud.location.Location.
       class GoogleAppengineV1betaLocationMetadata
         include Google::Apis::Core::Hashable
@@ -3008,6 +3033,11 @@ module Google
         # @return [Array<Google::Apis::AppengineV1::ErrorHandler>]
         attr_accessor :error_handlers
       
+        # Runtime settings for the App Engine flexible environment.
+        # Corresponds to the JSON property `flexibleRuntimeSettings`
+        # @return [Google::Apis::AppengineV1::FlexibleRuntimeSettings]
+        attr_accessor :flexible_runtime_settings
+      
         # An ordered list of URL-matching patterns that should be applied to incoming
         # requests. The first matching URL handles the request and other request
         # handlers are not attempted.Only returned in GET requests if view=FULL is set.
@@ -3177,6 +3207,7 @@ module Google
           @env = args[:env] if args.key?(:env)
           @env_variables = args[:env_variables] if args.key?(:env_variables)
           @error_handlers = args[:error_handlers] if args.key?(:error_handlers)
+          @flexible_runtime_settings = args[:flexible_runtime_settings] if args.key?(:flexible_runtime_settings)
           @handlers = args[:handlers] if args.key?(:handlers)
           @health_check = args[:health_check] if args.key?(:health_check)
           @id = args[:id] if args.key?(:id)
