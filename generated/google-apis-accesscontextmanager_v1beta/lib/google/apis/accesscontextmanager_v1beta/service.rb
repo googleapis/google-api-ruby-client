@@ -22,7 +22,8 @@ module Google
     module AccesscontextmanagerV1beta
       # Access Context Manager API
       #
-      # An API for setting attribute based access control to requests to GCP services.
+      # An API for setting attribute based access control to requests to Google Cloud
+      #  services.
       #
       # @example
       #    require 'google/apis/accesscontextmanager_v1beta'
