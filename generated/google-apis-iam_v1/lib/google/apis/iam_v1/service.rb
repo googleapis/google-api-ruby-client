@@ -116,6 +116,339 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new WorkforcePool. You cannot reuse the name of a deleted pool until
+        # 30 days after deletion.
+        # @param [String] location
+        #   The location of the pool to create. Format: `locations/`location``.
+        # @param [Google::Apis::IamV1::WorkforcePool] workforce_pool_object
+        # @param [String] workforce_pool_id
+        #   The ID to use for the pool, which becomes the final component of the resource
+        #   name. The IDs must be a globally unique string of 6 to 63 lowercase letters,
+        #   digits, or hyphens. It must start with a letter, and cannot have a trailing
+        #   hyphen. The prefix `gcp-` is reserved for use by Google, and may not be
+        #   specified.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_location_workforce_pool(location, workforce_pool_object = nil, workforce_pool_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+location}/workforcePools', options)
+          command.request_representation = Google::Apis::IamV1::WorkforcePool::Representation
+          command.request_object = workforce_pool_object
+          command.response_representation = Google::Apis::IamV1::Operation::Representation
+          command.response_class = Google::Apis::IamV1::Operation
+          command.params['location'] = location unless location.nil?
+          command.query['workforcePoolId'] = workforce_pool_id unless workforce_pool_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a WorkforcePool. You cannot use a deleted WorkforcePool to exchange
+        # external credentials for Google Cloud credentials. However, deletion does not
+        # revoke credentials that have already been issued. Credentials issued for a
+        # deleted pool do not grant access to resources. If the pool is undeleted, and
+        # the credentials are not expired, they grant access again. You can undelete a
+        # pool for 30 days. After 30 days, deletion is permanent. You cannot update
+        # deleted pools. However, you can view and list them.
+        # @param [String] name
+        #   Required. The name of the pool to delete. Format: `locations/`location`/
+        #   workforcePools/`workforce_pool_id``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_location_workforce_pool(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::IamV1::Operation::Representation
+          command.response_class = Google::Apis::IamV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets an individual WorkforcePool.
+        # @param [String] name
+        #   Required. The name of the pool to retrieve. Format: `locations/`location`/
+        #   workforcePools/`workforce_pool_id``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::WorkforcePool] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::WorkforcePool]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_location_workforce_pool(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::IamV1::WorkforcePool::Representation
+          command.response_class = Google::Apis::IamV1::WorkforcePool
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets IAM policies on a WorkforcePool.
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy is being requested. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
+        # @param [Google::Apis::IamV1::GetIamPolicyRequest] get_iam_policy_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_workforce_pool_iam_policy(resource, get_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+resource}:getIamPolicy', options)
+          command.request_representation = Google::Apis::IamV1::GetIamPolicyRequest::Representation
+          command.request_object = get_iam_policy_request_object
+          command.response_representation = Google::Apis::IamV1::Policy::Representation
+          command.response_class = Google::Apis::IamV1::Policy
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all non-deleted WorkforcePools under the specified parent. If `
+        # show_deleted` is set to `true`, then deleted pools are also listed.
+        # @param [String] location
+        #   The location of the pool. Format: `locations/`location``.
+        # @param [Fixnum] page_size
+        #   The maximum number of pools to return. If unspecified, at most 50 pools will
+        #   be returned. The maximum value is 1000; values above 1000 are truncated to
+        #   1000.
+        # @param [String] page_token
+        #   A page token, received from a previous `ListWorkforcePools` call. Provide this
+        #   to retrieve the subsequent page.
+        # @param [String] parent
+        #   Required. The parent resource to list pools for. Format: `organizations/`org-
+        #   id``.
+        # @param [Boolean] show_deleted
+        #   Whether to return soft-deleted pools.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::ListWorkforcePoolsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::ListWorkforcePoolsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_location_workforce_pools(location, page_size: nil, page_token: nil, parent: nil, show_deleted: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+location}/workforcePools', options)
+          command.response_representation = Google::Apis::IamV1::ListWorkforcePoolsResponse::Representation
+          command.response_class = Google::Apis::IamV1::ListWorkforcePoolsResponse
+          command.params['location'] = location unless location.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['parent'] = parent unless parent.nil?
+          command.query['showDeleted'] = show_deleted unless show_deleted.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an existing WorkforcePool.
+        # @param [String] name
+        #   Output only. The resource name of the pool. Format: `locations/`location`/
+        #   workforcePools/`workforce_pool_id``
+        # @param [Google::Apis::IamV1::WorkforcePool] workforce_pool_object
+        # @param [String] update_mask
+        #   Required. The list of fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_location_workforce_pool(name, workforce_pool_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::IamV1::WorkforcePool::Representation
+          command.request_object = workforce_pool_object
+          command.response_representation = Google::Apis::IamV1::Operation::Representation
+          command.response_class = Google::Apis::IamV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets IAM policies on a WorkforcePool.
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy is being specified. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
+        # @param [Google::Apis::IamV1::SetIamPolicyRequest] set_iam_policy_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_workforce_pool_iam_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
+          command.request_representation = Google::Apis::IamV1::SetIamPolicyRequest::Representation
+          command.request_object = set_iam_policy_request_object
+          command.response_representation = Google::Apis::IamV1::Policy::Representation
+          command.response_class = Google::Apis::IamV1::Policy
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the caller's permissions on the WorkforcePool. If the pool does not
+        # exist, this will return an empty set of permissions, not a `NOT_FOUND` error.
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy detail is being requested. See [
+        #   Resource names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
+        # @param [Google::Apis::IamV1::TestIamPermissionsRequest] test_iam_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::TestIamPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::TestIamPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_workforce_pool_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
+          command.request_representation = Google::Apis::IamV1::TestIamPermissionsRequest::Representation
+          command.request_object = test_iam_permissions_request_object
+          command.response_representation = Google::Apis::IamV1::TestIamPermissionsResponse::Representation
+          command.response_class = Google::Apis::IamV1::TestIamPermissionsResponse
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Undeletes a WorkforcePool, as long as it was deleted fewer than 30 days ago.
+        # @param [String] name
+        #   Required. The name of the pool to undelete. Format: `locations/`location`/
+        #   workforcePools/`workforce_pool_id``
+        # @param [Google::Apis::IamV1::UndeleteWorkforcePoolRequest] undelete_workforce_pool_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def undelete_workforce_pool(name, undelete_workforce_pool_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:undelete', options)
+          command.request_representation = Google::Apis::IamV1::UndeleteWorkforcePoolRequest::Representation
+          command.request_object = undelete_workforce_pool_request_object
+          command.response_representation = Google::Apis::IamV1::Operation::Representation
+          command.response_class = Google::Apis::IamV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the latest state of a long-running operation. Clients can use this method
         # to poll the operation result at intervals as recommended by the API service.
         # @param [String] name
@@ -139,6 +472,228 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_location_workforce_pool_operation(name, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::IamV1::Operation::Representation
+          command.response_class = Google::Apis::IamV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new WorkforcePoolProvider in a WorkforcePool. You cannot reuse the
+        # name of a deleted provider until 30 days after deletion.
+        # @param [String] parent
+        #   Required. The pool to create this provider in. Format: `locations/`location`/
+        #   workforcePools/`workforce_pool_id``
+        # @param [Google::Apis::IamV1::WorkforcePoolProvider] workforce_pool_provider_object
+        # @param [String] workforce_pool_provider_id
+        #   Required. The ID for the provider, which becomes the final component of the
+        #   resource name. This value must be 4-32 characters, and may contain the
+        #   characters [a-z0-9-]. The prefix `gcp-` is reserved for use by Google, and may
+        #   not be specified.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_location_workforce_pool_provider(parent, workforce_pool_provider_object = nil, workforce_pool_provider_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/providers', options)
+          command.request_representation = Google::Apis::IamV1::WorkforcePoolProvider::Representation
+          command.request_object = workforce_pool_provider_object
+          command.response_representation = Google::Apis::IamV1::Operation::Representation
+          command.response_class = Google::Apis::IamV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['workforcePoolProviderId'] = workforce_pool_provider_id unless workforce_pool_provider_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a WorkforcePoolProvider. Deleting a provider does not revoke
+        # credentials that have already been\ issued; they continue to grant access. You
+        # can undelete a provider for 30 days. After 30 days, deletion is permanent. You
+        # cannot update deleted providers. However, you can view and list them.
+        # @param [String] name
+        #   Required. The name of the provider to delete. Format: `locations/`location`/
+        #   workforcePools/`workforce_pool_id`/providers/`provider_id``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_location_workforce_pool_provider(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::IamV1::Operation::Representation
+          command.response_class = Google::Apis::IamV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets an individual WorkforcePoolProvider.
+        # @param [String] name
+        #   Required. The name of the provider to retrieve. Format: `locations/`location`/
+        #   workforcePools/`workforce_pool_id`/providers/`provider_id``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::WorkforcePoolProvider] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::WorkforcePoolProvider]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_location_workforce_pool_provider(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::IamV1::WorkforcePoolProvider::Representation
+          command.response_class = Google::Apis::IamV1::WorkforcePoolProvider
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all non-deleted WorkforcePoolProviders in a WorkforcePool. If `
+        # show_deleted` is set to `true`, then deleted providers are also listed.
+        # @param [String] parent
+        #   Required. The pool to list providers for. Format: `locations/`location`/
+        #   workforcePools/`workforce_pool_id``
+        # @param [Fixnum] page_size
+        #   The maximum number of providers to return. If unspecified, at most 50
+        #   providers are returned. The maximum value is 100; values above 100 are
+        #   truncated to 100.
+        # @param [String] page_token
+        #   A page token, received from a previous `ListWorkforcePoolProviders` call.
+        #   Provide this to retrieve the subsequent page.
+        # @param [Boolean] show_deleted
+        #   Whether to return soft-deleted providers.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::ListWorkforcePoolProvidersResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::ListWorkforcePoolProvidersResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_location_workforce_pool_providers(parent, page_size: nil, page_token: nil, show_deleted: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/providers', options)
+          command.response_representation = Google::Apis::IamV1::ListWorkforcePoolProvidersResponse::Representation
+          command.response_class = Google::Apis::IamV1::ListWorkforcePoolProvidersResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['showDeleted'] = show_deleted unless show_deleted.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an existing WorkforcePoolProvider.
+        # @param [String] name
+        #   Output only. The resource name of the provider. Format: `locations/`location`/
+        #   workforcePools/`workforce_pool_id`/providers/`provider_id``
+        # @param [Google::Apis::IamV1::WorkforcePoolProvider] workforce_pool_provider_object
+        # @param [String] update_mask
+        #   Required. The list of fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_location_workforce_pool_provider(name, workforce_pool_provider_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::IamV1::WorkforcePoolProvider::Representation
+          command.request_object = workforce_pool_provider_object
+          command.response_representation = Google::Apis::IamV1::Operation::Representation
+          command.response_class = Google::Apis::IamV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Undeletes a WorkforcePoolProvider, as long as it was deleted fewer than 30
+        # days ago.
+        # @param [String] name
+        #   Required. The name of the provider to undelete. Format: `locations/`location`/
+        #   workforcePools/`workforce_pool_id`/providers/`provider_id``
+        # @param [Google::Apis::IamV1::UndeleteWorkforcePoolProviderRequest] undelete_workforce_pool_provider_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def undelete_workforce_pool_provider(name, undelete_workforce_pool_provider_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:undelete', options)
+          command.request_representation = Google::Apis::IamV1::UndeleteWorkforcePoolProviderRequest::Representation
+          command.request_object = undelete_workforce_pool_provider_request_object
           command.response_representation = Google::Apis::IamV1::Operation::Representation
           command.response_class = Google::Apis::IamV1::Operation
           command.params['name'] = name unless name.nil?
@@ -201,6 +756,86 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_location_workforce_pool_provider_operation(name, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::IamV1::Operation::Representation
+          command.response_class = Google::Apis::IamV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a WorkforcePoolSubject. Subject must not already be in a deleted state.
+        # A WorkforcePoolSubject is automatically created the first time an external
+        # credential is exchanged for a Google Cloud credential with a mapped `google.
+        # subject` attribute. There is no path to manually create WorkforcePoolSubjects.
+        # Once deleted, the WorkforcePoolSubject may not be used for 30 days. After 30
+        # days, the WorkforcePoolSubject will be deleted forever and can be reused in
+        # token exchanges with Google Cloud STS. This will automatically create a new
+        # WorkforcePoolSubject that is independent of the previously deleted
+        # WorkforcePoolSubject with the same google.subject value.
+        # @param [String] name
+        #   Required. The resource name of the WorkforcePoolSubject. Special characters,
+        #   like '/' and ':', must be escaped, because all URLs need to conform to the "
+        #   When to Escape and Unescape" section of [RFC3986](https://www.ietf.org/rfc/
+        #   rfc2396.txt). Format: `locations/`location`/workforcePools/`workforce_pool_id`/
+        #   subjects/`subject_id``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_location_workforce_pool_subject(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::IamV1::Operation::Representation
+          command.response_class = Google::Apis::IamV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Undeletes a WorkforcePoolSubject, as long as it was deleted fewer than 30 days
+        # ago.
+        # @param [String] name
+        #   Required. The resource name of the WorkforcePoolSubject. Special characters,
+        #   like '/' and ':', must be escaped, because all URLs need to conform to the "
+        #   When to Escape and Unescape" section of [RFC3986](https://www.ietf.org/rfc/
+        #   rfc2396.txt). Format: `locations/`location`/workforcePools/`workforce_pool_id`/
+        #   subjects/`subject_id``
+        # @param [Google::Apis::IamV1::UndeleteWorkforcePoolSubjectRequest] undelete_workforce_pool_subject_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def undelete_workforce_pool_subject(name, undelete_workforce_pool_subject_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:undelete', options)
+          command.request_representation = Google::Apis::IamV1::UndeleteWorkforcePoolSubjectRequest::Representation
+          command.request_object = undelete_workforce_pool_subject_request_object
           command.response_representation = Google::Apis::IamV1::Operation::Representation
           command.response_class = Google::Apis::IamV1::Operation
           command.params['name'] = name unless name.nil?

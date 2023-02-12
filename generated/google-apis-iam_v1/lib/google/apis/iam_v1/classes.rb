@@ -514,6 +514,109 @@ module Google
         end
       end
       
+      # Request message for `GetIamPolicy` method.
+      class GetIamPolicyRequest
+        include Google::Apis::Core::Hashable
+      
+        # Encapsulates settings provided to GetIamPolicy.
+        # Corresponds to the JSON property `options`
+        # @return [Google::Apis::IamV1::GetPolicyOptions]
+        attr_accessor :options
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @options = args[:options] if args.key?(:options)
+        end
+      end
+      
+      # Encapsulates settings provided to GetIamPolicy.
+      class GetPolicyOptions
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The maximum policy version that will be used to format the policy.
+        # Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+        # rejected. Requests for policies with any conditional role bindings must
+        # specify version 3. Policies with no conditional role bindings may specify any
+        # valid value or leave the field unset. The policy in the response might use the
+        # policy version that you specified, or it might use a lower policy version. For
+        # example, if you specify version 3, but the policy has no conditional role
+        # bindings, the response uses version 1. To learn which resources support
+        # conditions in their IAM policies, see the [IAM documentation](https://cloud.
+        # google.com/iam/help/conditions/resource-policies).
+        # Corresponds to the JSON property `requestedPolicyVersion`
+        # @return [Fixnum]
+        attr_accessor :requested_policy_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @requested_policy_version = args[:requested_policy_version] if args.key?(:requested_policy_version)
+        end
+      end
+      
+      # Represents an OpenId Connect 1.0 identity provider.
+      class GoogleIamAdminV1WorkforcePoolProviderOidc
+        include Google::Apis::Core::Hashable
+      
+        # Required. The client ID. Must match the audience claim of the JWT issued by
+        # the identity provider.
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
+      
+        # Required. The OIDC issuer URI. Must be a valid URI using the 'https' scheme.
+        # Corresponds to the JSON property `issuerUri`
+        # @return [String]
+        attr_accessor :issuer_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_id = args[:client_id] if args.key?(:client_id)
+          @issuer_uri = args[:issuer_uri] if args.key?(:issuer_uri)
+        end
+      end
+      
+      # Represents a SAML identity provider.
+      class GoogleIamAdminV1WorkforcePoolProviderSaml
+        include Google::Apis::Core::Hashable
+      
+        # Required. SAML Identity provider configuration metadata xml doc. The xml
+        # document should comply with [SAML 2.0 specification](https://docs.oasis-open.
+        # org/security/saml/v2.0/saml-metadata-2.0-os.pdf). The max size of the
+        # acceptable xml document will be bounded to 128k characters. The metadata xml
+        # document should satisfy the following constraints: 1) Must contain an Identity
+        # Provider Entity ID. 2) Must contain at least one non-expired signing key
+        # certificate. 3) For each signing key: a) Valid from should be no more than 7
+        # days from now. b) Valid to should be no more than 14 years in the future. 4)
+        # Up to 3 IdP signing keys are allowed in the metadata xml. When updating the
+        # provider's metadata xml, at least one non-expired signing key must overlap
+        # with the existing metadata. This requirement is skipped if there are no non-
+        # expired signing keys present in the existing metadata.
+        # Corresponds to the JSON property `idpMetadataXml`
+        # @return [String]
+        attr_accessor :idp_metadata_xml
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @idp_metadata_xml = args[:idp_metadata_xml] if args.key?(:idp_metadata_xml)
+        end
+      end
+      
       # The request to lint a Cloud IAM policy object.
       class LintPolicyRequest
         include Google::Apis::Core::Hashable
@@ -701,6 +804,58 @@ module Google
         def update!(**args)
           @accounts = args[:accounts] if args.key?(:accounts)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for ListWorkforcePoolProviders.
+      class ListWorkforcePoolProvidersResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of providers.
+        # Corresponds to the JSON property `workforcePoolProviders`
+        # @return [Array<Google::Apis::IamV1::WorkforcePoolProvider>]
+        attr_accessor :workforce_pool_providers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @workforce_pool_providers = args[:workforce_pool_providers] if args.key?(:workforce_pool_providers)
+        end
+      end
+      
+      # Response message for ListWorkforcePools.
+      class ListWorkforcePoolsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of pools.
+        # Corresponds to the JSON property `workforcePools`
+        # @return [Array<Google::Apis::IamV1::WorkforcePool>]
+        attr_accessor :workforce_pools
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @workforce_pools = args[:workforce_pools] if args.key?(:workforce_pools)
         end
       end
       
@@ -1842,6 +1997,45 @@ module Google
         end
       end
       
+      # Request message for UndeleteWorkforcePoolProvider.
+      class UndeleteWorkforcePoolProviderRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Request message for UndeleteWorkforcePool.
+      class UndeleteWorkforcePoolRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Request message for UndeleteWorkforcePoolSubject.
+      class UndeleteWorkforcePoolSubjectRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Request message for UndeleteWorkloadIdentityPoolProvider.
       class UndeleteWorkloadIdentityPoolProviderRequest
         include Google::Apis::Core::Hashable
@@ -1887,6 +2081,191 @@ module Google
         # Update properties of this object
         def update!(**args)
           @public_key_data = args[:public_key_data] if args.key?(:public_key_data)
+        end
+      end
+      
+      # Represents a collection of external workforces. Provides namespaces for
+      # federated users that can be referenced in IAM policies.
+      class WorkforcePool
+        include Google::Apis::Core::Hashable
+      
+        # A user-specified description of the pool. Cannot exceed 256 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Whether the pool is disabled. You cannot use a disabled pool to exchange
+        # tokens, or use existing tokens to access resources. If the pool is re-enabled,
+        # existing tokens grant access again.
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
+        # A user-specified display name of the pool in Google Cloud Console. Cannot
+        # exceed 32 characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. The resource name of the pool. Format: `locations/`location`/
+        # workforcePools/`workforce_pool_id``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Immutable. The resource name of the parent. Format: `organizations/`org-id``.
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        # Duration that the Google Cloud access tokens, console sign-in sessions, and `
+        # gcloud` sign-in sessions from this pool are valid. Must be greater than 15
+        # minutes (900s) and less than 12 hours (43200s). If `session_duration` is not
+        # configured, minted credentials have a default duration of one hour (3600s).
+        # For SAML providers, the lifetime of the token is the minimum of the `
+        # session_duration` and the SessionNotOnOrAfter claim in the SAML assertion.
+        # Corresponds to the JSON property `sessionDuration`
+        # @return [String]
+        attr_accessor :session_duration
+      
+        # Output only. The state of the pool.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @disabled = args[:disabled] if args.key?(:disabled)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @parent = args[:parent] if args.key?(:parent)
+          @session_duration = args[:session_duration] if args.key?(:session_duration)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # A configuration for an external identity provider.
+      class WorkforcePoolProvider
+        include Google::Apis::Core::Hashable
+      
+        # A [Common Expression Language](https://opensource.google/projects/cel)
+        # expression, in plain text, to restrict what otherwise valid authentication
+        # credentials issued by the provider should not be accepted. The expression must
+        # output a boolean representing whether to allow the federation. The following
+        # keywords may be referenced in the expressions: * `assertion`: JSON
+        # representing the authentication credential issued by the provider. * `google`:
+        # The Google attributes mapped from the assertion in the `attribute_mappings`. `
+        # google.profile_photo` and `google.display_name` are not supported. * `
+        # attribute`: The custom attributes mapped from the assertion in the `
+        # attribute_mappings`. The maximum length of the attribute condition expression
+        # is 4096 characters. If unspecified, all valid authentication credentials will
+        # be accepted. The following example shows how to only allow credentials with a
+        # mapped `google.groups` value of `admins`: ``` "'admins' in google.groups" ```
+        # Corresponds to the JSON property `attributeCondition`
+        # @return [String]
+        attr_accessor :attribute_condition
+      
+        # Required. Maps attributes from the authentication credentials issued by an
+        # external identity provider to Google Cloud attributes, such as `subject` and `
+        # segment`. Each key must be a string specifying the Google Cloud IAM attribute
+        # to map to. The following keys are supported: * `google.subject`: The principal
+        # IAM is authenticating. You can reference this value in IAM bindings. This is
+        # also the subject that appears in Cloud Logging logs. This is a required field
+        # and the mapped subject cannot exceed 127 bytes. * `google.groups`: Groups the
+        # authenticating user belongs to. You can grant groups access to resources using
+        # an IAM `principalSet` binding; access applies to all members of the group. * `
+        # google.display_name`: The name of the authenticated user. This is an optional
+        # field and the mapped display name cannot exceed 100 bytes. If not set, `google.
+        # subject` will be displayed instead. This attribute cannot be referenced in IAM
+        # bindings. * `google.profile_photo`: The URL that specifies the authenticated
+        # user's thumbnail photo. This is an optional field. When set, the image will be
+        # visible as the user's profile picture. If not set, a generic user icon will be
+        # displayed instead. This attribute cannot be referenced in IAM bindings. You
+        # can also provide custom attributes by specifying `attribute.`custom_attribute``
+        # , where `custom_attribute` is the name of the custom attribute to be mapped.
+        # You can define a maximum of 50 custom attributes. The maximum length of a
+        # mapped attribute key is 100 characters, and the key may only contain the
+        # characters [a-z0-9_]. You can reference these attributes in IAM policies to
+        # define fine-grained access for a workforce pool to Google Cloud resources. For
+        # example: * `google.subject`: `principal://iam.googleapis.com/locations/global/
+        # workforcePools/`pool`/subject/`value`` * `google.groups`: `principalSet://iam.
+        # googleapis.com/locations/global/workforcePools/`pool`/group/`value`` * `
+        # attribute.`custom_attribute``: `principalSet://iam.googleapis.com/locations/
+        # global/workforcePools/`pool`/attribute.`custom_attribute`/`value`` Each value
+        # must be a [Common Expression Language] (https://opensource.google/projects/cel)
+        # function that maps an identity provider credential to the normalized
+        # attribute specified by the corresponding map key. You can use the `assertion`
+        # keyword in the expression to access a JSON representation of the
+        # authentication credential issued by the provider. The maximum length of an
+        # attribute mapping expression is 2048 characters. When evaluated, the total
+        # size of all mapped attributes must not exceed 4KB. For OIDC providers, you
+        # must supply a custom mapping that includes the `google.subject` attribute. For
+        # example, the following maps the `sub` claim of the incoming credential to the `
+        # subject` attribute on a Google token: ``` `"google.subject": "assertion.sub"` `
+        # ``
+        # Corresponds to the JSON property `attributeMapping`
+        # @return [Hash<String,String>]
+        attr_accessor :attribute_mapping
+      
+        # A user-specified description of the provider. Cannot exceed 256 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Whether the provider is disabled. You cannot use a disabled provider to
+        # exchange tokens. However, existing tokens still grant access.
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
+        # A user-specified display name for the provider. Cannot exceed 32 characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. The resource name of the provider. Format: `locations/`location`/
+        # workforcePools/`workforce_pool_id`/providers/`provider_id``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Represents an OpenId Connect 1.0 identity provider.
+        # Corresponds to the JSON property `oidc`
+        # @return [Google::Apis::IamV1::GoogleIamAdminV1WorkforcePoolProviderOidc]
+        attr_accessor :oidc
+      
+        # Represents a SAML identity provider.
+        # Corresponds to the JSON property `saml`
+        # @return [Google::Apis::IamV1::GoogleIamAdminV1WorkforcePoolProviderSaml]
+        attr_accessor :saml
+      
+        # Output only. The state of the provider.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attribute_condition = args[:attribute_condition] if args.key?(:attribute_condition)
+          @attribute_mapping = args[:attribute_mapping] if args.key?(:attribute_mapping)
+          @description = args[:description] if args.key?(:description)
+          @disabled = args[:disabled] if args.key?(:disabled)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @oidc = args[:oidc] if args.key?(:oidc)
+          @saml = args[:saml] if args.key?(:saml)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
