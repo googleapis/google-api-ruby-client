@@ -518,8 +518,9 @@ module Google
       
         # The first IPv6 address of the external IPv6 range associated with this
         # instance, prefix length is stored in externalIpv6PrefixLength in
-        # ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork
-        # associated with the instance will be allocated dynamically.
+        # ipv6AccessConfig. To use a static external IP address, it must be unused and
+        # in the same region as the instance's zone. If not specified, GCP will
+        # automatically assign an external IPv6 address from the instance's subnetwork.
         # Corresponds to the JSON property `externalIpv6`
         # @return [String]
         attr_accessor :external_ipv6
@@ -5186,22 +5187,22 @@ module Google
         # kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-
         # project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:`emailid``: An
         # email address that represents a Google group. For example, `admins@example.com`
-        # . * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
-        # identifier) representing a user that has been recently deleted. For example, `
-        # alice@example.com?uid=123456789012345678901`. If the user is recovered, this
-        # value reverts to `user:`emailid`` and the recovered user retains the role in
-        # the binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email
-        # address (plus unique identifier) representing a service account that has been
-        # recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
+        # . * `domain:`domain``: The G Suite domain (primary) that represents all the
+        # users of that domain. For example, `google.com` or `example.com`. * `deleted:
+        # user:`emailid`?uid=`uniqueid``: An email address (plus unique identifier)
+        # representing a user that has been recently deleted. For example, `alice@
+        # example.com?uid=123456789012345678901`. If the user is recovered, this value
+        # reverts to `user:`emailid`` and the recovered user retains the role in the
+        # binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email address
+        # (plus unique identifier) representing a service account that has been recently
+        # deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
         # 123456789012345678901`. If the service account is undeleted, this value
         # reverts to `serviceAccount:`emailid`` and the undeleted service account
         # retains the role in the binding. * `deleted:group:`emailid`?uid=`uniqueid``:
         # An email address (plus unique identifier) representing a Google group that has
         # been recently deleted. For example, `admins@example.com?uid=
         # 123456789012345678901`. If the group is recovered, this value reverts to `
-        # group:`emailid`` and the recovered group retains the role in the binding. * `
-        # domain:`domain``: The G Suite domain (primary) that represents all the users
-        # of that domain. For example, `google.com` or `example.com`.
+        # group:`emailid`` and the recovered group retains the role in the binding.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -8666,6 +8667,16 @@ module Google
         # @return [String]
         attr_accessor :ip_address
       
+        # IPv6 address of the interface in the external VPN gateway. This IPv6 address
+        # can be either from your on-premise gateway or another Cloud provider's VPN
+        # gateway, it cannot be an IP address from Google Compute Engine. Must specify
+        # an IPv6 address (not IPV4-mapped) using any format described in RFC 4291 (e.g.
+        # 2001:db8:0:0:2d9:51:0:0). The output format is RFC 5952 format (e.g. 2001:db8::
+        # 2d9:51:0:0).
+        # Corresponds to the JSON property `ipv6Address`
+        # @return [String]
+        attr_accessor :ipv6_address
+      
         def initialize(**args)
            update!(**args)
         end
@@ -8674,6 +8685,7 @@ module Google
         def update!(**args)
           @id = args[:id] if args.key?(:id)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @ipv6_address = args[:ipv6_address] if args.key?(:ipv6_address)
         end
       end
       
@@ -9674,6 +9686,14 @@ module Google
         # @return [Array<String>]
         attr_accessor :target_service_accounts
       
+        # Boolean flag indicating if the traffic should be TLS decrypted. Can be set
+        # only if action = 'apply_security_profile_group' and cannot be set for other
+        # actions.
+        # Corresponds to the JSON property `tlsInspect`
+        # @return [Boolean]
+        attr_accessor :tls_inspect
+        alias_method :tls_inspect?, :tls_inspect
+      
         def initialize(**args)
            update!(**args)
         end
@@ -9694,6 +9714,7 @@ module Google
           @target_resources = args[:target_resources] if args.key?(:target_resources)
           @target_secure_tags = args[:target_secure_tags] if args.key?(:target_secure_tags)
           @target_service_accounts = args[:target_service_accounts] if args.key?(:target_service_accounts)
+          @tls_inspect = args[:tls_inspect] if args.key?(:tls_inspect)
         end
       end
       
@@ -16808,7 +16829,8 @@ module Google
         # @return [Google::Apis::ComputeAlpha::InstanceGroupManagerResizeRequestStatus]
         attr_accessor :status
       
-        # [Output Only] The URL of a zone where the resize request is located.
+        # [Output Only] The URL of a zone where the resize request is located. Populated
+        # only for zonal resize requests.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -27247,7 +27269,10 @@ module Google
         # @return [String]
         attr_accessor :ipv6_access_type
       
-        # An IPv6 internal network address for this network interface.
+        # An IPv6 internal network address for this network interface. To use a static
+        # internal IP address, it must be unused and in the same region as the instance'
+        # s zone. If not specified, GCP will automatically assign an internal IPv6
+        # address from the instance's subnetwork.
         # Corresponds to the JSON property `ipv6Address`
         # @return [String]
         attr_accessor :ipv6_address
@@ -38559,6 +38584,18 @@ module Google
         # @return [Google::Apis::ComputeAlpha::RouterBgpPeerBfd]
         attr_accessor :bfd
       
+        # User-defined Custom Learned Route IP range list for a BGP session.
+        # Corresponds to the JSON property `customLearnedIpRanges`
+        # @return [Array<Google::Apis::ComputeAlpha::RouterBgpPeerCustomLearnedIpRange>]
+        attr_accessor :custom_learned_ip_ranges
+      
+        # User-defined Custom Learned Route Priority for a BGP session. This will be
+        # applied to all Custom Learned Route ranges of the BGP session, if not given,
+        # google-managed priority of 100 is used.
+        # Corresponds to the JSON property `customLearnedRoutePriority`
+        # @return [Fixnum]
+        attr_accessor :custom_learned_route_priority
+      
         # The status of the BGP peer connection. If set to FALSE, any active session
         # with the peer is terminated and all associated routing information is removed.
         # If set to TRUE, the peer connection can be established with routing
@@ -38652,6 +38689,8 @@ module Google
           @advertised_ip_ranges = args[:advertised_ip_ranges] if args.key?(:advertised_ip_ranges)
           @advertised_route_priority = args[:advertised_route_priority] if args.key?(:advertised_route_priority)
           @bfd = args[:bfd] if args.key?(:bfd)
+          @custom_learned_ip_ranges = args[:custom_learned_ip_ranges] if args.key?(:custom_learned_ip_ranges)
+          @custom_learned_route_priority = args[:custom_learned_route_priority] if args.key?(:custom_learned_route_priority)
           @enable = args[:enable] if args.key?(:enable)
           @enable_ipv6 = args[:enable_ipv6] if args.key?(:enable_ipv6)
           @interface_name = args[:interface_name] if args.key?(:interface_name)
@@ -38749,6 +38788,27 @@ module Google
           @packet_mode = args[:packet_mode] if args.key?(:packet_mode)
           @session_initialization_mode = args[:session_initialization_mode] if args.key?(:session_initialization_mode)
           @slow_timer_interval = args[:slow_timer_interval] if args.key?(:slow_timer_interval)
+        end
+      end
+      
+      # 
+      class RouterBgpPeerCustomLearnedIpRange
+        include Google::Apis::Core::Hashable
+      
+        # The Custom Learned Route IP range. Must be a valid CIDR-formatted prefix. If
+        # an IP is provided without a subnet mask, it is interpreted as a /32 singular
+        # IP range for IPv4, and /128 for IPv6.
+        # Corresponds to the JSON property `range`
+        # @return [String]
+        attr_accessor :range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @range = args[:range] if args.key?(:range)
         end
       end
       
@@ -40722,7 +40782,11 @@ module Google
         # CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be
         # configured to filter HTTP requests targeting services managed by Traffic
         # Director in a service mesh. They filter requests before the request is served
-        # from the application. This field can be set only at resource creation time.
+        # from the application. - CLOUD_ARMOR_NETWORK: Cloud Armor network policies can
+        # be configured to filter packets targeting network load balancing resources
+        # such as backend services, target pools, target instances, and instances with
+        # external IPs. They filter requests before the request is served from the
+        # application. This field can be set only at resource creation time.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -51057,6 +51121,12 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not
+        # specified, IPV4 will be used.
+        # Corresponds to the JSON property `gatewayIpVersion`
+        # @return [String]
+        attr_accessor :gateway_ip_version
+      
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
@@ -51074,7 +51144,7 @@ module Google
         # request to modify or update labels. You must always provide an up-to-date
         # fingerprint hash in order to update or change labels, otherwise the request
         # will fail with error 412 conditionNotMet. To see the latest fingerprint, make
-        # a get() request to retrieve an VpnGateway.
+        # a get() request to retrieve a VpnGateway.
         # Corresponds to the JSON property `labelFingerprint`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -51133,6 +51203,7 @@ module Google
         def update!(**args)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
+          @gateway_ip_version = args[:gateway_ip_version] if args.key?(:gateway_ip_version)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
@@ -51541,6 +51612,13 @@ module Google
         # @return [String]
         attr_accessor :ip_address
       
+        # [Output Only] IPv6 address for this VPN interface associated with the VPN
+        # gateway. The IPv6 address must be a regional external IPv6 address. The format
+        # is RFC 5952 format (e.g. 2001:db8::2d9:51:0:0).
+        # Corresponds to the JSON property `ipv6Address`
+        # @return [String]
+        attr_accessor :ipv6_address
+      
         def initialize(**args)
            update!(**args)
         end
@@ -51550,6 +51628,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @interconnect_attachment = args[:interconnect_attachment] if args.key?(:interconnect_attachment)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @ipv6_address = args[:ipv6_address] if args.key?(:ipv6_address)
         end
       end
       
