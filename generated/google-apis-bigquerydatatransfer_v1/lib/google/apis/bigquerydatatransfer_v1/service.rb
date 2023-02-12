@@ -438,7 +438,7 @@ module Google
         #   returned by ListDataSources method. Note that this should not be set when `
         #   service_account_name` is used to create the transfer config.
         # @param [String] service_account_name
-        #   Optional service account name. If this field is set, the transfer config will
+        #   Optional service account email. If this field is set, the transfer config will
         #   be created with this service account's credentials. It requires that the
         #   requesting user calling this API has permissions to act as this service
         #   account. Note that not all data sources support service account credentials
@@ -617,7 +617,7 @@ module Google
         #   returned by ListDataSources method. Note that this should not be set when `
         #   service_account_name` is used to update the transfer config.
         # @param [String] service_account_name
-        #   Optional service account name. If this field is set, the transfer config will
+        #   Optional service account email. If this field is set, the transfer config will
         #   be created with this service account's credentials. It requires that the
         #   requesting user calling this API has permissions to act as this service
         #   account. Note that not all data sources support service account credentials
@@ -921,7 +921,7 @@ module Google
         #   returned by ListDataSources method. Note that this should not be set when `
         #   service_account_name` is used to create the transfer config.
         # @param [String] service_account_name
-        #   Optional service account name. If this field is set, the transfer config will
+        #   Optional service account email. If this field is set, the transfer config will
         #   be created with this service account's credentials. It requires that the
         #   requesting user calling this API has permissions to act as this service
         #   account. Note that not all data sources support service account credentials
@@ -1100,7 +1100,7 @@ module Google
         #   returned by ListDataSources method. Note that this should not be set when `
         #   service_account_name` is used to update the transfer config.
         # @param [String] service_account_name
-        #   Optional service account name. If this field is set, the transfer config will
+        #   Optional service account email. If this field is set, the transfer config will
         #   be created with this service account's credentials. It requires that the
         #   requesting user calling this API has permissions to act as this service
         #   account. Note that not all data sources support service account credentials
