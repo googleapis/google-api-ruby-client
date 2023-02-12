@@ -250,12 +250,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudDocumentaiUiv1beta3RevisionReference
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudDocumentaiUiv1beta3SetDefaultProcessorVersionMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1866,8 +1860,6 @@ module Google
       
           property :revision_ref, as: 'revisionRef', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3RevisionRef, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3RevisionRef::Representation
       
-          property :revision_reference, as: 'revisionReference', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3RevisionReference, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3RevisionReference::Representation
-      
         end
       end
       
@@ -2052,15 +2044,6 @@ module Google
       end
       
       class GoogleCloudDocumentaiUiv1beta3RevisionRef
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :latest_processor_version, as: 'latestProcessorVersion'
-          property :revision_case, as: 'revisionCase'
-          property :revision_id, as: 'revisionId'
-        end
-      end
-      
-      class GoogleCloudDocumentaiUiv1beta3RevisionReference
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :latest_processor_version, as: 'latestProcessorVersion'
