@@ -396,6 +396,42 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # RenameInstance sets a new name for an instance.
+        # @param [String] name
+        #   Immutable. The resource name of this `Instance`. Resource names are schemeless
+        #   URIs that follow the conventions in https://cloud.google.com/apis/design/
+        #   resource_names. Format: `projects/`project`/locations/`location`/instances/`
+        #   instance``
+        # @param [Google::Apis::BaremetalsolutionV2::RenameInstanceRequest] rename_instance_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BaremetalsolutionV2::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BaremetalsolutionV2::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def rename_instance(name, rename_instance_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+name}:rename', options)
+          command.request_representation = Google::Apis::BaremetalsolutionV2::RenameInstanceRequest::Representation
+          command.request_object = rename_instance_request_object
+          command.response_representation = Google::Apis::BaremetalsolutionV2::Operation::Representation
+          command.response_class = Google::Apis::BaremetalsolutionV2::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Perform an ungraceful, hard reset on a server. Equivalent to shutting the
         # power off and then turning it back on.
         # @param [String] name
@@ -1124,6 +1160,39 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Skips volume's cooloff and deletes it now. Volume must be in cooloff state.
+        # @param [String] name
+        #   Required. The name of the Volume.
+        # @param [Google::Apis::BaremetalsolutionV2::EvictVolumeRequest] evict_volume_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BaremetalsolutionV2::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BaremetalsolutionV2::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def evict_volume(name, evict_volume_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+name}:evict', options)
+          command.request_representation = Google::Apis::BaremetalsolutionV2::EvictVolumeRequest::Representation
+          command.request_object = evict_volume_request_object
+          command.response_representation = Google::Apis::BaremetalsolutionV2::Operation::Representation
+          command.response_class = Google::Apis::BaremetalsolutionV2::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Get details of a single storage volume.
         # @param [String] name
         #   Required. Name of the resource.
@@ -1261,6 +1330,39 @@ module Google
           command.response_representation = Google::Apis::BaremetalsolutionV2::Operation::Representation
           command.response_class = Google::Apis::BaremetalsolutionV2::Operation
           command.params['volume'] = volume unless volume.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Skips lun's cooloff and deletes it now. Lun must be in cooloff state.
+        # @param [String] name
+        #   Required. The name of the lun.
+        # @param [Google::Apis::BaremetalsolutionV2::EvictLunRequest] evict_lun_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BaremetalsolutionV2::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BaremetalsolutionV2::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def evict_lun(name, evict_lun_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+name}:evict', options)
+          command.request_representation = Google::Apis::BaremetalsolutionV2::EvictLunRequest::Representation
+          command.request_object = evict_lun_request_object
+          command.response_representation = Google::Apis::BaremetalsolutionV2::Operation::Representation
+          command.response_class = Google::Apis::BaremetalsolutionV2::Operation
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

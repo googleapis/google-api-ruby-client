@@ -52,6 +52,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EvictLunRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EvictVolumeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FetchInstanceProvisioningSettingsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -256,6 +268,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RenameInstanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ResetInstanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -387,6 +405,18 @@ module Google
       end
       
       class EnableInteractiveSerialConsoleRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class EvictLunRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class EvictVolumeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -608,6 +638,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :boot_lun, as: 'bootLun'
+          property :expire_time, as: 'expireTime'
           property :id, as: 'id'
           property :multiprotocol_type, as: 'multiprotocolType'
           property :name, as: 'name'
@@ -807,6 +838,15 @@ module Google
         end
       end
       
+      class RenameInstanceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance, as: 'instance', class: Google::Apis::BaremetalsolutionV2::Instance, decorator: Google::Apis::BaremetalsolutionV2::Instance::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
       class ResetInstanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -924,6 +964,7 @@ module Google
           property :boot_volume, as: 'bootVolume'
           property :current_size_gib, :numeric_string => true, as: 'currentSizeGib'
           property :emergency_size_gib, :numeric_string => true, as: 'emergencySizeGib'
+          property :expire_time, as: 'expireTime'
           property :id, as: 'id'
           hash :labels, as: 'labels'
           property :max_size_gib, :numeric_string => true, as: 'maxSizeGib'
