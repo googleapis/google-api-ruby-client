@@ -809,6 +809,7 @@ module Google
       
           property :include_objects, as: 'includeObjects', class: Google::Apis::DatastreamV1::MysqlRdbms, decorator: Google::Apis::DatastreamV1::MysqlRdbms::Representation
       
+          property :max_concurrent_backfill_tasks, as: 'maxConcurrentBackfillTasks'
           property :max_concurrent_cdc_tasks, as: 'maxConcurrentCdcTasks'
         end
       end
@@ -922,6 +923,7 @@ module Google
       
           property :include_objects, as: 'includeObjects', class: Google::Apis::DatastreamV1::OracleRdbms, decorator: Google::Apis::DatastreamV1::OracleRdbms::Representation
       
+          property :max_concurrent_backfill_tasks, as: 'maxConcurrentBackfillTasks'
           property :max_concurrent_cdc_tasks, as: 'maxConcurrentCdcTasks'
           property :stream_large_objects, as: 'streamLargeObjects', class: Google::Apis::DatastreamV1::StreamLargeObjects, decorator: Google::Apis::DatastreamV1::StreamLargeObjects::Representation
       
@@ -994,6 +996,7 @@ module Google
       
           property :include_objects, as: 'includeObjects', class: Google::Apis::DatastreamV1::PostgresqlRdbms, decorator: Google::Apis::DatastreamV1::PostgresqlRdbms::Representation
       
+          property :max_concurrent_backfill_tasks, as: 'maxConcurrentBackfillTasks'
           property :publication, as: 'publication'
           property :replication_slot, as: 'replicationSlot'
         end

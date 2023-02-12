@@ -1125,6 +1125,12 @@ module Google
         # @return [Google::Apis::DatastreamV1::MysqlRdbms]
         attr_accessor :include_objects
       
+        # Maximum number of concurrent backfill tasks. The number should be non negative.
+        # If not set (or set to 0), the system's default value will be used.
+        # Corresponds to the JSON property `maxConcurrentBackfillTasks`
+        # @return [Fixnum]
+        attr_accessor :max_concurrent_backfill_tasks
+      
         # Maximum number of concurrent CDC tasks. The number should be non negative. If
         # not set (or set to 0), the system's default value will be used.
         # Corresponds to the JSON property `maxConcurrentCdcTasks`
@@ -1139,6 +1145,7 @@ module Google
         def update!(**args)
           @exclude_objects = args[:exclude_objects] if args.key?(:exclude_objects)
           @include_objects = args[:include_objects] if args.key?(:include_objects)
+          @max_concurrent_backfill_tasks = args[:max_concurrent_backfill_tasks] if args.key?(:max_concurrent_backfill_tasks)
           @max_concurrent_cdc_tasks = args[:max_concurrent_cdc_tasks] if args.key?(:max_concurrent_cdc_tasks)
         end
       end
@@ -1559,6 +1566,12 @@ module Google
         # @return [Google::Apis::DatastreamV1::OracleRdbms]
         attr_accessor :include_objects
       
+        # Maximum number of concurrent backfill tasks. The number should be non negative.
+        # If not set (or set to 0), the system's default value will be used.
+        # Corresponds to the JSON property `maxConcurrentBackfillTasks`
+        # @return [Fixnum]
+        attr_accessor :max_concurrent_backfill_tasks
+      
         # Maximum number of concurrent CDC tasks. The number should be non negative. If
         # not set (or set to 0), the system's default value will be used.
         # Corresponds to the JSON property `maxConcurrentCdcTasks`
@@ -1579,6 +1592,7 @@ module Google
           @drop_large_objects = args[:drop_large_objects] if args.key?(:drop_large_objects)
           @exclude_objects = args[:exclude_objects] if args.key?(:exclude_objects)
           @include_objects = args[:include_objects] if args.key?(:include_objects)
+          @max_concurrent_backfill_tasks = args[:max_concurrent_backfill_tasks] if args.key?(:max_concurrent_backfill_tasks)
           @max_concurrent_cdc_tasks = args[:max_concurrent_cdc_tasks] if args.key?(:max_concurrent_cdc_tasks)
           @stream_large_objects = args[:stream_large_objects] if args.key?(:stream_large_objects)
         end
@@ -1799,6 +1813,12 @@ module Google
         # @return [Google::Apis::DatastreamV1::PostgresqlRdbms]
         attr_accessor :include_objects
       
+        # Maximum number of concurrent backfill tasks. The number should be non negative.
+        # If not set (or set to 0), the system's default value will be used.
+        # Corresponds to the JSON property `maxConcurrentBackfillTasks`
+        # @return [Fixnum]
+        attr_accessor :max_concurrent_backfill_tasks
+      
         # Required. The name of the publication that includes the set of all tables that
         # are defined in the stream's include_objects.
         # Corresponds to the JSON property `publication`
@@ -1819,6 +1839,7 @@ module Google
         def update!(**args)
           @exclude_objects = args[:exclude_objects] if args.key?(:exclude_objects)
           @include_objects = args[:include_objects] if args.key?(:include_objects)
+          @max_concurrent_backfill_tasks = args[:max_concurrent_backfill_tasks] if args.key?(:max_concurrent_backfill_tasks)
           @publication = args[:publication] if args.key?(:publication)
           @replication_slot = args[:replication_slot] if args.key?(:replication_slot)
         end
