@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DockerRepository
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -208,6 +214,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MavenRepository
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MavenRepositoryConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -215,6 +227,12 @@ module Google
       end
       
       class NpmPackage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NpmRepository
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -251,6 +269,18 @@ module Google
       end
       
       class PythonPackage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PythonRepository
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RemoteRepositoryConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -358,7 +388,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpstreamPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VpcscConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Version
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VirtualRepositoryConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -413,6 +461,13 @@ module Google
         end
       end
       
+      class DockerRepository
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :public_repository, as: 'publicRepository'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -433,6 +488,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          property :fetch_time, as: 'fetchTime'
           collection :hashes, as: 'hashes', class: Google::Apis::ArtifactregistryV1::HashProp, decorator: Google::Apis::ArtifactregistryV1::HashProp::Representation
       
           property :name, as: 'name'
@@ -656,6 +712,13 @@ module Google
         end
       end
       
+      class MavenRepository
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :public_repository, as: 'publicRepository'
+        end
+      end
+      
       class MavenRepositoryConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -673,6 +736,13 @@ module Google
           collection :tags, as: 'tags'
           property :update_time, as: 'updateTime'
           property :version, as: 'version'
+        end
+      end
+      
+      class NpmRepository
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :public_repository, as: 'publicRepository'
         end
       end
       
@@ -734,6 +804,28 @@ module Google
         end
       end
       
+      class PythonRepository
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :public_repository, as: 'publicRepository'
+        end
+      end
+      
+      class RemoteRepositoryConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :docker_repository, as: 'dockerRepository', class: Google::Apis::ArtifactregistryV1::DockerRepository, decorator: Google::Apis::ArtifactregistryV1::DockerRepository::Representation
+      
+          property :maven_repository, as: 'mavenRepository', class: Google::Apis::ArtifactregistryV1::MavenRepository, decorator: Google::Apis::ArtifactregistryV1::MavenRepository::Representation
+      
+          property :npm_repository, as: 'npmRepository', class: Google::Apis::ArtifactregistryV1::NpmRepository, decorator: Google::Apis::ArtifactregistryV1::NpmRepository::Representation
+      
+          property :python_repository, as: 'pythonRepository', class: Google::Apis::ArtifactregistryV1::PythonRepository, decorator: Google::Apis::ArtifactregistryV1::PythonRepository::Representation
+      
+        end
+      end
+      
       class Repository
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -744,10 +836,15 @@ module Google
           hash :labels, as: 'labels'
           property :maven_config, as: 'mavenConfig', class: Google::Apis::ArtifactregistryV1::MavenRepositoryConfig, decorator: Google::Apis::ArtifactregistryV1::MavenRepositoryConfig::Representation
       
+          property :mode, as: 'mode'
           property :name, as: 'name'
+          property :remote_repository_config, as: 'remoteRepositoryConfig', class: Google::Apis::ArtifactregistryV1::RemoteRepositoryConfig, decorator: Google::Apis::ArtifactregistryV1::RemoteRepositoryConfig::Representation
+      
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :size_bytes, :numeric_string => true, as: 'sizeBytes'
           property :update_time, as: 'updateTime'
+          property :virtual_repository_config, as: 'virtualRepositoryConfig', class: Google::Apis::ArtifactregistryV1::VirtualRepositoryConfig, decorator: Google::Apis::ArtifactregistryV1::VirtualRepositoryConfig::Representation
+      
         end
       end
       
@@ -868,6 +965,23 @@ module Google
         end
       end
       
+      class UpstreamPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :priority, as: 'priority'
+          property :repository, as: 'repository'
+        end
+      end
+      
+      class VpcscConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :vpcsc_policy, as: 'vpcscPolicy'
+        end
+      end
+      
       class Version
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -878,6 +992,14 @@ module Google
           collection :related_tags, as: 'relatedTags', class: Google::Apis::ArtifactregistryV1::Tag, decorator: Google::Apis::ArtifactregistryV1::Tag::Representation
       
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class VirtualRepositoryConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :upstream_policies, as: 'upstreamPolicies', class: Google::Apis::ArtifactregistryV1::UpstreamPolicy, decorator: Google::Apis::ArtifactregistryV1::UpstreamPolicy::Representation
+      
         end
       end
       

@@ -131,22 +131,22 @@ module Google
         # kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-
         # project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:`emailid``: An
         # email address that represents a Google group. For example, `admins@example.com`
-        # . * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
-        # identifier) representing a user that has been recently deleted. For example, `
-        # alice@example.com?uid=123456789012345678901`. If the user is recovered, this
-        # value reverts to `user:`emailid`` and the recovered user retains the role in
-        # the binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email
-        # address (plus unique identifier) representing a service account that has been
-        # recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
+        # . * `domain:`domain``: The G Suite domain (primary) that represents all the
+        # users of that domain. For example, `google.com` or `example.com`. * `deleted:
+        # user:`emailid`?uid=`uniqueid``: An email address (plus unique identifier)
+        # representing a user that has been recently deleted. For example, `alice@
+        # example.com?uid=123456789012345678901`. If the user is recovered, this value
+        # reverts to `user:`emailid`` and the recovered user retains the role in the
+        # binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email address
+        # (plus unique identifier) representing a service account that has been recently
+        # deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
         # 123456789012345678901`. If the service account is undeleted, this value
         # reverts to `serviceAccount:`emailid`` and the undeleted service account
         # retains the role in the binding. * `deleted:group:`emailid`?uid=`uniqueid``:
         # An email address (plus unique identifier) representing a Google group that has
         # been recently deleted. For example, `admins@example.com?uid=
         # 123456789012345678901`. If the group is recovered, this value reverts to `
-        # group:`emailid`` and the recovered group retains the role in the binding. * `
-        # domain:`domain``: The G Suite domain (primary) that represents all the users
-        # of that domain. For example, `google.com` or `example.com`.
+        # group:`emailid`` and the recovered group retains the role in the binding.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -248,6 +248,26 @@ module Google
         end
       end
       
+      # Configuration for a Docker remote repository.
+      class DockerRepository
+        include Google::Apis::Core::Hashable
+      
+        # One of the publicly available Docker repositories supported by Artifact
+        # Registry.
+        # Corresponds to the JSON property `publicRepository`
+        # @return [String]
+        attr_accessor :public_repository
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @public_repository = args[:public_repository] if args.key?(:public_repository)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -322,10 +342,16 @@ module Google
       class GoogleDevtoolsArtifactregistryV1File
         include Google::Apis::Core::Hashable
       
-        # The time when the File was created.
+        # Output only. The time when the File was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
+      
+        # Output only. The time when the last attempt to refresh the file's data was
+        # made. Only set when the repository is remote.
+        # Corresponds to the JSON property `fetchTime`
+        # @return [String]
+        attr_accessor :fetch_time
       
         # The hashes of the file content.
         # Corresponds to the JSON property `hashes`
@@ -349,7 +375,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :size_bytes
       
-        # The time when the File was last updated.
+        # Output only. The time when the File was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -361,6 +387,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @fetch_time = args[:fetch_time] if args.key?(:fetch_time)
           @hashes = args[:hashes] if args.key?(:hashes)
           @name = args[:name] if args.key?(:name)
           @owner = args[:owner] if args.key?(:owner)
@@ -1017,6 +1044,26 @@ module Google
         end
       end
       
+      # Configuration for a Maven remote repository.
+      class MavenRepository
+        include Google::Apis::Core::Hashable
+      
+        # One of the publicly available Maven repositories supported by Artifact
+        # Registry.
+        # Corresponds to the JSON property `publicRepository`
+        # @return [String]
+        attr_accessor :public_repository
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @public_repository = args[:public_repository] if args.key?(:public_repository)
+        end
+      end
+      
       # MavenRepositoryConfig is maven related repository details. Provides additional
       # configuration details for repositories of the maven format type.
       class MavenRepositoryConfig
@@ -1094,6 +1141,25 @@ module Google
           @tags = args[:tags] if args.key?(:tags)
           @update_time = args[:update_time] if args.key?(:update_time)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Configuration for a Npm remote repository.
+      class NpmRepository
+        include Google::Apis::Core::Hashable
+      
+        # One of the publicly available Npm repositories supported by Artifact Registry.
+        # Corresponds to the JSON property `publicRepository`
+        # @return [String]
+        attr_accessor :public_repository
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @public_repository = args[:public_repository] if args.key?(:public_repository)
         end
       end
       
@@ -1382,6 +1448,69 @@ module Google
         end
       end
       
+      # Configuration for a Python remote repository.
+      class PythonRepository
+        include Google::Apis::Core::Hashable
+      
+        # One of the publicly available Python repositories supported by Artifact
+        # Registry.
+        # Corresponds to the JSON property `publicRepository`
+        # @return [String]
+        attr_accessor :public_repository
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @public_repository = args[:public_repository] if args.key?(:public_repository)
+        end
+      end
+      
+      # Remote repository configuration.
+      class RemoteRepositoryConfig
+        include Google::Apis::Core::Hashable
+      
+        # The description of the remote source.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Configuration for a Docker remote repository.
+        # Corresponds to the JSON property `dockerRepository`
+        # @return [Google::Apis::ArtifactregistryV1::DockerRepository]
+        attr_accessor :docker_repository
+      
+        # Configuration for a Maven remote repository.
+        # Corresponds to the JSON property `mavenRepository`
+        # @return [Google::Apis::ArtifactregistryV1::MavenRepository]
+        attr_accessor :maven_repository
+      
+        # Configuration for a Npm remote repository.
+        # Corresponds to the JSON property `npmRepository`
+        # @return [Google::Apis::ArtifactregistryV1::NpmRepository]
+        attr_accessor :npm_repository
+      
+        # Configuration for a Python remote repository.
+        # Corresponds to the JSON property `pythonRepository`
+        # @return [Google::Apis::ArtifactregistryV1::PythonRepository]
+        attr_accessor :python_repository
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @docker_repository = args[:docker_repository] if args.key?(:docker_repository)
+          @maven_repository = args[:maven_repository] if args.key?(:maven_repository)
+          @npm_repository = args[:npm_repository] if args.key?(:npm_repository)
+          @python_repository = args[:python_repository] if args.key?(:python_repository)
+        end
+      end
+      
       # A Repository for storing artifacts with a specific format.
       class Repository
         include Google::Apis::Core::Hashable
@@ -1423,11 +1552,21 @@ module Google
         # @return [Google::Apis::ArtifactregistryV1::MavenRepositoryConfig]
         attr_accessor :maven_config
       
+        # The mode of the repository.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
         # The name of the repository, for example: "projects/p1/locations/us-central1/
         # repositories/repo1".
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Remote repository configuration.
+        # Corresponds to the JSON property `remoteRepositoryConfig`
+        # @return [Google::Apis::ArtifactregistryV1::RemoteRepositoryConfig]
+        attr_accessor :remote_repository_config
       
         # Output only. If set, the repository satisfies physical zone separation.
         # Corresponds to the JSON property `satisfiesPzs`
@@ -1447,6 +1586,11 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # Virtual repository configuration.
+        # Corresponds to the JSON property `virtualRepositoryConfig`
+        # @return [Google::Apis::ArtifactregistryV1::VirtualRepositoryConfig]
+        attr_accessor :virtual_repository_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1459,10 +1603,13 @@ module Google
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @labels = args[:labels] if args.key?(:labels)
           @maven_config = args[:maven_config] if args.key?(:maven_config)
+          @mode = args[:mode] if args.key?(:mode)
           @name = args[:name] if args.key?(:name)
+          @remote_repository_config = args[:remote_repository_config] if args.key?(:remote_repository_config)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @size_bytes = args[:size_bytes] if args.key?(:size_bytes)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @virtual_repository_config = args[:virtual_repository_config] if args.key?(:virtual_repository_config)
         end
       end
       
@@ -1811,6 +1958,66 @@ module Google
         end
       end
       
+      # Artifact policy configuration for the repository contents.
+      class UpstreamPolicy
+        include Google::Apis::Core::Hashable
+      
+        # The user-provided ID of the upstream policy.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Entries with a greater priority value take precedence in the pull order.
+        # Corresponds to the JSON property `priority`
+        # @return [Fixnum]
+        attr_accessor :priority
+      
+        # A reference to the repository resource, for example: "projects/p1/locations/us-
+        # central1/repositories/repo1".
+        # Corresponds to the JSON property `repository`
+        # @return [String]
+        attr_accessor :repository
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @priority = args[:priority] if args.key?(:priority)
+          @repository = args[:repository] if args.key?(:repository)
+        end
+      end
+      
+      # The Artifact Registry VPC SC config that apply to a Project.
+      class VpcscConfig
+        include Google::Apis::Core::Hashable
+      
+        # The name of the project's VPC SC Config. Always of the form: projects/`
+        # projectID`/locations/`location`/vpcscConfig In update request: never set In
+        # response: always set
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The project per location VPC SC policy that defines the VPC SC behavior for
+        # the Remote Repository (Allow/Deny).
+        # Corresponds to the JSON property `vpcscPolicy`
+        # @return [String]
+        attr_accessor :vpcsc_policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @vpcsc_policy = args[:vpcsc_policy] if args.key?(:vpcsc_policy)
+        end
+      end
+      
       # The body of a version resource. A version resource represents a collection of
       # components, such as files and other data. This may correspond to a version in
       # many package management schemes.
@@ -1864,6 +2071,26 @@ module Google
           @name = args[:name] if args.key?(:name)
           @related_tags = args[:related_tags] if args.key?(:related_tags)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Virtual repository configuration.
+      class VirtualRepositoryConfig
+        include Google::Apis::Core::Hashable
+      
+        # Policies that configure the upstream artifacts distributed by the Virtual
+        # Repository. Upstream policies cannot be set on a standard repository.
+        # Corresponds to the JSON property `upstreamPolicies`
+        # @return [Array<Google::Apis::ArtifactregistryV1::UpstreamPolicy>]
+        attr_accessor :upstream_policies
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @upstream_policies = args[:upstream_policies] if args.key?(:upstream_policies)
         end
       end
       
