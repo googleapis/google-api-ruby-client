@@ -782,7 +782,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A list of Chat spaces IDs, as provided by the [Chat API](https://developers.
-        # google.com/hangouts/chat).
+        # google.com/chat). There is a limit of exporting from 500 Chat spaces per
+        # request.
         # Corresponds to the JSON property `roomId`
         # @return [Array<String>]
         attr_accessor :room_id
