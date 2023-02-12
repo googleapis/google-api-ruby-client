@@ -1100,6 +1100,11 @@ module Google
         # @return [Google::Apis::AndroidpublisherV3::DeviceTierSet]
         attr_accessor :device_tier_set
       
+        # Definition of user country sets for the app.
+        # Corresponds to the JSON property `userCountrySets`
+        # @return [Array<Google::Apis::AndroidpublisherV3::UserCountrySet>]
+        attr_accessor :user_country_sets
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1109,6 +1114,7 @@ module Google
           @device_groups = args[:device_groups] if args.key?(:device_groups)
           @device_tier_config_id = args[:device_tier_config_id] if args.key?(:device_tier_config_id)
           @device_tier_set = args[:device_tier_set] if args.key?(:device_tier_set)
+          @user_country_sets = args[:user_country_sets] if args.key?(:user_country_sets)
         end
       end
       
@@ -4418,6 +4424,33 @@ module Google
           @text = args[:text] if args.key?(:text)
           @thumbs_down_count = args[:thumbs_down_count] if args.key?(:thumbs_down_count)
           @thumbs_up_count = args[:thumbs_up_count] if args.key?(:thumbs_up_count)
+        end
+      end
+      
+      # A set of user countries. A country set determines what variation of app
+      # content gets served to a specific location.
+      class UserCountrySet
+        include Google::Apis::Core::Hashable
+      
+        # List of country codes representing countries. A Country code is represented in
+        # ISO 3166 alpha-2 format. For Example:- "IT" for Italy, "GE" for Georgia.
+        # Corresponds to the JSON property `countryCodes`
+        # @return [Array<String>]
+        attr_accessor :country_codes
+      
+        # Country set name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @country_codes = args[:country_codes] if args.key?(:country_codes)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
