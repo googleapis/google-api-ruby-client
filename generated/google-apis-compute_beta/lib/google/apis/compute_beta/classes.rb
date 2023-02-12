@@ -512,8 +512,9 @@ module Google
       
         # The first IPv6 address of the external IPv6 range associated with this
         # instance, prefix length is stored in externalIpv6PrefixLength in
-        # ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork
-        # associated with the instance will be allocated dynamically.
+        # ipv6AccessConfig. To use a static external IP address, it must be unused and
+        # in the same region as the instance's zone. If not specified, GCP will
+        # automatically assign an external IPv6 address from the instance's subnetwork.
         # Corresponds to the JSON property `externalIpv6`
         # @return [String]
         attr_accessor :external_ipv6
@@ -4811,22 +4812,22 @@ module Google
         # kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-
         # project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:`emailid``: An
         # email address that represents a Google group. For example, `admins@example.com`
-        # . * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
-        # identifier) representing a user that has been recently deleted. For example, `
-        # alice@example.com?uid=123456789012345678901`. If the user is recovered, this
-        # value reverts to `user:`emailid`` and the recovered user retains the role in
-        # the binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email
-        # address (plus unique identifier) representing a service account that has been
-        # recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
+        # . * `domain:`domain``: The G Suite domain (primary) that represents all the
+        # users of that domain. For example, `google.com` or `example.com`. * `deleted:
+        # user:`emailid`?uid=`uniqueid``: An email address (plus unique identifier)
+        # representing a user that has been recently deleted. For example, `alice@
+        # example.com?uid=123456789012345678901`. If the user is recovered, this value
+        # reverts to `user:`emailid`` and the recovered user retains the role in the
+        # binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email address
+        # (plus unique identifier) representing a service account that has been recently
+        # deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
         # 123456789012345678901`. If the service account is undeleted, this value
         # reverts to `serviceAccount:`emailid`` and the undeleted service account
         # retains the role in the binding. * `deleted:group:`emailid`?uid=`uniqueid``:
         # An email address (plus unique identifier) representing a Google group that has
         # been recently deleted. For example, `admins@example.com?uid=
         # 123456789012345678901`. If the group is recovered, this value reverts to `
-        # group:`emailid`` and the recovered group retains the role in the binding. * `
-        # domain:`domain``: The G Suite domain (primary) that represents all the users
-        # of that domain. For example, `google.com` or `example.com`.
+        # group:`emailid`` and the recovered group retains the role in the binding.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -22702,7 +22703,10 @@ module Google
         # @return [String]
         attr_accessor :ipv6_access_type
       
-        # An IPv6 internal network address for this network interface.
+        # An IPv6 internal network address for this network interface. To use a static
+        # internal IP address, it must be unused and in the same region as the instance'
+        # s zone. If not specified, GCP will automatically assign an internal IPv6
+        # address from the instance's subnetwork.
         # Corresponds to the JSON property `ipv6Address`
         # @return [String]
         attr_accessor :ipv6_address
@@ -30901,6 +30905,11 @@ module Google
         # @return [String]
         attr_accessor :collocation
       
+        # Specifies the number of max logical switches.
+        # Corresponds to the JSON property `maxDistance`
+        # @return [Fixnum]
+        attr_accessor :max_distance
+      
         # Number of VMs in this placement group. Google does not recommend that you use
         # this field unless you use a compact policy and you want your policy to work
         # only if it contains this exact number of VMs.
@@ -30916,6 +30925,7 @@ module Google
         def update!(**args)
           @availability_domain_count = args[:availability_domain_count] if args.key?(:availability_domain_count)
           @collocation = args[:collocation] if args.key?(:collocation)
+          @max_distance = args[:max_distance] if args.key?(:max_distance)
           @vm_count = args[:vm_count] if args.key?(:vm_count)
         end
       end
@@ -34240,7 +34250,11 @@ module Google
         # CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be
         # configured to filter HTTP requests targeting services managed by Traffic
         # Director in a service mesh. They filter requests before the request is served
-        # from the application. This field can be set only at resource creation time.
+        # from the application. - CLOUD_ARMOR_NETWORK: Cloud Armor network policies can
+        # be configured to filter packets targeting network load balancing resources
+        # such as backend services, target pools, target instances, and instances with
+        # external IPs. They filter requests before the request is served from the
+        # application. This field can be set only at resource creation time.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -43747,7 +43761,7 @@ module Google
         # request to modify or update labels. You must always provide an up-to-date
         # fingerprint hash in order to update or change labels, otherwise the request
         # will fail with error 412 conditionNotMet. To see the latest fingerprint, make
-        # a get() request to retrieve an VpnGateway.
+        # a get() request to retrieve a VpnGateway.
         # Corresponds to the JSON property `labelFingerprint`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
