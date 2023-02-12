@@ -866,6 +866,7 @@ module Google
           collection :http_headers, as: 'httpHeaders', class: Google::Apis::RunV1::HttpHeader, decorator: Google::Apis::RunV1::HttpHeader::Representation
       
           property :path, as: 'path'
+          property :port, as: 'port'
           property :scheme, as: 'scheme'
         end
       end
