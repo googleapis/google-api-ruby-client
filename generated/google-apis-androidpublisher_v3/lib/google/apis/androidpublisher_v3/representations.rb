@@ -790,6 +790,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UserCountrySet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UserInitiatedCancellation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1166,6 +1172,8 @@ module Google
       
           property :device_tier_config_id, :numeric_string => true, as: 'deviceTierConfigId'
           property :device_tier_set, as: 'deviceTierSet', class: Google::Apis::AndroidpublisherV3::DeviceTierSet, decorator: Google::Apis::AndroidpublisherV3::DeviceTierSet::Representation
+      
+          collection :user_country_sets, as: 'userCountrySets', class: Google::Apis::AndroidpublisherV3::UserCountrySet, decorator: Google::Apis::AndroidpublisherV3::UserCountrySet::Representation
       
         end
       end
@@ -2087,6 +2095,14 @@ module Google
           property :text, as: 'text'
           property :thumbs_down_count, as: 'thumbsDownCount'
           property :thumbs_up_count, as: 'thumbsUpCount'
+        end
+      end
+      
+      class UserCountrySet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :country_codes, as: 'countryCodes'
+          property :name, as: 'name'
         end
       end
       
