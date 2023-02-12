@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1alphaAccessBinding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1alphaAccessDateRange
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -310,6 +316,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1alphaBatchCreateUserLinksRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -322,13 +340,37 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1alphaBatchDeleteAccessBindingsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1alphaBatchDeleteUserLinksRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1alphaBatchGetAccessBindingsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1alphaBatchGetUserLinksResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -377,6 +419,12 @@ module Google
       end
       
       class GoogleAnalyticsAdminV1alphaConversionEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaCreateAccessBindingRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -431,6 +479,12 @@ module Google
       end
       
       class GoogleAnalyticsAdminV1alphaDataStreamWebStreamData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaDeleteAccessBindingRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -527,6 +581,12 @@ module Google
       end
       
       class GoogleAnalyticsAdminV1alphaLinkProposalStatusDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaListAccessBindingsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -706,6 +766,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1alphaUpdateUserLinkRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -731,6 +797,15 @@ module Google
       
           property :to_value, as: 'toValue', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaNumericValue, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaNumericValue::Representation
       
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaAccessBinding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          collection :roles, as: 'roles'
+          property :user, as: 'user'
         end
       end
       
@@ -1171,6 +1246,22 @@ module Google
         end
       end
       
+      class GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :requests, as: 'requests', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCreateAccessBindingRequest, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCreateAccessBindingRequest::Representation
+      
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :access_bindings, as: 'accessBindings', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccessBinding, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccessBinding::Representation
+      
+        end
+      end
+      
       class GoogleAnalyticsAdminV1alphaBatchCreateUserLinksRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1188,6 +1279,14 @@ module Google
         end
       end
       
+      class GoogleAnalyticsAdminV1alphaBatchDeleteAccessBindingsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :requests, as: 'requests', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDeleteAccessBindingRequest, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDeleteAccessBindingRequest::Representation
+      
+        end
+      end
+      
       class GoogleAnalyticsAdminV1alphaBatchDeleteUserLinksRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1196,10 +1295,34 @@ module Google
         end
       end
       
+      class GoogleAnalyticsAdminV1alphaBatchGetAccessBindingsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :access_bindings, as: 'accessBindings', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccessBinding, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccessBinding::Representation
+      
+        end
+      end
+      
       class GoogleAnalyticsAdminV1alphaBatchGetUserLinksResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :user_links, as: 'userLinks', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaUserLink, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaUserLink::Representation
+      
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :requests, as: 'requests', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequest, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequest::Representation
+      
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :access_bindings, as: 'accessBindings', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccessBinding, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccessBinding::Representation
       
         end
       end
@@ -1316,6 +1439,15 @@ module Google
         end
       end
       
+      class GoogleAnalyticsAdminV1alphaCreateAccessBindingRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_binding, as: 'accessBinding', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccessBinding, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccessBinding::Representation
+      
+          property :parent, as: 'parent'
+        end
+      end
+      
       class GoogleAnalyticsAdminV1alphaCreateUserLinkRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1411,6 +1543,13 @@ module Google
           property :default_uri, as: 'defaultUri'
           property :firebase_app_id, as: 'firebaseAppId'
           property :measurement_id, as: 'measurementId'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaDeleteAccessBindingRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
         end
       end
       
@@ -1569,6 +1708,15 @@ module Google
           property :link_proposal_initiating_product, as: 'linkProposalInitiatingProduct'
           property :link_proposal_state, as: 'linkProposalState'
           property :requestor_email, as: 'requestorEmail'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaListAccessBindingsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :access_bindings, as: 'accessBindings', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccessBinding, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccessBinding::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -1862,6 +2010,14 @@ module Google
       class GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_binding, as: 'accessBinding', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccessBinding, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccessBinding::Representation
+      
         end
       end
       
