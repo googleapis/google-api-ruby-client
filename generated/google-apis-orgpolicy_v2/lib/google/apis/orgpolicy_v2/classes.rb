@@ -33,8 +33,8 @@ module Google
         # @return [String]
         attr_accessor :launch
       
-        # Defines a Cloud Organization `PolicySpec` which is used to specify `
-        # Constraints` for configurations of Cloud Platform resources.
+        # Defines a Google Cloud policy specification which is used to specify
+        # constraints for configurations of Google Cloud resources.
         # Corresponds to the JSON property `spec`
         # @return [Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2PolicySpec]
         attr_accessor :spec
@@ -50,35 +50,35 @@ module Google
         end
       end
       
-      # A `constraint` describes a way to restrict resource's configuration. For
-      # example, you could enforce a constraint that controls which cloud services can
+      # A constraint describes a way to restrict resource's configuration. For example,
+      # you could enforce a constraint that controls which Google Cloud services can
       # be activated across an organization, or whether a Compute Engine instance can
-      # have serial port connections established. `Constraints` can be configured by
-      # the organization's policy administrator to fit the needs of the organization
-      # by setting a `policy` that includes `constraints` at different locations in
-      # the organization's resource hierarchy. Policies are inherited down the
-      # resource hierarchy from higher levels, but can also be overridden. For details
-      # about the inheritance rules please read about `policies`. `Constraints` have a
-      # default behavior determined by the `constraint_default` field, which is the
-      # enforcement behavior that is used in the absence of a `policy` being defined
-      # or inherited for the resource in question.
+      # have serial port connections established. Constraints can be configured by the
+      # organization policy administrator to fit the needs of the organization by
+      # setting a policy that includes constraints at different locations in the
+      # organization's resource hierarchy. Policies are inherited down the resource
+      # hierarchy from higher levels, but can also be overridden. For details about
+      # the inheritance rules please read about `policies`. Constraints have a default
+      # behavior determined by the `constraint_default` field, which is the
+      # enforcement behavior that is used in the absence of a policy being defined or
+      # inherited for the resource in question.
       class GoogleCloudOrgpolicyV2Constraint
         include Google::Apis::Core::Hashable
       
-        # A `Constraint` that is either enforced or not. For example a constraint `
+        # A constraint that is either enforced or not. For example, a constraint `
         # constraints/compute.disableSerialPortAccess`. If it is enforced on a VM
         # instance, serial port connections will not be opened to that instance.
         # Corresponds to the JSON property `booleanConstraint`
         # @return [Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2ConstraintBooleanConstraint]
         attr_accessor :boolean_constraint
       
-        # The evaluation behavior of this constraint in the absence of 'Policy'.
+        # The evaluation behavior of this constraint in the absence of a policy.
         # Corresponds to the JSON property `constraintDefault`
         # @return [String]
         attr_accessor :constraint_default
       
-        # Detailed description of what this `Constraint` controls as well as how and
-        # where it is enforced. Mutable.
+        # Detailed description of what this constraint controls as well as how and where
+        # it is enforced. Mutable.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -88,13 +88,13 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # A `Constraint` that allows or disallows a list of string values, which are
-        # configured by an Organization's policy administrator with a `Policy`.
+        # A constraint that allows or disallows a list of string values, which are
+        # configured by an Organization Policy administrator with a policy.
         # Corresponds to the JSON property `listConstraint`
         # @return [Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2ConstraintListConstraint]
         attr_accessor :list_constraint
       
-        # Immutable. The resource name of the Constraint. Must be in one of the
+        # Immutable. The resource name of the constraint. Must be in one of the
         # following forms: * `projects/`project_number`/constraints/`constraint_name`` *
         # `folders/`folder_id`/constraints/`constraint_name`` * `organizations/`
         # organization_id`/constraints/`constraint_name`` For example, "/projects/123/
@@ -118,7 +118,7 @@ module Google
         end
       end
       
-      # A `Constraint` that is either enforced or not. For example a constraint `
+      # A constraint that is either enforced or not. For example, a constraint `
       # constraints/compute.disableSerialPortAccess`. If it is enforced on a VM
       # instance, serial port connections will not be opened to that instance.
       class GoogleCloudOrgpolicyV2ConstraintBooleanConstraint
@@ -133,8 +133,8 @@ module Google
         end
       end
       
-      # A `Constraint` that allows or disallows a list of string values, which are
-      # configured by an Organization's policy administrator with a `Policy`.
+      # A constraint that allows or disallows a list of string values, which are
+      # configured by an Organization Policy administrator with a policy.
       class GoogleCloudOrgpolicyV2ConstraintListConstraint
         include Google::Apis::Core::Hashable
       
@@ -146,7 +146,7 @@ module Google
         attr_accessor :supports_in
         alias_method :supports_in?, :supports_in
       
-        # Indicates whether subtrees of Cloud Resource Manager resource hierarchy can be
+        # Indicates whether subtrees of the Resource Manager resource hierarchy can be
         # used in `Policy.allowed_values` and `Policy.denied_values`. For example, `"
         # under:folders/123"` would match any resource under the 'folders/123' folder.
         # Corresponds to the JSON property `supportsUnder`
@@ -167,7 +167,7 @@ module Google
       
       # A custom constraint defined by customers which can *only* be applied to the
       # given resource types and organization. By creating a custom constraint,
-      # customers can applied policies of this custom constraint. *Creating a custom
+      # customers can apply policies of this custom constraint. *Creating a custom
       # constraint itself does NOT apply any policy enforcement*.
       class GoogleCloudOrgpolicyV2CustomConstraint
         include Google::Apis::Core::Hashable
@@ -203,15 +203,15 @@ module Google
       
         # Immutable. Name of the constraint. This is unique within the organization.
         # Format of the name should be * `organizations/`organization_id`/
-        # customConstraints/`custom_constraint_id`` Example : "organizations/123/
-        # customConstraints/custom.createOnlyE2TypeVms" The max length is 70 characters
-        # and the min length is 1. Note that the prefix "organizations/`organization_id`/
-        # customConstraints/" is not counted.
+        # customConstraints/`custom_constraint_id`` Example: `organizations/123/
+        # customConstraints/custom.createOnlyE2TypeVms` The max length is 70 characters
+        # and the minimum length is 1. Note that the prefix `organizations/`
+        # organization_id`/customConstraints/` is not counted.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Immutable. The Resource Instance type on which this policy applies to. Format
+        # Immutable. The resource instance type on which this policy applies. Format
         # will be of the form : "/" Example: * `compute.googleapis.com/Instance`.
         # Corresponds to the JSON property `resourceTypes`
         # @return [Array<String>]
@@ -267,12 +267,12 @@ module Google
       end
       
       # The response returned from the ListCustomConstraints method. It will be empty
-      # if no `CustomConstraints` are set on the organization resource.
+      # if no custom constraints are set on the organization resource.
       class GoogleCloudOrgpolicyV2ListCustomConstraintsResponse
         include Google::Apis::Core::Hashable
       
-        # All `CustomConstraints` that exist on the organization resource. It will be
-        # empty if no `CustomConstraints` are set.
+        # All custom constraints that exist on the organization resource. It will be
+        # empty if no custom constraints are set.
         # Corresponds to the JSON property `customConstraints`
         # @return [Array<Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2CustomConstraint>]
         attr_accessor :custom_constraints
@@ -294,8 +294,8 @@ module Google
         end
       end
       
-      # The response returned from the ListPolicies method. It will be empty if no `
-      # Policies` are set on the resource.
+      # The response returned from the ListPolicies method. It will be empty if no
+      # policies are set on the resource.
       class GoogleCloudOrgpolicyV2ListPoliciesResponse
         include Google::Apis::Core::Hashable
       
@@ -305,8 +305,8 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # All `Policies` that exist on the resource. It will be empty if no `Policies`
-        # are set.
+        # All policies that exist on the resource. It will be empty if no policies are
+        # set.
         # Corresponds to the JSON property `policies`
         # @return [Array<Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2Policy>]
         attr_accessor :policies
@@ -322,8 +322,8 @@ module Google
         end
       end
       
-      # Defines a Cloud Organization `Policy` which is used to specify `Constraints`
-      # for configurations of Cloud Platform resources.
+      # Defines an organization policy which is used to specify constraints for
+      # configurations of Google Cloud resources.
       class GoogleCloudOrgpolicyV2Policy
         include Google::Apis::Core::Hashable
       
@@ -333,14 +333,14 @@ module Google
         # @return [Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2AlternatePolicySpec]
         attr_accessor :alternate
       
-        # Defines a Cloud Organization `PolicySpec` which is used to specify `
-        # Constraints` for configurations of Cloud Platform resources.
+        # Defines a Google Cloud policy specification which is used to specify
+        # constraints for configurations of Google Cloud resources.
         # Corresponds to the JSON property `dryRunSpec`
         # @return [Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2PolicySpec]
         attr_accessor :dry_run_spec
       
-        # Immutable. The resource name of the Policy. Must be one of the following forms,
-        # where constraint_name is the name of the constraint which this Policy
+        # Immutable. The resource name of the policy. Must be one of the following forms,
+        # where constraint_name is the name of the constraint which this policy
         # configures: * `projects/`project_number`/policies/`constraint_name`` * `
         # folders/`folder_id`/policies/`constraint_name`` * `organizations/`
         # organization_id`/policies/`constraint_name`` For example, "projects/123/
@@ -351,8 +351,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Defines a Cloud Organization `PolicySpec` which is used to specify `
-        # Constraints` for configurations of Cloud Platform resources.
+        # Defines a Google Cloud policy specification which is used to specify
+        # constraints for configurations of Google Cloud resources.
         # Corresponds to the JSON property `spec`
         # @return [Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2PolicySpec]
         attr_accessor :spec
@@ -370,33 +370,33 @@ module Google
         end
       end
       
-      # Defines a Cloud Organization `PolicySpec` which is used to specify `
-      # Constraints` for configurations of Cloud Platform resources.
+      # Defines a Google Cloud policy specification which is used to specify
+      # constraints for configurations of Google Cloud resources.
       class GoogleCloudOrgpolicyV2PolicySpec
         include Google::Apis::Core::Hashable
       
-        # An opaque tag indicating the current version of the `Policy`, used for
+        # An opaque tag indicating the current version of the policy, used for
         # concurrency control. This field is ignored if used in a `CreatePolicy` request.
-        # When the `Policy` is returned from either a `GetPolicy` or a `ListPolicies`
-        # request, this `etag` indicates the version of the current `Policy` to use when
-        # executing a read-modify-write loop. When the `Policy` is returned from a `
+        # When the policy` is returned from either a `GetPolicy` or a `ListPolicies`
+        # request, this `etag` indicates the version of the current policy to use when
+        # executing a read-modify-write loop. When the policy is returned from a `
         # GetEffectivePolicy` request, the `etag` will be unset.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
       
-        # Determines the inheritance behavior for this `Policy`. If `inherit_from_parent`
-        # is true, PolicyRules set higher up in the hierarchy (up to the closest root)
+        # Determines the inheritance behavior for this policy. If `inherit_from_parent`
+        # is true, policy rules set higher up in the hierarchy (up to the closest root)
         # are inherited and present in the effective policy. If it is false, then no
-        # rules are inherited, and this Policy becomes the new root for evaluation. This
-        # field can be set only for Policies which configure list constraints.
+        # rules are inherited, and this policy becomes the new root for evaluation. This
+        # field can be set only for policies which configure list constraints.
         # Corresponds to the JSON property `inheritFromParent`
         # @return [Boolean]
         attr_accessor :inherit_from_parent
         alias_method :inherit_from_parent?, :inherit_from_parent
       
         # Ignores policies set above this resource and restores the `constraint_default`
-        # enforcement behavior of the specific `Constraint` at this resource. This field
+        # enforcement behavior of the specific constraint at this resource. This field
         # can be set in policies for either list or boolean constraints. If set, `rules`
         # must be empty and `inherit_from_parent` must be set to false.
         # Corresponds to the JSON property `reset`
@@ -404,19 +404,18 @@ module Google
         attr_accessor :reset
         alias_method :reset?, :reset
       
-        # Up to 10 PolicyRules are allowed. In Policies for boolean constraints, the
-        # following requirements apply: - There must be one and only one PolicyRule
-        # where condition is unset. - BooleanPolicyRules with conditions must set `
-        # enforced` to the opposite of the PolicyRule without a condition. - During
-        # policy evaluation, PolicyRules with conditions that are true for a target
+        # Up to 10 policy rules are allowed. In policies for boolean constraints, the
+        # following requirements apply: - There must be one and only one policy rule
+        # where condition is unset. - Boolean policy rules with conditions must set `
+        # enforced` to the opposite of the policy rule without a condition. - During
+        # policy evaluation, policy rules with conditions that are true for a target
         # resource take precedence.
         # Corresponds to the JSON property `rules`
         # @return [Array<Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2PolicySpecPolicyRule>]
         attr_accessor :rules
       
         # Output only. The time stamp this was previously updated. This represents the
-        # last time a call to `CreatePolicy` or `UpdatePolicy` was made for that `Policy`
-        # .
+        # last time a call to `CreatePolicy` or `UpdatePolicy` was made for that policy.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -440,7 +439,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Setting this to true means that all values are allowed. This field can be set
-        # only in Policies for list constraints.
+        # only in policies for list constraints.
         # Corresponds to the JSON property `allowAll`
         # @return [Boolean]
         attr_accessor :allow_all
@@ -466,25 +465,25 @@ module Google
         attr_accessor :condition
       
         # Setting this to true means that all values are denied. This field can be set
-        # only in Policies for list constraints.
+        # only in policies for list constraints.
         # Corresponds to the JSON property `denyAll`
         # @return [Boolean]
         attr_accessor :deny_all
         alias_method :deny_all?, :deny_all
       
-        # If `true`, then the `Policy` is enforced. If `false`, then any configuration
-        # is acceptable. This field can be set only in Policies for boolean constraints.
+        # If `true`, then the policy is enforced. If `false`, then any configuration is
+        # acceptable. This field can be set only in policies for boolean constraints.
         # Corresponds to the JSON property `enforce`
         # @return [Boolean]
         attr_accessor :enforce
         alias_method :enforce?, :enforce
       
         # A message that holds specific allowed and denied values. This message can
-        # define specific values and subtrees of Cloud Resource Manager resource
-        # hierarchy (`Organizations`, `Folders`, `Projects`) that are allowed or denied.
-        # This is achieved by using the `under:` and optional `is:` prefixes. The `under:
-        # ` prefix is used to denote resource subtree values. The `is:` prefix is used
-        # to denote specific values, and is required only if the value contains a ":".
+        # define specific values and subtrees of the Resource Manager resource hierarchy
+        # (`Organizations`, `Folders`, `Projects`) that are allowed or denied. This is
+        # achieved by using the `under:` and optional `is:` prefixes. The `under:`
+        # prefix is used to denote resource subtree values. The `is:` prefix is used to
+        # denote specific values, and is required only if the value contains a ":".
         # Values prefixed with "is:" are treated the same as values with no prefix.
         # Ancestry subtrees must be in one of the following formats: - "projects/", e.g.
         # "projects/tokyo-rain-123" - "folders/", e.g. "folders/1234" - "organizations/",
@@ -509,11 +508,11 @@ module Google
       end
       
       # A message that holds specific allowed and denied values. This message can
-      # define specific values and subtrees of Cloud Resource Manager resource
-      # hierarchy (`Organizations`, `Folders`, `Projects`) that are allowed or denied.
-      # This is achieved by using the `under:` and optional `is:` prefixes. The `under:
-      # ` prefix is used to denote resource subtree values. The `is:` prefix is used
-      # to denote specific values, and is required only if the value contains a ":".
+      # define specific values and subtrees of the Resource Manager resource hierarchy
+      # (`Organizations`, `Folders`, `Projects`) that are allowed or denied. This is
+      # achieved by using the `under:` and optional `is:` prefixes. The `under:`
+      # prefix is used to denote resource subtree values. The `is:` prefix is used to
+      # denote specific values, and is required only if the value contains a ":".
       # Values prefixed with "is:" are treated the same as values with no prefix.
       # Ancestry subtrees must be in one of the following formats: - "projects/", e.g.
       # "projects/tokyo-rain-123" - "folders/", e.g. "folders/1234" - "organizations/",
