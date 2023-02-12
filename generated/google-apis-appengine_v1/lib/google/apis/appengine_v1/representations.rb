@@ -184,6 +184,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FlexibleRuntimeSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAppengineV1betaLocationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -741,6 +747,14 @@ module Google
         end
       end
       
+      class FlexibleRuntimeSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :operating_system, as: 'operatingSystem'
+          property :runtime_version, as: 'runtimeVersion'
+        end
+      end
+      
       class GoogleAppengineV1betaLocationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1234,6 +1248,8 @@ module Google
           property :env, as: 'env'
           hash :env_variables, as: 'envVariables'
           collection :error_handlers, as: 'errorHandlers', class: Google::Apis::AppengineV1::ErrorHandler, decorator: Google::Apis::AppengineV1::ErrorHandler::Representation
+      
+          property :flexible_runtime_settings, as: 'flexibleRuntimeSettings', class: Google::Apis::AppengineV1::FlexibleRuntimeSettings, decorator: Google::Apis::AppengineV1::FlexibleRuntimeSettings::Representation
       
           collection :handlers, as: 'handlers', class: Google::Apis::AppengineV1::UrlMap, decorator: Google::Apis::AppengineV1::UrlMap::Representation
       
