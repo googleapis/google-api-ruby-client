@@ -470,6 +470,21 @@ module Google
         # Lists batch workloads.
         # @param [String] parent
         #   Required. The parent, which owns this collection of batches.
+        # @param [String] filter
+        #   Optional. A filter for the batches to return in the response.A filter is a
+        #   logical expression constraining the values of various fields in each batch
+        #   resource. Filters are case sensitive, and may contain multiple clauses
+        #   combined with logical operators (AND/OR). Supported fields are batch_id,
+        #   batch_uuid, state, and create_time.e.g. state = RUNNING and create_time < "
+        #   2023-01-01T00:00:00Z" filters for batches in state RUNNING that were created
+        #   before 2023-01-01See https://google.aip.dev/assets/misc/ebnf-filtering.txt for
+        #   a detailed description of the filter syntax and a list of supported
+        #   comparisons.
+        # @param [String] order_by
+        #   Optional. Field(s) on which to sort the list of batches.Currently the only
+        #   supported sort orders are unspecified (empty) and create_time desc to sort by
+        #   most recently created batches first.See https://google.aip.dev/132#ordering
+        #   for more details.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of batches to return in each response. The
         #   service may return fewer than this value. The default page size is 20; the
@@ -494,11 +509,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_batches(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_batches(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/batches', options)
           command.response_representation = Google::Apis::DataprocV1::ListBatchesResponse::Representation
           command.response_class = Google::Apis::DataprocV1::ListBatchesResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?

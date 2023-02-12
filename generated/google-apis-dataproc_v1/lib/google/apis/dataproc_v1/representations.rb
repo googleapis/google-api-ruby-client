@@ -1107,7 +1107,9 @@ module Google
           collection :network_tags, as: 'networkTags'
           property :network_uri, as: 'networkUri'
           property :service_account, as: 'serviceAccount'
+          property :staging_bucket, as: 'stagingBucket'
           property :subnetwork_uri, as: 'subnetworkUri'
+          property :ttl, as: 'ttl'
         end
       end
       
