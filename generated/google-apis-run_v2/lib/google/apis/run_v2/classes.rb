@@ -664,6 +664,11 @@ module Google
         # @return [String]
         attr_accessor :path
       
+        # Port number to access on the container. Must be in the range 1 to 65535.
+        # Corresponds to the JSON property `port`
+        # @return [Fixnum]
+        attr_accessor :port
+      
         def initialize(**args)
            update!(**args)
         end
@@ -672,6 +677,7 @@ module Google
         def update!(**args)
           @http_headers = args[:http_headers] if args.key?(:http_headers)
           @path = args[:path] if args.key?(:path)
+          @port = args[:port] if args.key?(:port)
         end
       end
       
