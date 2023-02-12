@@ -6236,6 +6236,8 @@ module Google
       class GoogleCloudDialogflowV2SuggestConversationSummaryRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :assist_query_params, as: 'assistQueryParams', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2AssistQueryParameters, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2AssistQueryParameters::Representation
+      
           property :context_size, as: 'contextSize'
           property :latest_message, as: 'latestMessage'
         end
