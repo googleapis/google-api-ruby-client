@@ -134,6 +134,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :reasons
       
+        # Describes an event in the lifecycle of a payment transaction.
+        # Corresponds to the JSON property `transactionEvent`
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1TransactionEvent]
+        attr_accessor :transaction_event
+      
         def initialize(**args)
            update!(**args)
         end
@@ -143,6 +148,7 @@ module Google
           @annotation = args[:annotation] if args.key?(:annotation)
           @hashed_account_id = args[:hashed_account_id] if args.key?(:hashed_account_id)
           @reasons = args[:reasons] if args.key?(:reasons)
+          @transaction_event = args[:transaction_event] if args.key?(:transaction_event)
         end
       end
       
@@ -159,7 +165,7 @@ module Google
         end
       end
       
-      # A recaptcha assessment resource.
+      # A reCAPTCHA Enterprise assessment resource.
       class GoogleCloudRecaptchaenterpriseV1Assessment
         include Google::Apis::Core::Hashable
       
@@ -313,14 +319,14 @@ module Google
         # @return [String]
         attr_accessor :hashed_account_id
       
-        # Optional. The site key that was used to invoke reCAPTCHA on your site and
-        # generate the token.
+        # Optional. The site key that was used to invoke reCAPTCHA Enterprise on your
+        # site and generate the token.
         # Corresponds to the JSON property `siteKey`
         # @return [String]
         attr_accessor :site_key
       
-        # Optional. The user response token provided by the reCAPTCHA client-side
-        # integration on your site.
+        # Optional. The user response token provided by the reCAPTCHA Enterprise client-
+        # side integration on your site.
         # Corresponds to the JSON property `token`
         # @return [String]
         attr_accessor :token
@@ -936,6 +942,47 @@ module Google
           @invalid_reason = args[:invalid_reason] if args.key?(:invalid_reason)
           @ios_bundle_id = args[:ios_bundle_id] if args.key?(:ios_bundle_id)
           @valid = args[:valid] if args.key?(:valid)
+        end
+      end
+      
+      # Describes an event in the lifecycle of a payment transaction.
+      class GoogleCloudRecaptchaenterpriseV1TransactionEvent
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Timestamp when this transaction event occurred; otherwise assumed to
+        # be the time of the API call.
+        # Corresponds to the JSON property `eventTime`
+        # @return [String]
+        attr_accessor :event_time
+      
+        # Optional. The type of this transaction event.
+        # Corresponds to the JSON property `eventType`
+        # @return [String]
+        attr_accessor :event_type
+      
+        # Optional. The reason or standardized code which corresponds with this
+        # transaction event, if one exists. E.g. a CHARGEBACK Event with code 4553.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        # Optional. The value that corresponds with this transaction event, if one
+        # exists. E.g. A refund event where $5.00 was refunded. Currency is obtained
+        # from the original transaction data.
+        # Corresponds to the JSON property `value`
+        # @return [Float]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event_time = args[:event_time] if args.key?(:event_time)
+          @event_type = args[:event_type] if args.key?(:event_type)
+          @reason = args[:reason] if args.key?(:reason)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
