@@ -567,6 +567,40 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets the specified release for a site or channel. When used to get a release
+        # for a site, this can get releases for both the default `live` channel and any
+        # active preview channels for the specified site.
+        # @param [String] name
+        #   Required. The fully-qualified resource name for the Hosting release, in either
+        #   of the following formats: - sites/SITE_ID/channels/CHANNEL_ID/releases/
+        #   RELEASE_ID - sites/SITE_ID/releases/RELEASE_ID
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasehostingV1beta1::Release] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasehostingV1beta1::Release]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_site_channel_release(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::FirebasehostingV1beta1::Release::Representation
+          command.response_class = Google::Apis::FirebasehostingV1beta1::Release
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists the releases that have been created for the specified site or channel.
         # When used to list releases for a site, this list includes releases for both
         # the default `live` channel and any active preview channels for the specified
@@ -817,6 +851,40 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets the specified release for a site or channel. When used to get a release
+        # for a site, this can get releases for both the default `live` channel and any
+        # active preview channels for the specified site.
+        # @param [String] name
+        #   Required. The fully-qualified resource name for the Hosting release, in either
+        #   of the following formats: - sites/SITE_ID/channels/CHANNEL_ID/releases/
+        #   RELEASE_ID - sites/SITE_ID/releases/RELEASE_ID
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasehostingV1beta1::Release] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasehostingV1beta1::Release]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_site_release(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::FirebasehostingV1beta1::Release::Representation
+          command.response_class = Google::Apis::FirebasehostingV1beta1::Release
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists the releases that have been created for the specified site or channel.
         # When used to list releases for a site, this list includes releases for both
         # the default `live` channel and any active preview channels for the specified
@@ -962,6 +1030,39 @@ module Google
           command = make_simple_command(:delete, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::FirebasehostingV1beta1::Empty::Representation
           command.response_class = Google::Apis::FirebasehostingV1beta1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get the specified version that has been created for the specified site. This
+        # can include versions that were created for the default `live` channel or for
+        # any active preview channels for the specified site.
+        # @param [String] name
+        #   Required. The fully-qualified resource name for the version, in the format:
+        #   sites/SITE_ID/versions/VERSION_ID
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasehostingV1beta1::Version] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasehostingV1beta1::Version]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_site_version(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::FirebasehostingV1beta1::Version::Representation
+          command.response_class = Google::Apis::FirebasehostingV1beta1::Version
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1430,6 +1531,40 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets the specified release for a site or channel. When used to get a release
+        # for a site, this can get releases for both the default `live` channel and any
+        # active preview channels for the specified site.
+        # @param [String] name
+        #   Required. The fully-qualified resource name for the Hosting release, in either
+        #   of the following formats: - sites/SITE_ID/channels/CHANNEL_ID/releases/
+        #   RELEASE_ID - sites/SITE_ID/releases/RELEASE_ID
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasehostingV1beta1::Release] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasehostingV1beta1::Release]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_site_channel_release(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::FirebasehostingV1beta1::Release::Representation
+          command.response_class = Google::Apis::FirebasehostingV1beta1::Release
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists the releases that have been created for the specified site or channel.
         # When used to list releases for a site, this list includes releases for both
         # the default `live` channel and any active preview channels for the specified
@@ -1680,6 +1815,40 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets the specified release for a site or channel. When used to get a release
+        # for a site, this can get releases for both the default `live` channel and any
+        # active preview channels for the specified site.
+        # @param [String] name
+        #   Required. The fully-qualified resource name for the Hosting release, in either
+        #   of the following formats: - sites/SITE_ID/channels/CHANNEL_ID/releases/
+        #   RELEASE_ID - sites/SITE_ID/releases/RELEASE_ID
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasehostingV1beta1::Release] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasehostingV1beta1::Release]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_site_release(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::FirebasehostingV1beta1::Release::Representation
+          command.response_class = Google::Apis::FirebasehostingV1beta1::Release
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists the releases that have been created for the specified site or channel.
         # When used to list releases for a site, this list includes releases for both
         # the default `live` channel and any active preview channels for the specified
@@ -1825,6 +1994,39 @@ module Google
           command = make_simple_command(:delete, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::FirebasehostingV1beta1::Empty::Representation
           command.response_class = Google::Apis::FirebasehostingV1beta1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get the specified version that has been created for the specified site. This
+        # can include versions that were created for the default `live` channel or for
+        # any active preview channels for the specified site.
+        # @param [String] name
+        #   Required. The fully-qualified resource name for the version, in the format:
+        #   sites/SITE_ID/versions/VERSION_ID
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasehostingV1beta1::Version] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasehostingV1beta1::Version]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_site_version(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::FirebasehostingV1beta1::Version::Representation
+          command.response_class = Google::Apis::FirebasehostingV1beta1::Version
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
