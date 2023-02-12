@@ -40,6 +40,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HistoryKey
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HistoryRecord
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Key
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -52,7 +64,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MetricTimeseries
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Percentiles
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QueryHistoryRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QueryHistoryResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -71,6 +101,18 @@ module Google
       end
       
       class Record
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TimeseriesBin
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TimeseriesPercentiles
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -110,6 +152,27 @@ module Google
         end
       end
       
+      class HistoryKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :form_factor, as: 'formFactor'
+          property :origin, as: 'origin'
+          property :url, as: 'url'
+        end
+      end
+      
+      class HistoryRecord
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :collection_periods, as: 'collectionPeriods', class: Google::Apis::ChromeuxreportV1::CollectionPeriod, decorator: Google::Apis::ChromeuxreportV1::CollectionPeriod::Representation
+      
+          property :key, as: 'key', class: Google::Apis::ChromeuxreportV1::HistoryKey, decorator: Google::Apis::ChromeuxreportV1::HistoryKey::Representation
+      
+          hash :metrics, as: 'metrics', class: Google::Apis::ChromeuxreportV1::MetricTimeseries, decorator: Google::Apis::ChromeuxreportV1::MetricTimeseries::Representation
+      
+        end
+      end
+      
       class Key
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -130,10 +193,40 @@ module Google
         end
       end
       
+      class MetricTimeseries
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :histogram_timeseries, as: 'histogramTimeseries', class: Google::Apis::ChromeuxreportV1::TimeseriesBin, decorator: Google::Apis::ChromeuxreportV1::TimeseriesBin::Representation
+      
+          property :percentiles_timeseries, as: 'percentilesTimeseries', class: Google::Apis::ChromeuxreportV1::TimeseriesPercentiles, decorator: Google::Apis::ChromeuxreportV1::TimeseriesPercentiles::Representation
+      
+        end
+      end
+      
       class Percentiles
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :p75, as: 'p75'
+        end
+      end
+      
+      class QueryHistoryRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :form_factor, as: 'formFactor'
+          collection :metrics, as: 'metrics'
+          property :origin, as: 'origin'
+          property :url, as: 'url'
+        end
+      end
+      
+      class QueryHistoryResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :record, as: 'record', class: Google::Apis::ChromeuxreportV1::HistoryRecord, decorator: Google::Apis::ChromeuxreportV1::HistoryRecord::Representation
+      
+          property :url_normalization_details, as: 'urlNormalizationDetails', class: Google::Apis::ChromeuxreportV1::UrlNormalization, decorator: Google::Apis::ChromeuxreportV1::UrlNormalization::Representation
+      
         end
       end
       
@@ -167,6 +260,22 @@ module Google
       
           hash :metrics, as: 'metrics', class: Google::Apis::ChromeuxreportV1::Metric, decorator: Google::Apis::ChromeuxreportV1::Metric::Representation
       
+        end
+      end
+      
+      class TimeseriesBin
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :densities, as: 'densities'
+          property :end, as: 'end'
+          property :start, as: 'start'
+        end
+      end
+      
+      class TimeseriesPercentiles
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :p75s, as: 'p75s'
         end
       end
       
