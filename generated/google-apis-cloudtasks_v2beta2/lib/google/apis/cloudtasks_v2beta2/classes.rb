@@ -364,22 +364,22 @@ module Google
         # kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-
         # project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:`emailid``: An
         # email address that represents a Google group. For example, `admins@example.com`
-        # . * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
-        # identifier) representing a user that has been recently deleted. For example, `
-        # alice@example.com?uid=123456789012345678901`. If the user is recovered, this
-        # value reverts to `user:`emailid`` and the recovered user retains the role in
-        # the binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email
-        # address (plus unique identifier) representing a service account that has been
-        # recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
+        # . * `domain:`domain``: The G Suite domain (primary) that represents all the
+        # users of that domain. For example, `google.com` or `example.com`. * `deleted:
+        # user:`emailid`?uid=`uniqueid``: An email address (plus unique identifier)
+        # representing a user that has been recently deleted. For example, `alice@
+        # example.com?uid=123456789012345678901`. If the user is recovered, this value
+        # reverts to `user:`emailid`` and the recovered user retains the role in the
+        # binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email address
+        # (plus unique identifier) representing a service account that has been recently
+        # deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
         # 123456789012345678901`. If the service account is undeleted, this value
         # reverts to `serviceAccount:`emailid`` and the undeleted service account
         # retains the role in the binding. * `deleted:group:`emailid`?uid=`uniqueid``:
         # An email address (plus unique identifier) representing a Google group that has
         # been recently deleted. For example, `admins@example.com?uid=
         # 123456789012345678901`. If the group is recovered, this value reverts to `
-        # group:`emailid`` and the recovered group retains the role in the binding. * `
-        # domain:`domain``: The G Suite domain (primary) that represents all the users
-        # of that domain. For example, `google.com` or `example.com`.
+        # group:`emailid`` and the recovered group retains the role in the binding.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -745,14 +745,14 @@ module Google
         # headers represent a subset of the headers that will accompany the task's HTTP
         # request. Some HTTP request headers will be ignored or replaced. A partial list
         # of headers that will be ignored or replaced is: * Any header that is prefixed
-        # with "X-Google-Cloud-Tasks-" will be treated as service header. Service
-        # headers define properties of the task and are predefined in CloudTask. * Host:
-        # This will be computed by Cloud Tasks and derived from HttpRequest.url. *
-        # Content-Length: This will be computed by Cloud Tasks. * User-Agent: This will
-        # be set to `"Google-Cloud-Tasks"`. * `X-Google-*`: Google use only. * `X-
-        # AppEngine-*`: Google use only. `Content-Type` won't be set by Cloud Tasks. You
-        # can explicitly set `Content-Type` to a media type when the task is created.
-        # For example, `Content-Type` can be set to `"application/octet-stream"` or `"
+        # with "X-CloudTasks-" will be treated as service header. Service headers define
+        # properties of the task and are predefined in CloudTask. * Host: This will be
+        # computed by Cloud Tasks and derived from HttpRequest.url. * Content-Length:
+        # This will be computed by Cloud Tasks. * User-Agent: This will be set to `"
+        # Google-Cloud-Tasks"`. * `X-Google-*`: Google use only. * `X-AppEngine-*`:
+        # Google use only. `Content-Type` won't be set by Cloud Tasks. You can
+        # explicitly set `Content-Type` to a media type when the task is created. For
+        # example, `Content-Type` can be set to `"application/octet-stream"` or `"
         # application/json"`. Headers which can have multiple values (according to
         # RFC2616) can be specified using comma-separated values. The size of the
         # headers must be less than 80KB.
@@ -816,11 +816,11 @@ module Google
         # These headers represent a subset of the headers that will accompany the task's
         # HTTP request. Some HTTP request headers will be ignored or replaced. A partial
         # list of headers that will be ignored or replaced is: * Any header that is
-        # prefixed with "X-Google-Cloud-Tasks-" will be treated as service header.
-        # Service headers define properties of the task and are predefined in CloudTask.
-        # * Host: This will be computed by Cloud Tasks and derived from HttpRequest.url.
-        # * Content-Length: This will be computed by Cloud Tasks. * User-Agent: This
-        # will be set to `"Google-Cloud-Tasks"`. * `X-Google-*`: Google use only. * `X-
+        # prefixed with "X-CloudTasks-" will be treated as service header. Service
+        # headers define properties of the task and are predefined in CloudTask. * Host:
+        # This will be computed by Cloud Tasks and derived from HttpRequest.url. *
+        # Content-Length: This will be computed by Cloud Tasks. * User-Agent: This will
+        # be set to `"Google-CloudTasks"`. * `X-Google-*`: Google use only. * `X-
         # AppEngine-*`: Google use only. `Content-Type` won't be set by Cloud Tasks. You
         # can explicitly set `Content-Type` to a media type when the task is created.
         # For example, `Content-Type` can be set to `"application/octet-stream"` or `"
