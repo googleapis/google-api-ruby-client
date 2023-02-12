@@ -466,8 +466,9 @@ module Google
       
         # The first IPv6 address of the external IPv6 range associated with this
         # instance, prefix length is stored in externalIpv6PrefixLength in
-        # ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork
-        # associated with the instance will be allocated dynamically.
+        # ipv6AccessConfig. To use a static external IP address, it must be unused and
+        # in the same region as the instance's zone. If not specified, GCP will
+        # automatically assign an external IPv6 address from the instance's subnetwork.
         # Corresponds to the JSON property `externalIpv6`
         # @return [String]
         attr_accessor :external_ipv6
@@ -1123,11 +1124,11 @@ module Google
         end
       end
       
-      # 
+      # [Output Only] Contains output only fields.
       class AllocationResourceStatus
         include Google::Apis::Core::Hashable
       
-        # 
+        # Contains Properties set for the reservation.
         # Corresponds to the JSON property `specificSkuAllocation`
         # @return [Google::Apis::ComputeV1::AllocationResourceStatusSpecificSkuAllocation]
         attr_accessor :specific_sku_allocation
@@ -1142,11 +1143,11 @@ module Google
         end
       end
       
-      # 
+      # Contains Properties set for the reservation.
       class AllocationResourceStatusSpecificSkuAllocation
         include Google::Apis::Core::Hashable
       
-        # 
+        # ID of the instance template used to populate reservation properties.
         # Corresponds to the JSON property `sourceInstanceTemplateId`
         # @return [String]
         attr_accessor :source_instance_template_id
@@ -4649,22 +4650,22 @@ module Google
         # kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-
         # project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:`emailid``: An
         # email address that represents a Google group. For example, `admins@example.com`
-        # . * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
-        # identifier) representing a user that has been recently deleted. For example, `
-        # alice@example.com?uid=123456789012345678901`. If the user is recovered, this
-        # value reverts to `user:`emailid`` and the recovered user retains the role in
-        # the binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email
-        # address (plus unique identifier) representing a service account that has been
-        # recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
+        # . * `domain:`domain``: The G Suite domain (primary) that represents all the
+        # users of that domain. For example, `google.com` or `example.com`. * `deleted:
+        # user:`emailid`?uid=`uniqueid``: An email address (plus unique identifier)
+        # representing a user that has been recently deleted. For example, `alice@
+        # example.com?uid=123456789012345678901`. If the user is recovered, this value
+        # reverts to `user:`emailid`` and the recovered user retains the role in the
+        # binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email address
+        # (plus unique identifier) representing a service account that has been recently
+        # deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
         # 123456789012345678901`. If the service account is undeleted, this value
         # reverts to `serviceAccount:`emailid`` and the undeleted service account
         # retains the role in the binding. * `deleted:group:`emailid`?uid=`uniqueid``:
         # An email address (plus unique identifier) representing a Google group that has
         # been recently deleted. For example, `admins@example.com?uid=
         # 123456789012345678901`. If the group is recovered, this value reverts to `
-        # group:`emailid`` and the recovered group retains the role in the binding. * `
-        # domain:`domain``: The G Suite domain (primary) that represents all the users
-        # of that domain. For example, `google.com` or `example.com`.
+        # group:`emailid`` and the recovered group retains the role in the binding.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -21692,7 +21693,10 @@ module Google
         # @return [String]
         attr_accessor :ipv6_access_type
       
-        # An IPv6 internal network address for this network interface.
+        # An IPv6 internal network address for this network interface. To use a static
+        # internal IP address, it must be unused and in the same region as the instance'
+        # s zone. If not specified, GCP will automatically assign an internal IPv6
+        # address from the instance's subnetwork.
         # Corresponds to the JSON property `ipv6Address`
         # @return [String]
         attr_accessor :ipv6_address
@@ -28768,7 +28772,14 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # [Output Only] Status information for Reservation resource.
+        # Resource policies to be added to this reservation. The key is defined by user,
+        # and the value is resource policy url. This is to define placement policy with
+        # reservation.
+        # Corresponds to the JSON property `resourcePolicies`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_policies
+      
+        # [Output Only] Contains output only fields.
         # Corresponds to the JSON property `resourceStatus`
         # @return [Google::Apis::ComputeV1::AllocationResourceStatus]
         attr_accessor :resource_status
@@ -28826,6 +28837,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
+          @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
           @resource_status = args[:resource_status] if args.key?(:resource_status)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
@@ -32845,7 +32857,11 @@ module Google
         # CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be
         # configured to filter HTTP requests targeting services managed by Traffic
         # Director in a service mesh. They filter requests before the request is served
-        # from the application. This field can be set only at resource creation time.
+        # from the application. - CLOUD_ARMOR_NETWORK: Cloud Armor network policies can
+        # be configured to filter packets targeting network load balancing resources
+        # such as backend services, target pools, target instances, and instances with
+        # external IPs. They filter requests before the request is served from the
+        # application. This field can be set only at resource creation time.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -41615,7 +41631,7 @@ module Google
         # request to modify or update labels. You must always provide an up-to-date
         # fingerprint hash in order to update or change labels, otherwise the request
         # will fail with error 412 conditionNotMet. To see the latest fingerprint, make
-        # a get() request to retrieve an VpnGateway.
+        # a get() request to retrieve a VpnGateway.
         # Corresponds to the JSON property `labelFingerprint`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
