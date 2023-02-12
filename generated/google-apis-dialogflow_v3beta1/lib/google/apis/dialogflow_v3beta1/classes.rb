@@ -3058,6 +3058,12 @@ module Google
       class GoogleCloudDialogflowCxV3beta1AdvancedSettings
         include Google::Apis::Core::Hashable
       
+        # Google Cloud Storage location for a Dialogflow operation that writes or
+        # exports objects (e.g. exported agent or transcripts) outside of Dialogflow.
+        # Corresponds to the JSON property `audioExportGcsDestination`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1GcsDestination]
+        attr_accessor :audio_export_gcs_destination
+      
         # Define behaviors on logging.
         # Corresponds to the JSON property `loggingSettings`
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettings]
@@ -3069,6 +3075,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @audio_export_gcs_destination = args[:audio_export_gcs_destination] if args.key?(:audio_export_gcs_destination)
           @logging_settings = args[:logging_settings] if args.key?(:logging_settings)
         end
       end
@@ -3197,6 +3204,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :supported_language_codes
       
+        # Settings related to speech generating.
+        # Corresponds to the JSON property `textToSpeechSettings`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TextToSpeechSettings]
+        attr_accessor :text_to_speech_settings
+      
         # Required. The time zone of the agent from the [time zone database](https://www.
         # iana.org/time-zones), e.g., America/New_York, Europe/Paris.
         # Corresponds to the JSON property `timeZone`
@@ -3222,6 +3234,7 @@ module Google
           @speech_to_text_settings = args[:speech_to_text_settings] if args.key?(:speech_to_text_settings)
           @start_flow = args[:start_flow] if args.key?(:start_flow)
           @supported_language_codes = args[:supported_language_codes] if args.key?(:supported_language_codes)
+          @text_to_speech_settings = args[:text_to_speech_settings] if args.key?(:text_to_speech_settings)
           @time_zone = args[:time_zone] if args.key?(:time_zone)
         end
       end
@@ -5417,6 +5430,28 @@ module Google
         def update!(**args)
           @parameter = args[:parameter] if args.key?(:parameter)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Google Cloud Storage location for a Dialogflow operation that writes or
+      # exports objects (e.g. exported agent or transcripts) outside of Dialogflow.
+      class GoogleCloudDialogflowCxV3beta1GcsDestination
+        include Google::Apis::Core::Hashable
+      
+        # Required. The Google Cloud Storage URI for the exported objects. A URI is of
+        # the form: gs://bucket/object-name-or-prefix Whether a full object name, or
+        # just a prefix, its usage depends on the Dialogflow operation.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uri = args[:uri] if args.key?(:uri)
         end
       end
       
@@ -8499,6 +8534,26 @@ module Google
         # Update properties of this object
         def update!(**args)
           @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # Settings related to speech generating.
+      class GoogleCloudDialogflowCxV3beta1TextToSpeechSettings
+        include Google::Apis::Core::Hashable
+      
+        # Configuration of how speech should be synthesized, mapping from language (
+        # https://dialogflow.com/docs/reference/language) to SynthesizeSpeechConfig.
+        # Corresponds to the JSON property `synthesizeSpeechConfigs`
+        # @return [Hash<String,Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfig>]
+        attr_accessor :synthesize_speech_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @synthesize_speech_configs = args[:synthesize_speech_configs] if args.key?(:synthesize_speech_configs)
         end
       end
       
