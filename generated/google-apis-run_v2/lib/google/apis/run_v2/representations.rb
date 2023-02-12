@@ -475,6 +475,7 @@ module Google
           collection :http_headers, as: 'httpHeaders', class: Google::Apis::RunV2::GoogleCloudRunV2HttpHeader, decorator: Google::Apis::RunV2::GoogleCloudRunV2HttpHeader::Representation
       
           property :path, as: 'path'
+          property :port, as: 'port'
         end
       end
       
