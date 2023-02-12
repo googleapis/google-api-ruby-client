@@ -2385,6 +2385,13 @@ module Google
         # @return [Google::Apis::GkehubV1::GkeCluster]
         attr_accessor :gke_cluster
       
+        # Output only. Whether the lifecycle of this membership is managed by a google
+        # cluster platform service.
+        # Corresponds to the JSON property `googleManaged`
+        # @return [Boolean]
+        attr_accessor :google_managed
+        alias_method :google_managed?, :google_managed
+      
         # KubernetesMetadata provides informational metadata for Memberships
         # representing Kubernetes clusters.
         # Corresponds to the JSON property `kubernetesMetadata`
@@ -2417,6 +2424,7 @@ module Google
           @appliance_cluster = args[:appliance_cluster] if args.key?(:appliance_cluster)
           @edge_cluster = args[:edge_cluster] if args.key?(:edge_cluster)
           @gke_cluster = args[:gke_cluster] if args.key?(:gke_cluster)
+          @google_managed = args[:google_managed] if args.key?(:google_managed)
           @kubernetes_metadata = args[:kubernetes_metadata] if args.key?(:kubernetes_metadata)
           @kubernetes_resource = args[:kubernetes_resource] if args.key?(:kubernetes_resource)
           @multi_cloud_cluster = args[:multi_cloud_cluster] if args.key?(:multi_cloud_cluster)
