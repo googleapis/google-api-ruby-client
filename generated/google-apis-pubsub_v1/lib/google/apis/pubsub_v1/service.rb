@@ -156,7 +156,7 @@ module Google
         # Deletes a specific schema revision.
         # @param [String] name
         #   Required. The name of the schema revision to be deleted, with a revision ID
-        #   explicitly included. Example: projects/123/schemas/my-schema@c7cfa2a8
+        #   explicitly included. Example: `projects/123/schemas/my-schema@c7cfa2a8`
         # @param [String] revision_id
         #   Required. The revision ID to roll back to. It must be a revision of the same
         #   schema. Example: c7cfa2a8
