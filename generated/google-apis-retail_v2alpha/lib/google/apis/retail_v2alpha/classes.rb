@@ -1260,10 +1260,10 @@ module Google
         # imports: * `user_event` (default): One JSON UserEvent per line. * `
         # user_event_ga360`: The schema is available here: https://support.google.com/
         # analytics/answer/3437719. * `user_event_ga4`: The schema is available here:
-        # https://support.google.com/analytics/answer/7029846. Supported values for auto-
-        # completion imports: * `suggestions` (default): One JSON completion suggestion
-        # per line. * `denylist`: One JSON deny suggestion per line. * `allowlist`: One
-        # JSON allow suggestion per line.
+        # https://support.google.com/analytics/answer/7029846. Supported values for
+        # autocomplete imports: * `suggestions` (default): One JSON completion
+        # suggestion per line. * `denylist`: One JSON deny suggestion per line. * `
+        # allowlist`: One JSON allow suggestion per line.
         # Corresponds to the JSON property `dataSchema`
         # @return [String]
         attr_accessor :data_schema
@@ -1506,7 +1506,7 @@ module Google
         end
       end
       
-      # Response of the auto-complete query.
+      # Response of the autocomplete query.
       class GoogleCloudRetailV2alphaCompleteQueryResponse
         include Google::Apis::Core::Hashable
       
@@ -3300,8 +3300,9 @@ module Google
         # filterSyntaxV2` is set to true under the `params` field, then attribute-based
         # expressions are expected instead of the above described tag-based syntax.
         # Examples: * (colors: ANY("Red", "Blue")) AND NOT (categories: ANY("Phones")) *
-        # (availability: ANY("IN_STOCK")) AND (colors: ANY("Red") OR categories: ANY("
-        # Phones"))
+        # (brands: ANY("Pixel")) AND (colors: ANY("Red") OR categories: ANY("Phones"))
+        # For more information, see [Filter recommendations](https://cloud.google.com/
+        # retail/docs/filter-recs).
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter

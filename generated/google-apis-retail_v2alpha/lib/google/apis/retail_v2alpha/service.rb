@@ -791,6 +791,12 @@ module Google
         #   Product.Type.PRIMARY Product with more than one variants. Otherwise, an
         #   INVALID_ARGUMENT error is returned. All inventory information for the named
         #   Product will be deleted.
+        # @param [Boolean] cascade_delete
+        #   This value only applies to the case when the target product is of type PRIMARY.
+        #   When deleting a product of VARIANT/COLLECTION type, this value will be
+        #   ignored. When set to true, the subsequent variant products will be deleted.
+        #   When set to false, if the primary product has active variant products, an
+        #   error will be returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -808,11 +814,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_catalog_branch_product(name, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_project_location_catalog_branch_product(name, cascade_delete: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v2alpha/{+name}', options)
           command.response_representation = Google::Apis::RetailV2alpha::GoogleProtobufEmpty::Representation
           command.response_class = Google::Apis::RetailV2alpha::GoogleProtobufEmpty
           command.params['name'] = name unless name.nil?
+          command.query['cascadeDelete'] = cascade_delete unless cascade_delete.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1488,6 +1495,37 @@ module Google
           command = make_simple_command(:delete, 'v2alpha/{+name}', options)
           command.response_representation = Google::Apis::RetailV2alpha::GoogleProtobufEmpty::Representation
           command.response_class = Google::Apis::RetailV2alpha::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a model.
+        # @param [String] name
+        #   Required. The resource name of the Model to get. Format: `projects/`
+        #   project_number`/locations/`location_id`/catalogs/`catalog`/models/`model_id``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaModel] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaModel]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_catalog_model(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2alpha/{+name}', options)
+          command.response_representation = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaModel::Representation
+          command.response_class = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaModel
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
