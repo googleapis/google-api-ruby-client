@@ -172,7 +172,7 @@ module Google
       class File
         include Google::Apis::Core::Hashable
       
-        # The time when the File was created.
+        # Output only. The time when the File was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -199,7 +199,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :size_bytes
       
-        # The time when the File was last updated.
+        # Output only. The time when the File was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time

@@ -444,7 +444,7 @@ module Google
         
         # Gets a file.
         # @param [String] name
-        #   The name of the file to retrieve.
+        #   Required. The name of the file to retrieve.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -474,8 +474,8 @@ module Google
         
         # Lists files.
         # @param [String] parent
-        #   The name of the repository whose files will be listed. For example: "projects/
-        #   p1/locations/us-central1/repositories/repo1
+        #   Required. The name of the repository whose files will be listed. For example: "
+        #   projects/p1/locations/us-central1/repositories/repo1
         # @param [String] filter
         #   An expression for filtering the results of the request. Filter rules are case
         #   insensitive. The fields eligible for filtering are: * `name` * `owner` An
