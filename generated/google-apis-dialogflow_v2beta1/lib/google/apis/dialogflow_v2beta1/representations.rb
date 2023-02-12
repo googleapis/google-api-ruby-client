@@ -1594,6 +1594,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2beta1BargeInConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2beta1BatchCreateEntitiesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5473,6 +5479,14 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2beta1BargeInConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :no_barge_in_duration, as: 'noBargeInDuration'
+          property :total_duration, as: 'totalDuration'
+        end
+      end
+      
       class GoogleCloudDialogflowV2beta1BatchCreateEntitiesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6106,6 +6120,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :audio_encoding, as: 'audioEncoding'
+          property :barge_in_config, as: 'bargeInConfig', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1BargeInConfig, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1BargeInConfig::Representation
+      
           property :disable_no_speech_recognized_event, as: 'disableNoSpeechRecognizedEvent'
           property :enable_word_info, as: 'enableWordInfo'
           property :language_code, as: 'languageCode'
@@ -7126,6 +7142,8 @@ module Google
       class GoogleCloudDialogflowV2beta1SuggestConversationSummaryRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :assist_query_params, as: 'assistQueryParams', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1AssistQueryParameters, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1AssistQueryParameters::Representation
+      
           property :context_size, as: 'contextSize'
           property :latest_message, as: 'latestMessage'
         end
