@@ -13481,6 +13481,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :availability_domain_count, as: 'availabilityDomainCount'
           property :collocation, as: 'collocation'
+          property :max_distance, as: 'maxDistance'
           property :vm_count, as: 'vmCount'
         end
       end
