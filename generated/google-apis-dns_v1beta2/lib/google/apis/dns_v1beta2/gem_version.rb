@@ -16,13 +16,13 @@ module Google
   module Apis
     module DnsV1beta2
       # Version of the google-apis-dns_v1beta2 gem
-      GEM_VERSION = "0.33.0"
+      GEM_VERSION = "0.34.0"
 
       # Version of the code generator used to generate this client
-      GENERATOR_VERSION = "0.11.0"
+      GENERATOR_VERSION = "0.11.1"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20221110"
+      REVISION = "20230126"
     end
   end
 end
