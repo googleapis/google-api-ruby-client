@@ -47,6 +47,44 @@ module Google
         end
       end
       
+      # A binding of a user to a set of roles.
+      class GoogleAnalyticsAdminV1alphaAccessBinding
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Resource name of this binding. Format: accounts/`account`/
+        # accessBindings/`access_binding` or properties/`property`/accessBindings/`
+        # access_binding` Example: "accounts/100/accessBindings/200"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # A list of roles for to grant to the parent resource. Valid values:
+        # predefinedRoles/viewer predefinedRoles/analyst predefinedRoles/editor
+        # predefinedRoles/admin predefinedRoles/no-cost-data predefinedRoles/no-revenue-
+        # data For users, if an empty list of roles is set, this AccessBinding will be
+        # deleted.
+        # Corresponds to the JSON property `roles`
+        # @return [Array<String>]
+        attr_accessor :roles
+      
+        # If set, the email address of the user to set roles for. Format: "someuser@
+        # gmail.com"
+        # Corresponds to the JSON property `user`
+        # @return [String]
+        attr_accessor :user
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @roles = args[:roles] if args.key?(:roles)
+          @user = args[:user] if args.key?(:user)
+        end
+      end
+      
       # A contiguous range of days: startDate, startDate + 1, ..., endDate.
       class GoogleAnalyticsAdminV1alphaAccessDateRange
         include Google::Apis::Core::Hashable
@@ -1438,6 +1476,45 @@ module Google
         end
       end
       
+      # Request message for BatchCreateAccessBindings RPC.
+      class GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The requests specifying the access bindings to create. A maximum of
+        # 1000 access bindings can be created in a batch.
+        # Corresponds to the JSON property `requests`
+        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCreateAccessBindingRequest>]
+        attr_accessor :requests
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @requests = args[:requests] if args.key?(:requests)
+        end
+      end
+      
+      # Response message for BatchCreateAccessBindings RPC.
+      class GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The access bindings created.
+        # Corresponds to the JSON property `accessBindings`
+        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccessBinding>]
+        attr_accessor :access_bindings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_bindings = args[:access_bindings] if args.key?(:access_bindings)
+        end
+      end
+      
       # Request message for BatchCreateUserLinks RPC.
       class GoogleAnalyticsAdminV1alphaBatchCreateUserLinksRequest
         include Google::Apis::Core::Hashable
@@ -1486,6 +1563,26 @@ module Google
         end
       end
       
+      # Request message for BatchDeleteAccessBindings RPC.
+      class GoogleAnalyticsAdminV1alphaBatchDeleteAccessBindingsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The requests specifying the access bindings to delete. A maximum of
+        # 1000 access bindings can be deleted in a batch.
+        # Corresponds to the JSON property `requests`
+        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDeleteAccessBindingRequest>]
+        attr_accessor :requests
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @requests = args[:requests] if args.key?(:requests)
+        end
+      end
+      
       # Request message for BatchDeleteUserLinks RPC.
       class GoogleAnalyticsAdminV1alphaBatchDeleteUserLinksRequest
         include Google::Apis::Core::Hashable
@@ -1506,6 +1603,25 @@ module Google
         end
       end
       
+      # Response message for BatchGetAccessBindings RPC.
+      class GoogleAnalyticsAdminV1alphaBatchGetAccessBindingsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The requested access bindings.
+        # Corresponds to the JSON property `accessBindings`
+        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccessBinding>]
+        attr_accessor :access_bindings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_bindings = args[:access_bindings] if args.key?(:access_bindings)
+        end
+      end
+      
       # Response message for BatchGetUserLinks RPC.
       class GoogleAnalyticsAdminV1alphaBatchGetUserLinksResponse
         include Google::Apis::Core::Hashable
@@ -1522,6 +1638,45 @@ module Google
         # Update properties of this object
         def update!(**args)
           @user_links = args[:user_links] if args.key?(:user_links)
+        end
+      end
+      
+      # Request message for BatchUpdateAccessBindings RPC.
+      class GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The requests specifying the access bindings to update. A maximum of
+        # 1000 access bindings can be updated in a batch.
+        # Corresponds to the JSON property `requests`
+        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequest>]
+        attr_accessor :requests
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @requests = args[:requests] if args.key?(:requests)
+        end
+      end
+      
+      # Response message for BatchUpdateAccessBindings RPC.
+      class GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The access bindings updated.
+        # Corresponds to the JSON property `accessBindings`
+        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccessBinding>]
+        attr_accessor :access_bindings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_bindings = args[:access_bindings] if args.key?(:access_bindings)
         end
       end
       
@@ -1916,6 +2071,31 @@ module Google
           @deletable = args[:deletable] if args.key?(:deletable)
           @event_name = args[:event_name] if args.key?(:event_name)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Request message for CreateAccessBinding RPC.
+      class GoogleAnalyticsAdminV1alphaCreateAccessBindingRequest
+        include Google::Apis::Core::Hashable
+      
+        # A binding of a user to a set of roles.
+        # Corresponds to the JSON property `accessBinding`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccessBinding]
+        attr_accessor :access_binding
+      
+        # Required. Formats: - accounts/`account` - properties/`property`
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_binding = args[:access_binding] if args.key?(:access_binding)
+          @parent = args[:parent] if args.key?(:parent)
         end
       end
       
@@ -2325,6 +2505,26 @@ module Google
           @default_uri = args[:default_uri] if args.key?(:default_uri)
           @firebase_app_id = args[:firebase_app_id] if args.key?(:firebase_app_id)
           @measurement_id = args[:measurement_id] if args.key?(:measurement_id)
+        end
+      end
+      
+      # Request message for DeleteAccessBinding RPC.
+      class GoogleAnalyticsAdminV1alphaDeleteAccessBindingRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Formats: - accounts/`account`/accessBindings/`accessBinding` -
+        # properties/`property`/accessBindings/`accessBinding`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -2920,6 +3120,33 @@ module Google
           @link_proposal_initiating_product = args[:link_proposal_initiating_product] if args.key?(:link_proposal_initiating_product)
           @link_proposal_state = args[:link_proposal_state] if args.key?(:link_proposal_state)
           @requestor_email = args[:requestor_email] if args.key?(:requestor_email)
+        end
+      end
+      
+      # Response message for ListAccessBindings RPC.
+      class GoogleAnalyticsAdminV1alphaListAccessBindingsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of AccessBindings. These will be ordered stably, but in an arbitrary
+        # order.
+        # Corresponds to the JSON property `accessBindings`
+        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccessBinding>]
+        attr_accessor :access_bindings
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_bindings = args[:access_bindings] if args.key?(:access_bindings)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -3951,6 +4178,25 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Request message for UpdateAccessBinding RPC.
+      class GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequest
+        include Google::Apis::Core::Hashable
+      
+        # A binding of a user to a set of roles.
+        # Corresponds to the JSON property `accessBinding`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccessBinding]
+        attr_accessor :access_binding
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_binding = args[:access_binding] if args.key?(:access_binding)
         end
       end
       
