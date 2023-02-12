@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EsfMigrationServerOverride
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FirstPartyPrincipal
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -304,9 +310,18 @@ module Google
       class CheckResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :esf_migration_server_override, as: 'esfMigrationServerOverride', class: Google::Apis::ServicecontrolV2::EsfMigrationServerOverride, decorator: Google::Apis::ServicecontrolV2::EsfMigrationServerOverride::Representation
+      
           hash :headers, as: 'headers'
           property :status, as: 'status', class: Google::Apis::ServicecontrolV2::Status, decorator: Google::Apis::ServicecontrolV2::Status::Representation
       
+        end
+      end
+      
+      class EsfMigrationServerOverride
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :override_mode, as: 'overrideMode'
         end
       end
       
