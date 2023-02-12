@@ -1196,6 +1196,7 @@ module Google
       
           property :gke_cluster, as: 'gkeCluster', class: Google::Apis::GkehubV1::GkeCluster, decorator: Google::Apis::GkehubV1::GkeCluster::Representation
       
+          property :google_managed, as: 'googleManaged'
           property :kubernetes_metadata, as: 'kubernetesMetadata', class: Google::Apis::GkehubV1::KubernetesMetadata, decorator: Google::Apis::GkehubV1::KubernetesMetadata::Representation
       
           property :kubernetes_resource, as: 'kubernetesResource', class: Google::Apis::GkehubV1::KubernetesResource, decorator: Google::Apis::GkehubV1::KubernetesResource::Representation
