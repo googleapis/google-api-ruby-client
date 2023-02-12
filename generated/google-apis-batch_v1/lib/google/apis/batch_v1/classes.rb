@@ -511,22 +511,22 @@ module Google
         # kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-
         # project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:`emailid``: An
         # email address that represents a Google group. For example, `admins@example.com`
-        # . * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
-        # identifier) representing a user that has been recently deleted. For example, `
-        # alice@example.com?uid=123456789012345678901`. If the user is recovered, this
-        # value reverts to `user:`emailid`` and the recovered user retains the role in
-        # the binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email
-        # address (plus unique identifier) representing a service account that has been
-        # recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
+        # . * `domain:`domain``: The G Suite domain (primary) that represents all the
+        # users of that domain. For example, `google.com` or `example.com`. * `deleted:
+        # user:`emailid`?uid=`uniqueid``: An email address (plus unique identifier)
+        # representing a user that has been recently deleted. For example, `alice@
+        # example.com?uid=123456789012345678901`. If the user is recovered, this value
+        # reverts to `user:`emailid`` and the recovered user retains the role in the
+        # binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email address
+        # (plus unique identifier) representing a service account that has been recently
+        # deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
         # 123456789012345678901`. If the service account is undeleted, this value
         # reverts to `serviceAccount:`emailid`` and the undeleted service account
         # retains the role in the binding. * `deleted:group:`emailid`?uid=`uniqueid``:
         # An email address (plus unique identifier) representing a Google group that has
         # been recently deleted. For example, `admins@example.com?uid=
         # 123456789012345678901`. If the group is recovered, this value reverts to `
-        # group:`emailid`` and the recovered group retains the role in the binding. * `
-        # domain:`domain``: The G Suite domain (primary) that represents all the users
-        # of that domain. For example, `google.com` or `example.com`.
+        # group:`emailid`` and the recovered group retains the role in the binding.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -1875,12 +1875,21 @@ module Google
       class Script
         include Google::Apis::Core::Hashable
       
-        # Script file path on the host VM.
+        # Script file path on the host VM. To specify an interpreter, please add a `#!`(
+        # also known as [shebang line](https://en.wikipedia.org/wiki/Shebang_(Unix))) as
+        # the first line of the file.(For example, to execute the script using bash, `#!/
+        # bin/bash` should be the first line of the file. To execute the script using`
+        # Python3`, `#!/usr/bin/env python3` should be the first line of the file.)
+        # Otherwise, the file will by default be excuted by `/bin/sh`.
         # Corresponds to the JSON property `path`
         # @return [String]
         attr_accessor :path
       
-        # Shell script text.
+        # Shell script text. To specify an interpreter, please add a `#!\n` at the
+        # beginning of the text.(For example, to execute the script using bash, `#!/bin/
+        # bash\n` should be added. To execute the script using`Python3`, `#!/usr/bin/env
+        # python3\n` should be added.) Otherwise, the script will by default be excuted
+        # by `/bin/sh`.
         # Corresponds to the JSON property `text`
         # @return [String]
         attr_accessor :text
@@ -2037,6 +2046,11 @@ module Google
         # @return [Google::Apis::BatchV1::TaskExecution]
         attr_accessor :task_execution
       
+        # Task State
+        # Corresponds to the JSON property `taskState`
+        # @return [String]
+        attr_accessor :task_state
+      
         # Type of the event.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -2051,6 +2065,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @event_time = args[:event_time] if args.key?(:event_time)
           @task_execution = args[:task_execution] if args.key?(:task_execution)
+          @task_state = args[:task_state] if args.key?(:task_state)
           @type = args[:type] if args.key?(:type)
         end
       end

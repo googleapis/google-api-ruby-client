@@ -901,6 +901,7 @@ module Google
           property :event_time, as: 'eventTime'
           property :task_execution, as: 'taskExecution', class: Google::Apis::BatchV1::TaskExecution, decorator: Google::Apis::BatchV1::TaskExecution::Representation
       
+          property :task_state, as: 'taskState'
           property :type, as: 'type'
         end
       end
