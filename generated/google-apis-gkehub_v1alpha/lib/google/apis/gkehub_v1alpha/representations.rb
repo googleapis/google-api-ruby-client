@@ -1506,6 +1506,7 @@ module Google
       
           property :gke_cluster, as: 'gkeCluster', class: Google::Apis::GkehubV1alpha::GkeCluster, decorator: Google::Apis::GkehubV1alpha::GkeCluster::Representation
       
+          property :google_managed, as: 'googleManaged'
           property :kubernetes_metadata, as: 'kubernetesMetadata', class: Google::Apis::GkehubV1alpha::KubernetesMetadata, decorator: Google::Apis::GkehubV1alpha::KubernetesMetadata::Representation
       
           property :kubernetes_resource, as: 'kubernetesResource', class: Google::Apis::GkehubV1alpha::KubernetesResource, decorator: Google::Apis::GkehubV1alpha::KubernetesResource::Representation
