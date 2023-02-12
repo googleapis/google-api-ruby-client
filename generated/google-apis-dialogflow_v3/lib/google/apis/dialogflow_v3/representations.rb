@@ -400,6 +400,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3GcsDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3GenericKnowledgeOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -911,6 +917,12 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3TextInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3TextToSpeechSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2653,6 +2665,8 @@ module Google
       class GoogleCloudDialogflowCxV3AdvancedSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :audio_export_gcs_destination, as: 'audioExportGcsDestination', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3GcsDestination, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3GcsDestination::Representation
+      
           property :logging_settings, as: 'loggingSettings', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings::Representation
       
         end
@@ -2684,6 +2698,8 @@ module Google
       
           property :start_flow, as: 'startFlow'
           collection :supported_language_codes, as: 'supportedLanguageCodes'
+          property :text_to_speech_settings, as: 'textToSpeechSettings', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3TextToSpeechSettings, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3TextToSpeechSettings::Representation
+      
           property :time_zone, as: 'timeZone'
         end
       end
@@ -3290,6 +3306,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :parameter, as: 'parameter'
           property :value, as: 'value'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3GcsDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :uri, as: 'uri'
         end
       end
       
@@ -4123,6 +4146,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :text, as: 'text'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3TextToSpeechSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :synthesize_speech_configs, as: 'synthesizeSpeechConfigs', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3SynthesizeSpeechConfig, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3SynthesizeSpeechConfig::Representation
+      
         end
       end
       
