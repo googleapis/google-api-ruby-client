@@ -415,7 +415,8 @@ module Google
         # Lists Memberships in a given project and location.
         # @param [String] parent
         #   Required. The parent (project and location) where the Memberships will be
-        #   listed. Specified in the format `projects/*/locations/*`.
+        #   listed. Specified in the format `projects/*/locations/*`. `projects/*/
+        #   locations/-` list memberships in all the regions.
         # @param [String] filter
         #   Optional. Lists Memberships that match the filter expression, following the
         #   syntax outlined in https://google.aip.dev/160. Examples: - Name is `bar` in
