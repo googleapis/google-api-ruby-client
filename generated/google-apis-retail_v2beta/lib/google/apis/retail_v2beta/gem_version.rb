@@ -16,13 +16,13 @@ module Google
   module Apis
     module RetailV2beta
       # Version of the google-apis-retail_v2beta gem
-      GEM_VERSION = "0.65.0"
+      GEM_VERSION = "0.66.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.11.1"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20230126"
+      REVISION = "20230202"
     end
   end
 end
