@@ -184,6 +184,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRecaptchaenterpriseV1TransactionEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRecaptchaenterpriseV1WafSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -234,6 +240,8 @@ module Google
           property :annotation, as: 'annotation'
           property :hashed_account_id, :base64 => true, as: 'hashedAccountId'
           collection :reasons, as: 'reasons'
+          property :transaction_event, as: 'transactionEvent', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1TransactionEvent, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1TransactionEvent::Representation
+      
         end
       end
       
@@ -461,6 +469,16 @@ module Google
           property :invalid_reason, as: 'invalidReason'
           property :ios_bundle_id, as: 'iosBundleId'
           property :valid, as: 'valid'
+        end
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1TransactionEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :event_time, as: 'eventTime'
+          property :event_type, as: 'eventType'
+          property :reason, as: 'reason'
+          property :value, as: 'value'
         end
       end
       
