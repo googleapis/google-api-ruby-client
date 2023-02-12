@@ -10046,8 +10046,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
-        #   The name of the zone where the managed instance group and the resize request
-        #   are located. Name should conform to RFC1035.
+        #   Name of the href="/compute/docs/regions-zones/#available">zone scoping this
+        #   request. Name should conform to RFC1035.
         # @param [String] instance_group_manager
         #   The name of the managed instance group. Name should conform to RFC1035 or be a
         #   resource ID.

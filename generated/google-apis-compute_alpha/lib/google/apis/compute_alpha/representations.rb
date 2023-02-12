@@ -5092,6 +5092,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RouterBgpPeerCustomLearnedIpRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RouterInterface
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -8948,6 +8954,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :ip_address, as: 'ipAddress'
+          property :ipv6_address, as: 'ipv6Address'
         end
       end
       
@@ -9172,6 +9179,7 @@ module Google
           collection :target_secure_tags, as: 'targetSecureTags', class: Google::Apis::ComputeAlpha::FirewallPolicyRuleSecureTag, decorator: Google::Apis::ComputeAlpha::FirewallPolicyRuleSecureTag::Representation
       
           collection :target_service_accounts, as: 'targetServiceAccounts'
+          property :tls_inspect, as: 'tlsInspect'
         end
       end
       
@@ -16484,6 +16492,9 @@ module Google
           property :advertised_route_priority, as: 'advertisedRoutePriority'
           property :bfd, as: 'bfd', class: Google::Apis::ComputeAlpha::RouterBgpPeerBfd, decorator: Google::Apis::ComputeAlpha::RouterBgpPeerBfd::Representation
       
+          collection :custom_learned_ip_ranges, as: 'customLearnedIpRanges', class: Google::Apis::ComputeAlpha::RouterBgpPeerCustomLearnedIpRange, decorator: Google::Apis::ComputeAlpha::RouterBgpPeerCustomLearnedIpRange::Representation
+      
+          property :custom_learned_route_priority, as: 'customLearnedRoutePriority'
           property :enable, as: 'enable'
           property :enable_ipv6, as: 'enableIpv6'
           property :interface_name, as: 'interfaceName'
@@ -16509,6 +16520,13 @@ module Google
           property :packet_mode, as: 'packetMode'
           property :session_initialization_mode, as: 'sessionInitializationMode'
           property :slow_timer_interval, as: 'slowTimerInterval'
+        end
+      end
+      
+      class RouterBgpPeerCustomLearnedIpRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :range, as: 'range'
         end
       end
       
@@ -19567,6 +19585,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
+          property :gateway_ip_version, as: 'gatewayIpVersion'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
@@ -19689,6 +19708,7 @@ module Google
           property :id, as: 'id'
           property :interconnect_attachment, as: 'interconnectAttachment'
           property :ip_address, as: 'ipAddress'
+          property :ipv6_address, as: 'ipv6Address'
         end
       end
       
