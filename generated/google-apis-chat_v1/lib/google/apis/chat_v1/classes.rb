@@ -693,9 +693,9 @@ module Google
         attr_accessor :common
       
         # The URL the Chat app should redirect the user to after they have completed an
-        # authorization or configuration flow outside of Google Chat. See the [
-        # Authorizing access to 3p services guide](/chat/how-tos/auth-3p) for more
-        # information.
+        # authorization or configuration flow outside of Google Chat. For more
+        # information, see [Connect a Chat app with other services & tools](https://
+        # developers.google.com/chat/how-tos/connect-web-services-tools).
         # Corresponds to the JSON property `configCompleteRedirectUrl`
         # @return [String]
         attr_accessor :config_complete_redirect_url
@@ -2695,7 +2695,8 @@ module Google
         # @return [Google::Apis::ChatV1::User]
         attr_accessor :member
       
-        # Resource name of the membership. Format: spaces/`space`/members/`member`
+        # Resource name of the membership, assigned by the server. Format: spaces/`space`
+        # /members/`member`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3015,7 +3016,7 @@ module Google
       
         # The space's display name. Required when [creating a space](https://developers.
         # google.com/chat/api/reference/rest/v1/spaces/create). For direct messages,
-        # this field may be empty.
+        # this field may be empty. Supports up to 128 characters.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -3075,12 +3076,13 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. A description of the space. It could describe the space's discussion
-        # topic, functional purpose, or participants.
+        # topic, functional purpose, or participants. Supports up to 150 characters.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Optional. The space's rules, expectations, and etiquette.
+        # Optional. The space's rules, expectations, and etiquette. Supports up to 5,000
+        # characters.
         # Corresponds to the JSON property `guidelines`
         # @return [String]
         attr_accessor :guidelines
@@ -3302,8 +3304,14 @@ module Google
         attr_accessor :is_anonymous
         alias_method :is_anonymous?, :is_anonymous
       
-        # Resource name for a Google Chat user. For human users, represents a person in
-        # the People API or a user in the Admin SDK Directory API. Format: `users/`user``
+        # Resource name for a Google Chat user. Format: `users/`user``. `users/app` can
+        # be used as an alias for the calling app bot user. For human users, ``user`` is
+        # the same user identifier as: - the ``person_id`` for the [Person](https://
+        # developers.google.com/people/api/rest/v1/people) in the People API, where the
+        # Person `resource_name` is `people/`person_id``. For example, `users/123456789`
+        # in Chat API represents the same person as `people/123456789` in People API. -
+        # the `id` for a [user](https://developers.google.com/admin-sdk/directory/
+        # reference/rest/v1/users) in the Admin SDK Directory API.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
