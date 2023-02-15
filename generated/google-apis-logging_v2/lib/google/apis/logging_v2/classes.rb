@@ -59,6 +59,49 @@ module Google
         end
       end
       
+      # Metadata for LongRunningUpdateBucket Operations.
+      class BucketMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The parameters to CreateBucket.
+        # Corresponds to the JSON property `createBucketRequest`
+        # @return [Google::Apis::LoggingV2::CreateBucketRequest]
+        attr_accessor :create_bucket_request
+      
+        # The end time of an operation.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The create time of an operation.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # State of an operation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The parameters to UpdateBucket.
+        # Corresponds to the JSON property `updateBucketRequest`
+        # @return [Google::Apis::LoggingV2::UpdateBucketRequest]
+        attr_accessor :update_bucket_request
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_bucket_request = args[:create_bucket_request] if args.key?(:create_bucket_request)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @state = args[:state] if args.key?(:state)
+          @update_bucket_request = args[:update_bucket_request] if args.key?(:update_bucket_request)
+        end
+      end
+      
       # BucketOptions describes the bucket boundaries used to create a histogram for
       # the distribution. The buckets can be in a linear sequence, an exponential
       # sequence, or each bucket can be specified explicitly. BucketOptions does not
@@ -304,6 +347,41 @@ module Google
         # Update properties of this object
         def update!(**args)
           @log_entries_copied_count = args[:log_entries_copied_count] if args.key?(:log_entries_copied_count)
+        end
+      end
+      
+      # The parameters to CreateBucket.
+      class CreateBucketRequest
+        include Google::Apis::Core::Hashable
+      
+        # Describes a repository in which log entries are stored.
+        # Corresponds to the JSON property `bucket`
+        # @return [Google::Apis::LoggingV2::LogBucket]
+        attr_accessor :bucket
+      
+        # Required. A client-assigned identifier such as "my-bucket". Identifiers are
+        # limited to 100 characters and can include only letters, digits, underscores,
+        # hyphens, and periods.
+        # Corresponds to the JSON property `bucketId`
+        # @return [String]
+        attr_accessor :bucket_id
+      
+        # Required. The resource in which to create the log bucket: "projects/[
+        # PROJECT_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/
+        # locations/global"
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bucket = args[:bucket] if args.key?(:bucket)
+          @bucket_id = args[:bucket_id] if args.key?(:bucket_id)
+          @parent = args[:parent] if args.key?(:parent)
         end
       end
       
@@ -1004,6 +1082,13 @@ module Google
       class LogBucket
         include Google::Apis::Core::Hashable
       
+        # Whether log analytics is enabled for this bucket.Once enabled, log analytics
+        # features cannot be disabled.
+        # Corresponds to the JSON property `analyticsEnabled`
+        # @return [Boolean]
+        attr_accessor :analytics_enabled
+        alias_method :analytics_enabled?, :analytics_enabled
+      
         # Describes the customer-managed encryption key (CMEK) settings associated with
         # a project, folder, organization, billing account, or flexible resource.Note:
         # CMEK for the Log Router can currently only be configured for Google Cloud
@@ -1079,6 +1164,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @analytics_enabled = args[:analytics_enabled] if args.key?(:analytics_enabled)
           @cmek_settings = args[:cmek_settings] if args.key?(:cmek_settings)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
@@ -2743,6 +2829,47 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # The parameters to UpdateBucket.
+      class UpdateBucketRequest
+        include Google::Apis::Core::Hashable
+      
+        # Describes a repository in which log entries are stored.
+        # Corresponds to the JSON property `bucket`
+        # @return [Google::Apis::LoggingV2::LogBucket]
+        attr_accessor :bucket
+      
+        # Required. The full resource name of the bucket to update. "projects/[
+        # PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[
+        # ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/
+        # [BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[
+        # FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/
+        # my-project/locations/global/buckets/my-bucket"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Field mask that specifies the fields in bucket that need an update.
+        # A bucket field will be overwritten if, and only if, it is in the update mask.
+        # name and output only fields cannot be updated.For a detailed FieldMask
+        # definition, see: https://developers.google.com/protocol-buffers/docs/reference/
+        # google.protobuf#google.protobuf.FieldMaskFor example: updateMask=
+        # retention_days
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bucket = args[:bucket] if args.key?(:bucket)
+          @name = args[:name] if args.key?(:name)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
         end
       end
       

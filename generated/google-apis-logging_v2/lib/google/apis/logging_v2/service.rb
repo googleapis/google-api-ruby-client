@@ -440,6 +440,47 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a log bucket asynchronously that can be used to store log entries.
+        # After a bucket has been created, the bucket's location cannot be changed.
+        # @param [String] parent
+        #   Required. The resource in which to create the log bucket: "projects/[
+        #   PROJECT_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/
+        #   locations/global"
+        # @param [Google::Apis::LoggingV2::LogBucket] log_bucket_object
+        # @param [String] bucket_id
+        #   Required. A client-assigned identifier such as "my-bucket". Identifiers are
+        #   limited to 100 characters and can include only letters, digits, underscores,
+        #   hyphens, and periods.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_billing_account_location_bucket_async(parent, log_bucket_object = nil, bucket_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/buckets:createAsync', options)
+          command.request_representation = Google::Apis::LoggingV2::LogBucket::Representation
+          command.request_object = log_bucket_object
+          command.response_representation = Google::Apis::LoggingV2::Operation::Representation
+          command.response_class = Google::Apis::LoggingV2::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['bucketId'] = bucket_id unless bucket_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes a log bucket.Changes the bucket's lifecycle_state to the
         # DELETE_REQUESTED state. After 7 days, the bucket will be purged and all log
         # entries in the bucket will be permanently deleted.
@@ -558,11 +599,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a log bucket. This method replaces the following fields in the
-        # existing bucket with values from the new bucket: retention_periodIf the
-        # retention period is decreased and the bucket is locked, FAILED_PRECONDITION
-        # will be returned.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
-        # FAILED_PRECONDITION will be returned.After a bucket has been created, the
+        # Updates a log bucket.If the bucket has a lifecycle_state of DELETE_REQUESTED,
+        # then FAILED_PRECONDITION will be returned.After a bucket has been created, the
         # bucket's location cannot be changed.
         # @param [String] name
         #   Required. The full resource name of the bucket to update. "projects/[
@@ -643,6 +681,54 @@ module Google
           command.response_representation = Google::Apis::LoggingV2::Empty::Representation
           command.response_class = Google::Apis::LoggingV2::Empty
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a log bucket asynchronously.If the bucket has a lifecycle_state of
+        # DELETE_REQUESTED, then FAILED_PRECONDITION will be returned.After a bucket has
+        # been created, the bucket's location cannot be changed.
+        # @param [String] name
+        #   Required. The full resource name of the bucket to update. "projects/[
+        #   PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[
+        #   ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/
+        #   [BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[
+        #   FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/
+        #   my-project/locations/global/buckets/my-bucket"
+        # @param [Google::Apis::LoggingV2::LogBucket] log_bucket_object
+        # @param [String] update_mask
+        #   Required. Field mask that specifies the fields in bucket that need an update.
+        #   A bucket field will be overwritten if, and only if, it is in the update mask.
+        #   name and output only fields cannot be updated.For a detailed FieldMask
+        #   definition, see: https://developers.google.com/protocol-buffers/docs/reference/
+        #   google.protobuf#google.protobuf.FieldMaskFor example: updateMask=
+        #   retention_days
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_billing_account_location_bucket_async(name, log_bucket_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+name}:updateAsync', options)
+          command.request_representation = Google::Apis::LoggingV2::LogBucket::Representation
+          command.request_object = log_bucket_object
+          command.response_representation = Google::Apis::LoggingV2::Operation::Representation
+          command.response_class = Google::Apis::LoggingV2::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2149,6 +2235,47 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a log bucket asynchronously that can be used to store log entries.
+        # After a bucket has been created, the bucket's location cannot be changed.
+        # @param [String] parent
+        #   Required. The resource in which to create the log bucket: "projects/[
+        #   PROJECT_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/
+        #   locations/global"
+        # @param [Google::Apis::LoggingV2::LogBucket] log_bucket_object
+        # @param [String] bucket_id
+        #   Required. A client-assigned identifier such as "my-bucket". Identifiers are
+        #   limited to 100 characters and can include only letters, digits, underscores,
+        #   hyphens, and periods.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_folder_location_bucket_async(parent, log_bucket_object = nil, bucket_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/buckets:createAsync', options)
+          command.request_representation = Google::Apis::LoggingV2::LogBucket::Representation
+          command.request_object = log_bucket_object
+          command.response_representation = Google::Apis::LoggingV2::Operation::Representation
+          command.response_class = Google::Apis::LoggingV2::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['bucketId'] = bucket_id unless bucket_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes a log bucket.Changes the bucket's lifecycle_state to the
         # DELETE_REQUESTED state. After 7 days, the bucket will be purged and all log
         # entries in the bucket will be permanently deleted.
@@ -2267,11 +2394,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a log bucket. This method replaces the following fields in the
-        # existing bucket with values from the new bucket: retention_periodIf the
-        # retention period is decreased and the bucket is locked, FAILED_PRECONDITION
-        # will be returned.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
-        # FAILED_PRECONDITION will be returned.After a bucket has been created, the
+        # Updates a log bucket.If the bucket has a lifecycle_state of DELETE_REQUESTED,
+        # then FAILED_PRECONDITION will be returned.After a bucket has been created, the
         # bucket's location cannot be changed.
         # @param [String] name
         #   Required. The full resource name of the bucket to update. "projects/[
@@ -2352,6 +2476,54 @@ module Google
           command.response_representation = Google::Apis::LoggingV2::Empty::Representation
           command.response_class = Google::Apis::LoggingV2::Empty
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a log bucket asynchronously.If the bucket has a lifecycle_state of
+        # DELETE_REQUESTED, then FAILED_PRECONDITION will be returned.After a bucket has
+        # been created, the bucket's location cannot be changed.
+        # @param [String] name
+        #   Required. The full resource name of the bucket to update. "projects/[
+        #   PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[
+        #   ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/
+        #   [BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[
+        #   FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/
+        #   my-project/locations/global/buckets/my-bucket"
+        # @param [Google::Apis::LoggingV2::LogBucket] log_bucket_object
+        # @param [String] update_mask
+        #   Required. Field mask that specifies the fields in bucket that need an update.
+        #   A bucket field will be overwritten if, and only if, it is in the update mask.
+        #   name and output only fields cannot be updated.For a detailed FieldMask
+        #   definition, see: https://developers.google.com/protocol-buffers/docs/reference/
+        #   google.protobuf#google.protobuf.FieldMaskFor example: updateMask=
+        #   retention_days
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_folder_location_bucket_async(name, log_bucket_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+name}:updateAsync', options)
+          command.request_representation = Google::Apis::LoggingV2::LogBucket::Representation
+          command.request_object = log_bucket_object
+          command.response_representation = Google::Apis::LoggingV2::Operation::Representation
+          command.response_class = Google::Apis::LoggingV2::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -3209,6 +3381,47 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a log bucket asynchronously that can be used to store log entries.
+        # After a bucket has been created, the bucket's location cannot be changed.
+        # @param [String] parent
+        #   Required. The resource in which to create the log bucket: "projects/[
+        #   PROJECT_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/
+        #   locations/global"
+        # @param [Google::Apis::LoggingV2::LogBucket] log_bucket_object
+        # @param [String] bucket_id
+        #   Required. A client-assigned identifier such as "my-bucket". Identifiers are
+        #   limited to 100 characters and can include only letters, digits, underscores,
+        #   hyphens, and periods.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_location_bucket_async(parent, log_bucket_object = nil, bucket_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/buckets:createAsync', options)
+          command.request_representation = Google::Apis::LoggingV2::LogBucket::Representation
+          command.request_object = log_bucket_object
+          command.response_representation = Google::Apis::LoggingV2::Operation::Representation
+          command.response_class = Google::Apis::LoggingV2::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['bucketId'] = bucket_id unless bucket_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes a log bucket.Changes the bucket's lifecycle_state to the
         # DELETE_REQUESTED state. After 7 days, the bucket will be purged and all log
         # entries in the bucket will be permanently deleted.
@@ -3327,11 +3540,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a log bucket. This method replaces the following fields in the
-        # existing bucket with values from the new bucket: retention_periodIf the
-        # retention period is decreased and the bucket is locked, FAILED_PRECONDITION
-        # will be returned.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
-        # FAILED_PRECONDITION will be returned.After a bucket has been created, the
+        # Updates a log bucket.If the bucket has a lifecycle_state of DELETE_REQUESTED,
+        # then FAILED_PRECONDITION will be returned.After a bucket has been created, the
         # bucket's location cannot be changed.
         # @param [String] name
         #   Required. The full resource name of the bucket to update. "projects/[
@@ -3412,6 +3622,54 @@ module Google
           command.response_representation = Google::Apis::LoggingV2::Empty::Representation
           command.response_class = Google::Apis::LoggingV2::Empty
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a log bucket asynchronously.If the bucket has a lifecycle_state of
+        # DELETE_REQUESTED, then FAILED_PRECONDITION will be returned.After a bucket has
+        # been created, the bucket's location cannot be changed.
+        # @param [String] name
+        #   Required. The full resource name of the bucket to update. "projects/[
+        #   PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[
+        #   ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/
+        #   [BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[
+        #   FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/
+        #   my-project/locations/global/buckets/my-bucket"
+        # @param [Google::Apis::LoggingV2::LogBucket] log_bucket_object
+        # @param [String] update_mask
+        #   Required. Field mask that specifies the fields in bucket that need an update.
+        #   A bucket field will be overwritten if, and only if, it is in the update mask.
+        #   name and output only fields cannot be updated.For a detailed FieldMask
+        #   definition, see: https://developers.google.com/protocol-buffers/docs/reference/
+        #   google.protobuf#google.protobuf.FieldMaskFor example: updateMask=
+        #   retention_days
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_location_bucket_async(name, log_bucket_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+name}:updateAsync', options)
+          command.request_representation = Google::Apis::LoggingV2::LogBucket::Representation
+          command.request_object = log_bucket_object
+          command.response_representation = Google::Apis::LoggingV2::Operation::Representation
+          command.response_class = Google::Apis::LoggingV2::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -4352,6 +4610,47 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a log bucket asynchronously that can be used to store log entries.
+        # After a bucket has been created, the bucket's location cannot be changed.
+        # @param [String] parent
+        #   Required. The resource in which to create the log bucket: "projects/[
+        #   PROJECT_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/
+        #   locations/global"
+        # @param [Google::Apis::LoggingV2::LogBucket] log_bucket_object
+        # @param [String] bucket_id
+        #   Required. A client-assigned identifier such as "my-bucket". Identifiers are
+        #   limited to 100 characters and can include only letters, digits, underscores,
+        #   hyphens, and periods.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_location_bucket_async(parent, log_bucket_object = nil, bucket_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/buckets:createAsync', options)
+          command.request_representation = Google::Apis::LoggingV2::LogBucket::Representation
+          command.request_object = log_bucket_object
+          command.response_representation = Google::Apis::LoggingV2::Operation::Representation
+          command.response_class = Google::Apis::LoggingV2::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['bucketId'] = bucket_id unless bucket_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes a log bucket.Changes the bucket's lifecycle_state to the
         # DELETE_REQUESTED state. After 7 days, the bucket will be purged and all log
         # entries in the bucket will be permanently deleted.
@@ -4470,11 +4769,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a log bucket. This method replaces the following fields in the
-        # existing bucket with values from the new bucket: retention_periodIf the
-        # retention period is decreased and the bucket is locked, FAILED_PRECONDITION
-        # will be returned.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
-        # FAILED_PRECONDITION will be returned.After a bucket has been created, the
+        # Updates a log bucket.If the bucket has a lifecycle_state of DELETE_REQUESTED,
+        # then FAILED_PRECONDITION will be returned.After a bucket has been created, the
         # bucket's location cannot be changed.
         # @param [String] name
         #   Required. The full resource name of the bucket to update. "projects/[
@@ -4555,6 +4851,54 @@ module Google
           command.response_representation = Google::Apis::LoggingV2::Empty::Representation
           command.response_class = Google::Apis::LoggingV2::Empty
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a log bucket asynchronously.If the bucket has a lifecycle_state of
+        # DELETE_REQUESTED, then FAILED_PRECONDITION will be returned.After a bucket has
+        # been created, the bucket's location cannot be changed.
+        # @param [String] name
+        #   Required. The full resource name of the bucket to update. "projects/[
+        #   PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[
+        #   ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/
+        #   [BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[
+        #   FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/
+        #   my-project/locations/global/buckets/my-bucket"
+        # @param [Google::Apis::LoggingV2::LogBucket] log_bucket_object
+        # @param [String] update_mask
+        #   Required. Field mask that specifies the fields in bucket that need an update.
+        #   A bucket field will be overwritten if, and only if, it is in the update mask.
+        #   name and output only fields cannot be updated.For a detailed FieldMask
+        #   definition, see: https://developers.google.com/protocol-buffers/docs/reference/
+        #   google.protobuf#google.protobuf.FieldMaskFor example: updateMask=
+        #   retention_days
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_organization_location_bucket_async(name, log_bucket_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+name}:updateAsync', options)
+          command.request_representation = Google::Apis::LoggingV2::LogBucket::Representation
+          command.request_object = log_bucket_object
+          command.response_representation = Google::Apis::LoggingV2::Operation::Representation
+          command.response_class = Google::Apis::LoggingV2::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -5689,6 +6033,47 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a log bucket asynchronously that can be used to store log entries.
+        # After a bucket has been created, the bucket's location cannot be changed.
+        # @param [String] parent
+        #   Required. The resource in which to create the log bucket: "projects/[
+        #   PROJECT_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/
+        #   locations/global"
+        # @param [Google::Apis::LoggingV2::LogBucket] log_bucket_object
+        # @param [String] bucket_id
+        #   Required. A client-assigned identifier such as "my-bucket". Identifiers are
+        #   limited to 100 characters and can include only letters, digits, underscores,
+        #   hyphens, and periods.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_bucket_async(parent, log_bucket_object = nil, bucket_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/buckets:createAsync', options)
+          command.request_representation = Google::Apis::LoggingV2::LogBucket::Representation
+          command.request_object = log_bucket_object
+          command.response_representation = Google::Apis::LoggingV2::Operation::Representation
+          command.response_class = Google::Apis::LoggingV2::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['bucketId'] = bucket_id unless bucket_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes a log bucket.Changes the bucket's lifecycle_state to the
         # DELETE_REQUESTED state. After 7 days, the bucket will be purged and all log
         # entries in the bucket will be permanently deleted.
@@ -5807,11 +6192,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a log bucket. This method replaces the following fields in the
-        # existing bucket with values from the new bucket: retention_periodIf the
-        # retention period is decreased and the bucket is locked, FAILED_PRECONDITION
-        # will be returned.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
-        # FAILED_PRECONDITION will be returned.After a bucket has been created, the
+        # Updates a log bucket.If the bucket has a lifecycle_state of DELETE_REQUESTED,
+        # then FAILED_PRECONDITION will be returned.After a bucket has been created, the
         # bucket's location cannot be changed.
         # @param [String] name
         #   Required. The full resource name of the bucket to update. "projects/[
@@ -5892,6 +6274,54 @@ module Google
           command.response_representation = Google::Apis::LoggingV2::Empty::Representation
           command.response_class = Google::Apis::LoggingV2::Empty
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a log bucket asynchronously.If the bucket has a lifecycle_state of
+        # DELETE_REQUESTED, then FAILED_PRECONDITION will be returned.After a bucket has
+        # been created, the bucket's location cannot be changed.
+        # @param [String] name
+        #   Required. The full resource name of the bucket to update. "projects/[
+        #   PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[
+        #   ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/
+        #   [BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[
+        #   FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/
+        #   my-project/locations/global/buckets/my-bucket"
+        # @param [Google::Apis::LoggingV2::LogBucket] log_bucket_object
+        # @param [String] update_mask
+        #   Required. Field mask that specifies the fields in bucket that need an update.
+        #   A bucket field will be overwritten if, and only if, it is in the update mask.
+        #   name and output only fields cannot be updated.For a detailed FieldMask
+        #   definition, see: https://developers.google.com/protocol-buffers/docs/reference/
+        #   google.protobuf#google.protobuf.FieldMaskFor example: updateMask=
+        #   retention_days
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_project_location_bucket_async(name, log_bucket_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+name}:updateAsync', options)
+          command.request_representation = Google::Apis::LoggingV2::LogBucket::Representation
+          command.request_object = log_bucket_object
+          command.response_representation = Google::Apis::LoggingV2::Operation::Representation
+          command.response_class = Google::Apis::LoggingV2::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
