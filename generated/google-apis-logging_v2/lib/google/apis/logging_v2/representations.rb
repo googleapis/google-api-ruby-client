@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BucketMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BucketOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -59,6 +65,12 @@ module Google
       end
       
       class CopyLogEntriesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreateBucketRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -328,6 +340,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpdateBucketRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WriteLogEntriesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -345,6 +363,19 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :use_partitioned_tables, as: 'usePartitionedTables'
           property :uses_timestamp_column_partitioning, as: 'usesTimestampColumnPartitioning'
+        end
+      end
+      
+      class BucketMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_bucket_request, as: 'createBucketRequest', class: Google::Apis::LoggingV2::CreateBucketRequest, decorator: Google::Apis::LoggingV2::CreateBucketRequest::Representation
+      
+          property :end_time, as: 'endTime'
+          property :start_time, as: 'startTime'
+          property :state, as: 'state'
+          property :update_bucket_request, as: 'updateBucketRequest', class: Google::Apis::LoggingV2::UpdateBucketRequest, decorator: Google::Apis::LoggingV2::UpdateBucketRequest::Representation
+      
         end
       end
       
@@ -403,6 +434,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :log_entries_copied_count, :numeric_string => true, as: 'logEntriesCopiedCount'
+        end
+      end
+      
+      class CreateBucketRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bucket, as: 'bucket', class: Google::Apis::LoggingV2::LogBucket, decorator: Google::Apis::LoggingV2::LogBucket::Representation
+      
+          property :bucket_id, as: 'bucketId'
+          property :parent, as: 'parent'
         end
       end
       
@@ -591,6 +632,7 @@ module Google
       class LogBucket
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :analytics_enabled, as: 'analyticsEnabled'
           property :cmek_settings, as: 'cmekSettings', class: Google::Apis::LoggingV2::CmekSettings, decorator: Google::Apis::LoggingV2::CmekSettings::Representation
       
           property :create_time, as: 'createTime'
@@ -916,6 +958,16 @@ module Google
       class UndeleteBucketRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class UpdateBucketRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bucket, as: 'bucket', class: Google::Apis::LoggingV2::LogBucket, decorator: Google::Apis::LoggingV2::LogBucket::Representation
+      
+          property :name, as: 'name'
+          property :update_mask, as: 'updateMask'
         end
       end
       
