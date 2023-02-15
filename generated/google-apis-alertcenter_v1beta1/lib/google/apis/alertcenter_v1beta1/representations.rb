@@ -22,12 +22,6 @@ module Google
   module Apis
     module AlertcenterV1beta1
       
-      class AbuseDetected
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class AccountSuspensionDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -185,18 +179,6 @@ module Google
       end
       
       class Empty
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Entity
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class EntityList
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -428,19 +410,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AbuseDetected
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :additional_details, as: 'additionalDetails', class: Google::Apis::AlertcenterV1beta1::EntityList, decorator: Google::Apis::AlertcenterV1beta1::EntityList::Representation
-      
-          property :alert_descriptor, as: 'alertDescriptor'
-          property :next_steps, as: 'nextSteps'
-          property :product, as: 'product'
-          property :sub_alert_id, as: 'subAlertId'
-          property :summary, as: 'summary'
-        end
       end
       
       class AccountSuspensionDetails
@@ -705,25 +674,6 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class Entity
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :link, as: 'link'
-          property :name, as: 'name'
-          collection :values, as: 'values'
-        end
-      end
-      
-      class EntityList
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :entities, as: 'entities', class: Google::Apis::AlertcenterV1beta1::Entity, decorator: Google::Apis::AlertcenterV1beta1::Entity::Representation
-      
-          collection :headers, as: 'headers'
-          property :name, as: 'name'
         end
       end
       
