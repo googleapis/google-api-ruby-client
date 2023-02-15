@@ -51,6 +51,7 @@ module Google
         end
         
         # Creates an enterprise. This is the last step in the enterprise signup flow.
+        # See also: SigninDetail
         # @param [Google::Apis::AndroidmanagementV1::Enterprise] enterprise_object
         # @param [Boolean] agreement_accepted
         #   Whether the enterprise admin has seen and agreed to the managed Google Play
@@ -205,7 +206,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an enterprise.
+        # Updates an enterprise. See also: SigninDetail
         # @param [String] name
         #   The name of the enterprise in the form enterprises/`enterpriseId`.
         # @param [Google::Apis::AndroidmanagementV1::Enterprise] enterprise_object

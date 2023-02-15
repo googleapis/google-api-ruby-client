@@ -1975,7 +1975,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :enabled_notification_types
       
-        # The name of the enterprise displayed to users.
+        # The name of the enterprise displayed to users. This field has a maximum length
+        # of 100 characters.
         # Corresponds to the JSON property `enterpriseDisplayName`
         # @return [String]
         attr_accessor :enterprise_display_name
