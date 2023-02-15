@@ -297,7 +297,7 @@ module Google
         # @param [String] order_by
         #   Sort the results by a certain order.
         # @param [Fixnum] page_size
-        #   The maximum number of results per page that should be returned.
+        #   The maximum number of results per page to return.
         # @param [String] page_token
         #   The page token.
         # @param [String] fields
@@ -1489,7 +1489,7 @@ module Google
         # @param [String] order_by
         #   Sort the results by a certain order.
         # @param [Fixnum] page_size
-        #   The maximum number of results per page that should be returned.
+        #   The maximum number of results to return per page.
         # @param [String] page_token
         #   The page token.
         # @param [String] fields
