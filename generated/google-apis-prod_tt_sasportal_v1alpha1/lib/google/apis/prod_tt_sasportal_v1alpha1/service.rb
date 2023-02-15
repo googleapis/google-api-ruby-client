@@ -149,6 +149,37 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new SAS deployment through the GCP workflow. Creates a SAS
+        # organization if an organization match is not found.
+        # @param [Google::Apis::ProdTtSasportalV1alpha1::SasPortalProvisionDeploymentRequest] sas_portal_provision_deployment_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ProdTtSasportalV1alpha1::SasPortalProvisionDeploymentResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ProdTtSasportalV1alpha1::SasPortalProvisionDeploymentResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def provision_customer_deployment(sas_portal_provision_deployment_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha1/customers:provisionDeployment', options)
+          command.request_representation = Google::Apis::ProdTtSasportalV1alpha1::SasPortalProvisionDeploymentRequest::Representation
+          command.request_object = sas_portal_provision_deployment_request_object
+          command.response_representation = Google::Apis::ProdTtSasportalV1alpha1::SasPortalProvisionDeploymentResponse::Representation
+          command.response_class = Google::Apis::ProdTtSasportalV1alpha1::SasPortalProvisionDeploymentResponse
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a new deployment.
         # @param [String] parent
         #   Required. The parent resource name where the deployment is to be created.
