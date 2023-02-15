@@ -1132,6 +1132,7 @@ module Google
       
           property :body, :base64 => true, as: 'body'
           property :content_type, as: 'contentType'
+          property :custom_content_type, as: 'customContentType'
           hash :headers, as: 'headers'
           property :mask_headers, as: 'maskHeaders'
           property :path, as: 'path'

@@ -1765,6 +1765,15 @@ module Google
         # @return [String]
         attr_accessor :content_type
       
+        # A user provided content type header to use for the check. The invalid
+        # configurations outlined in the content_type field apply to custom_content_type,
+        # as well as the following: 1. content_type is URL_ENCODED and
+        # custom_content_type is set. 2. content_type is USER_PROVIDED and
+        # custom_content_type is not set.
+        # Corresponds to the JSON property `customContentType`
+        # @return [String]
+        attr_accessor :custom_content_type
+      
         # The list of headers to send as part of the Uptime check request. If two
         # headers have the same key and different values, they should be entered as a
         # single header, with the value being a comma-separated list of all the desired
@@ -1838,6 +1847,7 @@ module Google
           @auth_info = args[:auth_info] if args.key?(:auth_info)
           @body = args[:body] if args.key?(:body)
           @content_type = args[:content_type] if args.key?(:content_type)
+          @custom_content_type = args[:custom_content_type] if args.key?(:custom_content_type)
           @headers = args[:headers] if args.key?(:headers)
           @mask_headers = args[:mask_headers] if args.key?(:mask_headers)
           @path = args[:path] if args.key?(:path)
