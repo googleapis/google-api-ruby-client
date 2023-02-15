@@ -1,5 +1,10 @@
 # Release history for google-apis-websecurityscanner_v1beta
 
+### v0.19.0 (2023-02-15)
+
+* Regenerated from discovery document revision 20230107
+* Regenerated using generator version 0.12.0
+
 ### v0.18.0 (2022-10-20)
 
 * Regenerated using generator version 0.11.0
