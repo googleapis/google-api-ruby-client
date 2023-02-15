@@ -22,8 +22,24 @@ module Google
   module Apis
     module SafebrowsingV4
       
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); `
+      class GoogleProtobufEmpty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The expected state of a client's local database.
-      class Checksum
+      class GoogleSecuritySafebrowsingV4Checksum
         include Google::Apis::Core::Hashable
       
         # The SHA256 hash of the client state; that is, of the sorted list of all hashes
@@ -44,7 +60,7 @@ module Google
       end
       
       # The client metadata associated with Safe Browsing API requests.
-      class ClientInfo
+      class GoogleSecuritySafebrowsingV4ClientInfo
         include Google::Apis::Core::Hashable
       
         # A client ID that (hopefully) uniquely identifies the client implementation of
@@ -69,8 +85,81 @@ module Google
         end
       end
       
+      # Describes a Safe Browsing API update request. Clients can request updates for
+      # multiple lists in a single request. The server may not respond to all requests,
+      # if the server has no updates for that list. NOTE: Field index 2 is unused.
+      # NEXT: 5
+      class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequest
+        include Google::Apis::Core::Hashable
+      
+        # The client metadata associated with Safe Browsing API requests.
+        # Corresponds to the JSON property `client`
+        # @return [Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ClientInfo]
+        attr_accessor :client
+      
+        # The requested threat list updates.
+        # Corresponds to the JSON property `listUpdateRequests`
+        # @return [Array<Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest>]
+        attr_accessor :list_update_requests
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client = args[:client] if args.key?(:client)
+          @list_update_requests = args[:list_update_requests] if args.key?(:list_update_requests)
+        end
+      end
+      
+      # A single list update request.
+      class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest
+        include Google::Apis::Core::Hashable
+      
+        # The constraints for this update.
+        # Corresponds to the JSON property `constraints`
+        # @return [Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraints]
+        attr_accessor :constraints
+      
+        # The type of platform at risk by entries present in the list.
+        # Corresponds to the JSON property `platformType`
+        # @return [String]
+        attr_accessor :platform_type
+      
+        # The current state of the client for the requested list (the encrypted client
+        # state that was received from the last successful list update).
+        # Corresponds to the JSON property `state`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :state
+      
+        # The types of entries present in the list.
+        # Corresponds to the JSON property `threatEntryType`
+        # @return [String]
+        attr_accessor :threat_entry_type
+      
+        # The type of threat posed by entries present in the list.
+        # Corresponds to the JSON property `threatType`
+        # @return [String]
+        attr_accessor :threat_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @constraints = args[:constraints] if args.key?(:constraints)
+          @platform_type = args[:platform_type] if args.key?(:platform_type)
+          @state = args[:state] if args.key?(:state)
+          @threat_entry_type = args[:threat_entry_type] if args.key?(:threat_entry_type)
+          @threat_type = args[:threat_type] if args.key?(:threat_type)
+        end
+      end
+      
       # The constraints for this update.
-      class Constraints
+      class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraints
         include Google::Apis::Core::Hashable
       
         # A client's physical location, expressed as a ISO 31166-1 alpha-2 region code.
@@ -124,59 +213,15 @@ module Google
         end
       end
       
-      # A generic empty message that you can re-use to avoid defining duplicated empty
-      # messages in your APIs. A typical example is to use it as the request or the
-      # response type of an API method. For instance: service Foo ` rpc Bar(google.
-      # protobuf.Empty) returns (google.protobuf.Empty); `
-      class Empty
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # Describes a Safe Browsing API update request. Clients can request updates for
-      # multiple lists in a single request. The server may not respond to all requests,
-      # if the server has no updates for that list. NOTE: Field index 2 is unused.
-      # NEXT: 5
-      class FetchThreatListUpdatesRequest
-        include Google::Apis::Core::Hashable
-      
-        # The client metadata associated with Safe Browsing API requests.
-        # Corresponds to the JSON property `client`
-        # @return [Google::Apis::SafebrowsingV4::ClientInfo]
-        attr_accessor :client
-      
-        # The requested threat list updates.
-        # Corresponds to the JSON property `listUpdateRequests`
-        # @return [Array<Google::Apis::SafebrowsingV4::ListUpdateRequest>]
-        attr_accessor :list_update_requests
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @client = args[:client] if args.key?(:client)
-          @list_update_requests = args[:list_update_requests] if args.key?(:list_update_requests)
-        end
-      end
-      
       # 
-      class FetchThreatListUpdatesResponse
+      class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse
         include Google::Apis::Core::Hashable
       
         # The list updates requested by the clients. The number of responses here may be
         # less than the number of requests sent by clients. This is the case, for
         # example, if the server has no updates for a particular list.
         # Corresponds to the JSON property `listUpdateResponses`
-        # @return [Array<Google::Apis::SafebrowsingV4::ListUpdateResponse>]
+        # @return [Array<Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse>]
         attr_accessor :list_update_responses
       
         # The minimum duration the client must wait before issuing any update request.
@@ -196,200 +241,19 @@ module Google
         end
       end
       
-      # Request to return full hashes matched by the provided hash prefixes.
-      class FindFullHashesRequest
-        include Google::Apis::Core::Hashable
-      
-        # The client metadata associated with Safe Browsing API requests.
-        # Corresponds to the JSON property `apiClient`
-        # @return [Google::Apis::SafebrowsingV4::ClientInfo]
-        attr_accessor :api_client
-      
-        # The client metadata associated with Safe Browsing API requests.
-        # Corresponds to the JSON property `client`
-        # @return [Google::Apis::SafebrowsingV4::ClientInfo]
-        attr_accessor :client
-      
-        # The current client states for each of the client's local threat lists.
-        # Corresponds to the JSON property `clientStates`
-        # @return [Array<String>]
-        attr_accessor :client_states
-      
-        # The information regarding one or more threats that a client submits when
-        # checking for matches in threat lists.
-        # Corresponds to the JSON property `threatInfo`
-        # @return [Google::Apis::SafebrowsingV4::ThreatInfo]
-        attr_accessor :threat_info
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @api_client = args[:api_client] if args.key?(:api_client)
-          @client = args[:client] if args.key?(:client)
-          @client_states = args[:client_states] if args.key?(:client_states)
-          @threat_info = args[:threat_info] if args.key?(:threat_info)
-        end
-      end
-      
-      # 
-      class FindFullHashesResponse
-        include Google::Apis::Core::Hashable
-      
-        # The full hashes that matched the requested prefixes.
-        # Corresponds to the JSON property `matches`
-        # @return [Array<Google::Apis::SafebrowsingV4::ThreatMatch>]
-        attr_accessor :matches
-      
-        # The minimum duration the client must wait before issuing any find hashes
-        # request. If this field is not set, clients can issue a request as soon as they
-        # want.
-        # Corresponds to the JSON property `minimumWaitDuration`
-        # @return [String]
-        attr_accessor :minimum_wait_duration
-      
-        # For requested entities that did not match the threat list, how long to cache
-        # the response.
-        # Corresponds to the JSON property `negativeCacheDuration`
-        # @return [String]
-        attr_accessor :negative_cache_duration
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @matches = args[:matches] if args.key?(:matches)
-          @minimum_wait_duration = args[:minimum_wait_duration] if args.key?(:minimum_wait_duration)
-          @negative_cache_duration = args[:negative_cache_duration] if args.key?(:negative_cache_duration)
-        end
-      end
-      
-      # Request to check entries against lists.
-      class FindThreatMatchesRequest
-        include Google::Apis::Core::Hashable
-      
-        # The client metadata associated with Safe Browsing API requests.
-        # Corresponds to the JSON property `client`
-        # @return [Google::Apis::SafebrowsingV4::ClientInfo]
-        attr_accessor :client
-      
-        # The information regarding one or more threats that a client submits when
-        # checking for matches in threat lists.
-        # Corresponds to the JSON property `threatInfo`
-        # @return [Google::Apis::SafebrowsingV4::ThreatInfo]
-        attr_accessor :threat_info
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @client = args[:client] if args.key?(:client)
-          @threat_info = args[:threat_info] if args.key?(:threat_info)
-        end
-      end
-      
-      # 
-      class FindThreatMatchesResponse
-        include Google::Apis::Core::Hashable
-      
-        # The threat list matches.
-        # Corresponds to the JSON property `matches`
-        # @return [Array<Google::Apis::SafebrowsingV4::ThreatMatch>]
-        attr_accessor :matches
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @matches = args[:matches] if args.key?(:matches)
-        end
-      end
-      
-      # 
-      class ListThreatListsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The lists available for download by the client.
-        # Corresponds to the JSON property `threatLists`
-        # @return [Array<Google::Apis::SafebrowsingV4::ThreatListDescriptor>]
-        attr_accessor :threat_lists
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @threat_lists = args[:threat_lists] if args.key?(:threat_lists)
-        end
-      end
-      
-      # A single list update request.
-      class ListUpdateRequest
-        include Google::Apis::Core::Hashable
-      
-        # The constraints for this update.
-        # Corresponds to the JSON property `constraints`
-        # @return [Google::Apis::SafebrowsingV4::Constraints]
-        attr_accessor :constraints
-      
-        # The type of platform at risk by entries present in the list.
-        # Corresponds to the JSON property `platformType`
-        # @return [String]
-        attr_accessor :platform_type
-      
-        # The current state of the client for the requested list (the encrypted client
-        # state that was received from the last successful list update).
-        # Corresponds to the JSON property `state`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
-        # @return [String]
-        attr_accessor :state
-      
-        # The types of entries present in the list.
-        # Corresponds to the JSON property `threatEntryType`
-        # @return [String]
-        attr_accessor :threat_entry_type
-      
-        # The type of threat posed by entries present in the list.
-        # Corresponds to the JSON property `threatType`
-        # @return [String]
-        attr_accessor :threat_type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @constraints = args[:constraints] if args.key?(:constraints)
-          @platform_type = args[:platform_type] if args.key?(:platform_type)
-          @state = args[:state] if args.key?(:state)
-          @threat_entry_type = args[:threat_entry_type] if args.key?(:threat_entry_type)
-          @threat_type = args[:threat_type] if args.key?(:threat_type)
-        end
-      end
-      
       # An update to an individual list.
-      class ListUpdateResponse
+      class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse
         include Google::Apis::Core::Hashable
       
         # A set of entries to add to a local threat type's list. Repeated to allow for a
         # combination of compressed and raw data to be sent in a single response.
         # Corresponds to the JSON property `additions`
-        # @return [Array<Google::Apis::SafebrowsingV4::ThreatEntrySet>]
+        # @return [Array<Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ThreatEntrySet>]
         attr_accessor :additions
       
         # The expected state of a client's local database.
         # Corresponds to the JSON property `checksum`
-        # @return [Google::Apis::SafebrowsingV4::Checksum]
+        # @return [Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4Checksum]
         attr_accessor :checksum
       
         # The new client state, in encrypted format. Opaque to clients.
@@ -406,7 +270,7 @@ module Google
         # A set of entries to remove from a local threat type's list. In practice, this
         # field is empty or contains exactly one ThreatEntrySet.
         # Corresponds to the JSON property `removals`
-        # @return [Array<Google::Apis::SafebrowsingV4::ThreatEntrySet>]
+        # @return [Array<Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ThreatEntrySet>]
         attr_accessor :removals
       
         # The type of response. This may indicate that an action is required by the
@@ -442,21 +306,30 @@ module Google
         end
       end
       
-      # A single metadata entry.
-      class MetadataEntry
+      # Request to return full hashes matched by the provided hash prefixes.
+      class GoogleSecuritySafebrowsingV4FindFullHashesRequest
         include Google::Apis::Core::Hashable
       
-        # The metadata entry key. For JSON requests, the key is base64-encoded.
-        # Corresponds to the JSON property `key`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
-        # @return [String]
-        attr_accessor :key
+        # The client metadata associated with Safe Browsing API requests.
+        # Corresponds to the JSON property `apiClient`
+        # @return [Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ClientInfo]
+        attr_accessor :api_client
       
-        # The metadata entry value. For JSON requests, the value is base64-encoded.
-        # Corresponds to the JSON property `value`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
-        # @return [String]
-        attr_accessor :value
+        # The client metadata associated with Safe Browsing API requests.
+        # Corresponds to the JSON property `client`
+        # @return [Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ClientInfo]
+        attr_accessor :client
+      
+        # The current client states for each of the client's local threat lists.
+        # Corresponds to the JSON property `clientStates`
+        # @return [Array<String>]
+        attr_accessor :client_states
+      
+        # The information regarding one or more threats that a client submits when
+        # checking for matches in threat lists.
+        # Corresponds to the JSON property `threatInfo`
+        # @return [Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ThreatInfo]
+        attr_accessor :threat_info
       
         def initialize(**args)
            update!(**args)
@@ -464,8 +337,108 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @key = args[:key] if args.key?(:key)
-          @value = args[:value] if args.key?(:value)
+          @api_client = args[:api_client] if args.key?(:api_client)
+          @client = args[:client] if args.key?(:client)
+          @client_states = args[:client_states] if args.key?(:client_states)
+          @threat_info = args[:threat_info] if args.key?(:threat_info)
+        end
+      end
+      
+      # 
+      class GoogleSecuritySafebrowsingV4FindFullHashesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The full hashes that matched the requested prefixes.
+        # Corresponds to the JSON property `matches`
+        # @return [Array<Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ThreatMatch>]
+        attr_accessor :matches
+      
+        # The minimum duration the client must wait before issuing any find hashes
+        # request. If this field is not set, clients can issue a request as soon as they
+        # want.
+        # Corresponds to the JSON property `minimumWaitDuration`
+        # @return [String]
+        attr_accessor :minimum_wait_duration
+      
+        # For requested entities that did not match the threat list, how long to cache
+        # the response.
+        # Corresponds to the JSON property `negativeCacheDuration`
+        # @return [String]
+        attr_accessor :negative_cache_duration
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @matches = args[:matches] if args.key?(:matches)
+          @minimum_wait_duration = args[:minimum_wait_duration] if args.key?(:minimum_wait_duration)
+          @negative_cache_duration = args[:negative_cache_duration] if args.key?(:negative_cache_duration)
+        end
+      end
+      
+      # Request to check entries against lists.
+      class GoogleSecuritySafebrowsingV4FindThreatMatchesRequest
+        include Google::Apis::Core::Hashable
+      
+        # The client metadata associated with Safe Browsing API requests.
+        # Corresponds to the JSON property `client`
+        # @return [Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ClientInfo]
+        attr_accessor :client
+      
+        # The information regarding one or more threats that a client submits when
+        # checking for matches in threat lists.
+        # Corresponds to the JSON property `threatInfo`
+        # @return [Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ThreatInfo]
+        attr_accessor :threat_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client = args[:client] if args.key?(:client)
+          @threat_info = args[:threat_info] if args.key?(:threat_info)
+        end
+      end
+      
+      # 
+      class GoogleSecuritySafebrowsingV4FindThreatMatchesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The threat list matches.
+        # Corresponds to the JSON property `matches`
+        # @return [Array<Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ThreatMatch>]
+        attr_accessor :matches
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @matches = args[:matches] if args.key?(:matches)
+        end
+      end
+      
+      # 
+      class GoogleSecuritySafebrowsingV4ListThreatListsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The lists available for download by the client.
+        # Corresponds to the JSON property `threatLists`
+        # @return [Array<Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ThreatListDescriptor>]
+        attr_accessor :threat_lists
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @threat_lists = args[:threat_lists] if args.key?(:threat_lists)
         end
       end
       
@@ -475,7 +448,7 @@ module Google
       # popular URL. Used for sending ThreatEntrySet to clients that do not support
       # compression, or when sending non-4-byte hashes to clients that do support
       # compression.
-      class RawHashes
+      class GoogleSecuritySafebrowsingV4RawHashes
         include Google::Apis::Core::Hashable
       
         # The number of bytes for each prefix encoded below. This field can be anywhere
@@ -503,7 +476,7 @@ module Google
       end
       
       # A set of raw indices to remove from a local list.
-      class RawIndices
+      class GoogleSecuritySafebrowsingV4RawIndices
         include Google::Apis::Core::Hashable
       
         # The indices to remove from a lexicographically-sorted local list.
@@ -523,7 +496,7 @@ module Google
       
       # The Rice-Golomb encoded data. Used for sending compressed 4-byte hashes or
       # compressed removal indices.
-      class RiceDeltaEncoding
+      class GoogleSecuritySafebrowsingV4RiceDeltaEncoding
         include Google::Apis::Core::Hashable
       
         # The encoded deltas that are encoded using the Golomb-Rice coder.
@@ -567,7 +540,7 @@ module Google
       
       # An individual threat; for example, a malicious URL or its hash representation.
       # Only one of these fields should be set.
-      class ThreatEntry
+      class GoogleSecuritySafebrowsingV4ThreatEntry
         include Google::Apis::Core::Hashable
       
         # The digest of an executable in SHA256 format. The API supports both binary and
@@ -603,12 +576,12 @@ module Google
       
       # The metadata associated with a specific threat entry. The client is expected
       # to know the metadata key/value pairs associated with each threat type.
-      class ThreatEntryMetadata
+      class GoogleSecuritySafebrowsingV4ThreatEntryMetadata
         include Google::Apis::Core::Hashable
       
         # The metadata entries.
         # Corresponds to the JSON property `entries`
-        # @return [Array<Google::Apis::SafebrowsingV4::MetadataEntry>]
+        # @return [Array<Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry>]
         attr_accessor :entries
       
         def initialize(**args)
@@ -621,9 +594,36 @@ module Google
         end
       end
       
+      # A single metadata entry.
+      class GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry
+        include Google::Apis::Core::Hashable
+      
+        # The metadata entry key. For JSON requests, the key is base64-encoded.
+        # Corresponds to the JSON property `key`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :key
+      
+        # The metadata entry value. For JSON requests, the value is base64-encoded.
+        # Corresponds to the JSON property `value`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # A set of threats that should be added or removed from a client's local
       # database.
-      class ThreatEntrySet
+      class GoogleSecuritySafebrowsingV4ThreatEntrySet
         include Google::Apis::Core::Hashable
       
         # The compression type for the entries in this set.
@@ -638,24 +638,24 @@ module Google
         # compression, or when sending non-4-byte hashes to clients that do support
         # compression.
         # Corresponds to the JSON property `rawHashes`
-        # @return [Google::Apis::SafebrowsingV4::RawHashes]
+        # @return [Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4RawHashes]
         attr_accessor :raw_hashes
       
         # A set of raw indices to remove from a local list.
         # Corresponds to the JSON property `rawIndices`
-        # @return [Google::Apis::SafebrowsingV4::RawIndices]
+        # @return [Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4RawIndices]
         attr_accessor :raw_indices
       
         # The Rice-Golomb encoded data. Used for sending compressed 4-byte hashes or
         # compressed removal indices.
         # Corresponds to the JSON property `riceHashes`
-        # @return [Google::Apis::SafebrowsingV4::RiceDeltaEncoding]
+        # @return [Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4RiceDeltaEncoding]
         attr_accessor :rice_hashes
       
         # The Rice-Golomb encoded data. Used for sending compressed 4-byte hashes or
         # compressed removal indices.
         # Corresponds to the JSON property `riceIndices`
-        # @return [Google::Apis::SafebrowsingV4::RiceDeltaEncoding]
+        # @return [Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4RiceDeltaEncoding]
         attr_accessor :rice_indices
       
         def initialize(**args)
@@ -673,18 +673,18 @@ module Google
       end
       
       # 
-      class ThreatHit
+      class GoogleSecuritySafebrowsingV4ThreatHit
         include Google::Apis::Core::Hashable
       
         # The client metadata associated with Safe Browsing API requests.
         # Corresponds to the JSON property `clientInfo`
-        # @return [Google::Apis::SafebrowsingV4::ClientInfo]
+        # @return [Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ClientInfo]
         attr_accessor :client_info
       
         # An individual threat; for example, a malicious URL or its hash representation.
         # Only one of these fields should be set.
         # Corresponds to the JSON property `entry`
-        # @return [Google::Apis::SafebrowsingV4::ThreatEntry]
+        # @return [Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ThreatEntry]
         attr_accessor :entry
       
         # The platform type reported.
@@ -694,7 +694,7 @@ module Google
       
         # The resources related to the threat hit.
         # Corresponds to the JSON property `resources`
-        # @return [Array<Google::Apis::SafebrowsingV4::ThreatSource>]
+        # @return [Array<Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ThreatHitThreatSource>]
         attr_accessor :resources
       
         # The threat type reported.
@@ -704,7 +704,7 @@ module Google
       
         # Details about the user that encountered the threat.
         # Corresponds to the JSON property `userInfo`
-        # @return [Google::Apis::SafebrowsingV4::UserInfo]
+        # @return [Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ThreatHitUserInfo]
         attr_accessor :user_info
       
         def initialize(**args)
@@ -722,131 +722,8 @@ module Google
         end
       end
       
-      # The information regarding one or more threats that a client submits when
-      # checking for matches in threat lists.
-      class ThreatInfo
-        include Google::Apis::Core::Hashable
-      
-        # The platform types to be checked.
-        # Corresponds to the JSON property `platformTypes`
-        # @return [Array<String>]
-        attr_accessor :platform_types
-      
-        # The threat entries to be checked.
-        # Corresponds to the JSON property `threatEntries`
-        # @return [Array<Google::Apis::SafebrowsingV4::ThreatEntry>]
-        attr_accessor :threat_entries
-      
-        # The entry types to be checked.
-        # Corresponds to the JSON property `threatEntryTypes`
-        # @return [Array<String>]
-        attr_accessor :threat_entry_types
-      
-        # The threat types to be checked.
-        # Corresponds to the JSON property `threatTypes`
-        # @return [Array<String>]
-        attr_accessor :threat_types
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @platform_types = args[:platform_types] if args.key?(:platform_types)
-          @threat_entries = args[:threat_entries] if args.key?(:threat_entries)
-          @threat_entry_types = args[:threat_entry_types] if args.key?(:threat_entry_types)
-          @threat_types = args[:threat_types] if args.key?(:threat_types)
-        end
-      end
-      
-      # Describes an individual threat list. A list is defined by three parameters:
-      # the type of threat posed, the type of platform targeted by the threat, and the
-      # type of entries in the list.
-      class ThreatListDescriptor
-        include Google::Apis::Core::Hashable
-      
-        # The platform type targeted by the list's entries.
-        # Corresponds to the JSON property `platformType`
-        # @return [String]
-        attr_accessor :platform_type
-      
-        # The entry types contained in the list.
-        # Corresponds to the JSON property `threatEntryType`
-        # @return [String]
-        attr_accessor :threat_entry_type
-      
-        # The threat type posed by the list's entries.
-        # Corresponds to the JSON property `threatType`
-        # @return [String]
-        attr_accessor :threat_type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @platform_type = args[:platform_type] if args.key?(:platform_type)
-          @threat_entry_type = args[:threat_entry_type] if args.key?(:threat_entry_type)
-          @threat_type = args[:threat_type] if args.key?(:threat_type)
-        end
-      end
-      
-      # A match when checking a threat entry in the Safe Browsing threat lists.
-      class ThreatMatch
-        include Google::Apis::Core::Hashable
-      
-        # The cache lifetime for the returned match. Clients must not cache this
-        # response for more than this duration to avoid false positives.
-        # Corresponds to the JSON property `cacheDuration`
-        # @return [String]
-        attr_accessor :cache_duration
-      
-        # The platform type matching this threat.
-        # Corresponds to the JSON property `platformType`
-        # @return [String]
-        attr_accessor :platform_type
-      
-        # An individual threat; for example, a malicious URL or its hash representation.
-        # Only one of these fields should be set.
-        # Corresponds to the JSON property `threat`
-        # @return [Google::Apis::SafebrowsingV4::ThreatEntry]
-        attr_accessor :threat
-      
-        # The metadata associated with a specific threat entry. The client is expected
-        # to know the metadata key/value pairs associated with each threat type.
-        # Corresponds to the JSON property `threatEntryMetadata`
-        # @return [Google::Apis::SafebrowsingV4::ThreatEntryMetadata]
-        attr_accessor :threat_entry_metadata
-      
-        # The threat entry type matching this threat.
-        # Corresponds to the JSON property `threatEntryType`
-        # @return [String]
-        attr_accessor :threat_entry_type
-      
-        # The threat type matching this threat.
-        # Corresponds to the JSON property `threatType`
-        # @return [String]
-        attr_accessor :threat_type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @cache_duration = args[:cache_duration] if args.key?(:cache_duration)
-          @platform_type = args[:platform_type] if args.key?(:platform_type)
-          @threat = args[:threat] if args.key?(:threat)
-          @threat_entry_metadata = args[:threat_entry_metadata] if args.key?(:threat_entry_metadata)
-          @threat_entry_type = args[:threat_entry_type] if args.key?(:threat_entry_type)
-          @threat_type = args[:threat_type] if args.key?(:threat_type)
-        end
-      end
-      
       # A single resource related to a threat hit.
-      class ThreatSource
+      class GoogleSecuritySafebrowsingV4ThreatHitThreatSource
         include Google::Apis::Core::Hashable
       
         # Referrer of the resource. Only set if the referrer is available.
@@ -883,7 +760,7 @@ module Google
       end
       
       # Details about the user that encountered the threat.
-      class UserInfo
+      class GoogleSecuritySafebrowsingV4ThreatHitUserInfo
         include Google::Apis::Core::Hashable
       
         # The UN M.49 region code associated with the user's location.
@@ -905,6 +782,129 @@ module Google
         def update!(**args)
           @region_code = args[:region_code] if args.key?(:region_code)
           @user_id = args[:user_id] if args.key?(:user_id)
+        end
+      end
+      
+      # The information regarding one or more threats that a client submits when
+      # checking for matches in threat lists.
+      class GoogleSecuritySafebrowsingV4ThreatInfo
+        include Google::Apis::Core::Hashable
+      
+        # The platform types to be checked.
+        # Corresponds to the JSON property `platformTypes`
+        # @return [Array<String>]
+        attr_accessor :platform_types
+      
+        # The threat entries to be checked.
+        # Corresponds to the JSON property `threatEntries`
+        # @return [Array<Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ThreatEntry>]
+        attr_accessor :threat_entries
+      
+        # The entry types to be checked.
+        # Corresponds to the JSON property `threatEntryTypes`
+        # @return [Array<String>]
+        attr_accessor :threat_entry_types
+      
+        # The threat types to be checked.
+        # Corresponds to the JSON property `threatTypes`
+        # @return [Array<String>]
+        attr_accessor :threat_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @platform_types = args[:platform_types] if args.key?(:platform_types)
+          @threat_entries = args[:threat_entries] if args.key?(:threat_entries)
+          @threat_entry_types = args[:threat_entry_types] if args.key?(:threat_entry_types)
+          @threat_types = args[:threat_types] if args.key?(:threat_types)
+        end
+      end
+      
+      # Describes an individual threat list. A list is defined by three parameters:
+      # the type of threat posed, the type of platform targeted by the threat, and the
+      # type of entries in the list.
+      class GoogleSecuritySafebrowsingV4ThreatListDescriptor
+        include Google::Apis::Core::Hashable
+      
+        # The platform type targeted by the list's entries.
+        # Corresponds to the JSON property `platformType`
+        # @return [String]
+        attr_accessor :platform_type
+      
+        # The entry types contained in the list.
+        # Corresponds to the JSON property `threatEntryType`
+        # @return [String]
+        attr_accessor :threat_entry_type
+      
+        # The threat type posed by the list's entries.
+        # Corresponds to the JSON property `threatType`
+        # @return [String]
+        attr_accessor :threat_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @platform_type = args[:platform_type] if args.key?(:platform_type)
+          @threat_entry_type = args[:threat_entry_type] if args.key?(:threat_entry_type)
+          @threat_type = args[:threat_type] if args.key?(:threat_type)
+        end
+      end
+      
+      # A match when checking a threat entry in the Safe Browsing threat lists.
+      class GoogleSecuritySafebrowsingV4ThreatMatch
+        include Google::Apis::Core::Hashable
+      
+        # The cache lifetime for the returned match. Clients must not cache this
+        # response for more than this duration to avoid false positives.
+        # Corresponds to the JSON property `cacheDuration`
+        # @return [String]
+        attr_accessor :cache_duration
+      
+        # The platform type matching this threat.
+        # Corresponds to the JSON property `platformType`
+        # @return [String]
+        attr_accessor :platform_type
+      
+        # An individual threat; for example, a malicious URL or its hash representation.
+        # Only one of these fields should be set.
+        # Corresponds to the JSON property `threat`
+        # @return [Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ThreatEntry]
+        attr_accessor :threat
+      
+        # The metadata associated with a specific threat entry. The client is expected
+        # to know the metadata key/value pairs associated with each threat type.
+        # Corresponds to the JSON property `threatEntryMetadata`
+        # @return [Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ThreatEntryMetadata]
+        attr_accessor :threat_entry_metadata
+      
+        # The threat entry type matching this threat.
+        # Corresponds to the JSON property `threatEntryType`
+        # @return [String]
+        attr_accessor :threat_entry_type
+      
+        # The threat type matching this threat.
+        # Corresponds to the JSON property `threatType`
+        # @return [String]
+        attr_accessor :threat_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cache_duration = args[:cache_duration] if args.key?(:cache_duration)
+          @platform_type = args[:platform_type] if args.key?(:platform_type)
+          @threat = args[:threat] if args.key?(:threat)
+          @threat_entry_metadata = args[:threat_entry_metadata] if args.key?(:threat_entry_metadata)
+          @threat_entry_type = args[:threat_entry_type] if args.key?(:threat_entry_type)
+          @threat_type = args[:threat_type] if args.key?(:threat_type)
         end
       end
     end
