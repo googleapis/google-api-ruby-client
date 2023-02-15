@@ -238,8 +238,9 @@ module Google
         # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccount] google_analytics_admin_v1alpha_account_object
         # @param [String] update_mask
         #   Required. The list of fields to be updated. Field names must be in snake case (
-        #   e.g., "field_to_update"). Omitted fields will not be updated. To replace the
-        #   entire entity, use one path with the string "*" to match all fields.
+        #   for example, "field_to_update"). Omitted fields will not be updated. To
+        #   replace the entire entity, use one path with the string "*" to match all
+        #   fields.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1008,7 +1009,7 @@ module Google
         
         # Acknowledges the terms of user data collection for the specified property.
         # This acknowledgement must be completed (either in the Google Analytics UI or
-        # via this API) before MeasurementProtocolSecret resources may be created.
+        # through this API) before MeasurementProtocolSecret resources may be created.
         # @param [String] property
         #   Required. The property for which to acknowledge user data collection.
         # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest] google_analytics_admin_v1alpha_acknowledge_user_data_collection_request_object
