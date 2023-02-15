@@ -16,10 +16,10 @@ module Google
   module Apis
     module SecretmanagerV1beta1
       # Version of the google-apis-secretmanager_v1beta1 gem
-      GEM_VERSION = "0.25.0"
+      GEM_VERSION = "0.26.0"
 
       # Version of the code generator used to generate this client
-      GENERATOR_VERSION = "0.11.1"
+      GENERATOR_VERSION = "0.12.0"
 
       # Revision of the discovery document this client was generated from
       REVISION = "20230128"
