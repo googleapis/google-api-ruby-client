@@ -1519,7 +1519,8 @@ module Google
         attr_accessor :document_output_config
       
         # Optional. If true, use the text removal server to remove the shadow text on
-        # background image for native pdf translation.
+        # background image for native pdf translation. Shadow removal feature can only
+        # be enabled when is_translate_native_pdf_only: false && pdf_native_only: false
         # Corresponds to the JSON property `enableShadowRemovalNativePdf`
         # @return [Boolean]
         attr_accessor :enable_shadow_removal_native_pdf
