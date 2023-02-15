@@ -232,21 +232,23 @@ module Google
         end
       end
       
-      # A customer-specified encryption key for the Compute Engine resources of this
+      # A customer-managed encryption key for the Compute Engine resources of this
       # workstation configuration.
       class CustomerEncryptionKey
         include Google::Apis::Core::Hashable
       
-        # The name of the encryption key that is stored in Google Cloud KMS, for example,
-        # `projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME`.
+        # The name of the Google Cloud KMS encryption key. For example, `projects/
+        # PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME`.
         # Corresponds to the JSON property `kmsKey`
         # @return [String]
         attr_accessor :kms_key
       
-        # The service account being used for the encryption request for the given KMS
-        # key. If absent, the Compute Engine default service account is used. However,
-        # it is recommended to use a separate service account and to follow KMS best
-        # practices mentioned at https://cloud.google.com/kms/docs/separation-of-duties
+        # The service account to use with the specified KMS key. We recommend that you
+        # use a separate service account and follow KMS best practices. For more
+        # information, see [Separation of duties](https://cloud.google.com/kms/docs/
+        # separation-of-duties) and `gcloud kms keys add-iam-policy-binding` [`--member`]
+        # (https://cloud.google.com/sdk/gcloud/reference/kms/keys/add-iam-policy-binding#
+        # --member).
         # Corresponds to the JSON property `kmsKeyServiceAccount`
         # @return [String]
         attr_accessor :kms_key_service_account
@@ -670,7 +672,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :unreachable
       
-        # The requested clusters.
+        # The requested workstation clusters.
         # Corresponds to the JSON property `workstationClusters`
         # @return [Array<Google::Apis::WorkstationsV1beta::WorkstationCluster>]
         attr_accessor :workstation_clusters
@@ -1475,7 +1477,7 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # A customer-specified encryption key for the Compute Engine resources of this
+        # A customer-managed encryption key for the Compute Engine resources of this
         # workstation configuration.
         # Corresponds to the JSON property `encryptionKey`
         # @return [Google::Apis::WorkstationsV1beta::CustomerEncryptionKey]
@@ -1523,9 +1525,9 @@ module Google
         alias_method :reconciling?, :reconciling
       
         # How long to wait before automatically stopping a workstation after it started.
-        # A value of 0 indicates that workstations using this config should never time
-        # out. Must be greater than 0 and less than 24 hours if encryption_key is set.
-        # Defaults to 12 hours.
+        # A value of 0 indicates that workstations using this configuration should never
+        # time out. Must be greater than 0 and less than 24 hours if encryption_key is
+        # set. Defaults to 12 hours.
         # Corresponds to the JSON property `runningTimeout`
         # @return [String]
         attr_accessor :running_timeout

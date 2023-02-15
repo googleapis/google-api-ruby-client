@@ -207,7 +207,7 @@ module Google
         #   If set, validate the request and preview the review, but do not actually apply
         #   it.
         # @param [String] workstation_cluster_id
-        #   Required. ID to use for the cluster.
+        #   Required. ID to use for the workstation cluster.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -241,17 +241,16 @@ module Google
         
         # Deletes the specified workstation cluster.
         # @param [String] name
-        #   Required. Name of the cluster to delete.
+        #   Required. Name of the workstation cluster to delete.
         # @param [String] etag
-        #   If set, the request will be rejected if the latest version of the cluster on
-        #   the server does not have this etag.
+        #   If set, the request will be rejected if the latest version of the workstation
+        #   cluster on the server does not have this etag.
         # @param [Boolean] force
-        #   If set, any workstation configurations and workstations in the cluster will
-        #   also be deleted. Otherwise, the request will work only if the cluster has no
-        #   configurations or workstations.
+        #   If set, any workstation configurations and workstations in the workstation
+        #   cluster are also deleted. Otherwise, the request only works if the workstation
+        #   cluster has no configurations or workstations.
         # @param [Boolean] validate_only
-        #   If set, validate the request and preview the review, but do not actually apply
-        #   it.
+        #   If set, validate the request and preview the review, but do not apply it.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -353,10 +352,11 @@ module Google
         #   Full name of this resource.
         # @param [Google::Apis::WorkstationsV1beta::WorkstationCluster] workstation_cluster_object
         # @param [Boolean] allow_missing
-        #   If set, and the cluster is not found, a new cluster will be created. In this
-        #   situation, update_mask is ignored.
+        #   If set, and the workstation cluster is not found, a new workstation cluster
+        #   will be created. In this situation, update_mask is ignored.
         # @param [String] update_mask
-        #   Required. Mask specifying which fields in the cluster should be updated.
+        #   Required. Mask that specifies which fields in the workstation cluster should
+        #   be updated.
         # @param [Boolean] validate_only
         #   If set, validate the request and preview the review, but do not actually apply
         #   it.
