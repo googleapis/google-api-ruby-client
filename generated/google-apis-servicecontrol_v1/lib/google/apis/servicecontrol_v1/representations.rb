@@ -112,12 +112,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class EsfMigrationServerOverride
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Exemplar
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -501,8 +495,6 @@ module Google
       
           property :check_info, as: 'checkInfo', class: Google::Apis::ServicecontrolV1::CheckInfo, decorator: Google::Apis::ServicecontrolV1::CheckInfo::Representation
       
-          property :esf_migration_server_override, as: 'esfMigrationServerOverride', class: Google::Apis::ServicecontrolV1::EsfMigrationServerOverride, decorator: Google::Apis::ServicecontrolV1::EsfMigrationServerOverride::Representation
-      
           property :operation_id, as: 'operationId'
           property :quota_info, as: 'quotaInfo', class: Google::Apis::ServicecontrolV1::QuotaInfo, decorator: Google::Apis::ServicecontrolV1::QuotaInfo::Representation
       
@@ -537,13 +529,6 @@ module Google
           property :mean, as: 'mean'
           property :minimum, as: 'minimum'
           property :sum_of_squared_deviation, as: 'sumOfSquaredDeviation'
-        end
-      end
-      
-      class EsfMigrationServerOverride
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :override_mode, as: 'overrideMode'
         end
       end
       
