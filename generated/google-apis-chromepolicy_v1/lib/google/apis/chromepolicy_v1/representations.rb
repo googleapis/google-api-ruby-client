@@ -319,6 +319,7 @@ module Google
       class ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :deprecated_in_favor_of, as: 'deprecatedInFavorOf'
           property :description, as: 'description'
           property :end_support, as: 'endSupport', class: Google::Apis::ChromepolicyV1::GoogleTypeDate, decorator: Google::Apis::ChromepolicyV1::GoogleTypeDate::Representation
       
