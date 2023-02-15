@@ -26,6 +26,13 @@ module Google
       class ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle
         include Google::Apis::Core::Hashable
       
+        # In the event that this policy was deprecated in favor of another policy, the
+        # fully qualified namespace(s) of the new policies as they will show in
+        # PolicyAPI.
+        # Corresponds to the JSON property `deprecatedInFavorOf`
+        # @return [Array<String>]
+        attr_accessor :deprecated_in_favor_of
+      
         # Description about current life cycle.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -54,6 +61,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @deprecated_in_favor_of = args[:deprecated_in_favor_of] if args.key?(:deprecated_in_favor_of)
           @description = args[:description] if args.key?(:description)
           @end_support = args[:end_support] if args.key?(:end_support)
           @policy_api_lifecycle_stage = args[:policy_api_lifecycle_stage] if args.key?(:policy_api_lifecycle_stage)
