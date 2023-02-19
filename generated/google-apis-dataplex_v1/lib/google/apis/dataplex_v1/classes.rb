@@ -684,6 +684,11 @@ module Google
       class GoogleCloudDataplexV1AssetResourceStatus
         include Google::Apis::Core::Hashable
       
+        # Output only. Service account associated with the BigQuery Connection.
+        # Corresponds to the JSON property `managedAccessIdentity`
+        # @return [String]
+        attr_accessor :managed_access_identity
+      
         # Additional information about the current state.
         # Corresponds to the JSON property `message`
         # @return [String]
@@ -705,6 +710,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @managed_access_identity = args[:managed_access_identity] if args.key?(:managed_access_identity)
           @message = args[:message] if args.key?(:message)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -1083,7 +1089,7 @@ module Google
         # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1DataAttributeBindingPath>]
         attr_accessor :paths
       
-        # Optional. Immutable. The resource name of the resource that is binded to
+        # Optional. Immutable. The resource name of the resource that is associated to
         # attributes. Presently, only entity resource is supported in the form: projects/
         # `project`/locations/`location`/lakes/`lake`/zones/`zone`/entities/`entity_id`
         # Must belong in the same project and region as the attribute binding, and there
