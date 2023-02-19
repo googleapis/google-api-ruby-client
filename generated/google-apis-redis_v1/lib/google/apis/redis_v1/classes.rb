@@ -276,6 +276,11 @@ module Google
         # @return [String]
         attr_accessor :authorized_network
       
+        # Optional. The available maintenance versions that an instance could update to.
+        # Corresponds to the JSON property `availableMaintenanceVersions`
+        # @return [Array<String>]
+        attr_accessor :available_maintenance_versions
+      
         # Optional. The network connect mode of the Redis instance. If not provided, the
         # connect mode defaults to DIRECT_PEERING.
         # Corresponds to the JSON property `connectMode`
@@ -335,6 +340,12 @@ module Google
         # Corresponds to the JSON property `maintenanceSchedule`
         # @return [Google::Apis::RedisV1::MaintenanceSchedule]
         attr_accessor :maintenance_schedule
+      
+        # Optional. The self service update maintenance version. The version is date
+        # based such as "20210712_00_00".
+        # Corresponds to the JSON property `maintenanceVersion`
+        # @return [String]
+        attr_accessor :maintenance_version
       
         # Required. Redis memory size in GiB.
         # Corresponds to the JSON property `memorySizeGb`
@@ -482,6 +493,7 @@ module Google
           @alternative_location_id = args[:alternative_location_id] if args.key?(:alternative_location_id)
           @auth_enabled = args[:auth_enabled] if args.key?(:auth_enabled)
           @authorized_network = args[:authorized_network] if args.key?(:authorized_network)
+          @available_maintenance_versions = args[:available_maintenance_versions] if args.key?(:available_maintenance_versions)
           @connect_mode = args[:connect_mode] if args.key?(:connect_mode)
           @create_time = args[:create_time] if args.key?(:create_time)
           @current_location_id = args[:current_location_id] if args.key?(:current_location_id)
@@ -492,6 +504,7 @@ module Google
           @location_id = args[:location_id] if args.key?(:location_id)
           @maintenance_policy = args[:maintenance_policy] if args.key?(:maintenance_policy)
           @maintenance_schedule = args[:maintenance_schedule] if args.key?(:maintenance_schedule)
+          @maintenance_version = args[:maintenance_version] if args.key?(:maintenance_version)
           @memory_size_gb = args[:memory_size_gb] if args.key?(:memory_size_gb)
           @name = args[:name] if args.key?(:name)
           @nodes = args[:nodes] if args.key?(:nodes)
