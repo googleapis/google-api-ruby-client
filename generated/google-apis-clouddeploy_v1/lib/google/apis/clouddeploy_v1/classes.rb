@@ -1664,6 +1664,11 @@ module Google
         # @return [Array<Google::Apis::ClouddeployV1::BuildArtifact>]
         attr_accessor :build_artifacts
       
+        # ReleaseCondition contains all conditions relevant to a Release.
+        # Corresponds to the JSON property `condition`
+        # @return [Google::Apis::ClouddeployV1::ReleaseCondition]
+        attr_accessor :condition
+      
         # Output only. Time at which the `Release` was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -1768,6 +1773,7 @@ module Google
           @abandoned = args[:abandoned] if args.key?(:abandoned)
           @annotations = args[:annotations] if args.key?(:annotations)
           @build_artifacts = args[:build_artifacts] if args.key?(:build_artifacts)
+          @condition = args[:condition] if args.key?(:condition)
           @create_time = args[:create_time] if args.key?(:create_time)
           @delivery_pipeline_snapshot = args[:delivery_pipeline_snapshot] if args.key?(:delivery_pipeline_snapshot)
           @description = args[:description] if args.key?(:description)
@@ -1784,6 +1790,33 @@ module Google
           @target_renders = args[:target_renders] if args.key?(:target_renders)
           @target_snapshots = args[:target_snapshots] if args.key?(:target_snapshots)
           @uid = args[:uid] if args.key?(:uid)
+        end
+      end
+      
+      # ReleaseCondition contains all conditions relevant to a Release.
+      class ReleaseCondition
+        include Google::Apis::Core::Hashable
+      
+        # ReleaseReadyCondition contains information around the status of the Release.
+        # If a release is not ready, you cannot create a rollout with the release.
+        # Corresponds to the JSON property `releaseReadyCondition`
+        # @return [Google::Apis::ClouddeployV1::ReleaseReadyCondition]
+        attr_accessor :release_ready_condition
+      
+        # SkaffoldSupportedCondition contains information about when support for the
+        # release's version of skaffold ends.
+        # Corresponds to the JSON property `skaffoldSupportedCondition`
+        # @return [Google::Apis::ClouddeployV1::SkaffoldSupportedCondition]
+        attr_accessor :skaffold_supported_condition
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @release_ready_condition = args[:release_ready_condition] if args.key?(:release_ready_condition)
+          @skaffold_supported_condition = args[:skaffold_supported_condition] if args.key?(:skaffold_supported_condition)
         end
       end
       
@@ -1817,6 +1850,30 @@ module Google
           @message = args[:message] if args.key?(:message)
           @release = args[:release] if args.key?(:release)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # ReleaseReadyCondition contains information around the status of the Release.
+      # If a release is not ready, you cannot create a rollout with the release.
+      class ReleaseReadyCondition
+        include Google::Apis::Core::Hashable
+      
+        # True if the Release is in a valid state. Otherwise at least one condition in `
+        # ReleaseCondition` is in an invalid state. Iterate over those conditions and
+        # see which condition(s) has status = false to find out what is wrong with the
+        # Release.
+        # Corresponds to the JSON property `status`
+        # @return [Boolean]
+        attr_accessor :status
+        alias_method :status?, :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -2152,9 +2209,55 @@ module Google
         end
       end
       
+      # SkaffoldSupportedCondition contains information about when support for the
+      # release's version of skaffold ends.
+      class SkaffoldSupportedCondition
+        include Google::Apis::Core::Hashable
+      
+        # The time at which this release's version of skaffold will enter maintenance
+        # mode.
+        # Corresponds to the JSON property `maintenanceModeTime`
+        # @return [String]
+        attr_accessor :maintenance_mode_time
+      
+        # The skaffold support state for this release's version of skaffold.
+        # Corresponds to the JSON property `skaffoldSupportState`
+        # @return [String]
+        attr_accessor :skaffold_support_state
+      
+        # True if the version of skaffold used by this release is supported.
+        # Corresponds to the JSON property `status`
+        # @return [Boolean]
+        attr_accessor :status
+        alias_method :status?, :status
+      
+        # The time at which this release's version of skaffold will no longer be
+        # supported.
+        # Corresponds to the JSON property `supportExpirationTime`
+        # @return [String]
+        attr_accessor :support_expiration_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @maintenance_mode_time = args[:maintenance_mode_time] if args.key?(:maintenance_mode_time)
+          @skaffold_support_state = args[:skaffold_support_state] if args.key?(:skaffold_support_state)
+          @status = args[:status] if args.key?(:status)
+          @support_expiration_time = args[:support_expiration_time] if args.key?(:support_expiration_time)
+        end
+      end
+      
       # Details of a supported Skaffold version.
       class SkaffoldVersion
         include Google::Apis::Core::Hashable
+      
+        # The time at which this version of skaffold will enter maintenance mode.
+        # Corresponds to the JSON property `maintenanceModeTime`
+        # @return [String]
+        attr_accessor :maintenance_mode_time
       
         # Represents a whole or partial calendar date, such as a birthday. The time of
         # day and time zone are either specified elsewhere or are insignificant. The
@@ -2168,6 +2271,11 @@ module Google
         # @return [Google::Apis::ClouddeployV1::Date]
         attr_accessor :support_end_date
       
+        # The time at which this version of skaffold will no longer be supported.
+        # Corresponds to the JSON property `supportExpirationTime`
+        # @return [String]
+        attr_accessor :support_expiration_time
+      
         # Release version number. For example, "1.20.3".
         # Corresponds to the JSON property `version`
         # @return [String]
@@ -2179,7 +2287,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @maintenance_mode_time = args[:maintenance_mode_time] if args.key?(:maintenance_mode_time)
           @support_end_date = args[:support_end_date] if args.key?(:support_end_date)
+          @support_expiration_time = args[:support_expiration_time] if args.key?(:support_expiration_time)
           @version = args[:version] if args.key?(:version)
         end
       end
