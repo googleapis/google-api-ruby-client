@@ -627,7 +627,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Port number of the gRPC service. Number must be in the range 1 to 65535. If
-        # not specified, defaults to 8080.
+        # not specified, defaults to the exposed port of the container, which is the
+        # value of container.ports[0].containerPort.
         # Corresponds to the JSON property `port`
         # @return [Fixnum]
         attr_accessor :port
@@ -664,7 +665,9 @@ module Google
         # @return [String]
         attr_accessor :path
       
-        # Port number to access on the container. Must be in the range 1 to 65535.
+        # Port number to access on the container. Must be in the range 1 to 65535. If
+        # not specified, defaults to the exposed port of the container, which is the
+        # value of container.ports[0].containerPort.
         # Corresponds to the JSON property `port`
         # @return [Fixnum]
         attr_accessor :port
@@ -1818,7 +1821,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Port number to access on the container. Must be in the range 1 to 65535. If
-        # not specified, defaults to 8080.
+        # not specified, defaults to the exposed port of the container, which is the
+        # value of container.ports[0].containerPort.
         # Corresponds to the JSON property `port`
         # @return [Fixnum]
         attr_accessor :port
