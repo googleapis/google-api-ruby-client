@@ -1815,15 +1815,10 @@ module Google
       class RenameInstanceRequest
         include Google::Apis::Core::Hashable
       
-        # A server.
-        # Corresponds to the JSON property `instance`
-        # @return [Google::Apis::BaremetalsolutionV2::Instance]
-        attr_accessor :instance
-      
         # Required. The new `name` of the instance. Format: `instancename`
-        # Corresponds to the JSON property `name`
+        # Corresponds to the JSON property `newName`
         # @return [String]
-        attr_accessor :name
+        attr_accessor :new_name
       
         def initialize(**args)
            update!(**args)
@@ -1831,8 +1826,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @instance = args[:instance] if args.key?(:instance)
-          @name = args[:name] if args.key?(:name)
+          @new_name = args[:new_name] if args.key?(:new_name)
         end
       end
       
