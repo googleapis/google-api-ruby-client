@@ -5862,6 +5862,95 @@ module Google
         end
       end
       
+      # Specifies the custom error response policy that must be applied when the
+      # backend service or backend bucket responds with an error.
+      class CustomErrorResponsePolicy
+        include Google::Apis::Core::Hashable
+      
+        # Specifies rules for returning error responses. In a given policy, if you
+        # specify rules for both a range of error codes as well as rules for specific
+        # error codes then rules with specific error codes have a higher priority. For
+        # example, assume that you configure a rule for 401 (Un-authorized) code, and
+        # another for all 4 series error codes (4XX). If the backend service returns a
+        # 401, then the rule for 401 will be applied. However if the backend service
+        # returns a 403, the rule for 4xx takes effect.
+        # Corresponds to the JSON property `errorResponseRules`
+        # @return [Array<Google::Apis::ComputeBeta::CustomErrorResponsePolicyCustomErrorResponseRule>]
+        attr_accessor :error_response_rules
+      
+        # The full or partial URL to the BackendBucket resource that contains the custom
+        # error content. Examples are: - https://www.googleapis.com/compute/v1/projects/
+        # project/global/backendBuckets/myBackendBucket - compute/v1/projects/project/
+        # global/backendBuckets/myBackendBucket - global/backendBuckets/myBackendBucket
+        # If errorService is not specified at lower levels like pathMatcher, pathRule
+        # and routeRule, an errorService specified at a higher level in the UrlMap will
+        # be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more
+        # errorResponseRules[], it must specify errorService. If load balancer cannot
+        # reach the backendBucket, a simple Not Found Error will be returned, with the
+        # original response code (or overrideResponseCode if configured). errorService
+        # is not supported for internal or regional HTTP/HTTPS load balancers.
+        # Corresponds to the JSON property `errorService`
+        # @return [String]
+        attr_accessor :error_service
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_response_rules = args[:error_response_rules] if args.key?(:error_response_rules)
+          @error_service = args[:error_service] if args.key?(:error_service)
+        end
+      end
+      
+      # Specifies the mapping between the response code that will be returned along
+      # with the custom error content and the response code returned by the backend
+      # service.
+      class CustomErrorResponsePolicyCustomErrorResponseRule
+        include Google::Apis::Core::Hashable
+      
+        # Valid values include: - A number between 400 and 599: For example 401 or 503,
+        # in which case the load balancer applies the policy if the error code exactly
+        # matches this value. - 5xx: Load Balancer will apply the policy if the backend
+        # service responds with any response code in the range of 500 to 599. - 4xx:
+        # Load Balancer will apply the policy if the backend service responds with any
+        # response code in the range of 400 to 499. Values must be unique within
+        # matchResponseCodes and across all errorResponseRules of
+        # CustomErrorResponsePolicy.
+        # Corresponds to the JSON property `matchResponseCodes`
+        # @return [Array<String>]
+        attr_accessor :match_response_codes
+      
+        # The HTTP status code returned with the response containing the custom error
+        # content. If overrideResponseCode is not supplied, the same response code
+        # returned by the original backend bucket or backend service is returned to the
+        # client.
+        # Corresponds to the JSON property `overrideResponseCode`
+        # @return [Fixnum]
+        attr_accessor :override_response_code
+      
+        # The full path to a file within backendBucket . For example: /errors/
+        # defaultError.html path must start with a leading slash. path cannot have
+        # trailing slashes. If the file is not available in backendBucket or the load
+        # balancer cannot reach the BackendBucket, a simple Not Found Error is returned
+        # to the client. The value must be from 1 to 1024 characters
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @match_response_codes = args[:match_response_codes] if args.key?(:match_response_codes)
+          @override_response_code = args[:override_response_code] if args.key?(:override_response_code)
+          @path = args[:path] if args.key?(:path)
+        end
+      end
+      
       # 
       class CustomerEncryptionKey
         include Google::Apis::Core::Hashable
@@ -12211,6 +12300,12 @@ module Google
       class HttpRouteRule
         include Google::Apis::Core::Hashable
       
+        # Specifies the custom error response policy that must be applied when the
+        # backend service or backend bucket responds with an error.
+        # Corresponds to the JSON property `customErrorResponsePolicy`
+        # @return [Google::Apis::ComputeBeta::CustomErrorResponsePolicy]
+        attr_accessor :custom_error_response_policy
+      
         # The short description conveying the intent of this routeRule. The description
         # can have a maximum length of 1024 characters.
         # Corresponds to the JSON property `description`
@@ -12300,6 +12395,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @custom_error_response_policy = args[:custom_error_response_policy] if args.key?(:custom_error_response_policy)
           @description = args[:description] if args.key?(:description)
           @header_action = args[:header_action] if args.key?(:header_action)
           @http_filter_configs = args[:http_filter_configs] if args.key?(:http_filter_configs)
@@ -12674,10 +12770,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :disk_size_gb
       
-        # The name of the image family to which this image belongs. You can create disks
-        # by specifying an image family instead of a specific image name. The image
-        # family always returns its latest image that is not deprecated. The name of the
-        # image family must comply with RFC1035.
+        # The name of the image family to which this image belongs. The image family
+        # name can be from a publicly managed image family provided by Compute Engine,
+        # or from a custom image family you create. For example, centos-stream-9 is a
+        # publicly available image family. For more information, see Image family best
+        # practices. When creating disks, you can specify an image family instead of a
+        # specific image name. The image family always returns its latest image that is
+        # not deprecated. The name of the image family must comply with RFC1035.
         # Corresponds to the JSON property `family`
         # @return [String]
         attr_accessor :family
@@ -16541,6 +16640,12 @@ module Google
         # @return [Google::Apis::ComputeBeta::InstanceProperties]
         attr_accessor :properties
       
+        # [Output Only] URL of the region where the instance template resides. Only
+        # applicable for regional resources.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
         # [Output Only] The URL for this instance template. The server defines this URL.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -16572,9 +16677,127 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @properties = args[:properties] if args.key?(:properties)
+          @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
           @source_instance = args[:source_instance] if args.key?(:source_instance)
           @source_instance_params = args[:source_instance_params] if args.key?(:source_instance_params)
+        end
+      end
+      
+      # Contains a list of InstanceTemplatesScopedList.
+      class InstanceTemplateAggregatedList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of InstanceTemplatesScopedList resources.
+        # Corresponds to the JSON property `items`
+        # @return [Hash<String,Google::Apis::ComputeBeta::InstanceTemplatesScopedList>]
+        attr_accessor :items
+      
+        # Type of resource.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeBeta::InstanceTemplateAggregatedList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeBeta::InstanceTemplateAggregatedList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
         end
       end
       
@@ -16645,6 +16868,98 @@ module Google
           # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeBeta::InstanceTemplateList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # 
+      class InstanceTemplatesScopedList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] A list of instance templates that are contained within the
+        # specified project and zone.
+        # Corresponds to the JSON property `instanceTemplates`
+        # @return [Array<Google::Apis::ComputeBeta::InstanceTemplate>]
+        attr_accessor :instance_templates
+      
+        # [Output Only] An informational warning that replaces the list of instance
+        # templates when the list is empty.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeBeta::InstanceTemplatesScopedList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance_templates = args[:instance_templates] if args.key?(:instance_templates)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] An informational warning that replaces the list of instance
+        # templates when the list is empty.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeBeta::InstanceTemplatesScopedList::Warning::Datum>]
           attr_accessor :data
         
           # [Output Only] A human-readable description of the warning code.
@@ -26771,6 +27086,12 @@ module Google
       class PathMatcher
         include Google::Apis::Core::Hashable
       
+        # Specifies the custom error response policy that must be applied when the
+        # backend service or backend bucket responds with an error.
+        # Corresponds to the JSON property `defaultCustomErrorResponsePolicy`
+        # @return [Google::Apis::ComputeBeta::CustomErrorResponsePolicy]
+        attr_accessor :default_custom_error_response_policy
+      
         # defaultRouteAction takes effect when none of the pathRules or routeRules match.
         # The load balancer performs advanced routing actions, such as URL rewrites and
         # header transformations, before forwarding the request to the selected backend.
@@ -26849,6 +27170,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @default_custom_error_response_policy = args[:default_custom_error_response_policy] if args.key?(:default_custom_error_response_policy)
           @default_route_action = args[:default_route_action] if args.key?(:default_route_action)
           @default_service = args[:default_service] if args.key?(:default_service)
           @default_url_redirect = args[:default_url_redirect] if args.key?(:default_url_redirect)
@@ -26864,6 +27186,12 @@ module Google
       # BackendService to handle the traffic arriving at this URL.
       class PathRule
         include Google::Apis::Core::Hashable
+      
+        # Specifies the custom error response policy that must be applied when the
+        # backend service or backend bucket responds with an error.
+        # Corresponds to the JSON property `customErrorResponsePolicy`
+        # @return [Google::Apis::ComputeBeta::CustomErrorResponsePolicy]
+        attr_accessor :custom_error_response_policy
       
         # The list of path patterns to match. Each must start with / and the only place
         # a * is allowed is at the end following a /. The string fed to the path matcher
@@ -26907,6 +27235,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @custom_error_response_policy = args[:custom_error_response_policy] if args.key?(:custom_error_response_policy)
           @paths = args[:paths] if args.key?(:paths)
           @route_action = args[:route_action] if args.key?(:route_action)
           @service = args[:service] if args.key?(:service)
@@ -42463,6 +42792,12 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
+        # Specifies the custom error response policy that must be applied when the
+        # backend service or backend bucket responds with an error.
+        # Corresponds to the JSON property `defaultCustomErrorResponsePolicy`
+        # @return [Google::Apis::ComputeBeta::CustomErrorResponsePolicy]
+        attr_accessor :default_custom_error_response_policy
+      
         # defaultRouteAction takes effect when none of the hostRules match. The load
         # balancer performs advanced routing actions, such as URL rewrites and header
         # transformations, before forwarding the request to the selected backend. If
@@ -42576,6 +42911,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @default_custom_error_response_policy = args[:default_custom_error_response_policy] if args.key?(:default_custom_error_response_policy)
           @default_route_action = args[:default_route_action] if args.key?(:default_route_action)
           @default_service = args[:default_service] if args.key?(:default_service)
           @default_url_redirect = args[:default_url_redirect] if args.key?(:default_url_redirect)
