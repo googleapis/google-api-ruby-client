@@ -30,6 +30,9 @@ module Google
       # This is NOT the gem version.
       VERSION = 'V1'
 
+      # Private Service: https://www.googleapis.com/auth/chat.bot
+      AUTH_CHAT_BOT = 'https://www.googleapis.com/auth/chat.bot'
+
       # View, add, and remove members from conversations in Google Chat
       AUTH_CHAT_MEMBERSHIPS = 'https://www.googleapis.com/auth/chat.memberships'
 
