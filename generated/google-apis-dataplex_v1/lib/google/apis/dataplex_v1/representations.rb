@@ -1089,6 +1089,7 @@ module Google
       class GoogleCloudDataplexV1AssetResourceStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :managed_access_identity, as: 'managedAccessIdentity'
           property :message, as: 'message'
           property :state, as: 'state'
           property :update_time, as: 'updateTime'

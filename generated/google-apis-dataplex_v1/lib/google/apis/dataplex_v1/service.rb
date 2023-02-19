@@ -462,6 +462,9 @@ module Google
         #   and hyphens. Must start with a letter. Must end with a number or a letter.
         #   Must be between 1-63 characters. Must be unique within the customer project /
         #   location.
+        # @param [Boolean] validate_only
+        #   Optional. Only validate the request, but do not perform mutations. The default
+        #   is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -479,7 +482,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_data_scan(parent, google_cloud_dataplex_v1_data_scan_object = nil, data_scan_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_location_data_scan(parent, google_cloud_dataplex_v1_data_scan_object = nil, data_scan_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/dataScans', options)
           command.request_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScan::Representation
           command.request_object = google_cloud_dataplex_v1_data_scan_object
@@ -487,6 +490,7 @@ module Google
           command.response_class = Google::Apis::DataplexV1::GoogleLongrunningOperation
           command.params['parent'] = parent unless parent.nil?
           command.query['dataScanId'] = data_scan_id unless data_scan_id.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -661,6 +665,9 @@ module Google
         # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScan] google_cloud_dataplex_v1_data_scan_object
         # @param [String] update_mask
         #   Required. Mask of fields to update.
+        # @param [Boolean] validate_only
+        #   Optional. Only validate the request, but do not perform mutations. The default
+        #   is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -678,7 +685,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_location_data_scan(name, google_cloud_dataplex_v1_data_scan_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_project_location_data_scan(name, google_cloud_dataplex_v1_data_scan_object = nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v1/{+name}', options)
           command.request_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScan::Representation
           command.request_object = google_cloud_dataplex_v1_data_scan_object
@@ -686,6 +693,7 @@ module Google
           command.response_class = Google::Apis::DataplexV1::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
