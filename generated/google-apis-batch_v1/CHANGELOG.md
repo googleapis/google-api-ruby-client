@@ -1,5 +1,10 @@
 # Release history for google-apis-batch_v1
 
+### v0.7.0 (2023-02-19)
+
+* Regenerated from discovery document revision 20230213
+* Regenerated using generator version 0.12.0
+
 ### v0.6.0 (2023-02-12)
 
 * Regenerated from discovery document revision 20230130
