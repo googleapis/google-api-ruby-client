@@ -2292,7 +2292,9 @@ module Google
         # @return [String]
         attr_accessor :id_token
       
-        # Required. The user's Game Center player ID.
+        # Required. The user's Game Center player ID. Deprecated by Apple. Pass `
+        # playerID` along with `gamePlayerID` and `teamPlayerID` to initiate the
+        # migration of a user's Game Center player ID to `gamePlayerID`.
         # Corresponds to the JSON property `playerId`
         # @return [String]
         attr_accessor :player_id
@@ -2387,7 +2389,9 @@ module Google
         # @return [String]
         attr_accessor :local_id
       
-        # The user's Game Center player ID.
+        # The user's Game Center player ID. Pass `playerID` along with `gamePlayerID`
+        # and `teamPlayerID` to initiate the migration of a user's Game Center player ID
+        # to `gamePlayerID`.
         # Corresponds to the JSON property `playerId`
         # @return [String]
         attr_accessor :player_id
