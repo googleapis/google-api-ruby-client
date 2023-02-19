@@ -1574,6 +1574,13 @@ module Google
           attr_accessor :can_change_drive_members_only_restriction
           alias_method :can_change_drive_members_only_restriction?, :can_change_drive_members_only_restriction
         
+          # Whether the current user can change the
+          # sharingFoldersRequiresOrganizerPermission restriction of this shared drive.
+          # Corresponds to the JSON property `canChangeSharingFoldersRequiresOrganizerPermissionRestriction`
+          # @return [Boolean]
+          attr_accessor :can_change_sharing_folders_requires_organizer_permission_restriction
+          alias_method :can_change_sharing_folders_requires_organizer_permission_restriction?, :can_change_sharing_folders_requires_organizer_permission_restriction
+        
           # Whether the current user can comment on files in this shared drive.
           # Corresponds to the JSON property `canComment`
           # @return [Boolean]
@@ -1673,6 +1680,7 @@ module Google
             @can_change_domain_users_only_restriction = args[:can_change_domain_users_only_restriction] if args.key?(:can_change_domain_users_only_restriction)
             @can_change_drive_background = args[:can_change_drive_background] if args.key?(:can_change_drive_background)
             @can_change_drive_members_only_restriction = args[:can_change_drive_members_only_restriction] if args.key?(:can_change_drive_members_only_restriction)
+            @can_change_sharing_folders_requires_organizer_permission_restriction = args[:can_change_sharing_folders_requires_organizer_permission_restriction] if args.key?(:can_change_sharing_folders_requires_organizer_permission_restriction)
             @can_comment = args[:can_comment] if args.key?(:can_comment)
             @can_copy = args[:can_copy] if args.key?(:can_copy)
             @can_delete_children = args[:can_delete_children] if args.key?(:can_delete_children)
@@ -1726,6 +1734,13 @@ module Google
           attr_accessor :drive_members_only
           alias_method :drive_members_only?, :drive_members_only
         
+          # If true, only users with the organizer role can share folders. If false, users
+          # with either the organizer role or the file organizer role can share folders.
+          # Corresponds to the JSON property `sharingFoldersRequiresOrganizerPermission`
+          # @return [Boolean]
+          attr_accessor :sharing_folders_requires_organizer_permission
+          alias_method :sharing_folders_requires_organizer_permission?, :sharing_folders_requires_organizer_permission
+        
           def initialize(**args)
              update!(**args)
           end
@@ -1736,6 +1751,7 @@ module Google
             @copy_requires_writer_permission = args[:copy_requires_writer_permission] if args.key?(:copy_requires_writer_permission)
             @domain_users_only = args[:domain_users_only] if args.key?(:domain_users_only)
             @drive_members_only = args[:drive_members_only] if args.key?(:drive_members_only)
+            @sharing_folders_requires_organizer_permission = args[:sharing_folders_requires_organizer_permission] if args.key?(:sharing_folders_requires_organizer_permission)
           end
         end
       end
@@ -4299,6 +4315,13 @@ module Google
           attr_accessor :can_change_domain_users_only_restriction
           alias_method :can_change_domain_users_only_restriction?, :can_change_domain_users_only_restriction
         
+          # Whether the current user can change the
+          # sharingFoldersRequiresOrganizerPermission restriction of this Team Drive.
+          # Corresponds to the JSON property `canChangeSharingFoldersRequiresOrganizerPermissionRestriction`
+          # @return [Boolean]
+          attr_accessor :can_change_sharing_folders_requires_organizer_permission_restriction
+          alias_method :can_change_sharing_folders_requires_organizer_permission_restriction?, :can_change_sharing_folders_requires_organizer_permission_restriction
+        
           # Whether the current user can change the background of this Team Drive.
           # Corresponds to the JSON property `canChangeTeamDriveBackground`
           # @return [Boolean]
@@ -4414,6 +4437,7 @@ module Google
             @can_add_children = args[:can_add_children] if args.key?(:can_add_children)
             @can_change_copy_requires_writer_permission_restriction = args[:can_change_copy_requires_writer_permission_restriction] if args.key?(:can_change_copy_requires_writer_permission_restriction)
             @can_change_domain_users_only_restriction = args[:can_change_domain_users_only_restriction] if args.key?(:can_change_domain_users_only_restriction)
+            @can_change_sharing_folders_requires_organizer_permission_restriction = args[:can_change_sharing_folders_requires_organizer_permission_restriction] if args.key?(:can_change_sharing_folders_requires_organizer_permission_restriction)
             @can_change_team_drive_background = args[:can_change_team_drive_background] if args.key?(:can_change_team_drive_background)
             @can_change_team_members_only_restriction = args[:can_change_team_members_only_restriction] if args.key?(:can_change_team_members_only_restriction)
             @can_comment = args[:can_comment] if args.key?(:can_comment)
@@ -4464,6 +4488,13 @@ module Google
           attr_accessor :domain_users_only
           alias_method :domain_users_only?, :domain_users_only
         
+          # If true, only users with the organizer role can share folders. If false, users
+          # with either the organizer role or the file organizer role can share folders.
+          # Corresponds to the JSON property `sharingFoldersRequiresOrganizerPermission`
+          # @return [Boolean]
+          attr_accessor :sharing_folders_requires_organizer_permission
+          alias_method :sharing_folders_requires_organizer_permission?, :sharing_folders_requires_organizer_permission
+        
           # Whether access to items inside this Team Drive is restricted to members of
           # this Team Drive.
           # Corresponds to the JSON property `teamMembersOnly`
@@ -4480,6 +4511,7 @@ module Google
             @admin_managed_restrictions = args[:admin_managed_restrictions] if args.key?(:admin_managed_restrictions)
             @copy_requires_writer_permission = args[:copy_requires_writer_permission] if args.key?(:copy_requires_writer_permission)
             @domain_users_only = args[:domain_users_only] if args.key?(:domain_users_only)
+            @sharing_folders_requires_organizer_permission = args[:sharing_folders_requires_organizer_permission] if args.key?(:sharing_folders_requires_organizer_permission)
             @team_members_only = args[:team_members_only] if args.key?(:team_members_only)
           end
         end
