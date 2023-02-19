@@ -1272,6 +1272,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cvss_score, as: 'cvssScore'
+          property :cvss_v2, as: 'cvssV2', class: Google::Apis::OndemandscanningV1::Cvss, decorator: Google::Apis::OndemandscanningV1::Cvss::Representation
+      
           property :cvss_version, as: 'cvssVersion'
           property :cvssv3, as: 'cvssv3', class: Google::Apis::OndemandscanningV1::Cvss, decorator: Google::Apis::OndemandscanningV1::Cvss::Representation
       
