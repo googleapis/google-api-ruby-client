@@ -841,9 +841,7 @@ module Google
       class RenameInstanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :instance, as: 'instance', class: Google::Apis::BaremetalsolutionV2::Instance, decorator: Google::Apis::BaremetalsolutionV2::Instance::Representation
-      
-          property :name, as: 'name'
+          property :new_name, as: 'newName'
         end
       end
       

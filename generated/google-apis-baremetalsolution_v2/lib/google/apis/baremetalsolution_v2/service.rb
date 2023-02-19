@@ -398,10 +398,8 @@ module Google
         
         # RenameInstance sets a new name for an instance.
         # @param [String] name
-        #   Immutable. The resource name of this `Instance`. Resource names are schemeless
-        #   URIs that follow the conventions in https://cloud.google.com/apis/design/
-        #   resource_names. Format: `projects/`project`/locations/`location`/instances/`
-        #   instance``
+        #   Required. The `name` field is used to identify the instance. Format: projects/`
+        #   project`/locations/`location`/instances/`instance`
         # @param [Google::Apis::BaremetalsolutionV2::RenameInstanceRequest] rename_instance_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -412,10 +410,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::BaremetalsolutionV2::Operation] parsed result object
+        # @yieldparam result [Google::Apis::BaremetalsolutionV2::Instance] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::BaremetalsolutionV2::Operation]
+        # @return [Google::Apis::BaremetalsolutionV2::Instance]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -424,8 +422,8 @@ module Google
           command = make_simple_command(:post, 'v2/{+name}:rename', options)
           command.request_representation = Google::Apis::BaremetalsolutionV2::RenameInstanceRequest::Representation
           command.request_object = rename_instance_request_object
-          command.response_representation = Google::Apis::BaremetalsolutionV2::Operation::Representation
-          command.response_class = Google::Apis::BaremetalsolutionV2::Operation
+          command.response_representation = Google::Apis::BaremetalsolutionV2::Instance::Representation
+          command.response_class = Google::Apis::BaremetalsolutionV2::Instance
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
