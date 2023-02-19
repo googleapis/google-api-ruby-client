@@ -1227,9 +1227,9 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
-        # Required. A list of configurations for flow versions. You should include
-        # version configs for all flows that are reachable from `Start Flow` in the
-        # agent. Otherwise, an error will be returned.
+        # A list of configurations for flow versions. You should include version configs
+        # for all flows that are reachable from `Start Flow` in the agent. Otherwise, an
+        # error will be returned.
         # Corresponds to the JSON property `versionConfigs`
         # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3EnvironmentVersionConfig>]
         attr_accessor :version_configs
@@ -7086,9 +7086,9 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
-        # Required. A list of configurations for flow versions. You should include
-        # version configs for all flows that are reachable from `Start Flow` in the
-        # agent. Otherwise, an error will be returned.
+        # A list of configurations for flow versions. You should include version configs
+        # for all flows that are reachable from `Start Flow` in the agent. Otherwise, an
+        # error will be returned.
         # Corresponds to the JSON property `versionConfigs`
         # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig>]
         attr_accessor :version_configs
