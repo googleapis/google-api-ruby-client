@@ -516,11 +516,6 @@ module Google
       class CheckResponse
         include Google::Apis::Core::Hashable
       
-        # Esf migration server override during chemist check v2 migration
-        # Corresponds to the JSON property `esfMigrationServerOverride`
-        # @return [Google::Apis::ServicecontrolV2::EsfMigrationServerOverride]
-        attr_accessor :esf_migration_server_override
-      
         # Returns a set of request contexts generated from the `CheckRequest`.
         # Corresponds to the JSON property `headers`
         # @return [Hash<String,String>]
@@ -542,28 +537,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @esf_migration_server_override = args[:esf_migration_server_override] if args.key?(:esf_migration_server_override)
           @headers = args[:headers] if args.key?(:headers)
           @status = args[:status] if args.key?(:status)
-        end
-      end
-      
-      # Esf migration server override during chemist check v2 migration
-      class EsfMigrationServerOverride
-        include Google::Apis::Core::Hashable
-      
-        # Esf migration override mode
-        # Corresponds to the JSON property `overrideMode`
-        # @return [String]
-        attr_accessor :override_mode
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @override_mode = args[:override_mode] if args.key?(:override_mode)
         end
       end
       
