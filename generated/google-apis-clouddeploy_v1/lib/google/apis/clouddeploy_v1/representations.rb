@@ -292,7 +292,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReleaseCondition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ReleaseNotificationEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReleaseReadyCondition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -335,6 +347,12 @@ module Google
       end
       
       class SetIamPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SkaffoldSupportedCondition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -863,6 +881,8 @@ module Google
           hash :annotations, as: 'annotations'
           collection :build_artifacts, as: 'buildArtifacts', class: Google::Apis::ClouddeployV1::BuildArtifact, decorator: Google::Apis::ClouddeployV1::BuildArtifact::Representation
       
+          property :condition, as: 'condition', class: Google::Apis::ClouddeployV1::ReleaseCondition, decorator: Google::Apis::ClouddeployV1::ReleaseCondition::Representation
+      
           property :create_time, as: 'createTime'
           property :delivery_pipeline_snapshot, as: 'deliveryPipelineSnapshot', class: Google::Apis::ClouddeployV1::DeliveryPipeline, decorator: Google::Apis::ClouddeployV1::DeliveryPipeline::Representation
       
@@ -886,12 +906,29 @@ module Google
         end
       end
       
+      class ReleaseCondition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :release_ready_condition, as: 'releaseReadyCondition', class: Google::Apis::ClouddeployV1::ReleaseReadyCondition, decorator: Google::Apis::ClouddeployV1::ReleaseReadyCondition::Representation
+      
+          property :skaffold_supported_condition, as: 'skaffoldSupportedCondition', class: Google::Apis::ClouddeployV1::SkaffoldSupportedCondition, decorator: Google::Apis::ClouddeployV1::SkaffoldSupportedCondition::Representation
+      
+        end
+      end
+      
       class ReleaseNotificationEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :message, as: 'message'
           property :release, as: 'release'
           property :type, as: 'type'
+        end
+      end
+      
+      class ReleaseReadyCondition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :status, as: 'status'
         end
       end
       
@@ -973,11 +1010,23 @@ module Google
         end
       end
       
+      class SkaffoldSupportedCondition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :maintenance_mode_time, as: 'maintenanceModeTime'
+          property :skaffold_support_state, as: 'skaffoldSupportState'
+          property :status, as: 'status'
+          property :support_expiration_time, as: 'supportExpirationTime'
+        end
+      end
+      
       class SkaffoldVersion
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :maintenance_mode_time, as: 'maintenanceModeTime'
           property :support_end_date, as: 'supportEndDate', class: Google::Apis::ClouddeployV1::Date, decorator: Google::Apis::ClouddeployV1::Date::Representation
       
+          property :support_expiration_time, as: 'supportExpirationTime'
           property :version, as: 'version'
         end
       end
