@@ -860,6 +860,11 @@ module Google
       class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem
         include Google::Apis::Core::Hashable
       
+        # Describes the amount unit including the currency code.
+        # Corresponds to the JSON property `amount`
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Amount]
+        attr_accessor :amount
+      
         # Output only. Description of this line item.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -913,6 +918,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @amount = args[:amount] if args.key?(:amount)
           @description = args[:description] if args.key?(:description)
           @line_item_free_trial_end_time = args[:line_item_free_trial_end_time] if args.key?(:line_item_free_trial_end_time)
           @line_item_promotion_specs = args[:line_item_promotion_specs] if args.key?(:line_item_promotion_specs)
