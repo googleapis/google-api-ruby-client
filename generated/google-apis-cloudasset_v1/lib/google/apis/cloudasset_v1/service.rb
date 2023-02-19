@@ -182,7 +182,7 @@ module Google
         #   Required. The name of the project/folder/organization where this feed should
         #   be created in. It can only be an organization number (such as "organizations/
         #   123"), a folder number (such as "folders/123"), a project ID (such as "
-        #   projects/my-project-id")", or a project number (such as "projects/12345").
+        #   projects/my-project-id"), or a project number (such as "projects/12345").
         # @param [Google::Apis::CloudassetV1::CreateFeedRequest] create_feed_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -382,7 +382,7 @@ module Google
         #   Required. The name of the project/folder/organization where this saved_query
         #   should be created in. It can only be an organization number (such as "
         #   organizations/123"), a folder number (such as "folders/123"), a project ID (
-        #   such as "projects/my-project-id")", or a project number (such as "projects/
+        #   such as "projects/my-project-id"), or a project number (such as "projects/
         #   12345").
         # @param [Google::Apis::CloudassetV1::SavedQuery] saved_query_object
         # @param [String] saved_query_id
