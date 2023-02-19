@@ -1233,6 +1233,7 @@ module Google
       class Space
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :admin_installed, as: 'adminInstalled'
           property :display_name, as: 'displayName'
           property :name, as: 'name'
           property :single_user_bot_dm, as: 'singleUserBotDm'

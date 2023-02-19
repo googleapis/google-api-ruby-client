@@ -1485,8 +1485,7 @@ module Google
       class GoogleAppsCardV1DecoratedText
         include Google::Apis::Core::Hashable
       
-        # The text that appears below `text`. Always truncates. Supports simple
-        # formatting. See Text formatting for formatting details.
+        # The text that appears below `text`. Always truncates.
         # Corresponds to the JSON property `bottomLabel`
         # @return [String]
         attr_accessor :bottom_label
@@ -1546,8 +1545,7 @@ module Google
         # @return [String]
         attr_accessor :text
       
-        # The text that appears above `text`. Always truncates. Supports simple
-        # formatting. See Text formatting for formatting details.
+        # The text that appears above `text`. Always truncates.
         # Corresponds to the JSON property `topLabel`
         # @return [String]
         attr_accessor :top_label
@@ -1580,7 +1578,7 @@ module Google
       end
       
       # Displays a divider between widgets, a horizontal line. For example, the
-      # following JSON creates a divider: ``` "divider": ` ` ```
+      # following JSON creates a divider: ``` "divider": `` ```
       class GoogleAppsCardV1Divider
         include Google::Apis::Core::Hashable
       
@@ -1600,11 +1598,11 @@ module Google
       # google.com/chat/how-tos/dialogs). Support for [card messages](https://
       # developers.google.com/chat/api/guides/message-formats/cards) is coming soon.
       # For example, the following JSON creates a 2 column grid with a single item: ```
-      # "grid": ` "title": "A fine collection of items", "numColumns": 2, "
-      # borderStyle": ` "type": "STROKE", "cornerRadius": 4.0 `, "items": [ "image": `
+      # "grid": ` "title": "A fine collection of items", "columnCount": 2, "
+      # borderStyle": ` "type": "STROKE", "cornerRadius": 4 `, "items": [ ` "image": `
       # "imageUri": "https://www.example.com/image.png", "cropStyle": ` "type": "
       # SQUARE" `, "borderStyle": ` "type": "STROKE" ` `, "title": "An item", "
-      # textAlignment": "CENTER" ], "onClick": ` "openLink": ` "url":"https://www.
+      # textAlignment": "CENTER" ` ], "onClick": ` "openLink": ` "url": "https://www.
       # example.com" ` ` ` ```
       class GoogleAppsCardV1Grid
         include Google::Apis::Core::Hashable
@@ -2333,7 +2331,7 @@ module Google
         attr_accessor :decorated_text
       
         # Displays a divider between widgets, a horizontal line. For example, the
-        # following JSON creates a divider: ``` "divider": ` ` ```
+        # following JSON creates a divider: ``` "divider": `` ```
         # Corresponds to the JSON property `divider`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Divider]
         attr_accessor :divider
@@ -2345,11 +2343,11 @@ module Google
         # google.com/chat/how-tos/dialogs). Support for [card messages](https://
         # developers.google.com/chat/api/guides/message-formats/cards) is coming soon.
         # For example, the following JSON creates a 2 column grid with a single item: ```
-        # "grid": ` "title": "A fine collection of items", "numColumns": 2, "
-        # borderStyle": ` "type": "STROKE", "cornerRadius": 4.0 `, "items": [ "image": `
+        # "grid": ` "title": "A fine collection of items", "columnCount": 2, "
+        # borderStyle": ` "type": "STROKE", "cornerRadius": 4 `, "items": [ ` "image": `
         # "imageUri": "https://www.example.com/image.png", "cropStyle": ` "type": "
         # SQUARE" `, "borderStyle": ` "type": "STROKE" ` `, "title": "An item", "
-        # textAlignment": "CENTER" ], "onClick": ` "openLink": ` "url":"https://www.
+        # textAlignment": "CENTER" ` ], "onClick": ` "openLink": ` "url": "https://www.
         # example.com" ` ` ` ```
         # Corresponds to the JSON property `grid`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Grid]
@@ -3014,6 +3012,16 @@ module Google
       class Space
         include Google::Apis::Core::Hashable
       
+        # Output only. Whether the Chat app was installed by a Google Workspace
+        # administrator. Administrators can install a Chat app for their domain,
+        # organizational unit, or a group of users. Administrators can only install Chat
+        # apps for direct messaging between users and the app. To support admin install,
+        # your app must feature direct messaging.
+        # Corresponds to the JSON property `adminInstalled`
+        # @return [Boolean]
+        attr_accessor :admin_installed
+        alias_method :admin_installed?, :admin_installed
+      
         # The space's display name. Required when [creating a space](https://developers.
         # google.com/chat/api/reference/rest/v1/spaces/create). For direct messages,
         # this field may be empty. Supports up to 128 characters.
@@ -3061,6 +3069,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @admin_installed = args[:admin_installed] if args.key?(:admin_installed)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
           @single_user_bot_dm = args[:single_user_bot_dm] if args.key?(:single_user_bot_dm)
