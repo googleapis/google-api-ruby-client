@@ -682,6 +682,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CustomErrorResponsePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomErrorResponsePolicyCustomErrorResponseRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CustomerEncryptionKey
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1966,7 +1978,43 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceTemplateAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceTemplateList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceTemplatesScopedList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
         class Warning
@@ -7278,6 +7326,24 @@ module Google
         end
       end
       
+      class CustomErrorResponsePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :error_response_rules, as: 'errorResponseRules', class: Google::Apis::ComputeBeta::CustomErrorResponsePolicyCustomErrorResponseRule, decorator: Google::Apis::ComputeBeta::CustomErrorResponsePolicyCustomErrorResponseRule::Representation
+      
+          property :error_service, as: 'errorService'
+        end
+      end
+      
+      class CustomErrorResponsePolicyCustomErrorResponseRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :match_response_codes, as: 'matchResponseCodes'
+          property :override_response_code, as: 'overrideResponseCode'
+          property :path, as: 'path'
+        end
+      end
+      
       class CustomerEncryptionKey
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -8716,6 +8782,8 @@ module Google
       class HttpRouteRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_error_response_policy, as: 'customErrorResponsePolicy', class: Google::Apis::ComputeBeta::CustomErrorResponsePolicy, decorator: Google::Apis::ComputeBeta::CustomErrorResponsePolicy::Representation
+      
           property :description, as: 'description'
           property :header_action, as: 'headerAction', class: Google::Apis::ComputeBeta::HttpHeaderAction, decorator: Google::Apis::ComputeBeta::HttpHeaderAction::Representation
       
@@ -9787,10 +9855,43 @@ module Google
           property :name, as: 'name'
           property :properties, as: 'properties', class: Google::Apis::ComputeBeta::InstanceProperties, decorator: Google::Apis::ComputeBeta::InstanceProperties::Representation
       
+          property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :source_instance, as: 'sourceInstance'
           property :source_instance_params, as: 'sourceInstanceParams', class: Google::Apis::ComputeBeta::SourceInstanceParams, decorator: Google::Apis::ComputeBeta::SourceInstanceParams::Representation
       
+        end
+      end
+      
+      class InstanceTemplateAggregatedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeBeta::InstanceTemplatesScopedList, decorator: Google::Apis::ComputeBeta::InstanceTemplatesScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::InstanceTemplateAggregatedList::Warning, decorator: Google::Apis::ComputeBeta::InstanceTemplateAggregatedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::InstanceTemplateAggregatedList::Warning::Datum, decorator: Google::Apis::ComputeBeta::InstanceTemplateAggregatedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
         end
       end
       
@@ -9812,6 +9913,34 @@ module Google
           class Representation < Google::Apis::Core::JsonRepresentation
             property :code, as: 'code'
             collection :data, as: 'data', class: Google::Apis::ComputeBeta::InstanceTemplateList::Warning::Datum, decorator: Google::Apis::ComputeBeta::InstanceTemplateList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class InstanceTemplatesScopedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instance_templates, as: 'instanceTemplates', class: Google::Apis::ComputeBeta::InstanceTemplate, decorator: Google::Apis::ComputeBeta::InstanceTemplate::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::InstanceTemplatesScopedList::Warning, decorator: Google::Apis::ComputeBeta::InstanceTemplatesScopedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::InstanceTemplatesScopedList::Warning::Datum, decorator: Google::Apis::ComputeBeta::InstanceTemplatesScopedList::Warning::Datum::Representation
         
             property :message, as: 'message'
           end
@@ -12393,6 +12522,8 @@ module Google
       class PathMatcher
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_custom_error_response_policy, as: 'defaultCustomErrorResponsePolicy', class: Google::Apis::ComputeBeta::CustomErrorResponsePolicy, decorator: Google::Apis::ComputeBeta::CustomErrorResponsePolicy::Representation
+      
           property :default_route_action, as: 'defaultRouteAction', class: Google::Apis::ComputeBeta::HttpRouteAction, decorator: Google::Apis::ComputeBeta::HttpRouteAction::Representation
       
           property :default_service, as: 'defaultService'
@@ -12412,6 +12543,8 @@ module Google
       class PathRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_error_response_policy, as: 'customErrorResponsePolicy', class: Google::Apis::ComputeBeta::CustomErrorResponsePolicy, decorator: Google::Apis::ComputeBeta::CustomErrorResponsePolicy::Representation
+      
           collection :paths, as: 'paths'
           property :route_action, as: 'routeAction', class: Google::Apis::ComputeBeta::HttpRouteAction, decorator: Google::Apis::ComputeBeta::HttpRouteAction::Representation
       
@@ -16358,6 +16491,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :creation_timestamp, as: 'creationTimestamp'
+          property :default_custom_error_response_policy, as: 'defaultCustomErrorResponsePolicy', class: Google::Apis::ComputeBeta::CustomErrorResponsePolicy, decorator: Google::Apis::ComputeBeta::CustomErrorResponsePolicy::Representation
+      
           property :default_route_action, as: 'defaultRouteAction', class: Google::Apis::ComputeBeta::HttpRouteAction, decorator: Google::Apis::ComputeBeta::HttpRouteAction::Representation
       
           property :default_service, as: 'defaultService'
