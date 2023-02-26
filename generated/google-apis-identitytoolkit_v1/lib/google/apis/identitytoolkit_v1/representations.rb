@@ -770,6 +770,7 @@ module Google
           property :ios_receipt, as: 'iosReceipt'
           property :ios_secret, as: 'iosSecret'
           property :phone_number, as: 'phoneNumber'
+          property :play_integrity_token, as: 'playIntegrityToken'
           property :recaptcha_token, as: 'recaptchaToken'
           property :safety_net_token, as: 'safetyNetToken'
           property :tenant_id, as: 'tenantId'
