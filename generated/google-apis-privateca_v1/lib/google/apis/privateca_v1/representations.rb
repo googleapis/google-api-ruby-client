@@ -274,6 +274,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NameConstraints
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ObjectIdProp
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -867,6 +873,21 @@ module Google
         end
       end
       
+      class NameConstraints
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :critical, as: 'critical'
+          collection :excluded_dns_names, as: 'excludedDnsNames'
+          collection :excluded_email_addresses, as: 'excludedEmailAddresses'
+          collection :excluded_ip_ranges, as: 'excludedIpRanges'
+          collection :excluded_uris, as: 'excludedUris'
+          collection :permitted_dns_names, as: 'permittedDnsNames'
+          collection :permitted_email_addresses, as: 'permittedEmailAddresses'
+          collection :permitted_ip_ranges, as: 'permittedIpRanges'
+          collection :permitted_uris, as: 'permittedUris'
+        end
+      end
+      
       class ObjectIdProp
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1092,6 +1113,8 @@ module Google
           property :ca_options, as: 'caOptions', class: Google::Apis::PrivatecaV1::CaOptions, decorator: Google::Apis::PrivatecaV1::CaOptions::Representation
       
           property :key_usage, as: 'keyUsage', class: Google::Apis::PrivatecaV1::KeyUsage, decorator: Google::Apis::PrivatecaV1::KeyUsage::Representation
+      
+          property :name_constraints, as: 'nameConstraints', class: Google::Apis::PrivatecaV1::NameConstraints, decorator: Google::Apis::PrivatecaV1::NameConstraints::Representation
       
           collection :policy_ids, as: 'policyIds', class: Google::Apis::PrivatecaV1::ObjectIdProp, decorator: Google::Apis::PrivatecaV1::ObjectIdProp::Representation
       
