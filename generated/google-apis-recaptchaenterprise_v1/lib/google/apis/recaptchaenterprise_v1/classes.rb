@@ -184,6 +184,11 @@ module Google
         # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Event]
         attr_accessor :event
       
+        # Assessment for Fraud Prevention.
+        # Corresponds to the JSON property `fraudPreventionAssessment`
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment]
+        attr_accessor :fraud_prevention_assessment
+      
         # Output only. The resource name for the Assessment in the format "projects/`
         # project`/assessments/`assessment`".
         # Corresponds to the JSON property `name`
@@ -214,6 +219,7 @@ module Google
           @account_defender_assessment = args[:account_defender_assessment] if args.key?(:account_defender_assessment)
           @account_verification = args[:account_verification] if args.key?(:account_verification)
           @event = args[:event] if args.key?(:event)
+          @fraud_prevention_assessment = args[:fraud_prevention_assessment] if args.key?(:fraud_prevention_assessment)
           @name = args[:name] if args.key?(:name)
           @private_password_leak_verification = args[:private_password_leak_verification] if args.key?(:private_password_leak_verification)
           @risk_analysis = args[:risk_analysis] if args.key?(:risk_analysis)
@@ -331,6 +337,12 @@ module Google
         # @return [String]
         attr_accessor :token
       
+        # Transaction data associated with a payment protected by reCAPTCHA Enterprise.
+        # All fields are optional.
+        # Corresponds to the JSON property `transactionData`
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1TransactionData]
+        attr_accessor :transaction_data
+      
         # Optional. The user agent present in the request from the user's device related
         # to this event.
         # Corresponds to the JSON property `userAgent`
@@ -353,8 +365,84 @@ module Google
           @hashed_account_id = args[:hashed_account_id] if args.key?(:hashed_account_id)
           @site_key = args[:site_key] if args.key?(:site_key)
           @token = args[:token] if args.key?(:token)
+          @transaction_data = args[:transaction_data] if args.key?(:transaction_data)
           @user_agent = args[:user_agent] if args.key?(:user_agent)
           @user_ip_address = args[:user_ip_address] if args.key?(:user_ip_address)
+        end
+      end
+      
+      # Assessment for Fraud Prevention.
+      class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment
+        include Google::Apis::Core::Hashable
+      
+        # Information about card testing fraud, where an adversary is testing
+        # fraudulently obtained cards or brute forcing their details.
+        # Corresponds to the JSON property `cardTestingVerdict`
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict]
+        attr_accessor :card_testing_verdict
+      
+        # Information about stolen instrument fraud, where the user is not the
+        # legitimate owner of the instrument being used for the purchase.
+        # Corresponds to the JSON property `stolenInstrumentVerdict`
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict]
+        attr_accessor :stolen_instrument_verdict
+      
+        # Probability (0-1) of this transaction being fraudulent. Summarizes the
+        # combined risk of attack vectors below.
+        # Corresponds to the JSON property `transactionRisk`
+        # @return [Float]
+        attr_accessor :transaction_risk
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @card_testing_verdict = args[:card_testing_verdict] if args.key?(:card_testing_verdict)
+          @stolen_instrument_verdict = args[:stolen_instrument_verdict] if args.key?(:stolen_instrument_verdict)
+          @transaction_risk = args[:transaction_risk] if args.key?(:transaction_risk)
+        end
+      end
+      
+      # Information about card testing fraud, where an adversary is testing
+      # fraudulently obtained cards or brute forcing their details.
+      class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict
+        include Google::Apis::Core::Hashable
+      
+        # Probability (0-1) of this transaction attempt being part of a card testing
+        # attack.
+        # Corresponds to the JSON property `risk`
+        # @return [Float]
+        attr_accessor :risk
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @risk = args[:risk] if args.key?(:risk)
+        end
+      end
+      
+      # Information about stolen instrument fraud, where the user is not the
+      # legitimate owner of the instrument being used for the purchase.
+      class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict
+        include Google::Apis::Core::Hashable
+      
+        # Probability (0-1) of this transaction being executed with a stolen instrument.
+        # Corresponds to the JSON property `risk`
+        # @return [Float]
+        attr_accessor :risk
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @risk = args[:risk] if args.key?(:risk)
         end
       end
       
@@ -945,6 +1033,288 @@ module Google
         end
       end
       
+      # Transaction data associated with a payment protected by reCAPTCHA Enterprise.
+      # All fields are optional.
+      class GoogleCloudRecaptchaenterpriseV1TransactionData
+        include Google::Apis::Core::Hashable
+      
+        # Structured address format for billing and shipping addresses.
+        # Corresponds to the JSON property `billingAddress`
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1TransactionDataAddress]
+        attr_accessor :billing_address
+      
+        # The Bank Identification Number - generally the first 6 or 8 digits of the card.
+        # Corresponds to the JSON property `cardBin`
+        # @return [String]
+        attr_accessor :card_bin
+      
+        # The last four digits of the card.
+        # Corresponds to the JSON property `cardLastFour`
+        # @return [String]
+        attr_accessor :card_last_four
+      
+        # The currency code in ISO-4217 format.
+        # Corresponds to the JSON property `currencyCode`
+        # @return [String]
+        attr_accessor :currency_code
+      
+        # Details about the transaction from the gateway.
+        # Corresponds to the JSON property `gatewayInfo`
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1TransactionDataGatewayInfo]
+        attr_accessor :gateway_info
+      
+        # Items purchased in this transaction.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1TransactionDataItem>]
+        attr_accessor :items
+      
+        # Information about the user or users fulfilling the transaction.
+        # Corresponds to the JSON property `merchants`
+        # @return [Array<Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1TransactionDataUser>]
+        attr_accessor :merchants
+      
+        # The payment method for the transaction. The allowed values are: * credit-card *
+        # debit-card * gift-card * processor-`name` (If a third-party is used, for
+        # example, processor-paypal) * custom-`name` (If an alternative method is used,
+        # for example, custom-crypto)
+        # Corresponds to the JSON property `paymentMethod`
+        # @return [String]
+        attr_accessor :payment_method
+      
+        # Structured address format for billing and shipping addresses.
+        # Corresponds to the JSON property `shippingAddress`
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1TransactionDataAddress]
+        attr_accessor :shipping_address
+      
+        # The value of shipping in the specified currency. 0 for free or no shipping.
+        # Corresponds to the JSON property `shippingValue`
+        # @return [Float]
+        attr_accessor :shipping_value
+      
+        # Unique identifier for the transaction. This custom identifier can be used to
+        # reference this transaction in the future, for example, labeling a refund or
+        # chargeback event. Two attempts at the same transaction should use the same
+        # transaction id.
+        # Corresponds to the JSON property `transactionId`
+        # @return [String]
+        attr_accessor :transaction_id
+      
+        # Details about a user's account involved in the transaction.
+        # Corresponds to the JSON property `user`
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1TransactionDataUser]
+        attr_accessor :user
+      
+        # The decimal value of the transaction in the specified currency.
+        # Corresponds to the JSON property `value`
+        # @return [Float]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @billing_address = args[:billing_address] if args.key?(:billing_address)
+          @card_bin = args[:card_bin] if args.key?(:card_bin)
+          @card_last_four = args[:card_last_four] if args.key?(:card_last_four)
+          @currency_code = args[:currency_code] if args.key?(:currency_code)
+          @gateway_info = args[:gateway_info] if args.key?(:gateway_info)
+          @items = args[:items] if args.key?(:items)
+          @merchants = args[:merchants] if args.key?(:merchants)
+          @payment_method = args[:payment_method] if args.key?(:payment_method)
+          @shipping_address = args[:shipping_address] if args.key?(:shipping_address)
+          @shipping_value = args[:shipping_value] if args.key?(:shipping_value)
+          @transaction_id = args[:transaction_id] if args.key?(:transaction_id)
+          @user = args[:user] if args.key?(:user)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Structured address format for billing and shipping addresses.
+      class GoogleCloudRecaptchaenterpriseV1TransactionDataAddress
+        include Google::Apis::Core::Hashable
+      
+        # The first lines of the address. The first line generally contains the street
+        # name and number, and further lines may include information such as an
+        # apartment number.
+        # Corresponds to the JSON property `address`
+        # @return [Array<String>]
+        attr_accessor :address
+      
+        # The state, province, or otherwise administrative area of the address.
+        # Corresponds to the JSON property `administrativeArea`
+        # @return [String]
+        attr_accessor :administrative_area
+      
+        # The town/city of the address.
+        # Corresponds to the JSON property `locality`
+        # @return [String]
+        attr_accessor :locality
+      
+        # The postal or ZIP code of the address.
+        # Corresponds to the JSON property `postalCode`
+        # @return [String]
+        attr_accessor :postal_code
+      
+        # The recipient name, potentially including information such as "care of".
+        # Corresponds to the JSON property `recipient`
+        # @return [String]
+        attr_accessor :recipient
+      
+        # The CLDR country/region of the address.
+        # Corresponds to the JSON property `regionCode`
+        # @return [String]
+        attr_accessor :region_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @address = args[:address] if args.key?(:address)
+          @administrative_area = args[:administrative_area] if args.key?(:administrative_area)
+          @locality = args[:locality] if args.key?(:locality)
+          @postal_code = args[:postal_code] if args.key?(:postal_code)
+          @recipient = args[:recipient] if args.key?(:recipient)
+          @region_code = args[:region_code] if args.key?(:region_code)
+        end
+      end
+      
+      # Details about the transaction from the gateway.
+      class GoogleCloudRecaptchaenterpriseV1TransactionDataGatewayInfo
+        include Google::Apis::Core::Hashable
+      
+        # AVS response code from the gateway (available only when reCAPTCHA Enterprise
+        # is called after authorization).
+        # Corresponds to the JSON property `avsResponseCode`
+        # @return [String]
+        attr_accessor :avs_response_code
+      
+        # CVV response code from the gateway (available only when reCAPTCHA Enterprise
+        # is called after authorization).
+        # Corresponds to the JSON property `cvvResponseCode`
+        # @return [String]
+        attr_accessor :cvv_response_code
+      
+        # Gateway response code describing the state of the transaction.
+        # Corresponds to the JSON property `gatewayResponseCode`
+        # @return [String]
+        attr_accessor :gateway_response_code
+      
+        # Name of the gateway service (for example, stripe, square, paypal).
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @avs_response_code = args[:avs_response_code] if args.key?(:avs_response_code)
+          @cvv_response_code = args[:cvv_response_code] if args.key?(:cvv_response_code)
+          @gateway_response_code = args[:gateway_response_code] if args.key?(:gateway_response_code)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Line items being purchased in this transaction.
+      class GoogleCloudRecaptchaenterpriseV1TransactionDataItem
+        include Google::Apis::Core::Hashable
+      
+        # When a merchant is specified, its corresponding account_id. Necessary to
+        # populate marketplace-style transactions.
+        # Corresponds to the JSON property `merchantAccountId`
+        # @return [String]
+        attr_accessor :merchant_account_id
+      
+        # The full name of the item.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The quantity of this item that is being purchased.
+        # Corresponds to the JSON property `quantity`
+        # @return [Fixnum]
+        attr_accessor :quantity
+      
+        # The value per item that the user is paying, in the transaction currency, after
+        # discounts.
+        # Corresponds to the JSON property `value`
+        # @return [Float]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @merchant_account_id = args[:merchant_account_id] if args.key?(:merchant_account_id)
+          @name = args[:name] if args.key?(:name)
+          @quantity = args[:quantity] if args.key?(:quantity)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Details about a user's account involved in the transaction.
+      class GoogleCloudRecaptchaenterpriseV1TransactionDataUser
+        include Google::Apis::Core::Hashable
+      
+        # Unique account identifier for this user. If using account defender, this
+        # should match the hashed_account_id field. Otherwise, a unique and persistent
+        # identifier for this account.
+        # Corresponds to the JSON property `accountId`
+        # @return [String]
+        attr_accessor :account_id
+      
+        # The epoch milliseconds of the user's account creation.
+        # Corresponds to the JSON property `creationMs`
+        # @return [Fixnum]
+        attr_accessor :creation_ms
+      
+        # The email address of the user.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        # Whether the email has been verified to be accessible by the user (OTP or
+        # similar).
+        # Corresponds to the JSON property `emailVerified`
+        # @return [Boolean]
+        attr_accessor :email_verified
+        alias_method :email_verified?, :email_verified
+      
+        # The phone number of the user, with country code.
+        # Corresponds to the JSON property `phoneNumber`
+        # @return [String]
+        attr_accessor :phone_number
+      
+        # Whether the phone number has been verified to be accessible by the user (OTP
+        # or similar).
+        # Corresponds to the JSON property `phoneVerified`
+        # @return [Boolean]
+        attr_accessor :phone_verified
+        alias_method :phone_verified?, :phone_verified
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @account_id = args[:account_id] if args.key?(:account_id)
+          @creation_ms = args[:creation_ms] if args.key?(:creation_ms)
+          @email = args[:email] if args.key?(:email)
+          @email_verified = args[:email_verified] if args.key?(:email_verified)
+          @phone_number = args[:phone_number] if args.key?(:phone_number)
+          @phone_verified = args[:phone_verified] if args.key?(:phone_verified)
+        end
+      end
+      
       # Describes an event in the lifecycle of a payment transaction.
       class GoogleCloudRecaptchaenterpriseV1TransactionEvent
         include Google::Apis::Core::Hashable
@@ -960,15 +1330,16 @@ module Google
         # @return [String]
         attr_accessor :event_type
       
-        # Optional. The reason or standardized code which corresponds with this
-        # transaction event, if one exists. E.g. a CHARGEBACK Event with code 4553.
+        # Optional. The reason or standardized code that corresponds with this
+        # transaction event, if one exists. For example, a CHARGEBACK event with code
+        # 6005.
         # Corresponds to the JSON property `reason`
         # @return [String]
         attr_accessor :reason
       
         # Optional. The value that corresponds with this transaction event, if one
-        # exists. E.g. A refund event where $5.00 was refunded. Currency is obtained
-        # from the original transaction data.
+        # exists. For example, a refund event where $5.00 was refunded. Currency is
+        # obtained from the original transaction data.
         # Corresponds to the JSON property `value`
         # @return [Float]
         attr_accessor :value
