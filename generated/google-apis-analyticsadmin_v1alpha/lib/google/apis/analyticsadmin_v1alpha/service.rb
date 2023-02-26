@@ -301,6 +301,54 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns a customized report of data access records. The report provides
+        # records of each time a user reads Google Analytics reporting data. Access
+        # records are retained for up to 2 years. Data Access Reports can be requested
+        # for a property. The property must be in Google Analytics 360. This method is
+        # only available to Administrators. These data access records include GA4 UI
+        # Reporting, GA4 UI Explorations, GA4 Data API, and other products like Firebase
+        # & Admob that can retrieve data from Google Analytics through a linkage. These
+        # records don't include property configuration changes like adding a stream or
+        # changing a property's time zone. For configuration change history, see [
+        # searchChangeHistoryEvents](https://developers.google.com/analytics/devguides/
+        # config/admin/v1/rest/v1alpha/accounts/searchChangeHistoryEvents).
+        # @param [String] entity
+        #   The Data Access Report supports requesting at the property level or account
+        #   level. If requested at the account level, Data Access Reports include all
+        #   access for all properties under that account. To request at the property level,
+        #   entity should be for example 'properties/123' if "123" is your GA4 property
+        #   ID. To request at the account level, entity should be for example 'accounts/
+        #   1234' if "1234" is your GA4 Account ID.
+        # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaRunAccessReportRequest] google_analytics_admin_v1alpha_run_access_report_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaRunAccessReportResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaRunAccessReportResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def run_account_access_report(entity, google_analytics_admin_v1alpha_run_access_report_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+entity}:runAccessReport', options)
+          command.request_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaRunAccessReportRequest::Representation
+          command.request_object = google_analytics_admin_v1alpha_run_access_report_request_object
+          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaRunAccessReportResponse::Representation
+          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaRunAccessReportResponse
+          command.params['entity'] = entity unless entity.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Searches through all changes to an account or its children given the specified
         # set of filters.
         # @param [String] account
@@ -1372,8 +1420,12 @@ module Google
         # searchChangeHistoryEvents](https://developers.google.com/analytics/devguides/
         # config/admin/v1/rest/v1alpha/accounts/searchChangeHistoryEvents).
         # @param [String] entity
-        #   The Data Access Report is requested for this property. For example if "123" is
-        #   your GA4 property ID, then entity should be "properties/123".
+        #   The Data Access Report supports requesting at the property level or account
+        #   level. If requested at the account level, Data Access Reports include all
+        #   access for all properties under that account. To request at the property level,
+        #   entity should be for example 'properties/123' if "123" is your GA4 property
+        #   ID. To request at the account level, entity should be for example 'accounts/
+        #   1234' if "1234" is your GA4 Account ID.
         # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaRunAccessReportRequest] google_analytics_admin_v1alpha_run_access_report_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3390,6 +3442,180 @@ module Google
           command.request_object = google_analytics_admin_v1alpha_display_video360_advertiser_link_object
           command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink::Representation
           command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a ExpandedDataSet.
+        # @param [String] parent
+        #   Required. Example format: properties/1234
+        # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaExpandedDataSet] google_analytics_admin_v1alpha_expanded_data_set_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaExpandedDataSet] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaExpandedDataSet]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_property_expanded_data_set(parent, google_analytics_admin_v1alpha_expanded_data_set_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+parent}/expandedDataSets', options)
+          command.request_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaExpandedDataSet::Representation
+          command.request_object = google_analytics_admin_v1alpha_expanded_data_set_object
+          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaExpandedDataSet::Representation
+          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaExpandedDataSet
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a ExpandedDataSet on a property.
+        # @param [String] name
+        #   Required. Example format: properties/1234/expandedDataSets/5678
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_property_expanded_data_set(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lookup for a single ExpandedDataSet.
+        # @param [String] name
+        #   Required. The name of the Audience to get. Example format: properties/1234/
+        #   expandedDataSets/5678
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaExpandedDataSet] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaExpandedDataSet]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_property_expanded_data_set(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaExpandedDataSet::Representation
+          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaExpandedDataSet
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists ExpandedDataSets on a property.
+        # @param [String] parent
+        #   Required. Example format: properties/1234
+        # @param [Fixnum] page_size
+        #   The maximum number of resources to return. If unspecified, at most 50
+        #   resources will be returned. The maximum value is 200 (higher values will be
+        #   coerced to the maximum).
+        # @param [String] page_token
+        #   A page token, received from a previous `ListExpandedDataSets` call. Provide
+        #   this to retrieve the subsequent page. When paginating, all other parameters
+        #   provided to `ListExpandedDataSet` must match the call that provided the page
+        #   token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaListExpandedDataSetsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaListExpandedDataSetsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_property_expanded_data_sets(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/expandedDataSets', options)
+          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaListExpandedDataSetsResponse::Representation
+          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaListExpandedDataSetsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a ExpandedDataSet on a property.
+        # @param [String] name
+        #   Output only. The resource name for this ExpandedDataSet resource. Format:
+        #   properties/`property_id`/expandedDataSets/`expanded_data_set`
+        # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaExpandedDataSet] google_analytics_admin_v1alpha_expanded_data_set_object
+        # @param [String] update_mask
+        #   Required. The list of fields to be updated. Field names must be in snake case (
+        #   e.g., "field_to_update"). Omitted fields will not be updated. To replace the
+        #   entire entity, use one path with the string "*" to match all fields.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaExpandedDataSet] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaExpandedDataSet]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_property_expanded_data_set(name, google_analytics_admin_v1alpha_expanded_data_set_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1alpha/{+name}', options)
+          command.request_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaExpandedDataSet::Representation
+          command.request_object = google_analytics_admin_v1alpha_expanded_data_set_object
+          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaExpandedDataSet::Representation
+          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaExpandedDataSet
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
