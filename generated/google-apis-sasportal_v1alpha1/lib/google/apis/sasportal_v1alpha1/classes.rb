@@ -1111,6 +1111,43 @@ module Google
         end
       end
       
+      # Request for [ProvisionDeployment]. [spectrum.sas.portal.v1alpha1.Provisioning.
+      # ProvisionDeployment]. No input is needed, because GCP Project, Organization
+      # Info, and caller’s GAIA ID should be retrieved from the RPC handler, and used
+      # as inputs to create a new SAS organization (if not exists) and a new SAS
+      # deployment.
+      class SasPortalProvisionDeploymentRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response for [ProvisionDeployment]. [spectrum.sas.portal.v1alpha1.Provisioning.
+      # ProvisionDeployment].
+      class SasPortalProvisionDeploymentResponse
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Optional error message if the provisioning request is not successful.
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_message = args[:error_message] if args.key?(:error_message)
+        end
+      end
+      
       # Request message for `SetPolicy` method.
       class SasPortalSetPolicyRequest
         include Google::Apis::Core::Hashable
