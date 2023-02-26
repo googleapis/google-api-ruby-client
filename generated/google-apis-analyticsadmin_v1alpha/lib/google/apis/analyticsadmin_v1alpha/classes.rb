@@ -3410,6 +3410,33 @@ module Google
         end
       end
       
+      # Response message for ListExpandedDataSets RPC.
+      class GoogleAnalyticsAdminV1alphaListExpandedDataSetsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of ExpandedDataSet. These will be ordered stably, but in an arbitrary
+        # order.
+        # Corresponds to the JSON property `expandedDataSets`
+        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaExpandedDataSet>]
+        attr_accessor :expanded_data_sets
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expanded_data_sets = args[:expanded_data_sets] if args.key?(:expanded_data_sets)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response message for ListFirebaseLinks RPC
       class GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse
         include Google::Apis::Core::Hashable
@@ -3883,7 +3910,8 @@ module Google
         attr_accessor :order_bys
       
         # Toggles whether to return the current state of this Analytics Property's quota.
-        # Quota is returned in [AccessQuota](#AccessQuota).
+        # Quota is returned in [AccessQuota](#AccessQuota). For account-level requests,
+        # this field must be false.
         # Corresponds to the JSON property `returnEntityQuota`
         # @return [Boolean]
         attr_accessor :return_entity_quota

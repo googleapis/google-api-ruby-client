@@ -652,6 +652,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1alphaListExpandedDataSetsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1805,6 +1811,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :display_video360_advertiser_links, as: 'displayVideo360AdvertiserLinks', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaListExpandedDataSetsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :expanded_data_sets, as: 'expandedDataSets', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaExpandedDataSet, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaExpandedDataSet::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
