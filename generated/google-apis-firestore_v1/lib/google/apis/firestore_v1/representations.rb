@@ -801,11 +801,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :app_engine_integration_mode, as: 'appEngineIntegrationMode'
           property :concurrency_mode, as: 'concurrencyMode'
+          property :create_time, as: 'createTime'
           property :etag, as: 'etag'
           property :key_prefix, as: 'keyPrefix'
           property :location_id, as: 'locationId'
           property :name, as: 'name'
           property :type, as: 'type'
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
         end
       end
       
