@@ -1811,6 +1811,12 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # ReplicationCycle contains information about the current replication cycle
+        # status.
+        # Corresponds to the JSON property `lastReplicationCycle`
+        # @return [Google::Apis::VmmigrationV1::ReplicationCycle]
+        attr_accessor :last_replication_cycle
+      
         # ReplicationSync contain information about the last replica sync to the cloud.
         # Corresponds to the JSON property `lastSync`
         # @return [Google::Apis::VmmigrationV1::ReplicationSync]
@@ -1879,6 +1885,7 @@ module Google
           @error = args[:error] if args.key?(:error)
           @group = args[:group] if args.key?(:group)
           @labels = args[:labels] if args.key?(:labels)
+          @last_replication_cycle = args[:last_replication_cycle] if args.key?(:last_replication_cycle)
           @last_sync = args[:last_sync] if args.key?(:last_sync)
           @name = args[:name] if args.key?(:name)
           @policy = args[:policy] if args.key?(:policy)
@@ -1936,6 +1943,53 @@ module Google
           @error_message = args[:error_message] if args.key?(:error_message)
           @error_time = args[:error_time] if args.key?(:error_time)
           @help_links = args[:help_links] if args.key?(:help_links)
+        end
+      end
+      
+      # Represents migration resource warning information that can be used with google.
+      # rpc.Status message. MigrationWarning is used to present the user with warning
+      # information in migration operations.
+      class MigrationWarning
+        include Google::Apis::Core::Hashable
+      
+        # Provides a localized error message that is safe to return to the user which
+        # can be attached to an RPC error.
+        # Corresponds to the JSON property `actionItem`
+        # @return [Google::Apis::VmmigrationV1::LocalizedMessage]
+        attr_accessor :action_item
+      
+        # The warning code.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # URL(s) pointing to additional information on handling the current warning.
+        # Corresponds to the JSON property `helpLinks`
+        # @return [Array<Google::Apis::VmmigrationV1::Link>]
+        attr_accessor :help_links
+      
+        # Provides a localized error message that is safe to return to the user which
+        # can be attached to an RPC error.
+        # Corresponds to the JSON property `warningMessage`
+        # @return [Google::Apis::VmmigrationV1::LocalizedMessage]
+        attr_accessor :warning_message
+      
+        # The time the warning occurred.
+        # Corresponds to the JSON property `warningTime`
+        # @return [String]
+        attr_accessor :warning_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action_item = args[:action_item] if args.key?(:action_item)
+          @code = args[:code] if args.key?(:code)
+          @help_links = args[:help_links] if args.key?(:help_links)
+          @warning_message = args[:warning_message] if args.key?(:warning_message)
+          @warning_time = args[:warning_time] if args.key?(:warning_time)
         end
       end
       
@@ -2249,6 +2303,11 @@ module Google
         # @return [String]
         attr_accessor :total_pause_duration
       
+        # Output only. Warnings that occurred during the cycle.
+        # Corresponds to the JSON property `warnings`
+        # @return [Array<Google::Apis::VmmigrationV1::MigrationWarning>]
+        attr_accessor :warnings
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2264,6 +2323,7 @@ module Google
           @state = args[:state] if args.key?(:state)
           @steps = args[:steps] if args.key?(:steps)
           @total_pause_duration = args[:total_pause_duration] if args.key?(:total_pause_duration)
+          @warnings = args[:warnings] if args.key?(:warnings)
         end
       end
       
