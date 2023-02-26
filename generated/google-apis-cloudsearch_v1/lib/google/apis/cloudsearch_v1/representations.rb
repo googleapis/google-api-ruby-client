@@ -1954,6 +1954,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InteractionData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InviteAcceptedEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3442,6 +3448,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WonderCardDelete
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WonderMessageMapping
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WrappedResourceKey
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3583,7 +3601,10 @@ module Google
       
           property :incoming_webhook_changed_metadata, as: 'incomingWebhookChangedMetadata', class: Google::Apis::CloudsearchV1::IncomingWebhookChangedMetadata, decorator: Google::Apis::CloudsearchV1::IncomingWebhookChangedMetadata::Representation
       
+          property :inline_render_format, as: 'inlineRenderFormat'
           property :integration_config_updated, as: 'integrationConfigUpdated', class: Google::Apis::CloudsearchV1::IntegrationConfigUpdatedMetadata, decorator: Google::Apis::CloudsearchV1::IntegrationConfigUpdatedMetadata::Representation
+      
+          property :interaction_data, as: 'interactionData', class: Google::Apis::CloudsearchV1::InteractionData, decorator: Google::Apis::CloudsearchV1::InteractionData::Representation
       
           property :length, as: 'length'
           property :local_id, as: 'localId'
@@ -4107,6 +4128,8 @@ module Google
           property :is_external, as: 'isExternal'
           property :name, as: 'name'
           property :num_members, as: 'numMembers'
+          property :segmented_membership_counts, as: 'segmentedMembershipCounts', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedSegmentedMembershipCounts, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedSegmentedMembershipCounts::Representation
+      
           property :user_membership_state, as: 'userMembershipState'
         end
       end
@@ -4207,6 +4230,7 @@ module Google
           property :load_indicator, as: 'loadIndicator'
           collection :parameters, as: 'parameters', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageActionActionParameter, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageActionActionParameter::Representation
       
+          property :persist_values, as: 'persistValues'
         end
       end
       
@@ -6818,6 +6842,14 @@ module Google
         end
       end
       
+      class InteractionData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :url, as: 'url', class: Google::Apis::CloudsearchV1::SafeUrlProto, decorator: Google::Apis::CloudsearchV1::SafeUrlProto::Representation
+      
+        end
+      end
+      
       class InviteAcceptedEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -7395,6 +7427,8 @@ module Google
       
           collection :message_keys, as: 'messageKeys', class: Google::Apis::CloudsearchV1::MultiKey, decorator: Google::Apis::CloudsearchV1::MultiKey::Representation
       
+          collection :wonder_card_mappings, as: 'wonderCardMappings', class: Google::Apis::CloudsearchV1::WonderCardDelete, decorator: Google::Apis::CloudsearchV1::WonderCardDelete::Representation
+      
         end
       end
       
@@ -7410,6 +7444,7 @@ module Google
       class MessageInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :author_user_type, as: 'authorUserType'
           property :message, as: 'message', class: Google::Apis::CloudsearchV1::Message, decorator: Google::Apis::CloudsearchV1::Message::Representation
       
           property :searcher_membership_state, as: 'searcherMembershipState'
@@ -9425,6 +9460,7 @@ module Google
           property :invitee_info, as: 'inviteeInfo', class: Google::Apis::CloudsearchV1::InviteeInfo, decorator: Google::Apis::CloudsearchV1::InviteeInfo::Representation
       
           property :type, as: 'type'
+          property :user_mention_error, as: 'userMentionError'
         end
       end
       
@@ -9532,6 +9568,22 @@ module Google
       
           property :text_paragraph, as: 'textParagraph', class: Google::Apis::CloudsearchV1::TextParagraph, decorator: Google::Apis::CloudsearchV1::TextParagraph::Representation
       
+        end
+      end
+      
+      class WonderCardDelete
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :message_mappings, as: 'messageMappings', class: Google::Apis::CloudsearchV1::WonderMessageMapping, decorator: Google::Apis::CloudsearchV1::WonderMessageMapping::Representation
+      
+          property :msg_id, :numeric_string => true, as: 'msgId'
+        end
+      end
+      
+      class WonderMessageMapping
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :wonder_card_message_id, as: 'wonderCardMessageId'
         end
       end
       
