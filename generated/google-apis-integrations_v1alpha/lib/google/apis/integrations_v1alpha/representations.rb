@@ -820,6 +820,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudConnectorsV1SslConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudIntegrationsV1alphaAccessToken
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -917,6 +923,12 @@ module Google
       end
       
       class GoogleCloudIntegrationsV1alphaEnumerateConnectorPlatformRegionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIntegrationsV1alphaErrorCatcherConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2548,6 +2560,8 @@ module Google
           property :creator_email, as: 'creatorEmail'
           property :description, as: 'description'
           property :disable_strict_type_validation, as: 'disableStrictTypeValidation'
+          property :error_catcher_config_id, as: 'errorCatcherConfigId'
+          property :external_task_type, as: 'externalTaskType'
           property :failure_policy, as: 'failurePolicy', class: Google::Apis::IntegrationsV1alpha::EnterpriseCrmEventbusProtoFailurePolicy, decorator: Google::Apis::IntegrationsV1alpha::EnterpriseCrmEventbusProtoFailurePolicy::Representation
       
           property :incoming_edge_count, as: 'incomingEdgeCount'
@@ -2605,6 +2619,7 @@ module Google
       
           property :description, as: 'description'
           collection :enabled_clients, as: 'enabledClients'
+          property :error_catcher_config_id, as: 'errorCatcherConfigId'
           property :label, as: 'label'
           property :next_tasks_execution_policy, as: 'nextTasksExecutionPolicy'
           property :pause_workflow_executions, as: 'pauseWorkflowExecutions'
@@ -2773,6 +2788,8 @@ module Google
       
           property :service_account, as: 'serviceAccount'
           property :service_directory, as: 'serviceDirectory'
+          property :ssl_config, as: 'sslConfig', class: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1SslConfig, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1SslConfig::Representation
+      
           property :status, as: 'status', class: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1ConnectionStatus, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1ConnectionStatus::Representation
       
           property :suspended, as: 'suspended'
@@ -2827,6 +2844,27 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :secret_version, as: 'secretVersion'
+        end
+      end
+      
+      class GoogleCloudConnectorsV1SslConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :additional_variables, as: 'additionalVariables', class: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1ConfigVariable, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1ConfigVariable::Representation
+      
+          property :client_cert_type, as: 'clientCertType'
+          property :client_certificate, as: 'clientCertificate', class: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1Secret, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1Secret::Representation
+      
+          property :client_private_key, as: 'clientPrivateKey', class: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1Secret, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1Secret::Representation
+      
+          property :client_private_key_pass, as: 'clientPrivateKeyPass', class: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1Secret, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1Secret::Representation
+      
+          property :private_server_certificate, as: 'privateServerCertificate', class: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1Secret, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1Secret::Representation
+      
+          property :server_cert_type, as: 'serverCertType'
+          property :trust_model, as: 'trustModel'
+          property :type, as: 'type'
+          property :use_ssl, as: 'useSsl'
         end
       end
       
@@ -3000,6 +3038,18 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :regions, as: 'regions'
+        end
+      end
+      
+      class GoogleCloudIntegrationsV1alphaErrorCatcherConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :error_catch_id, as: 'errorCatchId'
+          property :error_catcher_number, as: 'errorCatcherNumber'
+          property :label, as: 'label'
+          collection :start_error_tasks, as: 'startErrorTasks', class: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaNextTask, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaNextTask::Representation
+      
         end
       end
       
@@ -3179,6 +3229,8 @@ module Google
           property :create_time, as: 'createTime'
           property :database_persistence_policy, as: 'databasePersistencePolicy'
           property :description, as: 'description'
+          collection :error_catcher_configs, as: 'errorCatcherConfigs', class: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaErrorCatcherConfig, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaErrorCatcherConfig::Representation
+      
           property :last_modifier_email, as: 'lastModifierEmail'
           property :name, as: 'name'
           property :parent_integration_version_id, as: 'parentIntegrationVersionId'
@@ -3203,6 +3255,8 @@ module Google
           property :create_time, as: 'createTime'
           property :database_persistence_policy, as: 'databasePersistencePolicy'
           property :description, as: 'description'
+          collection :error_catcher_configs, as: 'errorCatcherConfigs', class: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaErrorCatcherConfig, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaErrorCatcherConfig::Representation
+      
           collection :integration_parameters, as: 'integrationParameters', class: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaIntegrationParameter, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaIntegrationParameter::Representation
       
           property :integration_parameters_internal, as: 'integrationParametersInternal', class: Google::Apis::IntegrationsV1alpha::EnterpriseCrmFrontendsEventbusProtoWorkflowParameters, decorator: Google::Apis::IntegrationsV1alpha::EnterpriseCrmFrontendsEventbusProtoWorkflowParameters::Representation
@@ -3664,6 +3718,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
           property :display_name, as: 'displayName'
+          property :error_catcher_config_id, as: 'errorCatcherConfigId'
+          property :external_task_type, as: 'externalTaskType'
           property :failure_policy, as: 'failurePolicy', class: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaFailurePolicy, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaFailurePolicy::Representation
       
           property :json_validation_option, as: 'jsonValidationOption'
@@ -3701,6 +3757,7 @@ module Google
           property :cloud_scheduler_config, as: 'cloudSchedulerConfig', class: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaCloudSchedulerConfig, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaCloudSchedulerConfig::Representation
       
           property :description, as: 'description'
+          property :error_catcher_config_id, as: 'errorCatcherConfigId'
           property :label, as: 'label'
           property :next_tasks_execution_policy, as: 'nextTasksExecutionPolicy'
           hash :properties, as: 'properties'
