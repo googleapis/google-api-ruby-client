@@ -2157,6 +2157,33 @@ module Google
         end
       end
       
+      # List of MembershipBindings.
+      class ListMembershipBindingsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of membership_bindings
+        # Corresponds to the JSON property `membershipBindings`
+        # @return [Array<Google::Apis::GkehubV1::MembershipBinding>]
+        attr_accessor :membership_bindings
+      
+        # A token to request the next page of resources from the `ListMembershipBindings`
+        # method. The value of an empty string means that there are no more resources
+        # to return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @membership_bindings = args[:membership_bindings] if args.key?(:membership_bindings)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response message for the `GkeHub.ListMemberships` method.
       class ListMembershipsResponse
         include Google::Apis::Core::Hashable
@@ -2212,6 +2239,32 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+        end
+      end
+      
+      # List of Scopes.
+      class ListScopesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token to request the next page of resources from the `ListScopes` method.
+        # The value of an empty string means that there are no more resources to return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of Scopes
+        # Corresponds to the JSON property `scopes`
+        # @return [Array<Google::Apis::GkehubV1::Scope>]
+        attr_accessor :scopes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @scopes = args[:scopes] if args.key?(:scopes)
         end
       end
       
@@ -2362,6 +2415,92 @@ module Google
           @state = args[:state] if args.key?(:state)
           @unique_id = args[:unique_id] if args.key?(:unique_id)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # MembershipBinding is a subresource of a Membership, representing what Fleet
+      # Scopes (or other, future Fleet resources) a Membership is bound to.
+      class MembershipBinding
+        include Google::Apis::Core::Hashable
+      
+        # Output only. When the membership binding was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. When the membership binding was deleted.
+        # Corresponds to the JSON property `deleteTime`
+        # @return [String]
+        attr_accessor :delete_time
+      
+        # Whether the membershipbinding is Fleet-wide; true means that this Membership
+        # should be bound to all Namespaces in this entire Fleet.
+        # Corresponds to the JSON property `fleet`
+        # @return [Boolean]
+        attr_accessor :fleet
+        alias_method :fleet?, :fleet
+      
+        # The resource name for the membershipbinding itself `projects/`project`/
+        # locations/`location`/memberships/`membership`/bindings/`membershipbinding``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # A Workspace resource name in the format `projects/*/locations/*/scopes/*`.
+        # Corresponds to the JSON property `scope`
+        # @return [String]
+        attr_accessor :scope
+      
+        # MembershipBindingLifecycleState describes the state of a Binding resource.
+        # Corresponds to the JSON property `state`
+        # @return [Google::Apis::GkehubV1::MembershipBindingLifecycleState]
+        attr_accessor :state
+      
+        # Output only. Google-generated UUID for this resource. This is unique across
+        # all membershipbinding resources. If a membershipbinding resource is deleted
+        # and another resource with the same name is created, it gets a different uid.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. When the membership binding was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @delete_time = args[:delete_time] if args.key?(:delete_time)
+          @fleet = args[:fleet] if args.key?(:fleet)
+          @name = args[:name] if args.key?(:name)
+          @scope = args[:scope] if args.key?(:scope)
+          @state = args[:state] if args.key?(:state)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # MembershipBindingLifecycleState describes the state of a Binding resource.
+      class MembershipBindingLifecycleState
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The current state of the MembershipBinding resource.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
         end
       end
       
@@ -2930,6 +3069,58 @@ module Google
         end
       end
       
+      # Scope represents a Scope in a Fleet.
+      class Scope
+        include Google::Apis::Core::Hashable
+      
+        # Output only. When the scope was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. When the scope was deleted.
+        # Corresponds to the JSON property `deleteTime`
+        # @return [String]
+        attr_accessor :delete_time
+      
+        # The resource name for the scope `projects/`project`/locations/`location`/
+        # scopes/`scope``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # ScopeLifecycleState describes the state of a Scope resource.
+        # Corresponds to the JSON property `state`
+        # @return [Google::Apis::GkehubV1::ScopeLifecycleState]
+        attr_accessor :state
+      
+        # Output only. Google-generated UUID for this resource. This is unique across
+        # all scope resources. If a scope resource is deleted and another resource with
+        # the same name is created, it gets a different uid.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. When the scope was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @delete_time = args[:delete_time] if args.key?(:delete_time)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # ScopeFeatureSpec contains feature specs for a fleet scope.
       class ScopeFeatureSpec
         include Google::Apis::Core::Hashable
@@ -2961,6 +3152,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # ScopeLifecycleState describes the state of a Scope resource.
+      class ScopeLifecycleState
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The current state of the scope resource.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
         end
       end
       

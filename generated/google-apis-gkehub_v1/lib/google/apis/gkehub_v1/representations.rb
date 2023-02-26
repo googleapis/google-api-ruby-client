@@ -376,6 +376,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListMembershipBindingsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListMembershipsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -388,6 +394,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListScopesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Location
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -395,6 +407,18 @@ module Google
       end
       
       class Membership
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MembershipBinding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MembershipBindingLifecycleState
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -472,6 +496,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Scope
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ScopeFeatureSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -479,6 +509,12 @@ module Google
       end
       
       class ScopeFeatureState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ScopeLifecycleState
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1136,6 +1172,15 @@ module Google
         end
       end
       
+      class ListMembershipBindingsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :membership_bindings, as: 'membershipBindings', class: Google::Apis::GkehubV1::MembershipBinding, decorator: Google::Apis::GkehubV1::MembershipBinding::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListMembershipsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1151,6 +1196,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::GkehubV1::Operation, decorator: Google::Apis::GkehubV1::Operation::Representation
+      
+        end
+      end
+      
+      class ListScopesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :scopes, as: 'scopes', class: Google::Apis::GkehubV1::Scope, decorator: Google::Apis::GkehubV1::Scope::Representation
       
         end
       end
@@ -1184,6 +1238,28 @@ module Google
       
           property :unique_id, as: 'uniqueId'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class MembershipBinding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :delete_time, as: 'deleteTime'
+          property :fleet, as: 'fleet'
+          property :name, as: 'name'
+          property :scope, as: 'scope'
+          property :state, as: 'state', class: Google::Apis::GkehubV1::MembershipBindingLifecycleState, decorator: Google::Apis::GkehubV1::MembershipBindingLifecycleState::Representation
+      
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class MembershipBindingLifecycleState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
         end
       end
       
@@ -1327,6 +1403,19 @@ module Google
         end
       end
       
+      class Scope
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :delete_time, as: 'deleteTime'
+          property :name, as: 'name'
+          property :state, as: 'state', class: Google::Apis::GkehubV1::ScopeLifecycleState, decorator: Google::Apis::GkehubV1::ScopeLifecycleState::Representation
+      
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class ScopeFeatureSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1338,6 +1427,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :state, as: 'state', class: Google::Apis::GkehubV1::FeatureState, decorator: Google::Apis::GkehubV1::FeatureState::Representation
       
+        end
+      end
+      
+      class ScopeLifecycleState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
         end
       end
       
