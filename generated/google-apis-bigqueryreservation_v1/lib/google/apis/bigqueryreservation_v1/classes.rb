@@ -149,7 +149,7 @@ module Google
         # @return [String]
         attr_accessor :commitment_start_time
       
-        # Edition of the capacity commitment.
+        # Do not use.
         # Corresponds to the JSON property `edition`
         # @return [String]
         attr_accessor :edition
@@ -386,7 +386,7 @@ module Google
         # @return [String]
         attr_accessor :creation_time
       
-        # Edition of the reservation.
+        # Do not use.
         # Corresponds to the JSON property `edition`
         # @return [String]
         attr_accessor :edition
