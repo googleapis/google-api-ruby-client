@@ -580,6 +580,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IdentifierHelper
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InTotoProvenance
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1954,6 +1960,14 @@ module Google
         end
       end
       
+      class IdentifierHelper
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :field, as: 'field'
+          property :generic_uri, as: 'genericUri'
+        end
+      end
+      
       class InTotoProvenance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2290,8 +2304,9 @@ module Google
       class Product
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :generic_uri, as: 'genericUri'
           property :id, as: 'id'
+          property :identifier_helper, as: 'identifierHelper', class: Google::Apis::ContaineranalysisV1alpha1::IdentifierHelper, decorator: Google::Apis::ContaineranalysisV1alpha1::IdentifierHelper::Representation
+      
           property :name, as: 'name'
         end
       end
