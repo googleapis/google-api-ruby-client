@@ -3545,6 +3545,12 @@ module Google
       class GoogleCloudDialogflowCxV3MatchIntentRequest
         include Google::Apis::Core::Hashable
       
+        # Persist session parameter changes from `query_params`.
+        # Corresponds to the JSON property `persistParameterChanges`
+        # @return [Boolean]
+        attr_accessor :persist_parameter_changes
+        alias_method :persist_parameter_changes?, :persist_parameter_changes
+      
         # Represents the query input. It can contain one of: 1. A conversational query
         # in the form of text. 2. An intent query that specifies which intent to trigger.
         # 3. Natural language speech audio to be processed. 4. An event to be triggered.
@@ -3564,6 +3570,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @persist_parameter_changes = args[:persist_parameter_changes] if args.key?(:persist_parameter_changes)
           @query_input = args[:query_input] if args.key?(:query_input)
           @query_params = args[:query_params] if args.key?(:query_params)
         end
