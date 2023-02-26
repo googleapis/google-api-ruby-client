@@ -2048,6 +2048,14 @@ module Google
         # @return [String]
         attr_accessor :phone_number
       
+        # Android only. Used to assert application identity in place of a recaptcha
+        # token (or safety net token). A Play Integrity Token can be generated via the [
+        # PlayIntegrity API] (https://developer.android.com/google/play/integrity) with
+        # applying SHA256 to the `phone_number` field as the nonce.
+        # Corresponds to the JSON property `playIntegrityToken`
+        # @return [String]
+        attr_accessor :play_integrity_token
+      
         # Web only. Recaptcha solution.
         # Corresponds to the JSON property `recaptchaToken`
         # @return [String]
@@ -2071,6 +2079,7 @@ module Google
           @ios_receipt = args[:ios_receipt] if args.key?(:ios_receipt)
           @ios_secret = args[:ios_secret] if args.key?(:ios_secret)
           @phone_number = args[:phone_number] if args.key?(:phone_number)
+          @play_integrity_token = args[:play_integrity_token] if args.key?(:play_integrity_token)
           @recaptcha_token = args[:recaptcha_token] if args.key?(:recaptcha_token)
           @safety_net_token = args[:safety_net_token] if args.key?(:safety_net_token)
         end
