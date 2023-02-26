@@ -22,6 +22,109 @@ module Google
   module Apis
     module NetworksecurityV1beta1
       
+      # Request used by the AddAddressGroupItems method.
+      class AddAddressGroupItemsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. List of items to add.
+        # Corresponds to the JSON property `items`
+        # @return [Array<String>]
+        attr_accessor :items
+      
+        # Optional. An optional request ID to identify requests. Specify a unique
+        # request ID so that if you must retry your request, the server will know to
+        # ignore the request if it has already been completed. The server will guarantee
+        # that for at least 60 minutes since the first request. For example, consider a
+        # situation where you make an initial request and t he request times out. If you
+        # make the request again with the same request ID, the server can check if
+        # original operation with the same request ID was received, and if so, will
+        # ignore the second request. This prevents clients from accidentally creating
+        # duplicate commitments. The request ID must be a valid UUID with the exception
+        # that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @items = args[:items] if args.key?(:items)
+          @request_id = args[:request_id] if args.key?(:request_id)
+        end
+      end
+      
+      # AddressGroup is a resource that specifies how a collection of IP/DNS used in
+      # Firewall Policy.
+      class AddressGroup
+        include Google::Apis::Core::Hashable
+      
+        # Required. Capacity of the Address Group
+        # Corresponds to the JSON property `capacity`
+        # @return [Fixnum]
+        attr_accessor :capacity
+      
+        # Output only. The timestamp when the resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Free-text description of the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. List of items.
+        # Corresponds to the JSON property `items`
+        # @return [Array<String>]
+        attr_accessor :items
+      
+        # Optional. Set of label tags associated with the AddressGroup resource.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Required. Name of the AddressGroup resource. It matches pattern `projects/*/
+        # locations/`location`/addressGroups/`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Server-defined fully-qualified URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # Required. The type of the Address Group. Possible values are "IPv4" or "IPV6".
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Output only. The timestamp when the resource was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @capacity = args[:capacity] if args.key?(:capacity)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @items = args[:items] if args.key?(:items)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @type = args[:type] if args.key?(:type)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # AuthorizationPolicy is a resource that specifies how a server should authorize
       # incoming connections. This resource in itself does not change the
       # configuration unless it's attached to a target https proxy or endpoint config
@@ -187,6 +290,40 @@ module Google
           @server_validation_ca = args[:server_validation_ca] if args.key?(:server_validation_ca)
           @sni = args[:sni] if args.key?(:sni)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Request used by the CloneAddressGroupItems method.
+      class CloneAddressGroupItemsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. An optional request ID to identify requests. Specify a unique
+        # request ID so that if you must retry your request, the server will know to
+        # ignore the request if it has already been completed. The server will guarantee
+        # that for at least 60 minutes since the first request. For example, consider a
+        # situation where you make an initial request and t he request times out. If you
+        # make the request again with the same request ID, the server can check if
+        # original operation with the same request ID was received, and if so, will
+        # ignore the second request. This prevents clients from accidentally creating
+        # duplicate commitments. The request ID must be a valid UUID with the exception
+        # that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        # Required. Source address group to clone items from.
+        # Corresponds to the JSON property `sourceAddressGroup`
+        # @return [String]
+        attr_accessor :source_address_group
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @request_id = args[:request_id] if args.key?(:request_id)
+          @source_address_group = args[:source_address_group] if args.key?(:source_address_group)
         end
       end
       
@@ -716,6 +853,85 @@ module Google
         end
       end
       
+      # Response of the ListAddressGroupReferences method.
+      class ListAddressGroupReferencesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of references that matches the specified filter in the request.
+        # Corresponds to the JSON property `addressGroupReferences`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::ListAddressGroupReferencesResponseAddressGroupReference>]
+        attr_accessor :address_group_references
+      
+        # If there might be more results than those appearing in this response, then `
+        # next_page_token` is included. To get the next set of results, call this method
+        # again using the value of `next_page_token` as `page_token`.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @address_group_references = args[:address_group_references] if args.key?(:address_group_references)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # The Reference of AddressGroup.
+      class ListAddressGroupReferencesResponseAddressGroupReference
+        include Google::Apis::Core::Hashable
+      
+        # FirewallPolicy that is using the Address Group.
+        # Corresponds to the JSON property `firewallPolicy`
+        # @return [String]
+        attr_accessor :firewall_policy
+      
+        # Rule priority of the FirewallPolicy that is using the Address Group.
+        # Corresponds to the JSON property `rulePriority`
+        # @return [Fixnum]
+        attr_accessor :rule_priority
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @firewall_policy = args[:firewall_policy] if args.key?(:firewall_policy)
+          @rule_priority = args[:rule_priority] if args.key?(:rule_priority)
+        end
+      end
+      
+      # Response returned by the ListAddressGroups method.
+      class ListAddressGroupsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of AddressGroups resources.
+        # Corresponds to the JSON property `addressGroups`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::AddressGroup>]
+        attr_accessor :address_groups
+      
+        # If there might be more results than those appearing in this response, then `
+        # next_page_token` is included. To get the next set of results, call this method
+        # again using the value of `next_page_token` as `page_token`.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @address_groups = args[:address_groups] if args.key?(:address_groups)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response returned by the ListAuthorizationPolicies method.
       class ListAuthorizationPoliciesResponse
         include Google::Apis::Core::Hashable
@@ -1032,6 +1248,40 @@ module Google
           @status_message = args[:status_message] if args.key?(:status_message)
           @target = args[:target] if args.key?(:target)
           @verb = args[:verb] if args.key?(:verb)
+        end
+      end
+      
+      # Request used by the RemoveAddressGroupItems method.
+      class RemoveAddressGroupItemsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. List of items to remove.
+        # Corresponds to the JSON property `items`
+        # @return [Array<String>]
+        attr_accessor :items
+      
+        # Optional. An optional request ID to identify requests. Specify a unique
+        # request ID so that if you must retry your request, the server will know to
+        # ignore the request if it has already been completed. The server will guarantee
+        # that for at least 60 minutes since the first request. For example, consider a
+        # situation where you make an initial request and t he request times out. If you
+        # make the request again with the same request ID, the server can check if
+        # original operation with the same request ID was received, and if so, will
+        # ignore the second request. This prevents clients from accidentally creating
+        # duplicate commitments. The request ID must be a valid UUID with the exception
+        # that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @items = args[:items] if args.key?(:items)
+          @request_id = args[:request_id] if args.key?(:request_id)
         end
       end
       
