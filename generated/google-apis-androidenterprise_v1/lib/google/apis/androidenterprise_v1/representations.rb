@@ -745,11 +745,18 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :android_id, as: 'androidId'
+          property :device, as: 'device'
+          property :latest_build_fingerprint, as: 'latestBuildFingerprint'
+          property :maker, as: 'maker'
           property :management_type, as: 'managementType'
+          property :model, as: 'model'
           property :policy, as: 'policy', class: Google::Apis::AndroidenterpriseV1::Policy, decorator: Google::Apis::AndroidenterpriseV1::Policy::Representation
       
+          property :product, as: 'product'
           property :report, as: 'report', class: Google::Apis::AndroidenterpriseV1::DeviceReport, decorator: Google::Apis::AndroidenterpriseV1::DeviceReport::Representation
       
+          property :retail_brand, as: 'retailBrand'
+          property :sdk_version, as: 'sdkVersion'
         end
       end
       
