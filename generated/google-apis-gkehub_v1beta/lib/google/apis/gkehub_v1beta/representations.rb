@@ -358,13 +358,49 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListMembershipBindingsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListNamespacesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListOperationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListRbacRoleBindingsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListScopesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Location
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MembershipBinding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MembershipBindingLifecycleState
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -395,6 +431,18 @@ module Google
       end
       
       class MultiClusterIngressFeatureSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Namespace
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NamespaceLifecycleState
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -484,6 +532,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PolicyControllerToleration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RbacRoleBinding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RbacRoleBindingLifecycleState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Role
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Scope
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ScopeFeatureSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -491,6 +569,12 @@ module Google
       end
       
       class ScopeFeatureState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ScopeLifecycleState
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1116,11 +1200,47 @@ module Google
         end
       end
       
+      class ListMembershipBindingsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :membership_bindings, as: 'membershipBindings', class: Google::Apis::GkehubV1beta::MembershipBinding, decorator: Google::Apis::GkehubV1beta::MembershipBinding::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListNamespacesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :namespaces, as: 'namespaces', class: Google::Apis::GkehubV1beta::Namespace, decorator: Google::Apis::GkehubV1beta::Namespace::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListOperationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::GkehubV1beta::Operation, decorator: Google::Apis::GkehubV1beta::Operation::Representation
+      
+        end
+      end
+      
+      class ListRbacRoleBindingsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :rbacrolebindings, as: 'rbacrolebindings', class: Google::Apis::GkehubV1beta::RbacRoleBinding, decorator: Google::Apis::GkehubV1beta::RbacRoleBinding::Representation
+      
+        end
+      end
+      
+      class ListScopesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :scopes, as: 'scopes', class: Google::Apis::GkehubV1beta::Scope, decorator: Google::Apis::GkehubV1beta::Scope::Representation
       
         end
       end
@@ -1133,6 +1253,28 @@ module Google
           property :location_id, as: 'locationId'
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
+        end
+      end
+      
+      class MembershipBinding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :delete_time, as: 'deleteTime'
+          property :fleet, as: 'fleet'
+          property :name, as: 'name'
+          property :scope, as: 'scope'
+          property :state, as: 'state', class: Google::Apis::GkehubV1beta::MembershipBindingLifecycleState, decorator: Google::Apis::GkehubV1beta::MembershipBindingLifecycleState::Representation
+      
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class MembershipBindingLifecycleState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
         end
       end
       
@@ -1200,6 +1342,27 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :billing, as: 'billing'
           property :config_membership, as: 'configMembership'
+        end
+      end
+      
+      class Namespace
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :delete_time, as: 'deleteTime'
+          property :name, as: 'name'
+          property :scope, as: 'scope'
+          property :state, as: 'state', class: Google::Apis::GkehubV1beta::NamespaceLifecycleState, decorator: Google::Apis::GkehubV1beta::NamespaceLifecycleState::Representation
+      
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class NamespaceLifecycleState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
         end
       end
       
@@ -1318,6 +1481,8 @@ module Google
           property :container_resources, as: 'containerResources', class: Google::Apis::GkehubV1beta::PolicyControllerResourceRequirements, decorator: Google::Apis::GkehubV1beta::PolicyControllerResourceRequirements::Representation
       
           property :pod_anti_affinity, as: 'podAntiAffinity'
+          collection :pod_tolerations, as: 'podTolerations', class: Google::Apis::GkehubV1beta::PolicyControllerToleration, decorator: Google::Apis::GkehubV1beta::PolicyControllerToleration::Representation
+      
           property :replica_count, :numeric_string => true, as: 'replicaCount'
         end
       end
@@ -1347,6 +1512,60 @@ module Google
         end
       end
       
+      class PolicyControllerToleration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :effect, as: 'effect'
+          property :key, as: 'key'
+          property :operator, as: 'operator'
+          property :value, as: 'value'
+        end
+      end
+      
+      class RbacRoleBinding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :delete_time, as: 'deleteTime'
+          property :group, as: 'group'
+          property :name, as: 'name'
+          property :role, as: 'role', class: Google::Apis::GkehubV1beta::Role, decorator: Google::Apis::GkehubV1beta::Role::Representation
+      
+          property :state, as: 'state', class: Google::Apis::GkehubV1beta::RbacRoleBindingLifecycleState, decorator: Google::Apis::GkehubV1beta::RbacRoleBindingLifecycleState::Representation
+      
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
+          property :user, as: 'user'
+        end
+      end
+      
+      class RbacRoleBindingLifecycleState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+        end
+      end
+      
+      class Role
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :predefined_role, as: 'predefinedRole'
+        end
+      end
+      
+      class Scope
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :delete_time, as: 'deleteTime'
+          property :name, as: 'name'
+          property :state, as: 'state', class: Google::Apis::GkehubV1beta::ScopeLifecycleState, decorator: Google::Apis::GkehubV1beta::ScopeLifecycleState::Representation
+      
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class ScopeFeatureSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1358,6 +1577,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :state, as: 'state', class: Google::Apis::GkehubV1beta::FeatureState, decorator: Google::Apis::GkehubV1beta::FeatureState::Representation
       
+        end
+      end
+      
+      class ScopeLifecycleState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
         end
       end
       
