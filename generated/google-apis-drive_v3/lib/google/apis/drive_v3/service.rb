@@ -212,7 +212,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Subscribes to changes for a user.
+        # Subscribes to changes for a user. To use this method, you must include the
+        # pageToken query parameter.
         # @param [String] page_token
         #   The token for continuing a previous list request on the next page. This should
         #   be set to the value of 'nextPageToken' from the previous response or to the
@@ -1480,7 +1481,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a permission for a file or shared drive.
+        # Creates a permission for a file or shared drive. For more information on
+        # creating permissions, see Share files, folders & drives.
         # @param [String] file_id
         #   The ID of the file or shared drive.
         # @param [Google::Apis::DriveV3::Permission] permission_object
