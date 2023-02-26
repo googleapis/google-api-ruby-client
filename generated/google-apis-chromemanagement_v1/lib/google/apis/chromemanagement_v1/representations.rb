@@ -142,6 +142,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromeManagementV1CountPrintJobsByPrinterResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1CountPrintJobsByUserResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromeManagementV1CpuInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -179,6 +191,12 @@ module Google
       end
       
       class GoogleChromeManagementV1DiskInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1DisplayDevice
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -292,6 +310,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromeManagementV1PrinterReport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromeManagementV1StorageInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -376,7 +400,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromeManagementV1TouchScreenDevice
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1TouchScreenInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromeManagementV1UsbPeripheralReport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1UserPrintReport
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -633,6 +675,26 @@ module Google
         end
       end
       
+      class GoogleChromeManagementV1CountPrintJobsByPrinterResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :printer_reports, as: 'printerReports', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1PrinterReport, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1PrinterReport::Representation
+      
+          property :total_size, :numeric_string => true, as: 'totalSize'
+        end
+      end
+      
+      class GoogleChromeManagementV1CountPrintJobsByUserResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          property :total_size, :numeric_string => true, as: 'totalSize'
+          collection :user_print_reports, as: 'userPrintReports', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1UserPrintReport, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1UserPrintReport::Representation
+      
+        end
+      end
+      
       class GoogleChromeManagementV1CpuInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -709,10 +771,24 @@ module Google
         end
       end
       
+      class GoogleChromeManagementV1DisplayDevice
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_height_mm, as: 'displayHeightMm'
+          property :display_name, as: 'displayName'
+          property :display_width_mm, as: 'displayWidthMm'
+          property :internal, as: 'internal'
+          property :manufacture_year, as: 'manufactureYear'
+          property :manufacturer_id, as: 'manufacturerId'
+          property :model_id, as: 'modelId'
+        end
+      end
+      
       class GoogleChromeManagementV1DisplayInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :device_id, :numeric_string => true, as: 'deviceId'
+          property :display_name, as: 'displayName'
           property :is_internal, as: 'isInternal'
           property :refresh_rate, as: 'refreshRate'
           property :resolution_height, as: 'resolutionHeight'
@@ -743,6 +819,11 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :adapter_info, as: 'adapterInfo', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1GraphicsAdapterInfo, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1GraphicsAdapterInfo::Representation
+      
+          collection :display_devices, as: 'displayDevices', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1DisplayDevice, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1DisplayDevice::Representation
+      
+          property :eprivacy_supported, as: 'eprivacySupported'
+          property :touch_screen_info, as: 'touchScreenInfo', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TouchScreenInfo, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TouchScreenInfo::Representation
       
         end
       end
@@ -895,6 +976,18 @@ module Google
           property :report_time, as: 'reportTime'
           collection :usb_peripheral_report, as: 'usbPeripheralReport', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1UsbPeripheralReport, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1UsbPeripheralReport::Representation
       
+        end
+      end
+      
+      class GoogleChromeManagementV1PrinterReport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_count, :numeric_string => true, as: 'deviceCount'
+          property :job_count, :numeric_string => true, as: 'jobCount'
+          property :printer, as: 'printer'
+          property :printer_id, as: 'printerId'
+          property :printer_model, as: 'printerModel'
+          property :user_count, :numeric_string => true, as: 'userCount'
         end
       end
       
@@ -1072,6 +1165,24 @@ module Google
         end
       end
       
+      class GoogleChromeManagementV1TouchScreenDevice
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :stylus_capable, as: 'stylusCapable'
+          property :touch_point_count, as: 'touchPointCount'
+        end
+      end
+      
+      class GoogleChromeManagementV1TouchScreenInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :devices, as: 'devices', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TouchScreenDevice, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TouchScreenDevice::Representation
+      
+          property :touchpad_library, as: 'touchpadLibrary'
+        end
+      end
+      
       class GoogleChromeManagementV1UsbPeripheralReport
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1083,6 +1194,17 @@ module Google
           property :subclass_id, as: 'subclassId'
           property :vendor, as: 'vendor'
           property :vid, as: 'vid'
+        end
+      end
+      
+      class GoogleChromeManagementV1UserPrintReport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_count, :numeric_string => true, as: 'deviceCount'
+          property :job_count, :numeric_string => true, as: 'jobCount'
+          property :printer_count, :numeric_string => true, as: 'printerCount'
+          property :user_email, as: 'userEmail'
+          property :user_id, as: 'userId'
         end
       end
       
