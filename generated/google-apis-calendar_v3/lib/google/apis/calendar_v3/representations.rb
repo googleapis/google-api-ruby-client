@@ -214,6 +214,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EventWorkingLocationProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class CustomLocation
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+        
+        class OfficeLocation
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Events
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -562,6 +580,8 @@ module Google
           property :updated, as: 'updated', type: DateTime
       
           property :visibility, as: 'visibility'
+          property :working_location_properties, as: 'workingLocationProperties', class: Google::Apis::CalendarV3::EventWorkingLocationProperties, decorator: Google::Apis::CalendarV3::EventWorkingLocationProperties::Representation
+      
         end
         
         class Creator
@@ -667,6 +687,35 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :reminder_method, as: 'method'
           property :minutes, as: 'minutes'
+        end
+      end
+      
+      class EventWorkingLocationProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_location, as: 'customLocation', class: Google::Apis::CalendarV3::EventWorkingLocationProperties::CustomLocation, decorator: Google::Apis::CalendarV3::EventWorkingLocationProperties::CustomLocation::Representation
+      
+          property :home_office, as: 'homeOffice'
+          property :office_location, as: 'officeLocation', class: Google::Apis::CalendarV3::EventWorkingLocationProperties::OfficeLocation, decorator: Google::Apis::CalendarV3::EventWorkingLocationProperties::OfficeLocation::Representation
+      
+        end
+        
+        class CustomLocation
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :label, as: 'label'
+          end
+        end
+        
+        class OfficeLocation
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :building_id, as: 'buildingId'
+            property :desk_id, as: 'deskId'
+            property :floor_id, as: 'floorId'
+            property :floor_section_id, as: 'floorSectionId'
+            property :label, as: 'label'
+          end
         end
       end
       
