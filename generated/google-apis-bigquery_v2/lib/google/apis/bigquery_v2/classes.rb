@@ -1615,6 +1615,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :default_partition_expiration_ms
       
+        # [Output-only] The default rounding mode of the dataset.
+        # Corresponds to the JSON property `defaultRoundingMode`
+        # @return [String]
+        attr_accessor :default_rounding_mode
+      
         # [Optional] The default lifetime of all tables in the dataset, in milliseconds.
         # The minimum value is 3600000 milliseconds (one hour). Once this property is
         # set, all newly-created tables in the dataset will have an expirationTime
@@ -1723,6 +1728,7 @@ module Google
           @default_collation = args[:default_collation] if args.key?(:default_collation)
           @default_encryption_configuration = args[:default_encryption_configuration] if args.key?(:default_encryption_configuration)
           @default_partition_expiration_ms = args[:default_partition_expiration_ms] if args.key?(:default_partition_expiration_ms)
+          @default_rounding_mode = args[:default_rounding_mode] if args.key?(:default_rounding_mode)
           @default_table_expiration_ms = args[:default_table_expiration_ms] if args.key?(:default_table_expiration_ms)
           @description = args[:description] if args.key?(:description)
           @etag = args[:etag] if args.key?(:etag)
@@ -7310,6 +7316,11 @@ module Google
         # @return [String]
         attr_accessor :default_collation
       
+        # [Output-only] The default rounding mode of the table.
+        # Corresponds to the JSON property `defaultRoundingMode`
+        # @return [String]
+        attr_accessor :default_rounding_mode
+      
         # [Optional] A user-friendly description of this table.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -7543,6 +7554,7 @@ module Google
           @clustering = args[:clustering] if args.key?(:clustering)
           @creation_time = args[:creation_time] if args.key?(:creation_time)
           @default_collation = args[:default_collation] if args.key?(:default_collation)
+          @default_rounding_mode = args[:default_rounding_mode] if args.key?(:default_rounding_mode)
           @description = args[:description] if args.key?(:description)
           @encryption_configuration = args[:encryption_configuration] if args.key?(:encryption_configuration)
           @etag = args[:etag] if args.key?(:etag)
@@ -7862,6 +7874,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :precision
       
+        # Optional. Rounding Mode specification of the field. It only can be set on
+        # NUMERIC or BIGNUMERIC type fields.
+        # Corresponds to the JSON property `roundingMode`
+        # @return [String]
+        attr_accessor :rounding_mode
+      
         # [Optional] See documentation for precision.
         # Corresponds to the JSON property `scale`
         # @return [Fixnum]
@@ -7892,6 +7910,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @policy_tags = args[:policy_tags] if args.key?(:policy_tags)
           @precision = args[:precision] if args.key?(:precision)
+          @rounding_mode = args[:rounding_mode] if args.key?(:rounding_mode)
           @scale = args[:scale] if args.key?(:scale)
           @type = args[:type] if args.key?(:type)
         end
