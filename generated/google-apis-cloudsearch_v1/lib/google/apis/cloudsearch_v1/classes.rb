@@ -303,7 +303,7 @@ module Google
       
       # NOTE WHEN ADDING NEW PROTO FIELDS: Be sure to add datapol annotations to new
       # fields with potential PII, so they get scrubbed when logging protos for errors.
-      # NEXT TAG: 29
+      # NEXT TAG: 31
       class Annotation
         include Google::Apis::Core::Hashable
       
@@ -319,8 +319,8 @@ module Google
         # @return [Google::Apis::CloudsearchV1::CardCapabilityMetadata]
         attr_accessor :card_capability_metadata
       
-        # Whether the annotation should be rendered as a chip. If this is missing or
-        # unspecified, fallback to should_not_render on the metadata.
+        # Whether the annotation should be rendered as a preview chip. If this is
+        # missing or unspecified, fallback to should_not_render on the metadata.
         # Corresponds to the JSON property `chipRenderType`
         # @return [String]
         attr_accessor :chip_render_type
@@ -369,12 +369,24 @@ module Google
         # @return [Google::Apis::CloudsearchV1::IncomingWebhookChangedMetadata]
         attr_accessor :incoming_webhook_changed_metadata
       
+        # The inline render format of this annotation. go/drive-smart-chips-chat-v2.
+        # Corresponds to the JSON property `inlineRenderFormat`
+        # @return [String]
+        attr_accessor :inline_render_format
+      
         # Annotation metadata to display system message for integration config updated
         # event. This metadata is stored in spanner, and can be dispatched to clients
         # without any field modification or transformation.
         # Corresponds to the JSON property `integrationConfigUpdated`
         # @return [Google::Apis::CloudsearchV1::IntegrationConfigUpdatedMetadata]
         attr_accessor :integration_config_updated
+      
+        # Interaction data for an annotation, which may be supplemental to the metadata
+        # oneof. For example, this will contain the fully built navigation target for
+        # smart chips. NEXT TAG: 2
+        # Corresponds to the JSON property `interactionData`
+        # @return [Google::Apis::CloudsearchV1::InteractionData]
+        attr_accessor :interaction_data
       
         # Length of the text_body substring beginning from start_index the Annotation
         # corresponds to.
@@ -493,7 +505,9 @@ module Google
           @group_retention_settings_updated = args[:group_retention_settings_updated] if args.key?(:group_retention_settings_updated)
           @gsuite_integration_metadata = args[:gsuite_integration_metadata] if args.key?(:gsuite_integration_metadata)
           @incoming_webhook_changed_metadata = args[:incoming_webhook_changed_metadata] if args.key?(:incoming_webhook_changed_metadata)
+          @inline_render_format = args[:inline_render_format] if args.key?(:inline_render_format)
           @integration_config_updated = args[:integration_config_updated] if args.key?(:integration_config_updated)
+          @interaction_data = args[:interaction_data] if args.key?(:interaction_data)
           @length = args[:length] if args.key?(:length)
           @local_id = args[:local_id] if args.key?(:local_id)
           @membership_changed = args[:membership_changed] if args.key?(:membership_changed)
@@ -2093,10 +2107,16 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # 
+        # Deprecated. Use segmented_membership_counts instead which also includes other
+        # counts such as rosters.
         # Corresponds to the JSON property `numMembers`
         # @return [Fixnum]
         attr_accessor :num_members
+      
+        # Member counts object with types of members and their respective counts.
+        # Corresponds to the JSON property `segmentedMembershipCounts`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedSegmentedMembershipCounts]
+        attr_accessor :segmented_membership_counts
       
         # searching user's membership state in this space
         # Corresponds to the JSON property `userMembershipState`
@@ -2117,6 +2137,7 @@ module Google
           @is_external = args[:is_external] if args.key?(:is_external)
           @name = args[:name] if args.key?(:name)
           @num_members = args[:num_members] if args.key?(:num_members)
+          @segmented_membership_counts = args[:segmented_membership_counts] if args.key?(:segmented_membership_counts)
           @user_membership_state = args[:user_membership_state] if args.key?(:user_membership_state)
         end
       end
@@ -2413,6 +2434,22 @@ module Google
         # @return [Array<Google::Apis::CloudsearchV1::AppsDynamiteStorageActionActionParameter>]
         attr_accessor :parameters
       
+        # Indicates whether form values persist after the action. The default value is `
+        # false`. If `true`, form values remain after the action is triggered. When
+        # using [LoadIndicator.NONE](workspace/add-ons/reference/rpc/google.apps.card.v1#
+        # loadindicator) for actions, `persist_values` = `true`is recommended, as it
+        # ensures that any changes made by the user after form or on change actions are
+        # sent to the server are not overwritten by the response. If `false`, the form
+        # values are cleared when the action is triggered. When `persist_values` is set
+        # to `false`, it is strongly recommended that the card use [LoadIndicator.
+        # SPINNER](workspace/add-ons/reference/rpc/google.apps.card.v1#loadindicator)
+        # for all actions, as this locks the UI to ensure no changes are made by the
+        # user while the action is being processed.
+        # Corresponds to the JSON property `persistValues`
+        # @return [Boolean]
+        attr_accessor :persist_values
+        alias_method :persist_values?, :persist_values
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2423,6 +2460,7 @@ module Google
           @interaction = args[:interaction] if args.key?(:interaction)
           @load_indicator = args[:load_indicator] if args.key?(:load_indicator)
           @parameters = args[:parameters] if args.key?(:parameters)
+          @persist_values = args[:persist_values] if args.key?(:persist_values)
         end
       end
       
@@ -11588,6 +11626,29 @@ module Google
         end
       end
       
+      # Interaction data for an annotation, which may be supplemental to the metadata
+      # oneof. For example, this will contain the fully built navigation target for
+      # smart chips. NEXT TAG: 2
+      class InteractionData
+        include Google::Apis::Core::Hashable
+      
+        # Message containing a string that is safe to use in URL contexts in DOM APIs
+        # and HTML documents, where the URL context does not refer to a resource that
+        # loads code.
+        # Corresponds to the JSON property `url`
+        # @return [Google::Apis::CloudsearchV1::SafeUrlProto]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @url = args[:url] if args.key?(:url)
+        end
+      end
+      
       # 
       class InviteAcceptedEvent
         include Google::Apis::Core::Hashable
@@ -13686,6 +13747,13 @@ module Google
         # @return [Array<Google::Apis::CloudsearchV1::MultiKey>]
         attr_accessor :message_keys
       
+        # Value of coproc's message delete history record extension that exports /wonder/
+        # message_mapping/`vertical` attribute of deleted messages which have smartmail
+        # label (eg. ^cob_sm_invoice, etc).
+        # Corresponds to the JSON property `wonderCardMappings`
+        # @return [Array<Google::Apis::CloudsearchV1::WonderCardDelete>]
+        attr_accessor :wonder_card_mappings
+      
         def initialize(**args)
            update!(**args)
         end
@@ -13694,6 +13762,7 @@ module Google
         def update!(**args)
           @imap_sync_mappings = args[:imap_sync_mappings] if args.key?(:imap_sync_mappings)
           @message_keys = args[:message_keys] if args.key?(:message_keys)
+          @wonder_card_mappings = args[:wonder_card_mappings] if args.key?(:wonder_card_mappings)
         end
       end
       
@@ -13729,6 +13798,11 @@ module Google
       class MessageInfo
         include Google::Apis::Core::Hashable
       
+        # Message author’s user type (human/bot).
+        # Corresponds to the JSON property `authorUserType`
+        # @return [String]
+        attr_accessor :author_user_type
+      
         # Message posted to a Space.
         # Corresponds to the JSON property `message`
         # @return [Google::Apis::CloudsearchV1::Message]
@@ -13745,6 +13819,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @author_user_type = args[:author_user_type] if args.key?(:author_user_type)
           @message = args[:message] if args.key?(:message)
           @searcher_membership_state = args[:searcher_membership_state] if args.key?(:searcher_membership_state)
         end
@@ -21002,6 +21077,13 @@ module Google
         # @return [String]
         attr_accessor :type
       
+        # Specific reason for the user mention failing, for fine-grained processing by
+        # clients (i.e. specific error message for space limit exceeded case) IMPORTANT:
+        # Set this only for FAILED_TO_ADD case.
+        # Corresponds to the JSON property `userMentionError`
+        # @return [String]
+        attr_accessor :user_mention_error
+      
         def initialize(**args)
            update!(**args)
         end
@@ -21013,6 +21095,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @invitee_info = args[:invitee_info] if args.key?(:invitee_info)
           @type = args[:type] if args.key?(:type)
+          @user_mention_error = args[:user_mention_error] if args.key?(:user_mention_error)
         end
       end
       
@@ -21393,6 +21476,55 @@ module Google
           @text_field = args[:text_field] if args.key?(:text_field)
           @text_key_value = args[:text_key_value] if args.key?(:text_key_value)
           @text_paragraph = args[:text_paragraph] if args.key?(:text_paragraph)
+        end
+      end
+      
+      # Message delete history record extension that exports /wonder/message_mapping/`
+      # vertical` attribute of deleted messages which have any smartmail label (eg. ^
+      # cob_sm_invoice). go/how-dd-card-deletion
+      class WonderCardDelete
+        include Google::Apis::Core::Hashable
+      
+        # Contains <`@code WonderCardType` enum value, value of /wonder/message_mapping/`
+        # vertical` attribute of deleted message> pairs.
+        # Corresponds to the JSON property `messageMappings`
+        # @return [Hash<String,Google::Apis::CloudsearchV1::WonderMessageMapping>]
+        attr_accessor :message_mappings
+      
+        # Message ID of the original deleted message
+        # Corresponds to the JSON property `msgId`
+        # @return [Fixnum]
+        attr_accessor :msg_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message_mappings = args[:message_mappings] if args.key?(:message_mappings)
+          @msg_id = args[:msg_id] if args.key?(:msg_id)
+        end
+      end
+      
+      # Card mapping attached to original message as an attribute stored at /wonder/
+      # message_mapping/`vertical` Next ID: 2
+      class WonderMessageMapping
+        include Google::Apis::Core::Hashable
+      
+        # List of wonder card (client-generated) message IDs generated based on the
+        # original message.
+        # Corresponds to the JSON property `wonderCardMessageId`
+        # @return [Array<String>]
+        attr_accessor :wonder_card_message_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @wonder_card_message_id = args[:wonder_card_message_id] if args.key?(:wonder_card_message_id)
         end
       end
       
