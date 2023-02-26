@@ -14539,10 +14539,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :disk_size_gb
       
-        # The name of the image family to which this image belongs. You can create disks
-        # by specifying an image family instead of a specific image name. The image
-        # family always returns its latest image that is not deprecated. The name of the
-        # image family must comply with RFC1035.
+        # The name of the image family to which this image belongs. The image family
+        # name can be from a publicly managed image family provided by Compute Engine,
+        # or from a custom image family you create. For example, centos-stream-9 is a
+        # publicly available image family. For more information, see Image family best
+        # practices. When creating disks, you can specify an image family instead of a
+        # specific image name. The image family always returns its latest image that is
+        # not deprecated. The name of the image family must comply with RFC1035.
         # Corresponds to the JSON property `family`
         # @return [String]
         attr_accessor :family
