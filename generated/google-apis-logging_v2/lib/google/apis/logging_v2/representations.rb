@@ -22,6 +22,12 @@ module Google
   module Apis
     module LoggingV2
       
+      class BigQueryDataset
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BigQueryOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -76,6 +82,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CreateLinkRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeleteLinkRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -118,6 +136,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Link
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LinkMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListBucketsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -125,6 +155,12 @@ module Google
       end
       
       class ListExclusionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListLinksResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -185,6 +221,12 @@ module Google
       end
       
       class Location
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LocationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -358,6 +400,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BigQueryDataset
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dataset_id, as: 'datasetId'
+        end
+      end
+      
       class BigQueryOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -447,6 +496,23 @@ module Google
         end
       end
       
+      class CreateLinkRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :link, as: 'link', class: Google::Apis::LoggingV2::Link, decorator: Google::Apis::LoggingV2::Link::Representation
+      
+          property :link_id, as: 'linkId'
+          property :parent, as: 'parent'
+        end
+      end
+      
+      class DeleteLinkRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -517,6 +583,31 @@ module Google
         end
       end
       
+      class Link
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bigquery_dataset, as: 'bigqueryDataset', class: Google::Apis::LoggingV2::BigQueryDataset, decorator: Google::Apis::LoggingV2::BigQueryDataset::Representation
+      
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :lifecycle_state, as: 'lifecycleState'
+          property :name, as: 'name'
+        end
+      end
+      
+      class LinkMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_link_request, as: 'createLinkRequest', class: Google::Apis::LoggingV2::CreateLinkRequest, decorator: Google::Apis::LoggingV2::CreateLinkRequest::Representation
+      
+          property :delete_link_request, as: 'deleteLinkRequest', class: Google::Apis::LoggingV2::DeleteLinkRequest, decorator: Google::Apis::LoggingV2::DeleteLinkRequest::Representation
+      
+          property :end_time, as: 'endTime'
+          property :start_time, as: 'startTime'
+          property :state, as: 'state'
+        end
+      end
+      
       class ListBucketsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -530,6 +621,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :exclusions, as: 'exclusions', class: Google::Apis::LoggingV2::LogExclusion, decorator: Google::Apis::LoggingV2::LogExclusion::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListLinksResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :links, as: 'links', class: Google::Apis::LoggingV2::Link, decorator: Google::Apis::LoggingV2::Link::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
@@ -626,6 +726,13 @@ module Google
           property :location_id, as: 'locationId'
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
+        end
+      end
+      
+      class LocationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :log_analytics_enabled, as: 'logAnalyticsEnabled'
         end
       end
       

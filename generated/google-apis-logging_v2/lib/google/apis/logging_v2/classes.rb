@@ -22,6 +22,29 @@ module Google
   module Apis
     module LoggingV2
       
+      # Describes a BigQuery dataset that was created by a link.
+      class BigQueryDataset
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The full resource name of the BigQuery dataset. The DATASET_ID
+        # will match the ID of the link, so the link must match the naming restrictions
+        # of BigQuery datasets (alphanumeric characters and underscores only).The
+        # dataset will have a resource path of "bigquery.googleapis.com/projects/
+        # PROJECT_ID/datasets/DATASET_ID"
+        # Corresponds to the JSON property `datasetId`
+        # @return [String]
+        attr_accessor :dataset_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataset_id = args[:dataset_id] if args.key?(:dataset_id)
+        end
+      end
+      
       # Options that change functionality of a sink exporting data to BigQuery.
       class BigQueryOptions
         include Google::Apis::Core::Hashable
@@ -385,6 +408,67 @@ module Google
         end
       end
       
+      # The parameters to CreateLink.
+      class CreateLinkRequest
+        include Google::Apis::Core::Hashable
+      
+        # Describes a link connected to an analytics enabled bucket.
+        # Corresponds to the JSON property `link`
+        # @return [Google::Apis::LoggingV2::Link]
+        attr_accessor :link
+      
+        # Required. The ID to use for the link. The link_id can have up to 100
+        # characters. A valid link_id must only have alphanumeric characters and
+        # underscores within it.
+        # Corresponds to the JSON property `linkId`
+        # @return [String]
+        attr_accessor :link_id
+      
+        # Required. The full resource name of the bucket to create a link for. "projects/
+        # [PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[
+        # ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/
+        # [BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[
+        # FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @link = args[:link] if args.key?(:link)
+          @link_id = args[:link_id] if args.key?(:link_id)
+          @parent = args[:parent] if args.key?(:parent)
+        end
+      end
+      
+      # The parameters to DeleteLink.
+      class DeleteLinkRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The full resource name of the link to delete."projects/PROJECT_ID/
+        # locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "organizations/
+        # ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "
+        # billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
+        # links/LINK_ID" "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
+        # links/LINK_ID"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -682,6 +766,100 @@ module Google
         end
       end
       
+      # Describes a link connected to an analytics enabled bucket.
+      class Link
+        include Google::Apis::Core::Hashable
+      
+        # Describes a BigQuery dataset that was created by a link.
+        # Corresponds to the JSON property `bigqueryDataset`
+        # @return [Google::Apis::LoggingV2::BigQueryDataset]
+        attr_accessor :bigquery_dataset
+      
+        # Output only. The creation timestamp of the link.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Describes this link.The maximum length of the description is 8000 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. The resource lifecycle state.
+        # Corresponds to the JSON property `lifecycleState`
+        # @return [String]
+        attr_accessor :lifecycle_state
+      
+        # The resource name of the link. The name can have up to 100 characters. A valid
+        # link id (at the end of the link name) must only have alphanumeric characters
+        # and underscores within it. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/
+        # buckets/[BUCKET_ID]/links/[LINK_ID]" "organizations/[ORGANIZATION_ID]/
+        # locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "billingAccounts/[
+        # BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]
+        # " "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[
+        # LINK_ID]" For example:`projects/my-project/locations/global/buckets/my-bucket/
+        # links/my_link
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bigquery_dataset = args[:bigquery_dataset] if args.key?(:bigquery_dataset)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @lifecycle_state = args[:lifecycle_state] if args.key?(:lifecycle_state)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Metadata for long running Link operations.
+      class LinkMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The parameters to CreateLink.
+        # Corresponds to the JSON property `createLinkRequest`
+        # @return [Google::Apis::LoggingV2::CreateLinkRequest]
+        attr_accessor :create_link_request
+      
+        # The parameters to DeleteLink.
+        # Corresponds to the JSON property `deleteLinkRequest`
+        # @return [Google::Apis::LoggingV2::DeleteLinkRequest]
+        attr_accessor :delete_link_request
+      
+        # The end time of an operation.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The start time of an operation.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # State of an operation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_link_request = args[:create_link_request] if args.key?(:create_link_request)
+          @delete_link_request = args[:delete_link_request] if args.key?(:delete_link_request)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # The response from ListBuckets.
       class ListBucketsResponse
         include Google::Apis::Core::Hashable
@@ -732,6 +910,33 @@ module Google
         # Update properties of this object
         def update!(**args)
           @exclusions = args[:exclusions] if args.key?(:exclusions)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # The response from ListLinks.
+      class ListLinksResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of links.
+        # Corresponds to the JSON property `links`
+        # @return [Array<Google::Apis::LoggingV2::Link>]
+        attr_accessor :links
+      
+        # If there might be more results than those appearing in this response, then
+        # nextPageToken is included. To get the next set of results, call the same
+        # method again using the value of nextPageToken as pageToken.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @links = args[:links] if args.key?(:links)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
@@ -1075,6 +1280,27 @@ module Google
           @location_id = args[:location_id] if args.key?(:location_id)
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Cloud Logging specific location metadata.
+      class LocationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Indicates whether or not Log Analytics features are supported in the given
+        # location.
+        # Corresponds to the JSON property `logAnalyticsEnabled`
+        # @return [Boolean]
+        attr_accessor :log_analytics_enabled
+        alias_method :log_analytics_enabled?, :log_analytics_enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @log_analytics_enabled = args[:log_analytics_enabled] if args.key?(:log_analytics_enabled)
         end
       end
       
