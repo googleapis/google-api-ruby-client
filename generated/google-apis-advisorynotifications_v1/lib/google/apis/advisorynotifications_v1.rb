@@ -21,7 +21,7 @@ module Google
   module Apis
     # Advisory Notifications API
     #
-    # 
+    # An API for accessing Advisory Notifications in Google Cloud
     #
     # @see https://cloud.google.com/advisory-notifications
     module AdvisorynotificationsV1

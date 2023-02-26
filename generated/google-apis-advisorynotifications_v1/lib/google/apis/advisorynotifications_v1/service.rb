@@ -22,7 +22,7 @@ module Google
     module AdvisorynotificationsV1
       # Advisory Notifications API
       #
-      # 
+      # An API for accessing Advisory Notifications in Google Cloud
       #
       # @example
       #    require 'google/apis/advisorynotifications_v1'
