@@ -870,6 +870,11 @@ module Google
         # @return [String]
         attr_accessor :concurrency_mode
       
+        # Output only. The timestamp at which this database was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
         # This checksum is computed by the server based on the value of other fields,
         # and may be sent on update and delete requests to ensure the client has an up-
         # to-date value before proceeding.
@@ -904,6 +909,18 @@ module Google
         # @return [String]
         attr_accessor :type
       
+        # Output only. The system-generated UUID4 for this Database.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. The timestamp at which this database was most recently updated.
+        # Note this only includes updates to the database resource and not data
+        # contained by the database.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -912,11 +929,14 @@ module Google
         def update!(**args)
           @app_engine_integration_mode = args[:app_engine_integration_mode] if args.key?(:app_engine_integration_mode)
           @concurrency_mode = args[:concurrency_mode] if args.key?(:concurrency_mode)
+          @create_time = args[:create_time] if args.key?(:create_time)
           @etag = args[:etag] if args.key?(:etag)
           @key_prefix = args[:key_prefix] if args.key?(:key_prefix)
           @location_id = args[:location_id] if args.key?(:location_id)
           @name = args[:name] if args.key?(:name)
           @type = args[:type] if args.key?(:type)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
