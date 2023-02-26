@@ -1419,6 +1419,7 @@ module Google
           property :default_encryption_configuration, as: 'defaultEncryptionConfiguration', class: Google::Apis::BigqueryV2::EncryptionConfiguration, decorator: Google::Apis::BigqueryV2::EncryptionConfiguration::Representation
       
           property :default_partition_expiration_ms, :numeric_string => true, as: 'defaultPartitionExpirationMs'
+          property :default_rounding_mode, as: 'defaultRoundingMode'
           property :default_table_expiration_ms, :numeric_string => true, as: 'defaultTableExpirationMs'
           property :description, as: 'description'
           property :etag, as: 'etag'
@@ -2833,6 +2834,7 @@ module Google
       
           property :creation_time, :numeric_string => true, as: 'creationTime'
           property :default_collation, as: 'defaultCollation'
+          property :default_rounding_mode, as: 'defaultRoundingMode'
           property :description, as: 'description'
           property :encryption_configuration, as: 'encryptionConfiguration', class: Google::Apis::BigqueryV2::EncryptionConfiguration, decorator: Google::Apis::BigqueryV2::EncryptionConfiguration::Representation
       
@@ -2956,6 +2958,7 @@ module Google
           property :policy_tags, as: 'policyTags', class: Google::Apis::BigqueryV2::TableFieldSchema::PolicyTags, decorator: Google::Apis::BigqueryV2::TableFieldSchema::PolicyTags::Representation
       
           property :precision, :numeric_string => true, as: 'precision'
+          property :rounding_mode, as: 'roundingMode'
           property :scale, :numeric_string => true, as: 'scale'
           property :type, as: 'type'
         end
