@@ -852,6 +852,12 @@ module Google
       class RestrictedExportConfig
         include Google::Apis::Core::Hashable
       
+        # If true, enable restricted export.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
         # If true, restrict direct table access(read api/tabledata.list) on linked table.
         # Corresponds to the JSON property `restrictDirectTableAccess`
         # @return [Boolean]
@@ -871,6 +877,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
           @restrict_direct_table_access = args[:restrict_direct_table_access] if args.key?(:restrict_direct_table_access)
           @restrict_query_result = args[:restrict_query_result] if args.key?(:restrict_query_result)
         end
