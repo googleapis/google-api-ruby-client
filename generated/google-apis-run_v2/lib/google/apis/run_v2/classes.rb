@@ -596,8 +596,7 @@ module Google
       
         # Specifies the desired number of tasks the execution should run. Setting to 1
         # means that parallelism is limited to 1 and the success of that task signals
-        # the success of the execution. More info: https://kubernetes.io/docs/concepts/
-        # workloads/controllers/jobs-run-to-completion/
+        # the success of the execution. Defaults to 1.
         # Corresponds to the JSON property `taskCount`
         # @return [Fixnum]
         attr_accessor :task_count
@@ -2107,7 +2106,8 @@ module Google
         # @return [String]
         attr_accessor :execution_environment
       
-        # Number of retries allowed per Task, before marking this Task failed.
+        # Number of retries allowed per Task, before marking this Task failed. Defaults
+        # to 3.
         # Corresponds to the JSON property `maxRetries`
         # @return [Fixnum]
         attr_accessor :max_retries
@@ -2123,6 +2123,7 @@ module Google
         # Max allowed time duration the Task may be active before the system will
         # actively try to mark it failed and kill associated containers. This applies
         # per attempt of a task, meaning each retry can run for the full timeout.
+        # Defaults to 600 seconds.
         # Corresponds to the JSON property `timeout`
         # @return [String]
         attr_accessor :timeout
