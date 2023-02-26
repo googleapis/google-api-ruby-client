@@ -1308,7 +1308,7 @@ module Google
         attr_accessor :account
       
         # Redirect URI where the user will be sent after accepting Terms of Service.
-        # Must be configured in Developers Console as a Redirect URI
+        # Must be configured in Developers Console as a Redirect URI.
         # Corresponds to the JSON property `redirectUri`
         # @return [String]
         attr_accessor :redirect_uri
