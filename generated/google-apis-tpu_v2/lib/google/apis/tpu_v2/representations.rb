@@ -22,6 +22,12 @@ module Google
   module Apis
     module TpuV2
       
+      class AcceleratorConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AcceleratorType
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -208,9 +214,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AcceleratorConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :topology, as: 'topology'
+          property :type, as: 'type'
+        end
+      end
+      
       class AcceleratorType
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :accelerator_configs, as: 'acceleratorConfigs', class: Google::Apis::TpuV2::AcceleratorConfig, decorator: Google::Apis::TpuV2::AcceleratorConfig::Representation
+      
           property :name, as: 'name'
           property :type, as: 'type'
         end
@@ -375,6 +391,8 @@ module Google
       class Node
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :accelerator_config, as: 'acceleratorConfig', class: Google::Apis::TpuV2::AcceleratorConfig, decorator: Google::Apis::TpuV2::AcceleratorConfig::Representation
+      
           property :accelerator_type, as: 'acceleratorType'
           property :api_version, as: 'apiVersion'
           property :cidr_block, as: 'cidrBlock'
