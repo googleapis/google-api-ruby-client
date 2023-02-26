@@ -7498,7 +7498,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Describing the nested structure, or composition of an entity.
+        # Description the nested structure, or composition of an entity.
         # Corresponds to the JSON property `properties`
         # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentSchemaEntityTypeProperty>]
         attr_accessor :properties
