@@ -2926,6 +2926,14 @@ module Google
         # @return [Float]
         attr_accessor :cvss_score
       
+        # Common Vulnerability Scoring System. For details, see https://www.first.org/
+        # cvss/specification-document This is a message we will try to use for storing
+        # various versions of CVSS rather than making a separate proto for storing a
+        # specific version.
+        # Corresponds to the JSON property `cvssV2`
+        # @return [Google::Apis::OndemandscanningV1beta1::Cvss]
+        attr_accessor :cvss_v2
+      
         # Output only. CVSS version used to populate cvss_score and severity.
         # Corresponds to the JSON property `cvssVersion`
         # @return [String]
@@ -2996,6 +3004,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cvss_score = args[:cvss_score] if args.key?(:cvss_score)
+          @cvss_v2 = args[:cvss_v2] if args.key?(:cvss_v2)
           @cvss_version = args[:cvss_version] if args.key?(:cvss_version)
           @cvssv3 = args[:cvssv3] if args.key?(:cvssv3)
           @effective_severity = args[:effective_severity] if args.key?(:effective_severity)
