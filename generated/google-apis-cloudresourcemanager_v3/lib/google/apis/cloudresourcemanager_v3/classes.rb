@@ -465,6 +465,12 @@ module Google
         # @return [String]
         attr_accessor :tag_key
       
+        # The parent name of the tag key. Must be in the format `organizations/`
+        # organization_id``.
+        # Corresponds to the JSON property `tagKeyParentName`
+        # @return [String]
+        attr_accessor :tag_key_parent_name
+      
         # Resource name for TagValue in the format `tagValues/456`.
         # Corresponds to the JSON property `tagValue`
         # @return [String]
@@ -480,6 +486,7 @@ module Google
           @namespaced_tag_key = args[:namespaced_tag_key] if args.key?(:namespaced_tag_key)
           @namespaced_tag_value = args[:namespaced_tag_value] if args.key?(:namespaced_tag_value)
           @tag_key = args[:tag_key] if args.key?(:tag_key)
+          @tag_key_parent_name = args[:tag_key_parent_name] if args.key?(:tag_key_parent_name)
           @tag_value = args[:tag_value] if args.key?(:tag_value)
         end
       end

@@ -519,6 +519,7 @@ module Google
           property :namespaced_tag_key, as: 'namespacedTagKey'
           property :namespaced_tag_value, as: 'namespacedTagValue'
           property :tag_key, as: 'tagKey'
+          property :tag_key_parent_name, as: 'tagKeyParentName'
           property :tag_value, as: 'tagValue'
         end
       end
