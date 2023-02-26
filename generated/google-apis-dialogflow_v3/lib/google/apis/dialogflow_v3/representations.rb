@@ -3644,6 +3644,7 @@ module Google
       class GoogleCloudDialogflowCxV3MatchIntentRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :persist_parameter_changes, as: 'persistParameterChanges'
           property :query_input, as: 'queryInput', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3QueryInput, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3QueryInput::Representation
       
           property :query_params, as: 'queryParams', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3QueryParameters, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3QueryParameters::Representation
