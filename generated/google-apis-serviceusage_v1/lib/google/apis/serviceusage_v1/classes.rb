@@ -430,6 +430,11 @@ module Google
         # @return [Float]
         attr_accessor :operation_deadline
       
+        # The map between request protocol and the backend address.
+        # Corresponds to the JSON property `overridesByRequestProtocol`
+        # @return [Hash<String,Google::Apis::ServiceusageV1::BackendRule>]
+        attr_accessor :overrides_by_request_protocol
+      
         # 
         # Corresponds to the JSON property `pathTranslation`
         # @return [String]
@@ -466,6 +471,7 @@ module Google
           @jwt_audience = args[:jwt_audience] if args.key?(:jwt_audience)
           @min_deadline = args[:min_deadline] if args.key?(:min_deadline)
           @operation_deadline = args[:operation_deadline] if args.key?(:operation_deadline)
+          @overrides_by_request_protocol = args[:overrides_by_request_protocol] if args.key?(:overrides_by_request_protocol)
           @path_translation = args[:path_translation] if args.key?(:path_translation)
           @protocol = args[:protocol] if args.key?(:protocol)
           @selector = args[:selector] if args.key?(:selector)
