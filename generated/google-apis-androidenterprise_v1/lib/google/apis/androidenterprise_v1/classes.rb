@@ -685,6 +685,22 @@ module Google
         # @return [String]
         attr_accessor :android_id
       
+        # The internal hardware codename of the device. This comes from android.os.Build.
+        # DEVICE. (field named "device" per logs/wireless/android/android_checkin.proto)
+        # Corresponds to the JSON property `device`
+        # @return [String]
+        attr_accessor :device
+      
+        # The build fingerprint of the device if known.
+        # Corresponds to the JSON property `latestBuildFingerprint`
+        # @return [String]
+        attr_accessor :latest_build_fingerprint
+      
+        # The manufacturer of the device. This comes from android.os.Build.MANUFACTURER.
+        # Corresponds to the JSON property `maker`
+        # @return [String]
+        attr_accessor :maker
+      
         # Identifies the extent to which the device is controlled by a managed Google
         # Play EMM in various deployment configurations. Possible values include: - "
         # managedDevice", a device that has the EMM's device policy controller (DPC) as
@@ -698,16 +714,37 @@ module Google
         # @return [String]
         attr_accessor :management_type
       
+        # The model name of the device. This comes from android.os.Build.MODEL.
+        # Corresponds to the JSON property `model`
+        # @return [String]
+        attr_accessor :model
+      
         # The device policy for a given managed device.
         # Corresponds to the JSON property `policy`
         # @return [Google::Apis::AndroidenterpriseV1::Policy]
         attr_accessor :policy
+      
+        # The product name of the device. This comes from android.os.Build.PRODUCT.
+        # Corresponds to the JSON property `product`
+        # @return [String]
+        attr_accessor :product
       
         # Device report updated with the latest app states for managed apps on the
         # device.
         # Corresponds to the JSON property `report`
         # @return [Google::Apis::AndroidenterpriseV1::DeviceReport]
         attr_accessor :report
+      
+        # Retail brand for the device, if set. See https://developer.android.com/
+        # reference/android/os/Build.html#BRAND
+        # Corresponds to the JSON property `retailBrand`
+        # @return [String]
+        attr_accessor :retail_brand
+      
+        # API compatibility version.
+        # Corresponds to the JSON property `sdkVersion`
+        # @return [Fixnum]
+        attr_accessor :sdk_version
       
         def initialize(**args)
            update!(**args)
@@ -716,9 +753,16 @@ module Google
         # Update properties of this object
         def update!(**args)
           @android_id = args[:android_id] if args.key?(:android_id)
+          @device = args[:device] if args.key?(:device)
+          @latest_build_fingerprint = args[:latest_build_fingerprint] if args.key?(:latest_build_fingerprint)
+          @maker = args[:maker] if args.key?(:maker)
           @management_type = args[:management_type] if args.key?(:management_type)
+          @model = args[:model] if args.key?(:model)
           @policy = args[:policy] if args.key?(:policy)
+          @product = args[:product] if args.key?(:product)
           @report = args[:report] if args.key?(:report)
+          @retail_brand = args[:retail_brand] if args.key?(:retail_brand)
+          @sdk_version = args[:sdk_version] if args.key?(:sdk_version)
         end
       end
       
