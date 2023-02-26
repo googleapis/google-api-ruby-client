@@ -185,6 +185,10 @@ module Google
         # @param [String] name
         #   Required. The Membership resource name in the format `projects/*/locations/*/
         #   memberships/*`.
+        # @param [Boolean] force
+        #   Optional. If set to true, any subresource from this Membership will also be
+        #   deleted. Otherwise, the request will only work if the Membership has no
+        #   subresource.
         # @param [String] request_id
         #   Optional. A request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
@@ -213,11 +217,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_membership(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_project_location_membership(name, force: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::GkehubV1beta1::Operation::Representation
           command.response_class = Google::Apis::GkehubV1beta1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['force'] = force unless force.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
