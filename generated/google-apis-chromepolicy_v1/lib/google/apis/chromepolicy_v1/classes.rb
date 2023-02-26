@@ -628,6 +628,66 @@ module Google
         end
       end
       
+      # Error information for a modification request of a specific policy on a
+      # specific target.
+      class GoogleChromePolicyVersionsV1PolicyModificationError
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The non-field errors related to the modification.
+        # Corresponds to the JSON property `errors`
+        # @return [Array<String>]
+        attr_accessor :errors
+      
+        # Output only. The error messages related to the modification.
+        # Corresponds to the JSON property `fieldErrors`
+        # @return [Array<Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyModificationFieldError>]
+        attr_accessor :field_errors
+      
+        # Output only. The specific policy schema modification that had an error.
+        # Corresponds to the JSON property `policySchema`
+        # @return [String]
+        attr_accessor :policy_schema
+      
+        # The key used to identify the target on which the policy will be applied.
+        # Corresponds to the JSON property `policyTargetKey`
+        # @return [Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyTargetKey]
+        attr_accessor :policy_target_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @errors = args[:errors] if args.key?(:errors)
+          @field_errors = args[:field_errors] if args.key?(:field_errors)
+          @policy_schema = args[:policy_schema] if args.key?(:policy_schema)
+          @policy_target_key = args[:policy_target_key] if args.key?(:policy_target_key)
+        end
+      end
+      
+      # Details of the errors encountered during a policy modification request. This
+      # message will be returned as part of the details of a google.rpc.Status
+      # returned to the user when there is an error in their request.
+      class GoogleChromePolicyVersionsV1PolicyModificationErrorDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. List of specific policy modifications errors that may have
+        # occurred during a modifying request.
+        # Corresponds to the JSON property `modificationErrors`
+        # @return [Array<Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyModificationError>]
+        attr_accessor :modification_errors
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @modification_errors = args[:modification_errors] if args.key?(:modification_errors)
+        end
+      end
+      
       # Error information for a modification request of a specific field on a specific
       # policy.
       class GoogleChromePolicyVersionsV1PolicyModificationFieldError

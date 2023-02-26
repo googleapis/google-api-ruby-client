@@ -148,6 +148,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromePolicyVersionsV1PolicyModificationError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromePolicyVersionsV1PolicyModificationErrorDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromePolicyVersionsV1PolicyModificationFieldError
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -505,6 +517,26 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :maximum, :numeric_string => true, as: 'maximum'
           property :minimum, :numeric_string => true, as: 'minimum'
+        end
+      end
+      
+      class GoogleChromePolicyVersionsV1PolicyModificationError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :errors, as: 'errors'
+          collection :field_errors, as: 'fieldErrors', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyModificationFieldError, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyModificationFieldError::Representation
+      
+          property :policy_schema, as: 'policySchema'
+          property :policy_target_key, as: 'policyTargetKey', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyTargetKey, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyTargetKey::Representation
+      
+        end
+      end
+      
+      class GoogleChromePolicyVersionsV1PolicyModificationErrorDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :modification_errors, as: 'modificationErrors', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyModificationError, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyModificationError::Representation
+      
         end
       end
       
