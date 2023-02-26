@@ -631,8 +631,9 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Required. The Document resource full name, of the form: projects//locations//
-        # dataStores//branches//documents/
+        # Required. The Document resource full name, of the form: projects/`project\_id`/
+        # locations/`location`/dataStores/`data\_store\_id`/branches/`branch\_id`/
+        # documents/`document\_id`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
