@@ -348,6 +348,8 @@ module Google
           property :channel_count, as: 'channelCount'
           collection :channel_layout, as: 'channelLayout'
           property :codec, as: 'codec'
+          property :display_name, as: 'displayName'
+          property :language_code, as: 'languageCode'
           collection :mapping, as: 'mapping', class: Google::Apis::TranscoderV1::AudioMapping, decorator: Google::Apis::TranscoderV1::AudioMapping::Representation
       
           property :sample_rate_hertz, as: 'sampleRateHertz'
@@ -714,6 +716,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :codec, as: 'codec'
+          property :display_name, as: 'displayName'
+          property :language_code, as: 'languageCode'
           collection :mapping, as: 'mapping', class: Google::Apis::TranscoderV1::TextMapping, decorator: Google::Apis::TranscoderV1::TextMapping::Representation
       
         end

@@ -281,6 +281,18 @@ module Google
         # @return [String]
         attr_accessor :codec
       
+        # The name for this particular audio stream that will be added to the HLS/DASH
+        # manifest.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information,
+        # see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
         # The mapping for the `Job.edit_list` atoms with audio `EditAtom.inputs`.
         # Corresponds to the JSON property `mapping`
         # @return [Array<Google::Apis::TranscoderV1::AudioMapping>]
@@ -301,6 +313,8 @@ module Google
           @channel_count = args[:channel_count] if args.key?(:channel_count)
           @channel_layout = args[:channel_layout] if args.key?(:channel_layout)
           @codec = args[:codec] if args.key?(:codec)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @language_code = args[:language_code] if args.key?(:language_code)
           @mapping = args[:mapping] if args.key?(:mapping)
           @sample_rate_hertz = args[:sample_rate_hertz] if args.key?(:sample_rate_hertz)
         end
@@ -1793,6 +1807,18 @@ module Google
         # @return [String]
         attr_accessor :codec
       
+        # The name for this particular text stream that will be added to the HLS/DASH
+        # manifest.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information,
+        # see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
         # The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.
         # Corresponds to the JSON property `mapping`
         # @return [Array<Google::Apis::TranscoderV1::TextMapping>]
@@ -1805,6 +1831,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @codec = args[:codec] if args.key?(:codec)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @language_code = args[:language_code] if args.key?(:language_code)
           @mapping = args[:mapping] if args.key?(:mapping)
         end
       end
