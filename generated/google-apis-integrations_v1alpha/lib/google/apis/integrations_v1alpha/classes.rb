@@ -4206,6 +4206,17 @@ module Google
         attr_accessor :disable_strict_type_validation
         alias_method :disable_strict_type_validation?, :disable_strict_type_validation
       
+        # Optional Error catcher config id of the error catch flow which will be
+        # executed when execution error happens in the task
+        # Corresponds to the JSON property `errorCatcherConfigId`
+        # @return [String]
+        attr_accessor :error_catcher_config_id
+      
+        # 
+        # Corresponds to the JSON property `externalTaskType`
+        # @return [String]
+        attr_accessor :external_task_type
+      
         # Policy that defines the task retry logic and failure type. If no FailurePolicy
         # is defined for a task, all its dependent tasks will not be executed (i.e, a `
         # retry_strategy` of NONE will be applied).
@@ -4337,6 +4348,8 @@ module Google
           @creator_email = args[:creator_email] if args.key?(:creator_email)
           @description = args[:description] if args.key?(:description)
           @disable_strict_type_validation = args[:disable_strict_type_validation] if args.key?(:disable_strict_type_validation)
+          @error_catcher_config_id = args[:error_catcher_config_id] if args.key?(:error_catcher_config_id)
+          @external_task_type = args[:external_task_type] if args.key?(:external_task_type)
           @failure_policy = args[:failure_policy] if args.key?(:failure_policy)
           @incoming_edge_count = args[:incoming_edge_count] if args.key?(:incoming_edge_count)
           @json_validation_option = args[:json_validation_option] if args.key?(:json_validation_option)
@@ -4414,7 +4427,7 @@ module Google
         end
       end
       
-      # Configuration detail of a trigger. Next available id: 17
+      # Configuration detail of a trigger. Next available id: 18
       class EnterpriseCrmFrontendsEventbusProtoTriggerConfig
         include Google::Apis::Core::Hashable
       
@@ -4445,6 +4458,12 @@ module Google
         # Corresponds to the JSON property `enabledClients`
         # @return [Array<String>]
         attr_accessor :enabled_clients
+      
+        # Optional Error catcher config id of the error catch flow which will be
+        # executed when execution error happens in the task
+        # Corresponds to the JSON property `errorCatcherConfigId`
+        # @return [String]
+        attr_accessor :error_catcher_config_id
       
         # The user created label for a particular trigger.
         # Corresponds to the JSON property `label`
@@ -4518,6 +4537,7 @@ module Google
           @cloud_scheduler_config = args[:cloud_scheduler_config] if args.key?(:cloud_scheduler_config)
           @description = args[:description] if args.key?(:description)
           @enabled_clients = args[:enabled_clients] if args.key?(:enabled_clients)
+          @error_catcher_config_id = args[:error_catcher_config_id] if args.key?(:error_catcher_config_id)
           @label = args[:label] if args.key?(:label)
           @next_tasks_execution_policy = args[:next_tasks_execution_policy] if args.key?(:next_tasks_execution_policy)
           @pause_workflow_executions = args[:pause_workflow_executions] if args.key?(:pause_workflow_executions)
@@ -5075,6 +5095,11 @@ module Google
         # @return [String]
         attr_accessor :service_directory
       
+        # SSL Configuration of a connection
+        # Corresponds to the JSON property `sslConfig`
+        # @return [Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1SslConfig]
+        attr_accessor :ssl_config
+      
         # ConnectionStatus indicates the state of the connection.
         # Corresponds to the JSON property `status`
         # @return [Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1ConnectionStatus]
@@ -5111,6 +5136,7 @@ module Google
           @node_config = args[:node_config] if args.key?(:node_config)
           @service_account = args[:service_account] if args.key?(:service_account)
           @service_directory = args[:service_directory] if args.key?(:service_directory)
+          @ssl_config = args[:ssl_config] if args.key?(:ssl_config)
           @status = args[:status] if args.key?(:status)
           @suspended = args[:suspended] if args.key?(:suspended)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -5273,6 +5299,80 @@ module Google
         # Update properties of this object
         def update!(**args)
           @secret_version = args[:secret_version] if args.key?(:secret_version)
+        end
+      end
+      
+      # SSL Configuration of a connection
+      class GoogleCloudConnectorsV1SslConfig
+        include Google::Apis::Core::Hashable
+      
+        # Additional SSL related field values
+        # Corresponds to the JSON property `additionalVariables`
+        # @return [Array<Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1ConfigVariable>]
+        attr_accessor :additional_variables
+      
+        # Type of Client Cert (PEM/JKS/.. etc.)
+        # Corresponds to the JSON property `clientCertType`
+        # @return [String]
+        attr_accessor :client_cert_type
+      
+        # Secret provides a reference to entries in Secret Manager.
+        # Corresponds to the JSON property `clientCertificate`
+        # @return [Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1Secret]
+        attr_accessor :client_certificate
+      
+        # Secret provides a reference to entries in Secret Manager.
+        # Corresponds to the JSON property `clientPrivateKey`
+        # @return [Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1Secret]
+        attr_accessor :client_private_key
+      
+        # Secret provides a reference to entries in Secret Manager.
+        # Corresponds to the JSON property `clientPrivateKeyPass`
+        # @return [Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1Secret]
+        attr_accessor :client_private_key_pass
+      
+        # Secret provides a reference to entries in Secret Manager.
+        # Corresponds to the JSON property `privateServerCertificate`
+        # @return [Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1Secret]
+        attr_accessor :private_server_certificate
+      
+        # Type of Server Cert (PEM/JKS/.. etc.)
+        # Corresponds to the JSON property `serverCertType`
+        # @return [String]
+        attr_accessor :server_cert_type
+      
+        # Trust Model of the SSL connection
+        # Corresponds to the JSON property `trustModel`
+        # @return [String]
+        attr_accessor :trust_model
+      
+        # Controls the ssl type for the given connector version.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Bool for enabling SSL
+        # Corresponds to the JSON property `useSsl`
+        # @return [Boolean]
+        attr_accessor :use_ssl
+        alias_method :use_ssl?, :use_ssl
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_variables = args[:additional_variables] if args.key?(:additional_variables)
+          @client_cert_type = args[:client_cert_type] if args.key?(:client_cert_type)
+          @client_certificate = args[:client_certificate] if args.key?(:client_certificate)
+          @client_private_key = args[:client_private_key] if args.key?(:client_private_key)
+          @client_private_key_pass = args[:client_private_key_pass] if args.key?(:client_private_key_pass)
+          @private_server_certificate = args[:private_server_certificate] if args.key?(:private_server_certificate)
+          @server_cert_type = args[:server_cert_type] if args.key?(:server_cert_type)
+          @trust_model = args[:trust_model] if args.key?(:trust_model)
+          @type = args[:type] if args.key?(:type)
+          @use_ssl = args[:use_ssl] if args.key?(:use_ssl)
         end
       end
       
@@ -5922,6 +6022,54 @@ module Google
         # Update properties of this object
         def update!(**args)
           @regions = args[:regions] if args.key?(:regions)
+        end
+      end
+      
+      # Configuration detail of a error catch task
+      class GoogleCloudIntegrationsV1alphaErrorCatcherConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. User-provided description intended to give more business context
+        # about the error catcher config.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. An error catcher id is string representation for the error catcher
+        # config. Within a workflow, error_catch_id uniquely identifies an error catcher
+        # config among all error catcher configs for the workflow
+        # Corresponds to the JSON property `errorCatchId`
+        # @return [String]
+        attr_accessor :error_catch_id
+      
+        # Required. A number to uniquely identify each error catcher config within the
+        # workflow on UI.
+        # Corresponds to the JSON property `errorCatcherNumber`
+        # @return [String]
+        attr_accessor :error_catcher_number
+      
+        # Optional. The user created label for a particular error catcher. Optional.
+        # Corresponds to the JSON property `label`
+        # @return [String]
+        attr_accessor :label
+      
+        # Required. The set of start tasks that are to be executed for the error catch
+        # flow
+        # Corresponds to the JSON property `startErrorTasks`
+        # @return [Array<Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaNextTask>]
+        attr_accessor :start_error_tasks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @error_catch_id = args[:error_catch_id] if args.key?(:error_catch_id)
+          @error_catcher_number = args[:error_catcher_number] if args.key?(:error_catcher_number)
+          @label = args[:label] if args.key?(:label)
+          @start_error_tasks = args[:start_error_tasks] if args.key?(:start_error_tasks)
         end
       end
       
@@ -6604,6 +6752,12 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Optional. Error Catch Task configuration for the IntegrationTemplateVersion.
+        # It's optional.
+        # Corresponds to the JSON property `errorCatcherConfigs`
+        # @return [Array<Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaErrorCatcherConfig>]
+        attr_accessor :error_catcher_configs
+      
         # Optional. The last modifier's email address. Generated based on the End User
         # Credentials/LOAS role of the user making the call.
         # Corresponds to the JSON property `lastModifierEmail`
@@ -6682,6 +6836,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @database_persistence_policy = args[:database_persistence_policy] if args.key?(:database_persistence_policy)
           @description = args[:description] if args.key?(:description)
+          @error_catcher_configs = args[:error_catcher_configs] if args.key?(:error_catcher_configs)
           @last_modifier_email = args[:last_modifier_email] if args.key?(:last_modifier_email)
           @name = args[:name] if args.key?(:name)
           @parent_integration_version_id = args[:parent_integration_version_id] if args.key?(:parent_integration_version_id)
@@ -6716,6 +6871,11 @@ module Google
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
+      
+        # Optional. Error Catch Task configuration for the integration. It's optional.
+        # Corresponds to the JSON property `errorCatcherConfigs`
+        # @return [Array<Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaErrorCatcherConfig>]
+        attr_accessor :error_catcher_configs
       
         # Optional. Parameters that are expected to be passed to the integration when an
         # event is triggered. This consists of all the parameters that are expected in
@@ -6831,6 +6991,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @database_persistence_policy = args[:database_persistence_policy] if args.key?(:database_persistence_policy)
           @description = args[:description] if args.key?(:description)
+          @error_catcher_configs = args[:error_catcher_configs] if args.key?(:error_catcher_configs)
           @integration_parameters = args[:integration_parameters] if args.key?(:integration_parameters)
           @integration_parameters_internal = args[:integration_parameters_internal] if args.key?(:integration_parameters_internal)
           @last_modifier_email = args[:last_modifier_email] if args.key?(:last_modifier_email)
@@ -8289,6 +8450,17 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Optional. Optional Error catcher config id of the error catch flow which will
+        # be executed when execution error happens in the task
+        # Corresponds to the JSON property `errorCatcherConfigId`
+        # @return [String]
+        attr_accessor :error_catcher_config_id
+      
+        # Optional. External task type of the task
+        # Corresponds to the JSON property `externalTaskType`
+        # @return [String]
+        attr_accessor :external_task_type
+      
         # Policy that defines the task retry logic and failure type. If no FailurePolicy
         # is defined for a task, all its dependent tasks will not be executed (i.e, a `
         # retry_strategy` of NONE will be applied).
@@ -8364,6 +8536,8 @@ module Google
         def update!(**args)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @error_catcher_config_id = args[:error_catcher_config_id] if args.key?(:error_catcher_config_id)
+          @external_task_type = args[:external_task_type] if args.key?(:external_task_type)
           @failure_policy = args[:failure_policy] if args.key?(:failure_policy)
           @json_validation_option = args[:json_validation_option] if args.key?(:json_validation_option)
           @next_tasks = args[:next_tasks] if args.key?(:next_tasks)
@@ -8433,6 +8607,12 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Optional. Optional Error catcher config id of the error catch flow which will
+        # be executed when execution error happens in the task
+        # Corresponds to the JSON property `errorCatcherConfigId`
+        # @return [String]
+        attr_accessor :error_catcher_config_id
+      
         # Optional. The user created label for a particular trigger.
         # Corresponds to the JSON property `label`
         # @return [String]
@@ -8483,6 +8663,7 @@ module Google
           @alert_config = args[:alert_config] if args.key?(:alert_config)
           @cloud_scheduler_config = args[:cloud_scheduler_config] if args.key?(:cloud_scheduler_config)
           @description = args[:description] if args.key?(:description)
+          @error_catcher_config_id = args[:error_catcher_config_id] if args.key?(:error_catcher_config_id)
           @label = args[:label] if args.key?(:label)
           @next_tasks_execution_policy = args[:next_tasks_execution_policy] if args.key?(:next_tasks_execution_policy)
           @properties = args[:properties] if args.key?(:properties)
