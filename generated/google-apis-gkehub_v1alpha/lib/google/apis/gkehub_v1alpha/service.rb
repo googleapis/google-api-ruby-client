@@ -752,6 +752,10 @@ module Google
         # @param [String] name
         #   Required. The Membership resource name in the format `projects/*/locations/*/
         #   memberships/*`.
+        # @param [Boolean] force
+        #   Optional. If set to true, any subresource from this Membership will also be
+        #   deleted. Otherwise, the request will only work if the Membership has no
+        #   subresource.
         # @param [String] request_id
         #   Optional. A request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
@@ -780,11 +784,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_membership(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_project_location_membership(name, force: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1alpha/{+name}', options)
           command.response_representation = Google::Apis::GkehubV1alpha::Operation::Representation
           command.response_class = Google::Apis::GkehubV1alpha::Operation
           command.params['name'] = name unless name.nil?
+          command.query['force'] = force unless force.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1191,6 +1196,544 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a MembershipBinding.
+        # @param [String] parent
+        #   Required. The parent (project and location) where the MembershipBinding will
+        #   be created. Specified in the format `projects/*/locations/*/memberships/*`.
+        # @param [Google::Apis::GkehubV1alpha::MembershipBinding] membership_binding_object
+        # @param [String] membership_binding_id
+        #   Required. The ID to use for the MembershipBinding.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkehubV1alpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkehubV1alpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_membership_binding(parent, membership_binding_object = nil, membership_binding_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+parent}/bindings', options)
+          command.request_representation = Google::Apis::GkehubV1alpha::MembershipBinding::Representation
+          command.request_object = membership_binding_object
+          command.response_representation = Google::Apis::GkehubV1alpha::Operation::Representation
+          command.response_class = Google::Apis::GkehubV1alpha::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['membershipBindingId'] = membership_binding_id unless membership_binding_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a MembershipBinding.
+        # @param [String] name
+        #   Required. The MembershipBinding resource name in the format `projects/*/
+        #   locations/*/memberships/*/bindings/*`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkehubV1alpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkehubV1alpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_membership_binding(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::GkehubV1alpha::Operation::Representation
+          command.response_class = Google::Apis::GkehubV1alpha::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the details of a MembershipBinding.
+        # @param [String] name
+        #   Required. The MembershipBinding resource name in the format `projects/*/
+        #   locations/*/memberships/*/bindings/*`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkehubV1alpha::MembershipBinding] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkehubV1alpha::MembershipBinding]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_membership_binding(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::GkehubV1alpha::MembershipBinding::Representation
+          command.response_class = Google::Apis::GkehubV1alpha::MembershipBinding
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists MembershipBindings.
+        # @param [String] parent
+        #   Required. The parent Membership for which the MembershipBindings will be
+        #   listed. Specified in the format `projects/*/locations/*/memberships/*`.
+        # @param [Fixnum] page_size
+        #   Optional. When requesting a 'page' of resources, `page_size` specifies number
+        #   of resources to return. If unspecified or set to 0, all resources will be
+        #   returned.
+        # @param [String] page_token
+        #   Optional. Token returned by previous call to `ListMembershipBindings` which
+        #   specifies the position in the list from where to continue listing the
+        #   resources.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkehubV1alpha::ListMembershipBindingsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkehubV1alpha::ListMembershipBindingsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_membership_bindings(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/bindings', options)
+          command.response_representation = Google::Apis::GkehubV1alpha::ListMembershipBindingsResponse::Representation
+          command.response_class = Google::Apis::GkehubV1alpha::ListMembershipBindingsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a MembershipBinding.
+        # @param [String] name
+        #   The resource name for the membershipbinding itself `projects/`project`/
+        #   locations/`location`/memberships/`membership`/bindings/`membershipbinding``
+        # @param [Google::Apis::GkehubV1alpha::MembershipBinding] membership_binding_object
+        # @param [String] update_mask
+        #   Required. The fields to be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkehubV1alpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkehubV1alpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_membership_binding(name, membership_binding_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1alpha/{+name}', options)
+          command.request_representation = Google::Apis::GkehubV1alpha::MembershipBinding::Representation
+          command.request_object = membership_binding_object
+          command.response_representation = Google::Apis::GkehubV1alpha::Operation::Representation
+          command.response_class = Google::Apis::GkehubV1alpha::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a fleet namespace.
+        # @param [String] parent
+        #   Required. The parent (project and location) where the Namespace will be
+        #   created. Specified in the format `projects/*/locations/*`.
+        # @param [Google::Apis::GkehubV1alpha::Namespace] namespace_object
+        # @param [String] namespace_id
+        #   Required. Client chosen ID for the Namespace. `namespace_id` must be a valid
+        #   RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must
+        #   consist of lower case alphanumeric characters or `-` 3. It must start and end
+        #   with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([
+        #   -a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkehubV1alpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkehubV1alpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_namespace(parent, namespace_object = nil, namespace_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+parent}/namespaces', options)
+          command.request_representation = Google::Apis::GkehubV1alpha::Namespace::Representation
+          command.request_object = namespace_object
+          command.response_representation = Google::Apis::GkehubV1alpha::Operation::Representation
+          command.response_class = Google::Apis::GkehubV1alpha::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['namespaceId'] = namespace_id unless namespace_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a fleet namespace.
+        # @param [String] name
+        #   Required. The Namespace resource name in the format `projects/*/locations/*/
+        #   namespaces/*`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkehubV1alpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkehubV1alpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_namespace(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::GkehubV1alpha::Operation::Representation
+          command.response_class = Google::Apis::GkehubV1alpha::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the details of a fleet namespace.
+        # @param [String] name
+        #   Required. The Namespace resource name in the format `projects/*/locations/*/
+        #   namespaces/*`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkehubV1alpha::Namespace] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkehubV1alpha::Namespace]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_namespace(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::GkehubV1alpha::Namespace::Representation
+          command.response_class = Google::Apis::GkehubV1alpha::Namespace
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists fleet namespaces.
+        # @param [String] parent
+        #   Required. The parent (project and location) where the Features will be listed.
+        #   Specified in the format `projects/*/locations/*`.
+        # @param [Fixnum] page_size
+        #   Optional. When requesting a 'page' of resources, `page_size` specifies number
+        #   of resources to return. If unspecified or set to 0, all resources will be
+        #   returned.
+        # @param [String] page_token
+        #   Optional. Token returned by previous call to `ListFeatures` which specifies
+        #   the position in the list from where to continue listing the resources.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkehubV1alpha::ListNamespacesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkehubV1alpha::ListNamespacesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_namespaces(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/namespaces', options)
+          command.response_representation = Google::Apis::GkehubV1alpha::ListNamespacesResponse::Representation
+          command.response_class = Google::Apis::GkehubV1alpha::ListNamespacesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a fleet namespace.
+        # @param [String] name
+        #   The resource name for the namespace `projects/`project`/locations/`location`/
+        #   namespaces/`namespace``
+        # @param [Google::Apis::GkehubV1alpha::Namespace] namespace_object
+        # @param [String] update_mask
+        #   Required. The fields to be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkehubV1alpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkehubV1alpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_namespace(name, namespace_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1alpha/{+name}', options)
+          command.request_representation = Google::Apis::GkehubV1alpha::Namespace::Representation
+          command.request_object = namespace_object
+          command.response_representation = Google::Apis::GkehubV1alpha::Operation::Representation
+          command.response_class = Google::Apis::GkehubV1alpha::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a RBACRoleBinding.
+        # @param [String] parent
+        #   Required. The parent (project and location) where the RBACRoleBinding will be
+        #   created. Specified in the format `projects/*/locations/*/namespaces/*`.
+        # @param [Google::Apis::GkehubV1alpha::RbacRoleBinding] rbac_role_binding_object
+        # @param [String] rbacrolebinding_id
+        #   Required. Client chosen ID for the RBACRoleBinding. `rbacrolebinding_id` must
+        #   be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2.
+        #   It must consist of lower case alphanumeric characters or `-` 3. It must start
+        #   and end with an alphanumeric character Which can be expressed as the regex: `[
+        #   a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkehubV1alpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkehubV1alpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_namespace_rbacrolebinding(parent, rbac_role_binding_object = nil, rbacrolebinding_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+parent}/rbacrolebindings', options)
+          command.request_representation = Google::Apis::GkehubV1alpha::RbacRoleBinding::Representation
+          command.request_object = rbac_role_binding_object
+          command.response_representation = Google::Apis::GkehubV1alpha::Operation::Representation
+          command.response_class = Google::Apis::GkehubV1alpha::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['rbacrolebindingId'] = rbacrolebinding_id unless rbacrolebinding_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a RBACRoleBinding.
+        # @param [String] name
+        #   Required. The RBACRoleBinding resource name in the format `projects/*/
+        #   locations/*/namespaces/*/rbacrolebindings/*`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkehubV1alpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkehubV1alpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_namespace_rbacrolebinding(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::GkehubV1alpha::Operation::Representation
+          command.response_class = Google::Apis::GkehubV1alpha::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the details of a RBACRoleBinding.
+        # @param [String] name
+        #   Required. The RBACRoleBinding resource name in the format `projects/*/
+        #   locations/*/namespaces/*/rbacrolebindings/*`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkehubV1alpha::RbacRoleBinding] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkehubV1alpha::RbacRoleBinding]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_namespace_rbacrolebinding(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::GkehubV1alpha::RbacRoleBinding::Representation
+          command.response_class = Google::Apis::GkehubV1alpha::RbacRoleBinding
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists RBACRoleBinding.
+        # @param [String] parent
+        #   Required. The parent (project and location) where the Features will be listed.
+        #   Specified in the format `projects/*/locations/*/namespaces/*`.
+        # @param [Fixnum] page_size
+        #   Optional. When requesting a 'page' of resources, `page_size` specifies number
+        #   of resources to return. If unspecified or set to 0, all resources will be
+        #   returned.
+        # @param [String] page_token
+        #   Optional. Token returned by previous call to `ListRBACRoleBindings` which
+        #   specifies the position in the list from where to continue listing the
+        #   resources.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkehubV1alpha::ListRbacRoleBindingsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkehubV1alpha::ListRbacRoleBindingsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_namespace_rbacrolebindings(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/rbacrolebindings', options)
+          command.response_representation = Google::Apis::GkehubV1alpha::ListRbacRoleBindingsResponse::Representation
+          command.response_class = Google::Apis::GkehubV1alpha::ListRbacRoleBindingsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a RBACRoleBinding.
+        # @param [String] name
+        #   The resource name for the rbacrolebinding `projects/`project`/locations/`
+        #   location`/namespaces/`namespace`/rbacrolebindings/`rbacrolebinding``
+        # @param [Google::Apis::GkehubV1alpha::RbacRoleBinding] rbac_role_binding_object
+        # @param [String] update_mask
+        #   Required. The fields to be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkehubV1alpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkehubV1alpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_namespace_rbacrolebinding(name, rbac_role_binding_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1alpha/{+name}', options)
+          command.request_representation = Google::Apis::GkehubV1alpha::RbacRoleBinding::Representation
+          command.request_object = rbac_role_binding_object
+          command.response_representation = Google::Apis::GkehubV1alpha::Operation::Representation
+          command.response_class = Google::Apis::GkehubV1alpha::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Starts asynchronous cancellation on a long-running operation. The server makes
         # a best effort to cancel the operation, but success is not guaranteed. If the
         # server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
@@ -1336,6 +1879,182 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a Scope.
+        # @param [String] parent
+        #   Required. The parent (project and location) where the Scope will be created.
+        #   Specified in the format `projects/*/locations/*`.
+        # @param [Google::Apis::GkehubV1alpha::Scope] scope_object
+        # @param [String] scope_id
+        #   Required. Client chosen ID for the Scope. `scope_id` must be a ????
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkehubV1alpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkehubV1alpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_scope(parent, scope_object = nil, scope_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+parent}/scopes', options)
+          command.request_representation = Google::Apis::GkehubV1alpha::Scope::Representation
+          command.request_object = scope_object
+          command.response_representation = Google::Apis::GkehubV1alpha::Operation::Representation
+          command.response_class = Google::Apis::GkehubV1alpha::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['scopeId'] = scope_id unless scope_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a Scope.
+        # @param [String] name
+        #   Required. The Scope resource name in the format `projects/*/locations/*/scopes/
+        #   *`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkehubV1alpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkehubV1alpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_scope(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::GkehubV1alpha::Operation::Representation
+          command.response_class = Google::Apis::GkehubV1alpha::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the details of a Scope.
+        # @param [String] name
+        #   Required. The Scope resource name in the format `projects/*/locations/*/scopes/
+        #   *`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkehubV1alpha::Scope] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkehubV1alpha::Scope]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_scope(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::GkehubV1alpha::Scope::Representation
+          command.response_class = Google::Apis::GkehubV1alpha::Scope
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists Scopes.
+        # @param [String] parent
+        #   Required. The parent (project and location) where the Scope will be listed.
+        #   Specified in the format `projects/*/locations/*`.
+        # @param [Fixnum] page_size
+        #   Optional. When requesting a 'page' of resources, `page_size` specifies number
+        #   of resources to return. If unspecified or set to 0, all resources will be
+        #   returned.
+        # @param [String] page_token
+        #   Optional. Token returned by previous call to `ListScopes` which specifies the
+        #   position in the list from where to continue listing the resources.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkehubV1alpha::ListScopesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkehubV1alpha::ListScopesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_scopes(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/scopes', options)
+          command.response_representation = Google::Apis::GkehubV1alpha::ListScopesResponse::Representation
+          command.response_class = Google::Apis::GkehubV1alpha::ListScopesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a scopes.
+        # @param [String] name
+        #   The resource name for the scope `projects/`project`/locations/`location`/
+        #   scopes/`scope``
+        # @param [Google::Apis::GkehubV1alpha::Scope] scope_object
+        # @param [String] update_mask
+        #   Required. The fields to be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkehubV1alpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkehubV1alpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_scope(name, scope_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1alpha/{+name}', options)
+          command.request_representation = Google::Apis::GkehubV1alpha::Scope::Representation
+          command.request_object = scope_object
+          command.response_representation = Google::Apis::GkehubV1alpha::Operation::Representation
+          command.response_class = Google::Apis::GkehubV1alpha::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
