@@ -454,6 +454,110 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Get a summary of printing done by each printer.
+        # @param [String] customer
+        #   Required. Customer ID prefixed with "customers/" or "customers/my_customer" to
+        #   use the customer associated to the account making the request.
+        # @param [String] filter
+        #   Query string to filter results, AND-separated fields in EBNF syntax. Note: OR
+        #   operations are not supported in this filter. Note: Only >= and <= comparators
+        #   are supported in this filter. Supported filter fields: * completion_time
+        # @param [String] order_by
+        #   Field used to order results. If omitted, results will be ordered in ascending
+        #   order of the 'printer' field. Supported order_by fields: * printer * job_count
+        #   * device_count * user_count
+        # @param [Fixnum] page_size
+        #   Maximum number of results to return. Maximum and default are 100.
+        # @param [String] page_token
+        #   Token to specify the page of the response to be returned.
+        # @param [String] printer_org_unit_id
+        #   The ID of the organizational unit for printers. If specified, only data for
+        #   printers from the specified organizational unit will be returned. If omitted,
+        #   data for printers from all organizational units will be returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountPrintJobsByPrinterResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountPrintJobsByPrinterResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def count_customer_report_print_jobs_by_printer(customer, filter: nil, order_by: nil, page_size: nil, page_token: nil, printer_org_unit_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+customer}/reports:countPrintJobsByPrinter', options)
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountPrintJobsByPrinterResponse::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountPrintJobsByPrinterResponse
+          command.params['customer'] = customer unless customer.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['printerOrgUnitId'] = printer_org_unit_id unless printer_org_unit_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get a summary of printing done by each user.
+        # @param [String] customer
+        #   Required. Customer ID prefixed with "customers/" or "customers/my_customer" to
+        #   use the customer associated to the account making the request.
+        # @param [String] filter
+        #   Query string to filter results, AND-separated fields in EBNF syntax. Note: OR
+        #   operations are not supported in this filter. Note: Only >= and <= comparators
+        #   are supported in this filter. Supported filter fields: * completion_time
+        # @param [String] order_by
+        #   Field used to order results. If omitted, results will be ordered in ascending
+        #   order of the 'user_email' field. Supported order_by fields: * user_email *
+        #   job_count * printer_count * device_count
+        # @param [Fixnum] page_size
+        #   Maximum number of results to return. Maximum and default are 100.
+        # @param [String] page_token
+        #   Token to specify the page of the response to be returned.
+        # @param [String] printer_org_unit_id
+        #   The ID of the organizational unit for printers. If specified, only print jobs
+        #   initiated with printers from the specified organizational unit will be counted.
+        #   If omitted, all print jobs will be counted.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountPrintJobsByUserResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountPrintJobsByUserResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def count_customer_report_print_jobs_by_user(customer, filter: nil, order_by: nil, page_size: nil, page_token: nil, printer_org_unit_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+customer}/reports:countPrintJobsByUser', options)
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountPrintJobsByUserResponse::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountPrintJobsByUserResponse
+          command.params['customer'] = customer unless customer.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['printerOrgUnitId'] = printer_org_unit_id unless printer_org_unit_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Generate report of devices that have a specified app installed.
         # @param [String] customer
         #   Required. Customer id or "my_customer" to use the customer associated to the
