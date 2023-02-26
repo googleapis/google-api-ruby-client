@@ -626,12 +626,14 @@ module Google
         end
         
         # Imports entries from a source, such as data previously dumped into a Cloud
-        # Storage bucket, into Data Catalog. `ImportEntries` accepts source data
-        # snapshots of third-party system state. Import of entries is a sync operation
-        # that reconciles the state of the third-party system with Data Catalog. `
-        # ImportEntries` returns a long-running operation resource that can be queried
-        # with Operations.GetOperation to return ImportEntriesMetadata and an
-        # ImportEntriesResponse message.
+        # Storage bucket, into Data Catalog. Import of entries is a sync operation that
+        # reconciles the state of the third-party system with the Data Catalog. `
+        # ImportEntries` accepts source data snapshots of a third-party system. Snapshot
+        # should be delivered as a .wire or base65-encoded .txt file containing a
+        # sequence of Protocol Buffer messages of DumpItem type. `ImportEntries` returns
+        # a long-running operation resource that can be queried with Operations.
+        # GetOperation to return ImportEntriesMetadata and an ImportEntriesResponse
+        # message.
         # @param [String] parent
         #   Required. Target entry group for ingested entries.
         # @param [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1ImportEntriesRequest] google_cloud_datacatalog_v1_import_entries_request_object
