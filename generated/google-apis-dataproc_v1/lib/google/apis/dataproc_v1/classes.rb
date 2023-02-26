@@ -1220,6 +1220,12 @@ module Google
         # @return [String]
         attr_accessor :gce_pd_kms_key_name
       
+        # Optional. The Cloud KMS key name to use for encrypting customer core content
+        # and cluster PD disk for all instances in the cluster.
+        # Corresponds to the JSON property `kmsKey`
+        # @return [String]
+        attr_accessor :kms_key
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1227,6 +1233,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @gce_pd_kms_key_name = args[:gce_pd_kms_key_name] if args.key?(:gce_pd_kms_key_name)
+          @kms_key = args[:kms_key] if args.key?(:kms_key)
         end
       end
       
@@ -1452,8 +1459,8 @@ module Google
         # it exists. Cannot be a "Custom Subnet Network" (see Using Subnetworks (https://
         # cloud.google.com/compute/docs/subnetworks) for more information).A full URL,
         # partial URI, or short name are valid. Examples: https://www.googleapis.com/
-        # compute/v1/projects/[project_id]/regions/[region]/default projects/[project_id]
-        # /regions/[region]/default default
+        # compute/v1/projects/[project_id]/global/networks/default projects/[project_id]/
+        # global/networks/default default
         # Corresponds to the JSON property `networkUri`
         # @return [String]
         attr_accessor :network_uri
