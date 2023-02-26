@@ -522,6 +522,7 @@ module Google
             property :can_change_domain_users_only_restriction, as: 'canChangeDomainUsersOnlyRestriction'
             property :can_change_drive_background, as: 'canChangeDriveBackground'
             property :can_change_drive_members_only_restriction, as: 'canChangeDriveMembersOnlyRestriction'
+            property :can_change_sharing_folders_requires_organizer_permission_restriction, as: 'canChangeSharingFoldersRequiresOrganizerPermissionRestriction'
             property :can_comment, as: 'canComment'
             property :can_copy, as: 'canCopy'
             property :can_delete_children, as: 'canDeleteChildren'
@@ -546,6 +547,7 @@ module Google
             property :copy_requires_writer_permission, as: 'copyRequiresWriterPermission'
             property :domain_users_only, as: 'domainUsersOnly'
             property :drive_members_only, as: 'driveMembersOnly'
+            property :sharing_folders_requires_organizer_permission, as: 'sharingFoldersRequiresOrganizerPermission'
           end
         end
       end
@@ -1038,6 +1040,7 @@ module Google
             property :can_add_children, as: 'canAddChildren'
             property :can_change_copy_requires_writer_permission_restriction, as: 'canChangeCopyRequiresWriterPermissionRestriction'
             property :can_change_domain_users_only_restriction, as: 'canChangeDomainUsersOnlyRestriction'
+            property :can_change_sharing_folders_requires_organizer_permission_restriction, as: 'canChangeSharingFoldersRequiresOrganizerPermissionRestriction'
             property :can_change_team_drive_background, as: 'canChangeTeamDriveBackground'
             property :can_change_team_members_only_restriction, as: 'canChangeTeamMembersOnlyRestriction'
             property :can_comment, as: 'canComment'
@@ -1064,6 +1067,7 @@ module Google
             property :admin_managed_restrictions, as: 'adminManagedRestrictions'
             property :copy_requires_writer_permission, as: 'copyRequiresWriterPermission'
             property :domain_users_only, as: 'domainUsersOnly'
+            property :sharing_folders_requires_organizer_permission, as: 'sharingFoldersRequiresOrganizerPermission'
             property :team_members_only, as: 'teamMembersOnly'
           end
         end
