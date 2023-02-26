@@ -76,6 +76,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRecaptchaenterpriseV1IosKeySettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -184,6 +202,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRecaptchaenterpriseV1TransactionData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1TransactionDataAddress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1TransactionDataGatewayInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1TransactionDataItem
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1TransactionDataUser
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRecaptchaenterpriseV1TransactionEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -260,6 +308,8 @@ module Google
       
           property :event, as: 'event', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Event, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Event::Representation
       
+          property :fraud_prevention_assessment, as: 'fraudPreventionAssessment', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment::Representation
+      
           property :name, as: 'name'
           property :private_password_leak_verification, as: 'privatePasswordLeakVerification', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification::Representation
       
@@ -297,8 +347,35 @@ module Google
           property :hashed_account_id, :base64 => true, as: 'hashedAccountId'
           property :site_key, as: 'siteKey'
           property :token, as: 'token'
+          property :transaction_data, as: 'transactionData', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1TransactionData, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1TransactionData::Representation
+      
           property :user_agent, as: 'userAgent'
           property :user_ip_address, as: 'userIpAddress'
+        end
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :card_testing_verdict, as: 'cardTestingVerdict', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict::Representation
+      
+          property :stolen_instrument_verdict, as: 'stolenInstrumentVerdict', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict::Representation
+      
+          property :transaction_risk, as: 'transactionRisk'
+        end
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :risk, as: 'risk'
+        end
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :risk, as: 'risk'
         end
       end
       
@@ -469,6 +546,75 @@ module Google
           property :invalid_reason, as: 'invalidReason'
           property :ios_bundle_id, as: 'iosBundleId'
           property :valid, as: 'valid'
+        end
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1TransactionData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :billing_address, as: 'billingAddress', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1TransactionDataAddress, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1TransactionDataAddress::Representation
+      
+          property :card_bin, as: 'cardBin'
+          property :card_last_four, as: 'cardLastFour'
+          property :currency_code, as: 'currencyCode'
+          property :gateway_info, as: 'gatewayInfo', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1TransactionDataGatewayInfo, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1TransactionDataGatewayInfo::Representation
+      
+          collection :items, as: 'items', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1TransactionDataItem, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1TransactionDataItem::Representation
+      
+          collection :merchants, as: 'merchants', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1TransactionDataUser, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1TransactionDataUser::Representation
+      
+          property :payment_method, as: 'paymentMethod'
+          property :shipping_address, as: 'shippingAddress', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1TransactionDataAddress, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1TransactionDataAddress::Representation
+      
+          property :shipping_value, as: 'shippingValue'
+          property :transaction_id, as: 'transactionId'
+          property :user, as: 'user', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1TransactionDataUser, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1TransactionDataUser::Representation
+      
+          property :value, as: 'value'
+        end
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1TransactionDataAddress
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :address, as: 'address'
+          property :administrative_area, as: 'administrativeArea'
+          property :locality, as: 'locality'
+          property :postal_code, as: 'postalCode'
+          property :recipient, as: 'recipient'
+          property :region_code, as: 'regionCode'
+        end
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1TransactionDataGatewayInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :avs_response_code, as: 'avsResponseCode'
+          property :cvv_response_code, as: 'cvvResponseCode'
+          property :gateway_response_code, as: 'gatewayResponseCode'
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1TransactionDataItem
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :merchant_account_id, as: 'merchantAccountId'
+          property :name, as: 'name'
+          property :quantity, :numeric_string => true, as: 'quantity'
+          property :value, as: 'value'
+        end
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1TransactionDataUser
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_id, as: 'accountId'
+          property :creation_ms, :numeric_string => true, as: 'creationMs'
+          property :email, as: 'email'
+          property :email_verified, as: 'emailVerified'
+          property :phone_number, as: 'phoneNumber'
+          property :phone_verified, as: 'phoneVerified'
         end
       end
       
