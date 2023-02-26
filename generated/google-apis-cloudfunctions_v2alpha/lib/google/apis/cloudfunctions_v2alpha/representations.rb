@@ -362,6 +362,7 @@ module Google
           property :environment, as: 'environment'
           property :event_trigger, as: 'eventTrigger', class: Google::Apis::CloudfunctionsV2alpha::EventTrigger, decorator: Google::Apis::CloudfunctionsV2alpha::EventTrigger::Representation
       
+          property :kms_key_name, as: 'kmsKeyName'
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :service_config, as: 'serviceConfig', class: Google::Apis::CloudfunctionsV2alpha::ServiceConfig, decorator: Google::Apis::CloudfunctionsV2alpha::ServiceConfig::Representation
@@ -389,6 +390,7 @@ module Google
       class GenerateUploadUrlRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :kms_key_name, as: 'kmsKeyName'
         end
       end
       
