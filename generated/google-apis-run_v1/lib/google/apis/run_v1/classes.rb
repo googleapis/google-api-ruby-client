@@ -1010,7 +1010,7 @@ module Google
       
         # Optional. Specifies the desired number of tasks the execution should run.
         # Setting to 1 means that parallelism is limited to 1 and the success of that
-        # task signals the success of the execution.
+        # task signals the success of the execution. Defaults to 1.
         # Corresponds to the JSON property `taskCount`
         # @return [Fixnum]
         attr_accessor :task_count
@@ -3480,6 +3480,7 @@ module Google
         attr_accessor :containers
       
         # Optional. Number of retries allowed per task, before marking this job failed.
+        # Defaults to 3.
         # Corresponds to the JSON property `maxRetries`
         # @return [Fixnum]
         attr_accessor :max_retries
@@ -3495,6 +3496,7 @@ module Google
         # Optional. Duration in seconds the task may be active before the system will
         # actively try to mark it failed and kill associated containers. This applies
         # per attempt of a task, meaning each retry can run for the full timeout.
+        # Defaults to 600 seconds.
         # Corresponds to the JSON property `timeoutSeconds`
         # @return [Fixnum]
         attr_accessor :timeout_seconds
