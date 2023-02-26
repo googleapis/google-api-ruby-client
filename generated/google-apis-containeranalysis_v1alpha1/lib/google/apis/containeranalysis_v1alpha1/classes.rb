@@ -3963,6 +3963,35 @@ module Google
         end
       end
       
+      # Helps in identifying the underlying product. This should be treated like a one-
+      # of field. Only one field should be set in this proto. This is a workaround
+      # because spanner indexes on one-of fields restrict addition and deletion of
+      # fields.
+      class IdentifierHelper
+        include Google::Apis::Core::Hashable
+      
+        # The field that is set in the API proto.
+        # Corresponds to the JSON property `field`
+        # @return [String]
+        attr_accessor :field
+      
+        # Contains a URI which is vendor-specific. Example: The artifact repository URL
+        # of an image.
+        # Corresponds to the JSON property `genericUri`
+        # @return [String]
+        attr_accessor :generic_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field = args[:field] if args.key?(:field)
+          @generic_uri = args[:generic_uri] if args.key?(:generic_uri)
+        end
+      end
+      
       # 
       class InTotoProvenance
         include Google::Apis::Core::Hashable
@@ -5326,18 +5355,20 @@ module Google
       class Product
         include Google::Apis::Core::Hashable
       
-        # Contains a URI which is vendor-specific. Example: The artifact repository URL
-        # of an image.
-        # Corresponds to the JSON property `genericUri`
-        # @return [String]
-        attr_accessor :generic_uri
-      
         # Token that identifies a product so that it can be referred to from other parts
         # in the document. There is no predefined format as long as it uniquely
         # identifies a group in the context of the current document.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
+      
+        # Helps in identifying the underlying product. This should be treated like a one-
+        # of field. Only one field should be set in this proto. This is a workaround
+        # because spanner indexes on one-of fields restrict addition and deletion of
+        # fields.
+        # Corresponds to the JSON property `identifierHelper`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::IdentifierHelper]
+        attr_accessor :identifier_helper
       
         # Name of the product.
         # Corresponds to the JSON property `name`
@@ -5350,8 +5381,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @generic_uri = args[:generic_uri] if args.key?(:generic_uri)
           @id = args[:id] if args.key?(:id)
+          @identifier_helper = args[:identifier_helper] if args.key?(:identifier_helper)
           @name = args[:name] if args.key?(:name)
         end
       end
