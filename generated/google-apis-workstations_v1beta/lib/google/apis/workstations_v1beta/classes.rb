@@ -430,6 +430,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :size_gb
       
+        # Name of the snapshot to use as the source for the disk. If set, size_gb and
+        # fs_type must be empty.
+        # Corresponds to the JSON property `sourceSnapshot`
+        # @return [String]
+        attr_accessor :source_snapshot
+      
         def initialize(**args)
            update!(**args)
         end
@@ -440,6 +446,7 @@ module Google
           @fs_type = args[:fs_type] if args.key?(:fs_type)
           @reclaim_policy = args[:reclaim_policy] if args.key?(:reclaim_policy)
           @size_gb = args[:size_gb] if args.key?(:size_gb)
+          @source_snapshot = args[:source_snapshot] if args.key?(:source_snapshot)
         end
       end
       

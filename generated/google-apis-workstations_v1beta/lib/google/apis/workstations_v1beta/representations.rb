@@ -325,6 +325,7 @@ module Google
           property :fs_type, as: 'fsType'
           property :reclaim_policy, as: 'reclaimPolicy'
           property :size_gb, as: 'sizeGb'
+          property :source_snapshot, as: 'sourceSnapshot'
         end
       end
       
