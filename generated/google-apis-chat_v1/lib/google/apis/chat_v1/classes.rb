@@ -911,7 +911,8 @@ module Google
       end
       
       # An action that describes the behavior when the form is submitted. For example,
-      # an Apps Script can be invoked to handle the form.
+      # an Apps Script can be invoked to handle the form. If the action is triggered,
+      # the form values are sent to the server.
       class GoogleAppsCardV1Action
         include Google::Apis::Core::Hashable
       
@@ -948,17 +949,19 @@ module Google
         attr_accessor :parameters
       
         # Indicates whether form values persist after the action. The default value is `
-        # false`. If `true`, form values remain after the action is triggered. When
-        # using [LoadIndicator.NONE](https://developers.google.com/workspace/add-ons/
-        # reference/rpc/google.apps.card.v1#loadindicator) for actions, `persist_values`
-        # = `true`is recommended, as it ensures that any changes made by the user after
-        # form or on change actions are sent to the server are not overwritten by the
-        # response. If `false`, the form values are cleared when the action is triggered.
-        # When `persist_values` is set to `false`, it is strongly recommended that the
-        # card use [LoadIndicator.SPINNER](https://developers.google.com/workspace/add-
-        # ons/reference/rpc/google.apps.card.v1#loadindicator) for all actions, as this
-        # locks the UI to ensure no changes are made by the user while the action is
-        # being processed. Not supported by Chat apps.
+        # false`. If `true`, form values remain after the action is triggered. To let
+        # the user make changes while the action is being processed, set [LoadIndicator](
+        # https://developers.google.com/workspace/add-ons/reference/rpc/google.apps.card.
+        # v1#loadindicator) to `NONE`. For [card messages](https://developers.google.com/
+        # chat/api/guides/message-formats/cards) in Chat apps, you must also set the
+        # action's [ResponseType](https://developers.google.com/chat/api/reference/rest/
+        # v1/spaces.messages#responsetype) to `UPDATE_MESSAGE` and use the same [`
+        # card_id`](https://developers.google.com/chat/api/reference/rest/v1/spaces.
+        # messages#CardWithId) from the card that contained the action. If `false`, the
+        # form values are cleared when the action is triggered. To prevent the user from
+        # making changes while the action is being processed, set [LoadIndicator](https:/
+        # /developers.google.com/workspace/add-ons/reference/rpc/google.apps.card.v1#
+        # loadindicator) to `SPINNER`.
         # Corresponds to the JSON property `persistValues`
         # @return [Boolean]
         attr_accessor :persist_values
@@ -1156,9 +1159,9 @@ module Google
         attr_accessor :disabled
         alias_method :disabled?, :disabled
       
-        # An icon displayed in a widget on a card. Supports [standard](https://
-        # developers.google.com/chat/api/guides/message-formats/cards) and [custom](
-        # https://developers.google.com/chat/api/guides/message-formats/cards#
+        # An icon displayed in a widget on a card. Supports [built-in](https://
+        # developers.google.com/chat/api/guides/message-formats/cards#builtinicons) and [
+        # custom](https://developers.google.com/chat/api/guides/message-formats/cards#
         # customicons) icons.
         # Corresponds to the JSON property `icon`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Icon]
@@ -1437,7 +1440,8 @@ module Google
         attr_accessor :name
       
         # An action that describes the behavior when the form is submitted. For example,
-        # an Apps Script can be invoked to handle the form.
+        # an Apps Script can be invoked to handle the form. If the action is triggered,
+        # the form values are sent to the server.
         # Corresponds to the JSON property `onChangeAction`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Action]
         attr_accessor :on_change_action
@@ -1500,17 +1504,17 @@ module Google
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Button]
         attr_accessor :button
       
-        # An icon displayed in a widget on a card. Supports [standard](https://
-        # developers.google.com/chat/api/guides/message-formats/cards) and [custom](
-        # https://developers.google.com/chat/api/guides/message-formats/cards#
+        # An icon displayed in a widget on a card. Supports [built-in](https://
+        # developers.google.com/chat/api/guides/message-formats/cards#builtinicons) and [
+        # custom](https://developers.google.com/chat/api/guides/message-formats/cards#
         # customicons) icons.
         # Corresponds to the JSON property `endIcon`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Icon]
         attr_accessor :end_icon
       
-        # An icon displayed in a widget on a card. Supports [standard](https://
-        # developers.google.com/chat/api/guides/message-formats/cards) and [custom](
-        # https://developers.google.com/chat/api/guides/message-formats/cards#
+        # An icon displayed in a widget on a card. Supports [built-in](https://
+        # developers.google.com/chat/api/guides/message-formats/cards#builtinicons) and [
+        # custom](https://developers.google.com/chat/api/guides/message-formats/cards#
         # customicons) icons.
         # Corresponds to the JSON property `icon`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Icon]
@@ -1522,19 +1526,16 @@ module Google
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1OnClick]
         attr_accessor :on_click
       
-        # An icon displayed in a widget on a card. Supports [standard](https://
-        # developers.google.com/chat/api/guides/message-formats/cards) and [custom](
-        # https://developers.google.com/chat/api/guides/message-formats/cards#
+        # An icon displayed in a widget on a card. Supports [built-in](https://
+        # developers.google.com/chat/api/guides/message-formats/cards#builtinicons) and [
+        # custom](https://developers.google.com/chat/api/guides/message-formats/cards#
         # customicons) icons.
         # Corresponds to the JSON property `startIcon`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Icon]
         attr_accessor :start_icon
       
         # Either a toggle-style switch or a checkbox inside a `decoratedText` widget.
-        # Only supported on the `decoratedText` widget. Currently supported in [dialogs](
-        # https://developers.google.com/chat/how-tos/dialogs). Support for [card
-        # messages](https://developers.google.com/chat/api/guides/message-formats/cards)
-        # is coming soon.
+        # Only supported on the `decoratedText` widget.
         # Corresponds to the JSON property `switchControl`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1SwitchControl]
         attr_accessor :switch_control
@@ -1594,16 +1595,13 @@ module Google
       # Displays a grid with a collection of items. A grid supports any number of
       # columns and items. The number of rows is determined by items divided by
       # columns. A grid with 10 items and 2 columns has 5 rows. A grid with 11 items
-      # and 2 columns has 6 rows. Currently supported in [dialogs](https://developers.
-      # google.com/chat/how-tos/dialogs). Support for [card messages](https://
-      # developers.google.com/chat/api/guides/message-formats/cards) is coming soon.
-      # For example, the following JSON creates a 2 column grid with a single item: ```
-      # "grid": ` "title": "A fine collection of items", "columnCount": 2, "
-      # borderStyle": ` "type": "STROKE", "cornerRadius": 4 `, "items": [ ` "image": `
-      # "imageUri": "https://www.example.com/image.png", "cropStyle": ` "type": "
-      # SQUARE" `, "borderStyle": ` "type": "STROKE" ` `, "title": "An item", "
-      # textAlignment": "CENTER" ` ], "onClick": ` "openLink": ` "url": "https://www.
-      # example.com" ` ` ` ```
+      # and 2 columns has 6 rows. For example, the following JSON creates a 2 column
+      # grid with a single item: ``` "grid": ` "title": "A fine collection of items", "
+      # columnCount": 2, "borderStyle": ` "type": "STROKE", "cornerRadius": 4 `, "
+      # items": [ ` "image": ` "imageUri": "https://www.example.com/image.png", "
+      # cropStyle": ` "type": "SQUARE" `, "borderStyle": ` "type": "STROKE" ` `, "
+      # title": "An item", "textAlignment": "CENTER" ` ], "onClick": ` "openLink": ` "
+      # url": "https://www.example.com" ` ` ` ```
       class GoogleAppsCardV1Grid
         include Google::Apis::Core::Hashable
       
@@ -1693,9 +1691,9 @@ module Google
         end
       end
       
-      # An icon displayed in a widget on a card. Supports [standard](https://
-      # developers.google.com/chat/api/guides/message-formats/cards) and [custom](
-      # https://developers.google.com/chat/api/guides/message-formats/cards#
+      # An icon displayed in a widget on a card. Supports [built-in](https://
+      # developers.google.com/chat/api/guides/message-formats/cards#builtinicons) and [
+      # custom](https://developers.google.com/chat/api/guides/message-formats/cards#
       # customicons) icons.
       class GoogleAppsCardV1Icon
         include Google::Apis::Core::Hashable
@@ -1720,15 +1718,15 @@ module Google
         attr_accessor :icon_url
       
         # The crop style applied to the image. In some cases, applying a `CIRCLE` crop
-        # causes the image to be drawn larger than a standard icon.
+        # causes the image to be drawn larger than a built-in icon.
         # Corresponds to the JSON property `imageType`
         # @return [String]
         attr_accessor :image_type
       
-        # Display one of the standard icons provided by Google Workspace. For example,
+        # Display one of the built-in icons provided by Google Workspace. For example,
         # to display an airplane icon, specify `AIRPLANE`. For a bus, specify `BUS`. For
-        # a full list of supported icons, see [standard icons](https://developers.google.
-        # com/chat/api/guides/message-formats/cards).
+        # a full list of supported icons, see [built-in icons](https://developers.google.
+        # com/chat/api/guides/message-formats/cards#builtinicons).
         # Corresponds to the JSON property `knownIcon`
         # @return [String]
         attr_accessor :known_icon
@@ -1853,7 +1851,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # An action that describes the behavior when the form is submitted. For example,
-        # an Apps Script can be invoked to handle the form.
+        # an Apps Script can be invoked to handle the form. If the action is triggered,
+        # the form values are sent to the server.
         # Corresponds to the JSON property `action`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Action]
         attr_accessor :action
@@ -1886,7 +1885,8 @@ module Google
         attr_accessor :card
       
         # An action that describes the behavior when the form is submitted. For example,
-        # an Apps Script can be invoked to handle the form.
+        # an Apps Script can be invoked to handle the form. If the action is triggered,
+        # the form values are sent to the server.
         # Corresponds to the JSON property `openDynamicLinkAction`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Action]
         attr_accessor :open_dynamic_link_action
@@ -1997,10 +1997,7 @@ module Google
       # inputs, see [Receive form data](https://developers.google.com/chat/how-tos/
       # dialogs#receive_form_data_from_dialogs). When you need to collect data from
       # users that matches options you set, use a selection input. To collect abstract
-      # data from users, use the text input widget instead. Only supported in [dialogs]
-      # (https://developers.google.com/chat/how-tos/dialogs). Support for [card
-      # messages](https://developers.google.com/chat/api/guides/message-formats/cards)
-      # coming soon.
+      # data from users, use the text input widget instead.
       class GoogleAppsCardV1SelectionInput
         include Google::Apis::Core::Hashable
       
@@ -2025,7 +2022,8 @@ module Google
         attr_accessor :name
       
         # An action that describes the behavior when the form is submitted. For example,
-        # an Apps Script can be invoked to handle the form.
+        # an Apps Script can be invoked to handle the form. If the action is triggered,
+        # the form values are sent to the server.
         # Corresponds to the JSON property `onChangeAction`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Action]
         attr_accessor :on_change_action
@@ -2140,10 +2138,7 @@ module Google
       end
       
       # Either a toggle-style switch or a checkbox inside a `decoratedText` widget.
-      # Only supported on the `decoratedText` widget. Currently supported in [dialogs](
-      # https://developers.google.com/chat/how-tos/dialogs). Support for [card
-      # messages](https://developers.google.com/chat/api/guides/message-formats/cards)
-      # is coming soon.
+      # Only supported on the `decoratedText` widget.
       class GoogleAppsCardV1SwitchControl
         include Google::Apis::Core::Hashable
       
@@ -2160,7 +2155,8 @@ module Google
         attr_accessor :name
       
         # An action that describes the behavior when the form is submitted. For example,
-        # an Apps Script can be invoked to handle the form.
+        # an Apps Script can be invoked to handle the form. If the action is triggered,
+        # the form values are sent to the server.
         # Corresponds to the JSON property `onChangeAction`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Action]
         attr_accessor :on_change_action
@@ -2198,14 +2194,13 @@ module Google
       # form data](https://developers.google.com/chat/how-tos/dialogs#
       # receive_form_data_from_dialogs). When you need to collect abstract data from
       # users, use a text input. To collect defined data from users, use the selection
-      # input widget instead. Only supported in [dialogs](https://developers.google.
-      # com/chat/how-tos/dialogs). Support for [card messages](https://developers.
-      # google.com/chat/api/guides/message-formats/cards) coming soon.
+      # input widget instead.
       class GoogleAppsCardV1TextInput
         include Google::Apis::Core::Hashable
       
         # An action that describes the behavior when the form is submitted. For example,
-        # an Apps Script can be invoked to handle the form.
+        # an Apps Script can be invoked to handle the form. If the action is triggered,
+        # the form values are sent to the server.
         # Corresponds to the JSON property `autoCompleteAction`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Action]
         attr_accessor :auto_complete_action
@@ -2248,7 +2243,8 @@ module Google
         attr_accessor :name
       
         # An action that describes the behavior when the form is submitted. For example,
-        # an Apps Script can be invoked to handle the form.
+        # an Apps Script can be invoked to handle the form. If the action is triggered,
+        # the form values are sent to the server.
         # Corresponds to the JSON property `onChangeAction`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Action]
         attr_accessor :on_change_action
@@ -2339,16 +2335,13 @@ module Google
         # Displays a grid with a collection of items. A grid supports any number of
         # columns and items. The number of rows is determined by items divided by
         # columns. A grid with 10 items and 2 columns has 5 rows. A grid with 11 items
-        # and 2 columns has 6 rows. Currently supported in [dialogs](https://developers.
-        # google.com/chat/how-tos/dialogs). Support for [card messages](https://
-        # developers.google.com/chat/api/guides/message-formats/cards) is coming soon.
-        # For example, the following JSON creates a 2 column grid with a single item: ```
-        # "grid": ` "title": "A fine collection of items", "columnCount": 2, "
-        # borderStyle": ` "type": "STROKE", "cornerRadius": 4 `, "items": [ ` "image": `
-        # "imageUri": "https://www.example.com/image.png", "cropStyle": ` "type": "
-        # SQUARE" `, "borderStyle": ` "type": "STROKE" ` `, "title": "An item", "
-        # textAlignment": "CENTER" ` ], "onClick": ` "openLink": ` "url": "https://www.
-        # example.com" ` ` ` ```
+        # and 2 columns has 6 rows. For example, the following JSON creates a 2 column
+        # grid with a single item: ``` "grid": ` "title": "A fine collection of items", "
+        # columnCount": 2, "borderStyle": ` "type": "STROKE", "cornerRadius": 4 `, "
+        # items": [ ` "image": ` "imageUri": "https://www.example.com/image.png", "
+        # cropStyle": ` "type": "SQUARE" `, "borderStyle": ` "type": "STROKE" ` `, "
+        # title": "An item", "textAlignment": "CENTER" ` ], "onClick": ` "openLink": ` "
+        # url": "https://www.example.com" ` ` ` ```
         # Corresponds to the JSON property `grid`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Grid]
         attr_accessor :grid
@@ -2364,10 +2357,7 @@ module Google
         # inputs, see [Receive form data](https://developers.google.com/chat/how-tos/
         # dialogs#receive_form_data_from_dialogs). When you need to collect data from
         # users that matches options you set, use a selection input. To collect abstract
-        # data from users, use the text input widget instead. Only supported in [dialogs]
-        # (https://developers.google.com/chat/how-tos/dialogs). Support for [card
-        # messages](https://developers.google.com/chat/api/guides/message-formats/cards)
-        # coming soon.
+        # data from users, use the text input widget instead.
         # Corresponds to the JSON property `selectionInput`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1SelectionInput]
         attr_accessor :selection_input
@@ -2378,9 +2368,7 @@ module Google
         # form data](https://developers.google.com/chat/how-tos/dialogs#
         # receive_form_data_from_dialogs). When you need to collect abstract data from
         # users, use a text input. To collect defined data from users, use the selection
-        # input widget instead. Only supported in [dialogs](https://developers.google.
-        # com/chat/how-tos/dialogs). Support for [card messages](https://developers.
-        # google.com/chat/api/guides/message-formats/cards) coming soon.
+        # input widget instead.
         # Corresponds to the JSON property `textInput`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1TextInput]
         attr_accessor :text_input
@@ -2738,7 +2726,8 @@ module Google
         # @return [Array<Google::Apis::ChatV1::Annotation>]
         attr_accessor :annotations
       
-        # Plain-text body of the message with all Chat app mentions stripped out.
+        # Output only. Plain-text body of the message with all Chat app mentions
+        # stripped out.
         # Corresponds to the JSON property `argumentText`
         # @return [String]
         attr_accessor :argument_text
@@ -2751,7 +2740,7 @@ module Google
         # Deprecated: Use `cards_v2` instead. Rich, formatted and interactive cards that
         # can be used to display UI elements such as: formatted texts, buttons,
         # clickable images. Cards are normally displayed below the plain-text body of
-        # the message.
+        # the message. `cards` and `cards_v2` can have a maximum size of 32 KB.
         # Corresponds to the JSON property `cards`
         # @return [Array<Google::Apis::ChatV1::Card>]
         attr_accessor :cards
@@ -2760,10 +2749,12 @@ module Google
         # widgets, such as: - Formatted text - Buttons - Clickable images - Checkboxes -
         # Radio buttons - Input widgets. Cards are usually displayed below the text body
         # of a Chat message, but can situationally appear other places, such as [dialogs]
-        # (https://developers.google.com/chat/how-tos/dialogs). The `cardId` is a unique
-        # identifier among cards in the same message and for identifying user input
-        # values. Currently supported widgets include: - `TextParagraph` - `
-        # DecoratedText` - `Image` - `ButtonList` - `Divider`
+        # (https://developers.google.com/chat/how-tos/dialogs). `cards_v2` and `cards`
+        # can have a maximum size of 32 KB. The `cardId` is a unique identifier among
+        # cards in the same message and for identifying user input values. Currently
+        # supported widgets include: - `TextParagraph` - `DecoratedText` - `Image` - `
+        # ButtonList` - `Divider` - `TextInput` - `SelectionInput` (CHECKBOX,
+        # RADIO_BUTTON, SWITCH, DROPDOWN) - `Grid`
         # Corresponds to the JSON property `cardsV2`
         # @return [Array<Google::Apis::ChatV1::CardWithId>]
         attr_accessor :cards_v2
