@@ -63,7 +63,7 @@ module Google
         # you must retry your request, the server will know to ignore the request if it
         # has already been completed. The server will guarantee that for at least 60
         # minutes since the first request. For example, consider a situation where you
-        # make an initial request and t he request times out. If you make the request
+        # make an initial request and the request times out. If you make the request
         # again with the same request ID, the server can check if original operation
         # with the same request ID was received, and if so, will ignore the second
         # request. This prevents clients from accidentally creating duplicate
@@ -976,7 +976,7 @@ module Google
         # you must retry your request, the server will know to ignore the request if it
         # has already been completed. The server will guarantee that for at least 60
         # minutes since the first request. For example, consider a situation where you
-        # make an initial request and t he request times out. If you make the request
+        # make an initial request and the request times out. If you make the request
         # again with the same request ID, the server can check if original operation
         # with the same request ID was received, and if so, will ignore the second
         # request. This prevents clients from accidentally creating duplicate
@@ -1041,7 +1041,7 @@ module Google
         # you must retry your request, the server will know to ignore the request if it
         # has already been completed. The server will guarantee that for at least 60
         # minutes since the first request. For example, consider a situation where you
-        # make an initial request and t he request times out. If you make the request
+        # make an initial request and the request times out. If you make the request
         # again with the same request ID, the server can check if original operation
         # with the same request ID was received, and if so, will ignore the second
         # request. This prevents clients from accidentally creating duplicate
@@ -1185,7 +1185,7 @@ module Google
         # you must retry your request, the server will know to ignore the request if it
         # has already been completed. The server will guarantee that for at least 60
         # minutes since the first request. For example, consider a situation where you
-        # make an initial request and t he request times out. If you make the request
+        # make an initial request and the request times out. If you make the request
         # again with the same request ID, the server can check if original operation
         # with the same request ID was received, and if so, will ignore the second
         # request. This prevents clients from accidentally creating duplicate
@@ -1754,6 +1754,93 @@ module Google
         end
       end
       
+      # Describes the X.509 name constraints extension, per https://tools.ietf.org/
+      # html/rfc5280#section-4.2.1.10
+      class NameConstraints
+        include Google::Apis::Core::Hashable
+      
+        # Indicates whether or not the name constraints are marked critical.
+        # Corresponds to the JSON property `critical`
+        # @return [Boolean]
+        attr_accessor :critical
+        alias_method :critical?, :critical
+      
+        # Contains excluded DNS names. Any DNS name that can be constructed by simply
+        # adding zero or more labels to the left-hand side of the name satisfies the
+        # name constraint. For example, `example.com`, `www.example.com`, `www.sub.
+        # example.com` would satisfy `example.com` while `example1.com` does not.
+        # Corresponds to the JSON property `excludedDnsNames`
+        # @return [Array<String>]
+        attr_accessor :excluded_dns_names
+      
+        # Contains the excluded email addresses. The value can be a particular email
+        # address, a hostname to indicate all email addresses on that host or a domain
+        # with a leading period (e.g. `.example.com`) to indicate all email addresses in
+        # that domain.
+        # Corresponds to the JSON property `excludedEmailAddresses`
+        # @return [Array<String>]
+        attr_accessor :excluded_email_addresses
+      
+        # Contains the excluded IP ranges. For IPv4 addresses, the ranges are expressed
+        # using CIDR notation as specified in RFC 4632. For IPv6 addresses, the ranges
+        # are expressed in similar encoding as IPv4 addresses.
+        # Corresponds to the JSON property `excludedIpRanges`
+        # @return [Array<String>]
+        attr_accessor :excluded_ip_ranges
+      
+        # Contains the excluded URIs that apply to the host part of the name. The value
+        # can be a hostname or a domain with a leading period (like `.example.com`)
+        # Corresponds to the JSON property `excludedUris`
+        # @return [Array<String>]
+        attr_accessor :excluded_uris
+      
+        # Contains permitted DNS names. Any DNS name that can be constructed by simply
+        # adding zero or more labels to the left-hand side of the name satisfies the
+        # name constraint. For example, `example.com`, `www.example.com`, `www.sub.
+        # example.com` would satisfy `example.com` while `example1.com` does not.
+        # Corresponds to the JSON property `permittedDnsNames`
+        # @return [Array<String>]
+        attr_accessor :permitted_dns_names
+      
+        # Contains the permitted email addresses. The value can be a particular email
+        # address, a hostname to indicate all email addresses on that host or a domain
+        # with a leading period (e.g. `.example.com`) to indicate all email addresses in
+        # that domain.
+        # Corresponds to the JSON property `permittedEmailAddresses`
+        # @return [Array<String>]
+        attr_accessor :permitted_email_addresses
+      
+        # Contains the permitted IP ranges. For IPv4 addresses, the ranges are expressed
+        # using CIDR notation as specified in RFC 4632. For IPv6 addresses, the ranges
+        # are expressed in similar encoding as IPv4 addresses.
+        # Corresponds to the JSON property `permittedIpRanges`
+        # @return [Array<String>]
+        attr_accessor :permitted_ip_ranges
+      
+        # Contains the permitted URIs that apply to the host part of the name. The value
+        # can be a hostname or a domain with a leading period (like `.example.com`)
+        # Corresponds to the JSON property `permittedUris`
+        # @return [Array<String>]
+        attr_accessor :permitted_uris
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @critical = args[:critical] if args.key?(:critical)
+          @excluded_dns_names = args[:excluded_dns_names] if args.key?(:excluded_dns_names)
+          @excluded_email_addresses = args[:excluded_email_addresses] if args.key?(:excluded_email_addresses)
+          @excluded_ip_ranges = args[:excluded_ip_ranges] if args.key?(:excluded_ip_ranges)
+          @excluded_uris = args[:excluded_uris] if args.key?(:excluded_uris)
+          @permitted_dns_names = args[:permitted_dns_names] if args.key?(:permitted_dns_names)
+          @permitted_email_addresses = args[:permitted_email_addresses] if args.key?(:permitted_email_addresses)
+          @permitted_ip_ranges = args[:permitted_ip_ranges] if args.key?(:permitted_ip_ranges)
+          @permitted_uris = args[:permitted_uris] if args.key?(:permitted_uris)
+        end
+      end
+      
       # An ObjectId specifies an object identifier (OID). These provide context and
       # describe types in ASN.1 messages.
       class ObjectIdProp
@@ -2121,7 +2208,7 @@ module Google
         # you must retry your request, the server will know to ignore the request if it
         # has already been completed. The server will guarantee that for at least 60
         # minutes since the first request. For example, consider a situation where you
-        # make an initial request and t he request times out. If you make the request
+        # make an initial request and the request times out. If you make the request
         # again with the same request ID, the server can check if original operation
         # with the same request ID was received, and if so, will ignore the second
         # request. This prevents clients from accidentally creating duplicate
@@ -2586,7 +2673,7 @@ module Google
         # you must retry your request, the server will know to ignore the request if it
         # has already been completed. The server will guarantee that for at least 60
         # minutes since the first request. For example, consider a situation where you
-        # make an initial request and t he request times out. If you make the request
+        # make an initial request and the request times out. If you make the request
         # again with the same request ID, the server can check if original operation
         # with the same request ID was received, and if so, will ignore the second
         # request. This prevents clients from accidentally creating duplicate
@@ -2671,6 +2758,12 @@ module Google
         # @return [Google::Apis::PrivatecaV1::KeyUsage]
         attr_accessor :key_usage
       
+        # Describes the X.509 name constraints extension, per https://tools.ietf.org/
+        # html/rfc5280#section-4.2.1.10
+        # Corresponds to the JSON property `nameConstraints`
+        # @return [Google::Apis::PrivatecaV1::NameConstraints]
+        attr_accessor :name_constraints
+      
         # Optional. Describes the X.509 certificate policy object identifiers, per https:
         # //tools.ietf.org/html/rfc5280#section-4.2.1.4.
         # Corresponds to the JSON property `policyIds`
@@ -2687,6 +2780,7 @@ module Google
           @aia_ocsp_servers = args[:aia_ocsp_servers] if args.key?(:aia_ocsp_servers)
           @ca_options = args[:ca_options] if args.key?(:ca_options)
           @key_usage = args[:key_usage] if args.key?(:key_usage)
+          @name_constraints = args[:name_constraints] if args.key?(:name_constraints)
           @policy_ids = args[:policy_ids] if args.key?(:policy_ids)
         end
       end
