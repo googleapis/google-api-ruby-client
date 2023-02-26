@@ -1,0 +1,7 @@
+{
+    "api_id": "acmedns:v1",
+    "name_pretty": "ACME DNS API",
+    "distribution_name": "google-apis-acmedns_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
