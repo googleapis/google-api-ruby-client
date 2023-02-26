@@ -989,6 +989,71 @@ module Google
         end
       end
       
+      # Response containing a summary printing report for each printer from the
+      # specified organizational unit for the requested time interval.
+      class GoogleChromeManagementV1CountPrintJobsByPrinterResponse
+        include Google::Apis::Core::Hashable
+      
+        # Pagination token for requesting the next page.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of PrinterReports matching request.
+        # Corresponds to the JSON property `printerReports`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1PrinterReport>]
+        attr_accessor :printer_reports
+      
+        # Total number of printers matching request.
+        # Corresponds to the JSON property `totalSize`
+        # @return [Fixnum]
+        attr_accessor :total_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @printer_reports = args[:printer_reports] if args.key?(:printer_reports)
+          @total_size = args[:total_size] if args.key?(:total_size)
+        end
+      end
+      
+      # Response containing a summary printing report for each user that has initiated
+      # a print job with a printer from the specified organizational unit during the
+      # requested time interval.
+      class GoogleChromeManagementV1CountPrintJobsByUserResponse
+        include Google::Apis::Core::Hashable
+      
+        # Pagination token for requesting the next page.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Total number of users matching request.
+        # Corresponds to the JSON property `totalSize`
+        # @return [Fixnum]
+        attr_accessor :total_size
+      
+        # List of UserPrintReports matching request.
+        # Corresponds to the JSON property `userPrintReports`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1UserPrintReport>]
+        attr_accessor :user_print_reports
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @total_size = args[:total_size] if args.key?(:total_size)
+          @user_print_reports = args[:user_print_reports] if args.key?(:user_print_reports)
+        end
+      end
+      
       # CPU specifications for the device * This field provides device information,
       # which is static and will not change over time. * Data for this field is
       # controlled via policy: [ReportDeviceCpuInfo](https://chromeenterprise.google/
@@ -1319,6 +1384,62 @@ module Google
         end
       end
       
+      # Information of a display device.
+      class GoogleChromeManagementV1DisplayDevice
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Display height in millimeters.
+        # Corresponds to the JSON property `displayHeightMm`
+        # @return [Fixnum]
+        attr_accessor :display_height_mm
+      
+        # Output only. Display device name.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. Display width in millimeters.
+        # Corresponds to the JSON property `displayWidthMm`
+        # @return [Fixnum]
+        attr_accessor :display_width_mm
+      
+        # Output only. Is display internal or not.
+        # Corresponds to the JSON property `internal`
+        # @return [Boolean]
+        attr_accessor :internal
+        alias_method :internal?, :internal
+      
+        # Output only. Year of manufacture.
+        # Corresponds to the JSON property `manufactureYear`
+        # @return [Fixnum]
+        attr_accessor :manufacture_year
+      
+        # Output only. Three letter manufacturer ID.
+        # Corresponds to the JSON property `manufacturerId`
+        # @return [String]
+        attr_accessor :manufacturer_id
+      
+        # Output only. Manufacturer product code.
+        # Corresponds to the JSON property `modelId`
+        # @return [Fixnum]
+        attr_accessor :model_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_height_mm = args[:display_height_mm] if args.key?(:display_height_mm)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @display_width_mm = args[:display_width_mm] if args.key?(:display_width_mm)
+          @internal = args[:internal] if args.key?(:internal)
+          @manufacture_year = args[:manufacture_year] if args.key?(:manufacture_year)
+          @manufacturer_id = args[:manufacturer_id] if args.key?(:manufacturer_id)
+          @model_id = args[:model_id] if args.key?(:model_id)
+        end
+      end
+      
       # Information for a display.
       class GoogleChromeManagementV1DisplayInfo
         include Google::Apis::Core::Hashable
@@ -1327,6 +1448,11 @@ module Google
         # Corresponds to the JSON property `deviceId`
         # @return [Fixnum]
         attr_accessor :device_id
+      
+        # Output only. Display device name.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
       
         # Output only. Indicates if display is internal or not.
         # Corresponds to the JSON property `isInternal`
@@ -1356,6 +1482,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @device_id = args[:device_id] if args.key?(:device_id)
+          @display_name = args[:display_name] if args.key?(:display_name)
           @is_internal = args[:is_internal] if args.key?(:is_internal)
           @refresh_rate = args[:refresh_rate] if args.key?(:refresh_rate)
           @resolution_height = args[:resolution_height] if args.key?(:resolution_height)
@@ -1443,6 +1570,22 @@ module Google
         # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1GraphicsAdapterInfo]
         attr_accessor :adapter_info
       
+        # Output only. Information about the display(s) of the device.
+        # Corresponds to the JSON property `displayDevices`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1DisplayDevice>]
+        attr_accessor :display_devices
+      
+        # Output only. Is ePrivacy screen supported or not.
+        # Corresponds to the JSON property `eprivacySupported`
+        # @return [Boolean]
+        attr_accessor :eprivacy_supported
+        alias_method :eprivacy_supported?, :eprivacy_supported
+      
+        # Information on the device touch screen.
+        # Corresponds to the JSON property `touchScreenInfo`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TouchScreenInfo]
+        attr_accessor :touch_screen_info
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1450,6 +1593,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @adapter_info = args[:adapter_info] if args.key?(:adapter_info)
+          @display_devices = args[:display_devices] if args.key?(:display_devices)
+          @eprivacy_supported = args[:eprivacy_supported] if args.key?(:eprivacy_supported)
+          @touch_screen_info = args[:touch_screen_info] if args.key?(:touch_screen_info)
         end
       end
       
@@ -2064,6 +2210,59 @@ module Google
         def update!(**args)
           @report_time = args[:report_time] if args.key?(:report_time)
           @usb_peripheral_report = args[:usb_peripheral_report] if args.key?(:usb_peripheral_report)
+        end
+      end
+      
+      # Report for CountPrintJobsByPrinter, contains statistics on printer usage.
+      # Contains the total number of print jobs initiated with this printer, the
+      # number of users and the number of devices that have initiated at least one
+      # print job with this printer.
+      class GoogleChromeManagementV1PrinterReport
+        include Google::Apis::Core::Hashable
+      
+        # Number of chrome devices that have been used to send print jobs to the
+        # specified printer.
+        # Corresponds to the JSON property `deviceCount`
+        # @return [Fixnum]
+        attr_accessor :device_count
+      
+        # Number of print jobs sent to the printer.
+        # Corresponds to the JSON property `jobCount`
+        # @return [Fixnum]
+        attr_accessor :job_count
+      
+        # Printer name.
+        # Corresponds to the JSON property `printer`
+        # @return [String]
+        attr_accessor :printer
+      
+        # Printer API ID.
+        # Corresponds to the JSON property `printerId`
+        # @return [String]
+        attr_accessor :printer_id
+      
+        # Printer model.
+        # Corresponds to the JSON property `printerModel`
+        # @return [String]
+        attr_accessor :printer_model
+      
+        # Number of users that have sent print jobs to the printer.
+        # Corresponds to the JSON property `userCount`
+        # @return [Fixnum]
+        attr_accessor :user_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_count = args[:device_count] if args.key?(:device_count)
+          @job_count = args[:job_count] if args.key?(:job_count)
+          @printer = args[:printer] if args.key?(:printer)
+          @printer_id = args[:printer_id] if args.key?(:printer_id)
+          @printer_model = args[:printer_model] if args.key?(:printer_model)
+          @user_count = args[:user_count] if args.key?(:user_count)
         end
       end
       
@@ -2688,6 +2887,63 @@ module Google
         end
       end
       
+      # Information of an internal touch screen device.
+      class GoogleChromeManagementV1TouchScreenDevice
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Touch screen device display name.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. Touch screen device is stylus capable or not.
+        # Corresponds to the JSON property `stylusCapable`
+        # @return [Boolean]
+        attr_accessor :stylus_capable
+        alias_method :stylus_capable?, :stylus_capable
+      
+        # Output only. Number of touch points supported on the device.
+        # Corresponds to the JSON property `touchPointCount`
+        # @return [Fixnum]
+        attr_accessor :touch_point_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @stylus_capable = args[:stylus_capable] if args.key?(:stylus_capable)
+          @touch_point_count = args[:touch_point_count] if args.key?(:touch_point_count)
+        end
+      end
+      
+      # Information on the device touch screen.
+      class GoogleChromeManagementV1TouchScreenInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. List of the internal touch screen devices.
+        # Corresponds to the JSON property `devices`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TouchScreenDevice>]
+        attr_accessor :devices
+      
+        # Output only. Touchpad library name used by the input stack.
+        # Corresponds to the JSON property `touchpadLibrary`
+        # @return [String]
+        attr_accessor :touchpad_library
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @devices = args[:devices] if args.key?(:devices)
+          @touchpad_library = args[:touchpad_library] if args.key?(:touchpad_library)
+        end
+      end
+      
       # USB connected peripheral report.
       class GoogleChromeManagementV1UsbPeripheralReport
         include Google::Apis::Core::Hashable
@@ -2747,6 +3003,52 @@ module Google
           @subclass_id = args[:subclass_id] if args.key?(:subclass_id)
           @vendor = args[:vendor] if args.key?(:vendor)
           @vid = args[:vid] if args.key?(:vid)
+        end
+      end
+      
+      # Report for CountPrintJobsByUser, contains printing statistics for a user.
+      # Contains the number of printers, the number of devices used to initiate print
+      # jobs, and the number of print jobs initiated.
+      class GoogleChromeManagementV1UserPrintReport
+        include Google::Apis::Core::Hashable
+      
+        # Number of chrome devices that have been used to initiate print jobs by the
+        # user.
+        # Corresponds to the JSON property `deviceCount`
+        # @return [Fixnum]
+        attr_accessor :device_count
+      
+        # Number of print jobs initiated by the user.
+        # Corresponds to the JSON property `jobCount`
+        # @return [Fixnum]
+        attr_accessor :job_count
+      
+        # Number of printers used by the user.
+        # Corresponds to the JSON property `printerCount`
+        # @return [Fixnum]
+        attr_accessor :printer_count
+      
+        # The primary e-mail address of the user.
+        # Corresponds to the JSON property `userEmail`
+        # @return [String]
+        attr_accessor :user_email
+      
+        # The unique Directory API ID of the user.
+        # Corresponds to the JSON property `userId`
+        # @return [String]
+        attr_accessor :user_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_count = args[:device_count] if args.key?(:device_count)
+          @job_count = args[:job_count] if args.key?(:job_count)
+          @printer_count = args[:printer_count] if args.key?(:printer_count)
+          @user_email = args[:user_email] if args.key?(:user_email)
+          @user_id = args[:user_id] if args.key?(:user_id)
         end
       end
       
