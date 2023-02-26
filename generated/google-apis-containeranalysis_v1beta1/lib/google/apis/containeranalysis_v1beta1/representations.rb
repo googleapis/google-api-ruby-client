@@ -1815,6 +1815,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cvss_score, as: 'cvssScore'
+          property :cvss_v2, as: 'cvssV2', class: Google::Apis::ContaineranalysisV1beta1::Cvss, decorator: Google::Apis::ContaineranalysisV1beta1::Cvss::Representation
+      
+          property :cvss_v3, as: 'cvssV3', class: Google::Apis::ContaineranalysisV1beta1::Cvss, decorator: Google::Apis::ContaineranalysisV1beta1::Cvss::Representation
+      
           property :cvss_version, as: 'cvssVersion'
           property :effective_severity, as: 'effectiveSeverity'
           property :long_description, as: 'longDescription'
