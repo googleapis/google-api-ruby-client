@@ -470,9 +470,9 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
-        # Required. A list of configurations for flow versions. You should include
-        # version configs for all flows that are reachable from `Start Flow` in the
-        # agent. Otherwise, an error will be returned.
+        # A list of configurations for flow versions. You should include version configs
+        # for all flows that are reachable from `Start Flow` in the agent. Otherwise, an
+        # error will be returned.
         # Corresponds to the JSON property `versionConfigs`
         # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3EnvironmentVersionConfig>]
         attr_accessor :version_configs
@@ -3495,9 +3495,9 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
-        # Required. A list of configurations for flow versions. You should include
-        # version configs for all flows that are reachable from `Start Flow` in the
-        # agent. Otherwise, an error will be returned.
+        # A list of configurations for flow versions. You should include version configs
+        # for all flows that are reachable from `Start Flow` in the agent. Otherwise, an
+        # error will be returned.
         # Corresponds to the JSON property `versionConfigs`
         # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig>]
         attr_accessor :version_configs
@@ -10545,6 +10545,11 @@ module Google
         # @return [String]
         attr_accessor :time_zone
       
+        # Configuration of how speech should be synthesized.
+        # Corresponds to the JSON property `ttsConfig`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig]
+        attr_accessor :tts_config
+      
         # Output only. Update time of the conversation profile.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -10569,6 +10574,7 @@ module Google
           @security_settings = args[:security_settings] if args.key?(:security_settings)
           @stt_config = args[:stt_config] if args.key?(:stt_config)
           @time_zone = args[:time_zone] if args.key?(:time_zone)
+          @tts_config = args[:tts_config] if args.key?(:tts_config)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end

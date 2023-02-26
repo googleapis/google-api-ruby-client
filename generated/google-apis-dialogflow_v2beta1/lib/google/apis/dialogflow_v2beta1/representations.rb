@@ -5691,6 +5691,8 @@ module Google
           property :stt_config, as: 'sttConfig', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SpeechToTextConfig, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SpeechToTextConfig::Representation
       
           property :time_zone, as: 'timeZone'
+          property :tts_config, as: 'ttsConfig', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig::Representation
+      
           property :update_time, as: 'updateTime'
         end
       end
