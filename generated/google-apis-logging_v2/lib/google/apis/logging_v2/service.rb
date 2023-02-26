@@ -734,6 +734,162 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Asynchronously creates linked dataset in BigQuery which makes it possible to
+        # use BugQuery to read the logs stored in the bucket. A bucket may currently
+        # only contain one link.
+        # @param [String] parent
+        #   Required. The full resource name of the bucket to create a link for. "projects/
+        #   [PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[
+        #   ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/
+        #   [BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[
+        #   FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+        # @param [Google::Apis::LoggingV2::Link] link_object
+        # @param [String] link_id
+        #   Required. The ID to use for the link. The link_id can have up to 100
+        #   characters. A valid link_id must only have alphanumeric characters and
+        #   underscores within it.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_billing_account_location_bucket_link(parent, link_object = nil, link_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/links', options)
+          command.request_representation = Google::Apis::LoggingV2::Link::Representation
+          command.request_object = link_object
+          command.response_representation = Google::Apis::LoggingV2::Operation::Representation
+          command.response_class = Google::Apis::LoggingV2::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['linkId'] = link_id unless link_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a link. This will also delete the corresponding BigQuery linked
+        # dataset.
+        # @param [String] name
+        #   Required. The full resource name of the link to delete."projects/PROJECT_ID/
+        #   locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "organizations/
+        #   ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "
+        #   billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
+        #   links/LINK_ID" "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
+        #   links/LINK_ID"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_billing_account_location_bucket_link(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::LoggingV2::Operation::Representation
+          command.response_class = Google::Apis::LoggingV2::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a link.
+        # @param [String] name
+        #   Required. The resource name of the link:"projects/PROJECT_ID/locations/
+        #   LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "organizations/ORGANIZATION_ID/
+        #   locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "billingAccounts/
+        #   BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "
+        #   folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::Link] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::Link]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_billing_account_location_bucket_link(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::LoggingV2::Link::Representation
+          command.response_class = Google::Apis::LoggingV2::Link
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists links.
+        # @param [String] parent
+        #   Required. The parent resource whose links are to be listed:"projects/
+        #   PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/" "organizations/
+        #   ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/" "billingAccounts/
+        #   BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/" "folders/
+        #   FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of results to return from this request.
+        # @param [String] page_token
+        #   Optional. If present, then retrieve the next batch of results from the
+        #   preceding call to this method. pageToken must be the value of nextPageToken
+        #   from the previous response.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::ListLinksResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::ListLinksResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_billing_account_location_bucket_links(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/links', options)
+          command.response_representation = Google::Apis::LoggingV2::ListLinksResponse::Representation
+          command.response_class = Google::Apis::LoggingV2::ListLinksResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a view over log entries in a log bucket. A bucket may contain a
         # maximum of 30 views.
         # @param [String] parent
@@ -2529,6 +2685,162 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Asynchronously creates linked dataset in BigQuery which makes it possible to
+        # use BugQuery to read the logs stored in the bucket. A bucket may currently
+        # only contain one link.
+        # @param [String] parent
+        #   Required. The full resource name of the bucket to create a link for. "projects/
+        #   [PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[
+        #   ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/
+        #   [BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[
+        #   FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+        # @param [Google::Apis::LoggingV2::Link] link_object
+        # @param [String] link_id
+        #   Required. The ID to use for the link. The link_id can have up to 100
+        #   characters. A valid link_id must only have alphanumeric characters and
+        #   underscores within it.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_folder_location_bucket_link(parent, link_object = nil, link_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/links', options)
+          command.request_representation = Google::Apis::LoggingV2::Link::Representation
+          command.request_object = link_object
+          command.response_representation = Google::Apis::LoggingV2::Operation::Representation
+          command.response_class = Google::Apis::LoggingV2::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['linkId'] = link_id unless link_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a link. This will also delete the corresponding BigQuery linked
+        # dataset.
+        # @param [String] name
+        #   Required. The full resource name of the link to delete."projects/PROJECT_ID/
+        #   locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "organizations/
+        #   ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "
+        #   billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
+        #   links/LINK_ID" "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
+        #   links/LINK_ID"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_folder_location_bucket_link(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::LoggingV2::Operation::Representation
+          command.response_class = Google::Apis::LoggingV2::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a link.
+        # @param [String] name
+        #   Required. The resource name of the link:"projects/PROJECT_ID/locations/
+        #   LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "organizations/ORGANIZATION_ID/
+        #   locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "billingAccounts/
+        #   BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "
+        #   folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::Link] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::Link]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_folder_location_bucket_link(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::LoggingV2::Link::Representation
+          command.response_class = Google::Apis::LoggingV2::Link
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists links.
+        # @param [String] parent
+        #   Required. The parent resource whose links are to be listed:"projects/
+        #   PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/" "organizations/
+        #   ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/" "billingAccounts/
+        #   BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/" "folders/
+        #   FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of results to return from this request.
+        # @param [String] page_token
+        #   Optional. If present, then retrieve the next batch of results from the
+        #   preceding call to this method. pageToken must be the value of nextPageToken
+        #   from the previous response.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::ListLinksResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::ListLinksResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_folder_location_bucket_links(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/links', options)
+          command.response_representation = Google::Apis::LoggingV2::ListLinksResponse::Representation
+          command.response_class = Google::Apis::LoggingV2::ListLinksResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a view over log entries in a log bucket. A bucket may contain a
         # maximum of 30 views.
         # @param [String] parent
@@ -3670,6 +3982,162 @@ module Google
           command.response_class = Google::Apis::LoggingV2::Operation
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Asynchronously creates linked dataset in BigQuery which makes it possible to
+        # use BugQuery to read the logs stored in the bucket. A bucket may currently
+        # only contain one link.
+        # @param [String] parent
+        #   Required. The full resource name of the bucket to create a link for. "projects/
+        #   [PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[
+        #   ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/
+        #   [BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[
+        #   FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+        # @param [Google::Apis::LoggingV2::Link] link_object
+        # @param [String] link_id
+        #   Required. The ID to use for the link. The link_id can have up to 100
+        #   characters. A valid link_id must only have alphanumeric characters and
+        #   underscores within it.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_location_bucket_link(parent, link_object = nil, link_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/links', options)
+          command.request_representation = Google::Apis::LoggingV2::Link::Representation
+          command.request_object = link_object
+          command.response_representation = Google::Apis::LoggingV2::Operation::Representation
+          command.response_class = Google::Apis::LoggingV2::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['linkId'] = link_id unless link_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a link. This will also delete the corresponding BigQuery linked
+        # dataset.
+        # @param [String] name
+        #   Required. The full resource name of the link to delete."projects/PROJECT_ID/
+        #   locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "organizations/
+        #   ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "
+        #   billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
+        #   links/LINK_ID" "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
+        #   links/LINK_ID"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_location_bucket_link(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::LoggingV2::Operation::Representation
+          command.response_class = Google::Apis::LoggingV2::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a link.
+        # @param [String] name
+        #   Required. The resource name of the link:"projects/PROJECT_ID/locations/
+        #   LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "organizations/ORGANIZATION_ID/
+        #   locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "billingAccounts/
+        #   BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "
+        #   folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::Link] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::Link]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_location_bucket_link(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::LoggingV2::Link::Representation
+          command.response_class = Google::Apis::LoggingV2::Link
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists links.
+        # @param [String] parent
+        #   Required. The parent resource whose links are to be listed:"projects/
+        #   PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/" "organizations/
+        #   ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/" "billingAccounts/
+        #   BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/" "folders/
+        #   FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of results to return from this request.
+        # @param [String] page_token
+        #   Optional. If present, then retrieve the next batch of results from the
+        #   preceding call to this method. pageToken must be the value of nextPageToken
+        #   from the previous response.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::ListLinksResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::ListLinksResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_location_bucket_links(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/links', options)
+          command.response_representation = Google::Apis::LoggingV2::ListLinksResponse::Representation
+          command.response_class = Google::Apis::LoggingV2::ListLinksResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -4899,6 +5367,162 @@ module Google
           command.response_class = Google::Apis::LoggingV2::Operation
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Asynchronously creates linked dataset in BigQuery which makes it possible to
+        # use BugQuery to read the logs stored in the bucket. A bucket may currently
+        # only contain one link.
+        # @param [String] parent
+        #   Required. The full resource name of the bucket to create a link for. "projects/
+        #   [PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[
+        #   ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/
+        #   [BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[
+        #   FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+        # @param [Google::Apis::LoggingV2::Link] link_object
+        # @param [String] link_id
+        #   Required. The ID to use for the link. The link_id can have up to 100
+        #   characters. A valid link_id must only have alphanumeric characters and
+        #   underscores within it.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_location_bucket_link(parent, link_object = nil, link_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/links', options)
+          command.request_representation = Google::Apis::LoggingV2::Link::Representation
+          command.request_object = link_object
+          command.response_representation = Google::Apis::LoggingV2::Operation::Representation
+          command.response_class = Google::Apis::LoggingV2::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['linkId'] = link_id unless link_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a link. This will also delete the corresponding BigQuery linked
+        # dataset.
+        # @param [String] name
+        #   Required. The full resource name of the link to delete."projects/PROJECT_ID/
+        #   locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "organizations/
+        #   ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "
+        #   billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
+        #   links/LINK_ID" "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
+        #   links/LINK_ID"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_organization_location_bucket_link(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::LoggingV2::Operation::Representation
+          command.response_class = Google::Apis::LoggingV2::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a link.
+        # @param [String] name
+        #   Required. The resource name of the link:"projects/PROJECT_ID/locations/
+        #   LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "organizations/ORGANIZATION_ID/
+        #   locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "billingAccounts/
+        #   BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "
+        #   folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::Link] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::Link]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_location_bucket_link(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::LoggingV2::Link::Representation
+          command.response_class = Google::Apis::LoggingV2::Link
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists links.
+        # @param [String] parent
+        #   Required. The parent resource whose links are to be listed:"projects/
+        #   PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/" "organizations/
+        #   ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/" "billingAccounts/
+        #   BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/" "folders/
+        #   FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of results to return from this request.
+        # @param [String] page_token
+        #   Optional. If present, then retrieve the next batch of results from the
+        #   preceding call to this method. pageToken must be the value of nextPageToken
+        #   from the previous response.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::ListLinksResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::ListLinksResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_location_bucket_links(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/links', options)
+          command.response_representation = Google::Apis::LoggingV2::ListLinksResponse::Representation
+          command.response_class = Google::Apis::LoggingV2::ListLinksResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -6322,6 +6946,162 @@ module Google
           command.response_class = Google::Apis::LoggingV2::Operation
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Asynchronously creates linked dataset in BigQuery which makes it possible to
+        # use BugQuery to read the logs stored in the bucket. A bucket may currently
+        # only contain one link.
+        # @param [String] parent
+        #   Required. The full resource name of the bucket to create a link for. "projects/
+        #   [PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[
+        #   ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/
+        #   [BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[
+        #   FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+        # @param [Google::Apis::LoggingV2::Link] link_object
+        # @param [String] link_id
+        #   Required. The ID to use for the link. The link_id can have up to 100
+        #   characters. A valid link_id must only have alphanumeric characters and
+        #   underscores within it.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_bucket_link(parent, link_object = nil, link_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/links', options)
+          command.request_representation = Google::Apis::LoggingV2::Link::Representation
+          command.request_object = link_object
+          command.response_representation = Google::Apis::LoggingV2::Operation::Representation
+          command.response_class = Google::Apis::LoggingV2::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['linkId'] = link_id unless link_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a link. This will also delete the corresponding BigQuery linked
+        # dataset.
+        # @param [String] name
+        #   Required. The full resource name of the link to delete."projects/PROJECT_ID/
+        #   locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "organizations/
+        #   ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "
+        #   billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
+        #   links/LINK_ID" "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
+        #   links/LINK_ID"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_bucket_link(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::LoggingV2::Operation::Representation
+          command.response_class = Google::Apis::LoggingV2::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a link.
+        # @param [String] name
+        #   Required. The resource name of the link:"projects/PROJECT_ID/locations/
+        #   LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "organizations/ORGANIZATION_ID/
+        #   locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "billingAccounts/
+        #   BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID" "
+        #   folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::Link] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::Link]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_bucket_link(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::LoggingV2::Link::Representation
+          command.response_class = Google::Apis::LoggingV2::Link
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists links.
+        # @param [String] parent
+        #   Required. The parent resource whose links are to be listed:"projects/
+        #   PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/" "organizations/
+        #   ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/" "billingAccounts/
+        #   BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/" "folders/
+        #   FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of results to return from this request.
+        # @param [String] page_token
+        #   Optional. If present, then retrieve the next batch of results from the
+        #   preceding call to this method. pageToken must be the value of nextPageToken
+        #   from the previous response.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::ListLinksResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::ListLinksResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_bucket_links(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/links', options)
+          command.response_representation = Google::Apis::LoggingV2::ListLinksResponse::Representation
+          command.response_class = Google::Apis::LoggingV2::ListLinksResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
