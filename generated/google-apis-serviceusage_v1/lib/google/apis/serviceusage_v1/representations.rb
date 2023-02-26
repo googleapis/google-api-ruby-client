@@ -705,6 +705,8 @@ module Google
           property :jwt_audience, as: 'jwtAudience'
           property :min_deadline, as: 'minDeadline'
           property :operation_deadline, as: 'operationDeadline'
+          hash :overrides_by_request_protocol, as: 'overridesByRequestProtocol', class: Google::Apis::ServiceusageV1::BackendRule, decorator: Google::Apis::ServiceusageV1::BackendRule::Representation
+      
           property :path_translation, as: 'pathTranslation'
           property :protocol, as: 'protocol'
           property :selector, as: 'selector'
