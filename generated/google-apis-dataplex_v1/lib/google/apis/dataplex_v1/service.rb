@@ -814,9 +814,9 @@ module Google
         # Gets a DataScanJob resource.
         # @param [String] name
         #   Required. The resource name of the DataScanJob: projects/`project`/locations/`
-        #   location_id`/dataScans/`data_scan_id`/dataScanJobs/`data_scan_job_id` where
-        #   project refers to a project_id or project_number and location_id refers to a
-        #   GCP region.
+        #   location_id`/dataScans/`data_scan_id`/jobs/`data_scan_job_id` where project
+        #   refers to a project_id or project_number and location_id refers to a GCP
+        #   region.
         # @param [String] view
         #   Optional. Select the DataScanJob view to return. Defaults to BASIC.
         # @param [String] fields

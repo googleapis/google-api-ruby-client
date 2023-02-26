@@ -2798,7 +2798,7 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Output only. URI Endpoints to access sessions associated with the Environment.
+        # URI Endpoints to access sessions associated with the Environment.
         # Corresponds to the JSON property `endpoints`
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1EnvironmentEndpoints]
         attr_accessor :endpoints
@@ -2820,12 +2820,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Optional. Configuration for sessions created for this environment.
+        # Configuration for sessions created for this environment.
         # Corresponds to the JSON property `sessionSpec`
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1EnvironmentSessionSpec]
         attr_accessor :session_spec
       
-        # Output only. Status of sessions created for this environment.
+        # Status of sessions created for this environment.
         # Corresponds to the JSON property `sessionStatus`
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1EnvironmentSessionStatus]
         attr_accessor :session_status
@@ -2868,7 +2868,7 @@ module Google
         end
       end
       
-      # 
+      # URI Endpoints to access sessions associated with the Environment.
       class GoogleCloudDataplexV1EnvironmentEndpoints
         include Google::Apis::Core::Hashable
       
@@ -2994,7 +2994,7 @@ module Google
         end
       end
       
-      # 
+      # Configuration for sessions created for this environment.
       class GoogleCloudDataplexV1EnvironmentSessionSpec
         include Google::Apis::Core::Hashable
       
@@ -3024,7 +3024,7 @@ module Google
         end
       end
       
-      # 
+      # Status of sessions created for this environment.
       class GoogleCloudDataplexV1EnvironmentSessionStatus
         include Google::Apis::Core::Hashable
       
@@ -4178,7 +4178,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # 
+        # Output only. State of Session
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
