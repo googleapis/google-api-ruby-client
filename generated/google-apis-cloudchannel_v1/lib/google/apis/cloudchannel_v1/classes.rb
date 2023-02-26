@@ -1028,8 +1028,8 @@ module Google
         # maximum assignable units for a flexible offer OR - num_units: The total
         # commitment for commitment-based offers The response may additionally include
         # the following output-only Parameters: - assigned_units: The number of licenses
-        # assigned to users. For GCP billing accounts, the following Parameter may be
-        # accepted as input: - display_name: The display name of the billing account.
+        # assigned to users. For GCP billing subaccounts, the following Parameter may be
+        # accepted as input: - display_name: The display name of the billing subaccount.
         # Corresponds to the JSON property `parameters`
         # @return [Array<Google::Apis::CloudchannelV1::GoogleCloudChannelV1Parameter>]
         attr_accessor :parameters
@@ -3588,8 +3588,8 @@ module Google
         # maximum assignable units for a flexible offer OR - num_units: The total
         # commitment for commitment-based offers The response may additionally include
         # the following output-only Parameters: - assigned_units: The number of licenses
-        # assigned to users. For GCP billing accounts, the following Parameter may be
-        # accepted as input: - display_name: The display name of the billing account.
+        # assigned to users. For GCP billing subaccounts, the following Parameter may be
+        # accepted as input: - display_name: The display name of the billing subaccount.
         # Corresponds to the JSON property `parameters`
         # @return [Array<Google::Apis::CloudchannelV1::GoogleCloudChannelV1alpha1Parameter>]
         attr_accessor :parameters
