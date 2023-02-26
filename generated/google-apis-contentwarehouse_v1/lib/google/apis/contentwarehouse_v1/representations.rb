@@ -1258,6 +1258,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AssistantApiCapabilitiesHomeAppCapabilities
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AssistantApiCarAssistantCapabilities
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5506,6 +5512,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContentwarehouseV1ProcessWithDocAi
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContentwarehouseV1ProcessorInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -7750,6 +7762,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class KnowledgeAnswersIntentQueryResponseMeaningSignalsResponseMeaningSignals
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class KnowledgeAnswersIntentQuerySaftSignals
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -9173,6 +9191,12 @@ module Google
       end
       
       class NlpSemanticParsingLocalCuisineConstraint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NlpSemanticParsingLocalEvChargingStationConnectorConstraint
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -11122,12 +11146,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class QualityTimebasedOldnessInfo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class QualityTimebasedPageType
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -12395,6 +12413,12 @@ module Google
       end
       
       class RichsnippetsPageMapTemplateType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class S3AudioLanguageS3AudioLanguage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -17353,6 +17377,13 @@ module Google
         end
       end
       
+      class AssistantApiCapabilitiesHomeAppCapabilities
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :setup_state, as: 'setupState'
+        end
+      end
+      
       class AssistantApiCarAssistantCapabilities
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -19064,6 +19095,8 @@ module Google
       
           property :gcm_capabilities, as: 'gcmCapabilities', class: Google::Apis::ContentwarehouseV1::AssistantApiGcmCapabilities, decorator: Google::Apis::ContentwarehouseV1::AssistantApiGcmCapabilities::Representation
       
+          property :home_app_capabilities, as: 'homeAppCapabilities', class: Google::Apis::ContentwarehouseV1::AssistantApiCapabilitiesHomeAppCapabilities, decorator: Google::Apis::ContentwarehouseV1::AssistantApiCapabilitiesHomeAppCapabilities::Representation
+      
           property :live_tv_channel_capabilities, as: 'liveTvChannelCapabilities', class: Google::Apis::ContentwarehouseV1::AssistantApiLiveTvChannelCapabilities, decorator: Google::Apis::ContentwarehouseV1::AssistantApiLiveTvChannelCapabilities::Representation
       
           property :oem_capabilities, as: 'oemCapabilities', class: Google::Apis::ContentwarehouseV1::AssistantApiOemCapabilities, decorator: Google::Apis::ContentwarehouseV1::AssistantApiOemCapabilities::Representation
@@ -19188,6 +19221,7 @@ module Google
           property :bypass_msg_notification_dismissal, as: 'bypassMsgNotificationDismissal'
           property :client1m_providers_supported, as: 'client1mProvidersSupported'
           property :client_op_result_batching_supported, as: 'clientOpResultBatchingSupported'
+          property :confirmation_before_reading_multiple_messages_supported, as: 'confirmationBeforeReadingMultipleMessagesSupported'
           property :cross_device_broadcast_supported, as: 'crossDeviceBroadcastSupported'
           property :cross_device_broadcast_version, as: 'crossDeviceBroadcastVersion'
           property :csat_visual_overlay_supported, as: 'csatVisualOverlaySupported'
@@ -20176,6 +20210,8 @@ module Google
       class AssistantLogsProviderAnnotationLog
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :lang, as: 'lang'
+          collection :localized_names, as: 'localizedNames'
           collection :package_names, as: 'packageNames'
         end
       end
@@ -20265,6 +20301,8 @@ module Google
           property :intent_name_auis_score, as: 'intentNameAuisScore'
           property :intent_name_auis_score_exp, as: 'intentNameAuisScoreExp'
           property :is_feasible, as: 'isFeasible'
+          property :is_fully_grounded, as: 'isFullyGrounded'
+          property :is_play_generic_music, as: 'isPlayGenericMusic'
           property :kscorer_rank, as: 'kscorerRank'
           property :laa_features, as: 'laaFeatures', class: Google::Apis::ContentwarehouseV1::AssistantGroundingRankerLaaFeatures, decorator: Google::Apis::ContentwarehouseV1::AssistantGroundingRankerLaaFeatures::Representation
       
@@ -21225,8 +21263,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :last_significant_update, as: 'lastSignificantUpdate', class: Google::Apis::ContentwarehouseV1::QualityTimebasedLastSignificantUpdate, decorator: Google::Apis::ContentwarehouseV1::QualityTimebasedLastSignificantUpdate::Representation
       
-          property :oldness_info, as: 'oldnessInfo', class: Google::Apis::ContentwarehouseV1::QualityTimebasedOldnessInfo, decorator: Google::Apis::ContentwarehouseV1::QualityTimebasedOldnessInfo::Representation
-      
           property :pagetype, as: 'pagetype', class: Google::Apis::ContentwarehouseV1::QualityTimebasedPageType, decorator: Google::Apis::ContentwarehouseV1::QualityTimebasedPageType::Representation
       
         end
@@ -21278,6 +21314,8 @@ module Google
           property :product_review_p_demote_site, as: 'productReviewPDemoteSite'
           property :product_review_p_promote_page, as: 'productReviewPPromotePage'
           property :product_review_p_promote_site, as: 'productReviewPPromoteSite'
+          property :product_review_p_review_page, as: 'productReviewPReviewPage'
+          property :product_review_p_uhq_page, as: 'productReviewPUhqPage'
           property :scamness, as: 'scamness'
           property :serp_demotion, as: 'serpDemotion'
           property :site_authority, as: 'siteAuthority'
@@ -25460,6 +25498,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :document, as: 'document', class: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1Document, decorator: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1Document::Representation
       
+          collection :long_running_operations, as: 'longRunningOperations', class: Google::Apis::ContentwarehouseV1::GoogleLongrunningOperation, decorator: Google::Apis::ContentwarehouseV1::GoogleLongrunningOperation::Representation
+      
           property :metadata, as: 'metadata', class: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1ResponseMetadata, decorator: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1ResponseMetadata::Representation
       
           property :rule_engine_output, as: 'ruleEngineOutput', class: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1RuleEngineOutput, decorator: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1RuleEngineOutput::Representation
@@ -25641,10 +25681,10 @@ module Google
       class GoogleCloudContentwarehouseV1ExportToCdwPipeline
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :document_ids, as: 'documentIds'
+          property :doc_ai_dataset, as: 'docAiDataset'
+          collection :documents, as: 'documents'
           property :export_folder_path, as: 'exportFolderPath'
-          property :processor_info, as: 'processorInfo', class: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1ProcessorInfo, decorator: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1ProcessorInfo::Representation
-      
+          property :training_split_ratio, as: 'trainingSplitRatio'
         end
       end
       
@@ -25691,6 +25731,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :input_path, as: 'inputPath'
+          property :processor_results_folder_path, as: 'processorResultsFolderPath'
           property :schema_name, as: 'schemaName'
         end
       end
@@ -25698,12 +25739,12 @@ module Google
       class GoogleCloudContentwarehouseV1GcsIngestWithDocAiProcessorsPipeline
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :classify_split_processor_infos, as: 'classifySplitProcessorInfos', class: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1ProcessorInfo, decorator: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1ProcessorInfo::Representation
-      
           collection :extract_processor_infos, as: 'extractProcessorInfos', class: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1ProcessorInfo, decorator: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1ProcessorInfo::Representation
       
           property :input_path, as: 'inputPath'
           property :processor_results_folder_path, as: 'processorResultsFolderPath'
+          property :split_classify_processor_info, as: 'splitClassifyProcessorInfo', class: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1ProcessorInfo, decorator: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1ProcessorInfo::Representation
+      
         end
       end
       
@@ -25864,6 +25905,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :replace_message_fields, as: 'replaceMessageFields'
           property :replace_repeated_fields, as: 'replaceRepeatedFields'
+        end
+      end
+      
+      class GoogleCloudContentwarehouseV1ProcessWithDocAi
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :documents, as: 'documents'
+          property :export_folder_path, as: 'exportFolderPath'
+          property :processor_info, as: 'processorInfo', class: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1ProcessorInfo, decorator: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1ProcessorInfo::Representation
+      
+          property :processor_results_folder_path, as: 'processorResultsFolderPath'
         end
       end
       
@@ -26075,6 +26127,8 @@ module Google
           property :gcs_ingest_pipeline, as: 'gcsIngestPipeline', class: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1GcsIngestPipeline, decorator: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1GcsIngestPipeline::Representation
       
           property :gcs_ingest_with_doc_ai_processors_pipeline, as: 'gcsIngestWithDocAiProcessorsPipeline', class: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1GcsIngestWithDocAiProcessorsPipeline, decorator: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1GcsIngestWithDocAiProcessorsPipeline::Representation
+      
+          property :process_with_doc_ai_pipeline, as: 'processWithDocAiPipeline', class: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1ProcessWithDocAi, decorator: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1ProcessWithDocAi::Representation
       
         end
       end
@@ -28365,6 +28419,8 @@ module Google
       
           property :representative_frame_data, as: 'representativeFrameData', class: Google::Apis::ContentwarehouseV1::ImageData, decorator: Google::Apis::ContentwarehouseV1::ImageData::Representation
       
+          property :s3_asr, as: 's3Asr', class: Google::Apis::ContentwarehouseV1::ImageRepositoryAmarnaCloudSpeechSignals, decorator: Google::Apis::ContentwarehouseV1::ImageRepositoryAmarnaCloudSpeechSignals::Representation
+      
           property :s3_language_identification, as: 's3LanguageIdentification', class: Google::Apis::ContentwarehouseV1::ImageRepositoryS3LangIdSignals, decorator: Google::Apis::ContentwarehouseV1::ImageRepositoryS3LangIdSignals::Representation
       
           property :safesearch_video_content_signals, as: 'safesearchVideoContentSignals', class: Google::Apis::ContentwarehouseV1::SafesearchVideoContentSignals, decorator: Google::Apis::ContentwarehouseV1::SafesearchVideoContentSignals::Representation
@@ -28715,6 +28771,7 @@ module Google
       class ImageSafesearchContentOcrAnnotation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :ocr_annotation_version, as: 'ocrAnnotationVersion'
           property :ocr_prominence_score, as: 'ocrProminenceScore'
           property :porn_score, as: 'pornScore'
           property :prominent_offensive_score, as: 'prominentOffensiveScore'
@@ -30483,6 +30540,8 @@ module Google
           property :referential_resolution, as: 'referentialResolution', class: Google::Apis::ContentwarehouseV1::KnowledgeAnswersDialogReferentialResolution, decorator: Google::Apis::ContentwarehouseV1::KnowledgeAnswersDialogReferentialResolution::Representation
       
           property :refx_summary_node_id, as: 'refxSummaryNodeId'
+          property :response_meaning_signals, as: 'responseMeaningSignals', class: Google::Apis::ContentwarehouseV1::KnowledgeAnswersIntentQueryResponseMeaningSignalsResponseMeaningSignals, decorator: Google::Apis::ContentwarehouseV1::KnowledgeAnswersIntentQueryResponseMeaningSignalsResponseMeaningSignals::Representation
+      
           collection :result_support, as: 'resultSupport', class: Google::Apis::ContentwarehouseV1::UniversalsearchNewPackerKnowledgeResultSupport, decorator: Google::Apis::ContentwarehouseV1::UniversalsearchNewPackerKnowledgeResultSupport::Representation
       
           property :role, as: 'role'
@@ -30652,6 +30711,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :query_popularity, as: 'queryPopularity'
           property :youtube_views, :numeric_string => true, as: 'youtubeViews'
+        end
+      end
+      
+      class KnowledgeAnswersIntentQueryResponseMeaningSignalsResponseMeaningSignals
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :property_value, as: 'propertyValue', class: Google::Apis::ContentwarehouseV1::FreebasePropertyValue, decorator: Google::Apis::ContentwarehouseV1::FreebasePropertyValue::Representation
+      
         end
       end
       
@@ -33422,6 +33489,13 @@ module Google
         end
       end
       
+      class NlpSemanticParsingLocalEvChargingStationConnectorConstraint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :connector_type, as: 'connectorType'
+        end
+      end
+      
       class NlpSemanticParsingLocalEvChargingStationSpeedConstraint
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -33602,6 +33676,8 @@ module Google
           property :chain_member, as: 'chainMember', class: Google::Apis::ContentwarehouseV1::NlpSemanticParsingLocalChainMemberConstraint, decorator: Google::Apis::ContentwarehouseV1::NlpSemanticParsingLocalChainMemberConstraint::Representation
       
           property :cuisine, as: 'cuisine', class: Google::Apis::ContentwarehouseV1::NlpSemanticParsingLocalCuisineConstraint, decorator: Google::Apis::ContentwarehouseV1::NlpSemanticParsingLocalCuisineConstraint::Representation
+      
+          property :evcs_connector_constraint, as: 'evcsConnectorConstraint', class: Google::Apis::ContentwarehouseV1::NlpSemanticParsingLocalEvChargingStationConnectorConstraint, decorator: Google::Apis::ContentwarehouseV1::NlpSemanticParsingLocalEvChargingStationConnectorConstraint::Representation
       
           property :evcs_speed_constraint, as: 'evcsSpeedConstraint', class: Google::Apis::ContentwarehouseV1::NlpSemanticParsingLocalEvChargingStationSpeedConstraint, decorator: Google::Apis::ContentwarehouseV1::NlpSemanticParsingLocalEvChargingStationSpeedConstraint::Representation
       
@@ -35885,6 +35961,8 @@ module Google
       
           collection :rosetta_languages, as: 'rosettaLanguages'
           property :rs_application, as: 'rsApplication', class: Google::Apis::ContentwarehouseV1::RepositoryAnnotationsRdfaRdfaRichSnippetsApplication, decorator: Google::Apis::ContentwarehouseV1::RepositoryAnnotationsRdfaRdfaRichSnippetsApplication::Representation
+      
+          property :s3_audio_language, as: 's3AudioLanguage', class: Google::Apis::ContentwarehouseV1::S3AudioLanguageS3AudioLanguage, decorator: Google::Apis::ContentwarehouseV1::S3AudioLanguageS3AudioLanguage::Representation
       
           collection :saft_language_int, as: 'saftLanguageInt'
           property :scaled_selection_tier_rank, as: 'scaledSelectionTierRank'
@@ -38343,13 +38421,6 @@ module Google
         end
       end
       
-      class QualityTimebasedOldnessInfo
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :is_old_page, as: 'isOldPage'
-        end
-      end
-      
       class QualityTimebasedPageType
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -40087,8 +40158,6 @@ module Google
       
           property :matching_metadata, as: 'matchingMetadata', class: Google::Apis::ContentwarehouseV1::RepositoryWebrefPreprocessingUrlMatchingMetadata, decorator: Google::Apis::ContentwarehouseV1::RepositoryWebrefPreprocessingUrlMatchingMetadata::Representation
       
-          property :obsolete_anchors_without_interwiki, as: 'obsoleteAnchorsWithoutInterwiki', class: Google::Apis::ContentwarehouseV1::RepositoryWebrefSimplifiedAnchors, decorator: Google::Apis::ContentwarehouseV1::RepositoryWebrefSimplifiedAnchors::Representation
-      
           property :refcon_document_metadata, as: 'refconDocumentMetadata', class: Google::Apis::ContentwarehouseV1::RepositoryWebrefRefconRefconDocumentMetadata, decorator: Google::Apis::ContentwarehouseV1::RepositoryWebrefRefconRefconDocumentMetadata::Representation
       
           property :source_snapshot_type, as: 'sourceSnapshotType'
@@ -40915,6 +40984,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :src, as: 'src'
+        end
+      end
+      
+      class S3AudioLanguageS3AudioLanguage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :language, as: 'language'
+          property :language_confidence, as: 'languageConfidence'
+          property :speech_class, as: 'speechClass'
         end
       end
       
@@ -41788,6 +41866,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :inferred_image_id, :numeric_string => true, as: 'inferredImageId'
+          property :inferred_image_source, as: 'inferredImageSource'
           property :inferred_image_type, as: 'inferredImageType'
         end
       end
@@ -42224,6 +42303,7 @@ module Google
       class SocialGraphApiProtoImageReference
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :content_version, :numeric_string => true, as: 'contentVersion'
           property :media_id, as: 'mediaId'
         end
       end
@@ -42843,6 +42923,7 @@ module Google
       class StorageGraphBfgLivegraphProvenanceMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :direct_write_record_ids, as: 'directWriteRecordIds'
           property :lg_internal_writer_id, :numeric_string => true, as: 'lgInternalWriterId'
           property :provenance_only_addition, as: 'provenanceOnlyAddition'
           collection :triangulation_key, as: 'triangulationKey'
