@@ -22,9 +22,39 @@ module Google
   module Apis
     module TpuV2
       
+      # A TPU accelerator configuration.
+      class AcceleratorConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Topology of TPU in chips.
+        # Corresponds to the JSON property `topology`
+        # @return [String]
+        attr_accessor :topology
+      
+        # Required. Type of TPU.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @topology = args[:topology] if args.key?(:topology)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # A accelerator type that a Node can be configured with.
       class AcceleratorType
         include Google::Apis::Core::Hashable
+      
+        # The accelerator config.
+        # Corresponds to the JSON property `acceleratorConfigs`
+        # @return [Array<Google::Apis::TpuV2::AcceleratorConfig>]
+        attr_accessor :accelerator_configs
       
         # The resource name.
         # Corresponds to the JSON property `name`
@@ -42,6 +72,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @accelerator_configs = args[:accelerator_configs] if args.key?(:accelerator_configs)
           @name = args[:name] if args.key?(:name)
           @type = args[:type] if args.key?(:type)
         end
@@ -532,6 +563,11 @@ module Google
       class Node
         include Google::Apis::Core::Hashable
       
+        # A TPU accelerator configuration.
+        # Corresponds to the JSON property `acceleratorConfig`
+        # @return [Google::Apis::TpuV2::AcceleratorConfig]
+        attr_accessor :accelerator_config
+      
         # Required. The type of hardware accelerators associated with this node.
         # Corresponds to the JSON property `acceleratorType`
         # @return [String]
@@ -654,6 +690,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @accelerator_config = args[:accelerator_config] if args.key?(:accelerator_config)
           @accelerator_type = args[:accelerator_type] if args.key?(:accelerator_type)
           @api_version = args[:api_version] if args.key?(:api_version)
           @cidr_block = args[:cidr_block] if args.key?(:cidr_block)
