@@ -196,6 +196,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SasPortalProvisionDeploymentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SasPortalProvisionDeploymentResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SasPortalSetPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -538,6 +550,19 @@ module Google
           collection :assignments, as: 'assignments', class: Google::Apis::SasportalV1alpha1::SasPortalAssignment, decorator: Google::Apis::SasportalV1alpha1::SasPortalAssignment::Representation
       
           property :etag, :base64 => true, as: 'etag'
+        end
+      end
+      
+      class SasPortalProvisionDeploymentRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class SasPortalProvisionDeploymentResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_message, as: 'errorMessage'
         end
       end
       
