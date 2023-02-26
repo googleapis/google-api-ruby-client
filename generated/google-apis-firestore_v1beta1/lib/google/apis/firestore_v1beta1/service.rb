@@ -576,7 +576,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Listens to changes.
+        # Listens to changes. This method is only available via the gRPC API (not REST).
         # @param [String] database
         #   Required. The database name. In the format: `projects/`project_id`/databases/`
         #   database_id``.
@@ -809,7 +809,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Streams batches of document updates and deletes, in order.
+        # Streams batches of document updates and deletes, in order. This method is only
+        # available via the gRPC API (not REST).
         # @param [String] database
         #   Required. The database name. In the format: `projects/`project_id`/databases/`
         #   database_id``. This is only required in the first message.
