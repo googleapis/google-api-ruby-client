@@ -9594,8 +9594,11 @@ module Google
         end
         
         # Returns the latest image that is part of an image family and is not deprecated.
+        # For more information on image families, see Public image families
+        # documentation.
         # @param [String] project
-        #   Project ID for this request.
+        #   The image project that the image belongs to. For example, to get a CentOS
+        #   image, specify centos-cloud as the image project.
         # @param [String] family
         #   Name of the image family to search for.
         # @param [String] fields
