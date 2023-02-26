@@ -461,6 +461,13 @@ module Google
         # @return [Google::Apis::CloudfunctionsV2::EventTrigger]
         attr_accessor :event_trigger
       
+        # Resource name of a KMS crypto key (managed by the user) used to encrypt/
+        # decrypt function resources. It must match the pattern `projects/`project`/
+        # locations/`location`/keyRings/`key_ring`/cryptoKeys/`crypto_key``.
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
         # Labels associated with this Cloud Function.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
@@ -503,6 +510,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @environment = args[:environment] if args.key?(:environment)
           @event_trigger = args[:event_trigger] if args.key?(:event_trigger)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @service_config = args[:service_config] if args.key?(:service_config)
@@ -549,12 +557,28 @@ module Google
       class GenerateUploadUrlRequest
         include Google::Apis::Core::Hashable
       
+        # Resource name of a KMS crypto key (managed by the user) used to encrypt/
+        # decrypt function source code objects in intermediate Cloud Storage buckets.
+        # When you generate an upload url and upload your source code, it gets copied to
+        # an intermediate Cloud Storage bucket. The source code is then copied to a
+        # versioned directory in the sources bucket in the consumer project during the
+        # function deployment. It must match the pattern `projects/`project`/locations/`
+        # location`/keyRings/`key_ring`/cryptoKeys/`crypto_key``. The Google Cloud
+        # Functions service account (service-`project_number`@gcf-admin-robot.iam.
+        # gserviceaccount.com) must be granted the role 'Cloud KMS CryptoKey Encrypter/
+        # Decrypter (roles/cloudkms.cryptoKeyEncrypterDecrypter)' on the Key/KeyRing/
+        # Project/Organization (least access preferred).
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
         end
       end
       
