@@ -4586,10 +4586,9 @@ module Google
         # @return [String]
         attr_accessor :language_code
       
-        # Output only. A list of local inventories specific to different places. This is
-        # only available for users who have Retail Search enabled, and it can be managed
-        # by ProductService.AddLocalInventories and ProductService.
-        # RemoveLocalInventories APIs.
+        # Output only. A list of local inventories specific to different places. This
+        # field can be managed by ProductService.AddLocalInventories and ProductService.
+        # RemoveLocalInventories APIs if fine-grained, high-volume updates are necessary.
         # Corresponds to the JSON property `localInventories`
         # @return [Array<Google::Apis::RetailV2beta::GoogleCloudRetailV2betaLocalInventory>]
         attr_accessor :local_inventories
