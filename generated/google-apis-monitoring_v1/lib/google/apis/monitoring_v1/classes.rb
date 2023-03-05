@@ -668,6 +668,36 @@ module Google
         end
       end
       
+      # A widget that displays a list of incidents
+      class IncidentList
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The monitored resource for which incidents are listed. The resource
+        # doesn't need to be fully specified. That is, you can specify the resource type
+        # but not the values of the resource labels. The resource type and labels are
+        # used for filtering.
+        # Corresponds to the JSON property `monitoredResources`
+        # @return [Array<Google::Apis::MonitoringV1::MonitoredResource>]
+        attr_accessor :monitored_resources
+      
+        # Optional. A list of alert policy names to filter the incident list by. Don't
+        # include the project ID prefix in the policy name. For example, use
+        # alertPolicies/utilization.
+        # Corresponds to the JSON property `policyNames`
+        # @return [Array<String>]
+        attr_accessor :policy_names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @monitored_resources = args[:monitored_resources] if args.key?(:monitored_resources)
+          @policy_names = args[:policy_names] if args.key?(:policy_names)
+        end
+      end
+      
       # The ListDashboards request.
       class ListDashboardsResponse
         include Google::Apis::Core::Hashable
@@ -847,6 +877,46 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # An object representing a resource that can be used for monitoring, logging,
+      # billing, or other purposes. Examples include virtual machine instances,
+      # databases, and storage devices such as disks. The type field identifies a
+      # MonitoredResourceDescriptor object that describes the resource's schema.
+      # Information in the labels field identifies the actual resource and its
+      # attributes according to the schema. For example, a particular Compute Engine
+      # VM instance could be represented by the following object, because the
+      # MonitoredResourceDescriptor for "gce_instance" has labels "project_id", "
+      # instance_id" and "zone": ` "type": "gce_instance", "labels": ` "project_id": "
+      # my-project", "instance_id": "12345678901234", "zone": "us-central1-a" ``
+      class MonitoredResource
+        include Google::Apis::Core::Hashable
+      
+        # Required. Values for all of the labels listed in the associated monitored
+        # resource descriptor. For example, Compute Engine VM instances use the labels "
+        # project_id", "instance_id", and "zone".
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Required. The monitored resource type. This field must match the type field of
+        # a MonitoredResourceDescriptor object. For example, the type of a Compute
+        # Engine VM instance is gce_instance. For a list of types, see Monitoring
+        # resource types (https://cloud.google.com/monitoring/api/resources) and Logging
+        # resource types (https://cloud.google.com/logging/docs/api/v2/resource-list).
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @labels = args[:labels] if args.key?(:labels)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -2002,6 +2072,11 @@ module Google
         # @return [Google::Apis::MonitoringV1::CollapsibleGroup]
         attr_accessor :collapsible_group
       
+        # A widget that displays a list of incidents
+        # Corresponds to the JSON property `incidentList`
+        # @return [Google::Apis::MonitoringV1::IncidentList]
+        attr_accessor :incident_list
+      
         # A widget that displays a stream of log.
         # Corresponds to the JSON property `logsPanel`
         # @return [Google::Apis::MonitoringV1::LogsPanel]
@@ -2042,6 +2117,7 @@ module Google
           @alert_chart = args[:alert_chart] if args.key?(:alert_chart)
           @blank = args[:blank] if args.key?(:blank)
           @collapsible_group = args[:collapsible_group] if args.key?(:collapsible_group)
+          @incident_list = args[:incident_list] if args.key?(:incident_list)
           @logs_panel = args[:logs_panel] if args.key?(:logs_panel)
           @scorecard = args[:scorecard] if args.key?(:scorecard)
           @text = args[:text] if args.key?(:text)
