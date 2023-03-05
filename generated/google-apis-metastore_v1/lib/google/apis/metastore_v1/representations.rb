@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AuxiliaryVersionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackendMetastore
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -226,6 +232,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ScalingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Secret
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -282,6 +294,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :exempted_members, as: 'exemptedMembers'
           property :log_type, as: 'logType'
+        end
+      end
+      
+      class AuxiliaryVersionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :config_overrides, as: 'configOverrides'
+          property :network_config, as: 'networkConfig', class: Google::Apis::MetastoreV1::NetworkConfig, decorator: Google::Apis::MetastoreV1::NetworkConfig::Representation
+      
+          property :version, as: 'version'
         end
       end
       
@@ -393,6 +415,8 @@ module Google
       class HiveMetastoreConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :auxiliary_versions, as: 'auxiliaryVersions', class: Google::Apis::MetastoreV1::AuxiliaryVersionConfig, decorator: Google::Apis::MetastoreV1::AuxiliaryVersionConfig::Representation
+      
           hash :config_overrides, as: 'configOverrides'
           property :kerberos_config, as: 'kerberosConfig', class: Google::Apis::MetastoreV1::KerberosConfig, decorator: Google::Apis::MetastoreV1::KerberosConfig::Representation
       
@@ -604,6 +628,14 @@ module Google
         end
       end
       
+      class ScalingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_size, as: 'instanceSize'
+          property :scaling_factor, as: 'scalingFactor'
+        end
+      end
+      
       class Secret
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -633,6 +665,8 @@ module Google
       
           property :port, as: 'port'
           property :release_channel, as: 'releaseChannel'
+          property :scaling_config, as: 'scalingConfig', class: Google::Apis::MetastoreV1::ScalingConfig, decorator: Google::Apis::MetastoreV1::ScalingConfig::Representation
+      
           property :state, as: 'state'
           property :state_message, as: 'stateMessage'
           property :telemetry_config, as: 'telemetryConfig', class: Google::Apis::MetastoreV1::TelemetryConfig, decorator: Google::Apis::MetastoreV1::TelemetryConfig::Representation
