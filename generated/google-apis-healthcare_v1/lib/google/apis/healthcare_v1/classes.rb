@@ -344,22 +344,22 @@ module Google
         # kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-
         # project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:`emailid``: An
         # email address that represents a Google group. For example, `admins@example.com`
-        # . * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
-        # identifier) representing a user that has been recently deleted. For example, `
-        # alice@example.com?uid=123456789012345678901`. If the user is recovered, this
-        # value reverts to `user:`emailid`` and the recovered user retains the role in
-        # the binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email
-        # address (plus unique identifier) representing a service account that has been
-        # recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
+        # . * `domain:`domain``: The G Suite domain (primary) that represents all the
+        # users of that domain. For example, `google.com` or `example.com`. * `deleted:
+        # user:`emailid`?uid=`uniqueid``: An email address (plus unique identifier)
+        # representing a user that has been recently deleted. For example, `alice@
+        # example.com?uid=123456789012345678901`. If the user is recovered, this value
+        # reverts to `user:`emailid`` and the recovered user retains the role in the
+        # binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email address
+        # (plus unique identifier) representing a service account that has been recently
+        # deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
         # 123456789012345678901`. If the service account is undeleted, this value
         # reverts to `serviceAccount:`emailid`` and the undeleted service account
         # retains the role in the binding. * `deleted:group:`emailid`?uid=`uniqueid``:
         # An email address (plus unique identifier) representing a Google group that has
         # been recently deleted. For example, `admins@example.com?uid=
         # 123456789012345678901`. If the group is recovered, this value reverts to `
-        # group:`emailid`` and the recovered group retains the role in the binding. * `
-        # domain:`domain``: The G Suite domain (primary) that represents all the users
-        # of that domain. For example, `google.com` or `example.com`.
+        # group:`emailid`` and the recovered group retains the role in the binding.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -1848,6 +1848,64 @@ module Google
           @stream_configs = args[:stream_configs] if args.key?(:stream_configs)
           @validation_config = args[:validation_config] if args.key?(:validation_config)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Count of resources and total storage size by type for a given FHIR store.
+      class FhirStoreMetric
+        include Google::Apis::Core::Hashable
+      
+        # The total count of FHIR resources in the store of this resource type.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        # The FHIR resource type this metric applies to.
+        # Corresponds to the JSON property `resourceType`
+        # @return [String]
+        attr_accessor :resource_type
+      
+        # The total amount of structured storage used by FHIR resources of this resource
+        # type in the store.
+        # Corresponds to the JSON property `structuredStorageSizeBytes`
+        # @return [Fixnum]
+        attr_accessor :structured_storage_size_bytes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @count = args[:count] if args.key?(:count)
+          @resource_type = args[:resource_type] if args.key?(:resource_type)
+          @structured_storage_size_bytes = args[:structured_storage_size_bytes] if args.key?(:structured_storage_size_bytes)
+        end
+      end
+      
+      # List of metrics for a given FHIR store.
+      class FhirStoreMetrics
+        include Google::Apis::Core::Hashable
+      
+        # List of FhirStoreMetric by resource type.
+        # Corresponds to the JSON property `metrics`
+        # @return [Array<Google::Apis::HealthcareV1::FhirStoreMetric>]
+        attr_accessor :metrics
+      
+        # The resource name of the FHIR store to get metrics for, in the format `
+        # projects/`project_id`/datasets/`dataset_id`/fhirStores/`fhir_store_id``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metrics = args[:metrics] if args.key?(:metrics)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -3917,6 +3975,11 @@ module Google
       class SchemaConfig
         include Google::Apis::Core::Hashable
       
+        # Configuration for FHIR BigQuery time-partitioned tables.
+        # Corresponds to the JSON property `lastUpdatedPartitionConfig`
+        # @return [Google::Apis::HealthcareV1::TimePartitioning]
+        attr_accessor :last_updated_partition_config
+      
         # The depth for all recursive structures in the output analytics schema. For
         # example, `concept` in the CodeSystem resource is a recursive structure; when
         # the depth is 2, the CodeSystem table will have a column called `concept.
@@ -3937,6 +4000,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @last_updated_partition_config = args[:last_updated_partition_config] if args.key?(:last_updated_partition_config)
           @recursive_structure_depth = args[:recursive_structure_depth] if args.key?(:recursive_structure_depth)
           @schema_type = args[:schema_type] if args.key?(:schema_type)
         end
@@ -4430,6 +4494,31 @@ module Google
         def update!(**args)
           @begin_offset = args[:begin_offset] if args.key?(:begin_offset)
           @content = args[:content] if args.key?(:content)
+        end
+      end
+      
+      # Configuration for FHIR BigQuery time-partitioned tables.
+      class TimePartitioning
+        include Google::Apis::Core::Hashable
+      
+        # Number of milliseconds for which to keep the storage for a partition.
+        # Corresponds to the JSON property `expirationMs`
+        # @return [Fixnum]
+        attr_accessor :expiration_ms
+      
+        # Type of partitioning.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expiration_ms = args[:expiration_ms] if args.key?(:expiration_ms)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
