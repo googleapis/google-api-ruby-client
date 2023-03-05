@@ -1,0 +1,13 @@
+--hide-void-return
+--no-private
+--verbose
+--title=google-apis-publicca_v1beta1
+--markup-provider=redcarpet
+--markup=markdown
+--main OVERVIEW.md
+lib/google/apis/publicca_v1beta1/*.rb
+lib/google/apis/publicca_v1beta1.rb
+-
+OVERVIEW.md
+CHANGELOG.md
+LICENSE.md

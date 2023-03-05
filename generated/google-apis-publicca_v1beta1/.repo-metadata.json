@@ -1,0 +1,7 @@
+{
+    "api_id": "publicca:v1beta1",
+    "name_pretty": "Public Certificate Authority API",
+    "distribution_name": "google-apis-publicca_v1beta1",
+    "language": "ruby",
+    "library_type": "REST"
+}
