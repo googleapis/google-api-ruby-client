@@ -832,7 +832,7 @@ module Google
         # @return [Array<Google::Apis::CloudtasksV2beta2::HeaderOverride>]
         attr_accessor :header_overrides
       
-        # The HTTP method to use for the request. When specified, it will override
+        # The HTTP method to use for the request. When specified, it overrides
         # HttpRequest for the task. Note that if the value is set to HttpMethod the
         # HttpRequest of the task will be ignored at execution time.
         # Corresponds to the JSON property `httpMethod`
@@ -1152,7 +1152,7 @@ module Google
       class PathOverride
         include Google::Apis::Core::Hashable
       
-        # The URI path (e.g., a/b/c). Default is Empty string.
+        # The URI path (e.g., /users/1234). Default is an empty string.
         # Corresponds to the JSON property `path`
         # @return [String]
         attr_accessor :path
@@ -1336,7 +1336,8 @@ module Google
       class QueryOverride
         include Google::Apis::Core::Hashable
       
-        # The query parameters (e.g., qparam1=123&qparam2=456). Default is Empty string.
+        # The query parameters (e.g., qparam1=123&qparam2=456). Default is an empty
+        # string.
         # Corresponds to the JSON property `queryParams`
         # @return [String]
         attr_accessor :query_params
@@ -2034,10 +2035,10 @@ module Google
       class UriOverride
         include Google::Apis::Core::Hashable
       
-        # Host override. When specified, will replace the host part of the task URL. For
-        # example, if the task URL is "https://www.google.com", and host value is set to
-        # "example.net", the overridden URI will be changed to "https://example.net".
-        # Host value cannot be an empty string.
+        # Host override. When specified, replaces the host part of the task URL. For
+        # example, if the task URL is "https://www.google.com," and host value is set to
+        # "example.net", the overridden URI will be changed to "https://example.net."
+        # Host value cannot be an empty string (INVALID_ARGUMENT).
         # Corresponds to the JSON property `host`
         # @return [String]
         attr_accessor :host
@@ -2047,7 +2048,7 @@ module Google
         # @return [Google::Apis::CloudtasksV2beta2::PathOverride]
         attr_accessor :path_override
       
-        # Port override. When specified, will replace the port part of the task URI. For
+        # Port override. When specified, replaces the port part of the task URI. For
         # instance, for a URI http://www.google.com/foo and port=123, the overridden URI
         # becomes http://www.google.com:123/foo. Note that the port value must be a
         # positive integer. Setting the port to 0 (Zero) clears the URI port.
