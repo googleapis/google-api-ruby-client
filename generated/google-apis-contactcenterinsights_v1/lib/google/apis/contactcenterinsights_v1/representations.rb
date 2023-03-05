@@ -1543,6 +1543,7 @@ module Google
           property :annotator_selector, as: 'annotatorSelector', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AnnotatorSelector, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AnnotatorSelector::Representation
       
           property :runtime_integration_analysis_percentage, as: 'runtimeIntegrationAnalysisPercentage'
+          property :upload_conversation_analysis_percentage, as: 'uploadConversationAnalysisPercentage'
         end
       end
       
