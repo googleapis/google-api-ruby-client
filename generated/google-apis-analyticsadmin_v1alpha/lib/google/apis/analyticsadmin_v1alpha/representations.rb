@@ -418,6 +418,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1alphaConnectedSiteTag
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1alphaConversionEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -485,6 +491,12 @@ module Google
       end
       
       class GoogleAnalyticsAdminV1alphaDeleteAccessBindingRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaDeleteConnectedSiteTagRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -611,6 +623,18 @@ module Google
       end
       
       class GoogleAnalyticsAdminV1alphaListBigQueryLinksResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaListConnectedSiteTagsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaListConnectedSiteTagsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1357,6 +1381,7 @@ module Google
           collection :excluded_events, as: 'excludedEvents'
           collection :export_streams, as: 'exportStreams'
           property :include_advertising_id, as: 'includeAdvertisingId'
+          property :intraday_export_enabled, as: 'intradayExportEnabled'
           property :name, as: 'name'
           property :project, as: 'project'
           property :streaming_export_enabled, as: 'streamingExportEnabled'
@@ -1431,6 +1456,14 @@ module Google
           property :changes_filtered, as: 'changesFiltered'
           property :id, as: 'id'
           property :user_actor_email, as: 'userActorEmail'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaConnectedSiteTag
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :tag_id, as: 'tagId'
         end
       end
       
@@ -1556,6 +1589,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaDeleteConnectedSiteTagRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :property, as: 'property'
+          property :tag_id, as: 'tagId'
         end
       end
       
@@ -1757,6 +1798,24 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :bigquery_links, as: 'bigqueryLinks', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaBigQueryLink, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaBigQueryLink::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaListConnectedSiteTagsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :page_size, as: 'pageSize'
+          property :page_token, as: 'pageToken'
+          property :property, as: 'property'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaListConnectedSiteTagsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :connected_site_tags, as: 'connectedSiteTags', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaConnectedSiteTag, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaConnectedSiteTag::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end

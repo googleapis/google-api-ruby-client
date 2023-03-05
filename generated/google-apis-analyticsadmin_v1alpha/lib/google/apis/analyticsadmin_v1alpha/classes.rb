@@ -1753,6 +1753,12 @@ module Google
         attr_accessor :include_advertising_id
         alias_method :include_advertising_id?, :include_advertising_id
       
+        # If set true, enables intraday export to the linked Google Cloud project.
+        # Corresponds to the JSON property `intradayExportEnabled`
+        # @return [Boolean]
+        attr_accessor :intraday_export_enabled
+        alias_method :intraday_export_enabled?, :intraday_export_enabled
+      
         # Output only. Resource name of this BigQuery link. Format: 'properties/`
         # property_id`/bigQueryLinks/`bigquery_link_id`' Format: 'properties/1234/
         # bigQueryLinks/abc567'
@@ -1786,6 +1792,7 @@ module Google
           @excluded_events = args[:excluded_events] if args.key?(:excluded_events)
           @export_streams = args[:export_streams] if args.key?(:export_streams)
           @include_advertising_id = args[:include_advertising_id] if args.key?(:include_advertising_id)
+          @intraday_export_enabled = args[:intraday_export_enabled] if args.key?(:intraday_export_enabled)
           @name = args[:name] if args.key?(:name)
           @project = args[:project] if args.key?(:project)
           @streaming_export_enabled = args[:streaming_export_enabled] if args.key?(:streaming_export_enabled)
@@ -2021,6 +2028,33 @@ module Google
         end
       end
       
+      # Configuration for a specific Connected Site Tag.
+      class GoogleAnalyticsAdminV1alphaConnectedSiteTag
+        include Google::Apis::Core::Hashable
+      
+        # Required. User-provided display name for the connected site tag. Must be less
+        # than 256 characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Required. "Tag ID to forward events to. Also known as the Measurement ID, or
+        # the "G-ID" (For example: G-12345).
+        # Corresponds to the JSON property `tagId`
+        # @return [String]
+        attr_accessor :tag_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @tag_id = args[:tag_id] if args.key?(:tag_id)
+        end
+      end
+      
       # A conversion event in a Google Analytics property.
       class GoogleAnalyticsAdminV1alphaConversionEvent
         include Google::Apis::Core::Hashable
@@ -2041,7 +2075,7 @@ module Google
         attr_accessor :custom
         alias_method :custom?, :custom
       
-        # Output only. If set, this event can currently be deleted via
+        # Output only. If set, this event can currently be deleted with
         # DeleteConversionEvent.
         # Corresponds to the JSON property `deletable`
         # @return [Boolean]
@@ -2525,6 +2559,34 @@ module Google
         # Update properties of this object
         def update!(**args)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Request message for DeleteConnectedSiteTag RPC.
+      class GoogleAnalyticsAdminV1alphaDeleteConnectedSiteTagRequest
+        include Google::Apis::Core::Hashable
+      
+        # The Universal Analytics property to delete connected site tags for. This API
+        # does not support GA4 properties. Format: properties/`
+        # universalAnalyticsPropertyId` Example: properties/1234
+        # Corresponds to the JSON property `property`
+        # @return [String]
+        attr_accessor :property
+      
+        # Tag ID to forward events to. Also known as the Measurement ID, or the "G-ID" (
+        # For example: G-12345).
+        # Corresponds to the JSON property `tagId`
+        # @return [String]
+        attr_accessor :tag_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @property = args[:property] if args.key?(:property)
+          @tag_id = args[:tag_id] if args.key?(:tag_id)
         end
       end
       
@@ -3254,6 +3316,70 @@ module Google
         end
       end
       
+      # Request message for ListConnectedSiteTags RPC.
+      class GoogleAnalyticsAdminV1alphaListConnectedSiteTagsRequest
+        include Google::Apis::Core::Hashable
+      
+        # The maximum number of resources to return. The service may return fewer than
+        # this value, even if there are additional pages. If unspecified, at most 50
+        # resources will be returned. The maximum value is 200; (higher values will be
+        # coerced to the maximum)
+        # Corresponds to the JSON property `pageSize`
+        # @return [Fixnum]
+        attr_accessor :page_size
+      
+        # A page token, received from a previous `ListConnectedSiteTags` call. Provide
+        # this to retrieve the subsequent page. When paginating, all other parameters
+        # provided to `ListConnectedSiteTags` must match the call that provided the page
+        # token.
+        # Corresponds to the JSON property `pageToken`
+        # @return [String]
+        attr_accessor :page_token
+      
+        # The Universal Analytics property to fetch connected site tags for. This does
+        # not work on GA4 properties. Format: `properties/1234`
+        # Corresponds to the JSON property `property`
+        # @return [String]
+        attr_accessor :property
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @page_size = args[:page_size] if args.key?(:page_size)
+          @page_token = args[:page_token] if args.key?(:page_token)
+          @property = args[:property] if args.key?(:property)
+        end
+      end
+      
+      # Response message for ListConnectedSiteTags RPC.
+      class GoogleAnalyticsAdminV1alphaListConnectedSiteTagsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The site tags for the Universal Analytics property
+        # Corresponds to the JSON property `connectedSiteTags`
+        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaConnectedSiteTag>]
+        attr_accessor :connected_site_tags
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connected_site_tags = args[:connected_site_tags] if args.key?(:connected_site_tags)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response message for ListConversionEvents RPC.
       class GoogleAnalyticsAdminV1alphaListConversionEventsResponse
         include Google::Apis::Core::Hashable
@@ -3715,7 +3841,7 @@ module Google
         # Immutable. The property type for this Property resource. When creating a
         # property, if the type is "PROPERTY_TYPE_UNSPECIFIED", then "ORDINARY_PROPERTY"
         # will be implied. "SUBPROPERTY" and "ROLLUP_PROPERTY" types cannot yet be
-        # created via Google Analytics Admin API.
+        # created with the Google Analytics Admin API.
         # Corresponds to the JSON property `propertyType`
         # @return [String]
         attr_accessor :property_type
@@ -3811,7 +3937,7 @@ module Google
         attr_accessor :account
       
         # Redirect URI where the user will be sent after accepting Terms of Service.
-        # Must be configured in Developers Console as a Redirect URI.
+        # Must be configured in Cloud Console as a Redirect URI.
         # Corresponds to the JSON property `redirectUri`
         # @return [String]
         attr_accessor :redirect_uri
