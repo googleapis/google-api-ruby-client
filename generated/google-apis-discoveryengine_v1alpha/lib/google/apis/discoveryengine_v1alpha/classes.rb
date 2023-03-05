@@ -105,9 +105,10 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineLoggingErrorContext]
         attr_accessor :context
       
-        # The error payload that is populated on LRO import APIs. Including: "google.
-        # cloud.discoveryengine.v1alpha.DocumentService.ImportDocuments" "google.cloud.
-        # discoveryengine.v1alpha.UserEventService.ImportUserEvents"
+        # The error payload that is populated on LRO import APIs, including the
+        # following: * `google.cloud.discoveryengine.v1alpha.DocumentService.
+        # ImportDocuments` * `google.cloud.discoveryengine.v1alpha.UserEventService.
+        # ImportUserEvents`
         # Corresponds to the JSON property `importPayload`
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineLoggingImportErrorContext]
         attr_accessor :import_payload
@@ -116,26 +117,6 @@ module Google
         # Corresponds to the JSON property `message`
         # @return [String]
         attr_accessor :message
-      
-        # The API request payload, represented as a protocol buffer. Most API request
-        # types are supported. For example: "type.googleapis.com/google.cloud.
-        # discoveryengine.v1alpha.DocumentService.CreateDocumentRequest" "type.
-        # googleapis.com/google.cloud.discoveryengine.v1alpha.UserEventService.
-        # WriteUserEventRequest"
-        # Corresponds to the JSON property `requestPayload`
-        # @return [Hash<String,Object>]
-        attr_accessor :request_payload
-      
-        # The API response payload, represented as a protocol buffer. This is used to
-        # log some "soft errors", where the response is valid but we consider there are
-        # some quality issues like unjoined events. The following API responses are
-        # supported and no PII is included: "google.cloud.discoveryengine.v1alpha.
-        # RecommendationService.Recommend" "google.cloud.discoveryengine.v1alpha.
-        # UserEventService.WriteUserEvent" "google.cloud.discoveryengine.v1alpha.
-        # UserEventService.CollectUserEvent"
-        # Corresponds to the JSON property `responsePayload`
-        # @return [Hash<String,Object>]
-        attr_accessor :response_payload
       
         # Describes a running service that sends errors.
         # Corresponds to the JSON property `serviceContext`
@@ -161,8 +142,6 @@ module Google
           @context = args[:context] if args.key?(:context)
           @import_payload = args[:import_payload] if args.key?(:import_payload)
           @message = args[:message] if args.key?(:message)
-          @request_payload = args[:request_payload] if args.key?(:request_payload)
-          @response_payload = args[:response_payload] if args.key?(:response_payload)
           @service_context = args[:service_context] if args.key?(:service_context)
           @status = args[:status] if args.key?(:status)
         end
@@ -187,9 +166,10 @@ module Google
         end
       end
       
-      # The error payload that is populated on LRO import APIs. Including: "google.
-      # cloud.discoveryengine.v1alpha.DocumentService.ImportDocuments" "google.cloud.
-      # discoveryengine.v1alpha.UserEventService.ImportUserEvents"
+      # The error payload that is populated on LRO import APIs, including the
+      # following: * `google.cloud.discoveryengine.v1alpha.DocumentService.
+      # ImportDocuments` * `google.cloud.discoveryengine.v1alpha.UserEventService.
+      # ImportUserEvents`
       class GoogleCloudDiscoveryengineLoggingImportErrorContext
         include Google::Apis::Core::Hashable
       
@@ -238,7 +218,7 @@ module Google
       class GoogleCloudDiscoveryengineLoggingServiceContext
         include Google::Apis::Core::Hashable
       
-        # An identifier of the service. For example, "discoveryengine.googleapis.com".
+        # An identifier of the service—for example, `discoveryengine.googleapis.com`.
         # Corresponds to the JSON property `service`
         # @return [String]
         attr_accessor :service
@@ -258,8 +238,8 @@ module Google
       class GoogleCloudDiscoveryengineLoggingSourceLocation
         include Google::Apis::Core::Hashable
       
-        # Human-readable name of a function or method. For example, " google.cloud.
-        # discoveryengine.v1alpha.RecommendationService.Recommend".
+        # Human-readable name of a function or method—for example, `google.cloud.
+        # discoveryengine.v1alpha.RecommendationService.Recommend`.
         # Corresponds to the JSON property `functionName`
         # @return [String]
         attr_accessor :function_name
@@ -416,9 +396,9 @@ module Google
         attr_accessor :json_data
       
         # Immutable. The full resource name of the document. Format: `projects/`project`/
-        # locations/`location`/dataStores/`data_store`/branches/`branch`/documents/`
-        # document_id``. This field must be a UTF-8 encoded string with a length limit
-        # of 1024 characters.
+        # locations/`location`/collections/`collection`/dataStores/`data_store`/branches/
+        # `branch`/documents/`document_id``. This field must be a UTF-8 encoded string
+        # with a length limit of 1024 characters.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -466,8 +446,8 @@ module Google
         attr_accessor :id
       
         # Required. The Document resource full name, of the form: projects/`project\_id`/
-        # locations/`location`/dataStores/`data\_store\_id`/branches/`branch\_id`/
-        # documents/`document\_id`
+        # locations/`location`/collections/`collection\_id`/dataStores/`data\_store\_id`/
+        # branches/`branch\_id`/documents/`document\_id`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
