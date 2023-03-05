@@ -340,6 +340,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SslConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SslConfigTemplate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -462,6 +474,7 @@ module Google
           property :display_name, as: 'displayName'
           collection :enum_options, as: 'enumOptions', class: Google::Apis::ConnectorsV1::EnumOption, decorator: Google::Apis::ConnectorsV1::EnumOption::Representation
       
+          property :is_advanced, as: 'isAdvanced'
           property :key, as: 'key'
           property :required, as: 'required'
           property :role_grant, as: 'roleGrant', class: Google::Apis::ConnectorsV1::RoleGrant, decorator: Google::Apis::ConnectorsV1::RoleGrant::Representation
@@ -494,6 +507,8 @@ module Google
       
           property :service_account, as: 'serviceAccount'
           property :service_directory, as: 'serviceDirectory'
+          property :ssl_config, as: 'sslConfig', class: Google::Apis::ConnectorsV1::SslConfig, decorator: Google::Apis::ConnectorsV1::SslConfig::Representation
+      
           property :status, as: 'status', class: Google::Apis::ConnectorsV1::ConnectionStatus, decorator: Google::Apis::ConnectorsV1::ConnectionStatus::Representation
       
           property :suspended, as: 'suspended'
@@ -556,6 +571,8 @@ module Google
           property :role_grant, as: 'roleGrant', class: Google::Apis::ConnectorsV1::RoleGrant, decorator: Google::Apis::ConnectorsV1::RoleGrant::Representation
       
           collection :role_grants, as: 'roleGrants', class: Google::Apis::ConnectorsV1::RoleGrant, decorator: Google::Apis::ConnectorsV1::RoleGrant::Representation
+      
+          property :ssl_config_template, as: 'sslConfigTemplate', class: Google::Apis::ConnectorsV1::SslConfigTemplate, decorator: Google::Apis::ConnectorsV1::SslConfigTemplate::Representation
       
           property :supported_runtime_features, as: 'supportedRuntimeFeatures', class: Google::Apis::ConnectorsV1::SupportedRuntimeFeatures, decorator: Google::Apis::ConnectorsV1::SupportedRuntimeFeatures::Representation
       
@@ -943,6 +960,39 @@ module Google
           property :ssh_client_cert_pass, as: 'sshClientCertPass', class: Google::Apis::ConnectorsV1::Secret, decorator: Google::Apis::ConnectorsV1::Secret::Representation
       
           property :username, as: 'username'
+        end
+      end
+      
+      class SslConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :additional_variables, as: 'additionalVariables', class: Google::Apis::ConnectorsV1::ConfigVariable, decorator: Google::Apis::ConnectorsV1::ConfigVariable::Representation
+      
+          property :client_cert_type, as: 'clientCertType'
+          property :client_certificate, as: 'clientCertificate', class: Google::Apis::ConnectorsV1::Secret, decorator: Google::Apis::ConnectorsV1::Secret::Representation
+      
+          property :client_private_key, as: 'clientPrivateKey', class: Google::Apis::ConnectorsV1::Secret, decorator: Google::Apis::ConnectorsV1::Secret::Representation
+      
+          property :client_private_key_pass, as: 'clientPrivateKeyPass', class: Google::Apis::ConnectorsV1::Secret, decorator: Google::Apis::ConnectorsV1::Secret::Representation
+      
+          property :private_server_certificate, as: 'privateServerCertificate', class: Google::Apis::ConnectorsV1::Secret, decorator: Google::Apis::ConnectorsV1::Secret::Representation
+      
+          property :server_cert_type, as: 'serverCertType'
+          property :trust_model, as: 'trustModel'
+          property :type, as: 'type'
+          property :use_ssl, as: 'useSsl'
+        end
+      end
+      
+      class SslConfigTemplate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :additional_variables, as: 'additionalVariables', class: Google::Apis::ConnectorsV1::ConfigVariableTemplate, decorator: Google::Apis::ConnectorsV1::ConfigVariableTemplate::Representation
+      
+          collection :client_cert_type, as: 'clientCertType'
+          property :is_tls_mandatory, as: 'isTlsMandatory'
+          collection :server_cert_type, as: 'serverCertType'
+          property :ssl_type, as: 'sslType'
         end
       end
       
