@@ -53,8 +53,9 @@ module Google
         # Gets the ACME challenge set for a given domain name. Domain names must be
         # provided in Punycode.
         # @param [String] root_domain
-        #   Required. SLD + TLD domain name to list challenges. This MAY be Unicode or
-        #   Punycode.
+        #   Required. SLD + TLD domain name to list challenges. For example, this would be
+        #   "google.com" for any FQDN under "google.com". That includes challenges for "
+        #   subdomain.google.com". This MAY be Unicode or Punycode.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -86,8 +87,9 @@ module Google
         # challenges that are older than 30 days. Domain names must be provided in
         # Punycode.
         # @param [String] root_domain
-        #   Required. SLD + TLD domain name to update records for. This MAY be Unicode or
-        #   Punycode.
+        #   Required. SLD + TLD domain name to update records for. For example, this would
+        #   be "google.com" for any FQDN under "google.com". That includes challenges for "
+        #   subdomain.google.com". This MAY be Unicode or Punycode.
         # @param [Google::Apis::AcmednsV1::RotateChallengesRequest] rotate_challenges_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
