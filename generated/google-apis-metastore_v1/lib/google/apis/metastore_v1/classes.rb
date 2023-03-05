@@ -93,6 +93,42 @@ module Google
         end
       end
       
+      # Configuration information for the auxiliary service versions.
+      class AuxiliaryVersionConfig
+        include Google::Apis::Core::Hashable
+      
+        # A mapping of Hive metastore configuration key-value pairs to apply to the
+        # auxiliary Hive metastore (configured in hive-site.xml) in addition to the
+        # primary version's overrides. If keys are present in both the auxiliary version'
+        # s overrides and the primary version's overrides, the value from the auxiliary
+        # version's overrides takes precedence.
+        # Corresponds to the JSON property `configOverrides`
+        # @return [Hash<String,String>]
+        attr_accessor :config_overrides
+      
+        # Network configuration for the Dataproc Metastore service.
+        # Corresponds to the JSON property `networkConfig`
+        # @return [Google::Apis::MetastoreV1::NetworkConfig]
+        attr_accessor :network_config
+      
+        # The Hive metastore version of the auxiliary service. It must be less than the
+        # primary Hive metastore service's version.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @config_overrides = args[:config_overrides] if args.key?(:config_overrides)
+          @network_config = args[:network_config] if args.key?(:network_config)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
       # Represents a backend metastore for the federation.
       class BackendMetastore
         include Google::Apis::Core::Hashable
@@ -552,6 +588,17 @@ module Google
       class HiveMetastoreConfig
         include Google::Apis::Core::Hashable
       
+        # A mapping of Hive metastore version to the auxiliary version configuration.
+        # When specified, a secondary Hive metastore service is created along with the
+        # primary service. All auxiliary versions must be less than the service's
+        # primary version. The key is the auxiliary service name and it must match the
+        # regular expression a-z?. This means that the first character must be a
+        # lowercase letter, and all the following characters must be hyphens, lowercase
+        # letters, or digits, except the last character, which cannot be a hyphen.
+        # Corresponds to the JSON property `auxiliaryVersions`
+        # @return [Hash<String,Google::Apis::MetastoreV1::AuxiliaryVersionConfig>]
+        attr_accessor :auxiliary_versions
+      
         # A mapping of Hive metastore configuration key-value pairs to apply to the Hive
         # metastore (configured in hive-site.xml). The mappings override system defaults
         # (some keys cannot be overridden). These overrides are also applied to
@@ -577,6 +624,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @auxiliary_versions = args[:auxiliary_versions] if args.key?(:auxiliary_versions)
           @config_overrides = args[:config_overrides] if args.key?(:config_overrides)
           @kerberos_config = args[:kerberos_config] if args.key?(:kerberos_config)
           @version = args[:version] if args.key?(:version)
@@ -1370,6 +1418,33 @@ module Google
         end
       end
       
+      # Represents the scaling configuration of a metastore service.
+      class ScalingConfig
+        include Google::Apis::Core::Hashable
+      
+        # An enum of readable instance sizes, with each instance size mapping to a float
+        # value (e.g. InstanceSize.EXTRA_SMALL = scaling_factor(0.1))
+        # Corresponds to the JSON property `instanceSize`
+        # @return [String]
+        attr_accessor :instance_size
+      
+        # Scaling factor, increments of 0.1 for values less than 1.0, and increments of
+        # 1.0 for values greater than 1.0.
+        # Corresponds to the JSON property `scalingFactor`
+        # @return [Float]
+        attr_accessor :scaling_factor
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance_size = args[:instance_size] if args.key?(:instance_size)
+          @scaling_factor = args[:scaling_factor] if args.key?(:scaling_factor)
+        end
+      end
+      
       # A securely stored value.
       class Secret
         include Google::Apis::Core::Hashable
@@ -1473,6 +1548,11 @@ module Google
         # @return [String]
         attr_accessor :release_channel
       
+        # Represents the scaling configuration of a metastore service.
+        # Corresponds to the JSON property `scalingConfig`
+        # @return [Google::Apis::MetastoreV1::ScalingConfig]
+        attr_accessor :scaling_config
+      
         # Output only. The current state of the metastore service.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -1524,6 +1604,7 @@ module Google
           @network_config = args[:network_config] if args.key?(:network_config)
           @port = args[:port] if args.key?(:port)
           @release_channel = args[:release_channel] if args.key?(:release_channel)
+          @scaling_config = args[:scaling_config] if args.key?(:scaling_config)
           @state = args[:state] if args.key?(:state)
           @state_message = args[:state_message] if args.key?(:state_message)
           @telemetry_config = args[:telemetry_config] if args.key?(:telemetry_config)
