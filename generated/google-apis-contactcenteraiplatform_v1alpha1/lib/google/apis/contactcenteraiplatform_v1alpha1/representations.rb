@@ -22,6 +22,12 @@ module Google
   module Apis
     module ContactcenteraiplatformV1alpha1
       
+      class AdminUser
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -106,6 +112,14 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AdminUser
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :family_name, as: 'familyName'
+          property :given_name, as: 'givenName'
+        end
+      end
+      
       class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -115,6 +129,8 @@ module Google
       class ContactCenter
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :admin_user, as: 'adminUser', class: Google::Apis::ContactcenteraiplatformV1alpha1::AdminUser, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::AdminUser::Representation
+      
           property :ccaip_managed_users, as: 'ccaipManagedUsers'
           property :create_time, as: 'createTime'
           property :customer_domain_prefix, as: 'customerDomainPrefix'
