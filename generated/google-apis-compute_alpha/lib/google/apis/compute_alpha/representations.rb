@@ -2302,6 +2302,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceTemplate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5620,6 +5626,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SetCommonInstanceMetadataOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ShareSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5909,6 +5927,12 @@ module Google
       end
       
       class StatefulPolicyPreservedStateNetworkIp
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -11437,6 +11461,16 @@ module Google
         end
       end
       
+      class InstanceSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email, as: 'email'
+          property :kind, as: 'kind'
+          property :machine_type, as: 'machineType'
+          property :zone, as: 'zone'
+        end
+      end
+      
       class InstanceTemplate
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -14281,6 +14315,8 @@ module Google
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
+          property :set_common_instance_metadata_operation_metadata, as: 'setCommonInstanceMetadataOperationMetadata', class: Google::Apis::ComputeAlpha::SetCommonInstanceMetadataOperationMetadata, decorator: Google::Apis::ComputeAlpha::SetCommonInstanceMetadataOperationMetadata::Representation
+      
           property :start_time, as: 'startTime'
           property :status, as: 'status'
           property :status_message, as: 'statusMessage'
@@ -16844,6 +16880,8 @@ module Google
           property :host_error_timeout_seconds, as: 'hostErrorTimeoutSeconds'
           property :instance_termination_action, as: 'instanceTerminationAction'
           property :latency_tolerant, as: 'latencyTolerant'
+          property :local_ssd_recovery_timeout, as: 'localSsdRecoveryTimeout', class: Google::Apis::ComputeAlpha::Duration, decorator: Google::Apis::ComputeAlpha::Duration::Representation
+      
           property :location_hint, as: 'locationHint'
           property :maintenance_freeze_duration_hours, as: 'maintenanceFreezeDurationHours'
           property :maintenance_interval, as: 'maintenanceInterval'
@@ -17526,6 +17564,25 @@ module Google
         end
       end
       
+      class SetCommonInstanceMetadataOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_operation_id, as: 'clientOperationId'
+          hash :per_location_operations, as: 'perLocationOperations', class: Google::Apis::ComputeAlpha::SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo, decorator: Google::Apis::ComputeAlpha::SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo::Representation
+      
+        end
+      end
+      
+      class SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error', class: Google::Apis::ComputeAlpha::Status, decorator: Google::Apis::ComputeAlpha::Status::Representation
+      
+          property :operation, as: 'operation'
+          property :state, as: 'state'
+        end
+      end
+      
       class ShareSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -18069,6 +18126,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_delete, as: 'autoDelete'
+        end
+      end
+      
+      class Status
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          collection :details, as: 'details'
+          property :message, as: 'message'
         end
       end
       
