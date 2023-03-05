@@ -364,8 +364,8 @@ module Google
         attr_accessor :existing_disk
       
         # A new persistent disk or a local ssd. A VM can only have one local SSD setting
-        # but multiple local SSD partitions. https://cloud.google.com/compute/docs/disks#
-        # pdspecs. https://cloud.google.com/compute/docs/disks#localssds.
+        # but multiple local SSD partitions. See https://cloud.google.com/compute/docs/
+        # disks#pdspecs and https://cloud.google.com/compute/docs/disks#localssds.
         # Corresponds to the JSON property `newDisk`
         # @return [Google::Apis::BatchV1::Disk]
         attr_accessor :new_disk
@@ -450,8 +450,9 @@ module Google
       class Container
         include Google::Apis::Core::Hashable
       
-        # If set to true, external network access to and from container will be blocked.
-        # The container will use the default internal network 'goog-internal'.
+        # If set to true, external network access to and from container will be blocked,
+        # containers that are with block_external_network as true can still communicate
+        # with each other, network cannot be specified in the `container.options` field.
         # Corresponds to the JSON property `blockExternalNetwork`
         # @return [Boolean]
         attr_accessor :block_external_network
@@ -519,8 +520,8 @@ module Google
       end
       
       # A new persistent disk or a local ssd. A VM can only have one local SSD setting
-      # but multiple local SSD partitions. https://cloud.google.com/compute/docs/disks#
-      # pdspecs. https://cloud.google.com/compute/docs/disks#localssds.
+      # but multiple local SSD partitions. See https://cloud.google.com/compute/docs/
+      # disks#pdspecs and https://cloud.google.com/compute/docs/disks#localssds.
       class Disk
         include Google::Apis::Core::Hashable
       
@@ -532,13 +533,12 @@ module Google
         attr_accessor :disk_interface
       
         # Name of a public or custom image used as the data source. For example, the
-        # following are all valid URLs: (1) Specify the image by its family name:
-        # projects/`project`/global/images/family/`image_family` (2) Specify the image
-        # version: projects/`project`/global/images/`image_version` You can also use
-        # Batch customized image in short names. The following image values are
-        # supported for a boot disk: "batch-debian": use Batch Debian images. "batch-
-        # centos": use Batch CentOS images. "batch-cos": use Batch Container-Optimized
-        # images.
+        # following are all valid URLs: * Specify the image by its family name: projects/
+        # `project`/global/images/family/`image_family` * Specify the image version:
+        # projects/`project`/global/images/`image_version` You can also use Batch
+        # customized image in short names. The following image values are supported for
+        # a boot disk: * "batch-debian": use Batch Debian images. * "batch-centos": use
+        # Batch CentOS images. * "batch-cos": use Batch Container-Optimized images.
         # Corresponds to the JSON property `image`
         # @return [String]
         attr_accessor :image
@@ -661,8 +661,8 @@ module Google
         attr_accessor :accelerators
       
         # A new persistent disk or a local ssd. A VM can only have one local SSD setting
-        # but multiple local SSD partitions. https://cloud.google.com/compute/docs/disks#
-        # pdspecs. https://cloud.google.com/compute/docs/disks#localssds.
+        # but multiple local SSD partitions. See https://cloud.google.com/compute/docs/
+        # disks#pdspecs and https://cloud.google.com/compute/docs/disks#localssds.
         # Corresponds to the JSON property `bootDisk`
         # @return [Google::Apis::BatchV1::Disk]
         attr_accessor :boot_disk
@@ -678,8 +678,8 @@ module Google
         # @return [String]
         attr_accessor :machine_type
       
-        # The minimum CPU platform. See `https://cloud.google.com/compute/docs/instances/
-        # specify-min-cpu-platform`. Not yet implemented.
+        # The minimum CPU platform. See https://cloud.google.com/compute/docs/instances/
+        # specify-min-cpu-platform. Not yet implemented.
         # Corresponds to the JSON property `minCpuPlatform`
         # @return [String]
         attr_accessor :min_cpu_platform
@@ -745,8 +745,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A new persistent disk or a local ssd. A VM can only have one local SSD setting
-        # but multiple local SSD partitions. https://cloud.google.com/compute/docs/disks#
-        # pdspecs. https://cloud.google.com/compute/docs/disks#localssds.
+        # but multiple local SSD partitions. See https://cloud.google.com/compute/docs/
+        # disks#pdspecs and https://cloud.google.com/compute/docs/disks#localssds.
         # Corresponds to the JSON property `bootDisk`
         # @return [Google::Apis::BatchV1::Disk]
         attr_accessor :boot_disk
@@ -1263,9 +1263,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The URL of an existing network resource. You can specify the network as a full
-        # or partial URL. For example, the following are all valid URLs: https://www.
-        # googleapis.com/compute/v1/projects/`project`/global/networks/`network`
-        # projects/`project`/global/networks/`network` global/networks/`network`
+        # or partial URL. For example, the following are all valid URLs: * https://www.
+        # googleapis.com/compute/v1/projects/`project`/global/networks/`network` *
+        # projects/`project`/global/networks/`network` * global/networks/`network`
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -1282,9 +1282,9 @@ module Google
       
         # The URL of an existing subnetwork resource in the network. You can specify the
         # subnetwork as a full or partial URL. For example, the following are all valid
-        # URLs: https://www.googleapis.com/compute/v1/projects/`project`/regions/`region`
-        # /subnetworks/`subnetwork` projects/`project`/regions/`region`/subnetworks/`
-        # subnetwork` regions/`region`/subnetworks/`subnetwork`
+        # URLs: * https://www.googleapis.com/compute/v1/projects/`project`/regions/`
+        # region`/subnetworks/`subnetwork` * projects/`project`/regions/`region`/
+        # subnetworks/`subnetwork` * regions/`region`/subnetworks/`subnetwork`
         # Corresponds to the JSON property `subnetwork`
         # @return [String]
         attr_accessor :subnetwork
@@ -1804,7 +1804,7 @@ module Google
         attr_accessor :require_hosts_file
         alias_method :require_hosts_file?, :require_hosts_file
       
-        # Number of Tasks in the TaskGroup. default is 1
+        # Number of Tasks in the TaskGroup. Default is 1.
         # Corresponds to the JSON property `taskCount`
         # @return [Fixnum]
         attr_accessor :task_count
