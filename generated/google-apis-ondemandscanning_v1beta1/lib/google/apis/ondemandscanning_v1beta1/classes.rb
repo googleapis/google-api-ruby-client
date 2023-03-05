@@ -1639,6 +1639,31 @@ module Google
       end
       
       # 
+      class Maintainer
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # 
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # 
       class Material
         include Google::Apis::Core::Hashable
       
@@ -1977,6 +2002,11 @@ module Google
         # @return [String]
         attr_accessor :hash_digest
       
+        # The maintainer of the package.
+        # Corresponds to the JSON property `maintainer`
+        # @return [Google::Apis::OndemandscanningV1beta1::Maintainer]
+        attr_accessor :maintainer
+      
         # The OS affected by a vulnerability Used to generate the cpe_uri for OS
         # packages
         # Corresponds to the JSON property `os`
@@ -2024,6 +2054,7 @@ module Google
           @dependency_chain = args[:dependency_chain] if args.key?(:dependency_chain)
           @file_location = args[:file_location] if args.key?(:file_location)
           @hash_digest = args[:hash_digest] if args.key?(:hash_digest)
+          @maintainer = args[:maintainer] if args.key?(:maintainer)
           @os = args[:os] if args.key?(:os)
           @os_version = args[:os_version] if args.key?(:os_version)
           @package = args[:package] if args.key?(:package)
