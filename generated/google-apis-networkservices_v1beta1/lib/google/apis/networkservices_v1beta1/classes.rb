@@ -405,11 +405,11 @@ module Google
         # @return [Array<Fixnum>]
         attr_accessor :ports
       
-        # Required. Immutable. Scope determines how configuration across multiple
-        # Gateway instances are merged. The configuration for multiple Gateway instances
-        # with the same scope will be merged as presented as a single coniguration to
-        # the proxy/load balancer. Max length 64 characters. Scope should start with a
-        # letter and can only have letters, numbers, hyphens.
+        # Optional. Scope determines how configuration across multiple Gateway instances
+        # are merged. The configuration for multiple Gateway instances with the same
+        # scope will be merged as presented as a single coniguration to the proxy/load
+        # balancer. Max length 64 characters. Scope should start with a letter and can
+        # only have letters, numbers, hyphens.
         # Corresponds to the JSON property `scope`
         # @return [String]
         attr_accessor :scope
