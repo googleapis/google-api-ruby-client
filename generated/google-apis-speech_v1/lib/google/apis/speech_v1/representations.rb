@@ -493,6 +493,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :confidence, as: 'confidence'
           property :end_time, as: 'endTime'
+          property :speaker_label, as: 'speakerLabel'
           property :speaker_tag, as: 'speakerTag'
           property :start_time, as: 'startTime'
           property :word, as: 'word'
