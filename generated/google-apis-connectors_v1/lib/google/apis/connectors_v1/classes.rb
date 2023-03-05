@@ -383,6 +383,12 @@ module Google
         # @return [Array<Google::Apis::ConnectorsV1::EnumOption>]
         attr_accessor :enum_options
       
+        # Indicates if current template is part of advanced settings
+        # Corresponds to the JSON property `isAdvanced`
+        # @return [Boolean]
+        attr_accessor :is_advanced
+        alias_method :is_advanced?, :is_advanced
+      
         # Key of the config variable.
         # Corresponds to the JSON property `key`
         # @return [String]
@@ -430,6 +436,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @enum_options = args[:enum_options] if args.key?(:enum_options)
+          @is_advanced = args[:is_advanced] if args.key?(:is_advanced)
           @key = args[:key] if args.key?(:key)
           @required = args[:required] if args.key?(:required)
           @role_grant = args[:role_grant] if args.key?(:role_grant)
@@ -525,6 +532,11 @@ module Google
         # @return [String]
         attr_accessor :service_directory
       
+        # SSL Configuration of a connection
+        # Corresponds to the JSON property `sslConfig`
+        # @return [Google::Apis::ConnectorsV1::SslConfig]
+        attr_accessor :ssl_config
+      
         # ConnectionStatus indicates the state of the connection.
         # Corresponds to the JSON property `status`
         # @return [Google::Apis::ConnectorsV1::ConnectionStatus]
@@ -561,6 +573,7 @@ module Google
           @node_config = args[:node_config] if args.key?(:node_config)
           @service_account = args[:service_account] if args.key?(:service_account)
           @service_directory = args[:service_directory] if args.key?(:service_directory)
+          @ssl_config = args[:ssl_config] if args.key?(:ssl_config)
           @status = args[:status] if args.key?(:status)
           @suspended = args[:suspended] if args.key?(:suspended)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -798,6 +811,11 @@ module Google
         # @return [Array<Google::Apis::ConnectorsV1::RoleGrant>]
         attr_accessor :role_grants
       
+        # Ssl config details of a connector version
+        # Corresponds to the JSON property `sslConfigTemplate`
+        # @return [Google::Apis::ConnectorsV1::SslConfigTemplate]
+        attr_accessor :ssl_config_template
+      
         # Supported runtime features of a connector version. This is passed to the
         # management layer to add a new connector version by the connector developer.
         # Details about how this proto is passed to the management layer is covered in
@@ -828,6 +846,7 @@ module Google
           @release_version = args[:release_version] if args.key?(:release_version)
           @role_grant = args[:role_grant] if args.key?(:role_grant)
           @role_grants = args[:role_grants] if args.key?(:role_grants)
+          @ssl_config_template = args[:ssl_config_template] if args.key?(:ssl_config_template)
           @supported_runtime_features = args[:supported_runtime_features] if args.key?(:supported_runtime_features)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -2253,6 +2272,124 @@ module Google
           @ssh_client_cert = args[:ssh_client_cert] if args.key?(:ssh_client_cert)
           @ssh_client_cert_pass = args[:ssh_client_cert_pass] if args.key?(:ssh_client_cert_pass)
           @username = args[:username] if args.key?(:username)
+        end
+      end
+      
+      # SSL Configuration of a connection
+      class SslConfig
+        include Google::Apis::Core::Hashable
+      
+        # Additional SSL related field values
+        # Corresponds to the JSON property `additionalVariables`
+        # @return [Array<Google::Apis::ConnectorsV1::ConfigVariable>]
+        attr_accessor :additional_variables
+      
+        # Type of Client Cert (PEM/JKS/.. etc.)
+        # Corresponds to the JSON property `clientCertType`
+        # @return [String]
+        attr_accessor :client_cert_type
+      
+        # Secret provides a reference to entries in Secret Manager.
+        # Corresponds to the JSON property `clientCertificate`
+        # @return [Google::Apis::ConnectorsV1::Secret]
+        attr_accessor :client_certificate
+      
+        # Secret provides a reference to entries in Secret Manager.
+        # Corresponds to the JSON property `clientPrivateKey`
+        # @return [Google::Apis::ConnectorsV1::Secret]
+        attr_accessor :client_private_key
+      
+        # Secret provides a reference to entries in Secret Manager.
+        # Corresponds to the JSON property `clientPrivateKeyPass`
+        # @return [Google::Apis::ConnectorsV1::Secret]
+        attr_accessor :client_private_key_pass
+      
+        # Secret provides a reference to entries in Secret Manager.
+        # Corresponds to the JSON property `privateServerCertificate`
+        # @return [Google::Apis::ConnectorsV1::Secret]
+        attr_accessor :private_server_certificate
+      
+        # Type of Server Cert (PEM/JKS/.. etc.)
+        # Corresponds to the JSON property `serverCertType`
+        # @return [String]
+        attr_accessor :server_cert_type
+      
+        # Trust Model of the SSL connection
+        # Corresponds to the JSON property `trustModel`
+        # @return [String]
+        attr_accessor :trust_model
+      
+        # Controls the ssl type for the given connector version.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Bool for enabling SSL
+        # Corresponds to the JSON property `useSsl`
+        # @return [Boolean]
+        attr_accessor :use_ssl
+        alias_method :use_ssl?, :use_ssl
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_variables = args[:additional_variables] if args.key?(:additional_variables)
+          @client_cert_type = args[:client_cert_type] if args.key?(:client_cert_type)
+          @client_certificate = args[:client_certificate] if args.key?(:client_certificate)
+          @client_private_key = args[:client_private_key] if args.key?(:client_private_key)
+          @client_private_key_pass = args[:client_private_key_pass] if args.key?(:client_private_key_pass)
+          @private_server_certificate = args[:private_server_certificate] if args.key?(:private_server_certificate)
+          @server_cert_type = args[:server_cert_type] if args.key?(:server_cert_type)
+          @trust_model = args[:trust_model] if args.key?(:trust_model)
+          @type = args[:type] if args.key?(:type)
+          @use_ssl = args[:use_ssl] if args.key?(:use_ssl)
+        end
+      end
+      
+      # Ssl config details of a connector version
+      class SslConfigTemplate
+        include Google::Apis::Core::Hashable
+      
+        # Any additional fields that need to be rendered
+        # Corresponds to the JSON property `additionalVariables`
+        # @return [Array<Google::Apis::ConnectorsV1::ConfigVariableTemplate>]
+        attr_accessor :additional_variables
+      
+        # List of supported Client Cert Types
+        # Corresponds to the JSON property `clientCertType`
+        # @return [Array<String>]
+        attr_accessor :client_cert_type
+      
+        # Boolean for determining if the connector version mandates TLS.
+        # Corresponds to the JSON property `isTlsMandatory`
+        # @return [Boolean]
+        attr_accessor :is_tls_mandatory
+        alias_method :is_tls_mandatory?, :is_tls_mandatory
+      
+        # List of supported Server Cert Types
+        # Corresponds to the JSON property `serverCertType`
+        # @return [Array<String>]
+        attr_accessor :server_cert_type
+      
+        # Controls the ssl type for the given connector version
+        # Corresponds to the JSON property `sslType`
+        # @return [String]
+        attr_accessor :ssl_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_variables = args[:additional_variables] if args.key?(:additional_variables)
+          @client_cert_type = args[:client_cert_type] if args.key?(:client_cert_type)
+          @is_tls_mandatory = args[:is_tls_mandatory] if args.key?(:is_tls_mandatory)
+          @server_cert_type = args[:server_cert_type] if args.key?(:server_cert_type)
+          @ssl_type = args[:ssl_type] if args.key?(:ssl_type)
         end
       end
       
