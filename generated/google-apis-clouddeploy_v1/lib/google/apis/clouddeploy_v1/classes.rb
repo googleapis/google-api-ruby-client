@@ -48,6 +48,47 @@ module Google
         end
       end
       
+      # An advanceChildRollout Job.
+      class AdvanceChildRolloutJob
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # AdvanceChildRolloutJobRun contains information specific to a
+      # advanceChildRollout `JobRun`.
+      class AdvanceChildRolloutJobRun
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Name of the `ChildRollout`. Format is projects/`project`/
+        # locations/`location`/deliveryPipelines/`deliveryPipeline`/ releases/`release`/
+        # rollouts/a-z`0,62`.
+        # Corresponds to the JSON property `rollout`
+        # @return [String]
+        attr_accessor :rollout
+      
+        # Output only. the ID of the ChildRollout's Phase.
+        # Corresponds to the JSON property `rolloutPhaseId`
+        # @return [String]
+        attr_accessor :rollout_phase_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rollout = args[:rollout] if args.key?(:rollout)
+          @rollout_phase_id = args[:rollout_phase_id] if args.key?(:rollout_phase_id)
+        end
+      end
+      
       # Information specifying an Anthos Cluster.
       class AnthosCluster
         include Google::Apis::Core::Hashable
@@ -288,6 +329,31 @@ module Google
         end
       end
       
+      # ChildRollouts job composition
+      class ChildRolloutJobs
+        include Google::Apis::Core::Hashable
+      
+        # Output only. List of AdvanceChildRolloutJobs
+        # Corresponds to the JSON property `advanceRolloutJobs`
+        # @return [Array<Google::Apis::ClouddeployV1::Job>]
+        attr_accessor :advance_rollout_jobs
+      
+        # Output only. List of CreateChildRolloutJobs
+        # Corresponds to the JSON property `createRolloutJobs`
+        # @return [Array<Google::Apis::ClouddeployV1::Job>]
+        attr_accessor :create_rollout_jobs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @advance_rollout_jobs = args[:advance_rollout_jobs] if args.key?(:advance_rollout_jobs)
+          @create_rollout_jobs = args[:create_rollout_jobs] if args.key?(:create_rollout_jobs)
+        end
+      end
+      
       # Information specifying where to deploy a Cloud Run Service.
       class CloudRunLocation
         include Google::Apis::Core::Hashable
@@ -369,6 +435,47 @@ module Google
           @default_skaffold_version = args[:default_skaffold_version] if args.key?(:default_skaffold_version)
           @name = args[:name] if args.key?(:name)
           @supported_versions = args[:supported_versions] if args.key?(:supported_versions)
+        end
+      end
+      
+      # A createChildRollout Job.
+      class CreateChildRolloutJob
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # CreateChildRolloutJobRun contains information specific to a createChildRollout
+      # `JobRun`.
+      class CreateChildRolloutJobRun
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Name of the `ChildRollout`. Format is projects/`project`/
+        # locations/`location`/deliveryPipelines/`deliveryPipeline`/ releases/`release`/
+        # rollouts/a-z`0,62`.
+        # Corresponds to the JSON property `rollout`
+        # @return [String]
+        attr_accessor :rollout
+      
+        # Output only. The ID of the childRollout Phase initiated by this JobRun.
+        # Corresponds to the JSON property `rolloutPhaseId`
+        # @return [String]
+        attr_accessor :rollout_phase_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rollout = args[:rollout] if args.key?(:rollout)
+          @rollout_phase_id = args[:rollout_phase_id] if args.key?(:rollout_phase_id)
         end
       end
       
@@ -837,6 +944,16 @@ module Google
       class Job
         include Google::Apis::Core::Hashable
       
+        # An advanceChildRollout Job.
+        # Corresponds to the JSON property `advanceChildRolloutJob`
+        # @return [Google::Apis::ClouddeployV1::AdvanceChildRolloutJob]
+        attr_accessor :advance_child_rollout_job
+      
+        # A createChildRollout Job.
+        # Corresponds to the JSON property `createChildRolloutJob`
+        # @return [Google::Apis::ClouddeployV1::CreateChildRolloutJob]
+        attr_accessor :create_child_rollout_job
+      
         # A deploy Job.
         # Corresponds to the JSON property `deployJob`
         # @return [Google::Apis::ClouddeployV1::DeployJob]
@@ -869,6 +986,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @advance_child_rollout_job = args[:advance_child_rollout_job] if args.key?(:advance_child_rollout_job)
+          @create_child_rollout_job = args[:create_child_rollout_job] if args.key?(:create_child_rollout_job)
           @deploy_job = args[:deploy_job] if args.key?(:deploy_job)
           @id = args[:id] if args.key?(:id)
           @job_run = args[:job_run] if args.key?(:job_run)
@@ -881,6 +1000,18 @@ module Google
       # information of a single `Rollout` job evaluation.
       class JobRun
         include Google::Apis::Core::Hashable
+      
+        # AdvanceChildRolloutJobRun contains information specific to a
+        # advanceChildRollout `JobRun`.
+        # Corresponds to the JSON property `advanceChildRolloutJobRun`
+        # @return [Google::Apis::ClouddeployV1::AdvanceChildRolloutJobRun]
+        attr_accessor :advance_child_rollout_job_run
+      
+        # CreateChildRolloutJobRun contains information specific to a createChildRollout
+        # `JobRun`.
+        # Corresponds to the JSON property `createChildRolloutJobRun`
+        # @return [Google::Apis::ClouddeployV1::CreateChildRolloutJobRun]
+        attr_accessor :create_child_rollout_job_run
       
         # Output only. Time at which the `JobRun` was created.
         # Corresponds to the JSON property `createTime`
@@ -947,6 +1078,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @advance_child_rollout_job_run = args[:advance_child_rollout_job_run] if args.key?(:advance_child_rollout_job_run)
+          @create_child_rollout_job_run = args[:create_child_rollout_job_run] if args.key?(:create_child_rollout_job_run)
           @create_time = args[:create_time] if args.key?(:create_time)
           @deploy_job_run = args[:deploy_job_run] if args.key?(:deploy_job_run)
           @end_time = args[:end_time] if args.key?(:end_time)
@@ -1294,6 +1427,25 @@ module Google
         end
       end
       
+      # Information specifying a multiTarget.
+      class MultiTarget
+        include Google::Apis::Core::Hashable
+      
+        # Required. The target_ids of this multiTarget.
+        # Corresponds to the JSON property `targetIds`
+        # @return [Array<String>]
+        attr_accessor :target_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @target_ids = args[:target_ids] if args.key?(:target_ids)
+        end
+      end
+      
       # This resource represents a long-running operation that is the result of a
       # network API call.
       class Operation
@@ -1420,6 +1572,11 @@ module Google
       class Phase
         include Google::Apis::Core::Hashable
       
+        # ChildRollouts job composition
+        # Corresponds to the JSON property `childRolloutJobs`
+        # @return [Google::Apis::ClouddeployV1::ChildRolloutJobs]
+        attr_accessor :child_rollout_jobs
+      
         # Deployment job composition.
         # Corresponds to the JSON property `deploymentJobs`
         # @return [Google::Apis::ClouddeployV1::DeploymentJobs]
@@ -1441,6 +1598,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @child_rollout_jobs = args[:child_rollout_jobs] if args.key?(:child_rollout_jobs)
           @deployment_jobs = args[:deployment_jobs] if args.key?(:deployment_jobs)
           @id = args[:id] if args.key?(:id)
           @state = args[:state] if args.key?(:state)
@@ -1964,6 +2122,13 @@ module Google
         # @return [String]
         attr_accessor :approve_time
       
+        # Output only. Name of the `ControllerRollout`. Format is projects/`project`/
+        # locations/`location`/deliveryPipelines/`deliveryPipeline`/ releases/`release`/
+        # rollouts/a-z`0,62`.
+        # Corresponds to the JSON property `controllerRollout`
+        # @return [String]
+        attr_accessor :controller_rollout
+      
         # Output only. Time at which the `Rollout` was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -2066,6 +2231,7 @@ module Google
           @annotations = args[:annotations] if args.key?(:annotations)
           @approval_state = args[:approval_state] if args.key?(:approval_state)
           @approve_time = args[:approve_time] if args.key?(:approve_time)
+          @controller_rollout = args[:controller_rollout] if args.key?(:controller_rollout)
           @create_time = args[:create_time] if args.key?(:create_time)
           @deploy_end_time = args[:deploy_end_time] if args.key?(:deploy_end_time)
           @deploy_failure_cause = args[:deploy_failure_cause] if args.key?(:deploy_failure_cause)
@@ -2467,6 +2633,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # Information specifying a multiTarget.
+        # Corresponds to the JSON property `multiTarget`
+        # @return [Google::Apis::ClouddeployV1::MultiTarget]
+        attr_accessor :multi_target
+      
         # Optional. Name of the `Target`. Format is projects/`project`/locations/`
         # location`/targets/a-z`0,62`.
         # Corresponds to the JSON property `name`
@@ -2513,6 +2684,7 @@ module Google
           @execution_configs = args[:execution_configs] if args.key?(:execution_configs)
           @gke = args[:gke] if args.key?(:gke)
           @labels = args[:labels] if args.key?(:labels)
+          @multi_target = args[:multi_target] if args.key?(:multi_target)
           @name = args[:name] if args.key?(:name)
           @require_approval = args[:require_approval] if args.key?(:require_approval)
           @run = args[:run] if args.key?(:run)

@@ -34,6 +34,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AdvanceChildRolloutJob
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AdvanceChildRolloutJobRun
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AnthosCluster
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -82,6 +94,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ChildRolloutJobs
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CloudRunLocation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -95,6 +113,18 @@ module Google
       end
       
       class Config
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreateChildRolloutJob
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreateChildRolloutJobRun
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -239,6 +269,12 @@ module Google
       end
       
       class Metadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MultiTarget
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -460,6 +496,20 @@ module Google
         end
       end
       
+      class AdvanceChildRolloutJob
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class AdvanceChildRolloutJobRun
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :rollout, as: 'rollout'
+          property :rollout_phase_id, as: 'rolloutPhaseId'
+        end
+      end
+      
       class AnthosCluster
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -521,6 +571,16 @@ module Google
         end
       end
       
+      class ChildRolloutJobs
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :advance_rollout_jobs, as: 'advanceRolloutJobs', class: Google::Apis::ClouddeployV1::Job, decorator: Google::Apis::ClouddeployV1::Job::Representation
+      
+          collection :create_rollout_jobs, as: 'createRolloutJobs', class: Google::Apis::ClouddeployV1::Job, decorator: Google::Apis::ClouddeployV1::Job::Representation
+      
+        end
+      end
+      
       class CloudRunLocation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -544,6 +604,20 @@ module Google
           property :name, as: 'name'
           collection :supported_versions, as: 'supportedVersions', class: Google::Apis::ClouddeployV1::SkaffoldVersion, decorator: Google::Apis::ClouddeployV1::SkaffoldVersion::Representation
       
+        end
+      end
+      
+      class CreateChildRolloutJob
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class CreateChildRolloutJobRun
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :rollout, as: 'rollout'
+          property :rollout_phase_id, as: 'rolloutPhaseId'
         end
       end
       
@@ -669,6 +743,10 @@ module Google
       class Job
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :advance_child_rollout_job, as: 'advanceChildRolloutJob', class: Google::Apis::ClouddeployV1::AdvanceChildRolloutJob, decorator: Google::Apis::ClouddeployV1::AdvanceChildRolloutJob::Representation
+      
+          property :create_child_rollout_job, as: 'createChildRolloutJob', class: Google::Apis::ClouddeployV1::CreateChildRolloutJob, decorator: Google::Apis::ClouddeployV1::CreateChildRolloutJob::Representation
+      
           property :deploy_job, as: 'deployJob', class: Google::Apis::ClouddeployV1::DeployJob, decorator: Google::Apis::ClouddeployV1::DeployJob::Representation
       
           property :id, as: 'id'
@@ -682,6 +760,10 @@ module Google
       class JobRun
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :advance_child_rollout_job_run, as: 'advanceChildRolloutJobRun', class: Google::Apis::ClouddeployV1::AdvanceChildRolloutJobRun, decorator: Google::Apis::ClouddeployV1::AdvanceChildRolloutJobRun::Representation
+      
+          property :create_child_rollout_job_run, as: 'createChildRolloutJobRun', class: Google::Apis::ClouddeployV1::CreateChildRolloutJobRun, decorator: Google::Apis::ClouddeployV1::CreateChildRolloutJobRun::Representation
+      
           property :create_time, as: 'createTime'
           property :deploy_job_run, as: 'deployJobRun', class: Google::Apis::ClouddeployV1::DeployJobRun, decorator: Google::Apis::ClouddeployV1::DeployJobRun::Representation
       
@@ -798,6 +880,13 @@ module Google
         end
       end
       
+      class MultiTarget
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :target_ids, as: 'targetIds'
+        end
+      end
+      
       class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -826,6 +915,8 @@ module Google
       class Phase
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :child_rollout_jobs, as: 'childRolloutJobs', class: Google::Apis::ClouddeployV1::ChildRolloutJobs, decorator: Google::Apis::ClouddeployV1::ChildRolloutJobs::Representation
+      
           property :deployment_jobs, as: 'deploymentJobs', class: Google::Apis::ClouddeployV1::DeploymentJobs, decorator: Google::Apis::ClouddeployV1::DeploymentJobs::Representation
       
           property :id, as: 'id'
@@ -960,6 +1051,7 @@ module Google
           hash :annotations, as: 'annotations'
           property :approval_state, as: 'approvalState'
           property :approve_time, as: 'approveTime'
+          property :controller_rollout, as: 'controllerRollout'
           property :create_time, as: 'createTime'
           property :deploy_end_time, as: 'deployEndTime'
           property :deploy_failure_cause, as: 'deployFailureCause'
@@ -1079,6 +1171,8 @@ module Google
           property :gke, as: 'gke', class: Google::Apis::ClouddeployV1::GkeCluster, decorator: Google::Apis::ClouddeployV1::GkeCluster::Representation
       
           hash :labels, as: 'labels'
+          property :multi_target, as: 'multiTarget', class: Google::Apis::ClouddeployV1::MultiTarget, decorator: Google::Apis::ClouddeployV1::MultiTarget::Representation
+      
           property :name, as: 'name'
           property :require_approval, as: 'requireApproval'
           property :run, as: 'run', class: Google::Apis::ClouddeployV1::CloudRunLocation, decorator: Google::Apis::ClouddeployV1::CloudRunLocation::Representation
