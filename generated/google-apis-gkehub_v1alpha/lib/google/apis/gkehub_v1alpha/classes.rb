@@ -4014,7 +4014,9 @@ module Google
         attr_accessor :group
       
         # The resource name for the rbacrolebinding `projects/`project`/locations/`
-        # location`/namespaces/`namespace`/rbacrolebindings/`rbacrolebinding``
+        # location`/namespaces/`namespace`/rbacrolebindings/`rbacrolebinding`` or `
+        # projects/`project`/locations/`location`/memberships/`membership`/
+        # rbacrolebindings/`rbacrolebinding``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
