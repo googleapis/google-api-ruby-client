@@ -355,7 +355,7 @@ module Google
         attr_accessor :custom
         alias_method :custom?, :custom
       
-        # Output only. If set, this event can currently be deleted via
+        # Output only. If set, this event can currently be deleted with
         # DeleteConversionEvent.
         # Corresponds to the JSON property `deletable`
         # @return [Boolean]
@@ -1212,7 +1212,7 @@ module Google
         # Immutable. The property type for this Property resource. When creating a
         # property, if the type is "PROPERTY_TYPE_UNSPECIFIED", then "ORDINARY_PROPERTY"
         # will be implied. "SUBPROPERTY" and "ROLLUP_PROPERTY" types cannot yet be
-        # created via Google Analytics Admin API.
+        # created with the Google Analytics Admin API.
         # Corresponds to the JSON property `propertyType`
         # @return [String]
         attr_accessor :property_type
@@ -1308,7 +1308,7 @@ module Google
         attr_accessor :account
       
         # Redirect URI where the user will be sent after accepting Terms of Service.
-        # Must be configured in Developers Console as a Redirect URI.
+        # Must be configured in Cloud Console as a Redirect URI.
         # Corresponds to the JSON property `redirectUri`
         # @return [String]
         attr_accessor :redirect_uri
