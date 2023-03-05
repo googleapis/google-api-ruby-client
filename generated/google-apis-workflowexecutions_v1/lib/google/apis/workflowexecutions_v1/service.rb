@@ -199,7 +199,7 @@ module Google
         #   following fields are supported for filtering: executionID, state, startTime,
         #   endTime, duration, workflowRevisionID, stepName, and label.
         # @param [String] order_by
-        #   Optional. The orderding applied to the [Executions.ListExecutions] results. By
+        #   Optional. The ordering applied to the [Executions.ListExecutions] results. By
         #   default the ordering is based on descending start time. The following fields
         #   are supported for order by: executionID, startTime, endTime, duration, state,
         #   and workflowRevisionID.
@@ -211,7 +211,9 @@ module Google
         # @param [String] page_token
         #   A page token, received from a previous `ListExecutions` call. Provide this to
         #   retrieve the subsequent page. When paginating, all other parameters provided
-        #   to `ListExecutions` must match the call that provided the page token.
+        #   to `ListExecutions` must match the call that provided the page token. Note
+        #   that pagination is applied to dynamic data. The list of executions returned
+        #   can change between page requests.
         # @param [String] view
         #   Optional. A view defining which fields should be filled in the returned
         #   executions. The API will default to the BASIC view.
