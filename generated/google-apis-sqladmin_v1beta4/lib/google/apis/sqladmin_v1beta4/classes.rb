@@ -2558,6 +2558,65 @@ module Google
         end
       end
       
+      # Represents the metadata of the long-running operation.
+      class OperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. API version used to start the operation.
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
+        # Output only. Identifies whether the user has requested cancellation of the
+        # operation. Operations that have been cancelled successfully have Operation.
+        # error value with a google.rpc.Status.code of 1, corresponding to `Code.
+        # CANCELLED`.
+        # Corresponds to the JSON property `cancelRequested`
+        # @return [Boolean]
+        attr_accessor :cancel_requested
+        alias_method :cancel_requested?, :cancel_requested
+      
+        # Output only. The time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The time the operation finished running.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Output only. Human-readable status of the operation, if any.
+        # Corresponds to the JSON property `statusDetail`
+        # @return [String]
+        attr_accessor :status_detail
+      
+        # Output only. Server-defined resource path for the target of the operation.
+        # Corresponds to the JSON property `target`
+        # @return [String]
+        attr_accessor :target
+      
+        # Output only. Name of the verb executed by the operation.
+        # Corresponds to the JSON property `verb`
+        # @return [String]
+        attr_accessor :verb
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @cancel_requested = args[:cancel_requested] if args.key?(:cancel_requested)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @status_detail = args[:status_detail] if args.key?(:status_detail)
+          @target = args[:target] if args.key?(:target)
+          @verb = args[:verb] if args.key?(:verb)
+        end
+      end
+      
       # Operations list response.
       class ListOperationsResponse
         include Google::Apis::Core::Hashable
