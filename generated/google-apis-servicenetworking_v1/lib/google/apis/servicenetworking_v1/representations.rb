@@ -1548,6 +1548,7 @@ module Google
       
           property :new_issue_uri, as: 'newIssueUri'
           property :organization, as: 'organization'
+          property :proto_reference_documentation_uri, as: 'protoReferenceDocumentationUri'
         end
       end
       
