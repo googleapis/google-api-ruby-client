@@ -49,6 +49,44 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Fetches a set of static IP addresses that need to be allowlisted by the
+        # customer when using the static-IP connectivity method.
+        # @param [String] name
+        #   Required. The resource name for the location for which static IPs should be
+        #   returned. Must be in the format `projects/*/locations/*`.
+        # @param [Fixnum] page_size
+        #   Maximum number of IPs to return.
+        # @param [String] page_token
+        #   A page token, received from a previous `FetchStaticIps` call.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatamigrationV1::FetchStaticIpsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatamigrationV1::FetchStaticIpsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def fetch_project_location_static_ips(name, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:fetchStaticIps', options)
+          command.response_representation = Google::Apis::DatamigrationV1::FetchStaticIpsResponse::Representation
+          command.response_class = Google::Apis::DatamigrationV1::FetchStaticIpsResponse
+          command.params['name'] = name unless name.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets information about a location.
         # @param [String] name
         #   Resource name for the location.
@@ -124,14 +162,14 @@ module Google
         
         # Creates a new connection profile in a given project and location.
         # @param [String] parent
-        #   Required. The parent, which owns this collection of connection profiles.
+        #   Required. The parent which owns this collection of connection profiles.
         # @param [Google::Apis::DatamigrationV1::ConnectionProfile] connection_profile_object
         # @param [String] connection_profile_id
         #   Required. The connection profile identifier.
         # @param [String] request_id
-        #   Optional. A unique id used to identify the request. If the server receives two
-        #   requests with the same id, then the second request will be ignored. It is
-        #   recommended to always set this value to a UUID. The id must contain only
+        #   Optional. A unique ID used to identify the request. If the server receives two
+        #   requests with the same ID, then the second request is ignored. It is
+        #   recommended to always set this value to a UUID. The ID must contain only
         #   letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The
         #   maximum length is 40 characters.
         # @param [Boolean] skip_validation
@@ -181,10 +219,10 @@ module Google
         #   In case of force delete, the CloudSQL replica database is also deleted (only
         #   for CloudSQL connection profile).
         # @param [String] request_id
-        #   A unique id used to identify the request. If the server receives two requests
-        #   with the same id, then the second request will be ignored. It is recommended
-        #   to always set this value to a UUID. The id must contain only letters (a-z, A-Z)
-        #   , numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
+        #   A unique ID used to identify the request. If the server receives two requests
+        #   with the same ID, then the second request is ignored. It is recommended to
+        #   always set this value to a UUID. The ID must contain only letters (a-z, A-Z),
+        #   numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
         #   characters.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -292,7 +330,7 @@ module Google
         
         # Retrieves a list of all connection profiles in a given project and location.
         # @param [String] parent
-        #   Required. The parent, which owns this collection of connection profiles.
+        #   Required. The parent which owns this collection of connection profiles.
         # @param [String] filter
         #   A filter expression that filters connection profiles listed in the response.
         #   The expression must specify the field name, a comparison operator, and the
@@ -307,7 +345,7 @@ module Google
         # @param [Fixnum] page_size
         #   The maximum number of connection profiles to return. The service may return
         #   fewer than this value. If unspecified, at most 50 connection profiles will be
-        #   returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
+        #   returned. The maximum value is 1000; values above 1000 are coerced to 1000.
         # @param [String] page_token
         #   A page token, received from a previous `ListConnectionProfiles` call. Provide
         #   this to retrieve the subsequent page. When paginating, all other parameters
@@ -350,17 +388,17 @@ module Google
         #   locations/`location`/connectionProfiles/`connectionProfile`.
         # @param [Google::Apis::DatamigrationV1::ConnectionProfile] connection_profile_object
         # @param [String] request_id
-        #   Optional. A unique id used to identify the request. If the server receives two
-        #   requests with the same id, then the second request will be ignored. It is
-        #   recommended to always set this value to a UUID. The id must contain only
+        #   Optional. A unique ID used to identify the request. If the server receives two
+        #   requests with the same ID, then the second request is ignored. It is
+        #   recommended to always set this value to a UUID. The ID must contain only
         #   letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The
         #   maximum length is 40 characters.
         # @param [Boolean] skip_validation
         #   Optional. Update the connection profile without validating it. The default is
         #   false. Only supported for Oracle connection profiles.
         # @param [String] update_mask
-        #   Required. Field mask is used to specify the fields to be overwritten in the
-        #   connection profile resource by the update.
+        #   Required. Field mask is used to specify the fields to be overwritten by the
+        #   update in the conversion workspace resource.
         # @param [Boolean] validate_only
         #   Optional. Only validate the connection profile, but don't update any resources.
         #   The default is false. Only supported for Oracle connection profiles.
@@ -473,10 +511,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Apply draft tree onto a specific destination database
+        # Applies draft tree onto a specific destination database.
         # @param [String] name
-        #   Required. Name of the conversion workspace resource to apply draft to
-        #   destination for. in the form of: projects/`project`/locations/`location`/
+        #   Required. The name of the conversion workspace resource for which to apply the
+        #   draft tree. Must be in the form of: projects/`project`/locations/`location`/
         #   conversionWorkspaces/`conversion_workspace`.
         # @param [Google::Apis::DatamigrationV1::ApplyConversionWorkspaceRequest] apply_conversion_workspace_request_object
         # @param [String] fields
@@ -577,15 +615,15 @@ module Google
         
         # Creates a new conversion workspace in a given project and location.
         # @param [String] parent
-        #   Required. The parent, which owns this collection of conversion workspaces.
+        #   Required. The parent which owns this collection of conversion workspaces.
         # @param [Google::Apis::DatamigrationV1::ConversionWorkspace] conversion_workspace_object
         # @param [String] conversion_workspace_id
         #   Required. The ID of the conversion workspace to create.
         # @param [String] request_id
-        #   A unique id used to identify the request. If the server receives two requests
-        #   with the same id, then the second request will be ignored. It is recommended
-        #   to always set this value to a UUID. The id must contain only letters (a-z, A-Z)
-        #   , numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
+        #   A unique ID used to identify the request. If the server receives two requests
+        #   with the same ID, then the second request is ignored. It is recommended to
+        #   always set this value to a UUID. The ID must contain only letters (a-z, A-Z),
+        #   numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
         #   characters.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -622,10 +660,10 @@ module Google
         # @param [String] name
         #   Required. Name of the conversion workspace resource to delete.
         # @param [String] request_id
-        #   A unique id used to identify the request. If the server receives two requests
-        #   with the same id, then the second request will be ignored. It is recommended
-        #   to always set this value to a UUID. The id must contain only letters (a-z, A-Z)
-        #   , numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
+        #   A unique ID used to identify the request. If the server receives two requests
+        #   with the same ID, then the second request is ignored. It is recommended to
+        #   always set this value to a UUID. The ID must contain only letters (a-z, A-Z),
+        #   numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
         #   characters.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -658,10 +696,10 @@ module Google
         # Retrieves a list of committed revisions of a specific conversion workspace.
         # @param [String] conversion_workspace
         #   Required. Name of the conversion workspace resource whose revisions are listed.
-        #   in the form of: projects/`project`/locations/`location`/conversionWorkspaces/`
-        #   conversion_workspace`.
+        #   Must be in the form of: projects/`project`/locations/`location`/
+        #   conversionWorkspaces/`conversion_workspace`.
         # @param [String] commit_id
-        #   Optional. Optional filter to request a specific commit id
+        #   Optional. Optional filter to request a specific commit ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -690,23 +728,23 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Use this method to describe the database entities tree for a specific
-        # conversion workspace and a specific tree type. The DB Entities are not a
-        # resource like conversion workspace or mapping rule, and they can not be
-        # created, updated or deleted like one. Instead they are simple data objects
-        # describing the structure of the client database.
+        # Describes the database entities tree for a specific conversion workspace and a
+        # specific tree type. Database entities are not resources like conversion
+        # workspaces or mapping rules, and they can't be created, updated or deleted.
+        # Instead, they are simple data objects describing the structure of the client
+        # database.
         # @param [String] conversion_workspace
-        #   Required. Name of the conversion workspace resource whose DB entities are
-        #   described in the form of: projects/`project`/locations/`location`/
+        #   Required. Name of the conversion workspace resource whose database entities
+        #   are described. Must be in the form of: projects/`project`/locations/`location`/
         #   conversionWorkspaces/`conversion_workspace`.
         # @param [String] commit_id
-        #   Request a specific commit id. If not specified, the entities from the latest
+        #   Request a specific commit ID. If not specified, the entities from the latest
         #   commit are returned.
         # @param [String] filter
         #   Filter the returned entities based on AIP-160 standard.
         # @param [Fixnum] page_size
-        #   The maximum number of entities to return. The service may return fewer than
-        #   this value.
+        #   The maximum number of entities to return. The service may return fewer
+        #   entities than the value specifies.
         # @param [String] page_token
         #   The nextPageToken value received in the previous call to conversionWorkspace.
         #   describeDatabaseEntities, used in the subsequent request to retrieve the next
@@ -828,7 +866,7 @@ module Google
         
         # Lists conversion workspaces in a given project and location.
         # @param [String] parent
-        #   Required. The parent, which owns this collection of conversion workspaces.
+        #   Required. The parent which owns this collection of conversion workspaces.
         # @param [String] filter
         #   A filter expression that filters conversion workspaces listed in the response.
         #   The expression must specify the field name, a comparison operator, and the
@@ -837,10 +875,10 @@ module Google
         #   example, list conversion workspaces created this year by specifying **
         #   createTime %gt; 2020-01-01T00:00:00.000000000Z.** You can also filter nested
         #   fields. For example, you could specify **source.version = "12.c.1"** to select
-        #   all conversion workspaces with source database version equal to 12.c.1
+        #   all conversion workspaces with source database version equal to 12.c.1.
         # @param [Fixnum] page_size
         #   The maximum number of conversion workspaces to return. The service may return
-        #   fewer than this value. If unspecified, at most 50 sets will be returned.
+        #   fewer than this value. If unspecified, at most 50 sets are returned.
         # @param [String] page_token
         #   The nextPageToken value received in the previous call to conversionWorkspaces.
         #   list, used in the subsequent request to retrieve the next page of results. On
@@ -883,14 +921,14 @@ module Google
         #   locations/`location`/conversionWorkspaces/`conversion_workspace`.
         # @param [Google::Apis::DatamigrationV1::ConversionWorkspace] conversion_workspace_object
         # @param [String] request_id
-        #   A unique id used to identify the request. If the server receives two requests
-        #   with the same id, then the second request will be ignored. It is recommended
-        #   to always set this value to a UUID. The id must contain only letters (a-z, A-Z)
-        #   , numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
+        #   A unique ID used to identify the request. If the server receives two requests
+        #   with the same ID, then the second request is ignored. It is recommended to
+        #   always set this value to a UUID. The ID must contain only letters (a-z, A-Z),
+        #   numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
         #   characters.
         # @param [String] update_mask
-        #   Required. Field mask is used to specify the fields to be overwritten in the
-        #   conversion workspace resource by the update.
+        #   Required. Field mask is used to specify the fields to be overwritten by the
+        #   update in the conversion workspace resource.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -922,9 +960,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Rollbacks a conversion workspace to the last committed spanshot.
+        # Rolls back a conversion workspace to the last committed snapshot.
         # @param [String] name
-        #   Required. Name of the conversion workspace resource to rollback to.
+        #   Required. Name of the conversion workspace resource to roll back to.
         # @param [Google::Apis::DatamigrationV1::RollbackConversionWorkspaceRequest] rollback_conversion_workspace_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -955,23 +993,23 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Use this method to search/list the background jobs for a specific conversion
-        # workspace. The background jobs are not a resource like conversion workspace or
-        # mapping rule, and they can not be created, updated or deleted like one.
-        # Instead they are a way to expose the data plane jobs log.
+        # Searches/lists the background jobs for a specific conversion workspace. The
+        # background jobs are not resources like conversion workspaces or mapping rules,
+        # and they can't be created, updated or deleted. Instead, they are a way to
+        # expose the data plane jobs log.
         # @param [String] conversion_workspace
-        #   Required. Name of the conversion workspace resource whos jobs are listed. in
+        #   Required. Name of the conversion workspace resource whose jobs are listed, in
         #   the form of: projects/`project`/locations/`location`/conversionWorkspaces/`
         #   conversion_workspace`.
         # @param [String] completed_until_time
-        #   Optional. If supplied, will only return jobs that completed until (not
-        #   including) the given timestamp.
+        #   Optional. If provided, only returns jobs that completed until (not including)
+        #   the given timestamp.
         # @param [Fixnum] max_size
         #   Optional. The maximum number of jobs to return. The service may return fewer
-        #   than this value. If unspecified, at most 100 jobs will be returned. The
-        #   maximum value is 100; values above 100 will be coerced to 100.
+        #   than this value. If unspecified, at most 100 jobs are returned. The maximum
+        #   value is 100; values above 100 are coerced to 100.
         # @param [Boolean] return_most_recent_per_job_type
-        #   Optional. Whether or not to return just the most recent job per job type
+        #   Optional. Whether or not to return just the most recent job per job type,
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1004,7 +1042,7 @@ module Google
         
         # Imports a snapshot of the source database into the conversion workspace.
         # @param [String] name
-        #   Name of the conversion workspace resource to seed with new database structure.
+        #   Name of the conversion workspace resource to seed with new database structure,
         #   in the form of: projects/`project`/locations/`location`/conversionWorkspaces/`
         #   conversion_workspace`.
         # @param [Google::Apis::DatamigrationV1::SeedConversionWorkspaceRequest] seed_conversion_workspace_request_object
@@ -1151,15 +1189,15 @@ module Google
         
         # Creates a new migration job in a given project and location.
         # @param [String] parent
-        #   Required. The parent, which owns this collection of migration jobs.
+        #   Required. The parent which owns this collection of migration jobs.
         # @param [Google::Apis::DatamigrationV1::MigrationJob] migration_job_object
         # @param [String] migration_job_id
         #   Required. The ID of the instance to create.
         # @param [String] request_id
-        #   A unique id used to identify the request. If the server receives two requests
-        #   with the same id, then the second request will be ignored. It is recommended
-        #   to always set this value to a UUID. The id must contain only letters (a-z, A-Z)
-        #   , numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
+        #   A unique ID used to identify the request. If the server receives two requests
+        #   with the same ID, then the second request is ignored. It is recommended to
+        #   always set this value to a UUID. The ID must contain only letters (a-z, A-Z),
+        #   numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
         #   characters.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1200,10 +1238,10 @@ module Google
         #   migration job. In case of force delete, the destination CloudSQL replica
         #   database is also deleted.
         # @param [String] request_id
-        #   A unique id used to identify the request. If the server receives two requests
-        #   with the same id, then the second request will be ignored. It is recommended
-        #   to always set this value to a UUID. The id must contain only letters (a-z, A-Z)
-        #   , numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
+        #   A unique ID used to identify the request. If the server receives two requests
+        #   with the same ID, then the second request is ignored. It is recommended to
+        #   always set this value to a UUID. The ID must contain only letters (a-z, A-Z),
+        #   numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
         #   characters.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1344,7 +1382,7 @@ module Google
         
         # Lists migration jobs in a given project and location.
         # @param [String] parent
-        #   Required. The parent, which owns this collection of migrationJobs.
+        #   Required. The parent which owns this collection of migrationJobs.
         # @param [String] filter
         #   A filter expression that filters migration jobs listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
@@ -1360,7 +1398,7 @@ module Google
         # @param [Fixnum] page_size
         #   The maximum number of migration jobs to return. The service may return fewer
         #   than this value. If unspecified, at most 50 migration jobs will be returned.
-        #   The maximum value is 1000; values above 1000 will be coerced to 1000.
+        #   The maximum value is 1000; values above 1000 are coerced to 1000.
         # @param [String] page_token
         #   The nextPageToken value received in the previous call to migrationJobs.list,
         #   used in the subsequent request to retrieve the next page of results. On first
@@ -1403,14 +1441,14 @@ module Google
         #   project`/locations/`location`/migrationJobs/`migrationJob`.
         # @param [Google::Apis::DatamigrationV1::MigrationJob] migration_job_object
         # @param [String] request_id
-        #   A unique id used to identify the request. If the server receives two requests
-        #   with the same id, then the second request will be ignored. It is recommended
-        #   to always set this value to a UUID. The id must contain only letters (a-z, A-Z)
-        #   , numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
+        #   A unique ID used to identify the request. If the server receives two requests
+        #   with the same ID, then the second request is ignored. It is recommended to
+        #   always set this value to a UUID. The ID must contain only letters (a-z, A-Z),
+        #   numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
         #   characters.
         # @param [String] update_mask
-        #   Required. Field mask is used to specify the fields to be overwritten in the
-        #   migration job resource by the update.
+        #   Required. Field mask is used to specify the fields to be overwritten by the
+        #   update in the conversion workspace resource.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1877,9 +1915,9 @@ module Google
         # @param [String] private_connection_id
         #   Required. The private connection identifier.
         # @param [String] request_id
-        #   Optional. A unique id used to identify the request. If the server receives two
-        #   requests with the same id, then the second request will be ignored. It is
-        #   recommended to always set this value to a UUID. The id must contain only
+        #   Optional. A unique ID used to identify the request. If the server receives two
+        #   requests with the same ID, then the second request is ignored. It is
+        #   recommended to always set this value to a UUID. The ID must contain only
         #   letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The
         #   maximum length is 40 characters.
         # @param [Boolean] skip_validation
@@ -1920,9 +1958,9 @@ module Google
         # @param [String] name
         #   Required. The name of the private connection to delete.
         # @param [String] request_id
-        #   Optional. A unique id used to identify the request. If the server receives two
-        #   requests with the same id, then the second request will be ignored. It is
-        #   recommended to always set this value to a UUID. The id must contain only
+        #   Optional. A unique ID used to identify the request. If the server receives two
+        #   requests with the same ID, then the second request is ignored. It is
+        #   recommended to always set this value to a UUID. The ID must contain only
         #   letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The
         #   maximum length is 40 characters.
         # @param [String] fields
@@ -1997,8 +2035,8 @@ module Google
         #   Order by fields for the result.
         # @param [Fixnum] page_size
         #   Maximum number of private connections to return. If unspecified, at most 50
-        #   private connections that will be returned. The maximum value is 1000; values
-        #   above 1000 will be coerced to 1000.
+        #   private connections that are returned. The maximum value is 1000; values above
+        #   1000 are coerced to 1000.
         # @param [String] page_token
         #   Page token received from a previous `ListPrivateConnections` call. Provide
         #   this to retrieve the subsequent page. When paginating, all other parameters

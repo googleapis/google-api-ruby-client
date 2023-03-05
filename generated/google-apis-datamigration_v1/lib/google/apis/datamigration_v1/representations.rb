@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ApplyJobDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuditConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -124,6 +130,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConvertJobDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DatabaseEngineInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -185,6 +197,12 @@ module Google
       end
       
       class Expr
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FetchStaticIpsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -585,6 +603,14 @@ module Google
         end
       end
       
+      class ApplyJobDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :connection_profile, as: 'connectionProfile'
+          property :filter, as: 'filter'
+        end
+      end
+      
       class AuditConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -605,8 +631,12 @@ module Google
       class BackgroundJobLogEntry
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :apply_job_details, as: 'applyJobDetails', class: Google::Apis::DatamigrationV1::ApplyJobDetails, decorator: Google::Apis::DatamigrationV1::ApplyJobDetails::Representation
+      
           property :completion_comment, as: 'completionComment'
           property :completion_state, as: 'completionState'
+          property :convert_job_details, as: 'convertJobDetails', class: Google::Apis::DatamigrationV1::ConvertJobDetails, decorator: Google::Apis::DatamigrationV1::ConvertJobDetails::Representation
+      
           property :finish_time, as: 'finishTime'
           property :id, as: 'id'
           property :import_rules_job_details, as: 'importRulesJobDetails', class: Google::Apis::DatamigrationV1::ImportRulesJobDetails, decorator: Google::Apis::DatamigrationV1::ImportRulesJobDetails::Representation
@@ -775,6 +805,13 @@ module Google
         end
       end
       
+      class ConvertJobDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filter, as: 'filter'
+        end
+      end
+      
       class DatabaseEngineInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -884,6 +921,14 @@ module Google
           property :expression, as: 'expression'
           property :location, as: 'location'
           property :title, as: 'title'
+        end
+      end
+      
+      class FetchStaticIpsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :static_ips, as: 'staticIps'
         end
       end
       
