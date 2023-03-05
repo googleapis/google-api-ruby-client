@@ -574,16 +574,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Incrementally adds place IDs to Product.fulfillment_info.place_ids. This
-        # process is asynchronous and does not require the Product to exist before
-        # updating fulfillment information. If the request is valid, the update will be
-        # enqueued and processed downstream. As a consequence, when a response is
-        # returned, the added place IDs are not immediately manifested in the Product
-        # queried by ProductService.GetProduct or ProductService.ListProducts. The
-        # returned Operations will be obsolete after 1 day, and GetOperation API will
-        # return NOT_FOUND afterwards. If conflicting updates are issued, the Operations
-        # associated with the stale updates will not be marked as done until being
-        # obsolete.
+        # It is recommended to use the ProductService.AddLocalInventories method instead
+        # of ProductService.AddFulfillmentPlaces. ProductService.AddLocalInventories
+        # achieves the same results but provides more fine-grained control over
+        # ingesting local inventory data. Incrementally adds place IDs to Product.
+        # fulfillment_info.place_ids. This process is asynchronous and does not require
+        # the Product to exist before updating fulfillment information. If the request
+        # is valid, the update will be enqueued and processed downstream. As a
+        # consequence, when a response is returned, the added place IDs are not
+        # immediately manifested in the Product queried by ProductService.GetProduct or
+        # ProductService.ListProducts. The returned Operations will be obsolete after 1
+        # day, and GetOperation API will return NOT_FOUND afterwards. If conflicting
+        # updates are issued, the Operations associated with the stale updates will not
+        # be marked as done until being obsolete.
         # @param [String] product
         #   Required. Full resource name of Product, such as `projects/*/locations/global/
         #   catalogs/default_catalog/branches/default_branch/products/some_product_id`. If
@@ -932,14 +935,18 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Incrementally removes place IDs from a Product.fulfillment_info.place_ids.
-        # This process is asynchronous and does not require the Product to exist before
-        # updating fulfillment information. If the request is valid, the update will be
-        # enqueued and processed downstream. As a consequence, when a response is
-        # returned, the removed place IDs are not immediately manifested in the Product
-        # queried by ProductService.GetProduct or ProductService.ListProducts. The
-        # returned Operations will be obsolete after 1 day, and GetOperation API will
-        # return NOT_FOUND afterwards. If conflicting updates are issued, the Operations
+        # It is recommended to use the ProductService.RemoveLocalInventories method
+        # instead of ProductService.RemoveFulfillmentPlaces. ProductService.
+        # RemoveLocalInventories achieves the same results but provides more fine-
+        # grained control over ingesting local inventory data. Incrementally removes
+        # place IDs from a Product.fulfillment_info.place_ids. This process is
+        # asynchronous and does not require the Product to exist before updating
+        # fulfillment information. If the request is valid, the update will be enqueued
+        # and processed downstream. As a consequence, when a response is returned, the
+        # removed place IDs are not immediately manifested in the Product queried by
+        # ProductService.GetProduct or ProductService.ListProducts. The returned
+        # Operations will be obsolete after 1 day, and GetOperation API will return
+        # NOT_FOUND afterwards. If conflicting updates are issued, the Operations
         # associated with the stale updates will not be marked as done until being
         # obsolete.
         # @param [String] product
