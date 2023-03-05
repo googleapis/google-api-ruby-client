@@ -56,10 +56,8 @@ module Google
         # @param [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1Database] google_firestore_admin_v1_database_object
         # @param [String] database_id
         #   Required. The ID to use for the database, which will become the final
-        #   component of the database's resource name. This value should be 4-63
-        #   characters. Valid characters are /a-z-/ with first character a letter and the
-        #   last a letter or a number. Must not be UUID-like /[0-9a-f]`8`(-[0-9a-f]`4`)`3`-
-        #   [0-9a-f]`12`/. "(default)" database id is also valid.
+        #   component of the database's resource name. The value must be set to "(default)"
+        #   .
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -100,9 +98,6 @@ module Google
         #   The current etag of the Database. If an etag is provided and does not match
         #   the current etag of the database, deletion will be blocked and a
         #   FAILED_PRECONDITION error will be returned.
-        # @param [Boolean] free_id
-        #   If set, will free the database_id associated with this database. uid will be
-        #   used as the resource id to identify this deleted database.
         # @param [Boolean] validate_only
         #   If set, validate the request and preview the response, but do not actually
         #   delete the database.
@@ -123,14 +118,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_database(name, allow_missing: nil, etag: nil, free_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_project_database(name, allow_missing: nil, etag: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::FirestoreV1::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::FirestoreV1::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
           command.query['allowMissing'] = allow_missing unless allow_missing.nil?
           command.query['etag'] = etag unless etag.nil?
-          command.query['freeId'] = free_id unless free_id.nil?
           command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1040,7 +1034,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Listens to changes. This method is only available via the gRPC API (not REST).
+        # Listens to changes. This method is only available via gRPC or WebChannel (not
+        # REST).
         # @param [String] database
         #   Required. The database name. In the format: `projects/`project_id`/databases/`
         #   database_id``.
@@ -1274,7 +1269,7 @@ module Google
         end
         
         # Streams batches of document updates and deletes, in order. This method is only
-        # available via the gRPC API (not REST).
+        # available via gRPC or WebChannel (not REST).
         # @param [String] database
         #   Required. The database name. In the format: `projects/`project_id`/databases/`
         #   database_id``. This is only required in the first message.
