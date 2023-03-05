@@ -124,6 +124,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IncidentList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListDashboardsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -155,6 +161,12 @@ module Google
       end
       
       class MonitoredProject
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MonitoredResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -502,6 +514,15 @@ module Google
         end
       end
       
+      class IncidentList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :monitored_resources, as: 'monitoredResources', class: Google::Apis::MonitoringV1::MonitoredResource, decorator: Google::Apis::MonitoringV1::MonitoredResource::Representation
+      
+          collection :policy_names, as: 'policyNames'
+        end
+      end
+      
       class ListDashboardsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -552,6 +573,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :name, as: 'name'
+        end
+      end
+      
+      class MonitoredResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :labels, as: 'labels'
+          property :type, as: 'type'
         end
       end
       
@@ -846,6 +875,8 @@ module Google
           property :blank, as: 'blank', class: Google::Apis::MonitoringV1::Empty, decorator: Google::Apis::MonitoringV1::Empty::Representation
       
           property :collapsible_group, as: 'collapsibleGroup', class: Google::Apis::MonitoringV1::CollapsibleGroup, decorator: Google::Apis::MonitoringV1::CollapsibleGroup::Representation
+      
+          property :incident_list, as: 'incidentList', class: Google::Apis::MonitoringV1::IncidentList, decorator: Google::Apis::MonitoringV1::IncidentList::Representation
       
           property :logs_panel, as: 'logsPanel', class: Google::Apis::MonitoringV1::LogsPanel, decorator: Google::Apis::MonitoringV1::LogsPanel::Representation
       
