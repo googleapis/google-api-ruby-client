@@ -2403,10 +2403,12 @@ module Google
         # overview#names) must be scoped to a project. The Cloud Healthcare API service
         # account, service-@gcp-sa-healthcare.iam.gserviceaccount.com, must have
         # publisher permissions on the given Pub/Sub topic. Not having adequate
-        # permissions causes the calls that send notifications to fail. If a
-        # notification can't be published to Pub/Sub, errors are logged to Cloud Logging.
-        # For more information, see [Viewing error logs in Cloud Logging](https://cloud.
-        # google.com/healthcare-api/docs/how-tos/logging).
+        # permissions causes the calls that send notifications to fail (https://cloud.
+        # google.com/healthcare-api/docs/permissions-healthcare-api-gcp-products#
+        # dicom_fhir_and_hl7v2_store_cloud_pubsub_permissions). If a notification can't
+        # be published to Pub/Sub, errors are logged to Cloud Logging. For more
+        # information, see [Viewing error logs in Cloud Logging](https://cloud.google.
+        # com/healthcare-api/docs/how-tos/logging).
         # Corresponds to the JSON property `pubsubTopic`
         # @return [String]
         attr_accessor :pubsub_topic
@@ -2606,6 +2608,64 @@ module Google
           @stream_configs = args[:stream_configs] if args.key?(:stream_configs)
           @validation_config = args[:validation_config] if args.key?(:validation_config)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Count of resources and total storage size by type for a given FHIR store.
+      class FhirStoreMetric
+        include Google::Apis::Core::Hashable
+      
+        # The total count of FHIR resources in the store of this resource type.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        # The FHIR resource type this metric applies to.
+        # Corresponds to the JSON property `resourceType`
+        # @return [String]
+        attr_accessor :resource_type
+      
+        # The total amount of structured storage used by FHIR resources of this resource
+        # type in the store.
+        # Corresponds to the JSON property `structuredStorageSizeBytes`
+        # @return [Fixnum]
+        attr_accessor :structured_storage_size_bytes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @count = args[:count] if args.key?(:count)
+          @resource_type = args[:resource_type] if args.key?(:resource_type)
+          @structured_storage_size_bytes = args[:structured_storage_size_bytes] if args.key?(:structured_storage_size_bytes)
+        end
+      end
+      
+      # List of metrics for a given FHIR store.
+      class FhirStoreMetrics
+        include Google::Apis::Core::Hashable
+      
+        # List of FhirStoreMetric by resource type.
+        # Corresponds to the JSON property `metrics`
+        # @return [Array<Google::Apis::HealthcareV1beta1::FhirStoreMetric>]
+        attr_accessor :metrics
+      
+        # The resource name of the FHIR store to get metrics for, in the format `
+        # projects/`project_id`/datasets/`dataset_id`/fhirStores/`fhir_store_id``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metrics = args[:metrics] if args.key?(:metrics)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
