@@ -1,5 +1,9 @@
 # Release history for google-apis-authorizedbuyersmarketplace_v1
 
+### v0.17.0 (2023-03-05)
+
+* Regenerated using generator version 0.12.0
+
 ### v0.16.0 (2022-10-30)
 
 * Regenerated using generator version 0.11.0
