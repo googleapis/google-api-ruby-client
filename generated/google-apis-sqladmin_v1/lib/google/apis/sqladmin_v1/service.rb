@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module SqladminV1
-      # Cloud SQL Admin API
+      # sqladmin API (prod)
       #
       # API for Cloud SQL database instance management
       #
