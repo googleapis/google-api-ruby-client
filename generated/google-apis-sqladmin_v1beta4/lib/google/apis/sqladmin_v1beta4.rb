@@ -19,13 +19,13 @@ require 'google/apis/sqladmin_v1beta4/gem_version.rb'
 
 module Google
   module Apis
-    # Cloud SQL Admin API
+    # sqladmin API (prod)
     #
     # API for Cloud SQL database instance management
     #
     # @see https://developers.google.com/cloud-sql/
     module SqladminV1beta4
-      # Version of the Cloud SQL Admin API this client connects to.
+      # Version of the sqladmin API (prod) this client connects to.
       # This is NOT the gem version.
       VERSION = 'V1beta4'
 
