@@ -310,6 +310,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Maintainer
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Material
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -947,6 +953,14 @@ module Google
         end
       end
       
+      class Maintainer
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+        end
+      end
+      
       class Material
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1032,6 +1046,8 @@ module Google
           collection :file_location, as: 'fileLocation', class: Google::Apis::OndemandscanningV1::FileLocation, decorator: Google::Apis::OndemandscanningV1::FileLocation::Representation
       
           property :hash_digest, as: 'hashDigest'
+          property :maintainer, as: 'maintainer', class: Google::Apis::OndemandscanningV1::Maintainer, decorator: Google::Apis::OndemandscanningV1::Maintainer::Representation
+      
           property :os, as: 'os'
           property :os_version, as: 'osVersion'
           property :package, as: 'package'
