@@ -2745,6 +2745,12 @@ module Google
         # @return [Float]
         attr_accessor :runtime_integration_analysis_percentage
       
+        # Percentage of conversations created using the UploadConversation endpoint to
+        # analyze automatically, between [0, 100].
+        # Corresponds to the JSON property `uploadConversationAnalysisPercentage`
+        # @return [Float]
+        attr_accessor :upload_conversation_analysis_percentage
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2753,6 +2759,7 @@ module Google
         def update!(**args)
           @annotator_selector = args[:annotator_selector] if args.key?(:annotator_selector)
           @runtime_integration_analysis_percentage = args[:runtime_integration_analysis_percentage] if args.key?(:runtime_integration_analysis_percentage)
+          @upload_conversation_analysis_percentage = args[:upload_conversation_analysis_percentage] if args.key?(:upload_conversation_analysis_percentage)
         end
       end
       
