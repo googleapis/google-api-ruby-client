@@ -22,6 +22,31 @@ module Google
   module Apis
     module ContactcenteraiplatformV1alpha1
       
+      # Message storing info about the first admin user. Next ID: 3
+      class AdminUser
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Last/family name of the first admin user.
+        # Corresponds to the JSON property `familyName`
+        # @return [String]
+        attr_accessor :family_name
+      
+        # Optional. First/given name of the first admin user.
+        # Corresponds to the JSON property `givenName`
+        # @return [String]
+        attr_accessor :given_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @family_name = args[:family_name] if args.key?(:family_name)
+          @given_name = args[:given_name] if args.key?(:given_name)
+        end
+      end
+      
       # The request message for Operations.CancelOperation.
       class CancelOperationRequest
         include Google::Apis::Core::Hashable
@@ -35,9 +60,14 @@ module Google
         end
       end
       
-      # Message describing ContactCenter object
+      # Message describing ContactCenter object Next ID: 14
       class ContactCenter
         include Google::Apis::Core::Hashable
+      
+        # Message storing info about the first admin user. Next ID: 3
+        # Corresponds to the JSON property `adminUser`
+        # @return [Google::Apis::ContactcenteraiplatformV1alpha1::AdminUser]
+        attr_accessor :admin_user
       
         # Optional. Whether to enable users to be created in the CCAIP-instance
         # concurrently to having users in Cloud identity
@@ -97,7 +127,7 @@ module Google
         # @return [Google::Apis::ContactcenteraiplatformV1alpha1::UrIs]
         attr_accessor :uris
       
-        # Optional. Email address of the first admin users.
+        # Optional. Email address of the first admin user.
         # Corresponds to the JSON property `userEmail`
         # @return [String]
         attr_accessor :user_email
@@ -108,6 +138,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @admin_user = args[:admin_user] if args.key?(:admin_user)
           @ccaip_managed_users = args[:ccaip_managed_users] if args.key?(:ccaip_managed_users)
           @create_time = args[:create_time] if args.key?(:create_time)
           @customer_domain_prefix = args[:customer_domain_prefix] if args.key?(:customer_domain_prefix)
@@ -382,7 +413,7 @@ module Google
         # @return [String]
         attr_accessor :api_version
       
-        # Message describing ContactCenter object
+        # Message describing ContactCenter object Next ID: 14
         # Corresponds to the JSON property `contactCenter`
         # @return [Google::Apis::ContactcenteraiplatformV1alpha1::ContactCenter]
         attr_accessor :contact_center
