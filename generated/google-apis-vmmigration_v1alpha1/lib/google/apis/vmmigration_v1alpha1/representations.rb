@@ -292,6 +292,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MigrationWarning
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NetworkInterface
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -973,6 +979,8 @@ module Google
       
           property :group, as: 'group'
           hash :labels, as: 'labels'
+          property :last_replication_cycle, as: 'lastReplicationCycle', class: Google::Apis::VmmigrationV1alpha1::ReplicationCycle, decorator: Google::Apis::VmmigrationV1alpha1::ReplicationCycle::Representation
+      
           property :last_sync, as: 'lastSync', class: Google::Apis::VmmigrationV1alpha1::ReplicationSync, decorator: Google::Apis::VmmigrationV1alpha1::ReplicationSync::Representation
       
           property :name, as: 'name'
@@ -1002,6 +1010,20 @@ module Google
           property :error_time, as: 'errorTime'
           collection :help_links, as: 'helpLinks', class: Google::Apis::VmmigrationV1alpha1::Link, decorator: Google::Apis::VmmigrationV1alpha1::Link::Representation
       
+        end
+      end
+      
+      class MigrationWarning
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action_item, as: 'actionItem', class: Google::Apis::VmmigrationV1alpha1::LocalizedMessage, decorator: Google::Apis::VmmigrationV1alpha1::LocalizedMessage::Representation
+      
+          property :code, as: 'code'
+          collection :help_links, as: 'helpLinks', class: Google::Apis::VmmigrationV1alpha1::Link, decorator: Google::Apis::VmmigrationV1alpha1::Link::Representation
+      
+          property :warning_message, as: 'warningMessage', class: Google::Apis::VmmigrationV1alpha1::LocalizedMessage, decorator: Google::Apis::VmmigrationV1alpha1::LocalizedMessage::Representation
+      
+          property :warning_time, as: 'warningTime'
         end
       end
       
@@ -1090,6 +1112,8 @@ module Google
           collection :steps, as: 'steps', class: Google::Apis::VmmigrationV1alpha1::CycleStep, decorator: Google::Apis::VmmigrationV1alpha1::CycleStep::Representation
       
           property :total_pause_duration, as: 'totalPauseDuration'
+          collection :warnings, as: 'warnings', class: Google::Apis::VmmigrationV1alpha1::MigrationWarning, decorator: Google::Apis::VmmigrationV1alpha1::MigrationWarning::Representation
+      
         end
       end
       
