@@ -497,6 +497,11 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # External key management systems(EKM) Provisioning response
+        # Corresponds to the JSON property `ekmProvisioningResponse`
+        # @return [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse]
+        attr_accessor :ekm_provisioning_response
+      
         # Optional. Indicates the sovereignty status of the given workload. Currently
         # meant to be used by Europe/Canada customers.
         # Corresponds to the JSON property `enableSovereignControls`
@@ -577,6 +582,7 @@ module Google
           @compliant_but_disallowed_services = args[:compliant_but_disallowed_services] if args.key?(:compliant_but_disallowed_services)
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @ekm_provisioning_response = args[:ekm_provisioning_response] if args.key?(:ekm_provisioning_response)
           @enable_sovereign_controls = args[:enable_sovereign_controls] if args.key?(:enable_sovereign_controls)
           @etag = args[:etag] if args.key?(:etag)
           @kaj_enrollment_state = args[:kaj_enrollment_state] if args.key?(:kaj_enrollment_state)
@@ -616,6 +622,37 @@ module Google
         end
       end
       
+      # External key management systems(EKM) Provisioning response
+      class GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse
+        include Google::Apis::Core::Hashable
+      
+        # Indicates Ekm provisioning error if any.
+        # Corresponds to the JSON property `ekmProvisioningErrorDomain`
+        # @return [String]
+        attr_accessor :ekm_provisioning_error_domain
+      
+        # Detailed error message if Ekm provisioning fails
+        # Corresponds to the JSON property `ekmProvisioningErrorMessage`
+        # @return [String]
+        attr_accessor :ekm_provisioning_error_message
+      
+        # Indicates Ekm enrollment Provisioning of a given workload.
+        # Corresponds to the JSON property `ekmProvisioningState`
+        # @return [String]
+        attr_accessor :ekm_provisioning_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ekm_provisioning_error_domain = args[:ekm_provisioning_error_domain] if args.key?(:ekm_provisioning_error_domain)
+          @ekm_provisioning_error_message = args[:ekm_provisioning_error_message] if args.key?(:ekm_provisioning_error_message)
+          @ekm_provisioning_state = args[:ekm_provisioning_state] if args.key?(:ekm_provisioning_state)
+        end
+      end
+      
       # Settings specific to the Key Management Service. This message is deprecated.
       # In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT
       # or KEYRING in ResourceSettings.resource_type field.
@@ -651,7 +688,7 @@ module Google
       class GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions
         include Google::Apis::Core::Hashable
       
-        # Allow partner to view data and logs
+        # Allow the partner to view inspectability logs and monitoring violations.
         # Corresponds to the JSON property `dataLogsViewer`
         # @return [Boolean]
         attr_accessor :data_logs_viewer

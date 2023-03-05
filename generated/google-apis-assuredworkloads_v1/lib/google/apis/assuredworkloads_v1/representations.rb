@@ -112,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAssuredworkloadsV1WorkloadKmsSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -300,6 +306,8 @@ module Google
           collection :compliant_but_disallowed_services, as: 'compliantButDisallowedServices'
           property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
+          property :ekm_provisioning_response, as: 'ekmProvisioningResponse', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse::Representation
+      
           property :enable_sovereign_controls, as: 'enableSovereignControls'
           property :etag, as: 'etag'
           property :kaj_enrollment_state, as: 'kajEnrollmentState'
@@ -323,6 +331,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :acknowledged_violation_count, as: 'acknowledgedViolationCount'
           property :active_violation_count, as: 'activeViolationCount'
+        end
+      end
+      
+      class GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ekm_provisioning_error_domain, as: 'ekmProvisioningErrorDomain'
+          property :ekm_provisioning_error_message, as: 'ekmProvisioningErrorMessage'
+          property :ekm_provisioning_state, as: 'ekmProvisioningState'
         end
       end
       
