@@ -6,15 +6,15 @@ Gem::Specification.new do |gem|
   gem.version = gem_version
   gem.authors = ["Google LLC"]
   gem.email = "googleapis-packages@google.com"
-  gem.summary = "Simple REST client for Cloud SQL Admin API V1"
+  gem.summary = "Simple REST client for sqladmin API (prod) V1"
   gem.description =
-      "This is the simple REST client for Cloud SQL Admin API V1." \
+      "This is the simple REST client for sqladmin API (prod) V1." \
       " Simple REST clients are Ruby client libraries that provide access to" \
       " Google services via their HTTP REST API endpoints. These libraries are" \
       " generated and updated automatically based on the discovery documents" \
       " published by the service, and they handle most concerns such as" \
       " authentication, pagination, retry, timeouts, and logging. You can use" \
-      " this client to access the Cloud SQL Admin API, but note that some" \
+      " this client to access the sqladmin API (prod), but note that some" \
       " services may provide a separate modern client that is easier to use."
   gem.homepage = "https://github.com/google/google-api-ruby-client"
   gem.license = "Apache-2.0"
