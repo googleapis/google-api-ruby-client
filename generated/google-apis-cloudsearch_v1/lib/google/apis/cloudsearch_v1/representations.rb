@@ -5728,6 +5728,7 @@ module Google
           property :common_count_to_membership_count_ratio, as: 'commonCountToMembershipCountRatio'
           property :creator_gaia_id, :numeric_string => true, as: 'creatorGaiaId'
           property :creator_in_searcher_contact_list, as: 'creatorInSearcherContactList'
+          property :crowding_multiplier, as: 'crowdingMultiplier'
           property :das_contact_count, :numeric_string => true, as: 'dasContactCount'
           property :final_score, as: 'finalScore'
           property :freshness_score, as: 'freshnessScore'
@@ -7355,7 +7356,6 @@ module Google
           property :delete_time, :numeric_string => true, as: 'deleteTime'
           property :delete_time_for_requester, :numeric_string => true, as: 'deleteTimeForRequester'
           property :deleted_by_vault, as: 'deletedByVault'
-          property :dlp_scan_outcome, as: 'dlpScanOutcome'
           property :dlp_scan_summary, as: 'dlpScanSummary', class: Google::Apis::CloudsearchV1::DlpScanSummary, decorator: Google::Apis::CloudsearchV1::DlpScanSummary::Representation
       
           property :editable_by, as: 'editableBy'

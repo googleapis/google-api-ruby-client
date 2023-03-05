@@ -7329,7 +7329,8 @@ module Google
         # scan_outcome should not be set. This flag is used to identify messages that
         # DLP did not attempt to scan for monitoring scan coverage. Contents that DLP
         # attempted to scan but skipped can be identified by DlpScanOutcome.
-        # SCAN_SKIPPED_* reasons.
+        # SCAN_SKIPPED_* reasons. DEPRECATED: The prober can determine this from the
+        # context.
         # Corresponds to the JSON property `scanNotApplicableForContext`
         # @return [Boolean]
         attr_accessor :scan_not_applicable_for_context
@@ -7781,6 +7782,11 @@ module Google
         alias_method :creator_in_searcher_contact_list?, :creator_in_searcher_contact_list
       
         # 
+        # Corresponds to the JSON property `crowdingMultiplier`
+        # @return [Float]
+        attr_accessor :crowding_multiplier
+      
+        # 
         # Corresponds to the JSON property `dasContactCount`
         # @return [Fixnum]
         attr_accessor :das_contact_count
@@ -7846,6 +7852,7 @@ module Google
           @common_count_to_membership_count_ratio = args[:common_count_to_membership_count_ratio] if args.key?(:common_count_to_membership_count_ratio)
           @creator_gaia_id = args[:creator_gaia_id] if args.key?(:creator_gaia_id)
           @creator_in_searcher_contact_list = args[:creator_in_searcher_contact_list] if args.key?(:creator_in_searcher_contact_list)
+          @crowding_multiplier = args[:crowding_multiplier] if args.key?(:crowding_multiplier)
           @das_contact_count = args[:das_contact_count] if args.key?(:das_contact_count)
           @final_score = args[:final_score] if args.key?(:final_score)
           @freshness_score = args[:freshness_score] if args.key?(:freshness_score)
@@ -13404,13 +13411,6 @@ module Google
         attr_accessor :deleted_by_vault
         alias_method :deleted_by_vault?, :deleted_by_vault
       
-        # Data Loss Prevention scan information for this message. Messages are evaluated
-        # in the backend on create message/topic and edit message actions. DEPRECATED:
-        # use dlp_scan_summary instead.
-        # Corresponds to the JSON property `dlpScanOutcome`
-        # @return [String]
-        attr_accessor :dlp_scan_outcome
-      
         # A summary of a DLP scan event. This is a summary and should contain the
         # minimum amount of data required to identify and process DLP scans. It is
         # written to Starcast and encoded & returned to the client on attachment upload.
@@ -13617,7 +13617,6 @@ module Google
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @delete_time_for_requester = args[:delete_time_for_requester] if args.key?(:delete_time_for_requester)
           @deleted_by_vault = args[:deleted_by_vault] if args.key?(:deleted_by_vault)
-          @dlp_scan_outcome = args[:dlp_scan_outcome] if args.key?(:dlp_scan_outcome)
           @dlp_scan_summary = args[:dlp_scan_summary] if args.key?(:dlp_scan_summary)
           @editable_by = args[:editable_by] if args.key?(:editable_by)
           @fallback_text = args[:fallback_text] if args.key?(:fallback_text)
