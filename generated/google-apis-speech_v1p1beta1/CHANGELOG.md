@@ -1,5 +1,9 @@
 # Release history for google-apis-speech_v1p1beta1
 
+### v0.34.0 (2023-03-05)
+
+* Regenerated from discovery document revision 20230228
+
 ### v0.33.0 (2023-02-15)
 
 * Regenerated using generator version 0.12.0
