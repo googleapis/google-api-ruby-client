@@ -807,8 +807,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified autoscaler resource. Gets a list of available
-        # autoscalers by making a list() request.
+        # Returns the specified autoscaler resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -1247,8 +1246,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified BackendBucket resource. Gets a list of available backend
-        # buckets by making a list() request.
+        # Returns the specified BackendBucket resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] backend_bucket
@@ -1822,8 +1820,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified BackendService resource. Gets a list of available
-        # backend services.
+        # Returns the specified BackendService resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] backend_service
@@ -2419,8 +2416,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified disk type. Gets a list of available disk types by making
-        # a list() request.
+        # Returns the specified disk type.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -2812,8 +2808,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns a specified persistent disk. Gets a list of available persistent disks
-        # by making a list() request.
+        # Returns the specified persistent disk.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -4080,7 +4075,9 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
         #   by a previous list request to get the next page of results.
         # @param [String] parent_id
-        #   Parent ID for this request.
+        #   Parent ID for this request. The ID can be either be "folders/[FOLDER_ID]" if
+        #   the parent is a folder or "organizations/[ORGANIZATION_ID]" if the parent is
+        #   an organization.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
@@ -4156,7 +4153,9 @@ module Google
         # @param [String] firewall_policy
         #   Name of the firewall policy to update.
         # @param [String] parent_id
-        #   The new parent of the firewall policy.
+        #   The new parent of the firewall policy. The ID can be either be "folders/[
+        #   FOLDER_ID]" if the parent is a folder or "organizations/[ORGANIZATION_ID]" if
+        #   the parent is an organization.
         # @param [String] request_id
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
@@ -5324,8 +5323,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified address resource. Gets a list of available addresses by
-        # making a list() request.
+        # Returns the specified address resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] address
@@ -6052,8 +6050,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified network endpoint group. Gets a list of available network
-        # endpoint groups by making a list() request.
+        # Returns the specified network endpoint group.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] network_endpoint_group
@@ -7192,8 +7189,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified HealthCheck resource. Gets a list of available health
-        # checks by making a list() request.
+        # Returns the specified HealthCheck resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] health_check
@@ -7515,8 +7511,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified HttpHealthCheck resource. Gets a list of available HTTP
-        # health checks by making a list() request.
+        # Returns the specified HttpHealthCheck resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] http_health_check
@@ -7839,8 +7834,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified HttpsHealthCheck resource. Gets a list of available
-        # HTTPS health checks by making a list() request.
+        # Returns the specified HttpsHealthCheck resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] https_health_check
@@ -8254,8 +8248,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified image. Gets a list of available images by making a list()
-        # request.
+        # Returns the specified image.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] image
@@ -9104,8 +9097,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns all of the details about the specified managed instance group. Gets a
-        # list of available managed instance groups by making a list() request.
+        # Returns all of the details about the specified managed instance group.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -10749,8 +10741,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified instance template. Gets a list of available instance
-        # templates by making a list() request.
+        # Returns the specified instance template.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] instance_template
@@ -11526,8 +11517,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified Instance resource. Gets a list of available instances by
-        # making a list() request.
+        # Returns the specified Instance resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -14963,8 +14953,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified machine image. Gets a list of available machine images
-        # by making a list() request.
+        # Returns the specified machine image.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] machine_image
@@ -15357,8 +15346,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified machine type. Gets a list of available machine types by
-        # making a list() request.
+        # Returns the specified machine type.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -16505,8 +16493,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified network endpoint group. Gets a list of available network
-        # endpoint groups by making a list() request.
+        # Returns the specified network endpoint group.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -17711,8 +17698,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified network. Gets a list of available networks by making a
-        # list() request.
+        # Returns the specified network.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] network
@@ -19135,8 +19121,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified node template. Gets a list of available node templates
-        # by making a list() request.
+        # Returns the specified node template.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -19541,8 +19526,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified node type. Gets a list of available node types by making
-        # a list() request.
+        # Returns the specified node type.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -22339,8 +22323,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified commitment resource. Gets a list of available
-        # commitments by making a list() request.
+        # Returns the specified commitment resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -22581,8 +22564,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified regional disk type. Gets a list of available disk types
-        # by making a list() request.
+        # Returns the specified regional disk type.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -23746,8 +23728,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified HealthCheck resource. Gets a list of available health
-        # checks by making a list() request.
+        # Returns the specified HealthCheck resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -25573,8 +25554,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified instance template. Gets a list of available instance
-        # templates by making a list() request.
+        # Returns the specified instance template.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -25860,8 +25840,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified network endpoint group. Gets a list of available network
-        # endpoint groups by making a list() request.
+        # Returns the specified network endpoint group.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -28316,8 +28295,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified TargetHttpProxy resource in the specified region. Gets a
-        # list of available target HTTP proxies by making a list() request.
+        # Returns the specified TargetHttpProxy resource in the specified region.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -28602,8 +28580,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified TargetHttpsProxy resource in the specified region. Gets
-        # a list of available target HTTP proxies by making a list() request.
+        # Returns the specified TargetHttpsProxy resource in the specified region.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -29220,8 +29197,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified UrlMap resource. Gets a list of available URL maps by
-        # making a list() request.
+        # Returns the specified UrlMap resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -29530,14 +29506,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified Region resource. Gets a list of available regions by
-        # making a list() request. To decrease latency for this method, you can
-        # optionally omit any unneeded information from the response by using a field
-        # mask. This practice is especially recommended for unused quota information (
-        # the `quotas` field). To exclude one or more fields, set your request's `fields`
-        # query parameter to only include the fields you need. For example, to only
-        # include the `id` and `selfLink` fields, add the query parameter `?fields=id,
-        # selfLink` to your request.
+        # Returns the specified Region resource. To decrease latency for this method,
+        # you can optionally omit any unneeded information from the response by using a
+        # field mask. This practice is especially recommended for unused quota
+        # information (the `quotas` field). To exclude one or more fields, set your
+        # request's `fields` query parameter to only include the fields you need. For
+        # example, to only include the `id` and `selfLink` fields, add the query
+        # parameter `?fields=id,selfLink` to your request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -30837,8 +30812,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified Router resource. Gets a list of available routers by
-        # making a list() request.
+        # Returns the specified Router resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -31354,8 +31328,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified Route resource. Gets a list of available routes by
-        # making a list() request.
+        # Returns the specified Route resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] route
@@ -32756,8 +32729,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified Snapshot resource. Gets a list of available snapshots by
-        # making a list() request.
+        # Returns the specified Snapshot resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] snapshot
@@ -33235,8 +33207,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified SslCertificate resource. Gets a list of available SSL
-        # certificates by making a list() request.
+        # Returns the specified SslCertificate resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] ssl_certificate
@@ -33592,8 +33563,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified SSL policy resource. Gets a list of available SSL
-        # policies by making a list() request.
+        # Returns the specified SSL policy resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeV1::SslPolicy] ssl_policy_object
@@ -34067,8 +34037,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified subnetwork. Gets a list of available subnetworks list()
-        # request.
+        # Returns the specified subnetwork.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -34999,8 +34968,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified TargetHttpProxy resource. Gets a list of available
-        # target HTTP proxies by making a list() request.
+        # Returns the specified TargetHttpProxy resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] target_http_proxy
@@ -35419,8 +35387,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified TargetHttpsProxy resource. Gets a list of available
-        # target HTTPS proxies by making a list() request.
+        # Returns the specified TargetHttpsProxy resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] target_https_proxy
@@ -36047,8 +36014,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified TargetInstance resource. Gets a list of available target
-        # instances by making a list() request.
+        # Returns the specified TargetInstance resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -36482,8 +36448,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified target pool. Gets a list of available target pools by
-        # making a list() request.
+        # Returns the specified target pool.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -36916,8 +36881,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified TargetSslProxy resource. Gets a list of available target
-        # SSL proxies by making a list() request.
+        # Returns the specified TargetSslProxy resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] target_ssl_proxy
@@ -37489,8 +37453,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified TargetTcpProxy resource. Gets a list of available target
-        # TCP proxies by making a list() request.
+        # Returns the specified TargetTcpProxy resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] target_tcp_proxy
@@ -37909,8 +37872,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified target VPN gateway. Gets a list of available target VPN
-        # gateways by making a list() request.
+        # Returns the specified target VPN gateway.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -38290,8 +38252,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified UrlMap resource. Gets a list of available URL maps by
-        # making a list() request.
+        # Returns the specified UrlMap resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] url_map
@@ -38803,8 +38764,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified VPN gateway. Gets a list of available VPN gateways by
-        # making a list() request.
+        # Returns the specified VPN gateway.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -39266,8 +39226,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified VpnTunnel resource. Gets a list of available VPN tunnels
-        # by making a list() request.
+        # Returns the specified VpnTunnel resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -39718,8 +39677,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified Zone resource. Gets a list of available zones by making
-        # a list() request.
+        # Returns the specified Zone resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
