@@ -467,7 +467,7 @@ module Google
         # The first IPv6 address of the external IPv6 range associated with this
         # instance, prefix length is stored in externalIpv6PrefixLength in
         # ipv6AccessConfig. To use a static external IP address, it must be unused and
-        # in the same region as the instance's zone. If not specified, GCP will
+        # in the same region as the instance's zone. If not specified, Google Cloud will
         # automatically assign an external IPv6 address from the instance's subnetwork.
         # Corresponds to the JSON property `externalIpv6`
         # @return [String]
@@ -8759,6 +8759,15 @@ module Google
         # @return [String]
         attr_accessor :backend_service
       
+        # [Output Only] The URL for the corresponding base Forwarding Rule. By base
+        # Forwarding Rule, we mean the Forwarding Rule that has the same IP address,
+        # protocol, and port settings with the current Forwarding Rule, but without
+        # sourceIPRanges specified. Always empty if the current Forwarding Rule does not
+        # have sourceIPRanges specified.
+        # Corresponds to the JSON property `baseForwardingRule`
+        # @return [String]
+        attr_accessor :base_forwarding_rule
+      
         # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
         # @return [String]
@@ -8973,6 +8982,16 @@ module Google
         # @return [String]
         attr_accessor :service_name
       
+        # If not empty, this Forwarding Rule will only forward the traffic when the
+        # source IP address matches one of the IP addresses or CIDR ranges set here.
+        # Note that a Forwarding Rule can only have up to 64 source IP ranges, and this
+        # field can only be used with a regional Forwarding Rule whose scheme is
+        # EXTERNAL. Each source_ip_range entry should be either an IP address (for
+        # example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
+        # Corresponds to the JSON property `sourceIpRanges`
+        # @return [Array<String>]
+        attr_accessor :source_ip_ranges
+      
         # This field identifies the subnetwork that the load balanced IP should belong
         # to for this Forwarding Rule, used in internal load balancing and network load
         # balancing with IPv6. If the network specified is in auto subnet mode, this
@@ -9008,6 +9027,7 @@ module Google
           @all_ports = args[:all_ports] if args.key?(:all_ports)
           @allow_global_access = args[:allow_global_access] if args.key?(:allow_global_access)
           @backend_service = args[:backend_service] if args.key?(:backend_service)
+          @base_forwarding_rule = args[:base_forwarding_rule] if args.key?(:base_forwarding_rule)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
@@ -9032,6 +9052,7 @@ module Google
           @service_directory_registrations = args[:service_directory_registrations] if args.key?(:service_directory_registrations)
           @service_label = args[:service_label] if args.key?(:service_label)
           @service_name = args[:service_name] if args.key?(:service_name)
+          @source_ip_ranges = args[:source_ip_ranges] if args.key?(:source_ip_ranges)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
           @target = args[:target] if args.key?(:target)
         end
@@ -16730,9 +16751,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :requested_link_count
       
-        # [Output Only] Set to true if the resource satisfies the zone separation
-        # organization policy constraints and false otherwise. Defaults to false if the
-        # field is not present.
+        # [Output Only] Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzs`
         # @return [Boolean]
         attr_accessor :satisfies_pzs
@@ -17016,9 +17035,7 @@ module Google
         # @return [String]
         attr_accessor :router
       
-        # [Output Only] Set to true if the resource satisfies the zone separation
-        # organization policy constraints and false otherwise. Defaults to false if the
-        # field is not present.
+        # [Output Only] Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzs`
         # @return [Boolean]
         attr_accessor :satisfies_pzs
@@ -17953,8 +17970,7 @@ module Google
         # @return [String]
         attr_accessor :status
       
-        # [Output Only] Set to true for locations that support physical zone separation.
-        # Defaults to false if the field is not present.
+        # [Output Only] Reserved for future use.
         # Corresponds to the JSON property `supportsPzs`
         # @return [Boolean]
         attr_accessor :supports_pzs
@@ -21940,8 +21956,8 @@ module Google
       
         # An IPv6 internal network address for this network interface. To use a static
         # internal IP address, it must be unused and in the same region as the instance'
-        # s zone. If not specified, GCP will automatically assign an internal IPv6
-        # address from the instance's subnetwork.
+        # s zone. If not specified, Google Cloud will automatically assign an internal
+        # IPv6 address from the instance's subnetwork.
         # Corresponds to the JSON property `ipv6Address`
         # @return [String]
         attr_accessor :ipv6_address
@@ -23335,10 +23351,7 @@ module Google
         # @return [String]
         attr_accessor :node_type
       
-        # The flexible properties of the desired node type. Node groups that use this
-        # node template will create nodes of a type that matches these properties. This
-        # field is mutually exclusive with the node_type property; you can only define
-        # one or the other, but not both.
+        # Do not use. Instead, use the node_type property.
         # Corresponds to the JSON property `nodeTypeFlexibility`
         # @return [Google::Apis::ComputeV1::NodeTemplateNodeTypeFlexibility]
         attr_accessor :node_type_flexibility
@@ -29984,7 +29997,7 @@ module Google
         attr_accessor :start_time
       
         # Specifies the time zone to be used in interpreting Schedule.schedule. The
-        # value of this field must be a time zone name from the tz database: http://en.
+        # value of this field must be a time zone name from the tz database: https://
         # wikipedia.org/wiki/Tz_database.
         # Corresponds to the JSON property `timeZone`
         # @return [String]
@@ -31121,10 +31134,10 @@ module Google
         # @return [String]
         attr_accessor :advertise_mode
       
-        # User-specified list of prefix groups to advertise in custom mode, which can
-        # take one of the following options: - ALL_SUBNETS: Advertises all available
-        # subnets, including peer VPC subnets. - ALL_VPC_SUBNETS: Advertises the router'
-        # s own VPC subnets. Note that this field can only be populated if
+        # User-specified list of prefix groups to advertise in custom mode, which
+        # currently supports the following option: - ALL_SUBNETS: Advertises all of the
+        # router's own VPC subnets. This excludes any routes learned for subnets that
+        # use VPC Network Peering. Note that this field can only be populated if
         # advertise_mode is CUSTOM and overrides the list defined for the router (in the
         # "bgp" message). These groups are advertised in addition to any specified
         # prefixes. Leave this field blank to advertise no custom groups.
@@ -33452,6 +33465,13 @@ module Google
         # @return [Google::Apis::ComputeV1::SecurityPolicyRuleMatcher]
         attr_accessor :match
       
+        # Preconfigured WAF configuration to be applied for the rule. If the rule does
+        # not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is
+        # not used, this field will have no effect.
+        # Corresponds to the JSON property `preconfiguredWafConfig`
+        # @return [Google::Apis::ComputeV1::SecurityPolicyRulePreconfiguredWafConfig]
+        attr_accessor :preconfigured_waf_config
+      
         # If set to true, the specified action is not enforced.
         # Corresponds to the JSON property `preview`
         # @return [Boolean]
@@ -33489,6 +33509,7 @@ module Google
           @header_action = args[:header_action] if args.key?(:header_action)
           @kind = args[:kind] if args.key?(:kind)
           @match = args[:match] if args.key?(:match)
+          @preconfigured_waf_config = args[:preconfigured_waf_config] if args.key?(:preconfigured_waf_config)
           @preview = args[:preview] if args.key?(:preview)
           @priority = args[:priority] if args.key?(:priority)
           @rate_limit_options = args[:rate_limit_options] if args.key?(:rate_limit_options)
@@ -33607,6 +33628,107 @@ module Google
         # Update properties of this object
         def update!(**args)
           @src_ip_ranges = args[:src_ip_ranges] if args.key?(:src_ip_ranges)
+        end
+      end
+      
+      # 
+      class SecurityPolicyRulePreconfiguredWafConfig
+        include Google::Apis::Core::Hashable
+      
+        # A list of exclusions to apply during preconfigured WAF evaluation.
+        # Corresponds to the JSON property `exclusions`
+        # @return [Array<Google::Apis::ComputeV1::SecurityPolicyRulePreconfiguredWafConfigExclusion>]
+        attr_accessor :exclusions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exclusions = args[:exclusions] if args.key?(:exclusions)
+        end
+      end
+      
+      # 
+      class SecurityPolicyRulePreconfiguredWafConfigExclusion
+        include Google::Apis::Core::Hashable
+      
+        # A list of request cookie names whose value will be excluded from inspection
+        # during preconfigured WAF evaluation.
+        # Corresponds to the JSON property `requestCookiesToExclude`
+        # @return [Array<Google::Apis::ComputeV1::SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams>]
+        attr_accessor :request_cookies_to_exclude
+      
+        # A list of request header names whose value will be excluded from inspection
+        # during preconfigured WAF evaluation.
+        # Corresponds to the JSON property `requestHeadersToExclude`
+        # @return [Array<Google::Apis::ComputeV1::SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams>]
+        attr_accessor :request_headers_to_exclude
+      
+        # A list of request query parameter names whose value will be excluded from
+        # inspection during preconfigured WAF evaluation. Note that the parameter can be
+        # in the query string or in the POST body.
+        # Corresponds to the JSON property `requestQueryParamsToExclude`
+        # @return [Array<Google::Apis::ComputeV1::SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams>]
+        attr_accessor :request_query_params_to_exclude
+      
+        # A list of request URIs from the request line to be excluded from inspection
+        # during preconfigured WAF evaluation. When specifying this field, the query or
+        # fragment part should be excluded.
+        # Corresponds to the JSON property `requestUrisToExclude`
+        # @return [Array<Google::Apis::ComputeV1::SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams>]
+        attr_accessor :request_uris_to_exclude
+      
+        # A list of target rule IDs under the WAF rule set to apply the preconfigured
+        # WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule
+        # set.
+        # Corresponds to the JSON property `targetRuleIds`
+        # @return [Array<String>]
+        attr_accessor :target_rule_ids
+      
+        # Target WAF rule set to apply the preconfigured WAF exclusion.
+        # Corresponds to the JSON property `targetRuleSet`
+        # @return [String]
+        attr_accessor :target_rule_set
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @request_cookies_to_exclude = args[:request_cookies_to_exclude] if args.key?(:request_cookies_to_exclude)
+          @request_headers_to_exclude = args[:request_headers_to_exclude] if args.key?(:request_headers_to_exclude)
+          @request_query_params_to_exclude = args[:request_query_params_to_exclude] if args.key?(:request_query_params_to_exclude)
+          @request_uris_to_exclude = args[:request_uris_to_exclude] if args.key?(:request_uris_to_exclude)
+          @target_rule_ids = args[:target_rule_ids] if args.key?(:target_rule_ids)
+          @target_rule_set = args[:target_rule_set] if args.key?(:target_rule_set)
+        end
+      end
+      
+      # 
+      class SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams
+        include Google::Apis::Core::Hashable
+      
+        # The match operator for the field.
+        # Corresponds to the JSON property `op`
+        # @return [String]
+        attr_accessor :op
+      
+        # The value of the field.
+        # Corresponds to the JSON property `val`
+        # @return [String]
+        attr_accessor :val
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @op = args[:op] if args.key?(:op)
+          @val = args[:val] if args.key?(:val)
         end
       end
       

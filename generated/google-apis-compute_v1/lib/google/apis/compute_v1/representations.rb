@@ -4384,6 +4384,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SecurityPolicyRulePreconfiguredWafConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityPolicyRulePreconfiguredWafConfigExclusion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SecurityPolicyRuleRateLimitOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -7752,6 +7770,7 @@ module Google
           property :all_ports, as: 'allPorts'
           property :allow_global_access, as: 'allowGlobalAccess'
           property :backend_service, as: 'backendService'
+          property :base_forwarding_rule, as: 'baseForwardingRule'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :fingerprint, :base64 => true, as: 'fingerprint'
@@ -7778,6 +7797,7 @@ module Google
       
           property :service_label, as: 'serviceLabel'
           property :service_name, as: 'serviceName'
+          collection :source_ip_ranges, as: 'sourceIpRanges'
           property :subnetwork, as: 'subnetwork'
           property :target, as: 'target'
         end
@@ -13939,6 +13959,8 @@ module Google
           property :kind, as: 'kind'
           property :match, as: 'match', class: Google::Apis::ComputeV1::SecurityPolicyRuleMatcher, decorator: Google::Apis::ComputeV1::SecurityPolicyRuleMatcher::Representation
       
+          property :preconfigured_waf_config, as: 'preconfiguredWafConfig', class: Google::Apis::ComputeV1::SecurityPolicyRulePreconfiguredWafConfig, decorator: Google::Apis::ComputeV1::SecurityPolicyRulePreconfiguredWafConfig::Representation
+      
           property :preview, as: 'preview'
           property :priority, as: 'priority'
           property :rate_limit_options, as: 'rateLimitOptions', class: Google::Apis::ComputeV1::SecurityPolicyRuleRateLimitOptions, decorator: Google::Apis::ComputeV1::SecurityPolicyRuleRateLimitOptions::Representation
@@ -13979,6 +14001,38 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :src_ip_ranges, as: 'srcIpRanges'
+        end
+      end
+      
+      class SecurityPolicyRulePreconfiguredWafConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :exclusions, as: 'exclusions', class: Google::Apis::ComputeV1::SecurityPolicyRulePreconfiguredWafConfigExclusion, decorator: Google::Apis::ComputeV1::SecurityPolicyRulePreconfiguredWafConfigExclusion::Representation
+      
+        end
+      end
+      
+      class SecurityPolicyRulePreconfiguredWafConfigExclusion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :request_cookies_to_exclude, as: 'requestCookiesToExclude', class: Google::Apis::ComputeV1::SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams, decorator: Google::Apis::ComputeV1::SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams::Representation
+      
+          collection :request_headers_to_exclude, as: 'requestHeadersToExclude', class: Google::Apis::ComputeV1::SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams, decorator: Google::Apis::ComputeV1::SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams::Representation
+      
+          collection :request_query_params_to_exclude, as: 'requestQueryParamsToExclude', class: Google::Apis::ComputeV1::SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams, decorator: Google::Apis::ComputeV1::SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams::Representation
+      
+          collection :request_uris_to_exclude, as: 'requestUrisToExclude', class: Google::Apis::ComputeV1::SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams, decorator: Google::Apis::ComputeV1::SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams::Representation
+      
+          collection :target_rule_ids, as: 'targetRuleIds'
+          property :target_rule_set, as: 'targetRuleSet'
+        end
+      end
+      
+      class SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :op, as: 'op'
+          property :val, as: 'val'
         end
       end
       
