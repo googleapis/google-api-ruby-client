@@ -106,14 +106,14 @@ module Google
         # @return [Google::Apis::TranslateV3::BatchDocumentOutputConfig]
         attr_accessor :output_config
       
-        # Required. The BCP-47 language code of the input document if known, for example,
-        # "en-US" or "sr-Latn". Supported language codes are listed in [Language
-        # Support](https://cloud.google.com/translate/docs/languages).
+        # Required. The ISO-639 language code of the input document if known, for
+        # example, "en-US" or "sr-Latn". Supported language codes are listed in [
+        # Language Support](https://cloud.google.com/translate/docs/languages).
         # Corresponds to the JSON property `sourceLanguageCode`
         # @return [String]
         attr_accessor :source_language_code
       
-        # Required. The BCP-47 language code to use for translation of the input
+        # Required. The ISO-639 language code to use for translation of the input
         # document. Specify up to 10 language codes here.
         # Corresponds to the JSON property `targetLanguageCodes`
         # @return [Array<String>]
@@ -409,7 +409,7 @@ module Google
         # @return [Float]
         attr_accessor :confidence
       
-        # The BCP-47 language code of the source content in the request, detected
+        # The ISO-639 language code of the source content in the request, detected
         # automatically.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
@@ -956,14 +956,14 @@ module Google
       class LanguageCodePair
         include Google::Apis::Core::Hashable
       
-        # Required. The BCP-47 language code of the input text, for example, "en-US".
+        # Required. The ISO-639 language code of the input text, for example, "en-US".
         # Expected to be an exact match for GlossaryTerm.language_code.
         # Corresponds to the JSON property `sourceLanguageCode`
         # @return [String]
         attr_accessor :source_language_code
       
-        # Required. The BCP-47 language code for translation output, for example, "zh-CN"
-        # . Expected to be an exact match for GlossaryTerm.language_code.
+        # Required. The ISO-639 language code for translation output, for example, "zh-
+        # CN". Expected to be an exact match for GlossaryTerm.language_code.
         # Corresponds to the JSON property `targetLanguageCode`
         # @return [String]
         attr_accessor :target_language_code
@@ -983,9 +983,9 @@ module Google
       class LanguageCodesSet
         include Google::Apis::Core::Hashable
       
-        # The BCP-47 language code(s) for terms defined in the glossary. All entries are
-        # unique. The list contains at least two entries. Expected to be an exact match
-        # for GlossaryTerm.language_code.
+        # The ISO-639 language code(s) for terms defined in the glossary. All entries
+        # are unique. The list contains at least two entries. Expected to be an exact
+        # match for GlossaryTerm.language_code.
         # Corresponds to the JSON property `languageCodes`
         # @return [Array<String>]
         attr_accessor :language_codes
@@ -1445,7 +1445,7 @@ module Google
         attr_accessor :display_name
       
         # Supported language code, generally consisting of its ISO 639-1 identifier, for
-        # example, 'en', 'ja'. In certain cases, BCP-47 codes including language and
+        # example, 'en', 'ja'. In certain cases, ISO-639 codes including language and
         # region identifiers are returned (for example, 'zh-TW' and 'zh-CN').
         # Corresponds to the JSON property `languageCode`
         # @return [String]
@@ -1559,17 +1559,17 @@ module Google
         # @return [String]
         attr_accessor :model
       
-        # Optional. The BCP-47 language code of the input document if known, for example,
-        # "en-US" or "sr-Latn". Supported language codes are listed in Language Support.
-        # If the source language isn't specified, the API attempts to identify the
-        # source language automatically and returns the source language within the
+        # Optional. The ISO-639 language code of the input document if known, for
+        # example, "en-US" or "sr-Latn". Supported language codes are listed in Language
+        # Support. If the source language isn't specified, the API attempts to identify
+        # the source language automatically and returns the source language within the
         # response. Source language must be specified if the request contains a glossary
         # or a custom model.
         # Corresponds to the JSON property `sourceLanguageCode`
         # @return [String]
         attr_accessor :source_language_code
       
-        # Required. The BCP-47 language code to use for translation of the input
+        # Required. The ISO-639 language code to use for translation of the input
         # document, set to one of the language codes listed in Language Support.
         # Corresponds to the JSON property `targetLanguageCode`
         # @return [String]
@@ -1710,7 +1710,7 @@ module Google
         # @return [String]
         attr_accessor :model
       
-        # Optional. The BCP-47 language code of the input text if known, for example, "
+        # Optional. The ISO-639 language code of the input text if known, for example, "
         # en-US" or "sr-Latn". Supported language codes are listed in Language Support.
         # If the source language isn't specified, the API attempts to identify the
         # source language automatically and returns the source language within the
@@ -1719,7 +1719,7 @@ module Google
         # @return [String]
         attr_accessor :source_language_code
       
-        # Required. The BCP-47 language code to use for translation of the input text,
+        # Required. The ISO-639 language code to use for translation of the input text,
         # set to one of the language codes listed in Language Support.
         # Corresponds to the JSON property `targetLanguageCode`
         # @return [String]
@@ -1773,7 +1773,7 @@ module Google
       class Translation
         include Google::Apis::Core::Hashable
       
-        # The BCP-47 language code of source text in the initial request, detected
+        # The ISO-639 language code of source text in the initial request, detected
         # automatically, if no source language was passed within the initial request. If
         # the source language was passed, auto-detection of the language does not occur
         # and this field is empty.
