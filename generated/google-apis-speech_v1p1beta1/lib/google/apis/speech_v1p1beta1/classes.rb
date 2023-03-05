@@ -678,7 +678,7 @@ module Google
         alias_method :enable_separate_recognition_per_channel?, :enable_separate_recognition_per_channel
       
         # If 'true', enables speaker detection for each recognized word in the top
-        # alternative of the recognition result using a speaker_tag provided in the
+        # alternative of the recognition result using a speaker_label provided in the
         # WordInfo. Note: Use diarization_config instead.
         # Corresponds to the JSON property `enableSpeakerDiarization`
         # @return [Boolean]
@@ -994,7 +994,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # If 'true', enables speaker detection for each recognized word in the top
-        # alternative of the recognition result using a speaker_tag provided in the
+        # alternative of the recognition result using a speaker_label provided in the
         # WordInfo.
         # Corresponds to the JSON property `enableSpeakerDiarization`
         # @return [Boolean]
@@ -1339,11 +1339,21 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
+        # Output only. A label value assigned for every unique speaker within the audio.
+        # This field specifies which speaker was detected to have spoken this word. For
+        # some models, like medical_conversation this can be actual speaker role, for
+        # example "patient" or "provider", but generally this would be a number
+        # identifying a speaker. This field is only set if enable_speaker_diarization = '
+        # true' and only for the top alternative.
+        # Corresponds to the JSON property `speakerLabel`
+        # @return [String]
+        attr_accessor :speaker_label
+      
         # Output only. A distinct integer value is assigned for every speaker within the
         # audio. This field specifies which one of those speakers was detected to have
         # spoken this word. Value ranges from '1' to diarization_speaker_count.
-        # speaker_tag is set if enable_speaker_diarization = 'true' and only in the top
-        # alternative.
+        # speaker_tag is set if enable_speaker_diarization = 'true' and only for the top
+        # alternative. Note: Use speaker_label instead.
         # Corresponds to the JSON property `speakerTag`
         # @return [Fixnum]
         attr_accessor :speaker_tag
@@ -1369,6 +1379,7 @@ module Google
         def update!(**args)
           @confidence = args[:confidence] if args.key?(:confidence)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @speaker_label = args[:speaker_label] if args.key?(:speaker_label)
           @speaker_tag = args[:speaker_tag] if args.key?(:speaker_tag)
           @start_time = args[:start_time] if args.key?(:start_time)
           @word = args[:word] if args.key?(:word)
