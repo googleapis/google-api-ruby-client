@@ -556,6 +556,8 @@ module Google
       class SasPortalProvisionDeploymentRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :new_deployment_display_name, as: 'newDeploymentDisplayName'
+          property :new_organization_display_name, as: 'newOrganizationDisplayName'
         end
       end
       
