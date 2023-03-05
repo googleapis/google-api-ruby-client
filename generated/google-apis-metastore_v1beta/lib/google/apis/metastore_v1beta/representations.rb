@@ -304,6 +304,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ScalingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Secret
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -784,6 +790,14 @@ module Google
         end
       end
       
+      class ScalingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_size, as: 'instanceSize'
+          property :scaling_factor, as: 'scalingFactor'
+        end
+      end
+      
       class Secret
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -815,6 +829,8 @@ module Google
       
           property :port, as: 'port'
           property :release_channel, as: 'releaseChannel'
+          property :scaling_config, as: 'scalingConfig', class: Google::Apis::MetastoreV1beta::ScalingConfig, decorator: Google::Apis::MetastoreV1beta::ScalingConfig::Representation
+      
           property :state, as: 'state'
           property :state_message, as: 'stateMessage'
           property :telemetry_config, as: 'telemetryConfig', class: Google::Apis::MetastoreV1beta::TelemetryConfig, decorator: Google::Apis::MetastoreV1beta::TelemetryConfig::Representation
