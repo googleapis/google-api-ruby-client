@@ -3582,6 +3582,12 @@ module Google
         # @return [String]
         attr_accessor :organization
       
+        # Optional link to proto reference documentation. Example: https://cloud.google.
+        # com/pubsub/lite/docs/reference/rpc
+        # Corresponds to the JSON property `protoReferenceDocumentationUri`
+        # @return [String]
+        attr_accessor :proto_reference_documentation_uri
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3597,6 +3603,7 @@ module Google
           @method_settings = args[:method_settings] if args.key?(:method_settings)
           @new_issue_uri = args[:new_issue_uri] if args.key?(:new_issue_uri)
           @organization = args[:organization] if args.key?(:organization)
+          @proto_reference_documentation_uri = args[:proto_reference_documentation_uri] if args.key?(:proto_reference_documentation_uri)
         end
       end
       
