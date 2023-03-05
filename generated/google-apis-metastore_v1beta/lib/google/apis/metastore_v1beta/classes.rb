@@ -1683,6 +1683,33 @@ module Google
         end
       end
       
+      # Represents the scaling configuration of a metastore service.
+      class ScalingConfig
+        include Google::Apis::Core::Hashable
+      
+        # An enum of readable instance sizes, with each instance size mapping to a float
+        # value (e.g. InstanceSize.EXTRA_SMALL = scaling_factor(0.1))
+        # Corresponds to the JSON property `instanceSize`
+        # @return [String]
+        attr_accessor :instance_size
+      
+        # Scaling factor, increments of 0.1 for values less than 1.0, and increments of
+        # 1.0 for values greater than 1.0.
+        # Corresponds to the JSON property `scalingFactor`
+        # @return [Float]
+        attr_accessor :scaling_factor
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance_size = args[:instance_size] if args.key?(:instance_size)
+          @scaling_factor = args[:scaling_factor] if args.key?(:scaling_factor)
+        end
+      end
+      
       # A securely stored value.
       class Secret
         include Google::Apis::Core::Hashable
@@ -1791,6 +1818,11 @@ module Google
         # @return [String]
         attr_accessor :release_channel
       
+        # Represents the scaling configuration of a metastore service.
+        # Corresponds to the JSON property `scalingConfig`
+        # @return [Google::Apis::MetastoreV1beta::ScalingConfig]
+        attr_accessor :scaling_config
+      
         # Output only. The current state of the metastore service.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -1843,6 +1875,7 @@ module Google
           @network_config = args[:network_config] if args.key?(:network_config)
           @port = args[:port] if args.key?(:port)
           @release_channel = args[:release_channel] if args.key?(:release_channel)
+          @scaling_config = args[:scaling_config] if args.key?(:scaling_config)
           @state = args[:state] if args.key?(:state)
           @state_message = args[:state_message] if args.key?(:state_message)
           @telemetry_config = args[:telemetry_config] if args.key?(:telemetry_config)
