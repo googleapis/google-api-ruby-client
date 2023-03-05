@@ -519,7 +519,7 @@ module Google
         # The first IPv6 address of the external IPv6 range associated with this
         # instance, prefix length is stored in externalIpv6PrefixLength in
         # ipv6AccessConfig. To use a static external IP address, it must be unused and
-        # in the same region as the instance's zone. If not specified, GCP will
+        # in the same region as the instance's zone. If not specified, Google Cloud will
         # automatically assign an external IPv6 address from the instance's subnetwork.
         # Corresponds to the JSON property `externalIpv6`
         # @return [String]
@@ -15363,9 +15363,7 @@ module Google
         # @return [Google::Apis::ComputeAlpha::Tags]
         attr_accessor :tags
       
-        # Upcoming Maintenance notification information. TODO(b/242069500) Deprecate
-        # this proto once it's fully migrated to be under proto ResourceStatus.
-        # UpcomingMaintenance.
+        # Upcoming Maintenance notification information.
         # Corresponds to the JSON property `upcomingMaintenance`
         # @return [Google::Apis::ComputeAlpha::UpcomingMaintenance]
         attr_accessor :upcoming_maintenance
@@ -19026,6 +19024,51 @@ module Google
         end
       end
       
+      # Represents a Instance Settings resource. You can use instance settings to
+      # configure default settings for Compute Engine VM instances. For example, you
+      # can use it to configure default machine type of Compute Engine VM instances.
+      class InstanceSettings
+        include Google::Apis::Core::Hashable
+      
+        # Email address of the service account.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        # [Output Only] Type of the resource. Always compute#instance_settings for
+        # instance settings.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Partial URL of the machine type resource to use for this instance, in the
+        # format: machineTypes/machine-type. This is either provided by the client or
+        # chosen by the system. For example, the following is a valid partial url to a
+        # predefined machine type: machineTypes/n2-standard-1
+        # Corresponds to the JSON property `machineType`
+        # @return [String]
+        attr_accessor :machine_type
+      
+        # [Output Only] URL of the zone where the resource resides You must specify this
+        # field as part of the HTTP request URL. It is not settable as a field in the
+        # request body.
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @email = args[:email] if args.key?(:email)
+          @kind = args[:kind] if args.key?(:kind)
+          @machine_type = args[:machine_type] if args.key?(:machine_type)
+          @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
       # Represents an Instance Template resource. You can use instance templates to
       # create VM instances and managed instance groups. For more information, read
       # Instance Templates.
@@ -20699,9 +20742,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :requested_link_count
       
-        # [Output Only] Set to true if the resource satisfies the zone separation
-        # organization policy constraints and false otherwise. Defaults to false if the
-        # field is not present.
+        # [Output Only] Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzs`
         # @return [Boolean]
         attr_accessor :satisfies_pzs
@@ -21030,9 +21071,7 @@ module Google
         # @return [String]
         attr_accessor :router
       
-        # [Output Only] Set to true if the resource satisfies the zone separation
-        # organization policy constraints and false otherwise. Defaults to false if the
-        # field is not present.
+        # [Output Only] Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzs`
         # @return [Boolean]
         attr_accessor :satisfies_pzs
@@ -22089,8 +22128,7 @@ module Google
         # @return [String]
         attr_accessor :status
       
-        # [Output Only] Set to true for locations that support physical zone separation.
-        # Defaults to false if the field is not present.
+        # [Output Only] Reserved for future use.
         # Corresponds to the JSON property `supportsPzs`
         # @return [Boolean]
         attr_accessor :supports_pzs
@@ -27274,8 +27312,8 @@ module Google
       
         # An IPv6 internal network address for this network interface. To use a static
         # internal IP address, it must be unused and in the same region as the instance'
-        # s zone. If not specified, GCP will automatically assign an internal IPv6
-        # address from the instance's subnetwork.
+        # s zone. If not specified, Google Cloud will automatically assign an internal
+        # IPv6 address from the instance's subnetwork.
         # Corresponds to the JSON property `ipv6Address`
         # @return [String]
         attr_accessor :ipv6_address
@@ -28831,10 +28869,7 @@ module Google
         # @return [String]
         attr_accessor :node_type
       
-        # The flexible properties of the desired node type. Node groups that use this
-        # node template will create nodes of a type that matches these properties. This
-        # field is mutually exclusive with the node_type property; you can only define
-        # one or the other, but not both.
+        # Do not use. Instead, use the node_type property.
         # Corresponds to the JSON property `nodeTypeFlexibility`
         # @return [Google::Apis::ComputeAlpha::NodeTemplateNodeTypeFlexibility]
         attr_accessor :node_type_flexibility
@@ -30270,6 +30305,13 @@ module Google
         # @return [String]
         attr_accessor :self_link_with_id
       
+        # Encapsulates partial completion metadata for SetCommonInstanceMetadata. Will
+        # be propagated on Operation.metadata as per go/partial-completion-api-clean.
+        # See go/gce-aips/2822 for API council results.
+        # Corresponds to the JSON property `setCommonInstanceMetadataOperationMetadata`
+        # @return [Google::Apis::ComputeAlpha::SetCommonInstanceMetadataOperationMetadata]
+        attr_accessor :set_common_instance_metadata_operation_metadata
+      
         # [Output Only] The time that this operation was started by the server. This
         # value is in RFC3339 text format.
         # Corresponds to the JSON property `startTime`
@@ -30342,6 +30384,7 @@ module Google
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
+          @set_common_instance_metadata_operation_metadata = args[:set_common_instance_metadata_operation_metadata] if args.key?(:set_common_instance_metadata_operation_metadata)
           @start_time = args[:start_time] if args.key?(:start_time)
           @status = args[:status] if args.key?(:status)
           @status_message = args[:status_message] if args.key?(:status_message)
@@ -37154,7 +37197,7 @@ module Google
         attr_accessor :start_time
       
         # Specifies the time zone to be used in interpreting Schedule.schedule. The
-        # value of this field must be a time zone name from the tz database: http://en.
+        # value of this field must be a time zone name from the tz database: https://
         # wikipedia.org/wiki/Tz_database.
         # Corresponds to the JSON property `timeZone`
         # @return [String]
@@ -38555,10 +38598,10 @@ module Google
         # @return [String]
         attr_accessor :advertise_mode
       
-        # User-specified list of prefix groups to advertise in custom mode, which can
-        # take one of the following options: - ALL_SUBNETS: Advertises all available
-        # subnets, including peer VPC subnets. - ALL_VPC_SUBNETS: Advertises the router'
-        # s own VPC subnets. Note that this field can only be populated if
+        # User-specified list of prefix groups to advertise in custom mode, which
+        # currently supports the following option: - ALL_SUBNETS: Advertises all of the
+        # router's own VPC subnets. This excludes any routes learned for subnets that
+        # use VPC Network Peering. Note that this field can only be populated if
         # advertise_mode is CUSTOM and overrides the list defined for the router (in the
         # "bgp" message). These groups are advertised in addition to any specified
         # prefixes. Leave this field blank to advertise no custom groups.
@@ -40195,6 +40238,14 @@ module Google
         attr_accessor :latency_tolerant
         alias_method :latency_tolerant?, :latency_tolerant
       
+        # A Duration represents a fixed-length span of time represented as a count of
+        # seconds and fractions of seconds at nanosecond resolution. It is independent
+        # of any calendar and concepts like "day" or "month". Range is approximately 10,
+        # 000 years.
+        # Corresponds to the JSON property `localSsdRecoveryTimeout`
+        # @return [Google::Apis::ComputeAlpha::Duration]
+        attr_accessor :local_ssd_recovery_timeout
+      
         # An opaque location hint used to place the instance close to other resources.
         # This field is for use by internal tools that use the public API.
         # Corresponds to the JSON property `locationHint`
@@ -40275,6 +40326,7 @@ module Google
           @host_error_timeout_seconds = args[:host_error_timeout_seconds] if args.key?(:host_error_timeout_seconds)
           @instance_termination_action = args[:instance_termination_action] if args.key?(:instance_termination_action)
           @latency_tolerant = args[:latency_tolerant] if args.key?(:latency_tolerant)
+          @local_ssd_recovery_timeout = args[:local_ssd_recovery_timeout] if args.key?(:local_ssd_recovery_timeout)
           @location_hint = args[:location_hint] if args.key?(:location_hint)
           @maintenance_freeze_duration_hours = args[:maintenance_freeze_duration_hours] if args.key?(:maintenance_freeze_duration_hours)
           @maintenance_interval = args[:maintenance_interval] if args.key?(:maintenance_interval)
@@ -42861,6 +42913,69 @@ module Google
         end
       end
       
+      # Encapsulates partial completion metadata for SetCommonInstanceMetadata. Will
+      # be propagated on Operation.metadata as per go/partial-completion-api-clean.
+      # See go/gce-aips/2822 for API council results.
+      class SetCommonInstanceMetadataOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `clientOperationId`
+        # @return [String]
+        attr_accessor :client_operation_id
+      
+        # 
+        # Corresponds to the JSON property `perLocationOperations`
+        # @return [Hash<String,Google::Apis::ComputeAlpha::SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo>]
+        attr_accessor :per_location_operations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_operation_id = args[:client_operation_id] if args.key?(:client_operation_id)
+          @per_location_operations = args[:per_location_operations] if args.key?(:per_location_operations)
+        end
+      end
+      
+      # 
+      class SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo
+        include Google::Apis::Core::Hashable
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::ComputeAlpha::Status]
+        attr_accessor :error
+      
+        # 
+        # Corresponds to the JSON property `operation`
+        # @return [String]
+        attr_accessor :operation
+      
+        # 
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error = args[:error] if args.key?(:error)
+          @operation = args[:operation] if args.key?(:operation)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # The share setting for reservations and sole tenancy node groups.
       class ShareSettings
         include Google::Apis::Core::Hashable
@@ -44985,6 +45100,45 @@ module Google
         # Update properties of this object
         def update!(**args)
           @auto_delete = args[:auto_delete] if args.key?(:auto_delete)
+        end
+      end
+      
+      # The `Status` type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by [
+      # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+      # data: error code, error message, and error details. You can find out more
+      # about this error model and how to work with it in the [API Design Guide](https:
+      # //cloud.google.com/apis/design/errors).
+      class Status
+        include Google::Apis::Core::Hashable
+      
+        # The status code, which should be an enum value of google.rpc.Code.
+        # Corresponds to the JSON property `code`
+        # @return [Fixnum]
+        attr_accessor :code
+      
+        # A list of messages that carry the error details. There is a common set of
+        # message types for APIs to use.
+        # Corresponds to the JSON property `details`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :details
+      
+        # A developer-facing error message, which should be in English. Any user-facing
+        # error message should be localized and sent in the google.rpc.Status.details
+        # field, or localized by the client.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @details = args[:details] if args.key?(:details)
+          @message = args[:message] if args.key?(:message)
         end
       end
       
@@ -49723,9 +49877,7 @@ module Google
         end
       end
       
-      # Upcoming Maintenance notification information. TODO(b/242069500) Deprecate
-      # this proto once it's fully migrated to be under proto ResourceStatus.
-      # UpcomingMaintenance.
+      # Upcoming Maintenance notification information.
       class UpcomingMaintenance
         include Google::Apis::Core::Hashable
       
@@ -49737,7 +49889,7 @@ module Google
         alias_method :can_reschedule?, :can_reschedule
       
         # [Output Only] The date when the maintenance will take place. This value is in
-        # RFC3339 text format. DEPRECATED: Use start_time_window instead.
+        # RFC3339 text format. DEPRECATED: Use window_start_time instead.
         # Corresponds to the JSON property `date`
         # @return [String]
         attr_accessor :date
@@ -49749,7 +49901,7 @@ module Google
         attr_accessor :start_time_window
       
         # [Output Only] The time when the maintenance will take place. This value is in
-        # RFC3339 text format. DEPRECATED: Use start_time_window instead.
+        # RFC3339 text format. DEPRECATED: Use window_start_time instead.
         # Corresponds to the JSON property `time`
         # @return [String]
         attr_accessor :time
