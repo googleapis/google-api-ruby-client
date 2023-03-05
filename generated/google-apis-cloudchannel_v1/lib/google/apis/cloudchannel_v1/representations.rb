@@ -988,6 +988,7 @@ module Google
           property :cloud_identity_id, as: 'cloudIdentityId'
           property :cloud_identity_info, as: 'cloudIdentityInfo', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1CloudIdentityInfo, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1CloudIdentityInfo::Representation
       
+          property :correlation_id, as: 'correlationId'
           property :create_time, as: 'createTime'
           property :domain, as: 'domain'
           property :language_code, as: 'languageCode'

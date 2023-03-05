@@ -718,6 +718,12 @@ module Google
         # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1CloudIdentityInfo]
         attr_accessor :cloud_identity_info
       
+        # Optional. External CRM ID for the customer. Populated only if a CRM ID exists
+        # for this customer.
+        # Corresponds to the JSON property `correlationId`
+        # @return [String]
+        attr_accessor :correlation_id
+      
         # Output only. Time when the customer was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -781,6 +787,7 @@ module Google
           @channel_partner_id = args[:channel_partner_id] if args.key?(:channel_partner_id)
           @cloud_identity_id = args[:cloud_identity_id] if args.key?(:cloud_identity_id)
           @cloud_identity_info = args[:cloud_identity_info] if args.key?(:cloud_identity_info)
+          @correlation_id = args[:correlation_id] if args.key?(:correlation_id)
           @create_time = args[:create_time] if args.key?(:create_time)
           @domain = args[:domain] if args.key?(:domain)
           @language_code = args[:language_code] if args.key?(:language_code)
