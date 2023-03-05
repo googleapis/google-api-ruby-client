@@ -1096,7 +1096,9 @@ module Google
         # Updates a RBACRoleBinding.
         # @param [String] name
         #   The resource name for the rbacrolebinding `projects/`project`/locations/`
-        #   location`/namespaces/`namespace`/rbacrolebindings/`rbacrolebinding``
+        #   location`/namespaces/`namespace`/rbacrolebindings/`rbacrolebinding`` or `
+        #   projects/`project`/locations/`location`/memberships/`membership`/
+        #   rbacrolebindings/`rbacrolebinding``
         # @param [Google::Apis::GkehubV1beta::RbacRoleBinding] rbac_role_binding_object
         # @param [String] update_mask
         #   Required. The fields to be updated.
