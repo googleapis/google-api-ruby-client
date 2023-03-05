@@ -316,6 +316,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FhirStoreMetric
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FhirStoreMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Field
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -791,6 +803,12 @@ module Google
       end
       
       class TextSpan
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TimePartitioning
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1295,6 +1313,24 @@ module Google
           property :validation_config, as: 'validationConfig', class: Google::Apis::HealthcareV1::ValidationConfig, decorator: Google::Apis::HealthcareV1::ValidationConfig::Representation
       
           property :version, as: 'version'
+        end
+      end
+      
+      class FhirStoreMetric
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :count, :numeric_string => true, as: 'count'
+          property :resource_type, as: 'resourceType'
+          property :structured_storage_size_bytes, :numeric_string => true, as: 'structuredStorageSizeBytes'
+        end
+      end
+      
+      class FhirStoreMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :metrics, as: 'metrics', class: Google::Apis::HealthcareV1::FhirStoreMetric, decorator: Google::Apis::HealthcareV1::FhirStoreMetric::Representation
+      
+          property :name, as: 'name'
         end
       end
       
@@ -1868,6 +1904,8 @@ module Google
       class SchemaConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :last_updated_partition_config, as: 'lastUpdatedPartitionConfig', class: Google::Apis::HealthcareV1::TimePartitioning, decorator: Google::Apis::HealthcareV1::TimePartitioning::Representation
+      
           property :recursive_structure_depth, :numeric_string => true, as: 'recursiveStructureDepth'
           property :schema_type, as: 'schemaType'
         end
@@ -2005,6 +2043,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :begin_offset, as: 'beginOffset'
           property :content, as: 'content'
+        end
+      end
+      
+      class TimePartitioning
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :expiration_ms, :numeric_string => true, as: 'expirationMs'
+          property :type, as: 'type'
         end
       end
       
