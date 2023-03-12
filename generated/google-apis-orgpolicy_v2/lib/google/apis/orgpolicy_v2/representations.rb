@@ -126,6 +126,7 @@ module Google
           property :list_constraint, as: 'listConstraint', class: Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2ConstraintListConstraint, decorator: Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2ConstraintListConstraint::Representation
       
           property :name, as: 'name'
+          property :supports_dry_run, as: 'supportsDryRun'
         end
       end
       

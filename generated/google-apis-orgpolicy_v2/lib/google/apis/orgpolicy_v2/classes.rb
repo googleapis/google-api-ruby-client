@@ -103,6 +103,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Shows if dry run is supported for this constraint or not.
+        # Corresponds to the JSON property `supportsDryRun`
+        # @return [Boolean]
+        attr_accessor :supports_dry_run
+        alias_method :supports_dry_run?, :supports_dry_run
+      
         def initialize(**args)
            update!(**args)
         end
@@ -115,6 +121,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @list_constraint = args[:list_constraint] if args.key?(:list_constraint)
           @name = args[:name] if args.key?(:name)
+          @supports_dry_run = args[:supports_dry_run] if args.key?(:supports_dry_run)
         end
       end
       
