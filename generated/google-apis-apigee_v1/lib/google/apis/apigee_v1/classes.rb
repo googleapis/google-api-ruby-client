@@ -5205,6 +5205,32 @@ module Google
         end
       end
       
+      # Response for ListSecurityIncidents.
+      class GoogleCloudApigeeV1ListSecurityIncidentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token that can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of security incidents in the organization
+        # Corresponds to the JSON property `securityIncidents`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityIncident>]
+        attr_accessor :security_incidents
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @security_incidents = args[:security_incidents] if args.key?(:security_incidents)
+        end
+      end
+      
       # Response for ListSecurityProfileRevisions.
       class GoogleCloudApigeeV1ListSecurityProfileRevisionsResponse
         include Google::Apis::Core::Hashable
@@ -7755,6 +7781,66 @@ module Google
         # Update properties of this object
         def update!(**args)
           @documentation_link = args[:documentation_link] if args.key?(:documentation_link)
+        end
+      end
+      
+      # Represents an SecurityIncident resource.
+      class GoogleCloudApigeeV1SecurityIncident
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Detection types which are part of the incident. Examples: Flooder,
+        # OAuth Abuser, Static Content Scraper, Anomaly Detection.
+        # Corresponds to the JSON property `detectionTypes`
+        # @return [Array<String>]
+        attr_accessor :detection_types
+      
+        # Display name of the security incident.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. The time when events associated with the incident were first
+        # detected.
+        # Corresponds to the JSON property `firstDetectedTime`
+        # @return [String]
+        attr_accessor :first_detected_time
+      
+        # Output only. The time when events associated with the incident were last
+        # detected.
+        # Corresponds to the JSON property `lastDetectedTime`
+        # @return [String]
+        attr_accessor :last_detected_time
+      
+        # Immutable. Name of the security incident resource. Format: organizations/`org`/
+        # environments/`environment`/securityIncidents/`incident` Example: organizations/
+        # apigee-org/environments/dev/securityIncidents/1234-5678-9101-1111
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Risk level of the incident.
+        # Corresponds to the JSON property `riskLevel`
+        # @return [String]
+        attr_accessor :risk_level
+      
+        # Total traffic detected as part of the incident.
+        # Corresponds to the JSON property `trafficCount`
+        # @return [Fixnum]
+        attr_accessor :traffic_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @detection_types = args[:detection_types] if args.key?(:detection_types)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @first_detected_time = args[:first_detected_time] if args.key?(:first_detected_time)
+          @last_detected_time = args[:last_detected_time] if args.key?(:last_detected_time)
+          @name = args[:name] if args.key?(:name)
+          @risk_level = args[:risk_level] if args.key?(:risk_level)
+          @traffic_count = args[:traffic_count] if args.key?(:traffic_count)
         end
       end
       
