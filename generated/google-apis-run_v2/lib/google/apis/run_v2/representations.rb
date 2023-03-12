@@ -430,6 +430,7 @@ module Google
           property :reconciling, as: 'reconciling'
           property :retried_count, as: 'retriedCount'
           property :running_count, as: 'runningCount'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :start_time, as: 'startTime'
           property :succeeded_count, as: 'succeededCount'
           property :task_count, as: 'taskCount'
@@ -512,6 +513,7 @@ module Google
           property :name, as: 'name'
           property :observed_generation, :numeric_string => true, as: 'observedGeneration'
           property :reconciling, as: 'reconciling'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :template, as: 'template', class: Google::Apis::RunV2::GoogleCloudRunV2ExecutionTemplate, decorator: Google::Apis::RunV2::GoogleCloudRunV2ExecutionTemplate::Representation
       
           property :terminal_condition, as: 'terminalCondition', class: Google::Apis::RunV2::GoogleCloudRunV2Condition, decorator: Google::Apis::RunV2::GoogleCloudRunV2Condition::Representation
@@ -614,6 +616,7 @@ module Google
           property :name, as: 'name'
           property :observed_generation, :numeric_string => true, as: 'observedGeneration'
           property :reconciling, as: 'reconciling'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :scaling, as: 'scaling', class: Google::Apis::RunV2::GoogleCloudRunV2RevisionScaling, decorator: Google::Apis::RunV2::GoogleCloudRunV2RevisionScaling::Representation
       
           property :service, as: 'service'
@@ -710,6 +713,7 @@ module Google
           property :name, as: 'name'
           property :observed_generation, :numeric_string => true, as: 'observedGeneration'
           property :reconciling, as: 'reconciling'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :template, as: 'template', class: Google::Apis::RunV2::GoogleCloudRunV2RevisionTemplate, decorator: Google::Apis::RunV2::GoogleCloudRunV2RevisionTemplate::Representation
       
           property :terminal_condition, as: 'terminalCondition', class: Google::Apis::RunV2::GoogleCloudRunV2Condition, decorator: Google::Apis::RunV2::GoogleCloudRunV2Condition::Representation
@@ -759,6 +763,7 @@ module Google
           property :observed_generation, :numeric_string => true, as: 'observedGeneration'
           property :reconciling, as: 'reconciling'
           property :retried, as: 'retried'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :service_account, as: 'serviceAccount'
           property :start_time, as: 'startTime'
           property :timeout, as: 'timeout'
