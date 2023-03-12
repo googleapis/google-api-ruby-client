@@ -614,6 +614,8 @@ module Google
           property :end_time, as: 'endTime'
           collection :error_breakdowns, as: 'errorBreakdowns', class: Google::Apis::StoragetransferV1::ErrorSummary, decorator: Google::Apis::StoragetransferV1::ErrorSummary::Representation
       
+          property :logging_config, as: 'loggingConfig', class: Google::Apis::StoragetransferV1::LoggingConfig, decorator: Google::Apis::StoragetransferV1::LoggingConfig::Representation
+      
           property :name, as: 'name'
           property :notification_config, as: 'notificationConfig', class: Google::Apis::StoragetransferV1::NotificationConfig, decorator: Google::Apis::StoragetransferV1::NotificationConfig::Representation
       
