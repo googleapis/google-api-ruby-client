@@ -458,6 +458,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :running_count
       
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Output only. Represents time when the execution started to run. It is not
         # guaranteed to be set in happens-before order across separate operations.
         # Corresponds to the JSON property `startTime`
@@ -521,6 +527,7 @@ module Google
           @reconciling = args[:reconciling] if args.key?(:reconciling)
           @retried_count = args[:retried_count] if args.key?(:retried_count)
           @running_count = args[:running_count] if args.key?(:running_count)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @start_time = args[:start_time] if args.key?(:start_time)
           @succeeded_count = args[:succeeded_count] if args.key?(:succeeded_count)
           @task_count = args[:task_count] if args.key?(:task_count)
@@ -849,6 +856,12 @@ module Google
         attr_accessor :reconciling
         alias_method :reconciling?, :reconciling
       
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # ExecutionTemplate describes the data an execution should have when created
         # from a template.
         # Corresponds to the JSON property `template`
@@ -897,6 +910,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @observed_generation = args[:observed_generation] if args.key?(:observed_generation)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @template = args[:template] if args.key?(:template)
           @terminal_condition = args[:terminal_condition] if args.key?(:terminal_condition)
           @uid = args[:uid] if args.key?(:uid)
@@ -1252,6 +1266,12 @@ module Google
         attr_accessor :reconciling
         alias_method :reconciling?, :reconciling
       
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Settings for revision-level scaling settings.
         # Corresponds to the JSON property `scaling`
         # @return [Google::Apis::RunV2::GoogleCloudRunV2RevisionScaling]
@@ -1324,6 +1344,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @observed_generation = args[:observed_generation] if args.key?(:observed_generation)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @scaling = args[:scaling] if args.key?(:scaling)
           @service = args[:service] if args.key?(:service)
           @service_account = args[:service_account] if args.key?(:service_account)
@@ -1737,6 +1758,12 @@ module Google
         attr_accessor :reconciling
         alias_method :reconciling?, :reconciling
       
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # RevisionTemplate describes the data a revision should have when created from a
         # template.
         # Corresponds to the JSON property `template`
@@ -1805,6 +1832,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @observed_generation = args[:observed_generation] if args.key?(:observed_generation)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @template = args[:template] if args.key?(:template)
           @terminal_condition = args[:terminal_condition] if args.key?(:terminal_condition)
           @traffic = args[:traffic] if args.key?(:traffic)
@@ -1969,6 +1997,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :retried
       
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Email address of the IAM service account associated with the Task of a Job.
         # The service account represents the identity of the running task, and
         # determines what permissions the task has. If not provided, the task will use
@@ -2042,6 +2076,7 @@ module Google
           @observed_generation = args[:observed_generation] if args.key?(:observed_generation)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
           @retried = args[:retried] if args.key?(:retried)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @service_account = args[:service_account] if args.key?(:service_account)
           @start_time = args[:start_time] if args.key?(:start_time)
           @timeout = args[:timeout] if args.key?(:timeout)
