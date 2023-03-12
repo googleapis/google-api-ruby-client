@@ -1034,6 +1034,7 @@ module Google
       class Enum
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :edition, as: 'edition'
           collection :enumvalue, as: 'enumvalue', class: Google::Apis::ServiceusageV1beta1::EnumValue, decorator: Google::Apis::ServiceusageV1beta1::EnumValue::Representation
       
           property :name, as: 'name'
@@ -1761,6 +1762,7 @@ module Google
       class Type
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :edition, as: 'edition'
           collection :fields, as: 'fields', class: Google::Apis::ServiceusageV1beta1::Field, decorator: Google::Apis::ServiceusageV1beta1::Field::Representation
       
           property :name, as: 'name'
