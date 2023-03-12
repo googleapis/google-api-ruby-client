@@ -94,6 +94,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EnterpriseCrmEventbusProtoCloudKmsConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EnterpriseCrmEventbusProtoCloudSchedulerConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -892,6 +898,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudIntegrationsV1alphaCoordinate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudIntegrationsV1alphaCreateAppsScriptProjectRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1459,6 +1471,17 @@ module Google
           property :component_id, :numeric_string => true, as: 'componentId'
           property :template_id, :numeric_string => true, as: 'templateId'
           property :title, as: 'title'
+        end
+      end
+      
+      class EnterpriseCrmEventbusProtoCloudKmsConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcp_project_id, as: 'gcpProjectId'
+          property :key_name, as: 'keyName'
+          property :key_ring_name, as: 'keyRingName'
+          property :key_version_name, as: 'keyVersionName'
+          property :location_name, as: 'locationName'
         end
       end
       
@@ -2096,7 +2119,11 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :audit, as: 'audit', class: Google::Apis::IntegrationsV1alpha::EnterpriseCrmEventbusProtoSuspensionResolutionInfoAudit, decorator: Google::Apis::IntegrationsV1alpha::EnterpriseCrmEventbusProtoSuspensionResolutionInfoAudit::Representation
       
+          property :client_id, as: 'clientId'
+          property :cloud_kms_config, as: 'cloudKmsConfig', class: Google::Apis::IntegrationsV1alpha::EnterpriseCrmEventbusProtoCloudKmsConfig, decorator: Google::Apis::IntegrationsV1alpha::EnterpriseCrmEventbusProtoCloudKmsConfig::Representation
+      
           property :created_timestamp, as: 'createdTimestamp'
+          property :encrypted_suspension_resolution_info, :base64 => true, as: 'encryptedSuspensionResolutionInfo'
           property :event_execution_info_id, as: 'eventExecutionInfoId'
           property :external_traffic, as: 'externalTraffic', class: Google::Apis::IntegrationsV1alpha::EnterpriseCrmEventbusProtoExternalTraffic, decorator: Google::Apis::IntegrationsV1alpha::EnterpriseCrmEventbusProtoExternalTraffic::Representation
       
@@ -2108,6 +2135,7 @@ module Google
           property :suspension_id, as: 'suspensionId'
           property :task_number, as: 'taskNumber'
           property :workflow_name, as: 'workflowName'
+          property :wrapped_dek, :base64 => true, as: 'wrappedDek'
         end
       end
       
@@ -2560,7 +2588,7 @@ module Google
           property :creator_email, as: 'creatorEmail'
           property :description, as: 'description'
           property :disable_strict_type_validation, as: 'disableStrictTypeValidation'
-          property :error_catcher_config_id, as: 'errorCatcherConfigId'
+          property :error_catcher_id, as: 'errorCatcherId'
           property :external_task_type, as: 'externalTaskType'
           property :failure_policy, as: 'failurePolicy', class: Google::Apis::IntegrationsV1alpha::EnterpriseCrmEventbusProtoFailurePolicy, decorator: Google::Apis::IntegrationsV1alpha::EnterpriseCrmEventbusProtoFailurePolicy::Representation
       
@@ -2619,7 +2647,7 @@ module Google
       
           property :description, as: 'description'
           collection :enabled_clients, as: 'enabledClients'
-          property :error_catcher_config_id, as: 'errorCatcherConfigId'
+          property :error_catcher_id, as: 'errorCatcherId'
           property :label, as: 'label'
           property :next_tasks_execution_policy, as: 'nextTasksExecutionPolicy'
           property :pause_workflow_executions, as: 'pauseWorkflowExecutions'
@@ -2982,6 +3010,14 @@ module Google
         end
       end
       
+      class GoogleCloudIntegrationsV1alphaCoordinate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :x, as: 'x'
+          property :y, as: 'y'
+        end
+      end
+      
       class GoogleCloudIntegrationsV1alphaCreateAppsScriptProjectRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3045,9 +3081,11 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
-          property :error_catch_id, as: 'errorCatchId'
+          property :error_catcher_id, as: 'errorCatcherId'
           property :error_catcher_number, as: 'errorCatcherNumber'
           property :label, as: 'label'
+          property :position, as: 'position', class: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaCoordinate, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaCoordinate::Representation
+      
           collection :start_error_tasks, as: 'startErrorTasks', class: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaNextTask, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaNextTask::Representation
       
         end
@@ -3718,7 +3756,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
           property :display_name, as: 'displayName'
-          property :error_catcher_config_id, as: 'errorCatcherConfigId'
+          property :error_catcher_id, as: 'errorCatcherId'
           property :external_task_type, as: 'externalTaskType'
           property :failure_policy, as: 'failurePolicy', class: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaFailurePolicy, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaFailurePolicy::Representation
       
@@ -3727,6 +3765,8 @@ module Google
       
           property :next_tasks_execution_policy, as: 'nextTasksExecutionPolicy'
           hash :parameters, as: 'parameters', class: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaEventParameter, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaEventParameter::Representation
+      
+          property :position, as: 'position', class: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaCoordinate, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaCoordinate::Representation
       
           property :success_policy, as: 'successPolicy', class: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaSuccessPolicy, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaSuccessPolicy::Representation
       
@@ -3757,9 +3797,11 @@ module Google
           property :cloud_scheduler_config, as: 'cloudSchedulerConfig', class: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaCloudSchedulerConfig, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaCloudSchedulerConfig::Representation
       
           property :description, as: 'description'
-          property :error_catcher_config_id, as: 'errorCatcherConfigId'
+          property :error_catcher_id, as: 'errorCatcherId'
           property :label, as: 'label'
           property :next_tasks_execution_policy, as: 'nextTasksExecutionPolicy'
+          property :position, as: 'position', class: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaCoordinate, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaCoordinate::Representation
+      
           hash :properties, as: 'properties'
           collection :start_tasks, as: 'startTasks', class: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaNextTask, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaNextTask::Representation
       
