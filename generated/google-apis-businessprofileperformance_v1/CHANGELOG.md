@@ -1,5 +1,9 @@
 # Release history for google-apis-businessprofileperformance_v1
 
+### v0.8.0 (2023-03-12)
+
+* Regenerated from discovery document revision 20230308
+
 ### v0.7.0 (2023-02-19)
 
 * Regenerated from discovery document revision 20230215

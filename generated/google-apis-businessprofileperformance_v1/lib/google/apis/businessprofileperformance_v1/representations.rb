@@ -22,6 +22,18 @@ module Google
   module Apis
     module BusinessprofileperformanceV1
       
+      class DailyMetricTimeSeries
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DailySubEntityType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Date
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -29,6 +41,12 @@ module Google
       end
       
       class DatedValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FetchMultiDailyMetricsTimeSeriesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -52,7 +70,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MultiDailyMetricTimeSeries
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SearchKeywordCount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TimeOfDay
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -62,6 +92,26 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DailyMetricTimeSeries
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :daily_metric, as: 'dailyMetric'
+          property :daily_sub_entity_type, as: 'dailySubEntityType', class: Google::Apis::BusinessprofileperformanceV1::DailySubEntityType, decorator: Google::Apis::BusinessprofileperformanceV1::DailySubEntityType::Representation
+      
+          property :time_series, as: 'timeSeries', class: Google::Apis::BusinessprofileperformanceV1::TimeSeries, decorator: Google::Apis::BusinessprofileperformanceV1::TimeSeries::Representation
+      
+        end
+      end
+      
+      class DailySubEntityType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :day_of_week, as: 'dayOfWeek'
+          property :time_of_day, as: 'timeOfDay', class: Google::Apis::BusinessprofileperformanceV1::TimeOfDay, decorator: Google::Apis::BusinessprofileperformanceV1::TimeOfDay::Representation
+      
+        end
       end
       
       class Date
@@ -79,6 +129,14 @@ module Google
           property :date, as: 'date', class: Google::Apis::BusinessprofileperformanceV1::Date, decorator: Google::Apis::BusinessprofileperformanceV1::Date::Representation
       
           property :value, :numeric_string => true, as: 'value'
+        end
+      end
+      
+      class FetchMultiDailyMetricsTimeSeriesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :multi_daily_metric_time_series, as: 'multiDailyMetricTimeSeries', class: Google::Apis::BusinessprofileperformanceV1::MultiDailyMetricTimeSeries, decorator: Google::Apis::BusinessprofileperformanceV1::MultiDailyMetricTimeSeries::Representation
+      
         end
       end
       
@@ -107,12 +165,30 @@ module Google
         end
       end
       
+      class MultiDailyMetricTimeSeries
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :daily_metric_time_series, as: 'dailyMetricTimeSeries', class: Google::Apis::BusinessprofileperformanceV1::DailyMetricTimeSeries, decorator: Google::Apis::BusinessprofileperformanceV1::DailyMetricTimeSeries::Representation
+      
+        end
+      end
+      
       class SearchKeywordCount
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :insights_value, as: 'insightsValue', class: Google::Apis::BusinessprofileperformanceV1::InsightsValue, decorator: Google::Apis::BusinessprofileperformanceV1::InsightsValue::Representation
       
           property :search_keyword, as: 'searchKeyword'
+        end
+      end
+      
+      class TimeOfDay
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :hours, as: 'hours'
+          property :minutes, as: 'minutes'
+          property :nanos, as: 'nanos'
+          property :seconds, as: 'seconds'
         end
       end
       
