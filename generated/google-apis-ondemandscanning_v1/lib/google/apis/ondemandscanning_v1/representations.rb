@@ -1040,6 +1040,7 @@ module Google
       class PackageData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :architecture, as: 'architecture'
           property :cpe_uri, as: 'cpeUri'
           collection :dependency_chain, as: 'dependencyChain', class: Google::Apis::OndemandscanningV1::LanguagePackageDependency, decorator: Google::Apis::OndemandscanningV1::LanguagePackageDependency::Representation
       
