@@ -360,6 +360,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :customized_attribution, as: 'customizedAttribution'
+          property :enable_shadow_removal_native_pdf, as: 'enableShadowRemovalNativePdf'
           hash :format_conversions, as: 'formatConversions'
           hash :glossaries, as: 'glossaries', class: Google::Apis::TranslateV3::TranslateTextGlossaryConfig, decorator: Google::Apis::TranslateV3::TranslateTextGlossaryConfig::Representation
       
