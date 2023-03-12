@@ -19,13 +19,13 @@ require 'google/apis/cloudprofiler_v2/gem_version.rb'
 
 module Google
   module Apis
-    # Stackdriver Profiler API
+    # Cloud Profiler API
     #
     # Manages continuous profiling information.
     #
     # @see https://cloud.google.com/profiler/
     module CloudprofilerV2
-      # Version of the Stackdriver Profiler API this client connects to.
+      # Version of the Cloud Profiler API this client connects to.
       # This is NOT the gem version.
       VERSION = 'V2'
 

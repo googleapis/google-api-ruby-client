@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module CloudprofilerV2
-      # Stackdriver Profiler API
+      # Cloud Profiler API
       #
       # Manages continuous profiling information.
       #
