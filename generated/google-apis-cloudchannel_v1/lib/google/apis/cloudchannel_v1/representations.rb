@@ -178,6 +178,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudChannelV1EntitlementChange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudChannelV1EntitlementEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -221,6 +227,12 @@ module Google
       end
       
       class GoogleCloudChannelV1ListCustomersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudChannelV1ListEntitlementChangesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1075,6 +1087,26 @@ module Google
         end
       end
       
+      class GoogleCloudChannelV1EntitlementChange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :activation_reason, as: 'activationReason'
+          property :cancellation_reason, as: 'cancellationReason'
+          property :change_type, as: 'changeType'
+          property :create_time, as: 'createTime'
+          property :entitlement, as: 'entitlement'
+          property :offer, as: 'offer'
+          property :operator, as: 'operator'
+          property :operator_type, as: 'operatorType'
+          property :other_change_reason, as: 'otherChangeReason'
+          collection :parameters, as: 'parameters', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1Parameter, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1Parameter::Representation
+      
+          property :provisioned_service, as: 'provisionedService', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1ProvisionedService, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1ProvisionedService::Representation
+      
+          property :suspension_reason, as: 'suspensionReason'
+        end
+      end
+      
       class GoogleCloudChannelV1EntitlementEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1145,6 +1177,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :customers, as: 'customers', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1Customer, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1Customer::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleCloudChannelV1ListEntitlementChangesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :entitlement_changes, as: 'entitlementChanges', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1EntitlementChange, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1EntitlementChange::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
