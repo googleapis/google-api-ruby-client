@@ -2749,12 +2749,11 @@ module Google
         # widgets, such as: - Formatted text - Buttons - Clickable images - Checkboxes -
         # Radio buttons - Input widgets. Cards are usually displayed below the text body
         # of a Chat message, but can situationally appear other places, such as [dialogs]
-        # (https://developers.google.com/chat/how-tos/dialogs). `cards_v2` and `cards`
-        # can have a maximum size of 32 KB. The `cardId` is a unique identifier among
-        # cards in the same message and for identifying user input values. Currently
-        # supported widgets include: - `TextParagraph` - `DecoratedText` - `Image` - `
-        # ButtonList` - `Divider` - `TextInput` - `SelectionInput` (CHECKBOX,
-        # RADIO_BUTTON, SWITCH, DROPDOWN) - `Grid`
+        # (https://developers.google.com/chat/how-tos/dialogs). Each card can have a
+        # maximum size of 32 KB. The `cardId` is a unique identifier among cards in the
+        # same message and for identifying user input values. Currently supported
+        # widgets include: - `TextParagraph` - `DecoratedText` - `Image` - `ButtonList` -
+        # `Divider` - `TextInput` - `SelectionInput` - `Grid`
         # Corresponds to the JSON property `cardsV2`
         # @return [Array<Google::Apis::ChatV1::CardWithId>]
         attr_accessor :cards_v2

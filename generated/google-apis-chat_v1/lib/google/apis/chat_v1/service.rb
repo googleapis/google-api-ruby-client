@@ -141,7 +141,7 @@ module Google
         #   Optional. The maximum number of spaces to return. The service may return fewer
         #   than this value. If unspecified, at most 100 spaces are returned. The maximum
         #   value is 1000; values above 1000 are coerced to 1000. Negative values return
-        #   an INVALID_ARGUMENT error.
+        #   an `INVALID_ARGUMENT` error.
         # @param [String] page_token
         #   Optional. A page token, received from a previous list spaces call. Provide
         #   this to retrieve the subsequent page. When paginating, the filter value should
@@ -232,10 +232,10 @@ module Google
         #   value is 1000; values above 1000 are coerced to 1000. Negative values return
         #   an INVALID_ARGUMENT error.
         # @param [String] page_token
-        #   A page token, received from a previous list memberships call. Provide this to
-        #   retrieve the subsequent page. When paginating, all other parameters provided
-        #   should match the call that provided the page token. Passing different values
-        #   to the other parameters may lead to unexpected results.
+        #   A page token, received from a previous call to list memberships. Provide this
+        #   to retrieve the subsequent page. When paginating, all other parameters
+        #   provided should match the call that provided the page token. Passing different
+        #   values to the other parameters may lead to unexpected results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
