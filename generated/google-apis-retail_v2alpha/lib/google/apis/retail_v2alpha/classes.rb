@@ -6230,6 +6230,13 @@ module Google
         # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCompletionDetail]
         attr_accessor :completion_detail
       
+        # Represents the domain of the user event, for projects that combine domains.
+        # For example: retailer can have events from multiple domains like retailer-main,
+        # retailer-baby, retailer-meds, etc. under one project.
+        # Corresponds to the JSON property `domain`
+        # @return [String]
+        attr_accessor :domain
+      
         # Only required for UserEventService.ImportUserEvents method. Timestamp of when
         # the user event happened.
         # Corresponds to the JSON property `eventTime`
@@ -6385,6 +6392,7 @@ module Google
           @attribution_token = args[:attribution_token] if args.key?(:attribution_token)
           @cart_id = args[:cart_id] if args.key?(:cart_id)
           @completion_detail = args[:completion_detail] if args.key?(:completion_detail)
+          @domain = args[:domain] if args.key?(:domain)
           @event_time = args[:event_time] if args.key?(:event_time)
           @event_type = args[:event_type] if args.key?(:event_type)
           @experiment_ids = args[:experiment_ids] if args.key?(:experiment_ids)
