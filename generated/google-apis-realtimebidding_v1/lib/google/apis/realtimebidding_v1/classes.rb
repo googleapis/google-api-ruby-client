@@ -591,7 +591,9 @@ module Google
         # authorized-buyers/rtb/fledge-origin-trial). The URL to fetch an interest group
         # ad used in [TURTLEDOVE on-device auction](https://github.com/WICG/turtledove/
         # blob/main/FLEDGE.md#1-browsers-record-interest-groups"). This should be unique
-        # among all creatives for a given `accountId`.
+        # among all creatives for a given `accountId`. This URL should be the same as
+        # the URL returned by [generateBid()](https://github.com/WICG/turtledove/blob/
+        # main/FLEDGE.md#32-on-device-bidding).
         # Corresponds to the JSON property `renderUrl`
         # @return [String]
         attr_accessor :render_url
