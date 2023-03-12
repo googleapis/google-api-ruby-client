@@ -72,6 +72,14 @@ module Google
         # @return [String]
         attr_accessor :customized_attribution
       
+        # Optional. If true, use the text removal server to remove the shadow text on
+        # background image for native pdf translation. Shadow removal feature can only
+        # be enabled when is_translate_native_pdf_only: false && pdf_native_only: false
+        # Corresponds to the JSON property `enableShadowRemovalNativePdf`
+        # @return [Boolean]
+        attr_accessor :enable_shadow_removal_native_pdf
+        alias_method :enable_shadow_removal_native_pdf?, :enable_shadow_removal_native_pdf
+      
         # Optional.
         # Corresponds to the JSON property `formatConversions`
         # @return [Hash<String,String>]
@@ -126,6 +134,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @customized_attribution = args[:customized_attribution] if args.key?(:customized_attribution)
+          @enable_shadow_removal_native_pdf = args[:enable_shadow_removal_native_pdf] if args.key?(:enable_shadow_removal_native_pdf)
           @format_conversions = args[:format_conversions] if args.key?(:format_conversions)
           @glossaries = args[:glossaries] if args.key?(:glossaries)
           @input_configs = args[:input_configs] if args.key?(:input_configs)
