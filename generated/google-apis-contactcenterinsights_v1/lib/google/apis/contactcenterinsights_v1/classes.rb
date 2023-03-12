@@ -1118,6 +1118,37 @@ module Google
         end
       end
       
+      # Metadata for creating an issue.
+      class GoogleCloudContactcenterinsightsV1CreateIssueMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The time the operation finished running.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The request to create an issue.
+        # Corresponds to the JSON property `request`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1CreateIssueRequest]
+        attr_accessor :request
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @request = args[:request] if args.key?(:request)
+        end
+      end
+      
       # Metadata for creating an issue model.
       class GoogleCloudContactcenterinsightsV1CreateIssueModelMetadata
         include Google::Apis::Core::Hashable
@@ -1170,6 +1201,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @issue_model = args[:issue_model] if args.key?(:issue_model)
+          @parent = args[:parent] if args.key?(:parent)
+        end
+      end
+      
+      # The request to create an issue.
+      class GoogleCloudContactcenterinsightsV1CreateIssueRequest
+        include Google::Apis::Core::Hashable
+      
+        # The issue resource.
+        # Corresponds to the JSON property `issue`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1Issue]
+        attr_accessor :issue
+      
+        # Required. The parent resource of the issue.
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @issue = args[:issue] if args.key?(:issue)
           @parent = args[:parent] if args.key?(:parent)
         end
       end
