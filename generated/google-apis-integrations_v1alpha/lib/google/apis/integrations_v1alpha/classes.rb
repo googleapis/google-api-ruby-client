@@ -388,6 +388,58 @@ module Google
         end
       end
       
+      # 
+      class EnterpriseCrmEventbusProtoCloudKmsConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The id of GCP project where the KMS key is stored. If not provided,
+        # assume the key is stored in the same GCP project defined in Client (tag 14).
+        # Corresponds to the JSON property `gcpProjectId`
+        # @return [String]
+        attr_accessor :gcp_project_id
+      
+        # A Cloud KMS key is a named object containing one or more key versions, along
+        # with metadata for the key. A key exists on exactly one key ring tied to a
+        # specific location.
+        # Corresponds to the JSON property `keyName`
+        # @return [String]
+        attr_accessor :key_name
+      
+        # A key ring organizes keys in a specific Google Cloud location and allows you
+        # to manage access control on groups of keys. A key ring's name does not need to
+        # be unique across a Google Cloud project, but must be unique within a given
+        # location.
+        # Corresponds to the JSON property `keyRingName`
+        # @return [String]
+        attr_accessor :key_ring_name
+      
+        # Optional. Each version of a key contains key material used for encryption or
+        # signing. A key's version is represented by an integer, starting at 1. To
+        # decrypt data or verify a signature, you must use the same key version that was
+        # used to encrypt or sign the data.
+        # Corresponds to the JSON property `keyVersionName`
+        # @return [String]
+        attr_accessor :key_version_name
+      
+        # Location name of the key ring, e.g. "us-west1".
+        # Corresponds to the JSON property `locationName`
+        # @return [String]
+        attr_accessor :location_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcp_project_id = args[:gcp_project_id] if args.key?(:gcp_project_id)
+          @key_name = args[:key_name] if args.key?(:key_name)
+          @key_ring_name = args[:key_ring_name] if args.key?(:key_ring_name)
+          @key_version_name = args[:key_version_name] if args.key?(:key_version_name)
+          @location_name = args[:location_name] if args.key?(:location_name)
+        end
+      end
+      
       # Cloud Scheduler Trigger configuration
       class EnterpriseCrmEventbusProtoCloudSchedulerConfig
         include Google::Apis::Core::Hashable
@@ -2446,10 +2498,26 @@ module Google
         # @return [Google::Apis::IntegrationsV1alpha::EnterpriseCrmEventbusProtoSuspensionResolutionInfoAudit]
         attr_accessor :audit
       
+        # The event data user sends as request.
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
+      
+        # KMS info, used by cmek/gmek integration
+        # Corresponds to the JSON property `cloudKmsConfig`
+        # @return [Google::Apis::IntegrationsV1alpha::EnterpriseCrmEventbusProtoCloudKmsConfig]
+        attr_accessor :cloud_kms_config
+      
         # Auto-generated.
         # Corresponds to the JSON property `createdTimestamp`
         # @return [String]
         attr_accessor :created_timestamp
+      
+        # Encrypted SuspensionResolutionInfo
+        # Corresponds to the JSON property `encryptedSuspensionResolutionInfo`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :encrypted_suspension_resolution_info
       
         # Required. ID of the associated execution.
         # Corresponds to the JSON property `eventExecutionInfoId`
@@ -2497,6 +2565,12 @@ module Google
         # @return [String]
         attr_accessor :workflow_name
       
+        # Wrapped dek
+        # Corresponds to the JSON property `wrappedDek`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :wrapped_dek
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2504,7 +2578,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @audit = args[:audit] if args.key?(:audit)
+          @client_id = args[:client_id] if args.key?(:client_id)
+          @cloud_kms_config = args[:cloud_kms_config] if args.key?(:cloud_kms_config)
           @created_timestamp = args[:created_timestamp] if args.key?(:created_timestamp)
+          @encrypted_suspension_resolution_info = args[:encrypted_suspension_resolution_info] if args.key?(:encrypted_suspension_resolution_info)
           @event_execution_info_id = args[:event_execution_info_id] if args.key?(:event_execution_info_id)
           @external_traffic = args[:external_traffic] if args.key?(:external_traffic)
           @last_modified_timestamp = args[:last_modified_timestamp] if args.key?(:last_modified_timestamp)
@@ -2514,6 +2591,7 @@ module Google
           @suspension_id = args[:suspension_id] if args.key?(:suspension_id)
           @task_number = args[:task_number] if args.key?(:task_number)
           @workflow_name = args[:workflow_name] if args.key?(:workflow_name)
+          @wrapped_dek = args[:wrapped_dek] if args.key?(:wrapped_dek)
         end
       end
       
@@ -4206,11 +4284,11 @@ module Google
         attr_accessor :disable_strict_type_validation
         alias_method :disable_strict_type_validation?, :disable_strict_type_validation
       
-        # Optional Error catcher config id of the error catch flow which will be
-        # executed when execution error happens in the task
-        # Corresponds to the JSON property `errorCatcherConfigId`
+        # Optional Error catcher id of the error catch flow which will be executed when
+        # execution error happens in the task
+        # Corresponds to the JSON property `errorCatcherId`
         # @return [String]
-        attr_accessor :error_catcher_config_id
+        attr_accessor :error_catcher_id
       
         # 
         # Corresponds to the JSON property `externalTaskType`
@@ -4348,7 +4426,7 @@ module Google
           @creator_email = args[:creator_email] if args.key?(:creator_email)
           @description = args[:description] if args.key?(:description)
           @disable_strict_type_validation = args[:disable_strict_type_validation] if args.key?(:disable_strict_type_validation)
-          @error_catcher_config_id = args[:error_catcher_config_id] if args.key?(:error_catcher_config_id)
+          @error_catcher_id = args[:error_catcher_id] if args.key?(:error_catcher_id)
           @external_task_type = args[:external_task_type] if args.key?(:external_task_type)
           @failure_policy = args[:failure_policy] if args.key?(:failure_policy)
           @incoming_edge_count = args[:incoming_edge_count] if args.key?(:incoming_edge_count)
@@ -4427,7 +4505,7 @@ module Google
         end
       end
       
-      # Configuration detail of a trigger. Next available id: 18
+      # Configuration detail of a trigger. Next available id: 19
       class EnterpriseCrmFrontendsEventbusProtoTriggerConfig
         include Google::Apis::Core::Hashable
       
@@ -4459,11 +4537,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :enabled_clients
       
-        # Optional Error catcher config id of the error catch flow which will be
-        # executed when execution error happens in the task
-        # Corresponds to the JSON property `errorCatcherConfigId`
+        # Optional Error catcher id of the error catch flow which will be executed when
+        # execution error happens in the task
+        # Corresponds to the JSON property `errorCatcherId`
         # @return [String]
-        attr_accessor :error_catcher_config_id
+        attr_accessor :error_catcher_id
       
         # The user created label for a particular trigger.
         # Corresponds to the JSON property `label`
@@ -4537,7 +4615,7 @@ module Google
           @cloud_scheduler_config = args[:cloud_scheduler_config] if args.key?(:cloud_scheduler_config)
           @description = args[:description] if args.key?(:description)
           @enabled_clients = args[:enabled_clients] if args.key?(:enabled_clients)
-          @error_catcher_config_id = args[:error_catcher_config_id] if args.key?(:error_catcher_config_id)
+          @error_catcher_id = args[:error_catcher_id] if args.key?(:error_catcher_id)
           @label = args[:label] if args.key?(:label)
           @next_tasks_execution_policy = args[:next_tasks_execution_policy] if args.key?(:next_tasks_execution_policy)
           @pause_workflow_executions = args[:pause_workflow_executions] if args.key?(:pause_workflow_executions)
@@ -5843,6 +5921,31 @@ module Google
         end
       end
       
+      # Configuration detail of coordinate, it used for UI
+      class GoogleCloudIntegrationsV1alphaCoordinate
+        include Google::Apis::Core::Hashable
+      
+        # Required. X axis of the coordinate
+        # Corresponds to the JSON property `x`
+        # @return [Fixnum]
+        attr_accessor :x
+      
+        # Required. Y axis of the coordinate
+        # Corresponds to the JSON property `y`
+        # @return [Fixnum]
+        attr_accessor :y
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @x = args[:x] if args.key?(:x)
+          @y = args[:y] if args.key?(:y)
+        end
+      end
+      
       # Request for CreateAppsScriptProject rpc call.
       class GoogleCloudIntegrationsV1alphaCreateAppsScriptProjectRequest
         include Google::Apis::Core::Hashable
@@ -6036,11 +6139,11 @@ module Google
         attr_accessor :description
       
         # Required. An error catcher id is string representation for the error catcher
-        # config. Within a workflow, error_catch_id uniquely identifies an error catcher
-        # config among all error catcher configs for the workflow
-        # Corresponds to the JSON property `errorCatchId`
+        # config. Within a workflow, error_catcher_id uniquely identifies an error
+        # catcher config among all error catcher configs for the workflow
+        # Corresponds to the JSON property `errorCatcherId`
         # @return [String]
-        attr_accessor :error_catch_id
+        attr_accessor :error_catcher_id
       
         # Required. A number to uniquely identify each error catcher config within the
         # workflow on UI.
@@ -6052,6 +6155,11 @@ module Google
         # Corresponds to the JSON property `label`
         # @return [String]
         attr_accessor :label
+      
+        # Configuration detail of coordinate, it used for UI
+        # Corresponds to the JSON property `position`
+        # @return [Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaCoordinate]
+        attr_accessor :position
       
         # Required. The set of start tasks that are to be executed for the error catch
         # flow
@@ -6066,9 +6174,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @description = args[:description] if args.key?(:description)
-          @error_catch_id = args[:error_catch_id] if args.key?(:error_catch_id)
+          @error_catcher_id = args[:error_catcher_id] if args.key?(:error_catcher_id)
           @error_catcher_number = args[:error_catcher_number] if args.key?(:error_catcher_number)
           @label = args[:label] if args.key?(:label)
+          @position = args[:position] if args.key?(:position)
           @start_error_tasks = args[:start_error_tasks] if args.key?(:start_error_tasks)
         end
       end
@@ -8450,11 +8559,11 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Optional. Optional Error catcher config id of the error catch flow which will
-        # be executed when execution error happens in the task
-        # Corresponds to the JSON property `errorCatcherConfigId`
+        # Optional. Optional Error catcher id of the error catch flow which will be
+        # executed when execution error happens in the task
+        # Corresponds to the JSON property `errorCatcherId`
         # @return [String]
-        attr_accessor :error_catcher_config_id
+        attr_accessor :error_catcher_id
       
         # Optional. External task type of the task
         # Corresponds to the JSON property `externalTaskType`
@@ -8492,6 +8601,11 @@ module Google
         # Corresponds to the JSON property `parameters`
         # @return [Hash<String,Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaEventParameter>]
         attr_accessor :parameters
+      
+        # Configuration detail of coordinate, it used for UI
+        # Corresponds to the JSON property `position`
+        # @return [Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaCoordinate]
+        attr_accessor :position
       
         # Policy that dictates the behavior for the task after it completes successfully.
         # Corresponds to the JSON property `successPolicy`
@@ -8536,13 +8650,14 @@ module Google
         def update!(**args)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
-          @error_catcher_config_id = args[:error_catcher_config_id] if args.key?(:error_catcher_config_id)
+          @error_catcher_id = args[:error_catcher_id] if args.key?(:error_catcher_id)
           @external_task_type = args[:external_task_type] if args.key?(:external_task_type)
           @failure_policy = args[:failure_policy] if args.key?(:failure_policy)
           @json_validation_option = args[:json_validation_option] if args.key?(:json_validation_option)
           @next_tasks = args[:next_tasks] if args.key?(:next_tasks)
           @next_tasks_execution_policy = args[:next_tasks_execution_policy] if args.key?(:next_tasks_execution_policy)
           @parameters = args[:parameters] if args.key?(:parameters)
+          @position = args[:position] if args.key?(:position)
           @success_policy = args[:success_policy] if args.key?(:success_policy)
           @synchronous_call_failure_policy = args[:synchronous_call_failure_policy] if args.key?(:synchronous_call_failure_policy)
           @task = args[:task] if args.key?(:task)
@@ -8607,11 +8722,11 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Optional. Optional Error catcher config id of the error catch flow which will
-        # be executed when execution error happens in the task
-        # Corresponds to the JSON property `errorCatcherConfigId`
+        # Optional. Optional Error catcher id of the error catch flow which will be
+        # executed when execution error happens in the task
+        # Corresponds to the JSON property `errorCatcherId`
         # @return [String]
-        attr_accessor :error_catcher_config_id
+        attr_accessor :error_catcher_id
       
         # Optional. The user created label for a particular trigger.
         # Corresponds to the JSON property `label`
@@ -8622,6 +8737,11 @@ module Google
         # Corresponds to the JSON property `nextTasksExecutionPolicy`
         # @return [String]
         attr_accessor :next_tasks_execution_policy
+      
+        # Configuration detail of coordinate, it used for UI
+        # Corresponds to the JSON property `position`
+        # @return [Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaCoordinate]
+        attr_accessor :position
       
         # Optional. Configurable properties of the trigger, not to be confused with
         # integration parameters. E.g. "name" is a property for API triggers and "
@@ -8663,9 +8783,10 @@ module Google
           @alert_config = args[:alert_config] if args.key?(:alert_config)
           @cloud_scheduler_config = args[:cloud_scheduler_config] if args.key?(:cloud_scheduler_config)
           @description = args[:description] if args.key?(:description)
-          @error_catcher_config_id = args[:error_catcher_config_id] if args.key?(:error_catcher_config_id)
+          @error_catcher_id = args[:error_catcher_id] if args.key?(:error_catcher_id)
           @label = args[:label] if args.key?(:label)
           @next_tasks_execution_policy = args[:next_tasks_execution_policy] if args.key?(:next_tasks_execution_policy)
+          @position = args[:position] if args.key?(:position)
           @properties = args[:properties] if args.key?(:properties)
           @start_tasks = args[:start_tasks] if args.key?(:start_tasks)
           @trigger_id = args[:trigger_id] if args.key?(:trigger_id)
