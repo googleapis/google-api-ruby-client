@@ -1985,6 +1985,11 @@ module Google
       class PackageData
         include Google::Apis::Core::Hashable
       
+        # The architecture of the package.
+        # Corresponds to the JSON property `architecture`
+        # @return [String]
+        attr_accessor :architecture
+      
         # The cpe_uri in [cpe format] (https://cpe.mitre.org/specification/) in which
         # the vulnerability may manifest. Examples include distro or storage location
         # for vulnerable jar.
@@ -2058,6 +2063,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @architecture = args[:architecture] if args.key?(:architecture)
           @cpe_uri = args[:cpe_uri] if args.key?(:cpe_uri)
           @dependency_chain = args[:dependency_chain] if args.key?(:dependency_chain)
           @file_location = args[:file_location] if args.key?(:file_location)
