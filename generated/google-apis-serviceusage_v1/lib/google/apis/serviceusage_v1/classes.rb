@@ -1331,6 +1331,11 @@ module Google
       class Enum
         include Google::Apis::Core::Hashable
       
+        # The source edition string, only valid when syntax is SYNTAX_EDITIONS.
+        # Corresponds to the JSON property `edition`
+        # @return [String]
+        attr_accessor :edition
+      
         # Enum value definitions.
         # Corresponds to the JSON property `enumvalue`
         # @return [Array<Google::Apis::ServiceusageV1::EnumValue>]
@@ -1363,6 +1368,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @edition = args[:edition] if args.key?(:edition)
           @enumvalue = args[:enumvalue] if args.key?(:enumvalue)
           @name = args[:name] if args.key?(:name)
           @options = args[:options] if args.key?(:options)
@@ -4076,6 +4082,11 @@ module Google
       class Type
         include Google::Apis::Core::Hashable
       
+        # The source edition string, only valid when syntax is SYNTAX_EDITIONS.
+        # Corresponds to the JSON property `edition`
+        # @return [String]
+        attr_accessor :edition
+      
         # The list of fields.
         # Corresponds to the JSON property `fields`
         # @return [Array<Google::Apis::ServiceusageV1::Field>]
@@ -4113,6 +4124,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @edition = args[:edition] if args.key?(:edition)
           @fields = args[:fields] if args.key?(:fields)
           @name = args[:name] if args.key?(:name)
           @oneofs = args[:oneofs] if args.key?(:oneofs)
