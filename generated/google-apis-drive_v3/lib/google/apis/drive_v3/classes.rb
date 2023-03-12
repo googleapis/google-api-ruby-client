@@ -633,7 +633,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # An image file and cropping parameters from which a background image for this
-        # shared drive is set. This is a write only field; it can only be set on drive.
+        # shared drive is set. This is a write-only field; it can only be set on drive.
         # drives.update requests that don't set themeId. When specified, all fields of
         # the backgroundImageFile must be set.
         # Corresponds to the JSON property `backgroundImageFile`
@@ -650,8 +650,8 @@ module Google
         # @return [Google::Apis::DriveV3::Drive::Capabilities]
         attr_accessor :capabilities
       
-        # The color of this shared drive as an RGB hex string. It can only be set on a
-        # drive.drives.update request that does not set themeId.
+        # The color of this shared drive as an RGB hex string. It can only be set on
+        # drive.drives.update requests that don't set themeId.
         # Corresponds to the JSON property `colorRgb`
         # @return [String]
         attr_accessor :color_rgb
@@ -696,11 +696,11 @@ module Google
         # @return [Google::Apis::DriveV3::Drive::Restrictions]
         attr_accessor :restrictions
       
-        # The ID of the theme from which the background image and color will be set. The
-        # set of possible driveThemes can be retrieved from a drive.about.get response.
-        # When not specified on a drive.drives.create request, a random theme is chosen
-        # from which the background image and color are set. This is a write-only field;
-        # it can only be set on requests that don't set colorRgb or backgroundImageFile.
+        # The ID of the theme from which the background image and color are set. The set
+        # of possible driveThemes can be retrieved from a drive.about.get response. When
+        # not specified on a drive.drives.create request, a random theme is chosen from
+        # which the background image and color are set. This is a write-only field; it
+        # can only be set on requests that don't set colorRgb or backgroundImageFile.
         # Corresponds to the JSON property `themeId`
         # @return [String]
         attr_accessor :theme_id
@@ -726,7 +726,7 @@ module Google
         end
         
         # An image file and cropping parameters from which a background image for this
-        # shared drive is set. This is a write only field; it can only be set on drive.
+        # shared drive is set. This is a write-only field; it can only be set on drive.
         # drives.update requests that don't set themeId. When specified, all fields of
         # the backgroundImageFile must be set.
         class BackgroundImageFile

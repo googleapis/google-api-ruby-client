@@ -757,14 +757,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the metadate for a shared drive.
+        # Updates the metadata for a shared drive.
         # @param [String] drive_id
         #   The ID of the shared drive.
         # @param [Google::Apis::DriveV3::Drive] drive_object
         # @param [Boolean] use_domain_admin_access
-        #   Issue the request as a domain administrator; if set to true, then the
-        #   requester will be granted access if they are an administrator of the domain to
-        #   which the shared drive belongs.
+        #   Issue the request as a domain administrator. If set to true, then the
+        #   requester is granted access if they're an administrator of the domain to which
+        #   the shared drive belongs.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
