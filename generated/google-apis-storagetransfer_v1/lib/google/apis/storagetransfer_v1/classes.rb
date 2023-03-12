@@ -1519,6 +1519,17 @@ module Google
         # @return [Array<Google::Apis::StoragetransferV1::ErrorSummary>]
         attr_accessor :error_breakdowns
       
+        # Specifies the logging behavior for transfer operations. For cloud-to-cloud
+        # transfers, logs are sent to Cloud Logging. See [Read transfer logs](https://
+        # cloud.google.com/storage-transfer/docs/read-transfer-logs) for details. For
+        # transfers to or from a POSIX file system, logs are stored in the Cloud Storage
+        # bucket that is the source or sink of the transfer. See [Managing Transfer for
+        # on-premises jobs] (https://cloud.google.com/storage-transfer/docs/managing-on-
+        # prem-jobs#viewing-logs) for details.
+        # Corresponds to the JSON property `loggingConfig`
+        # @return [Google::Apis::StoragetransferV1::LoggingConfig]
+        attr_accessor :logging_config
+      
         # A globally unique ID assigned by the system.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -1571,6 +1582,7 @@ module Google
           @counters = args[:counters] if args.key?(:counters)
           @end_time = args[:end_time] if args.key?(:end_time)
           @error_breakdowns = args[:error_breakdowns] if args.key?(:error_breakdowns)
+          @logging_config = args[:logging_config] if args.key?(:logging_config)
           @name = args[:name] if args.key?(:name)
           @notification_config = args[:notification_config] if args.key?(:notification_config)
           @project_id = args[:project_id] if args.key?(:project_id)
