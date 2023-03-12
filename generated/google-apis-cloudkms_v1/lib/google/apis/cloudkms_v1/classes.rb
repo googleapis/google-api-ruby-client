@@ -649,6 +649,12 @@ module Google
         # @return [String]
         attr_accessor :destroy_time
       
+        # Output only. The root cause of the most recent external destruction failure.
+        # Only present if state is EXTERNAL_DESTRUCTION_FAILED.
+        # Corresponds to the JSON property `externalDestructionFailureReason`
+        # @return [String]
+        attr_accessor :external_destruction_failure_reason
+      
         # ExternalProtectionLevelOptions stores a group of additional fields for
         # configuring a CryptoKeyVersion that are specific to the EXTERNAL protection
         # level and EXTERNAL_VPC protection levels.
@@ -660,6 +666,12 @@ module Google
         # Corresponds to the JSON property `generateTime`
         # @return [String]
         attr_accessor :generate_time
+      
+        # Output only. The root cause of the most recent generation failure. Only
+        # present if state is GENERATION_FAILED.
+        # Corresponds to the JSON property `generationFailureReason`
+        # @return [String]
+        attr_accessor :generation_failure_reason
       
         # Output only. The root cause of the most recent import failure. Only present if
         # state is IMPORT_FAILED.
@@ -715,8 +727,10 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @destroy_event_time = args[:destroy_event_time] if args.key?(:destroy_event_time)
           @destroy_time = args[:destroy_time] if args.key?(:destroy_time)
+          @external_destruction_failure_reason = args[:external_destruction_failure_reason] if args.key?(:external_destruction_failure_reason)
           @external_protection_level_options = args[:external_protection_level_options] if args.key?(:external_protection_level_options)
           @generate_time = args[:generate_time] if args.key?(:generate_time)
+          @generation_failure_reason = args[:generation_failure_reason] if args.key?(:generation_failure_reason)
           @import_failure_reason = args[:import_failure_reason] if args.key?(:import_failure_reason)
           @import_job = args[:import_job] if args.key?(:import_job)
           @import_time = args[:import_time] if args.key?(:import_time)
@@ -915,6 +929,35 @@ module Google
         end
       end
       
+      # An EkmConfig is a singleton resource that represents configuration parameters
+      # that apply to all CryptoKeys and CryptoKeyVersions with a ProtectionLevel of
+      # EXTERNAL_VPC in a given project and location.
+      class EkmConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Resource name of the default EkmConnection. Setting this field to
+        # the empty string removes the default.
+        # Corresponds to the JSON property `defaultEkmConnection`
+        # @return [String]
+        attr_accessor :default_ekm_connection
+      
+        # Output only. The resource name for the EkmConfig in the format `projects/*/
+        # locations/*/ekmConfig`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_ekm_connection = args[:default_ekm_connection] if args.key?(:default_ekm_connection)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # An EkmConnection represents an individual EKM connection. It can be used for
       # creating CryptoKeys and CryptoKeyVersions with a ProtectionLevel of
       # EXTERNAL_VPC, as well as performing cryptographic operations using keys
@@ -927,10 +970,22 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Optional. Identifies the EKM Crypto Space that this EkmConnection maps to.
+        # Note: This field is required if KeyManagementMode is CLOUD_KMS.
+        # Corresponds to the JSON property `cryptoSpacePath`
+        # @return [String]
+        attr_accessor :crypto_space_path
+      
         # Optional. Etag of the currently stored EkmConnection.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
+      
+        # Optional. Describes who can perform control plane operations on the EKM. If
+        # unset, this defaults to MANUAL.
+        # Corresponds to the JSON property `keyManagementMode`
+        # @return [String]
+        attr_accessor :key_management_mode
       
         # Output only. The resource name for the EkmConnection in the format `projects/*/
         # locations/*/ekmConnections/*`.
@@ -952,7 +1007,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @crypto_space_path = args[:crypto_space_path] if args.key?(:crypto_space_path)
           @etag = args[:etag] if args.key?(:etag)
+          @key_management_mode = args[:key_management_mode] if args.key?(:key_management_mode)
           @name = args[:name] if args.key?(:name)
           @service_resolvers = args[:service_resolvers] if args.key?(:service_resolvers)
         end
