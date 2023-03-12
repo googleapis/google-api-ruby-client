@@ -125,6 +125,40 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Applies a Git commit to a Repository. The Repository must not have a value for
+        # `git_remote_settings.url`.
+        # @param [String] name
+        #   Required. The repository's name.
+        # @param [Google::Apis::DataformV1beta1::CommitRepositoryChangesRequest] commit_repository_changes_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataformV1beta1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataformV1beta1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def commit_repository_changes(name, commit_repository_changes_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+name}:commit', options)
+          command.request_representation = Google::Apis::DataformV1beta1::CommitRepositoryChangesRequest::Representation
+          command.request_object = commit_repository_changes_request_object
+          command.response_representation = Google::Apis::DataformV1beta1::Empty::Representation
+          command.response_class = Google::Apis::DataformV1beta1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a new Repository in a given project and location.
         # @param [String] parent
         #   Required. The location in which to create the repository. Must be in the
@@ -193,6 +227,47 @@ module Google
           command.response_class = Google::Apis::DataformV1beta1::Empty
           command.params['name'] = name unless name.nil?
           command.query['force'] = force unless force.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Fetches a Repository's history of changes. The Repository must not have a
+        # value for `git_remote_settings.url`.
+        # @param [String] name
+        #   Required. The repository's name.
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of paths to return. The server may return fewer items
+        #   than requested. If unspecified, the server will pick an appropriate default.
+        # @param [String] page_token
+        #   Optional. Page token received from a previous `FetchRepositoryHistory` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `FetchRepositoryHistory` must match the call that
+        #   provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataformV1beta1::FetchRepositoryHistoryResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataformV1beta1::FetchRepositoryHistoryResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def fetch_project_location_repository_history(name, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}:fetchHistory', options)
+          command.response_representation = Google::Apis::DataformV1beta1::FetchRepositoryHistoryResponse::Representation
+          command.response_class = Google::Apis::DataformV1beta1::FetchRepositoryHistoryResponse
+          command.params['name'] = name unless name.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -385,6 +460,94 @@ module Google
           command.response_class = Google::Apis::DataformV1beta1::Repository
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the contents of a given Repository directory. The Repository must not
+        # have a value for `git_remote_settings.url`.
+        # @param [String] name
+        #   Required. The repository's name.
+        # @param [String] commit_sha
+        #   Optional. The Commit SHA for the commit to query from. If unset, the directory
+        #   will be queried from HEAD.
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of paths to return. The server may return fewer items
+        #   than requested. If unspecified, the server will pick an appropriate default.
+        # @param [String] page_token
+        #   Optional. Page token received from a previous `
+        #   QueryRepositoryDirectoryContents` call. Provide this to retrieve the
+        #   subsequent page. When paginating, all other parameters provided to `
+        #   QueryRepositoryDirectoryContents` must match the call that provided the page
+        #   token.
+        # @param [String] path
+        #   Optional. The directory's full path including directory name, relative to root.
+        #   If left unset, the root is used.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataformV1beta1::QueryRepositoryDirectoryContentsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataformV1beta1::QueryRepositoryDirectoryContentsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def query_project_location_repository_directory_contents(name, commit_sha: nil, page_size: nil, page_token: nil, path: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}:queryDirectoryContents', options)
+          command.response_representation = Google::Apis::DataformV1beta1::QueryRepositoryDirectoryContentsResponse::Representation
+          command.response_class = Google::Apis::DataformV1beta1::QueryRepositoryDirectoryContentsResponse
+          command.params['name'] = name unless name.nil?
+          command.query['commitSha'] = commit_sha unless commit_sha.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['path'] = path unless path.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the contents of a file (inside a Repository). The Repository must not
+        # have a value for `git_remote_settings.url`.
+        # @param [String] name
+        #   Required. The repository's name.
+        # @param [String] commit_sha
+        #   Optional. The commit SHA for the commit to read from. If unset, the file will
+        #   be read from HEAD.
+        # @param [String] path
+        #   Required. Full file path to read including filename, from repository root.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataformV1beta1::ReadRepositoryFileResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataformV1beta1::ReadRepositoryFileResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def read_project_location_repository_file(name, commit_sha: nil, path: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}:readFile', options)
+          command.response_representation = Google::Apis::DataformV1beta1::ReadRepositoryFileResponse::Representation
+          command.response_class = Google::Apis::DataformV1beta1::ReadRepositoryFileResponse
+          command.params['name'] = name unless name.nil?
+          command.query['commitSha'] = commit_sha unless commit_sha.nil?
+          command.query['path'] = path unless path.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
