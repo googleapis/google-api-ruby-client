@@ -11726,8 +11726,8 @@ module Google
         # The ID of a supported feature. To add multiple values, use commas to separate
         # values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE -
         # WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE -
-        # SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling
-        # guest operating system features.
+        # SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE - TDX_CAPABLE For more information,
+        # see Enabling guest operating system features.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -13631,7 +13631,7 @@ module Google
         attr_accessor :port
       
         # The request path of the HTTP health check request. The default value is /.
-        # This field does not support query parameters.
+        # This field does not support query parameters. Must comply with RFC3986.
         # Corresponds to the JSON property `requestPath`
         # @return [String]
         attr_accessor :request_path
@@ -14336,6 +14336,7 @@ module Google
         attr_accessor :port
       
         # The request path of the HTTPS health check request. The default value is "/".
+        # Must comply with RFC3986.
         # Corresponds to the JSON property `requestPath`
         # @return [String]
         attr_accessor :request_path
