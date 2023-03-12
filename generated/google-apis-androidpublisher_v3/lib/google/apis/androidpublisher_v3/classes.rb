@@ -801,9 +801,8 @@ module Google
         end
       end
       
-      # LINT.IfChange A group of devices. A group is defined by a set of device
-      # selectors. A device belongs to the group if it matches any selector (logical
-      # OR).
+      # A group of devices. A group is defined by a set of device selectors. A device
+      # belongs to the group if it matches any selector (logical OR).
       class DeviceGroup
         include Google::Apis::Core::Hashable
       
@@ -1076,8 +1075,7 @@ module Google
         end
       end
       
-      # LINT.IfChange Configuration describing device targeting criteria for the
-      # content of an app.
+      # Configuration describing device targeting criteria for the content of an app.
       class DeviceTierConfig
         include Google::Apis::Core::Hashable
       
