@@ -215,6 +215,962 @@ module Google
         end
       end
       
+      # Specification for the BigQuery connection.
+      class GoogleCloudDatacatalogV1BigQueryConnectionSpec
+        include Google::Apis::Core::Hashable
+      
+        # Specification for the BigQuery connection to a Cloud SQL instance.
+        # Corresponds to the JSON property `cloudSql`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec]
+        attr_accessor :cloud_sql
+      
+        # The type of the BigQuery connection.
+        # Corresponds to the JSON property `connectionType`
+        # @return [String]
+        attr_accessor :connection_type
+      
+        # True if there are credentials attached to the BigQuery connection; false
+        # otherwise.
+        # Corresponds to the JSON property `hasCredential`
+        # @return [Boolean]
+        attr_accessor :has_credential
+        alias_method :has_credential?, :has_credential
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_sql = args[:cloud_sql] if args.key?(:cloud_sql)
+          @connection_type = args[:connection_type] if args.key?(:connection_type)
+          @has_credential = args[:has_credential] if args.key?(:has_credential)
+        end
+      end
+      
+      # Specification for a group of BigQuery tables with the `[prefix]YYYYMMDD` name
+      # pattern. For more information, see [Introduction to partitioned tables] (https:
+      # //cloud.google.com/bigquery/docs/partitioned-tables#
+      # partitioning_versus_sharding).
+      class GoogleCloudDatacatalogV1BigQueryDateShardedSpec
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The Data Catalog resource name of the dataset entry the current
+        # table belongs to. For example: `projects/`PROJECT_ID`/locations/`LOCATION`/
+        # entrygroups/`ENTRY_GROUP_ID`/entries/`ENTRY_ID``.
+        # Corresponds to the JSON property `dataset`
+        # @return [String]
+        attr_accessor :dataset
+      
+        # Output only. BigQuery resource name of the latest shard.
+        # Corresponds to the JSON property `latestShardResource`
+        # @return [String]
+        attr_accessor :latest_shard_resource
+      
+        # Output only. Total number of shards.
+        # Corresponds to the JSON property `shardCount`
+        # @return [Fixnum]
+        attr_accessor :shard_count
+      
+        # Output only. The table name prefix of the shards. The name of any given shard
+        # is `[table_prefix]YYYYMMDD`. For example, for the `MyTable20180101` shard, the
+        # `table_prefix` is `MyTable`.
+        # Corresponds to the JSON property `tablePrefix`
+        # @return [String]
+        attr_accessor :table_prefix
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataset = args[:dataset] if args.key?(:dataset)
+          @latest_shard_resource = args[:latest_shard_resource] if args.key?(:latest_shard_resource)
+          @shard_count = args[:shard_count] if args.key?(:shard_count)
+          @table_prefix = args[:table_prefix] if args.key?(:table_prefix)
+        end
+      end
+      
+      # Fields specific for BigQuery routines.
+      class GoogleCloudDatacatalogV1BigQueryRoutineSpec
+        include Google::Apis::Core::Hashable
+      
+        # Paths of the imported libraries.
+        # Corresponds to the JSON property `importedLibraries`
+        # @return [Array<String>]
+        attr_accessor :imported_libraries
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @imported_libraries = args[:imported_libraries] if args.key?(:imported_libraries)
+        end
+      end
+      
+      # Describes a BigQuery table.
+      class GoogleCloudDatacatalogV1BigQueryTableSpec
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The table source type.
+        # Corresponds to the JSON property `tableSourceType`
+        # @return [String]
+        attr_accessor :table_source_type
+      
+        # Normal BigQuery table specification.
+        # Corresponds to the JSON property `tableSpec`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1TableSpec]
+        attr_accessor :table_spec
+      
+        # Table view specification.
+        # Corresponds to the JSON property `viewSpec`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1ViewSpec]
+        attr_accessor :view_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @table_source_type = args[:table_source_type] if args.key?(:table_source_type)
+          @table_spec = args[:table_spec] if args.key?(:table_spec)
+          @view_spec = args[:view_spec] if args.key?(:view_spec)
+        end
+      end
+      
+      # Business Context of the entry.
+      class GoogleCloudDatacatalogV1BusinessContext
+        include Google::Apis::Core::Hashable
+      
+        # Contact people for the entry.
+        # Corresponds to the JSON property `contacts`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1Contacts]
+        attr_accessor :contacts
+      
+        # Entry overview fields for rich text descriptions of entries.
+        # Corresponds to the JSON property `entryOverview`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1EntryOverview]
+        attr_accessor :entry_overview
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @contacts = args[:contacts] if args.key?(:contacts)
+          @entry_overview = args[:entry_overview] if args.key?(:entry_overview)
+        end
+      end
+      
+      # Specification for the BigQuery connection to a Cloud SQL instance.
+      class GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec
+        include Google::Apis::Core::Hashable
+      
+        # Database name.
+        # Corresponds to the JSON property `database`
+        # @return [String]
+        attr_accessor :database
+      
+        # Cloud SQL instance ID in the format of `project:location:instance`.
+        # Corresponds to the JSON property `instanceId`
+        # @return [String]
+        attr_accessor :instance_id
+      
+        # Type of the Cloud SQL database.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @database = args[:database] if args.key?(:database)
+          @instance_id = args[:instance_id] if args.key?(:instance_id)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # A column within a schema. Columns can be nested inside other columns.
+      class GoogleCloudDatacatalogV1ColumnSchema
+        include Google::Apis::Core::Hashable
+      
+        # Required. Name of the column. Must be a UTF-8 string without dots (.). The
+        # maximum size is 64 bytes.
+        # Corresponds to the JSON property `column`
+        # @return [String]
+        attr_accessor :column
+      
+        # Optional. Default value for the column.
+        # Corresponds to the JSON property `defaultValue`
+        # @return [String]
+        attr_accessor :default_value
+      
+        # Optional. Description of the column. Default value is an empty string. The
+        # description must be a UTF-8 string with the maximum size of 2000 bytes.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. Garbage collection policy for the column or column family. Applies
+        # to systems like Cloud Bigtable.
+        # Corresponds to the JSON property `gcRule`
+        # @return [String]
+        attr_accessor :gc_rule
+      
+        # Optional. Most important inclusion of this column.
+        # Corresponds to the JSON property `highestIndexingType`
+        # @return [String]
+        attr_accessor :highest_indexing_type
+      
+        # Column info specific to Looker System.
+        # Corresponds to the JSON property `lookerColumnSpec`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec]
+        attr_accessor :looker_column_spec
+      
+        # Optional. A column's mode indicates whether values in this column are required,
+        # nullable, or repeated. Only `NULLABLE`, `REQUIRED`, and `REPEATED` values are
+        # supported. Default mode is `NULLABLE`.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
+        # Optional. Ordinal position
+        # Corresponds to the JSON property `ordinalPosition`
+        # @return [Fixnum]
+        attr_accessor :ordinal_position
+      
+        # Optional. Schema of sub-columns. A column can have zero or more sub-columns.
+        # Corresponds to the JSON property `subcolumns`
+        # @return [Array<Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1ColumnSchema>]
+        attr_accessor :subcolumns
+      
+        # Required. Type of the column. Must be a UTF-8 string with the maximum size of
+        # 128 bytes.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @column = args[:column] if args.key?(:column)
+          @default_value = args[:default_value] if args.key?(:default_value)
+          @description = args[:description] if args.key?(:description)
+          @gc_rule = args[:gc_rule] if args.key?(:gc_rule)
+          @highest_indexing_type = args[:highest_indexing_type] if args.key?(:highest_indexing_type)
+          @looker_column_spec = args[:looker_column_spec] if args.key?(:looker_column_spec)
+          @mode = args[:mode] if args.key?(:mode)
+          @ordinal_position = args[:ordinal_position] if args.key?(:ordinal_position)
+          @subcolumns = args[:subcolumns] if args.key?(:subcolumns)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Column info specific to Looker System.
+      class GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec
+        include Google::Apis::Core::Hashable
+      
+        # Looker specific column type of this column.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Common statistics on the entry's usage. They can be set on any system.
+      class GoogleCloudDatacatalogV1CommonUsageStats
+        include Google::Apis::Core::Hashable
+      
+        # View count in source system.
+        # Corresponds to the JSON property `viewCount`
+        # @return [Fixnum]
+        attr_accessor :view_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @view_count = args[:view_count] if args.key?(:view_count)
+        end
+      end
+      
+      # Contact people for the entry.
+      class GoogleCloudDatacatalogV1Contacts
+        include Google::Apis::Core::Hashable
+      
+        # The list of contact people for the entry.
+        # Corresponds to the JSON property `people`
+        # @return [Array<Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1ContactsPerson>]
+        attr_accessor :people
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @people = args[:people] if args.key?(:people)
+        end
+      end
+      
+      # A contact person for the entry.
+      class GoogleCloudDatacatalogV1ContactsPerson
+        include Google::Apis::Core::Hashable
+      
+        # Designation of the person, for example, Data Steward.
+        # Corresponds to the JSON property `designation`
+        # @return [String]
+        attr_accessor :designation
+      
+        # Email of the person in the format of `john.doe@xyz`, ``, or `John Doe`.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @designation = args[:designation] if args.key?(:designation)
+          @email = args[:email] if args.key?(:email)
+        end
+      end
+      
+      # Physical location of an entry.
+      class GoogleCloudDatacatalogV1DataSource
+        include Google::Apis::Core::Hashable
+      
+        # Full name of a resource as defined by the service. For example: `//bigquery.
+        # googleapis.com/projects/`PROJECT_ID`/locations/`LOCATION`/datasets/`DATASET_ID`
+        # /tables/`TABLE_ID``
+        # Corresponds to the JSON property `resource`
+        # @return [String]
+        attr_accessor :resource
+      
+        # Service that physically stores the data.
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        # Output only. Data Catalog entry name, if applicable.
+        # Corresponds to the JSON property `sourceEntry`
+        # @return [String]
+        attr_accessor :source_entry
+      
+        # Details the properties of the underlying storage.
+        # Corresponds to the JSON property `storageProperties`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1StorageProperties]
+        attr_accessor :storage_properties
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource = args[:resource] if args.key?(:resource)
+          @service = args[:service] if args.key?(:service)
+          @source_entry = args[:source_entry] if args.key?(:source_entry)
+          @storage_properties = args[:storage_properties] if args.key?(:storage_properties)
+        end
+      end
+      
+      # Specification that applies to a data source connection. Valid only for entries
+      # with the `DATA_SOURCE_CONNECTION` type. Only one of internal specs can be set
+      # at the time, and cannot be changed later.
+      class GoogleCloudDatacatalogV1DataSourceConnectionSpec
+        include Google::Apis::Core::Hashable
+      
+        # Specification for the BigQuery connection.
+        # Corresponds to the JSON property `bigqueryConnectionSpec`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1BigQueryConnectionSpec]
+        attr_accessor :bigquery_connection_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bigquery_connection_spec = args[:bigquery_connection_spec] if args.key?(:bigquery_connection_spec)
+        end
+      end
+      
+      # Specification that applies to a table resource. Valid only for entries with
+      # the `TABLE` type.
+      class GoogleCloudDatacatalogV1DatabaseTableSpec
+        include Google::Apis::Core::Hashable
+      
+        # Specification that applies to database view.
+        # Corresponds to the JSON property `databaseViewSpec`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec]
+        attr_accessor :database_view_spec
+      
+        # Entry specification for a Dataplex table.
+        # Corresponds to the JSON property `dataplexTable`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1DataplexTableSpec]
+        attr_accessor :dataplex_table
+      
+        # Type of this table.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @database_view_spec = args[:database_view_spec] if args.key?(:database_view_spec)
+          @dataplex_table = args[:dataplex_table] if args.key?(:dataplex_table)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Specification that applies to database view.
+      class GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec
+        include Google::Apis::Core::Hashable
+      
+        # Name of a singular table this view reflects one to one.
+        # Corresponds to the JSON property `baseTable`
+        # @return [String]
+        attr_accessor :base_table
+      
+        # SQL query used to generate this view.
+        # Corresponds to the JSON property `sqlQuery`
+        # @return [String]
+        attr_accessor :sql_query
+      
+        # Type of this view.
+        # Corresponds to the JSON property `viewType`
+        # @return [String]
+        attr_accessor :view_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @base_table = args[:base_table] if args.key?(:base_table)
+          @sql_query = args[:sql_query] if args.key?(:sql_query)
+          @view_type = args[:view_type] if args.key?(:view_type)
+        end
+      end
+      
+      # External table registered by Dataplex. Dataplex publishes data discovered from
+      # an asset into multiple other systems (BigQuery, DPMS) in form of tables. We
+      # call them "external tables". External tables are also synced into the Data
+      # Catalog. This message contains pointers to those external tables (fully
+      # qualified name, resource name et cetera) within the Data Catalog.
+      class GoogleCloudDatacatalogV1DataplexExternalTable
+        include Google::Apis::Core::Hashable
+      
+        # Name of the Data Catalog entry representing the external table.
+        # Corresponds to the JSON property `dataCatalogEntry`
+        # @return [String]
+        attr_accessor :data_catalog_entry
+      
+        # Fully qualified name (FQN) of the external table.
+        # Corresponds to the JSON property `fullyQualifiedName`
+        # @return [String]
+        attr_accessor :fully_qualified_name
+      
+        # Google Cloud resource name of the external table.
+        # Corresponds to the JSON property `googleCloudResource`
+        # @return [String]
+        attr_accessor :google_cloud_resource
+      
+        # Service in which the external table is registered.
+        # Corresponds to the JSON property `system`
+        # @return [String]
+        attr_accessor :system
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_catalog_entry = args[:data_catalog_entry] if args.key?(:data_catalog_entry)
+          @fully_qualified_name = args[:fully_qualified_name] if args.key?(:fully_qualified_name)
+          @google_cloud_resource = args[:google_cloud_resource] if args.key?(:google_cloud_resource)
+          @system = args[:system] if args.key?(:system)
+        end
+      end
+      
+      # Entry specyfication for a Dataplex fileset.
+      class GoogleCloudDatacatalogV1DataplexFilesetSpec
+        include Google::Apis::Core::Hashable
+      
+        # Common Dataplex fields.
+        # Corresponds to the JSON property `dataplexSpec`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1DataplexSpec]
+        attr_accessor :dataplex_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataplex_spec = args[:dataplex_spec] if args.key?(:dataplex_spec)
+        end
+      end
+      
+      # Common Dataplex fields.
+      class GoogleCloudDatacatalogV1DataplexSpec
+        include Google::Apis::Core::Hashable
+      
+        # Fully qualified resource name of an asset in Dataplex, to which the underlying
+        # data source (Cloud Storage bucket or BigQuery dataset) of the entity is
+        # attached.
+        # Corresponds to the JSON property `asset`
+        # @return [String]
+        attr_accessor :asset
+      
+        # Compression format of the data, e.g., zip, gzip etc.
+        # Corresponds to the JSON property `compressionFormat`
+        # @return [String]
+        attr_accessor :compression_format
+      
+        # Native schema used by a resource represented as an entry. Used by query
+        # engines for deserializing and parsing source data.
+        # Corresponds to the JSON property `dataFormat`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1PhysicalSchema]
+        attr_accessor :data_format
+      
+        # Project ID of the underlying Cloud Storage or BigQuery data. Note that this
+        # may not be the same project as the correspondingly Dataplex lake / zone /
+        # asset.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @asset = args[:asset] if args.key?(:asset)
+          @compression_format = args[:compression_format] if args.key?(:compression_format)
+          @data_format = args[:data_format] if args.key?(:data_format)
+          @project_id = args[:project_id] if args.key?(:project_id)
+        end
+      end
+      
+      # Entry specification for a Dataplex table.
+      class GoogleCloudDatacatalogV1DataplexTableSpec
+        include Google::Apis::Core::Hashable
+      
+        # Common Dataplex fields.
+        # Corresponds to the JSON property `dataplexSpec`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1DataplexSpec]
+        attr_accessor :dataplex_spec
+      
+        # List of external tables registered by Dataplex in other systems based on the
+        # same underlying data. External tables allow to query this data in those
+        # systems.
+        # Corresponds to the JSON property `externalTables`
+        # @return [Array<Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1DataplexExternalTable>]
+        attr_accessor :external_tables
+      
+        # Indicates if the table schema is managed by the user or not.
+        # Corresponds to the JSON property `userManaged`
+        # @return [Boolean]
+        attr_accessor :user_managed
+        alias_method :user_managed?, :user_managed
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataplex_spec = args[:dataplex_spec] if args.key?(:dataplex_spec)
+          @external_tables = args[:external_tables] if args.key?(:external_tables)
+          @user_managed = args[:user_managed] if args.key?(:user_managed)
+        end
+      end
+      
+      # Wrapper for any item that can be contained in the dump.
+      class GoogleCloudDatacatalogV1DumpItem
+        include Google::Apis::Core::Hashable
+      
+        # Wrapper containing Entry and information about Tags that should and should not
+        # be attached to it.
+        # Corresponds to the JSON property `taggedEntry`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1TaggedEntry]
+        attr_accessor :tagged_entry
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tagged_entry = args[:tagged_entry] if args.key?(:tagged_entry)
+        end
+      end
+      
+      # Entry metadata. A Data Catalog entry represents another resource in Google
+      # Cloud Platform (such as a BigQuery dataset or a Pub/Sub topic) or outside of
+      # it. You can use the `linked_resource` field in the entry resource to refer to
+      # the original resource ID of the source system. An entry resource contains
+      # resource details, for example, its schema. Additionally, you can attach
+      # flexible metadata to an entry in the form of a Tag.
+      class GoogleCloudDatacatalogV1Entry
+        include Google::Apis::Core::Hashable
+      
+        # Specification for a group of BigQuery tables with the `[prefix]YYYYMMDD` name
+        # pattern. For more information, see [Introduction to partitioned tables] (https:
+        # //cloud.google.com/bigquery/docs/partitioned-tables#
+        # partitioning_versus_sharding).
+        # Corresponds to the JSON property `bigqueryDateShardedSpec`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1BigQueryDateShardedSpec]
+        attr_accessor :bigquery_date_sharded_spec
+      
+        # Describes a BigQuery table.
+        # Corresponds to the JSON property `bigqueryTableSpec`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1BigQueryTableSpec]
+        attr_accessor :bigquery_table_spec
+      
+        # Business Context of the entry.
+        # Corresponds to the JSON property `businessContext`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1BusinessContext]
+        attr_accessor :business_context
+      
+        # Physical location of an entry.
+        # Corresponds to the JSON property `dataSource`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1DataSource]
+        attr_accessor :data_source
+      
+        # Specification that applies to a data source connection. Valid only for entries
+        # with the `DATA_SOURCE_CONNECTION` type. Only one of internal specs can be set
+        # at the time, and cannot be changed later.
+        # Corresponds to the JSON property `dataSourceConnectionSpec`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1DataSourceConnectionSpec]
+        attr_accessor :data_source_connection_spec
+      
+        # Specification that applies to a table resource. Valid only for entries with
+        # the `TABLE` type.
+        # Corresponds to the JSON property `databaseTableSpec`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1DatabaseTableSpec]
+        attr_accessor :database_table_spec
+      
+        # Entry description that can consist of several sentences or paragraphs that
+        # describe entry contents. The description must not contain Unicode non-
+        # characters as well as C0 and C1 control codes except tabs (HT), new lines (LF),
+        # carriage returns (CR), and page breaks (FF). The maximum size is 2000 bytes
+        # when encoded in UTF-8. Default value is an empty string.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Display name of an entry. The maximum size is 500 bytes when encoded in UTF-8.
+        # Default value is an empty string.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Specification that applies to a fileset. Valid only for entries with the '
+        # FILESET' type.
+        # Corresponds to the JSON property `filesetSpec`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1FilesetSpec]
+        attr_accessor :fileset_spec
+      
+        # Fully qualified name (FQN) of the resource. Set automatically for entries
+        # representing resources from synced systems. Settable only during creation and
+        # read-only afterwards. Can be used for search and lookup of the entries. FQNs
+        # take two forms: * For non-regionalized resources: ``SYSTEM`:`PROJECT`.`
+        # PATH_TO_RESOURCE_SEPARATED_WITH_DOTS`` * For regionalized resources: ``SYSTEM`:
+        # `PROJECT`.`LOCATION_ID`.`PATH_TO_RESOURCE_SEPARATED_WITH_DOTS`` Example for a
+        # DPMS table: `dataproc_metastore:`PROJECT_ID`.`LOCATION_ID`.`INSTANCE_ID`.`
+        # DATABASE_ID`.`TABLE_ID``
+        # Corresponds to the JSON property `fullyQualifiedName`
+        # @return [String]
+        attr_accessor :fully_qualified_name
+      
+        # Describes a Cloud Storage fileset entry.
+        # Corresponds to the JSON property `gcsFilesetSpec`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1GcsFilesetSpec]
+        attr_accessor :gcs_fileset_spec
+      
+        # Output only. Indicates the entry's source system that Data Catalog integrates
+        # with, such as BigQuery, Pub/Sub, or Dataproc Metastore.
+        # Corresponds to the JSON property `integratedSystem`
+        # @return [String]
+        attr_accessor :integrated_system
+      
+        # Cloud labels attached to the entry. In Data Catalog, you can create and modify
+        # labels attached only to custom entries. Synced entries have unmodifiable
+        # labels that come from the source system.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # The resource this metadata entry refers to. For Google Cloud Platform
+        # resources, `linked_resource` is the [Full Resource Name] (https://cloud.google.
+        # com/apis/design/resource_names#full_resource_name). For example, the `
+        # linked_resource` for a table resource from BigQuery is: `//bigquery.googleapis.
+        # com/projects/`PROJECT_ID`/datasets/`DATASET_ID`/tables/`TABLE_ID`` Output only
+        # when the entry is one of the types in the `EntryType` enum. For entries with a
+        # `user_specified_type`, this field is optional and defaults to an empty string.
+        # The resource string must contain only letters (a-z, A-Z), numbers (0-9),
+        # underscores (_), periods (.), colons (:), slashes (/), dashes (-), and hashes (
+        # #). The maximum size is 200 bytes when encoded in UTF-8.
+        # Corresponds to the JSON property `linkedResource`
+        # @return [String]
+        attr_accessor :linked_resource
+      
+        # Specification that applies to entries that are part `LOOKER` system (
+        # user_specified_type)
+        # Corresponds to the JSON property `lookerSystemSpec`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1LookerSystemSpec]
+        attr_accessor :looker_system_spec
+      
+        # Output only. The resource name of an entry in URL format. Note: The entry
+        # itself and its child resources might not be stored in the location specified
+        # in its name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Entry metadata relevant only to the user and private to them.
+        # Corresponds to the JSON property `personalDetails`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1PersonalDetails]
+        attr_accessor :personal_details
+      
+        # Specification that applies to a routine. Valid only for entries with the `
+        # ROUTINE` type.
+        # Corresponds to the JSON property `routineSpec`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1RoutineSpec]
+        attr_accessor :routine_spec
+      
+        # Represents a schema, for example, a BigQuery, GoogleSQL, or Avro schema.
+        # Corresponds to the JSON property `schema`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1Schema]
+        attr_accessor :schema
+      
+        # Timestamps associated with this resource in a particular system.
+        # Corresponds to the JSON property `sourceSystemTimestamps`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1SystemTimestamps]
+        attr_accessor :source_system_timestamps
+      
+        # Specification that applies to entries that are part `SQL_DATABASE` system (
+        # user_specified_type)
+        # Corresponds to the JSON property `sqlDatabaseSystemSpec`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1SqlDatabaseSystemSpec]
+        attr_accessor :sql_database_system_spec
+      
+        # The type of the entry. Only used for entries with types listed in the `
+        # EntryType` enum. Currently, only `FILESET` enum value is allowed. All other
+        # entries created in Data Catalog must use the `user_specified_type`.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # The set of all usage signals that Data Catalog stores. Note: Usually, these
+        # signals are updated daily. In rare cases, an update may fail but will be
+        # performed again on the next day.
+        # Corresponds to the JSON property `usageSignal`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1UsageSignal]
+        attr_accessor :usage_signal
+      
+        # Indicates the entry's source system that Data Catalog doesn't automatically
+        # integrate with. The `user_specified_system` string has the following
+        # limitations: * Is case insensitive. * Must begin with a letter or underscore. *
+        # Can only contain letters, numbers, and underscores. * Must be at least 1
+        # character and at most 64 characters long.
+        # Corresponds to the JSON property `userSpecifiedSystem`
+        # @return [String]
+        attr_accessor :user_specified_system
+      
+        # Custom entry type that doesn't match any of the values allowed for input and
+        # listed in the `EntryType` enum. When creating an entry, first check the type
+        # values in the enum. If there are no appropriate types for the new entry,
+        # provide a custom value, for example, `my_special_type`. The `
+        # user_specified_type` string has the following limitations: * Is case
+        # insensitive. * Must begin with a letter or underscore. * Can only contain
+        # letters, numbers, and underscores. * Must be at least 1 character and at most
+        # 64 characters long.
+        # Corresponds to the JSON property `userSpecifiedType`
+        # @return [String]
+        attr_accessor :user_specified_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bigquery_date_sharded_spec = args[:bigquery_date_sharded_spec] if args.key?(:bigquery_date_sharded_spec)
+          @bigquery_table_spec = args[:bigquery_table_spec] if args.key?(:bigquery_table_spec)
+          @business_context = args[:business_context] if args.key?(:business_context)
+          @data_source = args[:data_source] if args.key?(:data_source)
+          @data_source_connection_spec = args[:data_source_connection_spec] if args.key?(:data_source_connection_spec)
+          @database_table_spec = args[:database_table_spec] if args.key?(:database_table_spec)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @fileset_spec = args[:fileset_spec] if args.key?(:fileset_spec)
+          @fully_qualified_name = args[:fully_qualified_name] if args.key?(:fully_qualified_name)
+          @gcs_fileset_spec = args[:gcs_fileset_spec] if args.key?(:gcs_fileset_spec)
+          @integrated_system = args[:integrated_system] if args.key?(:integrated_system)
+          @labels = args[:labels] if args.key?(:labels)
+          @linked_resource = args[:linked_resource] if args.key?(:linked_resource)
+          @looker_system_spec = args[:looker_system_spec] if args.key?(:looker_system_spec)
+          @name = args[:name] if args.key?(:name)
+          @personal_details = args[:personal_details] if args.key?(:personal_details)
+          @routine_spec = args[:routine_spec] if args.key?(:routine_spec)
+          @schema = args[:schema] if args.key?(:schema)
+          @source_system_timestamps = args[:source_system_timestamps] if args.key?(:source_system_timestamps)
+          @sql_database_system_spec = args[:sql_database_system_spec] if args.key?(:sql_database_system_spec)
+          @type = args[:type] if args.key?(:type)
+          @usage_signal = args[:usage_signal] if args.key?(:usage_signal)
+          @user_specified_system = args[:user_specified_system] if args.key?(:user_specified_system)
+          @user_specified_type = args[:user_specified_type] if args.key?(:user_specified_type)
+        end
+      end
+      
+      # Entry overview fields for rich text descriptions of entries.
+      class GoogleCloudDatacatalogV1EntryOverview
+        include Google::Apis::Core::Hashable
+      
+        # Entry overview with support for rich text. The overview must only contain
+        # Unicode characters, and should be formatted using HTML. The maximum length is
+        # 10 MiB as this value holds HTML descriptions including encoded images. The
+        # maximum length of the text without images is 100 KiB.
+        # Corresponds to the JSON property `overview`
+        # @return [String]
+        attr_accessor :overview
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @overview = args[:overview] if args.key?(:overview)
+        end
+      end
+      
+      # Specification that applies to a fileset. Valid only for entries with the '
+      # FILESET' type.
+      class GoogleCloudDatacatalogV1FilesetSpec
+        include Google::Apis::Core::Hashable
+      
+        # Entry specyfication for a Dataplex fileset.
+        # Corresponds to the JSON property `dataplexFileset`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1DataplexFilesetSpec]
+        attr_accessor :dataplex_fileset
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataplex_fileset = args[:dataplex_fileset] if args.key?(:dataplex_fileset)
+        end
+      end
+      
+      # Specification of a single file in Cloud Storage.
+      class GoogleCloudDatacatalogV1GcsFileSpec
+        include Google::Apis::Core::Hashable
+      
+        # Required. Full file path. Example: `gs://bucket_name/a/b.txt`.
+        # Corresponds to the JSON property `filePath`
+        # @return [String]
+        attr_accessor :file_path
+      
+        # Timestamps associated with this resource in a particular system.
+        # Corresponds to the JSON property `gcsTimestamps`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1SystemTimestamps]
+        attr_accessor :gcs_timestamps
+      
+        # Output only. File size in bytes.
+        # Corresponds to the JSON property `sizeBytes`
+        # @return [Fixnum]
+        attr_accessor :size_bytes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_path = args[:file_path] if args.key?(:file_path)
+          @gcs_timestamps = args[:gcs_timestamps] if args.key?(:gcs_timestamps)
+          @size_bytes = args[:size_bytes] if args.key?(:size_bytes)
+        end
+      end
+      
+      # Describes a Cloud Storage fileset entry.
+      class GoogleCloudDatacatalogV1GcsFilesetSpec
+        include Google::Apis::Core::Hashable
+      
+        # Required. Patterns to identify a set of files in Google Cloud Storage. For
+        # more information, see [Wildcard Names] (https://cloud.google.com/storage/docs/
+        # gsutil/addlhelp/WildcardNames). Note: Currently, bucket wildcards are not
+        # supported. Examples of valid `file_patterns`: * `gs://bucket_name/dir/*`:
+        # matches all files in `bucket_name/dir` directory * `gs://bucket_name/dir/**`:
+        # matches all files in `bucket_name/dir` and all subdirectories * `gs://
+        # bucket_name/file*`: matches files prefixed by `file` in `bucket_name` * `gs://
+        # bucket_name/??.txt`: matches files with two characters followed by `.txt` in `
+        # bucket_name` * `gs://bucket_name/[aeiou].txt`: matches files that contain a
+        # single vowel character followed by `.txt` in `bucket_name` * `gs://bucket_name/
+        # [a-m].txt`: matches files that contain `a`, `b`, ... or `m` followed by `.txt`
+        # in `bucket_name` * `gs://bucket_name/a/*/b`: matches all files in `bucket_name`
+        # that match the `a/*/b` pattern, such as `a/c/b`, `a/d/b` * `gs://
+        # another_bucket/a.txt`: matches `gs://another_bucket/a.txt` You can combine
+        # wildcards to match complex sets of files, for example: `gs://bucket_name/[a-m]?
+        # ?.j*g`
+        # Corresponds to the JSON property `filePatterns`
+        # @return [Array<String>]
+        attr_accessor :file_patterns
+      
+        # Output only. Sample files contained in this fileset, not all files contained
+        # in this fileset are represented here.
+        # Corresponds to the JSON property `sampleGcsFileSpecs`
+        # @return [Array<Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1GcsFileSpec>]
+        attr_accessor :sample_gcs_file_specs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_patterns = args[:file_patterns] if args.key?(:file_patterns)
+          @sample_gcs_file_specs = args[:sample_gcs_file_specs] if args.key?(:sample_gcs_file_specs)
+        end
+      end
+      
       # Metadata message for long-running operation returned by the ImportEntries.
       class GoogleCloudDatacatalogV1ImportEntriesMetadata
         include Google::Apis::Core::Hashable
@@ -268,20 +1224,41 @@ module Google
         end
       end
       
-      # Long-running operation metadata message returned by the ReconcileTags.
-      class GoogleCloudDatacatalogV1ReconcileTagsMetadata
+      # Specification that applies to entries that are part `LOOKER` system (
+      # user_specified_type)
+      class GoogleCloudDatacatalogV1LookerSystemSpec
         include Google::Apis::Core::Hashable
       
-        # Maps the name of each tagged column (or empty string for a sole entry) to
-        # tagging operation status.
-        # Corresponds to the JSON property `errors`
-        # @return [Hash<String,Google::Apis::DatacatalogV1beta1::Status>]
-        attr_accessor :errors
-      
-        # State of the reconciliation operation.
-        # Corresponds to the JSON property `state`
+        # Name of the parent Looker Instance. Empty if it does not exist.
+        # Corresponds to the JSON property `parentInstanceDisplayName`
         # @return [String]
-        attr_accessor :state
+        attr_accessor :parent_instance_display_name
+      
+        # ID of the parent Looker Instance. Empty if it does not exist. Example value: `
+        # someinstance.looker.com`
+        # Corresponds to the JSON property `parentInstanceId`
+        # @return [String]
+        attr_accessor :parent_instance_id
+      
+        # Name of the parent Model. Empty if it does not exist.
+        # Corresponds to the JSON property `parentModelDisplayName`
+        # @return [String]
+        attr_accessor :parent_model_display_name
+      
+        # ID of the parent Model. Empty if it does not exist.
+        # Corresponds to the JSON property `parentModelId`
+        # @return [String]
+        attr_accessor :parent_model_id
+      
+        # Name of the parent View. Empty if it does not exist.
+        # Corresponds to the JSON property `parentViewDisplayName`
+        # @return [String]
+        attr_accessor :parent_view_display_name
+      
+        # ID of the parent View. Empty if it does not exist.
+        # Corresponds to the JSON property `parentViewId`
+        # @return [String]
+        attr_accessor :parent_view_id
       
         def initialize(**args)
            update!(**args)
@@ -289,29 +1266,29 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @errors = args[:errors] if args.key?(:errors)
-          @state = args[:state] if args.key?(:state)
+          @parent_instance_display_name = args[:parent_instance_display_name] if args.key?(:parent_instance_display_name)
+          @parent_instance_id = args[:parent_instance_id] if args.key?(:parent_instance_id)
+          @parent_model_display_name = args[:parent_model_display_name] if args.key?(:parent_model_display_name)
+          @parent_model_id = args[:parent_model_id] if args.key?(:parent_model_id)
+          @parent_view_display_name = args[:parent_view_display_name] if args.key?(:parent_view_display_name)
+          @parent_view_id = args[:parent_view_id] if args.key?(:parent_view_id)
         end
       end
       
-      # Long-running operation response message returned by ReconcileTags.
-      class GoogleCloudDatacatalogV1ReconcileTagsResponse
+      # Entry metadata relevant only to the user and private to them.
+      class GoogleCloudDatacatalogV1PersonalDetails
         include Google::Apis::Core::Hashable
       
-        # Number of tags created in the request.
-        # Corresponds to the JSON property `createdTagsCount`
-        # @return [Fixnum]
-        attr_accessor :created_tags_count
+        # Set if the entry is starred; unset otherwise.
+        # Corresponds to the JSON property `starTime`
+        # @return [String]
+        attr_accessor :star_time
       
-        # Number of tags deleted in the request.
-        # Corresponds to the JSON property `deletedTagsCount`
-        # @return [Fixnum]
-        attr_accessor :deleted_tags_count
-      
-        # Number of tags updated in the request.
-        # Corresponds to the JSON property `updatedTagsCount`
-        # @return [Fixnum]
-        attr_accessor :updated_tags_count
+        # True if the entry is starred by the user; false otherwise.
+        # Corresponds to the JSON property `starred`
+        # @return [Boolean]
+        attr_accessor :starred
+        alias_method :starred?, :starred
       
         def initialize(**args)
            update!(**args)
@@ -319,9 +1296,671 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @created_tags_count = args[:created_tags_count] if args.key?(:created_tags_count)
-          @deleted_tags_count = args[:deleted_tags_count] if args.key?(:deleted_tags_count)
-          @updated_tags_count = args[:updated_tags_count] if args.key?(:updated_tags_count)
+          @star_time = args[:star_time] if args.key?(:star_time)
+          @starred = args[:starred] if args.key?(:starred)
+        end
+      end
+      
+      # Native schema used by a resource represented as an entry. Used by query
+      # engines for deserializing and parsing source data.
+      class GoogleCloudDatacatalogV1PhysicalSchema
+        include Google::Apis::Core::Hashable
+      
+        # Schema in Avro JSON format.
+        # Corresponds to the JSON property `avro`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema]
+        attr_accessor :avro
+      
+        # Marks a CSV-encoded data source.
+        # Corresponds to the JSON property `csv`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema]
+        attr_accessor :csv
+      
+        # Marks an ORC-encoded data source.
+        # Corresponds to the JSON property `orc`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema]
+        attr_accessor :orc
+      
+        # Marks a Parquet-encoded data source.
+        # Corresponds to the JSON property `parquet`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema]
+        attr_accessor :parquet
+      
+        # Schema in protocol buffer format.
+        # Corresponds to the JSON property `protobuf`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema]
+        attr_accessor :protobuf
+      
+        # Schema in Thrift format.
+        # Corresponds to the JSON property `thrift`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema]
+        attr_accessor :thrift
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @avro = args[:avro] if args.key?(:avro)
+          @csv = args[:csv] if args.key?(:csv)
+          @orc = args[:orc] if args.key?(:orc)
+          @parquet = args[:parquet] if args.key?(:parquet)
+          @protobuf = args[:protobuf] if args.key?(:protobuf)
+          @thrift = args[:thrift] if args.key?(:thrift)
+        end
+      end
+      
+      # Schema in Avro JSON format.
+      class GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema
+        include Google::Apis::Core::Hashable
+      
+        # JSON source of the Avro schema.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # Marks a CSV-encoded data source.
+      class GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Marks an ORC-encoded data source.
+      class GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Marks a Parquet-encoded data source.
+      class GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Schema in protocol buffer format.
+      class GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema
+        include Google::Apis::Core::Hashable
+      
+        # Protocol buffer source of the schema.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # Schema in Thrift format.
+      class GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema
+        include Google::Apis::Core::Hashable
+      
+        # Thrift IDL source of the schema.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # Specification that applies to a routine. Valid only for entries with the `
+      # ROUTINE` type.
+      class GoogleCloudDatacatalogV1RoutineSpec
+        include Google::Apis::Core::Hashable
+      
+        # Fields specific for BigQuery routines.
+        # Corresponds to the JSON property `bigqueryRoutineSpec`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1BigQueryRoutineSpec]
+        attr_accessor :bigquery_routine_spec
+      
+        # The body of the routine.
+        # Corresponds to the JSON property `definitionBody`
+        # @return [String]
+        attr_accessor :definition_body
+      
+        # The language the routine is written in. The exact value depends on the source
+        # system. For BigQuery routines, possible values are: * `SQL` * `JAVASCRIPT`
+        # Corresponds to the JSON property `language`
+        # @return [String]
+        attr_accessor :language
+      
+        # Return type of the argument. The exact value depends on the source system and
+        # the language.
+        # Corresponds to the JSON property `returnType`
+        # @return [String]
+        attr_accessor :return_type
+      
+        # Arguments of the routine.
+        # Corresponds to the JSON property `routineArguments`
+        # @return [Array<Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1RoutineSpecArgument>]
+        attr_accessor :routine_arguments
+      
+        # The type of the routine.
+        # Corresponds to the JSON property `routineType`
+        # @return [String]
+        attr_accessor :routine_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bigquery_routine_spec = args[:bigquery_routine_spec] if args.key?(:bigquery_routine_spec)
+          @definition_body = args[:definition_body] if args.key?(:definition_body)
+          @language = args[:language] if args.key?(:language)
+          @return_type = args[:return_type] if args.key?(:return_type)
+          @routine_arguments = args[:routine_arguments] if args.key?(:routine_arguments)
+          @routine_type = args[:routine_type] if args.key?(:routine_type)
+        end
+      end
+      
+      # Input or output argument of a function or stored procedure.
+      class GoogleCloudDatacatalogV1RoutineSpecArgument
+        include Google::Apis::Core::Hashable
+      
+        # Specifies whether the argument is input or output.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
+        # The name of the argument. A return argument of a function might not have a
+        # name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Type of the argument. The exact value depends on the source system and the
+        # language.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mode = args[:mode] if args.key?(:mode)
+          @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Represents a schema, for example, a BigQuery, GoogleSQL, or Avro schema.
+      class GoogleCloudDatacatalogV1Schema
+        include Google::Apis::Core::Hashable
+      
+        # The unified GoogleSQL-like schema of columns. The overall maximum number of
+        # columns and nested columns is 10,000. The maximum nested depth is 15 levels.
+        # Corresponds to the JSON property `columns`
+        # @return [Array<Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1ColumnSchema>]
+        attr_accessor :columns
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @columns = args[:columns] if args.key?(:columns)
+        end
+      end
+      
+      # Specification that applies to entries that are part `SQL_DATABASE` system (
+      # user_specified_type)
+      class GoogleCloudDatacatalogV1SqlDatabaseSystemSpec
+        include Google::Apis::Core::Hashable
+      
+        # Version of the database engine.
+        # Corresponds to the JSON property `databaseVersion`
+        # @return [String]
+        attr_accessor :database_version
+      
+        # Host of the SQL database enum InstanceHost ` UNDEFINED = 0; SELF_HOSTED = 1;
+        # CLOUD_SQL = 2; AMAZON_RDS = 3; AZURE_SQL = 4; ` Host of the enclousing
+        # database instance.
+        # Corresponds to the JSON property `instanceHost`
+        # @return [String]
+        attr_accessor :instance_host
+      
+        # SQL Database Engine. enum SqlEngine ` UNDEFINED = 0; MY_SQL = 1; POSTGRE_SQL =
+        # 2; SQL_SERVER = 3; ` Engine of the enclosing database instance.
+        # Corresponds to the JSON property `sqlEngine`
+        # @return [String]
+        attr_accessor :sql_engine
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @database_version = args[:database_version] if args.key?(:database_version)
+          @instance_host = args[:instance_host] if args.key?(:instance_host)
+          @sql_engine = args[:sql_engine] if args.key?(:sql_engine)
+        end
+      end
+      
+      # Details the properties of the underlying storage.
+      class GoogleCloudDatacatalogV1StorageProperties
+        include Google::Apis::Core::Hashable
+      
+        # Patterns to identify a set of files for this fileset. Examples of a valid `
+        # file_pattern`: * `gs://bucket_name/dir/*`: matches all files in the `
+        # bucket_name/dir` directory * `gs://bucket_name/dir/**`: matches all files in
+        # the `bucket_name/dir` and all subdirectories recursively * `gs://bucket_name/
+        # file*`: matches files prefixed by `file` in `bucket_name` * `gs://bucket_name/?
+        # ?.txt`: matches files with two characters followed by `.txt` in `bucket_name` *
+        # `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel
+        # character followed by `.txt` in `bucket_name` * `gs://bucket_name/[a-m].txt`:
+        # matches files that contain `a`, `b`, ... or `m` followed by `.txt` in `
+        # bucket_name` * `gs://bucket_name/a/*/b`: matches all files in `bucket_name`
+        # that match the `a/*/b` pattern, such as `a/c/b`, `a/d/b` * `gs://
+        # another_bucket/a.txt`: matches `gs://another_bucket/a.txt`
+        # Corresponds to the JSON property `filePattern`
+        # @return [Array<String>]
+        attr_accessor :file_pattern
+      
+        # File type in MIME format, for example, `text/plain`.
+        # Corresponds to the JSON property `fileType`
+        # @return [String]
+        attr_accessor :file_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_pattern = args[:file_pattern] if args.key?(:file_pattern)
+          @file_type = args[:file_type] if args.key?(:file_type)
+        end
+      end
+      
+      # Timestamps associated with this resource in a particular system.
+      class GoogleCloudDatacatalogV1SystemTimestamps
+        include Google::Apis::Core::Hashable
+      
+        # Creation timestamp of the resource within the given system.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. Expiration timestamp of the resource within the given system.
+        # Currently only applicable to BigQuery resources.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # Timestamp of the last modification of the resource or its metadata within a
+        # given system. Note: Depending on the source system, not every modification
+        # updates this timestamp. For example, BigQuery timestamps every metadata
+        # modification but not data or permission changes.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Normal BigQuery table specification.
+      class GoogleCloudDatacatalogV1TableSpec
+        include Google::Apis::Core::Hashable
+      
+        # Output only. If the table is date-sharded, that is, it matches the `[prefix]
+        # YYYYMMDD` name pattern, this field is the Data Catalog resource name of the
+        # date-sharded grouped entry. For example: `projects/`PROJECT_ID`/locations/`
+        # LOCATION`/entrygroups/`ENTRY_GROUP_ID`/entries/`ENTRY_ID``. Otherwise, `
+        # grouped_entry` is empty.
+        # Corresponds to the JSON property `groupedEntry`
+        # @return [String]
+        attr_accessor :grouped_entry
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @grouped_entry = args[:grouped_entry] if args.key?(:grouped_entry)
+        end
+      end
+      
+      # Tags contain custom metadata and are attached to Data Catalog resources. Tags
+      # conform with the specification of their tag template. See [Data Catalog IAM](
+      # https://cloud.google.com/data-catalog/docs/concepts/iam) for information on
+      # the permissions needed to create or view tags.
+      class GoogleCloudDatacatalogV1Tag
+        include Google::Apis::Core::Hashable
+      
+        # Resources like entry can have schemas associated with them. This scope allows
+        # you to attach tags to an individual column based on that schema. To attach a
+        # tag to a nested column, separate column names with a dot (`.`). Example: `
+        # column.nested_column`.
+        # Corresponds to the JSON property `column`
+        # @return [String]
+        attr_accessor :column
+      
+        # Required. Maps the ID of a tag field to its value and additional information
+        # about that field. Tag template defines valid field IDs. A tag must have at
+        # least 1 field and at most 500 fields.
+        # Corresponds to the JSON property `fields`
+        # @return [Hash<String,Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1TagField>]
+        attr_accessor :fields
+      
+        # The resource name of the tag in URL format where tag ID is a system-generated
+        # identifier. Note: The tag itself might not be stored in the location specified
+        # in its name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. The resource name of the tag template this tag uses. Example: `
+        # projects/`PROJECT_ID`/locations/`LOCATION`/tagTemplates/`TAG_TEMPLATE_ID``
+        # This field cannot be modified after creation.
+        # Corresponds to the JSON property `template`
+        # @return [String]
+        attr_accessor :template
+      
+        # Output only. The display name of the tag template.
+        # Corresponds to the JSON property `templateDisplayName`
+        # @return [String]
+        attr_accessor :template_display_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @column = args[:column] if args.key?(:column)
+          @fields = args[:fields] if args.key?(:fields)
+          @name = args[:name] if args.key?(:name)
+          @template = args[:template] if args.key?(:template)
+          @template_display_name = args[:template_display_name] if args.key?(:template_display_name)
+        end
+      end
+      
+      # Contains the value and additional information on a field within a Tag.
+      class GoogleCloudDatacatalogV1TagField
+        include Google::Apis::Core::Hashable
+      
+        # The value of a tag field with a boolean type.
+        # Corresponds to the JSON property `boolValue`
+        # @return [Boolean]
+        attr_accessor :bool_value
+        alias_method :bool_value?, :bool_value
+      
+        # Output only. The display name of this field.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The value of a tag field with a double type.
+        # Corresponds to the JSON property `doubleValue`
+        # @return [Float]
+        attr_accessor :double_value
+      
+        # An enum value.
+        # Corresponds to the JSON property `enumValue`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1TagFieldEnumValue]
+        attr_accessor :enum_value
+      
+        # Output only. The order of this field with respect to other fields in this tag.
+        # Can be set by Tag. For example, a higher value can indicate a more important
+        # field. The value can be negative. Multiple fields can have the same order, and
+        # field orders within a tag don't have to be sequential.
+        # Corresponds to the JSON property `order`
+        # @return [Fixnum]
+        attr_accessor :order
+      
+        # The value of a tag field with a rich text type. The maximum length is 10 MiB
+        # as this value holds HTML descriptions including encoded images. The maximum
+        # length of the text without images is 100 KiB.
+        # Corresponds to the JSON property `richtextValue`
+        # @return [String]
+        attr_accessor :richtext_value
+      
+        # The value of a tag field with a string type. The maximum length is 2000 UTF-8
+        # characters.
+        # Corresponds to the JSON property `stringValue`
+        # @return [String]
+        attr_accessor :string_value
+      
+        # The value of a tag field with a timestamp type.
+        # Corresponds to the JSON property `timestampValue`
+        # @return [String]
+        attr_accessor :timestamp_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bool_value = args[:bool_value] if args.key?(:bool_value)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @double_value = args[:double_value] if args.key?(:double_value)
+          @enum_value = args[:enum_value] if args.key?(:enum_value)
+          @order = args[:order] if args.key?(:order)
+          @richtext_value = args[:richtext_value] if args.key?(:richtext_value)
+          @string_value = args[:string_value] if args.key?(:string_value)
+          @timestamp_value = args[:timestamp_value] if args.key?(:timestamp_value)
+        end
+      end
+      
+      # An enum value.
+      class GoogleCloudDatacatalogV1TagFieldEnumValue
+        include Google::Apis::Core::Hashable
+      
+        # The display name of the enum value.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+        end
+      end
+      
+      # Wrapper containing Entry and information about Tags that should and should not
+      # be attached to it.
+      class GoogleCloudDatacatalogV1TaggedEntry
+        include Google::Apis::Core::Hashable
+      
+        # Tags that should be deleted from the Data Catalog. Caller should populate
+        # template name and column only.
+        # Corresponds to the JSON property `absentTags`
+        # @return [Array<Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1Tag>]
+        attr_accessor :absent_tags
+      
+        # Tags that should be ingested into the Data Catalog. Caller should populate
+        # template name, column and fields.
+        # Corresponds to the JSON property `presentTags`
+        # @return [Array<Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1Tag>]
+        attr_accessor :present_tags
+      
+        # Entry metadata. A Data Catalog entry represents another resource in Google
+        # Cloud Platform (such as a BigQuery dataset or a Pub/Sub topic) or outside of
+        # it. You can use the `linked_resource` field in the entry resource to refer to
+        # the original resource ID of the source system. An entry resource contains
+        # resource details, for example, its schema. Additionally, you can attach
+        # flexible metadata to an entry in the form of a Tag.
+        # Corresponds to the JSON property `v1Entry`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1Entry]
+        attr_accessor :v1_entry
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @absent_tags = args[:absent_tags] if args.key?(:absent_tags)
+          @present_tags = args[:present_tags] if args.key?(:present_tags)
+          @v1_entry = args[:v1_entry] if args.key?(:v1_entry)
+        end
+      end
+      
+      # The set of all usage signals that Data Catalog stores. Note: Usually, these
+      # signals are updated daily. In rare cases, an update may fail but will be
+      # performed again on the next day.
+      class GoogleCloudDatacatalogV1UsageSignal
+        include Google::Apis::Core::Hashable
+      
+        # Common usage statistics over each of the predefined time ranges. Supported
+        # time ranges are ``"24H", "7D", "30D", "Lifetime"``.
+        # Corresponds to the JSON property `commonUsageWithinTimeRange`
+        # @return [Hash<String,Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1CommonUsageStats>]
+        attr_accessor :common_usage_within_time_range
+      
+        # Favorite count in the source system.
+        # Corresponds to the JSON property `favoriteCount`
+        # @return [Fixnum]
+        attr_accessor :favorite_count
+      
+        # The end timestamp of the duration of usage statistics.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Output only. BigQuery usage statistics over each of the predefined time ranges.
+        # Supported time ranges are ``"24H", "7D", "30D"``.
+        # Corresponds to the JSON property `usageWithinTimeRange`
+        # @return [Hash<String,Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1UsageStats>]
+        attr_accessor :usage_within_time_range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_usage_within_time_range = args[:common_usage_within_time_range] if args.key?(:common_usage_within_time_range)
+          @favorite_count = args[:favorite_count] if args.key?(:favorite_count)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @usage_within_time_range = args[:usage_within_time_range] if args.key?(:usage_within_time_range)
+        end
+      end
+      
+      # Detailed statistics on the entry's usage. Usage statistics have the following
+      # limitations: - Only BigQuery tables have them. - They only include BigQuery
+      # query jobs. - They might be underestimated because wildcard table references
+      # are not yet counted. For more information, see [Querying multiple tables using
+      # a wildcard table] (https://cloud.google.com/bigquery/docs/querying-wildcard-
+      # tables)
+      class GoogleCloudDatacatalogV1UsageStats
+        include Google::Apis::Core::Hashable
+      
+        # The number of cancelled attempts to use the underlying entry.
+        # Corresponds to the JSON property `totalCancellations`
+        # @return [Float]
+        attr_accessor :total_cancellations
+      
+        # The number of successful uses of the underlying entry.
+        # Corresponds to the JSON property `totalCompletions`
+        # @return [Float]
+        attr_accessor :total_completions
+      
+        # Total time spent only on successful uses, in milliseconds.
+        # Corresponds to the JSON property `totalExecutionTimeForCompletionsMillis`
+        # @return [Float]
+        attr_accessor :total_execution_time_for_completions_millis
+      
+        # The number of failed attempts to use the underlying entry.
+        # Corresponds to the JSON property `totalFailures`
+        # @return [Float]
+        attr_accessor :total_failures
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @total_cancellations = args[:total_cancellations] if args.key?(:total_cancellations)
+          @total_completions = args[:total_completions] if args.key?(:total_completions)
+          @total_execution_time_for_completions_millis = args[:total_execution_time_for_completions_millis] if args.key?(:total_execution_time_for_completions_millis)
+          @total_failures = args[:total_failures] if args.key?(:total_failures)
+        end
+      end
+      
+      # Table view specification.
+      class GoogleCloudDatacatalogV1ViewSpec
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The query that defines the table view.
+        # Corresponds to the JSON property `viewQuery`
+        # @return [String]
+        attr_accessor :view_query
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @view_query = args[:view_query] if args.key?(:view_query)
         end
       end
       
