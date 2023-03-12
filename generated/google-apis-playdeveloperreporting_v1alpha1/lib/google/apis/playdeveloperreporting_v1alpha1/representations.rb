@@ -340,6 +340,7 @@ module Google
           property :page_token, as: 'pageToken'
           property :timeline_spec, as: 'timelineSpec', class: Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1TimelineSpec, decorator: Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1TimelineSpec::Representation
       
+          property :user_cohort, as: 'userCohort'
         end
       end
       
@@ -362,6 +363,7 @@ module Google
           property :page_token, as: 'pageToken'
           property :timeline_spec, as: 'timelineSpec', class: Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1TimelineSpec, decorator: Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1TimelineSpec::Representation
       
+          property :user_cohort, as: 'userCohort'
         end
       end
       
@@ -406,6 +408,7 @@ module Google
           property :page_token, as: 'pageToken'
           property :timeline_spec, as: 'timelineSpec', class: Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1TimelineSpec, decorator: Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1TimelineSpec::Representation
       
+          property :user_cohort, as: 'userCohort'
         end
       end
       
@@ -428,6 +431,7 @@ module Google
           property :page_token, as: 'pageToken'
           property :timeline_spec, as: 'timelineSpec', class: Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1TimelineSpec, decorator: Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1TimelineSpec::Representation
       
+          property :user_cohort, as: 'userCohort'
         end
       end
       
