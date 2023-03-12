@@ -51,6 +51,70 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Returns the values for each date from a given time range and optionally the
+        # sub entity type, where applicable, that are associated with the specific daily
+        # metrics. Example request: `GET https://businessprofileperformance.googleapis.
+        # com/v1/locations/12345:fetchMultiDailyMetricsTimeSeries?dailyMetrics=
+        # WEBSITE_CLICKS&dailyMetrics=CALL_CLICKS&daily_range.start_date.year=2022&
+        # daily_range.start_date.month=1&daily_range.start_date.day=1&daily_range.
+        # end_date.year=2022&daily_range.end_date.month=3&daily_range.end_date.day=31`
+        # @param [String] location
+        #   Required. The location for which the time series should be fetched. Format:
+        #   locations/`location_id` where location_id is an unobfuscated listing id.
+        # @param [Array<String>, String] daily_metrics
+        #   Required. The metrics to retrieve time series for.
+        # @param [Fixnum] daily_range_end_date_day
+        #   Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to
+        #   specify a year by itself or a year and month where the day isn't significant.
+        # @param [Fixnum] daily_range_end_date_month
+        #   Month of a year. Must be from 1 to 12, or 0 to specify a year without a month
+        #   and day.
+        # @param [Fixnum] daily_range_end_date_year
+        #   Year of the date. Must be from 1 to 9999, or 0 to specify a date without a
+        #   year.
+        # @param [Fixnum] daily_range_start_date_day
+        #   Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to
+        #   specify a year by itself or a year and month where the day isn't significant.
+        # @param [Fixnum] daily_range_start_date_month
+        #   Month of a year. Must be from 1 to 12, or 0 to specify a year without a month
+        #   and day.
+        # @param [Fixnum] daily_range_start_date_year
+        #   Year of the date. Must be from 1 to 9999, or 0 to specify a date without a
+        #   year.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BusinessprofileperformanceV1::FetchMultiDailyMetricsTimeSeriesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BusinessprofileperformanceV1::FetchMultiDailyMetricsTimeSeriesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def fetch_location_multi_daily_metrics_time_series(location, daily_metrics: nil, daily_range_end_date_day: nil, daily_range_end_date_month: nil, daily_range_end_date_year: nil, daily_range_start_date_day: nil, daily_range_start_date_month: nil, daily_range_start_date_year: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+location}:fetchMultiDailyMetricsTimeSeries', options)
+          command.response_representation = Google::Apis::BusinessprofileperformanceV1::FetchMultiDailyMetricsTimeSeriesResponse::Representation
+          command.response_class = Google::Apis::BusinessprofileperformanceV1::FetchMultiDailyMetricsTimeSeriesResponse
+          command.params['location'] = location unless location.nil?
+          command.query['dailyMetrics'] = daily_metrics unless daily_metrics.nil?
+          command.query['dailyRange.endDate.day'] = daily_range_end_date_day unless daily_range_end_date_day.nil?
+          command.query['dailyRange.endDate.month'] = daily_range_end_date_month unless daily_range_end_date_month.nil?
+          command.query['dailyRange.endDate.year'] = daily_range_end_date_year unless daily_range_end_date_year.nil?
+          command.query['dailyRange.startDate.day'] = daily_range_start_date_day unless daily_range_start_date_day.nil?
+          command.query['dailyRange.startDate.month'] = daily_range_start_date_month unless daily_range_start_date_month.nil?
+          command.query['dailyRange.startDate.year'] = daily_range_start_date_year unless daily_range_start_date_year.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Returns the values for each date from a given time range that are associated
         # with the specific daily metric. Example request: `GET https://
         # businessprofileperformance.googleapis.com/v1/locations/12345:
