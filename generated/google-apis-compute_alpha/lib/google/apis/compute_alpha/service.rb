@@ -39443,6 +39443,8 @@ module Google
         # @param [Google::Apis::ComputeAlpha::SecurityPolicyRule] security_policy_rule_object
         # @param [Fixnum] priority
         #   The priority of the rule to patch.
+        # @param [String] update_mask
+        #   Indicates fields to be cleared as part of this request.
         # @param [Boolean] validate_only
         #   If true, the request will not be committed.
         # @param [String] fields
@@ -39464,7 +39466,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_security_policy_rule(project, security_policy, security_policy_rule_object = nil, priority: nil, validate_only: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_security_policy_rule(project, security_policy, security_policy_rule_object = nil, priority: nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'projects/{project}/global/securityPolicies/{securityPolicy}/patchRule', options)
           command.request_representation = Google::Apis::ComputeAlpha::SecurityPolicyRule::Representation
           command.request_object = security_policy_rule_object
@@ -39473,6 +39475,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['securityPolicy'] = security_policy unless security_policy.nil?
           command.query['priority'] = priority unless priority.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
