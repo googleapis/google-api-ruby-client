@@ -1112,12 +1112,23 @@ module Google
       end
       
       # Request for [ProvisionDeployment]. [spectrum.sas.portal.v1alpha1.Provisioning.
-      # ProvisionDeployment]. No input is needed, because GCP Project, Organization
-      # Info, and caller’s GAIA ID should be retrieved from the RPC handler, and used
-      # as inputs to create a new SAS organization (if not exists) and a new SAS
-      # deployment.
+      # ProvisionDeployment]. GCP Project, Organization Info, and caller’s GAIA ID
+      # should be retrieved from the RPC handler, and used as inputs to create a new
+      # SAS organization (if not exists) and a new SAS deployment.
       class SasPortalProvisionDeploymentRequest
         include Google::Apis::Core::Hashable
+      
+        # Optional. If this field is set, and a new SAS Portal Deployment needs to be
+        # created, its display name will be set to the value of this field.
+        # Corresponds to the JSON property `newDeploymentDisplayName`
+        # @return [String]
+        attr_accessor :new_deployment_display_name
+      
+        # Optional. If this field is set, and a new SAS Portal Organization needs to be
+        # created, its display name will be set to the value of this field.
+        # Corresponds to the JSON property `newOrganizationDisplayName`
+        # @return [String]
+        attr_accessor :new_organization_display_name
       
         def initialize(**args)
            update!(**args)
@@ -1125,6 +1136,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @new_deployment_display_name = args[:new_deployment_display_name] if args.key?(:new_deployment_display_name)
+          @new_organization_display_name = args[:new_organization_display_name] if args.key?(:new_organization_display_name)
         end
       end
       
