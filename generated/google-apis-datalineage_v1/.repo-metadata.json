@@ -1,0 +1,7 @@
+{
+    "api_id": "datalineage:v1",
+    "name_pretty": "Data Lineage API",
+    "distribution_name": "google-apis-datalineage_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
