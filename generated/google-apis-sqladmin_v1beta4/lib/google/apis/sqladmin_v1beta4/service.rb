@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module SqladminV1beta4
-      # sqladmin API (prod)
+      # Cloud SQL Admin API
       #
       # API for Cloud SQL database instance management
       #
@@ -1366,6 +1366,75 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Get Disk Shrink Config for a given instance.
+        # @param [String] project
+        #   Project ID of the project that contains the instance.
+        # @param [String] instance
+        #   Cloud SQL instance ID. This does not include the project ID.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SqladminV1beta4::SqlInstancesGetDiskShrinkConfigResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SqladminV1beta4::SqlInstancesGetDiskShrinkConfigResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_instance_disk_shrink_config(project, instance, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'sql/v1beta4/projects/{project}/instances/{instance}/getDiskShrinkConfig', options)
+          command.response_representation = Google::Apis::SqladminV1beta4::SqlInstancesGetDiskShrinkConfigResponse::Representation
+          command.response_class = Google::Apis::SqladminV1beta4::SqlInstancesGetDiskShrinkConfigResponse
+          command.params['project'] = project unless project.nil?
+          command.params['instance'] = instance unless instance.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Perform Disk Shrink on primary instance.
+        # @param [String] project
+        #   Project ID of the project that contains the instance.
+        # @param [String] instance
+        #   Cloud SQL instance ID. This does not include the project ID.
+        # @param [Google::Apis::SqladminV1beta4::PerformDiskShrinkContext] perform_disk_shrink_context_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SqladminV1beta4::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SqladminV1beta4::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def perform_project_instance_disk_shrink(project, instance, perform_disk_shrink_context_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'sql/v1beta4/projects/{project}/instances/{instance}/performDiskShrink', options)
+          command.request_representation = Google::Apis::SqladminV1beta4::PerformDiskShrinkContext::Representation
+          command.request_object = perform_disk_shrink_context_object
+          command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
+          command.response_class = Google::Apis::SqladminV1beta4::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['instance'] = instance unless instance.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Reschedules the maintenance on the given instance.
         # @param [String] project
         #   ID of the project that contains the instance.
@@ -1393,6 +1462,42 @@ module Google
           command = make_simple_command(:post, 'sql/v1beta4/projects/{project}/instances/{instance}/rescheduleMaintenance', options)
           command.request_representation = Google::Apis::SqladminV1beta4::SqlInstancesRescheduleMaintenanceRequestBody::Representation
           command.request_object = sql_instances_reschedule_maintenance_request_body_object
+          command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
+          command.response_class = Google::Apis::SqladminV1beta4::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['instance'] = instance unless instance.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Reset Replica Size to primary instance disk size.
+        # @param [String] project
+        #   ID of the project that contains the read replica.
+        # @param [String] instance
+        #   Cloud SQL read replica instance name.
+        # @param [Google::Apis::SqladminV1beta4::SqlInstancesResetReplicaSizeRequest] sql_instances_reset_replica_size_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SqladminV1beta4::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SqladminV1beta4::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def reset_project_instance_replica_size(project, instance, sql_instances_reset_replica_size_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'sql/v1beta4/projects/{project}/instances/{instance}/resetReplicaSize', options)
+          command.request_representation = Google::Apis::SqladminV1beta4::SqlInstancesResetReplicaSizeRequest::Representation
+          command.request_object = sql_instances_reset_replica_size_request_object
           command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
           command.response_class = Google::Apis::SqladminV1beta4::Operation
           command.params['project'] = project unless project.nil?
