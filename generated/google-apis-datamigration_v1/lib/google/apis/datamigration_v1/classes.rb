@@ -669,8 +669,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :scale
       
-        # Specifies the list of values allowed in the column. List is empty if setValues
-        # is not required.
+        # Specifies the list of values allowed in the column. Only used for set data
+        # type.
         # Corresponds to the JSON property `setValues`
         # @return [Array<String>]
         attr_accessor :set_values
