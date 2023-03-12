@@ -1096,6 +1096,96 @@ module Google
         end
       end
       
+      # Change event entry for Entitlement order history
+      class GoogleCloudChannelV1EntitlementChange
+        include Google::Apis::Core::Hashable
+      
+        # The Entitlement's activation reason
+        # Corresponds to the JSON property `activationReason`
+        # @return [String]
+        attr_accessor :activation_reason
+      
+        # Cancellation reason for the Entitlement.
+        # Corresponds to the JSON property `cancellationReason`
+        # @return [String]
+        attr_accessor :cancellation_reason
+      
+        # The change action type.
+        # Corresponds to the JSON property `changeType`
+        # @return [String]
+        attr_accessor :change_type
+      
+        # The submitted time of the change.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Required. Resource name of an entitlement in the form: accounts/`account_id`/
+        # customers/`customer_id`/entitlements/`entitlement_id`
+        # Corresponds to the JSON property `entitlement`
+        # @return [String]
+        attr_accessor :entitlement
+      
+        # Required. Resource name of the Offer at the time of change. Takes the form:
+        # accounts/`account_id`/offers/`offer_id`.
+        # Corresponds to the JSON property `offer`
+        # @return [String]
+        attr_accessor :offer
+      
+        # Human-readable identifier that shows what operator made a change. When the
+        # operator_type is RESELLER, this is the user's email address. For all other
+        # operator types, this is empty.
+        # Corresponds to the JSON property `operator`
+        # @return [String]
+        attr_accessor :operator
+      
+        # Operator type responsible for the change.
+        # Corresponds to the JSON property `operatorType`
+        # @return [String]
+        attr_accessor :operator_type
+      
+        # e.g. purchase_number change reason, entered by CRS.
+        # Corresponds to the JSON property `otherChangeReason`
+        # @return [String]
+        attr_accessor :other_change_reason
+      
+        # Extended parameters, such as: purchase_order_number, gcp_details;
+        # internal_correlation_id, long_running_operation_id, order_id; etc.
+        # Corresponds to the JSON property `parameters`
+        # @return [Array<Google::Apis::CloudchannelV1::GoogleCloudChannelV1Parameter>]
+        attr_accessor :parameters
+      
+        # Service provisioned for an entitlement.
+        # Corresponds to the JSON property `provisionedService`
+        # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1ProvisionedService]
+        attr_accessor :provisioned_service
+      
+        # Suspension reason for the Entitlement.
+        # Corresponds to the JSON property `suspensionReason`
+        # @return [String]
+        attr_accessor :suspension_reason
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @activation_reason = args[:activation_reason] if args.key?(:activation_reason)
+          @cancellation_reason = args[:cancellation_reason] if args.key?(:cancellation_reason)
+          @change_type = args[:change_type] if args.key?(:change_type)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @entitlement = args[:entitlement] if args.key?(:entitlement)
+          @offer = args[:offer] if args.key?(:offer)
+          @operator = args[:operator] if args.key?(:operator)
+          @operator_type = args[:operator_type] if args.key?(:operator_type)
+          @other_change_reason = args[:other_change_reason] if args.key?(:other_change_reason)
+          @parameters = args[:parameters] if args.key?(:parameters)
+          @provisioned_service = args[:provisioned_service] if args.key?(:provisioned_service)
+          @suspension_reason = args[:suspension_reason] if args.key?(:suspension_reason)
+        end
+      end
+      
       # Represents Pub/Sub message content describing entitlement update.
       class GoogleCloudChannelV1EntitlementEvent
         include Google::Apis::Core::Hashable
@@ -1345,6 +1435,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @customers = args[:customers] if args.key?(:customers)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for CloudChannelService.ListEntitlementChanges
+      class GoogleCloudChannelV1ListEntitlementChangesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of entitlement changes.
+        # Corresponds to the JSON property `entitlementChanges`
+        # @return [Array<Google::Apis::CloudchannelV1::GoogleCloudChannelV1EntitlementChange>]
+        attr_accessor :entitlement_changes
+      
+        # A token to list the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entitlement_changes = args[:entitlement_changes] if args.key?(:entitlement_changes)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
