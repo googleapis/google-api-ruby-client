@@ -245,7 +245,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The natural language speech audio to be processed. A single request can
-        # contain up to 1 minute of speech audio data. The transcribed text cannot
+        # contain up to 2 minutes of speech audio data. The transcribed text cannot
         # contain more than 256 bytes. For non-streaming audio detect intent, both `
         # config` and `audio` must be provided. For streaming audio detect intent, `
         # config` must be provided in the first request and `audio` must be provided in
@@ -850,7 +850,7 @@ module Google
         end
       end
       
-      # Represents an deployment in an environment. A deployment happens when a flow
+      # Represents a deployment in an environment. A deployment happens when a flow
       # version configured to be active in the environment. You can configure running
       # pre-deployment steps, e.g. running validation test cases, experiment auto-
       # rollout, etc.
@@ -6650,7 +6650,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The natural language speech audio to be processed. A single request can
-        # contain up to 1 minute of speech audio data. The transcribed text cannot
+        # contain up to 2 minutes of speech audio data. The transcribed text cannot
         # contain more than 256 bytes. For non-streaming audio detect intent, both `
         # config` and `audio` must be provided. For streaming audio detect intent, `
         # config` must be provided in the first request and `audio` must be provided in
