@@ -6993,6 +6993,85 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # GetSecurityIncident gets the specified security incident. Returns NOT_FOUND if
+        # security incident is not present for the specified organization and
+        # environment.
+        # @param [String] name
+        #   Required. Security incident in the following format: `organizations/`org`/
+        #   environments/`environment`/securityIncidents/`incident`'. Example:
+        #   organizations/testOrg/environments/testEnv/securityIncidents/1234-4567-890-111
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityIncident] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityIncident]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_environment_security_incident(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityIncident::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityIncident
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # ListSecurityIncidents lists all the security incident associated with the
+        # environment.
+        # @param [String] parent
+        #   Required. For a specific organization, list of all the security incidents.
+        #   Format: `organizations/`org`/environments/`environment``
+        # @param [String] filter
+        #   The filter expression to be used to get the list of security incidents, where
+        #   filtering can be done on API Proxies. Example: filter = "api_proxy = /", "
+        #   first_detected_time >", "last_detected_time <"
+        # @param [Fixnum] page_size
+        #   The maximum number of incidents to return. The service may return fewer than
+        #   this value. If unspecified, at most 50 incidents will be returned.
+        # @param [String] page_token
+        #   A page token, received from a previous `ListSecurityIncident` call. Provide
+        #   this to retrieve the subsequent page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListSecurityIncidentsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListSecurityIncidentsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_environment_security_incidents(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/securityIncidents', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListSecurityIncidentsResponse::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListSecurityIncidentsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Submit a report request to be processed in the background. If the submission
         # succeeds, the API returns a 200 status and an ID that refer to the report
         # request. In addition to the HTTP status 200, the `state` of "enqueued" means

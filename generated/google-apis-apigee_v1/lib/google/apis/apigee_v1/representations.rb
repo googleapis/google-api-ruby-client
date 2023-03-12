@@ -790,6 +790,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1ListSecurityIncidentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1ListSecurityProfileRevisionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1157,6 +1163,12 @@ module Google
       end
       
       class GoogleCloudApigeeV1ScoreComponentRecommendationActionActionContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1SecurityIncident
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2828,6 +2840,15 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1ListSecurityIncidentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :security_incidents, as: 'securityIncidents', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityIncident, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityIncident::Representation
+      
+        end
+      end
+      
       class GoogleCloudApigeeV1ListSecurityProfileRevisionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3499,6 +3520,19 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :documentation_link, as: 'documentationLink'
+        end
+      end
+      
+      class GoogleCloudApigeeV1SecurityIncident
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :detection_types, as: 'detectionTypes'
+          property :display_name, as: 'displayName'
+          property :first_detected_time, as: 'firstDetectedTime'
+          property :last_detected_time, as: 'lastDetectedTime'
+          property :name, as: 'name'
+          property :risk_level, as: 'riskLevel'
+          property :traffic_count, :numeric_string => true, as: 'trafficCount'
         end
       end
       
