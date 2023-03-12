@@ -118,6 +118,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EkmConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EkmConnection
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -430,9 +436,11 @@ module Google
           property :create_time, as: 'createTime'
           property :destroy_event_time, as: 'destroyEventTime'
           property :destroy_time, as: 'destroyTime'
+          property :external_destruction_failure_reason, as: 'externalDestructionFailureReason'
           property :external_protection_level_options, as: 'externalProtectionLevelOptions', class: Google::Apis::CloudkmsV1::ExternalProtectionLevelOptions, decorator: Google::Apis::CloudkmsV1::ExternalProtectionLevelOptions::Representation
       
           property :generate_time, as: 'generateTime'
+          property :generation_failure_reason, as: 'generationFailureReason'
           property :import_failure_reason, as: 'importFailureReason'
           property :import_job, as: 'importJob'
           property :import_time, as: 'importTime'
@@ -486,11 +494,21 @@ module Google
         end
       end
       
+      class EkmConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_ekm_connection, as: 'defaultEkmConnection'
+          property :name, as: 'name'
+        end
+      end
+      
       class EkmConnection
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          property :crypto_space_path, as: 'cryptoSpacePath'
           property :etag, as: 'etag'
+          property :key_management_mode, as: 'keyManagementMode'
           property :name, as: 'name'
           collection :service_resolvers, as: 'serviceResolvers', class: Google::Apis::CloudkmsV1::ServiceResolver, decorator: Google::Apis::CloudkmsV1::ServiceResolver::Representation
       
