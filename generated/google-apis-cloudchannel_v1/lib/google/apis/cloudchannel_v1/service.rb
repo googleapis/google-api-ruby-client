@@ -2096,6 +2096,61 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # List entitlement history. Possible error codes: * PERMISSION_DENIED: The
+        # reseller account making the request and the provided reseller account are
+        # different. * INVALID_ARGUMENT: Missing or invalid required fields in the
+        # request. * NOT_FOUND: The parent resource doesn't exist. Usually the result of
+        # an invalid name parameter. * INTERNAL: Any non-user error related to a
+        # technical issue in the backend. In this case, contact CloudChannel support. *
+        # UNKNOWN: Any non-user error related to a technical issue in the backend. In
+        # this case, contact Cloud Channel support. Return value: List of
+        # EntitlementChanges.
+        # @param [String] parent
+        #   Required. The resource name of the entitlement for which to list entitlement
+        #   changes. The `-` wildcard may be used to match entitlements across a customer.
+        #   Formats: * accounts/`account_id`/customers/`customer_id`/entitlements/`
+        #   entitlement_id` * accounts/`account_id`/customers/`customer_id`/entitlements/-
+        # @param [String] filter
+        #   Optional. Filters applied to the list results.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of entitlement changes to return. The service may
+        #   return fewer than this value. If unspecified, returns at most 10 entitlement
+        #   changes. The maximum value is 50; the server will coerce values above 50.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous CloudChannelService.
+        #   ListEntitlementChanges call. Provide this to retrieve the subsequent page.
+        #   When paginating, all other parameters provided to CloudChannelService.
+        #   ListEntitlementChanges must match the call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudchannelV1::GoogleCloudChannelV1ListEntitlementChangesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1ListEntitlementChangesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_account_customer_entitlement_entitlement_changes(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}:listEntitlementChanges', options)
+          command.response_representation = Google::Apis::CloudchannelV1::GoogleCloudChannelV1ListEntitlementChangesResponse::Representation
+          command.response_class = Google::Apis::CloudchannelV1::GoogleCloudChannelV1ListEntitlementChangesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Returns the requested Offer resource. Possible error codes: *
         # PERMISSION_DENIED: The entitlement doesn't belong to the reseller. *
         # INVALID_ARGUMENT: Required request parameters are missing or invalid. *
@@ -2244,6 +2299,10 @@ module Google
         #   1000; the server will coerce values above 1000.
         # @param [String] page_token
         #   Optional. A token for a page of results other than the first page.
+        # @param [Boolean] show_future_offers
+        #   Optional. A boolean flag that determines if a response returns future offers
+        #   30 days from now. If the show_future_offers is true, the response will only
+        #   contain offers that are scheduled to be available 30 days from now.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2261,7 +2320,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_account_offers(parent, filter: nil, language_code: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_account_offers(parent, filter: nil, language_code: nil, page_size: nil, page_token: nil, show_future_offers: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/offers', options)
           command.response_representation = Google::Apis::CloudchannelV1::GoogleCloudChannelV1ListOffersResponse::Representation
           command.response_class = Google::Apis::CloudchannelV1::GoogleCloudChannelV1ListOffersResponse
@@ -2270,6 +2329,7 @@ module Google
           command.query['languageCode'] = language_code unless language_code.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['showFutureOffers'] = show_future_offers unless show_future_offers.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2507,13 +2567,7 @@ module Google
         end
         
         # Lists operations that match the specified filter in the request. If the server
-        # doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name`
-        # binding allows API services to override the binding to use different resource
-        # name schemes, such as `users/*/operations`. To override the binding, API
-        # services can add a binding such as `"/v1/`name=users/*`/operations"` to their
-        # service configuration. For backwards compatibility, the default name includes
-        # the operations collection id, however overriding users must ensure the name
-        # binding is the parent resource, without the operations collection id.
+        # doesn't support this method, it returns `UNIMPLEMENTED`.
         # @param [String] name
         #   The name of the operation's parent resource.
         # @param [String] filter
