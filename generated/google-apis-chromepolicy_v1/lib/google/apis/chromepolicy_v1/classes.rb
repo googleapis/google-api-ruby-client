@@ -761,11 +761,6 @@ module Google
         # @return [Google::Apis::ChromepolicyV1::ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle]
         attr_accessor :policy_api_lifecycle
       
-        # Deprecated field because of typo.
-        # Corresponds to the JSON property `policyApiLifeycle`
-        # @return [Google::Apis::ChromepolicyV1::ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle]
-        attr_accessor :policy_api_lifeycle
-      
         # Output only. Description about the policy schema for user consumption.
         # Corresponds to the JSON property `policyDescription`
         # @return [String]
@@ -803,7 +798,6 @@ module Google
           @name = args[:name] if args.key?(:name)
           @notices = args[:notices] if args.key?(:notices)
           @policy_api_lifecycle = args[:policy_api_lifecycle] if args.key?(:policy_api_lifecycle)
-          @policy_api_lifeycle = args[:policy_api_lifeycle] if args.key?(:policy_api_lifeycle)
           @policy_description = args[:policy_description] if args.key?(:policy_description)
           @schema_name = args[:schema_name] if args.key?(:schema_name)
           @support_uri = args[:support_uri] if args.key?(:support_uri)
@@ -1191,13 +1185,13 @@ module Google
         # @return [String]
         attr_accessor :page_token
       
-        # The schema filter to apply to the resolve request. Specify a schema name to
-        # view a particular schema, for example: chrome.users.ShowLogoutButton Wildcards
-        # are supported, but only in the leaf portion of the schema name. Wildcards
-        # cannot be used in namespace directly. Please read https://developers.google.
-        # com/chrome/policy/guides/policy-schemas for details on schema namespaces. For
-        # example: Valid: "chrome.users.*", "chrome.users.apps.*", "chrome.printers.*"
-        # Invalid: "*", "*.users", "chrome.*", "chrome.*.apps.*"
+        # Required. The schema filter to apply to the resolve request. Specify a schema
+        # name to view a particular schema, for example: chrome.users.ShowLogoutButton
+        # Wildcards are supported, but only in the leaf portion of the schema name.
+        # Wildcards cannot be used in namespace directly. Please read https://developers.
+        # google.com/chrome/policy/guides/policy-schemas for details on schema
+        # namespaces. For example: Valid: "chrome.users.*", "chrome.users.apps.*", "
+        # chrome.printers.*" Invalid: "*", "*.users", "chrome.*", "chrome.*.apps.*"
         # Corresponds to the JSON property `policySchemaFilter`
         # @return [String]
         attr_accessor :policy_schema_filter

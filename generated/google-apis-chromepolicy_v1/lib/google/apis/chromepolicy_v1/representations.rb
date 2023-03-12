@@ -564,8 +564,6 @@ module Google
       
           property :policy_api_lifecycle, as: 'policyApiLifecycle', class: Google::Apis::ChromepolicyV1::ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle, decorator: Google::Apis::ChromepolicyV1::ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle::Representation
       
-          property :policy_api_lifeycle, as: 'policyApiLifeycle', class: Google::Apis::ChromepolicyV1::ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle, decorator: Google::Apis::ChromepolicyV1::ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle::Representation
-      
           property :policy_description, as: 'policyDescription'
           property :schema_name, as: 'schemaName'
           property :support_uri, as: 'supportUri'
