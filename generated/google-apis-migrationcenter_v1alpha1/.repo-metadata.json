@@ -1,0 +1,7 @@
+{
+    "api_id": "migrationcenter:v1alpha1",
+    "name_pretty": "Migration Center API",
+    "distribution_name": "google-apis-migrationcenter_v1alpha1",
+    "language": "ruby",
+    "library_type": "REST"
+}
