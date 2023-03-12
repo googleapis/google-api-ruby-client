@@ -554,7 +554,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :size_gb
       
-        # Name of a snapshot used as the data source.
+        # Name of a snapshot used as the data source. Snapshot is not supported as boot
+        # disk now.
         # Corresponds to the JSON property `snapshot`
         # @return [String]
         attr_accessor :snapshot
