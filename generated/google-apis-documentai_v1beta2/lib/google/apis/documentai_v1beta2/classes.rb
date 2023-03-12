@@ -22,6 +22,81 @@ module Google
   module Apis
     module DocumentaiV1beta2
       
+      # Metadata of the auto-labeling documents operation.
+      class GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The common metadata for long running operations.
+        # Corresponds to the JSON property `commonMetadata`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata]
+        attr_accessor :common_metadata
+      
+        # The list of individual auto-labeling statuses of the dataset documents.
+        # Corresponds to the JSON property `individualAutoLabelStatuses`
+        # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsMetadataIndividualAutoLabelStatus>]
+        attr_accessor :individual_auto_label_statuses
+      
+        # Total number of the auto-labeling documents.
+        # Corresponds to the JSON property `totalDocumentCount`
+        # @return [Fixnum]
+        attr_accessor :total_document_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+          @individual_auto_label_statuses = args[:individual_auto_label_statuses] if args.key?(:individual_auto_label_statuses)
+          @total_document_count = args[:total_document_count] if args.key?(:total_document_count)
+        end
+      end
+      
+      # The status of individual documents in the auto-labeling process.
+      class GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsMetadataIndividualAutoLabelStatus
+        include Google::Apis::Core::Hashable
+      
+        # The gcs_uri of the auto-labeling document, which uniquely identifies a dataset
+        # document.
+        # Corresponds to the JSON property `gcsUri`
+        # @return [String]
+        attr_accessor :gcs_uri
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleRpcStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcs_uri = args[:gcs_uri] if args.key?(:gcs_uri)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # The response proto of AutoLabelDocuments method.
+      class GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # 
       class GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsMetadata
         include Google::Apis::Core::Hashable
