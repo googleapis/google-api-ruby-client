@@ -205,7 +205,7 @@ module Google
         # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1RiskAnalysis]
         attr_accessor :risk_analysis
       
-        # Output only. Properties of the provided event token.
+        # Properties of the provided event token.
         # Corresponds to the JSON property `tokenProperties`
         # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1TokenProperties]
         attr_accessor :token_properties
@@ -307,7 +307,7 @@ module Google
         end
       end
       
-      # 
+      # The event being assessed.
       class GoogleCloudRecaptchaenterpriseV1Event
         include Google::Apis::Core::Hashable
       
@@ -318,12 +318,35 @@ module Google
         # @return [String]
         attr_accessor :expected_action
       
+        # Optional. Optional flag for a reCAPTCHA express request for an assessment
+        # without a token. If enabled, `site_key` must reference a SCORE key with WAF
+        # feature set to EXPRESS.
+        # Corresponds to the JSON property `express`
+        # @return [Boolean]
+        attr_accessor :express
+        alias_method :express?, :express
+      
         # Optional. Unique stable hashed user identifier for the request. The identifier
         # must be hashed using hmac-sha256 with stable secret.
         # Corresponds to the JSON property `hashedAccountId`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :hashed_account_id
+      
+        # Optional. Optional HTTP header information about the request.
+        # Corresponds to the JSON property `headers`
+        # @return [Array<String>]
+        attr_accessor :headers
+      
+        # Optional. Optional JA3 fingerprint for SSL clients.
+        # Corresponds to the JSON property `ja3`
+        # @return [String]
+        attr_accessor :ja3
+      
+        # Optional. The URI resource the user requested that triggered an assessment.
+        # Corresponds to the JSON property `requestedUri`
+        # @return [String]
+        attr_accessor :requested_uri
       
         # Optional. The site key that was used to invoke reCAPTCHA Enterprise on your
         # site and generate the token.
@@ -362,7 +385,11 @@ module Google
         # Update properties of this object
         def update!(**args)
           @expected_action = args[:expected_action] if args.key?(:expected_action)
+          @express = args[:express] if args.key?(:express)
           @hashed_account_id = args[:hashed_account_id] if args.key?(:hashed_account_id)
+          @headers = args[:headers] if args.key?(:headers)
+          @ja3 = args[:ja3] if args.key?(:ja3)
+          @requested_uri = args[:requested_uri] if args.key?(:requested_uri)
           @site_key = args[:site_key] if args.key?(:site_key)
           @token = args[:token] if args.key?(:token)
           @transaction_data = args[:transaction_data] if args.key?(:transaction_data)
@@ -483,7 +510,7 @@ module Google
         # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1AndroidKeySettings]
         attr_accessor :android_settings
       
-        # The timestamp corresponding to the creation of this Key.
+        # Output only. The timestamp corresponding to the creation of this Key.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -973,7 +1000,7 @@ module Google
         end
       end
       
-      # 
+      # Properties of the provided event token.
       class GoogleCloudRecaptchaenterpriseV1TokenProperties
         include Google::Apis::Core::Hashable
       

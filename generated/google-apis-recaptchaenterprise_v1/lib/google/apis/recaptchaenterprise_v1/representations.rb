@@ -344,7 +344,11 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :expected_action, as: 'expectedAction'
+          property :express, as: 'express'
           property :hashed_account_id, :base64 => true, as: 'hashedAccountId'
+          collection :headers, as: 'headers'
+          property :ja3, as: 'ja3'
+          property :requested_uri, as: 'requestedUri'
           property :site_key, as: 'siteKey'
           property :token, as: 'token'
           property :transaction_data, as: 'transactionData', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1TransactionData, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1TransactionData::Representation
