@@ -268,6 +268,28 @@ module Google
         end
       end
       
+      # DockerRepositoryConfig is docker related repository details. Provides
+      # additional configuration details for repositories of the docker format type.
+      class DockerRepositoryConfig
+        include Google::Apis::Core::Hashable
+      
+        # The repository which enabled this flag prevents all tags from being modified,
+        # moved or deleted. This does not prevent tags from being created.
+        # Corresponds to the JSON property `immutableTags`
+        # @return [Boolean]
+        attr_accessor :immutable_tags
+        alias_method :immutable_tags?, :immutable_tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @immutable_tags = args[:immutable_tags] if args.key?(:immutable_tags)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -648,7 +670,7 @@ module Google
         end
       end
       
-      # A detailed representation of a GooGet artifact.
+      # A detailed representation of a KFP artifact.
       class KfpArtifact
         include Google::Apis::Core::Hashable
       
@@ -1515,7 +1537,7 @@ module Google
       class Repository
         include Google::Apis::Core::Hashable
       
-        # The time when the repository was created.
+        # Output only. The time when the repository was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -1524,6 +1546,12 @@ module Google
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
+      
+        # DockerRepositoryConfig is docker related repository details. Provides
+        # additional configuration details for repositories of the docker format type.
+        # Corresponds to the JSON property `dockerConfig`
+        # @return [Google::Apis::ArtifactregistryV1::DockerRepositoryConfig]
+        attr_accessor :docker_config
       
         # The format of packages that are stored in the repository.
         # Corresponds to the JSON property `format`
@@ -1581,7 +1609,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :size_bytes
       
-        # The time when the repository was last updated.
+        # Output only. The time when the repository was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -1599,6 +1627,7 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
+          @docker_config = args[:docker_config] if args.key?(:docker_config)
           @format = args[:format] if args.key?(:format)
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @labels = args[:labels] if args.key?(:labels)

@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DockerRepositoryConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -468,6 +474,13 @@ module Google
         end
       end
       
+      class DockerRepositoryConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :immutable_tags, as: 'immutableTags'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -831,6 +844,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :description, as: 'description'
+          property :docker_config, as: 'dockerConfig', class: Google::Apis::ArtifactregistryV1::DockerRepositoryConfig, decorator: Google::Apis::ArtifactregistryV1::DockerRepositoryConfig::Representation
+      
           property :format, as: 'format'
           property :kms_key_name, as: 'kmsKeyName'
           hash :labels, as: 'labels'
