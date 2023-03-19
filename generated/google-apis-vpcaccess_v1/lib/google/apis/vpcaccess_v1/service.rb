@@ -227,6 +227,43 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates a Serverless VPC Access connector, returns an operation.
+        # @param [String] name
+        #   The resource name in the format `projects/*/locations/*/connectors/*`.
+        # @param [Google::Apis::VpcaccessV1::Connector] connector_object
+        # @param [String] update_mask
+        #   The fields to update on the entry group. If absent or empty, all modifiable
+        #   fields are updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VpcaccessV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VpcaccessV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_connector(name, connector_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::VpcaccessV1::Connector::Representation
+          command.request_object = connector_object
+          command.response_representation = Google::Apis::VpcaccessV1::Operation::Representation
+          command.response_class = Google::Apis::VpcaccessV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the latest state of a long-running operation. Clients can use this method
         # to poll the operation result at intervals as recommended by the API service.
         # @param [String] name
@@ -259,13 +296,7 @@ module Google
         end
         
         # Lists operations that match the specified filter in the request. If the server
-        # doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name`
-        # binding allows API services to override the binding to use different resource
-        # name schemes, such as `users/*/operations`. To override the binding, API
-        # services can add a binding such as `"/v1/`name=users/*`/operations"` to their
-        # service configuration. For backwards compatibility, the default name includes
-        # the operations collection id, however overriding users must ensure the name
-        # binding is the parent resource, without the operations collection id.
+        # doesn't support this method, it returns `UNIMPLEMENTED`.
         # @param [String] name
         #   The name of the operation's parent resource.
         # @param [String] filter
