@@ -1278,6 +1278,10 @@ module Google
         #   Deprecated and ignored. A value will always be returned in the email field for
         #   the organizer, creator and attendees, even if no real email address is
         #   available (i.e. a generated, non-working value will be provided).
+        # @param [Array<String>, String] event_types
+        #   Event types to return. Optional. The default is ["default", "outOfOffice", "
+        #   focusTime"]. This is used by the Working Location developer preview and only
+        #   the default value is allowed for non-opted-in users.
         # @param [String] i_cal_uid
         #   Specifies an event ID in the iCalendar format to be provided in the response.
         #   Optional. Use this if you want to search for an event by its iCalendar ID.
@@ -1382,12 +1386,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_events(calendar_id, always_include_email: nil, i_cal_uid: nil, max_attendees: nil, max_results: nil, order_by: nil, page_token: nil, private_extended_property: nil, q: nil, shared_extended_property: nil, show_deleted: nil, show_hidden_invitations: nil, single_events: nil, sync_token: nil, time_max: nil, time_min: nil, time_zone: nil, updated_min: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_events(calendar_id, always_include_email: nil, event_types: nil, i_cal_uid: nil, max_attendees: nil, max_results: nil, order_by: nil, page_token: nil, private_extended_property: nil, q: nil, shared_extended_property: nil, show_deleted: nil, show_hidden_invitations: nil, single_events: nil, sync_token: nil, time_max: nil, time_min: nil, time_zone: nil, updated_min: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'calendars/{calendarId}/events', options)
           command.response_representation = Google::Apis::CalendarV3::Events::Representation
           command.response_class = Google::Apis::CalendarV3::Events
           command.params['calendarId'] = calendar_id unless calendar_id.nil?
           command.query['alwaysIncludeEmail'] = always_include_email unless always_include_email.nil?
+          command.query['eventTypes'] = event_types unless event_types.nil?
           command.query['iCalUID'] = i_cal_uid unless i_cal_uid.nil?
           command.query['maxAttendees'] = max_attendees unless max_attendees.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -1660,6 +1665,10 @@ module Google
         #   Deprecated and ignored. A value will always be returned in the email field for
         #   the organizer, creator and attendees, even if no real email address is
         #   available (i.e. a generated, non-working value will be provided).
+        # @param [Array<String>, String] event_types
+        #   Event types to return. Optional. The default is ["default", "outOfOffice", "
+        #   focusTime"]. This is used by the Working Location developer preview and only
+        #   the default value is allowed for non-opted-in users.
         # @param [String] i_cal_uid
         #   Specifies an event ID in the iCalendar format to be provided in the response.
         #   Optional. Use this if you want to search for an event by its iCalendar ID.
@@ -1764,7 +1773,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def watch_event(calendar_id, channel_object = nil, always_include_email: nil, i_cal_uid: nil, max_attendees: nil, max_results: nil, order_by: nil, page_token: nil, private_extended_property: nil, q: nil, shared_extended_property: nil, show_deleted: nil, show_hidden_invitations: nil, single_events: nil, sync_token: nil, time_max: nil, time_min: nil, time_zone: nil, updated_min: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def watch_event(calendar_id, channel_object = nil, always_include_email: nil, event_types: nil, i_cal_uid: nil, max_attendees: nil, max_results: nil, order_by: nil, page_token: nil, private_extended_property: nil, q: nil, shared_extended_property: nil, show_deleted: nil, show_hidden_invitations: nil, single_events: nil, sync_token: nil, time_max: nil, time_min: nil, time_zone: nil, updated_min: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'calendars/{calendarId}/events/watch', options)
           command.request_representation = Google::Apis::CalendarV3::Channel::Representation
           command.request_object = channel_object
@@ -1772,6 +1781,7 @@ module Google
           command.response_class = Google::Apis::CalendarV3::Channel
           command.params['calendarId'] = calendar_id unless calendar_id.nil?
           command.query['alwaysIncludeEmail'] = always_include_email unless always_include_email.nil?
+          command.query['eventTypes'] = event_types unless event_types.nil?
           command.query['iCalUID'] = i_cal_uid unless i_cal_uid.nil?
           command.query['maxAttendees'] = max_attendees unless max_attendees.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
