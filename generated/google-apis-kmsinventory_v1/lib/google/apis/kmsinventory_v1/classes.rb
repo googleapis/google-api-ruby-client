@@ -357,6 +357,12 @@ module Google
         # @return [String]
         attr_accessor :destroy_time
       
+        # Output only. The root cause of the most recent external destruction failure.
+        # Only present if state is EXTERNAL_DESTRUCTION_FAILED.
+        # Corresponds to the JSON property `externalDestructionFailureReason`
+        # @return [String]
+        attr_accessor :external_destruction_failure_reason
+      
         # ExternalProtectionLevelOptions stores a group of additional fields for
         # configuring a CryptoKeyVersion that are specific to the EXTERNAL protection
         # level and EXTERNAL_VPC protection levels.
@@ -368,6 +374,12 @@ module Google
         # Corresponds to the JSON property `generateTime`
         # @return [String]
         attr_accessor :generate_time
+      
+        # Output only. The root cause of the most recent generation failure. Only
+        # present if state is GENERATION_FAILED.
+        # Corresponds to the JSON property `generationFailureReason`
+        # @return [String]
+        attr_accessor :generation_failure_reason
       
         # Output only. The root cause of the most recent import failure. Only present if
         # state is IMPORT_FAILED.
@@ -423,8 +435,10 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @destroy_event_time = args[:destroy_event_time] if args.key?(:destroy_event_time)
           @destroy_time = args[:destroy_time] if args.key?(:destroy_time)
+          @external_destruction_failure_reason = args[:external_destruction_failure_reason] if args.key?(:external_destruction_failure_reason)
           @external_protection_level_options = args[:external_protection_level_options] if args.key?(:external_protection_level_options)
           @generate_time = args[:generate_time] if args.key?(:generate_time)
+          @generation_failure_reason = args[:generation_failure_reason] if args.key?(:generation_failure_reason)
           @import_failure_reason = args[:import_failure_reason] if args.key?(:import_failure_reason)
           @import_job = args[:import_job] if args.key?(:import_job)
           @import_time = args[:import_time] if args.key?(:import_time)
