@@ -22,6 +22,81 @@ module Google
   module Apis
     module DocumentaiV1beta3
       
+      # Metadata of the auto-labeling documents operation.
+      class GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The common metadata for long running operations.
+        # Corresponds to the JSON property `commonMetadata`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata]
+        attr_accessor :common_metadata
+      
+        # The list of individual auto-labeling statuses of the dataset documents.
+        # Corresponds to the JSON property `individualAutoLabelStatuses`
+        # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsMetadataIndividualAutoLabelStatus>]
+        attr_accessor :individual_auto_label_statuses
+      
+        # Total number of the auto-labeling documents.
+        # Corresponds to the JSON property `totalDocumentCount`
+        # @return [Fixnum]
+        attr_accessor :total_document_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+          @individual_auto_label_statuses = args[:individual_auto_label_statuses] if args.key?(:individual_auto_label_statuses)
+          @total_document_count = args[:total_document_count] if args.key?(:total_document_count)
+        end
+      end
+      
+      # The status of individual documents in the auto-labeling process.
+      class GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsMetadataIndividualAutoLabelStatus
+        include Google::Apis::Core::Hashable
+      
+        # The gcs_uri of the auto-labeling document, which uniquely identifies a dataset
+        # document.
+        # Corresponds to the JSON property `gcsUri`
+        # @return [String]
+        attr_accessor :gcs_uri
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleRpcStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcs_uri = args[:gcs_uri] if args.key?(:gcs_uri)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # The response proto of AutoLabelDocuments method.
+      class GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # 
       class GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsMetadata
         include Google::Apis::Core::Hashable
@@ -8424,6 +8499,69 @@ module Google
         end
       end
       
+      # The long running operation metadata for the ImportProcessorVersion method.
+      class GoogleCloudDocumentaiV1beta3ImportProcessorVersionMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The common metadata for long running operations.
+        # Corresponds to the JSON property `commonMetadata`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3CommonOperationMetadata]
+        attr_accessor :common_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+        end
+      end
+      
+      # The request message for the ImportProcessorVersion method. This method
+      # requires Document AI Service Agent of the destination project in the source
+      # project's IAM with [Document AI Editor role](https://cloud.google.com/document-
+      # ai/docs/access-control/iam-roles). The destination project is specified as
+      # part of the `parent` field. The source project is specified as part of `source`
+      # field. The Service Agent for Document AI can be found in https://cloud.google.
+      # com/iam/docs/service-agents.
+      class GoogleCloudDocumentaiV1beta3ImportProcessorVersionRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The source processor version to import from.
+        # Corresponds to the JSON property `processorVersionSource`
+        # @return [String]
+        attr_accessor :processor_version_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @processor_version_source = args[:processor_version_source] if args.key?(:processor_version_source)
+        end
+      end
+      
+      # The response message for the ImportProcessorVersion method.
+      class GoogleCloudDocumentaiV1beta3ImportProcessorVersionResponse
+        include Google::Apis::Core::Hashable
+      
+        # The destination processor version name.
+        # Corresponds to the JSON property `processorVersion`
+        # @return [String]
+        attr_accessor :processor_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @processor_version = args[:processor_version] if args.key?(:processor_version)
+        end
+      end
+      
       # The response from ListEvaluations.
       class GoogleCloudDocumentaiV1beta3ListEvaluationsResponse
         include Google::Apis::Core::Hashable
@@ -8560,12 +8698,31 @@ module Google
         # @return [Array<String>]
         attr_accessor :advanced_ocr_options
       
+        # Enables intelligent document quality scores after OCR. Can help with
+        # diagnosing why OCR responses are of poor quality for a given input. Adds
+        # additional latency comparable to regular OCR to the process call.
+        # Corresponds to the JSON property `enableImageQualityScores`
+        # @return [Boolean]
+        attr_accessor :enable_image_quality_scores
+        alias_method :enable_image_quality_scores?, :enable_image_quality_scores
+      
         # Enables special handling for PDFs with existing text information. Results in
         # better text extraction quality in such PDF inputs.
         # Corresponds to the JSON property `enableNativePdfParsing`
         # @return [Boolean]
         attr_accessor :enable_native_pdf_parsing
         alias_method :enable_native_pdf_parsing?, :enable_native_pdf_parsing
+      
+        # Includes symbol level OCR information if set to true.
+        # Corresponds to the JSON property `enableSymbol`
+        # @return [Boolean]
+        attr_accessor :enable_symbol
+        alias_method :enable_symbol?, :enable_symbol
+      
+        # Hints for OCR Engine
+        # Corresponds to the JSON property `hints`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3OcrConfigHints]
+        attr_accessor :hints
       
         def initialize(**args)
            update!(**args)
@@ -8574,7 +8731,34 @@ module Google
         # Update properties of this object
         def update!(**args)
           @advanced_ocr_options = args[:advanced_ocr_options] if args.key?(:advanced_ocr_options)
+          @enable_image_quality_scores = args[:enable_image_quality_scores] if args.key?(:enable_image_quality_scores)
           @enable_native_pdf_parsing = args[:enable_native_pdf_parsing] if args.key?(:enable_native_pdf_parsing)
+          @enable_symbol = args[:enable_symbol] if args.key?(:enable_symbol)
+          @hints = args[:hints] if args.key?(:hints)
+        end
+      end
+      
+      # Hints for OCR Engine
+      class GoogleCloudDocumentaiV1beta3OcrConfigHints
+        include Google::Apis::Core::Hashable
+      
+        # List of BCP-47 language codes to use for OCR. In most cases, not specifying it
+        # yields the best results since it enables automatic language detection. For
+        # languages based on the Latin alphabet, setting hints is not needed. In rare
+        # cases, when the language of the text in the image is known, setting a hint
+        # will help get better results (although it will be a significant hindrance if
+        # the hint is wrong).
+        # Corresponds to the JSON property `languageHints`
+        # @return [Array<String>]
+        attr_accessor :language_hints
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @language_hints = args[:language_hints] if args.key?(:language_hints)
         end
       end
       
