@@ -1384,6 +1384,37 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets a model.
+        # @param [String] name
+        #   Required. The resource name of the Model to get. Format: `projects/`
+        #   project_number`/locations/`location_id`/catalogs/`catalog`/models/`model_id``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RetailV2::GoogleCloudRetailV2Model] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RetailV2::GoogleCloudRetailV2Model]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_catalog_model(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::RetailV2::GoogleCloudRetailV2Model::Representation
+          command.response_class = Google::Apis::RetailV2::GoogleCloudRetailV2Model
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists all the models linked to this event store.
         # @param [String] parent
         #   Required. The parent for which to list models. Format: `projects/`
@@ -1600,13 +1631,7 @@ module Google
         end
         
         # Lists operations that match the specified filter in the request. If the server
-        # doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name`
-        # binding allows API services to override the binding to use different resource
-        # name schemes, such as `users/*/operations`. To override the binding, API
-        # services can add a binding such as `"/v1/`name=users/*`/operations"` to their
-        # service configuration. For backwards compatibility, the default name includes
-        # the operations collection id, however overriding users must ensure the name
-        # binding is the parent resource, without the operations collection id.
+        # doesn't support this method, it returns `UNIMPLEMENTED`.
         # @param [String] name
         #   The name of the operation's parent resource.
         # @param [String] filter
@@ -2315,13 +2340,7 @@ module Google
         end
         
         # Lists operations that match the specified filter in the request. If the server
-        # doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name`
-        # binding allows API services to override the binding to use different resource
-        # name schemes, such as `users/*/operations`. To override the binding, API
-        # services can add a binding such as `"/v1/`name=users/*`/operations"` to their
-        # service configuration. For backwards compatibility, the default name includes
-        # the operations collection id, however overriding users must ensure the name
-        # binding is the parent resource, without the operations collection id.
+        # doesn't support this method, it returns `UNIMPLEMENTED`.
         # @param [String] name
         #   The name of the operation's parent resource.
         # @param [String] filter
@@ -2392,13 +2411,7 @@ module Google
         end
         
         # Lists operations that match the specified filter in the request. If the server
-        # doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name`
-        # binding allows API services to override the binding to use different resource
-        # name schemes, such as `users/*/operations`. To override the binding, API
-        # services can add a binding such as `"/v1/`name=users/*`/operations"` to their
-        # service configuration. For backwards compatibility, the default name includes
-        # the operations collection id, however overriding users must ensure the name
-        # binding is the parent resource, without the operations collection id.
+        # doesn't support this method, it returns `UNIMPLEMENTED`.
         # @param [String] name
         #   The name of the operation's parent resource.
         # @param [String] filter
