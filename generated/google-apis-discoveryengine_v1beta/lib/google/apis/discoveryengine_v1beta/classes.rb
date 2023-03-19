@@ -853,9 +853,12 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The schema to use when parsing the data from the source. Supported values for
-        # imports: * `user_event` (default): One JSON UserEvent per line. * `document` (
-        # default): One JSON Document per line. Each document must have a valid Document.
-        # id.
+        # document imports: * `document` (default): One JSON Document per line. Each
+        # document must have a valid Document.id. * `content`: Unstructured data (e.g.
+        # PDF, HTML). Each file matched by `input_uris` will become a document, with the
+        # ID set to the first 128 bits of SHA256(URI) encoded as a hex string. Supported
+        # values for user even imports: * `user_event` (default): One JSON UserEvent per
+        # line.
         # Corresponds to the JSON property `dataSchema`
         # @return [String]
         attr_accessor :data_schema
@@ -863,8 +866,8 @@ module Google
         # Required. Cloud Storage URIs to input files. URI can be up to 2000 characters
         # long. URIs can match the full object path (for example, `gs://bucket/directory/
         # object.json`) or a pattern matching one or more files, such as `gs://bucket/
-        # directory/*.json`. A request can contain at most 100 files, and each file can
-        # be up to 2 GB.
+        # directory/*.json`. A request can contain at most 100 files or 100000 files if
+        # the data_schema is `content`. And each file can be up to 2 GB.
         # Corresponds to the JSON property `inputUris`
         # @return [Array<String>]
         attr_accessor :input_uris
