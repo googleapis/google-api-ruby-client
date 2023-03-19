@@ -156,9 +156,11 @@ module Google
           property :create_time, as: 'createTime'
           property :destroy_event_time, as: 'destroyEventTime'
           property :destroy_time, as: 'destroyTime'
+          property :external_destruction_failure_reason, as: 'externalDestructionFailureReason'
           property :external_protection_level_options, as: 'externalProtectionLevelOptions', class: Google::Apis::KmsinventoryV1::GoogleCloudKmsV1ExternalProtectionLevelOptions, decorator: Google::Apis::KmsinventoryV1::GoogleCloudKmsV1ExternalProtectionLevelOptions::Representation
       
           property :generate_time, as: 'generateTime'
+          property :generation_failure_reason, as: 'generationFailureReason'
           property :import_failure_reason, as: 'importFailureReason'
           property :import_job, as: 'importJob'
           property :import_time, as: 'importTime'
