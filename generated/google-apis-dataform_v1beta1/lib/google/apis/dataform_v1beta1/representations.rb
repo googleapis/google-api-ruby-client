@@ -106,6 +106,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ComputeRepositoryAccessTokenStatusResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Declaration
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -648,6 +654,13 @@ module Google
       
           property :target, as: 'target', class: Google::Apis::DataformV1beta1::Target, decorator: Google::Apis::DataformV1beta1::Target::Representation
       
+        end
+      end
+      
+      class ComputeRepositoryAccessTokenStatusResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :token_status, as: 'tokenStatus'
         end
       end
       
