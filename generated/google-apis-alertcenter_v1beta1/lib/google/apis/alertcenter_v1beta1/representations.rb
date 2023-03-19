@@ -687,6 +687,7 @@ module Google
           property :message_body_snippet, as: 'messageBodySnippet'
           property :message_id, as: 'messageId'
           property :recipient, as: 'recipient'
+          property :sent_time, as: 'sentTime'
           property :subject_text, as: 'subjectText'
         end
       end

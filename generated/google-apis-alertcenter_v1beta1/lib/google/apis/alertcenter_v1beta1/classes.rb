@@ -1017,6 +1017,11 @@ module Google
         # @return [String]
         attr_accessor :recipient
       
+        # The sent time of the email.
+        # Corresponds to the JSON property `sentTime`
+        # @return [String]
+        attr_accessor :sent_time
+      
         # The email subject text (only available for reported emails).
         # Corresponds to the JSON property `subjectText`
         # @return [String]
@@ -1035,6 +1040,7 @@ module Google
           @message_body_snippet = args[:message_body_snippet] if args.key?(:message_body_snippet)
           @message_id = args[:message_id] if args.key?(:message_id)
           @recipient = args[:recipient] if args.key?(:recipient)
+          @sent_time = args[:sent_time] if args.key?(:sent_time)
           @subject_text = args[:subject_text] if args.key?(:subject_text)
         end
       end
