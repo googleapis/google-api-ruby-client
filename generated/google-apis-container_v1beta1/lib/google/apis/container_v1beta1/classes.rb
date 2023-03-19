@@ -773,6 +773,11 @@ module Google
         # @return [String]
         attr_accessor :expire_time
       
+        # Fleet is the fleet configuration for the cluster.
+        # Corresponds to the JSON property `fleet`
+        # @return [Google::Apis::ContainerV1beta1::Fleet]
+        attr_accessor :fleet
+      
         # Output only. Unique id for the cluster.
         # Corresponds to the JSON property `id`
         # @return [String]
@@ -1131,6 +1136,7 @@ module Google
           @endpoint = args[:endpoint] if args.key?(:endpoint)
           @etag = args[:etag] if args.key?(:etag)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @fleet = args[:fleet] if args.key?(:fleet)
           @id = args[:id] if args.key?(:id)
           @identity_service_config = args[:identity_service_config] if args.key?(:identity_service_config)
           @initial_cluster_version = args[:initial_cluster_version] if args.key?(:initial_cluster_version)
@@ -2119,6 +2125,42 @@ module Google
         # Update properties of this object
         def update!(**args)
           @event_type = args[:event_type] if args.key?(:event_type)
+        end
+      end
+      
+      # Fleet is the fleet configuration for the cluster.
+      class Fleet
+        include Google::Apis::Core::Hashable
+      
+        # [Output only] The full resource name of the registered fleet membership of the
+        # cluster, in the format `//gkehub.googleapis.com/projects/*/locations/*/
+        # memberships/*`.
+        # Corresponds to the JSON property `membership`
+        # @return [String]
+        attr_accessor :membership
+      
+        # [Output only] Whether the cluster has been registered through the fleet API.
+        # Corresponds to the JSON property `preRegistered`
+        # @return [Boolean]
+        attr_accessor :pre_registered
+        alias_method :pre_registered?, :pre_registered
+      
+        # The Fleet host project(project ID or project number) where this cluster will
+        # be registered to. This field cannot be changed after the cluster has been
+        # registered.
+        # Corresponds to the JSON property `project`
+        # @return [String]
+        attr_accessor :project
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @membership = args[:membership] if args.key?(:membership)
+          @pre_registered = args[:pre_registered] if args.key?(:pre_registered)
+          @project = args[:project] if args.key?(:project)
         end
       end
       
