@@ -388,6 +388,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PerformDiskShrinkContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ReplicaConfiguration
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -430,7 +436,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SqlInstancesGetDiskShrinkConfigResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SqlInstancesRescheduleMaintenanceRequestBody
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SqlInstancesResetReplicaSizeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1262,6 +1280,13 @@ module Google
         end
       end
       
+      class PerformDiskShrinkContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :target_size_gb, :numeric_string => true, as: 'targetSizeGb'
+        end
+      end
+      
       class ReplicaConfiguration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1360,11 +1385,25 @@ module Google
         end
       end
       
+      class SqlInstancesGetDiskShrinkConfigResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :minimal_target_size_gb, :numeric_string => true, as: 'minimalTargetSizeGb'
+        end
+      end
+      
       class SqlInstancesRescheduleMaintenanceRequestBody
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :reschedule, as: 'reschedule', class: Google::Apis::SqladminV1::Reschedule, decorator: Google::Apis::SqladminV1::Reschedule::Representation
       
+        end
+      end
+      
+      class SqlInstancesResetReplicaSizeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

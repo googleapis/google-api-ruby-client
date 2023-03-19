@@ -1,6 +1,6 @@
 {
     "api_id": "sqladmin:v1",
-    "name_pretty": "sqladmin API (prod)",
+    "name_pretty": "Cloud SQL Admin API",
     "distribution_name": "google-apis-sqladmin_v1",
     "language": "ruby",
     "library_type": "REST"
