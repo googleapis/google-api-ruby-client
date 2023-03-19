@@ -159,6 +159,36 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Computes a Repository's Git access token status.
+        # @param [String] name
+        #   Required. The repository's name.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataformV1beta1::ComputeRepositoryAccessTokenStatusResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataformV1beta1::ComputeRepositoryAccessTokenStatusResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def compute_project_location_repository_access_token_status(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}:computeAccessTokenStatus', options)
+          command.response_representation = Google::Apis::DataformV1beta1::ComputeRepositoryAccessTokenStatusResponse::Representation
+          command.response_class = Google::Apis::DataformV1beta1::ComputeRepositoryAccessTokenStatusResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a new Repository in a given project and location.
         # @param [String] parent
         #   Required. The location in which to create the repository. Must be in the
@@ -232,13 +262,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Fetches a Repository's history of changes. The Repository must not have a
+        # Fetches a Repository's history of commits. The Repository must not have a
         # value for `git_remote_settings.url`.
         # @param [String] name
         #   Required. The repository's name.
         # @param [Fixnum] page_size
-        #   Optional. Maximum number of paths to return. The server may return fewer items
-        #   than requested. If unspecified, the server will pick an appropriate default.
+        #   Optional. Maximum number of commits to return. The server may return fewer
+        #   items than requested. If unspecified, the server will pick an appropriate
+        #   default.
         # @param [String] page_token
         #   Optional. Page token received from a previous `FetchRepositoryHistory` call.
         #   Provide this to retrieve the subsequent page. When paginating, all other
