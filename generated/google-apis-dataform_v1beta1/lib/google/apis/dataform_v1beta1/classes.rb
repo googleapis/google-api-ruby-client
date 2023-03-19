@@ -590,6 +590,25 @@ module Google
         end
       end
       
+      # `ComputeRepositoryAccessTokenStatus` response message.
+      class ComputeRepositoryAccessTokenStatusResponse
+        include Google::Apis::Core::Hashable
+      
+        # Indicates the status of the Git access token.
+        # Corresponds to the JSON property `tokenStatus`
+        # @return [String]
+        attr_accessor :token_status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @token_status = args[:token_status] if args.key?(:token_status)
+        end
+      end
+      
       # Represents a relation which is not managed by Dataform but which may be
       # referenced by Dataform actions.
       class Declaration
