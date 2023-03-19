@@ -489,9 +489,13 @@ module Google
           property :cloud_run_revision, as: 'cloudRunRevision', class: Google::Apis::NetworkmanagementV1beta1::CloudRunRevisionEndpoint, decorator: Google::Apis::NetworkmanagementV1beta1::CloudRunRevisionEndpoint::Representation
       
           property :cloud_sql_instance, as: 'cloudSqlInstance'
+          property :forwarding_rule, as: 'forwardingRule'
+          property :forwarding_rule_target, as: 'forwardingRuleTarget'
           property :gke_master_cluster, as: 'gkeMasterCluster'
           property :instance, as: 'instance'
           property :ip_address, as: 'ipAddress'
+          property :load_balancer_id, as: 'loadBalancerId'
+          property :load_balancer_type, as: 'loadBalancerType'
           property :network, as: 'network'
           property :network_type, as: 'networkType'
           property :port, as: 'port'
