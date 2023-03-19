@@ -1584,6 +1584,11 @@ module Google
       class ContaineranalysisGoogleDevtoolsCloudbuildV1BuildOptions
         include Google::Apis::Core::Hashable
       
+        # Optional. Option to specify how default logs buckets are setup.
+        # Corresponds to the JSON property `defaultLogsBucketBehavior`
+        # @return [String]
+        attr_accessor :default_logs_bucket_behavior
+      
         # Requested disk size for the VM that runs the build. Note that this is *NOT* "
         # disk free"; some of the space will be used by the operating system and build
         # utilities. Also note that this is the minimum disk size that will be allocated
@@ -1679,6 +1684,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @default_logs_bucket_behavior = args[:default_logs_bucket_behavior] if args.key?(:default_logs_bucket_behavior)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @dynamic_substitutions = args[:dynamic_substitutions] if args.key?(:dynamic_substitutions)
           @env = args[:env] if args.key?(:env)
@@ -5148,13 +5154,6 @@ module Google
       class Publisher
         include Google::Apis::Core::Hashable
       
-        # The context or namespace. Contains a URL which is under control of the issuing
-        # party and can be used as a globally unique identifier for that issuing party.
-        # Example: https://csaf.io
-        # Corresponds to the JSON property `context`
-        # @return [String]
-        attr_accessor :context
-      
         # Provides information about the authority of the issuing party to release the
         # document, in particular, the party's constituency and responsibilities or
         # other obligations.
@@ -5167,15 +5166,22 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The context or namespace. Contains a URL which is under control of the issuing
+        # party and can be used as a globally unique identifier for that issuing party.
+        # Example: https://csaf.io
+        # Corresponds to the JSON property `publisherNamespace`
+        # @return [String]
+        attr_accessor :publisher_namespace
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @context = args[:context] if args.key?(:context)
           @issuing_authority = args[:issuing_authority] if args.key?(:issuing_authority)
           @name = args[:name] if args.key?(:name)
+          @publisher_namespace = args[:publisher_namespace] if args.key?(:publisher_namespace)
         end
       end
       
@@ -5277,11 +5283,6 @@ module Google
         # @return [String]
         attr_accessor :details
       
-        # Contains the date from which the remediation is available.
-        # Corresponds to the JSON property `remediationTime`
-        # @return [String]
-        attr_accessor :remediation_time
-      
         # The type of remediation that can be applied.
         # Corresponds to the JSON property `remediationType`
         # @return [String]
@@ -5299,7 +5300,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @details = args[:details] if args.key?(:details)
-          @remediation_time = args[:remediation_time] if args.key?(:remediation_time)
           @remediation_type = args[:remediation_type] if args.key?(:remediation_type)
           @remediation_uri = args[:remediation_uri] if args.key?(:remediation_uri)
         end
