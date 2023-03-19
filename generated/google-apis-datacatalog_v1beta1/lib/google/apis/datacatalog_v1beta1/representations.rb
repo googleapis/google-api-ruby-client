@@ -268,6 +268,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDatacatalogV1ReconcileTagsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1ReconcileTagsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDatacatalogV1RoutineSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1032,6 +1044,24 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :text, as: 'text'
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1ReconcileTagsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :errors, as: 'errors', class: Google::Apis::DatacatalogV1beta1::Status, decorator: Google::Apis::DatacatalogV1beta1::Status::Representation
+      
+          property :state, as: 'state'
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1ReconcileTagsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :created_tags_count, :numeric_string => true, as: 'createdTagsCount'
+          property :deleted_tags_count, :numeric_string => true, as: 'deletedTagsCount'
+          property :updated_tags_count, :numeric_string => true, as: 'updatedTagsCount'
         end
       end
       
