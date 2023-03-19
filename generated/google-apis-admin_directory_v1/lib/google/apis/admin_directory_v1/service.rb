@@ -3314,6 +3314,10 @@ module Google
         #   customerId`. The `customerId` is also returned as part of the [Users](/admin-
         #   sdk/directory/v1/reference/users) resource. You must provide either the `
         #   customer` or the `domain` parameter.
+        # @param [Boolean] include_indirect_role_assignments
+        #   When set to `true`, fetches indirect role assignments (i.e. role assignment
+        #   via a group) as well as direct ones. Defaults to `false`. You must specify `
+        #   user_key` or the indirect role assignments will not be included.
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
         # @param [String] page_token
@@ -3322,8 +3326,8 @@ module Google
         #   Immutable ID of a role. If included in the request, returns only role
         #   assignments containing this role ID.
         # @param [String] user_key
-        #   The user's primary email address, alias email address, or unique user ID. If
-        #   included in the request, returns role assignments only for this user.
+        #   The primary email address, alias email address, or unique user or group ID. If
+        #   included in the request, returns role assignments only for this user or group.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3341,11 +3345,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_role_assignments(customer, max_results: nil, page_token: nil, role_id: nil, user_key: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_role_assignments(customer, include_indirect_role_assignments: nil, max_results: nil, page_token: nil, role_id: nil, user_key: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'admin/directory/v1/customer/{customer}/roleassignments', options)
           command.response_representation = Google::Apis::AdminDirectoryV1::RoleAssignments::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::RoleAssignments
           command.params['customer'] = customer unless customer.nil?
+          command.query['includeIndirectRoleAssignments'] = include_indirect_role_assignments unless include_indirect_role_assignments.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['roleId'] = role_id unless role_id.nil?

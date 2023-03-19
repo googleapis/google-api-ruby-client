@@ -1639,6 +1639,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :assigned_to, as: 'assignedTo'
+          property :assignee_type, as: 'assigneeType'
           property :etag, as: 'etag'
           property :kind, as: 'kind'
           property :org_unit_id, as: 'orgUnitId'
