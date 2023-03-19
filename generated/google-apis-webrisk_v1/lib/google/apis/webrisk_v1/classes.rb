@@ -306,12 +306,6 @@ module Google
       class GoogleCloudWebriskV1Submission
         include Google::Apis::Core::Hashable
       
-        # ThreatTypes found to be associated with the submitted URI after reviewing it.
-        # This might be empty if the URI was not added to any list.
-        # Corresponds to the JSON property `threatTypes`
-        # @return [Array<String>]
-        attr_accessor :threat_types
-      
         # Required. The URI that is being reported for malicious content to be analyzed.
         # Corresponds to the JSON property `uri`
         # @return [String]
@@ -323,58 +317,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @threat_types = args[:threat_types] if args.key?(:threat_types)
           @uri = args[:uri] if args.key?(:uri)
-        end
-      end
-      
-      # Metadata for the Submit URI long-running operation.
-      class GoogleCloudWebriskV1SubmitUriMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Creation time of the operation.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # The state of the operation.
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
-      
-        # Latest update time of the operation.
-        # Corresponds to the JSON property `updateTime`
-        # @return [String]
-        attr_accessor :update_time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @state = args[:state] if args.key?(:state)
-          @update_time = args[:update_time] if args.key?(:update_time)
-        end
-      end
-      
-      # Request to send a potentially malicious URI to WebRisk.
-      class GoogleCloudWebriskV1SubmitUriRequest
-        include Google::Apis::Core::Hashable
-      
-        # Wraps a URI that might be displaying malicious content.
-        # Corresponds to the JSON property `submission`
-        # @return [Google::Apis::WebriskV1::GoogleCloudWebriskV1Submission]
-        attr_accessor :submission
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @submission = args[:submission] if args.key?(:submission)
         end
       end
       

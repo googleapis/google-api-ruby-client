@@ -82,18 +82,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudWebriskV1SubmitUriMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudWebriskV1SubmitUriRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudWebriskV1ThreatEntryAdditions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -220,25 +208,7 @@ module Google
       class GoogleCloudWebriskV1Submission
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :threat_types, as: 'threatTypes'
           property :uri, as: 'uri'
-        end
-      end
-      
-      class GoogleCloudWebriskV1SubmitUriMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :create_time, as: 'createTime'
-          property :state, as: 'state'
-          property :update_time, as: 'updateTime'
-        end
-      end
-      
-      class GoogleCloudWebriskV1SubmitUriRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :submission, as: 'submission', class: Google::Apis::WebriskV1::GoogleCloudWebriskV1Submission, decorator: Google::Apis::WebriskV1::GoogleCloudWebriskV1Submission::Representation
-      
         end
       end
       
