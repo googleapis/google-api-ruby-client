@@ -3026,6 +3026,7 @@ module Google
           property :cart_id, as: 'cartId'
           property :completion_detail, as: 'completionDetail', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCompletionDetail, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCompletionDetail::Representation
       
+          property :domain, as: 'domain'
           property :event_time, as: 'eventTime'
           property :event_type, as: 'eventType'
           collection :experiment_ids, as: 'experimentIds'
