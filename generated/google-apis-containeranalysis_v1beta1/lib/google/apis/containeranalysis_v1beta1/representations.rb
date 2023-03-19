@@ -1229,6 +1229,7 @@ module Google
       class ContaineranalysisGoogleDevtoolsCloudbuildV1BuildOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_logs_bucket_behavior, as: 'defaultLogsBucketBehavior'
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
           property :dynamic_substitutions, as: 'dynamicSubstitutions'
           collection :env, as: 'env'
@@ -2162,9 +2163,9 @@ module Google
       class Publisher
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :context, as: 'context'
           property :issuing_authority, as: 'issuingAuthority'
           property :name, as: 'name'
+          property :publisher_namespace, as: 'publisherNamespace'
         end
       end
       
@@ -2197,7 +2198,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :details, as: 'details'
-          property :remediation_time, as: 'remediationTime'
           property :remediation_type, as: 'remediationType'
           property :remediation_uri, as: 'remediationUri', class: Google::Apis::ContaineranalysisV1beta1::RelatedUrl, decorator: Google::Apis::ContaineranalysisV1beta1::RelatedUrl::Representation
       
