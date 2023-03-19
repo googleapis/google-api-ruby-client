@@ -4637,7 +4637,9 @@ module Google
         #   second and include a time zone.
         # @param [String] _type
         #   String of comma-delimited FHIR resource types. If provided, only resources of
-        #   the specified resource type(s) are returned.
+        #   the specified resource type(s) are returned. Specifying multiple `_type`
+        #   parameters isn't supported. For example, the result of `_type=Observation&
+        #   _type=Encounter` is undefined. Use `_type=Observation,Encounter` instead.
         # @param [String] end_
         #   The response includes records prior to the end date. The date uses the format
         #   YYYY-MM-DD. If no end date is provided, all records subsequent to the start
