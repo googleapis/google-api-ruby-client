@@ -406,10 +406,12 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Set the launch stage to a preview stage on write to allow use of preview
-        # features in that stage. On read, describes whether the resource uses preview
-        # features. Launch Stages are defined at [Google Cloud Platform Launch Stages](
-        # https://cloud.google.com/terms/launch-stages).
+        # The least stable launch stage needed to create this resource, as defined by [
+        # Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-
+        # stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. Note that this value
+        # might not be what was used as input. For example, if ALPHA was provided as
+        # input in the parent resource, but only BETA and GA-level features are were,
+        # this field will be BETA.
         # Corresponds to the JSON property `launchStage`
         # @return [String]
         attr_accessor :launch_stage
@@ -818,7 +820,11 @@ module Google
       
         # The launch stage as defined by [Google Cloud Platform Launch Stages](https://
         # cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and
-        # `GA`. If no value is specified, GA is assumed.
+        # `GA`. If no value is specified, GA is assumed. Set the launch stage to a
+        # preview stage on input to allow use of preview features in that stage. On read
+        # (or output), describes whether the resource uses preview features. For example,
+        # if ALPHA is provided as input, but only BETA and GA-level features are used,
+        # this field will be BETA on output.
         # Corresponds to the JSON property `launchStage`
         # @return [String]
         attr_accessor :launch_stage
@@ -1228,10 +1234,12 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Set the launch stage to a preview stage on write to allow use of preview
-        # features in that stage. On read, describes whether the resource uses preview
-        # features. Launch Stages are defined at [Google Cloud Platform Launch Stages](
-        # https://cloud.google.com/terms/launch-stages).
+        # The least stable launch stage needed to create this resource, as defined by [
+        # Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-
+        # stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. Note that this value
+        # might not be what was used as input. For example, if ALPHA was provided as
+        # input in the parent resource, but only BETA and GA-level features are were,
+        # this field will be BETA.
         # Corresponds to the JSON property `launchStage`
         # @return [String]
         attr_accessor :launch_stage
@@ -1714,7 +1722,11 @@ module Google
       
         # The launch stage as defined by [Google Cloud Platform Launch Stages](https://
         # cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and
-        # `GA`. If no value is specified, GA is assumed.
+        # `GA`. If no value is specified, GA is assumed. Set the launch stage to a
+        # preview stage on input to allow use of preview features in that stage. On read
+        # (or output), describes whether the resource uses preview features. For example,
+        # if ALPHA is provided as input, but only BETA and GA-level features are used,
+        # this field will be BETA on output.
         # Corresponds to the JSON property `launchStage`
         # @return [String]
         attr_accessor :launch_stage
