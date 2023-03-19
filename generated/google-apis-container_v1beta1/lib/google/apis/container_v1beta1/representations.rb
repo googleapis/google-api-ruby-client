@@ -256,6 +256,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Fleet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GpuSharingConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1185,6 +1191,8 @@ module Google
           property :endpoint, as: 'endpoint'
           property :etag, as: 'etag'
           property :expire_time, as: 'expireTime'
+          property :fleet, as: 'fleet', class: Google::Apis::ContainerV1beta1::Fleet, decorator: Google::Apis::ContainerV1beta1::Fleet::Representation
+      
           property :id, as: 'id'
           property :identity_service_config, as: 'identityServiceConfig', class: Google::Apis::ContainerV1beta1::IdentityServiceConfig, decorator: Google::Apis::ContainerV1beta1::IdentityServiceConfig::Representation
       
@@ -1520,6 +1528,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :event_type, as: 'eventType'
+        end
+      end
+      
+      class Fleet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :membership, as: 'membership'
+          property :pre_registered, as: 'preRegistered'
+          property :project, as: 'project'
         end
       end
       
