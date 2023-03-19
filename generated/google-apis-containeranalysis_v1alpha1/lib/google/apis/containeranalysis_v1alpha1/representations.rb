@@ -604,6 +604,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Justification
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Layer
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -862,12 +868,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Threat
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class TimeSpan
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -967,6 +967,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cve, as: 'cve'
+          collection :impacts, as: 'impacts'
+          property :justification, as: 'justification', class: Google::Apis::ContaineranalysisV1alpha1::Justification, decorator: Google::Apis::ContaineranalysisV1alpha1::Justification::Representation
+      
           property :long_description, as: 'longDescription'
           collection :related_uris, as: 'relatedUris', class: Google::Apis::ContaineranalysisV1alpha1::Uri, decorator: Google::Apis::ContaineranalysisV1alpha1::Uri::Representation
       
@@ -974,8 +977,6 @@ module Google
       
           property :short_description, as: 'shortDescription'
           property :state, as: 'state'
-          collection :threats, as: 'threats', class: Google::Apis::ContaineranalysisV1alpha1::Threat, decorator: Google::Apis::ContaineranalysisV1alpha1::Threat::Representation
-      
         end
       end
       
@@ -1317,6 +1318,7 @@ module Google
       class ContaineranalysisGoogleDevtoolsCloudbuildV1BuildOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_logs_bucket_behavior, as: 'defaultLogsBucketBehavior'
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
           property :dynamic_substitutions, as: 'dynamicSubstitutions'
           collection :env, as: 'env'
@@ -2013,6 +2015,14 @@ module Google
         end
       end
       
+      class Justification
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :details, as: 'details'
+          property :justification_type, as: 'justificationType'
+        end
+      end
+      
       class Layer
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2314,9 +2324,9 @@ module Google
       class Publisher
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :context, as: 'context'
           property :issuing_authority, as: 'issuingAuthority'
           property :name, as: 'name'
+          property :publisher_namespace, as: 'publisherNamespace'
         end
       end
       
@@ -2360,7 +2370,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :details, as: 'details'
-          property :remediation_time, as: 'remediationTime'
           property :remediation_type, as: 'remediationType'
           property :remediation_uri, as: 'remediationUri', class: Google::Apis::ContaineranalysisV1alpha1::Uri, decorator: Google::Apis::ContaineranalysisV1alpha1::Uri::Representation
       
@@ -2542,14 +2551,6 @@ module Google
         end
       end
       
-      class Threat
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :details, as: 'details'
-          property :threat_type, as: 'threatType'
-        end
-      end
-      
       class TimeSpan
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2622,14 +2623,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cve, as: 'cve'
+          collection :impacts, as: 'impacts'
+          property :justification, as: 'justification', class: Google::Apis::ContaineranalysisV1alpha1::Justification, decorator: Google::Apis::ContaineranalysisV1alpha1::Justification::Representation
+      
           property :note_name, as: 'noteName'
           collection :related_uris, as: 'relatedUris', class: Google::Apis::ContaineranalysisV1alpha1::Uri, decorator: Google::Apis::ContaineranalysisV1alpha1::Uri::Representation
       
           collection :remediations, as: 'remediations', class: Google::Apis::ContaineranalysisV1alpha1::Remediation, decorator: Google::Apis::ContaineranalysisV1alpha1::Remediation::Representation
       
           property :state, as: 'state'
-          collection :threats, as: 'threats', class: Google::Apis::ContaineranalysisV1alpha1::Threat, decorator: Google::Apis::ContaineranalysisV1alpha1::Threat::Representation
-      
         end
       end
       

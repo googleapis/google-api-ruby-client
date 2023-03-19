@@ -102,6 +102,18 @@ module Google
         # @return [String]
         attr_accessor :cve
       
+        # Contains information about the impact of this vulnerability, this will change
+        # with time.
+        # Corresponds to the JSON property `impacts`
+        # @return [Array<String>]
+        attr_accessor :impacts
+      
+        # Justification provides the justification when the state of the assessment if
+        # NOT_AFFECTED.
+        # Corresponds to the JSON property `justification`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::Justification]
+        attr_accessor :justification
+      
         # A detailed description of this Vex.
         # Corresponds to the JSON property `longDescription`
         # @return [String]
@@ -130,11 +142,6 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # Contains information about this vulnerability, this will change with time.
-        # Corresponds to the JSON property `threats`
-        # @return [Array<Google::Apis::ContaineranalysisV1alpha1::Threat>]
-        attr_accessor :threats
-      
         def initialize(**args)
            update!(**args)
         end
@@ -142,12 +149,13 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cve = args[:cve] if args.key?(:cve)
+          @impacts = args[:impacts] if args.key?(:impacts)
+          @justification = args[:justification] if args.key?(:justification)
           @long_description = args[:long_description] if args.key?(:long_description)
           @related_uris = args[:related_uris] if args.key?(:related_uris)
           @remediations = args[:remediations] if args.key?(:remediations)
           @short_description = args[:short_description] if args.key?(:short_description)
           @state = args[:state] if args.key?(:state)
-          @threats = args[:threats] if args.key?(:threats)
         end
       end
       
@@ -1577,6 +1585,11 @@ module Google
       class ContaineranalysisGoogleDevtoolsCloudbuildV1BuildOptions
         include Google::Apis::Core::Hashable
       
+        # Optional. Option to specify how default logs buckets are setup.
+        # Corresponds to the JSON property `defaultLogsBucketBehavior`
+        # @return [String]
+        attr_accessor :default_logs_bucket_behavior
+      
         # Requested disk size for the VM that runs the build. Note that this is *NOT* "
         # disk free"; some of the space will be used by the operating system and build
         # utilities. Also note that this is the minimum disk size that will be allocated
@@ -1672,6 +1685,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @default_logs_bucket_behavior = args[:default_logs_bucket_behavior] if args.key?(:default_logs_bucket_behavior)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @dynamic_substitutions = args[:dynamic_substitutions] if args.key?(:dynamic_substitutions)
           @env = args[:env] if args.key?(:env)
@@ -4148,6 +4162,32 @@ module Google
         end
       end
       
+      # Justification provides the justification when the state of the assessment if
+      # NOT_AFFECTED.
+      class Justification
+        include Google::Apis::Core::Hashable
+      
+        # Additional details on why this justification was chosen.
+        # Corresponds to the JSON property `details`
+        # @return [String]
+        attr_accessor :details
+      
+        # The justification type for this vulnerability.
+        # Corresponds to the JSON property `justificationType`
+        # @return [String]
+        attr_accessor :justification_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @details = args[:details] if args.key?(:details)
+          @justification_type = args[:justification_type] if args.key?(:justification_type)
+        end
+      end
+      
       # Layer holds metadata specific to a layer of a Docker image.
       class Layer
         include Google::Apis::Core::Hashable
@@ -5391,13 +5431,6 @@ module Google
       class Publisher
         include Google::Apis::Core::Hashable
       
-        # The context or namespace. Contains a URL which is under control of the issuing
-        # party and can be used as a globally unique identifier for that issuing party.
-        # Example: https://csaf.io
-        # Corresponds to the JSON property `context`
-        # @return [String]
-        attr_accessor :context
-      
         # Provides information about the authority of the issuing party to release the
         # document, in particular, the party's constituency and responsibilities or
         # other obligations.
@@ -5410,15 +5443,22 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The context or namespace. Contains a URL which is under control of the issuing
+        # party and can be used as a globally unique identifier for that issuing party.
+        # Example: https://csaf.io
+        # Corresponds to the JSON property `publisherNamespace`
+        # @return [String]
+        attr_accessor :publisher_namespace
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @context = args[:context] if args.key?(:context)
           @issuing_authority = args[:issuing_authority] if args.key?(:issuing_authority)
           @name = args[:name] if args.key?(:name)
+          @publisher_namespace = args[:publisher_namespace] if args.key?(:publisher_namespace)
         end
       end
       
@@ -5578,11 +5618,6 @@ module Google
         # @return [String]
         attr_accessor :details
       
-        # Contains the date from which the remediation is available.
-        # Corresponds to the JSON property `remediationTime`
-        # @return [String]
-        attr_accessor :remediation_time
-      
         # The type of remediation that can be applied.
         # Corresponds to the JSON property `remediationType`
         # @return [String]
@@ -5600,7 +5635,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @details = args[:details] if args.key?(:details)
-          @remediation_time = args[:remediation_time] if args.key?(:remediation_time)
           @remediation_type = args[:remediation_type] if args.key?(:remediation_type)
           @remediation_uri = args[:remediation_uri] if args.key?(:remediation_uri)
         end
@@ -6251,32 +6285,6 @@ module Google
         end
       end
       
-      # Contains the vulnerability kinetic information. This information can change as
-      # the vulnerability ages and new information becomes available.
-      class Threat
-        include Google::Apis::Core::Hashable
-      
-        # Represents a thorough human-readable discussion of the threat.
-        # Corresponds to the JSON property `details`
-        # @return [String]
-        attr_accessor :details
-      
-        # The type of threat.
-        # Corresponds to the JSON property `threatType`
-        # @return [String]
-        attr_accessor :threat_type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @details = args[:details] if args.key?(:details)
-          @threat_type = args[:threat_type] if args.key?(:threat_type)
-        end
-      end
-      
       # Start and end times for a build execution phase. Next ID: 3
       class TimeSpan
         include Google::Apis::Core::Hashable
@@ -6529,6 +6537,18 @@ module Google
         # @return [String]
         attr_accessor :cve
       
+        # Contains information about the impact of this vulnerability, this will change
+        # with time.
+        # Corresponds to the JSON property `impacts`
+        # @return [Array<String>]
+        attr_accessor :impacts
+      
+        # Justification provides the justification when the state of the assessment if
+        # NOT_AFFECTED.
+        # Corresponds to the JSON property `justification`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::Justification]
+        attr_accessor :justification
+      
         # The VulnerabilityAssessment note from which this VexAssessment was generated.
         # This will be of the form: `projects/[PROJECT_ID]/notes/[NOTE_ID]`.
         # Corresponds to the JSON property `noteName`
@@ -6553,11 +6573,6 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # Contains information about this vulnerability, this will change with time.
-        # Corresponds to the JSON property `threats`
-        # @return [Array<Google::Apis::ContaineranalysisV1alpha1::Threat>]
-        attr_accessor :threats
-      
         def initialize(**args)
            update!(**args)
         end
@@ -6565,11 +6580,12 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cve = args[:cve] if args.key?(:cve)
+          @impacts = args[:impacts] if args.key?(:impacts)
+          @justification = args[:justification] if args.key?(:justification)
           @note_name = args[:note_name] if args.key?(:note_name)
           @related_uris = args[:related_uris] if args.key?(:related_uris)
           @remediations = args[:remediations] if args.key?(:remediations)
           @state = args[:state] if args.key?(:state)
-          @threats = args[:threats] if args.key?(:threats)
         end
       end
       
