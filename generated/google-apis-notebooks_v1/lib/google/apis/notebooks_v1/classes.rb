@@ -2341,6 +2341,12 @@ module Google
         # @return [Array<Google::Apis::NotebooksV1::ContainerImage>]
         attr_accessor :kernels
       
+        # Bool indicating whether mixer client should be disabled. Default: False
+        # Corresponds to the JSON property `mixerDisabled`
+        # @return [Boolean]
+        attr_accessor :mixer_disabled
+        alias_method :mixer_disabled?, :mixer_disabled
+      
         # Cron expression in UTC timezone, used to schedule instance auto upgrade.
         # Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
         # Corresponds to the JSON property `notebookUpgradeSchedule`
@@ -2385,6 +2391,7 @@ module Google
           @idle_shutdown_timeout = args[:idle_shutdown_timeout] if args.key?(:idle_shutdown_timeout)
           @install_gpu_driver = args[:install_gpu_driver] if args.key?(:install_gpu_driver)
           @kernels = args[:kernels] if args.key?(:kernels)
+          @mixer_disabled = args[:mixer_disabled] if args.key?(:mixer_disabled)
           @notebook_upgrade_schedule = args[:notebook_upgrade_schedule] if args.key?(:notebook_upgrade_schedule)
           @post_startup_script = args[:post_startup_script] if args.key?(:post_startup_script)
           @post_startup_script_behavior = args[:post_startup_script_behavior] if args.key?(:post_startup_script_behavior)
