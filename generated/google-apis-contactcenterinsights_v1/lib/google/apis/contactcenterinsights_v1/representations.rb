@@ -172,12 +172,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudContactcenterinsightsV1CreateIssueMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudContactcenterinsightsV1CreateIssueModelMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -185,12 +179,6 @@ module Google
       end
       
       class GoogleCloudContactcenterinsightsV1CreateIssueModelRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudContactcenterinsightsV1CreateIssueRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1056,16 +1044,6 @@ module Google
         end
       end
       
-      class GoogleCloudContactcenterinsightsV1CreateIssueMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :create_time, as: 'createTime'
-          property :end_time, as: 'endTime'
-          property :request, as: 'request', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1CreateIssueRequest, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1CreateIssueRequest::Representation
-      
-        end
-      end
-      
       class GoogleCloudContactcenterinsightsV1CreateIssueModelMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1080,15 +1058,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :issue_model, as: 'issueModel', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1IssueModel, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1IssueModel::Representation
-      
-          property :parent, as: 'parent'
-        end
-      end
-      
-      class GoogleCloudContactcenterinsightsV1CreateIssueRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :issue, as: 'issue', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1Issue, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1Issue::Representation
       
           property :parent, as: 'parent'
         end
