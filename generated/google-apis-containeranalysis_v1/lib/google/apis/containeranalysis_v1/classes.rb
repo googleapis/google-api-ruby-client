@@ -1652,6 +1652,11 @@ module Google
       class ContaineranalysisGoogleDevtoolsCloudbuildV1BuildOptions
         include Google::Apis::Core::Hashable
       
+        # Optional. Option to specify how default logs buckets are setup.
+        # Corresponds to the JSON property `defaultLogsBucketBehavior`
+        # @return [String]
+        attr_accessor :default_logs_bucket_behavior
+      
         # Requested disk size for the VM that runs the build. Note that this is *NOT* "
         # disk free"; some of the space will be used by the operating system and build
         # utilities. Also note that this is the minimum disk size that will be allocated
@@ -1747,6 +1752,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @default_logs_bucket_behavior = args[:default_logs_bucket_behavior] if args.key?(:default_logs_bucket_behavior)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @dynamic_substitutions = args[:dynamic_substitutions] if args.key?(:dynamic_substitutions)
           @env = args[:env] if args.key?(:env)
