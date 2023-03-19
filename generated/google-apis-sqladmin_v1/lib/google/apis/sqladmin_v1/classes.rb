@@ -2726,6 +2726,25 @@ module Google
         end
       end
       
+      # Perform disk shrink context.
+      class PerformDiskShrinkContext
+        include Google::Apis::Core::Hashable
+      
+        # The target disk shrink size in GigaBytes.
+        # Corresponds to the JSON property `targetSizeGb`
+        # @return [Fixnum]
+        attr_accessor :target_size_gb
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @target_size_gb = args[:target_size_gb] if args.key?(:target_size_gb)
+        end
+      end
+      
       # Read-replica configuration for connecting to the primary instance.
       class ReplicaConfiguration
         include Google::Apis::Core::Hashable
@@ -3133,6 +3152,31 @@ module Google
         end
       end
       
+      # Instance get disk shrink config response.
+      class SqlInstancesGetDiskShrinkConfigResponse
+        include Google::Apis::Core::Hashable
+      
+        # This is always `sql#getDiskShrinkConfig`.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The minimum size to which a disk can be shrunk in GigaBytes.
+        # Corresponds to the JSON property `minimalTargetSizeGb`
+        # @return [Fixnum]
+        attr_accessor :minimal_target_size_gb
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @minimal_target_size_gb = args[:minimal_target_size_gb] if args.key?(:minimal_target_size_gb)
+        end
+      end
+      
       # Reschedule options for maintenance windows.
       class SqlInstancesRescheduleMaintenanceRequestBody
         include Google::Apis::Core::Hashable
@@ -3149,6 +3193,19 @@ module Google
         # Update properties of this object
         def update!(**args)
           @reschedule = args[:reschedule] if args.key?(:reschedule)
+        end
+      end
+      
+      # Instance reset replica size request.
+      class SqlInstancesResetReplicaSizeRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
