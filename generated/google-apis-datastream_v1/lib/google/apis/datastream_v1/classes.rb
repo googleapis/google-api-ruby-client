@@ -123,7 +123,7 @@ module Google
         end
       end
       
-      # 
+      # BigQuery destination configuration
       class BigQueryDestinationConfig
         include Google::Apis::Core::Hashable
       
@@ -244,7 +244,9 @@ module Google
         # @return [Google::Apis::DatastreamV1::PrivateConnectivity]
         attr_accessor :private_connectivity
       
-        # Static IP address connectivity.
+        # Static IP address connectivity. Used when the source database is configured to
+        # allow incoming connections from the Datastream public IP addresses for the
+        # region specified in the connection profile.
         # Corresponds to the JSON property `staticServiceIpConnectivity`
         # @return [Google::Apis::DatastreamV1::StaticServiceIpConnectivity]
         attr_accessor :static_service_ip_connectivity
@@ -318,7 +320,7 @@ module Google
       class DestinationConfig
         include Google::Apis::Core::Hashable
       
-        # BigQuery destination configuration.
+        # BigQuery destination configuration
         # Corresponds to the JSON property `bigqueryDestinationConfig`
         # @return [Google::Apis::DatastreamV1::BigQueryDestinationConfig]
         attr_accessor :bigquery_destination_config
@@ -2150,7 +2152,9 @@ module Google
         end
       end
       
-      # Static IP address connectivity.
+      # Static IP address connectivity. Used when the source database is configured to
+      # allow incoming connections from the Datastream public IP addresses for the
+      # region specified in the connection profile.
       class StaticServiceIpConnectivity
         include Google::Apis::Core::Hashable
       
