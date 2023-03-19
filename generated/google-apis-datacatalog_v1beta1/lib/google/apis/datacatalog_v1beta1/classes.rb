@@ -1447,6 +1447,63 @@ module Google
         end
       end
       
+      # Long-running operation metadata message returned by the ReconcileTags.
+      class GoogleCloudDatacatalogV1ReconcileTagsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Maps the name of each tagged column (or empty string for a sole entry) to
+        # tagging operation status.
+        # Corresponds to the JSON property `errors`
+        # @return [Hash<String,Google::Apis::DatacatalogV1beta1::Status>]
+        attr_accessor :errors
+      
+        # State of the reconciliation operation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @errors = args[:errors] if args.key?(:errors)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Long-running operation response message returned by ReconcileTags.
+      class GoogleCloudDatacatalogV1ReconcileTagsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Number of tags created in the request.
+        # Corresponds to the JSON property `createdTagsCount`
+        # @return [Fixnum]
+        attr_accessor :created_tags_count
+      
+        # Number of tags deleted in the request.
+        # Corresponds to the JSON property `deletedTagsCount`
+        # @return [Fixnum]
+        attr_accessor :deleted_tags_count
+      
+        # Number of tags updated in the request.
+        # Corresponds to the JSON property `updatedTagsCount`
+        # @return [Fixnum]
+        attr_accessor :updated_tags_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @created_tags_count = args[:created_tags_count] if args.key?(:created_tags_count)
+          @deleted_tags_count = args[:deleted_tags_count] if args.key?(:deleted_tags_count)
+          @updated_tags_count = args[:updated_tags_count] if args.key?(:updated_tags_count)
+        end
+      end
+      
       # Specification that applies to a routine. Valid only for entries with the `
       # ROUTINE` type.
       class GoogleCloudDatacatalogV1RoutineSpec
