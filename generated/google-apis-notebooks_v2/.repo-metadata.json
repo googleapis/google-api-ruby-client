@@ -1,0 +1,7 @@
+{
+    "api_id": "notebooks:v2",
+    "name_pretty": "Notebooks API",
+    "distribution_name": "google-apis-notebooks_v2",
+    "language": "ruby",
+    "library_type": "REST"
+}
