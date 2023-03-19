@@ -6103,9 +6103,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :contains
       
-        # Set only if values should be bucketized into intervals. Must be set for facets
-        # with numerical values. Must not be set for facet with text values. Maximum
-        # number of intervals is 30.
+        # For all numerical facet keys that appear in the list of products from the
+        # catalog, the percentiles 0, 10, 30, 50, 70, 90 and 100 are computed from their
+        # distribution weekly. If the model assigns a high score to a numerical facet
+        # key and its intervals are not specified in the search request, these
+        # percentiles will become the bounds for its intervals and will be returned in
+        # the response. If the facet key intervals are specified in the request, then
+        # the specified intervals will be returned instead.
         # Corresponds to the JSON property `intervals`
         # @return [Array<Google::Apis::RetailV2beta::GoogleCloudRetailV2betaInterval>]
         attr_accessor :intervals
@@ -6936,6 +6940,13 @@ module Google
         # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCompletionDetail]
         attr_accessor :completion_detail
       
+        # Represents the domain of the user event, for projects that combine domains.
+        # For example: retailer can have events from multiple domains like retailer-main,
+        # retailer-baby, retailer-meds, etc. under one project.
+        # Corresponds to the JSON property `domain`
+        # @return [String]
+        attr_accessor :domain
+      
         # Only required for UserEventService.ImportUserEvents method. Timestamp of when
         # the user event happened.
         # Corresponds to the JSON property `eventTime`
@@ -7091,6 +7102,7 @@ module Google
           @attribution_token = args[:attribution_token] if args.key?(:attribution_token)
           @cart_id = args[:cart_id] if args.key?(:cart_id)
           @completion_detail = args[:completion_detail] if args.key?(:completion_detail)
+          @domain = args[:domain] if args.key?(:domain)
           @event_time = args[:event_time] if args.key?(:event_time)
           @event_type = args[:event_type] if args.key?(:event_type)
           @experiment_ids = args[:experiment_ids] if args.key?(:experiment_ids)
