@@ -851,6 +851,14 @@ module Google
         # @return [Array<String>]
         attr_accessor :access_levels
       
+        # Optional. Dry run access level that will be evaluated but will not be enforced.
+        # The access denial based on dry run policy will be logged. Only one access
+        # level is supported, not multiple. This list must have exactly one element.
+        # Example: "accessPolicies/9522/accessLevels/device_trusted"
+        # Corresponds to the JSON property `dryRunAccessLevels`
+        # @return [Array<String>]
+        attr_accessor :dry_run_access_levels
+      
         # Required. Immutable. Google Group id whose members are subject to this binding'
         # s restrictions. See "id" in the [G Suite Directory API's Groups resource] (
         # https://developers.google.com/admin-sdk/directory/v1/reference/groups#resource)
@@ -877,6 +885,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @access_levels = args[:access_levels] if args.key?(:access_levels)
+          @dry_run_access_levels = args[:dry_run_access_levels] if args.key?(:dry_run_access_levels)
           @group_key = args[:group_key] if args.key?(:group_key)
           @name = args[:name] if args.key?(:name)
         end

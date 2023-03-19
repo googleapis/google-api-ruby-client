@@ -505,6 +505,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :access_levels, as: 'accessLevels'
+          collection :dry_run_access_levels, as: 'dryRunAccessLevels'
           property :group_key, as: 'groupKey'
           property :name, as: 'name'
         end
