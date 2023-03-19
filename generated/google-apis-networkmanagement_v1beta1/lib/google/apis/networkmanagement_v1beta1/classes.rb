@@ -641,6 +641,19 @@ module Google
         # @return [String]
         attr_accessor :cloud_sql_instance
       
+        # Forwarding rule URI. Forwarding rules are frontends for load balancers, PSC
+        # endpoints and Protocol Forwarding. Format: projects/`project`/global/
+        # forwardingRules/`id` or projects/`project`/regions/`region`/forwardingRules/`
+        # id`
+        # Corresponds to the JSON property `forwardingRule`
+        # @return [String]
+        attr_accessor :forwarding_rule
+      
+        # Output only. Specifies the type of the target of the forwarding rule.
+        # Corresponds to the JSON property `forwardingRuleTarget`
+        # @return [String]
+        attr_accessor :forwarding_rule_target
+      
         # A cluster URI for [Google Kubernetes Engine master](https://cloud.google.com/
         # kubernetes-engine/docs/concepts/cluster-architecture).
         # Corresponds to the JSON property `gkeMasterCluster`
@@ -659,6 +672,17 @@ module Google
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
         attr_accessor :ip_address
+      
+        # Output only. ID of the load balancer the forwarding rule points to. Empty for
+        # forwarding rules not related to load balancers.
+        # Corresponds to the JSON property `loadBalancerId`
+        # @return [String]
+        attr_accessor :load_balancer_id
+      
+        # Output only. Type of the load balancer the forwarding rule points to.
+        # Corresponds to the JSON property `loadBalancerType`
+        # @return [String]
+        attr_accessor :load_balancer_type
       
         # A Compute Engine network URI.
         # Corresponds to the JSON property `network`
@@ -698,9 +722,13 @@ module Google
           @cloud_function = args[:cloud_function] if args.key?(:cloud_function)
           @cloud_run_revision = args[:cloud_run_revision] if args.key?(:cloud_run_revision)
           @cloud_sql_instance = args[:cloud_sql_instance] if args.key?(:cloud_sql_instance)
+          @forwarding_rule = args[:forwarding_rule] if args.key?(:forwarding_rule)
+          @forwarding_rule_target = args[:forwarding_rule_target] if args.key?(:forwarding_rule_target)
           @gke_master_cluster = args[:gke_master_cluster] if args.key?(:gke_master_cluster)
           @instance = args[:instance] if args.key?(:instance)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @load_balancer_id = args[:load_balancer_id] if args.key?(:load_balancer_id)
+          @load_balancer_type = args[:load_balancer_type] if args.key?(:load_balancer_type)
           @network = args[:network] if args.key?(:network)
           @network_type = args[:network_type] if args.key?(:network_type)
           @port = args[:port] if args.key?(:port)
