@@ -1667,6 +1667,7 @@ module Google
       
           collection :spanner_details, as: 'spannerDetails', class: Google::Apis::DataflowV1b3::SpannerIoDetails, decorator: Google::Apis::DataflowV1b3::SpannerIoDetails::Representation
       
+          hash :user_display_properties, as: 'userDisplayProperties'
         end
       end
       
@@ -1938,11 +1939,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :custom_metadata, as: 'customMetadata'
+          property :group_name, as: 'groupName'
           property :help_text, as: 'helpText'
           property :is_optional, as: 'isOptional'
           property :label, as: 'label'
           property :name, as: 'name'
           property :param_type, as: 'paramType'
+          property :parent_name, as: 'parentName'
+          collection :parent_trigger_values, as: 'parentTriggerValues'
           collection :regexes, as: 'regexes'
         end
       end

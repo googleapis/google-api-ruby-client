@@ -2422,6 +2422,11 @@ module Google
         # @return [Array<Google::Apis::DataflowV1b3::SpannerIoDetails>]
         attr_accessor :spanner_details
       
+        # List of display properties to help UI filter jobs.
+        # Corresponds to the JSON property `userDisplayProperties`
+        # @return [Hash<String,String>]
+        attr_accessor :user_display_properties
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2435,6 +2440,7 @@ module Google
           @pubsub_details = args[:pubsub_details] if args.key?(:pubsub_details)
           @sdk_version = args[:sdk_version] if args.key?(:sdk_version)
           @spanner_details = args[:spanner_details] if args.key?(:spanner_details)
+          @user_display_properties = args[:user_display_properties] if args.key?(:user_display_properties)
         end
       end
       
@@ -3390,6 +3396,13 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :custom_metadata
       
+        # Optional. Specifies a group name for this parameter to be rendered under.
+        # Group header text will be rendered exactly as specified in this field. Only
+        # considered when parent_name is NOT provided.
+        # Corresponds to the JSON property `groupName`
+        # @return [String]
+        attr_accessor :group_name
+      
         # Required. The help text to display for the parameter.
         # Corresponds to the JSON property `helpText`
         # @return [String]
@@ -3416,6 +3429,21 @@ module Google
         # @return [String]
         attr_accessor :param_type
       
+        # Optional. Specifies the name of the parent parameter. Used in conjunction with
+        # 'parent_trigger_values' to make this parameter conditional (will only be
+        # rendered conditionally). Should be mappable to a ParameterMetadata.name field.
+        # Corresponds to the JSON property `parentName`
+        # @return [String]
+        attr_accessor :parent_name
+      
+        # Optional. The value(s) of the 'parent_name' parameter which will trigger this
+        # parameter to be shown. If left empty, ANY non-empty value in parent_name will
+        # trigger this parameter to be shown. Only considered when this parameter is
+        # conditional (when 'parent_name' has been provided).
+        # Corresponds to the JSON property `parentTriggerValues`
+        # @return [Array<String>]
+        attr_accessor :parent_trigger_values
+      
         # Optional. Regexes that the parameter must match.
         # Corresponds to the JSON property `regexes`
         # @return [Array<String>]
@@ -3428,11 +3456,14 @@ module Google
         # Update properties of this object
         def update!(**args)
           @custom_metadata = args[:custom_metadata] if args.key?(:custom_metadata)
+          @group_name = args[:group_name] if args.key?(:group_name)
           @help_text = args[:help_text] if args.key?(:help_text)
           @is_optional = args[:is_optional] if args.key?(:is_optional)
           @label = args[:label] if args.key?(:label)
           @name = args[:name] if args.key?(:name)
           @param_type = args[:param_type] if args.key?(:param_type)
+          @parent_name = args[:parent_name] if args.key?(:parent_name)
+          @parent_trigger_values = args[:parent_trigger_values] if args.key?(:parent_trigger_values)
           @regexes = args[:regexes] if args.key?(:regexes)
         end
       end

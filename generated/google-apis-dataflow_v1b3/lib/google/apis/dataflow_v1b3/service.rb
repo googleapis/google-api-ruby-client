@@ -414,6 +414,13 @@ module Google
         # @param [String] location
         #   The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/
         #   regional-endpoints) that contains this job.
+        # @param [String] update_mask
+        #   The list of fields to update relative to Job. If empty, only RequestedJobState
+        #   will be considered for update. If the FieldMask is not empty and
+        #   RequestedJobState is none/empty, The fields specified in the update mask will
+        #   be the only ones considered for update. If both RequestedJobState and
+        #   update_mask are specified, we will first handle RequestedJobState and then the
+        #   update_mask fields.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -431,7 +438,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_project_job(project_id, job_id, job_object = nil, location: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def update_project_job(project_id, job_id, job_object = nil, location: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:put, 'v1b3/projects/{projectId}/jobs/{jobId}', options)
           command.request_representation = Google::Apis::DataflowV1b3::Job::Representation
           command.request_object = job_object
@@ -440,6 +447,7 @@ module Google
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['jobId'] = job_id unless job_id.nil?
           command.query['location'] = location unless location.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1018,6 +1026,13 @@ module Google
         # @param [String] job_id
         #   The job ID.
         # @param [Google::Apis::DataflowV1b3::Job] job_object
+        # @param [String] update_mask
+        #   The list of fields to update relative to Job. If empty, only RequestedJobState
+        #   will be considered for update. If the FieldMask is not empty and
+        #   RequestedJobState is none/empty, The fields specified in the update mask will
+        #   be the only ones considered for update. If both RequestedJobState and
+        #   update_mask are specified, we will first handle RequestedJobState and then the
+        #   update_mask fields.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1035,7 +1050,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_project_location_job(project_id, location, job_id, job_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def update_project_location_job(project_id, location, job_id, job_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:put, 'v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}', options)
           command.request_representation = Google::Apis::DataflowV1b3::Job::Representation
           command.request_object = job_object
@@ -1044,6 +1059,7 @@ module Google
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['location'] = location unless location.nil?
           command.params['jobId'] = job_id unless job_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
