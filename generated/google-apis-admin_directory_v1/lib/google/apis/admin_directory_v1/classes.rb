@@ -3693,6 +3693,11 @@ module Google
         # @return [String]
         attr_accessor :assigned_to
       
+        # Output only. The type of the assignee (`USER` or `GROUP`).
+        # Corresponds to the JSON property `assigneeType`
+        # @return [String]
+        attr_accessor :assignee_type
+      
         # ETag of the resource.
         # Corresponds to the JSON property `etag`
         # @return [String]
@@ -3731,6 +3736,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @assigned_to = args[:assigned_to] if args.key?(:assigned_to)
+          @assignee_type = args[:assignee_type] if args.key?(:assignee_type)
           @etag = args[:etag] if args.key?(:etag)
           @kind = args[:kind] if args.key?(:kind)
           @org_unit_id = args[:org_unit_id] if args.key?(:org_unit_id)
@@ -4404,7 +4410,8 @@ module Google
         # @return [String]
         attr_accessor :thumbnail_photo_etag
       
-        # Output only. Photo Url of the user (Read-only)
+        # Output only. The URL of the user's profile photo. The URL might be temporary
+        # or private.
         # Corresponds to the JSON property `thumbnailPhotoUrl`
         # @return [String]
         attr_accessor :thumbnail_photo_url
