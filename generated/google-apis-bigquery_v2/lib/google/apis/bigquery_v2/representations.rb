@@ -2030,6 +2030,7 @@ module Google
       
           collection :connection_properties, as: 'connectionProperties', class: Google::Apis::BigqueryV2::ConnectionProperty, decorator: Google::Apis::BigqueryV2::ConnectionProperty::Representation
       
+          property :continuous, as: 'continuous'
           property :create_disposition, as: 'createDisposition'
           property :create_session, as: 'createSession'
           property :default_dataset, as: 'defaultDataset', class: Google::Apis::BigqueryV2::DatasetReference, decorator: Google::Apis::BigqueryV2::DatasetReference::Representation
@@ -2501,6 +2502,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :connection_properties, as: 'connectionProperties', class: Google::Apis::BigqueryV2::ConnectionProperty, decorator: Google::Apis::BigqueryV2::ConnectionProperty::Representation
       
+          property :continuous, as: 'continuous'
           property :create_session, as: 'createSession'
           property :default_dataset, as: 'defaultDataset', class: Google::Apis::BigqueryV2::DatasetReference, decorator: Google::Apis::BigqueryV2::DatasetReference::Representation
       
@@ -2755,6 +2757,7 @@ module Google
           property :container_image, as: 'containerImage'
           collection :file_uris, as: 'fileUris'
           collection :jar_uris, as: 'jarUris'
+          property :main_class, as: 'mainClass'
           property :main_file_uri, as: 'mainFileUri'
           hash :properties, as: 'properties'
           collection :py_file_uris, as: 'pyFileUris'

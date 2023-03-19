@@ -4122,6 +4122,13 @@ module Google
         # @return [Array<Google::Apis::BigqueryV2::ConnectionProperty>]
         attr_accessor :connection_properties
       
+        # [Optional] Specifies whether the query should be executed as a continuous
+        # query. The default value is false.
+        # Corresponds to the JSON property `continuous`
+        # @return [Boolean]
+        attr_accessor :continuous
+        alias_method :continuous?, :continuous
+      
         # [Optional] Specifies whether the job is allowed to create new tables. The
         # following values are supported: CREATE_IF_NEEDED: If the table does not exist,
         # BigQuery creates the table. CREATE_NEVER: The table must already exist. If it
@@ -4288,6 +4295,7 @@ module Google
           @allow_large_results = args[:allow_large_results] if args.key?(:allow_large_results)
           @clustering = args[:clustering] if args.key?(:clustering)
           @connection_properties = args[:connection_properties] if args.key?(:connection_properties)
+          @continuous = args[:continuous] if args.key?(:continuous)
           @create_disposition = args[:create_disposition] if args.key?(:create_disposition)
           @create_session = args[:create_session] if args.key?(:create_session)
           @default_dataset = args[:default_dataset] if args.key?(:default_dataset)
@@ -5971,6 +5979,13 @@ module Google
         # @return [Array<Google::Apis::BigqueryV2::ConnectionProperty>]
         attr_accessor :connection_properties
       
+        # [Optional] Specifies whether the query should be executed as a continuous
+        # query. The default value is false.
+        # Corresponds to the JSON property `continuous`
+        # @return [Boolean]
+        attr_accessor :continuous
+        alias_method :continuous?, :continuous
+      
         # If true, creates a new session, where session id will be a server generated
         # random id. If false, runs query with an existing session_id passed in
         # ConnectionProperty, otherwise runs query in non-session mode.
@@ -6113,6 +6128,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @connection_properties = args[:connection_properties] if args.key?(:connection_properties)
+          @continuous = args[:continuous] if args.key?(:continuous)
           @create_session = args[:create_session] if args.key?(:create_session)
           @default_dataset = args[:default_dataset] if args.key?(:default_dataset)
           @dry_run = args[:dry_run] if args.key?(:dry_run)
@@ -7044,6 +7060,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :jar_uris
       
+        # The fully qualified name of a class in jar_uris, for example, com.example.
+        # wordcount. Exactly one of main_class and main_jar_uri field should be set for
+        # Java/Scala language type.
+        # Corresponds to the JSON property `mainClass`
+        # @return [String]
+        attr_accessor :main_class
+      
         # The main file/jar URI of the Spark application. Exactly one of the
         # definition_body field and the main_file_uri field must be set for Python.
         # Exactly one of main_class and main_file_uri field should be set for Java/Scala
@@ -7082,6 +7105,7 @@ module Google
           @container_image = args[:container_image] if args.key?(:container_image)
           @file_uris = args[:file_uris] if args.key?(:file_uris)
           @jar_uris = args[:jar_uris] if args.key?(:jar_uris)
+          @main_class = args[:main_class] if args.key?(:main_class)
           @main_file_uri = args[:main_file_uri] if args.key?(:main_file_uri)
           @properties = args[:properties] if args.key?(:properties)
           @py_file_uris = args[:py_file_uris] if args.key?(:py_file_uris)
@@ -7150,8 +7174,8 @@ module Google
         # @return [Google::Apis::BigqueryV2::StandardSqlStructType]
         attr_accessor :struct_type
       
-        # Required. The top level type of this field. Can be any standard SQL data type (
-        # e.g., "INT64", "DATE", "ARRAY").
+        # Required. The top level type of this field. Can be any GoogleSQL data type (e.
+        # g., "INT64", "DATE", "ARRAY").
         # Corresponds to the JSON property `typeKind`
         # @return [String]
         attr_accessor :type_kind
