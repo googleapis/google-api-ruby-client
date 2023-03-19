@@ -1,5 +1,9 @@
 # Release history for google-apis-gkebackup_v1
 
+### v0.16.0 (2023-03-19)
+
+* Regenerated from discovery document revision 20230308
+
 ### v0.15.0 (2023-03-05)
 
 * Regenerated from discovery document revision 20230220

@@ -1416,7 +1416,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :resources_restored_count
       
-        # Configuration of a restore. Next id: 11
+        # Configuration of a restore. Next id: 12
         # Corresponds to the JSON property `restoreConfig`
         # @return [Google::Apis::GkebackupV1::RestoreConfig]
         attr_accessor :restore_config
@@ -1474,7 +1474,7 @@ module Google
         end
       end
       
-      # Configuration of a restore. Next id: 11
+      # Configuration of a restore. Next id: 12
       class RestoreConfig
         include Google::Apis::Core::Hashable
       
@@ -1557,7 +1557,7 @@ module Google
       end
       
       # The configuration of a potential series of Restore operations to be performed
-      # against Backups belong to a particular BackupPlan. Next id: 11
+      # against Backups belong to a particular BackupPlan. Next id: 13
       class RestorePlan
         include Google::Apis::Core::Hashable
       
@@ -1609,7 +1609,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Configuration of a restore. Next id: 11
+        # Configuration of a restore. Next id: 12
         # Corresponds to the JSON property `restoreConfig`
         # @return [Google::Apis::GkebackupV1::RestoreConfig]
         attr_accessor :restore_config
