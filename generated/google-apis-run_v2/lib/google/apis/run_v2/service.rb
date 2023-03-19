@@ -949,9 +949,8 @@ module Google
         #   location`/services/`service_id`
         # @param [Google::Apis::RunV2::GoogleCloudRunV2Service] google_cloud_run_v2_service_object
         # @param [Boolean] allow_missing
-        #   If set to true, and if the Service does not exist, it will create a new one.
-        #   Caller must have both create and update permissions for this call if this is
-        #   set to true.
+        #   This field is currently not used by Cloud Run; setting it does not have any
+        #   effect.
         # @param [Boolean] validate_only
         #   Indicates that the request should be validated and default values populated,
         #   without persisting the request or updating any resources.
