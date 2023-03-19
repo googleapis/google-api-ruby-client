@@ -9078,6 +9078,44 @@ module Google
         end
       end
       
+      # The long running operation metadata for the ImportProcessorVersion method.
+      class GoogleCloudDocumentaiV1beta3ImportProcessorVersionMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The common metadata for long running operations.
+        # Corresponds to the JSON property `commonMetadata`
+        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta3CommonOperationMetadata]
+        attr_accessor :common_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+        end
+      end
+      
+      # The response message for the ImportProcessorVersion method.
+      class GoogleCloudDocumentaiV1beta3ImportProcessorVersionResponse
+        include Google::Apis::Core::Hashable
+      
+        # The destination processor version name.
+        # Corresponds to the JSON property `processorVersion`
+        # @return [String]
+        attr_accessor :processor_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @processor_version = args[:processor_version] if args.key?(:processor_version)
+        end
+      end
+      
       # The long running operation metadata for review document method.
       class GoogleCloudDocumentaiV1beta3ReviewDocumentOperationMetadata
         include Google::Apis::Core::Hashable
