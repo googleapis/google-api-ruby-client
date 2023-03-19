@@ -22,6 +22,24 @@ module Google
   module Apis
     module DocumentaiV1beta3
       
+      class GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsMetadataIndividualAutoLabelStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1498,6 +1516,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiV1beta3ImportProcessorVersionMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3ImportProcessorVersionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3ImportProcessorVersionResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiV1beta3ListEvaluationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1529,6 +1565,12 @@ module Google
       end
       
       class GoogleCloudDocumentaiV1beta3OcrConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3OcrConfigHints
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1748,6 +1790,32 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :common_metadata, as: 'commonMetadata', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata::Representation
+      
+          collection :individual_auto_label_statuses, as: 'individualAutoLabelStatuses', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsMetadataIndividualAutoLabelStatus, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsMetadataIndividualAutoLabelStatus::Representation
+      
+          property :total_document_count, as: 'totalDocumentCount'
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsMetadataIndividualAutoLabelStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcs_uri, as: 'gcsUri'
+          property :status, as: 'status', class: Google::Apis::DocumentaiV1beta3::GoogleRpcStatus, decorator: Google::Apis::DocumentaiV1beta3::GoogleRpcStatus::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
       end
       
       class GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsMetadata
@@ -4303,6 +4371,28 @@ module Google
         end
       end
       
+      class GoogleCloudDocumentaiV1beta3ImportProcessorVersionMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :common_metadata, as: 'commonMetadata', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3CommonOperationMetadata, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3CommonOperationMetadata::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3ImportProcessorVersionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :processor_version_source, as: 'processorVersionSource'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3ImportProcessorVersionResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :processor_version, as: 'processorVersion'
+        end
+      end
+      
       class GoogleCloudDocumentaiV1beta3ListEvaluationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4351,7 +4441,18 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :advanced_ocr_options, as: 'advancedOcrOptions'
+          property :enable_image_quality_scores, as: 'enableImageQualityScores'
           property :enable_native_pdf_parsing, as: 'enableNativePdfParsing'
+          property :enable_symbol, as: 'enableSymbol'
+          property :hints, as: 'hints', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3OcrConfigHints, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3OcrConfigHints::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3OcrConfigHints
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :language_hints, as: 'languageHints'
         end
       end
       
