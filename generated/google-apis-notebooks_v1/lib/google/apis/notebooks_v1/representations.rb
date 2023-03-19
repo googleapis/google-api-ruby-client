@@ -1056,6 +1056,7 @@ module Google
           property :install_gpu_driver, as: 'installGpuDriver'
           collection :kernels, as: 'kernels', class: Google::Apis::NotebooksV1::ContainerImage, decorator: Google::Apis::NotebooksV1::ContainerImage::Representation
       
+          property :mixer_disabled, as: 'mixerDisabled'
           property :notebook_upgrade_schedule, as: 'notebookUpgradeSchedule'
           property :post_startup_script, as: 'postStartupScript'
           property :post_startup_script_behavior, as: 'postStartupScriptBehavior'
