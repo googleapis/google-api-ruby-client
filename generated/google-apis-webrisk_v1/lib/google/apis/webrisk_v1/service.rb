@@ -193,13 +193,7 @@ module Google
         end
         
         # Lists operations that match the specified filter in the request. If the server
-        # doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name`
-        # binding allows API services to override the binding to use different resource
-        # name schemes, such as `users/*/operations`. To override the binding, API
-        # services can add a binding such as `"/v1/`name=users/*`/operations"` to their
-        # service configuration. For backwards compatibility, the default name includes
-        # the operations collection id, however overriding users must ensure the name
-        # binding is the parent resource, without the operations collection id.
+        # doesn't support this method, it returns `UNIMPLEMENTED`.
         # @param [String] name
         #   The name of the operation's parent resource.
         # @param [String] filter
@@ -272,49 +266,6 @@ module Google
           command.request_object = google_cloud_webrisk_v1_submission_object
           command.response_representation = Google::Apis::WebriskV1::GoogleCloudWebriskV1Submission::Representation
           command.response_class = Google::Apis::WebriskV1::GoogleCloudWebriskV1Submission
-          command.params['parent'] = parent unless parent.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Submits a URI suspected of containing malicious content to be reviewed.
-        # Returns a google.longrunning.Operation which, once the review is complete, is
-        # updated with its result. You can use the [Pub/Sub API] (https://cloud.google.
-        # com/pubsub) to receive notifications for the returned Operation. If the result
-        # verifies the existence of malicious content, the site will be added to the [
-        # Google's Social Engineering lists] (https://support.google.com/webmasters/
-        # answer/6350487/) in order to protect users that could get exposed to this
-        # threat in the future. Only allowlisted projects can use this method during
-        # Early Access. Please reach out to Sales or your customer engineer to obtain
-        # access.
-        # @param [String] parent
-        #   Required. The name of the project that is making the submission. This string
-        #   is in the format "projects/`project_number`".
-        # @param [Google::Apis::WebriskV1::GoogleCloudWebriskV1SubmitUriRequest] google_cloud_webrisk_v1_submit_uri_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::WebriskV1::GoogleLongrunningOperation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::WebriskV1::GoogleLongrunningOperation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def submit_project_uri(parent, google_cloud_webrisk_v1_submit_uri_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1/{+parent}/uris:submit', options)
-          command.request_representation = Google::Apis::WebriskV1::GoogleCloudWebriskV1SubmitUriRequest::Representation
-          command.request_object = google_cloud_webrisk_v1_submit_uri_request_object
-          command.response_representation = Google::Apis::WebriskV1::GoogleLongrunningOperation::Representation
-          command.response_class = Google::Apis::WebriskV1::GoogleLongrunningOperation
           command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
