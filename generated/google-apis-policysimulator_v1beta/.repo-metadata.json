@@ -1,0 +1,7 @@
+{
+    "api_id": "policysimulator:v1beta",
+    "name_pretty": "Policy Simulator API",
+    "distribution_name": "google-apis-policysimulator_v1beta",
+    "language": "ruby",
+    "library_type": "REST"
+}
