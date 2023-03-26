@@ -244,6 +244,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudIdentitytoolkitAdminV2ProviderConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudIdentitytoolkitAdminV2QuotaConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -316,6 +322,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudIdentitytoolkitAdminV2Trigger
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -364,6 +376,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudIdentitytoolkitV2FinalizeMfaTotpEnrollmentRequestInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIdentitytoolkitV2FinalizeMfaTotpEnrollmentResponseInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIdentitytoolkitV2MfaTotpSignInRequestInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudIdentitytoolkitV2StartMfaEnrollmentRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -395,6 +425,18 @@ module Google
       end
       
       class GoogleCloudIdentitytoolkitV2StartMfaSignInResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIdentitytoolkitV2StartMfaTotpEnrollmentRequestInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIdentitytoolkitV2StartMfaTotpEnrollmentResponseInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -769,6 +811,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :enabled_providers, as: 'enabledProviders'
+          collection :provider_configs, as: 'providerConfigs', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2ProviderConfig, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2ProviderConfig::Representation
+      
           property :state, as: 'state'
         end
       end
@@ -828,6 +872,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
           hash :test_phone_numbers, as: 'testPhoneNumbers'
+        end
+      end
+      
+      class GoogleCloudIdentitytoolkitAdminV2ProviderConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :state, as: 'state'
+          property :totp_provider_config, as: 'totpProviderConfig', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig::Representation
+      
         end
       end
       
@@ -976,6 +1029,13 @@ module Google
         end
       end
       
+      class GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :adjacent_intervals, as: 'adjacentIntervals'
+        end
+      end
+      
       class GoogleCloudIdentitytoolkitAdminV2Trigger
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -999,6 +1059,8 @@ module Google
           property :phone_verification_info, as: 'phoneVerificationInfo', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2FinalizeMfaPhoneRequestInfo, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2FinalizeMfaPhoneRequestInfo::Representation
       
           property :tenant_id, as: 'tenantId'
+          property :totp_verification_info, as: 'totpVerificationInfo', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2FinalizeMfaTotpEnrollmentRequestInfo, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2FinalizeMfaTotpEnrollmentRequestInfo::Representation
+      
         end
       end
       
@@ -1009,6 +1071,8 @@ module Google
           property :phone_auth_info, as: 'phoneAuthInfo', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2FinalizeMfaPhoneResponseInfo, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2FinalizeMfaPhoneResponseInfo::Representation
       
           property :refresh_token, as: 'refreshToken'
+          property :totp_auth_info, as: 'totpAuthInfo', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2FinalizeMfaTotpEnrollmentResponseInfo, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2FinalizeMfaTotpEnrollmentResponseInfo::Representation
+      
         end
       end
       
@@ -1034,10 +1098,13 @@ module Google
       class GoogleCloudIdentitytoolkitV2FinalizeMfaSignInRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :mfa_enrollment_id, as: 'mfaEnrollmentId'
           property :mfa_pending_credential, as: 'mfaPendingCredential'
           property :phone_verification_info, as: 'phoneVerificationInfo', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2FinalizeMfaPhoneRequestInfo, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2FinalizeMfaPhoneRequestInfo::Representation
       
           property :tenant_id, as: 'tenantId'
+          property :totp_verification_info, as: 'totpVerificationInfo', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2MfaTotpSignInRequestInfo, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2MfaTotpSignInRequestInfo::Representation
+      
         end
       end
       
@@ -1051,6 +1118,27 @@ module Google
         end
       end
       
+      class GoogleCloudIdentitytoolkitV2FinalizeMfaTotpEnrollmentRequestInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :session_info, as: 'sessionInfo'
+          property :verification_code, as: 'verificationCode'
+        end
+      end
+      
+      class GoogleCloudIdentitytoolkitV2FinalizeMfaTotpEnrollmentResponseInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudIdentitytoolkitV2MfaTotpSignInRequestInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :verification_code, as: 'verificationCode'
+        end
+      end
+      
       class GoogleCloudIdentitytoolkitV2StartMfaEnrollmentRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1058,6 +1146,8 @@ module Google
           property :phone_enrollment_info, as: 'phoneEnrollmentInfo', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2StartMfaPhoneRequestInfo, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2StartMfaPhoneRequestInfo::Representation
       
           property :tenant_id, as: 'tenantId'
+          property :totp_enrollment_info, as: 'totpEnrollmentInfo', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2StartMfaTotpEnrollmentRequestInfo, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2StartMfaTotpEnrollmentRequestInfo::Representation
+      
         end
       end
       
@@ -1065,6 +1155,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :phone_session_info, as: 'phoneSessionInfo', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2StartMfaPhoneResponseInfo, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2StartMfaPhoneResponseInfo::Representation
+      
+          property :totp_session_info, as: 'totpSessionInfo', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2StartMfaTotpEnrollmentResponseInfo, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2StartMfaTotpEnrollmentResponseInfo::Representation
       
         end
       end
@@ -1106,6 +1198,24 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :phone_response_info, as: 'phoneResponseInfo', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2StartMfaPhoneResponseInfo, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2StartMfaPhoneResponseInfo::Representation
       
+        end
+      end
+      
+      class GoogleCloudIdentitytoolkitV2StartMfaTotpEnrollmentRequestInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudIdentitytoolkitV2StartMfaTotpEnrollmentResponseInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :finalize_enrollment_time, as: 'finalizeEnrollmentTime'
+          property :hashing_algorithm, as: 'hashingAlgorithm'
+          property :period_sec, as: 'periodSec'
+          property :session_info, as: 'sessionInfo'
+          property :shared_secret_key, as: 'sharedSecretKey'
+          property :verification_code_length, as: 'verificationCodeLength'
         end
       end
       

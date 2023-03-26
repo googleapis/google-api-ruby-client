@@ -985,6 +985,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :enabled_providers
       
+        # A list of usable second factors for this project along with their
+        # configurations. This field does not support phone based MFA, for that use the '
+        # enabled_providers' field.
+        # Corresponds to the JSON property `providerConfigs`
+        # @return [Array<Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2ProviderConfig>]
+        attr_accessor :provider_configs
+      
         # Whether MultiFactor Authentication has been enabled for this project.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -997,6 +1004,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enabled_providers = args[:enabled_providers] if args.key?(:enabled_providers)
+          @provider_configs = args[:provider_configs] if args.key?(:provider_configs)
           @state = args[:state] if args.key?(:state)
         end
       end
@@ -1212,6 +1220,32 @@ module Google
         def update!(**args)
           @enabled = args[:enabled] if args.key?(:enabled)
           @test_phone_numbers = args[:test_phone_numbers] if args.key?(:test_phone_numbers)
+        end
+      end
+      
+      # ProviderConfig describes the supported MFA providers along with their
+      # configurations.
+      class GoogleCloudIdentitytoolkitAdminV2ProviderConfig
+        include Google::Apis::Core::Hashable
+      
+        # Describes the state of the MultiFactor Authentication type.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # TotpMFAProviderConfig represents the TOTP based MFA provider.
+        # Corresponds to the JSON property `totpProviderConfig`
+        # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig]
+        attr_accessor :totp_provider_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @state = args[:state] if args.key?(:state)
+          @totp_provider_config = args[:totp_provider_config] if args.key?(:totp_provider_config)
         end
       end
       
@@ -1728,6 +1762,26 @@ module Google
         end
       end
       
+      # TotpMFAProviderConfig represents the TOTP based MFA provider.
+      class GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig
+        include Google::Apis::Core::Hashable
+      
+        # The allowed number of adjacent intervals that will be used for verification to
+        # avoid clock skew.
+        # Corresponds to the JSON property `adjacentIntervals`
+        # @return [Fixnum]
+        attr_accessor :adjacent_intervals
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @adjacent_intervals = args[:adjacent_intervals] if args.key?(:adjacent_intervals)
+        end
+      end
+      
       # Synchronous Cloud Function with HTTP Trigger
       class GoogleCloudIdentitytoolkitAdminV2Trigger
         include Google::Apis::Core::Hashable
@@ -1798,6 +1852,11 @@ module Google
         # @return [String]
         attr_accessor :tenant_id
       
+        # Mfa request info specific to TOTP auth for FinalizeMfa.
+        # Corresponds to the JSON property `totpVerificationInfo`
+        # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2FinalizeMfaTotpEnrollmentRequestInfo]
+        attr_accessor :totp_verification_info
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1808,6 +1867,7 @@ module Google
           @id_token = args[:id_token] if args.key?(:id_token)
           @phone_verification_info = args[:phone_verification_info] if args.key?(:phone_verification_info)
           @tenant_id = args[:tenant_id] if args.key?(:tenant_id)
+          @totp_verification_info = args[:totp_verification_info] if args.key?(:totp_verification_info)
         end
       end
       
@@ -1830,6 +1890,11 @@ module Google
         # @return [String]
         attr_accessor :refresh_token
       
+        # Mfa response info specific to TOTP auth for FinalizeMfa.
+        # Corresponds to the JSON property `totpAuthInfo`
+        # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2FinalizeMfaTotpEnrollmentResponseInfo]
+        attr_accessor :totp_auth_info
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1839,6 +1904,7 @@ module Google
           @id_token = args[:id_token] if args.key?(:id_token)
           @phone_auth_info = args[:phone_auth_info] if args.key?(:phone_auth_info)
           @refresh_token = args[:refresh_token] if args.key?(:refresh_token)
+          @totp_auth_info = args[:totp_auth_info] if args.key?(:totp_auth_info)
         end
       end
       
@@ -1914,6 +1980,11 @@ module Google
       class GoogleCloudIdentitytoolkitV2FinalizeMfaSignInRequest
         include Google::Apis::Core::Hashable
       
+        # The MFA enrollment ID from the user's list of current MFA enrollments.
+        # Corresponds to the JSON property `mfaEnrollmentId`
+        # @return [String]
+        attr_accessor :mfa_enrollment_id
+      
         # Required. Pending credential from first factor sign-in.
         # Corresponds to the JSON property `mfaPendingCredential`
         # @return [String]
@@ -1930,15 +2001,22 @@ module Google
         # @return [String]
         attr_accessor :tenant_id
       
+        # TOTP verification info for FinalizeMfaSignInRequest.
+        # Corresponds to the JSON property `totpVerificationInfo`
+        # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2MfaTotpSignInRequestInfo]
+        attr_accessor :totp_verification_info
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @mfa_enrollment_id = args[:mfa_enrollment_id] if args.key?(:mfa_enrollment_id)
           @mfa_pending_credential = args[:mfa_pending_credential] if args.key?(:mfa_pending_credential)
           @phone_verification_info = args[:phone_verification_info] if args.key?(:phone_verification_info)
           @tenant_id = args[:tenant_id] if args.key?(:tenant_id)
+          @totp_verification_info = args[:totp_verification_info] if args.key?(:totp_verification_info)
         end
       end
       
@@ -1973,6 +2051,63 @@ module Google
         end
       end
       
+      # Mfa request info specific to TOTP auth for FinalizeMfa.
+      class GoogleCloudIdentitytoolkitV2FinalizeMfaTotpEnrollmentRequestInfo
+        include Google::Apis::Core::Hashable
+      
+        # An opaque string that represents the enrollment session.
+        # Corresponds to the JSON property `sessionInfo`
+        # @return [String]
+        attr_accessor :session_info
+      
+        # User-entered verification code.
+        # Corresponds to the JSON property `verificationCode`
+        # @return [String]
+        attr_accessor :verification_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @session_info = args[:session_info] if args.key?(:session_info)
+          @verification_code = args[:verification_code] if args.key?(:verification_code)
+        end
+      end
+      
+      # Mfa response info specific to TOTP auth for FinalizeMfa.
+      class GoogleCloudIdentitytoolkitV2FinalizeMfaTotpEnrollmentResponseInfo
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # TOTP verification info for FinalizeMfaSignInRequest.
+      class GoogleCloudIdentitytoolkitV2MfaTotpSignInRequestInfo
+        include Google::Apis::Core::Hashable
+      
+        # User-entered verification code.
+        # Corresponds to the JSON property `verificationCode`
+        # @return [String]
+        attr_accessor :verification_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @verification_code = args[:verification_code] if args.key?(:verification_code)
+        end
+      end
+      
       # Sends MFA enrollment verification SMS for a user.
       class GoogleCloudIdentitytoolkitV2StartMfaEnrollmentRequest
         include Google::Apis::Core::Hashable
@@ -1993,6 +2128,11 @@ module Google
         # @return [String]
         attr_accessor :tenant_id
       
+        # Mfa request info specific to TOTP auth for StartMfa.
+        # Corresponds to the JSON property `totpEnrollmentInfo`
+        # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2StartMfaTotpEnrollmentRequestInfo]
+        attr_accessor :totp_enrollment_info
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2002,6 +2142,7 @@ module Google
           @id_token = args[:id_token] if args.key?(:id_token)
           @phone_enrollment_info = args[:phone_enrollment_info] if args.key?(:phone_enrollment_info)
           @tenant_id = args[:tenant_id] if args.key?(:tenant_id)
+          @totp_enrollment_info = args[:totp_enrollment_info] if args.key?(:totp_enrollment_info)
         end
       end
       
@@ -2014,6 +2155,11 @@ module Google
         # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2StartMfaPhoneResponseInfo]
         attr_accessor :phone_session_info
       
+        # Mfa response info specific to TOTP auth for StartMfa.
+        # Corresponds to the JSON property `totpSessionInfo`
+        # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2StartMfaTotpEnrollmentResponseInfo]
+        attr_accessor :totp_session_info
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2021,6 +2167,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @phone_session_info = args[:phone_session_info] if args.key?(:phone_session_info)
+          @totp_session_info = args[:totp_session_info] if args.key?(:totp_session_info)
         end
       end
       
@@ -2158,6 +2305,72 @@ module Google
         # Update properties of this object
         def update!(**args)
           @phone_response_info = args[:phone_response_info] if args.key?(:phone_response_info)
+        end
+      end
+      
+      # Mfa request info specific to TOTP auth for StartMfa.
+      class GoogleCloudIdentitytoolkitV2StartMfaTotpEnrollmentRequestInfo
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Mfa response info specific to TOTP auth for StartMfa.
+      class GoogleCloudIdentitytoolkitV2StartMfaTotpEnrollmentResponseInfo
+        include Google::Apis::Core::Hashable
+      
+        # The time by which the enrollment must finish.
+        # Corresponds to the JSON property `finalizeEnrollmentTime`
+        # @return [String]
+        attr_accessor :finalize_enrollment_time
+      
+        # The hashing algorithm used to generate the verification code.
+        # Corresponds to the JSON property `hashingAlgorithm`
+        # @return [String]
+        attr_accessor :hashing_algorithm
+      
+        # Duration in seconds at which the verification code will change.
+        # Corresponds to the JSON property `periodSec`
+        # @return [Fixnum]
+        attr_accessor :period_sec
+      
+        # An encoded string that represents the enrollment session.
+        # Corresponds to the JSON property `sessionInfo`
+        # @return [String]
+        attr_accessor :session_info
+      
+        # A base 32 encoded string that represents the shared TOTP secret. The base 32
+        # encoding is the one specified by [RFC4648#section-6](https://datatracker.ietf.
+        # org/doc/html/rfc4648#section-6). (This is the same as the base 32 encoding
+        # from [RFC3548#section-5](https://datatracker.ietf.org/doc/html/rfc3548#section-
+        # 5).)
+        # Corresponds to the JSON property `sharedSecretKey`
+        # @return [String]
+        attr_accessor :shared_secret_key
+      
+        # The length of the verification code that needs to be generated.
+        # Corresponds to the JSON property `verificationCodeLength`
+        # @return [Fixnum]
+        attr_accessor :verification_code_length
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @finalize_enrollment_time = args[:finalize_enrollment_time] if args.key?(:finalize_enrollment_time)
+          @hashing_algorithm = args[:hashing_algorithm] if args.key?(:hashing_algorithm)
+          @period_sec = args[:period_sec] if args.key?(:period_sec)
+          @session_info = args[:session_info] if args.key?(:session_info)
+          @shared_secret_key = args[:shared_secret_key] if args.key?(:shared_secret_key)
+          @verification_code_length = args[:verification_code_length] if args.key?(:verification_code_length)
         end
       end
       
