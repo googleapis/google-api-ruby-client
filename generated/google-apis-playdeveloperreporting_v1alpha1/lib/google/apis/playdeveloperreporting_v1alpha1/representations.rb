@@ -148,6 +148,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePlayDeveloperReportingV1alpha1QuerySlowRenderingRateMetricSetRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePlayDeveloperReportingV1alpha1QuerySlowRenderingRateMetricSetResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePlayDeveloperReportingV1alpha1QuerySlowStartRateMetricSetRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePlayDeveloperReportingV1alpha1QuerySlowStartRateMetricSetResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePlayDeveloperReportingV1alpha1QueryStuckBackgroundWakelockRateMetricSetRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -167,6 +191,18 @@ module Google
       end
       
       class GooglePlayDeveloperReportingV1alpha1SearchErrorReportsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePlayDeveloperReportingV1alpha1SlowRenderingRateMetricSet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePlayDeveloperReportingV1alpha1SlowStartRateMetricSet
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -421,6 +457,52 @@ module Google
         end
       end
       
+      class GooglePlayDeveloperReportingV1alpha1QuerySlowRenderingRateMetricSetRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dimensions, as: 'dimensions'
+          property :filter, as: 'filter'
+          collection :metrics, as: 'metrics'
+          property :page_size, as: 'pageSize'
+          property :page_token, as: 'pageToken'
+          property :timeline_spec, as: 'timelineSpec', class: Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1TimelineSpec, decorator: Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1TimelineSpec::Representation
+      
+          property :user_cohort, as: 'userCohort'
+        end
+      end
+      
+      class GooglePlayDeveloperReportingV1alpha1QuerySlowRenderingRateMetricSetResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :rows, as: 'rows', class: Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1MetricsRow, decorator: Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1MetricsRow::Representation
+      
+        end
+      end
+      
+      class GooglePlayDeveloperReportingV1alpha1QuerySlowStartRateMetricSetRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dimensions, as: 'dimensions'
+          property :filter, as: 'filter'
+          collection :metrics, as: 'metrics'
+          property :page_size, as: 'pageSize'
+          property :page_token, as: 'pageToken'
+          property :timeline_spec, as: 'timelineSpec', class: Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1TimelineSpec, decorator: Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1TimelineSpec::Representation
+      
+          property :user_cohort, as: 'userCohort'
+        end
+      end
+      
+      class GooglePlayDeveloperReportingV1alpha1QuerySlowStartRateMetricSetResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :rows, as: 'rows', class: Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1MetricsRow, decorator: Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1MetricsRow::Representation
+      
+        end
+      end
+      
       class GooglePlayDeveloperReportingV1alpha1QueryStuckBackgroundWakelockRateMetricSetRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -459,6 +541,24 @@ module Google
           collection :error_reports, as: 'errorReports', class: Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1ErrorReport, decorator: Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1ErrorReport::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GooglePlayDeveloperReportingV1alpha1SlowRenderingRateMetricSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :freshness_info, as: 'freshnessInfo', class: Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1FreshnessInfo, decorator: Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1FreshnessInfo::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
+      class GooglePlayDeveloperReportingV1alpha1SlowStartRateMetricSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :freshness_info, as: 'freshnessInfo', class: Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1FreshnessInfo, decorator: Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1FreshnessInfo::Representation
+      
+          property :name, as: 'name'
         end
       end
       
