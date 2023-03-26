@@ -1039,7 +1039,9 @@ module Google
           property :diagnosis_interval, as: 'diagnosisInterval', class: Google::Apis::DataprocV1::Interval, decorator: Google::Apis::DataprocV1::Interval::Representation
       
           property :job, as: 'job'
+          collection :jobs, as: 'jobs'
           property :yarn_application_id, as: 'yarnApplicationId'
+          collection :yarn_application_ids, as: 'yarnApplicationIds'
         end
       end
       
