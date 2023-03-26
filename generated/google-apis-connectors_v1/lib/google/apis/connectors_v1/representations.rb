@@ -328,6 +328,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Settings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Source
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -940,6 +946,15 @@ module Google
           property :policy, as: 'policy', class: Google::Apis::ConnectorsV1::Policy, decorator: Google::Apis::ConnectorsV1::Policy::Representation
       
           property :update_mask, as: 'updateMask'
+        end
+      end
+      
+      class Settings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :payg, as: 'payg'
+          property :vpcsc, as: 'vpcsc'
         end
       end
       
