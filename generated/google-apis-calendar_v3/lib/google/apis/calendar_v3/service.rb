@@ -1280,8 +1280,8 @@ module Google
         #   available (i.e. a generated, non-working value will be provided).
         # @param [Array<String>, String] event_types
         #   Event types to return. Optional. The default is ["default", "outOfOffice", "
-        #   focusTime"]. This is used by the Working Location developer preview and only
-        #   the default value is allowed for non-opted-in users.
+        #   focusTime"]. Only the default value is available, unless you're enrolled in
+        #   the Working Locations developer preview. Developer Preview.
         # @param [String] i_cal_uid
         #   Specifies an event ID in the iCalendar format to be provided in the response.
         #   Optional. Use this if you want to search for an event by its iCalendar ID.
@@ -1667,8 +1667,8 @@ module Google
         #   available (i.e. a generated, non-working value will be provided).
         # @param [Array<String>, String] event_types
         #   Event types to return. Optional. The default is ["default", "outOfOffice", "
-        #   focusTime"]. This is used by the Working Location developer preview and only
-        #   the default value is allowed for non-opted-in users.
+        #   focusTime"]. Only the default value is available, unless you're enrolled in
+        #   the Working Locations developer preview. Developer Preview.
         # @param [String] i_cal_uid
         #   Specifies an event ID in the iCalendar format to be provided in the response.
         #   Optional. Use this if you want to search for an event by its iCalendar ID.
