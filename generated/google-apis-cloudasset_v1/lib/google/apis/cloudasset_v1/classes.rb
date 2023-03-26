@@ -1423,16 +1423,16 @@ module Google
         # @return [String]
         attr_accessor :attached_resource
       
-        # The folder(s) that this IAM policy belongs to, in the form of folders/`
-        # FOLDER_NUMBER`. This field is available when the IAM policy belongs(directly
+        # The folder(s) that this IAM policy belongs to, in the format of folders/`
+        # FOLDER_NUMBER`. This field is available when the IAM policy belongs (directly
         # or cascadingly) to one or more folders.
         # Corresponds to the JSON property `folders`
         # @return [Array<String>]
         attr_accessor :folders
       
-        # The organization that this IAM policy belongs to, in the form of organizations/
-        # `ORGANIZATION_NUMBER`. This field is available when the IAM policy belongs(
-        # directly or cascadingly) to an organization.
+        # The organization that this IAM policy belongs to, in the format of
+        # organizations/`ORGANIZATION_NUMBER`. This field is available when the IAM
+        # policy belongs (directly or cascadingly) to an organization.
         # Corresponds to the JSON property `organization`
         # @return [String]
         attr_accessor :organization
@@ -1468,7 +1468,7 @@ module Google
         # @return [Google::Apis::CloudassetV1::Policy]
         attr_accessor :policy
       
-        # The project that this IAM policy belongs to, in the form of projects/`
+        # The project that this IAM policy belongs to, in the format of projects/`
         # PROJECT_NUMBER`. This field is available when the IAM policy belongs to a
         # project.
         # Corresponds to the JSON property `project`
@@ -1494,8 +1494,8 @@ module Google
       class GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedResource
         include Google::Apis::Core::Hashable
       
-        # The folder(s) that this resource belongs to, in the form of folders/`
-        # FOLDER_NUMBER`. This field is available when the resource belongs(directly or
+        # The folder(s) that this resource belongs to, in the format of folders/`
+        # FOLDER_NUMBER`. This field is available when the resource belongs (directly or
         # cascadingly) to one or more folders.
         # Corresponds to the JSON property `folders`
         # @return [Array<String>]
@@ -1507,8 +1507,8 @@ module Google
         # @return [String]
         attr_accessor :full_resource_name
       
-        # The organization that this resource belongs to, in the form of organizations/`
-        # ORGANIZATION_NUMBER`. This field is available when the resource belongs(
+        # The organization that this resource belongs to, in the format of organizations/
+        # `ORGANIZATION_NUMBER`. This field is available when the resource belongs (
         # directly or cascadingly) to an organization.
         # Corresponds to the JSON property `organization`
         # @return [String]
@@ -1521,7 +1521,7 @@ module Google
         # @return [String]
         attr_accessor :parent
       
-        # The project that this resource belongs to, in the form of projects/`
+        # The project that this resource belongs to, in the format of projects/`
         # PROJECT_NUMBER`. This field is available when the resource belongs to a
         # project.
         # Corresponds to the JSON property `project`
