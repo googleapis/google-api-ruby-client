@@ -64,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LhrEntity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LighthouseAuditResultV5
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -189,6 +195,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :benchmark_index, as: 'benchmarkIndex'
+          hash :credits, as: 'credits'
           property :host_user_agent, as: 'hostUserAgent'
           property :network_user_agent, as: 'networkUserAgent'
         end
@@ -199,6 +206,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :renderer_formatted_strings, as: 'rendererFormattedStrings', class: Google::Apis::PagespeedonlineV5::RendererFormattedStrings, decorator: Google::Apis::PagespeedonlineV5::RendererFormattedStrings::Representation
       
+        end
+      end
+      
+      class LhrEntity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :category, as: 'category'
+          property :homepage, as: 'homepage'
+          property :is_first_party, as: 'isFirstParty'
+          property :is_unrecognized, as: 'isUnrecognized'
+          property :name, as: 'name'
+          collection :origins, as: 'origins'
         end
       end
       
@@ -244,13 +263,18 @@ module Google
       
           property :config_settings, as: 'configSettings', class: Google::Apis::PagespeedonlineV5::ConfigSettings, decorator: Google::Apis::PagespeedonlineV5::ConfigSettings::Representation
       
+          collection :entities, as: 'entities', class: Google::Apis::PagespeedonlineV5::LhrEntity, decorator: Google::Apis::PagespeedonlineV5::LhrEntity::Representation
+      
           property :environment, as: 'environment', class: Google::Apis::PagespeedonlineV5::Environment, decorator: Google::Apis::PagespeedonlineV5::Environment::Representation
       
           property :fetch_time, as: 'fetchTime'
+          property :final_displayed_url, as: 'finalDisplayedUrl'
           property :final_url, as: 'finalUrl'
+          property :full_page_screenshot, as: 'fullPageScreenshot'
           property :i18n, as: 'i18n', class: Google::Apis::PagespeedonlineV5::I18n, decorator: Google::Apis::PagespeedonlineV5::I18n::Representation
       
           property :lighthouse_version, as: 'lighthouseVersion'
+          property :main_document_url, as: 'mainDocumentUrl'
           property :requested_url, as: 'requestedUrl'
           collection :run_warnings, as: 'runWarnings'
           property :runtime_error, as: 'runtimeError', class: Google::Apis::PagespeedonlineV5::RuntimeError, decorator: Google::Apis::PagespeedonlineV5::RuntimeError::Representation

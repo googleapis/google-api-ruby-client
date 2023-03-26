@@ -220,6 +220,11 @@ module Google
         # @return [Float]
         attr_accessor :benchmark_index
       
+        # The version of libraries with which these results were generated. Ex: axe-core.
+        # Corresponds to the JSON property `credits`
+        # @return [Hash<String,String>]
+        attr_accessor :credits
+      
         # The user agent string of the version of Chrome used.
         # Corresponds to the JSON property `hostUserAgent`
         # @return [String]
@@ -237,6 +242,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @benchmark_index = args[:benchmark_index] if args.key?(:benchmark_index)
+          @credits = args[:credits] if args.key?(:credits)
           @host_user_agent = args[:host_user_agent] if args.key?(:host_user_agent)
           @network_user_agent = args[:network_user_agent] if args.key?(:network_user_agent)
         end
@@ -258,6 +264,57 @@ module Google
         # Update properties of this object
         def update!(**args)
           @renderer_formatted_strings = args[:renderer_formatted_strings] if args.key?(:renderer_formatted_strings)
+        end
+      end
+      
+      # Message containing an Entity.
+      class LhrEntity
+        include Google::Apis::Core::Hashable
+      
+        # Optional. An optional category name for the entity.
+        # Corresponds to the JSON property `category`
+        # @return [String]
+        attr_accessor :category
+      
+        # Optional. An optional homepage URL of the entity.
+        # Corresponds to the JSON property `homepage`
+        # @return [String]
+        attr_accessor :homepage
+      
+        # Optional. An optional flag indicating if the entity is the first party.
+        # Corresponds to the JSON property `isFirstParty`
+        # @return [Boolean]
+        attr_accessor :is_first_party
+        alias_method :is_first_party?, :is_first_party
+      
+        # Optional. An optional flag indicating if the entity is not recognized.
+        # Corresponds to the JSON property `isUnrecognized`
+        # @return [Boolean]
+        attr_accessor :is_unrecognized
+        alias_method :is_unrecognized?, :is_unrecognized
+      
+        # Required. Name of the entity.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. A list of URL origin strings that belong to this entity.
+        # Corresponds to the JSON property `origins`
+        # @return [Array<String>]
+        attr_accessor :origins
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @category = args[:category] if args.key?(:category)
+          @homepage = args[:homepage] if args.key?(:homepage)
+          @is_first_party = args[:is_first_party] if args.key?(:is_first_party)
+          @is_unrecognized = args[:is_unrecognized] if args.key?(:is_unrecognized)
+          @name = args[:name] if args.key?(:name)
+          @origins = args[:origins] if args.key?(:origins)
         end
       end
       
@@ -423,6 +480,11 @@ module Google
         # @return [Google::Apis::PagespeedonlineV5::ConfigSettings]
         attr_accessor :config_settings
       
+        # Entity classification data.
+        # Corresponds to the JSON property `entities`
+        # @return [Array<Google::Apis::PagespeedonlineV5::LhrEntity>]
+        attr_accessor :entities
+      
         # Message containing environment configuration for a Lighthouse run.
         # Corresponds to the JSON property `environment`
         # @return [Google::Apis::PagespeedonlineV5::Environment]
@@ -433,10 +495,21 @@ module Google
         # @return [String]
         attr_accessor :fetch_time
       
+        # URL displayed on the page after Lighthouse finishes.
+        # Corresponds to the JSON property `finalDisplayedUrl`
+        # @return [String]
+        attr_accessor :final_displayed_url
+      
         # The final resolved url that was audited.
         # Corresponds to the JSON property `finalUrl`
         # @return [String]
         attr_accessor :final_url
+      
+        # Screenshot data of the full page, along with node rects relevant to the audit
+        # results.
+        # Corresponds to the JSON property `fullPageScreenshot`
+        # @return [Object]
+        attr_accessor :full_page_screenshot
       
         # Message containing the i18n data for the LHR - Version 1.
         # Corresponds to the JSON property `i18n`
@@ -447,6 +520,11 @@ module Google
         # Corresponds to the JSON property `lighthouseVersion`
         # @return [String]
         attr_accessor :lighthouse_version
+      
+        # URL of the main document request of the final navigation.
+        # Corresponds to the JSON property `mainDocumentUrl`
+        # @return [String]
+        attr_accessor :main_document_url
       
         # The original requested url.
         # Corresponds to the JSON property `requestedUrl`
@@ -488,11 +566,15 @@ module Google
           @categories = args[:categories] if args.key?(:categories)
           @category_groups = args[:category_groups] if args.key?(:category_groups)
           @config_settings = args[:config_settings] if args.key?(:config_settings)
+          @entities = args[:entities] if args.key?(:entities)
           @environment = args[:environment] if args.key?(:environment)
           @fetch_time = args[:fetch_time] if args.key?(:fetch_time)
+          @final_displayed_url = args[:final_displayed_url] if args.key?(:final_displayed_url)
           @final_url = args[:final_url] if args.key?(:final_url)
+          @full_page_screenshot = args[:full_page_screenshot] if args.key?(:full_page_screenshot)
           @i18n = args[:i18n] if args.key?(:i18n)
           @lighthouse_version = args[:lighthouse_version] if args.key?(:lighthouse_version)
+          @main_document_url = args[:main_document_url] if args.key?(:main_document_url)
           @requested_url = args[:requested_url] if args.key?(:requested_url)
           @run_warnings = args[:run_warnings] if args.key?(:run_warnings)
           @runtime_error = args[:runtime_error] if args.key?(:runtime_error)
