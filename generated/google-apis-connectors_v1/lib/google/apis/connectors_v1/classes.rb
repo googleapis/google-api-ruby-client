@@ -2213,6 +2213,40 @@ module Google
         end
       end
       
+      # Global Settings details.
+      class Settings
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Resource name of the Connection. Format: projects/`project`/
+        # locations/global/settings`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Flag indicates if user is in PayG model
+        # Corresponds to the JSON property `payg`
+        # @return [Boolean]
+        attr_accessor :payg
+        alias_method :payg?, :payg
+      
+        # Optional. Flag indicates whether vpc-sc is enabled.
+        # Corresponds to the JSON property `vpcsc`
+        # @return [Boolean]
+        attr_accessor :vpcsc
+        alias_method :vpcsc?, :vpcsc
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @payg = args[:payg] if args.key?(:payg)
+          @vpcsc = args[:vpcsc] if args.key?(:vpcsc)
+        end
+      end
+      
       # Source to extract the backend from.
       class Source
         include Google::Apis::Core::Hashable
