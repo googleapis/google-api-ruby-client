@@ -7033,6 +7033,13 @@ module Google
         # @return [String]
         attr_accessor :parent_template_id
       
+        # Optional. The run-as service account email, if set and auth config is not
+        # configured, that will be used to generate auth token to be used in Connector
+        # task, Rest caller task and Cloud function task.
+        # Corresponds to the JSON property `runAsServiceAccount`
+        # @return [String]
+        attr_accessor :run_as_service_account
+      
         # Optional. An increasing sequence that is set when a new snapshot is created.
         # The last created snapshot can be identified by [workflow_name, org_id latest(
         # snapshot_number)]. However, last created snapshot need not be same as the HEAD.
@@ -7108,6 +7115,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @origin = args[:origin] if args.key?(:origin)
           @parent_template_id = args[:parent_template_id] if args.key?(:parent_template_id)
+          @run_as_service_account = args[:run_as_service_account] if args.key?(:run_as_service_account)
           @snapshot_number = args[:snapshot_number] if args.key?(:snapshot_number)
           @state = args[:state] if args.key?(:state)
           @status = args[:status] if args.key?(:status)
