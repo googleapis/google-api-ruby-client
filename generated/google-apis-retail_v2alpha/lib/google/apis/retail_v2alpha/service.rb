@@ -57,6 +57,8 @@ module Google
         # @param [String] catalog
         #   Required. Catalog for which the completion is performed. Full resource name of
         #   catalog, such as `projects/*/locations/global/catalogs/default_catalog`.
+        # @param [String] banner
+        #   The banner context for completion suggestions.
         # @param [String] dataset
         #   Determines which dataset to use for fetching completion. "user-data" will use
         #   the imported dataset through CompletionService.ImportCompletionData. "cloud-
@@ -113,11 +115,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def complete_project_location_catalog_query(catalog, dataset: nil, device_type: nil, enable_attribute_suggestions: nil, language_codes: nil, max_suggestions: nil, query: nil, visitor_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def complete_project_location_catalog_query(catalog, banner: nil, dataset: nil, device_type: nil, enable_attribute_suggestions: nil, language_codes: nil, max_suggestions: nil, query: nil, visitor_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2alpha/{+catalog}:completeQuery', options)
           command.response_representation = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCompleteQueryResponse::Representation
           command.response_class = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCompleteQueryResponse
           command.params['catalog'] = catalog unless catalog.nil?
+          command.query['banner'] = banner unless banner.nil?
           command.query['dataset'] = dataset unless dataset.nil?
           command.query['deviceType'] = device_type unless device_type.nil?
           command.query['enableAttributeSuggestions'] = enable_attribute_suggestions unless enable_attribute_suggestions.nil?
@@ -1438,6 +1441,111 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a MerchantCenterAccountLink. MerchantCenterAccountLink cannot be set
+        # to a different oneof field, if so an INVALID_ARGUMENT is returned.
+        # @param [String] name
+        #   Output only. Immutable. Full resource name of the Merchant Center Account Link,
+        #   such as `projects/*/locations/global/catalogs/default_catalog/
+        #   merchantCenterAccountLinks/merchant_center_account_link`.
+        # @param [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaMerchantCenterAccountLink] google_cloud_retail_v2alpha_merchant_center_account_link_object
+        # @param [String] parent
+        #   Required. The branch resource where this MerchantCenterAccountLink will be
+        #   created. Format: projects/`PROJECT_NUMBER`/locations/global/catalogs/`
+        #   CATALOG_ID``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RetailV2alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RetailV2alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_catalog_merchant_center_account_link_merchant_center_account_link(name, google_cloud_retail_v2alpha_merchant_center_account_link_object = nil, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2alpha/{+name}', options)
+          command.request_representation = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaMerchantCenterAccountLink::Representation
+          command.request_object = google_cloud_retail_v2alpha_merchant_center_account_link_object
+          command.response_representation = Google::Apis::RetailV2alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::RetailV2alpha::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a MerchantCenterAccountLink. If the MerchantCenterAccountLink to
+        # delete does not exist, a NOT_FOUND error is returned.
+        # @param [String] name
+        #   Required. Full resource name. Format: projects/`project_number`/locations/`
+        #   location_id`/catalogs/`catalog_id`/merchantCenterAccountLinks/`
+        #   merchant_center_account_link_id`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RetailV2alpha::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RetailV2alpha::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_catalog_merchant_center_account_link(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v2alpha/{+name}', options)
+          command.response_representation = Google::Apis::RetailV2alpha::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::RetailV2alpha::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all MerchantCenterAccountLinks under the specified parent Catalog.
+        # @param [String] parent
+        #   Required. The parent Catalog of the resource. It must match this format:
+        #   projects/`PROJECT_NUMBER`/locations/global/catalogs/`CATALOG_ID`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaListMerchantCenterAccountLinksResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaListMerchantCenterAccountLinksResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_catalog_merchant_center_account_links(parent, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2alpha/{+parent}/merchantCenterAccountLinks', options)
+          command.response_representation = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaListMerchantCenterAccountLinksResponse::Representation
+          command.response_class = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaListMerchantCenterAccountLinksResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a new model.
         # @param [String] parent
         #   Required. The parent resource under which to create the model. Format: `
@@ -1755,13 +1863,7 @@ module Google
         end
         
         # Lists operations that match the specified filter in the request. If the server
-        # doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name`
-        # binding allows API services to override the binding to use different resource
-        # name schemes, such as `users/*/operations`. To override the binding, API
-        # services can add a binding such as `"/v1/`name=users/*`/operations"` to their
-        # service configuration. For backwards compatibility, the default name includes
-        # the operations collection id, however overriding users must ensure the name
-        # binding is the parent resource, without the operations collection id.
+        # doesn't support this method, it returns `UNIMPLEMENTED`.
         # @param [String] name
         #   The name of the operation's parent resource.
         # @param [String] filter
@@ -2470,13 +2572,7 @@ module Google
         end
         
         # Lists operations that match the specified filter in the request. If the server
-        # doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name`
-        # binding allows API services to override the binding to use different resource
-        # name schemes, such as `users/*/operations`. To override the binding, API
-        # services can add a binding such as `"/v1/`name=users/*`/operations"` to their
-        # service configuration. For backwards compatibility, the default name includes
-        # the operations collection id, however overriding users must ensure the name
-        # binding is the parent resource, without the operations collection id.
+        # doesn't support this method, it returns `UNIMPLEMENTED`.
         # @param [String] name
         #   The name of the operation's parent resource.
         # @param [String] filter
@@ -2547,13 +2643,7 @@ module Google
         end
         
         # Lists operations that match the specified filter in the request. If the server
-        # doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name`
-        # binding allows API services to override the binding to use different resource
-        # name schemes, such as `users/*/operations`. To override the binding, API
-        # services can add a binding such as `"/v1/`name=users/*`/operations"` to their
-        # service configuration. For backwards compatibility, the default name includes
-        # the operations collection id, however overriding users must ensure the name
-        # binding is the parent resource, without the operations collection id.
+        # doesn't support this method, it returns `UNIMPLEMENTED`.
         # @param [String] name
         #   The name of the operation's parent resource.
         # @param [String] filter
