@@ -1314,6 +1314,11 @@ module Google
         # @return [String]
         attr_accessor :phone_info
       
+        # Information about TOTP MFA.
+        # Corresponds to the JSON property `totpInfo`
+        # @return [Google::Apis::IdentitytoolkitV1::GoogleCloudIdentitytoolkitV1TotpInfo]
+        attr_accessor :totp_info
+      
         # Output only. Unobfuscated phone_info.
         # Corresponds to the JSON property `unobfuscatedPhoneInfo`
         # @return [String]
@@ -1329,6 +1334,7 @@ module Google
           @enrolled_at = args[:enrolled_at] if args.key?(:enrolled_at)
           @mfa_enrollment_id = args[:mfa_enrollment_id] if args.key?(:mfa_enrollment_id)
           @phone_info = args[:phone_info] if args.key?(:phone_info)
+          @totp_info = args[:totp_info] if args.key?(:totp_info)
           @unobfuscated_phone_info = args[:unobfuscated_phone_info] if args.key?(:unobfuscated_phone_info)
         end
       end
@@ -3391,6 +3397,19 @@ module Google
           @email = args[:email] if args.key?(:email)
           @phone_number = args[:phone_number] if args.key?(:phone_number)
           @user_id = args[:user_id] if args.key?(:user_id)
+        end
+      end
+      
+      # Information about TOTP MFA.
+      class GoogleCloudIdentitytoolkitV1TotpInfo
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
