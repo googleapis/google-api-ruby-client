@@ -533,7 +533,9 @@ module Google
         # @return [Google::Apis::ServiceconsumermanagementV1beta1::RubySettings]
         attr_accessor :ruby_settings
       
-        # Version of the API to apply these settings to.
+        # Version of the API to apply these settings to. This is the full protobuf
+        # package for the API, ending in the version element. Examples: "google.cloud.
+        # speech.v1" and "google.spanner.admin.database.v1".
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
@@ -2007,7 +2009,7 @@ module Google
       # AccessControl The mixin construct implies that all methods in `AccessControl`
       # are also declared with same name and request/response types in `Storage`. A
       # documentation generator or annotation processor will see the effective `
-      # Storage.GetAcl` method after inheriting documentation and annotations as
+      # Storage.GetAcl` method after inherting documentation and annotations as
       # follows: service Storage ` // Get the underlying ACL object. rpc GetAcl(
       # GetAclRequest) returns (Acl) ` option (google.api.http).get = "/v2/`resource=**
       # `:getAcl"; ` ... ` Note how the version in the path pattern changed from `v1`
@@ -3364,10 +3366,10 @@ module Google
         attr_accessor :metric
       
         # The resource name of the quota limit. An example name would be: `services/
-        # compute.googleapis.com/projects/123/quotas/metrics/compute.googleapis.com%
-        # 2Fcpus/limits/%2Fproject%2Fregion` The resource name is intended to be opaque
-        # and should not be parsed for its component strings, since its representation
-        # could change in the future.
+        # compute.googleapis.com/projects/123/consumerQuotaMetrics/compute.googleapis.
+        # com%2Fcpus/limits/%2Fproject%2Fregion` The resource name is intended to be
+        # opaque and should not be parsed for its component strings, since its
+        # representation could change in the future.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3437,9 +3439,9 @@ module Google
       
         # The resource name of the quota settings on this metric for this consumer. An
         # example name would be: `services/serviceconsumermanagement.googleapis.com/
-        # projects/123/quota/metrics/compute.googleapis.com%2Fcpus The resource name is
-        # intended to be opaque and should not be parsed for its component strings,
-        # since its representation could change in the future.
+        # projects/123/consumerQuotaMetrics/compute.googleapis.com%2Fcpus` The resource
+        # name is intended to be opaque and should not be parsed for its component
+        # strings, since its representation could change in the future.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3672,7 +3674,7 @@ module Google
         attr_accessor :container
       
         # If this map is nonempty, then this policy applies only to specific values for
-        # dimensions defined in the limit unit. For example, an policy on a limit with
+        # dimensions defined in the limit unit. For example, a policy on a limit with
         # the unit 1/`project`/`region` could contain an entry with the key "region" and
         # the value "us-east-1"; the policy is only applied to quota consumed in that
         # region. This map has the following restrictions: * Keys that are not defined
