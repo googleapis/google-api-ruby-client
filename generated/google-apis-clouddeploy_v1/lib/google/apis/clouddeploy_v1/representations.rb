@@ -46,6 +46,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AdvanceRolloutRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AdvanceRolloutResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AnthosCluster
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -88,13 +100,43 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Canary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CanaryDeployment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CancelRolloutRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CancelRolloutResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ChildRolloutJobs
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudRunConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -107,6 +149,12 @@ module Google
       end
       
       class CloudRunMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudRunRenderMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -125,6 +173,12 @@ module Google
       end
       
       class CreateChildRolloutJobRun
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomCanaryDeployment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -196,7 +250,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GatewayServiceMesh
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GkeCluster
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IgnoreJobRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IgnoreJobResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -215,6 +287,12 @@ module Google
       end
       
       class JobRunNotificationEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class KubernetesConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -298,6 +376,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PhaseArtifact
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PhaseConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PipelineCondition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -352,6 +442,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RenderMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RetryJobRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -376,7 +472,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RuntimeConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SerialPipeline
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServiceNetworking
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -460,6 +568,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TerminateJobRunRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TerminateJobRunResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TestIamPermissionsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -507,6 +627,19 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :rollout, as: 'rollout'
           property :rollout_phase_id, as: 'rolloutPhaseId'
+        end
+      end
+      
+      class AdvanceRolloutRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :phase_id, as: 'phaseId'
+        end
+      end
+      
+      class AdvanceRolloutResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -565,7 +698,39 @@ module Google
         end
       end
       
+      class Canary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :canary_deployment, as: 'canaryDeployment', class: Google::Apis::ClouddeployV1::CanaryDeployment, decorator: Google::Apis::ClouddeployV1::CanaryDeployment::Representation
+      
+          property :custom_canary_deployment, as: 'customCanaryDeployment', class: Google::Apis::ClouddeployV1::CustomCanaryDeployment, decorator: Google::Apis::ClouddeployV1::CustomCanaryDeployment::Representation
+      
+          property :runtime_config, as: 'runtimeConfig', class: Google::Apis::ClouddeployV1::RuntimeConfig, decorator: Google::Apis::ClouddeployV1::RuntimeConfig::Representation
+      
+        end
+      end
+      
+      class CanaryDeployment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :percentages, as: 'percentages'
+          property :verify, as: 'verify'
+        end
+      end
+      
       class CancelOperationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class CancelRolloutRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class CancelRolloutResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -578,6 +743,13 @@ module Google
       
           collection :create_rollout_jobs, as: 'createRolloutJobs', class: Google::Apis::ClouddeployV1::Job, decorator: Google::Apis::ClouddeployV1::Job::Representation
       
+        end
+      end
+      
+      class CloudRunConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :automatic_traffic_control, as: 'automaticTrafficControl'
         end
       end
       
@@ -594,6 +766,13 @@ module Google
           property :revision, as: 'revision'
           property :service, as: 'service'
           collection :service_urls, as: 'serviceUrls'
+        end
+      end
+      
+      class CloudRunRenderMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :service, as: 'service'
         end
       end
       
@@ -618,6 +797,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :rollout, as: 'rollout'
           property :rollout_phase_id, as: 'rolloutPhaseId'
+        end
+      end
+      
+      class CustomCanaryDeployment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :phase_configs, as: 'phaseConfigs', class: Google::Apis::ClouddeployV1::PhaseConfig, decorator: Google::Apis::ClouddeployV1::PhaseConfig::Representation
+      
         end
       end
       
@@ -732,11 +919,34 @@ module Google
         end
       end
       
+      class GatewayServiceMesh
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deployment, as: 'deployment'
+          property :http_route, as: 'httpRoute'
+          property :service, as: 'service'
+        end
+      end
+      
       class GkeCluster
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cluster, as: 'cluster'
           property :internal_ip, as: 'internalIp'
+        end
+      end
+      
+      class IgnoreJobRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :job_id, as: 'jobId'
+          property :phase_id, as: 'phaseId'
+        end
+      end
+      
+      class IgnoreJobResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -751,6 +961,7 @@ module Google
       
           property :id, as: 'id'
           property :job_run, as: 'jobRun'
+          property :skip_message, as: 'skipMessage'
           property :state, as: 'state'
           property :verify_job, as: 'verifyJob', class: Google::Apis::ClouddeployV1::VerifyJob, decorator: Google::Apis::ClouddeployV1::VerifyJob::Representation
       
@@ -790,6 +1001,16 @@ module Google
           property :rollout_uid, as: 'rolloutUid'
           property :target_id, as: 'targetId'
           property :type, as: 'type'
+        end
+      end
+      
+      class KubernetesConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gateway_service_mesh, as: 'gatewayServiceMesh', class: Google::Apis::ClouddeployV1::GatewayServiceMesh, decorator: Google::Apis::ClouddeployV1::GatewayServiceMesh::Representation
+      
+          property :service_networking, as: 'serviceNetworking', class: Google::Apis::ClouddeployV1::ServiceNetworking, decorator: Google::Apis::ClouddeployV1::ServiceNetworking::Representation
+      
         end
       end
       
@@ -920,7 +1141,26 @@ module Google
           property :deployment_jobs, as: 'deploymentJobs', class: Google::Apis::ClouddeployV1::DeploymentJobs, decorator: Google::Apis::ClouddeployV1::DeploymentJobs::Representation
       
           property :id, as: 'id'
+          property :skip_message, as: 'skipMessage'
           property :state, as: 'state'
+        end
+      end
+      
+      class PhaseArtifact
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :manifest_path, as: 'manifestPath'
+          property :skaffold_config_path, as: 'skaffoldConfigPath'
+        end
+      end
+      
+      class PhaseConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :percentage, as: 'percentage'
+          property :phase_id, as: 'phaseId'
+          collection :profiles, as: 'profiles'
+          property :verify, as: 'verify'
         end
       end
       
@@ -1031,6 +1271,14 @@ module Google
         end
       end
       
+      class RenderMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_run, as: 'cloudRun', class: Google::Apis::ClouddeployV1::CloudRunRenderMetadata, decorator: Google::Apis::ClouddeployV1::CloudRunRenderMetadata::Representation
+      
+        end
+      end
+      
       class RetryJobRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1085,11 +1333,29 @@ module Google
         end
       end
       
+      class RuntimeConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_run, as: 'cloudRun', class: Google::Apis::ClouddeployV1::CloudRunConfig, decorator: Google::Apis::ClouddeployV1::CloudRunConfig::Representation
+      
+          property :kubernetes, as: 'kubernetes', class: Google::Apis::ClouddeployV1::KubernetesConfig, decorator: Google::Apis::ClouddeployV1::KubernetesConfig::Representation
+      
+        end
+      end
+      
       class SerialPipeline
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :stages, as: 'stages', class: Google::Apis::ClouddeployV1::Stage, decorator: Google::Apis::ClouddeployV1::Stage::Representation
       
+        end
+      end
+      
+      class ServiceNetworking
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deployment, as: 'deployment'
+          property :service, as: 'service'
         end
       end
       
@@ -1152,6 +1418,8 @@ module Google
       class Strategy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :canary, as: 'canary', class: Google::Apis::ClouddeployV1::Canary, decorator: Google::Apis::ClouddeployV1::Canary::Representation
+      
           property :standard, as: 'standard', class: Google::Apis::ClouddeployV1::Standard, decorator: Google::Apis::ClouddeployV1::Standard::Representation
       
         end
@@ -1188,6 +1456,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :artifact_uri, as: 'artifactUri'
           property :manifest_path, as: 'manifestPath'
+          hash :phase_artifacts, as: 'phaseArtifacts', class: Google::Apis::ClouddeployV1::PhaseArtifact, decorator: Google::Apis::ClouddeployV1::PhaseArtifact::Representation
+      
           property :skaffold_config_path, as: 'skaffoldConfigPath'
         end
       end
@@ -1206,6 +1476,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :failure_cause, as: 'failureCause'
           property :failure_message, as: 'failureMessage'
+          property :metadata, as: 'metadata', class: Google::Apis::ClouddeployV1::RenderMetadata, decorator: Google::Apis::ClouddeployV1::RenderMetadata::Representation
+      
           property :rendering_build, as: 'renderingBuild'
           property :rendering_state, as: 'renderingState'
         end
@@ -1225,6 +1497,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :error_details, as: 'errorDetails'
           property :status, as: 'status'
+        end
+      end
+      
+      class TerminateJobRunRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class TerminateJobRunResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
