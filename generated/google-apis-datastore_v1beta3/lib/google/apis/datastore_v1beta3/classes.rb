@@ -22,18 +22,18 @@ module Google
   module Apis
     module DatastoreV1beta3
       
-      # Defines a aggregation that produces a single result.
+      # Defines an aggregation that produces a single result.
       class Aggregation
         include Google::Apis::Core::Hashable
       
         # Optional. Optional name of the property to store the result of the aggregation.
         # If not provided, Datastore will pick a default name following the format `
         # property_`. For example: ``` AGGREGATE COUNT_UP_TO(1) AS count_up_to_1,
-        # COUNT_UP_TO(2), COUNT_UP_TO(3) AS count_up_to_3, COUNT_UP_TO(4) OVER ( ... ); `
-        # `` becomes: ``` AGGREGATE COUNT_UP_TO(1) AS count_up_to_1, COUNT_UP_TO(2) AS
-        # property_1, COUNT_UP_TO(3) AS count_up_to_3, COUNT_UP_TO(4) AS property_2 OVER
-        # ( ... ); ``` Requires: * Must be unique across all aggregation aliases. *
-        # Conform to entity property name limitations.
+        # COUNT_UP_TO(2), COUNT_UP_TO(3) AS count_up_to_3, COUNT(*) OVER ( ... ); ```
+        # becomes: ``` AGGREGATE COUNT_UP_TO(1) AS count_up_to_1, COUNT_UP_TO(2) AS
+        # property_1, COUNT_UP_TO(3) AS count_up_to_3, COUNT(*) AS property_2 OVER ( ...
+        # ); ``` Requires: * Must be unique across all aggregation aliases. * Conform to
+        # entity property name limitations.
         # Corresponds to the JSON property `alias`
         # @return [String]
         attr_accessor :alias
@@ -344,7 +344,7 @@ module Google
       
         # Optional. Optional constraint on the maximum number of entities to count. This
         # provides a way to set an upper bound on the number of entities to scan,
-        # limiting latency and cost. Unspecified is interpreted as no bound. If a zero
+        # limiting latency, and cost. Unspecified is interpreted as no bound. If a zero
         # value is provided, a count result of zero should always be expected. High-
         # Level Example: ``` AGGREGATE COUNT_UP_TO(1000) OVER ( SELECT * FROM k ); ```
         # Requires: * Must be non-negative when present.
@@ -1616,7 +1616,9 @@ module Google
       
         # The properties to make distinct. The query results will contain the first
         # result for each distinct combination of values for the given properties (if
-        # empty, all results are returned).
+        # empty, all results are returned). Requires: * If `order` is specified, the set
+        # of distinct on properties must appear before the non-distinct on properties in
+        # `order`.
         # Corresponds to the JSON property `distinctOn`
         # @return [Array<Google::Apis::DatastoreV1beta3::PropertyReference>]
         attr_accessor :distinct_on
