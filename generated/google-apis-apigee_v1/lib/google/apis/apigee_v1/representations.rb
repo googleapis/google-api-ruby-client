@@ -2134,6 +2134,7 @@ module Google
       class GoogleCloudApigeeV1DeploymentGroupConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :deployment_group_type, as: 'deploymentGroupType'
           property :name, as: 'name'
           property :revision_id, :numeric_string => true, as: 'revisionId'
           property :uid, as: 'uid'
