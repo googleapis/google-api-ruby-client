@@ -490,6 +490,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NotificationChannelStrategy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NotificationRateLimit
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -744,6 +750,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_close, as: 'autoClose'
+          collection :notification_channel_strategy, as: 'notificationChannelStrategy', class: Google::Apis::MonitoringV3::NotificationChannelStrategy, decorator: Google::Apis::MonitoringV3::NotificationChannelStrategy::Representation
+      
           property :notification_rate_limit, as: 'notificationRateLimit', class: Google::Apis::MonitoringV3::NotificationRateLimit, decorator: Google::Apis::MonitoringV3::NotificationRateLimit::Representation
       
         end
@@ -1506,6 +1514,14 @@ module Google
         end
       end
       
+      class NotificationChannelStrategy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :notification_channel_names, as: 'notificationChannelNames'
+          property :renotify_interval, as: 'renotifyInterval'
+        end
+      end
+      
       class NotificationRateLimit
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1805,6 +1821,7 @@ module Google
       class Type
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :edition, as: 'edition'
           collection :fields, as: 'fields', class: Google::Apis::MonitoringV3::Field, decorator: Google::Apis::MonitoringV3::Field::Representation
       
           property :name, as: 'name'
