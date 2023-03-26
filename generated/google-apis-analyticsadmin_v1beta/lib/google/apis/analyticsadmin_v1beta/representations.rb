@@ -22,6 +22,126 @@ module Google
   module Apis
     module AnalyticsadminV1beta
       
+      class GoogleAnalyticsAdminV1betaAccessBetweenFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1betaAccessDateRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1betaAccessDimension
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1betaAccessDimensionHeader
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1betaAccessDimensionValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1betaAccessFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1betaAccessFilterExpression
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1betaAccessFilterExpressionList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1betaAccessInListFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1betaAccessMetric
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1betaAccessMetricHeader
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1betaAccessMetricValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1betaAccessNumericFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1betaAccessOrderBy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1betaAccessOrderByDimensionOrderBy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1betaAccessOrderByMetricOrderBy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1betaAccessQuota
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1betaAccessQuotaStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1betaAccessRow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1betaAccessStringFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1betaAccount
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -208,6 +328,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1betaNumericValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1betaProperty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -232,6 +358,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1betaRunAccessReportRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1betaRunAccessReportResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -248,6 +386,189 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1betaAccessBetweenFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :from_value, as: 'fromValue', class: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaNumericValue, decorator: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaNumericValue::Representation
+      
+          property :to_value, as: 'toValue', class: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaNumericValue, decorator: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaNumericValue::Representation
+      
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1betaAccessDateRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_date, as: 'endDate'
+          property :start_date, as: 'startDate'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1betaAccessDimension
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dimension_name, as: 'dimensionName'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1betaAccessDimensionHeader
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dimension_name, as: 'dimensionName'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1betaAccessDimensionValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :value, as: 'value'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1betaAccessFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :between_filter, as: 'betweenFilter', class: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessBetweenFilter, decorator: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessBetweenFilter::Representation
+      
+          property :field_name, as: 'fieldName'
+          property :in_list_filter, as: 'inListFilter', class: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessInListFilter, decorator: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessInListFilter::Representation
+      
+          property :numeric_filter, as: 'numericFilter', class: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessNumericFilter, decorator: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessNumericFilter::Representation
+      
+          property :string_filter, as: 'stringFilter', class: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessStringFilter, decorator: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessStringFilter::Representation
+      
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1betaAccessFilterExpression
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_filter, as: 'accessFilter', class: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessFilter, decorator: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessFilter::Representation
+      
+          property :and_group, as: 'andGroup', class: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessFilterExpressionList, decorator: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessFilterExpressionList::Representation
+      
+          property :not_expression, as: 'notExpression', class: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessFilterExpression, decorator: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessFilterExpression::Representation
+      
+          property :or_group, as: 'orGroup', class: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessFilterExpressionList, decorator: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessFilterExpressionList::Representation
+      
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1betaAccessFilterExpressionList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :expressions, as: 'expressions', class: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessFilterExpression, decorator: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessFilterExpression::Representation
+      
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1betaAccessInListFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :case_sensitive, as: 'caseSensitive'
+          collection :values, as: 'values'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1betaAccessMetric
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :metric_name, as: 'metricName'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1betaAccessMetricHeader
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :metric_name, as: 'metricName'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1betaAccessMetricValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :value, as: 'value'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1betaAccessNumericFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :operation, as: 'operation'
+          property :value, as: 'value', class: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaNumericValue, decorator: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaNumericValue::Representation
+      
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1betaAccessOrderBy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :desc, as: 'desc'
+          property :dimension, as: 'dimension', class: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessOrderByDimensionOrderBy, decorator: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessOrderByDimensionOrderBy::Representation
+      
+          property :metric, as: 'metric', class: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessOrderByMetricOrderBy, decorator: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessOrderByMetricOrderBy::Representation
+      
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1betaAccessOrderByDimensionOrderBy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dimension_name, as: 'dimensionName'
+          property :order_type, as: 'orderType'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1betaAccessOrderByMetricOrderBy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :metric_name, as: 'metricName'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1betaAccessQuota
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :concurrent_requests, as: 'concurrentRequests', class: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessQuotaStatus, decorator: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessQuotaStatus::Representation
+      
+          property :server_errors_per_project_per_hour, as: 'serverErrorsPerProjectPerHour', class: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessQuotaStatus, decorator: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessQuotaStatus::Representation
+      
+          property :tokens_per_day, as: 'tokensPerDay', class: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessQuotaStatus, decorator: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessQuotaStatus::Representation
+      
+          property :tokens_per_hour, as: 'tokensPerHour', class: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessQuotaStatus, decorator: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessQuotaStatus::Representation
+      
+          property :tokens_per_project_per_hour, as: 'tokensPerProjectPerHour', class: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessQuotaStatus, decorator: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessQuotaStatus::Representation
+      
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1betaAccessQuotaStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consumed, as: 'consumed'
+          property :remaining, as: 'remaining'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1betaAccessRow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dimension_values, as: 'dimensionValues', class: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessDimensionValue, decorator: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessDimensionValue::Representation
+      
+          collection :metric_values, as: 'metricValues', class: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessMetricValue, decorator: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessMetricValue::Representation
+      
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1betaAccessStringFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :case_sensitive, as: 'caseSensitive'
+          property :match_type, as: 'matchType'
+          property :value, as: 'value'
+        end
       end
       
       class GoogleAnalyticsAdminV1betaAccount
@@ -565,6 +886,14 @@ module Google
         end
       end
       
+      class GoogleAnalyticsAdminV1betaNumericValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :double_value, as: 'doubleValue'
+          property :int64_value, :numeric_string => true, as: 'int64Value'
+        end
+      end
+      
       class GoogleAnalyticsAdminV1betaProperty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -607,6 +936,43 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_ticket_id, as: 'accountTicketId'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1betaRunAccessReportRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :date_ranges, as: 'dateRanges', class: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessDateRange, decorator: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessDateRange::Representation
+      
+          property :dimension_filter, as: 'dimensionFilter', class: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessFilterExpression, decorator: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessFilterExpression::Representation
+      
+          collection :dimensions, as: 'dimensions', class: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessDimension, decorator: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessDimension::Representation
+      
+          property :limit, :numeric_string => true, as: 'limit'
+          property :metric_filter, as: 'metricFilter', class: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessFilterExpression, decorator: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessFilterExpression::Representation
+      
+          collection :metrics, as: 'metrics', class: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessMetric, decorator: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessMetric::Representation
+      
+          property :offset, :numeric_string => true, as: 'offset'
+          collection :order_bys, as: 'orderBys', class: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessOrderBy, decorator: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessOrderBy::Representation
+      
+          property :return_entity_quota, as: 'returnEntityQuota'
+          property :time_zone, as: 'timeZone'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1betaRunAccessReportResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dimension_headers, as: 'dimensionHeaders', class: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessDimensionHeader, decorator: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessDimensionHeader::Representation
+      
+          collection :metric_headers, as: 'metricHeaders', class: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessMetricHeader, decorator: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessMetricHeader::Representation
+      
+          property :quota, as: 'quota', class: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessQuota, decorator: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessQuota::Representation
+      
+          property :row_count, as: 'rowCount'
+          collection :rows, as: 'rows', class: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessRow, decorator: Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessRow::Representation
+      
         end
       end
       
