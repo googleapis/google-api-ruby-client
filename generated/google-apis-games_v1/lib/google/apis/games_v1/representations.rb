@@ -94,6 +94,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ApplicationPlayerId
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ApplicationVerifyResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -185,6 +191,12 @@ module Google
       end
       
       class GamesAchievementSetStepsAtLeast
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GetMultipleApplicationPlayerIdsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -531,6 +543,14 @@ module Google
         end
       end
       
+      class ApplicationPlayerId
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :application_id, as: 'applicationId'
+          property :player_id, as: 'playerId'
+        end
+      end
+      
       class ApplicationVerifyResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -685,6 +705,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :steps, as: 'steps'
+        end
+      end
+      
+      class GetMultipleApplicationPlayerIdsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :player_ids, as: 'playerIds', class: Google::Apis::GamesV1::ApplicationPlayerId, decorator: Google::Apis::GamesV1::ApplicationPlayerId::Representation
+      
         end
       end
       
