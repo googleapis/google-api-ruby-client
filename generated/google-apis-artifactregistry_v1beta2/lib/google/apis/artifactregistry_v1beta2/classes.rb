@@ -986,7 +986,7 @@ module Google
       class Repository
         include Google::Apis::Core::Hashable
       
-        # The time when the repository was created.
+        # Output only. The time when the repository was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -1042,7 +1042,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :size_bytes
       
-        # The time when the repository was last updated.
+        # Output only. The time when the repository was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
