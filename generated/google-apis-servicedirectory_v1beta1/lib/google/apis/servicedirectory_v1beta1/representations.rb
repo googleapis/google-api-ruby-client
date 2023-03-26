@@ -161,6 +161,7 @@ module Google
           property :name, as: 'name'
           property :network, as: 'network'
           property :port, as: 'port'
+          property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
         end
       end
@@ -243,6 +244,7 @@ module Google
           property :create_time, as: 'createTime'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
         end
       end
@@ -281,6 +283,7 @@ module Google
       
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
+          property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
         end
       end
