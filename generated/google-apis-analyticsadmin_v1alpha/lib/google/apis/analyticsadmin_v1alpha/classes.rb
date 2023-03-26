@@ -1910,6 +1910,12 @@ module Google
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal]
         attr_accessor :display_video360_advertiser_link_proposal
       
+        # Singleton resource under a WebDataStream, configuring measurement of
+        # additional site interactions and content.
+        # Corresponds to the JSON property `enhancedMeasurementSettings`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings]
+        attr_accessor :enhanced_measurement_settings
+      
         # A resource message representing a GA4 ExpandedDataSet.
         # Corresponds to the JSON property `expandedDataSet`
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaExpandedDataSet]
@@ -1961,6 +1967,7 @@ module Google
           @data_stream = args[:data_stream] if args.key?(:data_stream)
           @display_video360_advertiser_link = args[:display_video360_advertiser_link] if args.key?(:display_video360_advertiser_link)
           @display_video360_advertiser_link_proposal = args[:display_video360_advertiser_link_proposal] if args.key?(:display_video360_advertiser_link_proposal)
+          @enhanced_measurement_settings = args[:enhanced_measurement_settings] if args.key?(:enhanced_measurement_settings)
           @expanded_data_set = args[:expanded_data_set] if args.key?(:expanded_data_set)
           @firebase_link = args[:firebase_link] if args.key?(:firebase_link)
           @google_ads_link = args[:google_ads_link] if args.key?(:google_ads_link)
@@ -2130,6 +2137,46 @@ module Google
         def update!(**args)
           @access_binding = args[:access_binding] if args.key?(:access_binding)
           @parent = args[:parent] if args.key?(:parent)
+        end
+      end
+      
+      # Request message for CreateConnectedSiteTag RPC.
+      class GoogleAnalyticsAdminV1alphaCreateConnectedSiteTagRequest
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for a specific Connected Site Tag.
+        # Corresponds to the JSON property `connectedSiteTag`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaConnectedSiteTag]
+        attr_accessor :connected_site_tag
+      
+        # The Universal Analytics property to create connected site tags for. This API
+        # does not support GA4 properties. Format: properties/`
+        # universalAnalyticsPropertyId` Example: properties/1234
+        # Corresponds to the JSON property `property`
+        # @return [String]
+        attr_accessor :property
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connected_site_tag = args[:connected_site_tag] if args.key?(:connected_site_tag)
+          @property = args[:property] if args.key?(:property)
+        end
+      end
+      
+      # Response message for CreateConnectedSiteTag RPC.
+      class GoogleAnalyticsAdminV1alphaCreateConnectedSiteTagResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -2751,6 +2798,106 @@ module Google
         end
       end
       
+      # Singleton resource under a WebDataStream, configuring measurement of
+      # additional site interactions and content.
+      class GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings
+        include Google::Apis::Core::Hashable
+      
+        # If enabled, capture a file download event each time a link is clicked with a
+        # common document, compressed file, application, video, or audio extension.
+        # Corresponds to the JSON property `fileDownloadsEnabled`
+        # @return [Boolean]
+        attr_accessor :file_downloads_enabled
+        alias_method :file_downloads_enabled?, :file_downloads_enabled
+      
+        # If enabled, capture a form interaction event each time a visitor interacts
+        # with a form on your website. False by default.
+        # Corresponds to the JSON property `formInteractionsEnabled`
+        # @return [Boolean]
+        attr_accessor :form_interactions_enabled
+        alias_method :form_interactions_enabled?, :form_interactions_enabled
+      
+        # Output only. Resource name of the Enhanced Measurement Settings. Format:
+        # properties/`property_id`/dataStreams/`data_stream`/enhancedMeasurementSettings
+        # Example: "properties/1000/dataStreams/2000/enhancedMeasurementSettings"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # If enabled, capture an outbound click event each time a visitor clicks a link
+        # that leads them away from your domain.
+        # Corresponds to the JSON property `outboundClicksEnabled`
+        # @return [Boolean]
+        attr_accessor :outbound_clicks_enabled
+        alias_method :outbound_clicks_enabled?, :outbound_clicks_enabled
+      
+        # If enabled, capture a page view event each time the website changes the
+        # browser history state.
+        # Corresponds to the JSON property `pageChangesEnabled`
+        # @return [Boolean]
+        attr_accessor :page_changes_enabled
+        alias_method :page_changes_enabled?, :page_changes_enabled
+      
+        # If enabled, capture scroll events each time a visitor gets to the bottom of a
+        # page.
+        # Corresponds to the JSON property `scrollsEnabled`
+        # @return [Boolean]
+        attr_accessor :scrolls_enabled
+        alias_method :scrolls_enabled?, :scrolls_enabled
+      
+        # Required. URL query parameters to interpret as site search parameters. Max
+        # length is 1024 characters. Must not be empty.
+        # Corresponds to the JSON property `searchQueryParameter`
+        # @return [String]
+        attr_accessor :search_query_parameter
+      
+        # If enabled, capture a view search results event each time a visitor performs a
+        # search on your site (based on a query parameter).
+        # Corresponds to the JSON property `siteSearchEnabled`
+        # @return [Boolean]
+        attr_accessor :site_search_enabled
+        alias_method :site_search_enabled?, :site_search_enabled
+      
+        # Indicates whether Enhanced Measurement Settings will be used to automatically
+        # measure interactions and content on this web stream. Changing this value does
+        # not affect the settings themselves, but determines whether they are respected.
+        # Corresponds to the JSON property `streamEnabled`
+        # @return [Boolean]
+        attr_accessor :stream_enabled
+        alias_method :stream_enabled?, :stream_enabled
+      
+        # Additional URL query parameters. Max length is 1024 characters.
+        # Corresponds to the JSON property `uriQueryParameter`
+        # @return [String]
+        attr_accessor :uri_query_parameter
+      
+        # If enabled, capture video play, progress, and complete events as visitors view
+        # embedded videos on your site.
+        # Corresponds to the JSON property `videoEngagementEnabled`
+        # @return [Boolean]
+        attr_accessor :video_engagement_enabled
+        alias_method :video_engagement_enabled?, :video_engagement_enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_downloads_enabled = args[:file_downloads_enabled] if args.key?(:file_downloads_enabled)
+          @form_interactions_enabled = args[:form_interactions_enabled] if args.key?(:form_interactions_enabled)
+          @name = args[:name] if args.key?(:name)
+          @outbound_clicks_enabled = args[:outbound_clicks_enabled] if args.key?(:outbound_clicks_enabled)
+          @page_changes_enabled = args[:page_changes_enabled] if args.key?(:page_changes_enabled)
+          @scrolls_enabled = args[:scrolls_enabled] if args.key?(:scrolls_enabled)
+          @search_query_parameter = args[:search_query_parameter] if args.key?(:search_query_parameter)
+          @site_search_enabled = args[:site_search_enabled] if args.key?(:site_search_enabled)
+          @stream_enabled = args[:stream_enabled] if args.key?(:stream_enabled)
+          @uri_query_parameter = args[:uri_query_parameter] if args.key?(:uri_query_parameter)
+          @video_engagement_enabled = args[:video_engagement_enabled] if args.key?(:video_engagement_enabled)
+        end
+      end
+      
       # A resource message representing a GA4 ExpandedDataSet.
       class GoogleAnalyticsAdminV1alphaExpandedDataSet
         include Google::Apis::Core::Hashable
@@ -3320,24 +3467,9 @@ module Google
       class GoogleAnalyticsAdminV1alphaListConnectedSiteTagsRequest
         include Google::Apis::Core::Hashable
       
-        # The maximum number of resources to return. The service may return fewer than
-        # this value, even if there are additional pages. If unspecified, at most 50
-        # resources will be returned. The maximum value is 200; (higher values will be
-        # coerced to the maximum)
-        # Corresponds to the JSON property `pageSize`
-        # @return [Fixnum]
-        attr_accessor :page_size
-      
-        # A page token, received from a previous `ListConnectedSiteTags` call. Provide
-        # this to retrieve the subsequent page. When paginating, all other parameters
-        # provided to `ListConnectedSiteTags` must match the call that provided the page
-        # token.
-        # Corresponds to the JSON property `pageToken`
-        # @return [String]
-        attr_accessor :page_token
-      
         # The Universal Analytics property to fetch connected site tags for. This does
-        # not work on GA4 properties. Format: `properties/1234`
+        # not work on GA4 properties. A maximum of 20 connected site tags will be
+        # returned. Example Format: `properties/1234`
         # Corresponds to the JSON property `property`
         # @return [String]
         attr_accessor :property
@@ -3348,8 +3480,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @page_size = args[:page_size] if args.key?(:page_size)
-          @page_token = args[:page_token] if args.key?(:page_token)
           @property = args[:property] if args.key?(:property)
         end
       end
@@ -3358,16 +3488,11 @@ module Google
       class GoogleAnalyticsAdminV1alphaListConnectedSiteTagsResponse
         include Google::Apis::Core::Hashable
       
-        # The site tags for the Universal Analytics property
+        # The site tags for the Universal Analytics property. A maximum of 20 connected
+        # site tags will be returned.
         # Corresponds to the JSON property `connectedSiteTags`
         # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaConnectedSiteTag>]
         attr_accessor :connected_site_tags
-      
-        # A token, which can be sent as `page_token` to retrieve the next page. If this
-        # field is omitted, there are no subsequent pages.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
       
         def initialize(**args)
            update!(**args)
@@ -3376,7 +3501,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @connected_site_tags = args[:connected_site_tags] if args.key?(:connected_site_tags)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
