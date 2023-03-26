@@ -55,7 +55,9 @@ module Google
         # @param [String] resource
         #   Required. REQUIRED: The resource for which the policy is being requested.
         #   Format for document: projects/`project_number`/locations/`location`/documents/`
-        #   document_id`. Format for project: projects/`project_number`.
+        #   document_id`. Format for collection: projects/`project_number`/locations/`
+        #   location`/collections/`collection_id`. Format for project: projects/`
+        #   project_number`.
         # @param [Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1FetchAclRequest] google_cloud_contentwarehouse_v1_fetch_acl_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -90,7 +92,9 @@ module Google
         # @param [String] resource
         #   Required. REQUIRED: The resource for which the policy is being requested.
         #   Format for document: projects/`project_number`/locations/`location`/documents/`
-        #   document_id`. Format for project: projects/`project_number`.
+        #   document_id`. Format for collection: projects/`project_number`/locations/`
+        #   location`/collections/`collection_id`. Format for project: projects/`
+        #   project_number`.
         # @param [Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1SetAclRequest] google_cloud_contentwarehouse_v1_set_acl_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -185,6 +189,69 @@ module Google
           command.response_representation = Google::Apis::ContentwarehouseV1::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::ContentwarehouseV1::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Archives a data export job.
+        # @param [String] name
+        #   Required. The resource name.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1DataExportJob] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1DataExportJob]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def archive_project_location_data_export_job_data_export_job(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1DataExportJob::Representation
+          command.response_class = Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1DataExportJob
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a data export job.
+        # @param [String] parent
+        #   Required. The resource parent name.
+        # @param [Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1DataExportJob] google_cloud_contentwarehouse_v1_data_export_job_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1DataExportJob] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1DataExportJob]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_data_export_job(parent, google_cloud_contentwarehouse_v1_data_export_job_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/dataExportJobs', options)
+          command.request_representation = Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1DataExportJob::Representation
+          command.request_object = google_cloud_contentwarehouse_v1_data_export_job_object
+          command.response_representation = Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1DataExportJob::Representation
+          command.response_class = Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1DataExportJob
+          command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -441,7 +508,9 @@ module Google
         # @param [String] resource
         #   Required. REQUIRED: The resource for which the policy is being requested.
         #   Format for document: projects/`project_number`/locations/`location`/documents/`
-        #   document_id`. Format for project: projects/`project_number`.
+        #   document_id`. Format for collection: projects/`project_number`/locations/`
+        #   location`/collections/`collection_id`. Format for project: projects/`
+        #   project_number`.
         # @param [Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1FetchAclRequest] google_cloud_contentwarehouse_v1_fetch_acl_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -577,6 +646,40 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Lock the document so the document cannot be updated by other users.
+        # @param [String] name
+        #   Required. The name of the document to lock. Format: projects/`project_number`/
+        #   locations/`location`/documents/`document`.
+        # @param [Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1LockDocumentRequest] google_cloud_contentwarehouse_v1_lock_document_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1Document] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1Document]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def lock_project_location_document(name, google_cloud_contentwarehouse_v1_lock_document_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:lock', options)
+          command.request_representation = Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1LockDocumentRequest::Representation
+          command.request_object = google_cloud_contentwarehouse_v1_lock_document_request_object
+          command.response_representation = Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1Document::Representation
+          command.response_class = Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1Document
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Updates a document. Returns INVALID_ARGUMENT if the name of the document is
         # non-empty and does not equal the existing name.
         # @param [String] name
@@ -652,7 +755,9 @@ module Google
         # @param [String] resource
         #   Required. REQUIRED: The resource for which the policy is being requested.
         #   Format for document: projects/`project_number`/locations/`location`/documents/`
-        #   document_id`. Format for project: projects/`project_number`.
+        #   document_id`. Format for collection: projects/`project_number`/locations/`
+        #   location`/collections/`collection_id`. Format for project: projects/`
+        #   project_number`.
         # @param [Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1SetAclRequest] google_cloud_contentwarehouse_v1_set_acl_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
