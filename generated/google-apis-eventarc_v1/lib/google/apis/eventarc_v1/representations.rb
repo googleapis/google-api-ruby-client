@@ -555,6 +555,7 @@ module Google
           property :destination, as: 'destination', class: Google::Apis::EventarcV1::Destination, decorator: Google::Apis::EventarcV1::Destination::Representation
       
           property :etag, as: 'etag'
+          property :event_data_content_type, as: 'eventDataContentType'
           collection :event_filters, as: 'eventFilters', class: Google::Apis::EventarcV1::EventFilter, decorator: Google::Apis::EventarcV1::EventFilter::Representation
       
           hash :labels, as: 'labels'
