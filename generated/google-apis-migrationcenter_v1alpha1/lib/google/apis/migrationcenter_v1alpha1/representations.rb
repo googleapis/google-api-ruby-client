@@ -22,6 +22,12 @@ module Google
   module Apis
     module MigrationcenterV1alpha1
       
+      class AddAssetsToGroupRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AggregateAssetsValuesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -112,6 +118,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AssetList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AssetPerformanceData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AwsEc2PlatformDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AzureVmPlatformDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchDeleteAssetsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BatchUpdateAssetsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -136,7 +172,61 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ComputeEngineMigrationTarget
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ComputeEnginePreferences
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ComputeEngineShapeDescriptor
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CpuUsageSample
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DailyResourceUsageAggregation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DailyResourceUsageAggregationCpu
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DailyResourceUsageAggregationDisk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DailyResourceUsageAggregationMemory
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DailyResourceUsageAggregationNetwork
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DailyResourceUsageAggregationStats
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -202,6 +292,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FitDescriptor
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Frames
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -221,6 +317,24 @@ module Google
       end
       
       class GcsPayloadInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GenericPlatformDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleKubernetesEngineMigrationTarget
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Group
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -268,6 +382,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ImportDataFile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ImportError
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -292,7 +412,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Insight
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InsightList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListAssetsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListGroupsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListImportDataFilesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -316,6 +460,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListPreferenceSetsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListSourcesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -328,7 +478,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MachinePreferences
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MachineSeries
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MemoryUsageSample
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MigrationInsight
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -424,7 +592,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PhysicalPlatformDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PlatformDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PreferenceSet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionPreferences
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RemoveAssetsFromGroupRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -478,6 +670,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Settings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Source
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -497,6 +695,12 @@ module Google
       end
       
       class UpdateAssetRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UploadFileInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -538,7 +742,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VirtualMachinePreferences
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VmwareDiskConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VmwareEngineMigrationTarget
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -548,6 +764,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AddAssetsToGroupRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_existing, as: 'allowExisting'
+          property :assets, as: 'assets', class: Google::Apis::MigrationcenterV1alpha1::AssetList, decorator: Google::Apis::MigrationcenterV1alpha1::AssetList::Representation
+      
+          property :request_id, as: 'requestId'
+        end
       end
       
       class AggregateAssetsValuesRequest
@@ -663,10 +889,15 @@ module Google
       class Asset
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :assigned_groups, as: 'assignedGroups'
           hash :attributes, as: 'attributes'
           property :create_time, as: 'createTime'
+          property :insight_list, as: 'insightList', class: Google::Apis::MigrationcenterV1alpha1::InsightList, decorator: Google::Apis::MigrationcenterV1alpha1::InsightList::Representation
+      
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :performance_data, as: 'performanceData', class: Google::Apis::MigrationcenterV1alpha1::AssetPerformanceData, decorator: Google::Apis::MigrationcenterV1alpha1::AssetPerformanceData::Representation
+      
           collection :sources, as: 'sources'
           property :update_time, as: 'updateTime'
           property :virtual_machine_details, as: 'virtualMachineDetails', class: Google::Apis::MigrationcenterV1alpha1::VirtualMachineDetails, decorator: Google::Apis::MigrationcenterV1alpha1::VirtualMachineDetails::Representation
@@ -685,6 +916,46 @@ module Google
           property :trace_token, as: 'traceToken'
           property :virtual_machine_details, as: 'virtualMachineDetails', class: Google::Apis::MigrationcenterV1alpha1::VirtualMachineDetails, decorator: Google::Apis::MigrationcenterV1alpha1::VirtualMachineDetails::Representation
       
+        end
+      end
+      
+      class AssetList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :asset_ids, as: 'assetIds'
+        end
+      end
+      
+      class AssetPerformanceData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :daily_resource_usage_aggregations, as: 'dailyResourceUsageAggregations', class: Google::Apis::MigrationcenterV1alpha1::DailyResourceUsageAggregation, decorator: Google::Apis::MigrationcenterV1alpha1::DailyResourceUsageAggregation::Representation
+      
+        end
+      end
+      
+      class AwsEc2PlatformDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :location, as: 'location'
+          property :machine_type_label, as: 'machineTypeLabel'
+        end
+      end
+      
+      class AzureVmPlatformDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :location, as: 'location'
+          property :machine_type_label, as: 'machineTypeLabel'
+          property :provisioning_state, as: 'provisioningState'
+        end
+      end
+      
+      class BatchDeleteAssetsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_missing, as: 'allowMissing'
+          collection :names, as: 'names'
         end
       end
       
@@ -721,10 +992,99 @@ module Google
         end
       end
       
+      class ComputeEngineMigrationTarget
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :shape, as: 'shape', class: Google::Apis::MigrationcenterV1alpha1::ComputeEngineShapeDescriptor, decorator: Google::Apis::MigrationcenterV1alpha1::ComputeEngineShapeDescriptor::Representation
+      
+        end
+      end
+      
+      class ComputeEnginePreferences
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :license_type, as: 'licenseType'
+          property :machine_preferences, as: 'machinePreferences', class: Google::Apis::MigrationcenterV1alpha1::MachinePreferences, decorator: Google::Apis::MigrationcenterV1alpha1::MachinePreferences::Representation
+      
+          property :persistent_disk_type, as: 'persistentDiskType'
+        end
+      end
+      
+      class ComputeEngineShapeDescriptor
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :logical_core_count, as: 'logicalCoreCount'
+          property :machine_type, as: 'machineType'
+          property :memory_mb, as: 'memoryMb'
+          property :physical_core_count, as: 'physicalCoreCount'
+          property :series, as: 'series'
+        end
+      end
+      
       class CpuUsageSample
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :utilized_percentage, as: 'utilizedPercentage'
+        end
+      end
+      
+      class DailyResourceUsageAggregation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cpu, as: 'cpu', class: Google::Apis::MigrationcenterV1alpha1::DailyResourceUsageAggregationCpu, decorator: Google::Apis::MigrationcenterV1alpha1::DailyResourceUsageAggregationCpu::Representation
+      
+          property :date, as: 'date', class: Google::Apis::MigrationcenterV1alpha1::Date, decorator: Google::Apis::MigrationcenterV1alpha1::Date::Representation
+      
+          property :disk, as: 'disk', class: Google::Apis::MigrationcenterV1alpha1::DailyResourceUsageAggregationDisk, decorator: Google::Apis::MigrationcenterV1alpha1::DailyResourceUsageAggregationDisk::Representation
+      
+          property :memory, as: 'memory', class: Google::Apis::MigrationcenterV1alpha1::DailyResourceUsageAggregationMemory, decorator: Google::Apis::MigrationcenterV1alpha1::DailyResourceUsageAggregationMemory::Representation
+      
+          property :network, as: 'network', class: Google::Apis::MigrationcenterV1alpha1::DailyResourceUsageAggregationNetwork, decorator: Google::Apis::MigrationcenterV1alpha1::DailyResourceUsageAggregationNetwork::Representation
+      
+        end
+      end
+      
+      class DailyResourceUsageAggregationCpu
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :utilization_percentage, as: 'utilizationPercentage', class: Google::Apis::MigrationcenterV1alpha1::DailyResourceUsageAggregationStats, decorator: Google::Apis::MigrationcenterV1alpha1::DailyResourceUsageAggregationStats::Representation
+      
+        end
+      end
+      
+      class DailyResourceUsageAggregationDisk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :iops, as: 'iops', class: Google::Apis::MigrationcenterV1alpha1::DailyResourceUsageAggregationStats, decorator: Google::Apis::MigrationcenterV1alpha1::DailyResourceUsageAggregationStats::Representation
+      
+        end
+      end
+      
+      class DailyResourceUsageAggregationMemory
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :utilization_percentage, as: 'utilizationPercentage', class: Google::Apis::MigrationcenterV1alpha1::DailyResourceUsageAggregationStats, decorator: Google::Apis::MigrationcenterV1alpha1::DailyResourceUsageAggregationStats::Representation
+      
+        end
+      end
+      
+      class DailyResourceUsageAggregationNetwork
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :egress_bps, as: 'egressBps', class: Google::Apis::MigrationcenterV1alpha1::DailyResourceUsageAggregationStats, decorator: Google::Apis::MigrationcenterV1alpha1::DailyResourceUsageAggregationStats::Representation
+      
+          property :ingress_bps, as: 'ingressBps', class: Google::Apis::MigrationcenterV1alpha1::DailyResourceUsageAggregationStats, decorator: Google::Apis::MigrationcenterV1alpha1::DailyResourceUsageAggregationStats::Representation
+      
+        end
+      end
+      
+      class DailyResourceUsageAggregationStats
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :average, as: 'average'
+          property :median, as: 'median'
+          property :nintey_fifth_percentile, as: 'ninteyFifthPercentile'
+          property :peak, as: 'peak'
         end
       end
       
@@ -837,6 +1197,13 @@ module Google
         end
       end
       
+      class FitDescriptor
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fit_level, as: 'fitLevel'
+        end
+      end
+      
       class Frames
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -870,6 +1237,31 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :format, as: 'format'
           property :path, as: 'path'
+        end
+      end
+      
+      class GenericPlatformDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :location, as: 'location'
+        end
+      end
+      
+      class GoogleKubernetesEngineMigrationTarget
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Group
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -953,6 +1345,19 @@ module Google
         end
       end
       
+      class ImportDataFile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          property :format, as: 'format'
+          property :name, as: 'name'
+          property :state, as: 'state'
+          property :upload_file_info, as: 'uploadFileInfo', class: Google::Apis::MigrationcenterV1alpha1::UploadFileInfo, decorator: Google::Apis::MigrationcenterV1alpha1::UploadFileInfo::Representation
+      
+        end
+      end
+      
       class ImportError
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -967,6 +1372,7 @@ module Google
           property :asset_source, as: 'assetSource'
           property :complete_time, as: 'completeTime'
           property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
           property :execution_report, as: 'executionReport', class: Google::Apis::MigrationcenterV1alpha1::ExecutionReport, decorator: Google::Apis::MigrationcenterV1alpha1::ExecutionReport::Representation
       
           property :gcs_payload, as: 'gcsPayload', class: Google::Apis::MigrationcenterV1alpha1::GcsPayloadInfo, decorator: Google::Apis::MigrationcenterV1alpha1::GcsPayloadInfo::Representation
@@ -1002,10 +1408,47 @@ module Google
         end
       end
       
+      class Insight
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :migration_insight, as: 'migrationInsight', class: Google::Apis::MigrationcenterV1alpha1::MigrationInsight, decorator: Google::Apis::MigrationcenterV1alpha1::MigrationInsight::Representation
+      
+        end
+      end
+      
+      class InsightList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :insights, as: 'insights', class: Google::Apis::MigrationcenterV1alpha1::Insight, decorator: Google::Apis::MigrationcenterV1alpha1::Insight::Representation
+      
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class ListAssetsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :assets, as: 'assets', class: Google::Apis::MigrationcenterV1alpha1::Asset, decorator: Google::Apis::MigrationcenterV1alpha1::Asset::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListGroupsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :groups, as: 'groups', class: Google::Apis::MigrationcenterV1alpha1::Group, decorator: Google::Apis::MigrationcenterV1alpha1::Group::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListImportDataFilesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :import_data_files, as: 'importDataFiles', class: Google::Apis::MigrationcenterV1alpha1::ImportDataFile, decorator: Google::Apis::MigrationcenterV1alpha1::ImportDataFile::Representation
       
           property :next_page_token, as: 'nextPageToken'
           collection :unreachable, as: 'unreachable'
@@ -1040,6 +1483,16 @@ module Google
         end
       end
       
+      class ListPreferenceSetsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :preference_sets, as: 'preferenceSets', class: Google::Apis::MigrationcenterV1alpha1::PreferenceSet, decorator: Google::Apis::MigrationcenterV1alpha1::PreferenceSet::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListSourcesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1061,10 +1514,39 @@ module Google
         end
       end
       
+      class MachinePreferences
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_machine_series, as: 'allowedMachineSeries', class: Google::Apis::MigrationcenterV1alpha1::MachineSeries, decorator: Google::Apis::MigrationcenterV1alpha1::MachineSeries::Representation
+      
+        end
+      end
+      
+      class MachineSeries
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+        end
+      end
+      
       class MemoryUsageSample
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :utilized_percentage, as: 'utilizedPercentage'
+        end
+      end
+      
+      class MigrationInsight
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :compute_engine_target, as: 'computeEngineTarget', class: Google::Apis::MigrationcenterV1alpha1::ComputeEngineMigrationTarget, decorator: Google::Apis::MigrationcenterV1alpha1::ComputeEngineMigrationTarget::Representation
+      
+          property :fit, as: 'fit', class: Google::Apis::MigrationcenterV1alpha1::FitDescriptor, decorator: Google::Apis::MigrationcenterV1alpha1::FitDescriptor::Representation
+      
+          property :gke_target, as: 'gkeTarget', class: Google::Apis::MigrationcenterV1alpha1::GoogleKubernetesEngineMigrationTarget, decorator: Google::Apis::MigrationcenterV1alpha1::GoogleKubernetesEngineMigrationTarget::Representation
+      
+          property :vmware_engine_target, as: 'vmwareEngineTarget', class: Google::Apis::MigrationcenterV1alpha1::VmwareEngineMigrationTarget, decorator: Google::Apis::MigrationcenterV1alpha1::VmwareEngineMigrationTarget::Representation
+      
         end
       end
       
@@ -1217,11 +1699,56 @@ module Google
         end
       end
       
+      class PhysicalPlatformDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :location, as: 'location'
+        end
+      end
+      
       class PlatformDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :aws_ec2_details, as: 'awsEc2Details', class: Google::Apis::MigrationcenterV1alpha1::AwsEc2PlatformDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsEc2PlatformDetails::Representation
+      
+          property :azure_vm_details, as: 'azureVmDetails', class: Google::Apis::MigrationcenterV1alpha1::AzureVmPlatformDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AzureVmPlatformDetails::Representation
+      
+          property :generic_details, as: 'genericDetails', class: Google::Apis::MigrationcenterV1alpha1::GenericPlatformDetails, decorator: Google::Apis::MigrationcenterV1alpha1::GenericPlatformDetails::Representation
+      
+          property :physical_details, as: 'physicalDetails', class: Google::Apis::MigrationcenterV1alpha1::PhysicalPlatformDetails, decorator: Google::Apis::MigrationcenterV1alpha1::PhysicalPlatformDetails::Representation
+      
           property :vmware_details, as: 'vmwareDetails', class: Google::Apis::MigrationcenterV1alpha1::VmwarePlatformDetails, decorator: Google::Apis::MigrationcenterV1alpha1::VmwarePlatformDetails::Representation
       
+        end
+      end
+      
+      class PreferenceSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          property :update_time, as: 'updateTime'
+          property :virtual_machine_preferences, as: 'virtualMachinePreferences', class: Google::Apis::MigrationcenterV1alpha1::VirtualMachinePreferences, decorator: Google::Apis::MigrationcenterV1alpha1::VirtualMachinePreferences::Representation
+      
+        end
+      end
+      
+      class RegionPreferences
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :preferred_regions, as: 'preferredRegions'
+        end
+      end
+      
+      class RemoveAssetsFromGroupRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_missing, as: 'allowMissing'
+          property :assets, as: 'assets', class: Google::Apis::MigrationcenterV1alpha1::AssetList, decorator: Google::Apis::MigrationcenterV1alpha1::AssetList::Representation
+      
+          property :request_id, as: 'requestId'
         end
       end
       
@@ -1297,6 +1824,14 @@ module Google
         end
       end
       
+      class Settings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :preference_set, as: 'preferenceSet'
+        end
+      end
+      
       class Source
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1339,6 +1874,16 @@ module Google
         end
       end
       
+      class UploadFileInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :headers, as: 'headers'
+          property :signed_uri, as: 'signedUri'
+          property :uri, as: 'uri'
+          property :uri_expiration_time, as: 'uriExpirationTime'
+        end
+      end
+      
       class ValidateImportJobRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1376,11 +1921,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :core_count, as: 'coreCount'
+          property :create_time, as: 'createTime'
           property :guest_os, as: 'guestOs', class: Google::Apis::MigrationcenterV1alpha1::GuestOsDetails, decorator: Google::Apis::MigrationcenterV1alpha1::GuestOsDetails::Representation
       
           property :memory_mb, as: 'memoryMb'
           property :os_family, as: 'osFamily'
           property :os_name, as: 'osName'
+          property :os_version, as: 'osVersion'
           property :platform, as: 'platform', class: Google::Apis::MigrationcenterV1alpha1::PlatformDetails, decorator: Google::Apis::MigrationcenterV1alpha1::PlatformDetails::Representation
       
           property :power_state, as: 'powerState'
@@ -1417,6 +1964,19 @@ module Google
       
           property :primary_ip_address, as: 'primaryIpAddress'
           property :primary_mac_address, as: 'primaryMacAddress'
+          property :public_ip_address, as: 'publicIpAddress'
+        end
+      end
+      
+      class VirtualMachinePreferences
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :commitment_plan, as: 'commitmentPlan'
+          property :compute_engine_preferences, as: 'computeEnginePreferences', class: Google::Apis::MigrationcenterV1alpha1::ComputeEnginePreferences, decorator: Google::Apis::MigrationcenterV1alpha1::ComputeEnginePreferences::Representation
+      
+          property :region_preferences, as: 'regionPreferences', class: Google::Apis::MigrationcenterV1alpha1::RegionPreferences, decorator: Google::Apis::MigrationcenterV1alpha1::RegionPreferences::Representation
+      
+          property :sizing_optimization_strategy, as: 'sizingOptimizationStrategy'
         end
       end
       
@@ -1427,6 +1987,12 @@ module Google
           property :rdm_compatibility_mode, as: 'rdmCompatibilityMode'
           property :shared, as: 'shared'
           property :vmdk_disk_mode, as: 'vmdkDiskMode'
+        end
+      end
+      
+      class VmwareEngineMigrationTarget
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
