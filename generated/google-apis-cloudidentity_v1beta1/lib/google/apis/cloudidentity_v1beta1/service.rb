@@ -1222,13 +1222,14 @@ module Google
         #   the parent, e.g. `parent == 'customers/`customer_id`'`. The `customer_id` must
         #   begin with "C" (for example, 'C046psxkn'). [Find your customer ID.] (https://
         #   support.google.com/cloudidentity/answer/10070793) * Can contain optional
-        #   inclusion operators on `labels` such as `cloudidentity.googleapis.com/groups.
+        #   inclusion operators on `labels` such as `'cloudidentity.googleapis.com/groups.
         #   discussion_forum' in labels`). * Can contain an optional equality operator on `
-        #   domain_name` or `startsWith/contains/equality` operator on `group_key`, e.g. `
-        #   domain_name == 'abc.com'`, `group_key.startsWith('dev')`, `group_key.contains('
-        #   dev'), group_key == 'dev@abc.com'` * Can contain an optional `startsWith/
-        #   contains/equality` operator on `display_name`, such as `display_name.
-        #   startsWith('dev')` , `display_name.contains('dev')`, `display_name == 'dev'`
+        #   domain_name`. e.g. `domain_name == 'abc.com'` * Can contain optional `
+        #   startsWith/contains/equality` operators on `group_key`, e.g. `group_key.
+        #   startsWith('dev')`, `group_key.contains('dev'), group_key == 'dev@abc.com'` *
+        #   Can contain optional `startsWith/contains/equality` operators on `display_name`
+        #   , such as `display_name.startsWith('dev')` , `display_name.contains('dev')`, `
+        #   display_name == 'dev'`
         # @param [String] view
         #   The level of detail to be returned. If unspecified, defaults to `View.BASIC`.
         # @param [String] fields
@@ -1618,6 +1619,62 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Searches direct groups of a member.
+        # @param [String] parent
+        #   [Resource name](https://cloud.google.com/apis/design/resource_names) of the
+        #   group to search transitive memberships in. Format: groups/`group_id`, where
+        #   group_id is always '-' as this API will search across all groups for a given
+        #   member.
+        # @param [String] order_by
+        #   The ordering of membership relation for the display name or email in the
+        #   response. The syntax for this field can be found at https://cloud.google.com/
+        #   apis/design/design_patterns#sorting_order. Example: Sort by the ascending
+        #   display name: order_by="group_name" or order_by="group_name asc". Sort by the
+        #   descending display name: order_by="group_name desc". Sort by the ascending
+        #   group key: order_by="group_key" or order_by="group_key asc". Sort by the
+        #   descending group key: order_by="group_key desc".
+        # @param [Fixnum] page_size
+        #   The default page size is 200 (max 1000).
+        # @param [String] page_token
+        #   The next_page_token value returned from a previous list request, if any
+        # @param [String] query
+        #   Required. A CEL expression that MUST include member specification AND label(s).
+        #   Users can search on label attributes of groups. CONTAINS match ('in') is
+        #   supported on labels. Identity-mapped groups are uniquely identified by both a `
+        #   member_key_id` and a `member_key_namespace`, which requires an additional
+        #   query input: `member_key_namespace`. Example query: `member_key_id == '
+        #   member_key_id_value' && 'label_value' in labels`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudidentityV1beta1::SearchDirectGroupsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudidentityV1beta1::SearchDirectGroupsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def search_group_membership_direct_groups(parent, order_by: nil, page_size: nil, page_token: nil, query: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/memberships:searchDirectGroups', options)
+          command.response_representation = Google::Apis::CloudidentityV1beta1::SearchDirectGroupsResponse::Representation
+          command.response_class = Google::Apis::CloudidentityV1beta1::SearchDirectGroupsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['query'] = query unless query.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Search transitive groups of a member. **Note:** This feature is only available
         # to Google Workspace Enterprise Standard, Enterprise Plus, and Enterprise for
         # Education; and Cloud Identity Premium accounts. A transitive group is any
@@ -1638,7 +1695,13 @@ module Google
         #   CONTAINS match ('in') is supported on labels. Identity-mapped groups are
         #   uniquely identified by both a `member_key_id` and a `member_key_namespace`,
         #   which requires an additional query input: `member_key_namespace`. Example
-        #   query: `member_key_id == 'member_key_id_value' && in labels`
+        #   query: `member_key_id == 'member_key_id_value' && in labels` Query may
+        #   optionally contain equality operators on the parent of the group restricting
+        #   the search within a particular customer, e.g. `parent == 'customers/`
+        #   customer_id`'`. The `customer_id` must begin with "C" (for example, 'C046psxkn'
+        #   ). This filtering is only supported for Admins with groups read permissons on
+        #   the input customer. Example query: `member_key_id == 'member_key_id_value' &&
+        #   in labels && parent == 'customers/C046psxkn'`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1808,10 +1871,10 @@ module Google
         # Lists InboundSamlSsoProfiles for a customer.
         # @param [String] filter
         #   A [Common Expression Language](https://github.com/google/cel-spec) expression
-        #   to filter the results. The only currently-supported filter is filtering by
-        #   customer. For example: `customer=="customers/C0123abc"`. Omitting the filter
-        #   or specifying a filter of `customer=="customers/my_customer"` will return the
-        #   profiles for the customer that the caller (authenticated user) belongs to.
+        #   to filter the results. The only supported filter is filtering by customer. For
+        #   example: `customer=="customers/C0123abc"`. Omitting the filter or specifying a
+        #   filter of `customer=="customers/my_customer"` will return the profiles for the
+        #   customer that the caller (authenticated user) belongs to.
         # @param [Fixnum] page_size
         #   The maximum number of InboundSamlSsoProfiles to return. The service may return
         #   fewer than this value. If omitted (or defaulted to zero) the server will use a
@@ -2126,11 +2189,10 @@ module Google
         
         # Lists the InboundSsoAssignments for a `Customer`.
         # @param [String] filter
-        #   A CEL expression to filter the results. The only currently-supported filter is
-        #   filtering by customer. For example: `customer==customers/C0123abc`. Omitting
-        #   the filter or specifying a filter of `customer==customers/my_customer` will
-        #   return the assignments for the customer that the caller (authenticated user)
-        #   belongs to.
+        #   A CEL expression to filter the results. The only supported filter is filtering
+        #   by customer. For example: `customer==customers/C0123abc`. Omitting the filter
+        #   or specifying a filter of `customer==customers/my_customer` will return the
+        #   assignments for the customer that the caller (authenticated user) belongs to.
         # @param [Fixnum] page_size
         #   The maximum number of assignments to return. The service may return fewer than
         #   this value. If omitted (or defaulted to zero) the server will use a sensible
