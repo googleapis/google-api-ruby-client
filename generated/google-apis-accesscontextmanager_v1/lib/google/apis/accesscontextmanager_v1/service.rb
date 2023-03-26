@@ -1385,8 +1385,9 @@ module Google
         # @param [Google::Apis::AccesscontextmanagerV1::GcpUserAccessBinding] gcp_user_access_binding_object
         # @param [String] update_mask
         #   Required. Only the fields specified in this mask are updated. Because name and
-        #   group_key cannot be changed, update_mask is required and must always be:
-        #   update_mask ` paths: "access_levels" `
+        #   group_key cannot be changed, update_mask is required and may only contain the
+        #   following fields: `access_levels`, `dry_run_access_levels`. update_mask `
+        #   paths: "access_levels" `
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

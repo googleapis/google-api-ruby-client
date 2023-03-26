@@ -844,7 +844,7 @@ module Google
       class GcpUserAccessBinding
         include Google::Apis::Core::Hashable
       
-        # Required. Access level that a user must have to be granted access. Only one
+        # Optional. Access level that a user must have to be granted access. Only one
         # access level is supported, not multiple. This repeated field must have exactly
         # one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
         # Corresponds to the JSON property `accessLevels`
