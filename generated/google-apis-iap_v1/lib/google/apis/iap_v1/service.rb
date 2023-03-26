@@ -670,8 +670,10 @@ module Google
         # @param [Google::Apis::IapV1::IapSettings] iap_settings_object
         # @param [String] update_mask
         #   The field mask specifying which IAP settings should be updated. If omitted,
-        #   the all of the settings are updated. See https://developers.google.com/
-        #   protocol-buffers/docs/reference/google.protobuf#fieldmask
+        #   then all of the settings are updated. See https://developers.google.com/
+        #   protocol-buffers/docs/reference/google.protobuf#fieldmask. Note: All IAP
+        #   reauth settings must always be set together, using the field mask: `
+        #   iapSettings.accessSettings.reauthSettings`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
