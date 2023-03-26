@@ -701,6 +701,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :consumers, as: 'consumers', class: Google::Apis::MetastoreV1beta::Consumer, decorator: Google::Apis::MetastoreV1beta::Consumer::Representation
       
+          property :custom_routes_enabled, as: 'customRoutesEnabled'
         end
       end
       
