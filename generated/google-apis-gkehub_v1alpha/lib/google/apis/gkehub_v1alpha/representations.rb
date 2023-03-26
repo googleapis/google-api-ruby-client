@@ -634,6 +634,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PolicyControllerPolicyContentState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PolicyControllerPolicyControllerDeploymentConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1856,6 +1862,8 @@ module Google
       
           hash :content_states, as: 'contentStates', class: Google::Apis::GkehubV1alpha::PolicyControllerOnClusterState, decorator: Google::Apis::GkehubV1alpha::PolicyControllerOnClusterState::Representation
       
+          property :policy_content_state, as: 'policyContentState', class: Google::Apis::GkehubV1alpha::PolicyControllerPolicyContentState, decorator: Google::Apis::GkehubV1alpha::PolicyControllerPolicyContentState::Representation
+      
           property :state, as: 'state'
         end
       end
@@ -1879,6 +1887,18 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :bundles, as: 'bundles', class: Google::Apis::GkehubV1alpha::PolicyControllerBundleInstallSpec, decorator: Google::Apis::GkehubV1alpha::PolicyControllerBundleInstallSpec::Representation
+      
+          property :template_library, as: 'templateLibrary', class: Google::Apis::GkehubV1alpha::PolicyControllerTemplateLibraryConfig, decorator: Google::Apis::GkehubV1alpha::PolicyControllerTemplateLibraryConfig::Representation
+      
+        end
+      end
+      
+      class PolicyControllerPolicyContentState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :bundle_states, as: 'bundleStates', class: Google::Apis::GkehubV1alpha::PolicyControllerOnClusterState, decorator: Google::Apis::GkehubV1alpha::PolicyControllerOnClusterState::Representation
+      
+          property :template_library_state, as: 'templateLibraryState', class: Google::Apis::GkehubV1alpha::PolicyControllerOnClusterState, decorator: Google::Apis::GkehubV1alpha::PolicyControllerOnClusterState::Representation
       
         end
       end
@@ -1917,6 +1937,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :included, as: 'included'
+          property :installation, as: 'installation'
         end
       end
       
