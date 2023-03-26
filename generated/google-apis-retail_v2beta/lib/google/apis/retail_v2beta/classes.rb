@@ -979,6 +979,32 @@ module Google
         end
       end
       
+      # Common metadata related to the progress of the operations.
+      class GoogleCloudRetailV2alphaCreateMerchantCenterAccountLinkMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Metadata associated with a create operation.
       class GoogleCloudRetailV2alphaCreateModelMetadata
         include Google::Apis::Core::Hashable
@@ -1295,6 +1321,120 @@ module Google
           @error_samples = args[:error_samples] if args.key?(:error_samples)
           @errors_config = args[:errors_config] if args.key?(:errors_config)
           @import_summary = args[:import_summary] if args.key?(:import_summary)
+        end
+      end
+      
+      # Represents a link between a Merchant Center account and a branch. Once a link
+      # is established, products from the linked merchant center account will be
+      # streamed to the linked branch. LINT.IfChange(MerchantCenterAccountLink)
+      class GoogleCloudRetailV2alphaMerchantCenterAccountLink
+        include Google::Apis::Core::Hashable
+      
+        # Required. The branch id (e.g. 0/1/2) within the catalog that products from
+        # merchant_center_account_id are streamed to. When updating this field, an empty
+        # value will use the currently configured default branch. However, changing the
+        # default branch later on won't change the linked branch here. A single branch
+        # id can only have one linked merchant center account id.
+        # Corresponds to the JSON property `branchId`
+        # @return [String]
+        attr_accessor :branch_id
+      
+        # Criteria for the Merchant Center feeds to be ingested via the link. All offers
+        # will be ingested if the list is empty. Otherwise the offers will be ingested
+        # from selected feeds.
+        # Corresponds to the JSON property `feedFilters`
+        # @return [Array<Google::Apis::RetailV2beta::GoogleCloudRetailV2alphaMerchantCenterAccountLinkMerchantCenterFeedFilter>]
+        attr_accessor :feed_filters
+      
+        # The FeedLabel used to perform filtering. Note: this replaces [region_id](https:
+        # //developers.google.com/shopping-content/reference/rest/v2.1/products#Product.
+        # FIELDS.feed_label). Example value: `US`. Example value: `FeedLabel1`.
+        # Corresponds to the JSON property `feedLabel`
+        # @return [String]
+        attr_accessor :feed_label
+      
+        # Output only. Immutable. MerchantCenterAccountLink identifier, which is the
+        # final component of name. This field is auto generated and follows the
+        # convention: `BranchId_MerchantCenterAccountId`. `projects/*/locations/global/
+        # catalogs/default_catalog/merchantCenterAccountLinks/id_1`.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Language of the title/description and other string attributes. Use language
+        # tags defined by [BCP 47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). ISO
+        # 639-1. This specifies the language of offers in Merchant Center that will be
+        # accepted. If empty, no language filtering will be performed. Example value: `
+        # en`.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # Required. The linked [Merchant center account id](https://developers.google.
+        # com/shopping-content/guides/accountstatuses). The account must be a standalone
+        # account or a sub-account of a MCA.
+        # Corresponds to the JSON property `merchantCenterAccountId`
+        # @return [Fixnum]
+        attr_accessor :merchant_center_account_id
+      
+        # Output only. Immutable. Full resource name of the Merchant Center Account Link,
+        # such as `projects/*/locations/global/catalogs/default_catalog/
+        # merchantCenterAccountLinks/merchant_center_account_link`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. GCP project ID.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # Output only. Represents the state of the link.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @branch_id = args[:branch_id] if args.key?(:branch_id)
+          @feed_filters = args[:feed_filters] if args.key?(:feed_filters)
+          @feed_label = args[:feed_label] if args.key?(:feed_label)
+          @id = args[:id] if args.key?(:id)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @merchant_center_account_id = args[:merchant_center_account_id] if args.key?(:merchant_center_account_id)
+          @name = args[:name] if args.key?(:name)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Merchant Center Feed filter criterion.
+      class GoogleCloudRetailV2alphaMerchantCenterAccountLinkMerchantCenterFeedFilter
+        include Google::Apis::Core::Hashable
+      
+        # Merchant Center primary feed ID.
+        # Corresponds to the JSON property `primaryFeedId`
+        # @return [Fixnum]
+        attr_accessor :primary_feed_id
+      
+        # Merchant Center primary feed name. The name is used for the display purposes
+        # only.
+        # Corresponds to the JSON property `primaryFeedName`
+        # @return [String]
+        attr_accessor :primary_feed_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @primary_feed_id = args[:primary_feed_id] if args.key?(:primary_feed_id)
+          @primary_feed_name = args[:primary_feed_name] if args.key?(:primary_feed_name)
         end
       end
       
@@ -2911,6 +3051,32 @@ module Google
         end
       end
       
+      # Common metadata related to the progress of the operations.
+      class GoogleCloudRetailV2betaCreateMerchantCenterAccountLinkMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Metadata associated with a create operation.
       class GoogleCloudRetailV2betaCreateModelMetadata
         include Google::Apis::Core::Hashable
@@ -3812,6 +3978,120 @@ module Google
         end
       end
       
+      # Represents a link between a Merchant Center account and a branch. Once a link
+      # is established, products from the linked merchant center account will be
+      # streamed to the linked branch. LINT.IfChange(MerchantCenterAccountLink)
+      class GoogleCloudRetailV2betaMerchantCenterAccountLink
+        include Google::Apis::Core::Hashable
+      
+        # Required. The branch id (e.g. 0/1/2) within the catalog that products from
+        # merchant_center_account_id are streamed to. When updating this field, an empty
+        # value will use the currently configured default branch. However, changing the
+        # default branch later on won't change the linked branch here. A single branch
+        # id can only have one linked merchant center account id.
+        # Corresponds to the JSON property `branchId`
+        # @return [String]
+        attr_accessor :branch_id
+      
+        # Criteria for the Merchant Center feeds to be ingested via the link. All offers
+        # will be ingested if the list is empty. Otherwise the offers will be ingested
+        # from selected feeds.
+        # Corresponds to the JSON property `feedFilters`
+        # @return [Array<Google::Apis::RetailV2beta::GoogleCloudRetailV2betaMerchantCenterAccountLinkMerchantCenterFeedFilter>]
+        attr_accessor :feed_filters
+      
+        # The FeedLabel used to perform filtering. Note: this replaces [region_id](https:
+        # //developers.google.com/shopping-content/reference/rest/v2.1/products#Product.
+        # FIELDS.feed_label). Example value: `US`. Example value: `FeedLabel1`.
+        # Corresponds to the JSON property `feedLabel`
+        # @return [String]
+        attr_accessor :feed_label
+      
+        # Output only. Immutable. MerchantCenterAccountLink identifier, which is the
+        # final component of name. This field is auto generated and follows the
+        # convention: `BranchId_MerchantCenterAccountId`. `projects/*/locations/global/
+        # catalogs/default_catalog/merchantCenterAccountLinks/id_1`.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Language of the title/description and other string attributes. Use language
+        # tags defined by [BCP 47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). ISO
+        # 639-1. This specifies the language of offers in Merchant Center that will be
+        # accepted. If empty, no language filtering will be performed. Example value: `
+        # en`.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # Required. The linked [Merchant center account id](https://developers.google.
+        # com/shopping-content/guides/accountstatuses). The account must be a standalone
+        # account or a sub-account of a MCA.
+        # Corresponds to the JSON property `merchantCenterAccountId`
+        # @return [Fixnum]
+        attr_accessor :merchant_center_account_id
+      
+        # Output only. Immutable. Full resource name of the Merchant Center Account Link,
+        # such as `projects/*/locations/global/catalogs/default_catalog/
+        # merchantCenterAccountLinks/merchant_center_account_link`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. GCP project ID.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # Output only. Represents the state of the link.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @branch_id = args[:branch_id] if args.key?(:branch_id)
+          @feed_filters = args[:feed_filters] if args.key?(:feed_filters)
+          @feed_label = args[:feed_label] if args.key?(:feed_label)
+          @id = args[:id] if args.key?(:id)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @merchant_center_account_id = args[:merchant_center_account_id] if args.key?(:merchant_center_account_id)
+          @name = args[:name] if args.key?(:name)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Merchant Center Feed filter criterion.
+      class GoogleCloudRetailV2betaMerchantCenterAccountLinkMerchantCenterFeedFilter
+        include Google::Apis::Core::Hashable
+      
+        # Merchant Center primary feed ID.
+        # Corresponds to the JSON property `primaryFeedId`
+        # @return [Fixnum]
+        attr_accessor :primary_feed_id
+      
+        # Merchant Center primary feed name. The name is used for the display purposes
+        # only.
+        # Corresponds to the JSON property `primaryFeedName`
+        # @return [String]
+        attr_accessor :primary_feed_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @primary_feed_id = args[:primary_feed_id] if args.key?(:primary_feed_id)
+          @primary_feed_name = args[:primary_feed_name] if args.key?(:primary_feed_name)
+        end
+      end
+      
       # Merchant Center Feed filter criterion.
       class GoogleCloudRetailV2betaMerchantCenterFeedFilter
         include Google::Apis::Core::Hashable
@@ -4150,9 +4430,9 @@ module Google
         # filterSyntaxV2` is set to true under the `params` field, then attribute-based
         # expressions are expected instead of the above described tag-based syntax.
         # Examples: * (colors: ANY("Red", "Blue")) AND NOT (categories: ANY("Phones")) *
-        # (brands: ANY("Pixel")) AND (colors: ANY("Red") OR categories: ANY("Phones"))
-        # For more information, see [Filter recommendations](https://cloud.google.com/
-        # retail/docs/filter-recs).
+        # (availability: ANY("IN_STOCK")) AND (colors: ANY("Red") OR categories: ANY("
+        # Phones")) For more information, see [Filter recommendations](https://cloud.
+        # google.com/retail/docs/filter-recs).
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -5719,6 +5999,13 @@ module Google
       class GoogleCloudRetailV2betaSearchRequest
         include Google::Apis::Core::Hashable
       
+        # Represents the banner in request, for projects that combine banners. For
+        # example: a retailer can sell products under different banners like retailer-
+        # main, retailer-baby, retailer-meds, etc. under one project.
+        # Corresponds to the JSON property `banner`
+        # @return [String]
+        attr_accessor :banner
+      
         # Boost specification to boost certain items.
         # Corresponds to the JSON property `boostSpec`
         # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchRequestBoostSpec]
@@ -5900,6 +6187,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @banner = args[:banner] if args.key?(:banner)
           @boost_spec = args[:boost_spec] if args.key?(:boost_spec)
           @branch = args[:branch] if args.key?(:branch)
           @canonical_filter = args[:canonical_filter] if args.key?(:canonical_filter)
@@ -6926,6 +7214,13 @@ module Google
         # @return [String]
         attr_accessor :attribution_token
       
+        # Represents the banner of the user event, for projects that combine banners.
+        # For example: retailer can have events from multiple banners like retailer-main,
+        # retailer-baby, retailer-meds, etc. under one project.
+        # Corresponds to the JSON property `banner`
+        # @return [String]
+        attr_accessor :banner
+      
         # The ID or name of the associated shopping cart. This ID is used to associate
         # multiple items added or present in the cart before purchase. This can only be
         # set for `add-to-cart`, `purchase-complete`, or `shopping-cart-page-view`
@@ -6939,13 +7234,6 @@ module Google
         # Corresponds to the JSON property `completionDetail`
         # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCompletionDetail]
         attr_accessor :completion_detail
-      
-        # Represents the domain of the user event, for projects that combine domains.
-        # For example: retailer can have events from multiple domains like retailer-main,
-        # retailer-baby, retailer-meds, etc. under one project.
-        # Corresponds to the JSON property `domain`
-        # @return [String]
-        attr_accessor :domain
       
         # Only required for UserEventService.ImportUserEvents method. Timestamp of when
         # the user event happened.
@@ -7100,9 +7388,9 @@ module Google
         def update!(**args)
           @attributes = args[:attributes] if args.key?(:attributes)
           @attribution_token = args[:attribution_token] if args.key?(:attribution_token)
+          @banner = args[:banner] if args.key?(:banner)
           @cart_id = args[:cart_id] if args.key?(:cart_id)
           @completion_detail = args[:completion_detail] if args.key?(:completion_detail)
-          @domain = args[:domain] if args.key?(:domain)
           @event_time = args[:event_time] if args.key?(:event_time)
           @event_type = args[:event_type] if args.key?(:event_type)
           @experiment_ids = args[:experiment_ids] if args.key?(:experiment_ids)
