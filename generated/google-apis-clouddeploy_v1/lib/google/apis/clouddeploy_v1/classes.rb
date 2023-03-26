@@ -89,6 +89,38 @@ module Google
         end
       end
       
+      # The request object used by `AdvanceRollout`.
+      class AdvanceRolloutRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The phase ID to advance the `Rollout` to.
+        # Corresponds to the JSON property `phaseId`
+        # @return [String]
+        attr_accessor :phase_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @phase_id = args[:phase_id] if args.key?(:phase_id)
+        end
+      end
+      
+      # The response object from `AdvanceRollout`.
+      class AdvanceRolloutResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Information specifying an Anthos Cluster.
       class AnthosCluster
         include Google::Apis::Core::Hashable
@@ -316,8 +348,94 @@ module Google
         end
       end
       
+      # Canary represents the canary deployment strategy.
+      class Canary
+        include Google::Apis::Core::Hashable
+      
+        # CanaryDeployment represents the canary deployment configuration
+        # Corresponds to the JSON property `canaryDeployment`
+        # @return [Google::Apis::ClouddeployV1::CanaryDeployment]
+        attr_accessor :canary_deployment
+      
+        # CustomCanaryDeployment represents the custom canary deployment configuration.
+        # Corresponds to the JSON property `customCanaryDeployment`
+        # @return [Google::Apis::ClouddeployV1::CustomCanaryDeployment]
+        attr_accessor :custom_canary_deployment
+      
+        # RuntimeConfig contains the runtime specific configurations for a deployment
+        # strategy.
+        # Corresponds to the JSON property `runtimeConfig`
+        # @return [Google::Apis::ClouddeployV1::RuntimeConfig]
+        attr_accessor :runtime_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @canary_deployment = args[:canary_deployment] if args.key?(:canary_deployment)
+          @custom_canary_deployment = args[:custom_canary_deployment] if args.key?(:custom_canary_deployment)
+          @runtime_config = args[:runtime_config] if args.key?(:runtime_config)
+        end
+      end
+      
+      # CanaryDeployment represents the canary deployment configuration
+      class CanaryDeployment
+        include Google::Apis::Core::Hashable
+      
+        # Required. The percentage based deployments that will occur as a part of a `
+        # Rollout`. List is expected in ascending order and each integer n is 0 <= n <
+        # 100.
+        # Corresponds to the JSON property `percentages`
+        # @return [Array<Fixnum>]
+        attr_accessor :percentages
+      
+        # Whether to run verify tests after each percentage deployment.
+        # Corresponds to the JSON property `verify`
+        # @return [Boolean]
+        attr_accessor :verify
+        alias_method :verify?, :verify
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @percentages = args[:percentages] if args.key?(:percentages)
+          @verify = args[:verify] if args.key?(:verify)
+        end
+      end
+      
       # The request message for Operations.CancelOperation.
       class CancelOperationRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The request object used by `CancelRollout`.
+      class CancelRolloutRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The response object from `CancelRollout`.
+      class CancelRolloutResponse
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -351,6 +469,28 @@ module Google
         def update!(**args)
           @advance_rollout_jobs = args[:advance_rollout_jobs] if args.key?(:advance_rollout_jobs)
           @create_rollout_jobs = args[:create_rollout_jobs] if args.key?(:create_rollout_jobs)
+        end
+      end
+      
+      # CloudRunConfig contains the Cloud Run runtime configuration.
+      class CloudRunConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether Cloud Deploy should update the traffic stanza in a Cloud Run Service
+        # on the user's behalf to facilitate traffic splitting. This is required to be
+        # true for CanaryDeployments, but optional for CustomCanaryDeployments.
+        # Corresponds to the JSON property `automaticTrafficControl`
+        # @return [Boolean]
+        attr_accessor :automatic_traffic_control
+        alias_method :automatic_traffic_control?, :automatic_traffic_control
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @automatic_traffic_control = args[:automatic_traffic_control] if args.key?(:automatic_traffic_control)
         end
       end
       
@@ -403,6 +543,27 @@ module Google
           @revision = args[:revision] if args.key?(:revision)
           @service = args[:service] if args.key?(:service)
           @service_urls = args[:service_urls] if args.key?(:service_urls)
+        end
+      end
+      
+      # CloudRunRenderMetadata contains Cloud Run information associated with a `
+      # Release` render.
+      class CloudRunRenderMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The name of the Cloud Run Service in the rendered manifest.
+        # Format is projects/`project`/locations/`location`/services/`service`.
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service = args[:service] if args.key?(:service)
         end
       end
       
@@ -476,6 +637,26 @@ module Google
         def update!(**args)
           @rollout = args[:rollout] if args.key?(:rollout)
           @rollout_phase_id = args[:rollout_phase_id] if args.key?(:rollout_phase_id)
+        end
+      end
+      
+      # CustomCanaryDeployment represents the custom canary deployment configuration.
+      class CustomCanaryDeployment
+        include Google::Apis::Core::Hashable
+      
+        # Required. Configuration for each phase in the canary deployment in the order
+        # executed.
+        # Corresponds to the JSON property `phaseConfigs`
+        # @return [Array<Google::Apis::ClouddeployV1::PhaseConfig>]
+        attr_accessor :phase_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @phase_configs = args[:phase_configs] if args.key?(:phase_configs)
         end
       end
       
@@ -907,6 +1088,38 @@ module Google
         end
       end
       
+      # Information about the Kubernetes Gateway API service mesh configuration.
+      class GatewayServiceMesh
+        include Google::Apis::Core::Hashable
+      
+        # Required. Name of the Kubernetes Deployment whose traffic is managed by the
+        # specified HTTPRoute and Service.
+        # Corresponds to the JSON property `deployment`
+        # @return [String]
+        attr_accessor :deployment
+      
+        # Required. Name of the Gateway API HTTPRoute.
+        # Corresponds to the JSON property `httpRoute`
+        # @return [String]
+        attr_accessor :http_route
+      
+        # Required. Name of the Kubernetes Service.
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deployment = args[:deployment] if args.key?(:deployment)
+          @http_route = args[:http_route] if args.key?(:http_route)
+          @service = args[:service] if args.key?(:service)
+        end
+      end
+      
       # Information specifying a GKE Cluster.
       class GkeCluster
         include Google::Apis::Core::Hashable
@@ -940,6 +1153,44 @@ module Google
         end
       end
       
+      # The request object used by `IgnoreJob`.
+      class IgnoreJobRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The job ID for the Job to ignore.
+        # Corresponds to the JSON property `jobId`
+        # @return [String]
+        attr_accessor :job_id
+      
+        # Required. The phase ID the Job to ignore belongs to.
+        # Corresponds to the JSON property `phaseId`
+        # @return [String]
+        attr_accessor :phase_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @job_id = args[:job_id] if args.key?(:job_id)
+          @phase_id = args[:phase_id] if args.key?(:phase_id)
+        end
+      end
+      
+      # The response object from `IgnoreJob`.
+      class IgnoreJobResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Job represents an operation for a `Rollout`.
       class Job
         include Google::Apis::Core::Hashable
@@ -970,6 +1221,11 @@ module Google
         # @return [String]
         attr_accessor :job_run
       
+        # Output only. Additional information on why the Job was skipped, if available.
+        # Corresponds to the JSON property `skipMessage`
+        # @return [String]
+        attr_accessor :skip_message
+      
         # Output only. The current state of the Job.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -991,6 +1247,7 @@ module Google
           @deploy_job = args[:deploy_job] if args.key?(:deploy_job)
           @id = args[:id] if args.key?(:id)
           @job_run = args[:job_run] if args.key?(:job_run)
+          @skip_message = args[:skip_message] if args.key?(:skip_message)
           @state = args[:state] if args.key?(:state)
           @verify_job = args[:verify_job] if args.key?(:verify_job)
         end
@@ -1148,6 +1405,31 @@ module Google
           @rollout_uid = args[:rollout_uid] if args.key?(:rollout_uid)
           @target_id = args[:target_id] if args.key?(:target_id)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # KubernetesConfig contains the Kubernetes runtime configuration.
+      class KubernetesConfig
+        include Google::Apis::Core::Hashable
+      
+        # Information about the Kubernetes Gateway API service mesh configuration.
+        # Corresponds to the JSON property `gatewayServiceMesh`
+        # @return [Google::Apis::ClouddeployV1::GatewayServiceMesh]
+        attr_accessor :gateway_service_mesh
+      
+        # Information about the Kubernetes Service networking configuration.
+        # Corresponds to the JSON property `serviceNetworking`
+        # @return [Google::Apis::ClouddeployV1::ServiceNetworking]
+        attr_accessor :service_networking
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gateway_service_mesh = args[:gateway_service_mesh] if args.key?(:gateway_service_mesh)
+          @service_networking = args[:service_networking] if args.key?(:service_networking)
         end
       end
       
@@ -1587,6 +1869,11 @@ module Google
         # @return [String]
         attr_accessor :id
       
+        # Output only. Additional information on why the Phase was skipped, if available.
+        # Corresponds to the JSON property `skipMessage`
+        # @return [String]
+        attr_accessor :skip_message
+      
         # Output only. Current state of the Phase.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -1601,7 +1888,77 @@ module Google
           @child_rollout_jobs = args[:child_rollout_jobs] if args.key?(:child_rollout_jobs)
           @deployment_jobs = args[:deployment_jobs] if args.key?(:deployment_jobs)
           @id = args[:id] if args.key?(:id)
+          @skip_message = args[:skip_message] if args.key?(:skip_message)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Contains the paths to the artifacts, relative to the URI, for a phase.
+      class PhaseArtifact
+        include Google::Apis::Core::Hashable
+      
+        # Output only. File path of the rendered manifest relative to the URI.
+        # Corresponds to the JSON property `manifestPath`
+        # @return [String]
+        attr_accessor :manifest_path
+      
+        # Output only. File path of the resolved Skaffold configuration relative to the
+        # URI.
+        # Corresponds to the JSON property `skaffoldConfigPath`
+        # @return [String]
+        attr_accessor :skaffold_config_path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @manifest_path = args[:manifest_path] if args.key?(:manifest_path)
+          @skaffold_config_path = args[:skaffold_config_path] if args.key?(:skaffold_config_path)
+        end
+      end
+      
+      # PhaseConfig represents the configuration for a phase in the custom canary
+      # deployment.
+      class PhaseConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Percentage deployment for the phase.
+        # Corresponds to the JSON property `percentage`
+        # @return [Fixnum]
+        attr_accessor :percentage
+      
+        # Required. The ID to assign to the `Rollout` phase. This value must consist of
+        # lower-case letters, numbers, and hyphens, start with a letter and end with a
+        # letter or a number, and have a max length of 63 characters. In other words, it
+        # must match the following regex: `^[a-z]([a-z0-9-]`0,61`[a-z0-9])?$`.
+        # Corresponds to the JSON property `phaseId`
+        # @return [String]
+        attr_accessor :phase_id
+      
+        # Skaffold profiles to use when rendering the manifest for this phase. These are
+        # in addition to the profiles list specified in the `DeliveryPipeline` stage.
+        # Corresponds to the JSON property `profiles`
+        # @return [Array<String>]
+        attr_accessor :profiles
+      
+        # Whether to run verify tests after the deployment.
+        # Corresponds to the JSON property `verify`
+        # @return [Boolean]
+        attr_accessor :verify
+        alias_method :verify?, :verify
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @percentage = args[:percentage] if args.key?(:percentage)
+          @phase_id = args[:phase_id] if args.key?(:phase_id)
+          @profiles = args[:profiles] if args.key?(:profiles)
+          @verify = args[:verify] if args.key?(:verify)
         end
       end
       
@@ -2062,6 +2419,26 @@ module Google
         end
       end
       
+      # RenderMetadata includes information associated with a `Release` render.
+      class RenderMetadata
+        include Google::Apis::Core::Hashable
+      
+        # CloudRunRenderMetadata contains Cloud Run information associated with a `
+        # Release` render.
+        # Corresponds to the JSON property `cloudRun`
+        # @return [Google::Apis::ClouddeployV1::CloudRunRenderMetadata]
+        attr_accessor :cloud_run
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_run = args[:cloud_run] if args.key?(:cloud_run)
+        end
+      end
+      
       # RetryJobRequest is the request object used by `RetryJob`.
       class RetryJobRequest
         include Google::Apis::Core::Hashable
@@ -2302,6 +2679,32 @@ module Google
         end
       end
       
+      # RuntimeConfig contains the runtime specific configurations for a deployment
+      # strategy.
+      class RuntimeConfig
+        include Google::Apis::Core::Hashable
+      
+        # CloudRunConfig contains the Cloud Run runtime configuration.
+        # Corresponds to the JSON property `cloudRun`
+        # @return [Google::Apis::ClouddeployV1::CloudRunConfig]
+        attr_accessor :cloud_run
+      
+        # KubernetesConfig contains the Kubernetes runtime configuration.
+        # Corresponds to the JSON property `kubernetes`
+        # @return [Google::Apis::ClouddeployV1::KubernetesConfig]
+        attr_accessor :kubernetes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_run = args[:cloud_run] if args.key?(:cloud_run)
+          @kubernetes = args[:kubernetes] if args.key?(:kubernetes)
+        end
+      end
+      
       # SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
       class SerialPipeline
         include Google::Apis::Core::Hashable
@@ -2319,6 +2722,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @stages = args[:stages] if args.key?(:stages)
+        end
+      end
+      
+      # Information about the Kubernetes Service networking configuration.
+      class ServiceNetworking
+        include Google::Apis::Core::Hashable
+      
+        # Required. Name of the Kubernetes Deployment whose traffic is managed by the
+        # specified Service.
+        # Corresponds to the JSON property `deployment`
+        # @return [String]
+        attr_accessor :deployment
+      
+        # Required. Name of the Kubernetes Service.
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deployment = args[:deployment] if args.key?(:deployment)
+          @service = args[:service] if args.key?(:service)
         end
       end
       
@@ -2558,6 +2987,11 @@ module Google
       class Strategy
         include Google::Apis::Core::Hashable
       
+        # Canary represents the canary deployment strategy.
+        # Corresponds to the JSON property `canary`
+        # @return [Google::Apis::ClouddeployV1::Canary]
+        attr_accessor :canary
+      
         # Standard represents the standard deployment strategy.
         # Corresponds to the JSON property `standard`
         # @return [Google::Apis::ClouddeployV1::Standard]
@@ -2569,6 +3003,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @canary = args[:canary] if args.key?(:canary)
           @standard = args[:standard] if args.key?(:standard)
         end
       end
@@ -2710,6 +3145,11 @@ module Google
         # @return [String]
         attr_accessor :manifest_path
       
+        # Output only. Map from the phase ID to the phase artifacts for the `Target`.
+        # Corresponds to the JSON property `phaseArtifacts`
+        # @return [Hash<String,Google::Apis::ClouddeployV1::PhaseArtifact>]
+        attr_accessor :phase_artifacts
+      
         # Output only. File path of the resolved Skaffold configuration relative to the
         # URI.
         # Corresponds to the JSON property `skaffoldConfigPath`
@@ -2724,6 +3164,7 @@ module Google
         def update!(**args)
           @artifact_uri = args[:artifact_uri] if args.key?(:artifact_uri)
           @manifest_path = args[:manifest_path] if args.key?(:manifest_path)
+          @phase_artifacts = args[:phase_artifacts] if args.key?(:phase_artifacts)
           @skaffold_config_path = args[:skaffold_config_path] if args.key?(:skaffold_config_path)
         end
       end
@@ -2776,6 +3217,11 @@ module Google
         # @return [String]
         attr_accessor :failure_message
       
+        # RenderMetadata includes information associated with a `Release` render.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::ClouddeployV1::RenderMetadata]
+        attr_accessor :metadata
+      
         # Output only. The resource name of the Cloud Build `Build` object that is used
         # to render the manifest for this target. Format is `projects/`project`/
         # locations/`location`/builds/`build``.
@@ -2796,6 +3242,7 @@ module Google
         def update!(**args)
           @failure_cause = args[:failure_cause] if args.key?(:failure_cause)
           @failure_message = args[:failure_message] if args.key?(:failure_message)
+          @metadata = args[:metadata] if args.key?(:metadata)
           @rendering_build = args[:rendering_build] if args.key?(:rendering_build)
           @rendering_state = args[:rendering_state] if args.key?(:rendering_state)
         end
@@ -2861,6 +3308,32 @@ module Google
         def update!(**args)
           @error_details = args[:error_details] if args.key?(:error_details)
           @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # The request object used by `TerminateJobRun`.
+      class TerminateJobRunRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The response object from `TerminateJobRun`.
+      class TerminateJobRunResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
