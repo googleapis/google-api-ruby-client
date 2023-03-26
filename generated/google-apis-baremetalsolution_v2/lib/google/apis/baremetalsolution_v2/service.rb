@@ -396,7 +396,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # RenameInstance sets a new name for an instance.
+        # RenameInstance sets a new name for an instance. Use with caution, previous
+        # names become immediately invalidated.
         # @param [String] name
         #   Required. The `name` field is used to identify the instance. Format: projects/`
         #   project`/locations/`location`/instances/`instance`
@@ -671,6 +672,41 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # RenameNetwork sets a new name for a network. Use with caution, previous names
+        # become immediately invalidated.
+        # @param [String] name
+        #   Required. The `name` field is used to identify the network. Format: projects/`
+        #   project`/locations/`location`/networks/`network`
+        # @param [Google::Apis::BaremetalsolutionV2::RenameNetworkRequest] rename_network_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BaremetalsolutionV2::Network] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BaremetalsolutionV2::Network]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def rename_network(name, rename_network_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+name}:rename', options)
+          command.request_representation = Google::Apis::BaremetalsolutionV2::RenameNetworkRequest::Representation
+          command.request_object = rename_network_request_object
+          command.response_representation = Google::Apis::BaremetalsolutionV2::Network::Representation
+          command.response_class = Google::Apis::BaremetalsolutionV2::Network
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Create an NFS share.
         # @param [String] parent
         #   Required. The parent project and location.
@@ -841,8 +877,42 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get details about an operation. This method used only to work around CCFE lack
-        # of passthrough LRO support (b/221498758).
+        # RenameNfsShare sets a new name for an nfsshare. Use with caution, previous
+        # names become immediately invalidated.
+        # @param [String] name
+        #   Required. The `name` field is used to identify the nfsshare. Format: projects/`
+        #   project`/locations/`location`/nfsshares/`nfsshare`
+        # @param [Google::Apis::BaremetalsolutionV2::RenameNfsShareRequest] rename_nfs_share_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BaremetalsolutionV2::NfsShare] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BaremetalsolutionV2::NfsShare]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def rename_nfs_share(name, rename_nfs_share_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+name}:rename', options)
+          command.request_representation = Google::Apis::BaremetalsolutionV2::RenameNfsShareRequest::Representation
+          command.request_object = rename_nfs_share_request_object
+          command.response_representation = Google::Apis::BaremetalsolutionV2::NfsShare::Representation
+          command.response_class = Google::Apis::BaremetalsolutionV2::NfsShare
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get details about an operation.
         # @param [String] name
         #   The name of the operation resource.
         # @param [String] fields
@@ -1295,6 +1365,41 @@ module Google
           command.response_class = Google::Apis::BaremetalsolutionV2::Operation
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # RenameVolume sets a new name for a volume. Use with caution, previous names
+        # become immediately invalidated.
+        # @param [String] name
+        #   Required. The `name` field is used to identify the volume. Format: projects/`
+        #   project`/locations/`location`/volumes/`volume`
+        # @param [Google::Apis::BaremetalsolutionV2::RenameVolumeRequest] rename_volume_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BaremetalsolutionV2::Volume] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BaremetalsolutionV2::Volume]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def rename_volume(name, rename_volume_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+name}:rename', options)
+          command.request_representation = Google::Apis::BaremetalsolutionV2::RenameVolumeRequest::Representation
+          command.request_object = rename_volume_request_object
+          command.response_representation = Google::Apis::BaremetalsolutionV2::Volume::Representation
+          command.response_class = Google::Apis::BaremetalsolutionV2::Volume
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

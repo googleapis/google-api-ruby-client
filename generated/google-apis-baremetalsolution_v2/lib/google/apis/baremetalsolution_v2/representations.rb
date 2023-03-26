@@ -274,6 +274,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RenameNetworkRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RenameNfsShareRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RenameVolumeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ResetInstanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -453,6 +471,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          property :firmware_version, as: 'firmwareVersion'
           property :hyperthreading_enabled, as: 'hyperthreadingEnabled'
           property :id, as: 'id'
           property :interactive_serial_console_enabled, as: 'interactiveSerialConsoleEnabled'
@@ -640,6 +659,7 @@ module Google
           property :boot_lun, as: 'bootLun'
           property :expire_time, as: 'expireTime'
           property :id, as: 'id'
+          collection :instances, as: 'instances'
           property :multiprotocol_type, as: 'multiprotocolType'
           property :name, as: 'name'
           property :shareable, as: 'shareable'
@@ -841,7 +861,28 @@ module Google
       class RenameInstanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :new_name, as: 'newName'
+          property :new_instance_id, as: 'newInstanceId'
+        end
+      end
+      
+      class RenameNetworkRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :new_network_id, as: 'newNetworkId'
+        end
+      end
+      
+      class RenameNfsShareRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :new_nfsshare_id, as: 'newNfsshareId'
+        end
+      end
+      
+      class RenameVolumeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :new_volume_id, as: 'newVolumeId'
         end
       end
       
@@ -958,12 +999,14 @@ module Google
       class Volume
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :attached, as: 'attached'
           property :auto_grown_size_gib, :numeric_string => true, as: 'autoGrownSizeGib'
           property :boot_volume, as: 'bootVolume'
           property :current_size_gib, :numeric_string => true, as: 'currentSizeGib'
           property :emergency_size_gib, :numeric_string => true, as: 'emergencySizeGib'
           property :expire_time, as: 'expireTime'
           property :id, as: 'id'
+          collection :instances, as: 'instances'
           hash :labels, as: 'labels'
           property :max_size_gib, :numeric_string => true, as: 'maxSizeGib'
           property :name, as: 'name'
