@@ -1245,6 +1245,293 @@ module Google
         end
       end
       
+      # Request message for QuerySlowRenderingRateMetricSet.
+      class GooglePlayDeveloperReportingV1alpha1QuerySlowRenderingRateMetricSetRequest
+        include Google::Apis::Core::Hashable
+      
+        # Dimensions to slice the data by. **Supported dimensions:** * `apiLevel` (
+        # string): the API level of Android that was running on the user's device. * `
+        # versionCode` (int64): version of the app that was running on the user's device.
+        # * `deviceModel` (string): unique identifier of the user's device model. * `
+        # deviceType` (string): the type (also known as form factor) of the user's
+        # device. * `countryCode` (string): the country or region of the user's device
+        # based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US
+        # for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB,
+        # in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's
+        # primary system-on-chip, e.g., Samsung. [Reference](https://developer.android.
+        # com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel` (string):
+        # Model of the device's primary system-on-chip, e.g., "Exynos 2100". [Reference](
+        # https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `
+        # deviceCpuMake` (string): Make of the device's CPU, e.g., Qualcomm. * `
+        # deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". * `
+        # deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `
+        # deviceGpuModel` (string): Model of the device's GPU, e.g., Mali. * `
+        # deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. * `
+        # deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". *
+        # `deviceGlEsVersion` (string): OpenGL ES version of the device, e.g., "196610".
+        # * `deviceScreenSize` (string): Screen size of the device, e.g., NORMAL, LARGE.
+        # * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi.
+        # Corresponds to the JSON property `dimensions`
+        # @return [Array<String>]
+        attr_accessor :dimensions
+      
+        # Filters to apply to data. The filtering expression follows [AIP-160](https://
+        # google.aip.dev/160) standard and supports filtering by equality of all
+        # breakdown dimensions.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # Metrics to aggregate. **Supported metrics:** * `slowRenderingRate20Fps` (`
+        # google.type.Decimal`): Percentage of distinct users in the aggregation period
+        # that had a slow rendering. * `slowRenderingRate20Fps7dUserWeighted` (`google.
+        # type.Decimal`): Rolling average value of `slowRenderingRate20Fps` in the last
+        # 7 days. The daily values are weighted by the count of distinct users for the
+        # day. * `slowRenderingRate20Fps28dUserWeighted` (`google.type.Decimal`):
+        # Rolling average value of `slowRenderingRate20Fps` in the last 28 days. The
+        # daily values are weighted by the count of distinct users for the day. * `
+        # slowRenderingRate30Fps` (`google.type.Decimal`): Percentage of distinct users
+        # in the aggregation period that had a slow rendering. * `
+        # slowRenderingRate30Fps7dUserWeighted` (`google.type.Decimal`): Rolling average
+        # value of `slowRenderingRate30Fps` in the last 7 days. The daily values are
+        # weighted by the count of distinct users for the day. * `
+        # slowRenderingRate30Fps28dUserWeighted` (`google.type.Decimal`): Rolling
+        # average value of `slowRenderingRate30Fps` in the last 28 days. The daily
+        # values are weighted by the count of distinct users for the day. * `
+        # distinctUsers` (`google.type.Decimal`): Count of distinct users in the
+        # aggregation period that were used as normalization value for the `
+        # slowRenderingRate20Fps`/`slowRenderingRate30Fps` metric. A user is counted in
+        # this metric if their app was launched in the device. Care must be taken not to
+        # aggregate this count further, as it may result in users being counted multiple
+        # times.
+        # Corresponds to the JSON property `metrics`
+        # @return [Array<String>]
+        attr_accessor :metrics
+      
+        # Maximum size of the returned data. If unspecified, at most 1000 rows will be
+        # returned. The maximum value is 100000; values above 100000 will be coerced to
+        # 100000.
+        # Corresponds to the JSON property `pageSize`
+        # @return [Fixnum]
+        attr_accessor :page_size
+      
+        # A page token, received from a previous call. Provide this to retrieve the
+        # subsequent page. When paginating, all other parameters provided to the request
+        # must match the call that provided the page token.
+        # Corresponds to the JSON property `pageToken`
+        # @return [String]
+        attr_accessor :page_token
+      
+        # Specification of the time-related aggregation parameters of a timeline.
+        # Timelines have an aggregation period (`DAILY`, `HOURLY`, etc) which defines
+        # how events are aggregated in metrics. The points in a timeline are defined by
+        # the starting DateTime of the aggregation period. The duration is implicit in
+        # the AggregationPeriod. Hourly aggregation periods, when supported by a metric
+        # set, are always specified in UTC to avoid ambiguities around daylight saving
+        # time transitions, where an hour is skipped when adopting DST, and repeated
+        # when abandoning DST. For example, the timestamp '2021-11-07 01:00:00 America/
+        # Los_Angeles' is ambiguous since it can correspond to '2021-11-07 08:00:00 UTC'
+        # or '2021-11-07 09:00:00 UTC'. Daily aggregation periods require specifying a
+        # timezone which will determine the precise instants of the start and the end of
+        # the day. Not all metric sets support all timezones, so make sure to check
+        # which timezones are supported by the metric set you want to query.
+        # Corresponds to the JSON property `timelineSpec`
+        # @return [Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1TimelineSpec]
+        attr_accessor :timeline_spec
+      
+        # User view to select. The output data will correspond to the selected view. **
+        # Supported values:** * `OS_PUBLIC` To select data from all publicly released
+        # Android versions. This is the default. Supports all the above dimensions. * `
+        # APP_TESTERS` To select data from users who have opted in to be testers.
+        # Supports all the above dimensions. * `OS_BETA` To select data from beta
+        # Android versions only, excluding data from released Android versions. Only the
+        # following dimensions are supported: * `versionCode` (int64): version of the
+        # app that was running on the user's device. * `osBuild` (string): OS build of
+        # the user's device, e.g., "T1B2.220916.004".
+        # Corresponds to the JSON property `userCohort`
+        # @return [String]
+        attr_accessor :user_cohort
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dimensions = args[:dimensions] if args.key?(:dimensions)
+          @filter = args[:filter] if args.key?(:filter)
+          @metrics = args[:metrics] if args.key?(:metrics)
+          @page_size = args[:page_size] if args.key?(:page_size)
+          @page_token = args[:page_token] if args.key?(:page_token)
+          @timeline_spec = args[:timeline_spec] if args.key?(:timeline_spec)
+          @user_cohort = args[:user_cohort] if args.key?(:user_cohort)
+        end
+      end
+      
+      # Response message for QuerySlowRenderingRateMetricSet.
+      class GooglePlayDeveloperReportingV1alpha1QuerySlowRenderingRateMetricSetResponse
+        include Google::Apis::Core::Hashable
+      
+        # Continuation token to fetch the next page of data.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Returned rows of data.
+        # Corresponds to the JSON property `rows`
+        # @return [Array<Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1MetricsRow>]
+        attr_accessor :rows
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @rows = args[:rows] if args.key?(:rows)
+        end
+      end
+      
+      # Request message for QuerySlowStartRateMetricSet.
+      class GooglePlayDeveloperReportingV1alpha1QuerySlowStartRateMetricSetRequest
+        include Google::Apis::Core::Hashable
+      
+        # Dimensions to slice the data by. **Supported dimensions:** * `apiLevel` (
+        # string): the API level of Android that was running on the user's device. * `
+        # versionCode` (int64): version of the app that was running on the user's device.
+        # * `deviceModel` (string): unique identifier of the user's device model. * `
+        # deviceType` (string): the type (also known as form factor) of the user's
+        # device. * `countryCode` (string): the country or region of the user's device
+        # based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US
+        # for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB,
+        # in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's
+        # primary system-on-chip, e.g., Samsung. [Reference](https://developer.android.
+        # com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel` (string):
+        # Model of the device's primary system-on-chip, e.g., "Exynos 2100". [Reference](
+        # https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `
+        # deviceCpuMake` (string): Make of the device's CPU, e.g., Qualcomm. * `
+        # deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". * `
+        # deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `
+        # deviceGpuModel` (string): Model of the device's GPU, e.g., Mali. * `
+        # deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. * `
+        # deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". *
+        # `deviceGlEsVersion` (string): OpenGL ES version of the device, e.g., "196610".
+        # * `deviceScreenSize` (string): Screen size of the device, e.g., NORMAL, LARGE.
+        # * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi.
+        # Corresponds to the JSON property `dimensions`
+        # @return [Array<String>]
+        attr_accessor :dimensions
+      
+        # Filters to apply to data. The filtering expression follows [AIP-160](https://
+        # google.aip.dev/160) standard and supports filtering by equality of all
+        # breakdown dimensions.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # Metrics to aggregate. **Supported metrics:** * `slowStartRate` (`google.type.
+        # Decimal`): Percentage of distinct users in the aggregation period that had a
+        # slow start. * `slowStartRate7dUserWeighted` (`google.type.Decimal`): Rolling
+        # average value of `slowStartRate` in the last 7 days. The daily values are
+        # weighted by the count of distinct users for the day. * `
+        # slowStartRate28dUserWeighted` (`google.type.Decimal`): Rolling average value
+        # of `slowStartRate` in the last 28 days. The daily values are weighted by the
+        # count of distinct users for the day. * `distinctUsers` (`google.type.Decimal`):
+        # Count of distinct users in the aggregation period that were used as
+        # normalization value for the `slowStartRate` metric. A user is counted in this
+        # metric if their app was launched in the device. Care must be taken not to
+        # aggregate this count further, as it may result in users being counted multiple
+        # times.
+        # Corresponds to the JSON property `metrics`
+        # @return [Array<String>]
+        attr_accessor :metrics
+      
+        # Maximum size of the returned data. If unspecified, at most 1000 rows will be
+        # returned. The maximum value is 100000; values above 100000 will be coerced to
+        # 100000.
+        # Corresponds to the JSON property `pageSize`
+        # @return [Fixnum]
+        attr_accessor :page_size
+      
+        # A page token, received from a previous call. Provide this to retrieve the
+        # subsequent page. When paginating, all other parameters provided to the request
+        # must match the call that provided the page token.
+        # Corresponds to the JSON property `pageToken`
+        # @return [String]
+        attr_accessor :page_token
+      
+        # Specification of the time-related aggregation parameters of a timeline.
+        # Timelines have an aggregation period (`DAILY`, `HOURLY`, etc) which defines
+        # how events are aggregated in metrics. The points in a timeline are defined by
+        # the starting DateTime of the aggregation period. The duration is implicit in
+        # the AggregationPeriod. Hourly aggregation periods, when supported by a metric
+        # set, are always specified in UTC to avoid ambiguities around daylight saving
+        # time transitions, where an hour is skipped when adopting DST, and repeated
+        # when abandoning DST. For example, the timestamp '2021-11-07 01:00:00 America/
+        # Los_Angeles' is ambiguous since it can correspond to '2021-11-07 08:00:00 UTC'
+        # or '2021-11-07 09:00:00 UTC'. Daily aggregation periods require specifying a
+        # timezone which will determine the precise instants of the start and the end of
+        # the day. Not all metric sets support all timezones, so make sure to check
+        # which timezones are supported by the metric set you want to query.
+        # Corresponds to the JSON property `timelineSpec`
+        # @return [Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1TimelineSpec]
+        attr_accessor :timeline_spec
+      
+        # User view to select. The output data will correspond to the selected view. **
+        # Supported values:** * `OS_PUBLIC` To select data from all publicly released
+        # Android versions. This is the default. Supports all the above dimensions. * `
+        # APP_TESTERS` To select data from users who have opted in to be testers.
+        # Supports all the above dimensions. * `OS_BETA` To select data from beta
+        # Android versions only, excluding data from released Android versions. Only the
+        # following dimensions are supported: * `versionCode` (int64): version of the
+        # app that was running on the user's device. * `osBuild` (string): OS build of
+        # the user's device, e.g., "T1B2.220916.004".
+        # Corresponds to the JSON property `userCohort`
+        # @return [String]
+        attr_accessor :user_cohort
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dimensions = args[:dimensions] if args.key?(:dimensions)
+          @filter = args[:filter] if args.key?(:filter)
+          @metrics = args[:metrics] if args.key?(:metrics)
+          @page_size = args[:page_size] if args.key?(:page_size)
+          @page_token = args[:page_token] if args.key?(:page_token)
+          @timeline_spec = args[:timeline_spec] if args.key?(:timeline_spec)
+          @user_cohort = args[:user_cohort] if args.key?(:user_cohort)
+        end
+      end
+      
+      # Response message for QuerySlowStartRateMetricSet.
+      class GooglePlayDeveloperReportingV1alpha1QuerySlowStartRateMetricSetResponse
+        include Google::Apis::Core::Hashable
+      
+        # Continuation token to fetch the next page of data.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Returned rows of data.
+        # Corresponds to the JSON property `rows`
+        # @return [Array<Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1MetricsRow>]
+        attr_accessor :rows
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @rows = args[:rows] if args.key?(:rows)
+        end
+      end
+      
       # Request message for QueryStuckBackgroundWakelockRateMetricSet.
       class GooglePlayDeveloperReportingV1alpha1QueryStuckBackgroundWakelockRateMetricSetRequest
         include Google::Apis::Core::Hashable
@@ -1433,6 +1720,154 @@ module Google
         def update!(**args)
           @error_reports = args[:error_reports] if args.key?(:error_reports)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Singleton resource representing the set of Slow Rendering metrics. This metric
+      # set contains low-level rendering data captured by SurafeFlinger. Sessions are
+      # evaluated based on the present-to-present histogram of frames handled by any
+      # SurfaceFlinger layer owned by the app. A slow session is a session where more
+      # than 25% of frames for the session did not meet the metric's target frame rate
+      # (either 20fps, or 30fps). *NOTE:* This metric set is only available for games.
+      # **Supported aggregation periods:** * DAILY: metrics are aggregated in calendar
+      # date intervals. Due to historical constraints, the only supported timezone is `
+      # America/Los_Angeles`. **Supported metrics:** * `slowRenderingRate20Fps` (`
+      # google.type.Decimal`): Percentage of distinct users in the aggregation period
+      # that had slow rendering. * `slowRenderingRate20Fps7dUserWeighted` (`google.
+      # type.Decimal`): Rolling average value of `slowRenderingRate20Fps` in the last
+      # 7 days. The daily values are weighted by the count of distinct users for the
+      # day. * `slowRenderingRate20Fps28dUserWeighted` (`google.type.Decimal`):
+      # Rolling average value of `slowRenderingRate20Fps` in the last 28 days. The
+      # daily values are weighted by the count of distinct users for the day. * `
+      # slowRenderingRate30Fps` (`google.type.Decimal`): Percentage of distinct users
+      # in the aggregation period that had slow rendering. * `
+      # slowRenderingRate30Fps7dUserWeighted` (`google.type.Decimal`): Rolling average
+      # value of `slowRenderingRate30Fps` in the last 7 days. The daily values are
+      # weighted by the count of distinct users for the day. * `
+      # slowRenderingRate30Fps28dUserWeighted` (`google.type.Decimal`): Rolling
+      # average value of `slowRenderingRate30Fps` in the last 28 days. The daily
+      # values are weighted by the count of distinct users for the day. * `
+      # distinctUsers` (`google.type.Decimal`): Count of distinct users in the
+      # aggregation period that were used as normalization value for the `
+      # slowRenderingRate20Fps`/`slowRenderingRate30Fps` metric. A user is counted in
+      # this metric if their app rendered any frames. Care must be taken not to
+      # aggregate this count further, as it may result in users being counted multiple
+      # times. **Supported dimensions:** * `apiLevel` (string): the API level of
+      # Android that was running on the user's device. * `versionCode` (int64):
+      # version of the app that was running on the user's device. * `deviceModel` (
+      # string): unique identifier of the user's device model. * `deviceType` (string):
+      # the type (also known as form factor) of the user's device. * `countryCode` (
+      # string): the country or region of the user's device based on their IP address,
+      # represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `
+      # deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.)
+      # . * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g.
+      # , Samsung. [Reference](https://developer.android.com/reference/android/os/
+      # Build#SOC_MANUFACTURER) * `deviceSocModel` (string): Model of the device's
+      # primary system-on-chip, e.g., "Exynos 2100". [Reference](https://developer.
+      # android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string):
+      # Make of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model
+      # of the device's CPU, e.g., "Kryo 240". * `deviceGpuMake` (string): Make of the
+      # device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the device's
+      # GPU, e.g., Mali. * `deviceGpuVersion` (string): Version of the device's GPU, e.
+      # g., T750. * `deviceVulkanVersion` (string): Vulkan version of the device, e.g.,
+      # "4198400". * `deviceGlEsVersion` (string): OpenGL ES version of the device, e.
+      # g., "196610". * `deviceScreenSize` (string): Screen size of the device, e.g.,
+      # NORMAL, LARGE. * `deviceScreenDpi` (string): Screen density of the device, e.g.
+      # , mdpi, hdpi. **Required permissions**: to access this resource, the calling
+      # user needs the _View app information (read-only)_ permission for the app.
+      class GooglePlayDeveloperReportingV1alpha1SlowRenderingRateMetricSet
+        include Google::Apis::Core::Hashable
+      
+        # Represents the latest available time that can be requested in a TimelineSpec.
+        # Different aggregation periods have different freshness. For example, `DAILY`
+        # aggregation may lag behind `HOURLY` in cases where such aggregation is
+        # computed only once at the end of the day.
+        # Corresponds to the JSON property `freshnessInfo`
+        # @return [Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1FreshnessInfo]
+        attr_accessor :freshness_info
+      
+        # The resource name. Format: apps/`app`/slowRenderingRateMetricSet
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @freshness_info = args[:freshness_info] if args.key?(:freshness_info)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Singleton resource representing the set of Slow Start metrics. This metric set
+      # contains Activity start duration data. **Supported aggregation periods:** *
+      # DAILY: metrics are aggregated in calendar date intervals. Due to historical
+      # constraints, the only supported timezone is `America/Los_Angeles`. **Supported
+      # metrics:** * `slowStartRate` (`google.type.Decimal`): Percentage of distinct
+      # users in the aggregation period that had a slow start. * `
+      # slowStartRate7dUserWeighted` (`google.type.Decimal`): Rolling average value of
+      # `slowStartRate` in the last 7 days. The daily values are weighted by the count
+      # of distinct users for the day. * `slowStartRate28dUserWeighted` (`google.type.
+      # Decimal`): Rolling average value of `slowStartRate` in the last 28 days. The
+      # daily values are weighted by the count of distinct users for the day. * `
+      # distinctUsers` (`google.type.Decimal`): Count of distinct users in the
+      # aggregation period that were used as normalization value for the `
+      # slowStartRate` metric. A user is counted in this metric if their app was
+      # launched in the device. Care must be taken not to aggregate this count further,
+      # as it may result in users being counted multiple times. **Required dimension:*
+      # * This dimension must be specified with each request for the request to be
+      # valid. * `startType` (string): the type of start that was measured. Valid
+      # types are `HOT`, `WARM` and `COLD`. **Supported dimensions:** * `apiLevel` (
+      # string): the API level of Android that was running on the user's device. * `
+      # versionCode` (int64): version of the app that was running on the user's device.
+      # * `deviceModel` (string): unique identifier of the user's device model. * `
+      # deviceType` (string): the type (also known as form factor) of the user's
+      # device. * `countryCode` (string): the country or region of the user's device
+      # based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US
+      # for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB,
+      # in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's
+      # primary system-on-chip, e.g., Samsung. [Reference](https://developer.android.
+      # com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel` (string):
+      # Model of the device's primary system-on-chip, e.g., "Exynos 2100". [Reference](
+      # https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `
+      # deviceCpuMake` (string): Make of the device's CPU, e.g., Qualcomm. * `
+      # deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". * `
+      # deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `
+      # deviceGpuModel` (string): Model of the device's GPU, e.g., Mali. * `
+      # deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. * `
+      # deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". *
+      # `deviceGlEsVersion` (string): OpenGL ES version of the device, e.g., "196610".
+      # * `deviceScreenSize` (string): Screen size of the device, e.g., NORMAL, LARGE.
+      # * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi.
+      # **Required permissions**: to access this resource, the calling user needs the
+      # _View app information (read-only)_ permission for the app.
+      class GooglePlayDeveloperReportingV1alpha1SlowStartRateMetricSet
+        include Google::Apis::Core::Hashable
+      
+        # Represents the latest available time that can be requested in a TimelineSpec.
+        # Different aggregation periods have different freshness. For example, `DAILY`
+        # aggregation may lag behind `HOURLY` in cases where such aggregation is
+        # computed only once at the end of the day.
+        # Corresponds to the JSON property `freshnessInfo`
+        # @return [Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1FreshnessInfo]
+        attr_accessor :freshness_info
+      
+        # The resource name. Format: apps/`app`/slowStartRateMetricSet
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @freshness_info = args[:freshness_info] if args.key?(:freshness_info)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
