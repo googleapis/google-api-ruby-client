@@ -855,6 +855,7 @@ module Google
       class Type
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :edition, as: 'edition'
           collection :fields, as: 'fields', class: Google::Apis::MonitoringV1::Field, decorator: Google::Apis::MonitoringV1::Field::Representation
       
           property :name, as: 'name'
