@@ -22,6 +22,552 @@ module Google
   module Apis
     module AnalyticsadminV1beta
       
+      # To express that the result needs to be between two numbers (inclusive).
+      class GoogleAnalyticsAdminV1betaAccessBetweenFilter
+        include Google::Apis::Core::Hashable
+      
+        # To represent a number.
+        # Corresponds to the JSON property `fromValue`
+        # @return [Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaNumericValue]
+        attr_accessor :from_value
+      
+        # To represent a number.
+        # Corresponds to the JSON property `toValue`
+        # @return [Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaNumericValue]
+        attr_accessor :to_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @from_value = args[:from_value] if args.key?(:from_value)
+          @to_value = args[:to_value] if args.key?(:to_value)
+        end
+      end
+      
+      # A contiguous range of days: startDate, startDate + 1, ..., endDate.
+      class GoogleAnalyticsAdminV1betaAccessDateRange
+        include Google::Apis::Core::Hashable
+      
+        # The inclusive end date for the query in the format `YYYY-MM-DD`. Cannot be
+        # before `startDate`. The format `NdaysAgo`, `yesterday`, or `today` is also
+        # accepted, and in that case, the date is inferred based on the current time in
+        # the request's time zone.
+        # Corresponds to the JSON property `endDate`
+        # @return [String]
+        attr_accessor :end_date
+      
+        # The inclusive start date for the query in the format `YYYY-MM-DD`. Cannot be
+        # after `endDate`. The format `NdaysAgo`, `yesterday`, or `today` is also
+        # accepted, and in that case, the date is inferred based on the current time in
+        # the request's time zone.
+        # Corresponds to the JSON property `startDate`
+        # @return [String]
+        attr_accessor :start_date
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_date = args[:end_date] if args.key?(:end_date)
+          @start_date = args[:start_date] if args.key?(:start_date)
+        end
+      end
+      
+      # Dimensions are attributes of your data. For example, the dimension `userEmail`
+      # indicates the email of the user that accessed reporting data. Dimension values
+      # in report responses are strings.
+      class GoogleAnalyticsAdminV1betaAccessDimension
+        include Google::Apis::Core::Hashable
+      
+        # The API name of the dimension. See [Data Access Schema](https://developers.
+        # google.com/analytics/devguides/config/admin/v1/access-api-schema) for the list
+        # of dimensions supported in this API. Dimensions are referenced by name in `
+        # dimensionFilter` and `orderBys`.
+        # Corresponds to the JSON property `dimensionName`
+        # @return [String]
+        attr_accessor :dimension_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dimension_name = args[:dimension_name] if args.key?(:dimension_name)
+        end
+      end
+      
+      # Describes a dimension column in the report. Dimensions requested in a report
+      # produce column entries within rows and DimensionHeaders. However, dimensions
+      # used exclusively within filters or expressions do not produce columns in a
+      # report; correspondingly, those dimensions do not produce headers.
+      class GoogleAnalyticsAdminV1betaAccessDimensionHeader
+        include Google::Apis::Core::Hashable
+      
+        # The dimension's name; for example 'userEmail'.
+        # Corresponds to the JSON property `dimensionName`
+        # @return [String]
+        attr_accessor :dimension_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dimension_name = args[:dimension_name] if args.key?(:dimension_name)
+        end
+      end
+      
+      # The value of a dimension.
+      class GoogleAnalyticsAdminV1betaAccessDimensionValue
+        include Google::Apis::Core::Hashable
+      
+        # The dimension value. For example, this value may be 'France' for the 'country'
+        # dimension.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # An expression to filter dimension or metric values.
+      class GoogleAnalyticsAdminV1betaAccessFilter
+        include Google::Apis::Core::Hashable
+      
+        # To express that the result needs to be between two numbers (inclusive).
+        # Corresponds to the JSON property `betweenFilter`
+        # @return [Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessBetweenFilter]
+        attr_accessor :between_filter
+      
+        # The dimension name or metric name.
+        # Corresponds to the JSON property `fieldName`
+        # @return [String]
+        attr_accessor :field_name
+      
+        # The result needs to be in a list of string values.
+        # Corresponds to the JSON property `inListFilter`
+        # @return [Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessInListFilter]
+        attr_accessor :in_list_filter
+      
+        # Filters for numeric or date values.
+        # Corresponds to the JSON property `numericFilter`
+        # @return [Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessNumericFilter]
+        attr_accessor :numeric_filter
+      
+        # The filter for strings.
+        # Corresponds to the JSON property `stringFilter`
+        # @return [Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessStringFilter]
+        attr_accessor :string_filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @between_filter = args[:between_filter] if args.key?(:between_filter)
+          @field_name = args[:field_name] if args.key?(:field_name)
+          @in_list_filter = args[:in_list_filter] if args.key?(:in_list_filter)
+          @numeric_filter = args[:numeric_filter] if args.key?(:numeric_filter)
+          @string_filter = args[:string_filter] if args.key?(:string_filter)
+        end
+      end
+      
+      # Expresses dimension or metric filters. The fields in the same expression need
+      # to be either all dimensions or all metrics.
+      class GoogleAnalyticsAdminV1betaAccessFilterExpression
+        include Google::Apis::Core::Hashable
+      
+        # An expression to filter dimension or metric values.
+        # Corresponds to the JSON property `accessFilter`
+        # @return [Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessFilter]
+        attr_accessor :access_filter
+      
+        # A list of filter expressions.
+        # Corresponds to the JSON property `andGroup`
+        # @return [Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessFilterExpressionList]
+        attr_accessor :and_group
+      
+        # Expresses dimension or metric filters. The fields in the same expression need
+        # to be either all dimensions or all metrics.
+        # Corresponds to the JSON property `notExpression`
+        # @return [Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessFilterExpression]
+        attr_accessor :not_expression
+      
+        # A list of filter expressions.
+        # Corresponds to the JSON property `orGroup`
+        # @return [Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessFilterExpressionList]
+        attr_accessor :or_group
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_filter = args[:access_filter] if args.key?(:access_filter)
+          @and_group = args[:and_group] if args.key?(:and_group)
+          @not_expression = args[:not_expression] if args.key?(:not_expression)
+          @or_group = args[:or_group] if args.key?(:or_group)
+        end
+      end
+      
+      # A list of filter expressions.
+      class GoogleAnalyticsAdminV1betaAccessFilterExpressionList
+        include Google::Apis::Core::Hashable
+      
+        # A list of filter expressions.
+        # Corresponds to the JSON property `expressions`
+        # @return [Array<Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessFilterExpression>]
+        attr_accessor :expressions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expressions = args[:expressions] if args.key?(:expressions)
+        end
+      end
+      
+      # The result needs to be in a list of string values.
+      class GoogleAnalyticsAdminV1betaAccessInListFilter
+        include Google::Apis::Core::Hashable
+      
+        # If true, the string value is case sensitive.
+        # Corresponds to the JSON property `caseSensitive`
+        # @return [Boolean]
+        attr_accessor :case_sensitive
+        alias_method :case_sensitive?, :case_sensitive
+      
+        # The list of string values. Must be non-empty.
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @case_sensitive = args[:case_sensitive] if args.key?(:case_sensitive)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # The quantitative measurements of a report. For example, the metric `
+      # accessCount` is the total number of data access records.
+      class GoogleAnalyticsAdminV1betaAccessMetric
+        include Google::Apis::Core::Hashable
+      
+        # The API name of the metric. See [Data Access Schema](https://developers.google.
+        # com/analytics/devguides/config/admin/v1/access-api-schema) for the list of
+        # metrics supported in this API. Metrics are referenced by name in `metricFilter`
+        # & `orderBys`.
+        # Corresponds to the JSON property `metricName`
+        # @return [String]
+        attr_accessor :metric_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metric_name = args[:metric_name] if args.key?(:metric_name)
+        end
+      end
+      
+      # Describes a metric column in the report. Visible metrics requested in a report
+      # produce column entries within rows and MetricHeaders. However, metrics used
+      # exclusively within filters or expressions do not produce columns in a report;
+      # correspondingly, those metrics do not produce headers.
+      class GoogleAnalyticsAdminV1betaAccessMetricHeader
+        include Google::Apis::Core::Hashable
+      
+        # The metric's name; for example 'accessCount'.
+        # Corresponds to the JSON property `metricName`
+        # @return [String]
+        attr_accessor :metric_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metric_name = args[:metric_name] if args.key?(:metric_name)
+        end
+      end
+      
+      # The value of a metric.
+      class GoogleAnalyticsAdminV1betaAccessMetricValue
+        include Google::Apis::Core::Hashable
+      
+        # The measurement value. For example, this value may be '13'.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Filters for numeric or date values.
+      class GoogleAnalyticsAdminV1betaAccessNumericFilter
+        include Google::Apis::Core::Hashable
+      
+        # The operation type for this filter.
+        # Corresponds to the JSON property `operation`
+        # @return [String]
+        attr_accessor :operation
+      
+        # To represent a number.
+        # Corresponds to the JSON property `value`
+        # @return [Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaNumericValue]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @operation = args[:operation] if args.key?(:operation)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Order bys define how rows will be sorted in the response. For example,
+      # ordering rows by descending access count is one ordering, and ordering rows by
+      # the country string is a different ordering.
+      class GoogleAnalyticsAdminV1betaAccessOrderBy
+        include Google::Apis::Core::Hashable
+      
+        # If true, sorts by descending order. If false or unspecified, sorts in
+        # ascending order.
+        # Corresponds to the JSON property `desc`
+        # @return [Boolean]
+        attr_accessor :desc
+        alias_method :desc?, :desc
+      
+        # Sorts by dimension values.
+        # Corresponds to the JSON property `dimension`
+        # @return [Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessOrderByDimensionOrderBy]
+        attr_accessor :dimension
+      
+        # Sorts by metric values.
+        # Corresponds to the JSON property `metric`
+        # @return [Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessOrderByMetricOrderBy]
+        attr_accessor :metric
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @desc = args[:desc] if args.key?(:desc)
+          @dimension = args[:dimension] if args.key?(:dimension)
+          @metric = args[:metric] if args.key?(:metric)
+        end
+      end
+      
+      # Sorts by dimension values.
+      class GoogleAnalyticsAdminV1betaAccessOrderByDimensionOrderBy
+        include Google::Apis::Core::Hashable
+      
+        # A dimension name in the request to order by.
+        # Corresponds to the JSON property `dimensionName`
+        # @return [String]
+        attr_accessor :dimension_name
+      
+        # Controls the rule for dimension value ordering.
+        # Corresponds to the JSON property `orderType`
+        # @return [String]
+        attr_accessor :order_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dimension_name = args[:dimension_name] if args.key?(:dimension_name)
+          @order_type = args[:order_type] if args.key?(:order_type)
+        end
+      end
+      
+      # Sorts by metric values.
+      class GoogleAnalyticsAdminV1betaAccessOrderByMetricOrderBy
+        include Google::Apis::Core::Hashable
+      
+        # A metric name in the request to order by.
+        # Corresponds to the JSON property `metricName`
+        # @return [String]
+        attr_accessor :metric_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metric_name = args[:metric_name] if args.key?(:metric_name)
+        end
+      end
+      
+      # Current state of all quotas for this Analytics property. If any quota for a
+      # property is exhausted, all requests to that property will return Resource
+      # Exhausted errors.
+      class GoogleAnalyticsAdminV1betaAccessQuota
+        include Google::Apis::Core::Hashable
+      
+        # Current state for a particular quota group.
+        # Corresponds to the JSON property `concurrentRequests`
+        # @return [Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessQuotaStatus]
+        attr_accessor :concurrent_requests
+      
+        # Current state for a particular quota group.
+        # Corresponds to the JSON property `serverErrorsPerProjectPerHour`
+        # @return [Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessQuotaStatus]
+        attr_accessor :server_errors_per_project_per_hour
+      
+        # Current state for a particular quota group.
+        # Corresponds to the JSON property `tokensPerDay`
+        # @return [Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessQuotaStatus]
+        attr_accessor :tokens_per_day
+      
+        # Current state for a particular quota group.
+        # Corresponds to the JSON property `tokensPerHour`
+        # @return [Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessQuotaStatus]
+        attr_accessor :tokens_per_hour
+      
+        # Current state for a particular quota group.
+        # Corresponds to the JSON property `tokensPerProjectPerHour`
+        # @return [Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessQuotaStatus]
+        attr_accessor :tokens_per_project_per_hour
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @concurrent_requests = args[:concurrent_requests] if args.key?(:concurrent_requests)
+          @server_errors_per_project_per_hour = args[:server_errors_per_project_per_hour] if args.key?(:server_errors_per_project_per_hour)
+          @tokens_per_day = args[:tokens_per_day] if args.key?(:tokens_per_day)
+          @tokens_per_hour = args[:tokens_per_hour] if args.key?(:tokens_per_hour)
+          @tokens_per_project_per_hour = args[:tokens_per_project_per_hour] if args.key?(:tokens_per_project_per_hour)
+        end
+      end
+      
+      # Current state for a particular quota group.
+      class GoogleAnalyticsAdminV1betaAccessQuotaStatus
+        include Google::Apis::Core::Hashable
+      
+        # Quota consumed by this request.
+        # Corresponds to the JSON property `consumed`
+        # @return [Fixnum]
+        attr_accessor :consumed
+      
+        # Quota remaining after this request.
+        # Corresponds to the JSON property `remaining`
+        # @return [Fixnum]
+        attr_accessor :remaining
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consumed = args[:consumed] if args.key?(:consumed)
+          @remaining = args[:remaining] if args.key?(:remaining)
+        end
+      end
+      
+      # Access report data for each row.
+      class GoogleAnalyticsAdminV1betaAccessRow
+        include Google::Apis::Core::Hashable
+      
+        # List of dimension values. These values are in the same order as specified in
+        # the request.
+        # Corresponds to the JSON property `dimensionValues`
+        # @return [Array<Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessDimensionValue>]
+        attr_accessor :dimension_values
+      
+        # List of metric values. These values are in the same order as specified in the
+        # request.
+        # Corresponds to the JSON property `metricValues`
+        # @return [Array<Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessMetricValue>]
+        attr_accessor :metric_values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dimension_values = args[:dimension_values] if args.key?(:dimension_values)
+          @metric_values = args[:metric_values] if args.key?(:metric_values)
+        end
+      end
+      
+      # The filter for strings.
+      class GoogleAnalyticsAdminV1betaAccessStringFilter
+        include Google::Apis::Core::Hashable
+      
+        # If true, the string value is case sensitive.
+        # Corresponds to the JSON property `caseSensitive`
+        # @return [Boolean]
+        attr_accessor :case_sensitive
+        alias_method :case_sensitive?, :case_sensitive
+      
+        # The match type for this filter.
+        # Corresponds to the JSON property `matchType`
+        # @return [String]
+        attr_accessor :match_type
+      
+        # The string value used for the matching.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @case_sensitive = args[:case_sensitive] if args.key?(:case_sensitive)
+          @match_type = args[:match_type] if args.key?(:match_type)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # A resource message representing a Google Analytics account.
       class GoogleAnalyticsAdminV1betaAccount
         include Google::Apis::Core::Hashable
@@ -1151,6 +1697,31 @@ module Google
         end
       end
       
+      # To represent a number.
+      class GoogleAnalyticsAdminV1betaNumericValue
+        include Google::Apis::Core::Hashable
+      
+        # Double value
+        # Corresponds to the JSON property `doubleValue`
+        # @return [Float]
+        attr_accessor :double_value
+      
+        # Integer value
+        # Corresponds to the JSON property `int64Value`
+        # @return [Fixnum]
+        attr_accessor :int64_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @double_value = args[:double_value] if args.key?(:double_value)
+          @int64_value = args[:int64_value] if args.key?(:int64_value)
+        end
+      end
+      
       # A resource message representing a Google Analytics GA4 property.
       class GoogleAnalyticsAdminV1betaProperty
         include Google::Apis::Core::Hashable
@@ -1340,6 +1911,160 @@ module Google
         # Update properties of this object
         def update!(**args)
           @account_ticket_id = args[:account_ticket_id] if args.key?(:account_ticket_id)
+        end
+      end
+      
+      # The request for a Data Access Record Report.
+      class GoogleAnalyticsAdminV1betaRunAccessReportRequest
+        include Google::Apis::Core::Hashable
+      
+        # Date ranges of access records to read. If multiple date ranges are requested,
+        # each response row will contain a zero based date range index. If two date
+        # ranges overlap, the access records for the overlapping days is included in the
+        # response rows for both date ranges. Requests are allowed up to 2 date ranges.
+        # Corresponds to the JSON property `dateRanges`
+        # @return [Array<Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessDateRange>]
+        attr_accessor :date_ranges
+      
+        # Expresses dimension or metric filters. The fields in the same expression need
+        # to be either all dimensions or all metrics.
+        # Corresponds to the JSON property `dimensionFilter`
+        # @return [Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessFilterExpression]
+        attr_accessor :dimension_filter
+      
+        # The dimensions requested and displayed in the response. Requests are allowed
+        # up to 9 dimensions.
+        # Corresponds to the JSON property `dimensions`
+        # @return [Array<Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessDimension>]
+        attr_accessor :dimensions
+      
+        # The number of rows to return. If unspecified, 10,000 rows are returned. The
+        # API returns a maximum of 100,000 rows per request, no matter how many you ask
+        # for. `limit` must be positive. The API may return fewer rows than the
+        # requested `limit`, if there aren't as many remaining rows as the `limit`. For
+        # instance, there are fewer than 300 possible values for the dimension `country`,
+        # so when reporting on only `country`, you can't get more than 300 rows, even
+        # if you set `limit` to a higher value. To learn more about this pagination
+        # parameter, see [Pagination](https://developers.google.com/analytics/devguides/
+        # reporting/data/v1/basics#pagination).
+        # Corresponds to the JSON property `limit`
+        # @return [Fixnum]
+        attr_accessor :limit
+      
+        # Expresses dimension or metric filters. The fields in the same expression need
+        # to be either all dimensions or all metrics.
+        # Corresponds to the JSON property `metricFilter`
+        # @return [Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessFilterExpression]
+        attr_accessor :metric_filter
+      
+        # The metrics requested and displayed in the response. Requests are allowed up
+        # to 10 metrics.
+        # Corresponds to the JSON property `metrics`
+        # @return [Array<Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessMetric>]
+        attr_accessor :metrics
+      
+        # The row count of the start row. The first row is counted as row 0. If offset
+        # is unspecified, it is treated as 0. If offset is zero, then this method will
+        # return the first page of results with `limit` entries. To learn more about
+        # this pagination parameter, see [Pagination](https://developers.google.com/
+        # analytics/devguides/reporting/data/v1/basics#pagination).
+        # Corresponds to the JSON property `offset`
+        # @return [Fixnum]
+        attr_accessor :offset
+      
+        # Specifies how rows are ordered in the response.
+        # Corresponds to the JSON property `orderBys`
+        # @return [Array<Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessOrderBy>]
+        attr_accessor :order_bys
+      
+        # Toggles whether to return the current state of this Analytics Property's quota.
+        # Quota is returned in [AccessQuota](#AccessQuota). For account-level requests,
+        # this field must be false.
+        # Corresponds to the JSON property `returnEntityQuota`
+        # @return [Boolean]
+        attr_accessor :return_entity_quota
+        alias_method :return_entity_quota?, :return_entity_quota
+      
+        # This request's time zone if specified. If unspecified, the property's time
+        # zone is used. The request's time zone is used to interpret the start & end
+        # dates of the report. Formatted as strings from the IANA Time Zone database (
+        # https://www.iana.org/time-zones); for example "America/New_York" or "Asia/
+        # Tokyo".
+        # Corresponds to the JSON property `timeZone`
+        # @return [String]
+        attr_accessor :time_zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @date_ranges = args[:date_ranges] if args.key?(:date_ranges)
+          @dimension_filter = args[:dimension_filter] if args.key?(:dimension_filter)
+          @dimensions = args[:dimensions] if args.key?(:dimensions)
+          @limit = args[:limit] if args.key?(:limit)
+          @metric_filter = args[:metric_filter] if args.key?(:metric_filter)
+          @metrics = args[:metrics] if args.key?(:metrics)
+          @offset = args[:offset] if args.key?(:offset)
+          @order_bys = args[:order_bys] if args.key?(:order_bys)
+          @return_entity_quota = args[:return_entity_quota] if args.key?(:return_entity_quota)
+          @time_zone = args[:time_zone] if args.key?(:time_zone)
+        end
+      end
+      
+      # The customized Data Access Record Report response.
+      class GoogleAnalyticsAdminV1betaRunAccessReportResponse
+        include Google::Apis::Core::Hashable
+      
+        # The header for a column in the report that corresponds to a specific dimension.
+        # The number of DimensionHeaders and ordering of DimensionHeaders matches the
+        # dimensions present in rows.
+        # Corresponds to the JSON property `dimensionHeaders`
+        # @return [Array<Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessDimensionHeader>]
+        attr_accessor :dimension_headers
+      
+        # The header for a column in the report that corresponds to a specific metric.
+        # The number of MetricHeaders and ordering of MetricHeaders matches the metrics
+        # present in rows.
+        # Corresponds to the JSON property `metricHeaders`
+        # @return [Array<Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessMetricHeader>]
+        attr_accessor :metric_headers
+      
+        # Current state of all quotas for this Analytics property. If any quota for a
+        # property is exhausted, all requests to that property will return Resource
+        # Exhausted errors.
+        # Corresponds to the JSON property `quota`
+        # @return [Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessQuota]
+        attr_accessor :quota
+      
+        # The total number of rows in the query result. `rowCount` is independent of the
+        # number of rows returned in the response, the `limit` request parameter, and
+        # the `offset` request parameter. For example if a query returns 175 rows and
+        # includes `limit` of 50 in the API request, the response will contain `rowCount`
+        # of 175 but only 50 rows. To learn more about this pagination parameter, see [
+        # Pagination](https://developers.google.com/analytics/devguides/reporting/data/
+        # v1/basics#pagination).
+        # Corresponds to the JSON property `rowCount`
+        # @return [Fixnum]
+        attr_accessor :row_count
+      
+        # Rows of dimension value combinations and metric values in the report.
+        # Corresponds to the JSON property `rows`
+        # @return [Array<Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaAccessRow>]
+        attr_accessor :rows
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dimension_headers = args[:dimension_headers] if args.key?(:dimension_headers)
+          @metric_headers = args[:metric_headers] if args.key?(:metric_headers)
+          @quota = args[:quota] if args.key?(:quota)
+          @row_count = args[:row_count] if args.key?(:row_count)
+          @rows = args[:rows] if args.key?(:rows)
         end
       end
       
