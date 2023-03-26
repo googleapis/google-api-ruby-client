@@ -547,6 +547,31 @@ module Google
         end
       end
       
+      # Primary scoped player identifier for an application.
+      class ApplicationPlayerId
+        include Google::Apis::Core::Hashable
+      
+        # The application that this player identifier is for.
+        # Corresponds to the JSON property `applicationId`
+        # @return [String]
+        attr_accessor :application_id
+      
+        # The player identifier for the application.
+        # Corresponds to the JSON property `playerId`
+        # @return [String]
+        attr_accessor :player_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @application_id = args[:application_id] if args.key?(:application_id)
+          @player_id = args[:player_id] if args.key?(:player_id)
+        end
+      end
+      
       # A third party application verification response resource.
       class ApplicationVerifyResponse
         include Google::Apis::Core::Hashable
@@ -1078,6 +1103,27 @@ module Google
         def update!(**args)
           @kind = args[:kind] if args.key?(:kind)
           @steps = args[:steps] if args.key?(:steps)
+        end
+      end
+      
+      # Response message for GetMultipleApplicationPlayerIds rpc.
+      class GetMultipleApplicationPlayerIdsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The requested applications along with the scoped ids for tha
+        # player, if that player has an id for the application. If not, the application
+        # is not included in the response.
+        # Corresponds to the JSON property `playerIds`
+        # @return [Array<Google::Apis::GamesV1::ApplicationPlayerId>]
+        attr_accessor :player_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @player_ids = args[:player_ids] if args.key?(:player_ids)
         end
       end
       
