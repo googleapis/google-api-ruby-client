@@ -96,6 +96,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :allowed_package_names
       
+        # Set to true for keys that are used in an Android application that is available
+        # for download in app stores in addition to the Google Play Store.
+        # Corresponds to the JSON property `supportNonGoogleAppStoreDistribution`
+        # @return [Boolean]
+        attr_accessor :support_non_google_app_store_distribution
+        alias_method :support_non_google_app_store_distribution?, :support_non_google_app_store_distribution
+      
         def initialize(**args)
            update!(**args)
         end
@@ -104,6 +111,7 @@ module Google
         def update!(**args)
           @allow_all_package_names = args[:allow_all_package_names] if args.key?(:allow_all_package_names)
           @allowed_package_names = args[:allowed_package_names] if args.key?(:allowed_package_names)
+          @support_non_google_app_store_distribution = args[:support_non_google_app_store_distribution] if args.key?(:support_non_google_app_store_distribution)
         end
       end
       
@@ -184,6 +192,11 @@ module Google
         # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Event]
         attr_accessor :event
       
+        # Policy config assessment.
+        # Corresponds to the JSON property `firewallPolicyAssessment`
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment]
+        attr_accessor :firewall_policy_assessment
+      
         # Assessment for Fraud Prevention.
         # Corresponds to the JSON property `fraudPreventionAssessment`
         # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment]
@@ -219,6 +232,7 @@ module Google
           @account_defender_assessment = args[:account_defender_assessment] if args.key?(:account_defender_assessment)
           @account_verification = args[:account_verification] if args.key?(:account_verification)
           @event = args[:event] if args.key?(:event)
+          @firewall_policy_assessment = args[:firewall_policy_assessment] if args.key?(:firewall_policy_assessment)
           @fraud_prevention_assessment = args[:fraud_prevention_assessment] if args.key?(:fraud_prevention_assessment)
           @name = args[:name] if args.key?(:name)
           @private_password_leak_verification = args[:private_password_leak_verification] if args.key?(:private_password_leak_verification)
@@ -318,13 +332,21 @@ module Google
         # @return [String]
         attr_accessor :expected_action
       
-        # Optional. Optional flag for a reCAPTCHA express request for an assessment
-        # without a token. If enabled, `site_key` must reference a SCORE key with WAF
-        # feature set to EXPRESS.
+        # Optional. Flag for a reCAPTCHA express request for an assessment without a
+        # token. If enabled, `site_key` must reference a SCORE key with WAF feature set
+        # to EXPRESS.
         # Corresponds to the JSON property `express`
         # @return [Boolean]
         attr_accessor :express
         alias_method :express?, :express
+      
+        # Optional. Flag for enabling firewall policy config assessment. If this flag is
+        # enabled, the firewall policy will be evaluated and a suggested firewall action
+        # will be returned in the response.
+        # Corresponds to the JSON property `firewallPolicyEvaluation`
+        # @return [Boolean]
+        attr_accessor :firewall_policy_evaluation
+        alias_method :firewall_policy_evaluation?, :firewall_policy_evaluation
       
         # Optional. Unique stable hashed user identifier for the request. The identifier
         # must be hashed using hmac-sha256 with stable secret.
@@ -333,7 +355,7 @@ module Google
         # @return [String]
         attr_accessor :hashed_account_id
       
-        # Optional. Optional HTTP header information about the request.
+        # Optional. HTTP header information about the request.
         # Corresponds to the JSON property `headers`
         # @return [Array<String>]
         attr_accessor :headers
@@ -378,6 +400,13 @@ module Google
         # @return [String]
         attr_accessor :user_ip_address
       
+        # Optional. Flag for running WAF token assessment. If enabled, the token must be
+        # specified, and have been created by a WAF-enabled key.
+        # Corresponds to the JSON property `wafTokenAssessment`
+        # @return [Boolean]
+        attr_accessor :waf_token_assessment
+        alias_method :waf_token_assessment?, :waf_token_assessment
+      
         def initialize(**args)
            update!(**args)
         end
@@ -386,6 +415,7 @@ module Google
         def update!(**args)
           @expected_action = args[:expected_action] if args.key?(:expected_action)
           @express = args[:express] if args.key?(:express)
+          @firewall_policy_evaluation = args[:firewall_policy_evaluation] if args.key?(:firewall_policy_evaluation)
           @hashed_account_id = args[:hashed_account_id] if args.key?(:hashed_account_id)
           @headers = args[:headers] if args.key?(:headers)
           @ja3 = args[:ja3] if args.key?(:ja3)
@@ -395,6 +425,232 @@ module Google
           @transaction_data = args[:transaction_data] if args.key?(:transaction_data)
           @user_agent = args[:user_agent] if args.key?(:user_agent)
           @user_ip_address = args[:user_ip_address] if args.key?(:user_ip_address)
+          @waf_token_assessment = args[:waf_token_assessment] if args.key?(:waf_token_assessment)
+        end
+      end
+      
+      # An individual action. Each action represents what to do if a policy matches.
+      class GoogleCloudRecaptchaenterpriseV1FirewallAction
+        include Google::Apis::Core::Hashable
+      
+        # An allow action continues processing a request unimpeded.
+        # Corresponds to the JSON property `allow`
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction]
+        attr_accessor :allow
+      
+        # A block action serves an HTTP error code a prevents the request from hitting
+        # the backend.
+        # Corresponds to the JSON property `block`
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction]
+        attr_accessor :block
+      
+        # A redirect action returns a 307 (temporary redirect) response, pointing the
+        # user to a ReCaptcha interstitial page to attach a token.
+        # Corresponds to the JSON property `redirect`
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction]
+        attr_accessor :redirect
+      
+        # A set header action sets a header and forwards the request to the backend.
+        # This can be used to trigger custom protection implemented on the backend.
+        # Corresponds to the JSON property `setHeader`
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction]
+        attr_accessor :set_header
+      
+        # A substitute action transparently serves a different page than the one
+        # requested.
+        # Corresponds to the JSON property `substitute`
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction]
+        attr_accessor :substitute
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow = args[:allow] if args.key?(:allow)
+          @block = args[:block] if args.key?(:block)
+          @redirect = args[:redirect] if args.key?(:redirect)
+          @set_header = args[:set_header] if args.key?(:set_header)
+          @substitute = args[:substitute] if args.key?(:substitute)
+        end
+      end
+      
+      # An allow action continues processing a request unimpeded.
+      class GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A block action serves an HTTP error code a prevents the request from hitting
+      # the backend.
+      class GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A redirect action returns a 307 (temporary redirect) response, pointing the
+      # user to a ReCaptcha interstitial page to attach a token.
+      class GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A set header action sets a header and forwards the request to the backend.
+      # This can be used to trigger custom protection implemented on the backend.
+      class GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction
+        include Google::Apis::Core::Hashable
+      
+        # The header key to set in the request to the backend server.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # The header value to set in the request to the backend server.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # A substitute action transparently serves a different page than the one
+      # requested.
+      class GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction
+        include Google::Apis::Core::Hashable
+      
+        # The address to redirect to. The target is a relative path in the current host.
+        # Example: "/blog/404.html".
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @path = args[:path] if args.key?(:path)
+        end
+      end
+      
+      # A FirewallPolicy represents a single matching pattern and resulting actions to
+      # take.
+      class GoogleCloudRecaptchaenterpriseV1FirewallPolicy
+        include Google::Apis::Core::Hashable
+      
+        # The actions that the caller should take regarding user access. There should be
+        # at most one terminal action. A terminal action is any action that forces a
+        # response, such as AllowAction, BlockAction or SubstituteAction. Zero or more
+        # non-terminal actions such as SetHeader might be specified. A single policy can
+        # contain up to 16 actions.
+        # Corresponds to the JSON property `actions`
+        # @return [Array<Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FirewallAction>]
+        attr_accessor :actions
+      
+        # A CEL (Common Expression Language) conditional expression that specifies if
+        # this policy applies to an incoming user request. If this condition evaluates
+        # to true and the requested path matched the path pattern, the associated
+        # actions should be executed by the caller. The condition string is checked for
+        # CEL syntax correctness on creation. For more information, see the [CEL spec](
+        # https://github.com/google/cel-spec) and its [language definition](https://
+        # github.com/google/cel-spec/blob/master/doc/langdef.md). A condition has a max
+        # length of 500 characters.
+        # Corresponds to the JSON property `condition`
+        # @return [String]
+        attr_accessor :condition
+      
+        # A description of what this policy aims to achieve, for convenience purposes.
+        # The description can at most include 256 UTF-8 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The resource name for the FirewallPolicy in the format "projects/`project`/
+        # firewallpolicies/`firewallpolicy`".
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The path for which this policy applies, specified as a glob pattern. For more
+        # information on glob, see the [manual page](https://man7.org/linux/man-pages/
+        # man7/glob.7.html). A path has a max length of 200 characters.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @actions = args[:actions] if args.key?(:actions)
+          @condition = args[:condition] if args.key?(:condition)
+          @description = args[:description] if args.key?(:description)
+          @name = args[:name] if args.key?(:name)
+          @path = args[:path] if args.key?(:path)
+        end
+      end
+      
+      # Policy config assessment.
+      class GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment
+        include Google::Apis::Core::Hashable
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleRpcStatus]
+        attr_accessor :error
+      
+        # A FirewallPolicy represents a single matching pattern and resulting actions to
+        # take.
+        # Corresponds to the JSON property `firewallPolicy`
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FirewallPolicy]
+        attr_accessor :firewall_policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error = args[:error] if args.key?(:error)
+          @firewall_policy = args[:firewall_policy] if args.key?(:firewall_policy)
         end
       end
       
@@ -510,7 +766,7 @@ module Google
         # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1AndroidKeySettings]
         attr_accessor :android_settings
       
-        # Output only. The timestamp corresponding to the creation of this Key.
+        # Output only. The timestamp corresponding to the creation of this key.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -565,6 +821,32 @@ module Google
           @testing_options = args[:testing_options] if args.key?(:testing_options)
           @waf_settings = args[:waf_settings] if args.key?(:waf_settings)
           @web_settings = args[:web_settings] if args.key?(:web_settings)
+        end
+      end
+      
+      # Response to request to list firewall policies belonging to a key.
+      class GoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Policy details.
+        # Corresponds to the JSON property `firewallPolicies`
+        # @return [Array<Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FirewallPolicy>]
+        attr_accessor :firewall_policies
+      
+        # Token to retrieve the next page of results. It is set to empty if no policies
+        # remain in results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @firewall_policies = args[:firewall_policies] if args.key?(:firewall_policies)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -1473,6 +1755,45 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # The `Status` type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by [
+      # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+      # data: error code, error message, and error details. You can find out more
+      # about this error model and how to work with it in the [API Design Guide](https:
+      # //cloud.google.com/apis/design/errors).
+      class GoogleRpcStatus
+        include Google::Apis::Core::Hashable
+      
+        # The status code, which should be an enum value of google.rpc.Code.
+        # Corresponds to the JSON property `code`
+        # @return [Fixnum]
+        attr_accessor :code
+      
+        # A list of messages that carry the error details. There is a common set of
+        # message types for APIs to use.
+        # Corresponds to the JSON property `details`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :details
+      
+        # A developer-facing error message, which should be in English. Any user-facing
+        # error message should be localized and sent in the google.rpc.Status.details
+        # field, or localized by the client.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @details = args[:details] if args.key?(:details)
+          @message = args[:message] if args.key?(:message)
         end
       end
     end
