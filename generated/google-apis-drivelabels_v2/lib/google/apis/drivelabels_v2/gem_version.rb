@@ -16,13 +16,13 @@ module Google
   module Apis
     module DrivelabelsV2
       # Version of the google-apis-drivelabels_v2 gem
-      GEM_VERSION = "0.7.0"
+      GEM_VERSION = "0.8.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.12.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20230228"
+      REVISION = "20230320"
     end
   end
 end
