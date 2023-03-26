@@ -858,12 +858,6 @@ module Google
         attr_accessor :enabled
         alias_method :enabled?, :enabled
       
-        # If true, restrict direct table access(read api/tabledata.list) on linked table.
-        # Corresponds to the JSON property `restrictDirectTableAccess`
-        # @return [Boolean]
-        attr_accessor :restrict_direct_table_access
-        alias_method :restrict_direct_table_access?, :restrict_direct_table_access
-      
         # If true, restrict export of query result derived from restricted linked
         # dataset table.
         # Corresponds to the JSON property `restrictQueryResult`
@@ -878,7 +872,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enabled = args[:enabled] if args.key?(:enabled)
-          @restrict_direct_table_access = args[:restrict_direct_table_access] if args.key?(:restrict_direct_table_access)
           @restrict_query_result = args[:restrict_query_result] if args.key?(:restrict_query_result)
         end
       end
