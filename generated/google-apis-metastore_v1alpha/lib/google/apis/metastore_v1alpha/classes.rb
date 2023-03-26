@@ -1284,6 +1284,13 @@ module Google
         # @return [Array<Google::Apis::MetastoreV1alpha::Consumer>]
         attr_accessor :consumers
       
+        # Enables custom routes to be imported and exported for the Dataproc Metastore
+        # service's peered VPC network.
+        # Corresponds to the JSON property `customRoutesEnabled`
+        # @return [Boolean]
+        attr_accessor :custom_routes_enabled
+        alias_method :custom_routes_enabled?, :custom_routes_enabled
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1291,6 +1298,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @consumers = args[:consumers] if args.key?(:consumers)
+          @custom_routes_enabled = args[:custom_routes_enabled] if args.key?(:custom_routes_enabled)
         end
       end
       
