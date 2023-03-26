@@ -950,7 +950,7 @@ module Google
         # @return [String]
         attr_accessor :form_url
       
-        # URL of the form responses document. Only set if respsonses have been recorded
+        # URL of the form responses document. Only set if responses have been recorded
         # and only when the requesting user is an editor of the form. Read-only.
         # Corresponds to the JSON property `responseUrl`
         # @return [String]
