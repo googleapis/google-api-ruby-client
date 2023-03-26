@@ -1083,11 +1083,23 @@ module Google
         # @return [String]
         attr_accessor :job
       
+        # Optional. Specifies a list of jobs on which diagnosis is to be performed.
+        # Format: projects/`project`/regions/`region`/jobs/`job`
+        # Corresponds to the JSON property `jobs`
+        # @return [Array<String>]
+        attr_accessor :jobs
+      
         # Optional. DEPRECATED Specifies the yarn application on which diagnosis is to
         # be performed.
         # Corresponds to the JSON property `yarnApplicationId`
         # @return [String]
         attr_accessor :yarn_application_id
+      
+        # Optional. Specifies a list of yarn applications on which diagnosis is to be
+        # performed.
+        # Corresponds to the JSON property `yarnApplicationIds`
+        # @return [Array<String>]
+        attr_accessor :yarn_application_ids
       
         def initialize(**args)
            update!(**args)
@@ -1097,7 +1109,9 @@ module Google
         def update!(**args)
           @diagnosis_interval = args[:diagnosis_interval] if args.key?(:diagnosis_interval)
           @job = args[:job] if args.key?(:job)
+          @jobs = args[:jobs] if args.key?(:jobs)
           @yarn_application_id = args[:yarn_application_id] if args.key?(:yarn_application_id)
+          @yarn_application_ids = args[:yarn_application_ids] if args.key?(:yarn_application_ids)
         end
       end
       
@@ -1294,13 +1308,14 @@ module Google
       class ExecutionConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. The duration to keep the session alive while it's idling. Passing
-        # this threshold will cause the session to be terminated. Minimum value is 10
-        # minutes; maximum value is 14 days (see JSON representation of Duration (https:/
-        # /developers.google.com/protocol-buffers/docs/proto3#json)). Defaults to 4
-        # hours if not set. If both ttl and idle_ttl are specified, the conditions are
-        # treated as and OR: the workload will be terminated when it has been idle for
-        # idle_ttl or when the ttl has passed, whichever comes first.
+        # Optional. The duration to keep the session alive while it's idling. Exceeding
+        # this threshold causes the session to terminate. This field cannot be set on a
+        # batch workload. Minimum value is 10 minutes; maximum value is 14 days (see
+        # JSON representation of Duration (https://developers.google.com/protocol-
+        # buffers/docs/proto3#json)). Defaults to 4 hours if not set. If both ttl and
+        # idle_ttl are specified, the conditions are treated as OR conditions: the
+        # workload will be terminated when it has been idle for idle_ttl or when ttl has
+        # been exceed, whichever occurs first.
         # Corresponds to the JSON property `idleTtl`
         # @return [String]
         attr_accessor :idle_ttl
@@ -1342,13 +1357,16 @@ module Google
         attr_accessor :subnetwork_uri
       
         # Optional. The duration after which the workload will be terminated. When the
-        # workload passes this ttl, it will be unconditionally killed without waiting
-        # for ongoing work to finish. Minimum value is 10 minutes; maximum value is 14
+        # workload exceeds this duration, it will be unconditionally terminated without
+        # waiting for ongoing work to finish. If ttl is not specified for a batch
+        # workload, the workload will be allowed to run until it exits naturally (or
+        # runs forever without exiting). If ttl is not specified for an interactive
+        # session, it defaults to 24h. Minimum value is 10 minutes; maximum value is 14
         # days (see JSON representation of Duration (https://developers.google.com/
-        # protocol-buffers/docs/proto3#json)). If both ttl and idle_ttl are specified,
-        # the conditions are treated as and OR: the workload will be terminated when it
-        # has been idle for idle_ttl or when the ttl has passed, whichever comes first.
-        # If ttl is not specified for a session, it defaults to 24h.
+        # protocol-buffers/docs/proto3#json)). If both ttl and idle_ttl are specified (
+        # for an interactive session), the conditions are treated as OR conditions: the
+        # workload will be terminated when it has been idle for idle_ttl or when ttl has
+        # been exceeded, whichever occurs first.
         # Corresponds to the JSON property `ttl`
         # @return [String]
         attr_accessor :ttl
