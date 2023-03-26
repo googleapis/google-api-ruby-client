@@ -64,42 +64,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudDiscoveryengineV1alphaCondition
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDiscoveryengineV1alphaConditionQueryTerm
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDiscoveryengineV1alphaConditionTimeRange
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDiscoveryengineV1alphaControl
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDiscoveryengineV1alphaControlBoostAction
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDiscoveryengineV1alphaControlFilterAction
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudDiscoveryengineV1alphaImportDocumentsMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -125,6 +89,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1alphaImportUserEventsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaSchema
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -262,6 +232,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1betaSchema
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1betaSearchInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -382,64 +358,6 @@ module Google
         end
       end
       
-      class GoogleCloudDiscoveryengineV1alphaCondition
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :active_time_range, as: 'activeTimeRange', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaConditionTimeRange, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaConditionTimeRange::Representation
-      
-          collection :query_terms, as: 'queryTerms', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaConditionQueryTerm, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaConditionQueryTerm::Representation
-      
-        end
-      end
-      
-      class GoogleCloudDiscoveryengineV1alphaConditionQueryTerm
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :full_match, as: 'fullMatch'
-          property :value, as: 'value'
-        end
-      end
-      
-      class GoogleCloudDiscoveryengineV1alphaConditionTimeRange
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :end_time, as: 'endTime'
-          property :start_time, as: 'startTime'
-        end
-      end
-      
-      class GoogleCloudDiscoveryengineV1alphaControl
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :associated_serving_config_ids, as: 'associatedServingConfigIds'
-          property :boost_action, as: 'boostAction', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaControlBoostAction, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaControlBoostAction::Representation
-      
-          collection :conditions, as: 'conditions', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaCondition, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaCondition::Representation
-      
-          property :display_name, as: 'displayName'
-          property :filter_action, as: 'filterAction', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaControlFilterAction, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaControlFilterAction::Representation
-      
-          property :name, as: 'name'
-          property :solution_type, as: 'solutionType'
-          collection :use_cases, as: 'useCases'
-        end
-      end
-      
-      class GoogleCloudDiscoveryengineV1alphaControlBoostAction
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :boost, as: 'boost'
-          property :filter, as: 'filter'
-        end
-      end
-      
-      class GoogleCloudDiscoveryengineV1alphaControlFilterAction
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :filter, as: 'filter'
-        end
-      end
-      
       class GoogleCloudDiscoveryengineV1alphaImportDocumentsMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -486,6 +404,15 @@ module Google
       
           property :joined_events_count, :numeric_string => true, as: 'joinedEventsCount'
           property :unjoined_events_count, :numeric_string => true, as: 'unjoinedEventsCount'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaSchema
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :json_schema, as: 'jsonSchema'
+          property :name, as: 'name'
+          hash :struct_schema, as: 'structSchema'
         end
       end
       
@@ -710,6 +637,15 @@ module Google
       
           property :id, as: 'id'
           hash :metadata, as: 'metadata'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaSchema
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :json_schema, as: 'jsonSchema'
+          property :name, as: 'name'
+          hash :struct_schema, as: 'structSchema'
         end
       end
       
