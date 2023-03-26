@@ -1,5 +1,9 @@
 # Release history for google-apis-pagespeedonline_v5
 
+### v0.16.0 (2023-03-26)
+
+* Regenerated from discovery document revision 20230316
+
 ### v0.15.0 (2023-02-15)
 
 * Regenerated using generator version 0.12.0
