@@ -1,5 +1,9 @@
 # Release history for google-apis-contentwarehouse_v1
 
+### v0.11.0 (2023-03-26)
+
+* Regenerated from discovery document revision 20230321
+
 ### v0.10.0 (2023-02-26)
 
 * Regenerated from discovery document revision 20230221
