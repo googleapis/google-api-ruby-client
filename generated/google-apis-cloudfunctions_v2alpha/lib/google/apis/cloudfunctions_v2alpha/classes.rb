@@ -500,6 +500,11 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # Output only. The deployed url for the function.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
         def initialize(**args)
            update!(**args)
         end
@@ -517,6 +522,7 @@ module Google
           @state = args[:state] if args.key?(:state)
           @state_messages = args[:state_messages] if args.key?(:state_messages)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @url = args[:url] if args.key?(:url)
         end
       end
       
