@@ -287,6 +287,9 @@ module Google
         end
         
         # List labels.
+        # @param [String] customer
+        #   The customer to scope this list request to. For example: "customers/abcd1234".
+        #   If unset, will return all labels within the current customer.
         # @param [String] language_code
         #   The BCP-47 language code to use for evaluating localized field labels. When
         #   not specified, values in the default configured language are used.
@@ -327,10 +330,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_labels(language_code: nil, minimum_role: nil, page_size: nil, page_token: nil, published_only: nil, use_admin_access: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_labels(customer: nil, language_code: nil, minimum_role: nil, page_size: nil, page_token: nil, published_only: nil, use_admin_access: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2beta/labels', options)
           command.response_representation = Google::Apis::DrivelabelsV2beta::GoogleAppsDriveLabelsV2betaListLabelsResponse::Representation
           command.response_class = Google::Apis::DrivelabelsV2beta::GoogleAppsDriveLabelsV2betaListLabelsResponse
+          command.query['customer'] = customer unless customer.nil?
           command.query['languageCode'] = language_code unless language_code.nil?
           command.query['minimumRole'] = minimum_role unless minimum_role.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
@@ -990,6 +994,9 @@ module Google
         # @param [String] name
         #   Required. The resource name of the user. Only "users/me/capabilities" is
         #   supported.
+        # @param [String] customer
+        #   The customer to scope this request to. For example: "customers/abcd1234". If
+        #   unset, will return settings within the current customer.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1007,11 +1014,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_user_capabilities(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_user_capabilities(name, customer: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2beta/{+name}', options)
           command.response_representation = Google::Apis::DrivelabelsV2beta::GoogleAppsDriveLabelsV2betaUserCapabilities::Representation
           command.response_class = Google::Apis::DrivelabelsV2beta::GoogleAppsDriveLabelsV2betaUserCapabilities
           command.params['name'] = name unless name.nil?
+          command.query['customer'] = customer unless customer.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
