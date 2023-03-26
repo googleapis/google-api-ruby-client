@@ -1631,6 +1631,15 @@ module Google
         # @return [String]
         attr_accessor :help_center_url
       
+        # Whether or not the policy topic is missing a certificate. Some policy topics
+        # require a certificate to unblock serving in some regions. For more information
+        # about creative certification, refer to: https://support.google.com/
+        # authorizedbuyers/answer/7450776
+        # Corresponds to the JSON property `missingCertificate`
+        # @return [Boolean]
+        attr_accessor :missing_certificate
+        alias_method :missing_certificate?, :missing_certificate
+      
         # Policy topic this entry refers to. For example, "ALCOHOL", "
         # TRADEMARKS_IN_AD_TEXT", or "DESTINATION_NOT_WORKING". The set of possible
         # policy topics is not fixed for a particular API version and may change at any
@@ -1647,6 +1656,7 @@ module Google
         def update!(**args)
           @evidences = args[:evidences] if args.key?(:evidences)
           @help_center_url = args[:help_center_url] if args.key?(:help_center_url)
+          @missing_certificate = args[:missing_certificate] if args.key?(:missing_certificate)
           @policy_topic = args[:policy_topic] if args.key?(:policy_topic)
         end
       end

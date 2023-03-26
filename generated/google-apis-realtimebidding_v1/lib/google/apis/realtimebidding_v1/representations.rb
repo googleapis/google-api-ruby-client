@@ -805,6 +805,7 @@ module Google
           collection :evidences, as: 'evidences', class: Google::Apis::RealtimebiddingV1::PolicyTopicEvidence, decorator: Google::Apis::RealtimebiddingV1::PolicyTopicEvidence::Representation
       
           property :help_center_url, as: 'helpCenterUrl'
+          property :missing_certificate, as: 'missingCertificate'
           property :policy_topic, as: 'policyTopic'
         end
       end
