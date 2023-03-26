@@ -115,6 +115,25 @@ module Google
         end
       end
       
+      # The results of an Action.
+      class GooglePrivacyDlpV2ActionDetails
+        include Google::Apis::Core::Hashable
+      
+        # The results of a Deidentify action from an Inspect job.
+        # Corresponds to the JSON property `deidentifyDetails`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyDataSourceDetails]
+        attr_accessor :deidentify_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deidentify_details = args[:deidentify_details] if args.key?(:deidentify_details)
+        end
+      end
+      
       # Request message for ActivateJobTrigger.
       class GooglePrivacyDlpV2ActivateJobTriggerRequest
         include Google::Apis::Core::Hashable
@@ -2126,6 +2145,62 @@ module Google
         end
       end
       
+      # The results of a Deidentify action from an Inspect job.
+      class GooglePrivacyDlpV2DeidentifyDataSourceDetails
+        include Google::Apis::Core::Hashable
+      
+        # Summary of what was modified during a transformation.
+        # Corresponds to the JSON property `deidentifyStats`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyDataSourceStats]
+        attr_accessor :deidentify_stats
+      
+        # De-id options.
+        # Corresponds to the JSON property `requestedOptions`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2RequestedDeidentifyOptions]
+        attr_accessor :requested_options
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deidentify_stats = args[:deidentify_stats] if args.key?(:deidentify_stats)
+          @requested_options = args[:requested_options] if args.key?(:requested_options)
+        end
+      end
+      
+      # Summary of what was modified during a transformation.
+      class GooglePrivacyDlpV2DeidentifyDataSourceStats
+        include Google::Apis::Core::Hashable
+      
+        # Number of successfully applied transformations.
+        # Corresponds to the JSON property `transformationCount`
+        # @return [Fixnum]
+        attr_accessor :transformation_count
+      
+        # Number of errors encountered while trying to apply transformations.
+        # Corresponds to the JSON property `transformationErrorCount`
+        # @return [Fixnum]
+        attr_accessor :transformation_error_count
+      
+        # Total size in bytes that were transformed in some way.
+        # Corresponds to the JSON property `transformedBytes`
+        # @return [Fixnum]
+        attr_accessor :transformed_bytes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @transformation_count = args[:transformation_count] if args.key?(:transformation_count)
+          @transformation_error_count = args[:transformation_error_count] if args.key?(:transformation_error_count)
+          @transformed_bytes = args[:transformed_bytes] if args.key?(:transformed_bytes)
+        end
+      end
+      
       # DeidentifyTemplates contains instructions on how to de-identify content. See
       # https://cloud.google.com/dlp/docs/concepts-templates to learn more.
       class GooglePrivacyDlpV2DeidentifyTemplate
@@ -2391,6 +2466,11 @@ module Google
       class GooglePrivacyDlpV2DlpJob
         include Google::Apis::Core::Hashable
       
+        # Events that should occur after the job has completed.
+        # Corresponds to the JSON property `actionDetails`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2ActionDetails>]
+        attr_accessor :action_details
+      
         # Time when the job was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -2448,6 +2528,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @action_details = args[:action_details] if args.key?(:action_details)
           @create_time = args[:create_time] if args.key?(:create_time)
           @end_time = args[:end_time] if args.key?(:end_time)
           @errors = args[:errors] if args.key?(:errors)
@@ -6025,6 +6106,40 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # De-id options.
+      class GooglePrivacyDlpV2RequestedDeidentifyOptions
+        include Google::Apis::Core::Hashable
+      
+        # DeidentifyTemplates contains instructions on how to de-identify content. See
+        # https://cloud.google.com/dlp/docs/concepts-templates to learn more.
+        # Corresponds to the JSON property `snapshotDeidentifyTemplate`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate]
+        attr_accessor :snapshot_deidentify_template
+      
+        # DeidentifyTemplates contains instructions on how to de-identify content. See
+        # https://cloud.google.com/dlp/docs/concepts-templates to learn more.
+        # Corresponds to the JSON property `snapshotImageRedactTemplate`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate]
+        attr_accessor :snapshot_image_redact_template
+      
+        # DeidentifyTemplates contains instructions on how to de-identify content. See
+        # https://cloud.google.com/dlp/docs/concepts-templates to learn more.
+        # Corresponds to the JSON property `snapshotStructuredDeidentifyTemplate`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate]
+        attr_accessor :snapshot_structured_deidentify_template
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @snapshot_deidentify_template = args[:snapshot_deidentify_template] if args.key?(:snapshot_deidentify_template)
+          @snapshot_image_redact_template = args[:snapshot_image_redact_template] if args.key?(:snapshot_image_redact_template)
+          @snapshot_structured_deidentify_template = args[:snapshot_structured_deidentify_template] if args.key?(:snapshot_structured_deidentify_template)
         end
       end
       
