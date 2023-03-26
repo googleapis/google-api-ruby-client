@@ -365,7 +365,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
-          property :restrict_direct_table_access, as: 'restrictDirectTableAccess'
           property :restrict_query_result, as: 'restrictQueryResult'
         end
       end
