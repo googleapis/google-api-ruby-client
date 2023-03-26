@@ -244,6 +244,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResetQueuedResourceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RuntimeVersion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -687,6 +693,12 @@ module Google
       
           property :valid_until_duration, as: 'validUntilDuration'
           property :valid_until_time, as: 'validUntilTime'
+        end
+      end
+      
+      class ResetQueuedResourceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
