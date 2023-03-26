@@ -22,6 +22,50 @@ module Google
   module Apis
     module MigrationcenterV1alpha1
       
+      # A request to add assets to a group.
+      class AddAssetsToGroupRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. When this value is set to `false` and one of the given assets is
+        # already an existing member of the group, the operation fails with an `Already
+        # Exists` error. When set to `true` this situation is silently ignored by the
+        # server. Default value is `false`.
+        # Corresponds to the JSON property `allowExisting`
+        # @return [Boolean]
+        attr_accessor :allow_existing
+        alias_method :allow_existing?, :allow_existing
+      
+        # Lists the asset IDs of all assets.
+        # Corresponds to the JSON property `assets`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AssetList]
+        attr_accessor :assets
+      
+        # Optional. An optional request ID to identify requests. Specify a unique
+        # request ID so that if you must retry your request, the server will know to
+        # ignore the request if it has already been completed. The server will guarantee
+        # that for at least 60 minutes after the first request. For example, consider a
+        # situation where you make an initial request and the request times out. If you
+        # make the request again with the same request ID, the server can check if
+        # original operation with the same request ID was received, and if so, will
+        # ignore the second request. This prevents clients from accidentally creating
+        # duplicate commitments. The request ID must be a valid UUID with the exception
+        # that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_existing = args[:allow_existing] if args.key?(:allow_existing)
+          @assets = args[:assets] if args.key?(:assets)
+          @request_id = args[:request_id] if args.key?(:request_id)
+        end
+      end
+      
       # A request to aggregate one or more values.
       class AggregateAssetsValuesRequest
         include Google::Apis::Core::Hashable
@@ -334,6 +378,11 @@ module Google
       class Asset
         include Google::Apis::Core::Hashable
       
+        # Output only. The list of groups that the asset is assigned to.
+        # Corresponds to the JSON property `assignedGroups`
+        # @return [Array<String>]
+        attr_accessor :assigned_groups
+      
         # Generic asset attributes.
         # Corresponds to the JSON property `attributes`
         # @return [Hash<String,String>]
@@ -344,6 +393,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Message containing insights list.
+        # Corresponds to the JSON property `insightList`
+        # @return [Google::Apis::MigrationcenterV1alpha1::InsightList]
+        attr_accessor :insight_list
+      
         # Labels as key value pairs.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
@@ -353,6 +407,11 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Performance data for an asset.
+        # Corresponds to the JSON property `performanceData`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AssetPerformanceData]
+        attr_accessor :performance_data
       
         # Output only. The list of sources contributing to the asset.
         # Corresponds to the JSON property `sources`
@@ -375,10 +434,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @assigned_groups = args[:assigned_groups] if args.key?(:assigned_groups)
           @attributes = args[:attributes] if args.key?(:attributes)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @insight_list = args[:insight_list] if args.key?(:insight_list)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @performance_data = args[:performance_data] if args.key?(:performance_data)
           @sources = args[:sources] if args.key?(:sources)
           @update_time = args[:update_time] if args.key?(:update_time)
           @virtual_machine_details = args[:virtual_machine_details] if args.key?(:virtual_machine_details)
@@ -435,6 +497,131 @@ module Google
         end
       end
       
+      # Lists the asset IDs of all assets.
+      class AssetList
+        include Google::Apis::Core::Hashable
+      
+        # A list of asset IDs
+        # Corresponds to the JSON property `assetIds`
+        # @return [Array<String>]
+        attr_accessor :asset_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @asset_ids = args[:asset_ids] if args.key?(:asset_ids)
+        end
+      end
+      
+      # Performance data for an asset.
+      class AssetPerformanceData
+        include Google::Apis::Core::Hashable
+      
+        # Daily resource usage aggregations. Contains all of the data available for an
+        # asset, up to the last 420 days.
+        # Corresponds to the JSON property `dailyResourceUsageAggregations`
+        # @return [Array<Google::Apis::MigrationcenterV1alpha1::DailyResourceUsageAggregation>]
+        attr_accessor :daily_resource_usage_aggregations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @daily_resource_usage_aggregations = args[:daily_resource_usage_aggregations] if args.key?(:daily_resource_usage_aggregations)
+        end
+      end
+      
+      # AWS EC2 specific details.
+      class AwsEc2PlatformDetails
+        include Google::Apis::Core::Hashable
+      
+        # The location of the machine in the AWS format.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # AWS platform's machine type label.
+        # Corresponds to the JSON property `machineTypeLabel`
+        # @return [String]
+        attr_accessor :machine_type_label
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @location = args[:location] if args.key?(:location)
+          @machine_type_label = args[:machine_type_label] if args.key?(:machine_type_label)
+        end
+      end
+      
+      # Azure VM specific details.
+      class AzureVmPlatformDetails
+        include Google::Apis::Core::Hashable
+      
+        # The location of the machine in the Azure format.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # Azure platform's machine type label.
+        # Corresponds to the JSON property `machineTypeLabel`
+        # @return [String]
+        attr_accessor :machine_type_label
+      
+        # Azure platform's provisioning state.
+        # Corresponds to the JSON property `provisioningState`
+        # @return [String]
+        attr_accessor :provisioning_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @location = args[:location] if args.key?(:location)
+          @machine_type_label = args[:machine_type_label] if args.key?(:machine_type_label)
+          @provisioning_state = args[:provisioning_state] if args.key?(:provisioning_state)
+        end
+      end
+      
+      # A request to delete a list of asset.
+      class BatchDeleteAssetsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. When this value is set to `true` the request is a no-op for non-
+        # existing assets. See https://google.aip.dev/135#delete-if-existing for
+        # additional details. Default value is `false`.
+        # Corresponds to the JSON property `allowMissing`
+        # @return [Boolean]
+        attr_accessor :allow_missing
+        alias_method :allow_missing?, :allow_missing
+      
+        # Required. The IDs of the assets to delete. A maximum of 10 assets can be
+        # deleted in a batch. format: projects/`project`/locations/`location`/asset/`
+        # name`.
+        # Corresponds to the JSON property `names`
+        # @return [Array<String>]
+        attr_accessor :names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_missing = args[:allow_missing] if args.key?(:allow_missing)
+          @names = args[:names] if args.key?(:names)
+        end
+      end
+      
       # A request to update a list of assets.
       class BatchUpdateAssetsRequest
         include Google::Apis::Core::Hashable
@@ -475,31 +662,31 @@ module Google
         end
       end
       
-      # Details about the bios.
+      # Details about the BIOS.
       class BiosDetails
         include Google::Apis::Core::Hashable
       
-        # Bios manufacturer.
+        # BIOS manufacturer.
         # Corresponds to the JSON property `biosManufacturer`
         # @return [String]
         attr_accessor :bios_manufacturer
       
-        # Bios name.
+        # BIOS name.
         # Corresponds to the JSON property `biosName`
         # @return [String]
         attr_accessor :bios_name
       
-        # Bios release date.
+        # BIOS release date.
         # Corresponds to the JSON property `biosReleaseDate`
         # @return [String]
         attr_accessor :bios_release_date
       
-        # Bios version.
+        # BIOS version.
         # Corresponds to the JSON property `biosVersion`
         # @return [String]
         attr_accessor :bios_version
       
-        # SMBios UUID.
+        # SMBIOS UUID.
         # Corresponds to the JSON property `smbiosUuid`
         # @return [String]
         attr_accessor :smbios_uuid
@@ -531,6 +718,104 @@ module Google
         end
       end
       
+      # Compute engine migration target.
+      class ComputeEngineMigrationTarget
+        include Google::Apis::Core::Hashable
+      
+        # Compute Engine target shape descriptor.
+        # Corresponds to the JSON property `shape`
+        # @return [Google::Apis::MigrationcenterV1alpha1::ComputeEngineShapeDescriptor]
+        attr_accessor :shape
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @shape = args[:shape] if args.key?(:shape)
+        end
+      end
+      
+      # The user preferences relating to Compute Engine target platform.
+      class ComputeEnginePreferences
+        include Google::Apis::Core::Hashable
+      
+        # License type to consider when calculating costs for virtual machine insights
+        # and recommendations. If unspecified, costs are calculated based on the default
+        # licensing plan.
+        # Corresponds to the JSON property `licenseType`
+        # @return [String]
+        attr_accessor :license_type
+      
+        # The type of machines to consider when calculating virtual machine migration
+        # insights and recommendations. Not all machine types are available in all zones
+        # and regions.
+        # Corresponds to the JSON property `machinePreferences`
+        # @return [Google::Apis::MigrationcenterV1alpha1::MachinePreferences]
+        attr_accessor :machine_preferences
+      
+        # Persistent disk type to use. If unspecified (default), all types are
+        # considered, based on available usage data.
+        # Corresponds to the JSON property `persistentDiskType`
+        # @return [String]
+        attr_accessor :persistent_disk_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @license_type = args[:license_type] if args.key?(:license_type)
+          @machine_preferences = args[:machine_preferences] if args.key?(:machine_preferences)
+          @persistent_disk_type = args[:persistent_disk_type] if args.key?(:persistent_disk_type)
+        end
+      end
+      
+      # Compute Engine target shape descriptor.
+      class ComputeEngineShapeDescriptor
+        include Google::Apis::Core::Hashable
+      
+        # Number of logical cores.
+        # Corresponds to the JSON property `logicalCoreCount`
+        # @return [Fixnum]
+        attr_accessor :logical_core_count
+      
+        # Compute Engine machine type.
+        # Corresponds to the JSON property `machineType`
+        # @return [String]
+        attr_accessor :machine_type
+      
+        # Memory in mebibytes.
+        # Corresponds to the JSON property `memoryMb`
+        # @return [Fixnum]
+        attr_accessor :memory_mb
+      
+        # Number of physical cores.
+        # Corresponds to the JSON property `physicalCoreCount`
+        # @return [Fixnum]
+        attr_accessor :physical_core_count
+      
+        # Compute Engine machine series.
+        # Corresponds to the JSON property `series`
+        # @return [String]
+        attr_accessor :series
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @logical_core_count = args[:logical_core_count] if args.key?(:logical_core_count)
+          @machine_type = args[:machine_type] if args.key?(:machine_type)
+          @memory_mb = args[:memory_mb] if args.key?(:memory_mb)
+          @physical_core_count = args[:physical_core_count] if args.key?(:physical_core_count)
+          @series = args[:series] if args.key?(:series)
+        end
+      end
+      
       # CPU usage sample.
       class CpuUsageSample
         include Google::Apis::Core::Hashable
@@ -548,6 +833,175 @@ module Google
         # Update properties of this object
         def update!(**args)
           @utilized_percentage = args[:utilized_percentage] if args.key?(:utilized_percentage)
+        end
+      end
+      
+      # Usage data aggregation for a single day.
+      class DailyResourceUsageAggregation
+        include Google::Apis::Core::Hashable
+      
+        # Statistical aggregation of CPU usage.
+        # Corresponds to the JSON property `cpu`
+        # @return [Google::Apis::MigrationcenterV1alpha1::DailyResourceUsageAggregationCpu]
+        attr_accessor :cpu
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `date`
+        # @return [Google::Apis::MigrationcenterV1alpha1::Date]
+        attr_accessor :date
+      
+        # Statistical aggregation of disk usage.
+        # Corresponds to the JSON property `disk`
+        # @return [Google::Apis::MigrationcenterV1alpha1::DailyResourceUsageAggregationDisk]
+        attr_accessor :disk
+      
+        # Statistical aggregation of memory usage.
+        # Corresponds to the JSON property `memory`
+        # @return [Google::Apis::MigrationcenterV1alpha1::DailyResourceUsageAggregationMemory]
+        attr_accessor :memory
+      
+        # Statistical aggregation of network usage.
+        # Corresponds to the JSON property `network`
+        # @return [Google::Apis::MigrationcenterV1alpha1::DailyResourceUsageAggregationNetwork]
+        attr_accessor :network
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cpu = args[:cpu] if args.key?(:cpu)
+          @date = args[:date] if args.key?(:date)
+          @disk = args[:disk] if args.key?(:disk)
+          @memory = args[:memory] if args.key?(:memory)
+          @network = args[:network] if args.key?(:network)
+        end
+      end
+      
+      # Statistical aggregation of CPU usage.
+      class DailyResourceUsageAggregationCpu
+        include Google::Apis::Core::Hashable
+      
+        # Statistical aggregation of samples for a single resource usage.
+        # Corresponds to the JSON property `utilizationPercentage`
+        # @return [Google::Apis::MigrationcenterV1alpha1::DailyResourceUsageAggregationStats]
+        attr_accessor :utilization_percentage
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @utilization_percentage = args[:utilization_percentage] if args.key?(:utilization_percentage)
+        end
+      end
+      
+      # Statistical aggregation of disk usage.
+      class DailyResourceUsageAggregationDisk
+        include Google::Apis::Core::Hashable
+      
+        # Statistical aggregation of samples for a single resource usage.
+        # Corresponds to the JSON property `iops`
+        # @return [Google::Apis::MigrationcenterV1alpha1::DailyResourceUsageAggregationStats]
+        attr_accessor :iops
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @iops = args[:iops] if args.key?(:iops)
+        end
+      end
+      
+      # Statistical aggregation of memory usage.
+      class DailyResourceUsageAggregationMemory
+        include Google::Apis::Core::Hashable
+      
+        # Statistical aggregation of samples for a single resource usage.
+        # Corresponds to the JSON property `utilizationPercentage`
+        # @return [Google::Apis::MigrationcenterV1alpha1::DailyResourceUsageAggregationStats]
+        attr_accessor :utilization_percentage
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @utilization_percentage = args[:utilization_percentage] if args.key?(:utilization_percentage)
+        end
+      end
+      
+      # Statistical aggregation of network usage.
+      class DailyResourceUsageAggregationNetwork
+        include Google::Apis::Core::Hashable
+      
+        # Statistical aggregation of samples for a single resource usage.
+        # Corresponds to the JSON property `egressBps`
+        # @return [Google::Apis::MigrationcenterV1alpha1::DailyResourceUsageAggregationStats]
+        attr_accessor :egress_bps
+      
+        # Statistical aggregation of samples for a single resource usage.
+        # Corresponds to the JSON property `ingressBps`
+        # @return [Google::Apis::MigrationcenterV1alpha1::DailyResourceUsageAggregationStats]
+        attr_accessor :ingress_bps
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @egress_bps = args[:egress_bps] if args.key?(:egress_bps)
+          @ingress_bps = args[:ingress_bps] if args.key?(:ingress_bps)
+        end
+      end
+      
+      # Statistical aggregation of samples for a single resource usage.
+      class DailyResourceUsageAggregationStats
+        include Google::Apis::Core::Hashable
+      
+        # Average usage value.
+        # Corresponds to the JSON property `average`
+        # @return [Float]
+        attr_accessor :average
+      
+        # Median usage value.
+        # Corresponds to the JSON property `median`
+        # @return [Float]
+        attr_accessor :median
+      
+        # 95th percentile usage value.
+        # Corresponds to the JSON property `ninteyFifthPercentile`
+        # @return [Float]
+        attr_accessor :nintey_fifth_percentile
+      
+        # Peak usage value.
+        # Corresponds to the JSON property `peak`
+        # @return [Float]
+        attr_accessor :peak
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @average = args[:average] if args.key?(:average)
+          @median = args[:median] if args.key?(:median)
+          @nintey_fifth_percentile = args[:nintey_fifth_percentile] if args.key?(:nintey_fifth_percentile)
+          @peak = args[:peak] if args.key?(:peak)
         end
       end
       
@@ -705,7 +1159,7 @@ module Google
         # @return [String]
         attr_accessor :interface_type
       
-        # Partition layout.
+        # Disk partition list.
         # Corresponds to the JSON property `partitions`
         # @return [Google::Apis::MigrationcenterV1alpha1::DiskPartitionList]
         attr_accessor :partitions
@@ -715,12 +1169,12 @@ module Google
         # @return [String]
         attr_accessor :status
       
-        # Disk Capacity (required).
+        # Disk capacity.
         # Corresponds to the JSON property `totalCapacityBytes`
         # @return [Fixnum]
         attr_accessor :total_capacity_bytes
       
-        # Disk Free Space.
+        # Disk free space.
         # Corresponds to the JSON property `totalFreeBytes`
         # @return [Fixnum]
         attr_accessor :total_free_bytes
@@ -791,7 +1245,7 @@ module Google
         # @return [String]
         attr_accessor :mount_point
       
-        # Sub-partitions.
+        # Disk partition list.
         # Corresponds to the JSON property `subPartitions`
         # @return [Google::Apis::MigrationcenterV1alpha1::DiskPartitionList]
         attr_accessor :sub_partitions
@@ -822,7 +1276,7 @@ module Google
         end
       end
       
-      # 
+      # Disk partition list.
       class DiskPartitionList
         include Google::Apis::Core::Hashable
       
@@ -952,6 +1406,25 @@ module Google
         end
       end
       
+      # Describes the fit level of an asset for migration to a specific target.
+      class FitDescriptor
+        include Google::Apis::Core::Hashable
+      
+        # Fit level.
+        # Corresponds to the JSON property `fitLevel`
+        # @return [String]
+        attr_accessor :fit_level
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fit_level = args[:fit_level] if args.key?(:fit_level)
+        end
+      end
+      
       # Collection of frame data.
       class Frames
         include Google::Apis::Core::Hashable
@@ -1065,6 +1538,91 @@ module Google
         end
       end
       
+      # Generic platform details.
+      class GenericPlatformDetails
+        include Google::Apis::Core::Hashable
+      
+        # Free text representation of the machine location. The format of this field
+        # should not be relied on. Different VMs in the same location may have different
+        # string values for this field.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @location = args[:location] if args.key?(:location)
+        end
+      end
+      
+      # GKE migration target.
+      class GoogleKubernetesEngineMigrationTarget
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A resource that represents an asset group. The purpose of an asset group is to
+      # bundle a set of assets that have something in common, while allowing users to
+      # add annotations to the group. An asset can belong to multiple groups.
+      class Group
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The timestamp when the group was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The description of the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # User-friendly display name.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Labels as key value pairs.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. The name of the group.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The timestamp when the group was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Guest OS config information.
       class GuestConfigDetails
         include Google::Apis::Core::Hashable
@@ -1112,7 +1670,7 @@ module Google
       class GuestInstalledApplication
         include Google::Apis::Core::Hashable
       
-        # Installed application name .
+        # Installed application name.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1155,7 +1713,7 @@ module Google
       class GuestInstalledApplicationList
         include Google::Apis::Core::Hashable
       
-        # 
+        # Application entries.
         # Corresponds to the JSON property `entries`
         # @return [Array<Google::Apis::MigrationcenterV1alpha1::GuestInstalledApplication>]
         attr_accessor :entries
@@ -1307,6 +1865,55 @@ module Google
         end
       end
       
+      # A resource that represents a payload file in an import job.
+      class ImportDataFile
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The timestamp when the file was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # User-friendly display name. Maximum length is 63 characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The payload format.
+        # Corresponds to the JSON property `format`
+        # @return [String]
+        attr_accessor :format
+      
+        # Output only. The name of the file.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The state of the import data file.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # A resource that contains a URI to which a data file can be uploaded.
+        # Corresponds to the JSON property `uploadFileInfo`
+        # @return [Google::Apis::MigrationcenterV1alpha1::UploadFileInfo]
+        attr_accessor :upload_file_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @format = args[:format] if args.key?(:format)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+          @upload_file_info = args[:upload_file_info] if args.key?(:upload_file_info)
+        end
+      end
+      
       # A resource that reports the errors encountered while processing an import job.
       class ImportError
         include Google::Apis::Core::Hashable
@@ -1350,6 +1957,11 @@ module Google
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
+      
+        # User-friendly display name. Maximum length is 63 characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
       
         # A resource that reports result of the import job execution.
         # Corresponds to the JSON property `executionReport`
@@ -1400,6 +2012,7 @@ module Google
           @asset_source = args[:asset_source] if args.key?(:asset_source)
           @complete_time = args[:complete_time] if args.key?(:complete_time)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
           @execution_report = args[:execution_report] if args.key?(:execution_report)
           @gcs_payload = args[:gcs_payload] if args.key?(:gcs_payload)
           @inline_payload = args[:inline_payload] if args.key?(:inline_payload)
@@ -1473,6 +2086,50 @@ module Google
         end
       end
       
+      # An insight about an asset.
+      class Insight
+        include Google::Apis::Core::Hashable
+      
+        # An insight about potential migrations for an asset.
+        # Corresponds to the JSON property `migrationInsight`
+        # @return [Google::Apis::MigrationcenterV1alpha1::MigrationInsight]
+        attr_accessor :migration_insight
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @migration_insight = args[:migration_insight] if args.key?(:migration_insight)
+        end
+      end
+      
+      # Message containing insights list.
+      class InsightList
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Insights of the list.
+        # Corresponds to the JSON property `insights`
+        # @return [Array<Google::Apis::MigrationcenterV1alpha1::Insight>]
+        attr_accessor :insights
+      
+        # Output only. Update timestamp.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @insights = args[:insights] if args.key?(:insights)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Response message for listing assets.
       class ListAssetsResponse
         include Google::Apis::Core::Hashable
@@ -1499,6 +2156,69 @@ module Google
         # Update properties of this object
         def update!(**args)
           @assets = args[:assets] if args.key?(:assets)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # A response for listing groups.
+      class ListGroupsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of Group
+        # Corresponds to the JSON property `groups`
+        # @return [Array<Google::Apis::MigrationcenterV1alpha1::Group>]
+        attr_accessor :groups
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @groups = args[:groups] if args.key?(:groups)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response for listing payload files of an import job.
+      class ListImportDataFilesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of import data files.
+        # Corresponds to the JSON property `importDataFiles`
+        # @return [Array<Google::Apis::MigrationcenterV1alpha1::ImportDataFile>]
+        attr_accessor :import_data_files
+      
+        # A token that can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @import_data_files = args[:import_data_files] if args.key?(:import_data_files)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
@@ -1585,6 +2305,37 @@ module Google
         end
       end
       
+      # Response message for listing preference sets.
+      class ListPreferenceSetsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of PreferenceSets
+        # Corresponds to the JSON property `preferenceSets`
+        # @return [Array<Google::Apis::MigrationcenterV1alpha1::PreferenceSet>]
+        attr_accessor :preference_sets
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @preference_sets = args[:preference_sets] if args.key?(:preference_sets)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # Response message for listing sources.
       class ListSourcesResponse
         include Google::Apis::Core::Hashable
@@ -1663,6 +2414,49 @@ module Google
         end
       end
       
+      # The type of machines to consider when calculating virtual machine migration
+      # insights and recommendations. Not all machine types are available in all zones
+      # and regions.
+      class MachinePreferences
+        include Google::Apis::Core::Hashable
+      
+        # Compute Engine machine series to consider for insights and recommendations. If
+        # empty, no restriction is applied on the machine series.
+        # Corresponds to the JSON property `allowedMachineSeries`
+        # @return [Array<Google::Apis::MigrationcenterV1alpha1::MachineSeries>]
+        attr_accessor :allowed_machine_series
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowed_machine_series = args[:allowed_machine_series] if args.key?(:allowed_machine_series)
+        end
+      end
+      
+      # A Compute Engine machine series.
+      class MachineSeries
+        include Google::Apis::Core::Hashable
+      
+        # Code to identify a Compute Engine machine series. Consult https://cloud.google.
+        # com/compute/docs/machine-resource#machine_type_comparison for more details on
+        # the available series.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+        end
+      end
+      
       # Memory usage sample.
       class MemoryUsageSample
         include Google::Apis::Core::Hashable
@@ -1679,6 +2473,43 @@ module Google
         # Update properties of this object
         def update!(**args)
           @utilized_percentage = args[:utilized_percentage] if args.key?(:utilized_percentage)
+        end
+      end
+      
+      # An insight about potential migrations for an asset.
+      class MigrationInsight
+        include Google::Apis::Core::Hashable
+      
+        # Compute engine migration target.
+        # Corresponds to the JSON property `computeEngineTarget`
+        # @return [Google::Apis::MigrationcenterV1alpha1::ComputeEngineMigrationTarget]
+        attr_accessor :compute_engine_target
+      
+        # Describes the fit level of an asset for migration to a specific target.
+        # Corresponds to the JSON property `fit`
+        # @return [Google::Apis::MigrationcenterV1alpha1::FitDescriptor]
+        attr_accessor :fit
+      
+        # GKE migration target.
+        # Corresponds to the JSON property `gkeTarget`
+        # @return [Google::Apis::MigrationcenterV1alpha1::GoogleKubernetesEngineMigrationTarget]
+        attr_accessor :gke_target
+      
+        # VMWare engine migration target.
+        # Corresponds to the JSON property `vmwareEngineTarget`
+        # @return [Google::Apis::MigrationcenterV1alpha1::VmwareEngineMigrationTarget]
+        attr_accessor :vmware_engine_target
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @compute_engine_target = args[:compute_engine_target] if args.key?(:compute_engine_target)
+          @fit = args[:fit] if args.key?(:fit)
+          @gke_target = args[:gke_target] if args.key?(:gke_target)
+          @vmware_engine_target = args[:vmware_engine_target] if args.key?(:vmware_engine_target)
         end
       end
       
@@ -1713,11 +2544,11 @@ module Google
         end
       end
       
-      # 
+      # List of network adapters.
       class NetworkAdapterList
         include Google::Apis::Core::Hashable
       
-        # Network Adapter descriptions.
+        # Network adapter descriptions.
         # Corresponds to the JSON property `networkAdapters`
         # @return [Array<Google::Apis::MigrationcenterV1alpha1::NetworkAdapterDetails>]
         attr_accessor :network_adapters
@@ -1736,7 +2567,7 @@ module Google
       class NetworkAddress
         include Google::Apis::Core::Hashable
       
-        # If DHCP is used to assign addresses.
+        # Whether DHCP is used to assign addresses.
         # Corresponds to the JSON property `assignment`
         # @return [String]
         attr_accessor :assignment
@@ -1779,7 +2610,7 @@ module Google
       class NetworkAddressList
         include Google::Apis::Core::Hashable
       
-        # 
+        # Network address entries.
         # Corresponds to the JSON property `addresses`
         # @return [Array<Google::Apis::MigrationcenterV1alpha1::NetworkAddress>]
         attr_accessor :addresses
@@ -1859,7 +2690,7 @@ module Google
       class NetworkConnectionList
         include Google::Apis::Core::Hashable
       
-        # 
+        # Network connection entries.
         # Corresponds to the JSON property `entries`
         # @return [Array<Google::Apis::MigrationcenterV1alpha1::NetworkConnection>]
         attr_accessor :entries
@@ -2191,9 +3022,50 @@ module Google
         end
       end
       
+      # Platform specific details for Physical Machines.
+      class PhysicalPlatformDetails
+        include Google::Apis::Core::Hashable
+      
+        # Free text representation of the machine location. The format of this field
+        # should not be relied on. Different machines in the same location may have
+        # different string values for this field.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @location = args[:location] if args.key?(:location)
+        end
+      end
+      
       # Information about the platform.
       class PlatformDetails
         include Google::Apis::Core::Hashable
+      
+        # AWS EC2 specific details.
+        # Corresponds to the JSON property `awsEc2Details`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsEc2PlatformDetails]
+        attr_accessor :aws_ec2_details
+      
+        # Azure VM specific details.
+        # Corresponds to the JSON property `azureVmDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AzureVmPlatformDetails]
+        attr_accessor :azure_vm_details
+      
+        # Generic platform details.
+        # Corresponds to the JSON property `genericDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::GenericPlatformDetails]
+        attr_accessor :generic_details
+      
+        # Platform specific details for Physical Machines.
+        # Corresponds to the JSON property `physicalDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::PhysicalPlatformDetails]
+        attr_accessor :physical_details
       
         # VMware specific details.
         # Corresponds to the JSON property `vmwareDetails`
@@ -2206,7 +3078,128 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @aws_ec2_details = args[:aws_ec2_details] if args.key?(:aws_ec2_details)
+          @azure_vm_details = args[:azure_vm_details] if args.key?(:azure_vm_details)
+          @generic_details = args[:generic_details] if args.key?(:generic_details)
+          @physical_details = args[:physical_details] if args.key?(:physical_details)
           @vmware_details = args[:vmware_details] if args.key?(:vmware_details)
+        end
+      end
+      
+      # The preferences that apply to all assets in a given context.
+      class PreferenceSet
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The timestamp when the preference set was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # A description of the preference set.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # User-friendly display name. Maximum length is 63 characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. Name of the preference set.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The timestamp when the preference set was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # VirtualMachinePreferences enables you to create sets of assumptions, for
+        # example, a geographical location and pricing track, for your migrated virtual
+        # machines. The set of preferences influence recommendations for migrating
+        # virtual machine assets.
+        # Corresponds to the JSON property `virtualMachinePreferences`
+        # @return [Google::Apis::MigrationcenterV1alpha1::VirtualMachinePreferences]
+        attr_accessor :virtual_machine_preferences
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @virtual_machine_preferences = args[:virtual_machine_preferences] if args.key?(:virtual_machine_preferences)
+        end
+      end
+      
+      # The user preferences relating to target regions.
+      class RegionPreferences
+        include Google::Apis::Core::Hashable
+      
+        # A list of preferred regions, ordered by the most preferred region first. Set
+        # only valid Google Cloud region names. See https://cloud.google.com/compute/
+        # docs/regions-zones for available regions.
+        # Corresponds to the JSON property `preferredRegions`
+        # @return [Array<String>]
+        attr_accessor :preferred_regions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @preferred_regions = args[:preferred_regions] if args.key?(:preferred_regions)
+        end
+      end
+      
+      # A request to remove assets from a group.
+      class RemoveAssetsFromGroupRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. When this value is set to `false` and one of the given assets is not
+        # an existing member of the group, the operation fails with a `Not Found` error.
+        # When set to `true` this situation is silently ignored by the server. Default
+        # value is `false`.
+        # Corresponds to the JSON property `allowMissing`
+        # @return [Boolean]
+        attr_accessor :allow_missing
+        alias_method :allow_missing?, :allow_missing
+      
+        # Lists the asset IDs of all assets.
+        # Corresponds to the JSON property `assets`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AssetList]
+        attr_accessor :assets
+      
+        # Optional. An optional request ID to identify requests. Specify a unique
+        # request ID so that if you must retry your request, the server will know to
+        # ignore the request if it has already been completed. The server will guarantee
+        # that for at least 60 minutes after the first request. For example, consider a
+        # situation where you make an initial request and the request times out. If you
+        # make the request again with the same request ID, the server can check if
+        # original operation with the same request ID was received, and if so, will
+        # ignore the second request. This prevents clients from accidentally creating
+        # duplicate commitments. The request ID must be a valid UUID with the exception
+        # that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_missing = args[:allow_missing] if args.key?(:allow_missing)
+          @assets = args[:assets] if args.key?(:assets)
+          @request_id = args[:request_id] if args.key?(:request_id)
         end
       end
       
@@ -2298,7 +3291,7 @@ module Google
       class RunningProcessList
         include Google::Apis::Core::Hashable
       
-        # 
+        # Running process entries.
         # Corresponds to the JSON property `processes`
         # @return [Array<Google::Apis::MigrationcenterV1alpha1::RunningProcess>]
         attr_accessor :processes
@@ -2372,7 +3365,7 @@ module Google
       class RunningServiceList
         include Google::Apis::Core::Hashable
       
-        # 
+        # Running service entries.
         # Corresponds to the JSON property `services`
         # @return [Array<Google::Apis::MigrationcenterV1alpha1::RunningService>]
         attr_accessor :services
@@ -2454,6 +3447,31 @@ module Google
         def update!(**args)
           @enabled = args[:enabled] if args.key?(:enabled)
           @mode = args[:mode] if args.key?(:mode)
+        end
+      end
+      
+      # Describes the Migration Center settings related to the project.
+      class Settings
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The name of the resource.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The preference set used by default for a project.
+        # Corresponds to the JSON property `preferenceSet`
+        # @return [String]
+        attr_accessor :preference_set
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @preference_set = args[:preference_set] if args.key?(:preference_set)
         end
       end
       
@@ -2637,6 +3655,43 @@ module Google
         end
       end
       
+      # A resource that contains a URI to which a data file can be uploaded.
+      class UploadFileInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The headers that were used to sign the URL.
+        # Corresponds to the JSON property `headers`
+        # @return [Hash<String,String>]
+        attr_accessor :headers
+      
+        # Output only. Upload URI for the file.
+        # Corresponds to the JSON property `signedUri`
+        # @return [String]
+        attr_accessor :signed_uri
+      
+        # Output only. Upload URI for the file.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        # Output only. Expiration time of the upload URI.
+        # Corresponds to the JSON property `uriExpirationTime`
+        # @return [String]
+        attr_accessor :uri_expiration_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @headers = args[:headers] if args.key?(:headers)
+          @signed_uri = args[:signed_uri] if args.key?(:signed_uri)
+          @uri = args[:uri] if args.key?(:uri)
+          @uri_expiration_time = args[:uri_expiration_time] if args.key?(:uri_expiration_time)
+        end
+      end
+      
       # A request to validate an import job.
       class ValidateImportJobRequest
         include Google::Apis::Core::Hashable
@@ -2694,22 +3749,22 @@ module Google
       class VirtualMachineArchitectureDetails
         include Google::Apis::Core::Hashable
       
-        # Details about the bios.
+        # Details about the BIOS.
         # Corresponds to the JSON property `bios`
         # @return [Google::Apis::MigrationcenterV1alpha1::BiosDetails]
         attr_accessor :bios
       
-        # CPU architecture e.g.: "x64-based PC", "x86_64", "i686" etc.
+        # CPU architecture, e.g., "x64-based PC", "x86_64", "i686" etc.
         # Corresponds to the JSON property `cpuArchitecture`
         # @return [String]
         attr_accessor :cpu_architecture
       
-        # CPU manufacturer e.g.: "Intel", "AMD".
+        # CPU manufacturer, e.g., "Intel", "AMD".
         # Corresponds to the JSON property `cpuManufacturer`
         # @return [String]
         attr_accessor :cpu_manufacturer
       
-        # CPU name e.g. "Intel Xeon E5-2690", "AMD EPYC 7571" etc.
+        # CPU name, e.g., "Intel Xeon E5-2690", "AMD EPYC 7571" etc.
         # Corresponds to the JSON property `cpuName`
         # @return [String]
         attr_accessor :cpu_name
@@ -2719,7 +3774,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :cpu_socket_count
       
-        # Number of cpu threads allocated to the machine.
+        # Number of CPU threads allocated to the machine.
         # Corresponds to the JSON property `cpuThreadCount`
         # @return [Fixnum]
         attr_accessor :cpu_thread_count
@@ -2729,7 +3784,7 @@ module Google
         # @return [String]
         attr_accessor :firmware
       
-        # CPU hyperthreading support (inner enum).
+        # CPU hyperthreading support.
         # Corresponds to the JSON property `hyperthreading`
         # @return [String]
         attr_accessor :hyperthreading
@@ -2766,6 +3821,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :core_count
       
+        # VM creation timestamp.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
         # Information from Guest-level collections.
         # Corresponds to the JSON property `guestOs`
         # @return [Google::Apis::MigrationcenterV1alpha1::GuestOsDetails]
@@ -2785,6 +3845,11 @@ module Google
         # Corresponds to the JSON property `osName`
         # @return [String]
         attr_accessor :os_name
+      
+        # The version of the operating system running on the virtual machine.
+        # Corresponds to the JSON property `osVersion`
+        # @return [String]
+        attr_accessor :os_version
       
         # Information about the platform.
         # Corresponds to the JSON property `platform`
@@ -2826,12 +3891,12 @@ module Google
         # @return [String]
         attr_accessor :vm_name
       
-        # Details of network adapters and settings
+        # Details of network adapters and settings.
         # Corresponds to the JSON property `vmNetwork`
         # @return [Google::Apis::MigrationcenterV1alpha1::VirtualMachineNetworkDetails]
         attr_accessor :vm_network
       
-        # Virtual Machine uniqe identifier.
+        # Virtual Machine unique identifier.
         # Corresponds to the JSON property `vmUuid`
         # @return [String]
         attr_accessor :vm_uuid
@@ -2843,10 +3908,12 @@ module Google
         # Update properties of this object
         def update!(**args)
           @core_count = args[:core_count] if args.key?(:core_count)
+          @create_time = args[:create_time] if args.key?(:create_time)
           @guest_os = args[:guest_os] if args.key?(:guest_os)
           @memory_mb = args[:memory_mb] if args.key?(:memory_mb)
           @os_family = args[:os_family] if args.key?(:os_family)
           @os_name = args[:os_name] if args.key?(:os_name)
+          @os_version = args[:os_version] if args.key?(:os_version)
           @platform = args[:platform] if args.key?(:platform)
           @power_state = args[:power_state] if args.key?(:power_state)
           @vcenter_folder = args[:vcenter_folder] if args.key?(:vcenter_folder)
@@ -2897,31 +3964,35 @@ module Google
         end
       end
       
-      # Details of network adapters and settings
+      # Details of network adapters and settings.
       class VirtualMachineNetworkDetails
         include Google::Apis::Core::Hashable
       
-        # Default GW address. Top-level object, will be later encriched by full
-        # RouteInfo.
+        # Default gateway address.
         # Corresponds to the JSON property `defaultGw`
         # @return [String]
         attr_accessor :default_gw
       
-        # List of Network Adapters.
+        # List of network adapters.
         # Corresponds to the JSON property `networkAdapters`
         # @return [Google::Apis::MigrationcenterV1alpha1::NetworkAdapterList]
         attr_accessor :network_adapters
       
-        # IP Address of the machine.
+        # IP address of the machine.
         # Corresponds to the JSON property `primaryIpAddress`
         # @return [String]
         attr_accessor :primary_ip_address
       
-        # MAC Address of the machine. This property is used to uniqly identify the
+        # MAC address of the machine. This property is used to uniqly identify the
         # machine.
         # Corresponds to the JSON property `primaryMacAddress`
         # @return [String]
         attr_accessor :primary_mac_address
+      
+        # Public IP address of the machine.
+        # Corresponds to the JSON property `publicIpAddress`
+        # @return [String]
+        attr_accessor :public_ip_address
       
         def initialize(**args)
            update!(**args)
@@ -2933,6 +4004,52 @@ module Google
           @network_adapters = args[:network_adapters] if args.key?(:network_adapters)
           @primary_ip_address = args[:primary_ip_address] if args.key?(:primary_ip_address)
           @primary_mac_address = args[:primary_mac_address] if args.key?(:primary_mac_address)
+          @public_ip_address = args[:public_ip_address] if args.key?(:public_ip_address)
+        end
+      end
+      
+      # VirtualMachinePreferences enables you to create sets of assumptions, for
+      # example, a geographical location and pricing track, for your migrated virtual
+      # machines. The set of preferences influence recommendations for migrating
+      # virtual machine assets.
+      class VirtualMachinePreferences
+        include Google::Apis::Core::Hashable
+      
+        # Commitment plan to consider when calculating costs for virtual machine
+        # insights and recommendations. If you are unsure which value to set, a 3 year
+        # commitment plan is often a good value to start with.
+        # Corresponds to the JSON property `commitmentPlan`
+        # @return [String]
+        attr_accessor :commitment_plan
+      
+        # The user preferences relating to Compute Engine target platform.
+        # Corresponds to the JSON property `computeEnginePreferences`
+        # @return [Google::Apis::MigrationcenterV1alpha1::ComputeEnginePreferences]
+        attr_accessor :compute_engine_preferences
+      
+        # The user preferences relating to target regions.
+        # Corresponds to the JSON property `regionPreferences`
+        # @return [Google::Apis::MigrationcenterV1alpha1::RegionPreferences]
+        attr_accessor :region_preferences
+      
+        # Sizing optimization strategy specifies the preferred strategy used when
+        # extrapolating usage data to calculate insights and recommendations for a
+        # virtual machine. If you are unsure which value to set, a moderate sizing
+        # optimization strategy is often a good value to start with.
+        # Corresponds to the JSON property `sizingOptimizationStrategy`
+        # @return [String]
+        attr_accessor :sizing_optimization_strategy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @commitment_plan = args[:commitment_plan] if args.key?(:commitment_plan)
+          @compute_engine_preferences = args[:compute_engine_preferences] if args.key?(:compute_engine_preferences)
+          @region_preferences = args[:region_preferences] if args.key?(:region_preferences)
+          @sizing_optimization_strategy = args[:sizing_optimization_strategy] if args.key?(:sizing_optimization_strategy)
         end
       end
       
@@ -2971,6 +4088,19 @@ module Google
           @rdm_compatibility_mode = args[:rdm_compatibility_mode] if args.key?(:rdm_compatibility_mode)
           @shared = args[:shared] if args.key?(:shared)
           @vmdk_disk_mode = args[:vmdk_disk_mode] if args.key?(:vmdk_disk_mode)
+        end
+      end
+      
+      # VMWare engine migration target.
+      class VmwareEngineMigrationTarget
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
