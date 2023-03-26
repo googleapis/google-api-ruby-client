@@ -371,6 +371,7 @@ module Google
           collection :state_messages, as: 'stateMessages', class: Google::Apis::CloudfunctionsV2::GoogleCloudFunctionsV2StateMessage, decorator: Google::Apis::CloudfunctionsV2::GoogleCloudFunctionsV2StateMessage::Representation
       
           property :update_time, as: 'updateTime'
+          property :url, as: 'url'
         end
       end
       
