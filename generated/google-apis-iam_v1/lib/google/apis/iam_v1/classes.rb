@@ -617,6 +617,54 @@ module Google
         end
       end
       
+      # Represents a public key data along with its format.
+      class KeyData
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The format of the key.
+        # Corresponds to the JSON property `format`
+        # @return [String]
+        attr_accessor :format
+      
+        # Output only. The key data. The format of the key is represented by the format
+        # field.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Immutable. The specifications for the key.
+        # Corresponds to the JSON property `keySpec`
+        # @return [String]
+        attr_accessor :key_spec
+      
+        # Output only. Latest timestamp when this key is valid. Attempts to use this key
+        # after this time will fail. Only present if the key data represents a X.509
+        # certificate.
+        # Corresponds to the JSON property `notAfterTime`
+        # @return [String]
+        attr_accessor :not_after_time
+      
+        # Output only. Earliest timestamp when this key is valid. Attempts to use this
+        # key before this time will fail. Only present if the key data represents a X.
+        # 509 certificate.
+        # Corresponds to the JSON property `notBeforeTime`
+        # @return [String]
+        attr_accessor :not_before_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @format = args[:format] if args.key?(:format)
+          @key = args[:key] if args.key?(:key)
+          @key_spec = args[:key_spec] if args.key?(:key_spec)
+          @not_after_time = args[:not_after_time] if args.key?(:not_after_time)
+          @not_before_time = args[:not_before_time] if args.key?(:not_before_time)
+        end
+      end
+      
       # The request to lint a Cloud IAM policy object.
       class LintPolicyRequest
         include Google::Apis::Core::Hashable
@@ -807,6 +855,32 @@ module Google
         end
       end
       
+      # Response message for ListWorkforcePoolProviderKeys.
+      class ListWorkforcePoolProviderKeysResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of WorkforcePoolProviderKeys.
+        # Corresponds to the JSON property `workforcePoolProviderKeys`
+        # @return [Array<Google::Apis::IamV1::WorkforcePoolProviderKey>]
+        attr_accessor :workforce_pool_provider_keys
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @workforce_pool_provider_keys = args[:workforce_pool_provider_keys] if args.key?(:workforce_pool_provider_keys)
+        end
+      end
+      
       # Response message for ListWorkforcePoolProviders.
       class ListWorkforcePoolProvidersResponse
         include Google::Apis::Core::Hashable
@@ -856,6 +930,32 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @workforce_pools = args[:workforce_pools] if args.key?(:workforce_pools)
+        end
+      end
+      
+      # Response message for ListWorkloadIdentityPoolProviderKeys.
+      class ListWorkloadIdentityPoolProviderKeysResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of WorkloadIdentityPoolProviderKey
+        # Corresponds to the JSON property `workloadIdentityPoolProviderKeys`
+        # @return [Array<Google::Apis::IamV1::WorkloadIdentityPoolProviderKey>]
+        attr_accessor :workload_identity_pool_provider_keys
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @workload_identity_pool_provider_keys = args[:workload_identity_pool_provider_keys] if args.key?(:workload_identity_pool_provider_keys)
         end
       end
       
@@ -1997,6 +2097,19 @@ module Google
         end
       end
       
+      # Request message for UndeleteWorkforcePoolProviderKey.
+      class UndeleteWorkforcePoolProviderKeyRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Request message for UndeleteWorkforcePoolProvider.
       class UndeleteWorkforcePoolProviderRequest
         include Google::Apis::Core::Hashable
@@ -2025,6 +2138,19 @@ module Google
       
       # Request message for UndeleteWorkforcePoolSubject.
       class UndeleteWorkforcePoolSubjectRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Request message for UndeleteWorkloadIdentityPoolProviderKey.
+      class UndeleteWorkloadIdentityPoolProviderKeyRequest
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -2269,6 +2395,53 @@ module Google
         end
       end
       
+      # Represents a public key configuration for a Workforce Pool Provider. The key
+      # can be configured in your identity provider to encrypt SAML assertions. Google
+      # holds the corresponding private key, which it uses to decrypt encrypted tokens.
+      class WorkforcePoolProviderKey
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time after which the key will be permanently deleted and
+        # cannot be recovered. Note that the key may get purged before this time if the
+        # total limit of keys per provider is exceeded.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # Represents a public key data along with its format.
+        # Corresponds to the JSON property `keyData`
+        # @return [Google::Apis::IamV1::KeyData]
+        attr_accessor :key_data
+      
+        # Output only. The resource name of the key.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The state of the key.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Immutable. The purpose of the key.
+        # Corresponds to the JSON property `use`
+        # @return [String]
+        attr_accessor :use
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @key_data = args[:key_data] if args.key?(:key_data)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+          @use = args[:use] if args.key?(:use)
+        end
+      end
+      
       # Represents a collection of external workload identities. You can define IAM
       # policies to grant these identities access to Google Cloud resources.
       class WorkloadIdentityPool
@@ -2448,6 +2621,54 @@ module Google
           @oidc = args[:oidc] if args.key?(:oidc)
           @saml = args[:saml] if args.key?(:saml)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Represents a public key configuration for your workload identity pool provider.
+      # The key can be configured in your identity provider to encrypt the SAML
+      # assertions. Google holds the corresponding private key which it uses to
+      # decrypt encrypted tokens.
+      class WorkloadIdentityPoolProviderKey
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Time after which the key will be permanently purged and cannot be
+        # recovered. Note that the key may get purged before this timestamp if the total
+        # limit of keys per provider is crossed.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # Represents a public key data along with its format.
+        # Corresponds to the JSON property `keyData`
+        # @return [Google::Apis::IamV1::KeyData]
+        attr_accessor :key_data
+      
+        # Output only. The resource name of the key.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The state of the key.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Immutable. The purpose of the key.
+        # Corresponds to the JSON property `use`
+        # @return [String]
+        attr_accessor :use
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @key_data = args[:key_data] if args.key?(:key_data)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+          @use = args[:use] if args.key?(:use)
         end
       end
     end

@@ -148,6 +148,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class KeyData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LintPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -184,6 +190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListWorkforcePoolProviderKeysResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListWorkforcePoolProvidersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -191,6 +203,12 @@ module Google
       end
       
       class ListWorkforcePoolsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListWorkloadIdentityPoolProviderKeysResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -376,6 +394,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UndeleteWorkforcePoolProviderKeyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UndeleteWorkforcePoolProviderRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -389,6 +413,12 @@ module Google
       end
       
       class UndeleteWorkforcePoolSubjectRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UndeleteWorkloadIdentityPoolProviderKeyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -424,6 +454,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WorkforcePoolProviderKey
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WorkloadIdentityPool
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -437,6 +473,12 @@ module Google
       end
       
       class WorkloadIdentityPoolProvider
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WorkloadIdentityPoolProviderKey
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -606,6 +648,17 @@ module Google
         end
       end
       
+      class KeyData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :format, as: 'format'
+          property :key, as: 'key'
+          property :key_spec, as: 'keySpec'
+          property :not_after_time, as: 'notAfterTime'
+          property :not_before_time, as: 'notBeforeTime'
+        end
+      end
+      
       class LintPolicyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -661,6 +714,15 @@ module Google
         end
       end
       
+      class ListWorkforcePoolProviderKeysResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :workforce_pool_provider_keys, as: 'workforcePoolProviderKeys', class: Google::Apis::IamV1::WorkforcePoolProviderKey, decorator: Google::Apis::IamV1::WorkforcePoolProviderKey::Representation
+      
+        end
+      end
+      
       class ListWorkforcePoolProvidersResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -675,6 +737,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :workforce_pools, as: 'workforcePools', class: Google::Apis::IamV1::WorkforcePool, decorator: Google::Apis::IamV1::WorkforcePool::Representation
+      
+        end
+      end
+      
+      class ListWorkloadIdentityPoolProviderKeysResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :workload_identity_pool_provider_keys, as: 'workloadIdentityPoolProviderKeys', class: Google::Apis::IamV1::WorkloadIdentityPoolProviderKey, decorator: Google::Apis::IamV1::WorkloadIdentityPoolProviderKey::Representation
       
         end
       end
@@ -954,6 +1025,12 @@ module Google
         end
       end
       
+      class UndeleteWorkforcePoolProviderKeyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class UndeleteWorkforcePoolProviderRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -967,6 +1044,12 @@ module Google
       end
       
       class UndeleteWorkforcePoolSubjectRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class UndeleteWorkloadIdentityPoolProviderKeyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -1021,6 +1104,18 @@ module Google
         end
       end
       
+      class WorkforcePoolProviderKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :expire_time, as: 'expireTime'
+          property :key_data, as: 'keyData', class: Google::Apis::IamV1::KeyData, decorator: Google::Apis::IamV1::KeyData::Representation
+      
+          property :name, as: 'name'
+          property :state, as: 'state'
+          property :use, as: 'use'
+        end
+      end
+      
       class WorkloadIdentityPool
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1054,6 +1149,18 @@ module Google
           property :saml, as: 'saml', class: Google::Apis::IamV1::Saml, decorator: Google::Apis::IamV1::Saml::Representation
       
           property :state, as: 'state'
+        end
+      end
+      
+      class WorkloadIdentityPoolProviderKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :expire_time, as: 'expireTime'
+          property :key_data, as: 'keyData', class: Google::Apis::IamV1::KeyData, decorator: Google::Apis::IamV1::KeyData::Representation
+      
+          property :name, as: 'name'
+          property :state, as: 'state'
+          property :use, as: 'use'
         end
       end
     end
