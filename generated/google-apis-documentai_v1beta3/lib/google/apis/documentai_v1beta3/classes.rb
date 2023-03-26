@@ -8528,7 +8528,7 @@ module Google
       class GoogleCloudDocumentaiV1beta3ImportProcessorVersionRequest
         include Google::Apis::Core::Hashable
       
-        # Required. The source processor version to import from.
+        # The source processor version to import from.
         # Corresponds to the JSON property `processorVersionSource`
         # @return [String]
         attr_accessor :processor_version_source
