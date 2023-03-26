@@ -2728,6 +2728,11 @@ module Google
       class GoogleCloudApigeeV1DeploymentGroupConfig
         include Google::Apis::Core::Hashable
       
+        # Type of the deployment group, which will be either Standard or Extensible.
+        # Corresponds to the JSON property `deploymentGroupType`
+        # @return [String]
+        attr_accessor :deployment_group_type
+      
         # Name of the deployment group in the following format: `organizations/`org`/
         # environments/`env`/deploymentGroups/`group``.
         # Corresponds to the JSON property `name`
@@ -2752,6 +2757,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @deployment_group_type = args[:deployment_group_type] if args.key?(:deployment_group_type)
           @name = args[:name] if args.key?(:name)
           @revision_id = args[:revision_id] if args.key?(:revision_id)
           @uid = args[:uid] if args.key?(:uid)
