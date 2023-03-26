@@ -3937,16 +3937,6 @@ module Google
         # @return [Fixnum]
         attr_accessor :concurrent_viewers
       
-        # The total number of live chat messages currently on the broadcast. The
-        # property and its value will be present if the broadcast is public, has the
-        # live chat feature enabled, and has at least one message. Note that this field
-        # will not be filled after the broadcast ends. So this property would not
-        # identify the number of chat messages for an archived video of a completed live
-        # broadcast.
-        # Corresponds to the JSON property `totalChatCount`
-        # @return [Fixnum]
-        attr_accessor :total_chat_count
-      
         def initialize(**args)
            update!(**args)
         end
@@ -3954,7 +3944,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @concurrent_viewers = args[:concurrent_viewers] if args.key?(:concurrent_viewers)
-          @total_chat_count = args[:total_chat_count] if args.key?(:total_chat_count)
         end
       end
       
