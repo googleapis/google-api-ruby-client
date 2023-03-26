@@ -456,6 +456,69 @@ module Google
         end
       end
       
+      # The [data profile](https://cloud.google.com/dlp/docs/data-profiles) associated
+      # with the finding.
+      class CloudDlpDataProfile
+        include Google::Apis::Core::Hashable
+      
+        # Name of the data profile, for example, `projects/123/locations/europe/
+        # tableProfiles/8383929`.
+        # Corresponds to the JSON property `dataProfile`
+        # @return [String]
+        attr_accessor :data_profile
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_profile = args[:data_profile] if args.key?(:data_profile)
+        end
+      end
+      
+      # Details about the Cloud Data Loss Prevention (Cloud DLP) [inspection job](
+      # https://cloud.google.com/dlp/docs/concepts-job-triggers) that produced the
+      # finding.
+      class CloudDlpInspection
+        include Google::Apis::Core::Hashable
+      
+        # Whether Cloud DLP scanned the complete resource or a sampled subset.
+        # Corresponds to the JSON property `fullScan`
+        # @return [Boolean]
+        attr_accessor :full_scan
+        alias_method :full_scan?, :full_scan
+      
+        # The [type of information](https://cloud.google.com/dlp/docs/infotypes-
+        # reference) found, for example, `EMAIL_ADDRESS` or `STREET_ADDRESS`.
+        # Corresponds to the JSON property `infoType`
+        # @return [String]
+        attr_accessor :info_type
+      
+        # The number of times Cloud DLP found this infoType within this job and resource.
+        # Corresponds to the JSON property `infoTypeCount`
+        # @return [Fixnum]
+        attr_accessor :info_type_count
+      
+        # Name of the inspection job, for example, `projects/123/locations/europe/
+        # dlpJobs/i-8383929`.
+        # Corresponds to the JSON property `inspectJob`
+        # @return [String]
+        attr_accessor :inspect_job
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @full_scan = args[:full_scan] if args.key?(:full_scan)
+          @info_type = args[:info_type] if args.key?(:info_type)
+          @info_type_count = args[:info_type_count] if args.key?(:info_type_count)
+          @inspect_job = args[:inspect_job] if args.key?(:inspect_job)
+        end
+      end
+      
       # Contains compliance information about a security standard indicating unmet
       # recommendations.
       class Compliance
@@ -1065,6 +1128,19 @@ module Google
         # @return [String]
         attr_accessor :category
       
+        # The [data profile](https://cloud.google.com/dlp/docs/data-profiles) associated
+        # with the finding.
+        # Corresponds to the JSON property `cloudDlpDataProfile`
+        # @return [Google::Apis::SecuritycenterV1beta1::CloudDlpDataProfile]
+        attr_accessor :cloud_dlp_data_profile
+      
+        # Details about the Cloud Data Loss Prevention (Cloud DLP) [inspection job](
+        # https://cloud.google.com/dlp/docs/concepts-job-triggers) that produced the
+        # finding.
+        # Corresponds to the JSON property `cloudDlpInspection`
+        # @return [Google::Apis::SecuritycenterV1beta1::CloudDlpInspection]
+        attr_accessor :cloud_dlp_inspection
+      
         # Contains compliance information for security standards associated to the
         # finding.
         # Corresponds to the JSON property `compliances`
@@ -1182,6 +1258,12 @@ module Google
         # @return [Google::Apis::SecuritycenterV1beta1::MitreAttack]
         attr_accessor :mitre_attack
       
+        # Unique identifier of the module which generated the finding. Example: folders/
+        # 598186756061/securityHealthAnalyticsSettings/customModules/56799441161885
+        # Corresponds to the JSON property `moduleName`
+        # @return [String]
+        attr_accessor :module_name
+      
         # Indicates the mute state of a finding (either muted, unmuted or undefined).
         # Unlike other attributes of a finding, a finding provider shouldn't set the
         # value of mute.
@@ -1213,6 +1295,12 @@ module Google
         # Corresponds to the JSON property `nextSteps`
         # @return [String]
         attr_accessor :next_steps
+      
+        # Contains information about the org policy constraints associated with the
+        # finding.
+        # Corresponds to the JSON property `orgPolicyConstraints`
+        # @return [Array<Google::Apis::SecuritycenterV1beta1::OrgPolicyConstraint>]
+        attr_accessor :org_policy_constraints
       
         # The relative resource name of the source the finding belongs to. See: https://
         # cloud.google.com/apis/design/resource_names#relative_resource_name This field
@@ -1283,6 +1371,8 @@ module Google
           @access = args[:access] if args.key?(:access)
           @canonical_name = args[:canonical_name] if args.key?(:canonical_name)
           @category = args[:category] if args.key?(:category)
+          @cloud_dlp_data_profile = args[:cloud_dlp_data_profile] if args.key?(:cloud_dlp_data_profile)
+          @cloud_dlp_inspection = args[:cloud_dlp_inspection] if args.key?(:cloud_dlp_inspection)
           @compliances = args[:compliances] if args.key?(:compliances)
           @connections = args[:connections] if args.key?(:connections)
           @contacts = args[:contacts] if args.key?(:contacts)
@@ -1301,11 +1391,13 @@ module Google
           @kernel_rootkit = args[:kernel_rootkit] if args.key?(:kernel_rootkit)
           @kubernetes = args[:kubernetes] if args.key?(:kubernetes)
           @mitre_attack = args[:mitre_attack] if args.key?(:mitre_attack)
+          @module_name = args[:module_name] if args.key?(:module_name)
           @mute = args[:mute] if args.key?(:mute)
           @mute_initiator = args[:mute_initiator] if args.key?(:mute_initiator)
           @mute_update_time = args[:mute_update_time] if args.key?(:mute_update_time)
           @name = args[:name] if args.key?(:name)
           @next_steps = args[:next_steps] if args.key?(:next_steps)
+          @org_policy_constraints = args[:org_policy_constraints] if args.key?(:org_policy_constraints)
           @parent = args[:parent] if args.key?(:parent)
           @parent_display_name = args[:parent_display_name] if args.key?(:parent_display_name)
           @processes = args[:processes] if args.key?(:processes)
@@ -1858,10 +1950,28 @@ module Google
       class GoogleCloudSecuritycenterV1ResourceValueConfig
         include Google::Apis::Core::Hashable
       
+        # Output only. Timestamp this resource value config was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Description of the resource value config.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
         # Name for the resource value config
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # List of resource labels to search for, evaluated with AND. E.g. "
+        # resource_labels_selector": `"key": "value", "env": "prod"` will match
+        # resources with labels "key": "value" AND "env": "prod" https://cloud.google.
+        # com/resource-manager/docs/creating-managing-labels
+        # Corresponds to the JSON property `resourceLabelsSelector`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_labels_selector
       
         # Apply resource_value only to resources that match resource_type. resource_type
         # will be checked with "AND" of other resources. E.g. "storage.googleapis.com/
@@ -1890,17 +2000,26 @@ module Google
         # @return [Array<String>]
         attr_accessor :tag_values
       
+        # Output only. Timestamp this resource value config was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
           @name = args[:name] if args.key?(:name)
+          @resource_labels_selector = args[:resource_labels_selector] if args.key?(:resource_labels_selector)
           @resource_type = args[:resource_type] if args.key?(:resource_type)
           @resource_value = args[:resource_value] if args.key?(:resource_value)
           @scope = args[:scope] if args.key?(:scope)
           @tag_values = args[:tag_values] if args.key?(:tag_values)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -3197,6 +3316,26 @@ module Google
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @response = args[:response] if args.key?(:response)
+        end
+      end
+      
+      # Encapsulates data about a constraint associated with an organization policy.
+      class OrgPolicyConstraint
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of the constraint. Example: "organizations/`organization_id`/
+        # constraints/`constraint_name`"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
