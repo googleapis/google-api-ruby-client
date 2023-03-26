@@ -367,6 +367,84 @@ module Google
         end
       end
       
+      # Specification that applies to Instance entries that are part of `
+      # CLOUD_BIGTABLE` system. (user_specified_type)
+      class GoogleCloudDatacatalogV1CloudBigtableInstanceSpec
+        include Google::Apis::Core::Hashable
+      
+        # The list of clusters for the Instance.
+        # Corresponds to the JSON property `cloudBigtableClusterSpecs`
+        # @return [Array<Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec>]
+        attr_accessor :cloud_bigtable_cluster_specs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_bigtable_cluster_specs = args[:cloud_bigtable_cluster_specs] if args.key?(:cloud_bigtable_cluster_specs)
+        end
+      end
+      
+      # Spec that applies to clusters of an Instance of Cloud Bigtable.
+      class GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec
+        include Google::Apis::Core::Hashable
+      
+        # Name of the cluster.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # A link back to the parent resource, in this case Instance.
+        # Corresponds to the JSON property `linkedResource`
+        # @return [String]
+        attr_accessor :linked_resource
+      
+        # Location of the cluster, typically a Cloud zone.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # Type of the resource. For a cluster this would be "CLUSTER".
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @linked_resource = args[:linked_resource] if args.key?(:linked_resource)
+          @location = args[:location] if args.key?(:location)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Specification that applies to all entries that are part of `CLOUD_BIGTABLE`
+      # system (user_specified_type)
+      class GoogleCloudDatacatalogV1CloudBigtableSystemSpec
+        include Google::Apis::Core::Hashable
+      
+        # Display name of the Instance. This is user specified and different from the
+        # resource name.
+        # Corresponds to the JSON property `instanceDisplayName`
+        # @return [String]
+        attr_accessor :instance_display_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance_display_name = args[:instance_display_name] if args.key?(:instance_display_name)
+        end
+      end
+      
       # Specification for the BigQuery connection to a Cloud SQL instance.
       class GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec
         include Google::Apis::Core::Hashable
@@ -865,6 +943,12 @@ module Google
         # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1BusinessContext]
         attr_accessor :business_context
       
+        # Specification that applies to all entries that are part of `CLOUD_BIGTABLE`
+        # system (user_specified_type)
+        # Corresponds to the JSON property `cloudBigtableSystemSpec`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1CloudBigtableSystemSpec]
+        attr_accessor :cloud_bigtable_system_spec
+      
         # Physical location of an entry.
         # Corresponds to the JSON property `dataSource`
         # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1DataSource]
@@ -977,6 +1061,12 @@ module Google
         # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1Schema]
         attr_accessor :schema
       
+        # Specification that applies to a Service resource. Valid only for entries with
+        # the `SERVICE` type.
+        # Corresponds to the JSON property `serviceSpec`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1ServiceSpec]
+        attr_accessor :service_spec
+      
         # Timestamps associated with this resource in a particular system.
         # Corresponds to the JSON property `sourceSystemTimestamps`
         # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1SystemTimestamps]
@@ -1032,6 +1122,7 @@ module Google
           @bigquery_date_sharded_spec = args[:bigquery_date_sharded_spec] if args.key?(:bigquery_date_sharded_spec)
           @bigquery_table_spec = args[:bigquery_table_spec] if args.key?(:bigquery_table_spec)
           @business_context = args[:business_context] if args.key?(:business_context)
+          @cloud_bigtable_system_spec = args[:cloud_bigtable_system_spec] if args.key?(:cloud_bigtable_system_spec)
           @data_source = args[:data_source] if args.key?(:data_source)
           @data_source_connection_spec = args[:data_source_connection_spec] if args.key?(:data_source_connection_spec)
           @database_table_spec = args[:database_table_spec] if args.key?(:database_table_spec)
@@ -1048,6 +1139,7 @@ module Google
           @personal_details = args[:personal_details] if args.key?(:personal_details)
           @routine_spec = args[:routine_spec] if args.key?(:routine_spec)
           @schema = args[:schema] if args.key?(:schema)
+          @service_spec = args[:service_spec] if args.key?(:service_spec)
           @source_system_timestamps = args[:source_system_timestamps] if args.key?(:source_system_timestamps)
           @sql_database_system_spec = args[:sql_database_system_spec] if args.key?(:sql_database_system_spec)
           @type = args[:type] if args.key?(:type)
@@ -1606,6 +1698,27 @@ module Google
         # Update properties of this object
         def update!(**args)
           @columns = args[:columns] if args.key?(:columns)
+        end
+      end
+      
+      # Specification that applies to a Service resource. Valid only for entries with
+      # the `SERVICE` type.
+      class GoogleCloudDatacatalogV1ServiceSpec
+        include Google::Apis::Core::Hashable
+      
+        # Specification that applies to Instance entries that are part of `
+        # CLOUD_BIGTABLE` system. (user_specified_type)
+        # Corresponds to the JSON property `cloudBigtableInstanceSpec`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1CloudBigtableInstanceSpec]
+        attr_accessor :cloud_bigtable_instance_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_bigtable_instance_spec = args[:cloud_bigtable_instance_spec] if args.key?(:cloud_bigtable_instance_spec)
         end
       end
       
