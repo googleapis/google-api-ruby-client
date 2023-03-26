@@ -293,7 +293,7 @@ module Google
         # @param [String] parent
         #   Required. The parent resource's name.
         # @param [String] filter
-        #   An expression that filters the results listed in the response.
+        #   An expression that filters the list of results.
         # @param [String] order_by
         #   Sort the results by a certain order.
         # @param [Fixnum] page_size
@@ -595,7 +595,7 @@ module Google
         #   request ID so that if you must retry your request, the server will know to
         #   ignore the request if it has already been completed. The server will guarantee
         #   that for at least 60 minutes since the first request. For example, consider a
-        #   situation where you make an initial request and t he request times out. If you
+        #   situation where you make an initial request and the request times out. If you
         #   make the request again with the same request ID, the server can check if
         #   original operation with the same request ID was received, and if so, will
         #   ignore the second request. This prevents clients from accidentally creating
@@ -640,7 +640,7 @@ module Google
         #   request ID so that if you must retry your request, the server will know to
         #   ignore the request if it has already been completed. The server will guarantee
         #   that for at least 60 minutes after the first request. For example, consider a
-        #   situation where you make an initial request and t he request times out. If you
+        #   situation where you make an initial request and the request times out. If you
         #   make the request again with the same request ID, the server can check if
         #   original operation with the same request ID was received, and if so, will
         #   ignore the second request. This prevents clients from accidentally creating
@@ -757,7 +757,7 @@ module Google
         #   request ID so that if you must retry your request, the server will know to
         #   ignore the request if it has already been completed. The server will guarantee
         #   that for at least 60 minutes since the first request. For example, consider a
-        #   situation where you make an initial request and t he request times out. If you
+        #   situation where you make an initial request and the request times out. If you
         #   make the request again with the same request ID, the server can check if
         #   original operation with the same request ID was received, and if so, will
         #   ignore the second request. This prevents clients from accidentally creating
@@ -905,13 +905,7 @@ module Google
         end
         
         # Lists operations that match the specified filter in the request. If the server
-        # doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name`
-        # binding allows API services to override the binding to use different resource
-        # name schemes, such as `users/*/operations`. To override the binding, API
-        # services can add a binding such as `"/v1/`name=users/*`/operations"` to their
-        # service configuration. For backwards compatibility, the default name includes
-        # the operations collection id, however overriding users must ensure the name
-        # binding is the parent resource, without the operations collection id.
+        # doesn't support this method, it returns `UNIMPLEMENTED`.
         # @param [String] name
         #   The name of the operation's parent resource.
         # @param [String] filter
@@ -1485,7 +1479,7 @@ module Google
         # @param [String] parent
         #   Required. The parent resource.
         # @param [String] filter
-        #   An expression that filters the results listed in the response.
+        #   An expression that filters the list of results.
         # @param [String] order_by
         #   Sort the results by a certain order.
         # @param [Fixnum] page_size
