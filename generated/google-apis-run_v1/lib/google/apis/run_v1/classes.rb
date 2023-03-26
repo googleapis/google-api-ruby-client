@@ -633,8 +633,9 @@ module Google
       class ContainerPort
         include Google::Apis::Core::Hashable
       
-        # Port number the container listens on. This must be a valid port number, 0 < x <
-        # 65536.
+        # Port number the container listens on. If present, this must be a valid port
+        # number, 0 < x < 65536. If not present, it will default to port 8080. For more
+        # information, see https://cloud.google.com/run/docs/container-contract#port
         # Corresponds to the JSON property `containerPort`
         # @return [Fixnum]
         attr_accessor :container_port
