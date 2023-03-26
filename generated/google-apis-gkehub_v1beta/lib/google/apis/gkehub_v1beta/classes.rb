@@ -2789,12 +2789,14 @@ module Google
       class PolicyControllerBundleInstallSpec
         include Google::Apis::Core::Hashable
       
-        # the set of namespaces to be exempted from the bundle
+        # the set of namespaces to be exempted from the bundle TODO (b/271878194):
+        # Decrement this
         # Corresponds to the JSON property `exemptedNamespaces`
         # @return [Array<String>]
         attr_accessor :exempted_namespaces
       
-        # Management specifies how the bundle will be managed by the controller.
+        # Management specifies how the bundle will be managed by the controller. TODO (b/
+        # 271878194): Remove this
         # Corresponds to the JSON property `management`
         # @return [String]
         attr_accessor :management
@@ -2939,10 +2941,15 @@ module Google
         attr_accessor :component_states
       
         # The state of the template library and any bundles included in the chosen
-        # version of the manifest
+        # version of the manifest TODO (b/271878194): Remove this
         # Corresponds to the JSON property `contentStates`
         # @return [Hash<String,Google::Apis::GkehubV1beta::PolicyControllerOnClusterState>]
         attr_accessor :content_states
+      
+        # The state of the policy controller policy content
+        # Corresponds to the JSON property `policyContentState`
+        # @return [Google::Apis::GkehubV1beta::PolicyControllerPolicyContentState]
+        attr_accessor :policy_content_state
       
         # The overall Policy Controller lifecycle state observed by the Hub Feature
         # controller.
@@ -2958,6 +2965,7 @@ module Google
         def update!(**args)
           @component_states = args[:component_states] if args.key?(:component_states)
           @content_states = args[:content_states] if args.key?(:content_states)
+          @policy_content_state = args[:policy_content_state] if args.key?(:policy_content_state)
           @state = args[:state] if args.key?(:state)
         end
       end
@@ -3021,6 +3029,11 @@ module Google
         # @return [Hash<String,Google::Apis::GkehubV1beta::PolicyControllerBundleInstallSpec>]
         attr_accessor :bundles
       
+        # The config specifying which default library templates to install.
+        # Corresponds to the JSON property `templateLibrary`
+        # @return [Google::Apis::GkehubV1beta::PolicyControllerTemplateLibraryConfig]
+        attr_accessor :template_library
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3028,6 +3041,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bundles = args[:bundles] if args.key?(:bundles)
+          @template_library = args[:template_library] if args.key?(:template_library)
+        end
+      end
+      
+      # The state of the policy controller policy content
+      class PolicyControllerPolicyContentState
+        include Google::Apis::Core::Hashable
+      
+        # The state of the any bundles included in the chosen version of the manifest
+        # Corresponds to the JSON property `bundleStates`
+        # @return [Hash<String,Google::Apis::GkehubV1beta::PolicyControllerOnClusterState>]
+        attr_accessor :bundle_states
+      
+        # OnClusterState represents the state of a sub-component of Policy Controller.
+        # Corresponds to the JSON property `templateLibraryState`
+        # @return [Google::Apis::GkehubV1beta::PolicyControllerOnClusterState]
+        attr_accessor :template_library_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bundle_states = args[:bundle_states] if args.key?(:bundle_states)
+          @template_library_state = args[:template_library_state] if args.key?(:template_library_state)
         end
       end
       
@@ -3123,11 +3162,18 @@ module Google
       class PolicyControllerTemplateLibraryConfig
         include Google::Apis::Core::Hashable
       
-        # Whether the standard template library should be installed or not.
+        # Whether the standard template library should be installed or not. TODO (b/
+        # 271878194): Remove this
         # Corresponds to the JSON property `included`
         # @return [Boolean]
         attr_accessor :included
         alias_method :included?, :included
+      
+        # Configures the manner in which the template library is installed on the
+        # cluster. TODO (b/271878194): Decrement this
+        # Corresponds to the JSON property `installation`
+        # @return [String]
+        attr_accessor :installation
       
         def initialize(**args)
            update!(**args)
@@ -3136,6 +3182,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @included = args[:included] if args.key?(:included)
+          @installation = args[:installation] if args.key?(:installation)
         end
       end
       
