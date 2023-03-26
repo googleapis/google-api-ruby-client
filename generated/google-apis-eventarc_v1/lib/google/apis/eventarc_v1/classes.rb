@@ -1387,6 +1387,13 @@ module Google
         # @return [String]
         attr_accessor :etag
       
+        # Optional. EventDataContentType specifies the type of payload in MIME format
+        # that is expected from the CloudEvent data field. This will be set to `
+        # application/json` if the value is not defined.
+        # Corresponds to the JSON property `eventDataContentType`
+        # @return [String]
+        attr_accessor :event_data_content_type
+      
         # Required. Unordered list. The list of filters that applies to event attributes.
         # Only events that match all the provided filters are sent to the destination.
         # Corresponds to the JSON property `eventFilters`
@@ -1448,6 +1455,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @destination = args[:destination] if args.key?(:destination)
           @etag = args[:etag] if args.key?(:etag)
+          @event_data_content_type = args[:event_data_content_type] if args.key?(:event_data_content_type)
           @event_filters = args[:event_filters] if args.key?(:event_filters)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
