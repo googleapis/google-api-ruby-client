@@ -247,6 +247,11 @@ module Google
         # @return [String]
         attr_accessor :auto_close
       
+        # Control how notifications will be sent out, on a per-channel basis.
+        # Corresponds to the JSON property `notificationChannelStrategy`
+        # @return [Array<Google::Apis::MonitoringV3::NotificationChannelStrategy>]
+        attr_accessor :notification_channel_strategy
+      
         # Control over the rate of notifications sent to this alert policy's
         # notification channels.
         # Corresponds to the JSON property `notificationRateLimit`
@@ -260,6 +265,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @auto_close = args[:auto_close] if args.key?(:auto_close)
+          @notification_channel_strategy = args[:notification_channel_strategy] if args.key?(:notification_channel_strategy)
           @notification_rate_limit = args[:notification_rate_limit] if args.key?(:notification_rate_limit)
         end
       end
@@ -445,7 +451,7 @@ module Google
         # proportional to the value of the lower bound. Each bucket represents a
         # constant relative uncertainty on a specific value in the bucket.There are
         # num_finite_buckets + 2 (= N) buckets. Bucket i has the following boundaries:
-        # Upper bound (0 <= i < N-1): scale * (growth_factor ^ i). Lower bound (1 <= i <
+        # Upper bound (0 <= i < N-1): scale * (growth_factor ^ i).Lower bound (1 <= i <
         # N): scale * (growth_factor ^ (i - 1)).
         # Corresponds to the JSON property `exponentialBuckets`
         # @return [Google::Apis::MonitoringV3::Exponential]
@@ -455,7 +461,7 @@ module Google
         # overflow and underflow). Each bucket represents a constant absolute
         # uncertainty on the specific value in the bucket.There are num_finite_buckets +
         # 2 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-
-        # 1): offset + (width * i). Lower bound (1 <= i < N): offset + (width * (i - 1)).
+        # 1): offset + (width * i).Lower bound (1 <= i < N): offset + (width * (i - 1)).
         # Corresponds to the JSON property `linearBuckets`
         # @return [Google::Apis::MonitoringV3::Linear]
         attr_accessor :linear_buckets
@@ -1301,7 +1307,7 @@ module Google
       # proportional to the value of the lower bound. Each bucket represents a
       # constant relative uncertainty on a specific value in the bucket.There are
       # num_finite_buckets + 2 (= N) buckets. Bucket i has the following boundaries:
-      # Upper bound (0 <= i < N-1): scale * (growth_factor ^ i). Lower bound (1 <= i <
+      # Upper bound (0 <= i < N-1): scale * (growth_factor ^ i).Lower bound (1 <= i <
       # N): scale * (growth_factor ^ (i - 1)).
       class Exponential
         include Google::Apis::Core::Hashable
@@ -2074,7 +2080,7 @@ module Google
       # overflow and underflow). Each bucket represents a constant absolute
       # uncertainty on the specific value in the bucket.There are num_finite_buckets +
       # 2 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-
-      # 1): offset + (width * i). Lower bound (1 <= i < N): offset + (width * (i - 1)).
+      # 1): offset + (width * i).Lower bound (1 <= i < N): offset + (width * (i - 1)).
       class Linear
         include Google::Apis::Core::Hashable
       
@@ -3376,6 +3382,36 @@ module Google
         end
       end
       
+      # Control over how the notification channels in notification_channels are
+      # notified when this alert fires, on a per-channel basis.
+      class NotificationChannelStrategy
+        include Google::Apis::Core::Hashable
+      
+        # The full REST resource name for the notification channels that these settings
+        # apply to. Each of these correspond to the name field in one of the
+        # NotificationChannel objects referenced in the notification_channels field of
+        # this AlertPolicy. The format is: projects/[PROJECT_ID_OR_NUMBER]/
+        # notificationChannels/[CHANNEL_ID]
+        # Corresponds to the JSON property `notificationChannelNames`
+        # @return [Array<String>]
+        attr_accessor :notification_channel_names
+      
+        # The frequency at which to send reminder notifications for open incidents.
+        # Corresponds to the JSON property `renotifyInterval`
+        # @return [String]
+        attr_accessor :renotify_interval
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @notification_channel_names = args[:notification_channel_names] if args.key?(:notification_channel_names)
+          @renotify_interval = args[:renotify_interval] if args.key?(:renotify_interval)
+        end
+      end
+      
       # Control over the rate of notifications sent to this alert policy's
       # notification channels.
       class NotificationRateLimit
@@ -4561,6 +4597,11 @@ module Google
       class Type
         include Google::Apis::Core::Hashable
       
+        # The source edition string, only valid when syntax is SYNTAX_EDITIONS.
+        # Corresponds to the JSON property `edition`
+        # @return [String]
+        attr_accessor :edition
+      
         # The list of fields.
         # Corresponds to the JSON property `fields`
         # @return [Array<Google::Apis::MonitoringV3::Field>]
@@ -4598,6 +4639,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @edition = args[:edition] if args.key?(:edition)
           @fields = args[:fields] if args.key?(:fields)
           @name = args[:name] if args.key?(:name)
           @oneofs = args[:oneofs] if args.key?(:oneofs)
