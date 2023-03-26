@@ -658,7 +658,9 @@ module Google
         # @return [Google::Apis::ServiceconsumermanagementV1::RubySettings]
         attr_accessor :ruby_settings
       
-        # Version of the API to apply these settings to.
+        # Version of the API to apply these settings to. This is the full protobuf
+        # package for the API, ending in the version element. Examples: "google.cloud.
+        # speech.v1" and "google.spanner.admin.database.v1".
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
@@ -1175,6 +1177,11 @@ module Google
       class Enum
         include Google::Apis::Core::Hashable
       
+        # The source edition string, only valid when syntax is SYNTAX_EDITIONS.
+        # Corresponds to the JSON property `edition`
+        # @return [String]
+        attr_accessor :edition
+      
         # Enum value definitions.
         # Corresponds to the JSON property `enumvalue`
         # @return [Array<Google::Apis::ServiceconsumermanagementV1::EnumValue>]
@@ -1207,6 +1214,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @edition = args[:edition] if args.key?(:edition)
           @enumvalue = args[:enumvalue] if args.key?(:enumvalue)
           @name = args[:name] if args.key?(:name)
           @options = args[:options] if args.key?(:options)
@@ -2220,7 +2228,7 @@ module Google
       # AccessControl The mixin construct implies that all methods in `AccessControl`
       # are also declared with same name and request/response types in `Storage`. A
       # documentation generator or annotation processor will see the effective `
-      # Storage.GetAcl` method after inheriting documentation and annotations as
+      # Storage.GetAcl` method after inherting documentation and annotations as
       # follows: service Storage ` // Get the underlying ACL object. rpc GetAcl(
       # GetAclRequest) returns (Acl) ` option (google.api.http).get = "/v2/`resource=**
       # `:getAcl"; ` ... ` Note how the version in the path pattern changed from `v1`
@@ -3658,6 +3666,11 @@ module Google
       class Type
         include Google::Apis::Core::Hashable
       
+        # The source edition string, only valid when syntax is SYNTAX_EDITIONS.
+        # Corresponds to the JSON property `edition`
+        # @return [String]
+        attr_accessor :edition
+      
         # The list of fields.
         # Corresponds to the JSON property `fields`
         # @return [Array<Google::Apis::ServiceconsumermanagementV1::Field>]
@@ -3695,6 +3708,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @edition = args[:edition] if args.key?(:edition)
           @fields = args[:fields] if args.key?(:fields)
           @name = args[:name] if args.key?(:name)
           @oneofs = args[:oneofs] if args.key?(:oneofs)
@@ -3954,7 +3968,7 @@ module Google
         attr_accessor :container
       
         # If this map is nonempty, then this policy applies only to specific values for
-        # dimensions defined in the limit unit. For example, an policy on a limit with
+        # dimensions defined in the limit unit. For example, a policy on a limit with
         # the unit 1/`project`/`region` could contain an entry with the key "region" and
         # the value "us-east-1"; the policy is only applied to quota consumed in that
         # region. This map has the following restrictions: * Keys that are not defined
