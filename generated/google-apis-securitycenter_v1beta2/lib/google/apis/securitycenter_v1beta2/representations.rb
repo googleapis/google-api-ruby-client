@@ -40,6 +40,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CloudDlpDataProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudDlpInspection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Compliance
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -334,6 +346,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OrgPolicyConstraint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PathNode
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -473,6 +491,23 @@ module Google
           property :canonical_finding_name, as: 'canonicalFindingName'
           property :finding_category, as: 'findingCategory'
           property :name, as: 'name'
+        end
+      end
+      
+      class CloudDlpDataProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_profile, as: 'dataProfile'
+        end
+      end
+      
+      class CloudDlpInspection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :full_scan, as: 'fullScan'
+          property :info_type, as: 'infoType'
+          property :info_type_count, :numeric_string => true, as: 'infoTypeCount'
+          property :inspect_job, as: 'inspectJob'
         end
       end
       
@@ -661,6 +696,10 @@ module Google
       
           property :canonical_name, as: 'canonicalName'
           property :category, as: 'category'
+          property :cloud_dlp_data_profile, as: 'cloudDlpDataProfile', class: Google::Apis::SecuritycenterV1beta2::CloudDlpDataProfile, decorator: Google::Apis::SecuritycenterV1beta2::CloudDlpDataProfile::Representation
+      
+          property :cloud_dlp_inspection, as: 'cloudDlpInspection', class: Google::Apis::SecuritycenterV1beta2::CloudDlpInspection, decorator: Google::Apis::SecuritycenterV1beta2::CloudDlpInspection::Representation
+      
           collection :compliances, as: 'compliances', class: Google::Apis::SecuritycenterV1beta2::Compliance, decorator: Google::Apis::SecuritycenterV1beta2::Compliance::Representation
       
           collection :connections, as: 'connections', class: Google::Apis::SecuritycenterV1beta2::Connection, decorator: Google::Apis::SecuritycenterV1beta2::Connection::Representation
@@ -692,11 +731,14 @@ module Google
       
           property :mitre_attack, as: 'mitreAttack', class: Google::Apis::SecuritycenterV1beta2::MitreAttack, decorator: Google::Apis::SecuritycenterV1beta2::MitreAttack::Representation
       
+          property :module_name, as: 'moduleName'
           property :mute, as: 'mute'
           property :mute_initiator, as: 'muteInitiator'
           property :mute_update_time, as: 'muteUpdateTime'
           property :name, as: 'name'
           property :next_steps, as: 'nextSteps'
+          collection :org_policy_constraints, as: 'orgPolicyConstraints', class: Google::Apis::SecuritycenterV1beta2::OrgPolicyConstraint, decorator: Google::Apis::SecuritycenterV1beta2::OrgPolicyConstraint::Representation
+      
           property :parent, as: 'parent'
           property :parent_display_name, as: 'parentDisplayName'
           collection :processes, as: 'processes', class: Google::Apis::SecuritycenterV1beta2::Process, decorator: Google::Apis::SecuritycenterV1beta2::Process::Representation
@@ -837,11 +879,15 @@ module Google
       class GoogleCloudSecuritycenterV1ResourceValueConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
           property :name, as: 'name'
+          hash :resource_labels_selector, as: 'resourceLabelsSelector'
           property :resource_type, as: 'resourceType'
           property :resource_value, as: 'resourceValue'
           property :scope, as: 'scope'
           collection :tag_values, as: 'tagValues'
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -1031,6 +1077,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :onboarding_level, as: 'onboardingLevel'
+        end
+      end
+      
+      class OrgPolicyConstraint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
         end
       end
       
