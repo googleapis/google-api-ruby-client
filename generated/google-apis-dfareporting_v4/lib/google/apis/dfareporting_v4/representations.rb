@@ -4355,6 +4355,7 @@ module Google
             property :runs_on_day_of_month, as: 'runsOnDayOfMonth'
             property :start_date, as: 'startDate', type: Date
         
+            property :timezone, as: 'timezone'
           end
         end
       end

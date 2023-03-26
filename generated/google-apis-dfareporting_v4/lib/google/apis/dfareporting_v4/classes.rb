@@ -11358,6 +11358,11 @@ module Google
           # @return [Date]
           attr_accessor :start_date
         
+          # The timezone when the report will run.
+          # Corresponds to the JSON property `timezone`
+          # @return [String]
+          attr_accessor :timezone
+        
           def initialize(**args)
              update!(**args)
           end
@@ -11371,6 +11376,7 @@ module Google
             @repeats_on_week_days = args[:repeats_on_week_days] if args.key?(:repeats_on_week_days)
             @runs_on_day_of_month = args[:runs_on_day_of_month] if args.key?(:runs_on_day_of_month)
             @start_date = args[:start_date] if args.key?(:start_date)
+            @timezone = args[:timezone] if args.key?(:timezone)
           end
         end
       end
