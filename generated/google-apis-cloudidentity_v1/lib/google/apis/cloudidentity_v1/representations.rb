@@ -460,6 +460,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MembershipRelation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MembershipRole
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -521,6 +527,12 @@ module Google
       end
       
       class SamlSsoInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SearchDirectGroupsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1052,6 +1064,8 @@ module Google
       class Group
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :additional_group_keys, as: 'additionalGroupKeys', class: Google::Apis::CloudidentityV1::EntityKey, decorator: Google::Apis::CloudidentityV1::EntityKey::Representation
+      
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :display_name, as: 'displayName'
@@ -1221,6 +1235,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          property :delivery_setting, as: 'deliverySetting'
           property :name, as: 'name'
           property :preferred_member_key, as: 'preferredMemberKey', class: Google::Apis::CloudidentityV1::EntityKey, decorator: Google::Apis::CloudidentityV1::EntityKey::Representation
       
@@ -1237,6 +1252,21 @@ module Google
           collection :edges, as: 'edges', class: Google::Apis::CloudidentityV1::Membership, decorator: Google::Apis::CloudidentityV1::Membership::Representation
       
           property :group, as: 'group'
+        end
+      end
+      
+      class MembershipRelation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :group, as: 'group'
+          property :group_key, as: 'groupKey', class: Google::Apis::CloudidentityV1::EntityKey, decorator: Google::Apis::CloudidentityV1::EntityKey::Representation
+      
+          hash :labels, as: 'labels'
+          property :membership, as: 'membership'
+          collection :roles, as: 'roles', class: Google::Apis::CloudidentityV1::MembershipRole, decorator: Google::Apis::CloudidentityV1::MembershipRole::Representation
+      
         end
       end
       
@@ -1333,6 +1363,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :inbound_saml_sso_profile, as: 'inboundSamlSsoProfile'
+        end
+      end
+      
+      class SearchDirectGroupsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :memberships, as: 'memberships', class: Google::Apis::CloudidentityV1::MembershipRelation, decorator: Google::Apis::CloudidentityV1::MembershipRelation::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
