@@ -76,6 +76,54 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRecaptchaenterpriseV1FirewallAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1FirewallPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -101,6 +149,12 @@ module Google
       end
       
       class GoogleCloudRecaptchaenterpriseV1Key
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -256,6 +310,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleRpcStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -279,6 +339,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allow_all_package_names, as: 'allowAllPackageNames'
           collection :allowed_package_names, as: 'allowedPackageNames'
+          property :support_non_google_app_store_distribution, as: 'supportNonGoogleAppStoreDistribution'
         end
       end
       
@@ -307,6 +368,8 @@ module Google
           property :account_verification, as: 'accountVerification', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo::Representation
       
           property :event, as: 'event', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Event, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Event::Representation
+      
+          property :firewall_policy_assessment, as: 'firewallPolicyAssessment', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment::Representation
       
           property :fraud_prevention_assessment, as: 'fraudPreventionAssessment', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment::Representation
       
@@ -345,6 +408,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :expected_action, as: 'expectedAction'
           property :express, as: 'express'
+          property :firewall_policy_evaluation, as: 'firewallPolicyEvaluation'
           property :hashed_account_id, :base64 => true, as: 'hashedAccountId'
           collection :headers, as: 'headers'
           property :ja3, as: 'ja3'
@@ -355,6 +419,78 @@ module Google
       
           property :user_agent, as: 'userAgent'
           property :user_ip_address, as: 'userIpAddress'
+          property :waf_token_assessment, as: 'wafTokenAssessment'
+        end
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1FirewallAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow, as: 'allow', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction::Representation
+      
+          property :block, as: 'block', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction::Representation
+      
+          property :redirect, as: 'redirect', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction::Representation
+      
+          property :set_header, as: 'setHeader', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction::Representation
+      
+          property :substitute, as: 'substitute', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction::Representation
+      
+        end
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :value, as: 'value'
+        end
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :path, as: 'path'
+        end
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1FirewallPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :actions, as: 'actions', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FirewallAction, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FirewallAction::Representation
+      
+          property :condition, as: 'condition'
+          property :description, as: 'description'
+          property :name, as: 'name'
+          property :path, as: 'path'
+        end
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error', class: Google::Apis::RecaptchaenterpriseV1::GoogleRpcStatus, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleRpcStatus::Representation
+      
+          property :firewall_policy, as: 'firewallPolicy', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FirewallPolicy, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FirewallPolicy::Representation
+      
         end
       end
       
@@ -408,6 +544,15 @@ module Google
       
           property :web_settings, as: 'webSettings', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1WebKeySettings, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1WebKeySettings::Representation
       
+        end
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :firewall_policies, as: 'firewallPolicies', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FirewallPolicy, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FirewallPolicy::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -654,6 +799,15 @@ module Google
       class GoogleProtobufEmpty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleRpcStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          collection :details, as: 'details'
+          property :message, as: 'message'
         end
       end
     end
