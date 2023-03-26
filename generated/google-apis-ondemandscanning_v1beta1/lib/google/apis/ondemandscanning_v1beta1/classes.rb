@@ -1453,6 +1453,32 @@ module Google
         end
       end
       
+      # Justification provides the justification when the state of the assessment if
+      # NOT_AFFECTED.
+      class Justification
+        include Google::Apis::Core::Hashable
+      
+        # Additional details on why this justification was chosen.
+        # Corresponds to the JSON property `details`
+        # @return [String]
+        attr_accessor :details
+      
+        # The justification type for this vulnerability.
+        # Corresponds to the JSON property `justificationType`
+        # @return [String]
+        attr_accessor :justification_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @details = args[:details] if args.key?(:details)
+          @justification_type = args[:justification_type] if args.key?(:justification_type)
+        end
+      end
+      
       # 
       class Jwt
         include Google::Apis::Core::Hashable
@@ -1977,6 +2003,11 @@ module Google
       class PackageData
         include Google::Apis::Core::Hashable
       
+        # The architecture of the package.
+        # Corresponds to the JSON property `architecture`
+        # @return [String]
+        attr_accessor :architecture
+      
         # The cpe_uri in [cpe format] (https://cpe.mitre.org/specification/) in which
         # the vulnerability may manifest. Examples include distro or storage location
         # for vulnerable jar.
@@ -2050,6 +2081,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @architecture = args[:architecture] if args.key?(:architecture)
           @cpe_uri = args[:cpe_uri] if args.key?(:cpe_uri)
           @dependency_chain = args[:dependency_chain] if args.key?(:dependency_chain)
           @file_location = args[:file_location] if args.key?(:file_location)
@@ -2314,6 +2346,37 @@ module Google
         def update!(**args)
           @label = args[:label] if args.key?(:label)
           @url = args[:url] if args.key?(:url)
+        end
+      end
+      
+      # Specifies details on how to handle (and presumably, fix) a vulnerability.
+      class Remediation
+        include Google::Apis::Core::Hashable
+      
+        # Contains a comprehensive human-readable discussion of the remediation.
+        # Corresponds to the JSON property `details`
+        # @return [String]
+        attr_accessor :details
+      
+        # The type of remediation that can be applied.
+        # Corresponds to the JSON property `remediationType`
+        # @return [String]
+        attr_accessor :remediation_type
+      
+        # Metadata for any related URL information.
+        # Corresponds to the JSON property `remediationUri`
+        # @return [Google::Apis::OndemandscanningV1beta1::RelatedUrl]
+        attr_accessor :remediation_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @details = args[:details] if args.key?(:details)
+          @remediation_type = args[:remediation_type] if args.key?(:remediation_type)
+          @remediation_uri = args[:remediation_uri] if args.key?(:remediation_uri)
         end
       end
       
@@ -2947,6 +3010,67 @@ module Google
         end
       end
       
+      # VexAssessment provides all publisher provided Vex information that is related
+      # to this vulnerability.
+      class VexAssessment
+        include Google::Apis::Core::Hashable
+      
+        # Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking
+        # number for the vulnerability.
+        # Corresponds to the JSON property `cve`
+        # @return [String]
+        attr_accessor :cve
+      
+        # Contains information about the impact of this vulnerability, this will change
+        # with time.
+        # Corresponds to the JSON property `impacts`
+        # @return [Array<String>]
+        attr_accessor :impacts
+      
+        # Justification provides the justification when the state of the assessment if
+        # NOT_AFFECTED.
+        # Corresponds to the JSON property `justification`
+        # @return [Google::Apis::OndemandscanningV1beta1::Justification]
+        attr_accessor :justification
+      
+        # The VulnerabilityAssessment note from which this VexAssessment was generated.
+        # This will be of the form: `projects/[PROJECT_ID]/notes/[NOTE_ID]`.
+        # Corresponds to the JSON property `noteName`
+        # @return [String]
+        attr_accessor :note_name
+      
+        # Holds a list of references associated with this vulnerability item and
+        # assessment.
+        # Corresponds to the JSON property `relatedUris`
+        # @return [Array<Google::Apis::OndemandscanningV1beta1::RelatedUrl>]
+        attr_accessor :related_uris
+      
+        # Specifies details on how to handle (and presumably, fix) a vulnerability.
+        # Corresponds to the JSON property `remediations`
+        # @return [Array<Google::Apis::OndemandscanningV1beta1::Remediation>]
+        attr_accessor :remediations
+      
+        # Provides the state of this Vulnerability assessment.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cve = args[:cve] if args.key?(:cve)
+          @impacts = args[:impacts] if args.key?(:impacts)
+          @justification = args[:justification] if args.key?(:justification)
+          @note_name = args[:note_name] if args.key?(:note_name)
+          @related_uris = args[:related_uris] if args.key?(:related_uris)
+          @remediations = args[:remediations] if args.key?(:remediations)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # An occurrence of a severity vulnerability on a resource.
       class VulnerabilityOccurrence
         include Google::Apis::Core::Hashable
@@ -3028,6 +3152,12 @@ module Google
         # @return [String]
         attr_accessor :type
       
+        # VexAssessment provides all publisher provided Vex information that is related
+        # to this vulnerability.
+        # Corresponds to the JSON property `vexAssessment`
+        # @return [Google::Apis::OndemandscanningV1beta1::VexAssessment]
+        attr_accessor :vex_assessment
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3046,6 +3176,7 @@ module Google
           @severity = args[:severity] if args.key?(:severity)
           @short_description = args[:short_description] if args.key?(:short_description)
           @type = args[:type] if args.key?(:type)
+          @vex_assessment = args[:vex_assessment] if args.key?(:vex_assessment)
         end
       end
       

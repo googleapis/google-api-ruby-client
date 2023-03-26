@@ -268,6 +268,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Justification
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Jwt
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -382,6 +388,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Remediation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RepoId
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -467,6 +479,12 @@ module Google
       end
       
       class Version
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VexAssessment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -893,6 +911,14 @@ module Google
         end
       end
       
+      class Justification
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :details, as: 'details'
+          property :justification_type, as: 'justificationType'
+        end
+      end
+      
       class Jwt
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1039,6 +1065,7 @@ module Google
       class PackageData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :architecture, as: 'architecture'
           property :cpe_uri, as: 'cpeUri'
           collection :dependency_chain, as: 'dependencyChain', class: Google::Apis::OndemandscanningV1beta1::LanguagePackageDependency, decorator: Google::Apis::OndemandscanningV1beta1::LanguagePackageDependency::Representation
       
@@ -1116,6 +1143,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :label, as: 'label'
           property :url, as: 'url'
+        end
+      end
+      
+      class Remediation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :details, as: 'details'
+          property :remediation_type, as: 'remediationType'
+          property :remediation_uri, as: 'remediationUri', class: Google::Apis::OndemandscanningV1beta1::RelatedUrl, decorator: Google::Apis::OndemandscanningV1beta1::RelatedUrl::Representation
+      
         end
       end
       
@@ -1283,6 +1320,22 @@ module Google
         end
       end
       
+      class VexAssessment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cve, as: 'cve'
+          collection :impacts, as: 'impacts'
+          property :justification, as: 'justification', class: Google::Apis::OndemandscanningV1beta1::Justification, decorator: Google::Apis::OndemandscanningV1beta1::Justification::Representation
+      
+          property :note_name, as: 'noteName'
+          collection :related_uris, as: 'relatedUris', class: Google::Apis::OndemandscanningV1beta1::RelatedUrl, decorator: Google::Apis::OndemandscanningV1beta1::RelatedUrl::Representation
+      
+          collection :remediations, as: 'remediations', class: Google::Apis::OndemandscanningV1beta1::Remediation, decorator: Google::Apis::OndemandscanningV1beta1::Remediation::Representation
+      
+          property :state, as: 'state'
+        end
+      end
+      
       class VulnerabilityOccurrence
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1302,6 +1355,8 @@ module Google
           property :severity, as: 'severity'
           property :short_description, as: 'shortDescription'
           property :type, as: 'type'
+          property :vex_assessment, as: 'vexAssessment', class: Google::Apis::OndemandscanningV1beta1::VexAssessment, decorator: Google::Apis::OndemandscanningV1beta1::VexAssessment::Representation
+      
         end
       end
       
