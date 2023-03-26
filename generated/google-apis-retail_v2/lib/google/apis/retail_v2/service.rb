@@ -57,6 +57,8 @@ module Google
         # @param [String] catalog
         #   Required. Catalog for which the completion is performed. Full resource name of
         #   catalog, such as `projects/*/locations/global/catalogs/default_catalog`.
+        # @param [String] banner
+        #   The banner context for completion suggestions.
         # @param [String] dataset
         #   Determines which dataset to use for fetching completion. "user-data" will use
         #   the imported dataset through CompletionService.ImportCompletionData. "cloud-
@@ -110,11 +112,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def complete_project_location_catalog_query(catalog, dataset: nil, device_type: nil, language_codes: nil, max_suggestions: nil, query: nil, visitor_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def complete_project_location_catalog_query(catalog, banner: nil, dataset: nil, device_type: nil, language_codes: nil, max_suggestions: nil, query: nil, visitor_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2/{+catalog}:completeQuery', options)
           command.response_representation = Google::Apis::RetailV2::GoogleCloudRetailV2CompleteQueryResponse::Representation
           command.response_class = Google::Apis::RetailV2::GoogleCloudRetailV2CompleteQueryResponse
           command.params['catalog'] = catalog unless catalog.nil?
+          command.query['banner'] = banner unless banner.nil?
           command.query['dataset'] = dataset unless dataset.nil?
           command.query['deviceType'] = device_type unless device_type.nil?
           command.query['languageCodes'] = language_codes unless language_codes.nil?
