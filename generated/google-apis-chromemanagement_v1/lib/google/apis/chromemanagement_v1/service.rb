@@ -461,7 +461,7 @@ module Google
         # @param [String] filter
         #   Query string to filter results, AND-separated fields in EBNF syntax. Note: OR
         #   operations are not supported in this filter. Note: Only >= and <= comparators
-        #   are supported in this filter. Supported filter fields: * completion_time
+        #   are supported in this filter. Supported filter fields: * complete_time
         # @param [String] order_by
         #   Field used to order results. If omitted, results will be ordered in ascending
         #   order of the 'printer' field. Supported order_by fields: * printer * job_count
@@ -513,7 +513,7 @@ module Google
         # @param [String] filter
         #   Query string to filter results, AND-separated fields in EBNF syntax. Note: OR
         #   operations are not supported in this filter. Note: Only >= and <= comparators
-        #   are supported in this filter. Supported filter fields: * completion_time
+        #   are supported in this filter. Supported filter fields: * complete_time
         # @param [String] order_by
         #   Field used to order results. If omitted, results will be ordered in ascending
         #   order of the 'user_email' field. Supported order_by fields: * user_email *
@@ -558,7 +558,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Generate report of devices that have a specified app installed.
+        # Generate report of managed Chrome browser devices that have a specified app
+        # installed.
         # @param [String] customer
         #   Required. Customer id or "my_customer" to use the customer associated to the
         #   account making the request.
@@ -653,7 +654,12 @@ module Google
         #   account making the request.
         # @param [String] filter
         #   Optional. Only include resources that match the filter. Supported filter
-        #   fields: - org_unit_id - serial_number - device_id
+        #   fields: - org_unit_id - serial_number - device_id - reports_timestamp The "
+        #   reports_timestamp" filter accepts either the Unix Epoch milliseconds format or
+        #   the RFC3339 UTC "Zulu" format with nanosecond resolution and up to nine
+        #   fractional digits. Both formats should be surrounded by simple double quotes.
+        #   Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z", "
+        #   1679283943823".
         # @param [Fixnum] page_size
         #   Maximum number of results to return. Default value is 100. Maximum value is
         #   1000.
@@ -699,8 +705,11 @@ module Google
         # @param [String] filter
         #   Optional. Only include resources that match the filter. Supported filter
         #   fields: - device_id - user_id - device_org_unit_id - user_org_unit_id -
-        #   timestamp - event_type The "timestamp" filter accepts either Epoch
-        #   milliseconds or RFC 3339 formatted time surrounded by simple double quotes.
+        #   timestamp - event_type The "timestamp" filter accepts either the Unix Epoch
+        #   milliseconds format or the RFC3339 UTC "Zulu" format with nanosecond
+        #   resolution and up to nine fractional digits. Both formats should be surrounded
+        #   by simple double quotes. Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:
+        #   23.045123456Z", "1679283943823".
         # @param [Fixnum] page_size
         #   Optional. Maximum number of results to return. Default value is 100. Maximum
         #   value is 1000.
