@@ -104,6 +104,74 @@ module Google
         end
       end
       
+      # Assessment provides all information that is related to a single vulnerability
+      # for this product.
+      class Assessment
+        include Google::Apis::Core::Hashable
+      
+        # Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking
+        # number for the vulnerability.
+        # Corresponds to the JSON property `cve`
+        # @return [String]
+        attr_accessor :cve
+      
+        # Contains information about the impact of this vulnerability, this will change
+        # with time.
+        # Corresponds to the JSON property `impacts`
+        # @return [Array<String>]
+        attr_accessor :impacts
+      
+        # Justification provides the justification when the state of the assessment if
+        # NOT_AFFECTED.
+        # Corresponds to the JSON property `justification`
+        # @return [Google::Apis::ContaineranalysisV1::Justification]
+        attr_accessor :justification
+      
+        # A detailed description of this Vex.
+        # Corresponds to the JSON property `longDescription`
+        # @return [String]
+        attr_accessor :long_description
+      
+        # Holds a list of references associated with this vulnerability item and
+        # assessment. These uris have additional information about the vulnerability and
+        # the assessment itself. E.g. Link to a document which details how this
+        # assessment concluded the state of this vulnerability.
+        # Corresponds to the JSON property `relatedUris`
+        # @return [Array<Google::Apis::ContaineranalysisV1::RelatedUrl>]
+        attr_accessor :related_uris
+      
+        # Specifies details on how to handle (and presumably, fix) a vulnerability.
+        # Corresponds to the JSON property `remediations`
+        # @return [Array<Google::Apis::ContaineranalysisV1::Remediation>]
+        attr_accessor :remediations
+      
+        # A one sentence description of this Vex.
+        # Corresponds to the JSON property `shortDescription`
+        # @return [String]
+        attr_accessor :short_description
+      
+        # Provides the state of this Vulnerability assessment.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cve = args[:cve] if args.key?(:cve)
+          @impacts = args[:impacts] if args.key?(:impacts)
+          @justification = args[:justification] if args.key?(:justification)
+          @long_description = args[:long_description] if args.key?(:long_description)
+          @related_uris = args[:related_uris] if args.key?(:related_uris)
+          @remediations = args[:remediations] if args.key?(:remediations)
+          @short_description = args[:short_description] if args.key?(:short_description)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # Note kind that represents a logical attestation "role" or "authority". For
       # example, an organization might have one `Authority` for "QA" and one for "
       # build". This note is intended to act strictly as a grouping mechanism for the
@@ -3224,6 +3292,21 @@ module Google
         end
       end
       
+      # GeneratePackagesSummaryRequest is the request body for the
+      # GeneratePackagesSummary API method. It just takes a single name argument,
+      # referring to the resource.
+      class GeneratePackagesSummaryRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # A SourceContext referring to a Gerrit project.
       class GerritSourceContext
         include Google::Apis::Core::Hashable
@@ -3808,6 +3891,32 @@ module Google
         end
       end
       
+      # Justification provides the justification when the state of the assessment if
+      # NOT_AFFECTED.
+      class Justification
+        include Google::Apis::Core::Hashable
+      
+        # Additional details on why this justification was chosen.
+        # Corresponds to the JSON property `details`
+        # @return [String]
+        attr_accessor :details
+      
+        # The justification type for this vulnerability.
+        # Corresponds to the JSON property `justificationType`
+        # @return [String]
+        attr_accessor :justification_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @details = args[:details] if args.key?(:details)
+          @justification_type = args[:justification_type] if args.key?(:justification_type)
+        end
+      end
+      
       # 
       class Jwt
         include Google::Apis::Core::Hashable
@@ -3906,6 +4015,33 @@ module Google
         def update!(**args)
           @comments = args[:comments] if args.key?(:comments)
           @expression = args[:expression] if args.key?(:expression)
+        end
+      end
+      
+      # Per license count
+      class LicensesSummary
+        include Google::Apis::Core::Hashable
+      
+        # The number of fixable vulnerabilities associated with this resource.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        # The license of the package. Note that the format of this value is not
+        # guaranteed. It may be nil, an empty string, a boolean value (A | B), a
+        # differently formed boolean value (A OR B), etc...
+        # Corresponds to the JSON property `license`
+        # @return [String]
+        attr_accessor :license
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @count = args[:count] if args.key?(:count)
+          @license = args[:license] if args.key?(:license)
         end
       end
       
@@ -4243,6 +4379,12 @@ module Google
         # @return [Google::Apis::ContaineranalysisV1::VulnerabilityNote]
         attr_accessor :vulnerability
       
+        # A single VulnerabilityAssessmentNote represents one particular product's
+        # vulnerability assessment for one CVE.
+        # Corresponds to the JSON property `vulnerabilityAssessment`
+        # @return [Google::Apis::ContaineranalysisV1::VulnerabilityAssessmentNote]
+        attr_accessor :vulnerability_assessment
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4268,6 +4410,7 @@ module Google
           @update_time = args[:update_time] if args.key?(:update_time)
           @upgrade = args[:upgrade] if args.key?(:upgrade)
           @vulnerability = args[:vulnerability] if args.key?(:vulnerability)
+          @vulnerability_assessment = args[:vulnerability_assessment] if args.key?(:vulnerability_assessment)
         end
       end
       
@@ -4636,6 +4779,31 @@ module Google
         end
       end
       
+      # A summary of the packages found within the given resource.
+      class PackagesSummaryResponse
+        include Google::Apis::Core::Hashable
+      
+        # A listing by license name of each of the licenses and their counts.
+        # Corresponds to the JSON property `licensesSummary`
+        # @return [Array<Google::Apis::ContaineranalysisV1::LicensesSummary>]
+        attr_accessor :licenses_summary
+      
+        # The unique URL of the image or the container for which this summary applies.
+        # Corresponds to the JSON property `resourceUrl`
+        # @return [String]
+        attr_accessor :resource_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @licenses_summary = args[:licenses_summary] if args.key?(:licenses_summary)
+          @resource_url = args[:resource_url] if args.key?(:resource_url)
+        end
+      end
+      
       # An Identity and Access Management (IAM) policy, which specifies access
       # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
       # A `binding` binds one or more `members`, or principals, to a single `role`.
@@ -4725,6 +4893,40 @@ module Google
         end
       end
       
+      # Product contains information about a product and how to uniquely identify it.
+      class Product
+        include Google::Apis::Core::Hashable
+      
+        # Contains a URI which is vendor-specific. Example: The artifact repository URL
+        # of an image.
+        # Corresponds to the JSON property `genericUri`
+        # @return [String]
+        attr_accessor :generic_uri
+      
+        # Token that identifies a product so that it can be referred to from other parts
+        # in the document. There is no predefined format as long as it uniquely
+        # identifies a group in the context of the current document.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Name of the product.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generic_uri = args[:generic_uri] if args.key?(:generic_uri)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Selects a repo using a Google Cloud Platform project ID (e.g., winged-cargo-31)
       # and a repo name within that project.
       class ProjectRepoId
@@ -4748,6 +4950,41 @@ module Google
         def update!(**args)
           @project_id = args[:project_id] if args.key?(:project_id)
           @repo_name = args[:repo_name] if args.key?(:repo_name)
+        end
+      end
+      
+      # Publisher contains information about the publisher of this Note.
+      class Publisher
+        include Google::Apis::Core::Hashable
+      
+        # Provides information about the authority of the issuing party to release the
+        # document, in particular, the party's constituency and responsibilities or
+        # other obligations.
+        # Corresponds to the JSON property `issuingAuthority`
+        # @return [String]
+        attr_accessor :issuing_authority
+      
+        # Name of the publisher. Examples: 'Google', 'Google Cloud Platform'.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The context or namespace. Contains a URL which is under control of the issuing
+        # party and can be used as a globally unique identifier for that issuing party.
+        # Example: https://csaf.io
+        # Corresponds to the JSON property `publisherNamespace`
+        # @return [String]
+        attr_accessor :publisher_namespace
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @issuing_authority = args[:issuing_authority] if args.key?(:issuing_authority)
+          @name = args[:name] if args.key?(:name)
+          @publisher_namespace = args[:publisher_namespace] if args.key?(:publisher_namespace)
         end
       end
       
@@ -4834,6 +5071,37 @@ module Google
         def update!(**args)
           @label = args[:label] if args.key?(:label)
           @url = args[:url] if args.key?(:url)
+        end
+      end
+      
+      # Specifies details on how to handle (and presumably, fix) a vulnerability.
+      class Remediation
+        include Google::Apis::Core::Hashable
+      
+        # Contains a comprehensive human-readable discussion of the remediation.
+        # Corresponds to the JSON property `details`
+        # @return [String]
+        attr_accessor :details
+      
+        # The type of remediation that can be applied.
+        # Corresponds to the JSON property `remediationType`
+        # @return [String]
+        attr_accessor :remediation_type
+      
+        # Metadata for any related URL information.
+        # Corresponds to the JSON property `remediationUri`
+        # @return [Google::Apis::ContaineranalysisV1::RelatedUrl]
+        attr_accessor :remediation_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @details = args[:details] if args.key?(:details)
+          @remediation_type = args[:remediation_type] if args.key?(:remediation_type)
+          @remediation_uri = args[:remediation_uri] if args.key?(:remediation_uri)
         end
       end
       
@@ -5620,6 +5888,67 @@ module Google
         end
       end
       
+      # VexAssessment provides all publisher provided Vex information that is related
+      # to this vulnerability.
+      class VexAssessment
+        include Google::Apis::Core::Hashable
+      
+        # Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking
+        # number for the vulnerability.
+        # Corresponds to the JSON property `cve`
+        # @return [String]
+        attr_accessor :cve
+      
+        # Contains information about the impact of this vulnerability, this will change
+        # with time.
+        # Corresponds to the JSON property `impacts`
+        # @return [Array<String>]
+        attr_accessor :impacts
+      
+        # Justification provides the justification when the state of the assessment if
+        # NOT_AFFECTED.
+        # Corresponds to the JSON property `justification`
+        # @return [Google::Apis::ContaineranalysisV1::Justification]
+        attr_accessor :justification
+      
+        # The VulnerabilityAssessment note from which this VexAssessment was generated.
+        # This will be of the form: `projects/[PROJECT_ID]/notes/[NOTE_ID]`.
+        # Corresponds to the JSON property `noteName`
+        # @return [String]
+        attr_accessor :note_name
+      
+        # Holds a list of references associated with this vulnerability item and
+        # assessment.
+        # Corresponds to the JSON property `relatedUris`
+        # @return [Array<Google::Apis::ContaineranalysisV1::RelatedUrl>]
+        attr_accessor :related_uris
+      
+        # Specifies details on how to handle (and presumably, fix) a vulnerability.
+        # Corresponds to the JSON property `remediations`
+        # @return [Array<Google::Apis::ContaineranalysisV1::Remediation>]
+        attr_accessor :remediations
+      
+        # Provides the state of this Vulnerability assessment.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cve = args[:cve] if args.key?(:cve)
+          @impacts = args[:impacts] if args.key?(:impacts)
+          @justification = args[:justification] if args.key?(:justification)
+          @note_name = args[:note_name] if args.key?(:note_name)
+          @related_uris = args[:related_uris] if args.key?(:related_uris)
+          @remediations = args[:remediations] if args.key?(:remediations)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # Volume describes a Docker container volume which is mounted into build steps
       # in order to persist files across build step execution. Next ID: 3
       class Volume
@@ -5647,6 +5976,64 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @path = args[:path] if args.key?(:path)
+        end
+      end
+      
+      # A single VulnerabilityAssessmentNote represents one particular product's
+      # vulnerability assessment for one CVE.
+      class VulnerabilityAssessmentNote
+        include Google::Apis::Core::Hashable
+      
+        # Assessment provides all information that is related to a single vulnerability
+        # for this product.
+        # Corresponds to the JSON property `assessment`
+        # @return [Google::Apis::ContaineranalysisV1::Assessment]
+        attr_accessor :assessment
+      
+        # Identifies the language used by this document, corresponding to IETF BCP 47 /
+        # RFC 5646.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # A detailed description of this Vex.
+        # Corresponds to the JSON property `longDescription`
+        # @return [String]
+        attr_accessor :long_description
+      
+        # Product contains information about a product and how to uniquely identify it.
+        # Corresponds to the JSON property `product`
+        # @return [Google::Apis::ContaineranalysisV1::Product]
+        attr_accessor :product
+      
+        # Publisher contains information about the publisher of this Note.
+        # Corresponds to the JSON property `publisher`
+        # @return [Google::Apis::ContaineranalysisV1::Publisher]
+        attr_accessor :publisher
+      
+        # A one sentence description of this Vex.
+        # Corresponds to the JSON property `shortDescription`
+        # @return [String]
+        attr_accessor :short_description
+      
+        # The title of the note. E.g. `Vex-Debian-11.4`
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @assessment = args[:assessment] if args.key?(:assessment)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @long_description = args[:long_description] if args.key?(:long_description)
+          @product = args[:product] if args.key?(:product)
+          @publisher = args[:publisher] if args.key?(:publisher)
+          @short_description = args[:short_description] if args.key?(:short_description)
+          @title = args[:title] if args.key?(:title)
         end
       end
       
@@ -5802,6 +6189,12 @@ module Google
         # @return [String]
         attr_accessor :type
       
+        # VexAssessment provides all publisher provided Vex information that is related
+        # to this vulnerability.
+        # Corresponds to the JSON property `vexAssessment`
+        # @return [Google::Apis::ContaineranalysisV1::VexAssessment]
+        attr_accessor :vex_assessment
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5820,6 +6213,7 @@ module Google
           @severity = args[:severity] if args.key?(:severity)
           @short_description = args[:short_description] if args.key?(:short_description)
           @type = args[:type] if args.key?(:type)
+          @vex_assessment = args[:vex_assessment] if args.key?(:vex_assessment)
         end
       end
       
