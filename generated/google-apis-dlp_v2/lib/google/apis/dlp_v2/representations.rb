@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2ActionDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2ActivateJobTriggerRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -347,6 +353,18 @@ module Google
       end
       
       class GooglePrivacyDlpV2DeidentifyContentResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2DeidentifyDataSourceDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2DeidentifyDataSourceStats
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1066,6 +1084,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2RequestedDeidentifyOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2RequestedOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1394,6 +1418,14 @@ module Google
           property :publish_to_stackdriver, as: 'publishToStackdriver', class: Google::Apis::DlpV2::GooglePrivacyDlpV2PublishToStackdriver, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2PublishToStackdriver::Representation
       
           property :save_findings, as: 'saveFindings', class: Google::Apis::DlpV2::GooglePrivacyDlpV2SaveFindings, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2SaveFindings::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2ActionDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deidentify_details, as: 'deidentifyDetails', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyDataSourceDetails, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyDataSourceDetails::Representation
       
         end
       end
@@ -1970,6 +2002,25 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2DeidentifyDataSourceDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deidentify_stats, as: 'deidentifyStats', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyDataSourceStats, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyDataSourceStats::Representation
+      
+          property :requested_options, as: 'requestedOptions', class: Google::Apis::DlpV2::GooglePrivacyDlpV2RequestedDeidentifyOptions, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2RequestedDeidentifyOptions::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2DeidentifyDataSourceStats
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :transformation_count, :numeric_string => true, as: 'transformationCount'
+          property :transformation_error_count, :numeric_string => true, as: 'transformationErrorCount'
+          property :transformed_bytes, :numeric_string => true, as: 'transformedBytes'
+        end
+      end
+      
       class GooglePrivacyDlpV2DeidentifyTemplate
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2044,6 +2095,8 @@ module Google
       class GooglePrivacyDlpV2DlpJob
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :action_details, as: 'actionDetails', class: Google::Apis::DlpV2::GooglePrivacyDlpV2ActionDetails, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2ActionDetails::Representation
+      
           property :create_time, as: 'createTime'
           property :end_time, as: 'endTime'
           collection :errors, as: 'errors', class: Google::Apis::DlpV2::GooglePrivacyDlpV2Error, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2Error::Representation
@@ -3159,6 +3212,18 @@ module Google
       class GooglePrivacyDlpV2ReplaceWithInfoTypeConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GooglePrivacyDlpV2RequestedDeidentifyOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :snapshot_deidentify_template, as: 'snapshotDeidentifyTemplate', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate::Representation
+      
+          property :snapshot_image_redact_template, as: 'snapshotImageRedactTemplate', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate::Representation
+      
+          property :snapshot_structured_deidentify_template, as: 'snapshotStructuredDeidentifyTemplate', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate::Representation
+      
         end
       end
       
