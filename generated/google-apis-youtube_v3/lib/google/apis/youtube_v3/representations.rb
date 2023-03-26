@@ -2144,7 +2144,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :concurrent_viewers, :numeric_string => true, as: 'concurrentViewers'
-          property :total_chat_count, :numeric_string => true, as: 'totalChatCount'
         end
       end
       
