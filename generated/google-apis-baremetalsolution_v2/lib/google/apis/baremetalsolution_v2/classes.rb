@@ -283,6 +283,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Output only. The firmware version for the instance.
+        # Corresponds to the JSON property `firmwareVersion`
+        # @return [String]
+        attr_accessor :firmware_version
+      
         # True if you enable hyperthreading for the server, otherwise false. The default
         # value is false.
         # Corresponds to the JSON property `hyperthreadingEnabled`
@@ -393,6 +398,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @firmware_version = args[:firmware_version] if args.key?(:firmware_version)
           @hyperthreading_enabled = args[:hyperthreading_enabled] if args.key?(:hyperthreading_enabled)
           @id = args[:id] if args.key?(:id)
           @interactive_serial_console_enabled = args[:interactive_serial_console_enabled] if args.key?(:interactive_serial_console_enabled)
@@ -971,6 +977,11 @@ module Google
         # @return [String]
         attr_accessor :id
       
+        # Output only. Instances this Lun is attached to.
+        # Corresponds to the JSON property `instances`
+        # @return [Array<String>]
+        attr_accessor :instances
+      
         # The LUN multiprotocol type ensures the characteristics of the LUN are
         # optimized for each operating system.
         # Corresponds to the JSON property `multiprotocolType`
@@ -1022,6 +1033,7 @@ module Google
           @boot_lun = args[:boot_lun] if args.key?(:boot_lun)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
           @id = args[:id] if args.key?(:id)
+          @instances = args[:instances] if args.key?(:instances)
           @multiprotocol_type = args[:multiprotocol_type] if args.key?(:multiprotocol_type)
           @name = args[:name] if args.key?(:name)
           @shareable = args[:shareable] if args.key?(:shareable)
@@ -1815,10 +1827,10 @@ module Google
       class RenameInstanceRequest
         include Google::Apis::Core::Hashable
       
-        # Required. The new `name` of the instance. Format: `instancename`
-        # Corresponds to the JSON property `newName`
+        # Required. The new `id` of the instance.
+        # Corresponds to the JSON property `newInstanceId`
         # @return [String]
-        attr_accessor :new_name
+        attr_accessor :new_instance_id
       
         def initialize(**args)
            update!(**args)
@@ -1826,7 +1838,64 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @new_name = args[:new_name] if args.key?(:new_name)
+          @new_instance_id = args[:new_instance_id] if args.key?(:new_instance_id)
+        end
+      end
+      
+      # Message requesting rename of a server.
+      class RenameNetworkRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The new `id` of the network.
+        # Corresponds to the JSON property `newNetworkId`
+        # @return [String]
+        attr_accessor :new_network_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @new_network_id = args[:new_network_id] if args.key?(:new_network_id)
+        end
+      end
+      
+      # Message requesting rename of a server.
+      class RenameNfsShareRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The new `id` of the nfsshare.
+        # Corresponds to the JSON property `newNfsshareId`
+        # @return [String]
+        attr_accessor :new_nfsshare_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @new_nfsshare_id = args[:new_nfsshare_id] if args.key?(:new_nfsshare_id)
+        end
+      end
+      
+      # Message requesting rename of a server.
+      class RenameVolumeRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The new `id` of the volume.
+        # Corresponds to the JSON property `newVolumeId`
+        # @return [String]
+        attr_accessor :new_volume_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @new_volume_id = args[:new_volume_id] if args.key?(:new_volume_id)
         end
       end
       
@@ -2177,6 +2246,14 @@ module Google
       class Volume
         include Google::Apis::Core::Hashable
       
+        # Output only. Is the Volume attached at at least one instance. This field is a
+        # lightweight counterpart of `instances` field. It is filled in List responses
+        # as well.
+        # Corresponds to the JSON property `attached`
+        # @return [Boolean]
+        attr_accessor :attached
+        alias_method :attached?, :attached
+      
         # The size, in GiB, that this storage volume has expanded as a result of an auto
         # grow policy. In the absence of auto-grow, the value is 0.
         # Corresponds to the JSON property `autoGrownSizeGib`
@@ -2213,6 +2290,12 @@ module Google
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
+      
+        # Output only. Instances this Volume is attached to. This field is set only in
+        # Get requests.
+        # Corresponds to the JSON property `instances`
+        # @return [Array<String>]
+        attr_accessor :instances
       
         # Labels as key value pairs.
         # Corresponds to the JSON property `labels`
@@ -2317,12 +2400,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @attached = args[:attached] if args.key?(:attached)
           @auto_grown_size_gib = args[:auto_grown_size_gib] if args.key?(:auto_grown_size_gib)
           @boot_volume = args[:boot_volume] if args.key?(:boot_volume)
           @current_size_gib = args[:current_size_gib] if args.key?(:current_size_gib)
           @emergency_size_gib = args[:emergency_size_gib] if args.key?(:emergency_size_gib)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
           @id = args[:id] if args.key?(:id)
+          @instances = args[:instances] if args.key?(:instances)
           @labels = args[:labels] if args.key?(:labels)
           @max_size_gib = args[:max_size_gib] if args.key?(:max_size_gib)
           @name = args[:name] if args.key?(:name)
