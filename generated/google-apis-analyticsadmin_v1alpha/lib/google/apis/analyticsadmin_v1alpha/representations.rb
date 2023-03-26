@@ -436,6 +436,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1alphaCreateConnectedSiteTagRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaCreateConnectedSiteTagResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1alphaCreateUserLinkRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -515,6 +527,12 @@ module Google
       end
       
       class GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1429,6 +1447,8 @@ module Google
       
           property :display_video360_advertiser_link_proposal, as: 'displayVideo360AdvertiserLinkProposal', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal::Representation
       
+          property :enhanced_measurement_settings, as: 'enhancedMeasurementSettings', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings::Representation
+      
           property :expanded_data_set, as: 'expandedDataSet', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaExpandedDataSet, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaExpandedDataSet::Representation
       
           property :firebase_link, as: 'firebaseLink', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaFirebaseLink, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaFirebaseLink::Representation
@@ -1484,6 +1504,21 @@ module Google
           property :access_binding, as: 'accessBinding', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccessBinding, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccessBinding::Representation
       
           property :parent, as: 'parent'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaCreateConnectedSiteTagRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :connected_site_tag, as: 'connectedSiteTag', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaConnectedSiteTag, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaConnectedSiteTag::Representation
+      
+          property :property, as: 'property'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaCreateConnectedSiteTagResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -1631,6 +1666,23 @@ module Google
       
           property :name, as: 'name'
           property :validation_email, as: 'validationEmail'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :file_downloads_enabled, as: 'fileDownloadsEnabled'
+          property :form_interactions_enabled, as: 'formInteractionsEnabled'
+          property :name, as: 'name'
+          property :outbound_clicks_enabled, as: 'outboundClicksEnabled'
+          property :page_changes_enabled, as: 'pageChangesEnabled'
+          property :scrolls_enabled, as: 'scrollsEnabled'
+          property :search_query_parameter, as: 'searchQueryParameter'
+          property :site_search_enabled, as: 'siteSearchEnabled'
+          property :stream_enabled, as: 'streamEnabled'
+          property :uri_query_parameter, as: 'uriQueryParameter'
+          property :video_engagement_enabled, as: 'videoEngagementEnabled'
         end
       end
       
@@ -1806,8 +1858,6 @@ module Google
       class GoogleAnalyticsAdminV1alphaListConnectedSiteTagsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :page_size, as: 'pageSize'
-          property :page_token, as: 'pageToken'
           property :property, as: 'property'
         end
       end
@@ -1817,7 +1867,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :connected_site_tags, as: 'connectedSiteTags', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaConnectedSiteTag, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaConnectedSiteTag::Representation
       
-          property :next_page_token, as: 'nextPageToken'
         end
       end
       

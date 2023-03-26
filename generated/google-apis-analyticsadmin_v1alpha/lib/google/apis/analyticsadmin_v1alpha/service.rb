@@ -422,9 +422,10 @@ module Google
         
         # Deletes information about multiple users' links to an account or property.
         # @param [String] parent
-        #   Required. The account or property that owns the access bindings. The parent
-        #   field in the DeleteAccessBindingRequest messages must either be empty or match
-        #   this field. Formats: - accounts/`account` - properties/`property`
+        #   Required. The account or property that owns the access bindings. The parent of
+        #   all provided values for the 'names' field in DeleteAccessBindingRequest
+        #   messages must match this field. Formats: - accounts/`account` - properties/`
+        #   property`
         # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaBatchDeleteAccessBindingsRequest] google_analytics_admin_v1alpha_batch_delete_access_bindings_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -495,8 +496,8 @@ module Google
         
         # Updates information about multiple access bindings to an account or property.
         # @param [String] parent
-        #   Required. The account or property that owns the access bindings. The parent
-        #   field in the UpdateAccessBindingRequest messages must either be empty or match
+        #   Required. The account or property that owns the access bindings. The parent of
+        #   all provided AccessBinding in UpdateAccessBindingRequest messages must match
         #   this field. Formats: - accounts/`account` - properties/`property`
         # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsRequest] google_analytics_admin_v1alpha_batch_update_access_bindings_request_object
         # @param [String] fields
@@ -1120,6 +1121,38 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a connected site tag for a Universal Analytics property. You can
+        # create a maximum of 20 connected site tags per property. Note: This API cannot
+        # be used on GA4 properties.
+        # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCreateConnectedSiteTagRequest] google_analytics_admin_v1alpha_create_connected_site_tag_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCreateConnectedSiteTagResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCreateConnectedSiteTagResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_property_connected_site_tag(google_analytics_admin_v1alpha_create_connected_site_tag_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/properties:createConnectedSiteTag', options)
+          command.request_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCreateConnectedSiteTagRequest::Representation
+          command.request_object = google_analytics_admin_v1alpha_create_connected_site_tag_request_object
+          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCreateConnectedSiteTagResponse::Representation
+          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCreateConnectedSiteTagResponse
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Marks target Property as soft-deleted (ie: "trashed") and returns it. This API
         # does not have a method to restore soft-deleted properties. However, they can
         # be restored using the Trash Can UI. If the properties are not restored before
@@ -1400,8 +1433,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the connected site tags for a Universal Analytics property. Note: this
-        # has no effect on GA4 property.
+        # Lists the connected site tags for a Universal Analytics property. A maximum of
+        # 20 connected site tags will be returned. Note: this has no effect on GA4
+        # property.
         # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaListConnectedSiteTagsRequest] google_analytics_admin_v1alpha_list_connected_site_tags_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1706,9 +1740,10 @@ module Google
         
         # Deletes information about multiple users' links to an account or property.
         # @param [String] parent
-        #   Required. The account or property that owns the access bindings. The parent
-        #   field in the DeleteAccessBindingRequest messages must either be empty or match
-        #   this field. Formats: - accounts/`account` - properties/`property`
+        #   Required. The account or property that owns the access bindings. The parent of
+        #   all provided values for the 'names' field in DeleteAccessBindingRequest
+        #   messages must match this field. Formats: - accounts/`account` - properties/`
+        #   property`
         # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaBatchDeleteAccessBindingsRequest] google_analytics_admin_v1alpha_batch_delete_access_bindings_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1779,8 +1814,8 @@ module Google
         
         # Updates information about multiple access bindings to an account or property.
         # @param [String] parent
-        #   Required. The account or property that owns the access bindings. The parent
-        #   field in the UpdateAccessBindingRequest messages must either be empty or match
+        #   Required. The account or property that owns the access bindings. The parent of
+        #   all provided AccessBinding in UpdateAccessBindingRequest messages must match
         #   this field. Formats: - accounts/`account` - properties/`property`
         # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsRequest] google_analytics_admin_v1alpha_batch_update_access_bindings_request_object
         # @param [String] fields
@@ -2828,6 +2863,39 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns the enhanced measurement settings for this data stream. Note that the
+        # stream must enable enhanced measurement for these settings to take effect.
+        # @param [String] name
+        #   Required. The name of the settings to lookup. Format: properties/`property`/
+        #   dataStreams/`data_stream`/enhancedMeasurementSettings Example: "properties/
+        #   1000/dataStreams/2000/enhancedMeasurementSettings"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_property_data_stream_enhanced_measurement_settings(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings::Representation
+          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Returns the Site Tag for the specified web stream. Site Tags are immutable
         # singletons.
         # @param [String] name
@@ -2935,6 +3003,47 @@ module Google
           command.request_object = google_analytics_admin_v1alpha_data_stream_object
           command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDataStream::Representation
           command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDataStream
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the enhanced measurement settings for this data stream. Note that the
+        # stream must enable enhanced measurement for these settings to take effect.
+        # @param [String] name
+        #   Output only. Resource name of the Enhanced Measurement Settings. Format:
+        #   properties/`property_id`/dataStreams/`data_stream`/enhancedMeasurementSettings
+        #   Example: "properties/1000/dataStreams/2000/enhancedMeasurementSettings"
+        # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings] google_analytics_admin_v1alpha_enhanced_measurement_settings_object
+        # @param [String] update_mask
+        #   Required. The list of fields to be updated. Field names must be in snake case (
+        #   e.g., "field_to_update"). Omitted fields will not be updated. To replace the
+        #   entire entity, use one path with the string "*" to match all fields.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_property_data_stream_enhanced_measurement_settings(name, google_analytics_admin_v1alpha_enhanced_measurement_settings_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1alpha/{+name}', options)
+          command.request_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings::Representation
+          command.request_object = google_analytics_admin_v1alpha_enhanced_measurement_settings_object
+          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings::Representation
+          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
