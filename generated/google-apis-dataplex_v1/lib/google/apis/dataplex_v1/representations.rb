@@ -1533,6 +1533,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :entity, as: 'entity'
+          property :resource, as: 'resource'
         end
       end
       

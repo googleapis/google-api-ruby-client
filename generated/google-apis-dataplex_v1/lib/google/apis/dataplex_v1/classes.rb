@@ -1084,7 +1084,7 @@ module Google
         attr_accessor :name
       
         # Optional. The list of paths for items within the associated resource (eg.
-        # columns within a table) along with attribute bindings.
+        # columns and partitions within a table) along with attribute bindings.
         # Corresponds to the JSON property `paths`
         # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1DataAttributeBindingPath>]
         attr_accessor :paths
@@ -1130,7 +1130,9 @@ module Google
         end
       end
       
-      # Represents a subresource of a given resource, and associated bindings with it.
+      # Represents a subresource of the given resource, and associated bindings with
+      # it. Currently supported subresources are column and partition schema fields
+      # within a table.
       class GoogleCloudDataplexV1DataAttributeBindingPath
         include Google::Apis::Core::Hashable
       
@@ -1142,7 +1144,7 @@ module Google
         attr_accessor :attributes
       
         # Required. The name identifier of the path. Nested columns should be of the
-        # form: 'country.state.city'.
+        # form: 'address.city'.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2326,6 +2328,14 @@ module Google
         # @return [String]
         attr_accessor :entity
       
+        # Immutable. The service-qualified full resource name of the cloud resource for
+        # a DataScan job to scan against. The field could be: BigQuery table of type "
+        # TABLE" for DataProfileScan/DataQualityScan Format: //bigquery.googleapis.com/
+        # projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+        # Corresponds to the JSON property `resource`
+        # @return [String]
+        attr_accessor :resource
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2333,6 +2343,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @entity = args[:entity] if args.key?(:entity)
+          @resource = args[:resource] if args.key?(:resource)
         end
       end
       
