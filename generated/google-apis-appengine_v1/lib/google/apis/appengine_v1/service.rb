@@ -56,6 +56,9 @@ module Google
         # applications, see Managing Projects, Applications, and Billing (https://cloud.
         # google.com/appengine/docs/standard/python/console/).
         # @param [Google::Apis::AppengineV1::Application] application_object
+        # @param [String] parent
+        #   The project and location in which the application should be created, specified
+        #   in the format projects/*/locations/*
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -73,12 +76,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_app(application_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_app(application_object = nil, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/apps', options)
           command.request_representation = Google::Apis::AppengineV1::Application::Representation
           command.request_object = application_object
           command.response_representation = Google::Apis::AppengineV1::Operation::Representation
           command.response_class = Google::Apis::AppengineV1::Operation
+          command.query['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1550,6 +1554,48 @@ module Google
           command.params['versionsId'] = versions_id unless versions_id.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates an App Engine application for a Google Cloud Platform project.
+        # Required fields: id - The ID of the target Cloud Platform project. location -
+        # The region (https://cloud.google.com/appengine/docs/locations) where you want
+        # the App Engine application located.For more information about App Engine
+        # applications, see Managing Projects, Applications, and Billing (https://cloud.
+        # google.com/appengine/docs/standard/python/console/).
+        # @param [String] projects_id
+        #   Part of `parent`. The project and location in which the application should be
+        #   created, specified in the format projects/*/locations/*
+        # @param [String] locations_id
+        #   Part of `parent`. See documentation of `projectsId`.
+        # @param [Google::Apis::AppengineV1::Application] application_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AppengineV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AppengineV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_application(projects_id, locations_id, application_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/projects/{projectsId}/locations/{locationsId}/applications', options)
+          command.request_representation = Google::Apis::AppengineV1::Application::Representation
+          command.request_object = application_object
+          command.response_representation = Google::Apis::AppengineV1::Operation::Representation
+          command.response_class = Google::Apis::AppengineV1::Operation
+          command.params['projectsId'] = projects_id unless projects_id.nil?
+          command.params['locationsId'] = locations_id unless locations_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

@@ -97,9 +97,9 @@ module Google
         # @return [String]
         attr_accessor :auth_domain
       
-        # Google Cloud Storage bucket that can be used for storing files associated with
-        # this application. This bucket is associated with the application and can be
-        # used by the gcloud deployment commands.@OutputOnly
+        # Output only. Google Cloud Storage bucket that can be used for storing files
+        # associated with this application. This bucket is associated with the
+        # application and can be used by the gcloud deployment commands.@OutputOnly
         # Corresponds to the JSON property `codeBucket`
         # @return [String]
         attr_accessor :code_bucket
@@ -110,8 +110,8 @@ module Google
         # @return [String]
         attr_accessor :database_type
       
-        # Google Cloud Storage bucket that can be used by this application to store
-        # content.@OutputOnly
+        # Output only. Google Cloud Storage bucket that can be used by this application
+        # to store content.@OutputOnly
         # Corresponds to the JSON property `defaultBucket`
         # @return [String]
         attr_accessor :default_bucket
@@ -121,7 +121,8 @@ module Google
         # @return [String]
         attr_accessor :default_cookie_expiration
       
-        # Hostname used to reach this application, as resolved by App Engine.@OutputOnly
+        # Output only. Hostname used to reach this application, as resolved by App
+        # Engine.@OutputOnly
         # Corresponds to the JSON property `defaultHostname`
         # @return [String]
         attr_accessor :default_hostname
@@ -139,8 +140,8 @@ module Google
         # @return [Google::Apis::AppengineV1::FeatureSettings]
         attr_accessor :feature_settings
       
-        # The Google Container Registry domain used for storing managed build docker
-        # images for this application.
+        # Output only. The Google Container Registry domain used for storing managed
+        # build docker images for this application.
         # Corresponds to the JSON property `gcrDomain`
         # @return [String]
         attr_accessor :gcr_domain
@@ -165,8 +166,8 @@ module Google
         # @return [String]
         attr_accessor :location_id
       
-        # Full path to the Application resource in the API. Example: apps/myapp.@
-        # OutputOnly
+        # Output only. Full path to the Application resource in the API. Example: apps/
+        # myapp.@OutputOnly
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1184,7 +1185,7 @@ module Google
         # @return [String]
         attr_accessor :oauth2_client_secret
       
-        # Hex-encoded SHA-256 hash of the client secret.@OutputOnly
+        # Output only. Hex-encoded SHA-256 hash of the client secret.@OutputOnly
         # Corresponds to the JSON property `oauth2ClientSecretSha256`
         # @return [String]
         attr_accessor :oauth2_client_secret_sha256
