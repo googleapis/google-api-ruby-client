@@ -244,6 +244,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2alphaCreateMerchantCenterAccountLinkMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2alphaCreateModelMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -305,6 +311,18 @@ module Google
       end
       
       class GoogleCloudRetailV2alphaImportUserEventsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2alphaMerchantCenterAccountLink
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2alphaMerchantCenterAccountLinkMerchantCenterFeedFilter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -604,6 +622,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2betaCreateMerchantCenterAccountLinkMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2betaCreateModelMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -767,6 +791,18 @@ module Google
       end
       
       class GoogleCloudRetailV2betaLocalInventory
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2betaMerchantCenterAccountLink
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2betaMerchantCenterAccountLinkMerchantCenterFeedFilter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1526,6 +1562,14 @@ module Google
         end
       end
       
+      class GoogleCloudRetailV2alphaCreateMerchantCenterAccountLinkMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class GoogleCloudRetailV2alphaCreateModelMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1627,6 +1671,30 @@ module Google
       
           property :import_summary, as: 'importSummary', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2alphaUserEventImportSummary, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2alphaUserEventImportSummary::Representation
       
+        end
+      end
+      
+      class GoogleCloudRetailV2alphaMerchantCenterAccountLink
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :branch_id, as: 'branchId'
+          collection :feed_filters, as: 'feedFilters', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2alphaMerchantCenterAccountLinkMerchantCenterFeedFilter, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2alphaMerchantCenterAccountLinkMerchantCenterFeedFilter::Representation
+      
+          property :feed_label, as: 'feedLabel'
+          property :id, as: 'id'
+          property :language_code, as: 'languageCode'
+          property :merchant_center_account_id, :numeric_string => true, as: 'merchantCenterAccountId'
+          property :name, as: 'name'
+          property :project_id, as: 'projectId'
+          property :state, as: 'state'
+        end
+      end
+      
+      class GoogleCloudRetailV2alphaMerchantCenterAccountLinkMerchantCenterFeedFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :primary_feed_id, :numeric_string => true, as: 'primaryFeedId'
+          property :primary_feed_name, as: 'primaryFeedName'
         end
       end
       
@@ -2061,6 +2129,14 @@ module Google
         end
       end
       
+      class GoogleCloudRetailV2betaCreateMerchantCenterAccountLinkMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class GoogleCloudRetailV2betaCreateModelMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2321,6 +2397,30 @@ module Google
           property :place_id, as: 'placeId'
           property :price_info, as: 'priceInfo', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaPriceInfo, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaPriceInfo::Representation
       
+        end
+      end
+      
+      class GoogleCloudRetailV2betaMerchantCenterAccountLink
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :branch_id, as: 'branchId'
+          collection :feed_filters, as: 'feedFilters', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaMerchantCenterAccountLinkMerchantCenterFeedFilter, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaMerchantCenterAccountLinkMerchantCenterFeedFilter::Representation
+      
+          property :feed_label, as: 'feedLabel'
+          property :id, as: 'id'
+          property :language_code, as: 'languageCode'
+          property :merchant_center_account_id, :numeric_string => true, as: 'merchantCenterAccountId'
+          property :name, as: 'name'
+          property :project_id, as: 'projectId'
+          property :state, as: 'state'
+        end
+      end
+      
+      class GoogleCloudRetailV2betaMerchantCenterAccountLinkMerchantCenterFeedFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :primary_feed_id, :numeric_string => true, as: 'primaryFeedId'
+          property :primary_feed_name, as: 'primaryFeedName'
         end
       end
       
@@ -2771,6 +2871,7 @@ module Google
       class GoogleCloudRetailV2betaSearchRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :banner, as: 'banner'
           property :boost_spec, as: 'boostSpec', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchRequestBoostSpec, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchRequestBoostSpec::Representation
       
           property :branch, as: 'branch'
@@ -3023,10 +3124,10 @@ module Google
           hash :attributes, as: 'attributes', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCustomAttribute, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCustomAttribute::Representation
       
           property :attribution_token, as: 'attributionToken'
+          property :banner, as: 'banner'
           property :cart_id, as: 'cartId'
           property :completion_detail, as: 'completionDetail', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCompletionDetail, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCompletionDetail::Representation
       
-          property :domain, as: 'domain'
           property :event_time, as: 'eventTime'
           property :event_type, as: 'eventType'
           collection :experiment_ids, as: 'experimentIds'
