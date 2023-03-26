@@ -702,6 +702,183 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new WorkforcePoolProviderKey in a WorkforcePoolProvider.
+        # @param [String] parent
+        #   Required. The provider to create this key in.
+        # @param [Google::Apis::IamV1::WorkforcePoolProviderKey] workforce_pool_provider_key_object
+        # @param [String] workforce_pool_provider_key_id
+        #   Required. The ID to use for the key, which becomes the final component of the
+        #   resource name. This value must be 4-32 characters, and may contain the
+        #   characters [a-z0-9-].
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_location_workforce_pool_provider_key(parent, workforce_pool_provider_key_object = nil, workforce_pool_provider_key_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/keys', options)
+          command.request_representation = Google::Apis::IamV1::WorkforcePoolProviderKey::Representation
+          command.request_object = workforce_pool_provider_key_object
+          command.response_representation = Google::Apis::IamV1::Operation::Representation
+          command.response_class = Google::Apis::IamV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['workforcePoolProviderKeyId'] = workforce_pool_provider_key_id unless workforce_pool_provider_key_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a WorkforcePoolProviderKey. You can undelete a key for 30 days. After
+        # 30 days, deletion is permanent.
+        # @param [String] name
+        #   Required. The name of the key to delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_location_workforce_pool_provider_key(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::IamV1::Operation::Representation
+          command.response_class = Google::Apis::IamV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a WorkforcePoolProviderKey.
+        # @param [String] name
+        #   Required. The name of the key to retrieve.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::WorkforcePoolProviderKey] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::WorkforcePoolProviderKey]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_location_workforce_pool_provider_key(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::IamV1::WorkforcePoolProviderKey::Representation
+          command.response_class = Google::Apis::IamV1::WorkforcePoolProviderKey
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all non-deleted WorkforcePoolProviderKeys in a WorkforcePoolProvider. If
+        # `show_deleted` is set to `true`, then deleted keys are also listed.
+        # @param [String] parent
+        #   Required. The provider resource to list encryption keys for. Format: `
+        #   locations/`location`/workforcePools/`workforce_pool_id`/providers/`provider_id`
+        #   `
+        # @param [Fixnum] page_size
+        #   The maximum number of keys to return. If unspecified, all keys are returned.
+        #   The maximum value is 10; values above 10 are truncated to 10.
+        # @param [String] page_token
+        #   A page token, received from a previous `ListWorkforcePoolProviderKeys` call.
+        #   Provide this to retrieve the subsequent page.
+        # @param [Boolean] show_deleted
+        #   Whether to return soft-deleted keys.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::ListWorkforcePoolProviderKeysResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::ListWorkforcePoolProviderKeysResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_location_workforce_pool_provider_keys(parent, page_size: nil, page_token: nil, show_deleted: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/keys', options)
+          command.response_representation = Google::Apis::IamV1::ListWorkforcePoolProviderKeysResponse::Representation
+          command.response_class = Google::Apis::IamV1::ListWorkforcePoolProviderKeysResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['showDeleted'] = show_deleted unless show_deleted.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Undeletes a WorkforcePoolProviderKey, as long as it was deleted fewer than 30
+        # days ago.
+        # @param [String] name
+        #   Required. The name of the key to undelete.
+        # @param [Google::Apis::IamV1::UndeleteWorkforcePoolProviderKeyRequest] undelete_workforce_pool_provider_key_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def undelete_workforce_pool_provider_key(name, undelete_workforce_pool_provider_key_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:undelete', options)
+          command.request_representation = Google::Apis::IamV1::UndeleteWorkforcePoolProviderKeyRequest::Representation
+          command.request_object = undelete_workforce_pool_provider_key_request_object
+          command.response_representation = Google::Apis::IamV1::Operation::Representation
+          command.response_class = Google::Apis::IamV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the latest state of a long-running operation. Clients can use this method
         # to poll the operation result at intervals as recommended by the API service.
         # @param [String] name
@@ -1685,6 +1862,181 @@ module Google
           command = make_simple_command(:post, 'v1/{+name}:undelete', options)
           command.request_representation = Google::Apis::IamV1::UndeleteWorkloadIdentityPoolProviderRequest::Representation
           command.request_object = undelete_workload_identity_pool_provider_request_object
+          command.response_representation = Google::Apis::IamV1::Operation::Representation
+          command.response_class = Google::Apis::IamV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Create a new WorkloadIdentityPoolProviderKey in a WorkloadIdentityPoolProvider.
+        # @param [String] parent
+        #   Required. The parent provider resource to create the key in.
+        # @param [Google::Apis::IamV1::WorkloadIdentityPoolProviderKey] workload_identity_pool_provider_key_object
+        # @param [String] workload_identity_pool_provider_key_id
+        #   Required. The ID to use for the key, which becomes the final component of the
+        #   resource name. This value should be 4-32 characters, and may contain the
+        #   characters [a-z0-9-].
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_workload_identity_pool_provider_key(parent, workload_identity_pool_provider_key_object = nil, workload_identity_pool_provider_key_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/keys', options)
+          command.request_representation = Google::Apis::IamV1::WorkloadIdentityPoolProviderKey::Representation
+          command.request_object = workload_identity_pool_provider_key_object
+          command.response_representation = Google::Apis::IamV1::Operation::Representation
+          command.response_class = Google::Apis::IamV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['workloadIdentityPoolProviderKeyId'] = workload_identity_pool_provider_key_id unless workload_identity_pool_provider_key_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an WorkloadIdentityPoolProviderKey. You can undelete a key for 30 days.
+        # After 30 days, deletion is permanent.
+        # @param [String] name
+        #   Required. The name of the encryption key to delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_workload_identity_pool_provider_key(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::IamV1::Operation::Representation
+          command.response_class = Google::Apis::IamV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets an individual WorkloadIdentityPoolProviderKey.
+        # @param [String] name
+        #   Required. The name of the key to retrieve.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::WorkloadIdentityPoolProviderKey] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::WorkloadIdentityPoolProviderKey]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_workload_identity_pool_provider_key(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::IamV1::WorkloadIdentityPoolProviderKey::Representation
+          command.response_class = Google::Apis::IamV1::WorkloadIdentityPoolProviderKey
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all non-deleted WorkloadIdentityPoolProviderKeys in a project. If
+        # show_deleted is set to `true`, then deleted pools are also listed.
+        # @param [String] parent
+        #   Required. The parent provider resource to list encryption keys for.
+        # @param [Fixnum] page_size
+        #   The maximum number of keys to return. If unspecified, all keys are returned.
+        #   The maximum value is 10; values above 10 are truncated to 10.
+        # @param [String] page_token
+        #   A page token, received from a previous `ListWorkloadIdentityPoolProviderKeys`
+        #   call. Provide this to retrieve the subsequent page.
+        # @param [Boolean] show_deleted
+        #   Whether to return soft deleted resources as well.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::ListWorkloadIdentityPoolProviderKeysResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::ListWorkloadIdentityPoolProviderKeysResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_workload_identity_pool_provider_keys(parent, page_size: nil, page_token: nil, show_deleted: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/keys', options)
+          command.response_representation = Google::Apis::IamV1::ListWorkloadIdentityPoolProviderKeysResponse::Representation
+          command.response_class = Google::Apis::IamV1::ListWorkloadIdentityPoolProviderKeysResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['showDeleted'] = show_deleted unless show_deleted.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Undeletes an WorkloadIdentityPoolProviderKey, as long as it was deleted fewer
+        # than 30 days ago.
+        # @param [String] name
+        #   Required. The name of the encryption key to undelete.
+        # @param [Google::Apis::IamV1::UndeleteWorkloadIdentityPoolProviderKeyRequest] undelete_workload_identity_pool_provider_key_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def undelete_workload_identity_pool_provider_key(name, undelete_workload_identity_pool_provider_key_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:undelete', options)
+          command.request_representation = Google::Apis::IamV1::UndeleteWorkloadIdentityPoolProviderKeyRequest::Representation
+          command.request_object = undelete_workload_identity_pool_provider_key_request_object
           command.response_representation = Google::Apis::IamV1::Operation::Representation
           command.response_class = Google::Apis::IamV1::Operation
           command.params['name'] = name unless name.nil?
