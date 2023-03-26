@@ -340,6 +340,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudIdentitytoolkitV1TotpInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudIdentitytoolkitV1UploadAccountRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -670,6 +676,8 @@ module Google
           property :enrolled_at, as: 'enrolledAt'
           property :mfa_enrollment_id, as: 'mfaEnrollmentId'
           property :phone_info, as: 'phoneInfo'
+          property :totp_info, as: 'totpInfo', class: Google::Apis::IdentitytoolkitV1::GoogleCloudIdentitytoolkitV1TotpInfo, decorator: Google::Apis::IdentitytoolkitV1::GoogleCloudIdentitytoolkitV1TotpInfo::Representation
+      
           property :unobfuscated_phone_info, as: 'unobfuscatedPhoneInfo'
         end
       end
@@ -1089,6 +1097,12 @@ module Google
           property :email, as: 'email'
           property :phone_number, as: 'phoneNumber'
           property :user_id, as: 'userId'
+        end
+      end
+      
+      class GoogleCloudIdentitytoolkitV1TotpInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
