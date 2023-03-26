@@ -3304,6 +3304,7 @@ module Google
           property :name, as: 'name'
           property :origin, as: 'origin'
           property :parent_template_id, as: 'parentTemplateId'
+          property :run_as_service_account, as: 'runAsServiceAccount'
           property :snapshot_number, :numeric_string => true, as: 'snapshotNumber'
           property :state, as: 'state'
           property :status, as: 'status'
