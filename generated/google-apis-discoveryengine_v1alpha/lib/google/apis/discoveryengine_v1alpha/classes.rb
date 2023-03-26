@@ -259,9 +259,12 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The schema to use when parsing the data from the source. Supported values for
-        # imports: * `user_event` (default): One JSON UserEvent per line. * `document` (
-        # default): One JSON Document per line. Each document must have a valid document.
-        # id.
+        # user event imports: * `user_event` (default): One UserEvent per row. Supported
+        # values for document imports: * `document` (default): One Document format per
+        # row. Each document must have a valid Document.id and one of Document.json_data
+        # or Document.struct_data. * `custom`: One custom data per row in arbitrary
+        # format that conforms the defined Schema of the data store. This can only be
+        # used by the GENERIC Data Store vertical.
         # Corresponds to the JSON property `dataSchema`
         # @return [String]
         attr_accessor :data_schema
@@ -346,209 +349,6 @@ module Google
         end
       end
       
-      # Defines circumstances to be checked before allowing a behavior
-      class GoogleCloudDiscoveryengineV1alphaCondition
-        include Google::Apis::Core::Hashable
-      
-        # Optional. Range of time(s) specifying when condition is active. Maximum of 10
-        # time ranges.
-        # Corresponds to the JSON property `activeTimeRange`
-        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaConditionTimeRange>]
-        attr_accessor :active_time_range
-      
-        # Optional. Search only A list of terms to match the query on. Maximum of 10
-        # query terms.
-        # Corresponds to the JSON property `queryTerms`
-        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaConditionQueryTerm>]
-        attr_accessor :query_terms
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @active_time_range = args[:active_time_range] if args.key?(:active_time_range)
-          @query_terms = args[:query_terms] if args.key?(:query_terms)
-        end
-      end
-      
-      # Matcher for search request query
-      class GoogleCloudDiscoveryengineV1alphaConditionQueryTerm
-        include Google::Apis::Core::Hashable
-      
-        # Whether the search query needs to exactly match the query term.
-        # Corresponds to the JSON property `fullMatch`
-        # @return [Boolean]
-        attr_accessor :full_match
-        alias_method :full_match?, :full_match
-      
-        # The specific query value to match against Must be lowercase, must be UTF-8.
-        # Can have at most 3 space separated terms if full_match is true. Cannot be an
-        # empty string. Maximum length of 5000 characters.
-        # Corresponds to the JSON property `value`
-        # @return [String]
-        attr_accessor :value
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @full_match = args[:full_match] if args.key?(:full_match)
-          @value = args[:value] if args.key?(:value)
-        end
-      end
-      
-      # Used for time-dependent conditions.
-      class GoogleCloudDiscoveryengineV1alphaConditionTimeRange
-        include Google::Apis::Core::Hashable
-      
-        # End of time range. Range is inclusive. Must be in the future.
-        # Corresponds to the JSON property `endTime`
-        # @return [String]
-        attr_accessor :end_time
-      
-        # Start of time range. Range is inclusive.
-        # Corresponds to the JSON property `startTime`
-        # @return [String]
-        attr_accessor :start_time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @end_time = args[:end_time] if args.key?(:end_time)
-          @start_time = args[:start_time] if args.key?(:start_time)
-        end
-      end
-      
-      # Defines a conditioned behavior to employ during serving. Must be attached to a
-      # [ServingConfig] to be considered at serving time. Permitted actions dependent
-      # on Solution Type.
-      class GoogleCloudDiscoveryengineV1alphaControl
-        include Google::Apis::Core::Hashable
-      
-        # Output only. List of all [ServingConfig] ids this control is attached to. May
-        # take up to 10 minutes to update after changes.
-        # Corresponds to the JSON property `associatedServingConfigIds`
-        # @return [Array<String>]
-        attr_accessor :associated_serving_config_ids
-      
-        # Adjusts order of products in returned list.
-        # Corresponds to the JSON property `boostAction`
-        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaControlBoostAction]
-        attr_accessor :boost_action
-      
-        # Determines when the associated action will trigger. Omit to always apply the
-        # action. Currently only a single condition may be specified. Otherwise an
-        # INVALID ARGUMENT error is thrown.
-        # Corresponds to the JSON property `conditions`
-        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCondition>]
-        attr_accessor :conditions
-      
-        # Required. Human readable name. The identifier used in UI views. Must be UTF-8
-        # encoded string. Length limit is 128 characters. Otherwise an INVALID ARGUMENT
-        # error is thrown.
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # Specified which products may be included in results. Uses same filter as boost.
-        # Corresponds to the JSON property `filterAction`
-        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaControlFilterAction]
-        attr_accessor :filter_action
-      
-        # Immutable. Fully qualified name `projects/*/locations/global/dataStore/*/
-        # controls/*`
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Required. What solution the control belongs to. Must be compatible with
-        # vertical of resource. Otherwise an INVALID ARGUMENT error is thrown.
-        # Corresponds to the JSON property `solutionType`
-        # @return [String]
-        attr_accessor :solution_type
-      
-        # Specifies the use case for the control. Affects what condition fields can be
-        # set. Only applies to SOLUTION_TYPE_SEARCH. Currently only allow one use case
-        # per control. Must be set when solution_type is SolutionType.
-        # SOLUTION_TYPE_SEARCH.
-        # Corresponds to the JSON property `useCases`
-        # @return [Array<String>]
-        attr_accessor :use_cases
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @associated_serving_config_ids = args[:associated_serving_config_ids] if args.key?(:associated_serving_config_ids)
-          @boost_action = args[:boost_action] if args.key?(:boost_action)
-          @conditions = args[:conditions] if args.key?(:conditions)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @filter_action = args[:filter_action] if args.key?(:filter_action)
-          @name = args[:name] if args.key?(:name)
-          @solution_type = args[:solution_type] if args.key?(:solution_type)
-          @use_cases = args[:use_cases] if args.key?(:use_cases)
-        end
-      end
-      
-      # Adjusts order of products in returned list.
-      class GoogleCloudDiscoveryengineV1alphaControlBoostAction
-        include Google::Apis::Core::Hashable
-      
-        # Required. Strength of the boost, which should be in [-1, 1]. Negative boost
-        # means demotion. Default is 0.0 (No-op).
-        # Corresponds to the JSON property `boost`
-        # @return [Float]
-        attr_accessor :boost
-      
-        # Required. Specifies which products to apply the boost to. If no filter is
-        # provided all products will be boosted (No-op). Syntax documentation: https://
-        # cloud.google.com/retail/docs/filter-and-order Maximum length is 5000
-        # characters. Otherwise an INVALID ARGUMENT error is thrown.
-        # Corresponds to the JSON property `filter`
-        # @return [String]
-        attr_accessor :filter
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @boost = args[:boost] if args.key?(:boost)
-          @filter = args[:filter] if args.key?(:filter)
-        end
-      end
-      
-      # Specified which products may be included in results. Uses same filter as boost.
-      class GoogleCloudDiscoveryengineV1alphaControlFilterAction
-        include Google::Apis::Core::Hashable
-      
-        # Required. A filter to apply on the matching condition results. Required Syntax
-        # documentation: https://cloud.google.com/retail/docs/filter-and-order Maximum
-        # length is 5000 characters. Otherwise an INVALID ARGUMENT error is thrown.
-        # Corresponds to the JSON property `filter`
-        # @return [String]
-        attr_accessor :filter
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @filter = args[:filter] if args.key?(:filter)
-        end
-      end
-      
       # A custom attribute that is not explicitly modeled in a resource, e.g.
       # UserEvent.
       class GoogleCloudDiscoveryengineV1alphaCustomAttribute
@@ -613,7 +413,7 @@ module Google
         # @return [String]
         attr_accessor :parent_document_id
       
-        # Required. The identifier of the schema located in the same data store.
+        # The identifier of the schema located in the same data store.
         # Corresponds to the JSON property `schemaId`
         # @return [String]
         attr_accessor :schema_id
@@ -690,9 +490,11 @@ module Google
         # document imports: * `document` (default): One JSON Document per line. Each
         # document must have a valid Document.id. * `content`: Unstructured data (e.g.
         # PDF, HTML). Each file matched by `input_uris` will become a document, with the
-        # ID set to the first 128 bits of SHA256(URI) encoded as a hex string. Supported
-        # values for user even imports: * `user_event` (default): One JSON UserEvent per
-        # line.
+        # ID set to the first 128 bits of SHA256(URI) encoded as a hex string. * `custom`
+        # : One custom data JSON per row in arbitrary format that conforms the defined
+        # Schema of the data store. This can only be used by the GENERIC Data Store
+        # vertical. Supported values for user even imports: * `user_event` (default):
+        # One JSON UserEvent per line.
         # Corresponds to the JSON property `dataSchema`
         # @return [String]
         attr_accessor :data_schema
@@ -700,8 +502,9 @@ module Google
         # Required. Cloud Storage URIs to input files. URI can be up to 2000 characters
         # long. URIs can match the full object path (for example, `gs://bucket/directory/
         # object.json`) or a pattern matching one or more files, such as `gs://bucket/
-        # directory/*.json`. A request can contain at most 100 files or 100000 files if
-        # the data_schema is `content`. And each file can be up to 2 GB.
+        # directory/*.json`. A request can contain at most 100 files (or 100,000 files
+        # if `data_schema` is `content`). Each file can be up to 2 GB (or 100 MB if `
+        # data_schema` is `content`).
         # Corresponds to the JSON property `inputUris`
         # @return [Array<String>]
         attr_accessor :input_uris
@@ -1317,6 +1120,40 @@ module Google
         end
       end
       
+      # Defines the structure and layout of a type of document data.
+      class GoogleCloudDiscoveryengineV1alphaSchema
+        include Google::Apis::Core::Hashable
+      
+        # The JSON representation of the schema.
+        # Corresponds to the JSON property `jsonSchema`
+        # @return [String]
+        attr_accessor :json_schema
+      
+        # Immutable. The full resource name of the schema, in the format of `projects/`
+        # project`/locations/`location`/collections/`collection`/dataStores/`data_store`/
+        # schemas/`schema``. This field must be a UTF-8 encoded string with a length
+        # limit of 1024 characters.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The structured representation of the schema.
+        # Corresponds to the JSON property `structSchema`
+        # @return [Hash<String,Object>]
+        attr_accessor :struct_schema
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @json_schema = args[:json_schema] if args.key?(:json_schema)
+          @name = args[:name] if args.key?(:name)
+          @struct_schema = args[:struct_schema] if args.key?(:struct_schema)
+        end
+      end
+      
       # Detailed search information.
       class GoogleCloudDiscoveryengineV1alphaSearchInfo
         include Google::Apis::Core::Hashable
@@ -1816,6 +1653,40 @@ module Google
           @error_samples = args[:error_samples] if args.key?(:error_samples)
           @joined_events_count = args[:joined_events_count] if args.key?(:joined_events_count)
           @unjoined_events_count = args[:unjoined_events_count] if args.key?(:unjoined_events_count)
+        end
+      end
+      
+      # Defines the structure and layout of a type of document data.
+      class GoogleCloudDiscoveryengineV1betaSchema
+        include Google::Apis::Core::Hashable
+      
+        # The JSON representation of the schema.
+        # Corresponds to the JSON property `jsonSchema`
+        # @return [String]
+        attr_accessor :json_schema
+      
+        # Immutable. The full resource name of the schema, in the format of `projects/`
+        # project`/locations/`location`/collections/`collection`/dataStores/`data_store`/
+        # schemas/`schema``. This field must be a UTF-8 encoded string with a length
+        # limit of 1024 characters.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The structured representation of the schema.
+        # Corresponds to the JSON property `structSchema`
+        # @return [Hash<String,Object>]
+        attr_accessor :struct_schema
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @json_schema = args[:json_schema] if args.key?(:json_schema)
+          @name = args[:name] if args.key?(:name)
+          @struct_schema = args[:struct_schema] if args.key?(:struct_schema)
         end
       end
       
