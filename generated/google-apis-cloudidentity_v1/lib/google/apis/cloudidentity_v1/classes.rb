@@ -1426,6 +1426,11 @@ module Google
       class Group
         include Google::Apis::Core::Hashable
       
+        # Output only. Additional group keys associated with the Group.
+        # Corresponds to the JSON property `additionalGroupKeys`
+        # @return [Array<Google::Apis::CloudidentityV1::EntityKey>]
+        attr_accessor :additional_group_keys
+      
         # Output only. The time when the `Group` was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -1497,6 +1502,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @additional_group_keys = args[:additional_group_keys] if args.key?(:additional_group_keys)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
@@ -2010,6 +2016,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Output only. Delivery setting associated with the membership.
+        # Corresponds to the JSON property `deliverySetting`
+        # @return [String]
+        attr_accessor :delivery_setting
+      
         # Output only. The [resource name](https://cloud.google.com/apis/design/
         # resource_names) of the `Membership`. Shall be of the form `groups/`group`/
         # memberships/`membership``.
@@ -2049,6 +2060,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @delivery_setting = args[:delivery_setting] if args.key?(:delivery_setting)
           @name = args[:name] if args.key?(:name)
           @preferred_member_key = args[:preferred_member_key] if args.key?(:preferred_member_key)
           @roles = args[:roles] if args.key?(:roles)
@@ -2082,6 +2094,68 @@ module Google
         def update!(**args)
           @edges = args[:edges] if args.key?(:edges)
           @group = args[:group] if args.key?(:group)
+        end
+      end
+      
+      # Message containing membership relation.
+      class MembershipRelation
+        include Google::Apis::Core::Hashable
+      
+        # An extended description to help users determine the purpose of a `Group`.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The display name of the `Group`.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The [resource name](https://cloud.google.com/apis/design/resource_names) of
+        # the `Group`. Shall be of the form `groups/`group_id``.
+        # Corresponds to the JSON property `group`
+        # @return [String]
+        attr_accessor :group
+      
+        # A unique identifier for an entity in the Cloud Identity Groups API. An entity
+        # can represent either a group with an optional `namespace` or a user without a `
+        # namespace`. The combination of `id` and `namespace` must be unique; however,
+        # the same `id` can be used with different `namespace`s.
+        # Corresponds to the JSON property `groupKey`
+        # @return [Google::Apis::CloudidentityV1::EntityKey]
+        attr_accessor :group_key
+      
+        # One or more label entries that apply to the Group. Currently supported labels
+        # contain a key with an empty value.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # The [resource name](https://cloud.google.com/apis/design/resource_names) of
+        # the `Membership`. Shall be of the form `groups/`group_id`/memberships/`
+        # membership_id``.
+        # Corresponds to the JSON property `membership`
+        # @return [String]
+        attr_accessor :membership
+      
+        # The `MembershipRole`s that apply to the `Membership`.
+        # Corresponds to the JSON property `roles`
+        # @return [Array<Google::Apis::CloudidentityV1::MembershipRole>]
+        attr_accessor :roles
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @group = args[:group] if args.key?(:group)
+          @group_key = args[:group_key] if args.key?(:group_key)
+          @labels = args[:labels] if args.key?(:labels)
+          @membership = args[:membership] if args.key?(:membership)
+          @roles = args[:roles] if args.key?(:roles)
         end
       end
       
@@ -2335,14 +2409,14 @@ module Google
         # The **Logout Redirect URL** (sign-out page URL) of the identity provider. When
         # a user clicks the sign-out link on a Google page, they will be redirected to
         # this URL. This is a pure redirect with no attached SAML `LogoutRequest` i.e.
-        # SAML single logout is currently not supported. Must use `HTTPS`.
+        # SAML single logout is not supported. Must use `HTTPS`.
         # Corresponds to the JSON property `logoutRedirectUri`
         # @return [String]
         attr_accessor :logout_redirect_uri
       
         # Required. The `SingleSignOnService` endpoint location (sign-in page URL) of
         # the identity provider. This is the URL where the `AuthnRequest` will be sent.
-        # Must use `HTTPS`. Currently assumed to accept the `HTTP-Redirect` binding.
+        # Must use `HTTPS`. Assumed to accept the `HTTP-Redirect` binding.
         # Corresponds to the JSON property `singleSignOnServiceUri`
         # @return [String]
         attr_accessor :single_sign_on_service_uri
@@ -2365,8 +2439,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Output only. The SAML **Assertion Consumer Service (ACS) URL** to be used for
-        # the IDP-initiated login. Currently assumed to accept response messages via the
-        # `HTTP-POST` binding.
+        # the IDP-initiated login. Assumed to accept response messages via the `HTTP-
+        # POST` binding.
         # Corresponds to the JSON property `assertionConsumerServiceUri`
         # @return [String]
         attr_accessor :assertion_consumer_service_uri
@@ -2404,6 +2478,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @inbound_saml_sso_profile = args[:inbound_saml_sso_profile] if args.key?(:inbound_saml_sso_profile)
+        end
+      end
+      
+      # The response message for MembershipsService.SearchDirectGroups.
+      class SearchDirectGroupsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of direct groups satisfying the query.
+        # Corresponds to the JSON property `memberships`
+        # @return [Array<Google::Apis::CloudidentityV1::MembershipRelation>]
+        attr_accessor :memberships
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results available for listing.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @memberships = args[:memberships] if args.key?(:memberships)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
