@@ -82,6 +82,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDatacatalogV1CloudBigtableInstanceSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1CloudBigtableSystemSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -293,6 +311,12 @@ module Google
       end
       
       class GoogleCloudDatacatalogV1Schema
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1ServiceSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -729,6 +753,31 @@ module Google
         end
       end
       
+      class GoogleCloudDatacatalogV1CloudBigtableInstanceSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :cloud_bigtable_cluster_specs, as: 'cloudBigtableClusterSpecs', class: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec, decorator: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :linked_resource, as: 'linkedResource'
+          property :location, as: 'location'
+          property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1CloudBigtableSystemSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_display_name, as: 'instanceDisplayName'
+        end
+      end
+      
       class GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -882,6 +931,8 @@ module Google
       
           property :business_context, as: 'businessContext', class: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1BusinessContext, decorator: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1BusinessContext::Representation
       
+          property :cloud_bigtable_system_spec, as: 'cloudBigtableSystemSpec', class: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1CloudBigtableSystemSpec, decorator: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1CloudBigtableSystemSpec::Representation
+      
           property :data_source, as: 'dataSource', class: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1DataSource, decorator: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1DataSource::Representation
       
           property :data_source_connection_spec, as: 'dataSourceConnectionSpec', class: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1DataSourceConnectionSpec, decorator: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1DataSourceConnectionSpec::Representation
@@ -906,6 +957,8 @@ module Google
           property :routine_spec, as: 'routineSpec', class: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1RoutineSpec, decorator: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1RoutineSpec::Representation
       
           property :schema, as: 'schema', class: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1Schema, decorator: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1Schema::Representation
+      
+          property :service_spec, as: 'serviceSpec', class: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1ServiceSpec, decorator: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1ServiceSpec::Representation
       
           property :source_system_timestamps, as: 'sourceSystemTimestamps', class: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1SystemTimestamps, decorator: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1SystemTimestamps::Representation
       
@@ -1092,6 +1145,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :columns, as: 'columns', class: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1ColumnSchema, decorator: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1ColumnSchema::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1ServiceSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_bigtable_instance_spec, as: 'cloudBigtableInstanceSpec', class: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1CloudBigtableInstanceSpec, decorator: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1CloudBigtableInstanceSpec::Representation
       
         end
       end
