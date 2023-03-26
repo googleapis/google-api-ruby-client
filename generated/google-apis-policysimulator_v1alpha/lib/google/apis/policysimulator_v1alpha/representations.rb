@@ -46,30 +46,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudPolicysimulatorV1beta1Replay
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudPolicysimulatorV1beta1ReplayConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudPolicysimulatorV1beta1ReplayOperationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudPolicysimulatorV1beta1ReplayResultsSummary
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleIamV1AuditConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -153,48 +129,6 @@ module Google
       end
       
       class GoogleCloudPolicysimulatorV1ReplayResultsSummary
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :difference_count, as: 'differenceCount'
-          property :error_count, as: 'errorCount'
-          property :log_count, as: 'logCount'
-          property :newest_date, as: 'newestDate', class: Google::Apis::PolicysimulatorV1alpha::GoogleTypeDate, decorator: Google::Apis::PolicysimulatorV1alpha::GoogleTypeDate::Representation
-      
-          property :oldest_date, as: 'oldestDate', class: Google::Apis::PolicysimulatorV1alpha::GoogleTypeDate, decorator: Google::Apis::PolicysimulatorV1alpha::GoogleTypeDate::Representation
-      
-          property :unchanged_count, as: 'unchangedCount'
-        end
-      end
-      
-      class GoogleCloudPolicysimulatorV1beta1Replay
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :config, as: 'config', class: Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1beta1ReplayConfig, decorator: Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1beta1ReplayConfig::Representation
-      
-          property :name, as: 'name'
-          property :results_summary, as: 'resultsSummary', class: Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1beta1ReplayResultsSummary, decorator: Google::Apis::PolicysimulatorV1alpha::GoogleCloudPolicysimulatorV1beta1ReplayResultsSummary::Representation
-      
-          property :state, as: 'state'
-        end
-      end
-      
-      class GoogleCloudPolicysimulatorV1beta1ReplayConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :log_source, as: 'logSource'
-          hash :policy_overlay, as: 'policyOverlay', class: Google::Apis::PolicysimulatorV1alpha::GoogleIamV1Policy, decorator: Google::Apis::PolicysimulatorV1alpha::GoogleIamV1Policy::Representation
-      
-        end
-      end
-      
-      class GoogleCloudPolicysimulatorV1beta1ReplayOperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :start_time, as: 'startTime'
-        end
-      end
-      
-      class GoogleCloudPolicysimulatorV1beta1ReplayResultsSummary
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :difference_count, as: 'differenceCount'
