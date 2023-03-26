@@ -168,6 +168,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :port
       
+        # Output only. A globally unique identifier (in UUID4 format) for this endpoint.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
         # Output only. The timestamp when the endpoint was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -185,6 +190,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @port = args[:port] if args.key?(:port)
+          @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -463,6 +469,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. A globally unique identifier (in UUID4 format) for this namespace.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
         # Output only. The timestamp when the namespace was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -477,6 +488,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -678,6 +690,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. A globally unique identifier (in UUID4 format) for this service.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
         # Output only. The timestamp when the service was last updated. Note: endpoints
         # being created/deleted/updated within the service are not considered service
         # updates for the purpose of this timestamp.
@@ -695,6 +712,7 @@ module Google
           @endpoints = args[:endpoints] if args.key?(:endpoints)
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
+          @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
