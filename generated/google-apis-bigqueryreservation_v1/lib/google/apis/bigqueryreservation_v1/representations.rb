@@ -213,6 +213,7 @@ module Google
       class MoveAssignmentRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :assignment_id, as: 'assignmentId'
           property :destination_id, as: 'destinationId'
         end
       end

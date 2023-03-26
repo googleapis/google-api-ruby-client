@@ -149,7 +149,7 @@ module Google
         # @return [String]
         attr_accessor :commitment_start_time
       
-        # Do not use.
+        # Edition of the capacity commitment.
         # Corresponds to the JSON property `edition`
         # @return [String]
         attr_accessor :edition
@@ -346,6 +346,13 @@ module Google
       class MoveAssignmentRequest
         include Google::Apis::Core::Hashable
       
+        # The optional assignment ID. A new assignment name is generated if this field
+        # is empty. This field can contain only lowercase alphanumeric characters or
+        # dashes. Max length is 64 characters.
+        # Corresponds to the JSON property `assignmentId`
+        # @return [String]
+        attr_accessor :assignment_id
+      
         # The new reservation ID, e.g.: `projects/myotherproject/locations/US/
         # reservations/team2-prod`
         # Corresponds to the JSON property `destinationId`
@@ -358,6 +365,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @assignment_id = args[:assignment_id] if args.key?(:assignment_id)
           @destination_id = args[:destination_id] if args.key?(:destination_id)
         end
       end
@@ -386,7 +394,7 @@ module Google
         # @return [String]
         attr_accessor :creation_time
       
-        # Do not use.
+        # Edition of the reservation.
         # Corresponds to the JSON property `edition`
         # @return [String]
         attr_accessor :edition
