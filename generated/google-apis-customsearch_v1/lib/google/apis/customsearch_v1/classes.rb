@@ -248,7 +248,7 @@ module Google
         class Image
           include Google::Apis::Core::Hashable
         
-          # The size of the image, in pixels.
+          # The size of the image, in bytes.
           # Corresponds to the JSON property `byteSize`
           # @return [Fixnum]
           attr_accessor :byte_size
