@@ -36,10 +36,10 @@ Please contact the owners of the documentation or tutorial that is referencing t
 
 ### Can I still use google-api-client anyway?
 
-Yes, the gem will continue to be available, _but_ it will likely not be updated any further. So it will not reflect any future updates to the API surface, and if you report issues, we will likely direct you to use the appropriate service-specific gem instead.
+We will not delete this gem, _but_ it will likely not be updated any further. So it will not reflect any future updates to the API surface, and if you report issues, we will direct you to use the appropriate service-specific gem instead.
 
 ### Where is the documentation?
 
 Reference documentation is now available separately for each service-specific gem. Reference documentation for common classes (such as `RequestOptions`) is connected to the common gem `google-apis-core`.
 
-Basic usage documentaiton is provided with each service-specific gem. Some more detailed documentation including how to implement OAuth flows, is available in the [docs directory of the repo](https://github.com/googleapis/google-api-ruby-client/tree/main/docs).
+Basic usage documentation is provided with each service-specific gem. Some more detailed documentation including how to implement OAuth flows, is available in the [docs directory of the repo](https://github.com/googleapis/google-api-ruby-client/tree/main/docs).
