@@ -37,13 +37,13 @@ metadata = drive.create_file(metadata, upload_source: '/tmp/test.txt', content_t
 drive.get_file(metadata.id, download_dest: '/tmp/downloaded-test.txt')
 ```
 
-Following is another example using the Content API (Google Merchant Center), provided by the `google-apis-content_v2` gem:
+Following is another example using the Content API (Google Merchant Center), provided by the `google-apis-content_v2_1` gem:
 
 ```ruby
-require 'google/apis/content_v2'
+require 'google/apis/content_v2_1'
 require 'googleauth' # https://github.com/googleapis/google-auth-library-ruby
 
-content = Google::Apis::ContentV2::ShoppingContentService.new
+content = Google::Apis::ContentV2_1::ShoppingContentService.new
 
 scope = 'https://www.googleapis.com/auth/content'
 merchant_id = # Merchant ID found on dashboard
@@ -53,8 +53,8 @@ content.authorization = Google::Auth::ServiceAccountCredentials.make_creds(
   scope: scope)
 
 content.authorization.fetch_access_token!
-# Service methods: https://googleapis.dev/ruby/google-api-client/latest/Google/Apis/ContentV2/ShoppingContentService.html
-content.list_datafeeds(merchant_id) # Returns Google::Apis::ContentV2::ListDatafeedsResponse
+# Service methods: https://googleapis.dev/ruby/google-api-client/latest/Google/Apis/ContentV2_1/ShoppingContentService.html
+content.list_datafeeds(merchant_id) # Returns Google::Apis::ContentV2_1::ListDatafeedsResponse
 ```
 
 For more detailed information, see the [Usage Guide](https://github.com/googleapis/google-api-ruby-client/blob/main/docs/usage-guide.md).
