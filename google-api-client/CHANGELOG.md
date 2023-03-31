@@ -1,5 +1,9 @@
 # Release History
 
+## 0.53.1 (2023-03-29)
+
+Added more scary deprecation messages to the gem metadata.
+
 ## [0.53.0](https://www.github.com/googleapis/google-api-ruby-client/compare/google-api-client/v0.52.0...v0.53.0) (2021-01-18)
 
 ** google-api-client is now deprecated **
