@@ -2938,6 +2938,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NodeGroupsSimulateMaintenanceEventRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NodeTemplate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -7728,12 +7734,20 @@ module Google
       class FirewallPolicyRuleMatcher
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dest_address_groups, as: 'destAddressGroups'
+          collection :dest_fqdns, as: 'destFqdns'
           collection :dest_ip_ranges, as: 'destIpRanges'
+          collection :dest_region_codes, as: 'destRegionCodes'
+          collection :dest_threat_intelligences, as: 'destThreatIntelligences'
           collection :layer4_configs, as: 'layer4Configs', class: Google::Apis::ComputeV1::FirewallPolicyRuleMatcherLayer4Config, decorator: Google::Apis::ComputeV1::FirewallPolicyRuleMatcherLayer4Config::Representation
       
+          collection :src_address_groups, as: 'srcAddressGroups'
+          collection :src_fqdns, as: 'srcFqdns'
           collection :src_ip_ranges, as: 'srcIpRanges'
+          collection :src_region_codes, as: 'srcRegionCodes'
           collection :src_secure_tags, as: 'srcSecureTags', class: Google::Apis::ComputeV1::FirewallPolicyRuleSecureTag, decorator: Google::Apis::ComputeV1::FirewallPolicyRuleSecureTag::Representation
       
+          collection :src_threat_intelligences, as: 'srcThreatIntelligences'
         end
       end
       
@@ -11358,6 +11372,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :node_template, as: 'nodeTemplate'
+        end
+      end
+      
+      class NodeGroupsSimulateMaintenanceEventRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :nodes, as: 'nodes'
         end
       end
       
