@@ -1930,6 +1930,7 @@ module Google
           property :payment_option, as: 'paymentOption'
           property :payment_plan, as: 'paymentPlan'
           property :resize_unit_count, as: 'resizeUnitCount'
+          property :scheduled_renewal_offer, as: 'scheduledRenewalOffer'
         end
       end
       
