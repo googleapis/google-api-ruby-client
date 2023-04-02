@@ -2201,6 +2201,12 @@ module Google
         # @return [Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2UserInfo]
         attr_accessor :creator
       
+        # Output only. The customer this label belongs to. For example: "customers/
+        # 123abc789."
+        # Corresponds to the JSON property `customer`
+        # @return [String]
+        attr_accessor :customer
+      
         # Output only. The time this label was disabled. This value has no meaning when
         # the label is not disabled.
         # Corresponds to the JSON property `disableTime`
@@ -2316,6 +2322,7 @@ module Google
           @applied_label_policy = args[:applied_label_policy] if args.key?(:applied_label_policy)
           @create_time = args[:create_time] if args.key?(:create_time)
           @creator = args[:creator] if args.key?(:creator)
+          @customer = args[:customer] if args.key?(:customer)
           @disable_time = args[:disable_time] if args.key?(:disable_time)
           @disabler = args[:disabler] if args.key?(:disabler)
           @display_hints = args[:display_hints] if args.key?(:display_hints)
