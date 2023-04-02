@@ -1011,7 +1011,8 @@ module Google
         end
       end
       
-      # Represents the complete border style applied to items in a widget.
+      # The style options for the border of a card or widget, including the border
+      # type and color.
       class GoogleAppsCardV1BorderStyle
         include Google::Apis::Core::Hashable
       
@@ -1605,7 +1606,8 @@ module Google
       class GoogleAppsCardV1Grid
         include Google::Apis::Core::Hashable
       
-        # Represents the complete border style applied to items in a widget.
+        # The style options for the border of a card or widget, including the border
+        # type and color.
         # Corresponds to the JSON property `borderStyle`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1BorderStyle]
         attr_accessor :border_style
@@ -1786,7 +1788,8 @@ module Google
         # @return [String]
         attr_accessor :alt_text
       
-        # Represents the complete border style applied to items in a widget.
+        # The style options for the border of a card or widget, including the border
+        # type and color.
         # Corresponds to the JSON property `borderStyle`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1BorderStyle]
         attr_accessor :border_style
