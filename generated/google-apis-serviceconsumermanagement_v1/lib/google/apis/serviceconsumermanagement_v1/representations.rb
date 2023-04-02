@@ -915,6 +915,11 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :common, as: 'common', class: Google::Apis::ServiceconsumermanagementV1::CommonLanguageSettings, decorator: Google::Apis::ServiceconsumermanagementV1::CommonLanguageSettings::Representation
       
+          collection :forced_namespace_aliases, as: 'forcedNamespaceAliases'
+          collection :handwritten_signatures, as: 'handwrittenSignatures'
+          collection :ignored_resources, as: 'ignoredResources'
+          hash :renamed_resources, as: 'renamedResources'
+          hash :renamed_services, as: 'renamedServices'
         end
       end
       
