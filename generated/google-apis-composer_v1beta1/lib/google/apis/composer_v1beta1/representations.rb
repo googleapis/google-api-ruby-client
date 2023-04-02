@@ -373,6 +373,7 @@ module Google
       class EnvironmentConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :airflow_byoid_uri, as: 'airflowByoidUri'
           property :airflow_uri, as: 'airflowUri'
           property :dag_gcs_prefix, as: 'dagGcsPrefix'
           property :database_config, as: 'databaseConfig', class: Google::Apis::ComposerV1beta1::DatabaseConfig, decorator: Google::Apis::ComposerV1beta1::DatabaseConfig::Representation
