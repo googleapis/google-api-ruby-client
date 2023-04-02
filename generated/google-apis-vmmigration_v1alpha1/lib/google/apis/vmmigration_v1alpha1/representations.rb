@@ -471,6 +471,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :access_key_id, as: 'accessKeyId'
           property :secret_access_key, as: 'secretAccessKey'
+          property :session_token, as: 'sessionToken'
         end
       end
       
