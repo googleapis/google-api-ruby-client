@@ -124,8 +124,7 @@ module Google
         
         # Synthesizes long form text asynchronously.
         # @param [String] parent
-        #   The resource states of the request in the form of `projects/*/locations/*/
-        #   voices/*`.
+        #   The resource states of the request in the form of `projects/*/locations/*`.
         # @param [Google::Apis::TexttospeechV1::SynthesizeLongAudioRequest] synthesize_long_audio_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
