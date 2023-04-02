@@ -136,6 +136,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAdsSearchads360V0CommonSearchAds360TextAdInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAdsSearchads360V0CommonSegments
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -166,6 +172,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAdsSearchads360V0CommonTargetRestriction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAdsSearchads360V0CommonTargetRoas
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -173,6 +185,24 @@ module Google
       end
       
       class GoogleAdsSearchads360V0CommonTargetSpend
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V0CommonTargetingSetting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V0CommonTextLabel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V0CommonUserListInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -304,7 +334,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAdsSearchads360V0ResourcesAd
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAdsSearchads360V0ResourcesAdGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesAdGroupAd
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesAdGroupAdLabel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesAdGroupAudienceView
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -322,6 +376,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAdsSearchads360V0ResourcesAdGroupCriterionLabel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesAdGroupLabel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesAgeRangeView
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAdsSearchads360V0ResourcesBiddingStrategy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -334,6 +406,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAdsSearchads360V0ResourcesCampaignAudienceView
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAdsSearchads360V0ResourcesCampaignBudget
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -341,6 +419,12 @@ module Google
       end
       
       class GoogleAdsSearchads360V0ResourcesCampaignCriterion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesCampaignLabel
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -388,7 +472,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAdsSearchads360V0ResourcesDynamicSearchAdsSearchTermView
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesGenderView
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAdsSearchads360V0ResourcesKeywordView
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesLabel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesLocationView
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -401,6 +509,18 @@ module Google
       end
       
       class GoogleAdsSearchads360V0ResourcesSearchAds360Field
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesUserList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesWebpageView
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -646,6 +766,7 @@ module Google
           property :value_per_all_conversions_by_conversion_date, as: 'valuePerAllConversionsByConversionDate'
           property :value_per_conversion, as: 'valuePerConversion'
           property :value_per_conversions_by_conversion_date, as: 'valuePerConversionsByConversionDate'
+          property :visits, as: 'visits'
         end
       end
       
@@ -661,6 +782,18 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :opt_in, as: 'optIn'
+        end
+      end
+      
+      class GoogleAdsSearchads360V0CommonSearchAds360TextAdInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ad_track_id, :numeric_string => true, as: 'adTrackId'
+          property :description1, as: 'description1'
+          property :description2, as: 'description2'
+          property :display_mobile_url, as: 'displayMobileUrl'
+          property :display_url, as: 'displayUrl'
+          property :headline, as: 'headline'
         end
       end
       
@@ -711,6 +844,14 @@ module Google
         end
       end
       
+      class GoogleAdsSearchads360V0CommonTargetRestriction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bid_only, as: 'bidOnly'
+          property :targeting_dimension, as: 'targetingDimension'
+        end
+      end
+      
       class GoogleAdsSearchads360V0CommonTargetRoas
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -725,6 +866,29 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cpc_bid_ceiling_micros, :numeric_string => true, as: 'cpcBidCeilingMicros'
           property :target_spend_micros, :numeric_string => true, as: 'targetSpendMicros'
+        end
+      end
+      
+      class GoogleAdsSearchads360V0CommonTargetingSetting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :target_restrictions, as: 'targetRestrictions', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonTargetRestriction, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonTargetRestriction::Representation
+      
+        end
+      end
+      
+      class GoogleAdsSearchads360V0CommonTextLabel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :background_color, as: 'backgroundColor'
+          property :description, as: 'description'
+        end
+      end
+      
+      class GoogleAdsSearchads360V0CommonUserListInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :user_list, as: 'userList'
         end
       end
       
@@ -926,16 +1090,71 @@ module Google
         end
       end
       
+      class GoogleAdsSearchads360V0ResourcesAd
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_url, as: 'displayUrl'
+          collection :final_urls, as: 'finalUrls'
+          property :id, :numeric_string => true, as: 'id'
+          property :name, as: 'name'
+          property :resource_name, as: 'resourceName'
+          property :text_ad, as: 'textAd', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonSearchAds360TextAdInfo, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonSearchAds360TextAdInfo::Representation
+      
+          property :type, as: 'type'
+        end
+      end
+      
       class GoogleAdsSearchads360V0ResourcesAdGroup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ad_rotation_mode, as: 'adRotationMode'
           property :cpc_bid_micros, :numeric_string => true, as: 'cpcBidMicros'
+          property :creation_time, as: 'creationTime'
+          property :end_date, as: 'endDate'
+          property :engine_id, as: 'engineId'
+          property :engine_status, as: 'engineStatus'
           property :id, :numeric_string => true, as: 'id'
+          collection :labels, as: 'labels'
+          property :language_code, as: 'languageCode'
+          property :last_modified_time, as: 'lastModifiedTime'
           property :name, as: 'name'
           property :resource_name, as: 'resourceName'
+          property :start_date, as: 'startDate'
           property :status, as: 'status'
+          property :targeting_setting, as: 'targetingSetting', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonTargetingSetting, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonTargetingSetting::Representation
+      
           property :type, as: 'type'
+        end
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesAdGroupAd
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ad, as: 'ad', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAd, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAd::Representation
+      
+          property :creation_time, as: 'creationTime'
+          property :engine_id, as: 'engineId'
+          property :engine_status, as: 'engineStatus'
+          collection :labels, as: 'labels'
+          property :last_modified_time, as: 'lastModifiedTime'
+          property :resource_name, as: 'resourceName'
+          property :status, as: 'status'
+        end
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesAdGroupAdLabel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ad_group_ad, as: 'adGroupAd'
+          property :label, as: 'label'
+          property :resource_name, as: 'resourceName'
+        end
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesAdGroupAudienceView
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource_name, as: 'resourceName'
         end
       end
       
@@ -943,6 +1162,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bid_modifier, as: 'bidModifier'
+          property :device, as: 'device', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonDeviceInfo, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonDeviceInfo::Representation
+      
           property :resource_name, as: 'resourceName'
         end
       end
@@ -955,8 +1176,10 @@ module Google
       
           property :bid_modifier, as: 'bidModifier'
           property :cpc_bid_micros, :numeric_string => true, as: 'cpcBidMicros'
+          property :creation_time, as: 'creationTime'
           property :criterion_id, :numeric_string => true, as: 'criterionId'
           property :effective_cpc_bid_micros, :numeric_string => true, as: 'effectiveCpcBidMicros'
+          property :engine_id, as: 'engineId'
           property :engine_status, as: 'engineStatus'
           property :final_url_suffix, as: 'finalUrlSuffix'
           collection :final_urls, as: 'finalUrls'
@@ -964,17 +1187,48 @@ module Google
       
           property :keyword, as: 'keyword', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonKeywordInfo, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonKeywordInfo::Representation
       
+          collection :labels, as: 'labels'
           property :last_modified_time, as: 'lastModifiedTime'
           property :listing_group, as: 'listingGroup', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonListingGroupInfo, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonListingGroupInfo::Representation
       
+          property :location, as: 'location', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonLocationInfo, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonLocationInfo::Representation
+      
+          property :negative, as: 'negative'
           property :quality_info, as: 'qualityInfo', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupCriterionQualityInfo, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupCriterionQualityInfo::Representation
       
           property :resource_name, as: 'resourceName'
           property :status, as: 'status'
           property :tracking_url_template, as: 'trackingUrlTemplate'
           property :type, as: 'type'
+          property :user_list, as: 'userList', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonUserListInfo, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonUserListInfo::Representation
+      
           property :webpage, as: 'webpage', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonWebpageInfo, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonWebpageInfo::Representation
       
+        end
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesAdGroupCriterionLabel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ad_group_criterion, as: 'adGroupCriterion'
+          property :label, as: 'label'
+          property :resource_name, as: 'resourceName'
+        end
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesAdGroupLabel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ad_group, as: 'adGroup'
+          property :label, as: 'label'
+          property :resource_name, as: 'resourceName'
+        end
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesAgeRangeView
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource_name, as: 'resourceName'
         end
       end
       
@@ -1020,6 +1274,7 @@ module Google
           property :bidding_strategy_type, as: 'biddingStrategyType'
           property :campaign_budget, as: 'campaignBudget'
           property :create_time, as: 'createTime'
+          property :creation_time, as: 'creationTime'
           property :dynamic_search_ads_setting, as: 'dynamicSearchAdsSetting', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesCampaignDynamicSearchAdsSetting, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesCampaignDynamicSearchAdsSetting::Representation
       
           property :end_date, as: 'endDate'
@@ -1079,6 +1334,13 @@ module Google
         end
       end
       
+      class GoogleAdsSearchads360V0ResourcesCampaignAudienceView
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource_name, as: 'resourceName'
+        end
+      end
+      
       class GoogleAdsSearchads360V0ResourcesCampaignBudget
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1092,20 +1354,41 @@ module Google
       class GoogleAdsSearchads360V0ResourcesCampaignCriterion
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :age_range, as: 'ageRange', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonAgeRangeInfo, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonAgeRangeInfo::Representation
+      
           property :bid_modifier, as: 'bidModifier'
           property :criterion_id, :numeric_string => true, as: 'criterionId'
           property :device, as: 'device', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonDeviceInfo, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonDeviceInfo::Representation
       
           property :display_name, as: 'displayName'
+          property :gender, as: 'gender', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonGenderInfo, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonGenderInfo::Representation
+      
+          property :keyword, as: 'keyword', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonKeywordInfo, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonKeywordInfo::Representation
+      
           property :language, as: 'language', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonLanguageInfo, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonLanguageInfo::Representation
       
+          property :last_modified_time, as: 'lastModifiedTime'
           property :location, as: 'location', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonLocationInfo, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonLocationInfo::Representation
       
           property :location_group, as: 'locationGroup', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonLocationGroupInfo, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonLocationGroupInfo::Representation
       
           property :negative, as: 'negative'
           property :resource_name, as: 'resourceName'
+          property :status, as: 'status'
           property :type, as: 'type'
+          property :user_list, as: 'userList', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonUserListInfo, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonUserListInfo::Representation
+      
+          property :webpage, as: 'webpage', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonWebpageInfo, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonWebpageInfo::Representation
+      
+        end
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesCampaignLabel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :campaign, as: 'campaign'
+          property :label, as: 'label'
+          property :resource_name, as: 'resourceName'
         end
       end
       
@@ -1170,6 +1453,7 @@ module Google
           property :auto_tagging_enabled, as: 'autoTaggingEnabled'
           property :conversion_tracking_setting, as: 'conversionTrackingSetting', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesConversionTrackingSetting, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesConversionTrackingSetting::Representation
       
+          property :creation_time, as: 'creationTime'
           property :currency_code, as: 'currencyCode'
           property :descriptive_name, as: 'descriptiveName'
           property :double_click_campaign_manager_setting, as: 'doubleClickCampaignManagerSetting', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesDoubleClickCampaignManagerSetting, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesDoubleClickCampaignManagerSetting::Representation
@@ -1223,7 +1507,41 @@ module Google
         end
       end
       
+      class GoogleAdsSearchads360V0ResourcesDynamicSearchAdsSearchTermView
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :landing_page, as: 'landingPage'
+          property :resource_name, as: 'resourceName'
+        end
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesGenderView
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource_name, as: 'resourceName'
+        end
+      end
+      
       class GoogleAdsSearchads360V0ResourcesKeywordView
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource_name, as: 'resourceName'
+        end
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesLabel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, :numeric_string => true, as: 'id'
+          property :name, as: 'name'
+          property :resource_name, as: 'resourceName'
+          property :status, as: 'status'
+          property :text_label, as: 'textLabel', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonTextLabel, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonTextLabel::Representation
+      
+        end
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesLocationView
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :resource_name, as: 'resourceName'
@@ -1257,6 +1575,23 @@ module Google
         end
       end
       
+      class GoogleAdsSearchads360V0ResourcesUserList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, :numeric_string => true, as: 'id'
+          property :name, as: 'name'
+          property :resource_name, as: 'resourceName'
+          property :type, as: 'type'
+        end
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesWebpageView
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource_name, as: 'resourceName'
+        end
+      end
+      
       class GoogleAdsSearchads360V0ServicesCustomColumnHeader
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1279,17 +1614,33 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ad_group, as: 'adGroup', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroup, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroup::Representation
       
+          property :ad_group_ad, as: 'adGroupAd', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupAd, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupAd::Representation
+      
+          property :ad_group_ad_label, as: 'adGroupAdLabel', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupAdLabel, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupAdLabel::Representation
+      
+          property :ad_group_audience_view, as: 'adGroupAudienceView', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupAudienceView, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupAudienceView::Representation
+      
           property :ad_group_bid_modifier, as: 'adGroupBidModifier', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupBidModifier, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupBidModifier::Representation
       
           property :ad_group_criterion, as: 'adGroupCriterion', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupCriterion, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupCriterion::Representation
+      
+          property :ad_group_criterion_label, as: 'adGroupCriterionLabel', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupCriterionLabel, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupCriterionLabel::Representation
+      
+          property :ad_group_label, as: 'adGroupLabel', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupLabel, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupLabel::Representation
+      
+          property :age_range_view, as: 'ageRangeView', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAgeRangeView, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAgeRangeView::Representation
       
           property :bidding_strategy, as: 'biddingStrategy', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesBiddingStrategy, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesBiddingStrategy::Representation
       
           property :campaign, as: 'campaign', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesCampaign, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesCampaign::Representation
       
+          property :campaign_audience_view, as: 'campaignAudienceView', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesCampaignAudienceView, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesCampaignAudienceView::Representation
+      
           property :campaign_budget, as: 'campaignBudget', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesCampaignBudget, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesCampaignBudget::Representation
       
           property :campaign_criterion, as: 'campaignCriterion', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesCampaignCriterion, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesCampaignCriterion::Representation
+      
+          property :campaign_label, as: 'campaignLabel', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesCampaignLabel, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesCampaignLabel::Representation
       
           property :conversion_action, as: 'conversionAction', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesConversionAction, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesConversionAction::Representation
       
@@ -1301,13 +1652,25 @@ module Google
       
           property :customer_manager_link, as: 'customerManagerLink', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesCustomerManagerLink, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesCustomerManagerLink::Representation
       
+          property :dynamic_search_ads_search_term_view, as: 'dynamicSearchAdsSearchTermView', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesDynamicSearchAdsSearchTermView, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesDynamicSearchAdsSearchTermView::Representation
+      
+          property :gender_view, as: 'genderView', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesGenderView, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesGenderView::Representation
+      
           property :keyword_view, as: 'keywordView', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesKeywordView, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesKeywordView::Representation
+      
+          property :label, as: 'label', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesLabel, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesLabel::Representation
+      
+          property :location_view, as: 'locationView', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesLocationView, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesLocationView::Representation
       
           property :metrics, as: 'metrics', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonMetrics, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonMetrics::Representation
       
           property :product_group_view, as: 'productGroupView', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesProductGroupView, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesProductGroupView::Representation
       
           property :segments, as: 'segments', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonSegments, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonSegments::Representation
+      
+          property :user_list, as: 'userList', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesUserList, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesUserList::Representation
+      
+          property :webpage_view, as: 'webpageView', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesWebpageView, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesWebpageView::Representation
       
         end
       end
