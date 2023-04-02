@@ -1186,6 +1186,42 @@ module Google
         # @return [Google::Apis::ServiceusageV1::CommonLanguageSettings]
         attr_accessor :common
       
+        # Namespaces which must be aliased in snippets due to a known (but non-generator-
+        # predictable) naming collision
+        # Corresponds to the JSON property `forcedNamespaceAliases`
+        # @return [Array<String>]
+        attr_accessor :forced_namespace_aliases
+      
+        # Method signatures (in the form "service.method(signature)") which are provided
+        # separately, so shouldn't be generated. Snippets *calling* these methods are
+        # still generated, however.
+        # Corresponds to the JSON property `handwrittenSignatures`
+        # @return [Array<String>]
+        attr_accessor :handwritten_signatures
+      
+        # List of full resource types to ignore during generation. This is typically
+        # used for API-specific Location resources, which should be handled by the
+        # generator as if they were actually the common Location resources. Example
+        # entry: "documentai.googleapis.com/Location"
+        # Corresponds to the JSON property `ignoredResources`
+        # @return [Array<String>]
+        attr_accessor :ignored_resources
+      
+        # Map from full resource types to the effective short name for the resource.
+        # This is used when otherwise resource named from different services would cause
+        # naming collisions. Example entry: "datalabeling.googleapis.com/Dataset": "
+        # DataLabelingDataset"
+        # Corresponds to the JSON property `renamedResources`
+        # @return [Hash<String,String>]
+        attr_accessor :renamed_resources
+      
+        # Map from original service names to renamed versions. This is used when the
+        # default generated types would cause a naming conflict. (Neither name is fully-
+        # qualified.) Example: Subscriber to SubscriberServiceApi.
+        # Corresponds to the JSON property `renamedServices`
+        # @return [Hash<String,String>]
+        attr_accessor :renamed_services
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1193,6 +1229,11 @@ module Google
         # Update properties of this object
         def update!(**args)
           @common = args[:common] if args.key?(:common)
+          @forced_namespace_aliases = args[:forced_namespace_aliases] if args.key?(:forced_namespace_aliases)
+          @handwritten_signatures = args[:handwritten_signatures] if args.key?(:handwritten_signatures)
+          @ignored_resources = args[:ignored_resources] if args.key?(:ignored_resources)
+          @renamed_resources = args[:renamed_resources] if args.key?(:renamed_resources)
+          @renamed_services = args[:renamed_services] if args.key?(:renamed_services)
         end
       end
       
