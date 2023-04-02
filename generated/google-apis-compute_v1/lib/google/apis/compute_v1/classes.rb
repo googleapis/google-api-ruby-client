@@ -464,16 +464,18 @@ module Google
       class AccessConfig
         include Google::Apis::Core::Hashable
       
-        # The first IPv6 address of the external IPv6 range associated with this
-        # instance, prefix length is stored in externalIpv6PrefixLength in
-        # ipv6AccessConfig. To use a static external IP address, it must be unused and
-        # in the same region as the instance's zone. If not specified, Google Cloud will
-        # automatically assign an external IPv6 address from the instance's subnetwork.
+        # Applies to ipv6AccessConfigs only. The first IPv6 address of the external IPv6
+        # range associated with this instance, prefix length is stored in
+        # externalIpv6PrefixLength in ipv6AccessConfig. To use a static external IP
+        # address, it must be unused and in the same region as the instance's zone. If
+        # not specified, Google Cloud will automatically assign an external IPv6 address
+        # from the instance's subnetwork.
         # Corresponds to the JSON property `externalIpv6`
         # @return [String]
         attr_accessor :external_ipv6
       
-        # The prefix length of the external IPv6 range.
+        # Applies to ipv6AccessConfigs only. The prefix length of the external IPv6
+        # range.
         # Corresponds to the JSON property `externalIpv6PrefixLength`
         # @return [Fixnum]
         attr_accessor :external_ipv6_prefix_length
@@ -484,18 +486,19 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The name of this access configuration. The default and recommended name is
-        # External NAT, but you can use any arbitrary string, such as My external IP or
-        # Network Access.
+        # The name of this access configuration. In accessConfigs (IPv4), the default
+        # and recommended name is External NAT, but you can use any arbitrary string,
+        # such as My external IP or Network Access. In ipv6AccessConfigs, the recommend
+        # name is External IPv6.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # An external IP address associated with this instance. Specify an unused static
-        # external IP address available to the project or leave this field undefined to
-        # use an IP from a shared ephemeral IP address pool. If you specify a static
-        # external IP address, it must live in the same region as the zone of the
-        # instance.
+        # Applies to accessConfigs (IPv4) only. An external IP address associated with
+        # this instance. Specify an unused static external IP address available to the
+        # project or leave this field undefined to use an IP from a shared ephemeral IP
+        # address pool. If you specify a static external IP address, it must live in the
+        # same region as the zone of the instance.
         # Corresponds to the JSON property `natIP`
         # @return [String]
         attr_accessor :nat_ip
@@ -527,7 +530,9 @@ module Google
         attr_accessor :set_public_ptr
         alias_method :set_public_ptr?, :set_public_ptr
       
-        # The type of configuration. The default and only option is ONE_TO_ONE_NAT.
+        # The type of configuration. In accessConfigs (IPv4), the default and only
+        # option is ONE_TO_ONE_NAT. In ipv6AccessConfigs, the default and only option is
+        # DIRECT_IPV6.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -8554,21 +8559,66 @@ module Google
       class FirewallPolicyRuleMatcher
         include Google::Apis::Core::Hashable
       
+        # Address groups which should be matched against the traffic destination.
+        # Maximum number of destination address groups is 10.
+        # Corresponds to the JSON property `destAddressGroups`
+        # @return [Array<String>]
+        attr_accessor :dest_address_groups
+      
+        # Fully Qualified Domain Name (FQDN) which should be matched against traffic
+        # destination. Maximum number of destination fqdn allowed is 100.
+        # Corresponds to the JSON property `destFqdns`
+        # @return [Array<String>]
+        attr_accessor :dest_fqdns
+      
         # CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is
         # 5000.
         # Corresponds to the JSON property `destIpRanges`
         # @return [Array<String>]
         attr_accessor :dest_ip_ranges
       
+        # Region codes whose IP addresses will be used to match for destination of
+        # traffic. Should be specified as 2 letter country code defined as per ISO 3166
+        # alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is
+        # 5000.
+        # Corresponds to the JSON property `destRegionCodes`
+        # @return [Array<String>]
+        attr_accessor :dest_region_codes
+      
+        # Names of Network Threat Intelligence lists. The IPs in these lists will be
+        # matched against traffic destination.
+        # Corresponds to the JSON property `destThreatIntelligences`
+        # @return [Array<String>]
+        attr_accessor :dest_threat_intelligences
+      
         # Pairs of IP protocols and ports that the rule should match.
         # Corresponds to the JSON property `layer4Configs`
         # @return [Array<Google::Apis::ComputeV1::FirewallPolicyRuleMatcherLayer4Config>]
         attr_accessor :layer4_configs
       
+        # Address groups which should be matched against the traffic source. Maximum
+        # number of source address groups is 10.
+        # Corresponds to the JSON property `srcAddressGroups`
+        # @return [Array<String>]
+        attr_accessor :src_address_groups
+      
+        # Fully Qualified Domain Name (FQDN) which should be matched against traffic
+        # source. Maximum number of source fqdn allowed is 100.
+        # Corresponds to the JSON property `srcFqdns`
+        # @return [Array<String>]
+        attr_accessor :src_fqdns
+      
         # CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
         # Corresponds to the JSON property `srcIpRanges`
         # @return [Array<String>]
         attr_accessor :src_ip_ranges
+      
+        # Region codes whose IP addresses will be used to match for source of traffic.
+        # Should be specified as 2 letter country code defined as per ISO 3166 alpha-2
+        # country codes. ex."US" Maximum number of source region codes allowed is 5000.
+        # Corresponds to the JSON property `srcRegionCodes`
+        # @return [Array<String>]
+        attr_accessor :src_region_codes
       
         # List of secure tag values, which should be matched at the source of the
         # traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there
@@ -8578,16 +8628,30 @@ module Google
         # @return [Array<Google::Apis::ComputeV1::FirewallPolicyRuleSecureTag>]
         attr_accessor :src_secure_tags
       
+        # Names of Network Threat Intelligence lists. The IPs in these lists will be
+        # matched against traffic source.
+        # Corresponds to the JSON property `srcThreatIntelligences`
+        # @return [Array<String>]
+        attr_accessor :src_threat_intelligences
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @dest_address_groups = args[:dest_address_groups] if args.key?(:dest_address_groups)
+          @dest_fqdns = args[:dest_fqdns] if args.key?(:dest_fqdns)
           @dest_ip_ranges = args[:dest_ip_ranges] if args.key?(:dest_ip_ranges)
+          @dest_region_codes = args[:dest_region_codes] if args.key?(:dest_region_codes)
+          @dest_threat_intelligences = args[:dest_threat_intelligences] if args.key?(:dest_threat_intelligences)
           @layer4_configs = args[:layer4_configs] if args.key?(:layer4_configs)
+          @src_address_groups = args[:src_address_groups] if args.key?(:src_address_groups)
+          @src_fqdns = args[:src_fqdns] if args.key?(:src_fqdns)
           @src_ip_ranges = args[:src_ip_ranges] if args.key?(:src_ip_ranges)
+          @src_region_codes = args[:src_region_codes] if args.key?(:src_region_codes)
           @src_secure_tags = args[:src_secure_tags] if args.key?(:src_secure_tags)
+          @src_threat_intelligences = args[:src_threat_intelligences] if args.key?(:src_threat_intelligences)
         end
       end
       
@@ -9803,8 +9867,8 @@ module Google
         # The ID of a supported feature. To add multiple values, use commas to separate
         # values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE -
         # WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE -
-        # SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE - TDX_CAPABLE For more information,
-        # see Enabling guest operating system features.
+        # SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE -
+        # TDX_CAPABLE For more information, see Enabling guest operating system features.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -10882,7 +10946,7 @@ module Google
         # @return [String]
         attr_accessor :forwarding_rule_ip
       
-        # Health state of the instance.
+        # Health state of the IPv4 address of the instance.
         # Corresponds to the JSON property `healthState`
         # @return [String]
         attr_accessor :health_state
@@ -14492,7 +14556,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The URLs of one or more instances to delete. This can be a full URL or a
-        # partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME].
+        # partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME]. Queued instances
+        # do not have URL and can be deleted only by name. One cannot specify both URLs
+        # and names in a single request.
         # Corresponds to the JSON property `instances`
         # @return [Array<String>]
         attr_accessor :instances
@@ -16609,8 +16675,8 @@ module Google
       end
       
       # Represents an Interconnect resource. An Interconnect resource is a dedicated
-      # connection between the GCP network and your on-premises network. For more
-      # information, read the Dedicated Interconnect Overview.
+      # connection between the Google Cloud network and your on-premises network. For
+      # more information, read the Dedicated Interconnect Overview.
       class Interconnect
         include Google::Apis::Core::Hashable
       
@@ -16956,7 +17022,7 @@ module Google
         # specified for this VLAN attachment. If this field is not specified when
         # creating the VLAN attachment, then later on when creating an HA VPN gateway on
         # this VLAN attachment, the HA VPN gateway's IP address is allocated from the
-        # regional external IP address pool. Not currently available publicly.
+        # regional external IP address pool.
         # Corresponds to the JSON property `ipsecInternalAddresses`
         # @return [Array<String>]
         attr_accessor :ipsec_internal_addresses
@@ -20108,7 +20174,7 @@ module Google
         attr_accessor :firewall_policy
       
         # [Output Only] The gateway address for default routing out of the network,
-        # selected by GCP.
+        # selected by Google Cloud.
         # Corresponds to the JSON property `gatewayIPv4`
         # @return [String]
         attr_accessor :gateway_i_pv4
@@ -22015,9 +22081,10 @@ module Google
         # @return [Fixnum]
         attr_accessor :queue_count
       
-        # The stack type for this network interface to identify whether the IPv6 feature
-        # is enabled or not. If not specified, IPV4_ONLY will be used. This field can be
-        # both set at instance creation and update network interface operations.
+        # The stack type for this network interface. To assign only IPv4 addresses, use
+        # IPV4_ONLY. To assign both IPv4 and IPv6 addresses, use IPV4_IPV6. If not
+        # specified, IPV4_ONLY is used. This field can be both set at instance creation
+        # and update network interface operations.
         # Corresponds to the JSON property `stackType`
         # @return [String]
         attr_accessor :stack_type
@@ -23284,6 +23351,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @node_template = args[:node_template] if args.key?(:node_template)
+        end
+      end
+      
+      # 
+      class NodeGroupsSimulateMaintenanceEventRequest
+        include Google::Apis::Core::Hashable
+      
+        # Names of the nodes to go under maintenance simulation.
+        # Corresponds to the JSON property `nodes`
+        # @return [Array<String>]
+        attr_accessor :nodes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @nodes = args[:nodes] if args.key?(:nodes)
         end
       end
       
@@ -34014,7 +34100,7 @@ module Google
       # Represents a ServiceAttachment resource. A service attachment represents a
       # service that a producer has exposed. It encapsulates the load balancer which
       # fronts the service runs and a list of NAT IP ranges that the producers uses to
-      # represent the consumers connecting to the service. next tag = 20
+      # represent the consumers connecting to the service.
       class ServiceAttachment
         include Google::Apis::Core::Hashable
       
@@ -38063,8 +38149,11 @@ module Google
         # Optional. A URL referring to a networksecurity.ServerTlsPolicy resource that
         # describes how the proxy should authenticate inbound traffic. serverTlsPolicy
         # only applies to a global TargetHttpsProxy attached to globalForwardingRules
-        # with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank,
-        # communications are not encrypted. Note: This field currently has no impact.
+        # with the loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL or
+        # EXTERNAL_MANAGED. For details which ServerTlsPolicy resources are accepted
+        # with INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
+        # loadBalancingScheme consult ServerTlsPolicy documentation. If left blank,
+        # communications are not encrypted.
         # Corresponds to the JSON property `serverTlsPolicy`
         # @return [String]
         attr_accessor :server_tls_policy
