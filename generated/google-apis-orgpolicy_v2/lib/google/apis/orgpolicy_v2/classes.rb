@@ -219,7 +219,7 @@ module Google
         attr_accessor :name
       
         # Immutable. The resource instance type on which this policy applies. Format
-        # will be of the form : "/" Example: * `compute.googleapis.com/Instance`.
+        # will be of the form : `/` Example: * `compute.googleapis.com/Instance`.
         # Corresponds to the JSON property `resourceTypes`
         # @return [Array<String>]
         attr_accessor :resource_types
