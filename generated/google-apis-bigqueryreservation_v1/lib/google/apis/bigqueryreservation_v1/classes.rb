@@ -168,7 +168,8 @@ module Google
         # regions (US or EU). If set to true, this commitment is placed in the
         # organization's secondary region which is designated for disaster recovery
         # purposes. If false, this commitment is placed in the organization's default
-        # region.
+        # region. NOTE: this is a preview feature. Project must be allow-listed in order
+        # to set this field.
         # Corresponds to the JSON property `multiRegionAuxiliary`
         # @return [Boolean]
         attr_accessor :multi_region_auxiliary
@@ -412,7 +413,8 @@ module Google
         # regions (US or EU). If set to true, this reservation is placed in the
         # organization's secondary region which is designated for disaster recovery
         # purposes. If false, this reservation is placed in the organization's default
-        # region.
+        # region. NOTE: this is a preview feature. Project must be allow-listed in order
+        # to set this field.
         # Corresponds to the JSON property `multiRegionAuxiliary`
         # @return [Boolean]
         attr_accessor :multi_region_auxiliary
