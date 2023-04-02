@@ -466,6 +466,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListReportConfigsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListReportsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListSourcesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -497,6 +509,12 @@ module Google
       end
       
       class MigrationInsight
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Money
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -622,7 +640,91 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Report
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ReportAssetFramesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReportConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReportConfigGroupPreferenceSetAssignment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReportSummary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReportSummaryAssetAggregateStats
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReportSummaryChartData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReportSummaryChartDataDataPoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReportSummaryGroupFinding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReportSummaryGroupPreferenceSetFinding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReportSummaryHistogramChartData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReportSummaryHistogramChartDataBucket
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReportSummaryMachineFinding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReportSummaryMachineSeriesAllocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReportSummaryUtilizationChartData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1493,6 +1595,26 @@ module Google
         end
       end
       
+      class ListReportConfigsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :report_configs, as: 'reportConfigs', class: Google::Apis::MigrationcenterV1alpha1::ReportConfig, decorator: Google::Apis::MigrationcenterV1alpha1::ReportConfig::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListReportsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :reports, as: 'reports', class: Google::Apis::MigrationcenterV1alpha1::Report, decorator: Google::Apis::MigrationcenterV1alpha1::Report::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListSourcesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1547,6 +1669,15 @@ module Google
       
           property :vmware_engine_target, as: 'vmwareEngineTarget', class: Google::Apis::MigrationcenterV1alpha1::VmwareEngineMigrationTarget, decorator: Google::Apis::MigrationcenterV1alpha1::VmwareEngineMigrationTarget::Representation
       
+        end
+      end
+      
+      class Money
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :currency_code, as: 'currencyCode'
+          property :nanos, as: 'nanos'
+          property :units, :numeric_string => true, as: 'units'
         end
       end
       
@@ -1752,9 +1883,184 @@ module Google
         end
       end
       
+      class Report
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          property :state, as: 'state'
+          property :summary, as: 'summary', class: Google::Apis::MigrationcenterV1alpha1::ReportSummary, decorator: Google::Apis::MigrationcenterV1alpha1::ReportSummary::Representation
+      
+          property :type, as: 'type'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class ReportAssetFramesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class ReportConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          collection :group_preferenceset_assignments, as: 'groupPreferencesetAssignments', class: Google::Apis::MigrationcenterV1alpha1::ReportConfigGroupPreferenceSetAssignment, decorator: Google::Apis::MigrationcenterV1alpha1::ReportConfigGroupPreferenceSetAssignment::Representation
+      
+          property :name, as: 'name'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class ReportConfigGroupPreferenceSetAssignment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :group, as: 'group'
+          property :preference_set, as: 'preferenceSet'
+        end
+      end
+      
+      class ReportSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :all_assets_stats, as: 'allAssetsStats', class: Google::Apis::MigrationcenterV1alpha1::ReportSummaryAssetAggregateStats, decorator: Google::Apis::MigrationcenterV1alpha1::ReportSummaryAssetAggregateStats::Representation
+      
+          collection :group_findings, as: 'groupFindings', class: Google::Apis::MigrationcenterV1alpha1::ReportSummaryGroupFinding, decorator: Google::Apis::MigrationcenterV1alpha1::ReportSummaryGroupFinding::Representation
+      
+        end
+      end
+      
+      class ReportSummaryAssetAggregateStats
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :asset_age, as: 'assetAge', class: Google::Apis::MigrationcenterV1alpha1::ReportSummaryChartData, decorator: Google::Apis::MigrationcenterV1alpha1::ReportSummaryChartData::Representation
+      
+          property :core_count_histogram, as: 'coreCountHistogram', class: Google::Apis::MigrationcenterV1alpha1::ReportSummaryHistogramChartData, decorator: Google::Apis::MigrationcenterV1alpha1::ReportSummaryHistogramChartData::Representation
+      
+          property :memory_bytes_histogram, as: 'memoryBytesHistogram', class: Google::Apis::MigrationcenterV1alpha1::ReportSummaryHistogramChartData, decorator: Google::Apis::MigrationcenterV1alpha1::ReportSummaryHistogramChartData::Representation
+      
+          property :memory_utilization, as: 'memoryUtilization', class: Google::Apis::MigrationcenterV1alpha1::ReportSummaryChartData, decorator: Google::Apis::MigrationcenterV1alpha1::ReportSummaryChartData::Representation
+      
+          property :memory_utilization_chart, as: 'memoryUtilizationChart', class: Google::Apis::MigrationcenterV1alpha1::ReportSummaryUtilizationChartData, decorator: Google::Apis::MigrationcenterV1alpha1::ReportSummaryUtilizationChartData::Representation
+      
+          property :operating_system, as: 'operatingSystem', class: Google::Apis::MigrationcenterV1alpha1::ReportSummaryChartData, decorator: Google::Apis::MigrationcenterV1alpha1::ReportSummaryChartData::Representation
+      
+          property :storage_bytes_histogram, as: 'storageBytesHistogram', class: Google::Apis::MigrationcenterV1alpha1::ReportSummaryHistogramChartData, decorator: Google::Apis::MigrationcenterV1alpha1::ReportSummaryHistogramChartData::Representation
+      
+          property :storage_utilization, as: 'storageUtilization', class: Google::Apis::MigrationcenterV1alpha1::ReportSummaryChartData, decorator: Google::Apis::MigrationcenterV1alpha1::ReportSummaryChartData::Representation
+      
+          property :storage_utilization_chart, as: 'storageUtilizationChart', class: Google::Apis::MigrationcenterV1alpha1::ReportSummaryUtilizationChartData, decorator: Google::Apis::MigrationcenterV1alpha1::ReportSummaryUtilizationChartData::Representation
+      
+          property :total_assets, :numeric_string => true, as: 'totalAssets'
+          property :total_cores, :numeric_string => true, as: 'totalCores'
+          property :total_memory_bytes, :numeric_string => true, as: 'totalMemoryBytes'
+          property :total_storage_bytes, :numeric_string => true, as: 'totalStorageBytes'
+        end
+      end
+      
+      class ReportSummaryChartData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :data_points, as: 'dataPoints', class: Google::Apis::MigrationcenterV1alpha1::ReportSummaryChartDataDataPoint, decorator: Google::Apis::MigrationcenterV1alpha1::ReportSummaryChartDataDataPoint::Representation
+      
+        end
+      end
+      
+      class ReportSummaryChartDataDataPoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :label, as: 'label'
+          property :value, as: 'value'
+        end
+      end
+      
+      class ReportSummaryGroupFinding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :asset_aggregate_stats, as: 'assetAggregateStats', class: Google::Apis::MigrationcenterV1alpha1::ReportSummaryAssetAggregateStats, decorator: Google::Apis::MigrationcenterV1alpha1::ReportSummaryAssetAggregateStats::Representation
+      
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :overlapping_asset_count, :numeric_string => true, as: 'overlappingAssetCount'
+          collection :preference_set_findings, as: 'preferenceSetFindings', class: Google::Apis::MigrationcenterV1alpha1::ReportSummaryGroupPreferenceSetFinding, decorator: Google::Apis::MigrationcenterV1alpha1::ReportSummaryGroupPreferenceSetFinding::Representation
+      
+        end
+      end
+      
+      class ReportSummaryGroupPreferenceSetFinding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :machine_finding, as: 'machineFinding', class: Google::Apis::MigrationcenterV1alpha1::ReportSummaryMachineFinding, decorator: Google::Apis::MigrationcenterV1alpha1::ReportSummaryMachineFinding::Representation
+      
+          property :machine_preferences, as: 'machinePreferences', class: Google::Apis::MigrationcenterV1alpha1::VirtualMachinePreferences, decorator: Google::Apis::MigrationcenterV1alpha1::VirtualMachinePreferences::Representation
+      
+          property :monthly_cost_compute, as: 'monthlyCostCompute', class: Google::Apis::MigrationcenterV1alpha1::Money, decorator: Google::Apis::MigrationcenterV1alpha1::Money::Representation
+      
+          property :monthly_cost_network_egress, as: 'monthlyCostNetworkEgress', class: Google::Apis::MigrationcenterV1alpha1::Money, decorator: Google::Apis::MigrationcenterV1alpha1::Money::Representation
+      
+          property :monthly_cost_os_license, as: 'monthlyCostOsLicense', class: Google::Apis::MigrationcenterV1alpha1::Money, decorator: Google::Apis::MigrationcenterV1alpha1::Money::Representation
+      
+          property :monthly_cost_other, as: 'monthlyCostOther', class: Google::Apis::MigrationcenterV1alpha1::Money, decorator: Google::Apis::MigrationcenterV1alpha1::Money::Representation
+      
+          property :monthly_cost_storage, as: 'monthlyCostStorage', class: Google::Apis::MigrationcenterV1alpha1::Money, decorator: Google::Apis::MigrationcenterV1alpha1::Money::Representation
+      
+          property :monthly_cost_total, as: 'monthlyCostTotal', class: Google::Apis::MigrationcenterV1alpha1::Money, decorator: Google::Apis::MigrationcenterV1alpha1::Money::Representation
+      
+          property :preferred_region, as: 'preferredRegion'
+          property :pricing_track, as: 'pricingTrack'
+          property :top_priority, as: 'topPriority'
+        end
+      end
+      
+      class ReportSummaryHistogramChartData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :buckets, as: 'buckets', class: Google::Apis::MigrationcenterV1alpha1::ReportSummaryHistogramChartDataBucket, decorator: Google::Apis::MigrationcenterV1alpha1::ReportSummaryHistogramChartDataBucket::Representation
+      
+        end
+      end
+      
+      class ReportSummaryHistogramChartDataBucket
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :count, :numeric_string => true, as: 'count'
+          property :lower_bound, :numeric_string => true, as: 'lowerBound'
+          property :upper_bound, :numeric_string => true, as: 'upperBound'
+        end
+      end
+      
+      class ReportSummaryMachineFinding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allocated_asset_count, :numeric_string => true, as: 'allocatedAssetCount'
+          collection :allocated_disk_types, as: 'allocatedDiskTypes'
+          collection :allocated_regions, as: 'allocatedRegions'
+          collection :machine_series_allocations, as: 'machineSeriesAllocations', class: Google::Apis::MigrationcenterV1alpha1::ReportSummaryMachineSeriesAllocation, decorator: Google::Apis::MigrationcenterV1alpha1::ReportSummaryMachineSeriesAllocation::Representation
+      
+        end
+      end
+      
+      class ReportSummaryMachineSeriesAllocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allocated_asset_count, :numeric_string => true, as: 'allocatedAssetCount'
+          property :machine_series, as: 'machineSeries', class: Google::Apis::MigrationcenterV1alpha1::MachineSeries, decorator: Google::Apis::MigrationcenterV1alpha1::MachineSeries::Representation
+      
+        end
+      end
+      
+      class ReportSummaryUtilizationChartData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :free, :numeric_string => true, as: 'free'
+          property :used, :numeric_string => true, as: 'used'
         end
       end
       
