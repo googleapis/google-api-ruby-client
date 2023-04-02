@@ -658,6 +658,11 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment
         include Google::Apis::Core::Hashable
       
+        # Information about behavioral trust of the transaction.
+        # Corresponds to the JSON property `behavioralTrustVerdict`
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict]
+        attr_accessor :behavioral_trust_verdict
+      
         # Information about card testing fraud, where an adversary is testing
         # fraudulently obtained cards or brute forcing their details.
         # Corresponds to the JSON property `cardTestingVerdict`
@@ -682,9 +687,30 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @behavioral_trust_verdict = args[:behavioral_trust_verdict] if args.key?(:behavioral_trust_verdict)
           @card_testing_verdict = args[:card_testing_verdict] if args.key?(:card_testing_verdict)
           @stolen_instrument_verdict = args[:stolen_instrument_verdict] if args.key?(:stolen_instrument_verdict)
           @transaction_risk = args[:transaction_risk] if args.key?(:transaction_risk)
+        end
+      end
+      
+      # Information about behavioral trust of the transaction.
+      class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict
+        include Google::Apis::Core::Hashable
+      
+        # Probability (0-1) of this transaction attempt being executed in a behaviorally
+        # trustworthy way.
+        # Corresponds to the JSON property `trust`
+        # @return [Float]
+        attr_accessor :trust_prop
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @trust_prop = args[:trust_prop] if args.key?(:trust_prop)
         end
       end
       
