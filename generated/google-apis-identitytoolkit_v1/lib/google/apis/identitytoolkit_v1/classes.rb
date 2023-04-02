@@ -2472,6 +2472,8 @@ module Google
       
         # An opaque string from a previous SignInWithIdp response. If set, it can be
         # used to repeat the sign-in operation from the previous SignInWithIdp operation.
+        # This may be present if the user needs to confirm their account information as
+        # part of a previous federated login attempt, or perform account linking.
         # Corresponds to the JSON property `pendingToken`
         # @return [String]
         attr_accessor :pending_token
