@@ -36,6 +36,12 @@ module Google
         # @return [String]
         attr_accessor :secret_access_key
       
+        # Input only. AWS session token. Used only when AWS security token service (STS)
+        # is responsible for creating the temporary credentials.
+        # Corresponds to the JSON property `sessionToken`
+        # @return [String]
+        attr_accessor :session_token
+      
         def initialize(**args)
            update!(**args)
         end
@@ -44,6 +50,7 @@ module Google
         def update!(**args)
           @access_key_id = args[:access_key_id] if args.key?(:access_key_id)
           @secret_access_key = args[:secret_access_key] if args.key?(:secret_access_key)
+          @session_token = args[:session_token] if args.key?(:session_token)
         end
       end
       
