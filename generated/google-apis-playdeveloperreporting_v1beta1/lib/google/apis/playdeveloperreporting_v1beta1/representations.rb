@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePlayDeveloperReportingV1beta1DecimalConfidenceInterval
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePlayDeveloperReportingV1beta1DimensionValue
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -270,6 +276,16 @@ module Google
         end
       end
       
+      class GooglePlayDeveloperReportingV1beta1DecimalConfidenceInterval
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :lower_bound, as: 'lowerBound', class: Google::Apis::PlaydeveloperreportingV1beta1::GoogleTypeDecimal, decorator: Google::Apis::PlaydeveloperreportingV1beta1::GoogleTypeDecimal::Representation
+      
+          property :upper_bound, as: 'upperBound', class: Google::Apis::PlaydeveloperreportingV1beta1::GoogleTypeDecimal, decorator: Google::Apis::PlaydeveloperreportingV1beta1::GoogleTypeDecimal::Representation
+      
+        end
+      end
+      
       class GooglePlayDeveloperReportingV1beta1DimensionValue
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -348,6 +364,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :decimal_value, as: 'decimalValue', class: Google::Apis::PlaydeveloperreportingV1beta1::GoogleTypeDecimal, decorator: Google::Apis::PlaydeveloperreportingV1beta1::GoogleTypeDecimal::Representation
+      
+          property :decimal_value_confidence_interval, as: 'decimalValueConfidenceInterval', class: Google::Apis::PlaydeveloperreportingV1beta1::GooglePlayDeveloperReportingV1beta1DecimalConfidenceInterval, decorator: Google::Apis::PlaydeveloperreportingV1beta1::GooglePlayDeveloperReportingV1beta1DecimalConfidenceInterval::Representation
       
           property :metric, as: 'metric'
         end
