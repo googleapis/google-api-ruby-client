@@ -310,11 +310,11 @@ module Google
         # model when you send a call that includes the PhraseSet.
         # @param [String] parent
         #   Required. The parent resource where this phrase set will be created. Format: `
-        #   projects/`project`/locations/`location`/phraseSets` Speech-to-Text supports
-        #   three locations: `global`, `us` (US North America), and `eu` (Europe). If you
-        #   are calling the `speech.googleapis.com` endpoint, use the `global` location.
-        #   To specify a region, use a [regional endpoint](https://cloud.google.com/speech-
-        #   to-text/docs/endpoints) with matching `us` or `eu` location value.
+        #   projects/`project`/locations/`location`` Speech-to-Text supports three
+        #   locations: `global`, `us` (US North America), and `eu` (Europe). If you are
+        #   calling the `speech.googleapis.com` endpoint, use the `global` location. To
+        #   specify a region, use a [regional endpoint](https://cloud.google.com/speech-to-
+        #   text/docs/endpoints) with matching `us` or `eu` location value.
         # @param [Google::Apis::SpeechV1::CreatePhraseSetRequest] create_phrase_set_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
