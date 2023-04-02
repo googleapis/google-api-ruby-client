@@ -277,7 +277,7 @@ module Google
         # An intent represents a user's intent to interact with a conversational agent.
         # You can provide information for the Dialogflow API to use to match user input
         # to an intent by adding training phrases (i.e., examples of user input) to your
-        # intent.
+        # intent. Next ID: 15
         # Corresponds to the JSON property `triggeredIntent`
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3Intent]
         attr_accessor :triggered_intent
@@ -1260,7 +1260,7 @@ module Google
       # An intent represents a user's intent to interact with a conversational agent.
       # You can provide information for the Dialogflow API to use to match user input
       # to an intent by adding training phrases (i.e., examples of user input) to your
-      # intent.
+      # intent. Next ID: 15
       class GoogleCloudDialogflowCxV3Intent
         include Google::Apis::Core::Hashable
       
@@ -2742,6 +2742,11 @@ module Google
         # @return [String]
         attr_accessor :detect_intent_response_id
       
+        # If DTMF was provided as input, this field will contain the DTMF digits.
+        # Corresponds to the JSON property `dtmfDigits`
+        # @return [String]
+        attr_accessor :dtmf_digits
+      
         # Represents fulfillment information communicated to the webhook.
         # Corresponds to the JSON property `fulfillmentInfo`
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3WebhookRequestFulfillmentInfo]
@@ -2814,6 +2819,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @detect_intent_response_id = args[:detect_intent_response_id] if args.key?(:detect_intent_response_id)
+          @dtmf_digits = args[:dtmf_digits] if args.key?(:dtmf_digits)
           @fulfillment_info = args[:fulfillment_info] if args.key?(:fulfillment_info)
           @intent_info = args[:intent_info] if args.key?(:intent_info)
           @language_code = args[:language_code] if args.key?(:language_code)
@@ -5926,6 +5932,7 @@ module Google
       end
       
       # Represents an example that the agent is trained on to identify the intent.
+      # Next ID: 15
       class GoogleCloudDialogflowCxV3beta1IntentTrainingPhrase
         include Google::Apis::Core::Hashable
       
@@ -9370,6 +9377,11 @@ module Google
         # @return [String]
         attr_accessor :detect_intent_response_id
       
+        # If DTMF was provided as input, this field will contain the DTMF digits.
+        # Corresponds to the JSON property `dtmfDigits`
+        # @return [String]
+        attr_accessor :dtmf_digits
+      
         # Represents fulfillment information communicated to the webhook.
         # Corresponds to the JSON property `fulfillmentInfo`
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1WebhookRequestFulfillmentInfo]
@@ -9442,6 +9454,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @detect_intent_response_id = args[:detect_intent_response_id] if args.key?(:detect_intent_response_id)
+          @dtmf_digits = args[:dtmf_digits] if args.key?(:dtmf_digits)
           @fulfillment_info = args[:fulfillment_info] if args.key?(:fulfillment_info)
           @intent_info = args[:intent_info] if args.key?(:intent_info)
           @language_code = args[:language_code] if args.key?(:language_code)
