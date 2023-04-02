@@ -34,12 +34,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AssociatedFinding
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class CloudDlpDataProfile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -124,12 +118,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Edge
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class EnvironmentVariable
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -196,18 +184,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudSecuritycenterV1ExposedResource
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudSecuritycenterV1ExposurePath
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudSecuritycenterV1ExternalSystem
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -227,12 +203,6 @@ module Google
       end
       
       class GoogleCloudSecuritycenterV1Resource
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudSecuritycenterV1ResourceValueConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -341,18 +311,6 @@ module Google
       end
       
       class OnboardingState
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class OrgPolicyConstraint
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class PathNode
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -482,15 +440,6 @@ module Google
           property :subresource, as: 'subresource'
           property :verb, as: 'verb'
           property :version, as: 'version'
-        end
-      end
-      
-      class AssociatedFinding
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :canonical_finding_name, as: 'canonicalFindingName'
-          property :finding_category, as: 'findingCategory'
-          property :name, as: 'name'
         end
       end
       
@@ -632,14 +581,6 @@ module Google
         end
       end
       
-      class Edge
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :destination, as: 'destination'
-          property :source, as: 'source'
-        end
-      end
-      
       class EnvironmentVariable
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -737,8 +678,6 @@ module Google
           property :mute_update_time, as: 'muteUpdateTime'
           property :name, as: 'name'
           property :next_steps, as: 'nextSteps'
-          collection :org_policy_constraints, as: 'orgPolicyConstraints', class: Google::Apis::SecuritycenterV1beta2::OrgPolicyConstraint, decorator: Google::Apis::SecuritycenterV1beta2::OrgPolicyConstraint::Representation
-      
           property :parent, as: 'parent'
           property :parent_display_name, as: 'parentDisplayName'
           collection :processes, as: 'processes', class: Google::Apis::SecuritycenterV1beta2::Process, decorator: Google::Apis::SecuritycenterV1beta2::Process::Representation
@@ -801,31 +740,6 @@ module Google
         end
       end
       
-      class GoogleCloudSecuritycenterV1ExposedResource
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :display_name, as: 'displayName'
-          collection :methods_prop, as: 'methods'
-          property :name, as: 'name'
-          property :resource, as: 'resource'
-          property :resource_type, as: 'resourceType'
-          property :resource_value, as: 'resourceValue'
-        end
-      end
-      
-      class GoogleCloudSecuritycenterV1ExposurePath
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :edges, as: 'edges', class: Google::Apis::SecuritycenterV1beta2::Edge, decorator: Google::Apis::SecuritycenterV1beta2::Edge::Representation
-      
-          property :exposed_resource, as: 'exposedResource', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV1ExposedResource, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV1ExposedResource::Representation
-      
-          property :name, as: 'name'
-          collection :path_nodes, as: 'pathNodes', class: Google::Apis::SecuritycenterV1beta2::PathNode, decorator: Google::Apis::SecuritycenterV1beta2::PathNode::Representation
-      
-        end
-      end
-      
       class GoogleCloudSecuritycenterV1ExternalSystem
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -873,21 +787,6 @@ module Google
           property :project, as: 'project'
           property :project_display_name, as: 'projectDisplayName'
           property :type, as: 'type'
-        end
-      end
-      
-      class GoogleCloudSecuritycenterV1ResourceValueConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :create_time, as: 'createTime'
-          property :description, as: 'description'
-          property :name, as: 'name'
-          hash :resource_labels_selector, as: 'resourceLabelsSelector'
-          property :resource_type, as: 'resourceType'
-          property :resource_value, as: 'resourceValue'
-          property :scope, as: 'scope'
-          collection :tag_values, as: 'tagValues'
-          property :update_time, as: 'updateTime'
         end
       end
       
@@ -1077,24 +976,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :onboarding_level, as: 'onboardingLevel'
-        end
-      end
-      
-      class OrgPolicyConstraint
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :name, as: 'name'
-        end
-      end
-      
-      class PathNode
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :associated_findings, as: 'associatedFindings', class: Google::Apis::SecuritycenterV1beta2::AssociatedFinding, decorator: Google::Apis::SecuritycenterV1beta2::AssociatedFinding::Representation
-      
-          property :display_name, as: 'displayName'
-          property :resource, as: 'resource'
-          property :resource_type, as: 'resourceType'
         end
       end
       
