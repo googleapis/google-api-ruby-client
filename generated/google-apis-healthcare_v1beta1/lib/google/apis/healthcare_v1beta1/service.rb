@@ -4681,6 +4681,71 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets all incoming references to a given target FHIR resource. Can also get all
+        # incoming references when the target resource does not exist, for example, if
+        # the target has been deleted. On success, the response body contains a Bundle
+        # with type `searchset`, where each entry in the Bundle contains the full
+        # content of the resource. If the operation fails, an `OperationOutcome` is
+        # returned describing the failure. If the request cannot be mapped to a valid
+        # API method on a FHIR store, a generic Google Cloud error might be returned
+        # instead.
+        # @param [String] parent
+        #   Required. The name of the FHIR store that holds the target resource.
+        # @param [Fixnum] _count
+        #   Maximum number of resources in a page. If not specified, 100 is used. May not
+        #   be larger than 1000.
+        # @param [String] _page_token
+        #   Used to retrieve the next page of results when using pagination. Set `
+        #   _page_token` to the value of _page_token set in next page links' url. Next
+        #   page are returned in the response bundle's links field, where `link.relation`
+        #   is "next". Omit `_page_token` if no previous request has been made.
+        # @param [String] _summary
+        #   Used to simplify the representation of the returned resources. `_summary=text`
+        #   returns only the `text`, `id`, and `meta` top-level fields. `_summary=data`
+        #   removes the `text` field and returns all other fields. `_summary=false`
+        #   returns all parts of the resource(s). Either not providing this parameter or
+        #   providing an empty value to this parameter also returns all parts of the
+        #   resource(s).
+        # @param [String] _type
+        #   String of comma-delimited FHIR resource types. If provided, only resources of
+        #   the specified resource type(s) are returned. If not provided or an empty value
+        #   is provided, no filter on the returned resource type(s) is applied.
+        # @param [String] target
+        #   Required. The target whose incoming references are requested. This param is
+        #   required and must not be empty. It uses the format "ResourceType/ResourceID",
+        #   for example, target=ResourceType/ResourceID.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1beta1::HttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1beta1::HttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def resource_project_location_dataset_fhir_store_fhir_incoming_references(parent, _count: nil, _page_token: nil, _summary: nil, _type: nil, target: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/fhir/$references', options)
+          command.response_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
+          command.response_class = Google::Apis::HealthcareV1beta1::HttpBody
+          command.params['parent'] = parent unless parent.nil?
+          command.query['_count'] = _count unless _count.nil?
+          command.query['_page_token'] = _page_token unless _page_token.nil?
+          command.query['_summary'] = _summary unless _summary.nil?
+          command.query['_type'] = _type unless _type.nil?
+          command.query['target'] = target unless target.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes all the historical versions of a resource (excluding the current
         # version) from the FHIR store. To remove all versions of a resource, first
         # delete the current version and then call this method. This is not a FHIR
@@ -5361,17 +5426,18 @@ module Google
         # _count`, `_include`, `_revinclude`, `_summary=text`, `_summary=data`, and `
         # _elements`. The maximum number of search results returned defaults to 100,
         # which can be overridden by the `_count` parameter up to a maximum limit of
-        # 1000. If there are additional results, the returned `Bundle` contains a link
-        # of `relation` "next", which has a `_page_token` parameter for an opaque
-        # pagination token that can be used to retrieve the next page. Resources with a
-        # total size larger than 5MB or a field count larger than 50,000 might not be
-        # fully searchable as the server might trim its generated search index in those
-        # cases. Note: FHIR resources are indexed asynchronously, so there might be a
-        # slight delay between the time a resource is created or changes and when the
-        # change is reflected in search results. For samples and detailed information,
-        # see [Searching for FHIR resources](https://cloud.google.com/healthcare/docs/
-        # how-tos/fhir-search) and [Advanced FHIR search features](https://cloud.google.
-        # com/healthcare/docs/how-tos/fhir-advanced-search).
+        # 1000. The server might return fewer resources than requested to prevent
+        # excessively large responses. If there are additional results, the returned `
+        # Bundle` contains a link of `relation` "next", which has a `_page_token`
+        # parameter for an opaque pagination token that can be used to retrieve the next
+        # page. Resources with a total size larger than 5MB or a field count larger than
+        # 50,000 might not be fully searchable as the server might trim its generated
+        # search index in those cases. Note: FHIR resources are indexed asynchronously,
+        # so there might be a slight delay between the time a resource is created or
+        # changes and when the change is reflected in search results. For samples and
+        # detailed information, see [Searching for FHIR resources](https://cloud.google.
+        # com/healthcare/docs/how-tos/fhir-search) and [Advanced FHIR search features](
+        # https://cloud.google.com/healthcare/docs/how-tos/fhir-advanced-search).
         # @param [String] parent
         #   Name of the FHIR store to retrieve resources from.
         # @param [Google::Apis::HealthcareV1beta1::SearchResourcesRequest] search_resources_request_object
@@ -5438,17 +5504,18 @@ module Google
         # _count`, `_include`, `_revinclude`, `_summary=text`, `_summary=data`, and `
         # _elements`. The maximum number of search results returned defaults to 100,
         # which can be overridden by the `_count` parameter up to a maximum limit of
-        # 1000. If there are additional results, the returned `Bundle` contains a link
-        # of `relation` "next", which has a `_page_token` parameter for an opaque
-        # pagination token that can be used to retrieve the next page. Resources with a
-        # total size larger than 5MB or a field count larger than 50,000 might not be
-        # fully searchable as the server might trim its generated search index in those
-        # cases. Note: FHIR resources are indexed asynchronously, so there might be a
-        # slight delay between the time a resource is created or changes and when the
-        # change is reflected in search results. For samples and detailed information,
-        # see [Searching for FHIR resources](https://cloud.google.com/healthcare/docs/
-        # how-tos/fhir-search) and [Advanced FHIR search features](https://cloud.google.
-        # com/healthcare/docs/how-tos/fhir-advanced-search).
+        # 1000. The server might return fewer resources than requested to prevent
+        # excessively large responses. If there are additional results, the returned `
+        # Bundle` contains a link of `relation` "next", which has a `_page_token`
+        # parameter for an opaque pagination token that can be used to retrieve the next
+        # page. Resources with a total size larger than 5MB or a field count larger than
+        # 50,000 might not be fully searchable as the server might trim its generated
+        # search index in those cases. Note: FHIR resources are indexed asynchronously,
+        # so there might be a slight delay between the time a resource is created or
+        # changes and when the change is reflected in search results. For samples and
+        # detailed information, see [Searching for FHIR resources](https://cloud.google.
+        # com/healthcare/docs/how-tos/fhir-search) and [Advanced FHIR search features](
+        # https://cloud.google.com/healthcare/docs/how-tos/fhir-advanced-search).
         # @param [String] parent
         #   Name of the FHIR store to retrieve resources from.
         # @param [String] resource_type
@@ -6044,7 +6111,7 @@ module Google
         # adapter is configured to listen to a Pub/Sub topic, the adapter transmits the
         # message when a notification is received.
         # @param [String] parent
-        #   The name of the dataset this message belongs to.
+        #   The name of the HL7v2 store this message belongs to.
         # @param [Google::Apis::HealthcareV1beta1::CreateMessageRequest] create_message_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -6386,13 +6453,7 @@ module Google
         end
         
         # Lists operations that match the specified filter in the request. If the server
-        # doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name`
-        # binding allows API services to override the binding to use different resource
-        # name schemes, such as `users/*/operations`. To override the binding, API
-        # services can add a binding such as `"/v1/`name=users/*`/operations"` to their
-        # service configuration. For backwards compatibility, the default name includes
-        # the operations collection id, however overriding users must ensure the name
-        # binding is the parent resource, without the operations collection id.
+        # doesn't support this method, it returns `UNIMPLEMENTED`.
         # @param [String] name
         #   The name of the operation's parent resource.
         # @param [String] filter
