@@ -521,14 +521,19 @@ module Google
       class Gateway
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :addresses, as: 'addresses'
+          collection :certificate_urls, as: 'certificateUrls'
           property :create_time, as: 'createTime'
           property :description, as: 'description'
+          property :gateway_security_policy, as: 'gatewaySecurityPolicy'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :network, as: 'network'
           collection :ports, as: 'ports'
           property :scope, as: 'scope'
           property :self_link, as: 'selfLink'
           property :server_tls_policy, as: 'serverTlsPolicy'
+          property :subnetwork, as: 'subnetwork'
           property :type, as: 'type'
           property :update_time, as: 'updateTime'
         end
