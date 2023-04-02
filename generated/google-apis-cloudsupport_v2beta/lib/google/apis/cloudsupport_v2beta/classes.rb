@@ -316,8 +316,8 @@ module Google
       class Comment
         include Google::Apis::Core::Hashable
       
-        # The full comment body. Maximum of 120000 characters. This can contain rich
-        # text syntax.
+        # The full comment body. Maximum of 12800 characters. This can contain rich text
+        # syntax.
         # Corresponds to the JSON property `body`
         # @return [String]
         attr_accessor :body

@@ -50,41 +50,6 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Create a file attachment on a case or Cloud resource. The attachment object
-        # must have the following fields set: filename.
-        # @param [String] parent
-        #   Required. The resource name of the case (or case parent) to which the
-        #   attachment should be attached.
-        # @param [Google::Apis::CloudsupportV2beta::CreateAttachmentRequest] create_attachment_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::CloudsupportV2beta::Attachment] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::CloudsupportV2beta::Attachment]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_attachment(parent, create_attachment_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v2beta/{+parent}/attachments', options)
-          command.request_representation = Google::Apis::CloudsupportV2beta::CreateAttachmentRequest::Representation
-          command.request_object = create_attachment_request_object
-          command.response_representation = Google::Apis::CloudsupportV2beta::Attachment::Representation
-          command.response_class = Google::Apis::CloudsupportV2beta::Attachment
-          command.params['parent'] = parent unless parent.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Retrieve valid classifications to be used when creating a support case. The
         # classications are hierarchical, with each classification containing all levels
         # of the hierarchy, separated by " > ". For example "Technical Issue > Compute >
