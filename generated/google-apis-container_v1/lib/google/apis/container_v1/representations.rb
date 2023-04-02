@@ -598,6 +598,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PodCidrOverprovisionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PrivateClusterConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1480,6 +1486,8 @@ module Google
           property :ipv6_access_type, as: 'ipv6AccessType'
           property :node_ipv4_cidr, as: 'nodeIpv4Cidr'
           property :node_ipv4_cidr_block, as: 'nodeIpv4CidrBlock'
+          property :pod_cidr_overprovision_config, as: 'podCidrOverprovisionConfig', class: Google::Apis::ContainerV1::PodCidrOverprovisionConfig, decorator: Google::Apis::ContainerV1::PodCidrOverprovisionConfig::Representation
+      
           property :services_ipv4_cidr, as: 'servicesIpv4Cidr'
           property :services_ipv4_cidr_block, as: 'servicesIpv4CidrBlock'
           property :services_ipv6_cidr_block, as: 'servicesIpv6CidrBlock'
@@ -1856,6 +1864,8 @@ module Google
           property :enable_private_nodes, as: 'enablePrivateNodes'
           property :network_performance_config, as: 'networkPerformanceConfig', class: Google::Apis::ContainerV1::NetworkPerformanceConfig, decorator: Google::Apis::ContainerV1::NetworkPerformanceConfig::Representation
       
+          property :pod_cidr_overprovision_config, as: 'podCidrOverprovisionConfig', class: Google::Apis::ContainerV1::PodCidrOverprovisionConfig, decorator: Google::Apis::ContainerV1::PodCidrOverprovisionConfig::Representation
+      
           property :pod_ipv4_cidr_block, as: 'podIpv4CidrBlock'
           property :pod_range, as: 'podRange'
         end
@@ -1998,6 +2008,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :type, as: 'type'
+        end
+      end
+      
+      class PodCidrOverprovisionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disable, as: 'disable'
         end
       end
       
