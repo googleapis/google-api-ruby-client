@@ -550,6 +550,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BulkInsertDiskResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BulkInsertInstanceResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -736,6 +742,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DiskAsyncReplication
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DiskAsyncReplicationList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DiskInstantiationConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -767,6 +785,18 @@ module Google
       end
       
       class DiskParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DiskResourceStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DiskResourceStatusAsyncReplicationStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -864,6 +894,18 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DisksStartAsyncReplicationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DisksStopGroupAsyncReplicationResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -1145,6 +1187,12 @@ module Google
       end
       
       class GrpcHealthCheck
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GlobalAddressesMoveRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3622,6 +3670,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RegionAddressesMoveRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RegionAutoscalerList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -3677,6 +3731,12 @@ module Google
       end
       
       class RegionDisksResizeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionDisksStartAsyncReplicationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4037,6 +4097,12 @@ module Google
       end
       
       class ResourcePolicyDailyCycle
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourcePolicyDiskConsistencyGroupPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -7080,6 +7146,13 @@ module Google
         end
       end
       
+      class BulkInsertDiskResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :source_consistency_group_policy, as: 'sourceConsistencyGroupPolicy'
+        end
+      end
+      
       class BulkInsertInstanceResource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -7381,6 +7454,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :architecture, as: 'architecture'
+          property :async_primary_disk, as: 'asyncPrimaryDisk', class: Google::Apis::ComputeBeta::DiskAsyncReplication, decorator: Google::Apis::ComputeBeta::DiskAsyncReplication::Representation
+      
+          hash :async_secondary_disks, as: 'asyncSecondaryDisks', class: Google::Apis::ComputeBeta::DiskAsyncReplicationList, decorator: Google::Apis::ComputeBeta::DiskAsyncReplicationList::Representation
+      
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :disk_encryption_key, as: 'diskEncryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
@@ -7410,9 +7487,13 @@ module Google
           property :region, as: 'region'
           collection :replica_zones, as: 'replicaZones'
           collection :resource_policies, as: 'resourcePolicies'
+          property :resource_status, as: 'resourceStatus', class: Google::Apis::ComputeBeta::DiskResourceStatus, decorator: Google::Apis::ComputeBeta::DiskResourceStatus::Representation
+      
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
           property :size_gb, :numeric_string => true, as: 'sizeGb'
+          property :source_consistency_group_policy, as: 'sourceConsistencyGroupPolicy'
+          property :source_consistency_group_policy_id, as: 'sourceConsistencyGroupPolicyId'
           property :source_disk, as: 'sourceDisk'
           property :source_disk_id, as: 'sourceDiskId'
           property :source_image, as: 'sourceImage'
@@ -7463,6 +7544,22 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class DiskAsyncReplication
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disk, as: 'disk'
+          property :disk_id, as: 'diskId'
+        end
+      end
+      
+      class DiskAsyncReplicationList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :async_replication_disk, as: 'asyncReplicationDisk', class: Google::Apis::ComputeBeta::DiskAsyncReplication, decorator: Google::Apis::ComputeBeta::DiskAsyncReplication::Representation
+      
         end
       end
       
@@ -7520,6 +7617,23 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :resource_manager_tags, as: 'resourceManagerTags'
+        end
+      end
+      
+      class DiskResourceStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :async_primary_disk, as: 'asyncPrimaryDisk', class: Google::Apis::ComputeBeta::DiskResourceStatusAsyncReplicationStatus, decorator: Google::Apis::ComputeBeta::DiskResourceStatusAsyncReplicationStatus::Representation
+      
+          hash :async_secondary_disks, as: 'asyncSecondaryDisks', class: Google::Apis::ComputeBeta::DiskResourceStatusAsyncReplicationStatus, decorator: Google::Apis::ComputeBeta::DiskResourceStatusAsyncReplicationStatus::Representation
+      
+        end
+      end
+      
+      class DiskResourceStatusAsyncReplicationStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :state, as: 'state'
         end
       end
       
@@ -7680,6 +7794,20 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class DisksStartAsyncReplicationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :async_secondary_disk, as: 'asyncSecondaryDisk'
+        end
+      end
+      
+      class DisksStopGroupAsyncReplicationResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource_policy, as: 'resourcePolicy'
         end
       end
       
@@ -8225,6 +8353,14 @@ module Google
           property :port, as: 'port'
           property :port_name, as: 'portName'
           property :port_specification, as: 'portSpecification'
+        end
+      end
+      
+      class GlobalAddressesMoveRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :destination_address, as: 'destinationAddress'
         end
       end
       
@@ -12926,6 +13062,14 @@ module Google
         end
       end
       
+      class RegionAddressesMoveRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :destination_address, as: 'destinationAddress'
+        end
+      end
+      
       class RegionAutoscalerList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -13016,6 +13160,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :size_gb, :numeric_string => true, as: 'sizeGb'
+        end
+      end
+      
+      class RegionDisksStartAsyncReplicationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :async_secondary_disk, as: 'asyncSecondaryDisk'
         end
       end
       
@@ -13549,6 +13700,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
+          property :disk_consistency_group_policy, as: 'diskConsistencyGroupPolicy', class: Google::Apis::ComputeBeta::ResourcePolicyDiskConsistencyGroupPolicy, decorator: Google::Apis::ComputeBeta::ResourcePolicyDiskConsistencyGroupPolicy::Representation
+      
           property :group_placement_policy, as: 'groupPlacementPolicy', class: Google::Apis::ComputeBeta::ResourcePolicyGroupPlacementPolicy, decorator: Google::Apis::ComputeBeta::ResourcePolicyGroupPlacementPolicy::Representation
       
           property :id, :numeric_string => true, as: 'id'
@@ -13606,6 +13759,12 @@ module Google
           property :days_in_cycle, as: 'daysInCycle'
           property :duration, as: 'duration'
           property :start_time, as: 'startTime'
+        end
+      end
+      
+      class ResourcePolicyDiskConsistencyGroupPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -14465,6 +14624,7 @@ module Google
       
           property :json_parsing, as: 'jsonParsing'
           property :log_level, as: 'logLevel'
+          collection :user_ip_request_headers, as: 'userIpRequestHeaders'
         end
       end
       
