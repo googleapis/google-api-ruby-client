@@ -156,6 +156,7 @@ module Google
       class Workflow
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :call_log_level, as: 'callLogLevel'
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           hash :labels, as: 'labels'
