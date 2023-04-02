@@ -4067,7 +4067,10 @@ module Google
         # @return [Array<Google::Apis::AndroidpublisherV3::TrackRelease>]
         attr_accessor :releases
       
-        # Identifier of the track.
+        # Identifier of the track. Form factor tracks have a special prefix as an
+        # identifier, for example `wear:production`, `automotive:production`. [More on
+        # track name](https://developers.google.com/android-publisher/tracks#ff-track-
+        # name)
         # Corresponds to the JSON property `track`
         # @return [String]
         attr_accessor :track

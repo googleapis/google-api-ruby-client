@@ -1414,7 +1414,8 @@ module Google
         # @param [String] edit_id
         #   Identifier of the edit.
         # @param [String] track
-        #   Identifier of the track.
+        #   Identifier of the track. [More on track name](https://developers.google.com/
+        #   android-publisher/tracks#ff-track-name)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1483,7 +1484,8 @@ module Google
         # @param [String] edit_id
         #   Identifier of the edit.
         # @param [String] track
-        #   Identifier of the track.
+        #   Identifier of the track. [More on track name](https://developers.google.com/
+        #   android-publisher/tracks#ff-track-name)
         # @param [Google::Apis::AndroidpublisherV3::Track] track_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1522,7 +1524,8 @@ module Google
         # @param [String] edit_id
         #   Identifier of the edit.
         # @param [String] track
-        #   Identifier of the track.
+        #   Identifier of the track. [More on track name](https://developers.google.com/
+        #   android-publisher/tracks#ff-track-name)
         # @param [Google::Apis::AndroidpublisherV3::Track] track_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
