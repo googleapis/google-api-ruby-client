@@ -4375,6 +4375,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :detect_intent_response_id, as: 'detectIntentResponseId'
+          property :dtmf_digits, as: 'dtmfDigits'
           property :fulfillment_info, as: 'fulfillmentInfo', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3WebhookRequestFulfillmentInfo, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3WebhookRequestFulfillmentInfo::Representation
       
           property :intent_info, as: 'intentInfo', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3WebhookRequestIntentInfo, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3WebhookRequestIntentInfo::Representation
@@ -5212,6 +5213,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :detect_intent_response_id, as: 'detectIntentResponseId'
+          property :dtmf_digits, as: 'dtmfDigits'
           property :fulfillment_info, as: 'fulfillmentInfo', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1WebhookRequestFulfillmentInfo, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1WebhookRequestFulfillmentInfo::Representation
       
           property :intent_info, as: 'intentInfo', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfo, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfo::Representation
