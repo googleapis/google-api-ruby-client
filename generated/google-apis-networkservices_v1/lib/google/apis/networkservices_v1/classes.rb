@@ -441,6 +441,21 @@ module Google
       class Gateway
         include Google::Apis::Core::Hashable
       
+        # Optional. Zero or one IPv4-address on which the Gateway will receive the
+        # traffic. When no address is provided, an IP from the subnetwork is allocated
+        # This field only applies to gateways of type 'SECURE_WEB_GATEWAY'. Gateways of
+        # type 'OPEN_MESH' listen on 0.0.0.0.
+        # Corresponds to the JSON property `addresses`
+        # @return [Array<String>]
+        attr_accessor :addresses
+      
+        # Optional. A fully-qualified Certificates URL reference. The proxy presents a
+        # Certificate (selected based on SNI) when establishing a TLS connection. This
+        # feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+        # Corresponds to the JSON property `certificateUrls`
+        # @return [Array<String>]
+        attr_accessor :certificate_urls
+      
         # Output only. The timestamp when the resource was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -450,6 +465,14 @@ module Google
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
+      
+        # Optional. A fully-qualified GatewaySecurityPolicy URL reference. Defines how a
+        # server should apply security policy to inbound (VM to Proxy) initiated
+        # connections. For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-
+        # policy`. This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+        # Corresponds to the JSON property `gatewaySecurityPolicy`
+        # @return [String]
+        attr_accessor :gateway_security_policy
       
         # Optional. Set of label tags associated with the Gateway resource.
         # Corresponds to the JSON property `labels`
@@ -461,6 +484,13 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Optional. The relative resource name identifying the VPC network that is using
+        # this configuration. For example: `projects/*/global/networks/network-1`.
+        # Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
       
         # Required. One or more port numbers (1-65535), on which the Gateway will
         # receive traffic. The proxy binds to the specified ports. Gateways of type '
@@ -490,6 +520,14 @@ module Google
         # @return [String]
         attr_accessor :server_tls_policy
       
+        # Optional. The relative resource name identifying the subnetwork in which this
+        # SWG is allocated. For example: `projects/*/regions/us-central1/subnetworks/
+        # network-1` Currently, this field is specific to gateways of type '
+        # SECURE_WEB_GATEWAY".
+        # Corresponds to the JSON property `subnetwork`
+        # @return [String]
+        attr_accessor :subnetwork
+      
         # Immutable. The type of the customer managed gateway. This field is required.
         # If unspecified, an error is returned.
         # Corresponds to the JSON property `type`
@@ -507,14 +545,19 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @addresses = args[:addresses] if args.key?(:addresses)
+          @certificate_urls = args[:certificate_urls] if args.key?(:certificate_urls)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
+          @gateway_security_policy = args[:gateway_security_policy] if args.key?(:gateway_security_policy)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @network = args[:network] if args.key?(:network)
           @ports = args[:ports] if args.key?(:ports)
           @scope = args[:scope] if args.key?(:scope)
           @self_link = args[:self_link] if args.key?(:self_link)
           @server_tls_policy = args[:server_tls_policy] if args.key?(:server_tls_policy)
+          @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
           @type = args[:type] if args.key?(:type)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
