@@ -680,7 +680,7 @@ module Google
         #   Required. The parent resource name.
         # @param [Google::Apis::TpuV2alpha1::QueuedResource] queued_resource_object
         # @param [String] queued_resource_id
-        #   The unqualified resource name. Should follow the ^[A-Za-z0-9_.~+%-]+$ regex
+        #   The unqualified resource name. Should follow the `^[A-Za-z0-9_.~+%-]+$` regex
         #   format.
         # @param [String] request_id
         #   Idempotent request UUID.

@@ -654,6 +654,7 @@ module Google
           property :name, as: 'name'
           property :queueing_policy, as: 'queueingPolicy', class: Google::Apis::TpuV2alpha1::QueueingPolicy, decorator: Google::Apis::TpuV2alpha1::QueueingPolicy::Representation
       
+          property :reservation_name, as: 'reservationName'
           property :state, as: 'state', class: Google::Apis::TpuV2alpha1::QueuedResourceState, decorator: Google::Apis::TpuV2alpha1::QueuedResourceState::Representation
       
           property :tpu, as: 'tpu', class: Google::Apis::TpuV2alpha1::Tpu, decorator: Google::Apis::TpuV2alpha1::Tpu::Representation

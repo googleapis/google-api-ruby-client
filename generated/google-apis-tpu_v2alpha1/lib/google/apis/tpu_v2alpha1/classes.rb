@@ -1092,6 +1092,12 @@ module Google
         # @return [Google::Apis::TpuV2alpha1::QueueingPolicy]
         attr_accessor :queueing_policy
       
+        # Name of the reservation in which the resource should be provisioned. Format:
+        # projects/`project`/locations/`zone`/reservations/`reservation`
+        # Corresponds to the JSON property `reservationName`
+        # @return [String]
+        attr_accessor :reservation_name
+      
         # QueuedResourceState defines the details of the QueuedResource request.
         # Corresponds to the JSON property `state`
         # @return [Google::Apis::TpuV2alpha1::QueuedResourceState]
@@ -1112,6 +1118,7 @@ module Google
           @guaranteed = args[:guaranteed] if args.key?(:guaranteed)
           @name = args[:name] if args.key?(:name)
           @queueing_policy = args[:queueing_policy] if args.key?(:queueing_policy)
+          @reservation_name = args[:reservation_name] if args.key?(:reservation_name)
           @state = args[:state] if args.key?(:state)
           @tpu = args[:tpu] if args.key?(:tpu)
         end
