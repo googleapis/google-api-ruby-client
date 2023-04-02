@@ -287,38 +287,6 @@ module Google
         end
       end
       
-      # A finding that is associated with this node in the exposure path.
-      class AssociatedFinding
-        include Google::Apis::Core::Hashable
-      
-        # Canonical name of the associated findings. Example: organizations/123/sources/
-        # 456/findings/789
-        # Corresponds to the JSON property `canonicalFindingName`
-        # @return [String]
-        attr_accessor :canonical_finding_name
-      
-        # The additional taxonomy group within findings from a given source.
-        # Corresponds to the JSON property `findingCategory`
-        # @return [String]
-        attr_accessor :finding_category
-      
-        # Full resource name of the finding.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @canonical_finding_name = args[:canonical_finding_name] if args.key?(:canonical_finding_name)
-          @finding_category = args[:finding_category] if args.key?(:finding_category)
-          @name = args[:name] if args.key?(:name)
-        end
-      end
-      
       # Specifies the audit configuration for a service. The configuration determines
       # which permission types are logged, and what identities, if any, are exempted
       # from logging. An AuditConfig must have one or more AuditLogConfigs. If there
@@ -912,32 +880,6 @@ module Google
         end
       end
       
-      # Represents a connection between a source node and a destination node in this
-      # exposure path.
-      class Edge
-        include Google::Apis::Core::Hashable
-      
-        # This is the resource name of the destination node.
-        # Corresponds to the JSON property `destination`
-        # @return [String]
-        attr_accessor :destination
-      
-        # This is the resource name of the source node.
-        # Corresponds to the JSON property `source`
-        # @return [String]
-        attr_accessor :source
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @destination = args[:destination] if args.key?(:destination)
-          @source = args[:source] if args.key?(:source)
-        end
-      end
-      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -1342,12 +1284,6 @@ module Google
         # @return [String]
         attr_accessor :next_steps
       
-        # Contains information about the org policy constraints associated with the
-        # finding.
-        # Corresponds to the JSON property `orgPolicyConstraints`
-        # @return [Array<Google::Apis::SecuritycenterV1::OrgPolicyConstraint>]
-        attr_accessor :org_policy_constraints
-      
         # The relative resource name of the source the finding belongs to. See: https://
         # cloud.google.com/apis/design/resource_names#relative_resource_name This field
         # is immutable after creation time. For example: "organizations/`organization_id`
@@ -1443,7 +1379,6 @@ module Google
           @mute_update_time = args[:mute_update_time] if args.key?(:mute_update_time)
           @name = args[:name] if args.key?(:name)
           @next_steps = args[:next_steps] if args.key?(:next_steps)
-          @org_policy_constraints = args[:org_policy_constraints] if args.key?(:org_policy_constraints)
           @parent = args[:parent] if args.key?(:parent)
           @parent_display_name = args[:parent_display_name] if args.key?(:parent_display_name)
           @processes = args[:processes] if args.key?(:processes)
@@ -1682,96 +1617,6 @@ module Google
         end
       end
       
-      # A resource that is exposed as a result of a finding.
-      class GoogleCloudSecuritycenterV1ExposedResource
-        include Google::Apis::Core::Hashable
-      
-        # Human readable name of the resource that is exposed.
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # The ways in which this resource is exposed. Examples: Read, Write
-        # Corresponds to the JSON property `methods`
-        # @return [Array<String>]
-        attr_accessor :methods_prop
-      
-        # Exposed Resource Name e.g.: `organizations/123/attackExposureResults/456/
-        # exposedResources/789`
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # The name of the resource that is exposed. See: https://cloud.google.com/apis/
-        # design/resource_names#full_resource_name
-        # Corresponds to the JSON property `resource`
-        # @return [String]
-        attr_accessor :resource
-      
-        # The resource type of the exposed resource. See: https://cloud.google.com/asset-
-        # inventory/docs/supported-asset-types
-        # Corresponds to the JSON property `resourceType`
-        # @return [String]
-        attr_accessor :resource_type
-      
-        # How valuable this resource is.
-        # Corresponds to the JSON property `resourceValue`
-        # @return [String]
-        attr_accessor :resource_value
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @methods_prop = args[:methods_prop] if args.key?(:methods_prop)
-          @name = args[:name] if args.key?(:name)
-          @resource = args[:resource] if args.key?(:resource)
-          @resource_type = args[:resource_type] if args.key?(:resource_type)
-          @resource_value = args[:resource_value] if args.key?(:resource_value)
-        end
-      end
-      
-      # A path that an attacker could take to reach an exposed resource.
-      class GoogleCloudSecuritycenterV1ExposurePath
-        include Google::Apis::Core::Hashable
-      
-        # A list of the edges between nodes in this exposure path.
-        # Corresponds to the JSON property `edges`
-        # @return [Array<Google::Apis::SecuritycenterV1::Edge>]
-        attr_accessor :edges
-      
-        # A resource that is exposed as a result of a finding.
-        # Corresponds to the JSON property `exposedResource`
-        # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1ExposedResource]
-        attr_accessor :exposed_resource
-      
-        # Exposure Path Name e.g.: `organizations/123/attackExposureResults/456/
-        # exposurePaths/789`
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # A list of nodes that exist in this exposure path.
-        # Corresponds to the JSON property `pathNodes`
-        # @return [Array<Google::Apis::SecuritycenterV1::PathNode>]
-        attr_accessor :path_nodes
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @edges = args[:edges] if args.key?(:edges)
-          @exposed_resource = args[:exposed_resource] if args.key?(:exposed_resource)
-          @name = args[:name] if args.key?(:name)
-          @path_nodes = args[:path_nodes] if args.key?(:path_nodes)
-        end
-      end
-      
       # Representation of third party SIEM/SOAR fields within SCC.
       class GoogleCloudSecuritycenterV1ExternalSystem
         include Google::Apis::Core::Hashable
@@ -1988,84 +1833,6 @@ module Google
           @project = args[:project] if args.key?(:project)
           @project_display_name = args[:project_display_name] if args.key?(:project_display_name)
           @type = args[:type] if args.key?(:type)
-        end
-      end
-      
-      # A resource value config is a mapping configuration of user's tag values to
-      # resource values. Used by the attack path simulation.
-      class GoogleCloudSecuritycenterV1ResourceValueConfig
-        include Google::Apis::Core::Hashable
-      
-        # Output only. Timestamp this resource value config was created.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # Description of the resource value config.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # Name for the resource value config
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # List of resource labels to search for, evaluated with AND. E.g. "
-        # resource_labels_selector": `"key": "value", "env": "prod"` will match
-        # resources with labels "key": "value" AND "env": "prod" https://cloud.google.
-        # com/resource-manager/docs/creating-managing-labels
-        # Corresponds to the JSON property `resourceLabelsSelector`
-        # @return [Hash<String,String>]
-        attr_accessor :resource_labels_selector
-      
-        # Apply resource_value only to resources that match resource_type. resource_type
-        # will be checked with "AND" of other resources. E.g. "storage.googleapis.com/
-        # Bucket" with resource_value "HIGH" will apply "HIGH" value only to "storage.
-        # googleapis.com/Bucket" resources.
-        # Corresponds to the JSON property `resourceType`
-        # @return [String]
-        attr_accessor :resource_type
-      
-        # Required. Resource value level this expression represents
-        # Corresponds to the JSON property `resourceValue`
-        # @return [String]
-        attr_accessor :resource_value
-      
-        # Project or folder to scope this config to. For example, "project/456" would
-        # apply this config only to resources in "project/456" scope will be checked
-        # with "AND" of other resources.
-        # Corresponds to the JSON property `scope`
-        # @return [String]
-        attr_accessor :scope
-      
-        # Required. Tag values combined with AND to check against. Values in the form "
-        # tagValues/123" E.g. [ "tagValues/123", "tagValues/456", "tagValues/789" ]
-        # https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing
-        # Corresponds to the JSON property `tagValues`
-        # @return [Array<String>]
-        attr_accessor :tag_values
-      
-        # Output only. Timestamp this resource value config was last updated.
-        # Corresponds to the JSON property `updateTime`
-        # @return [String]
-        attr_accessor :update_time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @description = args[:description] if args.key?(:description)
-          @name = args[:name] if args.key?(:name)
-          @resource_labels_selector = args[:resource_labels_selector] if args.key?(:resource_labels_selector)
-          @resource_type = args[:resource_type] if args.key?(:resource_type)
-          @resource_value = args[:resource_value] if args.key?(:resource_value)
-          @scope = args[:scope] if args.key?(:scope)
-          @tag_values = args[:tag_values] if args.key?(:tag_values)
-          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -3498,26 +3265,6 @@ module Google
         end
       end
       
-      # Encapsulates data about a constraint associated with an organization policy.
-      class OrgPolicyConstraint
-        include Google::Apis::Core::Hashable
-      
-        # The resource name of the constraint. Example: "organizations/`organization_id`/
-        # constraints/`constraint_name`"
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @name = args[:name] if args.key?(:name)
-        end
-      end
-      
       # User specified settings that are attached to the Security Command Center
       # organization.
       class OrganizationSettings
@@ -3552,46 +3299,6 @@ module Google
           @asset_discovery_config = args[:asset_discovery_config] if args.key?(:asset_discovery_config)
           @enable_asset_discovery = args[:enable_asset_discovery] if args.key?(:enable_asset_discovery)
           @name = args[:name] if args.key?(:name)
-        end
-      end
-      
-      # Represents one point that an attacker passes through in this exposure path.
-      class PathNode
-        include Google::Apis::Core::Hashable
-      
-        # The findings associated with this node in the exposure path.
-        # Corresponds to the JSON property `associatedFindings`
-        # @return [Array<Google::Apis::SecuritycenterV1::AssociatedFinding>]
-        attr_accessor :associated_findings
-      
-        # Human readable name of this resource.
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # The name of the resource at this point in the exposure path. The format of the
-        # name is: https://cloud.google.com/apis/design/resource_names#
-        # full_resource_name
-        # Corresponds to the JSON property `resource`
-        # @return [String]
-        attr_accessor :resource
-      
-        # The resource type of this resource. See: https://cloud.google.com/asset-
-        # inventory/docs/supported-asset-types
-        # Corresponds to the JSON property `resourceType`
-        # @return [String]
-        attr_accessor :resource_type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @associated_findings = args[:associated_findings] if args.key?(:associated_findings)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @resource = args[:resource] if args.key?(:resource)
-          @resource_type = args[:resource_type] if args.key?(:resource_type)
         end
       end
       
