@@ -1602,8 +1602,8 @@ module Google
         # @param [Fixnum] page_size
         #   The maximum number of Services to return in the response. Only explicitly
         #   configured services are returned. The server may return fewer than this at its
-        #   own discretion. If no value is specified (or too large a value is specified),
-        #   the server will impose its own limit.
+        #   own discretion. If no value is specified or set to zero (or too large a value
+        #   is specified), the server will impose its own limit.
         # @param [String] page_token
         #   Token returned from a previous call to ListServices indicating where in the
         #   set of Services to resume listing. Provide this to retrieve the subsequent
