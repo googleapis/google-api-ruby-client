@@ -2290,6 +2290,11 @@ module Google
         # @return [String]
         attr_accessor :node_ipv4_cidr_block
       
+        # [PRIVATE FIELD] Config for pod CIDR size overprovisioning.
+        # Corresponds to the JSON property `podCidrOverprovisionConfig`
+        # @return [Google::Apis::ContainerV1::PodCidrOverprovisionConfig]
+        attr_accessor :pod_cidr_overprovision_config
+      
         # This field is deprecated, use services_ipv4_cidr_block.
         # Corresponds to the JSON property `servicesIpv4Cidr`
         # @return [String]
@@ -2379,6 +2384,7 @@ module Google
           @ipv6_access_type = args[:ipv6_access_type] if args.key?(:ipv6_access_type)
           @node_ipv4_cidr = args[:node_ipv4_cidr] if args.key?(:node_ipv4_cidr)
           @node_ipv4_cidr_block = args[:node_ipv4_cidr_block] if args.key?(:node_ipv4_cidr_block)
+          @pod_cidr_overprovision_config = args[:pod_cidr_overprovision_config] if args.key?(:pod_cidr_overprovision_config)
           @services_ipv4_cidr = args[:services_ipv4_cidr] if args.key?(:services_ipv4_cidr)
           @services_ipv4_cidr_block = args[:services_ipv4_cidr_block] if args.key?(:services_ipv4_cidr_block)
           @services_ipv6_cidr_block = args[:services_ipv6_cidr_block] if args.key?(:services_ipv6_cidr_block)
@@ -3705,6 +3711,11 @@ module Google
         # @return [Google::Apis::ContainerV1::NetworkPerformanceConfig]
         attr_accessor :network_performance_config
       
+        # [PRIVATE FIELD] Config for pod CIDR size overprovisioning.
+        # Corresponds to the JSON property `podCidrOverprovisionConfig`
+        # @return [Google::Apis::ContainerV1::PodCidrOverprovisionConfig]
+        attr_accessor :pod_cidr_overprovision_config
+      
         # The IP address range for pod IPs in this node pool. Only applicable if `
         # create_pod_range` is true. Set to blank to have a range chosen with the
         # default size. Set to /netmask (e.g. `/14`) to have a range chosen with a
@@ -3734,6 +3745,7 @@ module Google
           @create_pod_range = args[:create_pod_range] if args.key?(:create_pod_range)
           @enable_private_nodes = args[:enable_private_nodes] if args.key?(:enable_private_nodes)
           @network_performance_config = args[:network_performance_config] if args.key?(:network_performance_config)
+          @pod_cidr_overprovision_config = args[:pod_cidr_overprovision_config] if args.key?(:pod_cidr_overprovision_config)
           @pod_ipv4_cidr_block = args[:pod_ipv4_cidr_block] if args.key?(:pod_ipv4_cidr_block)
           @pod_range = args[:pod_range] if args.key?(:pod_range)
         end
@@ -4294,6 +4306,27 @@ module Google
         # Update properties of this object
         def update!(**args)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # [PRIVATE FIELD] Config for pod CIDR size overprovisioning.
+      class PodCidrOverprovisionConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether Pod CIDR overprovisioning is disabled. Note: Pod CIDR overprovisioning
+        # is enabled by default.
+        # Corresponds to the JSON property `disable`
+        # @return [Boolean]
+        attr_accessor :disable
+        alias_method :disable?, :disable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disable = args[:disable] if args.key?(:disable)
         end
       end
       
