@@ -1,0 +1,7 @@
+{
+    "api_id": "firebaseappdistribution:v1",
+    "name_pretty": "Firebase App Distribution API",
+    "distribution_name": "google-apis-firebaseappdistribution_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
