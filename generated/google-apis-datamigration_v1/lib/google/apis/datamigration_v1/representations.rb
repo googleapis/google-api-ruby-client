@@ -184,6 +184,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EncryptionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EntityMapping
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -586,6 +592,8 @@ module Google
       class AlloyDbSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :encryption_config, as: 'encryptionConfig', class: Google::Apis::DatamigrationV1::EncryptionConfig, decorator: Google::Apis::DatamigrationV1::EncryptionConfig::Representation
+      
           property :initial_user, as: 'initialUser', class: Google::Apis::DatamigrationV1::UserPassword, decorator: Google::Apis::DatamigrationV1::UserPassword::Representation
       
           hash :labels, as: 'labels'
@@ -892,6 +900,13 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class EncryptionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kms_key_name, as: 'kmsKeyName'
         end
       end
       
