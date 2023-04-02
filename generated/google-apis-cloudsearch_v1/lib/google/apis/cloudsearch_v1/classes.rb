@@ -303,7 +303,7 @@ module Google
       
       # NOTE WHEN ADDING NEW PROTO FIELDS: Be sure to add datapol annotations to new
       # fields with potential PII, so they get scrubbed when logging protos for errors.
-      # NEXT TAG: 31
+      # NEXT TAG: 32
       class Annotation
         include Google::Apis::Core::Hashable
       
@@ -324,6 +324,12 @@ module Google
         # Corresponds to the JSON property `chipRenderType`
         # @return [String]
         attr_accessor :chip_render_type
+      
+        # Metadata used to describe search information in a specific component of a chat
+        # message, for example an annotation or an attachment.
+        # Corresponds to the JSON property `componentSearchInfo`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedMessageComponentSearchInfo]
+        attr_accessor :component_search_info
       
         # Annotation metadata app unfurl consent.
         # Corresponds to the JSON property `consentedAppUnfurlMetadata`
@@ -358,7 +364,7 @@ module Google
         # @return [Google::Apis::CloudsearchV1::GroupRetentionSettingsUpdatedMetaData]
         attr_accessor :group_retention_settings_updated
       
-        # Annotation metadata for an GsuiteIntegration artifact.
+        # Annotation metadata for a GsuiteIntegration artifact.
         # Corresponds to the JSON property `gsuiteIntegrationMetadata`
         # @return [Google::Apis::CloudsearchV1::GsuiteIntegrationMetadata]
         attr_accessor :gsuite_integration_metadata
@@ -497,6 +503,7 @@ module Google
           @babel_placeholder_metadata = args[:babel_placeholder_metadata] if args.key?(:babel_placeholder_metadata)
           @card_capability_metadata = args[:card_capability_metadata] if args.key?(:card_capability_metadata)
           @chip_render_type = args[:chip_render_type] if args.key?(:chip_render_type)
+          @component_search_info = args[:component_search_info] if args.key?(:component_search_info)
           @consented_app_unfurl_metadata = args[:consented_app_unfurl_metadata] if args.key?(:consented_app_unfurl_metadata)
           @custom_emoji_metadata = args[:custom_emoji_metadata] if args.key?(:custom_emoji_metadata)
           @data_loss_prevention_metadata = args[:data_loss_prevention_metadata] if args.key?(:data_loss_prevention_metadata)
@@ -1770,6 +1777,33 @@ module Google
         end
       end
       
+      # Metadata used to describe search information in a specific component of a chat
+      # message, for example an annotation or an attachment.
+      class AppsDynamiteSharedMessageComponentSearchInfo
+        include Google::Apis::Core::Hashable
+      
+        # Whether the whole component matched the search.
+        # Corresponds to the JSON property `matchedSearch`
+        # @return [Boolean]
+        attr_accessor :matched_search
+        alias_method :matched_search?, :matched_search
+      
+        # Defines a text with descriptive text segments associated.
+        # Corresponds to the JSON property `titleTextWithDescription`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedTextWithDescription]
+        attr_accessor :title_text_with_description
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @matched_search = args[:matched_search] if args.key?(:matched_search)
+          @title_text_with_description = args[:title_text_with_description] if args.key?(:title_text_with_description)
+        end
+      end
+      
       # Information that references a Dynamite chat message. This is only used for
       # Activity Feed messages.
       class AppsDynamiteSharedMessageInfo
@@ -2352,6 +2386,81 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Defines a segment in a text.
+      class AppsDynamiteSharedTextSegment
+        include Google::Apis::Core::Hashable
+      
+        # Length of the segment in the text.
+        # Corresponds to the JSON property `length`
+        # @return [Fixnum]
+        attr_accessor :length
+      
+        # Start index (0-indexed and inclusive) of the segment in the text.
+        # Corresponds to the JSON property `startIndex`
+        # @return [Fixnum]
+        attr_accessor :start_index
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @length = args[:length] if args.key?(:length)
+          @start_index = args[:start_index] if args.key?(:start_index)
+        end
+      end
+      
+      # Defines text segments with description type associated.
+      class AppsDynamiteSharedTextSegmentsWithDescription
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `descriptionType`
+        # @return [String]
+        attr_accessor :description_type
+      
+        # 
+        # Corresponds to the JSON property `textSegment`
+        # @return [Array<Google::Apis::CloudsearchV1::AppsDynamiteSharedTextSegment>]
+        attr_accessor :text_segment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description_type = args[:description_type] if args.key?(:description_type)
+          @text_segment = args[:text_segment] if args.key?(:text_segment)
+        end
+      end
+      
+      # Defines a text with descriptive text segments associated.
+      class AppsDynamiteSharedTextWithDescription
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `textBody`
+        # @return [String]
+        attr_accessor :text_body
+      
+        # 
+        # Corresponds to the JSON property `textSegmentsWithDescription`
+        # @return [Array<Google::Apis::CloudsearchV1::AppsDynamiteSharedTextSegmentsWithDescription>]
+        attr_accessor :text_segments_with_description
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text_body = args[:text_body] if args.key?(:text_body)
+          @text_segments_with_description = args[:text_segments_with_description] if args.key?(:text_segments_with_description)
         end
       end
       
@@ -7373,11 +7482,41 @@ module Google
         end
       end
       
+      # 
+      class DlpAction
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `actionType`
+        # @return [String]
+        attr_accessor :action_type
+      
+        # The custom error message defined by the customer administrator.
+        # Corresponds to the JSON property `unsafeHtmlMessageBody`
+        # @return [String]
+        attr_accessor :unsafe_html_message_body
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action_type = args[:action_type] if args.key?(:action_type)
+          @unsafe_html_message_body = args[:unsafe_html_message_body] if args.key?(:unsafe_html_message_body)
+        end
+      end
+      
       # A summary of a DLP scan event. This is a summary and should contain the
       # minimum amount of data required to identify and process DLP scans. It is
       # written to Starcast and encoded & returned to the client on attachment upload.
       class DlpScanSummary
         include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `dlpAction`
+        # @return [Google::Apis::CloudsearchV1::DlpAction]
+        attr_accessor :dlp_action
       
         # The scan ID of the corresponding `@link DlpViolationScanRecord` in the `@link
         # EphemeralDlpScans` Spanner table. This can be used to fetch additional details
@@ -7410,6 +7549,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @dlp_action = args[:dlp_action] if args.key?(:dlp_action)
           @scan_id = args[:scan_id] if args.key?(:scan_id)
           @scan_not_applicable_for_context = args[:scan_not_applicable_for_context] if args.key?(:scan_not_applicable_for_context)
           @scan_outcome = args[:scan_outcome] if args.key?(:scan_outcome)
@@ -7975,6 +8115,11 @@ module Google
         attr_accessor :last_read_timestamp_secs
       
         # 
+        # Corresponds to the JSON property `memberCountScore`
+        # @return [Float]
+        attr_accessor :member_count_score
+      
+        # 
         # Corresponds to the JSON property `memberMetadataCount`
         # @return [Float]
         attr_accessor :member_metadata_count
@@ -8028,6 +8173,7 @@ module Google
           @joined_spaces_affinity_score = args[:joined_spaces_affinity_score] if args.key?(:joined_spaces_affinity_score)
           @last_message_posted_timestamp_secs = args[:last_message_posted_timestamp_secs] if args.key?(:last_message_posted_timestamp_secs)
           @last_read_timestamp_secs = args[:last_read_timestamp_secs] if args.key?(:last_read_timestamp_secs)
+          @member_count_score = args[:member_count_score] if args.key?(:member_count_score)
           @member_metadata_count = args[:member_metadata_count] if args.key?(:member_metadata_count)
           @message_score = args[:message_score] if args.key?(:message_score)
           @num_auc_contacts = args[:num_auc_contacts] if args.key?(:num_auc_contacts)
@@ -10457,7 +10603,7 @@ module Google
         end
       end
       
-      # Annotation metadata for an GsuiteIntegration artifact.
+      # Annotation metadata for a GsuiteIntegration artifact.
       class GsuiteIntegrationMetadata
         include Google::Apis::Core::Hashable
       
@@ -10905,7 +11051,12 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The User account in which the DirEntry was originally created. If name_space==
-        # GAIA, then it's the gaia_id of the user this id is referring to.
+        # GAIA, then it's the gaia_id of the user this id is referring to. This field
+        # should really be called the "bucket ID", not the creator ID. In some
+        # circumstances, such as copying a Google Docs file, a user can create an item
+        # in a different user's bucket, so it should not be relied upon for anything
+        # other than bucket location. To look up the requesting user who initially
+        # created item, use the `creator_id` DirEntry field instead.
         # Corresponds to the JSON property `creatorUserId`
         # @return [Fixnum]
         attr_accessor :creator_user_id

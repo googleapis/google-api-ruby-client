@@ -316,6 +316,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AppsDynamiteSharedMessageComponentSearchInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AppsDynamiteSharedMessageInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -431,6 +437,24 @@ module Google
       end
       
       class AppsDynamiteSharedTasksMessageIntegrationPayload
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppsDynamiteSharedTextSegment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppsDynamiteSharedTextSegmentsWithDescription
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppsDynamiteSharedTextWithDescription
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1229,6 +1253,12 @@ module Google
       end
       
       class Divider
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DlpAction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3591,6 +3621,8 @@ module Google
           property :card_capability_metadata, as: 'cardCapabilityMetadata', class: Google::Apis::CloudsearchV1::CardCapabilityMetadata, decorator: Google::Apis::CloudsearchV1::CardCapabilityMetadata::Representation
       
           property :chip_render_type, as: 'chipRenderType'
+          property :component_search_info, as: 'componentSearchInfo', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedMessageComponentSearchInfo, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedMessageComponentSearchInfo::Representation
+      
           property :consented_app_unfurl_metadata, as: 'consentedAppUnfurlMetadata', class: Google::Apis::CloudsearchV1::ConsentedAppUnfurlMetadata, decorator: Google::Apis::CloudsearchV1::ConsentedAppUnfurlMetadata::Representation
       
           property :custom_emoji_metadata, as: 'customEmojiMetadata', class: Google::Apis::CloudsearchV1::CustomEmojiMetadata, decorator: Google::Apis::CloudsearchV1::CustomEmojiMetadata::Representation
@@ -4023,6 +4055,15 @@ module Google
         end
       end
       
+      class AppsDynamiteSharedMessageComponentSearchInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :matched_search, as: 'matchedSearch'
+          property :title_text_with_description, as: 'titleTextWithDescription', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedTextWithDescription, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedTextWithDescription::Representation
+      
+        end
+      end
+      
       class AppsDynamiteSharedMessageInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4209,6 +4250,32 @@ module Google
       class AppsDynamiteSharedTasksMessageIntegrationPayload
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class AppsDynamiteSharedTextSegment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :length, as: 'length'
+          property :start_index, as: 'startIndex'
+        end
+      end
+      
+      class AppsDynamiteSharedTextSegmentsWithDescription
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description_type, as: 'descriptionType'
+          collection :text_segment, as: 'textSegment', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedTextSegment, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedTextSegment::Representation
+      
+        end
+      end
+      
+      class AppsDynamiteSharedTextWithDescription
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :text_body, as: 'textBody'
+          collection :text_segments_with_description, as: 'textSegmentsWithDescription', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedTextSegmentsWithDescription, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedTextSegmentsWithDescription::Representation
+      
         end
       end
       
@@ -5619,9 +5686,19 @@ module Google
         end
       end
       
+      class DlpAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action_type, as: 'actionType'
+          property :unsafe_html_message_body, as: 'unsafeHtmlMessageBody'
+        end
+      end
+      
       class DlpScanSummary
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :dlp_action, as: 'dlpAction', class: Google::Apis::CloudsearchV1::DlpAction, decorator: Google::Apis::CloudsearchV1::DlpAction::Representation
+      
           property :scan_id, as: 'scanId'
           property :scan_not_applicable_for_context, as: 'scanNotApplicableForContext'
           property :scan_outcome, as: 'scanOutcome'
@@ -5772,6 +5849,7 @@ module Google
           property :joined_spaces_affinity_score, as: 'joinedSpacesAffinityScore'
           property :last_message_posted_timestamp_secs, :numeric_string => true, as: 'lastMessagePostedTimestampSecs'
           property :last_read_timestamp_secs, :numeric_string => true, as: 'lastReadTimestampSecs'
+          property :member_count_score, as: 'memberCountScore'
           property :member_metadata_count, as: 'memberMetadataCount'
           property :message_score, as: 'messageScore'
           property :num_auc_contacts, :numeric_string => true, as: 'numAucContacts'
