@@ -1159,6 +1159,7 @@ module Google
           property :create_time, as: 'createTime'
           property :creator, as: 'creator', class: Google::Apis::DrivelabelsV2beta::GoogleAppsDriveLabelsV2betaUserInfo, decorator: Google::Apis::DrivelabelsV2beta::GoogleAppsDriveLabelsV2betaUserInfo::Representation
       
+          property :customer, as: 'customer'
           property :disable_time, as: 'disableTime'
           property :disabler, as: 'disabler', class: Google::Apis::DrivelabelsV2beta::GoogleAppsDriveLabelsV2betaUserInfo, decorator: Google::Apis::DrivelabelsV2beta::GoogleAppsDriveLabelsV2betaUserInfo::Representation
       
