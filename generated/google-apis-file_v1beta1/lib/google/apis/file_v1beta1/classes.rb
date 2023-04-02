@@ -793,7 +793,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_capacity_gb
       
-        # Output only. The max number of shares allowed.
+        # The max number of shares allowed.
         # Corresponds to the JSON property `maxShareCount`
         # @return [Fixnum]
         attr_accessor :max_share_count
