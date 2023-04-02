@@ -2336,6 +2336,68 @@ module Google
         end
       end
       
+      # Response message for listing report configs.
+      class ListReportConfigsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of report configs.
+        # Corresponds to the JSON property `reportConfigs`
+        # @return [Array<Google::Apis::MigrationcenterV1alpha1::ReportConfig>]
+        attr_accessor :report_configs
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @report_configs = args[:report_configs] if args.key?(:report_configs)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response message for listing Reports.
+      class ListReportsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of Reports.
+        # Corresponds to the JSON property `reports`
+        # @return [Array<Google::Apis::MigrationcenterV1alpha1::Report>]
+        attr_accessor :reports
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @reports = args[:reports] if args.key?(:reports)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # Response message for listing sources.
       class ListSourcesResponse
         include Google::Apis::Core::Hashable
@@ -2510,6 +2572,42 @@ module Google
           @fit = args[:fit] if args.key?(:fit)
           @gke_target = args[:gke_target] if args.key?(:gke_target)
           @vmware_engine_target = args[:vmware_engine_target] if args.key?(:vmware_engine_target)
+        end
+      end
+      
+      # Represents an amount of money with its currency type.
+      class Money
+        include Google::Apis::Core::Hashable
+      
+        # The three-letter currency code defined in ISO 4217.
+        # Corresponds to the JSON property `currencyCode`
+        # @return [String]
+        attr_accessor :currency_code
+      
+        # Number of nano (10^-9) units of the amount. The value must be between -999,999,
+        # 999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be
+        # positive or zero. If `units` is zero, `nanos` can be positive, zero, or
+        # negative. If `units` is negative, `nanos` must be negative or zero. For
+        # example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+        # Corresponds to the JSON property `nanos`
+        # @return [Fixnum]
+        attr_accessor :nanos
+      
+        # The whole units of the amount. For example if `currencyCode` is `"USD"`, then
+        # 1 unit is one US dollar.
+        # Corresponds to the JSON property `units`
+        # @return [Fixnum]
+        attr_accessor :units
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @currency_code = args[:currency_code] if args.key?(:currency_code)
+          @nanos = args[:nanos] if args.key?(:nanos)
+          @units = args[:units] if args.key?(:units)
         end
       end
       
@@ -3203,6 +3301,68 @@ module Google
         end
       end
       
+      # Report represents a point-in-time rendering of the ReportConfig results.
+      class Report
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Creation timestamp.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Free-text description.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # User-friendly display name. Maximum length is 63 characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. Name of resource.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Report creation state.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Describes the Summary view of a Report, which contains aggregated values for
+        # all the groups and preference sets included in this Report.
+        # Corresponds to the JSON property `summary`
+        # @return [Google::Apis::MigrationcenterV1alpha1::ReportSummary]
+        attr_accessor :summary
+      
+        # Report type.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Output only. Last update timestamp.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+          @summary = args[:summary] if args.key?(:summary)
+          @type = args[:type] if args.key?(:type)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # A response to a call to `ReportAssetFrame`.
       class ReportAssetFramesResponse
         include Google::Apis::Core::Hashable
@@ -3213,6 +3373,531 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # The groups and associated preference sets on which we can generate reports.
+      class ReportConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The timestamp when the resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Free-text description.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # User-friendly display name. Maximum length is 63 characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Collection of combinations of groups and preference sets.
+        # Corresponds to the JSON property `groupPreferencesetAssignments`
+        # @return [Array<Google::Apis::MigrationcenterV1alpha1::ReportConfigGroupPreferenceSetAssignment>]
+        attr_accessor :group_preferenceset_assignments
+      
+        # Output only. Name of resource.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The timestamp when the resource was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @group_preferenceset_assignments = args[:group_preferenceset_assignments] if args.key?(:group_preferenceset_assignments)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Represents a combination of a group with a preference set.
+      class ReportConfigGroupPreferenceSetAssignment
+        include Google::Apis::Core::Hashable
+      
+        # Name of the group.
+        # Corresponds to the JSON property `group`
+        # @return [String]
+        attr_accessor :group
+      
+        # Name of the Preference Set.
+        # Corresponds to the JSON property `preferenceSet`
+        # @return [String]
+        attr_accessor :preference_set
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @group = args[:group] if args.key?(:group)
+          @preference_set = args[:preference_set] if args.key?(:preference_set)
+        end
+      end
+      
+      # Describes the Summary view of a Report, which contains aggregated values for
+      # all the groups and preference sets included in this Report.
+      class ReportSummary
+        include Google::Apis::Core::Hashable
+      
+        # Aggregate statistics for a collection of assets.
+        # Corresponds to the JSON property `allAssetsStats`
+        # @return [Google::Apis::MigrationcenterV1alpha1::ReportSummaryAssetAggregateStats]
+        attr_accessor :all_assets_stats
+      
+        # Findings for each Group included in this report.
+        # Corresponds to the JSON property `groupFindings`
+        # @return [Array<Google::Apis::MigrationcenterV1alpha1::ReportSummaryGroupFinding>]
+        attr_accessor :group_findings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @all_assets_stats = args[:all_assets_stats] if args.key?(:all_assets_stats)
+          @group_findings = args[:group_findings] if args.key?(:group_findings)
+        end
+      end
+      
+      # Aggregate statistics for a collection of assets.
+      class ReportSummaryAssetAggregateStats
+        include Google::Apis::Core::Hashable
+      
+        # Describes a collection of data points rendered as a Chart.
+        # Corresponds to the JSON property `assetAge`
+        # @return [Google::Apis::MigrationcenterV1alpha1::ReportSummaryChartData]
+        attr_accessor :asset_age
+      
+        # A Histogram Chart shows a distribution of values into buckets, showing a count
+        # of values which fall into a bucket.
+        # Corresponds to the JSON property `coreCountHistogram`
+        # @return [Google::Apis::MigrationcenterV1alpha1::ReportSummaryHistogramChartData]
+        attr_accessor :core_count_histogram
+      
+        # A Histogram Chart shows a distribution of values into buckets, showing a count
+        # of values which fall into a bucket.
+        # Corresponds to the JSON property `memoryBytesHistogram`
+        # @return [Google::Apis::MigrationcenterV1alpha1::ReportSummaryHistogramChartData]
+        attr_accessor :memory_bytes_histogram
+      
+        # Describes a collection of data points rendered as a Chart.
+        # Corresponds to the JSON property `memoryUtilization`
+        # @return [Google::Apis::MigrationcenterV1alpha1::ReportSummaryChartData]
+        attr_accessor :memory_utilization
+      
+        # Utilization Chart is a specific type of visualization which displays a metric
+        # classified into "Used" and "Free" buckets.
+        # Corresponds to the JSON property `memoryUtilizationChart`
+        # @return [Google::Apis::MigrationcenterV1alpha1::ReportSummaryUtilizationChartData]
+        attr_accessor :memory_utilization_chart
+      
+        # Describes a collection of data points rendered as a Chart.
+        # Corresponds to the JSON property `operatingSystem`
+        # @return [Google::Apis::MigrationcenterV1alpha1::ReportSummaryChartData]
+        attr_accessor :operating_system
+      
+        # A Histogram Chart shows a distribution of values into buckets, showing a count
+        # of values which fall into a bucket.
+        # Corresponds to the JSON property `storageBytesHistogram`
+        # @return [Google::Apis::MigrationcenterV1alpha1::ReportSummaryHistogramChartData]
+        attr_accessor :storage_bytes_histogram
+      
+        # Describes a collection of data points rendered as a Chart.
+        # Corresponds to the JSON property `storageUtilization`
+        # @return [Google::Apis::MigrationcenterV1alpha1::ReportSummaryChartData]
+        attr_accessor :storage_utilization
+      
+        # Utilization Chart is a specific type of visualization which displays a metric
+        # classified into "Used" and "Free" buckets.
+        # Corresponds to the JSON property `storageUtilizationChart`
+        # @return [Google::Apis::MigrationcenterV1alpha1::ReportSummaryUtilizationChartData]
+        attr_accessor :storage_utilization_chart
+      
+        # Count of the number of unique assets in this collection.
+        # Corresponds to the JSON property `totalAssets`
+        # @return [Fixnum]
+        attr_accessor :total_assets
+      
+        # Sum of the CPU core count of all the assets in this collection.
+        # Corresponds to the JSON property `totalCores`
+        # @return [Fixnum]
+        attr_accessor :total_cores
+      
+        # Sum of the memory in bytes of all the assets in this collection.
+        # Corresponds to the JSON property `totalMemoryBytes`
+        # @return [Fixnum]
+        attr_accessor :total_memory_bytes
+      
+        # Sum of persistent storage in bytes of all the assets in this collection.
+        # Corresponds to the JSON property `totalStorageBytes`
+        # @return [Fixnum]
+        attr_accessor :total_storage_bytes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @asset_age = args[:asset_age] if args.key?(:asset_age)
+          @core_count_histogram = args[:core_count_histogram] if args.key?(:core_count_histogram)
+          @memory_bytes_histogram = args[:memory_bytes_histogram] if args.key?(:memory_bytes_histogram)
+          @memory_utilization = args[:memory_utilization] if args.key?(:memory_utilization)
+          @memory_utilization_chart = args[:memory_utilization_chart] if args.key?(:memory_utilization_chart)
+          @operating_system = args[:operating_system] if args.key?(:operating_system)
+          @storage_bytes_histogram = args[:storage_bytes_histogram] if args.key?(:storage_bytes_histogram)
+          @storage_utilization = args[:storage_utilization] if args.key?(:storage_utilization)
+          @storage_utilization_chart = args[:storage_utilization_chart] if args.key?(:storage_utilization_chart)
+          @total_assets = args[:total_assets] if args.key?(:total_assets)
+          @total_cores = args[:total_cores] if args.key?(:total_cores)
+          @total_memory_bytes = args[:total_memory_bytes] if args.key?(:total_memory_bytes)
+          @total_storage_bytes = args[:total_storage_bytes] if args.key?(:total_storage_bytes)
+        end
+      end
+      
+      # Describes a collection of data points rendered as a Chart.
+      class ReportSummaryChartData
+        include Google::Apis::Core::Hashable
+      
+        # Each data point in the chart is represented as a name-value pair with the name
+        # being the x-axis label, and the value being the y-axis value.
+        # Corresponds to the JSON property `dataPoints`
+        # @return [Array<Google::Apis::MigrationcenterV1alpha1::ReportSummaryChartDataDataPoint>]
+        attr_accessor :data_points
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_points = args[:data_points] if args.key?(:data_points)
+        end
+      end
+      
+      # Describes a single data point in the Chart.
+      class ReportSummaryChartDataDataPoint
+        include Google::Apis::Core::Hashable
+      
+        # The X-axis label for this data point.
+        # Corresponds to the JSON property `label`
+        # @return [String]
+        attr_accessor :label
+      
+        # The Y-axis value for this data point.
+        # Corresponds to the JSON property `value`
+        # @return [Float]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @label = args[:label] if args.key?(:label)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Summary Findings for a specific Group.
+      class ReportSummaryGroupFinding
+        include Google::Apis::Core::Hashable
+      
+        # Aggregate statistics for a collection of assets.
+        # Corresponds to the JSON property `assetAggregateStats`
+        # @return [Google::Apis::MigrationcenterV1alpha1::ReportSummaryAssetAggregateStats]
+        attr_accessor :asset_aggregate_stats
+      
+        # Description for the Group.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Display Name for the Group.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Count of the number of assets in this group which are also included in another
+        # group within the same report.
+        # Corresponds to the JSON property `overlappingAssetCount`
+        # @return [Fixnum]
+        attr_accessor :overlapping_asset_count
+      
+        # Findings for each of the PreferenceSets for this group.
+        # Corresponds to the JSON property `preferenceSetFindings`
+        # @return [Array<Google::Apis::MigrationcenterV1alpha1::ReportSummaryGroupPreferenceSetFinding>]
+        attr_accessor :preference_set_findings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @asset_aggregate_stats = args[:asset_aggregate_stats] if args.key?(:asset_aggregate_stats)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @overlapping_asset_count = args[:overlapping_asset_count] if args.key?(:overlapping_asset_count)
+          @preference_set_findings = args[:preference_set_findings] if args.key?(:preference_set_findings)
+        end
+      end
+      
+      # Summary Findings for a specific Group/PreferenceSet combination.
+      class ReportSummaryGroupPreferenceSetFinding
+        include Google::Apis::Core::Hashable
+      
+        # Description for the Preference Set.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Display Name of the Preference Set
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # A set of findings that applies to assets of type Virtual/Physical Machine.
+        # Corresponds to the JSON property `machineFinding`
+        # @return [Google::Apis::MigrationcenterV1alpha1::ReportSummaryMachineFinding]
+        attr_accessor :machine_finding
+      
+        # VirtualMachinePreferences enables you to create sets of assumptions, for
+        # example, a geographical location and pricing track, for your migrated virtual
+        # machines. The set of preferences influence recommendations for migrating
+        # virtual machine assets.
+        # Corresponds to the JSON property `machinePreferences`
+        # @return [Google::Apis::MigrationcenterV1alpha1::VirtualMachinePreferences]
+        attr_accessor :machine_preferences
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `monthlyCostCompute`
+        # @return [Google::Apis::MigrationcenterV1alpha1::Money]
+        attr_accessor :monthly_cost_compute
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `monthlyCostNetworkEgress`
+        # @return [Google::Apis::MigrationcenterV1alpha1::Money]
+        attr_accessor :monthly_cost_network_egress
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `monthlyCostOsLicense`
+        # @return [Google::Apis::MigrationcenterV1alpha1::Money]
+        attr_accessor :monthly_cost_os_license
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `monthlyCostOther`
+        # @return [Google::Apis::MigrationcenterV1alpha1::Money]
+        attr_accessor :monthly_cost_other
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `monthlyCostStorage`
+        # @return [Google::Apis::MigrationcenterV1alpha1::Money]
+        attr_accessor :monthly_cost_storage
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `monthlyCostTotal`
+        # @return [Google::Apis::MigrationcenterV1alpha1::Money]
+        attr_accessor :monthly_cost_total
+      
+        # Target region for this Preference Set
+        # Corresponds to the JSON property `preferredRegion`
+        # @return [String]
+        attr_accessor :preferred_region
+      
+        # Text describing the pricing track specified for this Preference Set
+        # Corresponds to the JSON property `pricingTrack`
+        # @return [String]
+        attr_accessor :pricing_track
+      
+        # Text describing the business priority specified for this Preference Set
+        # Corresponds to the JSON property `topPriority`
+        # @return [String]
+        attr_accessor :top_priority
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @machine_finding = args[:machine_finding] if args.key?(:machine_finding)
+          @machine_preferences = args[:machine_preferences] if args.key?(:machine_preferences)
+          @monthly_cost_compute = args[:monthly_cost_compute] if args.key?(:monthly_cost_compute)
+          @monthly_cost_network_egress = args[:monthly_cost_network_egress] if args.key?(:monthly_cost_network_egress)
+          @monthly_cost_os_license = args[:monthly_cost_os_license] if args.key?(:monthly_cost_os_license)
+          @monthly_cost_other = args[:monthly_cost_other] if args.key?(:monthly_cost_other)
+          @monthly_cost_storage = args[:monthly_cost_storage] if args.key?(:monthly_cost_storage)
+          @monthly_cost_total = args[:monthly_cost_total] if args.key?(:monthly_cost_total)
+          @preferred_region = args[:preferred_region] if args.key?(:preferred_region)
+          @pricing_track = args[:pricing_track] if args.key?(:pricing_track)
+          @top_priority = args[:top_priority] if args.key?(:top_priority)
+        end
+      end
+      
+      # A Histogram Chart shows a distribution of values into buckets, showing a count
+      # of values which fall into a bucket.
+      class ReportSummaryHistogramChartData
+        include Google::Apis::Core::Hashable
+      
+        # Buckets in the histogram. There will be `n+1` buckets matching `n` lower
+        # bounds in the request. The first bucket will be from -infinity to the first
+        # bound. Subsequent buckets will be between one bound and the next. The final
+        # bucket will be from the final bound to infinity.
+        # Corresponds to the JSON property `buckets`
+        # @return [Array<Google::Apis::MigrationcenterV1alpha1::ReportSummaryHistogramChartDataBucket>]
+        attr_accessor :buckets
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @buckets = args[:buckets] if args.key?(:buckets)
+        end
+      end
+      
+      # A histogram bucket with a lower and upper bound, and a count of items with a
+      # field value between those bounds. The lower bound is inclusive and the upper
+      # bound is exclusive. Lower bound may be -infinity and upper bound may be
+      # infinity.
+      class ReportSummaryHistogramChartDataBucket
+        include Google::Apis::Core::Hashable
+      
+        # Count of items in the bucket.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        # Lower bound - inclusive.
+        # Corresponds to the JSON property `lowerBound`
+        # @return [Fixnum]
+        attr_accessor :lower_bound
+      
+        # Upper bound - exclusive.
+        # Corresponds to the JSON property `upperBound`
+        # @return [Fixnum]
+        attr_accessor :upper_bound
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @count = args[:count] if args.key?(:count)
+          @lower_bound = args[:lower_bound] if args.key?(:lower_bound)
+          @upper_bound = args[:upper_bound] if args.key?(:upper_bound)
+        end
+      end
+      
+      # A set of findings that applies to assets of type Virtual/Physical Machine.
+      class ReportSummaryMachineFinding
+        include Google::Apis::Core::Hashable
+      
+        # Count of assets which were allocated.
+        # Corresponds to the JSON property `allocatedAssetCount`
+        # @return [Fixnum]
+        attr_accessor :allocated_asset_count
+      
+        # Set of disk types allocated to assets.
+        # Corresponds to the JSON property `allocatedDiskTypes`
+        # @return [Array<String>]
+        attr_accessor :allocated_disk_types
+      
+        # Set of regions in which the assets were allocated.
+        # Corresponds to the JSON property `allocatedRegions`
+        # @return [Array<String>]
+        attr_accessor :allocated_regions
+      
+        # Distribution of assets based on the Machine Series.
+        # Corresponds to the JSON property `machineSeriesAllocations`
+        # @return [Array<Google::Apis::MigrationcenterV1alpha1::ReportSummaryMachineSeriesAllocation>]
+        attr_accessor :machine_series_allocations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allocated_asset_count = args[:allocated_asset_count] if args.key?(:allocated_asset_count)
+          @allocated_disk_types = args[:allocated_disk_types] if args.key?(:allocated_disk_types)
+          @allocated_regions = args[:allocated_regions] if args.key?(:allocated_regions)
+          @machine_series_allocations = args[:machine_series_allocations] if args.key?(:machine_series_allocations)
+        end
+      end
+      
+      # Represents a data point tracking the count of assets allocated for a specific
+      # Machine Series.
+      class ReportSummaryMachineSeriesAllocation
+        include Google::Apis::Core::Hashable
+      
+        # Count of assets allocated to this machine series.
+        # Corresponds to the JSON property `allocatedAssetCount`
+        # @return [Fixnum]
+        attr_accessor :allocated_asset_count
+      
+        # A Compute Engine machine series.
+        # Corresponds to the JSON property `machineSeries`
+        # @return [Google::Apis::MigrationcenterV1alpha1::MachineSeries]
+        attr_accessor :machine_series
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allocated_asset_count = args[:allocated_asset_count] if args.key?(:allocated_asset_count)
+          @machine_series = args[:machine_series] if args.key?(:machine_series)
+        end
+      end
+      
+      # Utilization Chart is a specific type of visualization which displays a metric
+      # classified into "Used" and "Free" buckets.
+      class ReportSummaryUtilizationChartData
+        include Google::Apis::Core::Hashable
+      
+        # Aggregate value which falls into the "Free" bucket.
+        # Corresponds to the JSON property `free`
+        # @return [Fixnum]
+        attr_accessor :free
+      
+        # Aggregate value which falls into the "Used" bucket.
+        # Corresponds to the JSON property `used`
+        # @return [Fixnum]
+        attr_accessor :used
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @free = args[:free] if args.key?(:free)
+          @used = args[:used] if args.key?(:used)
         end
       end
       
