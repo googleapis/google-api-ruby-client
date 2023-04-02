@@ -277,6 +277,31 @@ module Google
         end
       end
       
+      # 
+      class Binary
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # 
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
       # Details of a build occurrence.
       class BuildOccurrence
         include Google::Apis::Core::Hashable
@@ -2016,6 +2041,15 @@ module Google
         # @return [String]
         attr_accessor :architecture
       
+        # The binary package. This is significant when the source is different than the
+        # binary itself. Historically if they've differed, we've stored the name of the
+        # source and its version in the package/version fields, but we should also store
+        # the binary package info, as that's what's actually installed. See https://b.
+        # corp.google.com/issues/175908657#comment15
+        # Corresponds to the JSON property `binary`
+        # @return [Google::Apis::OndemandscanningV1::Binary]
+        attr_accessor :binary
+      
         # The cpe_uri in [cpe format] (https://cpe.mitre.org/specification/) in which
         # the vulnerability may manifest. Examples include distro or storage location
         # for vulnerable jar.
@@ -2090,6 +2124,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @architecture = args[:architecture] if args.key?(:architecture)
+          @binary = args[:binary] if args.key?(:binary)
           @cpe_uri = args[:cpe_uri] if args.key?(:cpe_uri)
           @dependency_chain = args[:dependency_chain] if args.key?(:dependency_chain)
           @file_location = args[:file_location] if args.key?(:file_location)
