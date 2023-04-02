@@ -34,7 +34,7 @@ module Google
         # @return [Google::Apis::CloudprofilerV2::Deployment]
         attr_accessor :deployment
       
-        # Required. One or more profile types that the agent is capable of providing.
+        # One or more profile types that the agent is capable of providing.
         # Corresponds to the JSON property `profileType`
         # @return [Array<String>]
         attr_accessor :profile_type
