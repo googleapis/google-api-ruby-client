@@ -53,6 +53,12 @@ module Google
       class AlloyDbSettings
         include Google::Apis::Core::Hashable
       
+        # EncryptionConfig describes the encryption config of a cluster that is
+        # encrypted with a CMEK (customer-managed encryption key).
+        # Corresponds to the JSON property `encryptionConfig`
+        # @return [Google::Apis::DatamigrationV1::EncryptionConfig]
+        attr_accessor :encryption_config
+      
         # The username/password for a database user. Used for specifying initial users
         # at cluster creation time.
         # Corresponds to the JSON property `initialUser`
@@ -85,6 +91,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
           @initial_user = args[:initial_user] if args.key?(:initial_user)
           @labels = args[:labels] if args.key?(:labels)
           @primary_instance_settings = args[:primary_instance_settings] if args.key?(:primary_instance_settings)
@@ -1302,6 +1309,28 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # EncryptionConfig describes the encryption config of a cluster that is
+      # encrypted with a CMEK (customer-managed encryption key).
+      class EncryptionConfig
+        include Google::Apis::Core::Hashable
+      
+        # The fully-qualified resource name of the KMS key. Each Cloud KMS key is
+        # regionalized and has the following format: projects/[PROJECT]/locations/[
+        # REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME]
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
         end
       end
       
