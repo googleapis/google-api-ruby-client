@@ -3953,6 +3953,12 @@ module Google
         attr_accessor :resize_unit_count
         alias_method :resize_unit_count?, :resize_unit_count
       
+        # Output only. The offer resource name that the entitlement will renew on at the
+        # end date. Takes the form: accounts/`account_id`/offers/`offer_id`.
+        # Corresponds to the JSON property `scheduledRenewalOffer`
+        # @return [String]
+        attr_accessor :scheduled_renewal_offer
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3965,6 +3971,7 @@ module Google
           @payment_option = args[:payment_option] if args.key?(:payment_option)
           @payment_plan = args[:payment_plan] if args.key?(:payment_plan)
           @resize_unit_count = args[:resize_unit_count] if args.key?(:resize_unit_count)
+          @scheduled_renewal_offer = args[:scheduled_renewal_offer] if args.key?(:scheduled_renewal_offer)
         end
       end
       
