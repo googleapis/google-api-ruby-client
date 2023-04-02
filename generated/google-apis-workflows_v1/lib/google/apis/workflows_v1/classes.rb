@@ -315,6 +315,13 @@ module Google
       class Workflow
         include Google::Apis::Core::Hashable
       
+        # Optional. Describes the level of platform logging to apply to calls and call
+        # responses during executions of this workflow. If both the workflow and the
+        # execution specify a logging level, the execution level takes precedence.
+        # Corresponds to the JSON property `callLogLevel`
+        # @return [String]
+        attr_accessor :call_log_level
+      
         # Output only. The timestamp for when the workflow was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -388,6 +395,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @call_log_level = args[:call_log_level] if args.key?(:call_log_level)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @labels = args[:labels] if args.key?(:labels)
