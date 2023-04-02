@@ -742,6 +742,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SbomReferenceNote
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SbomReferenceOccurrence
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SbomReferenceIntotoPayload
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SbomReferenceIntotoPredicate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SetIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -773,6 +797,12 @@ module Google
       end
       
       class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Subject
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1993,6 +2023,8 @@ module Google
       
           property :sbom, as: 'sbom', class: Google::Apis::ContaineranalysisV1beta1::DocumentNote, decorator: Google::Apis::ContaineranalysisV1beta1::DocumentNote::Representation
       
+          property :sbom_reference, as: 'sbomReference', class: Google::Apis::ContaineranalysisV1beta1::SbomReferenceNote, decorator: Google::Apis::ContaineranalysisV1beta1::SbomReferenceNote::Representation
+      
           property :short_description, as: 'shortDescription'
           property :spdx_file, as: 'spdxFile', class: Google::Apis::ContaineranalysisV1beta1::FileNote, decorator: Google::Apis::ContaineranalysisV1beta1::FileNote::Representation
       
@@ -2035,6 +2067,8 @@ module Google
           property :resource, as: 'resource', class: Google::Apis::ContaineranalysisV1beta1::Resource, decorator: Google::Apis::ContaineranalysisV1beta1::Resource::Representation
       
           property :sbom, as: 'sbom', class: Google::Apis::ContaineranalysisV1beta1::DocumentOccurrence, decorator: Google::Apis::ContaineranalysisV1beta1::DocumentOccurrence::Representation
+      
+          property :sbom_reference, as: 'sbomReference', class: Google::Apis::ContaineranalysisV1beta1::SbomReferenceOccurrence, decorator: Google::Apis::ContaineranalysisV1beta1::SbomReferenceOccurrence::Representation
       
           property :spdx_file, as: 'spdxFile', class: Google::Apis::ContaineranalysisV1beta1::FileOccurrence, decorator: Google::Apis::ContaineranalysisV1beta1::FileOccurrence::Representation
       
@@ -2223,6 +2257,47 @@ module Google
         end
       end
       
+      class SbomReferenceNote
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :format, as: 'format'
+          property :version, as: 'version'
+        end
+      end
+      
+      class SbomReferenceOccurrence
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :payload, as: 'payload', class: Google::Apis::ContaineranalysisV1beta1::SbomReferenceIntotoPayload, decorator: Google::Apis::ContaineranalysisV1beta1::SbomReferenceIntotoPayload::Representation
+      
+          property :payload_type, as: 'payloadType'
+          collection :signatures, as: 'signatures', class: Google::Apis::ContaineranalysisV1beta1::EnvelopeSignature, decorator: Google::Apis::ContaineranalysisV1beta1::EnvelopeSignature::Representation
+      
+        end
+      end
+      
+      class SbomReferenceIntotoPayload
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :_type, as: '_type'
+          property :predicate, as: 'predicate', class: Google::Apis::ContaineranalysisV1beta1::SbomReferenceIntotoPredicate, decorator: Google::Apis::ContaineranalysisV1beta1::SbomReferenceIntotoPredicate::Representation
+      
+          property :predicate_type, as: 'predicateType'
+          collection :subject, as: 'subject', class: Google::Apis::ContaineranalysisV1beta1::Subject, decorator: Google::Apis::ContaineranalysisV1beta1::Subject::Representation
+      
+        end
+      end
+      
+      class SbomReferenceIntotoPredicate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :digest, as: 'digest'
+          property :location, as: 'location'
+          property :mime_type, as: 'mimeType'
+          property :referrer_id, as: 'referrerId'
+        end
+      end
+      
       class SetIamPolicyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2281,6 +2356,14 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class Subject
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :digest, as: 'digest'
+          property :name, as: 'name'
         end
       end
       
