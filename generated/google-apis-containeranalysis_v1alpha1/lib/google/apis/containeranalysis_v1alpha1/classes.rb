@@ -4584,6 +4584,11 @@ module Google
         # @return [Google::Apis::ContaineranalysisV1alpha1::DocumentNote]
         attr_accessor :sbom
       
+        # The note representing an SBOM reference.
+        # Corresponds to the JSON property `sbomReference`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::SbomReferenceNote]
+        attr_accessor :sbom_reference
+      
         # A one sentence description of this `Note`.
         # Corresponds to the JSON property `shortDescription`
         # @return [String]
@@ -4654,6 +4659,7 @@ module Google
           @package = args[:package] if args.key?(:package)
           @related_url = args[:related_url] if args.key?(:related_url)
           @sbom = args[:sbom] if args.key?(:sbom)
+          @sbom_reference = args[:sbom_reference] if args.key?(:sbom_reference)
           @short_description = args[:short_description] if args.key?(:short_description)
           @spdx_file = args[:spdx_file] if args.key?(:spdx_file)
           @spdx_package = args[:spdx_package] if args.key?(:spdx_package)
@@ -4771,6 +4777,13 @@ module Google
         # @return [Google::Apis::ContaineranalysisV1alpha1::DocumentOccurrence]
         attr_accessor :sbom
       
+        # The occurrence representing an SBOM reference as applied to a specific
+        # resource. The occurrence follows the DSSE specification. See https://github.
+        # com/secure-systems-lab/dsse/blob/master/envelope.md for more details.
+        # Corresponds to the JSON property `sbomReference`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::SbomReferenceOccurrence]
+        attr_accessor :sbom_reference
+      
         # FileOccurrence represents an SPDX File Information section: https://spdx.
         # github.io/spdx-spec/4-file-information/
         # Corresponds to the JSON property `spdxFile`
@@ -4830,6 +4843,7 @@ module Google
           @resource = args[:resource] if args.key?(:resource)
           @resource_url = args[:resource_url] if args.key?(:resource_url)
           @sbom = args[:sbom] if args.key?(:sbom)
+          @sbom_reference = args[:sbom_reference] if args.key?(:sbom_reference)
           @spdx_file = args[:spdx_file] if args.key?(:spdx_file)
           @spdx_package = args[:spdx_package] if args.key?(:spdx_package)
           @spdx_relationship = args[:spdx_relationship] if args.key?(:spdx_relationship)
@@ -5713,6 +5727,145 @@ module Google
           @content_hash = args[:content_hash] if args.key?(:content_hash)
           @name = args[:name] if args.key?(:name)
           @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # The note representing an SBOM reference.
+      class SbomReferenceNote
+        include Google::Apis::Core::Hashable
+      
+        # The format that SBOM takes. E.g. may be spdx, cyclonedx, etc...
+        # Corresponds to the JSON property `format`
+        # @return [String]
+        attr_accessor :format
+      
+        # The version of the format that the SBOM takes. E.g. if the format is spdx, the
+        # version may be 2.3.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @format = args[:format] if args.key?(:format)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # The occurrence representing an SBOM reference as applied to a specific
+      # resource. The occurrence follows the DSSE specification. See https://github.
+      # com/secure-systems-lab/dsse/blob/master/envelope.md for more details.
+      class SbomReferenceOccurrence
+        include Google::Apis::Core::Hashable
+      
+        # The actual payload that contains the SBOM Reference data. The payload follows
+        # the intoto statement specification. See https://github.com/in-toto/attestation/
+        # blob/main/spec/v1.0/statement.md for more details.
+        # Corresponds to the JSON property `payload`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::SbomReferenceIntotoPayload]
+        attr_accessor :payload
+      
+        # The kind of payload that SbomReferenceIntotoPayload takes. Since it's in the
+        # intoto format, this value is expected to be 'application/vnd.in-toto+json'.
+        # Corresponds to the JSON property `payloadType`
+        # @return [String]
+        attr_accessor :payload_type
+      
+        # The signatures over the payload.
+        # Corresponds to the JSON property `signatures`
+        # @return [Array<Google::Apis::ContaineranalysisV1alpha1::EnvelopeSignature>]
+        attr_accessor :signatures
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @payload = args[:payload] if args.key?(:payload)
+          @payload_type = args[:payload_type] if args.key?(:payload_type)
+          @signatures = args[:signatures] if args.key?(:signatures)
+        end
+      end
+      
+      # The actual payload that contains the SBOM Reference data. The payload follows
+      # the intoto statement specification. See https://github.com/in-toto/attestation/
+      # blob/main/spec/v1.0/statement.md for more details.
+      class SbomReferenceIntotoPayload
+        include Google::Apis::Core::Hashable
+      
+        # Identifier for the schema of the Statement.
+        # Corresponds to the JSON property `_type`
+        # @return [String]
+        attr_accessor :_type
+      
+        # A predicate which describes the SBOM being referenced.
+        # Corresponds to the JSON property `predicate`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::SbomReferenceIntotoPredicate]
+        attr_accessor :predicate
+      
+        # URI identifying the type of the Predicate.
+        # Corresponds to the JSON property `predicateType`
+        # @return [String]
+        attr_accessor :predicate_type
+      
+        # Set of software artifacts that the attestation applies to. Each element
+        # represents a single software artifact.
+        # Corresponds to the JSON property `subject`
+        # @return [Array<Google::Apis::ContaineranalysisV1alpha1::Subject>]
+        attr_accessor :subject
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @_type = args[:_type] if args.key?(:_type)
+          @predicate = args[:predicate] if args.key?(:predicate)
+          @predicate_type = args[:predicate_type] if args.key?(:predicate_type)
+          @subject = args[:subject] if args.key?(:subject)
+        end
+      end
+      
+      # A predicate which describes the SBOM being referenced.
+      class SbomReferenceIntotoPredicate
+        include Google::Apis::Core::Hashable
+      
+        # A map of algorithm to digest of the contents of the SBOM.
+        # Corresponds to the JSON property `digest`
+        # @return [Hash<String,String>]
+        attr_accessor :digest
+      
+        # The location of the SBOM.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # The mime type of the SBOM.
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        # The person or system referring this predicate to the consumer.
+        # Corresponds to the JSON property `referrerId`
+        # @return [String]
+        attr_accessor :referrer_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @digest = args[:digest] if args.key?(:digest)
+          @location = args[:location] if args.key?(:location)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+          @referrer_id = args[:referrer_id] if args.key?(:referrer_id)
         end
       end
       
