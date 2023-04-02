@@ -113,33 +113,35 @@ module Google
       # were used as normalization value for the `anrRate` and `userPerceivedAnrRate`
       # metrics. A user is counted in this metric if they used the app in the
       # foreground during the aggregation period. Care must be taken not to aggregate
-      # this count further, as it may result in users being counted multiple times. **
-      # Supported dimensions:** * `apiLevel` (string): the API level of Android that
-      # was running on the user's device. * `versionCode` (int64): version of the app
-      # that was running on the user's device. * `deviceModel` (string): unique
-      # identifier of the user's device model. * `deviceType` (string): the type (also
-      # known as form factor) of the user's device. * `countryCode` (string): the
-      # country or region of the user's device based on their IP address, represented
-      # as a 2-letter ISO-3166 code (e.g. US for the United States). * `
-      # deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.)
-      # . * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g.
-      # , Samsung. [Reference](https://developer.android.com/reference/android/os/
-      # Build#SOC_MANUFACTURER) * `deviceSocModel` (string): Model of the device's
-      # primary system-on-chip, e.g., "Exynos 2100". [Reference](https://developer.
-      # android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string):
-      # Make of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model
-      # of the device's CPU, e.g., "Kryo 240". * `deviceGpuMake` (string): Make of the
-      # device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the device's
-      # GPU, e.g., Mali. * `deviceGpuVersion` (string): Version of the device's GPU, e.
-      # g., T750. * `deviceVulkanVersion` (string): Vulkan version of the device, e.g.,
-      # "4198400". * `deviceGlEsVersion` (string): OpenGL ES version of the device, e.
-      # g., "196610". * `deviceScreenSize` (string): Screen size of the device, e.g.,
-      # NORMAL, LARGE. * `deviceScreenDpi` (string): Screen density of the device, e.g.
-      # , mdpi, hdpi. **Required permissions**: to access this resource, the calling
-      # user needs the _View app information (read-only)_ permission for the app. **
-      # Related metric sets:** * vitals.errors contains unnormalized version (absolute
-      # counts) of crashes. * vitals.errors contains normalized metrics about crashes,
-      # another stability metric.
+      # this count further, as it may result in users being counted multiple times.
+      # The value is rounded to the nearest multiple of 10, 100, 1,000 or 1,000,000,
+      # depending on the magnitude of the value. **Supported dimensions:** * `apiLevel`
+      # (string): the API level of Android that was running on the user's device. * `
+      # versionCode` (int64): version of the app that was running on the user's device.
+      # * `deviceModel` (string): unique identifier of the user's device model. * `
+      # deviceType` (string): the type (also known as form factor) of the user's
+      # device. * `countryCode` (string): the country or region of the user's device
+      # based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US
+      # for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB,
+      # in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's
+      # primary system-on-chip, e.g., Samsung. [Reference](https://developer.android.
+      # com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel` (string):
+      # Model of the device's primary system-on-chip, e.g., "Exynos 2100". [Reference](
+      # https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `
+      # deviceCpuMake` (string): Make of the device's CPU, e.g., Qualcomm. * `
+      # deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". * `
+      # deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `
+      # deviceGpuModel` (string): Model of the device's GPU, e.g., Mali. * `
+      # deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. * `
+      # deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". *
+      # `deviceGlEsVersion` (string): OpenGL ES version of the device, e.g., "196610".
+      # * `deviceScreenSize` (string): Screen size of the device, e.g., NORMAL, LARGE.
+      # * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi.
+      # **Required permissions**: to access this resource, the calling user needs the
+      # _View app information (read-only)_ permission for the app. **Related metric
+      # sets:** * vitals.errors contains unnormalized version (absolute counts) of
+      # crashes. * vitals.errors contains normalized metrics about crashes, another
+      # stability metric.
       class GooglePlayDeveloperReportingV1beta1AnrRateMetricSet
         include Google::Apis::Core::Hashable
       
@@ -195,33 +197,34 @@ module Google
       # used the app actively during the aggregation period. An app is considered to
       # be in active use if it is displaying any activity or executing any foreground
       # service. Care must be taken not to aggregate this count further, as it may
-      # result in users being counted multiple times. **Supported dimensions:** * `
-      # apiLevel` (string): the API level of Android that was running on the user's
-      # device. * `versionCode` (int64): version of the app that was running on the
-      # user's device. * `deviceModel` (string): unique identifier of the user's
-      # device model. * `deviceType` (string): the type (also known as form factor) of
-      # the user's device. * `countryCode` (string): the country or region of the user'
-      # s device based on their IP address, represented as a 2-letter ISO-3166 code (e.
-      # g. US for the United States). * `deviceRamBucket` (int64): RAM of the device,
-      # in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the
-      # device's primary system-on-chip, e.g., Samsung. [Reference](https://developer.
-      # android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel` (
-      # string): Model of the device's primary system-on-chip, e.g., "Exynos 2100". [
-      # Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL)
-      # * `deviceCpuMake` (string): Make of the device's CPU, e.g., Qualcomm. * `
-      # deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". * `
-      # deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `
-      # deviceGpuModel` (string): Model of the device's GPU, e.g., Mali. * `
-      # deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. * `
-      # deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". *
-      # `deviceGlEsVersion` (string): OpenGL ES version of the device, e.g., "196610".
-      # * `deviceScreenSize` (string): Screen size of the device, e.g., NORMAL, LARGE.
-      # * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi.
-      # **Required permissions**: to access this resource, the calling user needs the
-      # _View app information (read-only)_ permission for the app. **Related metric
-      # sets:** * vitals.errors contains unnormalized version (absolute counts) of
-      # crashes. * vitals.errors contains normalized metrics about ANRs, another
-      # stability metric.
+      # result in users being counted multiple times. The value is rounded to the
+      # nearest multiple of 10, 100, 1,000 or 1,000,000, depending on the magnitude of
+      # the value. **Supported dimensions:** * `apiLevel` (string): the API level of
+      # Android that was running on the user's device. * `versionCode` (int64):
+      # version of the app that was running on the user's device. * `deviceModel` (
+      # string): unique identifier of the user's device model. * `deviceType` (string):
+      # the type (also known as form factor) of the user's device. * `countryCode` (
+      # string): the country or region of the user's device based on their IP address,
+      # represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `
+      # deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.)
+      # . * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g.
+      # , Samsung. [Reference](https://developer.android.com/reference/android/os/
+      # Build#SOC_MANUFACTURER) * `deviceSocModel` (string): Model of the device's
+      # primary system-on-chip, e.g., "Exynos 2100". [Reference](https://developer.
+      # android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string):
+      # Make of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model
+      # of the device's CPU, e.g., "Kryo 240". * `deviceGpuMake` (string): Make of the
+      # device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the device's
+      # GPU, e.g., Mali. * `deviceGpuVersion` (string): Version of the device's GPU, e.
+      # g., T750. * `deviceVulkanVersion` (string): Vulkan version of the device, e.g.,
+      # "4198400". * `deviceGlEsVersion` (string): OpenGL ES version of the device, e.
+      # g., "196610". * `deviceScreenSize` (string): Screen size of the device, e.g.,
+      # NORMAL, LARGE. * `deviceScreenDpi` (string): Screen density of the device, e.g.
+      # , mdpi, hdpi. **Required permissions**: to access this resource, the calling
+      # user needs the _View app information (read-only)_ permission for the app. **
+      # Related metric sets:** * vitals.errors contains unnormalized version (absolute
+      # counts) of crashes. * vitals.errors contains normalized metrics about ANRs,
+      # another stability metric.
       class GooglePlayDeveloperReportingV1beta1CrashRateMetricSet
         include Google::Apis::Core::Hashable
       
@@ -246,6 +249,39 @@ module Google
         def update!(**args)
           @freshness_info = args[:freshness_info] if args.key?(:freshness_info)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Represents the confidence interval of a metric.
+      class GooglePlayDeveloperReportingV1beta1DecimalConfidenceInterval
+        include Google::Apis::Core::Hashable
+      
+        # A representation of a decimal value, such as 2.5. Clients may convert values
+        # into language-native decimal formats, such as Java's BigDecimal or Python's
+        # decimal.Decimal. [BigDecimal]: https://docs.oracle.com/en/java/javase/11/docs/
+        # api/java.base/java/math/BigDecimal.html [decimal.Decimal]: https://docs.python.
+        # org/3/library/decimal.html
+        # Corresponds to the JSON property `lowerBound`
+        # @return [Google::Apis::PlaydeveloperreportingV1beta1::GoogleTypeDecimal]
+        attr_accessor :lower_bound
+      
+        # A representation of a decimal value, such as 2.5. Clients may convert values
+        # into language-native decimal formats, such as Java's BigDecimal or Python's
+        # decimal.Decimal. [BigDecimal]: https://docs.oracle.com/en/java/javase/11/docs/
+        # api/java.base/java/math/BigDecimal.html [decimal.Decimal]: https://docs.python.
+        # org/3/library/decimal.html
+        # Corresponds to the JSON property `upperBound`
+        # @return [Google::Apis::PlaydeveloperreportingV1beta1::GoogleTypeDecimal]
+        attr_accessor :upper_bound
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @lower_bound = args[:lower_bound] if args.key?(:lower_bound)
+          @upper_bound = args[:upper_bound] if args.key?(:upper_bound)
         end
       end
       
@@ -298,19 +334,20 @@ module Google
       # individual error reports that have been received for an app. * `distinctUsers`
       # (`google.type.Decimal`): Count of distinct users for which reports have been
       # received. Care must be taken not to aggregate this count further, as it may
-      # result in users being counted multiple times. **Required dimension:** This
-      # dimension must be always specified in all requests in the `dimensions` field
-      # in query requests. * `reportType` (string): the type of error. The value
-      # should correspond to one of the possible values in ErrorType. **Supported
-      # dimensions:** * `apiLevel` (string): the API level of Android that was running
-      # on the user's device. * `versionCode` (int64): version of the app that was
-      # running on the user's device. * `deviceModel` (string): unique identifier of
-      # the user's device model. * `deviceType` (string): identifier of the device's
-      # form factor, e.g., PHONE. * `issueId` (string): the id an error was assigned
-      # to. The value should correspond to the ``issue`` component of the issue name. *
-      # `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB,
-      # etc.). * `deviceSocMake` (string): Make of the device's primary system-on-chip,
-      # e.g., Samsung. [Reference](https://developer.android.com/reference/android/os/
+      # result in users being counted multiple times. This value is not rounded,
+      # however it may be an approximation. **Required dimension:** This dimension
+      # must be always specified in all requests in the `dimensions` field in query
+      # requests. * `reportType` (string): the type of error. The value should
+      # correspond to one of the possible values in ErrorType. **Supported dimensions:*
+      # * * `apiLevel` (string): the API level of Android that was running on the user'
+      # s device. * `versionCode` (int64): version of the app that was running on the
+      # user's device. * `deviceModel` (string): unique identifier of the user's
+      # device model. * `deviceType` (string): identifier of the device's form factor,
+      # e.g., PHONE. * `issueId` (string): the id an error was assigned to. The value
+      # should correspond to the ``issue`` component of the issue name. * `
+      # deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.)
+      # . * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g.
+      # , Samsung. [Reference](https://developer.android.com/reference/android/os/
       # Build#SOC_MANUFACTURER) * `deviceSocModel` (string): Model of the device's
       # primary system-on-chip, e.g., "Exynos 2100". [Reference](https://developer.
       # android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string):
@@ -472,30 +509,31 @@ module Google
       # excessiveWakeupRate` metric. A user is counted in this metric if they app was
       # doing any work on the device, i.e., not just active foreground usage but also
       # background work. Care must be taken not to aggregate this count further, as it
-      # may result in users being counted multiple times. **Supported dimensions:** * `
-      # apiLevel` (string): the API level of Android that was running on the user's
-      # device. * `versionCode` (int64): version of the app that was running on the
-      # user's device. * `deviceModel` (string): unique identifier of the user's
-      # device model. * `deviceType` (string): the type (also known as form factor) of
-      # the user's device. * `countryCode` (string): the country or region of the user'
-      # s device based on their IP address, represented as a 2-letter ISO-3166 code (e.
-      # g. US for the United States). * `deviceRamBucket` (int64): RAM of the device,
-      # in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the
-      # device's primary system-on-chip, e.g., Samsung. [Reference](https://developer.
-      # android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel` (
-      # string): Model of the device's primary system-on-chip, e.g., "Exynos 2100". [
-      # Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL)
-      # * `deviceCpuMake` (string): Make of the device's CPU, e.g., Qualcomm. * `
-      # deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". * `
-      # deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `
-      # deviceGpuModel` (string): Model of the device's GPU, e.g., Mali. * `
-      # deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. * `
-      # deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". *
-      # `deviceGlEsVersion` (string): OpenGL ES version of the device, e.g., "196610".
-      # * `deviceScreenSize` (string): Screen size of the device, e.g., NORMAL, LARGE.
-      # * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi.
-      # **Required permissions**: to access this resource, the calling user needs the
-      # _View app information (read-only)_ permission for the app.
+      # may result in users being counted multiple times. The value is rounded to the
+      # nearest multiple of 10, 100, 1,000 or 1,000,000, depending on the magnitude of
+      # the value. **Supported dimensions:** * `apiLevel` (string): the API level of
+      # Android that was running on the user's device. * `versionCode` (int64):
+      # version of the app that was running on the user's device. * `deviceModel` (
+      # string): unique identifier of the user's device model. * `deviceType` (string):
+      # the type (also known as form factor) of the user's device. * `countryCode` (
+      # string): the country or region of the user's device based on their IP address,
+      # represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `
+      # deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.)
+      # . * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g.
+      # , Samsung. [Reference](https://developer.android.com/reference/android/os/
+      # Build#SOC_MANUFACTURER) * `deviceSocModel` (string): Model of the device's
+      # primary system-on-chip, e.g., "Exynos 2100". [Reference](https://developer.
+      # android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string):
+      # Make of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model
+      # of the device's CPU, e.g., "Kryo 240". * `deviceGpuMake` (string): Make of the
+      # device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the device's
+      # GPU, e.g., Mali. * `deviceGpuVersion` (string): Version of the device's GPU, e.
+      # g., T750. * `deviceVulkanVersion` (string): Vulkan version of the device, e.g.,
+      # "4198400". * `deviceGlEsVersion` (string): OpenGL ES version of the device, e.
+      # g., "196610". * `deviceScreenSize` (string): Screen size of the device, e.g.,
+      # NORMAL, LARGE. * `deviceScreenDpi` (string): Screen density of the device, e.g.
+      # , mdpi, hdpi. **Required permissions**: to access this resource, the calling
+      # user needs the _View app information (read-only)_ permission for the app.
       class GooglePlayDeveloperReportingV1beta1ExcessiveWakeupRateMetricSet
         include Google::Apis::Core::Hashable
       
@@ -622,6 +660,11 @@ module Google
         # @return [Google::Apis::PlaydeveloperreportingV1beta1::GoogleTypeDecimal]
         attr_accessor :decimal_value
       
+        # Represents the confidence interval of a metric.
+        # Corresponds to the JSON property `decimalValueConfidenceInterval`
+        # @return [Google::Apis::PlaydeveloperreportingV1beta1::GooglePlayDeveloperReportingV1beta1DecimalConfidenceInterval]
+        attr_accessor :decimal_value_confidence_interval
+      
         # Name of the metric.
         # Corresponds to the JSON property `metric`
         # @return [String]
@@ -634,6 +677,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @decimal_value = args[:decimal_value] if args.key?(:decimal_value)
+          @decimal_value_confidence_interval = args[:decimal_value_confidence_interval] if args.key?(:decimal_value_confidence_interval)
           @metric = args[:metric] if args.key?(:metric)
         end
       end
@@ -746,6 +790,8 @@ module Google
         # metrics. A user is counted in this metric if they used the app in the
         # foreground during the aggregation period. Care must be taken not to aggregate
         # this count further, as it may result in users being counted multiple times.
+        # The value is rounded to the nearest multiple of 10, 100, 1,000 or 1,000,000,
+        # depending on the magnitude of the value.
         # Corresponds to the JSON property `metrics`
         # @return [Array<String>]
         attr_accessor :metrics
@@ -896,7 +942,9 @@ module Google
         # used the app actively during the aggregation period. An app is considered to
         # be in active use if it is displaying any activity or executing any foreground
         # service. Care must be taken not to aggregate this count further, as it may
-        # result in users being counted multiple times.
+        # result in users being counted multiple times. The value is rounded to the
+        # nearest multiple of 10, 100, 1,000 or 1,000,000, depending on the magnitude of
+        # the value.
         # Corresponds to the JSON property `metrics`
         # @return [Array<String>]
         attr_accessor :metrics
@@ -1029,7 +1077,7 @@ module Google
         # received for an app. * `distinctUsers` (`google.type.Decimal`): Count of
         # distinct users for which reports have been received. Care must be taken not to
         # aggregate this count further, as it may result in users being counted multiple
-        # times.
+        # times. This value is not rounded, however it may be an approximation.
         # Corresponds to the JSON property `metrics`
         # @return [Array<String>]
         attr_accessor :metrics
@@ -1155,7 +1203,9 @@ module Google
         # excessiveWakeupRate` metric. A user is counted in this metric if they app was
         # doing any work on the device, i.e., not just active foreground usage but also
         # background work. Care must be taken not to aggregate this count further, as it
-        # may result in users being counted multiple times.
+        # may result in users being counted multiple times. The value is rounded to the
+        # nearest multiple of 10, 100, 1,000 or 1,000,000, depending on the magnitude of
+        # the value.
         # Corresponds to the JSON property `metrics`
         # @return [Array<String>]
         attr_accessor :metrics
@@ -1303,7 +1353,8 @@ module Google
         # slowRenderingRate20Fps`/`slowRenderingRate30Fps` metric. A user is counted in
         # this metric if their app was launched in the device. Care must be taken not to
         # aggregate this count further, as it may result in users being counted multiple
-        # times.
+        # times. The value is rounded to the nearest multiple of 10, 100, 1,000 or 1,000,
+        # 000, depending on the magnitude of the value.
         # Corresponds to the JSON property `metrics`
         # @return [Array<String>]
         attr_accessor :metrics
@@ -1442,7 +1493,8 @@ module Google
         # normalization value for the `slowStartRate` metric. A user is counted in this
         # metric if their app was launched in the device. Care must be taken not to
         # aggregate this count further, as it may result in users being counted multiple
-        # times.
+        # times. The value is rounded to the nearest multiple of 10, 100, 1,000 or 1,000,
+        # 000, depending on the magnitude of the value.
         # Corresponds to the JSON property `metrics`
         # @return [Array<String>]
         attr_accessor :metrics
@@ -1583,7 +1635,8 @@ module Google
         # is counted in this metric if they app was doing any work on the device, i.e.,
         # not just active foreground usage but also background work. Care must be taken
         # not to aggregate this count further, as it may result in users being counted
-        # multiple times.
+        # multiple times. The value is rounded to the nearest multiple of 10, 100, 1,000
+        # or 1,000,000, depending on the magnitude of the value.
         # Corresponds to the JSON property `metrics`
         # @return [Array<String>]
         attr_accessor :metrics
@@ -1752,29 +1805,31 @@ module Google
       # slowRenderingRate20Fps`/`slowRenderingRate30Fps` metric. A user is counted in
       # this metric if their app rendered any frames. Care must be taken not to
       # aggregate this count further, as it may result in users being counted multiple
-      # times. **Supported dimensions:** * `apiLevel` (string): the API level of
-      # Android that was running on the user's device. * `versionCode` (int64):
-      # version of the app that was running on the user's device. * `deviceModel` (
-      # string): unique identifier of the user's device model. * `deviceType` (string):
-      # the type (also known as form factor) of the user's device. * `countryCode` (
-      # string): the country or region of the user's device based on their IP address,
-      # represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `
-      # deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.)
-      # . * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g.
-      # , Samsung. [Reference](https://developer.android.com/reference/android/os/
-      # Build#SOC_MANUFACTURER) * `deviceSocModel` (string): Model of the device's
-      # primary system-on-chip, e.g., "Exynos 2100". [Reference](https://developer.
-      # android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string):
-      # Make of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model
-      # of the device's CPU, e.g., "Kryo 240". * `deviceGpuMake` (string): Make of the
-      # device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the device's
-      # GPU, e.g., Mali. * `deviceGpuVersion` (string): Version of the device's GPU, e.
-      # g., T750. * `deviceVulkanVersion` (string): Vulkan version of the device, e.g.,
-      # "4198400". * `deviceGlEsVersion` (string): OpenGL ES version of the device, e.
-      # g., "196610". * `deviceScreenSize` (string): Screen size of the device, e.g.,
-      # NORMAL, LARGE. * `deviceScreenDpi` (string): Screen density of the device, e.g.
-      # , mdpi, hdpi. **Required permissions**: to access this resource, the calling
-      # user needs the _View app information (read-only)_ permission for the app.
+      # times. The value is rounded to the nearest multiple of 10, 100, 1,000 or 1,000,
+      # 000, depending on the magnitude of the value. **Supported dimensions:** * `
+      # apiLevel` (string): the API level of Android that was running on the user's
+      # device. * `versionCode` (int64): version of the app that was running on the
+      # user's device. * `deviceModel` (string): unique identifier of the user's
+      # device model. * `deviceType` (string): the type (also known as form factor) of
+      # the user's device. * `countryCode` (string): the country or region of the user'
+      # s device based on their IP address, represented as a 2-letter ISO-3166 code (e.
+      # g. US for the United States). * `deviceRamBucket` (int64): RAM of the device,
+      # in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the
+      # device's primary system-on-chip, e.g., Samsung. [Reference](https://developer.
+      # android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel` (
+      # string): Model of the device's primary system-on-chip, e.g., "Exynos 2100". [
+      # Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL)
+      # * `deviceCpuMake` (string): Make of the device's CPU, e.g., Qualcomm. * `
+      # deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". * `
+      # deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `
+      # deviceGpuModel` (string): Model of the device's GPU, e.g., Mali. * `
+      # deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. * `
+      # deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". *
+      # `deviceGlEsVersion` (string): OpenGL ES version of the device, e.g., "196610".
+      # * `deviceScreenSize` (string): Screen size of the device, e.g., NORMAL, LARGE.
+      # * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi.
+      # **Required permissions**: to access this resource, the calling user needs the
+      # _View app information (read-only)_ permission for the app.
       class GooglePlayDeveloperReportingV1beta1SlowRenderingRateMetricSet
         include Google::Apis::Core::Hashable
       
@@ -1817,33 +1872,34 @@ module Google
       # aggregation period that were used as normalization value for the `
       # slowStartRate` metric. A user is counted in this metric if their app was
       # launched in the device. Care must be taken not to aggregate this count further,
-      # as it may result in users being counted multiple times. **Required dimension:*
-      # * This dimension must be specified with each request for the request to be
-      # valid. * `startType` (string): the type of start that was measured. Valid
-      # types are `HOT`, `WARM` and `COLD`. **Supported dimensions:** * `apiLevel` (
-      # string): the API level of Android that was running on the user's device. * `
-      # versionCode` (int64): version of the app that was running on the user's device.
-      # * `deviceModel` (string): unique identifier of the user's device model. * `
-      # deviceType` (string): the type (also known as form factor) of the user's
-      # device. * `countryCode` (string): the country or region of the user's device
-      # based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US
-      # for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB,
-      # in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's
-      # primary system-on-chip, e.g., Samsung. [Reference](https://developer.android.
-      # com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel` (string):
-      # Model of the device's primary system-on-chip, e.g., "Exynos 2100". [Reference](
-      # https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `
-      # deviceCpuMake` (string): Make of the device's CPU, e.g., Qualcomm. * `
-      # deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". * `
-      # deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `
-      # deviceGpuModel` (string): Model of the device's GPU, e.g., Mali. * `
-      # deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. * `
-      # deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". *
-      # `deviceGlEsVersion` (string): OpenGL ES version of the device, e.g., "196610".
-      # * `deviceScreenSize` (string): Screen size of the device, e.g., NORMAL, LARGE.
-      # * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi.
-      # **Required permissions**: to access this resource, the calling user needs the
-      # _View app information (read-only)_ permission for the app.
+      # as it may result in users being counted multiple times. The value is rounded
+      # to the nearest multiple of 10, 100, 1,000 or 1,000,000, depending on the
+      # magnitude of the value. **Required dimension:** This dimension must be
+      # specified with each request for the request to be valid. * `startType` (string)
+      # : the type of start that was measured. Valid types are `HOT`, `WARM` and `COLD`
+      # . **Supported dimensions:** * `apiLevel` (string): the API level of Android
+      # that was running on the user's device. * `versionCode` (int64): version of the
+      # app that was running on the user's device. * `deviceModel` (string): unique
+      # identifier of the user's device model. * `deviceType` (string): the type (also
+      # known as form factor) of the user's device. * `countryCode` (string): the
+      # country or region of the user's device based on their IP address, represented
+      # as a 2-letter ISO-3166 code (e.g. US for the United States). * `
+      # deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.)
+      # . * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g.
+      # , Samsung. [Reference](https://developer.android.com/reference/android/os/
+      # Build#SOC_MANUFACTURER) * `deviceSocModel` (string): Model of the device's
+      # primary system-on-chip, e.g., "Exynos 2100". [Reference](https://developer.
+      # android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string):
+      # Make of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model
+      # of the device's CPU, e.g., "Kryo 240". * `deviceGpuMake` (string): Make of the
+      # device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the device's
+      # GPU, e.g., Mali. * `deviceGpuVersion` (string): Version of the device's GPU, e.
+      # g., T750. * `deviceVulkanVersion` (string): Vulkan version of the device, e.g.,
+      # "4198400". * `deviceGlEsVersion` (string): OpenGL ES version of the device, e.
+      # g., "196610". * `deviceScreenSize` (string): Screen size of the device, e.g.,
+      # NORMAL, LARGE. * `deviceScreenDpi` (string): Screen density of the device, e.g.
+      # , mdpi, hdpi. **Required permissions**: to access this resource, the calling
+      # user needs the _View app information (read-only)_ permission for the app.
       class GooglePlayDeveloperReportingV1beta1SlowStartRateMetricSet
         include Google::Apis::Core::Hashable
       
@@ -1890,29 +1946,31 @@ module Google
       # is counted in this metric if their app was doing any work on the device, i.e.,
       # not just active foreground usage but also background work. Care must be taken
       # not to aggregate this count further, as it may result in users being counted
-      # multiple times. **Supported dimensions:** * `apiLevel` (string): the API level
-      # of Android that was running on the user's device. * `versionCode` (int64):
-      # version of the app that was running on the user's device. * `deviceModel` (
-      # string): unique identifier of the user's device model. * `deviceType` (string):
-      # the type (also known as form factor) of the user's device. * `countryCode` (
-      # string): the country or region of the user's device based on their IP address,
-      # represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `
-      # deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.)
-      # . * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g.
-      # , Samsung. [Reference](https://developer.android.com/reference/android/os/
-      # Build#SOC_MANUFACTURER) * `deviceSocModel` (string): Model of the device's
-      # primary system-on-chip, e.g., "Exynos 2100". [Reference](https://developer.
-      # android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string):
-      # Make of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model
-      # of the device's CPU, e.g., "Kryo 240". * `deviceGpuMake` (string): Make of the
-      # device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the device's
-      # GPU, e.g., Mali. * `deviceGpuVersion` (string): Version of the device's GPU, e.
-      # g., T750. * `deviceVulkanVersion` (string): Vulkan version of the device, e.g.,
-      # "4198400". * `deviceGlEsVersion` (string): OpenGL ES version of the device, e.
-      # g., "196610". * `deviceScreenSize` (string): Screen size of the device, e.g.,
-      # NORMAL, LARGE. * `deviceScreenDpi` (string): Screen density of the device, e.g.
-      # , mdpi, hdpi. **Required permissions**: to access this resource, the calling
-      # user needs the _View app information (read-only)_ permission for the app.
+      # multiple times. The value is rounded to the nearest multiple of 10, 100, 1,000
+      # or 1,000,000, depending on the magnitude of the value. **Supported dimensions:*
+      # * * `apiLevel` (string): the API level of Android that was running on the user'
+      # s device. * `versionCode` (int64): version of the app that was running on the
+      # user's device. * `deviceModel` (string): unique identifier of the user's
+      # device model. * `deviceType` (string): the type (also known as form factor) of
+      # the user's device. * `countryCode` (string): the country or region of the user'
+      # s device based on their IP address, represented as a 2-letter ISO-3166 code (e.
+      # g. US for the United States). * `deviceRamBucket` (int64): RAM of the device,
+      # in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the
+      # device's primary system-on-chip, e.g., Samsung. [Reference](https://developer.
+      # android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel` (
+      # string): Model of the device's primary system-on-chip, e.g., "Exynos 2100". [
+      # Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL)
+      # * `deviceCpuMake` (string): Make of the device's CPU, e.g., Qualcomm. * `
+      # deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". * `
+      # deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `
+      # deviceGpuModel` (string): Model of the device's GPU, e.g., Mali. * `
+      # deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. * `
+      # deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". *
+      # `deviceGlEsVersion` (string): OpenGL ES version of the device, e.g., "196610".
+      # * `deviceScreenSize` (string): Screen size of the device, e.g., NORMAL, LARGE.
+      # * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi.
+      # **Required permissions**: to access this resource, the calling user needs the
+      # _View app information (read-only)_ permission for the app.
       class GooglePlayDeveloperReportingV1beta1StuckBackgroundWakelockRateMetricSet
         include Google::Apis::Core::Hashable
       
