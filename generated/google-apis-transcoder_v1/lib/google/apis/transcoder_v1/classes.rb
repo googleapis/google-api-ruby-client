@@ -1088,6 +1088,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # The processing mode of the job. The default is `PROCESSING_MODE_INTERACTIVE`.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
         # The resource name of the job. Format: `projects/`project_number`/locations/`
         # location`/jobs/`job``
         # Corresponds to the JSON property `name`
@@ -1139,6 +1144,7 @@ module Google
           @error = args[:error] if args.key?(:error)
           @input_uri = args[:input_uri] if args.key?(:input_uri)
           @labels = args[:labels] if args.key?(:labels)
+          @mode = args[:mode] if args.key?(:mode)
           @name = args[:name] if args.key?(:name)
           @output_uri = args[:output_uri] if args.key?(:output_uri)
           @start_time = args[:start_time] if args.key?(:start_time)
