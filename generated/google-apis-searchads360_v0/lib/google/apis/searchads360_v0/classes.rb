@@ -830,6 +830,12 @@ module Google
         # @return [Float]
         attr_accessor :value_per_conversions_by_conversion_date
       
+        # Clicks that Search Ads 360 has successfully recorded and forwarded to an
+        # advertiser's landing page.
+        # Corresponds to the JSON property `visits`
+        # @return [Float]
+        attr_accessor :visits
+      
         def initialize(**args)
            update!(**args)
         end
@@ -902,6 +908,7 @@ module Google
           @value_per_all_conversions_by_conversion_date = args[:value_per_all_conversions_by_conversion_date] if args.key?(:value_per_all_conversions_by_conversion_date)
           @value_per_conversion = args[:value_per_conversion] if args.key?(:value_per_conversion)
           @value_per_conversions_by_conversion_date = args[:value_per_conversions_by_conversion_date] if args.key?(:value_per_conversions_by_conversion_date)
+          @visits = args[:visits] if args.key?(:visits)
         end
       end
       
@@ -954,6 +961,55 @@ module Google
         # Update properties of this object
         def update!(**args)
           @opt_in = args[:opt_in] if args.key?(:opt_in)
+        end
+      end
+      
+      # A Search Ads 360 text ad.
+      class GoogleAdsSearchads360V0CommonSearchAds360TextAdInfo
+        include Google::Apis::Core::Hashable
+      
+        # The tracking id of the ad.
+        # Corresponds to the JSON property `adTrackId`
+        # @return [Fixnum]
+        attr_accessor :ad_track_id
+      
+        # The first line of the ad's description.
+        # Corresponds to the JSON property `description1`
+        # @return [String]
+        attr_accessor :description1
+      
+        # The second line of the ad's description.
+        # Corresponds to the JSON property `description2`
+        # @return [String]
+        attr_accessor :description2
+      
+        # The displayed mobile URL of the ad.
+        # Corresponds to the JSON property `displayMobileUrl`
+        # @return [String]
+        attr_accessor :display_mobile_url
+      
+        # The displayed URL of the ad.
+        # Corresponds to the JSON property `displayUrl`
+        # @return [String]
+        attr_accessor :display_url
+      
+        # The headline of the ad.
+        # Corresponds to the JSON property `headline`
+        # @return [String]
+        attr_accessor :headline
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ad_track_id = args[:ad_track_id] if args.key?(:ad_track_id)
+          @description1 = args[:description1] if args.key?(:description1)
+          @description2 = args[:description2] if args.key?(:description2)
+          @display_mobile_url = args[:display_mobile_url] if args.key?(:display_mobile_url)
+          @display_url = args[:display_url] if args.key?(:display_url)
+          @headline = args[:headline] if args.key?(:headline)
         end
       end
       
@@ -1142,6 +1198,37 @@ module Google
         end
       end
       
+      # The list of per-targeting-dimension targeting settings.
+      class GoogleAdsSearchads360V0CommonTargetRestriction
+        include Google::Apis::Core::Hashable
+      
+        # Indicates whether to restrict your ads to show only for the criteria you have
+        # selected for this targeting_dimension, or to target all values for this
+        # targeting_dimension and show ads based on your targeting in other
+        # TargetingDimensions. A value of `true` means that these criteria will only
+        # apply bid modifiers, and not affect targeting. A value of `false` means that
+        # these criteria will restrict targeting as well as applying bid modifiers.
+        # Corresponds to the JSON property `bidOnly`
+        # @return [Boolean]
+        attr_accessor :bid_only
+        alias_method :bid_only?, :bid_only
+      
+        # The targeting dimension that these settings apply to.
+        # Corresponds to the JSON property `targetingDimension`
+        # @return [String]
+        attr_accessor :targeting_dimension
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bid_only = args[:bid_only] if args.key?(:bid_only)
+          @targeting_dimension = args[:targeting_dimension] if args.key?(:targeting_dimension)
+        end
+      end
+      
       # An automated bidding strategy that helps you maximize revenue while averaging
       # a specific target return on ad spend (ROAS).
       class GoogleAdsSearchads360V0CommonTargetRoas
@@ -1207,6 +1294,76 @@ module Google
         def update!(**args)
           @cpc_bid_ceiling_micros = args[:cpc_bid_ceiling_micros] if args.key?(:cpc_bid_ceiling_micros)
           @target_spend_micros = args[:target_spend_micros] if args.key?(:target_spend_micros)
+        end
+      end
+      
+      # Settings for the targeting-related features, at the campaign and ad group
+      # levels. For more details about the targeting setting, visit https://support.
+      # google.com/google-ads/answer/7365594
+      class GoogleAdsSearchads360V0CommonTargetingSetting
+        include Google::Apis::Core::Hashable
+      
+        # The per-targeting-dimension setting to restrict the reach of your campaign or
+        # ad group.
+        # Corresponds to the JSON property `targetRestrictions`
+        # @return [Array<Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonTargetRestriction>]
+        attr_accessor :target_restrictions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @target_restrictions = args[:target_restrictions] if args.key?(:target_restrictions)
+        end
+      end
+      
+      # A type of label displaying text on a colored background.
+      class GoogleAdsSearchads360V0CommonTextLabel
+        include Google::Apis::Core::Hashable
+      
+        # Background color of the label in RGB format. This string must match the
+        # regular expression '^\#([a-fA-F0-9]`6`|[a-fA-F0-9]`3`)$'. Note: The background
+        # color may not be visible for manager accounts.
+        # Corresponds to the JSON property `backgroundColor`
+        # @return [String]
+        attr_accessor :background_color
+      
+        # A short description of the label. The length must be no more than 200
+        # characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @background_color = args[:background_color] if args.key?(:background_color)
+          @description = args[:description] if args.key?(:description)
+        end
+      end
+      
+      # A User List criterion. Represents a user list that is defined by the
+      # advertiser to be targeted.
+      class GoogleAdsSearchads360V0CommonUserListInfo
+        include Google::Apis::Core::Hashable
+      
+        # The User List resource name.
+        # Corresponds to the JSON property `userList`
+        # @return [String]
+        attr_accessor :user_list
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @user_list = args[:user_list] if args.key?(:user_list)
         end
       end
       
@@ -1917,6 +2074,65 @@ module Google
         end
       end
       
+      # An ad.
+      class GoogleAdsSearchads360V0ResourcesAd
+        include Google::Apis::Core::Hashable
+      
+        # The URL that appears in the ad description for some ad formats.
+        # Corresponds to the JSON property `displayUrl`
+        # @return [String]
+        attr_accessor :display_url
+      
+        # The list of possible final URLs after all cross-domain redirects for the ad.
+        # Corresponds to the JSON property `finalUrls`
+        # @return [Array<String>]
+        attr_accessor :final_urls
+      
+        # Output only. The ID of the ad.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # Immutable. The name of the ad. This is only used to be able to identify the ad.
+        # It does not need to be unique and does not affect the served ad. The name
+        # field is currently only supported for DisplayUploadAd, ImageAd,
+        # ShoppingComparisonListingAd and VideoAd.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Immutable. The resource name of the ad. Ad resource names have the form: `
+        # customers/`customer_id`/ads/`ad_id``
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        # A Search Ads 360 text ad.
+        # Corresponds to the JSON property `textAd`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonSearchAds360TextAdInfo]
+        attr_accessor :text_ad
+      
+        # Output only. The type of ad.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_url = args[:display_url] if args.key?(:display_url)
+          @final_urls = args[:final_urls] if args.key?(:final_urls)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @text_ad = args[:text_ad] if args.key?(:text_ad)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # An ad group.
       class GoogleAdsSearchads360V0ResourcesAdGroup
         include Google::Apis::Core::Hashable
@@ -1931,10 +2147,56 @@ module Google
         # @return [Fixnum]
         attr_accessor :cpc_bid_micros
       
+        # Output only. The timestamp when this ad_group was created. The timestamp is in
+        # the customer's time zone and in "yyyy-MM-dd HH:mm:ss" format.
+        # Corresponds to the JSON property `creationTime`
+        # @return [String]
+        attr_accessor :creation_time
+      
+        # Output only. Date when the ad group ends serving ads. By default, the ad group
+        # ends on the ad group's end date. If this field is set, then the ad group ends
+        # at the end of the specified date in the customer's time zone. This field is
+        # only available for Microsoft Advertising and Facebook gateway accounts. Format:
+        # YYYY-MM-DD Example: 2019-03-14
+        # Corresponds to the JSON property `endDate`
+        # @return [String]
+        attr_accessor :end_date
+      
+        # Output only. ID of the ad group in the external engine account. This field is
+        # for non-Google Ads account only, for example, Yahoo Japan, Microsoft, Baidu
+        # etc. For Google Ads entity, use "ad_group.id" instead.
+        # Corresponds to the JSON property `engineId`
+        # @return [String]
+        attr_accessor :engine_id
+      
+        # Output only. The Engine Status for ad group.
+        # Corresponds to the JSON property `engineStatus`
+        # @return [String]
+        attr_accessor :engine_status
+      
         # Output only. The ID of the ad group.
         # Corresponds to the JSON property `id`
         # @return [Fixnum]
         attr_accessor :id
+      
+        # Output only. The resource names of labels attached to this ad group.
+        # Corresponds to the JSON property `labels`
+        # @return [Array<String>]
+        attr_accessor :labels
+      
+        # Output only. The language of the ads and keywords in an ad group. This field
+        # is only available for Microsoft Advertising accounts. More details: https://
+        # docs.microsoft.com/en-us/advertising/guides/ad-languages?view=bingads-13#
+        # adlanguage
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # Output only. The datetime when this ad group was last modified. The datetime
+        # is in the customer's time zone and in "yyyy-MM-dd HH:mm:ss.ssssss" format.
+        # Corresponds to the JSON property `lastModifiedTime`
+        # @return [String]
+        attr_accessor :last_modified_time
       
         # The name of the ad group. This field is required and should not be empty when
         # creating new ad groups. It must contain fewer than 255 UTF-8 full-width
@@ -1950,10 +2212,27 @@ module Google
         # @return [String]
         attr_accessor :resource_name
       
+        # Output only. Date when this ad group starts serving ads. By default, the ad
+        # group starts now or the ad group's start date, whichever is later. If this
+        # field is set, then the ad group starts at the beginning of the specified date
+        # in the customer's time zone. This field is only available for Microsoft
+        # Advertising and Facebook gateway accounts. Format: YYYY-MM-DD Example: 2019-03-
+        # 14
+        # Corresponds to the JSON property `startDate`
+        # @return [String]
+        attr_accessor :start_date
+      
         # The status of the ad group.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
+      
+        # Settings for the targeting-related features, at the campaign and ad group
+        # levels. For more details about the targeting setting, visit https://support.
+        # google.com/google-ads/answer/7365594
+        # Corresponds to the JSON property `targetingSetting`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonTargetingSetting]
+        attr_accessor :targeting_setting
       
         # Immutable. The type of the ad group.
         # Corresponds to the JSON property `type`
@@ -1968,11 +2247,145 @@ module Google
         def update!(**args)
           @ad_rotation_mode = args[:ad_rotation_mode] if args.key?(:ad_rotation_mode)
           @cpc_bid_micros = args[:cpc_bid_micros] if args.key?(:cpc_bid_micros)
+          @creation_time = args[:creation_time] if args.key?(:creation_time)
+          @end_date = args[:end_date] if args.key?(:end_date)
+          @engine_id = args[:engine_id] if args.key?(:engine_id)
+          @engine_status = args[:engine_status] if args.key?(:engine_status)
           @id = args[:id] if args.key?(:id)
+          @labels = args[:labels] if args.key?(:labels)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @last_modified_time = args[:last_modified_time] if args.key?(:last_modified_time)
           @name = args[:name] if args.key?(:name)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @start_date = args[:start_date] if args.key?(:start_date)
           @status = args[:status] if args.key?(:status)
+          @targeting_setting = args[:targeting_setting] if args.key?(:targeting_setting)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # An ad group ad.
+      class GoogleAdsSearchads360V0ResourcesAdGroupAd
+        include Google::Apis::Core::Hashable
+      
+        # An ad.
+        # Corresponds to the JSON property `ad`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAd]
+        attr_accessor :ad
+      
+        # Output only. The timestamp when this ad_group_ad was created. The datetime is
+        # in the customer's time zone and in "yyyy-MM-dd HH:mm:ss.ssssss" format.
+        # Corresponds to the JSON property `creationTime`
+        # @return [String]
+        attr_accessor :creation_time
+      
+        # Output only. ID of the ad in the external engine account. This field is for
+        # SearchAds 360 account only, for example, Yahoo Japan, Microsoft, Baidu etc.
+        # For non-SearchAds 360 entity, use "ad_group_ad.ad.id" instead.
+        # Corresponds to the JSON property `engineId`
+        # @return [String]
+        attr_accessor :engine_id
+      
+        # Output only. Additional status of the ad in the external engine account.
+        # Possible statuses (depending on the type of external account) include active,
+        # eligible, pending review, etc.
+        # Corresponds to the JSON property `engineStatus`
+        # @return [String]
+        attr_accessor :engine_status
+      
+        # Output only. The resource names of labels attached to this ad group ad.
+        # Corresponds to the JSON property `labels`
+        # @return [Array<String>]
+        attr_accessor :labels
+      
+        # Output only. The datetime when this ad group ad was last modified. The
+        # datetime is in the customer's time zone and in "yyyy-MM-dd HH:mm:ss.ssssss"
+        # format.
+        # Corresponds to the JSON property `lastModifiedTime`
+        # @return [String]
+        attr_accessor :last_modified_time
+      
+        # Immutable. The resource name of the ad. Ad group ad resource names have the
+        # form: `customers/`customer_id`/adGroupAds/`ad_group_id`~`ad_id``
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        # The status of the ad.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ad = args[:ad] if args.key?(:ad)
+          @creation_time = args[:creation_time] if args.key?(:creation_time)
+          @engine_id = args[:engine_id] if args.key?(:engine_id)
+          @engine_status = args[:engine_status] if args.key?(:engine_status)
+          @labels = args[:labels] if args.key?(:labels)
+          @last_modified_time = args[:last_modified_time] if args.key?(:last_modified_time)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # A relationship between an ad group ad and a label.
+      class GoogleAdsSearchads360V0ResourcesAdGroupAdLabel
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. The ad group ad to which the label is attached.
+        # Corresponds to the JSON property `adGroupAd`
+        # @return [String]
+        attr_accessor :ad_group_ad
+      
+        # Immutable. The label assigned to the ad group ad.
+        # Corresponds to the JSON property `label`
+        # @return [String]
+        attr_accessor :label
+      
+        # Immutable. The resource name of the ad group ad label. Ad group ad label
+        # resource names have the form: `customers/`customer_id`/adGroupAdLabels/`
+        # ad_group_id`~`ad_id`~`label_id``
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ad_group_ad = args[:ad_group_ad] if args.key?(:ad_group_ad)
+          @label = args[:label] if args.key?(:label)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+        end
+      end
+      
+      # An ad group audience view. Includes performance data from interests and
+      # remarketing lists for Display Network and YouTube Network ads, and remarketing
+      # lists for search ads (RLSA), aggregated at the audience level.
+      class GoogleAdsSearchads360V0ResourcesAdGroupAudienceView
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The resource name of the ad group audience view. Ad group
+        # audience view resource names have the form: `customers/`customer_id`/
+        # adGroupAudienceViews/`ad_group_id`~`criterion_id``
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
         end
       end
       
@@ -1986,6 +2399,11 @@ module Google
         # Corresponds to the JSON property `bidModifier`
         # @return [Float]
         attr_accessor :bid_modifier
+      
+        # A device criterion.
+        # Corresponds to the JSON property `device`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonDeviceInfo]
+        attr_accessor :device
       
         # Immutable. The resource name of the ad group bid modifier. Ad group bid
         # modifier resource names have the form: `customers/`customer_id`/
@@ -2001,6 +2419,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bid_modifier = args[:bid_modifier] if args.key?(:bid_modifier)
+          @device = args[:device] if args.key?(:device)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
         end
       end
@@ -2030,6 +2449,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :cpc_bid_micros
       
+        # Output only. The timestamp when this ad group criterion was created. The
+        # timestamp is in the customer's time zone and in "yyyy-MM-dd HH:mm:ss" format.
+        # Corresponds to the JSON property `creationTime`
+        # @return [String]
+        attr_accessor :creation_time
+      
         # Output only. The ID of the criterion.
         # Corresponds to the JSON property `criterionId`
         # @return [Fixnum]
@@ -2039,6 +2464,14 @@ module Google
         # Corresponds to the JSON property `effectiveCpcBidMicros`
         # @return [Fixnum]
         attr_accessor :effective_cpc_bid_micros
+      
+        # Output only. ID of the ad group criterion in the external engine account. This
+        # field is for non-Google Ads account only, for example, Yahoo Japan, Microsoft,
+        # Baidu etc. For Google Ads entity, use "ad_group_criterion.criterion_id"
+        # instead.
+        # Corresponds to the JSON property `engineId`
+        # @return [String]
+        attr_accessor :engine_id
       
         # Output only. The Engine Status for ad group criterion.
         # Corresponds to the JSON property `engineStatus`
@@ -2065,6 +2498,11 @@ module Google
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonKeywordInfo]
         attr_accessor :keyword
       
+        # Output only. The resource names of labels attached to this ad group criterion.
+        # Corresponds to the JSON property `labels`
+        # @return [Array<String>]
+        attr_accessor :labels
+      
         # Output only. The datetime when this ad group criterion was last modified. The
         # datetime is in the customer's time zone and in "yyyy-MM-dd HH:mm:ss.ssssss"
         # format.
@@ -2076,6 +2514,19 @@ module Google
         # Corresponds to the JSON property `listingGroup`
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonListingGroupInfo]
         attr_accessor :listing_group
+      
+        # A location criterion.
+        # Corresponds to the JSON property `location`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonLocationInfo]
+        attr_accessor :location
+      
+        # Immutable. Whether to target (`false`) or exclude (`true`) the criterion. This
+        # field is immutable. To switch a criterion from positive to negative, remove
+        # then re-add it.
+        # Corresponds to the JSON property `negative`
+        # @return [Boolean]
+        attr_accessor :negative
+        alias_method :negative?, :negative
       
         # A container for ad group criterion quality information.
         # Corresponds to the JSON property `qualityInfo`
@@ -2111,6 +2562,12 @@ module Google
         # @return [String]
         attr_accessor :type
       
+        # A User List criterion. Represents a user list that is defined by the
+        # advertiser to be targeted.
+        # Corresponds to the JSON property `userList`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonUserListInfo]
+        attr_accessor :user_list
+      
         # Represents a criterion for targeting webpages of an advertiser's website.
         # Corresponds to the JSON property `webpage`
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonWebpageInfo]
@@ -2126,21 +2583,114 @@ module Google
           @age_range = args[:age_range] if args.key?(:age_range)
           @bid_modifier = args[:bid_modifier] if args.key?(:bid_modifier)
           @cpc_bid_micros = args[:cpc_bid_micros] if args.key?(:cpc_bid_micros)
+          @creation_time = args[:creation_time] if args.key?(:creation_time)
           @criterion_id = args[:criterion_id] if args.key?(:criterion_id)
           @effective_cpc_bid_micros = args[:effective_cpc_bid_micros] if args.key?(:effective_cpc_bid_micros)
+          @engine_id = args[:engine_id] if args.key?(:engine_id)
           @engine_status = args[:engine_status] if args.key?(:engine_status)
           @final_url_suffix = args[:final_url_suffix] if args.key?(:final_url_suffix)
           @final_urls = args[:final_urls] if args.key?(:final_urls)
           @gender = args[:gender] if args.key?(:gender)
           @keyword = args[:keyword] if args.key?(:keyword)
+          @labels = args[:labels] if args.key?(:labels)
           @last_modified_time = args[:last_modified_time] if args.key?(:last_modified_time)
           @listing_group = args[:listing_group] if args.key?(:listing_group)
+          @location = args[:location] if args.key?(:location)
+          @negative = args[:negative] if args.key?(:negative)
           @quality_info = args[:quality_info] if args.key?(:quality_info)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
           @status = args[:status] if args.key?(:status)
           @tracking_url_template = args[:tracking_url_template] if args.key?(:tracking_url_template)
           @type = args[:type] if args.key?(:type)
+          @user_list = args[:user_list] if args.key?(:user_list)
           @webpage = args[:webpage] if args.key?(:webpage)
+        end
+      end
+      
+      # A relationship between an ad group criterion and a label.
+      class GoogleAdsSearchads360V0ResourcesAdGroupCriterionLabel
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. The ad group criterion to which the label is attached.
+        # Corresponds to the JSON property `adGroupCriterion`
+        # @return [String]
+        attr_accessor :ad_group_criterion
+      
+        # Immutable. The label assigned to the ad group criterion.
+        # Corresponds to the JSON property `label`
+        # @return [String]
+        attr_accessor :label
+      
+        # Immutable. The resource name of the ad group criterion label. Ad group
+        # criterion label resource names have the form: `customers/`customer_id`/
+        # adGroupCriterionLabels/`ad_group_id`~`criterion_id`~`label_id``
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ad_group_criterion = args[:ad_group_criterion] if args.key?(:ad_group_criterion)
+          @label = args[:label] if args.key?(:label)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+        end
+      end
+      
+      # A relationship between an ad group and a label.
+      class GoogleAdsSearchads360V0ResourcesAdGroupLabel
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. The ad group to which the label is attached.
+        # Corresponds to the JSON property `adGroup`
+        # @return [String]
+        attr_accessor :ad_group
+      
+        # Immutable. The label assigned to the ad group.
+        # Corresponds to the JSON property `label`
+        # @return [String]
+        attr_accessor :label
+      
+        # Immutable. The resource name of the ad group label. Ad group label resource
+        # names have the form: `customers/`customer_id`/adGroupLabels/`ad_group_id`~`
+        # label_id``
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ad_group = args[:ad_group] if args.key?(:ad_group)
+          @label = args[:label] if args.key?(:label)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+        end
+      end
+      
+      # An age range view.
+      class GoogleAdsSearchads360V0ResourcesAgeRangeView
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The resource name of the age range view. Age range view resource
+        # names have the form: `customers/`customer_id`/ageRangeViews/`ad_group_id`~`
+        # criterion_id``
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
         end
       end
       
@@ -2334,10 +2884,18 @@ module Google
         # @return [String]
         attr_accessor :campaign_budget
       
-        # Output only. Timestamp of the campaign's creation time, formatted in ISO 8601.
+        # Output only. The timestamp when this campaign was created. The timestamp is in
+        # the customer's time zone and in "yyyy-MM-dd HH:mm:ss" format. create_time will
+        # be deprecated in v1. Use creation_time instead.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
+      
+        # Output only. The timestamp when this campaign was created. The timestamp is in
+        # the customer's time zone and in "yyyy-MM-dd HH:mm:ss" format.
+        # Corresponds to the JSON property `creationTime`
+        # @return [String]
+        attr_accessor :creation_time
       
         # The setting for controlling Dynamic Search Ads (DSA).
         # Corresponds to the JSON property `dynamicSearchAdsSetting`
@@ -2562,6 +3120,7 @@ module Google
           @bidding_strategy_type = args[:bidding_strategy_type] if args.key?(:bidding_strategy_type)
           @campaign_budget = args[:campaign_budget] if args.key?(:campaign_budget)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @creation_time = args[:creation_time] if args.key?(:creation_time)
           @dynamic_search_ads_setting = args[:dynamic_search_ads_setting] if args.key?(:dynamic_search_ads_setting)
           @end_date = args[:end_date] if args.key?(:end_date)
           @engine_id = args[:engine_id] if args.key?(:engine_id)
@@ -2597,6 +3156,30 @@ module Google
           @tracking_url_template = args[:tracking_url_template] if args.key?(:tracking_url_template)
           @url_custom_parameters = args[:url_custom_parameters] if args.key?(:url_custom_parameters)
           @url_expansion_opt_out = args[:url_expansion_opt_out] if args.key?(:url_expansion_opt_out)
+        end
+      end
+      
+      # A campaign audience view. Includes performance data from interests and
+      # remarketing lists for Display Network and YouTube Network ads, and remarketing
+      # lists for search ads (RLSA), aggregated by campaign and audience criterion.
+      # This view only includes audiences attached at the campaign level.
+      class GoogleAdsSearchads360V0ResourcesCampaignAudienceView
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The resource name of the campaign audience view. Campaign
+        # audience view resource names have the form: `customers/`customer_id`/
+        # campaignAudienceViews/`campaign_id`~`criterion_id``
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
         end
       end
       
@@ -2647,6 +3230,11 @@ module Google
       class GoogleAdsSearchads360V0ResourcesCampaignCriterion
         include Google::Apis::Core::Hashable
       
+        # An age range criterion.
+        # Corresponds to the JSON property `ageRange`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonAgeRangeInfo]
+        attr_accessor :age_range
+      
         # The modifier for the bids when the criterion matches. The modifier must be in
         # the range: 0.1 - 10.0. Most targetable criteria types support modifiers. Use 0
         # to opt out of a Device type.
@@ -2670,10 +3258,27 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # A gender criterion.
+        # Corresponds to the JSON property `gender`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonGenderInfo]
+        attr_accessor :gender
+      
+        # A keyword criterion.
+        # Corresponds to the JSON property `keyword`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonKeywordInfo]
+        attr_accessor :keyword
+      
         # A language criterion.
         # Corresponds to the JSON property `language`
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonLanguageInfo]
         attr_accessor :language
+      
+        # Output only. The datetime when this campaign criterion was last modified. The
+        # datetime is in the customer's time zone and in "yyyy-MM-dd HH:mm:ss.ssssss"
+        # format.
+        # Corresponds to the JSON property `lastModifiedTime`
+        # @return [String]
+        attr_accessor :last_modified_time
       
         # A location criterion.
         # Corresponds to the JSON property `location`
@@ -2698,10 +3303,26 @@ module Google
         # @return [String]
         attr_accessor :resource_name
       
+        # The status of the criterion.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
         # Output only. The type of the criterion.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
+      
+        # A User List criterion. Represents a user list that is defined by the
+        # advertiser to be targeted.
+        # Corresponds to the JSON property `userList`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonUserListInfo]
+        attr_accessor :user_list
+      
+        # Represents a criterion for targeting webpages of an advertiser's website.
+        # Corresponds to the JSON property `webpage`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonWebpageInfo]
+        attr_accessor :webpage
       
         def initialize(**args)
            update!(**args)
@@ -2709,16 +3330,55 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @age_range = args[:age_range] if args.key?(:age_range)
           @bid_modifier = args[:bid_modifier] if args.key?(:bid_modifier)
           @criterion_id = args[:criterion_id] if args.key?(:criterion_id)
           @device = args[:device] if args.key?(:device)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @gender = args[:gender] if args.key?(:gender)
+          @keyword = args[:keyword] if args.key?(:keyword)
           @language = args[:language] if args.key?(:language)
+          @last_modified_time = args[:last_modified_time] if args.key?(:last_modified_time)
           @location = args[:location] if args.key?(:location)
           @location_group = args[:location_group] if args.key?(:location_group)
           @negative = args[:negative] if args.key?(:negative)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @status = args[:status] if args.key?(:status)
           @type = args[:type] if args.key?(:type)
+          @user_list = args[:user_list] if args.key?(:user_list)
+          @webpage = args[:webpage] if args.key?(:webpage)
+        end
+      end
+      
+      # Represents a relationship between a campaign and a label.
+      class GoogleAdsSearchads360V0ResourcesCampaignLabel
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. The campaign to which the label is attached.
+        # Corresponds to the JSON property `campaign`
+        # @return [String]
+        attr_accessor :campaign
+      
+        # Immutable. The label assigned to the campaign.
+        # Corresponds to the JSON property `label`
+        # @return [String]
+        attr_accessor :label
+      
+        # Immutable. Name of the resource. Campaign label resource names have the form: `
+        # customers/`customer_id`/campaignLabels/`campaign_id`~`label_id``
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @campaign = args[:campaign] if args.key?(:campaign)
+          @label = args[:label] if args.key?(:label)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
         end
       end
       
@@ -3027,6 +3687,12 @@ module Google
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesConversionTrackingSetting]
         attr_accessor :conversion_tracking_setting
       
+        # Output only. The timestamp when this customer was created. The timestamp is in
+        # the customer's time zone and in "yyyy-MM-dd HH:mm:ss" format.
+        # Corresponds to the JSON property `creationTime`
+        # @return [String]
+        attr_accessor :creation_time
+      
         # Immutable. The currency in which the account operates. A subset of the
         # currency codes from the ISO 4217 standard is supported.
         # Corresponds to the JSON property `currencyCode`
@@ -3048,7 +3714,7 @@ module Google
         # @return [String]
         attr_accessor :engine_id
       
-        # The URL template for appending params to the final URL
+        # The URL template for appending params to the final URL.
         # Corresponds to the JSON property `finalUrlSuffix`
         # @return [String]
         attr_accessor :final_url_suffix
@@ -3101,6 +3767,7 @@ module Google
           @account_type = args[:account_type] if args.key?(:account_type)
           @auto_tagging_enabled = args[:auto_tagging_enabled] if args.key?(:auto_tagging_enabled)
           @conversion_tracking_setting = args[:conversion_tracking_setting] if args.key?(:conversion_tracking_setting)
+          @creation_time = args[:creation_time] if args.key?(:creation_time)
           @currency_code = args[:currency_code] if args.key?(:currency_code)
           @descriptive_name = args[:descriptive_name] if args.key?(:descriptive_name)
           @double_click_campaign_manager_setting = args[:double_click_campaign_manager_setting] if args.key?(:double_click_campaign_manager_setting)
@@ -3286,12 +3953,130 @@ module Google
         end
       end
       
+      # A dynamic search ads search term view.
+      class GoogleAdsSearchads360V0ResourcesDynamicSearchAdsSearchTermView
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The dynamically selected landing page URL of the impression. This
+        # field is read-only.
+        # Corresponds to the JSON property `landingPage`
+        # @return [String]
+        attr_accessor :landing_page
+      
+        # Output only. The resource name of the dynamic search ads search term view.
+        # Dynamic search ads search term view resource names have the form: `customers/`
+        # customer_id`/dynamicSearchAdsSearchTermViews/`ad_group_id`~`
+        # search_term_fingerprint`~`headline_fingerprint`~`landing_page_fingerprint`~`
+        # page_url_fingerprint``
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @landing_page = args[:landing_page] if args.key?(:landing_page)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+        end
+      end
+      
+      # A gender view.
+      class GoogleAdsSearchads360V0ResourcesGenderView
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The resource name of the gender view. Gender view resource names
+        # have the form: `customers/`customer_id`/genderViews/`ad_group_id`~`
+        # criterion_id``
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+        end
+      end
+      
       # A keyword view.
       class GoogleAdsSearchads360V0ResourcesKeywordView
         include Google::Apis::Core::Hashable
       
         # Output only. The resource name of the keyword view. Keyword view resource
         # names have the form: `customers/`customer_id`/keywordViews/`ad_group_id`~`
+        # criterion_id``
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+        end
+      end
+      
+      # A label.
+      class GoogleAdsSearchads360V0ResourcesLabel
+        include Google::Apis::Core::Hashable
+      
+        # Output only. ID of the label. Read only.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # The name of the label. This field is required and should not be empty when
+        # creating a new label. The length of this string should be between 1 and 80,
+        # inclusive.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Immutable. Name of the resource. Label resource names have the form: `
+        # customers/`customer_id`/labels/`label_id``
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        # Output only. Status of the label. Read only.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # A type of label displaying text on a colored background.
+        # Corresponds to the JSON property `textLabel`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonTextLabel]
+        attr_accessor :text_label
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @status = args[:status] if args.key?(:status)
+          @text_label = args[:text_label] if args.key?(:text_label)
+        end
+      end
+      
+      # A location view summarizes the performance of campaigns by Location criteria.
+      class GoogleAdsSearchads360V0ResourcesLocationView
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The resource name of the location view. Location view resource
+        # names have the form: `customers/`customer_id`/locationViews/`campaign_id`~`
         # criterion_id``
         # Corresponds to the JSON property `resourceName`
         # @return [String]
@@ -3444,6 +4229,66 @@ module Google
         end
       end
       
+      # A user list. This is a list of users a customer may target.
+      class GoogleAdsSearchads360V0ResourcesUserList
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Id of the user list.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # Name of this user list. Depending on its access_reason, the user list name may
+        # not be unique (for example, if access_reason=SHARED)
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Immutable. The resource name of the user list. User list resource names have
+        # the form: `customers/`customer_id`/userLists/`user_list_id``
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        # Output only. Type of this list. This field is read-only.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # A webpage view.
+      class GoogleAdsSearchads360V0ResourcesWebpageView
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The resource name of the webpage view. Webpage view resource
+        # names have the form: `customers/`customer_id`/webpageViews/`ad_group_id`~`
+        # criterion_id``
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+        end
+      end
+      
       # Message for custom column header.
       class GoogleAdsSearchads360V0ServicesCustomColumnHeader
         include Google::Apis::Core::Hashable
@@ -3504,6 +4349,23 @@ module Google
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroup]
         attr_accessor :ad_group
       
+        # An ad group ad.
+        # Corresponds to the JSON property `adGroupAd`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupAd]
+        attr_accessor :ad_group_ad
+      
+        # A relationship between an ad group ad and a label.
+        # Corresponds to the JSON property `adGroupAdLabel`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupAdLabel]
+        attr_accessor :ad_group_ad_label
+      
+        # An ad group audience view. Includes performance data from interests and
+        # remarketing lists for Display Network and YouTube Network ads, and remarketing
+        # lists for search ads (RLSA), aggregated at the audience level.
+        # Corresponds to the JSON property `adGroupAudienceView`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupAudienceView]
+        attr_accessor :ad_group_audience_view
+      
         # Represents an ad group bid modifier.
         # Corresponds to the JSON property `adGroupBidModifier`
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupBidModifier]
@@ -3513,6 +4375,21 @@ module Google
         # Corresponds to the JSON property `adGroupCriterion`
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupCriterion]
         attr_accessor :ad_group_criterion
+      
+        # A relationship between an ad group criterion and a label.
+        # Corresponds to the JSON property `adGroupCriterionLabel`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupCriterionLabel]
+        attr_accessor :ad_group_criterion_label
+      
+        # A relationship between an ad group and a label.
+        # Corresponds to the JSON property `adGroupLabel`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupLabel]
+        attr_accessor :ad_group_label
+      
+        # An age range view.
+        # Corresponds to the JSON property `ageRangeView`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAgeRangeView]
+        attr_accessor :age_range_view
       
         # A bidding strategy.
         # Corresponds to the JSON property `biddingStrategy`
@@ -3524,6 +4401,14 @@ module Google
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesCampaign]
         attr_accessor :campaign
       
+        # A campaign audience view. Includes performance data from interests and
+        # remarketing lists for Display Network and YouTube Network ads, and remarketing
+        # lists for search ads (RLSA), aggregated by campaign and audience criterion.
+        # This view only includes audiences attached at the campaign level.
+        # Corresponds to the JSON property `campaignAudienceView`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesCampaignAudienceView]
+        attr_accessor :campaign_audience_view
+      
         # A campaign budget.
         # Corresponds to the JSON property `campaignBudget`
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesCampaignBudget]
@@ -3533,6 +4418,11 @@ module Google
         # Corresponds to the JSON property `campaignCriterion`
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesCampaignCriterion]
         attr_accessor :campaign_criterion
+      
+        # Represents a relationship between a campaign and a label.
+        # Corresponds to the JSON property `campaignLabel`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesCampaignLabel]
+        attr_accessor :campaign_label
       
         # A conversion action.
         # Corresponds to the JSON property `conversionAction`
@@ -3561,10 +4451,30 @@ module Google
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesCustomerManagerLink]
         attr_accessor :customer_manager_link
       
+        # A dynamic search ads search term view.
+        # Corresponds to the JSON property `dynamicSearchAdsSearchTermView`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesDynamicSearchAdsSearchTermView]
+        attr_accessor :dynamic_search_ads_search_term_view
+      
+        # A gender view.
+        # Corresponds to the JSON property `genderView`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesGenderView]
+        attr_accessor :gender_view
+      
         # A keyword view.
         # Corresponds to the JSON property `keywordView`
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesKeywordView]
         attr_accessor :keyword_view
+      
+        # A label.
+        # Corresponds to the JSON property `label`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesLabel]
+        attr_accessor :label
+      
+        # A location view summarizes the performance of campaigns by Location criteria.
+        # Corresponds to the JSON property `locationView`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesLocationView]
+        attr_accessor :location_view
       
         # Metrics data.
         # Corresponds to the JSON property `metrics`
@@ -3581,6 +4491,16 @@ module Google
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonSegments]
         attr_accessor :segments
       
+        # A user list. This is a list of users a customer may target.
+        # Corresponds to the JSON property `userList`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesUserList]
+        attr_accessor :user_list
+      
+        # A webpage view.
+        # Corresponds to the JSON property `webpageView`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesWebpageView]
+        attr_accessor :webpage_view
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3588,21 +4508,35 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ad_group = args[:ad_group] if args.key?(:ad_group)
+          @ad_group_ad = args[:ad_group_ad] if args.key?(:ad_group_ad)
+          @ad_group_ad_label = args[:ad_group_ad_label] if args.key?(:ad_group_ad_label)
+          @ad_group_audience_view = args[:ad_group_audience_view] if args.key?(:ad_group_audience_view)
           @ad_group_bid_modifier = args[:ad_group_bid_modifier] if args.key?(:ad_group_bid_modifier)
           @ad_group_criterion = args[:ad_group_criterion] if args.key?(:ad_group_criterion)
+          @ad_group_criterion_label = args[:ad_group_criterion_label] if args.key?(:ad_group_criterion_label)
+          @ad_group_label = args[:ad_group_label] if args.key?(:ad_group_label)
+          @age_range_view = args[:age_range_view] if args.key?(:age_range_view)
           @bidding_strategy = args[:bidding_strategy] if args.key?(:bidding_strategy)
           @campaign = args[:campaign] if args.key?(:campaign)
+          @campaign_audience_view = args[:campaign_audience_view] if args.key?(:campaign_audience_view)
           @campaign_budget = args[:campaign_budget] if args.key?(:campaign_budget)
           @campaign_criterion = args[:campaign_criterion] if args.key?(:campaign_criterion)
+          @campaign_label = args[:campaign_label] if args.key?(:campaign_label)
           @conversion_action = args[:conversion_action] if args.key?(:conversion_action)
           @custom_columns = args[:custom_columns] if args.key?(:custom_columns)
           @customer = args[:customer] if args.key?(:customer)
           @customer_client = args[:customer_client] if args.key?(:customer_client)
           @customer_manager_link = args[:customer_manager_link] if args.key?(:customer_manager_link)
+          @dynamic_search_ads_search_term_view = args[:dynamic_search_ads_search_term_view] if args.key?(:dynamic_search_ads_search_term_view)
+          @gender_view = args[:gender_view] if args.key?(:gender_view)
           @keyword_view = args[:keyword_view] if args.key?(:keyword_view)
+          @label = args[:label] if args.key?(:label)
+          @location_view = args[:location_view] if args.key?(:location_view)
           @metrics = args[:metrics] if args.key?(:metrics)
           @product_group_view = args[:product_group_view] if args.key?(:product_group_view)
           @segments = args[:segments] if args.key?(:segments)
+          @user_list = args[:user_list] if args.key?(:user_list)
+          @webpage_view = args[:webpage_view] if args.key?(:webpage_view)
         end
       end
       
