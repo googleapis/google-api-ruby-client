@@ -521,6 +521,7 @@ module Google
       
           property :input_uri, as: 'inputUri'
           hash :labels, as: 'labels'
+          property :mode, as: 'mode'
           property :name, as: 'name'
           property :output_uri, as: 'outputUri'
           property :start_time, as: 'startTime'
