@@ -342,7 +342,7 @@ module Google
       class GceInstance
         include Google::Apis::Core::Hashable
       
-        # Size of the boot disk in GB.
+        # Size of the boot disk in GB. Defaults to 50.
         # Corresponds to the JSON property `bootDiskSizeGb`
         # @return [Fixnum]
         attr_accessor :boot_disk_size_gb
@@ -369,9 +369,9 @@ module Google
         attr_accessor :pool_size
       
         # Email address of the service account that will be used on VM instances used to
-        # support this config. This service account must have permission to pull the
-        # specified container image. If not set, VMs will run without a service account,
-        # in which case the image must be publicly accessible.
+        # support this config. If not set, VMs will run with a Google-managed service
+        # account. This service account must have permission to pull the specified
+        # container image, otherwise the image must be publicly accessible.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
         attr_accessor :service_account
@@ -407,14 +407,14 @@ module Google
       class GceRegionalPersistentDisk
         include Google::Apis::Core::Hashable
       
-        # Type of the disk to use.
+        # Type of the disk to use. Defaults to pd-standard.
         # Corresponds to the JSON property `diskType`
         # @return [String]
         attr_accessor :disk_type
       
         # Type of file system that the disk should be formatted with. The workstation
         # image must support this file system type. Must be empty if source_snapshot is
-        # set.
+        # set. Defaults to ext4.
         # Corresponds to the JSON property `fsType`
         # @return [String]
         attr_accessor :fs_type
@@ -425,7 +425,8 @@ module Google
         # @return [String]
         attr_accessor :reclaim_policy
       
-        # Size of the disk in GB. Must be empty if source_snapshot is set.
+        # Size of the disk in GB. Must be empty if source_snapshot is set. Defaults to
+        # 200.
         # Corresponds to the JSON property `sizeGb`
         # @return [Fixnum]
         attr_accessor :size_gb
