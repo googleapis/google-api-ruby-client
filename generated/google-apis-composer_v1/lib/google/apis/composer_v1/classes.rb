@@ -291,6 +291,15 @@ module Google
       class EnvironmentConfig
         include Google::Apis::Core::Hashable
       
+        # Output only. The 'bring your own identity' variant of the URI of the Apache
+        # Airflow Web UI hosted within this environment, to be accessed with external
+        # identities using workforce identity federation (see [Access environments with
+        # workforce identity federation](/composer/docs/composer-2/access-environments-
+        # with-workforce-identity-federation)).
+        # Corresponds to the JSON property `airflowByoidUri`
+        # @return [String]
+        attr_accessor :airflow_byoid_uri
+      
         # Output only. The URI of the Apache Airflow Web UI hosted within this
         # environment (see [Airflow web interface](/composer/docs/how-to/accessing/
         # airflow-web-interface)).
@@ -402,6 +411,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @airflow_byoid_uri = args[:airflow_byoid_uri] if args.key?(:airflow_byoid_uri)
           @airflow_uri = args[:airflow_uri] if args.key?(:airflow_uri)
           @dag_gcs_prefix = args[:dag_gcs_prefix] if args.key?(:dag_gcs_prefix)
           @database_config = args[:database_config] if args.key?(:database_config)
