@@ -76,6 +76,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Binary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BuildOccurrence
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -576,6 +582,14 @@ module Google
         end
       end
       
+      class Binary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :version, as: 'version'
+        end
+      end
+      
       class BuildOccurrence
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1066,6 +1080,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :architecture, as: 'architecture'
+          property :binary, as: 'binary', class: Google::Apis::OndemandscanningV1beta1::Binary, decorator: Google::Apis::OndemandscanningV1beta1::Binary::Representation
+      
           property :cpe_uri, as: 'cpeUri'
           collection :dependency_chain, as: 'dependencyChain', class: Google::Apis::OndemandscanningV1beta1::LanguagePackageDependency, decorator: Google::Apis::OndemandscanningV1beta1::LanguagePackageDependency::Representation
       
