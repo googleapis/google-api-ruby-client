@@ -2113,7 +2113,7 @@ module Google
       class RrSetRoutingPolicyLoadBalancerTarget
         include Google::Apis::Core::Hashable
       
-        # The frontend IP address of the
+        # The frontend IP address of the Load Balancer to health check.
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
         attr_accessor :ip_address
@@ -2128,29 +2128,31 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # 
+        # The type of Load Balancer specified by this target. Must match the
+        # configuration of the Load Balancer located at the LoadBalancerTarget's IP
+        # address/port and region.
         # Corresponds to the JSON property `loadBalancerType`
         # @return [String]
         attr_accessor :load_balancer_type
       
-        # The fully qualified url of the network on which the ILB is
+        # The fully qualified url of the network on which the ILB is present. This
+        # should be formatted like https://www.googleapis.com/compute/v1/projects/`
+        # project`/global/networks/`network`
         # Corresponds to the JSON property `networkUrl`
         # @return [String]
         attr_accessor :network_url
       
-        # Load Balancer to health check. The configured port of the Load Balancer.
+        # The configured port of the Load Balancer.
         # Corresponds to the JSON property `port`
         # @return [String]
         attr_accessor :port
       
-        # present. This should be formatted like https://www.googleapis.com/compute/v1/
-        # projects/`project`/global/networks/`network` The project ID in which the ILB
-        # exists.
+        # The project ID in which the ILB exists.
         # Corresponds to the JSON property `project`
         # @return [String]
         attr_accessor :project
       
-        # The region for regional ILBs.
+        # The region in which the ILB exists.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
