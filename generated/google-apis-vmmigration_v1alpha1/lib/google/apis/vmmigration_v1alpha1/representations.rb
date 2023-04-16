@@ -136,6 +136,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CutoverForecast
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CutoverJob
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -701,6 +707,13 @@ module Google
         end
       end
       
+      class CutoverForecast
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :estimated_cutover_job_duration, as: 'estimatedCutoverJobDuration'
+        end
+      end
+      
       class CutoverJob
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -973,6 +986,8 @@ module Google
       
           property :create_time, as: 'createTime'
           property :current_sync_info, as: 'currentSyncInfo', class: Google::Apis::VmmigrationV1alpha1::ReplicationCycle, decorator: Google::Apis::VmmigrationV1alpha1::ReplicationCycle::Representation
+      
+          property :cutover_forecast, as: 'cutoverForecast', class: Google::Apis::VmmigrationV1alpha1::CutoverForecast, decorator: Google::Apis::VmmigrationV1alpha1::CutoverForecast::Representation
       
           property :description, as: 'description'
           property :display_name, as: 'displayName'
