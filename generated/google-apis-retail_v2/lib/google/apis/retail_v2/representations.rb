@@ -2160,13 +2160,13 @@ module Google
       class GoogleCloudRetailV2SearchRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :banner, as: 'banner'
           property :boost_spec, as: 'boostSpec', class: Google::Apis::RetailV2::GoogleCloudRetailV2SearchRequestBoostSpec, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2SearchRequestBoostSpec::Representation
       
           property :branch, as: 'branch'
           property :canonical_filter, as: 'canonicalFilter'
           property :dynamic_facet_spec, as: 'dynamicFacetSpec', class: Google::Apis::RetailV2::GoogleCloudRetailV2SearchRequestDynamicFacetSpec, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2SearchRequestDynamicFacetSpec::Representation
       
+          property :entity, as: 'entity'
           collection :facet_specs, as: 'facetSpecs', class: Google::Apis::RetailV2::GoogleCloudRetailV2SearchRequestFacetSpec, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2SearchRequestFacetSpec::Representation
       
           property :filter, as: 'filter'
@@ -2413,10 +2413,10 @@ module Google
           hash :attributes, as: 'attributes', class: Google::Apis::RetailV2::GoogleCloudRetailV2CustomAttribute, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2CustomAttribute::Representation
       
           property :attribution_token, as: 'attributionToken'
-          property :banner, as: 'banner'
           property :cart_id, as: 'cartId'
           property :completion_detail, as: 'completionDetail', class: Google::Apis::RetailV2::GoogleCloudRetailV2CompletionDetail, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2CompletionDetail::Representation
       
+          property :entity, as: 'entity'
           property :event_time, as: 'eventTime'
           property :event_type, as: 'eventType'
           collection :experiment_ids, as: 'experimentIds'
