@@ -2485,6 +2485,46 @@ module Google
         end
       end
       
+      # Location of the source in any accessible Git repository.
+      class GitSource
+        include Google::Apis::Core::Hashable
+      
+        # Directory, relative to the source root, in which to run the build. This must
+        # be a relative path. If a step's `dir` is specified and is an absolute path,
+        # this value is ignored for that step's execution.
+        # Corresponds to the JSON property `dir`
+        # @return [String]
+        attr_accessor :dir
+      
+        # The revision to fetch from the Git repository such as a branch, a tag, a
+        # commit SHA, or any Git ref. Cloud Build uses `git fetch` to fetch the revision
+        # from the Git repository; therefore make sure that the string you provide for `
+        # revision` is parsable by the command. For information on string values
+        # accepted by `git fetch`, see https://git-scm.com/docs/gitrevisions#
+        # _specifying_revisions. For information on `git fetch`, see https://git-scm.com/
+        # docs/git-fetch.
+        # Corresponds to the JSON property `revision`
+        # @return [String]
+        attr_accessor :revision
+      
+        # Location of the Git repo to build. This will be used as a `git remote`, see
+        # https://git-scm.com/docs/git-remote.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dir = args[:dir] if args.key?(:dir)
+          @revision = args[:revision] if args.key?(:revision)
+          @url = args[:url] if args.key?(:url)
+        end
+      end
+      
       # Container message for hash values.
       class HashProp
         include Google::Apis::Core::Hashable
@@ -3626,6 +3666,11 @@ module Google
       class Source
         include Google::Apis::Core::Hashable
       
+        # Location of the source in any accessible Git repository.
+        # Corresponds to the JSON property `gitSource`
+        # @return [Google::Apis::CloudbuildV1::GitSource]
+        attr_accessor :git_source
+      
         # Location of the source in a Google Cloud Source Repository.
         # Corresponds to the JSON property `repoSource`
         # @return [Google::Apis::CloudbuildV1::RepoSource]
@@ -3649,6 +3694,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @git_source = args[:git_source] if args.key?(:git_source)
           @repo_source = args[:repo_source] if args.key?(:repo_source)
           @storage_source = args[:storage_source] if args.key?(:storage_source)
           @storage_source_manifest = args[:storage_source_manifest] if args.key?(:storage_source_manifest)
