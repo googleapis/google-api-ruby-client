@@ -972,6 +972,15 @@ module Google
       class DisableCertificateAuthorityRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. This field allows this CA to be disabled even if it's being depended
+        # on by another resource. However, doing so may result in unintended and
+        # unrecoverable effects on any dependent resource(s) since the CA will no longer
+        # be able to issue certificates.
+        # Corresponds to the JSON property `ignoreDependentResources`
+        # @return [Boolean]
+        attr_accessor :ignore_dependent_resources
+        alias_method :ignore_dependent_resources?, :ignore_dependent_resources
+      
         # Optional. An ID to identify requests. Specify a unique request ID so that if
         # you must retry your request, the server will know to ignore the request if it
         # has already been completed. The server will guarantee that for at least 60
@@ -992,6 +1001,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ignore_dependent_resources = args[:ignore_dependent_resources] if args.key?(:ignore_dependent_resources)
           @request_id = args[:request_id] if args.key?(:request_id)
         end
       end
