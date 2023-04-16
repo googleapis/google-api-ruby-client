@@ -501,7 +501,7 @@ module Google
       class AssetList
         include Google::Apis::Core::Hashable
       
-        # A list of asset IDs
+        # Required. A list of asset IDs
         # Corresponds to the JSON property `assetIds`
         # @return [Array<String>]
         attr_accessor :asset_ids
@@ -1879,7 +1879,7 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # The payload format.
+        # Required. The payload format.
         # Corresponds to the JSON property `format`
         # @return [String]
         attr_accessor :format
@@ -3395,7 +3395,7 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Collection of combinations of groups and preference sets.
+        # Required. Collection of combinations of groups and preference sets.
         # Corresponds to the JSON property `groupPreferencesetAssignments`
         # @return [Array<Google::Apis::MigrationcenterV1alpha1::ReportConfigGroupPreferenceSetAssignment>]
         attr_accessor :group_preferenceset_assignments
@@ -3429,12 +3429,12 @@ module Google
       class ReportConfigGroupPreferenceSetAssignment
         include Google::Apis::Core::Hashable
       
-        # Name of the group.
+        # Required. Name of the group.
         # Corresponds to the JSON property `group`
         # @return [String]
         attr_accessor :group
       
-        # Name of the Preference Set.
+        # Required. Name of the Preference Set.
         # Corresponds to the JSON property `preferenceSet`
         # @return [String]
         attr_accessor :preference_set
