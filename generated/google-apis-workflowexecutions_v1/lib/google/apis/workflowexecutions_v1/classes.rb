@@ -131,6 +131,11 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Describes an error related to the current state of the Execution resource.
+        # Corresponds to the JSON property `stateError`
+        # @return [Google::Apis::WorkflowexecutionsV1::StateError]
+        attr_accessor :state_error
+      
         # Represents the current status of this execution.
         # Corresponds to the JSON property `status`
         # @return [Google::Apis::WorkflowexecutionsV1::Status]
@@ -157,6 +162,7 @@ module Google
           @result = args[:result] if args.key?(:result)
           @start_time = args[:start_time] if args.key?(:start_time)
           @state = args[:state] if args.key?(:state)
+          @state_error = args[:state_error] if args.key?(:state_error)
           @status = args[:status] if args.key?(:status)
           @workflow_revision_id = args[:workflow_revision_id] if args.key?(:workflow_revision_id)
         end
@@ -332,6 +338,31 @@ module Google
           @position = args[:position] if args.key?(:position)
           @routine = args[:routine] if args.key?(:routine)
           @step = args[:step] if args.key?(:step)
+        end
+      end
+      
+      # Describes an error related to the current state of the Execution resource.
+      class StateError
+        include Google::Apis::Core::Hashable
+      
+        # Provides specifics about the error.
+        # Corresponds to the JSON property `details`
+        # @return [String]
+        attr_accessor :details
+      
+        # The type of this state error.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @details = args[:details] if args.key?(:details)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
