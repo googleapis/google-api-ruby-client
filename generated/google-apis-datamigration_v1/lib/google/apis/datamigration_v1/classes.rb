@@ -1344,6 +1344,11 @@ module Google
         # @return [String]
         attr_accessor :draft_entity
       
+        # Type of draft entity.
+        # Corresponds to the JSON property `draftType`
+        # @return [String]
+        attr_accessor :draft_type
+      
         # Entity mapping log entries. Multiple rules can be effective and contribute
         # changes to a converted entity, such as a rule can handle the entity name,
         # another rule can handle an entity type. In addition, rules which did not
@@ -1359,6 +1364,11 @@ module Google
         # @return [String]
         attr_accessor :source_entity
       
+        # Type of source entity.
+        # Corresponds to the JSON property `sourceType`
+        # @return [String]
+        attr_accessor :source_type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1366,8 +1376,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @draft_entity = args[:draft_entity] if args.key?(:draft_entity)
+          @draft_type = args[:draft_type] if args.key?(:draft_type)
           @mapping_log = args[:mapping_log] if args.key?(:mapping_log)
           @source_entity = args[:source_entity] if args.key?(:source_entity)
+          @source_type = args[:source_type] if args.key?(:source_type)
         end
       end
       
