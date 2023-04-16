@@ -1232,8 +1232,11 @@ module Google
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo]
         attr_accessor :profile
       
-        # The field data type. Possible values include: STRING BYTE INT64 INT32 INT16
-        # DOUBLE FLOAT DECIMAL BOOLEAN BINARY TIMESTAMP DATE TIME NULL RECORD
+        # The data type retrieved from the schema of the data source. For instance, for
+        # a BigQuery native table, it is the BigQuery Table Schema (https://cloud.google.
+        # com/bigquery/docs/reference/rest/v2/tables#tablefieldschema). For a Dataplex
+        # Entity, it is the Entity Schema (https://cloud.google.com/dataplex/docs/
+        # reference/rpc/google.cloud.dataplex.v1#type_3).
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -2670,8 +2673,7 @@ module Google
         # Required. A user-provided entity ID. It is mutable, and will be used as the
         # published table name. Specifying a new ID in an update entity request will
         # override the existing value. The ID must contain only letters (a-z, A-Z),
-        # numbers (0-9), and underscores. Must begin with a letter and consist of 256 or
-        # fewer characters.
+        # numbers (0-9), and underscores, and consist of 256 or fewer characters.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
