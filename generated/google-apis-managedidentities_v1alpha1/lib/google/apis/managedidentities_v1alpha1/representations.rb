@@ -526,6 +526,7 @@ module Google
       class DomainJoinMachineRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :force, as: 'force'
           property :ou_name, as: 'ouName'
           property :vm_id_token, as: 'vmIdToken'
         end

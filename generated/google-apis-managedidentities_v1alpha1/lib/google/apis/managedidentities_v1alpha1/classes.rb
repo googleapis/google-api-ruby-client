@@ -549,6 +549,13 @@ module Google
       class DomainJoinMachineRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. force if True, forces domain join even if the computer account
+        # already exists.
+        # Corresponds to the JSON property `force`
+        # @return [Boolean]
+        attr_accessor :force
+        alias_method :force?, :force
+      
         # Optional. OU name where the VM needs to be domain joined
         # Corresponds to the JSON property `ouName`
         # @return [String]
@@ -567,6 +574,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @force = args[:force] if args.key?(:force)
           @ou_name = args[:ou_name] if args.key?(:ou_name)
           @vm_id_token = args[:vm_id_token] if args.key?(:vm_id_token)
         end
