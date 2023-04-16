@@ -2451,7 +2451,7 @@ module Google
       class GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup
         include Google::Apis::Core::Hashable
       
-        # A list of phase match rules that are included in this group.
+        # A list of phrase match rules that are included in this group.
         # Corresponds to the JSON property `phraseMatchRules`
         # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1PhraseMatchRule>]
         attr_accessor :phrase_match_rules
