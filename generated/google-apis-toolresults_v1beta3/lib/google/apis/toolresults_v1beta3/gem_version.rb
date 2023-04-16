@@ -16,13 +16,13 @@ module Google
   module Apis
     module ToolresultsV1beta3
       # Version of the google-apis-toolresults_v1beta3 gem
-      GEM_VERSION = "0.19.0"
+      GEM_VERSION = "0.20.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.12.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20230119"
+      REVISION = "20230410"
     end
   end
 end

@@ -869,8 +869,8 @@ module Google
         # Publish xml files to an existing Step. May return any of the following
         # canonical error codes: - PERMISSION_DENIED - if the user is not authorized to
         # write project - INVALID_ARGUMENT - if the request is malformed -
-        # FAILED_PRECONDITION - if the requested state transition is illegal, e.g try to
-        # upload a duplicate xml file or a file too large. - NOT_FOUND - if the
+        # FAILED_PRECONDITION - if the requested state transition is illegal, e.g. try
+        # to upload a duplicate xml file or a file too large. - NOT_FOUND - if the
         # containing Execution does not exist
         # @param [String] project_id
         #   A Project id. Required.
