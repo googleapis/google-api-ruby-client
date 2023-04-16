@@ -204,6 +204,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Type of notification
+        # Corresponds to the JSON property `notificationType`
+        # @return [String]
+        attr_accessor :notification_type
+      
         # A subject line of a notification.
         # Corresponds to the JSON property `subject`
         # @return [Google::Apis::AdvisorynotificationsV1::GoogleCloudAdvisorynotificationsV1Subject]
@@ -218,6 +223,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @messages = args[:messages] if args.key?(:messages)
           @name = args[:name] if args.key?(:name)
+          @notification_type = args[:notification_type] if args.key?(:notification_type)
           @subject = args[:subject] if args.key?(:subject)
         end
       end
