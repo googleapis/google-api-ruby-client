@@ -3724,13 +3724,6 @@ module Google
       class GoogleCloudRetailV2SearchRequest
         include Google::Apis::Core::Hashable
       
-        # Represents the banner in request, for projects that combine banners. For
-        # example: a retailer can sell products under different banners like retailer-
-        # main, retailer-baby, retailer-meds, etc. under one project.
-        # Corresponds to the JSON property `banner`
-        # @return [String]
-        attr_accessor :banner
-      
         # Boost specification to boost certain items.
         # Corresponds to the JSON property `boostSpec`
         # @return [Google::Apis::RetailV2::GoogleCloudRetailV2SearchRequestBoostSpec]
@@ -3759,8 +3752,16 @@ module Google
         # @return [Google::Apis::RetailV2::GoogleCloudRetailV2SearchRequestDynamicFacetSpec]
         attr_accessor :dynamic_facet_spec
       
+        # The entity for customers that may run multiple different entities, domains,
+        # sites or regions, for example, "Google US", "Google Ads", "Waymo", "google.com"
+        # , "youtube.com", etc. If this is set, it should be exactly matched with
+        # UserEvent.entity to get search results boosted by entity.
+        # Corresponds to the JSON property `entity`
+        # @return [String]
+        attr_accessor :entity
+      
         # Facet specifications for faceted search. If empty, no facets are returned. A
-        # maximum of 100 values are allowed. Otherwise, an INVALID_ARGUMENT error is
+        # maximum of 200 values are allowed. Otherwise, an INVALID_ARGUMENT error is
         # returned.
         # Corresponds to the JSON property `facetSpecs`
         # @return [Array<Google::Apis::RetailV2::GoogleCloudRetailV2SearchRequestFacetSpec>]
@@ -3912,11 +3913,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @banner = args[:banner] if args.key?(:banner)
           @boost_spec = args[:boost_spec] if args.key?(:boost_spec)
           @branch = args[:branch] if args.key?(:branch)
           @canonical_filter = args[:canonical_filter] if args.key?(:canonical_filter)
           @dynamic_facet_spec = args[:dynamic_facet_spec] if args.key?(:dynamic_facet_spec)
+          @entity = args[:entity] if args.key?(:entity)
           @facet_specs = args[:facet_specs] if args.key?(:facet_specs)
           @filter = args[:filter] if args.key?(:filter)
           @labels = args[:labels] if args.key?(:labels)
@@ -4939,13 +4940,6 @@ module Google
         # @return [String]
         attr_accessor :attribution_token
       
-        # Represents the banner of the user event, for projects that combine banners.
-        # For example: retailer can have events from multiple banners like retailer-main,
-        # retailer-baby, retailer-meds, etc. under one project.
-        # Corresponds to the JSON property `banner`
-        # @return [String]
-        attr_accessor :banner
-      
         # The ID or name of the associated shopping cart. This ID is used to associate
         # multiple items added or present in the cart before purchase. This can only be
         # set for `add-to-cart`, `purchase-complete`, or `shopping-cart-page-view`
@@ -4959,6 +4953,14 @@ module Google
         # Corresponds to the JSON property `completionDetail`
         # @return [Google::Apis::RetailV2::GoogleCloudRetailV2CompletionDetail]
         attr_accessor :completion_detail
+      
+        # The entity for customers that may run multiple different entities, domains,
+        # sites or regions, for example, "Google US", "Google Ads", "Waymo", "google.com"
+        # , "youtube.com", etc. It is recommended to set this field to get better per-
+        # entity search, completion and prediction results.
+        # Corresponds to the JSON property `entity`
+        # @return [String]
+        attr_accessor :entity
       
         # Only required for UserEventService.ImportUserEvents method. Timestamp of when
         # the user event happened.
@@ -5113,9 +5115,9 @@ module Google
         def update!(**args)
           @attributes = args[:attributes] if args.key?(:attributes)
           @attribution_token = args[:attribution_token] if args.key?(:attribution_token)
-          @banner = args[:banner] if args.key?(:banner)
           @cart_id = args[:cart_id] if args.key?(:cart_id)
           @completion_detail = args[:completion_detail] if args.key?(:completion_detail)
+          @entity = args[:entity] if args.key?(:entity)
           @event_time = args[:event_time] if args.key?(:event_time)
           @event_type = args[:event_type] if args.key?(:event_type)
           @experiment_ids = args[:experiment_ids] if args.key?(:experiment_ids)
