@@ -1145,6 +1145,12 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1RiskAnalysis
         include Google::Apis::Core::Hashable
       
+        # Extended verdict reasons to be used for experimentation only. The set of
+        # possible reasons is subject to change.
+        # Corresponds to the JSON property `extendedVerdictReasons`
+        # @return [Array<String>]
+        attr_accessor :extended_verdict_reasons
+      
         # Reasons contributing to the risk analysis verdict.
         # Corresponds to the JSON property `reasons`
         # @return [Array<String>]
@@ -1162,6 +1168,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @extended_verdict_reasons = args[:extended_verdict_reasons] if args.key?(:extended_verdict_reasons)
           @reasons = args[:reasons] if args.key?(:reasons)
           @score = args[:score] if args.key?(:score)
         end
