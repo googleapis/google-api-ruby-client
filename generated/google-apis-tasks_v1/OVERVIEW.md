@@ -1,6 +1,6 @@
-# Simple REST client for version V1 of the Tasks API
+# Simple REST client for version V1 of the Google Tasks API
 
-This is a simple client library for version V1 of the Tasks API. It provides:
+This is a simple client library for version V1 of the Google Tasks API. It provides:
 
 * A client object that connects to the HTTP/JSON REST endpoint for the service.
 * Ruby objects for data structures related to the service.
@@ -65,7 +65,7 @@ More detailed descriptions of the Google simple REST clients are available in tw
 
 (Note: the above documents are written for the simple REST clients in general, and their examples may not reflect the Tasks service in particular.)
 
-For reference information on specific calls in the Tasks API, see the {Google::Apis::TasksV1::TasksService class reference docs}.
+For reference information on specific calls in the Google Tasks API, see the {Google::Apis::TasksV1::TasksService class reference docs}.
 
 ## Which client should I use?
 

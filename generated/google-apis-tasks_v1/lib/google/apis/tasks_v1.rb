@@ -19,13 +19,13 @@ require 'google/apis/tasks_v1/gem_version.rb'
 
 module Google
   module Apis
-    # Tasks API
+    # Google Tasks API
     #
     # The Google Tasks API lets you manage your tasks and task lists.
     #
     # @see https://developers.google.com/tasks/
     module TasksV1
-      # Version of the Tasks API this client connects to.
+      # Version of the Google Tasks API this client connects to.
       # This is NOT the gem version.
       VERSION = 'V1'
 
