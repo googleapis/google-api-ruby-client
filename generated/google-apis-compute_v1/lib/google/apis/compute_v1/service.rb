@@ -30716,6 +30716,10 @@ module Google
         #   of available results is larger than `maxResults`, Compute Engine returns a `
         #   nextPageToken` that can be used to get the next page of results in subsequent
         #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
+        # @param [String] nat_name
+        #   Name of the nat service to filter the Nat Mapping information. If it is
+        #   omitted, all nats for this router will be returned. Name should conform to
+        #   RFC1035.
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name. You can also sort results in
@@ -30749,7 +30753,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_router_nat_mapping_info(project, region, router, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_router_nat_mapping_info(project, region, router, filter: nil, max_results: nil, nat_name: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/routers/{router}/getNatMappingInfo', options)
           command.response_representation = Google::Apis::ComputeV1::VmEndpointNatMappingsList::Representation
           command.response_class = Google::Apis::ComputeV1::VmEndpointNatMappingsList
@@ -30758,6 +30762,7 @@ module Google
           command.params['router'] = router unless router.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['natName'] = nat_name unless nat_name.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?

@@ -1526,6 +1526,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :provisioned_iops
       
+        # Required for each regional disk associated with the instance. Specify the URLs
+        # of the zones where the disk should be replicated to. You must provide exactly
+        # two replica zones, and one zone must be the same as the instance zone. You can'
+        # t use this option with boot disks.
+        # Corresponds to the JSON property `replicaZones`
+        # @return [Array<String>]
+        attr_accessor :replica_zones
+      
         # Resource manager tags to be bound to the disk. Tag keys and values have the
         # same definition as resource manager tags. Keys must be in the format `tagKeys/`
         # tag_key_id``, and values are in the format `tagValues/456`. The field is
@@ -1597,6 +1605,7 @@ module Google
           @licenses = args[:licenses] if args.key?(:licenses)
           @on_update_action = args[:on_update_action] if args.key?(:on_update_action)
           @provisioned_iops = args[:provisioned_iops] if args.key?(:provisioned_iops)
+          @replica_zones = args[:replica_zones] if args.key?(:replica_zones)
           @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
           @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
           @source_image = args[:source_image] if args.key?(:source_image)
@@ -8816,6 +8825,13 @@ module Google
         attr_accessor :allow_global_access
         alias_method :allow_global_access?, :allow_global_access
       
+        # This is used in PSC consumer ForwardingRule to control whether the PSC
+        # endpoint can be accessed from another region.
+        # Corresponds to the JSON property `allowPscGlobalAccess`
+        # @return [Boolean]
+        attr_accessor :allow_psc_global_access
+        alias_method :allow_psc_global_access?, :allow_psc_global_access
+      
         # Identifies the backend service to which the forwarding rule sends traffic.
         # Required for Internal TCP/UDP Load Balancing and Network Load Balancing; must
         # be omitted for all other load balancer types.
@@ -8941,9 +8957,11 @@ module Google
       
         # This field is not used for external load balancing. For Internal TCP/UDP Load
         # Balancing, this field identifies the network that the load balanced IP should
-        # belong to for this Forwarding Rule. If this field is not specified, the
-        # default network will be used. For Private Service Connect forwarding rules
-        # that forward traffic to Google APIs, a network must be provided.
+        # belong to for this Forwarding Rule. If the subnetwork is specified, the
+        # network of the subnetwork will be used. If neither subnetwork nor this field
+        # is specified, the default network will be used. For Private Service Connect
+        # forwarding rules that forward traffic to Google APIs, a network must be
+        # provided.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -9090,6 +9108,7 @@ module Google
           @ip_protocol = args[:ip_protocol] if args.key?(:ip_protocol)
           @all_ports = args[:all_ports] if args.key?(:all_ports)
           @allow_global_access = args[:allow_global_access] if args.key?(:allow_global_access)
+          @allow_psc_global_access = args[:allow_psc_global_access] if args.key?(:allow_psc_global_access)
           @backend_service = args[:backend_service] if args.key?(:backend_service)
           @base_forwarding_rule = args[:base_forwarding_rule] if args.key?(:base_forwarding_rule)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
@@ -20532,7 +20551,7 @@ module Google
         # @return [String]
         attr_accessor :project_id_or_num
       
-        # Alias IP ranges from the same subnetwork
+        # Alias IP ranges from the same subnetwork.
         # Corresponds to the JSON property `secondaryIpCidrRanges`
         # @return [Array<String>]
         attr_accessor :secondary_ip_cidr_ranges
@@ -33238,7 +33257,8 @@ module Google
       class SecurityPolicyAdaptiveProtectionConfig
         include Google::Apis::Core::Hashable
       
-        # Configuration options for L7 DDoS detection.
+        # Configuration options for L7 DDoS detection. This field is only supported in
+        # Global Security Policies of type CLOUD_ARMOR.
         # Corresponds to the JSON property `layer7DdosDefenseConfig`
         # @return [Google::Apis::ComputeV1::SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig]
         attr_accessor :layer7_ddos_defense_config
@@ -33253,18 +33273,21 @@ module Google
         end
       end
       
-      # Configuration options for L7 DDoS detection.
+      # Configuration options for L7 DDoS detection. This field is only supported in
+      # Global Security Policies of type CLOUD_ARMOR.
       class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig
         include Google::Apis::Core::Hashable
       
-        # If set to true, enables CAAP for L7 DDoS detection.
+        # If set to true, enables CAAP for L7 DDoS detection. This field is only
+        # supported in Global Security Policies of type CLOUD_ARMOR.
         # Corresponds to the JSON property `enable`
         # @return [Boolean]
         attr_accessor :enable
         alias_method :enable?, :enable
       
         # Rule visibility can be one of the following: STANDARD - opaque rules. (default)
-        # PREMIUM - transparent rules.
+        # PREMIUM - transparent rules. This field is only supported in Global Security
+        # Policies of type CLOUD_ARMOR.
         # Corresponds to the JSON property `ruleVisibility`
         # @return [String]
         attr_accessor :rule_visibility
@@ -33474,7 +33497,8 @@ module Google
         # using the redirect action with the type of GOOGLE_RECAPTCHA under the security
         # policy. The specified site key needs to be created from the reCAPTCHA API. The
         # user is responsible for the validity of the specified site key. If not
-        # specified, a Google-managed site key is used.
+        # specified, a Google-managed site key is used. This field is only supported in
+        # Global Security Policies of type CLOUD_ARMOR.
         # Corresponds to the JSON property `redirectSiteKey`
         # @return [String]
         attr_accessor :redirect_site_key
@@ -33522,7 +33546,8 @@ module Google
         # rate_limit_options to be set. - redirect: redirect to a different target. This
         # can either be an internal reCAPTCHA redirect, or an external URL-based
         # redirect via a 302 response. Parameters for this action can be configured via
-        # redirectOptions. - throttle: limit client traffic to the configured threshold.
+        # redirectOptions. This action is only supported in Global Security Policies of
+        # type CLOUD_ARMOR. - throttle: limit client traffic to the configured threshold.
         # Configure parameters for this action in rateLimitOptions. Requires
         # rate_limit_options to be set for this.
         # Corresponds to the JSON property `action`
@@ -33535,7 +33560,8 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Optional, additional actions that are performed on headers.
+        # Optional, additional actions that are performed on headers. This field is only
+        # supported in Global Security Policies of type CLOUD_ARMOR.
         # Corresponds to the JSON property `headerAction`
         # @return [Google::Apis::ComputeV1::SecurityPolicyRuleHttpHeaderAction]
         attr_accessor :header_action
@@ -33580,7 +33606,8 @@ module Google
         attr_accessor :rate_limit_options
       
         # Parameters defining the redirect action. Cannot be specified for any other
-        # actions.
+        # actions. This field is only supported in Global Security Policies of type
+        # CLOUD_ARMOR.
         # Corresponds to the JSON property `redirectOptions`
         # @return [Google::Apis::ComputeV1::SecurityPolicyRuleRedirectOptions]
         attr_accessor :redirect_options
@@ -33867,6 +33894,14 @@ module Google
         # @return [String]
         attr_accessor :enforce_on_key
       
+        # If specified, any combination of values of enforce_on_key_type/
+        # enforce_on_key_name is treated as the key on which ratelimit threshold/action
+        # is enforced. You can specify up to 3 enforce_on_key_configs. If
+        # enforce_on_key_configs is specified, enforce_on_key must not be specified.
+        # Corresponds to the JSON property `enforceOnKeyConfigs`
+        # @return [Array<Google::Apis::ComputeV1::SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig>]
+        attr_accessor :enforce_on_key_configs
+      
         # Rate limit key name applicable only for the following key types: HTTP_HEADER --
         # Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE --
         # Name of the HTTP cookie whose value is taken as the key value.
@@ -33878,13 +33913,15 @@ module Google
         # to either deny with a specified HTTP response code, or redirect to a
         # different endpoint. Valid options are `deny(STATUS)`, where valid values for `
         # STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect
-        # parameters come from `exceedRedirectOptions` below.
+        # parameters come from `exceedRedirectOptions` below. The `redirect` action is
+        # only supported in Global Security Policies of type CLOUD_ARMOR.
         # Corresponds to the JSON property `exceedAction`
         # @return [String]
         attr_accessor :exceed_action
       
         # Parameters defining the redirect action that is used as the exceed action.
-        # Cannot be specified if the exceed action is not redirect.
+        # Cannot be specified if the exceed action is not redirect. This field is only
+        # supported in Global Security Policies of type CLOUD_ARMOR.
         # Corresponds to the JSON property `exceedRedirectOptions`
         # @return [Google::Apis::ComputeV1::SecurityPolicyRuleRedirectOptions]
         attr_accessor :exceed_redirect_options
@@ -33904,10 +33941,56 @@ module Google
           @ban_threshold = args[:ban_threshold] if args.key?(:ban_threshold)
           @conform_action = args[:conform_action] if args.key?(:conform_action)
           @enforce_on_key = args[:enforce_on_key] if args.key?(:enforce_on_key)
+          @enforce_on_key_configs = args[:enforce_on_key_configs] if args.key?(:enforce_on_key_configs)
           @enforce_on_key_name = args[:enforce_on_key_name] if args.key?(:enforce_on_key_name)
           @exceed_action = args[:exceed_action] if args.key?(:exceed_action)
           @exceed_redirect_options = args[:exceed_redirect_options] if args.key?(:exceed_redirect_options)
           @rate_limit_threshold = args[:rate_limit_threshold] if args.key?(:rate_limit_threshold)
+        end
+      end
+      
+      # 
+      class SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig
+        include Google::Apis::Core::Hashable
+      
+        # Rate limit key name applicable only for the following key types: HTTP_HEADER --
+        # Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE --
+        # Name of the HTTP cookie whose value is taken as the key value.
+        # Corresponds to the JSON property `enforceOnKeyName`
+        # @return [String]
+        attr_accessor :enforce_on_key_name
+      
+        # Determines the key to enforce the rate_limit_threshold on. Possible values are:
+        # - ALL: A single rate limit threshold is applied to all the requests matching
+        # this rule. This is the default value if "enforceOnKeyConfigs" is not
+        # configured. - IP: The source IP address of the request is the key. Each IP has
+        # this limit enforced separately. - HTTP_HEADER: The value of the HTTP header
+        # whose name is configured under "enforceOnKeyName". The key value is truncated
+        # to the first 128 bytes of the header value. If no such header is present in
+        # the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e.
+        # the originating client IP address) specified in the list of IPs under X-
+        # Forwarded-For HTTP header. If no such header is present or the value is not a
+        # valid IP, the key defaults to the source IP address of the request i.e. key
+        # type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured
+        # under "enforceOnKeyName". The key value is truncated to the first 128 bytes of
+        # the cookie value. If no such cookie is present in the request, the key type
+        # defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value
+        # is truncated to the first 128 bytes. - SNI: Server name indication in the TLS
+        # session of the HTTPS request. The key value is truncated to the first 128
+        # bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The
+        # country/region from which the request originates.
+        # Corresponds to the JSON property `enforceOnKeyType`
+        # @return [String]
+        attr_accessor :enforce_on_key_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enforce_on_key_name = args[:enforce_on_key_name] if args.key?(:enforce_on_key_name)
+          @enforce_on_key_type = args[:enforce_on_key_type] if args.key?(:enforce_on_key_type)
         end
       end
       
