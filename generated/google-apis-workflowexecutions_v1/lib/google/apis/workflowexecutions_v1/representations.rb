@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StateError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -118,6 +124,8 @@ module Google
           property :result, as: 'result'
           property :start_time, as: 'startTime'
           property :state, as: 'state'
+          property :state_error, as: 'stateError', class: Google::Apis::WorkflowexecutionsV1::StateError, decorator: Google::Apis::WorkflowexecutionsV1::StateError::Representation
+      
           property :status, as: 'status', class: Google::Apis::WorkflowexecutionsV1::Status, decorator: Google::Apis::WorkflowexecutionsV1::Status::Representation
       
           property :workflow_revision_id, as: 'workflowRevisionId'
@@ -168,6 +176,14 @@ module Google
       
           property :routine, as: 'routine'
           property :step, as: 'step'
+        end
+      end
+      
+      class StateError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :details, as: 'details'
+          property :type, as: 'type'
         end
       end
       
