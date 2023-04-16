@@ -353,7 +353,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ekm_provisioning_error_domain, as: 'ekmProvisioningErrorDomain'
-          property :ekm_provisioning_error_message, as: 'ekmProvisioningErrorMessage'
+          property :ekm_provisioning_error_mapping, as: 'ekmProvisioningErrorMapping'
           property :ekm_provisioning_state, as: 'ekmProvisioningState'
         end
       end

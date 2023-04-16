@@ -178,8 +178,10 @@ module Google
         attr_accessor :acknowledged
         alias_method :acknowledged?, :acknowledged
       
-        # Optional. Timestamp when this violation was acknowledged last. This will be
-        # absent when acknowledged field is marked as false.
+        # Optional. Timestamp when this violation was acknowledged first. Check
+        # exception_contexts to find the last time the violation was acknowledged when
+        # there are more than one violations. This field will be absent when
+        # acknowledged field is marked as false.
         # Corresponds to the JSON property `acknowledgementTime`
         # @return [String]
         attr_accessor :acknowledgement_time
@@ -622,9 +624,9 @@ module Google
         attr_accessor :ekm_provisioning_error_domain
       
         # Detailed error message if Ekm provisioning fails
-        # Corresponds to the JSON property `ekmProvisioningErrorMessage`
+        # Corresponds to the JSON property `ekmProvisioningErrorMapping`
         # @return [String]
-        attr_accessor :ekm_provisioning_error_message
+        attr_accessor :ekm_provisioning_error_mapping
       
         # Indicates Ekm enrollment Provisioning of a given workload.
         # Corresponds to the JSON property `ekmProvisioningState`
@@ -638,7 +640,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ekm_provisioning_error_domain = args[:ekm_provisioning_error_domain] if args.key?(:ekm_provisioning_error_domain)
-          @ekm_provisioning_error_message = args[:ekm_provisioning_error_message] if args.key?(:ekm_provisioning_error_message)
+          @ekm_provisioning_error_mapping = args[:ekm_provisioning_error_mapping] if args.key?(:ekm_provisioning_error_mapping)
           @ekm_provisioning_state = args[:ekm_provisioning_state] if args.key?(:ekm_provisioning_state)
         end
       end
