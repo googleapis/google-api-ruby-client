@@ -1362,7 +1362,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The canonical error code (see codes.proto) that most closely corresponds to
-        # this status. May be missing.
+        # this status. This may be missing, and in the common case of the generic space,
+        # it definitely will be.
         # Corresponds to the JSON property `canonicalCode`
         # @return [Fixnum]
         attr_accessor :canonical_code
