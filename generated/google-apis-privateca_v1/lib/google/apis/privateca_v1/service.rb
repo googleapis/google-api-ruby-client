@@ -178,6 +178,11 @@ module Google
         # @param [String] name
         #   Required. The resource name for this CaPool in the format `projects/*/
         #   locations/*/caPools/*`.
+        # @param [Boolean] ignore_dependent_resources
+        #   Optional. This field allows this pool to be deleted even if it's being
+        #   depended on by another resource. However, doing so may result in unintended
+        #   and unrecoverable effects on any dependent resource(s) since the pool will no
+        #   longer be able to issue certificates.
         # @param [String] request_id
         #   Optional. An ID to identify requests. Specify a unique request ID so that if
         #   you must retry your request, the server will know to ignore the request if it
@@ -206,11 +211,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_ca_pool(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_project_location_ca_pool(name, ignore_dependent_resources: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::PrivatecaV1::Operation::Representation
           command.response_class = Google::Apis::PrivatecaV1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['ignoreDependentResources'] = ignore_dependent_resources unless ignore_dependent_resources.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -594,6 +600,11 @@ module Google
         # @param [Boolean] ignore_active_certificates
         #   Optional. This field allows the CA to be deleted even if the CA has active
         #   certs. Active certs include both unrevoked and unexpired certs.
+        # @param [Boolean] ignore_dependent_resources
+        #   Optional. This field allows this ca to be deleted even if it's being depended
+        #   on by another resource. However, doing so may result in unintended and
+        #   unrecoverable effects on any dependent resource(s) since the CA will no longer
+        #   be able to issue certificates.
         # @param [String] request_id
         #   Optional. An ID to identify requests. Specify a unique request ID so that if
         #   you must retry your request, the server will know to ignore the request if it
@@ -626,12 +637,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_ca_pool_certificate_authority(name, ignore_active_certificates: nil, request_id: nil, skip_grace_period: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_project_location_ca_pool_certificate_authority(name, ignore_active_certificates: nil, ignore_dependent_resources: nil, request_id: nil, skip_grace_period: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::PrivatecaV1::Operation::Representation
           command.response_class = Google::Apis::PrivatecaV1::Operation
           command.params['name'] = name unless name.nil?
           command.query['ignoreActiveCertificates'] = ignore_active_certificates unless ignore_active_certificates.nil?
+          command.query['ignoreDependentResources'] = ignore_dependent_resources unless ignore_dependent_resources.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['skipGracePeriod'] = skip_grace_period unless skip_grace_period.nil?
           command.query['fields'] = fields unless fields.nil?
