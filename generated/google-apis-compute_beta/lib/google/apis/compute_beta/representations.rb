@@ -6462,6 +6462,7 @@ module Google
           property :on_update_action, as: 'onUpdateAction'
           property :provisioned_iops, :numeric_string => true, as: 'provisionedIops'
           property :provisioned_throughput, :numeric_string => true, as: 'provisionedThroughput'
+          collection :replica_zones, as: 'replicaZones'
           hash :resource_manager_tags, as: 'resourceManagerTags'
           collection :resource_policies, as: 'resourcePolicies'
           property :source_image, as: 'sourceImage'
@@ -7550,6 +7551,8 @@ module Google
       class DiskAsyncReplication
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :consistency_group_policy, as: 'consistencyGroupPolicy'
+          property :consistency_group_policy_id, as: 'consistencyGroupPolicyId'
           property :disk, as: 'disk'
           property :disk_id, as: 'diskId'
         end
@@ -14197,6 +14200,7 @@ module Google
       class RouterNat
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_network_tier, as: 'autoNetworkTier'
           collection :drain_nat_ips, as: 'drainNatIps'
           property :enable_dynamic_port_allocation, as: 'enableDynamicPortAllocation'
           property :enable_endpoint_independent_mapping, as: 'enableEndpointIndependentMapping'
