@@ -305,94 +305,6 @@ module Google
         end
       end
       
-      # Represents a single commit log.
-      class CommitLogEntry
-        include Google::Apis::Core::Hashable
-      
-        # Represents the author of a Git commit.
-        # Corresponds to the JSON property `author`
-        # @return [Google::Apis::DataformV1beta1::CommitAuthor]
-        attr_accessor :author
-      
-        # The commit message for this commit log entry.
-        # Corresponds to the JSON property `commitMessage`
-        # @return [String]
-        attr_accessor :commit_message
-      
-        # The commit SHA for this commit log entry.
-        # Corresponds to the JSON property `commitSha`
-        # @return [String]
-        attr_accessor :commit_sha
-      
-        # Commit timestamp.
-        # Corresponds to the JSON property `commitTime`
-        # @return [String]
-        attr_accessor :commit_time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @author = args[:author] if args.key?(:author)
-          @commit_message = args[:commit_message] if args.key?(:commit_message)
-          @commit_sha = args[:commit_sha] if args.key?(:commit_sha)
-          @commit_time = args[:commit_time] if args.key?(:commit_time)
-        end
-      end
-      
-      # Represents a Dataform Git commit.
-      class CommitMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Represents the author of a Git commit.
-        # Corresponds to the JSON property `author`
-        # @return [Google::Apis::DataformV1beta1::CommitAuthor]
-        attr_accessor :author
-      
-        # Optional. The commit's message.
-        # Corresponds to the JSON property `commitMessage`
-        # @return [String]
-        attr_accessor :commit_message
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @author = args[:author] if args.key?(:author)
-          @commit_message = args[:commit_message] if args.key?(:commit_message)
-        end
-      end
-      
-      # `CommitRepositoryChanges` request message.
-      class CommitRepositoryChangesRequest
-        include Google::Apis::Core::Hashable
-      
-        # Represents a Dataform Git commit.
-        # Corresponds to the JSON property `commitMetadata`
-        # @return [Google::Apis::DataformV1beta1::CommitMetadata]
-        attr_accessor :commit_metadata
-      
-        # A map to the path of the file to the operation. The path is the ull file path
-        # including filename, from repository root.
-        # Corresponds to the JSON property `fileOperations`
-        # @return [Hash<String,Google::Apis::DataformV1beta1::FileOperation>]
-        attr_accessor :file_operations
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @commit_metadata = args[:commit_metadata] if args.key?(:commit_metadata)
-          @file_operations = args[:file_operations] if args.key?(:file_operations)
-        end
-      end
-      
       # `CommitWorkspaceChanges` request message.
       class CommitWorkspaceChangesRequest
         include Google::Apis::Core::Hashable
@@ -590,25 +502,6 @@ module Google
         end
       end
       
-      # `ComputeRepositoryAccessTokenStatus` response message.
-      class ComputeRepositoryAccessTokenStatusResponse
-        include Google::Apis::Core::Hashable
-      
-        # Indicates the status of the Git access token.
-        # Corresponds to the JSON property `tokenStatus`
-        # @return [String]
-        attr_accessor :token_status
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @token_status = args[:token_status] if args.key?(:token_status)
-        end
-      end
-      
       # Represents a relation which is not managed by Dataform but which may be
       # referenced by Dataform actions.
       class Declaration
@@ -626,19 +519,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @relation_descriptor = args[:relation_descriptor] if args.key?(:relation_descriptor)
-        end
-      end
-      
-      # Represents the delete file operation.
-      class DeleteFile
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
         end
       end
       
@@ -817,57 +697,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @branches = args[:branches] if args.key?(:branches)
-        end
-      end
-      
-      # `FetchRepositoryHistory` response message.
-      class FetchRepositoryHistoryResponse
-        include Google::Apis::Core::Hashable
-      
-        # A list of commit logs, ordered by 'git log' default order.
-        # Corresponds to the JSON property `commits`
-        # @return [Array<Google::Apis::DataformV1beta1::CommitLogEntry>]
-        attr_accessor :commits
-      
-        # A token, which can be sent as `page_token` to retrieve the next page. If this
-        # field is omitted, there are no subsequent pages.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @commits = args[:commits] if args.key?(:commits)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
-      # Represents a single file operation to the repository.
-      class FileOperation
-        include Google::Apis::Core::Hashable
-      
-        # Represents the delete file operation.
-        # Corresponds to the JSON property `deleteFile`
-        # @return [Google::Apis::DataformV1beta1::DeleteFile]
-        attr_accessor :delete_file
-      
-        # Represents the write file operation (for files added or modified).
-        # Corresponds to the JSON property `writeFile`
-        # @return [Google::Apis::DataformV1beta1::WriteFile]
-        attr_accessor :write_file
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @delete_file = args[:delete_file] if args.key?(:delete_file)
-          @write_file = args[:write_file] if args.key?(:write_file)
         end
       end
       
@@ -1744,32 +1573,6 @@ module Google
         end
       end
       
-      # `QueryRepositoryDirectoryContents` response message.
-      class QueryRepositoryDirectoryContentsResponse
-        include Google::Apis::Core::Hashable
-      
-        # List of entries in the directory.
-        # Corresponds to the JSON property `directoryEntries`
-        # @return [Array<Google::Apis::DataformV1beta1::DirectoryEntry>]
-        attr_accessor :directory_entries
-      
-        # A token, which can be sent as `page_token` to retrieve the next page. If this
-        # field is omitted, there are no subsequent pages.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @directory_entries = args[:directory_entries] if args.key?(:directory_entries)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
       # `QueryWorkflowInvocationActions` response message.
       class QueryWorkflowInvocationActionsResponse
         include Google::Apis::Core::Hashable
@@ -1813,26 +1616,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @file_contents = args[:file_contents] if args.key?(:file_contents)
-        end
-      end
-      
-      # `ReadRepositoryFile` response message.
-      class ReadRepositoryFileResponse
-        include Google::Apis::Core::Hashable
-      
-        # The file's contents.
-        # Corresponds to the JSON property `contents`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
-        # @return [String]
-        attr_accessor :contents
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @contents = args[:contents] if args.key?(:contents)
         end
       end
       
@@ -1997,9 +1780,9 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Output only. Records of the 10 most recent scheduled release attempts. Updated
-        # whenever automatic creation of a compilation result is triggered by
-        # cron_schedule.
+        # Output only. Records of the 10 most recent scheduled release attempts, ordered
+        # in in descending order of `release_time`. Updated whenever automatic creation
+        # of a compilation result is triggered by cron_schedule.
         # Corresponds to the JSON property `recentScheduledReleaseRecords`
         # @return [Array<Google::Apis::DataformV1beta1::ScheduledReleaseRecord>]
         attr_accessor :recent_scheduled_release_records
@@ -2086,23 +1869,6 @@ module Google
         # @return [Google::Apis::DataformV1beta1::GitRemoteSettings]
         attr_accessor :git_remote_settings
       
-        # Optional. Input only. The initial commit file contents. Represented as map
-        # from file path to contents. The path is the full file path to commit including
-        # filename, from repository root.
-        # Corresponds to the JSON property `initialCommitFileContents`
-        # @return [Hash<String,String>]
-        attr_accessor :initial_commit_file_contents
-      
-        # Represents a Dataform Git commit.
-        # Corresponds to the JSON property `initialCommitMetadata`
-        # @return [Google::Apis::DataformV1beta1::CommitMetadata]
-        attr_accessor :initial_commit_metadata
-      
-        # Optional. Repository user labels.
-        # Corresponds to the JSON property `labels`
-        # @return [Hash<String,String>]
-        attr_accessor :labels
-      
         # Output only. The repository's name.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -2135,9 +1901,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @git_remote_settings = args[:git_remote_settings] if args.key?(:git_remote_settings)
-          @initial_commit_file_contents = args[:initial_commit_file_contents] if args.key?(:initial_commit_file_contents)
-          @initial_commit_metadata = args[:initial_commit_metadata] if args.key?(:initial_commit_metadata)
-          @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @npmrc_environment_variables_secret_version = args[:npmrc_environment_variables_secret_version] if args.key?(:npmrc_environment_variables_secret_version)
           @workspace_compilation_overrides = args[:workspace_compilation_overrides] if args.key?(:workspace_compilation_overrides)
@@ -2450,9 +2213,9 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Output only. Records of the 10 most recent scheduled execution attempts.
-        # Updated whenever automatic creation of a compilation result is triggered by
-        # cron_schedule.
+        # Output only. Records of the 10 most recent scheduled execution attempts,
+        # ordered in in descending order of `execution_time`. Updated whenever automatic
+        # creation of a workflow invocation is triggered by cron_schedule.
         # Corresponds to the JSON property `recentScheduledExecutionRecords`
         # @return [Array<Google::Apis::DataformV1beta1::ScheduledExecutionRecord>]
         attr_accessor :recent_scheduled_execution_records
@@ -2650,26 +2413,6 @@ module Google
           @default_database = args[:default_database] if args.key?(:default_database)
           @schema_suffix = args[:schema_suffix] if args.key?(:schema_suffix)
           @table_prefix = args[:table_prefix] if args.key?(:table_prefix)
-        end
-      end
-      
-      # Represents the write file operation (for files added or modified).
-      class WriteFile
-        include Google::Apis::Core::Hashable
-      
-        # The file's contents.
-        # Corresponds to the JSON property `contents`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
-        # @return [String]
-        attr_accessor :contents
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @contents = args[:contents] if args.key?(:contents)
         end
       end
       
