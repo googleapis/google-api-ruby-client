@@ -64,6 +64,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GatewaySecurityPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GatewaySecurityPolicyRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudNetworksecurityV1CertificateProvider
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -136,6 +148,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListGatewaySecurityPoliciesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListGatewaySecurityPolicyRulesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListLocationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -149,6 +173,18 @@ module Google
       end
       
       class ListServerTlsPoliciesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListTlsInspectionPoliciesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListUrlListsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -197,6 +233,18 @@ module Google
       end
       
       class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TlsInspectionPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UrlList
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -275,6 +323,33 @@ module Google
           property :expression, as: 'expression'
           property :location, as: 'location'
           property :title, as: 'title'
+        end
+      end
+      
+      class GatewaySecurityPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :name, as: 'name'
+          property :tls_inspection_policy, as: 'tlsInspectionPolicy'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GatewaySecurityPolicyRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :application_matcher, as: 'applicationMatcher'
+          property :basic_profile, as: 'basicProfile'
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :enabled, as: 'enabled'
+          property :name, as: 'name'
+          property :priority, as: 'priority'
+          property :session_matcher, as: 'sessionMatcher'
+          property :tls_inspection_enabled, as: 'tlsInspectionEnabled'
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -383,6 +458,26 @@ module Google
         end
       end
       
+      class ListGatewaySecurityPoliciesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :gateway_security_policies, as: 'gatewaySecurityPolicies', class: Google::Apis::NetworksecurityV1::GatewaySecurityPolicy, decorator: Google::Apis::NetworksecurityV1::GatewaySecurityPolicy::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListGatewaySecurityPolicyRulesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :gateway_security_policy_rules, as: 'gatewaySecurityPolicyRules', class: Google::Apis::NetworksecurityV1::GatewaySecurityPolicyRule, decorator: Google::Apis::NetworksecurityV1::GatewaySecurityPolicyRule::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListLocationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -410,6 +505,26 @@ module Google
         end
       end
       
+      class ListTlsInspectionPoliciesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :tls_inspection_policies, as: 'tlsInspectionPolicies', class: Google::Apis::NetworksecurityV1::TlsInspectionPolicy, decorator: Google::Apis::NetworksecurityV1::TlsInspectionPolicy::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListUrlListsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+          collection :url_lists, as: 'urlLists', class: Google::Apis::NetworksecurityV1::UrlList, decorator: Google::Apis::NetworksecurityV1::UrlList::Representation
+      
+        end
+      end
+      
       class Location
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -426,6 +541,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :client_validation_ca, as: 'clientValidationCa', class: Google::Apis::NetworksecurityV1::ValidationCa, decorator: Google::Apis::NetworksecurityV1::ValidationCa::Representation
       
+          property :client_validation_mode, as: 'clientValidationMode'
+          property :client_validation_trust_config, as: 'clientValidationTrustConfig'
         end
       end
       
@@ -494,6 +611,28 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class TlsInspectionPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ca_pool, as: 'caPool'
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :name, as: 'name'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class UrlList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :name, as: 'name'
+          property :update_time, as: 'updateTime'
+          collection :values, as: 'values'
         end
       end
       
