@@ -166,6 +166,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MonitoringConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MultiCloudCluster
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -431,6 +437,8 @@ module Google
           property :infrastructure_type, as: 'infrastructureType'
           hash :labels, as: 'labels'
           property :last_connection_time, as: 'lastConnectionTime'
+          property :monitoring_config, as: 'monitoringConfig', class: Google::Apis::GkehubV1alpha2::MonitoringConfig, decorator: Google::Apis::GkehubV1alpha2::MonitoringConfig::Representation
+      
           property :name, as: 'name'
           property :state, as: 'state', class: Google::Apis::GkehubV1alpha2::MembershipState, decorator: Google::Apis::GkehubV1alpha2::MembershipState::Representation
       
@@ -463,6 +471,17 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code, as: 'code'
+        end
+      end
+      
+      class MonitoringConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster, as: 'cluster'
+          property :cluster_hash, as: 'clusterHash'
+          property :kubernetes_metrics_prefix, as: 'kubernetesMetricsPrefix'
+          property :location, as: 'location'
+          property :project_id, as: 'projectId'
         end
       end
       
