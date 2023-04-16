@@ -387,6 +387,7 @@ module Google
           property :status, as: 'status', class: Google::Apis::BatchV1::TaskStatus, decorator: Google::Apis::BatchV1::TaskStatus::Representation
       
           property :task, as: 'task'
+          property :task_source, as: 'taskSource'
         end
       end
       
