@@ -810,6 +810,7 @@ module Google
       class MailOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_side_encrypted_option, as: 'clientSideEncryptedOption'
           property :exclude_drafts, as: 'excludeDrafts'
         end
       end
