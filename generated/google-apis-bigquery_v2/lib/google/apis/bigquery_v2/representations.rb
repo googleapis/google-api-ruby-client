@@ -3078,6 +3078,7 @@ module Google
           property :adjust_step_changes, as: 'adjustStepChanges'
           property :auto_arima, as: 'autoArima'
           property :auto_arima_max_order, :numeric_string => true, as: 'autoArimaMaxOrder'
+          property :auto_arima_min_order, :numeric_string => true, as: 'autoArimaMinOrder'
           property :batch_size, :numeric_string => true, as: 'batchSize'
           property :booster_type, as: 'boosterType'
           property :calculate_p_values, as: 'calculatePValues'
