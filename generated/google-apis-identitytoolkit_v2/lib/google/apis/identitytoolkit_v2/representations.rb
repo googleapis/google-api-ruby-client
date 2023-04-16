@@ -256,6 +256,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIdentitytoolkitAdminV2RecaptchaKey
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudIdentitytoolkitAdminV2RequestLogging
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -389,6 +407,30 @@ module Google
       end
       
       class GoogleCloudIdentitytoolkitV2MfaTotpSignInRequestInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIdentitytoolkitV2RecaptchaConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIdentitytoolkitV2RecaptchaEnforcementState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIdentitytoolkitV2RevokeTokenRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIdentitytoolkitV2RevokeTokenResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -616,6 +658,8 @@ module Google
           property :notification, as: 'notification', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2NotificationConfig, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2NotificationConfig::Representation
       
           property :quota, as: 'quota', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2QuotaConfig, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2QuotaConfig::Representation
+      
+          property :recaptcha_config, as: 'recaptchaConfig', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig::Representation
       
           property :sign_in, as: 'signIn', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2SignInConfig, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2SignInConfig::Representation
       
@@ -892,6 +936,34 @@ module Google
         end
       end
       
+      class GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email_password_enforcement_state, as: 'emailPasswordEnforcementState'
+          collection :managed_rules, as: 'managedRules', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule::Representation
+      
+          collection :recaptcha_keys, as: 'recaptchaKeys', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2RecaptchaKey, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2RecaptchaKey::Representation
+      
+          property :use_account_defender, as: 'useAccountDefender'
+        end
+      end
+      
+      class GoogleCloudIdentitytoolkitAdminV2RecaptchaKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          property :end_score, as: 'endScore'
+        end
+      end
+      
       class GoogleCloudIdentitytoolkitAdminV2RequestLogging
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1023,6 +1095,8 @@ module Google
           property :monitoring, as: 'monitoring', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2MonitoringConfig, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2MonitoringConfig::Representation
       
           property :name, as: 'name'
+          property :recaptcha_config, as: 'recaptchaConfig', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig::Representation
+      
           property :sms_region_config, as: 'smsRegionConfig', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig::Representation
       
           hash :test_phone_numbers, as: 'testPhoneNumbers'
@@ -1136,6 +1210,41 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :verification_code, as: 'verificationCode'
+        end
+      end
+      
+      class GoogleCloudIdentitytoolkitV2RecaptchaConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :recaptcha_enforcement_state, as: 'recaptchaEnforcementState', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2RecaptchaEnforcementState, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2RecaptchaEnforcementState::Representation
+      
+          property :recaptcha_key, as: 'recaptchaKey'
+        end
+      end
+      
+      class GoogleCloudIdentitytoolkitV2RecaptchaEnforcementState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enforcement_state, as: 'enforcementState'
+          property :provider, as: 'provider'
+        end
+      end
+      
+      class GoogleCloudIdentitytoolkitV2RevokeTokenRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id_token, as: 'idToken'
+          property :provider_id, as: 'providerId'
+          property :redirect_uri, as: 'redirectUri'
+          property :tenant_id, as: 'tenantId'
+          property :token, as: 'token'
+          property :token_type, as: 'tokenType'
+        end
+      end
+      
+      class GoogleCloudIdentitytoolkitV2RevokeTokenResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
