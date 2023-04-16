@@ -1,5 +1,9 @@
 # Release history for google-apis-osconfig_v1
 
+### v0.31.0 (2023-04-16)
+
+* Regenerated from discovery document revision 20230409
+
 ### v0.30.0 (2023-02-15)
 
 * Regenerated using generator version 0.12.0
