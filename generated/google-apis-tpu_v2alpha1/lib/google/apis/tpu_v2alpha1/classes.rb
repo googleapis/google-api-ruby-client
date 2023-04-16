@@ -1239,19 +1239,6 @@ module Google
         end
       end
       
-      # Request for ResetQueuedResource.
-      class ResetQueuedResourceRequest
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
       # A runtime version that a Node can be configured with.
       class RuntimeVersion
         include Google::Apis::Core::Hashable
