@@ -557,6 +557,51 @@ module Google
         end
       end
       
+      # Google Cloud Storage location where the artifacts currently reside.
+      class ImportGoogetArtifactsGcsSource
+        include Google::Apis::Core::Hashable
+      
+        # Cloud Storage paths URI (e.g., gs://my_bucket/my_object).
+        # Corresponds to the JSON property `uris`
+        # @return [Array<String>]
+        attr_accessor :uris
+      
+        # Supports URI wildcards for matching multiple objects from a single URI.
+        # Corresponds to the JSON property `useWildcards`
+        # @return [Boolean]
+        attr_accessor :use_wildcards
+        alias_method :use_wildcards?, :use_wildcards
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uris = args[:uris] if args.key?(:uris)
+          @use_wildcards = args[:use_wildcards] if args.key?(:use_wildcards)
+        end
+      end
+      
+      # The request to import new googet artifacts.
+      class ImportGoogetArtifactsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Google Cloud Storage location where the artifacts currently reside.
+        # Corresponds to the JSON property `gcsSource`
+        # @return [Google::Apis::ArtifactregistryV1::ImportGoogetArtifactsGcsSource]
+        attr_accessor :gcs_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
+        end
+      end
+      
       # Error information explaining why a package was not imported.
       class ImportYumArtifactsErrorInfo
         include Google::Apis::Core::Hashable
@@ -1860,6 +1905,39 @@ module Google
         # Update properties of this object
         def update!(**args)
           @apt_artifacts = args[:apt_artifacts] if args.key?(:apt_artifacts)
+        end
+      end
+      
+      # The response to upload an artifact.
+      class UploadGoogetArtifactMediaResponse
+        include Google::Apis::Core::Hashable
+      
+        # This resource represents a long-running operation that is the result of a
+        # network API call.
+        # Corresponds to the JSON property `operation`
+        # @return [Google::Apis::ArtifactregistryV1::Operation]
+        attr_accessor :operation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @operation = args[:operation] if args.key?(:operation)
+        end
+      end
+      
+      # The request to upload an artifact.
+      class UploadGoogetArtifactRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
