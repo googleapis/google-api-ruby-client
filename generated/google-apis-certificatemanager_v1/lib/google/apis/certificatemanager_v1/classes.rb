@@ -542,6 +542,26 @@ module Google
         end
       end
       
+      # Defines an intermediate CA.
+      class IntermediateCa
+        include Google::Apis::Core::Hashable
+      
+        # PEM intermediate certificate used for building up paths for validation. Each
+        # certificate provided in PEM format may occupy up to 5kB.
+        # Corresponds to the JSON property `pemCertificate`
+        # @return [String]
+        attr_accessor :pem_certificate
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pem_certificate = args[:pem_certificate] if args.key?(:pem_certificate)
+        end
+      end
+      
       # Defines IP configuration where this Certificate Map is serving.
       class IpConfig
         include Google::Apis::Core::Hashable
@@ -779,6 +799,39 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+        end
+      end
+      
+      # Response for the `ListTrustConfigs` method.
+      class ListTrustConfigsResponse
+        include Google::Apis::Core::Hashable
+      
+        # If there might be more results than those appearing in this response, then `
+        # next_page_token` is included. To get the next set of results, call this method
+        # again using the value of `next_page_token` as `page_token`.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of TrustConfigs for the parent resource.
+        # Corresponds to the JSON property `trustConfigs`
+        # @return [Array<Google::Apis::CertificatemanagerV1::TrustConfig>]
+        attr_accessor :trust_configs
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @trust_configs = args[:trust_configs] if args.key?(:trust_configs)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -1098,6 +1151,115 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Defines a trust anchor.
+      class TrustAnchor
+        include Google::Apis::Core::Hashable
+      
+        # PEM root certificate of the PKI used for validation. Each certificate provided
+        # in PEM format may occupy up to 5kB.
+        # Corresponds to the JSON property `pemCertificate`
+        # @return [String]
+        attr_accessor :pem_certificate
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pem_certificate = args[:pem_certificate] if args.key?(:pem_certificate)
+        end
+      end
+      
+      # Defines a trust config.
+      class TrustConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The creation timestamp of a TrustConfig.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # One or more paragraphs of text description of a TrustConfig.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # This checksum is computed by the server based on the value of other fields,
+        # and may be sent on update and delete requests to ensure the client has an up-
+        # to-date value before proceeding.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Set of labels associated with a TrustConfig.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # A user-defined name of the trust config. TrustConfig names must be unique
+        # globally and match pattern `projects/*/locations/*/trustConfigs/*`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Set of trust stores to perform validation against. This field is supported
+        # when TrustConfig is configured with Load Balancers, currently not supported
+        # for SPIFFE certificate validation. Only one TrustStore specified is currently
+        # allowed.
+        # Corresponds to the JSON property `trustStores`
+        # @return [Array<Google::Apis::CertificatemanagerV1::TrustStore>]
+        attr_accessor :trust_stores
+      
+        # Output only. The last update timestamp of a TrustConfig.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @etag = args[:etag] if args.key?(:etag)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @trust_stores = args[:trust_stores] if args.key?(:trust_stores)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Defines a trust store.
+      class TrustStore
+        include Google::Apis::Core::Hashable
+      
+        # Set of intermediate CA certificates used for the path building phase of chain
+        # validation. The field is currently not supported if TrustConfig is used for
+        # the workload certificate feature.
+        # Corresponds to the JSON property `intermediateCas`
+        # @return [Array<Google::Apis::CertificatemanagerV1::IntermediateCa>]
+        attr_accessor :intermediate_cas
+      
+        # List of Trust Anchors to be used while performing validation against a given
+        # TrustStore.
+        # Corresponds to the JSON property `trustAnchors`
+        # @return [Array<Google::Apis::CertificatemanagerV1::TrustAnchor>]
+        attr_accessor :trust_anchors
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @intermediate_cas = args[:intermediate_cas] if args.key?(:intermediate_cas)
+          @trust_anchors = args[:trust_anchors] if args.key?(:trust_anchors)
         end
       end
     end
