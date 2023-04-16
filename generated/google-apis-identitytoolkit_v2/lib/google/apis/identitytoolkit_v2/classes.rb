@@ -313,6 +313,11 @@ module Google
         # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2QuotaConfig]
         attr_accessor :quota
       
+        # The reCAPTCHA Enterprise integration config.
+        # Corresponds to the JSON property `recaptchaConfig`
+        # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig]
+        attr_accessor :recaptcha_config
+      
         # Configuration related to local sign in methods.
         # Corresponds to the JSON property `signIn`
         # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2SignInConfig]
@@ -347,6 +352,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @notification = args[:notification] if args.key?(:notification)
           @quota = args[:quota] if args.key?(:quota)
+          @recaptcha_config = args[:recaptcha_config] if args.key?(:recaptcha_config)
           @sign_in = args[:sign_in] if args.key?(:sign_in)
           @sms_region_config = args[:sms_region_config] if args.key?(:sms_region_config)
           @subtype = args[:subtype] if args.key?(:subtype)
@@ -1268,6 +1274,108 @@ module Google
         end
       end
       
+      # The reCAPTCHA Enterprise integration config.
+      class GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig
+        include Google::Apis::Core::Hashable
+      
+        # The reCAPTCHA config for email/password provider, containing the enforcement
+        # status. The email/password provider contains all related user flows protected
+        # by reCAPTCHA.
+        # Corresponds to the JSON property `emailPasswordEnforcementState`
+        # @return [String]
+        attr_accessor :email_password_enforcement_state
+      
+        # The managed rules for authentication action based on reCAPTCHA scores. The
+        # rules are shared across providers for a given tenant project.
+        # Corresponds to the JSON property `managedRules`
+        # @return [Array<Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule>]
+        attr_accessor :managed_rules
+      
+        # Output only. The reCAPTCHA keys.
+        # Corresponds to the JSON property `recaptchaKeys`
+        # @return [Array<Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2RecaptchaKey>]
+        attr_accessor :recaptcha_keys
+      
+        # Whether to use the account defender for reCAPTCHA assessment. Defaults to `
+        # false`.
+        # Corresponds to the JSON property `useAccountDefender`
+        # @return [Boolean]
+        attr_accessor :use_account_defender
+        alias_method :use_account_defender?, :use_account_defender
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @email_password_enforcement_state = args[:email_password_enforcement_state] if args.key?(:email_password_enforcement_state)
+          @managed_rules = args[:managed_rules] if args.key?(:managed_rules)
+          @recaptcha_keys = args[:recaptcha_keys] if args.key?(:recaptcha_keys)
+          @use_account_defender = args[:use_account_defender] if args.key?(:use_account_defender)
+        end
+      end
+      
+      # The reCAPTCHA key config. reCAPTCHA Enterprise offers different keys for
+      # different client platforms.
+      class GoogleCloudIdentitytoolkitAdminV2RecaptchaKey
+        include Google::Apis::Core::Hashable
+      
+        # The reCAPTCHA Enterprise key resource name, e.g. "projects/`project`/keys/`key`
+        # "
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # The client's platform type.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # The config for a reCAPTCHA managed rule. Models a single interval [start_score,
+      # end_score]. The start_score is implicit. It is either the closest smaller
+      # end_score (if one is available) or 0. Intervals in aggregate span [0, 1]
+      # without overlapping.
+      class GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule
+        include Google::Apis::Core::Hashable
+      
+        # The action taken if the reCAPTCHA score of a request is within the interval [
+        # start_score, end_score].
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # The end score (inclusive) of the score range for an action. Must be a value
+        # between 0.0 and 1.0, at 11 discrete values; e.g. 0, 0.1, 0.2, 0.3, ... 0.9, 1.
+        # 0. A score of 0.0 indicates the riskiest request (likely a bot), whereas 1.0
+        # indicates the safest request (likely a human). See https://cloud.google.com/
+        # recaptcha-enterprise/docs/interpret-assessment.
+        # Corresponds to the JSON property `endScore`
+        # @return [Float]
+        attr_accessor :end_score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @end_score = args[:end_score] if args.key?(:end_score)
+        end
+      end
+      
       # Configuration for logging requests made to this project to Stackdriver Logging
       class GoogleCloudIdentitytoolkitAdminV2RequestLogging
         include Google::Apis::Core::Hashable
@@ -1724,6 +1832,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The reCAPTCHA Enterprise integration config.
+        # Corresponds to the JSON property `recaptchaConfig`
+        # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig]
+        attr_accessor :recaptcha_config
+      
         # Configures the regions where users are allowed to send verification SMS for
         # the project or tenant. This is based on the calling code of the destination
         # phone number.
@@ -1757,6 +1870,7 @@ module Google
           @mfa_config = args[:mfa_config] if args.key?(:mfa_config)
           @monitoring = args[:monitoring] if args.key?(:monitoring)
           @name = args[:name] if args.key?(:name)
+          @recaptcha_config = args[:recaptcha_config] if args.key?(:recaptcha_config)
           @sms_region_config = args[:sms_region_config] if args.key?(:sms_region_config)
           @test_phone_numbers = args[:test_phone_numbers] if args.key?(:test_phone_numbers)
         end
@@ -2105,6 +2219,129 @@ module Google
         # Update properties of this object
         def update!(**args)
           @verification_code = args[:verification_code] if args.key?(:verification_code)
+        end
+      end
+      
+      # Configuration for reCAPTCHA
+      class GoogleCloudIdentitytoolkitV2RecaptchaConfig
+        include Google::Apis::Core::Hashable
+      
+        # The reCAPTCHA enforcement state for the providers that GCIP supports reCAPTCHA
+        # protection.
+        # Corresponds to the JSON property `recaptchaEnforcementState`
+        # @return [Array<Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2RecaptchaEnforcementState>]
+        attr_accessor :recaptcha_enforcement_state
+      
+        # The reCAPTCHA Enterprise key resource name, e.g. "projects/`project`/keys/`key`
+        # ".
+        # Corresponds to the JSON property `recaptchaKey`
+        # @return [String]
+        attr_accessor :recaptcha_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @recaptcha_enforcement_state = args[:recaptcha_enforcement_state] if args.key?(:recaptcha_enforcement_state)
+          @recaptcha_key = args[:recaptcha_key] if args.key?(:recaptcha_key)
+        end
+      end
+      
+      # Enforcement states for reCAPTCHA protection.
+      class GoogleCloudIdentitytoolkitV2RecaptchaEnforcementState
+        include Google::Apis::Core::Hashable
+      
+        # The reCAPTCHA enforcement state for the provider.
+        # Corresponds to the JSON property `enforcementState`
+        # @return [String]
+        attr_accessor :enforcement_state
+      
+        # The provider that has reCAPTCHA protection.
+        # Corresponds to the JSON property `provider`
+        # @return [String]
+        attr_accessor :provider
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enforcement_state = args[:enforcement_state] if args.key?(:enforcement_state)
+          @provider = args[:provider] if args.key?(:provider)
+        end
+      end
+      
+      # Request message for RevokeToken.
+      class GoogleCloudIdentitytoolkitV2RevokeTokenRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. A valid Identity Platform ID token to link the account. If there was
+        # a successful token revocation request on the account and no tokens are
+        # generated after the revocation, the duplicate requests will be ignored and
+        # returned immediately.
+        # Corresponds to the JSON property `idToken`
+        # @return [String]
+        attr_accessor :id_token
+      
+        # Required. The idp provider for the token. Currently only supports Apple Idp.
+        # The format should be "apple.com".
+        # Corresponds to the JSON property `providerId`
+        # @return [String]
+        attr_accessor :provider_id
+      
+        # The redirect URI provided in the initial authorization request made by the
+        # client to the IDP. The URI must use the HTTPS protocol, include a domain name,
+        # and can’t contain an IP address or localhost. Required if token_type is CODE.
+        # Corresponds to the JSON property `redirectUri`
+        # @return [String]
+        attr_accessor :redirect_uri
+      
+        # The ID of the Identity Platform tenant the user is signing in to. If not set,
+        # the user will sign in to the default Identity Platform project.
+        # Corresponds to the JSON property `tenantId`
+        # @return [String]
+        attr_accessor :tenant_id
+      
+        # Required. The token to be revoked. If an authorization_code is passed in, the
+        # API will first exchange the code for access token and then revoke the token
+        # exchanged.
+        # Corresponds to the JSON property `token`
+        # @return [String]
+        attr_accessor :token
+      
+        # Required. The type of the token to be revoked.
+        # Corresponds to the JSON property `tokenType`
+        # @return [String]
+        attr_accessor :token_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id_token = args[:id_token] if args.key?(:id_token)
+          @provider_id = args[:provider_id] if args.key?(:provider_id)
+          @redirect_uri = args[:redirect_uri] if args.key?(:redirect_uri)
+          @tenant_id = args[:tenant_id] if args.key?(:tenant_id)
+          @token = args[:token] if args.key?(:token)
+          @token_type = args[:token_type] if args.key?(:token_type)
+        end
+      end
+      
+      # Response message for RevokeToken. Empty for now.
+      class GoogleCloudIdentitytoolkitV2RevokeTokenResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
