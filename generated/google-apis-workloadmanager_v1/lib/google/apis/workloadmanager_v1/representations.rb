@@ -40,6 +40,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Execution
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExecutionResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GceInstanceFilter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -58,6 +70,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListExecutionResultsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListExecutionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListLocationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -65,6 +89,18 @@ module Google
       end
       
       class ListOperationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListRulesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListScannedResourcesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -88,6 +124,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Resource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ResourceFilter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -95,6 +137,18 @@ module Google
       end
       
       class ResourceStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Rule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RunEvaluationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -136,7 +190,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ScannedResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ViolationDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -179,7 +245,36 @@ module Google
       
           collection :rule_names, as: 'ruleNames'
           collection :rule_versions, as: 'ruleVersions'
+          property :schedule, as: 'schedule'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class Execution
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :evaluation_id, as: 'evaluationId'
+          property :inventory_time, as: 'inventoryTime'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :run_type, as: 'runType'
+          property :start_time, as: 'startTime'
+          property :state, as: 'state'
+        end
+      end
+      
+      class ExecutionResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :documentation_url, as: 'documentationUrl'
+          property :resource, as: 'resource', class: Google::Apis::WorkloadmanagerV1::Resource, decorator: Google::Apis::WorkloadmanagerV1::Resource::Representation
+      
+          property :rule, as: 'rule'
+          property :severity, as: 'severity'
+          property :violation_details, as: 'violationDetails', class: Google::Apis::WorkloadmanagerV1::ViolationDetails, decorator: Google::Apis::WorkloadmanagerV1::ViolationDetails::Representation
+      
+          property :violation_message, as: 'violationMessage'
         end
       end
       
@@ -211,6 +306,25 @@ module Google
         end
       end
       
+      class ListExecutionResultsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :execution_results, as: 'executionResults', class: Google::Apis::WorkloadmanagerV1::ExecutionResult, decorator: Google::Apis::WorkloadmanagerV1::ExecutionResult::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListExecutionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :executions, as: 'executions', class: Google::Apis::WorkloadmanagerV1::Execution, decorator: Google::Apis::WorkloadmanagerV1::Execution::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListLocationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -225,6 +339,24 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::WorkloadmanagerV1::Operation, decorator: Google::Apis::WorkloadmanagerV1::Operation::Representation
+      
+        end
+      end
+      
+      class ListRulesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :rules, as: 'rules', class: Google::Apis::WorkloadmanagerV1::Rule, decorator: Google::Apis::WorkloadmanagerV1::Rule::Representation
+      
+        end
+      end
+      
+      class ListScannedResourcesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :scanned_resources, as: 'scannedResources', class: Google::Apis::WorkloadmanagerV1::ScannedResource, decorator: Google::Apis::WorkloadmanagerV1::ScannedResource::Representation
       
         end
       end
@@ -265,6 +397,15 @@ module Google
         end
       end
       
+      class Resource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :service_account, as: 'serviceAccount'
+          property :type, as: 'type'
+        end
+      end
+      
       class ResourceFilter
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -281,6 +422,32 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :rules_newer_versions, as: 'rulesNewerVersions'
           property :state, as: 'state'
+        end
+      end
+      
+      class Rule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :error_message, as: 'errorMessage'
+          property :name, as: 'name'
+          property :primary_category, as: 'primaryCategory'
+          property :remediation, as: 'remediation'
+          property :revision_id, as: 'revisionId'
+          property :secondary_category, as: 'secondaryCategory'
+          property :severity, as: 'severity'
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class RunEvaluationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :execution, as: 'execution', class: Google::Apis::WorkloadmanagerV1::Execution, decorator: Google::Apis::WorkloadmanagerV1::Execution::Representation
+      
+          property :execution_id, as: 'executionId'
+          property :request_id, as: 'requestId'
         end
       end
       
@@ -325,6 +492,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :related_resources, as: 'relatedResources'
           property :resource_kind, as: 'resourceKind'
+          property :resource_state, as: 'resourceState'
           property :resource_type, as: 'resourceType'
           property :resource_uri, as: 'resourceUri'
           property :update_time, as: 'updateTime'
@@ -347,12 +515,28 @@ module Google
         end
       end
       
+      class ScannedResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource, as: 'resource'
+        end
+      end
+      
       class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class ViolationDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :asset, as: 'asset'
+          hash :observed, as: 'observed'
+          property :service_account, as: 'serviceAccount'
         end
       end
       
