@@ -624,6 +624,40 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Verifies that Cloud KMS can successfully connect to the external key manager
+        # specified by an EkmConnection. If there is an error connecting to the EKM,
+        # this method returns a FAILED_PRECONDITION status containing structured
+        # information as described at https://cloud.google.com/kms/docs/reference/
+        # ekm_errors.
+        # @param [String] name
+        #   Required. The name of the EkmConnection to verify.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudkmsV1::VerifyConnectivityResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudkmsV1::VerifyConnectivityResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def verify_project_location_ekm_connection_connectivity(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:verifyConnectivity', options)
+          command.response_representation = Google::Apis::CloudkmsV1::VerifyConnectivityResponse::Representation
+          command.response_class = Google::Apis::CloudkmsV1::VerifyConnectivityResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Create a new KeyRing in a given Project and Location.
         # @param [String] parent
         #   Required. The resource name of the location associated with the KeyRings, in
