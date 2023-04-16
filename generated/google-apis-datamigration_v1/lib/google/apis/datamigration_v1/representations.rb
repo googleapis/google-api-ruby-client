@@ -914,9 +914,11 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :draft_entity, as: 'draftEntity'
+          property :draft_type, as: 'draftType'
           collection :mapping_log, as: 'mappingLog', class: Google::Apis::DatamigrationV1::EntityMappingLogEntry, decorator: Google::Apis::DatamigrationV1::EntityMappingLogEntry::Representation
       
           property :source_entity, as: 'sourceEntity'
+          property :source_type, as: 'sourceType'
         end
       end
       
