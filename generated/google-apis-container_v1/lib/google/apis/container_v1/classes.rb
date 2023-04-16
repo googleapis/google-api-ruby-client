@@ -63,6 +63,26 @@ module Google
         end
       end
       
+      # AdditionalPodRangesConfig is the configuration for additional pod secondary
+      # ranges supporting the ClusterUpdate message.
+      class AdditionalPodRangesConfig
+        include Google::Apis::Core::Hashable
+      
+        # Name for pod secondary ipv4 range which has the actual range defined ahead.
+        # Corresponds to the JSON property `podRangeNames`
+        # @return [Array<String>]
+        attr_accessor :pod_range_names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pod_range_names = args[:pod_range_names] if args.key?(:pod_range_names)
+        end
+      end
+      
       # Configuration for the addons that can be automatically spun up in the cluster,
       # enabling additional functionality.
       class AddonsConfig
@@ -1140,6 +1160,12 @@ module Google
       class ClusterUpdate
         include Google::Apis::Core::Hashable
       
+        # AdditionalPodRangesConfig is the configuration for additional pod secondary
+        # ranges supporting the ClusterUpdate message.
+        # Corresponds to the JSON property `additionalPodRangesConfig`
+        # @return [Google::Apis::ContainerV1::AdditionalPodRangesConfig]
+        attr_accessor :additional_pod_ranges_config
+      
         # Configuration for the addons that can be automatically spun up in the cluster,
         # enabling additional functionality.
         # Corresponds to the JSON property `desiredAddonsConfig`
@@ -1394,12 +1420,19 @@ module Google
         # @return [String]
         attr_accessor :etag
       
+        # AdditionalPodRangesConfig is the configuration for additional pod secondary
+        # ranges supporting the ClusterUpdate message.
+        # Corresponds to the JSON property `removedAdditionalPodRangesConfig`
+        # @return [Google::Apis::ContainerV1::AdditionalPodRangesConfig]
+        attr_accessor :removed_additional_pod_ranges_config
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @additional_pod_ranges_config = args[:additional_pod_ranges_config] if args.key?(:additional_pod_ranges_config)
           @desired_addons_config = args[:desired_addons_config] if args.key?(:desired_addons_config)
           @desired_authenticator_groups_config = args[:desired_authenticator_groups_config] if args.key?(:desired_authenticator_groups_config)
           @desired_binary_authorization = args[:desired_binary_authorization] if args.key?(:desired_binary_authorization)
@@ -1440,6 +1473,7 @@ module Google
           @desired_vertical_pod_autoscaling = args[:desired_vertical_pod_autoscaling] if args.key?(:desired_vertical_pod_autoscaling)
           @desired_workload_identity_config = args[:desired_workload_identity_config] if args.key?(:desired_workload_identity_config)
           @etag = args[:etag] if args.key?(:etag)
+          @removed_additional_pod_ranges_config = args[:removed_additional_pod_ranges_config] if args.key?(:removed_additional_pod_ranges_config)
         end
       end
       
@@ -2237,6 +2271,12 @@ module Google
       class IpAllocationPolicy
         include Google::Apis::Core::Hashable
       
+        # AdditionalPodRangesConfig is the configuration for additional pod secondary
+        # ranges supporting the ClusterUpdate message.
+        # Corresponds to the JSON property `additionalPodRangesConfig`
+        # @return [Google::Apis::ContainerV1::AdditionalPodRangesConfig]
+        attr_accessor :additional_pod_ranges_config
+      
         # This field is deprecated, use cluster_ipv4_cidr_block.
         # Corresponds to the JSON property `clusterIpv4Cidr`
         # @return [String]
@@ -2377,6 +2417,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @additional_pod_ranges_config = args[:additional_pod_ranges_config] if args.key?(:additional_pod_ranges_config)
           @cluster_ipv4_cidr = args[:cluster_ipv4_cidr] if args.key?(:cluster_ipv4_cidr)
           @cluster_ipv4_cidr_block = args[:cluster_ipv4_cidr_block] if args.key?(:cluster_ipv4_cidr_block)
           @cluster_secondary_range_name = args[:cluster_secondary_range_name] if args.key?(:cluster_secondary_range_name)
