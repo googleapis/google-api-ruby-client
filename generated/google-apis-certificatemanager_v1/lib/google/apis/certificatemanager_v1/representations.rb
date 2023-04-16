@@ -94,6 +94,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IntermediateCa
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class IpConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -142,6 +148,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListTrustConfigsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Location
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -179,6 +191,24 @@ module Google
       end
       
       class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TrustAnchor
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TrustConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TrustStore
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -317,6 +347,13 @@ module Google
         end
       end
       
+      class IntermediateCa
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :pem_certificate, as: 'pemCertificate'
+        end
+      end
+      
       class IpConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -393,6 +430,16 @@ module Google
         end
       end
       
+      class ListTrustConfigsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :trust_configs, as: 'trustConfigs', class: Google::Apis::CertificatemanagerV1::TrustConfig, decorator: Google::Apis::CertificatemanagerV1::TrustConfig::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class Location
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -465,6 +512,37 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class TrustAnchor
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :pem_certificate, as: 'pemCertificate'
+        end
+      end
+      
+      class TrustConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :etag, as: 'etag'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          collection :trust_stores, as: 'trustStores', class: Google::Apis::CertificatemanagerV1::TrustStore, decorator: Google::Apis::CertificatemanagerV1::TrustStore::Representation
+      
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class TrustStore
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :intermediate_cas, as: 'intermediateCas', class: Google::Apis::CertificatemanagerV1::IntermediateCa, decorator: Google::Apis::CertificatemanagerV1::IntermediateCa::Representation
+      
+          collection :trust_anchors, as: 'trustAnchors', class: Google::Apis::CertificatemanagerV1::TrustAnchor, decorator: Google::Apis::CertificatemanagerV1::TrustAnchor::Representation
+      
         end
       end
     end

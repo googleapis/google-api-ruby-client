@@ -1159,6 +1159,196 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
+        
+        # Creates a new TrustConfig in a given project and location.
+        # @param [String] parent
+        #   Required. The parent resource of the TrustConfig. Must be in the format `
+        #   projects/*/locations/*`.
+        # @param [Google::Apis::CertificatemanagerV1::TrustConfig] trust_config_object
+        # @param [String] trust_config_id
+        #   Required. A user-provided name of the TrustConfig.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CertificatemanagerV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CertificatemanagerV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_trust_config(parent, trust_config_object = nil, trust_config_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/trustConfigs', options)
+          command.request_representation = Google::Apis::CertificatemanagerV1::TrustConfig::Representation
+          command.request_object = trust_config_object
+          command.response_representation = Google::Apis::CertificatemanagerV1::Operation::Representation
+          command.response_class = Google::Apis::CertificatemanagerV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['trustConfigId'] = trust_config_id unless trust_config_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a single TrustConfig.
+        # @param [String] name
+        #   Required. A name of the TrustConfig to delete. Must be in the format `projects/
+        #   */locations/*/trustConfigs/*`.
+        # @param [String] etag
+        #   The current etag of the TrustConfig. If an etag is provided and does not match
+        #   the current etag of the resource, deletion will be blocked and an ABORTED
+        #   error will be returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CertificatemanagerV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CertificatemanagerV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_trust_config(name, etag: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CertificatemanagerV1::Operation::Representation
+          command.response_class = Google::Apis::CertificatemanagerV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['etag'] = etag unless etag.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single TrustConfig.
+        # @param [String] name
+        #   Required. A name of the TrustConfig to describe. Must be in the format `
+        #   projects/*/locations/*/trustConfigs/*`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CertificatemanagerV1::TrustConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CertificatemanagerV1::TrustConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_trust_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CertificatemanagerV1::TrustConfig::Representation
+          command.response_class = Google::Apis::CertificatemanagerV1::TrustConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists TrustConfigs in a given project and location.
+        # @param [String] parent
+        #   Required. The project and location from which the TrustConfigs should be
+        #   listed, specified in the format `projects/*/locations/*`.
+        # @param [String] filter
+        #   Filter expression to restrict the TrustConfigs returned.
+        # @param [String] order_by
+        #   A list of TrustConfig field names used to specify the order of the returned
+        #   results. The default sorting order is ascending. To specify descending order
+        #   for a field, add a suffix " desc".
+        # @param [Fixnum] page_size
+        #   Maximum number of TrustConfigs to return per call.
+        # @param [String] page_token
+        #   The value returned by the last `ListTrustConfigsResponse`. Indicates that this
+        #   is a continuation of a prior `ListTrustConfigs` call, and that the system
+        #   should return the next page of data.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CertificatemanagerV1::ListTrustConfigsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CertificatemanagerV1::ListTrustConfigsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_trust_configs(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/trustConfigs', options)
+          command.response_representation = Google::Apis::CertificatemanagerV1::ListTrustConfigsResponse::Representation
+          command.response_class = Google::Apis::CertificatemanagerV1::ListTrustConfigsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a TrustConfig.
+        # @param [String] name
+        #   A user-defined name of the trust config. TrustConfig names must be unique
+        #   globally and match pattern `projects/*/locations/*/trustConfigs/*`.
+        # @param [Google::Apis::CertificatemanagerV1::TrustConfig] trust_config_object
+        # @param [String] update_mask
+        #   Required. The update mask applies to the resource. For the `FieldMask`
+        #   definition, see https://developers.google.com/protocol-buffers/docs/reference/
+        #   google.protobuf#fieldmask.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CertificatemanagerV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CertificatemanagerV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_trust_config(name, trust_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::CertificatemanagerV1::TrustConfig::Representation
+          command.request_object = trust_config_object
+          command.response_representation = Google::Apis::CertificatemanagerV1::Operation::Representation
+          command.response_class = Google::Apis::CertificatemanagerV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
 
         protected
 
