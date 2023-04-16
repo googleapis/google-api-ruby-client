@@ -8694,7 +8694,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A list of advanced OCR options to further fine-tune OCR behavior. Current
-        # valid values are: - "legacy_layout": a heuristics layout detection algorithm,
+        # valid values are: - `legacy_layout`: a heuristics layout detection algorithm,
         # which serves as an alternative to the current ML-based layout detection
         # algorithm. Customers can choose the best suitable layout algorithm based on
         # their situation.
