@@ -2488,6 +2488,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AssistantDevicesPlatformProtoProviderFulfillCapability
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AssistantDevicesPlatformProtoProviderOpenCapability
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2597,6 +2603,12 @@ module Google
       end
       
       class AssistantGroundingRankerMediaGroundingProviderFeatures
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AssistantGroundingRankerPodcastGroundingProviderFeatures
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3196,6 +3208,66 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CloudAiPlatformTenantresourceCloudSqlInstanceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiPlatformTenantresourceGcsBucketConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiPlatformTenantresourceIamPolicyBinding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiPlatformTenantresourceInfraSpannerConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiPlatformTenantresourceInfraSpannerConfigCreateDatabaseOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiPlatformTenantresourceServiceAccountIdentity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiPlatformTenantresourceTenantProjectConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiPlatformTenantresourceTenantProjectResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiPlatformTenantresourceTenantResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiPlatformTenantresourceTenantServiceAccountIdentity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CommerceDatastoreDeepTag
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3497,6 +3569,12 @@ module Google
       end
       
       class DocPropertiesBadTitleInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DrishtiCompressedFeature
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5164,6 +5242,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleApiServiceconsumermanagementV1BillingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleApiServiceconsumermanagementV1PolicyBinding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAssistantAccessoryV1AudioOutConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5560,6 +5650,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContentwarehouseV1ProcessorInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContentwarehouseV1Property
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5668,7 +5764,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContentwarehouseV1RunPipelineMetadataExportToCdwPipelineMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContentwarehouseV1RunPipelineMetadataGcsIngestPipelineMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContentwarehouseV1RunPipelineMetadataIndividualDocumentStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContentwarehouseV1RunPipelineMetadataProcessWithDocAiPipelineMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -12173,12 +12287,6 @@ module Google
       end
       
       class RepositoryWebrefWebrefMustangAttachment
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RepositoryWebrefWebrefMustangAttachmentUndermergedMembers
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -19529,6 +19637,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :activity_class_name, as: 'activityClassName'
           property :android_package_name, as: 'androidPackageName'
+          property :cast_app_id, as: 'castAppId'
           property :version_code, as: 'versionCode'
         end
       end
@@ -19803,6 +19912,12 @@ module Google
         end
       end
       
+      class AssistantDevicesPlatformProtoProviderFulfillCapability
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class AssistantDevicesPlatformProtoProviderOpenCapability
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -19856,6 +19971,8 @@ module Google
           property :media_resume, as: 'mediaResume', class: Google::Apis::ContentwarehouseV1::AssistantDevicesPlatformProtoMediaResumeCapability, decorator: Google::Apis::ContentwarehouseV1::AssistantDevicesPlatformProtoMediaResumeCapability::Representation
       
           property :media_stop, as: 'mediaStop', class: Google::Apis::ContentwarehouseV1::AssistantDevicesPlatformProtoMediaStopCapability, decorator: Google::Apis::ContentwarehouseV1::AssistantDevicesPlatformProtoMediaStopCapability::Representation
+      
+          property :provider_fulfill, as: 'providerFulfill', class: Google::Apis::ContentwarehouseV1::AssistantDevicesPlatformProtoProviderFulfillCapability, decorator: Google::Apis::ContentwarehouseV1::AssistantDevicesPlatformProtoProviderFulfillCapability::Representation
       
           property :provider_open, as: 'providerOpen', class: Google::Apis::ContentwarehouseV1::AssistantDevicesPlatformProtoProviderOpenCapability, decorator: Google::Apis::ContentwarehouseV1::AssistantDevicesPlatformProtoProviderOpenCapability::Representation
       
@@ -19956,6 +20073,8 @@ module Google
       
           property :media_grounding_provider_features, as: 'mediaGroundingProviderFeatures', class: Google::Apis::ContentwarehouseV1::AssistantGroundingRankerMediaGroundingProviderFeatures, decorator: Google::Apis::ContentwarehouseV1::AssistantGroundingRankerMediaGroundingProviderFeatures::Representation
       
+          property :podcast_grounding_provider_features, as: 'podcastGroundingProviderFeatures', class: Google::Apis::ContentwarehouseV1::AssistantGroundingRankerPodcastGroundingProviderFeatures, decorator: Google::Apis::ContentwarehouseV1::AssistantGroundingRankerPodcastGroundingProviderFeatures::Representation
+      
           property :provider_grounding_provider_features, as: 'providerGroundingProviderFeatures', class: Google::Apis::ContentwarehouseV1::AssistantGroundingRankerProviderGroundingProviderFeatures, decorator: Google::Apis::ContentwarehouseV1::AssistantGroundingRankerProviderGroundingProviderFeatures::Representation
       
         end
@@ -20013,19 +20132,30 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :album_release_type, as: 'albumReleaseType'
+          property :ambiguity_classifier, as: 'ambiguityClassifier'
           property :has_type_semantic_edge, as: 'hasTypeSemanticEdge'
           property :is_cast_video, as: 'isCastVideo'
+          property :is_media_search_query_subset_of_entity_name_and_artist, as: 'isMediaSearchQuerySubsetOfEntityNameAndArtist'
           property :is_seed_radio, as: 'isSeedRadio'
           property :is_seed_radio_request, as: 'isSeedRadioRequest'
           property :msc_rate, as: 'mscRate'
           property :scubed_p_sai_music, as: 'scubedPSaiMusic'
           property :type, as: 'type'
+          property :youtube_confidence_score, as: 'youtubeConfidenceScore'
+        end
+      end
+      
+      class AssistantGroundingRankerPodcastGroundingProviderFeatures
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_exclusive, as: 'isExclusive'
         end
       end
       
       class AssistantGroundingRankerProviderGroundingProviderFeatures
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_in_app_provider, as: 'isInAppProvider'
           collection :provider_cluster_id, as: 'providerClusterId'
           property :provider_id, as: 'providerId', class: Google::Apis::ContentwarehouseV1::AssistantContextProviderId, decorator: Google::Apis::ContentwarehouseV1::AssistantContextProviderId::Representation
       
@@ -20505,6 +20635,7 @@ module Google
           property :predicted_intent_confidence, as: 'predictedIntentConfidence'
           property :ranker_name, as: 'rankerName'
           property :search_dispatch, as: 'searchDispatch'
+          property :sub_intent_type, as: 'subIntentType'
           property :top_hypothesis_confidence, as: 'topHypothesisConfidence'
           property :vertical_confidence_score, as: 'verticalConfidenceScore'
         end
@@ -21116,6 +21247,8 @@ module Google
       
           property :medical, as: 'medical', class: Google::Apis::ContentwarehouseV1::ClassifierPornQueryClassifierOutput, decorator: Google::Apis::ContentwarehouseV1::ClassifierPornQueryClassifierOutput::Representation
       
+          property :minor, as: 'minor', class: Google::Apis::ContentwarehouseV1::ClassifierPornQueryClassifierOutput, decorator: Google::Apis::ContentwarehouseV1::ClassifierPornQueryClassifierOutput::Representation
+      
           property :offensive, as: 'offensive', class: Google::Apis::ContentwarehouseV1::ClassifierPornQueryClassifierOutput, decorator: Google::Apis::ContentwarehouseV1::ClassifierPornQueryClassifierOutput::Representation
       
           property :porn, as: 'porn', class: Google::Apis::ContentwarehouseV1::ClassifierPornQueryClassifierOutput, decorator: Google::Apis::ContentwarehouseV1::ClassifierPornQueryClassifierOutput::Representation
@@ -21180,6 +21313,123 @@ module Google
           property :number_of_images, :numeric_string => true, as: 'numberOfImages'
           property :number_of_videos, :numeric_string => true, as: 'numberOfVideos'
           property :video_violence_score, as: 'videoViolenceScore'
+        end
+      end
+      
+      class CloudAiPlatformTenantresourceCloudSqlInstanceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_sql_instance_connection_name, as: 'cloudSqlInstanceConnectionName'
+          property :cloud_sql_instance_name, as: 'cloudSqlInstanceName'
+          property :kms_key_reference, as: 'kmsKeyReference'
+          collection :mdb_roles_for_corp_access, as: 'mdbRolesForCorpAccess'
+          property :slm_instance_name, as: 'slmInstanceName'
+          property :slm_instance_template, as: 'slmInstanceTemplate'
+          property :slm_instance_type, as: 'slmInstanceType'
+        end
+      end
+      
+      class CloudAiPlatformTenantresourceGcsBucketConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :admins, as: 'admins'
+          property :bucket_name, as: 'bucketName'
+          property :entity_name, as: 'entityName'
+          property :kms_key_reference, as: 'kmsKeyReference'
+          property :ttl_days, as: 'ttlDays'
+          collection :viewers, as: 'viewers'
+        end
+      end
+      
+      class CloudAiPlatformTenantresourceIamPolicyBinding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :members, as: 'members'
+          property :resource, as: 'resource'
+          property :resource_type, as: 'resourceType'
+          property :role, as: 'role'
+        end
+      end
+      
+      class CloudAiPlatformTenantresourceInfraSpannerConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_database_options, as: 'createDatabaseOptions', class: Google::Apis::ContentwarehouseV1::CloudAiPlatformTenantresourceInfraSpannerConfigCreateDatabaseOptions, decorator: Google::Apis::ContentwarehouseV1::CloudAiPlatformTenantresourceInfraSpannerConfigCreateDatabaseOptions::Representation
+      
+          property :kms_key_reference, as: 'kmsKeyReference'
+          property :sdl_bundle_path, as: 'sdlBundlePath'
+          property :spanner_borg_service_account, as: 'spannerBorgServiceAccount'
+          property :spanner_local_name_prefix, as: 'spannerLocalNamePrefix'
+          property :spanner_namespace, as: 'spannerNamespace'
+          property :spanner_universe, as: 'spannerUniverse'
+        end
+      end
+      
+      class CloudAiPlatformTenantresourceInfraSpannerConfigCreateDatabaseOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cmek_cloud_resource_name, as: 'cmekCloudResourceName'
+          property :cmek_cloud_resource_type, as: 'cmekCloudResourceType'
+          property :cmek_service_name, as: 'cmekServiceName'
+        end
+      end
+      
+      class CloudAiPlatformTenantresourceServiceAccountIdentity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :service_account_email, as: 'serviceAccountEmail'
+          property :tag, as: 'tag'
+        end
+      end
+      
+      class CloudAiPlatformTenantresourceTenantProjectConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :billing_config, as: 'billingConfig', class: Google::Apis::ContentwarehouseV1::GoogleApiServiceconsumermanagementV1BillingConfig, decorator: Google::Apis::ContentwarehouseV1::GoogleApiServiceconsumermanagementV1BillingConfig::Representation
+      
+          property :folder, as: 'folder'
+          collection :policy_bindings, as: 'policyBindings', class: Google::Apis::ContentwarehouseV1::GoogleApiServiceconsumermanagementV1PolicyBinding, decorator: Google::Apis::ContentwarehouseV1::GoogleApiServiceconsumermanagementV1PolicyBinding::Representation
+      
+          collection :services, as: 'services'
+        end
+      end
+      
+      class CloudAiPlatformTenantresourceTenantProjectResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :cloud_sql_instances, as: 'cloudSqlInstances', class: Google::Apis::ContentwarehouseV1::CloudAiPlatformTenantresourceCloudSqlInstanceConfig, decorator: Google::Apis::ContentwarehouseV1::CloudAiPlatformTenantresourceCloudSqlInstanceConfig::Representation
+      
+          collection :gcs_buckets, as: 'gcsBuckets', class: Google::Apis::ContentwarehouseV1::CloudAiPlatformTenantresourceGcsBucketConfig, decorator: Google::Apis::ContentwarehouseV1::CloudAiPlatformTenantresourceGcsBucketConfig::Representation
+      
+          collection :iam_policy_bindings, as: 'iamPolicyBindings', class: Google::Apis::ContentwarehouseV1::CloudAiPlatformTenantresourceIamPolicyBinding, decorator: Google::Apis::ContentwarehouseV1::CloudAiPlatformTenantresourceIamPolicyBinding::Representation
+      
+          collection :infra_spanner_configs, as: 'infraSpannerConfigs', class: Google::Apis::ContentwarehouseV1::CloudAiPlatformTenantresourceInfraSpannerConfig, decorator: Google::Apis::ContentwarehouseV1::CloudAiPlatformTenantresourceInfraSpannerConfig::Representation
+      
+          property :tag, as: 'tag'
+          property :tenant_project_config, as: 'tenantProjectConfig', class: Google::Apis::ContentwarehouseV1::CloudAiPlatformTenantresourceTenantProjectConfig, decorator: Google::Apis::ContentwarehouseV1::CloudAiPlatformTenantresourceTenantProjectConfig::Representation
+      
+          property :tenant_project_id, as: 'tenantProjectId'
+          property :tenant_project_number, :numeric_string => true, as: 'tenantProjectNumber'
+          collection :tenant_service_accounts, as: 'tenantServiceAccounts', class: Google::Apis::ContentwarehouseV1::CloudAiPlatformTenantresourceTenantServiceAccountIdentity, decorator: Google::Apis::ContentwarehouseV1::CloudAiPlatformTenantresourceTenantServiceAccountIdentity::Representation
+      
+        end
+      end
+      
+      class CloudAiPlatformTenantresourceTenantResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :p4_service_accounts, as: 'p4ServiceAccounts', class: Google::Apis::ContentwarehouseV1::CloudAiPlatformTenantresourceServiceAccountIdentity, decorator: Google::Apis::ContentwarehouseV1::CloudAiPlatformTenantresourceServiceAccountIdentity::Representation
+      
+          collection :tenant_project_resources, as: 'tenantProjectResources', class: Google::Apis::ContentwarehouseV1::CloudAiPlatformTenantresourceTenantProjectResource, decorator: Google::Apis::ContentwarehouseV1::CloudAiPlatformTenantresourceTenantProjectResource::Representation
+      
+        end
+      end
+      
+      class CloudAiPlatformTenantresourceTenantServiceAccountIdentity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :service_account_email, as: 'serviceAccountEmail'
+          property :service_name, as: 'serviceName'
         end
       end
       
@@ -21925,6 +22175,15 @@ module Google
         end
       end
       
+      class DrishtiCompressedFeature
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :feature_name, as: 'featureName'
+          property :in_range_bitstream, :base64 => true, as: 'inRangeBitstream'
+          property :out_of_range_bitstream, :base64 => true, as: 'outOfRangeBitstream'
+        end
+      end
+      
       class DrishtiDenseFeatureData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -21957,6 +22216,8 @@ module Google
       class DrishtiFeatureSetDataFeatureSetElement
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :compressed, as: 'compressed', class: Google::Apis::ContentwarehouseV1::DrishtiCompressedFeature, decorator: Google::Apis::ContentwarehouseV1::DrishtiCompressedFeature::Representation
+      
           property :dense, as: 'dense', class: Google::Apis::ContentwarehouseV1::DrishtiDenseFeatureData, decorator: Google::Apis::ContentwarehouseV1::DrishtiDenseFeatureData::Representation
       
           property :indexed, as: 'indexed', class: Google::Apis::ContentwarehouseV1::DrishtiIndexedFeatureData, decorator: Google::Apis::ContentwarehouseV1::DrishtiIndexedFeatureData::Representation
@@ -25433,6 +25694,21 @@ module Google
         end
       end
       
+      class GoogleApiServiceconsumermanagementV1BillingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :billing_account, as: 'billingAccount'
+        end
+      end
+      
+      class GoogleApiServiceconsumermanagementV1PolicyBinding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :members, as: 'members'
+          property :role, as: 'role'
+        end
+      end
+      
       class GoogleAssistantAccessoryV1AudioOutConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -26084,6 +26360,15 @@ module Google
         end
       end
       
+      class GoogleCloudContentwarehouseV1ProcessorInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :document_type, as: 'documentType'
+          property :processor_name, as: 'processorName'
+          property :schema_name, as: 'schemaName'
+        end
+      end
+      
       class GoogleCloudContentwarehouseV1Property
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -26278,8 +26563,14 @@ module Google
       class GoogleCloudContentwarehouseV1RunPipelineMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :export_to_cdw_pipeline_metadata, as: 'exportToCdwPipelineMetadata', class: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1RunPipelineMetadataExportToCdwPipelineMetadata, decorator: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1RunPipelineMetadataExportToCdwPipelineMetadata::Representation
+      
           property :failed_file_count, as: 'failedFileCount'
           property :gcs_ingest_pipeline_metadata, as: 'gcsIngestPipelineMetadata', class: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1RunPipelineMetadataGcsIngestPipelineMetadata, decorator: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1RunPipelineMetadataGcsIngestPipelineMetadata::Representation
+      
+          collection :individual_document_statuses, as: 'individualDocumentStatuses', class: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1RunPipelineMetadataIndividualDocumentStatus, decorator: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1RunPipelineMetadataIndividualDocumentStatus::Representation
+      
+          property :process_with_doc_ai_pipeline_metadata, as: 'processWithDocAiPipelineMetadata', class: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1RunPipelineMetadataProcessWithDocAiPipelineMetadata, decorator: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1RunPipelineMetadataProcessWithDocAiPipelineMetadata::Representation
       
           property :total_file_count, as: 'totalFileCount'
           property :user_info, as: 'userInfo', class: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1UserInfo, decorator: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1UserInfo::Representation
@@ -26287,10 +26578,36 @@ module Google
         end
       end
       
+      class GoogleCloudContentwarehouseV1RunPipelineMetadataExportToCdwPipelineMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :doc_ai_dataset, as: 'docAiDataset'
+          collection :documents, as: 'documents'
+        end
+      end
+      
       class GoogleCloudContentwarehouseV1RunPipelineMetadataGcsIngestPipelineMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :input_path, as: 'inputPath'
+        end
+      end
+      
+      class GoogleCloudContentwarehouseV1RunPipelineMetadataIndividualDocumentStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :document_id, as: 'documentId'
+          property :status, as: 'status', class: Google::Apis::ContentwarehouseV1::GoogleRpcStatus, decorator: Google::Apis::ContentwarehouseV1::GoogleRpcStatus::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContentwarehouseV1RunPipelineMetadataProcessWithDocAiPipelineMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :documents, as: 'documents'
+          property :processor_info, as: 'processorInfo', class: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1ProcessorInfo, decorator: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1ProcessorInfo::Representation
+      
         end
       end
       
@@ -40454,7 +40771,6 @@ module Google
           property :lng_e7, as: 'lngE7'
           property :oyster_id, as: 'oysterId', class: Google::Apis::ContentwarehouseV1::GeostoreFeatureIdProto, decorator: Google::Apis::ContentwarehouseV1::GeostoreFeatureIdProto::Representation
       
-          property :single_topicness_e2, as: 'singleTopicnessE2'
         end
       end
       
@@ -40558,15 +40874,6 @@ module Google
           collection :topicality_e2, as: 'topicalityE2'
           collection :unbound_intent_mid, as: 'unboundIntentMid'
           collection :unbound_intent_score_e2, as: 'unboundIntentScoreE2'
-          collection :undermerged_members, as: 'undermergedMembers', class: Google::Apis::ContentwarehouseV1::RepositoryWebrefWebrefMustangAttachmentUndermergedMembers, decorator: Google::Apis::ContentwarehouseV1::RepositoryWebrefWebrefMustangAttachmentUndermergedMembers::Representation
-      
-        end
-      end
-      
-      class RepositoryWebrefWebrefMustangAttachmentUndermergedMembers
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :encoded_mid, as: 'encodedMid'
         end
       end
       
@@ -42126,7 +42433,6 @@ module Google
           property :is_smartphone_optimized, as: 'isSmartphoneOptimized'
           property :is_web_error_mobile_content, as: 'isWebErrorMobileContent'
           property :maximum_flash_ratio, as: 'maximumFlashRatio'
-          property :mobile_friendly_score, as: 'mobileFriendlyScore'
           property :violates_mobile_interstitial_policy, as: 'violatesMobileInterstitialPolicy'
         end
       end
@@ -43403,7 +43709,7 @@ module Google
       class TravelFlightsAirlineConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :adwords_cid, as: 'adwordsCid'
+          property :adwords_cid, :numeric_string => true, as: 'adwordsCid'
           property :alliance, as: 'alliance'
           property :baggage_carryon_limitations_urls, as: 'baggageCarryonLimitationsUrls', class: Google::Apis::ContentwarehouseV1::TravelFlightsNameCatalogProto, decorator: Google::Apis::ContentwarehouseV1::TravelFlightsNameCatalogProto::Representation
       
@@ -46224,6 +46530,7 @@ module Google
           property :best_thumbnail_type, as: 'bestThumbnailType'
           property :crops, as: 'crops'
           property :deep_crop_bytes, :base64 => true, as: 'deepCropBytes'
+          property :dime_score, as: 'dimeScore'
           property :docid, :numeric_string => true, as: 'docid'
           property :document_trust, as: 'documentTrust'
           property :eq_star, as: 'eqStar'
