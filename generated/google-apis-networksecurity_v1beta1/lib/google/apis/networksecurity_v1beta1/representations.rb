@@ -563,6 +563,7 @@ module Google
           collection :gateway_security_policies, as: 'gatewaySecurityPolicies', class: Google::Apis::NetworksecurityV1beta1::GatewaySecurityPolicy, decorator: Google::Apis::NetworksecurityV1beta1::GatewaySecurityPolicy::Representation
       
           property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -572,6 +573,7 @@ module Google
           collection :gateway_security_policy_rules, as: 'gatewaySecurityPolicyRules', class: Google::Apis::NetworksecurityV1beta1::GatewaySecurityPolicyRule, decorator: Google::Apis::NetworksecurityV1beta1::GatewaySecurityPolicyRule::Representation
       
           property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -608,6 +610,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :tls_inspection_policies, as: 'tlsInspectionPolicies', class: Google::Apis::NetworksecurityV1beta1::TlsInspectionPolicy, decorator: Google::Apis::NetworksecurityV1beta1::TlsInspectionPolicy::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -637,6 +640,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :client_validation_ca, as: 'clientValidationCa', class: Google::Apis::NetworksecurityV1beta1::ValidationCa, decorator: Google::Apis::NetworksecurityV1beta1::ValidationCa::Representation
       
+          property :client_validation_mode, as: 'clientValidationMode'
+          property :client_validation_trust_config, as: 'clientValidationTrustConfig'
         end
       end
       
