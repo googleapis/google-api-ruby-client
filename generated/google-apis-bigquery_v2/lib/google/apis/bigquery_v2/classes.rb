@@ -7069,6 +7069,8 @@ module Google
       
         # The main file/jar URI of the Spark application. Exactly one of the
         # definition_body field and the main_file_uri field must be set for Python.
+        # Exactly one of main_class and main_file_uri field should be set for Java/Scala
+        # language type.
         # Corresponds to the JSON property `mainFileUri`
         # @return [String]
         attr_accessor :main_file_uri
@@ -8304,10 +8306,15 @@ module Google
         attr_accessor :auto_arima
         alias_method :auto_arima?, :auto_arima
       
-        # The max value of non-seasonal p and q.
+        # The max value of the sum of non-seasonal p and q.
         # Corresponds to the JSON property `autoArimaMaxOrder`
         # @return [Fixnum]
         attr_accessor :auto_arima_max_order
+      
+        # The min value of the sum of non-seasonal p and q.
+        # Corresponds to the JSON property `autoArimaMinOrder`
+        # @return [Fixnum]
+        attr_accessor :auto_arima_min_order
       
         # Batch size for dnn models.
         # Corresponds to the JSON property `batchSize`
@@ -8672,6 +8679,7 @@ module Google
           @adjust_step_changes = args[:adjust_step_changes] if args.key?(:adjust_step_changes)
           @auto_arima = args[:auto_arima] if args.key?(:auto_arima)
           @auto_arima_max_order = args[:auto_arima_max_order] if args.key?(:auto_arima_max_order)
+          @auto_arima_min_order = args[:auto_arima_min_order] if args.key?(:auto_arima_min_order)
           @batch_size = args[:batch_size] if args.key?(:batch_size)
           @booster_type = args[:booster_type] if args.key?(:booster_type)
           @calculate_p_values = args[:calculate_p_values] if args.key?(:calculate_p_values)
