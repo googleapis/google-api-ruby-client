@@ -4414,6 +4414,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SecurityPolicyRuleRateLimitOptionsThreshold
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -6154,6 +6160,7 @@ module Google
           collection :licenses, as: 'licenses'
           property :on_update_action, as: 'onUpdateAction'
           property :provisioned_iops, :numeric_string => true, as: 'provisionedIops'
+          collection :replica_zones, as: 'replicaZones'
           hash :resource_manager_tags, as: 'resourceManagerTags'
           collection :resource_policies, as: 'resourcePolicies'
           property :source_image, as: 'sourceImage'
@@ -7783,6 +7790,7 @@ module Google
           property :ip_protocol, as: 'IPProtocol'
           property :all_ports, as: 'allPorts'
           property :allow_global_access, as: 'allowGlobalAccess'
+          property :allow_psc_global_access, as: 'allowPscGlobalAccess'
           property :backend_service, as: 'backendService'
           property :base_forwarding_rule, as: 'baseForwardingRule'
           property :creation_timestamp, as: 'creationTimestamp'
@@ -14065,12 +14073,22 @@ module Google
       
           property :conform_action, as: 'conformAction'
           property :enforce_on_key, as: 'enforceOnKey'
+          collection :enforce_on_key_configs, as: 'enforceOnKeyConfigs', class: Google::Apis::ComputeV1::SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig, decorator: Google::Apis::ComputeV1::SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig::Representation
+      
           property :enforce_on_key_name, as: 'enforceOnKeyName'
           property :exceed_action, as: 'exceedAction'
           property :exceed_redirect_options, as: 'exceedRedirectOptions', class: Google::Apis::ComputeV1::SecurityPolicyRuleRedirectOptions, decorator: Google::Apis::ComputeV1::SecurityPolicyRuleRedirectOptions::Representation
       
           property :rate_limit_threshold, as: 'rateLimitThreshold', class: Google::Apis::ComputeV1::SecurityPolicyRuleRateLimitOptionsThreshold, decorator: Google::Apis::ComputeV1::SecurityPolicyRuleRateLimitOptionsThreshold::Representation
       
+        end
+      end
+      
+      class SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enforce_on_key_name, as: 'enforceOnKeyName'
+          property :enforce_on_key_type, as: 'enforceOnKeyType'
         end
       end
       
