@@ -319,6 +319,8 @@ module Google
           property :import_payload, as: 'importPayload', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineLoggingImportErrorContext, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineLoggingImportErrorContext::Representation
       
           property :message, as: 'message'
+          hash :request_payload, as: 'requestPayload'
+          hash :response_payload, as: 'responsePayload'
           property :service_context, as: 'serviceContext', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineLoggingServiceContext, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineLoggingServiceContext::Representation
       
           property :status, as: 'status', class: Google::Apis::DiscoveryengineV1beta::GoogleRpcStatus, decorator: Google::Apis::DiscoveryengineV1beta::GoogleRpcStatus::Representation
