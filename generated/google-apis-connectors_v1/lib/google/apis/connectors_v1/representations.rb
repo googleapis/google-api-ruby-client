@@ -106,6 +106,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConnectorsLogConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Destination
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -113,6 +119,12 @@ module Google
       end
       
       class DestinationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DestinationConfigTemplate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -233,6 +245,12 @@ module Google
       end
       
       class NodeConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Oauth2AuthCodeFlow
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -411,6 +429,8 @@ module Google
           collection :additional_variables, as: 'additionalVariables', class: Google::Apis::ConnectorsV1::ConfigVariable, decorator: Google::Apis::ConnectorsV1::ConfigVariable::Representation
       
           property :auth_type, as: 'authType'
+          property :oauth2_auth_code_flow, as: 'oauth2AuthCodeFlow', class: Google::Apis::ConnectorsV1::Oauth2AuthCodeFlow, decorator: Google::Apis::ConnectorsV1::Oauth2AuthCodeFlow::Representation
+      
           property :oauth2_client_credentials, as: 'oauth2ClientCredentials', class: Google::Apis::ConnectorsV1::Oauth2ClientCredentials, decorator: Google::Apis::ConnectorsV1::Oauth2ClientCredentials::Representation
       
           property :oauth2_jwt_bearer, as: 'oauth2JwtBearer', class: Google::Apis::ConnectorsV1::Oauth2JwtBearer, decorator: Google::Apis::ConnectorsV1::Oauth2JwtBearer::Representation
@@ -508,6 +528,8 @@ module Google
           hash :labels, as: 'labels'
           property :lock_config, as: 'lockConfig', class: Google::Apis::ConnectorsV1::LockConfig, decorator: Google::Apis::ConnectorsV1::LockConfig::Representation
       
+          property :log_config, as: 'logConfig', class: Google::Apis::ConnectorsV1::ConnectorsLogConfig, decorator: Google::Apis::ConnectorsV1::ConnectorsLogConfig::Representation
+      
           property :name, as: 'name'
           property :node_config, as: 'nodeConfig', class: Google::Apis::ConnectorsV1::NodeConfig, decorator: Google::Apis::ConnectorsV1::NodeConfig::Representation
       
@@ -567,6 +589,8 @@ module Google
           collection :config_variable_templates, as: 'configVariableTemplates', class: Google::Apis::ConnectorsV1::ConfigVariableTemplate, decorator: Google::Apis::ConnectorsV1::ConfigVariableTemplate::Representation
       
           property :create_time, as: 'createTime'
+          collection :destination_config_templates, as: 'destinationConfigTemplates', class: Google::Apis::ConnectorsV1::DestinationConfigTemplate, decorator: Google::Apis::ConnectorsV1::DestinationConfigTemplate::Representation
+      
           property :display_name, as: 'displayName'
           property :egress_control_config, as: 'egressControlConfig', class: Google::Apis::ConnectorsV1::EgressControlConfig, decorator: Google::Apis::ConnectorsV1::EgressControlConfig::Representation
       
@@ -586,6 +610,13 @@ module Google
         end
       end
       
+      class ConnectorsLogConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
       class Destination
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -601,6 +632,21 @@ module Google
           collection :destinations, as: 'destinations', class: Google::Apis::ConnectorsV1::Destination, decorator: Google::Apis::ConnectorsV1::Destination::Representation
       
           property :key, as: 'key'
+        end
+      end
+      
+      class DestinationConfigTemplate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_port, as: 'defaultPort'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :is_advanced, as: 'isAdvanced'
+          property :key, as: 'key'
+          property :max, as: 'max'
+          property :min, as: 'min'
+          property :port_field_type, as: 'portFieldType'
+          property :regex_pattern, as: 'regexPattern'
         end
       end
       
@@ -788,6 +834,20 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :max_node_count, as: 'maxNodeCount'
           property :min_node_count, as: 'minNodeCount'
+        end
+      end
+      
+      class Oauth2AuthCodeFlow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auth_code, as: 'authCode'
+          property :client_id, as: 'clientId'
+          property :client_secret, as: 'clientSecret', class: Google::Apis::ConnectorsV1::Secret, decorator: Google::Apis::ConnectorsV1::Secret::Representation
+      
+          property :enable_pkce, as: 'enablePkce'
+          property :pkce_verifier, as: 'pkceVerifier'
+          property :redirect_uri, as: 'redirectUri'
+          collection :scopes, as: 'scopes'
         end
       end
       
