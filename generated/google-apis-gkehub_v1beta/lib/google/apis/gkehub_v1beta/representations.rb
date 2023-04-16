@@ -184,6 +184,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConfigManagementManaged
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ConfigManagementMembershipSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -280,6 +286,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Fleet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FleetLifecycleState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FleetObservabilityFeatureSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -347,6 +365,12 @@ module Google
       end
       
       class ListFeaturesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListFleetsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -768,6 +792,8 @@ module Google
           property :enabled, as: 'enabled'
           property :git, as: 'git', class: Google::Apis::GkehubV1beta::ConfigManagementGitConfig, decorator: Google::Apis::GkehubV1beta::ConfigManagementGitConfig::Representation
       
+          property :managed, as: 'managed', class: Google::Apis::GkehubV1beta::ConfigManagementManaged, decorator: Google::Apis::GkehubV1beta::ConfigManagementManaged::Representation
+      
           property :oci, as: 'oci', class: Google::Apis::GkehubV1beta::ConfigManagementOciConfig, decorator: Google::Apis::GkehubV1beta::ConfigManagementOciConfig::Representation
       
           property :prevent_drift, as: 'preventDrift'
@@ -895,6 +921,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :error_message, as: 'errorMessage'
+        end
+      end
+      
+      class ConfigManagementManaged
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
         end
       end
       
@@ -1084,6 +1117,27 @@ module Google
         end
       end
       
+      class Fleet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :delete_time, as: 'deleteTime'
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          property :state, as: 'state', class: Google::Apis::GkehubV1beta::FleetLifecycleState, decorator: Google::Apis::GkehubV1beta::FleetLifecycleState::Representation
+      
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class FleetLifecycleState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+        end
+      end
+      
       class FleetObservabilityFeatureSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1194,6 +1248,15 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :resources, as: 'resources', class: Google::Apis::GkehubV1beta::Feature, decorator: Google::Apis::GkehubV1beta::Feature::Representation
       
+        end
+      end
+      
+      class ListFleetsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :fleets, as: 'fleets', class: Google::Apis::GkehubV1beta::Fleet, decorator: Google::Apis::GkehubV1beta::Fleet::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       

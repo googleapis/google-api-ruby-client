@@ -450,6 +450,11 @@ module Google
         # @return [Google::Apis::GkehubV1beta::ConfigManagementGitConfig]
         attr_accessor :git
       
+        # Configuration for Managed Config Sync.
+        # Corresponds to the JSON property `managed`
+        # @return [Google::Apis::GkehubV1beta::ConfigManagementManaged]
+        attr_accessor :managed
+      
         # OCI repo configuration for a single cluster
         # Corresponds to the JSON property `oci`
         # @return [Google::Apis::GkehubV1beta::ConfigManagementOciConfig]
@@ -478,6 +483,7 @@ module Google
           @allow_vertical_scale = args[:allow_vertical_scale] if args.key?(:allow_vertical_scale)
           @enabled = args[:enabled] if args.key?(:enabled)
           @git = args[:git] if args.key?(:git)
+          @managed = args[:managed] if args.key?(:managed)
           @oci = args[:oci] if args.key?(:oci)
           @prevent_drift = args[:prevent_drift] if args.key?(:prevent_drift)
           @source_format = args[:source_format] if args.key?(:source_format)
@@ -914,6 +920,27 @@ module Google
         # Update properties of this object
         def update!(**args)
           @error_message = args[:error_message] if args.key?(:error_message)
+        end
+      end
+      
+      # Configuration for Managed Config Sync.
+      class ConfigManagementManaged
+        include Google::Apis::Core::Hashable
+      
+        # Set to true to enable Managed Config Sync. Defaults to false which disables
+        # Managed Config Sync.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
         end
       end
       
@@ -1599,6 +1626,87 @@ module Google
         end
       end
       
+      # Fleet contains the Fleet-wide metadata and configuration.
+      class Fleet
+        include Google::Apis::Core::Hashable
+      
+        # Output only. When the Fleet was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. When the Fleet was deleted.
+        # Corresponds to the JSON property `deleteTime`
+        # @return [String]
+        attr_accessor :delete_time
+      
+        # Optional. A user-assigned display name of the Fleet. When present, it must be
+        # between 4 to 30 characters. Allowed characters are: lowercase and uppercase
+        # letters, numbers, hyphen, single-quote, double-quote, space, and exclamation
+        # point. Example: `Production Fleet`
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. The full, unique resource name of this fleet in the format of `
+        # projects/`project`/locations/`location`/fleets/`fleet``. Each GCP project can
+        # have at most one fleet resource, named "default".
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # FleetLifecycleState describes the state of a Fleet resource.
+        # Corresponds to the JSON property `state`
+        # @return [Google::Apis::GkehubV1beta::FleetLifecycleState]
+        attr_accessor :state
+      
+        # Output only. Google-generated UUID for this resource. This is unique across
+        # all Fleet resources. If a Fleet resource is deleted and another resource with
+        # the same name is created, it gets a different uid.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. When the Fleet was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @delete_time = args[:delete_time] if args.key?(:delete_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # FleetLifecycleState describes the state of a Fleet resource.
+      class FleetLifecycleState
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The current state of the Fleet resource.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+        end
+      end
+      
       # **Fleet Observability**: The Hub-wide input for the FleetObservability feature.
       class FleetObservabilityFeatureSpec
         include Google::Apis::Core::Hashable
@@ -1987,6 +2095,33 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @resources = args[:resources] if args.key?(:resources)
+        end
+      end
+      
+      # Response message for the `GkeHub.ListFleetsResponse` method.
+      class ListFleetsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of matching fleets.
+        # Corresponds to the JSON property `fleets`
+        # @return [Array<Google::Apis::GkehubV1beta::Fleet>]
+        attr_accessor :fleets
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages. The token is only valid for
+        # 1h.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fleets = args[:fleets] if args.key?(:fleets)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -3495,7 +3630,8 @@ module Google
       class ServiceMeshMembershipSpec
         include Google::Apis::Core::Hashable
       
-        # Enables automatic control plane management.
+        # Deprecated: use `management` instead Enables automatic control plane
+        # management.
         # Corresponds to the JSON property `controlPlane`
         # @return [String]
         attr_accessor :control_plane
