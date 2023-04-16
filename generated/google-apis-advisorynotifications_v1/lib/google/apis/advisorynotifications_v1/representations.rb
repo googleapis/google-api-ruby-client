@@ -138,6 +138,7 @@ module Google
           collection :messages, as: 'messages', class: Google::Apis::AdvisorynotificationsV1::GoogleCloudAdvisorynotificationsV1Message, decorator: Google::Apis::AdvisorynotificationsV1::GoogleCloudAdvisorynotificationsV1Message::Representation
       
           property :name, as: 'name'
+          property :notification_type, as: 'notificationType'
           property :subject, as: 'subject', class: Google::Apis::AdvisorynotificationsV1::GoogleCloudAdvisorynotificationsV1Subject, decorator: Google::Apis::AdvisorynotificationsV1::GoogleCloudAdvisorynotificationsV1Subject::Representation
       
         end
