@@ -887,6 +887,25 @@ module Google
         end
       end
       
+      # CutoverForecast holds information about future CutoverJobs of a MigratingVm.
+      class CutoverForecast
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Estimation of the CutoverJob duration.
+        # Corresponds to the JSON property `estimatedCutoverJobDuration`
+        # @return [String]
+        attr_accessor :estimated_cutover_job_duration
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @estimated_cutover_job_duration = args[:estimated_cutover_job_duration] if args.key?(:estimated_cutover_job_duration)
+        end
+      end
+      
       # CutoverJob message describes a cutover of a migrating VM. The CutoverJob is
       # the operation of shutting down the VM, creating a snapshot and clonning the VM
       # using the replicated snapshot.
@@ -1787,6 +1806,11 @@ module Google
         # @return [Google::Apis::VmmigrationV1::ReplicationCycle]
         attr_accessor :current_sync_info
       
+        # CutoverForecast holds information about future CutoverJobs of a MigratingVm.
+        # Corresponds to the JSON property `cutoverForecast`
+        # @return [Google::Apis::VmmigrationV1::CutoverForecast]
+        attr_accessor :cutover_forecast
+      
         # The description attached to the migrating VM by the user.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -1887,6 +1911,7 @@ module Google
           @compute_engine_target_defaults = args[:compute_engine_target_defaults] if args.key?(:compute_engine_target_defaults)
           @create_time = args[:create_time] if args.key?(:create_time)
           @current_sync_info = args[:current_sync_info] if args.key?(:current_sync_info)
+          @cutover_forecast = args[:cutover_forecast] if args.key?(:cutover_forecast)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @error = args[:error] if args.key?(:error)
