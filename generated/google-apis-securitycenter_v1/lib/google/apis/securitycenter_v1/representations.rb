@@ -220,6 +220,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudSecuritycenterV1CustomConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV1CustomOutputSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSecuritycenterV1ExternalSystem
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -238,13 +256,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudSecuritycenterV1Property
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSecuritycenterV1Resource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudSecuritycenterV1ResourceSelector
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSecuritycenterV1RunAssetDiscoveryResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -376,6 +412,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListDescendantSecurityHealthAnalyticsCustomModulesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListEffectiveSecurityHealthAnalyticsCustomModulesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListFindingsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -401,6 +449,12 @@ module Google
       end
       
       class ListOperationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListSecurityHealthAnalyticsCustomModulesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -966,6 +1020,40 @@ module Google
         end
       end
       
+      class GoogleCloudSecuritycenterV1CustomConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_output, as: 'customOutput', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1CustomOutputSpec, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1CustomOutputSpec::Representation
+      
+          property :description, as: 'description'
+          property :predicate, as: 'predicate', class: Google::Apis::SecuritycenterV1::Expr, decorator: Google::Apis::SecuritycenterV1::Expr::Representation
+      
+          property :recommendation, as: 'recommendation'
+          property :resource_selector, as: 'resourceSelector', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1ResourceSelector, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1ResourceSelector::Representation
+      
+          property :severity, as: 'severity'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV1CustomOutputSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :properties, as: 'properties', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1Property, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1Property::Representation
+      
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_config, as: 'customConfig', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1CustomConfig, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1CustomConfig::Representation
+      
+          property :display_name, as: 'displayName'
+          property :enablement_state, as: 'enablementState'
+          property :name, as: 'name'
+        end
+      end
+      
       class GoogleCloudSecuritycenterV1ExternalSystem
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1001,6 +1089,15 @@ module Google
         end
       end
       
+      class GoogleCloudSecuritycenterV1Property
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :value_expression, as: 'valueExpression', class: Google::Apis::SecuritycenterV1::Expr, decorator: Google::Apis::SecuritycenterV1::Expr::Representation
+      
+        end
+      end
+      
       class GoogleCloudSecuritycenterV1Resource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1016,11 +1113,32 @@ module Google
         end
       end
       
+      class GoogleCloudSecuritycenterV1ResourceSelector
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :resource_types, as: 'resourceTypes'
+        end
+      end
+      
       class GoogleCloudSecuritycenterV1RunAssetDiscoveryResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :duration, as: 'duration'
           property :state, as: 'state'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ancestor_module, as: 'ancestorModule'
+          property :custom_config, as: 'customConfig', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1CustomConfig, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1CustomConfig::Representation
+      
+          property :display_name, as: 'displayName'
+          property :enablement_state, as: 'enablementState'
+          property :last_editor, as: 'lastEditor'
+          property :name, as: 'name'
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -1251,6 +1369,24 @@ module Google
         end
       end
       
+      class ListDescendantSecurityHealthAnalyticsCustomModulesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :security_health_analytics_custom_modules, as: 'securityHealthAnalyticsCustomModules', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule::Representation
+      
+        end
+      end
+      
+      class ListEffectiveSecurityHealthAnalyticsCustomModulesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :effective_security_health_analytics_custom_modules, as: 'effectiveSecurityHealthAnalyticsCustomModules', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListFindingsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1296,6 +1432,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::SecuritycenterV1::Operation, decorator: Google::Apis::SecuritycenterV1::Operation::Representation
+      
+        end
+      end
+      
+      class ListSecurityHealthAnalyticsCustomModulesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :security_health_analytics_custom_modules, as: 'securityHealthAnalyticsCustomModules', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule::Representation
       
         end
       end

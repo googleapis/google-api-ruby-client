@@ -852,6 +852,321 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a resident SecurityHealthAnalyticsCustomModule at the scope of the
+        # given CRM parent, and also creates inherited
+        # SecurityHealthAnalyticsCustomModules for all CRM descendants of the given
+        # parent. These modules are enabled by default.
+        # @param [String] parent
+        #   Required. Resource name of the new custom module's parent. Its format is "
+        #   organizations/`organization`/securityHealthAnalyticsSettings", "folders/`
+        #   folder`/securityHealthAnalyticsSettings", or "projects/`project`/
+        #   securityHealthAnalyticsSettings"
+        # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule] google_cloud_securitycenter_v1_security_health_analytics_custom_module_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_folder_security_health_analytics_setting_custom_module(parent, google_cloud_securitycenter_v1_security_health_analytics_custom_module_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/customModules', options)
+          command.request_representation = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule::Representation
+          command.request_object = google_cloud_securitycenter_v1_security_health_analytics_custom_module_object
+          command.response_representation = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the specified SecurityHealthAnalyticsCustomModule and all of its
+        # descendants in the CRM hierarchy. This method is only supported for resident
+        # custom modules.
+        # @param [String] name
+        #   Required. Name of the custom module to delete. Its format is "organizations/`
+        #   organization`/securityHealthAnalyticsSettings/customModules/`customModule`", "
+        #   folders/`folder`/securityHealthAnalyticsSettings/customModules/`customModule`",
+        #   or "projects/`project`/securityHealthAnalyticsSettings/customModules/`
+        #   customModule`"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_folder_security_health_analytics_setting_custom_module(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::SecuritycenterV1::Empty::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a SecurityHealthAnalyticsCustomModule.
+        # @param [String] name
+        #   Required. Name of the custom module to get. Its format is "organizations/`
+        #   organization`/securityHealthAnalyticsSettings/customModules/`customModule`", "
+        #   folders/`folder`/securityHealthAnalyticsSettings/customModules/`customModule`",
+        #   or "projects/`project`/securityHealthAnalyticsSettings/customModules/`
+        #   customModule`"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_folder_security_health_analytics_setting_custom_module(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns a list of all SecurityHealthAnalyticsCustomModules for the given
+        # parent. This includes resident modules defined at the scope of the parent, and
+        # inherited modules, inherited from CRM ancestors.
+        # @param [String] parent
+        #   Required. Name of parent to list custom modules. Its format is "organizations/`
+        #   organization`/securityHealthAnalyticsSettings", "folders/`folder`/
+        #   securityHealthAnalyticsSettings", or "projects/`project`/
+        #   securityHealthAnalyticsSettings"
+        # @param [Fixnum] page_size
+        #   The maximum number of results to return in a single response. Default is 10,
+        #   minimum is 1, maximum is 1000.
+        # @param [String] page_token
+        #   The value returned by the last call indicating a continuation
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::ListSecurityHealthAnalyticsCustomModulesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::ListSecurityHealthAnalyticsCustomModulesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_folder_security_health_analytics_setting_custom_modules(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/customModules', options)
+          command.response_representation = Google::Apis::SecuritycenterV1::ListSecurityHealthAnalyticsCustomModulesResponse::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::ListSecurityHealthAnalyticsCustomModulesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns a list of all resident SecurityHealthAnalyticsCustomModules under the
+        # given CRM parent and all of the parent’s CRM descendants.
+        # @param [String] parent
+        #   Required. Name of parent to list descendant custom modules. Its format is "
+        #   organizations/`organization`/securityHealthAnalyticsSettings", "folders/`
+        #   folder`/securityHealthAnalyticsSettings", or "projects/`project`/
+        #   securityHealthAnalyticsSettings"
+        # @param [Fixnum] page_size
+        #   The maximum number of results to return in a single response. Default is 10,
+        #   minimum is 1, maximum is 1000.
+        # @param [String] page_token
+        #   The value returned by the last call indicating a continuation
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::ListDescendantSecurityHealthAnalyticsCustomModulesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::ListDescendantSecurityHealthAnalyticsCustomModulesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_folder_security_health_analytics_setting_custom_module_descendant(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/customModules:listDescendant', options)
+          command.response_representation = Google::Apis::SecuritycenterV1::ListDescendantSecurityHealthAnalyticsCustomModulesResponse::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::ListDescendantSecurityHealthAnalyticsCustomModulesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the SecurityHealthAnalyticsCustomModule under the given name based on
+        # the given update mask. Updating the enablement state is supported on both
+        # resident and inherited modules (though resident modules cannot have an
+        # enablement state of “inherited”). Updating the display name and custom config
+        # of a module is supported on resident modules only.
+        # @param [String] name
+        #   Immutable. The resource name of the custom module. Its format is "
+        #   organizations/`organization`/securityHealthAnalyticsSettings/customModules/`
+        #   customModule`", or "folders/`folder`/securityHealthAnalyticsSettings/
+        #   customModules/`customModule`", or "projects/`project`/
+        #   securityHealthAnalyticsSettings/customModules/`customModule`" The id `
+        #   customModule` is server-generated and is not user settable. It will be a
+        #   numeric id containing 1-20 digits.
+        # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule] google_cloud_securitycenter_v1_security_health_analytics_custom_module_object
+        # @param [String] update_mask
+        #   The list of fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_folder_security_health_analytics_setting_custom_module(name, google_cloud_securitycenter_v1_security_health_analytics_custom_module_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule::Representation
+          command.request_object = google_cloud_securitycenter_v1_security_health_analytics_custom_module_object
+          command.response_representation = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves an EffectiveSecurityHealthAnalyticsCustomModule.
+        # @param [String] name
+        #   Required. Name of the effective custom module to get. Its format is "
+        #   organizations/`organization`/securityHealthAnalyticsSettings/
+        #   effectiveCustomModules/`customModule`", "folders/`folder`/
+        #   securityHealthAnalyticsSettings/effectiveCustomModules/`customModule`", or "
+        #   projects/`project`/securityHealthAnalyticsSettings/effectiveCustomModules/`
+        #   customModule`"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_folder_security_health_analytics_setting_effective_custom_module(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns a list of all EffectiveSecurityHealthAnalyticsCustomModules for the
+        # given parent. This includes resident modules defined at the scope of the
+        # parent, and inherited modules, inherited from CRM ancestors.
+        # @param [String] parent
+        #   Required. Name of parent to list effective custom modules. Its format is "
+        #   organizations/`organization`/securityHealthAnalyticsSettings", "folders/`
+        #   folder`/securityHealthAnalyticsSettings", or "projects/`project`/
+        #   securityHealthAnalyticsSettings"
+        # @param [Fixnum] page_size
+        #   The maximum number of results to return in a single response. Default is 10,
+        #   minimum is 1, maximum is 1000.
+        # @param [String] page_token
+        #   The value returned by the last call indicating a continuation
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::ListEffectiveSecurityHealthAnalyticsCustomModulesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::ListEffectiveSecurityHealthAnalyticsCustomModulesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_folder_security_health_analytics_setting_effective_custom_modules(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/effectiveCustomModules', options)
+          command.response_representation = Google::Apis::SecuritycenterV1::ListEffectiveSecurityHealthAnalyticsCustomModulesResponse::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::ListEffectiveSecurityHealthAnalyticsCustomModulesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists all sources belonging to an organization.
         # @param [String] parent
         #   Required. Resource name of the parent of sources to list. Its format should be
@@ -2294,6 +2609,321 @@ module Google
           command.response_class = Google::Apis::SecuritycenterV1::ListOperationsResponse
           command.params['name'] = name unless name.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a resident SecurityHealthAnalyticsCustomModule at the scope of the
+        # given CRM parent, and also creates inherited
+        # SecurityHealthAnalyticsCustomModules for all CRM descendants of the given
+        # parent. These modules are enabled by default.
+        # @param [String] parent
+        #   Required. Resource name of the new custom module's parent. Its format is "
+        #   organizations/`organization`/securityHealthAnalyticsSettings", "folders/`
+        #   folder`/securityHealthAnalyticsSettings", or "projects/`project`/
+        #   securityHealthAnalyticsSettings"
+        # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule] google_cloud_securitycenter_v1_security_health_analytics_custom_module_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_security_health_analytics_setting_custom_module(parent, google_cloud_securitycenter_v1_security_health_analytics_custom_module_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/customModules', options)
+          command.request_representation = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule::Representation
+          command.request_object = google_cloud_securitycenter_v1_security_health_analytics_custom_module_object
+          command.response_representation = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the specified SecurityHealthAnalyticsCustomModule and all of its
+        # descendants in the CRM hierarchy. This method is only supported for resident
+        # custom modules.
+        # @param [String] name
+        #   Required. Name of the custom module to delete. Its format is "organizations/`
+        #   organization`/securityHealthAnalyticsSettings/customModules/`customModule`", "
+        #   folders/`folder`/securityHealthAnalyticsSettings/customModules/`customModule`",
+        #   or "projects/`project`/securityHealthAnalyticsSettings/customModules/`
+        #   customModule`"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_organization_security_health_analytics_setting_custom_module(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::SecuritycenterV1::Empty::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a SecurityHealthAnalyticsCustomModule.
+        # @param [String] name
+        #   Required. Name of the custom module to get. Its format is "organizations/`
+        #   organization`/securityHealthAnalyticsSettings/customModules/`customModule`", "
+        #   folders/`folder`/securityHealthAnalyticsSettings/customModules/`customModule`",
+        #   or "projects/`project`/securityHealthAnalyticsSettings/customModules/`
+        #   customModule`"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_security_health_analytics_setting_custom_module(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns a list of all SecurityHealthAnalyticsCustomModules for the given
+        # parent. This includes resident modules defined at the scope of the parent, and
+        # inherited modules, inherited from CRM ancestors.
+        # @param [String] parent
+        #   Required. Name of parent to list custom modules. Its format is "organizations/`
+        #   organization`/securityHealthAnalyticsSettings", "folders/`folder`/
+        #   securityHealthAnalyticsSettings", or "projects/`project`/
+        #   securityHealthAnalyticsSettings"
+        # @param [Fixnum] page_size
+        #   The maximum number of results to return in a single response. Default is 10,
+        #   minimum is 1, maximum is 1000.
+        # @param [String] page_token
+        #   The value returned by the last call indicating a continuation
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::ListSecurityHealthAnalyticsCustomModulesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::ListSecurityHealthAnalyticsCustomModulesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_security_health_analytics_setting_custom_modules(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/customModules', options)
+          command.response_representation = Google::Apis::SecuritycenterV1::ListSecurityHealthAnalyticsCustomModulesResponse::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::ListSecurityHealthAnalyticsCustomModulesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns a list of all resident SecurityHealthAnalyticsCustomModules under the
+        # given CRM parent and all of the parent’s CRM descendants.
+        # @param [String] parent
+        #   Required. Name of parent to list descendant custom modules. Its format is "
+        #   organizations/`organization`/securityHealthAnalyticsSettings", "folders/`
+        #   folder`/securityHealthAnalyticsSettings", or "projects/`project`/
+        #   securityHealthAnalyticsSettings"
+        # @param [Fixnum] page_size
+        #   The maximum number of results to return in a single response. Default is 10,
+        #   minimum is 1, maximum is 1000.
+        # @param [String] page_token
+        #   The value returned by the last call indicating a continuation
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::ListDescendantSecurityHealthAnalyticsCustomModulesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::ListDescendantSecurityHealthAnalyticsCustomModulesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_security_health_analytics_setting_custom_module_descendant(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/customModules:listDescendant', options)
+          command.response_representation = Google::Apis::SecuritycenterV1::ListDescendantSecurityHealthAnalyticsCustomModulesResponse::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::ListDescendantSecurityHealthAnalyticsCustomModulesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the SecurityHealthAnalyticsCustomModule under the given name based on
+        # the given update mask. Updating the enablement state is supported on both
+        # resident and inherited modules (though resident modules cannot have an
+        # enablement state of “inherited”). Updating the display name and custom config
+        # of a module is supported on resident modules only.
+        # @param [String] name
+        #   Immutable. The resource name of the custom module. Its format is "
+        #   organizations/`organization`/securityHealthAnalyticsSettings/customModules/`
+        #   customModule`", or "folders/`folder`/securityHealthAnalyticsSettings/
+        #   customModules/`customModule`", or "projects/`project`/
+        #   securityHealthAnalyticsSettings/customModules/`customModule`" The id `
+        #   customModule` is server-generated and is not user settable. It will be a
+        #   numeric id containing 1-20 digits.
+        # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule] google_cloud_securitycenter_v1_security_health_analytics_custom_module_object
+        # @param [String] update_mask
+        #   The list of fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_organization_security_health_analytics_setting_custom_module(name, google_cloud_securitycenter_v1_security_health_analytics_custom_module_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule::Representation
+          command.request_object = google_cloud_securitycenter_v1_security_health_analytics_custom_module_object
+          command.response_representation = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves an EffectiveSecurityHealthAnalyticsCustomModule.
+        # @param [String] name
+        #   Required. Name of the effective custom module to get. Its format is "
+        #   organizations/`organization`/securityHealthAnalyticsSettings/
+        #   effectiveCustomModules/`customModule`", "folders/`folder`/
+        #   securityHealthAnalyticsSettings/effectiveCustomModules/`customModule`", or "
+        #   projects/`project`/securityHealthAnalyticsSettings/effectiveCustomModules/`
+        #   customModule`"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_security_health_analytics_setting_effective_custom_module(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns a list of all EffectiveSecurityHealthAnalyticsCustomModules for the
+        # given parent. This includes resident modules defined at the scope of the
+        # parent, and inherited modules, inherited from CRM ancestors.
+        # @param [String] parent
+        #   Required. Name of parent to list effective custom modules. Its format is "
+        #   organizations/`organization`/securityHealthAnalyticsSettings", "folders/`
+        #   folder`/securityHealthAnalyticsSettings", or "projects/`project`/
+        #   securityHealthAnalyticsSettings"
+        # @param [Fixnum] page_size
+        #   The maximum number of results to return in a single response. Default is 10,
+        #   minimum is 1, maximum is 1000.
+        # @param [String] page_token
+        #   The value returned by the last call indicating a continuation
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::ListEffectiveSecurityHealthAnalyticsCustomModulesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::ListEffectiveSecurityHealthAnalyticsCustomModulesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_security_health_analytics_setting_effective_custom_modules(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/effectiveCustomModules', options)
+          command.response_representation = Google::Apis::SecuritycenterV1::ListEffectiveSecurityHealthAnalyticsCustomModulesResponse::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::ListEffectiveSecurityHealthAnalyticsCustomModulesResponse
+          command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -3747,6 +4377,321 @@ module Google
           command.response_class = Google::Apis::SecuritycenterV1::NotificationConfig
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a resident SecurityHealthAnalyticsCustomModule at the scope of the
+        # given CRM parent, and also creates inherited
+        # SecurityHealthAnalyticsCustomModules for all CRM descendants of the given
+        # parent. These modules are enabled by default.
+        # @param [String] parent
+        #   Required. Resource name of the new custom module's parent. Its format is "
+        #   organizations/`organization`/securityHealthAnalyticsSettings", "folders/`
+        #   folder`/securityHealthAnalyticsSettings", or "projects/`project`/
+        #   securityHealthAnalyticsSettings"
+        # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule] google_cloud_securitycenter_v1_security_health_analytics_custom_module_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_security_health_analytics_setting_custom_module(parent, google_cloud_securitycenter_v1_security_health_analytics_custom_module_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/customModules', options)
+          command.request_representation = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule::Representation
+          command.request_object = google_cloud_securitycenter_v1_security_health_analytics_custom_module_object
+          command.response_representation = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the specified SecurityHealthAnalyticsCustomModule and all of its
+        # descendants in the CRM hierarchy. This method is only supported for resident
+        # custom modules.
+        # @param [String] name
+        #   Required. Name of the custom module to delete. Its format is "organizations/`
+        #   organization`/securityHealthAnalyticsSettings/customModules/`customModule`", "
+        #   folders/`folder`/securityHealthAnalyticsSettings/customModules/`customModule`",
+        #   or "projects/`project`/securityHealthAnalyticsSettings/customModules/`
+        #   customModule`"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_security_health_analytics_setting_custom_module(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::SecuritycenterV1::Empty::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a SecurityHealthAnalyticsCustomModule.
+        # @param [String] name
+        #   Required. Name of the custom module to get. Its format is "organizations/`
+        #   organization`/securityHealthAnalyticsSettings/customModules/`customModule`", "
+        #   folders/`folder`/securityHealthAnalyticsSettings/customModules/`customModule`",
+        #   or "projects/`project`/securityHealthAnalyticsSettings/customModules/`
+        #   customModule`"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_security_health_analytics_setting_custom_module(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns a list of all SecurityHealthAnalyticsCustomModules for the given
+        # parent. This includes resident modules defined at the scope of the parent, and
+        # inherited modules, inherited from CRM ancestors.
+        # @param [String] parent
+        #   Required. Name of parent to list custom modules. Its format is "organizations/`
+        #   organization`/securityHealthAnalyticsSettings", "folders/`folder`/
+        #   securityHealthAnalyticsSettings", or "projects/`project`/
+        #   securityHealthAnalyticsSettings"
+        # @param [Fixnum] page_size
+        #   The maximum number of results to return in a single response. Default is 10,
+        #   minimum is 1, maximum is 1000.
+        # @param [String] page_token
+        #   The value returned by the last call indicating a continuation
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::ListSecurityHealthAnalyticsCustomModulesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::ListSecurityHealthAnalyticsCustomModulesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_security_health_analytics_setting_custom_modules(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/customModules', options)
+          command.response_representation = Google::Apis::SecuritycenterV1::ListSecurityHealthAnalyticsCustomModulesResponse::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::ListSecurityHealthAnalyticsCustomModulesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns a list of all resident SecurityHealthAnalyticsCustomModules under the
+        # given CRM parent and all of the parent’s CRM descendants.
+        # @param [String] parent
+        #   Required. Name of parent to list descendant custom modules. Its format is "
+        #   organizations/`organization`/securityHealthAnalyticsSettings", "folders/`
+        #   folder`/securityHealthAnalyticsSettings", or "projects/`project`/
+        #   securityHealthAnalyticsSettings"
+        # @param [Fixnum] page_size
+        #   The maximum number of results to return in a single response. Default is 10,
+        #   minimum is 1, maximum is 1000.
+        # @param [String] page_token
+        #   The value returned by the last call indicating a continuation
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::ListDescendantSecurityHealthAnalyticsCustomModulesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::ListDescendantSecurityHealthAnalyticsCustomModulesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_security_health_analytics_setting_custom_module_descendant(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/customModules:listDescendant', options)
+          command.response_representation = Google::Apis::SecuritycenterV1::ListDescendantSecurityHealthAnalyticsCustomModulesResponse::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::ListDescendantSecurityHealthAnalyticsCustomModulesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the SecurityHealthAnalyticsCustomModule under the given name based on
+        # the given update mask. Updating the enablement state is supported on both
+        # resident and inherited modules (though resident modules cannot have an
+        # enablement state of “inherited”). Updating the display name and custom config
+        # of a module is supported on resident modules only.
+        # @param [String] name
+        #   Immutable. The resource name of the custom module. Its format is "
+        #   organizations/`organization`/securityHealthAnalyticsSettings/customModules/`
+        #   customModule`", or "folders/`folder`/securityHealthAnalyticsSettings/
+        #   customModules/`customModule`", or "projects/`project`/
+        #   securityHealthAnalyticsSettings/customModules/`customModule`" The id `
+        #   customModule` is server-generated and is not user settable. It will be a
+        #   numeric id containing 1-20 digits.
+        # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule] google_cloud_securitycenter_v1_security_health_analytics_custom_module_object
+        # @param [String] update_mask
+        #   The list of fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_security_health_analytics_setting_custom_module(name, google_cloud_securitycenter_v1_security_health_analytics_custom_module_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule::Representation
+          command.request_object = google_cloud_securitycenter_v1_security_health_analytics_custom_module_object
+          command.response_representation = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves an EffectiveSecurityHealthAnalyticsCustomModule.
+        # @param [String] name
+        #   Required. Name of the effective custom module to get. Its format is "
+        #   organizations/`organization`/securityHealthAnalyticsSettings/
+        #   effectiveCustomModules/`customModule`", "folders/`folder`/
+        #   securityHealthAnalyticsSettings/effectiveCustomModules/`customModule`", or "
+        #   projects/`project`/securityHealthAnalyticsSettings/effectiveCustomModules/`
+        #   customModule`"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_security_health_analytics_setting_effective_custom_module(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns a list of all EffectiveSecurityHealthAnalyticsCustomModules for the
+        # given parent. This includes resident modules defined at the scope of the
+        # parent, and inherited modules, inherited from CRM ancestors.
+        # @param [String] parent
+        #   Required. Name of parent to list effective custom modules. Its format is "
+        #   organizations/`organization`/securityHealthAnalyticsSettings", "folders/`
+        #   folder`/securityHealthAnalyticsSettings", or "projects/`project`/
+        #   securityHealthAnalyticsSettings"
+        # @param [Fixnum] page_size
+        #   The maximum number of results to return in a single response. Default is 10,
+        #   minimum is 1, maximum is 1000.
+        # @param [String] page_token
+        #   The value returned by the last call indicating a continuation
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::ListEffectiveSecurityHealthAnalyticsCustomModulesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::ListEffectiveSecurityHealthAnalyticsCustomModulesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_security_health_analytics_setting_effective_custom_modules(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/effectiveCustomModules', options)
+          command.response_representation = Google::Apis::SecuritycenterV1::ListEffectiveSecurityHealthAnalyticsCustomModulesResponse::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::ListEffectiveSecurityHealthAnalyticsCustomModulesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
