@@ -875,6 +875,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # State of delete protection for the database.
+        # Corresponds to the JSON property `deleteProtectionState`
+        # @return [String]
+        attr_accessor :delete_protection_state
+      
         # This checksum is computed by the server based on the value of other fields,
         # and may be sent on update and delete requests to ensure the client has an up-
         # to-date value before proceeding.
@@ -930,6 +935,7 @@ module Google
           @app_engine_integration_mode = args[:app_engine_integration_mode] if args.key?(:app_engine_integration_mode)
           @concurrency_mode = args[:concurrency_mode] if args.key?(:concurrency_mode)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @delete_protection_state = args[:delete_protection_state] if args.key?(:delete_protection_state)
           @etag = args[:etag] if args.key?(:etag)
           @key_prefix = args[:key_prefix] if args.key?(:key_prefix)
           @location_id = args[:location_id] if args.key?(:location_id)
