@@ -742,6 +742,56 @@ module Google
         end
       end
       
+      # Consumer Policy is a set of rules that define what services or service groups
+      # can be used for a cloud resource hierarchy.
+      class ConsumerPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Annotations is an unstructured key-value map stored with a policy
+        # that may be set by external tools to store and retrieve arbitrary metadata.
+        # They are not queryable and should be preserved when modifying objects. [AIP-
+        # 128](https://google.aip.dev/128#annotations)
+        # Corresponds to the JSON property `annotations`
+        # @return [Hash<String,String>]
+        attr_accessor :annotations
+      
+        # Enable rules define usable services and service groups.
+        # Corresponds to the JSON property `enableRules`
+        # @return [Array<Google::Apis::ServiceusageV1beta1::EnableRule>]
+        attr_accessor :enable_rules
+      
+        # An opaque tag indicating the current version of the policy, used for
+        # concurrency control.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Output only. The resource name of the policy. For example, `projects/12345/
+        # consumerPolicy`, `folders/12345/consumerPolicy`, `organizations/12345/
+        # consumerPolicy`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The last-modified time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
+          @enable_rules = args[:enable_rules] if args.key?(:enable_rules)
+          @etag = args[:etag] if args.key?(:etag)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Consumer quota settings for a quota limit.
       class ConsumerQuotaLimit
         include Google::Apis::Core::Hashable
@@ -1353,6 +1403,47 @@ module Google
         def update!(**args)
           @error_message = args[:error_message] if args.key?(:error_message)
           @service_id = args[:service_id] if args.key?(:service_id)
+        end
+      end
+      
+      # The consumer policy rule that defines usable services and service groups.
+      class EnableRule
+        include Google::Apis::Core::Hashable
+      
+        # Client and resource project enable type.
+        # Corresponds to the JSON property `enableType`
+        # @return [String]
+        attr_accessor :enable_type
+      
+        # DEPRECATED: Please use field `values`. Service group should have prefix `
+        # groups/`. The names of the service groups that are enabled (Not Implemented).
+        # go/predefined-service-groups. Example: `groups/googleServices`.
+        # Corresponds to the JSON property `groups`
+        # @return [Array<String>]
+        attr_accessor :groups
+      
+        # DEPRECATED: Please use field `values`. Service should have prefix `services/`.
+        # The names of the services that are enabled. Example: `storage.googleapis.com`.
+        # Corresponds to the JSON property `services`
+        # @return [Array<String>]
+        attr_accessor :services
+      
+        # The names of the services or service groups that are enabled. Example: `
+        # services/storage.googleapis.com`, groups/googleServices`, groups/allServices`.
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_type = args[:enable_type] if args.key?(:enable_type)
+          @groups = args[:groups] if args.key?(:groups)
+          @services = args[:services] if args.key?(:services)
+          @values = args[:values] if args.key?(:values)
         end
       end
       
@@ -3868,7 +3959,7 @@ module Google
         # @return [Array<Google::Apis::ServiceusageV1beta1::MethodSettings>]
         attr_accessor :method_settings
       
-        # Link to a place that API users can report issues. Example: https://
+        # Link to a *public* URI where users can report issues. Example: https://
         # issuetracker.google.com/issues/new?component=190865&template=1161103
         # Corresponds to the JSON property `newIssueUri`
         # @return [String]
@@ -4671,6 +4762,19 @@ module Google
       # and similar information on each GetOperation call of LRO returned by
       # UpdateAdminQuotaPolicy.
       class UpdateAdminQuotaPolicyMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Metadata for the `UpdateConsumerPolicyLRO` method.
+      class UpdateConsumerPolicyLroMetadata
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
