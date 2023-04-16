@@ -747,6 +747,11 @@ module Google
         # @return [String]
         attr_accessor :num_tags
       
+        # Number of transformations in the container version.
+        # Corresponds to the JSON property `numTransformations`
+        # @return [String]
+        attr_accessor :num_transformations
+      
         # Number of triggers in the container version.
         # Corresponds to the JSON property `numTriggers`
         # @return [String]
@@ -784,6 +789,7 @@ module Google
           @num_macros = args[:num_macros] if args.key?(:num_macros)
           @num_rules = args[:num_rules] if args.key?(:num_rules)
           @num_tags = args[:num_tags] if args.key?(:num_tags)
+          @num_transformations = args[:num_transformations] if args.key?(:num_transformations)
           @num_triggers = args[:num_triggers] if args.key?(:num_triggers)
           @num_variables = args[:num_variables] if args.key?(:num_variables)
           @num_zones = args[:num_zones] if args.key?(:num_zones)

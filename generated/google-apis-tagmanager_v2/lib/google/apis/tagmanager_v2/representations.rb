@@ -590,6 +590,7 @@ module Google
           property :num_macros, as: 'numMacros'
           property :num_rules, as: 'numRules'
           property :num_tags, as: 'numTags'
+          property :num_transformations, as: 'numTransformations'
           property :num_triggers, as: 'numTriggers'
           property :num_variables, as: 'numVariables'
           property :num_zones, as: 'numZones'
