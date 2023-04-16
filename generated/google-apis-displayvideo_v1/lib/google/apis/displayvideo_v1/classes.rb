@@ -568,12 +568,9 @@ module Google
       
         # Media ID of the uploaded asset. This is a unique identifier for the asset.
         # This ID can be passed to other API calls, e.g. CreateCreative to associate the
-        # asset with a creative. **On April 5, 2023, the value of this ID will be
-        # updated. Before this date, we recommend that you stop using any cached media
-        # IDs when creating or updating creatives, and instead upload assets immediately
-        # before using them for creative production.** **After April 5, you can update
-        # cached media IDs to the new values by retrieving them from associated creative
-        # resources or re-uploading them.**
+        # asset with a creative. The Media ID space updated on **April 5, 2023**. Update
+        # media IDs cached before **April 5, 2023** by retrieving the new media ID from
+        # associated creative resources or re-uploading the asset.
         # Corresponds to the JSON property `mediaId`
         # @return [Fixnum]
         attr_accessor :media_id
@@ -3303,11 +3300,9 @@ module Google
       
         # Additional dimensions. Applicable when creative_type is one of: * `
         # CREATIVE_TYPE_STANDARD` * `CREATIVE_TYPE_EXPANDABLE` * `CREATIVE_TYPE_NATIVE` *
-        # `CREATIVE_TYPE_TEMPLATED_APP_INSTALL` * `CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `
-        # CREATIVE_TYPE_LIGHTBOX` * `CREATIVE_TYPE_NATIVE_APP_INSTALL` * `
-        # CREATIVE_TYPE_NATIVE_APP_INSTALL_SQUARE` * `CREATIVE_TYPE_PUBLISHER_HOSTED` If
-        # this field is specified, width_pixels and height_pixels are both required and
-        # must be greater than or equal to 0.
+        # `CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `CREATIVE_TYPE_LIGHTBOX` * `
+        # CREATIVE_TYPE_PUBLISHER_HOSTED` If this field is specified, width_pixels and
+        # height_pixels are both required and must be greater than or equal to 0.
         # Corresponds to the JSON property `additionalDimensions`
         # @return [Array<Google::Apis::DisplayvideoV1::Dimensions>]
         attr_accessor :additional_dimensions
@@ -3322,9 +3317,7 @@ module Google
         # @return [String]
         attr_accessor :appended_tag
       
-        # Required. Assets associated to this creative. Assets can be associated to the
-        # creative in one of following roles: * `ASSET_ROLE_UNSPECIFIED` * `
-        # ASSET_ROLE_MAIN` * `ASSET_ROLE_BACKUP` * `ASSET_ROLE_POLITE_LOAD`
+        # Required. Assets associated to this creative.
         # Corresponds to the JSON property `assets`
         # @return [Array<Google::Apis::DisplayvideoV1::AssetAssociation>]
         attr_accessor :assets
@@ -3465,9 +3458,8 @@ module Google
       
         # JavaScript measurement URL from supported third-party verification providers (
         # ComScore, DoubleVerify, IAS, Moat). HTML script tags are not supported. This
-        # field is only supported in following creative_type: * `CREATIVE_TYPE_NATIVE` *
-        # `CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `CREATIVE_TYPE_NATIVE_APP_INSTALL` * `
-        # CREATIVE_TYPE_NATIVE_APP_INSTALL_SQUARE` * `CREATIVE_TYPE_NATIVE_VIDEO`
+        # field is only writeable in following creative_type: * `CREATIVE_TYPE_NATIVE` *
+        # `CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `CREATIVE_TYPE_NATIVE_VIDEO`
         # Corresponds to the JSON property `jsTrackerUrl`
         # @return [String]
         attr_accessor :js_tracker_url
@@ -3608,9 +3600,8 @@ module Google
         # The URLs must start with https (except on inventory that doesn't require SSL
         # compliance). If using macros in your URL, use only macros supported by Display
         # & Video 360. Standard URLs only, no IMG or SCRIPT tags. This field is only
-        # supported in following creative_type: * `CREATIVE_TYPE_NATIVE` * `
-        # CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `CREATIVE_TYPE_NATIVE_APP_INSTALL` * `
-        # CREATIVE_TYPE_NATIVE_APP_INSTALL_SQUARE` * `CREATIVE_TYPE_NATIVE_VIDEO`
+        # writeable in following creative_type: * `CREATIVE_TYPE_NATIVE` * `
+        # CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `CREATIVE_TYPE_NATIVE_VIDEO`
         # Corresponds to the JSON property `trackerUrls`
         # @return [Array<String>]
         attr_accessor :tracker_urls
