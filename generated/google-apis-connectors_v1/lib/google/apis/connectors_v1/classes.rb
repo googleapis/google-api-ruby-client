@@ -107,6 +107,12 @@ module Google
         # @return [String]
         attr_accessor :auth_type
       
+        # Parameters to support Oauth 2.0 Auth Code Grant Authentication. See https://
+        # www.rfc-editor.org/rfc/rfc6749#section-1.3.1 for more details.
+        # Corresponds to the JSON property `oauth2AuthCodeFlow`
+        # @return [Google::Apis::ConnectorsV1::Oauth2AuthCodeFlow]
+        attr_accessor :oauth2_auth_code_flow
+      
         # Parameters to support Oauth 2.0 Client Credentials Grant Authentication. See
         # https://tools.ietf.org/html/rfc6749#section-1.3.4 for more details.
         # Corresponds to the JSON property `oauth2ClientCredentials`
@@ -138,6 +144,7 @@ module Google
         def update!(**args)
           @additional_variables = args[:additional_variables] if args.key?(:additional_variables)
           @auth_type = args[:auth_type] if args.key?(:auth_type)
+          @oauth2_auth_code_flow = args[:oauth2_auth_code_flow] if args.key?(:oauth2_auth_code_flow)
           @oauth2_client_credentials = args[:oauth2_client_credentials] if args.key?(:oauth2_client_credentials)
           @oauth2_jwt_bearer = args[:oauth2_jwt_bearer] if args.key?(:oauth2_jwt_bearer)
           @ssh_public_key = args[:ssh_public_key] if args.key?(:ssh_public_key)
@@ -508,6 +515,11 @@ module Google
         # @return [Google::Apis::ConnectorsV1::LockConfig]
         attr_accessor :lock_config
       
+        # Log configuration for the connection.
+        # Corresponds to the JSON property `logConfig`
+        # @return [Google::Apis::ConnectorsV1::ConnectorsLogConfig]
+        attr_accessor :log_config
+      
         # Output only. Resource name of the Connection. Format: projects/`project`/
         # locations/`location`/connections/`connection`
         # Corresponds to the JSON property `name`
@@ -569,6 +581,7 @@ module Google
           @image_location = args[:image_location] if args.key?(:image_location)
           @labels = args[:labels] if args.key?(:labels)
           @lock_config = args[:lock_config] if args.key?(:lock_config)
+          @log_config = args[:log_config] if args.key?(:log_config)
           @name = args[:name] if args.key?(:name)
           @node_config = args[:node_config] if args.key?(:node_config)
           @service_account = args[:service_account] if args.key?(:service_account)
@@ -760,6 +773,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Output only. List of destination configs needed to create a connection.
+        # Corresponds to the JSON property `destinationConfigTemplates`
+        # @return [Array<Google::Apis::ConnectorsV1::DestinationConfigTemplate>]
+        attr_accessor :destination_config_templates
+      
         # Output only. Display name.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -838,6 +856,7 @@ module Google
           @auth_config_templates = args[:auth_config_templates] if args.key?(:auth_config_templates)
           @config_variable_templates = args[:config_variable_templates] if args.key?(:config_variable_templates)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @destination_config_templates = args[:destination_config_templates] if args.key?(:destination_config_templates)
           @display_name = args[:display_name] if args.key?(:display_name)
           @egress_control_config = args[:egress_control_config] if args.key?(:egress_control_config)
           @labels = args[:labels] if args.key?(:labels)
@@ -849,6 +868,26 @@ module Google
           @ssl_config_template = args[:ssl_config_template] if args.key?(:ssl_config_template)
           @supported_runtime_features = args[:supported_runtime_features] if args.key?(:supported_runtime_features)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Log configuration for the connection.
+      class ConnectorsLogConfig
+        include Google::Apis::Core::Hashable
+      
+        # Enabled represents whether logging is enabled or not for a connection.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
         end
       end
       
@@ -905,6 +944,75 @@ module Google
         def update!(**args)
           @destinations = args[:destinations] if args.key?(:destinations)
           @key = args[:key] if args.key?(:key)
+        end
+      end
+      
+      # DestinationConfigTemplate defines required destinations supported by the
+      # Connector.
+      class DestinationConfigTemplate
+        include Google::Apis::Core::Hashable
+      
+        # The default port.
+        # Corresponds to the JSON property `defaultPort`
+        # @return [Fixnum]
+        attr_accessor :default_port
+      
+        # Description.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Display name of the parameter.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Whether the current destination tempalate is part of Advanced settings
+        # Corresponds to the JSON property `isAdvanced`
+        # @return [Boolean]
+        attr_accessor :is_advanced
+        alias_method :is_advanced?, :is_advanced
+      
+        # Key of the destination.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # The maximum number of destinations supported for this key.
+        # Corresponds to the JSON property `max`
+        # @return [Fixnum]
+        attr_accessor :max
+      
+        # The minimum number of destinations supported for this key.
+        # Corresponds to the JSON property `min`
+        # @return [Fixnum]
+        attr_accessor :min
+      
+        # Whether port number should be provided by customers.
+        # Corresponds to the JSON property `portFieldType`
+        # @return [String]
+        attr_accessor :port_field_type
+      
+        # Regex pattern for host.
+        # Corresponds to the JSON property `regexPattern`
+        # @return [String]
+        attr_accessor :regex_pattern
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_port = args[:default_port] if args.key?(:default_port)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @is_advanced = args[:is_advanced] if args.key?(:is_advanced)
+          @key = args[:key] if args.key?(:key)
+          @max = args[:max] if args.key?(:max)
+          @min = args[:min] if args.key?(:min)
+          @port_field_type = args[:port_field_type] if args.key?(:port_field_type)
+          @regex_pattern = args[:regex_pattern] if args.key?(:regex_pattern)
         end
       end
       
@@ -1543,6 +1651,63 @@ module Google
         def update!(**args)
           @max_node_count = args[:max_node_count] if args.key?(:max_node_count)
           @min_node_count = args[:min_node_count] if args.key?(:min_node_count)
+        end
+      end
+      
+      # Parameters to support Oauth 2.0 Auth Code Grant Authentication. See https://
+      # www.rfc-editor.org/rfc/rfc6749#section-1.3.1 for more details.
+      class Oauth2AuthCodeFlow
+        include Google::Apis::Core::Hashable
+      
+        # Authorization code to be exchanged for access and refresh tokens.
+        # Corresponds to the JSON property `authCode`
+        # @return [String]
+        attr_accessor :auth_code
+      
+        # Client ID for user-provided OAuth app.
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
+      
+        # Secret provides a reference to entries in Secret Manager.
+        # Corresponds to the JSON property `clientSecret`
+        # @return [Google::Apis::ConnectorsV1::Secret]
+        attr_accessor :client_secret
+      
+        # Whether to enable PKCE when the user performs the auth code flow.
+        # Corresponds to the JSON property `enablePkce`
+        # @return [Boolean]
+        attr_accessor :enable_pkce
+        alias_method :enable_pkce?, :enable_pkce
+      
+        # PKCE verifier to be used during the auth code exchange.
+        # Corresponds to the JSON property `pkceVerifier`
+        # @return [String]
+        attr_accessor :pkce_verifier
+      
+        # Redirect URI to be provided during the auth code exchange.
+        # Corresponds to the JSON property `redirectUri`
+        # @return [String]
+        attr_accessor :redirect_uri
+      
+        # Scopes the connection will request when the user performs the auth code flow.
+        # Corresponds to the JSON property `scopes`
+        # @return [Array<String>]
+        attr_accessor :scopes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auth_code = args[:auth_code] if args.key?(:auth_code)
+          @client_id = args[:client_id] if args.key?(:client_id)
+          @client_secret = args[:client_secret] if args.key?(:client_secret)
+          @enable_pkce = args[:enable_pkce] if args.key?(:enable_pkce)
+          @pkce_verifier = args[:pkce_verifier] if args.key?(:pkce_verifier)
+          @redirect_uri = args[:redirect_uri] if args.key?(:redirect_uri)
+          @scopes = args[:scopes] if args.key?(:scopes)
         end
       end
       
