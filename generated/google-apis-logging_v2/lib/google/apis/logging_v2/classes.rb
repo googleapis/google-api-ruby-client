@@ -155,7 +155,7 @@ module Google
         # proportional to the value of the lower bound. Each bucket represents a
         # constant relative uncertainty on a specific value in the bucket.There are
         # num_finite_buckets + 2 (= N) buckets. Bucket i has the following boundaries:
-        # Upper bound (0 <= i < N-1): scale * (growth_factor ^ i). Lower bound (1 <= i <
+        # Upper bound (0 <= i < N-1): scale * (growth_factor ^ i).Lower bound (1 <= i <
         # N): scale * (growth_factor ^ (i - 1)).
         # Corresponds to the JSON property `exponentialBuckets`
         # @return [Google::Apis::LoggingV2::Exponential]
@@ -165,7 +165,7 @@ module Google
         # overflow and underflow). Each bucket represents a constant absolute
         # uncertainty on the specific value in the bucket.There are num_finite_buckets +
         # 2 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-
-        # 1): offset + (width * i). Lower bound (1 <= i < N): offset + (width * (i - 1)).
+        # 1): offset + (width * i).Lower bound (1 <= i < N): offset + (width * (i - 1)).
         # Corresponds to the JSON property `linearBuckets`
         # @return [Google::Apis::LoggingV2::Linear]
         attr_accessor :linear_buckets
@@ -513,7 +513,7 @@ module Google
       # proportional to the value of the lower bound. Each bucket represents a
       # constant relative uncertainty on a specific value in the bucket.There are
       # num_finite_buckets + 2 (= N) buckets. Bucket i has the following boundaries:
-      # Upper bound (0 <= i < N-1): scale * (growth_factor ^ i). Lower bound (1 <= i <
+      # Upper bound (0 <= i < N-1): scale * (growth_factor ^ i).Lower bound (1 <= i <
       # N): scale * (growth_factor ^ (i - 1)).
       class Exponential
         include Google::Apis::Core::Hashable
@@ -735,7 +735,7 @@ module Google
       # overflow and underflow). Each bucket represents a constant absolute
       # uncertainty on the specific value in the bucket.There are num_finite_buckets +
       # 2 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-
-      # 1): offset + (width * i). Lower bound (1 <= i < N): offset + (width * (i - 1)).
+      # 1): offset + (width * i).Lower bound (1 <= i < N): offset + (width * (i - 1)).
       class Linear
         include Google::Apis::Core::Hashable
       
