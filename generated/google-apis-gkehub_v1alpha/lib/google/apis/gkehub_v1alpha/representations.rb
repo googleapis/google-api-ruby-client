@@ -208,6 +208,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConfigManagementManaged
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ConfigManagementMembershipSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -539,6 +545,12 @@ module Google
       end
       
       class MeteringMembershipState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MonitoringConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -992,6 +1004,8 @@ module Google
           property :enabled, as: 'enabled'
           property :git, as: 'git', class: Google::Apis::GkehubV1alpha::ConfigManagementGitConfig, decorator: Google::Apis::GkehubV1alpha::ConfigManagementGitConfig::Representation
       
+          property :managed, as: 'managed', class: Google::Apis::GkehubV1alpha::ConfigManagementManaged, decorator: Google::Apis::GkehubV1alpha::ConfigManagementManaged::Representation
+      
           property :oci, as: 'oci', class: Google::Apis::GkehubV1alpha::ConfigManagementOciConfig, decorator: Google::Apis::GkehubV1alpha::ConfigManagementOciConfig::Representation
       
           property :prevent_drift, as: 'preventDrift'
@@ -1119,6 +1133,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :error_message, as: 'errorMessage'
+        end
+      end
+      
+      class ConfigManagementManaged
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
         end
       end
       
@@ -1615,6 +1636,8 @@ module Google
           property :external_id, as: 'externalId'
           hash :labels, as: 'labels'
           property :last_connection_time, as: 'lastConnectionTime'
+          property :monitoring_config, as: 'monitoringConfig', class: Google::Apis::GkehubV1alpha::MonitoringConfig, decorator: Google::Apis::GkehubV1alpha::MonitoringConfig::Representation
+      
           property :name, as: 'name'
           property :state, as: 'state', class: Google::Apis::GkehubV1alpha::MembershipState, decorator: Google::Apis::GkehubV1alpha::MembershipState::Representation
       
@@ -1730,6 +1753,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :last_measurement_time, as: 'lastMeasurementTime'
           property :precise_last_measured_cluster_vcpu_capacity, as: 'preciseLastMeasuredClusterVcpuCapacity'
+        end
+      end
+      
+      class MonitoringConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster, as: 'cluster'
+          property :cluster_hash, as: 'clusterHash'
+          property :kubernetes_metrics_prefix, as: 'kubernetesMetricsPrefix'
+          property :location, as: 'location'
+          property :project_id, as: 'projectId'
         end
       end
       
