@@ -328,18 +328,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudBeyondcorpClientconnectorservicesV1ClientConnectorServiceOperationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudBeyondcorpClientgatewaysV1ClientGatewayOperationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudBeyondcorpSaasplatformInsightsV1alphaAppliedConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1135,32 +1123,6 @@ module Google
       end
       
       class GoogleCloudBeyondcorpAppgatewaysV1AppGatewayOperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :api_version, as: 'apiVersion'
-          property :create_time, as: 'createTime'
-          property :end_time, as: 'endTime'
-          property :requested_cancellation, as: 'requestedCancellation'
-          property :status_message, as: 'statusMessage'
-          property :target, as: 'target'
-          property :verb, as: 'verb'
-        end
-      end
-      
-      class GoogleCloudBeyondcorpClientconnectorservicesV1ClientConnectorServiceOperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :api_version, as: 'apiVersion'
-          property :create_time, as: 'createTime'
-          property :end_time, as: 'endTime'
-          property :requested_cancellation, as: 'requestedCancellation'
-          property :status_message, as: 'statusMessage'
-          property :target, as: 'target'
-          property :verb, as: 'verb'
-        end
-      end
-      
-      class GoogleCloudBeyondcorpClientgatewaysV1ClientGatewayOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api_version, as: 'apiVersion'
