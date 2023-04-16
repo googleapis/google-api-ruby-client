@@ -166,6 +166,13 @@ module Google
         # @return [Google::Apis::CloudsupportV2beta::CaseClassification]
         attr_accessor :classification
       
+        # A user-supplied email address to send case update notifications for. This
+        # should only be used in BYOID flows, where we cannot infer the user's email
+        # address directly from their EUCs.
+        # Corresponds to the JSON property `contactEmail`
+        # @return [String]
+        attr_accessor :contact_email
+      
         # Output only. The time this case was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -214,7 +221,7 @@ module Google
         # @return [String]
         attr_accessor :priority
       
-        # The severity of this case. Deprecated. Use priority instead.
+        # REMOVED. The severity of this case. Use priority instead.
         # Corresponds to the JSON property `severity`
         # @return [String]
         attr_accessor :severity
@@ -255,6 +262,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @classification = args[:classification] if args.key?(:classification)
+          @contact_email = args[:contact_email] if args.key?(:contact_email)
           @create_time = args[:create_time] if args.key?(:create_time)
           @creator = args[:creator] if args.key?(:creator)
           @description = args[:description] if args.key?(:description)
@@ -338,8 +346,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Output only. An automatically generated plain text version of body with all
-        # rich text syntax stripped.
+        # Output only. DEPRECATED. An automatically generated plain text version of body
+        # with all rich text syntax stripped.
         # Corresponds to the JSON property `plainTextBody`
         # @return [String]
         attr_accessor :plain_text_body
