@@ -802,6 +802,7 @@ module Google
           property :app_engine_integration_mode, as: 'appEngineIntegrationMode'
           property :concurrency_mode, as: 'concurrencyMode'
           property :create_time, as: 'createTime'
+          property :delete_protection_state, as: 'deleteProtectionState'
           property :etag, as: 'etag'
           property :key_prefix, as: 'keyPrefix'
           property :location_id, as: 'locationId'
