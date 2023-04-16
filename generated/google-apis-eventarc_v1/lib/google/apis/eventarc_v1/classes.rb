@@ -187,9 +187,9 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Optional. Resource name of a KMS crypto key (managed by the user) used to
-        # encrypt/decrypt their event data. It must match the pattern `projects/*/
-        # locations/*/keyRings/*/cryptoKeys/*`.
+        # Resource name of a KMS crypto key (managed by the user) used to encrypt/
+        # decrypt their event data. It must match the pattern `projects/*/locations/*/
+        # keyRings/*/cryptoKeys/*`.
         # Corresponds to the JSON property `cryptoKeyName`
         # @return [String]
         attr_accessor :crypto_key_name
@@ -1388,8 +1388,8 @@ module Google
         attr_accessor :etag
       
         # Optional. EventDataContentType specifies the type of payload in MIME format
-        # that is expected from the CloudEvent data field. This will be set to `
-        # application/json` if the value is not defined.
+        # that is expected from the CloudEvent data field. This is set to `application/
+        # json` if the value is not defined.
         # Corresponds to the JSON property `eventDataContentType`
         # @return [String]
         attr_accessor :event_data_content_type
