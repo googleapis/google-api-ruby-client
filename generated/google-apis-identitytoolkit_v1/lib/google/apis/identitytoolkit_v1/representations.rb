@@ -567,6 +567,7 @@ module Google
           property :can_handle_code_in_app, as: 'canHandleCodeInApp'
           property :captcha_resp, as: 'captchaResp'
           property :challenge, as: 'challenge'
+          property :client_type, as: 'clientType'
           property :continue_url, as: 'continueUrl'
           property :dynamic_link_domain, as: 'dynamicLinkDomain'
           property :email, as: 'email'
@@ -574,6 +575,7 @@ module Google
           property :i_os_bundle_id, as: 'iOSBundleId'
           property :id_token, as: 'idToken'
           property :new_email, as: 'newEmail'
+          property :recaptcha_version, as: 'recaptchaVersion'
           property :request_type, as: 'requestType'
           property :return_oob_link, as: 'returnOobLink'
           property :target_project_id, as: 'targetProjectId'
@@ -994,12 +996,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :captcha_challenge, as: 'captchaChallenge'
           property :captcha_response, as: 'captchaResponse'
+          property :client_type, as: 'clientType'
           property :delegated_project_number, :numeric_string => true, as: 'delegatedProjectNumber'
           property :email, as: 'email'
           property :id_token, as: 'idToken'
           property :instance_id, as: 'instanceId'
           property :password, as: 'password'
           property :pending_id_token, as: 'pendingIdToken'
+          property :recaptcha_version, as: 'recaptchaVersion'
           property :return_secure_token, as: 'returnSecureToken'
           property :tenant_id, as: 'tenantId'
         end
@@ -1061,6 +1065,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :captcha_challenge, as: 'captchaChallenge'
           property :captcha_response, as: 'captchaResponse'
+          property :client_type, as: 'clientType'
           property :disabled, as: 'disabled'
           property :display_name, as: 'displayName'
           property :email, as: 'email'
@@ -1073,6 +1078,7 @@ module Google
           property :password, as: 'password'
           property :phone_number, as: 'phoneNumber'
           property :photo_url, as: 'photoUrl'
+          property :recaptcha_version, as: 'recaptchaVersion'
           property :target_project_id, as: 'targetProjectId'
           property :tenant_id, as: 'tenantId'
         end
