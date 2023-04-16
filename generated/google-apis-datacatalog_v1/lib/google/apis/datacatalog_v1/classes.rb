@@ -3021,14 +3021,14 @@ module Google
       class GoogleCloudDatacatalogV1TaggedEntry
         include Google::Apis::Core::Hashable
       
-        # Tags that should be deleted from the Data Catalog. Caller should populate
-        # template name and column only.
+        # Optional. Tags that should be deleted from the Data Catalog. Caller should
+        # populate template name and column only.
         # Corresponds to the JSON property `absentTags`
         # @return [Array<Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1Tag>]
         attr_accessor :absent_tags
       
-        # Tags that should be ingested into the Data Catalog. Caller should populate
-        # template name, column and fields.
+        # Optional. Tags that should be ingested into the Data Catalog. Caller should
+        # populate template name, column and fields.
         # Corresponds to the JSON property `presentTags`
         # @return [Array<Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1Tag>]
         attr_accessor :present_tags
