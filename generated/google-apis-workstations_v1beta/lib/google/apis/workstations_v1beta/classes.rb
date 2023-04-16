@@ -237,15 +237,15 @@ module Google
       class CustomerEncryptionKey
         include Google::Apis::Core::Hashable
       
-        # The name of the Google Cloud KMS encryption key. For example, `projects/
-        # PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME`.
+        # Immutable. The name of the Google Cloud KMS encryption key. For example, `
+        # projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME`.
         # Corresponds to the JSON property `kmsKey`
         # @return [String]
         attr_accessor :kms_key
       
-        # The service account to use with the specified KMS key. We recommend that you
-        # use a separate service account and follow KMS best practices. For more
-        # information, see [Separation of duties](https://cloud.google.com/kms/docs/
+        # Immutable. The service account to use with the specified KMS key. We recommend
+        # that you use a separate service account and follow KMS best practices. For
+        # more information, see [Separation of duties](https://cloud.google.com/kms/docs/
         # separation-of-duties) and `gcloud kms keys add-iam-policy-binding` [`--member`]
         # (https://cloud.google.com/sdk/gcloud/reference/kms/keys/add-iam-policy-binding#
         # --member).
@@ -1259,6 +1259,11 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Environment variables passed to the workstation container.
+        # Corresponds to the JSON property `env`
+        # @return [Hash<String,String>]
+        attr_accessor :env
+      
         # Checksum computed by the server. May be sent on update and delete requests to
         # ensure that the client has an up-to-date value before proceeding.
         # Corresponds to the JSON property `etag`
@@ -1316,6 +1321,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @env = args[:env] if args.key?(:env)
           @etag = args[:etag] if args.key?(:etag)
           @host = args[:host] if args.key?(:host)
           @labels = args[:labels] if args.key?(:labels)
@@ -1341,6 +1347,14 @@ module Google
         # Corresponds to the JSON property `conditions`
         # @return [Array<Google::Apis::WorkstationsV1beta::Status>]
         attr_accessor :conditions
+      
+        # Output only. The private IP address of the control plane for this cluster.
+        # Workstation VMs need access to this IP address to work with the service, so
+        # please ensure your firewall rules allow egress from the Workstation VMs to
+        # this address.
+        # Corresponds to the JSON property `controlPlaneIp`
+        # @return [String]
+        attr_accessor :control_plane_ip
       
         # Output only. Time when this resource was created.
         # Corresponds to the JSON property `createTime`
@@ -1425,6 +1439,7 @@ module Google
         def update!(**args)
           @annotations = args[:annotations] if args.key?(:annotations)
           @conditions = args[:conditions] if args.key?(:conditions)
+          @control_plane_ip = args[:control_plane_ip] if args.key?(:control_plane_ip)
           @create_time = args[:create_time] if args.key?(:create_time)
           @degraded = args[:degraded] if args.key?(:degraded)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
@@ -1484,6 +1499,15 @@ module Google
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
+      
+        # Whether to enable linux auditd logging on the workstation. When enabled, a
+        # service account must also be specified that has logging.buckets.write
+        # permission on the project. Operating system audit logging is distinct from [
+        # Cloud Audit Logs](https://cloud.google.com/workstations/docs/audit-logging).
+        # Corresponds to the JSON property `enableAuditAgent`
+        # @return [Boolean]
+        attr_accessor :enable_audit_agent
+        alias_method :enable_audit_agent?, :enable_audit_agent
       
         # A customer-managed encryption key for the Compute Engine resources of this
         # workstation configuration.
@@ -1563,6 +1587,7 @@ module Google
           @degraded = args[:degraded] if args.key?(:degraded)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @enable_audit_agent = args[:enable_audit_agent] if args.key?(:enable_audit_agent)
           @encryption_key = args[:encryption_key] if args.key?(:encryption_key)
           @etag = args[:etag] if args.key?(:etag)
           @host = args[:host] if args.key?(:host)

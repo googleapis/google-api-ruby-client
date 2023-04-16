@@ -538,6 +538,7 @@ module Google
           property :create_time, as: 'createTime'
           property :delete_time, as: 'deleteTime'
           property :display_name, as: 'displayName'
+          hash :env, as: 'env'
           property :etag, as: 'etag'
           property :host, as: 'host'
           hash :labels, as: 'labels'
@@ -555,6 +556,7 @@ module Google
           hash :annotations, as: 'annotations'
           collection :conditions, as: 'conditions', class: Google::Apis::WorkstationsV1beta::Status, decorator: Google::Apis::WorkstationsV1beta::Status::Representation
       
+          property :control_plane_ip, as: 'controlPlaneIp'
           property :create_time, as: 'createTime'
           property :degraded, as: 'degraded'
           property :delete_time, as: 'deleteTime'
@@ -584,6 +586,7 @@ module Google
           property :degraded, as: 'degraded'
           property :delete_time, as: 'deleteTime'
           property :display_name, as: 'displayName'
+          property :enable_audit_agent, as: 'enableAuditAgent'
           property :encryption_key, as: 'encryptionKey', class: Google::Apis::WorkstationsV1beta::CustomerEncryptionKey, decorator: Google::Apis::WorkstationsV1beta::CustomerEncryptionKey::Representation
       
           property :etag, as: 'etag'
