@@ -419,16 +419,18 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a message. For example usage, see [Update a message](https://
-        # developers.google.com/chat/api/guides/crudl/messages#update_a_message).
-        # Requires [authentication](https://developers.google.com/chat/api/guides/auth/).
-        # Fully supports [service account authentication](https://developers.google.com/
-        # chat/api/guides/auth/service-accounts). Supports [user authentication](https://
-        # developers.google.com/chat/api/guides/auth/users) as part of the [Google
-        # Workspace Developer Preview Program](https://developers.google.com/workspace/
-        # preview), which grants early access to certain features. [User authentication](
-        # https://developers.google.com/chat/api/guides/auth/users) requires the `chat.
-        # messages` authorization scope.
+        # Updates a message. There's a difference between `patch` and `update` methods.
+        # The `patch` method uses a `patch` request while the `update` method uses a `
+        # put` request. We recommend using the `patch` method. For example usage, see [
+        # Update a message](https://developers.google.com/chat/api/guides/crudl/messages#
+        # update_a_message). Requires [authentication](https://developers.google.com/
+        # chat/api/guides/auth/). Fully supports [service account authentication](https:/
+        # /developers.google.com/chat/api/guides/auth/service-accounts). Supports [user
+        # authentication](https://developers.google.com/chat/api/guides/auth/users) as
+        # part of the [Google Workspace Developer Preview Program](https://developers.
+        # google.com/workspace/preview), which grants early access to certain features. [
+        # User authentication](https://developers.google.com/chat/api/guides/auth/users)
+        # requires the `chat.messages` authorization scope.
         # @param [String] name
         #   Resource name in the form `spaces/*/messages/*`. Example: `spaces/AAAAAAAAAAA/
         #   messages/BBBBBBBBBBB.BBBBBBBBBBB`
@@ -473,16 +475,18 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a message. For example usage, see [Update a message](https://
-        # developers.google.com/chat/api/guides/crudl/messages#update_a_message).
-        # Requires [authentication](https://developers.google.com/chat/api/guides/auth/).
-        # Fully supports [service account authentication](https://developers.google.com/
-        # chat/api/guides/auth/service-accounts). Supports [user authentication](https://
-        # developers.google.com/chat/api/guides/auth/users) as part of the [Google
-        # Workspace Developer Preview Program](https://developers.google.com/workspace/
-        # preview), which grants early access to certain features. [User authentication](
-        # https://developers.google.com/chat/api/guides/auth/users) requires the `chat.
-        # messages` authorization scope.
+        # Updates a message. There's a difference between `patch` and `update` methods.
+        # The `patch` method uses a `patch` request while the `update` method uses a `
+        # put` request. We recommend using the `patch` method. For example usage, see [
+        # Update a message](https://developers.google.com/chat/api/guides/crudl/messages#
+        # update_a_message). Requires [authentication](https://developers.google.com/
+        # chat/api/guides/auth/). Fully supports [service account authentication](https:/
+        # /developers.google.com/chat/api/guides/auth/service-accounts). Supports [user
+        # authentication](https://developers.google.com/chat/api/guides/auth/users) as
+        # part of the [Google Workspace Developer Preview Program](https://developers.
+        # google.com/workspace/preview), which grants early access to certain features. [
+        # User authentication](https://developers.google.com/chat/api/guides/auth/users)
+        # requires the `chat.messages` authorization scope.
         # @param [String] name
         #   Resource name in the form `spaces/*/messages/*`. Example: `spaces/AAAAAAAAAAA/
         #   messages/BBBBBBBBBBB.BBBBBBBBBBB`
