@@ -142,18 +142,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleChromeManagementV1CountPrintJobsByPrinterResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleChromeManagementV1CountPrintJobsByUserResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleChromeManagementV1CpuInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -310,12 +298,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleChromeManagementV1PrinterReport
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleChromeManagementV1StorageInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -413,12 +395,6 @@ module Google
       end
       
       class GoogleChromeManagementV1UsbPeripheralReport
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleChromeManagementV1UserPrintReport
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -672,26 +648,6 @@ module Google
       
           property :next_page_token, as: 'nextPageToken'
           property :total_size, as: 'totalSize'
-        end
-      end
-      
-      class GoogleChromeManagementV1CountPrintJobsByPrinterResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :printer_reports, as: 'printerReports', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1PrinterReport, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1PrinterReport::Representation
-      
-          property :total_size, :numeric_string => true, as: 'totalSize'
-        end
-      end
-      
-      class GoogleChromeManagementV1CountPrintJobsByUserResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          property :total_size, :numeric_string => true, as: 'totalSize'
-          collection :user_print_reports, as: 'userPrintReports', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1UserPrintReport, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1UserPrintReport::Representation
-      
         end
       end
       
@@ -979,18 +935,6 @@ module Google
         end
       end
       
-      class GoogleChromeManagementV1PrinterReport
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :device_count, :numeric_string => true, as: 'deviceCount'
-          property :job_count, :numeric_string => true, as: 'jobCount'
-          property :printer, as: 'printer'
-          property :printer_id, as: 'printerId'
-          property :printer_model, as: 'printerModel'
-          property :user_count, :numeric_string => true, as: 'userCount'
-        end
-      end
-      
       class GoogleChromeManagementV1StorageInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1194,17 +1138,6 @@ module Google
           property :subclass_id, as: 'subclassId'
           property :vendor, as: 'vendor'
           property :vid, as: 'vid'
-        end
-      end
-      
-      class GoogleChromeManagementV1UserPrintReport
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :device_count, :numeric_string => true, as: 'deviceCount'
-          property :job_count, :numeric_string => true, as: 'jobCount'
-          property :printer_count, :numeric_string => true, as: 'printerCount'
-          property :user_email, as: 'userEmail'
-          property :user_id, as: 'userId'
         end
       end
       
