@@ -1253,12 +1253,6 @@ module Google
         # @return [String]
         attr_accessor :dataset
       
-        # Output only. Timestamp when the model training finished and ready to be used
-        # for translation.
-        # Corresponds to the JSON property `deployTime`
-        # @return [String]
-        attr_accessor :deploy_time
-      
         # The name of the model to show in the interface. The name can be up to 32
         # characters long and can consist only of ASCII Latin letters A-Z and a-z,
         # underscores (_), and ASCII digits 0-9.
@@ -1310,7 +1304,6 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @dataset = args[:dataset] if args.key?(:dataset)
-          @deploy_time = args[:deploy_time] if args.key?(:deploy_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
           @source_language_code = args[:source_language_code] if args.key?(:source_language_code)
@@ -1527,6 +1520,12 @@ module Google
         # @return [Google::Apis::TranslateV3::DocumentOutputConfig]
         attr_accessor :document_output_config
       
+        # Optional. If true, enable auto rotation correction in DVS.
+        # Corresponds to the JSON property `enableRotationCorrection`
+        # @return [Boolean]
+        attr_accessor :enable_rotation_correction
+        alias_method :enable_rotation_correction?, :enable_rotation_correction
+      
         # Optional. If true, use the text removal server to remove the shadow text on
         # background image for native pdf translation. Shadow removal feature can only
         # be enabled when is_translate_native_pdf_only: false && pdf_native_only: false
@@ -1593,6 +1592,7 @@ module Google
           @customized_attribution = args[:customized_attribution] if args.key?(:customized_attribution)
           @document_input_config = args[:document_input_config] if args.key?(:document_input_config)
           @document_output_config = args[:document_output_config] if args.key?(:document_output_config)
+          @enable_rotation_correction = args[:enable_rotation_correction] if args.key?(:enable_rotation_correction)
           @enable_shadow_removal_native_pdf = args[:enable_shadow_removal_native_pdf] if args.key?(:enable_shadow_removal_native_pdf)
           @glossary_config = args[:glossary_config] if args.key?(:glossary_config)
           @is_translate_native_pdf_only = args[:is_translate_native_pdf_only] if args.key?(:is_translate_native_pdf_only)

@@ -717,7 +717,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :dataset, as: 'dataset'
-          property :deploy_time, as: 'deployTime'
           property :display_name, as: 'displayName'
           property :name, as: 'name'
           property :source_language_code, as: 'sourceLanguageCode'
@@ -784,6 +783,7 @@ module Google
       
           property :document_output_config, as: 'documentOutputConfig', class: Google::Apis::TranslateV3::DocumentOutputConfig, decorator: Google::Apis::TranslateV3::DocumentOutputConfig::Representation
       
+          property :enable_rotation_correction, as: 'enableRotationCorrection'
           property :enable_shadow_removal_native_pdf, as: 'enableShadowRemovalNativePdf'
           property :glossary_config, as: 'glossaryConfig', class: Google::Apis::TranslateV3::TranslateTextGlossaryConfig, decorator: Google::Apis::TranslateV3::TranslateTextGlossaryConfig::Representation
       
