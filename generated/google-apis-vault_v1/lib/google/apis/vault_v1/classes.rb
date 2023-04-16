@@ -1320,6 +1320,12 @@ module Google
       class MailOptions
         include Google::Apis::Core::Hashable
       
+        # Specifies whether the results should include encrypted content, unencrypted
+        # content, or both. Defaults to including both.
+        # Corresponds to the JSON property `clientSideEncryptedOption`
+        # @return [String]
+        attr_accessor :client_side_encrypted_option
+      
         # Set to **true** to exclude drafts.
         # Corresponds to the JSON property `excludeDrafts`
         # @return [Boolean]
@@ -1332,6 +1338,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @client_side_encrypted_option = args[:client_side_encrypted_option] if args.key?(:client_side_encrypted_option)
           @exclude_drafts = args[:exclude_drafts] if args.key?(:exclude_drafts)
         end
       end
