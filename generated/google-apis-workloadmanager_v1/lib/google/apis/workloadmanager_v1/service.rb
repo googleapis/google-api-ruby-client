@@ -244,6 +244,201 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets details of a single Execution.
+        # @param [String] name
+        #   Required. Name of the resource
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::WorkloadmanagerV1::Execution] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::WorkloadmanagerV1::Execution]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_evaluation_execution(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::WorkloadmanagerV1::Execution::Representation
+          command.response_class = Google::Apis::WorkloadmanagerV1::Execution
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists Executions in a given project and location.
+        # @param [String] parent
+        #   Required. The resource prefix of the Execution using the form: 'projects/`
+        #   project`/locations/`location`/evaluations/`evaluation`'
+        # @param [String] filter
+        #   Filtering results
+        # @param [String] order_by
+        #   Field to sort by. See https://google.aip.dev/132#ordering for more details.
+        # @param [Fixnum] page_size
+        #   Requested page size. Server may return fewer items than requested. If
+        #   unspecified, server will pick an appropriate default.
+        # @param [String] page_token
+        #   A token identifying a page of results the server should return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::WorkloadmanagerV1::ListExecutionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::WorkloadmanagerV1::ListExecutionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_evaluation_executions(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/executions', options)
+          command.response_representation = Google::Apis::WorkloadmanagerV1::ListExecutionsResponse::Representation
+          command.response_class = Google::Apis::WorkloadmanagerV1::ListExecutionsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new Execution in a given project and location.
+        # @param [String] name
+        #   Required. The resource name of the Execution using the form: 'projects/`
+        #   project`/locations/`location`/evaluations/`evaluation`/executions/`execution`'
+        # @param [Google::Apis::WorkloadmanagerV1::RunEvaluationRequest] run_evaluation_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::WorkloadmanagerV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::WorkloadmanagerV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def run_execution_evaluation(name, run_evaluation_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}/executions:run', options)
+          command.request_representation = Google::Apis::WorkloadmanagerV1::RunEvaluationRequest::Representation
+          command.request_object = run_evaluation_request_object
+          command.response_representation = Google::Apis::WorkloadmanagerV1::Operation::Representation
+          command.response_class = Google::Apis::WorkloadmanagerV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List the running result of a single Execution.
+        # @param [String] parent
+        #   Required. The execution results. Format: `parent`/evaluations/*/executions/*/
+        #   results
+        # @param [String] filter
+        #   Filtering results
+        # @param [Fixnum] page_size
+        #   Requested page size. Server may return fewer items than requested. If
+        #   unspecified, server will pick an appropriate default.
+        # @param [String] page_token
+        #   A token identifying a page of results the server should return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::WorkloadmanagerV1::ListExecutionResultsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::WorkloadmanagerV1::ListExecutionResultsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_evaluation_execution_results(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/results', options)
+          command.response_representation = Google::Apis::WorkloadmanagerV1::ListExecutionResultsResponse::Representation
+          command.response_class = Google::Apis::WorkloadmanagerV1::ListExecutionResultsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List all scanned resources for a single Execution.
+        # @param [String] parent
+        #   Required. parent for ListScannedResourcesRequest
+        # @param [String] filter
+        #   Filtering results
+        # @param [String] order_by
+        #   Field to sort by. See https://google.aip.dev/132#ordering for more details.
+        # @param [Fixnum] page_size
+        #   Requested page size. Server may return fewer items than requested. If
+        #   unspecified, server will pick an appropriate default.
+        # @param [String] page_token
+        #   A token identifying a page of results the server should return.
+        # @param [String] rule
+        #   rule name
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::WorkloadmanagerV1::ListScannedResourcesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::WorkloadmanagerV1::ListScannedResourcesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_evaluation_execution_scanned_resources(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, rule: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/scannedResources', options)
+          command.response_representation = Google::Apis::WorkloadmanagerV1::ListScannedResourcesResponse::Representation
+          command.response_class = Google::Apis::WorkloadmanagerV1::ListScannedResourcesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['rule'] = rule unless rule.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Write the data insights to workload manager data warehouse.
         # @param [String] location
         #   Required. The GCP location. The format is: projects/`project`/locations/`
@@ -414,6 +609,48 @@ module Google
           command.response_representation = Google::Apis::WorkloadmanagerV1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::WorkloadmanagerV1::ListOperationsResponse
           command.params['name'] = name unless name.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists rules in a given project.
+        # @param [String] parent
+        #   Required. The [project] on which to execute the request. The format is:
+        #   projects/`project_id`/locations/`location` Currently, the pre-defined rules
+        #   are global available to all projects and all regions
+        # @param [String] filter
+        #   Filter based on primary_category, secondary_category
+        # @param [Fixnum] page_size
+        #   Requested page size. Server may return fewer items than requested. If
+        #   unspecified, server will pick an appropriate default.
+        # @param [String] page_token
+        #   A token identifying a page of results the server should return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::WorkloadmanagerV1::ListRulesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::WorkloadmanagerV1::ListRulesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_rules(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/rules', options)
+          command.response_representation = Google::Apis::WorkloadmanagerV1::ListRulesResponse::Representation
+          command.response_class = Google::Apis::WorkloadmanagerV1::ListRulesResponse
+          command.params['parent'] = parent unless parent.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?

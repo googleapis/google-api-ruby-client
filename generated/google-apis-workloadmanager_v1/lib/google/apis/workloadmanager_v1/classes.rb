@@ -96,6 +96,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :rule_versions
       
+        # crontab format schedule for scheduled evaluation, example: 0 */3 * * *
+        # Corresponds to the JSON property `schedule`
+        # @return [String]
+        attr_accessor :schedule
+      
         # Output only. [Output only] Update time stamp
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -115,7 +120,120 @@ module Google
           @resource_status = args[:resource_status] if args.key?(:resource_status)
           @rule_names = args[:rule_names] if args.key?(:rule_names)
           @rule_versions = args[:rule_versions] if args.key?(:rule_versions)
+          @schedule = args[:schedule] if args.key?(:schedule)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Message describing Execution object
+      class Execution
+        include Google::Apis::Core::Hashable
+      
+        # Output only. [Output only] End time stamp
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Output only. [Output only] Evaluation ID
+        # Corresponds to the JSON property `evaluationId`
+        # @return [String]
+        attr_accessor :evaluation_id
+      
+        # Output only. [Output only] Inventory time stamp
+        # Corresponds to the JSON property `inventoryTime`
+        # @return [String]
+        attr_accessor :inventory_time
+      
+        # Labels as key value pairs
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # The name of execution resource. The format is projects/`project`/locations/`
+        # location`/evaluations/`evaluation`/executions/`execution`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # type represent whether the execution executed directly by user or scheduled
+        # according evaluation.schedule field.
+        # Corresponds to the JSON property `runType`
+        # @return [String]
+        attr_accessor :run_type
+      
+        # Output only. [Output only] Start time stamp
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Output only. [Output only] State
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @evaluation_id = args[:evaluation_id] if args.key?(:evaluation_id)
+          @inventory_time = args[:inventory_time] if args.key?(:inventory_time)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @run_type = args[:run_type] if args.key?(:run_type)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Message describing the result of an execution
+      class ExecutionResult
+        include Google::Apis::Core::Hashable
+      
+        # the document url of the rule
+        # Corresponds to the JSON property `documentationUrl`
+        # @return [String]
+        attr_accessor :documentation_url
+      
+        # Message represent resource in execution result
+        # Corresponds to the JSON property `resource`
+        # @return [Google::Apis::WorkloadmanagerV1::Resource]
+        attr_accessor :resource
+      
+        # the rule which violate in execution
+        # Corresponds to the JSON property `rule`
+        # @return [String]
+        attr_accessor :rule
+      
+        # severity of violation
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        # Message describing the violdation in execution result
+        # Corresponds to the JSON property `violationDetails`
+        # @return [Google::Apis::WorkloadmanagerV1::ViolationDetails]
+        attr_accessor :violation_details
+      
+        # the violation message of an execution
+        # Corresponds to the JSON property `violationMessage`
+        # @return [String]
+        attr_accessor :violation_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @documentation_url = args[:documentation_url] if args.key?(:documentation_url)
+          @resource = args[:resource] if args.key?(:resource)
+          @rule = args[:rule] if args.key?(:rule)
+          @severity = args[:severity] if args.key?(:severity)
+          @violation_details = args[:violation_details] if args.key?(:violation_details)
+          @violation_message = args[:violation_message] if args.key?(:violation_message)
         end
       end
       
@@ -201,6 +319,63 @@ module Google
         end
       end
       
+      # Message for response of list execution results
+      class ListExecutionResultsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The versions from the specified publisher.
+        # Corresponds to the JSON property `executionResults`
+        # @return [Array<Google::Apis::WorkloadmanagerV1::ExecutionResult>]
+        attr_accessor :execution_results
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @execution_results = args[:execution_results] if args.key?(:execution_results)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Message for response to listing Executions
+      class ListExecutionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of Execution
+        # Corresponds to the JSON property `executions`
+        # @return [Array<Google::Apis::WorkloadmanagerV1::Execution>]
+        attr_accessor :executions
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @executions = args[:executions] if args.key?(:executions)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # The response message for Locations.ListLocations.
       class ListLocationsResponse
         include Google::Apis::Core::Hashable
@@ -248,6 +423,57 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+        end
+      end
+      
+      # Mesesage of response of list rules
+      class ListRulesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # all rules in response
+        # Corresponds to the JSON property `rules`
+        # @return [Array<Google::Apis::WorkloadmanagerV1::Rule>]
+        attr_accessor :rules
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @rules = args[:rules] if args.key?(:rules)
+        end
+      end
+      
+      # Message for response to list scanned resources
+      class ListScannedResourcesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # All scanned resources in response
+        # Corresponds to the JSON property `scannedResources`
+        # @return [Array<Google::Apis::WorkloadmanagerV1::ScannedResource>]
+        attr_accessor :scanned_resources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @scanned_resources = args[:scanned_resources] if args.key?(:scanned_resources)
         end
       end
       
@@ -419,6 +645,37 @@ module Google
         end
       end
       
+      # Message represent resource in execution result
+      class Resource
+        include Google::Apis::Core::Hashable
+      
+        # the name of the resource
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # the service account accosiate with resource
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
+        # the type of reresource
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @service_account = args[:service_account] if args.key?(:service_account)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # Message describing resource filters
       class ResourceFilter
         include Google::Apis::Core::Hashable
@@ -478,6 +735,120 @@ module Google
         def update!(**args)
           @rules_newer_versions = args[:rules_newer_versions] if args.key?(:rules_newer_versions)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Message represent a rule
+      class Rule
+        include Google::Apis::Core::Hashable
+      
+        # descrite rule in plain language
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # the name display in UI
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # the message template for rule
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
+        # rule name
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # the primary category
+        # Corresponds to the JSON property `primaryCategory`
+        # @return [String]
+        attr_accessor :primary_category
+      
+        # the remediation for the rule
+        # Corresponds to the JSON property `remediation`
+        # @return [String]
+        attr_accessor :remediation
+      
+        # Output only. the version of the rule
+        # Corresponds to the JSON property `revisionId`
+        # @return [String]
+        attr_accessor :revision_id
+      
+        # the secondary category
+        # Corresponds to the JSON property `secondaryCategory`
+        # @return [String]
+        attr_accessor :secondary_category
+      
+        # the severity of the rule
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        # the docuement url for the rule
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @error_message = args[:error_message] if args.key?(:error_message)
+          @name = args[:name] if args.key?(:name)
+          @primary_category = args[:primary_category] if args.key?(:primary_category)
+          @remediation = args[:remediation] if args.key?(:remediation)
+          @revision_id = args[:revision_id] if args.key?(:revision_id)
+          @secondary_category = args[:secondary_category] if args.key?(:secondary_category)
+          @severity = args[:severity] if args.key?(:severity)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Message for creating a Execution
+      class RunEvaluationRequest
+        include Google::Apis::Core::Hashable
+      
+        # Message describing Execution object
+        # Corresponds to the JSON property `execution`
+        # @return [Google::Apis::WorkloadmanagerV1::Execution]
+        attr_accessor :execution
+      
+        # Required. Id of the requesting object If auto-generating Id server-side,
+        # remove this field and execution_id from the method_signature of Create RPC
+        # Corresponds to the JSON property `executionId`
+        # @return [String]
+        attr_accessor :execution_id
+      
+        # Optional. An optional request ID to identify requests. Specify a unique
+        # request ID so that if you must retry your request, the server will know to
+        # ignore the request if it has already been completed. The server will guarantee
+        # that for at least 60 minutes since the first request. For example, consider a
+        # situation where you make an initial request and the request times out. If you
+        # make the request again with the same request ID, the server can check if
+        # original operation with the same request ID was received, and if so, will
+        # ignore the second request. This prevents clients from accidentally creating
+        # duplicate commitments. The request ID must be a valid UUID with the exception
+        # that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @execution = args[:execution] if args.key?(:execution)
+          @execution_id = args[:execution_id] if args.key?(:execution_id)
+          @request_id = args[:request_id] if args.key?(:request_id)
         end
       end
       
@@ -620,6 +991,11 @@ module Google
         # @return [String]
         attr_accessor :resource_kind
       
+        # Indicates whether this is a new, updated, or missing resource.
+        # Corresponds to the JSON property `resourceState`
+        # @return [String]
+        attr_accessor :resource_state
+      
         # The type of this resource.
         # Corresponds to the JSON property `resourceType`
         # @return [String]
@@ -643,6 +1019,7 @@ module Google
         def update!(**args)
           @related_resources = args[:related_resources] if args.key?(:related_resources)
           @resource_kind = args[:resource_kind] if args.key?(:resource_kind)
+          @resource_state = args[:resource_state] if args.key?(:resource_state)
           @resource_type = args[:resource_type] if args.key?(:resource_type)
           @resource_uri = args[:resource_uri] if args.key?(:resource_uri)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -694,6 +1071,25 @@ module Google
         end
       end
       
+      # Message of scanned resource
+      class ScannedResource
+        include Google::Apis::Core::Hashable
+      
+        # resource name
+        # Corresponds to the JSON property `resource`
+        # @return [String]
+        attr_accessor :resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource = args[:resource] if args.key?(:resource)
+        end
+      end
+      
       # The `Status` type defines a logical error model that is suitable for different
       # programming environments, including REST APIs and RPC APIs. It is used by [
       # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
@@ -730,6 +1126,37 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Message describing the violdation in execution result
+      class ViolationDetails
+        include Google::Apis::Core::Hashable
+      
+        # the name of asset
+        # Corresponds to the JSON property `asset`
+        # @return [String]
+        attr_accessor :asset
+      
+        # observed
+        # Corresponds to the JSON property `observed`
+        # @return [Hash<String,String>]
+        attr_accessor :observed
+      
+        # the service account associate with resource
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @asset = args[:asset] if args.key?(:asset)
+          @observed = args[:observed] if args.key?(:observed)
+          @service_account = args[:service_account] if args.key?(:service_account)
         end
       end
       
