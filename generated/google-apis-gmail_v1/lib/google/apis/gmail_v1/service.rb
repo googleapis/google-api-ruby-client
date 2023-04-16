@@ -923,6 +923,10 @@ module Google
         #   Include messages from `SPAM` and `TRASH` in the results.
         # @param [Array<String>, String] label_ids
         #   Only return messages with labels that match all of the specified label IDs.
+        #   Messages in a thread might have labels that other messages in the same thread
+        #   don't have. To learn more, see [Manage labels on messages and threads](https://
+        #   developers.google.com/gmail/api/guides/labels#
+        #   manage_labels_on_messages_threads).
         # @param [Fixnum] max_results
         #   Maximum number of messages to return. This field defaults to 100. The maximum
         #   allowed value for this field is 500.
