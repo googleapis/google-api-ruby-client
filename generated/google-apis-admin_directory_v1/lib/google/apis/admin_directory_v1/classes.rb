@@ -3686,9 +3686,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The unique ID of the entity this role is assigned to—either the `user_id` of a
-        # user or the `uniqueId` of a service account, as defined in [Identity and
-        # Access Management (IAM)](https://cloud.google.com/iam/docs/reference/rest/v1/
-        # projects.serviceAccounts).
+        # user, the `group_id` of a group, or the `uniqueId` of a service account as
+        # defined in [Identity and Access Management (IAM)](https://cloud.google.com/iam/
+        # docs/reference/rest/v1/projects.serviceAccounts).
         # Corresponds to the JSON property `assignedTo`
         # @return [String]
         attr_accessor :assigned_to
@@ -4116,7 +4116,7 @@ module Google
       end
       
       # The Directory API allows you to create and manage your account's users, user
-      # aliases, and user Gmail chat profile photos. For more information about common
+      # aliases, and user Google profile photos. For more information about common
       # tasks, see the [User Accounts Developer's Guide](/admin-sdk/directory/v1/
       # guides/manage-users.html) and the [User Aliases Developer's Guide](/admin-sdk/
       # directory/v1/guides/manage-user-aliases.html).
