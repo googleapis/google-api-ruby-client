@@ -604,6 +604,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BulkInsertOperationStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BundledLocalSsds
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2375,6 +2381,12 @@ module Google
       end
       
       class InstancesAddResourcePoliciesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstancesBulkInsertOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5003,12 +5015,6 @@ module Google
       end
       
       class ResourceStatusServiceIntegrationStatusBackupDrStatus
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ResourceStatusUpcomingMaintenance
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -8244,8 +8250,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :count, :numeric_string => true, as: 'count'
-          property :instance, as: 'instance', class: Google::Apis::ComputeAlpha::Instance, decorator: Google::Apis::ComputeAlpha::Instance::Representation
-      
           property :instance_properties, as: 'instanceProperties', class: Google::Apis::ComputeAlpha::InstanceProperties, decorator: Google::Apis::ComputeAlpha::InstanceProperties::Representation
       
           property :location_policy, as: 'locationPolicy', class: Google::Apis::ComputeAlpha::LocationPolicy, decorator: Google::Apis::ComputeAlpha::LocationPolicy::Representation
@@ -8263,6 +8267,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :hostname, as: 'hostname'
           property :name, as: 'name'
+        end
+      end
+      
+      class BulkInsertOperationStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :created_vm_count, as: 'createdVmCount'
+          property :deleted_vm_count, as: 'deletedVmCount'
+          property :failed_to_create_vm_count, as: 'failedToCreateVmCount'
+          property :status, as: 'status'
+          property :target_vm_count, as: 'targetVmCount'
         end
       end
       
@@ -8675,6 +8690,8 @@ module Google
       class DiskAsyncReplication
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :consistency_group_policy, as: 'consistencyGroupPolicy'
+          property :consistency_group_policy_id, as: 'consistencyGroupPolicyId'
           property :disk, as: 'disk'
           property :disk_id, as: 'diskId'
         end
@@ -11682,6 +11699,14 @@ module Google
         end
       end
       
+      class InstancesBulkInsertOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :per_location_status, as: 'perLocationStatus', class: Google::Apis::ComputeAlpha::BulkInsertOperationStatus, decorator: Google::Apis::ComputeAlpha::BulkInsertOperationStatus::Representation
+      
+        end
+      end
+      
       class InstancesGetEffectiveFirewallsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -14414,6 +14439,8 @@ module Google
           property :http_error_status_code, as: 'httpErrorStatusCode'
           property :id, :numeric_string => true, as: 'id'
           property :insert_time, as: 'insertTime'
+          property :instances_bulk_insert_operation_metadata, as: 'instancesBulkInsertOperationMetadata', class: Google::Apis::ComputeAlpha::InstancesBulkInsertOperationMetadata, decorator: Google::Apis::ComputeAlpha::InstancesBulkInsertOperationMetadata::Representation
+      
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :operation_group_id, as: 'operationGroupId'
@@ -16411,8 +16438,6 @@ module Google
       
           hash :service_integration_statuses, as: 'serviceIntegrationStatuses', class: Google::Apis::ComputeAlpha::ResourceStatusServiceIntegrationStatus, decorator: Google::Apis::ComputeAlpha::ResourceStatusServiceIntegrationStatus::Representation
       
-          property :upcoming_maintenance, as: 'upcomingMaintenance', class: Google::Apis::ComputeAlpha::ResourceStatusUpcomingMaintenance, decorator: Google::Apis::ComputeAlpha::ResourceStatusUpcomingMaintenance::Representation
-      
         end
       end
       
@@ -16437,13 +16462,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :integration_details, as: 'integrationDetails'
           property :state, as: 'state'
-        end
-      end
-      
-      class ResourceStatusUpcomingMaintenance
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :can_reschedule, as: 'canReschedule'
         end
       end
       
