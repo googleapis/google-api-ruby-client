@@ -3174,7 +3174,7 @@ module Google
         # @return [Array<Google::Apis::ServicenetworkingV1beta::MethodSettings>]
         attr_accessor :method_settings
       
-        # Link to a place that API users can report issues. Example: https://
+        # Link to a *public* URI where users can report issues. Example: https://
         # issuetracker.google.com/issues/new?component=190865&template=1161103
         # Corresponds to the JSON property `newIssueUri`
         # @return [String]
