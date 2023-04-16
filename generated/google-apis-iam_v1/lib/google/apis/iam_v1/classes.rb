@@ -632,7 +632,7 @@ module Google
         # @return [String]
         attr_accessor :key
       
-        # Immutable. The specifications for the key.
+        # Required. The specifications for the key.
         # Corresponds to the JSON property `keySpec`
         # @return [String]
         attr_accessor :key_spec
@@ -2423,7 +2423,7 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # Immutable. The purpose of the key.
+        # Required. The purpose of the key.
         # Corresponds to the JSON property `use`
         # @return [String]
         attr_accessor :use
@@ -2653,7 +2653,7 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # Immutable. The purpose of the key.
+        # Required. The purpose of the key.
         # Corresponds to the JSON property `use`
         # @return [String]
         attr_accessor :use
