@@ -118,6 +118,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConsumerPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ConsumerQuotaLimit
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -221,6 +227,12 @@ module Google
       end
       
       class EnableFailure
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EnableRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -658,6 +670,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpdateConsumerPolicyLroMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Usage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -849,6 +867,18 @@ module Google
         end
       end
       
+      class ConsumerPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :annotations, as: 'annotations'
+          collection :enable_rules, as: 'enableRules', class: Google::Apis::ServiceusageV1beta1::EnableRule, decorator: Google::Apis::ServiceusageV1beta1::EnableRule::Representation
+      
+          property :etag, as: 'etag'
+          property :name, as: 'name'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class ConsumerQuotaLimit
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1009,6 +1039,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :error_message, as: 'errorMessage'
           property :service_id, as: 'serviceId'
+        end
+      end
+      
+      class EnableRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_type, as: 'enableType'
+          collection :groups, as: 'groups'
+          collection :services, as: 'services'
+          collection :values, as: 'values'
         end
       end
       
@@ -1781,6 +1821,12 @@ module Google
       end
       
       class UpdateAdminQuotaPolicyMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class UpdateConsumerPolicyLroMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
