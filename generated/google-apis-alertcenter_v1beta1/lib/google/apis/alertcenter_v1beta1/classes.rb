@@ -48,7 +48,7 @@ module Google
         end
       end
       
-      # A warning that the customer's account is about to be suspended.
+      # LINT.IfChange A warning that the customer's account is about to be suspended.
       class AccountSuspensionWarning
         include Google::Apis::Core::Hashable
       
