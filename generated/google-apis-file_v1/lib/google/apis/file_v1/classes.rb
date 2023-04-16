@@ -1385,6 +1385,29 @@ module Google
         end
       end
       
+      # RevertInstanceRequest reverts the given instance's file share to the specified
+      # snapshot.
+      class RevertInstanceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The snapshot resource ID, in the format 'my-snapshot', where the
+        # specified ID is the `snapshot_id` of the fully qualified name like projects/`
+        # project_id`/locations/`location_id`/instances/`instance_id`/snapshots/`
+        # snapshot_id`
+        # Corresponds to the JSON property `targetSnapshotId`
+        # @return [String]
+        attr_accessor :target_snapshot_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @target_snapshot_id = args[:target_snapshot_id] if args.key?(:target_snapshot_id)
+        end
+      end
+      
       # Configure the schedule.
       class Schedule
         include Google::Apis::Core::Hashable
