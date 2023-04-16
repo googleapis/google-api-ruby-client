@@ -5273,13 +5273,6 @@ module Google
         # @return [Fixnum]
         attr_accessor :count
       
-        # Represents an Instance resource. An instance is a virtual machine that is
-        # hosted on Google Cloud Platform. For more information, read Virtual Machine
-        # Instances.
-        # Corresponds to the JSON property `instance`
-        # @return [Google::Apis::ComputeAlpha::Instance]
-        attr_accessor :instance
-      
         # The instance properties defining the VM instances to be created. Required if
         # sourceInstanceTemplate is not provided.
         # Corresponds to the JSON property `instanceProperties`
@@ -5339,7 +5332,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @count = args[:count] if args.key?(:count)
-          @instance = args[:instance] if args.key?(:instance)
           @instance_properties = args[:instance_properties] if args.key?(:instance_properties)
           @location_policy = args[:location_policy] if args.key?(:location_policy)
           @min_count = args[:min_count] if args.key?(:min_count)
@@ -5374,6 +5366,50 @@ module Google
         def update!(**args)
           @hostname = args[:hostname] if args.key?(:hostname)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # 
+      class BulkInsertOperationStatus
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Count of VMs successfully created so far.
+        # Corresponds to the JSON property `createdVmCount`
+        # @return [Fixnum]
+        attr_accessor :created_vm_count
+      
+        # [Output Only] Count of VMs that got deleted during rollback.
+        # Corresponds to the JSON property `deletedVmCount`
+        # @return [Fixnum]
+        attr_accessor :deleted_vm_count
+      
+        # [Output Only] Count of VMs that started creating but encountered an error.
+        # Corresponds to the JSON property `failedToCreateVmCount`
+        # @return [Fixnum]
+        attr_accessor :failed_to_create_vm_count
+      
+        # [Output Only] Creation status of BulkInsert operation - information if the
+        # flow is rolling forward or rolling back.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # [Output Only] Count of VMs originally planned to be created.
+        # Corresponds to the JSON property `targetVmCount`
+        # @return [Fixnum]
+        attr_accessor :target_vm_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @created_vm_count = args[:created_vm_count] if args.key?(:created_vm_count)
+          @deleted_vm_count = args[:deleted_vm_count] if args.key?(:deleted_vm_count)
+          @failed_to_create_vm_count = args[:failed_to_create_vm_count] if args.key?(:failed_to_create_vm_count)
+          @status = args[:status] if args.key?(:status)
+          @target_vm_count = args[:target_vm_count] if args.key?(:target_vm_count)
         end
       end
       
@@ -7244,6 +7280,18 @@ module Google
       class DiskAsyncReplication
         include Google::Apis::Core::Hashable
       
+        # [Output Only] URL of the DiskConsistencyGroupPolicy if replication was started
+        # on the disk as a member of a group.
+        # Corresponds to the JSON property `consistencyGroupPolicy`
+        # @return [String]
+        attr_accessor :consistency_group_policy
+      
+        # [Output Only] ID of the DiskConsistencyGroupPolicy if replication was started
+        # on the disk as a member of a group.
+        # Corresponds to the JSON property `consistencyGroupPolicyId`
+        # @return [String]
+        attr_accessor :consistency_group_policy_id
+      
         # The other disk asynchronously replicated to or from the current disk. You can
         # provide this as a partial or full URL to the resource. For example, the
         # following are valid values: - https://www.googleapis.com/compute/v1/projects/
@@ -7269,6 +7317,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @consistency_group_policy = args[:consistency_group_policy] if args.key?(:consistency_group_policy)
+          @consistency_group_policy_id = args[:consistency_group_policy_id] if args.key?(:consistency_group_policy_id)
           @disk = args[:disk] if args.key?(:disk)
           @disk_id = args[:disk_id] if args.key?(:disk_id)
         end
@@ -10150,9 +10200,11 @@ module Google
       
         # This field is not used for external load balancing. For Internal TCP/UDP Load
         # Balancing, this field identifies the network that the load balanced IP should
-        # belong to for this Forwarding Rule. If this field is not specified, the
-        # default network will be used. For Private Service Connect forwarding rules
-        # that forward traffic to Google APIs, a network must be provided.
+        # belong to for this Forwarding Rule. If the subnetwork is specified, the
+        # network of the subnetwork will be used. If neither subnetwork nor this field
+        # is specified, the default network will be used. For Private Service Connect
+        # forwarding rules that forward traffic to Google APIs, a network must be
+        # provided.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -19590,6 +19642,26 @@ module Google
       end
       
       # 
+      class InstancesBulkInsertOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Status information per location (location name is key). Example key: zones/us-
+        # central1-a
+        # Corresponds to the JSON property `perLocationStatus`
+        # @return [Hash<String,Google::Apis::ComputeAlpha::BulkInsertOperationStatus>]
+        attr_accessor :per_location_status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @per_location_status = args[:per_location_status] if args.key?(:per_location_status)
+        end
+      end
+      
+      # 
       class InstancesGetEffectiveFirewallsResponse
         include Google::Apis::Core::Hashable
       
@@ -25787,7 +25859,7 @@ module Google
         # @return [String]
         attr_accessor :project_id_or_num
       
-        # Alias IP ranges from the same subnetwork
+        # Alias IP ranges from the same subnetwork.
         # Corresponds to the JSON property `secondaryIpCidrRanges`
         # @return [Array<String>]
         attr_accessor :secondary_ip_cidr_ranges
@@ -30415,6 +30487,11 @@ module Google
         # @return [String]
         attr_accessor :insert_time
       
+        # 
+        # Corresponds to the JSON property `instancesBulkInsertOperationMetadata`
+        # @return [Google::Apis::ComputeAlpha::InstancesBulkInsertOperationMetadata]
+        attr_accessor :instances_bulk_insert_operation_metadata
+      
         # [Output Only] Type of the resource. Always `compute#operation` for Operation
         # resources.
         # Corresponds to the JSON property `kind`
@@ -30533,6 +30610,7 @@ module Google
           @http_error_status_code = args[:http_error_status_code] if args.key?(:http_error_status_code)
           @id = args[:id] if args.key?(:id)
           @insert_time = args[:insert_time] if args.key?(:insert_time)
+          @instances_bulk_insert_operation_metadata = args[:instances_bulk_insert_operation_metadata] if args.key?(:instances_bulk_insert_operation_metadata)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @operation_group_id = args[:operation_group_id] if args.key?(:operation_group_id)
@@ -37863,11 +37941,6 @@ module Google
         # @return [Hash<String,Google::Apis::ComputeAlpha::ResourceStatusServiceIntegrationStatus>]
         attr_accessor :service_integration_statuses
       
-        # 
-        # Corresponds to the JSON property `upcomingMaintenance`
-        # @return [Google::Apis::ComputeAlpha::ResourceStatusUpcomingMaintenance]
-        attr_accessor :upcoming_maintenance
-      
         def initialize(**args)
            update!(**args)
         end
@@ -37877,7 +37950,6 @@ module Google
           @physical_host = args[:physical_host] if args.key?(:physical_host)
           @scheduling = args[:scheduling] if args.key?(:scheduling)
           @service_integration_statuses = args[:service_integration_statuses] if args.key?(:service_integration_statuses)
-          @upcoming_maintenance = args[:upcoming_maintenance] if args.key?(:upcoming_maintenance)
         end
       end
       
@@ -37958,27 +38030,6 @@ module Google
         def update!(**args)
           @integration_details = args[:integration_details] if args.key?(:integration_details)
           @state = args[:state] if args.key?(:state)
-        end
-      end
-      
-      # 
-      class ResourceStatusUpcomingMaintenance
-        include Google::Apis::Core::Hashable
-      
-        # Indicates if the maintenance can be customer triggered. See go/sf-ctm-design
-        # for more details
-        # Corresponds to the JSON property `canReschedule`
-        # @return [Boolean]
-        attr_accessor :can_reschedule
-        alias_method :can_reschedule?, :can_reschedule
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @can_reschedule = args[:can_reschedule] if args.key?(:can_reschedule)
         end
       end
       
@@ -41063,7 +41114,8 @@ module Google
         # @return [Google::Apis::ComputeAlpha::SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig]
         attr_accessor :auto_deploy_config
       
-        # Configuration options for L7 DDoS detection.
+        # Configuration options for L7 DDoS detection. This field is only supported in
+        # Global Security Policies of type CLOUD_ARMOR.
         # Corresponds to the JSON property `layer7DdosDefenseConfig`
         # @return [Google::Apis::ComputeAlpha::SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig]
         attr_accessor :layer7_ddos_defense_config
@@ -41116,18 +41168,21 @@ module Google
         end
       end
       
-      # Configuration options for L7 DDoS detection.
+      # Configuration options for L7 DDoS detection. This field is only supported in
+      # Global Security Policies of type CLOUD_ARMOR.
       class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig
         include Google::Apis::Core::Hashable
       
-        # If set to true, enables CAAP for L7 DDoS detection.
+        # If set to true, enables CAAP for L7 DDoS detection. This field is only
+        # supported in Global Security Policies of type CLOUD_ARMOR.
         # Corresponds to the JSON property `enable`
         # @return [Boolean]
         attr_accessor :enable
         alias_method :enable?, :enable
       
         # Rule visibility can be one of the following: STANDARD - opaque rules. (default)
-        # PREMIUM - transparent rules.
+        # PREMIUM - transparent rules. This field is only supported in Global Security
+        # Policies of type CLOUD_ARMOR.
         # Corresponds to the JSON property `ruleVisibility`
         # @return [String]
         attr_accessor :rule_visibility
@@ -41413,7 +41468,8 @@ module Google
         # using the redirect action with the type of GOOGLE_RECAPTCHA under the security
         # policy. The specified site key needs to be created from the reCAPTCHA API. The
         # user is responsible for the validity of the specified site key. If not
-        # specified, a Google-managed site key is used.
+        # specified, a Google-managed site key is used. This field is only supported in
+        # Global Security Policies of type CLOUD_ARMOR.
         # Corresponds to the JSON property `redirectSiteKey`
         # @return [String]
         attr_accessor :redirect_site_key
@@ -41461,7 +41517,8 @@ module Google
         # rate_limit_options to be set. - redirect: redirect to a different target. This
         # can either be an internal reCAPTCHA redirect, or an external URL-based
         # redirect via a 302 response. Parameters for this action can be configured via
-        # redirectOptions. - throttle: limit client traffic to the configured threshold.
+        # redirectOptions. This action is only supported in Global Security Policies of
+        # type CLOUD_ARMOR. - throttle: limit client traffic to the configured threshold.
         # Configure parameters for this action in rateLimitOptions. Requires
         # rate_limit_options to be set for this.
         # Corresponds to the JSON property `action`
@@ -41490,7 +41547,8 @@ module Google
         attr_accessor :enable_logging
         alias_method :enable_logging?, :enable_logging
       
-        # Optional, additional actions that are performed on headers.
+        # Optional, additional actions that are performed on headers. This field is only
+        # supported in Global Security Policies of type CLOUD_ARMOR.
         # Corresponds to the JSON property `headerAction`
         # @return [Google::Apis::ComputeAlpha::SecurityPolicyRuleHttpHeaderAction]
         attr_accessor :header_action
@@ -41541,7 +41599,8 @@ module Google
         attr_accessor :rate_limit_options
       
         # Parameters defining the redirect action. Cannot be specified for any other
-        # actions.
+        # actions. This field is only supported in Global Security Policies of type
+        # CLOUD_ARMOR.
         # Corresponds to the JSON property `redirectOptions`
         # @return [Google::Apis::ComputeAlpha::SecurityPolicyRuleRedirectOptions]
         attr_accessor :redirect_options
@@ -42076,7 +42135,8 @@ module Google
         # to either deny with a specified HTTP response code, or redirect to a
         # different endpoint. Valid options are `deny(STATUS)`, where valid values for `
         # STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect
-        # parameters come from `exceedRedirectOptions` below.
+        # parameters come from `exceedRedirectOptions` below. The `redirect` action is
+        # only supported in Global Security Policies of type CLOUD_ARMOR.
         # Corresponds to the JSON property `exceedAction`
         # @return [String]
         attr_accessor :exceed_action
@@ -42087,7 +42147,8 @@ module Google
         attr_accessor :exceed_action_rpc_status
       
         # Parameters defining the redirect action that is used as the exceed action.
-        # Cannot be specified if the exceed action is not redirect.
+        # Cannot be specified if the exceed action is not redirect. This field is only
+        # supported in Global Security Policies of type CLOUD_ARMOR.
         # Corresponds to the JSON property `exceedRedirectOptions`
         # @return [Google::Apis::ComputeAlpha::SecurityPolicyRuleRedirectOptions]
         attr_accessor :exceed_redirect_options
