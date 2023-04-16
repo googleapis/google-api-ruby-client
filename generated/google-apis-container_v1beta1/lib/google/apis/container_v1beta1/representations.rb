@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AdditionalPodRangesConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AddonsConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -652,6 +658,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PodCidrOverprovisionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PodSecurityPolicyConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1000,6 +1012,13 @@ module Google
         end
       end
       
+      class AdditionalPodRangesConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :pod_range_names, as: 'podRangeNames'
+        end
+      end
+      
       class AddonsConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1297,6 +1316,8 @@ module Google
       class ClusterUpdate
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :additional_pod_ranges_config, as: 'additionalPodRangesConfig', class: Google::Apis::ContainerV1beta1::AdditionalPodRangesConfig, decorator: Google::Apis::ContainerV1beta1::AdditionalPodRangesConfig::Representation
+      
           property :desired_addons_config, as: 'desiredAddonsConfig', class: Google::Apis::ContainerV1beta1::AddonsConfig, decorator: Google::Apis::ContainerV1beta1::AddonsConfig::Representation
       
           property :desired_authenticator_groups_config, as: 'desiredAuthenticatorGroupsConfig', class: Google::Apis::ContainerV1beta1::AuthenticatorGroupsConfig, decorator: Google::Apis::ContainerV1beta1::AuthenticatorGroupsConfig::Representation
@@ -1379,6 +1400,8 @@ module Google
           property :desired_workload_identity_config, as: 'desiredWorkloadIdentityConfig', class: Google::Apis::ContainerV1beta1::WorkloadIdentityConfig, decorator: Google::Apis::ContainerV1beta1::WorkloadIdentityConfig::Representation
       
           property :etag, as: 'etag'
+          property :removed_additional_pod_ranges_config, as: 'removedAdditionalPodRangesConfig', class: Google::Apis::ContainerV1beta1::AdditionalPodRangesConfig, decorator: Google::Apis::ContainerV1beta1::AdditionalPodRangesConfig::Representation
+      
         end
       end
       
@@ -1641,6 +1664,8 @@ module Google
       class IpAllocationPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :additional_pod_ranges_config, as: 'additionalPodRangesConfig', class: Google::Apis::ContainerV1beta1::AdditionalPodRangesConfig, decorator: Google::Apis::ContainerV1beta1::AdditionalPodRangesConfig::Representation
+      
           property :allow_route_overlap, as: 'allowRouteOverlap'
           property :cluster_ipv4_cidr, as: 'clusterIpv4Cidr'
           property :cluster_ipv4_cidr_block, as: 'clusterIpv4CidrBlock'
@@ -1649,6 +1674,8 @@ module Google
           property :ipv6_access_type, as: 'ipv6AccessType'
           property :node_ipv4_cidr, as: 'nodeIpv4Cidr'
           property :node_ipv4_cidr_block, as: 'nodeIpv4CidrBlock'
+          property :pod_cidr_overprovision_config, as: 'podCidrOverprovisionConfig', class: Google::Apis::ContainerV1beta1::PodCidrOverprovisionConfig, decorator: Google::Apis::ContainerV1beta1::PodCidrOverprovisionConfig::Representation
+      
           property :services_ipv4_cidr, as: 'servicesIpv4Cidr'
           property :services_ipv4_cidr_block, as: 'servicesIpv4CidrBlock'
           property :services_ipv6_cidr_block, as: 'servicesIpv6CidrBlock'
@@ -2067,6 +2094,8 @@ module Google
           property :enable_private_nodes, as: 'enablePrivateNodes'
           property :network_performance_config, as: 'networkPerformanceConfig', class: Google::Apis::ContainerV1beta1::NetworkPerformanceConfig, decorator: Google::Apis::ContainerV1beta1::NetworkPerformanceConfig::Representation
       
+          property :pod_cidr_overprovision_config, as: 'podCidrOverprovisionConfig', class: Google::Apis::ContainerV1beta1::PodCidrOverprovisionConfig, decorator: Google::Apis::ContainerV1beta1::PodCidrOverprovisionConfig::Representation
+      
           property :pod_ipv4_cidr_block, as: 'podIpv4CidrBlock'
           property :pod_range, as: 'podRange'
         end
@@ -2209,6 +2238,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :type, as: 'type'
+        end
+      end
+      
+      class PodCidrOverprovisionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disable, as: 'disable'
         end
       end
       
