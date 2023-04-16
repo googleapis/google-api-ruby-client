@@ -1649,6 +1649,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :provisioned_throughput
       
+        # Required for each regional disk associated with the instance. Specify the URLs
+        # of the zones where the disk should be replicated to. You must provide exactly
+        # two replica zones, and one zone must be the same as the instance zone. You can'
+        # t use this option with boot disks.
+        # Corresponds to the JSON property `replicaZones`
+        # @return [Array<String>]
+        attr_accessor :replica_zones
+      
         # Resource manager tags to be bound to the disk. Tag keys and values have the
         # same definition as resource manager tags. Keys must be in the format `tagKeys/`
         # tag_key_id``, and values are in the format `tagValues/456`. The field is
@@ -1723,6 +1731,7 @@ module Google
           @on_update_action = args[:on_update_action] if args.key?(:on_update_action)
           @provisioned_iops = args[:provisioned_iops] if args.key?(:provisioned_iops)
           @provisioned_throughput = args[:provisioned_throughput] if args.key?(:provisioned_throughput)
+          @replica_zones = args[:replica_zones] if args.key?(:replica_zones)
           @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
           @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
           @source_image = args[:source_image] if args.key?(:source_image)
@@ -6692,6 +6701,18 @@ module Google
       class DiskAsyncReplication
         include Google::Apis::Core::Hashable
       
+        # [Output Only] URL of the DiskConsistencyGroupPolicy if replication was started
+        # on the disk as a member of a group.
+        # Corresponds to the JSON property `consistencyGroupPolicy`
+        # @return [String]
+        attr_accessor :consistency_group_policy
+      
+        # [Output Only] ID of the DiskConsistencyGroupPolicy if replication was started
+        # on the disk as a member of a group.
+        # Corresponds to the JSON property `consistencyGroupPolicyId`
+        # @return [String]
+        attr_accessor :consistency_group_policy_id
+      
         # The other disk asynchronously replicated to or from the current disk. You can
         # provide this as a partial or full URL to the resource. For example, the
         # following are valid values: - https://www.googleapis.com/compute/v1/projects/
@@ -6717,6 +6738,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @consistency_group_policy = args[:consistency_group_policy] if args.key?(:consistency_group_policy)
+          @consistency_group_policy_id = args[:consistency_group_policy_id] if args.key?(:consistency_group_policy_id)
           @disk = args[:disk] if args.key?(:disk)
           @disk_id = args[:disk_id] if args.key?(:disk_id)
         end
@@ -9514,9 +9537,11 @@ module Google
       
         # This field is not used for external load balancing. For Internal TCP/UDP Load
         # Balancing, this field identifies the network that the load balanced IP should
-        # belong to for this Forwarding Rule. If this field is not specified, the
-        # default network will be used. For Private Service Connect forwarding rules
-        # that forward traffic to Google APIs, a network must be provided.
+        # belong to for this Forwarding Rule. If the subnetwork is specified, the
+        # network of the subnetwork will be used. If neither subnetwork nor this field
+        # is specified, the default network will be used. For Private Service Connect
+        # forwarding rules that forward traffic to Google APIs, a network must be
+        # provided.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -21632,7 +21657,7 @@ module Google
         # @return [String]
         attr_accessor :project_id_or_num
       
-        # Alias IP ranges from the same subnetwork
+        # Alias IP ranges from the same subnetwork.
         # Corresponds to the JSON property `secondaryIpCidrRanges`
         # @return [Array<String>]
         attr_accessor :secondary_ip_cidr_ranges
@@ -33253,6 +33278,12 @@ module Google
       class RouterNat
         include Google::Apis::Core::Hashable
       
+        # The network tier to use when automatically reserving IP addresses. Must be one
+        # of: PREMIUM, STANDARD. If not specified, PREMIUM tier will be used.
+        # Corresponds to the JSON property `autoNetworkTier`
+        # @return [String]
+        attr_accessor :auto_network_tier
+      
         # A list of URLs of the IP resources to be drained. These IPs must be valid
         # static external IPs that have been assigned to the NAT. These IPs should be
         # used for updating/patching a NAT only.
@@ -33387,6 +33418,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @auto_network_tier = args[:auto_network_tier] if args.key?(:auto_network_tier)
           @drain_nat_ips = args[:drain_nat_ips] if args.key?(:drain_nat_ips)
           @enable_dynamic_port_allocation = args[:enable_dynamic_port_allocation] if args.key?(:enable_dynamic_port_allocation)
           @enable_endpoint_independent_mapping = args[:enable_endpoint_independent_mapping] if args.key?(:enable_endpoint_independent_mapping)
@@ -34935,7 +34967,8 @@ module Google
         # @return [Google::Apis::ComputeBeta::SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig]
         attr_accessor :auto_deploy_config
       
-        # Configuration options for L7 DDoS detection.
+        # Configuration options for L7 DDoS detection. This field is only supported in
+        # Global Security Policies of type CLOUD_ARMOR.
         # Corresponds to the JSON property `layer7DdosDefenseConfig`
         # @return [Google::Apis::ComputeBeta::SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig]
         attr_accessor :layer7_ddos_defense_config
@@ -34988,18 +35021,21 @@ module Google
         end
       end
       
-      # Configuration options for L7 DDoS detection.
+      # Configuration options for L7 DDoS detection. This field is only supported in
+      # Global Security Policies of type CLOUD_ARMOR.
       class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig
         include Google::Apis::Core::Hashable
       
-        # If set to true, enables CAAP for L7 DDoS detection.
+        # If set to true, enables CAAP for L7 DDoS detection. This field is only
+        # supported in Global Security Policies of type CLOUD_ARMOR.
         # Corresponds to the JSON property `enable`
         # @return [Boolean]
         attr_accessor :enable
         alias_method :enable?, :enable
       
         # Rule visibility can be one of the following: STANDARD - opaque rules. (default)
-        # PREMIUM - transparent rules.
+        # PREMIUM - transparent rules. This field is only supported in Global Security
+        # Policies of type CLOUD_ARMOR.
         # Corresponds to the JSON property `ruleVisibility`
         # @return [String]
         attr_accessor :rule_visibility
@@ -35253,7 +35289,8 @@ module Google
         # using the redirect action with the type of GOOGLE_RECAPTCHA under the security
         # policy. The specified site key needs to be created from the reCAPTCHA API. The
         # user is responsible for the validity of the specified site key. If not
-        # specified, a Google-managed site key is used.
+        # specified, a Google-managed site key is used. This field is only supported in
+        # Global Security Policies of type CLOUD_ARMOR.
         # Corresponds to the JSON property `redirectSiteKey`
         # @return [String]
         attr_accessor :redirect_site_key
@@ -35301,7 +35338,8 @@ module Google
         # rate_limit_options to be set. - redirect: redirect to a different target. This
         # can either be an internal reCAPTCHA redirect, or an external URL-based
         # redirect via a 302 response. Parameters for this action can be configured via
-        # redirectOptions. - throttle: limit client traffic to the configured threshold.
+        # redirectOptions. This action is only supported in Global Security Policies of
+        # type CLOUD_ARMOR. - throttle: limit client traffic to the configured threshold.
         # Configure parameters for this action in rateLimitOptions. Requires
         # rate_limit_options to be set for this.
         # Corresponds to the JSON property `action`
@@ -35330,7 +35368,8 @@ module Google
         attr_accessor :enable_logging
         alias_method :enable_logging?, :enable_logging
       
-        # Optional, additional actions that are performed on headers.
+        # Optional, additional actions that are performed on headers. This field is only
+        # supported in Global Security Policies of type CLOUD_ARMOR.
         # Corresponds to the JSON property `headerAction`
         # @return [Google::Apis::ComputeBeta::SecurityPolicyRuleHttpHeaderAction]
         attr_accessor :header_action
@@ -35375,7 +35414,8 @@ module Google
         attr_accessor :rate_limit_options
       
         # Parameters defining the redirect action. Cannot be specified for any other
-        # actions.
+        # actions. This field is only supported in Global Security Policies of type
+        # CLOUD_ARMOR.
         # Corresponds to the JSON property `redirectOptions`
         # @return [Google::Apis::ComputeBeta::SecurityPolicyRuleRedirectOptions]
         attr_accessor :redirect_options
@@ -35760,13 +35800,15 @@ module Google
         # to either deny with a specified HTTP response code, or redirect to a
         # different endpoint. Valid options are `deny(STATUS)`, where valid values for `
         # STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect
-        # parameters come from `exceedRedirectOptions` below.
+        # parameters come from `exceedRedirectOptions` below. The `redirect` action is
+        # only supported in Global Security Policies of type CLOUD_ARMOR.
         # Corresponds to the JSON property `exceedAction`
         # @return [String]
         attr_accessor :exceed_action
       
         # Parameters defining the redirect action that is used as the exceed action.
-        # Cannot be specified if the exceed action is not redirect.
+        # Cannot be specified if the exceed action is not redirect. This field is only
+        # supported in Global Security Policies of type CLOUD_ARMOR.
         # Corresponds to the JSON property `exceedRedirectOptions`
         # @return [Google::Apis::ComputeBeta::SecurityPolicyRuleRedirectOptions]
         attr_accessor :exceed_redirect_options
