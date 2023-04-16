@@ -82,6 +82,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DomainJoinMachineRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DomainJoinMachineResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -450,6 +462,22 @@ module Google
           collection :trusts, as: 'trusts', class: Google::Apis::ManagedidentitiesV1::TrustProp, decorator: Google::Apis::ManagedidentitiesV1::TrustProp::Representation
       
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class DomainJoinMachineRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :force, as: 'force'
+          property :ou_name, as: 'ouName'
+          property :vm_id_token, as: 'vmIdToken'
+        end
+      end
+      
+      class DomainJoinMachineResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :domain_join_blob, as: 'domainJoinBlob'
         end
       end
       
