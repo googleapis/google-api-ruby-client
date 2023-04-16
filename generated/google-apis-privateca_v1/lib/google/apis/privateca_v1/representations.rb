@@ -659,6 +659,7 @@ module Google
       class DisableCertificateAuthorityRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :ignore_dependent_resources, as: 'ignoreDependentResources'
           property :request_id, as: 'requestId'
         end
       end
