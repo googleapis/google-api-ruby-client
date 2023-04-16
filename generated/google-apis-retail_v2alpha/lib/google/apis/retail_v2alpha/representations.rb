@@ -1722,7 +1722,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :attributes, as: 'attributes', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCustomAttribute, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCustomAttribute::Representation
       
+          collection :facets, as: 'facets', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchResponseFacet, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchResponseFacet::Representation
+      
           property :suggestion, as: 'suggestion'
+          property :total_product_count, as: 'totalProductCount'
         end
       end
       
@@ -2621,13 +2624,13 @@ module Google
       class GoogleCloudRetailV2alphaSearchRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :banner, as: 'banner'
           property :boost_spec, as: 'boostSpec', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchRequestBoostSpec, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchRequestBoostSpec::Representation
       
           property :branch, as: 'branch'
           property :canonical_filter, as: 'canonicalFilter'
           property :dynamic_facet_spec, as: 'dynamicFacetSpec', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchRequestDynamicFacetSpec, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchRequestDynamicFacetSpec::Representation
       
+          property :entity, as: 'entity'
           collection :facet_specs, as: 'facetSpecs', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchRequestFacetSpec, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchRequestFacetSpec::Representation
       
           property :filter, as: 'filter'
@@ -2883,10 +2886,10 @@ module Google
           hash :attributes, as: 'attributes', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCustomAttribute, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCustomAttribute::Representation
       
           property :attribution_token, as: 'attributionToken'
-          property :banner, as: 'banner'
           property :cart_id, as: 'cartId'
           property :completion_detail, as: 'completionDetail', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCompletionDetail, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCompletionDetail::Representation
       
+          property :entity, as: 'entity'
           property :event_time, as: 'eventTime'
           property :event_type, as: 'eventType'
           collection :experiment_ids, as: 'experimentIds'
