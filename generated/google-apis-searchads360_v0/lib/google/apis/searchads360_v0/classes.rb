@@ -964,55 +964,6 @@ module Google
         end
       end
       
-      # A Search Ads 360 text ad.
-      class GoogleAdsSearchads360V0CommonSearchAds360TextAdInfo
-        include Google::Apis::Core::Hashable
-      
-        # The tracking id of the ad.
-        # Corresponds to the JSON property `adTrackId`
-        # @return [Fixnum]
-        attr_accessor :ad_track_id
-      
-        # The first line of the ad's description.
-        # Corresponds to the JSON property `description1`
-        # @return [String]
-        attr_accessor :description1
-      
-        # The second line of the ad's description.
-        # Corresponds to the JSON property `description2`
-        # @return [String]
-        attr_accessor :description2
-      
-        # The displayed mobile URL of the ad.
-        # Corresponds to the JSON property `displayMobileUrl`
-        # @return [String]
-        attr_accessor :display_mobile_url
-      
-        # The displayed URL of the ad.
-        # Corresponds to the JSON property `displayUrl`
-        # @return [String]
-        attr_accessor :display_url
-      
-        # The headline of the ad.
-        # Corresponds to the JSON property `headline`
-        # @return [String]
-        attr_accessor :headline
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @ad_track_id = args[:ad_track_id] if args.key?(:ad_track_id)
-          @description1 = args[:description1] if args.key?(:description1)
-          @description2 = args[:description2] if args.key?(:description2)
-          @display_mobile_url = args[:display_mobile_url] if args.key?(:display_mobile_url)
-          @display_url = args[:display_url] if args.key?(:display_url)
-          @headline = args[:headline] if args.key?(:headline)
-        end
-      end
-      
       # Segment only fields.
       class GoogleAdsSearchads360V0CommonSegments
         include Google::Apis::Core::Hashable
@@ -2107,11 +2058,6 @@ module Google
         # @return [String]
         attr_accessor :resource_name
       
-        # A Search Ads 360 text ad.
-        # Corresponds to the JSON property `textAd`
-        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonSearchAds360TextAdInfo]
-        attr_accessor :text_ad
-      
         # Output only. The type of ad.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -2128,7 +2074,6 @@ module Google
           @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
-          @text_ad = args[:text_ad] if args.key?(:text_ad)
           @type = args[:type] if args.key?(:type)
         end
       end
