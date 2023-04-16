@@ -435,10 +435,15 @@ module Google
       class GoogleChromePolicyVersionsV1ListGroupPriorityOrderingRequest
         include Google::Apis::Core::Hashable
       
-        # Required. The namespace of the policy type for the request.
+        # The namespace of the policy type for the request.
         # Corresponds to the JSON property `policyNamespace`
         # @return [String]
         attr_accessor :policy_namespace
+      
+        # The schema name of the policy for the request.
+        # Corresponds to the JSON property `policySchema`
+        # @return [String]
+        attr_accessor :policy_schema
       
         # The key used to identify the target on which the policy will be applied.
         # Corresponds to the JSON property `policyTargetKey`
@@ -452,6 +457,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @policy_namespace = args[:policy_namespace] if args.key?(:policy_namespace)
+          @policy_schema = args[:policy_schema] if args.key?(:policy_schema)
           @policy_target_key = args[:policy_target_key] if args.key?(:policy_target_key)
         end
       end
@@ -470,6 +476,11 @@ module Google
         # @return [String]
         attr_accessor :policy_namespace
       
+        # Output only. The schema name of the policy for the group IDs.
+        # Corresponds to the JSON property `policySchema`
+        # @return [String]
+        attr_accessor :policy_schema
+      
         # The key used to identify the target on which the policy will be applied.
         # Corresponds to the JSON property `policyTargetKey`
         # @return [Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyTargetKey]
@@ -483,6 +494,7 @@ module Google
         def update!(**args)
           @group_ids = args[:group_ids] if args.key?(:group_ids)
           @policy_namespace = args[:policy_namespace] if args.key?(:policy_namespace)
+          @policy_schema = args[:policy_schema] if args.key?(:policy_schema)
           @policy_target_key = args[:policy_target_key] if args.key?(:policy_target_key)
         end
       end
@@ -1286,10 +1298,15 @@ module Google
         # @return [Array<String>]
         attr_accessor :group_ids
       
-        # Required. The namespace of the policy type for the request.
+        # The namespace of the policy type for the request.
         # Corresponds to the JSON property `policyNamespace`
         # @return [String]
         attr_accessor :policy_namespace
+      
+        # The schema name of the policy for the request.
+        # Corresponds to the JSON property `policySchema`
+        # @return [String]
+        attr_accessor :policy_schema
       
         # The key used to identify the target on which the policy will be applied.
         # Corresponds to the JSON property `policyTargetKey`
@@ -1304,6 +1321,7 @@ module Google
         def update!(**args)
           @group_ids = args[:group_ids] if args.key?(:group_ids)
           @policy_namespace = args[:policy_namespace] if args.key?(:policy_namespace)
+          @policy_schema = args[:policy_schema] if args.key?(:policy_schema)
           @policy_target_key = args[:policy_target_key] if args.key?(:policy_target_key)
         end
       end
