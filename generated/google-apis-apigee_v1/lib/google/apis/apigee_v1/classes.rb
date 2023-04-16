@@ -4530,9 +4530,10 @@ module Google
       class GoogleCloudApigeeV1KeyValueMap
         include Google::Apis::Core::Hashable
       
-        # Optional. Flag that specifies whether entry values will be encrypted. You must
-        # set this value to `true`. Apigee X and hybrid do not support unencrytped key
-        # value maps.
+        # Required. Flag that specifies whether entry values will be encrypted. This
+        # field is retained for backward compatibility and the value of encrypted will
+        # always be `true`. Apigee X and hybrid do not support unencrypted key value
+        # maps.
         # Corresponds to the JSON property `encrypted`
         # @return [Boolean]
         attr_accessor :encrypted
@@ -5832,6 +5833,23 @@ module Google
         # @return [String]
         attr_accessor :analytics_region
       
+        # Cloud KMS key name used for encrypting API consumer data. Required for US/EU
+        # regions when [BillingType](#BillingType) is `SUBSCRIPTION`. When [BillingType](
+        # #BillingType) is `EVALUATION` or the region is not US/EU, a Google-Managed
+        # encryption key will be used. Format: `projects/*/locations/*/keyRings/*/
+        # cryptoKeys/*`
+        # Corresponds to the JSON property `apiConsumerDataEncryptionKeyName`
+        # @return [String]
+        attr_accessor :api_consumer_data_encryption_key_name
+      
+        # This field is needed only for customers with control plane in US or EU. Apigee
+        # stores some control plane data only in single region. This field determines
+        # which single region Apigee should use. For example: "us-west1" when control
+        # plane is in US or "europe-west2" when control plane is in EU.
+        # Corresponds to the JSON property `apiConsumerDataLocation`
+        # @return [String]
+        attr_accessor :api_consumer_data_location
+      
         # Output only. Apigee Project ID associated with the organization. Use this
         # project to allowlist Apigee in the Service Attachment when using private
         # service connect with Apigee.
@@ -5872,6 +5890,14 @@ module Google
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :ca_certificate
+      
+        # Cloud KMS key name used for encrypting control plane data that is stored in a
+        # multi region. Required when [BillingType](#BillingType) is `SUBSCRIPTION`.
+        # When [BillingType](#BillingType) is `EVALUATION`, a Google-Managed encryption
+        # key will be used. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
+        # Corresponds to the JSON property `controlPlaneEncryptionKeyName`
+        # @return [String]
+        attr_accessor :control_plane_encryption_key_name
       
         # Output only. Time that the Apigee organization was created in milliseconds
         # since epoch.
@@ -5976,11 +6002,14 @@ module Google
         def update!(**args)
           @addons_config = args[:addons_config] if args.key?(:addons_config)
           @analytics_region = args[:analytics_region] if args.key?(:analytics_region)
+          @api_consumer_data_encryption_key_name = args[:api_consumer_data_encryption_key_name] if args.key?(:api_consumer_data_encryption_key_name)
+          @api_consumer_data_location = args[:api_consumer_data_location] if args.key?(:api_consumer_data_location)
           @apigee_project_id = args[:apigee_project_id] if args.key?(:apigee_project_id)
           @attributes = args[:attributes] if args.key?(:attributes)
           @authorized_network = args[:authorized_network] if args.key?(:authorized_network)
           @billing_type = args[:billing_type] if args.key?(:billing_type)
           @ca_certificate = args[:ca_certificate] if args.key?(:ca_certificate)
+          @control_plane_encryption_key_name = args[:control_plane_encryption_key_name] if args.key?(:control_plane_encryption_key_name)
           @created_at = args[:created_at] if args.key?(:created_at)
           @customer_name = args[:customer_name] if args.key?(:customer_name)
           @description = args[:description] if args.key?(:description)
@@ -6198,9 +6227,15 @@ module Google
         # @return [String]
         attr_accessor :analytics_region
       
-        # Name of the customer project's VPC network. If provided, the network needs to
-        # be peered through Service Networking. If none is provided, the organization
-        # will have access only to the public internet.
+        # Compute Engine network used for Service Networking to be peered with Apigee
+        # runtime instances. See [Getting started with the Service Networking API](https:
+        # //cloud.google.com/service-infrastructure/docs/service-networking/getting-
+        # started). Apigee also supports shared VPC (that is, the host network project
+        # is not the same as the one that is peering with Apigee). See [Shared VPC
+        # overview](https://cloud.google.com/vpc/docs/shared-vpc). To use a shared VPC
+        # network, use the following format: `projects/`host-project-id`/`region`/
+        # networks/`network-name``. For example: `projects/my-sharedvpc-host/global/
+        # networks/mynetwork`
         # Corresponds to the JSON property `authorizedNetwork`
         # @return [String]
         attr_accessor :authorized_network
