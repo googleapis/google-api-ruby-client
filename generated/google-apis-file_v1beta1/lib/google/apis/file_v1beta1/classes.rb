@@ -1526,6 +1526,14 @@ module Google
       class Share
         include Google::Apis::Core::Hashable
       
+        # Immutable. Full name of the Cloud Filestore Backup resource that this Share is
+        # restored from, in the format of projects/`project_id`/locations/`location_id`/
+        # backups/`backup_id`. Empty, if the Share is created from scratch and not
+        # restored from a backup.
+        # Corresponds to the JSON property `backup`
+        # @return [String]
+        attr_accessor :backup
+      
         # File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes.
         # Must be greater than 0.
         # Corresponds to the JSON property `capacityGb`
@@ -1576,6 +1584,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @backup = args[:backup] if args.key?(:backup)
           @capacity_gb = args[:capacity_gb] if args.key?(:capacity_gb)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
