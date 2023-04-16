@@ -118,6 +118,26 @@ module Google
         # @return [String]
         attr_accessor :message
       
+        # The API request payload, represented as a protocol buffer. Most API request
+        # types are supported—for example: * `type.googleapis.com/google.cloud.
+        # discoveryengine.v1alpha.DocumentService.CreateDocumentRequest` * `type.
+        # googleapis.com/google.cloud.discoveryengine.v1alpha.UserEventService.
+        # WriteUserEventRequest`
+        # Corresponds to the JSON property `requestPayload`
+        # @return [Hash<String,Object>]
+        attr_accessor :request_payload
+      
+        # The API response payload, represented as a protocol buffer. This is used to
+        # log some "soft errors", where the response is valid but we consider there are
+        # some quality issues like unjoined events. The following API responses are
+        # supported, and no PII is included: * `google.cloud.discoveryengine.v1alpha.
+        # RecommendationService.Recommend` * `google.cloud.discoveryengine.v1alpha.
+        # UserEventService.WriteUserEvent` * `google.cloud.discoveryengine.v1alpha.
+        # UserEventService.CollectUserEvent`
+        # Corresponds to the JSON property `responsePayload`
+        # @return [Hash<String,Object>]
+        attr_accessor :response_payload
+      
         # Describes a running service that sends errors.
         # Corresponds to the JSON property `serviceContext`
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineLoggingServiceContext]
@@ -142,6 +162,8 @@ module Google
           @context = args[:context] if args.key?(:context)
           @import_payload = args[:import_payload] if args.key?(:import_payload)
           @message = args[:message] if args.key?(:message)
+          @request_payload = args[:request_payload] if args.key?(:request_payload)
+          @response_payload = args[:response_payload] if args.key?(:response_payload)
           @service_context = args[:service_context] if args.key?(:service_context)
           @status = args[:status] if args.key?(:status)
         end
