@@ -180,13 +180,8 @@ module Google
         # @return [String]
         attr_accessor :build
       
-        # Specifies one of the Google provided buildpack stacks.
-        # Corresponds to the JSON property `buildpackStack`
-        # @return [String]
-        attr_accessor :buildpack_stack
-      
-        # Optional. Docker Registry to use for this deployment. This configuration is
-        # only applicable to 1st Gen functions, 2nd Gen functions can only use Artifact
+        # Docker Registry to use for this deployment. This configuration is only
+        # applicable to 1st Gen functions, 2nd Gen functions can only use Artifact
         # Registry. If `docker_repository` field is specified, this field will be
         # automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently
         # defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend
@@ -259,7 +254,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @build = args[:build] if args.key?(:build)
-          @buildpack_stack = args[:buildpack_stack] if args.key?(:buildpack_stack)
           @docker_registry = args[:docker_registry] if args.key?(:docker_registry)
           @docker_repository = args[:docker_repository] if args.key?(:docker_repository)
           @entry_point = args[:entry_point] if args.key?(:entry_point)
@@ -461,9 +455,9 @@ module Google
         # @return [Google::Apis::CloudfunctionsV2::EventTrigger]
         attr_accessor :event_trigger
       
-        # Resource name of a KMS crypto key (managed by the user) used to encrypt/
-        # decrypt function resources. It must match the pattern `projects/`project`/
-        # locations/`location`/keyRings/`key_ring`/cryptoKeys/`crypto_key``.
+        # [Preview] Resource name of a KMS crypto key (managed by the user) used to
+        # encrypt/decrypt function resources. It must match the pattern `projects/`
+        # project`/locations/`location`/keyRings/`key_ring`/cryptoKeys/`crypto_key``.
         # Corresponds to the JSON property `kmsKeyName`
         # @return [String]
         attr_accessor :kms_key_name
@@ -480,7 +474,7 @@ module Google
         attr_accessor :name
       
         # Describes the Service being deployed. Currently Supported : Cloud Run (fully
-        # managed). Next tag: 23
+        # managed).
         # Corresponds to the JSON property `serviceConfig`
         # @return [Google::Apis::CloudfunctionsV2::ServiceConfig]
         attr_accessor :service_config
@@ -557,14 +551,14 @@ module Google
       class GenerateUploadUrlRequest
         include Google::Apis::Core::Hashable
       
-        # Resource name of a KMS crypto key (managed by the user) used to encrypt/
-        # decrypt function source code objects in intermediate Cloud Storage buckets.
-        # When you generate an upload url and upload your source code, it gets copied to
-        # an intermediate Cloud Storage bucket. The source code is then copied to a
-        # versioned directory in the sources bucket in the consumer project during the
-        # function deployment. It must match the pattern `projects/`project`/locations/`
-        # location`/keyRings/`key_ring`/cryptoKeys/`crypto_key``. The Google Cloud
-        # Functions service account (service-`project_number`@gcf-admin-robot.iam.
+        # [Preview] Resource name of a KMS crypto key (managed by the user) used to
+        # encrypt/decrypt function source code objects in intermediate Cloud Storage
+        # buckets. When you generate an upload url and upload your source code, it gets
+        # copied to an intermediate Cloud Storage bucket. The source code is then copied
+        # to a versioned directory in the sources bucket in the consumer project during
+        # the function deployment. It must match the pattern `projects/`project`/
+        # locations/`location`/keyRings/`key_ring`/cryptoKeys/`crypto_key``. The Google
+        # Cloud Functions service account (service-`project_number`@gcf-admin-robot.iam.
         # gserviceaccount.com) must be granted the role 'Cloud KMS CryptoKey Encrypter/
         # Decrypter (roles/cloudkms.cryptoKeyEncrypterDecrypter)' on the Key/KeyRing/
         # Project/Organization (least access preferred).
@@ -759,6 +753,25 @@ module Google
         end
       end
       
+      # Extra GCF specific location information.
+      class GoogleCloudFunctionsV2alphaLocationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The Cloud Function environments this location supports.
+        # Corresponds to the JSON property `environments`
+        # @return [Array<String>]
+        attr_accessor :environments
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @environments = args[:environments] if args.key?(:environments)
+        end
+      end
+      
       # Represents the metadata of the long-running operation.
       class GoogleCloudFunctionsV2alphaOperationMetadata
         include Google::Apis::Core::Hashable
@@ -793,7 +806,7 @@ module Google
       
         # Mechanism for reporting in-progress stages
         # Corresponds to the JSON property `stages`
-        # @return [Array<Google::Apis::CloudfunctionsV2::GoogleCloudFunctionsV2alphaStage>]
+        # @return [Array<Google::Apis::CloudfunctionsV2::Stage>]
         attr_accessor :stages
       
         # Human-readable status of the operation, if any.
@@ -829,55 +842,6 @@ module Google
         end
       end
       
-      # Each Stage of the deployment process
-      class GoogleCloudFunctionsV2alphaStage
-        include Google::Apis::Core::Hashable
-      
-        # Message describing the Stage
-        # Corresponds to the JSON property `message`
-        # @return [String]
-        attr_accessor :message
-      
-        # Name of the Stage. This will be unique for each Stage.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Resource of the Stage
-        # Corresponds to the JSON property `resource`
-        # @return [String]
-        attr_accessor :resource
-      
-        # Link to the current Stage resource
-        # Corresponds to the JSON property `resourceUri`
-        # @return [String]
-        attr_accessor :resource_uri
-      
-        # Current state of the Stage
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
-      
-        # State messages from the current Stage.
-        # Corresponds to the JSON property `stateMessages`
-        # @return [Array<Google::Apis::CloudfunctionsV2::GoogleCloudFunctionsV2alphaStateMessage>]
-        attr_accessor :state_messages
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @message = args[:message] if args.key?(:message)
-          @name = args[:name] if args.key?(:name)
-          @resource = args[:resource] if args.key?(:resource)
-          @resource_uri = args[:resource_uri] if args.key?(:resource_uri)
-          @state = args[:state] if args.key?(:state)
-          @state_messages = args[:state_messages] if args.key?(:state_messages)
-        end
-      end
-      
       # Informational messages about the state of the Cloud Function or Operation.
       class GoogleCloudFunctionsV2alphaStateMessage
         include Google::Apis::Core::Hashable
@@ -906,6 +870,25 @@ module Google
           @message = args[:message] if args.key?(:message)
           @severity = args[:severity] if args.key?(:severity)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Extra GCF specific location information.
+      class GoogleCloudFunctionsV2betaLocationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The Cloud Function environments this location supports.
+        # Corresponds to the JSON property `environments`
+        # @return [Array<String>]
+        attr_accessor :environments
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @environments = args[:environments] if args.key?(:environments)
         end
       end
       
@@ -1205,6 +1188,25 @@ module Google
           @location_id = args[:location_id] if args.key?(:location_id)
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Extra GCF specific location information.
+      class LocationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The Cloud Function environments this location supports.
+        # Corresponds to the JSON property `environments`
+        # @return [Array<String>]
+        attr_accessor :environments
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @environments = args[:environments] if args.key?(:environments)
         end
       end
       
@@ -1659,7 +1661,7 @@ module Google
       end
       
       # Describes the Service being deployed. Currently Supported : Cloud Run (fully
-      # managed). Next tag: 23
+      # managed).
       class ServiceConfig
         include Google::Apis::Core::Hashable
       
@@ -1672,9 +1674,9 @@ module Google
         attr_accessor :all_traffic_on_latest_revision
         alias_method :all_traffic_on_latest_revision?, :all_traffic_on_latest_revision
       
-        # The number of CPUs used in a single container instance. Default value is
-        # calculated from available memory. Supports the same values as Cloud Run, see
-        # https://cloud.google.com/run/docs/reference/rest/v1/Container#
+        # [Preview] The number of CPUs used in a single container instance. Default
+        # value is calculated from available memory. Supports the same values as Cloud
+        # Run, see https://cloud.google.com/run/docs/reference/rest/v1/Container#
         # resourcerequirements Example: "1" indicates 1 vCPU
         # Corresponds to the JSON property `availableCpu`
         # @return [String]
@@ -1709,8 +1711,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_instance_count
       
-        # Sets the maximum number of concurrent requests that each instance can receive.
-        # Defaults to 1.
+        # [Preview] Sets the maximum number of concurrent requests that each instance
+        # can receive. Defaults to 1.
         # Corresponds to the JSON property `maxInstanceRequestConcurrency`
         # @return [Fixnum]
         attr_accessor :max_instance_request_concurrency
@@ -1913,6 +1915,55 @@ module Google
         def update!(**args)
           @resolved_repo_source = args[:resolved_repo_source] if args.key?(:resolved_repo_source)
           @resolved_storage_source = args[:resolved_storage_source] if args.key?(:resolved_storage_source)
+        end
+      end
+      
+      # Each Stage of the deployment process
+      class Stage
+        include Google::Apis::Core::Hashable
+      
+        # Message describing the Stage
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Name of the Stage. This will be unique for each Stage.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Resource of the Stage
+        # Corresponds to the JSON property `resource`
+        # @return [String]
+        attr_accessor :resource
+      
+        # Link to the current Stage resource
+        # Corresponds to the JSON property `resourceUri`
+        # @return [String]
+        attr_accessor :resource_uri
+      
+        # Current state of the Stage
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # State messages from the current Stage.
+        # Corresponds to the JSON property `stateMessages`
+        # @return [Array<Google::Apis::CloudfunctionsV2::GoogleCloudFunctionsV2alphaStateMessage>]
+        attr_accessor :state_messages
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
+          @name = args[:name] if args.key?(:name)
+          @resource = args[:resource] if args.key?(:resource)
+          @resource_uri = args[:resource_uri] if args.key?(:resource_uri)
+          @state = args[:state] if args.key?(:state)
+          @state_messages = args[:state_messages] if args.key?(:state_messages)
         end
       end
       
