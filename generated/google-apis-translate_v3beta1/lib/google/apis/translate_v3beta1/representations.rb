@@ -503,6 +503,7 @@ module Google
       
           property :document_output_config, as: 'documentOutputConfig', class: Google::Apis::TranslateV3beta1::DocumentOutputConfig, decorator: Google::Apis::TranslateV3beta1::DocumentOutputConfig::Representation
       
+          property :enable_rotation_correction, as: 'enableRotationCorrection'
           property :enable_shadow_removal_native_pdf, as: 'enableShadowRemovalNativePdf'
           property :glossary_config, as: 'glossaryConfig', class: Google::Apis::TranslateV3beta1::TranslateTextGlossaryConfig, decorator: Google::Apis::TranslateV3beta1::TranslateTextGlossaryConfig::Representation
       
