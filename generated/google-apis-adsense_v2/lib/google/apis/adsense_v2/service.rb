@@ -157,9 +157,10 @@ module Google
         #   unspecified, at most 10000 accounts will be returned. The maximum value is
         #   10000; values above 10000 will be coerced to 10000.
         # @param [String] page_token
-        #   A page token, received from a previous `ListAccounts` call. Provide this to
-        #   retrieve the subsequent page. When paginating, all other parameters provided
-        #   to `ListAccounts` must match the call that provided the page token.
+        #   A page token, received from a previous `ListChildAccounts` call. Provide this
+        #   to retrieve the subsequent page. When paginating, all other parameters
+        #   provided to `ListChildAccounts` must match the call that provided the page
+        #   token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1268,9 +1269,10 @@ module Google
         #   unspecified, at most 10000 reports will be returned. The maximum value is
         #   10000; values above 10000 will be coerced to 10000.
         # @param [String] page_token
-        #   A page token, received from a previous `ListPayments` call. Provide this to
-        #   retrieve the subsequent page. When paginating, all other parameters provided
-        #   to `ListPayments` must match the call that provided the page token.
+        #   A page token, received from a previous `ListSavedReports` call. Provide this
+        #   to retrieve the subsequent page. When paginating, all other parameters
+        #   provided to `ListSavedReports` must match the call that provided the page
+        #   token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
