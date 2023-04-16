@@ -734,9 +734,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Asynchronously creates linked dataset in BigQuery which makes it possible to
-        # use BugQuery to read the logs stored in the bucket. A bucket may currently
-        # only contain one link.
+        # Asynchronously creates a linked dataset in BigQuery which makes it possible to
+        # use BigQuery to read the logs stored in the log bucket. A log bucket may
+        # currently only contain one link.
         # @param [String] parent
         #   Required. The full resource name of the bucket to create a link for. "projects/
         #   [PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[
@@ -1087,7 +1087,7 @@ module Google
         # Lists the logs in projects, organizations, folders, or billing accounts. Only
         # logs that have entries are listed.
         # @param [String] parent
-        #   Required. The resource name that owns the logs: projects/[PROJECT_ID]
+        #   Required. The resource name to list logs for: projects/[PROJECT_ID]
         #   organizations/[ORGANIZATION_ID] billingAccounts/[BILLING_ACCOUNT_ID] folders/[
         #   FOLDER_ID]
         # @param [Fixnum] page_size
@@ -1100,14 +1100,15 @@ module Google
         #   from the previous response. The values of other method parameters should be
         #   identical to those in the previous call.
         # @param [Array<String>, String] resource_names
-        #   Optional. The resource name that owns the logs: projects/[PROJECT_ID]/
+        #   Optional. List of resource names to list logs for: projects/[PROJECT_ID]/
         #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID] organizations/[
         #   ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]
         #   billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[
         #   BUCKET_ID]/views/[VIEW_ID] folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/
         #   [BUCKET_ID]/views/[VIEW_ID]To support legacy queries, it could also be:
         #   projects/[PROJECT_ID] organizations/[ORGANIZATION_ID] billingAccounts/[
-        #   BILLING_ACCOUNT_ID] folders/[FOLDER_ID]
+        #   BILLING_ACCOUNT_ID] folders/[FOLDER_ID]The resource name in the parent field
+        #   is added to this list.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1290,7 +1291,7 @@ module Google
         # Lists the logs in projects, organizations, folders, or billing accounts. Only
         # logs that have entries are listed.
         # @param [String] parent
-        #   Required. The resource name that owns the logs: projects/[PROJECT_ID]
+        #   Required. The resource name to list logs for: projects/[PROJECT_ID]
         #   organizations/[ORGANIZATION_ID] billingAccounts/[BILLING_ACCOUNT_ID] folders/[
         #   FOLDER_ID]
         # @param [Fixnum] page_size
@@ -1303,14 +1304,15 @@ module Google
         #   from the previous response. The values of other method parameters should be
         #   identical to those in the previous call.
         # @param [Array<String>, String] resource_names
-        #   Optional. The resource name that owns the logs: projects/[PROJECT_ID]/
+        #   Optional. List of resource names to list logs for: projects/[PROJECT_ID]/
         #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID] organizations/[
         #   ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]
         #   billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[
         #   BUCKET_ID]/views/[VIEW_ID] folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/
         #   [BUCKET_ID]/views/[VIEW_ID]To support legacy queries, it could also be:
         #   projects/[PROJECT_ID] organizations/[ORGANIZATION_ID] billingAccounts/[
-        #   BILLING_ACCOUNT_ID] folders/[FOLDER_ID]
+        #   BILLING_ACCOUNT_ID] folders/[FOLDER_ID]The resource name in the parent field
+        #   is added to this list.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2679,9 +2681,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Asynchronously creates linked dataset in BigQuery which makes it possible to
-        # use BugQuery to read the logs stored in the bucket. A bucket may currently
-        # only contain one link.
+        # Asynchronously creates a linked dataset in BigQuery which makes it possible to
+        # use BigQuery to read the logs stored in the log bucket. A log bucket may
+        # currently only contain one link.
         # @param [String] parent
         #   Required. The full resource name of the bucket to create a link for. "projects/
         #   [PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[
@@ -3032,7 +3034,7 @@ module Google
         # Lists the logs in projects, organizations, folders, or billing accounts. Only
         # logs that have entries are listed.
         # @param [String] parent
-        #   Required. The resource name that owns the logs: projects/[PROJECT_ID]
+        #   Required. The resource name to list logs for: projects/[PROJECT_ID]
         #   organizations/[ORGANIZATION_ID] billingAccounts/[BILLING_ACCOUNT_ID] folders/[
         #   FOLDER_ID]
         # @param [Fixnum] page_size
@@ -3045,14 +3047,15 @@ module Google
         #   from the previous response. The values of other method parameters should be
         #   identical to those in the previous call.
         # @param [Array<String>, String] resource_names
-        #   Optional. The resource name that owns the logs: projects/[PROJECT_ID]/
+        #   Optional. List of resource names to list logs for: projects/[PROJECT_ID]/
         #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID] organizations/[
         #   ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]
         #   billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[
         #   BUCKET_ID]/views/[VIEW_ID] folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/
         #   [BUCKET_ID]/views/[VIEW_ID]To support legacy queries, it could also be:
         #   projects/[PROJECT_ID] organizations/[ORGANIZATION_ID] billingAccounts/[
-        #   BILLING_ACCOUNT_ID] folders/[FOLDER_ID]
+        #   BILLING_ACCOUNT_ID] folders/[FOLDER_ID]The resource name in the parent field
+        #   is added to this list.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3235,7 +3238,7 @@ module Google
         # Lists the logs in projects, organizations, folders, or billing accounts. Only
         # logs that have entries are listed.
         # @param [String] parent
-        #   Required. The resource name that owns the logs: projects/[PROJECT_ID]
+        #   Required. The resource name to list logs for: projects/[PROJECT_ID]
         #   organizations/[ORGANIZATION_ID] billingAccounts/[BILLING_ACCOUNT_ID] folders/[
         #   FOLDER_ID]
         # @param [Fixnum] page_size
@@ -3248,14 +3251,15 @@ module Google
         #   from the previous response. The values of other method parameters should be
         #   identical to those in the previous call.
         # @param [Array<String>, String] resource_names
-        #   Optional. The resource name that owns the logs: projects/[PROJECT_ID]/
+        #   Optional. List of resource names to list logs for: projects/[PROJECT_ID]/
         #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID] organizations/[
         #   ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]
         #   billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[
         #   BUCKET_ID]/views/[VIEW_ID] folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/
         #   [BUCKET_ID]/views/[VIEW_ID]To support legacy queries, it could also be:
         #   projects/[PROJECT_ID] organizations/[ORGANIZATION_ID] billingAccounts/[
-        #   BILLING_ACCOUNT_ID] folders/[FOLDER_ID]
+        #   BILLING_ACCOUNT_ID] folders/[FOLDER_ID]The resource name in the parent field
+        #   is added to this list.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3975,9 +3979,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Asynchronously creates linked dataset in BigQuery which makes it possible to
-        # use BugQuery to read the logs stored in the bucket. A bucket may currently
-        # only contain one link.
+        # Asynchronously creates a linked dataset in BigQuery which makes it possible to
+        # use BigQuery to read the logs stored in the log bucket. A log bucket may
+        # currently only contain one link.
         # @param [String] parent
         #   Required. The full resource name of the bucket to create a link for. "projects/
         #   [PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[
@@ -4477,7 +4481,7 @@ module Google
         # Lists the logs in projects, organizations, folders, or billing accounts. Only
         # logs that have entries are listed.
         # @param [String] parent
-        #   Required. The resource name that owns the logs: projects/[PROJECT_ID]
+        #   Required. The resource name to list logs for: projects/[PROJECT_ID]
         #   organizations/[ORGANIZATION_ID] billingAccounts/[BILLING_ACCOUNT_ID] folders/[
         #   FOLDER_ID]
         # @param [Fixnum] page_size
@@ -4490,14 +4494,15 @@ module Google
         #   from the previous response. The values of other method parameters should be
         #   identical to those in the previous call.
         # @param [Array<String>, String] resource_names
-        #   Optional. The resource name that owns the logs: projects/[PROJECT_ID]/
+        #   Optional. List of resource names to list logs for: projects/[PROJECT_ID]/
         #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID] organizations/[
         #   ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]
         #   billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[
         #   BUCKET_ID]/views/[VIEW_ID] folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/
         #   [BUCKET_ID]/views/[VIEW_ID]To support legacy queries, it could also be:
         #   projects/[PROJECT_ID] organizations/[ORGANIZATION_ID] billingAccounts/[
-        #   BILLING_ACCOUNT_ID] folders/[FOLDER_ID]
+        #   BILLING_ACCOUNT_ID] folders/[FOLDER_ID]The resource name in the parent field
+        #   is added to this list.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5354,9 +5359,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Asynchronously creates linked dataset in BigQuery which makes it possible to
-        # use BugQuery to read the logs stored in the bucket. A bucket may currently
-        # only contain one link.
+        # Asynchronously creates a linked dataset in BigQuery which makes it possible to
+        # use BigQuery to read the logs stored in the log bucket. A log bucket may
+        # currently only contain one link.
         # @param [String] parent
         #   Required. The full resource name of the bucket to create a link for. "projects/
         #   [PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[
@@ -5707,7 +5712,7 @@ module Google
         # Lists the logs in projects, organizations, folders, or billing accounts. Only
         # logs that have entries are listed.
         # @param [String] parent
-        #   Required. The resource name that owns the logs: projects/[PROJECT_ID]
+        #   Required. The resource name to list logs for: projects/[PROJECT_ID]
         #   organizations/[ORGANIZATION_ID] billingAccounts/[BILLING_ACCOUNT_ID] folders/[
         #   FOLDER_ID]
         # @param [Fixnum] page_size
@@ -5720,14 +5725,15 @@ module Google
         #   from the previous response. The values of other method parameters should be
         #   identical to those in the previous call.
         # @param [Array<String>, String] resource_names
-        #   Optional. The resource name that owns the logs: projects/[PROJECT_ID]/
+        #   Optional. List of resource names to list logs for: projects/[PROJECT_ID]/
         #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID] organizations/[
         #   ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]
         #   billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[
         #   BUCKET_ID]/views/[VIEW_ID] folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/
         #   [BUCKET_ID]/views/[VIEW_ID]To support legacy queries, it could also be:
         #   projects/[PROJECT_ID] organizations/[ORGANIZATION_ID] billingAccounts/[
-        #   BILLING_ACCOUNT_ID] folders/[FOLDER_ID]
+        #   BILLING_ACCOUNT_ID] folders/[FOLDER_ID]The resource name in the parent field
+        #   is added to this list.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5910,7 +5916,7 @@ module Google
         # Lists the logs in projects, organizations, folders, or billing accounts. Only
         # logs that have entries are listed.
         # @param [String] parent
-        #   Required. The resource name that owns the logs: projects/[PROJECT_ID]
+        #   Required. The resource name to list logs for: projects/[PROJECT_ID]
         #   organizations/[ORGANIZATION_ID] billingAccounts/[BILLING_ACCOUNT_ID] folders/[
         #   FOLDER_ID]
         # @param [Fixnum] page_size
@@ -5923,14 +5929,15 @@ module Google
         #   from the previous response. The values of other method parameters should be
         #   identical to those in the previous call.
         # @param [Array<String>, String] resource_names
-        #   Optional. The resource name that owns the logs: projects/[PROJECT_ID]/
+        #   Optional. List of resource names to list logs for: projects/[PROJECT_ID]/
         #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID] organizations/[
         #   ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]
         #   billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[
         #   BUCKET_ID]/views/[VIEW_ID] folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/
         #   [BUCKET_ID]/views/[VIEW_ID]To support legacy queries, it could also be:
         #   projects/[PROJECT_ID] organizations/[ORGANIZATION_ID] billingAccounts/[
-        #   BILLING_ACCOUNT_ID] folders/[FOLDER_ID]
+        #   BILLING_ACCOUNT_ID] folders/[FOLDER_ID]The resource name in the parent field
+        #   is added to this list.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6927,9 +6934,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Asynchronously creates linked dataset in BigQuery which makes it possible to
-        # use BugQuery to read the logs stored in the bucket. A bucket may currently
-        # only contain one link.
+        # Asynchronously creates a linked dataset in BigQuery which makes it possible to
+        # use BigQuery to read the logs stored in the log bucket. A log bucket may
+        # currently only contain one link.
         # @param [String] parent
         #   Required. The full resource name of the bucket to create a link for. "projects/
         #   [PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[
@@ -7280,7 +7287,7 @@ module Google
         # Lists the logs in projects, organizations, folders, or billing accounts. Only
         # logs that have entries are listed.
         # @param [String] parent
-        #   Required. The resource name that owns the logs: projects/[PROJECT_ID]
+        #   Required. The resource name to list logs for: projects/[PROJECT_ID]
         #   organizations/[ORGANIZATION_ID] billingAccounts/[BILLING_ACCOUNT_ID] folders/[
         #   FOLDER_ID]
         # @param [Fixnum] page_size
@@ -7293,14 +7300,15 @@ module Google
         #   from the previous response. The values of other method parameters should be
         #   identical to those in the previous call.
         # @param [Array<String>, String] resource_names
-        #   Optional. The resource name that owns the logs: projects/[PROJECT_ID]/
+        #   Optional. List of resource names to list logs for: projects/[PROJECT_ID]/
         #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID] organizations/[
         #   ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]
         #   billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[
         #   BUCKET_ID]/views/[VIEW_ID] folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/
         #   [BUCKET_ID]/views/[VIEW_ID]To support legacy queries, it could also be:
         #   projects/[PROJECT_ID] organizations/[ORGANIZATION_ID] billingAccounts/[
-        #   BILLING_ACCOUNT_ID] folders/[FOLDER_ID]
+        #   BILLING_ACCOUNT_ID] folders/[FOLDER_ID]The resource name in the parent field
+        #   is added to this list.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7483,7 +7491,7 @@ module Google
         # Lists the logs in projects, organizations, folders, or billing accounts. Only
         # logs that have entries are listed.
         # @param [String] parent
-        #   Required. The resource name that owns the logs: projects/[PROJECT_ID]
+        #   Required. The resource name to list logs for: projects/[PROJECT_ID]
         #   organizations/[ORGANIZATION_ID] billingAccounts/[BILLING_ACCOUNT_ID] folders/[
         #   FOLDER_ID]
         # @param [Fixnum] page_size
@@ -7496,14 +7504,15 @@ module Google
         #   from the previous response. The values of other method parameters should be
         #   identical to those in the previous call.
         # @param [Array<String>, String] resource_names
-        #   Optional. The resource name that owns the logs: projects/[PROJECT_ID]/
+        #   Optional. List of resource names to list logs for: projects/[PROJECT_ID]/
         #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID] organizations/[
         #   ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]
         #   billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[
         #   BUCKET_ID]/views/[VIEW_ID] folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/
         #   [BUCKET_ID]/views/[VIEW_ID]To support legacy queries, it could also be:
         #   projects/[PROJECT_ID] organizations/[ORGANIZATION_ID] billingAccounts/[
-        #   BILLING_ACCOUNT_ID] folders/[FOLDER_ID]
+        #   BILLING_ACCOUNT_ID] folders/[FOLDER_ID]The resource name in the parent field
+        #   is added to this list.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
