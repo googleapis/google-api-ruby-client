@@ -836,6 +836,12 @@ module Google
         # @return [String]
         attr_accessor :challenge
       
+        # The client type: web, Android or iOS. Required when reCAPTCHA Enterprise
+        # protection is enabled.
+        # Corresponds to the JSON property `clientType`
+        # @return [String]
+        attr_accessor :client_type
+      
         # The Url to continue after user clicks the link sent in email. This is the url
         # that will allow the web widget to handle the OOB code.
         # Corresponds to the JSON property `continueUrl`
@@ -885,6 +891,11 @@ module Google
         # @return [String]
         attr_accessor :new_email
       
+        # The reCAPTCHA version of the reCAPTCHA token in the captcha_response.
+        # Corresponds to the JSON property `recaptchaVersion`
+        # @return [String]
+        attr_accessor :recaptcha_version
+      
         # Required. The type of out-of-band (OOB) code to send. Depending on this value,
         # other fields in this request will be required and/or have different meanings.
         # There are 4 different OOB codes that can be sent: * PASSWORD_RESET *
@@ -933,6 +944,7 @@ module Google
           @can_handle_code_in_app = args[:can_handle_code_in_app] if args.key?(:can_handle_code_in_app)
           @captcha_resp = args[:captcha_resp] if args.key?(:captcha_resp)
           @challenge = args[:challenge] if args.key?(:challenge)
+          @client_type = args[:client_type] if args.key?(:client_type)
           @continue_url = args[:continue_url] if args.key?(:continue_url)
           @dynamic_link_domain = args[:dynamic_link_domain] if args.key?(:dynamic_link_domain)
           @email = args[:email] if args.key?(:email)
@@ -940,6 +952,7 @@ module Google
           @i_os_bundle_id = args[:i_os_bundle_id] if args.key?(:i_os_bundle_id)
           @id_token = args[:id_token] if args.key?(:id_token)
           @new_email = args[:new_email] if args.key?(:new_email)
+          @recaptcha_version = args[:recaptcha_version] if args.key?(:recaptcha_version)
           @request_type = args[:request_type] if args.key?(:request_type)
           @return_oob_link = args[:return_oob_link] if args.key?(:return_oob_link)
           @target_project_id = args[:target_project_id] if args.key?(:target_project_id)
@@ -2862,6 +2875,12 @@ module Google
         # @return [String]
         attr_accessor :captcha_response
       
+        # The client type, web, android or ios. Required when reCAPTCHA Enterprise is
+        # enabled.
+        # Corresponds to the JSON property `clientType`
+        # @return [String]
+        attr_accessor :client_type
+      
         # 
         # Corresponds to the JSON property `delegatedProjectNumber`
         # @return [Fixnum]
@@ -2895,6 +2914,11 @@ module Google
         # @return [String]
         attr_accessor :pending_id_token
       
+        # The reCAPTCHA version of the reCAPTCHA token in the captcha_response.
+        # Corresponds to the JSON property `recaptchaVersion`
+        # @return [String]
+        attr_accessor :recaptcha_version
+      
         # Should always be true.
         # Corresponds to the JSON property `returnSecureToken`
         # @return [Boolean]
@@ -2915,12 +2939,14 @@ module Google
         def update!(**args)
           @captcha_challenge = args[:captcha_challenge] if args.key?(:captcha_challenge)
           @captcha_response = args[:captcha_response] if args.key?(:captcha_response)
+          @client_type = args[:client_type] if args.key?(:client_type)
           @delegated_project_number = args[:delegated_project_number] if args.key?(:delegated_project_number)
           @email = args[:email] if args.key?(:email)
           @id_token = args[:id_token] if args.key?(:id_token)
           @instance_id = args[:instance_id] if args.key?(:instance_id)
           @password = args[:password] if args.key?(:password)
           @pending_id_token = args[:pending_id_token] if args.key?(:pending_id_token)
+          @recaptcha_version = args[:recaptcha_version] if args.key?(:recaptcha_version)
           @return_secure_token = args[:return_secure_token] if args.key?(:return_secure_token)
           @tenant_id = args[:tenant_id] if args.key?(:tenant_id)
         end
@@ -3195,6 +3221,12 @@ module Google
         # @return [String]
         attr_accessor :captcha_response
       
+        # The client type: web, Android or iOS. Required when enabling reCAPTCHA
+        # enterprise protection.
+        # Corresponds to the JSON property `clientType`
+        # @return [String]
+        attr_accessor :client_type
+      
         # Whether the user will be disabled upon creation. Disabled accounts are
         # inaccessible except for requests bearing a Google OAuth2 credential with
         # proper [permissions](https://cloud.google.com/identity-platform/docs/access-
@@ -3269,6 +3301,11 @@ module Google
         # @return [String]
         attr_accessor :photo_url
       
+        # The reCAPTCHA version of the reCAPTCHA token in the captcha_response.
+        # Corresponds to the JSON property `recaptchaVersion`
+        # @return [String]
+        attr_accessor :recaptcha_version
+      
         # The project ID of the project which the user should belong to. Specifying this
         # field requires a Google OAuth 2.0 credential with the proper [permissions](
         # https://cloud.google.com/identity-platform/docs/access-control). If this is
@@ -3292,6 +3329,7 @@ module Google
         def update!(**args)
           @captcha_challenge = args[:captcha_challenge] if args.key?(:captcha_challenge)
           @captcha_response = args[:captcha_response] if args.key?(:captcha_response)
+          @client_type = args[:client_type] if args.key?(:client_type)
           @disabled = args[:disabled] if args.key?(:disabled)
           @display_name = args[:display_name] if args.key?(:display_name)
           @email = args[:email] if args.key?(:email)
@@ -3303,6 +3341,7 @@ module Google
           @password = args[:password] if args.key?(:password)
           @phone_number = args[:phone_number] if args.key?(:phone_number)
           @photo_url = args[:photo_url] if args.key?(:photo_url)
+          @recaptcha_version = args[:recaptcha_version] if args.key?(:recaptcha_version)
           @target_project_id = args[:target_project_id] if args.key?(:target_project_id)
           @tenant_id = args[:tenant_id] if args.key?(:tenant_id)
         end
