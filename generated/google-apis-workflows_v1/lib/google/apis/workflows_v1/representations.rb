@@ -64,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StateError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -144,6 +150,14 @@ module Google
         end
       end
       
+      class StateError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :details, as: 'details'
+          property :type, as: 'type'
+        end
+      end
+      
       class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -158,6 +172,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :call_log_level, as: 'callLogLevel'
           property :create_time, as: 'createTime'
+          property :crypto_key_name, as: 'cryptoKeyName'
           property :description, as: 'description'
           hash :labels, as: 'labels'
           property :name, as: 'name'
@@ -166,6 +181,8 @@ module Google
           property :service_account, as: 'serviceAccount'
           property :source_contents, as: 'sourceContents'
           property :state, as: 'state'
+          property :state_error, as: 'stateError', class: Google::Apis::WorkflowsV1::StateError, decorator: Google::Apis::WorkflowsV1::StateError::Representation
+      
           property :update_time, as: 'updateTime'
         end
       end

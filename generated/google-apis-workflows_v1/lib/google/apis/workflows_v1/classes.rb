@@ -272,6 +272,31 @@ module Google
         end
       end
       
+      # Describes an error related to the current state of the workflow.
+      class StateError
+        include Google::Apis::Core::Hashable
+      
+        # Provides specifics about the error.
+        # Corresponds to the JSON property `details`
+        # @return [String]
+        attr_accessor :details
+      
+        # The type of this state error.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @details = args[:details] if args.key?(:details)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # The `Status` type defines a logical error model that is suitable for different
       # programming environments, including REST APIs and RPC APIs. It is used by [
       # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
@@ -326,6 +351,16 @@ module Google
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
+      
+        # Optional. The resource name of a KMS crypto key used to encrypt or decrypt the
+        # data associated with the workflow. Format: projects/`project`/locations/`
+        # location`/keyRings/`keyRing`/cryptoKeys/`cryptoKey` Using `-` as a wildcard
+        # for the ``project`` or not providing one at all will infer the project from
+        # the account. If not provided, data associated with the workflow will not be
+        # CMEK-encrypted.
+        # Corresponds to the JSON property `cryptoKeyName`
+        # @return [String]
+        attr_accessor :crypto_key_name
       
         # Description of the workflow provided by the user. Must be at most 1000 unicode
         # characters long.
@@ -384,6 +419,11 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Describes an error related to the current state of the workflow.
+        # Corresponds to the JSON property `stateError`
+        # @return [Google::Apis::WorkflowsV1::StateError]
+        attr_accessor :state_error
+      
         # Output only. The timestamp for when the workflow was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -397,6 +437,7 @@ module Google
         def update!(**args)
           @call_log_level = args[:call_log_level] if args.key?(:call_log_level)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @crypto_key_name = args[:crypto_key_name] if args.key?(:crypto_key_name)
           @description = args[:description] if args.key?(:description)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
@@ -405,6 +446,7 @@ module Google
           @service_account = args[:service_account] if args.key?(:service_account)
           @source_contents = args[:source_contents] if args.key?(:source_contents)
           @state = args[:state] if args.key?(:state)
+          @state_error = args[:state_error] if args.key?(:state_error)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
