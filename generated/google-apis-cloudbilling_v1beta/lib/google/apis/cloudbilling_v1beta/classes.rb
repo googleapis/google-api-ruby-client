@@ -248,7 +248,7 @@ module Google
         attr_accessor :region
       
         # The [storage class](https://cloud.google.com/storage/docs/storage-classes#
-        # classes) of the data and operation. For example: "standard" or "nearline".
+        # classes) of the data and operation. For example: "standard" and "nearline".
         # Corresponds to the JSON property `storageClass`
         # @return [String]
         attr_accessor :storage_class
