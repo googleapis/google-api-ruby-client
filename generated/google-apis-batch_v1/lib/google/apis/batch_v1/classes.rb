@@ -219,6 +219,11 @@ module Google
         # @return [String]
         attr_accessor :task
       
+        # TaskSource represents the source of the task.
+        # Corresponds to the JSON property `taskSource`
+        # @return [String]
+        attr_accessor :task_source
+      
         def initialize(**args)
            update!(**args)
         end
@@ -230,6 +235,7 @@ module Google
           @spec = args[:spec] if args.key?(:spec)
           @status = args[:status] if args.key?(:status)
           @task = args[:task] if args.key?(:task)
+          @task_source = args[:task_source] if args.key?(:task_source)
         end
       end
       
