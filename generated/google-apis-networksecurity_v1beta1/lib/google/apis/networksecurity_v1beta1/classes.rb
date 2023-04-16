@@ -1131,6 +1131,11 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1139,6 +1144,7 @@ module Google
         def update!(**args)
           @gateway_security_policies = args[:gateway_security_policies] if args.key?(:gateway_security_policies)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -1158,6 +1164,11 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1166,6 +1177,7 @@ module Google
         def update!(**args)
           @gateway_security_policy_rules = args[:gateway_security_policy_rules] if args.key?(:gateway_security_policy_rules)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -1262,6 +1274,11 @@ module Google
         # @return [Array<Google::Apis::NetworksecurityV1beta1::TlsInspectionPolicy>]
         attr_accessor :tls_inspection_policies
       
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1270,6 +1287,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @tls_inspection_policies = args[:tls_inspection_policies] if args.key?(:tls_inspection_policies)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -1357,11 +1375,27 @@ module Google
       class MtlsPolicy
         include Google::Apis::Core::Hashable
       
-        # Defines the mechanism to obtain the Certificate Authority certificate to
-        # validate the client certificate.
+        # Required if the policy is to be used with Traffic Director. For External HTTPS
+        # LB it must be empty. Defines the mechanism to obtain the Certificate Authority
+        # certificate to validate the client certificate.
         # Corresponds to the JSON property `clientValidationCa`
         # @return [Array<Google::Apis::NetworksecurityV1beta1::ValidationCa>]
         attr_accessor :client_validation_ca
+      
+        # Specifies whether client connections proceed when a client presents an invalid
+        # certificate or no certificate. Required if the policy is to be used with the
+        # External HTTPS LB. For Traffic Director it must be empty.
+        # Corresponds to the JSON property `clientValidationMode`
+        # @return [String]
+        attr_accessor :client_validation_mode
+      
+        # Reference to the TrustConfig from certificatemanager.googleapis.com namespace.
+        # If specified, the chain validation will be performed against certificates
+        # configured in the given TrustConfig. Allowed only if the policy is to be used
+        # with External HTTPS LB.
+        # Corresponds to the JSON property `clientValidationTrustConfig`
+        # @return [String]
+        attr_accessor :client_validation_trust_config
       
         def initialize(**args)
            update!(**args)
@@ -1370,6 +1404,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @client_validation_ca = args[:client_validation_ca] if args.key?(:client_validation_ca)
+          @client_validation_mode = args[:client_validation_mode] if args.key?(:client_validation_mode)
+          @client_validation_trust_config = args[:client_validation_trust_config] if args.key?(:client_validation_trust_config)
         end
       end
       
@@ -1563,16 +1599,22 @@ module Google
       # ServerTlsPolicy is a resource that specifies how a server should authenticate
       # incoming requests. This resource itself does not affect configuration unless
       # it is attached to a target HTTPS proxy or endpoint config selector resource.
+      # ServerTlsPolicy in the form accepted by External HTTPS Load Balancer can be
+      # attached only to TargetHttpsProxy with an `EXTERNAL` or `EXTERNAL_MANAGED`
+      # load balancing scheme. Traffic Director compatible ServerTlsPolicies can be
+      # attached to EndpointPolicy and TargetHttpsProxy with Traffic Director `
+      # INTERNAL_SELF_MANAGED` load balancing scheme.
       class ServerTlsPolicy
         include Google::Apis::Core::Hashable
       
-        # Determines if server allows plaintext connections. If set to true, server
-        # allows plain text connections. By default, it is set to false. This setting is
-        # not exclusive of other encryption modes. For example, if `allow_open` and `
-        # mtls_policy` are set, server allows both plain text and mTLS connections. See
-        # documentation of other encryption modes to confirm compatibility. Consider
-        # using it if you wish to upgrade in place your deployment to TLS while having
-        # mixed TLS and non-TLS traffic reaching port :80.
+        # Can be enabled only for Traffic Director policies, must be false for External
+        # HTTPS LB policies. Determines if server allows plaintext connections. If set
+        # to true, server allows plain text connections. By default, it is set to false.
+        # This setting is not exclusive of other encryption modes. For example, if `
+        # allow_open` and `mtls_policy` are set, server allows both plain text and mTLS
+        # connections. See documentation of other encryption modes to confirm
+        # compatibility. Consider using it if you wish to upgrade in place your
+        # deployment to TLS while having mixed TLS and non-TLS traffic reaching port :80.
         # Corresponds to the JSON property `allowOpen`
         # @return [Boolean]
         attr_accessor :allow_open
