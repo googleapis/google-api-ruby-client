@@ -411,12 +411,11 @@ module Google
         attr_accessor :reset
         alias_method :reset?, :reset
       
-        # Up to 10 policy rules are allowed. In policies for boolean constraints, the
-        # following requirements apply: - There must be one and only one policy rule
-        # where condition is unset. - Boolean policy rules with conditions must set `
-        # enforced` to the opposite of the policy rule without a condition. - During
-        # policy evaluation, policy rules with conditions that are true for a target
-        # resource take precedence.
+        # In policies for boolean constraints, the following requirements apply: - There
+        # must be one and only one policy rule where condition is unset. - Boolean
+        # policy rules with conditions must set `enforced` to the opposite of the policy
+        # rule without a condition. - During policy evaluation, policy rules with
+        # conditions that are true for a target resource take precedence.
         # Corresponds to the JSON property `rules`
         # @return [Array<Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2PolicySpecPolicyRule>]
         attr_accessor :rules
