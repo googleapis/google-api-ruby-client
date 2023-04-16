@@ -1668,6 +1668,14 @@ module Google
         # @return [String]
         attr_accessor :tag_value
       
+        # The namespaced name for the TagValue of the TagBinding. Must be in the format `
+        # `parent_id`/`tag_key_short_name`/`short_name``. For methods that support
+        # TagValue namespaced name, only one of tag_value_namespaced_name or tag_value
+        # may be filled. Requests with both fields will be rejected.
+        # Corresponds to the JSON property `tagValueNamespacedName`
+        # @return [String]
+        attr_accessor :tag_value_namespaced_name
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1677,6 +1685,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @parent = args[:parent] if args.key?(:parent)
           @tag_value = args[:tag_value] if args.key?(:tag_value)
+          @tag_value_namespaced_name = args[:tag_value_namespaced_name] if args.key?(:tag_value_namespaced_name)
         end
       end
       

@@ -1663,6 +1663,40 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Retrieves a TagKey by its namespaced name. This method will return `
+        # PERMISSION_DENIED` if the key does not exist or the user does not have
+        # permission to view it.
+        # @param [String] name
+        #   Required. A namespaced tag key name in the format ``parentId`/`tagKeyShort``,
+        #   such as `42/foo` for a key with short name "foo" under the organization with
+        #   ID 42 or `r2-d2/bar` for a key with short name "bar" under the project `r2-d2`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudresourcemanagerV3::TagKey] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudresourcemanagerV3::TagKey]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_tag_key_namespaced(name: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/tagKeys/namespaced', options)
+          command.response_representation = Google::Apis::CloudresourcemanagerV3::TagKey::Representation
+          command.response_class = Google::Apis::CloudresourcemanagerV3::TagKey
+          command.query['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists all TagKeys for a parent resource.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of TagKeys to return in the response. The server
@@ -1961,6 +1995,42 @@ module Google
           command.response_representation = Google::Apis::CloudresourcemanagerV3::Policy::Representation
           command.response_class = Google::Apis::CloudresourcemanagerV3::Policy
           command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a TagValue by its namespaced name. This method will return `
+        # PERMISSION_DENIED` if the value does not exist or the user does not have
+        # permission to view it.
+        # @param [String] name
+        #   Required. A namespaced tag value name in the following format: ``parentId`/`
+        #   tagKeyShort`/`tagValueShort`` Examples: - `42/foo/abc` for a value with short
+        #   name "abc" under the key with short name "foo" under the organization with ID
+        #   42 - `r2-d2/bar/xyz` for a value with short name "xyz" under the key with
+        #   short name "bar" under the project with ID "r2-d2"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudresourcemanagerV3::TagValue] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudresourcemanagerV3::TagValue]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_tag_value_namespaced(name: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/tagValues/namespaced', options)
+          command.response_representation = Google::Apis::CloudresourcemanagerV3::TagValue::Representation
+          command.response_class = Google::Apis::CloudresourcemanagerV3::TagValue
+          command.query['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

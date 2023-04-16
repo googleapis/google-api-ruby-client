@@ -813,6 +813,7 @@ module Google
           property :name, as: 'name'
           property :parent, as: 'parent'
           property :tag_value, as: 'tagValue'
+          property :tag_value_namespaced_name, as: 'tagValueNamespacedName'
         end
       end
       
