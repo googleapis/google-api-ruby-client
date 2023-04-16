@@ -136,12 +136,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAdsSearchads360V0CommonSearchAds360TextAdInfo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleAdsSearchads360V0CommonSegments
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -785,18 +779,6 @@ module Google
         end
       end
       
-      class GoogleAdsSearchads360V0CommonSearchAds360TextAdInfo
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :ad_track_id, :numeric_string => true, as: 'adTrackId'
-          property :description1, as: 'description1'
-          property :description2, as: 'description2'
-          property :display_mobile_url, as: 'displayMobileUrl'
-          property :display_url, as: 'displayUrl'
-          property :headline, as: 'headline'
-        end
-      end
-      
       class GoogleAdsSearchads360V0CommonSegments
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1098,8 +1080,6 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :name, as: 'name'
           property :resource_name, as: 'resourceName'
-          property :text_ad, as: 'textAd', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonSearchAds360TextAdInfo, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonSearchAds360TextAdInfo::Representation
-      
           property :type, as: 'type'
         end
       end
