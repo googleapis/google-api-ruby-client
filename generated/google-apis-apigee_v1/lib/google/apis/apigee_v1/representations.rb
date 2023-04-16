@@ -3029,11 +3029,14 @@ module Google
           property :addons_config, as: 'addonsConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1AddonsConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1AddonsConfig::Representation
       
           property :analytics_region, as: 'analyticsRegion'
+          property :api_consumer_data_encryption_key_name, as: 'apiConsumerDataEncryptionKeyName'
+          property :api_consumer_data_location, as: 'apiConsumerDataLocation'
           property :apigee_project_id, as: 'apigeeProjectId'
           collection :attributes, as: 'attributes'
           property :authorized_network, as: 'authorizedNetwork'
           property :billing_type, as: 'billingType'
           property :ca_certificate, :base64 => true, as: 'caCertificate'
+          property :control_plane_encryption_key_name, as: 'controlPlaneEncryptionKeyName'
           property :created_at, :numeric_string => true, as: 'createdAt'
           property :customer_name, as: 'customerName'
           property :description, as: 'description'
