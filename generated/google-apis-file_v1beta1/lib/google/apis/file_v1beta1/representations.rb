@@ -624,6 +624,7 @@ module Google
       class Share
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup, as: 'backup'
           property :capacity_gb, :numeric_string => true, as: 'capacityGb'
           property :create_time, as: 'createTime'
           property :description, as: 'description'
