@@ -107,8 +107,8 @@ module Google
       end
       
       # A domain that a user has been authorized to administer. To authorize use of a
-      # domain, verify ownership via Webmaster Central (https://www.google.com/
-      # webmasters/verification/home).
+      # domain, verify ownership via Search Console (https://search.google.com/search-
+      # console/welcome).
       class AuthorizedDomain
         include Google::Apis::Core::Hashable
       
