@@ -301,6 +301,135 @@ module Google
         end
       end
       
+      # The GatewaySecurityPolicy resource contains a collection of
+      # GatewaySecurityPolicyRules and associated metadata.
+      class GatewaySecurityPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The timestamp when the resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Free-text description of the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. Name of the resource. Name is of the form projects/`project`/
+        # locations/`location`/gatewaySecurityPolicies/`gateway_security_policy`
+        # gateway_security_policy should match the pattern:(^[a-z]([a-z0-9-]`0,61`[a-z0-
+        # 9])?$).
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Name of a TLS Inspection Policy resource that defines how TLS
+        # inspection will be performed for any rule(s) which enables it.
+        # Corresponds to the JSON property `tlsInspectionPolicy`
+        # @return [String]
+        attr_accessor :tls_inspection_policy
+      
+        # Output only. The timestamp when the resource was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @name = args[:name] if args.key?(:name)
+          @tls_inspection_policy = args[:tls_inspection_policy] if args.key?(:tls_inspection_policy)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The GatewaySecurityPolicyRule resource is in a nested collection within a
+      # GatewaySecurityPolicy and represents a traffic matching condition and
+      # associated action to perform.
+      class GatewaySecurityPolicyRule
+        include Google::Apis::Core::Hashable
+      
+        # Optional. CEL expression for matching on L7/application level criteria.
+        # Corresponds to the JSON property `applicationMatcher`
+        # @return [String]
+        attr_accessor :application_matcher
+      
+        # Required. Profile which tells what the primitive action should be.
+        # Corresponds to the JSON property `basicProfile`
+        # @return [String]
+        attr_accessor :basic_profile
+      
+        # Output only. Time when the rule was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Free-text description of the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. Whether the rule is enforced.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # Required. Immutable. Name of the resource. ame is the full resource name so
+        # projects/`project`/locations/`location`/gatewaySecurityPolicies/`
+        # gateway_security_policy`/rules/`rule` rule should match the pattern: (^[a-z]([
+        # a-z0-9-]`0,61`[a-z0-9])?$).
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Priority of the rule. Lower number corresponds to higher precedence.
+        # Corresponds to the JSON property `priority`
+        # @return [Fixnum]
+        attr_accessor :priority
+      
+        # Required. CEL expression for matching on session criteria.
+        # Corresponds to the JSON property `sessionMatcher`
+        # @return [String]
+        attr_accessor :session_matcher
+      
+        # Optional. Flag to enable TLS inspection of traffic matching on , can only be
+        # true if the parent GatewaySecurityPolicy references a TLSInspectionConfig.
+        # Corresponds to the JSON property `tlsInspectionEnabled`
+        # @return [Boolean]
+        attr_accessor :tls_inspection_enabled
+        alias_method :tls_inspection_enabled?, :tls_inspection_enabled
+      
+        # Output only. Time when the rule was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @application_matcher = args[:application_matcher] if args.key?(:application_matcher)
+          @basic_profile = args[:basic_profile] if args.key?(:basic_profile)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @name = args[:name] if args.key?(:name)
+          @priority = args[:priority] if args.key?(:priority)
+          @session_matcher = args[:session_matcher] if args.key?(:session_matcher)
+          @tls_inspection_enabled = args[:tls_inspection_enabled] if args.key?(:tls_inspection_enabled)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Specification of certificate provider. Defines the mechanism to obtain the
       # certificate and private key for peer to peer authentication.
       class GoogleCloudNetworksecurityV1CertificateProvider
@@ -770,6 +899,72 @@ module Google
         end
       end
       
+      # Response returned by the ListGatewaySecurityPolicies method.
+      class ListGatewaySecurityPoliciesResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of GatewaySecurityPolicies resources.
+        # Corresponds to the JSON property `gatewaySecurityPolicies`
+        # @return [Array<Google::Apis::NetworksecurityV1::GatewaySecurityPolicy>]
+        attr_accessor :gateway_security_policies
+      
+        # If there might be more results than those appearing in this response, then '
+        # next_page_token' is included. To get the next set of results, call this method
+        # again using the value of 'next_page_token' as 'page_token'.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gateway_security_policies = args[:gateway_security_policies] if args.key?(:gateway_security_policies)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response returned by the ListGatewaySecurityPolicyRules method.
+      class ListGatewaySecurityPolicyRulesResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of GatewaySecurityPolicyRule resources.
+        # Corresponds to the JSON property `gatewaySecurityPolicyRules`
+        # @return [Array<Google::Apis::NetworksecurityV1::GatewaySecurityPolicyRule>]
+        attr_accessor :gateway_security_policy_rules
+      
+        # If there might be more results than those appearing in this response, then '
+        # next_page_token' is included. To get the next set of results, call this method
+        # again using the value of 'next_page_token' as 'page_token'.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gateway_security_policy_rules = args[:gateway_security_policy_rules] if args.key?(:gateway_security_policy_rules)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # The response message for Locations.ListLocations.
       class ListLocationsResponse
         include Google::Apis::Core::Hashable
@@ -847,6 +1042,72 @@ module Google
         end
       end
       
+      # Response returned by the ListTlsInspectionPolicies method.
+      class ListTlsInspectionPoliciesResponse
+        include Google::Apis::Core::Hashable
+      
+        # If there might be more results than those appearing in this response, then '
+        # next_page_token' is included. To get the next set of results, call this method
+        # again using the value of 'next_page_token' as 'page_token'.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of TlsInspectionPolicies resources.
+        # Corresponds to the JSON property `tlsInspectionPolicies`
+        # @return [Array<Google::Apis::NetworksecurityV1::TlsInspectionPolicy>]
+        attr_accessor :tls_inspection_policies
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @tls_inspection_policies = args[:tls_inspection_policies] if args.key?(:tls_inspection_policies)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response returned by the ListUrlLists method.
+      class ListUrlListsResponse
+        include Google::Apis::Core::Hashable
+      
+        # If there might be more results than those appearing in this response, then `
+        # next_page_token` is included. To get the next set of results, call this method
+        # again using the value of `next_page_token` as `page_token`.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        # List of UrlList resources.
+        # Corresponds to the JSON property `urlLists`
+        # @return [Array<Google::Apis::NetworksecurityV1::UrlList>]
+        attr_accessor :url_lists
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+          @url_lists = args[:url_lists] if args.key?(:url_lists)
+        end
+      end
+      
       # A resource that represents Google Cloud Platform location.
       class Location
         include Google::Apis::Core::Hashable
@@ -898,11 +1159,27 @@ module Google
       class MtlsPolicy
         include Google::Apis::Core::Hashable
       
-        # Defines the mechanism to obtain the Certificate Authority certificate to
-        # validate the client certificate.
+        # Required if the policy is to be used with Traffic Director. For External HTTPS
+        # LB it must be empty. Defines the mechanism to obtain the Certificate Authority
+        # certificate to validate the client certificate.
         # Corresponds to the JSON property `clientValidationCa`
         # @return [Array<Google::Apis::NetworksecurityV1::ValidationCa>]
         attr_accessor :client_validation_ca
+      
+        # Specifies whether client connections proceed when a client presents an invalid
+        # certificate or no certificate. Required if the policy is to be used with the
+        # External HTTPS LB. For Traffic Director it must be empty.
+        # Corresponds to the JSON property `clientValidationMode`
+        # @return [String]
+        attr_accessor :client_validation_mode
+      
+        # Reference to the TrustConfig from certificatemanager.googleapis.com namespace.
+        # If specified, the chain validation will be performed against certificates
+        # configured in the given TrustConfig. Allowed only if the policy is to be used
+        # with External HTTPS LB.
+        # Corresponds to the JSON property `clientValidationTrustConfig`
+        # @return [String]
+        attr_accessor :client_validation_trust_config
       
         def initialize(**args)
            update!(**args)
@@ -911,6 +1188,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @client_validation_ca = args[:client_validation_ca] if args.key?(:client_validation_ca)
+          @client_validation_mode = args[:client_validation_mode] if args.key?(:client_validation_mode)
+          @client_validation_trust_config = args[:client_validation_trust_config] if args.key?(:client_validation_trust_config)
         end
       end
       
@@ -1070,16 +1349,22 @@ module Google
       # ServerTlsPolicy is a resource that specifies how a server should authenticate
       # incoming requests. This resource itself does not affect configuration unless
       # it is attached to a target HTTPS proxy or endpoint config selector resource.
+      # ServerTlsPolicy in the form accepted by External HTTPS Load Balancer can be
+      # attached only to TargetHttpsProxy with an `EXTERNAL` or `EXTERNAL_MANAGED`
+      # load balancing scheme. Traffic Director compatible ServerTlsPolicies can be
+      # attached to EndpointPolicy and TargetHttpsProxy with Traffic Director `
+      # INTERNAL_SELF_MANAGED` load balancing scheme.
       class ServerTlsPolicy
         include Google::Apis::Core::Hashable
       
-        # Determines if server allows plaintext connections. If set to true, server
-        # allows plain text connections. By default, it is set to false. This setting is
-        # not exclusive of other encryption modes. For example, if `allow_open` and `
-        # mtls_policy` are set, server allows both plain text and mTLS connections. See
-        # documentation of other encryption modes to confirm compatibility. Consider
-        # using it if you wish to upgrade in place your deployment to TLS while having
-        # mixed TLS and non-TLS traffic reaching port :80.
+        # Can be enabled only for Traffic Director policies, must be false for External
+        # HTTPS LB policies. Determines if server allows plaintext connections. If set
+        # to true, server allows plain text connections. By default, it is set to false.
+        # This setting is not exclusive of other encryption modes. For example, if `
+        # allow_open` and `mtls_policy` are set, server allows both plain text and mTLS
+        # connections. See documentation of other encryption modes to confirm
+        # compatibility. Consider using it if you wish to upgrade in place your
+        # deployment to TLS while having mixed TLS and non-TLS traffic reaching port :80.
         # Corresponds to the JSON property `allowOpen`
         # @return [Boolean]
         attr_accessor :allow_open
@@ -1209,6 +1494,101 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # The TlsInspectionPolicy resource contains references to CA pools in
+      # Certificate Authority Service and associated metadata.
+      class TlsInspectionPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Required. A CA pool resource used to issue interception certificates. The CA
+        # pool string has a relative resource path following the form "projects/`project`
+        # /locations/`location`/caPools/`ca_pool`".
+        # Corresponds to the JSON property `caPool`
+        # @return [String]
+        attr_accessor :ca_pool
+      
+        # Output only. The timestamp when the resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Free-text description of the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. Name of the resource. Name is of the form projects/`project`/
+        # locations/`location`/tlsInspectionPolicies/`tls_inspection_policy`
+        # tls_inspection_policy should match the pattern:(^[a-z]([a-z0-9-]`0,61`[a-z0-9])
+        # ?$).
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The timestamp when the resource was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ca_pool = args[:ca_pool] if args.key?(:ca_pool)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # UrlList proto helps users to set reusable, independently manageable lists of
+      # hosts, host patterns, URLs, URL patterns.
+      class UrlList
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Time when the security policy was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Free-text description of the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. Name of the resource provided by the user. Name is of the form
+        # projects/`project`/locations/`location`/urlLists/`url_list` url_list should
+        # match the pattern:(^[a-z]([a-z0-9-]`0,61`[a-z0-9])?$).
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Time when the security policy was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Required. FQDNs and URLs.
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @values = args[:values] if args.key?(:values)
         end
       end
       
