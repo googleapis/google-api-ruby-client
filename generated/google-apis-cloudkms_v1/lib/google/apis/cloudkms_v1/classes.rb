@@ -2340,6 +2340,19 @@ module Google
         end
       end
       
+      # Response message for EkmService.VerifyConnectivity.
+      class VerifyConnectivityResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The public key component of the wrapping key. For details of the type of key
       # this public key corresponds to, see the ImportMethod.
       class WrappingPublicKey
