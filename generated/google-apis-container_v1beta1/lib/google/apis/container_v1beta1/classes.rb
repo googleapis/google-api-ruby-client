@@ -69,6 +69,26 @@ module Google
         end
       end
       
+      # AdditionalPodRangesConfig is the configuration for additional pod secondary
+      # ranges supporting the ClusterUpdate message.
+      class AdditionalPodRangesConfig
+        include Google::Apis::Core::Hashable
+      
+        # Name for pod secondary ipv4 range which has the actual range defined ahead.
+        # Corresponds to the JSON property `podRangeNames`
+        # @return [Array<String>]
+        attr_accessor :pod_range_names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pod_range_names = args[:pod_range_names] if args.key?(:pod_range_names)
+        end
+      end
+      
       # Configuration for the addons that can be automatically spun up in the cluster,
       # enabling additional functionality.
       class AddonsConfig
@@ -1263,6 +1283,12 @@ module Google
       class ClusterUpdate
         include Google::Apis::Core::Hashable
       
+        # AdditionalPodRangesConfig is the configuration for additional pod secondary
+        # ranges supporting the ClusterUpdate message.
+        # Corresponds to the JSON property `additionalPodRangesConfig`
+        # @return [Google::Apis::ContainerV1beta1::AdditionalPodRangesConfig]
+        attr_accessor :additional_pod_ranges_config
+      
         # Configuration for the addons that can be automatically spun up in the cluster,
         # enabling additional functionality.
         # Corresponds to the JSON property `desiredAddonsConfig`
@@ -1554,12 +1580,19 @@ module Google
         # @return [String]
         attr_accessor :etag
       
+        # AdditionalPodRangesConfig is the configuration for additional pod secondary
+        # ranges supporting the ClusterUpdate message.
+        # Corresponds to the JSON property `removedAdditionalPodRangesConfig`
+        # @return [Google::Apis::ContainerV1beta1::AdditionalPodRangesConfig]
+        attr_accessor :removed_additional_pod_ranges_config
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @additional_pod_ranges_config = args[:additional_pod_ranges_config] if args.key?(:additional_pod_ranges_config)
           @desired_addons_config = args[:desired_addons_config] if args.key?(:desired_addons_config)
           @desired_authenticator_groups_config = args[:desired_authenticator_groups_config] if args.key?(:desired_authenticator_groups_config)
           @desired_binary_authorization = args[:desired_binary_authorization] if args.key?(:desired_binary_authorization)
@@ -1607,6 +1640,7 @@ module Google
           @desired_workload_certificates = args[:desired_workload_certificates] if args.key?(:desired_workload_certificates)
           @desired_workload_identity_config = args[:desired_workload_identity_config] if args.key?(:desired_workload_identity_config)
           @etag = args[:etag] if args.key?(:etag)
+          @removed_additional_pod_ranges_config = args[:removed_additional_pod_ranges_config] if args.key?(:removed_additional_pod_ranges_config)
         end
       end
       
@@ -2477,6 +2511,12 @@ module Google
       class IpAllocationPolicy
         include Google::Apis::Core::Hashable
       
+        # AdditionalPodRangesConfig is the configuration for additional pod secondary
+        # ranges supporting the ClusterUpdate message.
+        # Corresponds to the JSON property `additionalPodRangesConfig`
+        # @return [Google::Apis::ContainerV1beta1::AdditionalPodRangesConfig]
+        attr_accessor :additional_pod_ranges_config
+      
         # If true, allow allocation of cluster CIDR ranges that overlap with certain
         # kinds of network routes. By default we do not allow cluster CIDR ranges to
         # intersect with any user declared routes. With allow_route_overlap == true, we
@@ -2543,6 +2583,11 @@ module Google
         # Corresponds to the JSON property `nodeIpv4CidrBlock`
         # @return [String]
         attr_accessor :node_ipv4_cidr_block
+      
+        # [PRIVATE FIELD] Config for pod CIDR size overprovisioning.
+        # Corresponds to the JSON property `podCidrOverprovisionConfig`
+        # @return [Google::Apis::ContainerV1beta1::PodCidrOverprovisionConfig]
+        attr_accessor :pod_cidr_overprovision_config
       
         # This field is deprecated, use services_ipv4_cidr_block.
         # Corresponds to the JSON property `servicesIpv4Cidr`
@@ -2627,6 +2672,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @additional_pod_ranges_config = args[:additional_pod_ranges_config] if args.key?(:additional_pod_ranges_config)
           @allow_route_overlap = args[:allow_route_overlap] if args.key?(:allow_route_overlap)
           @cluster_ipv4_cidr = args[:cluster_ipv4_cidr] if args.key?(:cluster_ipv4_cidr)
           @cluster_ipv4_cidr_block = args[:cluster_ipv4_cidr_block] if args.key?(:cluster_ipv4_cidr_block)
@@ -2635,6 +2681,7 @@ module Google
           @ipv6_access_type = args[:ipv6_access_type] if args.key?(:ipv6_access_type)
           @node_ipv4_cidr = args[:node_ipv4_cidr] if args.key?(:node_ipv4_cidr)
           @node_ipv4_cidr_block = args[:node_ipv4_cidr_block] if args.key?(:node_ipv4_cidr_block)
+          @pod_cidr_overprovision_config = args[:pod_cidr_overprovision_config] if args.key?(:pod_cidr_overprovision_config)
           @services_ipv4_cidr = args[:services_ipv4_cidr] if args.key?(:services_ipv4_cidr)
           @services_ipv4_cidr_block = args[:services_ipv4_cidr_block] if args.key?(:services_ipv4_cidr_block)
           @services_ipv6_cidr_block = args[:services_ipv6_cidr_block] if args.key?(:services_ipv6_cidr_block)
@@ -4090,6 +4137,11 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::NetworkPerformanceConfig]
         attr_accessor :network_performance_config
       
+        # [PRIVATE FIELD] Config for pod CIDR size overprovisioning.
+        # Corresponds to the JSON property `podCidrOverprovisionConfig`
+        # @return [Google::Apis::ContainerV1beta1::PodCidrOverprovisionConfig]
+        attr_accessor :pod_cidr_overprovision_config
+      
         # The IP address range for pod IPs in this node pool. Only applicable if `
         # create_pod_range` is true. Set to blank to have a range chosen with the
         # default size. Set to /netmask (e.g. `/14`) to have a range chosen with a
@@ -4119,6 +4171,7 @@ module Google
           @create_pod_range = args[:create_pod_range] if args.key?(:create_pod_range)
           @enable_private_nodes = args[:enable_private_nodes] if args.key?(:enable_private_nodes)
           @network_performance_config = args[:network_performance_config] if args.key?(:network_performance_config)
+          @pod_cidr_overprovision_config = args[:pod_cidr_overprovision_config] if args.key?(:pod_cidr_overprovision_config)
           @pod_ipv4_cidr_block = args[:pod_ipv4_cidr_block] if args.key?(:pod_ipv4_cidr_block)
           @pod_range = args[:pod_range] if args.key?(:pod_range)
         end
@@ -4679,6 +4732,27 @@ module Google
         # Update properties of this object
         def update!(**args)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # [PRIVATE FIELD] Config for pod CIDR size overprovisioning.
+      class PodCidrOverprovisionConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether Pod CIDR overprovisioning is disabled. Note: Pod CIDR overprovisioning
+        # is enabled by default.
+        # Corresponds to the JSON property `disable`
+        # @return [Boolean]
+        attr_accessor :disable
+        alias_method :disable?, :disable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disable = args[:disable] if args.key?(:disable)
         end
       end
       
