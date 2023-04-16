@@ -1872,6 +1872,11 @@ module Google
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaBigQueryLink]
         attr_accessor :bigquery_link
       
+        # A resource message representing a Channel Group.
+        # Corresponds to the JSON property `channelGroup`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaChannelGroup]
+        attr_accessor :channel_group
+      
         # A conversion event in a Google Analytics property.
         # Corresponds to the JSON property `conversionEvent`
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaConversionEvent]
@@ -1960,6 +1965,7 @@ module Google
           @account = args[:account] if args.key?(:account)
           @attribution_settings = args[:attribution_settings] if args.key?(:attribution_settings)
           @bigquery_link = args[:bigquery_link] if args.key?(:bigquery_link)
+          @channel_group = args[:channel_group] if args.key?(:channel_group)
           @conversion_event = args[:conversion_event] if args.key?(:conversion_event)
           @custom_dimension = args[:custom_dimension] if args.key?(:custom_dimension)
           @custom_metric = args[:custom_metric] if args.key?(:custom_metric)
@@ -2032,6 +2038,185 @@ module Google
           @changes_filtered = args[:changes_filtered] if args.key?(:changes_filtered)
           @id = args[:id] if args.key?(:id)
           @user_actor_email = args[:user_actor_email] if args.key?(:user_actor_email)
+        end
+      end
+      
+      # A resource message representing a Channel Group.
+      class GoogleAnalyticsAdminV1alphaChannelGroup
+        include Google::Apis::Core::Hashable
+      
+        # The description of the Channel Group. Max length of 256 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. The display name of the Channel Group. Max length of 80 characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Required. The grouping rules of channels. Maximum number of rules is 25.
+        # Corresponds to the JSON property `groupingRule`
+        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaGroupingRule>]
+        attr_accessor :grouping_rule
+      
+        # Output only. The resource name for this Channel Group resource. Format:
+        # properties/`property`/channelGroups/`channel_group`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Default Channel Group defined by Google, which cannot be updated.
+        # Corresponds to the JSON property `systemDefined`
+        # @return [Boolean]
+        attr_accessor :system_defined
+        alias_method :system_defined?, :system_defined
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @grouping_rule = args[:grouping_rule] if args.key?(:grouping_rule)
+          @name = args[:name] if args.key?(:name)
+          @system_defined = args[:system_defined] if args.key?(:system_defined)
+        end
+      end
+      
+      # A specific filter for a single dimension.
+      class GoogleAnalyticsAdminV1alphaChannelGroupFilter
+        include Google::Apis::Core::Hashable
+      
+        # Required. Immutable. The dimension name to filter.
+        # Corresponds to the JSON property `fieldName`
+        # @return [String]
+        attr_accessor :field_name
+      
+        # A filter for a string dimension that matches a particular list of options. The
+        # match is case insensitive.
+        # Corresponds to the JSON property `inListFilter`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaChannelGroupFilterInListFilter]
+        attr_accessor :in_list_filter
+      
+        # Filter where the field value is a String. The match is case insensitive.
+        # Corresponds to the JSON property `stringFilter`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaChannelGroupFilterStringFilter]
+        attr_accessor :string_filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field_name = args[:field_name] if args.key?(:field_name)
+          @in_list_filter = args[:in_list_filter] if args.key?(:in_list_filter)
+          @string_filter = args[:string_filter] if args.key?(:string_filter)
+        end
+      end
+      
+      # A logical expression of Channel Group dimension filters.
+      class GoogleAnalyticsAdminV1alphaChannelGroupFilterExpression
+        include Google::Apis::Core::Hashable
+      
+        # A list of Channel Group filter expressions.
+        # Corresponds to the JSON property `andGroup`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaChannelGroupFilterExpressionList]
+        attr_accessor :and_group
+      
+        # A specific filter for a single dimension.
+        # Corresponds to the JSON property `filter`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaChannelGroupFilter]
+        attr_accessor :filter
+      
+        # A logical expression of Channel Group dimension filters.
+        # Corresponds to the JSON property `notExpression`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaChannelGroupFilterExpression]
+        attr_accessor :not_expression
+      
+        # A list of Channel Group filter expressions.
+        # Corresponds to the JSON property `orGroup`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaChannelGroupFilterExpressionList]
+        attr_accessor :or_group
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @and_group = args[:and_group] if args.key?(:and_group)
+          @filter = args[:filter] if args.key?(:filter)
+          @not_expression = args[:not_expression] if args.key?(:not_expression)
+          @or_group = args[:or_group] if args.key?(:or_group)
+        end
+      end
+      
+      # A list of Channel Group filter expressions.
+      class GoogleAnalyticsAdminV1alphaChannelGroupFilterExpressionList
+        include Google::Apis::Core::Hashable
+      
+        # A list of Channel Group filter expressions.
+        # Corresponds to the JSON property `filterExpressions`
+        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaChannelGroupFilterExpression>]
+        attr_accessor :filter_expressions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filter_expressions = args[:filter_expressions] if args.key?(:filter_expressions)
+        end
+      end
+      
+      # A filter for a string dimension that matches a particular list of options. The
+      # match is case insensitive.
+      class GoogleAnalyticsAdminV1alphaChannelGroupFilterInListFilter
+        include Google::Apis::Core::Hashable
+      
+        # Required. The list of possible string values to match against. Must be non-
+        # empty.
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # Filter where the field value is a String. The match is case insensitive.
+      class GoogleAnalyticsAdminV1alphaChannelGroupFilterStringFilter
+        include Google::Apis::Core::Hashable
+      
+        # Required. The match type for the string filter.
+        # Corresponds to the JSON property `matchType`
+        # @return [String]
+        attr_accessor :match_type
+      
+        # Required. The string value to be matched against.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @match_type = args[:match_type] if args.key?(:match_type)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -2252,10 +2437,11 @@ module Google
       
         # Required. Immutable. Tagging parameter name for this custom dimension. If this
         # is a user-scoped dimension, then this is the user property name. If this is an
-        # event-scoped dimension, then this is the event parameter name. May only
-        # contain alphanumeric and underscore characters, starting with a letter. Max
-        # length of 24 characters for user-scoped dimensions, 40 characters for event-
-        # scoped dimensions.
+        # event-scoped dimension, then this is the event parameter name. If this is an
+        # item-scoped dimension, then this is the parameter name found in the eCommerce
+        # items array. May only contain alphanumeric and underscore characters, starting
+        # with a letter. Max length of 24 characters for user-scoped dimensions, 40
+        # characters for event-scoped dimensions.
         # Corresponds to the JSON property `parameterName`
         # @return [String]
         attr_accessor :parameter_name
@@ -3301,6 +3487,31 @@ module Google
         end
       end
       
+      # The rules that govern how traffic is grouped into one channel.
+      class GoogleAnalyticsAdminV1alphaGroupingRule
+        include Google::Apis::Core::Hashable
+      
+        # Required. Customer defined display name for the channel.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # A logical expression of Channel Group dimension filters.
+        # Corresponds to the JSON property `expression`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaChannelGroupFilterExpression]
+        attr_accessor :expression
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @expression = args[:expression] if args.key?(:expression)
+        end
+      end
+      
       # Status information for a link proposal.
       class GoogleAnalyticsAdminV1alphaLinkProposalStatusDetails
         include Google::Apis::Core::Hashable
@@ -3459,6 +3670,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bigquery_links = args[:bigquery_links] if args.key?(:bigquery_links)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for ListChannelGroups RPC.
+      class GoogleAnalyticsAdminV1alphaListChannelGroupsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of ChannelGroup. These will be ordered stably, but in an arbitrary order.
+        # Corresponds to the JSON property `channelGroups`
+        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaChannelGroup>]
+        attr_accessor :channel_groups
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @channel_groups = args[:channel_groups] if args.key?(:channel_groups)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end

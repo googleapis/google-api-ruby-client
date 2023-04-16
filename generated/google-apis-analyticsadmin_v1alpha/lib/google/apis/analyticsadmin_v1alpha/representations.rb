@@ -418,6 +418,42 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1alphaChannelGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaChannelGroupFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaChannelGroupFilterExpression
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaChannelGroupFilterExpressionList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaChannelGroupFilterInListFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaChannelGroupFilterStringFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1alphaConnectedSiteTag
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -610,6 +646,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1alphaGroupingRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1alphaLinkProposalStatusDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -641,6 +683,12 @@ module Google
       end
       
       class GoogleAnalyticsAdminV1alphaListBigQueryLinksResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaListChannelGroupsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1433,6 +1481,8 @@ module Google
       
           property :bigquery_link, as: 'bigqueryLink', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaBigQueryLink, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaBigQueryLink::Representation
       
+          property :channel_group, as: 'channelGroup', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaChannelGroup, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaChannelGroup::Representation
+      
           property :conversion_event, as: 'conversionEvent', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaConversionEvent, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaConversionEvent::Representation
       
           property :custom_dimension, as: 'customDimension', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCustomDimension, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCustomDimension::Representation
@@ -1476,6 +1526,66 @@ module Google
           property :changes_filtered, as: 'changesFiltered'
           property :id, as: 'id'
           property :user_actor_email, as: 'userActorEmail'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaChannelGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          collection :grouping_rule, as: 'groupingRule', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaGroupingRule, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaGroupingRule::Representation
+      
+          property :name, as: 'name'
+          property :system_defined, as: 'systemDefined'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaChannelGroupFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :field_name, as: 'fieldName'
+          property :in_list_filter, as: 'inListFilter', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaChannelGroupFilterInListFilter, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaChannelGroupFilterInListFilter::Representation
+      
+          property :string_filter, as: 'stringFilter', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaChannelGroupFilterStringFilter, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaChannelGroupFilterStringFilter::Representation
+      
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaChannelGroupFilterExpression
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :and_group, as: 'andGroup', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaChannelGroupFilterExpressionList, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaChannelGroupFilterExpressionList::Representation
+      
+          property :filter, as: 'filter', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaChannelGroupFilter, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaChannelGroupFilter::Representation
+      
+          property :not_expression, as: 'notExpression', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaChannelGroupFilterExpression, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaChannelGroupFilterExpression::Representation
+      
+          property :or_group, as: 'orGroup', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaChannelGroupFilterExpressionList, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaChannelGroupFilterExpressionList::Representation
+      
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaChannelGroupFilterExpressionList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :filter_expressions, as: 'filterExpressions', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaChannelGroupFilterExpression, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaChannelGroupFilterExpression::Representation
+      
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaChannelGroupFilterInListFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :values, as: 'values'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaChannelGroupFilterStringFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :match_type, as: 'matchType'
+          property :value, as: 'value'
         end
       end
       
@@ -1801,6 +1911,15 @@ module Google
         end
       end
       
+      class GoogleAnalyticsAdminV1alphaGroupingRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :expression, as: 'expression', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaChannelGroupFilterExpression, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaChannelGroupFilterExpression::Representation
+      
+        end
+      end
+      
       class GoogleAnalyticsAdminV1alphaLinkProposalStatusDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1850,6 +1969,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :bigquery_links, as: 'bigqueryLinks', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaBigQueryLink, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaBigQueryLink::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaListChannelGroupsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :channel_groups, as: 'channelGroups', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaChannelGroup, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaChannelGroup::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
