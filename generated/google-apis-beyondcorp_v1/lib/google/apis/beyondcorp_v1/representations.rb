@@ -40,30 +40,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ClientConnectorService
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ClientConnectorServiceOperationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ClientGateway
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ClientGatewayOperationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class CloudSecurityZerotrustApplinkAppConnectorProtoConnectionConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -83,24 +59,6 @@ module Google
       end
       
       class CloudSecurityZerotrustApplinkLogagentProtoLogAgentDetails
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Config
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class DestinationRoute
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Egress
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -388,31 +346,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Ingress
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ListAppGatewaysResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListClientConnectorServicesResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListClientGatewaysResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class PeeredVpc
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -469,59 +403,6 @@ module Google
         end
       end
       
-      class ClientConnectorService
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :create_time, as: 'createTime'
-          property :display_name, as: 'displayName'
-          property :egress, as: 'egress', class: Google::Apis::BeyondcorpV1::Egress, decorator: Google::Apis::BeyondcorpV1::Egress::Representation
-      
-          property :ingress, as: 'ingress', class: Google::Apis::BeyondcorpV1::Ingress, decorator: Google::Apis::BeyondcorpV1::Ingress::Representation
-      
-          property :name, as: 'name'
-          property :state, as: 'state'
-          property :update_time, as: 'updateTime'
-        end
-      end
-      
-      class ClientConnectorServiceOperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :api_version, as: 'apiVersion'
-          property :create_time, as: 'createTime'
-          property :end_time, as: 'endTime'
-          property :requested_cancellation, as: 'requestedCancellation'
-          property :status_message, as: 'statusMessage'
-          property :target, as: 'target'
-          property :verb, as: 'verb'
-        end
-      end
-      
-      class ClientGateway
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :client_connector_service, as: 'clientConnectorService'
-          property :create_time, as: 'createTime'
-          property :id, as: 'id'
-          property :name, as: 'name'
-          property :state, as: 'state'
-          property :update_time, as: 'updateTime'
-        end
-      end
-      
-      class ClientGatewayOperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :api_version, as: 'apiVersion'
-          property :create_time, as: 'createTime'
-          property :end_time, as: 'endTime'
-          property :requested_cancellation, as: 'requestedCancellation'
-          property :status_message, as: 'statusMessage'
-          property :target, as: 'target'
-          property :verb, as: 'verb'
-        end
-      end
-      
       class CloudSecurityZerotrustApplinkAppConnectorProtoConnectionConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -557,31 +438,6 @@ module Google
       class CloudSecurityZerotrustApplinkLogagentProtoLogAgentDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class Config
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :destination_routes, as: 'destinationRoutes', class: Google::Apis::BeyondcorpV1::DestinationRoute, decorator: Google::Apis::BeyondcorpV1::DestinationRoute::Representation
-      
-          property :transport_protocol, as: 'transportProtocol'
-        end
-      end
-      
-      class DestinationRoute
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :address, as: 'address'
-          property :netmask, as: 'netmask'
-        end
-      end
-      
-      class Egress
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :peered_vpc, as: 'peeredVpc', class: Google::Apis::BeyondcorpV1::PeeredVpc, decorator: Google::Apis::BeyondcorpV1::PeeredVpc::Representation
-      
         end
       end
       
@@ -1058,14 +914,6 @@ module Google
         end
       end
       
-      class Ingress
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :config, as: 'config', class: Google::Apis::BeyondcorpV1::Config, decorator: Google::Apis::BeyondcorpV1::Config::Representation
-      
-        end
-      end
-      
       class ListAppGatewaysResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1073,33 +921,6 @@ module Google
       
           property :next_page_token, as: 'nextPageToken'
           collection :unreachable, as: 'unreachable'
-        end
-      end
-      
-      class ListClientConnectorServicesResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :client_connector_services, as: 'clientConnectorServices', class: Google::Apis::BeyondcorpV1::ClientConnectorService, decorator: Google::Apis::BeyondcorpV1::ClientConnectorService::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
-          collection :unreachable, as: 'unreachable'
-        end
-      end
-      
-      class ListClientGatewaysResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :client_gateways, as: 'clientGateways', class: Google::Apis::BeyondcorpV1::ClientGateway, decorator: Google::Apis::BeyondcorpV1::ClientGateway::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
-          collection :unreachable, as: 'unreachable'
-        end
-      end
-      
-      class PeeredVpc
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :network_vpc, as: 'networkVpc'
         end
       end
       
