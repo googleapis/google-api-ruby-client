@@ -458,6 +458,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :policy_namespace, as: 'policyNamespace'
+          property :policy_schema, as: 'policySchema'
           property :policy_target_key, as: 'policyTargetKey', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyTargetKey, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyTargetKey::Representation
       
         end
@@ -468,6 +469,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :group_ids, as: 'groupIds'
           property :policy_namespace, as: 'policyNamespace'
+          property :policy_schema, as: 'policySchema'
           property :policy_target_key, as: 'policyTargetKey', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyTargetKey, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyTargetKey::Representation
       
         end
@@ -718,6 +720,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :group_ids, as: 'groupIds'
           property :policy_namespace, as: 'policyNamespace'
+          property :policy_schema, as: 'policySchema'
           property :policy_target_key, as: 'policyTargetKey', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyTargetKey, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyTargetKey::Representation
       
         end
