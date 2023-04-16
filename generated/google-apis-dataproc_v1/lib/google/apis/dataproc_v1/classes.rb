@@ -4129,7 +4129,7 @@ module Google
       class ResizeNodeGroupRequest
         include Google::Apis::Core::Hashable
       
-        # Optional. Timeout for graceful YARN decomissioning. Graceful decommissioning (
+        # Optional. Timeout for graceful YARN decommissioning. Graceful decommissioning (
         # https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/scaling-
         # clusters#graceful_decommissioning) allows the removal of nodes from the
         # Compute Engine node group without interrupting jobs in progress. This timeout
@@ -4805,7 +4805,7 @@ module Google
       
         # Required. Timeout for Spark graceful decommissioning of spark workers.
         # Specifies the duration to wait for spark worker to complete spark
-        # decomissioning tasks before forcefully removing workers. Only applicable to
+        # decommissioning tasks before forcefully removing workers. Only applicable to
         # downscaling operations.Bounds: 0s, 1d.
         # Corresponds to the JSON property `gracefulDecommissionTimeout`
         # @return [String]
