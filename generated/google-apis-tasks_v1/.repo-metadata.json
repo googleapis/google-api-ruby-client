@@ -1,6 +1,6 @@
 {
     "api_id": "tasks:v1",
-    "name_pretty": "Tasks API",
+    "name_pretty": "Google Tasks API",
     "distribution_name": "google-apis-tasks_v1",
     "language": "ruby",
     "library_type": "REST"

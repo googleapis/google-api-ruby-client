@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module TasksV1
-      # Tasks API
+      # Google Tasks API
       #
       # The Google Tasks API lets you manage your tasks and task lists.
       #
