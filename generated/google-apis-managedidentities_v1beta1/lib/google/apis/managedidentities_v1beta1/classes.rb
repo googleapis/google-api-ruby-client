@@ -539,6 +539,13 @@ module Google
       class DomainJoinMachineRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. force if True, forces domain join even if the computer account
+        # already exists.
+        # Corresponds to the JSON property `force`
+        # @return [Boolean]
+        attr_accessor :force
+        alias_method :force?, :force
+      
         # Optional. OU name to which the VM needs to be domain joined. If the field is
         # not provided, the VM is joined to the default OU which is created. The default
         # OU for the domain join api is created as GCE Instances under the Cloud OU.
@@ -564,6 +571,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @force = args[:force] if args.key?(:force)
           @ou_name = args[:ou_name] if args.key?(:ou_name)
           @vm_id_token = args[:vm_id_token] if args.key?(:vm_id_token)
         end
