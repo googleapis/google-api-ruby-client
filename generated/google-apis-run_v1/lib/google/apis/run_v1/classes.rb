@@ -629,6 +629,38 @@ module Google
         end
       end
       
+      # Per container override specification.
+      class ContainerOverride
+        include Google::Apis::Core::Hashable
+      
+        # Arguments to the entrypoint. Will replace existing args for override.
+        # Corresponds to the JSON property `args`
+        # @return [Array<String>]
+        attr_accessor :args
+      
+        # List of environment variables to set in the container. Will be merged with
+        # existing env for override.
+        # Corresponds to the JSON property `env`
+        # @return [Array<Google::Apis::RunV1::EnvVar>]
+        attr_accessor :env
+      
+        # The name of the container specified as a DNS_LABEL.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @args = args[:args] if args.key?(:args)
+          @env = args[:env] if args.key?(:env)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # ContainerPort represents a network port in a single container.
       class ContainerPort
         include Google::Apis::Core::Hashable
@@ -2073,19 +2105,20 @@ module Google
         # Service, Job, * `run.googleapis.com/binary-authorization`: Service, Job,
         # Execution. * `run.googleapis.com/client-name`: All resources. * `run.
         # googleapis.com/cloudsql-instances`: Revision, Execution. * `run.googleapis.com/
-        # cpu-throttling`: Revision. * `run.googleapis.com/custom-audiences`: Service. *
-        # `run.googleapis.com/description`: Service. * `run.googleapis.com/encryption-
-        # key-shutdown-hours`: Revision * `run.googleapis.com/encryption-key`: Revision,
-        # Execution. * `run.googleapis.com/execution-environment`: Revision, Execution. *
-        # `run.googleapis.com/gc-traffic-tags`: Service. * `run.googleapis.com/ingress`:
-        # Service. * `run.googleapis.com/network-interfaces`: Revision, Execution. * `
-        # run.googleapis.com/post-key-revocation-action-type`: Revision. * `run.
-        # googleapis.com/secrets`: Revision, Execution. * `run.googleapis.com/secure-
-        # session-agent`: Revision. * `run.googleapis.com/sessionAffinity`: Revision. * `
-        # run.googleapis.com/startup-cpu-boost`: Revision. * `run.googleapis.com/vpc-
-        # access-connector`: Revision, Execution. * `run.googleapis.com/vpc-access-
-        # egress`: Revision, Execution. Execution. More info: https://kubernetes.io/docs/
-        # user-guide/annotations
+        # container-dependencies`: Revision. * `run.googleapis.com/cpu-throttling`:
+        # Revision. * `run.googleapis.com/custom-audiences`: Service. * `run.googleapis.
+        # com/description`: Service. * `run.googleapis.com/encryption-key-shutdown-hours`
+        # : Revision * `run.googleapis.com/encryption-key`: Revision, Execution. * `run.
+        # googleapis.com/execution-environment`: Revision, Execution. * `run.googleapis.
+        # com/gc-traffic-tags`: Service. * `run.googleapis.com/ingress`: Service. * `run.
+        # googleapis.com/launch-stage`: Service, Job. * `run.googleapis.com/network-
+        # interfaces`: Revision, Execution. * `run.googleapis.com/post-key-revocation-
+        # action-type`: Revision. * `run.googleapis.com/secrets`: Revision, Execution. *
+        # `run.googleapis.com/secure-session-agent`: Revision. * `run.googleapis.com/
+        # sessionAffinity`: Revision. * `run.googleapis.com/startup-cpu-boost`: Revision.
+        # * `run.googleapis.com/vpc-access-connector`: Revision, Execution. * `run.
+        # googleapis.com/vpc-access-egress`: Revision, Execution. Execution. More info:
+        # https://kubernetes.io/docs/user-guide/annotations
         # Corresponds to the JSON property `annotations`
         # @return [Hash<String,String>]
         attr_accessor :annotations
@@ -2199,6 +2232,40 @@ module Google
           @resource_version = args[:resource_version] if args.key?(:resource_version)
           @self_link = args[:self_link] if args.key?(:self_link)
           @uid = args[:uid] if args.key?(:uid)
+        end
+      end
+      
+      # RunJob Overrides that contains Execution fields to be overridden on the go.
+      class Overrides
+        include Google::Apis::Core::Hashable
+      
+        # Per container override specification.
+        # Corresponds to the JSON property `containerOverrides`
+        # @return [Array<Google::Apis::RunV1::ContainerOverride>]
+        attr_accessor :container_overrides
+      
+        # The desired number of tasks the execution should run. Will replace existing
+        # task_count value.
+        # Corresponds to the JSON property `taskCount`
+        # @return [Fixnum]
+        attr_accessor :task_count
+      
+        # Duration in seconds the task may be active before the system will actively try
+        # to mark it failed and kill associated containers. Will replace existing
+        # timeout_seconds value.
+        # Corresponds to the JSON property `timeoutSeconds`
+        # @return [Fixnum]
+        attr_accessor :timeout_seconds
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @container_overrides = args[:container_overrides] if args.key?(:container_overrides)
+          @task_count = args[:task_count] if args.key?(:task_count)
+          @timeout_seconds = args[:timeout_seconds] if args.key?(:timeout_seconds)
         end
       end
       
@@ -2823,12 +2890,18 @@ module Google
       class RunJobRequest
         include Google::Apis::Core::Hashable
       
+        # RunJob Overrides that contains Execution fields to be overridden on the go.
+        # Corresponds to the JSON property `overrides`
+        # @return [Google::Apis::RunV1::Overrides]
+        attr_accessor :overrides
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @overrides = args[:overrides] if args.key?(:overrides)
         end
       end
       

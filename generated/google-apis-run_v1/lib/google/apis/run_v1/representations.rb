@@ -100,6 +100,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ContainerOverride
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ContainerPort
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -317,6 +323,12 @@ module Google
       end
       
       class ObjectMeta
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Overrides
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -674,6 +686,16 @@ module Google
           collection :volume_mounts, as: 'volumeMounts', class: Google::Apis::RunV1::VolumeMount, decorator: Google::Apis::RunV1::VolumeMount::Representation
       
           property :working_dir, as: 'workingDir'
+        end
+      end
+      
+      class ContainerOverride
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :args, as: 'args'
+          collection :env, as: 'env', class: Google::Apis::RunV1::EnvVar, decorator: Google::Apis::RunV1::EnvVar::Representation
+      
+          property :name, as: 'name'
         end
       end
       
@@ -1093,6 +1115,16 @@ module Google
         end
       end
       
+      class Overrides
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :container_overrides, as: 'containerOverrides', class: Google::Apis::RunV1::ContainerOverride, decorator: Google::Apis::RunV1::ContainerOverride::Representation
+      
+          property :task_count, as: 'taskCount'
+          property :timeout_seconds, as: 'timeoutSeconds'
+        end
+      end
+      
       class OwnerReference
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1244,6 +1276,8 @@ module Google
       class RunJobRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :overrides, as: 'overrides', class: Google::Apis::RunV1::Overrides, decorator: Google::Apis::RunV1::Overrides::Representation
+      
         end
       end
       
