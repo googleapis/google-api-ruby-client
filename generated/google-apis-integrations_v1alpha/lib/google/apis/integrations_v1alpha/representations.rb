@@ -748,6 +748,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudConnectorsV1AuthConfigOauth2ClientCredentials
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -809,6 +815,12 @@ module Google
       end
       
       class GoogleCloudConnectorsV1LockConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudConnectorsV1LogConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1655,6 +1667,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :event_attempt_num, as: 'eventAttemptNum'
           property :task_attempt_num, as: 'taskAttemptNum'
+          property :task_label, as: 'taskLabel'
           property :task_name, as: 'taskName'
           property :task_number, as: 'taskNumber'
         end
@@ -2722,6 +2735,8 @@ module Google
           collection :additional_variables, as: 'additionalVariables', class: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1ConfigVariable, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1ConfigVariable::Representation
       
           property :auth_type, as: 'authType'
+          property :oauth2_auth_code_flow, as: 'oauth2AuthCodeFlow', class: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlow, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlow::Representation
+      
           property :oauth2_client_credentials, as: 'oauth2ClientCredentials', class: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1AuthConfigOauth2ClientCredentials, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1AuthConfigOauth2ClientCredentials::Representation
       
           property :oauth2_jwt_bearer, as: 'oauth2JwtBearer', class: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1AuthConfigOauth2JwtBearer, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1AuthConfigOauth2JwtBearer::Representation
@@ -2730,6 +2745,20 @@ module Google
       
           property :user_password, as: 'userPassword', class: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1AuthConfigUserPassword, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1AuthConfigUserPassword::Representation
       
+        end
+      end
+      
+      class GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auth_code, as: 'authCode'
+          property :client_id, as: 'clientId'
+          property :client_secret, as: 'clientSecret', class: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1Secret, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1Secret::Representation
+      
+          property :enable_pkce, as: 'enablePkce'
+          property :pkce_verifier, as: 'pkceVerifier'
+          property :redirect_uri, as: 'redirectUri'
+          collection :scopes, as: 'scopes'
         end
       end
       
@@ -2811,6 +2840,8 @@ module Google
           hash :labels, as: 'labels'
           property :lock_config, as: 'lockConfig', class: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1LockConfig, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1LockConfig::Representation
       
+          property :log_config, as: 'logConfig', class: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1LogConfig, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1LogConfig::Representation
+      
           property :name, as: 'name'
           property :node_config, as: 'nodeConfig', class: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1NodeConfig, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1NodeConfig::Representation
       
@@ -2857,6 +2888,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :locked, as: 'locked'
           property :reason, as: 'reason'
+        end
+      end
+      
+      class GoogleCloudConnectorsV1LogConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
         end
       end
       
@@ -3184,6 +3222,7 @@ module Google
           property :execution_attempt, as: 'executionAttempt'
           property :task, as: 'task'
           property :task_attempt, as: 'taskAttempt'
+          property :task_label, as: 'taskLabel'
           property :task_number, as: 'taskNumber'
         end
       end

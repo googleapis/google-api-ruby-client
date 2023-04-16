@@ -1005,6 +1005,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :task_attempt_num
       
+        # the task label associated with this snapshot. Could be empty.
+        # Corresponds to the JSON property `taskLabel`
+        # @return [String]
+        attr_accessor :task_label
+      
         # the task name associated with this snapshot. Could be empty.
         # Corresponds to the JSON property `taskName`
         # @return [String]
@@ -1023,6 +1028,7 @@ module Google
         def update!(**args)
           @event_attempt_num = args[:event_attempt_num] if args.key?(:event_attempt_num)
           @task_attempt_num = args[:task_attempt_num] if args.key?(:task_attempt_num)
+          @task_label = args[:task_label] if args.key?(:task_label)
           @task_name = args[:task_name] if args.key?(:task_name)
           @task_number = args[:task_number] if args.key?(:task_number)
         end
@@ -4858,6 +4864,12 @@ module Google
         # @return [String]
         attr_accessor :auth_type
       
+        # Parameters to support Oauth 2.0 Auth Code Grant Authentication. See https://
+        # www.rfc-editor.org/rfc/rfc6749#section-1.3.1 for more details.
+        # Corresponds to the JSON property `oauth2AuthCodeFlow`
+        # @return [Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlow]
+        attr_accessor :oauth2_auth_code_flow
+      
         # Parameters to support Oauth 2.0 Client Credentials Grant Authentication. See
         # https://tools.ietf.org/html/rfc6749#section-1.3.4 for more details.
         # Corresponds to the JSON property `oauth2ClientCredentials`
@@ -4889,10 +4901,68 @@ module Google
         def update!(**args)
           @additional_variables = args[:additional_variables] if args.key?(:additional_variables)
           @auth_type = args[:auth_type] if args.key?(:auth_type)
+          @oauth2_auth_code_flow = args[:oauth2_auth_code_flow] if args.key?(:oauth2_auth_code_flow)
           @oauth2_client_credentials = args[:oauth2_client_credentials] if args.key?(:oauth2_client_credentials)
           @oauth2_jwt_bearer = args[:oauth2_jwt_bearer] if args.key?(:oauth2_jwt_bearer)
           @ssh_public_key = args[:ssh_public_key] if args.key?(:ssh_public_key)
           @user_password = args[:user_password] if args.key?(:user_password)
+        end
+      end
+      
+      # Parameters to support Oauth 2.0 Auth Code Grant Authentication. See https://
+      # www.rfc-editor.org/rfc/rfc6749#section-1.3.1 for more details.
+      class GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlow
+        include Google::Apis::Core::Hashable
+      
+        # Authorization code to be exchanged for access and refresh tokens.
+        # Corresponds to the JSON property `authCode`
+        # @return [String]
+        attr_accessor :auth_code
+      
+        # Client ID for user-provided OAuth app.
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
+      
+        # Secret provides a reference to entries in Secret Manager.
+        # Corresponds to the JSON property `clientSecret`
+        # @return [Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1Secret]
+        attr_accessor :client_secret
+      
+        # Whether to enable PKCE when the user performs the auth code flow.
+        # Corresponds to the JSON property `enablePkce`
+        # @return [Boolean]
+        attr_accessor :enable_pkce
+        alias_method :enable_pkce?, :enable_pkce
+      
+        # PKCE verifier to be used during the auth code exchange.
+        # Corresponds to the JSON property `pkceVerifier`
+        # @return [String]
+        attr_accessor :pkce_verifier
+      
+        # Redirect URI to be provided during the auth code exchange.
+        # Corresponds to the JSON property `redirectUri`
+        # @return [String]
+        attr_accessor :redirect_uri
+      
+        # Scopes the connection will request when the user performs the auth code flow.
+        # Corresponds to the JSON property `scopes`
+        # @return [Array<String>]
+        attr_accessor :scopes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auth_code = args[:auth_code] if args.key?(:auth_code)
+          @client_id = args[:client_id] if args.key?(:client_id)
+          @client_secret = args[:client_secret] if args.key?(:client_secret)
+          @enable_pkce = args[:enable_pkce] if args.key?(:enable_pkce)
+          @pkce_verifier = args[:pkce_verifier] if args.key?(:pkce_verifier)
+          @redirect_uri = args[:redirect_uri] if args.key?(:redirect_uri)
+          @scopes = args[:scopes] if args.key?(:scopes)
         end
       end
       
@@ -5149,6 +5219,11 @@ module Google
         # @return [Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1LockConfig]
         attr_accessor :lock_config
       
+        # Log configuration for the connection.
+        # Corresponds to the JSON property `logConfig`
+        # @return [Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1LogConfig]
+        attr_accessor :log_config
+      
         # Output only. Resource name of the Connection. Format: projects/`project`/
         # locations/`location`/connections/`connection`
         # Corresponds to the JSON property `name`
@@ -5210,6 +5285,7 @@ module Google
           @image_location = args[:image_location] if args.key?(:image_location)
           @labels = args[:labels] if args.key?(:labels)
           @lock_config = args[:lock_config] if args.key?(:lock_config)
+          @log_config = args[:log_config] if args.key?(:log_config)
           @name = args[:name] if args.key?(:name)
           @node_config = args[:node_config] if args.key?(:node_config)
           @service_account = args[:service_account] if args.key?(:service_account)
@@ -5332,6 +5408,26 @@ module Google
         def update!(**args)
           @locked = args[:locked] if args.key?(:locked)
           @reason = args[:reason] if args.key?(:reason)
+        end
+      end
+      
+      # Log configuration for the connection.
+      class GoogleCloudConnectorsV1LogConfig
+        include Google::Apis::Core::Hashable
+      
+        # Enabled represents whether logging is enabled or not for a connection.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
         end
       end
       
@@ -6505,6 +6601,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :task_attempt
       
+        # the task label associated with this snapshot. Could be empty.
+        # Corresponds to the JSON property `taskLabel`
+        # @return [String]
+        attr_accessor :task_label
+      
         # The task number associated with this snapshot.
         # Corresponds to the JSON property `taskNumber`
         # @return [String]
@@ -6519,6 +6620,7 @@ module Google
           @execution_attempt = args[:execution_attempt] if args.key?(:execution_attempt)
           @task = args[:task] if args.key?(:task)
           @task_attempt = args[:task_attempt] if args.key?(:task_attempt)
+          @task_label = args[:task_label] if args.key?(:task_label)
           @task_number = args[:task_number] if args.key?(:task_number)
         end
       end
