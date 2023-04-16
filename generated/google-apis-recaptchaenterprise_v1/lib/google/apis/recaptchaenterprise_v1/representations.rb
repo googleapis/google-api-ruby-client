@@ -652,6 +652,7 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1RiskAnalysis
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :extended_verdict_reasons, as: 'extendedVerdictReasons'
           collection :reasons, as: 'reasons'
           property :score, as: 'score'
         end
