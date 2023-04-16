@@ -1225,6 +1225,155 @@ module Google
         end
       end
       
+      # Details of an external subscription.
+      class ExternalSubscription
+        include Google::Apis::Core::Hashable
+      
+        # Required. The type of the external subscription.
+        # Corresponds to the JSON property `subscriptionType`
+        # @return [String]
+        attr_accessor :subscription_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @subscription_type = args[:subscription_type] if args.key?(:subscription_type)
+        end
+      end
+      
+      # The details of an external transaction.
+      class ExternalTransaction
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time when this transaction was created. This is the time when
+        # Google was notified of the transaction.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Definition of a price, i.e. currency and units.
+        # Corresponds to the JSON property `currentPreTaxAmount`
+        # @return [Google::Apis::AndroidpublisherV3::Price]
+        attr_accessor :current_pre_tax_amount
+      
+        # Definition of a price, i.e. currency and units.
+        # Corresponds to the JSON property `currentTaxAmount`
+        # @return [Google::Apis::AndroidpublisherV3::Price]
+        attr_accessor :current_tax_amount
+      
+        # Output only. The id of this transaction. All transaction ids under the same
+        # package name must be unique. Set when creating the external transaction.
+        # Corresponds to the JSON property `externalTransactionId`
+        # @return [String]
+        attr_accessor :external_transaction_id
+      
+        # Represents a one-time transaction.
+        # Corresponds to the JSON property `oneTimeTransaction`
+        # @return [Google::Apis::AndroidpublisherV3::OneTimeExternalTransaction]
+        attr_accessor :one_time_transaction
+      
+        # Definition of a price, i.e. currency and units.
+        # Corresponds to the JSON property `originalPreTaxAmount`
+        # @return [Google::Apis::AndroidpublisherV3::Price]
+        attr_accessor :original_pre_tax_amount
+      
+        # Definition of a price, i.e. currency and units.
+        # Corresponds to the JSON property `originalTaxAmount`
+        # @return [Google::Apis::AndroidpublisherV3::Price]
+        attr_accessor :original_tax_amount
+      
+        # Output only. The resource name of the external transaction. The package name
+        # of the application the inapp products were sold (for example, 'com.some.app').
+        # Corresponds to the JSON property `packageName`
+        # @return [String]
+        attr_accessor :package_name
+      
+        # Represents a transaction that is part of a recurring series of payments. This
+        # can be a subscription or a one-time product with multiple payments (such as
+        # preorder).
+        # Corresponds to the JSON property `recurringTransaction`
+        # @return [Google::Apis::AndroidpublisherV3::RecurringExternalTransaction]
+        attr_accessor :recurring_transaction
+      
+        # Represents a transaction performed using a test account. These transactions
+        # will not be charged by Google.
+        # Corresponds to the JSON property `testPurchase`
+        # @return [Google::Apis::AndroidpublisherV3::ExternalTransactionTestPurchase]
+        attr_accessor :test_purchase
+      
+        # Output only. The current state of the transaction.
+        # Corresponds to the JSON property `transactionState`
+        # @return [String]
+        attr_accessor :transaction_state
+      
+        # Required. The time when the transaction was completed.
+        # Corresponds to the JSON property `transactionTime`
+        # @return [String]
+        attr_accessor :transaction_time
+      
+        # User's address for the external transaction.
+        # Corresponds to the JSON property `userTaxAddress`
+        # @return [Google::Apis::AndroidpublisherV3::ExternalTransactionAddress]
+        attr_accessor :user_tax_address
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @current_pre_tax_amount = args[:current_pre_tax_amount] if args.key?(:current_pre_tax_amount)
+          @current_tax_amount = args[:current_tax_amount] if args.key?(:current_tax_amount)
+          @external_transaction_id = args[:external_transaction_id] if args.key?(:external_transaction_id)
+          @one_time_transaction = args[:one_time_transaction] if args.key?(:one_time_transaction)
+          @original_pre_tax_amount = args[:original_pre_tax_amount] if args.key?(:original_pre_tax_amount)
+          @original_tax_amount = args[:original_tax_amount] if args.key?(:original_tax_amount)
+          @package_name = args[:package_name] if args.key?(:package_name)
+          @recurring_transaction = args[:recurring_transaction] if args.key?(:recurring_transaction)
+          @test_purchase = args[:test_purchase] if args.key?(:test_purchase)
+          @transaction_state = args[:transaction_state] if args.key?(:transaction_state)
+          @transaction_time = args[:transaction_time] if args.key?(:transaction_time)
+          @user_tax_address = args[:user_tax_address] if args.key?(:user_tax_address)
+        end
+      end
+      
+      # User's address for the external transaction.
+      class ExternalTransactionAddress
+        include Google::Apis::Core::Hashable
+      
+        # Required. Two letter region code based on ISO-3166-1 Alpha-2 (UN region codes).
+        # Corresponds to the JSON property `regionCode`
+        # @return [String]
+        attr_accessor :region_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @region_code = args[:region_code] if args.key?(:region_code)
+        end
+      end
+      
+      # Represents a transaction performed using a test account. These transactions
+      # will not be charged by Google.
+      class ExternalTransactionTestPurchase
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Defines an APK available for this application that is hosted externally and
       # not uploaded to Google Play. This function is only available to organizations
       # using Managed Play whose application is configured to restrict distribution to
@@ -1329,6 +1478,19 @@ module Google
           @uses_permissions = args[:uses_permissions] if args.key?(:uses_permissions)
           @version_code = args[:version_code] if args.key?(:version_code)
           @version_name = args[:version_name] if args.key?(:version_name)
+        end
+      end
+      
+      # A full refund of the remaining amount of a transaction.
+      class FullRefund
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -2257,6 +2419,26 @@ module Google
         end
       end
       
+      # Represents a one-time transaction.
+      class OneTimeExternalTransaction
+        include Google::Apis::Core::Hashable
+      
+        # Input only. Provided during the call to Create. Retrieved from the client when
+        # the alternative billing flow is launched.
+        # Corresponds to the JSON property `externalTransactionToken`
+        # @return [String]
+        attr_accessor :external_transaction_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @external_transaction_token = args[:external_transaction_token] if args.key?(:external_transaction_token)
+        end
+      end
+      
       # Pricing information for any new locations Play may launch in.
       class OtherRegionsBasePlanConfig
         include Google::Apis::Core::Hashable
@@ -2409,6 +2591,33 @@ module Google
           @result_per_page = args[:result_per_page] if args.key?(:result_per_page)
           @start_index = args[:start_index] if args.key?(:start_index)
           @total_results = args[:total_results] if args.key?(:total_results)
+        end
+      end
+      
+      # A partial refund of a transaction.
+      class PartialRefund
+        include Google::Apis::Core::Hashable
+      
+        # Required. A unique id distinguishing this partial refund. If the refund is
+        # successful, subsequent refunds with the same id will fail. Must be unique
+        # across refunds for one individual transaction.
+        # Corresponds to the JSON property `refundId`
+        # @return [String]
+        attr_accessor :refund_id
+      
+        # Definition of a price, i.e. currency and units.
+        # Corresponds to the JSON property `refundPreTaxAmount`
+        # @return [Google::Apis::AndroidpublisherV3::Price]
+        attr_accessor :refund_pre_tax_amount
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @refund_id = args[:refund_id] if args.key?(:refund_id)
+          @refund_pre_tax_amount = args[:refund_pre_tax_amount] if args.key?(:refund_pre_tax_amount)
         end
       end
       
@@ -2636,6 +2845,75 @@ module Google
         # Update properties of this object
         def update!(**args)
           @developer_payload = args[:developer_payload] if args.key?(:developer_payload)
+        end
+      end
+      
+      # Represents a transaction that is part of a recurring series of payments. This
+      # can be a subscription or a one-time product with multiple payments (such as
+      # preorder).
+      class RecurringExternalTransaction
+        include Google::Apis::Core::Hashable
+      
+        # Details of an external subscription.
+        # Corresponds to the JSON property `externalSubscription`
+        # @return [Google::Apis::AndroidpublisherV3::ExternalSubscription]
+        attr_accessor :external_subscription
+      
+        # Input only. Provided during the call to Create. Retrieved from the client when
+        # the alternative billing flow is launched. Required only for the initial
+        # purchase.
+        # Corresponds to the JSON property `externalTransactionToken`
+        # @return [String]
+        attr_accessor :external_transaction_token
+      
+        # The external transaction id of the first transaction of this recurring series
+        # of transactions. For example, for a subscription this would be the transaction
+        # id of the first payment. Required when creating recurring external
+        # transactions.
+        # Corresponds to the JSON property `initialExternalTransactionId`
+        # @return [String]
+        attr_accessor :initial_external_transaction_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @external_subscription = args[:external_subscription] if args.key?(:external_subscription)
+          @external_transaction_token = args[:external_transaction_token] if args.key?(:external_transaction_token)
+          @initial_external_transaction_id = args[:initial_external_transaction_id] if args.key?(:initial_external_transaction_id)
+        end
+      end
+      
+      # A request to refund an existing external transaction.
+      class RefundExternalTransactionRequest
+        include Google::Apis::Core::Hashable
+      
+        # A full refund of the remaining amount of a transaction.
+        # Corresponds to the JSON property `fullRefund`
+        # @return [Google::Apis::AndroidpublisherV3::FullRefund]
+        attr_accessor :full_refund
+      
+        # A partial refund of a transaction.
+        # Corresponds to the JSON property `partialRefund`
+        # @return [Google::Apis::AndroidpublisherV3::PartialRefund]
+        attr_accessor :partial_refund
+      
+        # Required. The time that the transaction was refunded.
+        # Corresponds to the JSON property `refundTime`
+        # @return [String]
+        attr_accessor :refund_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @full_refund = args[:full_refund] if args.key?(:full_refund)
+          @partial_refund = args[:partial_refund] if args.key?(:partial_refund)
+          @refund_time = args[:refund_time] if args.key?(:refund_time)
         end
       end
       

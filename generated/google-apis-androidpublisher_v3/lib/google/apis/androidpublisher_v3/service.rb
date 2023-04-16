@@ -1558,6 +1558,110 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new external transaction.
+        # @param [String] parent
+        #   Required. The parent resource where this external transaction will be created.
+        #   Format: applications/`package_name`
+        # @param [Google::Apis::AndroidpublisherV3::ExternalTransaction] external_transaction_object
+        # @param [String] external_transaction_id
+        #   Required. The id to use for the external transaction. Must be unique across
+        #   all other transactions for the app. This value should be 1-63 characters and
+        #   valid characters are /a-z0-9_-/.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::ExternalTransaction] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::ExternalTransaction]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def createexternaltransaction_externaltransaction(parent, external_transaction_object = nil, external_transaction_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'androidpublisher/v3/{+parent}/externalTransactions', options)
+          command.request_representation = Google::Apis::AndroidpublisherV3::ExternalTransaction::Representation
+          command.request_object = external_transaction_object
+          command.response_representation = Google::Apis::AndroidpublisherV3::ExternalTransaction::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::ExternalTransaction
+          command.params['parent'] = parent unless parent.nil?
+          command.query['externalTransactionId'] = external_transaction_id unless external_transaction_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets an existing external transaction.
+        # @param [String] name
+        #   Required. The name of the external transaction to retrieve. Format:
+        #   applications/`package_name`/externalTransactions/`external_transaction`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::ExternalTransaction] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::ExternalTransaction]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def getexternaltransaction_externaltransaction(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'androidpublisher/v3/{+name}', options)
+          command.response_representation = Google::Apis::AndroidpublisherV3::ExternalTransaction::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::ExternalTransaction
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Refunds or partially refunds an existing external transaction.
+        # @param [String] name
+        #   Required. The name of the external transaction that will be refunded. Format:
+        #   applications/`package_name`/externalTransactions/`external_transaction`
+        # @param [Google::Apis::AndroidpublisherV3::RefundExternalTransactionRequest] refund_external_transaction_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::ExternalTransaction] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::ExternalTransaction]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def refundexternaltransaction_externaltransaction(name, refund_external_transaction_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'androidpublisher/v3/{+name}:refund', options)
+          command.request_representation = Google::Apis::AndroidpublisherV3::RefundExternalTransactionRequest::Representation
+          command.request_object = refund_external_transaction_request_object
+          command.response_representation = Google::Apis::AndroidpublisherV3::ExternalTransaction::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::ExternalTransaction
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Downloads a single signed APK generated from an app bundle.
         # @param [String] package_name
         #   Package name of the app.

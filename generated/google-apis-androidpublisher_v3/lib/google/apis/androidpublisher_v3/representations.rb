@@ -274,7 +274,37 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExternalSubscription
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExternalTransaction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExternalTransactionAddress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExternalTransactionTestPurchase
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ExternallyHostedApk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FullRefund
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -454,6 +484,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OneTimeExternalTransaction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OtherRegionsBasePlanConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -479,6 +515,12 @@ module Google
       end
       
       class PageInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PartialRefund
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -515,6 +557,18 @@ module Google
       end
       
       class ProductPurchasesAcknowledgeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RecurringExternalTransaction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RefundExternalTransactionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1211,6 +1265,53 @@ module Google
         end
       end
       
+      class ExternalSubscription
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :subscription_type, as: 'subscriptionType'
+        end
+      end
+      
+      class ExternalTransaction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :current_pre_tax_amount, as: 'currentPreTaxAmount', class: Google::Apis::AndroidpublisherV3::Price, decorator: Google::Apis::AndroidpublisherV3::Price::Representation
+      
+          property :current_tax_amount, as: 'currentTaxAmount', class: Google::Apis::AndroidpublisherV3::Price, decorator: Google::Apis::AndroidpublisherV3::Price::Representation
+      
+          property :external_transaction_id, as: 'externalTransactionId'
+          property :one_time_transaction, as: 'oneTimeTransaction', class: Google::Apis::AndroidpublisherV3::OneTimeExternalTransaction, decorator: Google::Apis::AndroidpublisherV3::OneTimeExternalTransaction::Representation
+      
+          property :original_pre_tax_amount, as: 'originalPreTaxAmount', class: Google::Apis::AndroidpublisherV3::Price, decorator: Google::Apis::AndroidpublisherV3::Price::Representation
+      
+          property :original_tax_amount, as: 'originalTaxAmount', class: Google::Apis::AndroidpublisherV3::Price, decorator: Google::Apis::AndroidpublisherV3::Price::Representation
+      
+          property :package_name, as: 'packageName'
+          property :recurring_transaction, as: 'recurringTransaction', class: Google::Apis::AndroidpublisherV3::RecurringExternalTransaction, decorator: Google::Apis::AndroidpublisherV3::RecurringExternalTransaction::Representation
+      
+          property :test_purchase, as: 'testPurchase', class: Google::Apis::AndroidpublisherV3::ExternalTransactionTestPurchase, decorator: Google::Apis::AndroidpublisherV3::ExternalTransactionTestPurchase::Representation
+      
+          property :transaction_state, as: 'transactionState'
+          property :transaction_time, as: 'transactionTime'
+          property :user_tax_address, as: 'userTaxAddress', class: Google::Apis::AndroidpublisherV3::ExternalTransactionAddress, decorator: Google::Apis::AndroidpublisherV3::ExternalTransactionAddress::Representation
+      
+        end
+      end
+      
+      class ExternalTransactionAddress
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :region_code, as: 'regionCode'
+        end
+      end
+      
+      class ExternalTransactionTestPurchase
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class ExternallyHostedApk
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1230,6 +1331,12 @@ module Google
       
           property :version_code, as: 'versionCode'
           property :version_name, as: 'versionName'
+        end
+      end
+      
+      class FullRefund
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -1513,6 +1620,13 @@ module Google
         end
       end
       
+      class OneTimeExternalTransaction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :external_transaction_token, as: 'externalTransactionToken'
+        end
+      end
+      
       class OtherRegionsBasePlanConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1558,6 +1672,15 @@ module Google
           property :result_per_page, as: 'resultPerPage'
           property :start_index, as: 'startIndex'
           property :total_results, as: 'totalResults'
+        end
+      end
+      
+      class PartialRefund
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :refund_id, as: 'refundId'
+          property :refund_pre_tax_amount, as: 'refundPreTaxAmount', class: Google::Apis::AndroidpublisherV3::Price, decorator: Google::Apis::AndroidpublisherV3::Price::Representation
+      
         end
       end
       
@@ -1615,6 +1738,27 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :developer_payload, as: 'developerPayload'
+        end
+      end
+      
+      class RecurringExternalTransaction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :external_subscription, as: 'externalSubscription', class: Google::Apis::AndroidpublisherV3::ExternalSubscription, decorator: Google::Apis::AndroidpublisherV3::ExternalSubscription::Representation
+      
+          property :external_transaction_token, as: 'externalTransactionToken'
+          property :initial_external_transaction_id, as: 'initialExternalTransactionId'
+        end
+      end
+      
+      class RefundExternalTransactionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :full_refund, as: 'fullRefund', class: Google::Apis::AndroidpublisherV3::FullRefund, decorator: Google::Apis::AndroidpublisherV3::FullRefund::Representation
+      
+          property :partial_refund, as: 'partialRefund', class: Google::Apis::AndroidpublisherV3::PartialRefund, decorator: Google::Apis::AndroidpublisherV3::PartialRefund::Representation
+      
+          property :refund_time, as: 'refundTime'
         end
       end
       
