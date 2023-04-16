@@ -60,6 +60,25 @@ module Google
         end
       end
       
+      # Specifies options for controlling advanced machine features.
+      class AdvancedMachineFeatures
+        include Google::Apis::Core::Hashable
+      
+        # The number of threads per physical core.
+        # Corresponds to the JSON property `threadsPerCore`
+        # @return [Fixnum]
+        attr_accessor :threads_per_core
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @threads_per_core = args[:threads_per_core] if args.key?(:threads_per_core)
+        end
+      end
+      
       # An Admin API warning message.
       class ApiWarning
         include Google::Apis::Core::Hashable
@@ -630,7 +649,7 @@ module Google
       class DatabaseInstance
         include Google::Apis::Core::Hashable
       
-        # List all maintenance versions applicable on the instance
+        # Output only. List all maintenance versions applicable on the instance
         # Corresponds to the JSON property `availableMaintenanceVersions`
         # @return [Array<String>]
         attr_accessor :available_maintenance_versions
@@ -2891,6 +2910,11 @@ module Google
         # @return [Google::Apis::SqladminV1beta4::SqlActiveDirectoryConfig]
         attr_accessor :active_directory_config
       
+        # Specifies options for controlling advanced machine features.
+        # Corresponds to the JSON property `advancedMachineFeatures`
+        # @return [Google::Apis::SqladminV1beta4::AdvancedMachineFeatures]
+        attr_accessor :advanced_machine_features
+      
         # The App Engine app IDs that can access this instance. (Deprecated) Applied to
         # First Generation instances only.
         # Corresponds to the JSON property `authorizedGaeApplications`
@@ -3067,6 +3091,7 @@ module Google
         def update!(**args)
           @activation_policy = args[:activation_policy] if args.key?(:activation_policy)
           @active_directory_config = args[:active_directory_config] if args.key?(:active_directory_config)
+          @advanced_machine_features = args[:advanced_machine_features] if args.key?(:advanced_machine_features)
           @authorized_gae_applications = args[:authorized_gae_applications] if args.key?(:authorized_gae_applications)
           @availability_type = args[:availability_type] if args.key?(:availability_type)
           @backup_configuration = args[:backup_configuration] if args.key?(:backup_configuration)

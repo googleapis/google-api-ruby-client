@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AdvancedMachineFeatures
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ApiWarning
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -587,6 +593,13 @@ module Google
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :value, as: 'value'
+        end
+      end
+      
+      class AdvancedMachineFeatures
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :threads_per_core, as: 'threadsPerCore'
         end
       end
       
@@ -1328,6 +1341,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :activation_policy, as: 'activationPolicy'
           property :active_directory_config, as: 'activeDirectoryConfig', class: Google::Apis::SqladminV1beta4::SqlActiveDirectoryConfig, decorator: Google::Apis::SqladminV1beta4::SqlActiveDirectoryConfig::Representation
+      
+          property :advanced_machine_features, as: 'advancedMachineFeatures', class: Google::Apis::SqladminV1beta4::AdvancedMachineFeatures, decorator: Google::Apis::SqladminV1beta4::AdvancedMachineFeatures::Representation
       
           collection :authorized_gae_applications, as: 'authorizedGaeApplications'
           property :availability_type, as: 'availabilityType'
