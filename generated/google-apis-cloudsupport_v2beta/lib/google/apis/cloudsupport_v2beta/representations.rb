@@ -216,6 +216,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :classification, as: 'classification', class: Google::Apis::CloudsupportV2beta::CaseClassification, decorator: Google::Apis::CloudsupportV2beta::CaseClassification::Representation
       
+          property :contact_email, as: 'contactEmail'
           property :create_time, as: 'createTime'
           property :creator, as: 'creator', class: Google::Apis::CloudsupportV2beta::Actor, decorator: Google::Apis::CloudsupportV2beta::Actor::Representation
       
