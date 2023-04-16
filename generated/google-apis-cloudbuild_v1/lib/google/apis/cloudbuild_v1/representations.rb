@@ -334,6 +334,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GitSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HashProp
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1265,6 +1271,15 @@ module Google
         end
       end
       
+      class GitSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dir, as: 'dir'
+          property :revision, as: 'revision'
+          property :url, as: 'url'
+        end
+      end
+      
       class HashProp
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1589,6 +1604,8 @@ module Google
       class Source
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :git_source, as: 'gitSource', class: Google::Apis::CloudbuildV1::GitSource, decorator: Google::Apis::CloudbuildV1::GitSource::Representation
+      
           property :repo_source, as: 'repoSource', class: Google::Apis::CloudbuildV1::RepoSource, decorator: Google::Apis::CloudbuildV1::RepoSource::Representation
       
           property :storage_source, as: 'storageSource', class: Google::Apis::CloudbuildV1::StorageSource, decorator: Google::Apis::CloudbuildV1::StorageSource::Representation
