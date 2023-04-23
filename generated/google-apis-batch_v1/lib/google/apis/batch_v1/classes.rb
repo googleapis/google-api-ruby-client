@@ -332,6 +332,12 @@ module Google
         # @return [Google::Apis::BatchV1::NetworkPolicy]
         attr_accessor :network
       
+        # PlacementPolicy describes a group placement policy for the VMs controlled by
+        # this AllocationPolicy.
+        # Corresponds to the JSON property `placement`
+        # @return [Google::Apis::BatchV1::PlacementPolicy]
+        attr_accessor :placement
+      
         # Carries information about a Google Cloud service account.
         # Corresponds to the JSON property `serviceAccount`
         # @return [Google::Apis::BatchV1::ServiceAccount]
@@ -347,6 +353,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @location = args[:location] if args.key?(:location)
           @network = args[:network] if args.key?(:network)
+          @placement = args[:placement] if args.key?(:placement)
           @service_account = args[:service_account] if args.key?(:service_account)
         end
       end
@@ -1448,6 +1455,38 @@ module Google
         end
       end
       
+      # PlacementPolicy describes a group placement policy for the VMs controlled by
+      # this AllocationPolicy.
+      class PlacementPolicy
+        include Google::Apis::Core::Hashable
+      
+        # UNSPECIFIED vs. COLLOCATED (default UNSPECIFIED). Use COLLOCATED when you want
+        # VMs to be located close to each other for low network latency between the VMs.
+        # No placement policy will be generated when collocation is UNSPECIFIED.
+        # Corresponds to the JSON property `collocation`
+        # @return [String]
+        attr_accessor :collocation
+      
+        # When specified, causes the job to fail if more than max_distance logical
+        # switches are required between VMs. Batch uses the most compact possible
+        # placement of VMs even when max_distance is not specified. An explicit
+        # max_distance makes that level of compactness a strict requirement. Not yet
+        # implemented
+        # Corresponds to the JSON property `maxDistance`
+        # @return [Fixnum]
+        attr_accessor :max_distance
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @collocation = args[:collocation] if args.key?(:collocation)
+          @max_distance = args[:max_distance] if args.key?(:max_distance)
+        end
+      end
+      
       # Request to report agent's state. The Request itself implies the agent is
       # healthy.
       class ReportAgentStateRequest
@@ -1558,6 +1597,11 @@ module Google
         attr_accessor :ignore_exit_status
         alias_method :ignore_exit_status?, :ignore_exit_status
       
+        # Labels for this Runnable.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # Script runnable.
         # Corresponds to the JSON property `script`
         # @return [Google::Apis::BatchV1::Script]
@@ -1580,6 +1624,7 @@ module Google
           @container = args[:container] if args.key?(:container)
           @environment = args[:environment] if args.key?(:environment)
           @ignore_exit_status = args[:ignore_exit_status] if args.key?(:ignore_exit_status)
+          @labels = args[:labels] if args.key?(:labels)
           @script = args[:script] if args.key?(:script)
           @timeout = args[:timeout] if args.key?(:timeout)
         end

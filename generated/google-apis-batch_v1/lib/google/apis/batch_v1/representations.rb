@@ -250,6 +250,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PlacementPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ReportAgentStateRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -419,6 +425,8 @@ module Google
           property :location, as: 'location', class: Google::Apis::BatchV1::LocationPolicy, decorator: Google::Apis::BatchV1::LocationPolicy::Representation
       
           property :network, as: 'network', class: Google::Apis::BatchV1::NetworkPolicy, decorator: Google::Apis::BatchV1::NetworkPolicy::Representation
+      
+          property :placement, as: 'placement', class: Google::Apis::BatchV1::PlacementPolicy, decorator: Google::Apis::BatchV1::PlacementPolicy::Representation
       
           property :service_account, as: 'serviceAccount', class: Google::Apis::BatchV1::ServiceAccount, decorator: Google::Apis::BatchV1::ServiceAccount::Representation
       
@@ -724,6 +732,14 @@ module Google
         end
       end
       
+      class PlacementPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :collocation, as: 'collocation'
+          property :max_distance, :numeric_string => true, as: 'maxDistance'
+        end
+      end
+      
       class ReportAgentStateRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -758,6 +774,7 @@ module Google
           property :environment, as: 'environment', class: Google::Apis::BatchV1::Environment, decorator: Google::Apis::BatchV1::Environment::Representation
       
           property :ignore_exit_status, as: 'ignoreExitStatus'
+          hash :labels, as: 'labels'
           property :script, as: 'script', class: Google::Apis::BatchV1::Script, decorator: Google::Apis::BatchV1::Script::Representation
       
           property :timeout, as: 'timeout'
