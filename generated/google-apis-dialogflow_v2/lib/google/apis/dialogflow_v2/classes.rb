@@ -277,7 +277,7 @@ module Google
         # An intent represents a user's intent to interact with a conversational agent.
         # You can provide information for the Dialogflow API to use to match user input
         # to an intent by adding training phrases (i.e., examples of user input) to your
-        # intent. Next ID: 15
+        # intent.
         # Corresponds to the JSON property `triggeredIntent`
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3Intent]
         attr_accessor :triggered_intent
@@ -659,8 +659,8 @@ module Google
         # @return [String]
         attr_accessor :agent_content
       
-        # The URI to a file containing the exported agent. This field is populated only
-        # if `agent_uri` is specified in ExportAgentRequest.
+        # The URI to a file containing the exported agent. This field is populated if `
+        # agent_uri` is specified in ExportAgentRequest.
         # Corresponds to the JSON property `agentUri`
         # @return [String]
         attr_accessor :agent_uri
@@ -1260,7 +1260,7 @@ module Google
       # An intent represents a user's intent to interact with a conversational agent.
       # You can provide information for the Dialogflow API to use to match user input
       # to an intent by adding training phrases (i.e., examples of user input) to your
-      # intent. Next ID: 15
+      # intent.
       class GoogleCloudDialogflowCxV3Intent
         include Google::Apis::Core::Hashable
       
@@ -3693,8 +3693,8 @@ module Google
         # @return [String]
         attr_accessor :agent_content
       
-        # The URI to a file containing the exported agent. This field is populated only
-        # if `agent_uri` is specified in ExportAgentRequest.
+        # The URI to a file containing the exported agent. This field is populated if `
+        # agent_uri` is specified in ExportAgentRequest.
         # Corresponds to the JSON property `agentUri`
         # @return [String]
         attr_accessor :agent_uri
@@ -4443,7 +4443,6 @@ module Google
       end
       
       # Represents an example that the agent is trained on to identify the intent.
-      # Next ID: 15
       class GoogleCloudDialogflowCxV3beta1IntentTrainingPhrase
         include Google::Apis::Core::Hashable
       
@@ -9490,6 +9489,12 @@ module Google
         attr_accessor :disable_no_speech_recognized_event
         alias_method :disable_no_speech_recognized_event?, :disable_no_speech_recognized_event
       
+        # Enable automatic punctuation option at the speech backend.
+        # Corresponds to the JSON property `enableAutomaticPunctuation`
+        # @return [Boolean]
+        attr_accessor :enable_automatic_punctuation
+        alias_method :enable_automatic_punctuation?, :enable_automatic_punctuation
+      
         # If `true`, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult
         # with information about the recognized speech words, e.g. start and end time
         # offsets. If false or unspecified, Speech doesn't return any word-level
@@ -9573,6 +9578,7 @@ module Google
         def update!(**args)
           @audio_encoding = args[:audio_encoding] if args.key?(:audio_encoding)
           @disable_no_speech_recognized_event = args[:disable_no_speech_recognized_event] if args.key?(:disable_no_speech_recognized_event)
+          @enable_automatic_punctuation = args[:enable_automatic_punctuation] if args.key?(:enable_automatic_punctuation)
           @enable_word_info = args[:enable_word_info] if args.key?(:enable_word_info)
           @language_code = args[:language_code] if args.key?(:language_code)
           @model = args[:model] if args.key?(:model)
