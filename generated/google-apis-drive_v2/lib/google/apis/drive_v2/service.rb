@@ -1272,6 +1272,8 @@ module Google
         end
         
         # Permanently deletes all of the user's trashed files.
+        # @param [String] drive_id
+        #   If set, empties the trash of the provided shared drive.
         # @param [Boolean] enforce_single_parent
         #   Deprecated. If an item is not in a shared drive and its last parent is deleted
         #   but the item itself is not, the item will be placed under its owner's root.
@@ -1294,8 +1296,9 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def empty_trash(enforce_single_parent: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def empty_trash(drive_id: nil, enforce_single_parent: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:delete, 'files/trash', options)
+          command.query['driveId'] = drive_id unless drive_id.nil?
           command.query['enforceSingleParent'] = enforce_single_parent unless enforce_single_parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

@@ -1,5 +1,9 @@
 # Release history for google-apis-drive_v2
 
+### v0.35.0 (2023-04-23)
+
+* Regenerated from discovery document revision 20230413
+
 ### v0.34.0 (2023-02-19)
 
 * Regenerated from discovery document revision 20230212
