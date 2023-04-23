@@ -76,8 +76,8 @@ module Google
         #   field is only available for "cloud-retail" dataset.
         # @param [String] entity
         #   The entity for customers that may run multiple different entities, domains,
-        #   sites or regions, for example, "Google US", "Google Ads", "Waymo", "google.com"
-        #   , "youtube.com", etc. If this is set, it should be exactly matched with
+        #   sites or regions, for example, `Google US`, `Google Ads`, `Waymo`, `google.com`
+        #   , `youtube.com`, etc. If this is set, it should be exactly matched with
         #   UserEvent.entity to get per-entity autocomplete results.
         # @param [Array<String>, String] language_codes
         #   Note that this field applies for `user-data` dataset only. For requests with `
@@ -800,7 +800,7 @@ module Google
         #   Product.Type.PRIMARY Product with more than one variants. Otherwise, an
         #   INVALID_ARGUMENT error is returned. All inventory information for the named
         #   Product will be deleted.
-        # @param [Boolean] cascade_delete
+        # @param [Boolean] force
         #   This value only applies to the case when the target product is of type PRIMARY.
         #   When deleting a product of VARIANT/COLLECTION type, this value will be
         #   ignored. When set to true, the subsequent variant products will be deleted.
@@ -823,12 +823,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_catalog_branch_product(name, cascade_delete: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_project_location_catalog_branch_product(name, force: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v2alpha/{+name}', options)
           command.response_representation = Google::Apis::RetailV2alpha::GoogleProtobufEmpty::Representation
           command.response_class = Google::Apis::RetailV2alpha::GoogleProtobufEmpty
           command.params['name'] = name unless name.nil?
-          command.query['cascadeDelete'] = cascade_delete unless cascade_delete.nil?
+          command.query['force'] = force unless force.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
