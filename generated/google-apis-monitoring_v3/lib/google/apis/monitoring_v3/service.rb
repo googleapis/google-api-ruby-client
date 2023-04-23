@@ -1363,7 +1363,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the notification channels that have been created for the project.
+        # Lists the notification channels that have been created for the project. To
+        # list the types of notification channels that are supported, use the
+        # ListNotificationChannelDescriptors method.
         # @param [String] name
         #   Required. The project (https://cloud.google.com/monitoring/api/v3#project_name)
         #   on which to execute the request. The format is: projects/[
