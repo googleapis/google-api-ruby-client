@@ -928,6 +928,32 @@ module Google
         end
       end
       
+      # A denied access contains details about an access tuple that is blocked by IAM
+      # deny policies.
+      class DeniedAccess
+        include Google::Apis::Core::Hashable
+      
+        # An access tuple contains a tuple of a resource, an identity and an access.
+        # Corresponds to the JSON property `deniedAccessTuple`
+        # @return [Google::Apis::CloudassetV1::GoogleCloudAssetV1DeniedAccessAccessTuple]
+        attr_accessor :denied_access_tuple
+      
+        # The details about how denied_access_tuple is denied.
+        # Corresponds to the JSON property `denyDetails`
+        # @return [Array<Google::Apis::CloudassetV1::GoogleCloudAssetV1DeniedAccessDenyDetail>]
+        attr_accessor :deny_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @denied_access_tuple = args[:denied_access_tuple] if args.key?(:denied_access_tuple)
+          @deny_details = args[:deny_details] if args.key?(:deny_details)
+        end
+      end
+      
       # The effective IAM policies on one resource.
       class EffectiveIamPolicy
         include Google::Apis::Core::Hashable
@@ -1414,7 +1440,7 @@ module Google
       class GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedIamPolicy
         include Google::Apis::Core::Hashable
       
-        # The full resource name of the resource associated with this IAM policy.
+        # The full resource name of the resource on which this IAM policy is set.
         # Example: `//compute.googleapis.com/projects/my_project_123/zones/zone1/
         # instances/instance1`. See [Cloud Asset Inventory Resource Name Format](https://
         # cloud.google.com/asset-inventory/docs/resource-name-format) for more
@@ -1724,6 +1750,160 @@ module Google
         end
       end
       
+      # An IAM role or permission under analysis.
+      class GoogleCloudAssetV1DeniedAccessAccess
+        include Google::Apis::Core::Hashable
+      
+        # The IAM permission in [v1 format](https://cloud.google.com/iam/docs/
+        # permissions-reference)
+        # Corresponds to the JSON property `permission`
+        # @return [String]
+        attr_accessor :permission
+      
+        # The IAM role.
+        # Corresponds to the JSON property `role`
+        # @return [String]
+        attr_accessor :role
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @permission = args[:permission] if args.key?(:permission)
+          @role = args[:role] if args.key?(:role)
+        end
+      end
+      
+      # An access tuple contains a tuple of a resource, an identity and an access.
+      class GoogleCloudAssetV1DeniedAccessAccessTuple
+        include Google::Apis::Core::Hashable
+      
+        # An IAM role or permission under analysis.
+        # Corresponds to the JSON property `access`
+        # @return [Google::Apis::CloudassetV1::GoogleCloudAssetV1DeniedAccessAccess]
+        attr_accessor :access
+      
+        # An identity under analysis.
+        # Corresponds to the JSON property `identity`
+        # @return [Google::Apis::CloudassetV1::GoogleCloudAssetV1DeniedAccessIdentity]
+        attr_accessor :identity
+      
+        # A Google Cloud resource under analysis.
+        # Corresponds to the JSON property `resource`
+        # @return [Google::Apis::CloudassetV1::GoogleCloudAssetV1DeniedAccessResource]
+        attr_accessor :resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access = args[:access] if args.key?(:access)
+          @identity = args[:identity] if args.key?(:identity)
+          @resource = args[:resource] if args.key?(:resource)
+        end
+      end
+      
+      # A deny detail that explains which IAM deny rule denies the denied_access_tuple.
+      class GoogleCloudAssetV1DeniedAccessDenyDetail
+        include Google::Apis::Core::Hashable
+      
+        # The denied accesses. If this deny_rule fully denies the denied_access_tuple,
+        # this field will be same as AccessTuple.access. Otherwise, this field can
+        # contain AccessTuple.access and its descendant accesses, such as a subset of
+        # IAM permissions contained in an IAM role.
+        # Corresponds to the JSON property `accesses`
+        # @return [Array<Google::Apis::CloudassetV1::GoogleCloudAssetV1DeniedAccessAccess>]
+        attr_accessor :accesses
+      
+        # A deny rule in an IAM deny policy.
+        # Corresponds to the JSON property `denyRule`
+        # @return [Google::Apis::CloudassetV1::GoogleIamV2DenyRule]
+        attr_accessor :deny_rule
+      
+        # Whether the deny_rule fully denies all access granted by the
+        # denied_access_tuple. `True` means the deny rule fully blocks the access tuple.
+        # `False` means the deny rule partially blocks the access tuple."
+        # Corresponds to the JSON property `fullyDenied`
+        # @return [Boolean]
+        attr_accessor :fully_denied
+        alias_method :fully_denied?, :fully_denied
+      
+        # If this deny_rule fully denies the denied_access_tuple, this field will be
+        # same as AccessTuple.identity. Otherwise, this field can contain AccessTuple.
+        # identity and its descendant identities, such as a subset of users in a group.
+        # Corresponds to the JSON property `identities`
+        # @return [Array<Google::Apis::CloudassetV1::GoogleCloudAssetV1DeniedAccessIdentity>]
+        attr_accessor :identities
+      
+        # The resources that the identities are denied access to. If this deny_rule
+        # fully denies the denied_access_tuple, this field will be same as AccessTuple.
+        # resource. Otherwise, this field can contain AccessTuple.resource and its
+        # descendant resources.
+        # Corresponds to the JSON property `resources`
+        # @return [Array<Google::Apis::CloudassetV1::GoogleCloudAssetV1DeniedAccessResource>]
+        attr_accessor :resources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @accesses = args[:accesses] if args.key?(:accesses)
+          @deny_rule = args[:deny_rule] if args.key?(:deny_rule)
+          @fully_denied = args[:fully_denied] if args.key?(:fully_denied)
+          @identities = args[:identities] if args.key?(:identities)
+          @resources = args[:resources] if args.key?(:resources)
+        end
+      end
+      
+      # An identity under analysis.
+      class GoogleCloudAssetV1DeniedAccessIdentity
+        include Google::Apis::Core::Hashable
+      
+        # The identity of members, formatted as appear in an [IAM policy binding](https:/
+        # /cloud.google.com/iam/reference/rest/v1/Binding). For example, they might be
+        # formatted like the following: - user:foo@google.com - group:group1@google.com -
+        # serviceAccount:s1@prj1.iam.gserviceaccount.com - projectOwner:some_project_id
+        # - domain:google.com - allUsers
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # A Google Cloud resource under analysis.
+      class GoogleCloudAssetV1DeniedAccessResource
+        include Google::Apis::Core::Hashable
+      
+        # The [full resource name](https://cloud.google.com/asset-inventory/docs/
+        # resource-name-format)
+        # Corresponds to the JSON property `fullResourceName`
+        # @return [String]
+        attr_accessor :full_resource_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @full_resource_name = args[:full_resource_name] if args.key?(:full_resource_name)
+        end
+      end
+      
       # A directional edge.
       class GoogleCloudAssetV1Edge
         include Google::Apis::Core::Hashable
@@ -1832,10 +2012,11 @@ module Google
         # @return [Google::Apis::CloudassetV1::IamPolicyAnalysisState]
         attr_accessor :analysis_state
       
-        # The identity name in any form of members appear in [IAM policy binding](https:/
-        # /cloud.google.com/iam/reference/rest/v1/Binding), such as: - user:foo@google.
-        # com - group:group1@google.com - serviceAccount:s1@prj1.iam.gserviceaccount.com
-        # - projectOwner:some_project_id - domain:google.com - allUsers - etc.
+        # The identity of members, formatted as appear in an [IAM policy binding](https:/
+        # /cloud.google.com/iam/reference/rest/v1/Binding). For example, they might be
+        # formatted like the following: - user:foo@google.com - group:group1@google.com -
+        # serviceAccount:s1@prj1.iam.gserviceaccount.com - projectOwner:some_project_id
+        # - domain:google.com - allUsers
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2664,6 +2845,101 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # A deny rule in an IAM deny policy.
+      class GoogleIamV2DenyRule
+        include Google::Apis::Core::Hashable
+      
+        # Represents a textual expression in the Common Expression Language (CEL) syntax.
+        # CEL is a C-like expression language. The syntax and semantics of CEL are
+        # documented at https://github.com/google/cel-spec. Example (Comparison): title:
+        # "Summary size limit" description: "Determines if a summary is less than 100
+        # chars" expression: "document.summary.size() < 100" Example (Equality): title: "
+        # Requestor is owner" description: "Determines if requestor is the document
+        # owner" expression: "document.owner == request.auth.claims.email" Example (
+        # Logic): title: "Public documents" description: "Determine whether the document
+        # should be publicly visible" expression: "document.type != 'private' &&
+        # document.type != 'internal'" Example (Data Manipulation): title: "Notification
+        # string" description: "Create a notification string with a timestamp."
+        # expression: "'New message received at ' + string(document.create_time)" The
+        # exact variables and functions that may be referenced within an expression are
+        # determined by the service that evaluates it. See the service documentation for
+        # additional information.
+        # Corresponds to the JSON property `denialCondition`
+        # @return [Google::Apis::CloudassetV1::Expr]
+        attr_accessor :denial_condition
+      
+        # The permissions that are explicitly denied by this rule. Each permission uses
+        # the format ``service_fqdn`/`resource`.`verb``, where ``service_fqdn`` is the
+        # fully qualified domain name for the service. For example, `iam.googleapis.com/
+        # roles.list`.
+        # Corresponds to the JSON property `deniedPermissions`
+        # @return [Array<String>]
+        attr_accessor :denied_permissions
+      
+        # The identities that are prevented from using one or more permissions on Google
+        # Cloud resources. This field can contain the following values: * `principalSet:/
+        # /goog/public:all`: A special identifier that represents any principal that is
+        # on the internet, even if they do not have a Google Account or are not logged
+        # in. * `principal://goog/subject/`email_id``: A specific Google Account.
+        # Includes Gmail, Cloud Identity, and Google Workspace user accounts. For
+        # example, `principal://goog/subject/alice@example.com`. * `deleted:principal://
+        # goog/subject/`email_id`?uid=`uid``: A specific Google Account that was deleted
+        # recently. For example, `deleted:principal://goog/subject/alice@example.com?uid=
+        # 1234567890`. If the Google Account is recovered, this identifier reverts to
+        # the standard identifier for a Google Account. * `principalSet://goog/group/`
+        # group_id``: A Google group. For example, `principalSet://goog/group/admins@
+        # example.com`. * `deleted:principalSet://goog/group/`group_id`?uid=`uid``: A
+        # Google group that was deleted recently. For example, `deleted:principalSet://
+        # goog/group/admins@example.com?uid=1234567890`. If the Google group is restored,
+        # this identifier reverts to the standard identifier for a Google group. * `
+        # principal://iam.googleapis.com/projects/-/serviceAccounts/`service_account_id``
+        # : A Google Cloud service account. For example, `principal://iam.googleapis.com/
+        # projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com`. * `
+        # deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/`
+        # service_account_id`?uid=`uid``: A Google Cloud service account that was
+        # deleted recently. For example, `deleted:principal://iam.googleapis.com/
+        # projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com?uid=
+        # 1234567890`. If the service account is undeleted, this identifier reverts to
+        # the standard identifier for a service account. * `principalSet://goog/
+        # cloudIdentityCustomerId/`customer_id``: All of the principals associated with
+        # the specified Google Workspace or Cloud Identity customer ID. For example, `
+        # principalSet://goog/cloudIdentityCustomerId/C01Abc35`.
+        # Corresponds to the JSON property `deniedPrincipals`
+        # @return [Array<String>]
+        attr_accessor :denied_principals
+      
+        # Specifies the permissions that this rule excludes from the set of denied
+        # permissions given by `denied_permissions`. If a permission appears in `
+        # denied_permissions` _and_ in `exception_permissions` then it will _not_ be
+        # denied. The excluded permissions can be specified using the same syntax as `
+        # denied_permissions`.
+        # Corresponds to the JSON property `exceptionPermissions`
+        # @return [Array<String>]
+        attr_accessor :exception_permissions
+      
+        # The identities that are excluded from the deny rule, even if they are listed
+        # in the `denied_principals`. For example, you could add a Google group to the `
+        # denied_principals`, then exclude specific users who belong to that group. This
+        # field can contain the same values as the `denied_principals` field, excluding `
+        # principalSet://goog/public:all`, which represents all users on the internet.
+        # Corresponds to the JSON property `exceptionPrincipals`
+        # @return [Array<String>]
+        attr_accessor :exception_principals
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @denial_condition = args[:denial_condition] if args.key?(:denial_condition)
+          @denied_permissions = args[:denied_permissions] if args.key?(:denied_permissions)
+          @denied_principals = args[:denied_principals] if args.key?(:denied_principals)
+          @exception_permissions = args[:exception_permissions] if args.key?(:exception_permissions)
+          @exception_principals = args[:exception_principals] if args.key?(:exception_principals)
         end
       end
       
@@ -3540,6 +3816,14 @@ module Google
         # @return [Array<Google::Apis::CloudassetV1::IamPolicyAnalysisResult>]
         attr_accessor :analysis_results
       
+        # A list of DeniedAccess, which contains all access tuples in the
+        # analysis_results that are denied by IAM deny policies. If no access tuples are
+        # denied, the list is empty. This is only populated when IamPolicyAnalysisQuery.
+        # Options.include_deny_policy_analysis is true.
+        # Corresponds to the JSON property `deniedAccesses`
+        # @return [Array<Google::Apis::CloudassetV1::DeniedAccess>]
+        attr_accessor :denied_accesses
+      
         # Represents whether all entries in the analysis_results have been fully
         # explored to answer the query.
         # Corresponds to the JSON property `fullyExplored`
@@ -3560,6 +3844,7 @@ module Google
         def update!(**args)
           @analysis_query = args[:analysis_query] if args.key?(:analysis_query)
           @analysis_results = args[:analysis_results] if args.key?(:analysis_results)
+          @denied_accesses = args[:denied_accesses] if args.key?(:denied_accesses)
           @fully_explored = args[:fully_explored] if args.key?(:fully_explored)
           @non_critical_errors = args[:non_critical_errors] if args.key?(:non_critical_errors)
         end
@@ -4253,6 +4538,13 @@ module Google
         attr_accessor :expand_roles
         alias_method :expand_roles?, :expand_roles
       
+        # Optional. If true, the response includes deny policy analysis results, and you
+        # can see which access tuples are denied. Default is false.
+        # Corresponds to the JSON property `includeDenyPolicyAnalysis`
+        # @return [Boolean]
+        attr_accessor :include_deny_policy_analysis
+        alias_method :include_deny_policy_analysis?, :include_deny_policy_analysis
+      
         # Optional. If true, the result will output the relevant membership
         # relationships between groups and other groups, and between groups and
         # principals. Default is false.
@@ -4278,6 +4570,7 @@ module Google
           @expand_groups = args[:expand_groups] if args.key?(:expand_groups)
           @expand_resources = args[:expand_resources] if args.key?(:expand_resources)
           @expand_roles = args[:expand_roles] if args.key?(:expand_roles)
+          @include_deny_policy_analysis = args[:include_deny_policy_analysis] if args.key?(:include_deny_policy_analysis)
           @output_group_edges = args[:output_group_edges] if args.key?(:output_group_edges)
           @output_resource_edges = args[:output_resource_edges] if args.key?(:output_resource_edges)
         end
