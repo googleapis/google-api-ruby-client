@@ -635,12 +635,6 @@ module Google
         # @return [String]
         attr_accessor :request_access
       
-        # Restricted export config, used to configure restricted export on linked
-        # dataset.
-        # Corresponds to the JSON property `restrictedExportConfig`
-        # @return [Google::Apis::AnalyticshubV1beta1::RestrictedExportConfig]
-        attr_accessor :restricted_export_config
-      
         # Output only. Current state of the listing.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -663,7 +657,6 @@ module Google
           @primary_contact = args[:primary_contact] if args.key?(:primary_contact)
           @publisher = args[:publisher] if args.key?(:publisher)
           @request_access = args[:request_access] if args.key?(:request_access)
-          @restricted_export_config = args[:restricted_export_config] if args.key?(:restricted_export_config)
           @state = args[:state] if args.key?(:state)
         end
       end
@@ -844,35 +837,6 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @primary_contact = args[:primary_contact] if args.key?(:primary_contact)
-        end
-      end
-      
-      # Restricted export config, used to configure restricted export on linked
-      # dataset.
-      class RestrictedExportConfig
-        include Google::Apis::Core::Hashable
-      
-        # If true, enable restricted export.
-        # Corresponds to the JSON property `enabled`
-        # @return [Boolean]
-        attr_accessor :enabled
-        alias_method :enabled?, :enabled
-      
-        # If true, restrict export of query result derived from restricted linked
-        # dataset table.
-        # Corresponds to the JSON property `restrictQueryResult`
-        # @return [Boolean]
-        attr_accessor :restrict_query_result
-        alias_method :restrict_query_result?, :restrict_query_result
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @enabled = args[:enabled] if args.key?(:enabled)
-          @restrict_query_result = args[:restrict_query_result] if args.key?(:restrict_query_result)
         end
       end
       
