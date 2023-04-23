@@ -589,6 +589,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cpu_idle, as: 'cpuIdle'
           hash :limits, as: 'limits'
+          property :startup_cpu_boost, as: 'startupCpuBoost'
         end
       end
       
