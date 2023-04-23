@@ -160,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeniedAccess
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EffectiveIamPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -257,6 +263,36 @@ module Google
       end
       
       class GoogleCloudAssetV1CustomConstraint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssetV1DeniedAccessAccess
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssetV1DeniedAccessAccessTuple
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssetV1DeniedAccessDenyDetail
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssetV1DeniedAccessIdentity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssetV1DeniedAccessResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -371,6 +407,12 @@ module Google
       end
       
       class GoogleCloudOrgpolicyV1RestoreDefault
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIamV2DenyRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1050,6 +1092,16 @@ module Google
         end
       end
       
+      class DeniedAccess
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :denied_access_tuple, as: 'deniedAccessTuple', class: Google::Apis::CloudassetV1::GoogleCloudAssetV1DeniedAccessAccessTuple, decorator: Google::Apis::CloudassetV1::GoogleCloudAssetV1DeniedAccessAccessTuple::Representation
+      
+          collection :deny_details, as: 'denyDetails', class: Google::Apis::CloudassetV1::GoogleCloudAssetV1DeniedAccessDenyDetail, decorator: Google::Apis::CloudassetV1::GoogleCloudAssetV1DeniedAccessDenyDetail::Representation
+      
+        end
+      end
+      
       class EffectiveIamPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1227,6 +1279,55 @@ module Google
           collection :method_types, as: 'methodTypes'
           property :name, as: 'name'
           collection :resource_types, as: 'resourceTypes'
+        end
+      end
+      
+      class GoogleCloudAssetV1DeniedAccessAccess
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :permission, as: 'permission'
+          property :role, as: 'role'
+        end
+      end
+      
+      class GoogleCloudAssetV1DeniedAccessAccessTuple
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access, as: 'access', class: Google::Apis::CloudassetV1::GoogleCloudAssetV1DeniedAccessAccess, decorator: Google::Apis::CloudassetV1::GoogleCloudAssetV1DeniedAccessAccess::Representation
+      
+          property :identity, as: 'identity', class: Google::Apis::CloudassetV1::GoogleCloudAssetV1DeniedAccessIdentity, decorator: Google::Apis::CloudassetV1::GoogleCloudAssetV1DeniedAccessIdentity::Representation
+      
+          property :resource, as: 'resource', class: Google::Apis::CloudassetV1::GoogleCloudAssetV1DeniedAccessResource, decorator: Google::Apis::CloudassetV1::GoogleCloudAssetV1DeniedAccessResource::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAssetV1DeniedAccessDenyDetail
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :accesses, as: 'accesses', class: Google::Apis::CloudassetV1::GoogleCloudAssetV1DeniedAccessAccess, decorator: Google::Apis::CloudassetV1::GoogleCloudAssetV1DeniedAccessAccess::Representation
+      
+          property :deny_rule, as: 'denyRule', class: Google::Apis::CloudassetV1::GoogleIamV2DenyRule, decorator: Google::Apis::CloudassetV1::GoogleIamV2DenyRule::Representation
+      
+          property :fully_denied, as: 'fullyDenied'
+          collection :identities, as: 'identities', class: Google::Apis::CloudassetV1::GoogleCloudAssetV1DeniedAccessIdentity, decorator: Google::Apis::CloudassetV1::GoogleCloudAssetV1DeniedAccessIdentity::Representation
+      
+          collection :resources, as: 'resources', class: Google::Apis::CloudassetV1::GoogleCloudAssetV1DeniedAccessResource, decorator: Google::Apis::CloudassetV1::GoogleCloudAssetV1DeniedAccessResource::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAssetV1DeniedAccessIdentity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudAssetV1DeniedAccessResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :full_resource_name, as: 'fullResourceName'
         end
       end
       
@@ -1426,6 +1527,18 @@ module Google
       class GoogleCloudOrgpolicyV1RestoreDefault
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleIamV2DenyRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :denial_condition, as: 'denialCondition', class: Google::Apis::CloudassetV1::Expr, decorator: Google::Apis::CloudassetV1::Expr::Representation
+      
+          collection :denied_permissions, as: 'deniedPermissions'
+          collection :denied_principals, as: 'deniedPrincipals'
+          collection :exception_permissions, as: 'exceptionPermissions'
+          collection :exception_principals, as: 'exceptionPrincipals'
         end
       end
       
@@ -1632,6 +1745,8 @@ module Google
       
           collection :analysis_results, as: 'analysisResults', class: Google::Apis::CloudassetV1::IamPolicyAnalysisResult, decorator: Google::Apis::CloudassetV1::IamPolicyAnalysisResult::Representation
       
+          collection :denied_accesses, as: 'deniedAccesses', class: Google::Apis::CloudassetV1::DeniedAccess, decorator: Google::Apis::CloudassetV1::DeniedAccess::Representation
+      
           property :fully_explored, as: 'fullyExplored'
           collection :non_critical_errors, as: 'nonCriticalErrors', class: Google::Apis::CloudassetV1::IamPolicyAnalysisState, decorator: Google::Apis::CloudassetV1::IamPolicyAnalysisState::Representation
       
@@ -1810,6 +1925,7 @@ module Google
           property :expand_groups, as: 'expandGroups'
           property :expand_resources, as: 'expandResources'
           property :expand_roles, as: 'expandRoles'
+          property :include_deny_policy_analysis, as: 'includeDenyPolicyAnalysis'
           property :output_group_edges, as: 'outputGroupEdges'
           property :output_resource_edges, as: 'outputResourceEdges'
         end
