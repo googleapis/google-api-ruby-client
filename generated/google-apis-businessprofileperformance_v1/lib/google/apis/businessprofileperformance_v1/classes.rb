@@ -58,7 +58,8 @@ module Google
       class DailySubEntityType
         include Google::Apis::Core::Hashable
       
-        # Represents the day of the week. Eg: MONDAY.
+        # Represents the day of the week. Eg: MONDAY. Currently supported DailyMetrics =
+        # NONE.
         # Corresponds to the JSON property `dayOfWeek`
         # @return [String]
         attr_accessor :day_of_week
@@ -139,7 +140,7 @@ module Google
         # @return [Google::Apis::BusinessprofileperformanceV1::Date]
         attr_accessor :date
       
-        # The value of the datapoint.
+        # The value of the datapoint. This will not be present when the value is zero.
         # Corresponds to the JSON property `value`
         # @return [Fixnum]
         attr_accessor :value
