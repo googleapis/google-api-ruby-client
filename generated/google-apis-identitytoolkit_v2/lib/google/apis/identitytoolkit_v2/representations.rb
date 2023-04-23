@@ -352,6 +352,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudIdentitytoolkitV2AuthenticatorAssertionResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIdentitytoolkitV2AuthenticatorAttestationResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIdentitytoolkitV2AuthenticatorAuthenticationResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIdentitytoolkitV2AuthenticatorRegistrationResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIdentitytoolkitV2AuthenticatorSelectionCriteria
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudIdentitytoolkitV2AutoRetrievalInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -406,7 +436,55 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIdentitytoolkitV2FinalizePasskeySignInRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIdentitytoolkitV2FinalizePasskeySignInResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudIdentitytoolkitV2MfaTotpSignInRequestInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIdentitytoolkitV2PublicKeyCredentialCreationOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIdentitytoolkitV2PublicKeyCredentialDescriptor
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIdentitytoolkitV2PublicKeyCredentialParameters
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIdentitytoolkitV2PublicKeyCredentialRequestOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -431,6 +509,12 @@ module Google
       end
       
       class GoogleCloudIdentitytoolkitV2RevokeTokenResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIdentitytoolkitV2RpEntity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -479,6 +563,36 @@ module Google
       end
       
       class GoogleCloudIdentitytoolkitV2StartMfaTotpEnrollmentResponseInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIdentitytoolkitV2StartPasskeyEnrollmentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIdentitytoolkitV2StartPasskeyEnrollmentResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIdentitytoolkitV2StartPasskeySignInRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIdentitytoolkitV2StartPasskeySignInResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIdentitytoolkitV2UserEntity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1118,6 +1232,54 @@ module Google
         end
       end
       
+      class GoogleCloudIdentitytoolkitV2AuthenticatorAssertionResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authenticator_data, :base64 => true, as: 'authenticatorData'
+          property :client_data_json, :base64 => true, as: 'clientDataJson'
+          property :signature, :base64 => true, as: 'signature'
+          property :user_handle, :base64 => true, as: 'userHandle'
+        end
+      end
+      
+      class GoogleCloudIdentitytoolkitV2AuthenticatorAttestationResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attestation_object, :base64 => true, as: 'attestationObject'
+          property :client_data_json, :base64 => true, as: 'clientDataJson'
+          collection :transports, as: 'transports'
+        end
+      end
+      
+      class GoogleCloudIdentitytoolkitV2AuthenticatorAuthenticationResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authenticator_assertion_response, as: 'authenticatorAssertionResponse', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2AuthenticatorAssertionResponse, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2AuthenticatorAssertionResponse::Representation
+      
+          property :credential_id, :base64 => true, as: 'credentialId'
+          property :credential_type, as: 'credentialType'
+        end
+      end
+      
+      class GoogleCloudIdentitytoolkitV2AuthenticatorRegistrationResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authenticator_attestation_response, as: 'authenticatorAttestationResponse', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2AuthenticatorAttestationResponse, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2AuthenticatorAttestationResponse::Representation
+      
+          property :credential_id, :base64 => true, as: 'credentialId'
+          property :credential_type, as: 'credentialType'
+        end
+      end
+      
+      class GoogleCloudIdentitytoolkitV2AuthenticatorSelectionCriteria
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authenticator_attachment, as: 'authenticatorAttachment'
+          property :require_resident_key, as: 'requireResidentKey'
+          property :user_verification, as: 'userVerification'
+        end
+      end
+      
       class GoogleCloudIdentitytoolkitV2AutoRetrievalInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1206,10 +1368,89 @@ module Google
         end
       end
       
+      class GoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authenticator_registration_response, as: 'authenticatorRegistrationResponse', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2AuthenticatorRegistrationResponse, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2AuthenticatorRegistrationResponse::Representation
+      
+          property :id_token, as: 'idToken'
+          property :tenant_id, as: 'tenantId'
+        end
+      end
+      
+      class GoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id_token, as: 'idToken'
+          property :refresh_token, as: 'refreshToken'
+        end
+      end
+      
+      class GoogleCloudIdentitytoolkitV2FinalizePasskeySignInRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authenticator_authentication_response, as: 'authenticatorAuthenticationResponse', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2AuthenticatorAuthenticationResponse, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2AuthenticatorAuthenticationResponse::Representation
+      
+          property :session_id, :base64 => true, as: 'sessionId'
+          property :tenant_id, as: 'tenantId'
+        end
+      end
+      
+      class GoogleCloudIdentitytoolkitV2FinalizePasskeySignInResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id_token, as: 'idToken'
+          property :refresh_token, as: 'refreshToken'
+        end
+      end
+      
       class GoogleCloudIdentitytoolkitV2MfaTotpSignInRequestInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :verification_code, as: 'verificationCode'
+        end
+      end
+      
+      class GoogleCloudIdentitytoolkitV2PublicKeyCredentialCreationOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authenticator_selection, as: 'authenticatorSelection', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2AuthenticatorSelectionCriteria, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2AuthenticatorSelectionCriteria::Representation
+      
+          property :challenge, :base64 => true, as: 'challenge'
+          collection :exclude_credentials, as: 'excludeCredentials', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2PublicKeyCredentialDescriptor, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2PublicKeyCredentialDescriptor::Representation
+      
+          collection :pub_key_cred_params, as: 'pubKeyCredParams', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2PublicKeyCredentialParameters, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2PublicKeyCredentialParameters::Representation
+      
+          property :rp, as: 'rp', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2RpEntity, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2RpEntity::Representation
+      
+          property :user, as: 'user', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2UserEntity, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2UserEntity::Representation
+      
+        end
+      end
+      
+      class GoogleCloudIdentitytoolkitV2PublicKeyCredentialDescriptor
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :credential_id, :base64 => true, as: 'credentialId'
+          property :credential_type, as: 'credentialType'
+          collection :transports, as: 'transports'
+        end
+      end
+      
+      class GoogleCloudIdentitytoolkitV2PublicKeyCredentialParameters
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alg, :numeric_string => true, as: 'alg'
+          property :credential_type, as: 'credentialType'
+        end
+      end
+      
+      class GoogleCloudIdentitytoolkitV2PublicKeyCredentialRequestOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :challenge, :base64 => true, as: 'challenge'
+          property :rp_id, as: 'rpId'
+          property :user_verification, as: 'userVerification'
         end
       end
       
@@ -1245,6 +1486,13 @@ module Google
       class GoogleCloudIdentitytoolkitV2RevokeTokenResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudIdentitytoolkitV2RpEntity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
         end
       end
       
@@ -1325,6 +1573,45 @@ module Google
           property :session_info, as: 'sessionInfo'
           property :shared_secret_key, as: 'sharedSecretKey'
           property :verification_code_length, as: 'verificationCodeLength'
+        end
+      end
+      
+      class GoogleCloudIdentitytoolkitV2StartPasskeyEnrollmentRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id_token, as: 'idToken'
+          property :tenant_id, as: 'tenantId'
+        end
+      end
+      
+      class GoogleCloudIdentitytoolkitV2StartPasskeyEnrollmentResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :credential_creation_options, as: 'credentialCreationOptions', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2PublicKeyCredentialCreationOptions, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2PublicKeyCredentialCreationOptions::Representation
+      
+        end
+      end
+      
+      class GoogleCloudIdentitytoolkitV2StartPasskeySignInRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :session_id, :base64 => true, as: 'sessionId'
+          property :tenant_id, as: 'tenantId'
+        end
+      end
+      
+      class GoogleCloudIdentitytoolkitV2StartPasskeySignInResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :credential_request_options, as: 'credentialRequestOptions', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2PublicKeyCredentialRequestOptions, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2PublicKeyCredentialRequestOptions::Representation
+      
+        end
+      end
+      
+      class GoogleCloudIdentitytoolkitV2UserEntity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, :base64 => true, as: 'id'
         end
       end
       

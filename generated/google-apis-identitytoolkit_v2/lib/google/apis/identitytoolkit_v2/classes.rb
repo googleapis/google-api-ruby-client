@@ -1921,6 +1921,176 @@ module Google
         end
       end
       
+      # Authentication response from a FIDO authenticator.
+      class GoogleCloudIdentitytoolkitV2AuthenticatorAssertionResponse
+        include Google::Apis::Core::Hashable
+      
+        # The AuthenticatorData from the authenticator.
+        # Corresponds to the JSON property `authenticatorData`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :authenticator_data
+      
+        # The CollectedClientData object from the authenticator.
+        # Corresponds to the JSON property `clientDataJson`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :client_data_json
+      
+        # The signature from the authenticator.
+        # Corresponds to the JSON property `signature`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :signature
+      
+        # The user handle.
+        # Corresponds to the JSON property `userHandle`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :user_handle
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authenticator_data = args[:authenticator_data] if args.key?(:authenticator_data)
+          @client_data_json = args[:client_data_json] if args.key?(:client_data_json)
+          @signature = args[:signature] if args.key?(:signature)
+          @user_handle = args[:user_handle] if args.key?(:user_handle)
+        end
+      end
+      
+      # Attestation response from a FIDO authenticator.
+      class GoogleCloudIdentitytoolkitV2AuthenticatorAttestationResponse
+        include Google::Apis::Core::Hashable
+      
+        # The attestation object from the authenticator.
+        # Corresponds to the JSON property `attestationObject`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :attestation_object
+      
+        # The CollectedClientData object from the authenticator.
+        # Corresponds to the JSON property `clientDataJson`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :client_data_json
+      
+        # Authenticator transports that are supported by the authenticator.
+        # Corresponds to the JSON property `transports`
+        # @return [Array<String>]
+        attr_accessor :transports
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attestation_object = args[:attestation_object] if args.key?(:attestation_object)
+          @client_data_json = args[:client_data_json] if args.key?(:client_data_json)
+          @transports = args[:transports] if args.key?(:transports)
+        end
+      end
+      
+      # Authenticator response to authenticate the user with an existing FIDO key.
+      class GoogleCloudIdentitytoolkitV2AuthenticatorAuthenticationResponse
+        include Google::Apis::Core::Hashable
+      
+        # Authentication response from a FIDO authenticator.
+        # Corresponds to the JSON property `authenticatorAssertionResponse`
+        # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2AuthenticatorAssertionResponse]
+        attr_accessor :authenticator_assertion_response
+      
+        # Identifier for the authentication credential.
+        # Corresponds to the JSON property `credentialId`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :credential_id
+      
+        # The type of public key.
+        # Corresponds to the JSON property `credentialType`
+        # @return [String]
+        attr_accessor :credential_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authenticator_assertion_response = args[:authenticator_assertion_response] if args.key?(:authenticator_assertion_response)
+          @credential_id = args[:credential_id] if args.key?(:credential_id)
+          @credential_type = args[:credential_type] if args.key?(:credential_type)
+        end
+      end
+      
+      # Authenticator response to register a new FIDO key.
+      class GoogleCloudIdentitytoolkitV2AuthenticatorRegistrationResponse
+        include Google::Apis::Core::Hashable
+      
+        # Attestation response from a FIDO authenticator.
+        # Corresponds to the JSON property `authenticatorAttestationResponse`
+        # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2AuthenticatorAttestationResponse]
+        attr_accessor :authenticator_attestation_response
+      
+        # Identifier for the registered credential.
+        # Corresponds to the JSON property `credentialId`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :credential_id
+      
+        # The type of credential.
+        # Corresponds to the JSON property `credentialType`
+        # @return [String]
+        attr_accessor :credential_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authenticator_attestation_response = args[:authenticator_attestation_response] if args.key?(:authenticator_attestation_response)
+          @credential_id = args[:credential_id] if args.key?(:credential_id)
+          @credential_type = args[:credential_type] if args.key?(:credential_type)
+        end
+      end
+      
+      # Criteria for the authenticator to create a registered FIDO key.
+      class GoogleCloudIdentitytoolkitV2AuthenticatorSelectionCriteria
+        include Google::Apis::Core::Hashable
+      
+        # The preferred authenticator attachment modality.
+        # Corresponds to the JSON property `authenticatorAttachment`
+        # @return [String]
+        attr_accessor :authenticator_attachment
+      
+        # Whether resident key is required.
+        # Corresponds to the JSON property `requireResidentKey`
+        # @return [Boolean]
+        attr_accessor :require_resident_key
+        alias_method :require_resident_key?, :require_resident_key
+      
+        # The Relying Party's user verification requirements.
+        # Corresponds to the JSON property `userVerification`
+        # @return [String]
+        attr_accessor :user_verification
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authenticator_attachment = args[:authenticator_attachment] if args.key?(:authenticator_attachment)
+          @require_resident_key = args[:require_resident_key] if args.key?(:require_resident_key)
+          @user_verification = args[:user_verification] if args.key?(:user_verification)
+        end
+      end
+      
       # The information required to auto-retrieve an SMS.
       class GoogleCloudIdentitytoolkitV2AutoRetrievalInfo
         include Google::Apis::Core::Hashable
@@ -2203,6 +2373,122 @@ module Google
         end
       end
       
+      # FinalizePasskeyEnrollment request. Registers passkey as a first factor for the
+      # user.
+      class GoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentRequest
+        include Google::Apis::Core::Hashable
+      
+        # Authenticator response to register a new FIDO key.
+        # Corresponds to the JSON property `authenticatorRegistrationResponse`
+        # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2AuthenticatorRegistrationResponse]
+        attr_accessor :authenticator_registration_response
+      
+        # Required. The GCIP ID token of the signed-in user
+        # Corresponds to the JSON property `idToken`
+        # @return [String]
+        attr_accessor :id_token
+      
+        # Optional. The ID of the Identity Platform tenant the user is signing in to. If
+        # not set, the user will sign in to the default Identity Platform project.
+        # Corresponds to the JSON property `tenantId`
+        # @return [String]
+        attr_accessor :tenant_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authenticator_registration_response = args[:authenticator_registration_response] if args.key?(:authenticator_registration_response)
+          @id_token = args[:id_token] if args.key?(:id_token)
+          @tenant_id = args[:tenant_id] if args.key?(:tenant_id)
+        end
+      end
+      
+      # FinalizePasskeyEnrollment response.
+      class GoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentResponse
+        include Google::Apis::Core::Hashable
+      
+        # ID token for the authenticated user.
+        # Corresponds to the JSON property `idToken`
+        # @return [String]
+        attr_accessor :id_token
+      
+        # Refresh token for the authenticated user.
+        # Corresponds to the JSON property `refreshToken`
+        # @return [String]
+        attr_accessor :refresh_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id_token = args[:id_token] if args.key?(:id_token)
+          @refresh_token = args[:refresh_token] if args.key?(:refresh_token)
+        end
+      end
+      
+      # Request to finalize a passkey sign-in.
+      class GoogleCloudIdentitytoolkitV2FinalizePasskeySignInRequest
+        include Google::Apis::Core::Hashable
+      
+        # Authenticator response to authenticate the user with an existing FIDO key.
+        # Corresponds to the JSON property `authenticatorAuthenticationResponse`
+        # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2AuthenticatorAuthenticationResponse]
+        attr_accessor :authenticator_authentication_response
+      
+        # Optional. The session ID that was passed into StartPasskeySignIn, if any.
+        # Corresponds to the JSON property `sessionId`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :session_id
+      
+        # Optional. The ID of the Identity Platform tenant the user is signing in to. If
+        # not set, the user will sign in to the default Identity Platform project.
+        # Corresponds to the JSON property `tenantId`
+        # @return [String]
+        attr_accessor :tenant_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authenticator_authentication_response = args[:authenticator_authentication_response] if args.key?(:authenticator_authentication_response)
+          @session_id = args[:session_id] if args.key?(:session_id)
+          @tenant_id = args[:tenant_id] if args.key?(:tenant_id)
+        end
+      end
+      
+      # Response for FinalizePasskeySignIn.
+      class GoogleCloudIdentitytoolkitV2FinalizePasskeySignInResponse
+        include Google::Apis::Core::Hashable
+      
+        # ID token for the authenticated user.
+        # Corresponds to the JSON property `idToken`
+        # @return [String]
+        attr_accessor :id_token
+      
+        # Refresh token for the authenticated user.
+        # Corresponds to the JSON property `refreshToken`
+        # @return [String]
+        attr_accessor :refresh_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id_token = args[:id_token] if args.key?(:id_token)
+          @refresh_token = args[:refresh_token] if args.key?(:refresh_token)
+        end
+      end
+      
       # TOTP verification info for FinalizeMfaSignInRequest.
       class GoogleCloudIdentitytoolkitV2MfaTotpSignInRequestInfo
         include Google::Apis::Core::Hashable
@@ -2219,6 +2505,145 @@ module Google
         # Update properties of this object
         def update!(**args)
           @verification_code = args[:verification_code] if args.key?(:verification_code)
+        end
+      end
+      
+      # Parameters for creating a FIDO key.
+      class GoogleCloudIdentitytoolkitV2PublicKeyCredentialCreationOptions
+        include Google::Apis::Core::Hashable
+      
+        # Criteria for the authenticator to create a registered FIDO key.
+        # Corresponds to the JSON property `authenticatorSelection`
+        # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2AuthenticatorSelectionCriteria]
+        attr_accessor :authenticator_selection
+      
+        # The FIDO challenge.
+        # Corresponds to the JSON property `challenge`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :challenge
+      
+        # Credentials already mapped to this user.
+        # Corresponds to the JSON property `excludeCredentials`
+        # @return [Array<Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2PublicKeyCredentialDescriptor>]
+        attr_accessor :exclude_credentials
+      
+        # Lists the supported key types and signature algorithms.
+        # Corresponds to the JSON property `pubKeyCredParams`
+        # @return [Array<Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2PublicKeyCredentialParameters>]
+        attr_accessor :pub_key_cred_params
+      
+        # The entity object for the Relying Party.
+        # Corresponds to the JSON property `rp`
+        # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2RpEntity]
+        attr_accessor :rp
+      
+        # The entity object for the user.
+        # Corresponds to the JSON property `user`
+        # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2UserEntity]
+        attr_accessor :user
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authenticator_selection = args[:authenticator_selection] if args.key?(:authenticator_selection)
+          @challenge = args[:challenge] if args.key?(:challenge)
+          @exclude_credentials = args[:exclude_credentials] if args.key?(:exclude_credentials)
+          @pub_key_cred_params = args[:pub_key_cred_params] if args.key?(:pub_key_cred_params)
+          @rp = args[:rp] if args.key?(:rp)
+          @user = args[:user] if args.key?(:user)
+        end
+      end
+      
+      # Descriptor for a public key credential.
+      class GoogleCloudIdentitytoolkitV2PublicKeyCredentialDescriptor
+        include Google::Apis::Core::Hashable
+      
+        # The identifier for the credential.
+        # Corresponds to the JSON property `credentialId`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :credential_id
+      
+        # The type of public key.
+        # Corresponds to the JSON property `credentialType`
+        # @return [String]
+        attr_accessor :credential_type
+      
+        # Authenticator transports that are supported by the authenticator.
+        # Corresponds to the JSON property `transports`
+        # @return [Array<String>]
+        attr_accessor :transports
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @credential_id = args[:credential_id] if args.key?(:credential_id)
+          @credential_type = args[:credential_type] if args.key?(:credential_type)
+          @transports = args[:transports] if args.key?(:transports)
+        end
+      end
+      
+      # Parameters to create a public credential.
+      class GoogleCloudIdentitytoolkitV2PublicKeyCredentialParameters
+        include Google::Apis::Core::Hashable
+      
+        # The COSE registry number of the cryptographic signature algorithm.
+        # Corresponds to the JSON property `alg`
+        # @return [Fixnum]
+        attr_accessor :alg
+      
+        # The type of public key to be created.
+        # Corresponds to the JSON property `credentialType`
+        # @return [String]
+        attr_accessor :credential_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alg = args[:alg] if args.key?(:alg)
+          @credential_type = args[:credential_type] if args.key?(:credential_type)
+        end
+      end
+      
+      # Parameters for signing a challenge with a FIDO key.
+      class GoogleCloudIdentitytoolkitV2PublicKeyCredentialRequestOptions
+        include Google::Apis::Core::Hashable
+      
+        # The FIDO challenge.
+        # Corresponds to the JSON property `challenge`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :challenge
+      
+        # The relying party identifier.
+        # Corresponds to the JSON property `rpId`
+        # @return [String]
+        attr_accessor :rp_id
+      
+        # The requirements regarding user verification.
+        # Corresponds to the JSON property `userVerification`
+        # @return [String]
+        attr_accessor :user_verification
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @challenge = args[:challenge] if args.key?(:challenge)
+          @rp_id = args[:rp_id] if args.key?(:rp_id)
+          @user_verification = args[:user_verification] if args.key?(:user_verification)
         end
       end
       
@@ -2342,6 +2767,25 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # The entity object for the Relying Party.
+      class GoogleCloudIdentitytoolkitV2RpEntity
+        include Google::Apis::Core::Hashable
+      
+        # The RP ID of the FIDO Relying Party.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
         end
       end
       
@@ -2608,6 +3052,119 @@ module Google
           @session_info = args[:session_info] if args.key?(:session_info)
           @shared_secret_key = args[:shared_secret_key] if args.key?(:shared_secret_key)
           @verification_code_length = args[:verification_code_length] if args.key?(:verification_code_length)
+        end
+      end
+      
+      # Starts passkey enrollment for passkey as a first factor by returning the FIDO
+      # challenge.
+      class GoogleCloudIdentitytoolkitV2StartPasskeyEnrollmentRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The GCIP ID token of the signed-in user
+        # Corresponds to the JSON property `idToken`
+        # @return [String]
+        attr_accessor :id_token
+      
+        # Optional. The ID of the Identity Platform tenant the user is signing in to. If
+        # not set, the user will sign in to the default Identity Platform project.
+        # Corresponds to the JSON property `tenantId`
+        # @return [String]
+        attr_accessor :tenant_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id_token = args[:id_token] if args.key?(:id_token)
+          @tenant_id = args[:tenant_id] if args.key?(:tenant_id)
+        end
+      end
+      
+      # StartPasskeyEnrollment response.
+      class GoogleCloudIdentitytoolkitV2StartPasskeyEnrollmentResponse
+        include Google::Apis::Core::Hashable
+      
+        # Parameters for creating a FIDO key.
+        # Corresponds to the JSON property `credentialCreationOptions`
+        # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2PublicKeyCredentialCreationOptions]
+        attr_accessor :credential_creation_options
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @credential_creation_options = args[:credential_creation_options] if args.key?(:credential_creation_options)
+        end
+      end
+      
+      # Starts passkey sign-in by returning the FIDO challenge.
+      class GoogleCloudIdentitytoolkitV2StartPasskeySignInRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The developer can bind their own concept of a user session to this
+        # flow.
+        # Corresponds to the JSON property `sessionId`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :session_id
+      
+        # Optional. The ID of the Identity Platform tenant the user is signing in to. If
+        # not set, the user will sign in to the default Identity Platform project.
+        # Corresponds to the JSON property `tenantId`
+        # @return [String]
+        attr_accessor :tenant_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @session_id = args[:session_id] if args.key?(:session_id)
+          @tenant_id = args[:tenant_id] if args.key?(:tenant_id)
+        end
+      end
+      
+      # Response for StartPasskeySignIn.
+      class GoogleCloudIdentitytoolkitV2StartPasskeySignInResponse
+        include Google::Apis::Core::Hashable
+      
+        # Parameters for signing a challenge with a FIDO key.
+        # Corresponds to the JSON property `credentialRequestOptions`
+        # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2PublicKeyCredentialRequestOptions]
+        attr_accessor :credential_request_options
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @credential_request_options = args[:credential_request_options] if args.key?(:credential_request_options)
+        end
+      end
+      
+      # The entity object for the user.
+      class GoogleCloudIdentitytoolkitV2UserEntity
+        include Google::Apis::Core::Hashable
+      
+        # The user ID.
+        # Corresponds to the JSON property `id`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
         end
       end
       
