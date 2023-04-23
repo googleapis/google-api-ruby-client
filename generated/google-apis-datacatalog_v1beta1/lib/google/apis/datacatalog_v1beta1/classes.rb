@@ -988,14 +988,10 @@ module Google
         # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1FilesetSpec]
         attr_accessor :fileset_spec
       
-        # Fully qualified name (FQN) of the resource. Set automatically for entries
-        # representing resources from synced systems. Settable only during creation and
-        # read-only afterwards. Can be used for search and lookup of the entries. FQNs
-        # take two forms: * For non-regionalized resources: ``SYSTEM`:`PROJECT`.`
-        # PATH_TO_RESOURCE_SEPARATED_WITH_DOTS`` * For regionalized resources: ``SYSTEM`:
-        # `PROJECT`.`LOCATION_ID`.`PATH_TO_RESOURCE_SEPARATED_WITH_DOTS`` Example for a
-        # DPMS table: `dataproc_metastore:`PROJECT_ID`.`LOCATION_ID`.`INSTANCE_ID`.`
-        # DATABASE_ID`.`TABLE_ID``
+        # [Fully Qualified Name (FQN)](https://cloud.google.com//data-catalog/docs/fully-
+        # qualified-names) of the resource. Set automatically for entries representing
+        # resources from synced systems. Settable only during creation, and read-only
+        # later. Can be used for search and lookup of the entries.
         # Corresponds to the JSON property `fullyQualifiedName`
         # @return [String]
         attr_accessor :fully_qualified_name
@@ -3001,6 +2997,11 @@ module Google
         # @return [Array<Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1SearchCatalogResult>]
         attr_accessor :results
       
+        # The approximate total number of entries matched by the query.
+        # Corresponds to the JSON property `totalSize`
+        # @return [Fixnum]
+        attr_accessor :total_size
+      
         # Unreachable locations. Search result does not include data from those
         # locations. Users can get additional information on the error by repeating the
         # search request with a more restrictive parameter -- setting the value for `
@@ -3017,6 +3018,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @results = args[:results] if args.key?(:results)
+          @total_size = args[:total_size] if args.key?(:total_size)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
