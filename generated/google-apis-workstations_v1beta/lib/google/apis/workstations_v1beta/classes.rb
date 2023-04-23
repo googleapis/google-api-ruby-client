@@ -202,7 +202,7 @@ module Google
         attr_accessor :env
       
         # Docker image defining the container. This image must be accessible by the
-        # config's service account.
+        # service account specified in the workstation configuration.
         # Corresponds to the JSON property `image`
         # @return [String]
         attr_accessor :image
@@ -368,10 +368,10 @@ module Google
         # @return [Fixnum]
         attr_accessor :pool_size
       
-        # Email address of the service account that will be used on VM instances used to
-        # support this config. If not set, VMs will run with a Google-managed service
-        # account. This service account must have permission to pull the specified
-        # container image, otherwise the image must be publicly accessible.
+        # Email address of the service account used on VM instances used to support this
+        # configuration. If not set, VMs run with a Google-managed service account. This
+        # service account must have permission to pull the specified container image;
+        # otherwise, the image must be publicly accessible.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
         attr_accessor :service_account
@@ -1265,7 +1265,7 @@ module Google
         attr_accessor :env
       
         # Checksum computed by the server. May be sent on update and delete requests to
-        # ensure that the client has an up-to-date value before proceeding.
+        # make sure that the client has an up-to-date value before proceeding.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -1350,7 +1350,7 @@ module Google
       
         # Output only. The private IP address of the control plane for this cluster.
         # Workstation VMs need access to this IP address to work with the service, so
-        # please ensure your firewall rules allow egress from the Workstation VMs to
+        # make sure that your firewall rules allow egress from the workstation VMs to
         # this address.
         # Corresponds to the JSON property `controlPlaneIp`
         # @return [String]
@@ -1380,7 +1380,7 @@ module Google
         attr_accessor :display_name
       
         # Checksum computed by the server. May be sent on update and delete requests to
-        # ensure that the client has an up-to-date value before proceeding.
+        # make sure that the client has an up-to-date value before proceeding.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -1516,7 +1516,7 @@ module Google
         attr_accessor :encryption_key
       
         # Checksum computed by the server. May be sent on update and delete requests to
-        # ensure that the client has an up-to-date value before proceeding.
+        # make sure that the client has an up-to-date value before proceeding.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
