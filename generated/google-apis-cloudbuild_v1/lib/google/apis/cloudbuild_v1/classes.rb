@@ -196,6 +196,15 @@ module Google
         # @return [Array<Google::Apis::CloudbuildV1::MavenArtifact>]
         attr_accessor :maven_artifacts
       
+        # A list of npm packages to be uploaded to Artifact Registry upon successful
+        # completion of all build steps. Npm packages in the specified paths will be
+        # uploaded to the specified Artifact Registry repository using the builder
+        # service account's credentials. If any packages fail to be pushed, the build is
+        # marked FAILURE.
+        # Corresponds to the JSON property `npmPackages`
+        # @return [Array<Google::Apis::CloudbuildV1::NpmPackage>]
+        attr_accessor :npm_packages
+      
         # Files in the workspace to upload to Cloud Storage upon successful completion
         # of all build steps.
         # Corresponds to the JSON property `objects`
@@ -218,6 +227,7 @@ module Google
         def update!(**args)
           @images = args[:images] if args.key?(:images)
           @maven_artifacts = args[:maven_artifacts] if args.key?(:maven_artifacts)
+          @npm_packages = args[:npm_packages] if args.key?(:npm_packages)
           @objects = args[:objects] if args.key?(:objects)
           @python_packages = args[:python_packages] if args.key?(:python_packages)
         end
@@ -2921,6 +2931,34 @@ module Google
         end
       end
       
+      # Npm package to upload to Artifact Registry upon successful completion of all
+      # build steps.
+      class NpmPackage
+        include Google::Apis::Core::Hashable
+      
+        # Path to the package.json. e.g. workspace/path/to/package
+        # Corresponds to the JSON property `packagePath`
+        # @return [String]
+        attr_accessor :package_path
+      
+        # Artifact Registry repository, in the form "https://$REGION-npm.pkg.dev/$
+        # PROJECT/$REPOSITORY" Npm package in the workspace specified by path will be
+        # zipped and uploaded to Artifact Registry with this location as a prefix.
+        # Corresponds to the JSON property `repository`
+        # @return [String]
+        attr_accessor :repository
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @package_path = args[:package_path] if args.key?(:package_path)
+          @repository = args[:repository] if args.key?(:repository)
+        end
+      end
+      
       # This resource represents a long-running operation that is the result of a
       # network API call.
       class Operation
@@ -3466,6 +3504,11 @@ module Google
         # @return [Array<Google::Apis::CloudbuildV1::UploadedMavenArtifact>]
         attr_accessor :maven_artifacts
       
+        # Npm packages uploaded to Artifact Registry at the end of the build.
+        # Corresponds to the JSON property `npmPackages`
+        # @return [Array<Google::Apis::CloudbuildV1::UploadedNpmPackage>]
+        attr_accessor :npm_packages
+      
         # Number of non-container artifacts uploaded to Cloud Storage. Only populated
         # when artifacts are uploaded to Cloud Storage.
         # Corresponds to the JSON property `numArtifacts`
@@ -3489,6 +3532,7 @@ module Google
           @build_step_outputs = args[:build_step_outputs] if args.key?(:build_step_outputs)
           @images = args[:images] if args.key?(:images)
           @maven_artifacts = args[:maven_artifacts] if args.key?(:maven_artifacts)
+          @npm_packages = args[:npm_packages] if args.key?(:npm_packages)
           @num_artifacts = args[:num_artifacts] if args.key?(:num_artifacts)
           @python_packages = args[:python_packages] if args.key?(:python_packages)
         end
@@ -4027,6 +4071,38 @@ module Google
         attr_accessor :push_timing
       
         # URI of the uploaded artifact.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_hashes = args[:file_hashes] if args.key?(:file_hashes)
+          @push_timing = args[:push_timing] if args.key?(:push_timing)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # An npm package uploaded to Artifact Registry using the NpmPackage directive.
+      class UploadedNpmPackage
+        include Google::Apis::Core::Hashable
+      
+        # Container message for hashes of byte content of files, used in
+        # SourceProvenance messages to verify integrity of source input to the build.
+        # Corresponds to the JSON property `fileHashes`
+        # @return [Google::Apis::CloudbuildV1::FileHashes]
+        attr_accessor :file_hashes
+      
+        # Start and end times for a build execution phase.
+        # Corresponds to the JSON property `pushTiming`
+        # @return [Google::Apis::CloudbuildV1::TimeSpan]
+        attr_accessor :push_timing
+      
+        # URI of the uploaded npm package.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
