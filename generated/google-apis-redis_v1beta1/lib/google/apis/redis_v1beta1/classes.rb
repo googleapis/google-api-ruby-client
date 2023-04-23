@@ -639,7 +639,7 @@ module Google
         end
       end
       
-      # A resource that represents Google Cloud Platform location.
+      # A resource that represents Google Cloud location.
       class Location
         include Google::Apis::Core::Hashable
       
