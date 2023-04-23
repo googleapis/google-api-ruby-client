@@ -22,6 +22,12 @@ module Google
   module Apis
     module WebfontsV1
       
+      class Axis
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Webfont
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -34,14 +40,26 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Axis
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end, as: 'end'
+          property :start, as: 'start'
+          property :tag, as: 'tag'
+        end
+      end
+      
       class Webfont
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :axes, as: 'axes', class: Google::Apis::WebfontsV1::Axis, decorator: Google::Apis::WebfontsV1::Axis::Representation
+      
           property :category, as: 'category'
           property :family, as: 'family'
           hash :files, as: 'files'
           property :kind, as: 'kind'
           property :last_modified, as: 'lastModified'
+          property :menu, as: 'menu'
           collection :subsets, as: 'subsets'
           collection :variants, as: 'variants'
           property :version, as: 'version'

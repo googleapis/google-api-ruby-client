@@ -22,9 +22,45 @@ module Google
   module Apis
     module WebfontsV1
       
+      # Metadata for a variable font axis.
+      class Axis
+        include Google::Apis::Core::Hashable
+      
+        # maximum value
+        # Corresponds to the JSON property `end`
+        # @return [Float]
+        attr_accessor :end
+      
+        # minimum value
+        # Corresponds to the JSON property `start`
+        # @return [Float]
+        attr_accessor :start
+      
+        # tag name.
+        # Corresponds to the JSON property `tag`
+        # @return [String]
+        attr_accessor :tag
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end = args[:end] if args.key?(:end)
+          @start = args[:start] if args.key?(:start)
+          @tag = args[:tag] if args.key?(:tag)
+        end
+      end
+      
       # Metadata describing a family of fonts.
       class Webfont
         include Google::Apis::Core::Hashable
+      
+        # Axis for variable fonts.
+        # Corresponds to the JSON property `axes`
+        # @return [Array<Google::Apis::WebfontsV1::Axis>]
+        attr_accessor :axes
       
         # The category of the font.
         # Corresponds to the JSON property `category`
@@ -52,6 +88,12 @@ module Google
         # @return [String]
         attr_accessor :last_modified
       
+        # Font URL for menu subset, a subset of the font that is enough to display the
+        # font name
+        # Corresponds to the JSON property `menu`
+        # @return [String]
+        attr_accessor :menu
+      
         # The scripts supported by the font.
         # Corresponds to the JSON property `subsets`
         # @return [Array<String>]
@@ -73,11 +115,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @axes = args[:axes] if args.key?(:axes)
           @category = args[:category] if args.key?(:category)
           @family = args[:family] if args.key?(:family)
           @files = args[:files] if args.key?(:files)
           @kind = args[:kind] if args.key?(:kind)
           @last_modified = args[:last_modified] if args.key?(:last_modified)
+          @menu = args[:menu] if args.key?(:menu)
           @subsets = args[:subsets] if args.key?(:subsets)
           @variants = args[:variants] if args.key?(:variants)
           @version = args[:version] if args.key?(:version)
