@@ -446,16 +446,17 @@ module Google
         attr_accessor :inherited
         alias_method :inherited?, :inherited
       
-        # The namespaced_name of the TagKey. Now only supported in the format of ``
-        # organization_id`/`tag_key_short_name``. Other formats will be supported when
-        # we add non-org parented tags.
+        # The namespaced name of the TagKey. Can be in the form ``organization_id`/`
+        # tag_key_short_name`` or ``project_id`/`tag_key_short_name`` or ``
+        # project_number`/`tag_key_short_name``.
         # Corresponds to the JSON property `namespacedTagKey`
         # @return [String]
         attr_accessor :namespaced_tag_key
       
-        # Namespaced name of the TagValue. Now only supported in the format ``
-        # organization_id`/`tag_key_short_name`/`tag_value_short_name``. Other formats
-        # will be supported when we add non-org parented tags.
+        # The namespaced name of the TagValue. Can be in the form ``organization_id`/`
+        # tag_key_short_name`/`tag_value_short_name`` or ``project_id`/`
+        # tag_key_short_name`/`tag_value_short_name`` or ``project_number`/`
+        # tag_key_short_name`/`tag_value_short_name``.
         # Corresponds to the JSON property `namespacedTagValue`
         # @return [String]
         attr_accessor :namespaced_tag_value
@@ -1774,8 +1775,11 @@ module Google
         # @return [String]
         attr_accessor :namespaced_name
       
-        # Immutable. The resource name of the new TagKey's parent. Must be of the form `
-        # organizations/`org_id``.
+        # Immutable. The resource name of the TagKey's parent. A TagKey can be parented
+        # by an Organization or a Project. For a TagKey parented by an Organization, its
+        # parent must be in the form `organizations/`org_id``. For a TagKey parented by
+        # a Project, its parent can be in the form `projects/`project_id`` or `projects/`
+        # project_number``.
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
@@ -1856,9 +1860,10 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Output only. Namespaced name of the TagValue. Now only supported in the format
-        # ``organization_id`/`tag_key_short_name`/`short_name``. Other formats will be
-        # supported when we add non-org parented tags.
+        # Output only. The namespaced name of the TagValue. Can be in the form ``
+        # organization_id`/`tag_key_short_name`/`tag_value_short_name`` or ``project_id`/
+        # `tag_key_short_name`/`tag_value_short_name`` or ``project_number`/`
+        # tag_key_short_name`/`tag_value_short_name``.
         # Corresponds to the JSON property `namespacedName`
         # @return [String]
         attr_accessor :namespaced_name

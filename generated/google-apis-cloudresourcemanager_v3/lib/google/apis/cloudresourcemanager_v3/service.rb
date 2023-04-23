@@ -1706,8 +1706,9 @@ module Google
         #   Optional. A pagination token returned from a previous call to `ListTagKey`
         #   that indicates where this listing should continue from.
         # @param [String] parent
-        #   Required. The resource name of the new TagKey's parent. Must be of the form `
-        #   folders/`folder_id`` or `organizations/`org_id``.
+        #   Required. The resource name of the TagKey's parent. Must be of the form `
+        #   organizations/`org_id`` or `projects/`project_id`` or `projects/`
+        #   project_number``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
