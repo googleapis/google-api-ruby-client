@@ -1782,7 +1782,7 @@ module Google
         # @return [String]
         attr_accessor :key_name
       
-        # Denotes the state of etcd encryption.
+        # The desired state of etcd encryption.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -4233,7 +4233,8 @@ module Google
         # @return [Google::Apis::ContainerV1::OperationProgress]
         attr_accessor :progress
       
-        # Server-defined URL for the resource.
+        # Server-defined URI for the operation. Example: `https://container.googleapis.
+        # com/v1alpha1/projects/123/locations/us-central1/operations/operation-123`.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
@@ -4255,7 +4256,14 @@ module Google
         # @return [String]
         attr_accessor :status_message
       
-        # Server-defined URL for the target of the operation.
+        # Server-defined URI for the target of the operation. The format of this is a
+        # URI to the resource being modified (such as a cluster, node pool, or node).
+        # For node pool repairs, there may be multiple nodes being repaired, but only
+        # one will be the target. Examples: - `https://container.googleapis.com/v1/
+        # projects/123/locations/us-central1/clusters/my-cluster` - `https://container.
+        # googleapis.com/v1/projects/123/zones/us-central1-c/clusters/my-cluster/
+        # nodePools/my-np` - `https://container.googleapis.com/v1/projects/123/zones/us-
+        # central1-c/clusters/my-cluster/nodePools/my-np/node/my-node`
         # Corresponds to the JSON property `targetLink`
         # @return [String]
         attr_accessor :target_link
