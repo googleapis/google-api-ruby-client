@@ -991,6 +991,8 @@ module Google
         end
         
         # Permanently deletes all of the user's trashed files.
+        # @param [String] drive_id
+        #   If set, empties the trash of the provided shared drive.
         # @param [Boolean] enforce_single_parent
         #   Deprecated. If an item is not in a shared drive and its last parent is deleted
         #   but the item itself is not, the item will be placed under its owner's root.
@@ -1013,8 +1015,9 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def empty_file_trash(enforce_single_parent: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def empty_file_trash(drive_id: nil, enforce_single_parent: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:delete, 'files/trash', options)
+          command.query['driveId'] = drive_id unless drive_id.nil?
           command.query['enforceSingleParent'] = enforce_single_parent unless enforce_single_parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1418,9 +1421,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Subscribes to changes to a file. While you can establish a channel for changes
-        # to a file on a shared drive, a change to a shared drive file won't create a
-        # notification.
+        # Subscribes to changes to a file.
         # @param [String] file_id
         #   The ID of the file.
         # @param [Google::Apis::DriveV3::Channel] channel_object
