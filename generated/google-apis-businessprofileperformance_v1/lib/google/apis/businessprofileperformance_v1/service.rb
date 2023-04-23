@@ -146,7 +146,8 @@ module Google
         #   Year of the date. Must be from 1 to 9999, or 0 to specify a date without a
         #   year.
         # @param [String] daily_sub_entity_type_day_of_week
-        #   Represents the day of the week. Eg: MONDAY.
+        #   Represents the day of the week. Eg: MONDAY. Currently supported DailyMetrics =
+        #   NONE.
         # @param [Fixnum] daily_sub_entity_type_time_of_day_hours
         #   Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to
         #   allow the value "24:00:00" for scenarios like business closing time.
