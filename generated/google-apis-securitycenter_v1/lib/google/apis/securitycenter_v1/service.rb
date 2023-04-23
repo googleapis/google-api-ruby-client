@@ -1047,7 +1047,7 @@ module Google
         # Updates the SecurityHealthAnalyticsCustomModule under the given name based on
         # the given update mask. Updating the enablement state is supported on both
         # resident and inherited modules (though resident modules cannot have an
-        # enablement state of “inherited”). Updating the display name and custom config
+        # enablement state of "inherited"). Updating the display name and custom config
         # of a module is supported on resident modules only.
         # @param [String] name
         #   Immutable. The resource name of the custom module. Its format is "
@@ -1366,9 +1366,11 @@ module Google
         # Creates or updates a finding. The corresponding source must exist for a
         # finding creation to succeed.
         # @param [String] name
-        #   The relative resource name of this finding. See: https://cloud.google.com/apis/
-        #   design/resource_names#relative_resource_name Example: "organizations/`
-        #   organization_id`/sources/`source_id`/findings/`finding_id`"
+        #   The [relative resource name](https://cloud.google.com/apis/design/
+        #   resource_names#relative_resource_name) of the finding. Example: "organizations/
+        #   `organization_id`/sources/`source_id`/findings/`finding_id`", "folders/`
+        #   folder_id`/sources/`source_id`/findings/`finding_id`", "projects/`project_id`/
+        #   sources/`source_id`/findings/`finding_id`".
         # @param [Google::Apis::SecuritycenterV1::Finding] finding_object
         # @param [String] update_mask
         #   The FieldMask to use when updating the finding resource. This field should not
@@ -2811,7 +2813,7 @@ module Google
         # Updates the SecurityHealthAnalyticsCustomModule under the given name based on
         # the given update mask. Updating the enablement state is supported on both
         # resident and inherited modules (though resident modules cannot have an
-        # enablement state of “inherited”). Updating the display name and custom config
+        # enablement state of "inherited"). Updating the display name and custom config
         # of a module is supported on resident modules only.
         # @param [String] name
         #   Immutable. The resource name of the custom module. Its format is "
@@ -3379,9 +3381,11 @@ module Google
         # Creates or updates a finding. The corresponding source must exist for a
         # finding creation to succeed.
         # @param [String] name
-        #   The relative resource name of this finding. See: https://cloud.google.com/apis/
-        #   design/resource_names#relative_resource_name Example: "organizations/`
-        #   organization_id`/sources/`source_id`/findings/`finding_id`"
+        #   The [relative resource name](https://cloud.google.com/apis/design/
+        #   resource_names#relative_resource_name) of the finding. Example: "organizations/
+        #   `organization_id`/sources/`source_id`/findings/`finding_id`", "folders/`
+        #   folder_id`/sources/`source_id`/findings/`finding_id`", "projects/`project_id`/
+        #   sources/`source_id`/findings/`finding_id`".
         # @param [Google::Apis::SecuritycenterV1::Finding] finding_object
         # @param [String] update_mask
         #   The FieldMask to use when updating the finding resource. This field should not
@@ -4577,7 +4581,7 @@ module Google
         # Updates the SecurityHealthAnalyticsCustomModule under the given name based on
         # the given update mask. Updating the enablement state is supported on both
         # resident and inherited modules (though resident modules cannot have an
-        # enablement state of “inherited”). Updating the display name and custom config
+        # enablement state of "inherited"). Updating the display name and custom config
         # of a module is supported on resident modules only.
         # @param [String] name
         #   Immutable. The resource name of the custom module. Its format is "
@@ -4896,9 +4900,11 @@ module Google
         # Creates or updates a finding. The corresponding source must exist for a
         # finding creation to succeed.
         # @param [String] name
-        #   The relative resource name of this finding. See: https://cloud.google.com/apis/
-        #   design/resource_names#relative_resource_name Example: "organizations/`
-        #   organization_id`/sources/`source_id`/findings/`finding_id`"
+        #   The [relative resource name](https://cloud.google.com/apis/design/
+        #   resource_names#relative_resource_name) of the finding. Example: "organizations/
+        #   `organization_id`/sources/`source_id`/findings/`finding_id`", "folders/`
+        #   folder_id`/sources/`source_id`/findings/`finding_id`", "projects/`project_id`/
+        #   sources/`source_id`/findings/`finding_id`".
         # @param [Google::Apis::SecuritycenterV1::Finding] finding_object
         # @param [String] update_mask
         #   The FieldMask to use when updating the finding resource. This field should not
