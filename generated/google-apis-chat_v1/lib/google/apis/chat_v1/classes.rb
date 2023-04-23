@@ -594,14 +594,17 @@ module Google
         # @return [String]
         attr_accessor :platform
       
-        # The timezone ID and offset from Coordinated Universal Time (UTC). Not
-        # supported by Chat apps.
+        # The timezone ID and offset from Coordinated Universal Time (UTC). Only
+        # supported for the event types [`CARD_CLICKED`](https://developers.google.com/
+        # chat/api/reference/rest/v1/EventType#ENUM_VALUES.CARD_CLICKED) and [`
+        # SUBMIT_DIALOG`](https://developers.google.com/chat/api/reference/rest/v1/
+        # DialogEventType#ENUM_VALUES.SUBMIT_DIALOG).
         # Corresponds to the JSON property `timeZone`
         # @return [Google::Apis::ChatV1::TimeZone]
         attr_accessor :time_zone
       
         # The full `locale.displayName` in the format of [ISO 639 language code]-[ISO
-        # 3166 country/region code] such as "en-US". Not supported by Chat apps.
+        # 3166 country/region code] such as "en-US".
         # Corresponds to the JSON property `userLocale`
         # @return [String]
         attr_accessor :user_locale
@@ -622,7 +625,7 @@ module Google
         end
       end
       
-      # Date input values. Not supported by Chat apps.
+      # Date input values.
       class DateInput
         include Google::Apis::Core::Hashable
       
@@ -641,7 +644,7 @@ module Google
         end
       end
       
-      # Date and time input values. Not supported by Chat apps.
+      # Date and time input values.
       class DateTimeInput
         include Google::Apis::Core::Hashable
       
@@ -1089,10 +1092,7 @@ module Google
       
       # A text, icon, or text + icon button that users can click. To make an image a
       # clickable button, specify an Image (not an ImageComponent) and set an `onClick`
-      # action. Currently supported in Chat apps (including [dialogs] (https://
-      # developers.google.com/chat/how-tos/dialogs) and [card messages] (https://
-      # developers.google.com/chat/api/guides/message-formats/cards)) and Google
-      # Workspace Add-ons.
+      # action.
       class GoogleAppsCardV1Button
         include Google::Apis::Core::Hashable
       
@@ -1259,9 +1259,10 @@ module Google
       
         # A persistent (sticky) footer that that appears at the bottom of the card.
         # Setting `fixedFooter` without specifying a `primaryButton` or a `
-        # secondaryButton` causes an error. Chat apps support `fixedFooter` in [dialogs](
-        # https://developers.google.com/chat/how-tos/dialogs), but not in [card messages]
-        # (https://developers.google.com/chat/api/guides/message-formats/cards).
+        # secondaryButton` causes an error. Supported by Google Workspace Add-ons and
+        # Chat apps. For Chat apps, you can use fixed footers in [dialogs](https://
+        # developers.google.com/chat/how-tos/dialogs), but not [card messages](https://
+        # developers.google.com/chat/api/guides/message-formats/cards).
         # Corresponds to the JSON property `fixedFooter`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1CardFixedFooter]
         attr_accessor :fixed_footer
@@ -1334,28 +1335,23 @@ module Google
       
       # A persistent (sticky) footer that that appears at the bottom of the card.
       # Setting `fixedFooter` without specifying a `primaryButton` or a `
-      # secondaryButton` causes an error. Chat apps support `fixedFooter` in [dialogs](
-      # https://developers.google.com/chat/how-tos/dialogs), but not in [card messages]
-      # (https://developers.google.com/chat/api/guides/message-formats/cards).
+      # secondaryButton` causes an error. Supported by Google Workspace Add-ons and
+      # Chat apps. For Chat apps, you can use fixed footers in [dialogs](https://
+      # developers.google.com/chat/how-tos/dialogs), but not [card messages](https://
+      # developers.google.com/chat/api/guides/message-formats/cards).
       class GoogleAppsCardV1CardFixedFooter
         include Google::Apis::Core::Hashable
       
         # A text, icon, or text + icon button that users can click. To make an image a
         # clickable button, specify an Image (not an ImageComponent) and set an `onClick`
-        # action. Currently supported in Chat apps (including [dialogs] (https://
-        # developers.google.com/chat/how-tos/dialogs) and [card messages] (https://
-        # developers.google.com/chat/api/guides/message-formats/cards)) and Google
-        # Workspace Add-ons.
+        # action.
         # Corresponds to the JSON property `primaryButton`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Button]
         attr_accessor :primary_button
       
         # A text, icon, or text + icon button that users can click. To make an image a
         # clickable button, specify an Image (not an ImageComponent) and set an `onClick`
-        # action. Currently supported in Chat apps (including [dialogs] (https://
-        # developers.google.com/chat/how-tos/dialogs) and [card messages] (https://
-        # developers.google.com/chat/api/guides/message-formats/cards)) and Google
-        # Workspace Add-ons.
+        # action.
         # Corresponds to the JSON property `secondaryButton`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Button]
         attr_accessor :secondary_button
@@ -1497,10 +1493,7 @@ module Google
       
         # A text, icon, or text + icon button that users can click. To make an image a
         # clickable button, specify an Image (not an ImageComponent) and set an `onClick`
-        # action. Currently supported in Chat apps (including [dialogs] (https://
-        # developers.google.com/chat/how-tos/dialogs) and [card messages] (https://
-        # developers.google.com/chat/api/guides/message-formats/cards)) and Google
-        # Workspace Add-ons.
+        # action.
         # Corresponds to the JSON property `button`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Button]
         attr_accessor :button
@@ -1541,8 +1534,9 @@ module Google
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1SwitchControl]
         attr_accessor :switch_control
       
-        # Required. The primary text. Supports simple formatting. See Text formatting
-        # for formatting details.
+        # Required. The primary text. Supports simple formatting. For more information
+        # about formatting text, see Formatting text in Google Chat apps and Formatting
+        # text in Google Workspace Add-ons.
         # Corresponds to the JSON property `text`
         # @return [String]
         attr_accessor :text
@@ -1959,9 +1953,9 @@ module Google
         attr_accessor :collapsible
         alias_method :collapsible?, :collapsible
       
-        # Text that appears at the top of a section. Supports [simple HTML formatted
-        # text](https://developers.google.com/apps-script/add-ons/concepts/widgets#
-        # text_formatting).
+        # Text that appears at the top of a section. Supports simple HTML formatted text.
+        # For more information about formatting text, see Formatting text in Google
+        # Chat apps and Formatting text in Google Workspace Add-ons.
         # Corresponds to the JSON property `header`
         # @return [String]
         attr_accessor :header
@@ -1994,17 +1988,18 @@ module Google
         end
       end
       
-      # A widget that creates a UI item with options for users to select. For example,
-      # a dropdown menu or check list. Chat apps receive and can process the value of
-      # entered text during form input events. For details about working with form
-      # inputs, see [Receive form data](https://developers.google.com/chat/how-tos/
-      # dialogs#receive_form_data_from_dialogs). When you need to collect data from
-      # users that matches options you set, use a selection input. To collect abstract
-      # data from users, use the text input widget instead.
+      # A widget that creates one or more UI items that users can select. For example,
+      # a dropdown menu or checkboxes. You can use this widget to collect data that
+      # can be predicted or enumerated. Chat apps can process the value of items that
+      # users select or input. For details about working with form inputs, see [
+      # Receive form data](https://developers.google.com/chat/how-tos/dialogs#
+      # receive_form_data_from_dialogs). To collect undefined or abstract data from
+      # users, use the TextInput widget.
       class GoogleAppsCardV1SelectionInput
         include Google::Apis::Core::Hashable
       
-        # An array of the selected items. For example, all the selected check boxes.
+        # An array of selectable items. For example, an array of radio buttons or
+        # checkboxes. Supports up to 100 items.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::ChatV1::GoogleAppsCardV1SelectionItem>]
         attr_accessor :items
@@ -2017,7 +2012,7 @@ module Google
         # @return [String]
         attr_accessor :label
       
-        # The name by which the selection input is identified in a form input event. For
+        # The name that identifies the selection input in a form input event. For
         # details about working with form inputs, see [Receive form data](https://
         # developers.google.com/chat/how-tos/dialogs#receive_form_data_from_dialogs).
         # Corresponds to the JSON property `name`
@@ -2031,11 +2026,10 @@ module Google
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Action]
         attr_accessor :on_change_action
       
-        # The way that an option appears to users. Different options support different
-        # types of interactions. For example, users can enable multiple check boxes, but
-        # can only select one value from a dropdown menu. Each selection input supports
-        # one type of selection. Mixing check boxes and switches, for example, is not
-        # supported.
+        # The type of items that are displayed to users in a `SelectionInput` widget.
+        # Selection types support different types of interactions. For example, users
+        # can select one or more checkboxes, but they can only select one value from a
+        # dropdown menu.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -2054,7 +2048,8 @@ module Google
         end
       end
       
-      # A selectable item in a selection input, such as a check box or a switch.
+      # An item that users can select in a selection input, such as a checkbox or
+      # switch.
       class GoogleAppsCardV1SelectionItem
         include Google::Apis::Core::Hashable
       
@@ -2066,7 +2061,7 @@ module Google
         attr_accessor :selected
         alias_method :selected?, :selected
       
-        # The text displayed to users.
+        # The text that identifies or describes the item to users.
         # Corresponds to the JSON property `text`
         # @return [String]
         attr_accessor :text
@@ -2195,9 +2190,9 @@ module Google
       # actions. Chat apps receive and can process the value of entered text during
       # form input events. For details about working with form inputs, see [Receive
       # form data](https://developers.google.com/chat/how-tos/dialogs#
-      # receive_form_data_from_dialogs). When you need to collect abstract data from
-      # users, use a text input. To collect defined data from users, use the selection
-      # input widget instead.
+      # receive_form_data_from_dialogs). When you need to collect undefined or
+      # abstract data from users, use a text input. To collect defined or enumerated
+      # data from users, use the SelectionInput widget.
       class GoogleAppsCardV1TextInput
         include Google::Apis::Core::Hashable
       
@@ -2282,9 +2277,9 @@ module Google
         end
       end
       
-      # A paragraph of text that supports formatting. See [Text formatting](https://
-      # developers.google.com/workspace/add-ons/concepts/widgets#text_formatting) for
-      # details.
+      # A paragraph of text that supports formatting. For more information about
+      # formatting text, see Formatting text in Google Chat apps and Formatting text
+      # in Google Workspace Add-ons.
       class GoogleAppsCardV1TextParagraph
         include Google::Apis::Core::Hashable
       
@@ -2354,13 +2349,13 @@ module Google
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Image]
         attr_accessor :image
       
-        # A widget that creates a UI item with options for users to select. For example,
-        # a dropdown menu or check list. Chat apps receive and can process the value of
-        # entered text during form input events. For details about working with form
-        # inputs, see [Receive form data](https://developers.google.com/chat/how-tos/
-        # dialogs#receive_form_data_from_dialogs). When you need to collect data from
-        # users that matches options you set, use a selection input. To collect abstract
-        # data from users, use the text input widget instead.
+        # A widget that creates one or more UI items that users can select. For example,
+        # a dropdown menu or checkboxes. You can use this widget to collect data that
+        # can be predicted or enumerated. Chat apps can process the value of items that
+        # users select or input. For details about working with form inputs, see [
+        # Receive form data](https://developers.google.com/chat/how-tos/dialogs#
+        # receive_form_data_from_dialogs). To collect undefined or abstract data from
+        # users, use the TextInput widget.
         # Corresponds to the JSON property `selectionInput`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1SelectionInput]
         attr_accessor :selection_input
@@ -2369,16 +2364,16 @@ module Google
         # actions. Chat apps receive and can process the value of entered text during
         # form input events. For details about working with form inputs, see [Receive
         # form data](https://developers.google.com/chat/how-tos/dialogs#
-        # receive_form_data_from_dialogs). When you need to collect abstract data from
-        # users, use a text input. To collect defined data from users, use the selection
-        # input widget instead.
+        # receive_form_data_from_dialogs). When you need to collect undefined or
+        # abstract data from users, use a text input. To collect defined or enumerated
+        # data from users, use the SelectionInput widget.
         # Corresponds to the JSON property `textInput`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1TextInput]
         attr_accessor :text_input
       
-        # A paragraph of text that supports formatting. See [Text formatting](https://
-        # developers.google.com/workspace/add-ons/concepts/widgets#text_formatting) for
-        # details.
+        # A paragraph of text that supports formatting. For more information about
+        # formatting text, see Formatting text in Google Chat apps and Formatting text
+        # in Google Workspace Add-ons.
         # Corresponds to the JSON property `textParagraph`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1TextParagraph]
         attr_accessor :text_paragraph
@@ -2477,12 +2472,12 @@ module Google
       class Inputs
         include Google::Apis::Core::Hashable
       
-        # Date input values. Not supported by Chat apps.
+        # Date input values.
         # Corresponds to the JSON property `dateInput`
         # @return [Google::Apis::ChatV1::DateInput]
         attr_accessor :date_input
       
-        # Date and time input values. Not supported by Chat apps.
+        # Date and time input values.
         # Corresponds to the JSON property `dateTimeInput`
         # @return [Google::Apis::ChatV1::DateTimeInput]
         attr_accessor :date_time_input
@@ -2494,7 +2489,7 @@ module Google
         # @return [Google::Apis::ChatV1::StringInputs]
         attr_accessor :string_inputs
       
-        # Time input values. Not supported by Chat apps.
+        # Time input values.
         # Corresponds to the JSON property `timeInput`
         # @return [Google::Apis::ChatV1::TimeInput]
         attr_accessor :time_input
@@ -2517,7 +2512,9 @@ module Google
       class KeyValue
         include Google::Apis::Core::Hashable
       
-        # The text of the bottom label. Formatted text supported.
+        # The text of the bottom label. Formatted text supported. For more information
+        # about formatting text, see Formatting text in Google Chat apps and Formatting
+        # text in Google Workspace Add-ons.
         # Corresponds to the JSON property `bottomLabel`
         # @return [String]
         attr_accessor :bottom_label
@@ -2527,7 +2524,9 @@ module Google
         # @return [Google::Apis::ChatV1::Button]
         attr_accessor :button
       
-        # The text of the content. Formatted text supported and always required.
+        # The text of the content. Formatted text supported and always required. For
+        # more information about formatting text, see Formatting text in Google Chat
+        # apps and Formatting text in Google Workspace Add-ons.
         # Corresponds to the JSON property `content`
         # @return [String]
         attr_accessor :content
@@ -2554,7 +2553,9 @@ module Google
         # @return [Google::Apis::ChatV1::OnClick]
         attr_accessor :on_click
       
-        # The text of the top label. Formatted text supported.
+        # The text of the top label. Formatted text supported. For more information
+        # about formatting text, see Formatting text in Google Chat apps and Formatting
+        # text in Google Workspace Add-ons.
         # Corresponds to the JSON property `topLabel`
         # @return [String]
         attr_accessor :top_label
@@ -2915,7 +2916,9 @@ module Google
       class Section
         include Google::Apis::Core::Hashable
       
-        # The header of the section, text formatted supported.
+        # The header of the section. Formatted text is supported. For more information
+        # about formatting text, see Formatting text in Google Chat apps and Formatting
+        # text in Google Workspace Add-ons.
         # Corresponds to the JSON property `header`
         # @return [String]
         attr_accessor :header
@@ -3185,7 +3188,9 @@ module Google
         end
       end
       
-      # A paragraph of text. Formatted text supported.
+      # A paragraph of text. Formatted text supported. For more information about
+      # formatting text, see Formatting text in Google Chat apps and Formatting text
+      # in Google Workspace Add-ons.
       class TextParagraph
         include Google::Apis::Core::Hashable
       
@@ -3233,7 +3238,7 @@ module Google
         end
       end
       
-      # Time input values. Not supported by Chat apps.
+      # Time input values.
       class TimeInput
         include Google::Apis::Core::Hashable
       
@@ -3258,8 +3263,11 @@ module Google
         end
       end
       
-      # The timezone ID and offset from Coordinated Universal Time (UTC). Not
-      # supported by Chat apps.
+      # The timezone ID and offset from Coordinated Universal Time (UTC). Only
+      # supported for the event types [`CARD_CLICKED`](https://developers.google.com/
+      # chat/api/reference/rest/v1/EventType#ENUM_VALUES.CARD_CLICKED) and [`
+      # SUBMIT_DIALOG`](https://developers.google.com/chat/api/reference/rest/v1/
+      # DialogEventType#ENUM_VALUES.SUBMIT_DIALOG).
       class TimeZone
         include Google::Apis::Core::Hashable
       
@@ -3366,7 +3374,7 @@ module Google
       class WidgetMarkup
         include Google::Apis::Core::Hashable
       
-        # A list of buttons. Buttons is also oneof data and only one of these fields
+        # A list of buttons. Buttons is also `oneof data` and only one of these fields
         # should be set.
         # Corresponds to the JSON property `buttons`
         # @return [Array<Google::Apis::ChatV1::Button>]
@@ -3383,7 +3391,9 @@ module Google
         # @return [Google::Apis::ChatV1::KeyValue]
         attr_accessor :key_value
       
-        # A paragraph of text. Formatted text supported.
+        # A paragraph of text. Formatted text supported. For more information about
+        # formatting text, see Formatting text in Google Chat apps and Formatting text
+        # in Google Workspace Add-ons.
         # Corresponds to the JSON property `textParagraph`
         # @return [Google::Apis::ChatV1::TextParagraph]
         attr_accessor :text_paragraph
