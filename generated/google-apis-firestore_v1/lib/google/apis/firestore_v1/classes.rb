@@ -870,7 +870,8 @@ module Google
         # @return [String]
         attr_accessor :concurrency_mode
       
-        # Output only. The timestamp at which this database was created.
+        # Output only. The timestamp at which this database was created. Databases
+        # created before 2016 do not populate create_time.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
