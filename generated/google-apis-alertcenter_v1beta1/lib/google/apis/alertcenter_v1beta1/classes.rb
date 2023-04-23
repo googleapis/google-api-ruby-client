@@ -439,22 +439,23 @@ module Google
         end
       end
       
-      # The explanation message associated with ApnsCertificationExpiring and
-      # ApnsCertificationExpired alerts.
+      # The explanation message associated with "APNS certificate is expiring soon"
+      # and "APNS certificate has expired" alerts.
       class ApnsCertificateExpirationInfo
         include Google::Apis::Core::Hashable
       
-        # The Apple ID used for the certificate may be blank if admins didn't enter it.
+        # The Apple ID used to create the certificate. It may be blank if admins didn't
+        # enter it.
         # Corresponds to the JSON property `appleId`
         # @return [String]
         attr_accessor :apple_id
       
-        # The expiration date of the APNS Certificate.
+        # The expiration date of the APNS certificate.
         # Corresponds to the JSON property `expirationTime`
         # @return [String]
         attr_accessor :expiration_time
       
-        # The UID for the certificate.
+        # The UID of the certificate.
         # Corresponds to the JSON property `uid`
         # @return [String]
         attr_accessor :uid
