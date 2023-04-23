@@ -1348,6 +1348,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :results, as: 'results', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1SearchCatalogResult, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1SearchCatalogResult::Representation
       
+          property :total_size, as: 'totalSize'
           collection :unreachable, as: 'unreachable'
         end
       end

@@ -92,12 +92,13 @@ module Google
         # Gets an entry by its target resource name. The resource name comes from the
         # source Google Cloud Platform service.
         # @param [String] fully_qualified_name
-        #   Fully qualified name (FQN) of the resource. FQNs take two forms: * For non-
-        #   regionalized resources: ``SYSTEM`:`PROJECT`.`
-        #   PATH_TO_RESOURCE_SEPARATED_WITH_DOTS`` * For regionalized resources: ``SYSTEM`:
-        #   `PROJECT`.`LOCATION_ID`.`PATH_TO_RESOURCE_SEPARATED_WITH_DOTS`` Example for a
-        #   DPMS table: `dataproc_metastore:`PROJECT_ID`.`LOCATION_ID`.`INSTANCE_ID`.`
-        #   DATABASE_ID`.`TABLE_ID``
+        #   [Fully Qualified Name (FQN)](https://cloud.google.com//data-catalog/docs/fully-
+        #   qualified-names) of the resource. FQNs take two forms: * For non-regionalized
+        #   resources: ``SYSTEM`:`PROJECT`.`PATH_TO_RESOURCE_SEPARATED_WITH_DOTS`` * For
+        #   regionalized resources: ``SYSTEM`:`PROJECT`.`LOCATION_ID`.`
+        #   PATH_TO_RESOURCE_SEPARATED_WITH_DOTS`` Example for a DPMS table: `
+        #   dataproc_metastore:`PROJECT_ID`.`LOCATION_ID`.`INSTANCE_ID`.`DATABASE_ID`.`
+        #   TABLE_ID``
         # @param [String] linked_resource
         #   The full name of the Google Cloud Platform resource the Data Catalog entry
         #   represents. For more information, see [Full Resource Name] (https://cloud.
