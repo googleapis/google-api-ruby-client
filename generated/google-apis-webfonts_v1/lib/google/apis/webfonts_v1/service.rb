@@ -51,8 +51,17 @@ module Google
         end
         
         # Retrieves the list of fonts currently served by the Google Fonts Developer API.
+        # @param [Array<String>, String] capability
+        #   Controls the font urls in `Webfont.files`, by default, static ttf fonts are
+        #   sent.
+        # @param [Array<String>, String] family
+        #   Filters by Webfont.family, using literal match. If not set, returns all
+        #   families
         # @param [String] sort
         #   Enables sorting of the list.
+        # @param [String] subset
+        #   Filters by Webfont.subset, if subset is found in Webfont.subsets. If not set,
+        #   returns all families.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -70,11 +79,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_webfonts(sort: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_webfonts(capability: nil, family: nil, sort: nil, subset: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/webfonts', options)
           command.response_representation = Google::Apis::WebfontsV1::WebfontList::Representation
           command.response_class = Google::Apis::WebfontsV1::WebfontList
+          command.query['capability'] = capability unless capability.nil?
+          command.query['family'] = family unless family.nil?
           command.query['sort'] = sort unless sort.nil?
+          command.query['subset'] = subset unless subset.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
