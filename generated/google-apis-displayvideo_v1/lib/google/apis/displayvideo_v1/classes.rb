@@ -6970,7 +6970,7 @@ module Google
         # original audience list and the targeting expansion level. Beginning **March 25,
         # 2023**, these settings may represent the [optimized targeting feature](//
         # support.google.com/displayvideo/answer/12060859) in place of targeting
-        # expansion. This feature will be rolled out to all partners by mid-April 2023.
+        # expansion. This feature will be rolled out to all partners by early May 2023.
         # Corresponds to the JSON property `targetingExpansion`
         # @return [Google::Apis::DisplayvideoV1::TargetingExpansionConfig]
         attr_accessor :targeting_expansion
@@ -9991,7 +9991,7 @@ module Google
       # original audience list and the targeting expansion level. Beginning **March 25,
       # 2023**, these settings may represent the [optimized targeting feature](//
       # support.google.com/displayvideo/answer/12060859) in place of targeting
-      # expansion. This feature will be rolled out to all partners by mid-April 2023.
+      # expansion. This feature will be rolled out to all partners by early May 2023.
       class TargetingExpansionConfig
         include Google::Apis::Core::Hashable
       
@@ -10006,7 +10006,7 @@ module Google
         # when deprecated, all positive first-party audience targeting assigned to this
         # line item will be replaced with negative targeting of the same first-party
         # audiences to ensure the continued exclusion of those audiences. This field
-        # will be deprecated for all partners by mid-April 2023.
+        # will be deprecated for all partners by early May 2023.
         # Corresponds to the JSON property `excludeFirstPartyAudience`
         # @return [Boolean]
         attr_accessor :exclude_first_party_audience
@@ -10022,7 +10022,7 @@ module Google
         # default value for the field and will be automatically assigned if you do not
         # set the field. * If you set the field to any value other than `NO_EXPANSION`,
         # it will automatically be set to `LEAST_EXPANSION`. This behavior will be
-        # rolled out to all partners by mid-April 2023.
+        # rolled out to all partners by early May 2023.
         # Corresponds to the JSON property `targetingExpansionLevel`
         # @return [String]
         attr_accessor :targeting_expansion_level
