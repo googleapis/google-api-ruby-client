@@ -1839,7 +1839,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an in-app product (i.e. a managed product or a subscriptions).
+        # Deletes an in-app product (i.e. a managed product or a subscription).
         # @param [String] package_name
         #   Package name of the app.
         # @param [String] sku
@@ -1903,7 +1903,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an in-app product (i.e. a managed product or a subscriptions).
+        # Creates an in-app product (i.e. a managed product or a subscription).
         # @param [String] package_name
         #   Package name of the app.
         # @param [Google::Apis::AndroidpublisherV3::InAppProduct] in_app_product_object
@@ -1951,7 +1951,7 @@ module Google
         # @param [Fixnum] max_results
         #   Deprecated and ignored. The page size is determined by the server.
         # @param [Fixnum] start_index
-        #   Deprecated and ignored. Set the `token` parameter to rertieve the next page.
+        #   Deprecated and ignored. Set the `token` parameter to retrieve the next page.
         # @param [String] token
         #   Pagination token. If empty, list starts at the first product.
         # @param [String] fields
@@ -1984,7 +1984,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Patches an in-app product (i.e. a managed product or a subscriptions).
+        # Patches an in-app product (i.e. a managed product or a subscription).
         # @param [String] package_name
         #   Package name of the app.
         # @param [String] sku
@@ -2025,7 +2025,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an in-app product (i.e. a managed product or a subscriptions).
+        # Updates an in-app product (i.e. a managed product or a subscription).
         # @param [String] package_name
         #   Package name of the app.
         # @param [String] sku
