@@ -234,6 +234,127 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Finishes enrolling a passkey credential for the user.
+        # @param [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentRequest] google_cloud_identitytoolkit_v2_finalize_passkey_enrollment_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def finalize_account_passkey_enrollment(google_cloud_identitytoolkit_v2_finalize_passkey_enrollment_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/accounts/passkeyEnrollment:finalize', options)
+          command.request_representation = Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentRequest::Representation
+          command.request_object = google_cloud_identitytoolkit_v2_finalize_passkey_enrollment_request_object
+          command.response_representation = Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentResponse::Representation
+          command.response_class = Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentResponse
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Step one of the passkey enrollment process. Returns a challenge and parameters
+        # for creation of the passkey credential.
+        # @param [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2StartPasskeyEnrollmentRequest] google_cloud_identitytoolkit_v2_start_passkey_enrollment_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2StartPasskeyEnrollmentResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2StartPasskeyEnrollmentResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def start_account_passkey_enrollment(google_cloud_identitytoolkit_v2_start_passkey_enrollment_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/accounts/passkeyEnrollment:start', options)
+          command.request_representation = Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2StartPasskeyEnrollmentRequest::Representation
+          command.request_object = google_cloud_identitytoolkit_v2_start_passkey_enrollment_request_object
+          command.response_representation = Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2StartPasskeyEnrollmentResponse::Representation
+          command.response_class = Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2StartPasskeyEnrollmentResponse
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Verifies the passkey assertion and signs the user in.
+        # @param [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2FinalizePasskeySignInRequest] google_cloud_identitytoolkit_v2_finalize_passkey_sign_in_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2FinalizePasskeySignInResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2FinalizePasskeySignInResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def finalize_account_passkey_sign_in(google_cloud_identitytoolkit_v2_finalize_passkey_sign_in_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/accounts/passkeySignIn:finalize', options)
+          command.request_representation = Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2FinalizePasskeySignInRequest::Representation
+          command.request_object = google_cloud_identitytoolkit_v2_finalize_passkey_sign_in_request_object
+          command.response_representation = Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2FinalizePasskeySignInResponse::Representation
+          command.response_class = Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2FinalizePasskeySignInResponse
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates and returns the passkey challenge
+        # @param [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2StartPasskeySignInRequest] google_cloud_identitytoolkit_v2_start_passkey_sign_in_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2StartPasskeySignInResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2StartPasskeySignInResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def start_account_passkey_sign_in(google_cloud_identitytoolkit_v2_start_passkey_sign_in_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/accounts/passkeySignIn:start', options)
+          command.request_representation = Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2StartPasskeySignInRequest::Representation
+          command.request_object = google_cloud_identitytoolkit_v2_start_passkey_sign_in_request_object
+          command.response_representation = Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2StartPasskeySignInResponse::Representation
+          command.response_class = Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2StartPasskeySignInResponse
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # List all default supported Idps.
         # @param [Fixnum] page_size
         #   The maximum number of items to return.
