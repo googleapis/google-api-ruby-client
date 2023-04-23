@@ -3475,6 +3475,12 @@ module Google
       class Scope
         include Google::Apis::Core::Hashable
       
+        # If true, all Memberships in the Fleet bind to this Scope.
+        # Corresponds to the JSON property `allMemberships`
+        # @return [Boolean]
+        attr_accessor :all_memberships
+        alias_method :all_memberships?, :all_memberships
+      
         # Output only. When the scope was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -3514,6 +3520,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @all_memberships = args[:all_memberships] if args.key?(:all_memberships)
           @create_time = args[:create_time] if args.key?(:create_time)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @name = args[:name] if args.key?(:name)

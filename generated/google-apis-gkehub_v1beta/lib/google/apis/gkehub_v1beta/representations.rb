@@ -1640,6 +1640,7 @@ module Google
       class Scope
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :all_memberships, as: 'allMemberships'
           property :create_time, as: 'createTime'
           property :delete_time, as: 'deleteTime'
           property :name, as: 'name'
