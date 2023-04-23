@@ -394,7 +394,7 @@ module Google
         #   If set, validate the request and preview the review, but do not actually apply
         #   it.
         # @param [String] workstation_config_id
-        #   Required. ID to use for the config.
+        #   Required. ID to use for the workstation configuration.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -428,13 +428,14 @@ module Google
         
         # Deletes the specified workstation configuration.
         # @param [String] name
-        #   Required. Name of the config to delete.
+        #   Required. Name of the workstation configuration to delete.
         # @param [String] etag
-        #   If set, the request will be rejected if the latest version of the config on
-        #   the server does not have this etag.
+        #   If set, the request is rejected if the latest version of the workstation
+        #   configuration on the server does not have this etag.
         # @param [Boolean] force
-        #   If set, any Workstations in the config will also be deleted. Otherwise, the
-        #   request will work only if the config has no workstations.
+        #   If set, any workstations in the workstation configuration are also deleted.
+        #   Otherwise, the request works only if the workstation configuration has no
+        #   workstations.
         # @param [Boolean] validate_only
         #   If set, validate the request and preview the review, but do not actually apply
         #   it.
@@ -621,10 +622,11 @@ module Google
         #   Full name of this resource.
         # @param [Google::Apis::WorkstationsV1beta::WorkstationConfig] workstation_config_object
         # @param [Boolean] allow_missing
-        #   If set, and the config is not found, a new config will be created. In this
-        #   situation, update_mask is ignored.
+        #   If set and the workstation configuration is not found, a new workstation
+        #   configuration will be created. In this situation, update_mask is ignored.
         # @param [String] update_mask
-        #   Required. Mask specifying which fields in the config should be updated.
+        #   Required. Mask specifying which fields in the workstation configuration should
+        #   be updated.
         # @param [Boolean] validate_only
         #   If set, validate the request and preview the review, but do not actually apply
         #   it.
@@ -924,7 +926,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns all Workstations using the specified config.
+        # Returns all Workstations using the specified workstation configuration.
         # @param [String] parent
         #   Required. Parent resource name.
         # @param [Fixnum] page_size
@@ -960,8 +962,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns all Workstations using the specified config on which the caller has
-        # the "workstations.workstations.use" permission.
+        # Returns all workstations using the specified workstation configuration on
+        # which the caller has the "workstations.workstations.use" permission.
         # @param [String] parent
         #   Required. Parent resource name.
         # @param [Fixnum] page_size
@@ -1002,10 +1004,11 @@ module Google
         #   Full name of this resource.
         # @param [Google::Apis::WorkstationsV1beta::Workstation] workstation_object
         # @param [Boolean] allow_missing
-        #   If set, and the config is not found, a new config will be created. In this
-        #   situation, update_mask is ignored.
+        #   If set and the workstation configuration is not found, a new workstation
+        #   configuration is created. In this situation, update_mask is ignored.
         # @param [String] update_mask
-        #   Required. Mask specifying which fields in the config should be updated.
+        #   Required. Mask specifying which fields in the workstation configuration should
+        #   be updated.
         # @param [Boolean] validate_only
         #   If set, validate the request and preview the review, but do not actually apply
         #   it.
