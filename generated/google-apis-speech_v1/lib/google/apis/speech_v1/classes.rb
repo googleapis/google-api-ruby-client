@@ -137,6 +137,23 @@ module Google
         # @return [Array<Google::Apis::SpeechV1::ClassItem>]
         attr_accessor :items
       
+        # Output only. The [KMS key name](https://cloud.google.com/kms/docs/resource-
+        # hierarchy#keys) with which the content of the ClassItem is encrypted. The
+        # expected format is `projects/`project`/locations/`location`/keyRings/`key_ring`
+        # /cryptoKeys/`crypto_key``.
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
+        # Output only. The [KMS key version name](https://cloud.google.com/kms/docs/
+        # resource-hierarchy#key_versions) with which content of the ClassItem is
+        # encrypted. The expected format is `projects/`project`/locations/`location`/
+        # keyRings/`key_ring`/cryptoKeys/`crypto_key`/cryptoKeyVersions/`
+        # crypto_key_version``.
+        # Corresponds to the JSON property `kmsKeyVersionName`
+        # @return [String]
+        attr_accessor :kms_key_version_name
+      
         # The resource name of the custom class.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -150,6 +167,8 @@ module Google
         def update!(**args)
           @custom_class_id = args[:custom_class_id] if args.key?(:custom_class_id)
           @items = args[:items] if args.key?(:items)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
+          @kms_key_version_name = args[:kms_key_version_name] if args.key?(:kms_key_version_name)
           @name = args[:name] if args.key?(:name)
         end
       end
@@ -515,6 +534,23 @@ module Google
         # @return [Float]
         attr_accessor :boost
       
+        # Output only. The [KMS key name](https://cloud.google.com/kms/docs/resource-
+        # hierarchy#keys) with which the content of the PhraseSet is encrypted. The
+        # expected format is `projects/`project`/locations/`location`/keyRings/`key_ring`
+        # /cryptoKeys/`crypto_key``.
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
+        # Output only. The [KMS key version name](https://cloud.google.com/kms/docs/
+        # resource-hierarchy#key_versions) with which content of the PhraseSet is
+        # encrypted. The expected format is `projects/`project`/locations/`location`/
+        # keyRings/`key_ring`/cryptoKeys/`crypto_key`/cryptoKeyVersions/`
+        # crypto_key_version``.
+        # Corresponds to the JSON property `kmsKeyVersionName`
+        # @return [String]
+        attr_accessor :kms_key_version_name
+      
         # The resource name of the phrase set.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -532,6 +568,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @boost = args[:boost] if args.key?(:boost)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
+          @kms_key_version_name = args[:kms_key_version_name] if args.key?(:kms_key_version_name)
           @name = args[:name] if args.key?(:name)
           @phrases = args[:phrases] if args.key?(:phrases)
         end

@@ -234,6 +234,8 @@ module Google
           property :custom_class_id, as: 'customClassId'
           collection :items, as: 'items', class: Google::Apis::SpeechV1::ClassItem, decorator: Google::Apis::SpeechV1::ClassItem::Representation
       
+          property :kms_key_name, as: 'kmsKeyName'
+          property :kms_key_version_name, as: 'kmsKeyVersionName'
           property :name, as: 'name'
         end
       end
@@ -333,6 +335,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :boost, as: 'boost'
+          property :kms_key_name, as: 'kmsKeyName'
+          property :kms_key_version_name, as: 'kmsKeyVersionName'
           property :name, as: 'name'
           collection :phrases, as: 'phrases', class: Google::Apis::SpeechV1::Phrase, decorator: Google::Apis::SpeechV1::Phrase::Representation
       
