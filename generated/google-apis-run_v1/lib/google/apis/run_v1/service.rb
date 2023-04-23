@@ -174,9 +174,9 @@ module Google
         
         # Create a new domain mapping.
         # @param [String] parent
-        #   The namespace in which the domain mapping should be created. For Cloud Run (
-        #   fully managed), replace `namespace` with the project ID or number. It takes
-        #   the form namespaces/`namespace`. For example: namespaces/PROJECT_ID
+        #   Required. The namespace in which the domain mapping should be created. For
+        #   Cloud Run (fully managed), replace `namespace` with the project ID or number.
+        #   It takes the form namespaces/`namespace`. For example: namespaces/PROJECT_ID
         # @param [Google::Apis::RunV1::DomainMapping] domain_mapping_object
         # @param [String] dry_run
         #   Indicates that the server should validate the request and populate default
@@ -213,8 +213,8 @@ module Google
         
         # Delete a domain mapping.
         # @param [String] name
-        #   The name of the domain mapping to delete. For Cloud Run (fully managed),
-        #   replace `namespace` with the project ID or number. It takes the form
+        #   Required. The name of the domain mapping to delete. For Cloud Run (fully
+        #   managed), replace `namespace` with the project ID or number. It takes the form
         #   namespaces/`namespace`. For example: namespaces/PROJECT_ID
         # @param [String] api_version
         #   Cloud Run currently ignores this parameter.
@@ -260,8 +260,8 @@ module Google
         
         # Get information about a domain mapping.
         # @param [String] name
-        #   The name of the domain mapping to retrieve. For Cloud Run (fully managed),
-        #   replace `namespace` with the project ID or number. It takes the form
+        #   Required. The name of the domain mapping to retrieve. For Cloud Run (fully
+        #   managed), replace `namespace` with the project ID or number. It takes the form
         #   namespaces/`namespace`. For example: namespaces/PROJECT_ID
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -292,9 +292,9 @@ module Google
         
         # List all domain mappings.
         # @param [String] parent
-        #   The namespace from which the domain mappings should be listed. For Cloud Run (
-        #   fully managed), replace `namespace` with the project ID or number. It takes
-        #   the form namespaces/`namespace`. For example: namespaces/PROJECT_ID
+        #   Required. The namespace from which the domain mappings should be listed. For
+        #   Cloud Run (fully managed), replace `namespace` with the project ID or number.
+        #   It takes the form namespaces/`namespace`. For example: namespaces/PROJECT_ID
         # @param [String] continue
         #   Optional. Encoded string to continue paging.
         # @param [String] field_selector
@@ -394,9 +394,7 @@ module Google
         #   Optional. Cloud Run currently ignores this parameter.
         # @param [String] propagation_policy
         #   Optional. Specifies the propagation policy of delete. Cloud Run currently
-        #   ignores this setting, and deletes in the background. Please see https://
-        #   kubernetes.io/docs/concepts/workloads/controllers/garbage-collection/ for more
-        #   information.
+        #   ignores this setting.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -764,8 +762,7 @@ module Google
         #   Cloud Run currently ignores this parameter.
         # @param [String] propagation_policy
         #   Specifies the propagation policy of delete. Cloud Run currently ignores this
-        #   setting, and deletes in the background. Please see https://kubernetes.io/docs/
-        #   concepts/architecture/garbage-collection/ for more information.
+        #   setting, and deletes in the background.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1497,9 +1494,9 @@ module Google
         
         # Create a new domain mapping.
         # @param [String] parent
-        #   The namespace in which the domain mapping should be created. For Cloud Run (
-        #   fully managed), replace `namespace` with the project ID or number. It takes
-        #   the form namespaces/`namespace`. For example: namespaces/PROJECT_ID
+        #   Required. The namespace in which the domain mapping should be created. For
+        #   Cloud Run (fully managed), replace `namespace` with the project ID or number.
+        #   It takes the form namespaces/`namespace`. For example: namespaces/PROJECT_ID
         # @param [Google::Apis::RunV1::DomainMapping] domain_mapping_object
         # @param [String] dry_run
         #   Indicates that the server should validate the request and populate default
@@ -1536,8 +1533,8 @@ module Google
         
         # Delete a domain mapping.
         # @param [String] name
-        #   The name of the domain mapping to delete. For Cloud Run (fully managed),
-        #   replace `namespace` with the project ID or number. It takes the form
+        #   Required. The name of the domain mapping to delete. For Cloud Run (fully
+        #   managed), replace `namespace` with the project ID or number. It takes the form
         #   namespaces/`namespace`. For example: namespaces/PROJECT_ID
         # @param [String] api_version
         #   Cloud Run currently ignores this parameter.
@@ -1583,8 +1580,8 @@ module Google
         
         # Get information about a domain mapping.
         # @param [String] name
-        #   The name of the domain mapping to retrieve. For Cloud Run (fully managed),
-        #   replace `namespace` with the project ID or number. It takes the form
+        #   Required. The name of the domain mapping to retrieve. For Cloud Run (fully
+        #   managed), replace `namespace` with the project ID or number. It takes the form
         #   namespaces/`namespace`. For example: namespaces/PROJECT_ID
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1615,9 +1612,9 @@ module Google
         
         # List all domain mappings.
         # @param [String] parent
-        #   The namespace from which the domain mappings should be listed. For Cloud Run (
-        #   fully managed), replace `namespace` with the project ID or number. It takes
-        #   the form namespaces/`namespace`. For example: namespaces/PROJECT_ID
+        #   Required. The namespace from which the domain mappings should be listed. For
+        #   Cloud Run (fully managed), replace `namespace` with the project ID or number.
+        #   It takes the form namespaces/`namespace`. For example: namespaces/PROJECT_ID
         # @param [String] continue
         #   Optional. Encoded string to continue paging.
         # @param [String] field_selector
@@ -1802,8 +1799,7 @@ module Google
         #   Cloud Run currently ignores this parameter.
         # @param [String] propagation_policy
         #   Specifies the propagation policy of delete. Cloud Run currently ignores this
-        #   setting, and deletes in the background. Please see https://kubernetes.io/docs/
-        #   concepts/architecture/garbage-collection/ for more information.
+        #   setting, and deletes in the background.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

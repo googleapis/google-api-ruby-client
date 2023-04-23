@@ -363,8 +363,7 @@ module Google
       # and optionally how the containers those revisions reference are built. Users
       # create new Revisions by updating the Configuration's spec. The "latest created"
       # revision's name is available under status, as is the "latest ready" revision'
-      # s name. See also: https://github.com/knative/specs/blob/main/specs/serving/
-      # overview.md#configuration
+      # s name.
       class Configuration
         include Google::Apis::Core::Hashable
       
@@ -416,8 +415,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # RevisionTemplateSpec describes the data a revision should have when created
-        # from a template. Based on: https://github.com/kubernetes/api/blob/e771f807/
-        # core/v1/types.go#L3179-L3190
+        # from a template.
         # Corresponds to the JSON property `template`
         # @return [Google::Apis::RunV1::RevisionTemplate]
         attr_accessor :template
@@ -512,14 +510,13 @@ module Google
       
         # Required. Name of the container image in Dockerhub, Google Artifact Registry,
         # or Google Container Registry. If the host is not provided, Dockerhub is
-        # assumed. More info: https://kubernetes.io/docs/concepts/containers/images
+        # assumed.
         # Corresponds to the JSON property `image`
         # @return [String]
         attr_accessor :image
       
         # Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :
-        # latest tag is specified, or IfNotPresent otherwise. More info: https://
-        # kubernetes.io/docs/concepts/containers/images#updating-images
+        # latest tag is specified, or IfNotPresent otherwise.
         # Corresponds to the JSON property `imagePullPolicy`
         # @return [String]
         attr_accessor :image_pull_policy
@@ -530,9 +527,7 @@ module Google
         # @return [Google::Apis::RunV1::Probe]
         attr_accessor :liveness_probe
       
-        # Name of the container specified as a DNS_LABEL (RFC 1123). More info: https://
-        # kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-
-        # names
+        # Name of the container specified as a DNS_LABEL (RFC 1123).
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -951,16 +946,14 @@ module Google
       
         # Optional. APIVersion defines the versioned schema of this representation of an
         # object. Servers should convert recognized schemas to the latest internal value,
-        # and may reject unrecognized values. More info: https://git.k8s.io/community/
-        # contributors/devel/sig-architecture/api-conventions.md#resources
+        # and may reject unrecognized values.
         # Corresponds to the JSON property `apiVersion`
         # @return [String]
         attr_accessor :api_version
       
         # Optional. Kind is a string value representing the REST resource this object
         # represents. Servers may infer this from the endpoint the client submits
-        # requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/
-        # community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+        # requests to. Cannot be updated. In CamelCase.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1150,8 +1143,7 @@ module Google
       end
       
       # ExecutionTemplateSpec describes the metadata and spec an Execution should have
-      # when created from a job. Based on: https://github.com/kubernetes/api/blob/
-      # e771f807/core/v1/types.go#L3179-L3190
+      # when created from a job.
       class ExecutionTemplateSpec
         include Google::Apis::Core::Hashable
       
@@ -1240,9 +1232,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :port
       
-        # Service is the name of the service to place in the gRPC HealthCheckRequest (
-        # see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this
-        # is not specified, the default behavior is defined by gRPC.
+        # Service is the name of the service to place in the gRPC HealthCheckRequest. If
+        # this is not specified, the default behavior is defined by gRPC.
         # Corresponds to the JSON property `service`
         # @return [String]
         attr_accessor :service
@@ -1296,10 +1287,9 @@ module Google
         # @return [String]
         attr_accessor :status
       
-        # type is used to communicate the status of the reconciliation process. See also:
-        # https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-
-        # conditions-and-reporting Types common to all resources include: * "Ready" or "
-        # Completed": True when the Resource is ready.
+        # type is used to communicate the status of the reconciliation process. Types
+        # common to all resources include: * "Ready" or "Completed": True when the
+        # Resource is ready.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -1433,16 +1423,14 @@ module Google
       
         # Optional. APIVersion defines the versioned schema of this representation of an
         # object. Servers should convert recognized schemas to the latest internal value,
-        # and may reject unrecognized values. More info: https://git.k8s.io/community/
-        # contributors/devel/sig-architecture/api-conventions.md#resources
+        # and may reject unrecognized values.
         # Corresponds to the JSON property `apiVersion`
         # @return [String]
         attr_accessor :api_version
       
         # Optional. Kind is a string value representing the REST resource this object
         # represents. Servers may infer this from the endpoint the client submits
-        # requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/
-        # community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+        # requests to. Cannot be updated. In CamelCase.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1482,8 +1470,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # ExecutionTemplateSpec describes the metadata and spec an Execution should have
-        # when created from a job. Based on: https://github.com/kubernetes/api/blob/
-        # e771f807/core/v1/types.go#L3179-L3190
+        # when created from a job.
         # Corresponds to the JSON property `template`
         # @return [Google::Apis::RunV1::ExecutionTemplateSpec]
         attr_accessor :template
@@ -1821,9 +1808,7 @@ module Google
       
         # Opaque string that identifies the server's internal version of this object. It
         # can be used by clients to determine when objects have changed. If the message
-        # is passed back to the server, it must be left unmodified. https://git.k8s.io/
-        # community/contributors/devel/api-conventions.md#concurrency-control-and-
-        # consistency
+        # is passed back to the server, it must be left unmodified.
         # Corresponds to the JSON property `resourceVersion`
         # @return [String]
         attr_accessor :resource_version
@@ -2027,8 +2012,7 @@ module Google
       class LocalObjectReference
         include Google::Apis::Core::Hashable
       
-        # Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/
-        # working-with-objects/names/#names
+        # Name of the referent.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2117,8 +2101,7 @@ module Google
         # `run.googleapis.com/secure-session-agent`: Revision. * `run.googleapis.com/
         # sessionAffinity`: Revision. * `run.googleapis.com/startup-cpu-boost`: Revision.
         # * `run.googleapis.com/vpc-access-connector`: Revision, Execution. * `run.
-        # googleapis.com/vpc-access-egress`: Revision, Execution. Execution. More info:
-        # https://kubernetes.io/docs/user-guide/annotations
+        # googleapis.com/vpc-access-egress`: Revision, Execution.
         # Corresponds to the JSON property `annotations`
         # @return [Hash<String,String>]
         attr_accessor :annotations
@@ -2128,9 +2111,7 @@ module Google
         # @return [String]
         attr_accessor :cluster_name
       
-        # UTC timestamp representing the server time when this object was created. More
-        # info: https://git.k8s.io/community/contributors/devel/api-conventions.md#
-        # metadata
+        # UTC timestamp representing the server time when this object was created.
         # Corresponds to the JSON property `creationTimestamp`
         # @return [String]
         attr_accessor :creation_timestamp
@@ -2165,15 +2146,14 @@ module Google
       
         # Map of string keys and values that can be used to organize and categorize (
         # scope and select) objects. May match selectors of replication controllers and
-        # routes. More info: https://kubernetes.io/docs/user-guide/labels
+        # routes.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Required. The name of the resource. In Cloud Run, name is required when
-        # creating top-level resources (Service, Job), must be unique within a Cloud Run
-        # project/region, and cannot be changed once created. More info: https://
-        # kubernetes.io/docs/user-guide/identifiers#names
+        # Required. The name of the resource. Name is required when creating top-level
+        # resources (Service, Job), must be unique within a Cloud Run project/region,
+        # and cannot be changed once created.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2194,8 +2174,7 @@ module Google
         # be used for optimistic concurrency, change detection, and the watch operation
         # on a resource or set of resources. Clients must treat these values as opaque
         # and passed unmodified back to the server or omit the value to disable conflict-
-        # detection. More info: https://git.k8s.io/community/contributors/devel/sig-
-        # architecture/api-conventions.md#concurrency-control-and-consistency
+        # detection.
         # Corresponds to the JSON property `resourceVersion`
         # @return [String]
         attr_accessor :resource_version
@@ -2205,8 +2184,7 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # Unique, system-generated identifier for this resource. More info: https://
-        # kubernetes.io/docs/user-guide/identifiers#uids
+        # Unique, system-generated identifier for this resource.
         # Corresponds to the JSON property `uid`
         # @return [String]
         attr_accessor :uid
@@ -2443,9 +2421,7 @@ module Google
       
         # Number of seconds after the container has started before the probe is
         # initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for
-        # liveness probe is 3600. Maximum value for startup probe is 240. More info:
-        # https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-
-        # probes
+        # liveness probe is 3600. Maximum value for startup probe is 240.
         # Corresponds to the JSON property `initialDelaySeconds`
         # @return [Fixnum]
         attr_accessor :initial_delay_seconds
@@ -2470,8 +2446,6 @@ module Google
       
         # Number of seconds after which the probe times out. Defaults to 1 second.
         # Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
-        # More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#
-        # container-probes
         # Corresponds to the JSON property `timeoutSeconds`
         # @return [Fixnum]
         attr_accessor :timeout_seconds
@@ -2531,20 +2505,20 @@ module Google
       class ResourceRequirements
         include Google::Apis::Core::Hashable
       
-        # Only memory and CPU are supported. Limits describes the maximum amount of
-        # compute resources allowed. The values of the map is string form of the '
-        # quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/
-        # staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        # Limits describes the maximum amount of compute resources allowed. Only 'cpu'
+        # and 'memory' keys are supported. * For supported 'cpu' values, go to https://
+        # cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and
+        # syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits
         # Corresponds to the JSON property `limits`
         # @return [Hash<String,String>]
         attr_accessor :limits
       
-        # Only memory and CPU are supported. Requests describes the minimum amount of
-        # compute resources required. If Requests is omitted for a container, it
+        # Requests describes the minimum amount of compute resources required. Only `cpu`
+        # and `memory` are supported. If Requests is omitted for a container, it
         # defaults to Limits if that is explicitly specified, otherwise to an
-        # implementation-defined value. The values of the map is string form of the '
-        # quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/
-        # staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        # implementation-defined value. * For supported 'cpu' values, go to https://
+        # cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and
+        # syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits
         # Corresponds to the JSON property `requests`
         # @return [Hash<String,String>]
         attr_accessor :requests
@@ -2622,8 +2596,7 @@ module Google
         # Containers holds the single container that defines the unit of execution for
         # this Revision. In the context of a Revision, we disallow a number of fields on
         # this Container, including: name and lifecycle. In Cloud Run, only a single
-        # container may be provided. The runtime contract is documented here: https://
-        # github.com/knative/specs/blob/main/specs/serving/runtime-contract.md
+        # container may be provided.
         # Corresponds to the JSON property `containers`
         # @return [Array<Google::Apis::RunV1::Container>]
         attr_accessor :containers
@@ -2733,8 +2706,7 @@ module Google
       end
       
       # RevisionTemplateSpec describes the data a revision should have when created
-      # from a template. Based on: https://github.com/kubernetes/api/blob/e771f807/
-      # core/v1/types.go#L3179-L3190
+      # from a template.
       class RevisionTemplate
         include Google::Apis::Core::Hashable
       
@@ -2764,9 +2736,8 @@ module Google
       # Some of the Revisions a Route distributes traffic over may be specified by
       # referencing the Configuration responsible for creating them; in these cases
       # the Route is additionally responsible for monitoring the Configuration for "
-      # latest ready" revision changes, and smoothly rolling out latest revisions. See
-      # also: https://github.com/knative/specs/blob/main/specs/serving/overview.md#
-      # route Cloud Run currently supports referencing a single Configuration to
+      # latest ready" revision changes, and smoothly rolling out latest revisions.
+      # Cloud Run currently supports referencing a single Configuration to
       # automatically deploy the "latest ready" Revision from that Configuration.
       class Route
         include Google::Apis::Core::Hashable
@@ -3081,8 +3052,6 @@ module Google
       # Routes and Configurations (much as a kubernetes Deployment orchestrates
       # ReplicaSets). The Service's controller will track the statuses of its owned
       # Configuration and Route, reflecting their statuses and conditions as its own.
-      # See also: https://github.com/knative/serving/blob/main/docs/spec/overview.md#
-      # service
       class Service
         include Google::Apis::Core::Hashable
       
@@ -3133,8 +3102,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # RevisionTemplateSpec describes the data a revision should have when created
-        # from a template. Based on: https://github.com/kubernetes/api/blob/e771f807/
-        # core/v1/types.go#L3179-L3190
+        # from a template.
         # Corresponds to the JSON property `template`
         # @return [Google::Apis::RunV1::RevisionTemplate]
         attr_accessor :template
@@ -3313,9 +3281,7 @@ module Google
         # @return [String]
         attr_accessor :reason
       
-        # Status of the operation. One of: "Success" or "Failure". More info: https://
-        # git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#
-        # spec-and-status
+        # Status of the operation. One of: "Success" or "Failure".
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -3394,9 +3360,7 @@ module Google
         attr_accessor :group
       
         # The kind attribute of the resource associated with the status StatusReason. On
-        # some operations may differ from the requested resource Kind. More info: https:/
-        # /git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#
-        # types-kinds
+        # some operations may differ from the requested resource Kind.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -3416,7 +3380,6 @@ module Google
         attr_accessor :retry_after_seconds
       
         # UID of the resource. (when there is a single resource which can be described).
-        # More info: https://kubernetes.io/docs/user-guide/identifiers#uids
         # Corresponds to the JSON property `uid`
         # @return [String]
         attr_accessor :uid
@@ -3467,16 +3430,14 @@ module Google
       
         # Optional. APIVersion defines the versioned schema of this representation of an
         # object. Servers should convert recognized schemas to the latest internal value,
-        # and may reject unrecognized values. More info: https://git.k8s.io/community/
-        # contributors/devel/sig-architecture/api-conventions.md#resources
+        # and may reject unrecognized values.
         # Corresponds to the JSON property `apiVersion`
         # @return [String]
         attr_accessor :api_version
       
         # Optional. Kind is a string value representing the REST resource this object
         # represents. Servers may infer this from the endpoint the client submits
-        # requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/
-        # community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+        # requests to. Cannot be updated. In CamelCase.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -3576,7 +3537,7 @@ module Google
         attr_accessor :timeout_seconds
       
         # Optional. List of volumes that can be mounted by containers belonging to the
-        # task. More info: https://kubernetes.io/docs/concepts/storage/volumes
+        # task.
         # Corresponds to the JSON property `volumes`
         # @return [Array<Google::Apis::RunV1::Volume>]
         attr_accessor :volumes
