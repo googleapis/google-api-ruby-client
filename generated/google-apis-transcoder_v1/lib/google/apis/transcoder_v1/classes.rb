@@ -974,7 +974,7 @@ module Google
         end
       end
       
-      # Overlaid jpeg image.
+      # Overlaid image.
       class Image
         include Google::Apis::Core::Hashable
       
@@ -989,8 +989,8 @@ module Google
         # @return [Google::Apis::TranscoderV1::NormalizedCoordinate]
         attr_accessor :resolution
       
-        # Required. URI of the JPEG image in Cloud Storage. For example, `gs://bucket/
-        # inputs/image.jpeg`. JPEG is the only supported image type.
+        # Required. URI of the image in Cloud Storage. For example, `gs://bucket/inputs/
+        # image.png`. Only PNG and JPEG images are supported.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -1466,7 +1466,7 @@ module Google
         # @return [Array<Google::Apis::TranscoderV1::Animation>]
         attr_accessor :animations
       
-        # Overlaid jpeg image.
+        # Overlaid image.
         # Corresponds to the JSON property `image`
         # @return [Google::Apis::TranscoderV1::Image]
         attr_accessor :image
