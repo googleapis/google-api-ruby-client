@@ -42,39 +42,41 @@ module Google
         attr_accessor :method_name
       
         # Associated email, such as "foo@google.com". The email address of the
-        # authenticated user (or service account on behalf of third party principal)
-        # making the request. For third party identity callers, the `principal_subject`
-        # field is populated instead of this field. For privacy reasons, the principal
-        # email address is sometimes redacted. For more information, see [Caller
-        # identities in audit logs](https://cloud.google.com/logging/docs/audit#user-id).
+        # authenticated user or a service account acting on behalf of a third party
+        # principal making the request. For third party identity callers, the `
+        # principal_subject` field is populated instead of this field. For privacy
+        # reasons, the principal email address is sometimes redacted. For more
+        # information, see [Caller identities in audit logs](https://cloud.google.com/
+        # logging/docs/audit#user-id).
         # Corresponds to the JSON property `principalEmail`
         # @return [String]
         attr_accessor :principal_email
       
-        # A string representing the principal_subject associated with the identity. As
-        # compared to `principal_email`, supports principals that aren't associated with
-        # email addresses, such as third party principals. For most identities, the
-        # format will be `principal://iam.googleapis.com/`identity pool name`/subjects/`
-        # subject`` except for some GKE identities (GKE_WORKLOAD, FREEFORM,
-        # GKE_HUB_WORKLOAD) that are still in the legacy format `serviceAccount:`
-        # identity pool name`[`subject`]`
+        # A string that represents the principal_subject that is associated with the
+        # identity. Unlike `principal_email`, `principal_subject` supports principals
+        # that aren't associated with email addresses, such as third party principals.
+        # For most identities, the format is `principal://iam.googleapis.com/`identity
+        # pool name`/subject/`subject``. Some GKE identities, such as GKE_WORKLOAD,
+        # FREEFORM, and GKE_HUB_WORKLOAD, still use the legacy format `serviceAccount:`
+        # identity pool name`[`subject`]`.
         # Corresponds to the JSON property `principalSubject`
         # @return [String]
         attr_accessor :principal_subject
       
-        # Identity delegation history of an authenticated service account that makes the
-        # request. It contains information on the real authorities that try to access
-        # GCP resources by delegating on a service account. When multiple authorities
-        # are present, they are guaranteed to be sorted based on the original ordering
-        # of the identity delegation events.
+        # The identity delegation history of an authenticated service account that made
+        # the request. The `serviceAccountDelegationInfo[]` object contains information
+        # about the real authorities that try to access Google Cloud resources by
+        # delegating on a service account. When multiple authorities are present, they
+        # are guaranteed to be sorted based on the original ordering of the identity
+        # delegation events.
         # Corresponds to the JSON property `serviceAccountDelegationInfo`
         # @return [Array<Google::Apis::SecuritycenterV1beta2::ServiceAccountDelegationInfo>]
         attr_accessor :service_account_delegation_info
       
-        # The name of the service account key used to create or exchange credentials for
-        # authenticating the service account making the request. This is a scheme-less
-        # URI full resource name. For example: "//iam.googleapis.com/projects/`
-        # PROJECT_ID`/serviceAccounts/`ACCOUNT`/keys/`key`"
+        # The name of the service account key that was used to create or exchange
+        # credentials when authenticating the service account that made the request.
+        # This is a scheme-less URI full resource name. For example: "//iam.googleapis.
+        # com/projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT`/keys/`key`".
         # Corresponds to the JSON property `serviceAccountKeyName`
         # @return [String]
         attr_accessor :service_account_key_name
@@ -85,18 +87,16 @@ module Google
         # @return [String]
         attr_accessor :service_name
       
-        # What kind of user agent is associated, for example operating system shells,
-        # embedded or stand-alone applications, etc.
+        # Type of user agent associated with the finding. For example, an operating
+        # system shell or an embedded or standalone application.
         # Corresponds to the JSON property `userAgentFamily`
         # @return [String]
         attr_accessor :user_agent_family
       
-        # A string that represents the username of a user, user account, or other entity
-        # involved in the access event. What the entity is and what its role in the
-        # access event is depends on the finding that this field appears in. The entity
-        # is likely not an IAM principal, but could be a user that is logged into an
-        # operating system, if the finding is VM-related, or a user that is logged into
-        # some type of application that is involved in the access event.
+        # A string that represents a username. The username provided depends on the type
+        # of the finding and is likely not an IAM principal. For example, this can be a
+        # system username if the finding is related to a virtual machine, or it can be
+        # an application login username.
         # Corresponds to the JSON property `userName`
         # @return [String]
         attr_accessor :user_name
@@ -993,7 +993,7 @@ module Google
         # @return [Hash<String,Google::Apis::SecuritycenterV1beta2::ContactDetails>]
         attr_accessor :contacts
       
-        # Containers associated with the finding. containers provides information for
+        # Containers associated with the finding. This field provides information for
         # both Kubernetes and non-Kubernetes containers.
         # Corresponds to the JSON property `containers`
         # @return [Array<Google::Apis::SecuritycenterV1beta2::Container>]
@@ -1014,7 +1014,7 @@ module Google
         # @return [Google::Apis::SecuritycenterV1beta2::Database]
         attr_accessor :database
       
-        # Contains more detail about the finding.
+        # Contains more details about the finding.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -1059,7 +1059,7 @@ module Google
         # @return [String]
         attr_accessor :finding_class
       
-        # Represents IAM bindings associated with the Finding.
+        # Represents IAM bindings associated with the finding.
         # Corresponds to the JSON property `iamBindings`
         # @return [Array<Google::Apis::SecuritycenterV1beta2::IamBinding>]
         attr_accessor :iam_bindings
@@ -1102,10 +1102,9 @@ module Google
         # @return [String]
         attr_accessor :mute
       
-        # First known as mute_annotation. Records additional information about the mute
-        # operation e.g. mute config that muted the finding, user who muted the finding,
-        # etc. Unlike other attributes of a finding, a finding provider shouldn't set
-        # the value of mute.
+        # Records additional information about the mute operation, for example, the [
+        # mute configuration](/security-command-center/docs/how-to-mute-findings) that
+        # muted the finding and the user who muted the finding.
         # Corresponds to the JSON property `muteInitiator`
         # @return [String]
         attr_accessor :mute_initiator
@@ -1115,14 +1114,16 @@ module Google
         # @return [String]
         attr_accessor :mute_update_time
       
-        # The relative resource name of this finding. See: https://cloud.google.com/apis/
-        # design/resource_names#relative_resource_name Example: "organizations/`
-        # organization_id`/sources/`source_id`/findings/`finding_id`"
+        # The [relative resource name](https://cloud.google.com/apis/design/
+        # resource_names#relative_resource_name) of the finding. Example: "organizations/
+        # `organization_id`/sources/`source_id`/findings/`finding_id`", "folders/`
+        # folder_id`/sources/`source_id`/findings/`finding_id`", "projects/`project_id`/
+        # sources/`source_id`/findings/`finding_id`".
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Next steps associate to the finding.
+        # Steps to address the finding.
         # Corresponds to the JSON property `nextSteps`
         # @return [String]
         attr_accessor :next_steps
