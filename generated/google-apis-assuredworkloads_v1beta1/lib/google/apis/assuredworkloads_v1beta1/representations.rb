@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAssuredworkloadsV1beta1ViolationExceptionContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAssuredworkloadsV1beta1ViolationRemediation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -246,6 +252,8 @@ module Google
           property :category, as: 'category'
           property :description, as: 'description'
           property :exception_audit_log_link, as: 'exceptionAuditLogLink'
+          collection :exception_contexts, as: 'exceptionContexts', class: Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1ViolationExceptionContext, decorator: Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1ViolationExceptionContext::Representation
+      
           property :name, as: 'name'
           property :non_compliant_org_policy, as: 'nonCompliantOrgPolicy'
           property :org_policy_constraint, as: 'orgPolicyConstraint'
@@ -254,6 +262,15 @@ module Google
           property :resolve_time, as: 'resolveTime'
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudAssuredworkloadsV1beta1ViolationExceptionContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :acknowledgement_time, as: 'acknowledgementTime'
+          property :comment, as: 'comment'
+          property :principal_email, as: 'principalEmail'
         end
       end
       
@@ -330,6 +347,7 @@ module Google
       
           property :saa_enrollment_response, as: 'saaEnrollmentResponse', class: Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponse, decorator: Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponse::Representation
       
+          property :violation_notifications_enabled, as: 'violationNotificationsEnabled'
         end
       end
       
