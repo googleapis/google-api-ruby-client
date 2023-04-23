@@ -208,6 +208,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsNpmPackage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsPythonPackage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -263,6 +269,12 @@ module Google
       end
       
       class ContaineranalysisGoogleDevtoolsCloudbuildV1FileHashes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1GitSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -341,6 +353,12 @@ module Google
       end
       
       class ContaineranalysisGoogleDevtoolsCloudbuildV1UploadedMavenArtifact
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1UploadedNpmPackage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1221,6 +1239,8 @@ module Google
           collection :images, as: 'images'
           collection :maven_artifacts, as: 'mavenArtifacts', class: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsMavenArtifact, decorator: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsMavenArtifact::Representation
       
+          collection :npm_packages, as: 'npmPackages', class: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsNpmPackage, decorator: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsNpmPackage::Representation
+      
           property :objects, as: 'objects', class: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsArtifactObjects, decorator: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsArtifactObjects::Representation
       
           collection :python_packages, as: 'pythonPackages', class: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsPythonPackage, decorator: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsPythonPackage::Representation
@@ -1246,6 +1266,14 @@ module Google
           property :path, as: 'path'
           property :repository, as: 'repository'
           property :version, as: 'version'
+        end
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsNpmPackage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :package_path, as: 'packagePath'
+          property :repository, as: 'repository'
         end
       end
       
@@ -1404,6 +1432,15 @@ module Google
         end
       end
       
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1GitSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dir, as: 'dir'
+          property :revision, as: 'revision'
+          property :url, as: 'url'
+        end
+      end
+      
       class ContaineranalysisGoogleDevtoolsCloudbuildV1Hash
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1446,6 +1483,8 @@ module Google
       
           collection :maven_artifacts, as: 'mavenArtifacts', class: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1UploadedMavenArtifact, decorator: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1UploadedMavenArtifact::Representation
       
+          collection :npm_packages, as: 'npmPackages', class: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1UploadedNpmPackage, decorator: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1UploadedNpmPackage::Representation
+      
           property :num_artifacts, :numeric_string => true, as: 'numArtifacts'
           collection :python_packages, as: 'pythonPackages', class: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1UploadedPythonPackage, decorator: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1UploadedPythonPackage::Representation
       
@@ -1481,6 +1520,8 @@ module Google
       class ContaineranalysisGoogleDevtoolsCloudbuildV1Source
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :git_source, as: 'gitSource', class: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1GitSource, decorator: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1GitSource::Representation
+      
           property :repo_source, as: 'repoSource', class: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1RepoSource, decorator: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1RepoSource::Representation
       
           property :storage_source, as: 'storageSource', class: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1StorageSource, decorator: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1StorageSource::Representation
@@ -1531,6 +1572,17 @@ module Google
       end
       
       class ContaineranalysisGoogleDevtoolsCloudbuildV1UploadedMavenArtifact
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :file_hashes, as: 'fileHashes', class: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1FileHashes, decorator: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1FileHashes::Representation
+      
+          property :push_timing, as: 'pushTiming', class: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1TimeSpan, decorator: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1TimeSpan::Representation
+      
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1UploadedNpmPackage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :file_hashes, as: 'fileHashes', class: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1FileHashes, decorator: Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1FileHashes::Representation
