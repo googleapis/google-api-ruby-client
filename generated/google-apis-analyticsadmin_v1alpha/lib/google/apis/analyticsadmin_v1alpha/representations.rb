@@ -622,6 +622,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1alphaFetchConnectedGa4PropertyResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1alphaFirebaseLink
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1869,6 +1875,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :opt_out, as: 'optOut'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaFetchConnectedGa4PropertyResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :property, as: 'property'
         end
       end
       
