@@ -802,8 +802,8 @@ module Google
         #   resources. Format: `projects/`project_number``
         # @param [Fixnum] page_size
         #   Optional. The maximum number of groups to return. The service may return fewer
-        #   than this value. The valid range is [1-100]; If unspecified (0), at most 25
-        #   groups are returned. Values above 100 are coerced to 100.
+        #   than this value. The valid range is [1-1000]; If unspecified (0), at most 25
+        #   groups are returned. Values above 1000 are coerced to 1000.
         # @param [String] page_token
         #   Optional. A page token, received from a previous `ListGroups` call. Provide
         #   this to retrieve the subsequent page. When paginating, all other parameters
