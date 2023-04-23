@@ -8519,12 +8519,13 @@ module Google
       end
       
       # The request message for the ImportProcessorVersion method. This method
-      # requires Document AI Service Agent of the destination project in the source
-      # project's IAM with [Document AI Editor role](https://cloud.google.com/document-
-      # ai/docs/access-control/iam-roles). The destination project is specified as
-      # part of the `parent` field. The source project is specified as part of `source`
-      # field. The Service Agent for Document AI can be found in https://cloud.google.
-      # com/iam/docs/service-agents.
+      # requires source processor version and destination processor are in the same
+      # location. This method requires Document AI Service Agent of the destination
+      # project in the source project's IAM with [Document AI Editor role](https://
+      # cloud.google.com/document-ai/docs/access-control/iam-roles). The destination
+      # project is specified as part of the `parent` field. The source project is
+      # specified as part of `source` field. The Service Agent for Document AI can be
+      # found in https://cloud.google.com/iam/docs/service-agents.
       class GoogleCloudDocumentaiV1beta3ImportProcessorVersionRequest
         include Google::Apis::Core::Hashable
       
