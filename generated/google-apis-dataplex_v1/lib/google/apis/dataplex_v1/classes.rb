@@ -1839,7 +1839,7 @@ module Google
         # @return [String]
         attr_accessor :min_value
       
-        # 
+        # The aggregate metric to evaluate.
         # Corresponds to the JSON property `statistic`
         # @return [String]
         attr_accessor :statistic
