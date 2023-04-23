@@ -269,6 +269,11 @@ module Google
         # @return [String]
         attr_accessor :exception_audit_log_link
       
+        # Output only. List of all the exception detail added for the violation.
+        # Corresponds to the JSON property `exceptionContexts`
+        # @return [Array<Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ViolationExceptionContext>]
+        attr_accessor :exception_contexts
+      
         # Output only. Immutable. Name of the Violation. Format: organizations/`
         # organization`/locations/`location`/workloads/`workload_id`/violations/`
         # violations_id`
@@ -325,6 +330,7 @@ module Google
           @category = args[:category] if args.key?(:category)
           @description = args[:description] if args.key?(:description)
           @exception_audit_log_link = args[:exception_audit_log_link] if args.key?(:exception_audit_log_link)
+          @exception_contexts = args[:exception_contexts] if args.key?(:exception_contexts)
           @name = args[:name] if args.key?(:name)
           @non_compliant_org_policy = args[:non_compliant_org_policy] if args.key?(:non_compliant_org_policy)
           @org_policy_constraint = args[:org_policy_constraint] if args.key?(:org_policy_constraint)
@@ -332,6 +338,37 @@ module Google
           @resolve_time = args[:resolve_time] if args.key?(:resolve_time)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Violation exception detail. Next Id: 5
+      class GoogleCloudAssuredworkloadsV1ViolationExceptionContext
+        include Google::Apis::Core::Hashable
+      
+        # Timestamp when the violation was acknowledged.
+        # Corresponds to the JSON property `acknowledgementTime`
+        # @return [String]
+        attr_accessor :acknowledgement_time
+      
+        # Business justification provided towards the acknowledgement of the violation.
+        # Corresponds to the JSON property `comment`
+        # @return [String]
+        attr_accessor :comment
+      
+        # Email address of the user (or service account) who acknowledged the violation.
+        # Corresponds to the JSON property `principalEmail`
+        # @return [String]
+        attr_accessor :principal_email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @acknowledgement_time = args[:acknowledgement_time] if args.key?(:acknowledgement_time)
+          @comment = args[:comment] if args.key?(:comment)
+          @principal_email = args[:principal_email] if args.key?(:principal_email)
         end
       end
       
@@ -572,6 +609,15 @@ module Google
         # @return [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse]
         attr_accessor :saa_enrollment_response
       
+        # Optional. Indicates whether the e-mail notification for a violation is enabled
+        # for a workload. This value will be by default True, and if not present will be
+        # considered as true. This should only be updated via updateWorkload call. Any
+        # Changes to this field during the createWorkload call will not be honored.
+        # Corresponds to the JSON property `violationNotificationsEnabled`
+        # @return [Boolean]
+        attr_accessor :violation_notifications_enabled
+        alias_method :violation_notifications_enabled?, :violation_notifications_enabled
+      
         def initialize(**args)
            update!(**args)
         end
@@ -596,6 +642,7 @@ module Google
           @resource_settings = args[:resource_settings] if args.key?(:resource_settings)
           @resources = args[:resources] if args.key?(:resources)
           @saa_enrollment_response = args[:saa_enrollment_response] if args.key?(:saa_enrollment_response)
+          @violation_notifications_enabled = args[:violation_notifications_enabled] if args.key?(:violation_notifications_enabled)
         end
       end
       
