@@ -3329,6 +3329,27 @@ module Google
         end
       end
       
+      # Response for looking up GA4 property connected to a UA property.
+      class GoogleAnalyticsAdminV1alphaFetchConnectedGa4PropertyResponse
+        include Google::Apis::Core::Hashable
+      
+        # The GA4 property connected to the UA property. An empty string is returned
+        # when there is no connected GA4 property. Format: properties/`property_id`
+        # Example: properties/1234
+        # Corresponds to the JSON property `property`
+        # @return [String]
+        attr_accessor :property
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @property = args[:property] if args.key?(:property)
+        end
+      end
+      
       # A link between a GA4 property and a Firebase project.
       class GoogleAnalyticsAdminV1alphaFirebaseLink
         include Google::Apis::Core::Hashable
