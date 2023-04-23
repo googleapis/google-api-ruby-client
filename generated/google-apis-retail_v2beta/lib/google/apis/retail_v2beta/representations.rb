@@ -2157,7 +2157,7 @@ module Google
       class GoogleCloudRetailV2betaExperimentInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :experiment_name, as: 'experimentName'
+          property :experiment, as: 'experiment'
           property :serving_config_experiment, as: 'servingConfigExperiment', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaExperimentInfoServingConfigExperiment, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaExperimentInfoServingConfigExperiment::Representation
       
         end

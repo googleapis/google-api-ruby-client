@@ -73,8 +73,8 @@ module Google
         #   MOBILE` * A customized string starts with `OTHER_`, e.g. `OTHER_IPHONE`.
         # @param [String] entity
         #   The entity for customers that may run multiple different entities, domains,
-        #   sites or regions, for example, "Google US", "Google Ads", "Waymo", "google.com"
-        #   , "youtube.com", etc. If this is set, it should be exactly matched with
+        #   sites or regions, for example, `Google US`, `Google Ads`, `Waymo`, `google.com`
+        #   , `youtube.com`, etc. If this is set, it should be exactly matched with
         #   UserEvent.entity to get per-entity autocomplete results.
         # @param [Array<String>, String] language_codes
         #   Note that this field applies for `user-data` dataset only. For requests with `

@@ -1326,7 +1326,7 @@ module Google
       
       # Represents a link between a Merchant Center account and a branch. Once a link
       # is established, products from the linked merchant center account will be
-      # streamed to the linked branch. LINT.IfChange(MerchantCenterAccountLink)
+      # streamed to the linked branch.
       class GoogleCloudRetailV2alphaMerchantCenterAccountLink
         include Google::Apis::Core::Hashable
       
@@ -1384,7 +1384,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Output only. GCP project ID.
+        # Output only. Google Cloud project ID.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -3162,9 +3162,9 @@ module Google
         # The fully qualified resource name of the experiment that provides the serving
         # config under test, should an active experiment exist. For example: `projects/*/
         # locations/global/catalogs/default_catalog/experiments/experiment_id`
-        # Corresponds to the JSON property `experimentName`
+        # Corresponds to the JSON property `experiment`
         # @return [String]
-        attr_accessor :experiment_name
+        attr_accessor :experiment
       
         # Metadata for active serving config A/B tests.
         # Corresponds to the JSON property `servingConfigExperiment`
@@ -3177,7 +3177,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @experiment_name = args[:experiment_name] if args.key?(:experiment_name)
+          @experiment = args[:experiment] if args.key?(:experiment)
           @serving_config_experiment = args[:serving_config_experiment] if args.key?(:serving_config_experiment)
         end
       end
@@ -3980,7 +3980,7 @@ module Google
       
       # Represents a link between a Merchant Center account and a branch. Once a link
       # is established, products from the linked merchant center account will be
-      # streamed to the linked branch. LINT.IfChange(MerchantCenterAccountLink)
+      # streamed to the linked branch.
       class GoogleCloudRetailV2betaMerchantCenterAccountLink
         include Google::Apis::Core::Hashable
       
@@ -4038,7 +4038,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Output only. GCP project ID.
+        # Output only. Google Cloud project ID.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -6028,8 +6028,8 @@ module Google
         attr_accessor :dynamic_facet_spec
       
         # The entity for customers that may run multiple different entities, domains,
-        # sites or regions, for example, "Google US", "Google Ads", "Waymo", "google.com"
-        # , "youtube.com", etc. If this is set, it should be exactly matched with
+        # sites or regions, for example, `Google US`, `Google Ads`, `Waymo`, `google.com`
+        # , `youtube.com`, etc. If this is set, it should be exactly matched with
         # UserEvent.entity to get search results boosted by entity.
         # Corresponds to the JSON property `entity`
         # @return [String]
@@ -6083,7 +6083,7 @@ module Google
         # @return [String]
         attr_accessor :order_by
       
-        # The categories associated with a category page. Required for category
+        # The categories associated with a category page. Must be set for category
         # navigation queries to achieve good search quality. The format should be the
         # same as UserEvent.page_categories; To represent full path of category, use '>'
         # sign to separate different hierarchies. If '>' is part of the category name,
@@ -6392,13 +6392,15 @@ module Google
         # @return [Array<String>]
         attr_accessor :contains
       
-        # For all numerical facet keys that appear in the list of products from the
-        # catalog, the percentiles 0, 10, 30, 50, 70, 90 and 100 are computed from their
-        # distribution weekly. If the model assigns a high score to a numerical facet
-        # key and its intervals are not specified in the search request, these
-        # percentiles will become the bounds for its intervals and will be returned in
-        # the response. If the facet key intervals are specified in the request, then
-        # the specified intervals will be returned instead.
+        # Set only if values should be bucketized into intervals. Must be set for facets
+        # with numerical values. Must not be set for facet with text values. Maximum
+        # number of intervals is 40. For all numerical facet keys that appear in the
+        # list of products from the catalog, the percentiles 0, 10, 30, 50, 70, 90 and
+        # 100 are computed from their distribution weekly. If the model assigns a high
+        # score to a numerical facet key and its intervals are not specified in the
+        # search request, these percentiles will become the bounds for its intervals and
+        # will be returned in the response. If the facet key intervals are specified in
+        # the request, then the specified intervals will be returned instead.
         # Corresponds to the JSON property `intervals`
         # @return [Array<Google::Apis::RetailV2beta::GoogleCloudRetailV2betaInterval>]
         attr_accessor :intervals
@@ -7230,8 +7232,8 @@ module Google
         attr_accessor :completion_detail
       
         # The entity for customers that may run multiple different entities, domains,
-        # sites or regions, for example, "Google US", "Google Ads", "Waymo", "google.com"
-        # , "youtube.com", etc. It is recommended to set this field to get better per-
+        # sites or regions, for example, `Google US`, `Google Ads`, `Waymo`, `google.com`
+        # , `youtube.com`, etc. It is recommended to set this field to get better per-
         # entity search, completion and prediction results.
         # Corresponds to the JSON property `entity`
         # @return [String]
