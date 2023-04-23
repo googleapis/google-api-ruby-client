@@ -6127,6 +6127,7 @@ module Google
           property :barge_in_config, as: 'bargeInConfig', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1BargeInConfig, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1BargeInConfig::Representation
       
           property :disable_no_speech_recognized_event, as: 'disableNoSpeechRecognizedEvent'
+          property :enable_automatic_punctuation, as: 'enableAutomaticPunctuation'
           property :enable_word_info, as: 'enableWordInfo'
           property :language_code, as: 'languageCode'
           property :model, as: 'model'
