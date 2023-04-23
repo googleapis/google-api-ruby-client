@@ -700,7 +700,7 @@ module Google
         # An intent represents a user's intent to interact with a conversational agent.
         # You can provide information for the Dialogflow API to use to match user input
         # to an intent by adding training phrases (i.e., examples of user input) to your
-        # intent. Next ID: 15
+        # intent.
         # Corresponds to the JSON property `triggeredIntent`
         # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Intent]
         attr_accessor :triggered_intent
@@ -1739,8 +1739,8 @@ module Google
         # @return [String]
         attr_accessor :agent_content
       
-        # The URI to a file containing the exported agent. This field is populated only
-        # if `agent_uri` is specified in ExportAgentRequest.
+        # The URI to a file containing the exported agent. This field is populated if `
+        # agent_uri` is specified in ExportAgentRequest.
         # Corresponds to the JSON property `agentUri`
         # @return [String]
         attr_accessor :agent_uri
@@ -2697,7 +2697,7 @@ module Google
       # An intent represents a user's intent to interact with a conversational agent.
       # You can provide information for the Dialogflow API to use to match user input
       # to an intent by adding training phrases (i.e., examples of user input) to your
-      # intent. Next ID: 15
+      # intent.
       class GoogleCloudDialogflowCxV3Intent
         include Google::Apis::Core::Hashable
       
@@ -3499,7 +3499,7 @@ module Google
         # An intent represents a user's intent to interact with a conversational agent.
         # You can provide information for the Dialogflow API to use to match user input
         # to an intent by adding training phrases (i.e., examples of user input) to your
-        # intent. Next ID: 15
+        # intent.
         # Corresponds to the JSON property `intent`
         # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Intent]
         attr_accessor :intent
@@ -4141,7 +4141,7 @@ module Google
         # An intent represents a user's intent to interact with a conversational agent.
         # You can provide information for the Dialogflow API to use to match user input
         # to an intent by adding training phrases (i.e., examples of user input) to your
-        # intent. Next ID: 15
+        # intent.
         # Corresponds to the JSON property `intent`
         # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Intent]
         attr_accessor :intent
@@ -7291,8 +7291,8 @@ module Google
         # @return [String]
         attr_accessor :agent_content
       
-        # The URI to a file containing the exported agent. This field is populated only
-        # if `agent_uri` is specified in ExportAgentRequest.
+        # The URI to a file containing the exported agent. This field is populated if `
+        # agent_uri` is specified in ExportAgentRequest.
         # Corresponds to the JSON property `agentUri`
         # @return [String]
         attr_accessor :agent_uri
@@ -8041,7 +8041,6 @@ module Google
       end
       
       # Represents an example that the agent is trained on to identify the intent.
-      # Next ID: 15
       class GoogleCloudDialogflowCxV3beta1IntentTrainingPhrase
         include Google::Apis::Core::Hashable
       
