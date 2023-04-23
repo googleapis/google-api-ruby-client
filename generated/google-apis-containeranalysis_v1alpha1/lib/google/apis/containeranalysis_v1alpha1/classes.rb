@@ -1158,6 +1158,15 @@ module Google
         # @return [Array<Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsMavenArtifact>]
         attr_accessor :maven_artifacts
       
+        # A list of npm packages to be uploaded to Artifact Registry upon successful
+        # completion of all build steps. Npm packages in the specified paths will be
+        # uploaded to the specified Artifact Registry repository using the builder
+        # service account's credentials. If any packages fail to be pushed, the build is
+        # marked FAILURE.
+        # Corresponds to the JSON property `npmPackages`
+        # @return [Array<Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsNpmPackage>]
+        attr_accessor :npm_packages
+      
         # Files in the workspace to upload to Cloud Storage upon successful completion
         # of all build steps.
         # Corresponds to the JSON property `objects`
@@ -1180,6 +1189,7 @@ module Google
         def update!(**args)
           @images = args[:images] if args.key?(:images)
           @maven_artifacts = args[:maven_artifacts] if args.key?(:maven_artifacts)
+          @npm_packages = args[:npm_packages] if args.key?(:npm_packages)
           @objects = args[:objects] if args.key?(:objects)
           @python_packages = args[:python_packages] if args.key?(:python_packages)
         end
@@ -1266,6 +1276,34 @@ module Google
           @path = args[:path] if args.key?(:path)
           @repository = args[:repository] if args.key?(:repository)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Npm package to upload to Artifact Registry upon successful completion of all
+      # build steps.
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsNpmPackage
+        include Google::Apis::Core::Hashable
+      
+        # Path to the package.json. e.g. workspace/path/to/package
+        # Corresponds to the JSON property `packagePath`
+        # @return [String]
+        attr_accessor :package_path
+      
+        # Artifact Registry repository, in the form "https://$REGION-npm.pkg.dev/$
+        # PROJECT/$REPOSITORY" Npm package in the workspace specified by path will be
+        # zipped and uploaded to Artifact Registry with this location as a prefix.
+        # Corresponds to the JSON property `repository`
+        # @return [String]
+        attr_accessor :repository
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @package_path = args[:package_path] if args.key?(:package_path)
+          @repository = args[:repository] if args.key?(:repository)
         end
       end
       
@@ -1961,6 +1999,46 @@ module Google
         end
       end
       
+      # Location of the source in any accessible Git repository.
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1GitSource
+        include Google::Apis::Core::Hashable
+      
+        # Directory, relative to the source root, in which to run the build. This must
+        # be a relative path. If a step's `dir` is specified and is an absolute path,
+        # this value is ignored for that step's execution.
+        # Corresponds to the JSON property `dir`
+        # @return [String]
+        attr_accessor :dir
+      
+        # The revision to fetch from the Git repository such as a branch, a tag, a
+        # commit SHA, or any Git ref. Cloud Build uses `git fetch` to fetch the revision
+        # from the Git repository; therefore make sure that the string you provide for `
+        # revision` is parsable by the command. For information on string values
+        # accepted by `git fetch`, see https://git-scm.com/docs/gitrevisions#
+        # _specifying_revisions. For information on `git fetch`, see https://git-scm.com/
+        # docs/git-fetch.
+        # Corresponds to the JSON property `revision`
+        # @return [String]
+        attr_accessor :revision
+      
+        # Location of the Git repo to build. This will be used as a `git remote`, see
+        # https://git-scm.com/docs/git-remote.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dir = args[:dir] if args.key?(:dir)
+          @revision = args[:revision] if args.key?(:revision)
+          @url = args[:url] if args.key?(:url)
+        end
+      end
+      
       # Container message for hash values.
       class ContaineranalysisGoogleDevtoolsCloudbuildV1Hash
         include Google::Apis::Core::Hashable
@@ -2125,6 +2203,11 @@ module Google
         # @return [Array<Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1UploadedMavenArtifact>]
         attr_accessor :maven_artifacts
       
+        # Npm packages uploaded to Artifact Registry at the end of the build.
+        # Corresponds to the JSON property `npmPackages`
+        # @return [Array<Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1UploadedNpmPackage>]
+        attr_accessor :npm_packages
+      
         # Number of non-container artifacts uploaded to Cloud Storage. Only populated
         # when artifacts are uploaded to Cloud Storage.
         # Corresponds to the JSON property `numArtifacts`
@@ -2148,6 +2231,7 @@ module Google
           @build_step_outputs = args[:build_step_outputs] if args.key?(:build_step_outputs)
           @images = args[:images] if args.key?(:images)
           @maven_artifacts = args[:maven_artifacts] if args.key?(:maven_artifacts)
+          @npm_packages = args[:npm_packages] if args.key?(:npm_packages)
           @num_artifacts = args[:num_artifacts] if args.key?(:num_artifacts)
           @python_packages = args[:python_packages] if args.key?(:python_packages)
         end
@@ -2241,6 +2325,11 @@ module Google
       class ContaineranalysisGoogleDevtoolsCloudbuildV1Source
         include Google::Apis::Core::Hashable
       
+        # Location of the source in any accessible Git repository.
+        # Corresponds to the JSON property `gitSource`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1GitSource]
+        attr_accessor :git_source
+      
         # Location of the source in a Google Cloud Source Repository.
         # Corresponds to the JSON property `repoSource`
         # @return [Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1RepoSource]
@@ -2264,6 +2353,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @git_source = args[:git_source] if args.key?(:git_source)
           @repo_source = args[:repo_source] if args.key?(:repo_source)
           @storage_source = args[:storage_source] if args.key?(:storage_source)
           @storage_source_manifest = args[:storage_source_manifest] if args.key?(:storage_source_manifest)
@@ -2429,6 +2519,38 @@ module Google
         attr_accessor :push_timing
       
         # URI of the uploaded artifact.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_hashes = args[:file_hashes] if args.key?(:file_hashes)
+          @push_timing = args[:push_timing] if args.key?(:push_timing)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # An npm package uploaded to Artifact Registry using the NpmPackage directive.
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1UploadedNpmPackage
+        include Google::Apis::Core::Hashable
+      
+        # Container message for hashes of byte content of files, used in
+        # SourceProvenance messages to verify integrity of source input to the build.
+        # Corresponds to the JSON property `fileHashes`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1FileHashes]
+        attr_accessor :file_hashes
+      
+        # Start and end times for a build execution phase.
+        # Corresponds to the JSON property `pushTiming`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1TimeSpan]
+        attr_accessor :push_timing
+      
+        # URI of the uploaded npm package.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
