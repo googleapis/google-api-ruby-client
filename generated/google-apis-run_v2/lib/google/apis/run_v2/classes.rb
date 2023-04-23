@@ -147,25 +147,13 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Arguments to the entrypoint. The docker image's CMD is used if this is not
-        # provided. Variable references $(VAR_NAME) are expanded using the container's
-        # environment. If a variable cannot be resolved, the reference in the input
-        # string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $
-        # $, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of
-        # whether the variable exists or not. More info: https://kubernetes.io/docs/
-        # tasks/inject-data-application/define-command-argument-container/#running-a-
-        # command-in-a-shell
+        # provided.
         # Corresponds to the JSON property `args`
         # @return [Array<String>]
         attr_accessor :args
       
         # Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT
-        # is used if this is not provided. Variable references $(VAR_NAME) are expanded
-        # using the container's environment. If a variable cannot be resolved, the
-        # reference in the input string will be unchanged. The $(VAR_NAME) syntax can be
-        # escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be
-        # expanded, regardless of whether the variable exists or not. More info: https://
-        # kubernetes.io/docs/tasks/inject-data-application/define-command-argument-
-        # container/#running-a-command-in-a-shell
+        # is used if this is not provided.
         # Corresponds to the JSON property `command`
         # @return [Array<String>]
         attr_accessor :command
@@ -177,7 +165,7 @@ module Google
       
         # Required. Name of the container image in Dockerhub, Google Artifact Registry,
         # or Google Container Registry. If the host is not provided, Dockerhub is
-        # assumed. More info: https://kubernetes.io/docs/concepts/containers/images
+        # assumed.
         # Corresponds to the JSON property `image`
         # @return [String]
         attr_accessor :image
@@ -436,8 +424,7 @@ module Google
         # should run at any given time. Must be <= task_count. The actual number of
         # tasks running in steady state will be less than this number when ((.spec.
         # task_count - .status.successful) < .spec.parallelism), i.e. when the work left
-        # to do is less than max parallelism. More info: https://kubernetes.io/docs/
-        # concepts/workloads/controllers/jobs-run-to-completion/
+        # to do is less than max parallelism.
         # Corresponds to the JSON property `parallelism`
         # @return [Fixnum]
         attr_accessor :parallelism
@@ -479,8 +466,7 @@ module Google
       
         # Output only. Specifies the desired number of tasks the execution should run.
         # Setting to 1 means that parallelism is limited to 1 and the success of that
-        # task signals the success of the execution. More info: https://kubernetes.io/
-        # docs/concepts/workloads/controllers/jobs-run-to-completion/
+        # task signals the success of the execution.
         # Corresponds to the JSON property `taskCount`
         # @return [Fixnum]
         attr_accessor :task_count
@@ -727,9 +713,9 @@ module Google
         # and should be preserved when modifying objects. Cloud Run API v2 does not
         # support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `
         # serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will
-        # be rejected. All system annotations in v1 now have a corresponding field in v2
-        # Job. This field follows Kubernetes annotations' namespacing, limits, and rules.
-        # More info: https://kubernetes.io/docs/user-guide/annotations
+        # be rejected on new resources. All system annotations in v1 now have a
+        # corresponding field in v2 Job. This field follows Kubernetes annotations'
+        # namespacing, limits, and rules.
         # Corresponds to the JSON property `annotations`
         # @return [Hash<String,String>]
         attr_accessor :annotations
@@ -1077,9 +1063,7 @@ module Google
       
         # Number of seconds after the container has started before the probe is
         # initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for
-        # liveness probe is 3600. Maximum value for startup probe is 240. More info:
-        # https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-
-        # probes
+        # liveness probe is 3600. Maximum value for startup probe is 240.
         # Corresponds to the JSON property `initialDelaySeconds`
         # @return [Fixnum]
         attr_accessor :initial_delay_seconds
@@ -1098,8 +1082,6 @@ module Google
       
         # Number of seconds after which the probe times out. Defaults to 1 second.
         # Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
-        # More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#
-        # container-probes
         # Corresponds to the JSON property `timeoutSeconds`
         # @return [Fixnum]
         attr_accessor :timeout_seconds
@@ -1130,14 +1112,22 @@ module Google
         attr_accessor :cpu_idle
         alias_method :cpu_idle?, :cpu_idle
       
-        # Only memory and CPU are supported. Note: The only supported values for CPU are
-        # '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The
-        # values of the map is string form of the 'quantity' k8s type: https://github.
-        # com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/
-        # resource/quantity.go
+        # Only ´memory´ and 'cpu' are supported. Notes: * The only supported values for
+        # CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory.
+        # For more information, go to https://cloud.google.com/run/docs/configuring/cpu.
+        # * For supported 'memory' values and syntax, go to https://cloud.google.com/run/
+        # docs/configuring/memory-limits
         # Corresponds to the JSON property `limits`
         # @return [Hash<String,String>]
         attr_accessor :limits
+      
+        # Determines whether CPU should be boosted on startup of a new container
+        # instance above the requested CPU threshold, this can help reduce cold-start
+        # latency.
+        # Corresponds to the JSON property `startupCpuBoost`
+        # @return [Boolean]
+        attr_accessor :startup_cpu_boost
+        alias_method :startup_cpu_boost?, :startup_cpu_boost
       
         def initialize(**args)
            update!(**args)
@@ -1147,6 +1137,7 @@ module Google
         def update!(**args)
           @cpu_idle = args[:cpu_idle] if args.key?(:cpu_idle)
           @limits = args[:limits] if args.key?(:limits)
+          @startup_cpu_boost = args[:startup_cpu_boost] if args.key?(:startup_cpu_boost)
         end
       end
       
@@ -1610,10 +1601,10 @@ module Google
         # arbitrary metadata. They are not queryable and should be preserved when
         # modifying objects. Cloud Run API v2 does not support annotations with `run.
         # googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `
-        # autoscaling.knative.dev` namespaces, and they will be rejected. All system
-        # annotations in v1 now have a corresponding field in v2 Service. This field
-        # follows Kubernetes annotations' namespacing, limits, and rules. More info:
-        # https://kubernetes.io/docs/user-guide/annotations
+        # autoscaling.knative.dev` namespaces, and they will be rejected in new
+        # resources. All system annotations in v1 now have a corresponding field in v2
+        # Service. This field follows Kubernetes annotations' namespacing, limits, and
+        # rules.
         # Corresponds to the JSON property `annotations`
         # @return [Hash<String,String>]
         attr_accessor :annotations
