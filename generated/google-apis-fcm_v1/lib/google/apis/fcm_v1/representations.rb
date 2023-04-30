@@ -144,6 +144,7 @@ module Google
           property :local_only, as: 'localOnly'
           property :notification_count, as: 'notificationCount'
           property :notification_priority, as: 'notificationPriority'
+          property :proxy, as: 'proxy'
           property :sound, as: 'sound'
           property :sticky, as: 'sticky'
           property :tag, as: 'tag'
