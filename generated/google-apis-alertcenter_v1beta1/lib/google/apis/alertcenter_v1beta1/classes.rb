@@ -22,6 +22,47 @@ module Google
   module Apis
     module AlertcenterV1beta1
       
+      # A generic alert for abusive user activity occurring with a customer.
+      class AbuseDetected
+        include Google::Apis::Core::Hashable
+      
+        # EntityList stores entities in a format that can be translated to a table in
+        # the Alert Center UI.
+        # Corresponds to the JSON property `additionalDetails`
+        # @return [Google::Apis::AlertcenterV1beta1::EntityList]
+        attr_accessor :additional_details
+      
+        # Product that the abuse is originating from.
+        # Corresponds to the JSON property `product`
+        # @return [String]
+        attr_accessor :product
+      
+        # Unique identifier of each sub alert that is onboarded.
+        # Corresponds to the JSON property `subAlertId`
+        # @return [String]
+        attr_accessor :sub_alert_id
+      
+        # Variation of AbuseDetected alerts. The variation_type determines the texts
+        # displayed the alert details. This differs from sub_alert_id because each sub
+        # alert can have multiple variation_types, representing different stages of the
+        # alert.
+        # Corresponds to the JSON property `variationType`
+        # @return [String]
+        attr_accessor :variation_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_details = args[:additional_details] if args.key?(:additional_details)
+          @product = args[:product] if args.key?(:product)
+          @sub_alert_id = args[:sub_alert_id] if args.key?(:sub_alert_id)
+          @variation_type = args[:variation_type] if args.key?(:variation_type)
+        end
+      end
+      
       # Details about why an account is receiving an account suspension warning.
       class AccountSuspensionDetails
         include Google::Apis::Core::Hashable
@@ -48,7 +89,7 @@ module Google
         end
       end
       
-      # LINT.IfChange A warning that the customer's account is about to be suspended.
+      # A warning that the customer's account is about to be suspended.
       class AccountSuspensionWarning
         include Google::Apis::Core::Hashable
       
@@ -976,6 +1017,73 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Individual entity affected by, or related to, an alert.
+      class Entity
+        include Google::Apis::Core::Hashable
+      
+        # Link to a Security Investigation Tool search based on this entity, if
+        # available.
+        # Corresponds to the JSON property `link`
+        # @return [String]
+        attr_accessor :link
+      
+        # Human-readable name of this entity, such as an email address, file ID, or
+        # device name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Extra values beyond name. The order of values should align with headers in
+        # EntityList.
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @link = args[:link] if args.key?(:link)
+          @name = args[:name] if args.key?(:name)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # EntityList stores entities in a format that can be translated to a table in
+      # the Alert Center UI.
+      class EntityList
+        include Google::Apis::Core::Hashable
+      
+        # List of entities affected by the alert.
+        # Corresponds to the JSON property `entities`
+        # @return [Array<Google::Apis::AlertcenterV1beta1::Entity>]
+        attr_accessor :entities
+      
+        # Headers of the values in entities. If no value is defined in Entity, this
+        # field should be empty.
+        # Corresponds to the JSON property `headers`
+        # @return [Array<String>]
+        attr_accessor :headers
+      
+        # Name of the key detail used to display this entity list.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entities = args[:entities] if args.key?(:entities)
+          @headers = args[:headers] if args.key?(:headers)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
