@@ -310,6 +310,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FleetObservabilityLoggingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FleetObservabilityMembershipSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -317,6 +323,12 @@ module Google
       end
       
       class FleetObservabilityMembershipState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FleetObservabilityRoutingConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1141,12 +1153,24 @@ module Google
       class FleetObservabilityFeatureSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :logging_config, as: 'loggingConfig', class: Google::Apis::GkehubV1beta::FleetObservabilityLoggingConfig, decorator: Google::Apis::GkehubV1beta::FleetObservabilityLoggingConfig::Representation
+      
         end
       end
       
       class FleetObservabilityFeatureState
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class FleetObservabilityLoggingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_config, as: 'defaultConfig', class: Google::Apis::GkehubV1beta::FleetObservabilityRoutingConfig, decorator: Google::Apis::GkehubV1beta::FleetObservabilityRoutingConfig::Representation
+      
+          property :fleet_scope_logs_config, as: 'fleetScopeLogsConfig', class: Google::Apis::GkehubV1beta::FleetObservabilityRoutingConfig, decorator: Google::Apis::GkehubV1beta::FleetObservabilityRoutingConfig::Representation
+      
         end
       end
       
@@ -1159,6 +1183,13 @@ module Google
       class FleetObservabilityMembershipState
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class FleetObservabilityRoutingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mode, as: 'mode'
         end
       end
       

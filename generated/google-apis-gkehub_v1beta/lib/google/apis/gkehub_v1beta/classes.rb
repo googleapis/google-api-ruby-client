@@ -1469,7 +1469,7 @@ module Google
         # @return [Google::Apis::GkehubV1beta::CommonFleetDefaultMemberConfigSpec]
         attr_accessor :fleet_default_member_config
       
-        # GCP labels for this Feature.
+        # Labels for this Feature.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -1649,8 +1649,8 @@ module Google
         attr_accessor :display_name
       
         # Output only. The full, unique resource name of this fleet in the format of `
-        # projects/`project`/locations/`location`/fleets/`fleet``. Each GCP project can
-        # have at most one fleet resource, named "default".
+        # projects/`project`/locations/`location`/fleets/`fleet``. Each Google Cloud
+        # project can have at most one fleet resource, named "default".
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1711,12 +1711,18 @@ module Google
       class FleetObservabilityFeatureSpec
         include Google::Apis::Core::Hashable
       
+        # LoggingConfig defines the configuration for different types of logs.
+        # Corresponds to the JSON property `loggingConfig`
+        # @return [Google::Apis::GkehubV1beta::FleetObservabilityLoggingConfig]
+        attr_accessor :logging_config
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @logging_config = args[:logging_config] if args.key?(:logging_config)
         end
       end
       
@@ -1731,6 +1737,31 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # LoggingConfig defines the configuration for different types of logs.
+      class FleetObservabilityLoggingConfig
+        include Google::Apis::Core::Hashable
+      
+        # RoutingConfig configures the behaviour of fleet logging feature.
+        # Corresponds to the JSON property `defaultConfig`
+        # @return [Google::Apis::GkehubV1beta::FleetObservabilityRoutingConfig]
+        attr_accessor :default_config
+      
+        # RoutingConfig configures the behaviour of fleet logging feature.
+        # Corresponds to the JSON property `fleetScopeLogsConfig`
+        # @return [Google::Apis::GkehubV1beta::FleetObservabilityRoutingConfig]
+        attr_accessor :fleet_scope_logs_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_config = args[:default_config] if args.key?(:default_config)
+          @fleet_scope_logs_config = args[:fleet_scope_logs_config] if args.key?(:fleet_scope_logs_config)
         end
       end
       
@@ -1759,6 +1790,25 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # RoutingConfig configures the behaviour of fleet logging feature.
+      class FleetObservabilityRoutingConfig
+        include Google::Apis::Core::Hashable
+      
+        # mode configures the logs routing mode.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mode = args[:mode] if args.key?(:mode)
         end
       end
       
@@ -2281,7 +2331,7 @@ module Google
         end
       end
       
-      # A resource that represents Google Cloud Platform location.
+      # A resource that represents a Google Cloud location.
       class Location
         include Google::Apis::Core::Hashable
       
@@ -2924,14 +2974,12 @@ module Google
       class PolicyControllerBundleInstallSpec
         include Google::Apis::Core::Hashable
       
-        # the set of namespaces to be exempted from the bundle TODO (b/271878194):
-        # Decrement this
+        # the set of namespaces to be exempted from the bundle
         # Corresponds to the JSON property `exemptedNamespaces`
         # @return [Array<String>]
         attr_accessor :exempted_namespaces
       
-        # Management specifies how the bundle will be managed by the controller. TODO (b/
-        # 271878194): Remove this
+        # Management specifies how the bundle will be managed by the controller.
         # Corresponds to the JSON property `management`
         # @return [String]
         attr_accessor :management
@@ -2963,7 +3011,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :constraint_violation_limit
       
-        # Map of deployment configs to deployments (“admission”, “audit”, “mutation”).
+        # Map of deployment configs to deployments ("admission", "audit", "mutation').
         # Corresponds to the JSON property `deploymentConfigs`
         # @return [Hash<String,Google::Apis::GkehubV1beta::PolicyControllerPolicyControllerDeploymentConfig>]
         attr_accessor :deployment_configs
@@ -3076,7 +3124,7 @@ module Google
         attr_accessor :component_states
       
         # The state of the template library and any bundles included in the chosen
-        # version of the manifest TODO (b/271878194): Remove this
+        # version of the manifest
         # Corresponds to the JSON property `contentStates`
         # @return [Hash<String,Google::Apis::GkehubV1beta::PolicyControllerOnClusterState>]
         attr_accessor :content_states
@@ -3297,15 +3345,14 @@ module Google
       class PolicyControllerTemplateLibraryConfig
         include Google::Apis::Core::Hashable
       
-        # Whether the standard template library should be installed or not. TODO (b/
-        # 271878194): Remove this
+        # Whether the standard template library should be installed or not.
         # Corresponds to the JSON property `included`
         # @return [Boolean]
         attr_accessor :included
         alias_method :included?, :included
       
         # Configures the manner in which the template library is installed on the
-        # cluster. TODO (b/271878194): Decrement this
+        # cluster.
         # Corresponds to the JSON property `installation`
         # @return [String]
         attr_accessor :installation
