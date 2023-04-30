@@ -472,6 +472,13 @@ module Google
         # @return [String]
         attr_accessor :point_in_time
       
+        # (Point-in-time recovery for PostgreSQL only) Clone to an instance in the
+        # specified zone. If no zone is specified, clone to the same zone as the source
+        # instance.
+        # Corresponds to the JSON property `preferredZone`
+        # @return [String]
+        attr_accessor :preferred_zone
+      
         def initialize(**args)
            update!(**args)
         end
@@ -485,6 +492,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @pitr_timestamp_ms = args[:pitr_timestamp_ms] if args.key?(:pitr_timestamp_ms)
           @point_in_time = args[:point_in_time] if args.key?(:point_in_time)
+          @preferred_zone = args[:preferred_zone] if args.key?(:preferred_zone)
         end
       end
       
@@ -3186,6 +3194,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # Additional message to customers.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
         # The minimum size to which a disk can be shrunk in GigaBytes.
         # Corresponds to the JSON property `minimalTargetSizeGb`
         # @return [Fixnum]
@@ -3198,6 +3211,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @kind = args[:kind] if args.key?(:kind)
+          @message = args[:message] if args.key?(:message)
           @minimal_target_size_gb = args[:minimal_target_size_gb] if args.key?(:minimal_target_size_gb)
         end
       end

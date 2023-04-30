@@ -349,7 +349,7 @@ module Google
         end
         
         # Inserts a resource containing information about a database inside a Cloud SQL
-        # instance.
+        # instance. **Note:** You can't modify the default character set and collation.
         # @param [String] project
         #   Project ID of the project that contains the instance.
         # @param [String] instance
