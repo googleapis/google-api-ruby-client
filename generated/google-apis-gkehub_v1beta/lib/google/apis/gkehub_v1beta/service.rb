@@ -654,8 +654,8 @@ module Google
         # Updates a fleet.
         # @param [String] name
         #   Output only. The full, unique resource name of this fleet in the format of `
-        #   projects/`project`/locations/`location`/fleets/`fleet``. Each GCP project can
-        #   have at most one fleet resource, named "default".
+        #   projects/`project`/locations/`location`/fleets/`fleet``. Each Google Cloud
+        #   project can have at most one fleet resource, named "default".
         # @param [Google::Apis::GkehubV1beta::Fleet] fleet_object
         # @param [String] update_mask
         #   Required. The fields to be updated;
