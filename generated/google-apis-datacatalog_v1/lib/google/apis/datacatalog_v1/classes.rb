@@ -3127,7 +3127,7 @@ module Google
       class GoogleCloudDatacatalogV1TaxonomyService
         include Google::Apis::Core::Hashable
       
-        # P4SA Identity of the service.
+        # The service agent for the service.
         # Corresponds to the JSON property `identity`
         # @return [String]
         attr_accessor :identity
