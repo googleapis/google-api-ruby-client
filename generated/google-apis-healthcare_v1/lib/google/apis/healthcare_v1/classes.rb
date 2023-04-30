@@ -1715,6 +1715,60 @@ module Google
         end
       end
       
+      # Contains the configuration for FHIR notifications.
+      class FhirNotificationConfig
+        include Google::Apis::Core::Hashable
+      
+        # The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that notifications
+        # of changes are published on. Supplied by the client. The notification is a `
+        # PubsubMessage` with the following fields: * `PubsubMessage.Data` contains the
+        # resource name. * `PubsubMessage.MessageId` is the ID of this notification. It
+        # is guaranteed to be unique within the topic. * `PubsubMessage.PublishTime` is
+        # the time when the message was published. Note that notifications are only sent
+        # if the topic is non-empty. [Topic names](https://cloud.google.com/pubsub/docs/
+        # overview#names) must be scoped to a project. The Cloud Healthcare API service
+        # account, service-@gcp-sa-healthcare.iam.gserviceaccount.com, must have
+        # publisher permissions on the given Pub/Sub topic. Not having adequate
+        # permissions causes the calls that send notifications to fail (https://cloud.
+        # google.com/healthcare-api/docs/permissions-healthcare-api-gcp-products#
+        # dicom_fhir_and_hl7v2_store_cloud_pubsub_permissions). If a notification can't
+        # be published to Pub/Sub, errors are logged to Cloud Logging. For more
+        # information, see [Viewing error logs in Cloud Logging](https://cloud.google.
+        # com/healthcare-api/docs/how-tos/logging).
+        # Corresponds to the JSON property `pubsubTopic`
+        # @return [String]
+        attr_accessor :pubsub_topic
+      
+        # Whether to send full FHIR resource to this Pub/Sub topic.
+        # Corresponds to the JSON property `sendFullResource`
+        # @return [Boolean]
+        attr_accessor :send_full_resource
+        alias_method :send_full_resource?, :send_full_resource
+      
+        # Whether to send full FHIR resource to this pubsub topic for deleting FHIR
+        # resource. Note that setting this to true does not guarantee that all previous
+        # resources will be sent in the format of full FHIR resource. When a resource
+        # change is too large or during heavy traffic, only the resource name will be
+        # sent. Clients should always check the "payloadType" label from a Pub/Sub
+        # message to determine whether it needs to fetch the full previous resource as a
+        # separate operation.
+        # Corresponds to the JSON property `sendPreviousResourceOnDelete`
+        # @return [Boolean]
+        attr_accessor :send_previous_resource_on_delete
+        alias_method :send_previous_resource_on_delete?, :send_previous_resource_on_delete
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pubsub_topic = args[:pubsub_topic] if args.key?(:pubsub_topic)
+          @send_full_resource = args[:send_full_resource] if args.key?(:send_full_resource)
+          @send_previous_resource_on_delete = args[:send_previous_resource_on_delete] if args.key?(:send_previous_resource_on_delete)
+        end
+      end
+      
       # Represents a FHIR store.
       class FhirStore
         include Google::Apis::Core::Hashable
@@ -1803,6 +1857,11 @@ module Google
         # @return [Google::Apis::HealthcareV1::NotificationConfig]
         attr_accessor :notification_config
       
+        # Specifies where and whether to send notifications upon changes to a FHIR store.
+        # Corresponds to the JSON property `notificationConfigs`
+        # @return [Array<Google::Apis::HealthcareV1::FhirNotificationConfig>]
+        attr_accessor :notification_configs
+      
         # A list of streaming configs that configure the destinations of streaming
         # export for every resource mutation in this FHIR store. Each store is allowed
         # to have up to 10 streaming configs. After a new config is added, the next
@@ -1845,6 +1904,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @notification_config = args[:notification_config] if args.key?(:notification_config)
+          @notification_configs = args[:notification_configs] if args.key?(:notification_configs)
           @stream_configs = args[:stream_configs] if args.key?(:stream_configs)
           @validation_config = args[:validation_config] if args.key?(:validation_config)
           @version = args[:version] if args.key?(:version)
