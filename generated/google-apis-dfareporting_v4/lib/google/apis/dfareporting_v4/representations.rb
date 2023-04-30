@@ -922,6 +922,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OfflineUserAddressInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OffsetPosition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1439,6 +1445,12 @@ module Google
       end
       
       class UserDefinedVariableConfiguration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UserIdentifier
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2242,6 +2254,8 @@ module Google
           property :quantity, :numeric_string => true, as: 'quantity'
           property :timestamp_micros, :numeric_string => true, as: 'timestampMicros'
           property :treatment_for_underage, as: 'treatmentForUnderage'
+          collection :user_identifiers, as: 'userIdentifiers', class: Google::Apis::DfareportingV4::UserIdentifier, decorator: Google::Apis::DfareportingV4::UserIdentifier::Representation
+      
           property :value, as: 'value'
         end
       end
@@ -3533,6 +3547,19 @@ module Google
         end
       end
       
+      class OfflineUserAddressInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :city, as: 'city'
+          property :country_code, as: 'countryCode'
+          property :hashed_first_name, as: 'hashedFirstName'
+          property :hashed_last_name, as: 'hashedLastName'
+          property :hashed_street_address, as: 'hashedStreetAddress'
+          property :postal_code, as: 'postalCode'
+          property :state, as: 'state'
+        end
+      end
+      
       class OffsetPosition
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4745,6 +4772,16 @@ module Google
           property :data_type, as: 'dataType'
           property :report_name, as: 'reportName'
           property :variable_type, as: 'variableType'
+        end
+      end
+      
+      class UserIdentifier
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :address_info, as: 'addressInfo', class: Google::Apis::DfareportingV4::OfflineUserAddressInfo, decorator: Google::Apis::DfareportingV4::OfflineUserAddressInfo::Representation
+      
+          property :hashed_email, as: 'hashedEmail'
+          property :hashed_phone_number, as: 'hashedPhoneNumber'
         end
       end
       
