@@ -265,6 +265,11 @@ module Google
         # @return [String]
         attr_accessor :notification_priority
       
+        # Setting to control when a notification may be proxied.
+        # Corresponds to the JSON property `proxy`
+        # @return [String]
+        attr_accessor :proxy
+      
         # The sound to play when the device receives the notification. Supports "default"
         # or the filename of a sound resource bundled in the app. Sound files must
         # reside in /res/raw/.
@@ -357,6 +362,7 @@ module Google
           @local_only = args[:local_only] if args.key?(:local_only)
           @notification_count = args[:notification_count] if args.key?(:notification_count)
           @notification_priority = args[:notification_priority] if args.key?(:notification_priority)
+          @proxy = args[:proxy] if args.key?(:proxy)
           @sound = args[:sound] if args.key?(:sound)
           @sticky = args[:sticky] if args.key?(:sticky)
           @tag = args[:tag] if args.key?(:tag)
