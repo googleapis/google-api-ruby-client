@@ -58,9 +58,9 @@ module Google
       class ApplianceCluster
         include Google::Apis::Core::Hashable
       
-        # Immutable. Self-link of the GCP resource for the Appliance Cluster. For
-        # example: //transferappliance.googleapis.com/projects/my-project/locations/us-
-        # west1-a/appliances/my-appliance
+        # Immutable. Self-link of the Google Cloud resource for the Appliance Cluster.
+        # For example: //transferappliance.googleapis.com/projects/my-project/locations/
+        # us-west1-a/appliances/my-appliance
         # Corresponds to the JSON property `resourceLink`
         # @return [String]
         attr_accessor :resource_link
@@ -1343,9 +1343,9 @@ module Google
       class EdgeCluster
         include Google::Apis::Core::Hashable
       
-        # Immutable. Self-link of the GCP resource for the Edge Cluster. For example: //
-        # edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/
-        # my-cluster
+        # Immutable. Self-link of the Google Cloud resource for the Edge Cluster. For
+        # example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-
+        # a/clusters/my-cluster
         # Corresponds to the JSON property `resourceLink`
         # @return [String]
         attr_accessor :resource_link
@@ -1450,7 +1450,7 @@ module Google
         # @return [Google::Apis::GkehubV1::CommonFleetDefaultMemberConfigSpec]
         attr_accessor :fleet_default_member_config
       
-        # GCP labels for this Feature.
+        # Labels for this Feature.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -1694,9 +1694,9 @@ module Google
         attr_accessor :cluster_missing
         alias_method :cluster_missing?, :cluster_missing
       
-        # Immutable. Self-link of the GCP resource for the GKE cluster. For example: //
-        # container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-
-        # cluster Zonal clusters are also supported.
+        # Immutable. Self-link of the Google Cloud resource for the GKE cluster. For
+        # example: //container.googleapis.com/projects/my-project/locations/us-west1-a/
+        # clusters/my-cluster Zonal clusters are also supported.
         # Corresponds to the JSON property `resourceLink`
         # @return [String]
         attr_accessor :resource_link
@@ -2295,7 +2295,7 @@ module Google
         end
       end
       
-      # A resource that represents Google Cloud Platform location.
+      # A resource that represents a Google Cloud location.
       class Location
         include Google::Apis::Core::Hashable
       
@@ -2383,7 +2383,7 @@ module Google
         # @return [String]
         attr_accessor :external_id
       
-        # Optional. GCP labels for this membership.
+        # Optional. Labels for this membership.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -2788,11 +2788,12 @@ module Google
         attr_accessor :cluster_missing
         alias_method :cluster_missing?, :cluster_missing
       
-        # Immutable. Self-link of the GCP resource for the GKE Multi-Cloud cluster. For
-        # example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-
-        # a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/
-        # locations/us-west1-a/azureClusters/my-cluster //gkemulticloud.googleapis.com/
-        # projects/my-project/locations/us-west1-a/attachedClusters/my-cluster
+        # Immutable. Self-link of the Google Cloud resource for the GKE Multi-Cloud
+        # cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/
+        # locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/
+        # projects/my-project/locations/us-west1-a/azureClusters/my-cluster //
+        # gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/
+        # attachedClusters/my-cluster
         # Corresponds to the JSON property `resourceLink`
         # @return [String]
         attr_accessor :resource_link
@@ -2851,9 +2852,9 @@ module Google
         # @return [String]
         attr_accessor :cluster_type
       
-        # Immutable. Self-link of the GCP resource for the GKE On-Prem cluster. For
-        # example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/
-        # vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/
+        # Immutable. Self-link of the Google Cloud resource for the GKE On-Prem cluster.
+        # For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-
+        # a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/
         # locations/us-west1-a/bareMetalClusters/my-cluster
         # Corresponds to the JSON property `resourceLink`
         # @return [String]
