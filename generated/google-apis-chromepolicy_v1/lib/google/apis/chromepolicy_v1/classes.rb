@@ -939,6 +939,11 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Output only. Field conditions required for this value to be valid.
+        # Corresponds to the JSON property `fieldDependencies`
+        # @return [Array<Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicySchemaFieldDependencies>]
+        attr_accessor :field_dependencies
+      
         # Output only. The string represenstation of the value that can be set for the
         # field.
         # Corresponds to the JSON property `value`
@@ -952,6 +957,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @description = args[:description] if args.key?(:description)
+          @field_dependencies = args[:field_dependencies] if args.key?(:field_dependencies)
           @value = args[:value] if args.key?(:value)
         end
       end
