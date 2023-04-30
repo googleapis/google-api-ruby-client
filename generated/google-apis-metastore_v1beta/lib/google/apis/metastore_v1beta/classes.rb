@@ -492,6 +492,26 @@ module Google
         end
       end
       
+      # Error details in public error message for DataprocMetastore.QueryMetadata.
+      class ErrorDetails
+        include Google::Apis::Core::Hashable
+      
+        # Additional structured details about this error.Keys define the failure items.
+        # Value describes the exception or details of the item.
+        # Corresponds to the JSON property `details`
+        # @return [Hash<String,String>]
+        attr_accessor :details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @details = args[:details] if args.key?(:details)
+        end
+      end
+      
       # Request message for DataprocMetastore.ExportMetadata.
       class ExportMetadataRequest
         include Google::Apis::Core::Hashable
@@ -982,7 +1002,7 @@ module Google
         end
       end
       
-      # A resource that represents Google Cloud Platform location.
+      # A resource that represents a Google Cloud location.
       class Location
         include Google::Apis::Core::Hashable
       
