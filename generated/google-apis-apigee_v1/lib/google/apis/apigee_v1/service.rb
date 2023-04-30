@@ -4974,7 +4974,7 @@ module Google
         #   This should only be necessary if the new deployment will be capturing traffic
         #   from another environment under a shared environment group or if traffic will
         #   be rerouted to a different environment due to a base path removal. The [
-        #   GenerateDeployChangeReport API](GenerateDeployChangeReport) may be used to
+        #   generateDeployChangeReport API](generateDeployChangeReport) may be used to
         #   examine routing changes before issuing the deployment request, and its
         #   response will indicate if a sequenced rollout is recommended for the
         #   deployment.
