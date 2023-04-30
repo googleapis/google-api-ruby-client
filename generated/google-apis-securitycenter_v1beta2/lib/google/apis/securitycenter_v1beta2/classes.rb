@@ -120,17 +120,19 @@ module Google
         end
       end
       
-      # Conveys information about a Kubernetes access review (e.g. kubectl auth can-i .
-      # ..) that was involved in a finding.
+      # Conveys information about a Kubernetes access review (such as one returned by
+      # a [`kubectl auth can-i`](https://kubernetes.io/docs/reference/access-authn-
+      # authz/authorization/#checking-api-access) command) that was involved in a
+      # finding.
       class AccessReview
         include Google::Apis::Core::Hashable
       
-        # Group is the API Group of the Resource. "*" means all.
+        # The API group of the resource. "*" means all.
         # Corresponds to the JSON property `group`
         # @return [String]
         attr_accessor :group
       
-        # Name is the name of the resource being requested. Empty means all.
+        # The name of the resource being requested. Empty means all.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -141,23 +143,23 @@ module Google
         # @return [String]
         attr_accessor :ns
       
-        # Resource is the optional resource type requested. "*" means all.
+        # The optional resource type requested. "*" means all.
         # Corresponds to the JSON property `resource`
         # @return [String]
         attr_accessor :resource
       
-        # Subresource is the optional subresource type.
+        # The optional subresource type.
         # Corresponds to the JSON property `subresource`
         # @return [String]
         attr_accessor :subresource
       
-        # Verb is a Kubernetes resource API verb, like: get, list, watch, create, update,
-        # delete, proxy. "*" means all.
+        # A Kubernetes resource API verb, like get, list, watch, create, update, delete,
+        # proxy. "*" means all.
         # Corresponds to the JSON property `verb`
         # @return [String]
         attr_accessor :verb
       
-        # Version is the API Version of the Resource. "*" means all.
+        # The API version of the resource. "*" means all.
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
@@ -211,8 +213,8 @@ module Google
         attr_accessor :full_scan
         alias_method :full_scan?, :full_scan
       
-        # The [type of information](https://cloud.google.com/dlp/docs/infotypes-
-        # reference) found, for example, `EMAIL_ADDRESS` or `STREET_ADDRESS`.
+        # The type of information (or *[infoType](https://cloud.google.com/dlp/docs/
+        # infotypes-reference)*) found, for example, `EMAIL_ADDRESS` or `STREET_ADDRESS`.
         # Corresponds to the JSON property `infoType`
         # @return [String]
         attr_accessor :info_type
@@ -246,18 +248,17 @@ module Google
       class Compliance
         include Google::Apis::Core::Hashable
       
-        # Policies within the standard/benchmark e.g. A.12.4.1
+        # Policies within the standard or benchmark, for example, A.12.4.1
         # Corresponds to the JSON property `ids`
         # @return [Array<String>]
         attr_accessor :ids
       
-        # Refers to industry wide standards or benchmarks e.g. "cis", "pci", "owasp",
-        # etc.
+        # Industry-wide compliance standards or benchmarks, such as CIS, PCI, and OWASP.
         # Corresponds to the JSON property `standard`
         # @return [String]
         attr_accessor :standard
       
-        # Version of the standard/benchmark e.g. 1.1
+        # Version of the standard or benchmark, for example, 1.1
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
@@ -363,7 +364,7 @@ module Google
         end
       end
       
-      # The details pertaining to specific contacts
+      # Details about specific contacts
       class ContactDetails
         include Google::Apis::Core::Hashable
       
@@ -386,7 +387,7 @@ module Google
       class Container
         include Google::Apis::Core::Hashable
       
-        # Optional container image id, when provided by the container runtime. Uniquely
+        # Optional container image ID, if provided by the container runtime. Uniquely
         # identifies the container image launched using a container image digest.
         # Corresponds to the JSON property `imageId`
         # @return [String]
@@ -397,13 +398,13 @@ module Google
         # @return [Array<Google::Apis::SecuritycenterV1beta2::Label>]
         attr_accessor :labels
       
-        # Container name.
+        # Name of the container.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Container image URI provided when configuring a pod/container. May identify a
-        # container image version using mutable tags.
+        # Container image URI provided when configuring a pod or container. This string
+        # can identify a container image version using mutable tags.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -591,38 +592,43 @@ module Google
       end
       
       # Represents database access information, such as queries. A database may be a
-      # sub-resource of an instance (as in the case of CloudSQL instances or Cloud
+      # sub-resource of an instance (as in the case of Cloud SQL instances or Cloud
       # Spanner instances), or the database instance itself. Some database resources
-      # may not have the full resource name populated because these resource types are
-      # not yet supported by Cloud Asset Inventory (e.g. CloudSQL databases). In these
-      # cases only the display name will be provided.
+      # might not have the [full resource name](https://google.aip.dev/122#full-
+      # resource-names) populated because these resource types, such as Cloud SQL
+      # databases, are not yet supported by Cloud Asset Inventory. In these cases only
+      # the display name is provided. Some database resources may not have the [full
+      # resource name](https://google.aip.dev/122#full-resource-names) populated
+      # because these resource types are not yet supported by Cloud Asset Inventory (e.
+      # g. Cloud SQL databases). In these cases only the display name will be provided.
       class Database
         include Google::Apis::Core::Hashable
       
-        # The human readable name of the database the user connected to.
+        # The human-readable name of the database that the user connected to.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # The target usernames/roles/groups of a SQL privilege grant (not an IAM policy
-        # change).
+        # The target usernames, roles, or groups of an SQL privilege grant, which is not
+        # an IAM policy change.
         # Corresponds to the JSON property `grantees`
         # @return [Array<String>]
         attr_accessor :grantees
       
-        # The full resource name of the database the user connected to, if it is
-        # supported by CAI. (https://google.aip.dev/122#full-resource-names)
+        # The [full resource name](https://google.aip.dev/122#full-resource-names) of
+        # the database that the user connected to, if it is supported by Cloud Asset
+        # Inventory.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The SQL statement associated with the relevant access.
+        # The SQL statement that is associated with the database access.
         # Corresponds to the JSON property `query`
         # @return [String]
         attr_accessor :query
       
-        # The username used to connect to the DB. This may not necessarily be an IAM
-        # principal, and has no required format.
+        # The username used to connect to the database. The username might not be an IAM
+        # principal and does not have a set format.
         # Corresponds to the JSON property `userName`
         # @return [String]
         attr_accessor :user_name
@@ -697,8 +703,8 @@ module Google
         end
       end
       
-      # EnvironmentVariable is a name-value pair to store environment variables for
-      # Process.
+      # A name-value pair representing an environment variable used in an operating
+      # system process.
       class EnvironmentVariable
         include Google::Apis::Core::Hashable
       
@@ -765,19 +771,20 @@ module Google
         end
       end
       
-      # Resource that has been exfiltrated or exfiltrated_to.
+      # Resource where data was exfiltrated from or exfiltrated to.
       class ExfilResource
         include Google::Apis::Core::Hashable
       
-        # Subcomponents of the asset that is exfiltrated - these could be URIs used
-        # during exfiltration, table names, databases, filenames, etc. For example,
-        # multiple tables may be exfiltrated from the same CloudSQL instance, or
-        # multiple files from the same Cloud Storage bucket.
+        # Subcomponents of the asset that was exfiltrated, like URIs used during
+        # exfiltration, table names, databases, and filenames. For example, multiple
+        # tables might have been exfiltrated from the same Cloud SQL instance, or
+        # multiple files might have been exfiltrated from the same Cloud Storage bucket.
         # Corresponds to the JSON property `components`
         # @return [Array<String>]
         attr_accessor :components
       
-        # Resource's URI (https://google.aip.dev/122#full-resource-names)
+        # The resource's [full resource name](https://cloud.google.com/apis/design/
+        # resource_names#full_resource_name).
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -793,9 +800,10 @@ module Google
         end
       end
       
-      # Exfiltration represents a data exfiltration attempt of one or more sources to
-      # one or more targets. Sources represent the source of data that is exfiltrated,
-      # and Targets represents the destination the data was copied to.
+      # Exfiltration represents a data exfiltration attempt from one or more sources
+      # to one or more targets. The `sources` attribute lists the sources of the
+      # exfiltrated data. The `targets` attribute lists the destinations the data was
+      # copied to.
       class Exfiltration
         include Google::Apis::Core::Hashable
       
@@ -882,8 +890,7 @@ module Google
       class File
         include Google::Apis::Core::Hashable
       
-        # Prefix of the file contents as a JSON encoded string. (Currently only
-        # populated for Malicious Script Executed findings.)
+        # Prefix of the file contents as a JSON-encoded string.
         # Corresponds to the JSON property `contents`
         # @return [String]
         attr_accessor :contents
@@ -1005,11 +1012,15 @@ module Google
         attr_accessor :create_time
       
         # Represents database access information, such as queries. A database may be a
-        # sub-resource of an instance (as in the case of CloudSQL instances or Cloud
+        # sub-resource of an instance (as in the case of Cloud SQL instances or Cloud
         # Spanner instances), or the database instance itself. Some database resources
-        # may not have the full resource name populated because these resource types are
-        # not yet supported by Cloud Asset Inventory (e.g. CloudSQL databases). In these
-        # cases only the display name will be provided.
+        # might not have the [full resource name](https://google.aip.dev/122#full-
+        # resource-names) populated because these resource types, such as Cloud SQL
+        # databases, are not yet supported by Cloud Asset Inventory. In these cases only
+        # the display name is provided. Some database resources may not have the [full
+        # resource name](https://google.aip.dev/122#full-resource-names) populated
+        # because these resource types are not yet supported by Cloud Asset Inventory (e.
+        # g. Cloud SQL databases). In these cases only the display name will be provided.
         # Corresponds to the JSON property `database`
         # @return [Google::Apis::SecuritycenterV1beta2::Database]
         attr_accessor :database
@@ -1029,9 +1040,10 @@ module Google
         # @return [String]
         attr_accessor :event_time
       
-        # Exfiltration represents a data exfiltration attempt of one or more sources to
-        # one or more targets. Sources represent the source of data that is exfiltrated,
-        # and Targets represents the destination the data was copied to.
+        # Exfiltration represents a data exfiltration attempt from one or more sources
+        # to one or more targets. The `sources` attribute lists the sources of the
+        # exfiltrated data. The `targets` attribute lists the destinations the data was
+        # copied to.
         # Corresponds to the JSON property `exfiltration`
         # @return [Google::Apis::SecuritycenterV1beta2::Exfiltration]
         attr_accessor :exfiltration
@@ -1367,12 +1379,12 @@ module Google
       class GoogleCloudSecuritycenterV1Binding
         include Google::Apis::Core::Hashable
       
-        # Name for binding.
+        # Name for the binding.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Namespace for binding.
+        # Namespace for the binding.
         # Corresponds to the JSON property `ns`
         # @return [String]
         attr_accessor :ns
@@ -2275,8 +2287,8 @@ module Google
         # @return [String]
         attr_accessor :action
       
-        # A single identity requesting access for a Cloud Platform resource, e.g. "foo@
-        # google.com".
+        # A single identity requesting access for a Cloud Platform resource, for example,
+        # "foo@google.com".
         # Corresponds to the JSON property `member`
         # @return [String]
         attr_accessor :member
@@ -2345,60 +2357,60 @@ module Google
       class KernelRootkit
         include Google::Apis::Core::Hashable
       
-        # Rootkit name when available.
+        # Rootkit name, when available.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # True when unexpected modifications of kernel code memory are present.
+        # True if unexpected modifications of kernel code memory are present.
         # Corresponds to the JSON property `unexpectedCodeModification`
         # @return [Boolean]
         attr_accessor :unexpected_code_modification
         alias_method :unexpected_code_modification?, :unexpected_code_modification
       
-        # True when `ftrace` points are present with callbacks pointing to regions that
+        # True if `ftrace` points are present with callbacks pointing to regions that
         # are not in the expected kernel or module code range.
         # Corresponds to the JSON property `unexpectedFtraceHandler`
         # @return [Boolean]
         attr_accessor :unexpected_ftrace_handler
         alias_method :unexpected_ftrace_handler?, :unexpected_ftrace_handler
       
-        # True when interrupt handlers that are are not in the expected kernel or module
+        # True if interrupt handlers that are are not in the expected kernel or module
         # code regions are present.
         # Corresponds to the JSON property `unexpectedInterruptHandler`
         # @return [Boolean]
         attr_accessor :unexpected_interrupt_handler
         alias_method :unexpected_interrupt_handler?, :unexpected_interrupt_handler
       
-        # True when kernel code pages that are not in the expected kernel or module code
+        # True if kernel code pages that are not in the expected kernel or module code
         # regions are present.
         # Corresponds to the JSON property `unexpectedKernelCodePages`
         # @return [Boolean]
         attr_accessor :unexpected_kernel_code_pages
         alias_method :unexpected_kernel_code_pages?, :unexpected_kernel_code_pages
       
-        # True when `kprobe` points are present with callbacks pointing to regions that
+        # True if `kprobe` points are present with callbacks pointing to regions that
         # are not in the expected kernel or module code range.
         # Corresponds to the JSON property `unexpectedKprobeHandler`
         # @return [Boolean]
         attr_accessor :unexpected_kprobe_handler
         alias_method :unexpected_kprobe_handler?, :unexpected_kprobe_handler
       
-        # True when unexpected processes in the scheduler run queue are present. Such
+        # True if unexpected processes in the scheduler run queue are present. Such
         # processes are in the run queue, but not in the process task list.
         # Corresponds to the JSON property `unexpectedProcessesInRunqueue`
         # @return [Boolean]
         attr_accessor :unexpected_processes_in_runqueue
         alias_method :unexpected_processes_in_runqueue?, :unexpected_processes_in_runqueue
       
-        # True when unexpected modifications of kernel read-only data memory are present.
+        # True if unexpected modifications of kernel read-only data memory are present.
         # Corresponds to the JSON property `unexpectedReadOnlyDataModification`
         # @return [Boolean]
         attr_accessor :unexpected_read_only_data_modification
         alias_method :unexpected_read_only_data_modification?, :unexpected_read_only_data_modification
       
-        # True when system call handlers that are are not in the expected kernel or
-        # module code regions are present.
+        # True if system call handlers that are are not in the expected kernel or module
+        # code regions are present.
         # Corresponds to the JSON property `unexpectedSystemCallHandler`
         # @return [Boolean]
         attr_accessor :unexpected_system_call_handler
@@ -2426,37 +2438,42 @@ module Google
       class Kubernetes
         include Google::Apis::Core::Hashable
       
-        # Provides information on any Kubernetes access reviews (i.e. privilege checks)
+        # Provides information on any Kubernetes access reviews (privilege checks)
         # relevant to the finding.
         # Corresponds to the JSON property `accessReviews`
         # @return [Array<Google::Apis::SecuritycenterV1beta2::AccessReview>]
         attr_accessor :access_reviews
       
-        # Provides Kubernetes role binding information for findings that involve
-        # RoleBindings or ClusterRoleBindings.
+        # Provides Kubernetes role binding information for findings that involve [
+        # RoleBindings or ClusterRoleBindings](https://cloud.google.com/kubernetes-
+        # engine/docs/how-to/role-based-access-control).
         # Corresponds to the JSON property `bindings`
         # @return [Array<Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV1Binding>]
         attr_accessor :bindings
       
-        # GKE Node Pools associated with the finding. This field will contain NodePool
-        # information for each Node, when it is available.
+        # GKE [node pools](https://cloud.google.com/kubernetes-engine/docs/concepts/node-
+        # pools) associated with the finding. This field contains node pool information
+        # for each node, when it is available.
         # Corresponds to the JSON property `nodePools`
         # @return [Array<Google::Apis::SecuritycenterV1beta2::NodePool>]
         attr_accessor :node_pools
       
-        # Provides Kubernetes Node information.
+        # Provides Kubernetes [node](https://cloud.google.com/kubernetes-engine/docs/
+        # concepts/cluster-architecture#nodes) information.
         # Corresponds to the JSON property `nodes`
         # @return [Array<Google::Apis::SecuritycenterV1beta2::Node>]
         attr_accessor :nodes
       
-        # Kubernetes Pods associated with the finding. This field will contain Pod
-        # records for each container that is owned by a Pod.
+        # Kubernetes [Pods](https://cloud.google.com/kubernetes-engine/docs/concepts/pod)
+        # associated with the finding. This field contains Pod records for each
+        # container that is owned by a Pod.
         # Corresponds to the JSON property `pods`
         # @return [Array<Google::Apis::SecuritycenterV1beta2::Pod>]
         attr_accessor :pods
       
-        # Provides Kubernetes role information for findings that involve Roles or
-        # ClusterRoles.
+        # Provides Kubernetes role information for findings that involve [Roles or
+        # ClusterRoles](https://cloud.google.com/kubernetes-engine/docs/how-to/role-
+        # based-access-control).
         # Corresponds to the JSON property `roles`
         # @return [Array<Google::Apis::SecuritycenterV1beta2::Role>]
         attr_accessor :roles
@@ -2476,17 +2493,20 @@ module Google
         end
       end
       
-      # Label represents a generic name=value label. Label has separate name and value
-      # fields to support filtering with contains().
+      # Represents a generic name-value label. A label has separate name and value
+      # fields to support filtering with the `contains()` function. For more
+      # information, see [Filtering on array-type fields](https://cloud.google.com/
+      # security-command-center/docs/how-to-api-list-findings#array-contains-filtering)
+      # .
       class Label
         include Google::Apis::Core::Hashable
       
-        # Label name.
+        # Name of the label.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Label value.
+        # Value that corresponds to the label's name.
         # Corresponds to the JSON property `value`
         # @return [String]
         attr_accessor :value
@@ -2577,11 +2597,12 @@ module Google
         end
       end
       
-      # Kubernetes Nodes associated with the finding.
+      # Kubernetes nodes associated with the finding.
       class Node
         include Google::Apis::Core::Hashable
       
-        # Full Resource name of the Compute Engine VM running the cluster node.
+        # [Full resource name](https://google.aip.dev/122#full-resource-names) of the
+        # Compute Engine VM running the cluster node.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2596,11 +2617,11 @@ module Google
         end
       end
       
-      # Provides GKE Node Pool information.
+      # Provides GKE node pool information.
       class NodePool
         include Google::Apis::Core::Hashable
       
-        # Kubernetes Node pool name.
+        # Kubernetes node pool name.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2649,7 +2670,7 @@ module Google
         end
       end
       
-      # Kubernetes Pod.
+      # A Kubernetes Pod.
       class Pod
         include Google::Apis::Core::Hashable
       
@@ -2723,18 +2744,18 @@ module Google
         # @return [Array<Google::Apis::SecuritycenterV1beta2::File>]
         attr_accessor :libraries
       
-        # The process name visible in utilities like `top` and `ps`; it can be accessed
-        # via `/proc/[pid]/comm` and changed with `prctl(PR_SET_NAME)`.
+        # The process name, as displayed in utilities like `top` and `ps`. This name can
+        # be accessed through `/proc/[pid]/comm` and changed with `prctl(PR_SET_NAME)`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The parent process id.
+        # The parent process ID.
         # Corresponds to the JSON property `parentPid`
         # @return [Fixnum]
         attr_accessor :parent_pid
       
-        # The process id.
+        # The process ID.
         # Corresponds to the JSON property `pid`
         # @return [Fixnum]
         attr_accessor :pid
@@ -3061,21 +3082,21 @@ module Google
         end
       end
       
-      # Represents a Kubernetes Subject.
+      # Represents a Kubernetes subject.
       class Subject
         include Google::Apis::Core::Hashable
       
-        # Authentication type for subject.
+        # Authentication type for the subject.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # Name for subject.
+        # Name for the subject.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Namespace for subject.
+        # Namespace for the subject.
         # Corresponds to the JSON property `ns`
         # @return [String]
         attr_accessor :ns
