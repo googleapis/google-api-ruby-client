@@ -75,10 +75,10 @@ module Google
         #   If true, attribute suggestions are enabled and provided in response. This
         #   field is only available for "cloud-retail" dataset.
         # @param [String] entity
-        #   The entity for customers that may run multiple different entities, domains,
-        #   sites or regions, for example, `Google US`, `Google Ads`, `Waymo`, `google.com`
-        #   , `youtube.com`, etc. If this is set, it should be exactly matched with
-        #   UserEvent.entity to get per-entity autocomplete results.
+        #   The entity for customers who run multiple entities, domains, sites, or regions,
+        #   for example, `Google US`, `Google Ads`, `Waymo`, `google.com`, `youtube.com`,
+        #   etc. If this is set, it must be an exact match with UserEvent.entity to get
+        #   per-entity autocomplete results.
         # @param [Array<String>, String] language_codes
         #   Note that this field applies for `user-data` dataset only. For requests with `
         #   cloud-retail` dataset, setting this field has no effect. The language filters
@@ -650,13 +650,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # It is recommended to use the ProductService.AddLocalInventories method instead
-        # of ProductService.AddFulfillmentPlaces. ProductService.AddLocalInventories
-        # achieves the same results but provides more fine-grained control over
-        # ingesting local inventory data. Incrementally adds place IDs to Product.
-        # fulfillment_info.place_ids. This process is asynchronous and does not require
-        # the Product to exist before updating fulfillment information. If the request
-        # is valid, the update will be enqueued and processed downstream. As a
+        # We recommend that you use the ProductService.AddLocalInventories method
+        # instead of the ProductService.AddFulfillmentPlaces method. ProductService.
+        # AddLocalInventories achieves the same results but provides more fine-grained
+        # control over ingesting local inventory data. Incrementally adds place IDs to
+        # Product.fulfillment_info.place_ids. This process is asynchronous and does not
+        # require the Product to exist before updating fulfillment information. If the
+        # request is valid, the update will be enqueued and processed downstream. As a
         # consequence, when a response is returned, the added place IDs are not
         # immediately manifested in the Product queried by ProductService.GetProduct or
         # ProductService.ListProducts. The returned Operations will be obsolete after 1
@@ -1065,8 +1065,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # It is recommended to use the ProductService.RemoveLocalInventories method
-        # instead of ProductService.RemoveFulfillmentPlaces. ProductService.
+        # We recommend that you use the ProductService.RemoveLocalInventories method
+        # instead of the ProductService.RemoveFulfillmentPlaces method. ProductService.
         # RemoveLocalInventories achieves the same results but provides more fine-
         # grained control over ingesting local inventory data. Incrementally removes
         # place IDs from a Product.fulfillment_info.place_ids. This process is
@@ -1444,17 +1444,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a MerchantCenterAccountLink. MerchantCenterAccountLink cannot be set
-        # to a different oneof field, if so an INVALID_ARGUMENT is returned.
-        # @param [String] name
-        #   Output only. Immutable. Full resource name of the Merchant Center Account Link,
-        #   such as `projects/*/locations/global/catalogs/default_catalog/
-        #   merchantCenterAccountLinks/merchant_center_account_link`.
-        # @param [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaMerchantCenterAccountLink] google_cloud_retail_v2alpha_merchant_center_account_link_object
+        # Creates a MerchantCenterAccountLink.
         # @param [String] parent
         #   Required. The branch resource where this MerchantCenterAccountLink will be
         #   created. Format: projects/`PROJECT_NUMBER`/locations/global/catalogs/`
         #   CATALOG_ID``
+        # @param [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaMerchantCenterAccountLink] google_cloud_retail_v2alpha_merchant_center_account_link_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1472,14 +1467,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_catalog_merchant_center_account_link_merchant_center_account_link(name, google_cloud_retail_v2alpha_merchant_center_account_link_object = nil, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v2alpha/{+name}', options)
+        def create_project_location_catalog_merchant_center_account_link(parent, google_cloud_retail_v2alpha_merchant_center_account_link_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2alpha/{+parent}/merchantCenterAccountLinks', options)
           command.request_representation = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaMerchantCenterAccountLink::Representation
           command.request_object = google_cloud_retail_v2alpha_merchant_center_account_link_object
           command.response_representation = Google::Apis::RetailV2alpha::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::RetailV2alpha::GoogleLongrunningOperation
-          command.params['name'] = name unless name.nil?
-          command.query['parent'] = parent unless parent.nil?
+          command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1956,7 +1950,7 @@ module Google
         #   default_serving_config` or the name of the legacy placement resource, such as `
         #   projects/*/locations/global/catalogs/default_catalog/placements/default_search`
         #   . This field is used to identify the serving config name and the set of models
-        #   that will be used to make the search.
+        #   that are used to make the search.
         # @param [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchRequest] google_cloud_retail_v2alpha_search_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2299,7 +2293,7 @@ module Google
         #   default_serving_config` or the name of the legacy placement resource, such as `
         #   projects/*/locations/global/catalogs/default_catalog/placements/default_search`
         #   . This field is used to identify the serving config name and the set of models
-        #   that will be used to make the search.
+        #   that are used to make the search.
         # @param [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchRequest] google_cloud_retail_v2alpha_search_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
