@@ -112,25 +112,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudFunctionsV2alphaLocationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudFunctionsV2alphaOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudFunctionsV2alphaStateMessage
+      class GoogleCloudFunctionsV2alphaStage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudFunctionsV2betaLocationMetadata
+      class GoogleCloudFunctionsV2alphaStateMessage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -179,12 +173,6 @@ module Google
       end
       
       class Location
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LocationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -257,12 +245,6 @@ module Google
       end
       
       class SourceProvenance
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Stage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -458,13 +440,6 @@ module Google
         end
       end
       
-      class GoogleCloudFunctionsV2alphaLocationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :environments, as: 'environments'
-        end
-      end
-      
       class GoogleCloudFunctionsV2alphaOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -473,11 +448,24 @@ module Google
           property :create_time, as: 'createTime'
           property :end_time, as: 'endTime'
           hash :request_resource, as: 'requestResource'
-          collection :stages, as: 'stages', class: Google::Apis::CloudfunctionsV2::Stage, decorator: Google::Apis::CloudfunctionsV2::Stage::Representation
+          collection :stages, as: 'stages', class: Google::Apis::CloudfunctionsV2::GoogleCloudFunctionsV2alphaStage, decorator: Google::Apis::CloudfunctionsV2::GoogleCloudFunctionsV2alphaStage::Representation
       
           property :status_detail, as: 'statusDetail'
           property :target, as: 'target'
           property :verb, as: 'verb'
+        end
+      end
+      
+      class GoogleCloudFunctionsV2alphaStage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message'
+          property :name, as: 'name'
+          property :resource, as: 'resource'
+          property :resource_uri, as: 'resourceUri'
+          property :state, as: 'state'
+          collection :state_messages, as: 'stateMessages', class: Google::Apis::CloudfunctionsV2::GoogleCloudFunctionsV2alphaStateMessage, decorator: Google::Apis::CloudfunctionsV2::GoogleCloudFunctionsV2alphaStateMessage::Representation
+      
         end
       end
       
@@ -487,13 +475,6 @@ module Google
           property :message, as: 'message'
           property :severity, as: 'severity'
           property :type, as: 'type'
-        end
-      end
-      
-      class GoogleCloudFunctionsV2betaLocationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :environments, as: 'environments'
         end
       end
       
@@ -579,13 +560,6 @@ module Google
           property :location_id, as: 'locationId'
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
-        end
-      end
-      
-      class LocationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :environments, as: 'environments'
         end
       end
       
@@ -731,19 +705,6 @@ module Google
           property :resolved_repo_source, as: 'resolvedRepoSource', class: Google::Apis::CloudfunctionsV2::RepoSource, decorator: Google::Apis::CloudfunctionsV2::RepoSource::Representation
       
           property :resolved_storage_source, as: 'resolvedStorageSource', class: Google::Apis::CloudfunctionsV2::StorageSource, decorator: Google::Apis::CloudfunctionsV2::StorageSource::Representation
-      
-        end
-      end
-      
-      class Stage
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :message, as: 'message'
-          property :name, as: 'name'
-          property :resource, as: 'resource'
-          property :resource_uri, as: 'resourceUri'
-          property :state, as: 'state'
-          collection :state_messages, as: 'stateMessages', class: Google::Apis::CloudfunctionsV2::GoogleCloudFunctionsV2alphaStateMessage, decorator: Google::Apis::CloudfunctionsV2::GoogleCloudFunctionsV2alphaStateMessage::Representation
       
         end
       end

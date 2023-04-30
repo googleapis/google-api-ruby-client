@@ -753,25 +753,6 @@ module Google
         end
       end
       
-      # Extra GCF specific location information.
-      class GoogleCloudFunctionsV2alphaLocationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # The Cloud Function environments this location supports.
-        # Corresponds to the JSON property `environments`
-        # @return [Array<String>]
-        attr_accessor :environments
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @environments = args[:environments] if args.key?(:environments)
-        end
-      end
-      
       # Represents the metadata of the long-running operation.
       class GoogleCloudFunctionsV2alphaOperationMetadata
         include Google::Apis::Core::Hashable
@@ -806,7 +787,7 @@ module Google
       
         # Mechanism for reporting in-progress stages
         # Corresponds to the JSON property `stages`
-        # @return [Array<Google::Apis::CloudfunctionsV2::Stage>]
+        # @return [Array<Google::Apis::CloudfunctionsV2::GoogleCloudFunctionsV2alphaStage>]
         attr_accessor :stages
       
         # Human-readable status of the operation, if any.
@@ -842,6 +823,55 @@ module Google
         end
       end
       
+      # Each Stage of the deployment process
+      class GoogleCloudFunctionsV2alphaStage
+        include Google::Apis::Core::Hashable
+      
+        # Message describing the Stage
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Name of the Stage. This will be unique for each Stage.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Resource of the Stage
+        # Corresponds to the JSON property `resource`
+        # @return [String]
+        attr_accessor :resource
+      
+        # Link to the current Stage resource
+        # Corresponds to the JSON property `resourceUri`
+        # @return [String]
+        attr_accessor :resource_uri
+      
+        # Current state of the Stage
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # State messages from the current Stage.
+        # Corresponds to the JSON property `stateMessages`
+        # @return [Array<Google::Apis::CloudfunctionsV2::GoogleCloudFunctionsV2alphaStateMessage>]
+        attr_accessor :state_messages
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
+          @name = args[:name] if args.key?(:name)
+          @resource = args[:resource] if args.key?(:resource)
+          @resource_uri = args[:resource_uri] if args.key?(:resource_uri)
+          @state = args[:state] if args.key?(:state)
+          @state_messages = args[:state_messages] if args.key?(:state_messages)
+        end
+      end
+      
       # Informational messages about the state of the Cloud Function or Operation.
       class GoogleCloudFunctionsV2alphaStateMessage
         include Google::Apis::Core::Hashable
@@ -870,25 +900,6 @@ module Google
           @message = args[:message] if args.key?(:message)
           @severity = args[:severity] if args.key?(:severity)
           @type = args[:type] if args.key?(:type)
-        end
-      end
-      
-      # Extra GCF specific location information.
-      class GoogleCloudFunctionsV2betaLocationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # The Cloud Function environments this location supports.
-        # Corresponds to the JSON property `environments`
-        # @return [Array<String>]
-        attr_accessor :environments
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @environments = args[:environments] if args.key?(:environments)
         end
       end
       
@@ -1144,7 +1155,7 @@ module Google
         end
       end
       
-      # A resource that represents Google Cloud Platform location.
+      # A resource that represents a Google Cloud location.
       class Location
         include Google::Apis::Core::Hashable
       
@@ -1188,25 +1199,6 @@ module Google
           @location_id = args[:location_id] if args.key?(:location_id)
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
-        end
-      end
-      
-      # Extra GCF specific location information.
-      class LocationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # The Cloud Function environments this location supports.
-        # Corresponds to the JSON property `environments`
-        # @return [Array<String>]
-        attr_accessor :environments
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @environments = args[:environments] if args.key?(:environments)
         end
       end
       
@@ -1915,55 +1907,6 @@ module Google
         def update!(**args)
           @resolved_repo_source = args[:resolved_repo_source] if args.key?(:resolved_repo_source)
           @resolved_storage_source = args[:resolved_storage_source] if args.key?(:resolved_storage_source)
-        end
-      end
-      
-      # Each Stage of the deployment process
-      class Stage
-        include Google::Apis::Core::Hashable
-      
-        # Message describing the Stage
-        # Corresponds to the JSON property `message`
-        # @return [String]
-        attr_accessor :message
-      
-        # Name of the Stage. This will be unique for each Stage.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Resource of the Stage
-        # Corresponds to the JSON property `resource`
-        # @return [String]
-        attr_accessor :resource
-      
-        # Link to the current Stage resource
-        # Corresponds to the JSON property `resourceUri`
-        # @return [String]
-        attr_accessor :resource_uri
-      
-        # Current state of the Stage
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
-      
-        # State messages from the current Stage.
-        # Corresponds to the JSON property `stateMessages`
-        # @return [Array<Google::Apis::CloudfunctionsV2::GoogleCloudFunctionsV2alphaStateMessage>]
-        attr_accessor :state_messages
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @message = args[:message] if args.key?(:message)
-          @name = args[:name] if args.key?(:name)
-          @resource = args[:resource] if args.key?(:resource)
-          @resource_uri = args[:resource_uri] if args.key?(:resource_uri)
-          @state = args[:state] if args.key?(:state)
-          @state_messages = args[:state_messages] if args.key?(:state_messages)
         end
       end
       
