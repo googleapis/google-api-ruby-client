@@ -298,6 +298,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GcsFuseCsiDriverConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GetJsonWebKeysResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1032,6 +1038,8 @@ module Google
       
           property :gcp_filestore_csi_driver_config, as: 'gcpFilestoreCsiDriverConfig', class: Google::Apis::ContainerV1beta1::GcpFilestoreCsiDriverConfig, decorator: Google::Apis::ContainerV1beta1::GcpFilestoreCsiDriverConfig::Representation
       
+          property :gcs_fuse_csi_driver_config, as: 'gcsFuseCsiDriverConfig', class: Google::Apis::ContainerV1beta1::GcsFuseCsiDriverConfig, decorator: Google::Apis::ContainerV1beta1::GcsFuseCsiDriverConfig::Representation
+      
           property :gke_backup_agent_config, as: 'gkeBackupAgentConfig', class: Google::Apis::ContainerV1beta1::GkeBackupAgentConfig, decorator: Google::Apis::ContainerV1beta1::GkeBackupAgentConfig::Representation
       
           property :horizontal_pod_autoscaling, as: 'horizontalPodAutoscaling', class: Google::Apis::ContainerV1beta1::HorizontalPodAutoscaling, decorator: Google::Apis::ContainerV1beta1::HorizontalPodAutoscaling::Representation
@@ -1593,6 +1601,13 @@ module Google
       end
       
       class GcpFilestoreCsiDriverConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
+      class GcsFuseCsiDriverConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
