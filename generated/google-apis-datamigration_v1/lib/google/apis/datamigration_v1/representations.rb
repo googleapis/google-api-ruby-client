@@ -1377,6 +1377,7 @@ module Google
       class SqlIpConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :allocated_ip_range, as: 'allocatedIpRange'
           collection :authorized_networks, as: 'authorizedNetworks', class: Google::Apis::DatamigrationV1::SqlAclEntry, decorator: Google::Apis::DatamigrationV1::SqlAclEntry::Representation
       
           property :enable_ipv4, as: 'enableIpv4'
