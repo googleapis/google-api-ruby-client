@@ -1940,7 +1940,7 @@ module Google
         end
       end
       
-      # A resource that represents Google Cloud Platform location.
+      # A resource that represents a Google Cloud location.
       class Location
         include Google::Apis::Core::Hashable
       
@@ -3152,6 +3152,16 @@ module Google
       class SqlIpConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. The name of the allocated IP address range for the private IP Cloud
+        # SQL instance. This name refers to an already allocated IP range address. If
+        # set, the instance IP address will be created in the allocated range. Note that
+        # this IP address range can't be modified after the instance is created. If you
+        # change the VPC when configuring connectivity settings for the migration job,
+        # this field is not relevant.
+        # Corresponds to the JSON property `allocatedIpRange`
+        # @return [String]
+        attr_accessor :allocated_ip_range
+      
         # The list of external networks that are allowed to connect to the instance
         # using the IP. See https://en.wikipedia.org/wiki/CIDR_notation#CIDR_notation,
         # also known as 'slash' notation (e.g. `192.168.100.0/24`).
@@ -3185,6 +3195,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @allocated_ip_range = args[:allocated_ip_range] if args.key?(:allocated_ip_range)
           @authorized_networks = args[:authorized_networks] if args.key?(:authorized_networks)
           @enable_ipv4 = args[:enable_ipv4] if args.key?(:enable_ipv4)
           @private_network = args[:private_network] if args.key?(:private_network)
