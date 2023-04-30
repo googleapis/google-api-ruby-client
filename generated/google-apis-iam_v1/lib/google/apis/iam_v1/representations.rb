@@ -142,6 +142,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleIamAdminV1WorkforcePoolProviderSaml
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -638,6 +644,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :client_id, as: 'clientId'
           property :issuer_uri, as: 'issuerUri'
+          property :web_sso_config, as: 'webSsoConfig', class: Google::Apis::IamV1::GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig, decorator: Google::Apis::IamV1::GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig::Representation
+      
+        end
+      end
+      
+      class GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :assertion_claims_behavior, as: 'assertionClaimsBehavior'
+          property :response_type, as: 'responseType'
         end
       end
       
