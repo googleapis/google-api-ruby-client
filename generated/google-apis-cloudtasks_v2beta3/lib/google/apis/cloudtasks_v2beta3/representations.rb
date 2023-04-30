@@ -426,6 +426,10 @@ module Google
           collection :header_overrides, as: 'headerOverrides', class: Google::Apis::CloudtasksV2beta3::HeaderOverride, decorator: Google::Apis::CloudtasksV2beta3::HeaderOverride::Representation
       
           property :http_method, as: 'httpMethod'
+          property :oauth_token, as: 'oauthToken', class: Google::Apis::CloudtasksV2beta3::OAuthToken, decorator: Google::Apis::CloudtasksV2beta3::OAuthToken::Representation
+      
+          property :oidc_token, as: 'oidcToken', class: Google::Apis::CloudtasksV2beta3::OidcToken, decorator: Google::Apis::CloudtasksV2beta3::OidcToken::Representation
+      
           property :uri_override, as: 'uriOverride', class: Google::Apis::CloudtasksV2beta3::UriOverride, decorator: Google::Apis::CloudtasksV2beta3::UriOverride::Representation
       
         end
