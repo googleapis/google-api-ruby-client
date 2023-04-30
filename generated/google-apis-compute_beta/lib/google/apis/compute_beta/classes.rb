@@ -8139,6 +8139,16 @@ module Google
         # @return [String]
         attr_accessor :ip_address
       
+        # IPv6 address of the interface in the external VPN gateway. This IPv6 address
+        # can be either from your on-premise gateway or another Cloud provider's VPN
+        # gateway, it cannot be an IP address from Google Compute Engine. Must specify
+        # an IPv6 address (not IPV4-mapped) using any format described in RFC 4291 (e.g.
+        # 2001:db8:0:0:2d9:51:0:0). The output format is RFC 5952 format (e.g. 2001:db8::
+        # 2d9:51:0:0).
+        # Corresponds to the JSON property `ipv6Address`
+        # @return [String]
+        attr_accessor :ipv6_address
+      
         def initialize(**args)
            update!(**args)
         end
@@ -8147,6 +8157,7 @@ module Google
         def update!(**args)
           @id = args[:id] if args.key?(:id)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @ipv6_address = args[:ipv6_address] if args.key?(:ipv6_address)
         end
       end
       
@@ -10764,11 +10775,11 @@ module Google
       # Regional](/compute/docs/reference/rest/beta/regionHealthChecks) Internal HTTP(
       # S) load balancers must use regional health checks (`compute.v1.
       # regionHealthChecks`). Traffic Director must use global health checks (`compute.
-      # v1.HealthChecks`). Internal TCP/UDP load balancers can use either regional or
+      # v1.healthChecks`). Internal TCP/UDP load balancers can use either regional or
       # global health checks (`compute.v1.regionHealthChecks` or `compute.v1.
-      # HealthChecks`). External HTTP(S), TCP proxy, and SSL proxy load balancers as
+      # healthChecks`). External HTTP(S), TCP proxy, and SSL proxy load balancers as
       # well as managed instance group auto-healing must use global health checks (`
-      # compute.v1.HealthChecks`). Backend service-based network load balancers must
+      # compute.v1.healthChecks`). Backend service-based network load balancers must
       # use regional health checks (`compute.v1.regionHealthChecks`). Target pool-
       # based network load balancers must use legacy HTTP health checks (`compute.v1.
       # httpHealthChecks`). For more information, see Health checks overview.
@@ -32873,6 +32884,20 @@ module Google
         # @return [Google::Apis::ComputeBeta::RouterBgpPeerBfd]
         attr_accessor :bfd
       
+        # A list of user-defined custom learned route IP address ranges for a BGP
+        # session.
+        # Corresponds to the JSON property `customLearnedIpRanges`
+        # @return [Array<Google::Apis::ComputeBeta::RouterBgpPeerCustomLearnedIpRange>]
+        attr_accessor :custom_learned_ip_ranges
+      
+        # The user-defined custom learned route priority for a BGP session. This value
+        # is applied to all custom learned route ranges for the session. You can choose
+        # a value from `0` to `65335`. If you don't provide a value, Google Cloud
+        # assigns a priority of `100` to the ranges.
+        # Corresponds to the JSON property `customLearnedRoutePriority`
+        # @return [Fixnum]
+        attr_accessor :custom_learned_route_priority
+      
         # The status of the BGP peer connection. If set to FALSE, any active session
         # with the peer is terminated and all associated routing information is removed.
         # If set to TRUE, the peer connection can be established with routing
@@ -32966,6 +32991,8 @@ module Google
           @advertised_ip_ranges = args[:advertised_ip_ranges] if args.key?(:advertised_ip_ranges)
           @advertised_route_priority = args[:advertised_route_priority] if args.key?(:advertised_route_priority)
           @bfd = args[:bfd] if args.key?(:bfd)
+          @custom_learned_ip_ranges = args[:custom_learned_ip_ranges] if args.key?(:custom_learned_ip_ranges)
+          @custom_learned_route_priority = args[:custom_learned_route_priority] if args.key?(:custom_learned_route_priority)
           @enable = args[:enable] if args.key?(:enable)
           @enable_ipv6 = args[:enable_ipv6] if args.key?(:enable_ipv6)
           @interface_name = args[:interface_name] if args.key?(:interface_name)
@@ -33029,6 +33056,27 @@ module Google
           @min_transmit_interval = args[:min_transmit_interval] if args.key?(:min_transmit_interval)
           @multiplier = args[:multiplier] if args.key?(:multiplier)
           @session_initialization_mode = args[:session_initialization_mode] if args.key?(:session_initialization_mode)
+        end
+      end
+      
+      # 
+      class RouterBgpPeerCustomLearnedIpRange
+        include Google::Apis::Core::Hashable
+      
+        # The custom learned route IP address range. Must be a valid CIDR-formatted
+        # prefix. If an IP address is provided without a subnet mask, it is interpreted
+        # as, for IPv4, a `/32` singular IP address range, and, for IPv6, `/128`.
+        # Corresponds to the JSON property `range`
+        # @return [String]
+        attr_accessor :range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @range = args[:range] if args.key?(:range)
         end
       end
       
@@ -36189,6 +36237,20 @@ module Google
         # @return [Google::Apis::ComputeBeta::Uint128]
         attr_accessor :psc_service_attachment_id
       
+        # This flag determines whether a consumer accept/reject list change can
+        # reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints. - If
+        # false, connection policy update will only affect existing PENDING PSC
+        # endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched
+        # regardless how the connection policy is modified . - If true, update will
+        # affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an
+        # ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the
+        # reject list. For newly created service attachment, this boolean defaults to
+        # true.
+        # Corresponds to the JSON property `reconcileConnections`
+        # @return [Boolean]
+        attr_accessor :reconcile_connections
+        alias_method :reconcile_connections?, :reconcile_connections
+      
         # [Output Only] URL of the region where the service attachment resides. This
         # field applies only to the region resource. You must specify this field as part
         # of the HTTP request URL. It is not settable as a field in the request body.
@@ -36228,6 +36290,7 @@ module Google
           @nat_subnets = args[:nat_subnets] if args.key?(:nat_subnets)
           @producer_forwarding_rule = args[:producer_forwarding_rule] if args.key?(:producer_forwarding_rule)
           @psc_service_attachment_id = args[:psc_service_attachment_id] if args.key?(:psc_service_attachment_id)
+          @reconcile_connections = args[:reconcile_connections] if args.key?(:reconcile_connections)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
           @target_service = args[:target_service] if args.key?(:target_service)
@@ -40278,7 +40341,9 @@ module Google
       class TargetHttpsProxiesSetCertificateMapRequest
         include Google::Apis::Core::Hashable
       
-        # URL of the Certificate Map to associate with this TargetHttpsProxy.
+        # URL of the Certificate Map to associate with this TargetHttpsProxy. Accepted
+        # format is //certificatemanager.googleapis.com/projects/`project `/locations/`
+        # location`/certificateMaps/`resourceName`.
         # Corresponds to the JSON property `certificateMap`
         # @return [String]
         attr_accessor :certificate_map
@@ -40368,7 +40433,9 @@ module Google
       
         # URL of a certificate map that identifies a certificate map associated with the
         # given target proxy. This field can only be set for global target proxies. If
-        # set, sslCertificates will be ignored.
+        # set, sslCertificates will be ignored. Accepted format is //certificatemanager.
+        # googleapis.com/projects/`project `/locations/`location`/certificateMaps/`
+        # resourceName`.
         # Corresponds to the JSON property `certificateMap`
         # @return [String]
         attr_accessor :certificate_map
@@ -41807,7 +41874,9 @@ module Google
       class TargetSslProxiesSetCertificateMapRequest
         include Google::Apis::Core::Hashable
       
-        # URL of the Certificate Map to associate with this TargetSslProxy.
+        # URL of the Certificate Map to associate with this TargetSslProxy. Accepted
+        # format is //certificatemanager.googleapis.com/projects/`project `/locations/`
+        # location`/certificateMaps/`resourceName`.
         # Corresponds to the JSON property `certificateMap`
         # @return [String]
         attr_accessor :certificate_map
@@ -41872,7 +41941,9 @@ module Google
       
         # URL of a certificate map that identifies a certificate map associated with the
         # given target proxy. This field can only be set for global target proxies. If
-        # set, sslCertificates will be ignored.
+        # set, sslCertificates will be ignored. Accepted format is //certificatemanager.
+        # googleapis.com/projects/`project `/locations/`location`/certificateMaps/`
+        # resourceName`.
         # Corresponds to the JSON property `certificateMap`
         # @return [String]
         attr_accessor :certificate_map
@@ -44440,6 +44511,12 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not
+        # specified, IPV4 will be used.
+        # Corresponds to the JSON property `gatewayIpVersion`
+        # @return [String]
+        attr_accessor :gateway_ip_version
+      
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
@@ -44516,6 +44593,7 @@ module Google
         def update!(**args)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
+          @gateway_ip_version = args[:gateway_ip_version] if args.key?(:gateway_ip_version)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
@@ -44924,6 +45002,13 @@ module Google
         # @return [String]
         attr_accessor :ip_address
       
+        # [Output Only] IPv6 address for this VPN interface associated with the VPN
+        # gateway. The IPv6 address must be a regional external IPv6 address. The format
+        # is RFC 5952 format (e.g. 2001:db8::2d9:51:0:0).
+        # Corresponds to the JSON property `ipv6Address`
+        # @return [String]
+        attr_accessor :ipv6_address
+      
         def initialize(**args)
            update!(**args)
         end
@@ -44933,6 +45018,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @interconnect_attachment = args[:interconnect_attachment] if args.key?(:interconnect_attachment)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @ipv6_address = args[:ipv6_address] if args.key?(:ipv6_address)
         end
       end
       

@@ -4306,6 +4306,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RouterBgpPeerCustomLearnedIpRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RouterInterface
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -7929,6 +7935,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :ip_address, as: 'ipAddress'
+          property :ipv6_address, as: 'ipv6Address'
         end
       end
       
@@ -14118,6 +14125,9 @@ module Google
           property :advertised_route_priority, as: 'advertisedRoutePriority'
           property :bfd, as: 'bfd', class: Google::Apis::ComputeBeta::RouterBgpPeerBfd, decorator: Google::Apis::ComputeBeta::RouterBgpPeerBfd::Representation
       
+          collection :custom_learned_ip_ranges, as: 'customLearnedIpRanges', class: Google::Apis::ComputeBeta::RouterBgpPeerCustomLearnedIpRange, decorator: Google::Apis::ComputeBeta::RouterBgpPeerCustomLearnedIpRange::Representation
+      
+          property :custom_learned_route_priority, as: 'customLearnedRoutePriority'
           property :enable, as: 'enable'
           property :enable_ipv6, as: 'enableIpv6'
           property :interface_name, as: 'interfaceName'
@@ -14140,6 +14150,13 @@ module Google
           property :min_transmit_interval, as: 'minTransmitInterval'
           property :multiplier, as: 'multiplier'
           property :session_initialization_mode, as: 'sessionInitializationMode'
+        end
+      end
+      
+      class RouterBgpPeerCustomLearnedIpRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :range, as: 'range'
         end
       end
       
@@ -14906,6 +14923,7 @@ module Google
           property :producer_forwarding_rule, as: 'producerForwardingRule'
           property :psc_service_attachment_id, as: 'pscServiceAttachmentId', class: Google::Apis::ComputeBeta::Uint128, decorator: Google::Apis::ComputeBeta::Uint128::Representation
       
+          property :reconcile_connections, as: 'reconcileConnections'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :target_service, as: 'targetService'
@@ -16975,6 +16993,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
+          property :gateway_ip_version, as: 'gatewayIpVersion'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
@@ -17097,6 +17116,7 @@ module Google
           property :id, as: 'id'
           property :interconnect_attachment, as: 'interconnectAttachment'
           property :ip_address, as: 'ipAddress'
+          property :ipv6_address, as: 'ipv6Address'
         end
       end
       
