@@ -178,6 +178,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaPurgeDocumentsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaPurgeDocumentsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaPurgeDocumentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaRecommendRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -251,6 +269,18 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1betaImportUserEventsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaPurgeDocumentsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaPurgeDocumentsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -550,6 +580,32 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1alphaPurgeDocumentsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :failure_count, :numeric_string => true, as: 'failureCount'
+          property :success_count, :numeric_string => true, as: 'successCount'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaPurgeDocumentsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filter, as: 'filter'
+          property :force, as: 'force'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaPurgeDocumentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :purge_count, :numeric_string => true, as: 'purgeCount'
+          collection :purge_sample, as: 'purgeSample'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaRecommendRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -701,6 +757,24 @@ module Google
       
           property :joined_events_count, :numeric_string => true, as: 'joinedEventsCount'
           property :unjoined_events_count, :numeric_string => true, as: 'unjoinedEventsCount'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaPurgeDocumentsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :failure_count, :numeric_string => true, as: 'failureCount'
+          property :success_count, :numeric_string => true, as: 'successCount'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaPurgeDocumentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :purge_count, :numeric_string => true, as: 'purgeCount'
+          collection :purge_sample, as: 'purgeSample'
         end
       end
       
