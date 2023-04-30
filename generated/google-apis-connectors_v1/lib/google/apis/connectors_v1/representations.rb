@@ -428,6 +428,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :additional_variables, as: 'additionalVariables', class: Google::Apis::ConnectorsV1::ConfigVariable, decorator: Google::Apis::ConnectorsV1::ConfigVariable::Representation
       
+          property :auth_key, as: 'authKey'
           property :auth_type, as: 'authType'
           property :oauth2_auth_code_flow, as: 'oauth2AuthCodeFlow', class: Google::Apis::ConnectorsV1::Oauth2AuthCodeFlow, decorator: Google::Apis::ConnectorsV1::Oauth2AuthCodeFlow::Representation
       
@@ -445,6 +446,7 @@ module Google
       class AuthConfigTemplate
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :auth_key, as: 'authKey'
           property :auth_type, as: 'authType'
           collection :config_variable_templates, as: 'configVariableTemplates', class: Google::Apis::ConnectorsV1::ConfigVariableTemplate, decorator: Google::Apis::ConnectorsV1::ConfigVariableTemplate::Representation
       
