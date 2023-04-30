@@ -640,6 +640,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiV1beta1DocumentPageTokenStyleInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiV1beta1DocumentPageVisualElement
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -923,6 +929,12 @@ module Google
       end
       
       class GoogleCloudDocumentaiV1beta2DocumentPageTokenDetectedBreak
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta2DocumentPageTokenStyleInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1313,6 +1325,12 @@ module Google
       end
       
       class GoogleCloudDocumentaiV1beta3DocumentPageTokenDetectedBreak
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DocumentPageTokenStyleInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2776,6 +2794,8 @@ module Google
       
           property :provenance, as: 'provenance', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta1DocumentProvenance, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta1DocumentProvenance::Representation
       
+          property :style_info, as: 'styleInfo', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta1DocumentPageTokenStyleInfo, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta1DocumentPageTokenStyleInfo::Representation
+      
         end
       end
       
@@ -2783,6 +2803,29 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta1DocumentPageTokenStyleInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :background_color, as: 'backgroundColor', class: Google::Apis::DocumentaiV1beta3::GoogleTypeColor, decorator: Google::Apis::DocumentaiV1beta3::GoogleTypeColor::Representation
+      
+          property :bold, as: 'bold'
+          property :font_size, as: 'fontSize'
+          property :font_type, as: 'fontType'
+          property :font_weight, as: 'fontWeight'
+          property :handwritten, as: 'handwritten'
+          property :italic, as: 'italic'
+          property :letter_spacing, as: 'letterSpacing'
+          property :pixel_font_size, as: 'pixelFontSize'
+          property :smallcaps, as: 'smallcaps'
+          property :strikeout, as: 'strikeout'
+          property :subscript, as: 'subscript'
+          property :superscript, as: 'superscript'
+          property :text_color, as: 'textColor', class: Google::Apis::DocumentaiV1beta3::GoogleTypeColor, decorator: Google::Apis::DocumentaiV1beta3::GoogleTypeColor::Representation
+      
+          property :underlined, as: 'underlined'
         end
       end
       
@@ -3330,6 +3373,8 @@ module Google
       
           property :provenance, as: 'provenance', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta2DocumentProvenance, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta2DocumentProvenance::Representation
       
+          property :style_info, as: 'styleInfo', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta2DocumentPageTokenStyleInfo, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta2DocumentPageTokenStyleInfo::Representation
+      
         end
       end
       
@@ -3337,6 +3382,29 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta2DocumentPageTokenStyleInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :background_color, as: 'backgroundColor', class: Google::Apis::DocumentaiV1beta3::GoogleTypeColor, decorator: Google::Apis::DocumentaiV1beta3::GoogleTypeColor::Representation
+      
+          property :bold, as: 'bold'
+          property :font_size, as: 'fontSize'
+          property :font_type, as: 'fontType'
+          property :font_weight, as: 'fontWeight'
+          property :handwritten, as: 'handwritten'
+          property :italic, as: 'italic'
+          property :letter_spacing, as: 'letterSpacing'
+          property :pixel_font_size, as: 'pixelFontSize'
+          property :smallcaps, as: 'smallcaps'
+          property :strikeout, as: 'strikeout'
+          property :subscript, as: 'subscript'
+          property :superscript, as: 'superscript'
+          property :text_color, as: 'textColor', class: Google::Apis::DocumentaiV1beta3::GoogleTypeColor, decorator: Google::Apis::DocumentaiV1beta3::GoogleTypeColor::Representation
+      
+          property :underlined, as: 'underlined'
         end
       end
       
@@ -4032,6 +4100,8 @@ module Google
       
           property :provenance, as: 'provenance', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentProvenance, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentProvenance::Representation
       
+          property :style_info, as: 'styleInfo', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentPageTokenStyleInfo, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentPageTokenStyleInfo::Representation
+      
         end
       end
       
@@ -4039,6 +4109,29 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DocumentPageTokenStyleInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :background_color, as: 'backgroundColor', class: Google::Apis::DocumentaiV1beta3::GoogleTypeColor, decorator: Google::Apis::DocumentaiV1beta3::GoogleTypeColor::Representation
+      
+          property :bold, as: 'bold'
+          property :font_size, as: 'fontSize'
+          property :font_type, as: 'fontType'
+          property :font_weight, as: 'fontWeight'
+          property :handwritten, as: 'handwritten'
+          property :italic, as: 'italic'
+          property :letter_spacing, as: 'letterSpacing'
+          property :pixel_font_size, as: 'pixelFontSize'
+          property :smallcaps, as: 'smallcaps'
+          property :strikeout, as: 'strikeout'
+          property :subscript, as: 'subscript'
+          property :superscript, as: 'superscript'
+          property :text_color, as: 'textColor', class: Google::Apis::DocumentaiV1beta3::GoogleTypeColor, decorator: Google::Apis::DocumentaiV1beta3::GoogleTypeColor::Representation
+      
+          property :underlined, as: 'underlined'
         end
       end
       
@@ -4441,6 +4534,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :advanced_ocr_options, as: 'advancedOcrOptions'
+          property :compute_style_info, as: 'computeStyleInfo'
           property :enable_image_quality_scores, as: 'enableImageQualityScores'
           property :enable_native_pdf_parsing, as: 'enableNativePdfParsing'
           property :enable_symbol, as: 'enableSymbol'
