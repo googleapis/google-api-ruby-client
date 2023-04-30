@@ -2429,7 +2429,7 @@ module Google
         end
       end
       
-      # A resource that represents Google Cloud Platform location.
+      # A resource that represents a Google Cloud location.
       class Location
         include Google::Apis::Core::Hashable
       
@@ -4202,6 +4202,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :priority
       
+        # Output only. The state of the source.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
         # Data source type.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -4225,6 +4230,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @pending_frame_count = args[:pending_frame_count] if args.key?(:pending_frame_count)
           @priority = args[:priority] if args.key?(:priority)
+          @state = args[:state] if args.key?(:state)
           @type = args[:type] if args.key?(:type)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
