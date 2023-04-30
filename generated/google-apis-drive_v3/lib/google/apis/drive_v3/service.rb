@@ -990,7 +990,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Permanently deletes all of the user's trashed files.
+        # Permanently deletes all trashed files of a user or shared drive.
         # @param [String] drive_id
         #   If set, empties the trash of the provided shared drive.
         # @param [Boolean] enforce_single_parent
@@ -1421,7 +1421,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Subscribes to changes to a file.
+        # Subscribe to changes on a file.
         # @param [String] file_id
         #   The ID of the file.
         # @param [Google::Apis::DriveV3::Channel] channel_object
