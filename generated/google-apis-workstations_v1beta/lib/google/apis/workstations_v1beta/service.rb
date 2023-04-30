@@ -238,7 +238,7 @@ module Google
         #   Required. Name of the workstation cluster to delete.
         # @param [String] etag
         #   If set, the request will be rejected if the latest version of the workstation
-        #   cluster on the server does not have this etag.
+        #   cluster on the server does not have this ETag.
         # @param [Boolean] force
         #   If set, any workstation configurations and workstations in the workstation
         #   cluster are also deleted. Otherwise, the request only works if the workstation
@@ -431,7 +431,7 @@ module Google
         #   Required. Name of the workstation configuration to delete.
         # @param [String] etag
         #   If set, the request is rejected if the latest version of the workstation
-        #   configuration on the server does not have this etag.
+        #   configuration on the server does not have this ETag.
         # @param [Boolean] force
         #   If set, any workstations in the workstation configuration are also deleted.
         #   Otherwise, the request works only if the workstation configuration has no
@@ -783,7 +783,7 @@ module Google
         #   Required. Name of the workstation to delete.
         # @param [String] etag
         #   If set, the request will be rejected if the latest version of the workstation
-        #   on the server does not have this etag.
+        #   on the server does not have this ETag.
         # @param [Boolean] validate_only
         #   If set, validate the request and preview the review, but do not actually apply
         #   it.
