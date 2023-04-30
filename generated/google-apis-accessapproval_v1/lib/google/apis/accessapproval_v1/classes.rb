@@ -121,6 +121,20 @@ module Google
         # @return [Array<String>]
         attr_accessor :notification_emails
       
+        # This preference is communicated to Google personnel when sending an approval
+        # request but can be overridden if necessary.
+        # Corresponds to the JSON property `preferNoBroadApprovalRequests`
+        # @return [Boolean]
+        attr_accessor :prefer_no_broad_approval_requests
+        alias_method :prefer_no_broad_approval_requests?, :prefer_no_broad_approval_requests
+      
+        # This preference is shared with Google personnel, but can be overridden if said
+        # personnel deems necessary. The approver ultimately can set the expiration at
+        # approval time.
+        # Corresponds to the JSON property `preferredRequestExpirationDays`
+        # @return [Fixnum]
+        attr_accessor :preferred_request_expiration_days
+      
         def initialize(**args)
            update!(**args)
         end
@@ -134,6 +148,8 @@ module Google
           @invalid_key_version = args[:invalid_key_version] if args.key?(:invalid_key_version)
           @name = args[:name] if args.key?(:name)
           @notification_emails = args[:notification_emails] if args.key?(:notification_emails)
+          @prefer_no_broad_approval_requests = args[:prefer_no_broad_approval_requests] if args.key?(:prefer_no_broad_approval_requests)
+          @preferred_request_expiration_days = args[:preferred_request_expiration_days] if args.key?(:preferred_request_expiration_days)
         end
       end
       
