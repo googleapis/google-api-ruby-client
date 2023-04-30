@@ -72,10 +72,10 @@ module Google
         #   all device types. Supported formats: * `UNKNOWN_DEVICE_TYPE` * `DESKTOP` * `
         #   MOBILE` * A customized string starts with `OTHER_`, e.g. `OTHER_IPHONE`.
         # @param [String] entity
-        #   The entity for customers that may run multiple different entities, domains,
-        #   sites or regions, for example, `Google US`, `Google Ads`, `Waymo`, `google.com`
-        #   , `youtube.com`, etc. If this is set, it should be exactly matched with
-        #   UserEvent.entity to get per-entity autocomplete results.
+        #   The entity for customers who run multiple entities, domains, sites, or regions,
+        #   for example, `Google US`, `Google Ads`, `Waymo`, `google.com`, `youtube.com`,
+        #   etc. If this is set, it must be an exact match with UserEvent.entity to get
+        #   per-entity autocomplete results.
         # @param [Array<String>, String] language_codes
         #   Note that this field applies for `user-data` dataset only. For requests with `
         #   cloud-retail` dataset, setting this field has no effect. The language filters
@@ -615,13 +615,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # It is recommended to use the ProductService.AddLocalInventories method instead
-        # of ProductService.AddFulfillmentPlaces. ProductService.AddLocalInventories
-        # achieves the same results but provides more fine-grained control over
-        # ingesting local inventory data. Incrementally adds place IDs to Product.
-        # fulfillment_info.place_ids. This process is asynchronous and does not require
-        # the Product to exist before updating fulfillment information. If the request
-        # is valid, the update will be enqueued and processed downstream. As a
+        # We recommend that you use the ProductService.AddLocalInventories method
+        # instead of the ProductService.AddFulfillmentPlaces method. ProductService.
+        # AddLocalInventories achieves the same results but provides more fine-grained
+        # control over ingesting local inventory data. Incrementally adds place IDs to
+        # Product.fulfillment_info.place_ids. This process is asynchronous and does not
+        # require the Product to exist before updating fulfillment information. If the
+        # request is valid, the update will be enqueued and processed downstream. As a
         # consequence, when a response is returned, the added place IDs are not
         # immediately manifested in the Product queried by ProductService.GetProduct or
         # ProductService.ListProducts. The returned Operations will be obsolete after 1
@@ -976,8 +976,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # It is recommended to use the ProductService.RemoveLocalInventories method
-        # instead of ProductService.RemoveFulfillmentPlaces. ProductService.
+        # We recommend that you use the ProductService.RemoveLocalInventories method
+        # instead of the ProductService.RemoveFulfillmentPlaces method. ProductService.
         # RemoveLocalInventories achieves the same results but provides more fine-
         # grained control over ingesting local inventory data. Incrementally removes
         # place IDs from a Product.fulfillment_info.place_ids. This process is
@@ -1762,7 +1762,7 @@ module Google
         #   default_serving_config` or the name of the legacy placement resource, such as `
         #   projects/*/locations/global/catalogs/default_catalog/placements/default_search`
         #   . This field is used to identify the serving config name and the set of models
-        #   that will be used to make the search.
+        #   that are used to make the search.
         # @param [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchRequest] google_cloud_retail_v2beta_search_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2105,7 +2105,7 @@ module Google
         #   default_serving_config` or the name of the legacy placement resource, such as `
         #   projects/*/locations/global/catalogs/default_catalog/placements/default_search`
         #   . This field is used to identify the serving config name and the set of models
-        #   that will be used to make the search.
+        #   that are used to make the search.
         # @param [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchRequest] google_cloud_retail_v2beta_search_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

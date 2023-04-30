@@ -555,6 +555,11 @@ module Google
         # @return [String]
         attr_accessor :last_tune_time
       
+        # Additional model features config.
+        # Corresponds to the JSON property `modelFeaturesConfig`
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2ModelModelFeaturesConfig]
+        attr_accessor :model_features_config
+      
         # Required. The fully qualified resource name of the model. Format: `projects/`
         # project_number`/locations/`location_id`/catalogs/`catalog_id`/models/`model_id`
         # ` catalog_id has char limit of 50. recommendation_model_id has char limit of
@@ -644,6 +649,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @filtering_option = args[:filtering_option] if args.key?(:filtering_option)
           @last_tune_time = args[:last_tune_time] if args.key?(:last_tune_time)
+          @model_features_config = args[:model_features_config] if args.key?(:model_features_config)
           @name = args[:name] if args.key?(:name)
           @optimization_objective = args[:optimization_objective] if args.key?(:optimization_objective)
           @periodic_tuning_state = args[:periodic_tuning_state] if args.key?(:periodic_tuning_state)
@@ -653,6 +659,46 @@ module Google
           @tuning_operation = args[:tuning_operation] if args.key?(:tuning_operation)
           @type = args[:type] if args.key?(:type)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # More configs of the frequently-bought-together model type.
+      class GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Specifies the context of the model when used in predict requests.
+        # Only settable for the `frequently-bought-together` type. Will default to
+        # MULTI_CONTEXT if not specified.
+        # Corresponds to the JSON property `contextProductsType`
+        # @return [String]
+        attr_accessor :context_products_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @context_products_type = args[:context_products_type] if args.key?(:context_products_type)
+        end
+      end
+      
+      # Additional model features config.
+      class GoogleCloudRetailV2ModelModelFeaturesConfig
+        include Google::Apis::Core::Hashable
+      
+        # More configs of the frequently-bought-together model type.
+        # Corresponds to the JSON property `frequentlyBoughtTogetherConfig`
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig]
+        attr_accessor :frequently_bought_together_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @frequently_bought_together_config = args[:frequently_bought_together_config] if args.key?(:frequently_bought_together_config)
         end
       end
       
@@ -1476,6 +1522,11 @@ module Google
         # @return [String]
         attr_accessor :last_tune_time
       
+        # Additional model features config.
+        # Corresponds to the JSON property `modelFeaturesConfig`
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2alphaModelModelFeaturesConfig]
+        attr_accessor :model_features_config
+      
         # Required. The fully qualified resource name of the model. Format: `projects/`
         # project_number`/locations/`location_id`/catalogs/`catalog_id`/models/`model_id`
         # ` catalog_id has char limit of 50. recommendation_model_id has char limit of
@@ -1573,6 +1624,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @filtering_option = args[:filtering_option] if args.key?(:filtering_option)
           @last_tune_time = args[:last_tune_time] if args.key?(:last_tune_time)
+          @model_features_config = args[:model_features_config] if args.key?(:model_features_config)
           @name = args[:name] if args.key?(:name)
           @optimization_objective = args[:optimization_objective] if args.key?(:optimization_objective)
           @page_optimization_config = args[:page_optimization_config] if args.key?(:page_optimization_config)
@@ -1583,6 +1635,46 @@ module Google
           @tuning_operation = args[:tuning_operation] if args.key?(:tuning_operation)
           @type = args[:type] if args.key?(:type)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # More configs of the frequently-bought-together model type.
+      class GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Specifies the context of the model when used in predict requests.
+        # Only settable for the `frequently-bought-together` type. Will default to
+        # MULTI_CONTEXT if not specified.
+        # Corresponds to the JSON property `contextProductsType`
+        # @return [String]
+        attr_accessor :context_products_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @context_products_type = args[:context_products_type] if args.key?(:context_products_type)
+        end
+      end
+      
+      # Additional model features config.
+      class GoogleCloudRetailV2alphaModelModelFeaturesConfig
+        include Google::Apis::Core::Hashable
+      
+        # More configs of the frequently-bought-together model type.
+        # Corresponds to the JSON property `frequentlyBoughtTogetherConfig`
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfig]
+        attr_accessor :frequently_bought_together_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @frequently_bought_together_config = args[:frequently_bought_together_config] if args.key?(:frequently_bought_together_config)
         end
       end
       
@@ -2672,8 +2764,8 @@ module Google
         attr_accessor :completion_results
       
         # Matched recent searches of this user. The maximum number of recent searches is
-        # 10. This field is a restricted feature. Contact Retail Search support team if
-        # you are interested in enabling it. This feature is only available when
+        # 10. This field is a restricted feature. If you want to enable it, contact
+        # Retail Search support. This feature is only available when
         # CompleteQueryRequest.visitor_id field is set and UserEvent is imported. The
         # recent searches satisfy the follow rules: * They are ordered from latest to
         # oldest. * They are matched with CompleteQueryRequest.query case insensitively.
@@ -2782,8 +2874,8 @@ module Google
         attr_accessor :last_denylist_import_operation
       
         # Output only. Name of the LRO corresponding to the latest suggestion terms list
-        # import. Can use GetOperation API to retrieve the latest state of the Long
-        # Running Operation.
+        # import. Can use GetOperation API method to retrieve the latest state of the
+        # Long Running Operation.
         # Corresponds to the JSON property `lastSuggestionsImportOperation`
         # @return [String]
         attr_accessor :last_suggestions_import_operation
@@ -3155,7 +3247,7 @@ module Google
         end
       end
       
-      # Metadata for active A/B testing Experiments.
+      # Metadata for active A/B testing Experiment.
       class GoogleCloudRetailV2betaExperimentInfo
         include Google::Apis::Core::Hashable
       
@@ -3636,9 +3728,11 @@ module Google
         # the import is finished, a notification is sent to specified Pub/Sub topic. The
         # message data is JSON string of a Operation. Format of the Pub/Sub topic is `
         # projects/`project`/topics/`topic``. It has to be within the same project as
-        # ImportProductsRequest.parent. Make sure that `service-@gcp-sa-retail.iam.
-        # gserviceaccount.com` has the `pubsub.topics.publish` IAM permission on the
-        # topic.
+        # ImportProductsRequest.parent. Make sure that both `cloud-retail-customer-data-
+        # access@system.gserviceaccount.com` and `service-@gcp-sa-retail.iam.
+        # gserviceaccount.com` have the `pubsub.topics.publish` IAM permission on the
+        # topic. Only supported when ImportProductsRequest.reconciliation_mode is set to
+        # `FULL`.
         # Corresponds to the JSON property `notificationPubsubTopic`
         # @return [String]
         attr_accessor :notification_pubsub_topic
@@ -4246,6 +4340,11 @@ module Google
         # @return [String]
         attr_accessor :last_tune_time
       
+        # Additional model features config.
+        # Corresponds to the JSON property `modelFeaturesConfig`
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaModelModelFeaturesConfig]
+        attr_accessor :model_features_config
+      
         # Required. The fully qualified resource name of the model. Format: `projects/`
         # project_number`/locations/`location_id`/catalogs/`catalog_id`/models/`model_id`
         # ` catalog_id has char limit of 50. recommendation_model_id has char limit of
@@ -4335,6 +4434,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @filtering_option = args[:filtering_option] if args.key?(:filtering_option)
           @last_tune_time = args[:last_tune_time] if args.key?(:last_tune_time)
+          @model_features_config = args[:model_features_config] if args.key?(:model_features_config)
           @name = args[:name] if args.key?(:name)
           @optimization_objective = args[:optimization_objective] if args.key?(:optimization_objective)
           @periodic_tuning_state = args[:periodic_tuning_state] if args.key?(:periodic_tuning_state)
@@ -4344,6 +4444,46 @@ module Google
           @tuning_operation = args[:tuning_operation] if args.key?(:tuning_operation)
           @type = args[:type] if args.key?(:type)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # More configs of the frequently-bought-together model type.
+      class GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Specifies the context of the model when used in predict requests.
+        # Only settable for the `frequently-bought-together` type. Will default to
+        # MULTI_CONTEXT if not specified.
+        # Corresponds to the JSON property `contextProductsType`
+        # @return [String]
+        attr_accessor :context_products_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @context_products_type = args[:context_products_type] if args.key?(:context_products_type)
+        end
+      end
+      
+      # Additional model features config.
+      class GoogleCloudRetailV2betaModelModelFeaturesConfig
+        include Google::Apis::Core::Hashable
+      
+        # More configs of the frequently-bought-together model type.
+        # Corresponds to the JSON property `frequentlyBoughtTogetherConfig`
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfig]
+        attr_accessor :frequently_bought_together_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @frequently_bought_together_config = args[:frequently_bought_together_config] if args.key?(:frequently_bought_together_config)
         end
       end
       
@@ -5843,11 +5983,11 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A filter to apply on the matching condition results. Supported features: *
-        # filter must be set. * Filter syntax is identical to SearchRequest.filter. See
-        # more details at the Retail Search [user guide](/retail/search/docs/filter-and-
-        # order#filter). * To filter products with product ID "product_1" or "product_2",
-        # and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(
-        # colorFamilies: ANY("Red", "Blue")) *
+        # filter must be set. * Filter syntax is identical to SearchRequest.filter. For
+        # more information, see [Filter](/retail/docs/filter-and-order#filter). * To
+        # filter products with product ID "product_1" or "product_2", and color "Red" or
+        # "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("
+        # Red", "Blue")) *
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -6015,9 +6155,9 @@ module Google
         # checking any filters on the search page. The filter applied to every search
         # request when quality improvement such as query expansion is needed. For
         # example, if a query does not have enough results, an expanded query with
-        # SearchRequest.canonical_filter will be returned as a supplement of the
-        # original query. This field is strongly recommended to achieve high search
-        # quality. See SearchRequest.filter for more details about filter syntax.
+        # SearchRequest.canonical_filter is returned as a supplement of the original
+        # query. This field is strongly recommended to achieve high search quality. For
+        # more information about filter syntax, see SearchRequest.filter.
         # Corresponds to the JSON property `canonicalFilter`
         # @return [String]
         attr_accessor :canonical_filter
@@ -6044,8 +6184,8 @@ module Google
       
         # The filter syntax consists of an expression language for constructing a
         # predicate from one or more fields of the products being filtered. Filter
-        # expression is case-sensitive. See more details at this [user guide](https://
-        # cloud.google.com/retail/docs/filter-and-order#filter). If this field is
+        # expression is case-sensitive. For more information, see [Filter](https://cloud.
+        # google.com/retail/docs/filter-and-order#filter). If this field is
         # unrecognizable, an INVALID_ARGUMENT is returned.
         # Corresponds to the JSON property `filter`
         # @return [String]
@@ -6060,8 +6200,9 @@ module Google
         # UTF-8 encoding, and international characters are allowed. * The key portion of
         # a label must be unique. However, you can use the same key with multiple
         # resources. * Keys must start with a lowercase letter or international
-        # character. See [Google Cloud Document](https://cloud.google.com/resource-
-        # manager/docs/creating-managing-labels#requirements) for more details.
+        # character. For more information, see [Requirements for labels](https://cloud.
+        # google.com/resource-manager/docs/creating-managing-labels#requirements) in the
+        # Resource Manager documentation.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -6076,8 +6217,8 @@ module Google
       
         # The order in which products are returned. Products can be ordered by a field
         # in an Product object. Leave it unset if ordered by relevance. OrderBy
-        # expression is case-sensitive. See more details at this [user guide](https://
-        # cloud.google.com/retail/docs/filter-and-order#order). If this field is
+        # expression is case-sensitive. For more information, see [Order](https://cloud.
+        # google.com/retail/docs/filter-and-order#order). If this field is
         # unrecognizable, an INVALID_ARGUMENT is returned.
         # Corresponds to the JSON property `orderBy`
         # @return [String]
@@ -6306,23 +6447,22 @@ module Google
       
         # Enables dynamic position for this facet. If set to true, the position of this
         # facet among all facets in the response is determined by Google Retail Search.
-        # It will be ordered together with dynamic facets if dynamic facets is enabled.
-        # If set to false, the position of this facet in the response will be the same
-        # as in the request, and it will be ranked before the facets with dynamic
-        # position enable and all dynamic facets. For example, you may always want to
-        # have rating facet returned in the response, but it's not necessarily to always
-        # display the rating facet at the top. In that case, you can set
-        # enable_dynamic_position to true so that the position of rating facet in
-        # response will be determined by Google Retail Search. Another example, assuming
-        # you have the following facets in the request: * "rating",
-        # enable_dynamic_position = true * "price", enable_dynamic_position = false * "
-        # brands", enable_dynamic_position = false And also you have a dynamic facets
-        # enable, which will generate a facet 'gender'. Then the final order of the
-        # facets in the response can be ("price", "brands", "rating", "gender") or ("
-        # price", "brands", "gender", "rating") depends on how Google Retail Search
-        # orders "gender" and "rating" facets. However, notice that "price" and "brands"
-        # will always be ranked at 1st and 2nd position since their
-        # enable_dynamic_position are false.
+        # It is ordered together with dynamic facets if dynamic facets is enabled. If
+        # set to false, the position of this facet in the response is the same as in the
+        # request, and it is ranked before the facets with dynamic position enable and
+        # all dynamic facets. For example, you may always want to have rating facet
+        # returned in the response, but it's not necessarily to always display the
+        # rating facet at the top. In that case, you can set enable_dynamic_position to
+        # true so that the position of rating facet in response is determined by Google
+        # Retail Search. Another example, assuming you have the following facets in the
+        # request: * "rating", enable_dynamic_position = true * "price",
+        # enable_dynamic_position = false * "brands", enable_dynamic_position = false
+        # And also you have a dynamic facets enable, which generates a facet "gender".
+        # Then, the final order of the facets in the response can be ("price", "brands",
+        # "rating", "gender") or ("price", "brands", "gender", "rating") depends on how
+        # Google Retail Search orders "gender" and "rating" facets. However, notice that
+        # "price" and "brands" are always ranked at first and second position because
+        # their enable_dynamic_position values are false.
         # Corresponds to the JSON property `enableDynamicPosition`
         # @return [Boolean]
         attr_accessor :enable_dynamic_position
@@ -6386,8 +6526,8 @@ module Google
       
         # Only get facet values that contains the given strings. For example, suppose "
         # categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe".
-        # If set "contains" to "Shoe", the "categories" facet will give only "Women >
-        # Shoe" and "Men > Shoe". Only supported on textual fields. Maximum is 10.
+        # If set "contains" to "Shoe", the "categories" facet gives only "Women > Shoe"
+        # and "Men > Shoe". Only supported on textual fields. Maximum is 10.
         # Corresponds to the JSON property `contains`
         # @return [Array<String>]
         attr_accessor :contains
@@ -6395,12 +6535,12 @@ module Google
         # Set only if values should be bucketized into intervals. Must be set for facets
         # with numerical values. Must not be set for facet with text values. Maximum
         # number of intervals is 40. For all numerical facet keys that appear in the
-        # list of products from the catalog, the percentiles 0, 10, 30, 50, 70, 90 and
+        # list of products from the catalog, the percentiles 0, 10, 30, 50, 70, 90, and
         # 100 are computed from their distribution weekly. If the model assigns a high
         # score to a numerical facet key and its intervals are not specified in the
-        # search request, these percentiles will become the bounds for its intervals and
-        # will be returned in the response. If the facet key intervals are specified in
-        # the request, then the specified intervals will be returned instead.
+        # search request, these percentiles become the bounds for its intervals and are
+        # returned in the response. If the facet key intervals are specified in the
+        # request, then the specified intervals are returned instead.
         # Corresponds to the JSON property `intervals`
         # @return [Array<Google::Apis::RetailV2beta::GoogleCloudRetailV2betaInterval>]
         attr_accessor :intervals
@@ -6434,7 +6574,7 @@ module Google
       
         # Only get facet values that start with the given string prefix. For example,
         # suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men
-        # > Shoe". If set "prefixes" to "Women", the "categories" facet will give only "
+        # > Shoe". If set "prefixes" to "Women", the "categories" facet gives only "
         # Women > Shoe" and "Women > Dress". Only supported on textual fields. Maximum
         # is 10.
         # Corresponds to the JSON property `prefixes`
@@ -6442,16 +6582,15 @@ module Google
         attr_accessor :prefixes
       
         # The query that is used to compute facet for the given facet key. When provided,
-        # it will override the default behavior of facet computation. The query syntax
-        # is the same as a filter expression. See SearchRequest.filter for detail syntax
+        # it overrides the default behavior of facet computation. The query syntax is
+        # the same as a filter expression. See SearchRequest.filter for detail syntax
         # and limitations. Notice that there is no limitation on FacetKey.key when query
-        # is specified. In the response, SearchResponse.Facet.values.value will be
-        # always "1" and SearchResponse.Facet.values.count will be the number of results
-        # that match the query. For example, you can set a customized facet for "
-        # shipToStore", where FacetKey.key is "customizedShipToStore", and FacetKey.
-        # query is "availability: ANY(\"IN_STOCK\") AND shipToStore: ANY(\"123\")". Then
-        # the facet will count the products that are both in stock and ship to store "
-        # 123".
+        # is specified. In the response, SearchResponse.Facet.values.value is always "1"
+        # and SearchResponse.Facet.values.count is the number of results that match the
+        # query. For example, you can set a customized facet for "shipToStore", where
+        # FacetKey.key is "customizedShipToStore", and FacetKey.query is "availability:
+        # ANY(\"IN_STOCK\") AND shipToStore: ANY(\"123\")". Then the facet counts the
+        # products that are both in stock and ship to store "123".
         # Corresponds to the JSON property `query`
         # @return [String]
         attr_accessor :query
@@ -7233,8 +7372,8 @@ module Google
       
         # The entity for customers that may run multiple different entities, domains,
         # sites or regions, for example, `Google US`, `Google Ads`, `Waymo`, `google.com`
-        # , `youtube.com`, etc. It is recommended to set this field to get better per-
-        # entity search, completion and prediction results.
+        # , `youtube.com`, etc. We recommend that you set this field to get better per-
+        # entity search, completion, and prediction results.
         # Corresponds to the JSON property `entity`
         # @return [String]
         attr_accessor :entity
