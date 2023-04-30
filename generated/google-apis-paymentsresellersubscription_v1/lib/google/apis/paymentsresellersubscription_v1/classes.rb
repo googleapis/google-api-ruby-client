@@ -746,7 +746,7 @@ module Google
         # @return [String]
         attr_accessor :processing_state
       
-        # Required. Deprecated: consider using `line_items` as the input. Required.
+        # Optional. Deprecated: consider using `line_items` as the input. Required.
         # Resource name that identifies the purchased products. The format will be '
         # partners/`partner_id`/products/`product_id`'.
         # Corresponds to the JSON property `products`
