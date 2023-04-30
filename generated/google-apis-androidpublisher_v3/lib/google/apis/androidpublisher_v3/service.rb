@@ -1566,7 +1566,9 @@ module Google
         # @param [String] external_transaction_id
         #   Required. The id to use for the external transaction. Must be unique across
         #   all other transactions for the app. This value should be 1-63 characters and
-        #   valid characters are /a-z0-9_-/.
+        #   valid characters are /a-z0-9_-/. Do not use this field to store any Personally
+        #   Identifiable Information (PII) such as emails. Attempting to store PII in this
+        #   field may result in requests being blocked.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
