@@ -4681,10 +4681,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets all incoming references to a given target FHIR resource. Can also get all
-        # incoming references when the target resource does not exist, for example, if
-        # the target has been deleted. On success, the response body contains a Bundle
-        # with type `searchset`, where each entry in the Bundle contains the full
+        # Lists all the resources that directly refer to the given target FHIR resource.
+        # Can also support the case when the target resource doesn't exist, for example,
+        # if the target has been deleted. On success, the response body contains a
+        # Bundle with type `searchset`, where each entry in the Bundle contains the full
         # content of the resource. If the operation fails, an `OperationOutcome` is
         # returned describing the failure. If the request cannot be mapped to a valid
         # API method on a FHIR store, a generic Google Cloud error might be returned

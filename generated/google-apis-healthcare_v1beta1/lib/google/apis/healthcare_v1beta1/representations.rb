@@ -1853,6 +1853,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :pubsub_topic, as: 'pubsubTopic'
           property :send_full_resource, as: 'sendFullResource'
+          property :send_previous_resource_on_delete, as: 'sendPreviousResourceOnDelete'
         end
       end
       
