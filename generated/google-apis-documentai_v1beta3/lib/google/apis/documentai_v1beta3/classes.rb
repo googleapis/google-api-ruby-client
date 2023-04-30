@@ -300,7 +300,7 @@ module Google
         end
       end
       
-      # The long running operation metadata for CreateLabelerPool.
+      # The long-running operation metadata for CreateLabelerPool.
       class GoogleCloudDocumentaiUiv1beta3CreateLabelerPoolOperationMetadata
         include Google::Apis::Core::Hashable
       
@@ -319,7 +319,7 @@ module Google
         end
       end
       
-      # The long running operation metadata for DeleteLabelerPool.
+      # The long-running operation metadata for DeleteLabelerPool.
       class GoogleCloudDocumentaiUiv1beta3DeleteLabelerPoolOperationMetadata
         include Google::Apis::Core::Hashable
       
@@ -338,7 +338,7 @@ module Google
         end
       end
       
-      # The long running operation metadata for delete processor method.
+      # The long-running operation metadata for delete processor method.
       class GoogleCloudDocumentaiUiv1beta3DeleteProcessorMetadata
         include Google::Apis::Core::Hashable
       
@@ -357,7 +357,7 @@ module Google
         end
       end
       
-      # The long running operation metadata for delete processor version method.
+      # The long-running operation metadata for delete processor version method.
       class GoogleCloudDocumentaiUiv1beta3DeleteProcessorVersionMetadata
         include Google::Apis::Core::Hashable
       
@@ -376,7 +376,7 @@ module Google
         end
       end
       
-      # The long running operation metadata for deploy processor version method.
+      # The long-running operation metadata for deploy processor version method.
       class GoogleCloudDocumentaiUiv1beta3DeployProcessorVersionMetadata
         include Google::Apis::Core::Hashable
       
@@ -408,7 +408,7 @@ module Google
         end
       end
       
-      # The long running operation metadata for disable processor method.
+      # The long-running operation metadata for disable processor method.
       class GoogleCloudDocumentaiUiv1beta3DisableProcessorMetadata
         include Google::Apis::Core::Hashable
       
@@ -493,7 +493,7 @@ module Google
         end
       end
       
-      # The long running operation metadata for enable processor method.
+      # The long-running operation metadata for enable processor method.
       class GoogleCloudDocumentaiUiv1beta3EnableProcessorMetadata
         include Google::Apis::Core::Hashable
       
@@ -545,7 +545,7 @@ module Google
         end
       end
       
-      # Metadata of the EvaluateProcessorVersion method.
+      # Response of the EvaluateProcessorVersion method.
       class GoogleCloudDocumentaiUiv1beta3EvaluateProcessorVersionResponse
         include Google::Apis::Core::Hashable
       
@@ -827,7 +827,7 @@ module Google
         end
       end
       
-      # The long running operation metadata for the ImportProcessorVersion method.
+      # The long-running operation metadata for the ImportProcessorVersion method.
       class GoogleCloudDocumentaiUiv1beta3ImportProcessorVersionMetadata
         include Google::Apis::Core::Hashable
       
@@ -1010,7 +1010,7 @@ module Google
         end
       end
       
-      # The long running operation metadata for set default processor version method.
+      # The long-running operation metadata for set default processor version method.
       class GoogleCloudDocumentaiUiv1beta3SetDefaultProcessorVersionMetadata
         include Google::Apis::Core::Hashable
       
@@ -1116,7 +1116,7 @@ module Google
         end
       end
       
-      # The response for the TrainProcessorVersion method.
+      # The response for TrainProcessorVersion.
       class GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionResponse
         include Google::Apis::Core::Hashable
       
@@ -1135,7 +1135,7 @@ module Google
         end
       end
       
-      # The long running operation metadata for the undeploy processor version method.
+      # The long-running operation metadata for the undeploy processor version method.
       class GoogleCloudDocumentaiUiv1beta3UndeployProcessorVersionMetadata
         include Google::Apis::Core::Hashable
       
@@ -1186,7 +1186,7 @@ module Google
         end
       end
       
-      # The long running operation metadata for updating the human review
+      # The long-running operation metadata for updating the human review
       # configuration.
       class GoogleCloudDocumentaiUiv1beta3UpdateHumanReviewConfigMetadata
         include Google::Apis::Core::Hashable
@@ -1206,7 +1206,7 @@ module Google
         end
       end
       
-      # The long running operation metadata for UpdateLabelerPool.
+      # The long-running operation metadata for UpdateLabelerPool.
       class GoogleCloudDocumentaiUiv1beta3UpdateLabelerPoolOperationMetadata
         include Google::Apis::Core::Hashable
       
@@ -1225,7 +1225,7 @@ module Google
         end
       end
       
-      # The long running operation metadata for batch process method.
+      # The long-running operation metadata for BatchProcessDocuments.
       class GoogleCloudDocumentaiV1BatchProcessMetadata
         include Google::Apis::Core::Hashable
       
@@ -1315,7 +1315,7 @@ module Google
         end
       end
       
-      # Response message for batch process document method.
+      # Response message for BatchProcessDocuments.
       class GoogleCloudDocumentaiV1BatchProcessResponse
         include Google::Apis::Core::Hashable
       
@@ -1371,7 +1371,7 @@ module Google
         end
       end
       
-      # The long running operation metadata for delete processor method.
+      # The long-running operation metadata for delete processor method.
       class GoogleCloudDocumentaiV1DeleteProcessorMetadata
         include Google::Apis::Core::Hashable
       
@@ -1390,7 +1390,7 @@ module Google
         end
       end
       
-      # The long running operation metadata for delete processor version method.
+      # The long-running operation metadata for delete processor version method.
       class GoogleCloudDocumentaiV1DeleteProcessorVersionMetadata
         include Google::Apis::Core::Hashable
       
@@ -1409,7 +1409,7 @@ module Google
         end
       end
       
-      # The long running operation metadata for deploy processor version method.
+      # The long-running operation metadata for deploy processor version method.
       class GoogleCloudDocumentaiV1DeployProcessorVersionMetadata
         include Google::Apis::Core::Hashable
       
@@ -1441,7 +1441,7 @@ module Google
         end
       end
       
-      # The long running operation metadata for disable processor method.
+      # The long-running operation metadata for disable processor method.
       class GoogleCloudDocumentaiV1DisableProcessorMetadata
         include Google::Apis::Core::Hashable
       
@@ -1474,7 +1474,7 @@ module Google
         end
       end
       
-      # The long running operation metadata for enable processor method.
+      # The long-running operation metadata for enable processor method.
       class GoogleCloudDocumentaiV1EnableProcessorMetadata
         include Google::Apis::Core::Hashable
       
@@ -1526,7 +1526,7 @@ module Google
         end
       end
       
-      # Metadata of the EvaluateProcessorVersion method.
+      # Response of the EvaluateProcessorVersion method.
       class GoogleCloudDocumentaiV1EvaluateProcessorVersionResponse
         include Google::Apis::Core::Hashable
       
@@ -1550,9 +1550,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The name of the operation triggered by the processed document. This field is
-        # populated only when the [state] is [HUMAN_REVIEW_IN_PROGRESS]. It has the same
-        # response type and metadata as the long running operation returned by [
-        # ReviewDocument] method.
+        # populated only when the state is `HUMAN_REVIEW_IN_PROGRESS`. It has the same
+        # response type and metadata as the long-running operation returned by
+        # ReviewDocument.
         # Corresponds to the JSON property `humanReviewOperation`
         # @return [String]
         attr_accessor :human_review_operation
@@ -1579,7 +1579,7 @@ module Google
         end
       end
       
-      # The long running operation metadata for review document method.
+      # The long-running operation metadata for review document method.
       class GoogleCloudDocumentaiV1ReviewDocumentOperationMetadata
         include Google::Apis::Core::Hashable
       
@@ -1636,7 +1636,7 @@ module Google
         end
       end
       
-      # The long running operation metadata for set default processor version method.
+      # The long-running operation metadata for set default processor version method.
       class GoogleCloudDocumentaiV1SetDefaultProcessorVersionMetadata
         include Google::Apis::Core::Hashable
       
@@ -1742,7 +1742,7 @@ module Google
         end
       end
       
-      # The response for the TrainProcessorVersion method.
+      # The response for TrainProcessorVersion.
       class GoogleCloudDocumentaiV1TrainProcessorVersionResponse
         include Google::Apis::Core::Hashable
       
@@ -1761,7 +1761,7 @@ module Google
         end
       end
       
-      # The long running operation metadata for the undeploy processor version method.
+      # The long-running operation metadata for the undeploy processor version method.
       class GoogleCloudDocumentaiV1UndeployProcessorVersionMetadata
         include Google::Apis::Core::Hashable
       
@@ -2962,6 +2962,11 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta1DocumentProvenance]
         attr_accessor :provenance
       
+        # Font and other text style attributes.
+        # Corresponds to the JSON property `styleInfo`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta1DocumentPageTokenStyleInfo]
+        attr_accessor :style_info
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2972,6 +2977,7 @@ module Google
           @detected_languages = args[:detected_languages] if args.key?(:detected_languages)
           @layout = args[:layout] if args.key?(:layout)
           @provenance = args[:provenance] if args.key?(:provenance)
+          @style_info = args[:style_info] if args.key?(:style_info)
         end
       end
       
@@ -2991,6 +2997,206 @@ module Google
         # Update properties of this object
         def update!(**args)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Font and other text style attributes.
+      class GoogleCloudDocumentaiV1beta1DocumentPageTokenStyleInfo
+        include Google::Apis::Core::Hashable
+      
+        # Represents a color in the RGBA color space. This representation is designed
+        # for simplicity of conversion to/from color representations in various
+        # languages over compactness. For example, the fields of this representation can
+        # be trivially provided to the constructor of `java.awt.Color` in Java; it can
+        # also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha`
+        # method in iOS; and, with just a little work, it can be easily formatted into a
+        # CSS `rgba()` string in JavaScript. This reference page doesn't carry
+        # information about the absolute color space that should be used to interpret
+        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+        # applications should assume the sRGB color space. When color equality needs to
+        # be decided, implementations, unless documented otherwise, treat two colors as
+        # equal if all their red, green, blue, and alpha values each differ by at most
+        # 1e-5. Example (Java): import com.google.type.Color; // ... public static java.
+        # awt.Color fromProto(Color protocolor) ` float alpha = protocolor.hasAlpha() ?
+        # protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color( protocolor.
+        # getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); ` public static
+        # Color toProto(java.awt.Color color) ` float red = (float) color.getRed();
+        # float green = (float) color.getGreen(); float blue = (float) color.getBlue();
+        # float denominator = 255.0; Color.Builder resultBuilder = Color .newBuilder() .
+        # setRed(red / denominator) .setGreen(green / denominator) .setBlue(blue /
+        # denominator); int alpha = color.getAlpha(); if (alpha != 255) ` result.
+        # setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) / denominator) .
+        # build()); ` return resultBuilder.build(); ` // ... Example (iOS / Obj-C): // ..
+        # . static UIColor* fromProto(Color* protocolor) ` float red = [protocolor red];
+        # float green = [protocolor green]; float blue = [protocolor blue]; FloatValue*
+        # alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (alpha_wrapper !=
+        # nil) ` alpha = [alpha_wrapper value]; ` return [UIColor colorWithRed:red green:
+        # green blue:blue alpha:alpha]; ` static Color* toProto(UIColor* color) `
+        # CGFloat red, green, blue, alpha; if (![color getRed:&red green:&green blue:&
+        # blue alpha:&alpha]) ` return nil; ` Color* result = [[Color alloc] init]; [
+        # result setRed:red]; [result setGreen:green]; [result setBlue:blue]; if (alpha <
+        # = 0.9999) ` [result setAlpha:floatWrapperWithValue(alpha)]; ` [result
+        # autorelease]; return result; ` // ... Example (JavaScript): // ... var
+        # protoToCssColor = function(rgb_color) ` var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) ` return
+        # rgbToCssColor(red, green, blue); ` var alphaFrac = rgb_color.alpha.value || 0.
+        # 0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',
+        # ', alphaFrac, ')'].join(''); `; var rgbToCssColor = function(red, green, blue)
+        # ` var rgbNumber = new Number((red << 16) | (green << 8) | blue); var hexString
+        # = rgbNumber.toString(16); var missingZeros = 6 - hexString.length; var
+        # resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) ` resultBuilder.
+        # push('0'); ` resultBuilder.push(hexString); return resultBuilder.join(''); `; /
+        # / ...
+        # Corresponds to the JSON property `backgroundColor`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleTypeColor]
+        attr_accessor :background_color
+      
+        # Whether the text is bold (equivalent to font weight >= 700).
+        # Corresponds to the JSON property `bold`
+        # @return [Boolean]
+        attr_accessor :bold
+        alias_method :bold?, :bold
+      
+        # Font size in points (1 point is 1/72").
+        # Corresponds to the JSON property `fontSize`
+        # @return [Fixnum]
+        attr_accessor :font_size
+      
+        # Name or style of the font.
+        # Corresponds to the JSON property `fontType`
+        # @return [String]
+        attr_accessor :font_type
+      
+        # TrueType weight on a scale 100 (Thin) to 1000 (Ultra-heavy). Normal is 400,
+        # Bold is 700.
+        # Corresponds to the JSON property `fontWeight`
+        # @return [Fixnum]
+        attr_accessor :font_weight
+      
+        # Whether the text is handwritten.
+        # Corresponds to the JSON property `handwritten`
+        # @return [Boolean]
+        attr_accessor :handwritten
+        alias_method :handwritten?, :handwritten
+      
+        # Whether the text is italic.
+        # Corresponds to the JSON property `italic`
+        # @return [Boolean]
+        attr_accessor :italic
+        alias_method :italic?, :italic
+      
+        # Letter spacing in points.
+        # Corresponds to the JSON property `letterSpacing`
+        # @return [Float]
+        attr_accessor :letter_spacing
+      
+        # Font size in pixels, equal to unrounded_fontsize * resolution / 72.0.
+        # Corresponds to the JSON property `pixelFontSize`
+        # @return [Float]
+        attr_accessor :pixel_font_size
+      
+        # Whether the text are small caps.
+        # Corresponds to the JSON property `smallcaps`
+        # @return [Boolean]
+        attr_accessor :smallcaps
+        alias_method :smallcaps?, :smallcaps
+      
+        # Whether the text is strikethrough.
+        # Corresponds to the JSON property `strikeout`
+        # @return [Boolean]
+        attr_accessor :strikeout
+        alias_method :strikeout?, :strikeout
+      
+        # Whether the text is a subscript.
+        # Corresponds to the JSON property `subscript`
+        # @return [Boolean]
+        attr_accessor :subscript
+        alias_method :subscript?, :subscript
+      
+        # Whether the text is a superscript.
+        # Corresponds to the JSON property `superscript`
+        # @return [Boolean]
+        attr_accessor :superscript
+        alias_method :superscript?, :superscript
+      
+        # Represents a color in the RGBA color space. This representation is designed
+        # for simplicity of conversion to/from color representations in various
+        # languages over compactness. For example, the fields of this representation can
+        # be trivially provided to the constructor of `java.awt.Color` in Java; it can
+        # also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha`
+        # method in iOS; and, with just a little work, it can be easily formatted into a
+        # CSS `rgba()` string in JavaScript. This reference page doesn't carry
+        # information about the absolute color space that should be used to interpret
+        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+        # applications should assume the sRGB color space. When color equality needs to
+        # be decided, implementations, unless documented otherwise, treat two colors as
+        # equal if all their red, green, blue, and alpha values each differ by at most
+        # 1e-5. Example (Java): import com.google.type.Color; // ... public static java.
+        # awt.Color fromProto(Color protocolor) ` float alpha = protocolor.hasAlpha() ?
+        # protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color( protocolor.
+        # getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); ` public static
+        # Color toProto(java.awt.Color color) ` float red = (float) color.getRed();
+        # float green = (float) color.getGreen(); float blue = (float) color.getBlue();
+        # float denominator = 255.0; Color.Builder resultBuilder = Color .newBuilder() .
+        # setRed(red / denominator) .setGreen(green / denominator) .setBlue(blue /
+        # denominator); int alpha = color.getAlpha(); if (alpha != 255) ` result.
+        # setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) / denominator) .
+        # build()); ` return resultBuilder.build(); ` // ... Example (iOS / Obj-C): // ..
+        # . static UIColor* fromProto(Color* protocolor) ` float red = [protocolor red];
+        # float green = [protocolor green]; float blue = [protocolor blue]; FloatValue*
+        # alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (alpha_wrapper !=
+        # nil) ` alpha = [alpha_wrapper value]; ` return [UIColor colorWithRed:red green:
+        # green blue:blue alpha:alpha]; ` static Color* toProto(UIColor* color) `
+        # CGFloat red, green, blue, alpha; if (![color getRed:&red green:&green blue:&
+        # blue alpha:&alpha]) ` return nil; ` Color* result = [[Color alloc] init]; [
+        # result setRed:red]; [result setGreen:green]; [result setBlue:blue]; if (alpha <
+        # = 0.9999) ` [result setAlpha:floatWrapperWithValue(alpha)]; ` [result
+        # autorelease]; return result; ` // ... Example (JavaScript): // ... var
+        # protoToCssColor = function(rgb_color) ` var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) ` return
+        # rgbToCssColor(red, green, blue); ` var alphaFrac = rgb_color.alpha.value || 0.
+        # 0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',
+        # ', alphaFrac, ')'].join(''); `; var rgbToCssColor = function(red, green, blue)
+        # ` var rgbNumber = new Number((red << 16) | (green << 8) | blue); var hexString
+        # = rgbNumber.toString(16); var missingZeros = 6 - hexString.length; var
+        # resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) ` resultBuilder.
+        # push('0'); ` resultBuilder.push(hexString); return resultBuilder.join(''); `; /
+        # / ...
+        # Corresponds to the JSON property `textColor`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleTypeColor]
+        attr_accessor :text_color
+      
+        # Whether the text is underlined.
+        # Corresponds to the JSON property `underlined`
+        # @return [Boolean]
+        attr_accessor :underlined
+        alias_method :underlined?, :underlined
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @background_color = args[:background_color] if args.key?(:background_color)
+          @bold = args[:bold] if args.key?(:bold)
+          @font_size = args[:font_size] if args.key?(:font_size)
+          @font_type = args[:font_type] if args.key?(:font_type)
+          @font_weight = args[:font_weight] if args.key?(:font_weight)
+          @handwritten = args[:handwritten] if args.key?(:handwritten)
+          @italic = args[:italic] if args.key?(:italic)
+          @letter_spacing = args[:letter_spacing] if args.key?(:letter_spacing)
+          @pixel_font_size = args[:pixel_font_size] if args.key?(:pixel_font_size)
+          @smallcaps = args[:smallcaps] if args.key?(:smallcaps)
+          @strikeout = args[:strikeout] if args.key?(:strikeout)
+          @subscript = args[:subscript] if args.key?(:subscript)
+          @superscript = args[:superscript] if args.key?(:superscript)
+          @text_color = args[:text_color] if args.key?(:text_color)
+          @underlined = args[:underlined] if args.key?(:underlined)
         end
       end
       
@@ -4905,6 +5111,11 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta2DocumentProvenance]
         attr_accessor :provenance
       
+        # Font and other text style attributes.
+        # Corresponds to the JSON property `styleInfo`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta2DocumentPageTokenStyleInfo]
+        attr_accessor :style_info
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4915,6 +5126,7 @@ module Google
           @detected_languages = args[:detected_languages] if args.key?(:detected_languages)
           @layout = args[:layout] if args.key?(:layout)
           @provenance = args[:provenance] if args.key?(:provenance)
+          @style_info = args[:style_info] if args.key?(:style_info)
         end
       end
       
@@ -4934,6 +5146,206 @@ module Google
         # Update properties of this object
         def update!(**args)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Font and other text style attributes.
+      class GoogleCloudDocumentaiV1beta2DocumentPageTokenStyleInfo
+        include Google::Apis::Core::Hashable
+      
+        # Represents a color in the RGBA color space. This representation is designed
+        # for simplicity of conversion to/from color representations in various
+        # languages over compactness. For example, the fields of this representation can
+        # be trivially provided to the constructor of `java.awt.Color` in Java; it can
+        # also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha`
+        # method in iOS; and, with just a little work, it can be easily formatted into a
+        # CSS `rgba()` string in JavaScript. This reference page doesn't carry
+        # information about the absolute color space that should be used to interpret
+        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+        # applications should assume the sRGB color space. When color equality needs to
+        # be decided, implementations, unless documented otherwise, treat two colors as
+        # equal if all their red, green, blue, and alpha values each differ by at most
+        # 1e-5. Example (Java): import com.google.type.Color; // ... public static java.
+        # awt.Color fromProto(Color protocolor) ` float alpha = protocolor.hasAlpha() ?
+        # protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color( protocolor.
+        # getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); ` public static
+        # Color toProto(java.awt.Color color) ` float red = (float) color.getRed();
+        # float green = (float) color.getGreen(); float blue = (float) color.getBlue();
+        # float denominator = 255.0; Color.Builder resultBuilder = Color .newBuilder() .
+        # setRed(red / denominator) .setGreen(green / denominator) .setBlue(blue /
+        # denominator); int alpha = color.getAlpha(); if (alpha != 255) ` result.
+        # setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) / denominator) .
+        # build()); ` return resultBuilder.build(); ` // ... Example (iOS / Obj-C): // ..
+        # . static UIColor* fromProto(Color* protocolor) ` float red = [protocolor red];
+        # float green = [protocolor green]; float blue = [protocolor blue]; FloatValue*
+        # alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (alpha_wrapper !=
+        # nil) ` alpha = [alpha_wrapper value]; ` return [UIColor colorWithRed:red green:
+        # green blue:blue alpha:alpha]; ` static Color* toProto(UIColor* color) `
+        # CGFloat red, green, blue, alpha; if (![color getRed:&red green:&green blue:&
+        # blue alpha:&alpha]) ` return nil; ` Color* result = [[Color alloc] init]; [
+        # result setRed:red]; [result setGreen:green]; [result setBlue:blue]; if (alpha <
+        # = 0.9999) ` [result setAlpha:floatWrapperWithValue(alpha)]; ` [result
+        # autorelease]; return result; ` // ... Example (JavaScript): // ... var
+        # protoToCssColor = function(rgb_color) ` var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) ` return
+        # rgbToCssColor(red, green, blue); ` var alphaFrac = rgb_color.alpha.value || 0.
+        # 0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',
+        # ', alphaFrac, ')'].join(''); `; var rgbToCssColor = function(red, green, blue)
+        # ` var rgbNumber = new Number((red << 16) | (green << 8) | blue); var hexString
+        # = rgbNumber.toString(16); var missingZeros = 6 - hexString.length; var
+        # resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) ` resultBuilder.
+        # push('0'); ` resultBuilder.push(hexString); return resultBuilder.join(''); `; /
+        # / ...
+        # Corresponds to the JSON property `backgroundColor`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleTypeColor]
+        attr_accessor :background_color
+      
+        # Whether the text is bold (equivalent to font weight >= 700).
+        # Corresponds to the JSON property `bold`
+        # @return [Boolean]
+        attr_accessor :bold
+        alias_method :bold?, :bold
+      
+        # Font size in points (1 point is 1/72").
+        # Corresponds to the JSON property `fontSize`
+        # @return [Fixnum]
+        attr_accessor :font_size
+      
+        # Name or style of the font.
+        # Corresponds to the JSON property `fontType`
+        # @return [String]
+        attr_accessor :font_type
+      
+        # TrueType weight on a scale 100 (Thin) to 1000 (Ultra-heavy). Normal is 400,
+        # Bold is 700.
+        # Corresponds to the JSON property `fontWeight`
+        # @return [Fixnum]
+        attr_accessor :font_weight
+      
+        # Whether the text is handwritten.
+        # Corresponds to the JSON property `handwritten`
+        # @return [Boolean]
+        attr_accessor :handwritten
+        alias_method :handwritten?, :handwritten
+      
+        # Whether the text is italic.
+        # Corresponds to the JSON property `italic`
+        # @return [Boolean]
+        attr_accessor :italic
+        alias_method :italic?, :italic
+      
+        # Letter spacing in points.
+        # Corresponds to the JSON property `letterSpacing`
+        # @return [Float]
+        attr_accessor :letter_spacing
+      
+        # Font size in pixels, equal to unrounded_fontsize * resolution / 72.0.
+        # Corresponds to the JSON property `pixelFontSize`
+        # @return [Float]
+        attr_accessor :pixel_font_size
+      
+        # Whether the text are small caps.
+        # Corresponds to the JSON property `smallcaps`
+        # @return [Boolean]
+        attr_accessor :smallcaps
+        alias_method :smallcaps?, :smallcaps
+      
+        # Whether the text is strikethrough.
+        # Corresponds to the JSON property `strikeout`
+        # @return [Boolean]
+        attr_accessor :strikeout
+        alias_method :strikeout?, :strikeout
+      
+        # Whether the text is a subscript.
+        # Corresponds to the JSON property `subscript`
+        # @return [Boolean]
+        attr_accessor :subscript
+        alias_method :subscript?, :subscript
+      
+        # Whether the text is a superscript.
+        # Corresponds to the JSON property `superscript`
+        # @return [Boolean]
+        attr_accessor :superscript
+        alias_method :superscript?, :superscript
+      
+        # Represents a color in the RGBA color space. This representation is designed
+        # for simplicity of conversion to/from color representations in various
+        # languages over compactness. For example, the fields of this representation can
+        # be trivially provided to the constructor of `java.awt.Color` in Java; it can
+        # also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha`
+        # method in iOS; and, with just a little work, it can be easily formatted into a
+        # CSS `rgba()` string in JavaScript. This reference page doesn't carry
+        # information about the absolute color space that should be used to interpret
+        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+        # applications should assume the sRGB color space. When color equality needs to
+        # be decided, implementations, unless documented otherwise, treat two colors as
+        # equal if all their red, green, blue, and alpha values each differ by at most
+        # 1e-5. Example (Java): import com.google.type.Color; // ... public static java.
+        # awt.Color fromProto(Color protocolor) ` float alpha = protocolor.hasAlpha() ?
+        # protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color( protocolor.
+        # getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); ` public static
+        # Color toProto(java.awt.Color color) ` float red = (float) color.getRed();
+        # float green = (float) color.getGreen(); float blue = (float) color.getBlue();
+        # float denominator = 255.0; Color.Builder resultBuilder = Color .newBuilder() .
+        # setRed(red / denominator) .setGreen(green / denominator) .setBlue(blue /
+        # denominator); int alpha = color.getAlpha(); if (alpha != 255) ` result.
+        # setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) / denominator) .
+        # build()); ` return resultBuilder.build(); ` // ... Example (iOS / Obj-C): // ..
+        # . static UIColor* fromProto(Color* protocolor) ` float red = [protocolor red];
+        # float green = [protocolor green]; float blue = [protocolor blue]; FloatValue*
+        # alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (alpha_wrapper !=
+        # nil) ` alpha = [alpha_wrapper value]; ` return [UIColor colorWithRed:red green:
+        # green blue:blue alpha:alpha]; ` static Color* toProto(UIColor* color) `
+        # CGFloat red, green, blue, alpha; if (![color getRed:&red green:&green blue:&
+        # blue alpha:&alpha]) ` return nil; ` Color* result = [[Color alloc] init]; [
+        # result setRed:red]; [result setGreen:green]; [result setBlue:blue]; if (alpha <
+        # = 0.9999) ` [result setAlpha:floatWrapperWithValue(alpha)]; ` [result
+        # autorelease]; return result; ` // ... Example (JavaScript): // ... var
+        # protoToCssColor = function(rgb_color) ` var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) ` return
+        # rgbToCssColor(red, green, blue); ` var alphaFrac = rgb_color.alpha.value || 0.
+        # 0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',
+        # ', alphaFrac, ')'].join(''); `; var rgbToCssColor = function(red, green, blue)
+        # ` var rgbNumber = new Number((red << 16) | (green << 8) | blue); var hexString
+        # = rgbNumber.toString(16); var missingZeros = 6 - hexString.length; var
+        # resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) ` resultBuilder.
+        # push('0'); ` resultBuilder.push(hexString); return resultBuilder.join(''); `; /
+        # / ...
+        # Corresponds to the JSON property `textColor`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleTypeColor]
+        attr_accessor :text_color
+      
+        # Whether the text is underlined.
+        # Corresponds to the JSON property `underlined`
+        # @return [Boolean]
+        attr_accessor :underlined
+        alias_method :underlined?, :underlined
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @background_color = args[:background_color] if args.key?(:background_color)
+          @bold = args[:bold] if args.key?(:bold)
+          @font_size = args[:font_size] if args.key?(:font_size)
+          @font_type = args[:font_type] if args.key?(:font_type)
+          @font_weight = args[:font_weight] if args.key?(:font_weight)
+          @handwritten = args[:handwritten] if args.key?(:handwritten)
+          @italic = args[:italic] if args.key?(:italic)
+          @letter_spacing = args[:letter_spacing] if args.key?(:letter_spacing)
+          @pixel_font_size = args[:pixel_font_size] if args.key?(:pixel_font_size)
+          @smallcaps = args[:smallcaps] if args.key?(:smallcaps)
+          @strikeout = args[:strikeout] if args.key?(:strikeout)
+          @subscript = args[:subscript] if args.key?(:subscript)
+          @superscript = args[:superscript] if args.key?(:superscript)
+          @text_color = args[:text_color] if args.key?(:text_color)
+          @underlined = args[:underlined] if args.key?(:underlined)
         end
       end
       
@@ -5713,7 +6125,7 @@ module Google
         end
       end
       
-      # The long running operation metadata for batch process method.
+      # The long-running operation metadata for BatchProcessDocuments.
       class GoogleCloudDocumentaiV1beta3BatchProcessMetadata
         include Google::Apis::Core::Hashable
       
@@ -5762,8 +6174,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The name of the operation triggered by the processed document. If the human
-        # review process is not triggered, this field will be empty. It has the same
-        # response type and metadata as the long running operation returned by
+        # review process isn't triggered, this field will be empty. It has the same
+        # response type and metadata as the long-running operation returned by
         # ReviewDocument method.
         # Corresponds to the JSON property `humanReviewOperation`
         # @return [String]
@@ -5812,7 +6224,7 @@ module Google
         end
       end
       
-      # Request message for batch process document method.
+      # Request message for BatchProcessDocuments.
       class GoogleCloudDocumentaiV1beta3BatchProcessRequest
         include Google::Apis::Core::Hashable
       
@@ -5874,7 +6286,7 @@ module Google
         attr_accessor :gcs_source
       
         # Mimetype of the input. If the input is a raw document, the supported mimetypes
-        # are application/pdf, image/tiff, and image/gif. If the input is a [Document]
+        # are application/pdf, image/tiff, and image/gif. If the input is a Document
         # proto, the type should be application/json.
         # Corresponds to the JSON property `mimeType`
         # @return [String]
@@ -5910,7 +6322,7 @@ module Google
         end
       end
       
-      # Response message for batch process document method.
+      # Response message for BatchProcessDocuments.
       class GoogleCloudDocumentaiV1beta3BatchProcessResponse
         include Google::Apis::Core::Hashable
       
@@ -5991,7 +6403,7 @@ module Google
         end
       end
       
-      # The long running operation metadata for delete processor method.
+      # The long-running operation metadata for delete processor method.
       class GoogleCloudDocumentaiV1beta3DeleteProcessorMetadata
         include Google::Apis::Core::Hashable
       
@@ -6010,7 +6422,7 @@ module Google
         end
       end
       
-      # The long running operation metadata for delete processor version method.
+      # The long-running operation metadata for delete processor version method.
       class GoogleCloudDocumentaiV1beta3DeleteProcessorVersionMetadata
         include Google::Apis::Core::Hashable
       
@@ -6029,7 +6441,7 @@ module Google
         end
       end
       
-      # The long running operation metadata for deploy processor version method.
+      # The long-running operation metadata for deploy processor version method.
       class GoogleCloudDocumentaiV1beta3DeployProcessorVersionMetadata
         include Google::Apis::Core::Hashable
       
@@ -6074,7 +6486,7 @@ module Google
         end
       end
       
-      # The long running operation metadata for disable processor method.
+      # The long-running operation metadata for disable processor method.
       class GoogleCloudDocumentaiV1beta3DisableProcessorMetadata
         include Google::Apis::Core::Hashable
       
@@ -7280,6 +7692,11 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentProvenance]
         attr_accessor :provenance
       
+        # Font and other text style attributes.
+        # Corresponds to the JSON property `styleInfo`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentPageTokenStyleInfo]
+        attr_accessor :style_info
+      
         def initialize(**args)
            update!(**args)
         end
@@ -7290,6 +7707,7 @@ module Google
           @detected_languages = args[:detected_languages] if args.key?(:detected_languages)
           @layout = args[:layout] if args.key?(:layout)
           @provenance = args[:provenance] if args.key?(:provenance)
+          @style_info = args[:style_info] if args.key?(:style_info)
         end
       end
       
@@ -7309,6 +7727,206 @@ module Google
         # Update properties of this object
         def update!(**args)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Font and other text style attributes.
+      class GoogleCloudDocumentaiV1beta3DocumentPageTokenStyleInfo
+        include Google::Apis::Core::Hashable
+      
+        # Represents a color in the RGBA color space. This representation is designed
+        # for simplicity of conversion to/from color representations in various
+        # languages over compactness. For example, the fields of this representation can
+        # be trivially provided to the constructor of `java.awt.Color` in Java; it can
+        # also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha`
+        # method in iOS; and, with just a little work, it can be easily formatted into a
+        # CSS `rgba()` string in JavaScript. This reference page doesn't carry
+        # information about the absolute color space that should be used to interpret
+        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+        # applications should assume the sRGB color space. When color equality needs to
+        # be decided, implementations, unless documented otherwise, treat two colors as
+        # equal if all their red, green, blue, and alpha values each differ by at most
+        # 1e-5. Example (Java): import com.google.type.Color; // ... public static java.
+        # awt.Color fromProto(Color protocolor) ` float alpha = protocolor.hasAlpha() ?
+        # protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color( protocolor.
+        # getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); ` public static
+        # Color toProto(java.awt.Color color) ` float red = (float) color.getRed();
+        # float green = (float) color.getGreen(); float blue = (float) color.getBlue();
+        # float denominator = 255.0; Color.Builder resultBuilder = Color .newBuilder() .
+        # setRed(red / denominator) .setGreen(green / denominator) .setBlue(blue /
+        # denominator); int alpha = color.getAlpha(); if (alpha != 255) ` result.
+        # setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) / denominator) .
+        # build()); ` return resultBuilder.build(); ` // ... Example (iOS / Obj-C): // ..
+        # . static UIColor* fromProto(Color* protocolor) ` float red = [protocolor red];
+        # float green = [protocolor green]; float blue = [protocolor blue]; FloatValue*
+        # alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (alpha_wrapper !=
+        # nil) ` alpha = [alpha_wrapper value]; ` return [UIColor colorWithRed:red green:
+        # green blue:blue alpha:alpha]; ` static Color* toProto(UIColor* color) `
+        # CGFloat red, green, blue, alpha; if (![color getRed:&red green:&green blue:&
+        # blue alpha:&alpha]) ` return nil; ` Color* result = [[Color alloc] init]; [
+        # result setRed:red]; [result setGreen:green]; [result setBlue:blue]; if (alpha <
+        # = 0.9999) ` [result setAlpha:floatWrapperWithValue(alpha)]; ` [result
+        # autorelease]; return result; ` // ... Example (JavaScript): // ... var
+        # protoToCssColor = function(rgb_color) ` var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) ` return
+        # rgbToCssColor(red, green, blue); ` var alphaFrac = rgb_color.alpha.value || 0.
+        # 0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',
+        # ', alphaFrac, ')'].join(''); `; var rgbToCssColor = function(red, green, blue)
+        # ` var rgbNumber = new Number((red << 16) | (green << 8) | blue); var hexString
+        # = rgbNumber.toString(16); var missingZeros = 6 - hexString.length; var
+        # resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) ` resultBuilder.
+        # push('0'); ` resultBuilder.push(hexString); return resultBuilder.join(''); `; /
+        # / ...
+        # Corresponds to the JSON property `backgroundColor`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleTypeColor]
+        attr_accessor :background_color
+      
+        # Whether the text is bold (equivalent to font weight >= 700).
+        # Corresponds to the JSON property `bold`
+        # @return [Boolean]
+        attr_accessor :bold
+        alias_method :bold?, :bold
+      
+        # Font size in points (1 point is 1/72").
+        # Corresponds to the JSON property `fontSize`
+        # @return [Fixnum]
+        attr_accessor :font_size
+      
+        # Name or style of the font.
+        # Corresponds to the JSON property `fontType`
+        # @return [String]
+        attr_accessor :font_type
+      
+        # TrueType weight on a scale 100 (Thin) to 1000 (Ultra-heavy). Normal is 400,
+        # Bold is 700.
+        # Corresponds to the JSON property `fontWeight`
+        # @return [Fixnum]
+        attr_accessor :font_weight
+      
+        # Whether the text is handwritten.
+        # Corresponds to the JSON property `handwritten`
+        # @return [Boolean]
+        attr_accessor :handwritten
+        alias_method :handwritten?, :handwritten
+      
+        # Whether the text is italic.
+        # Corresponds to the JSON property `italic`
+        # @return [Boolean]
+        attr_accessor :italic
+        alias_method :italic?, :italic
+      
+        # Letter spacing in points.
+        # Corresponds to the JSON property `letterSpacing`
+        # @return [Float]
+        attr_accessor :letter_spacing
+      
+        # Font size in pixels, equal to unrounded_fontsize * resolution / 72.0.
+        # Corresponds to the JSON property `pixelFontSize`
+        # @return [Float]
+        attr_accessor :pixel_font_size
+      
+        # Whether the text are small caps.
+        # Corresponds to the JSON property `smallcaps`
+        # @return [Boolean]
+        attr_accessor :smallcaps
+        alias_method :smallcaps?, :smallcaps
+      
+        # Whether the text is strikethrough.
+        # Corresponds to the JSON property `strikeout`
+        # @return [Boolean]
+        attr_accessor :strikeout
+        alias_method :strikeout?, :strikeout
+      
+        # Whether the text is a subscript.
+        # Corresponds to the JSON property `subscript`
+        # @return [Boolean]
+        attr_accessor :subscript
+        alias_method :subscript?, :subscript
+      
+        # Whether the text is a superscript.
+        # Corresponds to the JSON property `superscript`
+        # @return [Boolean]
+        attr_accessor :superscript
+        alias_method :superscript?, :superscript
+      
+        # Represents a color in the RGBA color space. This representation is designed
+        # for simplicity of conversion to/from color representations in various
+        # languages over compactness. For example, the fields of this representation can
+        # be trivially provided to the constructor of `java.awt.Color` in Java; it can
+        # also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha`
+        # method in iOS; and, with just a little work, it can be easily formatted into a
+        # CSS `rgba()` string in JavaScript. This reference page doesn't carry
+        # information about the absolute color space that should be used to interpret
+        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+        # applications should assume the sRGB color space. When color equality needs to
+        # be decided, implementations, unless documented otherwise, treat two colors as
+        # equal if all their red, green, blue, and alpha values each differ by at most
+        # 1e-5. Example (Java): import com.google.type.Color; // ... public static java.
+        # awt.Color fromProto(Color protocolor) ` float alpha = protocolor.hasAlpha() ?
+        # protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color( protocolor.
+        # getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); ` public static
+        # Color toProto(java.awt.Color color) ` float red = (float) color.getRed();
+        # float green = (float) color.getGreen(); float blue = (float) color.getBlue();
+        # float denominator = 255.0; Color.Builder resultBuilder = Color .newBuilder() .
+        # setRed(red / denominator) .setGreen(green / denominator) .setBlue(blue /
+        # denominator); int alpha = color.getAlpha(); if (alpha != 255) ` result.
+        # setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) / denominator) .
+        # build()); ` return resultBuilder.build(); ` // ... Example (iOS / Obj-C): // ..
+        # . static UIColor* fromProto(Color* protocolor) ` float red = [protocolor red];
+        # float green = [protocolor green]; float blue = [protocolor blue]; FloatValue*
+        # alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (alpha_wrapper !=
+        # nil) ` alpha = [alpha_wrapper value]; ` return [UIColor colorWithRed:red green:
+        # green blue:blue alpha:alpha]; ` static Color* toProto(UIColor* color) `
+        # CGFloat red, green, blue, alpha; if (![color getRed:&red green:&green blue:&
+        # blue alpha:&alpha]) ` return nil; ` Color* result = [[Color alloc] init]; [
+        # result setRed:red]; [result setGreen:green]; [result setBlue:blue]; if (alpha <
+        # = 0.9999) ` [result setAlpha:floatWrapperWithValue(alpha)]; ` [result
+        # autorelease]; return result; ` // ... Example (JavaScript): // ... var
+        # protoToCssColor = function(rgb_color) ` var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) ` return
+        # rgbToCssColor(red, green, blue); ` var alphaFrac = rgb_color.alpha.value || 0.
+        # 0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',
+        # ', alphaFrac, ')'].join(''); `; var rgbToCssColor = function(red, green, blue)
+        # ` var rgbNumber = new Number((red << 16) | (green << 8) | blue); var hexString
+        # = rgbNumber.toString(16); var missingZeros = 6 - hexString.length; var
+        # resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) ` resultBuilder.
+        # push('0'); ` resultBuilder.push(hexString); return resultBuilder.join(''); `; /
+        # / ...
+        # Corresponds to the JSON property `textColor`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleTypeColor]
+        attr_accessor :text_color
+      
+        # Whether the text is underlined.
+        # Corresponds to the JSON property `underlined`
+        # @return [Boolean]
+        attr_accessor :underlined
+        alias_method :underlined?, :underlined
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @background_color = args[:background_color] if args.key?(:background_color)
+          @bold = args[:bold] if args.key?(:bold)
+          @font_size = args[:font_size] if args.key?(:font_size)
+          @font_type = args[:font_type] if args.key?(:font_type)
+          @font_weight = args[:font_weight] if args.key?(:font_weight)
+          @handwritten = args[:handwritten] if args.key?(:handwritten)
+          @italic = args[:italic] if args.key?(:italic)
+          @letter_spacing = args[:letter_spacing] if args.key?(:letter_spacing)
+          @pixel_font_size = args[:pixel_font_size] if args.key?(:pixel_font_size)
+          @smallcaps = args[:smallcaps] if args.key?(:smallcaps)
+          @strikeout = args[:strikeout] if args.key?(:strikeout)
+          @subscript = args[:subscript] if args.key?(:subscript)
+          @superscript = args[:superscript] if args.key?(:superscript)
+          @text_color = args[:text_color] if args.key?(:text_color)
+          @underlined = args[:underlined] if args.key?(:underlined)
         end
       end
       
@@ -7985,7 +8603,7 @@ module Google
         end
       end
       
-      # The long running operation metadata for enable processor method.
+      # The long-running operation metadata for enable processor method.
       class GoogleCloudDocumentaiV1beta3EnableProcessorMetadata
         include Google::Apis::Core::Hashable
       
@@ -8069,7 +8687,7 @@ module Google
         end
       end
       
-      # Metadata of the EvaluateProcessorVersion method.
+      # Response of the EvaluateProcessorVersion method.
       class GoogleCloudDocumentaiV1beta3EvaluateProcessorVersionResponse
         include Google::Apis::Core::Hashable
       
@@ -8470,9 +9088,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The name of the operation triggered by the processed document. This field is
-        # populated only when the [state] is [HUMAN_REVIEW_IN_PROGRESS]. It has the same
-        # response type and metadata as the long running operation returned by [
-        # ReviewDocument] method.
+        # populated only when the state is `HUMAN_REVIEW_IN_PROGRESS`. It has the same
+        # response type and metadata as the long-running operation returned by
+        # ReviewDocument.
         # Corresponds to the JSON property `humanReviewOperation`
         # @return [String]
         attr_accessor :human_review_operation
@@ -8499,7 +9117,7 @@ module Google
         end
       end
       
-      # The long running operation metadata for the ImportProcessorVersion method.
+      # The long-running operation metadata for the ImportProcessorVersion method.
       class GoogleCloudDocumentaiV1beta3ImportProcessorVersionMetadata
         include Google::Apis::Core::Hashable
       
@@ -8518,14 +9136,14 @@ module Google
         end
       end
       
-      # The request message for the ImportProcessorVersion method. This method
-      # requires source processor version and destination processor are in the same
-      # location. This method requires Document AI Service Agent of the destination
-      # project in the source project's IAM with [Document AI Editor role](https://
-      # cloud.google.com/document-ai/docs/access-control/iam-roles). The destination
-      # project is specified as part of the `parent` field. The source project is
-      # specified as part of `source` field. The Service Agent for Document AI can be
-      # found in https://cloud.google.com/iam/docs/service-agents.
+      # The request message for the `ImportProcessorVersion` method. This method
+      # requires the source processor version and destination processor to be in the
+      # same location. This method requires the Document AI Service Agent of the
+      # destination project to have [Document AI Editor role](https://cloud.google.com/
+      # document-ai/docs/access-control/iam-roles) on the source project. The
+      # destination project is specified as part of the `parent` field. The source
+      # project is specified as part of `source` field. The Service Agent for Document
+      # AI can be found in https://cloud.google.com/iam/docs/service-agents.
       class GoogleCloudDocumentaiV1beta3ImportProcessorVersionRequest
         include Google::Apis::Core::Hashable
       
@@ -8563,7 +9181,7 @@ module Google
         end
       end
       
-      # The response from ListEvaluations.
+      # The response from `ListEvaluations`.
       class GoogleCloudDocumentaiV1beta3ListEvaluationsResponse
         include Google::Apis::Core::Hashable
       
@@ -8703,6 +9321,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :advanced_ocr_options
       
+        # Turn on font id model and returns font style information.
+        # Corresponds to the JSON property `computeStyleInfo`
+        # @return [Boolean]
+        attr_accessor :compute_style_info
+        alias_method :compute_style_info?, :compute_style_info
+      
         # Enables intelligent document quality scores after OCR. Can help with
         # diagnosing why OCR responses are of poor quality for a given input. Adds
         # additional latency comparable to regular OCR to the process call.
@@ -8736,6 +9360,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @advanced_ocr_options = args[:advanced_ocr_options] if args.key?(:advanced_ocr_options)
+          @compute_style_info = args[:compute_style_info] if args.key?(:compute_style_info)
           @enable_image_quality_scores = args[:enable_image_quality_scores] if args.key?(:enable_image_quality_scores)
           @enable_native_pdf_parsing = args[:enable_native_pdf_parsing] if args.key?(:enable_native_pdf_parsing)
           @enable_symbol = args[:enable_symbol] if args.key?(:enable_symbol)
@@ -8798,8 +9423,8 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3Document]
         attr_accessor :document
       
-        # Specifies which fields to include in ProcessResponse's document. Only supports
-        # top level document and pages field so it must be in the form of ``
+        # Specifies which fields to include in the `ProcessResponse` Document. Only
+        # supports top level document and pages field so it must be in the form of ``
         # document_field_name`` or `pages.`page_field_name``.
         # Corresponds to the JSON property `fieldMask`
         # @return [String]
@@ -8858,9 +9483,8 @@ module Google
         attr_accessor :document
       
         # The name of the operation triggered by the processed document. If the human
-        # review process is not triggered, this field will be empty. It has the same
-        # response type and metadata as the long running operation returned by
-        # ReviewDocument method.
+        # review process isn't triggered, this field is empty. It has the same response
+        # type and metadata as the long-running operation returned by ReviewDocument.
         # Corresponds to the JSON property `humanReviewOperation`
         # @return [String]
         attr_accessor :human_review_operation
@@ -8925,8 +9549,8 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # The processor type, e.g., `OCR_PROCESSOR`, `INVOICE_PROCESSOR`, etc. To get a
-        # list of processors types, see FetchProcessorTypes.
+        # The processor type, such as: `OCR_PROCESSOR`, `INVOICE_PROCESSOR`. To get a
+        # list of processor types, see FetchProcessorTypes.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -8986,7 +9610,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :sample_document_uris
       
-        # The processor type, e.g., `OCR_PROCESSOR`, `INVOICE_PROCESSOR`, etc.
+        # The processor type, such as: `OCR_PROCESSOR`, `INVOICE_PROCESSOR`.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -9157,7 +9781,7 @@ module Google
         end
       end
       
-      # The long running operation metadata for review document method.
+      # The long-running operation metadata for review document method.
       class GoogleCloudDocumentaiV1beta3ReviewDocumentOperationMetadata
         include Google::Apis::Core::Hashable
       
@@ -9289,7 +9913,7 @@ module Google
         end
       end
       
-      # The long running operation metadata for set default processor version method.
+      # The long-running operation metadata for set default processor version method.
       class GoogleCloudDocumentaiV1beta3SetDefaultProcessorVersionMetadata
         include Google::Apis::Core::Hashable
       
@@ -9484,7 +10108,7 @@ module Google
         end
       end
       
-      # The response for the TrainProcessorVersion method.
+      # The response for TrainProcessorVersion.
       class GoogleCloudDocumentaiV1beta3TrainProcessorVersionResponse
         include Google::Apis::Core::Hashable
       
@@ -9503,7 +10127,7 @@ module Google
         end
       end
       
-      # The long running operation metadata for the undeploy processor version method.
+      # The long-running operation metadata for the undeploy processor version method.
       class GoogleCloudDocumentaiV1beta3UndeployProcessorVersionMetadata
         include Google::Apis::Core::Hashable
       
@@ -9599,7 +10223,7 @@ module Google
         end
       end
       
-      # A resource that represents Google Cloud Platform location.
+      # A resource that represents a Google Cloud location.
       class GoogleCloudLocationLocation
         include Google::Apis::Core::Hashable
       
