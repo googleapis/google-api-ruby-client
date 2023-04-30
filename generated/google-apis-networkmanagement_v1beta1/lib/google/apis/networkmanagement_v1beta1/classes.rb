@@ -55,7 +55,7 @@ module Google
         end
       end
       
-      # Wrapper for app engine service version attributes.
+      # Wrapper for the App Engine service version attributes.
       class AppEngineVersionEndpoint
         include Google::Apis::Core::Hashable
       
@@ -621,7 +621,7 @@ module Google
       class Endpoint
         include Google::Apis::Core::Hashable
       
-        # Wrapper for app engine service version attributes.
+        # Wrapper for the App Engine service version attributes.
         # Corresponds to the JSON property `appEngineVersion`
         # @return [Google::Apis::NetworkmanagementV1beta1::AppEngineVersionEndpoint]
         attr_accessor :app_engine_version
@@ -704,10 +704,10 @@ module Google
         # Project ID where the endpoint is located. The Project ID can be derived from
         # the URI if you provide a VM instance or network URI. The following are two
         # cases where you must provide the project ID: 1. Only the IP address is
-        # specified, and the IP address is within a GCP project. 2. When you are using
-        # Shared VPC and the IP address that you provide is from the service project. In
-        # this case, the network that the IP address resides in is defined in the host
-        # project.
+        # specified, and the IP address is within a Google Cloud project. 2. When you
+        # are using Shared VPC and the IP address that you provide is from the service
+        # project. In this case, the network that the IP address resides in is defined
+        # in the host project.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -1323,7 +1323,7 @@ module Google
         end
       end
       
-      # A resource that represents Google Cloud Platform location.
+      # A resource that represents a Google Cloud location.
       class Location
         include Google::Apis::Core::Hashable
       
