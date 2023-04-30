@@ -607,6 +607,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
+          collection :field_dependencies, as: 'fieldDependencies', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicySchemaFieldDependencies, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicySchemaFieldDependencies::Representation
+      
           property :value, as: 'value'
         end
       end
