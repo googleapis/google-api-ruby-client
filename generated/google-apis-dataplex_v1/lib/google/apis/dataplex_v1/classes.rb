@@ -1473,12 +1473,21 @@ module Google
       class GoogleCloudDataplexV1DataProfileSpec
         include Google::Apis::Core::Hashable
       
+        # Optional. The percentage of the records to be selected from the dataset for
+        # DataScan. Value can range between 0.0 and 100.0 with up to 3 significant
+        # decimal digits. Sampling is not applied if sampling_percent is not specified,
+        # 0 or 100.
+        # Corresponds to the JSON property `samplingPercent`
+        # @return [Float]
+        attr_accessor :sampling_percent
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @sampling_percent = args[:sampling_percent] if args.key?(:sampling_percent)
         end
       end
       
@@ -1918,6 +1927,14 @@ module Google
         # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRule>]
         attr_accessor :rules
       
+        # Optional. The percentage of the records to be selected from the dataset for
+        # DataScan. Value can range between 0.0 and 100.0 with up to 3 significant
+        # decimal digits. Sampling is not applied if sampling_percent is not specified,
+        # 0 or 100.
+        # Corresponds to the JSON property `samplingPercent`
+        # @return [Float]
+        attr_accessor :sampling_percent
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1925,6 +1942,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @rules = args[:rules] if args.key?(:rules)
+          @sampling_percent = args[:sampling_percent] if args.key?(:sampling_percent)
         end
       end
       
@@ -5292,7 +5310,7 @@ module Google
         end
       end
       
-      # A resource that represents Google Cloud Platform location.
+      # A resource that represents a Google Cloud location.
       class GoogleCloudLocationLocation
         include Google::Apis::Core::Hashable
       
