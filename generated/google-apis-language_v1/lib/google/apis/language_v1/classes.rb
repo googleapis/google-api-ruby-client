@@ -339,8 +339,7 @@ module Google
         # @return [Float]
         attr_accessor :confidence
       
-        # The name of the category representing the document, from the [predefined
-        # taxonomy](https://cloud.google.com/natural-language/docs/categories).
+        # The name of the category representing the document.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
