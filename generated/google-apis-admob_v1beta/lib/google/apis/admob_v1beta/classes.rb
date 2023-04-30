@@ -122,7 +122,7 @@ module Google
       class App
         include Google::Apis::Core::Hashable
       
-        # Output only. The approval state for the app.
+        # Output only. The approval state for the app. The field is read-only.
         # Corresponds to the JSON property `appApprovalState`
         # @return [String]
         attr_accessor :app_approval_state
