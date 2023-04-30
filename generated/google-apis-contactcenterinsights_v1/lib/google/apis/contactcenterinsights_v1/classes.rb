@@ -233,6 +233,17 @@ module Google
         attr_accessor :run_silence_annotator
         alias_method :run_silence_annotator?, :run_silence_annotator
       
+        # Whether to run the summarization annotator.
+        # Corresponds to the JSON property `runSummarizationAnnotator`
+        # @return [Boolean]
+        attr_accessor :run_summarization_annotator
+        alias_method :run_summarization_annotator?, :run_summarization_annotator
+      
+        # Configuration for summarization.
+        # Corresponds to the JSON property `summarizationConfig`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig]
+        attr_accessor :summarization_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -248,6 +259,34 @@ module Google
           @run_phrase_matcher_annotator = args[:run_phrase_matcher_annotator] if args.key?(:run_phrase_matcher_annotator)
           @run_sentiment_annotator = args[:run_sentiment_annotator] if args.key?(:run_sentiment_annotator)
           @run_silence_annotator = args[:run_silence_annotator] if args.key?(:run_silence_annotator)
+          @run_summarization_annotator = args[:run_summarization_annotator] if args.key?(:run_summarization_annotator)
+          @summarization_config = args[:summarization_config] if args.key?(:summarization_config)
+        end
+      end
+      
+      # Configuration for summarization.
+      class GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Resource name of the Dialogflow conversation profile. Format: projects/`
+        # project`/locations/`location`/conversationProfiles/`conversation_profile`
+        # Corresponds to the JSON property `conversationProfile`
+        # @return [String]
+        attr_accessor :conversation_profile
+      
+        # Default summarization model to be used.
+        # Corresponds to the JSON property `summarizationModel`
+        # @return [String]
+        attr_accessor :summarization_model
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversation_profile = args[:conversation_profile] if args.key?(:conversation_profile)
+          @summarization_model = args[:summarization_model] if args.key?(:summarization_model)
         end
       end
       
@@ -732,6 +771,11 @@ module Google
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1Analysis]
         attr_accessor :latest_analysis
       
+        # Conversation summarization suggestion data.
+        # Corresponds to the JSON property `latestSummary`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData]
+        attr_accessor :latest_summary
+      
         # Immutable. The conversation medium, if unspecified will default to PHONE_CALL.
         # Corresponds to the JSON property `medium`
         # @return [String]
@@ -796,6 +840,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @language_code = args[:language_code] if args.key?(:language_code)
           @latest_analysis = args[:latest_analysis] if args.key?(:latest_analysis)
+          @latest_summary = args[:latest_summary] if args.key?(:latest_summary)
           @medium = args[:medium] if args.key?(:medium)
           @name = args[:name] if args.key?(:name)
           @obfuscated_user_id = args[:obfuscated_user_id] if args.key?(:obfuscated_user_id)
@@ -926,6 +971,60 @@ module Google
           @obfuscated_external_user_id = args[:obfuscated_external_user_id] if args.key?(:obfuscated_external_user_id)
           @role = args[:role] if args.key?(:role)
           @user_id = args[:user_id] if args.key?(:user_id)
+        end
+      end
+      
+      # Conversation summarization suggestion data.
+      class GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData
+        include Google::Apis::Core::Hashable
+      
+        # The name of the answer record. Format: projects/`project`/locations/`location`/
+        # answerRecords/`answer_record`
+        # Corresponds to the JSON property `answerRecord`
+        # @return [String]
+        attr_accessor :answer_record
+      
+        # The confidence score of the summarization.
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # The name of the model that generates this summary. Format: projects/`project`/
+        # locations/`location`/conversationModels/`conversation_model`
+        # Corresponds to the JSON property `conversationModel`
+        # @return [String]
+        attr_accessor :conversation_model
+      
+        # A map that contains metadata about the summarization and the document from
+        # which it originates.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,String>]
+        attr_accessor :metadata
+      
+        # The summarization content that is concatenated into one string.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        # The summarization content that is divided into sections. The key is the
+        # section's name and the value is the section's content. There is no specific
+        # format for the key or value.
+        # Corresponds to the JSON property `textSections`
+        # @return [Hash<String,String>]
+        attr_accessor :text_sections
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @answer_record = args[:answer_record] if args.key?(:answer_record)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @conversation_model = args[:conversation_model] if args.key?(:conversation_model)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @text = args[:text] if args.key?(:text)
+          @text_sections = args[:text_sections] if args.key?(:text_sections)
         end
       end
       
@@ -2608,6 +2707,11 @@ module Google
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ArticleSuggestionData]
         attr_accessor :article_suggestion
       
+        # Conversation summarization suggestion data.
+        # Corresponds to the JSON property `conversationSummarizationSuggestion`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData]
+        attr_accessor :conversation_summarization_suggestion
+      
         # The time at which this annotation was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -2652,6 +2756,7 @@ module Google
           @annotation_id = args[:annotation_id] if args.key?(:annotation_id)
           @answer_feedback = args[:answer_feedback] if args.key?(:answer_feedback)
           @article_suggestion = args[:article_suggestion] if args.key?(:article_suggestion)
+          @conversation_summarization_suggestion = args[:conversation_summarization_suggestion] if args.key?(:conversation_summarization_suggestion)
           @create_time = args[:create_time] if args.key?(:create_time)
           @dialogflow_interaction = args[:dialogflow_interaction] if args.key?(:dialogflow_interaction)
           @end_boundary = args[:end_boundary] if args.key?(:end_boundary)
@@ -3293,6 +3398,17 @@ module Google
         attr_accessor :run_silence_annotator
         alias_method :run_silence_annotator?, :run_silence_annotator
       
+        # Whether to run the summarization annotator.
+        # Corresponds to the JSON property `runSummarizationAnnotator`
+        # @return [Boolean]
+        attr_accessor :run_summarization_annotator
+        alias_method :run_summarization_annotator?, :run_summarization_annotator
+      
+        # Configuration for summarization.
+        # Corresponds to the JSON property `summarizationConfig`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorSummarizationConfig]
+        attr_accessor :summarization_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3308,6 +3424,34 @@ module Google
           @run_phrase_matcher_annotator = args[:run_phrase_matcher_annotator] if args.key?(:run_phrase_matcher_annotator)
           @run_sentiment_annotator = args[:run_sentiment_annotator] if args.key?(:run_sentiment_annotator)
           @run_silence_annotator = args[:run_silence_annotator] if args.key?(:run_silence_annotator)
+          @run_summarization_annotator = args[:run_summarization_annotator] if args.key?(:run_summarization_annotator)
+          @summarization_config = args[:summarization_config] if args.key?(:summarization_config)
+        end
+      end
+      
+      # Configuration for summarization.
+      class GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorSummarizationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Resource name of the Dialogflow conversation profile. Format: projects/`
+        # project`/locations/`location`/conversationProfiles/`conversation_profile`
+        # Corresponds to the JSON property `conversationProfile`
+        # @return [String]
+        attr_accessor :conversation_profile
+      
+        # Default summarization model to be used.
+        # Corresponds to the JSON property `summarizationModel`
+        # @return [String]
+        attr_accessor :summarization_model
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversation_profile = args[:conversation_profile] if args.key?(:conversation_profile)
+          @summarization_model = args[:summarization_model] if args.key?(:summarization_model)
         end
       end
       
@@ -3654,6 +3798,11 @@ module Google
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1Analysis]
         attr_accessor :latest_analysis
       
+        # Conversation summarization suggestion data.
+        # Corresponds to the JSON property `latestSummary`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationSummarizationSuggestionData]
+        attr_accessor :latest_summary
+      
         # Immutable. The conversation medium, if unspecified will default to PHONE_CALL.
         # Corresponds to the JSON property `medium`
         # @return [String]
@@ -3718,6 +3867,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @language_code = args[:language_code] if args.key?(:language_code)
           @latest_analysis = args[:latest_analysis] if args.key?(:latest_analysis)
+          @latest_summary = args[:latest_summary] if args.key?(:latest_summary)
           @medium = args[:medium] if args.key?(:medium)
           @name = args[:name] if args.key?(:name)
           @obfuscated_user_id = args[:obfuscated_user_id] if args.key?(:obfuscated_user_id)
@@ -3848,6 +3998,60 @@ module Google
           @obfuscated_external_user_id = args[:obfuscated_external_user_id] if args.key?(:obfuscated_external_user_id)
           @role = args[:role] if args.key?(:role)
           @user_id = args[:user_id] if args.key?(:user_id)
+        end
+      end
+      
+      # Conversation summarization suggestion data.
+      class GoogleCloudContactcenterinsightsV1alpha1ConversationSummarizationSuggestionData
+        include Google::Apis::Core::Hashable
+      
+        # The name of the answer record. Format: projects/`project`/locations/`location`/
+        # answerRecords/`answer_record`
+        # Corresponds to the JSON property `answerRecord`
+        # @return [String]
+        attr_accessor :answer_record
+      
+        # The confidence score of the summarization.
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # The name of the model that generates this summary. Format: projects/`project`/
+        # locations/`location`/conversationModels/`conversation_model`
+        # Corresponds to the JSON property `conversationModel`
+        # @return [String]
+        attr_accessor :conversation_model
+      
+        # A map that contains metadata about the summarization and the document from
+        # which it originates.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,String>]
+        attr_accessor :metadata
+      
+        # The summarization content that is concatenated into one string.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        # The summarization content that is divided into sections. The key is the
+        # section's name and the value is the section's content. There is no specific
+        # format for the key or value.
+        # Corresponds to the JSON property `textSections`
+        # @return [Hash<String,String>]
+        attr_accessor :text_sections
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @answer_record = args[:answer_record] if args.key?(:answer_record)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @conversation_model = args[:conversation_model] if args.key?(:conversation_model)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @text = args[:text] if args.key?(:text)
+          @text_sections = args[:text_sections] if args.key?(:text_sections)
         end
       end
       
@@ -5157,6 +5361,11 @@ module Google
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ArticleSuggestionData]
         attr_accessor :article_suggestion
       
+        # Conversation summarization suggestion data.
+        # Corresponds to the JSON property `conversationSummarizationSuggestion`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationSummarizationSuggestionData]
+        attr_accessor :conversation_summarization_suggestion
+      
         # The time at which this annotation was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -5201,6 +5410,7 @@ module Google
           @annotation_id = args[:annotation_id] if args.key?(:annotation_id)
           @answer_feedback = args[:answer_feedback] if args.key?(:answer_feedback)
           @article_suggestion = args[:article_suggestion] if args.key?(:article_suggestion)
+          @conversation_summarization_suggestion = args[:conversation_summarization_suggestion] if args.key?(:conversation_summarization_suggestion)
           @create_time = args[:create_time] if args.key?(:create_time)
           @dialogflow_interaction = args[:dialogflow_interaction] if args.key?(:dialogflow_interaction)
           @end_boundary = args[:end_boundary] if args.key?(:end_boundary)
