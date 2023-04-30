@@ -57,12 +57,12 @@ module Google
         # @param [String] document_id
         #   Required. The ID to use for the Document, which will become the final
         #   component of the Document.name. If the caller does not have permission to
-        #   create the Document, regardless of whether or not it exists, a
-        #   PERMISSION_DENIED error is returned. This field must be unique among all
-        #   Documents with the same parent. Otherwise, an ALREADY_EXISTS error is returned.
-        #   This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034)
-        #   standard with a length limit of 63 characters. Otherwise, an INVALID_ARGUMENT
-        #   error is returned.
+        #   create the Document, regardless of whether or not it exists, a `
+        #   PERMISSION_DENIED` error is returned. This field must be unique among all
+        #   Documents with the same parent. Otherwise, an `ALREADY_EXISTS` error is
+        #   returned. This field must conform to [RFC-1034](https://tools.ietf.org/html/
+        #   rfc1034) standard with a length limit of 63 characters. Otherwise, an `
+        #   INVALID_ARGUMENT` error is returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -98,9 +98,9 @@ module Google
         #   Required. Full resource name of Document, such as `projects/`project`/
         #   locations/`location`/collections/`collection`/dataStores/`data_store`/branches/
         #   `branch`/documents/`document``. If the caller does not have permission to
-        #   delete the Document, regardless of whether or not it exists, a
-        #   PERMISSION_DENIED error is returned. If the Document to delete does not exist,
-        #   a NOT_FOUND error is returned.
+        #   delete the Document, regardless of whether or not it exists, a `
+        #   PERMISSION_DENIED` error is returned. If the Document to delete does not exist,
+        #   a `NOT_FOUND` error is returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -133,9 +133,9 @@ module Google
         #   Required. Full resource name of Document, such as `projects/`project`/
         #   locations/`location`/collections/`collection`/dataStores/`data_store`/branches/
         #   `branch`/documents/`document``. If the caller does not have permission to
-        #   access the Document, regardless of whether or not it exists, a
-        #   PERMISSION_DENIED error is returned. If the requested Document does not exist,
-        #   a NOT_FOUND error is returned.
+        #   access the Document, regardless of whether or not it exists, a `
+        #   PERMISSION_DENIED` error is returned. If the requested Document does not exist,
+        #   a `NOT_FOUND` error is returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -206,18 +206,18 @@ module Google
         #   locations/`location`/collections/`collection`/dataStores/`data_store`/branches/
         #   `branch``. Use `default_branch` as the branch ID, to list documents under the
         #   default branch. If the caller does not have permission to list Documentss
-        #   under this branch, regardless of whether or not this branch exists, a
-        #   PERMISSION_DENIED error is returned.
+        #   under this branch, regardless of whether or not this branch exists, a `
+        #   PERMISSION_DENIED` error is returned.
         # @param [Fixnum] page_size
         #   Maximum number of Documents to return. If unspecified, defaults to 100. The
         #   maximum allowed value is 1000. Values above 1000 will be coerced to 1000. If
-        #   this field is negative, an INVALID_ARGUMENT error is returned.
+        #   this field is negative, an `INVALID_ARGUMENT` error is returned.
         # @param [String] page_token
         #   A page token ListDocumentsResponse.next_page_token, received from a previous
         #   DocumentService.ListDocuments call. Provide this to retrieve the subsequent
         #   page. When paginating, all other parameters provided to DocumentService.
-        #   ListDocuments must match the call that provided the page token. Otherwise, an
-        #   INVALID_ARGUMENT error is returned.
+        #   ListDocuments must match the call that provided the page token. Otherwise, an `
+        #   INVALID_ARGUMENT` error is returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -281,6 +281,46 @@ module Google
           command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDocument
           command.params['name'] = name unless name.nil?
           command.query['allowMissing'] = allow_missing unless allow_missing.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Permanently deletes all selected Documents under a branch. This process is
+        # asynchronous. If the request is valid, the removal will be enquired and
+        # processed offlines. Depending on the number of Documents, this operation could
+        # take hours to complete. Before the operation completes, some Documents may
+        # still be returned by DocumentService.GetDocument or DocumentService.
+        # ListDocuments. To get a sample of Documents that would be deleted, set
+        # PurgeDocumentsRequest.force to false.
+        # @param [String] parent
+        #   Required. The parent resource name, such as `projects/`project`/locations/`
+        #   location`/collections/`collection`/dataStores/`data_store`/branches/`branch``.
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaPurgeDocumentsRequest] google_cloud_discoveryengine_v1alpha_purge_documents_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def purge_project_location_collection_data_store_branch_document(parent, google_cloud_discoveryengine_v1alpha_purge_documents_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+parent}/documents:purge', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaPurgeDocumentsRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1alpha_purge_documents_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -501,8 +541,8 @@ module Google
         
         # Makes a recommendation, which requires a contextual user event.
         # @param [String] serving_config
-        #   Required. Full resource name of the format: projects/*/locations/global/
-        #   collections/*/dataStores/*/servingConfigs/* Before you can request
+        #   Required. Full resource name of the format: `projects/*/locations/global/
+        #   collections/*/dataStores/*/servingConfigs/*` Before you can request
         #   recommendations from your model, you must create at least one serving config
         #   for it.
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaRecommendRequest] google_cloud_discoveryengine_v1alpha_recommend_request_object
@@ -676,6 +716,77 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_collection_engine_operation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists operations that match the specified filter in the request. If the server
+        # doesn't support this method, it returns `UNIMPLEMENTED`.
+        # @param [String] name
+        #   The name of the operation's parent resource.
+        # @param [String] filter
+        #   The standard list filter.
+        # @param [Fixnum] page_size
+        #   The standard list page size.
+        # @param [String] page_token
+        #   The standard list page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningListOperationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningListOperationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_collection_engine_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}/operations', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningListOperationsResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningListOperationsResponse
+          command.params['name'] = name unless name.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the latest state of a long-running operation. Clients can use this method
+        # to poll the operation result at intervals as recommended by the API service.
+        # @param [String] name
+        #   The name of the operation resource.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_collection_operation(name, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1alpha/{+name}', options)
           command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation::Representation
@@ -734,12 +845,12 @@ module Google
         # @param [String] document_id
         #   Required. The ID to use for the Document, which will become the final
         #   component of the Document.name. If the caller does not have permission to
-        #   create the Document, regardless of whether or not it exists, a
-        #   PERMISSION_DENIED error is returned. This field must be unique among all
-        #   Documents with the same parent. Otherwise, an ALREADY_EXISTS error is returned.
-        #   This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034)
-        #   standard with a length limit of 63 characters. Otherwise, an INVALID_ARGUMENT
-        #   error is returned.
+        #   create the Document, regardless of whether or not it exists, a `
+        #   PERMISSION_DENIED` error is returned. This field must be unique among all
+        #   Documents with the same parent. Otherwise, an `ALREADY_EXISTS` error is
+        #   returned. This field must conform to [RFC-1034](https://tools.ietf.org/html/
+        #   rfc1034) standard with a length limit of 63 characters. Otherwise, an `
+        #   INVALID_ARGUMENT` error is returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -775,9 +886,9 @@ module Google
         #   Required. Full resource name of Document, such as `projects/`project`/
         #   locations/`location`/collections/`collection`/dataStores/`data_store`/branches/
         #   `branch`/documents/`document``. If the caller does not have permission to
-        #   delete the Document, regardless of whether or not it exists, a
-        #   PERMISSION_DENIED error is returned. If the Document to delete does not exist,
-        #   a NOT_FOUND error is returned.
+        #   delete the Document, regardless of whether or not it exists, a `
+        #   PERMISSION_DENIED` error is returned. If the Document to delete does not exist,
+        #   a `NOT_FOUND` error is returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -810,9 +921,9 @@ module Google
         #   Required. Full resource name of Document, such as `projects/`project`/
         #   locations/`location`/collections/`collection`/dataStores/`data_store`/branches/
         #   `branch`/documents/`document``. If the caller does not have permission to
-        #   access the Document, regardless of whether or not it exists, a
-        #   PERMISSION_DENIED error is returned. If the requested Document does not exist,
-        #   a NOT_FOUND error is returned.
+        #   access the Document, regardless of whether or not it exists, a `
+        #   PERMISSION_DENIED` error is returned. If the requested Document does not exist,
+        #   a `NOT_FOUND` error is returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -883,18 +994,18 @@ module Google
         #   locations/`location`/collections/`collection`/dataStores/`data_store`/branches/
         #   `branch``. Use `default_branch` as the branch ID, to list documents under the
         #   default branch. If the caller does not have permission to list Documentss
-        #   under this branch, regardless of whether or not this branch exists, a
-        #   PERMISSION_DENIED error is returned.
+        #   under this branch, regardless of whether or not this branch exists, a `
+        #   PERMISSION_DENIED` error is returned.
         # @param [Fixnum] page_size
         #   Maximum number of Documents to return. If unspecified, defaults to 100. The
         #   maximum allowed value is 1000. Values above 1000 will be coerced to 1000. If
-        #   this field is negative, an INVALID_ARGUMENT error is returned.
+        #   this field is negative, an `INVALID_ARGUMENT` error is returned.
         # @param [String] page_token
         #   A page token ListDocumentsResponse.next_page_token, received from a previous
         #   DocumentService.ListDocuments call. Provide this to retrieve the subsequent
         #   page. When paginating, all other parameters provided to DocumentService.
-        #   ListDocuments must match the call that provided the page token. Otherwise, an
-        #   INVALID_ARGUMENT error is returned.
+        #   ListDocuments must match the call that provided the page token. Otherwise, an `
+        #   INVALID_ARGUMENT` error is returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -958,6 +1069,46 @@ module Google
           command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDocument
           command.params['name'] = name unless name.nil?
           command.query['allowMissing'] = allow_missing unless allow_missing.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Permanently deletes all selected Documents under a branch. This process is
+        # asynchronous. If the request is valid, the removal will be enquired and
+        # processed offlines. Depending on the number of Documents, this operation could
+        # take hours to complete. Before the operation completes, some Documents may
+        # still be returned by DocumentService.GetDocument or DocumentService.
+        # ListDocuments. To get a sample of Documents that would be deleted, set
+        # PurgeDocumentsRequest.force to false.
+        # @param [String] parent
+        #   Required. The parent resource name, such as `projects/`project`/locations/`
+        #   location`/collections/`collection`/dataStores/`data_store`/branches/`branch``.
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaPurgeDocumentsRequest] google_cloud_discoveryengine_v1alpha_purge_documents_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def purge_project_location_data_store_branch_document(parent, google_cloud_discoveryengine_v1alpha_purge_documents_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+parent}/documents:purge', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaPurgeDocumentsRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1alpha_purge_documents_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1178,8 +1329,8 @@ module Google
         
         # Makes a recommendation, which requires a contextual user event.
         # @param [String] serving_config
-        #   Required. Full resource name of the format: projects/*/locations/global/
-        #   collections/*/dataStores/*/servingConfigs/* Before you can request
+        #   Required. Full resource name of the format: `projects/*/locations/global/
+        #   collections/*/dataStores/*/servingConfigs/*` Before you can request
         #   recommendations from your model, you must create at least one serving config
         #   for it.
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaRecommendRequest] google_cloud_discoveryengine_v1alpha_recommend_request_object
