@@ -51,8 +51,8 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Fetches processor types. Note that we do not use ListProcessorTypes here
-        # because it is not paginated.
+        # Fetches processor types. Note that we don't use ListProcessorTypes here,
+        # because it isn't paginated.
         # @param [String] parent
         #   Required. The project of processor type to list. The available processor types
         #   may depend on the allow-listing on projects. Format: `projects/`project`/
@@ -1065,8 +1065,9 @@ module Google
         #   projects/`project`/locations/`location`/processors/`processor`/
         #   processorVersions/`processorVersion``
         # @param [Fixnum] page_size
-        #   The standard list page size. If unspecified, at most 5 evaluations will be
-        #   returned. The maximum value is 100; values above 100 will be coerced to 100.
+        #   The standard list page size. If unspecified, at most `5` evaluations will be
+        #   returned. The maximum value is `100`; values above `100` will be coerced to `
+        #   100`.
         # @param [String] page_token
         #   A page token, received from a previous `ListEvaluations` call. Provide this to
         #   retrieve the subsequent page.
