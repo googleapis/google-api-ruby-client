@@ -1157,6 +1157,50 @@ module Google
         end
       end
       
+      # Request message for the VerifyAppCheckToken method.
+      class GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The App Check token to verify.
+        # Corresponds to the JSON property `appCheckToken`
+        # @return [String]
+        attr_accessor :app_check_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_check_token = args[:app_check_token] if args.key?(:app_check_token)
+        end
+      end
+      
+      # Response message for the VerifyAppCheckToken method.
+      class GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenResponse
+        include Google::Apis::Core::Hashable
+      
+        # Whether this token was already consumed. If this is the first time this method
+        # has seen the given App Check token, this field will contain the value `false`.
+        # The given token will then be marked as `already_consumed` for all future
+        # invocations of this method for that token. Note that if the given App Check
+        # token is invalid, an HTTP 403 error is returned instead of a response
+        # containing this field, regardless whether the token was already consumed.
+        # Corresponds to the JSON property `alreadyConsumed`
+        # @return [Boolean]
+        attr_accessor :already_consumed
+        alias_method :already_consumed?, :already_consumed
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @already_consumed = args[:already_consumed] if args.key?(:already_consumed)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
