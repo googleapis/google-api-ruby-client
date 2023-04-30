@@ -130,6 +130,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2ModelModelFeaturesConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2ModelServingConfigList
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -305,6 +317,12 @@ module Google
       end
       
       class GoogleCloudRetailV2alphaCatalogAttribute
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2alphaCatalogAttributeIgnoredFacetValues
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -593,6 +611,18 @@ module Google
       end
       
       class GoogleCloudRetailV2alphaModel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2alphaModelModelFeaturesConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1168,6 +1198,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2betaModelModelFeaturesConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2betaModelServingConfigList
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1445,6 +1487,8 @@ module Google
           property :display_name, as: 'displayName'
           property :filtering_option, as: 'filteringOption'
           property :last_tune_time, as: 'lastTuneTime'
+          property :model_features_config, as: 'modelFeaturesConfig', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2ModelModelFeaturesConfig, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2ModelModelFeaturesConfig::Representation
+      
           property :name, as: 'name'
           property :optimization_objective, as: 'optimizationObjective'
           property :periodic_tuning_state, as: 'periodicTuningState'
@@ -1455,6 +1499,21 @@ module Google
           property :tuning_operation, as: 'tuningOperation'
           property :type, as: 'type'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :context_products_type, as: 'contextProductsType'
+        end
+      end
+      
+      class GoogleCloudRetailV2ModelModelFeaturesConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :frequently_bought_together_config, as: 'frequentlyBoughtTogetherConfig', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig::Representation
+      
         end
       end
       
@@ -1679,6 +1738,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dynamic_facetable_option, as: 'dynamicFacetableOption'
           property :exact_searchable_option, as: 'exactSearchableOption'
+          collection :facet_intervals, as: 'facetIntervals', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaInterval, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaInterval::Representation
+      
+          collection :ignored_facet_values, as: 'ignoredFacetValues', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCatalogAttributeIgnoredFacetValues, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCatalogAttributeIgnoredFacetValues::Representation
+      
           property :in_use, as: 'inUse'
           property :indexable_option, as: 'indexableOption'
           property :key, as: 'key'
@@ -1686,6 +1749,15 @@ module Google
           property :retrievable_option, as: 'retrievableOption'
           property :searchable_option, as: 'searchableOption'
           property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudRetailV2alphaCatalogAttributeIgnoredFacetValues
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :start_time, as: 'startTime'
+          collection :values, as: 'values'
         end
       end
       
@@ -2158,6 +2230,8 @@ module Google
           property :display_name, as: 'displayName'
           property :filtering_option, as: 'filteringOption'
           property :last_tune_time, as: 'lastTuneTime'
+          property :model_features_config, as: 'modelFeaturesConfig', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaModelModelFeaturesConfig, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaModelModelFeaturesConfig::Representation
+      
           property :name, as: 'name'
           property :optimization_objective, as: 'optimizationObjective'
           property :page_optimization_config, as: 'pageOptimizationConfig', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaModelPageOptimizationConfig, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaModelPageOptimizationConfig::Representation
@@ -2170,6 +2244,21 @@ module Google
           property :tuning_operation, as: 'tuningOperation'
           property :type, as: 'type'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :context_products_type, as: 'contextProductsType'
+        end
+      end
+      
+      class GoogleCloudRetailV2alphaModelModelFeaturesConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :frequently_bought_together_config, as: 'frequentlyBoughtTogetherConfig', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfig, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfig::Representation
+      
         end
       end
       
@@ -3124,6 +3213,8 @@ module Google
           property :display_name, as: 'displayName'
           property :filtering_option, as: 'filteringOption'
           property :last_tune_time, as: 'lastTuneTime'
+          property :model_features_config, as: 'modelFeaturesConfig', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2betaModelModelFeaturesConfig, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2betaModelModelFeaturesConfig::Representation
+      
           property :name, as: 'name'
           property :optimization_objective, as: 'optimizationObjective'
           property :periodic_tuning_state, as: 'periodicTuningState'
@@ -3134,6 +3225,21 @@ module Google
           property :tuning_operation, as: 'tuningOperation'
           property :type, as: 'type'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :context_products_type, as: 'contextProductsType'
+        end
+      end
+      
+      class GoogleCloudRetailV2betaModelModelFeaturesConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :frequently_bought_together_config, as: 'frequentlyBoughtTogetherConfig', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfig, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfig::Representation
+      
         end
       end
       
