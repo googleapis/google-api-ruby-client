@@ -76,12 +76,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudAssuredworkloadsV1ViolationExceptionContext
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudAssuredworkloadsV1ViolationRemediation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -253,8 +247,6 @@ module Google
           property :category, as: 'category'
           property :description, as: 'description'
           property :exception_audit_log_link, as: 'exceptionAuditLogLink'
-          collection :exception_contexts, as: 'exceptionContexts', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ViolationExceptionContext, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ViolationExceptionContext::Representation
-      
           property :name, as: 'name'
           property :non_compliant_org_policy, as: 'nonCompliantOrgPolicy'
           property :org_policy_constraint, as: 'orgPolicyConstraint'
@@ -263,15 +255,6 @@ module Google
           property :resolve_time, as: 'resolveTime'
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
-        end
-      end
-      
-      class GoogleCloudAssuredworkloadsV1ViolationExceptionContext
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :acknowledgement_time, as: 'acknowledgementTime'
-          property :comment, as: 'comment'
-          property :principal_email, as: 'principalEmail'
         end
       end
       
