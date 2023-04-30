@@ -1343,7 +1343,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :mux_streams
       
-        # Required. Type of the manifest, can be `HLS` or `DASH`.
+        # Required. Type of the manifest.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
