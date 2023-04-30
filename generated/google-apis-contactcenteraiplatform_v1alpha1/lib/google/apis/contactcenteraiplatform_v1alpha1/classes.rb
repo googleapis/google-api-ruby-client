@@ -158,15 +158,22 @@ module Google
       class ContactCenterQuota
         include Google::Apis::Core::Hashable
       
-        # Reflects the count limit of contact centers on a billing account.
+        # Deprecated: Use the Quota fields instead. Reflects the count limit of contact
+        # centers on a billing account.
         # Corresponds to the JSON property `contactCenterCountLimit`
         # @return [Fixnum]
         attr_accessor :contact_center_count_limit
       
-        # Reflects the count sum of contact centers on a billing account.
+        # Deprecated: Use the Quota fields instead. Reflects the count sum of contact
+        # centers on a billing account.
         # Corresponds to the JSON property `contactCenterCountSum`
         # @return [Fixnum]
         attr_accessor :contact_center_count_sum
+      
+        # Quota details per contact center instance type.
+        # Corresponds to the JSON property `quotas`
+        # @return [Array<Google::Apis::ContactcenteraiplatformV1alpha1::Quota>]
+        attr_accessor :quotas
       
         def initialize(**args)
            update!(**args)
@@ -176,6 +183,7 @@ module Google
         def update!(**args)
           @contact_center_count_limit = args[:contact_center_count_limit] if args.key?(:contact_center_count_limit)
           @contact_center_count_sum = args[:contact_center_count_sum] if args.key?(:contact_center_count_sum)
+          @quotas = args[:quotas] if args.key?(:quotas)
         end
       end
       
@@ -295,7 +303,7 @@ module Google
         end
       end
       
-      # A resource that represents Google Cloud location.
+      # A resource that represents a Google Cloud location.
       class Location
         include Google::Apis::Core::Hashable
       
@@ -466,6 +474,37 @@ module Google
           @status_message = args[:status_message] if args.key?(:status_message)
           @target = args[:target] if args.key?(:target)
           @verb = args[:verb] if args.key?(:verb)
+        end
+      end
+      
+      # Quota details.
+      class Quota
+        include Google::Apis::Core::Hashable
+      
+        # Reflects the count limit of contact centers on a billing account.
+        # Corresponds to the JSON property `contactCenterCountLimit`
+        # @return [Fixnum]
+        attr_accessor :contact_center_count_limit
+      
+        # Reflects the count sum of contact centers on a billing account.
+        # Corresponds to the JSON property `contactCenterCountSum`
+        # @return [Fixnum]
+        attr_accessor :contact_center_count_sum
+      
+        # Contact center instance type.
+        # Corresponds to the JSON property `contactCenterInstanceSize`
+        # @return [String]
+        attr_accessor :contact_center_instance_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @contact_center_count_limit = args[:contact_center_count_limit] if args.key?(:contact_center_count_limit)
+          @contact_center_count_sum = args[:contact_center_count_sum] if args.key?(:contact_center_count_sum)
+          @contact_center_instance_size = args[:contact_center_instance_size] if args.key?(:contact_center_instance_size)
         end
       end
       

@@ -94,6 +94,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Quota
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SamlParams
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -154,6 +160,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :contact_center_count_limit, as: 'contactCenterCountLimit'
           property :contact_center_count_sum, as: 'contactCenterCountSum'
+          collection :quotas, as: 'quotas', class: Google::Apis::ContactcenteraiplatformV1alpha1::Quota, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::Quota::Representation
+      
         end
       end
       
@@ -233,6 +241,15 @@ module Google
           property :status_message, as: 'statusMessage'
           property :target, as: 'target'
           property :verb, as: 'verb'
+        end
+      end
+      
+      class Quota
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :contact_center_count_limit, as: 'contactCenterCountLimit'
+          property :contact_center_count_sum, as: 'contactCenterCountSum'
+          property :contact_center_instance_size, as: 'contactCenterInstanceSize'
         end
       end
       
