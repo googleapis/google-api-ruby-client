@@ -7517,6 +7517,7 @@ module Google
           property :source_snapshot, as: 'sourceSnapshot'
           property :source_snapshot_encryption_key, as: 'sourceSnapshotEncryptionKey', class: Google::Apis::ComputeAlpha::CustomerEncryptionKey, decorator: Google::Apis::ComputeAlpha::CustomerEncryptionKey::Representation
       
+          property :storage_pool, as: 'storagePool'
         end
       end
       
@@ -8646,6 +8647,7 @@ module Google
           property :source_snapshot_id, as: 'sourceSnapshotId'
           property :source_storage_object, as: 'sourceStorageObject'
           property :status, as: 'status'
+          property :storage_pool, as: 'storagePool'
           property :storage_type, as: 'storageType'
           property :type, as: 'type'
           collection :user_licenses, as: 'userLicenses'
@@ -17850,6 +17852,7 @@ module Google
           property :source_disk, as: 'sourceDisk'
           property :source_disk_encryption_key, as: 'sourceDiskEncryptionKey', class: Google::Apis::ComputeAlpha::CustomerEncryptionKey, decorator: Google::Apis::ComputeAlpha::CustomerEncryptionKey::Representation
       
+          property :source_disk_for_recovery_checkpoint, as: 'sourceDiskForRecoveryCheckpoint'
           property :source_disk_id, as: 'sourceDiskId'
           property :source_instant_snapshot, as: 'sourceInstantSnapshot'
           property :source_instant_snapshot_id, as: 'sourceInstantSnapshotId'

@@ -1868,6 +1868,15 @@ module Google
         # @return [Google::Apis::ComputeAlpha::CustomerEncryptionKey]
         attr_accessor :source_snapshot_encryption_key
       
+        # The storage pool in which the new disk is created. You can provide this as a
+        # partial or full URL to the resource. For example, the following are valid
+        # values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /
+        # storagePools/storagePool - projects/project/zones/zone/storagePools/
+        # storagePool - zones/zone/storagePools/storagePool
+        # Corresponds to the JSON property `storagePool`
+        # @return [String]
+        attr_accessor :storage_pool
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1896,6 +1905,7 @@ module Google
           @source_instant_snapshot = args[:source_instant_snapshot] if args.key?(:source_instant_snapshot)
           @source_snapshot = args[:source_snapshot] if args.key?(:source_snapshot)
           @source_snapshot_encryption_key = args[:source_snapshot_encryption_key] if args.key?(:source_snapshot_encryption_key)
+          @storage_pool = args[:storage_pool] if args.key?(:storage_pool)
         end
       end
       
@@ -7055,6 +7065,15 @@ module Google
         # @return [String]
         attr_accessor :status
       
+        # The storage pool in which the new disk is created. You can provide this as a
+        # partial or full URL to the resource. For example, the following are valid
+        # values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /
+        # storagePools/storagePool - projects/project/zones/zone/storagePools/
+        # storagePool - zones/zone/storagePools/storagePool
+        # Corresponds to the JSON property `storagePool`
+        # @return [String]
+        attr_accessor :storage_pool
+      
         # [Deprecated] Storage type of the persistent disk.
         # Corresponds to the JSON property `storageType`
         # @return [String]
@@ -7144,6 +7163,7 @@ module Google
           @source_snapshot_id = args[:source_snapshot_id] if args.key?(:source_snapshot_id)
           @source_storage_object = args[:source_storage_object] if args.key?(:source_storage_object)
           @status = args[:status] if args.key?(:status)
+          @storage_pool = args[:storage_pool] if args.key?(:storage_pool)
           @storage_type = args[:storage_type] if args.key?(:storage_type)
           @type = args[:type] if args.key?(:type)
           @user_licenses = args[:user_licenses] if args.key?(:user_licenses)
@@ -12101,11 +12121,11 @@ module Google
       # Regional](/compute/docs/reference/rest/alpha/regionHealthChecks) Internal HTTP(
       # S) load balancers must use regional health checks (`compute.v1.
       # regionHealthChecks`). Traffic Director must use global health checks (`compute.
-      # v1.HealthChecks`). Internal TCP/UDP load balancers can use either regional or
+      # v1.healthChecks`). Internal TCP/UDP load balancers can use either regional or
       # global health checks (`compute.v1.regionHealthChecks` or `compute.v1.
-      # HealthChecks`). External HTTP(S), TCP proxy, and SSL proxy load balancers as
+      # healthChecks`). External HTTP(S), TCP proxy, and SSL proxy load balancers as
       # well as managed instance group auto-healing must use global health checks (`
-      # compute.v1.HealthChecks`). Backend service-based network load balancers must
+      # compute.v1.healthChecks`). Backend service-based network load balancers must
       # use regional health checks (`compute.v1.regionHealthChecks`). Target pool-
       # based network load balancers must use legacy HTTP health checks (`compute.v1.
       # httpHealthChecks`). For more information, see Health checks overview.
@@ -43749,6 +43769,11 @@ module Google
         # @return [Google::Apis::ComputeAlpha::CustomerEncryptionKey]
         attr_accessor :source_disk_encryption_key
       
+        # The source disk whose recovery checkpoint will be used to create this snapshot.
+        # Corresponds to the JSON property `sourceDiskForRecoveryCheckpoint`
+        # @return [String]
+        attr_accessor :source_disk_for_recovery_checkpoint
+      
         # [Output Only] The ID value of the disk used to create this snapshot. This
         # value may be used to determine whether the snapshot was taken from the current
         # or a previous instance of a given disk name.
@@ -43849,6 +43874,7 @@ module Google
           @snapshot_type = args[:snapshot_type] if args.key?(:snapshot_type)
           @source_disk = args[:source_disk] if args.key?(:source_disk)
           @source_disk_encryption_key = args[:source_disk_encryption_key] if args.key?(:source_disk_encryption_key)
+          @source_disk_for_recovery_checkpoint = args[:source_disk_for_recovery_checkpoint] if args.key?(:source_disk_for_recovery_checkpoint)
           @source_disk_id = args[:source_disk_id] if args.key?(:source_disk_id)
           @source_instant_snapshot = args[:source_instant_snapshot] if args.key?(:source_instant_snapshot)
           @source_instant_snapshot_id = args[:source_instant_snapshot_id] if args.key?(:source_instant_snapshot_id)
@@ -47620,7 +47646,9 @@ module Google
       class TargetHttpsProxiesSetCertificateMapRequest
         include Google::Apis::Core::Hashable
       
-        # URL of the Certificate Map to associate with this TargetHttpsProxy.
+        # URL of the Certificate Map to associate with this TargetHttpsProxy. Accepted
+        # format is //certificatemanager.googleapis.com/projects/`project `/locations/`
+        # location`/certificateMaps/`resourceName`.
         # Corresponds to the JSON property `certificateMap`
         # @return [String]
         attr_accessor :certificate_map
@@ -47710,7 +47738,9 @@ module Google
       
         # URL of a certificate map that identifies a certificate map associated with the
         # given target proxy. This field can only be set for global target proxies. If
-        # set, sslCertificates will be ignored.
+        # set, sslCertificates will be ignored. Accepted format is //certificatemanager.
+        # googleapis.com/projects/`project `/locations/`location`/certificateMaps/`
+        # resourceName`.
         # Corresponds to the JSON property `certificateMap`
         # @return [String]
         attr_accessor :certificate_map
@@ -49192,7 +49222,9 @@ module Google
       class TargetSslProxiesSetCertificateMapRequest
         include Google::Apis::Core::Hashable
       
-        # URL of the Certificate Map to associate with this TargetSslProxy.
+        # URL of the Certificate Map to associate with this TargetSslProxy. Accepted
+        # format is //certificatemanager.googleapis.com/projects/`project `/locations/`
+        # location`/certificateMaps/`resourceName`.
         # Corresponds to the JSON property `certificateMap`
         # @return [String]
         attr_accessor :certificate_map
@@ -49257,7 +49289,9 @@ module Google
       
         # URL of a certificate map that identifies a certificate map associated with the
         # given target proxy. This field can only be set for global target proxies. If
-        # set, sslCertificates will be ignored.
+        # set, sslCertificates will be ignored. Accepted format is //certificatemanager.
+        # googleapis.com/projects/`project `/locations/`location`/certificateMaps/`
+        # resourceName`.
         # Corresponds to the JSON property `certificateMap`
         # @return [String]
         attr_accessor :certificate_map
