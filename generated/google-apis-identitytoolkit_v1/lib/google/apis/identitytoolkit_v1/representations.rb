@@ -94,6 +94,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudIdentitytoolkitV1EmailInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudIdentitytoolkitV1EmailTemplate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -501,6 +507,13 @@ module Google
         end
       end
       
+      class GoogleCloudIdentitytoolkitV1EmailInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email_address, as: 'emailAddress'
+        end
+      end
+      
       class GoogleCloudIdentitytoolkitV1EmailTemplate
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -675,6 +688,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
+          property :email_info, as: 'emailInfo', class: Google::Apis::IdentitytoolkitV1::GoogleCloudIdentitytoolkitV1EmailInfo, decorator: Google::Apis::IdentitytoolkitV1::GoogleCloudIdentitytoolkitV1EmailInfo::Representation
+      
           property :enrolled_at, as: 'enrolledAt'
           property :mfa_enrollment_id, as: 'mfaEnrollmentId'
           property :phone_info, as: 'phoneInfo'

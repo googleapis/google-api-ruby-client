@@ -544,6 +544,25 @@ module Google
         end
       end
       
+      # Information about email MFA.
+      class GoogleCloudIdentitytoolkitV1EmailInfo
+        include Google::Apis::Core::Hashable
+      
+        # Email address that a MFA verification should be sent to.
+        # Corresponds to the JSON property `emailAddress`
+        # @return [String]
+        attr_accessor :email_address
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @email_address = args[:email_address] if args.key?(:email_address)
+        end
+      end
+      
       # Email template
       class GoogleCloudIdentitytoolkitV1EmailTemplate
         include Google::Apis::Core::Hashable
@@ -1310,6 +1329,11 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Information about email MFA.
+        # Corresponds to the JSON property `emailInfo`
+        # @return [Google::Apis::IdentitytoolkitV1::GoogleCloudIdentitytoolkitV1EmailInfo]
+        attr_accessor :email_info
+      
         # Timestamp when the account enrolled this second factor.
         # Corresponds to the JSON property `enrolledAt`
         # @return [String]
@@ -1344,6 +1368,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @email_info = args[:email_info] if args.key?(:email_info)
           @enrolled_at = args[:enrolled_at] if args.key?(:enrolled_at)
           @mfa_enrollment_id = args[:mfa_enrollment_id] if args.key?(:mfa_enrollment_id)
           @phone_info = args[:phone_info] if args.key?(:phone_info)
