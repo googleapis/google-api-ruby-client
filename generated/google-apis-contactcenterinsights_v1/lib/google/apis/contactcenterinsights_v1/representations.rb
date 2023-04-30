@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContactcenterinsightsV1AnswerFeedback
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -137,6 +143,12 @@ module Google
       end
       
       class GoogleCloudContactcenterinsightsV1ConversationParticipant
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -580,6 +592,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorSummarizationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContactcenterinsightsV1alpha1AnswerFeedback
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -641,6 +659,12 @@ module Google
       end
       
       class GoogleCloudContactcenterinsightsV1alpha1ConversationParticipant
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1ConversationSummarizationSuggestionData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1048,6 +1072,17 @@ module Google
           property :run_phrase_matcher_annotator, as: 'runPhraseMatcherAnnotator'
           property :run_sentiment_annotator, as: 'runSentimentAnnotator'
           property :run_silence_annotator, as: 'runSilenceAnnotator'
+          property :run_summarization_annotator, as: 'runSummarizationAnnotator'
+          property :summarization_config, as: 'summarizationConfig', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conversation_profile, as: 'conversationProfile'
+          property :summarization_model, as: 'summarizationModel'
         end
       end
       
@@ -1189,6 +1224,8 @@ module Google
           property :language_code, as: 'languageCode'
           property :latest_analysis, as: 'latestAnalysis', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1Analysis, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1Analysis::Representation
       
+          property :latest_summary, as: 'latestSummary', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData::Representation
+      
           property :medium, as: 'medium'
           property :name, as: 'name'
           property :obfuscated_user_id, as: 'obfuscatedUserId'
@@ -1238,6 +1275,18 @@ module Google
           property :obfuscated_external_user_id, as: 'obfuscatedExternalUserId'
           property :role, as: 'role'
           property :user_id, as: 'userId'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :answer_record, as: 'answerRecord'
+          property :confidence, as: 'confidence'
+          property :conversation_model, as: 'conversationModel'
+          hash :metadata, as: 'metadata'
+          property :text, as: 'text'
+          hash :text_sections, as: 'textSections'
         end
       end
       
@@ -1759,6 +1808,8 @@ module Google
       
           property :article_suggestion, as: 'articleSuggestion', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ArticleSuggestionData, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ArticleSuggestionData::Representation
       
+          property :conversation_summarization_suggestion, as: 'conversationSummarizationSuggestion', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData::Representation
+      
           property :create_time, as: 'createTime'
           property :dialogflow_interaction, as: 'dialogflowInteraction', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1DialogflowInteractionData, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1DialogflowInteractionData::Representation
       
@@ -1954,6 +2005,17 @@ module Google
           property :run_phrase_matcher_annotator, as: 'runPhraseMatcherAnnotator'
           property :run_sentiment_annotator, as: 'runSentimentAnnotator'
           property :run_silence_annotator, as: 'runSilenceAnnotator'
+          property :run_summarization_annotator, as: 'runSummarizationAnnotator'
+          property :summarization_config, as: 'summarizationConfig', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorSummarizationConfig, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorSummarizationConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorSummarizationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conversation_profile, as: 'conversationProfile'
+          property :summarization_model, as: 'summarizationModel'
         end
       end
       
@@ -2054,6 +2116,8 @@ module Google
           property :language_code, as: 'languageCode'
           property :latest_analysis, as: 'latestAnalysis', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1Analysis, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1Analysis::Representation
       
+          property :latest_summary, as: 'latestSummary', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationSummarizationSuggestionData, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationSummarizationSuggestionData::Representation
+      
           property :medium, as: 'medium'
           property :name, as: 'name'
           property :obfuscated_user_id, as: 'obfuscatedUserId'
@@ -2103,6 +2167,18 @@ module Google
           property :obfuscated_external_user_id, as: 'obfuscatedExternalUserId'
           property :role, as: 'role'
           property :user_id, as: 'userId'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1ConversationSummarizationSuggestionData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :answer_record, as: 'answerRecord'
+          property :confidence, as: 'confidence'
+          property :conversation_model, as: 'conversationModel'
+          hash :metadata, as: 'metadata'
+          property :text, as: 'text'
+          hash :text_sections, as: 'textSections'
         end
       end
       
@@ -2508,6 +2584,8 @@ module Google
           property :answer_feedback, as: 'answerFeedback', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1AnswerFeedback, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1AnswerFeedback::Representation
       
           property :article_suggestion, as: 'articleSuggestion', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ArticleSuggestionData, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ArticleSuggestionData::Representation
+      
+          property :conversation_summarization_suggestion, as: 'conversationSummarizationSuggestion', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationSummarizationSuggestionData, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationSummarizationSuggestionData::Representation
       
           property :create_time, as: 'createTime'
           property :dialogflow_interaction, as: 'dialogflowInteraction', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1DialogflowInteractionData, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1DialogflowInteractionData::Representation
