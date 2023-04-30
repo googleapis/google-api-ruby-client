@@ -964,6 +964,55 @@ module Google
         end
       end
       
+      # A Search Ads 360 text ad.
+      class GoogleAdsSearchads360V0CommonSearchAds360TextAdInfo
+        include Google::Apis::Core::Hashable
+      
+        # The tracking id of the ad.
+        # Corresponds to the JSON property `adTrackId`
+        # @return [Fixnum]
+        attr_accessor :ad_track_id
+      
+        # The first line of the ad's description.
+        # Corresponds to the JSON property `description1`
+        # @return [String]
+        attr_accessor :description1
+      
+        # The second line of the ad's description.
+        # Corresponds to the JSON property `description2`
+        # @return [String]
+        attr_accessor :description2
+      
+        # The displayed mobile URL of the ad.
+        # Corresponds to the JSON property `displayMobileUrl`
+        # @return [String]
+        attr_accessor :display_mobile_url
+      
+        # The displayed URL of the ad.
+        # Corresponds to the JSON property `displayUrl`
+        # @return [String]
+        attr_accessor :display_url
+      
+        # The headline of the ad.
+        # Corresponds to the JSON property `headline`
+        # @return [String]
+        attr_accessor :headline
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ad_track_id = args[:ad_track_id] if args.key?(:ad_track_id)
+          @description1 = args[:description1] if args.key?(:description1)
+          @description2 = args[:description2] if args.key?(:description2)
+          @display_mobile_url = args[:display_mobile_url] if args.key?(:display_mobile_url)
+          @display_url = args[:display_url] if args.key?(:display_url)
+          @headline = args[:headline] if args.key?(:headline)
+        end
+      end
+      
       # Segment only fields.
       class GoogleAdsSearchads360V0CommonSegments
         include Google::Apis::Core::Hashable
@@ -2058,6 +2107,11 @@ module Google
         # @return [String]
         attr_accessor :resource_name
       
+        # A Search Ads 360 text ad.
+        # Corresponds to the JSON property `textAd`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonSearchAds360TextAdInfo]
+        attr_accessor :text_ad
+      
         # Output only. The type of ad.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -2074,6 +2128,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @text_ad = args[:text_ad] if args.key?(:text_ad)
           @type = args[:type] if args.key?(:type)
         end
       end
@@ -4659,84 +4714,6 @@ module Google
           @results = args[:results] if args.key?(:results)
           @summary_row = args[:summary_row] if args.key?(:summary_row)
           @total_results_count = args[:total_results_count] if args.key?(:total_results_count)
-        end
-      end
-      
-      # Request message for SearchAds360Service.SearchStream.
-      class GoogleAdsSearchads360V0ServicesSearchSearchAds360StreamRequest
-        include Google::Apis::Core::Hashable
-      
-        # The number of rows that are returned in each stream response batch. When too
-        # large batch is requested, the server may decide to further limit the number of
-        # returned rows.
-        # Corresponds to the JSON property `batchSize`
-        # @return [Fixnum]
-        attr_accessor :batch_size
-      
-        # Required. The query string.
-        # Corresponds to the JSON property `query`
-        # @return [String]
-        attr_accessor :query
-      
-        # Determines whether a summary row will be returned. By default, summary row is
-        # not returned. If requested, the summary row will be sent in a response by
-        # itself after all other query results are returned.
-        # Corresponds to the JSON property `summaryRowSetting`
-        # @return [String]
-        attr_accessor :summary_row_setting
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @batch_size = args[:batch_size] if args.key?(:batch_size)
-          @query = args[:query] if args.key?(:query)
-          @summary_row_setting = args[:summary_row_setting] if args.key?(:summary_row_setting)
-        end
-      end
-      
-      # Response message for SearchAds360Service.SearchStream.
-      class GoogleAdsSearchads360V0ServicesSearchSearchAds360StreamResponse
-        include Google::Apis::Core::Hashable
-      
-        # The headers of the custom columns in the results.
-        # Corresponds to the JSON property `customColumnHeaders`
-        # @return [Array<Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ServicesCustomColumnHeader>]
-        attr_accessor :custom_column_headers
-      
-        # FieldMask that represents what fields were requested by the user.
-        # Corresponds to the JSON property `fieldMask`
-        # @return [String]
-        attr_accessor :field_mask
-      
-        # The unique id of the request that is used for debugging purposes.
-        # Corresponds to the JSON property `requestId`
-        # @return [String]
-        attr_accessor :request_id
-      
-        # The list of rows that matched the query.
-        # Corresponds to the JSON property `results`
-        # @return [Array<Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ServicesSearchAds360Row>]
-        attr_accessor :results
-      
-        # A returned row from the query.
-        # Corresponds to the JSON property `summaryRow`
-        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ServicesSearchAds360Row]
-        attr_accessor :summary_row
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @custom_column_headers = args[:custom_column_headers] if args.key?(:custom_column_headers)
-          @field_mask = args[:field_mask] if args.key?(:field_mask)
-          @request_id = args[:request_id] if args.key?(:request_id)
-          @results = args[:results] if args.key?(:results)
-          @summary_row = args[:summary_row] if args.key?(:summary_row)
         end
       end
     end

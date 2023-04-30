@@ -136,6 +136,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAdsSearchads360V0CommonSearchAds360TextAdInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAdsSearchads360V0CommonSegments
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -562,18 +568,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAdsSearchads360V0ServicesSearchSearchAds360StreamRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleAdsSearchads360V0ServicesSearchSearchAds360StreamResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleAdsSearchads360V0CommonAgeRangeInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -776,6 +770,18 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :opt_in, as: 'optIn'
+        end
+      end
+      
+      class GoogleAdsSearchads360V0CommonSearchAds360TextAdInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ad_track_id, :numeric_string => true, as: 'adTrackId'
+          property :description1, as: 'description1'
+          property :description2, as: 'description2'
+          property :display_mobile_url, as: 'displayMobileUrl'
+          property :display_url, as: 'displayUrl'
+          property :headline, as: 'headline'
         end
       end
       
@@ -1080,6 +1086,8 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :name, as: 'name'
           property :resource_name, as: 'resourceName'
+          property :text_ad, as: 'textAd', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonSearchAds360TextAdInfo, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonSearchAds360TextAdInfo::Representation
+      
           property :type, as: 'type'
         end
       end
@@ -1698,29 +1706,6 @@ module Google
           property :summary_row, as: 'summaryRow', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ServicesSearchAds360Row, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ServicesSearchAds360Row::Representation
       
           property :total_results_count, :numeric_string => true, as: 'totalResultsCount'
-        end
-      end
-      
-      class GoogleAdsSearchads360V0ServicesSearchSearchAds360StreamRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :batch_size, as: 'batchSize'
-          property :query, as: 'query'
-          property :summary_row_setting, as: 'summaryRowSetting'
-        end
-      end
-      
-      class GoogleAdsSearchads360V0ServicesSearchSearchAds360StreamResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :custom_column_headers, as: 'customColumnHeaders', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ServicesCustomColumnHeader, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ServicesCustomColumnHeader::Representation
-      
-          property :field_mask, as: 'fieldMask'
-          property :request_id, as: 'requestId'
-          collection :results, as: 'results', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ServicesSearchAds360Row, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ServicesSearchAds360Row::Representation
-      
-          property :summary_row, as: 'summaryRow', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ServicesSearchAds360Row, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ServicesSearchAds360Row::Representation
-      
         end
       end
     end
