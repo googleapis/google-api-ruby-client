@@ -3509,6 +3509,21 @@ module Google
         end
       end
       
+      # GeneratePackagesSummaryRequest is the request body for the
+      # GeneratePackagesSummary API method. It just takes a single name argument,
+      # referring to the resource.
+      class GeneratePackagesSummaryRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # An attestation wrapper that uses the Grafeas `Signature` message. This
       # attestation must define the `serialized_payload` that the `signatures` verify
       # and any metadata necessary to interpret that plaintext. The signatures should
@@ -4248,6 +4263,33 @@ module Google
         def update!(**args)
           @comments = args[:comments] if args.key?(:comments)
           @expression = args[:expression] if args.key?(:expression)
+        end
+      end
+      
+      # Per license count
+      class LicensesSummary
+        include Google::Apis::Core::Hashable
+      
+        # The number of fixable vulnerabilities associated with this resource.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        # The license of the package. Note that the format of this value is not
+        # guaranteed. It may be nil, an empty string, a boolean value (A | B), a
+        # differently formed boolean value (A OR B), etc...
+        # Corresponds to the JSON property `license`
+        # @return [String]
+        attr_accessor :license
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @count = args[:count] if args.key?(:count)
+          @license = args[:license] if args.key?(:license)
         end
       end
       
@@ -5081,6 +5123,31 @@ module Google
           @fixed_location = args[:fixed_location] if args.key?(:fixed_location)
           @package_type = args[:package_type] if args.key?(:package_type)
           @severity_name = args[:severity_name] if args.key?(:severity_name)
+        end
+      end
+      
+      # A summary of the packages found within the given resource.
+      class PackagesSummaryResponse
+        include Google::Apis::Core::Hashable
+      
+        # A listing by license name of each of the licenses and their counts.
+        # Corresponds to the JSON property `licensesSummary`
+        # @return [Array<Google::Apis::ContaineranalysisV1beta1::LicensesSummary>]
+        attr_accessor :licenses_summary
+      
+        # The unique URL of the image or the container for which this summary applies.
+        # Corresponds to the JSON property `resourceUrl`
+        # @return [String]
+        attr_accessor :resource_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @licenses_summary = args[:licenses_summary] if args.key?(:licenses_summary)
+          @resource_url = args[:resource_url] if args.key?(:resource_url)
         end
       end
       
