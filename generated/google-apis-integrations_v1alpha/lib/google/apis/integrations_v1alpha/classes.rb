@@ -656,7 +656,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Use this request to post all workflows associated with a given trigger id.
-        # Next available id: 10
+        # Next available id: 11
         # Corresponds to the JSON property `postToQueueWithTriggerIdRequest`
         # @return [Google::Apis::IntegrationsV1alpha::GoogleInternalCloudCrmEventbusV3PostToQueueWithTriggerIdRequest]
         attr_accessor :post_to_queue_with_trigger_id_request
@@ -4859,6 +4859,11 @@ module Google
         # @return [Array<Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1ConfigVariable>]
         attr_accessor :additional_variables
       
+        # Identifier key for auth config
+        # Corresponds to the JSON property `authKey`
+        # @return [String]
+        attr_accessor :auth_key
+      
         # The type of authentication configured.
         # Corresponds to the JSON property `authType`
         # @return [String]
@@ -4900,6 +4905,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @additional_variables = args[:additional_variables] if args.key?(:additional_variables)
+          @auth_key = args[:auth_key] if args.key?(:auth_key)
           @auth_type = args[:auth_type] if args.key?(:auth_type)
           @oauth2_auth_code_flow = args[:oauth2_auth_code_flow] if args.key?(:oauth2_auth_code_flow)
           @oauth2_client_credentials = args[:oauth2_client_credentials] if args.key?(:oauth2_client_credentials)
@@ -5258,6 +5264,12 @@ module Google
         # @return [Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1ConnectionStatus]
         attr_accessor :status
       
+        # Output only. This subscription type enum value states if the metrics should be
+        # sent for billing or not.
+        # Corresponds to the JSON property `subscriptionType`
+        # @return [String]
+        attr_accessor :subscription_type
+      
         # Optional. Suspended indicates if a user has suspended a connection or not.
         # Corresponds to the JSON property `suspended`
         # @return [Boolean]
@@ -5292,6 +5304,7 @@ module Google
           @service_directory = args[:service_directory] if args.key?(:service_directory)
           @ssl_config = args[:ssl_config] if args.key?(:ssl_config)
           @status = args[:status] if args.key?(:status)
+          @subscription_type = args[:subscription_type] if args.key?(:subscription_type)
           @suspended = args[:suspended] if args.key?(:suspended)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -9056,7 +9069,7 @@ module Google
       end
       
       # Use this request to post all workflows associated with a given trigger id.
-      # Next available id: 10
+      # Next available id: 11
       class GoogleInternalCloudCrmEventbusV3PostToQueueWithTriggerIdRequest
         include Google::Apis::Core::Hashable
       
@@ -9099,6 +9112,13 @@ module Google
         # @return [String]
         attr_accessor :request_id
       
+        # This field is only required when using Admin Access. The resource name of
+        # target, or the parent resource name. For example: "projects/*/locations/*/
+        # integrations/*"
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
         # Optional. Time in milliseconds since epoch when the given event would be
         # scheduled.
         # Corresponds to the JSON property `scheduledTime`
@@ -9136,6 +9156,7 @@ module Google
           @parameters = args[:parameters] if args.key?(:parameters)
           @priority = args[:priority] if args.key?(:priority)
           @request_id = args[:request_id] if args.key?(:request_id)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
           @scheduled_time = args[:scheduled_time] if args.key?(:scheduled_time)
           @test_mode = args[:test_mode] if args.key?(:test_mode)
           @trigger_id = args[:trigger_id] if args.key?(:trigger_id)
