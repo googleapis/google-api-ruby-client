@@ -1007,6 +1007,12 @@ module Google
         # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1AssociationInfo]
         attr_accessor :association_info
       
+        # Optional. The billing account resource name that is used to pay for this
+        # entitlement.
+        # Corresponds to the JSON property `billingAccount`
+        # @return [String]
+        attr_accessor :billing_account
+      
         # Commitment settings for commitment-based offers.
         # Corresponds to the JSON property `commitmentSettings`
         # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1CommitmentSettings]
@@ -1082,6 +1088,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @association_info = args[:association_info] if args.key?(:association_info)
+          @billing_account = args[:billing_account] if args.key?(:billing_account)
           @commitment_settings = args[:commitment_settings] if args.key?(:commitment_settings)
           @create_time = args[:create_time] if args.key?(:create_time)
           @name = args[:name] if args.key?(:name)
@@ -3657,6 +3664,12 @@ module Google
         # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1alpha1AssociationInfo]
         attr_accessor :association_info
       
+        # Optional. The billing account resource name that is used to pay for this
+        # entitlement.
+        # Corresponds to the JSON property `billingAccount`
+        # @return [String]
+        attr_accessor :billing_account
+      
         # Cloud Identity ID of a channel partner who will be the direct reseller for the
         # customer's order. This field is generally used in 2-tier ordering, where the
         # order is placed by a top-level distributor on behalf of their channel partner
@@ -3758,6 +3771,7 @@ module Google
         def update!(**args)
           @assigned_units = args[:assigned_units] if args.key?(:assigned_units)
           @association_info = args[:association_info] if args.key?(:association_info)
+          @billing_account = args[:billing_account] if args.key?(:billing_account)
           @channel_partner_id = args[:channel_partner_id] if args.key?(:channel_partner_id)
           @commitment_settings = args[:commitment_settings] if args.key?(:commitment_settings)
           @create_time = args[:create_time] if args.key?(:create_time)
