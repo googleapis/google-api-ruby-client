@@ -2887,6 +2887,12 @@ module Google
         attr_accessor :treatment_for_underage
         alias_method :treatment_for_underage?, :treatment_for_underage
       
+        # The user identifiers to enhance the conversion. The maximum number of user
+        # identifiers for each conversion is 5.
+        # Corresponds to the JSON property `userIdentifiers`
+        # @return [Array<Google::Apis::DfareportingV4::UserIdentifier>]
+        attr_accessor :user_identifiers
+      
         # The value of the conversion.
         # Corresponds to the JSON property `value`
         # @return [Float]
@@ -2916,6 +2922,7 @@ module Google
           @quantity = args[:quantity] if args.key?(:quantity)
           @timestamp_micros = args[:timestamp_micros] if args.key?(:timestamp_micros)
           @treatment_for_underage = args[:treatment_for_underage] if args.key?(:treatment_for_underage)
+          @user_identifiers = args[:user_identifiers] if args.key?(:user_identifiers)
           @value = args[:value] if args.key?(:value)
         end
       end
@@ -8202,6 +8209,64 @@ module Google
         end
       end
       
+      # Identify a user by name and address.
+      class OfflineUserAddressInfo
+        include Google::Apis::Core::Hashable
+      
+        # City of the address.
+        # Corresponds to the JSON property `city`
+        # @return [String]
+        attr_accessor :city
+      
+        # 2-letter country code in ISO-3166-1 alpha-2 of the user's address.
+        # Corresponds to the JSON property `countryCode`
+        # @return [String]
+        attr_accessor :country_code
+      
+        # First name of the user, which is hashed as SHA-256 after normalized (Lowercase
+        # all characters; Remove any extra spaces before, after, and in between).
+        # Corresponds to the JSON property `hashedFirstName`
+        # @return [String]
+        attr_accessor :hashed_first_name
+      
+        # Last name of the user, which is hashed as SHA-256 after normalized (lower case
+        # only and no punctuation).
+        # Corresponds to the JSON property `hashedLastName`
+        # @return [String]
+        attr_accessor :hashed_last_name
+      
+        # The street address of the user hashed using SHA-256 hash function after
+        # normalization (lower case only).
+        # Corresponds to the JSON property `hashedStreetAddress`
+        # @return [String]
+        attr_accessor :hashed_street_address
+      
+        # Postal code of the user's address.
+        # Corresponds to the JSON property `postalCode`
+        # @return [String]
+        attr_accessor :postal_code
+      
+        # State code of the address.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @city = args[:city] if args.key?(:city)
+          @country_code = args[:country_code] if args.key?(:country_code)
+          @hashed_first_name = args[:hashed_first_name] if args.key?(:hashed_first_name)
+          @hashed_last_name = args[:hashed_last_name] if args.key?(:hashed_last_name)
+          @hashed_street_address = args[:hashed_street_address] if args.key?(:hashed_street_address)
+          @postal_code = args[:postal_code] if args.key?(:postal_code)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # Offset Position.
       class OffsetPosition
         include Google::Apis::Core::Hashable
@@ -12839,6 +12904,38 @@ module Google
           @data_type = args[:data_type] if args.key?(:data_type)
           @report_name = args[:report_name] if args.key?(:report_name)
           @variable_type = args[:variable_type] if args.key?(:variable_type)
+        end
+      end
+      
+      # User identifying information. Exactly one type of identifier must be specified.
+      class UserIdentifier
+        include Google::Apis::Core::Hashable
+      
+        # Identify a user by name and address.
+        # Corresponds to the JSON property `addressInfo`
+        # @return [Google::Apis::DfareportingV4::OfflineUserAddressInfo]
+        attr_accessor :address_info
+      
+        # Hashed email address using SHA-256 hash function after normalization.
+        # Corresponds to the JSON property `hashedEmail`
+        # @return [String]
+        attr_accessor :hashed_email
+      
+        # Hashed phone number using SHA-256 hash function after normalization (E164
+        # standard).
+        # Corresponds to the JSON property `hashedPhoneNumber`
+        # @return [String]
+        attr_accessor :hashed_phone_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @address_info = args[:address_info] if args.key?(:address_info)
+          @hashed_email = args[:hashed_email] if args.key?(:hashed_email)
+          @hashed_phone_number = args[:hashed_phone_number] if args.key?(:hashed_phone_number)
         end
       end
       
