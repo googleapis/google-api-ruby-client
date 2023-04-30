@@ -576,6 +576,11 @@ module Google
         # @return [String]
         attr_accessor :issuer_uri
       
+        # Configuration for web single sign-on for the OIDC provider.
+        # Corresponds to the JSON property `webSsoConfig`
+        # @return [Google::Apis::IamV1::GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig]
+        attr_accessor :web_sso_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -584,6 +589,34 @@ module Google
         def update!(**args)
           @client_id = args[:client_id] if args.key?(:client_id)
           @issuer_uri = args[:issuer_uri] if args.key?(:issuer_uri)
+          @web_sso_config = args[:web_sso_config] if args.key?(:web_sso_config)
+        end
+      end
+      
+      # Configuration for web single sign-on for the OIDC provider.
+      class GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The behavior for how OIDC Claims are included in the `assertion`
+        # object used for attribute mapping and attribute condition.
+        # Corresponds to the JSON property `assertionClaimsBehavior`
+        # @return [String]
+        attr_accessor :assertion_claims_behavior
+      
+        # Required. The Response Type to request for in the OIDC Authorization Request
+        # for web sign-in.
+        # Corresponds to the JSON property `responseType`
+        # @return [String]
+        attr_accessor :response_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @assertion_claims_behavior = args[:assertion_claims_behavior] if args.key?(:assertion_claims_behavior)
+          @response_type = args[:response_type] if args.key?(:response_type)
         end
       end
       
@@ -2220,8 +2253,8 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Whether the pool is disabled. You cannot use a disabled pool to exchange
-        # tokens, or use existing tokens to access resources. If the pool is re-enabled,
+        # Disables the workforce pool. You cannot use a disabled pool to exchange tokens,
+        # or use existing tokens to access resources. If the pool is re-enabled,
         # existing tokens grant access again.
         # Corresponds to the JSON property `disabled`
         # @return [Boolean]
@@ -2344,7 +2377,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Whether the provider is disabled. You cannot use a disabled provider to
+        # Disables the workforce pool provider. You cannot use a disabled provider to
         # exchange tokens. However, existing tokens still grant access.
         # Corresponds to the JSON property `disabled`
         # @return [Boolean]
