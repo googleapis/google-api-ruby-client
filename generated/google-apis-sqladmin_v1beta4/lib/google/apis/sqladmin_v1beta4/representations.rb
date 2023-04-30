@@ -700,6 +700,7 @@ module Google
           property :kind, as: 'kind'
           property :pitr_timestamp_ms, :numeric_string => true, as: 'pitrTimestampMs'
           property :point_in_time, as: 'pointInTime'
+          property :preferred_zone, as: 'preferredZone'
         end
       end
       
@@ -1404,6 +1405,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
+          property :message, as: 'message'
           property :minimal_target_size_gb, :numeric_string => true, as: 'minimalTargetSizeGb'
         end
       end
