@@ -442,6 +442,74 @@ module Google
         end
       end
       
+      # Metadata related to the progress of the PurgeDocuments operation. This will be
+      # returned by the google.longrunning.Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1alphaPurgeDocumentsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Count of entries that encountered errors while processing.
+        # Corresponds to the JSON property `failureCount`
+        # @return [Fixnum]
+        attr_accessor :failure_count
+      
+        # Count of entries that were deleted successfully.
+        # Corresponds to the JSON property `successCount`
+        # @return [Fixnum]
+        attr_accessor :success_count
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @failure_count = args[:failure_count] if args.key?(:failure_count)
+          @success_count = args[:success_count] if args.key?(:success_count)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Response message for DocumentService.PurgeDocuments method. If the long
+      # running operation is successfully done, then this message is returned by the
+      # google.longrunning.Operations.response field.
+      class GoogleCloudDiscoveryengineV1alphaPurgeDocumentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The total count of documents purged as a result of the operation.
+        # Corresponds to the JSON property `purgeCount`
+        # @return [Fixnum]
+        attr_accessor :purge_count
+      
+        # A sample of document names that will be deleted. Only populated if `force` is
+        # set to false. A max of 100 names will be returned and the names are chosen at
+        # random.
+        # Corresponds to the JSON property `purgeSample`
+        # @return [Array<String>]
+        attr_accessor :purge_sample
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @purge_count = args[:purge_count] if args.key?(:purge_count)
+          @purge_sample = args[:purge_sample] if args.key?(:purge_sample)
+        end
+      end
+      
       # Defines the structure and layout of a type of document data.
       class GoogleCloudDiscoveryengineV1alphaSchema
         include Google::Apis::Core::Hashable
@@ -577,16 +645,18 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The numerical values of this custom attribute. For example, `[2.3, 15.4]` when
-        # the key is "lengths_cm". Exactly one of text or numbers should be set.
-        # Otherwise, an INVALID_ARGUMENT error is returned.
+        # the key is "lengths_cm". Exactly one of CustomAttribute.text or
+        # CustomAttribute.numbers should be set. Otherwise, an `INVALID_ARGUMENT` error
+        # is returned.
         # Corresponds to the JSON property `numbers`
         # @return [Array<Float>]
         attr_accessor :numbers
       
         # The textual values of this custom attribute. For example, `["yellow", "green"]`
-        # when the key is "color". Empty string is not allowed. Otherwise, an
-        # INVALID_ARGUMENT error is returned. Exactly one of text or numbers should be
-        # set. Otherwise, an INVALID_ARGUMENT error is returned.
+        # when the key is "color". Empty string is not allowed. Otherwise, an `
+        # INVALID_ARGUMENT` error is returned. Exactly one of CustomAttribute.text or
+        # CustomAttribute.numbers should be set. Otherwise, an `INVALID_ARGUMENT` error
+        # is returned.
         # Corresponds to the JSON property `text`
         # @return [Array<String>]
         attr_accessor :text
@@ -615,7 +685,7 @@ module Google
         attr_accessor :id
       
         # The JSON string representation of the document. It should conform to the
-        # registered schema or an INVALID_ARGUMENT error is thrown.
+        # registered Schema.schema or an `INVALID_ARGUMENT` error is thrown.
         # Corresponds to the JSON property `jsonData`
         # @return [String]
         attr_accessor :json_data
@@ -641,7 +711,7 @@ module Google
         attr_accessor :schema_id
       
         # The structured JSON data for the document. It should conform to the registered
-        # schema or an INVALID_ARGUMENT error is thrown.
+        # Schema.schema or an `INVALID_ARGUMENT` error is thrown.
         # Corresponds to the JSON property `structData`
         # @return [Hash<String,Object>]
         attr_accessor :struct_data
@@ -670,9 +740,9 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Required. The Document resource full name, of the form: projects/`project\_id`/
-        # locations/`location`/collections/`collection\_id`/dataStores/`data\_store\_id`/
-        # branches/`branch\_id`/documents/`document\_id`
+        # Required. The Document resource full name, of the form: `projects/`project_id`/
+        # locations/`location`/collections/`collection_id`/dataStores/`data_store_id`/
+        # branches/`branch_id`/documents/`document_id``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1066,7 +1136,7 @@ module Google
         attr_accessor :media_progress_duration
       
         # Media progress should be computed using only the media_progress_duration
-        # relative to the media total length. This value must be between [0, 1.0]
+        # relative to the media total length. This value must be between `[0, 1.0]`
         # inclusive. If this is not a playback or the progress cannot be computed (e.g.
         # ongoing livestream), this field should be unset.
         # Corresponds to the JSON property `mediaProgressPercentage`
@@ -1178,19 +1248,115 @@ module Google
         end
       end
       
+      # Metadata related to the progress of the PurgeDocuments operation. This will be
+      # returned by the google.longrunning.Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1betaPurgeDocumentsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Count of entries that encountered errors while processing.
+        # Corresponds to the JSON property `failureCount`
+        # @return [Fixnum]
+        attr_accessor :failure_count
+      
+        # Count of entries that were deleted successfully.
+        # Corresponds to the JSON property `successCount`
+        # @return [Fixnum]
+        attr_accessor :success_count
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @failure_count = args[:failure_count] if args.key?(:failure_count)
+          @success_count = args[:success_count] if args.key?(:success_count)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Request message for DocumentService.PurgeDocuments method.
+      class GoogleCloudDiscoveryengineV1betaPurgeDocumentsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Filter matching documents to purge. Only currently supported value
+        # is “*” (all items).
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # Actually performs the purge. If `force` is set to false, return the expected
+        # purge count without deleting any documents.
+        # Corresponds to the JSON property `force`
+        # @return [Boolean]
+        attr_accessor :force
+        alias_method :force?, :force
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filter = args[:filter] if args.key?(:filter)
+          @force = args[:force] if args.key?(:force)
+        end
+      end
+      
+      # Response message for DocumentService.PurgeDocuments method. If the long
+      # running operation is successfully done, then this message is returned by the
+      # google.longrunning.Operations.response field.
+      class GoogleCloudDiscoveryengineV1betaPurgeDocumentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The total count of documents purged as a result of the operation.
+        # Corresponds to the JSON property `purgeCount`
+        # @return [Fixnum]
+        attr_accessor :purge_count
+      
+        # A sample of document names that will be deleted. Only populated if `force` is
+        # set to false. A max of 100 names will be returned and the names are chosen at
+        # random.
+        # Corresponds to the JSON property `purgeSample`
+        # @return [Array<String>]
+        attr_accessor :purge_sample
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @purge_count = args[:purge_count] if args.key?(:purge_count)
+          @purge_sample = args[:purge_sample] if args.key?(:purge_sample)
+        end
+      end
+      
       # Request message for Recommend method.
       class GoogleCloudDiscoveryengineV1betaRecommendRequest
         include Google::Apis::Core::Hashable
       
         # Filter for restricting recommendation results with a length limit of 5,000
         # characters. Currently, only filter expressions on the `filter_tags` attribute
-        # is supported. Examples: * (filter_tags: ANY("Red", "Blue") OR filter_tags: ANY(
-        # "Hot", "Cold")) * (filter_tags: ANY("Red", "Blue")) AND NOT (filter_tags: ANY("
-        # Green")) If your filter blocks all results, the API will return generic (
-        # unfiltered) popular Documents. If you only want results strictly matching the
+        # is supported. Examples: * `(filter_tags: ANY("Red", "Blue") OR filter_tags:
+        # ANY("Hot", "Cold"))` * `(filter_tags: ANY("Red", "Blue")) AND NOT (filter_tags:
+        # ANY("Green"))` If your filter blocks all results, the API will return generic
+        # (unfiltered) popular Documents. If you only want results strictly matching the
         # filters, set `strictFiltering` to True in RecommendRequest.params to receive
-        # empty results instead. Note that the API will never return Documents with
-        # storageStatus of "EXPIRED" or "DELETED" regardless of filter choices.
+        # empty results instead. Note that the API will never return Documents with `
+        # storageStatus` of `EXPIRED` or `DELETED` regardless of filter choices.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -1205,17 +1371,17 @@ module Google
       
         # Additional domain specific parameters for the recommendations. Allowed values:
         # * `returnDocument`: Boolean. If set to true, the associated Document object
-        # will be returned in RecommendResponse.results.document. * `returnScore`:
-        # Boolean. If set to true, the recommendation 'score' corresponding to each
-        # returned Document will be set in RecommendResponse.results.metadata. The given
-        # 'score' indicates the probability of a Document conversion given the user's
-        # context and history. * `strictFiltering`: Boolean. True by default. If set to
-        # false, the service will return generic (unfiltered) popular Documents instead
-        # of empty if your filter blocks all recommendation results. * `diversityLevel`:
-        # String. Default empty. If set to be non-empty, then it needs to be one of: * '
-        # no-diversity' * 'low-diversity' * 'medium-diversity' * 'high-diversity' * '
-        # auto-diversity' This gives request-level control and adjusts recommendation
-        # results based on Document category.
+        # will be returned in RecommendResponse.RecommendationResult.document. * `
+        # returnScore`: Boolean. If set to true, the recommendation 'score'
+        # corresponding to each returned Document will be set in RecommendResponse.
+        # RecommendationResult.metadata. The given 'score' indicates the probability of
+        # a Document conversion given the user's context and history. * `strictFiltering`
+        # : Boolean. True by default. If set to false, the service will return generic (
+        # unfiltered) popular Documents instead of empty if your filter blocks all
+        # recommendation results. * `diversityLevel`: String. Default empty. If set to
+        # be non-empty, then it needs to be one of: * `no-diversity` * `low-diversity` *
+        # `medium-diversity` * `high-diversity` * `auto-diversity` This gives request-
+        # level control and adjusts recommendation results based on Document category.
         # Corresponds to the JSON property `params`
         # @return [Hash<String,Object>]
         attr_accessor :params
@@ -1402,8 +1568,8 @@ module Google
         # The user's search query. See SearchRequest.query for definition. The value
         # must be a UTF-8 encoded string with a length limit of 5,000 characters.
         # Otherwise, an INVALID_ARGUMENT error is returned. At least one of search_query
-        # or page_categories is required for `search` events. Other event types should
-        # not set this field. Otherwise, an INVALID_ARGUMENT error is returned.
+        # or PageInfo.page_category is required for `search` events. Other event types
+        # should not set this field. Otherwise, an INVALID_ARGUMENT error is returned.
         # Corresponds to the JSON property `searchQuery`
         # @return [String]
         attr_accessor :search_query
@@ -1492,33 +1658,33 @@ module Google
         # imported events and events provided with prediction requests. This lets the
         # Discovery Engine API use those custom attributes when training models and
         # serving predictions, which helps improve recommendation quality. This field
-        # needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is
+        # needs to pass all below criteria, otherwise an `INVALID_ARGUMENT` error is
         # returned: * The key must be a UTF-8 encoded string with a length limit of 5,
         # 000 characters. * For text attributes, at most 400 values are allowed. Empty
         # values are not allowed. Each value must be a UTF-8 encoded string with a
         # length limit of 256 characters. * For number attributes, at most 400 values
         # are allowed. For product recommendations, an example of extra user information
-        # is traffic_channel, which is how a user arrives at the site. Users can arrive
-        # at the site by coming to the site directly, coming through Google search, or
-        # in other ways.
+        # is ` traffic_channel`, which is how a user arrives at the site. Users can
+        # arrive at the site by coming to the site directly, coming through Google
+        # search, or in other ways.
         # Corresponds to the JSON property `attributes`
         # @return [Hash<String,Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaCustomAttribute>]
         attr_accessor :attributes
       
         # Token to attribute an API response to user action(s) to trigger the event.
-        # Highly recommended for user events that are the result of PredictionService.
-        # Predict. This field enables accurate attribution of recommendation model
-        # performance. The value must be one of: * PredictResponse.attribution_token for
-        # events that are the result of PredictionService.Predict. * SearchResponse.
-        # attribution_token for events that are the result of SearchService.Search. *
-        # CompleteQueryResponse.attribution_token for events that are the result of
-        # SearchService.CompleteQuery. This token enables us to accurately attribute
-        # page view or conversion completion back to the event and the particular
-        # predict response containing this clicked/purchased product. If user clicks on
-        # product K in the recommendation results, pass PredictResponse.
-        # attribution_token as a URL parameter to product K's page. When recording
-        # events on product K's page, log the PredictResponse.attribution_token to this
-        # field.
+        # Highly recommended for user events that are the result of
+        # RecommendationService.Recommend. This field enables accurate attribution of
+        # recommendation model performance. The value must be one of: * PredictResponse.
+        # attribution_token for events that are the result of RecommendationService.
+        # Recommend. * SearchResponse.attribution_token for events that are the result
+        # of SearchService.Search. * CompleteQueryResponse.attribution_token for events
+        # that are the result of CompletionService.CompleteQuery. This token enables us
+        # to accurately attribute page view or conversion completion back to the event
+        # and the particular predict response containing this clicked/purchased product.
+        # If user clicks on product K in the recommendation results, pass
+        # PredictResponse.attribution_token as a URL parameter to product K's page. When
+        # recording events on product K's page, log the PredictResponse.
+        # attribution_token to this field.
         # Corresponds to the JSON property `attributionToken`
         # @return [String]
         attr_accessor :attribution_token
@@ -1571,11 +1737,11 @@ module Google
       
         # The filter syntax consists of an expression language for constructing a
         # predicate from one or more fields of the documents being filtered. One example
-        # is for `search` events, the associated SearchService.SearchRequest may contain
-        # a filter expression in SearchService.SearchRequest.filter conforming to https:/
-        # /google.aip.dev/160#filtering. Similarly, for `view-item-list` events that are
-        # generated from a PredictionService.PredictRequest, this field may be populated
-        # directly from PredictionService.PredictRequest.filter conforming to https://
+        # is for `search` events, the associated SearchRequest may contain a filter
+        # expression in SearchRequest.filter conforming to https://google.aip.dev/160#
+        # filtering. Similarly, for `view-item-list` events that are generated from a
+        # RecommendationService.RecommendRequest, this field may be populated directly
+        # from RecommendationService.RecommendRequest.filter conforming to https://
         # google.aip.dev/160#filtering. The value must be a UTF-8 encoded string with a
         # length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is
         # returned.
@@ -1683,10 +1849,10 @@ module Google
       
         # User agent as included in the HTTP header. Required for getting SearchResponse.
         # sponsored_results. The field must be a UTF-8 encoded string with a length
-        # limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned.
+        # limit of 1,000 characters. Otherwise, an `INVALID_ARGUMENT` error is returned.
         # This should not be set when using the client side event reporting with GTM or
-        # JavaScript tag in UserEventService.CollectUserEvent or if direct_user_request
-        # is set.
+        # JavaScript tag in UserEventService.CollectUserEvent or if UserEvent.
+        # direct_user_request is set.
         # Corresponds to the JSON property `userAgent`
         # @return [String]
         attr_accessor :user_agent
@@ -1696,7 +1862,7 @@ module Google
         # for this ID. Don't set the field to the same fixed ID for different users.
         # This mixes the event history of those users together, which results in
         # degraded model quality. The field must be a UTF-8 encoded string with a length
-        # limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned.
+        # limit of 128 characters. Otherwise, an `INVALID_ARGUMENT` error is returned.
         # Corresponds to the JSON property `userId`
         # @return [String]
         attr_accessor :user_id
