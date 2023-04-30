@@ -388,17 +388,6 @@ module Google
         #   Required. The name of the release resource, which is the parent of the
         #   feedback report resources. Format: `projects/`project_number`/apps/`app`/
         #   releases/`release``
-        # @param [String] filter
-        #   The expression to filter feedback reports listed in the response. To learn
-        #   more about filtering, refer to [Google's AIP-160 standard](http://aip.dev/160).
-        #   Supported fields: - `tester` - `createTime` supports `<`, `<=`, `>` and `>=`,
-        #   and expects an RFC-3339 formatted string Example: - `createTime <= "2023-03-
-        #   10T00:00:00+04:00"` - `tester = "projects/-/testers/*@example.com"`
-        # @param [String] order_by
-        #   The fields used to order releases. Supported fields: - `createTime` - `tester`
-        #   To specify descending order for a field, append a "desc" suffix, for example, `
-        #   createTime desc`. If this parameter is not set, releases are ordered by `
-        #   createTime` in descending order.
         # @param [Fixnum] page_size
         #   The maximum number of feedback reports to return. The service may return fewer
         #   than this value. The valid range is [1-100]; If unspecified (0), at most 25
@@ -425,13 +414,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_app_release_feedback_reports(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_app_release_feedback_reports(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/feedbackReports', options)
           command.response_representation = Google::Apis::FirebaseappdistributionV1::GoogleFirebaseAppdistroV1ListFeedbackReportsResponse::Representation
           command.response_class = Google::Apis::FirebaseappdistributionV1::GoogleFirebaseAppdistroV1ListFeedbackReportsResponse
           command.params['parent'] = parent unless parent.nil?
-          command.query['filter'] = filter unless filter.nil?
-          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
