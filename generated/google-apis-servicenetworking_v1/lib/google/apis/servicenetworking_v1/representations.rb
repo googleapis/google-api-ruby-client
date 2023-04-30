@@ -1122,6 +1122,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :deprecation_description, as: 'deprecationDescription'
           property :description, as: 'description'
+          property :disable_replacement_words, as: 'disableReplacementWords'
           property :selector, as: 'selector'
         end
       end
