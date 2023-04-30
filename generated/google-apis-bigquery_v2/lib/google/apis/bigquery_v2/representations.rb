@@ -754,6 +754,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RemoteModelInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Routine
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1772,6 +1778,7 @@ module Google
       class HivePartitioningOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :fields, as: 'fields'
           property :mode, as: 'mode'
           property :require_partition_filter, as: 'requirePartitionFilter'
           property :source_uri_prefix, as: 'sourceUriPrefix'
@@ -2350,6 +2357,8 @@ module Google
       
           property :model_type, as: 'modelType'
           collection :optimal_trial_ids, as: 'optimalTrialIds'
+          property :remote_model_info, as: 'remoteModelInfo', class: Google::Apis::BigqueryV2::RemoteModelInfo, decorator: Google::Apis::BigqueryV2::RemoteModelInfo::Representation
+      
           collection :training_runs, as: 'trainingRuns', class: Google::Apis::BigqueryV2::TrainingRun, decorator: Google::Apis::BigqueryV2::TrainingRun::Representation
       
         end
@@ -2607,6 +2616,16 @@ module Google
           property :endpoint, as: 'endpoint'
           property :max_batching_rows, :numeric_string => true, as: 'maxBatchingRows'
           hash :user_defined_context, as: 'userDefinedContext'
+        end
+      end
+      
+      class RemoteModelInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :connection, as: 'connection'
+          property :endpoint, as: 'endpoint'
+          property :max_batching_rows, :numeric_string => true, as: 'maxBatchingRows'
+          property :remote_service_type, as: 'remoteServiceType'
         end
       end
       
@@ -3105,6 +3124,7 @@ module Google
           property :include_drift, as: 'includeDrift'
           property :initial_learn_rate, as: 'initialLearnRate'
           collection :input_label_columns, as: 'inputLabelColumns'
+          property :instance_weight_column, as: 'instanceWeightColumn'
           property :integrated_gradients_num_steps, :numeric_string => true, as: 'integratedGradientsNumSteps'
           property :item_column, as: 'itemColumn'
           property :kmeans_initialization_column, as: 'kmeansInitializationColumn'
@@ -3134,6 +3154,7 @@ module Google
           property :preserve_input_structs, as: 'preserveInputStructs'
           property :sampled_shapley_num_paths, :numeric_string => true, as: 'sampledShapleyNumPaths'
           property :subsample, as: 'subsample'
+          property :tf_version, as: 'tfVersion'
           property :time_series_data_column, as: 'timeSeriesDataColumn'
           property :time_series_id_column, as: 'timeSeriesIdColumn'
           collection :time_series_id_columns, as: 'timeSeriesIdColumns'
@@ -3144,6 +3165,7 @@ module Google
           property :user_column, as: 'userColumn'
           property :wals_alpha, as: 'walsAlpha'
           property :warm_start, as: 'warmStart'
+          property :xgboost_version, as: 'xgboostVersion'
         end
       end
       

@@ -3062,6 +3062,16 @@ module Google
       class HivePartitioningOptions
         include Google::Apis::Core::Hashable
       
+        # [Output-only] For permanent external tables, this field is populated with the
+        # hive partition keys in the order they were inferred. The types of the
+        # partition keys can be deduced by checking the table schema (which will include
+        # the partition keys). Not every API will populate this field in the output. For
+        # example, Tables.Get will populate it, but Tables.List will not contain this
+        # field.
+        # Corresponds to the JSON property `fields`
+        # @return [Array<String>]
+        attr_accessor :fields
+      
         # [Optional] When set, what mode of hive partitioning to use when reading data.
         # The following modes are supported. (1) AUTO: automatically infer partition key
         # name(s) and type(s). (2) STRINGS: automatically infer partition key name(s).
@@ -3102,6 +3112,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @fields = args[:fields] if args.key?(:fields)
           @mode = args[:mode] if args.key?(:mode)
           @require_partition_filter = args[:require_partition_filter] if args.key?(:require_partition_filter)
           @source_uri_prefix = args[:source_uri_prefix] if args.key?(:source_uri_prefix)
@@ -5418,6 +5429,11 @@ module Google
         # @return [Array<Fixnum>]
         attr_accessor :optimal_trial_ids
       
+        # Remote Model Info
+        # Corresponds to the JSON property `remoteModelInfo`
+        # @return [Google::Apis::BigqueryV2::RemoteModelInfo]
+        attr_accessor :remote_model_info
+      
         # Information for all training runs in increasing order of start_time.
         # Corresponds to the JSON property `trainingRuns`
         # @return [Array<Google::Apis::BigqueryV2::TrainingRun>]
@@ -5447,6 +5463,7 @@ module Google
           @model_reference = args[:model_reference] if args.key?(:model_reference)
           @model_type = args[:model_type] if args.key?(:model_type)
           @optimal_trial_ids = args[:optimal_trial_ids] if args.key?(:optimal_trial_ids)
+          @remote_model_info = args[:remote_model_info] if args.key?(:remote_model_info)
           @training_runs = args[:training_runs] if args.key?(:training_runs)
         end
       end
@@ -6496,6 +6513,46 @@ module Google
           @endpoint = args[:endpoint] if args.key?(:endpoint)
           @max_batching_rows = args[:max_batching_rows] if args.key?(:max_batching_rows)
           @user_defined_context = args[:user_defined_context] if args.key?(:user_defined_context)
+        end
+      end
+      
+      # Remote Model Info
+      class RemoteModelInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Fully qualified name of the user-provided connection object of
+        # the remote model. Format: ```"projects/`project_id`/locations/`location_id`/
+        # connections/`connection_id`"```
+        # Corresponds to the JSON property `connection`
+        # @return [String]
+        attr_accessor :connection
+      
+        # Output only. The endpoint for remote model.
+        # Corresponds to the JSON property `endpoint`
+        # @return [String]
+        attr_accessor :endpoint
+      
+        # Output only. Max number of rows in each batch sent to the remote service. If
+        # unset, the number of rows in each batch is set dynamically.
+        # Corresponds to the JSON property `maxBatchingRows`
+        # @return [Fixnum]
+        attr_accessor :max_batching_rows
+      
+        # Output only. The remote service type for remote model.
+        # Corresponds to the JSON property `remoteServiceType`
+        # @return [String]
+        attr_accessor :remote_service_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connection = args[:connection] if args.key?(:connection)
+          @endpoint = args[:endpoint] if args.key?(:endpoint)
+          @max_batching_rows = args[:max_batching_rows] if args.key?(:max_batching_rows)
+          @remote_service_type = args[:remote_service_type] if args.key?(:remote_service_type)
         end
       end
       
@@ -8467,6 +8524,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :input_label_columns
       
+        # Name of the instance weight column for training data. This column isn't be
+        # used as a feature.
+        # Corresponds to the JSON property `instanceWeightColumn`
+        # @return [String]
+        attr_accessor :instance_weight_column
+      
         # Number of integral steps for the integrated gradients explain method.
         # Corresponds to the JSON property `integratedGradientsNumSteps`
         # @return [Fixnum]
@@ -8619,6 +8682,12 @@ module Google
         # @return [Float]
         attr_accessor :subsample
       
+        # Based on the selected TF version, the corresponding docker image is used to
+        # train external models.
+        # Corresponds to the JSON property `tfVersion`
+        # @return [String]
+        attr_accessor :tf_version
+      
         # Column to be designated as time series data for ARIMA model.
         # Corresponds to the JSON property `timeSeriesDataColumn`
         # @return [String]
@@ -8670,6 +8739,11 @@ module Google
         attr_accessor :warm_start
         alias_method :warm_start?, :warm_start
       
+        # User-selected XGBoost versions for training of XGBoost models.
+        # Corresponds to the JSON property `xgboostVersion`
+        # @return [String]
+        attr_accessor :xgboost_version
+      
         def initialize(**args)
            update!(**args)
         end
@@ -8706,6 +8780,7 @@ module Google
           @include_drift = args[:include_drift] if args.key?(:include_drift)
           @initial_learn_rate = args[:initial_learn_rate] if args.key?(:initial_learn_rate)
           @input_label_columns = args[:input_label_columns] if args.key?(:input_label_columns)
+          @instance_weight_column = args[:instance_weight_column] if args.key?(:instance_weight_column)
           @integrated_gradients_num_steps = args[:integrated_gradients_num_steps] if args.key?(:integrated_gradients_num_steps)
           @item_column = args[:item_column] if args.key?(:item_column)
           @kmeans_initialization_column = args[:kmeans_initialization_column] if args.key?(:kmeans_initialization_column)
@@ -8734,6 +8809,7 @@ module Google
           @preserve_input_structs = args[:preserve_input_structs] if args.key?(:preserve_input_structs)
           @sampled_shapley_num_paths = args[:sampled_shapley_num_paths] if args.key?(:sampled_shapley_num_paths)
           @subsample = args[:subsample] if args.key?(:subsample)
+          @tf_version = args[:tf_version] if args.key?(:tf_version)
           @time_series_data_column = args[:time_series_data_column] if args.key?(:time_series_data_column)
           @time_series_id_column = args[:time_series_id_column] if args.key?(:time_series_id_column)
           @time_series_id_columns = args[:time_series_id_columns] if args.key?(:time_series_id_columns)
@@ -8744,6 +8820,7 @@ module Google
           @user_column = args[:user_column] if args.key?(:user_column)
           @wals_alpha = args[:wals_alpha] if args.key?(:wals_alpha)
           @warm_start = args[:warm_start] if args.key?(:warm_start)
+          @xgboost_version = args[:xgboost_version] if args.key?(:xgboost_version)
         end
       end
       
