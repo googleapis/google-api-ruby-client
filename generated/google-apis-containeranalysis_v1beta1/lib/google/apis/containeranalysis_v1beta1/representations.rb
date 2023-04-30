@@ -490,6 +490,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GeneratePackagesSummaryRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GenericSignedAttestation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -628,6 +634,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LicensesSummary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Link
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -689,6 +701,12 @@ module Google
       end
       
       class PackageIssue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PackagesSummaryResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1775,6 +1793,12 @@ module Google
         end
       end
       
+      class GeneratePackagesSummaryRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GenericSignedAttestation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1996,6 +2020,14 @@ module Google
         end
       end
       
+      class LicensesSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :count, :numeric_string => true, as: 'count'
+          property :license, as: 'license'
+        end
+      end
+      
       class Link
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2207,6 +2239,15 @@ module Google
       
           property :package_type, as: 'packageType'
           property :severity_name, as: 'severityName'
+        end
+      end
+      
+      class PackagesSummaryResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :licenses_summary, as: 'licensesSummary', class: Google::Apis::ContaineranalysisV1beta1::LicensesSummary, decorator: Google::Apis::ContaineranalysisV1beta1::LicensesSummary::Representation
+      
+          property :resource_url, as: 'resourceUrl'
         end
       end
       
