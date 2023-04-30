@@ -2425,6 +2425,18 @@ module Google
         attr_accessor :send_full_resource
         alias_method :send_full_resource?, :send_full_resource
       
+        # Whether to send full FHIR resource to this pubsub topic for deleting FHIR
+        # resource. Note that setting this to true does not guarantee that all previous
+        # resources will be sent in the format of full FHIR resource. When a resource
+        # change is too large or during heavy traffic, only the resource name will be
+        # sent. Clients should always check the "payloadType" label from a Pub/Sub
+        # message to determine whether it needs to fetch the full previous resource as a
+        # separate operation.
+        # Corresponds to the JSON property `sendPreviousResourceOnDelete`
+        # @return [Boolean]
+        attr_accessor :send_previous_resource_on_delete
+        alias_method :send_previous_resource_on_delete?, :send_previous_resource_on_delete
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2433,6 +2445,7 @@ module Google
         def update!(**args)
           @pubsub_topic = args[:pubsub_topic] if args.key?(:pubsub_topic)
           @send_full_resource = args[:send_full_resource] if args.key?(:send_full_resource)
+          @send_previous_resource_on_delete = args[:send_previous_resource_on_delete] if args.key?(:send_previous_resource_on_delete)
         end
       end
       
