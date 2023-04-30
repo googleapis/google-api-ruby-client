@@ -102,6 +102,11 @@ module Google
         # @return [Array<Google::Apis::ConnectorsV1::ConfigVariable>]
         attr_accessor :additional_variables
       
+        # Identifier key for auth config
+        # Corresponds to the JSON property `authKey`
+        # @return [String]
+        attr_accessor :auth_key
+      
         # The type of authentication configured.
         # Corresponds to the JSON property `authType`
         # @return [String]
@@ -143,6 +148,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @additional_variables = args[:additional_variables] if args.key?(:additional_variables)
+          @auth_key = args[:auth_key] if args.key?(:auth_key)
           @auth_type = args[:auth_type] if args.key?(:auth_type)
           @oauth2_auth_code_flow = args[:oauth2_auth_code_flow] if args.key?(:oauth2_auth_code_flow)
           @oauth2_client_credentials = args[:oauth2_client_credentials] if args.key?(:oauth2_client_credentials)
@@ -155,6 +161,11 @@ module Google
       # AuthConfigTemplate defines required field over an authentication type.
       class AuthConfigTemplate
         include Google::Apis::Core::Hashable
+      
+        # Identifier key for auth config
+        # Corresponds to the JSON property `authKey`
+        # @return [String]
+        attr_accessor :auth_key
       
         # The type of authentication configured.
         # Corresponds to the JSON property `authType`
@@ -182,6 +193,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @auth_key = args[:auth_key] if args.key?(:auth_key)
           @auth_type = args[:auth_type] if args.key?(:auth_type)
           @config_variable_templates = args[:config_variable_templates] if args.key?(:config_variable_templates)
           @description = args[:description] if args.key?(:description)
