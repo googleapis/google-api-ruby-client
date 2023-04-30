@@ -940,17 +940,22 @@ module Google
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterBetweenFilter]
         attr_accessor :between_filter
       
-        # Required. Immutable. The dimension name or metric name to filter.
+        # Required. Immutable. The dimension name or metric name to filter. If the field
+        # name refers to a custom dimension or metric, a scope prefix will be added to
+        # the front of the custom dimensions or metric name. For more on scope prefixes
+        # or custom dimensions/metrics, reference the [Google Analytics Data API
+        # documentation] (https://developers.google.com/analytics/devguides/reporting/
+        # data/v1/api-schema#custom_dimensions).
         # Corresponds to the JSON property `fieldName`
         # @return [String]
         attr_accessor :field_name
       
         # Optional. If set, specifies the time window for which to evaluate data in
         # number of days. If not set, then audience data is evaluated against lifetime
-        # data (i.e., infinite time window). For example, if set to 1 day, only the
-        # current day's data is evaluated. The reference point is the current day when
-        # at_any_point_in_time is unset or false. It can only be set when Audience scope
-        # is ACROSS_ALL_SESSIONS and cannot be greater than 60 days.
+        # data (For example, infinite time window). For example, if set to 1 day, only
+        # the current day's data is evaluated. The reference point is the current day
+        # when at_any_point_in_time is unset or false. It can only be set when Audience
+        # scope is ACROSS_ALL_SESSIONS and cannot be greater than 60 days.
         # Corresponds to the JSON property `inAnyNDayPeriod`
         # @return [Fixnum]
         attr_accessor :in_any_n_day_period
@@ -1176,9 +1181,9 @@ module Google
       end
       
       # A clause for defining either a simple or sequence filter. A filter can be
-      # inclusive (i.e., users satisfying the filter clause are included in the
-      # Audience) or exclusive (i.e., users satisfying the filter clause are excluded
-      # from the Audience).
+      # inclusive (For example, users satisfying the filter clause are included in the
+      # Audience) or exclusive (For example, users satisfying the filter clause are
+      # excluded from the Audience).
       class GoogleAnalyticsAdminV1alphaAudienceFilterClause
         include Google::Apis::Core::Hashable
       
@@ -1314,9 +1319,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. When set, this step must be satisfied within the constraint_duration
-        # of the previous step (i.e., t[i] - t[i-1] <= constraint_duration). If not set,
-        # there is no duration requirement (the duration is effectively unlimited). It
-        # is ignored for the first step.
+        # of the previous step (For example, t[i] - t[i-1] <= constraint_duration). If
+        # not set, there is no duration requirement (the duration is effectively
+        # unlimited). It is ignored for the first step.
         # Corresponds to the JSON property `constraintDuration`
         # @return [String]
         attr_accessor :constraint_duration
@@ -1867,6 +1872,11 @@ module Google
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAttributionSettings]
         attr_accessor :attribution_settings
       
+        # A resource message representing a GA4 Audience.
+        # Corresponds to the JSON property `audience`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudience]
+        attr_accessor :audience
+      
         # A link between a GA4 Property and BigQuery project.
         # Corresponds to the JSON property `bigqueryLink`
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaBigQueryLink]
@@ -1964,6 +1974,7 @@ module Google
         def update!(**args)
           @account = args[:account] if args.key?(:account)
           @attribution_settings = args[:attribution_settings] if args.key?(:attribution_settings)
+          @audience = args[:audience] if args.key?(:audience)
           @bigquery_link = args[:bigquery_link] if args.key?(:bigquery_link)
           @channel_group = args[:channel_group] if args.key?(:channel_group)
           @conversion_event = args[:conversion_event] if args.key?(:conversion_event)
