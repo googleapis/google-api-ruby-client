@@ -262,6 +262,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleProtobufEmpty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -596,6 +608,20 @@ module Google
           property :service, as: 'service', class: Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaService, decorator: Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaService::Representation
       
           property :update_mask, as: 'updateMask'
+        end
+      end
+      
+      class GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_check_token, as: 'appCheckToken'
+        end
+      end
+      
+      class GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :already_consumed, as: 'alreadyConsumed'
         end
       end
       
