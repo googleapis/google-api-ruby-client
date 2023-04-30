@@ -2953,7 +2953,10 @@ module Google
         end
         
         # Activates a manual trigger. Each activation of the manual trigger must be at
-        # least 5 minutes apart, otherwise an error will be returned.
+        # least 5 minutes apart, otherwise an error will be returned. **Warning:** Line
+        # Items using manual triggers will stop serving in Display & Video 360 on **May
+        # 17, 2023**. Read our [feature deprecation announcement](/display-video/api/
+        # deprecations#features.manual_triggers) for more information.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser that the manual trigger belongs.
         # @param [Fixnum] trigger_id
@@ -2990,7 +2993,10 @@ module Google
         end
         
         # Creates a new manual trigger. Returns the newly created manual trigger if
-        # successful.
+        # successful. **Warning:** Line Items using manual triggers will stop serving in
+        # Display & Video 360 on **May 17, 2023**. Read our [feature deprecation
+        # announcement](/display-video/api/deprecations#features.manual_triggers) for
+        # more information.
         # @param [Fixnum] advertiser_id
         #   Required. Immutable. The unique ID of the advertiser that the manual trigger
         #   belongs to.
@@ -3024,7 +3030,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deactivates a manual trigger.
+        # Deactivates a manual trigger. **Warning:** Line Items using manual triggers
+        # will stop serving in Display & Video 360 on **May 17, 2023**. Read our [
+        # feature deprecation announcement](/display-video/api/deprecations#features.
+        # manual_triggers) for more information.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser that the manual trigger belongs.
         # @param [Fixnum] trigger_id
@@ -3060,7 +3069,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a manual trigger.
+        # Gets a manual trigger. **Warning:** Line Items using manual triggers will stop
+        # serving in Display & Video 360 on **May 17, 2023**. Read our [feature
+        # deprecation announcement](/display-video/api/deprecations#features.
+        # manual_triggers) for more information.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser this manual trigger belongs to.
         # @param [Fixnum] trigger_id
@@ -3095,7 +3107,10 @@ module Google
         
         # Lists manual triggers that are accessible to the current user for a given
         # advertiser ID. The order is defined by the order_by parameter. A single
-        # advertiser_id is required.
+        # advertiser_id is required. **Warning:** Line Items using manual triggers will
+        # stop serving in Display & Video 360 on **May 17, 2023**. Read our [feature
+        # deprecation announcement](/display-video/api/deprecations#features.
+        # manual_triggers) for more information.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser that the fetched manual triggers belong to.
         # @param [String] filter
@@ -3151,7 +3166,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a manual trigger. Returns the updated manual trigger if successful.
+        # Updates a manual trigger. Returns the updated manual trigger if successful. **
+        # Warning:** Line Items using manual triggers will stop serving in Display &
+        # Video 360 on **May 17, 2023**. Read our [feature deprecation announcement](/
+        # display-video/api/deprecations#features.manual_triggers) for more information.
         # @param [Fixnum] advertiser_id
         #   Required. Immutable. The unique ID of the advertiser that the manual trigger
         #   belongs to.

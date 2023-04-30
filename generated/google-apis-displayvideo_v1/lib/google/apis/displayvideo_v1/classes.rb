@@ -1169,7 +1169,11 @@ module Google
         # contains first and third party audience ids only. The relation between each
         # first and third party audience group is INTERSECTION, and the result is UNION'
         # ed with other audience groups. Repeated groups with same settings will be
-        # ignored.
+        # ignored. **Warning:** `ACTIVITY_BASED` and `FREQUENCY_CAP` audience types will
+        # be deprecated on **May 20, 2023**. After this date, these audiences will not
+        # be able to be added to resource targeting. Read our [feature deprecation
+        # announcement](/display-video/api/deprecations#features.
+        # first_and_third_party_audience_types) for more information.
         # Corresponds to the JSON property `includedFirstAndThirdPartyAudienceGroups`
         # @return [Array<Google::Apis::DisplayvideoV1::FirstAndThirdPartyAudienceGroup>]
         attr_accessor :included_first_and_third_party_audience_groups
@@ -7083,7 +7087,10 @@ module Google
         # flight_date_type is `LINE_ITEM_FLIGHT_DATE_TYPE_TRIGGER`. Must not be set
         # otherwise. * When set, the line item's flight dates are inherited from its
         # parent insertion order. * Active line items will spend when the selected
-        # trigger is activated within the parent insertion order's flight dates.
+        # trigger is activated within the parent insertion order's flight dates. **
+        # Warning:** Line Items using manual triggers will stop serving in Display &
+        # Video 360 on **May 17, 2023**. Read our [feature deprecation announcement](/
+        # display-video/api/deprecations#features.manual_triggers) for more information.
         # Corresponds to the JSON property `triggerId`
         # @return [Fixnum]
         attr_accessor :trigger_id
@@ -8043,7 +8050,10 @@ module Google
         end
       end
       
-      # A single manual trigger in Display & Video 360.
+      # A single manual trigger in Display & Video 360. **Warning:** Line Items using
+      # manual triggers will stop serving in Display & Video 360 on **May 17, 2023**.
+      # Read our [feature deprecation announcement](/display-video/api/deprecations#
+      # features.manual_triggers) for more information.
       class ManualTrigger
         include Google::Apis::Core::Hashable
       
