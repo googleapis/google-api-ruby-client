@@ -706,6 +706,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DiskAsyncReplication
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DiskAsyncReplicationList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DiskInstantiationConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -737,6 +749,18 @@ module Google
       end
       
       class DiskParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DiskResourceStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DiskResourceStatusAsyncReplicationStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1115,6 +1139,12 @@ module Google
       end
       
       class GrpcHealthCheck
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GlobalAddressesMoveRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3491,6 +3521,12 @@ module Google
       end
       
       class Region
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionAddressesMoveRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5949,6 +5985,8 @@ module Google
           property :ip_version, as: 'ipVersion'
           property :ipv6_endpoint_type, as: 'ipv6EndpointType'
           property :kind, as: 'kind'
+          property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
+          hash :labels, as: 'labels'
           property :name, as: 'name'
           property :network, as: 'network'
           property :network_tier, as: 'networkTier'
@@ -7105,6 +7143,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :architecture, as: 'architecture'
+          property :async_primary_disk, as: 'asyncPrimaryDisk', class: Google::Apis::ComputeV1::DiskAsyncReplication, decorator: Google::Apis::ComputeV1::DiskAsyncReplication::Representation
+      
+          hash :async_secondary_disks, as: 'asyncSecondaryDisks', class: Google::Apis::ComputeV1::DiskAsyncReplicationList, decorator: Google::Apis::ComputeV1::DiskAsyncReplicationList::Representation
+      
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :disk_encryption_key, as: 'diskEncryptionKey', class: Google::Apis::ComputeV1::CustomerEncryptionKey, decorator: Google::Apis::ComputeV1::CustomerEncryptionKey::Representation
@@ -7129,9 +7171,13 @@ module Google
           property :region, as: 'region'
           collection :replica_zones, as: 'replicaZones'
           collection :resource_policies, as: 'resourcePolicies'
+          property :resource_status, as: 'resourceStatus', class: Google::Apis::ComputeV1::DiskResourceStatus, decorator: Google::Apis::ComputeV1::DiskResourceStatus::Representation
+      
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
           property :size_gb, :numeric_string => true, as: 'sizeGb'
+          property :source_consistency_group_policy, as: 'sourceConsistencyGroupPolicy'
+          property :source_consistency_group_policy_id, as: 'sourceConsistencyGroupPolicyId'
           property :source_disk, as: 'sourceDisk'
           property :source_disk_id, as: 'sourceDiskId'
           property :source_image, as: 'sourceImage'
@@ -7180,6 +7226,24 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class DiskAsyncReplication
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consistency_group_policy, as: 'consistencyGroupPolicy'
+          property :consistency_group_policy_id, as: 'consistencyGroupPolicyId'
+          property :disk, as: 'disk'
+          property :disk_id, as: 'diskId'
+        end
+      end
+      
+      class DiskAsyncReplicationList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :async_replication_disk, as: 'asyncReplicationDisk', class: Google::Apis::ComputeV1::DiskAsyncReplication, decorator: Google::Apis::ComputeV1::DiskAsyncReplication::Representation
+      
         end
       end
       
@@ -7237,6 +7301,23 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :resource_manager_tags, as: 'resourceManagerTags'
+        end
+      end
+      
+      class DiskResourceStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :async_primary_disk, as: 'asyncPrimaryDisk', class: Google::Apis::ComputeV1::DiskResourceStatusAsyncReplicationStatus, decorator: Google::Apis::ComputeV1::DiskResourceStatusAsyncReplicationStatus::Representation
+      
+          hash :async_secondary_disks, as: 'asyncSecondaryDisks', class: Google::Apis::ComputeV1::DiskResourceStatusAsyncReplicationStatus, decorator: Google::Apis::ComputeV1::DiskResourceStatusAsyncReplicationStatus::Representation
+      
+        end
+      end
+      
+      class DiskResourceStatusAsyncReplicationStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :state, as: 'state'
         end
       end
       
@@ -7941,6 +8022,14 @@ module Google
           property :port, as: 'port'
           property :port_name, as: 'portName'
           property :port_specification, as: 'portSpecification'
+        end
+      end
+      
+      class GlobalAddressesMoveRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :destination_address, as: 'destinationAddress'
         end
       end
       
@@ -9733,6 +9822,8 @@ module Google
           collection :interconnect_attachments, as: 'interconnectAttachments'
           property :interconnect_type, as: 'interconnectType'
           property :kind, as: 'kind'
+          property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
+          hash :labels, as: 'labels'
           property :link_type, as: 'linkType'
           property :location, as: 'location'
           property :name, as: 'name'
@@ -9770,6 +9861,8 @@ module Google
           property :interconnect, as: 'interconnect'
           collection :ipsec_internal_addresses, as: 'ipsecInternalAddresses'
           property :kind, as: 'kind'
+          property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
+          hash :labels, as: 'labels'
           property :mtu, as: 'mtu'
           property :name, as: 'name'
           property :operational_status, as: 'operationalStatus'
@@ -12446,6 +12539,14 @@ module Google
         end
       end
       
+      class RegionAddressesMoveRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :destination_address, as: 'destinationAddress'
+        end
+      end
+      
       class RegionAutoscalerList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -13882,6 +13983,8 @@ module Google
           property :fingerprint, :base64 => true, as: 'fingerprint'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
+          property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
+          hash :labels, as: 'labels'
           property :name, as: 'name'
           property :recaptcha_options_config, as: 'recaptchaOptionsConfig', class: Google::Apis::ComputeV1::SecurityPolicyRecaptchaOptionsConfig, decorator: Google::Apis::ComputeV1::SecurityPolicyRecaptchaOptionsConfig::Representation
       
@@ -14163,6 +14266,7 @@ module Google
           property :producer_forwarding_rule, as: 'producerForwardingRule'
           property :psc_service_attachment_id, as: 'pscServiceAttachmentId', class: Google::Apis::ComputeV1::Uint128, decorator: Google::Apis::ComputeV1::Uint128::Representation
       
+          property :reconcile_connections, as: 'reconcileConnections'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :target_service, as: 'targetService'
@@ -15688,6 +15792,8 @@ module Google
           collection :forwarding_rules, as: 'forwardingRules'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
+          property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
+          hash :labels, as: 'labels'
           property :name, as: 'name'
           property :network, as: 'network'
           property :region, as: 'region'
@@ -16319,6 +16425,8 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :ike_version, as: 'ikeVersion'
           property :kind, as: 'kind'
+          property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
+          hash :labels, as: 'labels'
           collection :local_traffic_selector, as: 'localTrafficSelector'
           property :name, as: 'name'
           property :peer_external_gateway, as: 'peerExternalGateway'
