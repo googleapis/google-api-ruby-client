@@ -361,7 +361,7 @@ module Google
         end
       end
       
-      # LINT.IfChange Request message for BufferTask.
+      # Request message for BufferTask.
       class BufferTaskRequest
         include Google::Apis::Core::Hashable
       
@@ -779,6 +779,21 @@ module Google
         # @return [String]
         attr_accessor :http_method
       
+        # Contains information needed for generating an [OAuth token](https://developers.
+        # google.com/identity/protocols/OAuth2). This type of authorization should
+        # generally only be used when calling Google APIs hosted on *.googleapis.com.
+        # Corresponds to the JSON property `oauthToken`
+        # @return [Google::Apis::CloudtasksV2beta3::OAuthToken]
+        attr_accessor :oauth_token
+      
+        # Contains information needed for generating an [OpenID Connect token](https://
+        # developers.google.com/identity/protocols/OpenIDConnect). This type of
+        # authorization can be used for many scenarios, including calling Cloud Run, or
+        # endpoints where you intend to validate the token yourself.
+        # Corresponds to the JSON property `oidcToken`
+        # @return [Google::Apis::CloudtasksV2beta3::OidcToken]
+        attr_accessor :oidc_token
+      
         # URI Override. When specified, all the HTTP tasks inside the queue will be
         # partially or fully overridden depending on the configured values.
         # Corresponds to the JSON property `uriOverride`
@@ -793,6 +808,8 @@ module Google
         def update!(**args)
           @header_overrides = args[:header_overrides] if args.key?(:header_overrides)
           @http_method = args[:http_method] if args.key?(:http_method)
+          @oauth_token = args[:oauth_token] if args.key?(:oauth_token)
+          @oidc_token = args[:oidc_token] if args.key?(:oidc_token)
           @uri_override = args[:uri_override] if args.key?(:uri_override)
         end
       end
