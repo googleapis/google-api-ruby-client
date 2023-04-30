@@ -196,7 +196,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :command
       
-        # Environment variables passed to the container.
+        # Environment variables passed to the container's entrypoint.
         # Corresponds to the JSON property `env`
         # @return [Hash<String,String>]
         attr_accessor :env
@@ -363,10 +363,16 @@ module Google
         # @return [String]
         attr_accessor :machine_type
       
-        # Number of instances to pool for faster workstation starup.
+        # Number of instances to pool for faster workstation startup.
         # Corresponds to the JSON property `poolSize`
         # @return [Fixnum]
         attr_accessor :pool_size
+      
+        # Output only. Number of instances currently available in the pool for faster
+        # workstation startup.
+        # Corresponds to the JSON property `pooledInstances`
+        # @return [Fixnum]
+        attr_accessor :pooled_instances
       
         # Email address of the service account used on VM instances used to support this
         # configuration. If not set, VMs run with a Google-managed service account. This
@@ -397,6 +403,7 @@ module Google
           @disable_public_ip_addresses = args[:disable_public_ip_addresses] if args.key?(:disable_public_ip_addresses)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @pool_size = args[:pool_size] if args.key?(:pool_size)
+          @pooled_instances = args[:pooled_instances] if args.key?(:pooled_instances)
           @service_account = args[:service_account] if args.key?(:service_account)
           @shielded_instance_config = args[:shielded_instance_config] if args.key?(:shielded_instance_config)
           @tags = args[:tags] if args.key?(:tags)
@@ -520,7 +527,7 @@ module Google
       
         # The generated bearer access token. To use this token, include it in an
         # Authorization header of an HTTP request sent to the associated workstation's
-        # hostname, for example, `Authorization: Bearer `.
+        # hostname—for example, `Authorization: Bearer `.
         # Corresponds to the JSON property `accessToken`
         # @return [String]
         attr_accessor :access_token
@@ -1047,6 +1054,31 @@ module Google
         end
       end
       
+      # A readiness check to be performed on a workstation.
+      class ReadinessCheck
+        include Google::Apis::Core::Hashable
+      
+        # Path to which the request should be sent.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        # Port to which the request should be sent.
+        # Corresponds to the JSON property `port`
+        # @return [Fixnum]
+        attr_accessor :port
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @path = args[:path] if args.key?(:path)
+          @port = args[:port] if args.key?(:port)
+        end
+      end
+      
       # Request message for `SetIamPolicy` method.
       class SetIamPolicyRequest
         include Google::Apis::Core::Hashable
@@ -1105,7 +1137,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # If set, the request will be rejected if the latest version of the workstation
-        # on the server does not have this etag.
+        # on the server does not have this ETag.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -1172,7 +1204,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # If set, the request will be rejected if the latest version of the workstation
-        # on the server does not have this etag.
+        # on the server does not have this ETag.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -1259,7 +1291,7 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Environment variables passed to the workstation container.
+        # Environment variables passed to the workstation container's entrypoint.
         # Corresponds to the JSON property `env`
         # @return [Hash<String,String>]
         attr_accessor :env
@@ -1549,6 +1581,13 @@ module Google
         # @return [Array<Google::Apis::WorkstationsV1beta::PersistentDirectory>]
         attr_accessor :persistent_directories
       
+        # Readiness checks to perform when starting a workstation using this workstation
+        # configuration. Mark a workstation as running only after all specified
+        # readiness checks return 200 status codes.
+        # Corresponds to the JSON property `readinessChecks`
+        # @return [Array<Google::Apis::WorkstationsV1beta::ReadinessCheck>]
+        attr_accessor :readiness_checks
+      
         # Output only. Indicates whether this resource is currently being updated to
         # match its intended state.
         # Corresponds to the JSON property `reconciling`
@@ -1595,6 +1634,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @persistent_directories = args[:persistent_directories] if args.key?(:persistent_directories)
+          @readiness_checks = args[:readiness_checks] if args.key?(:readiness_checks)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
           @running_timeout = args[:running_timeout] if args.key?(:running_timeout)
           @uid = args[:uid] if args.key?(:uid)

@@ -178,6 +178,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReadinessCheck
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SetIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -311,6 +317,7 @@ module Google
           property :disable_public_ip_addresses, as: 'disablePublicIpAddresses'
           property :machine_type, as: 'machineType'
           property :pool_size, as: 'poolSize'
+          property :pooled_instances, as: 'pooledInstances'
           property :service_account, as: 'serviceAccount'
           property :shielded_instance_config, as: 'shieldedInstanceConfig', class: Google::Apis::WorkstationsV1beta::GceShieldedInstanceConfig, decorator: Google::Apis::WorkstationsV1beta::GceShieldedInstanceConfig::Representation
       
@@ -483,6 +490,14 @@ module Google
         end
       end
       
+      class ReadinessCheck
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :path, as: 'path'
+          property :port, as: 'port'
+        end
+      end
+      
       class SetIamPolicyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -596,6 +611,8 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           collection :persistent_directories, as: 'persistentDirectories', class: Google::Apis::WorkstationsV1beta::PersistentDirectory, decorator: Google::Apis::WorkstationsV1beta::PersistentDirectory::Representation
+      
+          collection :readiness_checks, as: 'readinessChecks', class: Google::Apis::WorkstationsV1beta::ReadinessCheck, decorator: Google::Apis::WorkstationsV1beta::ReadinessCheck::Representation
       
           property :reconciling, as: 'reconciling'
           property :running_timeout, as: 'runningTimeout'
