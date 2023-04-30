@@ -16,13 +16,13 @@ module Google
   module Apis
     module MetastoreV1alpha
       # Version of the google-apis-metastore_v1alpha gem
-      GEM_VERSION = "0.44.0"
+      GEM_VERSION = "0.45.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.12.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20230317"
+      REVISION = "20230425"
     end
   end
 end
