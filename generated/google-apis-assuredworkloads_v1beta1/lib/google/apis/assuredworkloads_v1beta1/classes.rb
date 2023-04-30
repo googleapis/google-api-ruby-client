@@ -168,7 +168,7 @@ module Google
         end
       end
       
-      # Workload monitoring Violation. Next Id: 22
+      # Workload monitoring Violation. Next Id: 27
       class GoogleCloudAssuredworkloadsV1beta1Violation
         include Google::Apis::Core::Hashable
       
@@ -217,11 +217,6 @@ module Google
         # Corresponds to the JSON property `exceptionAuditLogLink`
         # @return [String]
         attr_accessor :exception_audit_log_link
-      
-        # Output only. List of all the exception detail added for the violation.
-        # Corresponds to the JSON property `exceptionContexts`
-        # @return [Array<Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1ViolationExceptionContext>]
-        attr_accessor :exception_contexts
       
         # Output only. Immutable. Name of the Violation. Format: organizations/`
         # organization`/locations/`location`/workloads/`workload_id`/violations/`
@@ -279,7 +274,6 @@ module Google
           @category = args[:category] if args.key?(:category)
           @description = args[:description] if args.key?(:description)
           @exception_audit_log_link = args[:exception_audit_log_link] if args.key?(:exception_audit_log_link)
-          @exception_contexts = args[:exception_contexts] if args.key?(:exception_contexts)
           @name = args[:name] if args.key?(:name)
           @non_compliant_org_policy = args[:non_compliant_org_policy] if args.key?(:non_compliant_org_policy)
           @org_policy_constraint = args[:org_policy_constraint] if args.key?(:org_policy_constraint)
@@ -287,37 +281,6 @@ module Google
           @resolve_time = args[:resolve_time] if args.key?(:resolve_time)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
-        end
-      end
-      
-      # Violation exception detail. Next Id: 5
-      class GoogleCloudAssuredworkloadsV1beta1ViolationExceptionContext
-        include Google::Apis::Core::Hashable
-      
-        # Timestamp when the violation was acknowledged.
-        # Corresponds to the JSON property `acknowledgementTime`
-        # @return [String]
-        attr_accessor :acknowledgement_time
-      
-        # Business justification provided towards the acknowledgement of the violation.
-        # Corresponds to the JSON property `comment`
-        # @return [String]
-        attr_accessor :comment
-      
-        # Email address of the user (or service account) who acknowledged the violation.
-        # Corresponds to the JSON property `principalEmail`
-        # @return [String]
-        attr_accessor :principal_email
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @acknowledgement_time = args[:acknowledgement_time] if args.key?(:acknowledgement_time)
-          @comment = args[:comment] if args.key?(:comment)
-          @principal_email = args[:principal_email] if args.key?(:principal_email)
         end
       end
       
@@ -478,6 +441,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :compliant_but_disallowed_services
       
+        # Controls enabled to the user associated with this workload
+        # Corresponds to the JSON property `controls`
+        # @return [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControls]
+        attr_accessor :controls
+      
         # Output only. Immutable. The Workload creation timestamp.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -597,6 +565,7 @@ module Google
           @compliance_regime = args[:compliance_regime] if args.key?(:compliance_regime)
           @compliance_status = args[:compliance_status] if args.key?(:compliance_status)
           @compliant_but_disallowed_services = args[:compliant_but_disallowed_services] if args.key?(:compliant_but_disallowed_services)
+          @controls = args[:controls] if args.key?(:controls)
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @ekm_provisioning_response = args[:ekm_provisioning_response] if args.key?(:ekm_provisioning_response)
@@ -634,6 +603,51 @@ module Google
         # Update properties of this object
         def update!(**args)
           @kms_settings = args[:kms_settings] if args.key?(:kms_settings)
+        end
+      end
+      
+      # Controls enabled to the user associated with this workload
+      class GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControls
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Org policies currently applied by this Assured Workload
+        # Corresponds to the JSON property `appliedOrgPolicies`
+        # @return [Array<Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControl>]
+        attr_accessor :applied_org_policies
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @applied_org_policies = args[:applied_org_policies] if args.key?(:applied_org_policies)
+        end
+      end
+      
+      # An org policy control applied by Assured Workloads
+      class GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControl
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Constraint name of the org policy control Example: constraints/
+        # gcp.resourcelocations
+        # Corresponds to the JSON property `constraint`
+        # @return [String]
+        attr_accessor :constraint
+      
+        # Output only. Org policy version
+        # Corresponds to the JSON property `version`
+        # @return [Fixnum]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @constraint = args[:constraint] if args.key?(:constraint)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
