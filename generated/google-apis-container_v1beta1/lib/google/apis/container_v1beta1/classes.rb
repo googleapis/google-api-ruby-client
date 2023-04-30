@@ -119,6 +119,11 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::GcpFilestoreCsiDriverConfig]
         attr_accessor :gcp_filestore_csi_driver_config
       
+        # Configuration for the Cloud Storage Fuse CSI driver.
+        # Corresponds to the JSON property `gcsFuseCsiDriverConfig`
+        # @return [Google::Apis::ContainerV1beta1::GcsFuseCsiDriverConfig]
+        attr_accessor :gcs_fuse_csi_driver_config
+      
         # Configuration for the Backup for GKE Agent.
         # Corresponds to the JSON property `gkeBackupAgentConfig`
         # @return [Google::Apis::ContainerV1beta1::GkeBackupAgentConfig]
@@ -170,6 +175,7 @@ module Google
           @dns_cache_config = args[:dns_cache_config] if args.key?(:dns_cache_config)
           @gce_persistent_disk_csi_driver_config = args[:gce_persistent_disk_csi_driver_config] if args.key?(:gce_persistent_disk_csi_driver_config)
           @gcp_filestore_csi_driver_config = args[:gcp_filestore_csi_driver_config] if args.key?(:gcp_filestore_csi_driver_config)
+          @gcs_fuse_csi_driver_config = args[:gcs_fuse_csi_driver_config] if args.key?(:gcs_fuse_csi_driver_config)
           @gke_backup_agent_config = args[:gke_backup_agent_config] if args.key?(:gke_backup_agent_config)
           @horizontal_pod_autoscaling = args[:horizontal_pod_autoscaling] if args.key?(:horizontal_pod_autoscaling)
           @http_load_balancing = args[:http_load_balancing] if args.key?(:http_load_balancing)
@@ -2288,6 +2294,26 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Whether the GCP Filestore CSI driver is enabled for this cluster.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
+      # Configuration for the Cloud Storage Fuse CSI driver.
+      class GcsFuseCsiDriverConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether the Cloud Storage Fuse CSI driver is enabled for this cluster.
         # Corresponds to the JSON property `enabled`
         # @return [Boolean]
         attr_accessor :enabled
