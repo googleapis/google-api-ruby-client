@@ -2148,6 +2148,7 @@ module Google
           property :name, as: 'name'
           property :pending_frame_count, as: 'pendingFrameCount'
           property :priority, as: 'priority'
+          property :state, as: 'state'
           property :type, as: 'type'
           property :update_time, as: 'updateTime'
         end
