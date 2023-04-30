@@ -622,6 +622,7 @@ module Google
       
           property :service, as: 'service'
           property :service_account, as: 'serviceAccount'
+          property :session_affinity, as: 'sessionAffinity'
           property :timeout, as: 'timeout'
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
@@ -654,6 +655,7 @@ module Google
           property :scaling, as: 'scaling', class: Google::Apis::RunV2::GoogleCloudRunV2RevisionScaling, decorator: Google::Apis::RunV2::GoogleCloudRunV2RevisionScaling::Representation
       
           property :service_account, as: 'serviceAccount'
+          property :session_affinity, as: 'sessionAffinity'
           property :timeout, as: 'timeout'
           collection :volumes, as: 'volumes', class: Google::Apis::RunV2::GoogleCloudRunV2Volume, decorator: Google::Apis::RunV2::GoogleCloudRunV2Volume::Representation
       
