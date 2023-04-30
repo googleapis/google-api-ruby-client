@@ -1485,6 +1485,8 @@ module Google
       
           property :attribution_settings, as: 'attributionSettings', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAttributionSettings, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAttributionSettings::Representation
       
+          property :audience, as: 'audience', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudience, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudience::Representation
+      
           property :bigquery_link, as: 'bigqueryLink', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaBigQueryLink, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaBigQueryLink::Representation
       
           property :channel_group, as: 'channelGroup', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaChannelGroup, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaChannelGroup::Representation
