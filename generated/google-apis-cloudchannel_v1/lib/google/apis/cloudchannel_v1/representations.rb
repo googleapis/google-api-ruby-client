@@ -1069,6 +1069,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :association_info, as: 'associationInfo', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1AssociationInfo, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1AssociationInfo::Representation
       
+          property :billing_account, as: 'billingAccount'
           property :commitment_settings, as: 'commitmentSettings', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1CommitmentSettings, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1CommitmentSettings::Representation
       
           property :create_time, as: 'createTime'
@@ -1857,6 +1858,7 @@ module Google
           property :assigned_units, as: 'assignedUnits'
           property :association_info, as: 'associationInfo', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1alpha1AssociationInfo, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1alpha1AssociationInfo::Representation
       
+          property :billing_account, as: 'billingAccount'
           property :channel_partner_id, as: 'channelPartnerId'
           property :commitment_settings, as: 'commitmentSettings', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1alpha1CommitmentSettings, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1alpha1CommitmentSettings::Representation
       
