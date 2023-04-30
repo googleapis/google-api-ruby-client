@@ -1293,6 +1293,7 @@ module Google
       class GoogleCloudDataplexV1DataProfileSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :sampling_percent, as: 'samplingPercent'
         end
       end
       
@@ -1423,6 +1424,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :rules, as: 'rules', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRule, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRule::Representation
       
+          property :sampling_percent, as: 'samplingPercent'
         end
       end
       
