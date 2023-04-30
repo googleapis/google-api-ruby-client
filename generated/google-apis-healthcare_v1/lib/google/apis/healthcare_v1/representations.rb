@@ -310,6 +310,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FhirNotificationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FhirStore
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1296,6 +1302,15 @@ module Google
         end
       end
       
+      class FhirNotificationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :pubsub_topic, as: 'pubsubTopic'
+          property :send_full_resource, as: 'sendFullResource'
+          property :send_previous_resource_on_delete, as: 'sendPreviousResourceOnDelete'
+        end
+      end
+      
       class FhirStore
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1307,6 +1322,8 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :notification_config, as: 'notificationConfig', class: Google::Apis::HealthcareV1::NotificationConfig, decorator: Google::Apis::HealthcareV1::NotificationConfig::Representation
+      
+          collection :notification_configs, as: 'notificationConfigs', class: Google::Apis::HealthcareV1::FhirNotificationConfig, decorator: Google::Apis::HealthcareV1::FhirNotificationConfig::Representation
       
           collection :stream_configs, as: 'streamConfigs', class: Google::Apis::HealthcareV1::StreamConfig, decorator: Google::Apis::HealthcareV1::StreamConfig::Representation
       
