@@ -2734,6 +2734,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :additional_variables, as: 'additionalVariables', class: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1ConfigVariable, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1ConfigVariable::Representation
       
+          property :auth_key, as: 'authKey'
           property :auth_type, as: 'authType'
           property :oauth2_auth_code_flow, as: 'oauth2AuthCodeFlow', class: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlow, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlow::Representation
       
@@ -2851,6 +2852,7 @@ module Google
       
           property :status, as: 'status', class: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1ConnectionStatus, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1ConnectionStatus::Representation
       
+          property :subscription_type, as: 'subscriptionType'
           property :suspended, as: 'suspended'
           property :update_time, as: 'updateTime'
         end
@@ -3909,6 +3911,7 @@ module Google
       
           property :priority, as: 'priority'
           property :request_id, as: 'requestId'
+          property :resource_name, as: 'resourceName'
           property :scheduled_time, :numeric_string => true, as: 'scheduledTime'
           property :test_mode, as: 'testMode'
           property :trigger_id, as: 'triggerId'
