@@ -1935,6 +1935,14 @@ module Google
         # @return [String]
         attr_accessor :repo_type
       
+        # The fully qualified resource name of the Repo API repository. Either uri or
+        # repository can be specified. If unspecified, the repo from which the trigger
+        # invocation originated is assumed to be the repo from which to read the
+        # specified path.
+        # Corresponds to the JSON property `repository`
+        # @return [String]
+        attr_accessor :repository
+      
         # The branch, tag, arbitrary ref, or SHA version of the repo to use when
         # resolving the filename (optional). This field respects the same syntax/
         # resolution as described here: https://git-scm.com/docs/gitrevisions If
@@ -1961,6 +1969,7 @@ module Google
           @github_enterprise_config = args[:github_enterprise_config] if args.key?(:github_enterprise_config)
           @path = args[:path] if args.key?(:path)
           @repo_type = args[:repo_type] if args.key?(:repo_type)
+          @repository = args[:repository] if args.key?(:repository)
           @revision = args[:revision] if args.key?(:revision)
           @uri = args[:uri] if args.key?(:uri)
         end
@@ -2476,6 +2485,12 @@ module Google
         # @return [String]
         attr_accessor :repo_type
       
+        # The qualified resource name of the Repo API repository Either uri or
+        # repository can be specified and is required.
+        # Corresponds to the JSON property `repository`
+        # @return [String]
+        attr_accessor :repository
+      
         # The URI of the repo. Either uri or repository can be specified and is required.
         # Corresponds to the JSON property `uri`
         # @return [String]
@@ -2491,6 +2506,7 @@ module Google
           @github_enterprise_config = args[:github_enterprise_config] if args.key?(:github_enterprise_config)
           @ref = args[:ref] if args.key?(:ref)
           @repo_type = args[:repo_type] if args.key?(:repo_type)
+          @repository = args[:repository] if args.key?(:repository)
           @uri = args[:uri] if args.key?(:uri)
         end
       end
