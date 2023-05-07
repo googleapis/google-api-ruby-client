@@ -135,6 +135,31 @@ module Google
         end
       end
       
+      # A Keyword criterion segment.
+      class GoogleAdsSearchads360V0CommonKeyword
+        include Google::Apis::Core::Hashable
+      
+        # The AdGroupCriterion resource name.
+        # Corresponds to the JSON property `adGroupCriterion`
+        # @return [String]
+        attr_accessor :ad_group_criterion
+      
+        # A keyword criterion.
+        # Corresponds to the JSON property `info`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonKeywordInfo]
+        attr_accessor :info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ad_group_criterion = args[:ad_group_criterion] if args.key?(:ad_group_criterion)
+          @info = args[:info] if args.key?(:info)
+        end
+      end
+      
       # A keyword criterion.
       class GoogleAdsSearchads360V0CommonKeywordInfo
         include Google::Apis::Core::Hashable
@@ -964,14 +989,150 @@ module Google
         end
       end
       
+      # An expanded dynamic search ad.
+      class GoogleAdsSearchads360V0CommonSearchAds360ExpandedDynamicSearchAdInfo
+        include Google::Apis::Core::Hashable
+      
+        # The tracking id of the ad.
+        # Corresponds to the JSON property `adTrackingId`
+        # @return [Fixnum]
+        attr_accessor :ad_tracking_id
+      
+        # The first line of the ad's description.
+        # Corresponds to the JSON property `description1`
+        # @return [String]
+        attr_accessor :description1
+      
+        # The second line of the ad's description.
+        # Corresponds to the JSON property `description2`
+        # @return [String]
+        attr_accessor :description2
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ad_tracking_id = args[:ad_tracking_id] if args.key?(:ad_tracking_id)
+          @description1 = args[:description1] if args.key?(:description1)
+          @description2 = args[:description2] if args.key?(:description2)
+        end
+      end
+      
+      # A Search Ads 360 expanded text ad.
+      class GoogleAdsSearchads360V0CommonSearchAds360ExpandedTextAdInfo
+        include Google::Apis::Core::Hashable
+      
+        # The tracking id of the ad.
+        # Corresponds to the JSON property `adTrackingId`
+        # @return [Fixnum]
+        attr_accessor :ad_tracking_id
+      
+        # The first line of the ad's description.
+        # Corresponds to the JSON property `description1`
+        # @return [String]
+        attr_accessor :description1
+      
+        # The second line of the ad's description.
+        # Corresponds to the JSON property `description2`
+        # @return [String]
+        attr_accessor :description2
+      
+        # The headline of the ad.
+        # Corresponds to the JSON property `headline`
+        # @return [String]
+        attr_accessor :headline
+      
+        # The second headline of the ad.
+        # Corresponds to the JSON property `headline2`
+        # @return [String]
+        attr_accessor :headline2
+      
+        # The third headline of the ad.
+        # Corresponds to the JSON property `headline3`
+        # @return [String]
+        attr_accessor :headline3
+      
+        # Text appended to the auto-generated visible URL with a delimiter.
+        # Corresponds to the JSON property `path1`
+        # @return [String]
+        attr_accessor :path1
+      
+        # Text appended to path1 with a delimiter.
+        # Corresponds to the JSON property `path2`
+        # @return [String]
+        attr_accessor :path2
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ad_tracking_id = args[:ad_tracking_id] if args.key?(:ad_tracking_id)
+          @description1 = args[:description1] if args.key?(:description1)
+          @description2 = args[:description2] if args.key?(:description2)
+          @headline = args[:headline] if args.key?(:headline)
+          @headline2 = args[:headline2] if args.key?(:headline2)
+          @headline3 = args[:headline3] if args.key?(:headline3)
+          @path1 = args[:path1] if args.key?(:path1)
+          @path2 = args[:path2] if args.key?(:path2)
+        end
+      end
+      
+      # A Search Ads 360 product ad.
+      class GoogleAdsSearchads360V0CommonSearchAds360ProductAdInfo
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A Search Ads 360 responsive search ad.
+      class GoogleAdsSearchads360V0CommonSearchAds360ResponsiveSearchAdInfo
+        include Google::Apis::Core::Hashable
+      
+        # The tracking id of the ad.
+        # Corresponds to the JSON property `adTrackingId`
+        # @return [Fixnum]
+        attr_accessor :ad_tracking_id
+      
+        # Text appended to the auto-generated visible URL with a delimiter.
+        # Corresponds to the JSON property `path1`
+        # @return [String]
+        attr_accessor :path1
+      
+        # Text appended to path1 with a delimiter.
+        # Corresponds to the JSON property `path2`
+        # @return [String]
+        attr_accessor :path2
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ad_tracking_id = args[:ad_tracking_id] if args.key?(:ad_tracking_id)
+          @path1 = args[:path1] if args.key?(:path1)
+          @path2 = args[:path2] if args.key?(:path2)
+        end
+      end
+      
       # A Search Ads 360 text ad.
       class GoogleAdsSearchads360V0CommonSearchAds360TextAdInfo
         include Google::Apis::Core::Hashable
       
         # The tracking id of the ad.
-        # Corresponds to the JSON property `adTrackId`
+        # Corresponds to the JSON property `adTrackingId`
         # @return [Fixnum]
-        attr_accessor :ad_track_id
+        attr_accessor :ad_tracking_id
       
         # The first line of the ad's description.
         # Corresponds to the JSON property `description1`
@@ -1004,7 +1165,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @ad_track_id = args[:ad_track_id] if args.key?(:ad_track_id)
+          @ad_tracking_id = args[:ad_tracking_id] if args.key?(:ad_tracking_id)
           @description1 = args[:description1] if args.key?(:description1)
           @description2 = args[:description2] if args.key?(:description2)
           @display_mobile_url = args[:display_mobile_url] if args.key?(:display_mobile_url)
@@ -1047,6 +1208,11 @@ module Google
         # @return [String]
         attr_accessor :device
       
+        # A Keyword criterion segment.
+        # Corresponds to the JSON property `keyword`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonKeyword]
+        attr_accessor :keyword
+      
         # Month as represented by the date of the first day of a month. Formatted as
         # yyyy-MM-dd.
         # Corresponds to the JSON property `month`
@@ -1083,6 +1249,7 @@ module Google
           @date = args[:date] if args.key?(:date)
           @day_of_week = args[:day_of_week] if args.key?(:day_of_week)
           @device = args[:device] if args.key?(:device)
+          @keyword = args[:keyword] if args.key?(:keyword)
           @month = args[:month] if args.key?(:month)
           @quarter = args[:quarter] if args.key?(:quarter)
           @week = args[:week] if args.key?(:week)
@@ -2083,6 +2250,16 @@ module Google
         # @return [String]
         attr_accessor :display_url
       
+        # An expanded dynamic search ad.
+        # Corresponds to the JSON property `expandedDynamicSearchAd`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonSearchAds360ExpandedDynamicSearchAdInfo]
+        attr_accessor :expanded_dynamic_search_ad
+      
+        # A Search Ads 360 expanded text ad.
+        # Corresponds to the JSON property `expandedTextAd`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonSearchAds360ExpandedTextAdInfo]
+        attr_accessor :expanded_text_ad
+      
         # The list of possible final URLs after all cross-domain redirects for the ad.
         # Corresponds to the JSON property `finalUrls`
         # @return [Array<String>]
@@ -2101,11 +2278,21 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # A Search Ads 360 product ad.
+        # Corresponds to the JSON property `productAd`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonSearchAds360ProductAdInfo]
+        attr_accessor :product_ad
+      
         # Immutable. The resource name of the ad. Ad resource names have the form: `
         # customers/`customer_id`/ads/`ad_id``
         # Corresponds to the JSON property `resourceName`
         # @return [String]
         attr_accessor :resource_name
+      
+        # A Search Ads 360 responsive search ad.
+        # Corresponds to the JSON property `responsiveSearchAd`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonSearchAds360ResponsiveSearchAdInfo]
+        attr_accessor :responsive_search_ad
       
         # A Search Ads 360 text ad.
         # Corresponds to the JSON property `textAd`
@@ -2124,10 +2311,14 @@ module Google
         # Update properties of this object
         def update!(**args)
           @display_url = args[:display_url] if args.key?(:display_url)
+          @expanded_dynamic_search_ad = args[:expanded_dynamic_search_ad] if args.key?(:expanded_dynamic_search_ad)
+          @expanded_text_ad = args[:expanded_text_ad] if args.key?(:expanded_text_ad)
           @final_urls = args[:final_urls] if args.key?(:final_urls)
           @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
+          @product_ad = args[:product_ad] if args.key?(:product_ad)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @responsive_search_ad = args[:responsive_search_ad] if args.key?(:responsive_search_ad)
           @text_ad = args[:text_ad] if args.key?(:text_ad)
           @type = args[:type] if args.key?(:type)
         end
