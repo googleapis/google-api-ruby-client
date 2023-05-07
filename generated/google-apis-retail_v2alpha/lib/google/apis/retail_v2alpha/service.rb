@@ -1447,7 +1447,7 @@ module Google
         # Creates a MerchantCenterAccountLink.
         # @param [String] parent
         #   Required. The branch resource where this MerchantCenterAccountLink will be
-        #   created. Format: projects/`PROJECT_NUMBER`/locations/global/catalogs/`
+        #   created. Format: `projects/`PROJECT_NUMBER`/locations/global/catalogs/`
         #   CATALOG_ID``
         # @param [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaMerchantCenterAccountLink] google_cloud_retail_v2alpha_merchant_center_account_link_object
         # @param [String] fields
@@ -1482,9 +1482,9 @@ module Google
         # Deletes a MerchantCenterAccountLink. If the MerchantCenterAccountLink to
         # delete does not exist, a NOT_FOUND error is returned.
         # @param [String] name
-        #   Required. Full resource name. Format: projects/`project_number`/locations/`
+        #   Required. Full resource name. Format: `projects/`project_number`/locations/`
         #   location_id`/catalogs/`catalog_id`/merchantCenterAccountLinks/`
-        #   merchant_center_account_link_id`
+        #   merchant_center_account_link_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1514,8 +1514,8 @@ module Google
         
         # Lists all MerchantCenterAccountLinks under the specified parent Catalog.
         # @param [String] parent
-        #   Required. The parent Catalog of the resource. It must match this format:
-        #   projects/`PROJECT_NUMBER`/locations/global/catalogs/`CATALOG_ID`
+        #   Required. The parent Catalog of the resource. It must match this format: `
+        #   projects/`PROJECT_NUMBER`/locations/global/catalogs/`CATALOG_ID``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
