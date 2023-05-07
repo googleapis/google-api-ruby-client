@@ -1590,6 +1590,12 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Regex]
         attr_accessor :regex
       
+        # Score is a summary of all elements in the data profile. A higher number means
+        # more sensitive.
+        # Corresponds to the JSON property `sensitivityScore`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2SensitivityScore]
+        attr_accessor :sensitivity_score
+      
         # A reference to a StoredInfoType to use with scanning.
         # Corresponds to the JSON property `storedType`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2StoredType]
@@ -1618,6 +1624,7 @@ module Google
           @info_type = args[:info_type] if args.key?(:info_type)
           @likelihood = args[:likelihood] if args.key?(:likelihood)
           @regex = args[:regex] if args.key?(:regex)
+          @sensitivity_score = args[:sensitivity_score] if args.key?(:sensitivity_score)
           @stored_type = args[:stored_type] if args.key?(:stored_type)
           @surrogate_type = args[:surrogate_type] if args.key?(:surrogate_type)
         end
@@ -3470,6 +3477,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Score is a summary of all elements in the data profile. A higher number means
+        # more sensitive.
+        # Corresponds to the JSON property `sensitivityScore`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2SensitivityScore]
+        attr_accessor :sensitivity_score
+      
         # Optional version name for this InfoType.
         # Corresponds to the JSON property `version`
         # @return [String]
@@ -3482,6 +3495,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @name = args[:name] if args.key?(:name)
+          @sensitivity_score = args[:sensitivity_score] if args.key?(:sensitivity_score)
           @version = args[:version] if args.key?(:version)
         end
       end
