@@ -76,12 +76,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Binary
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class BuildOccurrence
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -376,6 +370,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PackageVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ProjectRepoId
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -401,6 +401,24 @@ module Google
       end
       
       class RepoId
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SbomReferenceOccurrence
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SbomReferenceIntotoPayload
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SbomReferenceIntotoPredicate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -579,14 +597,6 @@ module Google
           property :serialized_payload, :base64 => true, as: 'serializedPayload'
           collection :signatures, as: 'signatures', class: Google::Apis::OndemandscanningV1beta1::Signature, decorator: Google::Apis::OndemandscanningV1beta1::Signature::Representation
       
-        end
-      end
-      
-      class Binary
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :name, as: 'name'
-          property :version, as: 'version'
         end
       end
       
@@ -1056,6 +1066,8 @@ module Google
       
           property :remediation, as: 'remediation'
           property :resource_uri, as: 'resourceUri'
+          property :sbom_reference, as: 'sbomReference', class: Google::Apis::OndemandscanningV1beta1::SbomReferenceOccurrence, decorator: Google::Apis::OndemandscanningV1beta1::SbomReferenceOccurrence::Representation
+      
           property :update_time, as: 'updateTime'
           property :upgrade, as: 'upgrade', class: Google::Apis::OndemandscanningV1beta1::UpgradeOccurrence, decorator: Google::Apis::OndemandscanningV1beta1::UpgradeOccurrence::Representation
       
@@ -1080,7 +1092,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :architecture, as: 'architecture'
-          property :binary, as: 'binary', class: Google::Apis::OndemandscanningV1beta1::Binary, decorator: Google::Apis::OndemandscanningV1beta1::Binary::Representation
+          property :binary_version, as: 'binaryVersion', class: Google::Apis::OndemandscanningV1beta1::PackageVersion, decorator: Google::Apis::OndemandscanningV1beta1::PackageVersion::Representation
       
           property :cpe_uri, as: 'cpeUri'
           collection :dependency_chain, as: 'dependencyChain', class: Google::Apis::OndemandscanningV1beta1::LanguagePackageDependency, decorator: Google::Apis::OndemandscanningV1beta1::LanguagePackageDependency::Representation
@@ -1095,6 +1107,8 @@ module Google
           property :package, as: 'package'
           property :package_type, as: 'packageType'
           collection :patched_cve, as: 'patchedCve'
+          property :source_version, as: 'sourceVersion', class: Google::Apis::OndemandscanningV1beta1::PackageVersion, decorator: Google::Apis::OndemandscanningV1beta1::PackageVersion::Representation
+      
           property :unused, as: 'unused'
           property :version, as: 'version'
         end
@@ -1132,6 +1146,14 @@ module Google
           property :package_type, as: 'packageType'
           property :version, as: 'version', class: Google::Apis::OndemandscanningV1beta1::Version, decorator: Google::Apis::OndemandscanningV1beta1::Version::Representation
       
+        end
+      end
+      
+      class PackageVersion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :version, as: 'version'
         end
       end
       
@@ -1178,6 +1200,39 @@ module Google
           property :project_repo_id, as: 'projectRepoId', class: Google::Apis::OndemandscanningV1beta1::ProjectRepoId, decorator: Google::Apis::OndemandscanningV1beta1::ProjectRepoId::Representation
       
           property :uid, as: 'uid'
+        end
+      end
+      
+      class SbomReferenceOccurrence
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :payload, as: 'payload', class: Google::Apis::OndemandscanningV1beta1::SbomReferenceIntotoPayload, decorator: Google::Apis::OndemandscanningV1beta1::SbomReferenceIntotoPayload::Representation
+      
+          property :payload_type, as: 'payloadType'
+          collection :signatures, as: 'signatures', class: Google::Apis::OndemandscanningV1beta1::EnvelopeSignature, decorator: Google::Apis::OndemandscanningV1beta1::EnvelopeSignature::Representation
+      
+        end
+      end
+      
+      class SbomReferenceIntotoPayload
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :_type, as: '_type'
+          property :predicate, as: 'predicate', class: Google::Apis::OndemandscanningV1beta1::SbomReferenceIntotoPredicate, decorator: Google::Apis::OndemandscanningV1beta1::SbomReferenceIntotoPredicate::Representation
+      
+          property :predicate_type, as: 'predicateType'
+          collection :subject, as: 'subject', class: Google::Apis::OndemandscanningV1beta1::Subject, decorator: Google::Apis::OndemandscanningV1beta1::Subject::Representation
+      
+        end
+      end
+      
+      class SbomReferenceIntotoPredicate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :digest, as: 'digest'
+          property :location, as: 'location'
+          property :mime_type, as: 'mimeType'
+          property :referrer_id, as: 'referrerId'
         end
       end
       
