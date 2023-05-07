@@ -1221,6 +1221,11 @@ module Google
         attr_accessor :desired_enable_private_endpoint
         alias_method :desired_enable_private_endpoint?, :desired_enable_private_endpoint
       
+        # Fleet is the fleet configuration for the cluster.
+        # Corresponds to the JSON property `desiredFleet`
+        # @return [Google::Apis::ContainerV1::Fleet]
+        attr_accessor :desired_fleet
+      
         # GatewayAPIConfig contains the desired config of Gateway API on this cluster.
         # Corresponds to the JSON property `desiredGatewayApiConfig`
         # @return [Google::Apis::ContainerV1::GatewayApiConfig]
@@ -1443,6 +1448,7 @@ module Google
           @desired_default_snat_status = args[:desired_default_snat_status] if args.key?(:desired_default_snat_status)
           @desired_dns_config = args[:desired_dns_config] if args.key?(:desired_dns_config)
           @desired_enable_private_endpoint = args[:desired_enable_private_endpoint] if args.key?(:desired_enable_private_endpoint)
+          @desired_fleet = args[:desired_fleet] if args.key?(:desired_fleet)
           @desired_gateway_api_config = args[:desired_gateway_api_config] if args.key?(:desired_gateway_api_config)
           @desired_gcfs_config = args[:desired_gcfs_config] if args.key?(:desired_gcfs_config)
           @desired_identity_service_config = args[:desired_identity_service_config] if args.key?(:desired_identity_service_config)
