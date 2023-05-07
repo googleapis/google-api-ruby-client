@@ -589,7 +589,8 @@ module Google
         attr_accessor :avro_file_format
       
         # The maximum duration for which new events are added before a file is closed
-        # and a new file is created.
+        # and a new file is created. Values within the range of 15-60 seconds are
+        # allowed.
         # Corresponds to the JSON property `fileRotationInterval`
         # @return [String]
         attr_accessor :file_rotation_interval
@@ -876,7 +877,7 @@ module Google
         end
       end
       
-      # A resource that represents Google Cloud Platform location.
+      # A resource that represents a Google Cloud location.
       class Location
         include Google::Apis::Core::Hashable
       
