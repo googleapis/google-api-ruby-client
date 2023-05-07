@@ -208,7 +208,7 @@ module Google
       # minutes * Default Data Reporting Frequency: 3 hours - Policy Controlled: Yes *
       # Cache: If the device is offline, the collected data is stored locally, and
       # will be reported when the device is next online: No * Reported for affiliated
-      # users only: N/A
+      # users only: N/A * Granular permission needed: TELEMETRY_API_AUDIO_REPORT
       class GoogleChromeManagementV1AudioStatusReport
         include Google::Apis::Core::Hashable
       
@@ -272,7 +272,7 @@ module Google
       # Default Data Reporting Frequency: 3 hours - Policy Controlled: Yes * Cache: If
       # the device is offline, the collected data is stored locally, and will be
       # reported when the device is next online: No * Reported for affiliated users
-      # only: N/A
+      # only: N/A * Granular permission needed: TELEMETRY_API_BATTERY_INFO
       class GoogleChromeManagementV1BatteryInfo
         include Google::Apis::Core::Hashable
       
@@ -404,7 +404,7 @@ module Google
       # Upload * Default Data Reporting Frequency: 3 hours - Policy Controlled: Yes *
       # Cache: If the device is offline, the collected data is stored locally, and
       # will be reported when the device is next online: No * Reported for affiliated
-      # users only: N/A
+      # users only: N/A * Granular permission needed: TELEMETRY_API_BATTERY_REPORT
       class GoogleChromeManagementV1BatteryStatusReport
         include Google::Apis::Core::Hashable
       
@@ -461,7 +461,7 @@ module Google
       # event * Default Data Reporting Frequency: 3 hours - Policy Controlled: Yes *
       # Cache: If the device is offline, the collected data is stored locally, and
       # will be reported when the device is next online: Yes * Reported for affiliated
-      # users only: N/A
+      # users only: N/A * Granular permission needed: TELEMETRY_API_OS_REPORT
       class GoogleChromeManagementV1BootPerformanceReport
         include Google::Apis::Core::Hashable
       
@@ -996,7 +996,7 @@ module Google
       # Default Data Reporting Frequency: 3 hours - Policy Controlled: Yes * Cache: If
       # the device is offline, the collected data is stored locally, and will be
       # reported when the device is next online: No * Reported for affiliated users
-      # only: N/A
+      # only: N/A * Granular permission needed: TELEMETRY_API_CPU_INFO
       class GoogleChromeManagementV1CpuInfo
         include Google::Apis::Core::Hashable
       
@@ -1057,7 +1057,8 @@ module Google
       # Frequency: Every 10 minutes * Default Data Reporting Frequency: 3 hours -
       # Policy Controlled: Yes * Cache: If the device is offline, the collected data
       # is stored locally, and will be reported when the device is next online: No *
-      # Reported for affiliated users only: N/A
+      # Reported for affiliated users only: N/A * Granular permission needed:
+      # TELEMETRY_API_CPU_REPORT
       class GoogleChromeManagementV1CpuStatusReport
         include Google::Apis::Core::Hashable
       
@@ -1496,7 +1497,8 @@ module Google
       # Collection Frequency: Only at Upload * Default Data Reporting Frequency: 3
       # hours - Policy Controlled: Yes * Cache: If the device is offline, the
       # collected data is stored locally, and will be reported when the device is next
-      # online: No * Reported for affiliated users only: N/A
+      # online: No * Reported for affiliated users only: N/A * Granular permission
+      # needed: TELEMETRY_API_GRAPHICS_INFO
       class GoogleChromeManagementV1GraphicsInfo
         include Google::Apis::Core::Hashable
       
@@ -1541,7 +1543,8 @@ module Google
       # Frequency: 3 hours. * Default Data Reporting Frequency: 3 hours - Policy
       # Controlled: Yes * Cache: If the device is offline, the collected data is
       # stored locally, and will be reported when the device is next online: No *
-      # Reported for affiliated users only: N/A
+      # Reported for affiliated users only: N/A * Granular permission needed:
+      # TELEMETRY_API_GRAPHICS_REPORT
       class GoogleChromeManagementV1GraphicsStatusReport
         include Google::Apis::Core::Hashable
       
@@ -1761,7 +1764,8 @@ module Google
       # totalMemoryEncryption` - at device startup - Policy Controlled: Yes * Cache:
       # If the device is offline, the collected data is stored locally, and will be
       # reported when the device is next online: only for `totalMemoryEncryption` *
-      # Reported for affiliated users only: N/A
+      # Reported for affiliated users only: N/A * Granular permission needed:
+      # TELEMETRY_API_MEMORY_INFO
       class GoogleChromeManagementV1MemoryInfo
         include Google::Apis::Core::Hashable
       
@@ -1807,7 +1811,7 @@ module Google
       # Default Data Reporting Frequency: Every 3 hours - Policy Controlled: Yes *
       # Cache: If the device is offline, the collected data is stored locally, and
       # will be reported when the device is next online: No * Reported for affiliated
-      # users only: N/A
+      # users only: N/A * Granular permission needed: TELEMETRY_API_MEMORY_REPORT
       class GoogleChromeManagementV1MemoryStatusReport
         include Google::Apis::Core::Hashable
       
@@ -1904,7 +1908,8 @@ module Google
       end
       
       # Network testing results to determine the health of the device's network
-      # connection, for example whether the HTTPS latency is high or normal.
+      # connection, for example whether the HTTPS latency is high or normal. *
+      # Granular permission needed: TELEMETRY_API_NETWORK_REPORT
       class GoogleChromeManagementV1NetworkDiagnosticsReport
         include Google::Apis::Core::Hashable
       
@@ -1937,7 +1942,8 @@ module Google
       # device startup * Default Data Reporting Frequency: At device startup - Policy
       # Controlled: Yes * Cache: If the device is offline, the collected data is
       # stored locally, and will be reported when the device is next online: Yes *
-      # Reported for affiliated users only: N/A
+      # Reported for affiliated users only: N/A * Granular permission needed:
+      # TELEMETRY_API_NETWORK_INFO
       class GoogleChromeManagementV1NetworkInfo
         include Google::Apis::Core::Hashable
       
@@ -1963,7 +1969,7 @@ module Google
       # Default Data Reporting Frequency: 3 hours - Policy Controlled: Yes * Cache:
       # If the device is offline, the collected data is stored locally, and will be
       # reported when the device is next online: Yes * Reported for affiliated users
-      # only: Yes
+      # only: Yes * Granular permission needed: TELEMETRY_API_NETWORK_REPORT
       class GoogleChromeManagementV1NetworkStatusReport
         include Google::Apis::Core::Hashable
       
@@ -2070,7 +2076,8 @@ module Google
       # Collection Frequency: Only at Upload * Default Data Reporting Frequency: 3
       # hours - Policy Controlled: Yes * Cache: If the device is offline, the
       # collected data is stored locally, and will be reported when the device is next
-      # online: No * Reported for affiliated users only: N/A
+      # online: No * Reported for affiliated users only: N/A * Granular permission
+      # needed: TELEMETRY_API_OS_REPORT
       class GoogleChromeManagementV1OsUpdateStatus
         include Google::Apis::Core::Hashable
       
@@ -2123,7 +2130,8 @@ module Google
         end
       end
       
-      # Peripherals report.
+      # Peripherals report. * Granular permission needed:
+      # TELEMETRY_API_PERIPHERALS_REPORT
       class GoogleChromeManagementV1PeripheralsReport
         include Google::Apis::Core::Hashable
       
@@ -2155,7 +2163,7 @@ module Google
       # at Upload * Default Data Reporting Frequency: 3 hours - Policy Controlled: Yes
       # * Cache: If the device is offline, the collected data is stored locally, and
       # will be reported when the device is next online: No * Reported for affiliated
-      # users only: N/A
+      # users only: N/A * Granular permission needed: TELEMETRY_API_STORAGE_INFO
       class GoogleChromeManagementV1StorageInfo
         include Google::Apis::Core::Hashable
       
@@ -2224,7 +2232,7 @@ module Google
       # at Upload * Default Data Reporting Frequency: 3 hours - Policy Controlled: Yes
       # * Cache: If the device is offline, the collected data is stored locally, and
       # will be reported when the device is next online: No * Reported for affiliated
-      # users only: N/A
+      # users only: N/A * Granular permission needed: TELEMETRY_API_STORAGE_REPORT
       class GoogleChromeManagementV1StorageStatusReport
         include Google::Apis::Core::Hashable
       
@@ -2250,7 +2258,8 @@ module Google
       end
       
       # `TelemetryAudioSevereUnderrunEvent` is triggered when a audio devices run out
-      # of buffer data for more than 5 seconds.
+      # of buffer data for more than 5 seconds. * Granular permission needed:
+      # TELEMETRY_API_AUDIO_REPORT
       class GoogleChromeManagementV1TelemetryAudioSevereUnderrunEvent
         include Google::Apis::Core::Hashable
       
@@ -2263,7 +2272,8 @@ module Google
         end
       end
       
-      # Telemetry data collected from a managed device.
+      # Telemetry data collected from a managed device. * Granular permission needed:
+      # TELEMETRY_API_DEVICE
       class GoogleChromeManagementV1TelemetryDevice
         include Google::Apis::Core::Hashable
       
@@ -2317,7 +2327,8 @@ module Google
         # Collection Frequency: Only at Upload * Default Data Reporting Frequency: 3
         # hours - Policy Controlled: Yes * Cache: If the device is offline, the
         # collected data is stored locally, and will be reported when the device is next
-        # online: No * Reported for affiliated users only: N/A
+        # online: No * Reported for affiliated users only: N/A * Granular permission
+        # needed: TELEMETRY_API_GRAPHICS_INFO
         # Corresponds to the JSON property `graphicsInfo`
         # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1GraphicsInfo]
         attr_accessor :graphics_info
@@ -2338,7 +2349,8 @@ module Google
         # totalMemoryEncryption` - at device startup - Policy Controlled: Yes * Cache:
         # If the device is offline, the collected data is stored locally, and will be
         # reported when the device is next online: only for `totalMemoryEncryption` *
-        # Reported for affiliated users only: N/A
+        # Reported for affiliated users only: N/A * Granular permission needed:
+        # TELEMETRY_API_MEMORY_INFO
         # Corresponds to the JSON property `memoryInfo`
         # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1MemoryInfo]
         attr_accessor :memory_info
@@ -2366,7 +2378,8 @@ module Google
         # device startup * Default Data Reporting Frequency: At device startup - Policy
         # Controlled: Yes * Cache: If the device is offline, the collected data is
         # stored locally, and will be reported when the device is next online: Yes *
-        # Reported for affiliated users only: N/A
+        # Reported for affiliated users only: N/A * Granular permission needed:
+        # TELEMETRY_API_NETWORK_INFO
         # Corresponds to the JSON property `networkInfo`
         # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1NetworkInfo]
         attr_accessor :network_info
@@ -2405,7 +2418,7 @@ module Google
         # at Upload * Default Data Reporting Frequency: 3 hours - Policy Controlled: Yes
         # * Cache: If the device is offline, the collected data is stored locally, and
         # will be reported when the device is next online: No * Reported for affiliated
-        # users only: N/A
+        # users only: N/A * Granular permission needed: TELEMETRY_API_STORAGE_INFO
         # Corresponds to the JSON property `storageInfo`
         # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1StorageInfo]
         attr_accessor :storage_info
@@ -2452,7 +2465,8 @@ module Google
         end
       end
       
-      # Information about a device associated with telemetry data.
+      # Information about a device associated with telemetry data. * Granular
+      # Permission needed: TELEMETRY_API_DEVICE
       class GoogleChromeManagementV1TelemetryDeviceInfo
         include Google::Apis::Core::Hashable
       
@@ -2483,12 +2497,14 @@ module Google
         include Google::Apis::Core::Hashable
       
         # `TelemetryAudioSevereUnderrunEvent` is triggered when a audio devices run out
-        # of buffer data for more than 5 seconds.
+        # of buffer data for more than 5 seconds. * Granular permission needed:
+        # TELEMETRY_API_AUDIO_REPORT
         # Corresponds to the JSON property `audioSevereUnderrunEvent`
         # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryAudioSevereUnderrunEvent]
         attr_accessor :audio_severe_underrun_event
       
-        # Information about a device associated with telemetry data.
+        # Information about a device associated with telemetry data. * Granular
+        # Permission needed: TELEMETRY_API_DEVICE
         # Corresponds to the JSON property `device`
         # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryDeviceInfo]
         attr_accessor :device
@@ -2500,7 +2516,8 @@ module Google
       
         # Https latency routine is run periodically and `
         # TelemetryHttpsLatencyChangeEvent` is triggered if a latency problem was
-        # detected or if the device has recovered from a latency problem..
+        # detected or if the device has recovered from a latency problem. * Granular
+        # permission needed: TELEMETRY_API_NETWORK_REPORT
         # Corresponds to the JSON property `httpsLatencyChangeEvent`
         # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent]
         attr_accessor :https_latency_change_event
@@ -2516,12 +2533,13 @@ module Google
         attr_accessor :report_time
       
         # `TelemetryUsbPeripheralsEvent` is triggered USB devices are either added or
-        # removed.
+        # removed. * Granular permission needed: TELEMETRY_API_PERIPHERALS_REPORT
         # Corresponds to the JSON property `usbPeripheralsEvent`
         # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryUsbPeripheralsEvent]
         attr_accessor :usb_peripherals_event
       
-        # Information about a user associated with telemetry data.
+        # Information about a user associated with telemetry data. * Granular permission
+        # needed: TELEMETRY_API_USER
         # Corresponds to the JSON property `user`
         # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryUserInfo]
         attr_accessor :user
@@ -2545,7 +2563,8 @@ module Google
       
       # Https latency routine is run periodically and `
       # TelemetryHttpsLatencyChangeEvent` is triggered if a latency problem was
-      # detected or if the device has recovered from a latency problem..
+      # detected or if the device has recovered from a latency problem. * Granular
+      # permission needed: TELEMETRY_API_NETWORK_REPORT
       class GoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent
         include Google::Apis::Core::Hashable
       
@@ -2572,7 +2591,7 @@ module Google
       end
       
       # `TelemetryUsbPeripheralsEvent` is triggered USB devices are either added or
-      # removed.
+      # removed. * Granular permission needed: TELEMETRY_API_PERIPHERALS_REPORT
       class GoogleChromeManagementV1TelemetryUsbPeripheralsEvent
         include Google::Apis::Core::Hashable
       
@@ -2591,7 +2610,8 @@ module Google
         end
       end
       
-      # Telemetry data collected from a managed user.
+      # Telemetry data collected from a managed user. * Granular permission needed:
+      # TELEMETRY_API_USER
       class GoogleChromeManagementV1TelemetryUser
         include Google::Apis::Core::Hashable
       
@@ -2640,7 +2660,8 @@ module Google
         end
       end
       
-      # Telemetry data collected for a managed user and device.
+      # Telemetry data collected for a managed user and device. * Granular permission
+      # needed: TELEMETRY_API_DEVICE
       class GoogleChromeManagementV1TelemetryUserDevice
         include Google::Apis::Core::Hashable
       
@@ -2674,7 +2695,8 @@ module Google
         end
       end
       
-      # Information about a user associated with telemetry data.
+      # Information about a user associated with telemetry data. * Granular permission
+      # needed: TELEMETRY_API_USER
       class GoogleChromeManagementV1TelemetryUserInfo
         include Google::Apis::Core::Hashable
       
@@ -2706,7 +2728,7 @@ module Google
       # Default Data Reporting Frequency: At device startup - Policy Controlled: No *
       # Cache: If the device is offline, the collected data is stored locally, and
       # will be reported when the device is next online: Yes * Reported for affiliated
-      # users only: N/A
+      # users only: N/A * Granular permission needed: TELEMETRY_API_BUS_DEVICE_INFO
       class GoogleChromeManagementV1ThunderboltInfo
         include Google::Apis::Core::Hashable
       
