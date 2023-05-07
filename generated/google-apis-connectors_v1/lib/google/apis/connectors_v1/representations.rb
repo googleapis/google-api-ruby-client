@@ -142,6 +142,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EndpointAttachment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EnumOption
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -202,7 +208,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListEndpointAttachmentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListLocationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListManagedZonesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -239,6 +257,12 @@ module Google
       end
       
       class LockConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ManagedZone
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -541,6 +565,7 @@ module Google
       
           property :status, as: 'status', class: Google::Apis::ConnectorsV1::ConnectionStatus, decorator: Google::Apis::ConnectorsV1::ConnectionStatus::Representation
       
+          property :subscription_type, as: 'subscriptionType'
           property :suspended, as: 'suspended'
           property :update_time, as: 'updateTime'
         end
@@ -667,6 +692,19 @@ module Google
         end
       end
       
+      class EndpointAttachment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :endpoint_ip, as: 'endpointIp'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :service_attachment, as: 'serviceAttachment'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class EnumOption
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -766,10 +804,29 @@ module Google
         end
       end
       
+      class ListEndpointAttachmentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :endpoint_attachments, as: 'endpointAttachments', class: Google::Apis::ConnectorsV1::EndpointAttachment, decorator: Google::Apis::ConnectorsV1::EndpointAttachment::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListLocationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :locations, as: 'locations', class: Google::Apis::ConnectorsV1::Location, decorator: Google::Apis::ConnectorsV1::Location::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListManagedZonesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :managed_zones, as: 'managedZones', class: Google::Apis::ConnectorsV1::ManagedZone, decorator: Google::Apis::ConnectorsV1::ManagedZone::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
@@ -828,6 +885,20 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :locked, as: 'locked'
           property :reason, as: 'reason'
+        end
+      end
+      
+      class ManagedZone
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :dns, as: 'dns'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :target_project, as: 'targetProject'
+          property :target_vpc, as: 'targetVpc'
+          property :update_time, as: 'updateTime'
         end
       end
       
