@@ -455,7 +455,7 @@ module Google
         # @param [String] channel_id
         #   Required. The user-provided ID to be assigned to the channel.
         # @param [Boolean] validate_only
-        #   Required. If set, validate the request and preview the review, but do not post
+        #   Optional. If set, validate the request and preview the review, but do not post
         #   it.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -492,7 +492,7 @@ module Google
         # @param [String] name
         #   Required. The name of the channel to be deleted.
         # @param [Boolean] validate_only
-        #   Required. If set, validate the request and preview the review, but do not post
+        #   Optional. If set, validate the request and preview the review, but do not post
         #   it.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -654,7 +654,7 @@ module Google
         #   field mask is provided, all provided fields in the request are updated. To
         #   update all fields, provide a field mask of "*".
         # @param [Boolean] validate_only
-        #   Required. If set, validate the request and preview the review, but do not post
+        #   Optional. If set, validate the request and preview the review, but do not post
         #   it.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -991,7 +991,7 @@ module Google
         # @param [String] trigger_id
         #   Required. The user-provided ID to be assigned to the trigger.
         # @param [Boolean] validate_only
-        #   Required. If set, validate the request and preview the review, but do not post
+        #   Optional. If set, validate the request and preview the review, but do not post
         #   it.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1034,7 +1034,7 @@ module Google
         #   If provided, the trigger will only be deleted if the etag matches the current
         #   etag on the resource.
         # @param [Boolean] validate_only
-        #   Required. If set, validate the request and preview the review, but do not post
+        #   Optional. If set, validate the request and preview the review, but do not post
         #   it.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1206,7 +1206,7 @@ module Google
         #   field mask is provided, all provided fields in the request are updated. To
         #   update all fields, provide a field mask of "*".
         # @param [Boolean] validate_only
-        #   Required. If set, validate the request and preview the review, but do not post
+        #   Optional. If set, validate the request and preview the review, but do not post
         #   it.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
