@@ -328,6 +328,54 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerServiceOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpPartnerservicesV1alphaProxyConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpPartnerservicesV1alphaTenant
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpPartnerservicesV1mainPartnerServiceOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudBeyondcorpSaasplatformInsightsV1alphaAppliedConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1123,6 +1171,92 @@ module Google
       end
       
       class GoogleCloudBeyondcorpAppgatewaysV1AppGatewayOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :requested_cancellation, as: 'requestedCancellation'
+          property :status_message, as: 'statusMessage'
+          property :target, as: 'target'
+          property :verb, as: 'verb'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :encryption_sa_email, as: 'encryptionSaEmail'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :partner_tenant_id, as: 'partnerTenantId'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerServiceOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :requested_cancellation, as: 'requestedCancellation'
+          property :status_message, as: 'statusMessage'
+          property :target, as: 'target'
+          property :verb, as: 'verb'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpPartnerservicesV1alphaProxyConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authentication_info, as: 'authenticationInfo', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfo, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfo::Representation
+      
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          property :proxy_uri, as: 'proxyUri'
+          property :routing_info, as: 'routingInfo', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfo, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfo::Representation
+      
+          property :transport_info, as: 'transportInfo', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfo, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfo::Representation
+      
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :pac_uri, as: 'pacUri'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpPartnerservicesV1alphaTenant
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          property :google_group_email, as: 'googleGroupEmail'
+          property :google_group_id, as: 'googleGroupId'
+          property :name, as: 'name'
+          property :partner_metadata, as: 'partnerMetadata', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata::Representation
+      
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :server_ca_cert_pem, as: 'serverCaCertPem'
+          property :ssl_decrypt_ca_cert_pem, as: 'sslDecryptCaCertPem'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpPartnerservicesV1mainPartnerServiceOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api_version, as: 'apiVersion'
