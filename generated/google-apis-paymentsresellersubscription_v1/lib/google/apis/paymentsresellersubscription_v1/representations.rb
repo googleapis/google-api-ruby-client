@@ -462,6 +462,7 @@ module Google
       
           property :description, as: 'description'
           property :line_item_free_trial_end_time, as: 'lineItemFreeTrialEndTime'
+          property :line_item_index, as: 'lineItemIndex'
           collection :line_item_promotion_specs, as: 'lineItemPromotionSpecs', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec::Representation
       
           property :one_time_recurrence_details, as: 'oneTimeRecurrenceDetails', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemOneTimeRecurrenceDetails, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemOneTimeRecurrenceDetails::Representation

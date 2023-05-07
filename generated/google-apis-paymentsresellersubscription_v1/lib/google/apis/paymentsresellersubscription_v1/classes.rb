@@ -878,6 +878,11 @@ module Google
         # @return [String]
         attr_accessor :line_item_free_trial_end_time
       
+        # Output only. A unique index of the subscription line item.
+        # Corresponds to the JSON property `lineItemIndex`
+        # @return [Fixnum]
+        attr_accessor :line_item_index
+      
         # Optional. The promotions applied on the line item. It can be: - a free trial
         # promotion, which overrides the subscription-level free trial promotion. - an
         # introductory pricing promotion. When used as input in Create or Provision API,
@@ -921,6 +926,7 @@ module Google
           @amount = args[:amount] if args.key?(:amount)
           @description = args[:description] if args.key?(:description)
           @line_item_free_trial_end_time = args[:line_item_free_trial_end_time] if args.key?(:line_item_free_trial_end_time)
+          @line_item_index = args[:line_item_index] if args.key?(:line_item_index)
           @line_item_promotion_specs = args[:line_item_promotion_specs] if args.key?(:line_item_promotion_specs)
           @one_time_recurrence_details = args[:one_time_recurrence_details] if args.key?(:one_time_recurrence_details)
           @product = args[:product] if args.key?(:product)
