@@ -5357,8 +5357,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Specifies the hostname of the instance. More details in: https://cloud.google.
-        # com/compute/docs/instances/custom-hostname-vm#naming_convention hostname must
-        # be uniqe in per_instance_properties map.
+        # com/compute/docs/instances/custom-hostname-vm#naming_convention
         # Corresponds to the JSON property `hostname`
         # @return [String]
         attr_accessor :hostname
@@ -5825,7 +5824,7 @@ module Google
         # @return [String]
         attr_accessor :self_link_with_id
       
-        # Source commitment to be splitted into a new commitment.
+        # Source commitment to be split into a new commitment.
         # Corresponds to the JSON property `splitSourceCommitment`
         # @return [String]
         attr_accessor :split_source_commitment
@@ -16180,6 +16179,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
+        # Instance flexibility allowing MIG to create VMs from multiple types of
+        # machines. Instance flexibility configuration on MIG overrides instance
+        # template configuration.
+        # Corresponds to the JSON property `instanceFlexibilityPolicy`
+        # @return [Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceFlexibilityPolicy]
+        attr_accessor :instance_flexibility_policy
+      
         # [Output Only] The URL of the Instance Group resource.
         # Corresponds to the JSON property `instanceGroup`
         # @return [String]
@@ -16277,6 +16283,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :target_size
       
+        # The unit of measure for the target size.
+        # Corresponds to the JSON property `targetSizeUnit`
+        # @return [String]
+        attr_accessor :target_size_unit
+      
         # The target number of stopped instances for this managed instance group. This
         # number changes when you: - Stop instance using the stopInstances method or
         # start instances using the startInstances method. - Manually change the
@@ -16331,6 +16342,7 @@ module Google
           @failover_action = args[:failover_action] if args.key?(:failover_action)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @id = args[:id] if args.key?(:id)
+          @instance_flexibility_policy = args[:instance_flexibility_policy] if args.key?(:instance_flexibility_policy)
           @instance_group = args[:instance_group] if args.key?(:instance_group)
           @instance_lifecycle_policy = args[:instance_lifecycle_policy] if args.key?(:instance_lifecycle_policy)
           @instance_template = args[:instance_template] if args.key?(:instance_template)
@@ -16347,6 +16359,7 @@ module Google
           @status = args[:status] if args.key?(:status)
           @target_pools = args[:target_pools] if args.key?(:target_pools)
           @target_size = args[:target_size] if args.key?(:target_size)
+          @target_size_unit = args[:target_size_unit] if args.key?(:target_size_unit)
           @target_stopped_size = args[:target_stopped_size] if args.key?(:target_stopped_size)
           @target_suspended_size = args[:target_suspended_size] if args.key?(:target_suspended_size)
           @update_policy = args[:update_policy] if args.key?(:update_policy)
@@ -16693,6 +16706,54 @@ module Google
         # Update properties of this object
         def update!(**args)
           @on_health_check = args[:on_health_check] if args.key?(:on_health_check)
+        end
+      end
+      
+      # 
+      class InstanceGroupManagerInstanceFlexibilityPolicy
+        include Google::Apis::Core::Hashable
+      
+        # List of instance selection options that the group will use when creating new
+        # VMs.
+        # Corresponds to the JSON property `instanceSelectionLists`
+        # @return [Hash<String,Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection>]
+        attr_accessor :instance_selection_lists
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance_selection_lists = args[:instance_selection_lists] if args.key?(:instance_selection_lists)
+        end
+      end
+      
+      # 
+      class InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection
+        include Google::Apis::Core::Hashable
+      
+        # Full machine-type names, e.g. "n1-standard-16".
+        # Corresponds to the JSON property `machineTypes`
+        # @return [Array<String>]
+        attr_accessor :machine_types
+      
+        # Preference of this instance selection. Lower number means higher preference.
+        # MIG will first try to create a VM based on the machine-type with lowest rank
+        # and fallback to next rank based on availability. Machine types and instance
+        # selections with the same rank have the same preference.
+        # Corresponds to the JSON property `rank`
+        # @return [Fixnum]
+        attr_accessor :rank
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @machine_types = args[:machine_types] if args.key?(:machine_types)
+          @rank = args[:rank] if args.key?(:rank)
         end
       end
       
@@ -25683,6 +25744,10 @@ module Google
         attr_accessor :name
       
         # [Output Only] The URL of the network which the Network Attachment belongs to.
+        # Practically it is inferred by fetching the network of the first subnetwork
+        # associated. Because it is required that all the subnetworks must be from the
+        # same network, it is assured that the Network Attachment belongs to the same
+        # network as all the subnetworks.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -45825,14 +45890,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :number_of_disks
       
-        # [Output Only] Sum of all the disks' local used bytes. This specifically refers
-        # to the amount of bytes used on the disk without any encryption or compression.
+        # [Output Only] Space used by data stored in disks within the storage pool (in
+        # bytes).
         # Corresponds to the JSON property `usedBytes`
         # @return [Fixnum]
         attr_accessor :used_bytes
       
-        # [Output Only] Sum of all the disks' used reduced bytes. This is the actual
-        # storage capacity consumed by all of the disks.
+        # [Output Only] Space used by compressed and deduped data stored in disks within
+        # the storage pool (in bytes).
         # Corresponds to the JSON property `usedReducedBytes`
         # @return [Fixnum]
         attr_accessor :used_reduced_bytes
@@ -52532,7 +52597,7 @@ module Google
         attr_accessor :local_gateway_interface
       
         # The peer gateway interface this VPN tunnel is connected to, the peer gateway
-        # could either be an external VPN gateway or GCP VPN gateway.
+        # could either be an external VPN gateway or a Google Cloud VPN gateway.
         # Corresponds to the JSON property `peerGatewayInterface`
         # @return [Fixnum]
         attr_accessor :peer_gateway_interface
@@ -52555,8 +52620,8 @@ module Google
       end
       
       # A VPN connection contains all VPN tunnels connected from this VpnGateway to
-      # the same peer gateway. The peer gateway could either be a external VPN gateway
-      # or GCP VPN gateway.
+      # the same peer gateway. The peer gateway could either be an external VPN
+      # gateway or a Google Cloud VPN gateway.
       class VpnGatewayStatusVpnConnection
         include Google::Apis::Core::Hashable
       
