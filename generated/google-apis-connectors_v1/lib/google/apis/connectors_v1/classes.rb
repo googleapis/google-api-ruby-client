@@ -566,6 +566,12 @@ module Google
         # @return [Google::Apis::ConnectorsV1::ConnectionStatus]
         attr_accessor :status
       
+        # Output only. This subscription type enum value states if the metrics should be
+        # sent for billing or not.
+        # Corresponds to the JSON property `subscriptionType`
+        # @return [String]
+        attr_accessor :subscription_type
+      
         # Optional. Suspended indicates if a user has suspended a connection or not.
         # Corresponds to the JSON property `suspended`
         # @return [Boolean]
@@ -600,6 +606,7 @@ module Google
           @service_directory = args[:service_directory] if args.key?(:service_directory)
           @ssl_config = args[:ssl_config] if args.key?(:ssl_config)
           @status = args[:status] if args.key?(:status)
+          @subscription_type = args[:subscription_type] if args.key?(:subscription_type)
           @suspended = args[:suspended] if args.key?(:suspended)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -1075,6 +1082,64 @@ module Google
         end
       end
       
+      # represents the Connector's Endpoint Attachment resource
+      class EndpointAttachment
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Created time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Description of the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. The Private Service Connect connection endpoint ip
+        # Corresponds to the JSON property `endpointIp`
+        # @return [String]
+        attr_accessor :endpoint_ip
+      
+        # Optional. Resource labels to represent user-provided metadata. Refer to cloud
+        # documentation on labels for more details. https://cloud.google.com/compute/
+        # docs/labeling-resources
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. Resource name of the Endpoint Attachment. Format: projects/`
+        # project`/locations/`location`/endpointAttachments/`endpoint_attachment`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. The path of the service attachment
+        # Corresponds to the JSON property `serviceAttachment`
+        # @return [String]
+        attr_accessor :service_attachment
+      
+        # Output only. Updated time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @endpoint_ip = args[:endpoint_ip] if args.key?(:endpoint_ip)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @service_attachment = args[:service_attachment] if args.key?(:service_attachment)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # EnumOption definition
       class EnumOption
         include Google::Apis::Core::Hashable
@@ -1436,6 +1501,37 @@ module Google
         end
       end
       
+      # Response message for ConnectorsService.ListEndpointAttachments
+      class ListEndpointAttachmentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # EndpointAttachments.
+        # Corresponds to the JSON property `endpointAttachments`
+        # @return [Array<Google::Apis::ConnectorsV1::EndpointAttachment>]
+        attr_accessor :endpoint_attachments
+      
+        # Next page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @endpoint_attachments = args[:endpoint_attachments] if args.key?(:endpoint_attachments)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # The response message for Locations.ListLocations.
       class ListLocationsResponse
         include Google::Apis::Core::Hashable
@@ -1457,6 +1553,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @locations = args[:locations] if args.key?(:locations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for ConnectorsService.ListManagedZones
+      class ListManagedZonesResponse
+        include Google::Apis::Core::Hashable
+      
+        # ManagedZones.
+        # Corresponds to the JSON property `managedZones`
+        # @return [Array<Google::Apis::ConnectorsV1::ManagedZone>]
+        attr_accessor :managed_zones
+      
+        # Next page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @managed_zones = args[:managed_zones] if args.key?(:managed_zones)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
@@ -1567,7 +1688,7 @@ module Google
         end
       end
       
-      # A resource that represents Google Cloud Platform location.
+      # A resource that represents a Google Cloud location.
       class Location
         include Google::Apis::Core::Hashable
       
@@ -1638,6 +1759,70 @@ module Google
         def update!(**args)
           @locked = args[:locked] if args.key?(:locked)
           @reason = args[:reason] if args.key?(:reason)
+        end
+      end
+      
+      # represents the Connector's Managed Zone resource
+      class ManagedZone
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Created time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Description of the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. DNS Name of the resource
+        # Corresponds to the JSON property `dns`
+        # @return [String]
+        attr_accessor :dns
+      
+        # Optional. Resource labels to represent user-provided metadata. Refer to cloud
+        # documentation on labels for more details. https://cloud.google.com/compute/
+        # docs/labeling-resources
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. Resource name of the Managed Zone. Format: projects/`project`/
+        # locations/global/managedZones/`managed_zone`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. The name of the Target Project
+        # Corresponds to the JSON property `targetProject`
+        # @return [String]
+        attr_accessor :target_project
+      
+        # Required. The name of the Target Project VPC Network
+        # Corresponds to the JSON property `targetVpc`
+        # @return [String]
+        attr_accessor :target_vpc
+      
+        # Output only. Updated time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @dns = args[:dns] if args.key?(:dns)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @target_project = args[:target_project] if args.key?(:target_project)
+          @target_vpc = args[:target_vpc] if args.key?(:target_vpc)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
