@@ -1473,6 +1473,13 @@ module Google
       class GoogleCloudDataplexV1DataProfileSpec
         include Google::Apis::Core::Hashable
       
+        # Optional. A filter applied to all rows in a single DataScan job. The filter
+        # needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL
+        # syntax. Example: col1 >= 0 AND col2 < 10
+        # Corresponds to the JSON property `rowFilter`
+        # @return [String]
+        attr_accessor :row_filter
+      
         # Optional. The percentage of the records to be selected from the dataset for
         # DataScan. Value can range between 0.0 and 100.0 with up to 3 significant
         # decimal digits. Sampling is not applied if sampling_percent is not specified,
@@ -1487,6 +1494,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @row_filter = args[:row_filter] if args.key?(:row_filter)
           @sampling_percent = args[:sampling_percent] if args.key?(:sampling_percent)
         end
       end
@@ -1921,6 +1929,13 @@ module Google
       class GoogleCloudDataplexV1DataQualitySpec
         include Google::Apis::Core::Hashable
       
+        # Optional. A filter applied to all rows in a single DataScan job. The filter
+        # needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL
+        # syntax. Example: col1 >= 0 AND col2 < 10
+        # Corresponds to the JSON property `rowFilter`
+        # @return [String]
+        attr_accessor :row_filter
+      
         # The list of rules to evaluate against a data source. At least one rule is
         # required.
         # Corresponds to the JSON property `rules`
@@ -1941,6 +1956,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @row_filter = args[:row_filter] if args.key?(:row_filter)
           @rules = args[:rules] if args.key?(:rules)
           @sampling_percent = args[:sampling_percent] if args.key?(:sampling_percent)
         end
@@ -2074,10 +2090,20 @@ module Google
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanEventDataProfileResult]
         attr_accessor :data_profile
       
+        # Applied configs for data profile type data scan job.
+        # Corresponds to the JSON property `dataProfileConfigs`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanEventDataProfileAppliedConfigs]
+        attr_accessor :data_profile_configs
+      
         # Data quality result for data scan job.
         # Corresponds to the JSON property `dataQuality`
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanEventDataQualityResult]
         attr_accessor :data_quality
+      
+        # Applied configs for data quality type data scan job.
+        # Corresponds to the JSON property `dataQualityConfigs`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanEventDataQualityAppliedConfigs]
+        attr_accessor :data_quality_configs
       
         # The data source of the data scan
         # Corresponds to the JSON property `dataSource`
@@ -2136,7 +2162,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @data_profile = args[:data_profile] if args.key?(:data_profile)
+          @data_profile_configs = args[:data_profile_configs] if args.key?(:data_profile_configs)
           @data_quality = args[:data_quality] if args.key?(:data_quality)
+          @data_quality_configs = args[:data_quality_configs] if args.key?(:data_quality_configs)
           @data_source = args[:data_source] if args.key?(:data_source)
           @end_time = args[:end_time] if args.key?(:end_time)
           @job_id = args[:job_id] if args.key?(:job_id)
@@ -2147,6 +2175,27 @@ module Google
           @state = args[:state] if args.key?(:state)
           @trigger = args[:trigger] if args.key?(:trigger)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Applied configs for data profile type data scan job.
+      class GoogleCloudDataplexV1DataScanEventDataProfileAppliedConfigs
+        include Google::Apis::Core::Hashable
+      
+        # The percentage of the records selected from the dataset for DataScan. Value
+        # ranges between 0.0 and 100.0. Value 0.0 or 100.0 imply that sampling was not
+        # applied.
+        # Corresponds to the JSON property `samplingPercent`
+        # @return [Float]
+        attr_accessor :sampling_percent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sampling_percent = args[:sampling_percent] if args.key?(:sampling_percent)
         end
       end
       
@@ -2166,6 +2215,27 @@ module Google
         # Update properties of this object
         def update!(**args)
           @row_count = args[:row_count] if args.key?(:row_count)
+        end
+      end
+      
+      # Applied configs for data quality type data scan job.
+      class GoogleCloudDataplexV1DataScanEventDataQualityAppliedConfigs
+        include Google::Apis::Core::Hashable
+      
+        # The percentage of the records selected from the dataset for DataScan. Value
+        # ranges between 0.0 and 100.0. Value 0.0 or 100.0 imply that sampling was not
+        # applied.
+        # Corresponds to the JSON property `samplingPercent`
+        # @return [Float]
+        attr_accessor :sampling_percent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sampling_percent = args[:sampling_percent] if args.key?(:sampling_percent)
         end
       end
       
