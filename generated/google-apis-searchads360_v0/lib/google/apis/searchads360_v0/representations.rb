@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAdsSearchads360V0CommonKeyword
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAdsSearchads360V0CommonKeywordInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -131,6 +137,30 @@ module Google
       end
       
       class GoogleAdsSearchads360V0CommonRealTimeBiddingSetting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V0CommonSearchAds360ExpandedDynamicSearchAdInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V0CommonSearchAds360ExpandedTextAdInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V0CommonSearchAds360ProductAdInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V0CommonSearchAds360ResponsiveSearchAdInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -609,6 +639,15 @@ module Google
         end
       end
       
+      class GoogleAdsSearchads360V0CommonKeyword
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ad_group_criterion, as: 'adGroupCriterion'
+          property :info, as: 'info', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonKeywordInfo, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonKeywordInfo::Representation
+      
+        end
+      end
+      
       class GoogleAdsSearchads360V0CommonKeywordInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -773,10 +812,48 @@ module Google
         end
       end
       
+      class GoogleAdsSearchads360V0CommonSearchAds360ExpandedDynamicSearchAdInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ad_tracking_id, :numeric_string => true, as: 'adTrackingId'
+          property :description1, as: 'description1'
+          property :description2, as: 'description2'
+        end
+      end
+      
+      class GoogleAdsSearchads360V0CommonSearchAds360ExpandedTextAdInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ad_tracking_id, :numeric_string => true, as: 'adTrackingId'
+          property :description1, as: 'description1'
+          property :description2, as: 'description2'
+          property :headline, as: 'headline'
+          property :headline2, as: 'headline2'
+          property :headline3, as: 'headline3'
+          property :path1, as: 'path1'
+          property :path2, as: 'path2'
+        end
+      end
+      
+      class GoogleAdsSearchads360V0CommonSearchAds360ProductAdInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleAdsSearchads360V0CommonSearchAds360ResponsiveSearchAdInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ad_tracking_id, :numeric_string => true, as: 'adTrackingId'
+          property :path1, as: 'path1'
+          property :path2, as: 'path2'
+        end
+      end
+      
       class GoogleAdsSearchads360V0CommonSearchAds360TextAdInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :ad_track_id, :numeric_string => true, as: 'adTrackId'
+          property :ad_tracking_id, :numeric_string => true, as: 'adTrackingId'
           property :description1, as: 'description1'
           property :description2, as: 'description2'
           property :display_mobile_url, as: 'displayMobileUrl'
@@ -794,6 +871,8 @@ module Google
           property :date, as: 'date'
           property :day_of_week, as: 'dayOfWeek'
           property :device, as: 'device'
+          property :keyword, as: 'keyword', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonKeyword, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonKeyword::Representation
+      
           property :month, as: 'month'
           property :quarter, as: 'quarter'
           property :week, as: 'week'
@@ -1082,10 +1161,18 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_url, as: 'displayUrl'
+          property :expanded_dynamic_search_ad, as: 'expandedDynamicSearchAd', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonSearchAds360ExpandedDynamicSearchAdInfo, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonSearchAds360ExpandedDynamicSearchAdInfo::Representation
+      
+          property :expanded_text_ad, as: 'expandedTextAd', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonSearchAds360ExpandedTextAdInfo, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonSearchAds360ExpandedTextAdInfo::Representation
+      
           collection :final_urls, as: 'finalUrls'
           property :id, :numeric_string => true, as: 'id'
           property :name, as: 'name'
+          property :product_ad, as: 'productAd', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonSearchAds360ProductAdInfo, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonSearchAds360ProductAdInfo::Representation
+      
           property :resource_name, as: 'resourceName'
+          property :responsive_search_ad, as: 'responsiveSearchAd', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonSearchAds360ResponsiveSearchAdInfo, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonSearchAds360ResponsiveSearchAdInfo::Representation
+      
           property :text_ad, as: 'textAd', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonSearchAds360TextAdInfo, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonSearchAds360TextAdInfo::Representation
       
           property :type, as: 'type'
