@@ -22,6 +22,12 @@ module Google
   module Apis
     module WorkstationsV1beta
       
+      class Accelerator
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuditConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -238,6 +244,14 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Accelerator
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :count, as: 'count'
+          property :type, as: 'type'
+        end
+      end
+      
       class AuditConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -311,6 +325,8 @@ module Google
       class GceInstance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :accelerators, as: 'accelerators', class: Google::Apis::WorkstationsV1beta::Accelerator, decorator: Google::Apis::WorkstationsV1beta::Accelerator::Representation
+      
           property :boot_disk_size_gb, as: 'bootDiskSizeGb'
           property :confidential_instance_config, as: 'confidentialInstanceConfig', class: Google::Apis::WorkstationsV1beta::GceConfidentialInstanceConfig, decorator: Google::Apis::WorkstationsV1beta::GceConfidentialInstanceConfig::Representation
       
