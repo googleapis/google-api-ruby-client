@@ -1238,6 +1238,12 @@ module Google
         # @return [String]
         attr_accessor :page_token
       
+        # Optional. List of keys specifying which report partitions to return. If empty,
+        # returns all partitions.
+        # Corresponds to the JSON property `partitionKeys`
+        # @return [Array<String>]
+        attr_accessor :partition_keys
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1246,6 +1252,7 @@ module Google
         def update!(**args)
           @page_size = args[:page_size] if args.key?(:page_size)
           @page_token = args[:page_token] if args.key?(:page_token)
+          @partition_keys = args[:partition_keys] if args.key?(:partition_keys)
         end
       end
       
@@ -2899,6 +2906,12 @@ module Google
       class GoogleCloudChannelV1Row
         include Google::Apis::Core::Hashable
       
+        # The key for the partition this row belongs to. This field is empty if the
+        # report is not partitioned.
+        # Corresponds to the JSON property `partitionKey`
+        # @return [String]
+        attr_accessor :partition_key
+      
         # The list of values in the row.
         # Corresponds to the JSON property `values`
         # @return [Array<Google::Apis::CloudchannelV1::GoogleCloudChannelV1ReportValue>]
@@ -2910,6 +2923,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @partition_key = args[:partition_key] if args.key?(:partition_key)
           @values = args[:values] if args.key?(:values)
         end
       end
