@@ -258,8 +258,9 @@ module Google
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport] google_cloud_securitycenter_v1_big_query_export_object
         # @param [String] big_query_export_id
         #   Required. Unique identifier provided by the client within the parent scope. It
-        #   must consist of lower case letters, numbers, and hyphen, with the first
-        #   character a letter, the last a letter or a number, and a 63 character maximum.
+        #   must consist of only lowercase letters, numbers, and hyphens, must start with
+        #   a letter, must end with either a letter or a number, and must be 63 characters
+        #   or less.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -487,8 +488,9 @@ module Google
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1MuteConfig] google_cloud_securitycenter_v1_mute_config_object
         # @param [String] mute_config_id
         #   Required. Unique identifier provided by the client within the parent scope. It
-        #   must consist of lower case letters, numbers, and hyphen, with the first
-        #   character a letter, the last a letter or a number, and a 63 character maximum.
+        #   must consist of only lowercase letters, numbers, and hyphens, must start with
+        #   a letter, must end with either a letter or a number, and must be 63 characters
+        #   or less.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1883,8 +1885,9 @@ module Google
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport] google_cloud_securitycenter_v1_big_query_export_object
         # @param [String] big_query_export_id
         #   Required. Unique identifier provided by the client within the parent scope. It
-        #   must consist of lower case letters, numbers, and hyphen, with the first
-        #   character a letter, the last a letter or a number, and a 63 character maximum.
+        #   must consist of only lowercase letters, numbers, and hyphens, must start with
+        #   a letter, must end with either a letter or a number, and must be 63 characters
+        #   or less.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2112,8 +2115,9 @@ module Google
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1MuteConfig] google_cloud_securitycenter_v1_mute_config_object
         # @param [String] mute_config_id
         #   Required. Unique identifier provided by the client within the parent scope. It
-        #   must consist of lower case letters, numbers, and hyphen, with the first
-        #   character a letter, the last a letter or a number, and a 63 character maximum.
+        #   must consist of only lowercase letters, numbers, and hyphens, must start with
+        #   a letter, must end with either a letter or a number, and must be 63 characters
+        #   or less.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3792,8 +3796,9 @@ module Google
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport] google_cloud_securitycenter_v1_big_query_export_object
         # @param [String] big_query_export_id
         #   Required. Unique identifier provided by the client within the parent scope. It
-        #   must consist of lower case letters, numbers, and hyphen, with the first
-        #   character a letter, the last a letter or a number, and a 63 character maximum.
+        #   must consist of only lowercase letters, numbers, and hyphens, must start with
+        #   a letter, must end with either a letter or a number, and must be 63 characters
+        #   or less.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4021,8 +4026,9 @@ module Google
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1MuteConfig] google_cloud_securitycenter_v1_mute_config_object
         # @param [String] mute_config_id
         #   Required. Unique identifier provided by the client within the parent scope. It
-        #   must consist of lower case letters, numbers, and hyphen, with the first
-        #   character a letter, the last a letter or a number, and a 63 character maximum.
+        #   must consist of only lowercase letters, numbers, and hyphens, must start with
+        #   a letter, must end with either a letter or a number, and must be 63 characters
+        #   or less.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
