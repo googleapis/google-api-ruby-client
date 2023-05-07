@@ -1261,6 +1261,12 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # String of comma or space separated case-sensitive words for which method/field
+        # name replacement will be disabled by go/api-docgen.
+        # Corresponds to the JSON property `disableReplacementWords`
+        # @return [String]
+        attr_accessor :disable_replacement_words
+      
         # The selector is a comma-separated list of patterns for any element such as a
         # method, a field, an enum value. Each pattern is a qualified name of the
         # element which may end in "*", indicating a wildcard. Wildcards are only
@@ -1280,6 +1286,7 @@ module Google
         def update!(**args)
           @deprecation_description = args[:deprecation_description] if args.key?(:deprecation_description)
           @description = args[:description] if args.key?(:description)
+          @disable_replacement_words = args[:disable_replacement_words] if args.key?(:disable_replacement_words)
           @selector = args[:selector] if args.key?(:selector)
         end
       end
