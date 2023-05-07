@@ -1330,6 +1330,43 @@ module Google
         end
       end
       
+      # Message representing a frame which failed to be processed due to an error.
+      class ErrorFrame
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Frame ingestion time.
+        # Corresponds to the JSON property `ingestionTime`
+        # @return [String]
+        attr_accessor :ingestion_time
+      
+        # Output only. The identifier of the ErrorFrame.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Contains data reported from an inventory source on an asset.
+        # Corresponds to the JSON property `originalFrame`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AssetFrame]
+        attr_accessor :original_frame
+      
+        # Output only. All the violations that were detected for the frame.
+        # Corresponds to the JSON property `violations`
+        # @return [Array<Google::Apis::MigrationcenterV1alpha1::FrameViolationEntry>]
+        attr_accessor :violations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ingestion_time = args[:ingestion_time] if args.key?(:ingestion_time)
+          @name = args[:name] if args.key?(:name)
+          @original_frame = args[:original_frame] if args.key?(:original_frame)
+          @violations = args[:violations] if args.key?(:violations)
+        end
+      end
+      
       # A resource that reports result of the import job execution.
       class ExecutionReport
         include Google::Apis::Core::Hashable
@@ -1422,6 +1459,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @fit_level = args[:fit_level] if args.key?(:fit_level)
+        end
+      end
+      
+      # A resource that contains a single violation of a reported `AssetFrame`
+      # resource.
+      class FrameViolationEntry
+        include Google::Apis::Core::Hashable
+      
+        # The field of the original frame where the violation occurred.
+        # Corresponds to the JSON property `field`
+        # @return [String]
+        attr_accessor :field
+      
+        # A message describing the violation.
+        # Corresponds to the JSON property `violation`
+        # @return [String]
+        attr_accessor :violation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field = args[:field] if args.key?(:field)
+          @violation = args[:violation] if args.key?(:violation)
         end
       end
       
@@ -2156,6 +2219,37 @@ module Google
         # Update properties of this object
         def update!(**args)
           @assets = args[:assets] if args.key?(:assets)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # A response for listing error frames.
+      class ListErrorFramesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of error frames.
+        # Corresponds to the JSON property `errorFrames`
+        # @return [Array<Google::Apis::MigrationcenterV1alpha1::ErrorFrame>]
+        attr_accessor :error_frames
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_frames = args[:error_frames] if args.key?(:error_frames)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
@@ -4180,6 +4274,12 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Output only. The number of frames that were reported by the source and
+        # contained errors.
+        # Corresponds to the JSON property `errorFrameCount`
+        # @return [Fixnum]
+        attr_accessor :error_frame_count
+      
         # If `true`, the source is managed by other service(s).
         # Corresponds to the JSON property `isManaged`
         # @return [Boolean]
@@ -4226,6 +4326,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @error_frame_count = args[:error_frame_count] if args.key?(:error_frame_count)
           @is_managed = args[:is_managed] if args.key?(:is_managed)
           @name = args[:name] if args.key?(:name)
           @pending_frame_count = args[:pending_frame_count] if args.key?(:pending_frame_count)

@@ -280,6 +280,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ErrorFrame
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ExecutionReport
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -293,6 +299,12 @@ module Google
       end
       
       class FitDescriptor
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FrameViolationEntry
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -425,6 +437,12 @@ module Google
       end
       
       class ListAssetsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListErrorFramesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1275,6 +1293,18 @@ module Google
         end
       end
       
+      class ErrorFrame
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ingestion_time, as: 'ingestionTime'
+          property :name, as: 'name'
+          property :original_frame, as: 'originalFrame', class: Google::Apis::MigrationcenterV1alpha1::AssetFrame, decorator: Google::Apis::MigrationcenterV1alpha1::AssetFrame::Representation
+      
+          collection :violations, as: 'violations', class: Google::Apis::MigrationcenterV1alpha1::FrameViolationEntry, decorator: Google::Apis::MigrationcenterV1alpha1::FrameViolationEntry::Representation
+      
+        end
+      end
+      
       class ExecutionReport
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1303,6 +1333,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :fit_level, as: 'fitLevel'
+        end
+      end
+      
+      class FrameViolationEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :field, as: 'field'
+          property :violation, as: 'violation'
         end
       end
       
@@ -1531,6 +1569,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :assets, as: 'assets', class: Google::Apis::MigrationcenterV1alpha1::Asset, decorator: Google::Apis::MigrationcenterV1alpha1::Asset::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListErrorFramesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :error_frames, as: 'errorFrames', class: Google::Apis::MigrationcenterV1alpha1::ErrorFrame, decorator: Google::Apis::MigrationcenterV1alpha1::ErrorFrame::Representation
       
           property :next_page_token, as: 'nextPageToken'
           collection :unreachable, as: 'unreachable'
@@ -2144,6 +2192,7 @@ module Google
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :display_name, as: 'displayName'
+          property :error_frame_count, as: 'errorFrameCount'
           property :is_managed, as: 'isManaged'
           property :name, as: 'name'
           property :pending_frame_count, as: 'pendingFrameCount'
