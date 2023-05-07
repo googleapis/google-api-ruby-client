@@ -334,7 +334,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDataplexV1DataScanEventDataProfileAppliedConfigs
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDataplexV1DataScanEventDataProfileResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataScanEventDataQualityAppliedConfigs
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1293,6 +1305,7 @@ module Google
       class GoogleCloudDataplexV1DataProfileSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :row_filter, as: 'rowFilter'
           property :sampling_percent, as: 'samplingPercent'
         end
       end
@@ -1422,6 +1435,7 @@ module Google
       class GoogleCloudDataplexV1DataQualitySpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :row_filter, as: 'rowFilter'
           collection :rules, as: 'rules', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRule, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRule::Representation
       
           property :sampling_percent, as: 'samplingPercent'
@@ -1462,7 +1476,11 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data_profile, as: 'dataProfile', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanEventDataProfileResult, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanEventDataProfileResult::Representation
       
+          property :data_profile_configs, as: 'dataProfileConfigs', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanEventDataProfileAppliedConfigs, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanEventDataProfileAppliedConfigs::Representation
+      
           property :data_quality, as: 'dataQuality', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanEventDataQualityResult, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanEventDataQualityResult::Representation
+      
+          property :data_quality_configs, as: 'dataQualityConfigs', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanEventDataQualityAppliedConfigs, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanEventDataQualityAppliedConfigs::Representation
       
           property :data_source, as: 'dataSource'
           property :end_time, as: 'endTime'
@@ -1477,10 +1495,24 @@ module Google
         end
       end
       
+      class GoogleCloudDataplexV1DataScanEventDataProfileAppliedConfigs
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :sampling_percent, as: 'samplingPercent'
+        end
+      end
+      
       class GoogleCloudDataplexV1DataScanEventDataProfileResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :row_count, :numeric_string => true, as: 'rowCount'
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataScanEventDataQualityAppliedConfigs
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :sampling_percent, as: 'samplingPercent'
         end
       end
       
