@@ -1346,6 +1346,8 @@ module Google
           property :desired_dns_config, as: 'desiredDnsConfig', class: Google::Apis::ContainerV1beta1::DnsConfig, decorator: Google::Apis::ContainerV1beta1::DnsConfig::Representation
       
           property :desired_enable_private_endpoint, as: 'desiredEnablePrivateEndpoint'
+          property :desired_fleet, as: 'desiredFleet', class: Google::Apis::ContainerV1beta1::Fleet, decorator: Google::Apis::ContainerV1beta1::Fleet::Representation
+      
           property :desired_gateway_api_config, as: 'desiredGatewayApiConfig', class: Google::Apis::ContainerV1beta1::GatewayApiConfig, decorator: Google::Apis::ContainerV1beta1::GatewayApiConfig::Representation
       
           property :desired_gcfs_config, as: 'desiredGcfsConfig', class: Google::Apis::ContainerV1beta1::GcfsConfig, decorator: Google::Apis::ContainerV1beta1::GcfsConfig::Representation
