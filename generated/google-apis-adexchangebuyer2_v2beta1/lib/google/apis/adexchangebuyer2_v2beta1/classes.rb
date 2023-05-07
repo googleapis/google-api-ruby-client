@@ -1838,7 +1838,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :guaranteed_impressions
       
-        # Count of guaranteed looks. Required for deal, optional for product.
+        # Count of guaranteed looks. Required for deal, optional for product. For CPD
+        # deals, buyer changes to guaranteed_looks will be ignored.
         # Corresponds to the JSON property `guaranteedLooks`
         # @return [Fixnum]
         attr_accessor :guaranteed_looks
@@ -1849,7 +1850,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :impression_cap
       
-        # Daily minimum looks for CPD deal types.
+        # Daily minimum looks for CPD deal types. For CPD deals, buyer should negotiate
+        # on this field instead of guaranteed_looks.
         # Corresponds to the JSON property `minimumDailyLooks`
         # @return [Fixnum]
         attr_accessor :minimum_daily_looks
