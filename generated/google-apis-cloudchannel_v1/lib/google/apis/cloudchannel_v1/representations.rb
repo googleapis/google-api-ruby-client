@@ -1121,6 +1121,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :page_size, as: 'pageSize'
           property :page_token, as: 'pageToken'
+          collection :partition_keys, as: 'partitionKeys'
         end
       end
       
@@ -1631,6 +1632,7 @@ module Google
       class GoogleCloudChannelV1Row
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :partition_key, as: 'partitionKey'
           collection :values, as: 'values', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1ReportValue, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1ReportValue::Representation
       
         end
