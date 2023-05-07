@@ -121,7 +121,8 @@ module Google
       # dimensions:** * `apiLevel` (string): the API level of Android that was running
       # on the user's device. * `versionCode` (int64): version of the app that was
       # running on the user's device. * `deviceModel` (string): unique identifier of
-      # the user's device model. * `deviceType` (string): the type (also known as form
+      # the user's device model. * `deviceBrand` (string): unique identifier of the
+      # user's device brand. * `deviceType` (string): the type (also known as form
       # factor) of the user's device. * `countryCode` (string): the country or region
       # of the user's device based on their IP address, represented as a 2-letter ISO-
       # 3166 code (e.g. US for the United States). * `deviceRamBucket` (int64): RAM of
@@ -207,7 +208,8 @@ module Google
       # dimensions:** * `apiLevel` (string): the API level of Android that was running
       # on the user's device. * `versionCode` (int64): version of the app that was
       # running on the user's device. * `deviceModel` (string): unique identifier of
-      # the user's device model. * `deviceType` (string): the type (also known as form
+      # the user's device model. * `deviceBrand` (string): unique identifier of the
+      # user's device brand. * `deviceType` (string): the type (also known as form
       # factor) of the user's device. * `countryCode` (string): the country or region
       # of the user's device based on their IP address, represented as a 2-letter ISO-
       # 3166 code (e.g. US for the United States). * `deviceRamBucket` (int64): RAM of
@@ -519,9 +521,10 @@ module Google
       # the value. **Supported dimensions:** * `apiLevel` (string): the API level of
       # Android that was running on the user's device. * `versionCode` (int64):
       # version of the app that was running on the user's device. * `deviceModel` (
-      # string): unique identifier of the user's device model. * `deviceType` (string):
-      # the type (also known as form factor) of the user's device. * `countryCode` (
-      # string): the country or region of the user's device based on their IP address,
+      # string): unique identifier of the user's device model. * `deviceBrand` (string)
+      # : unique identifier of the user's device brand. * `deviceType` (string): the
+      # type (also known as form factor) of the user's device. * `countryCode` (string)
+      # : the country or region of the user's device based on their IP address,
       # represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `
       # deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.)
       # . * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g.
@@ -745,6 +748,7 @@ module Google
         # string): the API level of Android that was running on the user's device. * `
         # versionCode` (int64): version of the app that was running on the user's device.
         # * `deviceModel` (string): unique identifier of the user's device model. * `
+        # deviceBrand` (string): unique identifier of the user's device brand. * `
         # deviceType` (string): the type (also known as form factor) of the user's
         # device. * `countryCode` (string): the country or region of the user's device
         # based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US
@@ -896,6 +900,7 @@ module Google
         # string): the API level of Android that was running on the user's device. * `
         # versionCode` (int64): version of the app that was running on the user's device.
         # * `deviceModel` (string): unique identifier of the user's device model. * `
+        # deviceBrand` (string): unique identifier of the user's device brand. * `
         # deviceType` (string): the type (also known as form factor) of the user's
         # device. * `countryCode` (string): the country or region of the user's device
         # based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US
@@ -1051,19 +1056,20 @@ module Google
         # * `deviceModel` (string): unique identifier of the user's device model. * `
         # deviceType` (string): identifier of the device's form factor, e.g., PHONE. * `
         # reportType` (string): the type of error. The value should correspond to one of
-        # the possible values in ErrorType. * `issueId` (string): the id an error was
-        # assigned to. The value should correspond to the ``issue`` component of the
-        # issue name. * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (
-        # 3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's primary
-        # system-on-chip, e.g., Samsung. [Reference](https://developer.android.com/
-        # reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel` (string):
-        # Model of the device's primary system-on-chip, e.g., "Exynos 2100". [Reference](
-        # https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `
-        # deviceCpuMake` (string): Make of the device's CPU, e.g., Qualcomm. * `
-        # deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". * `
-        # deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `
-        # deviceGpuModel` (string): Model of the device's GPU, e.g., Mali. * `
-        # deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. * `
+        # the possible values in ErrorType. * `isUserPerceived` (string): denotes
+        # whether error is user perceived or not, USER_PERCEIVED or NOT_USER_PERCEIVED. *
+        # `issueId` (string): the id an error was assigned to. The value should
+        # correspond to the ``issue`` component of the issue name. * `deviceRamBucket` (
+        # int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `
+        # deviceSocMake` (string): Make of the device's primary system-on-chip, e.g.,
+        # Samsung. [Reference](https://developer.android.com/reference/android/os/Build#
+        # SOC_MANUFACTURER) * `deviceSocModel` (string): Model of the device's primary
+        # system-on-chip, e.g., "Exynos 2100". [Reference](https://developer.android.com/
+        # reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string): Make of the
+        # device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model of the device'
+        # s CPU, e.g., "Kryo 240". * `deviceGpuMake` (string): Make of the device's GPU,
+        # e.g., ARM. * `deviceGpuModel` (string): Model of the device's GPU, e.g., Mali.
+        # * `deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. * `
         # deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". *
         # `deviceGlEsVersion` (string): OpenGL ES version of the device, e.g., "196610".
         # * `deviceScreenSize` (string): Screen size of the device, e.g., NORMAL, LARGE.
@@ -1168,6 +1174,7 @@ module Google
         # string): the API level of Android that was running on the user's device. * `
         # versionCode` (int64): version of the app that was running on the user's device.
         # * `deviceModel` (string): unique identifier of the user's device model. * `
+        # deviceBrand` (string): unique identifier of the user's device brand. * `
         # deviceType` (string): the type (also known as form factor) of the user's
         # device. * `countryCode` (string): the country or region of the user's device
         # based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US
@@ -1310,6 +1317,7 @@ module Google
         # string): the API level of Android that was running on the user's device. * `
         # versionCode` (int64): version of the app that was running on the user's device.
         # * `deviceModel` (string): unique identifier of the user's device model. * `
+        # deviceBrand` (string): unique identifier of the user's device brand. * `
         # deviceType` (string): the type (also known as form factor) of the user's
         # device. * `countryCode` (string): the country or region of the user's device
         # based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US
@@ -1459,6 +1467,7 @@ module Google
         # string): the API level of Android that was running on the user's device. * `
         # versionCode` (int64): version of the app that was running on the user's device.
         # * `deviceModel` (string): unique identifier of the user's device model. * `
+        # deviceBrand` (string): unique identifier of the user's device brand. * `
         # deviceType` (string): the type (also known as form factor) of the user's
         # device. * `countryCode` (string): the country or region of the user's device
         # based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US
@@ -1599,6 +1608,7 @@ module Google
         # string): the API level of Android that was running on the user's device. * `
         # versionCode` (int64): version of the app that was running on the user's device.
         # * `deviceModel` (string): unique identifier of the user's device model. * `
+        # deviceBrand` (string): unique identifier of the user's device brand. * `
         # deviceType` (string): the type (also known as form factor) of the user's
         # device. * `countryCode` (string): the country or region of the user's device
         # based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US
@@ -1817,11 +1827,12 @@ module Google
       # apiLevel` (string): the API level of Android that was running on the user's
       # device. * `versionCode` (int64): version of the app that was running on the
       # user's device. * `deviceModel` (string): unique identifier of the user's
-      # device model. * `deviceType` (string): the type (also known as form factor) of
-      # the user's device. * `countryCode` (string): the country or region of the user'
-      # s device based on their IP address, represented as a 2-letter ISO-3166 code (e.
-      # g. US for the United States). * `deviceRamBucket` (int64): RAM of the device,
-      # in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the
+      # device model. * `deviceBrand` (string): unique identifier of the user's device
+      # brand. * `deviceType` (string): the type (also known as form factor) of the
+      # user's device. * `countryCode` (string): the country or region of the user's
+      # device based on their IP address, represented as a 2-letter ISO-3166 code (e.g.
+      # US for the United States). * `deviceRamBucket` (int64): RAM of the device, in
+      # MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the
       # device's primary system-on-chip, e.g., Samsung. [Reference](https://developer.
       # android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel` (
       # string): Model of the device's primary system-on-chip, e.g., "Exynos 2100". [
@@ -1887,7 +1898,8 @@ module Google
       # . **Supported dimensions:** * `apiLevel` (string): the API level of Android
       # that was running on the user's device. * `versionCode` (int64): version of the
       # app that was running on the user's device. * `deviceModel` (string): unique
-      # identifier of the user's device model. * `deviceType` (string): the type (also
+      # identifier of the user's device model. * `deviceBrand` (string): unique
+      # identifier of the user's device brand. * `deviceType` (string): the type (also
       # known as form factor) of the user's device. * `countryCode` (string): the
       # country or region of the user's device based on their IP address, represented
       # as a 2-letter ISO-3166 code (e.g. US for the United States). * `
@@ -1958,11 +1970,12 @@ module Google
       # * * `apiLevel` (string): the API level of Android that was running on the user'
       # s device. * `versionCode` (int64): version of the app that was running on the
       # user's device. * `deviceModel` (string): unique identifier of the user's
-      # device model. * `deviceType` (string): the type (also known as form factor) of
-      # the user's device. * `countryCode` (string): the country or region of the user'
-      # s device based on their IP address, represented as a 2-letter ISO-3166 code (e.
-      # g. US for the United States). * `deviceRamBucket` (int64): RAM of the device,
-      # in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the
+      # device model. * `deviceBrand` (string): unique identifier of the user's device
+      # brand. * `deviceType` (string): the type (also known as form factor) of the
+      # user's device. * `countryCode` (string): the country or region of the user's
+      # device based on their IP address, represented as a 2-letter ISO-3166 code (e.g.
+      # US for the United States). * `deviceRamBucket` (int64): RAM of the device, in
+      # MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the
       # device's primary system-on-chip, e.g., Samsung. [Reference](https://developer.
       # android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel` (
       # string): Model of the device's primary system-on-chip, e.g., "Exynos 2100". [
