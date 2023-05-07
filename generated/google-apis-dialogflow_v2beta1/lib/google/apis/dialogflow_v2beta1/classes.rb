@@ -197,7 +197,7 @@ module Google
         # Represents the query input. It can contain one of: 1. A conversational query
         # in the form of text. 2. An intent query that specifies which intent to trigger.
         # 3. Natural language speech audio to be processed. 4. An event to be triggered.
-        # 
+        # 5. DTMF digits to invoke an intent and fill in parameter value.
         # Corresponds to the JSON property `input`
         # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3QueryInput]
         attr_accessor :input
@@ -1680,7 +1680,7 @@ module Google
       # Represents the query input. It can contain one of: 1. A conversational query
       # in the form of text. 2. An intent query that specifies which intent to trigger.
       # 3. Natural language speech audio to be processed. 4. An event to be triggered.
-      # 
+      # 5. DTMF digits to invoke an intent and fill in parameter value.
       class GoogleCloudDialogflowCxV3QueryInput
         include Google::Apis::Core::Hashable
       
@@ -3231,7 +3231,7 @@ module Google
         # Represents the query input. It can contain one of: 1. A conversational query
         # in the form of text. 2. An intent query that specifies which intent to trigger.
         # 3. Natural language speech audio to be processed. 4. An event to be triggered.
-        # 
+        # 5. DTMF digits to invoke an intent and fill in parameter value.
         # Corresponds to the JSON property `input`
         # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1QueryInput]
         attr_accessor :input
@@ -4714,7 +4714,7 @@ module Google
       # Represents the query input. It can contain one of: 1. A conversational query
       # in the form of text. 2. An intent query that specifies which intent to trigger.
       # 3. Natural language speech audio to be processed. 4. An event to be triggered.
-      # 
+      # 5. DTMF digits to invoke an intent and fill in parameter value.
       class GoogleCloudDialogflowCxV3beta1QueryInput
         include Google::Apis::Core::Hashable
       
@@ -9515,7 +9515,8 @@ module Google
         attr_accessor :click_time
       
         # Indicates whether the answer/item was clicked by the human agent or not.
-        # Default to false.
+        # Default to false. For knowledge search, the answer record is considered to be
+        # clicked if the answer was copied or any URI was clicked.
         # Corresponds to the JSON property `clicked`
         # @return [Boolean]
         attr_accessor :clicked
@@ -17030,7 +17031,7 @@ module Google
         end
       end
       
-      # A resource that represents Google Cloud Platform location.
+      # A resource that represents a Google Cloud location.
       class GoogleCloudLocationLocation
         include Google::Apis::Core::Hashable
       
