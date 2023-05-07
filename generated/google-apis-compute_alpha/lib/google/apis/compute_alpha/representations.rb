@@ -1894,6 +1894,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceGroupManagerInstanceFlexibilityPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceGroupManagerInstanceLifecyclePolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -10765,6 +10777,8 @@ module Google
           property :failover_action, as: 'failoverAction'
           property :fingerprint, :base64 => true, as: 'fingerprint'
           property :id, :numeric_string => true, as: 'id'
+          property :instance_flexibility_policy, as: 'instanceFlexibilityPolicy', class: Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceFlexibilityPolicy, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceFlexibilityPolicy::Representation
+      
           property :instance_group, as: 'instanceGroup'
           property :instance_lifecycle_policy, as: 'instanceLifecyclePolicy', class: Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceLifecyclePolicy, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceLifecyclePolicy::Representation
       
@@ -10786,6 +10800,7 @@ module Google
       
           collection :target_pools, as: 'targetPools'
           property :target_size, as: 'targetSize'
+          property :target_size_unit, as: 'targetSizeUnit'
           property :target_stopped_size, as: 'targetStoppedSize'
           property :target_suspended_size, as: 'targetSuspendedSize'
           property :update_policy, as: 'updatePolicy', class: Google::Apis::ComputeAlpha::InstanceGroupManagerUpdatePolicy, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerUpdatePolicy::Representation
@@ -10874,6 +10889,22 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :on_health_check, as: 'onHealthCheck'
+        end
+      end
+      
+      class InstanceGroupManagerInstanceFlexibilityPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :instance_selection_lists, as: 'instanceSelectionLists', class: Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection::Representation
+      
+        end
+      end
+      
+      class InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :machine_types, as: 'machineTypes'
+          property :rank, as: 'rank'
         end
       end
       
