@@ -3057,8 +3057,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The per-package log levels for the driver. This may include "root" package
-        # name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', '
-        # org.apache = DEBUG'
+        # name to configure rootLogger. Examples: - 'com.google = FATAL' - 'root = INFO'
+        # - 'org.apache = DEBUG'
         # Corresponds to the JSON property `driverLogLevels`
         # @return [Hash<String,String>]
         attr_accessor :driver_log_levels
@@ -3157,31 +3157,31 @@ module Google
         end
       end
       
-      # A Dataproc OSS metric.
+      # A Dataproc custom metric.
       class Metric
         include Google::Apis::Core::Hashable
       
-        # Optional. Specify one or more available OSS metrics (https://cloud.google.com/
-        # dataproc/docs/guides/monitoring#available_oss_metrics) to collect for the
-        # metric course (for the SPARK metric source, any Spark metric (https://spark.
+        # Optional. Specify one or more Custom metrics (https://cloud.google.com/
+        # dataproc/docs/guides/dataproc-metrics#custom_metrics) to collect for the
+        # metric course (for the SPARK metric source (any Spark metric (https://spark.
         # apache.org/docs/latest/monitoring.html#metrics) can be specified).Provide
         # metrics in the following format: METRIC_SOURCE: INSTANCE:GROUP:METRIC Use
         # camelcase as appropriate.Examples: yarn:ResourceManager:QueueMetrics:
         # AppsCompleted spark:driver:DAGScheduler:job.allJobs sparkHistoryServer:JVM:
         # Memory:NonHeapMemoryUsage.committed hiveserver2:JVM:Memory:NonHeapMemoryUsage.
-        # used Notes: Only the specified overridden metrics will be collected for the
-        # metric source. For example, if one or more spark:executive metrics are listed
-        # as metric overrides, other SPARK metrics will not be collected. The collection
-        # of the default metrics for other OSS metric sources is unaffected. For example,
-        # if both SPARK andd YARN metric sources are enabled, and overrides are
-        # provided for Spark metrics only, all default YARN metrics will be collected.
+        # used Notes: Only the specified overridden metrics are collected for the metric
+        # source. For example, if one or more spark:executive metrics are listed as
+        # metric overrides, other SPARK metrics are not collected. The collection of the
+        # metrics for other enabled custom metric sources is unaffected. For example, if
+        # both SPARK andd YARN metric sources are enabled, and overrides are provided
+        # for Spark metrics only, all YARN metrics are collected.
         # Corresponds to the JSON property `metricOverrides`
         # @return [Array<String>]
         attr_accessor :metric_overrides
       
-        # Required. Default metrics are collected unless metricOverrides are specified
-        # for the metric source (see Available OSS metrics (https://cloud.google.com/
-        # dataproc/docs/guides/monitoring#available_oss_metrics) for more information).
+        # Required. A standard set of metrics is collected unless metricOverrides are
+        # specified for the metric source (see Custom metrics (https://cloud.google.com/
+        # dataproc/docs/guides/dataproc-metrics#custom_metrics) for more information).
         # Corresponds to the JSON property `metricSource`
         # @return [String]
         attr_accessor :metric_source
