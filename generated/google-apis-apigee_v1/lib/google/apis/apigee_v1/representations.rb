@@ -136,12 +136,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudApigeeV1ApiResponseWrapper
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudApigeeV1ApiSecurityConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -329,6 +323,12 @@ module Google
       end
       
       class GoogleCloudApigeeV1DeleteCustomReportResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1DeleteResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1583,6 +1583,7 @@ module Google
       class GoogleCloudApigeeV1ApiCategoryData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcp_resource, as: 'gcpResource'
           property :id, as: 'id'
           property :name, as: 'name'
           property :site_id, as: 'siteId'
@@ -1667,16 +1668,6 @@ module Google
           collection :targets, as: 'targets'
           collection :teams, as: 'teams'
           property :type, as: 'type'
-        end
-      end
-      
-      class GoogleCloudApigeeV1ApiResponseWrapper
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :error_code, as: 'errorCode'
-          property :message, as: 'message'
-          property :request_id, as: 'requestId'
-          property :status, as: 'status'
         end
       end
       
@@ -2048,6 +2039,17 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :message, as: 'message'
+        end
+      end
+      
+      class GoogleCloudApigeeV1DeleteResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_code, as: 'errorCode'
+          property :gcp_resource, as: 'gcpResource'
+          property :message, as: 'message'
+          property :request_id, as: 'requestId'
+          property :status, as: 'status'
         end
       end
       
