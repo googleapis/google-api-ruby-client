@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRunV2EmptyDirVolumeSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRunV2EnvVar
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -362,6 +368,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :args, as: 'args'
           collection :command, as: 'command'
+          collection :depends_on, as: 'dependsOn'
           collection :env, as: 'env', class: Google::Apis::RunV2::GoogleCloudRunV2EnvVar, decorator: Google::Apis::RunV2::GoogleCloudRunV2EnvVar::Representation
       
           property :image, as: 'image'
@@ -385,6 +392,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :container_port, as: 'containerPort'
           property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudRunV2EmptyDirVolumeSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :medium, as: 'medium'
+          property :size_limit, as: 'sizeLimit'
         end
       end
       
@@ -839,6 +854,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cloud_sql_instance, as: 'cloudSqlInstance', class: Google::Apis::RunV2::GoogleCloudRunV2CloudSqlInstance, decorator: Google::Apis::RunV2::GoogleCloudRunV2CloudSqlInstance::Representation
+      
+          property :empty_dir, as: 'emptyDir', class: Google::Apis::RunV2::GoogleCloudRunV2EmptyDirVolumeSource, decorator: Google::Apis::RunV2::GoogleCloudRunV2EmptyDirVolumeSource::Representation
       
           property :name, as: 'name'
           property :secret, as: 'secret', class: Google::Apis::RunV2::GoogleCloudRunV2SecretVolumeSource, decorator: Google::Apis::RunV2::GoogleCloudRunV2SecretVolumeSource::Representation
