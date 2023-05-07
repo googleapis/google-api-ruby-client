@@ -75,7 +75,7 @@ module Google
         end
       end
       
-      # Resource that represents a bare metal admin cluster.
+      # ## Resource that represents a bare metal admin cluster.
       class BareMetalAdminCluster
         include Google::Apis::Core::Hashable
       
@@ -89,7 +89,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :annotations
       
-        # 
+        # The Anthos clusters on bare metal version for the bare metal admin cluster.
         # Corresponds to the JSON property `bareMetalVersion`
         # @return [String]
         attr_accessor :bare_metal_version
@@ -616,7 +616,7 @@ module Google
       class BareMetalAdminPortConfig
         include Google::Apis::Core::Hashable
       
-        # 
+        # The port that control plane hosted load balancers will listen on.
         # Corresponds to the JSON property `controlPlaneLoadBalancerPort`
         # @return [Fixnum]
         attr_accessor :control_plane_load_balancer_port
@@ -4444,7 +4444,11 @@ module Google
         # @return [Google::Apis::GkeonpremV1::VmwareF5BigIpConfig]
         attr_accessor :f5_config
       
-        # Manually configured load balancers.
+        # Represents configuration parameters for an already existing manual load
+        # balancer. Given the nature of manual load balancers it is expected that said
+        # load balancer will be fully managed by users. IMPORTANT: Please note that the
+        # Anthos On-Prem API will not generate or update ManualLB configurations it can
+        # only bind a pre-existing configuration to a new VMware user cluster.
         # Corresponds to the JSON property `manualLbConfig`
         # @return [Google::Apis::GkeonpremV1::VmwareManualLbConfig]
         attr_accessor :manual_lb_config
@@ -4472,7 +4476,11 @@ module Google
         end
       end
       
-      # 
+      # Represents configuration parameters for an already existing manual load
+      # balancer. Given the nature of manual load balancers it is expected that said
+      # load balancer will be fully managed by users. IMPORTANT: Please note that the
+      # Anthos On-Prem API will not generate or update ManualLB configurations it can
+      # only bind a pre-existing configuration to a new VMware user cluster.
       class VmwareManualLbConfig
         include Google::Apis::Core::Hashable
       
