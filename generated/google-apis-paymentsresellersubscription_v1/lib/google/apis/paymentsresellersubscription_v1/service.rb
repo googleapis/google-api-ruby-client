@@ -306,7 +306,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # [Deprecated] New partners should be on auto-extend by default. Used by
+        # [Opt-in only] Most partners should be on auto-extend by default. Used by
         # partners to extend a subscription service for their customers on an ongoing
         # basis for the subscription to remain active and renewable. It should be called
         # directly by the partner using service accounts.
