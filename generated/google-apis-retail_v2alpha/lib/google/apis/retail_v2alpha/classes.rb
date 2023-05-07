@@ -1429,15 +1429,13 @@ module Google
         # @return [String]
         attr_accessor :exact_searchable_option
       
-        # Set manually for numerical attributes only. If the facet SearchResponse.
-        # FacetSpec.intervals are not set by the customer for a numerical attribute,
-        # then a weekly pipeline will calculate some intervals using some percentiles on
-        # the distribution of all its product numerical attribute values. The latter
-        # computed intervals might not be ideal for the use case of that attribute. For
-        # this reason, the customer can set them manually. As another option, for any
-        # numerical attribute that is passed as a facet key in the request along with
-        # some given intervals, then these given intervals will be the facet intervals
-        # returned in the response.
+        # If you don't set the facet SearchRequest.FacetSpec.FacetKey.intervals to a
+        # numerical attribute, then a weekly pipeline calculates intervals using some
+        # percentiles on the distribution of all its product numerical attribute values.
+        # The calculated intervals might not be ideal for some attributes. Therefore, we
+        # give you the option the overwrite them. For any numerical attribute that is
+        # passed as a facet key in the request along with given intervals, the given
+        # intervals are the facet intervals returned in the response.
         # Corresponds to the JSON property `facetIntervals`
         # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaInterval>]
         attr_accessor :facet_intervals
@@ -3025,17 +3023,17 @@ module Google
         end
       end
       
-      # Represents a link between a Merchant Center account and a branch. Once a link
-      # is established, products from the linked merchant center account will be
-      # streamed to the linked branch.
+      # Represents a link between a Merchant Center account and a branch. After a link
+      # is established, products from the linked Merchant Center account are streamed
+      # to the linked branch.
       class GoogleCloudRetailV2alphaMerchantCenterAccountLink
         include Google::Apis::Core::Hashable
       
-        # Required. The branch id (e.g. 0/1/2) within the catalog that products from
+        # Required. The branch ID (e.g. 0/1/2) within the catalog that products from
         # merchant_center_account_id are streamed to. When updating this field, an empty
         # value will use the currently configured default branch. However, changing the
         # default branch later on won't change the linked branch here. A single branch
-        # id can only have one linked merchant center account id.
+        # ID can only have one linked Merchant Center account ID.
         # Corresponds to the JSON property `branchId`
         # @return [String]
         attr_accessor :branch_id
@@ -3165,9 +3163,9 @@ module Google
         end
       end
       
-      # Represents a link between a Merchant Center account and a branch. Once a link
-      # is established, products from the linked merchant center account will be
-      # streamed to the linked branch.
+      # Represents a link between a Merchant Center account and a branch. After a link
+      # is established, products from the linked Merchant Center account are streamed
+      # to the linked branch.
       class GoogleCloudRetailV2alphaMerchantCenterLink
         include Google::Apis::Core::Hashable
       
@@ -3175,7 +3173,7 @@ module Google
         # merchant_center_account_id are streamed to. When updating this field, an empty
         # value will use the currently configured default branch. However, changing the
         # default branch later on won't change the linked branch here. A single branch
-        # ID can only have one linked merchant center account ID.
+        # ID can only have one linked Merchant Center account ID.
         # Corresponds to the JSON property `branchId`
         # @return [String]
         attr_accessor :branch_id
@@ -3205,7 +3203,7 @@ module Google
         # @return [String]
         attr_accessor :language_code
       
-        # Required. The linked [Merchant center account ID](https://developers.google.
+        # Required. The linked [Merchant Center account ID](https://developers.google.
         # com/shopping-content/guides/accountstatuses). The account must be a standalone
         # account or a sub-account of a MCA.
         # Corresponds to the JSON property `merchantCenterAccountId`
@@ -7316,17 +7314,17 @@ module Google
         end
       end
       
-      # Represents a link between a Merchant Center account and a branch. Once a link
-      # is established, products from the linked merchant center account will be
-      # streamed to the linked branch.
+      # Represents a link between a Merchant Center account and a branch. After a link
+      # is established, products from the linked Merchant Center account are streamed
+      # to the linked branch.
       class GoogleCloudRetailV2betaMerchantCenterAccountLink
         include Google::Apis::Core::Hashable
       
-        # Required. The branch id (e.g. 0/1/2) within the catalog that products from
+        # Required. The branch ID (e.g. 0/1/2) within the catalog that products from
         # merchant_center_account_id are streamed to. When updating this field, an empty
         # value will use the currently configured default branch. However, changing the
         # default branch later on won't change the linked branch here. A single branch
-        # id can only have one linked merchant center account id.
+        # ID can only have one linked Merchant Center account ID.
         # Corresponds to the JSON property `branchId`
         # @return [String]
         attr_accessor :branch_id
