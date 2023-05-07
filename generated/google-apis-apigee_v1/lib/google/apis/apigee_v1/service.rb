@@ -10097,18 +10097,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiResponseWrapper] parsed result object
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeleteResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiResponseWrapper]
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeleteResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_organization_site_apicategory(name, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}', options)
-          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiResponseWrapper::Representation
-          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiResponseWrapper
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeleteResponse::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeleteResponse
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
