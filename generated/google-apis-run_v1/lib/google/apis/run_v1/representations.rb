@@ -130,6 +130,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EmptyDirVolumeSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EnvFromSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -741,6 +747,14 @@ module Google
           collection :resource_records, as: 'resourceRecords', class: Google::Apis::RunV1::ResourceRecord, decorator: Google::Apis::RunV1::ResourceRecord::Representation
       
           property :url, as: 'url'
+        end
+      end
+      
+      class EmptyDirVolumeSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :medium, as: 'medium'
+          property :size_limit, as: 'sizeLimit'
         end
       end
       
@@ -1503,6 +1517,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :config_map, as: 'configMap', class: Google::Apis::RunV1::ConfigMapVolumeSource, decorator: Google::Apis::RunV1::ConfigMapVolumeSource::Representation
+      
+          property :empty_dir, as: 'emptyDir', class: Google::Apis::RunV1::EmptyDirVolumeSource, decorator: Google::Apis::RunV1::EmptyDirVolumeSource::Representation
       
           property :name, as: 'name'
           property :secret, as: 'secret', class: Google::Apis::RunV1::SecretVolumeSource, decorator: Google::Apis::RunV1::SecretVolumeSource::Representation

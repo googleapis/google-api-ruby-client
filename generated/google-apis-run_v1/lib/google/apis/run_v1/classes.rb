@@ -820,6 +820,43 @@ module Google
         end
       end
       
+      # Ephemeral storage which can be backed by real disks (HD, SSD), network storage
+      # or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is
+      # ephemeral in the sense that when the sandbox is taken down, the data is
+      # destroyed with it (it does not persist across sandbox runs).
+      class EmptyDirVolumeSource
+        include Google::Apis::Core::Hashable
+      
+        # The medium on which the data is stored. The default is "" which means to use
+        # the node's default medium. Must be an empty string (default) or Memory. More
+        # info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir +optional
+        # Corresponds to the JSON property `medium`
+        # @return [String]
+        attr_accessor :medium
+      
+        # Limit on the storage usable by this EmptyDir volume. The size limit is also
+        # applicable for memory medium. The maximum usage on memory medium EmptyDir
+        # would be the minimum value between the SizeLimit specified here and the sum of
+        # memory limits of all containers in a pod. This field's values are of the '
+        # Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-
+        # definitions/quantity/. The default is nil which means that the limit is
+        # undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir +
+        # optional
+        # Corresponds to the JSON property `sizeLimit`
+        # @return [String]
+        attr_accessor :size_limit
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @medium = args[:medium] if args.key?(:medium)
+          @size_limit = args[:size_limit] if args.key?(:size_limit)
+        end
+      end
+      
       # Not supported by Cloud Run. EnvFromSource represents the source of a set of
       # ConfigMaps
       class EnvFromSource
@@ -3759,6 +3796,14 @@ module Google
         # @return [Google::Apis::RunV1::ConfigMapVolumeSource]
         attr_accessor :config_map
       
+        # Ephemeral storage which can be backed by real disks (HD, SSD), network storage
+        # or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is
+        # ephemeral in the sense that when the sandbox is taken down, the data is
+        # destroyed with it (it does not persist across sandbox runs).
+        # Corresponds to the JSON property `emptyDir`
+        # @return [Google::Apis::RunV1::EmptyDirVolumeSource]
+        attr_accessor :empty_dir
+      
         # Volume's name. In Cloud Run Fully Managed, the name 'cloudsql' is reserved.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -3780,6 +3825,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @config_map = args[:config_map] if args.key?(:config_map)
+          @empty_dir = args[:empty_dir] if args.key?(:empty_dir)
           @name = args[:name] if args.key?(:name)
           @secret = args[:secret] if args.key?(:secret)
         end
