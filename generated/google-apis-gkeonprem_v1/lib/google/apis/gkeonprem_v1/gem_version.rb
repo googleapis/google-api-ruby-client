@@ -16,13 +16,13 @@ module Google
   module Apis
     module GkeonpremV1
       # Version of the google-apis-gkeonprem_v1 gem
-      GEM_VERSION = "0.1.0"
+      GEM_VERSION = "0.2.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.12.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20230423"
+      REVISION = "20230426"
     end
   end
 end
