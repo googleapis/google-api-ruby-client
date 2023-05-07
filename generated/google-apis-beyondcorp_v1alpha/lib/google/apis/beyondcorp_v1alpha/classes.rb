@@ -2121,6 +2121,330 @@ module Google
         end
       end
       
+      # Message contains the authentication information to validate against the proxy
+      # server.
+      class GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfo
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Service Account for encrypting the JWT.
+        # Corresponds to the JSON property `encryptionSaEmail`
+        # @return [String]
+        attr_accessor :encryption_sa_email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encryption_sa_email = args[:encryption_sa_email] if args.key?(:encryption_sa_email)
+        end
+      end
+      
+      # Metadata associated with Tenant and is provided by the Partner.
+      class GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Optional. UUID used by the Partner to refer to the Tenant in their internal
+        # systems.
+        # Corresponds to the JSON property `partnerTenantId`
+        # @return [String]
+        attr_accessor :partner_tenant_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @partner_tenant_id = args[:partner_tenant_id] if args.key?(:partner_tenant_id)
+        end
+      end
+      
+      # Represents the metadata of the long-running operation.
+      class GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerServiceOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. API version used to start the operation.
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
+        # Output only. The time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The time the operation finished running.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Output only. Identifies whether the caller has requested cancellation of the
+        # operation. Operations that have successfully been cancelled have Operation.
+        # error value with a google.rpc.Status.code of 1, corresponding to `Code.
+        # CANCELLED`.
+        # Corresponds to the JSON property `requestedCancellation`
+        # @return [Boolean]
+        attr_accessor :requested_cancellation
+        alias_method :requested_cancellation?, :requested_cancellation
+      
+        # Output only. Human-readable status of the operation, if any.
+        # Corresponds to the JSON property `statusMessage`
+        # @return [String]
+        attr_accessor :status_message
+      
+        # Output only. Server-defined resource path for the target of the operation.
+        # Corresponds to the JSON property `target`
+        # @return [String]
+        attr_accessor :target
+      
+        # Output only. Name of the verb executed by the operation.
+        # Corresponds to the JSON property `verb`
+        # @return [String]
+        attr_accessor :verb
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @requested_cancellation = args[:requested_cancellation] if args.key?(:requested_cancellation)
+          @status_message = args[:status_message] if args.key?(:status_message)
+          @target = args[:target] if args.key?(:target)
+          @verb = args[:verb] if args.key?(:verb)
+        end
+      end
+      
+      # Proxy Configuration of a Tenant.
+      class GoogleCloudBeyondcorpPartnerservicesV1alphaProxyConfig
+        include Google::Apis::Core::Hashable
+      
+        # Message contains the authentication information to validate against the proxy
+        # server.
+        # Corresponds to the JSON property `authenticationInfo`
+        # @return [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfo]
+        attr_accessor :authentication_info
+      
+        # Output only. Timestamp when the resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. An arbitrary caller-provided name for the ProxyConfig. Cannot exceed
+        # 64 characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. ProxyConfig resource name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. The URI of the proxy server.
+        # Corresponds to the JSON property `proxyUri`
+        # @return [String]
+        attr_accessor :proxy_uri
+      
+        # Message contains the routing information to direct traffic to the proxy server.
+        # Corresponds to the JSON property `routingInfo`
+        # @return [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfo]
+        attr_accessor :routing_info
+      
+        # Message contains the transport layer information to verify the proxy server.
+        # Corresponds to the JSON property `transportInfo`
+        # @return [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfo]
+        attr_accessor :transport_info
+      
+        # Output only. Timestamp when the resource was last modified.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authentication_info = args[:authentication_info] if args.key?(:authentication_info)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @proxy_uri = args[:proxy_uri] if args.key?(:proxy_uri)
+          @routing_info = args[:routing_info] if args.key?(:routing_info)
+          @transport_info = args[:transport_info] if args.key?(:transport_info)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Message contains the routing information to direct traffic to the proxy server.
+      class GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfo
+        include Google::Apis::Core::Hashable
+      
+        # Required. Proxy Auto-Configuration (PAC) URI.
+        # Corresponds to the JSON property `pacUri`
+        # @return [String]
+        attr_accessor :pac_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pac_uri = args[:pac_uri] if args.key?(:pac_uri)
+        end
+      end
+      
+      # Information about a BeyoncCorp Enterprise Tenant.
+      class GoogleCloudBeyondcorpPartnerservicesV1alphaTenant
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Timestamp when the resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. An arbitrary caller-provided name for the Tenant. Cannot exceed 64
+        # characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Optional. Google group email to which the Tenant is enabled.
+        # Corresponds to the JSON property `googleGroupEmail`
+        # @return [String]
+        attr_accessor :google_group_email
+      
+        # Optional. Google group ID to which the Tenant is enabled.
+        # Corresponds to the JSON property `googleGroupId`
+        # @return [String]
+        attr_accessor :google_group_id
+      
+        # Output only. Unique resource name of the Tenant. The name is ignored when
+        # creating Tenant.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Metadata associated with Tenant and is provided by the Partner.
+        # Corresponds to the JSON property `partnerMetadata`
+        # @return [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata]
+        attr_accessor :partner_metadata
+      
+        # Output only. Timestamp when the resource was last modified.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @google_group_email = args[:google_group_email] if args.key?(:google_group_email)
+          @google_group_id = args[:google_group_id] if args.key?(:google_group_id)
+          @name = args[:name] if args.key?(:name)
+          @partner_metadata = args[:partner_metadata] if args.key?(:partner_metadata)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Message contains the transport layer information to verify the proxy server.
+      class GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfo
+        include Google::Apis::Core::Hashable
+      
+        # Required. PEM encoded CA certificate associated with the proxy server
+        # certificate.
+        # Corresponds to the JSON property `serverCaCertPem`
+        # @return [String]
+        attr_accessor :server_ca_cert_pem
+      
+        # Optional. PEM encoded CA certificate associated with the certificate used by
+        # proxy server for SSL decryption.
+        # Corresponds to the JSON property `sslDecryptCaCertPem`
+        # @return [String]
+        attr_accessor :ssl_decrypt_ca_cert_pem
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @server_ca_cert_pem = args[:server_ca_cert_pem] if args.key?(:server_ca_cert_pem)
+          @ssl_decrypt_ca_cert_pem = args[:ssl_decrypt_ca_cert_pem] if args.key?(:ssl_decrypt_ca_cert_pem)
+        end
+      end
+      
+      # Represents the metadata of the long-running operation.
+      class GoogleCloudBeyondcorpPartnerservicesV1mainPartnerServiceOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. API version used to start the operation.
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
+        # Output only. The time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The time the operation finished running.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Output only. Identifies whether the caller has requested cancellation of the
+        # operation. Operations that have successfully been cancelled have Operation.
+        # error value with a google.rpc.Status.code of 1, corresponding to `Code.
+        # CANCELLED`.
+        # Corresponds to the JSON property `requestedCancellation`
+        # @return [Boolean]
+        attr_accessor :requested_cancellation
+        alias_method :requested_cancellation?, :requested_cancellation
+      
+        # Output only. Human-readable status of the operation, if any.
+        # Corresponds to the JSON property `statusMessage`
+        # @return [String]
+        attr_accessor :status_message
+      
+        # Output only. Server-defined resource path for the target of the operation.
+        # Corresponds to the JSON property `target`
+        # @return [String]
+        attr_accessor :target
+      
+        # Output only. Name of the verb executed by the operation.
+        # Corresponds to the JSON property `verb`
+        # @return [String]
+        attr_accessor :verb
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @requested_cancellation = args[:requested_cancellation] if args.key?(:requested_cancellation)
+          @status_message = args[:status_message] if args.key?(:status_message)
+          @target = args[:target] if args.key?(:target)
+          @verb = args[:verb] if args.key?(:verb)
+        end
+      end
+      
       # The configuration that was applied to generate the result.
       class GoogleCloudBeyondcorpSaasplatformInsightsV1alphaAppliedConfig
         include Google::Apis::Core::Hashable
