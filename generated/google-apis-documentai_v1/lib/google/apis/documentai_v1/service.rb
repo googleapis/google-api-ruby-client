@@ -87,9 +87,8 @@ module Google
         # Fetches processor types. Note that we don't use ListProcessorTypes here,
         # because it isn't paginated.
         # @param [String] parent
-        #   Required. The project of processor type to list. The available processor types
-        #   may depend on the allow-listing on projects. Format: `projects/`project`/
-        #   locations/`location``
+        #   Required. The location of processor types to list. Format: `projects/`project`/
+        #   locations/`location``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -330,13 +329,12 @@ module Google
         
         # Lists the processor types that exist.
         # @param [String] parent
-        #   Required. The location of processor type to list. The available processor
-        #   types may depend on the allow-listing on projects. Format: `projects/`project`/
-        #   locations/`location``
+        #   Required. The location of processor types to list. Format: `projects/`project`/
+        #   locations/`location``.
         # @param [Fixnum] page_size
-        #   The maximum number of processor types to return. If unspecified, at most 100
-        #   processor types will be returned. The maximum value is 500; values above 500
-        #   will be coerced to 500.
+        #   The maximum number of processor types to return. If unspecified, at most `100`
+        #   processor types will be returned. The maximum value is `500`. Values above `
+        #   500` will be coerced to `500`.
         # @param [String] page_token
         #   Used to retrieve the next page of results, empty if at the end of the list.
         # @param [String] fields
@@ -405,8 +403,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a processor from the type processor that the user chose. The processor
-        # will be at "ENABLED" state by default after its creation.
+        # Creates a processor from the ProcessorType provided. The processor will be at `
+        # ENABLED` state by default after its creation.
         # @param [String] parent
         #   Required. The parent (project and location) under which to create the
         #   processor. Format: `projects/`project`/locations/`location``
@@ -572,9 +570,9 @@ module Google
         #   Required. The parent (project and location) which owns this collection of
         #   Processors. Format: `projects/`project`/locations/`location``
         # @param [Fixnum] page_size
-        #   The maximum number of processors to return. If unspecified, at most 50
-        #   processors will be returned. The maximum value is 100; values above 100 will
-        #   be coerced to 100.
+        #   The maximum number of processors to return. If unspecified, at most `50`
+        #   processors will be returned. The maximum value is `100`. Values above `100`
+        #   will be coerced to `100`.
         # @param [String] page_token
         #   We will return the processors sorted by creation time. The page token will
         #   point to the next processor.
@@ -885,9 +883,9 @@ module Google
         #   Required. The parent (project, location and processor) to list all versions.
         #   Format: `projects/`project`/locations/`location`/processors/`processor``
         # @param [Fixnum] page_size
-        #   The maximum number of processor versions to return. If unspecified, at most 10
-        #   processor versions will be returned. The maximum value is 20; values above 20
-        #   will be coerced to 20.
+        #   The maximum number of processor versions to return. If unspecified, at most `
+        #   10` processor versions will be returned. The maximum value is `20`. Values
+        #   above `20` will be coerced to `20`.
         # @param [String] page_token
         #   We will return the processor versions sorted by creation time. The page token
         #   will point to the next processor version.
@@ -958,7 +956,7 @@ module Google
         end
         
         # Trains a new processor version. Operation metadata is returned as
-        # cloud_documentai_core.TrainProcessorVersionMetadata.
+        # TrainProcessorVersionMetadata.
         # @param [String] parent
         #   Required. The parent (project, location and processor) to create the new
         #   version for. Format: `projects/`project`/locations/`location`/processors/`
@@ -1064,9 +1062,8 @@ module Google
         #   projects/`project`/locations/`location`/processors/`processor`/
         #   processorVersions/`processorVersion``
         # @param [Fixnum] page_size
-        #   The standard list page size. If unspecified, at most `5` evaluations will be
-        #   returned. The maximum value is `100`; values above `100` will be coerced to `
-        #   100`.
+        #   The standard list page size. If unspecified, at most `5` evaluations are
+        #   returned. The maximum value is `100`. Values above `100` are coerced to `100`.
         # @param [String] page_token
         #   A page token, received from a previous `ListEvaluations` call. Provide this to
         #   retrieve the subsequent page.
