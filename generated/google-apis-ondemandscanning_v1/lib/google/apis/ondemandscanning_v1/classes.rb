@@ -277,31 +277,6 @@ module Google
         end
       end
       
-      # 
-      class Binary
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # 
-        # Corresponds to the JSON property `version`
-        # @return [String]
-        attr_accessor :version
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @name = args[:name] if args.key?(:name)
-          @version = args[:version] if args.key?(:version)
-        end
-      end
-      
       # Details of a build occurrence.
       class BuildOccurrence
         include Google::Apis::Core::Hashable
@@ -1924,6 +1899,13 @@ module Google
         # @return [String]
         attr_accessor :resource_uri
       
+        # The occurrence representing an SBOM reference as applied to a specific
+        # resource. The occurrence follows the DSSE specification. See https://github.
+        # com/secure-systems-lab/dsse/blob/master/envelope.md for more details.
+        # Corresponds to the JSON property `sbomReference`
+        # @return [Google::Apis::OndemandscanningV1::SbomReferenceOccurrence]
+        attr_accessor :sbom_reference
+      
         # Output only. The time this occurrence was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -1964,6 +1946,7 @@ module Google
           @package = args[:package] if args.key?(:package)
           @remediation = args[:remediation] if args.key?(:remediation)
           @resource_uri = args[:resource_uri] if args.key?(:resource_uri)
+          @sbom_reference = args[:sbom_reference] if args.key?(:sbom_reference)
           @update_time = args[:update_time] if args.key?(:update_time)
           @upgrade = args[:upgrade] if args.key?(:upgrade)
           @vulnerability = args[:vulnerability] if args.key?(:vulnerability)
@@ -2046,9 +2029,9 @@ module Google
         # source and its version in the package/version fields, but we should also store
         # the binary package info, as that's what's actually installed. See b/175908657#
         # comment15.
-        # Corresponds to the JSON property `binary`
-        # @return [Google::Apis::OndemandscanningV1::Binary]
-        attr_accessor :binary
+        # Corresponds to the JSON property `binaryVersion`
+        # @return [Google::Apis::OndemandscanningV1::PackageVersion]
+        attr_accessor :binary_version
       
         # The cpe_uri in [cpe format] (https://cpe.mitre.org/specification/) in which
         # the vulnerability may manifest. Examples include distro or storage location
@@ -2107,6 +2090,14 @@ module Google
         # @return [Array<String>]
         attr_accessor :patched_cve
       
+        # The source package. Similar to the above, this is significant when the source
+        # is different than the binary itself. Since the top-level package/version
+        # fields are based on an if/else, we need a separate field for both binary and
+        # source if we want to know definitively where the data is coming from.
+        # Corresponds to the JSON property `sourceVersion`
+        # @return [Google::Apis::OndemandscanningV1::PackageVersion]
+        attr_accessor :source_version
+      
         # 
         # Corresponds to the JSON property `unused`
         # @return [String]
@@ -2124,7 +2115,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @architecture = args[:architecture] if args.key?(:architecture)
-          @binary = args[:binary] if args.key?(:binary)
+          @binary_version = args[:binary_version] if args.key?(:binary_version)
           @cpe_uri = args[:cpe_uri] if args.key?(:cpe_uri)
           @dependency_chain = args[:dependency_chain] if args.key?(:dependency_chain)
           @file_location = args[:file_location] if args.key?(:file_location)
@@ -2135,6 +2126,7 @@ module Google
           @package = args[:package] if args.key?(:package)
           @package_type = args[:package_type] if args.key?(:package_type)
           @patched_cve = args[:patched_cve] if args.key?(:patched_cve)
+          @source_version = args[:source_version] if args.key?(:source_version)
           @unused = args[:unused] if args.key?(:unused)
           @version = args[:version] if args.key?(:version)
         end
@@ -2276,6 +2268,31 @@ module Google
           @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
           @package_type = args[:package_type] if args.key?(:package_type)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # 
+      class PackageVersion
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # 
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
           @version = args[:version] if args.key?(:version)
         end
       end
@@ -2446,6 +2463,119 @@ module Google
         def update!(**args)
           @project_repo_id = args[:project_repo_id] if args.key?(:project_repo_id)
           @uid = args[:uid] if args.key?(:uid)
+        end
+      end
+      
+      # The occurrence representing an SBOM reference as applied to a specific
+      # resource. The occurrence follows the DSSE specification. See https://github.
+      # com/secure-systems-lab/dsse/blob/master/envelope.md for more details.
+      class SbomReferenceOccurrence
+        include Google::Apis::Core::Hashable
+      
+        # The actual payload that contains the SBOM Reference data. The payload follows
+        # the intoto statement specification. See https://github.com/in-toto/attestation/
+        # blob/main/spec/v1.0/statement.md for more details.
+        # Corresponds to the JSON property `payload`
+        # @return [Google::Apis::OndemandscanningV1::SbomReferenceIntotoPayload]
+        attr_accessor :payload
+      
+        # The kind of payload that SbomReferenceIntotoPayload takes. Since it's in the
+        # intoto format, this value is expected to be 'application/vnd.in-toto+json'.
+        # Corresponds to the JSON property `payloadType`
+        # @return [String]
+        attr_accessor :payload_type
+      
+        # The signatures over the payload.
+        # Corresponds to the JSON property `signatures`
+        # @return [Array<Google::Apis::OndemandscanningV1::EnvelopeSignature>]
+        attr_accessor :signatures
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @payload = args[:payload] if args.key?(:payload)
+          @payload_type = args[:payload_type] if args.key?(:payload_type)
+          @signatures = args[:signatures] if args.key?(:signatures)
+        end
+      end
+      
+      # The actual payload that contains the SBOM Reference data. The payload follows
+      # the intoto statement specification. See https://github.com/in-toto/attestation/
+      # blob/main/spec/v1.0/statement.md for more details.
+      class SbomReferenceIntotoPayload
+        include Google::Apis::Core::Hashable
+      
+        # Identifier for the schema of the Statement.
+        # Corresponds to the JSON property `_type`
+        # @return [String]
+        attr_accessor :_type
+      
+        # A predicate which describes the SBOM being referenced.
+        # Corresponds to the JSON property `predicate`
+        # @return [Google::Apis::OndemandscanningV1::SbomReferenceIntotoPredicate]
+        attr_accessor :predicate
+      
+        # URI identifying the type of the Predicate.
+        # Corresponds to the JSON property `predicateType`
+        # @return [String]
+        attr_accessor :predicate_type
+      
+        # Set of software artifacts that the attestation applies to. Each element
+        # represents a single software artifact.
+        # Corresponds to the JSON property `subject`
+        # @return [Array<Google::Apis::OndemandscanningV1::Subject>]
+        attr_accessor :subject
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @_type = args[:_type] if args.key?(:_type)
+          @predicate = args[:predicate] if args.key?(:predicate)
+          @predicate_type = args[:predicate_type] if args.key?(:predicate_type)
+          @subject = args[:subject] if args.key?(:subject)
+        end
+      end
+      
+      # A predicate which describes the SBOM being referenced.
+      class SbomReferenceIntotoPredicate
+        include Google::Apis::Core::Hashable
+      
+        # A map of algorithm to digest of the contents of the SBOM.
+        # Corresponds to the JSON property `digest`
+        # @return [Hash<String,String>]
+        attr_accessor :digest
+      
+        # The location of the SBOM.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # The mime type of the SBOM.
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        # The person or system referring this predicate to the consumer.
+        # Corresponds to the JSON property `referrerId`
+        # @return [String]
+        attr_accessor :referrer_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @digest = args[:digest] if args.key?(:digest)
+          @location = args[:location] if args.key?(:location)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+          @referrer_id = args[:referrer_id] if args.key?(:referrer_id)
         end
       end
       
