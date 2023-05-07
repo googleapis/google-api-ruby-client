@@ -574,6 +574,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1alphaEventCreateRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1alphaExpandedDataSet
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -748,6 +754,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1alphaListEventCreateRulesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1alphaListExpandedDataSetsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -790,6 +802,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1alphaMatchingCondition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -797,6 +815,12 @@ module Google
       end
       
       class GoogleAnalyticsAdminV1alphaNumericValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaParameterMutation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1507,6 +1531,8 @@ module Google
       
           property :enhanced_measurement_settings, as: 'enhancedMeasurementSettings', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings::Representation
       
+          property :event_create_rule, as: 'eventCreateRule', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEventCreateRule, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEventCreateRule::Representation
+      
           property :expanded_data_set, as: 'expandedDataSet', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaExpandedDataSet, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaExpandedDataSet::Representation
       
           property :firebase_link, as: 'firebaseLink', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaFirebaseLink, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaFirebaseLink::Representation
@@ -1804,6 +1830,19 @@ module Google
         end
       end
       
+      class GoogleAnalyticsAdminV1alphaEventCreateRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :destination_event, as: 'destinationEvent'
+          collection :event_conditions, as: 'eventConditions', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaMatchingCondition, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaMatchingCondition::Representation
+      
+          property :name, as: 'name'
+          collection :parameter_mutations, as: 'parameterMutations', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaParameterMutation, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaParameterMutation::Representation
+      
+          property :source_copy_parameters, as: 'sourceCopyParameters'
+        end
+      end
+      
       class GoogleAnalyticsAdminV1alphaExpandedDataSet
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2067,6 +2106,15 @@ module Google
         end
       end
       
+      class GoogleAnalyticsAdminV1alphaListEventCreateRulesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :event_create_rules, as: 'eventCreateRules', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEventCreateRule, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEventCreateRule::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class GoogleAnalyticsAdminV1alphaListExpandedDataSetsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2130,6 +2178,16 @@ module Google
         end
       end
       
+      class GoogleAnalyticsAdminV1alphaMatchingCondition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :comparison_type, as: 'comparisonType'
+          property :field, as: 'field'
+          property :negated, as: 'negated'
+          property :value, as: 'value'
+        end
+      end
+      
       class GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2144,6 +2202,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :double_value, as: 'doubleValue'
           property :int64_value, :numeric_string => true, as: 'int64Value'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaParameterMutation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :parameter, as: 'parameter'
+          property :parameter_value, as: 'parameterValue'
         end
       end
       
