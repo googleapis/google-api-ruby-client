@@ -208,6 +208,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeployArtifact
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeployJob
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -853,6 +859,14 @@ module Google
         end
       end
       
+      class DeployArtifact
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifact_uri, as: 'artifactUri'
+          collection :manifest_paths, as: 'manifestPaths'
+        end
+      end
+      
       class DeployJob
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -862,6 +876,8 @@ module Google
       class DeployJobRun
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifact, as: 'artifact', class: Google::Apis::ClouddeployV1::DeployArtifact, decorator: Google::Apis::ClouddeployV1::DeployArtifact::Representation
+      
           property :build, as: 'build'
           property :failure_cause, as: 'failureCause'
           property :failure_message, as: 'failureMessage'
@@ -1149,6 +1165,7 @@ module Google
       class PhaseArtifact
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :job_manifests_path, as: 'jobManifestsPath'
           property :manifest_path, as: 'manifestPath'
           property :skaffold_config_path, as: 'skaffoldConfigPath'
         end

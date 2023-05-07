@@ -857,6 +857,33 @@ module Google
         end
       end
       
+      # The artifacts produced by a deploy operation.
+      class DeployArtifact
+        include Google::Apis::Core::Hashable
+      
+        # Output only. URI of a directory containing the artifacts. All paths are
+        # relative to this location.
+        # Corresponds to the JSON property `artifactUri`
+        # @return [String]
+        attr_accessor :artifact_uri
+      
+        # Output only. File paths of the manifests applied during the deploy operation
+        # relative to the URI.
+        # Corresponds to the JSON property `manifestPaths`
+        # @return [Array<String>]
+        attr_accessor :manifest_paths
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @artifact_uri = args[:artifact_uri] if args.key?(:artifact_uri)
+          @manifest_paths = args[:manifest_paths] if args.key?(:manifest_paths)
+        end
+      end
+      
       # A deploy Job.
       class DeployJob
         include Google::Apis::Core::Hashable
@@ -873,6 +900,11 @@ module Google
       # DeployJobRun contains information specific to a deploy `JobRun`.
       class DeployJobRun
         include Google::Apis::Core::Hashable
+      
+        # The artifacts produced by a deploy operation.
+        # Corresponds to the JSON property `artifact`
+        # @return [Google::Apis::ClouddeployV1::DeployArtifact]
+        attr_accessor :artifact
       
         # Output only. The resource name of the Cloud Build `Build` object that is used
         # to deploy. Format is projects/`project`/locations/`location`/builds/`build`.
@@ -903,6 +935,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @artifact = args[:artifact] if args.key?(:artifact)
           @build = args[:build] if args.key?(:build)
           @failure_cause = args[:failure_cause] if args.key?(:failure_cause)
           @failure_message = args[:failure_message] if args.key?(:failure_message)
@@ -1643,7 +1676,7 @@ module Google
         end
       end
       
-      # A resource that represents Google Cloud location.
+      # A resource that represents a Google Cloud location.
       class Location
         include Google::Apis::Core::Hashable
       
@@ -1897,6 +1930,12 @@ module Google
       class PhaseArtifact
         include Google::Apis::Core::Hashable
       
+        # Output only. File path of the directory of rendered job manifests relative to
+        # the URI. This is only set if it is applicable.
+        # Corresponds to the JSON property `jobManifestsPath`
+        # @return [String]
+        attr_accessor :job_manifests_path
+      
         # Output only. File path of the rendered manifest relative to the URI.
         # Corresponds to the JSON property `manifestPath`
         # @return [String]
@@ -1914,6 +1953,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @job_manifests_path = args[:job_manifests_path] if args.key?(:job_manifests_path)
           @manifest_path = args[:manifest_path] if args.key?(:manifest_path)
           @skaffold_config_path = args[:skaffold_config_path] if args.key?(:skaffold_config_path)
         end
