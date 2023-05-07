@@ -197,7 +197,7 @@ module Google
         # Represents the query input. It can contain one of: 1. A conversational query
         # in the form of text. 2. An intent query that specifies which intent to trigger.
         # 3. Natural language speech audio to be processed. 4. An event to be triggered.
-        # 
+        # 5. DTMF digits to invoke an intent and fill in parameter value.
         # Corresponds to the JSON property `input`
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3QueryInput]
         attr_accessor :input
@@ -1680,7 +1680,7 @@ module Google
       # Represents the query input. It can contain one of: 1. A conversational query
       # in the form of text. 2. An intent query that specifies which intent to trigger.
       # 3. Natural language speech audio to be processed. 4. An event to be triggered.
-      # 
+      # 5. DTMF digits to invoke an intent and fill in parameter value.
       class GoogleCloudDialogflowCxV3QueryInput
         include Google::Apis::Core::Hashable
       
@@ -3213,7 +3213,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :supported_language_codes
       
-        # Settings related to speech generating.
+        # Settings related to speech synthesizing.
         # Corresponds to the JSON property `textToSpeechSettings`
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TextToSpeechSettings]
         attr_accessor :text_to_speech_settings
@@ -3654,7 +3654,7 @@ module Google
         # Represents the query input. It can contain one of: 1. A conversational query
         # in the form of text. 2. An intent query that specifies which intent to trigger.
         # 3. Natural language speech audio to be processed. 4. An event to be triggered.
-        # 
+        # 5. DTMF digits to invoke an intent and fill in parameter value.
         # Corresponds to the JSON property `input`
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1QueryInput]
         attr_accessor :input
@@ -3977,7 +3977,7 @@ module Google
         # Represents the query input. It can contain one of: 1. A conversational query
         # in the form of text. 2. An intent query that specifies which intent to trigger.
         # 3. Natural language speech audio to be processed. 4. An event to be triggered.
-        # 
+        # 5. DTMF digits to invoke an intent and fill in parameter value.
         # Corresponds to the JSON property `queryInput`
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1QueryInput]
         attr_accessor :query_input
@@ -5448,7 +5448,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The Google Cloud Storage URI for the exported objects. A URI is of
-        # the form: gs://bucket/object-name-or-prefix Whether a full object name, or
+        # the form: `gs://bucket/object-name-or-prefix` Whether a full object name, or
         # just a prefix, its usage depends on the Dialogflow operation.
         # Corresponds to the JSON property `uri`
         # @return [String]
@@ -5842,7 +5842,7 @@ module Google
       class GoogleCloudDialogflowCxV3beta1IntentCoverageIntent
         include Google::Apis::Core::Hashable
       
-        # Whether or not the intent is covered by at least one of the agent's test cases.
+        # Whether the intent is covered by at least one of the agent's test cases.
         # Corresponds to the JSON property `covered`
         # @return [Boolean]
         attr_accessor :covered
@@ -6591,7 +6591,7 @@ module Google
         # Represents the query input. It can contain one of: 1. A conversational query
         # in the form of text. 2. An intent query that specifies which intent to trigger.
         # 3. Natural language speech audio to be processed. 4. An event to be triggered.
-        # 
+        # 5. DTMF digits to invoke an intent and fill in parameter value.
         # Corresponds to the JSON property `queryInput`
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1QueryInput]
         attr_accessor :query_input
@@ -6954,7 +6954,7 @@ module Google
       # Represents the query input. It can contain one of: 1. A conversational query
       # in the form of text. 2. An intent query that specifies which intent to trigger.
       # 3. Natural language speech audio to be processed. 4. An event to be triggered.
-      # 
+      # 5. DTMF digits to invoke an intent and fill in parameter value.
       class GoogleCloudDialogflowCxV3beta1QueryInput
         include Google::Apis::Core::Hashable
       
@@ -8556,12 +8556,17 @@ module Google
         end
       end
       
-      # Settings related to speech generating.
+      # Settings related to speech synthesizing.
       class GoogleCloudDialogflowCxV3beta1TextToSpeechSettings
         include Google::Apis::Core::Hashable
       
         # Configuration of how speech should be synthesized, mapping from language (
-        # https://dialogflow.com/docs/reference/language) to SynthesizeSpeechConfig.
+        # https://cloud.google.com/dialogflow/cx/docs/reference/language) to
+        # SynthesizeSpeechConfig. These settings affect: - The synthesize configuration
+        # used in [phone gateway](https://cloud.google.com/dialogflow/cx/docs/concept/
+        # integration/phone-gateway). - You no longer need to specify OutputAudioConfig.
+        # synthesize_speech_config when invoking API calls. Your agent will use the pre-
+        # configured options for speech synthesizing.
         # Corresponds to the JSON property `synthesizeSpeechConfigs`
         # @return [Hash<String,Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfig>]
         attr_accessor :synthesize_speech_configs
@@ -8620,8 +8625,7 @@ module Google
       class GoogleCloudDialogflowCxV3beta1TransitionCoverageTransition
         include Google::Apis::Core::Hashable
       
-        # Whether or not the transition is covered by at least one of the agent's test
-        # cases.
+        # Whether the transition is covered by at least one of the agent's test cases.
         # Corresponds to the JSON property `covered`
         # @return [Boolean]
         attr_accessor :covered
@@ -8895,8 +8899,8 @@ module Google
       class GoogleCloudDialogflowCxV3beta1TransitionRouteGroupCoverageCoverageTransition
         include Google::Apis::Core::Hashable
       
-        # Whether or not the transition route is covered by at least one of the agent's
-        # test cases.
+        # Whether the transition route is covered by at least one of the agent's test
+        # cases.
         # Corresponds to the JSON property `covered`
         # @return [Boolean]
         attr_accessor :covered
@@ -16143,7 +16147,7 @@ module Google
         end
       end
       
-      # A resource that represents Google Cloud Platform location.
+      # A resource that represents a Google Cloud location.
       class GoogleCloudLocationLocation
         include Google::Apis::Core::Hashable
       
