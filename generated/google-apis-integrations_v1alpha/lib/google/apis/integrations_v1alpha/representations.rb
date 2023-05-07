@@ -1494,6 +1494,7 @@ module Google
           property :key_ring_name, as: 'keyRingName'
           property :key_version_name, as: 'keyVersionName'
           property :location_name, as: 'locationName'
+          property :service_account, as: 'serviceAccount'
         end
       end
       

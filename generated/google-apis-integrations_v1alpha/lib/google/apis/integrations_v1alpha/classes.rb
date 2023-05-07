@@ -426,6 +426,12 @@ module Google
         # @return [String]
         attr_accessor :location_name
       
+        # Optional. The service account used for authentication of this KMS key. If this
+        # is not provided, the service account in Client.clientSource will be used.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
         def initialize(**args)
            update!(**args)
         end
@@ -437,6 +443,7 @@ module Google
           @key_ring_name = args[:key_ring_name] if args.key?(:key_ring_name)
           @key_version_name = args[:key_version_name] if args.key?(:key_version_name)
           @location_name = args[:location_name] if args.key?(:location_name)
+          @service_account = args[:service_account] if args.key?(:service_account)
         end
       end
       
