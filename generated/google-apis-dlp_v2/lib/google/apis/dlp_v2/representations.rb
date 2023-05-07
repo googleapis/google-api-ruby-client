@@ -1837,6 +1837,8 @@ module Google
           property :likelihood, as: 'likelihood'
           property :regex, as: 'regex', class: Google::Apis::DlpV2::GooglePrivacyDlpV2Regex, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2Regex::Representation
       
+          property :sensitivity_score, as: 'sensitivityScore', class: Google::Apis::DlpV2::GooglePrivacyDlpV2SensitivityScore, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2SensitivityScore::Representation
+      
           property :stored_type, as: 'storedType', class: Google::Apis::DlpV2::GooglePrivacyDlpV2StoredType, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2StoredType::Representation
       
           property :surrogate_type, as: 'surrogateType', class: Google::Apis::DlpV2::GooglePrivacyDlpV2SurrogateType, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2SurrogateType::Representation
@@ -2388,6 +2390,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
+          property :sensitivity_score, as: 'sensitivityScore', class: Google::Apis::DlpV2::GooglePrivacyDlpV2SensitivityScore, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2SensitivityScore::Representation
+      
           property :version, as: 'version'
         end
       end
