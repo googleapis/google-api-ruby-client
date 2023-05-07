@@ -42,6 +42,28 @@ module Google
         end
       end
       
+      # Configuration for writing message data in Avro format. Message payloads and
+      # metadata will be written to files as an Avro binary.
+      class AvroConfig
+        include Google::Apis::Core::Hashable
+      
+        # When true, write the subscription name, message_id, publish_time, attributes,
+        # and ordering_key as additional fields in the output.
+        # Corresponds to the JSON property `writeMetadata`
+        # @return [Boolean]
+        attr_accessor :write_metadata
+        alias_method :write_metadata?, :write_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @write_metadata = args[:write_metadata] if args.key?(:write_metadata)
+        end
+      end
+      
       # Configuration for a BigQuery subscription.
       class BigQueryConfig
         include Google::Apis::Core::Hashable
@@ -172,6 +194,79 @@ module Google
           @condition = args[:condition] if args.key?(:condition)
           @members = args[:members] if args.key?(:members)
           @role = args[:role] if args.key?(:role)
+        end
+      end
+      
+      # Configuration for a Cloud Storage subscription.
+      class CloudStorageConfig
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for writing message data in Avro format. Message payloads and
+        # metadata will be written to files as an Avro binary.
+        # Corresponds to the JSON property `avroConfig`
+        # @return [Google::Apis::PubsubV1::AvroConfig]
+        attr_accessor :avro_config
+      
+        # Required. User-provided name for the Cloud Storage bucket. The bucket must be
+        # created by the user. The bucket name must be without any prefix like "gs://".
+        # See the [bucket naming requirements] (https://cloud.google.com/storage/docs/
+        # buckets#naming).
+        # Corresponds to the JSON property `bucket`
+        # @return [String]
+        attr_accessor :bucket
+      
+        # User-provided prefix for Cloud Storage filename. See the [object naming
+        # requirements](https://cloud.google.com/storage/docs/objects#naming).
+        # Corresponds to the JSON property `filenamePrefix`
+        # @return [String]
+        attr_accessor :filename_prefix
+      
+        # User-provided suffix for Cloud Storage filename. See the [object naming
+        # requirements](https://cloud.google.com/storage/docs/objects#naming).
+        # Corresponds to the JSON property `filenameSuffix`
+        # @return [String]
+        attr_accessor :filename_suffix
+      
+        # The maximum bytes that can be written to a Cloud Storage file before a new
+        # file is created. Min 1 KB, max 10 GiB. The max_bytes limit may be exceeded in
+        # cases where messages are larger than the limit.
+        # Corresponds to the JSON property `maxBytes`
+        # @return [Fixnum]
+        attr_accessor :max_bytes
+      
+        # The maximum duration that can elapse before a new Cloud Storage file is
+        # created. Min 1 minute, max 10 minutes, default 5 minutes. May not exceed the
+        # subscription's acknowledgement deadline.
+        # Corresponds to the JSON property `maxDuration`
+        # @return [String]
+        attr_accessor :max_duration
+      
+        # Output only. An output-only field that indicates whether or not the
+        # subscription can receive messages.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Configuration for writing message data in text format. Message payloads will
+        # be written to files as raw text, separated by a newline.
+        # Corresponds to the JSON property `textConfig`
+        # @return [Google::Apis::PubsubV1::TextConfig]
+        attr_accessor :text_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @avro_config = args[:avro_config] if args.key?(:avro_config)
+          @bucket = args[:bucket] if args.key?(:bucket)
+          @filename_prefix = args[:filename_prefix] if args.key?(:filename_prefix)
+          @filename_suffix = args[:filename_suffix] if args.key?(:filename_suffix)
+          @max_bytes = args[:max_bytes] if args.key?(:max_bytes)
+          @max_duration = args[:max_duration] if args.key?(:max_duration)
+          @state = args[:state] if args.key?(:state)
+          @text_config = args[:text_config] if args.key?(:text_config)
         end
       end
       
@@ -1291,9 +1386,9 @@ module Google
         end
       end
       
-      # A subscription resource. If none of `push_config` or `bigquery_config` is set,
-      # then the subscriber will pull and ack messages using API methods. At most one
-      # of these fields may be set.
+      # A subscription resource. If none of `push_config`, `bigquery_config`, or `
+      # cloud_storage_config` is set, then the subscriber will pull and ack messages
+      # using API methods. At most one of these fields may be set.
       class Subscription
         include Google::Apis::Core::Hashable
       
@@ -1320,6 +1415,11 @@ module Google
         # Corresponds to the JSON property `bigqueryConfig`
         # @return [Google::Apis::PubsubV1::BigQueryConfig]
         attr_accessor :bigquery_config
+      
+        # Configuration for a Cloud Storage subscription.
+        # Corresponds to the JSON property `cloudStorageConfig`
+        # @return [Google::Apis::PubsubV1::CloudStorageConfig]
+        attr_accessor :cloud_storage_config
       
         # Dead lettering is done on a best effort basis. The same message might be dead
         # lettered multiple times. If validation on any of the fields fails at
@@ -1457,6 +1557,7 @@ module Google
         def update!(**args)
           @ack_deadline_seconds = args[:ack_deadline_seconds] if args.key?(:ack_deadline_seconds)
           @bigquery_config = args[:bigquery_config] if args.key?(:bigquery_config)
+          @cloud_storage_config = args[:cloud_storage_config] if args.key?(:cloud_storage_config)
           @dead_letter_policy = args[:dead_letter_policy] if args.key?(:dead_letter_policy)
           @detached = args[:detached] if args.key?(:detached)
           @enable_exactly_once_delivery = args[:enable_exactly_once_delivery] if args.key?(:enable_exactly_once_delivery)
@@ -1512,6 +1613,20 @@ module Google
         # Update properties of this object
         def update!(**args)
           @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
+      # Configuration for writing message data in text format. Message payloads will
+      # be written to files as raw text, separated by a newline.
+      class TextConfig
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -1619,9 +1734,9 @@ module Google
       class UpdateSubscriptionRequest
         include Google::Apis::Core::Hashable
       
-        # A subscription resource. If none of `push_config` or `bigquery_config` is set,
-        # then the subscriber will pull and ack messages using API methods. At most one
-        # of these fields may be set.
+        # A subscription resource. If none of `push_config`, `bigquery_config`, or `
+        # cloud_storage_config` is set, then the subscriber will pull and ack messages
+        # using API methods. At most one of these fields may be set.
         # Corresponds to the JSON property `subscription`
         # @return [Google::Apis::PubsubV1::Subscription]
         attr_accessor :subscription
