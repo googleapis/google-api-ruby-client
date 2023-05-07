@@ -54,7 +54,7 @@ module Google
         # billingAccount`.
         # @param [String] billing_account
         #   Resource name of the billing account for the cost estimate. The resource name
-        #   has the form `billingAccounts/`billing_acount_id``. For example, `
+        #   has the form `billingAccounts/`billing_account_id``. For example, `
         #   billingAccounts/012345-567890-ABCDEF` is the resource name for billing account
         #   `012345-567890-ABCDEF`. Must be specified.
         # @param [Google::Apis::CloudbillingV1beta::EstimateCostScenarioForBillingAccountRequest] estimate_cost_scenario_for_billing_account_request_object
