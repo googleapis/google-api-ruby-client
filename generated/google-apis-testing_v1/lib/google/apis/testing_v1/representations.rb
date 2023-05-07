@@ -370,6 +370,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SmartSharding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StartActivityIntent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1062,8 +1068,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :manual_sharding, as: 'manualSharding', class: Google::Apis::TestingV1::ManualSharding, decorator: Google::Apis::TestingV1::ManualSharding::Representation
       
+          property :smart_sharding, as: 'smartSharding', class: Google::Apis::TestingV1::SmartSharding, decorator: Google::Apis::TestingV1::SmartSharding::Representation
+      
           property :uniform_sharding, as: 'uniformSharding', class: Google::Apis::TestingV1::UniformSharding, decorator: Google::Apis::TestingV1::UniformSharding::Representation
       
+        end
+      end
+      
+      class SmartSharding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :targeted_shard_duration, as: 'targetedShardDuration'
         end
       end
       
