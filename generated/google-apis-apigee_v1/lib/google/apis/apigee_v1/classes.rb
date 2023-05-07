@@ -442,6 +442,11 @@ module Google
       class GoogleCloudApigeeV1ApiCategoryData
         include Google::Apis::Core::Hashable
       
+        # GCP name of api category resource.
+        # Corresponds to the JSON property `gcpResource`
+        # @return [String]
+        attr_accessor :gcp_resource
+      
         # ID of the category (a UUID).
         # Corresponds to the JSON property `id`
         # @return [String]
@@ -468,6 +473,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @gcp_resource = args[:gcp_resource] if args.key?(:gcp_resource)
           @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
           @site_id = args[:site_id] if args.key?(:site_id)
@@ -903,43 +909,6 @@ module Google
           @targets = args[:targets] if args.key?(:targets)
           @teams = args[:teams] if args.key?(:teams)
           @type = args[:type] if args.key?(:type)
-        end
-      end
-      
-      # 
-      class GoogleCloudApigeeV1ApiResponseWrapper
-        include Google::Apis::Core::Hashable
-      
-        # ID that can be used to find errors in the log files.
-        # Corresponds to the JSON property `errorCode`
-        # @return [String]
-        attr_accessor :error_code
-      
-        # Description of the operation.
-        # Corresponds to the JSON property `message`
-        # @return [String]
-        attr_accessor :message
-      
-        # ID that can be used to find request details in the log files.
-        # Corresponds to the JSON property `requestId`
-        # @return [String]
-        attr_accessor :request_id
-      
-        # Status of the operation.
-        # Corresponds to the JSON property `status`
-        # @return [String]
-        attr_accessor :status
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @error_code = args[:error_code] if args.key?(:error_code)
-          @message = args[:message] if args.key?(:message)
-          @request_id = args[:request_id] if args.key?(:request_id)
-          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -2403,6 +2372,49 @@ module Google
         # Update properties of this object
         def update!(**args)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Response for certain delete operations.
+      class GoogleCloudApigeeV1DeleteResponse
+        include Google::Apis::Core::Hashable
+      
+        # ID that can be used to find errors in the log files.
+        # Corresponds to the JSON property `errorCode`
+        # @return [String]
+        attr_accessor :error_code
+      
+        # GCP name of deleted resource.
+        # Corresponds to the JSON property `gcpResource`
+        # @return [String]
+        attr_accessor :gcp_resource
+      
+        # Description of the operation.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # ID that can be used to find request details in the log files.
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        # Status of the operation.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_code = args[:error_code] if args.key?(:error_code)
+          @gcp_resource = args[:gcp_resource] if args.key?(:gcp_resource)
+          @message = args[:message] if args.key?(:message)
+          @request_id = args[:request_id] if args.key?(:request_id)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
