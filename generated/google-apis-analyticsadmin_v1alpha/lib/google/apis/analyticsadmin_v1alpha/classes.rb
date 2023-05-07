@@ -1931,6 +1931,16 @@ module Google
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings]
         attr_accessor :enhanced_measurement_settings
       
+        # An Event Create Rule defines conditions that will trigger the creation of an
+        # entirely new event based upon matched criteria of a source event. Additional
+        # mutations of the parameters from the source event can be defined. Unlike Event
+        # Edit rules, Event Creation Rules have no defined order. They will all be run
+        # independently. Event Edit and Event Create rules can't be used to modify an
+        # event created from an Event Create rule.
+        # Corresponds to the JSON property `eventCreateRule`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEventCreateRule]
+        attr_accessor :event_create_rule
+      
         # A resource message representing a GA4 ExpandedDataSet.
         # Corresponds to the JSON property `expandedDataSet`
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaExpandedDataSet]
@@ -1985,6 +1995,7 @@ module Google
           @display_video360_advertiser_link = args[:display_video360_advertiser_link] if args.key?(:display_video360_advertiser_link)
           @display_video360_advertiser_link_proposal = args[:display_video360_advertiser_link_proposal] if args.key?(:display_video360_advertiser_link_proposal)
           @enhanced_measurement_settings = args[:enhanced_measurement_settings] if args.key?(:enhanced_measurement_settings)
+          @event_create_rule = args[:event_create_rule] if args.key?(:event_create_rule)
           @expanded_data_set = args[:expanded_data_set] if args.key?(:expanded_data_set)
           @firebase_link = args[:firebase_link] if args.key?(:firebase_link)
           @google_ads_link = args[:google_ads_link] if args.key?(:google_ads_link)
@@ -3095,6 +3106,62 @@ module Google
         end
       end
       
+      # An Event Create Rule defines conditions that will trigger the creation of an
+      # entirely new event based upon matched criteria of a source event. Additional
+      # mutations of the parameters from the source event can be defined. Unlike Event
+      # Edit rules, Event Creation Rules have no defined order. They will all be run
+      # independently. Event Edit and Event Create rules can't be used to modify an
+      # event created from an Event Create rule.
+      class GoogleAnalyticsAdminV1alphaEventCreateRule
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the new event to be created. This value must: * be less
+        # than 40 characters * consist only of letters, digits or _ (underscores) *
+        # start with a letter
+        # Corresponds to the JSON property `destinationEvent`
+        # @return [String]
+        attr_accessor :destination_event
+      
+        # Required. Must have at least one condition, and can have up to 10 max.
+        # Conditions on the source event must match for this rule to be applied.
+        # Corresponds to the JSON property `eventConditions`
+        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaMatchingCondition>]
+        attr_accessor :event_conditions
+      
+        # Output only. Resource name for this EventCreateRule resource. Format:
+        # properties/`property`/dataStreams/`data_stream`/eventCreateRules
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Parameter mutations define parameter behavior on the new event, and are
+        # applied in order. A maximum of 20 mutations can be applied.
+        # Corresponds to the JSON property `parameterMutations`
+        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaParameterMutation>]
+        attr_accessor :parameter_mutations
+      
+        # If true, the source parameters are copied to the new event. If false, or unset,
+        # all non-internal parameters are not copied from the source event. Parameter
+        # mutations are applied after the parameters have been copied.
+        # Corresponds to the JSON property `sourceCopyParameters`
+        # @return [Boolean]
+        attr_accessor :source_copy_parameters
+        alias_method :source_copy_parameters?, :source_copy_parameters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination_event = args[:destination_event] if args.key?(:destination_event)
+          @event_conditions = args[:event_conditions] if args.key?(:event_conditions)
+          @name = args[:name] if args.key?(:name)
+          @parameter_mutations = args[:parameter_mutations] if args.key?(:parameter_mutations)
+          @source_copy_parameters = args[:source_copy_parameters] if args.key?(:source_copy_parameters)
+        end
+      end
+      
       # A resource message representing a GA4 ExpandedDataSet.
       class GoogleAnalyticsAdminV1alphaExpandedDataSet
         include Google::Apis::Core::Hashable
@@ -3929,6 +3996,33 @@ module Google
         end
       end
       
+      # Response message for ListEventCreateRules RPC.
+      class GoogleAnalyticsAdminV1alphaListEventCreateRulesResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of EventCreateRules. These will be ordered stably, but in an arbitrary
+        # order.
+        # Corresponds to the JSON property `eventCreateRules`
+        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEventCreateRule>]
+        attr_accessor :event_create_rules
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event_create_rules = args[:event_create_rules] if args.key?(:event_create_rules)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response message for ListExpandedDataSets RPC.
       class GoogleAnalyticsAdminV1alphaListExpandedDataSetsResponse
         include Google::Apis::Core::Hashable
@@ -4113,6 +4207,51 @@ module Google
         end
       end
       
+      # Defines a condition for when an Event Edit or Event Creation rule applies to
+      # an event.
+      class GoogleAnalyticsAdminV1alphaMatchingCondition
+        include Google::Apis::Core::Hashable
+      
+        # Required. The type of comparison to be applied to the value.
+        # Corresponds to the JSON property `comparisonType`
+        # @return [String]
+        attr_accessor :comparison_type
+      
+        # Required. The name of the field that is compared against for the condition. If
+        # 'event_name' is specified this condition will apply to the name of the event.
+        # Otherwise the condition will apply to a parameter with the specified name.
+        # This value cannot contain spaces.
+        # Corresponds to the JSON property `field`
+        # @return [String]
+        attr_accessor :field
+      
+        # Whether or not the result of the comparison should be negated. For example, if
+        # `negated` is true, then 'equals' comparisons would function as 'not equals'.
+        # Corresponds to the JSON property `negated`
+        # @return [Boolean]
+        attr_accessor :negated
+        alias_method :negated?, :negated
+      
+        # Required. The value being compared against for this condition. The runtime
+        # implementation may perform type coercion of this value to evaluate this
+        # condition based on the type of the parameter value.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @comparison_type = args[:comparison_type] if args.key?(:comparison_type)
+          @field = args[:field] if args.key?(:field)
+          @negated = args[:negated] if args.key?(:negated)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # A secret value used for sending hits to Measurement Protocol.
       class GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret
         include Google::Apis::Core::Hashable
@@ -4170,6 +4309,38 @@ module Google
         def update!(**args)
           @double_value = args[:double_value] if args.key?(:double_value)
           @int64_value = args[:int64_value] if args.key?(:int64_value)
+        end
+      end
+      
+      # Defines an event parameter to mutate.
+      class GoogleAnalyticsAdminV1alphaParameterMutation
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the parameter to mutate. This value must: * be less than
+        # 40 characters. * be unique across across all mutations within the rule *
+        # consist only of letters, digits or _ (underscores) For event edit rules, the
+        # name may also be set to 'event_name' to modify the event_name in place.
+        # Corresponds to the JSON property `parameter`
+        # @return [String]
+        attr_accessor :parameter
+      
+        # Required. The value mutation to perform. * Must be less than 100 characters. *
+        # To specify a constant value for the param, use the value's string. * To copy
+        # value from another parameter, use syntax like "[[other_parameter]]" For more
+        # details, see this [help center article](https://support.google.com/analytics/
+        # answer/10085872#modify-an-event&zippy=%2Cin-this-article%2Cmodify-parameters).
+        # Corresponds to the JSON property `parameterValue`
+        # @return [String]
+        attr_accessor :parameter_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @parameter = args[:parameter] if args.key?(:parameter)
+          @parameter_value = args[:parameter_value] if args.key?(:parameter_value)
         end
       end
       
