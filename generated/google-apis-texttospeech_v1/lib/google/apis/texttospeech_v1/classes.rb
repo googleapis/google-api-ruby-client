@@ -388,8 +388,9 @@ module Google
         # @return [Google::Apis::TexttospeechV1::SynthesisInput]
         attr_accessor :input
       
-        # Specifies a Cloud Storage URI for the synthesis results. Must be specified in
-        # the format: `gs://bucket_name/object_name`, and the bucket must already exist.
+        # Required. Specifies a Cloud Storage URI for the synthesis results. Must be
+        # specified in the format: `gs://bucket_name/object_name`, and the bucket must
+        # already exist.
         # Corresponds to the JSON property `outputGcsUri`
         # @return [String]
         attr_accessor :output_gcs_uri
