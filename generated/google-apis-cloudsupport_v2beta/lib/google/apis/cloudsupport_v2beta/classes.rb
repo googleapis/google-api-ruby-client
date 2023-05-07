@@ -216,7 +216,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The priority of this case. If this is set, do not set severity.
+        # The priority of this case.
         # Corresponds to the JSON property `priority`
         # @return [String]
         attr_accessor :priority
@@ -758,15 +758,15 @@ module Google
       class ListCasesResponse
         include Google::Apis::Core::Hashable
       
-        # The list of cases associated with the cloud resource, after any filters have
-        # been applied.
+        # The list of cases associated with the Google Cloud Resource, after any filters
+        # have been applied.
         # Corresponds to the JSON property `cases`
         # @return [Array<Google::Apis::CloudsupportV2beta::Case>]
         attr_accessor :cases
       
         # A token to retrieve the next page of results. This should be set in the `
-        # page_token` field of subsequent `ListCasesRequest` message that is issued. If
-        # unspecified, there are no more results to retrieve.
+        # page_token` field of the subsequent `ListCasesRequest` message that is issued.
+        # If unspecified, there are no more results to retrieve.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -1074,8 +1074,8 @@ module Google
       class SearchCasesResponse
         include Google::Apis::Core::Hashable
       
-        # The list of Case associated with the cloud resource, after any filters have
-        # been applied.
+        # The list of cases associated with the Google Cloud Resource, after any filters
+        # have been applied.
         # Corresponds to the JSON property `cases`
         # @return [Array<Google::Apis::CloudsupportV2beta::Case>]
         attr_accessor :cases
