@@ -300,7 +300,7 @@ module Google
         end
       end
       
-      # The long-running operation metadata for CreateLabelerPool.
+      # The long-running operation metadata for the CreateLabelerPool method.
       class GoogleCloudDocumentaiUiv1beta3CreateLabelerPoolOperationMetadata
         include Google::Apis::Core::Hashable
       
@@ -338,7 +338,7 @@ module Google
         end
       end
       
-      # The long-running operation metadata for delete processor method.
+      # The long-running operation metadata for the DeleteProcessor method.
       class GoogleCloudDocumentaiUiv1beta3DeleteProcessorMetadata
         include Google::Apis::Core::Hashable
       
@@ -357,7 +357,7 @@ module Google
         end
       end
       
-      # The long-running operation metadata for delete processor version method.
+      # The long-running operation metadata for the DeleteProcessorVersion method.
       class GoogleCloudDocumentaiUiv1beta3DeleteProcessorVersionMetadata
         include Google::Apis::Core::Hashable
       
@@ -376,7 +376,7 @@ module Google
         end
       end
       
-      # The long-running operation metadata for deploy processor version method.
+      # The long-running operation metadata for the DeployProcessorVersion method.
       class GoogleCloudDocumentaiUiv1beta3DeployProcessorVersionMetadata
         include Google::Apis::Core::Hashable
       
@@ -395,7 +395,7 @@ module Google
         end
       end
       
-      # Response message for the deploy processor version method.
+      # Response message for the DeployProcessorVersion method.
       class GoogleCloudDocumentaiUiv1beta3DeployProcessorVersionResponse
         include Google::Apis::Core::Hashable
       
@@ -408,7 +408,7 @@ module Google
         end
       end
       
-      # The long-running operation metadata for disable processor method.
+      # The long-running operation metadata for the DisableProcessor method.
       class GoogleCloudDocumentaiUiv1beta3DisableProcessorMetadata
         include Google::Apis::Core::Hashable
       
@@ -427,7 +427,7 @@ module Google
         end
       end
       
-      # Response message for the disable processor method. Intentionally empty proto
+      # Response message for the DisableProcessor method. Intentionally empty proto
       # for adding fields in future.
       class GoogleCloudDocumentaiUiv1beta3DisableProcessorResponse
         include Google::Apis::Core::Hashable
@@ -493,7 +493,7 @@ module Google
         end
       end
       
-      # The long-running operation metadata for enable processor method.
+      # The long-running operation metadata for the EnableProcessor method.
       class GoogleCloudDocumentaiUiv1beta3EnableProcessorMetadata
         include Google::Apis::Core::Hashable
       
@@ -512,8 +512,8 @@ module Google
         end
       end
       
-      # Response message for the enable processor method. Intentionally empty proto
-      # for adding fields in future.
+      # Response message for the EnableProcessor method. Intentionally empty proto for
+      # adding fields in future.
       class GoogleCloudDocumentaiUiv1beta3EnableProcessorResponse
         include Google::Apis::Core::Hashable
       
@@ -1010,7 +1010,7 @@ module Google
         end
       end
       
-      # The long-running operation metadata for set default processor version method.
+      # The long-running operation metadata for the SetDefaultProcessorVersion method.
       class GoogleCloudDocumentaiUiv1beta3SetDefaultProcessorVersionMetadata
         include Google::Apis::Core::Hashable
       
@@ -1029,7 +1029,7 @@ module Google
         end
       end
       
-      # Response message for set default processor version method.
+      # Response message for the SetDefaultProcessorVersion method.
       class GoogleCloudDocumentaiUiv1beta3SetDefaultProcessorVersionResponse
         include Google::Apis::Core::Hashable
       
@@ -1135,7 +1135,7 @@ module Google
         end
       end
       
-      # The long-running operation metadata for the undeploy processor version method.
+      # The long-running operation metadata for the UndeployProcessorVersion method.
       class GoogleCloudDocumentaiUiv1beta3UndeployProcessorVersionMetadata
         include Google::Apis::Core::Hashable
       
@@ -1154,7 +1154,7 @@ module Google
         end
       end
       
-      # Response message for the undeploy processor version method.
+      # Response message for the UndeployProcessorVersion method.
       class GoogleCloudDocumentaiUiv1beta3UndeployProcessorVersionResponse
         include Google::Apis::Core::Hashable
       
@@ -1345,16 +1345,15 @@ module Google
         # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1HumanReviewStatus]
         attr_accessor :human_review_status
       
-        # The source of the document, same as the [input_gcs_source] field in the
-        # request when the batch process started. The batch process is started by take
-        # snapshot of that document, since a user can move or change that document
-        # during the process.
+        # The source of the document, same as the input_gcs_source field in the request
+        # when the batch process started.
         # Corresponds to the JSON property `inputGcsSource`
         # @return [String]
         attr_accessor :input_gcs_source
       
-        # The output_gcs_destination (in the request as `output_gcs_destination`) of the
-        # processed document if it was successful, otherwise empty.
+        # The Cloud Storage output destination (in the request as DocumentOutputConfig.
+        # GcsOutputConfig.gcs_uri) of the processed document if it was successful,
+        # otherwise empty.
         # Corresponds to the JSON property `outputGcsDestination`
         # @return [String]
         attr_accessor :output_gcs_destination
@@ -1497,7 +1496,7 @@ module Google
         end
       end
       
-      # The long-running operation metadata for delete processor method.
+      # The long-running operation metadata for the DeleteProcessor method.
       class GoogleCloudDocumentaiV1DeleteProcessorMetadata
         include Google::Apis::Core::Hashable
       
@@ -1516,7 +1515,7 @@ module Google
         end
       end
       
-      # The long-running operation metadata for delete processor version method.
+      # The long-running operation metadata for the DeleteProcessorVersion method.
       class GoogleCloudDocumentaiV1DeleteProcessorVersionMetadata
         include Google::Apis::Core::Hashable
       
@@ -1535,7 +1534,7 @@ module Google
         end
       end
       
-      # The long-running operation metadata for deploy processor version method.
+      # The long-running operation metadata for the DeployProcessorVersion method.
       class GoogleCloudDocumentaiV1DeployProcessorVersionMetadata
         include Google::Apis::Core::Hashable
       
@@ -1554,7 +1553,7 @@ module Google
         end
       end
       
-      # Request message for the deploy processor version method.
+      # Request message for the DeployProcessorVersion method.
       class GoogleCloudDocumentaiV1DeployProcessorVersionRequest
         include Google::Apis::Core::Hashable
       
@@ -1567,7 +1566,7 @@ module Google
         end
       end
       
-      # Response message for the deploy processor version method.
+      # Response message for the DeployProcessorVersion method.
       class GoogleCloudDocumentaiV1DeployProcessorVersionResponse
         include Google::Apis::Core::Hashable
       
@@ -1580,7 +1579,7 @@ module Google
         end
       end
       
-      # The long-running operation metadata for disable processor method.
+      # The long-running operation metadata for the DisableProcessor method.
       class GoogleCloudDocumentaiV1DisableProcessorMetadata
         include Google::Apis::Core::Hashable
       
@@ -1599,7 +1598,7 @@ module Google
         end
       end
       
-      # Request message for the disable processor method.
+      # Request message for the DisableProcessor method.
       class GoogleCloudDocumentaiV1DisableProcessorRequest
         include Google::Apis::Core::Hashable
       
@@ -1612,7 +1611,7 @@ module Google
         end
       end
       
-      # Response message for the disable processor method. Intentionally empty proto
+      # Response message for the DisableProcessor method. Intentionally empty proto
       # for adding fields in future.
       class GoogleCloudDocumentaiV1DisableProcessorResponse
         include Google::Apis::Core::Hashable
@@ -1703,9 +1702,9 @@ module Google
         attr_accessor :text_styles
       
         # Optional. Currently supports Google Cloud Storage URI of the form `gs://
-        # bucket_name/object_name`. Object versioning is not supported. See [Google
-        # Cloud Storage Request URIs](https://cloud.google.com/storage/docs/reference-
-        # uris) for more info.
+        # bucket_name/object_name`. Object versioning is not supported. For more
+        # information, refer to [Google Cloud Storage Request URIs](https://cloud.google.
+        # com/storage/docs/reference-uris).
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -2877,13 +2876,13 @@ module Google
         # @return [Google::Apis::DocumentaiV1::GoogleTypeColor]
         attr_accessor :background_color
       
-        # Whether the text is bold (equivalent to font weight >= 700).
+        # Whether the text is bold (equivalent to font_weight is at least `700`).
         # Corresponds to the JSON property `bold`
         # @return [Boolean]
         attr_accessor :bold
         alias_method :bold?, :bold
       
-        # Font size in points (1 point is 1/72").
+        # Font size in points (`1` point is `¹⁄₇₂` inches).
         # Corresponds to the JSON property `fontSize`
         # @return [Fixnum]
         attr_accessor :font_size
@@ -2893,8 +2892,8 @@ module Google
         # @return [String]
         attr_accessor :font_type
       
-        # TrueType weight on a scale 100 (Thin) to 1000 (Ultra-heavy). Normal is 400,
-        # Bold is 700.
+        # TrueType weight on a scale `100` (thin) to `1000` (ultra-heavy). Normal is `
+        # 400`, bold is `700`.
         # Corresponds to the JSON property `fontWeight`
         # @return [Fixnum]
         attr_accessor :font_weight
@@ -2916,12 +2915,12 @@ module Google
         # @return [Float]
         attr_accessor :letter_spacing
       
-        # Font size in pixels, equal to unrounded_fontsize * resolution / 72.0.
+        # Font size in pixels, equal to _unrounded font_size_ * _resolution_ ÷ `72.0`.
         # Corresponds to the JSON property `pixelFontSize`
         # @return [Float]
         attr_accessor :pixel_font_size
       
-        # Whether the text are small caps.
+        # Whether the text is in small caps.
         # Corresponds to the JSON property `smallcaps`
         # @return [Boolean]
         attr_accessor :smallcaps
@@ -3697,7 +3696,7 @@ module Google
         end
       end
       
-      # The long-running operation metadata for enable processor method.
+      # The long-running operation metadata for the EnableProcessor method.
       class GoogleCloudDocumentaiV1EnableProcessorMetadata
         include Google::Apis::Core::Hashable
       
@@ -3716,7 +3715,7 @@ module Google
         end
       end
       
-      # Request message for the enable processor method.
+      # Request message for the EnableProcessor method.
       class GoogleCloudDocumentaiV1EnableProcessorRequest
         include Google::Apis::Core::Hashable
       
@@ -3729,8 +3728,8 @@ module Google
         end
       end
       
-      # Response message for the enable processor method. Intentionally empty proto
-      # for adding fields in future.
+      # Response message for the EnableProcessor method. Intentionally empty proto for
+      # adding fields in future.
       class GoogleCloudDocumentaiV1EnableProcessorResponse
         include Google::Apis::Core::Hashable
       
@@ -4095,7 +4094,7 @@ module Google
         end
       end
       
-      # Response message for fetch processor types.
+      # Response message for the FetchProcessorTypes method.
       class GoogleCloudDocumentaiV1FetchProcessorTypesResponse
         include Google::Apis::Core::Hashable
       
@@ -4237,7 +4236,7 @@ module Google
         end
       end
       
-      # Response message for list processor types.
+      # Response message for the ListProcessorTypes method.
       class GoogleCloudDocumentaiV1ListProcessorTypesResponse
         include Google::Apis::Core::Hashable
       
@@ -4262,7 +4261,7 @@ module Google
         end
       end
       
-      # Response message for list processors.
+      # Response message for the ListProcessorVersions method.
       class GoogleCloudDocumentaiV1ListProcessorVersionsResponse
         include Google::Apis::Core::Hashable
       
@@ -4287,7 +4286,7 @@ module Google
         end
       end
       
-      # Response message for list processors.
+      # Response message for the ListProcessors method.
       class GoogleCloudDocumentaiV1ListProcessorsResponse
         include Google::Apis::Core::Hashable
       
@@ -4338,12 +4337,12 @@ module Google
         end
       end
       
-      # Request message for the process document method.
+      # Request message for the ProcessDocument method.
       class GoogleCloudDocumentaiV1ProcessRequest
         include Google::Apis::Core::Hashable
       
-        # Specifies which fields to include in the `ProcessResponse` Document. Only
-        # supports top level document and pages field so it must be in the form of ``
+        # Specifies which fields to include in the ProcessResponse.document output. Only
+        # supports top-level document and pages field, so it must be in the form of ``
         # document_field_name`` or `pages.`page_field_name``.
         # Corresponds to the JSON property `fieldMask`
         # @return [String]
@@ -4382,7 +4381,7 @@ module Google
         end
       end
       
-      # Response message for the process document method.
+      # Response message for the ProcessDocument method.
       class GoogleCloudDocumentaiV1ProcessResponse
         include Google::Apis::Core::Hashable
       
@@ -4685,7 +4684,7 @@ module Google
         end
       end
       
-      # The long-running operation metadata for review document method.
+      # The long-running operation metadata for the ReviewDocument method.
       class GoogleCloudDocumentaiV1ReviewDocumentOperationMetadata
         include Google::Apis::Core::Hashable
       
@@ -4710,7 +4709,7 @@ module Google
         end
       end
       
-      # Request message for review document method.
+      # Request message for the ReviewDocument method.
       class GoogleCloudDocumentaiV1ReviewDocumentRequest
         include Google::Apis::Core::Hashable
       
@@ -4751,7 +4750,7 @@ module Google
         end
       end
       
-      # Response message for review document method.
+      # Response message for the ReviewDocument method.
       class GoogleCloudDocumentaiV1ReviewDocumentResponse
         include Google::Apis::Core::Hashable
       
@@ -4783,7 +4782,7 @@ module Google
         end
       end
       
-      # The long-running operation metadata for set default processor version method.
+      # The long-running operation metadata for the SetDefaultProcessorVersion method.
       class GoogleCloudDocumentaiV1SetDefaultProcessorVersionMetadata
         include Google::Apis::Core::Hashable
       
@@ -4802,7 +4801,7 @@ module Google
         end
       end
       
-      # Request message for the set default processor version method.
+      # Request message for the SetDefaultProcessorVersion method.
       class GoogleCloudDocumentaiV1SetDefaultProcessorVersionRequest
         include Google::Apis::Core::Hashable
       
@@ -4823,7 +4822,7 @@ module Google
         end
       end
       
-      # Response message for set default processor version method.
+      # Response message for the SetDefaultProcessorVersion method.
       class GoogleCloudDocumentaiV1SetDefaultProcessorVersionResponse
         include Google::Apis::Core::Hashable
       
@@ -4910,7 +4909,7 @@ module Google
         end
       end
       
-      # Request message for the create processor version method.
+      # Request message for the TrainProcessorVersion method.
       class GoogleCloudDocumentaiV1TrainProcessorVersionRequest
         include Google::Apis::Core::Hashable
       
@@ -4926,7 +4925,7 @@ module Google
         # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentSchema]
         attr_accessor :document_schema
       
-        # The input data used to train a new `ProcessorVersion`.
+        # The input data used to train a new ProcessorVersion.
         # Corresponds to the JSON property `inputData`
         # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1TrainProcessorVersionRequestInputData]
         attr_accessor :input_data
@@ -4953,7 +4952,7 @@ module Google
         end
       end
       
-      # The input data used to train a new `ProcessorVersion`.
+      # The input data used to train a new ProcessorVersion.
       class GoogleCloudDocumentaiV1TrainProcessorVersionRequestInputData
         include Google::Apis::Core::Hashable
       
@@ -4997,7 +4996,7 @@ module Google
         end
       end
       
-      # The long-running operation metadata for the undeploy processor version method.
+      # The long-running operation metadata for the UndeployProcessorVersion method.
       class GoogleCloudDocumentaiV1UndeployProcessorVersionMetadata
         include Google::Apis::Core::Hashable
       
@@ -5016,7 +5015,7 @@ module Google
         end
       end
       
-      # Request message for the undeploy processor version method.
+      # Request message for the UndeployProcessorVersion method.
       class GoogleCloudDocumentaiV1UndeployProcessorVersionRequest
         include Google::Apis::Core::Hashable
       
@@ -5029,7 +5028,7 @@ module Google
         end
       end
       
-      # Response message for the undeploy processor version method.
+      # Response message for the UndeployProcessorVersion method.
       class GoogleCloudDocumentaiV1UndeployProcessorVersionResponse
         include Google::Apis::Core::Hashable
       
@@ -5232,9 +5231,9 @@ module Google
         attr_accessor :text_styles
       
         # Optional. Currently supports Google Cloud Storage URI of the form `gs://
-        # bucket_name/object_name`. Object versioning is not supported. See [Google
-        # Cloud Storage Request URIs](https://cloud.google.com/storage/docs/reference-
-        # uris) for more info.
+        # bucket_name/object_name`. Object versioning is not supported. For more
+        # information, refer to [Google Cloud Storage Request URIs](https://cloud.google.
+        # com/storage/docs/reference-uris).
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -6328,13 +6327,13 @@ module Google
         # @return [Google::Apis::DocumentaiV1::GoogleTypeColor]
         attr_accessor :background_color
       
-        # Whether the text is bold (equivalent to font weight >= 700).
+        # Whether the text is bold (equivalent to font_weight is at least `700`).
         # Corresponds to the JSON property `bold`
         # @return [Boolean]
         attr_accessor :bold
         alias_method :bold?, :bold
       
-        # Font size in points (1 point is 1/72").
+        # Font size in points (`1` point is `¹⁄₇₂` inches).
         # Corresponds to the JSON property `fontSize`
         # @return [Fixnum]
         attr_accessor :font_size
@@ -6344,8 +6343,8 @@ module Google
         # @return [String]
         attr_accessor :font_type
       
-        # TrueType weight on a scale 100 (Thin) to 1000 (Ultra-heavy). Normal is 400,
-        # Bold is 700.
+        # TrueType weight on a scale `100` (thin) to `1000` (ultra-heavy). Normal is `
+        # 400`, bold is `700`.
         # Corresponds to the JSON property `fontWeight`
         # @return [Fixnum]
         attr_accessor :font_weight
@@ -6367,12 +6366,12 @@ module Google
         # @return [Float]
         attr_accessor :letter_spacing
       
-        # Font size in pixels, equal to unrounded_fontsize * resolution / 72.0.
+        # Font size in pixels, equal to _unrounded font_size_ * _resolution_ ÷ `72.0`.
         # Corresponds to the JSON property `pixelFontSize`
         # @return [Float]
         attr_accessor :pixel_font_size
       
-        # Whether the text are small caps.
+        # Whether the text is in small caps.
         # Corresponds to the JSON property `smallcaps`
         # @return [Boolean]
         attr_accessor :smallcaps
@@ -7343,9 +7342,9 @@ module Google
         attr_accessor :text_styles
       
         # Optional. Currently supports Google Cloud Storage URI of the form `gs://
-        # bucket_name/object_name`. Object versioning is not supported. See [Google
-        # Cloud Storage Request URIs](https://cloud.google.com/storage/docs/reference-
-        # uris) for more info.
+        # bucket_name/object_name`. Object versioning is not supported. For more
+        # information, refer to [Google Cloud Storage Request URIs](https://cloud.google.
+        # com/storage/docs/reference-uris).
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -8477,13 +8476,13 @@ module Google
         # @return [Google::Apis::DocumentaiV1::GoogleTypeColor]
         attr_accessor :background_color
       
-        # Whether the text is bold (equivalent to font weight >= 700).
+        # Whether the text is bold (equivalent to font_weight is at least `700`).
         # Corresponds to the JSON property `bold`
         # @return [Boolean]
         attr_accessor :bold
         alias_method :bold?, :bold
       
-        # Font size in points (1 point is 1/72").
+        # Font size in points (`1` point is `¹⁄₇₂` inches).
         # Corresponds to the JSON property `fontSize`
         # @return [Fixnum]
         attr_accessor :font_size
@@ -8493,8 +8492,8 @@ module Google
         # @return [String]
         attr_accessor :font_type
       
-        # TrueType weight on a scale 100 (Thin) to 1000 (Ultra-heavy). Normal is 400,
-        # Bold is 700.
+        # TrueType weight on a scale `100` (thin) to `1000` (ultra-heavy). Normal is `
+        # 400`, bold is `700`.
         # Corresponds to the JSON property `fontWeight`
         # @return [Fixnum]
         attr_accessor :font_weight
@@ -8516,12 +8515,12 @@ module Google
         # @return [Float]
         attr_accessor :letter_spacing
       
-        # Font size in pixels, equal to unrounded_fontsize * resolution / 72.0.
+        # Font size in pixels, equal to _unrounded font_size_ * _resolution_ ÷ `72.0`.
         # Corresponds to the JSON property `pixelFontSize`
         # @return [Float]
         attr_accessor :pixel_font_size
       
-        # Whether the text are small caps.
+        # Whether the text is in small caps.
         # Corresponds to the JSON property `smallcaps`
         # @return [Boolean]
         attr_accessor :smallcaps
@@ -9383,7 +9382,7 @@ module Google
       
         # The name of the operation triggered by the processed document. If the human
         # review process isn't triggered, this field will be empty. It has the same
-        # response type and metadata as the long-running operation returned by
+        # response type and metadata as the long-running operation returned by the
         # ReviewDocument method.
         # Corresponds to the JSON property `humanReviewOperation`
         # @return [String]
@@ -9394,16 +9393,15 @@ module Google
         # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta3HumanReviewStatus]
         attr_accessor :human_review_status
       
-        # The source of the document, same as the [input_gcs_source] field in the
-        # request when the batch process started. The batch process is started by take
-        # snapshot of that document, since a user can move or change that document
-        # during the process.
+        # The source of the document, same as the input_gcs_source field in the request
+        # when the batch process started.
         # Corresponds to the JSON property `inputGcsSource`
         # @return [String]
         attr_accessor :input_gcs_source
       
-        # The output_gcs_destination (in the request as `output_gcs_destination`) of the
-        # processed document if it was successful, otherwise empty.
+        # The Cloud Storage output destination (in the request as DocumentOutputConfig.
+        # GcsOutputConfig.gcs_uri) of the processed document if it was successful,
+        # otherwise empty.
         # Corresponds to the JSON property `outputGcsDestination`
         # @return [String]
         attr_accessor :output_gcs_destination
@@ -9488,7 +9486,7 @@ module Google
         end
       end
       
-      # The long-running operation metadata for delete processor method.
+      # The long-running operation metadata for the DeleteProcessor method.
       class GoogleCloudDocumentaiV1beta3DeleteProcessorMetadata
         include Google::Apis::Core::Hashable
       
@@ -9507,7 +9505,7 @@ module Google
         end
       end
       
-      # The long-running operation metadata for delete processor version method.
+      # The long-running operation metadata for the DeleteProcessorVersion method.
       class GoogleCloudDocumentaiV1beta3DeleteProcessorVersionMetadata
         include Google::Apis::Core::Hashable
       
@@ -9526,7 +9524,7 @@ module Google
         end
       end
       
-      # The long-running operation metadata for deploy processor version method.
+      # The long-running operation metadata for the DeployProcessorVersion method.
       class GoogleCloudDocumentaiV1beta3DeployProcessorVersionMetadata
         include Google::Apis::Core::Hashable
       
@@ -9545,7 +9543,7 @@ module Google
         end
       end
       
-      # Response message for the deploy processor version method.
+      # Response message for the DeployProcessorVersion method.
       class GoogleCloudDocumentaiV1beta3DeployProcessorVersionResponse
         include Google::Apis::Core::Hashable
       
@@ -9558,7 +9556,7 @@ module Google
         end
       end
       
-      # The long-running operation metadata for disable processor method.
+      # The long-running operation metadata for the DisableProcessor method.
       class GoogleCloudDocumentaiV1beta3DisableProcessorMetadata
         include Google::Apis::Core::Hashable
       
@@ -9577,7 +9575,7 @@ module Google
         end
       end
       
-      # Response message for the disable processor method. Intentionally empty proto
+      # Response message for the DisableProcessor method. Intentionally empty proto
       # for adding fields in future.
       class GoogleCloudDocumentaiV1beta3DisableProcessorResponse
         include Google::Apis::Core::Hashable
@@ -9591,7 +9589,7 @@ module Google
         end
       end
       
-      # The long-running operation metadata for enable processor method.
+      # The long-running operation metadata for the EnableProcessor method.
       class GoogleCloudDocumentaiV1beta3EnableProcessorMetadata
         include Google::Apis::Core::Hashable
       
@@ -9610,8 +9608,8 @@ module Google
         end
       end
       
-      # Response message for the enable processor method. Intentionally empty proto
-      # for adding fields in future.
+      # Response message for the EnableProcessor method. Intentionally empty proto for
+      # adding fields in future.
       class GoogleCloudDocumentaiV1beta3EnableProcessorResponse
         include Google::Apis::Core::Hashable
       
@@ -9734,7 +9732,7 @@ module Google
         end
       end
       
-      # The long-running operation metadata for review document method.
+      # The long-running operation metadata for the ReviewDocument method.
       class GoogleCloudDocumentaiV1beta3ReviewDocumentOperationMetadata
         include Google::Apis::Core::Hashable
       
@@ -9784,7 +9782,7 @@ module Google
         end
       end
       
-      # Response message for review document method.
+      # Response message for the ReviewDocument method.
       class GoogleCloudDocumentaiV1beta3ReviewDocumentResponse
         include Google::Apis::Core::Hashable
       
@@ -9816,7 +9814,7 @@ module Google
         end
       end
       
-      # The long-running operation metadata for set default processor version method.
+      # The long-running operation metadata for the SetDefaultProcessorVersion method.
       class GoogleCloudDocumentaiV1beta3SetDefaultProcessorVersionMetadata
         include Google::Apis::Core::Hashable
       
@@ -9835,7 +9833,7 @@ module Google
         end
       end
       
-      # Response message for set default processor version method.
+      # Response message for the SetDefaultProcessorVersion method.
       class GoogleCloudDocumentaiV1beta3SetDefaultProcessorVersionResponse
         include Google::Apis::Core::Hashable
       
@@ -9941,7 +9939,7 @@ module Google
         end
       end
       
-      # The long-running operation metadata for the undeploy processor version method.
+      # The long-running operation metadata for the UndeployProcessorVersion method.
       class GoogleCloudDocumentaiV1beta3UndeployProcessorVersionMetadata
         include Google::Apis::Core::Hashable
       
@@ -9960,7 +9958,7 @@ module Google
         end
       end
       
-      # Response message for the undeploy processor version method.
+      # Response message for the UndeployProcessorVersion method.
       class GoogleCloudDocumentaiV1beta3UndeployProcessorVersionResponse
         include Google::Apis::Core::Hashable
       
