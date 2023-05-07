@@ -22,6 +22,46 @@ module Google
   module Apis
     module MetastoreV1
       
+      # Request message for DataprocMetastore.AlterMetadataResourceLocation.
+      class AlterMetadataResourceLocationRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The new location URI for the metadata resource.
+        # Corresponds to the JSON property `locationUri`
+        # @return [String]
+        attr_accessor :location_uri
+      
+        # Required. The relative metadata resource name in the following format.
+        # databases/`database_id` or databases/`database_id`/tables/`table_id` or
+        # databases/`database_id`/tables/`table_id`/partitions/`partition_id`
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @location_uri = args[:location_uri] if args.key?(:location_uri)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+        end
+      end
+      
+      # Response message for DataprocMetastore.AlterMetadataResourceLocation.
+      class AlterMetadataResourceLocationResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Specifies the audit configuration for a service. The configuration determines
       # which permission types are logged, and what identities, if any, are exempted
       # from logging. An AuditConfig must have one or more AuditLogConfigs.If there
@@ -405,6 +445,26 @@ module Google
         # Update properties of this object
         def update!(**args)
           @kms_key = args[:kms_key] if args.key?(:kms_key)
+        end
+      end
+      
+      # Error details in public error message for DataprocMetastore.QueryMetadata.
+      class ErrorDetails
+        include Google::Apis::Core::Hashable
+      
+        # Additional structured details about this error.Keys define the failure items.
+        # Value describes the exception or details of the item.
+        # Corresponds to the JSON property `details`
+        # @return [Hash<String,String>]
+        attr_accessor :details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @details = args[:details] if args.key?(:details)
         end
       end
       
@@ -1092,6 +1152,50 @@ module Google
         end
       end
       
+      # Request message for DataprocMetastore.MoveTableToDatabase.
+      class MoveTableToDatabaseRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the database where the table resides.
+        # Corresponds to the JSON property `dbName`
+        # @return [String]
+        attr_accessor :db_name
+      
+        # Required. The name of the database where the table should be moved.
+        # Corresponds to the JSON property `destinationDbName`
+        # @return [String]
+        attr_accessor :destination_db_name
+      
+        # Required. The name of the table to be moved.
+        # Corresponds to the JSON property `tableName`
+        # @return [String]
+        attr_accessor :table_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @db_name = args[:db_name] if args.key?(:db_name)
+          @destination_db_name = args[:destination_db_name] if args.key?(:destination_db_name)
+          @table_name = args[:table_name] if args.key?(:table_name)
+        end
+      end
+      
+      # Response message for DataprocMetastore.MoveTableToDatabase.
+      class MoveTableToDatabaseResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Network configuration for the Dataproc Metastore service.
       class NetworkConfig
         include Google::Apis::Core::Hashable
@@ -1323,6 +1427,48 @@ module Google
           @bindings = args[:bindings] if args.key?(:bindings)
           @etag = args[:etag] if args.key?(:etag)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Request message for DataprocMetastore.QueryMetadata.
+      class QueryMetadataRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. A read-only SQL query to execute against the metadata database. The
+        # query cannot change or mutate the data.
+        # Corresponds to the JSON property `query`
+        # @return [String]
+        attr_accessor :query
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @query = args[:query] if args.key?(:query)
+        end
+      end
+      
+      # Response message for DataprocMetastore.QueryMetadata.
+      class QueryMetadataResponse
+        include Google::Apis::Core::Hashable
+      
+        # The manifest URI is link to a JSON instance in Cloud Storage. This instance
+        # manifests immediately along with QueryMetadataResponse. The content of the URI
+        # is not retriable until the long-running operation query against the metadata
+        # finishes.
+        # Corresponds to the JSON property `resultManifestUri`
+        # @return [String]
+        attr_accessor :result_manifest_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @result_manifest_uri = args[:result_manifest_uri] if args.key?(:result_manifest_uri)
         end
       end
       
