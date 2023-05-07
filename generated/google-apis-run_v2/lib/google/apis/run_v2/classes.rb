@@ -158,6 +158,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :command
       
+        # Container names which must start before this container.
+        # Corresponds to the JSON property `dependsOn`
+        # @return [Array<String>]
+        attr_accessor :depends_on
+      
         # List of environment variables to set in the container.
         # Corresponds to the JSON property `env`
         # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2EnvVar>]
@@ -220,6 +225,7 @@ module Google
         def update!(**args)
           @args = args[:args] if args.key?(:args)
           @command = args[:command] if args.key?(:command)
+          @depends_on = args[:depends_on] if args.key?(:depends_on)
           @env = args[:env] if args.key?(:env)
           @image = args[:image] if args.key?(:image)
           @liveness_probe = args[:liveness_probe] if args.key?(:liveness_probe)
@@ -256,6 +262,43 @@ module Google
         def update!(**args)
           @container_port = args[:container_port] if args.key?(:container_port)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Ephemeral storage which can be backed by real disks (HD, SSD), network storage
+      # or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is
+      # ephemeral in the sense that when the sandbox is taken down, the data is
+      # destroyed with it (it does not persist across sandbox runs).
+      class GoogleCloudRunV2EmptyDirVolumeSource
+        include Google::Apis::Core::Hashable
+      
+        # The medium on which the data is stored. Acceptable values today is only MEMORY
+        # or none. When none, the default will currently be backed by memory but could
+        # change over time. +optional
+        # Corresponds to the JSON property `medium`
+        # @return [String]
+        attr_accessor :medium
+      
+        # Limit on the storage usable by this EmptyDir volume. The size limit is also
+        # applicable for memory medium. The maximum usage on memory medium EmptyDir
+        # would be the minimum value between the SizeLimit specified here and the sum of
+        # memory limits of all containers in a pod. This field's values are of the '
+        # Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-
+        # definitions/quantity/. The default is nil which means that the limit is
+        # undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir +
+        # optional
+        # Corresponds to the JSON property `sizeLimit`
+        # @return [String]
+        attr_accessor :size_limit
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @medium = args[:medium] if args.key?(:medium)
+          @size_limit = args[:size_limit] if args.key?(:size_limit)
         end
       end
       
@@ -2369,6 +2412,14 @@ module Google
         # @return [Google::Apis::RunV2::GoogleCloudRunV2CloudSqlInstance]
         attr_accessor :cloud_sql_instance
       
+        # Ephemeral storage which can be backed by real disks (HD, SSD), network storage
+        # or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is
+        # ephemeral in the sense that when the sandbox is taken down, the data is
+        # destroyed with it (it does not persist across sandbox runs).
+        # Corresponds to the JSON property `emptyDir`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2EmptyDirVolumeSource]
+        attr_accessor :empty_dir
+      
         # Required. Volume's name.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -2388,6 +2439,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cloud_sql_instance = args[:cloud_sql_instance] if args.key?(:cloud_sql_instance)
+          @empty_dir = args[:empty_dir] if args.key?(:empty_dir)
           @name = args[:name] if args.key?(:name)
           @secret = args[:secret] if args.key?(:secret)
         end
