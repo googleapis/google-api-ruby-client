@@ -1547,6 +1547,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :provisioned_iops
       
+        # Indicates how much throughput to provision for the disk. This sets the number
+        # of throughput mb per second that the disk can handle. Values must be between 1
+        # and 7,124.
+        # Corresponds to the JSON property `provisionedThroughput`
+        # @return [Fixnum]
+        attr_accessor :provisioned_throughput
+      
         # Required for each regional disk associated with the instance. Specify the URLs
         # of the zones where the disk should be replicated to. You must provide exactly
         # two replica zones, and one zone must be the same as the instance zone. You can'
@@ -1626,6 +1633,7 @@ module Google
           @licenses = args[:licenses] if args.key?(:licenses)
           @on_update_action = args[:on_update_action] if args.key?(:on_update_action)
           @provisioned_iops = args[:provisioned_iops] if args.key?(:provisioned_iops)
+          @provisioned_throughput = args[:provisioned_throughput] if args.key?(:provisioned_throughput)
           @replica_zones = args[:replica_zones] if args.key?(:replica_zones)
           @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
           @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
@@ -5079,7 +5087,7 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # Source commitment to be splitted into a new commitment.
+        # Source commitment to be split into a new commitment.
         # Corresponds to the JSON property `splitSourceCommitment`
         # @return [String]
         attr_accessor :split_source_commitment
@@ -5998,6 +6006,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :provisioned_iops
       
+        # Indicates how much throughput to provision for the disk. This sets the number
+        # of throughput mb per second that the disk can handle. Values must be between 1
+        # and 7,124.
+        # Corresponds to the JSON property `provisionedThroughput`
+        # @return [Fixnum]
+        attr_accessor :provisioned_throughput
+      
         # [Output Only] URL of the region where the disk resides. Only applicable for
         # regional resources. You must specify this field as part of the HTTP request
         # URL. It is not settable as a field in the request body.
@@ -6190,6 +6205,7 @@ module Google
           @params = args[:params] if args.key?(:params)
           @physical_block_size_bytes = args[:physical_block_size_bytes] if args.key?(:physical_block_size_bytes)
           @provisioned_iops = args[:provisioned_iops] if args.key?(:provisioned_iops)
+          @provisioned_throughput = args[:provisioned_throughput] if args.key?(:provisioned_throughput)
           @region = args[:region] if args.key?(:region)
           @replica_zones = args[:replica_zones] if args.key?(:replica_zones)
           @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
@@ -20592,6 +20608,10 @@ module Google
         attr_accessor :name
       
         # [Output Only] The URL of the network which the Network Attachment belongs to.
+        # Practically it is inferred by fetching the network of the first subnetwork
+        # associated. Because it is required that all the subnetworks must be from the
+        # same network, it is assured that the Network Attachment belongs to the same
+        # network as all the subnetworks.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -42873,7 +42893,7 @@ module Google
         attr_accessor :local_gateway_interface
       
         # The peer gateway interface this VPN tunnel is connected to, the peer gateway
-        # could either be an external VPN gateway or GCP VPN gateway.
+        # could either be an external VPN gateway or a Google Cloud VPN gateway.
         # Corresponds to the JSON property `peerGatewayInterface`
         # @return [Fixnum]
         attr_accessor :peer_gateway_interface
@@ -42896,8 +42916,8 @@ module Google
       end
       
       # A VPN connection contains all VPN tunnels connected from this VpnGateway to
-      # the same peer gateway. The peer gateway could either be a external VPN gateway
-      # or GCP VPN gateway.
+      # the same peer gateway. The peer gateway could either be an external VPN
+      # gateway or a Google Cloud VPN gateway.
       class VpnGatewayStatusVpnConnection
         include Google::Apis::Core::Hashable
       
