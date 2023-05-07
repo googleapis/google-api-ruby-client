@@ -22,6 +22,32 @@ module Google
   module Apis
     module WorkstationsV1beta
       
+      # An accelerator card attached to the instance.
+      class Accelerator
+        include Google::Apis::Core::Hashable
+      
+        # Number of accelerator cards exposed to the instance.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        # Type of accelerator resource to attach to the instance, for example, "nvidia-
+        # tesla-p100".
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @count = args[:count] if args.key?(:count)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # Specifies the audit configuration for a service. The configuration determines
       # which permission types are logged, and what identities, if any, are exempted
       # from logging. An AuditConfig must have one or more AuditLogConfigs. If there
@@ -342,6 +368,11 @@ module Google
       class GceInstance
         include Google::Apis::Core::Hashable
       
+        # A list of the type and count of accelerator cards attached to the instance.
+        # Corresponds to the JSON property `accelerators`
+        # @return [Array<Google::Apis::WorkstationsV1beta::Accelerator>]
+        attr_accessor :accelerators
+      
         # Size of the boot disk in GB. Defaults to 50.
         # Corresponds to the JSON property `bootDiskSizeGb`
         # @return [Fixnum]
@@ -398,6 +429,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @accelerators = args[:accelerators] if args.key?(:accelerators)
           @boot_disk_size_gb = args[:boot_disk_size_gb] if args.key?(:boot_disk_size_gb)
           @confidential_instance_config = args[:confidential_instance_config] if args.key?(:confidential_instance_config)
           @disable_public_ip_addresses = args[:disable_public_ip_addresses] if args.key?(:disable_public_ip_addresses)
