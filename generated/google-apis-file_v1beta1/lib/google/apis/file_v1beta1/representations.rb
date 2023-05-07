@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DirectoryServicesConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -173,6 +179,12 @@ module Google
       end
       
       class MaintenanceWindow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ManagedActiveDirectoryConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -311,6 +323,14 @@ module Google
         end
       end
       
+      class DirectoryServicesConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :managed_active_directory, as: 'managedActiveDirectory', class: Google::Apis::FileV1beta1::ManagedActiveDirectoryConfig, decorator: Google::Apis::FileV1beta1::ManagedActiveDirectoryConfig::Representation
+      
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -436,6 +456,8 @@ module Google
           property :capacity_step_size_gb, :numeric_string => true, as: 'capacityStepSizeGb'
           property :create_time, as: 'createTime'
           property :description, as: 'description'
+          property :directory_services, as: 'directoryServices', class: Google::Apis::FileV1beta1::DirectoryServicesConfig, decorator: Google::Apis::FileV1beta1::DirectoryServicesConfig::Representation
+      
           property :etag, as: 'etag'
           collection :file_shares, as: 'fileShares', class: Google::Apis::FileV1beta1::FileShareConfig, decorator: Google::Apis::FileV1beta1::FileShareConfig::Representation
       
@@ -548,6 +570,14 @@ module Google
         end
       end
       
+      class ManagedActiveDirectoryConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :computer, as: 'computer'
+          property :domain, as: 'domain'
+        end
+      end
+      
       class NetworkConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -566,6 +596,7 @@ module Google
           property :anon_gid, :numeric_string => true, as: 'anonGid'
           property :anon_uid, :numeric_string => true, as: 'anonUid'
           collection :ip_ranges, as: 'ipRanges'
+          collection :security_flavors, as: 'securityFlavors'
           property :squash_mode, as: 'squashMode'
         end
       end

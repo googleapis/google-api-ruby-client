@@ -250,6 +250,26 @@ module Google
         end
       end
       
+      # Directory Services configuration for Kerberos-based authentication.
+      class DirectoryServicesConfig
+        include Google::Apis::Core::Hashable
+      
+        # ManagedActiveDirectoryConfig contains all the parameters for connecting to
+        # Managed Active Directory.
+        # Corresponds to the JSON property `managedActiveDirectory`
+        # @return [Google::Apis::FileV1beta1::ManagedActiveDirectoryConfig]
+        attr_accessor :managed_active_directory
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @managed_active_directory = args[:managed_active_directory] if args.key?(:managed_active_directory)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -766,6 +786,11 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Directory Services configuration for Kerberos-based authentication.
+        # Corresponds to the JSON property `directoryServices`
+        # @return [Google::Apis::FileV1beta1::DirectoryServicesConfig]
+        attr_accessor :directory_services
+      
         # Server-specified ETag for the instance resource to prevent simultaneous
         # updates from overwriting each other.
         # Corresponds to the JSON property `etag`
@@ -862,6 +887,7 @@ module Google
           @capacity_step_size_gb = args[:capacity_step_size_gb] if args.key?(:capacity_step_size_gb)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
+          @directory_services = args[:directory_services] if args.key?(:directory_services)
           @etag = args[:etag] if args.key?(:etag)
           @file_shares = args[:file_shares] if args.key?(:file_shares)
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
@@ -1194,6 +1220,34 @@ module Google
         end
       end
       
+      # ManagedActiveDirectoryConfig contains all the parameters for connecting to
+      # Managed Active Directory.
+      class ManagedActiveDirectoryConfig
+        include Google::Apis::Core::Hashable
+      
+        # The computer name is used as a prefix to the mount remote target. Example: if
+        # the computer_name is `my-computer`, the mount command will look like: `$mount -
+        # o vers=4,sec=krb5 my-computer.filestore.:`.
+        # Corresponds to the JSON property `computer`
+        # @return [String]
+        attr_accessor :computer
+      
+        # Fully qualified domain name.
+        # Corresponds to the JSON property `domain`
+        # @return [String]
+        attr_accessor :domain
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @computer = args[:computer] if args.key?(:computer)
+          @domain = args[:domain] if args.key?(:domain)
+        end
+      end
+      
       # Network configuration for the instance.
       class NetworkConfig
         include Google::Apis::Core::Hashable
@@ -1290,6 +1344,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :ip_ranges
       
+        # The security flavors allowed for mount operations. The default is AUTH_SYS.
+        # Corresponds to the JSON property `securityFlavors`
+        # @return [Array<String>]
+        attr_accessor :security_flavors
+      
         # Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or
         # ROOT_SQUASH, for not allowing root access. The default is NO_ROOT_SQUASH.
         # Corresponds to the JSON property `squashMode`
@@ -1306,6 +1365,7 @@ module Google
           @anon_gid = args[:anon_gid] if args.key?(:anon_gid)
           @anon_uid = args[:anon_uid] if args.key?(:anon_uid)
           @ip_ranges = args[:ip_ranges] if args.key?(:ip_ranges)
+          @security_flavors = args[:security_flavors] if args.key?(:security_flavors)
           @squash_mode = args[:squash_mode] if args.key?(:squash_mode)
         end
       end
