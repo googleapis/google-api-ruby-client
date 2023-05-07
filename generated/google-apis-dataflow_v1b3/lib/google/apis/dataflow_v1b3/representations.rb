@@ -604,6 +604,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RuntimeUpdatableParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SdkInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1603,6 +1609,8 @@ module Google
           property :replace_job_id, as: 'replaceJobId'
           property :replaced_by_job_id, as: 'replacedByJobId'
           property :requested_state, as: 'requestedState'
+          property :runtime_updatable_params, as: 'runtimeUpdatableParams', class: Google::Apis::DataflowV1b3::RuntimeUpdatableParams, decorator: Google::Apis::DataflowV1b3::RuntimeUpdatableParams::Representation
+      
           property :satisfies_pzs, as: 'satisfiesPzs'
           collection :stage_states, as: 'stageStates', class: Google::Apis::DataflowV1b3::ExecutionStageState, decorator: Google::Apis::DataflowV1b3::ExecutionStageState::Representation
       
@@ -2122,6 +2130,14 @@ module Google
       
           property :sdk_info, as: 'sdkInfo', class: Google::Apis::DataflowV1b3::SdkInfo, decorator: Google::Apis::DataflowV1b3::SdkInfo::Representation
       
+        end
+      end
+      
+      class RuntimeUpdatableParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_num_workers, as: 'maxNumWorkers'
+          property :min_num_workers, as: 'minNumWorkers'
         end
       end
       

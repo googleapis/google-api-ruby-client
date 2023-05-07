@@ -2191,6 +2191,13 @@ module Google
         # @return [String]
         attr_accessor :requested_state
       
+        # Additional job parameters that can only be updated during runtime using the
+        # projects.jobs.update method. These fields have no effect when specified during
+        # job creation.
+        # Corresponds to the JSON property `runtimeUpdatableParams`
+        # @return [Google::Apis::DataflowV1b3::RuntimeUpdatableParams]
+        attr_accessor :runtime_updatable_params
+      
         # Reserved for future use. This field is set only in responses from the server;
         # it is ignored if it is set in any requests.
         # Corresponds to the JSON property `satisfiesPzs`
@@ -2267,6 +2274,7 @@ module Google
           @replace_job_id = args[:replace_job_id] if args.key?(:replace_job_id)
           @replaced_by_job_id = args[:replaced_by_job_id] if args.key?(:replaced_by_job_id)
           @requested_state = args[:requested_state] if args.key?(:requested_state)
+          @runtime_updatable_params = args[:runtime_updatable_params] if args.key?(:runtime_updatable_params)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @stage_states = args[:stage_states] if args.key?(:stage_states)
           @start_time = args[:start_time] if args.key?(:start_time)
@@ -4113,6 +4121,35 @@ module Google
         def update!(**args)
           @parameters = args[:parameters] if args.key?(:parameters)
           @sdk_info = args[:sdk_info] if args.key?(:sdk_info)
+        end
+      end
+      
+      # Additional job parameters that can only be updated during runtime using the
+      # projects.jobs.update method. These fields have no effect when specified during
+      # job creation.
+      class RuntimeUpdatableParams
+        include Google::Apis::Core::Hashable
+      
+        # The maximum number of workers to cap autoscaling at. This field is currently
+        # only supported for Streaming Engine jobs.
+        # Corresponds to the JSON property `maxNumWorkers`
+        # @return [Fixnum]
+        attr_accessor :max_num_workers
+      
+        # The minimum number of workers to scale down to. This field is currently only
+        # supported for Streaming Engine jobs.
+        # Corresponds to the JSON property `minNumWorkers`
+        # @return [Fixnum]
+        attr_accessor :min_num_workers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_num_workers = args[:max_num_workers] if args.key?(:max_num_workers)
+          @min_num_workers = args[:min_num_workers] if args.key?(:min_num_workers)
         end
       end
       
