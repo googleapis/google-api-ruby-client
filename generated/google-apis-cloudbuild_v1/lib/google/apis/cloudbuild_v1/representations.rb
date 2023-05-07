@@ -1144,6 +1144,7 @@ module Google
           property :github_enterprise_config, as: 'githubEnterpriseConfig'
           property :path, as: 'path'
           property :repo_type, as: 'repoType'
+          property :repository, as: 'repository'
           property :revision, as: 'revision'
           property :uri, as: 'uri'
         end
@@ -1281,6 +1282,7 @@ module Google
           property :github_enterprise_config, as: 'githubEnterpriseConfig'
           property :ref, as: 'ref'
           property :repo_type, as: 'repoType'
+          property :repository, as: 'repository'
           property :uri, as: 'uri'
         end
       end
