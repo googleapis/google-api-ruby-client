@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AvroConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BigQueryConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -35,6 +41,12 @@ module Google
       end
       
       class Binding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudStorageConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -262,6 +274,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TextConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Topic
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -317,6 +335,13 @@ module Google
         end
       end
       
+      class AvroConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :write_metadata, as: 'writeMetadata'
+        end
+      end
+      
       class BigQueryConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -335,6 +360,22 @@ module Google
       
           collection :members, as: 'members'
           property :role, as: 'role'
+        end
+      end
+      
+      class CloudStorageConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :avro_config, as: 'avroConfig', class: Google::Apis::PubsubV1::AvroConfig, decorator: Google::Apis::PubsubV1::AvroConfig::Representation
+      
+          property :bucket, as: 'bucket'
+          property :filename_prefix, as: 'filenamePrefix'
+          property :filename_suffix, as: 'filenameSuffix'
+          property :max_bytes, :numeric_string => true, as: 'maxBytes'
+          property :max_duration, as: 'maxDuration'
+          property :state, as: 'state'
+          property :text_config, as: 'textConfig', class: Google::Apis::PubsubV1::TextConfig, decorator: Google::Apis::PubsubV1::TextConfig::Representation
+      
         end
       end
       
@@ -629,6 +670,8 @@ module Google
           property :ack_deadline_seconds, as: 'ackDeadlineSeconds'
           property :bigquery_config, as: 'bigqueryConfig', class: Google::Apis::PubsubV1::BigQueryConfig, decorator: Google::Apis::PubsubV1::BigQueryConfig::Representation
       
+          property :cloud_storage_config, as: 'cloudStorageConfig', class: Google::Apis::PubsubV1::CloudStorageConfig, decorator: Google::Apis::PubsubV1::CloudStorageConfig::Representation
+      
           property :dead_letter_policy, as: 'deadLetterPolicy', class: Google::Apis::PubsubV1::DeadLetterPolicy, decorator: Google::Apis::PubsubV1::DeadLetterPolicy::Representation
       
           property :detached, as: 'detached'
@@ -662,6 +705,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class TextConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
