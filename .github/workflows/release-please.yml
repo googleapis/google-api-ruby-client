@@ -1,7 +1,5 @@
 name: Release-Please
 on:
-  schedule:
-    - cron: '17 9 * * *'
   workflow_dispatch:
     inputs:
       gem:
