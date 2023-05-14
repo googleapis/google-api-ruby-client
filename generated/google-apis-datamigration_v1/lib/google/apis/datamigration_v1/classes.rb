@@ -2010,6 +2010,18 @@ module Google
       class MigrationJob
         include Google::Apis::Core::Hashable
       
+        # The CMEK (customer-managed encryption key) fully qualified key name used for
+        # the migration job. This field supports all migration jobs types except for: *
+        # Mysql to Mysql (use the cmek field in the cloudsql connection profile instead).
+        # * PostrgeSQL to PostgreSQL (use the cmek field in the cloudsql connection
+        # profile instead). * PostgreSQL to AlloyDB (use the kms_key_name field in the
+        # alloydb connection profile instead). Each Cloud CMEK key has the following
+        # format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[
+        # KEY_NAME]
+        # Corresponds to the JSON property `cmekKeyName`
+        # @return [String]
+        attr_accessor :cmek_key_name
+      
         # A conversion workspace's version.
         # Corresponds to the JSON property `conversionWorkspace`
         # @return [Google::Apis::DatamigrationV1::ConversionWorkspaceInfo]
@@ -2155,6 +2167,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cmek_key_name = args[:cmek_key_name] if args.key?(:cmek_key_name)
           @conversion_workspace = args[:conversion_workspace] if args.key?(:conversion_workspace)
           @create_time = args[:create_time] if args.key?(:create_time)
           @destination = args[:destination] if args.key?(:destination)
@@ -2575,7 +2588,7 @@ module Google
         attr_accessor :port
       
         # Private Service Connect connectivity (https://cloud.google.com/vpc/docs/
-        # private-service-connect#benefits-services)
+        # private-service-connect#service-attachments)
         # Corresponds to the JSON property `privateServiceConnectConnectivity`
         # @return [Google::Apis::DatamigrationV1::PrivateServiceConnectConnectivity]
         attr_accessor :private_service_connect_connectivity
@@ -2756,7 +2769,7 @@ module Google
       end
       
       # Private Service Connect connectivity (https://cloud.google.com/vpc/docs/
-      # private-service-connect#benefits-services)
+      # private-service-connect#service-attachments)
       class PrivateServiceConnectConnectivity
         include Google::Apis::Core::Hashable
       
