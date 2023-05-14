@@ -944,6 +944,7 @@ module Google
       class PublishingOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :encoding_format, as: 'encodingFormat'
           property :publish_ca_cert, as: 'publishCaCert'
           property :publish_crl, as: 'publishCrl'
         end
