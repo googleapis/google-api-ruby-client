@@ -2133,16 +2133,6 @@ module Google
         # @return [String]
         attr_accessor :bare_metal_admin_cluster_id
       
-        # The object name of the bare metal OnPremAdminCluster custom resource on the
-        # associated admin cluster. This field is used to support conflicting resource
-        # names when enrolling existing clusters to the API. When not provided, this
-        # field will resolve to the bare_metal_admin_cluster_id. Otherwise, it must
-        # match the object name of the bare metal OnPremAdminCluster custom resource. It
-        # is not modifiable outside / beyond the enrollment operation.
-        # Corresponds to the JSON property `localName`
-        # @return [String]
-        attr_accessor :local_name
-      
         # Required. This is the full resource name of this admin cluster's fleet
         # membership.
         # Corresponds to the JSON property `membership`
@@ -2156,7 +2146,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bare_metal_admin_cluster_id = args[:bare_metal_admin_cluster_id] if args.key?(:bare_metal_admin_cluster_id)
-          @local_name = args[:local_name] if args.key?(:local_name)
           @membership = args[:membership] if args.key?(:membership)
         end
       end
