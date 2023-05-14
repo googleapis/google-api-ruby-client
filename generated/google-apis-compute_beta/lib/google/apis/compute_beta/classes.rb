@@ -567,6 +567,12 @@ module Google
         # @return [String]
         attr_accessor :public_ptr_domain_name
       
+        # [Output Only] The resource URL for the security policy associated with this
+        # access config.
+        # Corresponds to the JSON property `securityPolicy`
+        # @return [String]
+        attr_accessor :security_policy
+      
         # Specifies whether a public DNS 'PTR' record should be created to map the
         # external IP address of the instance to a DNS domain name. This field is not
         # used in ipv6AccessConfig. A default PTR record will be created if the VM has
@@ -596,6 +602,7 @@ module Google
           @nat_ip = args[:nat_ip] if args.key?(:nat_ip)
           @network_tier = args[:network_tier] if args.key?(:network_tier)
           @public_ptr_domain_name = args[:public_ptr_domain_name] if args.key?(:public_ptr_domain_name)
+          @security_policy = args[:security_policy] if args.key?(:security_policy)
           @set_public_ptr = args[:set_public_ptr] if args.key?(:set_public_ptr)
           @type = args[:type] if args.key?(:type)
         end
@@ -3490,6 +3497,12 @@ module Google
         # @return [Google::Apis::ComputeBeta::Duration]
         attr_accessor :max_stream_duration
       
+        # Deployment metadata associated with the resource to be set by a GKE hub
+        # controller and read by the backend RCTH
+        # Corresponds to the JSON property `metadatas`
+        # @return [Hash<String,String>]
+        attr_accessor :metadatas
+      
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
         # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
@@ -3629,6 +3642,7 @@ module Google
           @locality_lb_policy = args[:locality_lb_policy] if args.key?(:locality_lb_policy)
           @log_config = args[:log_config] if args.key?(:log_config)
           @max_stream_duration = args[:max_stream_duration] if args.key?(:max_stream_duration)
+          @metadatas = args[:metadatas] if args.key?(:metadatas)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @outlier_detection = args[:outlier_detection] if args.key?(:outlier_detection)
@@ -4973,6 +4987,12 @@ module Google
       class BulkInsertInstanceResourcePerInstanceProperties
         include Google::Apis::Core::Hashable
       
+        # Specifies the hostname of the instance. More details in: https://cloud.google.
+        # com/compute/docs/instances/custom-hostname-vm#naming_convention
+        # Corresponds to the JSON property `hostname`
+        # @return [String]
+        attr_accessor :hostname
+      
         # This field is only temporary. It will be removed. Do not use it.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -4984,6 +5004,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @hostname = args[:hostname] if args.key?(:hostname)
           @name = args[:name] if args.key?(:name)
         end
       end
@@ -5278,7 +5299,7 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # Source commitment to be splitted into a new commitment.
+        # Source commitment to be split into a new commitment.
         # Corresponds to the JSON property `splitSourceCommitment`
         # @return [String]
         attr_accessor :split_source_commitment
@@ -9107,6 +9128,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :rule_tuple_count
       
+        # A fully-qualified URL of a SecurityProfile resource instance. Example: https://
+        # networksecurity.googleapis.com/v1/projects/`project`/locations/`location`/
+        # securityProfileGroups/my-security-profile-group Must be specified if action = '
+        # apply_security_profile_group' and cannot be specified for other actions.
+        # Corresponds to the JSON property `securityProfileGroup`
+        # @return [String]
+        attr_accessor :security_profile_group
+      
         # A list of network resource URLs to which this rule applies. This field allows
         # you to control which network's VMs get this rule. If this field is left blank,
         # all VMs within the organization will receive the rule.
@@ -9132,6 +9161,14 @@ module Google
         # @return [Array<String>]
         attr_accessor :target_service_accounts
       
+        # Boolean flag indicating if the traffic should be TLS decrypted. Can be set
+        # only if action = 'apply_security_profile_group' and cannot be set for other
+        # actions.
+        # Corresponds to the JSON property `tlsInspect`
+        # @return [Boolean]
+        attr_accessor :tls_inspect
+        alias_method :tls_inspect?, :tls_inspect
+      
         def initialize(**args)
            update!(**args)
         end
@@ -9148,9 +9185,11 @@ module Google
           @priority = args[:priority] if args.key?(:priority)
           @rule_name = args[:rule_name] if args.key?(:rule_name)
           @rule_tuple_count = args[:rule_tuple_count] if args.key?(:rule_tuple_count)
+          @security_profile_group = args[:security_profile_group] if args.key?(:security_profile_group)
           @target_resources = args[:target_resources] if args.key?(:target_resources)
           @target_secure_tags = args[:target_secure_tags] if args.key?(:target_secure_tags)
           @target_service_accounts = args[:target_service_accounts] if args.key?(:target_service_accounts)
+          @tls_inspect = args[:tls_inspect] if args.key?(:tls_inspect)
         end
       end
       
@@ -11689,6 +11728,12 @@ module Google
         # @return [String]
         attr_accessor :health_state
       
+        # Health state of the ipv6 network endpoint determined based on the health
+        # checks configured.
+        # Corresponds to the JSON property `ipv6HealthState`
+        # @return [String]
+        attr_accessor :ipv6_health_state
+      
         def initialize(**args)
            update!(**args)
         end
@@ -11700,6 +11745,7 @@ module Google
           @health_check = args[:health_check] if args.key?(:health_check)
           @health_check_service = args[:health_check_service] if args.key?(:health_check_service)
           @health_state = args[:health_state] if args.key?(:health_state)
+          @ipv6_health_state = args[:ipv6_health_state] if args.key?(:ipv6_health_state)
         end
       end
       
@@ -17695,6 +17741,34 @@ module Google
       end
       
       # 
+      class InstancesSetSecurityPolicyRequest
+        include Google::Apis::Core::Hashable
+      
+        # The network interfaces that the security policy will be applied to. Network
+        # interfaces use the nicN naming format. You can only set a security policy for
+        # network interfaces with an access config.
+        # Corresponds to the JSON property `networkInterfaces`
+        # @return [Array<String>]
+        attr_accessor :network_interfaces
+      
+        # A full or partial URL to a security policy to add to this instance. If this
+        # field is set to an empty string it will remove the associated security policy.
+        # Corresponds to the JSON property `securityPolicy`
+        # @return [String]
+        attr_accessor :security_policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network_interfaces = args[:network_interfaces] if args.key?(:network_interfaces)
+          @security_policy = args[:security_policy] if args.key?(:security_policy)
+        end
+      end
+      
+      # 
       class InstancesSetServiceAccountRequest
         include Google::Apis::Core::Hashable
       
@@ -17924,6 +17998,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :provisioned_link_count
       
+        # Indicates that this is a Cross-Cloud Interconnect. This field specifies the
+        # location outside of Google's network that the interconnect is connected to.
+        # Corresponds to the JSON property `remoteLocation`
+        # @return [String]
+        attr_accessor :remote_location
+      
         # Target number of physical links in the link bundle, as requested by the
         # customer.
         # Corresponds to the JSON property `requestedLinkCount`
@@ -17979,6 +18059,7 @@ module Google
           @operational_status = args[:operational_status] if args.key?(:operational_status)
           @peer_ip_address = args[:peer_ip_address] if args.key?(:peer_ip_address)
           @provisioned_link_count = args[:provisioned_link_count] if args.key?(:provisioned_link_count)
+          @remote_location = args[:remote_location] if args.key?(:remote_location)
           @requested_link_count = args[:requested_link_count] if args.key?(:requested_link_count)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
@@ -18045,6 +18126,12 @@ module Google
         # Corresponds to the JSON property `cloudRouterIpv6InterfaceId`
         # @return [String]
         attr_accessor :cloud_router_ipv6_interface_id
+      
+        # [Output Only] Constraints for this attachment, if any. The attachment does not
+        # work if these constraints are not met.
+        # Corresponds to the JSON property `configurationConstraints`
+        # @return [Google::Apis::ComputeBeta::InterconnectAttachmentConfigurationConstraints]
+        attr_accessor :configuration_constraints
       
         # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
@@ -18227,6 +18314,15 @@ module Google
         # @return [String]
         attr_accessor :region
       
+        # [Output Only] If the attachment is on a Cross-Cloud Interconnect connection,
+        # this field contains the interconnect's remote location service provider.
+        # Example values: "Amazon Web Services" "Microsoft Azure". The field is set only
+        # for attachments on Cross-Cloud Interconnect connections. Its value is copied
+        # from the InterconnectRemoteLocation remoteService field.
+        # Corresponds to the JSON property `remoteService`
+        # @return [String]
+        attr_accessor :remote_service
+      
         # URL of the Cloud Router to be used for dynamic routing. This router must be in
         # the same region as this InterconnectAttachment. The InterconnectAttachment
         # will automatically connect the Interconnect to the network & region within
@@ -18273,6 +18369,17 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Length of the IPv4 subnet mask. Allowed values: - 29 (default) - 30 The
+        # default value is 29, except for Cross-Cloud Interconnect connections that use
+        # an InterconnectRemoteLocation with a constraints.subnetLengthRange.min equal
+        # to 30. For example, connections that use an Azure remote location fall into
+        # this category. In these cases, the default value is 30, and requesting 29
+        # returns an error. Where both 29 and 30 are allowed, 29 is preferred, because
+        # it gives Google Cloud Support more debugging visibility.
+        # Corresponds to the JSON property `subnetLength`
+        # @return [Fixnum]
+        attr_accessor :subnet_length
+      
         # The type of interconnect attachment this is, which can take one of the
         # following values: - DEDICATED: an attachment to a Dedicated Interconnect. -
         # PARTNER: an attachment to a Partner Interconnect, created by the customer. -
@@ -18301,6 +18408,7 @@ module Google
           @cloud_router_ip_address = args[:cloud_router_ip_address] if args.key?(:cloud_router_ip_address)
           @cloud_router_ipv6_address = args[:cloud_router_ipv6_address] if args.key?(:cloud_router_ipv6_address)
           @cloud_router_ipv6_interface_id = args[:cloud_router_ipv6_interface_id] if args.key?(:cloud_router_ipv6_interface_id)
+          @configuration_constraints = args[:configuration_constraints] if args.key?(:configuration_constraints)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @customer_router_ip_address = args[:customer_router_ip_address] if args.key?(:customer_router_ip_address)
           @customer_router_ipv6_address = args[:customer_router_ipv6_address] if args.key?(:customer_router_ipv6_address)
@@ -18324,11 +18432,13 @@ module Google
           @partner_metadata = args[:partner_metadata] if args.key?(:partner_metadata)
           @private_interconnect_info = args[:private_interconnect_info] if args.key?(:private_interconnect_info)
           @region = args[:region] if args.key?(:region)
+          @remote_service = args[:remote_service] if args.key?(:remote_service)
           @router = args[:router] if args.key?(:router)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
           @stack_type = args[:stack_type] if args.key?(:stack_type)
           @state = args[:state] if args.key?(:state)
+          @subnet_length = args[:subnet_length] if args.key?(:subnet_length)
           @type = args[:type] if args.key?(:type)
           @vlan_tag8021q = args[:vlan_tag8021q] if args.key?(:vlan_tag8021q)
         end
@@ -18456,6 +18566,68 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # 
+      class InterconnectAttachmentConfigurationConstraints
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Whether the attachment's BGP session requires/allows/disallows
+        # BGP MD5 authentication. This can take one of the following values:
+        # MD5_OPTIONAL, MD5_REQUIRED, MD5_UNSUPPORTED. For example, a Cross-Cloud
+        # Interconnect connection to a remote cloud provider that requires BGP MD5
+        # authentication has the interconnectRemoteLocation
+        # attachment_configuration_constraints.bgp_md5 field set to MD5_REQUIRED, and
+        # that property is propagated to the attachment. Similarly, if BGP MD5 is
+        # MD5_UNSUPPORTED, an error is returned if MD5 is requested.
+        # Corresponds to the JSON property `bgpMd5`
+        # @return [String]
+        attr_accessor :bgp_md5
+      
+        # [Output Only] List of ASN ranges that the remote location is known to support.
+        # Formatted as an array of inclusive ranges `min: min-value, max: max-value`.
+        # For example, [`min: 123, max: 123`, `min: 64512, max: 65534`] allows the peer
+        # ASN to be 123 or anything in the range 64512-65534. This field is only
+        # advisory. Although the API accepts other ranges, these are the ranges that we
+        # recommend.
+        # Corresponds to the JSON property `bgpPeerAsnRanges`
+        # @return [Array<Google::Apis::ComputeBeta::InterconnectAttachmentConfigurationConstraintsBgpPeerAsnRange>]
+        attr_accessor :bgp_peer_asn_ranges
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bgp_md5 = args[:bgp_md5] if args.key?(:bgp_md5)
+          @bgp_peer_asn_ranges = args[:bgp_peer_asn_ranges] if args.key?(:bgp_peer_asn_ranges)
+        end
+      end
+      
+      # 
+      class InterconnectAttachmentConfigurationConstraintsBgpPeerAsnRange
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `max`
+        # @return [Fixnum]
+        attr_accessor :max
+      
+        # 
+        # Corresponds to the JSON property `min`
+        # @return [Fixnum]
+        attr_accessor :min
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max = args[:max] if args.key?(:max)
+          @min = args[:min] if args.key?(:min)
         end
       end
       
@@ -19426,6 +19598,371 @@ module Google
           @source = args[:source] if args.key?(:source)
           @start_time = args[:start_time] if args.key?(:start_time)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Represents a Cross-Cloud Interconnect Remote Location resource. You can use
+      # this resource to find remote location details about an Interconnect attachment
+      # (VLAN).
+      class InterconnectRemoteLocation
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] The postal address of the Point of Presence, each line in the
+        # address is separated by a newline character.
+        # Corresponds to the JSON property `address`
+        # @return [String]
+        attr_accessor :address
+      
+        # [Output Only] Subset of fields from InterconnectAttachment's |
+        # configurationConstraints| field that apply to all attachments for this remote
+        # location.
+        # Corresponds to the JSON property `attachmentConfigurationConstraints`
+        # @return [Google::Apis::ComputeBeta::InterconnectAttachmentConfigurationConstraints]
+        attr_accessor :attachment_configuration_constraints
+      
+        # [Output Only] Metropolitan area designator that indicates which city an
+        # interconnect is located. For example: "Chicago, IL", "Amsterdam, Netherlands".
+        # Corresponds to the JSON property `city`
+        # @return [String]
+        attr_accessor :city
+      
+        # [Output Only] Constraints on the parameters for creating Cross-Cloud
+        # Interconnect and associated InterconnectAttachments.
+        # Corresponds to the JSON property `constraints`
+        # @return [Google::Apis::ComputeBeta::InterconnectRemoteLocationConstraints]
+        attr_accessor :constraints
+      
+        # [Output Only] Continent for this location, which can take one of the following
+        # values: - AFRICA - ASIA_PAC - EUROPE - NORTH_AMERICA - SOUTH_AMERICA
+        # Corresponds to the JSON property `continent`
+        # @return [String]
+        attr_accessor :continent
+      
+        # [Output Only] Creation timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # [Output Only] An optional description of the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # [Output Only] The name of the provider for this facility (e.g., EQUINIX).
+        # Corresponds to the JSON property `facilityProvider`
+        # @return [String]
+        attr_accessor :facility_provider
+      
+        # [Output Only] A provider-assigned Identifier for this facility (e.g., Ashburn-
+        # DC1).
+        # Corresponds to the JSON property `facilityProviderFacilityId`
+        # @return [String]
+        attr_accessor :facility_provider_facility_id
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # [Output Only] Type of the resource. Always compute#interconnectRemoteLocation
+        # for interconnect remote locations.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] Link Aggregation Control Protocol (LACP) constraints, which can
+        # take one of the following values: LACP_SUPPORTED, LACP_UNSUPPORTED
+        # Corresponds to the JSON property `lacp`
+        # @return [String]
+        attr_accessor :lacp
+      
+        # [Output Only] The maximum number of 100 Gbps ports supported in a link
+        # aggregation group (LAG). When linkType is 100 Gbps, requestedLinkCount cannot
+        # exceed max_lag_size_100_gbps.
+        # Corresponds to the JSON property `maxLagSize100Gbps`
+        # @return [Fixnum]
+        attr_accessor :max_lag_size100_gbps
+      
+        # [Output Only] The maximum number of 10 Gbps ports supported in a link
+        # aggregation group (LAG). When linkType is 10 Gbps, requestedLinkCount cannot
+        # exceed max_lag_size_10_gbps.
+        # Corresponds to the JSON property `maxLagSize10Gbps`
+        # @return [Fixnum]
+        attr_accessor :max_lag_size10_gbps
+      
+        # [Output Only] Name of the resource.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # [Output Only] The peeringdb identifier for this facility (corresponding with a
+        # netfac type in peeringdb).
+        # Corresponds to the JSON property `peeringdbFacilityId`
+        # @return [String]
+        attr_accessor :peeringdb_facility_id
+      
+        # [Output Only] Permitted connections.
+        # Corresponds to the JSON property `permittedConnections`
+        # @return [Array<Google::Apis::ComputeBeta::InterconnectRemoteLocationPermittedConnections>]
+        attr_accessor :permitted_connections
+      
+        # [Output Only] Indicates the service provider present at the remote location.
+        # Example values: "Amazon Web Services", "Microsoft Azure".
+        # Corresponds to the JSON property `remoteService`
+        # @return [String]
+        attr_accessor :remote_service
+      
+        # [Output Only] Server-defined URL for the resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] The status of this InterconnectRemoteLocation, which can take
+        # one of the following values: - CLOSED: The InterconnectRemoteLocation is
+        # closed and is unavailable for provisioning new Cross-Cloud Interconnects. -
+        # AVAILABLE: The InterconnectRemoteLocation is available for provisioning new
+        # Cross-Cloud Interconnects.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @address = args[:address] if args.key?(:address)
+          @attachment_configuration_constraints = args[:attachment_configuration_constraints] if args.key?(:attachment_configuration_constraints)
+          @city = args[:city] if args.key?(:city)
+          @constraints = args[:constraints] if args.key?(:constraints)
+          @continent = args[:continent] if args.key?(:continent)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @description = args[:description] if args.key?(:description)
+          @facility_provider = args[:facility_provider] if args.key?(:facility_provider)
+          @facility_provider_facility_id = args[:facility_provider_facility_id] if args.key?(:facility_provider_facility_id)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @lacp = args[:lacp] if args.key?(:lacp)
+          @max_lag_size100_gbps = args[:max_lag_size100_gbps] if args.key?(:max_lag_size100_gbps)
+          @max_lag_size10_gbps = args[:max_lag_size10_gbps] if args.key?(:max_lag_size10_gbps)
+          @name = args[:name] if args.key?(:name)
+          @peeringdb_facility_id = args[:peeringdb_facility_id] if args.key?(:peeringdb_facility_id)
+          @permitted_connections = args[:permitted_connections] if args.key?(:permitted_connections)
+          @remote_service = args[:remote_service] if args.key?(:remote_service)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # 
+      class InterconnectRemoteLocationConstraints
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Port pair remote location constraints, which can take one of the
+        # following values: PORT_PAIR_UNCONSTRAINED_REMOTE_LOCATION,
+        # PORT_PAIR_MATCHING_REMOTE_LOCATION. GCP's API refers only to individual ports,
+        # but the UI uses this field when ordering a pair of ports, to prevent users
+        # from accidentally ordering something that is incompatible with their cloud
+        # provider. Specifically, when ordering a redundant pair of Cross-Cloud
+        # Interconnect ports, and one of them uses a remote location with
+        # portPairMatchingRemoteLocation set to matching, the UI requires that both
+        # ports use the same remote location.
+        # Corresponds to the JSON property `portPairRemoteLocation`
+        # @return [String]
+        attr_accessor :port_pair_remote_location
+      
+        # [Output Only] Port pair VLAN constraints, which can take one of the following
+        # values: PORT_PAIR_UNCONSTRAINED_VLAN, PORT_PAIR_MATCHING_VLAN
+        # Corresponds to the JSON property `portPairVlan`
+        # @return [String]
+        attr_accessor :port_pair_vlan
+      
+        # [Output Only] [min-length, max-length] The minimum and maximum value (
+        # inclusive) for the IPv4 subnet length. For example, an
+        # interconnectRemoteLocation for Azure has `min: 30, max: 30` because Azure
+        # requires /30 subnets. This range specifies the values supported by both cloud
+        # providers. Interconnect currently supports /29 and /30 IPv4 subnet lengths. If
+        # a remote cloud has no constraint on IPv4 subnet length, the range would thus
+        # be `min: 29, max: 30`.
+        # Corresponds to the JSON property `subnetLengthRange`
+        # @return [Google::Apis::ComputeBeta::InterconnectRemoteLocationConstraintsSubnetLengthRange]
+        attr_accessor :subnet_length_range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @port_pair_remote_location = args[:port_pair_remote_location] if args.key?(:port_pair_remote_location)
+          @port_pair_vlan = args[:port_pair_vlan] if args.key?(:port_pair_vlan)
+          @subnet_length_range = args[:subnet_length_range] if args.key?(:subnet_length_range)
+        end
+      end
+      
+      # 
+      class InterconnectRemoteLocationConstraintsSubnetLengthRange
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `max`
+        # @return [Fixnum]
+        attr_accessor :max
+      
+        # 
+        # Corresponds to the JSON property `min`
+        # @return [Fixnum]
+        attr_accessor :min
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max = args[:max] if args.key?(:max)
+          @min = args[:min] if args.key?(:min)
+        end
+      end
+      
+      # Response to the list request, and contains a list of interconnect remote
+      # locations.
+      class InterconnectRemoteLocationList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of InterconnectRemoteLocation resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeBeta::InterconnectRemoteLocation>]
+        attr_accessor :items
+      
+        # [Output Only] Type of resource. Always compute#interconnectRemoteLocationList
+        # for lists of interconnect remote locations.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token lets you get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeBeta::InterconnectRemoteLocationList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeBeta::InterconnectRemoteLocationList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # 
+      class InterconnectRemoteLocationPermittedConnections
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] URL of an Interconnect location that is permitted to connect to
+        # this Interconnect remote location.
+        # Corresponds to the JSON property `interconnectLocation`
+        # @return [String]
+        attr_accessor :interconnect_location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @interconnect_location = args[:interconnect_location] if args.key?(:interconnect_location)
         end
       end
       
@@ -20450,7 +20987,7 @@ module Google
           # @return [Fixnum]
           attr_accessor :guest_accelerator_count
         
-          # The accelerator type resource name, not a full URL, e.g. 'nvidia-tesla-k80'.
+          # The accelerator type resource name, not a full URL, e.g. nvidia-tesla-t4.
           # Corresponds to the JSON property `guestAcceleratorType`
           # @return [String]
           attr_accessor :guest_accelerator_type
@@ -21442,9 +21979,9 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # [Output Only] Fingerprint of this resource. A hash of the contents stored in
-        # this object. This field is used in optimistic locking. An up-to-date
-        # fingerprint must be provided in order to patch.
+        # Fingerprint of this resource. A hash of the contents stored in this object.
+        # This field is used in optimistic locking. An up-to-date fingerprint must be
+        # provided in order to patch.
         # Corresponds to the JSON property `fingerprint`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -21472,6 +22009,10 @@ module Google
         attr_accessor :name
       
         # [Output Only] The URL of the network which the Network Attachment belongs to.
+        # Practically it is inferred by fetching the network of the first subnetwork
+        # associated. Because it is required that all the subnetworks must be from the
+        # same network, it is assured that the Network Attachment belongs to the same
+        # network as all the subnetworks.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -22250,6 +22791,11 @@ module Google
         # @return [String]
         attr_accessor :ip_address
       
+        # Optional IPv6 address of network endpoint.
+        # Corresponds to the JSON property `ipv6Address`
+        # @return [String]
+        attr_accessor :ipv6_address
+      
         # Optional port number of network endpoint. If not specified, the defaultPort
         # for the network endpoint group will be used.
         # Corresponds to the JSON property `port`
@@ -22266,6 +22812,7 @@ module Google
           @fqdn = args[:fqdn] if args.key?(:fqdn)
           @instance = args[:instance] if args.key?(:instance)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @ipv6_address = args[:ipv6_address] if args.key?(:ipv6_address)
           @port = args[:port] if args.key?(:port)
         end
       end
@@ -33423,9 +33970,8 @@ module Google
         # ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list
         # of Subnetworks are allowed to Nat (specified in the field subnetwork below)
         # The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if
-        # this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or
-        # ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other
-        # Router.Nat section in any Router for this network in this region.
+        # this field contains ALL_SUBNETWORKS_ALL_IP_RANGES then there should not be any
+        # other Router.Nat section in any Router for this network in this region.
         # Corresponds to the JSON property `sourceSubnetworkIpRangesToNat`
         # @return [String]
         attr_accessor :source_subnetwork_ip_ranges_to_nat
@@ -34976,6 +35522,16 @@ module Google
         # @return [String]
         attr_accessor :type
       
+        # Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies. A user-
+        # defined field consists of up to 4 bytes extracted from a fixed offset in the
+        # packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask
+        # to select certain bits. Rules may then specify matching values for these
+        # fields. Example: userDefinedFields: - name: "ipv4_fragment_offset" base: IPV4
+        # offset: 6 size: 2 mask: "0x1fff"
+        # Corresponds to the JSON property `userDefinedFields`
+        # @return [Array<Google::Apis::ComputeBeta::SecurityPolicyUserDefinedField>]
+        attr_accessor :user_defined_fields
+      
         def initialize(**args)
            update!(**args)
         end
@@ -35003,6 +35559,7 @@ module Google
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @type = args[:type] if args.key?(:type)
+          @user_defined_fields = args[:user_defined_fields] if args.key?(:user_defined_fields)
         end
       end
       
@@ -35434,6 +35991,12 @@ module Google
         # @return [Google::Apis::ComputeBeta::SecurityPolicyRuleMatcher]
         attr_accessor :match
       
+        # Represents a match condition that incoming network traffic is evaluated
+        # against.
+        # Corresponds to the JSON property `networkMatch`
+        # @return [Google::Apis::ComputeBeta::SecurityPolicyRuleNetworkMatcher]
+        attr_accessor :network_match
+      
         # Preconfigured WAF configuration to be applied for the rule. If the rule does
         # not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is
         # not used, this field will have no effect.
@@ -35508,6 +36071,7 @@ module Google
           @header_action = args[:header_action] if args.key?(:header_action)
           @kind = args[:kind] if args.key?(:kind)
           @match = args[:match] if args.key?(:match)
+          @network_match = args[:network_match] if args.key?(:network_match)
           @preconfigured_waf_config = args[:preconfigured_waf_config] if args.key?(:preconfigured_waf_config)
           @preview = args[:preview] if args.key?(:preview)
           @priority = args[:priority] if args.key?(:priority)
@@ -35677,6 +36241,102 @@ module Google
         def update!(**args)
           @ip_protocol = args[:ip_protocol] if args.key?(:ip_protocol)
           @ports = args[:ports] if args.key?(:ports)
+        end
+      end
+      
+      # Represents a match condition that incoming network traffic is evaluated
+      # against.
+      class SecurityPolicyRuleNetworkMatcher
+        include Google::Apis::Core::Hashable
+      
+        # Destination IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
+        # Corresponds to the JSON property `destIpRanges`
+        # @return [Array<String>]
+        attr_accessor :dest_ip_ranges
+      
+        # Destination port numbers for TCP/UDP/SCTP. Each element can be a 16-bit
+        # unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
+        # Corresponds to the JSON property `destPorts`
+        # @return [Array<String>]
+        attr_accessor :dest_ports
+      
+        # IPv4 protocol / IPv6 next header (after extension headers). Each element can
+        # be an 8-bit unsigned decimal number (e.g. "6"), range (e.g. "253-254"), or one
+        # of the following protocol names: "tcp", "udp", "icmp", "esp", "ah", "ipip", or
+        # "sctp".
+        # Corresponds to the JSON property `ipProtocols`
+        # @return [Array<String>]
+        attr_accessor :ip_protocols
+      
+        # BGP Autonomous System Number associated with the source IP address.
+        # Corresponds to the JSON property `srcAsns`
+        # @return [Array<Fixnum>]
+        attr_accessor :src_asns
+      
+        # Source IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
+        # Corresponds to the JSON property `srcIpRanges`
+        # @return [Array<String>]
+        attr_accessor :src_ip_ranges
+      
+        # Source port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned
+        # decimal number (e.g. "80") or range (e.g. "0-1023").
+        # Corresponds to the JSON property `srcPorts`
+        # @return [Array<String>]
+        attr_accessor :src_ports
+      
+        # Two-letter ISO 3166-1 alpha-2 country code associated with the source IP
+        # address.
+        # Corresponds to the JSON property `srcRegionCodes`
+        # @return [Array<String>]
+        attr_accessor :src_region_codes
+      
+        # User-defined fields. Each element names a defined field and lists the matching
+        # values for that field.
+        # Corresponds to the JSON property `userDefinedFields`
+        # @return [Array<Google::Apis::ComputeBeta::SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch>]
+        attr_accessor :user_defined_fields
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dest_ip_ranges = args[:dest_ip_ranges] if args.key?(:dest_ip_ranges)
+          @dest_ports = args[:dest_ports] if args.key?(:dest_ports)
+          @ip_protocols = args[:ip_protocols] if args.key?(:ip_protocols)
+          @src_asns = args[:src_asns] if args.key?(:src_asns)
+          @src_ip_ranges = args[:src_ip_ranges] if args.key?(:src_ip_ranges)
+          @src_ports = args[:src_ports] if args.key?(:src_ports)
+          @src_region_codes = args[:src_region_codes] if args.key?(:src_region_codes)
+          @user_defined_fields = args[:user_defined_fields] if args.key?(:user_defined_fields)
+        end
+      end
+      
+      # 
+      class SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch
+        include Google::Apis::Core::Hashable
+      
+        # Name of the user-defined field, as given in the definition.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Matching values of the field. Each element can be a 32-bit unsigned decimal or
+        # hexadecimal (starting with "0x") number (e.g. "64") or range (e.g. "0x400-
+        # 0x7ff").
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @values = args[:values] if args.key?(:values)
         end
       end
       
@@ -35977,6 +36637,59 @@ module Google
         def update!(**args)
           @target = args[:target] if args.key?(:target)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # 
+      class SecurityPolicyUserDefinedField
+        include Google::Apis::Core::Hashable
+      
+        # The base relative to which 'offset' is measured. Possible values are: - IPV4:
+        # Points to the beginning of the IPv4 header. - IPV6: Points to the beginning of
+        # the IPv6 header. - TCP: Points to the beginning of the TCP header, skipping
+        # over any IPv4 options or IPv6 extension headers. Not present for non-first
+        # fragments. - UDP: Points to the beginning of the UDP header, skipping over any
+        # IPv4 options or IPv6 extension headers. Not present for non-first fragments.
+        # required
+        # Corresponds to the JSON property `base`
+        # @return [String]
+        attr_accessor :base
+      
+        # If specified, apply this mask (bitwise AND) to the field to ignore bits before
+        # matching. Encoded as a hexadecimal number (starting with "0x"). The last byte
+        # of the field (in network byte order) corresponds to the least significant byte
+        # of the mask.
+        # Corresponds to the JSON property `mask`
+        # @return [String]
+        attr_accessor :mask
+      
+        # The name of this field. Must be unique within the policy.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Offset of the first byte of the field (in network byte order) relative to '
+        # base'.
+        # Corresponds to the JSON property `offset`
+        # @return [Fixnum]
+        attr_accessor :offset
+      
+        # Size of the field in bytes. Valid values: 1-4.
+        # Corresponds to the JSON property `size`
+        # @return [Fixnum]
+        attr_accessor :size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @base = args[:base] if args.key?(:base)
+          @mask = args[:mask] if args.key?(:mask)
+          @name = args[:name] if args.key?(:name)
+          @offset = args[:offset] if args.key?(:offset)
+          @size = args[:size] if args.key?(:size)
         end
       end
       
@@ -38756,8 +39469,8 @@ module Google
         # Whether to enable flow logging for this subnetwork. If this field is not
         # explicitly set, it will not appear in get listings. If not set the default
         # behavior is determined by the org policy, if there is no org policy specified,
-        # then it will default to disabled. This field isn't supported with the purpose
-        # field set to INTERNAL_HTTPS_LOAD_BALANCER.
+        # then it will default to disabled. This field isn't supported if the subnet
+        # purpose field is set to REGIONAL_MANAGED_PROXY.
         # Corresponds to the JSON property `enableFlowLogs`
         # @return [Boolean]
         attr_accessor :enable_flow_logs
@@ -38861,12 +39574,19 @@ module Google
         # @return [String]
         attr_accessor :private_ipv6_google_access
       
-        # The purpose of the resource. This field can be either PRIVATE_RFC_1918 or
-        # INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to
-        # INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for
-        # Internal HTTP(S) Load Balancing. If unspecified, the purpose defaults to
-        # PRIVATE_RFC_1918. The enableFlowLogs field isn't supported with the purpose
-        # field set to INTERNAL_HTTPS_LOAD_BALANCER.
+        # The purpose of the resource. This field can be either PRIVATE,
+        # REGIONAL_MANAGED_PROXY, PRIVATE_SERVICE_CONNECT, or
+        # INTERNAL_HTTPS_LOAD_BALANCER. PRIVATE is the default purpose for user-created
+        # subnets or subnets that are automatically created in auto mode networks. A
+        # subnet with purpose set to REGIONAL_MANAGED_PROXY is a user-created subnetwork
+        # that is reserved for regional Envoy-based load balancers. A subnet with
+        # purpose set to PRIVATE_SERVICE_CONNECT is used to publish services using
+        # Private Service Connect. A subnet with purpose set to
+        # INTERNAL_HTTPS_LOAD_BALANCER is a proxy-only subnet that can be used only by
+        # regional internal HTTP(S) load balancers. Note that REGIONAL_MANAGED_PROXY is
+        # the preferred setting for all regional Envoy load balancers. If unspecified,
+        # the subnet purpose defaults to PRIVATE. The enableFlowLogs field isn't
+        # supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
         # Corresponds to the JSON property `purpose`
         # @return [String]
         attr_accessor :purpose
@@ -38883,11 +39603,10 @@ module Google
         attr_accessor :reserved_internal_range
       
         # The role of subnetwork. Currently, this field is only used when purpose =
-        # INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE or BACKUP. An
-        # ACTIVE subnetwork is one that is currently being used for Internal HTTP(S)
-        # Load Balancing. A BACKUP subnetwork is one that is ready to be promoted to
-        # ACTIVE or is currently draining. This field can be updated with a patch
-        # request.
+        # REGIONAL_MANAGED_PROXY. The value can be set to ACTIVE or BACKUP. An ACTIVE
+        # subnetwork is one that is currently being used for Envoy-based load balancers
+        # in a region. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE
+        # or is currently draining. This field can be updated with a patch request.
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -39215,7 +39934,8 @@ module Google
         # Whether to enable flow logging for this subnetwork. If this field is not
         # explicitly set, it will not appear in get listings. If not set the default
         # behavior is determined by the org policy, if there is no org policy specified,
-        # then it will default to disabled.
+        # then it will default to disabled. Flow logging isn't supported if the subnet
+        # purpose field is set to REGIONAL_MANAGED_PROXY.
         # Corresponds to the JSON property `enable`
         # @return [Boolean]
         attr_accessor :enable
@@ -40905,6 +41625,12 @@ module Google
         # @return [String]
         attr_accessor :network
       
+        # [Output Only] The resource URL for the security policy associated with this
+        # target instance.
+        # Corresponds to the JSON property `securityPolicy`
+        # @return [String]
+        attr_accessor :security_policy
+      
         # [Output Only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -40931,6 +41657,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @nat_policy = args[:nat_policy] if args.key?(:nat_policy)
           @network = args[:network] if args.key?(:network)
+          @security_policy = args[:security_policy] if args.key?(:security_policy)
           @self_link = args[:self_link] if args.key?(:self_link)
           @zone = args[:zone] if args.key?(:zone)
         end
@@ -41354,6 +42081,12 @@ module Google
         # @return [String]
         attr_accessor :region
       
+        # [Output Only] The resource URL for the security policy associated with this
+        # target pool.
+        # Corresponds to the JSON property `securityPolicy`
+        # @return [String]
+        attr_accessor :security_policy
+      
         # [Output Only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -41385,6 +42118,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @region = args[:region] if args.key?(:region)
+          @security_policy = args[:security_policy] if args.key?(:security_policy)
           @self_link = args[:self_link] if args.key?(:self_link)
           @session_affinity = args[:session_affinity] if args.key?(:session_affinity)
         end
@@ -43997,22 +44731,28 @@ module Google
         # @return [String]
         attr_accessor :network
       
-        # The purpose of the resource. This field can be either PRIVATE_RFC_1918 or
-        # INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to
-        # INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for
-        # Internal HTTP(S) Load Balancing. If unspecified, the purpose defaults to
-        # PRIVATE_RFC_1918. The enableFlowLogs field isn't supported with the purpose
-        # field set to INTERNAL_HTTPS_LOAD_BALANCER.
+        # The purpose of the resource. This field can be either PRIVATE,
+        # REGIONAL_MANAGED_PROXY, PRIVATE_SERVICE_CONNECT, or
+        # INTERNAL_HTTPS_LOAD_BALANCER. PRIVATE is the default purpose for user-created
+        # subnets or subnets that are automatically created in auto mode networks. A
+        # subnet with purpose set to REGIONAL_MANAGED_PROXY is a user-created subnetwork
+        # that is reserved for regional Envoy-based load balancers. A subnet with
+        # purpose set to PRIVATE_SERVICE_CONNECT is used to publish services using
+        # Private Service Connect. A subnet with purpose set to
+        # INTERNAL_HTTPS_LOAD_BALANCER is a proxy-only subnet that can be used only by
+        # regional internal HTTP(S) load balancers. Note that REGIONAL_MANAGED_PROXY is
+        # the preferred setting for all regional Envoy load balancers. If unspecified,
+        # the subnet purpose defaults to PRIVATE. The enableFlowLogs field isn't
+        # supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
         # Corresponds to the JSON property `purpose`
         # @return [String]
         attr_accessor :purpose
       
         # The role of subnetwork. Currently, this field is only used when purpose =
-        # INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE or BACKUP. An
-        # ACTIVE subnetwork is one that is currently being used for Internal HTTP(S)
-        # Load Balancing. A BACKUP subnetwork is one that is ready to be promoted to
-        # ACTIVE or is currently draining. This field can be updated with a patch
-        # request.
+        # REGIONAL_MANAGED_PROXY. The value can be set to ACTIVE or BACKUP. An ACTIVE
+        # subnetwork is one that is currently being used for Envoy-based load balancers
+        # in a region. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE
+        # or is currently draining. This field can be updated with a patch request.
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -44905,7 +45645,7 @@ module Google
         attr_accessor :local_gateway_interface
       
         # The peer gateway interface this VPN tunnel is connected to, the peer gateway
-        # could either be an external VPN gateway or GCP VPN gateway.
+        # could either be an external VPN gateway or a Google Cloud VPN gateway.
         # Corresponds to the JSON property `peerGatewayInterface`
         # @return [Fixnum]
         attr_accessor :peer_gateway_interface
@@ -44928,8 +45668,8 @@ module Google
       end
       
       # A VPN connection contains all VPN tunnels connected from this VpnGateway to
-      # the same peer gateway. The peer gateway could either be a external VPN gateway
-      # or GCP VPN gateway.
+      # the same peer gateway. The peer gateway could either be an external VPN
+      # gateway or a Google Cloud VPN gateway.
       class VpnGatewayStatusVpnConnection
         include Google::Apis::Core::Hashable
       
