@@ -888,6 +888,9 @@ module Google
         class BakExportOptions
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
+            property :bak_type, as: 'bakType'
+            property :copy_only, as: 'copyOnly'
+            property :differential_base, as: 'differentialBase'
             property :stripe_count, as: 'stripeCount'
             property :striped, as: 'striped'
           end
@@ -990,8 +993,11 @@ module Google
         class BakImportOptions
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
+            property :bak_type, as: 'bakType'
             property :encryption_options, as: 'encryptionOptions', class: Google::Apis::SqladminV1::ImportContext::BakImportOptions::EncryptionOptions, decorator: Google::Apis::SqladminV1::ImportContext::BakImportOptions::EncryptionOptions::Representation
         
+            property :no_recovery, as: 'noRecovery'
+            property :recovery_only, as: 'recoveryOnly'
             property :striped, as: 'striped'
           end
           
