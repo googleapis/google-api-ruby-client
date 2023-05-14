@@ -407,9 +407,7 @@ module Google
         end
       end
       
-      # A Datastore data object. An entity is limited to 1 megabyte when stored. That
-      # _roughly_ corresponds to a limit of 1 megabyte for the serialized form of this
-      # message.
+      # A Datastore data object. Must not exceed 1 MiB - 4 bytes.
       class Entity
         include Google::Apis::Core::Hashable
       
@@ -456,9 +454,7 @@ module Google
         # @return [String]
         attr_accessor :cursor
       
-        # A Datastore data object. An entity is limited to 1 megabyte when stored. That
-        # _roughly_ corresponds to a limit of 1 megabyte for the serialized form of this
-        # message.
+        # A Datastore data object. Must not exceed 1 MiB - 4 bytes.
         # Corresponds to the JSON property `entity`
         # @return [Google::Apis::DatastoreV1::Entity]
         attr_accessor :entity
@@ -1690,16 +1686,12 @@ module Google
         # @return [Google::Apis::DatastoreV1::Key]
         attr_accessor :delete
       
-        # A Datastore data object. An entity is limited to 1 megabyte when stored. That
-        # _roughly_ corresponds to a limit of 1 megabyte for the serialized form of this
-        # message.
+        # A Datastore data object. Must not exceed 1 MiB - 4 bytes.
         # Corresponds to the JSON property `insert`
         # @return [Google::Apis::DatastoreV1::Entity]
         attr_accessor :insert
       
-        # A Datastore data object. An entity is limited to 1 megabyte when stored. That
-        # _roughly_ corresponds to a limit of 1 megabyte for the serialized form of this
-        # message.
+        # A Datastore data object. Must not exceed 1 MiB - 4 bytes.
         # Corresponds to the JSON property `update`
         # @return [Google::Apis::DatastoreV1::Entity]
         attr_accessor :update
@@ -1710,9 +1702,7 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
-        # A Datastore data object. An entity is limited to 1 megabyte when stored. That
-        # _roughly_ corresponds to a limit of 1 megabyte for the serialized form of this
-        # message.
+        # A Datastore data object. Must not exceed 1 MiB - 4 bytes.
         # Corresponds to the JSON property `upsert`
         # @return [Google::Apis::DatastoreV1::Entity]
         attr_accessor :upsert
@@ -2547,9 +2537,7 @@ module Google
         # @return [Float]
         attr_accessor :double_value
       
-        # A Datastore data object. An entity is limited to 1 megabyte when stored. That
-        # _roughly_ corresponds to a limit of 1 megabyte for the serialized form of this
-        # message.
+        # A Datastore data object. Must not exceed 1 MiB - 4 bytes.
         # Corresponds to the JSON property `entityValue`
         # @return [Google::Apis::DatastoreV1::Entity]
         attr_accessor :entity_value
