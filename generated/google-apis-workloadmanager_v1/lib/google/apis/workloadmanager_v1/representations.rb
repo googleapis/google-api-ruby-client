@@ -196,6 +196,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SqlserverValidation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SqlserverValidationValidationDetail
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -293,6 +305,8 @@ module Google
           property :sap_validation, as: 'sapValidation', class: Google::Apis::WorkloadmanagerV1::SapValidation, decorator: Google::Apis::WorkloadmanagerV1::SapValidation::Representation
       
           property :sent_time, as: 'sentTime'
+          property :sqlserver_validation, as: 'sqlserverValidation', class: Google::Apis::WorkloadmanagerV1::SqlserverValidation, decorator: Google::Apis::WorkloadmanagerV1::SqlserverValidation::Representation
+      
         end
       end
       
@@ -492,7 +506,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :related_resources, as: 'relatedResources'
           property :resource_kind, as: 'resourceKind'
-          property :resource_state, as: 'resourceState'
           property :resource_type, as: 'resourceType'
           property :resource_uri, as: 'resourceUri'
           property :update_time, as: 'updateTime'
@@ -519,6 +532,24 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :resource, as: 'resource'
+        end
+      end
+      
+      class SqlserverValidation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_version, as: 'agentVersion'
+          collection :validation_details, as: 'validationDetails', class: Google::Apis::WorkloadmanagerV1::SqlserverValidationValidationDetail, decorator: Google::Apis::WorkloadmanagerV1::SqlserverValidationValidationDetail::Representation
+      
+        end
+      end
+      
+      class SqlserverValidationValidationDetail
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :details, as: 'details'
+          property :instance_id, as: 'instanceId'
+          property :type, as: 'type'
         end
       end
       
