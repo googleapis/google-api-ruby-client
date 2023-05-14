@@ -2170,6 +2170,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstancesSetSecurityPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstancesSetServiceAccountRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2214,6 +2220,18 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectAttachmentConfigurationConstraints
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectAttachmentConfigurationConstraintsBgpPeerAsnRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -2351,6 +2369,48 @@ module Google
       end
       
       class InterconnectOutageNotification
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectRemoteLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectRemoteLocationConstraints
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectRemoteLocationConstraintsSubnetLengthRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectRemoteLocationList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectRemoteLocationPermittedConnections
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4636,6 +4696,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SecurityPolicyRuleNetworkMatcher
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SecurityPolicyRulePreconfiguredWafConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4673,6 +4745,12 @@ module Google
       end
       
       class SecurityPolicyRuleRedirectOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityPolicyUserDefinedField
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -6231,6 +6309,7 @@ module Google
           property :nat_ip, as: 'natIP'
           property :network_tier, as: 'networkTier'
           property :public_ptr_domain_name, as: 'publicPtrDomainName'
+          property :security_policy, as: 'securityPolicy'
           property :set_public_ptr, as: 'setPublicPtr'
           property :type, as: 'type'
         end
@@ -6860,6 +6939,7 @@ module Google
       
           property :max_stream_duration, as: 'maxStreamDuration', class: Google::Apis::ComputeBeta::Duration, decorator: Google::Apis::ComputeBeta::Duration::Representation
       
+          hash :metadatas, as: 'metadatas'
           property :name, as: 'name'
           property :network, as: 'network'
           property :outlier_detection, as: 'outlierDetection', class: Google::Apis::ComputeBeta::OutlierDetection, decorator: Google::Apis::ComputeBeta::OutlierDetection::Representation
@@ -7179,6 +7259,7 @@ module Google
       class BulkInsertInstanceResourcePerInstanceProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :hostname, as: 'hostname'
           property :name, as: 'name'
         end
       end
@@ -8153,10 +8234,12 @@ module Google
           property :priority, as: 'priority'
           property :rule_name, as: 'ruleName'
           property :rule_tuple_count, as: 'ruleTupleCount'
+          property :security_profile_group, as: 'securityProfileGroup'
           collection :target_resources, as: 'targetResources'
           collection :target_secure_tags, as: 'targetSecureTags', class: Google::Apis::ComputeBeta::FirewallPolicyRuleSecureTag, decorator: Google::Apis::ComputeBeta::FirewallPolicyRuleSecureTag::Representation
       
           collection :target_service_accounts, as: 'targetServiceAccounts'
+          property :tls_inspect, as: 'tlsInspect'
         end
       end
       
@@ -8720,6 +8803,7 @@ module Google
           property :health_check_service, as: 'healthCheckService', class: Google::Apis::ComputeBeta::HealthCheckServiceReference, decorator: Google::Apis::ComputeBeta::HealthCheckServiceReference::Representation
       
           property :health_state, as: 'healthState'
+          property :ipv6_health_state, as: 'ipv6HealthState'
         end
       end
       
@@ -10234,6 +10318,14 @@ module Google
         end
       end
       
+      class InstancesSetSecurityPolicyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :network_interfaces, as: 'networkInterfaces'
+          property :security_policy, as: 'securityPolicy'
+        end
+      end
+      
       class InstancesSetServiceAccountRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -10284,6 +10376,7 @@ module Google
           property :operational_status, as: 'operationalStatus'
           property :peer_ip_address, as: 'peerIpAddress'
           property :provisioned_link_count, as: 'provisionedLinkCount'
+          property :remote_location, as: 'remoteLocation'
           property :requested_link_count, as: 'requestedLinkCount'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
@@ -10301,6 +10394,8 @@ module Google
           property :cloud_router_ip_address, as: 'cloudRouterIpAddress'
           property :cloud_router_ipv6_address, as: 'cloudRouterIpv6Address'
           property :cloud_router_ipv6_interface_id, as: 'cloudRouterIpv6InterfaceId'
+          property :configuration_constraints, as: 'configurationConstraints', class: Google::Apis::ComputeBeta::InterconnectAttachmentConfigurationConstraints, decorator: Google::Apis::ComputeBeta::InterconnectAttachmentConfigurationConstraints::Representation
+      
           property :creation_timestamp, as: 'creationTimestamp'
           property :customer_router_ip_address, as: 'customerRouterIpAddress'
           property :customer_router_ipv6_address, as: 'customerRouterIpv6Address'
@@ -10326,11 +10421,13 @@ module Google
           property :private_interconnect_info, as: 'privateInterconnectInfo', class: Google::Apis::ComputeBeta::InterconnectAttachmentPrivateInfo, decorator: Google::Apis::ComputeBeta::InterconnectAttachmentPrivateInfo::Representation
       
           property :region, as: 'region'
+          property :remote_service, as: 'remoteService'
           property :router, as: 'router'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
           property :stack_type, as: 'stackType'
           property :state, as: 'state'
+          property :subnet_length, as: 'subnetLength'
           property :type, as: 'type'
           property :vlan_tag8021q, as: 'vlanTag8021q'
         end
@@ -10366,6 +10463,23 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class InterconnectAttachmentConfigurationConstraints
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bgp_md5, as: 'bgpMd5'
+          collection :bgp_peer_asn_ranges, as: 'bgpPeerAsnRanges', class: Google::Apis::ComputeBeta::InterconnectAttachmentConfigurationConstraintsBgpPeerAsnRange, decorator: Google::Apis::ComputeBeta::InterconnectAttachmentConfigurationConstraintsBgpPeerAsnRange::Representation
+      
+        end
+      end
+      
+      class InterconnectAttachmentConfigurationConstraintsBgpPeerAsnRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max, as: 'max'
+          property :min, as: 'min'
         end
       end
       
@@ -10616,6 +10730,92 @@ module Google
           property :source, as: 'source'
           property :start_time, :numeric_string => true, as: 'startTime'
           property :state, as: 'state'
+        end
+      end
+      
+      class InterconnectRemoteLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :address, as: 'address'
+          property :attachment_configuration_constraints, as: 'attachmentConfigurationConstraints', class: Google::Apis::ComputeBeta::InterconnectAttachmentConfigurationConstraints, decorator: Google::Apis::ComputeBeta::InterconnectAttachmentConfigurationConstraints::Representation
+      
+          property :city, as: 'city'
+          property :constraints, as: 'constraints', class: Google::Apis::ComputeBeta::InterconnectRemoteLocationConstraints, decorator: Google::Apis::ComputeBeta::InterconnectRemoteLocationConstraints::Representation
+      
+          property :continent, as: 'continent'
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :facility_provider, as: 'facilityProvider'
+          property :facility_provider_facility_id, as: 'facilityProviderFacilityId'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :lacp, as: 'lacp'
+          property :max_lag_size100_gbps, as: 'maxLagSize100Gbps'
+          property :max_lag_size10_gbps, as: 'maxLagSize10Gbps'
+          property :name, as: 'name'
+          property :peeringdb_facility_id, as: 'peeringdbFacilityId'
+          collection :permitted_connections, as: 'permittedConnections', class: Google::Apis::ComputeBeta::InterconnectRemoteLocationPermittedConnections, decorator: Google::Apis::ComputeBeta::InterconnectRemoteLocationPermittedConnections::Representation
+      
+          property :remote_service, as: 'remoteService'
+          property :self_link, as: 'selfLink'
+          property :status, as: 'status'
+        end
+      end
+      
+      class InterconnectRemoteLocationConstraints
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :port_pair_remote_location, as: 'portPairRemoteLocation'
+          property :port_pair_vlan, as: 'portPairVlan'
+          property :subnet_length_range, as: 'subnetLengthRange', class: Google::Apis::ComputeBeta::InterconnectRemoteLocationConstraintsSubnetLengthRange, decorator: Google::Apis::ComputeBeta::InterconnectRemoteLocationConstraintsSubnetLengthRange::Representation
+      
+        end
+      end
+      
+      class InterconnectRemoteLocationConstraintsSubnetLengthRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max, as: 'max'
+          property :min, as: 'min'
+        end
+      end
+      
+      class InterconnectRemoteLocationList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeBeta::InterconnectRemoteLocation, decorator: Google::Apis::ComputeBeta::InterconnectRemoteLocation::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::InterconnectRemoteLocationList::Warning, decorator: Google::Apis::ComputeBeta::InterconnectRemoteLocationList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::InterconnectRemoteLocationList::Warning::Datum, decorator: Google::Apis::ComputeBeta::InterconnectRemoteLocationList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class InterconnectRemoteLocationPermittedConnections
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :interconnect_location, as: 'interconnectLocation'
         end
       end
       
@@ -11354,6 +11554,7 @@ module Google
           property :fqdn, as: 'fqdn'
           property :instance, as: 'instance'
           property :ip_address, as: 'ipAddress'
+          property :ipv6_address, as: 'ipv6Address'
           property :port, as: 'port'
         end
       end
@@ -14607,6 +14808,8 @@ module Google
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
           property :type, as: 'type'
+          collection :user_defined_fields, as: 'userDefinedFields', class: Google::Apis::ComputeBeta::SecurityPolicyUserDefinedField, decorator: Google::Apis::ComputeBeta::SecurityPolicyUserDefinedField::Representation
+      
         end
       end
       
@@ -14730,6 +14933,8 @@ module Google
           property :kind, as: 'kind'
           property :match, as: 'match', class: Google::Apis::ComputeBeta::SecurityPolicyRuleMatcher, decorator: Google::Apis::ComputeBeta::SecurityPolicyRuleMatcher::Representation
       
+          property :network_match, as: 'networkMatch', class: Google::Apis::ComputeBeta::SecurityPolicyRuleNetworkMatcher, decorator: Google::Apis::ComputeBeta::SecurityPolicyRuleNetworkMatcher::Representation
+      
           property :preconfigured_waf_config, as: 'preconfiguredWafConfig', class: Google::Apis::ComputeBeta::SecurityPolicyRulePreconfiguredWafConfig, decorator: Google::Apis::ComputeBeta::SecurityPolicyRulePreconfiguredWafConfig::Representation
       
           property :preview, as: 'preview'
@@ -14787,6 +14992,29 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ip_protocol, as: 'ipProtocol'
           collection :ports, as: 'ports'
+        end
+      end
+      
+      class SecurityPolicyRuleNetworkMatcher
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dest_ip_ranges, as: 'destIpRanges'
+          collection :dest_ports, as: 'destPorts'
+          collection :ip_protocols, as: 'ipProtocols'
+          collection :src_asns, as: 'srcAsns'
+          collection :src_ip_ranges, as: 'srcIpRanges'
+          collection :src_ports, as: 'srcPorts'
+          collection :src_region_codes, as: 'srcRegionCodes'
+          collection :user_defined_fields, as: 'userDefinedFields', class: Google::Apis::ComputeBeta::SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch, decorator: Google::Apis::ComputeBeta::SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch::Representation
+      
+        end
+      end
+      
+      class SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          collection :values, as: 'values'
         end
       end
       
@@ -14862,6 +15090,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :target, as: 'target'
           property :type, as: 'type'
+        end
+      end
+      
+      class SecurityPolicyUserDefinedField
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :base, as: 'base'
+          property :mask, as: 'mask'
+          property :name, as: 'name'
+          property :offset, as: 'offset'
+          property :size, as: 'size'
         end
       end
       
@@ -16062,6 +16301,7 @@ module Google
           property :name, as: 'name'
           property :nat_policy, as: 'natPolicy'
           property :network, as: 'network'
+          property :security_policy, as: 'securityPolicy'
           property :self_link, as: 'selfLink'
           property :zone, as: 'zone'
         end
@@ -16173,6 +16413,7 @@ module Google
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :region, as: 'region'
+          property :security_policy, as: 'securityPolicy'
           property :self_link, as: 'selfLink'
           property :session_affinity, as: 'sessionAffinity'
         end
