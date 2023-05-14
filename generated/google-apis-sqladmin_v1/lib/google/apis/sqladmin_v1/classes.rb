@@ -1253,6 +1253,26 @@ module Google
         class BakExportOptions
           include Google::Apis::Core::Hashable
         
+          # Type of this bak file will be export, FULL or DIFF, SQL Server only
+          # Corresponds to the JSON property `bakType`
+          # @return [String]
+          attr_accessor :bak_type
+        
+          # Whether or not the export will be exeucted with COPY_ONLY, SQL Server only
+          # deprecated as the behavior should default to copy_only = true use
+          # differential_base instead
+          # Corresponds to the JSON property `copyOnly`
+          # @return [Boolean]
+          attr_accessor :copy_only
+          alias_method :copy_only?, :copy_only
+        
+          # Whether or not the backup can be use as differential base only non copy only
+          # backup can be served as differential base
+          # Corresponds to the JSON property `differentialBase`
+          # @return [Boolean]
+          attr_accessor :differential_base
+          alias_method :differential_base?, :differential_base
+        
           # Option for specifying how many stripes to use for the export. If blank, and
           # the value of the striped field is true, the number of stripes is automatically
           # chosen.
@@ -1272,6 +1292,9 @@ module Google
         
           # Update properties of this object
           def update!(**args)
+            @bak_type = args[:bak_type] if args.key?(:bak_type)
+            @copy_only = args[:copy_only] if args.key?(:copy_only)
+            @differential_base = args[:differential_base] if args.key?(:differential_base)
             @stripe_count = args[:stripe_count] if args.key?(:stripe_count)
             @striped = args[:striped] if args.key?(:striped)
           end
@@ -1639,10 +1662,31 @@ module Google
         class BakImportOptions
           include Google::Apis::Core::Hashable
         
+          # Type of the bak content, FULL or DIFF
+          # Corresponds to the JSON property `bakType`
+          # @return [String]
+          attr_accessor :bak_type
+        
           # 
           # Corresponds to the JSON property `encryptionOptions`
           # @return [Google::Apis::SqladminV1::ImportContext::BakImportOptions::EncryptionOptions]
           attr_accessor :encryption_options
+        
+          # Whether or not the backup importing will restore database with NORECOVERY
+          # option Applies only to Cloud SQL for SQL Server.
+          # Corresponds to the JSON property `noRecovery`
+          # @return [Boolean]
+          attr_accessor :no_recovery
+          alias_method :no_recovery?, :no_recovery
+        
+          # Whether or not the backup importing request will just bring database online
+          # without downloading Bak content only one of "no_recovery" and "recovery_only"
+          # can be true otherwise error will return. Applies only to Cloud SQL for SQL
+          # Server.
+          # Corresponds to the JSON property `recoveryOnly`
+          # @return [Boolean]
+          attr_accessor :recovery_only
+          alias_method :recovery_only?, :recovery_only
         
           # Whether or not the backup set being restored is striped. Applies only to Cloud
           # SQL for SQL Server.
@@ -1657,7 +1701,10 @@ module Google
         
           # Update properties of this object
           def update!(**args)
+            @bak_type = args[:bak_type] if args.key?(:bak_type)
             @encryption_options = args[:encryption_options] if args.key?(:encryption_options)
+            @no_recovery = args[:no_recovery] if args.key?(:no_recovery)
+            @recovery_only = args[:recovery_only] if args.key?(:recovery_only)
             @striped = args[:striped] if args.key?(:striped)
           end
           
