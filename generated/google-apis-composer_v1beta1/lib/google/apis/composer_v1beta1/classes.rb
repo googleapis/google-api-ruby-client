@@ -487,68 +487,6 @@ module Google
         end
       end
       
-      # Response to ExecuteAirflowCommandRequest.
-      class ExecuteAirflowCommandResponse
-        include Google::Apis::Core::Hashable
-      
-        # Error message. Empty if there was no error.
-        # Corresponds to the JSON property `error`
-        # @return [String]
-        attr_accessor :error
-      
-        # The unique ID of the command execution for polling.
-        # Corresponds to the JSON property `executionId`
-        # @return [String]
-        attr_accessor :execution_id
-      
-        # The name of the pod where the command is executed.
-        # Corresponds to the JSON property `pod`
-        # @return [String]
-        attr_accessor :pod
-      
-        # The namespace of the pod where the command is executed.
-        # Corresponds to the JSON property `podNamespace`
-        # @return [String]
-        attr_accessor :pod_namespace
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @error = args[:error] if args.key?(:error)
-          @execution_id = args[:execution_id] if args.key?(:execution_id)
-          @pod = args[:pod] if args.key?(:pod)
-          @pod_namespace = args[:pod_namespace] if args.key?(:pod_namespace)
-        end
-      end
-      
-      # Information about how a command ended.
-      class ExitInfo
-        include Google::Apis::Core::Hashable
-      
-        # Error message. Empty if there was no error.
-        # Corresponds to the JSON property `error`
-        # @return [String]
-        attr_accessor :error
-      
-        # The exit code from the command execution.
-        # Corresponds to the JSON property `exitCode`
-        # @return [Fixnum]
-        attr_accessor :exit_code
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @error = args[:error] if args.key?(:error)
-          @exit_code = args[:exit_code] if args.key?(:exit_code)
-        end
-      end
-      
       # Configuration for controlling how IPs are allocated in the GKE cluster.
       class IpAllocationPolicy
         include Google::Apis::Core::Hashable
@@ -679,31 +617,6 @@ module Google
           @release_date = args[:release_date] if args.key?(:release_date)
           @supported_python_versions = args[:supported_python_versions] if args.key?(:supported_python_versions)
           @upgrade_disabled = args[:upgrade_disabled] if args.key?(:upgrade_disabled)
-        end
-      end
-      
-      # Contains information about a single line from logs.
-      class Line
-        include Google::Apis::Core::Hashable
-      
-        # Text content of the log line.
-        # Corresponds to the JSON property `content`
-        # @return [String]
-        attr_accessor :content
-      
-        # Number of the line.
-        # Corresponds to the JSON property `lineNumber`
-        # @return [Fixnum]
-        attr_accessor :line_number
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @content = args[:content] if args.key?(:content)
-          @line_number = args[:line_number] if args.key?(:line_number)
         end
       end
       
@@ -1187,39 +1100,6 @@ module Google
           @resource = args[:resource] if args.key?(:resource)
           @resource_uuid = args[:resource_uuid] if args.key?(:resource_uuid)
           @state = args[:state] if args.key?(:state)
-        end
-      end
-      
-      # Response to PollAirflowCommandRequest.
-      class PollAirflowCommandResponse
-        include Google::Apis::Core::Hashable
-      
-        # Information about how a command ended.
-        # Corresponds to the JSON property `exitInfo`
-        # @return [Google::Apis::ComposerV1beta1::ExitInfo]
-        attr_accessor :exit_info
-      
-        # Output from the command execution. It may not contain the full output and the
-        # caller may need to poll for more lines.
-        # Corresponds to the JSON property `output`
-        # @return [Array<Google::Apis::ComposerV1beta1::Line>]
-        attr_accessor :output
-      
-        # Whether the command execution has finished and there is no more output.
-        # Corresponds to the JSON property `outputEnd`
-        # @return [Boolean]
-        attr_accessor :output_end
-        alias_method :output_end?, :output_end
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @exit_info = args[:exit_info] if args.key?(:exit_info)
-          @output = args[:output] if args.key?(:output)
-          @output_end = args[:output_end] if args.key?(:output_end)
         end
       end
       
