@@ -1003,7 +1003,9 @@ module Google
         #   monitoring/custom-metrics): metric.type = starts_with("custom.googleapis.com/")
         #   
         # @param [Fixnum] page_size
-        #   A positive number that is the maximum number of results to return.
+        #   A positive number that is the maximum number of results to return. The default
+        #   and maximum value is 10,000. If a page_size <= 0 or > 10,000 is submitted,
+        #   will instead return a maximum of 10,000 results.
         # @param [String] page_token
         #   If this field is not empty then it must contain the nextPageToken value
         #   returned by a previous call to this method. Using this field causes the method
