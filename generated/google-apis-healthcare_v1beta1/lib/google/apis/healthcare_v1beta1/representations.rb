@@ -1547,6 +1547,7 @@ module Google
       
           property :text, as: 'text', class: Google::Apis::HealthcareV1beta1::TextConfig, decorator: Google::Apis::HealthcareV1beta1::TextConfig::Representation
       
+          property :use_regional_data_processing, as: 'useRegionalDataProcessing'
         end
       end
       
