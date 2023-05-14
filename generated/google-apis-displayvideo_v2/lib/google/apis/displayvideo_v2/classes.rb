@@ -797,7 +797,9 @@ module Google
       
         # Represents an assigned authorized seller status. This will be populated in the
         # details field of an AssignedTargetingOption when targeting_type is `
-        # TARGETING_TYPE_AUTHORIZED_SELLER_STATUS`.
+        # TARGETING_TYPE_AUTHORIZED_SELLER_STATUS`. If a resource does not have an `
+        # TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` assigned targeting option, it is
+        # using the "Authorized Direct Sellers and Resellers" option.
         # Corresponds to the JSON property `authorizedSellerStatusDetails`
         # @return [Google::Apis::DisplayvideoV2::AuthorizedSellerStatusAssignedTargetingOptionDetails]
         attr_accessor :authorized_seller_status_details
@@ -1477,7 +1479,9 @@ module Google
       
       # Represents an assigned authorized seller status. This will be populated in the
       # details field of an AssignedTargetingOption when targeting_type is `
-      # TARGETING_TYPE_AUTHORIZED_SELLER_STATUS`.
+      # TARGETING_TYPE_AUTHORIZED_SELLER_STATUS`. If a resource does not have an `
+      # TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` assigned targeting option, it is
+      # using the "Authorized Direct Sellers and Resellers" option.
       class AuthorizedSellerStatusAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
@@ -10772,13 +10776,13 @@ module Google
       class TargetingExpansionConfig
         include Google::Apis::Core::Hashable
       
-        # Required. Whether to exclude first-party audiences from use in targeting
-        # expansion or optimized targeting. Similar audiences of the excluded first-
-        # party lists will not be excluded. Only applicable when a first-party audience
-        # is positively targeted (directly or included in a combined audience),
-        # otherwise this selection will be ignored. Beginning **March 25, 2023**, this
-        # field may be deprecated with the replacement of targeting expansion with [
-        # optimized targeting](//support.google.com/displayvideo/answer/12060859). Upon
+        # Whether to exclude first-party audiences from use in targeting expansion or
+        # optimized targeting. Similar audiences of the excluded first-party lists will
+        # not be excluded. Only applicable when a first-party audience is positively
+        # targeted (directly or included in a combined audience), otherwise this
+        # selection will be ignored. Beginning **March 25, 2023**, this field may be
+        # deprecated with the replacement of targeting expansion with [optimized
+        # targeting](//support.google.com/displayvideo/answer/12060859). Upon
         # deprecation, this field will be set to `false`. If this field is set to `true`
         # when deprecated, all positive first-party audience targeting assigned to this
         # line item will be replaced with negative targeting of the same first-party
