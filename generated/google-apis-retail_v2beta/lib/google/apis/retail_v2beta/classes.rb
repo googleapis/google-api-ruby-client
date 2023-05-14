@@ -662,13 +662,13 @@ module Google
         end
       end
       
-      # More configs of the frequently-bought-together model type.
+      # Additional configs for the frequently-bought-together model type.
       class GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. Specifies the context of the model when used in predict requests.
-        # Only settable for the `frequently-bought-together` type. Will default to
-        # MULTI_CONTEXT if not specified.
+        # Optional. Specifies the context of the model when it is used in predict
+        # requests. Can only be set for the `frequently-bought-together` type. If it isn'
+        # t specified, it defaults to MULTIPLE_CONTEXT_PRODUCTS.
         # Corresponds to the JSON property `contextProductsType`
         # @return [String]
         attr_accessor :context_products_type
@@ -687,7 +687,7 @@ module Google
       class GoogleCloudRetailV2ModelModelFeaturesConfig
         include Google::Apis::Core::Hashable
       
-        # More configs of the frequently-bought-together model type.
+        # Additional configs for the frequently-bought-together model type.
         # Corresponds to the JSON property `frequentlyBoughtTogetherConfig`
         # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig]
         attr_accessor :frequently_bought_together_config
@@ -1638,13 +1638,13 @@ module Google
         end
       end
       
-      # More configs of the frequently-bought-together model type.
+      # Additional configs for the frequently-bought-together model type.
       class GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. Specifies the context of the model when used in predict requests.
-        # Only settable for the `frequently-bought-together` type. Will default to
-        # MULTI_CONTEXT if not specified.
+        # Optional. Specifies the context of the model when it is used in predict
+        # requests. Can only be set for the `frequently-bought-together` type. If it isn'
+        # t specified, it defaults to MULTIPLE_CONTEXT_PRODUCTS.
         # Corresponds to the JSON property `contextProductsType`
         # @return [String]
         attr_accessor :context_products_type
@@ -1663,7 +1663,7 @@ module Google
       class GoogleCloudRetailV2alphaModelModelFeaturesConfig
         include Google::Apis::Core::Hashable
       
-        # More configs of the frequently-bought-together model type.
+        # Additional configs for the frequently-bought-together model type.
         # Corresponds to the JSON property `frequentlyBoughtTogetherConfig`
         # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfig]
         attr_accessor :frequently_bought_together_config
@@ -4447,13 +4447,13 @@ module Google
         end
       end
       
-      # More configs of the frequently-bought-together model type.
+      # Additional configs for the frequently-bought-together model type.
       class GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. Specifies the context of the model when used in predict requests.
-        # Only settable for the `frequently-bought-together` type. Will default to
-        # MULTI_CONTEXT if not specified.
+        # Optional. Specifies the context of the model when it is used in predict
+        # requests. Can only be set for the `frequently-bought-together` type. If it isn'
+        # t specified, it defaults to MULTIPLE_CONTEXT_PRODUCTS.
         # Corresponds to the JSON property `contextProductsType`
         # @return [String]
         attr_accessor :context_products_type
@@ -4472,7 +4472,7 @@ module Google
       class GoogleCloudRetailV2betaModelModelFeaturesConfig
         include Google::Apis::Core::Hashable
       
-        # More configs of the frequently-bought-together model type.
+        # Additional configs for the frequently-bought-together model type.
         # Corresponds to the JSON property `frequentlyBoughtTogetherConfig`
         # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfig]
         attr_accessor :frequently_bought_together_config
