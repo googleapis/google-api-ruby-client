@@ -173,6 +173,39 @@ module Google
         end
       end
       
+      # Contains fields that are required to perform Apple-specific integrity checks.
+      class GoogleCloudRecaptchaenterpriseV1AppleDeveloperId
+        include Google::Apis::Core::Hashable
+      
+        # Required. The Apple developer key ID (10-character string).
+        # Corresponds to the JSON property `keyId`
+        # @return [String]
+        attr_accessor :key_id
+      
+        # Required. Input only. A private key (downloaded as a text file with a .p8 file
+        # extension) generated for your Apple Developer account.
+        # Corresponds to the JSON property `privateKey`
+        # @return [String]
+        attr_accessor :private_key
+      
+        # Required. The Apple team ID (10-character string) owning the provisioning
+        # profile used to build your application.
+        # Corresponds to the JSON property `teamId`
+        # @return [String]
+        attr_accessor :team_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key_id = args[:key_id] if args.key?(:key_id)
+          @private_key = args[:private_key] if args.key?(:private_key)
+          @team_id = args[:team_id] if args.key?(:team_id)
+        end
+      end
+      
       # A reCAPTCHA Enterprise assessment resource.
       class GoogleCloudRecaptchaenterpriseV1Assessment
         include Google::Apis::Core::Hashable
@@ -771,6 +804,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :allowed_bundle_ids
       
+        # Contains fields that are required to perform Apple-specific integrity checks.
+        # Corresponds to the JSON property `appleDeveloperId`
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1AppleDeveloperId]
+        attr_accessor :apple_developer_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -779,6 +817,7 @@ module Google
         def update!(**args)
           @allow_all_bundle_ids = args[:allow_all_bundle_ids] if args.key?(:allow_all_bundle_ids)
           @allowed_bundle_ids = args[:allowed_bundle_ids] if args.key?(:allowed_bundle_ids)
+          @apple_developer_id = args[:apple_developer_id] if args.key?(:apple_developer_id)
         end
       end
       

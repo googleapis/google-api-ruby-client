@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRecaptchaenterpriseV1AppleDeveloperId
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRecaptchaenterpriseV1Assessment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -366,6 +372,15 @@ module Google
         end
       end
       
+      class GoogleCloudRecaptchaenterpriseV1AppleDeveloperId
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key_id, as: 'keyId'
+          property :private_key, as: 'privateKey'
+          property :team_id, as: 'teamId'
+        end
+      end
+      
       class GoogleCloudRecaptchaenterpriseV1Assessment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -539,6 +554,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allow_all_bundle_ids, as: 'allowAllBundleIds'
           collection :allowed_bundle_ids, as: 'allowedBundleIds'
+          property :apple_developer_id, as: 'appleDeveloperId', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1AppleDeveloperId, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1AppleDeveloperId::Representation
+      
         end
       end
       
