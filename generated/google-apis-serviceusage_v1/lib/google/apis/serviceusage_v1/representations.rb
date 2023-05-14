@@ -22,6 +22,18 @@ module Google
   module Apis
     module ServiceusageV1
       
+      class AddEnableRulesMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AddEnableRulesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AdminQuotaPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -328,6 +340,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GroupValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Http
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -556,6 +574,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RemoveEnableRulesMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RemoveEnableRulesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RubySettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -563,6 +593,12 @@ module Google
       end
       
       class ServiceIdentity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServiceValue
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -604,6 +640,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TermsOfService
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Type
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -632,6 +674,27 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ValueInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AddEnableRulesMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class AddEnableRulesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :parent, as: 'parent'
+          collection :values, as: 'values', class: Google::Apis::ServiceusageV1::ValueInfo, decorator: Google::Apis::ServiceusageV1::ValueInfo::Representation
+      
+        end
       end
       
       class AdminQuotaPolicy
@@ -1192,6 +1255,13 @@ module Google
         end
       end
       
+      class GroupValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
       class Http
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1569,6 +1639,19 @@ module Google
         end
       end
       
+      class RemoveEnableRulesMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class RemoveEnableRulesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :parent, as: 'parent'
+        end
+      end
+      
       class RubySettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1582,6 +1665,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :email, as: 'email'
           property :unique_id, as: 'uniqueId'
+        end
+      end
+      
+      class ServiceValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dns_address, as: 'dnsAddress'
+          property :name, as: 'name'
+          property :pricing_link, as: 'pricingLink'
+          collection :tos, as: 'tos', class: Google::Apis::ServiceusageV1::TermsOfService, decorator: Google::Apis::ServiceusageV1::TermsOfService::Representation
+      
         end
       end
       
@@ -1634,6 +1728,14 @@ module Google
         end
       end
       
+      class TermsOfService
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :title, as: 'title'
+          property :uri, as: 'uri'
+        end
+      end
+      
       class Type
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1678,6 +1780,19 @@ module Google
           property :allow_unregistered_calls, as: 'allowUnregisteredCalls'
           property :selector, as: 'selector'
           property :skip_service_control, as: 'skipServiceControl'
+        end
+      end
+      
+      class ValueInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :group_value, as: 'groupValue', class: Google::Apis::ServiceusageV1::GroupValue, decorator: Google::Apis::ServiceusageV1::GroupValue::Representation
+      
+          property :learnmore_link, as: 'learnmoreLink'
+          property :service_value, as: 'serviceValue', class: Google::Apis::ServiceusageV1::ServiceValue, decorator: Google::Apis::ServiceusageV1::ServiceValue::Representation
+      
+          property :summary, as: 'summary'
+          property :title, as: 'title'
         end
       end
     end
