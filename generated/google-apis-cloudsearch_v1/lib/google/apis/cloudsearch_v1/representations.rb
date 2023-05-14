@@ -58,6 +58,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AddOnFrameStartingState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AddOnStartingState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AddonComposeUiActionMarkup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -77,6 +89,12 @@ module Google
       end
       
       class Annotation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AnnotationInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -329,6 +347,12 @@ module Google
       end
       
       class AppsDynamiteSharedMessageIntegrationPayload
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppsDynamiteSharedMessageSearchInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1259,6 +1283,12 @@ module Google
       end
       
       class DlpAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DlpMessageScanRecord
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2314,6 +2344,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MessageReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MessageSet
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2890,6 +2926,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SearchLinkData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SearchQualityMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3035,6 +3077,12 @@ module Google
       end
       
       class SourceCrowdingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SourceMessageInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3589,6 +3637,22 @@ module Google
         end
       end
       
+      class AddOnFrameStartingState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :additional_data, as: 'additionalData'
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class AddOnStartingState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :add_on_frame_starting_states, as: 'addOnFrameStartingStates', class: Google::Apis::CloudsearchV1::AddOnFrameStartingState, decorator: Google::Apis::CloudsearchV1::AddOnFrameStartingState::Representation
+      
+        end
+      end
+      
       class AddonComposeUiActionMarkup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3670,6 +3734,14 @@ module Google
       
           property :youtube_metadata, as: 'youtubeMetadata', class: Google::Apis::CloudsearchV1::YoutubeMetadata, decorator: Google::Apis::CloudsearchV1::YoutubeMetadata::Representation
       
+        end
+      end
+      
+      class AnnotationInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :coannotator_device_ids, as: 'coannotatorDeviceIds'
+          property :is_active, as: 'isActive'
         end
       end
       
@@ -3796,6 +3868,7 @@ module Google
           property :dlp_scan_outcome, as: 'dlpScanOutcome'
           property :dlp_scan_summary, as: 'dlpScanSummary', class: Google::Apis::CloudsearchV1::DlpScanSummary, decorator: Google::Apis::CloudsearchV1::DlpScanSummary::Representation
       
+          collection :experiment, as: 'experiment'
           property :group_id, as: 'groupId', class: Google::Apis::CloudsearchV1::GroupId, decorator: Google::Apis::CloudsearchV1::GroupId::Representation
       
           property :is_client_side_transcoded_video, as: 'isClientSideTranscodedVideo'
@@ -4081,6 +4154,14 @@ module Google
           property :tasks_message_integration_payload, as: 'tasksMessageIntegrationPayload', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedTasksMessageIntegrationPayload, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedTasksMessageIntegrationPayload::Representation
       
           property :type, as: 'type'
+        end
+      end
+      
+      class AppsDynamiteSharedMessageSearchInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :matched_segments_in_text_body, as: 'matchedSegmentsInTextBody', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedTextSegmentsWithDescription, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedTextSegmentsWithDescription::Representation
+      
         end
       end
       
@@ -4397,7 +4478,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :column_items, as: 'columnItems', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageColumnsColumn, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageColumnsColumn::Representation
       
-          property :wrap_style, as: 'wrapStyle'
         end
       end
       
@@ -4853,6 +4933,8 @@ module Google
           property :attachment_id, as: 'attachmentId'
           property :card_add_on_data, as: 'cardAddOnData', class: Google::Apis::CloudsearchV1::AppsDynamiteStorageCard, decorator: Google::Apis::CloudsearchV1::AppsDynamiteStorageCard::Representation
       
+          property :component_search_info, as: 'componentSearchInfo', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedMessageComponentSearchInfo, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedMessageComponentSearchInfo::Representation
+      
           property :deprecated_add_on_data, as: 'deprecatedAddOnData', class: Google::Apis::CloudsearchV1::ContextualAddOnMarkup, decorator: Google::Apis::CloudsearchV1::ContextualAddOnMarkup::Representation
       
           property :slack_data, as: 'slackData', class: Google::Apis::CloudsearchV1::AppsDynamiteV1ApiCompatV1Attachment, decorator: Google::Apis::CloudsearchV1::AppsDynamiteV1ApiCompatV1Attachment::Representation
@@ -5070,6 +5152,7 @@ module Google
           collection :attached_documents, as: 'attachedDocuments', class: Google::Apis::CloudsearchV1::DocumentInfo, decorator: Google::Apis::CloudsearchV1::DocumentInfo::Representation
       
           collection :available_access_types, as: 'availableAccessTypes'
+          collection :available_annotation_tool_types, as: 'availableAnnotationToolTypes'
           collection :available_reactions, as: 'availableReactions', class: Google::Apis::CloudsearchV1::ReactionInfo, decorator: Google::Apis::CloudsearchV1::ReactionInfo::Representation
       
           property :broadcast_session_info, as: 'broadcastSessionInfo', class: Google::Apis::CloudsearchV1::BroadcastSessionInfo, decorator: Google::Apis::CloudsearchV1::BroadcastSessionInfo::Representation
@@ -5112,6 +5195,7 @@ module Google
           property :attendance_report_enabled, as: 'attendanceReportEnabled'
           property :audio_lock, as: 'audioLock'
           property :chat_lock, as: 'chatLock'
+          property :co_activity_lock, as: 'coActivityLock'
           property :cse_enabled, as: 'cseEnabled'
           property :moderation_enabled, as: 'moderationEnabled'
           property :present_lock, as: 'presentLock'
@@ -5343,7 +5427,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :activity_title, as: 'activityTitle'
+          property :add_on_id, as: 'addOnId'
+          property :add_on_starting_state, as: 'addOnStartingState', class: Google::Apis::CloudsearchV1::AddOnStartingState, decorator: Google::Apis::CloudsearchV1::AddOnStartingState::Representation
+      
           property :co_activity_app, as: 'coActivityApp'
+          property :initiator_device_id, as: 'initiatorDeviceId'
+          property :presentation_device_id, as: 'presentationDeviceId'
+          property :project_number, :numeric_string => true, as: 'projectNumber'
         end
       end
       
@@ -5541,6 +5631,8 @@ module Google
       class DataLossPreventionMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :dlp_message_scan_record, as: 'dlpMessageScanRecord', class: Google::Apis::CloudsearchV1::DlpMessageScanRecord, decorator: Google::Apis::CloudsearchV1::DlpMessageScanRecord::Representation
+      
           property :dlp_scan_summary, as: 'dlpScanSummary', class: Google::Apis::CloudsearchV1::DlpScanSummary, decorator: Google::Apis::CloudsearchV1::DlpScanSummary::Representation
       
           property :warn_acknowledged, as: 'warnAcknowledged'
@@ -5694,6 +5786,19 @@ module Google
         end
       end
       
+      class DlpMessageScanRecord
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attachment_scan_summary, as: 'attachmentScanSummary', class: Google::Apis::CloudsearchV1::DlpScanSummary, decorator: Google::Apis::CloudsearchV1::DlpScanSummary::Representation
+      
+          property :dlp_action, as: 'dlpAction', class: Google::Apis::CloudsearchV1::DlpAction, decorator: Google::Apis::CloudsearchV1::DlpAction::Representation
+      
+          property :message_scan_summary, as: 'messageScanSummary', class: Google::Apis::CloudsearchV1::DlpScanSummary, decorator: Google::Apis::CloudsearchV1::DlpScanSummary::Representation
+      
+          property :scan_outcome, as: 'scanOutcome'
+        end
+      end
+      
       class DlpScanSummary
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5702,6 +5807,7 @@ module Google
           property :scan_id, as: 'scanId'
           property :scan_not_applicable_for_context, as: 'scanNotApplicableForContext'
           property :scan_outcome, as: 'scanOutcome'
+          property :scan_trigger, as: 'scanTrigger'
         end
       end
       
@@ -7466,6 +7572,10 @@ module Google
           property :message_integration_payload, as: 'messageIntegrationPayload', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedMessageIntegrationPayload, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedMessageIntegrationPayload::Representation
       
           property :message_origin, as: 'messageOrigin'
+          property :message_reference, as: 'messageReference', class: Google::Apis::CloudsearchV1::MessageReference, decorator: Google::Apis::CloudsearchV1::MessageReference::Representation
+      
+          property :message_search_info, as: 'messageSearchInfo', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedMessageSearchInfo, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedMessageSearchInfo::Representation
+      
           property :message_state, as: 'messageState'
           collection :origin_app_suggestions, as: 'originAppSuggestions', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedOriginAppSuggestion, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedOriginAppSuggestion::Representation
       
@@ -7559,6 +7669,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :babel_props, as: 'babelProps', class: Google::Apis::CloudsearchV1::BabelMessageProps, decorator: Google::Apis::CloudsearchV1::BabelMessageProps::Representation
+      
+        end
+      end
+      
+      class MessageReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :source_info, as: 'sourceInfo', class: Google::Apis::CloudsearchV1::SourceMessageInfo, decorator: Google::Apis::CloudsearchV1::SourceMessageInfo::Representation
       
         end
       end
@@ -7922,6 +8040,8 @@ module Google
       class Presenter
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :annotation_info, as: 'annotationInfo', class: Google::Apis::CloudsearchV1::AnnotationInfo, decorator: Google::Apis::CloudsearchV1::AnnotationInfo::Representation
+      
           property :by_device_id, as: 'byDeviceId'
           collection :copresenter_device_ids, as: 'copresenterDeviceIds'
           property :presenter_device_id, as: 'presenterDeviceId'
@@ -8590,6 +8710,15 @@ module Google
         end
       end
       
+      class SearchLinkData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kg_entity_confidence, as: 'kgEntityConfidence'
+          property :mid, as: 'mid'
+          property :query_broadness_score, as: 'queryBroadnessScore'
+        end
+      end
+      
       class SearchQualityMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -8679,6 +8808,8 @@ module Google
       
           property :link_data, as: 'linkData', class: Google::Apis::CloudsearchV1::LinkData, decorator: Google::Apis::CloudsearchV1::LinkData::Representation
       
+          property :search_link_data, as: 'searchLinkData', class: Google::Apis::CloudsearchV1::SearchLinkData, decorator: Google::Apis::CloudsearchV1::SearchLinkData::Representation
+      
           property :text, as: 'text'
           property :type, as: 'type'
           property :user_mention_data, as: 'userMentionData', class: Google::Apis::CloudsearchV1::UserMentionData, decorator: Google::Apis::CloudsearchV1::UserMentionData::Representation
@@ -8751,6 +8882,7 @@ module Google
           property :allow_joining_before_host, as: 'allowJoiningBeforeHost'
           property :attendance_report_enabled, as: 'attendanceReportEnabled'
           property :chat_lock, as: 'chatLock'
+          property :co_activity_lock, as: 'coActivityLock'
           property :cohost_artifact_sharing_enabled, as: 'cohostArtifactSharingEnabled'
           property :cse_enabled, as: 'cseEnabled'
           property :default_as_viewer, as: 'defaultAsViewer'
@@ -8875,6 +9007,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :num_results, as: 'numResults'
           property :num_suggestions, as: 'numSuggestions'
+        end
+      end
+      
+      class SourceMessageInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message_id, as: 'messageId', class: Google::Apis::CloudsearchV1::MessageId, decorator: Google::Apis::CloudsearchV1::MessageId::Representation
+      
+          property :message_type, as: 'messageType'
         end
       end
       
