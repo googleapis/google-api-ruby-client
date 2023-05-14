@@ -5191,6 +5191,11 @@ module Google
         # @return [String]
         attr_accessor :connector_version
       
+        # Output only. Flag to mark the version indicating the launch stage.
+        # Corresponds to the JSON property `connectorVersionLaunchStage`
+        # @return [String]
+        attr_accessor :connector_version_launch_stage
+      
         # Output only. Created time.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -5271,8 +5276,8 @@ module Google
         # @return [Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1ConnectionStatus]
         attr_accessor :status
       
-        # Output only. This subscription type enum value states if the metrics should be
-        # sent for billing or not.
+        # Output only. This subscription type enum states the subscription type of the
+        # project.
         # Corresponds to the JSON property `subscriptionType`
         # @return [String]
         attr_accessor :subscription_type
@@ -5297,6 +5302,7 @@ module Google
           @auth_config = args[:auth_config] if args.key?(:auth_config)
           @config_variables = args[:config_variables] if args.key?(:config_variables)
           @connector_version = args[:connector_version] if args.key?(:connector_version)
+          @connector_version_launch_stage = args[:connector_version_launch_stage] if args.key?(:connector_version_launch_stage)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @destination_configs = args[:destination_configs] if args.key?(:destination_configs)
