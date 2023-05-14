@@ -3055,6 +3055,11 @@ module Google
         attr_accessor :registered
         alias_method :registered?, :registered
       
+        # Warning notifications for the user.
+        # Corresponds to the JSON property `userNotifications`
+        # @return [Array<Google::Apis::IdentitytoolkitV1::GoogleCloudIdentitytoolkitV1UserNotification>]
+        attr_accessor :user_notifications
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3075,6 +3080,7 @@ module Google
           @profile_picture = args[:profile_picture] if args.key?(:profile_picture)
           @refresh_token = args[:refresh_token] if args.key?(:refresh_token)
           @registered = args[:registered] if args.key?(:registered)
+          @user_notifications = args[:user_notifications] if args.key?(:user_notifications)
         end
       end
       
@@ -3847,6 +3853,31 @@ module Google
           @time_zone = args[:time_zone] if args.key?(:time_zone)
           @valid_since = args[:valid_since] if args.key?(:valid_since)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Warning notifications for the user.
+      class GoogleCloudIdentitytoolkitV1UserNotification
+        include Google::Apis::Core::Hashable
+      
+        # Warning notification enum. Can be used for localization.
+        # Corresponds to the JSON property `notificationCode`
+        # @return [String]
+        attr_accessor :notification_code
+      
+        # Warning notification string. Can be used as fallback.
+        # Corresponds to the JSON property `notificationMessage`
+        # @return [String]
+        attr_accessor :notification_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @notification_code = args[:notification_code] if args.key?(:notification_code)
+          @notification_message = args[:notification_message] if args.key?(:notification_message)
         end
       end
       

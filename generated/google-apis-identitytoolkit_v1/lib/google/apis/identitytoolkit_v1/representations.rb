@@ -370,6 +370,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudIdentitytoolkitV1UserNotification
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudIdentitytoolkitV1VerifyIosClientRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1042,6 +1048,8 @@ module Google
           property :profile_picture, as: 'profilePicture'
           property :refresh_token, as: 'refreshToken'
           property :registered, as: 'registered'
+          collection :user_notifications, as: 'userNotifications', class: Google::Apis::IdentitytoolkitV1::GoogleCloudIdentitytoolkitV1UserNotification, decorator: Google::Apis::IdentitytoolkitV1::GoogleCloudIdentitytoolkitV1UserNotification::Representation
+      
         end
       end
       
@@ -1192,6 +1200,14 @@ module Google
           property :time_zone, as: 'timeZone'
           property :valid_since, :numeric_string => true, as: 'validSince'
           property :version, as: 'version'
+        end
+      end
+      
+      class GoogleCloudIdentitytoolkitV1UserNotification
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :notification_code, as: 'notificationCode'
+          property :notification_message, as: 'notificationMessage'
         end
       end
       
