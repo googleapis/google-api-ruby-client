@@ -809,6 +809,12 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :metadata
       
+        # Output only. Whether the Node belongs to a Multislice group.
+        # Corresponds to the JSON property `multisliceNode`
+        # @return [Boolean]
+        attr_accessor :multislice_node
+        alias_method :multislice_node?, :multislice_node
+      
         # Output only. Immutable. The name of the TPU.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -885,6 +891,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @labels = args[:labels] if args.key?(:labels)
           @metadata = args[:metadata] if args.key?(:metadata)
+          @multislice_node = args[:multislice_node] if args.key?(:multislice_node)
           @name = args[:name] if args.key?(:name)
           @network_config = args[:network_config] if args.key?(:network_config)
           @network_endpoints = args[:network_endpoints] if args.key?(:network_endpoints)

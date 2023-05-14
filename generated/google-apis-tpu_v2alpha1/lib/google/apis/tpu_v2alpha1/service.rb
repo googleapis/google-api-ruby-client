@@ -718,6 +718,12 @@ module Google
         # Deletes a QueuedResource TPU instance.
         # @param [String] name
         #   Required. The resource name.
+        # @param [Boolean] force
+        #   If set to true, all running nodes belonging to this queued resource will be
+        #   deleted first and then the queued resource will be deleted. Otherwise (i.e.
+        #   force=false), the queued resource will only be deleted if its nodes have
+        #   already been deleted or the queued resource is in the ACCEPTED, FAILED, or
+        #   SUSPENDED state.
         # @param [String] request_id
         #   Idempotent request UUID.
         # @param [String] fields
@@ -737,11 +743,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_queued_resource(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_project_location_queued_resource(name, force: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v2alpha1/{+name}', options)
           command.response_representation = Google::Apis::TpuV2alpha1::Operation::Representation
           command.response_class = Google::Apis::TpuV2alpha1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['force'] = force unless force.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
