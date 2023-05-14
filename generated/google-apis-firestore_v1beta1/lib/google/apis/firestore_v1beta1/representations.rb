@@ -76,6 +76,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BitSequence
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BloomFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CollectionSelector
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -543,6 +555,23 @@ module Google
         end
       end
       
+      class BitSequence
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bitmap, :base64 => true, as: 'bitmap'
+          property :padding, as: 'padding'
+        end
+      end
+      
+      class BloomFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bits, as: 'bits', class: Google::Apis::FirestoreV1beta1::BitSequence, decorator: Google::Apis::FirestoreV1beta1::BitSequence::Representation
+      
+          property :hash_count, as: 'hashCount'
+        end
+      end
+      
       class CollectionSelector
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -667,6 +696,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :count, as: 'count'
           property :target_id, as: 'targetId'
+          property :unchanged_names, as: 'unchangedNames', class: Google::Apis::FirestoreV1beta1::BloomFilter, decorator: Google::Apis::FirestoreV1beta1::BloomFilter::Representation
+      
         end
       end
       
@@ -1078,6 +1109,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :documents, as: 'documents', class: Google::Apis::FirestoreV1beta1::DocumentsTarget, decorator: Google::Apis::FirestoreV1beta1::DocumentsTarget::Representation
       
+          property :expected_count, as: 'expectedCount'
           property :once, as: 'once'
           property :query, as: 'query', class: Google::Apis::FirestoreV1beta1::QueryTarget, decorator: Google::Apis::FirestoreV1beta1::QueryTarget::Representation
       

@@ -284,6 +284,88 @@ module Google
         end
       end
       
+      # A sequence of bits, encoded in a byte array. Each byte in the `bitmap` byte
+      # array stores 8 bits of the sequence. The only exception is the last byte,
+      # which may store 8 _or fewer_ bits. The `padding` defines the number of bits of
+      # the last byte to be ignored as "padding". The values of these "padding" bits
+      # are unspecified and must be ignored. To retrieve the first bit, bit 0,
+      # calculate: `(bitmap[0] & 0x01) != 0`. To retrieve the second bit, bit 1,
+      # calculate: `(bitmap[0] & 0x02) != 0`. To retrieve the third bit, bit 2,
+      # calculate: `(bitmap[0] & 0x04) != 0`. To retrieve the fourth bit, bit 3,
+      # calculate: `(bitmap[0] & 0x08) != 0`. To retrieve bit n, calculate: `(bitmap[n
+      # / 8] & (0x01 << (n % 8))) != 0`. The "size" of a `BitSequence` (the number of
+      # bits it contains) is calculated by this formula: `(bitmap.length * 8) -
+      # padding`.
+      class BitSequence
+        include Google::Apis::Core::Hashable
+      
+        # The bytes that encode the bit sequence. May have a length of zero.
+        # Corresponds to the JSON property `bitmap`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :bitmap
+      
+        # The number of bits of the last byte in `bitmap` to ignore as "padding". If the
+        # length of `bitmap` is zero, then this value must be `0`. Otherwise, this value
+        # must be between 0 and 7, inclusive.
+        # Corresponds to the JSON property `padding`
+        # @return [Fixnum]
+        attr_accessor :padding
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bitmap = args[:bitmap] if args.key?(:bitmap)
+          @padding = args[:padding] if args.key?(:padding)
+        end
+      end
+      
+      # A bloom filter (https://en.wikipedia.org/wiki/Bloom_filter). The bloom filter
+      # hashes the entries with MD5 and treats the resulting 128-bit hash as 2
+      # distinct 64-bit hash values, interpreted as unsigned integers using 2's
+      # complement encoding. These two hash values, named `h1` and `h2`, are then used
+      # to compute the `hash_count` hash values using the formula, starting at `i=0`:
+      # h(i) = h1 + (i * h2) These resulting values are then taken modulo the number
+      # of bits in the bloom filter to get the bits of the bloom filter to test for
+      # the given entry.
+      class BloomFilter
+        include Google::Apis::Core::Hashable
+      
+        # A sequence of bits, encoded in a byte array. Each byte in the `bitmap` byte
+        # array stores 8 bits of the sequence. The only exception is the last byte,
+        # which may store 8 _or fewer_ bits. The `padding` defines the number of bits of
+        # the last byte to be ignored as "padding". The values of these "padding" bits
+        # are unspecified and must be ignored. To retrieve the first bit, bit 0,
+        # calculate: `(bitmap[0] & 0x01) != 0`. To retrieve the second bit, bit 1,
+        # calculate: `(bitmap[0] & 0x02) != 0`. To retrieve the third bit, bit 2,
+        # calculate: `(bitmap[0] & 0x04) != 0`. To retrieve the fourth bit, bit 3,
+        # calculate: `(bitmap[0] & 0x08) != 0`. To retrieve bit n, calculate: `(bitmap[n
+        # / 8] & (0x01 << (n % 8))) != 0`. The "size" of a `BitSequence` (the number of
+        # bits it contains) is calculated by this formula: `(bitmap.length * 8) -
+        # padding`.
+        # Corresponds to the JSON property `bits`
+        # @return [Google::Apis::FirestoreV1beta1::BitSequence]
+        attr_accessor :bits
+      
+        # The number of hashes used by the algorithm.
+        # Corresponds to the JSON property `hashCount`
+        # @return [Fixnum]
+        attr_accessor :hash_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bits = args[:bits] if args.key?(:bits)
+          @hash_count = args[:hash_count] if args.key?(:hash_count)
+        end
+      end
+      
       # A selection of a collection, such as `messages as m1`.
       class CollectionSelector
         include Google::Apis::Core::Hashable
@@ -707,6 +789,18 @@ module Google
         # @return [Fixnum]
         attr_accessor :target_id
       
+        # A bloom filter (https://en.wikipedia.org/wiki/Bloom_filter). The bloom filter
+        # hashes the entries with MD5 and treats the resulting 128-bit hash as 2
+        # distinct 64-bit hash values, interpreted as unsigned integers using 2's
+        # complement encoding. These two hash values, named `h1` and `h2`, are then used
+        # to compute the `hash_count` hash values using the formula, starting at `i=0`:
+        # h(i) = h1 + (i * h2) These resulting values are then taken modulo the number
+        # of bits in the bloom filter to get the bits of the bloom filter to test for
+        # the given entry.
+        # Corresponds to the JSON property `unchangedNames`
+        # @return [Google::Apis::FirestoreV1beta1::BloomFilter]
+        attr_accessor :unchanged_names
+      
         def initialize(**args)
            update!(**args)
         end
@@ -715,6 +809,7 @@ module Google
         def update!(**args)
           @count = args[:count] if args.key?(:count)
           @target_id = args[:target_id] if args.key?(:target_id)
+          @unchanged_names = args[:unchanged_names] if args.key?(:unchanged_names)
         end
       end
       
@@ -2105,6 +2200,14 @@ module Google
         # @return [Google::Apis::FirestoreV1beta1::DocumentsTarget]
         attr_accessor :documents
       
+        # The number of documents that last matched the query at the resume token or
+        # read time. This value is only relevant when a `resume_type` is provided. This
+        # value being present and greater than zero signals that the client wants `
+        # ExistenceFilter.unchanged_names` to be included in the response.
+        # Corresponds to the JSON property `expectedCount`
+        # @return [Fixnum]
+        attr_accessor :expected_count
+      
         # If the target should be removed once it is current and consistent.
         # Corresponds to the JSON property `once`
         # @return [Boolean]
@@ -2142,6 +2245,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @documents = args[:documents] if args.key?(:documents)
+          @expected_count = args[:expected_count] if args.key?(:expected_count)
           @once = args[:once] if args.key?(:once)
           @query = args[:query] if args.key?(:query)
           @read_time = args[:read_time] if args.key?(:read_time)
