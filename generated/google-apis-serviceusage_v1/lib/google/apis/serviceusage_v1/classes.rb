@@ -22,6 +22,46 @@ module Google
   module Apis
     module ServiceusageV1
       
+      # Metadata for the `AddEnableRules` method.
+      class AddEnableRulesMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The response message of "AddEnableRules" method.
+      class AddEnableRulesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The parent consumer policy. It can be `projects/12345/consumerPolicies/default`
+        # , or `folders/12345/consumerPolicies/default`, or `organizations/12345/
+        # consumerPolicies/default`.
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        # The values added to the parent consumer policy.
+        # Corresponds to the JSON property `values`
+        # @return [Array<Google::Apis::ServiceusageV1::ValueInfo>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @parent = args[:parent] if args.key?(:parent)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
       # Quota policy created by quota administrator.
       class AdminQuotaPolicy
         include Google::Apis::Core::Hashable
@@ -796,9 +836,10 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Output only. The resource name of the policy. For example, `projects/12345/
-        # consumerPolicy`, `folders/12345/consumerPolicy`, `organizations/12345/
-        # consumerPolicy`.
+        # Output only. The resource name of the policy. For example, We only allow
+        # consumer policy name as "default" for now: `projects/12345/consumerPolicies/
+        # default`, `folders/12345/consumerPolicies/default`, `organizations/12345/
+        # consumerPolicies/default`. Legacy format: `projects/12345/consumerPoly`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2272,6 +2313,25 @@ module Google
         def update!(**args)
           @email = args[:email] if args.key?(:email)
           @unique_id = args[:unique_id] if args.key?(:unique_id)
+        end
+      end
+      
+      # Unimplemented. Do not use. GroupValue contains information of a service group.
+      class GroupValue
+        include Google::Apis::Core::Hashable
+      
+        # The name of the value. Example: `groups/googleSerivice`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -3999,6 +4059,40 @@ module Google
         end
       end
       
+      # Metadata for the `RemoveEnableRules` method.
+      class RemoveEnableRulesMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The response message of "RemoveEnableRules" method.
+      class RemoveEnableRulesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The parent consumer policy. It can be `projects/12345/consumerPolicies/default`
+        # , or `folders/12345/consumerPolicies/default`, or `organizations/12345/
+        # consumerPolicies/default`.
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @parent = args[:parent] if args.key?(:parent)
+        end
+      end
+      
       # Settings for Ruby client libraries.
       class RubySettings
         include Google::Apis::Core::Hashable
@@ -4043,6 +4137,44 @@ module Google
         def update!(**args)
           @email = args[:email] if args.key?(:email)
           @unique_id = args[:unique_id] if args.key?(:unique_id)
+        end
+      end
+      
+      # ServiceValue contains information of a service.
+      class ServiceValue
+        include Google::Apis::Core::Hashable
+      
+        # The DNS address at which this service is available.
+        # Corresponds to the JSON property `dnsAddress`
+        # @return [String]
+        attr_accessor :dns_address
+      
+        # The name of the value. Example: `services/storage.googleapis.com`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # A link to pricing information for the service, such as https://cloud.google.
+        # com/bigquery/pricing.
+        # Corresponds to the JSON property `pricingLink`
+        # @return [String]
+        attr_accessor :pricing_link
+      
+        # Terms of Service
+        # Corresponds to the JSON property `tos`
+        # @return [Array<Google::Apis::ServiceusageV1::TermsOfService>]
+        attr_accessor :tos
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dns_address = args[:dns_address] if args.key?(:dns_address)
+          @name = args[:name] if args.key?(:name)
+          @pricing_link = args[:pricing_link] if args.key?(:pricing_link)
+          @tos = args[:tos] if args.key?(:tos)
         end
       end
       
@@ -4219,6 +4351,31 @@ module Google
         end
       end
       
+      # TermsOfService captures the metadata about a given terms of service
+      class TermsOfService
+        include Google::Apis::Core::Hashable
+      
+        # Title of the terms of service.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # URL/URI of the terms of service.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @title = args[:title] if args.key?(:title)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
       # A protocol buffer message type.
       class Type
         include Google::Apis::Core::Hashable
@@ -4390,6 +4547,50 @@ module Google
           @allow_unregistered_calls = args[:allow_unregistered_calls] if args.key?(:allow_unregistered_calls)
           @selector = args[:selector] if args.key?(:selector)
           @skip_service_control = args[:skip_service_control] if args.key?(:skip_service_control)
+        end
+      end
+      
+      # Information about the value field. Only support value type as service now.
+      class ValueInfo
+        include Google::Apis::Core::Hashable
+      
+        # Unimplemented. Do not use. GroupValue contains information of a service group.
+        # Corresponds to the JSON property `groupValue`
+        # @return [Google::Apis::ServiceusageV1::GroupValue]
+        attr_accessor :group_value
+      
+        # For public services, it must point to the product landing page. For private
+        # services, it should point to the internal site. For service group, it is TBD.
+        # Corresponds to the JSON property `learnmoreLink`
+        # @return [String]
+        attr_accessor :learnmore_link
+      
+        # ServiceValue contains information of a service.
+        # Corresponds to the JSON property `serviceValue`
+        # @return [Google::Apis::ServiceusageV1::ServiceValue]
+        attr_accessor :service_value
+      
+        # The product summary for this value.
+        # Corresponds to the JSON property `summary`
+        # @return [String]
+        attr_accessor :summary
+      
+        # The product title for this value.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @group_value = args[:group_value] if args.key?(:group_value)
+          @learnmore_link = args[:learnmore_link] if args.key?(:learnmore_link)
+          @service_value = args[:service_value] if args.key?(:service_value)
+          @summary = args[:summary] if args.key?(:summary)
+          @title = args[:title] if args.key?(:title)
         end
       end
     end
