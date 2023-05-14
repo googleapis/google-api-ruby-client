@@ -82,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdp
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -227,6 +233,18 @@ module Google
       end
       
       class GoogleCloudIdentitytoolkitAdminV2OAuthResponseType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -388,6 +406,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudIdentitytoolkitV2CustomStrengthOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudIdentitytoolkitV2FinalizeMfaEnrollmentRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -461,6 +485,12 @@ module Google
       end
       
       class GoogleCloudIdentitytoolkitV2MfaTotpSignInRequestInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIdentitytoolkitV2PasswordPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -771,6 +801,8 @@ module Google
           property :name, as: 'name'
           property :notification, as: 'notification', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2NotificationConfig, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2NotificationConfig::Representation
       
+          property :password_policy_config, as: 'passwordPolicyConfig', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig::Representation
+      
           property :quota, as: 'quota', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2QuotaConfig, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2QuotaConfig::Representation
       
           property :recaptcha_config, as: 'recaptchaConfig', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig::Representation
@@ -780,6 +812,18 @@ module Google
           property :sms_region_config, as: 'smsRegionConfig', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig::Representation
       
           property :subtype, as: 'subtype'
+        end
+      end
+      
+      class GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :contains_lowercase_character, as: 'containsLowercaseCharacter'
+          property :contains_non_alphanumeric_character, as: 'containsNonAlphanumericCharacter'
+          property :contains_numeric_character, as: 'containsNumericCharacter'
+          property :contains_uppercase_character, as: 'containsUppercaseCharacter'
+          property :max_password_length, as: 'maxPasswordLength'
+          property :min_password_length, as: 'minPasswordLength'
         end
       end
       
@@ -1017,6 +1061,26 @@ module Google
         end
       end
       
+      class GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :force_upgrade_on_signin, as: 'forceUpgradeOnSignin'
+          property :last_update_time, as: 'lastUpdateTime'
+          property :password_policy_enforcement_state, as: 'passwordPolicyEnforcementState'
+          collection :password_policy_versions, as: 'passwordPolicyVersions', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion::Representation
+      
+        end
+      end
+      
+      class GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_strength_options, as: 'customStrengthOptions', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions::Representation
+      
+          property :schema_version, as: 'schemaVersion'
+        end
+      end
+      
       class GoogleCloudIdentitytoolkitAdminV2Permissions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1209,6 +1273,8 @@ module Google
           property :monitoring, as: 'monitoring', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2MonitoringConfig, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2MonitoringConfig::Representation
       
           property :name, as: 'name'
+          property :password_policy_config, as: 'passwordPolicyConfig', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig::Representation
+      
           property :recaptcha_config, as: 'recaptchaConfig', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig::Representation
       
           property :sms_region_config, as: 'smsRegionConfig', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig::Representation
@@ -1284,6 +1350,18 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :app_signature_hash, as: 'appSignatureHash'
+        end
+      end
+      
+      class GoogleCloudIdentitytoolkitV2CustomStrengthOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :contains_lowercase_character, as: 'containsLowercaseCharacter'
+          property :contains_non_alphanumeric_character, as: 'containsNonAlphanumericCharacter'
+          property :contains_numeric_character, as: 'containsNumericCharacter'
+          property :contains_uppercase_character, as: 'containsUppercaseCharacter'
+          property :max_password_length, as: 'maxPasswordLength'
+          property :min_password_length, as: 'minPasswordLength'
         end
       end
       
@@ -1408,6 +1486,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :verification_code, as: 'verificationCode'
+        end
+      end
+      
+      class GoogleCloudIdentitytoolkitV2PasswordPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_non_alphanumeric_characters, as: 'allowedNonAlphanumericCharacters'
+          property :custom_strength_options, as: 'customStrengthOptions', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2CustomStrengthOptions, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2CustomStrengthOptions::Representation
+      
+          property :schema_version, as: 'schemaVersion'
         end
       end
       

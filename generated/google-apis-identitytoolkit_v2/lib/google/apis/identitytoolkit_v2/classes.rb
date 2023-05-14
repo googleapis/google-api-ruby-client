@@ -308,6 +308,11 @@ module Google
         # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2NotificationConfig]
         attr_accessor :notification
       
+        # The configuration for the password policy on the project.
+        # Corresponds to the JSON property `passwordPolicyConfig`
+        # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig]
+        attr_accessor :password_policy_config
+      
         # Configuration related to quotas.
         # Corresponds to the JSON property `quota`
         # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2QuotaConfig]
@@ -351,11 +356,65 @@ module Google
           @multi_tenant = args[:multi_tenant] if args.key?(:multi_tenant)
           @name = args[:name] if args.key?(:name)
           @notification = args[:notification] if args.key?(:notification)
+          @password_policy_config = args[:password_policy_config] if args.key?(:password_policy_config)
           @quota = args[:quota] if args.key?(:quota)
           @recaptcha_config = args[:recaptcha_config] if args.key?(:recaptcha_config)
           @sign_in = args[:sign_in] if args.key?(:sign_in)
           @sms_region_config = args[:sms_region_config] if args.key?(:sms_region_config)
           @subtype = args[:subtype] if args.key?(:subtype)
+        end
+      end
+      
+      # Custom strength options to enforce on user passwords.
+      class GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions
+        include Google::Apis::Core::Hashable
+      
+        # The password must contain a lower case character.
+        # Corresponds to the JSON property `containsLowercaseCharacter`
+        # @return [Boolean]
+        attr_accessor :contains_lowercase_character
+        alias_method :contains_lowercase_character?, :contains_lowercase_character
+      
+        # The password must contain a non alpha numeric character.
+        # Corresponds to the JSON property `containsNonAlphanumericCharacter`
+        # @return [Boolean]
+        attr_accessor :contains_non_alphanumeric_character
+        alias_method :contains_non_alphanumeric_character?, :contains_non_alphanumeric_character
+      
+        # The password must contain a number.
+        # Corresponds to the JSON property `containsNumericCharacter`
+        # @return [Boolean]
+        attr_accessor :contains_numeric_character
+        alias_method :contains_numeric_character?, :contains_numeric_character
+      
+        # The password must contain an upper case character.
+        # Corresponds to the JSON property `containsUppercaseCharacter`
+        # @return [Boolean]
+        attr_accessor :contains_uppercase_character
+        alias_method :contains_uppercase_character?, :contains_uppercase_character
+      
+        # Maximum password length. No default max length
+        # Corresponds to the JSON property `maxPasswordLength`
+        # @return [Fixnum]
+        attr_accessor :max_password_length
+      
+        # Minimum password length. Range from 6 to 30
+        # Corresponds to the JSON property `minPasswordLength`
+        # @return [Fixnum]
+        attr_accessor :min_password_length
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @contains_lowercase_character = args[:contains_lowercase_character] if args.key?(:contains_lowercase_character)
+          @contains_non_alphanumeric_character = args[:contains_non_alphanumeric_character] if args.key?(:contains_non_alphanumeric_character)
+          @contains_numeric_character = args[:contains_numeric_character] if args.key?(:contains_numeric_character)
+          @contains_uppercase_character = args[:contains_uppercase_character] if args.key?(:contains_uppercase_character)
+          @max_password_length = args[:max_password_length] if args.key?(:max_password_length)
+          @min_password_length = args[:min_password_length] if args.key?(:min_password_length)
         end
       end
       
@@ -1174,6 +1233,69 @@ module Google
         end
       end
       
+      # The configuration for the password policy on the project.
+      class GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig
+        include Google::Apis::Core::Hashable
+      
+        # Users must have a password compliant with the password policy to sign-in.
+        # Corresponds to the JSON property `forceUpgradeOnSignin`
+        # @return [Boolean]
+        attr_accessor :force_upgrade_on_signin
+        alias_method :force_upgrade_on_signin?, :force_upgrade_on_signin
+      
+        # Output only. The last time the password policy on the project was updated.
+        # Corresponds to the JSON property `lastUpdateTime`
+        # @return [String]
+        attr_accessor :last_update_time
+      
+        # Which enforcement mode to use for the password policy.
+        # Corresponds to the JSON property `passwordPolicyEnforcementState`
+        # @return [String]
+        attr_accessor :password_policy_enforcement_state
+      
+        # Must be of length 1. Contains the strength attributes for the password policy.
+        # Corresponds to the JSON property `passwordPolicyVersions`
+        # @return [Array<Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion>]
+        attr_accessor :password_policy_versions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @force_upgrade_on_signin = args[:force_upgrade_on_signin] if args.key?(:force_upgrade_on_signin)
+          @last_update_time = args[:last_update_time] if args.key?(:last_update_time)
+          @password_policy_enforcement_state = args[:password_policy_enforcement_state] if args.key?(:password_policy_enforcement_state)
+          @password_policy_versions = args[:password_policy_versions] if args.key?(:password_policy_versions)
+        end
+      end
+      
+      # The strength attributes for the password policy on the project.
+      class GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion
+        include Google::Apis::Core::Hashable
+      
+        # Custom strength options to enforce on user passwords.
+        # Corresponds to the JSON property `customStrengthOptions`
+        # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions]
+        attr_accessor :custom_strength_options
+      
+        # Output only. schema version number for the password policy
+        # Corresponds to the JSON property `schemaVersion`
+        # @return [Fixnum]
+        attr_accessor :schema_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_strength_options = args[:custom_strength_options] if args.key?(:custom_strength_options)
+          @schema_version = args[:schema_version] if args.key?(:schema_version)
+        end
+      end
+      
       # Configuration related to restricting a user's ability to affect their account.
       class GoogleCloudIdentitytoolkitAdminV2Permissions
         include Google::Apis::Core::Hashable
@@ -1832,6 +1954,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The configuration for the password policy on the project.
+        # Corresponds to the JSON property `passwordPolicyConfig`
+        # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig]
+        attr_accessor :password_policy_config
+      
         # The reCAPTCHA Enterprise integration config.
         # Corresponds to the JSON property `recaptchaConfig`
         # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig]
@@ -1870,6 +1997,7 @@ module Google
           @mfa_config = args[:mfa_config] if args.key?(:mfa_config)
           @monitoring = args[:monitoring] if args.key?(:monitoring)
           @name = args[:name] if args.key?(:name)
+          @password_policy_config = args[:password_policy_config] if args.key?(:password_policy_config)
           @recaptcha_config = args[:recaptcha_config] if args.key?(:recaptcha_config)
           @sms_region_config = args[:sms_region_config] if args.key?(:sms_region_config)
           @test_phone_numbers = args[:test_phone_numbers] if args.key?(:test_phone_numbers)
@@ -2107,6 +2235,59 @@ module Google
         # Update properties of this object
         def update!(**args)
           @app_signature_hash = args[:app_signature_hash] if args.key?(:app_signature_hash)
+        end
+      end
+      
+      # Custom strength options to enforce on user passwords.
+      class GoogleCloudIdentitytoolkitV2CustomStrengthOptions
+        include Google::Apis::Core::Hashable
+      
+        # The password must contain a lower case character.
+        # Corresponds to the JSON property `containsLowercaseCharacter`
+        # @return [Boolean]
+        attr_accessor :contains_lowercase_character
+        alias_method :contains_lowercase_character?, :contains_lowercase_character
+      
+        # The password must contain a non alpha numeric character.
+        # Corresponds to the JSON property `containsNonAlphanumericCharacter`
+        # @return [Boolean]
+        attr_accessor :contains_non_alphanumeric_character
+        alias_method :contains_non_alphanumeric_character?, :contains_non_alphanumeric_character
+      
+        # The password must contain a number.
+        # Corresponds to the JSON property `containsNumericCharacter`
+        # @return [Boolean]
+        attr_accessor :contains_numeric_character
+        alias_method :contains_numeric_character?, :contains_numeric_character
+      
+        # The password must contain an upper case character.
+        # Corresponds to the JSON property `containsUppercaseCharacter`
+        # @return [Boolean]
+        attr_accessor :contains_uppercase_character
+        alias_method :contains_uppercase_character?, :contains_uppercase_character
+      
+        # Maximum password length. No default max length
+        # Corresponds to the JSON property `maxPasswordLength`
+        # @return [Fixnum]
+        attr_accessor :max_password_length
+      
+        # Minimum password length. Range from 6 to 30
+        # Corresponds to the JSON property `minPasswordLength`
+        # @return [Fixnum]
+        attr_accessor :min_password_length
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @contains_lowercase_character = args[:contains_lowercase_character] if args.key?(:contains_lowercase_character)
+          @contains_non_alphanumeric_character = args[:contains_non_alphanumeric_character] if args.key?(:contains_non_alphanumeric_character)
+          @contains_numeric_character = args[:contains_numeric_character] if args.key?(:contains_numeric_character)
+          @contains_uppercase_character = args[:contains_uppercase_character] if args.key?(:contains_uppercase_character)
+          @max_password_length = args[:max_password_length] if args.key?(:max_password_length)
+          @min_password_length = args[:min_password_length] if args.key?(:min_password_length)
         end
       end
       
@@ -2505,6 +2686,37 @@ module Google
         # Update properties of this object
         def update!(**args)
           @verification_code = args[:verification_code] if args.key?(:verification_code)
+        end
+      end
+      
+      # Configuration for password policy.
+      class GoogleCloudIdentitytoolkitV2PasswordPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Allowed characters which satisfy the non_alphanumeric requirement.
+        # Corresponds to the JSON property `allowedNonAlphanumericCharacters`
+        # @return [Array<String>]
+        attr_accessor :allowed_non_alphanumeric_characters
+      
+        # Custom strength options to enforce on user passwords.
+        # Corresponds to the JSON property `customStrengthOptions`
+        # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2CustomStrengthOptions]
+        attr_accessor :custom_strength_options
+      
+        # Output only. schema version number for the password policy
+        # Corresponds to the JSON property `schemaVersion`
+        # @return [Fixnum]
+        attr_accessor :schema_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowed_non_alphanumeric_characters = args[:allowed_non_alphanumeric_characters] if args.key?(:allowed_non_alphanumeric_characters)
+          @custom_strength_options = args[:custom_strength_options] if args.key?(:custom_strength_options)
+          @schema_version = args[:schema_version] if args.key?(:schema_version)
         end
       end
       
