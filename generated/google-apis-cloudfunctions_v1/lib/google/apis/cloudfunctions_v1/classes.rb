@@ -1637,8 +1637,8 @@ module Google
         attr_accessor :path
       
         # Version of the secret (version number or the string 'latest'). It is
-        # preferrable to use `latest` version with secret volumes as secret value
-        # changes are reflected immediately.
+        # preferable to use `latest` version with secret volumes as secret value changes
+        # are reflected immediately.
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
