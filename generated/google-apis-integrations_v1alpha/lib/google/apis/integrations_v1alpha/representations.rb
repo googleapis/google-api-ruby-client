@@ -2833,6 +2833,7 @@ module Google
           collection :config_variables, as: 'configVariables', class: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1ConfigVariable, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1ConfigVariable::Representation
       
           property :connector_version, as: 'connectorVersion'
+          property :connector_version_launch_stage, as: 'connectorVersionLaunchStage'
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           collection :destination_configs, as: 'destinationConfigs', class: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1DestinationConfig, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1DestinationConfig::Representation
