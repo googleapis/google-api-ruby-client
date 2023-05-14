@@ -3184,6 +3184,11 @@ module Google
         # @return [String]
         attr_accessor :password
       
+        # The hostname of the vcenter.
+        # Corresponds to the JSON property `resolvedVcenterHost`
+        # @return [String]
+        attr_accessor :resolved_vcenter_host
+      
         # The thumbprint representing the certificate for the vcenter.
         # Corresponds to the JSON property `thumbprint`
         # @return [String]
@@ -3206,6 +3211,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @password = args[:password] if args.key?(:password)
+          @resolved_vcenter_host = args[:resolved_vcenter_host] if args.key?(:resolved_vcenter_host)
           @thumbprint = args[:thumbprint] if args.key?(:thumbprint)
           @username = args[:username] if args.key?(:username)
           @vcenter_ip = args[:vcenter_ip] if args.key?(:vcenter_ip)

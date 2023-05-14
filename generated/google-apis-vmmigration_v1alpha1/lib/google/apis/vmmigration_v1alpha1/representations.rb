@@ -1325,6 +1325,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :password, as: 'password'
+          property :resolved_vcenter_host, as: 'resolvedVcenterHost'
           property :thumbprint, as: 'thumbprint'
           property :username, as: 'username'
           property :vcenter_ip, as: 'vcenterIp'
