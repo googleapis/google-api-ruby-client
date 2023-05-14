@@ -577,6 +577,7 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           hash :labels, as: 'labels'
           hash :metadata, as: 'metadata'
+          property :multislice_node, as: 'multisliceNode'
           property :name, as: 'name'
           property :network_config, as: 'networkConfig', class: Google::Apis::TpuV2alpha1::NetworkConfig, decorator: Google::Apis::TpuV2alpha1::NetworkConfig::Representation
       
