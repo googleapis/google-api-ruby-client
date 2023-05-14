@@ -734,7 +734,9 @@ module Google
       
         # Represents an assigned authorized seller status. This will be populated in the
         # details field of an AssignedTargetingOption when targeting_type is `
-        # TARGETING_TYPE_AUTHORIZED_SELLER_STATUS`.
+        # TARGETING_TYPE_AUTHORIZED_SELLER_STATUS`. If a resource does not have an `
+        # TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` assigned targeting option, it is
+        # using the "Authorized Direct Sellers and Resellers" option.
         # Corresponds to the JSON property `authorizedSellerStatusDetails`
         # @return [Google::Apis::DisplayvideoV1::AuthorizedSellerStatusAssignedTargetingOptionDetails]
         attr_accessor :authorized_seller_status_details
@@ -1359,7 +1361,9 @@ module Google
       
       # Represents an assigned authorized seller status. This will be populated in the
       # details field of an AssignedTargetingOption when targeting_type is `
-      # TARGETING_TYPE_AUTHORIZED_SELLER_STATUS`.
+      # TARGETING_TYPE_AUTHORIZED_SELLER_STATUS`. If a resource does not have an `
+      # TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` assigned targeting option, it is
+      # using the "Authorized Direct Sellers and Resellers" option.
       class AuthorizedSellerStatusAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
