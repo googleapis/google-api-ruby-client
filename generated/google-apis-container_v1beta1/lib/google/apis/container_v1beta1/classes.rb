@@ -4676,11 +4676,11 @@ module Google
         # Server-defined URI for the target of the operation. The format of this is a
         # URI to the resource being modified (such as a cluster, node pool, or node).
         # For node pool repairs, there may be multiple nodes being repaired, but only
-        # one will be the target. Examples: - `https://container.googleapis.com/v1beta1/
-        # projects/123/locations/us-central1/clusters/my-cluster` - `https://container.
-        # googleapis.com/v1beta1/projects/123/zones/us-central1-c/clusters/my-cluster/
-        # nodePools/my-np` - `https://container.googleapis.com/v1beta1/projects/123/
-        # zones/us-central1-c/clusters/my-cluster/nodePools/my-np/node/my-node`
+        # one will be the target. Examples: - ## `https://container.googleapis.com/v1/
+        # projects/123/locations/us-central1/clusters/my-cluster` ## `https://container.
+        # googleapis.com/v1/projects/123/zones/us-central1-c/clusters/my-cluster/
+        # nodePools/my-np` `https://container.googleapis.com/v1/projects/123/zones/us-
+        # central1-c/clusters/my-cluster/nodePools/my-np/node/my-node`
         # Corresponds to the JSON property `targetLink`
         # @return [String]
         attr_accessor :target_link
