@@ -88,18 +88,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ExecuteAirflowCommandResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ExitInfo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class IpAllocationPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -107,12 +95,6 @@ module Google
       end
       
       class ImageVersion
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Line
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -179,12 +161,6 @@ module Google
       end
       
       class OperationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class PollAirflowCommandResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -404,24 +380,6 @@ module Google
         end
       end
       
-      class ExecuteAirflowCommandResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :error, as: 'error'
-          property :execution_id, as: 'executionId'
-          property :pod, as: 'pod'
-          property :pod_namespace, as: 'podNamespace'
-        end
-      end
-      
-      class ExitInfo
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :error, as: 'error'
-          property :exit_code, as: 'exitCode'
-        end
-      end
-      
       class IpAllocationPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -443,14 +401,6 @@ module Google
       
           collection :supported_python_versions, as: 'supportedPythonVersions'
           property :upgrade_disabled, as: 'upgradeDisabled'
-        end
-      end
-      
-      class Line
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :content, as: 'content'
-          property :line_number, as: 'lineNumber'
         end
       end
       
@@ -562,17 +512,6 @@ module Google
           property :resource, as: 'resource'
           property :resource_uuid, as: 'resourceUuid'
           property :state, as: 'state'
-        end
-      end
-      
-      class PollAirflowCommandResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :exit_info, as: 'exitInfo', class: Google::Apis::ComposerV1beta1::ExitInfo, decorator: Google::Apis::ComposerV1beta1::ExitInfo::Representation
-      
-          collection :output, as: 'output', class: Google::Apis::ComposerV1beta1::Line, decorator: Google::Apis::ComposerV1beta1::Line::Representation
-      
-          property :output_end, as: 'outputEnd'
         end
       end
       
