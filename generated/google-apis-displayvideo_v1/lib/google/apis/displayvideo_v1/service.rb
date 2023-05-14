@@ -131,13 +131,15 @@ module Google
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser the line item belongs to.
         # @param [String] filter
-        #   Allows filtering by assigned targeting option properties. Supported syntax: *
+        #   Allows filtering by assigned targeting option fields. Supported syntax: *
         #   Filter expressions are made up of one or more restrictions. * Restrictions can
-        #   be combined by the logical operator `OR`.. * A restriction has the form of ``
-        #   field` `operator` `value``. * The operator must be `EQUALS (=)`. * Supported
-        #   fields: - `targetingType` Examples: * targetingType with value
+        #   be combined by the `OR` logical operator. * A restriction has the form of ``
+        #   field` `operator` `value``. * All fields must use the `EQUALS (=) operator`.
+        #   Supported fields: * `targetingType` Examples: * targetingType with value
         #   TARGETING_TYPE_CHANNEL `targetingType="TARGETING_TYPE_CHANNEL"` The length of
-        #   this field should be no more than 500 characters.
+        #   this field should be no more than 500 characters. Reference our [filter `LIST`
+        #   requests](/display-video/api/guides/how-tos/filters) guide for more
+        #   information.
         # @param [String] order_by
         #   Field by which to sort the list. Acceptable values are: * `targetingType` (
         #   default) The default sorting order is ascending. To specify descending order
@@ -280,20 +282,21 @@ module Google
         # defined by the order_by parameter. A single partner_id is required. Cross-
         # partner listing is not supported.
         # @param [String] filter
-        #   Allows filtering by advertiser properties. Supported syntax: * Filter
-        #   expressions are made up of one or more restrictions. * Restrictions can be
-        #   combined by `AND` or `OR` logical operators. A sequence of restrictions
-        #   implicitly uses `AND`. * A restriction has the form of ``field` `operator` `
-        #   value``. * The operator used on `updateTime` must be `GREATER THAN OR EQUAL TO
-        #   (>=)` or `LESS THAN OR EQUAL TO (<=)`. * The operator must be `EQUALS (=)`. *
-        #   Supported fields: - `advertiserId` - `displayName` - `entityStatus` - `
-        #   updateTime` (input in ISO 8601 format, or YYYY-MM-DDTHH:MM:SSZ) Examples: *
-        #   All active advertisers under a partner: `entityStatus="ENTITY_STATUS_ACTIVE"` *
-        #   All advertisers with an update time less than or equal to `2020-11-04T18:54:
-        #   47Z (format of ISO 8601)`: `updateTime<="2020-11-04T18:54:47Z"` * All
-        #   advertisers with an update time greater than or equal to `2020-11-04T18:54:47Z
-        #   (format of ISO 8601)`: `updateTime>="2020-11-04T18:54:47Z"` The length of this
-        #   field should be no more than 500 characters.
+        #   Allows filtering by advertiser fields. Supported syntax: * Filter expressions
+        #   are made up of one or more restrictions. * Restrictions can be combined by `
+        #   AND` or `OR` logical operators. * A restriction has the form of ``field` `
+        #   operator` `value``. * The `updateTime` field must use the `GREATER THAN OR
+        #   EQUAL TO (>=)` or `LESS THAN OR EQUAL TO (<=)` operators. * All other fields
+        #   must use the `EQUALS (=)` operator. Supported fields: * `advertiserId` * `
+        #   displayName` * `entityStatus` * `updateTime` (input in ISO 8601 format, or `
+        #   YYYY-MM-DDTHH:MM:SSZ`) Examples: * All active advertisers under a partner: `
+        #   entityStatus="ENTITY_STATUS_ACTIVE"` * All advertisers with an update time
+        #   less than or equal to 2020-11-04T18:54:47Z (format of ISO 8601): `updateTime<="
+        #   2020-11-04T18:54:47Z"` * All advertisers with an update time greater than or
+        #   equal to 2020-11-04T18:54:47Z (format of ISO 8601): `updateTime>="2020-11-
+        #   04T18:54:47Z"` The length of this field should be no more than 500 characters.
+        #   Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/
+        #   filters) guide for more information.
         # @param [String] order_by
         #   Field by which to sort the list. Acceptable values are: * `displayName` (
         #   default) * `entityStatus` * `updateTime` The default sorting order is
@@ -431,17 +434,19 @@ module Google
         # @param [Fixnum] campaign_id
         #   Required. The ID of the campaign to list assigned targeting options for.
         # @param [String] filter
-        #   Allows filtering by assigned targeting option properties. Supported syntax: *
+        #   Allows filtering by assigned targeting option fields. Supported syntax: *
         #   Filter expressions are made up of one or more restrictions. * Restrictions can
-        #   be combined by the logical operator `OR` on the same field. * A restriction
-        #   has the form of ``field` `operator` `value``. * The operator must be `EQUALS (=
-        #   )`. * Supported fields: - `targetingType` - `inheritance` Examples: *
-        #   AssignedTargetingOptions of targeting type TARGETING_TYPE_LANGUAGE or
-        #   TARGETING_TYPE_GENDER `targetingType="TARGETING_TYPE_LANGUAGE" OR
-        #   targetingType="TARGETING_TYPE_GENDER"` * AssignedTargetingOptions with
-        #   inheritance status of NOT_INHERITED or INHERITED_FROM_PARTNER `inheritance="
-        #   NOT_INHERITED" OR inheritance="INHERITED_FROM_PARTNER"` The length of this
-        #   field should be no more than 500 characters.
+        #   be combined by the `OR` logical operator. * A restriction has the form of ``
+        #   field` `operator` `value``. * All fields must use the `EQUALS (=)` operator.
+        #   Supported fields: * `targetingType` * `inheritance` Examples: * `
+        #   AssignedTargetingOption` resources of targeting type `TARGETING_TYPE_LANGUAGE`
+        #   or `TARGETING_TYPE_GENDER`: `targetingType="TARGETING_TYPE_LANGUAGE" OR
+        #   targetingType="TARGETING_TYPE_GENDER"` * `AssignedTargetingOption` resources
+        #   with inheritance status of `NOT_INHERITED` or `INHERITED_FROM_PARTNER`: `
+        #   inheritance="NOT_INHERITED" OR inheritance="INHERITED_FROM_PARTNER"` The
+        #   length of this field should be no more than 500 characters. Reference our [
+        #   filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for
+        #   more information.
         # @param [String] order_by
         #   Field by which to sort the list. Acceptable values are: * `targetingType` (
         #   default) The default sorting order is ascending. To specify descending order
@@ -595,21 +600,23 @@ module Google
         # @param [Fixnum] advertiser_id
         #   The ID of the advertiser to list campaigns for.
         # @param [String] filter
-        #   Allows filtering by campaign properties. Supported syntax: * Filter
-        #   expressions are made up of one or more restrictions. * Restrictions can be
-        #   combined by `AND` or `OR` logical operators. A sequence of restrictions
-        #   implicitly uses `AND`. * A restriction has the form of ``field` `operator` `
-        #   value``. * The operator used on `updateTime` must be `GREATER THAN OR EQUAL TO
-        #   (>=)` or `LESS THAN OR EQUAL TO (<=)`. * The operator must be `EQUALS (=)`. *
-        #   Supported fields: - `campaignId` - `displayName` - `entityStatus` - `
-        #   updateTime` (input in ISO 8601 format, or YYYY-MM-DDTHH:MM:SSZ) Examples: *
+        #   Allows filtering by campaign fields. Supported syntax: * Filter expressions
+        #   are made up of one or more restrictions. * Restrictions can be combined by `
+        #   AND` or `OR` logical operators. A sequence of restrictions implicitly uses `
+        #   AND`. * A restriction has the form of ``field` `operator` `value``. * The `
+        #   updateTime` field must use the `GREATER THAN OR EQUAL TO (>=)` or `LESS THAN
+        #   OR EQUAL TO (<=)` operators. * All other fields must use the `EQUALS (=)`
+        #   operator. Supported fields: * `campaignId` * `displayName` * `entityStatus` * `
+        #   updateTime` (input in ISO 8601 format, or `YYYY-MM-DDTHH:MM:SSZ`) Examples: *
         #   All `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED` campaigns under an
         #   advertiser: `(entityStatus="ENTITY_STATUS_ACTIVE" OR entityStatus="
         #   ENTITY_STATUS_PAUSED")` * All campaigns with an update time less than or equal
-        #   to `2020-11-04T18:54:47Z (format of ISO 8601)`: `updateTime<="2020-11-04T18:54:
-        #   47Z"` * All campaigns with an update time greater than or equal to `2020-11-
-        #   04T18:54:47Z (format of ISO 8601)`: `updateTime>="2020-11-04T18:54:47Z"` The
-        #   length of this field should be no more than 500 characters.
+        #   to 2020-11-04T18:54:47Z (format of ISO 8601): `updateTime<="2020-11-04T18:54:
+        #   47Z"` * All campaigns with an update time greater than or equal to 2020-11-
+        #   04T18:54:47Z (format of ISO 8601): `updateTime>="2020-11-04T18:54:47Z"` The
+        #   length of this field should be no more than 500 characters. Reference our [
+        #   filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for
+        #   more information.
         # @param [String] order_by
         #   Field by which to sort the list. Acceptable values are: * `displayName` (
         #   default) * `entityStatus` * `updateTime` The default sorting order is
@@ -766,16 +773,18 @@ module Google
         #   * `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_THIRD_PARTY_VERIFIER` * `
         #   TARGETING_TYPE_VIEWABILITY`
         # @param [String] filter
-        #   Allows filtering by assigned targeting option properties. Supported syntax: *
+        #   Allows filtering by assigned targeting option fields. Supported syntax: *
         #   Filter expressions are made up of one or more restrictions. * Restrictions can
-        #   be combined by the logical operator `OR`. * A restriction has the form of ``
-        #   field` `operator` `value``. * The operator must be `EQUALS (=)`. * Supported
-        #   fields: - `assignedTargetingOptionId` - `inheritance` Examples: *
-        #   AssignedTargetingOptions with ID 1 or 2 `assignedTargetingOptionId="1" OR
-        #   assignedTargetingOptionId="2"` * AssignedTargetingOptions with inheritance
-        #   status of NOT_INHERITED or INHERITED_FROM_PARTNER `inheritance="NOT_INHERITED"
-        #   OR inheritance="INHERITED_FROM_PARTNER"` The length of this field should be no
-        #   more than 500 characters.
+        #   be combined by the `OR` logical operator. * A restriction has the form of ``
+        #   field` `operator` `value``. * All fields must use the `EQUALS (=)` operator.
+        #   Supported fields: * `assignedTargetingOptionId` * `inheritance` Examples: * `
+        #   AssignedTargetingOption` resources with ID 1 or 2 `assignedTargetingOptionId="
+        #   1" OR assignedTargetingOptionId="2"` * `AssignedTargetingOption` resources
+        #   with inheritance status of `NOT_INHERITED` or `INHERITED_FROM_PARTNER` `
+        #   inheritance="NOT_INHERITED" OR inheritance="INHERITED_FROM_PARTNER"` The
+        #   length of this field should be no more than 500 characters. Reference our [
+        #   filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for
+        #   more information.
         # @param [String] order_by
         #   Field by which to sort the list. Acceptable values are: * `
         #   assignedTargetingOptionId` (default) The default sorting order is ascending.
@@ -900,11 +909,13 @@ module Google
         #   The ID of the advertiser that owns the channels.
         # @param [String] filter
         #   Allows filtering by channel fields. Supported syntax: * Filter expressions for
-        #   channel currently can only contain at most one * restriction. * A restriction
-        #   has the form of ``field` `operator` `value``. * The operator must be `CONTAINS
-        #   (:)`. * Supported fields: - `displayName` Examples: * All channels for which
-        #   the display name contains "google": `displayName : "google"`. The length of
-        #   this field should be no more than 500 characters.
+        #   channel can only contain at most one restriction. * A restriction has the form
+        #   of ``field` `operator` `value``. * All fields must use the `HAS (:)` operator.
+        #   Supported fields: * `displayName` Examples: * All channels for which the
+        #   display name contains "google": `displayName : "google"`. The length of this
+        #   field should be no more than 500 characters. Reference our [filter `LIST`
+        #   requests](/display-video/api/guides/how-tos/filters) guide for more
+        #   information.
         # @param [String] order_by
         #   Field by which to sort the list. Acceptable values are: * `displayName` (
         #   default) * `channelId` The default sorting order is ascending. To specify
@@ -1118,10 +1129,13 @@ module Google
         #   Required. The ID of the parent channel to which the requested sites belong.
         # @param [String] filter
         #   Allows filtering by site fields. Supported syntax: * Filter expressions for
-        #   site currently can only contain at most one * restriction. * A restriction has
-        #   the form of ``field` `operator` `value``. * The operator must be `CONTAINS (:)`
-        #   . * Supported fields: - `urlOrAppId` Examples: * All sites for which the URL
-        #   or app ID contains "google": `urlOrAppId : "google"`
+        #   site retrieval can only contain at most one restriction. * A restriction has
+        #   the form of ``field` `operator` `value``. * All fields must use the `HAS (:)`
+        #   operator. Supported fields: * `urlOrAppId` Examples: * All sites for which the
+        #   URL or app ID contains "google": `urlOrAppId : "google"` The length of this
+        #   field should be no more than 500 characters. Reference our [filter `LIST`
+        #   requests](/display-video/api/guides/how-tos/filters) guide for more
+        #   information.
         # @param [String] order_by
         #   Field by which to sort the list. Acceptable values are: * `urlOrAppId` (
         #   default) The default sorting order is ascending. To specify descending order
@@ -1316,41 +1330,38 @@ module Google
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser to list creatives for.
         # @param [String] filter
-        #   Allows filtering by creative properties. Supported syntax: * Filter
-        #   expressions are made up of one or more restrictions. * Restriction for the
-        #   same field must be combined by `OR`. * Restriction for different fields must
-        #   be combined by `AND`. * Between `(` and `)` there can only be restrictions
-        #   combined by `OR` for the same field. * A restriction has the form of ``field` `
-        #   operator` `value``. * The operator must be `EQUALS (=)` for the following
-        #   fields: - `entityStatus` - `creativeType`. - `dimensions` - `minDuration` - `
-        #   maxDuration` - `approvalStatus` - `exchangeReviewStatus` - `dynamic` - `
-        #   creativeId` * The operator must be `HAS (:)` for the following fields: - `
-        #   lineItemIds` * The operator must be `GREATER THAN OR EQUAL TO (>=)` or `LESS
-        #   THAN OR EQUAL TO (<=)` for the following fields: - `updateTime` (input in ISO
-        #   8601 format, or YYYY-MM-DDTHH:MM:SSZ) * For `entityStatus`, `minDuration`, `
-        #   maxDuration`, `updateTime`, and `dynamic`, there may be at most one
-        #   restriction. * For `dimensions`, the value is in the form of `"`width`x`height`
-        #   "`. * For `exchangeReviewStatus`, the value is in the form of ``exchange`-`
-        #   reviewStatus``. * For `minDuration` and `maxDuration`, the value is in the
-        #   form of `"`duration`s"`. Only seconds are supported with millisecond
-        #   granularity. * For `updateTime`, a creative resource's field value reflects
-        #   the last time that a creative has been updated, which includes updates made by
-        #   the system (e.g. creative review updates). * There may be multiple `
-        #   lineItemIds` restrictions in order to search against multiple possible line
-        #   item IDs. * There may be multiple `creativeId` restrictions in order to search
-        #   against multiple possible creative IDs. Examples: * All native creatives: `
-        #   creativeType="CREATIVE_TYPE_NATIVE"` * All active creatives with 300x400 or
-        #   50x100 dimensions: `entityStatus="ENTITY_STATUS_ACTIVE" AND (dimensions="
-        #   300x400" OR dimensions="50x100")` * All dynamic creatives that are approved by
-        #   AdX or AppNexus, with a minimum duration of 5 seconds and 200ms. `dynamic="
-        #   true" AND minDuration="5.2s" AND (exchangeReviewStatus="
+        #   Allows filtering by creative fields. Supported syntax: * Filter expressions
+        #   are made up of one or more restrictions. * Restrictions can be combined by `
+        #   AND` or `OR` logical operators. A sequence of restrictions implicitly uses `
+        #   AND`. * A restriction has the form of ``field` `operator` `value``. * The `
+        #   lineItemIds` field must use the `HAS (:)` operator. * The `updateTime` field
+        #   must use the `GREATER THAN OR EQUAL TO (>=)` or `LESS THAN OR EQUAL TO (<=)`
+        #   operators. * All other fields must use the `EQUALS (=)` operator. * For `
+        #   entityStatus`, `minDuration`, `maxDuration`, `updateTime`, and `dynamic`
+        #   fields, there may be at most one restriction. Supported Fields: * `
+        #   approvalStatus` * `creativeId` * `creativeType` * `dimensions` (input in the
+        #   form of ``width`x`height``) * `dynamic` * `entityStatus` * `
+        #   exchangeReviewStatus` (input in the form of ``exchange`-`reviewStatus``) * `
+        #   lineItemIds` * `maxDuration` (input in the form of ``duration`s`. Only seconds
+        #   are supported) * `minDuration` (input in the form of ``duration`s`. Only
+        #   seconds are supported) * `updateTime` (input in ISO 8601 format, or `YYYY-MM-
+        #   DDTHH:MM:SSZ`) Notes: * For `updateTime`, a creative resource's field value
+        #   reflects the last time that a creative has been updated, which includes
+        #   updates made by the system (e.g. creative review updates). Examples: * All
+        #   native creatives: `creativeType="CREATIVE_TYPE_NATIVE"` * All active creatives
+        #   with 300x400 or 50x100 dimensions: `entityStatus="ENTITY_STATUS_ACTIVE" AND (
+        #   dimensions="300x400" OR dimensions="50x100")` * All dynamic creatives that are
+        #   approved by AdX or AppNexus, with a minimum duration of 5 seconds and 200ms: `
+        #   dynamic="true" AND minDuration="5.2s" AND (exchangeReviewStatus="
         #   EXCHANGE_GOOGLE_AD_MANAGER-REVIEW_STATUS_APPROVED" OR exchangeReviewStatus="
         #   EXCHANGE_APPNEXUS-REVIEW_STATUS_APPROVED")` * All video creatives that are
         #   associated with line item ID 1 or 2: `creativeType="CREATIVE_TYPE_VIDEO" AND (
         #   lineItemIds:1 OR lineItemIds:2)` * Find creatives by multiple creative IDs: `
         #   creativeId=1 OR creativeId=2` * All creatives with an update time greater than
-        #   or equal to `2020-11-04T18:54:47Z (format of ISO 8601)`: `updateTime>="2020-11-
+        #   or equal to 2020-11-04T18:54:47Z (format of ISO 8601): `updateTime>="2020-11-
         #   04T18:54:47Z"` The length of this field should be no more than 500 characters.
+        #   Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/
+        #   filters) guide for more information.
         # @param [String] order_by
         #   Field by which to sort the list. Acceptable values are: * `creativeId` (
         #   default) * `createTime` * `mediaDuration` * `dimensions` (sorts by width first,
@@ -1442,18 +1453,20 @@ module Google
         # @param [Fixnum] insertion_order_id
         #   Required. The ID of the insertion order to list assigned targeting options for.
         # @param [String] filter
-        #   Allows filtering by assigned targeting option properties. Supported syntax: *
+        #   Allows filtering by assigned targeting option fields. Supported syntax: *
         #   Filter expressions are made up of one or more restrictions. * Restrictions can
-        #   be combined by the logical operator `OR` on the same field. * A restriction
-        #   has the form of ``field` `operator` `value``. * The operator must be `EQUALS (=
-        #   )`. * Supported fields: - `targetingType` - `inheritance` Examples: *
-        #   AssignedTargetingOptions of targeting type
-        #   TARGETING_TYPE_PROXIMITY_LOCATION_LIST or TARGETING_TYPE_CHANNEL `
+        #   be combined by the logical operator `OR`. * A restriction has the form of ``
+        #   field` `operator` `value``. * All fields must use the `EQUALS (=)` operator.
+        #   Supported fields: * `targetingType` * `inheritance` Examples: * `
+        #   AssignedTargetingOption` resources of targeting type `
+        #   TARGETING_TYPE_PROXIMITY_LOCATION_LIST` or `TARGETING_TYPE_CHANNEL`: `
         #   targetingType="TARGETING_TYPE_PROXIMITY_LOCATION_LIST" OR targetingType="
-        #   TARGETING_TYPE_CHANNEL"` * AssignedTargetingOptions with inheritance status of
-        #   NOT_INHERITED or INHERITED_FROM_PARTNER `inheritance="NOT_INHERITED" OR
-        #   inheritance="INHERITED_FROM_PARTNER"` The length of this field should be no
-        #   more than 500 characters.
+        #   TARGETING_TYPE_CHANNEL"` * `AssignedTargetingOption` resources with
+        #   inheritance status of `NOT_INHERITED` or `INHERITED_FROM_PARTNER`: `
+        #   inheritance="NOT_INHERITED" OR inheritance="INHERITED_FROM_PARTNER"` The
+        #   length of this field should be no more than 500 characters. Reference our [
+        #   filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for
+        #   more information.
         # @param [String] order_by
         #   Field by which to sort the list. Acceptable values are: * `targetingType` (
         #   default) The default sorting order is ascending. To specify descending order
@@ -1609,26 +1622,27 @@ module Google
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser to list insertion orders for.
         # @param [String] filter
-        #   Allows filtering by insertion order properties. Supported syntax: * Filter
+        #   Allows filtering by insertion order fields. Supported syntax: * Filter
         #   expressions are made up of one or more restrictions. * Restrictions can be
         #   combined by `AND` or `OR` logical operators. A sequence of restrictions
         #   implicitly uses `AND`. * A restriction has the form of ``field` `operator` `
-        #   value``. * The operator used on `budget.budget_segments.date_range.end_date`
-        #   must be LESS THAN (<). * The operator used on `updateTime` must be `GREATER
-        #   THAN OR EQUAL TO (>=)` or `LESS THAN OR EQUAL TO (<=)`. * The operators used
-        #   on all other fields must be `EQUALS (=)`. * Supported fields: - `campaignId` -
-        #   `displayName` - `entityStatus` - `budget.budget_segments.date_range.end_date` (
-        #   input as YYYY-MM-DD) - `updateTime` (input in ISO 8601 format, or YYYY-MM-
-        #   DDTHH:MM:SSZ) Examples: * All insertion orders under a campaign: `campaignId="
-        #   1234"` * All `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED` insertion orders
-        #   under an advertiser: `(entityStatus="ENTITY_STATUS_ACTIVE" OR entityStatus="
-        #   ENTITY_STATUS_PAUSED")` * All insertion orders whose budget segments' dates
-        #   end before March 28, 2019: `budget.budget_segments.date_range.end_date<"2019-
-        #   03-28"` * All insertion orders with an update time less than or equal to `2020-
-        #   11-04T18:54:47Z (format of ISO 8601)`: `updateTime<="2020-11-04T18:54:47Z"` *
-        #   All insertion orders with an update time greater than or equal to `2020-11-
-        #   04T18:54:47Z (format of ISO 8601)`: `updateTime>="2020-11-04T18:54:47Z"` The
-        #   length of this field should be no more than 500 characters.
+        #   value``. * The `budget.budget_segments.date_range.end_date` field must use the
+        #   `LESS THAN (<)` operator. * The `updateTime` field must use the `GREATER THAN
+        #   OR EQUAL TO (>=)` or `LESS THAN OR EQUAL TO (<=)` operators. * All other
+        #   fields must use the `EQUALS (=)` operator. Supported fields: * `campaignId` * `
+        #   displayName` * `entityStatus` * `budget.budget_segments.date_range.end_date` (
+        #   input in the form of `YYYY-MM-DD`) **Deprecated. Not available after June 8,
+        #   2023** * `updateTime` (input in ISO 8601 format, or `YYYY-MM-DDTHH:MM:SSZ`)
+        #   Examples: * All insertion orders under a campaign: `campaignId="1234"` * All `
+        #   ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED` insertion orders under an
+        #   advertiser: `(entityStatus="ENTITY_STATUS_ACTIVE" OR entityStatus="
+        #   ENTITY_STATUS_PAUSED")` * All insertion orders with an update time less than
+        #   or equal to 2020-11-04T18:54:47Z (format of ISO 8601): `updateTime<="2020-11-
+        #   04T18:54:47Z"` * All insertion orders with an update time greater than or
+        #   equal to 2020-11-04T18:54:47Z (format of ISO 8601): `updateTime>="2020-11-
+        #   04T18:54:47Z"` The length of this field should be no more than 500 characters.
+        #   Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/
+        #   filters) guide for more information.
         # @param [String] order_by
         #   Field by which to sort the list. Acceptable values are: * "displayName" (
         #   default) * "entityStatus" * "updateTime" The default sorting order is
@@ -1813,16 +1827,18 @@ module Google
         #   TARGETING_TYPE_USER_REWARDED_CONTENT` * `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `
         #   TARGETING_TYPE_VIEWABILITY`
         # @param [String] filter
-        #   Allows filtering by assigned targeting option properties. Supported syntax: *
+        #   Allows filtering by assigned targeting option fields. Supported syntax: *
         #   Filter expressions are made up of one or more restrictions. * Restrictions can
         #   be combined by the logical operator `OR`. * A restriction has the form of ``
-        #   field` `operator` `value``. * The operator must be `EQUALS (=)`. * Supported
-        #   fields: - `assignedTargetingOptionId` - `inheritance` Examples: *
-        #   AssignedTargetingOptions with ID 1 or 2 `assignedTargetingOptionId="1" OR
-        #   assignedTargetingOptionId="2"` * AssignedTargetingOptions with inheritance
-        #   status of NOT_INHERITED or INHERITED_FROM_PARTNER `inheritance="NOT_INHERITED"
-        #   OR inheritance="INHERITED_FROM_PARTNER"` The length of this field should be no
-        #   more than 500 characters.
+        #   field` `operator` `value``. * All fields must use the `EQUALS (=)` operator.
+        #   Supported fields: * `assignedTargetingOptionId` * `inheritance` Examples: * `
+        #   AssignedTargetingOption` resources with ID 1 or 2: `assignedTargetingOptionId="
+        #   1" OR assignedTargetingOptionId="2"` * `AssignedTargetingOption` resources
+        #   with inheritance status of `NOT_INHERITED` or `INHERITED_FROM_PARTNER`: `
+        #   inheritance="NOT_INHERITED" OR inheritance="INHERITED_FROM_PARTNER"` The
+        #   length of this field should be no more than 500 characters. Reference our [
+        #   filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for
+        #   more information.
         # @param [String] order_by
         #   Field by which to sort the list. Acceptable values are: * `
         #   assignedTargetingOptionId` (default) The default sorting order is ascending.
@@ -2004,18 +2020,20 @@ module Google
         # @param [Fixnum] line_item_id
         #   Required. The ID of the line item to list assigned targeting options for.
         # @param [String] filter
-        #   Allows filtering by assigned targeting option properties. Supported syntax: *
+        #   Allows filtering by assigned targeting option fields. Supported syntax: *
         #   Filter expressions are made up of one or more restrictions. * Restrictions can
-        #   be combined by the logical operator `OR` on the same field. * A restriction
-        #   has the form of ``field` `operator` `value``. * The operator must be `EQUALS (=
-        #   )`. * Supported fields: - `targetingType` - `inheritance` Examples: *
-        #   AssignedTargetingOptions of targeting type
-        #   TARGETING_TYPE_PROXIMITY_LOCATION_LIST or TARGETING_TYPE_CHANNEL `
+        #   be combined by the logical operator `OR`. * A restriction has the form of ``
+        #   field` `operator` `value``. * All fields must use the `EQUALS (=)` operator.
+        #   Supported fields: * `targetingType` * `inheritance` Examples: * `
+        #   AssignedTargetingOption` resources of targeting type `
+        #   TARGETING_TYPE_PROXIMITY_LOCATION_LIST` or `TARGETING_TYPE_CHANNEL`: `
         #   targetingType="TARGETING_TYPE_PROXIMITY_LOCATION_LIST" OR targetingType="
-        #   TARGETING_TYPE_CHANNEL"` * AssignedTargetingOptions with inheritance status of
-        #   NOT_INHERITED or INHERITED_FROM_PARTNER `inheritance="NOT_INHERITED" OR
-        #   inheritance="INHERITED_FROM_PARTNER"` The length of this field should be no
-        #   more than 500 characters.
+        #   TARGETING_TYPE_CHANNEL"` * `AssignedTargetingOption` resources with
+        #   inheritance status of `NOT_INHERITED` or `INHERITED_FROM_PARTNER`: `
+        #   inheritance="NOT_INHERITED" OR inheritance="INHERITED_FROM_PARTNER"` The
+        #   length of this field should be no more than 500 characters. Reference our [
+        #   filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for
+        #   more information.
         # @param [String] order_by
         #   Field by which to sort the list. Acceptable values are: * `targetingType` (
         #   default) The default sorting order is ascending. To specify descending order
@@ -2206,39 +2224,41 @@ module Google
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser to list line items for.
         # @param [String] filter
-        #   Allows filtering by line item properties. Supported syntax: * Filter
-        #   expressions are made up of one or more restrictions. * Restrictions can be
-        #   combined by `AND` or `OR` logical operators. A sequence of restrictions
-        #   implicitly uses `AND`. * A restriction has the form of ``field` `operator` `
-        #   value``. * The operator used on `flight.dateRange.endDate` must be LESS THAN (<
-        #   ). * The operator used on `updateTime` must be `GREATER THAN OR EQUAL TO (>=)`
-        #   or `LESS THAN OR EQUAL TO (<=)`. * The operator used on `warningMessages` must
-        #   be `HAS (:)`. * The operators used on all other fields must be `EQUALS (=)`. *
-        #   Supported properties: - `campaignId` - `displayName` - `insertionOrderId` - `
-        #   entityStatus` - `lineItemId` - `lineItemType` - `flight.dateRange.endDate` (
-        #   input formatted as YYYY-MM-DD) - `warningMessages` - `flight.triggerId` - `
-        #   updateTime` (input in ISO 8601 format, or YYYY-MM-DDTHH:MM:SSZ) - `
-        #   targetedChannelId` - `targetedNegativeKeywordListId` Examples: * All line
-        #   items under an insertion order: `insertionOrderId="1234"` * All `
-        #   ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED` and `
-        #   LINE_ITEM_TYPE_DISPLAY_DEFAULT` line items under an advertiser: `(entityStatus=
-        #   "ENTITY_STATUS_ACTIVE" OR entityStatus="ENTITY_STATUS_PAUSED") AND
-        #   lineItemType="LINE_ITEM_TYPE_DISPLAY_DEFAULT"` * All line items whose flight
-        #   dates end before March 28, 2019: `flight.dateRange.endDate<"2019-03-28"` * All
-        #   line items that have `NO_VALID_CREATIVE` in `warningMessages`: `
+        #   Allows filtering by line item fields. Supported syntax: * Filter expressions
+        #   are made up of one or more restrictions. * Restrictions can be combined by `
+        #   AND` or `OR` logical operators. A sequence of restrictions implicitly uses `
+        #   AND`. * A restriction has the form of ``field` `operator` `value``. * The `
+        #   flight.dateRange.endDate` field must use the `LESS THAN (<)` operator. * The `
+        #   updateTime` field must use the `GREATER THAN OR EQUAL TO (>=)` or `LESS THAN
+        #   OR EQUAL TO (<=)` operators. * The `warningMessages` field must use the `HAS (:
+        #   )` operator. * All other fields must use the `EQUALS (=)` operator. Supported
+        #   fields: * `campaignId` * `displayName` * `entityStatus` * `flight.dateRange.
+        #   endDate` (input formatted as `YYYY-MM-DD`) **Deprecated. Not available after
+        #   June 8, 2023** * `flight.triggerId` * `insertionOrderId` * `lineItemId` * `
+        #   lineItemType` * `targetedChannelId` * `targetedNegativeKeywordListId` * `
+        #   updateTime` (input in ISO 8601 format, or `YYYY-MM-DDTHH:MM:SSZ`) * `
+        #   warningMessages` Examples: * All line items under an insertion order: `
+        #   insertionOrderId="1234"` * All `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED`
+        #   and `LINE_ITEM_TYPE_DISPLAY_DEFAULT` line items under an advertiser: `(
+        #   entityStatus="ENTITY_STATUS_ACTIVE" OR entityStatus="ENTITY_STATUS_PAUSED")
+        #   AND lineItemType="LINE_ITEM_TYPE_DISPLAY_DEFAULT"` * All line items whose
+        #   flight dates end before March 28, 2019: `flight.dateRange.endDate<"2019-03-28"`
+        #   * All line items that have `NO_VALID_CREATIVE` in `warningMessages`: `
         #   warningMessages:"NO_VALID_CREATIVE"` * All line items with an update time less
-        #   than or equal to `2020-11-04T18:54:47Z (format of ISO 8601)`: `updateTime<="
-        #   2020-11-04T18:54:47Z"` * All line items with an update time greater than or
-        #   equal to `2020-11-04T18:54:47Z (format of ISO 8601)`: `updateTime>="2020-11-
-        #   04T18:54:47Z"` * All line items that are using both the specified channel and
-        #   specified negative keyword list in their targeting: `
-        #   targetedNegativeKeywordListId=789 AND targetedChannelId=12345` The length of
-        #   this field should be no more than 500 characters.
+        #   than or equal to 2020-11-04T18:54:47Z (format of ISO 8601): `updateTime<="2020-
+        #   11-04T18:54:47Z"` * All line items with an update time greater than or equal
+        #   to 2020-11-04T18:54:47Z (format of ISO 8601): `updateTime>="2020-11-04T18:54:
+        #   47Z"` * All line items that are using both the specified channel and specified
+        #   negative keyword list in their targeting: `targetedNegativeKeywordListId=789
+        #   AND targetedChannelId=12345` The length of this field should be no more than
+        #   500 characters. Reference our [filter `LIST` requests](/display-video/api/
+        #   guides/how-tos/filters) guide for more information.
         # @param [String] order_by
         #   Field by which to sort the list. Acceptable values are: * `displayName` (
-        #   default) * `entityStatus` * `flight.dateRange.endDate` * `updateTime` The
-        #   default sorting order is ascending. To specify descending order for a field, a
-        #   suffix "desc" should be added to the field name. Example: `displayName desc`.
+        #   default) * `entityStatus` * `flight.dateRange.endDate` **Deprecated. Not
+        #   available after June 8, 2023** * `updateTime` The default sorting order is
+        #   ascending. To specify descending order for a field, a suffix "desc" should be
+        #   added to the field name. Example: `displayName desc`.
         # @param [Fixnum] page_size
         #   Requested page size. Must be between `1` and `200`. If unspecified will
         #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is
@@ -2561,16 +2581,18 @@ module Google
         #   TARGETING_TYPE_YOUTUBE_VIDEO` (only for `
         #   LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items)
         # @param [String] filter
-        #   Allows filtering by assigned targeting option properties. Supported syntax: *
+        #   Allows filtering by assigned targeting option fields. Supported syntax: *
         #   Filter expressions are made up of one or more restrictions. * Restrictions can
         #   be combined by the logical operator `OR`. * A restriction has the form of ``
-        #   field` `operator` `value``. * The operator must be `EQUALS (=)`. * Supported
-        #   fields: - `assignedTargetingOptionId` - `inheritance` Examples: *
-        #   AssignedTargetingOptions with ID 1 or 2 `assignedTargetingOptionId="1" OR
-        #   assignedTargetingOptionId="2"` * AssignedTargetingOptions with inheritance
-        #   status of NOT_INHERITED or INHERITED_FROM_PARTNER `inheritance="NOT_INHERITED"
-        #   OR inheritance="INHERITED_FROM_PARTNER"` The length of this field should be no
-        #   more than 500 characters.
+        #   field` `operator` `value``. * All fields must use the `EQUALS (=)` operator.
+        #   Supported fields: * `assignedTargetingOptionId` * `inheritance` Examples: * `
+        #   AssignedTargetingOption` resources with ID 1 or 2: `assignedTargetingOptionId="
+        #   1" OR assignedTargetingOptionId="2"` * `AssignedTargetingOption` resources
+        #   with inheritance status of `NOT_INHERITED` or `INHERITED_FROM_PARTNER`: `
+        #   inheritance="NOT_INHERITED" OR inheritance="INHERITED_FROM_PARTNER"` The
+        #   length of this field should be no more than 500 characters. Reference our [
+        #   filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for
+        #   more information.
         # @param [String] order_by
         #   Field by which to sort the list. Acceptable values are: * `
         #   assignedTargetingOptionId` (default) The default sorting order is ascending.
@@ -2695,10 +2717,12 @@ module Google
         #   expressions are made up of one or more restrictions. * Restrictions can be
         #   combined by `AND` or `OR` logical operators. A sequence of restrictions
         #   implicitly uses `AND`. * A restriction has the form of ``field` `operator` `
-        #   value``. * The operator must be `EQUALS (=)`. * Supported fields: - `
+        #   value``. * All fields must use the `EQUALS (=)` operator. Supported fields: * `
         #   locationType` Examples: * All regional location list: `locationType="
         #   TARGETING_LOCATION_TYPE_REGIONAL"` * All proximity location list: `
-        #   locationType="TARGETING_LOCATION_TYPE_PROXIMITY"`
+        #   locationType="TARGETING_LOCATION_TYPE_PROXIMITY"` The length of this field
+        #   should be no more than 500 characters. Reference our [filter `LIST` requests](/
+        #   display-video/api/guides/how-tos/filters) guide for more information.
         # @param [String] order_by
         #   Field by which to sort the list. Acceptable values are: * `locationListId` (
         #   default) * `displayName` The default sorting order is ascending. To specify
@@ -2902,10 +2926,11 @@ module Google
         # @param [String] filter
         #   Allows filtering by location list assignment fields. Supported syntax: *
         #   Filter expressions are made up of one or more restrictions. * Restrictions can
-        #   be combined by the logical operator `OR`. * A restriction has the form of ``
-        #   field` `operator` `value``. * The operator must be `EQUALS (=)`. * Supported
-        #   fields: - `assignedLocationId` The length of this field should be no more than
-        #   500 characters.
+        #   be combined by the `OR` logical operator. * A restriction has the form of ``
+        #   field` `operator` `value``. * All fields must use the `EQUALS (=)` operator.
+        #   Supported fields: * `assignedLocationId` The length of this field should be no
+        #   more than 500 characters. Reference our [filter `LIST` requests](/display-
+        #   video/api/guides/how-tos/filters) guide for more information.
         # @param [String] order_by
         #   Field by which to sort the list. Acceptable values are: * `assignedLocationId`
         #   (default) The default sorting order is ascending. To specify descending order
@@ -3114,14 +3139,15 @@ module Google
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser that the fetched manual triggers belong to.
         # @param [String] filter
-        #   Allows filtering by manual trigger properties. Supported syntax: * Filter
+        #   Allows filtering by manual trigger fields. Supported syntax: * Filter
         #   expressions are made up of one or more restrictions. * Restrictions can be
         #   combined by `AND` or `OR` logical operators. A sequence of restrictions
         #   implicitly uses `AND`. * A restriction has the form of ``field` `operator` `
-        #   value``. * The operator must be `EQUALS (=)`. * Supported fields: - `
-        #   displayName` - `state` Examples: * All active manual triggers under an
+        #   value``. * All fields must use the `EQUALS (=)` operator. Supported fields: * `
+        #   displayName` * `state` Examples: * All active manual triggers under an
         #   advertiser: `state="ACTIVE"` The length of this field should be no more than
-        #   500 characters.
+        #   500 characters. Reference our [filter `LIST` requests](/display-video/api/
+        #   guides/how-tos/filters) guide for more information.
         # @param [String] order_by
         #   Field by which to sort the list. Acceptable values are: * `displayName` (
         #   default) * `state` The default sorting order is ascending. To specify
@@ -3525,11 +3551,13 @@ module Google
         #   negative keywords belong.
         # @param [String] filter
         #   Allows filtering by negative keyword fields. Supported syntax: * Filter
-        #   expressions for negative keyword currently can only contain at most one *
-        #   restriction. * A restriction has the form of ``field` `operator` `value``. *
-        #   The operator must be `CONTAINS (:)`. * Supported fields: - `keywordValue`
-        #   Examples: * All negative keywords for which the keyword value contains "google"
-        #   : `keywordValue : "google"`
+        #   expressions for negative keywords can only contain at most one restriction. *
+        #   A restriction has the form of ``field` `operator` `value``. * All fields must
+        #   use the `HAS (:)` operator. Supported fields: * `keywordValue` Examples: * All
+        #   negative keywords for which the keyword value contains "google": `keywordValue
+        #   : "google"` The length of this field should be no more than 500 characters.
+        #   Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/
+        #   filters) guide for more information.
         # @param [String] order_by
         #   Field by which to sort the list. Acceptable values are: * `keywordValue` (
         #   default) The default sorting order is ascending. To specify descending order
@@ -3746,13 +3774,15 @@ module Google
         #   TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_YOUTUBE_VIDEO` *
         #   `TARGETING_TYPE_YOUTUBE_CHANNEL`
         # @param [String] filter
-        #   Allows filtering by assigned targeting option properties. Supported syntax: *
+        #   Allows filtering by assigned targeting option fields. Supported syntax: *
         #   Filter expressions are made up of one or more restrictions. * Restrictions can
-        #   be combined by the logical operator `OR`. * A restriction has the form of ``
-        #   field` `operator` `value``. * The operator must be `EQUALS (=)`. * Supported
-        #   fields: - `assignedTargetingOptionId` Examples: * AssignedTargetingOption with
-        #   ID 123456 `assignedTargetingOptionId="123456"` The length of this field should
-        #   be no more than 500 characters.
+        #   be combined by the `OR` logical operator. * A restriction has the form of ``
+        #   field` `operator` `value``. * All fields must use the `EQUALS (=)` operator.
+        #   Supported fields: * `assignedTargetingOptionId` Examples: * `
+        #   AssignedTargetingOption` with ID 123456: `assignedTargetingOptionId="123456"`
+        #   The length of this field should be no more than 500 characters. Reference our [
+        #   filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for
+        #   more information.
         # @param [String] order_by
         #   Field by which to sort the list. Acceptable values are: * `
         #   assignedTargetingOptionId` (default) The default sorting order is ascending.
@@ -3840,12 +3870,13 @@ module Google
         #   The ID of the advertiser that has access to the fetched combined audiences.
         # @param [String] filter
         #   Allows filtering by combined audience fields. Supported syntax: * Filter
-        #   expressions for combined audiences currently can only contain at most one
-        #   restriction. * A restriction has the form of ``field` `operator` `value``. *
-        #   The operator must be `CONTAINS (:)`. * Supported fields: - `displayName`
-        #   Examples: * All combined audiences for which the display name contains "Google"
-        #   : `displayName : "Google"`. The length of this field should be no more than
-        #   500 characters.
+        #   expressions for combined audiences can only contain at most one restriction. *
+        #   A restriction has the form of ``field` `operator` `value``. * All fields must
+        #   use the `HAS (:)` operator. Supported fields: * `displayName` Examples: * All
+        #   combined audiences for which the display name contains "Google": `displayName :
+        #   "Google"`. The length of this field should be no more than 500 characters.
+        #   Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/
+        #   filters) guide for more information.
         # @param [String] order_by
         #   Field by which to sort the list. Acceptable values are: * `combinedAudienceId`
         #   (default) * `displayName` The default sorting order is ascending. To specify
@@ -3969,18 +4000,17 @@ module Google
         # @param [String] filter
         #   Allows filtering by custom bidding algorithm fields. Supported syntax: *
         #   Filter expressions are made up of one or more restrictions. * Restrictions can
-        #   be combined by `AND`. A sequence of restrictions * implicitly uses `AND`. * A
-        #   restriction has the form of ``field` `operator` `value``. * The operator must
-        #   be `CONTAINS (:)` or `EQUALS (=)`. * The operator must be `CONTAINS (:)` for
-        #   the following field: - `displayName` * The operator must be `EQUALS (=)` for
-        #   the following field: - `customBiddingAlgorithmType` * For `displayName`, the
-        #   value is a string. We return all custom bidding algorithms whose display_name
-        #   contains such string. * For `customBiddingAlgorithmType`, the value is a
-        #   string. We return all algorithms whose custom_bidding_algorithm_type is equal
-        #   to the given type. Examples: * All custom bidding algorithms for which the
-        #   display name contains "politics": `displayName:politics`. * All custom bidding
-        #   algorithms for which the type is "SCRIPT_BASED": `customBiddingAlgorithmType=
-        #   SCRIPT_BASED` The length of this field should be no more than 500 characters.
+        #   be combined by `AND`. A sequence of restrictions implicitly uses `AND`. * A
+        #   restriction has the form of ``field` `operator` `value``. * The `
+        #   customBiddingAlgorithmType` field must use the `EQUALS (=)` operator. * The `
+        #   displayName` field must use the `HAS (:)` operator. Supported fields: * `
+        #   customBiddingAlgorithmType` * `displayName` Examples: * All custom bidding
+        #   algorithms for which the display name contains "politics": `displayName:"
+        #   politics"`. * All custom bidding algorithms for which the type is "
+        #   SCRIPT_BASED": `customBiddingAlgorithmType=SCRIPT_BASED` The length of this
+        #   field should be no more than 500 characters. Reference our [filter `LIST`
+        #   requests](/display-video/api/guides/how-tos/filters) guide for more
+        #   information.
         # @param [String] order_by
         #   Field by which to sort the list. Acceptable values are: * `displayName` (
         #   default) The default sorting order is ascending. To specify descending order
@@ -4280,11 +4310,13 @@ module Google
         #   The ID of the DV360 advertiser that has access to the fetched custom lists.
         # @param [String] filter
         #   Allows filtering by custom list fields. Supported syntax: * Filter expressions
-        #   for custom lists currently can only contain at most one restriction. * A
-        #   restriction has the form of ``field` `operator` `value``. * The operator must
-        #   be `CONTAINS (:)`. * Supported fields: - `displayName` Examples: * All custom
-        #   lists for which the display name contains "Google": `displayName : "Google"`.
-        #   The length of this field should be no more than 500 characters.
+        #   for custom lists can only contain at most one restriction. * A restriction has
+        #   the form of ``field` `operator` `value``. * All fields must use the `HAS (:)`
+        #   operator. Supported fields: * `displayName` Examples: * All custom lists for
+        #   which the display name contains "Google": `displayName:"Google"`. The length
+        #   of this field should be no more than 500 characters. Reference our [filter `
+        #   LIST` requests](/display-video/api/guides/how-tos/filters) guide for more
+        #   information.
         # @param [String] order_by
         #   Field by which to sort the list. Acceptable values are: * `customListId` (
         #   default) * `displayName` The default sorting order is ascending. To specify
@@ -4446,12 +4478,14 @@ module Google
         #   audiences.
         # @param [String] filter
         #   Allows filtering by first and third party audience fields. Supported syntax: *
-        #   Filter expressions for first and third party audiences currently can only
-        #   contain at most one restriction. * A restriction has the form of ``field` `
-        #   operator` `value``. * The operator must be `CONTAINS (:)`. * Supported fields:
-        #   - `displayName` Examples: * All first and third party audiences for which the
-        #   display name contains "Google": `displayName : "Google"`. The length of this
-        #   field should be no more than 500 characters.
+        #   Filter expressions for first and third party audiences can only contain at
+        #   most one restriction. * A restriction has the form of ``field` `operator` `
+        #   value``. * All fields must use the `HAS (:)` operator. Supported fields: * `
+        #   displayName` Examples: * All first and third party audiences for which the
+        #   display name contains "Google": `displayName:"Google"`. The length of this
+        #   field should be no more than 500 characters. Reference our [filter `LIST`
+        #   requests](/display-video/api/guides/how-tos/filters) guide for more
+        #   information.
         # @param [String] order_by
         #   Field by which to sort the list. Acceptable values are: * `
         #   firstAndThirdPartyAudienceId` (default) * `displayName` The default sorting
@@ -4660,12 +4694,13 @@ module Google
         #   The ID of the advertiser that has access to the fetched Google audiences.
         # @param [String] filter
         #   Allows filtering by Google audience fields. Supported syntax: * Filter
-        #   expressions for Google audiences currently can only contain at most one
-        #   restriction. * A restriction has the form of ``field` `operator` `value``. *
-        #   The operator must be `CONTAINS (:)`. * Supported fields: - `displayName`
-        #   Examples: * All Google audiences for which the display name contains "Google":
-        #   `displayName : "Google"`. The length of this field should be no more than 500
-        #   characters.
+        #   expressions for Google audiences can only contain at most one restriction. * A
+        #   restriction has the form of ``field` `operator` `value``. * All fields must
+        #   use the `HAS (:)` operator. Supported fields: * `displayName` Examples: * All
+        #   Google audiences for which the display name contains "Google": `displayName:"
+        #   Google"`. The length of this field should be no more than 500 characters.
+        #   Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/
+        #   filters) guide for more information.
         # @param [String] order_by
         #   Field by which to sort the list. Acceptable values are: * `googleAudienceId` (
         #   default) * `displayName` The default sorting order is ascending. To specify
@@ -4829,16 +4864,18 @@ module Google
         # @param [Fixnum] advertiser_id
         #   The ID of the advertiser that has access to the guaranteed order.
         # @param [String] filter
-        #   Allows filtering by guaranteed order properties. * Filter expressions are made
-        #   up of one or more restrictions. * Restrictions can be combined by `AND` or `OR`
+        #   Allows filtering by guaranteed order fields. * Filter expressions are made up
+        #   of one or more restrictions. * Restrictions can be combined by `AND` or `OR`
         #   logical operators. A sequence of restrictions implicitly uses `AND`. * A
-        #   restriction has the form of ``field` `operator` `value``. * The operator must
-        #   be `EQUALS (=)`. * Supported fields: - `guaranteed_order_id` - `exchange` - `
-        #   display_name` - `status.entityStatus` Examples: * All active guaranteed orders:
-        #   `status.entityStatus="ENTITY_STATUS_ACTIVE"` * Guaranteed orders belonging to
-        #   Google Ad Manager or Rubicon exchanges: `exchange="EXCHANGE_GOOGLE_AD_MANAGER"
-        #   OR exchange="EXCHANGE_RUBICON"` The length of this field should be no more
-        #   than 500 characters.
+        #   restriction has the form of ``field` `operator` `value``. * All fields must
+        #   use the `EQUALS (=)` operator. Supported fields: * `guaranteed_order_id` * `
+        #   exchange` * `display_name` * `status.entityStatus` Examples: * All active
+        #   guaranteed orders: `status.entityStatus="ENTITY_STATUS_ACTIVE"` * Guaranteed
+        #   orders belonging to Google Ad Manager or Rubicon exchanges: `exchange="
+        #   EXCHANGE_GOOGLE_AD_MANAGER" OR exchange="EXCHANGE_RUBICON"` The length of this
+        #   field should be no more than 500 characters. Reference our [filter `LIST`
+        #   requests](/display-video/api/guides/how-tos/filters) guide for more
+        #   information.
         # @param [String] order_by
         #   Field by which to sort the list. Acceptable values are: * `displayName` (
         #   default) The default sorting order is ascending. To specify descending order
@@ -5054,12 +5091,13 @@ module Google
         #   inventory source group is partner-owned, only advertisers to which the group
         #   is explicitly shared can access the group.
         # @param [String] filter
-        #   Allows filtering by inventory source group properties. Supported syntax: *
-        #   Filter expressions are made up of one or more restrictions. * Restrictions can
-        #   be combined by the logical operator `OR`. * A restriction has the form of ``
-        #   field` `operator` `value``. * The operator must be `EQUALS (=)`. * Supported
-        #   fields: - `inventorySourceGroupId` The length of this field should be no more
-        #   than 500 characters.
+        #   Allows filtering by inventory source group fields. Supported syntax: * Filter
+        #   expressions are made up of one or more restrictions. * Restrictions can be
+        #   combined by the logical operator `OR`. * A restriction has the form of ``field`
+        #   `operator` `value``. * All fields must use the `EQUALS (=)` operator.
+        #   Supported fields: * `inventorySourceGroupId` The length of this field should
+        #   be no more than 500 characters. Reference our [filter `LIST` requests](/
+        #   display-video/api/guides/how-tos/filters) guide for more information.
         # @param [String] order_by
         #   Field by which to sort the list. Acceptable values are: * `displayName` (
         #   default) * `inventorySourceGroupId` The default sorting order is ascending. To
@@ -5290,10 +5328,11 @@ module Google
         # @param [String] filter
         #   Allows filtering by assigned inventory source fields. Supported syntax: *
         #   Filter expressions are made up of one or more restrictions. * Restrictions can
-        #   be combined by the logical operator `OR`. * A restriction has the form of ``
-        #   field` `operator` `value``. * The operator must be `EQUALS (=)`. * Supported
-        #   fields: - `assignedInventorySourceId` The length of this field should be no
-        #   more than 500 characters.
+        #   be combined by the `OR` logical operator. * A restriction has the form of ``
+        #   field` `operator` `value``. * All fields must use the `EQUALS (=)` operator.
+        #   Supported fields: * `assignedInventorySourceId` The length of this field
+        #   should be no more than 500 characters. Reference our [filter `LIST` requests](/
+        #   display-video/api/guides/how-tos/filters) guide for more information.
         # @param [String] order_by
         #   Field by which to sort the list. Acceptable values are: * `
         #   assignedInventorySourceId` (default) The default sorting order is ascending.
@@ -5457,17 +5496,18 @@ module Google
         # @param [Fixnum] advertiser_id
         #   The ID of the advertiser that has access to the inventory source.
         # @param [String] filter
-        #   Allows filtering by inventory source properties. Supported syntax: * Filter
+        #   Allows filtering by inventory source fields. Supported syntax: * Filter
         #   expressions are made up of one or more restrictions. * Restrictions can be
         #   combined by `AND` or `OR` logical operators. A sequence of restrictions
         #   implicitly uses `AND`. * A restriction has the form of ``field` `operator` `
-        #   value``. * The operator must be `EQUALS (=)`. * Supported fields: - `status.
-        #   entityStatus` - `commitment` - `deliveryMethod` - `rateDetails.rateType` - `
-        #   exchange` Examples: * All active inventory sources: `status.entityStatus="
+        #   value``. * All fields must use the `EQUALS (=)` operator. Supported fields: * `
+        #   status.entityStatus` * `commitment` * `deliveryMethod` * `rateDetails.rateType`
+        #   * `exchange` Examples: * All active inventory sources: `status.entityStatus="
         #   ENTITY_STATUS_ACTIVE"` * Inventory sources belonging to Google Ad Manager or
         #   Rubicon exchanges: `exchange="EXCHANGE_GOOGLE_AD_MANAGER" OR exchange="
         #   EXCHANGE_RUBICON"` The length of this field should be no more than 500
-        #   characters.
+        #   characters. Reference our [filter `LIST` requests](/display-video/api/guides/
+        #   how-tos/filters) guide for more information.
         # @param [String] order_by
         #   Field by which to sort the list. Acceptable values are: * `displayName` (
         #   default) The default sorting order is ascending. To specify descending order
@@ -5712,13 +5752,15 @@ module Google
         # Lists partners that are accessible to the current user. The order is defined
         # by the order_by parameter.
         # @param [String] filter
-        #   Allows filtering by partner properties. Supported syntax: * Filter expressions
-        #   are made up of one or more restrictions. * Restrictions can be combined by `
-        #   AND` or `OR` logical operators. A sequence of restrictions implicitly uses `
-        #   AND`. * A restriction has the form of ``field` `operator` `value``. * The
-        #   operator must be `EQUALS (=)`. * Supported fields: - `entityStatus` Examples: *
+        #   Allows filtering by partner fields. Supported syntax: * Filter expressions are
+        #   made up of one or more restrictions. * Restrictions can be combined by `AND`
+        #   or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. *
+        #   A restriction has the form of ``field` `operator` `value``. * All fields must
+        #   use the `EQUALS (=)` operator. Supported fields: * `entityStatus` Examples: *
         #   All active partners: `entityStatus="ENTITY_STATUS_ACTIVE"` The length of this
-        #   field should be no more than 500 characters.
+        #   field should be no more than 500 characters. Reference our [filter `LIST`
+        #   requests](/display-video/api/guides/how-tos/filters) guide for more
+        #   information.
         # @param [String] order_by
         #   Field by which to sort the list. Acceptable values are: * `displayName` The
         #   default sorting order is ascending. To specify descending order for a field, a
@@ -5841,11 +5883,13 @@ module Google
         #   The ID of the advertiser that owns the channels.
         # @param [String] filter
         #   Allows filtering by channel fields. Supported syntax: * Filter expressions for
-        #   channel currently can only contain at most one * restriction. * A restriction
-        #   has the form of ``field` `operator` `value``. * The operator must be `CONTAINS
-        #   (:)`. * Supported fields: - `displayName` Examples: * All channels for which
-        #   the display name contains "google": `displayName : "google"`. The length of
-        #   this field should be no more than 500 characters.
+        #   channel can only contain at most one restriction. * A restriction has the form
+        #   of ``field` `operator` `value``. * All fields must use the `HAS (:)` operator.
+        #   Supported fields: * `displayName` Examples: * All channels for which the
+        #   display name contains "google": `displayName : "google"`. The length of this
+        #   field should be no more than 500 characters. Reference our [filter `LIST`
+        #   requests](/display-video/api/guides/how-tos/filters) guide for more
+        #   information.
         # @param [String] order_by
         #   Field by which to sort the list. Acceptable values are: * `displayName` (
         #   default) * `channelId` The default sorting order is ascending. To specify
@@ -6059,10 +6103,13 @@ module Google
         #   The ID of the advertiser that owns the parent channel.
         # @param [String] filter
         #   Allows filtering by site fields. Supported syntax: * Filter expressions for
-        #   site currently can only contain at most one * restriction. * A restriction has
-        #   the form of ``field` `operator` `value``. * The operator must be `CONTAINS (:)`
-        #   . * Supported fields: - `urlOrAppId` Examples: * All sites for which the URL
-        #   or app ID contains "google": `urlOrAppId : "google"`
+        #   site retrieval can only contain at most one restriction. * A restriction has
+        #   the form of ``field` `operator` `value``. * All fields must use the `HAS (:)`
+        #   operator. Supported fields: * `urlOrAppId` Examples: * All sites for which the
+        #   URL or app ID contains "google": `urlOrAppId : "google"` The length of this
+        #   field should be no more than 500 characters. Reference our [filter `LIST`
+        #   requests](/display-video/api/guides/how-tos/filters) guide for more
+        #   information.
         # @param [String] order_by
         #   Field by which to sort the list. Acceptable values are: * `urlOrAppId` (
         #   default) The default sorting order is ascending. To specify descending order
@@ -6268,13 +6315,15 @@ module Google
         #   Required. Identifies the type of assigned targeting options to list. Supported
         #   targeting types: * `TARGETING_TYPE_CHANNEL`
         # @param [String] filter
-        #   Allows filtering by assigned targeting option properties. Supported syntax: *
+        #   Allows filtering by assigned targeting option fields. Supported syntax: *
         #   Filter expressions are made up of one or more restrictions. * Restrictions can
         #   be combined by the logical operator `OR`. * A restriction has the form of ``
-        #   field` `operator` `value``. * The operator must be `EQUALS (=)`. * Supported
-        #   fields: - `assignedTargetingOptionId` Examples: * AssignedTargetingOption with
-        #   ID 123456 `assignedTargetingOptionId="123456"` The length of this field should
-        #   be no more than 500 characters.
+        #   field` `operator` `value``. * All fields must use the `EQUALS (=)` operator.
+        #   Supported fields: * `assignedTargetingOptionId` Examples: * `
+        #   AssignedTargetingOption` resource with ID 123456: `assignedTargetingOptionId="
+        #   123456"` The length of this field should be no more than 500 characters.
+        #   Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/
+        #   filters) guide for more information.
         # @param [String] order_by
         #   Field by which to sort the list. Acceptable values are: * `
         #   assignedTargetingOptionId` (default) The default sorting order is ascending.
@@ -6460,18 +6509,20 @@ module Google
         # @param [Fixnum] advertiser_id
         #   Required. The Advertiser this request is being made in the context of.
         # @param [String] filter
-        #   Allows filtering by targeting option properties. Supported syntax: * Filter
+        #   Allows filtering by targeting option fields. Supported syntax: * Filter
         #   expressions are made up of one or more restrictions. * Restrictions can be
         #   combined by `OR` logical operators. * A restriction has the form of ``field` `
-        #   operator` `value``. * The operator must be "=" (equal sign). * Supported
-        #   fields: - `carrierAndIspDetails.type` - `geoRegionDetails.geoRegionType` - `
+        #   operator` `value``. * All fields must use the `EQUALS (=)` operator. Supported
+        #   fields: * `carrierAndIspDetails.type` * `geoRegionDetails.geoRegionType` * `
         #   targetingOptionId` Examples: * All `GEO REGION` targeting options that belong
         #   to sub type `GEO_REGION_TYPE_COUNTRY` or `GEO_REGION_TYPE_STATE`: `
         #   geoRegionDetails.geoRegionType="GEO_REGION_TYPE_COUNTRY" OR geoRegionDetails.
         #   geoRegionType="GEO_REGION_TYPE_STATE"` * All `CARRIER AND ISP` targeting
         #   options that belong to sub type `CARRIER_AND_ISP_TYPE_CARRIER`: `
-        #   carrierAndIspDetails.type="CARRIER_AND_ISP_TYPE_CARRIER"`. The length of this
-        #   field should be no more than 500 characters.
+        #   carrierAndIspDetails.type="CARRIER_AND_ISP_TYPE_CARRIER"` The length of this
+        #   field should be no more than 500 characters. Reference our [filter `LIST`
+        #   requests](/display-video/api/guides/how-tos/filters) guide for more
+        #   information.
         # @param [String] order_by
         #   Field by which to sort the list. Acceptable values are: * `targetingOptionId` (
         #   default) The default sorting order is ascending. To specify descending order
@@ -6556,7 +6607,10 @@ module Google
         # Bulk edits user roles for a user. The operation will delete the assigned user
         # roles provided in BulkEditAssignedUserRolesRequest.deletedAssignedUserRoles
         # and then assign the user roles provided in BulkEditAssignedUserRolesRequest.
-        # createdAssignedUserRoles.
+        # createdAssignedUserRoles. This method has unique authentication requirements.
+        # Read the prerequisites in our [Managing Users guide](/display-video/api/guides/
+        # users/overview#prerequisites) before using this method. The "Try this method"
+        # feature does not work for this method.
         # @param [Fixnum] user_id
         #   Required. The ID of the user to which the assigned user roles belong.
         # @param [Google::Apis::DisplayvideoV1::BulkEditAssignedUserRolesRequest] bulk_edit_assigned_user_roles_request_object
@@ -6589,7 +6643,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new user. Returns the newly created user if successful.
+        # Creates a new user. Returns the newly created user if successful. This method
+        # has unique authentication requirements. Read the prerequisites in our [
+        # Managing Users guide](/display-video/api/guides/users/overview#prerequisites)
+        # before using this method. The "Try this method" feature does not work for this
+        # method.
         # @param [Google::Apis::DisplayvideoV1::User] user_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -6619,7 +6677,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a user.
+        # Deletes a user. This method has unique authentication requirements. Read the
+        # prerequisites in our [Managing Users guide](/display-video/api/guides/users/
+        # overview#prerequisites) before using this method. The "Try this method"
+        # feature does not work for this method.
         # @param [Fixnum] user_id
         #   Required. The ID of the user to delete.
         # @param [String] fields
@@ -6649,7 +6710,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a user.
+        # Gets a user. This method has unique authentication requirements. Read the
+        # prerequisites in our [Managing Users guide](/display-video/api/guides/users/
+        # overview#prerequisites) before using this method. The "Try this method"
+        # feature does not work for this method.
         # @param [Fixnum] user_id
         #   Required. The ID of the user to fetch.
         # @param [String] fields
@@ -6680,29 +6744,35 @@ module Google
         end
         
         # Lists users that are accessible to the current user. If two users have user
-        # roles on the same partner or advertiser, they can access each other.
+        # roles on the same partner or advertiser, they can access each other. This
+        # method has unique authentication requirements. Read the prerequisites in our [
+        # Managing Users guide](/display-video/api/guides/users/overview#prerequisites)
+        # before using this method. The "Try this method" feature does not work for this
+        # method.
         # @param [String] filter
-        #   Allows filtering by user properties. Supported syntax: * Filter expressions
-        #   are made up of one or more restrictions. * Restrictions can be combined by the
+        #   Allows filtering by user fields. Supported syntax: * Filter expressions are
+        #   made up of one or more restrictions. * Restrictions can be combined by the
         #   logical operator `AND`. * A restriction has the form of ``field` `operator` `
-        #   value``. * The operator must be `CONTAINS (:)` or `EQUALS (=)`. * The operator
-        #   must be `CONTAINS (:)` for the following fields: - `displayName` - `email` *
-        #   The operator must be `EQUALS (=)` for the following fields: - `
-        #   assignedUserRole.userRole` - `assignedUserRole.partnerId` - `assignedUserRole.
-        #   advertiserId` - `assignedUserRole.entityType`: A synthetic field of
-        #   AssignedUserRole used for filtering. Identifies the type of entity to which
-        #   the user role is assigned. Valid values are `Partner` and `Advertiser`. - `
-        #   assignedUserRole.parentPartnerId`: A synthetic field of AssignedUserRole used
-        #   for filtering. Identifies the parent partner of the entity to which the user
-        #   role is assigned." Examples: * The user with displayName containing `foo`: `
-        #   displayName:"foo"` * The user with email containing `bar`: `email:"bar"` * All
-        #   users with standard user roles: `assignedUserRole.userRole="STANDARD"` * All
-        #   users with user roles for partner 123: `assignedUserRole.partnerId="123"` *
-        #   All users with user roles for advertiser 123: `assignedUserRole.advertiserId="
-        #   123"` * All users with partner level user roles: `entityType="PARTNER"` * All
-        #   users with user roles for partner 123 and advertisers under partner 123: `
+        #   value``. * The `budget.budget_segments.date_range.end_date` field must use the
+        #   `LESS THAN (<)` operator. * The `displayName and `email` field must use the `
+        #   HAS (:)` operator. * All other fields must use the `EQUALS (=)` operator.
+        #   Supported fields: * `assignedUserRole.advertiserId` * `assignedUserRole.
+        #   entityType` * This is synthetic field of `AssignedUserRole` used for filtering.
+        #   Identifies the type of entity to which the user role is assigned. Valid
+        #   values are `Partner` and `Advertiser`. * `assignedUserRole.parentPartnerId` *
+        #   This is a synthetic field of `AssignedUserRole` used for filtering. Identifies
+        #   the parent partner of the entity to which the user role is assigned. * `
+        #   assignedUserRole.partnerId` * `assignedUserRole.userRole` * `displayName` * `
+        #   email` Examples: * The user with `displayName` containing "foo": `displayName:"
+        #   foo"` * The user with `email` containing "bar": `email:"bar"` * All users with
+        #   standard user roles: `assignedUserRole.userRole="STANDARD"` * All users with
+        #   user roles for partner 123: `assignedUserRole.partnerId="123"` * All users
+        #   with user roles for advertiser 123: `assignedUserRole.advertiserId="123"` *
+        #   All users with partner level user roles: `entityType="PARTNER"` * All users
+        #   with user roles for partner 123 and advertisers under partner 123: `
         #   parentPartnerId="123"` The length of this field should be no more than 500
-        #   characters.
+        #   characters. Reference our [filter `LIST` requests](/display-video/api/guides/
+        #   how-tos/filters) guide for more information.
         # @param [String] order_by
         #   Field by which to sort the list. Acceptable values are: * `displayName` (
         #   default) The default sorting order is ascending. To specify descending order
@@ -6746,7 +6816,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing user. Returns the updated user if successful.
+        # Updates an existing user. Returns the updated user if successful. This method
+        # has unique authentication requirements. Read the prerequisites in our [
+        # Managing Users guide](/display-video/api/guides/users/overview#prerequisites)
+        # before using this method. The "Try this method" feature does not work for this
+        # method.
         # @param [Fixnum] user_id
         #   Output only. The unique ID of the user. Assigned by the system.
         # @param [Google::Apis::DisplayvideoV1::User] user_object
