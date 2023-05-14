@@ -742,6 +742,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SbomReferenceNote
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SbomReferenceOccurrence
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SbomReferenceIntotoPayload
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SbomReferenceIntotoPredicate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SetIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2077,6 +2101,8 @@ module Google
           collection :related_note_names, as: 'relatedNoteNames'
           collection :related_url, as: 'relatedUrl', class: Google::Apis::ContaineranalysisV1::RelatedUrl, decorator: Google::Apis::ContaineranalysisV1::RelatedUrl::Representation
       
+          property :sbom_reference, as: 'sbomReference', class: Google::Apis::ContaineranalysisV1::SbomReferenceNote, decorator: Google::Apis::ContaineranalysisV1::SbomReferenceNote::Representation
+      
           property :short_description, as: 'shortDescription'
           property :update_time, as: 'updateTime'
           property :upgrade, as: 'upgrade', class: Google::Apis::ContaineranalysisV1::UpgradeNote, decorator: Google::Apis::ContaineranalysisV1::UpgradeNote::Representation
@@ -2115,6 +2141,8 @@ module Google
       
           property :remediation, as: 'remediation'
           property :resource_uri, as: 'resourceUri'
+          property :sbom_reference, as: 'sbomReference', class: Google::Apis::ContaineranalysisV1::SbomReferenceOccurrence, decorator: Google::Apis::ContaineranalysisV1::SbomReferenceOccurrence::Representation
+      
           property :update_time, as: 'updateTime'
           property :upgrade, as: 'upgrade', class: Google::Apis::ContaineranalysisV1::UpgradeOccurrence, decorator: Google::Apis::ContaineranalysisV1::UpgradeOccurrence::Representation
       
@@ -2250,6 +2278,47 @@ module Google
           property :project_repo_id, as: 'projectRepoId', class: Google::Apis::ContaineranalysisV1::ProjectRepoId, decorator: Google::Apis::ContaineranalysisV1::ProjectRepoId::Representation
       
           property :uid, as: 'uid'
+        end
+      end
+      
+      class SbomReferenceNote
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :format, as: 'format'
+          property :version, as: 'version'
+        end
+      end
+      
+      class SbomReferenceOccurrence
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :payload, as: 'payload', class: Google::Apis::ContaineranalysisV1::SbomReferenceIntotoPayload, decorator: Google::Apis::ContaineranalysisV1::SbomReferenceIntotoPayload::Representation
+      
+          property :payload_type, as: 'payloadType'
+          collection :signatures, as: 'signatures', class: Google::Apis::ContaineranalysisV1::EnvelopeSignature, decorator: Google::Apis::ContaineranalysisV1::EnvelopeSignature::Representation
+      
+        end
+      end
+      
+      class SbomReferenceIntotoPayload
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :_type, as: '_type'
+          property :predicate, as: 'predicate', class: Google::Apis::ContaineranalysisV1::SbomReferenceIntotoPredicate, decorator: Google::Apis::ContaineranalysisV1::SbomReferenceIntotoPredicate::Representation
+      
+          property :predicate_type, as: 'predicateType'
+          collection :subject, as: 'subject', class: Google::Apis::ContaineranalysisV1::Subject, decorator: Google::Apis::ContaineranalysisV1::Subject::Representation
+      
+        end
+      end
+      
+      class SbomReferenceIntotoPredicate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :digest, as: 'digest'
+          property :location, as: 'location'
+          property :mime_type, as: 'mimeType'
+          property :referrer_id, as: 'referrerId'
         end
       end
       
