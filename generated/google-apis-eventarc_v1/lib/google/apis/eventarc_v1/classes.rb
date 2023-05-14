@@ -404,8 +404,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The name of a CloudEvents attribute. Currently, only a subset of
-        # attributes are supported for filtering. All triggers MUST provide a filter for
-        # the 'type' attribute.
+        # attributes are supported for filtering. You can [retrieve a specific provider'
+        # s supported event types](/eventarc/docs/list-providers#describe-provider). All
+        # triggers MUST provide a filter for the 'type' attribute.
         # Corresponds to the JSON property `attribute`
         # @return [String]
         attr_accessor :attribute
@@ -1414,15 +1415,11 @@ module Google
         attr_accessor :name
       
         # Optional. The IAM service account email associated with the trigger. The
-        # service account represents the identity of the trigger. The principal who
-        # calls this API must have the `iam.serviceAccounts.actAs` permission in the
-        # service account. See https://cloud.google.com/iam/docs/understanding-service-
-        # accounts?hl=en#sa_common for more information. For Cloud Run destinations,
-        # this service account is used to generate identity tokens when invoking the
-        # service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-
-        # service-account for information on how to invoke authenticated Cloud Run
-        # services. To create Audit Log triggers, the service account should also have
-        # the `roles/eventarc.eventReceiver` IAM role.
+        # service account represents the identity of the trigger. The `iam.
+        # serviceAccounts.actAs` permission must be granted on the service account to
+        # allow a principal to impersonate the service account. For more information,
+        # see the [Roles and permissions](/eventarc/docs/all-roles-permissions) page
+        # specific to the trigger destination.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
         attr_accessor :service_account
