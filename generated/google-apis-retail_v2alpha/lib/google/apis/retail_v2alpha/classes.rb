@@ -662,13 +662,13 @@ module Google
         end
       end
       
-      # More configs of the frequently-bought-together model type.
+      # Additional configs for the frequently-bought-together model type.
       class GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. Specifies the context of the model when used in predict requests.
-        # Only settable for the `frequently-bought-together` type. Will default to
-        # MULTI_CONTEXT if not specified.
+        # Optional. Specifies the context of the model when it is used in predict
+        # requests. Can only be set for the `frequently-bought-together` type. If it isn'
+        # t specified, it defaults to MULTIPLE_CONTEXT_PRODUCTS.
         # Corresponds to the JSON property `contextProductsType`
         # @return [String]
         attr_accessor :context_products_type
@@ -687,7 +687,7 @@ module Google
       class GoogleCloudRetailV2ModelModelFeaturesConfig
         include Google::Apis::Core::Hashable
       
-        # More configs of the frequently-bought-together model type.
+        # Additional configs for the frequently-bought-together model type.
         # Corresponds to the JSON property `frequentlyBoughtTogetherConfig`
         # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig]
         attr_accessor :frequently_bought_together_config
@@ -1429,23 +1429,6 @@ module Google
         # @return [String]
         attr_accessor :exact_searchable_option
       
-        # If you don't set the facet SearchRequest.FacetSpec.FacetKey.intervals to a
-        # numerical attribute, then a weekly pipeline calculates intervals using some
-        # percentiles on the distribution of all its product numerical attribute values.
-        # The calculated intervals might not be ideal for some attributes. Therefore, we
-        # give you the option the overwrite them. For any numerical attribute that is
-        # passed as a facet key in the request along with given intervals, the given
-        # intervals are the facet intervals returned in the response.
-        # Corresponds to the JSON property `facetIntervals`
-        # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaInterval>]
-        attr_accessor :facet_intervals
-      
-        # Each instance represents a list of attribute values to ignore as facet values
-        # for a specific time range.
-        # Corresponds to the JSON property `ignoredFacetValues`
-        # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCatalogAttributeIgnoredFacetValues>]
-        attr_accessor :ignored_facet_values
-      
         # Output only. Indicates whether this attribute has been used by any products. `
         # True` if at least one Product is using this attribute in Product.attributes.
         # Otherwise, this field is `False`. CatalogAttribute can be pre-loaded by using
@@ -1519,8 +1502,6 @@ module Google
         def update!(**args)
           @dynamic_facetable_option = args[:dynamic_facetable_option] if args.key?(:dynamic_facetable_option)
           @exact_searchable_option = args[:exact_searchable_option] if args.key?(:exact_searchable_option)
-          @facet_intervals = args[:facet_intervals] if args.key?(:facet_intervals)
-          @ignored_facet_values = args[:ignored_facet_values] if args.key?(:ignored_facet_values)
           @in_use = args[:in_use] if args.key?(:in_use)
           @indexable_option = args[:indexable_option] if args.key?(:indexable_option)
           @key = args[:key] if args.key?(:key)
@@ -1528,44 +1509,6 @@ module Google
           @retrievable_option = args[:retrievable_option] if args.key?(:retrievable_option)
           @searchable_option = args[:searchable_option] if args.key?(:searchable_option)
           @type = args[:type] if args.key?(:type)
-        end
-      end
-      
-      # Facet values to ignore on facets during the specified time range for the given
-      # SearchResponse.Facet.key attribute.
-      class GoogleCloudRetailV2alphaCatalogAttributeIgnoredFacetValues
-        include Google::Apis::Core::Hashable
-      
-        # If start time is empty and end time is not empty, then ignore these facet
-        # values before end time.
-        # Corresponds to the JSON property `endTime`
-        # @return [String]
-        attr_accessor :end_time
-      
-        # Time range for the current list of facet values to ignore. If multiple time
-        # ranges are specified for an facet value for the current attribute, consider
-        # all of them. If both are empty, ignore always. If start time and end time are
-        # set, then start time must be before end time. If start time is not empty and
-        # end time is empty, then will ignore these facet values after the start time.
-        # Corresponds to the JSON property `startTime`
-        # @return [String]
-        attr_accessor :start_time
-      
-        # List of facet values to ignore for the following time range. The facet values
-        # are the same as the attribute values.
-        # Corresponds to the JSON property `values`
-        # @return [Array<String>]
-        attr_accessor :values
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @end_time = args[:end_time] if args.key?(:end_time)
-          @start_time = args[:start_time] if args.key?(:start_time)
-          @values = args[:values] if args.key?(:values)
         end
       end
       
@@ -3407,13 +3350,13 @@ module Google
         end
       end
       
-      # More configs of the frequently-bought-together model type.
+      # Additional configs for the frequently-bought-together model type.
       class GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. Specifies the context of the model when used in predict requests.
-        # Only settable for the `frequently-bought-together` type. Will default to
-        # MULTI_CONTEXT if not specified.
+        # Optional. Specifies the context of the model when it is used in predict
+        # requests. Can only be set for the `frequently-bought-together` type. If it isn'
+        # t specified, it defaults to MULTIPLE_CONTEXT_PRODUCTS.
         # Corresponds to the JSON property `contextProductsType`
         # @return [String]
         attr_accessor :context_products_type
@@ -3432,7 +3375,7 @@ module Google
       class GoogleCloudRetailV2alphaModelModelFeaturesConfig
         include Google::Apis::Core::Hashable
       
-        # More configs of the frequently-bought-together model type.
+        # Additional configs for the frequently-bought-together model type.
         # Corresponds to the JSON property `frequentlyBoughtTogetherConfig`
         # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfig]
         attr_accessor :frequently_bought_together_config
@@ -7573,13 +7516,13 @@ module Google
         end
       end
       
-      # More configs of the frequently-bought-together model type.
+      # Additional configs for the frequently-bought-together model type.
       class GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. Specifies the context of the model when used in predict requests.
-        # Only settable for the `frequently-bought-together` type. Will default to
-        # MULTI_CONTEXT if not specified.
+        # Optional. Specifies the context of the model when it is used in predict
+        # requests. Can only be set for the `frequently-bought-together` type. If it isn'
+        # t specified, it defaults to MULTIPLE_CONTEXT_PRODUCTS.
         # Corresponds to the JSON property `contextProductsType`
         # @return [String]
         attr_accessor :context_products_type
@@ -7598,7 +7541,7 @@ module Google
       class GoogleCloudRetailV2betaModelModelFeaturesConfig
         include Google::Apis::Core::Hashable
       
-        # More configs of the frequently-bought-together model type.
+        # Additional configs for the frequently-bought-together model type.
         # Corresponds to the JSON property `frequentlyBoughtTogetherConfig`
         # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfig]
         attr_accessor :frequently_bought_together_config
