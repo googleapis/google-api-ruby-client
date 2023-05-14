@@ -30,7 +30,7 @@ module Google
       #    Accessapproval = Google::Apis::AccessapprovalV1 # Alias the module
       #    service = Accessapproval::AccessApprovalService.new
       #
-      # @see https://cloud.google.com/cloud-provider-access-management/access-approval/docs
+      # @see https://cloud.google.com/assured-workloads/access-approval/docs
       class AccessApprovalService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,

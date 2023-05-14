@@ -23,7 +23,7 @@ module Google
     #
     # An API for controlling access to data by Google personnel.
     #
-    # @see https://cloud.google.com/cloud-provider-access-management/access-approval/docs
+    # @see https://cloud.google.com/assured-workloads/access-approval/docs
     module AccessapprovalV1
       # Version of the Access Approval API this client connects to.
       # This is NOT the gem version.
