@@ -1890,6 +1890,10 @@ module Google
         #   Required. ID of the project that owns the trigger.
         # @param [String] trigger_id
         #   Required. ID of the `BuildTrigger` to update.
+        # @param [String] update_mask
+        #   Update mask for the resource. If this is set, the server will only update the
+        #   fields specified in the field mask. Otherwise, a full update of the mutable
+        #   resource fields will be performed.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1907,7 +1911,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_location_trigger(resource_name, build_trigger_object = nil, project_id: nil, trigger_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_project_location_trigger(resource_name, build_trigger_object = nil, project_id: nil, trigger_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v1/{+resourceName}', options)
           command.request_representation = Google::Apis::CloudbuildV1::BuildTrigger::Representation
           command.request_object = build_trigger_object
@@ -1916,6 +1920,7 @@ module Google
           command.params['resourceName'] = resource_name unless resource_name.nil?
           command.query['projectId'] = project_id unless project_id.nil?
           command.query['triggerId'] = trigger_id unless trigger_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2361,6 +2366,10 @@ module Google
         # @param [String] trigger_id
         #   Required. ID of the `BuildTrigger` to update.
         # @param [Google::Apis::CloudbuildV1::BuildTrigger] build_trigger_object
+        # @param [String] update_mask
+        #   Update mask for the resource. If this is set, the server will only update the
+        #   fields specified in the field mask. Otherwise, a full update of the mutable
+        #   resource fields will be performed.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2378,7 +2387,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_trigger(project_id, trigger_id, build_trigger_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_project_trigger(project_id, trigger_id, build_trigger_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v1/projects/{projectId}/triggers/{triggerId}', options)
           command.request_representation = Google::Apis::CloudbuildV1::BuildTrigger::Representation
           command.request_object = build_trigger_object
@@ -2386,6 +2395,7 @@ module Google
           command.response_class = Google::Apis::CloudbuildV1::BuildTrigger
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['triggerId'] = trigger_id unless trigger_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
