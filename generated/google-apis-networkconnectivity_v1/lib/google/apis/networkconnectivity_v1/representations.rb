@@ -40,6 +40,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConsumerPscConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConsumerPscConnection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -124,6 +136,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListServiceClassesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListServiceConnectionMapsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListServiceConnectionPoliciesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListServiceConnectionTokensResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListSpokesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -154,6 +190,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ProducerPscConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PscConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PscConnection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RouterApplianceInstance
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -161,6 +215,30 @@ module Google
       end
       
       class RoutingVpc
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServiceClass
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServiceConnectionMap
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServiceConnectionPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServiceConnectionToken
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -214,6 +292,32 @@ module Google
       
           collection :members, as: 'members'
           property :role, as: 'role'
+        end
+      end
+      
+      class ConsumerPscConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disable_global_access, as: 'disableGlobalAccess'
+          property :network, as: 'network'
+          property :project, as: 'project'
+        end
+      end
+      
+      class ConsumerPscConnection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error', class: Google::Apis::NetworkconnectivityV1::GoogleRpcStatus, decorator: Google::Apis::NetworkconnectivityV1::GoogleRpcStatus::Representation
+      
+          property :error_type, as: 'errorType'
+          property :forwarding_rule, as: 'forwardingRule'
+          property :gce_operation, as: 'gceOperation'
+          property :ip, as: 'ip'
+          property :network, as: 'network'
+          property :project, as: 'project'
+          property :psc_connection_id, as: 'pscConnectionId'
+          property :service_attachment_uri, as: 'serviceAttachmentUri'
+          property :state, as: 'state'
         end
       end
       
@@ -360,6 +464,46 @@ module Google
         end
       end
       
+      class ListServiceClassesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :service_classes, as: 'serviceClasses', class: Google::Apis::NetworkconnectivityV1::ServiceClass, decorator: Google::Apis::NetworkconnectivityV1::ServiceClass::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListServiceConnectionMapsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :service_connection_maps, as: 'serviceConnectionMaps', class: Google::Apis::NetworkconnectivityV1::ServiceConnectionMap, decorator: Google::Apis::NetworkconnectivityV1::ServiceConnectionMap::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListServiceConnectionPoliciesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :service_connection_policies, as: 'serviceConnectionPolicies', class: Google::Apis::NetworkconnectivityV1::ServiceConnectionPolicy, decorator: Google::Apis::NetworkconnectivityV1::ServiceConnectionPolicy::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListServiceConnectionTokensResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :service_connection_tokens, as: 'serviceConnectionTokens', class: Google::Apis::NetworkconnectivityV1::ServiceConnectionToken, decorator: Google::Apis::NetworkconnectivityV1::ServiceConnectionToken::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListSpokesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -413,6 +557,36 @@ module Google
         end
       end
       
+      class ProducerPscConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :service_attachment_uri, as: 'serviceAttachmentUri'
+        end
+      end
+      
+      class PscConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :limit, :numeric_string => true, as: 'limit'
+          collection :subnetworks, as: 'subnetworks'
+        end
+      end
+      
+      class PscConnection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consumer_address, as: 'consumerAddress'
+          property :consumer_forwarding_rule, as: 'consumerForwardingRule'
+          property :consumer_target_project, as: 'consumerTargetProject'
+          property :error, as: 'error', class: Google::Apis::NetworkconnectivityV1::GoogleRpcStatus, decorator: Google::Apis::NetworkconnectivityV1::GoogleRpcStatus::Representation
+      
+          property :error_type, as: 'errorType'
+          property :gce_operation, as: 'gceOperation'
+          property :psc_connection_id, as: 'pscConnectionId'
+          property :state, as: 'state'
+        end
+      end
+      
       class RouterApplianceInstance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -426,6 +600,72 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :required_for_new_site_to_site_data_transfer_spokes, as: 'requiredForNewSiteToSiteDataTransferSpokes'
           property :uri, as: 'uri'
+        end
+      end
+      
+      class ServiceClass
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :service_class, as: 'serviceClass'
+          collection :service_connection_maps, as: 'serviceConnectionMaps'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class ServiceConnectionMap
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :consumer_psc_configs, as: 'consumerPscConfigs', class: Google::Apis::NetworkconnectivityV1::ConsumerPscConfig, decorator: Google::Apis::NetworkconnectivityV1::ConsumerPscConfig::Representation
+      
+          collection :consumer_psc_connections, as: 'consumerPscConnections', class: Google::Apis::NetworkconnectivityV1::ConsumerPscConnection, decorator: Google::Apis::NetworkconnectivityV1::ConsumerPscConnection::Representation
+      
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :infrastructure, as: 'infrastructure'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          collection :producer_psc_configs, as: 'producerPscConfigs', class: Google::Apis::NetworkconnectivityV1::ProducerPscConfig, decorator: Google::Apis::NetworkconnectivityV1::ProducerPscConfig::Representation
+      
+          property :service_class, as: 'serviceClass'
+          property :service_class_uri, as: 'serviceClassUri'
+          property :token, as: 'token'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class ServiceConnectionPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :infrastructure, as: 'infrastructure'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :network, as: 'network'
+          property :psc_config, as: 'pscConfig', class: Google::Apis::NetworkconnectivityV1::PscConfig, decorator: Google::Apis::NetworkconnectivityV1::PscConfig::Representation
+      
+          collection :psc_connections, as: 'pscConnections', class: Google::Apis::NetworkconnectivityV1::PscConnection, decorator: Google::Apis::NetworkconnectivityV1::PscConnection::Representation
+      
+          property :service_class, as: 'serviceClass'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class ServiceConnectionToken
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :expire_time, as: 'expireTime'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :network, as: 'network'
+          property :token, as: 'token'
+          property :update_time, as: 'updateTime'
         end
       end
       
