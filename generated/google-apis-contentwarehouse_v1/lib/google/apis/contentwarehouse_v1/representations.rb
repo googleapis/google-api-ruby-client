@@ -1342,6 +1342,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AssistantApiCoreTypesAndroidAppInfoActivityInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AssistantApiCoreTypesAndroidAppInfoActivityInfoActivity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AssistantApiCoreTypesAndroidAppInfoDelta
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -6838,6 +6850,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ImageQualitySensitiveMediaOrPeopleEntities
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ImageRegionsImageRegion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -10439,6 +10457,18 @@ module Google
       end
       
       class PhotosGDepthMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PhotosHdrMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PhotosHdrMetadataGainmap
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -17721,6 +17751,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_type, as: 'accountType'
+          property :activity_info, as: 'activityInfo', class: Google::Apis::ContentwarehouseV1::AssistantApiCoreTypesAndroidAppInfoActivityInfo, decorator: Google::Apis::ContentwarehouseV1::AssistantApiCoreTypesAndroidAppInfoActivityInfo::Representation
+      
           property :android_intent, as: 'androidIntent'
           property :app_unique_id, as: 'appUniqueId'
           property :app_version, as: 'appVersion'
@@ -17735,6 +17767,22 @@ module Google
           property :shortcut_id, as: 'shortcutId'
           property :target_class, as: 'targetClass'
           property :version_name, as: 'versionName'
+        end
+      end
+      
+      class AssistantApiCoreTypesAndroidAppInfoActivityInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :active_launchable_activities, as: 'activeLaunchableActivities', class: Google::Apis::ContentwarehouseV1::AssistantApiCoreTypesAndroidAppInfoActivityInfoActivity, decorator: Google::Apis::ContentwarehouseV1::AssistantApiCoreTypesAndroidAppInfoActivityInfoActivity::Representation
+      
+        end
+      end
+      
+      class AssistantApiCoreTypesAndroidAppInfoActivityInfoActivity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :localized_activity_name, as: 'localizedActivityName'
+          property :short_class_name, as: 'shortClassName'
         end
       end
       
@@ -18870,8 +18918,6 @@ module Google
           collection :face_enrollment_errors, as: 'faceEnrollmentErrors'
           property :face_enrollment_status, as: 'faceEnrollmentStatus'
           property :face_match_enabled, as: 'faceMatchEnabled'
-          property :fl_audio_cache_enabled, as: 'flAudioCacheEnabled'
-          property :fl_visual_frames_cache_enabled, as: 'flVisualFramesCacheEnabled'
           property :gcm_settings, as: 'gcmSettings', class: Google::Apis::ContentwarehouseV1::AssistantApiSettingsGcmSettings, decorator: Google::Apis::ContentwarehouseV1::AssistantApiSettingsGcmSettings::Representation
       
           property :home_graph_data, as: 'homeGraphData', class: Google::Apis::ContentwarehouseV1::AssistantApiSettingsHomeGraphData, decorator: Google::Apis::ContentwarehouseV1::AssistantApiSettingsHomeGraphData::Representation
@@ -19518,6 +19564,7 @@ module Google
           property :in_dialog_account_linking_supported, as: 'inDialogAccountLinkingSupported'
           property :is_paired_phone_contact_upload_needed_for_comms, as: 'isPairedPhoneContactUploadNeededForComms'
           property :is_paired_phone_needed_for_comms, as: 'isPairedPhoneNeededForComms'
+          property :just_in_time_supported, as: 'justInTimeSupported'
           property :launch_keyboard_supported, as: 'launchKeyboardSupported'
           property :lens_supported, as: 'lensSupported'
           property :live_cards_supported, as: 'liveCardsSupported'
@@ -20242,7 +20289,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :is_in_app_provider, as: 'isInAppProvider'
-          collection :provider_cluster_id, as: 'providerClusterId'
+          collection :provider_cluster_id_deprecated, as: 'providerClusterIdDeprecated'
           property :provider_id, as: 'providerId', class: Google::Apis::ContentwarehouseV1::AssistantContextProviderId, decorator: Google::Apis::ContentwarehouseV1::AssistantContextProviderId::Representation
       
           property :psl_score, as: 'pslScore'
@@ -20689,6 +20736,7 @@ module Google
           property :dominant, as: 'dominant'
           property :effective_arg_span_length, as: 'effectiveArgSpanLength'
           property :fulfillable_dominant_media, as: 'fulfillableDominantMedia'
+          property :generated_by_legacy_aqua_domain, as: 'generatedByLegacyAquaDomain'
           property :groundability_score, as: 'groundabilityScore'
           property :grounding_provider_features, as: 'groundingProviderFeatures', class: Google::Apis::ContentwarehouseV1::AssistantGroundingRankerGroundingProviderFeatures, decorator: Google::Apis::ContentwarehouseV1::AssistantGroundingRankerGroundingProviderFeatures::Representation
       
@@ -28886,6 +28934,14 @@ module Google
         end
       end
       
+      class ImageQualitySensitiveMediaOrPeopleEntities
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :media_entities_id, as: 'mediaEntitiesId'
+          collection :people_entities_id, as: 'peopleEntitiesId'
+        end
+      end
+      
       class ImageRegionsImageRegion
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -36541,6 +36597,8 @@ module Google
       
           property :localized_cluster, as: 'localizedCluster', class: Google::Apis::ContentwarehouseV1::IndexingDupsLocalizedLocalizedCluster, decorator: Google::Apis::ContentwarehouseV1::IndexingDupsLocalizedLocalizedCluster::Representation
       
+          property :media_or_people_entities, as: 'mediaOrPeopleEntities', class: Google::Apis::ContentwarehouseV1::ImageQualitySensitiveMediaOrPeopleEntities, decorator: Google::Apis::ContentwarehouseV1::ImageQualitySensitiveMediaOrPeopleEntities::Representation
+      
           property :noimageframeoverlayreason, as: 'noimageframeoverlayreason'
           property :nsr_data_proto, as: 'nsrDataProto', class: Google::Apis::ContentwarehouseV1::QualityNsrNsrData, decorator: Google::Apis::ContentwarehouseV1::QualityNsrNsrData::Representation
       
@@ -36728,6 +36786,22 @@ module Google
         end
       end
       
+      class PhotosHdrMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gainmap, as: 'gainmap', class: Google::Apis::ContentwarehouseV1::PhotosHdrMetadataGainmap, decorator: Google::Apis::ContentwarehouseV1::PhotosHdrMetadataGainmap::Representation
+      
+        end
+      end
+      
+      class PhotosHdrMetadataGainmap
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :adobe_hdr, as: 'adobeHdr'
+          property :google_hdr, as: 'googleHdr'
+        end
+      end
+      
       class PhotosImageMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -36900,6 +36974,8 @@ module Google
           property :grayresponsecurve, as: 'grayresponsecurve'
           property :grayresponseunit, as: 'grayresponseunit'
           property :has_alpha, as: 'hasAlpha'
+          property :hdr_metadata, as: 'hdrMetadata', class: Google::Apis::ContentwarehouseV1::PhotosHdrMetadata, decorator: Google::Apis::ContentwarehouseV1::PhotosHdrMetadata::Representation
+      
           property :headline, as: 'headline'
           property :height, as: 'height'
           property :hostcomputer, as: 'hostcomputer'
@@ -38081,6 +38157,7 @@ module Google
           property :nsr_variance, as: 'nsrVariance'
           property :nsrdata_from_fallback_pattern_key, as: 'nsrdataFromFallbackPatternKey'
           property :pnav, as: 'pnav'
+          property :pnav_clicks, as: 'pnavClicks'
           collection :prior_adjusted_nsr, as: 'priorAdjustedNsr', class: Google::Apis::ContentwarehouseV1::QualityNsrVersionedFloatSignal, decorator: Google::Apis::ContentwarehouseV1::QualityNsrVersionedFloatSignal::Representation
       
           property :secondary_site_chunk, as: 'secondarySiteChunk'
@@ -43854,7 +43931,6 @@ module Google
       class TravelFlightsAirlineConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :adwords_cid, :numeric_string => true, as: 'adwordsCid'
           property :alliance, as: 'alliance'
           property :baggage_carryon_limitations_urls, as: 'baggageCarryonLimitationsUrls', class: Google::Apis::ContentwarehouseV1::TravelFlightsNameCatalogProto, decorator: Google::Apis::ContentwarehouseV1::TravelFlightsNameCatalogProto::Representation
       
@@ -46895,6 +46971,7 @@ module Google
           property :fds, as: 'fds'
           property :has_creator_heart, as: 'hasCreatorHeart'
           property :has_creator_reply, as: 'hasCreatorReply'
+          hash :impersonation_scores, as: 'impersonationScores'
           property :is_author_sponsor, as: 'isAuthorSponsor'
           property :is_deleted, as: 'isDeleted'
           property :is_pinned, as: 'isPinned'
