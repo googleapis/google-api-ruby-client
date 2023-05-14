@@ -2245,8 +2245,7 @@ module Google
         #   format, see the documentation of the product_id field on the Subscription
         #   resource.
         # @param [String] regions_version_version
-        #   Required. A string representing version of the available regions being used
-        #   for the specified resource. The current version is 2022/02.
+        #   Required. The latest version is 2022/02.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2400,8 +2399,7 @@ module Google
         #   and be between 1 and 40 (inclusive) characters in length.
         # @param [Google::Apis::AndroidpublisherV3::Subscription] subscription_object
         # @param [String] regions_version_version
-        #   Required. A string representing version of the available regions being used
-        #   for the specified resource. The current version is 2022/02.
+        #   Required. The latest version is 2022/02.
         # @param [String] update_mask
         #   Required. The list of fields to be updated.
         # @param [String] fields
@@ -2656,8 +2654,7 @@ module Google
         #   Required. The ID to use for the offer. For the requirements on this format,
         #   see the documentation of the offer_id field on the SubscriptionOffer resource.
         # @param [String] regions_version_version
-        #   Required. A string representing version of the available regions being used
-        #   for the specified resource. The current version is 2022/02.
+        #   Required. The latest version is 2022/02.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2875,8 +2872,7 @@ module Google
         #   within the base plan.
         # @param [Google::Apis::AndroidpublisherV3::SubscriptionOffer] subscription_offer_object
         # @param [String] regions_version_version
-        #   Required. A string representing version of the available regions being used
-        #   for the specified resource. The current version is 2022/02.
+        #   Required. The latest version is 2022/02.
         # @param [String] update_mask
         #   Required. The list of fields to be updated.
         # @param [String] fields
