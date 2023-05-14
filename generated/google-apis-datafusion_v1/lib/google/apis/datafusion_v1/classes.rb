@@ -502,6 +502,12 @@ module Google
         attr_accessor :private_instance
         alias_method :private_instance?, :private_instance
       
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Output only. Deprecated. Use tenant_project_id instead to extract the tenant
         # project ID.
         # Corresponds to the JSON property `serviceAccount`
@@ -577,6 +583,7 @@ module Google
           @options = args[:options] if args.key?(:options)
           @p4_service_account = args[:p4_service_account] if args.key?(:p4_service_account)
           @private_instance = args[:private_instance] if args.key?(:private_instance)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @service_account = args[:service_account] if args.key?(:service_account)
           @service_endpoint = args[:service_endpoint] if args.key?(:service_endpoint)
           @state = args[:state] if args.key?(:state)
