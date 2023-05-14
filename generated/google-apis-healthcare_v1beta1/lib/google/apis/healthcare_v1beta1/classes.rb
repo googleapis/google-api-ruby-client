@@ -1343,6 +1343,19 @@ module Google
         # @return [Google::Apis::HealthcareV1beta1::TextConfig]
         attr_accessor :text
       
+        # Ensures in-flight data remains in the region of origin during de-
+        # identification. Using this option results in a significant reduction of
+        # throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME`
+        # infoTypes. If the deprecated [`DicomConfig`](google.cloud.healthcare.v1beta1.
+        # deidentify.DeidentifyConfig.dicom_config) or [`FhirConfig`](google.cloud.
+        # healthcare.v1beta1.deidentify.DeidentifyConfig.fhir_config) are used, then `
+        # LOCATION` must be excluded within `TextConfig`, and must also be excluded
+        # within `ImageConfig` if image redaction is required.
+        # Corresponds to the JSON property `useRegionalDataProcessing`
+        # @return [Boolean]
+        attr_accessor :use_regional_data_processing
+        alias_method :use_regional_data_processing?, :use_regional_data_processing
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1357,6 +1370,7 @@ module Google
           @image = args[:image] if args.key?(:image)
           @operation_metadata = args[:operation_metadata] if args.key?(:operation_metadata)
           @text = args[:text] if args.key?(:text)
+          @use_regional_data_processing = args[:use_regional_data_processing] if args.key?(:use_regional_data_processing)
         end
       end
       
@@ -4607,7 +4621,7 @@ module Google
         end
       end
       
-      # A resource that represents Google Cloud Platform location.
+      # A resource that represents a Google Cloud location.
       class Location
         include Google::Apis::Core::Hashable
       
