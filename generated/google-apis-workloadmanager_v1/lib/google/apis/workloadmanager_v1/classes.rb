@@ -276,6 +276,12 @@ module Google
         # @return [String]
         attr_accessor :sent_time
       
+        # A presentation of SQLServer workload insight. The schema of SqlServer
+        # workloads validation related data.
+        # Corresponds to the JSON property `sqlserverValidation`
+        # @return [Google::Apis::WorkloadmanagerV1::SqlserverValidation]
+        attr_accessor :sqlserver_validation
+      
         def initialize(**args)
            update!(**args)
         end
@@ -285,6 +291,7 @@ module Google
           @sap_discovery = args[:sap_discovery] if args.key?(:sap_discovery)
           @sap_validation = args[:sap_validation] if args.key?(:sap_validation)
           @sent_time = args[:sent_time] if args.key?(:sent_time)
+          @sqlserver_validation = args[:sqlserver_validation] if args.key?(:sqlserver_validation)
         end
       end
       
@@ -477,7 +484,7 @@ module Google
         end
       end
       
-      # A resource that represents Google Cloud Platform location.
+      # A resource that represents a Google Cloud location.
       class Location
         include Google::Apis::Core::Hashable
       
@@ -991,11 +998,6 @@ module Google
         # @return [String]
         attr_accessor :resource_kind
       
-        # Indicates whether this is a new, updated, or missing resource.
-        # Corresponds to the JSON property `resourceState`
-        # @return [String]
-        attr_accessor :resource_state
-      
         # The type of this resource.
         # Corresponds to the JSON property `resourceType`
         # @return [String]
@@ -1019,7 +1021,6 @@ module Google
         def update!(**args)
           @related_resources = args[:related_resources] if args.key?(:related_resources)
           @resource_kind = args[:resource_kind] if args.key?(:resource_kind)
-          @resource_state = args[:resource_state] if args.key?(:resource_state)
           @resource_type = args[:resource_type] if args.key?(:resource_type)
           @resource_uri = args[:resource_uri] if args.key?(:resource_uri)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -1087,6 +1088,63 @@ module Google
         # Update properties of this object
         def update!(**args)
           @resource = args[:resource] if args.key?(:resource)
+        end
+      end
+      
+      # A presentation of SQLServer workload insight. The schema of SqlServer
+      # workloads validation related data.
+      class SqlserverValidation
+        include Google::Apis::Core::Hashable
+      
+        # The agent version collected this data point
+        # Corresponds to the JSON property `agentVersion`
+        # @return [String]
+        attr_accessor :agent_version
+      
+        # A list of SqlServer validation metrics data.
+        # Corresponds to the JSON property `validationDetails`
+        # @return [Array<Google::Apis::WorkloadmanagerV1::SqlserverValidationValidationDetail>]
+        attr_accessor :validation_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_version = args[:agent_version] if args.key?(:agent_version)
+          @validation_details = args[:validation_details] if args.key?(:validation_details)
+        end
+      end
+      
+      # Message describing the Sqlserver validation metrics.
+      class SqlserverValidationValidationDetail
+        include Google::Apis::Core::Hashable
+      
+        # The pairs of metrics data: field name & field value.
+        # Corresponds to the JSON property `details`
+        # @return [Hash<String,String>]
+        attr_accessor :details
+      
+        # The instance id where the ValidationDetail is generated from
+        # Corresponds to the JSON property `instanceId`
+        # @return [String]
+        attr_accessor :instance_id
+      
+        # The Sqlserver system that the validation data is from.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @details = args[:details] if args.key?(:details)
+          @instance_id = args[:instance_id] if args.key?(:instance_id)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
