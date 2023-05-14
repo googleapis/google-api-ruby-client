@@ -2122,6 +2122,13 @@ module Google
       class PublishingOptions
         include Google::Apis::Core::Hashable
       
+        # Optional. Specifies the encoding format of each CertificateAuthority's CA
+        # certificate and CRLs. If this is omitted, CA certificates and CRLs will be
+        # published in PEM.
+        # Corresponds to the JSON property `encodingFormat`
+        # @return [String]
+        attr_accessor :encoding_format
+      
         # Optional. When true, publishes each CertificateAuthority's CA certificate and
         # includes its URL in the "Authority Information Access" X.509 extension in all
         # issued Certificates. If this is false, the CA certificate will not be
@@ -2149,6 +2156,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @encoding_format = args[:encoding_format] if args.key?(:encoding_format)
           @publish_ca_cert = args[:publish_ca_cert] if args.key?(:publish_ca_cert)
           @publish_crl = args[:publish_crl] if args.key?(:publish_crl)
         end
