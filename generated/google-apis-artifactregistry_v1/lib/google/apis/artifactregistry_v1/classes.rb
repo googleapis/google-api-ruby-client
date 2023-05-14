@@ -360,6 +360,37 @@ module Google
         end
       end
       
+      # A detailed representation of a GooGet artifact.
+      class GoogetArtifact
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Operating system architecture of the artifact.
+        # Corresponds to the JSON property `architecture`
+        # @return [String]
+        attr_accessor :architecture
+      
+        # Output only. The Artifact Registry resource name of the artifact.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The GooGet package name of the artifact.
+        # Corresponds to the JSON property `packageName`
+        # @return [String]
+        attr_accessor :package_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @architecture = args[:architecture] if args.key?(:architecture)
+          @name = args[:name] if args.key?(:name)
+          @package_name = args[:package_name] if args.key?(:package_name)
+        end
+      end
+      
       # Files store content that is potentially associated with Packages or Versions.
       class GoogleDevtoolsArtifactregistryV1File
         include Google::Apis::Core::Hashable
@@ -557,6 +588,36 @@ module Google
         end
       end
       
+      # Error information explaining why a package was not imported.
+      class ImportGoogetArtifactsErrorInfo
+        include Google::Apis::Core::Hashable
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::ArtifactregistryV1::Status]
+        attr_accessor :error
+      
+        # Google Cloud Storage location where the artifacts currently reside.
+        # Corresponds to the JSON property `gcsSource`
+        # @return [Google::Apis::ArtifactregistryV1::ImportGoogetArtifactsGcsSource]
+        attr_accessor :gcs_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error = args[:error] if args.key?(:error)
+          @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
+        end
+      end
+      
       # Google Cloud Storage location where the artifacts currently reside.
       class ImportGoogetArtifactsGcsSource
         include Google::Apis::Core::Hashable
@@ -583,6 +644,19 @@ module Google
         end
       end
       
+      # The operation metadata for importing artifacts.
+      class ImportGoogetArtifactsMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The request to import new googet artifacts.
       class ImportGoogetArtifactsRequest
         include Google::Apis::Core::Hashable
@@ -599,6 +673,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
+        end
+      end
+      
+      # The response message from importing artifacts.
+      class ImportGoogetArtifactsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Detailed error info for packages that were not imported.
+        # Corresponds to the JSON property `errors`
+        # @return [Array<Google::Apis::ArtifactregistryV1::ImportGoogetArtifactsErrorInfo>]
+        attr_accessor :errors
+      
+        # The GooGet artifacts updated.
+        # Corresponds to the JSON property `googetArtifacts`
+        # @return [Array<Google::Apis::ArtifactregistryV1::GoogetArtifact>]
+        attr_accessor :googet_artifacts
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @errors = args[:errors] if args.key?(:errors)
+          @googet_artifacts = args[:googet_artifacts] if args.key?(:googet_artifacts)
         end
       end
       
@@ -1003,7 +1102,7 @@ module Google
         end
       end
       
-      # A resource that represents Google Cloud Platform location.
+      # A resource that represents a Google Cloud location.
       class Location
         include Google::Apis::Core::Hashable
       
@@ -1928,6 +2027,19 @@ module Google
         end
       end
       
+      # The operation metadata for uploading artifacts.
+      class UploadGoogetArtifactMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The request to upload an artifact.
       class UploadGoogetArtifactRequest
         include Google::Apis::Core::Hashable
@@ -1938,6 +2050,26 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # The response of the completed artifact upload operation. This response is
+      # contained in the Operation and available to users.
+      class UploadGoogetArtifactResponse
+        include Google::Apis::Core::Hashable
+      
+        # The Apt artifacts updated.
+        # Corresponds to the JSON property `googetArtifacts`
+        # @return [Array<Google::Apis::ArtifactregistryV1::GoogetArtifact>]
+        attr_accessor :googet_artifacts
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @googet_artifacts = args[:googet_artifacts] if args.key?(:googet_artifacts)
         end
       end
       

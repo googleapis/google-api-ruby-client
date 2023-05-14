@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogetArtifact
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleDevtoolsArtifactregistryV1File
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -112,13 +118,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ImportGoogetArtifactsErrorInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ImportGoogetArtifactsGcsSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ImportGoogetArtifactsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ImportGoogetArtifactsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ImportGoogetArtifactsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -370,7 +394,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UploadGoogetArtifactMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UploadGoogetArtifactRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UploadGoogetArtifactResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -521,6 +557,15 @@ module Google
         end
       end
       
+      class GoogetArtifact
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :architecture, as: 'architecture'
+          property :name, as: 'name'
+          property :package_name, as: 'packageName'
+        end
+      end
+      
       class GoogleDevtoolsArtifactregistryV1File
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -585,6 +630,16 @@ module Google
         end
       end
       
+      class ImportGoogetArtifactsErrorInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error', class: Google::Apis::ArtifactregistryV1::Status, decorator: Google::Apis::ArtifactregistryV1::Status::Representation
+      
+          property :gcs_source, as: 'gcsSource', class: Google::Apis::ArtifactregistryV1::ImportGoogetArtifactsGcsSource, decorator: Google::Apis::ArtifactregistryV1::ImportGoogetArtifactsGcsSource::Representation
+      
+        end
+      end
+      
       class ImportGoogetArtifactsGcsSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -593,10 +648,26 @@ module Google
         end
       end
       
+      class ImportGoogetArtifactsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class ImportGoogetArtifactsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gcs_source, as: 'gcsSource', class: Google::Apis::ArtifactregistryV1::ImportGoogetArtifactsGcsSource, decorator: Google::Apis::ArtifactregistryV1::ImportGoogetArtifactsGcsSource::Representation
+      
+        end
+      end
+      
+      class ImportGoogetArtifactsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :errors, as: 'errors', class: Google::Apis::ArtifactregistryV1::ImportGoogetArtifactsErrorInfo, decorator: Google::Apis::ArtifactregistryV1::ImportGoogetArtifactsErrorInfo::Representation
+      
+          collection :googet_artifacts, as: 'googetArtifacts', class: Google::Apis::ArtifactregistryV1::GoogetArtifact, decorator: Google::Apis::ArtifactregistryV1::GoogetArtifact::Representation
       
         end
       end
@@ -978,9 +1049,23 @@ module Google
         end
       end
       
+      class UploadGoogetArtifactMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class UploadGoogetArtifactRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class UploadGoogetArtifactResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :googet_artifacts, as: 'googetArtifacts', class: Google::Apis::ArtifactregistryV1::GoogetArtifact, decorator: Google::Apis::ArtifactregistryV1::GoogetArtifact::Representation
+      
         end
       end
       
