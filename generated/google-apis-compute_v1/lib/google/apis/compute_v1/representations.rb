@@ -2116,6 +2116,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InterconnectAttachmentConfigurationConstraints
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectAttachmentConfigurationConstraintsBgpPeerAsnRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InterconnectAttachmentList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -2249,6 +2261,48 @@ module Google
       end
       
       class InterconnectOutageNotification
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectRemoteLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectRemoteLocationConstraints
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectRemoteLocationConstraintsSubnetLengthRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectRemoteLocationList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectRemoteLocationPermittedConnections
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -6580,6 +6634,7 @@ module Google
       
           property :max_stream_duration, as: 'maxStreamDuration', class: Google::Apis::ComputeV1::Duration, decorator: Google::Apis::ComputeV1::Duration::Representation
       
+          hash :metadatas, as: 'metadatas'
           property :name, as: 'name'
           property :network, as: 'network'
           property :outlier_detection, as: 'outlierDetection', class: Google::Apis::ComputeV1::OutlierDetection, decorator: Google::Apis::ComputeV1::OutlierDetection::Representation
@@ -8602,6 +8657,7 @@ module Google
           property :ignore_case, as: 'ignoreCase'
           collection :metadata_filters, as: 'metadataFilters', class: Google::Apis::ComputeV1::MetadataFilter, decorator: Google::Apis::ComputeV1::MetadataFilter::Representation
       
+          property :path_template_match, as: 'pathTemplateMatch'
           property :prefix_match, as: 'prefixMatch'
           collection :query_parameter_matches, as: 'queryParameterMatches', class: Google::Apis::ComputeV1::HttpQueryParameterMatch, decorator: Google::Apis::ComputeV1::HttpQueryParameterMatch::Representation
       
@@ -9833,6 +9889,7 @@ module Google
           property :operational_status, as: 'operationalStatus'
           property :peer_ip_address, as: 'peerIpAddress'
           property :provisioned_link_count, as: 'provisionedLinkCount'
+          property :remote_location, as: 'remoteLocation'
           property :requested_link_count, as: 'requestedLinkCount'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
@@ -9850,6 +9907,8 @@ module Google
           property :cloud_router_ip_address, as: 'cloudRouterIpAddress'
           property :cloud_router_ipv6_address, as: 'cloudRouterIpv6Address'
           property :cloud_router_ipv6_interface_id, as: 'cloudRouterIpv6InterfaceId'
+          property :configuration_constraints, as: 'configurationConstraints', class: Google::Apis::ComputeV1::InterconnectAttachmentConfigurationConstraints, decorator: Google::Apis::ComputeV1::InterconnectAttachmentConfigurationConstraints::Representation
+      
           property :creation_timestamp, as: 'creationTimestamp'
           property :customer_router_ip_address, as: 'customerRouterIpAddress'
           property :customer_router_ipv6_address, as: 'customerRouterIpv6Address'
@@ -9875,11 +9934,13 @@ module Google
           property :private_interconnect_info, as: 'privateInterconnectInfo', class: Google::Apis::ComputeV1::InterconnectAttachmentPrivateInfo, decorator: Google::Apis::ComputeV1::InterconnectAttachmentPrivateInfo::Representation
       
           property :region, as: 'region'
+          property :remote_service, as: 'remoteService'
           property :router, as: 'router'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
           property :stack_type, as: 'stackType'
           property :state, as: 'state'
+          property :subnet_length, as: 'subnetLength'
           property :type, as: 'type'
           property :vlan_tag8021q, as: 'vlanTag8021q'
         end
@@ -9915,6 +9976,23 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class InterconnectAttachmentConfigurationConstraints
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bgp_md5, as: 'bgpMd5'
+          collection :bgp_peer_asn_ranges, as: 'bgpPeerAsnRanges', class: Google::Apis::ComputeV1::InterconnectAttachmentConfigurationConstraintsBgpPeerAsnRange, decorator: Google::Apis::ComputeV1::InterconnectAttachmentConfigurationConstraintsBgpPeerAsnRange::Representation
+      
+        end
+      end
+      
+      class InterconnectAttachmentConfigurationConstraintsBgpPeerAsnRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max, as: 'max'
+          property :min, as: 'min'
         end
       end
       
@@ -10165,6 +10243,92 @@ module Google
           property :source, as: 'source'
           property :start_time, :numeric_string => true, as: 'startTime'
           property :state, as: 'state'
+        end
+      end
+      
+      class InterconnectRemoteLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :address, as: 'address'
+          property :attachment_configuration_constraints, as: 'attachmentConfigurationConstraints', class: Google::Apis::ComputeV1::InterconnectAttachmentConfigurationConstraints, decorator: Google::Apis::ComputeV1::InterconnectAttachmentConfigurationConstraints::Representation
+      
+          property :city, as: 'city'
+          property :constraints, as: 'constraints', class: Google::Apis::ComputeV1::InterconnectRemoteLocationConstraints, decorator: Google::Apis::ComputeV1::InterconnectRemoteLocationConstraints::Representation
+      
+          property :continent, as: 'continent'
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :facility_provider, as: 'facilityProvider'
+          property :facility_provider_facility_id, as: 'facilityProviderFacilityId'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :lacp, as: 'lacp'
+          property :max_lag_size100_gbps, as: 'maxLagSize100Gbps'
+          property :max_lag_size10_gbps, as: 'maxLagSize10Gbps'
+          property :name, as: 'name'
+          property :peeringdb_facility_id, as: 'peeringdbFacilityId'
+          collection :permitted_connections, as: 'permittedConnections', class: Google::Apis::ComputeV1::InterconnectRemoteLocationPermittedConnections, decorator: Google::Apis::ComputeV1::InterconnectRemoteLocationPermittedConnections::Representation
+      
+          property :remote_service, as: 'remoteService'
+          property :self_link, as: 'selfLink'
+          property :status, as: 'status'
+        end
+      end
+      
+      class InterconnectRemoteLocationConstraints
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :port_pair_remote_location, as: 'portPairRemoteLocation'
+          property :port_pair_vlan, as: 'portPairVlan'
+          property :subnet_length_range, as: 'subnetLengthRange', class: Google::Apis::ComputeV1::InterconnectRemoteLocationConstraintsSubnetLengthRange, decorator: Google::Apis::ComputeV1::InterconnectRemoteLocationConstraintsSubnetLengthRange::Representation
+      
+        end
+      end
+      
+      class InterconnectRemoteLocationConstraintsSubnetLengthRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max, as: 'max'
+          property :min, as: 'min'
+        end
+      end
+      
+      class InterconnectRemoteLocationList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::InterconnectRemoteLocation, decorator: Google::Apis::ComputeV1::InterconnectRemoteLocation::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::InterconnectRemoteLocationList::Warning, decorator: Google::Apis::ComputeV1::InterconnectRemoteLocationList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::InterconnectRemoteLocationList::Warning::Datum, decorator: Google::Apis::ComputeV1::InterconnectRemoteLocationList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class InterconnectRemoteLocationPermittedConnections
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :interconnect_location, as: 'interconnectLocation'
         end
       end
       
@@ -16118,6 +16282,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :host_rewrite, as: 'hostRewrite'
           property :path_prefix_rewrite, as: 'pathPrefixRewrite'
+          property :path_template_rewrite, as: 'pathTemplateRewrite'
         end
       end
       
