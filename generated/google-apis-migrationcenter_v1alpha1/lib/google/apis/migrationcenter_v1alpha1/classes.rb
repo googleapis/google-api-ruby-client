@@ -604,7 +604,7 @@ module Google
         attr_accessor :allow_missing
         alias_method :allow_missing?, :allow_missing
       
-        # Required. The IDs of the assets to delete. A maximum of 10 assets can be
+        # Required. The IDs of the assets to delete. A maximum of 1000 assets can be
         # deleted in a batch. format: projects/`project`/locations/`location`/asset/`
         # name`.
         # Corresponds to the JSON property `names`
@@ -4461,11 +4461,6 @@ module Google
         # @return [String]
         attr_accessor :signed_uri
       
-        # Output only. Upload URI for the file.
-        # Corresponds to the JSON property `uri`
-        # @return [String]
-        attr_accessor :uri
-      
         # Output only. Expiration time of the upload URI.
         # Corresponds to the JSON property `uriExpirationTime`
         # @return [String]
@@ -4479,7 +4474,6 @@ module Google
         def update!(**args)
           @headers = args[:headers] if args.key?(:headers)
           @signed_uri = args[:signed_uri] if args.key?(:signed_uri)
-          @uri = args[:uri] if args.key?(:uri)
           @uri_expiration_time = args[:uri_expiration_time] if args.key?(:uri_expiration_time)
         end
       end

@@ -2235,7 +2235,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :headers, as: 'headers'
           property :signed_uri, as: 'signedUri'
-          property :uri, as: 'uri'
           property :uri_expiration_time, as: 'uriExpirationTime'
         end
       end
