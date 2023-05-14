@@ -1270,6 +1270,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FutureReservationStatusLastKnownGoodState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FutureReservationStatusLastKnownGoodStateFutureReservationSpecs
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FutureReservationStatusSpecificSkuProperties
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3191,6 +3203,24 @@ module Google
       end
       
       class NamedPort
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NatIpInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NatIpInfoNatIpInfoMapping
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NatIpInfoResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -7509,6 +7539,7 @@ module Google
           property :disk_name, as: 'diskName'
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
           property :disk_type, as: 'diskType'
+          property :enable_confidential_compute, as: 'enableConfidentialCompute'
           collection :guest_os_features, as: 'guestOsFeatures', class: Google::Apis::ComputeAlpha::GuestOsFeature, decorator: Google::Apis::ComputeAlpha::GuestOsFeature::Representation
       
           property :interface, as: 'interface'
@@ -9554,11 +9585,37 @@ module Google
       class FutureReservationStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :amendment_status, as: 'amendmentStatus'
           collection :auto_created_reservations, as: 'autoCreatedReservations'
           property :fulfilled_count, :numeric_string => true, as: 'fulfilledCount'
+          property :last_known_good_state, as: 'lastKnownGoodState', class: Google::Apis::ComputeAlpha::FutureReservationStatusLastKnownGoodState, decorator: Google::Apis::ComputeAlpha::FutureReservationStatusLastKnownGoodState::Representation
+      
           property :lock_time, as: 'lockTime'
           property :procurement_status, as: 'procurementStatus'
           property :specific_sku_properties, as: 'specificSkuProperties', class: Google::Apis::ComputeAlpha::FutureReservationStatusSpecificSkuProperties, decorator: Google::Apis::ComputeAlpha::FutureReservationStatusSpecificSkuProperties::Representation
+      
+        end
+      end
+      
+      class FutureReservationStatusLastKnownGoodState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :future_reservation_specs, as: 'futureReservationSpecs', class: Google::Apis::ComputeAlpha::FutureReservationStatusLastKnownGoodStateFutureReservationSpecs, decorator: Google::Apis::ComputeAlpha::FutureReservationStatusLastKnownGoodStateFutureReservationSpecs::Representation
+      
+          property :name_prefix, as: 'namePrefix'
+          property :procurement_status, as: 'procurementStatus'
+        end
+      end
+      
+      class FutureReservationStatusLastKnownGoodStateFutureReservationSpecs
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :share_settings, as: 'shareSettings', class: Google::Apis::ComputeAlpha::ShareSettings, decorator: Google::Apis::ComputeAlpha::ShareSettings::Representation
+      
+          property :specific_sku_properties, as: 'specificSkuProperties', class: Google::Apis::ComputeAlpha::FutureReservationSpecificSkuProperties, decorator: Google::Apis::ComputeAlpha::FutureReservationSpecificSkuProperties::Representation
+      
+          property :time_window, as: 'timeWindow', class: Google::Apis::ComputeAlpha::FutureReservationTimeWindow, decorator: Google::Apis::ComputeAlpha::FutureReservationTimeWindow::Representation
       
         end
       end
@@ -13195,6 +13252,32 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :port, as: 'port'
+        end
+      end
+      
+      class NatIpInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :nat_ip_info_mappings, as: 'natIpInfoMappings', class: Google::Apis::ComputeAlpha::NatIpInfoNatIpInfoMapping, decorator: Google::Apis::ComputeAlpha::NatIpInfoNatIpInfoMapping::Representation
+      
+          property :nat_name, as: 'natName'
+        end
+      end
+      
+      class NatIpInfoNatIpInfoMapping
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mode, as: 'mode'
+          property :nat_ip, as: 'natIp'
+          property :usage, as: 'usage'
+        end
+      end
+      
+      class NatIpInfoResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :result, as: 'result', class: Google::Apis::ComputeAlpha::NatIpInfo, decorator: Google::Apis::ComputeAlpha::NatIpInfo::Representation
+      
         end
       end
       
@@ -17862,6 +17945,7 @@ module Google
           property :description, as: 'description'
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
           property :download_bytes, :numeric_string => true, as: 'downloadBytes'
+          property :enable_confidential_compute, as: 'enableConfidentialCompute'
           property :guest_flush, as: 'guestFlush'
           collection :guest_os_features, as: 'guestOsFeatures', class: Google::Apis::ComputeAlpha::GuestOsFeature, decorator: Google::Apis::ComputeAlpha::GuestOsFeature::Representation
       

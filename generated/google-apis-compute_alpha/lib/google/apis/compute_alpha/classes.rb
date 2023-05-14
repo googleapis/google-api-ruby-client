@@ -1736,6 +1736,13 @@ module Google
         # @return [String]
         attr_accessor :disk_type
       
+        # Whether this disk is using confidential compute mode. see go/confidential-mode-
+        # in-arcus for details.
+        # Corresponds to the JSON property `enableConfidentialCompute`
+        # @return [Boolean]
+        attr_accessor :enable_confidential_compute
+        alias_method :enable_confidential_compute?, :enable_confidential_compute
+      
         # A list of features to enable on the guest operating system. Applicable only
         # for bootable images. Read Enabling guest operating system features to see a
         # list of available options. Guest OS features are applied by merging
@@ -1888,6 +1895,7 @@ module Google
           @disk_name = args[:disk_name] if args.key?(:disk_name)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @disk_type = args[:disk_type] if args.key?(:disk_type)
+          @enable_confidential_compute = args[:enable_confidential_compute] if args.key?(:enable_confidential_compute)
           @guest_os_features = args[:guest_os_features] if args.key?(:guest_os_features)
           @interface = args[:interface] if args.key?(:interface)
           @labels = args[:labels] if args.key?(:labels)
@@ -10943,6 +10951,11 @@ module Google
       class FutureReservationStatus
         include Google::Apis::Core::Hashable
       
+        # The current status of the requested amendment.
+        # Corresponds to the JSON property `amendmentStatus`
+        # @return [String]
+        attr_accessor :amendment_status
+      
         # Fully qualified urls of the automatically created reservations at start_time.
         # Corresponds to the JSON property `autoCreatedReservations`
         # @return [Array<String>]
@@ -10954,6 +10967,12 @@ module Google
         # Corresponds to the JSON property `fulfilledCount`
         # @return [Fixnum]
         attr_accessor :fulfilled_count
+      
+        # The state that the future reservation will be reverted to should the amendment
+        # be declined.
+        # Corresponds to the JSON property `lastKnownGoodState`
+        # @return [Google::Apis::ComputeAlpha::FutureReservationStatusLastKnownGoodState]
+        attr_accessor :last_known_good_state
       
         # Time when Future Reservation would become LOCKED, after which no modifications
         # to Future Reservation will be allowed. Applicable only after the Future
@@ -10979,11 +10998,82 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @amendment_status = args[:amendment_status] if args.key?(:amendment_status)
           @auto_created_reservations = args[:auto_created_reservations] if args.key?(:auto_created_reservations)
           @fulfilled_count = args[:fulfilled_count] if args.key?(:fulfilled_count)
+          @last_known_good_state = args[:last_known_good_state] if args.key?(:last_known_good_state)
           @lock_time = args[:lock_time] if args.key?(:lock_time)
           @procurement_status = args[:procurement_status] if args.key?(:procurement_status)
           @specific_sku_properties = args[:specific_sku_properties] if args.key?(:specific_sku_properties)
+        end
+      end
+      
+      # The state that the future reservation will be reverted to should the amendment
+      # be declined.
+      class FutureReservationStatusLastKnownGoodState
+        include Google::Apis::Core::Hashable
+      
+        # The description of the FutureReservation before an amendment was requested.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The properties of the last known good state for the Future Reservation.
+        # Corresponds to the JSON property `futureReservationSpecs`
+        # @return [Google::Apis::ComputeAlpha::FutureReservationStatusLastKnownGoodStateFutureReservationSpecs]
+        attr_accessor :future_reservation_specs
+      
+        # The name prefix of the Future Reservation before an amendment was requested.
+        # Corresponds to the JSON property `namePrefix`
+        # @return [String]
+        attr_accessor :name_prefix
+      
+        # The status of the last known good state for the Future Reservation.
+        # Corresponds to the JSON property `procurementStatus`
+        # @return [String]
+        attr_accessor :procurement_status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @future_reservation_specs = args[:future_reservation_specs] if args.key?(:future_reservation_specs)
+          @name_prefix = args[:name_prefix] if args.key?(:name_prefix)
+          @procurement_status = args[:procurement_status] if args.key?(:procurement_status)
+        end
+      end
+      
+      # The properties of the last known good state for the Future Reservation.
+      class FutureReservationStatusLastKnownGoodStateFutureReservationSpecs
+        include Google::Apis::Core::Hashable
+      
+        # The share setting for reservations and sole tenancy node groups.
+        # Corresponds to the JSON property `shareSettings`
+        # @return [Google::Apis::ComputeAlpha::ShareSettings]
+        attr_accessor :share_settings
+      
+        # The previous instance related properties of the Future Reservation.
+        # Corresponds to the JSON property `specificSkuProperties`
+        # @return [Google::Apis::ComputeAlpha::FutureReservationSpecificSkuProperties]
+        attr_accessor :specific_sku_properties
+      
+        # The previous time window of the Future Reservation.
+        # Corresponds to the JSON property `timeWindow`
+        # @return [Google::Apis::ComputeAlpha::FutureReservationTimeWindow]
+        attr_accessor :time_window
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @share_settings = args[:share_settings] if args.key?(:share_settings)
+          @specific_sku_properties = args[:specific_sku_properties] if args.key?(:specific_sku_properties)
+          @time_window = args[:time_window] if args.key?(:time_window)
         end
       end
       
@@ -22782,7 +22872,7 @@ module Google
         end
       end
       
-      # Represents an Cross-Cloud Interconnect Remote Location resource. You can use
+      # Represents a Cross-Cloud Interconnect Remote Location resource. You can use
       # this resource to find remote location details about an Interconnect attachment
       # (VLAN).
       class InterconnectRemoteLocation
@@ -22954,7 +23044,7 @@ module Google
         # from accidentally ordering something that is incompatible with their cloud
         # provider. Specifically, when ordering a redundant pair of Cross-Cloud
         # Interconnect ports, and one of them uses a remote location with
-        # portPairMatchingRemoteLocation set to matching, the UI will require that both
+        # portPairMatchingRemoteLocation set to matching, the UI requires that both
         # ports use the same remote location.
         # Corresponds to the JSON property `portPairRemoteLocation`
         # @return [String]
@@ -23035,7 +23125,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] This token allows you to get the next page of results for list
+        # [Output Only] This token lets you get the next page of results for list
         # requests. If the number of results is larger than maxResults, use the
         # nextPageToken as a value for the query parameter pageToken in the next list
         # request. Subsequent list requests will have their own nextPageToken to
@@ -24628,7 +24718,7 @@ module Google
           # @return [Fixnum]
           attr_accessor :guest_accelerator_count
         
-          # The accelerator type resource name, not a full URL, e.g. 'nvidia-tesla-k80'.
+          # The accelerator type resource name, not a full URL, e.g. nvidia-tesla-t4.
           # Corresponds to the JSON property `guestAcceleratorType`
           # @return [String]
           attr_accessor :guest_accelerator_type
@@ -25526,6 +25616,81 @@ module Google
         end
       end
       
+      # Contains NAT IP information of a NAT config (i.e. usage status, mode).
+      class NatIpInfo
+        include Google::Apis::Core::Hashable
+      
+        # A list of all NAT IPs assigned to this NAT config.
+        # Corresponds to the JSON property `natIpInfoMappings`
+        # @return [Array<Google::Apis::ComputeAlpha::NatIpInfoNatIpInfoMapping>]
+        attr_accessor :nat_ip_info_mappings
+      
+        # Name of the NAT config which the NAT IP belongs to.
+        # Corresponds to the JSON property `natName`
+        # @return [String]
+        attr_accessor :nat_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @nat_ip_info_mappings = args[:nat_ip_info_mappings] if args.key?(:nat_ip_info_mappings)
+          @nat_name = args[:nat_name] if args.key?(:nat_name)
+        end
+      end
+      
+      # Contains information of a NAT IP.
+      class NatIpInfoNatIpInfoMapping
+        include Google::Apis::Core::Hashable
+      
+        # Specifies whether NAT IP is auto or manual.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
+        # NAT IP address. For example: 203.0.113.11.
+        # Corresponds to the JSON property `natIp`
+        # @return [String]
+        attr_accessor :nat_ip
+      
+        # Specifies whether NAT IP is currently serving at least one endpoint or not.
+        # Corresponds to the JSON property `usage`
+        # @return [String]
+        attr_accessor :usage
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mode = args[:mode] if args.key?(:mode)
+          @nat_ip = args[:nat_ip] if args.key?(:nat_ip)
+          @usage = args[:usage] if args.key?(:usage)
+        end
+      end
+      
+      # 
+      class NatIpInfoResponse
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] A list of NAT IP information.
+        # Corresponds to the JSON property `result`
+        # @return [Array<Google::Apis::ComputeAlpha::NatIpInfo>]
+        attr_accessor :result
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @result = args[:result] if args.key?(:result)
+        end
+      end
+      
       # Represents a VPC Network resource. Networks connect resources to each other
       # and to the internet. For more information, read Virtual Private Cloud (VPC)
       # Network.
@@ -25714,9 +25879,9 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # [Output Only] Fingerprint of this resource. A hash of the contents stored in
-        # this object. This field is used in optimistic locking. An up-to-date
-        # fingerprint must be provided in order to patch.
+        # Fingerprint of this resource. A hash of the contents stored in this object.
+        # This field is used in optimistic locking. An up-to-date fingerprint must be
+        # provided in order to patch.
         # Corresponds to the JSON property `fingerprint`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -39503,9 +39668,8 @@ module Google
         # ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list
         # of Subnetworks are allowed to Nat (specified in the field subnetwork below)
         # The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if
-        # this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or
-        # ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other
-        # Router.Nat section in any Router for this network in this region.
+        # this field contains ALL_SUBNETWORKS_ALL_IP_RANGES then there should not be any
+        # other Router.Nat section in any Router for this network in this region.
         # Corresponds to the JSON property `sourceSubnetworkIpRangesToNat`
         # @return [String]
         attr_accessor :source_subnetwork_ip_ranges_to_nat
@@ -43711,6 +43875,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :download_bytes
       
+        # Whether this snapshot is created from a confidential compute mode disk. see go/
+        # confidential-mode-in-arcus for details. [Output Only]: This field is not set
+        # by user, but from source disk.
+        # Corresponds to the JSON property `enableConfidentialCompute`
+        # @return [Boolean]
+        attr_accessor :enable_confidential_compute
+        alias_method :enable_confidential_compute?, :enable_confidential_compute
+      
         # [Input Only] Whether to attempt an application consistent snapshot by
         # informing the OS to prepare for the snapshot process.
         # Corresponds to the JSON property `guestFlush`
@@ -43921,6 +44093,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @download_bytes = args[:download_bytes] if args.key?(:download_bytes)
+          @enable_confidential_compute = args[:enable_confidential_compute] if args.key?(:enable_confidential_compute)
           @guest_flush = args[:guest_flush] if args.key?(:guest_flush)
           @guest_os_features = args[:guest_os_features] if args.key?(:guest_os_features)
           @id = args[:id] if args.key?(:id)
@@ -46058,8 +46231,8 @@ module Google
         # Whether to enable flow logging for this subnetwork. If this field is not
         # explicitly set, it will not appear in get listings. If not set the default
         # behavior is determined by the org policy, if there is no org policy specified,
-        # then it will default to disabled. This field isn't supported with the purpose
-        # field set to INTERNAL_HTTPS_LOAD_BALANCER.
+        # then it will default to disabled. This field isn't supported if the subnet
+        # purpose field is set to REGIONAL_MANAGED_PROXY.
         # Corresponds to the JSON property `enableFlowLogs`
         # @return [Boolean]
         attr_accessor :enable_flow_logs
@@ -46194,12 +46367,19 @@ module Google
         # @return [String]
         attr_accessor :private_ipv6_google_access
       
-        # The purpose of the resource. This field can be either PRIVATE_RFC_1918 or
-        # INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to
-        # INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for
-        # Internal HTTP(S) Load Balancing. If unspecified, the purpose defaults to
-        # PRIVATE_RFC_1918. The enableFlowLogs field isn't supported with the purpose
-        # field set to INTERNAL_HTTPS_LOAD_BALANCER.
+        # The purpose of the resource. This field can be either PRIVATE,
+        # REGIONAL_MANAGED_PROXY, PRIVATE_SERVICE_CONNECT, or
+        # INTERNAL_HTTPS_LOAD_BALANCER. PRIVATE is the default purpose for user-created
+        # subnets or subnets that are automatically created in auto mode networks. A
+        # subnet with purpose set to REGIONAL_MANAGED_PROXY is a user-created subnetwork
+        # that is reserved for regional Envoy-based load balancers. A subnet with
+        # purpose set to PRIVATE_SERVICE_CONNECT is used to publish services using
+        # Private Service Connect. A subnet with purpose set to
+        # INTERNAL_HTTPS_LOAD_BALANCER is a proxy-only subnet that can be used only by
+        # regional internal HTTP(S) load balancers. Note that REGIONAL_MANAGED_PROXY is
+        # the preferred setting for all regional Envoy load balancers. If unspecified,
+        # the subnet purpose defaults to PRIVATE. The enableFlowLogs field isn't
+        # supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
         # Corresponds to the JSON property `purpose`
         # @return [String]
         attr_accessor :purpose
@@ -46216,11 +46396,10 @@ module Google
         attr_accessor :reserved_internal_range
       
         # The role of subnetwork. Currently, this field is only used when purpose =
-        # INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE or BACKUP. An
-        # ACTIVE subnetwork is one that is currently being used for Internal HTTP(S)
-        # Load Balancing. A BACKUP subnetwork is one that is ready to be promoted to
-        # ACTIVE or is currently draining. This field can be updated with a patch
-        # request.
+        # REGIONAL_MANAGED_PROXY. The value can be set to ACTIVE or BACKUP. An ACTIVE
+        # subnetwork is one that is currently being used for Envoy-based load balancers
+        # in a region. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE
+        # or is currently draining. This field can be updated with a patch request.
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -46568,7 +46747,8 @@ module Google
         # Whether to enable flow logging for this subnetwork. If this field is not
         # explicitly set, it will not appear in get listings. If not set the default
         # behavior is determined by the org policy, if there is no org policy specified,
-        # then it will default to disabled.
+        # then it will default to disabled. Flow logging isn't supported if the subnet
+        # purpose field is set to REGIONAL_MANAGED_PROXY.
         # Corresponds to the JSON property `enable`
         # @return [Boolean]
         attr_accessor :enable
@@ -51689,22 +51869,28 @@ module Google
         # @return [String]
         attr_accessor :network
       
-        # The purpose of the resource. This field can be either PRIVATE_RFC_1918 or
-        # INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to
-        # INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for
-        # Internal HTTP(S) Load Balancing. If unspecified, the purpose defaults to
-        # PRIVATE_RFC_1918. The enableFlowLogs field isn't supported with the purpose
-        # field set to INTERNAL_HTTPS_LOAD_BALANCER.
+        # The purpose of the resource. This field can be either PRIVATE,
+        # REGIONAL_MANAGED_PROXY, PRIVATE_SERVICE_CONNECT, or
+        # INTERNAL_HTTPS_LOAD_BALANCER. PRIVATE is the default purpose for user-created
+        # subnets or subnets that are automatically created in auto mode networks. A
+        # subnet with purpose set to REGIONAL_MANAGED_PROXY is a user-created subnetwork
+        # that is reserved for regional Envoy-based load balancers. A subnet with
+        # purpose set to PRIVATE_SERVICE_CONNECT is used to publish services using
+        # Private Service Connect. A subnet with purpose set to
+        # INTERNAL_HTTPS_LOAD_BALANCER is a proxy-only subnet that can be used only by
+        # regional internal HTTP(S) load balancers. Note that REGIONAL_MANAGED_PROXY is
+        # the preferred setting for all regional Envoy load balancers. If unspecified,
+        # the subnet purpose defaults to PRIVATE. The enableFlowLogs field isn't
+        # supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
         # Corresponds to the JSON property `purpose`
         # @return [String]
         attr_accessor :purpose
       
         # The role of subnetwork. Currently, this field is only used when purpose =
-        # INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE or BACKUP. An
-        # ACTIVE subnetwork is one that is currently being used for Internal HTTP(S)
-        # Load Balancing. A BACKUP subnetwork is one that is ready to be promoted to
-        # ACTIVE or is currently draining. This field can be updated with a patch
-        # request.
+        # REGIONAL_MANAGED_PROXY. The value can be set to ACTIVE or BACKUP. An ACTIVE
+        # subnetwork is one that is currently being used for Envoy-based load balancers
+        # in a region. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE
+        # or is currently draining. This field can be updated with a patch request.
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role

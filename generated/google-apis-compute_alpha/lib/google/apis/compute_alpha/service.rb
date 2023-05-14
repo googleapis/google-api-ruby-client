@@ -38429,6 +38429,50 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Retrieves runtime NAT IP information.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region for this request.
+        # @param [String] router
+        #   Name of the Router resource to query for Nat IP information. The name should
+        #   conform to RFC1035.
+        # @param [String] nat_name
+        #   Name of the nat service to filter the NAT IP information. If it is omitted,
+        #   all nats for this router will be returned. Name should conform to RFC1035.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::NatIpInfoResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::NatIpInfoResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_router_nat_ip_info(project, region, router, nat_name: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'projects/{project}/regions/{region}/routers/{router}/getNatIpInfo', options)
+          command.response_representation = Google::Apis::ComputeAlpha::NatIpInfoResponse::Representation
+          command.response_class = Google::Apis::ComputeAlpha::NatIpInfoResponse
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['router'] = router unless router.nil?
+          command.query['natName'] = nat_name unless nat_name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Retrieves runtime Nat mapping information of VM endpoints.
         # @param [String] project
         #   Project ID for this request.
