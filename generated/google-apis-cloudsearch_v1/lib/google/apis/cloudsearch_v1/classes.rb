@@ -217,6 +217,51 @@ module Google
         end
       end
       
+      # Starting state for an individual add-on frame.
+      class AddOnFrameStartingState
+        include Google::Apis::Core::Hashable
+      
+        # Additional data internal to the add-on that can be used to initialize itself.
+        # Corresponds to the JSON property `additionalData`
+        # @return [String]
+        attr_accessor :additional_data
+      
+        # The uri of the artifact being used for an add-on co-activity.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_data = args[:additional_data] if args.key?(:additional_data)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Starting state properties for add-on co-activity.
+      class AddOnStartingState
+        include Google::Apis::Core::Hashable
+      
+        # List of starting state frames for the add-on co-activity. Keys for this map
+        # are the values of the AddOnFrameType enum.
+        # Corresponds to the JSON property `addOnFrameStartingStates`
+        # @return [Hash<String,Google::Apis::CloudsearchV1::AddOnFrameStartingState>]
+        attr_accessor :add_on_frame_starting_states
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @add_on_frame_starting_states = args[:add_on_frame_starting_states] if args.key?(:add_on_frame_starting_states)
+        end
+      end
+      
       # 
       class AddonComposeUiActionMarkup
         include Google::Apis::Core::Hashable
@@ -531,6 +576,32 @@ module Google
           @user_mention_metadata = args[:user_mention_metadata] if args.key?(:user_mention_metadata)
           @video_call_metadata = args[:video_call_metadata] if args.key?(:video_call_metadata)
           @youtube_metadata = args[:youtube_metadata] if args.key?(:youtube_metadata)
+        end
+      end
+      
+      # Information about the screen annotation session.
+      class AnnotationInfo
+        include Google::Apis::Core::Hashable
+      
+        # The device resource names of other devices which can annotate the screen.
+        # Corresponds to the JSON property `coannotatorDeviceIds`
+        # @return [Array<String>]
+        attr_accessor :coannotator_device_ids
+      
+        # Whether the annotation is active.
+        # Corresponds to the JSON property `isActive`
+        # @return [Boolean]
+        attr_accessor :is_active
+        alias_method :is_active?, :is_active
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @coannotator_device_ids = args[:coannotator_device_ids] if args.key?(:coannotator_device_ids)
+          @is_active = args[:is_active] if args.key?(:is_active)
         end
       end
       
@@ -911,6 +982,11 @@ module Google
         # @return [Google::Apis::CloudsearchV1::DlpScanSummary]
         attr_accessor :dlp_scan_summary
       
+        # The list of experiments this video is enabled for Next tag: 19
+        # Corresponds to the JSON property `experiment`
+        # @return [Array<String>]
+        attr_accessor :experiment
+      
         # Id representing a group that could be a space, a chat, or a direct message
         # space. Which ID is set here will determine which group
         # Corresponds to the JSON property `groupId`
@@ -918,7 +994,6 @@ module Google
         attr_accessor :group_id
       
         # If the uploaded file is a video that has been transcoded on the client side
-        # Next tag: 18
         # Corresponds to the JSON property `isClientSideTranscodedVideo`
         # @return [Boolean]
         attr_accessor :is_client_side_transcoded_video
@@ -978,6 +1053,7 @@ module Google
           @content_type = args[:content_type] if args.key?(:content_type)
           @dlp_scan_outcome = args[:dlp_scan_outcome] if args.key?(:dlp_scan_outcome)
           @dlp_scan_summary = args[:dlp_scan_summary] if args.key?(:dlp_scan_summary)
+          @experiment = args[:experiment] if args.key?(:experiment)
           @group_id = args[:group_id] if args.key?(:group_id)
           @is_client_side_transcoded_video = args[:is_client_side_transcoded_video] if args.key?(:is_client_side_transcoded_video)
           @original_dimension = args[:original_dimension] if args.key?(:original_dimension)
@@ -1872,6 +1948,29 @@ module Google
         end
       end
       
+      # Metadata used to describe how to render a message in search results page, e.g.,
+      # highlighting and snipetting. In future, we can use this proto to return more
+      # search specific data attached to a message.
+      class AppsDynamiteSharedMessageSearchInfo
+        include Google::Apis::Core::Hashable
+      
+        # An example use case: clients can use this field to highlight matched segments
+        # in message text_body defined in http://google3/apps/dynamite/v1/frontend/api/
+        # message.proto;l=104;rcl=513400736.
+        # Corresponds to the JSON property `matchedSegmentsInTextBody`
+        # @return [Array<Google::Apis::CloudsearchV1::AppsDynamiteSharedTextSegmentsWithDescription>]
+        attr_accessor :matched_segments_in_text_body
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @matched_segments_in_text_body = args[:matched_segments_in_text_body] if args.key?(:matched_segments_in_text_body)
+        end
+      end
+      
       # Contains info about the entity that something is, or is owned by.
       class AppsDynamiteSharedOrganizationInfo
         include Google::Apis::Core::Hashable
@@ -2601,7 +2700,8 @@ module Google
         end
       end
       
-      # Represents the complete border style applied to widgets.
+      # The style options for the border of a card or widget, including the border
+      # type and color.
       class AppsDynamiteStorageBorderStyle
         include Google::Apis::Core::Hashable
       
@@ -2973,15 +3073,11 @@ module Google
       class AppsDynamiteStorageColumns
         include Google::Apis::Core::Hashable
       
-        # Each card supports up to 2 columns.
+        # Each card supports up to 2 columns. If the user's screen width is less than or
+        # equal to 480 pixels, the second column wraps below the first column.
         # Corresponds to the JSON property `columnItems`
         # @return [Array<Google::Apis::CloudsearchV1::AppsDynamiteStorageColumnsColumn>]
         attr_accessor :column_items
-      
-        # Controls how the column resizes based on screen width.
-        # Corresponds to the JSON property `wrapStyle`
-        # @return [String]
-        attr_accessor :wrap_style
       
         def initialize(**args)
            update!(**args)
@@ -2990,7 +3086,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @column_items = args[:column_items] if args.key?(:column_items)
-          @wrap_style = args[:wrap_style] if args.key?(:wrap_style)
         end
       end
       
@@ -3288,7 +3383,8 @@ module Google
       class AppsDynamiteStorageGrid
         include Google::Apis::Core::Hashable
       
-        # Represents the complete border style applied to widgets.
+        # The style options for the border of a card or widget, including the border
+        # type and color.
         # Corresponds to the JSON property `borderStyle`
         # @return [Google::Apis::CloudsearchV1::AppsDynamiteStorageBorderStyle]
         attr_accessor :border_style
@@ -3469,7 +3565,8 @@ module Google
         # @return [String]
         attr_accessor :alt_text
       
-        # Represents the complete border style applied to widgets.
+        # The style options for the border of a card or widget, including the border
+        # type and color.
         # Corresponds to the JSON property `borderStyle`
         # @return [Google::Apis::CloudsearchV1::AppsDynamiteStorageBorderStyle]
         attr_accessor :border_style
@@ -4589,6 +4686,12 @@ module Google
         # @return [Google::Apis::CloudsearchV1::AppsDynamiteStorageCard]
         attr_accessor :card_add_on_data
       
+        # Metadata used to describe search information in a specific component of a chat
+        # message, for example an annotation or an attachment.
+        # Corresponds to the JSON property `componentSearchInfo`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedMessageComponentSearchInfo]
+        attr_accessor :component_search_info
+      
         # The markup for developers to specify the contents of a contextual AddOn. A
         # contextual AddOn is triggered in context of an email. For that email, there
         # can be N items that are associated with the email (e.g. contacts, sales lead,
@@ -4630,6 +4733,7 @@ module Google
           @app_id = args[:app_id] if args.key?(:app_id)
           @attachment_id = args[:attachment_id] if args.key?(:attachment_id)
           @card_add_on_data = args[:card_add_on_data] if args.key?(:card_add_on_data)
+          @component_search_info = args[:component_search_info] if args.key?(:component_search_info)
           @deprecated_add_on_data = args[:deprecated_add_on_data] if args.key?(:deprecated_add_on_data)
           @slack_data = args[:slack_data] if args.key?(:slack_data)
           @slack_data_image_url_height = args[:slack_data_image_url_height] if args.key?(:slack_data_image_url_height)
@@ -5310,6 +5414,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :available_access_types
       
+        # Available screen annotation tool types.
+        # Corresponds to the JSON property `availableAnnotationToolTypes`
+        # @return [Array<String>]
+        attr_accessor :available_annotation_tool_types
+      
         # Output only. The set of reactions that clients are allowed to send and can
         # expect to receive. Note that a device in the conference should have the
         # MAY_SEND_REACTIONS privilege to be able to send reactions.
@@ -5429,6 +5538,7 @@ module Google
           @artifact_owner = args[:artifact_owner] if args.key?(:artifact_owner)
           @attached_documents = args[:attached_documents] if args.key?(:attached_documents)
           @available_access_types = args[:available_access_types] if args.key?(:available_access_types)
+          @available_annotation_tool_types = args[:available_annotation_tool_types] if args.key?(:available_annotation_tool_types)
           @available_reactions = args[:available_reactions] if args.key?(:available_reactions)
           @broadcast_session_info = args[:broadcast_session_info] if args.key?(:broadcast_session_info)
           @calendar_event_id = args[:calendar_event_id] if args.key?(:calendar_event_id)
@@ -5488,6 +5598,12 @@ module Google
         attr_accessor :chat_lock
         alias_method :chat_lock?, :chat_lock
       
+        # Indicates whether the co-activity lock is currently on or off.
+        # Corresponds to the JSON property `coActivityLock`
+        # @return [Boolean]
+        attr_accessor :co_activity_lock
+        alias_method :co_activity_lock?, :co_activity_lock
+      
         # Whether Client-side Encryption is enabled for this conference.
         # Corresponds to the JSON property `cseEnabled`
         # @return [Boolean]
@@ -5530,6 +5646,7 @@ module Google
           @attendance_report_enabled = args[:attendance_report_enabled] if args.key?(:attendance_report_enabled)
           @audio_lock = args[:audio_lock] if args.key?(:audio_lock)
           @chat_lock = args[:chat_lock] if args.key?(:chat_lock)
+          @co_activity_lock = args[:co_activity_lock] if args.key?(:co_activity_lock)
           @cse_enabled = args[:cse_enabled] if args.key?(:cse_enabled)
           @moderation_enabled = args[:moderation_enabled] if args.key?(:moderation_enabled)
           @present_lock = args[:present_lock] if args.key?(:present_lock)
@@ -6251,10 +6368,35 @@ module Google
         # @return [String]
         attr_accessor :activity_title
       
+        # The add-on id of the current add-on being used for co-activity.
+        # Corresponds to the JSON property `addOnId`
+        # @return [String]
+        attr_accessor :add_on_id
+      
+        # Starting state properties for add-on co-activity.
+        # Corresponds to the JSON property `addOnStartingState`
+        # @return [Google::Apis::CloudsearchV1::AddOnStartingState]
+        attr_accessor :add_on_starting_state
+      
         # Identifies the app handling this co-activity.
         # Corresponds to the JSON property `coActivityApp`
         # @return [String]
         attr_accessor :co_activity_app
+      
+        # The resource name of the device that initiated the co-activity.
+        # Corresponds to the JSON property `initiatorDeviceId`
+        # @return [String]
+        attr_accessor :initiator_device_id
+      
+        # The resource name of the device that is presenting the add-on.
+        # Corresponds to the JSON property `presentationDeviceId`
+        # @return [String]
+        attr_accessor :presentation_device_id
+      
+        # The project number of the add-on to determine version.
+        # Corresponds to the JSON property `projectNumber`
+        # @return [Fixnum]
+        attr_accessor :project_number
       
         def initialize(**args)
            update!(**args)
@@ -6263,7 +6405,12 @@ module Google
         # Update properties of this object
         def update!(**args)
           @activity_title = args[:activity_title] if args.key?(:activity_title)
+          @add_on_id = args[:add_on_id] if args.key?(:add_on_id)
+          @add_on_starting_state = args[:add_on_starting_state] if args.key?(:add_on_starting_state)
           @co_activity_app = args[:co_activity_app] if args.key?(:co_activity_app)
+          @initiator_device_id = args[:initiator_device_id] if args.key?(:initiator_device_id)
+          @presentation_device_id = args[:presentation_device_id] if args.key?(:presentation_device_id)
+          @project_number = args[:project_number] if args.key?(:project_number)
         end
       end
       
@@ -6945,6 +7092,12 @@ module Google
       class DataLossPreventionMetadata
         include Google::Apis::Core::Hashable
       
+        # A summary of a DLP scan. This is a combination summary that contains both scan
+        # on message and scan on attachments if any.
+        # Corresponds to the JSON property `dlpMessageScanRecord`
+        # @return [Google::Apis::CloudsearchV1::DlpMessageScanRecord]
+        attr_accessor :dlp_message_scan_record
+      
         # A summary of a DLP scan event. This is a summary and should contain the
         # minimum amount of data required to identify and process DLP scans. It is
         # written to Starcast and encoded & returned to the client on attachment upload.
@@ -6964,6 +7117,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @dlp_message_scan_record = args[:dlp_message_scan_record] if args.key?(:dlp_message_scan_record)
           @dlp_scan_summary = args[:dlp_scan_summary] if args.key?(:dlp_scan_summary)
           @warn_acknowledged = args[:warn_acknowledged] if args.key?(:warn_acknowledged)
         end
@@ -7507,6 +7661,48 @@ module Google
         end
       end
       
+      # A summary of a DLP scan. This is a combination summary that contains both scan
+      # on message and scan on attachments if any.
+      class DlpMessageScanRecord
+        include Google::Apis::Core::Hashable
+      
+        # A summary of a DLP scan event. This is a summary and should contain the
+        # minimum amount of data required to identify and process DLP scans. It is
+        # written to Starcast and encoded & returned to the client on attachment upload.
+        # Corresponds to the JSON property `attachmentScanSummary`
+        # @return [Google::Apis::CloudsearchV1::DlpScanSummary]
+        attr_accessor :attachment_scan_summary
+      
+        # The applied action.
+        # Corresponds to the JSON property `dlpAction`
+        # @return [Google::Apis::CloudsearchV1::DlpAction]
+        attr_accessor :dlp_action
+      
+        # A summary of a DLP scan event. This is a summary and should contain the
+        # minimum amount of data required to identify and process DLP scans. It is
+        # written to Starcast and encoded & returned to the client on attachment upload.
+        # Corresponds to the JSON property `messageScanSummary`
+        # @return [Google::Apis::CloudsearchV1::DlpScanSummary]
+        attr_accessor :message_scan_summary
+      
+        # The DLP scan outcome for the message.
+        # Corresponds to the JSON property `scanOutcome`
+        # @return [String]
+        attr_accessor :scan_outcome
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attachment_scan_summary = args[:attachment_scan_summary] if args.key?(:attachment_scan_summary)
+          @dlp_action = args[:dlp_action] if args.key?(:dlp_action)
+          @message_scan_summary = args[:message_scan_summary] if args.key?(:message_scan_summary)
+          @scan_outcome = args[:scan_outcome] if args.key?(:scan_outcome)
+        end
+      end
+      
       # A summary of a DLP scan event. This is a summary and should contain the
       # minimum amount of data required to identify and process DLP scans. It is
       # written to Starcast and encoded & returned to the client on attachment upload.
@@ -7543,6 +7739,13 @@ module Google
         # @return [String]
         attr_accessor :scan_outcome
       
+        # The event that triggered the scan. This corresponds to the rule trigger
+        # configured in admin console and maps to the different things that can be
+        # scanned.
+        # Corresponds to the JSON property `scanTrigger`
+        # @return [String]
+        attr_accessor :scan_trigger
+      
         def initialize(**args)
            update!(**args)
         end
@@ -7553,6 +7756,7 @@ module Google
           @scan_id = args[:scan_id] if args.key?(:scan_id)
           @scan_not_applicable_for_context = args[:scan_not_applicable_for_context] if args.key?(:scan_not_applicable_for_context)
           @scan_outcome = args[:scan_outcome] if args.key?(:scan_outcome)
+          @scan_trigger = args[:scan_trigger] if args.key?(:scan_trigger)
         end
       end
       
@@ -9917,7 +10121,9 @@ module Google
       class GoogleChatV1ContextualAddOnMarkupCardSection
         include Google::Apis::Core::Hashable
       
-        # The header of the section, text formatted supported.
+        # The header of the section. Formatted text is supported. For more information
+        # about formatting text, see Formatting text in Google Chat apps and Formatting
+        # text in Google Workspace Add-ons.
         # Corresponds to the JSON property `header`
         # @return [String]
         attr_accessor :header
@@ -9942,7 +10148,7 @@ module Google
       class GoogleChatV1WidgetMarkup
         include Google::Apis::Core::Hashable
       
-        # A list of buttons. Buttons is also oneof data and only one of these fields
+        # A list of buttons. Buttons is also `oneof data` and only one of these fields
         # should be set.
         # Corresponds to the JSON property `buttons`
         # @return [Array<Google::Apis::CloudsearchV1::GoogleChatV1WidgetMarkupButton>]
@@ -9959,7 +10165,9 @@ module Google
         # @return [Google::Apis::CloudsearchV1::GoogleChatV1WidgetMarkupKeyValue]
         attr_accessor :key_value
       
-        # A paragraph of text. Formatted text supported.
+        # A paragraph of text. Formatted text supported. For more information about
+        # formatting text, see Formatting text in Google Chat apps and Formatting text
+        # in Google Workspace Add-ons.
         # Corresponds to the JSON property `textParagraph`
         # @return [Google::Apis::CloudsearchV1::GoogleChatV1WidgetMarkupTextParagraph]
         attr_accessor :text_paragraph
@@ -10136,7 +10344,9 @@ module Google
       class GoogleChatV1WidgetMarkupKeyValue
         include Google::Apis::Core::Hashable
       
-        # The text of the bottom label. Formatted text supported.
+        # The text of the bottom label. Formatted text supported. For more information
+        # about formatting text, see Formatting text in Google Chat apps and Formatting
+        # text in Google Workspace Add-ons.
         # Corresponds to the JSON property `bottomLabel`
         # @return [String]
         attr_accessor :bottom_label
@@ -10146,7 +10356,9 @@ module Google
         # @return [Google::Apis::CloudsearchV1::GoogleChatV1WidgetMarkupButton]
         attr_accessor :button
       
-        # The text of the content. Formatted text supported and always required.
+        # The text of the content. Formatted text supported and always required. For
+        # more information about formatting text, see Formatting text in Google Chat
+        # apps and Formatting text in Google Workspace Add-ons.
         # Corresponds to the JSON property `content`
         # @return [String]
         attr_accessor :content
@@ -10173,7 +10385,9 @@ module Google
         # @return [Google::Apis::CloudsearchV1::GoogleChatV1WidgetMarkupOnClick]
         attr_accessor :on_click
       
-        # The text of the top label. Formatted text supported.
+        # The text of the top label. Formatted text supported. For more information
+        # about formatting text, see Formatting text in Google Chat apps and Formatting
+        # text in Google Workspace Add-ons.
         # Corresponds to the JSON property `topLabel`
         # @return [String]
         attr_accessor :top_label
@@ -10265,7 +10479,9 @@ module Google
         end
       end
       
-      # A paragraph of text. Formatted text supported.
+      # A paragraph of text. Formatted text supported. For more information about
+      # formatting text, see Formatting text in Google Chat apps and Formatting text
+      # in Google Workspace Add-ons.
       class GoogleChatV1WidgetMarkupTextParagraph
         include Google::Apis::Core::Hashable
       
@@ -13693,6 +13909,26 @@ module Google
         # @return [String]
         attr_accessor :message_origin
       
+        # Contains reference to another message. It is used in shortcuts which are used
+        # to collect messages from different spaces with a certain common property into
+        # another space. For example, all @mentions of a user are collected into a
+        # mention shortcut space (go/chat-shortcuts-backend-design for more details).
+        # Clients can use this reference to enable navigation to the source message when
+        # the shortcut message is clicked and also to identify a few other details about
+        # the source message. Other fields (like text) from the source message are
+        # copied on to the top-level fields in the Message proto by the server (More
+        # details in go/chat-shortcuts-client-server-design).
+        # Corresponds to the JSON property `messageReference`
+        # @return [Google::Apis::CloudsearchV1::MessageReference]
+        attr_accessor :message_reference
+      
+        # Metadata used to describe how to render a message in search results page, e.g.,
+        # highlighting and snipetting. In future, we can use this proto to return more
+        # search specific data attached to a message.
+        # Corresponds to the JSON property `messageSearchInfo`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedMessageSearchInfo]
+        attr_accessor :message_search_info
+      
         # State of the message, indicating whether the message is visible to all members
         # in the group or is only visible to the sender only, or the
         # private_message_viewer if it is set.
@@ -13841,6 +14077,8 @@ module Google
           @local_id = args[:local_id] if args.key?(:local_id)
           @message_integration_payload = args[:message_integration_payload] if args.key?(:message_integration_payload)
           @message_origin = args[:message_origin] if args.key?(:message_origin)
+          @message_reference = args[:message_reference] if args.key?(:message_reference)
+          @message_search_info = args[:message_search_info] if args.key?(:message_search_info)
           @message_state = args[:message_state] if args.key?(:message_state)
           @origin_app_suggestions = args[:origin_app_suggestions] if args.key?(:origin_app_suggestions)
           @personal_labels = args[:personal_labels] if args.key?(:personal_labels)
@@ -14079,6 +14317,33 @@ module Google
         # Update properties of this object
         def update!(**args)
           @babel_props = args[:babel_props] if args.key?(:babel_props)
+        end
+      end
+      
+      # Contains reference to another message. It is used in shortcuts which are used
+      # to collect messages from different spaces with a certain common property into
+      # another space. For example, all @mentions of a user are collected into a
+      # mention shortcut space (go/chat-shortcuts-backend-design for more details).
+      # Clients can use this reference to enable navigation to the source message when
+      # the shortcut message is clicked and also to identify a few other details about
+      # the source message. Other fields (like text) from the source message are
+      # copied on to the top-level fields in the Message proto by the server (More
+      # details in go/chat-shortcuts-client-server-design).
+      class MessageReference
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `sourceInfo`
+        # @return [Google::Apis::CloudsearchV1::SourceMessageInfo]
+        attr_accessor :source_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @source_info = args[:source_info] if args.key?(:source_info)
         end
       end
       
@@ -15360,6 +15625,11 @@ module Google
       class Presenter
         include Google::Apis::Core::Hashable
       
+        # Information about the screen annotation session.
+        # Corresponds to the JSON property `annotationInfo`
+        # @return [Google::Apis::CloudsearchV1::AnnotationInfo]
+        attr_accessor :annotation_info
+      
         # The device resource name of the device which requested the current presenter
         # to be set. This field can not be modified by clients.
         # Corresponds to the JSON property `byDeviceId`
@@ -15383,6 +15653,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @annotation_info = args[:annotation_info] if args.key?(:annotation_info)
           @by_device_id = args[:by_device_id] if args.key?(:by_device_id)
           @copresenter_device_ids = args[:copresenter_device_ids] if args.key?(:copresenter_device_ids)
           @presenter_device_id = args[:presenter_device_id] if args.key?(:presenter_device_id)
@@ -17754,6 +18025,38 @@ module Google
         end
       end
       
+      # SearchLink metadata, for SEARCH_LINK segments. For a search link, the "text"
+      # field should contain the display text. This is currently not indexed.
+      class SearchLinkData
+        include Google::Apis::Core::Hashable
+      
+        # For lightweight scoring in serving time.
+        # Corresponds to the JSON property `kgEntityConfidence`
+        # @return [Float]
+        attr_accessor :kg_entity_confidence
+      
+        # MID of the KG entity being linked.
+        # Corresponds to the JSON property `mid`
+        # @return [String]
+        attr_accessor :mid
+      
+        # 
+        # Corresponds to the JSON property `queryBroadnessScore`
+        # @return [Float]
+        attr_accessor :query_broadness_score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kg_entity_confidence = args[:kg_entity_confidence] if args.key?(:kg_entity_confidence)
+          @mid = args[:mid] if args.key?(:mid)
+          @query_broadness_score = args[:query_broadness_score] if args.key?(:query_broadness_score)
+        end
+      end
+      
       # Additional search quality metadata of the item.
       class SearchQualityMetadata
         include Google::Apis::Core::Hashable
@@ -18053,6 +18356,12 @@ module Google
         # @return [Google::Apis::CloudsearchV1::LinkData]
         attr_accessor :link_data
       
+        # SearchLink metadata, for SEARCH_LINK segments. For a search link, the "text"
+        # field should contain the display text. This is currently not indexed.
+        # Corresponds to the JSON property `searchLinkData`
+        # @return [Google::Apis::CloudsearchV1::SearchLinkData]
+        attr_accessor :search_link_data
+      
         # Text content of the Segment. As a general rule, this field should contain the
         # actual text that should be rendered in the UI. Thus, for a hashtag, it should
         # be "#Foo", and for a link, it should be the display text. Clients that do not
@@ -18097,6 +18406,7 @@ module Google
           @formatting = args[:formatting] if args.key?(:formatting)
           @hashtag_data = args[:hashtag_data] if args.key?(:hashtag_data)
           @link_data = args[:link_data] if args.key?(:link_data)
+          @search_link_data = args[:search_link_data] if args.key?(:search_link_data)
           @text = args[:text] if args.key?(:text)
           @type = args[:type] if args.key?(:type)
           @user_mention_data = args[:user_mention_data] if args.key?(:user_mention_data)
@@ -18350,6 +18660,13 @@ module Google
         attr_accessor :chat_lock
         alias_method :chat_lock?, :chat_lock
       
+        # The co-activity lock of the meeting space that lets owner control whether the
+        # participants can start/stop or update the state of co-activity.
+        # Corresponds to the JSON property `coActivityLock`
+        # @return [Boolean]
+        attr_accessor :co_activity_lock
+        alias_method :co_activity_lock?, :co_activity_lock
+      
         # Whether meeting artifacts will be shared with cohosts.
         # Corresponds to the JSON property `cohostArtifactSharingEnabled`
         # @return [Boolean]
@@ -18399,6 +18716,7 @@ module Google
           @allow_joining_before_host = args[:allow_joining_before_host] if args.key?(:allow_joining_before_host)
           @attendance_report_enabled = args[:attendance_report_enabled] if args.key?(:attendance_report_enabled)
           @chat_lock = args[:chat_lock] if args.key?(:chat_lock)
+          @co_activity_lock = args[:co_activity_lock] if args.key?(:co_activity_lock)
           @cohost_artifact_sharing_enabled = args[:cohost_artifact_sharing_enabled] if args.key?(:cohost_artifact_sharing_enabled)
           @cse_enabled = args[:cse_enabled] if args.key?(:cse_enabled)
           @default_as_viewer = args[:default_as_viewer] if args.key?(:default_as_viewer)
@@ -18849,6 +19167,31 @@ module Google
         def update!(**args)
           @num_results = args[:num_results] if args.key?(:num_results)
           @num_suggestions = args[:num_suggestions] if args.key?(:num_suggestions)
+        end
+      end
+      
+      # 
+      class SourceMessageInfo
+        include Google::Apis::Core::Hashable
+      
+        # Primary key for Message resource.
+        # Corresponds to the JSON property `messageId`
+        # @return [Google::Apis::CloudsearchV1::MessageId]
+        attr_accessor :message_id
+      
+        # 
+        # Corresponds to the JSON property `messageType`
+        # @return [String]
+        attr_accessor :message_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message_id = args[:message_id] if args.key?(:message_id)
+          @message_type = args[:message_type] if args.key?(:message_type)
         end
       end
       
