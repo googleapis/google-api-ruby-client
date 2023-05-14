@@ -169,6 +169,128 @@ module Google
         end
       end
       
+      # Allow the producer to specify which consumers can connect to it.
+      class ConsumerPscConfig
+        include Google::Apis::Core::Hashable
+      
+        # This is used in PSC consumer ForwardingRule to control whether the PSC
+        # endpoint can be accessed from another region.
+        # Corresponds to the JSON property `disableGlobalAccess`
+        # @return [Boolean]
+        attr_accessor :disable_global_access
+        alias_method :disable_global_access?, :disable_global_access
+      
+        # The resource path of the consumer network where PSC connections are allowed to
+        # be created in. Note, this network does not need be in the ConsumerPscConfig.
+        # project in the case of SharedVPC. Example: projects/`projectNumOrId`/global/
+        # networks/`networkId`.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # The consumer project where PSC connections are allowed to be created in.
+        # Corresponds to the JSON property `project`
+        # @return [String]
+        attr_accessor :project
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disable_global_access = args[:disable_global_access] if args.key?(:disable_global_access)
+          @network = args[:network] if args.key?(:network)
+          @project = args[:project] if args.key?(:project)
+        end
+      end
+      
+      # PSC connection details on consumer side.
+      class ConsumerPscConnection
+        include Google::Apis::Core::Hashable
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::NetworkconnectivityV1::GoogleRpcStatus]
+        attr_accessor :error
+      
+        # The error type indicates whether the error is consumer facing, producer facing
+        # or system internal.
+        # Corresponds to the JSON property `errorType`
+        # @return [String]
+        attr_accessor :error_type
+      
+        # The URI of the consumer forwarding rule created. Example: projects/`
+        # projectNumOrId`/regions/us-east1/networks/`resourceId`.
+        # Corresponds to the JSON property `forwardingRule`
+        # @return [String]
+        attr_accessor :forwarding_rule
+      
+        # The last Compute Engine operation to setup PSC connection.
+        # Corresponds to the JSON property `gceOperation`
+        # @return [String]
+        attr_accessor :gce_operation
+      
+        # The IP literal allocated on the consumer network for the PSC forwarding rule
+        # that is created to connect to the producer service attachment in this service
+        # connection map.
+        # Corresponds to the JSON property `ip`
+        # @return [String]
+        attr_accessor :ip
+      
+        # The consumer network whose PSC forwarding rule is connected to the service
+        # attachments in this service connection map. Note that the network could be on
+        # a different project (shared VPC).
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # The consumer project whose PSC forwarding rule is connected to the service
+        # attachments in this service connection map.
+        # Corresponds to the JSON property `project`
+        # @return [String]
+        attr_accessor :project
+      
+        # The PSC connection id of the PSC forwarding rule connected to the service
+        # attachments in this service connection map.
+        # Corresponds to the JSON property `pscConnectionId`
+        # @return [String]
+        attr_accessor :psc_connection_id
+      
+        # The URI of a service attachment which is the target of the PSC connection.
+        # Corresponds to the JSON property `serviceAttachmentUri`
+        # @return [String]
+        attr_accessor :service_attachment_uri
+      
+        # The state of the PSC connection.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error = args[:error] if args.key?(:error)
+          @error_type = args[:error_type] if args.key?(:error_type)
+          @forwarding_rule = args[:forwarding_rule] if args.key?(:forwarding_rule)
+          @gce_operation = args[:gce_operation] if args.key?(:gce_operation)
+          @ip = args[:ip] if args.key?(:ip)
+          @network = args[:network] if args.key?(:network)
+          @project = args[:project] if args.key?(:project)
+          @psc_connection_id = args[:psc_connection_id] if args.key?(:psc_connection_id)
+          @service_attachment_uri = args[:service_attachment_uri] if args.key?(:service_attachment_uri)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -768,6 +890,134 @@ module Google
         end
       end
       
+      # Response for ListServiceClasses.
+      class ListServiceClassesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The next pagination token in the List response. It should be used as
+        # page_token for the following request. An empty value means no more result.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # ServiceClasses to be returned.
+        # Corresponds to the JSON property `serviceClasses`
+        # @return [Array<Google::Apis::NetworkconnectivityV1::ServiceClass>]
+        attr_accessor :service_classes
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @service_classes = args[:service_classes] if args.key?(:service_classes)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response for ListServiceConnectionMaps.
+      class ListServiceConnectionMapsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The next pagination token in the List response. It should be used as
+        # page_token for the following request. An empty value means no more result.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # ServiceConnectionMaps to be returned.
+        # Corresponds to the JSON property `serviceConnectionMaps`
+        # @return [Array<Google::Apis::NetworkconnectivityV1::ServiceConnectionMap>]
+        attr_accessor :service_connection_maps
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @service_connection_maps = args[:service_connection_maps] if args.key?(:service_connection_maps)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response for ListServiceConnectionPolicies.
+      class ListServiceConnectionPoliciesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The next pagination token in the List response. It should be used as
+        # page_token for the following request. An empty value means no more result.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # ServiceConnectionPolicies to be returned.
+        # Corresponds to the JSON property `serviceConnectionPolicies`
+        # @return [Array<Google::Apis::NetworkconnectivityV1::ServiceConnectionPolicy>]
+        attr_accessor :service_connection_policies
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @service_connection_policies = args[:service_connection_policies] if args.key?(:service_connection_policies)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response for ListServiceConnectionTokens.
+      class ListServiceConnectionTokensResponse
+        include Google::Apis::Core::Hashable
+      
+        # The next pagination token in the List response. It should be used as
+        # page_token for the following request. An empty value means no more result.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # ServiceConnectionTokens to be returned.
+        # Corresponds to the JSON property `serviceConnectionTokens`
+        # @return [Array<Google::Apis::NetworkconnectivityV1::ServiceConnectionToken>]
+        attr_accessor :service_connection_tokens
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @service_connection_tokens = args[:service_connection_tokens] if args.key?(:service_connection_tokens)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # The response for HubService.ListSpokes.
       class ListSpokesResponse
         include Google::Apis::Core::Hashable
@@ -801,7 +1051,7 @@ module Google
         end
       end
       
-      # A resource that represents Google Cloud Platform location.
+      # A resource that represents a Google Cloud location.
       class Location
         include Google::Apis::Core::Hashable
       
@@ -1021,6 +1271,120 @@ module Google
         end
       end
       
+      # The PSC configurations on producer side.
+      class ProducerPscConfig
+        include Google::Apis::Core::Hashable
+      
+        # The resource path of a service attachment. Example: projects/`projectNumOrId`/
+        # regions/`region`/serviceAttachments/`resourceId`.
+        # Corresponds to the JSON property `serviceAttachmentUri`
+        # @return [String]
+        attr_accessor :service_attachment_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service_attachment_uri = args[:service_attachment_uri] if args.key?(:service_attachment_uri)
+        end
+      end
+      
+      # Configuration used for Private Service Connect connections. Used when
+      # Infrastructure is PSC.
+      class PscConfig
+        include Google::Apis::Core::Hashable
+      
+        # Max number of PSC connections for this policy.
+        # Corresponds to the JSON property `limit`
+        # @return [Fixnum]
+        attr_accessor :limit
+      
+        # The resource paths of subnetworks to use for IP address management. Example:
+        # projects/`projectNumOrId`/regions/`region`/subnetworks/`resourceId`.
+        # Corresponds to the JSON property `subnetworks`
+        # @return [Array<String>]
+        attr_accessor :subnetworks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @limit = args[:limit] if args.key?(:limit)
+          @subnetworks = args[:subnetworks] if args.key?(:subnetworks)
+        end
+      end
+      
+      # Information about a specific Private Service Connect connection.
+      class PscConnection
+        include Google::Apis::Core::Hashable
+      
+        # The resource reference of the consumer address.
+        # Corresponds to the JSON property `consumerAddress`
+        # @return [String]
+        attr_accessor :consumer_address
+      
+        # The resource reference of the PSC Forwarding Rule within the consumer VPC.
+        # Corresponds to the JSON property `consumerForwardingRule`
+        # @return [String]
+        attr_accessor :consumer_forwarding_rule
+      
+        # The project where the PSC connection is created.
+        # Corresponds to the JSON property `consumerTargetProject`
+        # @return [String]
+        attr_accessor :consumer_target_project
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::NetworkconnectivityV1::GoogleRpcStatus]
+        attr_accessor :error
+      
+        # The error type indicates whether the error is consumer facing, producer facing
+        # or system internal.
+        # Corresponds to the JSON property `errorType`
+        # @return [String]
+        attr_accessor :error_type
+      
+        # The last Compute Engine operation to setup PSC connection.
+        # Corresponds to the JSON property `gceOperation`
+        # @return [String]
+        attr_accessor :gce_operation
+      
+        # The PSC connection id of the PSC forwarding rule.
+        # Corresponds to the JSON property `pscConnectionId`
+        # @return [String]
+        attr_accessor :psc_connection_id
+      
+        # State of the PSC Connection
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consumer_address = args[:consumer_address] if args.key?(:consumer_address)
+          @consumer_forwarding_rule = args[:consumer_forwarding_rule] if args.key?(:consumer_forwarding_rule)
+          @consumer_target_project = args[:consumer_target_project] if args.key?(:consumer_target_project)
+          @error = args[:error] if args.key?(:error)
+          @error_type = args[:error_type] if args.key?(:error_type)
+          @gce_operation = args[:gce_operation] if args.key?(:gce_operation)
+          @psc_connection_id = args[:psc_connection_id] if args.key?(:psc_connection_id)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # A router appliance instance is a Compute Engine virtual machine (VM) instance
       # that acts as a BGP speaker. A router appliance instance is specified by the
       # URI of the VM and the internal IP address of one of the VM's network
@@ -1077,6 +1441,301 @@ module Google
         def update!(**args)
           @required_for_new_site_to_site_data_transfer_spokes = args[:required_for_new_site_to_site_data_transfer_spokes] if args.key?(:required_for_new_site_to_site_data_transfer_spokes)
           @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # The ServiceClass resource. Next id: 8
+      class ServiceClass
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Time when the ServiceClass was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # A description of this resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # User-defined labels.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Immutable. The name of a ServiceClass resource. Format: projects/`project`/
+        # locations/`location`/serviceClasses/`service_class` See: https://google.aip.
+        # dev/122#fields-representing-resource-names
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The generated service class name. Use this name to refer to the
+        # Service class in Service Connection Maps and Service Connection Policies.
+        # Corresponds to the JSON property `serviceClass`
+        # @return [String]
+        attr_accessor :service_class
+      
+        # Output only. URIs of all Service Connection Maps using this service class.
+        # Corresponds to the JSON property `serviceConnectionMaps`
+        # @return [Array<String>]
+        attr_accessor :service_connection_maps
+      
+        # Output only. Time when the ServiceClass was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @service_class = args[:service_class] if args.key?(:service_class)
+          @service_connection_maps = args[:service_connection_maps] if args.key?(:service_connection_maps)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The ServiceConnectionMap resource. Next id: 14
+      class ServiceConnectionMap
+        include Google::Apis::Core::Hashable
+      
+        # The PSC configurations on consumer side.
+        # Corresponds to the JSON property `consumerPscConfigs`
+        # @return [Array<Google::Apis::NetworkconnectivityV1::ConsumerPscConfig>]
+        attr_accessor :consumer_psc_configs
+      
+        # Output only. PSC connection details on consumer side.
+        # Corresponds to the JSON property `consumerPscConnections`
+        # @return [Array<Google::Apis::NetworkconnectivityV1::ConsumerPscConnection>]
+        attr_accessor :consumer_psc_connections
+      
+        # Output only. Time when the ServiceConnectionMap was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # A description of this resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. The infrastructure used for connections between consumers/
+        # producers.
+        # Corresponds to the JSON property `infrastructure`
+        # @return [String]
+        attr_accessor :infrastructure
+      
+        # User-defined labels.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Immutable. The name of a ServiceConnectionMap. Format: projects/`project`/
+        # locations/`location`/serviceConnectionMaps/`service_connection_map` See: https:
+        # //google.aip.dev/122#fields-representing-resource-names
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The PSC configurations on producer side.
+        # Corresponds to the JSON property `producerPscConfigs`
+        # @return [Array<Google::Apis::NetworkconnectivityV1::ProducerPscConfig>]
+        attr_accessor :producer_psc_configs
+      
+        # The service class identifier this ServiceConnectionMap is for. The user of
+        # ServiceConnectionMap create API needs to have networkconnecitivty.
+        # serviceclasses.use iam permission for the service class.
+        # Corresponds to the JSON property `serviceClass`
+        # @return [String]
+        attr_accessor :service_class
+      
+        # Output only. The service class uri this ServiceConnectionMap is for.
+        # Corresponds to the JSON property `serviceClassUri`
+        # @return [String]
+        attr_accessor :service_class_uri
+      
+        # The token provided by the consumer. This token authenticates that the consumer
+        # can create a connecton within the specified project and network.
+        # Corresponds to the JSON property `token`
+        # @return [String]
+        attr_accessor :token
+      
+        # Output only. Time when the ServiceConnectionMap was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consumer_psc_configs = args[:consumer_psc_configs] if args.key?(:consumer_psc_configs)
+          @consumer_psc_connections = args[:consumer_psc_connections] if args.key?(:consumer_psc_connections)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @infrastructure = args[:infrastructure] if args.key?(:infrastructure)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @producer_psc_configs = args[:producer_psc_configs] if args.key?(:producer_psc_configs)
+          @service_class = args[:service_class] if args.key?(:service_class)
+          @service_class_uri = args[:service_class_uri] if args.key?(:service_class_uri)
+          @token = args[:token] if args.key?(:token)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The ServiceConnectionPolicy resource. Next id: 11
+      class ServiceConnectionPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Time when the ServiceConnectionMap was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # A description of this resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. The type of underlying resources used to create the connection.
+        # Corresponds to the JSON property `infrastructure`
+        # @return [String]
+        attr_accessor :infrastructure
+      
+        # User-defined labels.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Immutable. The name of a ServiceConnectionPolicy. Format: projects/`project`/
+        # locations/`location`/serviceConnectionPolicies/`service_connection_policy` See:
+        # https://google.aip.dev/122#fields-representing-resource-names
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The resource path of the consumer network. Example: - projects/`projectNumOrId`
+        # /global/networks/`resourceId`.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # Configuration used for Private Service Connect connections. Used when
+        # Infrastructure is PSC.
+        # Corresponds to the JSON property `pscConfig`
+        # @return [Google::Apis::NetworkconnectivityV1::PscConfig]
+        attr_accessor :psc_config
+      
+        # Output only. [Output only] Information about each Private Service Connect
+        # connection.
+        # Corresponds to the JSON property `pscConnections`
+        # @return [Array<Google::Apis::NetworkconnectivityV1::PscConnection>]
+        attr_accessor :psc_connections
+      
+        # The service class identifier for which this ServiceConnectionPolicy is for.
+        # The service class identifier is a unique, symbolic representation of a
+        # ServiceClass. It is provided by the Service Producer. Google services have a
+        # prefix of gcp. For example, gcp-cloud-sql. 3rd party services do not. For
+        # example, test-service-a3dfcx.
+        # Corresponds to the JSON property `serviceClass`
+        # @return [String]
+        attr_accessor :service_class
+      
+        # Output only. Time when the ServiceConnectionMap was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @infrastructure = args[:infrastructure] if args.key?(:infrastructure)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @network = args[:network] if args.key?(:network)
+          @psc_config = args[:psc_config] if args.key?(:psc_config)
+          @psc_connections = args[:psc_connections] if args.key?(:psc_connections)
+          @service_class = args[:service_class] if args.key?(:service_class)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The ServiceConnectionToken resource. Next id: 9
+      class ServiceConnectionToken
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Time when the ServiceConnectionToken was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # A description of this resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. The time to which this token is valid.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # User-defined labels.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Immutable. The name of a ServiceConnectionToken. Format: projects/`project`/
+        # locations/`location`/ServiceConnectionTokens/`service_connection_token` See:
+        # https://google.aip.dev/122#fields-representing-resource-names
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The resource path of the network associated with this token. Example: projects/
+        # `projectNumOrId`/global/networks/`resourceId`.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # Output only. The token generated by Automation.
+        # Corresponds to the JSON property `token`
+        # @return [String]
+        attr_accessor :token
+      
+        # Output only. Time when the ServiceConnectionToken was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @network = args[:network] if args.key?(:network)
+          @token = args[:token] if args.key?(:token)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
