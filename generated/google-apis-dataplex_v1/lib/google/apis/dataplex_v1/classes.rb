@@ -2182,6 +2182,12 @@ module Google
       class GoogleCloudDataplexV1DataScanEventDataProfileAppliedConfigs
         include Google::Apis::Core::Hashable
       
+        # Boolean indicating whether a row filter was applied in the DataScan job.
+        # Corresponds to the JSON property `rowFilterApplied`
+        # @return [Boolean]
+        attr_accessor :row_filter_applied
+        alias_method :row_filter_applied?, :row_filter_applied
+      
         # The percentage of the records selected from the dataset for DataScan. Value
         # ranges between 0.0 and 100.0. Value 0.0 or 100.0 imply that sampling was not
         # applied.
@@ -2195,6 +2201,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @row_filter_applied = args[:row_filter_applied] if args.key?(:row_filter_applied)
           @sampling_percent = args[:sampling_percent] if args.key?(:sampling_percent)
         end
       end
@@ -2222,6 +2229,12 @@ module Google
       class GoogleCloudDataplexV1DataScanEventDataQualityAppliedConfigs
         include Google::Apis::Core::Hashable
       
+        # Boolean indicating whether a row filter was applied in the DataScan job.
+        # Corresponds to the JSON property `rowFilterApplied`
+        # @return [Boolean]
+        attr_accessor :row_filter_applied
+        alias_method :row_filter_applied?, :row_filter_applied
+      
         # The percentage of the records selected from the dataset for DataScan. Value
         # ranges between 0.0 and 100.0. Value 0.0 or 100.0 imply that sampling was not
         # applied.
@@ -2235,6 +2248,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @row_filter_applied = args[:row_filter_applied] if args.key?(:row_filter_applied)
           @sampling_percent = args[:sampling_percent] if args.key?(:sampling_percent)
         end
       end
