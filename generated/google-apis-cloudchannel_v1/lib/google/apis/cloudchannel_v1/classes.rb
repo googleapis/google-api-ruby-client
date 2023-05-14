@@ -98,6 +98,69 @@ module Google
         end
       end
       
+      # Represents a billing account.
+      class GoogleCloudChannelV1BillingAccount
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time when this billing account was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The 3-letter currency code defined in ISO 4217.
+        # Corresponds to the JSON property `currencyCode`
+        # @return [String]
+        attr_accessor :currency_code
+      
+        # Display name of the billing account.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. Resource name of the billing account. Format: accounts/`
+        # account_id`/billingAccounts/`billing_account_id`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The CLDR region code.
+        # Corresponds to the JSON property `regionCode`
+        # @return [String]
+        attr_accessor :region_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @currency_code = args[:currency_code] if args.key?(:currency_code)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @region_code = args[:region_code] if args.key?(:region_code)
+        end
+      end
+      
+      # Represents a billing account that can be used to make a purchase.
+      class GoogleCloudChannelV1BillingAccountPurchaseInfo
+        include Google::Apis::Core::Hashable
+      
+        # Represents a billing account.
+        # Corresponds to the JSON property `billingAccount`
+        # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1BillingAccount]
+        attr_accessor :billing_account
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @billing_account = args[:billing_account] if args.key?(:billing_account)
+        end
+      end
+      
       # Request message for CloudChannelService.CancelEntitlement.
       class GoogleCloudChannelV1CancelEntitlementRequest
         include Google::Apis::Core::Hashable
@@ -1041,8 +1104,9 @@ module Google
         # maximum assignable units for a flexible offer OR - num_units: The total
         # commitment for commitment-based offers The response may additionally include
         # the following output-only Parameters: - assigned_units: The number of licenses
-        # assigned to users. For GCP billing subaccounts, the following Parameter may be
-        # accepted as input: - display_name: The display name of the billing subaccount.
+        # assigned to users. For Google Cloud billing subaccounts, the following
+        # Parameter may be accepted as input: - display_name: The display name of the
+        # billing subaccount.
         # Corresponds to the JSON property `parameters`
         # @return [Array<Google::Apis::CloudchannelV1::GoogleCloudChannelV1Parameter>]
         attr_accessor :parameters
@@ -2154,7 +2218,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Reseller Billing account to charge after an offer transaction. Only present
-        # for Google Cloud Platform offers.
+        # for Google Cloud offers.
         # Corresponds to the JSON property `billingAccount`
         # @return [String]
         attr_accessor :billing_account
@@ -2410,8 +2474,8 @@ module Google
         attr_accessor :product_id
       
         # Output only. Provisioning ID of the entitlement. For Google Workspace, this is
-        # the underlying Subscription ID. For Google Cloud Platform, this is the Billing
-        # Account ID of the billing subaccount."
+        # the underlying Subscription ID. For Google Cloud, this is the Billing Account
+        # ID of the billing subaccount."
         # Corresponds to the JSON property `provisioningId`
         # @return [String]
         attr_accessor :provisioning_id
@@ -2475,6 +2539,27 @@ module Google
         # Update properties of this object
         def update!(**args)
           @sku = args[:sku] if args.key?(:sku)
+        end
+      end
+      
+      # Response message for QueryEligibleBillingAccounts.
+      class GoogleCloudChannelV1QueryEligibleBillingAccountsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of SKU purchase groups where each group represents a set of SKUs that
+        # must be purchased using the same billing account. Each SKU from [
+        # QueryEligibleBillingAccountsRequest.skus] will appear in exactly one SKU group.
+        # Corresponds to the JSON property `skuPurchaseGroups`
+        # @return [Array<Google::Apis::CloudchannelV1::GoogleCloudChannelV1SkuPurchaseGroup>]
+        attr_accessor :sku_purchase_groups
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sku_purchase_groups = args[:sku_purchase_groups] if args.key?(:sku_purchase_groups)
         end
       end
       
@@ -2558,7 +2643,7 @@ module Google
       end
       
       # The ID and description of a report that was used to generate report data. For
-      # example, "GCP Daily Spend", "Google Workspace License Activity", etc.
+      # example, "Google Cloud Daily Spend", "Google Workspace License Activity", etc.
       class GoogleCloudChannelV1Report
         include Google::Apis::Core::Hashable
       
@@ -2641,7 +2726,7 @@ module Google
         attr_accessor :preceding_date_range
       
         # The ID and description of a report that was used to generate report data. For
-        # example, "GCP Daily Spend", "Google Workspace License Activity", etc.
+        # example, "Google Cloud Daily Spend", "Google Workspace License Activity", etc.
         # Corresponds to the JSON property `report`
         # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1Report]
         attr_accessor :report
@@ -3046,6 +3131,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @sku_group = args[:sku_group] if args.key?(:sku_group)
+        end
+      end
+      
+      # Represents a set of SKUs that must be purchased using the same billing account.
+      class GoogleCloudChannelV1SkuPurchaseGroup
+        include Google::Apis::Core::Hashable
+      
+        # List of billing accounts that are eligible to purhcase these SKUs.
+        # Corresponds to the JSON property `billingAccountPurchaseInfos`
+        # @return [Array<Google::Apis::CloudchannelV1::GoogleCloudChannelV1BillingAccountPurchaseInfo>]
+        attr_accessor :billing_account_purchase_infos
+      
+        # Resource names of the SKUs included in this group. Format: products/`
+        # product_id`/skus/`sku_id`.
+        # Corresponds to the JSON property `skus`
+        # @return [Array<String>]
+        attr_accessor :skus
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @billing_account_purchase_infos = args[:billing_account_purchase_infos] if args.key?(:billing_account_purchase_infos)
+          @skus = args[:skus] if args.key?(:skus)
         end
       end
       
@@ -3737,8 +3848,9 @@ module Google
         # maximum assignable units for a flexible offer OR - num_units: The total
         # commitment for commitment-based offers The response may additionally include
         # the following output-only Parameters: - assigned_units: The number of licenses
-        # assigned to users. For GCP billing subaccounts, the following Parameter may be
-        # accepted as input: - display_name: The display name of the billing subaccount.
+        # assigned to users. For Google Cloud billing subaccounts, the following
+        # Parameter may be accepted as input: - display_name: The display name of the
+        # billing subaccount.
         # Corresponds to the JSON property `parameters`
         # @return [Array<Google::Apis::CloudchannelV1::GoogleCloudChannelV1alpha1Parameter>]
         attr_accessor :parameters
@@ -3918,8 +4030,8 @@ module Google
         attr_accessor :product_id
       
         # Output only. Provisioning ID of the entitlement. For Google Workspace, this is
-        # the underlying Subscription ID. For Google Cloud Platform, this is the Billing
-        # Account ID of the billing subaccount."
+        # the underlying Subscription ID. For Google Cloud, this is the Billing Account
+        # ID of the billing subaccount."
         # Corresponds to the JSON property `provisioningId`
         # @return [String]
         attr_accessor :provisioning_id
@@ -4004,7 +4116,7 @@ module Google
       end
       
       # The ID and description of a report that was used to generate report data. For
-      # example, "GCP Daily Spend", "Google Workspace License Activity", etc.
+      # example, "Google Cloud Daily Spend", "Google Workspace License Activity", etc.
       class GoogleCloudChannelV1alpha1Report
         include Google::Apis::Core::Hashable
       
@@ -4087,7 +4199,7 @@ module Google
         attr_accessor :preceding_date_range
       
         # The ID and description of a report that was used to generate report data. For
-        # example, "GCP Daily Spend", "Google Workspace License Activity", etc.
+        # example, "Google Cloud Daily Spend", "Google Workspace License Activity", etc.
         # Corresponds to the JSON property `report`
         # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1alpha1Report]
         attr_accessor :report
