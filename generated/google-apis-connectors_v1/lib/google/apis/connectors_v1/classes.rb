@@ -566,8 +566,8 @@ module Google
         # @return [Google::Apis::ConnectorsV1::ConnectionStatus]
         attr_accessor :status
       
-        # Output only. This subscription type enum value states if the metrics should be
-        # sent for billing or not.
+        # Output only. This subscription type enum states the subscription type of the
+        # project.
         # Corresponds to the JSON property `subscriptionType`
         # @return [String]
         attr_accessor :subscription_type
