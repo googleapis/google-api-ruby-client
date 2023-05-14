@@ -1078,6 +1078,7 @@ module Google
       
           property :text, as: 'text', class: Google::Apis::HealthcareV1::TextConfig, decorator: Google::Apis::HealthcareV1::TextConfig::Representation
       
+          property :use_regional_data_processing, as: 'useRegionalDataProcessing'
         end
       end
       
@@ -2050,6 +2051,9 @@ module Google
       class TextConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :additional_transformations, as: 'additionalTransformations', class: Google::Apis::HealthcareV1::InfoTypeTransformation, decorator: Google::Apis::HealthcareV1::InfoTypeTransformation::Representation
+      
+          collection :exclude_info_types, as: 'excludeInfoTypes'
           collection :transformations, as: 'transformations', class: Google::Apis::HealthcareV1::InfoTypeTransformation, decorator: Google::Apis::HealthcareV1::InfoTypeTransformation::Representation
       
         end
