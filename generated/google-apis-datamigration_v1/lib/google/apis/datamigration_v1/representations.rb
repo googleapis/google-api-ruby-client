@@ -1101,6 +1101,7 @@ module Google
       class MigrationJob
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cmek_key_name, as: 'cmekKeyName'
           property :conversion_workspace, as: 'conversionWorkspace', class: Google::Apis::DatamigrationV1::ConversionWorkspaceInfo, decorator: Google::Apis::DatamigrationV1::ConversionWorkspaceInfo::Representation
       
           property :create_time, as: 'createTime'
