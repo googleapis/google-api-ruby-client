@@ -284,6 +284,88 @@ module Google
         end
       end
       
+      # A sequence of bits, encoded in a byte array. Each byte in the `bitmap` byte
+      # array stores 8 bits of the sequence. The only exception is the last byte,
+      # which may store 8 _or fewer_ bits. The `padding` defines the number of bits of
+      # the last byte to be ignored as "padding". The values of these "padding" bits
+      # are unspecified and must be ignored. To retrieve the first bit, bit 0,
+      # calculate: `(bitmap[0] & 0x01) != 0`. To retrieve the second bit, bit 1,
+      # calculate: `(bitmap[0] & 0x02) != 0`. To retrieve the third bit, bit 2,
+      # calculate: `(bitmap[0] & 0x04) != 0`. To retrieve the fourth bit, bit 3,
+      # calculate: `(bitmap[0] & 0x08) != 0`. To retrieve bit n, calculate: `(bitmap[n
+      # / 8] & (0x01 << (n % 8))) != 0`. The "size" of a `BitSequence` (the number of
+      # bits it contains) is calculated by this formula: `(bitmap.length * 8) -
+      # padding`.
+      class BitSequence
+        include Google::Apis::Core::Hashable
+      
+        # The bytes that encode the bit sequence. May have a length of zero.
+        # Corresponds to the JSON property `bitmap`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :bitmap
+      
+        # The number of bits of the last byte in `bitmap` to ignore as "padding". If the
+        # length of `bitmap` is zero, then this value must be `0`. Otherwise, this value
+        # must be between 0 and 7, inclusive.
+        # Corresponds to the JSON property `padding`
+        # @return [Fixnum]
+        attr_accessor :padding
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bitmap = args[:bitmap] if args.key?(:bitmap)
+          @padding = args[:padding] if args.key?(:padding)
+        end
+      end
+      
+      # A bloom filter (https://en.wikipedia.org/wiki/Bloom_filter). The bloom filter
+      # hashes the entries with MD5 and treats the resulting 128-bit hash as 2
+      # distinct 64-bit hash values, interpreted as unsigned integers using 2's
+      # complement encoding. These two hash values, named `h1` and `h2`, are then used
+      # to compute the `hash_count` hash values using the formula, starting at `i=0`:
+      # h(i) = h1 + (i * h2) These resulting values are then taken modulo the number
+      # of bits in the bloom filter to get the bits of the bloom filter to test for
+      # the given entry.
+      class BloomFilter
+        include Google::Apis::Core::Hashable
+      
+        # A sequence of bits, encoded in a byte array. Each byte in the `bitmap` byte
+        # array stores 8 bits of the sequence. The only exception is the last byte,
+        # which may store 8 _or fewer_ bits. The `padding` defines the number of bits of
+        # the last byte to be ignored as "padding". The values of these "padding" bits
+        # are unspecified and must be ignored. To retrieve the first bit, bit 0,
+        # calculate: `(bitmap[0] & 0x01) != 0`. To retrieve the second bit, bit 1,
+        # calculate: `(bitmap[0] & 0x02) != 0`. To retrieve the third bit, bit 2,
+        # calculate: `(bitmap[0] & 0x04) != 0`. To retrieve the fourth bit, bit 3,
+        # calculate: `(bitmap[0] & 0x08) != 0`. To retrieve bit n, calculate: `(bitmap[n
+        # / 8] & (0x01 << (n % 8))) != 0`. The "size" of a `BitSequence` (the number of
+        # bits it contains) is calculated by this formula: `(bitmap.length * 8) -
+        # padding`.
+        # Corresponds to the JSON property `bits`
+        # @return [Google::Apis::FirestoreV1::BitSequence]
+        attr_accessor :bits
+      
+        # The number of hashes used by the algorithm.
+        # Corresponds to the JSON property `hashCount`
+        # @return [Fixnum]
+        attr_accessor :hash_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bits = args[:bits] if args.key?(:bits)
+          @hash_count = args[:hash_count] if args.key?(:hash_count)
+        end
+      end
+      
       # A selection of a collection, such as `messages as m1`.
       class CollectionSelector
         include Google::Apis::Core::Hashable
@@ -707,6 +789,18 @@ module Google
         # @return [Fixnum]
         attr_accessor :target_id
       
+        # A bloom filter (https://en.wikipedia.org/wiki/Bloom_filter). The bloom filter
+        # hashes the entries with MD5 and treats the resulting 128-bit hash as 2
+        # distinct 64-bit hash values, interpreted as unsigned integers using 2's
+        # complement encoding. These two hash values, named `h1` and `h2`, are then used
+        # to compute the `hash_count` hash values using the formula, starting at `i=0`:
+        # h(i) = h1 + (i * h2) These resulting values are then taken modulo the number
+        # of bits in the bloom filter to get the bits of the bloom filter to test for
+        # the given entry.
+        # Corresponds to the JSON property `unchangedNames`
+        # @return [Google::Apis::FirestoreV1::BloomFilter]
+        attr_accessor :unchanged_names
+      
         def initialize(**args)
            update!(**args)
         end
@@ -715,6 +809,7 @@ module Google
         def update!(**args)
           @count = args[:count] if args.key?(:count)
           @target_id = args[:target_id] if args.key?(:target_id)
+          @unchanged_names = args[:unchanged_names] if args.key?(:unchanged_names)
         end
       end
       
@@ -852,6 +947,139 @@ module Google
           @composite_filter = args[:composite_filter] if args.key?(:composite_filter)
           @field_filter = args[:field_filter] if args.key?(:field_filter)
           @unary_filter = args[:unary_filter] if args.key?(:unary_filter)
+        end
+      end
+      
+      # A Backup of a Cloud Firestore Database. The backup contains all documents and
+      # index configurations for the given database at specific point in time.
+      class GoogleFirestoreAdminV1Backup
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Name of the Firestore database that the backup is from. Format is
+        # `projects/`project`/databases/`database``.
+        # Corresponds to the JSON property `database`
+        # @return [String]
+        attr_accessor :database
+      
+        # Output only. The system-generated UUID4 for the Firestore database that the
+        # backup is from.
+        # Corresponds to the JSON property `databaseUid`
+        # @return [String]
+        attr_accessor :database_uid
+      
+        # Output only. The timestamp at which this backup expires.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # Output only. The unique resource name of the Backup. Format is `projects/`
+        # project`/locations/`location`/backups/`backup``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The backup contains an externally consistent copy of the database
+        # at this time.
+        # Corresponds to the JSON property `snapshotTime`
+        # @return [String]
+        attr_accessor :snapshot_time
+      
+        # Output only. The current state of the backup.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Backup specific statistics.
+        # Corresponds to the JSON property `stats`
+        # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1Stats]
+        attr_accessor :stats
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @database = args[:database] if args.key?(:database)
+          @database_uid = args[:database_uid] if args.key?(:database_uid)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @name = args[:name] if args.key?(:name)
+          @snapshot_time = args[:snapshot_time] if args.key?(:snapshot_time)
+          @state = args[:state] if args.key?(:state)
+          @stats = args[:stats] if args.key?(:stats)
+        end
+      end
+      
+      # A backup schedule for a Cloud Firestore Database. This resource is owned by
+      # the database it is backing up, and is deleted along with the database. The
+      # actual backups are not though.
+      class GoogleFirestoreAdminV1BackupSchedule
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The timestamp at which this backup schedule was created and
+        # effective since. No backups will be created for this schedule before this time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Represent a recurring schedule that runs at a specific time every day. The
+        # time zone is UTC.
+        # Corresponds to the JSON property `dailyRecurrence`
+        # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1DailyRecurrence]
+        attr_accessor :daily_recurrence
+      
+        # Output only. The unique backup schedule identifier across all locations and
+        # databases for the given project. This will be auto-assigned. Format is `
+        # projects/`project`/databases/`database`/backupSchedules/`backup_schedule``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # At what relative time in the future, compared to the creation time of the
+        # backup should the backup be deleted, i.e. keep backups for 7 days.
+        # Corresponds to the JSON property `retention`
+        # @return [String]
+        attr_accessor :retention
+      
+        # Output only. The timestamp at which this backup schedule was most recently
+        # updated. When a backup schedule is first created, this is the same as
+        # create_time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Represents a recurring schedule that runs on a specified day of the week. The
+        # time zone is UTC.
+        # Corresponds to the JSON property `weeklyRecurrence`
+        # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1WeeklyRecurrence]
+        attr_accessor :weekly_recurrence
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @daily_recurrence = args[:daily_recurrence] if args.key?(:daily_recurrence)
+          @name = args[:name] if args.key?(:name)
+          @retention = args[:retention] if args.key?(:retention)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @weekly_recurrence = args[:weekly_recurrence] if args.key?(:weekly_recurrence)
+        end
+      end
+      
+      # Represent a recurring schedule that runs at a specific time every day. The
+      # time zone is UTC.
+      class GoogleFirestoreAdminV1DailyRecurrence
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -1519,6 +1747,55 @@ module Google
         end
       end
       
+      # The response for FirestoreAdmin.ListBackupSchedules.
+      class GoogleFirestoreAdminV1ListBackupSchedulesResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of all backup schedules.
+        # Corresponds to the JSON property `backupSchedules`
+        # @return [Array<Google::Apis::FirestoreV1::GoogleFirestoreAdminV1BackupSchedule>]
+        attr_accessor :backup_schedules
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_schedules = args[:backup_schedules] if args.key?(:backup_schedules)
+        end
+      end
+      
+      # The response for FirestoreAdmin.ListBackups.
+      class GoogleFirestoreAdminV1ListBackupsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of all backups for the project. Ordered by `location ASC, create_time
+        # DESC, name ASC`.
+        # Corresponds to the JSON property `backups`
+        # @return [Array<Google::Apis::FirestoreV1::GoogleFirestoreAdminV1Backup>]
+        attr_accessor :backups
+      
+        # List of locations that existing backups were not able to be fetched from.
+        # Instead of failing the entire requests when a single location is unreachable,
+        # this response returns a partial result set and list of locations unable to be
+        # reached here. The request can be retried against a single location to get a
+        # concrete error.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backups = args[:backups] if args.key?(:backups)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # The list of databases for a project.
       class GoogleFirestoreAdminV1ListDatabasesResponse
         include Google::Apis::Core::Hashable
@@ -1629,6 +1906,69 @@ module Google
         end
       end
       
+      # The request message for FirestoreAdmin.RestoreDatabase.
+      class GoogleFirestoreAdminV1RestoreDatabaseRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Backup to restore from. Must be from the same project as the parent.
+        # Format is: `projects/`project_id`/locations/`location`/backups/`backup``
+        # Corresponds to the JSON property `backup`
+        # @return [String]
+        attr_accessor :backup
+      
+        # Required. The ID to use for the database, which will become the final
+        # component of the database's resource name. This database id must not be
+        # associated with an existing database. This value should be 4-63 characters.
+        # Valid characters are /a-z-/ with first character a letter and the last a
+        # letter or a number. Must not be UUID-like /[0-9a-f]`8`(-[0-9a-f]`4`)`3`-[0-9a-
+        # f]`12`/. "(default)" database id is also valid.
+        # Corresponds to the JSON property `databaseId`
+        # @return [String]
+        attr_accessor :database_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup = args[:backup] if args.key?(:backup)
+          @database_id = args[:database_id] if args.key?(:database_id)
+        end
+      end
+      
+      # Backup specific statistics.
+      class GoogleFirestoreAdminV1Stats
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The total number of documents contained in the backup.
+        # Corresponds to the JSON property `documentCount`
+        # @return [Fixnum]
+        attr_accessor :document_count
+      
+        # Output only. The total number of index entries contained in the backup.
+        # Corresponds to the JSON property `indexCount`
+        # @return [Fixnum]
+        attr_accessor :index_count
+      
+        # Output only. Summation of the size of all documents and index entries in the
+        # backup, measured in bytes.
+        # Corresponds to the JSON property `sizeBytes`
+        # @return [Fixnum]
+        attr_accessor :size_bytes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @document_count = args[:document_count] if args.key?(:document_count)
+          @index_count = args[:index_count] if args.key?(:index_count)
+          @size_bytes = args[:size_bytes] if args.key?(:size_bytes)
+        end
+      end
+      
       # The TTL (time-to-live) configuration for documents that have this `Field` set.
       # Storing a timestamp value into a TTL-enabled field will be treated as the
       # document's absolute expiration time. Timestamp values in the past indicate
@@ -1682,6 +2022,26 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Represents a recurring schedule that runs on a specified day of the week. The
+      # time zone is UTC.
+      class GoogleFirestoreAdminV1WeeklyRecurrence
+        include Google::Apis::Core::Hashable
+      
+        # The day of week to run. DAY_OF_WEEK_UNSPECIFIED is not allowed.
+        # Corresponds to the JSON property `day`
+        # @return [String]
+        attr_accessor :day
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @day = args[:day] if args.key?(:day)
         end
       end
       
@@ -2655,6 +3015,14 @@ module Google
         # @return [Google::Apis::FirestoreV1::DocumentsTarget]
         attr_accessor :documents
       
+        # The number of documents that last matched the query at the resume token or
+        # read time. This value is only relevant when a `resume_type` is provided. This
+        # value being present and greater than zero signals that the client wants `
+        # ExistenceFilter.unchanged_names` to be included in the response.
+        # Corresponds to the JSON property `expectedCount`
+        # @return [Fixnum]
+        attr_accessor :expected_count
+      
         # If the target should be removed once it is current and consistent.
         # Corresponds to the JSON property `once`
         # @return [Boolean]
@@ -2692,6 +3060,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @documents = args[:documents] if args.key?(:documents)
+          @expected_count = args[:expected_count] if args.key?(:expected_count)
           @once = args[:once] if args.key?(:once)
           @query = args[:query] if args.key?(:query)
           @read_time = args[:read_time] if args.key?(:read_time)

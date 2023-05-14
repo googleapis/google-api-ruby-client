@@ -76,6 +76,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BitSequence
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BloomFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CollectionSelector
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -190,6 +202,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleFirestoreAdminV1Backup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirestoreAdminV1BackupSchedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirestoreAdminV1DailyRecurrence
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleFirestoreAdminV1Database
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -268,6 +298,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleFirestoreAdminV1ListBackupSchedulesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirestoreAdminV1ListBackupsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleFirestoreAdminV1ListDatabasesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -298,6 +340,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleFirestoreAdminV1RestoreDatabaseRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirestoreAdminV1Stats
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleFirestoreAdminV1TtlConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -311,6 +365,12 @@ module Google
       end
       
       class GoogleFirestoreAdminV1UpdateDatabaseMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirestoreAdminV1WeeklyRecurrence
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -621,6 +681,23 @@ module Google
         end
       end
       
+      class BitSequence
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bitmap, :base64 => true, as: 'bitmap'
+          property :padding, as: 'padding'
+        end
+      end
+      
+      class BloomFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bits, as: 'bits', class: Google::Apis::FirestoreV1::BitSequence, decorator: Google::Apis::FirestoreV1::BitSequence::Representation
+      
+          property :hash_count, as: 'hashCount'
+        end
+      end
+      
       class CollectionSelector
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -745,6 +822,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :count, as: 'count'
           property :target_id, as: 'targetId'
+          property :unchanged_names, as: 'unchangedNames', class: Google::Apis::FirestoreV1::BloomFilter, decorator: Google::Apis::FirestoreV1::BloomFilter::Representation
+      
         end
       end
       
@@ -793,6 +872,40 @@ module Google
       
           property :unary_filter, as: 'unaryFilter', class: Google::Apis::FirestoreV1::UnaryFilter, decorator: Google::Apis::FirestoreV1::UnaryFilter::Representation
       
+        end
+      end
+      
+      class GoogleFirestoreAdminV1Backup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :database, as: 'database'
+          property :database_uid, as: 'databaseUid'
+          property :expire_time, as: 'expireTime'
+          property :name, as: 'name'
+          property :snapshot_time, as: 'snapshotTime'
+          property :state, as: 'state'
+          property :stats, as: 'stats', class: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1Stats, decorator: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1Stats::Representation
+      
+        end
+      end
+      
+      class GoogleFirestoreAdminV1BackupSchedule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :daily_recurrence, as: 'dailyRecurrence', class: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1DailyRecurrence, decorator: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1DailyRecurrence::Representation
+      
+          property :name, as: 'name'
+          property :retention, as: 'retention'
+          property :update_time, as: 'updateTime'
+          property :weekly_recurrence, as: 'weeklyRecurrence', class: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1WeeklyRecurrence, decorator: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1WeeklyRecurrence::Representation
+      
+        end
+      end
+      
+      class GoogleFirestoreAdminV1DailyRecurrence
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -954,6 +1067,23 @@ module Google
         end
       end
       
+      class GoogleFirestoreAdminV1ListBackupSchedulesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :backup_schedules, as: 'backupSchedules', class: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1BackupSchedule, decorator: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1BackupSchedule::Representation
+      
+        end
+      end
+      
+      class GoogleFirestoreAdminV1ListBackupsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :backups, as: 'backups', class: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1Backup, decorator: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1Backup::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class GoogleFirestoreAdminV1ListDatabasesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -994,6 +1124,23 @@ module Google
         end
       end
       
+      class GoogleFirestoreAdminV1RestoreDatabaseRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup, as: 'backup'
+          property :database_id, as: 'databaseId'
+        end
+      end
+      
+      class GoogleFirestoreAdminV1Stats
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :document_count, :numeric_string => true, as: 'documentCount'
+          property :index_count, :numeric_string => true, as: 'indexCount'
+          property :size_bytes, :numeric_string => true, as: 'sizeBytes'
+        end
+      end
+      
       class GoogleFirestoreAdminV1TtlConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1011,6 +1158,13 @@ module Google
       class GoogleFirestoreAdminV1UpdateDatabaseMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleFirestoreAdminV1WeeklyRecurrence
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :day, as: 'day'
         end
       end
       
@@ -1295,6 +1449,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :documents, as: 'documents', class: Google::Apis::FirestoreV1::DocumentsTarget, decorator: Google::Apis::FirestoreV1::DocumentsTarget::Representation
       
+          property :expected_count, as: 'expectedCount'
           property :once, as: 'once'
           property :query, as: 'query', class: Google::Apis::FirestoreV1::QueryTarget, decorator: Google::Apis::FirestoreV1::QueryTarget::Representation
       
