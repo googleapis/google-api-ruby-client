@@ -1010,6 +1010,63 @@ module Google
         end
       end
       
+      # Metadata of the sample documents operation.
+      class GoogleCloudDocumentaiUiv1beta3SampleDocumentsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The common metadata for long running operations.
+        # Corresponds to the JSON property `commonMetadata`
+        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata]
+        attr_accessor :common_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+        end
+      end
+      
+      # Response of the sample documents operation.
+      class GoogleCloudDocumentaiUiv1beta3SampleDocumentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The result of the sampling process.
+        # Corresponds to the JSON property `selectedDocuments`
+        # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3SampleDocumentsResponseSelectedDocument>]
+        attr_accessor :selected_documents
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @selected_documents = args[:selected_documents] if args.key?(:selected_documents)
+        end
+      end
+      
+      # 
+      class GoogleCloudDocumentaiUiv1beta3SampleDocumentsResponseSelectedDocument
+        include Google::Apis::Core::Hashable
+      
+        # An internal identifier for document.
+        # Corresponds to the JSON property `documentId`
+        # @return [String]
+        attr_accessor :document_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @document_id = args[:document_id] if args.key?(:document_id)
+        end
+      end
+      
       # The long-running operation metadata for the SetDefaultProcessorVersion method.
       class GoogleCloudDocumentaiUiv1beta3SetDefaultProcessorVersionMetadata
         include Google::Apis::Core::Hashable
