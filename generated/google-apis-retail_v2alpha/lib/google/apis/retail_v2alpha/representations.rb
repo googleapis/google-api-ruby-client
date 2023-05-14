@@ -322,12 +322,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudRetailV2alphaCatalogAttributeIgnoredFacetValues
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudRetailV2alphaColorInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1738,10 +1732,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dynamic_facetable_option, as: 'dynamicFacetableOption'
           property :exact_searchable_option, as: 'exactSearchableOption'
-          collection :facet_intervals, as: 'facetIntervals', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaInterval, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaInterval::Representation
-      
-          collection :ignored_facet_values, as: 'ignoredFacetValues', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCatalogAttributeIgnoredFacetValues, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCatalogAttributeIgnoredFacetValues::Representation
-      
           property :in_use, as: 'inUse'
           property :indexable_option, as: 'indexableOption'
           property :key, as: 'key'
@@ -1749,15 +1739,6 @@ module Google
           property :retrievable_option, as: 'retrievableOption'
           property :searchable_option, as: 'searchableOption'
           property :type, as: 'type'
-        end
-      end
-      
-      class GoogleCloudRetailV2alphaCatalogAttributeIgnoredFacetValues
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :end_time, as: 'endTime'
-          property :start_time, as: 'startTime'
-          collection :values, as: 'values'
         end
       end
       
