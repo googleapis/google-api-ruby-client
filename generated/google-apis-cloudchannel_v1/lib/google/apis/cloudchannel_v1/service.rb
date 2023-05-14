@@ -1385,6 +1385,46 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Lists the billing accounts that are eligible to purchase particular SKUs for a
+        # given customer. Possible error codes: * PERMISSION_DENIED: The customer doesn'
+        # t belong to the reseller. * INVALID_ARGUMENT: Required request parameters are
+        # missing or invalid. Return value: Based on the provided list of SKUs, returns
+        # a list of SKU groups that must be purchased using the same billing account and
+        # the billing accounts eligible to purchase each SKU group.
+        # @param [String] customer
+        #   Required. The resource name of the customer to list eligible billing accounts
+        #   for. Format: accounts/`account_id`/customers/`customer_id`.
+        # @param [Array<String>, String] skus
+        #   Required. List of SKUs to list eligible billing accounts for. At least one SKU
+        #   is required. Format: products/`product_id`/skus/`sku_id`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudchannelV1::GoogleCloudChannelV1QueryEligibleBillingAccountsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1QueryEligibleBillingAccountsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def query_account_customer_eligible_billing_accounts(customer, skus: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+customer}:queryEligibleBillingAccounts', options)
+          command.response_representation = Google::Apis::CloudchannelV1::GoogleCloudChannelV1QueryEligibleBillingAccountsResponse::Representation
+          command.response_class = Google::Apis::CloudchannelV1::GoogleCloudChannelV1QueryEligibleBillingAccountsResponse
+          command.params['customer'] = customer unless customer.nil?
+          command.query['skus'] = skus unless skus.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Transfers customer entitlements to new reseller. Possible error codes: *
         # PERMISSION_DENIED: The customer doesn't belong to the reseller. *
         # INVALID_ARGUMENT: Required request parameters are missing or invalid. *

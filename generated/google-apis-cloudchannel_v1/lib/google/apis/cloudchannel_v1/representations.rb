@@ -40,6 +40,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudChannelV1BillingAccount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudChannelV1BillingAccountPurchaseInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudChannelV1CancelEntitlementRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -418,6 +430,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudChannelV1QueryEligibleBillingAccountsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudChannelV1RegisterSubscriberRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -521,6 +539,12 @@ module Google
       end
       
       class GoogleCloudChannelV1SkuGroupCondition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudChannelV1SkuPurchaseGroup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -828,6 +852,25 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :base_entitlement, as: 'baseEntitlement'
+        end
+      end
+      
+      class GoogleCloudChannelV1BillingAccount
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :currency_code, as: 'currencyCode'
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          property :region_code, as: 'regionCode'
+        end
+      end
+      
+      class GoogleCloudChannelV1BillingAccountPurchaseInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :billing_account, as: 'billingAccount', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1BillingAccount, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1BillingAccount::Representation
+      
         end
       end
       
@@ -1500,6 +1543,14 @@ module Google
         end
       end
       
+      class GoogleCloudChannelV1QueryEligibleBillingAccountsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :sku_purchase_groups, as: 'skuPurchaseGroups', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1SkuPurchaseGroup, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1SkuPurchaseGroup::Representation
+      
+        end
+      end
+      
       class GoogleCloudChannelV1RegisterSubscriberRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1673,6 +1724,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :sku_group, as: 'skuGroup'
+        end
+      end
+      
+      class GoogleCloudChannelV1SkuPurchaseGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :billing_account_purchase_infos, as: 'billingAccountPurchaseInfos', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1BillingAccountPurchaseInfo, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1BillingAccountPurchaseInfo::Representation
+      
+          collection :skus, as: 'skus'
         end
       end
       
