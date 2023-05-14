@@ -467,7 +467,7 @@ module Google
         attr_accessor :tag_key
       
         # The parent name of the tag key. Must be in the format `organizations/`
-        # organization_id``.
+        # organization_id`` or `projects/`project_number``
         # Corresponds to the JSON property `tagKeyParentName`
         # @return [String]
         attr_accessor :tag_key_parent_name
