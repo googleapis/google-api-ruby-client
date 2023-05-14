@@ -514,6 +514,7 @@ module Google
           property :name, as: 'name'
           collection :promotion_ids, as: 'promotionIds'
           property :quantity, as: 'quantity'
+          property :uri, as: 'uri'
         end
       end
       

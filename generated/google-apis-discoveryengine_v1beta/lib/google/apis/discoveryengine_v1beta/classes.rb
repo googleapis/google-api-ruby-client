@@ -761,6 +761,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :quantity
       
+        # Required. The Document url - only allowed for DataStores with content_config
+        # PUBLIC_WEBSITE.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
         def initialize(**args)
            update!(**args)
         end
@@ -771,6 +777,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @promotion_ids = args[:promotion_ids] if args.key?(:promotion_ids)
           @quantity = args[:quantity] if args.key?(:quantity)
+          @uri = args[:uri] if args.key?(:uri)
         end
       end
       
@@ -1292,7 +1299,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. Filter matching documents to purge. Only currently supported value
-        # is “*” (all items).
+        # is `*` (all items).
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
