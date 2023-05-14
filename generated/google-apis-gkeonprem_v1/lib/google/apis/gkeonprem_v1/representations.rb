@@ -1468,7 +1468,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bare_metal_admin_cluster_id, as: 'bareMetalAdminClusterId'
-          property :local_name, as: 'localName'
           property :membership, as: 'membership'
         end
       end
