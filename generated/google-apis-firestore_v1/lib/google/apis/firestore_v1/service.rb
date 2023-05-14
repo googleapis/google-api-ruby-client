@@ -308,6 +308,216 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Create a new database by restore from an existing backup. The new database
+        # must be in the same cloud region or multi-region location as the existing
+        # backup. This behaves similar to FirestoreAdmin.CreateDatabase except instead
+        # of creating a new empty database, a new database is created with the database
+        # type, index configuration, and documents from an existing backup. The long-
+        # running operation can be used to track the progress of the restore, with the
+        # Operation's metadata field type being the RestoreDatabaseMetadata. The
+        # response type is the Database if the restore was successful. The new database
+        # is not readable or writeable until the LRO has completed. Cancelling the
+        # returned operation will stop the restore and delete the in-progress database,
+        # if the restore is still active.
+        # @param [String] parent
+        #   Required. The project to restore the database in. Format is `projects/`
+        #   project_id``.
+        # @param [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1RestoreDatabaseRequest] google_firestore_admin_v1_restore_database_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirestoreV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirestoreV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def restore_project_database(parent, google_firestore_admin_v1_restore_database_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/databases:restore', options)
+          command.request_representation = Google::Apis::FirestoreV1::GoogleFirestoreAdminV1RestoreDatabaseRequest::Representation
+          command.request_object = google_firestore_admin_v1_restore_database_request_object
+          command.response_representation = Google::Apis::FirestoreV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::FirestoreV1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a backup schedule on a database. At most two backup schedules can be
+        # configured on a database, one daily backup schedule with retention up to 7
+        # days and one weekly backup schedule with retention up to 14 weeks.
+        # @param [String] parent
+        #   Required. The parent database. Format `projects/`project`/databases/`database``
+        # @param [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1BackupSchedule] google_firestore_admin_v1_backup_schedule_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1BackupSchedule] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1BackupSchedule]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_database_backup_schedule(parent, google_firestore_admin_v1_backup_schedule_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/backupSchedules', options)
+          command.request_representation = Google::Apis::FirestoreV1::GoogleFirestoreAdminV1BackupSchedule::Representation
+          command.request_object = google_firestore_admin_v1_backup_schedule_object
+          command.response_representation = Google::Apis::FirestoreV1::GoogleFirestoreAdminV1BackupSchedule::Representation
+          command.response_class = Google::Apis::FirestoreV1::GoogleFirestoreAdminV1BackupSchedule
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a backup schedule.
+        # @param [String] name
+        #   Required. The name of backup schedule. Format `projects/`project`/databases/`
+        #   database`/backupSchedules/`backup_schedule``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirestoreV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirestoreV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_database_backup_schedule(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::FirestoreV1::Empty::Representation
+          command.response_class = Google::Apis::FirestoreV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets information about a backup schedule.
+        # @param [String] name
+        #   Required. The name of the backup schedule. Format `projects/`project`/
+        #   databases/`database`/backupSchedules/`backup_schedule``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1BackupSchedule] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1BackupSchedule]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_database_backup_schedule(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::FirestoreV1::GoogleFirestoreAdminV1BackupSchedule::Representation
+          command.response_class = Google::Apis::FirestoreV1::GoogleFirestoreAdminV1BackupSchedule
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List backup schedules.
+        # @param [String] parent
+        #   Required. The parent database. Format is `projects/`project`/databases/`
+        #   database``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1ListBackupSchedulesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1ListBackupSchedulesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_database_backup_schedules(parent, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/backupSchedules', options)
+          command.response_representation = Google::Apis::FirestoreV1::GoogleFirestoreAdminV1ListBackupSchedulesResponse::Representation
+          command.response_class = Google::Apis::FirestoreV1::GoogleFirestoreAdminV1ListBackupSchedulesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a backup schedule.
+        # @param [String] name
+        #   Output only. The unique backup schedule identifier across all locations and
+        #   databases for the given project. This will be auto-assigned. Format is `
+        #   projects/`project`/databases/`database`/backupSchedules/`backup_schedule``
+        # @param [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1BackupSchedule] google_firestore_admin_v1_backup_schedule_object
+        # @param [String] update_mask
+        #   The list of fields to be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1BackupSchedule] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1BackupSchedule]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_database_backup_schedule(name, google_firestore_admin_v1_backup_schedule_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::FirestoreV1::GoogleFirestoreAdminV1BackupSchedule::Representation
+          command.request_object = google_firestore_admin_v1_backup_schedule_object
+          command.response_representation = Google::Apis::FirestoreV1::GoogleFirestoreAdminV1BackupSchedule::Representation
+          command.response_class = Google::Apis::FirestoreV1::GoogleFirestoreAdminV1BackupSchedule
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the metadata and configuration for a Field.
         # @param [String] name
         #   Required. A name of the form `projects/`project_id`/databases/`database_id`/
@@ -1515,6 +1725,101 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a backup.
+        # @param [String] name
+        #   Required. Name of the backup to delete. format is `projects/`project`/
+        #   locations/`location`/backups/`backup``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirestoreV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirestoreV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_backup(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::FirestoreV1::Empty::Representation
+          command.response_class = Google::Apis::FirestoreV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets information about a backup.
+        # @param [String] name
+        #   Required. Name of the backup to fetch. Format is `projects/`project`/locations/
+        #   `location`/backups/`backup``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1Backup] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1Backup]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_backup(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::FirestoreV1::GoogleFirestoreAdminV1Backup::Representation
+          command.response_class = Google::Apis::FirestoreV1::GoogleFirestoreAdminV1Backup
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all the backups.
+        # @param [String] parent
+        #   Required. The location to list backups from. Format is `projects/`project`/
+        #   locations/`location``. Use ``location` = '-'` to list backups from all
+        #   locations for the given project. This allows listing backups from a single
+        #   location or from all locations.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1ListBackupsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1ListBackupsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_backups(parent, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/backups', options)
+          command.response_representation = Google::Apis::FirestoreV1::GoogleFirestoreAdminV1ListBackupsResponse::Representation
+          command.response_class = Google::Apis::FirestoreV1::GoogleFirestoreAdminV1ListBackupsResponse
+          command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
