@@ -280,6 +280,14 @@ module Google
         # @return [String]
         attr_accessor :dpc_resource_path
       
+        # Optional. The timeout before forcing factory reset the device if the device
+        # doesn't go through provisioning in the setup wizard, usually due to lack of
+        # network connectivity during setup wizard. Ranges from 0-6 hours, with 2 hours
+        # being the default if unset.
+        # Corresponds to the JSON property `forcedResetTime`
+        # @return [String]
+        attr_accessor :forced_reset_time
+      
         # Required. Whether this is the default configuration that zero-touch enrollment
         # applies to any new devices the organization purchases in the future. Only one
         # customer configuration can be the default. Setting this value to `true`,
@@ -309,6 +317,7 @@ module Google
           @custom_message = args[:custom_message] if args.key?(:custom_message)
           @dpc_extras = args[:dpc_extras] if args.key?(:dpc_extras)
           @dpc_resource_path = args[:dpc_resource_path] if args.key?(:dpc_resource_path)
+          @forced_reset_time = args[:forced_reset_time] if args.key?(:forced_reset_time)
           @is_default = args[:is_default] if args.key?(:is_default)
           @name = args[:name] if args.key?(:name)
         end

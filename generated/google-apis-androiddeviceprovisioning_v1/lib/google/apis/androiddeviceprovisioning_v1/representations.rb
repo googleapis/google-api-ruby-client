@@ -326,6 +326,7 @@ module Google
           property :custom_message, as: 'customMessage'
           property :dpc_extras, as: 'dpcExtras'
           property :dpc_resource_path, as: 'dpcResourcePath'
+          property :forced_reset_time, as: 'forcedResetTime'
           property :is_default, as: 'isDefault'
           property :name, as: 'name'
         end
