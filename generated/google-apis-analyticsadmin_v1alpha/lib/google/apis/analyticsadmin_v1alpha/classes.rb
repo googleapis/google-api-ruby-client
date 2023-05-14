@@ -735,6 +735,34 @@ module Google
         end
       end
       
+      # A link between a GA4 Property and an AdSense for Content ad client.
+      class GoogleAnalyticsAdminV1alphaAdSenseLink
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. The AdSense ad client code that the GA4 property is linked to.
+        # Example format: "ca-pub-1234567890"
+        # Corresponds to the JSON property `adClientCode`
+        # @return [String]
+        attr_accessor :ad_client_code
+      
+        # Output only. The resource name for this AdSense Link resource. Format:
+        # properties/`propertyId`/adSenseLinks/`linkId` Example: properties/1234/
+        # adSenseLinks/6789
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ad_client_code = args[:ad_client_code] if args.key?(:ad_client_code)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Request message for ApproveDisplayVideo360AdvertiserLinkProposal RPC.
       class GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest
         include Google::Apis::Core::Hashable
@@ -1866,6 +1894,11 @@ module Google
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccount]
         attr_accessor :account
       
+        # A link between a GA4 Property and an AdSense for Content ad client.
+        # Corresponds to the JSON property `adsenseLink`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAdSenseLink]
+        attr_accessor :adsense_link
+      
         # The attribution settings used for a given property. This is a singleton
         # resource.
         # Corresponds to the JSON property `attributionSettings`
@@ -1983,6 +2016,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @account = args[:account] if args.key?(:account)
+          @adsense_link = args[:adsense_link] if args.key?(:adsense_link)
           @attribution_settings = args[:attribution_settings] if args.key?(:attribution_settings)
           @audience = args[:audience] if args.key?(:audience)
           @bigquery_link = args[:bigquery_link] if args.key?(:bigquery_link)
@@ -3129,7 +3163,8 @@ module Google
         attr_accessor :event_conditions
       
         # Output only. Resource name for this EventCreateRule resource. Format:
-        # properties/`property`/dataStreams/`data_stream`/eventCreateRules
+        # properties/`property`/dataStreams/`data_stream`/eventCreateRules/`
+        # event_create_rule`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3717,6 +3752,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @accounts = args[:accounts] if args.key?(:accounts)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for ListAdSenseLinks method.
+      class GoogleAnalyticsAdminV1alphaListAdSenseLinksResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of AdSenseLinks.
+        # Corresponds to the JSON property `adsenseLinks`
+        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAdSenseLink>]
+        attr_accessor :adsense_links
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @adsense_links = args[:adsense_links] if args.key?(:adsense_links)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
