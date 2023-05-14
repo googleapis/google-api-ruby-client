@@ -342,6 +342,7 @@ module Google
           hash :options, as: 'options'
           property :p4_service_account, as: 'p4ServiceAccount'
           property :private_instance, as: 'privateInstance'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :service_account, as: 'serviceAccount'
           property :service_endpoint, as: 'serviceEndpoint'
           property :state, as: 'state'
