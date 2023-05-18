@@ -371,6 +371,19 @@ module Google
         end
       end
       
+      # DisableMigrationRequest is the request message for DisableMigration method.
+      class DisableMigrationRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Represents a managed Microsoft Active Directory domain. If the domain is being
       # changed, it will be placed into the UPDATING state, which indicates that the
       # resource is being reconciled. At this point, Get will reflect an intermediate
@@ -547,6 +560,25 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # EnableMigrationRequest is the request message for EnableMigration method.
+      class EnableMigrationRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. List of the on-prem domains to be migrated.
+        # Corresponds to the JSON property `migratingDomains`
+        # @return [Array<Google::Apis::ManagedidentitiesV1::OnPremDomainDetails>]
+        attr_accessor :migrating_domains
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @migrating_domains = args[:migrating_domains] if args.key?(:migrating_domains)
         end
       end
       
@@ -1480,7 +1512,7 @@ module Google
         end
       end
       
-      # A resource that represents Google Cloud Platform location.
+      # A resource that represents a Google Cloud location.
       class Location
         include Google::Apis::Core::Hashable
       
@@ -1611,6 +1643,33 @@ module Google
         def update!(**args)
           @daily_cycle = args[:daily_cycle] if args.key?(:daily_cycle)
           @weekly_cycle = args[:weekly_cycle] if args.key?(:weekly_cycle)
+        end
+      end
+      
+      # OnPremDomainDetails is the message which contains details of on-prem domain
+      # which is trusted and needs to be migrated.
+      class OnPremDomainDetails
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Option to disable SID filtering.
+        # Corresponds to the JSON property `disableSidFiltering`
+        # @return [Boolean]
+        attr_accessor :disable_sid_filtering
+        alias_method :disable_sid_filtering?, :disable_sid_filtering
+      
+        # Required. FQDN of the on-prem domain being migrated.
+        # Corresponds to the JSON property `domainName`
+        # @return [String]
+        attr_accessor :domain_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disable_sid_filtering = args[:disable_sid_filtering] if args.key?(:disable_sid_filtering)
+          @domain_name = args[:domain_name] if args.key?(:domain_name)
         end
       end
       
