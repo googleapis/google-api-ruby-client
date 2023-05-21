@@ -397,6 +397,7 @@ module Google
           property :process_status, as: 'processStatus'
           property :process_type, as: 'processType'
           property :project_name, as: 'projectName'
+          property :runtime_version, as: 'runtimeVersion'
           property :start_time, as: 'startTime'
           property :user_access_level, as: 'userAccessLevel'
         end

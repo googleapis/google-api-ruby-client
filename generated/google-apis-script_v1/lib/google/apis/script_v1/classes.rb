@@ -565,6 +565,11 @@ module Google
         # @return [String]
         attr_accessor :project_name
       
+        # Which version of maestro to use to execute the script.
+        # Corresponds to the JSON property `runtimeVersion`
+        # @return [String]
+        attr_accessor :runtime_version
+      
         # Time the execution started.
         # Corresponds to the JSON property `startTime`
         # @return [String]
@@ -586,6 +591,7 @@ module Google
           @process_status = args[:process_status] if args.key?(:process_status)
           @process_type = args[:process_type] if args.key?(:process_type)
           @project_name = args[:project_name] if args.key?(:project_name)
+          @runtime_version = args[:runtime_version] if args.key?(:runtime_version)
           @start_time = args[:start_time] if args.key?(:start_time)
           @user_access_level = args[:user_access_level] if args.key?(:user_access_level)
         end
