@@ -220,6 +220,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromeManagementV1HeartbeatStatusReport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromeManagementV1HttpsLatencyRoutineData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -227,6 +233,12 @@ module Google
       end
       
       class GoogleChromeManagementV1InstalledApp
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1KioskAppStatusReport
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -793,6 +805,14 @@ module Google
         end
       end
       
+      class GoogleChromeManagementV1HeartbeatStatusReport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :report_time, as: 'reportTime'
+          property :state, as: 'state'
+        end
+      end
+      
       class GoogleChromeManagementV1HttpsLatencyRoutineData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -815,6 +835,15 @@ module Google
           property :homepage_uri, as: 'homepageUri'
           property :os_user_count, :numeric_string => true, as: 'osUserCount'
           collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class GoogleChromeManagementV1KioskAppStatusReport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_id, as: 'appId'
+          property :app_version, as: 'appVersion'
+          property :report_time, as: 'reportTime'
         end
       end
       
@@ -989,6 +1018,10 @@ module Google
           property :graphics_info, as: 'graphicsInfo', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1GraphicsInfo, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1GraphicsInfo::Representation
       
           collection :graphics_status_report, as: 'graphicsStatusReport', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1GraphicsStatusReport, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1GraphicsStatusReport::Representation
+      
+          collection :heartbeat_status_report, as: 'heartbeatStatusReport', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1HeartbeatStatusReport, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1HeartbeatStatusReport::Representation
+      
+          collection :kiosk_app_status_report, as: 'kioskAppStatusReport', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1KioskAppStatusReport, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1KioskAppStatusReport::Representation
       
           property :memory_info, as: 'memoryInfo', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1MemoryInfo, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1MemoryInfo::Representation
       
