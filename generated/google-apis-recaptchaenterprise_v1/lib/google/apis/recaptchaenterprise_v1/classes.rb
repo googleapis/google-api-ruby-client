@@ -1264,9 +1264,9 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest
         include Google::Apis::Core::Hashable
       
-        # Optional. The unique stable hashed user identifier we should search
-        # connections to. The identifier should correspond to a `hashed_account_id`
-        # provided in a previous `CreateAssessment` or `AnnotateAssessment` call.
+        # Optional. The unique stable hashed user identifier used to search connections.
+        # The identifier should correspond to a `hashed_account_id` provided in a
+        # previous `CreateAssessment` or `AnnotateAssessment` call.
         # Corresponds to the JSON property `hashedAccountId`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
