@@ -5553,8 +5553,7 @@ module Google
         attr_accessor :tag_keys
       
         # TagValue IDs, in the format of tagValues/`TAG_VALUE_ID`. To search against the
-        # `tagValueIds`: * Use a field query. Example: - `tagValueIds:"456"` - `
-        # tagValueIds="tagValues/456"` * Use a free text query. Example: - `456`
+        # `tagValueIds`: * Use a field query. Example: - `tagValueIds="tagValues/456"`
         # Corresponds to the JSON property `tagValueIds`
         # @return [Array<String>]
         attr_accessor :tag_value_ids
