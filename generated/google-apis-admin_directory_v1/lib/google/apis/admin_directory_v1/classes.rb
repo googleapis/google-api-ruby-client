@@ -2601,8 +2601,8 @@ module Google
       class Member
         include Google::Apis::Core::Hashable
       
-        # Defines mail delivery preferences of member. This is only supported by create/
-        # update/get.
+        # Defines mail delivery preferences of member. This field is only supported by `
+        # insert`, `update`, and `get` methods.
         # Corresponds to the JSON property `delivery_settings`
         # @return [String]
         attr_accessor :delivery_settings
