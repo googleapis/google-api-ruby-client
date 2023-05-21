@@ -307,11 +307,10 @@ module Google
         #   Required. Name of the workflow for which information should be retrieved.
         #   Format: projects/`project`/locations/`location`/workflows/`workflow`
         # @param [String] revision_id
-        #   Optional. Optional. The revision of the workflow to retrieve. If the
-        #   revision_id is empty, the latest revision is retrieved. The format is "000001-
-        #   a4d", where the first 6 characters define the zero-padded decimal revision
-        #   number. They are followed by a hyphen and 3 hexadecimal characters. (go/
-        #   wf_adr_clh_1)
+        #   Optional. The revision of the workflow to retrieve. If the revision_id is
+        #   empty, the latest revision is retrieved. The format is "000001-a4d", where the
+        #   first six characters define the zero-padded decimal revision number. They are
+        #   followed by a hyphen and three hexadecimal characters.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
