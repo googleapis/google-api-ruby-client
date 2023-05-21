@@ -312,7 +312,10 @@ module Google
         attr_accessor :options
       
         # The type of the report. The type of the report will dictate what dimesions,
-        # filters, and metrics can be used.
+        # filters, and metrics can be used. **Warning:** The `AUDIENCE_COMPOSITION`
+        # report type will be deprecated in Display & Video 360 on **June 8, 2023**.
+        # Once deprecated, you will no longer be able to create new or retrieve existing
+        # Query and Report resources of this type.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
