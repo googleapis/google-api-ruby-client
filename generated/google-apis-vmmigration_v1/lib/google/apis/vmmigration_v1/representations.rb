@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AwsDiskDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AwsSecurityGroup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -516,6 +522,15 @@ module Google
         end
       end
       
+      class AwsDiskDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disk_number, as: 'diskNumber'
+          property :size_gb, :numeric_string => true, as: 'sizeGb'
+          property :volume_id, as: 'volumeId'
+        end
+      end
+      
       class AwsSecurityGroup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -545,6 +560,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :committed_storage_bytes, :numeric_string => true, as: 'committedStorageBytes'
+          collection :disks, as: 'disks', class: Google::Apis::VmmigrationV1::AwsDiskDetails, decorator: Google::Apis::VmmigrationV1::AwsDiskDetails::Representation
+      
           property :firmware, as: 'firmware'
         end
       end
