@@ -162,7 +162,9 @@ module Google
         
         # Deletes the workload. Make sure that workload's direct children are already in
         # a deleted state, otherwise the request will fail with a FAILED_PRECONDITION
-        # error.
+        # error. In addition to assuredworkloads.workload.delete permission, the user
+        # should also have orgpolicy.policy.set permission on the deleted folder to
+        # remove Assured Workloads OrgPolicies.
         # @param [String] name
         #   Required. The `name` field is used to identify the workload. Format:
         #   organizations/`org_id`/locations/`location_id`/workloads/`workload_id`
@@ -199,7 +201,7 @@ module Google
         
         # Gets Assured Workload associated with a CRM Node
         # @param [String] name
-        #   Required. The resource name of the Workload to fetch. This is the workload's
+        #   Required. The resource name of the Workload to fetch. This is the workloads's
         #   relative path in the API, formatted as "organizations/`organization_id`/
         #   locations/`location_id`/workloads/`workload_id`". For example, "organizations/
         #   123/locations/us-east1/workloads/assured-workload-1".

@@ -316,6 +316,8 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :partner, as: 'partner'
+          property :partner_permissions, as: 'partnerPermissions', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions::Representation
+      
           property :provisioned_resources_parent, as: 'provisionedResourcesParent'
           collection :resource_settings, as: 'resourceSettings', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1WorkloadResourceSettings, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1WorkloadResourceSettings::Representation
       
@@ -357,7 +359,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data_logs_viewer, as: 'dataLogsViewer'
           property :remediate_folder_violations, as: 'remediateFolderViolations'
-          property :service_access_approver, as: 'serviceAccessApprover'
         end
       end
       
