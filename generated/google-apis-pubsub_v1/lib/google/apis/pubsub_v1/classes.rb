@@ -728,10 +728,7 @@ module Google
       end
       
       # Contains information needed for generating an [OpenID Connect token](https://
-      # developers.google.com/identity/protocols/OpenIDConnect). [Service account
-      # email](https://cloud.google.com/iam/docs/service-accounts) used for generating
-      # the OIDC token. For more information on setting up authentication, see [Push
-      # subscriptions](https://cloud.google.com/pubsub/docs/push).
+      # developers.google.com/identity/protocols/OpenIDConnect).
       class OidcToken
         include Google::Apis::Core::Hashable
       
@@ -745,7 +742,10 @@ module Google
         # @return [String]
         attr_accessor :audience
       
-        # 
+        # [Service account email](https://cloud.google.com/iam/docs/service-accounts)
+        # used for generating the OIDC token. For more information on setting up
+        # authentication, see [Push subscriptions](https://cloud.google.com/pubsub/docs/
+        # push).
         # Corresponds to the JSON property `serviceAccountEmail`
         # @return [String]
         attr_accessor :service_account_email
@@ -1031,10 +1031,7 @@ module Google
         attr_accessor :attributes
       
         # Contains information needed for generating an [OpenID Connect token](https://
-        # developers.google.com/identity/protocols/OpenIDConnect). [Service account
-        # email](https://cloud.google.com/iam/docs/service-accounts) used for generating
-        # the OIDC token. For more information on setting up authentication, see [Push
-        # subscriptions](https://cloud.google.com/pubsub/docs/push).
+        # developers.google.com/identity/protocols/OpenIDConnect).
         # Corresponds to the JSON property `oidcToken`
         # @return [Google::Apis::PubsubV1::OidcToken]
         attr_accessor :oidc_token
