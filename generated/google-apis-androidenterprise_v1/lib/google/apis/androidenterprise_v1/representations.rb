@@ -1114,6 +1114,7 @@ module Google
           property :details_url, as: 'detailsUrl'
           property :distribution_channel, as: 'distributionChannel'
           collection :features, as: 'features'
+          property :full_description, as: 'fullDescription'
           property :icon_url, as: 'iconUrl'
           property :last_updated_timestamp_millis, :numeric_string => true, as: 'lastUpdatedTimestampMillis'
           property :min_android_sdk_version, as: 'minAndroidSdkVersion'
