@@ -2391,6 +2391,11 @@ module Google
         # @return [Google::Apis::DatamigrationV1::PrivateConnectivity]
         attr_accessor :private_connectivity
       
+        # SSL configuration information.
+        # Corresponds to the JSON property `ssl`
+        # @return [Google::Apis::DatamigrationV1::SslConfig]
+        attr_accessor :ssl
+      
         # Static IP address connectivity configured on service project.
         # Corresponds to the JSON property `staticServiceIpConnectivity`
         # @return [Google::Apis::DatamigrationV1::StaticServiceIpConnectivity]
@@ -2415,6 +2420,7 @@ module Google
           @password_set = args[:password_set] if args.key?(:password_set)
           @port = args[:port] if args.key?(:port)
           @private_connectivity = args[:private_connectivity] if args.key?(:private_connectivity)
+          @ssl = args[:ssl] if args.key?(:ssl)
           @static_service_ip_connectivity = args[:static_service_ip_connectivity] if args.key?(:static_service_ip_connectivity)
           @username = args[:username] if args.key?(:username)
         end
