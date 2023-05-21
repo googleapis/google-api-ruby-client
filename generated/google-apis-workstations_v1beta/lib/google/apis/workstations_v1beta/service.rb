@@ -22,7 +22,7 @@ module Google
     module WorkstationsV1beta
       # Cloud Workstations API
       #
-      # 
+      # Allows administrators to create managed developer environments in the cloud.
       #
       # @example
       #    require 'google/apis/workstations_v1beta'
