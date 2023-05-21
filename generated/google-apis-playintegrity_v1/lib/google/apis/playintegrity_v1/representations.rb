@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GuidanceDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RequestDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -124,6 +130,13 @@ module Google
         end
       end
       
+      class GuidanceDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :user_remediation, as: 'userRemediation'
+        end
+      end
+      
       class RequestDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -149,6 +162,8 @@ module Google
           property :app_integrity, as: 'appIntegrity', class: Google::Apis::PlayintegrityV1::AppIntegrity, decorator: Google::Apis::PlayintegrityV1::AppIntegrity::Representation
       
           property :device_integrity, as: 'deviceIntegrity', class: Google::Apis::PlayintegrityV1::DeviceIntegrity, decorator: Google::Apis::PlayintegrityV1::DeviceIntegrity::Representation
+      
+          property :guidance_details, as: 'guidanceDetails', class: Google::Apis::PlayintegrityV1::GuidanceDetails, decorator: Google::Apis::PlayintegrityV1::GuidanceDetails::Representation
       
           property :request_details, as: 'requestDetails', class: Google::Apis::PlayintegrityV1::RequestDetails, decorator: Google::Apis::PlayintegrityV1::RequestDetails::Representation
       
