@@ -28,18 +28,18 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Represents a color in the RGBA color space. This representation is designed
-        # for simplicity of conversion to/from color representations in various
+        # for simplicity of conversion to and from color representations in various
         # languages over compactness. For example, the fields of this representation can
         # be trivially provided to the constructor of `java.awt.Color` in Java; it can
         # also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha`
         # method in iOS; and, with just a little work, it can be easily formatted into a
-        # CSS `rgba()` string in JavaScript. This reference page doesn't carry
+        # CSS `rgba()` string in JavaScript. This reference page does not have
         # information about the absolute color space that should be used to interpret
-        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+        # the RGB value—for example, sRGB, Adobe RGB, DCI-P3, and BT.2020. By default,
         # applications should assume the sRGB color space. When color equality needs to
         # be decided, implementations, unless documented otherwise, treat two colors as
-        # equal if all their red, green, blue, and alpha values each differ by at most
-        # 1e-5. Example (Java): import com.google.type.Color; // ... public static java.
+        # equal if all their red, green, blue, and alpha values each differ by at most `
+        # 1e-5`. Example (Java): import com.google.type.Color; // ... public static java.
         # awt.Color fromProto(Color protocolor) ` float alpha = protocolor.hasAlpha() ?
         # protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color( protocolor.
         # getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); ` public static
@@ -77,18 +77,18 @@ module Google
         attr_accessor :background_color
       
         # Represents a color in the RGBA color space. This representation is designed
-        # for simplicity of conversion to/from color representations in various
+        # for simplicity of conversion to and from color representations in various
         # languages over compactness. For example, the fields of this representation can
         # be trivially provided to the constructor of `java.awt.Color` in Java; it can
         # also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha`
         # method in iOS; and, with just a little work, it can be easily formatted into a
-        # CSS `rgba()` string in JavaScript. This reference page doesn't carry
+        # CSS `rgba()` string in JavaScript. This reference page does not have
         # information about the absolute color space that should be used to interpret
-        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+        # the RGB value—for example, sRGB, Adobe RGB, DCI-P3, and BT.2020. By default,
         # applications should assume the sRGB color space. When color equality needs to
         # be decided, implementations, unless documented otherwise, treat two colors as
-        # equal if all their red, green, blue, and alpha values each differ by at most
-        # 1e-5. Example (Java): import com.google.type.Color; // ... public static java.
+        # equal if all their red, green, blue, and alpha values each differ by at most `
+        # 1e-5`. Example (Java): import com.google.type.Color; // ... public static java.
         # awt.Color fromProto(Color protocolor) ` float alpha = protocolor.hasAlpha() ?
         # protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color( protocolor.
         # getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); ` public static
@@ -126,18 +126,18 @@ module Google
         attr_accessor :foreground_color
       
         # Represents a color in the RGBA color space. This representation is designed
-        # for simplicity of conversion to/from color representations in various
+        # for simplicity of conversion to and from color representations in various
         # languages over compactness. For example, the fields of this representation can
         # be trivially provided to the constructor of `java.awt.Color` in Java; it can
         # also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha`
         # method in iOS; and, with just a little work, it can be easily formatted into a
-        # CSS `rgba()` string in JavaScript. This reference page doesn't carry
+        # CSS `rgba()` string in JavaScript. This reference page does not have
         # information about the absolute color space that should be used to interpret
-        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+        # the RGB value—for example, sRGB, Adobe RGB, DCI-P3, and BT.2020. By default,
         # applications should assume the sRGB color space. When color equality needs to
         # be decided, implementations, unless documented otherwise, treat two colors as
-        # equal if all their red, green, blue, and alpha values each differ by at most
-        # 1e-5. Example (Java): import com.google.type.Color; // ... public static java.
+        # equal if all their red, green, blue, and alpha values each differ by at most `
+        # 1e-5`. Example (Java): import com.google.type.Color; // ... public static java.
         # awt.Color fromProto(Color protocolor) ` float alpha = protocolor.hasAlpha() ?
         # protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color( protocolor.
         # getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); ` public static
@@ -191,18 +191,18 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Represents a color in the RGBA color space. This representation is designed
-        # for simplicity of conversion to/from color representations in various
+        # for simplicity of conversion to and from color representations in various
         # languages over compactness. For example, the fields of this representation can
         # be trivially provided to the constructor of `java.awt.Color` in Java; it can
         # also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha`
         # method in iOS; and, with just a little work, it can be easily formatted into a
-        # CSS `rgba()` string in JavaScript. This reference page doesn't carry
+        # CSS `rgba()` string in JavaScript. This reference page does not have
         # information about the absolute color space that should be used to interpret
-        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+        # the RGB value—for example, sRGB, Adobe RGB, DCI-P3, and BT.2020. By default,
         # applications should assume the sRGB color space. When color equality needs to
         # be decided, implementations, unless documented otherwise, treat two colors as
-        # equal if all their red, green, blue, and alpha values each differ by at most
-        # 1e-5. Example (Java): import com.google.type.Color; // ... public static java.
+        # equal if all their red, green, blue, and alpha values each differ by at most `
+        # 1e-5`. Example (Java): import com.google.type.Color; // ... public static java.
         # awt.Color fromProto(Color protocolor) ` float alpha = protocolor.hasAlpha() ?
         # protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color( protocolor.
         # getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); ` public static
@@ -3227,18 +3227,18 @@ module Google
       end
       
       # Represents a color in the RGBA color space. This representation is designed
-      # for simplicity of conversion to/from color representations in various
+      # for simplicity of conversion to and from color representations in various
       # languages over compactness. For example, the fields of this representation can
       # be trivially provided to the constructor of `java.awt.Color` in Java; it can
       # also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha`
       # method in iOS; and, with just a little work, it can be easily formatted into a
-      # CSS `rgba()` string in JavaScript. This reference page doesn't carry
+      # CSS `rgba()` string in JavaScript. This reference page does not have
       # information about the absolute color space that should be used to interpret
-      # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+      # the RGB value—for example, sRGB, Adobe RGB, DCI-P3, and BT.2020. By default,
       # applications should assume the sRGB color space. When color equality needs to
       # be decided, implementations, unless documented otherwise, treat two colors as
-      # equal if all their red, green, blue, and alpha values each differ by at most
-      # 1e-5. Example (Java): import com.google.type.Color; // ... public static java.
+      # equal if all their red, green, blue, and alpha values each differ by at most `
+      # 1e-5`. Example (Java): import com.google.type.Color; // ... public static java.
       # awt.Color fromProto(Color protocolor) ` float alpha = protocolor.hasAlpha() ?
       # protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color( protocolor.
       # getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); ` public static
