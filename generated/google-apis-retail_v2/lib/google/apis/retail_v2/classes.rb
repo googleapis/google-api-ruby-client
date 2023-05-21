@@ -706,8 +706,9 @@ module Google
       
         # When AttributesConfig.attribute_config_level is CATALOG_LEVEL_ATTRIBUTE_CONFIG,
         # if INDEXABLE_ENABLED attribute values are indexed so that it can be filtered,
-        # faceted, or boosted in SearchService.Search. Must be specified, otherwise
-        # throws INVALID_FORMAT error.
+        # faceted, or boosted in SearchService.Search. Must be specified when
+        # AttributesConfig.attribute_config_level is CATALOG_LEVEL_ATTRIBUTE_CONFIG,
+        # otherwise throws INVALID_FORMAT error.
         # Corresponds to the JSON property `indexableOption`
         # @return [String]
         attr_accessor :indexable_option
@@ -734,7 +735,8 @@ module Google
         # SearchService.Search. If SEARCHABLE_ENABLED but attribute type is numerical,
         # attribute values will not be searchable by text queries in SearchService.
         # Search, as there are no text values associated to numerical attributes. Must
-        # be specified, otherwise throws INVALID_FORMAT error.
+        # be specified, when AttributesConfig.attribute_config_level is
+        # CATALOG_LEVEL_ATTRIBUTE_CONFIG, otherwise throws INVALID_FORMAT error.
         # Corresponds to the JSON property `searchableOption`
         # @return [String]
         attr_accessor :searchable_option
