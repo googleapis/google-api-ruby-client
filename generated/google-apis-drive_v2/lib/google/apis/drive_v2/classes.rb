@@ -38,17 +38,14 @@ module Google
         attr_accessor :can_create_drives
         alias_method :can_create_drives?, :can_create_drives
       
-        # Deprecated - use canCreateDrives instead.
+        # Deprecated: Use `canCreateDrives` instead.
         # Corresponds to the JSON property `canCreateTeamDrives`
         # @return [Boolean]
         attr_accessor :can_create_team_drives
         alias_method :can_create_team_drives?, :can_create_team_drives
       
-        # The domain sharing policy for the current user. Possible values are:
-        # - allowed
-        # - allowedWithWarning
-        # - incomingOnly
-        # - disallowed
+        # The domain sharing policy for the current user. Possible values are: * `
+        # allowed` * `allowedWithWarning` * `incomingOnly` * `disallowed`
         # Corresponds to the JSON property `domainSharingPolicy`
         # @return [String]
         attr_accessor :domain_sharing_policy
@@ -90,7 +87,7 @@ module Google
         attr_accessor :is_current_app_installed
         alias_method :is_current_app_installed?, :is_current_app_installed
       
-        # This is always drive#about.
+        # This is always `drive#about`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -148,9 +145,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :quota_bytes_used_in_trash
       
-        # The type of the user's storage quota. Possible values are:
-        # - LIMITED
-        # - UNLIMITED
+        # The type of the user's storage quota. Possible values are: * `LIMITED` * `
+        # UNLIMITED`
         # Corresponds to the JSON property `quotaType`
         # @return [String]
         attr_accessor :quota_type
@@ -170,7 +166,7 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # Deprecated - use driveThemes instead.
+        # Deprecated: Use `driveThemes` instead.
         # Corresponds to the JSON property `teamDriveThemes`
         # @return [Array<Google::Apis::DriveV2::About::TeamDriveTheme>]
         attr_accessor :team_drive_themes
@@ -426,17 +422,17 @@ module Google
         class TeamDriveTheme
           include Google::Apis::Core::Hashable
         
-          # Deprecated - use driveThemes/backgroundImageLink instead.
+          # Deprecated: Use `driveThemes/backgroundImageLink` instead.
           # Corresponds to the JSON property `backgroundImageLink`
           # @return [String]
           attr_accessor :background_image_link
         
-          # Deprecated - use driveThemes/colorRgb instead.
+          # Deprecated: Use `driveThemes/colorRgb` instead.
           # Corresponds to the JSON property `colorRgb`
           # @return [String]
           attr_accessor :color_rgb
         
-          # Deprecated - use driveThemes/id instead.
+          # Deprecated: Use `driveThemes/id` instead.
           # Corresponds to the JSON property `id`
           # @return [String]
           attr_accessor :id
@@ -501,7 +497,7 @@ module Google
         attr_accessor :installed
         alias_method :installed?, :installed
       
-        # This is always drive#app.
+        # This is always `drive#app`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -522,9 +518,9 @@ module Google
         # @return [String]
         attr_accessor :object_type
       
-        # The template url for opening files with this app. The template will contain `
-        # ids` and/or `exportIds` to be replaced by the actual file ids. See  Open Files
-        # for the full documentation.
+        # The template url for opening files with this app. The template will contain ``
+        # ids`` and/or ``exportIds`` to be replaced by the actual file ids. See Open
+        # Files for the full documentation.
         # Corresponds to the JSON property `openUrlTemplate`
         # @return [String]
         attr_accessor :open_url_template
@@ -630,10 +626,9 @@ module Google
         class Icon
           include Google::Apis::Core::Hashable
         
-          # Category of the icon. Allowed values are:
-          # - application - icon for the application
-          # - document - icon for a file associated with the app
-          # - documentShared - icon for a shared file associated with the app
+          # Category of the icon. Allowed values are: * `application` - icon for the
+          # application * `document` - icon for a file associated with the app * `
+          # documentShared` - icon for a shared file associated with the app
           # Corresponds to the JSON property `category`
           # @return [String]
           attr_accessor :category
@@ -682,7 +677,7 @@ module Google
         # @return [Array<Google::Apis::DriveV2::App>]
         attr_accessor :items
       
-        # This is always drive#appList.
+        # This is always `drive#appList`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -710,7 +705,7 @@ module Google
       class Change
         include Google::Apis::Core::Hashable
       
-        # The type of the change. Possible values are file and drive.
+        # The type of the change. Possible values are `file` and `drive`.
         # Corresponds to the JSON property `changeType`
         # @return [String]
         attr_accessor :change_type
@@ -747,7 +742,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
-        # This is always drive#change.
+        # This is always `drive#change`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -762,17 +757,17 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # Deprecated: use the drive collection instead.
+        # Deprecated: Use the `drive` collection instead.
         # Corresponds to the JSON property `teamDrive`
         # @return [Google::Apis::DriveV2::TeamDrive]
         attr_accessor :team_drive
       
-        # Deprecated - use driveId instead.
+        # Deprecated: Use `driveId` instead.
         # Corresponds to the JSON property `teamDriveId`
         # @return [String]
         attr_accessor :team_drive_id
       
-        # Deprecated - use changeType instead.
+        # Deprecated: Use `changeType` instead.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -814,7 +809,7 @@ module Google
         # @return [Array<Google::Apis::DriveV2::Change>]
         attr_accessor :items
       
-        # This is always drive#changeList.
+        # This is always `drive#changeList`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -865,7 +860,7 @@ module Google
         end
       end
       
-      # An notification channel used to watch for resource changes.
+      # A notification channel used to watch for resource changes.
       class Channel
         include Google::Apis::Core::Hashable
       
@@ -886,7 +881,7 @@ module Google
         attr_accessor :id
       
         # Identifies this as a notification channel used to watch for changes to a
-        # resource, which is "api#channel".
+        # resource, which is `api#channel`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -919,9 +914,7 @@ module Google
         # @return [String]
         attr_accessor :token
       
-        # The type of delivery mechanism used for this channel. Valid values are "
-        # web_hook" (or "webhook"). Both values refer to a channel where Http requests
-        # are used to deliver messages.
+        # The type of delivery mechanism used for this channel.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -960,7 +953,7 @@ module Google
         # @return [Array<Google::Apis::DriveV2::ChildReference>]
         attr_accessor :items
       
-        # This is always drive#childList.
+        # This is always `drive#childList`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1002,7 +995,7 @@ module Google
       class ChildReference
         include Google::Apis::Core::Hashable
       
-        # A link to the child.
+        # Output only. A link to the child.
         # Corresponds to the JSON property `childLink`
         # @return [String]
         attr_accessor :child_link
@@ -1012,12 +1005,12 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # This is always drive#childReference.
+        # Output only. This is always `drive#childReference`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # A link back to this reference.
+        # Output only. A link back to this reference.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
@@ -1040,7 +1033,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A region of the document represented as a JSON string. For details on defining
-        # anchor properties, refer to  Add comments and replies.
+        # anchor properties, refer to [Add comments and replies](https://developers.
+        # google.com/drive/api/v2/manage-comments).
         # Corresponds to the JSON property `anchor`
         # @return [String]
         attr_accessor :anchor
@@ -1050,7 +1044,7 @@ module Google
         # @return [Google::Apis::DriveV2::User]
         attr_accessor :author
       
-        # The ID of the comment.
+        # Output only. The ID of the comment.
         # Corresponds to the JSON property `commentId`
         # @return [String]
         attr_accessor :comment_id
@@ -1071,30 +1065,30 @@ module Google
         # @return [DateTime]
         attr_accessor :created_date
       
-        # Whether this comment has been deleted. If a comment has been deleted the
-        # content will be cleared and this will only represent a comment that once
-        # existed.
+        # Output only. Whether this comment has been deleted. If a comment has been
+        # deleted the content will be cleared and this will only represent a comment
+        # that once existed.
         # Corresponds to the JSON property `deleted`
         # @return [Boolean]
         attr_accessor :deleted
         alias_method :deleted?, :deleted
       
-        # The file which this comment is addressing.
+        # Output only. The file which this comment is addressing.
         # Corresponds to the JSON property `fileId`
         # @return [String]
         attr_accessor :file_id
       
-        # The title of the file which this comment is addressing.
+        # Output only. The title of the file which this comment is addressing.
         # Corresponds to the JSON property `fileTitle`
         # @return [String]
         attr_accessor :file_title
       
-        # HTML formatted content for this comment.
+        # Output only. HTML formatted content for this comment.
         # Corresponds to the JSON property `htmlContent`
         # @return [String]
         attr_accessor :html_content
       
-        # This is always drive#comment.
+        # Output only. This is always `drive#comment`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1104,20 +1098,19 @@ module Google
         # @return [DateTime]
         attr_accessor :modified_date
       
-        # Replies to this post.
+        # Output only. Replies to this post.
         # Corresponds to the JSON property `replies`
         # @return [Array<Google::Apis::DriveV2::CommentReply>]
         attr_accessor :replies
       
-        # A link back to this comment.
+        # Output only. A link back to this comment.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
       
-        # The status of this comment. Status can be changed by posting a reply to a
-        # comment with the desired status.
-        # - "open" - The comment is still open.
-        # - "resolved" - The comment has been resolved by one of its replies.
+        # Output only. The status of this comment. Status can be changed by posting a
+        # reply to a comment with the desired status. * `open` - The comment is still
+        # open. * `resolved` - The comment has been resolved by one of its replies.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -1183,7 +1176,7 @@ module Google
         # @return [Array<Google::Apis::DriveV2::Comment>]
         attr_accessor :items
       
-        # This is always drive#commentList.
+        # This is always `drive#commentList`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1241,19 +1234,20 @@ module Google
         # @return [DateTime]
         attr_accessor :created_date
       
-        # Whether this reply has been deleted. If a reply has been deleted the content
-        # will be cleared and this will only represent a reply that once existed.
+        # Output only. Whether this reply has been deleted. If a reply has been deleted
+        # the content will be cleared and this will only represent a reply that once
+        # existed.
         # Corresponds to the JSON property `deleted`
         # @return [Boolean]
         attr_accessor :deleted
         alias_method :deleted?, :deleted
       
-        # HTML formatted content for this reply.
+        # Output only. HTML formatted content for this reply.
         # Corresponds to the JSON property `htmlContent`
         # @return [String]
         attr_accessor :html_content
       
-        # This is always drive#commentReply.
+        # Output only. This is always `drive#commentReply`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1263,16 +1257,15 @@ module Google
         # @return [DateTime]
         attr_accessor :modified_date
       
-        # The ID of the reply.
+        # Output only. The ID of the reply.
         # Corresponds to the JSON property `replyId`
         # @return [String]
         attr_accessor :reply_id
       
         # The action this reply performed to the parent comment. When creating a new
         # reply this is the action to be perform to the parent comment. Possible values
-        # are:
-        # - "resolve" - To resolve a comment.
-        # - "reopen" - To reopen (un-resolve) a comment.
+        # are: * `resolve` - To resolve a comment. * `reopen` - To reopen (un-resolve) a
+        # comment.
         # Corresponds to the JSON property `verb`
         # @return [String]
         attr_accessor :verb
@@ -1305,7 +1298,7 @@ module Google
         # @return [Array<Google::Apis::DriveV2::CommentReply>]
         attr_accessor :items
       
-        # This is always drive#commentReplyList.
+        # This is always `drive#commentReplyList`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1355,7 +1348,7 @@ module Google
         alias_method :read_only?, :read_only
       
         # Reason for why the content of the file is restricted. This is only mutable on
-        # requests that also set readOnly=true.
+        # requests that also set `readOnly=true`.
         # Corresponds to the JSON property `reason`
         # @return [String]
         attr_accessor :reason
@@ -1371,8 +1364,8 @@ module Google
         # @return [DateTime]
         attr_accessor :restriction_date
       
-        # The type of the content restriction. Currently the only possible value is
-        # globalContentRestriction.
+        # Output only. The type of the content restriction. Currently the only possible
+        # value is `globalContentRestriction`.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -1396,25 +1389,25 @@ module Google
         include Google::Apis::Core::Hashable
       
         # An image file and cropping parameters from which a background image for this
-        # shared drive is set. This is a write only field; it can only be set on drive.
-        # drives.update requests that don't set themeId. When specified, all fields of
-        # the backgroundImageFile must be set.
+        # shared drive is set. This is a write only field; it can only be set on `drive.
+        # drives.update` requests that don't set `themeId`. When specified, all fields
+        # of the `backgroundImageFile` must be set.
         # Corresponds to the JSON property `backgroundImageFile`
         # @return [Google::Apis::DriveV2::Drive::BackgroundImageFile]
         attr_accessor :background_image_file
       
-        # A short-lived link to this shared drive's background image.
+        # Output only. A short-lived link to this shared drive's background image.
         # Corresponds to the JSON property `backgroundImageLink`
         # @return [String]
         attr_accessor :background_image_link
       
-        # Capabilities the current user has on this shared drive.
+        # Output only. Capabilities the current user has on this shared drive.
         # Corresponds to the JSON property `capabilities`
         # @return [Google::Apis::DriveV2::Drive::Capabilities]
         attr_accessor :capabilities
       
-        # The color of this shared drive as an RGB hex string. It can only be set on a
-        # drive.drives.update request that does not set themeId.
+        # The color of this shared drive as an RGB hex string. It can only be set on a `
+        # drive.drives.update` request that does not set `themeId`.
         # Corresponds to the JSON property `colorRgb`
         # @return [String]
         attr_accessor :color_rgb
@@ -1430,13 +1423,13 @@ module Google
         attr_accessor :hidden
         alias_method :hidden?, :hidden
       
-        # The ID of this shared drive which is also the ID of the top level folder of
-        # this shared drive.
+        # Output only. The ID of this shared drive which is also the ID of the top level
+        # folder of this shared drive.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # This is always drive#drive
+        # Output only. This is always `drive#drive`
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1446,8 +1439,9 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The organizational unit of this shared drive. This field is only populated on
-        # drives.list responses when the useDomainAdminAccess parameter is set to true.
+        # Output only. The organizational unit of this shared drive. This field is only
+        # populated on `drives.list` responses when the `useDomainAdminAccess` parameter
+        # is set to `true`.
         # Corresponds to the JSON property `orgUnitId`
         # @return [String]
         attr_accessor :org_unit_id
@@ -1459,10 +1453,11 @@ module Google
         attr_accessor :restrictions
       
         # The ID of the theme from which the background image and color will be set. The
-        # set of possible driveThemes can be retrieved from a drive.about.get response.
-        # When not specified on a drive.drives.insert request, a random theme is chosen
-        # from which the background image and color are set. This is a write-only field;
-        # it can only be set on requests that don't set colorRgb or backgroundImageFile.
+        # set of possible `driveThemes` can be retrieved from a `drive.about.get`
+        # response. When not specified on a `drive.drives.insert` request, a random
+        # theme is chosen from which the background image and color are set. This is a
+        # write-only field; it can only be set on requests that don't set `colorRgb` or `
+        # backgroundImageFile`.
         # Corresponds to the JSON property `themeId`
         # @return [String]
         attr_accessor :theme_id
@@ -1488,9 +1483,9 @@ module Google
         end
         
         # An image file and cropping parameters from which a background image for this
-        # shared drive is set. This is a write only field; it can only be set on drive.
-        # drives.update requests that don't set themeId. When specified, all fields of
-        # the backgroundImageFile must be set.
+        # shared drive is set. This is a write only field; it can only be set on `drive.
+        # drives.update` requests that don't set `themeId`. When specified, all fields
+        # of the `backgroundImageFile` must be set.
         class BackgroundImageFile
           include Google::Apis::Core::Hashable
         
@@ -1537,133 +1532,142 @@ module Google
           end
         end
         
-        # Capabilities the current user has on this shared drive.
+        # Output only. Capabilities the current user has on this shared drive.
         class Capabilities
           include Google::Apis::Core::Hashable
         
-          # Whether the current user can add children to folders in this shared drive.
+          # Output only. Whether the current user can add children to folders in this
+          # shared drive.
           # Corresponds to the JSON property `canAddChildren`
           # @return [Boolean]
           attr_accessor :can_add_children
           alias_method :can_add_children?, :can_add_children
         
-          # Whether the current user can change the copyRequiresWriterPermission
-          # restriction of this shared drive.
+          # Output only. Whether the current user can change the `
+          # copyRequiresWriterPermission` restriction of this shared drive.
           # Corresponds to the JSON property `canChangeCopyRequiresWriterPermissionRestriction`
           # @return [Boolean]
           attr_accessor :can_change_copy_requires_writer_permission_restriction
           alias_method :can_change_copy_requires_writer_permission_restriction?, :can_change_copy_requires_writer_permission_restriction
         
-          # Whether the current user can change the domainUsersOnly restriction of this
-          # shared drive.
+          # Output only. Whether the current user can change the `domainUsersOnly`
+          # restriction of this shared drive.
           # Corresponds to the JSON property `canChangeDomainUsersOnlyRestriction`
           # @return [Boolean]
           attr_accessor :can_change_domain_users_only_restriction
           alias_method :can_change_domain_users_only_restriction?, :can_change_domain_users_only_restriction
         
-          # Whether the current user can change the background of this shared drive.
+          # Output only. Whether the current user can change the background of this shared
+          # drive.
           # Corresponds to the JSON property `canChangeDriveBackground`
           # @return [Boolean]
           attr_accessor :can_change_drive_background
           alias_method :can_change_drive_background?, :can_change_drive_background
         
-          # Whether the current user can change the driveMembersOnly restriction of this
-          # shared drive.
+          # Output only. Whether the current user can change the `driveMembersOnly`
+          # restriction of this shared drive.
           # Corresponds to the JSON property `canChangeDriveMembersOnlyRestriction`
           # @return [Boolean]
           attr_accessor :can_change_drive_members_only_restriction
           alias_method :can_change_drive_members_only_restriction?, :can_change_drive_members_only_restriction
         
-          # Whether the current user can change the
-          # sharingFoldersRequiresOrganizerPermission restriction of this shared drive.
+          # Output only. Whether the current user can change the `
+          # sharingFoldersRequiresOrganizerPermission` restriction of this shared drive.
           # Corresponds to the JSON property `canChangeSharingFoldersRequiresOrganizerPermissionRestriction`
           # @return [Boolean]
           attr_accessor :can_change_sharing_folders_requires_organizer_permission_restriction
           alias_method :can_change_sharing_folders_requires_organizer_permission_restriction?, :can_change_sharing_folders_requires_organizer_permission_restriction
         
-          # Whether the current user can comment on files in this shared drive.
+          # Output only. Whether the current user can comment on files in this shared
+          # drive.
           # Corresponds to the JSON property `canComment`
           # @return [Boolean]
           attr_accessor :can_comment
           alias_method :can_comment?, :can_comment
         
-          # Whether the current user can copy files in this shared drive.
+          # Output only. Whether the current user can copy files in this shared drive.
           # Corresponds to the JSON property `canCopy`
           # @return [Boolean]
           attr_accessor :can_copy
           alias_method :can_copy?, :can_copy
         
-          # Whether the current user can delete children from folders in this shared drive.
+          # Output only. Whether the current user can delete children from folders in this
+          # shared drive.
           # Corresponds to the JSON property `canDeleteChildren`
           # @return [Boolean]
           attr_accessor :can_delete_children
           alias_method :can_delete_children?, :can_delete_children
         
-          # Whether the current user can delete this shared drive. Attempting to delete
-          # the shared drive may still fail if there are untrashed items inside the shared
-          # drive.
+          # Output only. Whether the current user can delete this shared drive. Attempting
+          # to delete the shared drive may still fail if there are untrashed items inside
+          # the shared drive.
           # Corresponds to the JSON property `canDeleteDrive`
           # @return [Boolean]
           attr_accessor :can_delete_drive
           alias_method :can_delete_drive?, :can_delete_drive
         
-          # Whether the current user can download files in this shared drive.
+          # Output only. Whether the current user can download files in this shared drive.
           # Corresponds to the JSON property `canDownload`
           # @return [Boolean]
           attr_accessor :can_download
           alias_method :can_download?, :can_download
         
-          # Whether the current user can edit files in this shared drive
+          # Output only. Whether the current user can edit files in this shared drive
           # Corresponds to the JSON property `canEdit`
           # @return [Boolean]
           attr_accessor :can_edit
           alias_method :can_edit?, :can_edit
         
-          # Whether the current user can list the children of folders in this shared drive.
+          # Output only. Whether the current user can list the children of folders in this
+          # shared drive.
           # Corresponds to the JSON property `canListChildren`
           # @return [Boolean]
           attr_accessor :can_list_children
           alias_method :can_list_children?, :can_list_children
         
-          # Whether the current user can add members to this shared drive or remove them
-          # or change their role.
+          # Output only. Whether the current user can add members to this shared drive or
+          # remove them or change their role.
           # Corresponds to the JSON property `canManageMembers`
           # @return [Boolean]
           attr_accessor :can_manage_members
           alias_method :can_manage_members?, :can_manage_members
         
-          # Whether the current user can read the revisions resource of files in this
-          # shared drive.
+          # Output only. Whether the current user can read the revisions resource of files
+          # in this shared drive.
           # Corresponds to the JSON property `canReadRevisions`
           # @return [Boolean]
           attr_accessor :can_read_revisions
           alias_method :can_read_revisions?, :can_read_revisions
         
-          # Whether the current user can rename files or folders in this shared drive.
+          # Output only. Whether the current user can rename files or folders in this
+          # shared drive.
           # Corresponds to the JSON property `canRename`
           # @return [Boolean]
           attr_accessor :can_rename
           alias_method :can_rename?, :can_rename
         
-          # Whether the current user can rename this shared drive.
+          # Output only. Whether the current user can rename this shared drive.
           # Corresponds to the JSON property `canRenameDrive`
           # @return [Boolean]
           attr_accessor :can_rename_drive
           alias_method :can_rename_drive?, :can_rename_drive
         
-          # Whether the current user can reset the shared drive restrictions to defaults.
+          # Output only. Whether the current user can reset the shared drive restrictions
+          # to defaults.
           # Corresponds to the JSON property `canResetDriveRestrictions`
           # @return [Boolean]
           attr_accessor :can_reset_drive_restrictions
           alias_method :can_reset_drive_restrictions?, :can_reset_drive_restrictions
         
-          # Whether the current user can share files or folders in this shared drive.
+          # Output only. Whether the current user can share files or folders in this
+          # shared drive.
           # Corresponds to the JSON property `canShare`
           # @return [Boolean]
           attr_accessor :can_share
           alias_method :can_share?, :can_share
         
-          # Whether the current user can trash children from folders in this shared drive.
+          # Output only. Whether the current user can trash children from folders in this
+          # shared drive.
           # Corresponds to the JSON property `canTrashChildren`
           # @return [Boolean]
           attr_accessor :can_trash_children
@@ -1712,7 +1716,7 @@ module Google
         
           # Whether the options to copy, print, or download files inside this shared drive,
           # should be disabled for readers and commenters. When this restriction is set
-          # to true, it will override the similarly named field to true for any file
+          # to `true`, it will override the similarly named field to `true` for any file
           # inside this shared drive.
           # Corresponds to the JSON property `copyRequiresWriterPermission`
           # @return [Boolean]
@@ -1766,7 +1770,7 @@ module Google
         # @return [Array<Google::Apis::DriveV2::Drive>]
         attr_accessor :items
       
-        # This is always drive#driveList
+        # This is always `drive#driveList`
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1795,31 +1799,31 @@ module Google
       class File
         include Google::Apis::Core::Hashable
       
-        # A link for opening the file in a relevant Google editor or viewer.
+        # Output only. A link for opening the file in a relevant Google editor or viewer.
         # Corresponds to the JSON property `alternateLink`
         # @return [String]
         attr_accessor :alternate_link
       
-        # Whether this file is in the Application Data folder.
+        # Output only. Whether this file is in the Application Data folder.
         # Corresponds to the JSON property `appDataContents`
         # @return [Boolean]
         attr_accessor :app_data_contents
         alias_method :app_data_contents?, :app_data_contents
       
-        # Deprecated: use capabilities/canComment.
+        # Output only. Deprecated: Use `capabilities/canComment` instead.
         # Corresponds to the JSON property `canComment`
         # @return [Boolean]
         attr_accessor :can_comment
         alias_method :can_comment?, :can_comment
       
-        # Deprecated: use capabilities/canReadRevisions.
+        # Output only. Deprecated: Use `capabilities/canReadRevisions` instead.
         # Corresponds to the JSON property `canReadRevisions`
         # @return [Boolean]
         attr_accessor :can_read_revisions
         alias_method :can_read_revisions?, :can_read_revisions
       
-        # Capabilities the current user has on this file. Each capability corresponds to
-        # a fine-grained action that a user may take.
+        # Output only. Capabilities the current user has on this file. Each capability
+        # corresponds to a fine-grained action that a user may take.
         # Corresponds to the JSON property `capabilities`
         # @return [Google::Apis::DriveV2::File::Capabilities]
         attr_accessor :capabilities
@@ -1837,7 +1841,7 @@ module Google
         attr_accessor :copy_requires_writer_permission
         alias_method :copy_requires_writer_permission?, :copy_requires_writer_permission
       
-        # Deprecated: use capabilities/canCopy.
+        # Output only. Deprecated: Use `capabilities/canCopy` instead.
         # Corresponds to the JSON property `copyable`
         # @return [Boolean]
         attr_accessor :copyable
@@ -1848,8 +1852,8 @@ module Google
         # @return [DateTime]
         attr_accessor :created_date
       
-        # A link to open this file with the user's default app for this file. Only
-        # populated when the drive.apps.readonly scope is used.
+        # Output only. A link to open this file with the user's default app for this
+        # file. Only populated when the drive.apps.readonly scope is used.
         # Corresponds to the JSON property `defaultOpenWithLink`
         # @return [String]
         attr_accessor :default_open_with_link
@@ -1859,58 +1863,57 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Short lived download URL for the file. This field is only populated for files
-        # with content stored in Google Drive; it isn't populated for Docs Editors or
-        # shortcut files.
+        # Output only. Short lived download URL for the file. This field is only
+        # populated for files with content stored in Google Drive; it is not populated
+        # for Google Docs or shortcut files.
         # Corresponds to the JSON property `downloadUrl`
         # @return [String]
         attr_accessor :download_url
       
-        # ID of the shared drive the file resides in. Only populated for items in shared
-        # drives.
+        # Output only. ID of the shared drive the file resides in. Only populated for
+        # items in shared drives.
         # Corresponds to the JSON property `driveId`
         # @return [String]
         attr_accessor :drive_id
       
-        # Deprecated: use capabilities/canEdit.
+        # Output only. Deprecated: Use `capabilities/canEdit` instead.
         # Corresponds to the JSON property `editable`
         # @return [Boolean]
         attr_accessor :editable
         alias_method :editable?, :editable
       
-        # A link for embedding the file.
+        # Output only. A link for embedding the file.
         # Corresponds to the JSON property `embedLink`
         # @return [String]
         attr_accessor :embed_link
       
-        # ETag of the file.
+        # Output only. ETag of the file.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
       
-        # Whether this file has been explicitly trashed, as opposed to recursively
-        # trashed.
+        # Output only. Whether this file has been explicitly trashed, as opposed to
+        # recursively trashed.
         # Corresponds to the JSON property `explicitlyTrashed`
         # @return [Boolean]
         attr_accessor :explicitly_trashed
         alias_method :explicitly_trashed?, :explicitly_trashed
       
-        # Links for exporting Docs Editors files to specific formats.
+        # Output only. Links for exporting Docs Editors files to specific formats.
         # Corresponds to the JSON property `exportLinks`
         # @return [Hash<String,String>]
         attr_accessor :export_links
       
-        # The final component of fullFileExtension with trailing text that does not
-        # appear to be part of the extension removed. This field is only populated for
-        # files with content stored in Google Drive; it isn't populated for Docs Editors
-        # or shortcut files.
+        # Output only. The final component of `fullFileExtension` with trailing text
+        # that does not appear to be part of the extension removed. This field is only
+        # populated for files with content stored in Google Drive; it is not populated
+        # for Docs Editors or shortcut files.
         # Corresponds to the JSON property `fileExtension`
         # @return [String]
         attr_accessor :file_extension
       
-        # The size of the file's content in bytes. This field is populated for files
-        # with binary content stored in Google Drive and for Docs Editors files; it is
-        # not populated for shortcuts or folders.
+        # Output only. Size in bytes of blobs and first party editor files. Won't be
+        # populated for files that have no size, like shortcuts and folders.
         # Corresponds to the JSON property `fileSize`
         # @return [Fixnum]
         attr_accessor :file_size
@@ -1923,38 +1926,39 @@ module Google
         # @return [String]
         attr_accessor :folder_color_rgb
       
-        # The full file extension; extracted from the title. May contain multiple
-        # concatenated extensions, such as "tar.gz". Removing an extension from the
-        # title does not clear this field; however, changing the extension on the title
-        # does update this field. This field is only populated for files with content
-        # stored in Google Drive; it isn't populated for Docs Editors or shortcut files.
+        # Output only. The full file extension; extracted from the title. May contain
+        # multiple concatenated extensions, such as "tar.gz". Removing an extension from
+        # the title does not clear this field; however, changing the extension on the
+        # title does update this field. This field is only populated for files with
+        # content stored in Google Drive; it is not populated for Docs Editors or
+        # shortcut files.
         # Corresponds to the JSON property `fullFileExtension`
         # @return [String]
         attr_accessor :full_file_extension
       
-        # Whether there are permissions directly on this file. This field is only
-        # populated for items in shared drives.
+        # Output only. Whether there are permissions directly on this file. This field
+        # is only populated for items in shared drives.
         # Corresponds to the JSON property `hasAugmentedPermissions`
         # @return [Boolean]
         attr_accessor :has_augmented_permissions
         alias_method :has_augmented_permissions?, :has_augmented_permissions
       
-        # Whether this file has a thumbnail. This does not indicate whether the
-        # requesting app has access to the thumbnail. To check access, look for the
+        # Output only. Whether this file has a thumbnail. This does not indicate whether
+        # the requesting app has access to the thumbnail. To check access, look for the
         # presence of the thumbnailLink field.
         # Corresponds to the JSON property `hasThumbnail`
         # @return [Boolean]
         attr_accessor :has_thumbnail
         alias_method :has_thumbnail?, :has_thumbnail
       
-        # The ID of the file's head revision. This field is only populated for files
-        # with content stored in Google Drive; it isn't populated for Docs Editors or
-        # shortcut files.
+        # Output only. The ID of the file's head revision. This field is only populated
+        # for files with content stored in Google Drive; it is not populated for Docs
+        # Editors or shortcut files.
         # Corresponds to the JSON property `headRevisionId`
         # @return [String]
         attr_accessor :head_revision_id
       
-        # A link to the file's icon.
+        # Output only. A link to the file's icon.
         # Corresponds to the JSON property `iconLink`
         # @return [String]
         attr_accessor :icon_link
@@ -1964,30 +1968,30 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Metadata about image media. This will only be present for image types, and its
-        # contents will depend on what can be parsed from the image content.
+        # Output only. Metadata about image media. This will only be present for image
+        # types, and its contents will depend on what can be parsed from the image
+        # content.
         # Corresponds to the JSON property `imageMediaMetadata`
         # @return [Google::Apis::DriveV2::File::ImageMediaMetadata]
         attr_accessor :image_media_metadata
       
-        # Indexable text attributes for the file (can only be written). For more
-        # information, see Manage file metadata.
+        # Indexable text attributes for the file (can only be written)
         # Corresponds to the JSON property `indexableText`
         # @return [Google::Apis::DriveV2::File::IndexableText]
         attr_accessor :indexable_text
       
-        # Whether the file was created or opened by the requesting app.
+        # Output only. Whether the file was created or opened by the requesting app.
         # Corresponds to the JSON property `isAppAuthorized`
         # @return [Boolean]
         attr_accessor :is_app_authorized
         alias_method :is_app_authorized?, :is_app_authorized
       
-        # The type of file. This is always drive#file.
+        # Output only. The type of file. This is always `drive#file`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # An overview of the labels on the file.
+        # Output only. An overview of the labels on the file.
         # Corresponds to the JSON property `labelInfo`
         # @return [Google::Apis::DriveV2::File::LabelInfo]
         attr_accessor :label_info
@@ -2002,7 +2006,7 @@ module Google
         # @return [Google::Apis::DriveV2::User]
         attr_accessor :last_modifying_user
       
-        # Name of the last user to modify this file.
+        # Output only. Name of the last user to modify this file.
         # Corresponds to the JSON property `lastModifyingUserName`
         # @return [String]
         attr_accessor :last_modifying_user_name
@@ -2023,9 +2027,9 @@ module Google
         # @return [DateTime]
         attr_accessor :marked_viewed_by_me_date
       
-        # An MD5 checksum for the content of this file. This field is only populated for
-        # files with content stored in Google Drive; it isn't populated for Docs Editors
-        # or shortcut files.
+        # Output only. An MD5 checksum for the content of this file. This field is only
+        # populated for files with content stored in Google Drive; it is not populated
+        # for Docs Editors or shortcut files.
         # Corresponds to the JSON property `md5Checksum`
         # @return [String]
         attr_accessor :md5_checksum
@@ -2050,54 +2054,54 @@ module Google
         # @return [DateTime]
         attr_accessor :modified_date
       
-        # A map of the id of each of the user's apps to a link to open this file with
-        # that app. Only populated when the drive.apps.readonly scope is used.
+        # Output only. A map of the id of each of the user's apps to a link to open this
+        # file with that app. Only populated when the drive.apps.readonly scope is used.
         # Corresponds to the JSON property `openWithLinks`
         # @return [Hash<String,String>]
         attr_accessor :open_with_links
       
         # The original filename of the uploaded content if available, or else the
-        # original value of the title field. This is only available for files with
+        # original value of the `title` field. This is only available for files with
         # binary content in Google Drive.
         # Corresponds to the JSON property `originalFilename`
         # @return [String]
         attr_accessor :original_filename
       
-        # Whether the file is owned by the current user. Not populated for items in
-        # shared drives.
+        # Output only. Whether the file is owned by the current user. Not populated for
+        # items in shared drives.
         # Corresponds to the JSON property `ownedByMe`
         # @return [Boolean]
         attr_accessor :owned_by_me
         alias_method :owned_by_me?, :owned_by_me
       
-        # Name(s) of the owner(s) of this file. Not populated for items in shared drives.
+        # Output only. Name(s) of the owner(s) of this file. Not populated for items in
+        # shared drives.
         # Corresponds to the JSON property `ownerNames`
         # @return [Array<String>]
         attr_accessor :owner_names
       
-        # The owner of this file. Only certain legacy files may have more than one owner.
-        # This field isn't populated for items in shared drives.
+        # Output only. The owner of this file. Only certain legacy files may have more
+        # than one owner. This field isn't populated for items in shared drives.
         # Corresponds to the JSON property `owners`
         # @return [Array<Google::Apis::DriveV2::User>]
         attr_accessor :owners
       
-        # Collection of parent folders which contain this file.
-        # If not specified as part of an insert request, the file will be placed
-        # directly in the user's My Drive folder. If not specified as part of a copy
-        # request, the file will inherit any discoverable parents of the source file.
-        # Update requests can also use the addParents and removeParents parameters to
-        # modify the parents list.
+        # Collection of parent folders which contain this file. If not specified as part
+        # of an insert request, the file will be placed directly in the user's My Drive
+        # folder. If not specified as part of a copy request, the file will inherit any
+        # discoverable parents of the source file. Update requests can also use the `
+        # addParents` and `removeParents` parameters to modify the parents list.
         # Corresponds to the JSON property `parents`
         # @return [Array<Google::Apis::DriveV2::ParentReference>]
         attr_accessor :parents
       
-        # List of permission IDs for users with access to this file.
+        # Output only. List of permission IDs for users with access to this file.
         # Corresponds to the JSON property `permissionIds`
         # @return [Array<String>]
         attr_accessor :permission_ids
       
-        # The list of permissions for users with access to this file. Not populated for
-        # items in shared drives.
+        # Output only. The list of permissions for users with access to this file. Not
+        # populated for items in shared drives.
         # Corresponds to the JSON property `permissions`
         # @return [Array<Google::Apis::DriveV2::Permission>]
         attr_accessor :permissions
@@ -2107,42 +2111,43 @@ module Google
         # @return [Array<Google::Apis::DriveV2::Property>]
         attr_accessor :properties
       
-        # The number of quota bytes used by this file.
+        # Output only. The number of quota bytes used by this file.
         # Corresponds to the JSON property `quotaBytesUsed`
         # @return [Fixnum]
         attr_accessor :quota_bytes_used
       
-        # A key needed to access the item via a shared link.
+        # Output only. A key needed to access the item via a shared link.
         # Corresponds to the JSON property `resourceKey`
         # @return [String]
         attr_accessor :resource_key
       
-        # A link back to this file.
+        # Output only. A link back to this file.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
       
-        # The SHA1 checksum associated with this file, if available. This field is only
-        # populated for files with content stored in Google Drive; it isn't populated
-        # for Docs Editors or shortcut files.
+        # Output only. The SHA1 checksum associated with this file, if available. This
+        # field is only populated for files with content stored in Google Drive; it is
+        # not populated for Docs Editors or shortcut files.
         # Corresponds to the JSON property `sha1Checksum`
         # @return [String]
         attr_accessor :sha1_checksum
       
-        # The SHA256 checksum associated with this file, if available. This field is
-        # only populated for files with content stored in Google Drive; it isn't
-        # populated for Docs Editors or shortcut files.
+        # Output only. The SHA256 checksum associated with this file, if available. This
+        # field is only populated for files with content stored in Google Drive; it is
+        # not populated for Docs Editors or shortcut files.
         # Corresponds to the JSON property `sha256Checksum`
         # @return [String]
         attr_accessor :sha256_checksum
       
-        # Deprecated: use capabilities/canShare.
+        # Output only. Deprecated: Use `capabilities/canShare` instead.
         # Corresponds to the JSON property `shareable`
         # @return [Boolean]
         attr_accessor :shareable
         alias_method :shareable?, :shareable
       
-        # Whether the file has been shared. Not populated for items in shared drives.
+        # Output only. Whether the file has been shared. Not populated for items in
+        # shared drives.
         # Corresponds to the JSON property `shared`
         # @return [Boolean]
         attr_accessor :shared
@@ -2160,18 +2165,18 @@ module Google
         attr_accessor :sharing_user
       
         # Shortcut file details. Only populated for shortcut files, which have the
-        # mimeType field set to application/vnd.google-apps.shortcut.
+        # mimeType field set to `application/vnd.google-apps.shortcut`.
         # Corresponds to the JSON property `shortcutDetails`
         # @return [Google::Apis::DriveV2::File::ShortcutDetails]
         attr_accessor :shortcut_details
       
-        # The list of spaces which contain the file. Supported values are 'drive', '
-        # appDataFolder' and 'photos'.
+        # Output only. The list of spaces which contain the file. Supported values are `
+        # drive`, `appDataFolder` and `photos`.
         # Corresponds to the JSON property `spaces`
         # @return [Array<String>]
         attr_accessor :spaces
       
-        # Deprecated - use driveId instead.
+        # Output only. Deprecated: Use `driveId` instead.
         # Corresponds to the JSON property `teamDriveId`
         # @return [String]
         attr_accessor :team_drive_id
@@ -2182,15 +2187,14 @@ module Google
         # @return [Google::Apis::DriveV2::File::Thumbnail]
         attr_accessor :thumbnail
       
-        # A short-lived link to the file's thumbnail. Typically lasts on the order of
-        # hours. Only populated when the requesting app can access the file's content.
-        # If the file isn't shared publicly, the URL returned in Files.thumbnailLink
-        # must be fetched using a credentialed request.
+        # Output only. A short-lived link to the file's thumbnail. Typically lasts on
+        # the order of hours. Only populated when the requesting app can access the file'
+        # s content.
         # Corresponds to the JSON property `thumbnailLink`
         # @return [String]
         attr_accessor :thumbnail_link
       
-        # The thumbnail version for use in thumbnail cache invalidation.
+        # Output only. The thumbnail version for use in thumbnail cache invalidation.
         # Corresponds to the JSON property `thumbnailVersion`
         # @return [Fixnum]
         attr_accessor :thumbnail_version
@@ -2218,27 +2222,28 @@ module Google
         # @return [Google::Apis::DriveV2::Permission]
         attr_accessor :user_permission
       
-        # A monotonically increasing version number for the file. This reflects every
-        # change made to the file on the server, even those not visible to the
-        # requesting user.
+        # Output only. A monotonically increasing version number for the file. This
+        # reflects every change made to the file on the server, even those not visible
+        # to the requesting user.
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
       
-        # Metadata about video media. This will only be present for video types.
+        # Output only. Metadata about video media. This will only be present for video
+        # types.
         # Corresponds to the JSON property `videoMediaMetadata`
         # @return [Google::Apis::DriveV2::File::VideoMediaMetadata]
         attr_accessor :video_media_metadata
       
-        # A link for downloading the content of the file in a browser using cookie based
-        # authentication. In cases where the content is shared publicly, the content can
-        # be downloaded without any credentials.
+        # Output only. A link for downloading the content of the file in a browser using
+        # cookie based authentication. In cases where the content is shared publicly,
+        # the content can be downloaded without any credentials.
         # Corresponds to the JSON property `webContentLink`
         # @return [String]
         attr_accessor :web_content_link
       
-        # A link only available on public folders for viewing their static web assets (
-        # HTML, CSS, JS, etc) via Google Drive's Website Hosting.
+        # Output only. A link only available on public folders for viewing their static
+        # web assets (HTML, CSS, JS, etc) via Google Drive's Website Hosting.
         # Corresponds to the JSON property `webViewLink`
         # @return [String]
         attr_accessor :web_view_link
@@ -2333,263 +2338,270 @@ module Google
           @writers_can_share = args[:writers_can_share] if args.key?(:writers_can_share)
         end
         
-        # Capabilities the current user has on this file. Each capability corresponds to
-        # a fine-grained action that a user may take.
+        # Output only. Capabilities the current user has on this file. Each capability
+        # corresponds to a fine-grained action that a user may take.
         class Capabilities
           include Google::Apis::Core::Hashable
         
-          # Whether the current user is the pending owner of the file. Not populated for
-          # shared drive files.
+          # Output only. Whether the current user is the pending owner of the file. Not
+          # populated for shared drive files.
           # Corresponds to the JSON property `canAcceptOwnership`
           # @return [Boolean]
           attr_accessor :can_accept_ownership
           alias_method :can_accept_ownership?, :can_accept_ownership
         
-          # Whether the current user can add children to this folder. This is always false
-          # when the item is not a folder.
+          # Output only. Whether the current user can add children to this folder. This is
+          # always false when the item is not a folder.
           # Corresponds to the JSON property `canAddChildren`
           # @return [Boolean]
           attr_accessor :can_add_children
           alias_method :can_add_children?, :can_add_children
         
-          # Whether the current user can add a folder from another drive (different shared
-          # drive or My Drive) to this folder. This is false when the item is not a folder.
-          # Only populated for items in shared drives.
+          # Output only. Whether the current user can add a folder from another drive (
+          # different shared drive or My Drive) to this folder. This is false when the
+          # item is not a folder. Only populated for items in shared drives.
           # Corresponds to the JSON property `canAddFolderFromAnotherDrive`
           # @return [Boolean]
           attr_accessor :can_add_folder_from_another_drive
           alias_method :can_add_folder_from_another_drive?, :can_add_folder_from_another_drive
         
-          # Whether the current user can add a parent for the item without removing an
-          # existing parent in the same request. Not populated for shared drive files.
+          # Output only. Whether the current user can add a parent for the item without
+          # removing an existing parent in the same request. Not populated for shared
+          # drive files.
           # Corresponds to the JSON property `canAddMyDriveParent`
           # @return [Boolean]
           attr_accessor :can_add_my_drive_parent
           alias_method :can_add_my_drive_parent?, :can_add_my_drive_parent
         
-          # Whether the current user can change the copyRequiresWriterPermission
-          # restriction of this file.
+          # Output only. Whether the current user can change the `
+          # copyRequiresWriterPermission` restriction of this file.
           # Corresponds to the JSON property `canChangeCopyRequiresWriterPermission`
           # @return [Boolean]
           attr_accessor :can_change_copy_requires_writer_permission
           alias_method :can_change_copy_requires_writer_permission?, :can_change_copy_requires_writer_permission
         
-          # Deprecated
+          # Output only. Deprecated.
           # Corresponds to the JSON property `canChangeRestrictedDownload`
           # @return [Boolean]
           attr_accessor :can_change_restricted_download
           alias_method :can_change_restricted_download?, :can_change_restricted_download
         
-          # Whether the current user can change the securityUpdateEnabled field on link
-          # share metadata.
+          # Output only. Whether the current user can change the securityUpdateEnabled
+          # field on link share metadata.
           # Corresponds to the JSON property `canChangeSecurityUpdateEnabled`
           # @return [Boolean]
           attr_accessor :can_change_security_update_enabled
           alias_method :can_change_security_update_enabled?, :can_change_security_update_enabled
         
-          # Whether the current user can comment on this file.
+          # Output only. Whether the current user can comment on this file.
           # Corresponds to the JSON property `canComment`
           # @return [Boolean]
           attr_accessor :can_comment
           alias_method :can_comment?, :can_comment
         
-          # Whether the current user can copy this file. For an item in a shared drive,
-          # whether the current user can copy non-folder descendants of this item, or this
-          # item itself if it is not a folder.
+          # Output only. Whether the current user can copy this file. For an item in a
+          # shared drive, whether the current user can copy non-folder descendants of this
+          # item, or this item itself if it is not a folder.
           # Corresponds to the JSON property `canCopy`
           # @return [Boolean]
           attr_accessor :can_copy
           alias_method :can_copy?, :can_copy
         
-          # Whether the current user can delete this file.
+          # Output only. Whether the current user can delete this file.
           # Corresponds to the JSON property `canDelete`
           # @return [Boolean]
           attr_accessor :can_delete
           alias_method :can_delete?, :can_delete
         
-          # Whether the current user can delete children of this folder. This is false
-          # when the item is not a folder. Only populated for items in shared drives.
+          # Output only. Whether the current user can delete children of this folder. This
+          # is false when the item is not a folder. Only populated for items in shared
+          # drives.
           # Corresponds to the JSON property `canDeleteChildren`
           # @return [Boolean]
           attr_accessor :can_delete_children
           alias_method :can_delete_children?, :can_delete_children
         
-          # Whether the current user can download this file.
+          # Output only. Whether the current user can download this file.
           # Corresponds to the JSON property `canDownload`
           # @return [Boolean]
           attr_accessor :can_download
           alias_method :can_download?, :can_download
         
-          # Whether the current user can edit this file. Other factors may limit the type
-          # of changes a user can make to a file. For example, see
-          # canChangeCopyRequiresWriterPermission or canModifyContent.
+          # Output only. Whether the current user can edit this file. Other factors may
+          # limit the type of changes a user can make to a file. For example, see `
+          # canChangeCopyRequiresWriterPermission` or `canModifyContent`.
           # Corresponds to the JSON property `canEdit`
           # @return [Boolean]
           attr_accessor :can_edit
           alias_method :can_edit?, :can_edit
         
-          # Whether the current user can list the children of this folder. This is always
-          # false when the item is not a folder.
+          # Output only. Whether the current user can list the children of this folder.
+          # This is always false when the item is not a folder.
           # Corresponds to the JSON property `canListChildren`
           # @return [Boolean]
           attr_accessor :can_list_children
           alias_method :can_list_children?, :can_list_children
         
-          # Whether the current user can modify the content of this file.
+          # Output only. Whether the current user can modify the content of this file.
           # Corresponds to the JSON property `canModifyContent`
           # @return [Boolean]
           attr_accessor :can_modify_content
           alias_method :can_modify_content?, :can_modify_content
         
-          # Whether the current user can modify restrictions on content of this file.
+          # Output only. Whether the current user can modify restrictions on content of
+          # this file.
           # Corresponds to the JSON property `canModifyContentRestriction`
           # @return [Boolean]
           attr_accessor :can_modify_content_restriction
           alias_method :can_modify_content_restriction?, :can_modify_content_restriction
         
-          # Whether the current user can modify the labels on this file.
+          # Output only. Whether the current user can modify the labels on the file.
           # Corresponds to the JSON property `canModifyLabels`
           # @return [Boolean]
           attr_accessor :can_modify_labels
           alias_method :can_modify_labels?, :can_modify_labels
         
-          # Whether the current user can move children of this folder outside of the
-          # shared drive. This is false when the item is not a folder. Only populated for
-          # items in shared drives.
+          # Output only. Whether the current user can move children of this folder outside
+          # of the shared drive. This is false when the item is not a folder. Only
+          # populated for items in shared drives.
           # Corresponds to the JSON property `canMoveChildrenOutOfDrive`
           # @return [Boolean]
           attr_accessor :can_move_children_out_of_drive
           alias_method :can_move_children_out_of_drive?, :can_move_children_out_of_drive
         
-          # Deprecated - use canMoveChildrenOutOfDrive instead.
+          # Output only. Deprecated: Use `canMoveChildrenOutOfDrive` instead.
           # Corresponds to the JSON property `canMoveChildrenOutOfTeamDrive`
           # @return [Boolean]
           attr_accessor :can_move_children_out_of_team_drive
           alias_method :can_move_children_out_of_team_drive?, :can_move_children_out_of_team_drive
         
-          # Whether the current user can move children of this folder within this drive.
-          # This is false when the item is not a folder. Note that a request to move the
-          # child may still fail depending on the current user's access to the child and
-          # to the destination folder.
+          # Output only. Whether the current user can move children of this folder within
+          # this drive. This is false when the item is not a folder. Note that a request
+          # to move the child may still fail depending on the current user's access to the
+          # child and to the destination folder.
           # Corresponds to the JSON property `canMoveChildrenWithinDrive`
           # @return [Boolean]
           attr_accessor :can_move_children_within_drive
           alias_method :can_move_children_within_drive?, :can_move_children_within_drive
         
-          # Deprecated - use canMoveChildrenWithinDrive instead.
+          # Output only. Deprecated: Use `canMoveChildrenWithinDrive` instead.
           # Corresponds to the JSON property `canMoveChildrenWithinTeamDrive`
           # @return [Boolean]
           attr_accessor :can_move_children_within_team_drive
           alias_method :can_move_children_within_team_drive?, :can_move_children_within_team_drive
         
-          # Deprecated - use canMoveItemOutOfDrive instead.
+          # Output only. Deprecated: Use `canMoveItemOutOfDrive` instead.
           # Corresponds to the JSON property `canMoveItemIntoTeamDrive`
           # @return [Boolean]
           attr_accessor :can_move_item_into_team_drive
           alias_method :can_move_item_into_team_drive?, :can_move_item_into_team_drive
         
-          # Whether the current user can move this item outside of this drive by changing
-          # its parent. Note that a request to change the parent of the item may still
-          # fail depending on the new parent that is being added.
+          # Output only. Whether the current user can move this item outside of this drive
+          # by changing its parent. Note that a request to change the parent of the item
+          # may still fail depending on the new parent that is being added.
           # Corresponds to the JSON property `canMoveItemOutOfDrive`
           # @return [Boolean]
           attr_accessor :can_move_item_out_of_drive
           alias_method :can_move_item_out_of_drive?, :can_move_item_out_of_drive
         
-          # Deprecated - use canMoveItemOutOfDrive instead.
+          # Output only. Deprecated: Use `canMoveItemOutOfDrive` instead.
           # Corresponds to the JSON property `canMoveItemOutOfTeamDrive`
           # @return [Boolean]
           attr_accessor :can_move_item_out_of_team_drive
           alias_method :can_move_item_out_of_team_drive?, :can_move_item_out_of_team_drive
         
-          # Whether the current user can move this item within this drive. Note that a
-          # request to change the parent of the item may still fail depending on the new
-          # parent that is being added and the parent that is being removed.
+          # Output only. Whether the current user can move this item within this drive.
+          # Note that a request to change the parent of the item may still fail depending
+          # on the new parent that is being added and the parent that is being removed.
           # Corresponds to the JSON property `canMoveItemWithinDrive`
           # @return [Boolean]
           attr_accessor :can_move_item_within_drive
           alias_method :can_move_item_within_drive?, :can_move_item_within_drive
         
-          # Deprecated - use canMoveItemWithinDrive instead.
+          # Output only. Deprecated: Use `canMoveItemWithinDrive` instead.
           # Corresponds to the JSON property `canMoveItemWithinTeamDrive`
           # @return [Boolean]
           attr_accessor :can_move_item_within_team_drive
           alias_method :can_move_item_within_team_drive?, :can_move_item_within_team_drive
         
-          # Deprecated - use canMoveItemWithinDrive or canMoveItemOutOfDrive instead.
+          # Output only. Deprecated: Use `canMoveItemWithinDrive` or `
+          # canMoveItemOutOfDrive` instead.
           # Corresponds to the JSON property `canMoveTeamDriveItem`
           # @return [Boolean]
           attr_accessor :can_move_team_drive_item
           alias_method :can_move_team_drive_item?, :can_move_team_drive_item
         
-          # Whether the current user can read the shared drive to which this file belongs.
-          # Only populated for items in shared drives.
+          # Output only. Whether the current user can read the shared drive to which this
+          # file belongs. Only populated for items in shared drives.
           # Corresponds to the JSON property `canReadDrive`
           # @return [Boolean]
           attr_accessor :can_read_drive
           alias_method :can_read_drive?, :can_read_drive
         
-          # Whether the current user can read the labels on this file.
+          # Output only. Whether the current user can read the labels on the file.
           # Corresponds to the JSON property `canReadLabels`
           # @return [Boolean]
           attr_accessor :can_read_labels
           alias_method :can_read_labels?, :can_read_labels
         
-          # Whether the current user can read the revisions resource of this file. For a
-          # shared drive item, whether revisions of non-folder descendants of this item,
-          # or this item itself if it isn't a folder, can be read.
+          # Output only. Whether the current user can read the revisions resource of this
+          # file. For a shared drive item, whether revisions of non-folder descendants of
+          # this item, or this item itself if it is not a folder, can be read.
           # Corresponds to the JSON property `canReadRevisions`
           # @return [Boolean]
           attr_accessor :can_read_revisions
           alias_method :can_read_revisions?, :can_read_revisions
         
-          # Deprecated - use canReadDrive instead.
+          # Output only. Deprecated: Use `canReadDrive` instead.
           # Corresponds to the JSON property `canReadTeamDrive`
           # @return [Boolean]
           attr_accessor :can_read_team_drive
           alias_method :can_read_team_drive?, :can_read_team_drive
         
-          # Whether the current user can remove children from this folder. This is always
-          # false when the item is not a folder. For a folder in a shared drive, use
-          # canDeleteChildren or canTrashChildren instead.
+          # Output only. Whether the current user can remove children from this folder.
+          # This is always false when the item is not a folder. For a folder in a shared
+          # drive, use `canDeleteChildren` or `canTrashChildren` instead.
           # Corresponds to the JSON property `canRemoveChildren`
           # @return [Boolean]
           attr_accessor :can_remove_children
           alias_method :can_remove_children?, :can_remove_children
         
-          # Whether the current user can remove a parent from the item without adding
-          # another parent in the same request. Not populated for shared drive files.
+          # Output only. Whether the current user can remove a parent from the item
+          # without adding another parent in the same request. Not populated for shared
+          # drive files.
           # Corresponds to the JSON property `canRemoveMyDriveParent`
           # @return [Boolean]
           attr_accessor :can_remove_my_drive_parent
           alias_method :can_remove_my_drive_parent?, :can_remove_my_drive_parent
         
-          # Whether the current user can rename this file.
+          # Output only. Whether the current user can rename this file.
           # Corresponds to the JSON property `canRename`
           # @return [Boolean]
           attr_accessor :can_rename
           alias_method :can_rename?, :can_rename
         
-          # Whether the current user can modify the sharing settings for this file.
+          # Output only. Whether the current user can modify the sharing settings for this
+          # file.
           # Corresponds to the JSON property `canShare`
           # @return [Boolean]
           attr_accessor :can_share
           alias_method :can_share?, :can_share
         
-          # Whether the current user can move this file to trash.
+          # Output only. Whether the current user can move this file to trash.
           # Corresponds to the JSON property `canTrash`
           # @return [Boolean]
           attr_accessor :can_trash
           alias_method :can_trash?, :can_trash
         
-          # Whether the current user can trash children of this folder. This is false when
-          # the item is not a folder. Only populated for items in shared drives.
+          # Output only. Whether the current user can trash children of this folder. This
+          # is false when the item is not a folder. Only populated for items in shared
+          # drives.
           # Corresponds to the JSON property `canTrashChildren`
           # @return [Boolean]
           attr_accessor :can_trash_children
           alias_method :can_trash_children?, :can_trash_children
         
-          # Whether the current user can restore this file from trash.
+          # Output only. Whether the current user can restore this file from trash.
           # Corresponds to the JSON property `canUntrash`
           # @return [Boolean]
           attr_accessor :can_untrash
@@ -2642,115 +2654,116 @@ module Google
           end
         end
         
-        # Metadata about image media. This will only be present for image types, and its
-        # contents will depend on what can be parsed from the image content.
+        # Output only. Metadata about image media. This will only be present for image
+        # types, and its contents will depend on what can be parsed from the image
+        # content.
         class ImageMediaMetadata
           include Google::Apis::Core::Hashable
         
-          # The aperture used to create the photo (f-number).
+          # Output only. The aperture used to create the photo (f-number).
           # Corresponds to the JSON property `aperture`
           # @return [Float]
           attr_accessor :aperture
         
-          # The make of the camera used to create the photo.
+          # Output only. The make of the camera used to create the photo.
           # Corresponds to the JSON property `cameraMake`
           # @return [String]
           attr_accessor :camera_make
         
-          # The model of the camera used to create the photo.
+          # Output only. The model of the camera used to create the photo.
           # Corresponds to the JSON property `cameraModel`
           # @return [String]
           attr_accessor :camera_model
         
-          # The color space of the photo.
+          # Output only. The color space of the photo.
           # Corresponds to the JSON property `colorSpace`
           # @return [String]
           attr_accessor :color_space
         
-          # The date and time the photo was taken (EXIF format timestamp).
+          # Output only. The date and time the photo was taken (EXIF format timestamp).
           # Corresponds to the JSON property `date`
           # @return [String]
           attr_accessor :date
         
-          # The exposure bias of the photo (APEX value).
+          # Output only. The exposure bias of the photo (APEX value).
           # Corresponds to the JSON property `exposureBias`
           # @return [Float]
           attr_accessor :exposure_bias
         
-          # The exposure mode used to create the photo.
+          # Output only. The exposure mode used to create the photo.
           # Corresponds to the JSON property `exposureMode`
           # @return [String]
           attr_accessor :exposure_mode
         
-          # The length of the exposure, in seconds.
+          # Output only. The length of the exposure, in seconds.
           # Corresponds to the JSON property `exposureTime`
           # @return [Float]
           attr_accessor :exposure_time
         
-          # Whether a flash was used to create the photo.
+          # Output only. Whether a flash was used to create the photo.
           # Corresponds to the JSON property `flashUsed`
           # @return [Boolean]
           attr_accessor :flash_used
           alias_method :flash_used?, :flash_used
         
-          # The focal length used to create the photo, in millimeters.
+          # Output only. The focal length used to create the photo, in millimeters.
           # Corresponds to the JSON property `focalLength`
           # @return [Float]
           attr_accessor :focal_length
         
-          # The height of the image in pixels.
+          # Output only. The height of the image in pixels.
           # Corresponds to the JSON property `height`
           # @return [Fixnum]
           attr_accessor :height
         
-          # The ISO speed used to create the photo.
+          # Output only. The ISO speed used to create the photo.
           # Corresponds to the JSON property `isoSpeed`
           # @return [Fixnum]
           attr_accessor :iso_speed
         
-          # The lens used to create the photo.
+          # Output only. The lens used to create the photo.
           # Corresponds to the JSON property `lens`
           # @return [String]
           attr_accessor :lens
         
-          # Geographic location information stored in the image.
+          # Output only. Geographic location information stored in the image.
           # Corresponds to the JSON property `location`
           # @return [Google::Apis::DriveV2::File::ImageMediaMetadata::Location]
           attr_accessor :location
         
-          # The smallest f-number of the lens at the focal length used to create the photo
-          # (APEX value).
+          # Output only. The smallest f-number of the lens at the focal length used to
+          # create the photo (APEX value).
           # Corresponds to the JSON property `maxApertureValue`
           # @return [Float]
           attr_accessor :max_aperture_value
         
-          # The metering mode used to create the photo.
+          # Output only. The metering mode used to create the photo.
           # Corresponds to the JSON property `meteringMode`
           # @return [String]
           attr_accessor :metering_mode
         
-          # The number of clockwise 90 degree rotations applied from the image's original
-          # orientation.
+          # Output only. The number of clockwise 90 degree rotations applied from the
+          # image's original orientation.
           # Corresponds to the JSON property `rotation`
           # @return [Fixnum]
           attr_accessor :rotation
         
-          # The type of sensor used to create the photo.
+          # Output only. The type of sensor used to create the photo.
           # Corresponds to the JSON property `sensor`
           # @return [String]
           attr_accessor :sensor
         
-          # The distance to the subject of the photo, in meters.
+          # Output only. The distance to the subject of the photo, in meters.
           # Corresponds to the JSON property `subjectDistance`
           # @return [Fixnum]
           attr_accessor :subject_distance
         
-          # The white balance mode used to create the photo.
+          # Output only. The white balance mode used to create the photo.
           # Corresponds to the JSON property `whiteBalance`
           # @return [String]
           attr_accessor :white_balance
         
-          # The width of the image in pixels.
+          # Output only. The width of the image in pixels.
           # Corresponds to the JSON property `width`
           # @return [Fixnum]
           attr_accessor :width
@@ -2784,21 +2797,21 @@ module Google
             @width = args[:width] if args.key?(:width)
           end
           
-          # Geographic location information stored in the image.
+          # Output only. Geographic location information stored in the image.
           class Location
             include Google::Apis::Core::Hashable
           
-            # The altitude stored in the image.
+            # Output only. The altitude stored in the image.
             # Corresponds to the JSON property `altitude`
             # @return [Float]
             attr_accessor :altitude
           
-            # The latitude stored in the image.
+            # Output only. The latitude stored in the image.
             # Corresponds to the JSON property `latitude`
             # @return [Float]
             attr_accessor :latitude
           
-            # The longitude stored in the image.
+            # Output only. The longitude stored in the image.
             # Corresponds to the JSON property `longitude`
             # @return [Float]
             attr_accessor :longitude
@@ -2816,8 +2829,7 @@ module Google
           end
         end
         
-        # Indexable text attributes for the file (can only be written). For more
-        # information, see Manage file metadata.
+        # Indexable text attributes for the file (can only be written)
         class IndexableText
           include Google::Apis::Core::Hashable
         
@@ -2836,12 +2848,12 @@ module Google
           end
         end
         
-        # An overview of the labels on the file.
+        # Output only. An overview of the labels on the file.
         class LabelInfo
           include Google::Apis::Core::Hashable
         
-          # The set of labels on the file as requested by the label IDs in the
-          # includeLabels parameter. By default, no labels are returned.
+          # Output only. The set of labels on the file as requested by the label IDs in
+          # the `includeLabels` parameter. By default, no labels are returned.
           # Corresponds to the JSON property `labels`
           # @return [Array<Google::Apis::DriveV2::Label>]
           attr_accessor :labels
@@ -2860,19 +2872,19 @@ module Google
         class Labels
           include Google::Apis::Core::Hashable
         
-          # Deprecated.
+          # Output only. Deprecated.
           # Corresponds to the JSON property `hidden`
           # @return [Boolean]
           attr_accessor :hidden
           alias_method :hidden?, :hidden
         
-          # Whether the file has been modified by this user.
+          # Output only. Whether the file has been modified by this user.
           # Corresponds to the JSON property `modified`
           # @return [Boolean]
           attr_accessor :modified
           alias_method :modified?, :modified
         
-          # Deprecated - use copyRequiresWriterPermission instead.
+          # Output only. Deprecated: Use `copyRequiresWriterPermission` instead.
           # Corresponds to the JSON property `restricted`
           # @return [Boolean]
           attr_accessor :restricted
@@ -2884,11 +2896,8 @@ module Google
           attr_accessor :starred
           alias_method :starred?, :starred
         
-          # Whether the file has been trashed, either explicitly or from a trashed parent
-          # folder. Only the owner may trash a file. The trashed item is excluded from all
-          # files.list responses returned for any user who does not own the file. However,
-          # all users with access to the file can see the trashed item metadata in an API
-          # response. All users with access can copy, download, export, and share the file.
+          # Whether this file has been trashed. This label applies to all users accessing
+          # the file; however, only owners are allowed to see and untrash files.
           # Corresponds to the JSON property `trashed`
           # @return [Boolean]
           attr_accessor :trashed
@@ -2920,13 +2929,13 @@ module Google
         class LinkShareMetadata
           include Google::Apis::Core::Hashable
         
-          # Whether the file is eligible for security update.
+          # Output only. Whether the file is eligible for security update.
           # Corresponds to the JSON property `securityUpdateEligible`
           # @return [Boolean]
           attr_accessor :security_update_eligible
           alias_method :security_update_eligible?, :security_update_eligible
         
-          # Whether the security update is enabled for this file.
+          # Output only. Whether the security update is enabled for this file.
           # Corresponds to the JSON property `securityUpdateEnabled`
           # @return [Boolean]
           attr_accessor :security_update_enabled
@@ -2944,7 +2953,7 @@ module Google
         end
         
         # Shortcut file details. Only populated for shortcut files, which have the
-        # mimeType field set to application/vnd.google-apps.shortcut.
+        # mimeType field set to `application/vnd.google-apps.shortcut`.
         class ShortcutDetails
           include Google::Apis::Core::Hashable
         
@@ -2953,14 +2962,14 @@ module Google
           # @return [String]
           attr_accessor :target_id
         
-          # The MIME type of the file that this shortcut points to. The value of this
-          # field is a snapshot of the target's MIME type, captured when the shortcut is
-          # created.
+          # Output only. The MIME type of the file that this shortcut points to. The value
+          # of this field is a snapshot of the target's MIME type, captured when the
+          # shortcut is created.
           # Corresponds to the JSON property `targetMimeType`
           # @return [String]
           attr_accessor :target_mime_type
         
-          # The ResourceKey for the target file.
+          # Output only. The ResourceKey for the target file.
           # Corresponds to the JSON property `targetResourceKey`
           # @return [String]
           attr_accessor :target_resource_key
@@ -3005,21 +3014,22 @@ module Google
           end
         end
         
-        # Metadata about video media. This will only be present for video types.
+        # Output only. Metadata about video media. This will only be present for video
+        # types.
         class VideoMediaMetadata
           include Google::Apis::Core::Hashable
         
-          # The duration of the video in milliseconds.
+          # Output only. The duration of the video in milliseconds.
           # Corresponds to the JSON property `durationMillis`
           # @return [Fixnum]
           attr_accessor :duration_millis
         
-          # The height of the video in pixels.
+          # Output only. The height of the video in pixels.
           # Corresponds to the JSON property `height`
           # @return [Fixnum]
           attr_accessor :height
         
-          # The width of the video in pixels.
+          # Output only. The width of the video in pixels.
           # Corresponds to the JSON property `width`
           # @return [Fixnum]
           attr_accessor :width
@@ -3062,7 +3072,7 @@ module Google
         # @return [Array<Google::Apis::DriveV2::File>]
         attr_accessor :items
       
-        # This is always drive#fileList.
+        # This is always `drive#fileList`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -3110,7 +3120,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :ids
       
-        # This is always drive#generatedIds
+        # This is always `drive#generatedIds`
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -3132,11 +3142,11 @@ module Google
         end
       end
       
-      # Representation of a label and its fields.
+      # Representation of a label and label fields.
       class Label
         include Google::Apis::Core::Hashable
       
-        # A map of the label's fields keyed by the field ID.
+        # A map of the fields on the label, keyed by the field's ID.
         # Corresponds to the JSON property `fields`
         # @return [Hash<String,Google::Apis::DriveV2::LabelField>]
         attr_accessor :fields
@@ -3146,7 +3156,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # This is always drive#label
+        # This is always `drive#label`
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -3169,7 +3179,7 @@ module Google
         end
       end
       
-      # Representation of a label field.
+      # Representation of field, which is a typed key-value pair.
       class LabelField
         include Google::Apis::Core::Hashable
       
@@ -3178,43 +3188,39 @@ module Google
         # @return [Array<Date>]
         attr_accessor :date_string
       
-        # The identifier of this field.
+        # The identifier of this label field.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # Only present if valueType is integer.
+        # Only present if `valueType` is `integer`.
         # Corresponds to the JSON property `integer`
         # @return [Array<Fixnum>]
         attr_accessor :integer
       
-        # This is always drive#labelField.
+        # This is always `drive#labelField`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # Only present if valueType is selection.
+        # Only present if `valueType` is `selection`
         # Corresponds to the JSON property `selection`
         # @return [Array<String>]
         attr_accessor :selection
       
-        # Only present if valueType is text.
+        # Only present if `valueType` is `text`.
         # Corresponds to the JSON property `text`
         # @return [Array<String>]
         attr_accessor :text
       
-        # Only present if valueType is user.
+        # Only present if `valueType` is `user`.
         # Corresponds to the JSON property `user`
         # @return [Array<Google::Apis::DriveV2::User>]
         attr_accessor :user
       
         # The field type. While new values may be supported in the future, the following
-        # are currently allowed:
-        # - dateString
-        # - integer
-        # - selection
-        # - text
-        # - user
+        # are currently allowed: * `dateString` * `integer` * `selection` * `text` * `
+        # user`
         # Corresponds to the JSON property `valueType`
         # @return [String]
         attr_accessor :value_type
@@ -3245,33 +3251,33 @@ module Google
         # @return [String]
         attr_accessor :field_id
       
-        # This is always drive#labelFieldModification.
+        # This is always `drive#labelFieldModification`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # Replaces a dateString field with these new values. The values must be strings
-        # in the RFC 3339 full-date format: YYYY-MM-DD.
+        # Replaces the value of a dateString Field with these new values. The string
+        # must be in the RFC 3339 full-date format: YYYY-MM-DD.
         # Corresponds to the JSON property `setDateValues`
         # @return [Array<Date>]
         attr_accessor :set_date_values
       
-        # Replaces an integer field with these new values.
+        # Replaces the value of an `integer` field with these new values.
         # Corresponds to the JSON property `setIntegerValues`
         # @return [Array<Fixnum>]
         attr_accessor :set_integer_values
       
-        # Replaces a selection field with these new values.
+        # Replaces a `selection` field with these new values.
         # Corresponds to the JSON property `setSelectionValues`
         # @return [Array<String>]
         attr_accessor :set_selection_values
       
-        # Replaces a text field with these new values.
+        # Sets the value of a `text` field.
         # Corresponds to the JSON property `setTextValues`
         # @return [Array<String>]
         attr_accessor :set_text_values
       
-        # Replaces a user field with these new values. The values must be valid email
+        # Replaces a `user` field with these new values. The values must be valid email
         # addresses.
         # Corresponds to the JSON property `setUserValues`
         # @return [Array<String>]
@@ -3300,7 +3306,7 @@ module Google
         end
       end
       
-      # A list of labels.
+      # A list of labels applied to a file.
       class LabelList
         include Google::Apis::Core::Hashable
       
@@ -3309,7 +3315,7 @@ module Google
         # @return [Array<Google::Apis::DriveV2::Label>]
         attr_accessor :items
       
-        # This is always drive#labelList
+        # This is always `drive#labelList`
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -3345,7 +3351,7 @@ module Google
         # @return [Array<Google::Apis::DriveV2::LabelFieldModification>]
         attr_accessor :field_modifications
       
-        # This is always drive#labelModification.
+        # This is always `drive#labelModification`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -3375,11 +3381,11 @@ module Google
       end
       
       # A request to modify the set of labels on a file. This request may contain many
-      # modifications that will either all succeed or all fail transactionally.
+      # modifications that will either all succeed or all fail atomically.
       class ModifyLabelsRequest
         include Google::Apis::Core::Hashable
       
-        # This is always drive#modifyLabelsRequest
+        # This is always `drive#modifyLabelsRequest`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -3405,7 +3411,7 @@ module Google
       class ModifyLabelsResponse
         include Google::Apis::Core::Hashable
       
-        # This is always drive#modifyLabelsResponse
+        # This is always `drive#modifyLabelsResponse`
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -3440,7 +3446,7 @@ module Google
         # @return [Array<Google::Apis::DriveV2::ParentReference>]
         attr_accessor :items
       
-        # This is always drive#parentList.
+        # This is always `drive#parentList`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -3472,23 +3478,23 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Whether or not the parent is the root folder.
+        # Output only. Whether or not the parent is the root folder.
         # Corresponds to the JSON property `isRoot`
         # @return [Boolean]
         attr_accessor :is_root
         alias_method :is_root?, :is_root
       
-        # This is always drive#parentReference.
+        # Output only. This is always `drive#parentReference`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # A link to the parent.
+        # Output only. A link to the parent.
         # Corresponds to the JSON property `parentLink`
         # @return [String]
         attr_accessor :parent_link
       
-        # A link back to this reference.
+        # Output only. A link back to this reference.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
@@ -3511,128 +3517,124 @@ module Google
       class Permission
         include Google::Apis::Core::Hashable
       
-        # Additional roles for this user. Only commenter is currently allowed, though
+        # Additional roles for this user. Only `commenter` is currently allowed, though
         # more may be supported in the future.
         # Corresponds to the JSON property `additionalRoles`
         # @return [Array<String>]
         attr_accessor :additional_roles
       
-        # Deprecated.
+        # Output only. Deprecated.
         # Corresponds to the JSON property `authKey`
         # @return [String]
         attr_accessor :auth_key
       
-        # Whether the account associated with this permission has been deleted. This
-        # field only pertains to user and group permissions.
+        # Output only. Whether the account associated with this permission has been
+        # deleted. This field only pertains to user and group permissions.
         # Corresponds to the JSON property `deleted`
         # @return [Boolean]
         attr_accessor :deleted
         alias_method :deleted?, :deleted
       
-        # The domain name of the entity this permission refers to. This is an output-
-        # only field which is present when the permission type is user, group or domain.
+        # Output only. The domain name of the entity this permission refers to. This is
+        # an output-only field which is present when the permission type is `user`, `
+        # group` or `domain`.
         # Corresponds to the JSON property `domain`
         # @return [String]
         attr_accessor :domain
       
-        # The email address of the user or group this permission refers to. This is an
-        # output-only field which is present when the permission type is user or group.
+        # Output only. The email address of the user or group this permission refers to.
+        # This is an output-only field which is present when the permission type is `
+        # user` or `group`.
         # Corresponds to the JSON property `emailAddress`
         # @return [String]
         attr_accessor :email_address
       
-        # The ETag of the permission.
+        # Output only. The ETag of the permission.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
       
         # The time at which this permission will expire (RFC 3339 date-time). Expiration
-        # dates have the following restrictions:
-        # - They cannot be set on shared drive items
-        # - They can only be set on user and group permissions
-        # - The date must be in the future
-        # - The date cannot be more than a year in the future
+        # dates have the following restrictions: - They cannot be set on shared drive
+        # items - They can only be set on user and group permissions - The date must be
+        # in the future - The date cannot be more than a year in the future - The date
+        # can only be set on drive.permissions.update or drive.permissions.patch
+        # requests
         # Corresponds to the JSON property `expirationDate`
         # @return [DateTime]
         attr_accessor :expiration_date
       
-        # The ID of the user this permission refers to, and identical to the
-        # permissionId in the About and Files resources. When making a drive.permissions.
-        # insert request, exactly one of the id or value fields must be specified unless
-        # the permission type is anyone, in which case both id and value are ignored.
+        # The ID of the user this permission refers to, and identical to the `
+        # permissionId` in the About and Files resources. When making a `drive.
+        # permissions.insert` request, exactly one of the `id` or `value` fields must be
+        # specified unless the permission type is `anyone`, in which case both `id` and `
+        # value` are ignored.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # This is always drive#permission.
+        # Output only. This is always `drive#permission`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The name for this permission.
+        # Output only. The name for this permission.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
         # Whether the account associated with this permission is a pending owner. Only
-        # populated for user type permissions for files that are not in a shared drive.
+        # populated for `user` type permissions for files that are not in a shared drive.
         # Corresponds to the JSON property `pendingOwner`
         # @return [Boolean]
         attr_accessor :pending_owner
         alias_method :pending_owner?, :pending_owner
       
-        # Details of whether the permissions on this shared drive item are inherited or
-        # directly on this item. This is an output-only field which is present only for
-        # shared drive items.
+        # Output only. Details of whether the permissions on this shared drive item are
+        # inherited or directly on this item. This is an output-only field which is
+        # present only for shared drive items.
         # Corresponds to the JSON property `permissionDetails`
         # @return [Array<Google::Apis::DriveV2::Permission::PermissionDetail>]
         attr_accessor :permission_details
       
-        # A link to the profile photo, if available.
+        # Output only. A link to the profile photo, if available.
         # Corresponds to the JSON property `photoLink`
         # @return [String]
         attr_accessor :photo_link
       
         # The primary role for this user. While new values may be supported in the
-        # future, the following are currently allowed:
-        # - owner
-        # - organizer
-        # - fileOrganizer
-        # - writer
-        # - reader
+        # future, the following are currently allowed: * `owner` * `organizer` * `
+        # fileOrganizer` * `writer` * `reader`
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
       
-        # A link back to this permission.
+        # Output only. A link back to this permission.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
       
-        # Deprecated - use permissionDetails instead.
+        # Output only. Deprecated: Use `permissionDetails` instead.
         # Corresponds to the JSON property `teamDrivePermissionDetails`
         # @return [Array<Google::Apis::DriveV2::Permission::TeamDrivePermissionDetail>]
         attr_accessor :team_drive_permission_details
       
-        # The account type. Allowed values are:
-        # - user
-        # - group
-        # - domain
-        # - anyone
+        # The account type. Allowed values are: * `user` * `group` * `domain` * `anyone`
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
       
         # The email address or domain name for the entity. This is used during inserts
-        # and is not populated in responses. When making a drive.permissions.insert
-        # request, exactly one of the id or value fields must be specified unless the
-        # permission type is anyone, in which case both id and value are ignored.
+        # and is not populated in responses. When making a `drive.permissions.insert`
+        # request, exactly one of the `id` or `value` fields must be specified unless
+        # the permission type is `anyone`, in which case both `id` and `value` are
+        # ignored.
         # Corresponds to the JSON property `value`
         # @return [String]
         attr_accessor :value
       
         # Indicates the view for this permission. Only populated for permissions that
-        # belong to a view. published is the only supported value.
+        # belong to a view. `published` is the only supported value.
         # Corresponds to the JSON property `view`
         # @return [String]
         attr_accessor :view
@@ -3675,39 +3677,34 @@ module Google
         class PermissionDetail
           include Google::Apis::Core::Hashable
         
-          # Additional roles for this user. Only commenter is currently possible, though
-          # more may be supported in the future.
+          # Output only. Additional roles for this user. Only `commenter` is currently
+          # possible, though more may be supported in the future.
           # Corresponds to the JSON property `additionalRoles`
           # @return [Array<String>]
           attr_accessor :additional_roles
         
-          # Whether this permission is inherited. This field is always populated. This is
-          # an output-only field.
+          # Output only. Whether this permission is inherited. This field is always
+          # populated. This is an output-only field.
           # Corresponds to the JSON property `inherited`
           # @return [Boolean]
           attr_accessor :inherited
           alias_method :inherited?, :inherited
         
-          # The ID of the item from which this permission is inherited. This is an output-
-          # only field.
+          # Output only. The ID of the item from which this permission is inherited. This
+          # is an output-only field.
           # Corresponds to the JSON property `inheritedFrom`
           # @return [String]
           attr_accessor :inherited_from
         
-          # The permission type for this user. While new values may be added in future,
-          # the following are currently possible:
-          # - file
-          # - member
+          # Output only. The permission type for this user. While new values may be added
+          # in future, the following are currently possible: * `file` * `member`
           # Corresponds to the JSON property `permissionType`
           # @return [String]
           attr_accessor :permission_type
         
-          # The primary role for this user. While new values may be added in the future,
-          # the following are currently possible:
-          # - organizer
-          # - fileOrganizer
-          # - writer
-          # - reader
+          # Output only. The primary role for this user. While new values may be added in
+          # the future, the following are currently possible: * `organizer` * `
+          # fileOrganizer` * `writer` * `reader`
           # Corresponds to the JSON property `role`
           # @return [String]
           attr_accessor :role
@@ -3730,28 +3727,28 @@ module Google
         class TeamDrivePermissionDetail
           include Google::Apis::Core::Hashable
         
-          # Deprecated - use permissionDetails/additionalRoles instead.
+          # Output only. Deprecated: Use `permissionDetails/additionalRoles` instead.
           # Corresponds to the JSON property `additionalRoles`
           # @return [Array<String>]
           attr_accessor :additional_roles
         
-          # Deprecated - use permissionDetails/inherited instead.
+          # Output only. Deprecated: Use `permissionDetails/inherited` instead.
           # Corresponds to the JSON property `inherited`
           # @return [Boolean]
           attr_accessor :inherited
           alias_method :inherited?, :inherited
         
-          # Deprecated - use permissionDetails/inheritedFrom instead.
+          # Output only. Deprecated: Use `permissionDetails/inheritedFrom` instead.
           # Corresponds to the JSON property `inheritedFrom`
           # @return [String]
           attr_accessor :inherited_from
         
-          # Deprecated - use permissionDetails/role instead.
+          # Output only. Deprecated: Use `permissionDetails/role` instead.
           # Corresponds to the JSON property `role`
           # @return [String]
           attr_accessor :role
         
-          # Deprecated - use permissionDetails/permissionType instead.
+          # Output only. Deprecated: Use `permissionDetails/permissionType` instead.
           # Corresponds to the JSON property `teamDrivePermissionType`
           # @return [String]
           attr_accessor :team_drive_permission_type
@@ -3780,7 +3777,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # This is always drive#permissionId.
+        # This is always `drive#permissionId`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -3810,7 +3807,7 @@ module Google
         # @return [Array<Google::Apis::DriveV2::Permission>]
         attr_accessor :items
       
-        # This is always drive#permissionList.
+        # This is always `drive#permissionList`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -3843,17 +3840,14 @@ module Google
       end
       
       # A key-value pair attached to a file that is either public or private to an
-      # application.
-      # The following limits apply to file properties:
-      # - Maximum of 100 properties total per file
-      # - Maximum of 30 private properties per app
-      # - Maximum of 30 public properties
-      # - Maximum of 124 bytes size limit on (key + value) string in UTF-8 encoding
-      # for a single property.
+      # application. The following limits apply to file properties: * Maximum of 100
+      # properties total per file * Maximum of 30 private properties per app * Maximum
+      # of 30 public properties * Maximum of 124 bytes size limit on (key + value)
+      # string in UTF-8 encoding for a single property
       class Property
         include Google::Apis::Core::Hashable
       
-        # ETag of the property.
+        # Output only. ETag of the property.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -3863,12 +3857,12 @@ module Google
         # @return [String]
         attr_accessor :key
       
-        # This is always drive#property.
+        # Output only. This is always `drive#property`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The link back to this property.
+        # Output only. The link back to this property.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
@@ -3878,11 +3872,10 @@ module Google
         # @return [String]
         attr_accessor :value
       
-        # The visibility of this property. Allowed values are PRIVATE and PUBLIC. (
-        # Default: PRIVATE). Private properties can only be retrieved using an
-        # authenticated request. An authenticated request uses an access token obtained
-        # with a OAuth 2 client ID. You cannot use an API key to retrieve private
-        # properties.
+        # The visibility of this property. Allowed values are PRIVATE (default) and
+        # PUBLIC. Private properties can only be retrieved using an authenticated
+        # request. An authenticated request uses an access token obtained with a OAuth 2
+        # client ID. You cannot use an API key to retrieve private properties.
         # Corresponds to the JSON property `visibility`
         # @return [String]
         attr_accessor :visibility
@@ -3917,7 +3910,7 @@ module Google
         # @return [Array<Google::Apis::DriveV2::Property>]
         attr_accessor :items
       
-        # This is always drive#propertyList.
+        # This is always `drive#propertyList`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -3944,33 +3937,34 @@ module Google
       class Revision
         include Google::Apis::Core::Hashable
       
-        # 
+        # Output only. Short term download URL for the file. This will only be populated
+        # on files with content stored in Drive.
         # Corresponds to the JSON property `downloadUrl`
         # @return [String]
         attr_accessor :download_url
       
-        # The ETag of the revision.
+        # Output only. The ETag of the revision.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
       
-        # Links for exporting Docs Editors files to specific formats.
+        # Output only. Links for exporting Docs Editors files to specific formats.
         # Corresponds to the JSON property `exportLinks`
         # @return [Hash<String,String>]
         attr_accessor :export_links
       
-        # The size of the revision in bytes. This will only be populated on files with
-        # content stored in Drive.
+        # Output only. The size of the revision in bytes. This will only be populated on
+        # files with content stored in Drive.
         # Corresponds to the JSON property `fileSize`
         # @return [Fixnum]
         attr_accessor :file_size
       
-        # The ID of the revision.
+        # Output only. The ID of the revision.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # This is always drive#revision.
+        # Output only. This is always `drive#revision`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -3980,18 +3974,18 @@ module Google
         # @return [Google::Apis::DriveV2::User]
         attr_accessor :last_modifying_user
       
-        # Name of the last user to modify this revision.
+        # Output only. Name of the last user to modify this revision.
         # Corresponds to the JSON property `lastModifyingUserName`
         # @return [String]
         attr_accessor :last_modifying_user_name
       
-        # An MD5 checksum for the content of this revision. This will only be populated
-        # on files with content stored in Drive.
+        # Output only. An MD5 checksum for the content of this revision. This will only
+        # be populated on files with content stored in Drive.
         # Corresponds to the JSON property `md5Checksum`
         # @return [String]
         attr_accessor :md5_checksum
       
-        # The MIME type of the revision.
+        # Output only. The MIME type of the revision.
         # Corresponds to the JSON property `mimeType`
         # @return [String]
         attr_accessor :mime_type
@@ -4001,8 +3995,8 @@ module Google
         # @return [DateTime]
         attr_accessor :modified_date
       
-        # The original filename when this revision was created. This will only be
-        # populated on files with content stored in Drive.
+        # Output only. The original filename when this revision was created. This will
+        # only be populated on files with content stored in Drive.
         # Corresponds to the JSON property `originalFilename`
         # @return [String]
         attr_accessor :original_filename
@@ -4033,8 +4027,8 @@ module Google
         attr_accessor :published
         alias_method :published?, :published
       
-        # A link to the published revision. This is only populated for Google Sites
-        # files.
+        # Output only. A link to the published revision. This is only populated for
+        # Google Sites files.
         # Corresponds to the JSON property `publishedLink`
         # @return [String]
         attr_accessor :published_link
@@ -4046,7 +4040,7 @@ module Google
         attr_accessor :published_outside_domain
         alias_method :published_outside_domain?, :published_outside_domain
       
-        # A link back to this revision.
+        # Output only. A link back to this revision.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
@@ -4093,7 +4087,7 @@ module Google
         # @return [Array<Google::Apis::DriveV2::Revision>]
         attr_accessor :items
       
-        # This is always drive#revisionList.
+        # This is always `drive#revisionList`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -4129,8 +4123,8 @@ module Google
       class StartPageToken
         include Google::Apis::Core::Hashable
       
-        # Identifies what kind of resource this is. Value: the fixed string "drive#
-        # startPageToken".
+        # Identifies what kind of resource this is. Value: the fixed string `"drive#
+        # startPageToken"`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -4151,14 +4145,14 @@ module Google
         end
       end
       
-      # Deprecated: use the drive collection instead.
+      # Deprecated: Use the `drive` collection instead.
       class TeamDrive
         include Google::Apis::Core::Hashable
       
         # An image file and cropping parameters from which a background image for this
-        # Team Drive is set. This is a write only field; it can only be set on drive.
-        # teamdrives.update requests that don't set themeId. When specified, all fields
-        # of the backgroundImageFile must be set.
+        # Team Drive is set. This is a write only field; it can only be set on `drive.
+        # teamdrives.update` requests that don't set `themeId`. When specified, all
+        # fields of the `backgroundImageFile` must be set.
         # Corresponds to the JSON property `backgroundImageFile`
         # @return [Google::Apis::DriveV2::TeamDrive::BackgroundImageFile]
         attr_accessor :background_image_file
@@ -4173,8 +4167,8 @@ module Google
         # @return [Google::Apis::DriveV2::TeamDrive::Capabilities]
         attr_accessor :capabilities
       
-        # The color of this Team Drive as an RGB hex string. It can only be set on a
-        # drive.teamdrives.update request that does not set themeId.
+        # The color of this Team Drive as an RGB hex string. It can only be set on a `
+        # drive.teamdrives.update` request that does not set `themeId`.
         # Corresponds to the JSON property `colorRgb`
         # @return [String]
         attr_accessor :color_rgb
@@ -4190,7 +4184,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # This is always drive#teamDrive
+        # This is always `drive#teamDrive`
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -4200,8 +4194,9 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The organizational unit of this shared drive. This field is only populated on
-        # drives.list responses when the useDomainAdminAccess parameter is set to true.
+        # The organizational unit of this shared drive. This field is only populated on `
+        # drives.list` responses when the `useDomainAdminAccess` parameter is set to `
+        # true`.
         # Corresponds to the JSON property `orgUnitId`
         # @return [String]
         attr_accessor :org_unit_id
@@ -4213,11 +4208,11 @@ module Google
         attr_accessor :restrictions
       
         # The ID of the theme from which the background image and color will be set. The
-        # set of possible teamDriveThemes can be retrieved from a drive.about.get
-        # response. When not specified on a drive.teamdrives.insert request, a random
+        # set of possible `teamDriveThemes` can be retrieved from a `drive.about.get`
+        # response. When not specified on a `drive.teamdrives.insert` request, a random
         # theme is chosen from which the background image and color are set. This is a
-        # write-only field; it can only be set on requests that don't set colorRgb or
-        # backgroundImageFile.
+        # write-only field; it can only be set on requests that don't set `colorRgb` or `
+        # backgroundImageFile`.
         # Corresponds to the JSON property `themeId`
         # @return [String]
         attr_accessor :theme_id
@@ -4242,9 +4237,9 @@ module Google
         end
         
         # An image file and cropping parameters from which a background image for this
-        # Team Drive is set. This is a write only field; it can only be set on drive.
-        # teamdrives.update requests that don't set themeId. When specified, all fields
-        # of the backgroundImageFile must be set.
+        # Team Drive is set. This is a write only field; it can only be set on `drive.
+        # teamdrives.update` requests that don't set `themeId`. When specified, all
+        # fields of the `backgroundImageFile` must be set.
         class BackgroundImageFile
           include Google::Apis::Core::Hashable
         
@@ -4301,22 +4296,22 @@ module Google
           attr_accessor :can_add_children
           alias_method :can_add_children?, :can_add_children
         
-          # Whether the current user can change the copyRequiresWriterPermission
+          # Whether the current user can change the `copyRequiresWriterPermission`
           # restriction of this Team Drive.
           # Corresponds to the JSON property `canChangeCopyRequiresWriterPermissionRestriction`
           # @return [Boolean]
           attr_accessor :can_change_copy_requires_writer_permission_restriction
           alias_method :can_change_copy_requires_writer_permission_restriction?, :can_change_copy_requires_writer_permission_restriction
         
-          # Whether the current user can change the domainUsersOnly restriction of this
+          # Whether the current user can change the `domainUsersOnly` restriction of this
           # Team Drive.
           # Corresponds to the JSON property `canChangeDomainUsersOnlyRestriction`
           # @return [Boolean]
           attr_accessor :can_change_domain_users_only_restriction
           alias_method :can_change_domain_users_only_restriction?, :can_change_domain_users_only_restriction
         
-          # Whether the current user can change the
-          # sharingFoldersRequiresOrganizerPermission restriction of this Team Drive.
+          # Whether the current user can change the `
+          # sharingFoldersRequiresOrganizerPermission` restriction of this Team Drive.
           # Corresponds to the JSON property `canChangeSharingFoldersRequiresOrganizerPermissionRestriction`
           # @return [Boolean]
           attr_accessor :can_change_sharing_folders_requires_organizer_permission_restriction
@@ -4328,7 +4323,7 @@ module Google
           attr_accessor :can_change_team_drive_background
           alias_method :can_change_team_drive_background?, :can_change_team_drive_background
         
-          # Whether the current user can change the teamMembersOnly restriction of this
+          # Whether the current user can change the `teamMembersOnly` restriction of this
           # Team Drive.
           # Corresponds to the JSON property `canChangeTeamMembersOnlyRestriction`
           # @return [Boolean]
@@ -4392,7 +4387,7 @@ module Google
           attr_accessor :can_read_revisions
           alias_method :can_read_revisions?, :can_read_revisions
         
-          # Deprecated - use canDeleteChildren or canTrashChildren instead.
+          # Deprecated: Use `canDeleteChildren` or `canTrashChildren` instead.
           # Corresponds to the JSON property `canRemoveChildren`
           # @return [Boolean]
           attr_accessor :can_remove_children
@@ -4472,8 +4467,8 @@ module Google
         
           # Whether the options to copy, print, or download files inside this Team Drive,
           # should be disabled for readers and commenters. When this restriction is set to
-          # true, it will override the similarly named field to true for any file inside
-          # this Team Drive.
+          # `true`, it will override the similarly named field to `true` for any file
+          # inside this Team Drive.
           # Corresponds to the JSON property `copyRequiresWriterPermission`
           # @return [Boolean]
           attr_accessor :copy_requires_writer_permission
@@ -4526,7 +4521,7 @@ module Google
         # @return [Array<Google::Apis::DriveV2::TeamDrive>]
         attr_accessor :items
       
-        # This is always drive#teamDriveList
+        # This is always `drive#teamDriveList`
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -4552,34 +4547,34 @@ module Google
       class User
         include Google::Apis::Core::Hashable
       
-        # A plain text displayable name for this user.
+        # Output only. A plain text displayable name for this user.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # The email address of the user.
+        # Output only. The email address of the user.
         # Corresponds to the JSON property `emailAddress`
         # @return [String]
         attr_accessor :email_address
       
-        # Whether this user is the same as the authenticated user for whom the request
-        # was made.
+        # Output only. Whether this user is the same as the authenticated user for whom
+        # the request was made.
         # Corresponds to the JSON property `isAuthenticatedUser`
         # @return [Boolean]
         attr_accessor :is_authenticated_user
         alias_method :is_authenticated_user?, :is_authenticated_user
       
-        # This is always drive#user.
+        # Output only. This is always `drive#user`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The user's ID as visible in the permissions collection.
+        # Output only. The user's ID as visible in the permissions collection.
         # Corresponds to the JSON property `permissionId`
         # @return [String]
         attr_accessor :permission_id
       
-        # The user's profile picture.
+        # Output only. The user's profile picture.
         # Corresponds to the JSON property `picture`
         # @return [Google::Apis::DriveV2::User::Picture]
         attr_accessor :picture
@@ -4598,11 +4593,11 @@ module Google
           @picture = args[:picture] if args.key?(:picture)
         end
         
-        # The user's profile picture.
+        # Output only. The user's profile picture.
         class Picture
           include Google::Apis::Core::Hashable
         
-          # A URL that points to a profile picture of this user.
+          # Output Only. A URL that points to a profile picture of this user.
           # Corresponds to the JSON property `url`
           # @return [String]
           attr_accessor :url

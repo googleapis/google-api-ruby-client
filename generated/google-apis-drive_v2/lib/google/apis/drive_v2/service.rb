@@ -20,10 +20,9 @@ require 'google/apis/errors'
 module Google
   module Apis
     module DriveV2
-      # Drive API
+      # Google Drive API
       #
-      # Manages files in Drive including uploading, downloading, searching, detecting
-      #  changes, and updating sharing permissions.
+      # The Google Drive API allows clients to access resources from Google Drive.
       #
       # @example
       #    require 'google/apis/drive_v2'
@@ -39,13 +38,9 @@ module Google
         attr_accessor :key
 
         # @return [String]
-        #  An opaque string that represents a user for quota purposes. Must not exceed 40
-        #  characters.
+        #  Available to use for quota purposes for server-side applications. Can be any
+        #  arbitrary string assigned to a user, but should not exceed 40 characters.
         attr_accessor :quota_user
-
-        # @return [String]
-        #  Deprecated. Please use quotaUser instead.
-        attr_accessor :user_ip
 
         def initialize
           super('https://www.googleapis.com/', 'drive/v2/',
@@ -58,8 +53,8 @@ module Google
         # @param [Boolean] include_subscribed
         #   Whether to count changes outside the My Drive hierarchy. When set to false,
         #   changes to files such as those in the Application Data folder or shared files
-        #   which have not been added to My Drive will be omitted from the
-        #   maxChangeIdCount.
+        #   which have not been added to My Drive will be omitted from the `
+        #   maxChangeIdCount`.
         # @param [Fixnum] max_change_id_count
         #   Maximum number of remaining change IDs to count
         # @param [Fixnum] start_change_id
@@ -68,10 +63,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -84,7 +77,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_about(include_subscribed: nil, max_change_id_count: nil, start_change_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_about(include_subscribed: nil, max_change_id_count: nil, start_change_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'about', options)
           command.response_representation = Google::Apis::DriveV2::About::Representation
           command.response_class = Google::Apis::DriveV2::About
@@ -93,7 +86,6 @@ module Google
           command.query['startChangeId'] = start_change_id unless start_change_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -103,10 +95,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -119,14 +109,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_app(app_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_app(app_id, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'apps/{appId}', options)
           command.response_representation = Google::Apis::DriveV2::App::Representation
           command.response_class = Google::Apis::DriveV2::App
           command.params['appId'] = app_id unless app_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -134,12 +123,12 @@ module Google
         # @param [String] app_filter_extensions
         #   A comma-separated list of file extensions for open with filtering. All apps
         #   within the given app query scope which can open any of the given file
-        #   extensions will be included in the response. If appFilterMimeTypes are
+        #   extensions will be included in the response. If `appFilterMimeTypes` are
         #   provided as well, the result is a union of the two resulting app lists.
         # @param [String] app_filter_mime_types
         #   A comma-separated list of MIME types for open with filtering. All apps within
         #   the given app query scope which can open any of the given MIME types will be
-        #   included in the response. If appFilterExtensions are provided as well, the
+        #   included in the response. If `appFilterExtensions` are provided as well, the
         #   result is a union of the two resulting app lists.
         # @param [String] language_code
         #   A language or locale code, as defined by BCP 47, with some extensions from
@@ -147,10 +136,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -163,7 +150,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_apps(app_filter_extensions: nil, app_filter_mime_types: nil, language_code: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_apps(app_filter_extensions: nil, app_filter_mime_types: nil, language_code: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'apps', options)
           command.response_representation = Google::Apis::DriveV2::AppList::Representation
           command.response_class = Google::Apis::DriveV2::AppList
@@ -172,29 +159,26 @@ module Google
           command.query['languageCode'] = language_code unless language_code.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Deprecated - Use changes.getStartPageToken and changes.list to retrieve recent
-        # changes.
+        # Deprecated: Use `changes.getStartPageToken` and `changes.list` to retrieve
+        # recent changes.
         # @param [String] change_id
         #   The ID of the change.
         # @param [String] drive_id
-        #   The shared drive from which the change is returned.
+        #   The shared drive from which the change will be returned.
         # @param [Boolean] supports_all_drives
         #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
-        #   Deprecated use supportsAllDrives instead.
+        #   Deprecated: Use `supportsAllDrives` instead.
         # @param [String] team_drive_id
-        #   Deprecated use driveId instead.
+        #   Deprecated: Use `driveId` instead.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -207,7 +191,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_change(change_id, drive_id: nil, supports_all_drives: nil, supports_team_drives: nil, team_drive_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_change(change_id, drive_id: nil, supports_all_drives: nil, supports_team_drives: nil, team_drive_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'changes/{changeId}', options)
           command.response_representation = Google::Apis::DriveV2::Change::Representation
           command.response_class = Google::Apis::DriveV2::Change
@@ -218,27 +202,24 @@ module Google
           command.query['teamDriveId'] = team_drive_id unless team_drive_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
         # Gets the starting pageToken for listing future changes.
         # @param [String] drive_id
         #   The ID of the shared drive for which the starting pageToken for listing future
-        #   changes from that shared drive is returned.
+        #   changes from that shared drive will be returned.
         # @param [Boolean] supports_all_drives
         #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
-        #   Deprecated use supportsAllDrives instead.
+        #   Deprecated: Use `supportsAllDrives` instead.
         # @param [String] team_drive_id
-        #   Deprecated use driveId instead.
+        #   Deprecated: Use `driveId` instead.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -251,7 +232,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_change_start_page_token(drive_id: nil, supports_all_drives: nil, supports_team_drives: nil, team_drive_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_change_start_page_token(drive_id: nil, supports_all_drives: nil, supports_team_drives: nil, team_drive_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'changes/startPageToken', options)
           command.response_representation = Google::Apis::DriveV2::StartPageToken::Representation
           command.response_class = Google::Apis::DriveV2::StartPageToken
@@ -261,15 +242,14 @@ module Google
           command.query['teamDriveId'] = team_drive_id unless team_drive_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
         # Lists the changes for a user or shared drive.
         # @param [String] drive_id
-        #   The shared drive from which changes are returned. If specified the change IDs
-        #   will be reflective of the shared drive; use the combined drive ID and change
-        #   ID as an identifier.
+        #   The shared drive from which changes will be returned. If specified the change
+        #   IDs will be reflective of the shared drive; use the combined drive ID and
+        #   change ID as an identifier.
         # @param [Boolean] include_corpus_removals
         #   Whether changes should include the file resource if the file is still
         #   accessible by the user at the time of the request, even when a file was
@@ -281,41 +261,40 @@ module Google
         # @param [Boolean] include_items_from_all_drives
         #   Whether both My Drive and shared drive items should be included in results.
         # @param [String] include_labels
-        #   A comma-separated list of IDs of labels to include in the labelInfo part of
+        #   A comma-separated list of IDs of labels to include in the `labelInfo` part of
         #   the response.
         # @param [String] include_permissions_for_view
         #   Specifies which additional view's permissions to include in the response. Only
-        #   'published' is supported.
+        #   `published` is supported.
         # @param [Boolean] include_subscribed
         #   Whether to include changes outside the My Drive hierarchy in the result. When
         #   set to false, changes to files such as those in the Application Data folder or
-        #   shared files which have not been added to My Drive are omitted from the result.
+        #   shared files which have not been added to My Drive will be omitted from the
+        #   result.
         # @param [Boolean] include_team_drive_items
-        #   Deprecated use includeItemsFromAllDrives instead.
+        #   Deprecated: Use `includeItemsFromAllDrives` instead.
         # @param [Fixnum] max_results
         #   Maximum number of changes to return.
         # @param [String] page_token
         #   The token for continuing a previous list request on the next page. This should
-        #   be set to the value of 'nextPageToken' from the previous response or to the
+        #   be set to the value of `nextPageToken` from the previous response or to the
         #   response from the getStartPageToken method.
         # @param [String] spaces
-        #   A comma-separated list of spaces to query. Supported values are 'drive', '
-        #   appDataFolder' and 'photos'.
+        #   A comma-separated list of spaces to query. Supported values are `drive`, `
+        #   appDataFolder` and `photos`.
         # @param [Fixnum] start_change_id
-        #   Deprecated - use pageToken instead.
+        #   Deprecated: Use `pageToken` instead.
         # @param [Boolean] supports_all_drives
         #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
-        #   Deprecated use supportsAllDrives instead.
+        #   Deprecated: Use `supportsAllDrives` instead.
         # @param [String] team_drive_id
-        #   Deprecated use driveId instead.
+        #   Deprecated: Use `driveId` instead.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -328,7 +307,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_changes(drive_id: nil, include_corpus_removals: nil, include_deleted: nil, include_items_from_all_drives: nil, include_labels: nil, include_permissions_for_view: nil, include_subscribed: nil, include_team_drive_items: nil, max_results: nil, page_token: nil, spaces: nil, start_change_id: nil, supports_all_drives: nil, supports_team_drives: nil, team_drive_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_changes(drive_id: nil, include_corpus_removals: nil, include_deleted: nil, include_items_from_all_drives: nil, include_labels: nil, include_permissions_for_view: nil, include_subscribed: nil, include_team_drive_items: nil, max_results: nil, page_token: nil, spaces: nil, start_change_id: nil, supports_all_drives: nil, supports_team_drives: nil, team_drive_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'changes', options)
           command.response_representation = Google::Apis::DriveV2::ChangeList::Representation
           command.response_class = Google::Apis::DriveV2::ChangeList
@@ -349,16 +328,15 @@ module Google
           command.query['teamDriveId'] = team_drive_id unless team_drive_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
         # Subscribe to changes for a user.
         # @param [Google::Apis::DriveV2::Channel] channel_object
         # @param [String] drive_id
-        #   The shared drive from which changes are returned. If specified the change IDs
-        #   will be reflective of the shared drive; use the combined drive ID and change
-        #   ID as an identifier.
+        #   The shared drive from which changes will be returned. If specified the change
+        #   IDs will be reflective of the shared drive; use the combined drive ID and
+        #   change ID as an identifier.
         # @param [Boolean] include_corpus_removals
         #   Whether changes should include the file resource if the file is still
         #   accessible by the user at the time of the request, even when a file was
@@ -370,41 +348,40 @@ module Google
         # @param [Boolean] include_items_from_all_drives
         #   Whether both My Drive and shared drive items should be included in results.
         # @param [String] include_labels
-        #   A comma-separated list of IDs of labels to include in the labelInfo part of
+        #   A comma-separated list of IDs of labels to include in the `labelInfo` part of
         #   the response.
         # @param [String] include_permissions_for_view
         #   Specifies which additional view's permissions to include in the response. Only
-        #   'published' is supported.
+        #   `published` is supported.
         # @param [Boolean] include_subscribed
         #   Whether to include changes outside the My Drive hierarchy in the result. When
         #   set to false, changes to files such as those in the Application Data folder or
-        #   shared files which have not been added to My Drive are omitted from the result.
+        #   shared files which have not been added to My Drive will be omitted from the
+        #   result.
         # @param [Boolean] include_team_drive_items
-        #   Deprecated use includeItemsFromAllDrives instead.
+        #   Deprecated: Use `includeItemsFromAllDrives` instead.
         # @param [Fixnum] max_results
         #   Maximum number of changes to return.
         # @param [String] page_token
         #   The token for continuing a previous list request on the next page. This should
-        #   be set to the value of 'nextPageToken' from the previous response or to the
+        #   be set to the value of `nextPageToken` from the previous response or to the
         #   response from the getStartPageToken method.
         # @param [String] spaces
-        #   A comma-separated list of spaces to query. Supported values are 'drive', '
-        #   appDataFolder' and 'photos'.
+        #   A comma-separated list of spaces to query. Supported values are `drive`, `
+        #   appDataFolder` and `photos`.
         # @param [Fixnum] start_change_id
-        #   Deprecated - use pageToken instead.
+        #   Deprecated: Use `pageToken` instead.
         # @param [Boolean] supports_all_drives
         #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
-        #   Deprecated use supportsAllDrives instead.
+        #   Deprecated: Use `supportsAllDrives` instead.
         # @param [String] team_drive_id
-        #   Deprecated use driveId instead.
+        #   Deprecated: Use `driveId` instead.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -417,7 +394,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def watch_change(channel_object = nil, drive_id: nil, include_corpus_removals: nil, include_deleted: nil, include_items_from_all_drives: nil, include_labels: nil, include_permissions_for_view: nil, include_subscribed: nil, include_team_drive_items: nil, max_results: nil, page_token: nil, spaces: nil, start_change_id: nil, supports_all_drives: nil, supports_team_drives: nil, team_drive_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def watch_change(channel_object = nil, drive_id: nil, include_corpus_removals: nil, include_deleted: nil, include_items_from_all_drives: nil, include_labels: nil, include_permissions_for_view: nil, include_subscribed: nil, include_team_drive_items: nil, max_results: nil, page_token: nil, spaces: nil, start_change_id: nil, supports_all_drives: nil, supports_team_drives: nil, team_drive_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'changes/watch', options)
           command.request_representation = Google::Apis::DriveV2::Channel::Representation
           command.request_object = channel_object
@@ -440,19 +417,16 @@ module Google
           command.query['teamDriveId'] = team_drive_id unless team_drive_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Stop watching resources through this channel
+        # Stops watching resources through this channel.
         # @param [Google::Apis::DriveV2::Channel] channel_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -465,13 +439,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def stop_channel(channel_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def stop_channel(channel_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'channels/stop', options)
           command.request_representation = Google::Apis::DriveV2::Channel::Representation
           command.request_object = channel_object
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -481,15 +454,13 @@ module Google
         # @param [String] child_id
         #   The ID of the child.
         # @param [Boolean] enforce_single_parent
-        #   Deprecated. If an item is not in a shared drive and its last parent is deleted
-        #   but the item itself is not, the item will be placed under its owner's root.
+        #   Deprecated: If an item is not in a shared drive and its last parent is removed,
+        #   the item is placed under its owner's root.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -502,14 +473,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_child(folder_id, child_id, enforce_single_parent: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_child(folder_id, child_id, enforce_single_parent: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'files/{folderId}/children/{childId}', options)
           command.params['folderId'] = folder_id unless folder_id.nil?
           command.params['childId'] = child_id unless child_id.nil?
           command.query['enforceSingleParent'] = enforce_single_parent unless enforce_single_parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -521,10 +491,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -537,7 +505,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_child(folder_id, child_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_child(folder_id, child_id, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'files/{folderId}/children/{childId}', options)
           command.response_representation = Google::Apis::DriveV2::ChildReference::Representation
           command.response_class = Google::Apis::DriveV2::ChildReference
@@ -545,7 +513,6 @@ module Google
           command.params['childId'] = child_id unless child_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -554,19 +521,17 @@ module Google
         #   The ID of the folder.
         # @param [Google::Apis::DriveV2::ChildReference] child_reference_object
         # @param [Boolean] enforce_single_parent
-        #   Deprecated. Adding files to multiple folders is no longer supported. Use
-        #   shortcuts instead.
+        #   Deprecated: Adding files to multiple folders is no longer supported. Use `
+        #   shortcuts` instead.
         # @param [Boolean] supports_all_drives
         #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
-        #   Deprecated use supportsAllDrives instead.
+        #   Deprecated: Use `supportsAllDrives` instead.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -579,7 +544,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_child(folder_id, child_reference_object = nil, enforce_single_parent: nil, supports_all_drives: nil, supports_team_drives: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_child(folder_id, child_reference_object = nil, enforce_single_parent: nil, supports_all_drives: nil, supports_team_drives: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'files/{folderId}/children', options)
           command.request_representation = Google::Apis::DriveV2::ChildReference::Representation
           command.request_object = child_reference_object
@@ -591,7 +556,6 @@ module Google
           command.query['supportsTeamDrives'] = supports_team_drives unless supports_team_drives.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -601,10 +565,10 @@ module Google
         # @param [Fixnum] max_results
         #   Maximum number of children to return.
         # @param [String] order_by
-        #   A comma-separated list of sort keys. Valid keys are 'createdDate', 'folder', '
-        #   lastViewedByMeDate', 'modifiedByMeDate', 'modifiedDate', 'quotaBytesUsed', '
-        #   recency', 'sharedWithMeDate', 'starred', and 'title'. Each key sorts ascending
-        #   by default, but may be reversed with the 'desc' modifier. Example usage: ?
+        #   A comma-separated list of sort keys. Valid keys are `createdDate`, `folder`, `
+        #   lastViewedByMeDate`, `modifiedByMeDate`, `modifiedDate`, `quotaBytesUsed`, `
+        #   recency`, `sharedWithMeDate`, `starred`, and `title`. Each key sorts ascending
+        #   by default, but may be reversed with the `desc` modifier. Example usage: ?
         #   orderBy=folder,modifiedDate desc,title. Please note that there is a current
         #   limitation for users with approximately one million files in which the
         #   requested sort order is ignored.
@@ -615,10 +579,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -631,7 +593,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_children(folder_id, max_results: nil, order_by: nil, page_token: nil, q: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_children(folder_id, max_results: nil, order_by: nil, page_token: nil, q: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'files/{folderId}/children', options)
           command.response_representation = Google::Apis::DriveV2::ChildList::Representation
           command.response_class = Google::Apis::DriveV2::ChildList
@@ -642,7 +604,6 @@ module Google
           command.query['q'] = q unless q.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -654,10 +615,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -670,13 +629,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_comment(file_id, comment_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_comment(file_id, comment_id, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'files/{fileId}/comments/{commentId}', options)
           command.params['fileId'] = file_id unless file_id.nil?
           command.params['commentId'] = comment_id unless comment_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -691,10 +649,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -707,7 +663,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_comment(file_id, comment_id, include_deleted: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_comment(file_id, comment_id, include_deleted: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'files/{fileId}/comments/{commentId}', options)
           command.response_representation = Google::Apis::DriveV2::Comment::Representation
           command.response_class = Google::Apis::DriveV2::Comment
@@ -716,7 +672,6 @@ module Google
           command.query['includeDeleted'] = include_deleted unless include_deleted.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -727,10 +682,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -743,7 +696,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_comment(file_id, comment_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_comment(file_id, comment_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'files/{fileId}/comments', options)
           command.request_representation = Google::Apis::DriveV2::Comment::Representation
           command.request_object = comment_object
@@ -752,7 +705,6 @@ module Google
           command.params['fileId'] = file_id unless file_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -774,10 +726,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -790,7 +740,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_comments(file_id, include_deleted: nil, max_results: nil, page_token: nil, updated_min: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_comments(file_id, include_deleted: nil, max_results: nil, page_token: nil, updated_min: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'files/{fileId}/comments', options)
           command.response_representation = Google::Apis::DriveV2::CommentList::Representation
           command.response_class = Google::Apis::DriveV2::CommentList
@@ -801,7 +751,6 @@ module Google
           command.query['updatedMin'] = updated_min unless updated_min.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -814,10 +763,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -830,7 +777,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_comment(file_id, comment_id, comment_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_comment(file_id, comment_id, comment_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'files/{fileId}/comments/{commentId}', options)
           command.request_representation = Google::Apis::DriveV2::Comment::Representation
           command.request_object = comment_object
@@ -840,7 +787,6 @@ module Google
           command.params['commentId'] = comment_id unless comment_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -853,10 +799,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -869,7 +813,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_comment(file_id, comment_id, comment_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_comment(file_id, comment_id, comment_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:put, 'files/{fileId}/comments/{commentId}', options)
           command.request_representation = Google::Apis::DriveV2::Comment::Representation
           command.request_object = comment_object
@@ -879,7 +823,6 @@ module Google
           command.params['commentId'] = comment_id unless comment_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -889,7 +832,7 @@ module Google
         #   The ID of the shared drive.
         # @param [Boolean] allow_item_deletion
         #   Whether any items inside the shared drive should also be deleted. This option
-        #   is only supported when useDomainAdminAccess is also set to true.
+        #   is only supported when `useDomainAdminAccess` is also set to `true`.
         # @param [Boolean] use_domain_admin_access
         #   Issue the request as a domain administrator; if set to true, then the
         #   requester will be granted access if they are an administrator of the domain to
@@ -897,10 +840,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -913,14 +854,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_drive(drive_id, allow_item_deletion: nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_drive(drive_id, allow_item_deletion: nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'drives/{driveId}', options)
           command.params['driveId'] = drive_id unless drive_id.nil?
           command.query['allowItemDeletion'] = allow_item_deletion unless allow_item_deletion.nil?
           command.query['useDomainAdminAccess'] = use_domain_admin_access unless use_domain_admin_access.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -934,10 +874,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -950,7 +888,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_drive(drive_id, use_domain_admin_access: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_drive(drive_id, use_domain_admin_access: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'drives/{driveId}', options)
           command.response_representation = Google::Apis::DriveV2::Drive::Representation
           command.response_class = Google::Apis::DriveV2::Drive
@@ -958,7 +896,6 @@ module Google
           command.query['useDomainAdminAccess'] = use_domain_admin_access unless use_domain_admin_access.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -968,10 +905,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -984,32 +919,29 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def hide_drive(drive_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def hide_drive(drive_id, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'drives/{driveId}/hide', options)
           command.response_representation = Google::Apis::DriveV2::Drive::Representation
           command.response_class = Google::Apis::DriveV2::Drive
           command.params['driveId'] = drive_id unless drive_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
         # Creates a new shared drive.
         # @param [String] request_id
-        #   An ID, such as a random UUID, which uniquely identifies this user's request
-        #   for idempotent creation of a shared drive. A repeated request by the same user
-        #   and with the same request ID will avoid creating duplicates by attempting to
-        #   create the same shared drive. If the shared drive already exists a 409 error
-        #   will be returned.
+        #   Required. An ID, such as a random UUID, which uniquely identifies this user's
+        #   request for idempotent creation of a shared drive. A repeated request by the
+        #   same user and with the same request ID will avoid creating duplicates by
+        #   attempting to create the same shared drive. If the shared drive already exists
+        #   a 409 error will be returned.
         # @param [Google::Apis::DriveV2::Drive] drive_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1022,7 +954,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_drive(request_id, drive_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_drive(request_id, drive_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'drives', options)
           command.request_representation = Google::Apis::DriveV2::Drive::Representation
           command.request_object = drive_object
@@ -1031,11 +963,13 @@ module Google
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the user's shared drives.
+        # Lists the user's shared drives. This method accepts the `q` parameter, which
+        # is a search query combining one or more search terms. For more information,
+        # see the [Search for shared drives](/drive/api/guides/search-shareddrives)
+        # guide.
         # @param [Fixnum] max_results
         #   Maximum number of shared drives to return per page.
         # @param [String] page_token
@@ -1048,10 +982,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1064,7 +996,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_drives(max_results: nil, page_token: nil, q: nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_drives(max_results: nil, page_token: nil, q: nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'drives', options)
           command.response_representation = Google::Apis::DriveV2::DriveList::Representation
           command.response_class = Google::Apis::DriveV2::DriveList
@@ -1074,7 +1006,6 @@ module Google
           command.query['useDomainAdminAccess'] = use_domain_admin_access unless use_domain_admin_access.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -1084,10 +1015,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1100,14 +1029,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def unhide_drive(drive_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def unhide_drive(drive_id, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'drives/{driveId}/unhide', options)
           command.response_representation = Google::Apis::DriveV2::Drive::Representation
           command.response_class = Google::Apis::DriveV2::Drive
           command.params['driveId'] = drive_id unless drive_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -1122,10 +1050,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1138,7 +1064,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_drive(drive_id, drive_object = nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_drive(drive_id, drive_object = nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:put, 'drives/{driveId}', options)
           command.request_representation = Google::Apis::DriveV2::Drive::Representation
           command.request_object = drive_object
@@ -1148,36 +1074,35 @@ module Google
           command.query['useDomainAdminAccess'] = use_domain_admin_access unless use_domain_admin_access.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a copy of the specified file. Folders cannot be copied.
+        # Creates a copy of the specified file.
         # @param [String] file_id
         #   The ID of the file to copy.
         # @param [Google::Apis::DriveV2::File] file_object
         # @param [Boolean] convert
         #   Whether to convert this file to the corresponding Docs Editors format.
         # @param [Boolean] enforce_single_parent
-        #   Deprecated. Copying files into multiple folders is no longer supported. Use
+        #   Deprecated: Copying files into multiple folders is no longer supported. Use
         #   shortcuts instead.
         # @param [String] include_labels
-        #   A comma-separated list of IDs of labels to include in the labelInfo part of
+        #   A comma-separated list of IDs of labels to include in the `labelInfo` part of
         #   the response.
         # @param [String] include_permissions_for_view
         #   Specifies which additional view's permissions to include in the response. Only
-        #   'published' is supported.
+        #   `published` is supported.
         # @param [Boolean] ocr
         #   Whether to attempt OCR on .jpg, .png, .gif, or .pdf uploads.
         # @param [String] ocr_language
-        #   If ocr is true, hints at the language to use. Valid values are BCP 47 codes.
+        #   If `ocr` is true, hints at the language to use. Valid values are BCP 47 codes.
         # @param [Boolean] pinned
         #   Whether to pin the head revision of the new copy. A file can have a maximum of
         #   200 pinned revisions.
         # @param [Boolean] supports_all_drives
         #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
-        #   Deprecated use supportsAllDrives instead.
+        #   Deprecated: Use `supportsAllDrives` instead.
         # @param [String] timed_text_language
         #   The language of the timed text.
         # @param [String] timed_text_track_name
@@ -1188,10 +1113,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1204,7 +1127,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def copy_file(file_id, file_object = nil, convert: nil, enforce_single_parent: nil, include_labels: nil, include_permissions_for_view: nil, ocr: nil, ocr_language: nil, pinned: nil, supports_all_drives: nil, supports_team_drives: nil, timed_text_language: nil, timed_text_track_name: nil, visibility: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def copy_file(file_id, file_object = nil, convert: nil, enforce_single_parent: nil, include_labels: nil, include_permissions_for_view: nil, ocr: nil, ocr_language: nil, pinned: nil, supports_all_drives: nil, supports_team_drives: nil, timed_text_language: nil, timed_text_track_name: nil, visibility: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'files/{fileId}/copy', options)
           command.request_representation = Google::Apis::DriveV2::File::Representation
           command.request_object = file_object
@@ -1225,7 +1148,6 @@ module Google
           command.query['visibility'] = visibility unless visibility.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -1234,19 +1156,17 @@ module Google
         # @param [String] file_id
         #   The ID of the file to delete.
         # @param [Boolean] enforce_single_parent
-        #   Deprecated. If an item is not in a shared drive and its last parent is deleted
-        #   but the item itself is not, the item will be placed under its owner's root.
+        #   Deprecated: If an item is not in a shared drive and its last parent is deleted
+        #   but the item itself is not, the item is placed under its owner's root.
         # @param [Boolean] supports_all_drives
         #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
-        #   Deprecated use supportsAllDrives instead.
+        #   Deprecated: Use `supportsAllDrives` instead.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1259,7 +1179,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_file(file_id, enforce_single_parent: nil, supports_all_drives: nil, supports_team_drives: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_file(file_id, enforce_single_parent: nil, supports_all_drives: nil, supports_team_drives: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'files/{fileId}', options)
           command.params['fileId'] = file_id unless file_id.nil?
           command.query['enforceSingleParent'] = enforce_single_parent unless enforce_single_parent.nil?
@@ -1267,23 +1187,20 @@ module Google
           command.query['supportsTeamDrives'] = supports_team_drives unless supports_team_drives.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Permanently deletes all trashed files of a user or shared drive.
+        # Permanently deletes all of the user's trashed files.
         # @param [String] drive_id
         #   If set, empties the trash of the provided shared drive.
         # @param [Boolean] enforce_single_parent
-        #   Deprecated. If an item is not in a shared drive and its last parent is deleted
-        #   but the item itself is not, the item will be placed under its owner's root.
+        #   Deprecated: If an item is not in a shared drive and its last parent is deleted
+        #   but the item itself is not, the item is placed under its owner's root.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1296,13 +1213,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def empty_trash(drive_id: nil, enforce_single_parent: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def empty_trash(drive_id: nil, enforce_single_parent: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'files/trash', options)
           command.query['driveId'] = drive_id unless drive_id.nil?
           command.query['enforceSingleParent'] = enforce_single_parent unless enforce_single_parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -1311,14 +1227,12 @@ module Google
         # @param [String] file_id
         #   The ID of the file.
         # @param [String] mime_type
-        #   The MIME type of the format requested for this export.
+        #   Required. The MIME type of the format requested for this export.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [IO, String] download_dest
         #   IO stream or filename to receive content download
         # @param [Google::Apis::RequestOptions] options
@@ -1333,7 +1247,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def export_file(file_id, mime_type, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
+        def export_file(file_id, mime_type, fields: nil, quota_user: nil, download_dest: nil, options: nil, &block)
           if download_dest.nil?
             command = make_simple_command(:get, 'files/{fileId}/export', options)
           else
@@ -1344,7 +1258,6 @@ module Google
           command.query['mimeType'] = mime_type unless mime_type.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -1353,18 +1266,16 @@ module Google
         #   Maximum number of IDs to return.
         # @param [String] space
         #   The space in which the IDs can be used to create new files. Supported values
-        #   are 'drive' and 'appDataFolder'. (Default: 'drive')
+        #   are `drive` and `appDataFolder`. (Default: `drive`)
         # @param [String] type
-        #   The type of items which the IDs can be used for. Supported values are 'files'
-        #   and 'shortcuts'. Note that 'shortcuts' are only supported in the drive 'space'.
-        #   (Default: 'files')
+        #   The type of items which the IDs can be used for. Supported values are `files`
+        #   and `shortcuts`. Note that `shortcuts` are only supported in the `drive` `
+        #   space`. (Default: `files`)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1377,7 +1288,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def generate_file_ids(max_results: nil, space: nil, type: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def generate_file_ids(max_results: nil, space: nil, type: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'files/generateIds', options)
           command.response_representation = Google::Apis::DriveV2::GeneratedIds::Representation
           command.response_class = Google::Apis::DriveV2::GeneratedIds
@@ -1386,41 +1297,43 @@ module Google
           command.query['type'] = type unless type.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a file's metadata or content by ID.
+        # Gets a file's metadata or content by ID. If you provide the URL parameter `
+        # alt=media`, then the response includes the file contents in the response body.
+        # Downloading content with `alt=media` only works if the file is stored in Drive.
+        # To download Google Docs, Sheets, and Slides use [`files.export`](/drive/api/
+        # reference/rest/v2/files/export) instead. For more information, see [Download &
+        # export files](/drive/api/guides/manage-downloads).
         # @param [String] file_id
         #   The ID for the file in question.
         # @param [Boolean] acknowledge_abuse
         #   Whether the user is acknowledging the risk of downloading known malware or
         #   other abusive files.
         # @param [String] include_labels
-        #   A comma-separated list of IDs of labels to include in the labelInfo part of
+        #   A comma-separated list of IDs of labels to include in the `labelInfo` part of
         #   the response.
         # @param [String] include_permissions_for_view
         #   Specifies which additional view's permissions to include in the response. Only
-        #   'published' is supported.
+        #   `published` is supported.
         # @param [String] projection
-        #   This parameter is deprecated and has no function.
+        #   Deprecated: This parameter has no function.
         # @param [String] revision_id
         #   Specifies the Revision ID that should be downloaded. Ignored unless alt=media
         #   is specified.
         # @param [Boolean] supports_all_drives
         #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
-        #   Deprecated use supportsAllDrives instead.
+        #   Deprecated: Use `supportsAllDrives` instead.
         # @param [Boolean] update_viewed_date
-        #   Deprecated: Use files.update with modifiedDateBehavior=noChange,
-        #   updateViewedDate=true and an empty request body.
+        #   Deprecated: Use `files.update` with `modifiedDateBehavior=noChange,
+        #   updateViewedDate=true` and an empty request body.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [IO, String] download_dest
         #   IO stream or filename to receive content download
         # @param [Google::Apis::RequestOptions] options
@@ -1435,7 +1348,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_file(file_id, acknowledge_abuse: nil, include_labels: nil, include_permissions_for_view: nil, projection: nil, revision_id: nil, supports_all_drives: nil, supports_team_drives: nil, update_viewed_date: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
+        def get_file(file_id, acknowledge_abuse: nil, include_labels: nil, include_permissions_for_view: nil, projection: nil, revision_id: nil, supports_all_drives: nil, supports_team_drives: nil, update_viewed_date: nil, fields: nil, quota_user: nil, download_dest: nil, options: nil, &block)
           if download_dest.nil?
             command = make_simple_command(:get, 'files/{fileId}', options)
           else
@@ -1455,22 +1368,37 @@ module Google
           command.query['updateViewedDate'] = update_viewed_date unless update_viewed_date.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Insert a new file.
+        # Inserts a new file. This method supports an */upload* URI and accepts
+        # uploaded media with the following characteristics: - *Maximum file size:* 5,
+        # 120 GB - *Accepted Media MIME types:*`*/*` Note: Specify a valid MIME type,
+        # rather than the literal `*/*` value. The literal `*/*` is only used to
+        # indicate that any valid MIME type can be uploaded. For more information on
+        # uploading files, see [Upload file data](/drive/api/guides/manage-uploads).
+        # Apps creating shortcuts with `files.insert` must specify the MIME type `
+        # application/vnd.google-apps.shortcut`. Apps should specify a file extension in
+        # the `title` property when inserting files with the API. For example, an
+        # operation to insert a JPEG file should specify something like `"title": "cat.
+        # jpg"` in the metadata. Subsequent `GET` requests include the read-only `
+        # fileExtension` property populated with the extension originally specified in
+        # the `title` property. When a Google Drive user requests to download a file, or
+        # when the file is downloaded through the sync client, Drive builds a full
+        # filename (with extension) based on the title. In cases where the extension is
+        # missing, Drive attempts to determine the extension based on the file's MIME
+        # type.
         # @param [Google::Apis::DriveV2::File] file_object
         # @param [Boolean] convert
         #   Whether to convert this file to the corresponding Docs Editors format.
         # @param [Boolean] enforce_single_parent
-        #   Deprecated. Creating files in multiple folders is no longer supported.
+        #   Deprecated: Creating files in multiple folders is no longer supported.
         # @param [String] include_labels
-        #   A comma-separated list of IDs of labels to include in the labelInfo part of
+        #   A comma-separated list of IDs of labels to include in the `labelInfo` part of
         #   the response.
         # @param [String] include_permissions_for_view
         #   Specifies which additional view's permissions to include in the response. Only
-        #   'published' is supported.
+        #   `published` is supported.
         # @param [Boolean] ocr
         #   Whether to attempt OCR on .jpg, .png, .gif, or .pdf uploads.
         # @param [String] ocr_language
@@ -1481,7 +1409,7 @@ module Google
         # @param [Boolean] supports_all_drives
         #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
-        #   Deprecated use supportsAllDrives instead.
+        #   Deprecated: Use `supportsAllDrives` instead.
         # @param [String] timed_text_language
         #   The language of the timed text.
         # @param [String] timed_text_track_name
@@ -1494,10 +1422,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [IO, String] upload_source
         #   IO stream or filename containing content to upload
         # @param [String] content_type
@@ -1514,7 +1440,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_file(file_object = nil, convert: nil, enforce_single_parent: nil, include_labels: nil, include_permissions_for_view: nil, ocr: nil, ocr_language: nil, pinned: nil, supports_all_drives: nil, supports_team_drives: nil, timed_text_language: nil, timed_text_track_name: nil, use_content_as_indexable_text: nil, visibility: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def insert_file(file_object = nil, convert: nil, enforce_single_parent: nil, include_labels: nil, include_permissions_for_view: nil, ocr: nil, ocr_language: nil, pinned: nil, supports_all_drives: nil, supports_team_drives: nil, timed_text_language: nil, timed_text_track_name: nil, use_content_as_indexable_text: nil, visibility: nil, fields: nil, quota_user: nil, upload_source: nil, content_type: nil, options: nil, &block)
           if upload_source.nil?
             command = make_simple_command(:post, 'files', options)
           else
@@ -1541,66 +1467,65 @@ module Google
           command.query['visibility'] = visibility unless visibility.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the user's files.
+        # Lists the user's files. This method accepts the `q` parameter, which is a
+        # search query combining one or more search terms. For more information, see the
+        # [Search for files & folders](/drive/api/guides/search-files) guide. *Note:*
+        # This method returns *all* files by default, including trashed files. If you
+        # don't want trashed files to appear in the list, use the `trashed=false` query
+        # parameter to remove trashed files from the results.
         # @param [String] corpora
-        #   Groupings of files to which the query applies. Supported groupings are: 'user'
-        #   (files created by, opened by, or shared directly with the user), 'drive' (
-        #   files in the specified shared drive as indicated by the 'driveId'), 'domain' (
-        #   files shared to the user's domain), and 'allDrives' (A combination of 'user'
-        #   and 'drive' for all drives where the user is a member). When able, use 'user'
-        #   or 'drive', instead of 'allDrives', for efficiency.
+        #   Bodies of items (files/documents) to which the query applies. Supported bodies
+        #   are `default`, `domain`, `drive` and `allDrives`. Prefer `default` or `drive`
+        #   to `allDrives` for efficiency.
         # @param [String] corpus
-        #   The body of items (files/documents) to which the query applies. Deprecated:
-        #   use 'corpora' instead.
+        #   Deprecated: The body of items (files/documents) to which the query applies.
+        #   Use `corpora` instead.
         # @param [String] drive_id
         #   ID of the shared drive to search.
         # @param [Boolean] include_items_from_all_drives
         #   Whether both My Drive and shared drive items should be included in results.
         # @param [String] include_labels
-        #   A comma-separated list of IDs of labels to include in the labelInfo part of
+        #   A comma-separated list of IDs of labels to include in the `labelInfo` part of
         #   the response.
         # @param [String] include_permissions_for_view
         #   Specifies which additional view's permissions to include in the response. Only
-        #   'published' is supported.
+        #   `published` is supported.
         # @param [Boolean] include_team_drive_items
-        #   Deprecated use includeItemsFromAllDrives instead.
+        #   Deprecated: Use `includeItemsFromAllDrives` instead.
         # @param [Fixnum] max_results
         #   The maximum number of files to return per page. Partial or empty result pages
         #   are possible even before the end of the files list has been reached.
         # @param [String] order_by
-        #   A comma-separated list of sort keys. Valid keys are 'createdDate', 'folder', '
-        #   lastViewedByMeDate', 'modifiedByMeDate', 'modifiedDate', 'quotaBytesUsed', '
-        #   recency', 'sharedWithMeDate', 'starred', 'title', and 'title_natural'. Each
-        #   key sorts ascending by default, but may be reversed with the 'desc' modifier.
+        #   A comma-separated list of sort keys. Valid keys are `createdDate`, `folder`, `
+        #   lastViewedByMeDate`, `modifiedByMeDate`, `modifiedDate`, `quotaBytesUsed`, `
+        #   recency`, `sharedWithMeDate`, `starred`, `title`, and `title_natural`. Each
+        #   key sorts ascending by default, but may be reversed with the `desc` modifier.
         #   Example usage: ?orderBy=folder,modifiedDate desc,title. Please note that there
         #   is a current limitation for users with approximately one million files in
         #   which the requested sort order is ignored.
         # @param [String] page_token
         #   Page token for files.
         # @param [String] projection
-        #   This parameter is deprecated and has no function.
+        #   Deprecated: This parameter has no function.
         # @param [String] q
         #   Query string for searching files.
         # @param [String] spaces
-        #   A comma-separated list of spaces to query. Supported values are 'drive' and '
-        #   appDataFolder'.
+        #   A comma-separated list of spaces to query. Supported values are `drive`, and `
+        #   appDataFolder`.
         # @param [Boolean] supports_all_drives
         #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
-        #   Deprecated use supportsAllDrives instead.
+        #   Deprecated: Use `supportsAllDrives` instead.
         # @param [String] team_drive_id
-        #   Deprecated use driveId instead.
+        #   Deprecated: Use `driveId` instead.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1613,7 +1538,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_files(corpora: nil, corpus: nil, drive_id: nil, include_items_from_all_drives: nil, include_labels: nil, include_permissions_for_view: nil, include_team_drive_items: nil, max_results: nil, order_by: nil, page_token: nil, projection: nil, q: nil, spaces: nil, supports_all_drives: nil, supports_team_drives: nil, team_drive_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_files(corpora: nil, corpus: nil, drive_id: nil, include_items_from_all_drives: nil, include_labels: nil, include_permissions_for_view: nil, include_team_drive_items: nil, max_results: nil, order_by: nil, page_token: nil, projection: nil, q: nil, spaces: nil, supports_all_drives: nil, supports_team_drives: nil, team_drive_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'files', options)
           command.response_representation = Google::Apis::DriveV2::FileList::Representation
           command.response_class = Google::Apis::DriveV2::FileList
@@ -1635,26 +1560,22 @@ module Google
           command.query['teamDriveId'] = team_drive_id unless team_drive_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
         # Lists the labels on a file.
         # @param [String] file_id
-        #   The ID of the file.
+        #   The ID for the file or shared drive.
         # @param [Fixnum] max_results
-        #   The maximum number of labels to return per page. When not set, this defaults
-        #   to 100.
+        #   The maximum number of labels to return per page. When not set, defaults to 100.
         # @param [String] page_token
         #   The token for continuing a previous list request on the next page. This should
-        #   be set to the value of 'nextPageToken' from the previous response.
+        #   be set to the value of `nextPageToken` from the previous response.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1667,7 +1588,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_file_labels(file_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_file_labels(file_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'files/{fileId}/listLabels', options)
           command.response_representation = Google::Apis::DriveV2::LabelList::Representation
           command.response_class = Google::Apis::DriveV2::LabelList
@@ -1676,21 +1597,19 @@ module Google
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Modifies the set of labels on a file.
+        # Modifies the set of labels applied to a file. Returns a list of the labels
+        # that were added or modified.
         # @param [String] file_id
-        #   The ID of the file for which the labels are modified.
+        #   The ID of the file to which the labels belong.
         # @param [Google::Apis::DriveV2::ModifyLabelsRequest] modify_labels_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1703,7 +1622,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def modify_file_labels(file_id, modify_labels_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def modify_file_labels(file_id, modify_labels_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'files/{fileId}/modifyLabels', options)
           command.request_representation = Google::Apis::DriveV2::ModifyLabelsRequest::Representation
           command.request_object = modify_labels_request_object
@@ -1712,7 +1631,6 @@ module Google
           command.params['fileId'] = file_id unless file_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -1726,27 +1644,28 @@ module Google
         # @param [String] add_parents
         #   Comma-separated list of parent IDs to add.
         # @param [Boolean] convert
-        #   This parameter is deprecated and has no function.
+        #   Deprecated: This parameter has no function.
         # @param [Boolean] enforce_single_parent
-        #   Deprecated. Adding files to multiple folders is no longer supported. Use
-        #   shortcuts instead.
+        #   Deprecated: Adding files to multiple folders is no longer supported. Use `
+        #   shortcuts` instead.
         # @param [String] include_labels
-        #   A comma-separated list of IDs of labels to include in the labelInfo part of
+        #   A comma-separated list of IDs of labels to include in the `labelInfo` part of
         #   the response.
         # @param [String] include_permissions_for_view
         #   Specifies which additional view's permissions to include in the response. Only
-        #   'published' is supported.
+        #   `published` is supported.
         # @param [String] modified_date_behavior
-        #   Determines the behavior in which modifiedDate is updated. This overrides
-        #   setModifiedDate.
+        #   Determines the behavior in which `modifiedDate` is updated. This overrides `
+        #   setModifiedDate`.
         # @param [Boolean] new_revision
         #   Whether a blob upload should create a new revision. If false, the blob data in
         #   the current head revision is replaced. If true or not set, a new blob is
         #   created as head revision, and previous unpinned revisions are preserved for a
         #   short period of time. Pinned revisions are stored indefinitely, using
         #   additional storage quota, up to a maximum of 200 revisions. For details on how
-        #   revisions are retained, see the Drive Help Center. Note that this field is
-        #   ignored if there is no payload in the request.
+        #   revisions are retained, see the [Drive Help Center](https://support.google.com/
+        #   drive/answer/2409045). Note that this field is ignored if there is no payload
+        #   in the request.
         # @param [Boolean] ocr
         #   Whether to attempt OCR on .jpg, .png, .gif, or .pdf uploads.
         # @param [String] ocr_language
@@ -1759,13 +1678,13 @@ module Google
         #   Comma-separated list of parent IDs to remove.
         # @param [Boolean] set_modified_date
         #   Whether to set the modified date using the value supplied in the request body.
-        #   Setting this field to true is equivalent to modifiedDateBehavior=fromBodyOrNow,
-        #   and false is equivalent to modifiedDateBehavior=now. To prevent any changes
-        #   to the modified date set modifiedDateBehavior=noChange.
+        #   Setting this field to `true` is equivalent to `modifiedDateBehavior=
+        #   fromBodyOrNow`, and `false` is equivalent to `modifiedDateBehavior=now`. To
+        #   prevent any changes to the modified date set `modifiedDateBehavior=noChange`.
         # @param [Boolean] supports_all_drives
         #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
-        #   Deprecated use supportsAllDrives instead.
+        #   Deprecated: Use `supportsAllDrives` instead.
         # @param [String] timed_text_language
         #   The language of the timed text.
         # @param [String] timed_text_track_name
@@ -1777,10 +1696,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1793,7 +1710,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_file(file_id, file_object = nil, add_parents: nil, convert: nil, enforce_single_parent: nil, include_labels: nil, include_permissions_for_view: nil, modified_date_behavior: nil, new_revision: nil, ocr: nil, ocr_language: nil, pinned: nil, remove_parents: nil, set_modified_date: nil, supports_all_drives: nil, supports_team_drives: nil, timed_text_language: nil, timed_text_track_name: nil, update_viewed_date: nil, use_content_as_indexable_text: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_file(file_id, file_object = nil, add_parents: nil, convert: nil, enforce_single_parent: nil, include_labels: nil, include_permissions_for_view: nil, modified_date_behavior: nil, new_revision: nil, ocr: nil, ocr_language: nil, pinned: nil, remove_parents: nil, set_modified_date: nil, supports_all_drives: nil, supports_team_drives: nil, timed_text_language: nil, timed_text_track_name: nil, update_viewed_date: nil, use_content_as_indexable_text: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'files/{fileId}', options)
           command.request_representation = Google::Apis::DriveV2::File::Representation
           command.request_object = file_object
@@ -1820,7 +1737,6 @@ module Google
           command.query['useContentAsIndexableText'] = use_content_as_indexable_text unless use_content_as_indexable_text.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -1828,22 +1744,20 @@ module Google
         # @param [String] file_id
         #   The ID of the file to update.
         # @param [String] include_labels
-        #   A comma-separated list of IDs of labels to include in the labelInfo part of
+        #   A comma-separated list of IDs of labels to include in the `labelInfo` part of
         #   the response.
         # @param [String] include_permissions_for_view
         #   Specifies which additional view's permissions to include in the response. Only
-        #   'published' is supported.
+        #   `published` is supported.
         # @param [Boolean] supports_all_drives
         #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
-        #   Deprecated use supportsAllDrives instead.
+        #   Deprecated: Use `supportsAllDrives` instead.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1856,7 +1770,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def touch_file(file_id, include_labels: nil, include_permissions_for_view: nil, supports_all_drives: nil, supports_team_drives: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def touch_file(file_id, include_labels: nil, include_permissions_for_view: nil, supports_all_drives: nil, supports_team_drives: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'files/{fileId}/touch', options)
           command.response_representation = Google::Apis::DriveV2::File::Representation
           command.response_class = Google::Apis::DriveV2::File
@@ -1867,35 +1781,34 @@ module Google
           command.query['supportsTeamDrives'] = supports_team_drives unless supports_team_drives.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
         # Moves a file to the trash. The currently authenticated user must own the file
-        # or be at least a fileOrganizer on the parent for shared drive files. Only the
-        # owner may trash a file. The trashed item is excluded from all files.list
-        # responses returned for any user who does not own the file. However, all users
+        # or be at least a `fileOrganizer` on the parent for shared drive files. Only
+        # the owner may trash a file. The trashed item is excluded from all `files.list`
+        # responses returned for any user who doesn't own the file. However, all users
         # with access to the file can see the trashed item metadata in an API response.
-        # All users with access can copy, download, export, and share the file.
+        # All users with access can copy, download, export, and share the file. *Note:*
+        # Files moved to the trash still appear by default in results from the `files.
+        # list` method. To permanently remove a file, use `files.delete`.
         # @param [String] file_id
         #   The ID of the file to trash.
         # @param [String] include_labels
-        #   A comma-separated list of IDs of labels to include in the labelInfo part of
+        #   A comma-separated list of IDs of labels to include in the `labelInfo` part of
         #   the response.
         # @param [String] include_permissions_for_view
         #   Specifies which additional view's permissions to include in the response. Only
-        #   'published' is supported.
+        #   `published` is supported.
         # @param [Boolean] supports_all_drives
         #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
-        #   Deprecated use supportsAllDrives instead.
+        #   Deprecated: Use `supportsAllDrives` instead.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1908,7 +1821,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def trash_file(file_id, include_labels: nil, include_permissions_for_view: nil, supports_all_drives: nil, supports_team_drives: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def trash_file(file_id, include_labels: nil, include_permissions_for_view: nil, supports_all_drives: nil, supports_team_drives: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'files/{fileId}/trash', options)
           command.response_representation = Google::Apis::DriveV2::File::Representation
           command.response_class = Google::Apis::DriveV2::File
@@ -1919,32 +1832,29 @@ module Google
           command.query['supportsTeamDrives'] = supports_team_drives unless supports_team_drives.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
         # Restores a file from the trash. The currently authenticated user must own the
-        # file or be at least a fileOrganizer on the parent for shared drive files. Only
-        # the owner may untrash a file.
+        # file or be at least a `fileOrganizer` on the parent for shared drive files.
+        # Only the owner may untrash a file.
         # @param [String] file_id
         #   The ID of the file to untrash.
         # @param [String] include_labels
-        #   A comma-separated list of IDs of labels to include in the labelInfo part of
+        #   A comma-separated list of IDs of labels to include in the `labelInfo` part of
         #   the response.
         # @param [String] include_permissions_for_view
         #   Specifies which additional view's permissions to include in the response. Only
-        #   'published' is supported.
+        #   `published` is supported.
         # @param [Boolean] supports_all_drives
         #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
-        #   Deprecated use supportsAllDrives instead.
+        #   Deprecated: Use `supportsAllDrives` instead.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1957,7 +1867,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def untrash_file(file_id, include_labels: nil, include_permissions_for_view: nil, supports_all_drives: nil, supports_team_drives: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def untrash_file(file_id, include_labels: nil, include_permissions_for_view: nil, supports_all_drives: nil, supports_team_drives: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'files/{fileId}/untrash', options)
           command.response_representation = Google::Apis::DriveV2::File::Representation
           command.response_class = Google::Apis::DriveV2::File
@@ -1968,60 +1878,63 @@ module Google
           command.query['supportsTeamDrives'] = supports_team_drives unless supports_team_drives.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
         # Updates a file's metadata and/or content. When calling this method, only
         # populate fields in the request that you want to modify. When updating fields,
-        # some fields might be changed automatically, such as modifiedDate. This method
-        # supports patch semantics.
+        # some fields might be changed automatically, such as `modifiedDate`. This
+        # method supports patch semantics. This method supports an */upload* URI and
+        # accepts uploaded media with the following characteristics: - *Maximum file
+        # size:* 5,120 GB - *Accepted Media MIME types:*`*/*` Note: Specify a valid MIME
+        # type, rather than the literal `*/*` value. The literal `*/*` is only used to
+        # indicate that any valid MIME type can be uploaded. For more information on
+        # uploading files, see [Upload file data](/drive/api/guides/manage-uploads).
         # @param [String] file_id
         #   The ID of the file to update.
         # @param [Google::Apis::DriveV2::File] file_object
         # @param [String] add_parents
         #   Comma-separated list of parent IDs to add.
         # @param [Boolean] convert
-        #   This parameter is deprecated and has no function.
+        #   Deprecated: This parameter has no function.
         # @param [Boolean] enforce_single_parent
-        #   Deprecated. Adding files to multiple folders is no longer supported. Use
-        #   shortcuts instead.
+        #   Deprecated: Adding files to multiple folders is no longer supported. Use `
+        #   shortcuts` instead.
         # @param [String] include_labels
-        #   A comma-separated list of IDs of labels to include in the labelInfo part of
+        #   A comma-separated list of IDs of labels to include in the `labelInfo` part of
         #   the response.
         # @param [String] include_permissions_for_view
         #   Specifies which additional view's permissions to include in the response. Only
-        #   'published' is supported.
+        #   `published` is supported.
         # @param [String] modified_date_behavior
-        #   Determines the behavior in which modifiedDate is updated. This overrides
-        #   setModifiedDate.
+        #   Determines the behavior in which `modifiedDate` is updated. This overrides `
+        #   setModifiedDate`.
         # @param [Boolean] new_revision
         #   Whether a blob upload should create a new revision. If false, the blob data in
         #   the current head revision is replaced. If true or not set, a new blob is
         #   created as head revision, and previous unpinned revisions are preserved for a
         #   short period of time. Pinned revisions are stored indefinitely, using
         #   additional storage quota, up to a maximum of 200 revisions. For details on how
-        #   revisions are retained, see the Drive Help Center. Note that this field is
-        #   ignored if there is no payload in the request.
+        #   revisions are retained, see the [Drive Help Center](https://support.google.com/
+        #   drive/answer/2409045).
         # @param [Boolean] ocr
         #   Whether to attempt OCR on .jpg, .png, .gif, or .pdf uploads.
         # @param [String] ocr_language
         #   If ocr is true, hints at the language to use. Valid values are BCP 47 codes.
         # @param [Boolean] pinned
         #   Whether to pin the new revision. A file can have a maximum of 200 pinned
-        #   revisions. Note that this field is ignored if there is no payload in the
-        #   request.
+        #   revisions.
         # @param [String] remove_parents
         #   Comma-separated list of parent IDs to remove.
         # @param [Boolean] set_modified_date
         #   Whether to set the modified date using the value supplied in the request body.
-        #   Setting this field to true is equivalent to modifiedDateBehavior=fromBodyOrNow,
-        #   and false is equivalent to modifiedDateBehavior=now. To prevent any changes
-        #   to the modified date set modifiedDateBehavior=noChange.
+        #   Setting this field to `true` is equivalent to `modifiedDateBehavior=
+        #   fromBodyOrNow`, and `false` is equivalent to `modifiedDateBehavior=now`. To
+        #   prevent any changes to the modified date set `modifiedDateBehavior=noChange`.
         # @param [Boolean] supports_all_drives
         #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
-        #   Deprecated use supportsAllDrives instead.
+        #   Deprecated: Use `supportsAllDrives` instead.
         # @param [String] timed_text_language
         #   The language of the timed text.
         # @param [String] timed_text_track_name
@@ -2033,10 +1946,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [IO, String] upload_source
         #   IO stream or filename containing content to upload
         # @param [String] content_type
@@ -2053,7 +1964,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_file(file_id, file_object = nil, add_parents: nil, convert: nil, enforce_single_parent: nil, include_labels: nil, include_permissions_for_view: nil, modified_date_behavior: nil, new_revision: nil, ocr: nil, ocr_language: nil, pinned: nil, remove_parents: nil, set_modified_date: nil, supports_all_drives: nil, supports_team_drives: nil, timed_text_language: nil, timed_text_track_name: nil, update_viewed_date: nil, use_content_as_indexable_text: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def update_file(file_id, file_object = nil, add_parents: nil, convert: nil, enforce_single_parent: nil, include_labels: nil, include_permissions_for_view: nil, modified_date_behavior: nil, new_revision: nil, ocr: nil, ocr_language: nil, pinned: nil, remove_parents: nil, set_modified_date: nil, supports_all_drives: nil, supports_team_drives: nil, timed_text_language: nil, timed_text_track_name: nil, update_viewed_date: nil, use_content_as_indexable_text: nil, fields: nil, quota_user: nil, upload_source: nil, content_type: nil, options: nil, &block)
           if upload_source.nil?
             command = make_simple_command(:put, 'files/{fileId}', options)
           else
@@ -2086,11 +1997,10 @@ module Google
           command.query['useContentAsIndexableText'] = use_content_as_indexable_text unless use_content_as_indexable_text.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Subscribe to changes on a file.
+        # Subscribes to changes to a file.
         # @param [String] file_id
         #   The ID for the file in question.
         # @param [Google::Apis::DriveV2::Channel] channel_object
@@ -2098,32 +2008,28 @@ module Google
         #   Whether the user is acknowledging the risk of downloading known malware or
         #   other abusive files.
         # @param [String] include_labels
-        #   A comma-separated list of IDs of labels to include in the labelInfo part of
+        #   A comma-separated list of IDs of labels to include in the `labelInfo` part of
         #   the response.
         # @param [String] include_permissions_for_view
         #   Specifies which additional view's permissions to include in the response. Only
-        #   'published' is supported.
+        #   `published` is supported.
         # @param [String] projection
-        #   This parameter is deprecated and has no function.
+        #   Deprecated: This parameter has no function.
         # @param [String] revision_id
         #   Specifies the Revision ID that should be downloaded. Ignored unless alt=media
         #   is specified.
         # @param [Boolean] supports_all_drives
         #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
-        #   Deprecated use supportsAllDrives instead.
+        #   Deprecated: Use `supportsAllDrives` instead.
         # @param [Boolean] update_viewed_date
         #   Deprecated: Use files.update with modifiedDateBehavior=noChange,
         #   updateViewedDate=true and an empty request body.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
-        # @param [IO, String] download_dest
-        #   IO stream or filename to receive content download
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -2136,13 +2042,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def watch_file(file_id, channel_object = nil, acknowledge_abuse: nil, include_labels: nil, include_permissions_for_view: nil, projection: nil, revision_id: nil, supports_all_drives: nil, supports_team_drives: nil, update_viewed_date: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
-          if download_dest.nil?
-            command = make_simple_command(:post, 'files/{fileId}/watch', options)
-          else
-            command = make_download_command(:post, 'files/{fileId}/watch', options)
-            command.download_dest = download_dest
-          end
+        def watch_file(file_id, channel_object = nil, acknowledge_abuse: nil, include_labels: nil, include_permissions_for_view: nil, projection: nil, revision_id: nil, supports_all_drives: nil, supports_team_drives: nil, update_viewed_date: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'files/{fileId}/watch', options)
           command.request_representation = Google::Apis::DriveV2::Channel::Representation
           command.request_object = channel_object
           command.response_representation = Google::Apis::DriveV2::Channel::Representation
@@ -2158,7 +2059,6 @@ module Google
           command.query['updateViewedDate'] = update_viewed_date unless update_viewed_date.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -2168,15 +2068,13 @@ module Google
         # @param [String] parent_id
         #   The ID of the parent.
         # @param [Boolean] enforce_single_parent
-        #   Deprecated. If an item is not in a shared drive and its last parent is deleted
-        #   but the item itself is not, the item will be placed under its owner's root.
+        #   Deprecated: If an item is not in a shared drive and its last parent is removed,
+        #   the item is placed under its owner's root.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -2189,14 +2087,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_parent(file_id, parent_id, enforce_single_parent: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_parent(file_id, parent_id, enforce_single_parent: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'files/{fileId}/parents/{parentId}', options)
           command.params['fileId'] = file_id unless file_id.nil?
           command.params['parentId'] = parent_id unless parent_id.nil?
           command.query['enforceSingleParent'] = enforce_single_parent unless enforce_single_parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -2208,10 +2105,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -2224,7 +2119,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_parent(file_id, parent_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_parent(file_id, parent_id, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'files/{fileId}/parents/{parentId}', options)
           command.response_representation = Google::Apis::DriveV2::ParentReference::Representation
           command.response_class = Google::Apis::DriveV2::ParentReference
@@ -2232,7 +2127,6 @@ module Google
           command.params['parentId'] = parent_id unless parent_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -2241,19 +2135,17 @@ module Google
         #   The ID of the file.
         # @param [Google::Apis::DriveV2::ParentReference] parent_reference_object
         # @param [Boolean] enforce_single_parent
-        #   Deprecated. Adding files to multiple folders is no longer supported. Use
-        #   shortcuts instead.
+        #   Deprecated: Adding files to multiple folders is no longer supported. Use `
+        #   shortcuts` instead.
         # @param [Boolean] supports_all_drives
         #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
-        #   Deprecated use supportsAllDrives instead.
+        #   Deprecated: Use `supportsAllDrives` instead.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -2266,7 +2158,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_parent(file_id, parent_reference_object = nil, enforce_single_parent: nil, supports_all_drives: nil, supports_team_drives: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_parent(file_id, parent_reference_object = nil, enforce_single_parent: nil, supports_all_drives: nil, supports_team_drives: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'files/{fileId}/parents', options)
           command.request_representation = Google::Apis::DriveV2::ParentReference::Representation
           command.request_object = parent_reference_object
@@ -2278,7 +2170,6 @@ module Google
           command.query['supportsTeamDrives'] = supports_team_drives unless supports_team_drives.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -2288,10 +2179,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -2304,18 +2193,19 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_parents(file_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_parents(file_id, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'files/{fileId}/parents', options)
           command.response_representation = Google::Apis::DriveV2::ParentList::Representation
           command.response_class = Google::Apis::DriveV2::ParentList
           command.params['fileId'] = file_id unless file_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a permission from a file or shared drive.
+        # Deletes a permission from a file or shared drive. **Warning:** Concurrent
+        # permissions operations on the same file are not supported; only the last
+        # update is applied.
         # @param [String] file_id
         #   The ID for the file or shared drive.
         # @param [String] permission_id
@@ -2323,7 +2213,7 @@ module Google
         # @param [Boolean] supports_all_drives
         #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
-        #   Deprecated use supportsAllDrives instead.
+        #   Deprecated: Use `supportsAllDrives` instead.
         # @param [Boolean] use_domain_admin_access
         #   Issue the request as a domain administrator; if set to true, then the
         #   requester will be granted access if the file ID parameter refers to a shared
@@ -2332,10 +2222,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -2348,7 +2236,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_permission(file_id, permission_id, supports_all_drives: nil, supports_team_drives: nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_permission(file_id, permission_id, supports_all_drives: nil, supports_team_drives: nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'files/{fileId}/permissions/{permissionId}', options)
           command.params['fileId'] = file_id unless file_id.nil?
           command.params['permissionId'] = permission_id unless permission_id.nil?
@@ -2357,7 +2245,6 @@ module Google
           command.query['useDomainAdminAccess'] = use_domain_admin_access unless use_domain_admin_access.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -2369,7 +2256,7 @@ module Google
         # @param [Boolean] supports_all_drives
         #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
-        #   Deprecated use supportsAllDrives instead.
+        #   Deprecated: Use `supportsAllDrives` instead.
         # @param [Boolean] use_domain_admin_access
         #   Issue the request as a domain administrator; if set to true, then the
         #   requester will be granted access if the file ID parameter refers to a shared
@@ -2378,10 +2265,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -2394,7 +2279,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_permission(file_id, permission_id, supports_all_drives: nil, supports_team_drives: nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_permission(file_id, permission_id, supports_all_drives: nil, supports_team_drives: nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'files/{fileId}/permissions/{permissionId}', options)
           command.response_representation = Google::Apis::DriveV2::Permission::Representation
           command.response_class = Google::Apis::DriveV2::Permission
@@ -2405,7 +2290,6 @@ module Google
           command.query['useDomainAdminAccess'] = use_domain_admin_access unless use_domain_admin_access.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -2415,10 +2299,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -2431,37 +2313,38 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_permission_id_for_email(email, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_permission_id_for_email(email, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'permissionIds/{email}', options)
           command.response_representation = Google::Apis::DriveV2::PermissionId::Representation
           command.response_class = Google::Apis::DriveV2::PermissionId
           command.params['email'] = email unless email.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Inserts a permission for a file or shared drive.
+        # Inserts a permission for a file or shared drive. **Warning:** Concurrent
+        # permissions operations on the same file are not supported; only the last
+        # update is applied.
         # @param [String] file_id
         #   The ID for the file or shared drive.
         # @param [Google::Apis::DriveV2::Permission] permission_object
         # @param [String] email_message
         #   A plain text custom message to include in notification emails.
         # @param [Boolean] enforce_single_parent
-        #   Deprecated. See moveToNewOwnersRoot for details.
+        #   Deprecated: See `moveToNewOwnersRoot` for details.
         # @param [Boolean] move_to_new_owners_root
         #   This parameter will only take effect if the item is not in a shared drive and
-        #   the request is attempting to transfer the ownership of the item. If set to
-        #   true, the item will be moved to the new owner's My Drive root folder and all
-        #   prior parents removed. If set to false, parents are not changed.
+        #   the request is attempting to transfer the ownership of the item. If set to `
+        #   true`, the item will be moved to the new owner's My Drive root folder and all
+        #   prior parents removed. If set to `false`, parents are not changed.
         # @param [Boolean] send_notification_emails
         #   Whether to send notification emails when sharing to users or groups. This
-        #   parameter is ignored and an email is sent if the role is owner.
+        #   parameter is ignored and an email is sent if the `role` is `owner`.
         # @param [Boolean] supports_all_drives
         #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
-        #   Deprecated use supportsAllDrives instead.
+        #   Deprecated: Use `supportsAllDrives` instead.
         # @param [Boolean] use_domain_admin_access
         #   Issue the request as a domain administrator; if set to true, then the
         #   requester will be granted access if the file ID parameter refers to a shared
@@ -2470,10 +2353,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -2486,7 +2367,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_permission(file_id, permission_object = nil, email_message: nil, enforce_single_parent: nil, move_to_new_owners_root: nil, send_notification_emails: nil, supports_all_drives: nil, supports_team_drives: nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_permission(file_id, permission_object = nil, email_message: nil, enforce_single_parent: nil, move_to_new_owners_root: nil, send_notification_emails: nil, supports_all_drives: nil, supports_team_drives: nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'files/{fileId}/permissions', options)
           command.request_representation = Google::Apis::DriveV2::Permission::Representation
           command.request_object = permission_object
@@ -2502,7 +2383,6 @@ module Google
           command.query['useDomainAdminAccess'] = use_domain_admin_access unless use_domain_admin_access.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -2511,18 +2391,18 @@ module Google
         #   The ID for the file or shared drive.
         # @param [String] include_permissions_for_view
         #   Specifies which additional view's permissions to include in the response. Only
-        #   'published' is supported.
+        #   `published` is supported.
         # @param [Fixnum] max_results
         #   The maximum number of permissions to return per page. When not set for files
         #   in a shared drive, at most 100 results will be returned. When not set for
         #   files that are not in a shared drive, the entire list will be returned.
         # @param [String] page_token
         #   The token for continuing a previous list request on the next page. This should
-        #   be set to the value of 'nextPageToken' from the previous response.
+        #   be set to the value of `nextPageToken` from the previous response.
         # @param [Boolean] supports_all_drives
         #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
-        #   Deprecated use supportsAllDrives instead.
+        #   Deprecated: Use `supportsAllDrives` instead.
         # @param [Boolean] use_domain_admin_access
         #   Issue the request as a domain administrator; if set to true, then the
         #   requester will be granted access if the file ID parameter refers to a shared
@@ -2531,10 +2411,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -2547,7 +2425,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_permissions(file_id, include_permissions_for_view: nil, max_results: nil, page_token: nil, supports_all_drives: nil, supports_team_drives: nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_permissions(file_id, include_permissions_for_view: nil, max_results: nil, page_token: nil, supports_all_drives: nil, supports_team_drives: nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'files/{fileId}/permissions', options)
           command.response_representation = Google::Apis::DriveV2::PermissionList::Representation
           command.response_class = Google::Apis::DriveV2::PermissionList
@@ -2560,11 +2438,12 @@ module Google
           command.query['useDomainAdminAccess'] = use_domain_admin_access unless use_domain_admin_access.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a permission using patch semantics.
+        # Updates a permission using patch semantics. **Warning:** Concurrent
+        # permissions operations on the same file are not supported; only the last
+        # update is applied.
         # @param [String] file_id
         #   The ID for the file or shared drive.
         # @param [String] permission_id
@@ -2575,10 +2454,10 @@ module Google
         # @param [Boolean] supports_all_drives
         #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
-        #   Deprecated use supportsAllDrives instead.
+        #   Deprecated: Use `supportsAllDrives` instead.
         # @param [Boolean] transfer_ownership
-        #   Whether changing a role to 'owner' downgrades the current owners to writers.
-        #   Does nothing if the specified role is not 'owner'.
+        #   Whether changing a role to `owner` downgrades the current owners to writers.
+        #   Does nothing if the specified role is not `owner`.
         # @param [Boolean] use_domain_admin_access
         #   Issue the request as a domain administrator; if set to true, then the
         #   requester will be granted access if the file ID parameter refers to a shared
@@ -2587,10 +2466,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -2603,7 +2480,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_permission(file_id, permission_id, permission_object = nil, remove_expiration: nil, supports_all_drives: nil, supports_team_drives: nil, transfer_ownership: nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_permission(file_id, permission_id, permission_object = nil, remove_expiration: nil, supports_all_drives: nil, supports_team_drives: nil, transfer_ownership: nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'files/{fileId}/permissions/{permissionId}', options)
           command.request_representation = Google::Apis::DriveV2::Permission::Representation
           command.request_object = permission_object
@@ -2618,11 +2495,11 @@ module Google
           command.query['useDomainAdminAccess'] = use_domain_admin_access unless use_domain_admin_access.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a permission.
+        # Updates a permission. **Warning:** Concurrent permissions operations on the
+        # same file are not supported; only the last update is applied.
         # @param [String] file_id
         #   The ID for the file or shared drive.
         # @param [String] permission_id
@@ -2633,15 +2510,10 @@ module Google
         # @param [Boolean] supports_all_drives
         #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
-        #   Deprecated use supportsAllDrives instead.
+        #   Deprecated: Use `supportsAllDrives` instead.
         # @param [Boolean] transfer_ownership
-        #   Whether to transfer ownership to the specified user and downgrade the current
-        #   owner to a writer. This parameter is required as an acknowledgement of the
-        #   side effect. File owners can only transfer ownership of files existing on My
-        #   Drive. Files existing in a shared drive are owned by the organization that
-        #   owns that shared drive. Ownership transfers are not supported for files and
-        #   folders in shared drives. Organizers of a shared drive can move items from
-        #   that shared drive into their My Drive which transfers the ownership to them.
+        #   Whether changing a role to `owner` downgrades the current owners to writers.
+        #   Does nothing if the specified role is not `owner`.
         # @param [Boolean] use_domain_admin_access
         #   Issue the request as a domain administrator; if set to true, then the
         #   requester will be granted access if the file ID parameter refers to a shared
@@ -2650,10 +2522,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -2666,7 +2536,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_permission(file_id, permission_id, permission_object = nil, remove_expiration: nil, supports_all_drives: nil, supports_team_drives: nil, transfer_ownership: nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_permission(file_id, permission_id, permission_object = nil, remove_expiration: nil, supports_all_drives: nil, supports_team_drives: nil, transfer_ownership: nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:put, 'files/{fileId}/permissions/{permissionId}', options)
           command.request_representation = Google::Apis::DriveV2::Permission::Representation
           command.request_object = permission_object
@@ -2681,7 +2551,6 @@ module Google
           command.query['useDomainAdminAccess'] = use_domain_admin_access unless use_domain_admin_access.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -2695,10 +2564,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -2711,14 +2578,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_property(file_id, property_key, visibility: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_property(file_id, property_key, visibility: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'files/{fileId}/properties/{propertyKey}', options)
           command.params['fileId'] = file_id unless file_id.nil?
           command.params['propertyKey'] = property_key unless property_key.nil?
           command.query['visibility'] = visibility unless visibility.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -2732,10 +2598,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -2748,7 +2612,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_property(file_id, property_key, visibility: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_property(file_id, property_key, visibility: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'files/{fileId}/properties/{propertyKey}', options)
           command.response_representation = Google::Apis::DriveV2::Property::Representation
           command.response_class = Google::Apis::DriveV2::Property
@@ -2757,7 +2621,6 @@ module Google
           command.query['visibility'] = visibility unless visibility.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -2768,10 +2631,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -2784,7 +2645,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_property(file_id, property_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_property(file_id, property_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'files/{fileId}/properties', options)
           command.request_representation = Google::Apis::DriveV2::Property::Representation
           command.request_object = property_object
@@ -2793,7 +2654,6 @@ module Google
           command.params['fileId'] = file_id unless file_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -2803,10 +2663,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -2819,14 +2677,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_properties(file_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_properties(file_id, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'files/{fileId}/properties', options)
           command.response_representation = Google::Apis::DriveV2::PropertyList::Representation
           command.response_class = Google::Apis::DriveV2::PropertyList
           command.params['fileId'] = file_id unless file_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -2842,10 +2699,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -2858,7 +2713,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_property(file_id, property_key, property_object = nil, visibility: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_property(file_id, property_key, property_object = nil, visibility: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'files/{fileId}/properties/{propertyKey}', options)
           command.request_representation = Google::Apis::DriveV2::Property::Representation
           command.request_object = property_object
@@ -2869,7 +2724,6 @@ module Google
           command.query['visibility'] = visibility unless visibility.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -2885,10 +2739,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -2901,7 +2753,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_property(file_id, property_key, property_object = nil, visibility: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_property(file_id, property_key, property_object = nil, visibility: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:put, 'files/{fileId}/properties/{propertyKey}', options)
           command.request_representation = Google::Apis::DriveV2::Property::Representation
           command.request_object = property_object
@@ -2912,7 +2764,6 @@ module Google
           command.query['visibility'] = visibility unless visibility.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -2926,10 +2777,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -2942,14 +2791,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_reply(file_id, comment_id, reply_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_reply(file_id, comment_id, reply_id, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'files/{fileId}/comments/{commentId}/replies/{replyId}', options)
           command.params['fileId'] = file_id unless file_id.nil?
           command.params['commentId'] = comment_id unless comment_id.nil?
           command.params['replyId'] = reply_id unless reply_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -2965,10 +2813,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -2981,7 +2827,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_reply(file_id, comment_id, reply_id, include_deleted: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_reply(file_id, comment_id, reply_id, include_deleted: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'files/{fileId}/comments/{commentId}/replies/{replyId}', options)
           command.response_representation = Google::Apis::DriveV2::CommentReply::Representation
           command.response_class = Google::Apis::DriveV2::CommentReply
@@ -2991,7 +2837,6 @@ module Google
           command.query['includeDeleted'] = include_deleted unless include_deleted.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -3004,10 +2849,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -3020,7 +2863,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_reply(file_id, comment_id, comment_reply_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_reply(file_id, comment_id, comment_reply_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'files/{fileId}/comments/{commentId}/replies', options)
           command.request_representation = Google::Apis::DriveV2::CommentReply::Representation
           command.request_object = comment_reply_object
@@ -3030,7 +2873,6 @@ module Google
           command.params['commentId'] = comment_id unless comment_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -3051,10 +2893,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -3067,7 +2907,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_replies(file_id, comment_id, include_deleted: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_replies(file_id, comment_id, include_deleted: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'files/{fileId}/comments/{commentId}/replies', options)
           command.response_representation = Google::Apis::DriveV2::CommentReplyList::Representation
           command.response_class = Google::Apis::DriveV2::CommentReplyList
@@ -3078,7 +2918,6 @@ module Google
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -3093,10 +2932,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -3109,7 +2946,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_reply(file_id, comment_id, reply_id, comment_reply_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_reply(file_id, comment_id, reply_id, comment_reply_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'files/{fileId}/comments/{commentId}/replies/{replyId}', options)
           command.request_representation = Google::Apis::DriveV2::CommentReply::Representation
           command.request_object = comment_reply_object
@@ -3120,7 +2957,6 @@ module Google
           command.params['replyId'] = reply_id unless reply_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -3135,10 +2971,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -3151,7 +2985,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_reply(file_id, comment_id, reply_id, comment_reply_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_reply(file_id, comment_id, reply_id, comment_reply_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:put, 'files/{fileId}/comments/{commentId}/replies/{replyId}', options)
           command.request_representation = Google::Apis::DriveV2::CommentReply::Representation
           command.request_object = comment_reply_object
@@ -3162,7 +2996,6 @@ module Google
           command.params['replyId'] = reply_id unless reply_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -3176,10 +3009,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -3192,13 +3023,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_revision(file_id, revision_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_revision(file_id, revision_id, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'files/{fileId}/revisions/{revisionId}', options)
           command.params['fileId'] = file_id unless file_id.nil?
           command.params['revisionId'] = revision_id unless revision_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -3210,10 +3040,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -3226,7 +3054,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_revision(file_id, revision_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_revision(file_id, revision_id, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'files/{fileId}/revisions/{revisionId}', options)
           command.response_representation = Google::Apis::DriveV2::Revision::Representation
           command.response_class = Google::Apis::DriveV2::Revision
@@ -3234,7 +3062,6 @@ module Google
           command.params['revisionId'] = revision_id unless revision_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -3249,10 +3076,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -3265,7 +3090,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_revisions(file_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_revisions(file_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'files/{fileId}/revisions', options)
           command.response_representation = Google::Apis::DriveV2::RevisionList::Representation
           command.response_class = Google::Apis::DriveV2::RevisionList
@@ -3274,7 +3099,6 @@ module Google
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -3287,10 +3111,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -3303,7 +3125,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_revision(file_id, revision_id, revision_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_revision(file_id, revision_id, revision_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'files/{fileId}/revisions/{revisionId}', options)
           command.request_representation = Google::Apis::DriveV2::Revision::Representation
           command.request_object = revision_object
@@ -3313,7 +3135,6 @@ module Google
           command.params['revisionId'] = revision_id unless revision_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -3326,10 +3147,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -3342,7 +3161,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_revision(file_id, revision_id, revision_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_revision(file_id, revision_id, revision_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:put, 'files/{fileId}/revisions/{revisionId}', options)
           command.request_representation = Google::Apis::DriveV2::Revision::Representation
           command.request_object = revision_object
@@ -3352,20 +3171,17 @@ module Google
           command.params['revisionId'] = revision_id unless revision_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Deprecated use drives.delete instead.
+        # Deprecated: Use `drives.delete` instead.
         # @param [String] team_drive_id
         #   The ID of the Team Drive
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -3378,16 +3194,15 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_teamdrive(team_drive_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_teamdrive(team_drive_id, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'teamdrives/{teamDriveId}', options)
           command.params['teamDriveId'] = team_drive_id unless team_drive_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Deprecated use drives.get instead.
+        # Deprecated: Use `drives.get` instead.
         # @param [String] team_drive_id
         #   The ID of the Team Drive
         # @param [Boolean] use_domain_admin_access
@@ -3397,10 +3212,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -3413,7 +3226,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_teamdrive(team_drive_id, use_domain_admin_access: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_teamdrive(team_drive_id, use_domain_admin_access: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'teamdrives/{teamDriveId}', options)
           command.response_representation = Google::Apis::DriveV2::TeamDrive::Representation
           command.response_class = Google::Apis::DriveV2::TeamDrive
@@ -3421,25 +3234,22 @@ module Google
           command.query['useDomainAdminAccess'] = use_domain_admin_access unless use_domain_admin_access.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Deprecated use drives.insert instead.
+        # Deprecated: Use `drives.insert` instead.
         # @param [String] request_id
-        #   An ID, such as a random UUID, which uniquely identifies this user's request
-        #   for idempotent creation of a Team Drive. A repeated request by the same user
-        #   and with the same request ID will avoid creating duplicates by attempting to
-        #   create the same Team Drive. If the Team Drive already exists a 409 error will
-        #   be returned.
+        #   Required. An ID, such as a random UUID, which uniquely identifies this user's
+        #   request for idempotent creation of a Team Drive. A repeated request by the
+        #   same user and with the same request ID will avoid creating duplicates by
+        #   attempting to create the same Team Drive. If the Team Drive already exists a
+        #   409 error will be returned.
         # @param [Google::Apis::DriveV2::TeamDrive] team_drive_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -3452,7 +3262,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_teamdrive(request_id, team_drive_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_teamdrive(request_id, team_drive_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'teamdrives', options)
           command.request_representation = Google::Apis::DriveV2::TeamDrive::Representation
           command.request_object = team_drive_object
@@ -3461,11 +3271,10 @@ module Google
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Deprecated use drives.list instead.
+        # Deprecated: Use `drives.list` instead.
         # @param [Fixnum] max_results
         #   Maximum number of Team Drives to return.
         # @param [String] page_token
@@ -3478,10 +3287,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -3494,7 +3301,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_teamdrives(max_results: nil, page_token: nil, q: nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_teamdrives(max_results: nil, page_token: nil, q: nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'teamdrives', options)
           command.response_representation = Google::Apis::DriveV2::TeamDriveList::Representation
           command.response_class = Google::Apis::DriveV2::TeamDriveList
@@ -3504,11 +3311,10 @@ module Google
           command.query['useDomainAdminAccess'] = use_domain_admin_access unless use_domain_admin_access.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Deprecated use drives.update instead.
+        # Deprecated: Use `drives.update` instead.
         # @param [String] team_drive_id
         #   The ID of the Team Drive
         # @param [Google::Apis::DriveV2::TeamDrive] team_drive_object
@@ -3519,10 +3325,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -3535,7 +3339,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_teamdrive(team_drive_id, team_drive_object = nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_teamdrive(team_drive_id, team_drive_object = nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:put, 'teamdrives/{teamDriveId}', options)
           command.request_representation = Google::Apis::DriveV2::TeamDrive::Representation
           command.request_object = team_drive_object
@@ -3545,7 +3349,6 @@ module Google
           command.query['useDomainAdminAccess'] = use_domain_admin_access unless use_domain_admin_access.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
 
@@ -3554,7 +3357,6 @@ module Google
         def apply_command_defaults(command)
           command.query['key'] = key unless key.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
         end
       end
     end
