@@ -22,6 +22,18 @@ module Google
   module Apis
     module NetworksecurityV1
       
+      class AddAddressGroupItemsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AddressGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuthorizationPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -41,6 +53,12 @@ module Google
       end
       
       class ClientTlsPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloneAddressGroupItemsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -136,6 +154,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListAddressGroupReferencesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListAddressGroupReferencesResponseAddressGroupReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListAddressGroupsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListAuthorizationPoliciesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -214,6 +250,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RemoveAddressGroupItemsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Rule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -256,6 +298,29 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AddAddressGroupItemsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items'
+          property :request_id, as: 'requestId'
+        end
+      end
+      
+      class AddressGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :capacity, as: 'capacity'
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          collection :items, as: 'items'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :self_link, as: 'selfLink'
+          property :type, as: 'type'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class AuthorizationPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -296,6 +361,14 @@ module Google
       
           property :sni, as: 'sni'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class CloneAddressGroupItemsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :request_id, as: 'requestId'
+          property :source_address_group, as: 'sourceAddressGroup'
         end
       end
       
@@ -440,6 +513,32 @@ module Google
         end
       end
       
+      class ListAddressGroupReferencesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :address_group_references, as: 'addressGroupReferences', class: Google::Apis::NetworksecurityV1::ListAddressGroupReferencesResponseAddressGroupReference, decorator: Google::Apis::NetworksecurityV1::ListAddressGroupReferencesResponseAddressGroupReference::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListAddressGroupReferencesResponseAddressGroupReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :firewall_policy, as: 'firewallPolicy'
+          property :rule_priority, as: 'rulePriority'
+        end
+      end
+      
+      class ListAddressGroupsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :address_groups, as: 'addressGroups', class: Google::Apis::NetworksecurityV1::AddressGroup, decorator: Google::Apis::NetworksecurityV1::AddressGroup::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListAuthorizationPoliciesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -568,6 +667,14 @@ module Google
           property :status_message, as: 'statusMessage'
           property :target, as: 'target'
           property :verb, as: 'verb'
+        end
+      end
+      
+      class RemoveAddressGroupItemsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items'
+          property :request_id, as: 'requestId'
         end
       end
       
