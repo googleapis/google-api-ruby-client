@@ -603,6 +603,25 @@ module Google
         end
       end
       
+      # Extra GCF specific location information.
+      class GoogleCloudFunctionsV2LocationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The Cloud Function environments this location supports.
+        # Corresponds to the JSON property `environments`
+        # @return [Array<String>]
+        attr_accessor :environments
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @environments = args[:environments] if args.key?(:environments)
+        end
+      end
+      
       # Represents the metadata of the long-running operation.
       class GoogleCloudFunctionsV2OperationMetadata
         include Google::Apis::Core::Hashable
@@ -753,6 +772,25 @@ module Google
         end
       end
       
+      # Extra GCF specific location information.
+      class GoogleCloudFunctionsV2alphaLocationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The Cloud Function environments this location supports.
+        # Corresponds to the JSON property `environments`
+        # @return [Array<String>]
+        attr_accessor :environments
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @environments = args[:environments] if args.key?(:environments)
+        end
+      end
+      
       # Represents the metadata of the long-running operation.
       class GoogleCloudFunctionsV2alphaOperationMetadata
         include Google::Apis::Core::Hashable
@@ -900,6 +938,25 @@ module Google
           @message = args[:message] if args.key?(:message)
           @severity = args[:severity] if args.key?(:severity)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Extra GCF specific location information.
+      class GoogleCloudFunctionsV2betaLocationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The Cloud Function environments this location supports.
+        # Corresponds to the JSON property `environments`
+        # @return [Array<String>]
+        attr_accessor :environments
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @environments = args[:environments] if args.key?(:environments)
         end
       end
       
