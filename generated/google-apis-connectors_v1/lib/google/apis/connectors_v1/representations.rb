@@ -545,6 +545,7 @@ module Google
           collection :config_variables, as: 'configVariables', class: Google::Apis::ConnectorsV1::ConfigVariable, decorator: Google::Apis::ConnectorsV1::ConfigVariable::Representation
       
           property :connector_version, as: 'connectorVersion'
+          property :connector_version_launch_stage, as: 'connectorVersionLaunchStage'
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           collection :destination_configs, as: 'destinationConfigs', class: Google::Apis::ConnectorsV1::DestinationConfig, decorator: Google::Apis::ConnectorsV1::DestinationConfig::Representation
@@ -914,6 +915,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auth_code, as: 'authCode'
+          property :auth_uri, as: 'authUri'
           property :client_id, as: 'clientId'
           property :client_secret, as: 'clientSecret', class: Google::Apis::ConnectorsV1::Secret, decorator: Google::Apis::ConnectorsV1::Secret::Representation
       
@@ -1087,6 +1089,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :payg, as: 'payg'
+          property :tenant_project_id, as: 'tenantProjectId'
           property :vpcsc, as: 'vpcsc'
         end
       end
