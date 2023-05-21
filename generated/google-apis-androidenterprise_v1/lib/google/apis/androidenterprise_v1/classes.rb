@@ -2047,6 +2047,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :features
       
+        # The localized full app store description, if available.
+        # Corresponds to the JSON property `fullDescription`
+        # @return [String]
+        attr_accessor :full_description
+      
         # A link to an image that can be used as an icon for the product. This image is
         # suitable for use at up to 512px x 512px.
         # Corresponds to the JSON property `iconUrl`
@@ -2138,6 +2143,7 @@ module Google
           @details_url = args[:details_url] if args.key?(:details_url)
           @distribution_channel = args[:distribution_channel] if args.key?(:distribution_channel)
           @features = args[:features] if args.key?(:features)
+          @full_description = args[:full_description] if args.key?(:full_description)
           @icon_url = args[:icon_url] if args.key?(:icon_url)
           @last_updated_timestamp_millis = args[:last_updated_timestamp_millis] if args.key?(:last_updated_timestamp_millis)
           @min_android_sdk_version = args[:min_android_sdk_version] if args.key?(:min_android_sdk_version)
