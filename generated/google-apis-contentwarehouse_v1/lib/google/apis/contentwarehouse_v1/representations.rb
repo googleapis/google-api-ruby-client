@@ -2596,6 +2596,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AssistantGroundingRankerDeviceTargetingFeatures
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AssistantGroundingRankerDeviceTargetingFeaturesProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AssistantGroundingRankerDeviceTargetingFeaturesStates
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AssistantGroundingRankerDeviceTargetingLabels
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AssistantGroundingRankerGroundingProviderFeatures
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -6971,6 +6995,12 @@ module Google
       end
       
       class ImageRepositoryNimaOutput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ImageRepositoryS3LangIdDebuggingInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -13690,6 +13720,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SpeechWaveHeader
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StorageGraphBfgAuthorityFeedbackMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -13811,6 +13847,12 @@ module Google
       end
       
       class TravelFlightsAirlineConfigCountryContactInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TravelFlightsAirlineConfigGreenFaresInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -18957,7 +18999,6 @@ module Google
       
           property :opt_in_status, as: 'optInStatus', class: Google::Apis::ContentwarehouseV1::AssistantApiSettingsDeviceLogsOptIn, decorator: Google::Apis::ContentwarehouseV1::AssistantApiSettingsDeviceLogsOptIn::Representation
       
-          property :payments_enabled, as: 'paymentsEnabled'
           property :personalization_metadata, as: 'personalizationMetadata', class: Google::Apis::ContentwarehouseV1::AssistantApiSettingsPersonalizationMetadata, decorator: Google::Apis::ContentwarehouseV1::AssistantApiSettingsPersonalizationMetadata::Representation
       
           property :polite_mode, as: 'politeMode', class: Google::Apis::ContentwarehouseV1::AssistantApiSettingsPoliteMode, decorator: Google::Apis::ContentwarehouseV1::AssistantApiSettingsPoliteMode::Representation
@@ -19633,6 +19674,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :execution_capabilities, as: 'executionCapabilities', class: Google::Apis::ContentwarehouseV1::AssistantApiSurfacePropertiesExecutionCapabilities, decorator: Google::Apis::ContentwarehouseV1::AssistantApiSurfacePropertiesExecutionCapabilities::Representation
       
+          property :prefers_glanceable_ui, as: 'prefersGlanceableUi'
           property :response_display_format, as: 'responseDisplayFormat'
           property :supports_multi_response, as: 'supportsMultiResponse'
         end
@@ -20180,6 +20222,45 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :device_id, as: 'deviceId', class: Google::Apis::ContentwarehouseV1::AssistantApiCoreTypesGovernedDeviceId, decorator: Google::Apis::ContentwarehouseV1::AssistantApiCoreTypesGovernedDeviceId::Representation
       
+          property :device_targeting_features, as: 'deviceTargetingFeatures', class: Google::Apis::ContentwarehouseV1::AssistantGroundingRankerDeviceTargetingFeatures, decorator: Google::Apis::ContentwarehouseV1::AssistantGroundingRankerDeviceTargetingFeatures::Representation
+      
+          property :device_targeting_labels, as: 'deviceTargetingLabels', class: Google::Apis::ContentwarehouseV1::AssistantGroundingRankerDeviceTargetingLabels, decorator: Google::Apis::ContentwarehouseV1::AssistantGroundingRankerDeviceTargetingLabels::Representation
+      
+        end
+      end
+      
+      class AssistantGroundingRankerDeviceTargetingFeatures
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :properties, as: 'properties', class: Google::Apis::ContentwarehouseV1::AssistantGroundingRankerDeviceTargetingFeaturesProperties, decorator: Google::Apis::ContentwarehouseV1::AssistantGroundingRankerDeviceTargetingFeaturesProperties::Representation
+      
+          property :states, as: 'states', class: Google::Apis::ContentwarehouseV1::AssistantGroundingRankerDeviceTargetingFeaturesStates, decorator: Google::Apis::ContentwarehouseV1::AssistantGroundingRankerDeviceTargetingFeaturesStates::Representation
+      
+        end
+      end
+      
+      class AssistantGroundingRankerDeviceTargetingFeaturesProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_model_id, as: 'deviceModelId'
+          property :is_owned_by_speaker, as: 'isOwnedBySpeaker'
+        end
+      end
+      
+      class AssistantGroundingRankerDeviceTargetingFeaturesStates
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :distance, as: 'distance'
+          property :is_docked, as: 'isDocked'
+          property :is_locked, as: 'isLocked'
+          property :is_tethered, as: 'isTethered'
+        end
+      end
+      
+      class AssistantGroundingRankerDeviceTargetingLabels
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_selected_by_lumos, as: 'isSelectedByLumos'
         end
       end
       
@@ -20290,6 +20371,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :is_in_app_provider, as: 'isInAppProvider'
           collection :provider_cluster_id_deprecated, as: 'providerClusterIdDeprecated'
+          collection :provider_cluster_ids, as: 'providerClusterIds'
           property :provider_id, as: 'providerId', class: Google::Apis::ContentwarehouseV1::AssistantContextProviderId, decorator: Google::Apis::ContentwarehouseV1::AssistantContextProviderId::Representation
       
           property :psl_score, as: 'pslScore'
@@ -28739,6 +28821,7 @@ module Google
           property :date_expired, :numeric_string => true, as: 'dateExpired'
           property :date_released, :numeric_string => true, as: 'dateReleased'
           property :description, as: 'description'
+          property :digital_source_type, as: 'digitalSourceType'
           property :event, as: 'event'
           property :headline, as: 'headline'
           property :image_supplier, as: 'imageSupplier'
@@ -29204,10 +29287,25 @@ module Google
         end
       end
       
+      class ImageRepositoryS3LangIdDebuggingInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :audio_input_cap, as: 'audioInputCap'
+          property :failed_segments, as: 'failedSegments'
+          property :processed_segments, as: 'processedSegments'
+          property :segment_duration, as: 'segmentDuration'
+          property :segment_stride, as: 'segmentStride'
+          property :wave_header, as: 'waveHeader', class: Google::Apis::ContentwarehouseV1::SpeechWaveHeader, decorator: Google::Apis::ContentwarehouseV1::SpeechWaveHeader::Representation
+      
+        end
+      end
+      
       class ImageRepositoryS3LangIdSignals
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :contains_speech, as: 'containsSpeech'
+          property :debugging_info, as: 'debuggingInfo', class: Google::Apis::ContentwarehouseV1::ImageRepositoryS3LangIdDebuggingInfo, decorator: Google::Apis::ContentwarehouseV1::ImageRepositoryS3LangIdDebuggingInfo::Representation
+      
           property :end_sec, :numeric_string => true, as: 'endSec'
           property :langid_result, as: 'langidResult', class: Google::Apis::ContentwarehouseV1::SpeechS3LanguageIdentificationResult, decorator: Google::Apis::ContentwarehouseV1::SpeechS3LanguageIdentificationResult::Representation
       
@@ -40156,7 +40254,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :latent_entity, as: 'latentEntity', class: Google::Apis::ContentwarehouseV1::RepositoryWebrefLatentEntity, decorator: Google::Apis::ContentwarehouseV1::RepositoryWebrefLatentEntity::Representation
       
-          collection :latent_mid, as: 'latentMid'
         end
       end
       
@@ -43637,6 +43734,26 @@ module Google
         end
       end
       
+      class SpeechWaveHeader
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :atomic_size, as: 'atomicSize'
+          property :atomic_type, as: 'atomicType'
+          property :bit_rate, as: 'bitRate'
+          property :byte_order, as: 'byteOrder'
+          property :details, as: 'details'
+          collection :dimension, as: 'dimension'
+          property :elements_per_sample, as: 'elementsPerSample'
+          property :rank, as: 'rank'
+          property :sample_coding, as: 'sampleCoding'
+          property :sample_rate, as: 'sampleRate'
+          property :sample_size, as: 'sampleSize'
+          property :sample_type, as: 'sampleType'
+          property :start_time, as: 'startTime'
+          property :total_samples, :numeric_string => true, as: 'totalSamples'
+        end
+      end
+      
       class StorageGraphBfgAuthorityFeedbackMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -43943,6 +44060,8 @@ module Google
           property :fare_family_urls, as: 'fareFamilyUrls', class: Google::Apis::ContentwarehouseV1::TravelFlightsNameCatalogProto, decorator: Google::Apis::ContentwarehouseV1::TravelFlightsNameCatalogProto::Representation
       
           collection :fqtv_partner_code, as: 'fqtvPartnerCode'
+          collection :green_fares_info, as: 'greenFaresInfo', class: Google::Apis::ContentwarehouseV1::TravelFlightsAirlineConfigGreenFaresInfo, decorator: Google::Apis::ContentwarehouseV1::TravelFlightsAirlineConfigGreenFaresInfo::Representation
+      
           property :iata_code, as: 'iataCode'
           property :icao_code, as: 'icaoCode'
           property :innovata_code, as: 'innovataCode'
@@ -43955,6 +44074,8 @@ module Google
       
           property :popularity, as: 'popularity'
           property :short_names, as: 'shortNames', class: Google::Apis::ContentwarehouseV1::TravelFlightsNameCatalogProto, decorator: Google::Apis::ContentwarehouseV1::TravelFlightsNameCatalogProto::Representation
+      
+          property :sustainability_program_urls, as: 'sustainabilityProgramUrls', class: Google::Apis::ContentwarehouseV1::TravelFlightsNameCatalogProto, decorator: Google::Apis::ContentwarehouseV1::TravelFlightsNameCatalogProto::Representation
       
           property :type, as: 'type'
           property :urls, as: 'urls', class: Google::Apis::ContentwarehouseV1::TravelFlightsNameCatalogProto, decorator: Google::Apis::ContentwarehouseV1::TravelFlightsNameCatalogProto::Representation
@@ -43978,6 +44099,17 @@ module Google
           collection :contact_info, as: 'contactInfo', class: Google::Apis::ContentwarehouseV1::TravelFlightsAirlineConfigContactInfo, decorator: Google::Apis::ContentwarehouseV1::TravelFlightsAirlineConfigContactInfo::Representation
       
           property :country_code, as: 'countryCode'
+        end
+      end
+      
+      class TravelFlightsAirlineConfigGreenFaresInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bonus_miles_program_name, as: 'bonusMilesProgramName'
+          property :bonus_miles_quantity, :numeric_string => true, as: 'bonusMilesQuantity'
+          property :bonus_miles_quantity_type, as: 'bonusMilesQuantityType'
+          property :bonus_miles_type, as: 'bonusMilesType'
+          property :contribution_framing, as: 'contributionFraming'
         end
       end
       
@@ -44423,6 +44555,7 @@ module Google
           property :download_file_name, as: 'downloadFileName'
           property :http_version, as: 'httpVersion'
           property :is_bidi_streaming_fetch, as: 'isBidiStreamingFetch'
+          property :is_dedicated_hostload, as: 'isDedicatedHostload'
           property :is_floonet_fetch, as: 'isFloonetFetch'
           property :is_from_grpc_proxy, as: 'isFromGrpcProxy'
           property :is_vpc_traffic, as: 'isVpcTraffic'
