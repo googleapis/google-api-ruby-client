@@ -119,21 +119,24 @@ module Google
       # counted multiple times. The value is rounded to the nearest multiple of 10,
       # 100, 1,000 or 1,000,000, depending on the magnitude of the value. **Supported
       # dimensions:** * `apiLevel` (string): the API level of Android that was running
-      # on the user's device. * `versionCode` (int64): version of the app that was
-      # running on the user's device. * `deviceModel` (string): unique identifier of
-      # the user's device model. * `deviceBrand` (string): unique identifier of the
-      # user's device brand. * `deviceType` (string): the type (also known as form
-      # factor) of the user's device. * `countryCode` (string): the country or region
-      # of the user's device based on their IP address, represented as a 2-letter ISO-
-      # 3166 code (e.g. US for the United States). * `deviceRamBucket` (int64): RAM of
-      # the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string):
-      # Make of the device's primary system-on-chip, e.g., Samsung. [Reference](https:/
-      # /developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `
-      # deviceSocModel` (string): Model of the device's primary system-on-chip, e.g., "
-      # Exynos 2100". [Reference](https://developer.android.com/reference/android/os/
-      # Build#SOC_MODEL) * `deviceCpuMake` (string): Make of the device's CPU, e.g.,
-      # Qualcomm. * `deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo
-      # 240". * `deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `
+      # on the user's device, e.g., 26. * `versionCode` (int64): version of the app
+      # that was running on the user's device. * `deviceModel` (string): unique
+      # identifier of the user's device model. The form of the identifier is '
+      # deviceBrand/device', where deviceBrand corresponds to Build.BRAND and device
+      # corresponds to Build.DEVICE, e.g., google/coral. * `deviceBrand` (string):
+      # unique identifier of the user's device brand, e.g., google. * `deviceType` (
+      # string): the type (also known as form factor) of the user's device, e.g.,
+      # PHONE. * `countryCode` (string): the country or region of the user's device
+      # based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US
+      # for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB,
+      # in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's
+      # primary system-on-chip, e.g., Samsung. [Reference](https://developer.android.
+      # com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel` (string):
+      # Model of the device's primary system-on-chip, e.g., "Exynos 2100". [Reference](
+      # https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `
+      # deviceCpuMake` (string): Make of the device's CPU, e.g., Qualcomm. * `
+      # deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". * `
+      # deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `
       # deviceGpuModel` (string): Model of the device's GPU, e.g., Mali. * `
       # deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. * `
       # deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". *
@@ -172,6 +175,58 @@ module Google
         end
       end
       
+      # A representation of an app in the Play Store.
+      class GooglePlayDeveloperReportingV1alpha1App
+        include Google::Apis::Core::Hashable
+      
+        # Title of the app. This is the latest title as set in the Play Console and may
+        # not yet have been reviewed, so might not match the Play Store. Example: `
+        # Google Maps`.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The resource name. Format: apps/`app`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Package name of the app. Example: `com.example.app123`.
+        # Corresponds to the JSON property `packageName`
+        # @return [String]
+        attr_accessor :package_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @package_name = args[:package_name] if args.key?(:package_name)
+        end
+      end
+      
+      # Representations of an app version.
+      class GooglePlayDeveloperReportingV1alpha1AppVersion
+        include Google::Apis::Core::Hashable
+      
+        # Numeric version code of the app version (set by the app's developer).
+        # Corresponds to the JSON property `versionCode`
+        # @return [Fixnum]
+        attr_accessor :version_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @version_code = args[:version_code] if args.key?(:version_code)
+        end
+      end
+      
       # Singleton resource representing the set of crashrate metrics. This metric set
       # contains crashes data combined with usage data to produce a normalized metric
       # independent of user counts. **Supported aggregation periods:** * DAILY:
@@ -206,21 +261,24 @@ module Google
       # counted multiple times. The value is rounded to the nearest multiple of 10,
       # 100, 1,000 or 1,000,000, depending on the magnitude of the value. **Supported
       # dimensions:** * `apiLevel` (string): the API level of Android that was running
-      # on the user's device. * `versionCode` (int64): version of the app that was
-      # running on the user's device. * `deviceModel` (string): unique identifier of
-      # the user's device model. * `deviceBrand` (string): unique identifier of the
-      # user's device brand. * `deviceType` (string): the type (also known as form
-      # factor) of the user's device. * `countryCode` (string): the country or region
-      # of the user's device based on their IP address, represented as a 2-letter ISO-
-      # 3166 code (e.g. US for the United States). * `deviceRamBucket` (int64): RAM of
-      # the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string):
-      # Make of the device's primary system-on-chip, e.g., Samsung. [Reference](https:/
-      # /developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `
-      # deviceSocModel` (string): Model of the device's primary system-on-chip, e.g., "
-      # Exynos 2100". [Reference](https://developer.android.com/reference/android/os/
-      # Build#SOC_MODEL) * `deviceCpuMake` (string): Make of the device's CPU, e.g.,
-      # Qualcomm. * `deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo
-      # 240". * `deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `
+      # on the user's device, e.g., 26. * `versionCode` (int64): version of the app
+      # that was running on the user's device. * `deviceModel` (string): unique
+      # identifier of the user's device model. The form of the identifier is '
+      # deviceBrand/device', where deviceBrand corresponds to Build.BRAND and device
+      # corresponds to Build.DEVICE, e.g., google/coral. * `deviceBrand` (string):
+      # unique identifier of the user's device brand, e.g., google. * `deviceType` (
+      # string): the type (also known as form factor) of the user's device, e.g.,
+      # PHONE. * `countryCode` (string): the country or region of the user's device
+      # based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US
+      # for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB,
+      # in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's
+      # primary system-on-chip, e.g., Samsung. [Reference](https://developer.android.
+      # com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel` (string):
+      # Model of the device's primary system-on-chip, e.g., "Exynos 2100". [Reference](
+      # https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `
+      # deviceCpuMake` (string): Make of the device's CPU, e.g., Qualcomm. * `
+      # deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". * `
+      # deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `
       # deviceGpuModel` (string): Model of the device's GPU, e.g., Mali. * `
       # deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. * `
       # deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". *
@@ -292,6 +350,62 @@ module Google
         end
       end
       
+      # Identifier of a device.
+      class GooglePlayDeveloperReportingV1alpha1DeviceId
+        include Google::Apis::Core::Hashable
+      
+        # Value of Build.BRAND.
+        # Corresponds to the JSON property `buildBrand`
+        # @return [String]
+        attr_accessor :build_brand
+      
+        # Value of Build.DEVICE.
+        # Corresponds to the JSON property `buildDevice`
+        # @return [String]
+        attr_accessor :build_device
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @build_brand = args[:build_brand] if args.key?(:build_brand)
+          @build_device = args[:build_device] if args.key?(:build_device)
+        end
+      end
+      
+      # Summary of a device
+      class GooglePlayDeveloperReportingV1alpha1DeviceModelSummary
+        include Google::Apis::Core::Hashable
+      
+        # Identifier of a device.
+        # Corresponds to the JSON property `deviceId`
+        # @return [Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1DeviceId]
+        attr_accessor :device_id
+      
+        # Link to the device in Play Device Catalog.
+        # Corresponds to the JSON property `deviceUri`
+        # @return [String]
+        attr_accessor :device_uri
+      
+        # Display name of the device.
+        # Corresponds to the JSON property `marketingName`
+        # @return [String]
+        attr_accessor :marketing_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_id = args[:device_id] if args.key?(:device_id)
+          @device_uri = args[:device_uri] if args.key?(:device_uri)
+          @marketing_name = args[:marketing_name] if args.key?(:marketing_name)
+        end
+      end
+      
       # Represents the value of a single dimension.
       class GooglePlayDeveloperReportingV1alpha1DimensionValue
         include Google::Apis::Core::Hashable
@@ -347,14 +461,16 @@ module Google
       # requests. * `reportType` (string): the type of error. The value should
       # correspond to one of the possible values in ErrorType. **Supported dimensions:*
       # * * `apiLevel` (string): the API level of Android that was running on the user'
-      # s device. * `versionCode` (int64): version of the app that was running on the
-      # user's device. * `deviceModel` (string): unique identifier of the user's
-      # device model. * `deviceType` (string): identifier of the device's form factor,
-      # e.g., PHONE. * `issueId` (string): the id an error was assigned to. The value
-      # should correspond to the ``issue`` component of the issue name. * `
-      # deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.)
-      # . * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g.
-      # , Samsung. [Reference](https://developer.android.com/reference/android/os/
+      # s device, e.g., 26. * `versionCode` (int64): version of the app that was
+      # running on the user's device. * `deviceModel` (string): unique identifier of
+      # the user's device model. The form of the identifier is 'deviceBrand/device',
+      # where deviceBrand corresponds to Build.BRAND and device corresponds to Build.
+      # DEVICE, e.g., google/coral. * `deviceType` (string): identifier of the device'
+      # s form factor, e.g., PHONE. * `issueId` (string): the id an error was assigned
+      # to. The value should correspond to the ``issue`` component of the issue name. *
+      # `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB,
+      # etc.). * `deviceSocMake` (string): Make of the device's primary system-on-chip,
+      # e.g., Samsung. [Reference](https://developer.android.com/reference/android/os/
       # Build#SOC_MANUFACTURER) * `deviceSocModel` (string): Model of the device's
       # primary system-on-chip, e.g., "Exynos 2100". [Reference](https://developer.
       # android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string):
@@ -418,6 +534,58 @@ module Google
         # @return [String]
         attr_accessor :cause
       
+        # An estimate of the number of unique users who have experienced this issue (
+        # only considering occurrences matching the filters and within the requested
+        # time period).
+        # Corresponds to the JSON property `distinctUsers`
+        # @return [Fixnum]
+        attr_accessor :distinct_users
+      
+        # A representation of a decimal value, such as 2.5. Clients may convert values
+        # into language-native decimal formats, such as Java's BigDecimal or Python's
+        # decimal.Decimal. [BigDecimal]: https://docs.oracle.com/en/java/javase/11/docs/
+        # api/java.base/java/math/BigDecimal.html [decimal.Decimal]: https://docs.python.
+        # org/3/library/decimal.html
+        # Corresponds to the JSON property `distinctUsersPercent`
+        # @return [Google::Apis::PlaydeveloperreportingV1alpha1::GoogleTypeDecimal]
+        attr_accessor :distinct_users_percent
+      
+        # The total number of error reports in this issue (only considering occurrences
+        # matching the filters and within the requested time period).
+        # Corresponds to the JSON property `errorReportCount`
+        # @return [Fixnum]
+        attr_accessor :error_report_count
+      
+        # Representations of an app version.
+        # Corresponds to the JSON property `firstAppVersion`
+        # @return [Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1AppVersion]
+        attr_accessor :first_app_version
+      
+        # Representation of an OS version.
+        # Corresponds to the JSON property `firstOsVersion`
+        # @return [Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1OsVersion]
+        attr_accessor :first_os_version
+      
+        # Link to the issue in Android vitals in the Play Console.
+        # Corresponds to the JSON property `issueUri`
+        # @return [String]
+        attr_accessor :issue_uri
+      
+        # Representations of an app version.
+        # Corresponds to the JSON property `lastAppVersion`
+        # @return [Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1AppVersion]
+        attr_accessor :last_app_version
+      
+        # Start of the hour during which the last error report in this issue occurred.
+        # Corresponds to the JSON property `lastErrorReportTime`
+        # @return [String]
+        attr_accessor :last_error_report_time
+      
+        # Representation of an OS version.
+        # Corresponds to the JSON property `lastOsVersion`
+        # @return [Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1OsVersion]
+        attr_accessor :last_os_version
+      
         # Location where the issue happened. Depending on the type this can be either: *
         # APPLICATION_NOT_RESPONDING: the name of the activity or service that stopped
         # responding. * CRASH: the likely method name that caused the error.
@@ -442,6 +610,15 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cause = args[:cause] if args.key?(:cause)
+          @distinct_users = args[:distinct_users] if args.key?(:distinct_users)
+          @distinct_users_percent = args[:distinct_users_percent] if args.key?(:distinct_users_percent)
+          @error_report_count = args[:error_report_count] if args.key?(:error_report_count)
+          @first_app_version = args[:first_app_version] if args.key?(:first_app_version)
+          @first_os_version = args[:first_os_version] if args.key?(:first_os_version)
+          @issue_uri = args[:issue_uri] if args.key?(:issue_uri)
+          @last_app_version = args[:last_app_version] if args.key?(:last_app_version)
+          @last_error_report_time = args[:last_error_report_time] if args.key?(:last_error_report_time)
+          @last_os_version = args[:last_os_version] if args.key?(:last_os_version)
           @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
           @type = args[:type] if args.key?(:type)
@@ -457,6 +634,16 @@ module Google
       class GooglePlayDeveloperReportingV1alpha1ErrorReport
         include Google::Apis::Core::Hashable
       
+        # Summary of a device
+        # Corresponds to the JSON property `deviceModel`
+        # @return [Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1DeviceModelSummary]
+        attr_accessor :device_model
+      
+        # Start of the hour during which the latest event in this error report occurred.
+        # Corresponds to the JSON property `eventTime`
+        # @return [String]
+        attr_accessor :event_time
+      
         # The issue this report was associated with. **Please note:** this resource is
         # currently in Alpha. There could be changes to the issue grouping that would
         # result in similar but more recent error reports being assigned to a different
@@ -469,6 +656,11 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Representation of an OS version.
+        # Corresponds to the JSON property `osVersion`
+        # @return [Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1OsVersion]
+        attr_accessor :os_version
       
         # Textual representation of the error report. These textual reports are produced
         # by the platform. The reports are then sanitized and filtered to remove any
@@ -491,8 +683,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @device_model = args[:device_model] if args.key?(:device_model)
+          @event_time = args[:event_time] if args.key?(:event_time)
           @issue = args[:issue] if args.key?(:issue)
           @name = args[:name] if args.key?(:name)
+          @os_version = args[:os_version] if args.key?(:os_version)
           @report_text = args[:report_text] if args.key?(:report_text)
           @type = args[:type] if args.key?(:type)
         end
@@ -519,29 +714,32 @@ module Google
       # may result in users being counted multiple times. The value is rounded to the
       # nearest multiple of 10, 100, 1,000 or 1,000,000, depending on the magnitude of
       # the value. **Supported dimensions:** * `apiLevel` (string): the API level of
-      # Android that was running on the user's device. * `versionCode` (int64):
-      # version of the app that was running on the user's device. * `deviceModel` (
-      # string): unique identifier of the user's device model. * `deviceBrand` (string)
-      # : unique identifier of the user's device brand. * `deviceType` (string): the
-      # type (also known as form factor) of the user's device. * `countryCode` (string)
-      # : the country or region of the user's device based on their IP address,
-      # represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `
-      # deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.)
-      # . * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g.
-      # , Samsung. [Reference](https://developer.android.com/reference/android/os/
-      # Build#SOC_MANUFACTURER) * `deviceSocModel` (string): Model of the device's
-      # primary system-on-chip, e.g., "Exynos 2100". [Reference](https://developer.
-      # android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string):
-      # Make of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model
-      # of the device's CPU, e.g., "Kryo 240". * `deviceGpuMake` (string): Make of the
-      # device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the device's
-      # GPU, e.g., Mali. * `deviceGpuVersion` (string): Version of the device's GPU, e.
-      # g., T750. * `deviceVulkanVersion` (string): Vulkan version of the device, e.g.,
-      # "4198400". * `deviceGlEsVersion` (string): OpenGL ES version of the device, e.
-      # g., "196610". * `deviceScreenSize` (string): Screen size of the device, e.g.,
-      # NORMAL, LARGE. * `deviceScreenDpi` (string): Screen density of the device, e.g.
-      # , mdpi, hdpi. **Required permissions**: to access this resource, the calling
-      # user needs the _View app information (read-only)_ permission for the app.
+      # Android that was running on the user's device, e.g., 26. * `versionCode` (
+      # int64): version of the app that was running on the user's device. * `
+      # deviceModel` (string): unique identifier of the user's device model. The form
+      # of the identifier is 'deviceBrand/device', where deviceBrand corresponds to
+      # Build.BRAND and device corresponds to Build.DEVICE, e.g., google/coral. * `
+      # deviceBrand` (string): unique identifier of the user's device brand, e.g.,
+      # google. * `deviceType` (string): the type (also known as form factor) of the
+      # user's device, e.g., PHONE. * `countryCode` (string): the country or region of
+      # the user's device based on their IP address, represented as a 2-letter ISO-
+      # 3166 code (e.g. US for the United States). * `deviceRamBucket` (int64): RAM of
+      # the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string):
+      # Make of the device's primary system-on-chip, e.g., Samsung. [Reference](https:/
+      # /developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `
+      # deviceSocModel` (string): Model of the device's primary system-on-chip, e.g., "
+      # Exynos 2100". [Reference](https://developer.android.com/reference/android/os/
+      # Build#SOC_MODEL) * `deviceCpuMake` (string): Make of the device's CPU, e.g.,
+      # Qualcomm. * `deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo
+      # 240". * `deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `
+      # deviceGpuModel` (string): Model of the device's GPU, e.g., Mali. * `
+      # deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. * `
+      # deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". *
+      # `deviceGlEsVersion` (string): OpenGL ES version of the device, e.g., "196610".
+      # * `deviceScreenSize` (string): Screen size of the device, e.g., NORMAL, LARGE.
+      # * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi.
+      # **Required permissions**: to access this resource, the calling user needs the
+      # _View app information (read-only)_ permission for the app.
       class GooglePlayDeveloperReportingV1alpha1ExcessiveWakeupRateMetricSet
         include Google::Apis::Core::Hashable
       
@@ -740,33 +938,55 @@ module Google
         end
       end
       
+      # Representation of an OS version.
+      class GooglePlayDeveloperReportingV1alpha1OsVersion
+        include Google::Apis::Core::Hashable
+      
+        # Numeric version code of the OS - API level
+        # Corresponds to the JSON property `apiLevel`
+        # @return [Fixnum]
+        attr_accessor :api_level
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_level = args[:api_level] if args.key?(:api_level)
+        end
+      end
+      
       # Request message for QueryAnrRateMetricSet.
       class GooglePlayDeveloperReportingV1alpha1QueryAnrRateMetricSetRequest
         include Google::Apis::Core::Hashable
       
         # Dimensions to slice the metrics by. **Supported dimensions:** * `apiLevel` (
-        # string): the API level of Android that was running on the user's device. * `
-        # versionCode` (int64): version of the app that was running on the user's device.
-        # * `deviceModel` (string): unique identifier of the user's device model. * `
-        # deviceBrand` (string): unique identifier of the user's device brand. * `
-        # deviceType` (string): the type (also known as form factor) of the user's
-        # device. * `countryCode` (string): the country or region of the user's device
-        # based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US
-        # for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB,
-        # in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's
-        # primary system-on-chip, e.g., Samsung. [Reference](https://developer.android.
-        # com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel` (string):
-        # Model of the device's primary system-on-chip, e.g., "Exynos 2100". [Reference](
-        # https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `
-        # deviceCpuMake` (string): Make of the device's CPU, e.g., Qualcomm. * `
-        # deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". * `
-        # deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `
-        # deviceGpuModel` (string): Model of the device's GPU, e.g., Mali. * `
-        # deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. * `
-        # deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". *
-        # `deviceGlEsVersion` (string): OpenGL ES version of the device, e.g., "196610".
-        # * `deviceScreenSize` (string): Screen size of the device, e.g., NORMAL, LARGE.
-        # * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi.
+        # string): the API level of Android that was running on the user's device, e.g.,
+        # 26. * `versionCode` (int64): version of the app that was running on the user's
+        # device. * `deviceModel` (string): unique identifier of the user's device model.
+        # The form of the identifier is 'deviceBrand/device', where deviceBrand
+        # corresponds to Build.BRAND and device corresponds to Build.DEVICE, e.g.,
+        # google/coral. * `deviceBrand` (string): unique identifier of the user's device
+        # brand, e.g., google. * `deviceType` (string): the type (also known as form
+        # factor) of the user's device, e.g., PHONE. * `countryCode` (string): the
+        # country or region of the user's device based on their IP address, represented
+        # as a 2-letter ISO-3166 code (e.g. US for the United States). * `
+        # deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.)
+        # . * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g.
+        # , Samsung. [Reference](https://developer.android.com/reference/android/os/
+        # Build#SOC_MANUFACTURER) * `deviceSocModel` (string): Model of the device's
+        # primary system-on-chip, e.g., "Exynos 2100". [Reference](https://developer.
+        # android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string):
+        # Make of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model
+        # of the device's CPU, e.g., "Kryo 240". * `deviceGpuMake` (string): Make of the
+        # device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the device's
+        # GPU, e.g., Mali. * `deviceGpuVersion` (string): Version of the device's GPU, e.
+        # g., T750. * `deviceVulkanVersion` (string): Vulkan version of the device, e.g.,
+        # "4198400". * `deviceGlEsVersion` (string): OpenGL ES version of the device, e.
+        # g., "196610". * `deviceScreenSize` (string): Screen size of the device, e.g.,
+        # NORMAL, LARGE. * `deviceScreenDpi` (string): Screen density of the device, e.g.
+        # , mdpi, hdpi.
         # Corresponds to the JSON property `dimensions`
         # @return [Array<String>]
         attr_accessor :dimensions
@@ -897,28 +1117,31 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Dimensions to slice the metrics by. **Supported dimensions:** * `apiLevel` (
-        # string): the API level of Android that was running on the user's device. * `
-        # versionCode` (int64): version of the app that was running on the user's device.
-        # * `deviceModel` (string): unique identifier of the user's device model. * `
-        # deviceBrand` (string): unique identifier of the user's device brand. * `
-        # deviceType` (string): the type (also known as form factor) of the user's
-        # device. * `countryCode` (string): the country or region of the user's device
-        # based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US
-        # for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB,
-        # in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's
-        # primary system-on-chip, e.g., Samsung. [Reference](https://developer.android.
-        # com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel` (string):
-        # Model of the device's primary system-on-chip, e.g., "Exynos 2100". [Reference](
-        # https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `
-        # deviceCpuMake` (string): Make of the device's CPU, e.g., Qualcomm. * `
-        # deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". * `
-        # deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `
-        # deviceGpuModel` (string): Model of the device's GPU, e.g., Mali. * `
-        # deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. * `
-        # deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". *
-        # `deviceGlEsVersion` (string): OpenGL ES version of the device, e.g., "196610".
-        # * `deviceScreenSize` (string): Screen size of the device, e.g., NORMAL, LARGE.
-        # * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi.
+        # string): the API level of Android that was running on the user's device, e.g.,
+        # 26. * `versionCode` (int64): version of the app that was running on the user's
+        # device. * `deviceModel` (string): unique identifier of the user's device model.
+        # The form of the identifier is 'deviceBrand/device', where deviceBrand
+        # corresponds to Build.BRAND and device corresponds to Build.DEVICE, e.g.,
+        # google/coral. * `deviceBrand` (string): unique identifier of the user's device
+        # brand, e.g., google. * `deviceType` (string): the type (also known as form
+        # factor) of the user's device, e.g., PHONE. * `countryCode` (string): the
+        # country or region of the user's device based on their IP address, represented
+        # as a 2-letter ISO-3166 code (e.g. US for the United States). * `
+        # deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.)
+        # . * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g.
+        # , Samsung. [Reference](https://developer.android.com/reference/android/os/
+        # Build#SOC_MANUFACTURER) * `deviceSocModel` (string): Model of the device's
+        # primary system-on-chip, e.g., "Exynos 2100". [Reference](https://developer.
+        # android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string):
+        # Make of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model
+        # of the device's CPU, e.g., "Kryo 240". * `deviceGpuMake` (string): Make of the
+        # device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the device's
+        # GPU, e.g., Mali. * `deviceGpuVersion` (string): Version of the device's GPU, e.
+        # g., T750. * `deviceVulkanVersion` (string): Vulkan version of the device, e.g.,
+        # "4198400". * `deviceGlEsVersion` (string): OpenGL ES version of the device, e.
+        # g., "196610". * `deviceScreenSize` (string): Screen size of the device, e.g.,
+        # NORMAL, LARGE. * `deviceScreenDpi` (string): Screen density of the device, e.g.
+        # , mdpi, hdpi.
         # Corresponds to the JSON property `dimensions`
         # @return [Array<String>]
         attr_accessor :dimensions
@@ -1051,9 +1274,11 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Dimensions to slice the data by. **Supported dimensions:** * `apiLevel` (
-        # string): the API level of Android that was running on the user's device. * `
-        # versionCode` (int64): version of the app that was running on the user's device.
-        # * `deviceModel` (string): unique identifier of the user's device model. * `
+        # string): the API level of Android that was running on the user's device, e.g.,
+        # 26. * `versionCode` (int64): unique identifier of the user's device model. The
+        # form of the identifier is 'deviceBrand/device', where deviceBrand corresponds
+        # to Build.BRAND and device corresponds to Build.DEVICE, e.g., google/coral. * `
+        # deviceModel` (string): unique identifier of the user's device model. * `
         # deviceType` (string): identifier of the device's form factor, e.g., PHONE. * `
         # reportType` (string): the type of error. The value should correspond to one of
         # the possible values in ErrorType. * `isUserPerceived` (string): denotes
@@ -1171,28 +1396,31 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Dimensions to slice the data by. **Supported dimensions:** * `apiLevel` (
-        # string): the API level of Android that was running on the user's device. * `
-        # versionCode` (int64): version of the app that was running on the user's device.
-        # * `deviceModel` (string): unique identifier of the user's device model. * `
-        # deviceBrand` (string): unique identifier of the user's device brand. * `
-        # deviceType` (string): the type (also known as form factor) of the user's
-        # device. * `countryCode` (string): the country or region of the user's device
-        # based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US
-        # for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB,
-        # in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's
-        # primary system-on-chip, e.g., Samsung. [Reference](https://developer.android.
-        # com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel` (string):
-        # Model of the device's primary system-on-chip, e.g., "Exynos 2100". [Reference](
-        # https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `
-        # deviceCpuMake` (string): Make of the device's CPU, e.g., Qualcomm. * `
-        # deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". * `
-        # deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `
-        # deviceGpuModel` (string): Model of the device's GPU, e.g., Mali. * `
-        # deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. * `
-        # deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". *
-        # `deviceGlEsVersion` (string): OpenGL ES version of the device, e.g., "196610".
-        # * `deviceScreenSize` (string): Screen size of the device, e.g., NORMAL, LARGE.
-        # * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi.
+        # string): the API level of Android that was running on the user's device, e.g.,
+        # 26. * `versionCode` (int64): version of the app that was running on the user's
+        # device. * `deviceModel` (string): unique identifier of the user's device model.
+        # The form of the identifier is 'deviceBrand/device', where deviceBrand
+        # corresponds to Build.BRAND and device corresponds to Build.DEVICE, e.g.,
+        # google/coral. * `deviceBrand` (string): unique identifier of the user's device
+        # brand, e.g., google. * `deviceType` (string): the type (also known as form
+        # factor) of the user's device, e.g., PHONE. * `countryCode` (string): the
+        # country or region of the user's device based on their IP address, represented
+        # as a 2-letter ISO-3166 code (e.g. US for the United States). * `
+        # deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.)
+        # . * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g.
+        # , Samsung. [Reference](https://developer.android.com/reference/android/os/
+        # Build#SOC_MANUFACTURER) * `deviceSocModel` (string): Model of the device's
+        # primary system-on-chip, e.g., "Exynos 2100". [Reference](https://developer.
+        # android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string):
+        # Make of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model
+        # of the device's CPU, e.g., "Kryo 240". * `deviceGpuMake` (string): Make of the
+        # device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the device's
+        # GPU, e.g., Mali. * `deviceGpuVersion` (string): Version of the device's GPU, e.
+        # g., T750. * `deviceVulkanVersion` (string): Vulkan version of the device, e.g.,
+        # "4198400". * `deviceGlEsVersion` (string): OpenGL ES version of the device, e.
+        # g., "196610". * `deviceScreenSize` (string): Screen size of the device, e.g.,
+        # NORMAL, LARGE. * `deviceScreenDpi` (string): Screen density of the device, e.g.
+        # , mdpi, hdpi.
         # Corresponds to the JSON property `dimensions`
         # @return [Array<String>]
         attr_accessor :dimensions
@@ -1314,28 +1542,31 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Dimensions to slice the data by. **Supported dimensions:** * `apiLevel` (
-        # string): the API level of Android that was running on the user's device. * `
-        # versionCode` (int64): version of the app that was running on the user's device.
-        # * `deviceModel` (string): unique identifier of the user's device model. * `
-        # deviceBrand` (string): unique identifier of the user's device brand. * `
-        # deviceType` (string): the type (also known as form factor) of the user's
-        # device. * `countryCode` (string): the country or region of the user's device
-        # based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US
-        # for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB,
-        # in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's
-        # primary system-on-chip, e.g., Samsung. [Reference](https://developer.android.
-        # com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel` (string):
-        # Model of the device's primary system-on-chip, e.g., "Exynos 2100". [Reference](
-        # https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `
-        # deviceCpuMake` (string): Make of the device's CPU, e.g., Qualcomm. * `
-        # deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". * `
-        # deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `
-        # deviceGpuModel` (string): Model of the device's GPU, e.g., Mali. * `
-        # deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. * `
-        # deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". *
-        # `deviceGlEsVersion` (string): OpenGL ES version of the device, e.g., "196610".
-        # * `deviceScreenSize` (string): Screen size of the device, e.g., NORMAL, LARGE.
-        # * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi.
+        # string): the API level of Android that was running on the user's device, e.g.,
+        # 26. * `versionCode` (int64): version of the app that was running on the user's
+        # device. * `deviceModel` (string): unique identifier of the user's device model.
+        # The form of the identifier is 'deviceBrand/device', where deviceBrand
+        # corresponds to Build.BRAND and device corresponds to Build.DEVICE, e.g.,
+        # google/coral. * `deviceBrand` (string): unique identifier of the user's device
+        # brand, e.g., google. * `deviceType` (string): the type (also known as form
+        # factor) of the user's device, e.g., PHONE. * `countryCode` (string): the
+        # country or region of the user's device based on their IP address, represented
+        # as a 2-letter ISO-3166 code (e.g. US for the United States). * `
+        # deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.)
+        # . * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g.
+        # , Samsung. [Reference](https://developer.android.com/reference/android/os/
+        # Build#SOC_MANUFACTURER) * `deviceSocModel` (string): Model of the device's
+        # primary system-on-chip, e.g., "Exynos 2100". [Reference](https://developer.
+        # android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string):
+        # Make of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model
+        # of the device's CPU, e.g., "Kryo 240". * `deviceGpuMake` (string): Make of the
+        # device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the device's
+        # GPU, e.g., Mali. * `deviceGpuVersion` (string): Version of the device's GPU, e.
+        # g., T750. * `deviceVulkanVersion` (string): Vulkan version of the device, e.g.,
+        # "4198400". * `deviceGlEsVersion` (string): OpenGL ES version of the device, e.
+        # g., "196610". * `deviceScreenSize` (string): Screen size of the device, e.g.,
+        # NORMAL, LARGE. * `deviceScreenDpi` (string): Screen density of the device, e.g.
+        # , mdpi, hdpi.
         # Corresponds to the JSON property `dimensions`
         # @return [Array<String>]
         attr_accessor :dimensions
@@ -1464,28 +1695,31 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Dimensions to slice the data by. **Supported dimensions:** * `apiLevel` (
-        # string): the API level of Android that was running on the user's device. * `
-        # versionCode` (int64): version of the app that was running on the user's device.
-        # * `deviceModel` (string): unique identifier of the user's device model. * `
-        # deviceBrand` (string): unique identifier of the user's device brand. * `
-        # deviceType` (string): the type (also known as form factor) of the user's
-        # device. * `countryCode` (string): the country or region of the user's device
-        # based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US
-        # for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB,
-        # in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's
-        # primary system-on-chip, e.g., Samsung. [Reference](https://developer.android.
-        # com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel` (string):
-        # Model of the device's primary system-on-chip, e.g., "Exynos 2100". [Reference](
-        # https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `
-        # deviceCpuMake` (string): Make of the device's CPU, e.g., Qualcomm. * `
-        # deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". * `
-        # deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `
-        # deviceGpuModel` (string): Model of the device's GPU, e.g., Mali. * `
-        # deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. * `
-        # deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". *
-        # `deviceGlEsVersion` (string): OpenGL ES version of the device, e.g., "196610".
-        # * `deviceScreenSize` (string): Screen size of the device, e.g., NORMAL, LARGE.
-        # * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi.
+        # string): the API level of Android that was running on the user's device, e.g.,
+        # 26. * `versionCode` (int64): version of the app that was running on the user's
+        # device. * `deviceModel` (string): unique identifier of the user's device model.
+        # The form of the identifier is 'deviceBrand/device', where deviceBrand
+        # corresponds to Build.BRAND and device corresponds to Build.DEVICE, e.g.,
+        # google/coral. * `deviceBrand` (string): unique identifier of the user's device
+        # brand, e.g., google. * `deviceType` (string): the type (also known as form
+        # factor) of the user's device, e.g., PHONE. * `countryCode` (string): the
+        # country or region of the user's device based on their IP address, represented
+        # as a 2-letter ISO-3166 code (e.g. US for the United States). * `
+        # deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.)
+        # . * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g.
+        # , Samsung. [Reference](https://developer.android.com/reference/android/os/
+        # Build#SOC_MANUFACTURER) * `deviceSocModel` (string): Model of the device's
+        # primary system-on-chip, e.g., "Exynos 2100". [Reference](https://developer.
+        # android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string):
+        # Make of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model
+        # of the device's CPU, e.g., "Kryo 240". * `deviceGpuMake` (string): Make of the
+        # device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the device's
+        # GPU, e.g., Mali. * `deviceGpuVersion` (string): Version of the device's GPU, e.
+        # g., T750. * `deviceVulkanVersion` (string): Vulkan version of the device, e.g.,
+        # "4198400". * `deviceGlEsVersion` (string): OpenGL ES version of the device, e.
+        # g., "196610". * `deviceScreenSize` (string): Screen size of the device, e.g.,
+        # NORMAL, LARGE. * `deviceScreenDpi` (string): Screen density of the device, e.g.
+        # , mdpi, hdpi.
         # Corresponds to the JSON property `dimensions`
         # @return [Array<String>]
         attr_accessor :dimensions
@@ -1605,28 +1839,31 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Dimensions to slice the data by. **Supported dimensions:** * `apiLevel` (
-        # string): the API level of Android that was running on the user's device. * `
-        # versionCode` (int64): version of the app that was running on the user's device.
-        # * `deviceModel` (string): unique identifier of the user's device model. * `
-        # deviceBrand` (string): unique identifier of the user's device brand. * `
-        # deviceType` (string): the type (also known as form factor) of the user's
-        # device. * `countryCode` (string): the country or region of the user's device
-        # based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US
-        # for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB,
-        # in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's
-        # primary system-on-chip, e.g., Samsung. [Reference](https://developer.android.
-        # com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel` (string):
-        # Model of the device's primary system-on-chip, e.g., "Exynos 2100". [Reference](
-        # https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `
-        # deviceCpuMake` (string): Make of the device's CPU, e.g., Qualcomm. * `
-        # deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". * `
-        # deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `
-        # deviceGpuModel` (string): Model of the device's GPU, e.g., Mali. * `
-        # deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. * `
-        # deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". *
-        # `deviceGlEsVersion` (string): OpenGL ES version of the device, e.g., "196610".
-        # * `deviceScreenSize` (string): Screen size of the device, e.g., NORMAL, LARGE.
-        # * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi.
+        # string): the API level of Android that was running on the user's device, e.g.,
+        # 26. * `versionCode` (int64): version of the app that was running on the user's
+        # device. * `deviceModel` (string): unique identifier of the user's device model.
+        # The form of the identifier is 'deviceBrand/device', where deviceBrand
+        # corresponds to Build.BRAND and device corresponds to Build.DEVICE, e.g.,
+        # google/coral. * `deviceBrand` (string): unique identifier of the user's device
+        # brand, e.g., google. * `deviceType` (string): the type (also known as form
+        # factor) of the user's device, e.g., PHONE. * `countryCode` (string): the
+        # country or region of the user's device based on their IP address, represented
+        # as a 2-letter ISO-3166 code (e.g. US for the United States). * `
+        # deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.)
+        # . * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g.
+        # , Samsung. [Reference](https://developer.android.com/reference/android/os/
+        # Build#SOC_MANUFACTURER) * `deviceSocModel` (string): Model of the device's
+        # primary system-on-chip, e.g., "Exynos 2100". [Reference](https://developer.
+        # android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string):
+        # Make of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model
+        # of the device's CPU, e.g., "Kryo 240". * `deviceGpuMake` (string): Make of the
+        # device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the device's
+        # GPU, e.g., Mali. * `deviceGpuVersion` (string): Version of the device's GPU, e.
+        # g., T750. * `deviceVulkanVersion` (string): Vulkan version of the device, e.g.,
+        # "4198400". * `deviceGlEsVersion` (string): OpenGL ES version of the device, e.
+        # g., "196610". * `deviceScreenSize` (string): Screen size of the device, e.g.,
+        # NORMAL, LARGE. * `deviceScreenDpi` (string): Screen density of the device, e.g.
+        # , mdpi, hdpi.
         # Corresponds to the JSON property `dimensions`
         # @return [Array<String>]
         attr_accessor :dimensions
@@ -1743,6 +1980,77 @@ module Google
         end
       end
       
+      # A representation of an app release.
+      class GooglePlayDeveloperReportingV1alpha1Release
+        include Google::Apis::Core::Hashable
+      
+        # Readable identifier of the release.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The version codes contained in this release.
+        # Corresponds to the JSON property `versionCodes`
+        # @return [Array<Fixnum>]
+        attr_accessor :version_codes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @version_codes = args[:version_codes] if args.key?(:version_codes)
+        end
+      end
+      
+      # A set of filtering options for releases and version codes specific to an app.
+      class GooglePlayDeveloperReportingV1alpha1ReleaseFilterOptions
+        include Google::Apis::Core::Hashable
+      
+        # List of tracks to filter releases over. Provides the grouping of version codes
+        # under releases and tracks.
+        # Corresponds to the JSON property `tracks`
+        # @return [Array<Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1Track>]
+        attr_accessor :tracks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tracks = args[:tracks] if args.key?(:tracks)
+        end
+      end
+      
+      # Response message for SearchAccessibleApps.
+      class GooglePlayDeveloperReportingV1alpha1SearchAccessibleAppsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The apps accessible to the user calling the endpoint.
+        # Corresponds to the JSON property `apps`
+        # @return [Array<Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1App>]
+        attr_accessor :apps
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @apps = args[:apps] if args.key?(:apps)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response with a paginated list of issues that matched the request.
       class GooglePlayDeveloperReportingV1alpha1SearchErrorIssuesResponse
         include Google::Apis::Core::Hashable
@@ -1825,29 +2133,31 @@ module Google
       # times. The value is rounded to the nearest multiple of 10, 100, 1,000 or 1,000,
       # 000, depending on the magnitude of the value. **Supported dimensions:** * `
       # apiLevel` (string): the API level of Android that was running on the user's
-      # device. * `versionCode` (int64): version of the app that was running on the
-      # user's device. * `deviceModel` (string): unique identifier of the user's
-      # device model. * `deviceBrand` (string): unique identifier of the user's device
-      # brand. * `deviceType` (string): the type (also known as form factor) of the
-      # user's device. * `countryCode` (string): the country or region of the user's
-      # device based on their IP address, represented as a 2-letter ISO-3166 code (e.g.
-      # US for the United States). * `deviceRamBucket` (int64): RAM of the device, in
-      # MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the
-      # device's primary system-on-chip, e.g., Samsung. [Reference](https://developer.
-      # android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel` (
-      # string): Model of the device's primary system-on-chip, e.g., "Exynos 2100". [
-      # Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL)
-      # * `deviceCpuMake` (string): Make of the device's CPU, e.g., Qualcomm. * `
-      # deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". * `
-      # deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `
-      # deviceGpuModel` (string): Model of the device's GPU, e.g., Mali. * `
-      # deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. * `
-      # deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". *
-      # `deviceGlEsVersion` (string): OpenGL ES version of the device, e.g., "196610".
-      # * `deviceScreenSize` (string): Screen size of the device, e.g., NORMAL, LARGE.
-      # * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi.
-      # **Required permissions**: to access this resource, the calling user needs the
-      # _View app information (read-only)_ permission for the app.
+      # device, e.g., 26. * `versionCode` (int64): version of the app that was running
+      # on the user's device. * `deviceModel` (string): unique identifier of the user'
+      # s device model. The form of the identifier is 'deviceBrand/device', where
+      # deviceBrand corresponds to Build.BRAND and device corresponds to Build.DEVICE,
+      # e.g., google/coral. * `deviceBrand` (string): unique identifier of the user's
+      # device brand, e.g., google. * `deviceType` (string): the type (also known as
+      # form factor) of the user's device, e.g., PHONE. * `countryCode` (string): the
+      # country or region of the user's device based on their IP address, represented
+      # as a 2-letter ISO-3166 code (e.g. US for the United States). * `
+      # deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.)
+      # . * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g.
+      # , Samsung. [Reference](https://developer.android.com/reference/android/os/
+      # Build#SOC_MANUFACTURER) * `deviceSocModel` (string): Model of the device's
+      # primary system-on-chip, e.g., "Exynos 2100". [Reference](https://developer.
+      # android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string):
+      # Make of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model
+      # of the device's CPU, e.g., "Kryo 240". * `deviceGpuMake` (string): Make of the
+      # device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the device's
+      # GPU, e.g., Mali. * `deviceGpuVersion` (string): Version of the device's GPU, e.
+      # g., T750. * `deviceVulkanVersion` (string): Vulkan version of the device, e.g.,
+      # "4198400". * `deviceGlEsVersion` (string): OpenGL ES version of the device, e.
+      # g., "196610". * `deviceScreenSize` (string): Screen size of the device, e.g.,
+      # NORMAL, LARGE. * `deviceScreenDpi` (string): Screen density of the device, e.g.
+      # , mdpi, hdpi. **Required permissions**: to access this resource, the calling
+      # user needs the _View app information (read-only)_ permission for the app.
       class GooglePlayDeveloperReportingV1alpha1SlowRenderingRateMetricSet
         include Google::Apis::Core::Hashable
       
@@ -1896,29 +2206,32 @@ module Google
       # specified with each request for the request to be valid. * `startType` (string)
       # : the type of start that was measured. Valid types are `HOT`, `WARM` and `COLD`
       # . **Supported dimensions:** * `apiLevel` (string): the API level of Android
-      # that was running on the user's device. * `versionCode` (int64): version of the
-      # app that was running on the user's device. * `deviceModel` (string): unique
-      # identifier of the user's device model. * `deviceBrand` (string): unique
-      # identifier of the user's device brand. * `deviceType` (string): the type (also
-      # known as form factor) of the user's device. * `countryCode` (string): the
-      # country or region of the user's device based on their IP address, represented
-      # as a 2-letter ISO-3166 code (e.g. US for the United States). * `
-      # deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.)
-      # . * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g.
-      # , Samsung. [Reference](https://developer.android.com/reference/android/os/
-      # Build#SOC_MANUFACTURER) * `deviceSocModel` (string): Model of the device's
-      # primary system-on-chip, e.g., "Exynos 2100". [Reference](https://developer.
-      # android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string):
-      # Make of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model
-      # of the device's CPU, e.g., "Kryo 240". * `deviceGpuMake` (string): Make of the
-      # device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the device's
-      # GPU, e.g., Mali. * `deviceGpuVersion` (string): Version of the device's GPU, e.
-      # g., T750. * `deviceVulkanVersion` (string): Vulkan version of the device, e.g.,
-      # "4198400". * `deviceGlEsVersion` (string): OpenGL ES version of the device, e.
-      # g., "196610". * `deviceScreenSize` (string): Screen size of the device, e.g.,
-      # NORMAL, LARGE. * `deviceScreenDpi` (string): Screen density of the device, e.g.
-      # , mdpi, hdpi. **Required permissions**: to access this resource, the calling
-      # user needs the _View app information (read-only)_ permission for the app.
+      # that was running on the user's device, e.g., 26. * `versionCode` (int64):
+      # version of the app that was running on the user's device. * `deviceModel` (
+      # string): unique identifier of the user's device model. The form of the
+      # identifier is 'deviceBrand/device', where deviceBrand corresponds to Build.
+      # BRAND and device corresponds to Build.DEVICE, e.g., google/coral. * `
+      # deviceBrand` (string): unique identifier of the user's device brand, e.g.,
+      # google. * `deviceType` (string): the type (also known as form factor) of the
+      # user's device, e.g., PHONE. * `countryCode` (string): the country or region of
+      # the user's device based on their IP address, represented as a 2-letter ISO-
+      # 3166 code (e.g. US for the United States). * `deviceRamBucket` (int64): RAM of
+      # the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string):
+      # Make of the device's primary system-on-chip, e.g., Samsung. [Reference](https:/
+      # /developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `
+      # deviceSocModel` (string): Model of the device's primary system-on-chip, e.g., "
+      # Exynos 2100". [Reference](https://developer.android.com/reference/android/os/
+      # Build#SOC_MODEL) * `deviceCpuMake` (string): Make of the device's CPU, e.g.,
+      # Qualcomm. * `deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo
+      # 240". * `deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `
+      # deviceGpuModel` (string): Model of the device's GPU, e.g., Mali. * `
+      # deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. * `
+      # deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". *
+      # `deviceGlEsVersion` (string): OpenGL ES version of the device, e.g., "196610".
+      # * `deviceScreenSize` (string): Screen size of the device, e.g., NORMAL, LARGE.
+      # * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi.
+      # **Required permissions**: to access this resource, the calling user needs the
+      # _View app information (read-only)_ permission for the app.
       class GooglePlayDeveloperReportingV1alpha1SlowStartRateMetricSet
         include Google::Apis::Core::Hashable
       
@@ -1968,29 +2281,31 @@ module Google
       # multiple times. The value is rounded to the nearest multiple of 10, 100, 1,000
       # or 1,000,000, depending on the magnitude of the value. **Supported dimensions:*
       # * * `apiLevel` (string): the API level of Android that was running on the user'
-      # s device. * `versionCode` (int64): version of the app that was running on the
-      # user's device. * `deviceModel` (string): unique identifier of the user's
-      # device model. * `deviceBrand` (string): unique identifier of the user's device
-      # brand. * `deviceType` (string): the type (also known as form factor) of the
-      # user's device. * `countryCode` (string): the country or region of the user's
-      # device based on their IP address, represented as a 2-letter ISO-3166 code (e.g.
-      # US for the United States). * `deviceRamBucket` (int64): RAM of the device, in
-      # MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the
-      # device's primary system-on-chip, e.g., Samsung. [Reference](https://developer.
-      # android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel` (
-      # string): Model of the device's primary system-on-chip, e.g., "Exynos 2100". [
-      # Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL)
-      # * `deviceCpuMake` (string): Make of the device's CPU, e.g., Qualcomm. * `
-      # deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". * `
-      # deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `
-      # deviceGpuModel` (string): Model of the device's GPU, e.g., Mali. * `
-      # deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. * `
-      # deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". *
-      # `deviceGlEsVersion` (string): OpenGL ES version of the device, e.g., "196610".
-      # * `deviceScreenSize` (string): Screen size of the device, e.g., NORMAL, LARGE.
-      # * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi.
-      # **Required permissions**: to access this resource, the calling user needs the
-      # _View app information (read-only)_ permission for the app.
+      # s device, e.g., 26. * `versionCode` (int64): version of the app that was
+      # running on the user's device. * `deviceModel` (string): unique identifier of
+      # the user's device model. The form of the identifier is 'deviceBrand/device',
+      # where deviceBrand corresponds to Build.BRAND and device corresponds to Build.
+      # DEVICE, e.g., google/coral. * `deviceBrand` (string): unique identifier of the
+      # user's device brand, e.g., google. * `deviceType` (string): the type (also
+      # known as form factor) of the user's device, e.g., PHONE. * `countryCode` (
+      # string): the country or region of the user's device based on their IP address,
+      # represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `
+      # deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.)
+      # . * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g.
+      # , Samsung. [Reference](https://developer.android.com/reference/android/os/
+      # Build#SOC_MANUFACTURER) * `deviceSocModel` (string): Model of the device's
+      # primary system-on-chip, e.g., "Exynos 2100". [Reference](https://developer.
+      # android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string):
+      # Make of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model
+      # of the device's CPU, e.g., "Kryo 240". * `deviceGpuMake` (string): Make of the
+      # device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the device's
+      # GPU, e.g., Mali. * `deviceGpuVersion` (string): Version of the device's GPU, e.
+      # g., T750. * `deviceVulkanVersion` (string): Vulkan version of the device, e.g.,
+      # "4198400". * `deviceGlEsVersion` (string): OpenGL ES version of the device, e.
+      # g., "196610". * `deviceScreenSize` (string): Screen size of the device, e.g.,
+      # NORMAL, LARGE. * `deviceScreenDpi` (string): Screen density of the device, e.g.
+      # , mdpi, hdpi. **Required permissions**: to access this resource, the calling
+      # user needs the _View app information (read-only)_ permission for the app.
       class GooglePlayDeveloperReportingV1alpha1StuckBackgroundWakelockRateMetricSet
         include Google::Apis::Core::Hashable
       
@@ -2085,6 +2400,37 @@ module Google
           @aggregation_period = args[:aggregation_period] if args.key?(:aggregation_period)
           @end_time = args[:end_time] if args.key?(:end_time)
           @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # A representation of a Play release track.
+      class GooglePlayDeveloperReportingV1alpha1Track
+        include Google::Apis::Core::Hashable
+      
+        # Readable identifier of the track.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Represents all active releases in the track.
+        # Corresponds to the JSON property `servingReleases`
+        # @return [Array<Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1Release>]
+        attr_accessor :serving_releases
+      
+        # The type of the track.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @serving_releases = args[:serving_releases] if args.key?(:serving_releases)
+          @type = args[:type] if args.key?(:type)
         end
       end
       

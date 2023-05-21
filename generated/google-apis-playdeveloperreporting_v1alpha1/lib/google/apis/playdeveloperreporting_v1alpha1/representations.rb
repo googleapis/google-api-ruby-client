@@ -34,6 +34,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePlayDeveloperReportingV1alpha1App
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePlayDeveloperReportingV1alpha1AppVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePlayDeveloperReportingV1alpha1CrashRateMetricSet
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -41,6 +53,18 @@ module Google
       end
       
       class GooglePlayDeveloperReportingV1alpha1DecimalConfidenceInterval
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePlayDeveloperReportingV1alpha1DeviceId
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePlayDeveloperReportingV1alpha1DeviceModelSummary
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -101,6 +125,12 @@ module Google
       end
       
       class GooglePlayDeveloperReportingV1alpha1MetricsRow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePlayDeveloperReportingV1alpha1OsVersion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -190,6 +220,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePlayDeveloperReportingV1alpha1Release
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePlayDeveloperReportingV1alpha1ReleaseFilterOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePlayDeveloperReportingV1alpha1SearchAccessibleAppsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePlayDeveloperReportingV1alpha1SearchErrorIssuesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -221,6 +269,12 @@ module Google
       end
       
       class GooglePlayDeveloperReportingV1alpha1TimelineSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePlayDeveloperReportingV1alpha1Track
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -267,6 +321,22 @@ module Google
         end
       end
       
+      class GooglePlayDeveloperReportingV1alpha1App
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          property :package_name, as: 'packageName'
+        end
+      end
+      
+      class GooglePlayDeveloperReportingV1alpha1AppVersion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :version_code, :numeric_string => true, as: 'versionCode'
+        end
+      end
+      
       class GooglePlayDeveloperReportingV1alpha1CrashRateMetricSet
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -283,6 +353,24 @@ module Google
       
           property :upper_bound, as: 'upperBound', class: Google::Apis::PlaydeveloperreportingV1alpha1::GoogleTypeDecimal, decorator: Google::Apis::PlaydeveloperreportingV1alpha1::GoogleTypeDecimal::Representation
       
+        end
+      end
+      
+      class GooglePlayDeveloperReportingV1alpha1DeviceId
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :build_brand, as: 'buildBrand'
+          property :build_device, as: 'buildDevice'
+        end
+      end
+      
+      class GooglePlayDeveloperReportingV1alpha1DeviceModelSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_id, as: 'deviceId', class: Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1DeviceId, decorator: Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1DeviceId::Representation
+      
+          property :device_uri, as: 'deviceUri'
+          property :marketing_name, as: 'marketingName'
         end
       end
       
@@ -309,6 +397,20 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cause, as: 'cause'
+          property :distinct_users, :numeric_string => true, as: 'distinctUsers'
+          property :distinct_users_percent, as: 'distinctUsersPercent', class: Google::Apis::PlaydeveloperreportingV1alpha1::GoogleTypeDecimal, decorator: Google::Apis::PlaydeveloperreportingV1alpha1::GoogleTypeDecimal::Representation
+      
+          property :error_report_count, :numeric_string => true, as: 'errorReportCount'
+          property :first_app_version, as: 'firstAppVersion', class: Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1AppVersion, decorator: Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1AppVersion::Representation
+      
+          property :first_os_version, as: 'firstOsVersion', class: Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1OsVersion, decorator: Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1OsVersion::Representation
+      
+          property :issue_uri, as: 'issueUri'
+          property :last_app_version, as: 'lastAppVersion', class: Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1AppVersion, decorator: Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1AppVersion::Representation
+      
+          property :last_error_report_time, as: 'lastErrorReportTime'
+          property :last_os_version, as: 'lastOsVersion', class: Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1OsVersion, decorator: Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1OsVersion::Representation
+      
           property :location, as: 'location'
           property :name, as: 'name'
           property :type, as: 'type'
@@ -318,8 +420,13 @@ module Google
       class GooglePlayDeveloperReportingV1alpha1ErrorReport
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_model, as: 'deviceModel', class: Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1DeviceModelSummary, decorator: Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1DeviceModelSummary::Representation
+      
+          property :event_time, as: 'eventTime'
           property :issue, as: 'issue'
           property :name, as: 'name'
+          property :os_version, as: 'osVersion', class: Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1OsVersion, decorator: Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1OsVersion::Representation
+      
           property :report_text, as: 'reportText'
           property :type, as: 'type'
         end
@@ -384,6 +491,13 @@ module Google
         end
       end
       
+      class GooglePlayDeveloperReportingV1alpha1OsVersion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_level, :numeric_string => true, as: 'apiLevel'
+        end
+      end
+      
       class GooglePlayDeveloperReportingV1alpha1QueryAnrRateMetricSetRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -544,6 +658,31 @@ module Google
         end
       end
       
+      class GooglePlayDeveloperReportingV1alpha1Release
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          collection :version_codes, as: 'versionCodes'
+        end
+      end
+      
+      class GooglePlayDeveloperReportingV1alpha1ReleaseFilterOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :tracks, as: 'tracks', class: Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1Track, decorator: Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1Track::Representation
+      
+        end
+      end
+      
+      class GooglePlayDeveloperReportingV1alpha1SearchAccessibleAppsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :apps, as: 'apps', class: Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1App, decorator: Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1App::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class GooglePlayDeveloperReportingV1alpha1SearchErrorIssuesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -597,6 +736,16 @@ module Google
       
           property :start_time, as: 'startTime', class: Google::Apis::PlaydeveloperreportingV1alpha1::GoogleTypeDateTime, decorator: Google::Apis::PlaydeveloperreportingV1alpha1::GoogleTypeDateTime::Representation
       
+        end
+      end
+      
+      class GooglePlayDeveloperReportingV1alpha1Track
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          collection :serving_releases, as: 'servingReleases', class: Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1Release, decorator: Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1Release::Representation
+      
+          property :type, as: 'type'
         end
       end
       
