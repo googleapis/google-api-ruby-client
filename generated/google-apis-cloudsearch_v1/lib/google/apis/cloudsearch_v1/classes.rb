@@ -455,7 +455,7 @@ module Google
         attr_accessor :local_id
       
         # Annotation metadata to display system messages for membership changes. Next
-        # Tag: 8
+        # Tag: 13
         # Corresponds to the JSON property `membershipChanged`
         # @return [Google::Apis::CloudsearchV1::MembershipChangedMetadata]
         attr_accessor :membership_changed
@@ -1836,6 +1836,11 @@ module Google
         # @return [String]
         attr_accessor :meeting_code
       
+        # Required. Type of the meeting. This controls the chat client UX.
+        # Corresponds to the JSON property `meetingType`
+        # @return [String]
+        attr_accessor :meeting_type
+      
         # Required. A URL, in the format "https://meet.google.com/*" (e.g. https://meet.
         # google.com/cxv-zbgj-wzw), to identify and access the meeting space.
         # Corresponds to the JSON property `meetingUrl`
@@ -1849,6 +1854,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @meeting_code = args[:meeting_code] if args.key?(:meeting_code)
+          @meeting_type = args[:meeting_type] if args.key?(:meeting_type)
           @meeting_url = args[:meeting_url] if args.key?(:meeting_url)
         end
       end
@@ -13634,7 +13640,7 @@ module Google
       end
       
       # Annotation metadata to display system messages for membership changes. Next
-      # Tag: 8
+      # Tag: 13
       class MembershipChangedMetadata
         include Google::Apis::Core::Hashable
       
@@ -13936,6 +13942,11 @@ module Google
         # @return [String]
         attr_accessor :message_state
       
+        # Indicates the number of unicode emojis in the message.
+        # Corresponds to the JSON property `numberOfUnicodeEmojis`
+        # @return [Fixnum]
+        attr_accessor :number_of_unicode_emojis
+      
         # Indicates if this message contains any suggestions that were provided by any
         # Apps.
         # Corresponds to the JSON property `originAppSuggestions`
@@ -14080,6 +14091,7 @@ module Google
           @message_reference = args[:message_reference] if args.key?(:message_reference)
           @message_search_info = args[:message_search_info] if args.key?(:message_search_info)
           @message_state = args[:message_state] if args.key?(:message_state)
+          @number_of_unicode_emojis = args[:number_of_unicode_emojis] if args.key?(:number_of_unicode_emojis)
           @origin_app_suggestions = args[:origin_app_suggestions] if args.key?(:origin_app_suggestions)
           @personal_labels = args[:personal_labels] if args.key?(:personal_labels)
           @private_message_infos = args[:private_message_infos] if args.key?(:private_message_infos)
