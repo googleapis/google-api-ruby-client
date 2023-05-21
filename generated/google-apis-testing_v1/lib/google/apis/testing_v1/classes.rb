@@ -694,6 +694,11 @@ module Google
         # @return [String]
         attr_accessor :package_name
       
+        # Services contained in the tag.
+        # Corresponds to the JSON property `services`
+        # @return [Array<Google::Apis::TestingV1::Service>]
+        attr_accessor :services
+      
         # Specifies the API Level on which the application is designed to run.
         # Corresponds to the JSON property `targetSdkVersion`
         # @return [Fixnum]
@@ -731,6 +736,7 @@ module Google
           @metadata = args[:metadata] if args.key?(:metadata)
           @min_sdk_version = args[:min_sdk_version] if args.key?(:min_sdk_version)
           @package_name = args[:package_name] if args.key?(:package_name)
+          @services = args[:services] if args.key?(:services)
           @target_sdk_version = args[:target_sdk_version] if args.key?(:target_sdk_version)
           @uses_feature = args[:uses_feature] if args.key?(:uses_feature)
           @uses_permission = args[:uses_permission] if args.key?(:uses_permission)
@@ -2011,6 +2017,32 @@ module Google
           @launcher_activity = args[:launcher_activity] if args.key?(:launcher_activity)
           @start_activity = args[:start_activity] if args.key?(:start_activity)
           @timeout = args[:timeout] if args.key?(:timeout)
+        end
+      end
+      
+      # The section of an tag. https://developer.android.com/guide/topics/manifest/
+      # service-element
+      class Service
+        include Google::Apis::Core::Hashable
+      
+        # Intent filters in the service
+        # Corresponds to the JSON property `intentFilter`
+        # @return [Array<Google::Apis::TestingV1::IntentFilter>]
+        attr_accessor :intent_filter
+      
+        # The android:name value
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @intent_filter = args[:intent_filter] if args.key?(:intent_filter)
+          @name = args[:name] if args.key?(:name)
         end
       end
       

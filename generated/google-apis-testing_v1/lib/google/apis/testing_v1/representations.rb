@@ -358,6 +358,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Service
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Shard
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -649,6 +655,8 @@ module Google
       
           property :min_sdk_version, as: 'minSdkVersion'
           property :package_name, as: 'packageName'
+          collection :services, as: 'services', class: Google::Apis::TestingV1::Service, decorator: Google::Apis::TestingV1::Service::Representation
+      
           property :target_sdk_version, as: 'targetSdkVersion'
           collection :uses_feature, as: 'usesFeature', class: Google::Apis::TestingV1::UsesFeature, decorator: Google::Apis::TestingV1::UsesFeature::Representation
       
@@ -1050,6 +1058,15 @@ module Google
           property :start_activity, as: 'startActivity', class: Google::Apis::TestingV1::StartActivityIntent, decorator: Google::Apis::TestingV1::StartActivityIntent::Representation
       
           property :timeout, as: 'timeout'
+        end
+      end
+      
+      class Service
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :intent_filter, as: 'intentFilter', class: Google::Apis::TestingV1::IntentFilter, decorator: Google::Apis::TestingV1::IntentFilter::Representation
+      
+          property :name, as: 'name'
         end
       end
       
