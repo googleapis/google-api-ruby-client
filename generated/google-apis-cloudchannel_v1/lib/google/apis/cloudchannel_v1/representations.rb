@@ -884,6 +884,7 @@ module Google
       class GoogleCloudChannelV1ChangeOfferRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :billing_account, as: 'billingAccount'
           property :offer, as: 'offer'
           collection :parameters, as: 'parameters', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1Parameter, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1Parameter::Representation
       
@@ -1311,6 +1312,7 @@ module Google
       class GoogleCloudChannelV1ListTransferableOffersRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :billing_account, as: 'billingAccount'
           property :cloud_identity_id, as: 'cloudIdentityId'
           property :customer_name, as: 'customerName'
           property :language_code, as: 'languageCode'

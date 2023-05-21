@@ -1188,12 +1188,21 @@ module Google
         # @param [String] customer
         #   Required. The resource name of the customer to list Offers for. Format:
         #   accounts/`account_id`/customers/`customer_id`.
+        # @param [String] change_offer_purchase_billing_account
+        #   Optional. Resource name of the new target Billing Account. Provide this
+        #   Billing Account when setting up billing for a trial subscription. Format:
+        #   accounts/`account_id`/billing_accounts/`billing_account_id`. This field is
+        #   only relevant for multi-currency accounts. It should be left empty for single
+        #   currency accounts.
         # @param [String] change_offer_purchase_entitlement
         #   Required. Resource name of the entitlement. Format: accounts/`account_id`/
         #   customers/`customer_id`/entitlements/`entitlement_id`
         # @param [String] change_offer_purchase_new_sku
         #   Optional. Resource name of the new target SKU. Provide this SKU when upgrading
         #   or downgrading an entitlement. Format: products/`product_id`/skus/`sku_id`
+        # @param [String] create_entitlement_purchase_billing_account
+        #   Optional. Billing account that the result should be restricted to. Format:
+        #   accounts/`account_id`/billing_accounts/`billing_account_id`.
         # @param [String] create_entitlement_purchase_sku
         #   Required. SKU that the result should be restricted to. Format: products/`
         #   product_id`/skus/`sku_id`.
@@ -1224,13 +1233,15 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_account_customer_purchasable_offers(customer, change_offer_purchase_entitlement: nil, change_offer_purchase_new_sku: nil, create_entitlement_purchase_sku: nil, language_code: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_account_customer_purchasable_offers(customer, change_offer_purchase_billing_account: nil, change_offer_purchase_entitlement: nil, change_offer_purchase_new_sku: nil, create_entitlement_purchase_billing_account: nil, create_entitlement_purchase_sku: nil, language_code: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+customer}:listPurchasableOffers', options)
           command.response_representation = Google::Apis::CloudchannelV1::GoogleCloudChannelV1ListPurchasableOffersResponse::Representation
           command.response_class = Google::Apis::CloudchannelV1::GoogleCloudChannelV1ListPurchasableOffersResponse
           command.params['customer'] = customer unless customer.nil?
+          command.query['changeOfferPurchase.billingAccount'] = change_offer_purchase_billing_account unless change_offer_purchase_billing_account.nil?
           command.query['changeOfferPurchase.entitlement'] = change_offer_purchase_entitlement unless change_offer_purchase_entitlement.nil?
           command.query['changeOfferPurchase.newSku'] = change_offer_purchase_new_sku unless change_offer_purchase_new_sku.nil?
+          command.query['createEntitlementPurchase.billingAccount'] = create_entitlement_purchase_billing_account unless create_entitlement_purchase_billing_account.nil?
           command.query['createEntitlementPurchase.sku'] = create_entitlement_purchase_sku unless create_entitlement_purchase_sku.nil?
           command.query['languageCode'] = language_code unless language_code.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
