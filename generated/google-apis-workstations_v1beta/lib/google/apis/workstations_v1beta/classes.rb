@@ -265,6 +265,7 @@ module Google
       
         # Immutable. The name of the Google Cloud KMS encryption key. For example, `
         # projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME`.
+        # The key must be in the same region as the workstation configuration.
         # Corresponds to the JSON property `kmsKey`
         # @return [String]
         attr_accessor :kms_key

@@ -21,7 +21,7 @@ module Google
   module Apis
     # Cloud Workstations API
     #
-    # 
+    # Allows administrators to create managed developer environments in the cloud.
     #
     # @see https://cloud.google.com/workstations
     module WorkstationsV1beta
