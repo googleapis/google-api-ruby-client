@@ -1161,7 +1161,8 @@ module Google
       class GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenRequest
         include Google::Apis::Core::Hashable
       
-        # Required. The App Check token to verify.
+        # Required. The App Check token to verify. App Check tokens exchanged from the
+        # SafetyNet provider are not supported; an HTTP 400 error will be returned.
         # Corresponds to the JSON property `appCheckToken`
         # @return [String]
         attr_accessor :app_check_token
@@ -1181,11 +1182,12 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Whether this token was already consumed. If this is the first time this method
-        # has seen the given App Check token, this field will contain the value `false`.
-        # The given token will then be marked as `already_consumed` for all future
-        # invocations of this method for that token. Note that if the given App Check
-        # token is invalid, an HTTP 403 error is returned instead of a response
-        # containing this field, regardless whether the token was already consumed.
+        # has seen the given App Check token, this field will be omitted from the
+        # response. The given token will then be marked as `already_consumed` (set to `
+        # true`) for all future invocations of this method for that token. Note that if
+        # the given App Check token is invalid, an HTTP 403 error is returned instead of
+        # a response containing this field, regardless whether the token was already
+        # consumed.
         # Corresponds to the JSON property `alreadyConsumed`
         # @return [Boolean]
         attr_accessor :already_consumed
