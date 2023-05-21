@@ -898,6 +898,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TableConstraints
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class ForeignKey
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class ColumnReference
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+          
+          class ReferencedTable
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+        
+        class PrimaryKey
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InsertAllTableDataRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -2875,18 +2905,18 @@ module Google
           property :max_staleness, :base64 => true, as: 'maxStaleness'
           property :model, as: 'model', class: Google::Apis::BigqueryV2::ModelDefinition, decorator: Google::Apis::BigqueryV2::ModelDefinition::Representation
       
+          property :num_active_logical_bytes, :numeric_string => true, as: 'numActiveLogicalBytes'
+          property :num_active_physical_bytes, :numeric_string => true, as: 'numActivePhysicalBytes'
           property :num_bytes, :numeric_string => true, as: 'numBytes'
           property :num_long_term_bytes, :numeric_string => true, as: 'numLongTermBytes'
+          property :num_long_term_logical_bytes, :numeric_string => true, as: 'numLongTermLogicalBytes'
+          property :num_long_term_physical_bytes, :numeric_string => true, as: 'numLongTermPhysicalBytes'
+          property :num_partitions, :numeric_string => true, as: 'numPartitions'
           property :num_physical_bytes, :numeric_string => true, as: 'numPhysicalBytes'
           property :num_rows, :numeric_string => true, as: 'numRows'
-          property :num_active_logical_bytes, :numeric_string => true, as: 'num_active_logical_bytes'
-          property :num_active_physical_bytes, :numeric_string => true, as: 'num_active_physical_bytes'
-          property :num_long_term_logical_bytes, :numeric_string => true, as: 'num_long_term_logical_bytes'
-          property :num_long_term_physical_bytes, :numeric_string => true, as: 'num_long_term_physical_bytes'
-          property :num_partitions, :numeric_string => true, as: 'num_partitions'
-          property :num_time_travel_physical_bytes, :numeric_string => true, as: 'num_time_travel_physical_bytes'
-          property :num_total_logical_bytes, :numeric_string => true, as: 'num_total_logical_bytes'
-          property :num_total_physical_bytes, :numeric_string => true, as: 'num_total_physical_bytes'
+          property :num_time_travel_physical_bytes, :numeric_string => true, as: 'numTimeTravelPhysicalBytes'
+          property :num_total_logical_bytes, :numeric_string => true, as: 'numTotalLogicalBytes'
+          property :num_total_physical_bytes, :numeric_string => true, as: 'numTotalPhysicalBytes'
           property :range_partitioning, as: 'rangePartitioning', class: Google::Apis::BigqueryV2::RangePartitioning, decorator: Google::Apis::BigqueryV2::RangePartitioning::Representation
       
           property :require_partition_filter, as: 'requirePartitionFilter'
@@ -2896,6 +2926,8 @@ module Google
           property :snapshot_definition, as: 'snapshotDefinition', class: Google::Apis::BigqueryV2::SnapshotDefinition, decorator: Google::Apis::BigqueryV2::SnapshotDefinition::Representation
       
           property :streaming_buffer, as: 'streamingBuffer', class: Google::Apis::BigqueryV2::Streamingbuffer, decorator: Google::Apis::BigqueryV2::Streamingbuffer::Representation
+      
+          property :table_constraints, as: 'tableConstraints', class: Google::Apis::BigqueryV2::TableConstraints, decorator: Google::Apis::BigqueryV2::TableConstraints::Representation
       
           property :table_reference, as: 'tableReference', class: Google::Apis::BigqueryV2::TableReference, decorator: Google::Apis::BigqueryV2::TableReference::Representation
       
@@ -2911,6 +2943,51 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :v, as: 'v'
+        end
+      end
+      
+      class TableConstraints
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :foreign_keys, as: 'foreign_keys', class: Google::Apis::BigqueryV2::TableConstraints::ForeignKey, decorator: Google::Apis::BigqueryV2::TableConstraints::ForeignKey::Representation
+      
+          property :primary_key, as: 'primary_key', class: Google::Apis::BigqueryV2::TableConstraints::PrimaryKey, decorator: Google::Apis::BigqueryV2::TableConstraints::PrimaryKey::Representation
+      
+        end
+        
+        class ForeignKey
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            collection :column_references, as: 'column_references', class: Google::Apis::BigqueryV2::TableConstraints::ForeignKey::ColumnReference, decorator: Google::Apis::BigqueryV2::TableConstraints::ForeignKey::ColumnReference::Representation
+        
+            property :name, as: 'name'
+            property :referenced_table, as: 'referenced_table', class: Google::Apis::BigqueryV2::TableConstraints::ForeignKey::ReferencedTable, decorator: Google::Apis::BigqueryV2::TableConstraints::ForeignKey::ReferencedTable::Representation
+        
+          end
+          
+          class ColumnReference
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :referenced_column, as: 'referenced_column'
+              property :referencing_column, as: 'referencing_column'
+            end
+          end
+          
+          class ReferencedTable
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :dataset_id, as: 'datasetId'
+              property :project_id, as: 'projectId'
+              property :table_id, as: 'tableId'
+            end
+          end
+        end
+        
+        class PrimaryKey
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            collection :columns, as: 'columns'
+          end
         end
       end
       
@@ -3095,6 +3172,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :adjust_step_changes, as: 'adjustStepChanges'
+          property :approx_global_feature_contrib, as: 'approxGlobalFeatureContrib'
           property :auto_arima, as: 'autoArima'
           property :auto_arima_max_order, :numeric_string => true, as: 'autoArimaMaxOrder'
           property :auto_arima_min_order, :numeric_string => true, as: 'autoArimaMinOrder'
