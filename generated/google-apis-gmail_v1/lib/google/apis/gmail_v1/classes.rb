@@ -117,7 +117,7 @@ module Google
         # @return [String]
         attr_accessor :email_address
       
-        # If a key pair is associated, the identifier of the key pair, CseKeyPair.
+        # If a key pair is associated, the ID of the key pair, CseKeyPair.
         # Corresponds to the JSON property `primaryKeyPairId`
         # @return [String]
         attr_accessor :primary_key_pair_id
