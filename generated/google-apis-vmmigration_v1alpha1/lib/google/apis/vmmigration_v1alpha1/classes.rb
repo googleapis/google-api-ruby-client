@@ -174,6 +174,37 @@ module Google
         end
       end
       
+      # The details of an AWS instance disk.
+      class AwsDiskDetails
+        include Google::Apis::Core::Hashable
+      
+        # The ordinal number of the disk.
+        # Corresponds to the JSON property `diskNumber`
+        # @return [Fixnum]
+        attr_accessor :disk_number
+      
+        # Size in GB.
+        # Corresponds to the JSON property `sizeGb`
+        # @return [Fixnum]
+        attr_accessor :size_gb
+      
+        # AWS volume ID.
+        # Corresponds to the JSON property `volumeId`
+        # @return [String]
+        attr_accessor :volume_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disk_number = args[:disk_number] if args.key?(:disk_number)
+          @size_gb = args[:size_gb] if args.key?(:size_gb)
+          @volume_id = args[:volume_id] if args.key?(:volume_id)
+        end
+      end
+      
       # AwsSecurityGroup describes a security group of an AWS VM.
       class AwsSecurityGroup
         include Google::Apis::Core::Hashable
@@ -278,6 +309,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :committed_storage_bytes
       
+        # The disks attached to the source VM.
+        # Corresponds to the JSON property `disks`
+        # @return [Array<Google::Apis::VmmigrationV1alpha1::AwsDiskDetails>]
+        attr_accessor :disks
+      
         # The firmware type of the source VM.
         # Corresponds to the JSON property `firmware`
         # @return [String]
@@ -290,6 +326,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @committed_storage_bytes = args[:committed_storage_bytes] if args.key?(:committed_storage_bytes)
+          @disks = args[:disks] if args.key?(:disks)
           @firmware = args[:firmware] if args.key?(:firmware)
         end
       end
