@@ -1677,6 +1677,27 @@ module Google
         end
       end
       
+      # Covers controls for device connectivity such as Wi-Fi, USB data access,
+      # keyboard/mouse connections, and more.
+      class DeviceConnectivityManagement
+        include Google::Apis::Core::Hashable
+      
+        # Controls what can be transferred via USB, files and/or data. This is supported
+        # only on company-owned devices.
+        # Corresponds to the JSON property `usbDataAccess`
+        # @return [String]
+        attr_accessor :usb_data_access
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @usb_data_access = args[:usb_data_access] if args.key?(:usb_data_access)
+        end
+      end
+      
       # Information about security related device settings on device.
       class DeviceSettings
         include Google::Apis::Core::Hashable
@@ -3888,6 +3909,12 @@ module Google
         # @return [String]
         attr_accessor :default_permission_policy
       
+        # Covers controls for device connectivity such as Wi-Fi, USB data access,
+        # keyboard/mouse connections, and more.
+        # Corresponds to the JSON property `deviceConnectivityManagement`
+        # @return [Google::Apis::AndroidmanagementV1::DeviceConnectivityManagement]
+        attr_accessor :device_connectivity_management
+      
         # Provides a user-facing message with locale info. The maximum message length is
         # 4096 characters.
         # Corresponds to the JSON property `deviceOwnerLockScreenInfo`
@@ -4278,10 +4305,15 @@ module Google
         attr_accessor :vpn_config_disabled
         alias_method :vpn_config_disabled?, :vpn_config_disabled
       
-        # Whether configuring Wi-Fi access points is disabled. Note: If a network
-        # connection can't be made at boot time and configuring Wi-Fi is disabled then
-        # network escape hatch will be shown in order to refresh the device policy (see
-        # networkEscapeHatchEnabled).
+        # Whether configuring Wi-Fi networks is disabled. Supported on fully managed
+        # devices and work profiles on company-owned devices. For fully managed devices,
+        # setting this to true removes all configured networks and retains only the
+        # networks configured using openNetworkConfiguration. For work profiles on
+        # company-owned devices, existing configured networks are not affected and the
+        # user is not allowed to add, remove, or modify Wi-Fi networks. Note: If a
+        # network connection can't be made at boot time and configuring Wi-Fi is
+        # disabled then network escape hatch will be shown in order to refresh the
+        # device policy (see networkEscapeHatchEnabled).
         # Corresponds to the JSON property `wifiConfigDisabled`
         # @return [Boolean]
         attr_accessor :wifi_config_disabled
@@ -4324,6 +4356,7 @@ module Google
           @data_roaming_disabled = args[:data_roaming_disabled] if args.key?(:data_roaming_disabled)
           @debugging_features_allowed = args[:debugging_features_allowed] if args.key?(:debugging_features_allowed)
           @default_permission_policy = args[:default_permission_policy] if args.key?(:default_permission_policy)
+          @device_connectivity_management = args[:device_connectivity_management] if args.key?(:device_connectivity_management)
           @device_owner_lock_screen_info = args[:device_owner_lock_screen_info] if args.key?(:device_owner_lock_screen_info)
           @encryption_policy = args[:encryption_policy] if args.key?(:encryption_policy)
           @ensure_verify_apps_enabled = args[:ensure_verify_apps_enabled] if args.key?(:ensure_verify_apps_enabled)
