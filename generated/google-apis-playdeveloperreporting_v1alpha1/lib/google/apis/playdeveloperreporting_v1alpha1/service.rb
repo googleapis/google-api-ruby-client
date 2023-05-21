@@ -101,6 +101,75 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Describes filtering options for releases.
+        # @param [String] name
+        #   Required. Name of the resource, i.e. app the filtering options are for. Format:
+        #   apps/`app`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1ReleaseFilterOptions] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1ReleaseFilterOptions]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def fetch_app_release_filter_options(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha1/{+name}:fetchReleaseFilterOptions', options)
+          command.response_representation = Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1ReleaseFilterOptions::Representation
+          command.response_class = Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1ReleaseFilterOptions
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Searches for Apps accessible by the user.
+        # @param [Fixnum] page_size
+        #   The maximum number of apps to return. The service may return fewer than this
+        #   value. If unspecified, at most 50 apps will be returned. The maximum value is
+        #   1000; values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   A page token, received from a previous `SearchAccessibleApps` call. Provide
+        #   this to retrieve the subsequent page. When paginating, all other parameters
+        #   provided to `SearchAccessibleApps` must match the call that provided the page
+        #   token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1SearchAccessibleAppsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1SearchAccessibleAppsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def search_apps(page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha1/apps:search', options)
+          command.response_representation = Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1SearchAccessibleAppsResponse::Representation
+          command.response_class = Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1SearchAccessibleAppsResponse
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Describes the properties of the metric set.
         # @param [String] name
         #   Required. The resource name. Format: apps/`app`/anrRateMetricSet
@@ -383,6 +452,13 @@ module Google
         # @param [Fixnum] interval_start_time_year
         #   Optional. Year of date. Must be from 1 to 9999, or 0 if specifying a datetime
         #   without a year.
+        # @param [String] order_by
+        #   Specifies a field that will be used to order the results. ** Supported
+        #   dimensions:** * `errorReportCount`: Orders issues by number of error reports. *
+        #   `distinctUsers`: Orders issues by number of unique affected users. **
+        #   Supported operations:** * `asc` for ascending order. * `desc` for descending
+        #   order. Format: A field and an operation, e.g., `errorReportCount desc` *Note:*
+        #   currently only one field is supported at a time.
         # @param [Fixnum] page_size
         #   The maximum number of error issues to return. The service may return fewer
         #   than this value. If unspecified, at most 50 error issues will be returned. The
@@ -408,7 +484,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def search_vital_error_issues(parent, filter: nil, interval_end_time_day: nil, interval_end_time_hours: nil, interval_end_time_minutes: nil, interval_end_time_month: nil, interval_end_time_nanos: nil, interval_end_time_seconds: nil, interval_end_time_time_zone_id: nil, interval_end_time_time_zone_version: nil, interval_end_time_utc_offset: nil, interval_end_time_year: nil, interval_start_time_day: nil, interval_start_time_hours: nil, interval_start_time_minutes: nil, interval_start_time_month: nil, interval_start_time_nanos: nil, interval_start_time_seconds: nil, interval_start_time_time_zone_id: nil, interval_start_time_time_zone_version: nil, interval_start_time_utc_offset: nil, interval_start_time_year: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def search_vital_error_issues(parent, filter: nil, interval_end_time_day: nil, interval_end_time_hours: nil, interval_end_time_minutes: nil, interval_end_time_month: nil, interval_end_time_nanos: nil, interval_end_time_seconds: nil, interval_end_time_time_zone_id: nil, interval_end_time_time_zone_version: nil, interval_end_time_utc_offset: nil, interval_end_time_year: nil, interval_start_time_day: nil, interval_start_time_hours: nil, interval_start_time_minutes: nil, interval_start_time_month: nil, interval_start_time_nanos: nil, interval_start_time_seconds: nil, interval_start_time_time_zone_id: nil, interval_start_time_time_zone_version: nil, interval_start_time_utc_offset: nil, interval_start_time_year: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1alpha1/{+parent}/errorIssues:search', options)
           command.response_representation = Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1SearchErrorIssuesResponse::Representation
           command.response_class = Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1SearchErrorIssuesResponse
@@ -434,6 +510,7 @@ module Google
           command.query['interval.startTime.timeZone.version'] = interval_start_time_time_zone_version unless interval_start_time_time_zone_version.nil?
           command.query['interval.startTime.utcOffset'] = interval_start_time_utc_offset unless interval_start_time_utc_offset.nil?
           command.query['interval.startTime.year'] = interval_start_time_year unless interval_start_time_year.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
