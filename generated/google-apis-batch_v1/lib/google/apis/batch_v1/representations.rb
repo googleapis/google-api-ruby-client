@@ -841,6 +841,7 @@ module Google
           property :parallelism, :numeric_string => true, as: 'parallelism'
           property :permissive_ssh, as: 'permissiveSsh'
           property :require_hosts_file, as: 'requireHostsFile'
+          property :scheduling_policy, as: 'schedulingPolicy'
           property :task_count, :numeric_string => true, as: 'taskCount'
           property :task_count_per_node, :numeric_string => true, as: 'taskCountPerNode'
           collection :task_environments, as: 'taskEnvironments', class: Google::Apis::BatchV1::Environment, decorator: Google::Apis::BatchV1::Environment::Representation
