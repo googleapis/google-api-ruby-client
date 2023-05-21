@@ -220,6 +220,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeviceConnectivityManagement
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeviceSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1114,6 +1120,13 @@ module Google
         end
       end
       
+      class DeviceConnectivityManagement
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :usb_data_access, as: 'usbDataAccess'
+        end
+      end
+      
       class DeviceSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1685,6 +1698,8 @@ module Google
           property :data_roaming_disabled, as: 'dataRoamingDisabled'
           property :debugging_features_allowed, as: 'debuggingFeaturesAllowed'
           property :default_permission_policy, as: 'defaultPermissionPolicy'
+          property :device_connectivity_management, as: 'deviceConnectivityManagement', class: Google::Apis::AndroidmanagementV1::DeviceConnectivityManagement, decorator: Google::Apis::AndroidmanagementV1::DeviceConnectivityManagement::Representation
+      
           property :device_owner_lock_screen_info, as: 'deviceOwnerLockScreenInfo', class: Google::Apis::AndroidmanagementV1::UserFacingMessage, decorator: Google::Apis::AndroidmanagementV1::UserFacingMessage::Representation
       
           property :encryption_policy, as: 'encryptionPolicy'
