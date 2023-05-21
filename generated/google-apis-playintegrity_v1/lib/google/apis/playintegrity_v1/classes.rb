@@ -172,6 +172,27 @@ module Google
         end
       end
       
+      # Contains guidance details about the Integrity API response, providing
+      # additional context to the integrity verdicts.
+      class GuidanceDetails
+        include Google::Apis::Core::Hashable
+      
+        # This shows when there is an issue with at least one of the integrity verdicts,
+        # and provides user remediation guidance.
+        # Corresponds to the JSON property `userRemediation`
+        # @return [Array<String>]
+        attr_accessor :user_remediation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @user_remediation = args[:user_remediation] if args.key?(:user_remediation)
+        end
+      end
+      
       # Contains the integrity request information.
       class RequestDetails
         include Google::Apis::Core::Hashable
@@ -253,6 +274,12 @@ module Google
         # @return [Google::Apis::PlayintegrityV1::DeviceIntegrity]
         attr_accessor :device_integrity
       
+        # Contains guidance details about the Integrity API response, providing
+        # additional context to the integrity verdicts.
+        # Corresponds to the JSON property `guidanceDetails`
+        # @return [Google::Apis::PlayintegrityV1::GuidanceDetails]
+        attr_accessor :guidance_details
+      
         # Contains the integrity request information.
         # Corresponds to the JSON property `requestDetails`
         # @return [Google::Apis::PlayintegrityV1::RequestDetails]
@@ -272,6 +299,7 @@ module Google
           @account_details = args[:account_details] if args.key?(:account_details)
           @app_integrity = args[:app_integrity] if args.key?(:app_integrity)
           @device_integrity = args[:device_integrity] if args.key?(:device_integrity)
+          @guidance_details = args[:guidance_details] if args.key?(:guidance_details)
           @request_details = args[:request_details] if args.key?(:request_details)
           @testing_details = args[:testing_details] if args.key?(:testing_details)
         end
