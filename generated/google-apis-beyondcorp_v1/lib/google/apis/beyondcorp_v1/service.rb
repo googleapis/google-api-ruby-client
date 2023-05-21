@@ -86,7 +86,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_organization_location_global_tenant_iam_policy(resource, options_requested_policy_version: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_organization_location_global_partner_tenant_iam_policy(resource, options_requested_policy_version: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+resource}:getIamPolicy', options)
           command.response_representation = Google::Apis::BeyondcorpV1::GoogleIamV1Policy::Representation
           command.response_class = Google::Apis::BeyondcorpV1::GoogleIamV1Policy
@@ -122,7 +122,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_organization_location_global_tenant_iam_policy(resource, google_iam_v1_set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def set_organization_location_global_partner_tenant_iam_policy(resource, google_iam_v1_set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
           command.request_representation = Google::Apis::BeyondcorpV1::GoogleIamV1SetIamPolicyRequest::Representation
           command.request_object = google_iam_v1_set_iam_policy_request_object
@@ -161,7 +161,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def test_organization_location_global_tenant_iam_permissions(resource, google_iam_v1_test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def test_organization_location_global_partner_tenant_iam_permissions(resource, google_iam_v1_test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
           command.request_representation = Google::Apis::BeyondcorpV1::GoogleIamV1TestIamPermissionsRequest::Representation
           command.request_object = google_iam_v1_test_iam_permissions_request_object
@@ -207,7 +207,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_organization_location_global_tenant_proxy_config_iam_policy(resource, options_requested_policy_version: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_organization_location_global_partner_tenant_proxy_config_iam_policy(resource, options_requested_policy_version: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+resource}:getIamPolicy', options)
           command.response_representation = Google::Apis::BeyondcorpV1::GoogleIamV1Policy::Representation
           command.response_class = Google::Apis::BeyondcorpV1::GoogleIamV1Policy
@@ -243,7 +243,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_organization_location_global_tenant_proxy_config_iam_policy(resource, google_iam_v1_set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def set_organization_location_global_partner_tenant_proxy_config_iam_policy(resource, google_iam_v1_set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
           command.request_representation = Google::Apis::BeyondcorpV1::GoogleIamV1SetIamPolicyRequest::Representation
           command.request_object = google_iam_v1_set_iam_policy_request_object
@@ -282,7 +282,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def test_organization_location_global_tenant_proxy_config_iam_permissions(resource, google_iam_v1_test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def test_organization_location_global_partner_tenant_proxy_config_iam_permissions(resource, google_iam_v1_test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
           command.request_representation = Google::Apis::BeyondcorpV1::GoogleIamV1TestIamPermissionsRequest::Representation
           command.request_object = google_iam_v1_test_iam_permissions_request_object
