@@ -1736,8 +1736,7 @@ module Google
         # @return [String]
         attr_accessor :disk_type
       
-        # Whether this disk is using confidential compute mode. see go/confidential-mode-
-        # in-arcus for details.
+        # Whether this disk is using confidential compute mode.
         # Corresponds to the JSON property `enableConfidentialCompute`
         # @return [Boolean]
         attr_accessor :enable_confidential_compute
@@ -5816,6 +5815,11 @@ module Google
         # @return [Array<Google::Apis::ComputeAlpha::Reservation>]
         attr_accessor :reservations
       
+        # [Output Only] Contains output only fields.
+        # Corresponds to the JSON property `resourceStatus`
+        # @return [Google::Apis::ComputeAlpha::CommitmentResourceStatus]
+        attr_accessor :resource_status
+      
         # A list of commitment amounts for particular resources. Note that VCPU and
         # MEMORY resource commitments must occur together.
         # Corresponds to the JSON property `resources`
@@ -5881,6 +5885,7 @@ module Google
           @plan = args[:plan] if args.key?(:plan)
           @region = args[:region] if args.key?(:region)
           @reservations = args[:reservations] if args.key?(:reservations)
+          @resource_status = args[:resource_status] if args.key?(:resource_status)
           @resources = args[:resources] if args.key?(:resources)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
@@ -6131,6 +6136,70 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # [Output Only] Contains output only fields.
+      class CommitmentResourceStatus
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] An optional, contains all the needed information of cancellation.
+        # Corresponds to the JSON property `cancellationInformation`
+        # @return [Google::Apis::ComputeAlpha::CommitmentResourceStatusCancellationInformation]
+        attr_accessor :cancellation_information
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cancellation_information = args[:cancellation_information] if args.key?(:cancellation_information)
+        end
+      end
+      
+      # 
+      class CommitmentResourceStatusCancellationInformation
+        include Google::Apis::Core::Hashable
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `canceledCommitment`
+        # @return [Google::Apis::ComputeAlpha::Money]
+        attr_accessor :canceled_commitment
+      
+        # [Output Only] An optional last update time of canceled_commitment. RFC3339
+        # text format.
+        # Corresponds to the JSON property `canceledCommitmentLastUpdatedTimestamp`
+        # @return [String]
+        attr_accessor :canceled_commitment_last_updated_timestamp
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `cancellationCap`
+        # @return [Google::Apis::ComputeAlpha::Money]
+        attr_accessor :cancellation_cap
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `cancellationFee`
+        # @return [Google::Apis::ComputeAlpha::Money]
+        attr_accessor :cancellation_fee
+      
+        # [Output Only] An optional, cancellation fee expiration time. RFC3339 text
+        # format.
+        # Corresponds to the JSON property `cancellationFeeExpirationTimestamp`
+        # @return [String]
+        attr_accessor :cancellation_fee_expiration_timestamp
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @canceled_commitment = args[:canceled_commitment] if args.key?(:canceled_commitment)
+          @canceled_commitment_last_updated_timestamp = args[:canceled_commitment_last_updated_timestamp] if args.key?(:canceled_commitment_last_updated_timestamp)
+          @cancellation_cap = args[:cancellation_cap] if args.key?(:cancellation_cap)
+          @cancellation_fee = args[:cancellation_fee] if args.key?(:cancellation_fee)
+          @cancellation_fee_expiration_timestamp = args[:cancellation_fee_expiration_timestamp] if args.key?(:cancellation_fee_expiration_timestamp)
         end
       end
       
@@ -6756,8 +6825,7 @@ module Google
         # @return [Google::Apis::ComputeAlpha::CustomerEncryptionKey]
         attr_accessor :disk_encryption_key
       
-        # Whether this disk is using confidential compute mode. see go/confidential-mode-
-        # in-arcus for details.
+        # Whether this disk is using confidential compute mode.
         # Corresponds to the JSON property `enableConfidentialCompute`
         # @return [Boolean]
         attr_accessor :enable_confidential_compute
@@ -7604,6 +7672,12 @@ module Google
         # @return [Hash<String,Google::Apis::ComputeAlpha::DiskResourceStatusAsyncReplicationStatus>]
         attr_accessor :async_secondary_disks
       
+        # [Output Only] Space used by data stored in the disk (in bytes). Note that this
+        # field is set only when the disk is in a storage pool.
+        # Corresponds to the JSON property `usedBytes`
+        # @return [Fixnum]
+        attr_accessor :used_bytes
+      
         def initialize(**args)
            update!(**args)
         end
@@ -7612,6 +7686,7 @@ module Google
         def update!(**args)
           @async_primary_disk = args[:async_primary_disk] if args.key?(:async_primary_disk)
           @async_secondary_disks = args[:async_secondary_disks] if args.key?(:async_secondary_disks)
+          @used_bytes = args[:used_bytes] if args.key?(:used_bytes)
         end
       end
       
@@ -16746,12 +16821,13 @@ module Google
         # @return [String]
         attr_accessor :health_check
       
-        # The number of seconds that the managed instance group waits before it applies
-        # autohealing policies to new instances or recently recreated instances. This
-        # initial delay allows instances to initialize and run their startup scripts
-        # before the instance group determines that they are UNHEALTHY. This prevents
-        # the managed instance group from recreating its instances prematurely. This
-        # value must be from range [0, 3600].
+        # The initial delay is the number of seconds that a new VM takes to initialize
+        # and run its startup script. During a VM's initial delay period, the MIG
+        # ignores unsuccessful health checks because the VM might be in the startup
+        # process. This prevents the MIG from prematurely recreating a VM. If the health
+        # check receives a healthy response during the initial delay, it indicates that
+        # the startup process is complete and the VM is ready. The value of initial
+        # delay must be between 0 and 3600 seconds. The default value is 0.
         # Corresponds to the JSON property `initialDelaySec`
         # @return [Fixnum]
         attr_accessor :initial_delay_sec
@@ -25567,6 +25643,42 @@ module Google
         end
       end
       
+      # Represents an amount of money with its currency type.
+      class Money
+        include Google::Apis::Core::Hashable
+      
+        # The three-letter currency code defined in ISO 4217.
+        # Corresponds to the JSON property `currencyCode`
+        # @return [String]
+        attr_accessor :currency_code
+      
+        # Number of nano (10^-9) units of the amount. The value must be between -999,999,
+        # 999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be
+        # positive or zero. If `units` is zero, `nanos` can be positive, zero, or
+        # negative. If `units` is negative, `nanos` must be negative or zero. For
+        # example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+        # Corresponds to the JSON property `nanos`
+        # @return [Fixnum]
+        attr_accessor :nanos
+      
+        # The whole units of the amount. For example if `currencyCode` is `"USD"`, then
+        # 1 unit is one US dollar.
+        # Corresponds to the JSON property `units`
+        # @return [Fixnum]
+        attr_accessor :units
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @currency_code = args[:currency_code] if args.key?(:currency_code)
+          @nanos = args[:nanos] if args.key?(:nanos)
+          @units = args[:units] if args.key?(:units)
+        end
+      end
+      
       # [Deprecated] Configuration for the mutual Tls mode for peer authentication.
       # Configuration for the mutual Tls mode for peer authentication.
       class MutualTls
@@ -30790,8 +30902,7 @@ module Google
         attr_accessor :self_link_with_id
       
         # Encapsulates partial completion metadata for SetCommonInstanceMetadata. Will
-        # be propagated on Operation.metadata as per go/partial-completion-api-clean.
-        # See go/gce-aips/2822 for API council results.
+        # be propagated on Operation.metadata.
         # Corresponds to the JSON property `setCommonInstanceMetadataOperationMetadata`
         # @return [Google::Apis::ComputeAlpha::SetCommonInstanceMetadataOperationMetadata]
         attr_accessor :set_common_instance_metadata_operation_metadata
@@ -41996,6 +42107,12 @@ module Google
         # @return [Google::Apis::ComputeAlpha::Expr]
         attr_accessor :expr
       
+        # The configuration options available when specifying a user defined CEVAL
+        # expression (i.e., 'expr').
+        # Corresponds to the JSON property `exprOptions`
+        # @return [Google::Apis::ComputeAlpha::SecurityPolicyRuleMatcherExprOptions]
+        attr_accessor :expr_options
+      
         # Preconfigured versioned expression. If this field is specified, config must
         # also be specified. Available preconfigured expressions along with their
         # requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range
@@ -42012,6 +42129,7 @@ module Google
         def update!(**args)
           @config = args[:config] if args.key?(:config)
           @expr = args[:expr] if args.key?(:expr)
+          @expr_options = args[:expr_options] if args.key?(:expr_options)
           @versioned_expr = args[:versioned_expr] if args.key?(:versioned_expr)
         end
       end
@@ -42117,6 +42235,55 @@ module Google
         def update!(**args)
           @ip_protocol = args[:ip_protocol] if args.key?(:ip_protocol)
           @ports = args[:ports] if args.key?(:ports)
+        end
+      end
+      
+      # 
+      class SecurityPolicyRuleMatcherExprOptions
+        include Google::Apis::Core::Hashable
+      
+        # reCAPTCHA configuration options to be applied for the rule. If the rule does
+        # not evaluate reCAPTCHA tokens, this field will have no effect.
+        # Corresponds to the JSON property `recaptchaOptions`
+        # @return [Google::Apis::ComputeAlpha::SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions]
+        attr_accessor :recaptcha_options
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @recaptcha_options = args[:recaptcha_options] if args.key?(:recaptcha_options)
+        end
+      end
+      
+      # 
+      class SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions
+        include Google::Apis::Core::Hashable
+      
+        # A list of site keys to be used during the validation of reCAPTCHA action-
+        # tokens. The provided site keys need to be created from reCAPTCHA API under the
+        # same project where the security policy is created.
+        # Corresponds to the JSON property `actionTokenSiteKeys`
+        # @return [Array<String>]
+        attr_accessor :action_token_site_keys
+      
+        # A list of site keys to be used during the validation of reCAPTCHA session-
+        # tokens. The provided site keys need to be created from reCAPTCHA API under the
+        # same project where the security policy is created.
+        # Corresponds to the JSON property `sessionTokenSiteKeys`
+        # @return [Array<String>]
+        attr_accessor :session_token_site_keys
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action_token_site_keys = args[:action_token_site_keys] if args.key?(:action_token_site_keys)
+          @session_token_site_keys = args[:session_token_site_keys] if args.key?(:session_token_site_keys)
         end
       end
       
@@ -42633,7 +42800,7 @@ module Google
         # describes how clients should authenticate with this service's backends.
         # clientTlsPolicy only applies to a global BackendService with the
         # loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank,
-        # communications are not encrypted. Note: This field currently has no impact.
+        # communications are not encrypted.
         # Corresponds to the JSON property `clientTlsPolicy`
         # @return [String]
         attr_accessor :client_tls_policy
@@ -42655,7 +42822,7 @@ module Google
         # provisions server identities. Only applies to a global BackendService with
         # loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when
         # BackendService has an attached clientTlsPolicy with clientCertificate (mTLS
-        # mode). Note: This field currently has no impact.
+        # mode).
         # Corresponds to the JSON property `subjectAltNames`
         # @return [Array<String>]
         attr_accessor :subject_alt_names
@@ -43412,8 +43579,7 @@ module Google
       end
       
       # Encapsulates partial completion metadata for SetCommonInstanceMetadata. Will
-      # be propagated on Operation.metadata as per go/partial-completion-api-clean.
-      # See go/gce-aips/2822 for API council results.
+      # be propagated on Operation.metadata.
       class SetCommonInstanceMetadataOperationMetadata
         include Google::Apis::Core::Hashable
       
@@ -43875,9 +44041,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :download_bytes
       
-        # Whether this snapshot is created from a confidential compute mode disk. see go/
-        # confidential-mode-in-arcus for details. [Output Only]: This field is not set
-        # by user, but from source disk.
+        # Whether this snapshot is created from a confidential compute mode disk. [
+        # Output Only]: This field is not set by user, but from source disk.
         # Corresponds to the JSON property `enableConfidentialCompute`
         # @return [Boolean]
         attr_accessor :enable_confidential_compute

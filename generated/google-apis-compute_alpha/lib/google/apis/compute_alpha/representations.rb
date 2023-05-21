@@ -694,6 +694,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CommitmentResourceStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CommitmentResourceStatusCancellationInformation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CommitmentsScopedList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -3196,6 +3208,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Money
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MutualTls
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5501,6 +5519,18 @@ module Google
       end
       
       class SecurityPolicyRuleMatcherConfigLayer4Config
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityPolicyRuleMatcherExprOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -8414,6 +8444,8 @@ module Google
           property :region, as: 'region'
           collection :reservations, as: 'reservations', class: Google::Apis::ComputeAlpha::Reservation, decorator: Google::Apis::ComputeAlpha::Reservation::Representation
       
+          property :resource_status, as: 'resourceStatus', class: Google::Apis::ComputeAlpha::CommitmentResourceStatus, decorator: Google::Apis::ComputeAlpha::CommitmentResourceStatus::Representation
+      
           collection :resources, as: 'resources', class: Google::Apis::ComputeAlpha::ResourceCommitment, decorator: Google::Apis::ComputeAlpha::ResourceCommitment::Representation
       
           property :self_link, as: 'selfLink'
@@ -8488,6 +8520,28 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class CommitmentResourceStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cancellation_information, as: 'cancellationInformation', class: Google::Apis::ComputeAlpha::CommitmentResourceStatusCancellationInformation, decorator: Google::Apis::ComputeAlpha::CommitmentResourceStatusCancellationInformation::Representation
+      
+        end
+      end
+      
+      class CommitmentResourceStatusCancellationInformation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :canceled_commitment, as: 'canceledCommitment', class: Google::Apis::ComputeAlpha::Money, decorator: Google::Apis::ComputeAlpha::Money::Representation
+      
+          property :canceled_commitment_last_updated_timestamp, as: 'canceledCommitmentLastUpdatedTimestamp'
+          property :cancellation_cap, as: 'cancellationCap', class: Google::Apis::ComputeAlpha::Money, decorator: Google::Apis::ComputeAlpha::Money::Representation
+      
+          property :cancellation_fee, as: 'cancellationFee', class: Google::Apis::ComputeAlpha::Money, decorator: Google::Apis::ComputeAlpha::Money::Representation
+      
+          property :cancellation_fee_expiration_timestamp, as: 'cancellationFeeExpirationTimestamp'
         end
       end
       
@@ -8814,6 +8868,7 @@ module Google
       
           hash :async_secondary_disks, as: 'asyncSecondaryDisks', class: Google::Apis::ComputeAlpha::DiskResourceStatusAsyncReplicationStatus, decorator: Google::Apis::ComputeAlpha::DiskResourceStatusAsyncReplicationStatus::Representation
       
+          property :used_bytes, :numeric_string => true, as: 'usedBytes'
         end
       end
       
@@ -13240,6 +13295,15 @@ module Google
         end
       end
       
+      class Money
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :currency_code, as: 'currencyCode'
+          property :nanos, as: 'nanos'
+          property :units, :numeric_string => true, as: 'units'
+        end
+      end
+      
       class MutualTls
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -17450,6 +17514,8 @@ module Google
       
           property :expr, as: 'expr', class: Google::Apis::ComputeAlpha::Expr, decorator: Google::Apis::ComputeAlpha::Expr::Representation
       
+          property :expr_options, as: 'exprOptions', class: Google::Apis::ComputeAlpha::SecurityPolicyRuleMatcherExprOptions, decorator: Google::Apis::ComputeAlpha::SecurityPolicyRuleMatcherExprOptions::Representation
+      
           property :versioned_expr, as: 'versionedExpr'
         end
       end
@@ -17479,6 +17545,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ip_protocol, as: 'ipProtocol'
           collection :ports, as: 'ports'
+        end
+      end
+      
+      class SecurityPolicyRuleMatcherExprOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :recaptcha_options, as: 'recaptchaOptions', class: Google::Apis::ComputeAlpha::SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions, decorator: Google::Apis::ComputeAlpha::SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions::Representation
+      
+        end
+      end
+      
+      class SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :action_token_site_keys, as: 'actionTokenSiteKeys'
+          collection :session_token_site_keys, as: 'sessionTokenSiteKeys'
         end
       end
       
