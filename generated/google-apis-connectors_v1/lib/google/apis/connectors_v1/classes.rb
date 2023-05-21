@@ -486,6 +486,11 @@ module Google
         # @return [String]
         attr_accessor :connector_version
       
+        # Output only. Flag to mark the version indicating the launch stage.
+        # Corresponds to the JSON property `connectorVersionLaunchStage`
+        # @return [String]
+        attr_accessor :connector_version_launch_stage
+      
         # Output only. Created time.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -592,6 +597,7 @@ module Google
           @auth_config = args[:auth_config] if args.key?(:auth_config)
           @config_variables = args[:config_variables] if args.key?(:config_variables)
           @connector_version = args[:connector_version] if args.key?(:connector_version)
+          @connector_version_launch_stage = args[:connector_version_launch_stage] if args.key?(:connector_version_launch_stage)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @destination_configs = args[:destination_configs] if args.key?(:destination_configs)
@@ -1861,6 +1867,11 @@ module Google
         # @return [String]
         attr_accessor :auth_code
       
+        # Auth URL for Authorization Code Flow
+        # Corresponds to the JSON property `authUri`
+        # @return [String]
+        attr_accessor :auth_uri
+      
         # Client ID for user-provided OAuth app.
         # Corresponds to the JSON property `clientId`
         # @return [String]
@@ -1899,6 +1910,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @auth_code = args[:auth_code] if args.key?(:auth_code)
+          @auth_uri = args[:auth_uri] if args.key?(:auth_uri)
           @client_id = args[:client_id] if args.key?(:client_id)
           @client_secret = args[:client_secret] if args.key?(:client_secret)
           @enable_pkce = args[:enable_pkce] if args.key?(:enable_pkce)
@@ -2591,6 +2603,11 @@ module Google
         attr_accessor :payg
         alias_method :payg?, :payg
       
+        # Output only. Tenant project id of the consumer project.
+        # Corresponds to the JSON property `tenantProjectId`
+        # @return [String]
+        attr_accessor :tenant_project_id
+      
         # Optional. Flag indicates whether vpc-sc is enabled.
         # Corresponds to the JSON property `vpcsc`
         # @return [Boolean]
@@ -2605,6 +2622,7 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @payg = args[:payg] if args.key?(:payg)
+          @tenant_project_id = args[:tenant_project_id] if args.key?(:tenant_project_id)
           @vpcsc = args[:vpcsc] if args.key?(:vpcsc)
         end
       end
