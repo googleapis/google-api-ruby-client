@@ -191,6 +191,14 @@ module Google
       class GoogleCloudChannelV1ChangeOfferRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. The billing account resource name that is used to pay for this
+        # entitlement when setting up billing on a trial subscription. This field is
+        # only relevant for multi-currency accounts. It should be left empty for single
+        # currency accounts.
+        # Corresponds to the JSON property `billingAccount`
+        # @return [String]
+        attr_accessor :billing_account
+      
         # Required. New Offer. Format: accounts/`account_id`/offers/`offer_id`.
         # Corresponds to the JSON property `offer`
         # @return [String]
@@ -225,6 +233,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @billing_account = args[:billing_account] if args.key?(:billing_account)
           @offer = args[:offer] if args.key?(:offer)
           @parameters = args[:parameters] if args.key?(:parameters)
           @purchase_order_id = args[:purchase_order_id] if args.key?(:purchase_order_id)
@@ -1755,6 +1764,14 @@ module Google
       class GoogleCloudChannelV1ListTransferableOffersRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. The Billing Account to look up Offers for. Format: accounts/`
+        # account_id`/billing_accounts/`billing_account_id`. This field is only relevant
+        # for multi-currency accounts. It should be left empty for single currency
+        # accounts.
+        # Corresponds to the JSON property `billingAccount`
+        # @return [String]
+        attr_accessor :billing_account
+      
         # Customer's Cloud Identity ID
         # Corresponds to the JSON property `cloudIdentityId`
         # @return [String]
@@ -1798,6 +1815,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @billing_account = args[:billing_account] if args.key?(:billing_account)
           @cloud_identity_id = args[:cloud_identity_id] if args.key?(:cloud_identity_id)
           @customer_name = args[:customer_name] if args.key?(:customer_name)
           @language_code = args[:language_code] if args.key?(:language_code)
