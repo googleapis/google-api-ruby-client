@@ -1261,7 +1261,8 @@ module Google
         
         # Lists tags.
         # @param [String] parent
-        #   The name of the parent resource whose tags will be listed.
+        #   The name of the parent package whose tags will be listed. Example: "projects/
+        #   p1/locations/us-central1/repositories/repo1/packages/pkg1
         # @param [String] filter
         #   An expression for filtering the results of the request. Filter rules are case
         #   insensitive. The fields eligible for filtering are: * `version` An example of
