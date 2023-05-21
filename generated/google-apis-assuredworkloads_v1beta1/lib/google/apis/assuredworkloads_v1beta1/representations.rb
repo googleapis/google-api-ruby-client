@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAssuredworkloadsV1beta1CreateWorkloadOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAssuredworkloadsV1beta1ListViolationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -154,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -214,6 +226,18 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :blockers, as: 'blockers'
+        end
+      end
+      
+      class GoogleCloudAssuredworkloadsV1beta1CreateWorkloadOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :compliance_regime, as: 'complianceRegime'
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          property :parent, as: 'parent'
+          collection :resource_settings, as: 'resourceSettings', class: Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings, decorator: Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings::Representation
+      
         end
       end
       
@@ -337,6 +361,8 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :partner, as: 'partner'
+          property :partner_permissions, as: 'partnerPermissions', class: Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissions, decorator: Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissions::Representation
+      
           property :provisioned_resources_parent, as: 'provisionedResourcesParent'
           collection :resource_settings, as: 'resourceSettings', class: Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings, decorator: Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings::Representation
       
@@ -418,6 +444,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_rotation_time, as: 'nextRotationTime'
           property :rotation_period, as: 'rotationPeriod'
+        end
+      end
+      
+      class GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_logs_viewer, as: 'dataLogsViewer'
+          property :remediate_folder_violations, as: 'remediateFolderViolations'
         end
       end
       

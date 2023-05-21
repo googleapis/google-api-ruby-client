@@ -85,6 +85,51 @@ module Google
         end
       end
       
+      # Operation metadata to give request details of CreateWorkload.
+      class GoogleCloudAssuredworkloadsV1beta1CreateWorkloadOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Compliance controls that should be applied to the resources managed
+        # by the workload.
+        # Corresponds to the JSON property `complianceRegime`
+        # @return [String]
+        attr_accessor :compliance_regime
+      
+        # Optional. Time when the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. The display name of the workload.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Optional. The parent of the workload.
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        # Optional. Resource properties in the input that are used for creating/
+        # customizing workload resources.
+        # Corresponds to the JSON property `resourceSettings`
+        # @return [Array<Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings>]
+        attr_accessor :resource_settings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @compliance_regime = args[:compliance_regime] if args.key?(:compliance_regime)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @parent = args[:parent] if args.key?(:parent)
+          @resource_settings = args[:resource_settings] if args.key?(:resource_settings)
+        end
+      end
+      
       # Response of ListViolations endpoint.
       class GoogleCloudAssuredworkloadsV1beta1ListViolationsResponse
         include Google::Apis::Core::Hashable
@@ -517,6 +562,11 @@ module Google
         # @return [String]
         attr_accessor :partner
       
+        # Permissions granted to the AW Partner SA account for the customer workload
+        # Corresponds to the JSON property `partnerPermissions`
+        # @return [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissions]
+        attr_accessor :partner_permissions
+      
         # Input only. The parent resource for the resources managed by this Assured
         # Workload. May be either empty or a folder resource which is a child of the
         # Workload parent. If not specified all resources are created under the parent
@@ -579,6 +629,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @partner = args[:partner] if args.key?(:partner)
+          @partner_permissions = args[:partner_permissions] if args.key?(:partner_permissions)
           @provisioned_resources_parent = args[:provisioned_resources_parent] if args.key?(:provisioned_resources_parent)
           @resource_settings = args[:resource_settings] if args.key?(:resource_settings)
           @resources = args[:resources] if args.key?(:resources)
@@ -790,6 +841,33 @@ module Google
         def update!(**args)
           @next_rotation_time = args[:next_rotation_time] if args.key?(:next_rotation_time)
           @rotation_period = args[:rotation_period] if args.key?(:rotation_period)
+        end
+      end
+      
+      # Permissions granted to the AW Partner SA account for the customer workload
+      class GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissions
+        include Google::Apis::Core::Hashable
+      
+        # Allow the partner to view inspectability logs and monitoring violations.
+        # Corresponds to the JSON property `dataLogsViewer`
+        # @return [Boolean]
+        attr_accessor :data_logs_viewer
+        alias_method :data_logs_viewer?, :data_logs_viewer
+      
+        # Allow partner to monitor folder and remediate violations
+        # Corresponds to the JSON property `remediateFolderViolations`
+        # @return [Boolean]
+        attr_accessor :remediate_folder_violations
+        alias_method :remediate_folder_violations?, :remediate_folder_violations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_logs_viewer = args[:data_logs_viewer] if args.key?(:data_logs_viewer)
+          @remediate_folder_violations = args[:remediate_folder_violations] if args.key?(:remediate_folder_violations)
         end
       end
       
