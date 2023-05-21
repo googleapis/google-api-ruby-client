@@ -94,6 +94,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudFunctionsV2LocationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudFunctionsV2OperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -112,6 +118,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudFunctionsV2alphaLocationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudFunctionsV2alphaOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -125,6 +137,12 @@ module Google
       end
       
       class GoogleCloudFunctionsV2alphaStateMessage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudFunctionsV2betaLocationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -402,6 +420,13 @@ module Google
         end
       end
       
+      class GoogleCloudFunctionsV2LocationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :environments, as: 'environments'
+        end
+      end
+      
       class GoogleCloudFunctionsV2OperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -440,6 +465,13 @@ module Google
         end
       end
       
+      class GoogleCloudFunctionsV2alphaLocationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :environments, as: 'environments'
+        end
+      end
+      
       class GoogleCloudFunctionsV2alphaOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -475,6 +507,13 @@ module Google
           property :message, as: 'message'
           property :severity, as: 'severity'
           property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudFunctionsV2betaLocationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :environments, as: 'environments'
         end
       end
       
