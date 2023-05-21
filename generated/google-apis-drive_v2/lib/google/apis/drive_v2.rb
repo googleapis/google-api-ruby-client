@@ -19,14 +19,13 @@ require 'google/apis/drive_v2/gem_version.rb'
 
 module Google
   module Apis
-    # Drive API
+    # Google Drive API
     #
-    # Manages files in Drive including uploading, downloading, searching, detecting
-    # changes, and updating sharing permissions.
+    # The Google Drive API allows clients to access resources from Google Drive.
     #
     # @see https://developers.google.com/drive/
     module DriveV2
-      # Version of the Drive API this client connects to.
+      # Version of the Google Drive API this client connects to.
       # This is NOT the gem version.
       VERSION = 'V2'
 
