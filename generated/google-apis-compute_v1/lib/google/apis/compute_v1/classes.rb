@@ -14334,12 +14334,13 @@ module Google
         # @return [String]
         attr_accessor :health_check
       
-        # The number of seconds that the managed instance group waits before it applies
-        # autohealing policies to new instances or recently recreated instances. This
-        # initial delay allows instances to initialize and run their startup scripts
-        # before the instance group determines that they are UNHEALTHY. This prevents
-        # the managed instance group from recreating its instances prematurely. This
-        # value must be from range [0, 3600].
+        # The initial delay is the number of seconds that a new VM takes to initialize
+        # and run its startup script. During a VM's initial delay period, the MIG
+        # ignores unsuccessful health checks because the VM might be in the startup
+        # process. This prevents the MIG from prematurely recreating a VM. If the health
+        # check receives a healthy response during the initial delay, it indicates that
+        # the startup process is complete and the VM is ready. The value of initial
+        # delay must be between 0 and 3600 seconds. The default value is 0.
         # Corresponds to the JSON property `initialDelaySec`
         # @return [Fixnum]
         attr_accessor :initial_delay_sec
@@ -34841,7 +34842,7 @@ module Google
         # describes how clients should authenticate with this service's backends.
         # clientTlsPolicy only applies to a global BackendService with the
         # loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank,
-        # communications are not encrypted. Note: This field currently has no impact.
+        # communications are not encrypted.
         # Corresponds to the JSON property `clientTlsPolicy`
         # @return [String]
         attr_accessor :client_tls_policy
@@ -34857,7 +34858,7 @@ module Google
         # provisions server identities. Only applies to a global BackendService with
         # loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when
         # BackendService has an attached clientTlsPolicy with clientCertificate (mTLS
-        # mode). Note: This field currently has no impact.
+        # mode).
         # Corresponds to the JSON property `subjectAltNames`
         # @return [Array<String>]
         attr_accessor :subject_alt_names
