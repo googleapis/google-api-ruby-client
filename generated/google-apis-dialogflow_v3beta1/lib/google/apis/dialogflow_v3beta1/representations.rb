@@ -2122,6 +2122,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2beta1DialogflowAssistAnswer
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2beta1EntityType
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2446,6 +2452,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2beta1IntentSuggestion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2beta1IntentTrainingPhrase
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2531,6 +2543,12 @@ module Google
       end
       
       class GoogleCloudDialogflowV2beta1SuggestArticlesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1SuggestDialogflowAssistsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3369,6 +3387,8 @@ module Google
           property :no_match, as: 'noMatch'
           property :no_user_input, as: 'noUserInput'
           property :reached_end_page, as: 'reachedEndPage'
+          property :sentiment_magnitude, as: 'sentimentMagnitude'
+          property :sentiment_score, as: 'sentimentScore'
           property :user_escalated, as: 'userEscalated'
           collection :webhook_statuses, as: 'webhookStatuses'
         end
@@ -3400,10 +3420,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :allowed_ca_certs, as: 'allowedCaCerts'
+          property :http_method, as: 'httpMethod'
+          hash :parameter_mapping, as: 'parameterMapping'
           property :password, as: 'password'
+          property :request_body, as: 'requestBody'
           hash :request_headers, as: 'requestHeaders'
           property :uri, as: 'uri'
           property :username, as: 'username'
+          property :webhook_type, as: 'webhookType'
         end
       end
       
@@ -5098,6 +5122,8 @@ module Google
           property :no_match, as: 'noMatch'
           property :no_user_input, as: 'noUserInput'
           property :reached_end_page, as: 'reachedEndPage'
+          property :sentiment_magnitude, as: 'sentimentMagnitude'
+          property :sentiment_score, as: 'sentimentScore'
           property :user_escalated, as: 'userEscalated'
           collection :webhook_statuses, as: 'webhookStatuses'
         end
@@ -5202,10 +5228,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :allowed_ca_certs, as: 'allowedCaCerts'
+          property :http_method, as: 'httpMethod'
+          hash :parameter_mapping, as: 'parameterMapping'
           property :password, as: 'password'
+          property :request_body, as: 'requestBody'
           hash :request_headers, as: 'requestHeaders'
           property :uri, as: 'uri'
           property :username, as: 'username'
+          property :webhook_type, as: 'webhookType'
         end
       end
       
@@ -6182,6 +6212,17 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2beta1DialogflowAssistAnswer
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :answer_record, as: 'answerRecord'
+          property :intent_suggestion, as: 'intentSuggestion', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2beta1IntentSuggestion, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2beta1IntentSuggestion::Representation
+      
+          property :query_result, as: 'queryResult', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2beta1QueryResult, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2beta1QueryResult::Representation
+      
+        end
+      end
+      
       class GoogleCloudDialogflowV2beta1EntityType
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6741,6 +6782,15 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2beta1IntentSuggestion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :intent_v2, as: 'intentV2'
+        end
+      end
+      
       class GoogleCloudDialogflowV2beta1IntentTrainingPhrase
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6909,6 +6959,16 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2beta1SuggestDialogflowAssistsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :context_size, as: 'contextSize'
+          collection :dialogflow_assist_answers, as: 'dialogflowAssistAnswers', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2beta1DialogflowAssistAnswer, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2beta1DialogflowAssistAnswer::Representation
+      
+          property :latest_message, as: 'latestMessage'
+        end
+      end
+      
       class GoogleCloudDialogflowV2beta1SuggestFaqAnswersResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6935,6 +6995,8 @@ module Google
           property :error, as: 'error', class: Google::Apis::DialogflowV3beta1::GoogleRpcStatus, decorator: Google::Apis::DialogflowV3beta1::GoogleRpcStatus::Representation
       
           property :suggest_articles_response, as: 'suggestArticlesResponse', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2beta1SuggestArticlesResponse, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2beta1SuggestArticlesResponse::Representation
+      
+          property :suggest_dialogflow_assists_response, as: 'suggestDialogflowAssistsResponse', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2beta1SuggestDialogflowAssistsResponse, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2beta1SuggestDialogflowAssistsResponse::Representation
       
           property :suggest_faq_answers_response, as: 'suggestFaqAnswersResponse', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2beta1SuggestFaqAnswersResponse, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2beta1SuggestFaqAnswersResponse::Representation
       
@@ -7040,6 +7102,8 @@ module Google
           property :no_match, as: 'noMatch'
           property :no_user_input, as: 'noUserInput'
           property :reached_end_page, as: 'reachedEndPage'
+          property :sentiment_magnitude, as: 'sentimentMagnitude'
+          property :sentiment_score, as: 'sentimentScore'
           property :triggered_abandonment_event, as: 'triggeredAbandonmentEvent'
           property :user_escalated, as: 'userEscalated'
           collection :webhook_statuses, as: 'webhookStatuses'
