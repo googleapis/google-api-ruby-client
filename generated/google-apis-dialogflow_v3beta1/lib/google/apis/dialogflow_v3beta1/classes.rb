@@ -2573,6 +2573,18 @@ module Google
         attr_accessor :reached_end_page
         alias_method :reached_end_page?, :reached_end_page
       
+        # Sentiment magnitude of the user utterance if [sentiment](https://cloud.google.
+        # com/dialogflow/cx/docs/concept/sentiment) was enabled.
+        # Corresponds to the JSON property `sentimentMagnitude`
+        # @return [Float]
+        attr_accessor :sentiment_magnitude
+      
+        # Sentiment score of the user utterance if [sentiment](https://cloud.google.com/
+        # dialogflow/cx/docs/concept/sentiment) was enabled.
+        # Corresponds to the JSON property `sentimentScore`
+        # @return [Float]
+        attr_accessor :sentiment_score
+      
         # Whether user was specifically asking for a live agent.
         # Corresponds to the JSON property `userEscalated`
         # @return [Boolean]
@@ -2596,6 +2608,8 @@ module Google
           @no_match = args[:no_match] if args.key?(:no_match)
           @no_user_input = args[:no_user_input] if args.key?(:no_user_input)
           @reached_end_page = args[:reached_end_page] if args.key?(:reached_end_page)
+          @sentiment_magnitude = args[:sentiment_magnitude] if args.key?(:sentiment_magnitude)
+          @sentiment_score = args[:sentiment_score] if args.key?(:sentiment_score)
           @user_escalated = args[:user_escalated] if args.key?(:user_escalated)
           @webhook_statuses = args[:webhook_statuses] if args.key?(:webhook_statuses)
         end
@@ -2694,10 +2708,29 @@ module Google
         # @return [Array<String>]
         attr_accessor :allowed_ca_certs
       
+        # Optional. HTTP method for the flexible webhook calls. Standard webhook always
+        # uses POST.
+        # Corresponds to the JSON property `httpMethod`
+        # @return [String]
+        attr_accessor :http_method
+      
+        # Optional. Maps the values extracted from specific fields of the flexible
+        # webhook response into session parameters. - Key: session parameter name -
+        # Value: field path in the webhook response
+        # Corresponds to the JSON property `parameterMapping`
+        # @return [Hash<String,String>]
+        attr_accessor :parameter_mapping
+      
         # The password for HTTP Basic authentication.
         # Corresponds to the JSON property `password`
         # @return [String]
         attr_accessor :password
+      
+        # Optional. Defines a custom JSON object as request body to send to flexible
+        # webhook.
+        # Corresponds to the JSON property `requestBody`
+        # @return [String]
+        attr_accessor :request_body
       
         # The HTTP request headers to send together with webhook requests.
         # Corresponds to the JSON property `requestHeaders`
@@ -2715,6 +2748,11 @@ module Google
         # @return [String]
         attr_accessor :username
       
+        # Optional. Type of the webhook.
+        # Corresponds to the JSON property `webhookType`
+        # @return [String]
+        attr_accessor :webhook_type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2722,10 +2760,14 @@ module Google
         # Update properties of this object
         def update!(**args)
           @allowed_ca_certs = args[:allowed_ca_certs] if args.key?(:allowed_ca_certs)
+          @http_method = args[:http_method] if args.key?(:http_method)
+          @parameter_mapping = args[:parameter_mapping] if args.key?(:parameter_mapping)
           @password = args[:password] if args.key?(:password)
+          @request_body = args[:request_body] if args.key?(:request_body)
           @request_headers = args[:request_headers] if args.key?(:request_headers)
           @uri = args[:uri] if args.key?(:uri)
           @username = args[:username] if args.key?(:username)
+          @webhook_type = args[:webhook_type] if args.key?(:webhook_type)
         end
       end
       
@@ -8968,6 +9010,18 @@ module Google
         attr_accessor :reached_end_page
         alias_method :reached_end_page?, :reached_end_page
       
+        # Sentiment magnitude of the user utterance if [sentiment](https://cloud.google.
+        # com/dialogflow/cx/docs/concept/sentiment) was enabled.
+        # Corresponds to the JSON property `sentimentMagnitude`
+        # @return [Float]
+        attr_accessor :sentiment_magnitude
+      
+        # Sentiment score of the user utterance if [sentiment](https://cloud.google.com/
+        # dialogflow/cx/docs/concept/sentiment) was enabled.
+        # Corresponds to the JSON property `sentimentScore`
+        # @return [Float]
+        attr_accessor :sentiment_score
+      
         # Whether user was specifically asking for a live agent.
         # Corresponds to the JSON property `userEscalated`
         # @return [Boolean]
@@ -8991,6 +9045,8 @@ module Google
           @no_match = args[:no_match] if args.key?(:no_match)
           @no_user_input = args[:no_user_input] if args.key?(:no_user_input)
           @reached_end_page = args[:reached_end_page] if args.key?(:reached_end_page)
+          @sentiment_magnitude = args[:sentiment_magnitude] if args.key?(:sentiment_magnitude)
+          @sentiment_score = args[:sentiment_score] if args.key?(:sentiment_score)
           @user_escalated = args[:user_escalated] if args.key?(:user_escalated)
           @webhook_statuses = args[:webhook_statuses] if args.key?(:webhook_statuses)
         end
@@ -9332,10 +9388,29 @@ module Google
         # @return [Array<String>]
         attr_accessor :allowed_ca_certs
       
+        # Optional. HTTP method for the flexible webhook calls. Standard webhook always
+        # uses POST.
+        # Corresponds to the JSON property `httpMethod`
+        # @return [String]
+        attr_accessor :http_method
+      
+        # Optional. Maps the values extracted from specific fields of the flexible
+        # webhook response into session parameters. - Key: session parameter name -
+        # Value: field path in the webhook response
+        # Corresponds to the JSON property `parameterMapping`
+        # @return [Hash<String,String>]
+        attr_accessor :parameter_mapping
+      
         # The password for HTTP Basic authentication.
         # Corresponds to the JSON property `password`
         # @return [String]
         attr_accessor :password
+      
+        # Optional. Defines a custom JSON object as request body to send to flexible
+        # webhook.
+        # Corresponds to the JSON property `requestBody`
+        # @return [String]
+        attr_accessor :request_body
       
         # The HTTP request headers to send together with webhook requests.
         # Corresponds to the JSON property `requestHeaders`
@@ -9353,6 +9428,11 @@ module Google
         # @return [String]
         attr_accessor :username
       
+        # Optional. Type of the webhook.
+        # Corresponds to the JSON property `webhookType`
+        # @return [String]
+        attr_accessor :webhook_type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -9360,10 +9440,14 @@ module Google
         # Update properties of this object
         def update!(**args)
           @allowed_ca_certs = args[:allowed_ca_certs] if args.key?(:allowed_ca_certs)
+          @http_method = args[:http_method] if args.key?(:http_method)
+          @parameter_mapping = args[:parameter_mapping] if args.key?(:parameter_mapping)
           @password = args[:password] if args.key?(:password)
+          @request_body = args[:request_body] if args.key?(:request_body)
           @request_headers = args[:request_headers] if args.key?(:request_headers)
           @uri = args[:uri] if args.key?(:uri)
           @username = args[:username] if args.key?(:username)
+          @webhook_type = args[:webhook_type] if args.key?(:webhook_type)
         end
       end
       
@@ -12955,6 +13039,38 @@ module Google
         end
       end
       
+      # Represents a Dialogflow assist answer.
+      class GoogleCloudDialogflowV2beta1DialogflowAssistAnswer
+        include Google::Apis::Core::Hashable
+      
+        # The name of answer record, in the format of "projects//locations//
+        # answerRecords/"
+        # Corresponds to the JSON property `answerRecord`
+        # @return [String]
+        attr_accessor :answer_record
+      
+        # Represents an intent suggestion.
+        # Corresponds to the JSON property `intentSuggestion`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2beta1IntentSuggestion]
+        attr_accessor :intent_suggestion
+      
+        # Represents the result of conversational query or event processing.
+        # Corresponds to the JSON property `queryResult`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2beta1QueryResult]
+        attr_accessor :query_result
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @answer_record = args[:answer_record] if args.key?(:answer_record)
+          @intent_suggestion = args[:intent_suggestion] if args.key?(:intent_suggestion)
+          @query_result = args[:query_result] if args.key?(:query_result)
+        end
+      end
+      
       # Each intent parameter has a type, called the entity type, which dictates
       # exactly how data from an end-user expression is extracted. Dialogflow provides
       # predefined system entities that can match many common types of data. For
@@ -14904,6 +15020,39 @@ module Google
         end
       end
       
+      # Represents an intent suggestion.
+      class GoogleCloudDialogflowV2beta1IntentSuggestion
+        include Google::Apis::Core::Hashable
+      
+        # Human readable description for better understanding an intent like its scope,
+        # content, result etc. Maximum character limit: 140 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The display name of the intent.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The unique identifier of this intent. Format: `projects//locations//agent/
+        # intents/`.
+        # Corresponds to the JSON property `intentV2`
+        # @return [String]
+        attr_accessor :intent_v2
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @intent_v2 = args[:intent_v2] if args.key?(:intent_v2)
+        end
+      end
+      
       # Represents an example that the agent is trained on.
       class GoogleCloudDialogflowV2beta1IntentTrainingPhrase
         include Google::Apis::Core::Hashable
@@ -15626,6 +15775,42 @@ module Google
         end
       end
       
+      # The response message for Participants.SuggestDialogflowAssists.
+      class GoogleCloudDialogflowV2beta1SuggestDialogflowAssistsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Number of messages prior to and including latest_message to compile the
+        # suggestion. It may be smaller than the SuggestDialogflowAssistsRequest.
+        # context_size field in the request if there aren't that many messages in the
+        # conversation.
+        # Corresponds to the JSON property `contextSize`
+        # @return [Fixnum]
+        attr_accessor :context_size
+      
+        # Output only. Multiple reply options provided by Dialogflow assist service. The
+        # order is based on the rank of the model prediction.
+        # Corresponds to the JSON property `dialogflowAssistAnswers`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2beta1DialogflowAssistAnswer>]
+        attr_accessor :dialogflow_assist_answers
+      
+        # The name of the latest conversation message used to suggest answer. Format: `
+        # projects//locations//conversations//messages/`.
+        # Corresponds to the JSON property `latestMessage`
+        # @return [String]
+        attr_accessor :latest_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @context_size = args[:context_size] if args.key?(:context_size)
+          @dialogflow_assist_answers = args[:dialogflow_assist_answers] if args.key?(:dialogflow_assist_answers)
+          @latest_message = args[:latest_message] if args.key?(:latest_message)
+        end
+      end
+      
       # The request message for Participants.SuggestFaqAnswers.
       class GoogleCloudDialogflowV2beta1SuggestFaqAnswersResponse
         include Google::Apis::Core::Hashable
@@ -15717,6 +15902,11 @@ module Google
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2beta1SuggestArticlesResponse]
         attr_accessor :suggest_articles_response
       
+        # The response message for Participants.SuggestDialogflowAssists.
+        # Corresponds to the JSON property `suggestDialogflowAssistsResponse`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2beta1SuggestDialogflowAssistsResponse]
+        attr_accessor :suggest_dialogflow_assists_response
+      
         # The request message for Participants.SuggestFaqAnswers.
         # Corresponds to the JSON property `suggestFaqAnswersResponse`
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2beta1SuggestFaqAnswersResponse]
@@ -15735,6 +15925,7 @@ module Google
         def update!(**args)
           @error = args[:error] if args.key?(:error)
           @suggest_articles_response = args[:suggest_articles_response] if args.key?(:suggest_articles_response)
+          @suggest_dialogflow_assists_response = args[:suggest_dialogflow_assists_response] if args.key?(:suggest_dialogflow_assists_response)
           @suggest_faq_answers_response = args[:suggest_faq_answers_response] if args.key?(:suggest_faq_answers_response)
           @suggest_smart_replies_response = args[:suggest_smart_replies_response] if args.key?(:suggest_smart_replies_response)
         end
@@ -16067,6 +16258,18 @@ module Google
         attr_accessor :reached_end_page
         alias_method :reached_end_page?, :reached_end_page
       
+        # Sentiment magnitude of the user utterance if [sentiment](https://cloud.google.
+        # com/dialogflow/cx/docs/concept/sentiment) was enabled.
+        # Corresponds to the JSON property `sentimentMagnitude`
+        # @return [Float]
+        attr_accessor :sentiment_magnitude
+      
+        # Sentiment score of the user utterance if [sentiment](https://cloud.google.com/
+        # dialogflow/cx/docs/concept/sentiment) was enabled.
+        # Corresponds to the JSON property `sentimentScore`
+        # @return [Float]
+        attr_accessor :sentiment_score
+      
         # Whether agent has triggered the event corresponding to user abandoning the
         # conversation.
         # Corresponds to the JSON property `triggeredAbandonmentEvent`
@@ -16097,6 +16300,8 @@ module Google
           @no_match = args[:no_match] if args.key?(:no_match)
           @no_user_input = args[:no_user_input] if args.key?(:no_user_input)
           @reached_end_page = args[:reached_end_page] if args.key?(:reached_end_page)
+          @sentiment_magnitude = args[:sentiment_magnitude] if args.key?(:sentiment_magnitude)
+          @sentiment_score = args[:sentiment_score] if args.key?(:sentiment_score)
           @triggered_abandonment_event = args[:triggered_abandonment_event] if args.key?(:triggered_abandonment_event)
           @user_escalated = args[:user_escalated] if args.key?(:user_escalated)
           @webhook_statuses = args[:webhook_statuses] if args.key?(:webhook_statuses)
