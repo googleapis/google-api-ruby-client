@@ -2188,6 +2188,84 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstantSnapshot
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstantSnapshotAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstantSnapshotExportParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstantSnapshotList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstantSnapshotResourceStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstantSnapshotsExportRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstantSnapshotsScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Int64RangeMatch
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3970,6 +4048,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RegionInstantSnapshotsExportRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RegionList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -4691,6 +4775,18 @@ module Google
       end
       
       class SecurityPolicyRuleMatcherConfigLayer4Config
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityPolicyRuleMatcherExprOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -7588,6 +7684,8 @@ module Google
           property :source_image_encryption_key, as: 'sourceImageEncryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
       
           property :source_image_id, as: 'sourceImageId'
+          property :source_instant_snapshot, as: 'sourceInstantSnapshot'
+          property :source_instant_snapshot_id, as: 'sourceInstantSnapshotId'
           property :source_snapshot, as: 'sourceSnapshot'
           property :source_snapshot_encryption_key, as: 'sourceSnapshotEncryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
       
@@ -10339,6 +10437,151 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :disks, as: 'disks', class: Google::Apis::ComputeBeta::CustomerEncryptionKeyProtectedDisk, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKeyProtectedDisk::Representation
       
+        end
+      end
+      
+      class InstantSnapshot
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :architecture, as: 'architecture'
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :region, as: 'region'
+          property :resource_status, as: 'resourceStatus', class: Google::Apis::ComputeBeta::InstantSnapshotResourceStatus, decorator: Google::Apis::ComputeBeta::InstantSnapshotResourceStatus::Representation
+      
+          property :satisfies_pzs, as: 'satisfiesPzs'
+          property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
+          property :source_disk, as: 'sourceDisk'
+          property :source_disk_id, as: 'sourceDiskId'
+          property :status, as: 'status'
+          property :zone, as: 'zone'
+        end
+      end
+      
+      class InstantSnapshotAggregatedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeBeta::InstantSnapshotsScopedList, decorator: Google::Apis::ComputeBeta::InstantSnapshotsScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::InstantSnapshotAggregatedList::Warning, decorator: Google::Apis::ComputeBeta::InstantSnapshotAggregatedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::InstantSnapshotAggregatedList::Warning::Datum, decorator: Google::Apis::ComputeBeta::InstantSnapshotAggregatedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class InstantSnapshotExportParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :base_instant_snapshot, as: 'baseInstantSnapshot'
+          property :bucket_name, as: 'bucketName'
+          property :encryption_key, as: 'encryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
+      
+          property :object_name, as: 'objectName'
+          property :output_type, as: 'outputType'
+        end
+      end
+      
+      class InstantSnapshotList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeBeta::InstantSnapshot, decorator: Google::Apis::ComputeBeta::InstantSnapshot::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::InstantSnapshotList::Warning, decorator: Google::Apis::ComputeBeta::InstantSnapshotList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::InstantSnapshotList::Warning::Datum, decorator: Google::Apis::ComputeBeta::InstantSnapshotList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class InstantSnapshotResourceStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :storage_size_bytes, :numeric_string => true, as: 'storageSizeBytes'
+        end
+      end
+      
+      class InstantSnapshotsExportRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :export_params, as: 'exportParams', class: Google::Apis::ComputeBeta::InstantSnapshotExportParams, decorator: Google::Apis::ComputeBeta::InstantSnapshotExportParams::Representation
+      
+        end
+      end
+      
+      class InstantSnapshotsScopedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instant_snapshots, as: 'instantSnapshots', class: Google::Apis::ComputeBeta::InstantSnapshot, decorator: Google::Apis::ComputeBeta::InstantSnapshot::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::InstantSnapshotsScopedList::Warning, decorator: Google::Apis::ComputeBeta::InstantSnapshotsScopedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::InstantSnapshotsScopedList::Warning::Datum, decorator: Google::Apis::ComputeBeta::InstantSnapshotsScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
         end
       end
       
@@ -13635,6 +13878,14 @@ module Google
         end
       end
       
+      class RegionInstantSnapshotsExportRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :export_params, as: 'exportParams', class: Google::Apis::ComputeBeta::InstantSnapshotExportParams, decorator: Google::Apis::ComputeBeta::InstantSnapshotExportParams::Representation
+      
+        end
+      end
+      
       class RegionList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -14973,6 +15224,8 @@ module Google
       
           property :expr, as: 'expr', class: Google::Apis::ComputeBeta::Expr, decorator: Google::Apis::ComputeBeta::Expr::Representation
       
+          property :expr_options, as: 'exprOptions', class: Google::Apis::ComputeBeta::SecurityPolicyRuleMatcherExprOptions, decorator: Google::Apis::ComputeBeta::SecurityPolicyRuleMatcherExprOptions::Representation
+      
           property :versioned_expr, as: 'versionedExpr'
         end
       end
@@ -14992,6 +15245,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ip_protocol, as: 'ipProtocol'
           collection :ports, as: 'ports'
+        end
+      end
+      
+      class SecurityPolicyRuleMatcherExprOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :recaptcha_options, as: 'recaptchaOptions', class: Google::Apis::ComputeBeta::SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions, decorator: Google::Apis::ComputeBeta::SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions::Representation
+      
+        end
+      end
+      
+      class SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :action_token_site_keys, as: 'actionTokenSiteKeys'
+          collection :session_token_site_keys, as: 'sessionTokenSiteKeys'
         end
       end
       
@@ -15404,6 +15673,8 @@ module Google
           property :source_disk_encryption_key, as: 'sourceDiskEncryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
       
           property :source_disk_id, as: 'sourceDiskId'
+          property :source_instant_snapshot, as: 'sourceInstantSnapshot'
+          property :source_instant_snapshot_id, as: 'sourceInstantSnapshotId'
           property :source_snapshot_schedule_policy, as: 'sourceSnapshotSchedulePolicy'
           property :source_snapshot_schedule_policy_id, as: 'sourceSnapshotSchedulePolicyId'
           property :status, as: 'status'
