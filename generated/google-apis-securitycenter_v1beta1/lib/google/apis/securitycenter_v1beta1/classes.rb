@@ -437,6 +437,11 @@ module Google
         # @return [String]
         attr_accessor :data_profile
       
+        # The resource hierarchy level at which the data profile was generated.
+        # Corresponds to the JSON property `parentType`
+        # @return [String]
+        attr_accessor :parent_type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -444,6 +449,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @data_profile = args[:data_profile] if args.key?(:data_profile)
+          @parent_type = args[:parent_type] if args.key?(:parent_type)
         end
       end
       
