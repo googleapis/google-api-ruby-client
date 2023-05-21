@@ -489,6 +489,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data_profile, as: 'dataProfile'
+          property :parent_type, as: 'parentType'
         end
       end
       
