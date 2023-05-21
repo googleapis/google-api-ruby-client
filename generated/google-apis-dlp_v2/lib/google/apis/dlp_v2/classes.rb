@@ -119,7 +119,7 @@ module Google
       class GooglePrivacyDlpV2ActionDetails
         include Google::Apis::Core::Hashable
       
-        # The results of a Deidentify action from an Inspect job.
+        # The results of a Deidentify action from an inspect job.
         # Corresponds to the JSON property `deidentifyDetails`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyDataSourceDetails]
         attr_accessor :deidentify_details
@@ -1590,8 +1590,8 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Regex]
         attr_accessor :regex
       
-        # Score is a summary of all elements in the data profile. A higher number means
-        # more sensitive.
+        # Score is calculated from of all elements in the data profile. A higher level
+        # means the data is more sensitive.
         # Corresponds to the JSON property `sensitivityScore`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2SensitivityScore]
         attr_accessor :sensitivity_score
@@ -2152,7 +2152,7 @@ module Google
         end
       end
       
-      # The results of a Deidentify action from an Inspect job.
+      # The results of a Deidentify action from an inspect job.
       class GooglePrivacyDlpV2DeidentifyDataSourceDetails
         include Google::Apis::Core::Hashable
       
@@ -3477,8 +3477,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Score is a summary of all elements in the data profile. A higher number means
-        # more sensitive.
+        # Score is calculated from of all elements in the data profile. A higher level
+        # means the data is more sensitive.
         # Corresponds to the JSON property `sensitivityScore`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2SensitivityScore]
         attr_accessor :sensitivity_score
@@ -3558,8 +3558,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Score is a summary of all elements in the data profile. A higher number means
-        # more sensitive.
+        # Score is calculated from of all elements in the data profile. A higher level
+        # means the data is more sensitive.
         # Corresponds to the JSON property `sensitivityScore`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2SensitivityScore]
         attr_accessor :sensitivity_score
@@ -6367,12 +6367,12 @@ module Google
         end
       end
       
-      # Score is a summary of all elements in the data profile. A higher number means
-      # more sensitive.
+      # Score is calculated from of all elements in the data profile. A higher level
+      # means the data is more sensitive.
       class GooglePrivacyDlpV2SensitivityScore
         include Google::Apis::Core::Hashable
       
-        # The score applied to the resource.
+        # The sensitivity score applied to the resource.
         # Corresponds to the JSON property `score`
         # @return [String]
         attr_accessor :score
@@ -6802,7 +6802,7 @@ module Google
         # @return [String]
         attr_accessor :dataset_location
       
-        # The GCP project ID that owns the BigQuery dataset.
+        # The Google Cloud project ID that owns the BigQuery dataset.
         # Corresponds to the JSON property `datasetProjectId`
         # @return [String]
         attr_accessor :dataset_project_id
@@ -6885,8 +6885,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :scanned_column_count
       
-        # Score is a summary of all elements in the data profile. A higher number means
-        # more sensitive.
+        # Score is calculated from of all elements in the data profile. A higher level
+        # means the data is more sensitive.
         # Corresponds to the JSON property `sensitivityScore`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2SensitivityScore]
         attr_accessor :sensitivity_score
