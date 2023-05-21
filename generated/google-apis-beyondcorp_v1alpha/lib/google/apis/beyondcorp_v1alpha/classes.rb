@@ -2121,15 +2121,19 @@ module Google
         end
       end
       
-      # Message contains the authentication information to validate against the proxy
-      # server.
-      class GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfo
+      # Message contains the JWT encryption information for the proxy server.
+      class GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo
         include Google::Apis::Core::Hashable
       
-        # Optional. Service Account for encrypting the JWT.
+        # Optional. Service Account for encryption key.
         # Corresponds to the JSON property `encryptionSaEmail`
         # @return [String]
         attr_accessor :encryption_sa_email
+      
+        # Optional. JWK in string.
+        # Corresponds to the JSON property `jwk`
+        # @return [String]
+        attr_accessor :jwk
       
         def initialize(**args)
            update!(**args)
@@ -2138,15 +2142,16 @@ module Google
         # Update properties of this object
         def update!(**args)
           @encryption_sa_email = args[:encryption_sa_email] if args.key?(:encryption_sa_email)
+          @jwk = args[:jwk] if args.key?(:jwk)
         end
       end
       
-      # Metadata associated with Tenant and is provided by the Partner.
+      # Metadata associated with PartnerTenant and is provided by the Partner.
       class GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata
         include Google::Apis::Core::Hashable
       
-        # Optional. UUID used by the Partner to refer to the Tenant in their internal
-        # systems.
+        # Optional. UUID used by the Partner to refer to the PartnerTenant in their
+        # internal systems.
         # Corresponds to the JSON property `partnerTenantId`
         # @return [String]
         attr_accessor :partner_tenant_id
@@ -2220,15 +2225,66 @@ module Google
         end
       end
       
+      # Information about a BeyoncCorp Enterprise PartnerTenant.
+      class GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerTenant
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Timestamp when the resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. An arbitrary caller-provided name for the PartnerTenant. Cannot
+        # exceed 64 characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Optional. Google group email to which the PartnerTenant is enabled.
+        # Corresponds to the JSON property `googleGroupEmail`
+        # @return [String]
+        attr_accessor :google_group_email
+      
+        # Optional. Google group ID to which the PartnerTenant is enabled.
+        # Corresponds to the JSON property `googleGroupId`
+        # @return [String]
+        attr_accessor :google_group_id
+      
+        # Output only. Unique resource name of the PartnerTenant. The name is ignored
+        # when creating PartnerTenant.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Metadata associated with PartnerTenant and is provided by the Partner.
+        # Corresponds to the JSON property `partnerMetadata`
+        # @return [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata]
+        attr_accessor :partner_metadata
+      
+        # Output only. Timestamp when the resource was last modified.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @google_group_email = args[:google_group_email] if args.key?(:google_group_email)
+          @google_group_id = args[:google_group_id] if args.key?(:google_group_id)
+          @name = args[:name] if args.key?(:name)
+          @partner_metadata = args[:partner_metadata] if args.key?(:partner_metadata)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Proxy Configuration of a Tenant.
       class GoogleCloudBeyondcorpPartnerservicesV1alphaProxyConfig
         include Google::Apis::Core::Hashable
-      
-        # Message contains the authentication information to validate against the proxy
-        # server.
-        # Corresponds to the JSON property `authenticationInfo`
-        # @return [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfo]
-        attr_accessor :authentication_info
       
         # Output only. Timestamp when the resource was created.
         # Corresponds to the JSON property `createTime`
@@ -2240,6 +2296,11 @@ module Google
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
+      
+        # Message contains the JWT encryption information for the proxy server.
+        # Corresponds to the JSON property `encryptionInfo`
+        # @return [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo]
+        attr_accessor :encryption_info
       
         # Output only. ProxyConfig resource name.
         # Corresponds to the JSON property `name`
@@ -2272,9 +2333,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @authentication_info = args[:authentication_info] if args.key?(:authentication_info)
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @encryption_info = args[:encryption_info] if args.key?(:encryption_info)
           @name = args[:name] if args.key?(:name)
           @proxy_uri = args[:proxy_uri] if args.key?(:proxy_uri)
           @routing_info = args[:routing_info] if args.key?(:routing_info)
@@ -2333,7 +2394,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Metadata associated with Tenant and is provided by the Partner.
+        # Metadata associated with PartnerTenant and is provided by the Partner.
         # Corresponds to the JSON property `partnerMetadata`
         # @return [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata]
         attr_accessor :partner_metadata
