@@ -16,13 +16,13 @@ module Google
   module Apis
     module AndroidmanagementV1
       # Version of the google-apis-androidmanagement_v1 gem
-      GEM_VERSION = "0.51.0"
+      GEM_VERSION = "0.52.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.12.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20230418"
+      REVISION = "20230508"
     end
   end
 end
