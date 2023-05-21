@@ -451,8 +451,7 @@ module Google
         # @return [Google::Apis::GkehubV1alpha::AppDevExperienceFeatureState]
         attr_accessor :appdevexperience
       
-        # **FleetObservability**: An empty state left as an example Hub-wide Feature
-        # state.
+        # **FleetObservability**: Hub-wide Feature for FleetObservability feature. state.
         # Corresponds to the JSON property `fleetobservability`
         # @return [Google::Apis::GkehubV1alpha::FleetObservabilityFeatureState]
         attr_accessor :fleetobservability
@@ -1944,8 +1943,7 @@ module Google
         end
       end
       
-      # **FleetObservability**: An empty state left as an example Hub-wide Feature
-      # state.
+      # **FleetObservability**: Hub-wide Feature for FleetObservability feature. state.
       class FleetObservabilityFeatureState
         include Google::Apis::Core::Hashable
       
@@ -1997,8 +1995,8 @@ module Google
         end
       end
       
-      # **FleetObservability**: An empty state left as an example membership-specific
-      # Feature state.
+      # **FleetObservability**: Membership-specific Feature state for
+      # fleetobservability.
       class FleetObservabilityMembershipState
         include Google::Apis::Core::Hashable
       
@@ -2961,7 +2959,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # A Workspace resource name in the format `projects/*/locations/*/scopes/*`.
+        # A Scope resource name in the format `projects/*/locations/*/scopes/*`.
         # Corresponds to the JSON property `scope`
         # @return [String]
         attr_accessor :scope
@@ -3174,8 +3172,8 @@ module Google
         # @return [Google::Apis::GkehubV1alpha::ConfigManagementMembershipState]
         attr_accessor :configmanagement
       
-        # **FleetObservability**: An empty state left as an example membership-specific
-        # Feature state.
+        # **FleetObservability**: Membership-specific Feature state for
+        # fleetobservability.
         # Corresponds to the JSON property `fleetobservability`
         # @return [Google::Apis::GkehubV1alpha::FleetObservabilityMembershipState]
         attr_accessor :fleetobservability
