@@ -93,13 +93,18 @@ module Google
         # unsupported provider will cause an HTTP 400 error to be returned. Returns
         # whether this token was already consumed before this call. If this is the first
         # time this method has seen the given App Check token, the field `
-        # already_consumed` will contain the value `false`. The given token will then be
-        # marked as `already_consumed` for all future invocations of this method for
-        # that token. Note that if the given App Check token is invalid, an HTTP 403
-        # error is returned instead of a response object, regardless whether the token
-        # was already consumed. Currently, when evaluating whether an App Check token
-        # was already consumed, only calls to this exact method are counted. Use of the
-        # App Check token elsewhere will not mark the token as being already consumed.
+        # already_consumed` in the response will be absent. The given token will then be
+        # marked as `already_consumed` (set to `true`) for all future invocations of
+        # this method for that token. Note that if the given App Check token is invalid,
+        # an HTTP 403 error is returned instead of a response object, regardless whether
+        # the token was already consumed. Currently, when evaluating whether an App
+        # Check token was already consumed, only calls to this exact method are counted.
+        # Use of the App Check token elsewhere will not mark the token as being already
+        # consumed. The caller must have the [`firebaseappcheck.appCheckTokens.verify`](
+        # https://firebase.google.com/docs/projects/iam/permissions#app-check)
+        # permission to call this method. This permission is part of the [Firebase App
+        # Check Token Verifier role](https://firebase.google.com/docs/projects/iam/roles-
+        # predefined-product#app-check).
         # @param [String] project
         #   Required. The relative resource name of the project for which the token was
         #   minted, in the format: ``` projects/`project_number` ``` If necessary, the `
