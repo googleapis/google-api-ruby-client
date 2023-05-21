@@ -293,6 +293,7 @@ module Google
           property :aws_access_key, as: 'awsAccessKey', class: Google::Apis::StoragetransferV1::AwsAccessKey, decorator: Google::Apis::StoragetransferV1::AwsAccessKey::Representation
       
           property :bucket_name, as: 'bucketName'
+          property :credentials_secret, as: 'credentialsSecret'
           property :path, as: 'path'
           property :role_arn, as: 'roleArn'
         end
@@ -304,6 +305,7 @@ module Google
           property :azure_credentials, as: 'azureCredentials', class: Google::Apis::StoragetransferV1::AzureCredentials, decorator: Google::Apis::StoragetransferV1::AzureCredentials::Representation
       
           property :container, as: 'container'
+          property :credentials_secret, as: 'credentialsSecret'
           property :path, as: 'path'
           property :storage_account, as: 'storageAccount'
         end
