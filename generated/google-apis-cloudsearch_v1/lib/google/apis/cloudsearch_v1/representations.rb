@@ -4124,6 +4124,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :meeting_code, as: 'meetingCode'
+          property :meeting_type, as: 'meetingType'
           property :meeting_url, as: 'meetingUrl'
         end
       end
@@ -7577,6 +7578,7 @@ module Google
           property :message_search_info, as: 'messageSearchInfo', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedMessageSearchInfo, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedMessageSearchInfo::Representation
       
           property :message_state, as: 'messageState'
+          property :number_of_unicode_emojis, as: 'numberOfUnicodeEmojis'
           collection :origin_app_suggestions, as: 'originAppSuggestions', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedOriginAppSuggestion, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedOriginAppSuggestion::Representation
       
           collection :personal_labels, as: 'personalLabels', class: Google::Apis::CloudsearchV1::PersonalLabelTag, decorator: Google::Apis::CloudsearchV1::PersonalLabelTag::Representation
