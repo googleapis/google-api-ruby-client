@@ -16,13 +16,13 @@ module Google
   module Apis
     module LifesciencesV2beta
       # Version of the google-apis-lifesciences_v2beta gem
-      GEM_VERSION = "0.23.0"
+      GEM_VERSION = "0.24.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.12.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20220916"
+      REVISION = "20230504"
     end
   end
 end
