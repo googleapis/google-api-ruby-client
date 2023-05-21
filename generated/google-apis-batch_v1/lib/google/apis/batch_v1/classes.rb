@@ -1824,8 +1824,7 @@ module Google
         end
       end
       
-      # A TaskGroup contains one or multiple Tasks that share the same Runnable but
-      # with different runtime parameters.
+      # A TaskGroup defines one or more Tasks that all share the same TaskSpec.
       class TaskGroup
         include Google::Apis::Core::Hashable
       
@@ -1857,6 +1856,12 @@ module Google
         attr_accessor :require_hosts_file
         alias_method :require_hosts_file?, :require_hosts_file
       
+        # Scheduling policy for Tasks in the TaskGroup. The default value is
+        # AS_SOON_AS_POSSIBLE.
+        # Corresponds to the JSON property `schedulingPolicy`
+        # @return [String]
+        attr_accessor :scheduling_policy
+      
         # Number of Tasks in the TaskGroup. Default is 1.
         # Corresponds to the JSON property `taskCount`
         # @return [Fixnum]
@@ -1876,7 +1881,7 @@ module Google
         # environment variable, in addition to any environment variables set in
         # task_environments, specifying the number of Tasks in the Task's parent
         # TaskGroup, and the specific Task's index in the TaskGroup (0 through
-        # BATCH_TASK_COUNT - 1). task_environments supports up to 200 entries.
+        # BATCH_TASK_COUNT - 1).
         # Corresponds to the JSON property `taskEnvironments`
         # @return [Array<Google::Apis::BatchV1::Environment>]
         attr_accessor :task_environments
@@ -1896,6 +1901,7 @@ module Google
           @parallelism = args[:parallelism] if args.key?(:parallelism)
           @permissive_ssh = args[:permissive_ssh] if args.key?(:permissive_ssh)
           @require_hosts_file = args[:require_hosts_file] if args.key?(:require_hosts_file)
+          @scheduling_policy = args[:scheduling_policy] if args.key?(:scheduling_policy)
           @task_count = args[:task_count] if args.key?(:task_count)
           @task_count_per_node = args[:task_count_per_node] if args.key?(:task_count_per_node)
           @task_environments = args[:task_environments] if args.key?(:task_environments)
