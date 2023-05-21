@@ -153,7 +153,7 @@ module Google
         end
       end
       
-      # Request of updating permission settings for a partner workload.
+      # Request for updating permission settings for a partner workload.
       class GoogleCloudAssuredworkloadsV1MutatePartnerPermissionsRequest
         include Google::Apis::Core::Hashable
       
@@ -522,9 +522,7 @@ module Google
         # @return [String]
         attr_accessor :kaj_enrollment_state
       
-        # Settings specific to the Key Management Service. This message is deprecated.
-        # In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT
-        # or KEYRING in ResourceSettings.resource_type field.
+        # Settings specific to the Key Management Service.
         # Corresponds to the JSON property `kmsSettings`
         # @return [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1WorkloadKmsSettings]
         attr_accessor :kms_settings
@@ -544,6 +542,11 @@ module Google
         # Corresponds to the JSON property `partner`
         # @return [String]
         attr_accessor :partner
+      
+        # Permissions granted to the AW Partner SA account for the customer workload
+        # Corresponds to the JSON property `partnerPermissions`
+        # @return [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions]
+        attr_accessor :partner_permissions
       
         # Input only. The parent resource for the resources managed by this Assured
         # Workload. May be either empty or a folder resource which is a child of the
@@ -575,7 +578,8 @@ module Google
         # Optional. Indicates whether the e-mail notification for a violation is enabled
         # for a workload. This value will be by default True, and if not present will be
         # considered as true. This should only be updated via updateWorkload call. Any
-        # Changes to this field during the createWorkload call will not be honored.
+        # Changes to this field during the createWorkload call will not be honored. This
+        # will always be true while creating the workload.
         # Corresponds to the JSON property `violationNotificationsEnabled`
         # @return [Boolean]
         attr_accessor :violation_notifications_enabled
@@ -601,6 +605,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @partner = args[:partner] if args.key?(:partner)
+          @partner_permissions = args[:partner_permissions] if args.key?(:partner_permissions)
           @provisioned_resources_parent = args[:provisioned_resources_parent] if args.key?(:provisioned_resources_parent)
           @resource_settings = args[:resource_settings] if args.key?(:resource_settings)
           @resources = args[:resources] if args.key?(:resources)
@@ -665,9 +670,7 @@ module Google
         end
       end
       
-      # Settings specific to the Key Management Service. This message is deprecated.
-      # In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT
-      # or KEYRING in ResourceSettings.resource_type field.
+      # Settings specific to the Key Management Service.
       class GoogleCloudAssuredworkloadsV1WorkloadKmsSettings
         include Google::Apis::Core::Hashable
       
@@ -712,12 +715,6 @@ module Google
         attr_accessor :remediate_folder_violations
         alias_method :remediate_folder_violations?, :remediate_folder_violations
       
-        # Allow partner to approve or reject Service Access requests
-        # Corresponds to the JSON property `serviceAccessApprover`
-        # @return [Boolean]
-        attr_accessor :service_access_approver
-        alias_method :service_access_approver?, :service_access_approver
-      
         def initialize(**args)
            update!(**args)
         end
@@ -726,7 +723,6 @@ module Google
         def update!(**args)
           @data_logs_viewer = args[:data_logs_viewer] if args.key?(:data_logs_viewer)
           @remediate_folder_violations = args[:remediate_folder_violations] if args.key?(:remediate_folder_violations)
-          @service_access_approver = args[:service_access_approver] if args.key?(:service_access_approver)
         end
       end
       
@@ -774,7 +770,7 @@ module Google
         attr_accessor :resource_id
       
         # Indicates the type of resource. This field should be specified to correspond
-        # the id to the right resource type (CONSUMER_FOLDER or ENCRYPTION_KEYS_PROJECT)
+        # the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
         # Corresponds to the JSON property `resourceType`
         # @return [String]
         attr_accessor :resource_type
