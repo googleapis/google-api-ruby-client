@@ -328,7 +328,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfo
+      class GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -341,6 +341,12 @@ module Google
       end
       
       class GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerServiceOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerTenant
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1183,10 +1189,11 @@ module Google
         end
       end
       
-      class GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfo
+      class GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :encryption_sa_email, as: 'encryptionSaEmail'
+          property :jwk, as: 'jwk'
         end
       end
       
@@ -1210,13 +1217,27 @@ module Google
         end
       end
       
+      class GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerTenant
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          property :google_group_email, as: 'googleGroupEmail'
+          property :google_group_id, as: 'googleGroupId'
+          property :name, as: 'name'
+          property :partner_metadata, as: 'partnerMetadata', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata::Representation
+      
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class GoogleCloudBeyondcorpPartnerservicesV1alphaProxyConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :authentication_info, as: 'authenticationInfo', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfo, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfo::Representation
-      
           property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
+          property :encryption_info, as: 'encryptionInfo', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo::Representation
+      
           property :name, as: 'name'
           property :proxy_uri, as: 'proxyUri'
           property :routing_info, as: 'routingInfo', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfo, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfo::Representation
