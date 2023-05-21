@@ -243,6 +243,12 @@ module Google
         # @return [String]
         attr_accessor :service_id
       
+        # Optional. User-provided TrafficConfig tag to send traffic to. When omitted,
+        # traffic is sent to the service-wide URI
+        # Corresponds to the JSON property `tag`
+        # @return [String]
+        attr_accessor :tag
+      
         def initialize(**args)
            update!(**args)
         end
@@ -251,6 +257,7 @@ module Google
         def update!(**args)
           @region = args[:region] if args.key?(:region)
           @service_id = args[:service_id] if args.key?(:service_id)
+          @tag = args[:tag] if args.key?(:tag)
         end
       end
       

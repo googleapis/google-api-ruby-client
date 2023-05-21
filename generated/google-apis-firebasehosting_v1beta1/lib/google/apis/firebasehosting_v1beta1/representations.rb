@@ -265,6 +265,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :region, as: 'region'
           property :service_id, as: 'serviceId'
+          property :tag, as: 'tag'
         end
       end
       
