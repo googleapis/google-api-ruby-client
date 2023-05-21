@@ -1569,6 +1569,41 @@ module Google
         end
       end
       
+      # Heartbeat status report of a device. * Available for Kiosks * This field
+      # provides online/offline/unknown status of a device and will only be included
+      # if the status has changed (e.g. Online -> Offline) * Data for this field is
+      # controlled via policy: [HeartbeatEnabled](https://chromeenterprise.google/
+      # policies/#HeartbeatEnabled) [More Info](https://support.google.com/chrome/a/
+      # answer/6179663#:~:text=On%20the%20Chrome,device%20status%20alerts) * Heartbeat
+      # Frequency: 2 mins * Note: If a device goes offline, it can take up to 12
+      # minutes for the online status of the device to be updated * Cache: If the
+      # device is offline, the collected data is stored locally, and will be reported
+      # when the device is next online: N/A * Reported for affiliated users only: N/A *
+      # Granular permission needed: TELEMETRY_API_DEVICE_ACTIVITY_REPORT
+      class GoogleChromeManagementV1HeartbeatStatusReport
+        include Google::Apis::Core::Hashable
+      
+        # Timestamp of when status changed was detected
+        # Corresponds to the JSON property `reportTime`
+        # @return [String]
+        attr_accessor :report_time
+      
+        # State the device changed to
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @report_time = args[:report_time] if args.key?(:report_time)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # Data that describes the result of the HTTPS latency diagnostics routine, with
       # the HTTPS requests issued to Google websites.
       class GoogleChromeManagementV1HttpsLatencyRoutineData
@@ -1675,6 +1710,45 @@ module Google
           @homepage_uri = args[:homepage_uri] if args.key?(:homepage_uri)
           @os_user_count = args[:os_user_count] if args.key?(:os_user_count)
           @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
+      # Kiosk app status report of a device. * Available for Kiosks * This field
+      # provides the app id and version number running on a kiosk device and the
+      # timestamp of when the report was last updated * Data for this field is
+      # controlled via policy: [ReportDeviceSessionStatus](https://chromeenterprise.
+      # google/policies/#ReportDeviceSessionStatus) * Data Collection Frequency: Only
+      # at Upload * Default Data Reporting Frequency: 3 hours - Policy Controlled: Yes
+      # * Cache: If the device is offline, the collected data is stored locally, and
+      # will be reported when the device is next online: No * Reported for affiliated
+      # users only: N/A * Granular permission needed: TELEMETRY_API_APPS_REPORT
+      class GoogleChromeManagementV1KioskAppStatusReport
+        include Google::Apis::Core::Hashable
+      
+        # App id of kiosk app for example "mdmkkicfmmkgmpkmkdikhlbggogpicma"
+        # Corresponds to the JSON property `appId`
+        # @return [String]
+        attr_accessor :app_id
+      
+        # App version number of kiosk app for example "1.10.118"
+        # Corresponds to the JSON property `appVersion`
+        # @return [String]
+        attr_accessor :app_version
+      
+        # Timestamp of when report was collected
+        # Corresponds to the JSON property `reportTime`
+        # @return [String]
+        attr_accessor :report_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_id = args[:app_id] if args.key?(:app_id)
+          @app_version = args[:app_version] if args.key?(:app_version)
+          @report_time = args[:report_time] if args.key?(:report_time)
         end
       end
       
@@ -2338,6 +2412,17 @@ module Google
         # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1GraphicsStatusReport>]
         attr_accessor :graphics_status_report
       
+        # Output only. Heartbeat status report containing timestamps periodically sorted
+        # in decreasing order of report_time
+        # Corresponds to the JSON property `heartbeatStatusReport`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1HeartbeatStatusReport>]
+        attr_accessor :heartbeat_status_report
+      
+        # Output only. Kiosk app status report for the kiosk device
+        # Corresponds to the JSON property `kioskAppStatusReport`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1KioskAppStatusReport>]
+        attr_accessor :kiosk_app_status_report
+      
         # Memory information of a device. * This field has both telemetry and device
         # information: - `totalRamBytes` - Device information - `availableRamBytes` -
         # Telemetry information - `totalMemoryEncryption` - Device information * Data
@@ -2449,6 +2534,8 @@ module Google
           @device_id = args[:device_id] if args.key?(:device_id)
           @graphics_info = args[:graphics_info] if args.key?(:graphics_info)
           @graphics_status_report = args[:graphics_status_report] if args.key?(:graphics_status_report)
+          @heartbeat_status_report = args[:heartbeat_status_report] if args.key?(:heartbeat_status_report)
+          @kiosk_app_status_report = args[:kiosk_app_status_report] if args.key?(:kiosk_app_status_report)
           @memory_info = args[:memory_info] if args.key?(:memory_info)
           @memory_status_report = args[:memory_status_report] if args.key?(:memory_status_report)
           @name = args[:name] if args.key?(:name)
