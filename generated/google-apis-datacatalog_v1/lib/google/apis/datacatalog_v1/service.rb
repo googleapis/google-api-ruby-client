@@ -106,6 +106,14 @@ module Google
         #   sensitive. For example: * `//bigquery.googleapis.com/projects/`PROJECT_ID`/
         #   datasets/`DATASET_ID`/tables/`TABLE_ID`` * `//pubsub.googleapis.com/projects/`
         #   PROJECT_ID`/topics/`TOPIC_ID``
+        # @param [String] location
+        #   Location where the lookup should be performed. Required to lookup entry that
+        #   is not a part of `DPMS` or `DATAPLEX` `integrated_system` using its `
+        #   fully_qualified_name`. Ignored in other cases.
+        # @param [String] project
+        #   Project where the lookup should be performed. Required to lookup entry that is
+        #   not a part of `DPMS` or `DATAPLEX` `integrated_system` using its `
+        #   fully_qualified_name`. Ignored in other cases.
         # @param [String] sql_resource
         #   The SQL name of the entry. SQL names are case-sensitive. Examples: * `pubsub.
         #   topic.`PROJECT_ID`.`TOPIC_ID`` * `pubsub.topic.`PROJECT_ID`.`\```TOPIC.ID.
@@ -131,12 +139,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def lookup_entry(fully_qualified_name: nil, linked_resource: nil, sql_resource: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def lookup_entry(fully_qualified_name: nil, linked_resource: nil, location: nil, project: nil, sql_resource: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/entries:lookup', options)
           command.response_representation = Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1Entry::Representation
           command.response_class = Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1Entry
           command.query['fullyQualifiedName'] = fully_qualified_name unless fully_qualified_name.nil?
           command.query['linkedResource'] = linked_resource unless linked_resource.nil?
+          command.query['location'] = location unless location.nil?
+          command.query['project'] = project unless project.nil?
           command.query['sqlResource'] = sql_resource unless sql_resource.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
