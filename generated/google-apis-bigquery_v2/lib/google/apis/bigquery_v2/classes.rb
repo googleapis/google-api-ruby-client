@@ -7493,6 +7493,17 @@ module Google
         # @return [Google::Apis::BigqueryV2::ModelDefinition]
         attr_accessor :model
       
+        # [Output-only] Number of logical bytes that are less than 90 days old.
+        # Corresponds to the JSON property `numActiveLogicalBytes`
+        # @return [Fixnum]
+        attr_accessor :num_active_logical_bytes
+      
+        # [Output-only] Number of physical bytes less than 90 days old. This data is not
+        # kept in real time, and might be delayed by a few seconds to a few minutes.
+        # Corresponds to the JSON property `numActivePhysicalBytes`
+        # @return [Fixnum]
+        attr_accessor :num_active_physical_bytes
+      
         # [Output-only] The size of this table in bytes, excluding any data in the
         # streaming buffer.
         # Corresponds to the JSON property `numBytes`
@@ -7504,6 +7515,24 @@ module Google
         # Corresponds to the JSON property `numLongTermBytes`
         # @return [Fixnum]
         attr_accessor :num_long_term_bytes
+      
+        # [Output-only] Number of logical bytes that are more than 90 days old.
+        # Corresponds to the JSON property `numLongTermLogicalBytes`
+        # @return [Fixnum]
+        attr_accessor :num_long_term_logical_bytes
+      
+        # [Output-only] Number of physical bytes more than 90 days old. This data is not
+        # kept in real time, and might be delayed by a few seconds to a few minutes.
+        # Corresponds to the JSON property `numLongTermPhysicalBytes`
+        # @return [Fixnum]
+        attr_accessor :num_long_term_physical_bytes
+      
+        # [Output-only] The number of partitions present in the table or materialized
+        # view. This data is not kept in real time, and might be delayed by a few
+        # seconds to a few minutes.
+        # Corresponds to the JSON property `numPartitions`
+        # @return [Fixnum]
+        attr_accessor :num_partitions
       
         # [Output-only] [TrustedTester] The physical size of this table in bytes,
         # excluding any data in the streaming buffer. This includes compression and
@@ -7518,51 +7547,22 @@ module Google
         # @return [Fixnum]
         attr_accessor :num_rows
       
-        # [Output-only] Number of logical bytes that are less than 90 days old.
-        # Corresponds to the JSON property `num_active_logical_bytes`
-        # @return [Fixnum]
-        attr_accessor :num_active_logical_bytes
-      
-        # [Output-only] Number of physical bytes less than 90 days old. This data is not
-        # kept in real time, and might be delayed by a few seconds to a few minutes.
-        # Corresponds to the JSON property `num_active_physical_bytes`
-        # @return [Fixnum]
-        attr_accessor :num_active_physical_bytes
-      
-        # [Output-only] Number of logical bytes that are more than 90 days old.
-        # Corresponds to the JSON property `num_long_term_logical_bytes`
-        # @return [Fixnum]
-        attr_accessor :num_long_term_logical_bytes
-      
-        # [Output-only] Number of physical bytes more than 90 days old. This data is not
-        # kept in real time, and might be delayed by a few seconds to a few minutes.
-        # Corresponds to the JSON property `num_long_term_physical_bytes`
-        # @return [Fixnum]
-        attr_accessor :num_long_term_physical_bytes
-      
-        # [Output-only] The number of partitions present in the table or materialized
-        # view. This data is not kept in real time, and might be delayed by a few
-        # seconds to a few minutes.
-        # Corresponds to the JSON property `num_partitions`
-        # @return [Fixnum]
-        attr_accessor :num_partitions
-      
         # [Output-only] Number of physical bytes used by time travel storage (deleted or
         # changed data). This data is not kept in real time, and might be delayed by a
         # few seconds to a few minutes.
-        # Corresponds to the JSON property `num_time_travel_physical_bytes`
+        # Corresponds to the JSON property `numTimeTravelPhysicalBytes`
         # @return [Fixnum]
         attr_accessor :num_time_travel_physical_bytes
       
         # [Output-only] Total number of logical bytes in the table or materialized view.
-        # Corresponds to the JSON property `num_total_logical_bytes`
+        # Corresponds to the JSON property `numTotalLogicalBytes`
         # @return [Fixnum]
         attr_accessor :num_total_logical_bytes
       
         # [Output-only] The physical size of this table in bytes. This also includes
         # storage used for time travel. This data is not kept in real time, and might be
         # delayed by a few seconds to a few minutes.
-        # Corresponds to the JSON property `num_total_physical_bytes`
+        # Corresponds to the JSON property `numTotalPhysicalBytes`
         # @return [Fixnum]
         attr_accessor :num_total_physical_bytes
       
@@ -7600,6 +7600,11 @@ module Google
         # Corresponds to the JSON property `streamingBuffer`
         # @return [Google::Apis::BigqueryV2::Streamingbuffer]
         attr_accessor :streaming_buffer
+      
+        # [Optional] The table constraints on the table.
+        # Corresponds to the JSON property `tableConstraints`
+        # @return [Google::Apis::BigqueryV2::TableConstraints]
+        attr_accessor :table_constraints
       
         # [Required] Reference describing the ID of this table.
         # Corresponds to the JSON property `tableReference`
@@ -7652,15 +7657,15 @@ module Google
           @materialized_view = args[:materialized_view] if args.key?(:materialized_view)
           @max_staleness = args[:max_staleness] if args.key?(:max_staleness)
           @model = args[:model] if args.key?(:model)
-          @num_bytes = args[:num_bytes] if args.key?(:num_bytes)
-          @num_long_term_bytes = args[:num_long_term_bytes] if args.key?(:num_long_term_bytes)
-          @num_physical_bytes = args[:num_physical_bytes] if args.key?(:num_physical_bytes)
-          @num_rows = args[:num_rows] if args.key?(:num_rows)
           @num_active_logical_bytes = args[:num_active_logical_bytes] if args.key?(:num_active_logical_bytes)
           @num_active_physical_bytes = args[:num_active_physical_bytes] if args.key?(:num_active_physical_bytes)
+          @num_bytes = args[:num_bytes] if args.key?(:num_bytes)
+          @num_long_term_bytes = args[:num_long_term_bytes] if args.key?(:num_long_term_bytes)
           @num_long_term_logical_bytes = args[:num_long_term_logical_bytes] if args.key?(:num_long_term_logical_bytes)
           @num_long_term_physical_bytes = args[:num_long_term_physical_bytes] if args.key?(:num_long_term_physical_bytes)
           @num_partitions = args[:num_partitions] if args.key?(:num_partitions)
+          @num_physical_bytes = args[:num_physical_bytes] if args.key?(:num_physical_bytes)
+          @num_rows = args[:num_rows] if args.key?(:num_rows)
           @num_time_travel_physical_bytes = args[:num_time_travel_physical_bytes] if args.key?(:num_time_travel_physical_bytes)
           @num_total_logical_bytes = args[:num_total_logical_bytes] if args.key?(:num_total_logical_bytes)
           @num_total_physical_bytes = args[:num_total_physical_bytes] if args.key?(:num_total_physical_bytes)
@@ -7670,6 +7675,7 @@ module Google
           @self_link = args[:self_link] if args.key?(:self_link)
           @snapshot_definition = args[:snapshot_definition] if args.key?(:snapshot_definition)
           @streaming_buffer = args[:streaming_buffer] if args.key?(:streaming_buffer)
+          @table_constraints = args[:table_constraints] if args.key?(:table_constraints)
           @table_reference = args[:table_reference] if args.key?(:table_reference)
           @time_partitioning = args[:time_partitioning] if args.key?(:time_partitioning)
           @type = args[:type] if args.key?(:type)
@@ -7693,6 +7699,137 @@ module Google
         # Update properties of this object
         def update!(**args)
           @v = args[:v] if args.key?(:v)
+        end
+      end
+      
+      # 
+      class TableConstraints
+        include Google::Apis::Core::Hashable
+      
+        # [Optional] The foreign keys of the tables.
+        # Corresponds to the JSON property `foreign_keys`
+        # @return [Array<Google::Apis::BigqueryV2::TableConstraints::ForeignKey>]
+        attr_accessor :foreign_keys
+      
+        # [Optional] The primary key of the table.
+        # Corresponds to the JSON property `primary_key`
+        # @return [Google::Apis::BigqueryV2::TableConstraints::PrimaryKey]
+        attr_accessor :primary_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @foreign_keys = args[:foreign_keys] if args.key?(:foreign_keys)
+          @primary_key = args[:primary_key] if args.key?(:primary_key)
+        end
+        
+        # 
+        class ForeignKey
+          include Google::Apis::Core::Hashable
+        
+          # 
+          # Corresponds to the JSON property `column_references`
+          # @return [Array<Google::Apis::BigqueryV2::TableConstraints::ForeignKey::ColumnReference>]
+          attr_accessor :column_references
+        
+          # 
+          # Corresponds to the JSON property `name`
+          # @return [String]
+          attr_accessor :name
+        
+          # 
+          # Corresponds to the JSON property `referenced_table`
+          # @return [Google::Apis::BigqueryV2::TableConstraints::ForeignKey::ReferencedTable]
+          attr_accessor :referenced_table
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @column_references = args[:column_references] if args.key?(:column_references)
+            @name = args[:name] if args.key?(:name)
+            @referenced_table = args[:referenced_table] if args.key?(:referenced_table)
+          end
+          
+          # 
+          class ColumnReference
+            include Google::Apis::Core::Hashable
+          
+            # 
+            # Corresponds to the JSON property `referenced_column`
+            # @return [String]
+            attr_accessor :referenced_column
+          
+            # 
+            # Corresponds to the JSON property `referencing_column`
+            # @return [String]
+            attr_accessor :referencing_column
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @referenced_column = args[:referenced_column] if args.key?(:referenced_column)
+              @referencing_column = args[:referencing_column] if args.key?(:referencing_column)
+            end
+          end
+          
+          # 
+          class ReferencedTable
+            include Google::Apis::Core::Hashable
+          
+            # 
+            # Corresponds to the JSON property `datasetId`
+            # @return [String]
+            attr_accessor :dataset_id
+          
+            # 
+            # Corresponds to the JSON property `projectId`
+            # @return [String]
+            attr_accessor :project_id
+          
+            # 
+            # Corresponds to the JSON property `tableId`
+            # @return [String]
+            attr_accessor :table_id
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @dataset_id = args[:dataset_id] if args.key?(:dataset_id)
+              @project_id = args[:project_id] if args.key?(:project_id)
+              @table_id = args[:table_id] if args.key?(:table_id)
+            end
+          end
+        end
+        
+        # [Optional] The primary key of the table.
+        class PrimaryKey
+          include Google::Apis::Core::Hashable
+        
+          # 
+          # Corresponds to the JSON property `columns`
+          # @return [Array<String>]
+          attr_accessor :columns
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @columns = args[:columns] if args.key?(:columns)
+          end
         end
       end
       
@@ -8357,6 +8494,13 @@ module Google
         attr_accessor :adjust_step_changes
         alias_method :adjust_step_changes?, :adjust_step_changes
       
+        # Whether to use approximate feature contribution method in XGBoost model
+        # explanation for global explain.
+        # Corresponds to the JSON property `approxGlobalFeatureContrib`
+        # @return [Boolean]
+        attr_accessor :approx_global_feature_contrib
+        alias_method :approx_global_feature_contrib?, :approx_global_feature_contrib
+      
         # Whether to enable auto ARIMA or not.
         # Corresponds to the JSON property `autoArima`
         # @return [Boolean]
@@ -8751,6 +8895,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @adjust_step_changes = args[:adjust_step_changes] if args.key?(:adjust_step_changes)
+          @approx_global_feature_contrib = args[:approx_global_feature_contrib] if args.key?(:approx_global_feature_contrib)
           @auto_arima = args[:auto_arima] if args.key?(:auto_arima)
           @auto_arima_max_order = args[:auto_arima_max_order] if args.key?(:auto_arima_max_order)
           @auto_arima_min_order = args[:auto_arima_min_order] if args.key?(:auto_arima_min_order)
