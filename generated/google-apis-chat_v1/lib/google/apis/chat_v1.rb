@@ -33,8 +33,14 @@ module Google
       # Private Service: https://www.googleapis.com/auth/chat.bot
       AUTH_CHAT_BOT = 'https://www.googleapis.com/auth/chat.bot'
 
+      # Delete conversations and spaces & remove access to associated files in Google Chat
+      AUTH_CHAT_DELETE = 'https://www.googleapis.com/auth/chat.delete'
+
       # View, add, and remove members from conversations in Google Chat
       AUTH_CHAT_MEMBERSHIPS = 'https://www.googleapis.com/auth/chat.memberships'
+
+      # Add and remove itself from conversations in Google Chat
+      AUTH_CHAT_MEMBERSHIPS_APP = 'https://www.googleapis.com/auth/chat.memberships.app'
 
       # View members in Google Chat conversations.
       AUTH_CHAT_MEMBERSHIPS_READONLY = 'https://www.googleapis.com/auth/chat.memberships.readonly'
@@ -45,11 +51,23 @@ module Google
       # Compose and send messages in Google Chat
       AUTH_CHAT_MESSAGES_CREATE = 'https://www.googleapis.com/auth/chat.messages.create'
 
+      # View, add, and delete reactions to messages in Google Chat
+      AUTH_CHAT_MESSAGES_REACTIONS = 'https://www.googleapis.com/auth/chat.messages.reactions'
+
+      # Add reactions to messages in Google Chat
+      AUTH_CHAT_MESSAGES_REACTIONS_CREATE = 'https://www.googleapis.com/auth/chat.messages.reactions.create'
+
+      # View reactions to messages in Google Chat
+      AUTH_CHAT_MESSAGES_REACTIONS_READONLY = 'https://www.googleapis.com/auth/chat.messages.reactions.readonly'
+
       # View messages and reactions in Google Chat
       AUTH_CHAT_MESSAGES_READONLY = 'https://www.googleapis.com/auth/chat.messages.readonly'
 
       # Create conversations and spaces and view or update metadata (including history settings) in Google Chat
       AUTH_CHAT_SPACES = 'https://www.googleapis.com/auth/chat.spaces'
+
+      # Create new conversations in Google Chat
+      AUTH_CHAT_SPACES_CREATE = 'https://www.googleapis.com/auth/chat.spaces.create'
 
       # View chat and spaces in Google Chat
       AUTH_CHAT_SPACES_READONLY = 'https://www.googleapis.com/auth/chat.spaces.readonly'

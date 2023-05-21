@@ -106,6 +106,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CustomEmoji
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DateInput
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -113,6 +119,12 @@ module Google
       end
       
       class DateTimeInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeletionMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -137,6 +149,18 @@ module Google
       end
       
       class DriveDataRef
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Emoji
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EmojiReactionSummary
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -208,6 +232,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAppsCardV1Column
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAppsCardV1Columns
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAppsCardV1DateTimePicker
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -221,6 +257,12 @@ module Google
       end
       
       class GoogleAppsCardV1Divider
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAppsCardV1FooterWidget
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -328,6 +370,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAppsCardV1Widgets
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Image
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -353,6 +401,18 @@ module Google
       end
       
       class ListMembershipsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListMessagesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListReactionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -400,7 +460,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Reaction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Section
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SetUpSpaceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -467,6 +539,18 @@ module Google
       end
       
       class TimeZone
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UploadAttachmentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UploadAttachmentResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -548,6 +632,7 @@ module Google
       class AttachmentDataRef
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :attachment_upload_token, as: 'attachmentUploadToken'
           property :resource_name, as: 'resourceName'
         end
       end
@@ -638,6 +723,13 @@ module Google
         end
       end
       
+      class CustomEmoji
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :uid, as: 'uid'
+        end
+      end
+      
       class DateInput
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -651,6 +743,13 @@ module Google
           property :has_date, as: 'hasDate'
           property :has_time, as: 'hasTime'
           property :ms_since_epoch, :numeric_string => true, as: 'msSinceEpoch'
+        end
+      end
+      
+      class DeletionMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deletion_type, as: 'deletionType'
         end
       end
       
@@ -699,6 +798,24 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :drive_file_id, as: 'driveFileId'
+        end
+      end
+      
+      class Emoji
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_emoji, as: 'customEmoji', class: Google::Apis::ChatV1::CustomEmoji, decorator: Google::Apis::ChatV1::CustomEmoji::Representation
+      
+          property :unicode, as: 'unicode'
+        end
+      end
+      
+      class EmojiReactionSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :emoji, as: 'emoji', class: Google::Apis::ChatV1::Emoji, decorator: Google::Apis::ChatV1::Emoji::Representation
+      
+          property :reaction_count, as: 'reactionCount'
         end
       end
       
@@ -804,6 +921,8 @@ module Google
       
           property :secondary_button, as: 'secondaryButton', class: Google::Apis::ChatV1::GoogleAppsCardV1Button, decorator: Google::Apis::ChatV1::GoogleAppsCardV1Button::Representation
       
+          collection :widgets, as: 'widgets', class: Google::Apis::ChatV1::GoogleAppsCardV1FooterWidget, decorator: Google::Apis::ChatV1::GoogleAppsCardV1FooterWidget::Representation
+      
         end
       end
       
@@ -815,6 +934,25 @@ module Google
           property :image_url, as: 'imageUrl'
           property :subtitle, as: 'subtitle'
           property :title, as: 'title'
+        end
+      end
+      
+      class GoogleAppsCardV1Column
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :horizontal_alignment, as: 'horizontalAlignment'
+          property :horizontal_size_style, as: 'horizontalSizeStyle'
+          property :vertical_alignment, as: 'verticalAlignment'
+          collection :widgets, as: 'widgets', class: Google::Apis::ChatV1::GoogleAppsCardV1Widgets, decorator: Google::Apis::ChatV1::GoogleAppsCardV1Widgets::Representation
+      
+        end
+      end
+      
+      class GoogleAppsCardV1Columns
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :column_items, as: 'columnItems', class: Google::Apis::ChatV1::GoogleAppsCardV1Column, decorator: Google::Apis::ChatV1::GoogleAppsCardV1Column::Representation
+      
         end
       end
       
@@ -856,6 +994,22 @@ module Google
       class GoogleAppsCardV1Divider
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleAppsCardV1FooterWidget
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :button_list, as: 'buttonList', class: Google::Apis::ChatV1::GoogleAppsCardV1ButtonList, decorator: Google::Apis::ChatV1::GoogleAppsCardV1ButtonList::Representation
+      
+          property :date_time_picker, as: 'dateTimePicker', class: Google::Apis::ChatV1::GoogleAppsCardV1DateTimePicker, decorator: Google::Apis::ChatV1::GoogleAppsCardV1DateTimePicker::Representation
+      
+          property :decorated_text, as: 'decoratedText', class: Google::Apis::ChatV1::GoogleAppsCardV1DecoratedText, decorator: Google::Apis::ChatV1::GoogleAppsCardV1DecoratedText::Representation
+      
+          property :text_input, as: 'textInput', class: Google::Apis::ChatV1::GoogleAppsCardV1TextInput, decorator: Google::Apis::ChatV1::GoogleAppsCardV1TextInput::Representation
+      
+          property :text_paragraph, as: 'textParagraph', class: Google::Apis::ChatV1::GoogleAppsCardV1TextParagraph, decorator: Google::Apis::ChatV1::GoogleAppsCardV1TextParagraph::Representation
+      
         end
       end
       
@@ -1037,6 +1191,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :button_list, as: 'buttonList', class: Google::Apis::ChatV1::GoogleAppsCardV1ButtonList, decorator: Google::Apis::ChatV1::GoogleAppsCardV1ButtonList::Representation
       
+          property :columns, as: 'columns', class: Google::Apis::ChatV1::GoogleAppsCardV1Columns, decorator: Google::Apis::ChatV1::GoogleAppsCardV1Columns::Representation
+      
           property :date_time_picker, as: 'dateTimePicker', class: Google::Apis::ChatV1::GoogleAppsCardV1DateTimePicker, decorator: Google::Apis::ChatV1::GoogleAppsCardV1DateTimePicker::Representation
       
           property :decorated_text, as: 'decoratedText', class: Google::Apis::ChatV1::GoogleAppsCardV1DecoratedText, decorator: Google::Apis::ChatV1::GoogleAppsCardV1DecoratedText::Representation
@@ -1044,6 +1200,27 @@ module Google
           property :divider, as: 'divider', class: Google::Apis::ChatV1::GoogleAppsCardV1Divider, decorator: Google::Apis::ChatV1::GoogleAppsCardV1Divider::Representation
       
           property :grid, as: 'grid', class: Google::Apis::ChatV1::GoogleAppsCardV1Grid, decorator: Google::Apis::ChatV1::GoogleAppsCardV1Grid::Representation
+      
+          property :horizontal_alignment, as: 'horizontalAlignment'
+          property :image, as: 'image', class: Google::Apis::ChatV1::GoogleAppsCardV1Image, decorator: Google::Apis::ChatV1::GoogleAppsCardV1Image::Representation
+      
+          property :selection_input, as: 'selectionInput', class: Google::Apis::ChatV1::GoogleAppsCardV1SelectionInput, decorator: Google::Apis::ChatV1::GoogleAppsCardV1SelectionInput::Representation
+      
+          property :text_input, as: 'textInput', class: Google::Apis::ChatV1::GoogleAppsCardV1TextInput, decorator: Google::Apis::ChatV1::GoogleAppsCardV1TextInput::Representation
+      
+          property :text_paragraph, as: 'textParagraph', class: Google::Apis::ChatV1::GoogleAppsCardV1TextParagraph, decorator: Google::Apis::ChatV1::GoogleAppsCardV1TextParagraph::Representation
+      
+        end
+      end
+      
+      class GoogleAppsCardV1Widgets
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :button_list, as: 'buttonList', class: Google::Apis::ChatV1::GoogleAppsCardV1ButtonList, decorator: Google::Apis::ChatV1::GoogleAppsCardV1ButtonList::Representation
+      
+          property :date_time_picker, as: 'dateTimePicker', class: Google::Apis::ChatV1::GoogleAppsCardV1DateTimePicker, decorator: Google::Apis::ChatV1::GoogleAppsCardV1DateTimePicker::Representation
+      
+          property :decorated_text, as: 'decoratedText', class: Google::Apis::ChatV1::GoogleAppsCardV1DecoratedText, decorator: Google::Apis::ChatV1::GoogleAppsCardV1DecoratedText::Representation
       
           property :image, as: 'image', class: Google::Apis::ChatV1::GoogleAppsCardV1Image, decorator: Google::Apis::ChatV1::GoogleAppsCardV1Image::Representation
       
@@ -1116,6 +1293,24 @@ module Google
         end
       end
       
+      class ListMessagesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :messages, as: 'messages', class: Google::Apis::ChatV1::Message, decorator: Google::Apis::ChatV1::Message::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListReactionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :reactions, as: 'reactions', class: Google::Apis::ChatV1::Reaction, decorator: Google::Apis::ChatV1::Reaction::Representation
+      
+        end
+      end
+      
       class ListSpacesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1167,6 +1362,11 @@ module Google
       
           property :client_assigned_message_id, as: 'clientAssignedMessageId'
           property :create_time, as: 'createTime'
+          property :delete_time, as: 'deleteTime'
+          property :deletion_metadata, as: 'deletionMetadata', class: Google::Apis::ChatV1::DeletionMetadata, decorator: Google::Apis::ChatV1::DeletionMetadata::Representation
+      
+          collection :emoji_reaction_summaries, as: 'emojiReactionSummaries', class: Google::Apis::ChatV1::EmojiReactionSummary, decorator: Google::Apis::ChatV1::EmojiReactionSummary::Representation
+      
           property :fallback_text, as: 'fallbackText'
           property :last_update_time, as: 'lastUpdateTime'
           property :matched_url, as: 'matchedUrl', class: Google::Apis::ChatV1::MatchedUrl, decorator: Google::Apis::ChatV1::MatchedUrl::Representation
@@ -1202,11 +1402,33 @@ module Google
         end
       end
       
+      class Reaction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :emoji, as: 'emoji', class: Google::Apis::ChatV1::Emoji, decorator: Google::Apis::ChatV1::Emoji::Representation
+      
+          property :name, as: 'name'
+          property :user, as: 'user', class: Google::Apis::ChatV1::User, decorator: Google::Apis::ChatV1::User::Representation
+      
+        end
+      end
+      
       class Section
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :header, as: 'header'
           collection :widgets, as: 'widgets', class: Google::Apis::ChatV1::WidgetMarkup, decorator: Google::Apis::ChatV1::WidgetMarkup::Representation
+      
+        end
+      end
+      
+      class SetUpSpaceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :memberships, as: 'memberships', class: Google::Apis::ChatV1::Membership, decorator: Google::Apis::ChatV1::Membership::Representation
+      
+          property :request_id, as: 'requestId'
+          property :space, as: 'space', class: Google::Apis::ChatV1::Space, decorator: Google::Apis::ChatV1::Space::Representation
       
         end
       end
@@ -1239,7 +1461,9 @@ module Google
           property :single_user_bot_dm, as: 'singleUserBotDm'
           property :space_details, as: 'spaceDetails', class: Google::Apis::ChatV1::SpaceDetails, decorator: Google::Apis::ChatV1::SpaceDetails::Representation
       
+          property :space_history_state, as: 'spaceHistoryState'
           property :space_threading_state, as: 'spaceThreadingState'
+          property :space_type, as: 'spaceType'
           property :threaded, as: 'threaded'
           property :type, as: 'type'
         end
@@ -1306,6 +1530,21 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :offset, as: 'offset'
+        end
+      end
+      
+      class UploadAttachmentRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filename, as: 'filename'
+        end
+      end
+      
+      class UploadAttachmentResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attachment_data_ref, as: 'attachmentDataRef', class: Google::Apis::ChatV1::AttachmentDataRef, decorator: Google::Apis::ChatV1::AttachmentDataRef::Representation
+      
         end
       end
       
