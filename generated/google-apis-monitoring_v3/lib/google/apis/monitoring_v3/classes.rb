@@ -140,6 +140,8 @@ module Google
         # according to the combiner field. If the combined conditions evaluate to true,
         # then an incident is created. A policy can have from one to six conditions. If
         # condition_time_series_query_language is present, it must be the only condition.
+        # If condition_monitoring_query_language is present, it must be the only
+        # condition.
         # Corresponds to the JSON property `conditions`
         # @return [Array<Google::Apis::MonitoringV3::Condition>]
         attr_accessor :conditions
