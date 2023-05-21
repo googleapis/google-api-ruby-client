@@ -3708,6 +3708,12 @@ module Google
         attr_accessor :drop_late_data
         alias_method :drop_late_data?, :drop_late_data
       
+        # If true, then this location represents dynamic topics.
+        # Corresponds to the JSON property `dynamicDestinations`
+        # @return [Boolean]
+        attr_accessor :dynamic_destinations
+        alias_method :dynamic_destinations?, :dynamic_destinations
+      
         # If set, contains a pubsub label from which to extract record ids. If left
         # empty, record deduplication will be strictly best effort.
         # Corresponds to the JSON property `idLabel`
@@ -3749,6 +3755,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @drop_late_data = args[:drop_late_data] if args.key?(:drop_late_data)
+          @dynamic_destinations = args[:dynamic_destinations] if args.key?(:dynamic_destinations)
           @id_label = args[:id_label] if args.key?(:id_label)
           @subscription = args[:subscription] if args.key?(:subscription)
           @timestamp_label = args[:timestamp_label] if args.key?(:timestamp_label)

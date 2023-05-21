@@ -2028,6 +2028,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :drop_late_data, as: 'dropLateData'
+          property :dynamic_destinations, as: 'dynamicDestinations'
           property :id_label, as: 'idLabel'
           property :subscription, as: 'subscription'
           property :timestamp_label, as: 'timestampLabel'
