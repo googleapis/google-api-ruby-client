@@ -154,6 +154,19 @@ module Google
         # @return [String]
         attr_accessor :bucket_name
       
+        # Optional. The Resource name of a secret in Secret Manager. The Azure SAS token
+        # must be stored in Secret Manager in JSON format: ` "sas_token" : "SAS_TOKEN" `
+        # GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for
+        # the resource. See [Configure access to a source: Microsoft Azure Blob Storage]
+        # (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#
+        # secret_manager) for more information. If `credentials_secret` is specified, do
+        # not specify azure_credentials. This feature is in [preview](https://cloud.
+        # google.com/terms/service-terms#1). Format: `projects/`project_number`/secrets/`
+        # secret_name``
+        # Corresponds to the JSON property `credentialsSecret`
+        # @return [String]
+        attr_accessor :credentials_secret
+      
         # Root path to transfer objects. Must be an empty string or full path name that
         # ends with a '/'. This field is treated as an object prefix. As such, it should
         # generally not begin with a '/'.
@@ -179,6 +192,7 @@ module Google
         def update!(**args)
           @aws_access_key = args[:aws_access_key] if args.key?(:aws_access_key)
           @bucket_name = args[:bucket_name] if args.key?(:bucket_name)
+          @credentials_secret = args[:credentials_secret] if args.key?(:credentials_secret)
           @path = args[:path] if args.key?(:path)
           @role_arn = args[:role_arn] if args.key?(:role_arn)
         end
@@ -206,6 +220,19 @@ module Google
         # @return [String]
         attr_accessor :container
       
+        # Optional. The Resource name of a secret in Secret Manager. The Azure SAS token
+        # must be stored in Secret Manager in JSON format: ` "sas_token" : "SAS_TOKEN" `
+        # GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for
+        # the resource. See [Configure access to a source: Microsoft Azure Blob Storage]
+        # (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#
+        # secret_manager) for more information. If `credentials_secret` is specified, do
+        # not specify azure_credentials. This feature is in [preview](https://cloud.
+        # google.com/terms/service-terms#1). Format: `projects/`project_number`/secrets/`
+        # secret_name``
+        # Corresponds to the JSON property `credentialsSecret`
+        # @return [String]
+        attr_accessor :credentials_secret
+      
         # Root path to transfer objects. Must be an empty string or full path name that
         # ends with a '/'. This field is treated as an object prefix. As such, it should
         # generally not begin with a '/'.
@@ -226,6 +253,7 @@ module Google
         def update!(**args)
           @azure_credentials = args[:azure_credentials] if args.key?(:azure_credentials)
           @container = args[:container] if args.key?(:container)
+          @credentials_secret = args[:credentials_secret] if args.key?(:credentials_secret)
           @path = args[:path] if args.key?(:path)
           @storage_account = args[:storage_account] if args.key?(:storage_account)
         end
