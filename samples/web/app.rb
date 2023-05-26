@@ -17,7 +17,6 @@ require 'googleauth'
 require 'googleauth/stores/redis_token_store'
 require 'google/apis/drive_v3'
 require 'google/apis/calendar_v3'
-require 'google-id-token'
 require 'dotenv'
 
 LOGIN_URL = '/'
@@ -66,8 +65,7 @@ end
 #
 post('/signin') do
   audience = settings.client_id.id
-  validator = GoogleIDToken::Validator.new
-  claim = validator.check(params['credential'], audience, audience)
+  claim = Google::Auth::IDTokens.verify_oidc(params['credential'], aud: audience, azp: audience)
   if claim
     session[:user_id] = claim['sub']
     session[:user_email] = claim['email']
