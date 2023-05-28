@@ -136,6 +136,42 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Romanize input text written in non-Latin scripts to Latin text.
+        # @param [String] parent
+        #   Required. Project or location to make a call. Must refer to a caller's project.
+        #   Format: `projects/`project-number-or-id`/locations/`location-id`` or `
+        #   projects/`project-number-or-id``. For global calls, use `projects/`project-
+        #   number-or-id`/locations/global` or `projects/`project-number-or-id``.
+        # @param [Google::Apis::TranslateV3::RomanizeTextRequest] romanize_text_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TranslateV3::RomanizeTextResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TranslateV3::RomanizeTextResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def romanize_project_text(parent, romanize_text_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v3/{+parent}:romanizeText', options)
+          command.request_representation = Google::Apis::TranslateV3::RomanizeTextRequest::Representation
+          command.request_object = romanize_text_request_object
+          command.response_representation = Google::Apis::TranslateV3::RomanizeTextResponse::Representation
+          command.response_class = Google::Apis::TranslateV3::RomanizeTextResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Translates input text and returns translated text.
         # @param [String] parent
         #   Required. Project or location to make a call. Must refer to a caller's project.
@@ -414,6 +450,42 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Romanize input text written in non-Latin scripts to Latin text.
+        # @param [String] parent
+        #   Required. Project or location to make a call. Must refer to a caller's project.
+        #   Format: `projects/`project-number-or-id`/locations/`location-id`` or `
+        #   projects/`project-number-or-id``. For global calls, use `projects/`project-
+        #   number-or-id`/locations/global` or `projects/`project-number-or-id``.
+        # @param [Google::Apis::TranslateV3::RomanizeTextRequest] romanize_text_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TranslateV3::RomanizeTextResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TranslateV3::RomanizeTextResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def romanize_location_text(parent, romanize_text_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v3/{+parent}:romanizeText', options)
+          command.request_representation = Google::Apis::TranslateV3::RomanizeTextRequest::Representation
+          command.request_object = romanize_text_request_object
+          command.response_representation = Google::Apis::TranslateV3::RomanizeTextResponse::Representation
+          command.response_class = Google::Apis::TranslateV3::RomanizeTextResponse
+          command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

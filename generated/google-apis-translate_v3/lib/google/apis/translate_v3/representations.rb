@@ -280,6 +280,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Romanization
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RomanizeTextRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RomanizeTextResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -329,6 +347,12 @@ module Google
       end
       
       class Translation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TransliterationConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -748,6 +772,30 @@ module Google
         end
       end
       
+      class Romanization
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :detected_language_code, as: 'detectedLanguageCode'
+          property :romanized_text, as: 'romanizedText'
+        end
+      end
+      
+      class RomanizeTextRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :contents, as: 'contents'
+          property :source_language_code, as: 'sourceLanguageCode'
+        end
+      end
+      
+      class RomanizeTextResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :romanizations, as: 'romanizations', class: Google::Apis::TranslateV3::Romanization, decorator: Google::Apis::TranslateV3::Romanization::Representation
+      
+        end
+      end
+      
       class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -827,6 +875,8 @@ module Google
           property :model, as: 'model'
           property :source_language_code, as: 'sourceLanguageCode'
           property :target_language_code, as: 'targetLanguageCode'
+          property :transliteration_config, as: 'transliterationConfig', class: Google::Apis::TranslateV3::TransliterationConfig, decorator: Google::Apis::TranslateV3::TransliterationConfig::Representation
+      
         end
       end
       
@@ -848,6 +898,13 @@ module Google
       
           property :model, as: 'model'
           property :translated_text, as: 'translatedText'
+        end
+      end
+      
+      class TransliterationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_transliteration, as: 'enableTransliteration'
         end
       end
       

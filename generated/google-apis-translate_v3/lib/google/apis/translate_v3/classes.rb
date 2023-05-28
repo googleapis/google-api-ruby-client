@@ -1396,6 +1396,82 @@ module Google
         end
       end
       
+      # A single romanization response.
+      class Romanization
+        include Google::Apis::Core::Hashable
+      
+        # The ISO-639 language code of source text in the initial request, detected
+        # automatically, if no source language was passed within the initial request. If
+        # the source language was passed, auto-detection of the language does not occur
+        # and this field is empty.
+        # Corresponds to the JSON property `detectedLanguageCode`
+        # @return [String]
+        attr_accessor :detected_language_code
+      
+        # Romanized text. If an error occurs during romanization, this field might be
+        # excluded from the response.
+        # Corresponds to the JSON property `romanizedText`
+        # @return [String]
+        attr_accessor :romanized_text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @detected_language_code = args[:detected_language_code] if args.key?(:detected_language_code)
+          @romanized_text = args[:romanized_text] if args.key?(:romanized_text)
+        end
+      end
+      
+      # The request message for synchronous romanization.
+      class RomanizeTextRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The content of the input in string format.
+        # Corresponds to the JSON property `contents`
+        # @return [Array<String>]
+        attr_accessor :contents
+      
+        # Optional. The ISO-639 language code of the input text if known, for example, "
+        # hi" or "zh". If the source language isn't specified, the API attempts to
+        # identify the source language automatically and returns the source language for
+        # each content in the response.
+        # Corresponds to the JSON property `sourceLanguageCode`
+        # @return [String]
+        attr_accessor :source_language_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @contents = args[:contents] if args.key?(:contents)
+          @source_language_code = args[:source_language_code] if args.key?(:source_language_code)
+        end
+      end
+      
+      # The response message for synchronous romanization.
+      class RomanizeTextResponse
+        include Google::Apis::Core::Hashable
+      
+        # Text romanization responses. This field has the same length as `contents`.
+        # Corresponds to the JSON property `romanizations`
+        # @return [Array<Google::Apis::TranslateV3::Romanization>]
+        attr_accessor :romanizations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @romanizations = args[:romanizations] if args.key?(:romanizations)
+        end
+      end
+      
       # The `Status` type defines a logical error model that is suitable for different
       # programming environments, including REST APIs and RPC APIs. It is used by [
       # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
@@ -1734,6 +1810,11 @@ module Google
         # @return [String]
         attr_accessor :target_language_code
       
+        # Confugures transliteration feature on top of translation.
+        # Corresponds to the JSON property `transliterationConfig`
+        # @return [Google::Apis::TranslateV3::TransliterationConfig]
+        attr_accessor :transliteration_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1747,6 +1828,7 @@ module Google
           @model = args[:model] if args.key?(:model)
           @source_language_code = args[:source_language_code] if args.key?(:source_language_code)
           @target_language_code = args[:target_language_code] if args.key?(:target_language_code)
+          @transliteration_config = args[:transliteration_config] if args.key?(:transliteration_config)
         end
       end
       
@@ -1821,6 +1903,27 @@ module Google
           @glossary_config = args[:glossary_config] if args.key?(:glossary_config)
           @model = args[:model] if args.key?(:model)
           @translated_text = args[:translated_text] if args.key?(:translated_text)
+        end
+      end
+      
+      # Confugures transliteration feature on top of translation.
+      class TransliterationConfig
+        include Google::Apis::Core::Hashable
+      
+        # If true, source text in romanized form can be translated to the target
+        # language.
+        # Corresponds to the JSON property `enableTransliteration`
+        # @return [Boolean]
+        attr_accessor :enable_transliteration
+        alias_method :enable_transliteration?, :enable_transliteration
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_transliteration = args[:enable_transliteration] if args.key?(:enable_transliteration)
         end
       end
       
