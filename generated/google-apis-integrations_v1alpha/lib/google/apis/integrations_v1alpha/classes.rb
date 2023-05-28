@@ -4932,6 +4932,11 @@ module Google
         # @return [String]
         attr_accessor :auth_code
       
+        # Auth URL for Authorization Code Flow
+        # Corresponds to the JSON property `authUri`
+        # @return [String]
+        attr_accessor :auth_uri
+      
         # Client ID for user-provided OAuth app.
         # Corresponds to the JSON property `clientId`
         # @return [String]
@@ -4970,6 +4975,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @auth_code = args[:auth_code] if args.key?(:auth_code)
+          @auth_uri = args[:auth_uri] if args.key?(:auth_uri)
           @client_id = args[:client_id] if args.key?(:client_id)
           @client_secret = args[:client_secret] if args.key?(:client_secret)
           @enable_pkce = args[:enable_pkce] if args.key?(:enable_pkce)
@@ -5146,6 +5152,11 @@ module Google
         # @return [String]
         attr_accessor :key
       
+        # Encryption Key value.
+        # Corresponds to the JSON property `keyValue`
+        # @return [Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1EncryptionKey]
+        attr_accessor :key_value
+      
         # Secret provides a reference to entries in Secret Manager.
         # Corresponds to the JSON property `secretValue`
         # @return [Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1Secret]
@@ -5165,6 +5176,7 @@ module Google
           @bool_value = args[:bool_value] if args.key?(:bool_value)
           @int_value = args[:int_value] if args.key?(:int_value)
           @key = args[:key] if args.key?(:key)
+          @key_value = args[:key_value] if args.key?(:key_value)
           @secret_value = args[:secret_value] if args.key?(:secret_value)
           @string_value = args[:string_value] if args.key?(:string_value)
         end
@@ -5183,6 +5195,12 @@ module Google
         # Corresponds to the JSON property `configVariables`
         # @return [Array<Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1ConfigVariable>]
         attr_accessor :config_variables
+      
+        # Output only. Connection revision. This field is only updated when the
+        # connection is created or updated by User.
+        # Corresponds to the JSON property `connectionRevision`
+        # @return [Fixnum]
+        attr_accessor :connection_revision
       
         # Required. Connector version on which the connection is created. The format is:
         # projects/*/locations/*/providers/*/connectors/*/versions/* Only global
@@ -5301,6 +5319,7 @@ module Google
         def update!(**args)
           @auth_config = args[:auth_config] if args.key?(:auth_config)
           @config_variables = args[:config_variables] if args.key?(:config_variables)
+          @connection_revision = args[:connection_revision] if args.key?(:connection_revision)
           @connector_version = args[:connector_version] if args.key?(:connector_version)
           @connector_version_launch_stage = args[:connector_version_launch_stage] if args.key?(:connector_version_launch_stage)
           @create_time = args[:create_time] if args.key?(:create_time)
@@ -5407,6 +5426,33 @@ module Google
         def update!(**args)
           @destinations = args[:destinations] if args.key?(:destinations)
           @key = args[:key] if args.key?(:key)
+        end
+      end
+      
+      # Encryption Key value.
+      class GoogleCloudConnectorsV1EncryptionKey
+        include Google::Apis::Core::Hashable
+      
+        # The [KMS key name] with which the content of the Operation is encrypted. The
+        # expected format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`. Will be
+        # empty string if google managed.
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
+        # Type.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -6329,6 +6375,44 @@ module Google
         def update!(**args)
           @key = args[:key] if args.key?(:key)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Request for triggering an integration using event triggers.
+      class GoogleCloudIntegrationsV1alphaExecuteEventRequest
+        include Google::Apis::Core::Hashable
+      
+        # -- CloudEvent Context Attributes
+        # Corresponds to the JSON property `cloudEvent`
+        # @return [Google::Apis::IntegrationsV1alpha::IoCloudeventsV1CloudEvent]
+        attr_accessor :cloud_event
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_event = args[:cloud_event] if args.key?(:cloud_event)
+        end
+      end
+      
+      # The response for executing an integration.
+      class GoogleCloudIntegrationsV1alphaExecuteEventResponse
+        include Google::Apis::Core::Hashable
+      
+        # The id of the execution corresponding to this run of integration.
+        # Corresponds to the JSON property `executionId`
+        # @return [String]
+        attr_accessor :execution_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @execution_id = args[:execution_id] if args.key?(:execution_id)
         end
       end
       
@@ -8238,8 +8322,8 @@ module Google
         # @return [String]
         attr_accessor :schedule_time
       
-        # Matched against all `@link TriggerConfig`s across all integrations. i.e.
-        # TriggerConfig.trigger_id.equals(trigger_id)
+        # Required. Matched against all `@link TriggerConfig`s across all integrations.
+        # i.e. TriggerConfig.trigger_id.equals(trigger_id)
         # Corresponds to the JSON property `triggerId`
         # @return [String]
         attr_accessor :trigger_id
@@ -9190,6 +9274,125 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # -- CloudEvent Context Attributes
+      class IoCloudeventsV1CloudEvent
+        include Google::Apis::Core::Hashable
+      
+        # Optional & Extension Attributes
+        # Corresponds to the JSON property `attributes`
+        # @return [Hash<String,Google::Apis::IntegrationsV1alpha::IoCloudeventsV1CloudEventCloudEventAttributeValue>]
+        attr_accessor :attributes
+      
+        # 
+        # Corresponds to the JSON property `binaryData`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :binary_data
+      
+        # Required Attributes
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # 
+        # Corresponds to the JSON property `protoData`
+        # @return [Hash<String,Object>]
+        attr_accessor :proto_data
+      
+        # URI-reference
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        # 
+        # Corresponds to the JSON property `specVersion`
+        # @return [String]
+        attr_accessor :spec_version
+      
+        # 
+        # Corresponds to the JSON property `textData`
+        # @return [String]
+        attr_accessor :text_data
+      
+        # 
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attributes = args[:attributes] if args.key?(:attributes)
+          @binary_data = args[:binary_data] if args.key?(:binary_data)
+          @id = args[:id] if args.key?(:id)
+          @proto_data = args[:proto_data] if args.key?(:proto_data)
+          @source = args[:source] if args.key?(:source)
+          @spec_version = args[:spec_version] if args.key?(:spec_version)
+          @text_data = args[:text_data] if args.key?(:text_data)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # 
+      class IoCloudeventsV1CloudEventCloudEventAttributeValue
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `ceBoolean`
+        # @return [Boolean]
+        attr_accessor :ce_boolean
+        alias_method :ce_boolean?, :ce_boolean
+      
+        # 
+        # Corresponds to the JSON property `ceBytes`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :ce_bytes
+      
+        # 
+        # Corresponds to the JSON property `ceInteger`
+        # @return [Fixnum]
+        attr_accessor :ce_integer
+      
+        # 
+        # Corresponds to the JSON property `ceString`
+        # @return [String]
+        attr_accessor :ce_string
+      
+        # 
+        # Corresponds to the JSON property `ceTimestamp`
+        # @return [String]
+        attr_accessor :ce_timestamp
+      
+        # 
+        # Corresponds to the JSON property `ceUri`
+        # @return [String]
+        attr_accessor :ce_uri
+      
+        # 
+        # Corresponds to the JSON property `ceUriRef`
+        # @return [String]
+        attr_accessor :ce_uri_ref
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ce_boolean = args[:ce_boolean] if args.key?(:ce_boolean)
+          @ce_bytes = args[:ce_bytes] if args.key?(:ce_bytes)
+          @ce_integer = args[:ce_integer] if args.key?(:ce_integer)
+          @ce_string = args[:ce_string] if args.key?(:ce_string)
+          @ce_timestamp = args[:ce_timestamp] if args.key?(:ce_timestamp)
+          @ce_uri = args[:ce_uri] if args.key?(:ce_uri)
+          @ce_uri_ref = args[:ce_uri_ref] if args.key?(:ce_uri_ref)
         end
       end
     end

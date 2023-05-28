@@ -328,7 +328,7 @@ module Google
         #   Required. The client, which owns this collection of AuthConfigs.
         # @param [String] filter
         #   Filtering as supported in https://developers.google.com/authorized-buyers/apis/
-        #   guides/v2/list-filters.
+        #   guides/list-filters.
         # @param [Fixnum] page_size
         #   The size of entries in the response. If unspecified, defaults to 100.
         # @param [String] page_token
@@ -696,6 +696,42 @@ module Google
           command.request_object = google_cloud_integrations_v1alpha_execute_integrations_request_object
           command.response_representation = Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaExecuteIntegrationsResponse::Representation
           command.response_class = Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaExecuteIntegrationsResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Executes an integration on receiving events from Integration Connector
+        # triggers, Eventarc or CPS Trigger. The details about integration are derived
+        # from CloudEvent request body.
+        # @param [String] name
+        #   Required. The integration resource name. Format: projects/`gcp_project_id`/
+        #   locations/`location`/integrations/`integration_id`
+        # @param [Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaExecuteEventRequest] google_cloud_integrations_v1alpha_execute_event_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaExecuteEventResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaExecuteEventResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def execute_project_location_integration_event(name, google_cloud_integrations_v1alpha_execute_event_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+name}:executeEvent', options)
+          command.request_representation = Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaExecuteEventRequest::Representation
+          command.request_object = google_cloud_integrations_v1alpha_execute_event_request_object
+          command.response_representation = Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaExecuteEventResponse::Representation
+          command.response_class = Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaExecuteEventResponse
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1555,7 +1591,7 @@ module Google
         #   Required. The client, which owns this collection of AuthConfigs.
         # @param [String] filter
         #   Filtering as supported in https://developers.google.com/authorized-buyers/apis/
-        #   guides/v2/list-filters.
+        #   guides/list-filters.
         # @param [Fixnum] page_size
         #   The size of entries in the response. If unspecified, defaults to 100.
         # @param [String] page_token
@@ -1776,7 +1812,7 @@ module Google
         #   Required. The client, which owns this collection of Certificates.
         # @param [String] filter
         #   Filtering as supported in https://developers.google.com/authorized-buyers/apis/
-        #   guides/v2/list-filters.
+        #   guides/list-filters.
         # @param [Fixnum] page_size
         #   The size of entries in the response. If unspecified, defaults to 100.
         # @param [String] page_token
@@ -2914,7 +2950,7 @@ module Google
         #   Required. The client, which owns this collection of SfdcInstances.
         # @param [String] filter
         #   Filtering as supported in https://developers.google.com/authorized-buyers/apis/
-        #   guides/v2/list-filters.
+        #   guides/list-filters.
         # @param [Fixnum] page_size
         #   The size of entries in the response. If unspecified, defaults to 100.
         # @param [String] page_token
@@ -3093,7 +3129,7 @@ module Google
         #   Required. The client, which owns this collection of SfdcChannels.
         # @param [String] filter
         #   Filtering as supported in https://developers.google.com/authorized-buyers/apis/
-        #   guides/v2/list-filters.
+        #   guides/list-filters.
         # @param [Fixnum] page_size
         #   The size of entries in the response. If unspecified, defaults to 100.
         # @param [String] page_token
@@ -3272,7 +3308,7 @@ module Google
         #   Required. The client, which owns this collection of SfdcInstances.
         # @param [String] filter
         #   Filtering as supported in https://developers.google.com/authorized-buyers/apis/
-        #   guides/v2/list-filters.
+        #   guides/list-filters.
         # @param [Fixnum] page_size
         #   The size of entries in the response. If unspecified, defaults to 100.
         # @param [String] page_token
@@ -3451,7 +3487,7 @@ module Google
         #   Required. The client, which owns this collection of SfdcChannels.
         # @param [String] filter
         #   Filtering as supported in https://developers.google.com/authorized-buyers/apis/
-        #   guides/v2/list-filters.
+        #   guides/list-filters.
         # @param [Fixnum] page_size
         #   The size of entries in the response. If unspecified, defaults to 100.
         # @param [String] page_token
