@@ -519,7 +519,8 @@ module Google
         end
       end
       
-      # Policy for an individual app.
+      # Policy for an individual app. Note: Application availability on a given device
+      # cannot be changed using this policy if installAppsDisabled is enabled.
       class ApplicationPolicy
         include Google::Apis::Core::Hashable
       
@@ -1682,8 +1683,8 @@ module Google
       class DeviceConnectivityManagement
         include Google::Apis::Core::Hashable
       
-        # Controls what can be transferred via USB, files and/or data. This is supported
-        # only on company-owned devices.
+        # Controls what files and/or data can be transferred via USB. Supported only on
+        # company-owned devices.
         # Corresponds to the JSON property `usbDataAccess`
         # @return [String]
         attr_accessor :usb_data_access
