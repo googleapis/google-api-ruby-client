@@ -502,6 +502,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NodeAffinity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NodeConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -779,6 +785,12 @@ module Google
       end
       
       class ShieldedNodes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SoleTenantConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1785,6 +1797,15 @@ module Google
         end
       end
       
+      class NodeAffinity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :operator, as: 'operator'
+          collection :values, as: 'values'
+        end
+      end
+      
       class NodeConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1829,6 +1850,8 @@ module Google
       
           property :service_account, as: 'serviceAccount'
           property :shielded_instance_config, as: 'shieldedInstanceConfig', class: Google::Apis::ContainerV1::ShieldedInstanceConfig, decorator: Google::Apis::ContainerV1::ShieldedInstanceConfig::Representation
+      
+          property :sole_tenant_config, as: 'soleTenantConfig', class: Google::Apis::ContainerV1::SoleTenantConfig, decorator: Google::Apis::ContainerV1::SoleTenantConfig::Representation
       
           property :spot, as: 'spot'
           collection :tags, as: 'tags'
@@ -2342,6 +2365,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
+        end
+      end
+      
+      class SoleTenantConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :node_affinities, as: 'nodeAffinities', class: Google::Apis::ContainerV1::NodeAffinity, decorator: Google::Apis::ContainerV1::NodeAffinity::Representation
+      
         end
       end
       

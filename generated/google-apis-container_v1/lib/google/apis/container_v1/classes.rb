@@ -3306,6 +3306,39 @@ module Google
         end
       end
       
+      # Specifies the NodeAffinity key, values, and affinity operator according to [
+      # shared sole tenant node group affinities](https://cloud.google.com/compute/
+      # docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity).
+      class NodeAffinity
+        include Google::Apis::Core::Hashable
+      
+        # Key for NodeAffinity.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Operator for NodeAffinity.
+        # Corresponds to the JSON property `operator`
+        # @return [String]
+        attr_accessor :operator
+      
+        # Values for NodeAffinity.
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @operator = args[:operator] if args.key?(:operator)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
       # Parameters that describe the nodes in a cluster. GKE Autopilot clusters do not
       # recognize parameters in `NodeConfig`. Use AutoprovisioningNodePoolDefaults
       # instead.
@@ -3512,6 +3545,12 @@ module Google
         # @return [Google::Apis::ContainerV1::ShieldedInstanceConfig]
         attr_accessor :shielded_instance_config
       
+        # SoleTenantConfig contains the NodeAffinities to specify what shared sole
+        # tenant node groups should back the node pool.
+        # Corresponds to the JSON property `soleTenantConfig`
+        # @return [Google::Apis::ContainerV1::SoleTenantConfig]
+        attr_accessor :sole_tenant_config
+      
         # Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible
         # flag.
         # Corresponds to the JSON property `spot`
@@ -3581,6 +3620,7 @@ module Google
           @sandbox_config = args[:sandbox_config] if args.key?(:sandbox_config)
           @service_account = args[:service_account] if args.key?(:service_account)
           @shielded_instance_config = args[:shielded_instance_config] if args.key?(:shielded_instance_config)
+          @sole_tenant_config = args[:sole_tenant_config] if args.key?(:sole_tenant_config)
           @spot = args[:spot] if args.key?(:spot)
           @tags = args[:tags] if args.key?(:tags)
           @taints = args[:taints] if args.key?(:taints)
@@ -5655,6 +5695,26 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
+      # SoleTenantConfig contains the NodeAffinities to specify what shared sole
+      # tenant node groups should back the node pool.
+      class SoleTenantConfig
+        include Google::Apis::Core::Hashable
+      
+        # NodeAffinities used to match to a shared sole tenant node group.
+        # Corresponds to the JSON property `nodeAffinities`
+        # @return [Array<Google::Apis::ContainerV1::NodeAffinity>]
+        attr_accessor :node_affinities
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @node_affinities = args[:node_affinities] if args.key?(:node_affinities)
         end
       end
       
