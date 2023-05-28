@@ -400,10 +400,10 @@ module Google
         # build from the tip of that branch, which may not be the same revision as the
         # original build. * If the original build specified a commit sha or revision ID,
         # the retried build will use the identical source. For builds that specify `
-        # StorageSource`: * If the original build pulled source from Google Cloud
-        # Storage without specifying the generation of the object, the new build will
-        # use the current object, which may be different from the original build source.
-        # * If the original build pulled source from Cloud Storage and specified the
+        # StorageSource`: * If the original build pulled source from Cloud Storage
+        # without specifying the generation of the object, the new build will use the
+        # current object, which may be different from the original build source. * If
+        # the original build pulled source from Cloud Storage and specified the
         # generation of the object, the new build will attempt to use the same object,
         # which may or may not be available depending on the bucket's lifecycle
         # management settings.
@@ -1134,10 +1134,10 @@ module Google
         # build from the tip of that branch, which may not be the same revision as the
         # original build. * If the original build specified a commit sha or revision ID,
         # the retried build will use the identical source. For builds that specify `
-        # StorageSource`: * If the original build pulled source from Google Cloud
-        # Storage without specifying the generation of the object, the new build will
-        # use the current object, which may be different from the original build source.
-        # * If the original build pulled source from Cloud Storage and specified the
+        # StorageSource`: * If the original build pulled source from Cloud Storage
+        # without specifying the generation of the object, the new build will use the
+        # current object, which may be different from the original build source. * If
+        # the original build pulled source from Cloud Storage and specified the
         # generation of the object, the new build will attempt to use the same object,
         # which may or may not be available depending on the bucket's lifecycle
         # management settings.
