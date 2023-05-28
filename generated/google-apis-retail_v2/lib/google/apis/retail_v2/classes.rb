@@ -5818,6 +5818,12 @@ module Google
         # @return [String]
         attr_accessor :project_id
       
+        # Optional. An optional arbitrary string that could be used as a tag for
+        # tracking link source.
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
         # Output only. Represents the state of the link.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -5837,6 +5843,7 @@ module Google
           @merchant_center_account_id = args[:merchant_center_account_id] if args.key?(:merchant_center_account_id)
           @name = args[:name] if args.key?(:name)
           @project_id = args[:project_id] if args.key?(:project_id)
+          @source = args[:source] if args.key?(:source)
           @state = args[:state] if args.key?(:state)
         end
       end
@@ -7006,6 +7013,12 @@ module Google
         # @return [String]
         attr_accessor :project_id
       
+        # Optional. An optional arbitrary string that could be used as a tag for
+        # tracking link source.
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
         # Output only. Represents the state of the link.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -7025,6 +7038,7 @@ module Google
           @merchant_center_account_id = args[:merchant_center_account_id] if args.key?(:merchant_center_account_id)
           @name = args[:name] if args.key?(:name)
           @project_id = args[:project_id] if args.key?(:project_id)
+          @source = args[:source] if args.key?(:source)
           @state = args[:state] if args.key?(:state)
         end
       end
