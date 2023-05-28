@@ -2121,6 +2121,38 @@ module Google
         end
       end
       
+      # Browser DLP Rule for a PartnerTenant
+      class GoogleCloudBeyondcorpPartnerservicesV1alphaBrowserDlpRule
+        include Google::Apis::Core::Hashable
+      
+        # Message to capture group information
+        # Corresponds to the JSON property `group`
+        # @return [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaGroup]
+        attr_accessor :group
+      
+        # Output only. Unique resource name. The name is ignored when creating
+        # BrowserDlpRule.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Message to capture settings for a BrowserDlpRule
+        # Corresponds to the JSON property `ruleSetting`
+        # @return [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSetting]
+        attr_accessor :rule_setting
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @group = args[:group] if args.key?(:group)
+          @name = args[:name] if args.key?(:name)
+          @rule_setting = args[:rule_setting] if args.key?(:rule_setting)
+        end
+      end
+      
       # Message contains the JWT encryption information for the proxy server.
       class GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo
         include Google::Apis::Core::Hashable
@@ -2143,6 +2175,63 @@ module Google
         def update!(**args)
           @encryption_sa_email = args[:encryption_sa_email] if args.key?(:encryption_sa_email)
           @jwk = args[:jwk] if args.key?(:jwk)
+        end
+      end
+      
+      # Message to capture group information
+      class GoogleCloudBeyondcorpPartnerservicesV1alphaGroup
+        include Google::Apis::Core::Hashable
+      
+        # The group email id
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        # Google group id
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @email = args[:email] if args.key?(:email)
+          @id = args[:id] if args.key?(:id)
+        end
+      end
+      
+      # Message for response to listing PartnerTenants.
+      class GoogleCloudBeyondcorpPartnerservicesV1alphaListPartnerTenantsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of PartnerTenant objects.
+        # Corresponds to the JSON property `partnerTenants`
+        # @return [Array<Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerTenant>]
+        attr_accessor :partner_tenants
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @partner_tenants = args[:partner_tenants] if args.key?(:partner_tenants)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -2360,6 +2449,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @pac_uri = args[:pac_uri] if args.key?(:pac_uri)
+        end
+      end
+      
+      # Message to capture settings for a BrowserDlpRule
+      class GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSetting
+        include Google::Apis::Core::Hashable
+      
+        # Required. Immutable. The type of the Setting. .
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Required. The value of the Setting.
+        # Corresponds to the JSON property `value`
+        # @return [Hash<String,Object>]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
+          @value = args[:value] if args.key?(:value)
         end
       end
       

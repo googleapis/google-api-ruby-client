@@ -328,7 +328,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudBeyondcorpPartnerservicesV1alphaBrowserDlpRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpPartnerservicesV1alphaGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpPartnerservicesV1alphaListPartnerTenantsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -359,6 +377,12 @@ module Google
       end
       
       class GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSetting
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1189,11 +1213,40 @@ module Google
         end
       end
       
+      class GoogleCloudBeyondcorpPartnerservicesV1alphaBrowserDlpRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :group, as: 'group', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaGroup, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaGroup::Representation
+      
+          property :name, as: 'name'
+          property :rule_setting, as: 'ruleSetting', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSetting, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSetting::Representation
+      
+        end
+      end
+      
       class GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :encryption_sa_email, as: 'encryptionSaEmail'
           property :jwk, as: 'jwk'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpPartnerservicesV1alphaGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email, as: 'email'
+          property :id, as: 'id'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpPartnerservicesV1alphaListPartnerTenantsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :partner_tenants, as: 'partnerTenants', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerTenant, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerTenant::Representation
+      
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -1252,6 +1305,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :pac_uri, as: 'pacUri'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSetting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
+          hash :value, as: 'value'
         end
       end
       
