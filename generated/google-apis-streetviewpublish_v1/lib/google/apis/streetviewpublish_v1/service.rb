@@ -589,8 +589,9 @@ module Google
         # @param [String] filter
         #   Optional. The filter expression. For example: `placeId=
         #   ChIJj61dQgK6j4AR4GeTYWZsKWw`. The filters supported are: `placeId`, `
-        #   min_latitude`, `max_latitude`, `min_longitude`, and `max_longitude`. See https:
-        #   //google.aip.dev/160 for more information.
+        #   min_latitude`, `max_latitude`, `min_longitude`, `max_longitude`, '
+        #   min_capture_time_seconds', and 'max_capture_time_seconds'. See https://google.
+        #   aip.dev/160 for more information.
         # @param [String] language_code
         #   Optional. The BCP-47 language code, such as "en-US" or "sr-Latn". For more
         #   information, see http://www.unicode.org/reports/tr35/#
