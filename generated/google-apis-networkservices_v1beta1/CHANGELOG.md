@@ -1,5 +1,9 @@
 # Release history for google-apis-networkservices_v1beta1
 
+### v0.26.0 (2023-05-28)
+
+* Regenerated from discovery document revision 20230510
+
 ### v0.25.0 (2023-04-30)
 
 * Regenerated from discovery document revision 20230424
