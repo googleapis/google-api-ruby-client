@@ -278,6 +278,293 @@ module Google
       
       # Metadata related to the progress of the ImportDocuments operation. This will
       # be returned by the google.longrunning.Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1ImportDocumentsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Count of entries that encountered errors while processing.
+        # Corresponds to the JSON property `failureCount`
+        # @return [Fixnum]
+        attr_accessor :failure_count
+      
+        # Count of entries that were processed successfully.
+        # Corresponds to the JSON property `successCount`
+        # @return [Fixnum]
+        attr_accessor :success_count
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @failure_count = args[:failure_count] if args.key?(:failure_count)
+          @success_count = args[:success_count] if args.key?(:success_count)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Response of the ImportDocumentsRequest. If the long running operation is done,
+      # then this message is returned by the google.longrunning.Operations.response
+      # field if the operation was successful.
+      class GoogleCloudDiscoveryengineV1ImportDocumentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Configuration of destination for Import related errors.
+        # Corresponds to the JSON property `errorConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1ImportErrorConfig]
+        attr_accessor :error_config
+      
+        # A sample of errors encountered while processing the request.
+        # Corresponds to the JSON property `errorSamples`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleRpcStatus>]
+        attr_accessor :error_samples
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_config = args[:error_config] if args.key?(:error_config)
+          @error_samples = args[:error_samples] if args.key?(:error_samples)
+        end
+      end
+      
+      # Configuration of destination for Import related errors.
+      class GoogleCloudDiscoveryengineV1ImportErrorConfig
+        include Google::Apis::Core::Hashable
+      
+        # Cloud Storage prefix for import errors. This must be an empty, existing Cloud
+        # Storage directory. Import errors will be written to sharded files in this
+        # directory, one per line, as a JSON-encoded `google.rpc.Status` message.
+        # Corresponds to the JSON property `gcsPrefix`
+        # @return [String]
+        attr_accessor :gcs_prefix
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcs_prefix = args[:gcs_prefix] if args.key?(:gcs_prefix)
+        end
+      end
+      
+      # Metadata related to the progress of the Import operation. This will be
+      # returned by the google.longrunning.Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1ImportUserEventsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Count of entries that encountered errors while processing.
+        # Corresponds to the JSON property `failureCount`
+        # @return [Fixnum]
+        attr_accessor :failure_count
+      
+        # Count of entries that were processed successfully.
+        # Corresponds to the JSON property `successCount`
+        # @return [Fixnum]
+        attr_accessor :success_count
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @failure_count = args[:failure_count] if args.key?(:failure_count)
+          @success_count = args[:success_count] if args.key?(:success_count)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Response of the ImportUserEventsRequest. If the long running operation was
+      # successful, then this message is returned by the google.longrunning.Operations.
+      # response field if the operation was successful.
+      class GoogleCloudDiscoveryengineV1ImportUserEventsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Configuration of destination for Import related errors.
+        # Corresponds to the JSON property `errorConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1ImportErrorConfig]
+        attr_accessor :error_config
+      
+        # A sample of errors encountered while processing the request.
+        # Corresponds to the JSON property `errorSamples`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleRpcStatus>]
+        attr_accessor :error_samples
+      
+        # Count of user events imported with complete existing Documents.
+        # Corresponds to the JSON property `joinedEventsCount`
+        # @return [Fixnum]
+        attr_accessor :joined_events_count
+      
+        # Count of user events imported, but with Document information not found in the
+        # existing Branch.
+        # Corresponds to the JSON property `unjoinedEventsCount`
+        # @return [Fixnum]
+        attr_accessor :unjoined_events_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_config = args[:error_config] if args.key?(:error_config)
+          @error_samples = args[:error_samples] if args.key?(:error_samples)
+          @joined_events_count = args[:joined_events_count] if args.key?(:joined_events_count)
+          @unjoined_events_count = args[:unjoined_events_count] if args.key?(:unjoined_events_count)
+        end
+      end
+      
+      # Metadata related to the progress of the PurgeDocuments operation. This will be
+      # returned by the google.longrunning.Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1PurgeDocumentsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Count of entries that encountered errors while processing.
+        # Corresponds to the JSON property `failureCount`
+        # @return [Fixnum]
+        attr_accessor :failure_count
+      
+        # Count of entries that were deleted successfully.
+        # Corresponds to the JSON property `successCount`
+        # @return [Fixnum]
+        attr_accessor :success_count
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @failure_count = args[:failure_count] if args.key?(:failure_count)
+          @success_count = args[:success_count] if args.key?(:success_count)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Response message for DocumentService.PurgeDocuments method. If the long
+      # running operation is successfully done, then this message is returned by the
+      # google.longrunning.Operations.response field.
+      class GoogleCloudDiscoveryengineV1PurgeDocumentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The total count of documents purged as a result of the operation.
+        # Corresponds to the JSON property `purgeCount`
+        # @return [Fixnum]
+        attr_accessor :purge_count
+      
+        # A sample of document names that will be deleted. Only populated if `force` is
+        # set to false. A max of 100 names will be returned and the names are chosen at
+        # random.
+        # Corresponds to the JSON property `purgeSample`
+        # @return [Array<String>]
+        attr_accessor :purge_sample
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @purge_count = args[:purge_count] if args.key?(:purge_count)
+          @purge_sample = args[:purge_sample] if args.key?(:purge_sample)
+        end
+      end
+      
+      # Defines the structure and layout of a type of document data.
+      class GoogleCloudDiscoveryengineV1Schema
+        include Google::Apis::Core::Hashable
+      
+        # The JSON representation of the schema.
+        # Corresponds to the JSON property `jsonSchema`
+        # @return [String]
+        attr_accessor :json_schema
+      
+        # Immutable. The full resource name of the schema, in the format of `projects/`
+        # project`/locations/`location`/collections/`collection`/dataStores/`data_store`/
+        # schemas/`schema``. This field must be a UTF-8 encoded string with a length
+        # limit of 1024 characters.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The structured representation of the schema.
+        # Corresponds to the JSON property `structSchema`
+        # @return [Hash<String,Object>]
+        attr_accessor :struct_schema
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @json_schema = args[:json_schema] if args.key?(:json_schema)
+          @name = args[:name] if args.key?(:name)
+          @struct_schema = args[:struct_schema] if args.key?(:struct_schema)
+        end
+      end
+      
+      # Response message for SiteSearchEngineService.BatchCreateTargetSites method.
+      class GoogleCloudDiscoveryengineV1alphaBatchCreateTargetSitesResponse
+        include Google::Apis::Core::Hashable
+      
+        # TargetSites created.
+        # Corresponds to the JSON property `targetSites`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaTargetSite>]
+        attr_accessor :target_sites
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @target_sites = args[:target_sites] if args.key?(:target_sites)
+        end
+      end
+      
+      # Metadata related to the progress of the ImportDocuments operation. This will
+      # be returned by the google.longrunning.Operation.metadata field.
       class GoogleCloudDiscoveryengineV1alphaImportDocumentsMetadata
         include Google::Apis::Core::Hashable
       
@@ -541,6 +828,66 @@ module Google
           @json_schema = args[:json_schema] if args.key?(:json_schema)
           @name = args[:name] if args.key?(:name)
           @struct_schema = args[:struct_schema] if args.key?(:struct_schema)
+        end
+      end
+      
+      # A target site for the SiteSearchEngine.
+      class GoogleCloudDiscoveryengineV1alphaTargetSite
+        include Google::Apis::Core::Hashable
+      
+        # Input only. If set to false, an uri_pattern will be generated to include all
+        # pages whose address contains the provided_uri_pattern. If set to true, an
+        # uri_pattern will be generated to try to be an exact match of the
+        # provided_uri_pattern or just the specific page if the provided_uri_pattern is
+        # a specific one. provided_uri_pattern will always be normalized to generate the
+        # uri pattern to be used by the search engine.
+        # Corresponds to the JSON property `exactMatch`
+        # @return [Boolean]
+        attr_accessor :exact_match
+        alias_method :exact_match?, :exact_match
+      
+        # Output only. This is system-generated based on the provided_uri_pattern.
+        # Corresponds to the JSON property `generatedUriPattern`
+        # @return [String]
+        attr_accessor :generated_uri_pattern
+      
+        # Output only. The fully qualified resource name of the target site. `projects/`
+        # project`/locations/`location`/collections/`collection`/dataStores/`data_store`/
+        # siteSearchEngine/targetSites/`target_site`` The `target_site_id` is system-
+        # generated.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Input only. The user provided uri pattern from which the `
+        # generated_uri_pattern` is generated.
+        # Corresponds to the JSON property `providedUriPattern`
+        # @return [String]
+        attr_accessor :provided_uri_pattern
+      
+        # The type of the target site, e.g. whether the site is to be included or
+        # excluded.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Output only. The target site's last updated time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exact_match = args[:exact_match] if args.key?(:exact_match)
+          @generated_uri_pattern = args[:generated_uri_pattern] if args.key?(:generated_uri_pattern)
+          @name = args[:name] if args.key?(:name)
+          @provided_uri_pattern = args[:provided_uri_pattern] if args.key?(:provided_uri_pattern)
+          @type = args[:type] if args.key?(:type)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -862,6 +1209,20 @@ module Google
       class GoogleCloudDiscoveryengineV1betaImportDocumentsRequest
         include Google::Apis::Core::Hashable
       
+        # Whether to automatically generate IDs for the documents if absent. If set to `
+        # true`, Document.ids are automatically generated based on the hash of the
+        # payload, where IDs may not be consistent during multiple imports. In which
+        # case ReconciliationMode.FULL is highly recommended to avoid duplicate contents.
+        # If unset or set to `false`, Document.ids have to be specified using id_field,
+        # otherwises, documents without IDs will fail to be imported. Only set this
+        # field when using GcsSource or BigQuerySource, and when GcsSource.data_schema
+        # or BigQuerySource.data_schema is `custom`. Otherwise, an INVALID_ARGUMENT
+        # error is thrown.
+        # Corresponds to the JSON property `autoGenerateIds`
+        # @return [Boolean]
+        attr_accessor :auto_generate_ids
+        alias_method :auto_generate_ids?, :auto_generate_ids
+      
         # BigQuery source import data from.
         # Corresponds to the JSON property `bigquerySource`
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaBigQuerySource]
@@ -876,6 +1237,23 @@ module Google
         # Corresponds to the JSON property `gcsSource`
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaGcsSource]
         attr_accessor :gcs_source
+      
+        # The field in the Cloud Storage and BigQuery sources that indicates the unique
+        # IDs of the documents. For GcsSource it is the key of the JSON field. For
+        # instance, `my_id` for JSON ``"my_id": "some_uuid"``. For BigQuerySource it is
+        # the column name of the BigQuery table where the unique ids are stored. The
+        # values of the JSON field or the BigQuery column will be used as the Document.
+        # ids. The JSON field or the BigQuery column must be of string type, and the
+        # values must be set as valid strings conform to [RFC-1034](https://tools.ietf.
+        # org/html/rfc1034) with 1-63 characters. Otherwise, documents without valid IDs
+        # will fail to be imported. Only set this field when using GcsSource or
+        # BigQuerySource, and when GcsSource.data_schema or BigQuerySource.data_schema
+        # is `custom`. And only set this field when auto_generate_ids is unset or set as
+        # `false`. Otherwise, an INVALID_ARGUMENT error is thrown. If it is unset, a
+        # default value `_id` is used when importing from the allowed data sources.
+        # Corresponds to the JSON property `idField`
+        # @return [String]
+        attr_accessor :id_field
       
         # The inline source for the input config for ImportDocuments method.
         # Corresponds to the JSON property `inlineSource`
@@ -894,9 +1272,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @auto_generate_ids = args[:auto_generate_ids] if args.key?(:auto_generate_ids)
           @bigquery_source = args[:bigquery_source] if args.key?(:bigquery_source)
           @error_config = args[:error_config] if args.key?(:error_config)
           @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
+          @id_field = args[:id_field] if args.key?(:id_field)
           @inline_source = args[:inline_source] if args.key?(:inline_source)
           @reconciliation_mode = args[:reconciliation_mode] if args.key?(:reconciliation_mode)
         end
