@@ -3169,6 +3169,16 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
+        # Execution related settings, like retry and service_account.
+        # Corresponds to the JSON property `executionSpec`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1TaskExecutionSpec]
+        attr_accessor :execution_spec
+      
+        # Output only. User-defined labels for the task.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # Output only. Additional information about the current state.
         # Corresponds to the JSON property `message`
         # @return [String]
@@ -3207,6 +3217,11 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Output only. Job execution trigger.
+        # Corresponds to the JSON property `trigger`
+        # @return [String]
+        attr_accessor :trigger
+      
         # Output only. System generated globally unique ID for the job.
         # Corresponds to the JSON property `uid`
         # @return [String]
@@ -3219,6 +3234,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @execution_spec = args[:execution_spec] if args.key?(:execution_spec)
+          @labels = args[:labels] if args.key?(:labels)
           @message = args[:message] if args.key?(:message)
           @name = args[:name] if args.key?(:name)
           @retry_count = args[:retry_count] if args.key?(:retry_count)
@@ -3226,6 +3243,7 @@ module Google
           @service_job = args[:service_job] if args.key?(:service_job)
           @start_time = args[:start_time] if args.key?(:start_time)
           @state = args[:state] if args.key?(:state)
+          @trigger = args[:trigger] if args.key?(:trigger)
           @uid = args[:uid] if args.key?(:uid)
         end
       end
@@ -4076,12 +4094,36 @@ module Google
       class GoogleCloudDataplexV1RunTaskRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. Execution spec arguments. If the map is left empty, the task will
+        # run with existing execution spec args from task definition. If the map
+        # contains an entry with a new key, the same will be added to existing set of
+        # args. If the map contains an entry with an existing arg key in task definition,
+        # the task will run with new arg value for that entry. Clearing an existing arg
+        # will require arg value to be explicitly set to a hyphen "-". The arg value
+        # cannot be empty.
+        # Corresponds to the JSON property `args`
+        # @return [Hash<String,String>]
+        attr_accessor :args
+      
+        # Optional. User-defined labels for the task. If the map is left empty, the task
+        # will run with existing labels from task definition. If the map contains an
+        # entry with a new key, the same will be added to existing set of labels. If the
+        # map contains an entry with an existing label key in task definition, the task
+        # will run with new label value for that entry. Clearing an existing label will
+        # require label value to be explicitly set to a hyphen "-". The label value
+        # cannot be empty.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @args = args[:args] if args.key?(:args)
+          @labels = args[:labels] if args.key?(:labels)
         end
       end
       
