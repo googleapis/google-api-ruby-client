@@ -64,6 +64,60 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1ImportDocumentsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1ImportDocumentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1ImportErrorConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1ImportUserEventsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1ImportUserEventsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1PurgeDocumentsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1PurgeDocumentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1Schema
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaBatchCreateTargetSitesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaBigQuerySource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -221,6 +275,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1alphaSearchInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaTargetSite
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -390,6 +450,90 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1ImportDocumentsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :failure_count, :numeric_string => true, as: 'failureCount'
+          property :success_count, :numeric_string => true, as: 'successCount'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1ImportDocumentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_config, as: 'errorConfig', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1ImportErrorConfig, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1ImportErrorConfig::Representation
+      
+          collection :error_samples, as: 'errorSamples', class: Google::Apis::DiscoveryengineV1alpha::GoogleRpcStatus, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleRpcStatus::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1ImportErrorConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcs_prefix, as: 'gcsPrefix'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1ImportUserEventsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :failure_count, :numeric_string => true, as: 'failureCount'
+          property :success_count, :numeric_string => true, as: 'successCount'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1ImportUserEventsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_config, as: 'errorConfig', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1ImportErrorConfig, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1ImportErrorConfig::Representation
+      
+          collection :error_samples, as: 'errorSamples', class: Google::Apis::DiscoveryengineV1alpha::GoogleRpcStatus, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleRpcStatus::Representation
+      
+          property :joined_events_count, :numeric_string => true, as: 'joinedEventsCount'
+          property :unjoined_events_count, :numeric_string => true, as: 'unjoinedEventsCount'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1PurgeDocumentsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :failure_count, :numeric_string => true, as: 'failureCount'
+          property :success_count, :numeric_string => true, as: 'successCount'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1PurgeDocumentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :purge_count, :numeric_string => true, as: 'purgeCount'
+          collection :purge_sample, as: 'purgeSample'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1Schema
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :json_schema, as: 'jsonSchema'
+          property :name, as: 'name'
+          hash :struct_schema, as: 'structSchema'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaBatchCreateTargetSitesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :target_sites, as: 'targetSites', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaTargetSite, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaTargetSite::Representation
+      
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaBigQuerySource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -463,12 +607,14 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaImportDocumentsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_generate_ids, as: 'autoGenerateIds'
           property :bigquery_source, as: 'bigquerySource', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaBigQuerySource, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaBigQuerySource::Representation
       
           property :error_config, as: 'errorConfig', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaImportErrorConfig, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaImportErrorConfig::Representation
       
           property :gcs_source, as: 'gcsSource', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaGcsSource, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaGcsSource::Representation
       
+          property :id_field, as: 'idField'
           property :inline_source, as: 'inlineSource', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaImportDocumentsRequestInlineSource, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaImportDocumentsRequestInlineSource::Representation
       
           property :reconciliation_mode, as: 'reconciliationMode'
@@ -656,6 +802,18 @@ module Google
           property :offset, as: 'offset'
           property :order_by, as: 'orderBy'
           property :search_query, as: 'searchQuery'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaTargetSite
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :exact_match, as: 'exactMatch'
+          property :generated_uri_pattern, as: 'generatedUriPattern'
+          property :name, as: 'name'
+          property :provided_uri_pattern, as: 'providedUriPattern'
+          property :type, as: 'type'
+          property :update_time, as: 'updateTime'
         end
       end
       
