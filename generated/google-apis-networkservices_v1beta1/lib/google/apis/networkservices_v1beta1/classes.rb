@@ -1767,6 +1767,11 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1775,6 +1780,7 @@ module Google
         def update!(**args)
           @gateways = args[:gateways] if args.key?(:gateways)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -2057,7 +2063,7 @@ module Google
         # listen on the specified port of localhost (127.0.0.1) address. The SIDECAR
         # proxy will expect all traffic to be redirected to this port regardless of its
         # actual ip:port destination. If unset, a port '15001' is used as the
-        # interception port. This will is applicable only for sidecar proxy deployments.
+        # interception port. This is applicable only for sidecar proxy deployments.
         # Corresponds to the JSON property `interceptionPort`
         # @return [Fixnum]
         attr_accessor :interception_port
