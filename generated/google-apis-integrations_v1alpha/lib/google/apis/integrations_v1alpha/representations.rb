@@ -814,6 +814,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudConnectorsV1EncryptionKey
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudConnectorsV1LockConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -959,6 +965,18 @@ module Google
       end
       
       class GoogleCloudIntegrationsV1alphaEventParameter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIntegrationsV1alphaExecuteEventRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIntegrationsV1alphaExecuteEventResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1373,6 +1391,18 @@ module Google
       end
       
       class GoogleProtobufEmpty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IoCloudeventsV1CloudEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IoCloudeventsV1CloudEventCloudEventAttributeValue
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2754,6 +2784,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auth_code, as: 'authCode'
+          property :auth_uri, as: 'authUri'
           property :client_id, as: 'clientId'
           property :client_secret, as: 'clientSecret', class: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1Secret, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1Secret::Representation
       
@@ -2819,6 +2850,8 @@ module Google
           property :bool_value, as: 'boolValue'
           property :int_value, :numeric_string => true, as: 'intValue'
           property :key, as: 'key'
+          property :key_value, as: 'keyValue', class: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1EncryptionKey, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1EncryptionKey::Representation
+      
           property :secret_value, as: 'secretValue', class: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1Secret, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1Secret::Representation
       
           property :string_value, as: 'stringValue'
@@ -2832,6 +2865,7 @@ module Google
       
           collection :config_variables, as: 'configVariables', class: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1ConfigVariable, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1ConfigVariable::Representation
       
+          property :connection_revision, :numeric_string => true, as: 'connectionRevision'
           property :connector_version, as: 'connectorVersion'
           property :connector_version_launch_stage, as: 'connectorVersionLaunchStage'
           property :create_time, as: 'createTime'
@@ -2884,6 +2918,14 @@ module Google
           collection :destinations, as: 'destinations', class: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1Destination, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1Destination::Representation
       
           property :key, as: 'key'
+        end
+      end
+      
+      class GoogleCloudConnectorsV1EncryptionKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kms_key_name, as: 'kmsKeyName'
+          property :type, as: 'type'
         end
       end
       
@@ -3139,6 +3181,21 @@ module Google
           property :key, as: 'key'
           property :value, as: 'value', class: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaValueType, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaValueType::Representation
       
+        end
+      end
+      
+      class GoogleCloudIntegrationsV1alphaExecuteEventRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_event, as: 'cloudEvent', class: Google::Apis::IntegrationsV1alpha::IoCloudeventsV1CloudEvent, decorator: Google::Apis::IntegrationsV1alpha::IoCloudeventsV1CloudEvent::Representation
+      
+        end
+      end
+      
+      class GoogleCloudIntegrationsV1alphaExecuteEventResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :execution_id, as: 'executionId'
         end
       end
       
@@ -3924,6 +3981,34 @@ module Google
       class GoogleProtobufEmpty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class IoCloudeventsV1CloudEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :attributes, as: 'attributes', class: Google::Apis::IntegrationsV1alpha::IoCloudeventsV1CloudEventCloudEventAttributeValue, decorator: Google::Apis::IntegrationsV1alpha::IoCloudeventsV1CloudEventCloudEventAttributeValue::Representation
+      
+          property :binary_data, :base64 => true, as: 'binaryData'
+          property :id, as: 'id'
+          hash :proto_data, as: 'protoData'
+          property :source, as: 'source'
+          property :spec_version, as: 'specVersion'
+          property :text_data, as: 'textData'
+          property :type, as: 'type'
+        end
+      end
+      
+      class IoCloudeventsV1CloudEventCloudEventAttributeValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ce_boolean, as: 'ceBoolean'
+          property :ce_bytes, :base64 => true, as: 'ceBytes'
+          property :ce_integer, as: 'ceInteger'
+          property :ce_string, as: 'ceString'
+          property :ce_timestamp, as: 'ceTimestamp'
+          property :ce_uri, as: 'ceUri'
+          property :ce_uri_ref, as: 'ceUriRef'
         end
       end
     end
