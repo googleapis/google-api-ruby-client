@@ -7462,6 +7462,7 @@ module Google
           collection :reserved_resources, as: 'reservedResources', class: Google::Apis::ComputeAlpha::AllocationAggregateReservationReservedResourceInfo, decorator: Google::Apis::ComputeAlpha::AllocationAggregateReservationReservedResourceInfo::Representation
       
           property :vm_family, as: 'vmFamily'
+          property :workload_type, as: 'workloadType'
         end
       end
       
