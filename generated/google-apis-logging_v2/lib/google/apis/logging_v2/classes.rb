@@ -2817,6 +2817,13 @@ module Google
         # @return [String]
         attr_accessor :kms_service_account_id
       
+        # Output only. The service account for the given container. Sinks use this
+        # service account as their writer_identity if no custom service account is
+        # provided.
+        # Corresponds to the JSON property `loggingServiceAccountId`
+        # @return [String]
+        attr_accessor :logging_service_account_id
+      
         # Output only. The resource name of the settings.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -2838,6 +2845,7 @@ module Google
           @disable_default_sink = args[:disable_default_sink] if args.key?(:disable_default_sink)
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @kms_service_account_id = args[:kms_service_account_id] if args.key?(:kms_service_account_id)
+          @logging_service_account_id = args[:logging_service_account_id] if args.key?(:logging_service_account_id)
           @name = args[:name] if args.key?(:name)
           @storage_location = args[:storage_location] if args.key?(:storage_location)
         end
