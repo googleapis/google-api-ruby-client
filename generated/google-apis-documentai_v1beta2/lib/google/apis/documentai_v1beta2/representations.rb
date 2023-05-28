@@ -142,6 +142,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiUiv1beta3DocumentIdUnmanagedDocumentId
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiUiv1beta3EnableProcessorMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1496,6 +1502,8 @@ module Google
       
           property :revision_ref, as: 'revisionRef', class: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3RevisionRef, decorator: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3RevisionRef::Representation
       
+          property :unmanaged_doc_id, as: 'unmanagedDocId', class: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3DocumentIdUnmanagedDocumentId, decorator: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3DocumentIdUnmanagedDocumentId::Representation
+      
         end
       end
       
@@ -1504,6 +1512,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cw_doc_id, as: 'cwDocId'
           property :gcs_uri, as: 'gcsUri'
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3DocumentIdUnmanagedDocumentId
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :doc_id, as: 'docId'
         end
       end
       
