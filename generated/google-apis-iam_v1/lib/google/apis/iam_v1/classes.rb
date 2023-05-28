@@ -1066,6 +1066,17 @@ module Google
         # @return [String]
         attr_accessor :issuer_uri
       
+        # Optional. OIDC JWKs in JSON String format. For details on the definition of a
+        # JWK, see https://tools.ietf.org/html/rfc7517. If not set, the `jwks_uri` from
+        # the discovery document(fetched from the .well-known path of the `issuer_uri`)
+        # will be used. Currently, RSA and EC asymmetric keys are supported. The JWK
+        # must use following format and include only the following fields: ` "keys": [ `
+        # "kty": "RSA/EC", "alg": "", "use": "sig", "kid": "", "n": "", "e": "", "x": "",
+        # "y": "", "crv": "" ` ] `
+        # Corresponds to the JSON property `jwksJson`
+        # @return [String]
+        attr_accessor :jwks_json
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1074,6 +1085,7 @@ module Google
         def update!(**args)
           @allowed_audiences = args[:allowed_audiences] if args.key?(:allowed_audiences)
           @issuer_uri = args[:issuer_uri] if args.key?(:issuer_uri)
+          @jwks_json = args[:jwks_json] if args.key?(:jwks_json)
         end
       end
       
