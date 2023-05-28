@@ -982,9 +982,9 @@ module Google
         # @param [String] dataset_id
         #   Required. Dataset ID of the routines to list
         # @param [String] filter
-        #   If set, then only the Routines matching this filter are returned. The current
-        #   supported form is either "routine_type:" or "routineType:", where is a
-        #   RoutineType enum. Example: "routineType:SCALAR_FUNCTION".
+        #   If set, then only the Routines matching this filter are returned. The
+        #   supported format is `routineType:`RoutineType``, where ``RoutineType`` is a
+        #   RoutineType enum. For example: `routineType:SCALAR_FUNCTION`.
         # @param [Fixnum] max_results
         #   The maximum number of results to return in a single response page. Leverage
         #   the page tokens to iterate through the entire collection.

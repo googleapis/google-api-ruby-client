@@ -580,6 +580,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class JsonOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListModelsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1720,6 +1726,8 @@ module Google
           property :hive_partitioning_options, as: 'hivePartitioningOptions', class: Google::Apis::BigqueryV2::HivePartitioningOptions, decorator: Google::Apis::BigqueryV2::HivePartitioningOptions::Representation
       
           property :ignore_unknown_values, as: 'ignoreUnknownValues'
+          property :json_options, as: 'jsonOptions', class: Google::Apis::BigqueryV2::JsonOptions, decorator: Google::Apis::BigqueryV2::JsonOptions::Representation
+      
           property :max_bad_records, as: 'maxBadRecords'
           property :metadata_cache_mode, as: 'metadataCacheMode'
           property :object_metadata, as: 'objectMetadata'
@@ -2302,6 +2310,13 @@ module Google
           collection :errors, as: 'errors', class: Google::Apis::BigqueryV2::ErrorProto, decorator: Google::Apis::BigqueryV2::ErrorProto::Representation
       
           property :state, as: 'state'
+        end
+      end
+      
+      class JsonOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :encoding, as: 'encoding'
         end
       end
       
@@ -2949,27 +2964,27 @@ module Google
       class TableConstraints
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :foreign_keys, as: 'foreign_keys', class: Google::Apis::BigqueryV2::TableConstraints::ForeignKey, decorator: Google::Apis::BigqueryV2::TableConstraints::ForeignKey::Representation
+          collection :foreign_keys, as: 'foreignKeys', class: Google::Apis::BigqueryV2::TableConstraints::ForeignKey, decorator: Google::Apis::BigqueryV2::TableConstraints::ForeignKey::Representation
       
-          property :primary_key, as: 'primary_key', class: Google::Apis::BigqueryV2::TableConstraints::PrimaryKey, decorator: Google::Apis::BigqueryV2::TableConstraints::PrimaryKey::Representation
+          property :primary_key, as: 'primaryKey', class: Google::Apis::BigqueryV2::TableConstraints::PrimaryKey, decorator: Google::Apis::BigqueryV2::TableConstraints::PrimaryKey::Representation
       
         end
         
         class ForeignKey
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
-            collection :column_references, as: 'column_references', class: Google::Apis::BigqueryV2::TableConstraints::ForeignKey::ColumnReference, decorator: Google::Apis::BigqueryV2::TableConstraints::ForeignKey::ColumnReference::Representation
+            collection :column_references, as: 'columnReferences', class: Google::Apis::BigqueryV2::TableConstraints::ForeignKey::ColumnReference, decorator: Google::Apis::BigqueryV2::TableConstraints::ForeignKey::ColumnReference::Representation
         
             property :name, as: 'name'
-            property :referenced_table, as: 'referenced_table', class: Google::Apis::BigqueryV2::TableConstraints::ForeignKey::ReferencedTable, decorator: Google::Apis::BigqueryV2::TableConstraints::ForeignKey::ReferencedTable::Representation
+            property :referenced_table, as: 'referencedTable', class: Google::Apis::BigqueryV2::TableConstraints::ForeignKey::ReferencedTable, decorator: Google::Apis::BigqueryV2::TableConstraints::ForeignKey::ReferencedTable::Representation
         
           end
           
           class ColumnReference
             # @private
             class Representation < Google::Apis::Core::JsonRepresentation
-              property :referenced_column, as: 'referenced_column'
-              property :referencing_column, as: 'referencing_column'
+              property :referenced_column, as: 'referencedColumn'
+              property :referencing_column, as: 'referencingColumn'
             end
           end
           
