@@ -1263,6 +1263,11 @@ module Google
         # @return [String]
         attr_accessor :vm_family
       
+        # The workload type of the instances that will target this reservation.
+        # Corresponds to the JSON property `workloadType`
+        # @return [String]
+        attr_accessor :workload_type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1272,6 +1277,7 @@ module Google
           @in_use_resources = args[:in_use_resources] if args.key?(:in_use_resources)
           @reserved_resources = args[:reserved_resources] if args.key?(:reserved_resources)
           @vm_family = args[:vm_family] if args.key?(:vm_family)
+          @workload_type = args[:workload_type] if args.key?(:workload_type)
         end
       end
       
@@ -2618,13 +2624,16 @@ module Google
       class AutoscalingPolicy
         include Google::Apis::Core::Hashable
       
-        # The number of seconds that the autoscaler waits before it starts collecting
-        # information from a new instance. This prevents the autoscaler from collecting
-        # information when the instance is initializing, during which the collected
-        # usage would not be reliable. The default time autoscaler waits is 60 seconds.
-        # Virtual machine initialization times might vary because of numerous factors.
-        # We recommend that you test how long an instance may take to initialize. To do
-        # this, create an instance and time the startup process.
+        # The number of seconds that your application takes to initialize on a VM
+        # instance. This is referred to as the [initialization period](/compute/docs/
+        # autoscaler#cool_down_period). Specifying an accurate initialization period
+        # improves autoscaler decisions. For example, when scaling out, the autoscaler
+        # ignores data from VMs that are still initializing because those VMs might not
+        # yet represent normal usage of your application. The default initialization
+        # period is 60 seconds. Initialization periods might vary because of numerous
+        # factors. We recommend that you test how long your application takes to
+        # initialize. To do this, create a VM and time your application's startup
+        # process.
         # Corresponds to the JSON property `coolDownPeriodSec`
         # @return [Fixnum]
         attr_accessor :cool_down_period_sec
@@ -2658,7 +2667,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :min_num_replicas
       
-        # Defines operating mode for this policy.
+        # Defines the operating mode for this policy. The following modes are available:
+        # - OFF: Disables the autoscaler but maintains its configuration. -
+        # ONLY_SCALE_OUT: Restricts the autoscaler to add VM instances only. - ON:
+        # Enables all autoscaler activities according to its policy. For more
+        # information, see "Turning off or restricting an autoscaler"
         # Corresponds to the JSON property `mode`
         # @return [String]
         attr_accessor :mode
@@ -12000,8 +12013,8 @@ module Google
         # The ID of a supported feature. To add multiple values, use commas to separate
         # values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE -
         # WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE -
-        # SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE -
-        # TDX_CAPABLE For more information, see Enabling guest operating system features.
+        # SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE For more
+        # information, see Enabling guest operating system features.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -26210,8 +26223,8 @@ module Google
       class NetworkAttachmentConnectedEndpoint
         include Google::Apis::Core::Hashable
       
-        # The IP address assigned to the producer instance network interface. This value
-        # will be a range in case of Serverless.
+        # The IPv4 address assigned to the producer instance network interface. This
+        # value will be a range in case of Serverless.
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
         attr_accessor :ip_address
