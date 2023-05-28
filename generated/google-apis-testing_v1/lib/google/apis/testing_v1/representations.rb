@@ -1073,6 +1073,7 @@ module Google
       class Shard
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :estimated_shard_duration, as: 'estimatedShardDuration'
           property :num_shards, as: 'numShards'
           property :shard_index, as: 'shardIndex'
           property :test_targets_for_shard, as: 'testTargetsForShard', class: Google::Apis::TestingV1::TestTargetsForShard, decorator: Google::Apis::TestingV1::TestTargetsForShard::Representation
