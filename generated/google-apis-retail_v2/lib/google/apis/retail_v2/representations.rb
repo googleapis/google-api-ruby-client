@@ -2686,6 +2686,7 @@ module Google
           property :merchant_center_account_id, :numeric_string => true, as: 'merchantCenterAccountId'
           property :name, as: 'name'
           property :project_id, as: 'projectId'
+          property :source, as: 'source'
           property :state, as: 'state'
         end
       end
@@ -3046,6 +3047,7 @@ module Google
           property :merchant_center_account_id, :numeric_string => true, as: 'merchantCenterAccountId'
           property :name, as: 'name'
           property :project_id, as: 'projectId'
+          property :source, as: 'source'
           property :state, as: 'state'
         end
       end
