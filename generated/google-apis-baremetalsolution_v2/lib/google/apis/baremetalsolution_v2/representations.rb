@@ -298,6 +298,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResetInstanceResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ResizeVolumeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -334,6 +340,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StartInstanceResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -341,6 +353,12 @@ module Google
       end
       
       class StopInstanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StopInstanceResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -892,6 +910,12 @@ module Google
         end
       end
       
+      class ResetInstanceResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class ResizeVolumeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -939,6 +963,12 @@ module Google
         end
       end
       
+      class StartInstanceResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -949,6 +979,12 @@ module Google
       end
       
       class StopInstanceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class StopInstanceResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
