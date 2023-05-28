@@ -82,6 +82,40 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Triggers database failover (only for highly resilient environments).
+        # @param [String] environment
+        #   Target environment: "projects/`projectId`/locations/`locationId`/environments/`
+        #   environmentId`"
+        # @param [Google::Apis::ComposerV1::DatabaseFailoverRequest] database_failover_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComposerV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComposerV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def database_environment_failover(environment, database_failover_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+environment}:databaseFailover', options)
+          command.request_representation = Google::Apis::ComposerV1::DatabaseFailoverRequest::Representation
+          command.request_object = database_failover_request_object
+          command.response_representation = Google::Apis::ComposerV1::Operation::Representation
+          command.response_class = Google::Apis::ComposerV1::Operation
+          command.params['environment'] = environment unless environment.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Delete an environment.
         # @param [String] name
         #   The environment to delete, in the form: "projects/`projectId`/locations/`
@@ -108,6 +142,71 @@ module Google
           command.response_representation = Google::Apis::ComposerV1::Operation::Representation
           command.response_class = Google::Apis::ComposerV1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Executes Airflow CLI command.
+        # @param [String] environment
+        #   The resource name of the environment in the form: "projects/`projectId`/
+        #   locations/`locationId`/environments/`environmentId`".
+        # @param [Google::Apis::ComposerV1::ExecuteAirflowCommandRequest] execute_airflow_command_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComposerV1::ExecuteAirflowCommandResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComposerV1::ExecuteAirflowCommandResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def execute_environment_airflow_command(environment, execute_airflow_command_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+environment}:executeAirflowCommand', options)
+          command.request_representation = Google::Apis::ComposerV1::ExecuteAirflowCommandRequest::Representation
+          command.request_object = execute_airflow_command_request_object
+          command.response_representation = Google::Apis::ComposerV1::ExecuteAirflowCommandResponse::Representation
+          command.response_class = Google::Apis::ComposerV1::ExecuteAirflowCommandResponse
+          command.params['environment'] = environment unless environment.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Fetches database properties.
+        # @param [String] environment
+        #   Required. The resource name of the environment, in the form: "projects/`
+        #   projectId`/locations/`locationId`/environments/`environmentId`"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComposerV1::FetchDatabasePropertiesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComposerV1::FetchDatabasePropertiesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def fetch_project_location_environment_database_properties(environment, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+environment}:fetchDatabaseProperties', options)
+          command.response_representation = Google::Apis::ComposerV1::FetchDatabasePropertiesResponse::Representation
+          command.response_class = Google::Apis::ComposerV1::FetchDatabasePropertiesResponse
+          command.params['environment'] = environment unless environment.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -322,6 +421,40 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Polls Airflow CLI command execution and fetches logs.
+        # @param [String] environment
+        #   The resource name of the environment in the form: "projects/`projectId`/
+        #   locations/`locationId`/environments/`environmentId`"
+        # @param [Google::Apis::ComposerV1::PollAirflowCommandRequest] poll_airflow_command_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComposerV1::PollAirflowCommandResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComposerV1::PollAirflowCommandResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def poll_environment_airflow_command(environment, poll_airflow_command_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+environment}:pollAirflowCommand', options)
+          command.request_representation = Google::Apis::ComposerV1::PollAirflowCommandRequest::Representation
+          command.request_object = poll_airflow_command_request_object
+          command.response_representation = Google::Apis::ComposerV1::PollAirflowCommandResponse::Representation
+          command.response_class = Google::Apis::ComposerV1::PollAirflowCommandResponse
+          command.params['environment'] = environment unless environment.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a snapshots of a Cloud Composer environment. As a result of this
         # operation, snapshot of environment's state is stored in a location specified
         # in the SaveSnapshotRequest.
@@ -352,6 +485,40 @@ module Google
           command.request_object = save_snapshot_request_object
           command.response_representation = Google::Apis::ComposerV1::Operation::Representation
           command.response_class = Google::Apis::ComposerV1::Operation
+          command.params['environment'] = environment unless environment.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Stops Airflow CLI command execution.
+        # @param [String] environment
+        #   The resource name of the environment in the form: "projects/`projectId`/
+        #   locations/`locationId`/environments/`environmentId`".
+        # @param [Google::Apis::ComposerV1::StopAirflowCommandRequest] stop_airflow_command_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComposerV1::StopAirflowCommandResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComposerV1::StopAirflowCommandResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def stop_environment_airflow_command(environment, stop_airflow_command_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+environment}:stopAirflowCommand', options)
+          command.request_representation = Google::Apis::ComposerV1::StopAirflowCommandRequest::Representation
+          command.request_object = stop_airflow_command_request_object
+          command.response_representation = Google::Apis::ComposerV1::StopAirflowCommandResponse::Representation
+          command.response_class = Google::Apis::ComposerV1::StopAirflowCommandResponse
           command.params['environment'] = environment unless environment.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
