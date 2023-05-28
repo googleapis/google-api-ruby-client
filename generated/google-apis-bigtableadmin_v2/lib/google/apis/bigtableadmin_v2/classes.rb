@@ -1635,7 +1635,7 @@ module Google
         end
       end
       
-      # A resource that represents Google Cloud location.
+      # A resource that represents a Google Cloud location.
       class Location
         include Google::Apis::Core::Hashable
       
@@ -1726,6 +1726,12 @@ module Google
       class ModifyColumnFamiliesRequest
         include Google::Apis::Core::Hashable
       
+        # If true, ignore safety checks when modifying the column families.
+        # Corresponds to the JSON property `ignoreWarnings`
+        # @return [Boolean]
+        attr_accessor :ignore_warnings
+        alias_method :ignore_warnings?, :ignore_warnings
+      
         # Required. Modifications to be atomically applied to the specified table's
         # families. Entries are applied in order, meaning that earlier modifications can
         # be masked by later ones (in the case of repeated updates to the same family,
@@ -1740,6 +1746,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ignore_warnings = args[:ignore_warnings] if args.key?(:ignore_warnings)
           @modifications = args[:modifications] if args.key?(:modifications)
         end
       end

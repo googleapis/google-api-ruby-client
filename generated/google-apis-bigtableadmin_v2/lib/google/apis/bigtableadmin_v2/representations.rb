@@ -931,6 +931,7 @@ module Google
       class ModifyColumnFamiliesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :ignore_warnings, as: 'ignoreWarnings'
           collection :modifications, as: 'modifications', class: Google::Apis::BigtableadminV2::Modification, decorator: Google::Apis::BigtableadminV2::Modification::Representation
       
         end
