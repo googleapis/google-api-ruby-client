@@ -6619,6 +6619,7 @@ module Google
           collection :licenses, as: 'licenses'
           property :locked, as: 'locked'
           property :mode, as: 'mode'
+          property :saved_state, as: 'savedState'
           property :shielded_instance_initial_state, as: 'shieldedInstanceInitialState', class: Google::Apis::ComputeBeta::InitialStateConfig, decorator: Google::Apis::ComputeBeta::InitialStateConfig::Representation
       
           property :source, as: 'source'
@@ -16347,6 +16348,7 @@ module Google
           property :description, as: 'description'
           property :fingerprint, :base64 => true, as: 'fingerprint'
           collection :http_filters, as: 'httpFilters'
+          property :http_keep_alive_timeout_sec, as: 'httpKeepAliveTimeoutSec'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
@@ -16482,6 +16484,7 @@ module Google
           property :description, as: 'description'
           property :fingerprint, :base64 => true, as: 'fingerprint'
           collection :http_filters, as: 'httpFilters'
+          property :http_keep_alive_timeout_sec, as: 'httpKeepAliveTimeoutSec'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'

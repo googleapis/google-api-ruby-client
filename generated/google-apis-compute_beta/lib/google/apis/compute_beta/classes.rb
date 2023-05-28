@@ -1502,6 +1502,14 @@ module Google
         # @return [String]
         attr_accessor :mode
       
+        # For LocalSSD disks on VM Instances in STOPPED or SUSPENDED state, this field
+        # is set to PRESERVED if the LocalSSD data has been saved to a persistent
+        # location by customer request. (see the discard_local_ssd option on Stop/
+        # Suspend). Read-only in the api.
+        # Corresponds to the JSON property `savedState`
+        # @return [String]
+        attr_accessor :saved_state
+      
         # Initial State for shielded instance, these are public keys which are safe to
         # store in public
         # Corresponds to the JSON property `shieldedInstanceInitialState`
@@ -1553,6 +1561,7 @@ module Google
           @licenses = args[:licenses] if args.key?(:licenses)
           @locked = args[:locked] if args.key?(:locked)
           @mode = args[:mode] if args.key?(:mode)
+          @saved_state = args[:saved_state] if args.key?(:saved_state)
           @shielded_instance_initial_state = args[:shielded_instance_initial_state] if args.key?(:shielded_instance_initial_state)
           @source = args[:source] if args.key?(:source)
           @type = args[:type] if args.key?(:type)
@@ -2371,13 +2380,16 @@ module Google
       class AutoscalingPolicy
         include Google::Apis::Core::Hashable
       
-        # The number of seconds that the autoscaler waits before it starts collecting
-        # information from a new instance. This prevents the autoscaler from collecting
-        # information when the instance is initializing, during which the collected
-        # usage would not be reliable. The default time autoscaler waits is 60 seconds.
-        # Virtual machine initialization times might vary because of numerous factors.
-        # We recommend that you test how long an instance may take to initialize. To do
-        # this, create an instance and time the startup process.
+        # The number of seconds that your application takes to initialize on a VM
+        # instance. This is referred to as the [initialization period](/compute/docs/
+        # autoscaler#cool_down_period). Specifying an accurate initialization period
+        # improves autoscaler decisions. For example, when scaling out, the autoscaler
+        # ignores data from VMs that are still initializing because those VMs might not
+        # yet represent normal usage of your application. The default initialization
+        # period is 60 seconds. Initialization periods might vary because of numerous
+        # factors. We recommend that you test how long your application takes to
+        # initialize. To do this, create a VM and time your application's startup
+        # process.
         # Corresponds to the JSON property `coolDownPeriodSec`
         # @return [Fixnum]
         attr_accessor :cool_down_period_sec
@@ -2411,7 +2423,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :min_num_replicas
       
-        # Defines operating mode for this policy.
+        # Defines the operating mode for this policy. The following modes are available:
+        # - OFF: Disables the autoscaler but maintains its configuration. -
+        # ONLY_SCALE_OUT: Restricts the autoscaler to add VM instances only. - ON:
+        # Enables all autoscaler activities according to its policy. For more
+        # information, see "Turning off or restricting an autoscaler"
         # Corresponds to the JSON property `mode`
         # @return [String]
         attr_accessor :mode
@@ -10568,8 +10584,8 @@ module Google
         # The ID of a supported feature. To add multiple values, use commas to separate
         # values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE -
         # WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE -
-        # SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE -
-        # TDX_CAPABLE For more information, see Enabling guest operating system features.
+        # SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE For more
+        # information, see Enabling guest operating system features.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -22793,8 +22809,8 @@ module Google
       class NetworkAttachmentConnectedEndpoint
         include Google::Apis::Core::Hashable
       
-        # The IP address assigned to the producer instance network interface. This value
-        # will be a range in case of Serverless.
+        # The IPv4 address assigned to the producer instance network interface. This
+        # value will be a range in case of Serverless.
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
         attr_accessor :ip_address
@@ -41343,6 +41359,16 @@ module Google
         # @return [Array<String>]
         attr_accessor :http_filters
       
+        # Specifies how long to keep a connection open, after completing a response,
+        # while there is no matching traffic (in seconds). If an HTTP keep-alive is not
+        # specified, a default value (610 seconds) will be used. For Global external
+        # HTTP(S) load balancer, the minimum allowed value is 5 seconds and the maximum
+        # allowed value is 1200 seconds. For Global external HTTP(S) load balancer (
+        # classic), this option is not available publicly.
+        # Corresponds to the JSON property `httpKeepAliveTimeoutSec`
+        # @return [Fixnum]
+        attr_accessor :http_keep_alive_timeout_sec
+      
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
@@ -41405,6 +41431,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @http_filters = args[:http_filters] if args.key?(:http_filters)
+          @http_keep_alive_timeout_sec = args[:http_keep_alive_timeout_sec] if args.key?(:http_keep_alive_timeout_sec)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
@@ -41888,6 +41915,16 @@ module Google
         # @return [Array<String>]
         attr_accessor :http_filters
       
+        # Specifies how long to keep a connection open, after completing a response,
+        # while there is no matching traffic (in seconds). If an HTTP keep-alive is not
+        # specified, a default value (610 seconds) will be used. For Global external
+        # HTTP(S) load balancer, the minimum allowed value is 5 seconds and the maximum
+        # allowed value is 1200 seconds. For Global external HTTP(S) load balancer (
+        # classic), this option is not available publicly.
+        # Corresponds to the JSON property `httpKeepAliveTimeoutSec`
+        # @return [Fixnum]
+        attr_accessor :http_keep_alive_timeout_sec
+      
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
@@ -41996,6 +42033,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @http_filters = args[:http_filters] if args.key?(:http_filters)
+          @http_keep_alive_timeout_sec = args[:http_keep_alive_timeout_sec] if args.key?(:http_keep_alive_timeout_sec)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
