@@ -90,7 +90,7 @@ module Google
       class GoogleCloudDatacatalogLineageV1EntityReference
         include Google::Apis::Core::Hashable
       
-        # Required. [Fully Qualified Name (FQN)](https://cloud.google.com//data-catalog/
+        # Required. [Fully Qualified Name (FQN)](https://cloud.google.com/data-catalog/
         # docs/fully-qualified-names) of the entity.
         # Corresponds to the JSON property `fullyQualifiedName`
         # @return [String]
