@@ -789,6 +789,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :allowed_audiences, as: 'allowedAudiences'
           property :issuer_uri, as: 'issuerUri'
+          property :jwks_json, as: 'jwksJson'
         end
       end
       
