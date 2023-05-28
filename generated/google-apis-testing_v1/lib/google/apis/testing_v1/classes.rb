@@ -2050,6 +2050,12 @@ module Google
       class Shard
         include Google::Apis::Core::Hashable
       
+        # Output only. The estimated shard duration based on previous test case timing
+        # records, if available.
+        # Corresponds to the JSON property `estimatedShardDuration`
+        # @return [String]
+        attr_accessor :estimated_shard_duration
+      
         # Output only. The total number of shards.
         # Corresponds to the JSON property `numShards`
         # @return [Fixnum]
@@ -2071,6 +2077,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @estimated_shard_duration = args[:estimated_shard_duration] if args.key?(:estimated_shard_duration)
           @num_shards = args[:num_shards] if args.key?(:num_shards)
           @shard_index = args[:shard_index] if args.key?(:shard_index)
           @test_targets_for_shard = args[:test_targets_for_shard] if args.key?(:test_targets_for_shard)
@@ -2129,21 +2136,21 @@ module Google
         # longer than the targeted shard duration. Shard duration is not guaranteed
         # because smart sharding uses test case history and default durations which may
         # not be accurate. The rules for finding the test case timing records are: - If
-        # the service has seen a test case in the last 30 days, the record of the latest
-        # successful one will be used. - For new test cases, the average duration of
-        # other known test cases will be used. - If there are no previous test case
-        # timing records available, the test case is considered to be 15 seconds long by
-        # default. Because the actual shard duration can exceed the targeted shard
-        # duration, we recommend setting the targeted value at least 5 minutes less than
-        # the maximum allowed test timeout (45 minutes for physical devices and 60
-        # minutes for virtual), or using the custom test timeout value you set. This
-        # approach avoids cancelling the shard before all tests can finish. Note that
-        # there is a limit for maximum number of shards. When you select one or more
-        # physical devices, the number of shards must be <= 50. When you select one or
-        # more ARM virtual devices, it must be <= 100. When you select only x86 virtual
-        # devices, it must be <= 500. To guarantee at least one test case for per shard,
-        # the number of shards will not exceed the number of test cases. Each shard
-        # created will count toward daily test quota.
+        # the service has processed a test case in the last 30 days, the record of the
+        # latest successful test case will be used. - For new test cases, the average
+        # duration of other known test cases will be used. - If there are no previous
+        # test case timing records available, the default test case duration is 15
+        # seconds. Because the actual shard duration can exceed the targeted shard
+        # duration, we recommend that you set the targeted value at least 5 minutes less
+        # than the maximum allowed test timeout (45 minutes for physical devices and 60
+        # minutes for virtual), or that you use the custom test timeout value that you
+        # set. This approach avoids cancelling the shard before all tests can finish.
+        # Note that there is a limit for maximum number of shards. When you select one
+        # or more physical devices, the number of shards must be <= 50. When you select
+        # one or more ARM virtual devices, it must be <= 100. When you select only x86
+        # virtual devices, it must be <= 500. To guarantee at least one test case for
+        # per shard, the number of shards will not exceed the number of test cases. Each
+        # shard created counts toward daily test quota.
         # Corresponds to the JSON property `targetedShardDuration`
         # @return [String]
         attr_accessor :targeted_shard_duration
