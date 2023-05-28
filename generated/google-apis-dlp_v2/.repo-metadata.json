@@ -1,6 +1,6 @@
 {
     "api_id": "dlp:v2",
-    "name_pretty": "Cloud Data Loss Prevention (DLP) API",
+    "name_pretty": "Cloud Data Loss Prevention (DLP)",
     "distribution_name": "google-apis-dlp_v2",
     "language": "ruby",
     "library_type": "REST"

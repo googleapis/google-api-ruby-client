@@ -1,6 +1,6 @@
-# Simple REST client for version V2 of the Cloud Data Loss Prevention (DLP) API
+# Simple REST client for version V2 of the Cloud Data Loss Prevention (DLP)
 
-This is a simple client library for version V2 of the Cloud Data Loss Prevention (DLP) API. It provides:
+This is a simple client library for version V2 of the Cloud Data Loss Prevention (DLP). It provides:
 
 * A client object that connects to the HTTP/JSON REST endpoint for the service.
 * Ruby objects for data structures related to the service.
@@ -65,7 +65,7 @@ More detailed descriptions of the Google simple REST clients are available in tw
 
 (Note: the above documents are written for the simple REST clients in general, and their examples may not reflect the Dlp service in particular.)
 
-For reference information on specific calls in the Cloud Data Loss Prevention (DLP) API, see the {Google::Apis::DlpV2::DLPService class reference docs}.
+For reference information on specific calls in the Cloud Data Loss Prevention (DLP), see the {Google::Apis::DlpV2::DLPService class reference docs}.
 
 ## Which client should I use?
 
