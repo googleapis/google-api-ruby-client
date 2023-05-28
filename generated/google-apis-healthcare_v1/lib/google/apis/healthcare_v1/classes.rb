@@ -97,8 +97,8 @@ module Google
         # @return [Array<Google::Apis::HealthcareV1::Entity>]
         attr_accessor :entities
       
-        # entity_mentions contains all the annotated medical entities that were
-        # mentioned in the provided document.
+        # The `entity_mentions` field contains all the annotated medical entities that
+        # were mentioned in the provided document.
         # Corresponds to the JSON property `entityMentions`
         # @return [Array<Google::Apis::HealthcareV1::EntityMention>]
         attr_accessor :entity_mentions
@@ -1756,7 +1756,7 @@ module Google
         attr_accessor :send_full_resource
         alias_method :send_full_resource?, :send_full_resource
       
-        # Whether to send full FHIR resource to this pubsub topic for deleting FHIR
+        # Whether to send full FHIR resource to this Pub/Sub topic for deleting FHIR
         # resource. Note that setting this to true does not guarantee that all previous
         # resources will be sent in the format of full FHIR resource. When a resource
         # change is too large or during heavy traffic, only the resource name will be
