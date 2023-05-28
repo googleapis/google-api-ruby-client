@@ -2178,7 +2178,7 @@ module Google
       class EncryptionConfiguration
         include Google::Apis::Core::Hashable
       
-        # [Optional] Describes the Cloud KMS encryption key that will be used to protect
+        # Optional. Describes the Cloud KMS encryption key that will be used to protect
         # destination BigQuery table. The BigQuery Service Account associated with your
         # project requires access to this encryption key.
         # Corresponds to the JSON property `kmsKeyName`
@@ -2700,6 +2700,12 @@ module Google
         attr_accessor :ignore_unknown_values
         alias_method :ignore_unknown_values?, :ignore_unknown_values
       
+        # Additional properties to set if `sourceFormat` is set to `
+        # NEWLINE_DELIMITED_JSON`.
+        # Corresponds to the JSON property `jsonOptions`
+        # @return [Google::Apis::BigqueryV2::JsonOptions]
+        attr_accessor :json_options
+      
         # [Optional] The maximum number of bad records that BigQuery can ignore when
         # reading data. If the number of bad records exceeds this value, an invalid
         # error is returned in the job result. This is only valid for CSV, JSON, and
@@ -2778,6 +2784,7 @@ module Google
           @google_sheets_options = args[:google_sheets_options] if args.key?(:google_sheets_options)
           @hive_partitioning_options = args[:hive_partitioning_options] if args.key?(:hive_partitioning_options)
           @ignore_unknown_values = args[:ignore_unknown_values] if args.key?(:ignore_unknown_values)
+          @json_options = args[:json_options] if args.key?(:json_options)
           @max_bad_records = args[:max_bad_records] if args.key?(:max_bad_records)
           @metadata_cache_mode = args[:metadata_cache_mode] if args.key?(:metadata_cache_mode)
           @object_metadata = args[:object_metadata] if args.key?(:object_metadata)
@@ -5127,6 +5134,26 @@ module Google
       end
       
       # 
+      class JsonOptions
+        include Google::Apis::Core::Hashable
+      
+        # [Optional] The character encoding of the data. The supported values are UTF-8,
+        # UTF-16BE, UTF-16LE, UTF-32BE, and UTF-32LE. The default value is UTF-8.
+        # Corresponds to the JSON property `encoding`
+        # @return [String]
+        attr_accessor :encoding
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encoding = args[:encoding] if args.key?(:encoding)
+        end
+      end
+      
+      # 
       class ListModelsResponse
         include Google::Apis::Core::Hashable
       
@@ -5535,18 +5562,18 @@ module Google
       class ModelReference
         include Google::Apis::Core::Hashable
       
-        # [Required] The ID of the dataset containing this model.
+        # Required. The ID of the dataset containing this model.
         # Corresponds to the JSON property `datasetId`
         # @return [String]
         attr_accessor :dataset_id
       
-        # [Required] The ID of the model. The ID must contain only letters (a-z, A-Z),
+        # Required. The ID of the model. The ID must contain only letters (a-z, A-Z),
         # numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
         # Corresponds to the JSON property `modelId`
         # @return [String]
         attr_accessor :model_id
       
-        # [Required] The ID of the project containing this model.
+        # Required. The ID of the project containing this model.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -6692,17 +6719,17 @@ module Google
       class RoutineReference
         include Google::Apis::Core::Hashable
       
-        # [Required] The ID of the dataset containing this routine.
+        # Required. The ID of the dataset containing this routine.
         # Corresponds to the JSON property `datasetId`
         # @return [String]
         attr_accessor :dataset_id
       
-        # [Required] The ID of the project containing this routine.
+        # Required. The ID of the project containing this routine.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # [Required] The ID of the routine. The ID must contain only letters (a-z, A-Z),
+        # Required. The ID of the routine. The ID must contain only letters (a-z, A-Z),
         # numbers (0-9), or underscores (_). The maximum length is 256 characters.
         # Corresponds to the JSON property `routineId`
         # @return [String]
@@ -6799,24 +6826,24 @@ module Google
       class RowAccessPolicyReference
         include Google::Apis::Core::Hashable
       
-        # [Required] The ID of the dataset containing this row access policy.
+        # Required. The ID of the dataset containing this row access policy.
         # Corresponds to the JSON property `datasetId`
         # @return [String]
         attr_accessor :dataset_id
       
-        # [Required] The ID of the row access policy. The ID must contain only letters (
-        # a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256
+        # Required. The ID of the row access policy. The ID must contain only letters (a-
+        # z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256
         # characters.
         # Corresponds to the JSON property `policyId`
         # @return [String]
         attr_accessor :policy_id
       
-        # [Required] The ID of the project containing this row access policy.
+        # Required. The ID of the project containing this row access policy.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # [Required] The ID of the table containing this row access policy.
+        # Required. The ID of the table containing this row access policy.
         # Corresponds to the JSON property `tableId`
         # @return [String]
         attr_accessor :table_id
@@ -7707,12 +7734,12 @@ module Google
         include Google::Apis::Core::Hashable
       
         # [Optional] The foreign keys of the tables.
-        # Corresponds to the JSON property `foreign_keys`
+        # Corresponds to the JSON property `foreignKeys`
         # @return [Array<Google::Apis::BigqueryV2::TableConstraints::ForeignKey>]
         attr_accessor :foreign_keys
       
         # [Optional] The primary key of the table.
-        # Corresponds to the JSON property `primary_key`
+        # Corresponds to the JSON property `primaryKey`
         # @return [Google::Apis::BigqueryV2::TableConstraints::PrimaryKey]
         attr_accessor :primary_key
       
@@ -7731,7 +7758,7 @@ module Google
           include Google::Apis::Core::Hashable
         
           # 
-          # Corresponds to the JSON property `column_references`
+          # Corresponds to the JSON property `columnReferences`
           # @return [Array<Google::Apis::BigqueryV2::TableConstraints::ForeignKey::ColumnReference>]
           attr_accessor :column_references
         
@@ -7741,7 +7768,7 @@ module Google
           attr_accessor :name
         
           # 
-          # Corresponds to the JSON property `referenced_table`
+          # Corresponds to the JSON property `referencedTable`
           # @return [Google::Apis::BigqueryV2::TableConstraints::ForeignKey::ReferencedTable]
           attr_accessor :referenced_table
         
@@ -7761,12 +7788,12 @@ module Google
             include Google::Apis::Core::Hashable
           
             # 
-            # Corresponds to the JSON property `referenced_column`
+            # Corresponds to the JSON property `referencedColumn`
             # @return [String]
             attr_accessor :referenced_column
           
             # 
-            # Corresponds to the JSON property `referencing_column`
+            # Corresponds to the JSON property `referencingColumn`
             # @return [String]
             attr_accessor :referencing_column
           
