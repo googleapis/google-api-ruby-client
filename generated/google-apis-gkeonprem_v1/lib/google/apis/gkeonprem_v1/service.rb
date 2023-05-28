@@ -1232,6 +1232,11 @@ module Google
         # @param [String] name
         #   Required. The name of the node pool to retrieve. projects/`project`/locations/`
         #   location`/bareMetalClusters/`cluster`/bareMetalNodePools/`nodepool`
+        # @param [String] view
+        #   View for bare metal node pool. When `BASIC` is specified, only the node pool
+        #   resource name is returned. The default/unset value `NODE_POOL_VIEW_UNSPECIFIED`
+        #   is the same as `FULL', which returns the complete node pool configuration
+        #   details.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1249,11 +1254,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_bare_metal_cluster_bare_metal_node_pool(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_location_bare_metal_cluster_bare_metal_node_pool(name, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::GkeonpremV1::BareMetalNodePool::Representation
           command.response_class = Google::Apis::GkeonpremV1::BareMetalNodePool
           command.params['name'] = name unless name.nil?
+          command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1318,6 +1324,11 @@ module Google
         #   this to retrieve the subsequent page. When paginating, all other parameters
         #   provided to `ListBareMetalNodePools` must match the call that provided the
         #   page token.
+        # @param [String] view
+        #   View for bare metal node pools. When `BASIC` is specified, only the node pool
+        #   resource name is returned. The default/unset value `NODE_POOL_VIEW_UNSPECIFIED`
+        #   is the same as `FULL', which returns the complete node pool configuration
+        #   details.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1335,13 +1346,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_bare_metal_cluster_bare_metal_node_pools(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_bare_metal_cluster_bare_metal_node_pools(parent, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/bareMetalNodePools', options)
           command.response_representation = Google::Apis::GkeonpremV1::ListBareMetalNodePoolsResponse::Representation
           command.response_class = Google::Apis::GkeonpremV1::ListBareMetalNodePoolsResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1351,6 +1363,11 @@ module Google
         # @param [String] name
         #   Immutable. The bare metal node pool resource name.
         # @param [Google::Apis::GkeonpremV1::BareMetalNodePool] bare_metal_node_pool_object
+        # @param [Boolean] allow_missing
+        #   If set to true, and the bare metal node pool is not found, the request will
+        #   create a new bare metal node pool with the provided configuration. The user
+        #   must have both create and update permission to call Update with allow_missing
+        #   set to true.
         # @param [String] update_mask
         #   Required. Field mask is used to specify the fields to be overwritten in the
         #   BareMetalNodePool resource by the update. The fields specified in the
@@ -1377,13 +1394,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_location_bare_metal_cluster_bare_metal_node_pool(name, bare_metal_node_pool_object = nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_project_location_bare_metal_cluster_bare_metal_node_pool(name, bare_metal_node_pool_object = nil, allow_missing: nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v1/{+name}', options)
           command.request_representation = Google::Apis::GkeonpremV1::BareMetalNodePool::Representation
           command.request_object = bare_metal_node_pool_object
           command.response_representation = Google::Apis::GkeonpremV1::Operation::Representation
           command.response_class = Google::Apis::GkeonpremV1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['allowMissing'] = allow_missing unless allow_missing.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1652,6 +1670,43 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Enrolls an existing bare metal standalone node pool to the Anthos On-Prem API
+        # within a given project and location. Through enrollment, an existing
+        # standalone node pool will become Anthos On-Prem API managed. The corresponding
+        # GCP resources will be created.
+        # @param [String] parent
+        #   Required. The parent resource where this node pool will be created. projects/`
+        #   project`/locations/`location`/bareMetalStandaloneClusters/`cluster`
+        # @param [Google::Apis::GkeonpremV1::EnrollBareMetalStandaloneNodePoolRequest] enroll_bare_metal_standalone_node_pool_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkeonpremV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkeonpremV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def enroll_bare_metal_standalone_node_pool(parent, enroll_bare_metal_standalone_node_pool_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/bareMetalStandaloneNodePools:enroll', options)
+          command.request_representation = Google::Apis::GkeonpremV1::EnrollBareMetalStandaloneNodePoolRequest::Representation
+          command.request_object = enroll_bare_metal_standalone_node_pool_request_object
+          command.response_representation = Google::Apis::GkeonpremV1::Operation::Representation
+          command.response_class = Google::Apis::GkeonpremV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Starts asynchronous cancellation on a long-running operation. The server makes
         # a best effort to cancel the operation, but success is not guaranteed. If the
         # server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
@@ -1838,6 +1893,11 @@ module Google
         # @param [String] name
         #   Required. Name of the VMware admin cluster to be returned. Format: "projects/`
         #   project`/locations/`location`/vmwareAdminClusters/`vmware_admin_cluster`"
+        # @param [String] view
+        #   View for VMware admin cluster. When `BASIC` is specified, only the cluster
+        #   resource name and membership are returned. The default/unset value `
+        #   CLUSTER_VIEW_UNSPECIFIED` is the same as `FULL', which returns the complete
+        #   cluster configuration details.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1855,11 +1915,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_vmware_admin_cluster(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_location_vmware_admin_cluster(name, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::GkeonpremV1::VmwareAdminCluster::Representation
           command.response_class = Google::Apis::GkeonpremV1::VmwareAdminCluster
           command.params['name'] = name unless name.nil?
+          command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2193,7 +2254,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new VMware cluster in a given project and location.
+        # Creates a new VMware user cluster in a given project and location.
         # @param [String] parent
         #   Required. The parent of the project and location where this cluster is created
         #   in. Format: "projects/`project`/locations/`location`"
@@ -2878,6 +2939,11 @@ module Google
         # @param [String] name
         #   Required. The name of the node pool to retrieve. projects/`project`/locations/`
         #   location`/vmwareClusters/`cluster`/vmwareNodePools/`nodepool`
+        # @param [String] view
+        #   View for VMware node pool. When `BASIC` is specified, only the node pool
+        #   resource name is returned. The default/unset value `NODE_POOL_VIEW_UNSPECIFIED`
+        #   is the same as `FULL', which returns the complete node pool configuration
+        #   details.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2895,11 +2961,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_vmware_cluster_vmware_node_pool(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_location_vmware_cluster_vmware_node_pool(name, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::GkeonpremV1::VmwareNodePool::Representation
           command.response_class = Google::Apis::GkeonpremV1::VmwareNodePool
           command.params['name'] = name unless name.nil?
+          command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2963,6 +3030,11 @@ module Google
         #   this to retrieve the subsequent page. When paginating, all other parameters
         #   provided to `ListVmwareNodePools` must match the call that provided the page
         #   token.
+        # @param [String] view
+        #   View for VMware node pools. When `BASIC` is specified, only the node pool
+        #   resource name is returned. The default/unset value `NODE_POOL_VIEW_UNSPECIFIED`
+        #   is the same as `FULL', which returns the complete node pool configuration
+        #   details.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2980,13 +3052,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_vmware_cluster_vmware_node_pools(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_vmware_cluster_vmware_node_pools(parent, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/vmwareNodePools', options)
           command.response_representation = Google::Apis::GkeonpremV1::ListVmwareNodePoolsResponse::Representation
           command.response_class = Google::Apis::GkeonpremV1::ListVmwareNodePoolsResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -3116,6 +3189,9 @@ module Google
         # @param [String] name
         #   Required. The name of the node pool to unenroll. Format: projects/`project`/
         #   locations/`location`/vmwareClusters/`cluster`/vmwareNodePools/`nodepool`
+        # @param [Boolean] allow_missing
+        #   If set to true, and the VMware node pool is not found, the request will
+        #   succeed but no action will be taken on the server and return a completed LRO.
         # @param [String] etag
         #   The current etag of the VMware node pool. If an etag is provided and does not
         #   match the current etag of node pool, deletion will be blocked and an ABORTED
@@ -3139,11 +3215,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def unenroll_project_location_vmware_cluster_vmware_node_pool(name, etag: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def unenroll_project_location_vmware_cluster_vmware_node_pool(name, allow_missing: nil, etag: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}:unenroll', options)
           command.response_representation = Google::Apis::GkeonpremV1::Operation::Representation
           command.response_class = Google::Apis::GkeonpremV1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['allowMissing'] = allow_missing unless allow_missing.nil?
           command.query['etag'] = etag unless etag.nil?
           command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?

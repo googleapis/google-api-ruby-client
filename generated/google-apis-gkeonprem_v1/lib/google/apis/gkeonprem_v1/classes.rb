@@ -27,10 +27,10 @@ module Google
       class Authorization
         include Google::Apis::Core::Hashable
       
-        # Required. For VMware user, bare metal user and standalone clusters, users that
-        # will be granted the cluster-admin role on the cluster, providing full access
-        # to the cluster. For bare metal Admin cluster, users will be granted the view
-        # role, which is a view only access.
+        # Required. For VMware and bare metal user clusters, users will be granted the
+        # cluster-admin role on the cluster, which provides full administrative access
+        # to the cluster. For bare metal admin clusters, users will be granted the
+        # cluster-view role, which limits users to read-only access.
         # Corresponds to the JSON property `adminUsers`
         # @return [Array<Google::Apis::GkeonpremV1::ClusterUser>]
         attr_accessor :admin_users
@@ -1215,7 +1215,7 @@ module Google
         end
       end
       
-      # KubeletConfig defines the modifiable kubelet configurations for baremetal
+      # KubeletConfig defines the modifiable kubelet configurations for bare metal
       # machines. Note: this list includes fields supported in GKE (see https://cloud.
       # google.com/kubernetes-engine/docs/how-to/node-system-config#kubelet-options).
       class BareMetalKubeletConfig
@@ -1739,7 +1739,7 @@ module Google
       class BareMetalNodePoolConfig
         include Google::Apis::Core::Hashable
       
-        # KubeletConfig defines the modifiable kubelet configurations for baremetal
+        # KubeletConfig defines the modifiable kubelet configurations for bare metal
         # machines. Note: this list includes fields supported in GKE (see https://cloud.
         # google.com/kubernetes-engine/docs/how-to/node-system-config#kubelet-options).
         # Corresponds to the JSON property `kubeletConfig`
@@ -2221,19 +2221,38 @@ module Google
         end
       end
       
+      # Message for enrolling an existing bare metal standalone node pool to the GKE
+      # on-prem API.
+      class EnrollBareMetalStandaloneNodePoolRequest
+        include Google::Apis::Core::Hashable
+      
+        # User provided OnePlatform identifier that is used as part of the resource name.
+        # This value must be up to 40 characters and follow RFC-1123 (https://tools.
+        # ietf.org/html/rfc1123) format.
+        # Corresponds to the JSON property `bareMetalStandaloneNodePoolId`
+        # @return [String]
+        attr_accessor :bare_metal_standalone_node_pool_id
+      
+        # If set, only validate the request, but do not actually enroll the node pool.
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bare_metal_standalone_node_pool_id = args[:bare_metal_standalone_node_pool_id] if args.key?(:bare_metal_standalone_node_pool_id)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
+        end
+      end
+      
       # Message for enrolling an existing VMware admin cluster to the GKE on-prem API.
       class EnrollVmwareAdminClusterRequest
         include Google::Apis::Core::Hashable
-      
-        # The object name of the VMware OnPremAdminCluster custom resource on the
-        # associated admin cluster. This field is used to support conflicting resource
-        # names when enrolling existing clusters to the API. When not provided, this
-        # field will resolve to the vmware_admin_cluster_id. Otherwise, it must match
-        # the object name of the VMware OnPremAdminCluster custom resource. It is not
-        # modifiable outside / beyond the enrollment operation.
-        # Corresponds to the JSON property `localName`
-        # @return [String]
-        attr_accessor :local_name
       
         # Required. This is the full resource name of this admin cluster's fleet
         # membership.
@@ -2256,7 +2275,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @local_name = args[:local_name] if args.key?(:local_name)
           @membership = args[:membership] if args.key?(:membership)
           @vmware_admin_cluster_id = args[:vmware_admin_cluster_id] if args.key?(:vmware_admin_cluster_id)
         end
@@ -2807,6 +2825,14 @@ module Google
         # @return [String]
         attr_accessor :api_version
       
+        # Output only. Denotes if the local managing cluster's control plane is
+        # currently disconnected. This is expected to occur temporarily during self-
+        # managed cluster upgrades.
+        # Corresponds to the JSON property `controlPlaneDisconnected`
+        # @return [Boolean]
+        attr_accessor :control_plane_disconnected
+        alias_method :control_plane_disconnected?, :control_plane_disconnected
+      
         # Output only. The time the operation was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -2853,6 +2879,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @api_version = args[:api_version] if args.key?(:api_version)
+          @control_plane_disconnected = args[:control_plane_disconnected] if args.key?(:control_plane_disconnected)
           @create_time = args[:create_time] if args.key?(:create_time)
           @end_time = args[:end_time] if args.key?(:end_time)
           @requested_cancellation = args[:requested_cancellation] if args.key?(:requested_cancellation)
@@ -4069,8 +4096,7 @@ module Google
         # @return [Google::Apis::GkeonpremV1::VmwareNetworkConfig]
         attr_accessor :network_config
       
-        # The Anthos clusters on the VMware version for your user cluster. Defaults to
-        # the admin cluster version.
+        # Required. The Anthos clusters on the VMware version for your user cluster.
         # Corresponds to the JSON property `onPremVersion`
         # @return [String]
         attr_accessor :on_prem_version
