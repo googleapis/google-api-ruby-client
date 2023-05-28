@@ -1095,6 +1095,10 @@ module Google
         # @param [String] name
         #   Output only. The stream's name.
         # @param [Google::Apis::DatastreamV1::Stream] stream_object
+        # @param [String] cdc_strategy_specific_start_position_mysql_log_position_log_file
+        #   The binary log file name.
+        # @param [Fixnum] cdc_strategy_specific_start_position_mysql_log_position_log_position
+        #   The position within the binary log file. Default is head of file.
         # @param [Boolean] force
         #   Optional. Update the stream without validating it.
         # @param [String] request_id
@@ -1134,13 +1138,15 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_location_stream(name, stream_object = nil, force: nil, request_id: nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_project_location_stream(name, stream_object = nil, cdc_strategy_specific_start_position_mysql_log_position_log_file: nil, cdc_strategy_specific_start_position_mysql_log_position_log_position: nil, force: nil, request_id: nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v1/{+name}', options)
           command.request_representation = Google::Apis::DatastreamV1::Stream::Representation
           command.request_object = stream_object
           command.response_representation = Google::Apis::DatastreamV1::Operation::Representation
           command.response_class = Google::Apis::DatastreamV1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['cdcStrategy.specificStartPosition.mysqlLogPosition.logFile'] = cdc_strategy_specific_start_position_mysql_log_position_log_file unless cdc_strategy_specific_start_position_mysql_log_position_log_file.nil?
+          command.query['cdcStrategy.specificStartPosition.mysqlLogPosition.logPosition'] = cdc_strategy_specific_start_position_mysql_log_position_log_position unless cdc_strategy_specific_start_position_mysql_log_position_log_position.nil?
           command.query['force'] = force unless force.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
