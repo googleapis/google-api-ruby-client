@@ -418,6 +418,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EnrollBareMetalStandaloneNodePoolRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EnrollVmwareAdminClusterRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1489,10 +1495,17 @@ module Google
         end
       end
       
+      class EnrollBareMetalStandaloneNodePoolRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bare_metal_standalone_node_pool_id, as: 'bareMetalStandaloneNodePoolId'
+          property :validate_only, as: 'validateOnly'
+        end
+      end
+      
       class EnrollVmwareAdminClusterRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :local_name, as: 'localName'
           property :membership, as: 'membership'
           property :vmware_admin_cluster_id, as: 'vmwareAdminClusterId'
         end
@@ -1646,6 +1659,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api_version, as: 'apiVersion'
+          property :control_plane_disconnected, as: 'controlPlaneDisconnected'
           property :create_time, as: 'createTime'
           property :end_time, as: 'endTime'
           property :requested_cancellation, as: 'requestedCancellation'
