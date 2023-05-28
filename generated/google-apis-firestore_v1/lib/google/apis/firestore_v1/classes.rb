@@ -1401,7 +1401,7 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # Information about an TTL configuration change.
+        # Information about a TTL configuration change.
         # Corresponds to the JSON property `ttlConfigDelta`
         # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1TtlConfigDelta]
         attr_accessor :ttl_config_delta
@@ -1993,7 +1993,7 @@ module Google
         end
       end
       
-      # Information about an TTL configuration change.
+      # Information about a TTL configuration change.
       class GoogleFirestoreAdminV1TtlConfigDelta
         include Google::Apis::Core::Hashable
       
