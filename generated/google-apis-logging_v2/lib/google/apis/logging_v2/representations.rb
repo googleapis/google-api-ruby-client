@@ -1004,6 +1004,7 @@ module Google
           property :disable_default_sink, as: 'disableDefaultSink'
           property :kms_key_name, as: 'kmsKeyName'
           property :kms_service_account_id, as: 'kmsServiceAccountId'
+          property :logging_service_account_id, as: 'loggingServiceAccountId'
           property :name, as: 'name'
           property :storage_location, as: 'storageLocation'
         end
