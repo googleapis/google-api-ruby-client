@@ -5479,7 +5479,8 @@ module Google
       class GoogleCloudDialogflowCxV3TestRunDifference
         include Google::Apis::Core::Hashable
       
-        # A description of the diff, showing the actual output vs expected output.
+        # A human readable description of the diff, showing the actual output vs
+        # expected output.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -9099,7 +9100,8 @@ module Google
       class GoogleCloudDialogflowCxV3beta1TestRunDifference
         include Google::Apis::Core::Hashable
       
-        # A description of the diff, showing the actual output vs expected output.
+        # A human readable description of the diff, showing the actual output vs
+        # expected output.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
