@@ -622,7 +622,7 @@ module Google
       class ImportGoogetArtifactsGcsSource
         include Google::Apis::Core::Hashable
       
-        # Cloud Storage paths URI (e.g., gs://my_bucket/my_object).
+        # Cloud Storage paths URI (e.g., `gs://my_bucket/my_object`).
         # Corresponds to the JSON property `uris`
         # @return [Array<String>]
         attr_accessor :uris
@@ -1418,8 +1418,8 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # The name of the package, for example: "projects/p1/locations/us-central1/
-        # repositories/repo1/packages/pkg1". If the package ID part contains slashes,
+        # The name of the package, for example: `projects/p1/locations/us-central1/
+        # repositories/repo1/packages/pkg1`. If the package ID part contains slashes,
         # the slashes are escaped.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -2058,7 +2058,7 @@ module Google
       class UploadGoogetArtifactResponse
         include Google::Apis::Core::Hashable
       
-        # The Apt artifacts updated.
+        # The GooGet artifacts updated.
         # Corresponds to the JSON property `googetArtifacts`
         # @return [Array<Google::Apis::ArtifactregistryV1::GoogetArtifact>]
         attr_accessor :googet_artifacts
