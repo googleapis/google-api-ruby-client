@@ -1,6 +1,6 @@
 {
     "api_id": "drive:v3",
-    "name_pretty": "Drive API",
+    "name_pretty": "Google Drive API",
     "distribution_name": "google-apis-drive_v3",
     "language": "ruby",
     "library_type": "REST"
