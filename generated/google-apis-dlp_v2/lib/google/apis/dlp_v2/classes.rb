@@ -5033,6 +5033,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :estimated_prevalence
       
+        # Whether this infoType was excluded from sensitivity and risk analysis due to
+        # factors such as low prevalence (subject to change).
+        # Corresponds to the JSON property `excludedFromAnalysis`
+        # @return [Boolean]
+        attr_accessor :excluded_from_analysis
+        alias_method :excluded_from_analysis?, :excluded_from_analysis
+      
         # Type of information detected by the API.
         # Corresponds to the JSON property `infoType`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType]
@@ -5045,6 +5052,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @estimated_prevalence = args[:estimated_prevalence] if args.key?(:estimated_prevalence)
+          @excluded_from_analysis = args[:excluded_from_analysis] if args.key?(:excluded_from_analysis)
           @info_type = args[:info_type] if args.key?(:info_type)
         end
       end

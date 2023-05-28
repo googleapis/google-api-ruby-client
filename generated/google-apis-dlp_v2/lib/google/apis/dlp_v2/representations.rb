@@ -2879,6 +2879,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :estimated_prevalence, as: 'estimatedPrevalence'
+          property :excluded_from_analysis, as: 'excludedFromAnalysis'
           property :info_type, as: 'infoType', class: Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType::Representation
       
         end
