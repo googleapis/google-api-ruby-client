@@ -225,8 +225,11 @@ module Google
         attr_accessor :alternate_link
       
         # The Calendar ID for a calendar that all course members can see, to which
-        # Classroom adds events for course work and announcements in the course. Read-
-        # only.
+        # Classroom adds events for course work and announcements in the course. The
+        # Calendar for a course is created asynchronously when the `course is set to the
+        # `CourseState.ACTIVE` for the first time (i.e. at creation time or when it is
+        # updated to `ACTIVE` through the UI or the API). The Calendar ID will not be
+        # populated until this processing is completed. Read-only.
         # Corresponds to the JSON property `calendarId`
         # @return [String]
         attr_accessor :calendar_id
