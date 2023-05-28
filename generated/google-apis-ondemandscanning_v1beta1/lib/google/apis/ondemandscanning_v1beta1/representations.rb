@@ -76,6 +76,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BinarySourceInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BuildOccurrence
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -600,6 +606,16 @@ module Google
         end
       end
       
+      class BinarySourceInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :binary_version, as: 'binaryVersion', class: Google::Apis::OndemandscanningV1beta1::PackageVersion, decorator: Google::Apis::OndemandscanningV1beta1::PackageVersion::Representation
+      
+          property :source_version, as: 'sourceVersion', class: Google::Apis::OndemandscanningV1beta1::PackageVersion, decorator: Google::Apis::OndemandscanningV1beta1::PackageVersion::Representation
+      
+        end
+      end
+      
       class BuildOccurrence
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1092,6 +1108,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :architecture, as: 'architecture'
+          collection :binary_source_info, as: 'binarySourceInfo', class: Google::Apis::OndemandscanningV1beta1::BinarySourceInfo, decorator: Google::Apis::OndemandscanningV1beta1::BinarySourceInfo::Representation
+      
           property :binary_version, as: 'binaryVersion', class: Google::Apis::OndemandscanningV1beta1::PackageVersion, decorator: Google::Apis::OndemandscanningV1beta1::PackageVersion::Representation
       
           property :cpe_uri, as: 'cpeUri'
