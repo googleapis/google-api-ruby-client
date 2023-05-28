@@ -1764,6 +1764,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_time, as: 'endTime'
+          property :execution_spec, as: 'executionSpec', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1TaskExecutionSpec, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1TaskExecutionSpec::Representation
+      
+          hash :labels, as: 'labels'
           property :message, as: 'message'
           property :name, as: 'name'
           property :retry_count, as: 'retryCount'
@@ -1771,6 +1774,7 @@ module Google
           property :service_job, as: 'serviceJob'
           property :start_time, as: 'startTime'
           property :state, as: 'state'
+          property :trigger, as: 'trigger'
           property :uid, as: 'uid'
         end
       end
@@ -2027,6 +2031,8 @@ module Google
       class GoogleCloudDataplexV1RunTaskRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :args, as: 'args'
+          hash :labels, as: 'labels'
         end
       end
       
