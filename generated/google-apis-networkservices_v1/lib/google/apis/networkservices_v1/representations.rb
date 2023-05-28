@@ -876,6 +876,7 @@ module Google
           collection :gateways, as: 'gateways', class: Google::Apis::NetworkservicesV1::Gateway, decorator: Google::Apis::NetworkservicesV1::Gateway::Representation
       
           property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
         end
       end
       
