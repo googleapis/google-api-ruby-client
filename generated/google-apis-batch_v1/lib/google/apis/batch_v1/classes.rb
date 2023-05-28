@@ -693,7 +693,7 @@ module Google
         attr_accessor :machine_type
       
         # The minimum CPU platform. See https://cloud.google.com/compute/docs/instances/
-        # specify-min-cpu-platform. Not yet implemented.
+        # specify-min-cpu-platform.
         # Corresponds to the JSON property `minCpuPlatform`
         # @return [String]
         attr_accessor :min_cpu_platform
