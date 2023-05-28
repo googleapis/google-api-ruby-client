@@ -1,5 +1,9 @@
 # Release history for google-apis-certificatemanager_v1
 
+### v0.20.0 (2023-05-28)
+
+* Regenerated from discovery document revision 20230512
+
 ### v0.19.0 (2023-04-16)
 
 * Regenerated from discovery document revision 20230407
