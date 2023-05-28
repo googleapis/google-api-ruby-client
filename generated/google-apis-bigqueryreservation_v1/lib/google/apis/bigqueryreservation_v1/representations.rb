@@ -161,6 +161,7 @@ module Google
           property :edition, as: 'edition'
           property :failure_status, as: 'failureStatus', class: Google::Apis::BigqueryreservationV1::Status, decorator: Google::Apis::BigqueryreservationV1::Status::Representation
       
+          property :is_flat_rate, as: 'isFlatRate'
           property :multi_region_auxiliary, as: 'multiRegionAuxiliary'
           property :name, as: 'name'
           property :plan, as: 'plan'
