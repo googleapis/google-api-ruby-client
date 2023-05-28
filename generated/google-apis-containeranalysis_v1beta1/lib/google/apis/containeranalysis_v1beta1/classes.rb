@@ -1408,7 +1408,7 @@ module Google
         # @return [String]
         attr_accessor :log_url
       
-        # Google Cloud Storage bucket where logs should be written (see [Bucket Name
+        # Cloud Storage bucket where logs should be written (see [Bucket Name
         # Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)
         # ). Logs file names will be of the format `$`logs_bucket`/log-$`build_id`.txt`.
         # Corresponds to the JSON property `logsBucket`
@@ -1654,7 +1654,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :env
       
-        # Option to define build log streaming behavior to Google Cloud Storage.
+        # Option to define build log streaming behavior to Cloud Storage.
         # Corresponds to the JSON property `logStreamingOption`
         # @return [String]
         attr_accessor :log_streaming_option
@@ -2334,14 +2334,14 @@ module Google
         # @return [Google::Apis::ContaineranalysisV1beta1::ContaineranalysisGoogleDevtoolsCloudbuildV1RepoSource]
         attr_accessor :repo_source
       
-        # Location of the source in an archive file in Google Cloud Storage.
+        # Location of the source in an archive file in Cloud Storage.
         # Corresponds to the JSON property `storageSource`
         # @return [Google::Apis::ContaineranalysisV1beta1::ContaineranalysisGoogleDevtoolsCloudbuildV1StorageSource]
         attr_accessor :storage_source
       
-        # Location of the source manifest in Google Cloud Storage. This feature is in
-        # Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-
-        # builders/tree/master/gcs-fetcher).
+        # Location of the source manifest in Cloud Storage. This feature is in Preview;
+        # see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/
+        # tree/master/gcs-fetcher).
         # Corresponds to the JSON property `storageSourceManifest`
         # @return [Google::Apis::ContaineranalysisV1beta1::ContaineranalysisGoogleDevtoolsCloudbuildV1StorageSourceManifest]
         attr_accessor :storage_source_manifest
@@ -2380,14 +2380,14 @@ module Google
         # @return [Google::Apis::ContaineranalysisV1beta1::ContaineranalysisGoogleDevtoolsCloudbuildV1RepoSource]
         attr_accessor :resolved_repo_source
       
-        # Location of the source in an archive file in Google Cloud Storage.
+        # Location of the source in an archive file in Cloud Storage.
         # Corresponds to the JSON property `resolvedStorageSource`
         # @return [Google::Apis::ContaineranalysisV1beta1::ContaineranalysisGoogleDevtoolsCloudbuildV1StorageSource]
         attr_accessor :resolved_storage_source
       
-        # Location of the source manifest in Google Cloud Storage. This feature is in
-        # Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-
-        # builders/tree/master/gcs-fetcher).
+        # Location of the source manifest in Cloud Storage. This feature is in Preview;
+        # see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/
+        # tree/master/gcs-fetcher).
         # Corresponds to the JSON property `resolvedStorageSourceManifest`
         # @return [Google::Apis::ContaineranalysisV1beta1::ContaineranalysisGoogleDevtoolsCloudbuildV1StorageSourceManifest]
         attr_accessor :resolved_storage_source_manifest
@@ -2405,25 +2405,24 @@ module Google
         end
       end
       
-      # Location of the source in an archive file in Google Cloud Storage.
+      # Location of the source in an archive file in Cloud Storage.
       class ContaineranalysisGoogleDevtoolsCloudbuildV1StorageSource
         include Google::Apis::Core::Hashable
       
-        # Google Cloud Storage bucket containing the source (see [Bucket Name
-        # Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)
-        # ).
+        # Cloud Storage bucket containing the source (see [Bucket Name Requirements](
+        # https://cloud.google.com/storage/docs/bucket-naming#requirements)).
         # Corresponds to the JSON property `bucket`
         # @return [String]
         attr_accessor :bucket
       
-        # Google Cloud Storage generation for the object. If the generation is omitted,
-        # the latest generation will be used.
+        # Cloud Storage generation for the object. If the generation is omitted, the
+        # latest generation will be used.
         # Corresponds to the JSON property `generation`
         # @return [Fixnum]
         attr_accessor :generation
       
-        # Google Cloud Storage object containing the source. This object must be a
-        # zipped (`.zip`) or gzipped archive file (`.tar.gz`) containing source to build.
+        # Cloud Storage object containing the source. This object must be a zipped (`.
+        # zip`) or gzipped archive file (`.tar.gz`) containing source to build.
         # Corresponds to the JSON property `object`
         # @return [String]
         attr_accessor :object
@@ -2440,27 +2439,27 @@ module Google
         end
       end
       
-      # Location of the source manifest in Google Cloud Storage. This feature is in
-      # Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-
-      # builders/tree/master/gcs-fetcher).
+      # Location of the source manifest in Cloud Storage. This feature is in Preview;
+      # see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/
+      # tree/master/gcs-fetcher).
       class ContaineranalysisGoogleDevtoolsCloudbuildV1StorageSourceManifest
         include Google::Apis::Core::Hashable
       
-        # Google Cloud Storage bucket containing the source manifest (see [Bucket Name
+        # Cloud Storage bucket containing the source manifest (see [Bucket Name
         # Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)
         # ).
         # Corresponds to the JSON property `bucket`
         # @return [String]
         attr_accessor :bucket
       
-        # Google Cloud Storage generation for the object. If the generation is omitted,
-        # the latest generation will be used.
+        # Cloud Storage generation for the object. If the generation is omitted, the
+        # latest generation will be used.
         # Corresponds to the JSON property `generation`
         # @return [Fixnum]
         attr_accessor :generation
       
-        # Google Cloud Storage object containing the source manifest. This object must
-        # be a JSON file.
+        # Cloud Storage object containing the source manifest. This object must be a
+        # JSON file.
         # Corresponds to the JSON property `object`
         # @return [String]
         attr_accessor :object
