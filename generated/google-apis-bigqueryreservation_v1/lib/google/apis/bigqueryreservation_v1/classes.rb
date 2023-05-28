@@ -164,6 +164,13 @@ module Google
         # @return [Google::Apis::BigqueryreservationV1::Status]
         attr_accessor :failure_status
       
+        # Output only. If true, the commitment is a flat-rate commitment, otherwise, it'
+        # s an edition commitment.
+        # Corresponds to the JSON property `isFlatRate`
+        # @return [Boolean]
+        attr_accessor :is_flat_rate
+        alias_method :is_flat_rate?, :is_flat_rate
+      
         # Applicable only for commitments located within one of the BigQuery multi-
         # regions (US or EU). If set to true, this commitment is placed in the
         # organization's secondary region which is designated for disaster recovery
@@ -215,6 +222,7 @@ module Google
           @commitment_start_time = args[:commitment_start_time] if args.key?(:commitment_start_time)
           @edition = args[:edition] if args.key?(:edition)
           @failure_status = args[:failure_status] if args.key?(:failure_status)
+          @is_flat_rate = args[:is_flat_rate] if args.key?(:is_flat_rate)
           @multi_region_auxiliary = args[:multi_region_auxiliary] if args.key?(:multi_region_auxiliary)
           @name = args[:name] if args.key?(:name)
           @plan = args[:plan] if args.key?(:plan)
