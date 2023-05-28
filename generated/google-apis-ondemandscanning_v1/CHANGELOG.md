@@ -1,5 +1,9 @@
 # Release history for google-apis-ondemandscanning_v1
 
+### v0.39.0 (2023-05-28)
+
+* Regenerated from discovery document revision 20230522
+
 ### v0.38.0 (2023-05-07)
 
 * Regenerated from discovery document revision 20230501
