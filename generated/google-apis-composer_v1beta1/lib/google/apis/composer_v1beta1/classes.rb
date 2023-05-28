@@ -200,6 +200,32 @@ module Google
         end
       end
       
+      # Request to trigger database failover (only for highly resilient environments).
+      class DatabaseFailoverRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response for DatabaseFailoverRequest.
+      class DatabaseFailoverResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Represents a whole or partial calendar date, such as a birthday. The time of
       # day and time zone are either specified elsewhere or are insignificant. The
       # date is relative to the Gregorian Calendar. This can represent one of the
@@ -437,6 +463,13 @@ module Google
         # @return [Google::Apis::ComposerV1beta1::RecoveryConfig]
         attr_accessor :recovery_config
       
+        # Optional. Resilience mode of the Cloud Composer Environment. This field is
+        # supported for Cloud Composer environments in versions composer-2.2.0-airflow-*.
+        # *.* and newer.
+        # Corresponds to the JSON property `resilienceMode`
+        # @return [String]
+        attr_accessor :resilience_mode
+      
         # Specifies the selection and configuration of software inside the environment.
         # Corresponds to the JSON property `softwareConfig`
         # @return [Google::Apis::ComposerV1beta1::SoftwareConfig]
@@ -480,10 +513,141 @@ module Google
           @node_count = args[:node_count] if args.key?(:node_count)
           @private_environment_config = args[:private_environment_config] if args.key?(:private_environment_config)
           @recovery_config = args[:recovery_config] if args.key?(:recovery_config)
+          @resilience_mode = args[:resilience_mode] if args.key?(:resilience_mode)
           @software_config = args[:software_config] if args.key?(:software_config)
           @web_server_config = args[:web_server_config] if args.key?(:web_server_config)
           @web_server_network_access_control = args[:web_server_network_access_control] if args.key?(:web_server_network_access_control)
           @workloads_config = args[:workloads_config] if args.key?(:workloads_config)
+        end
+      end
+      
+      # Execute Airflow Command request.
+      class ExecuteAirflowCommandRequest
+        include Google::Apis::Core::Hashable
+      
+        # Airflow command.
+        # Corresponds to the JSON property `command`
+        # @return [String]
+        attr_accessor :command
+      
+        # Parameters for the Airflow command/subcommand as an array of arguments. It may
+        # contain positional arguments like `["my-dag-id"]`, key-value parameters like `[
+        # "--foo=bar"]` or `["--foo","bar"]`, or other flags like `["-f"]`.
+        # Corresponds to the JSON property `parameters`
+        # @return [Array<String>]
+        attr_accessor :parameters
+      
+        # Airflow subcommand.
+        # Corresponds to the JSON property `subcommand`
+        # @return [String]
+        attr_accessor :subcommand
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @command = args[:command] if args.key?(:command)
+          @parameters = args[:parameters] if args.key?(:parameters)
+          @subcommand = args[:subcommand] if args.key?(:subcommand)
+        end
+      end
+      
+      # Response to ExecuteAirflowCommandRequest.
+      class ExecuteAirflowCommandResponse
+        include Google::Apis::Core::Hashable
+      
+        # Error message. Empty if there was no error.
+        # Corresponds to the JSON property `error`
+        # @return [String]
+        attr_accessor :error
+      
+        # The unique ID of the command execution for polling.
+        # Corresponds to the JSON property `executionId`
+        # @return [String]
+        attr_accessor :execution_id
+      
+        # The name of the pod where the command is executed.
+        # Corresponds to the JSON property `pod`
+        # @return [String]
+        attr_accessor :pod
+      
+        # The namespace of the pod where the command is executed.
+        # Corresponds to the JSON property `podNamespace`
+        # @return [String]
+        attr_accessor :pod_namespace
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error = args[:error] if args.key?(:error)
+          @execution_id = args[:execution_id] if args.key?(:execution_id)
+          @pod = args[:pod] if args.key?(:pod)
+          @pod_namespace = args[:pod_namespace] if args.key?(:pod_namespace)
+        end
+      end
+      
+      # Information about how a command ended.
+      class ExitInfo
+        include Google::Apis::Core::Hashable
+      
+        # Error message. Empty if there was no error.
+        # Corresponds to the JSON property `error`
+        # @return [String]
+        attr_accessor :error
+      
+        # The exit code from the command execution.
+        # Corresponds to the JSON property `exitCode`
+        # @return [Fixnum]
+        attr_accessor :exit_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error = args[:error] if args.key?(:error)
+          @exit_code = args[:exit_code] if args.key?(:exit_code)
+        end
+      end
+      
+      # Response for FetchDatabasePropertiesRequest.
+      class FetchDatabasePropertiesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The availability status of the failover replica. A false status indicates that
+        # the failover replica is out of sync. The primary instance can only fail over
+        # to the failover replica when the status is true.
+        # Corresponds to the JSON property `isFailoverReplicaAvailable`
+        # @return [Boolean]
+        attr_accessor :is_failover_replica_available
+        alias_method :is_failover_replica_available?, :is_failover_replica_available
+      
+        # The Compute Engine zone that the instance is currently serving from.
+        # Corresponds to the JSON property `primaryGceZone`
+        # @return [String]
+        attr_accessor :primary_gce_zone
+      
+        # The Compute Engine zone that the failover instance is currently serving from
+        # for a regional Cloud SQL instance.
+        # Corresponds to the JSON property `secondaryGceZone`
+        # @return [String]
+        attr_accessor :secondary_gce_zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @is_failover_replica_available = args[:is_failover_replica_available] if args.key?(:is_failover_replica_available)
+          @primary_gce_zone = args[:primary_gce_zone] if args.key?(:primary_gce_zone)
+          @secondary_gce_zone = args[:secondary_gce_zone] if args.key?(:secondary_gce_zone)
         end
       end
       
@@ -617,6 +781,31 @@ module Google
           @release_date = args[:release_date] if args.key?(:release_date)
           @supported_python_versions = args[:supported_python_versions] if args.key?(:supported_python_versions)
           @upgrade_disabled = args[:upgrade_disabled] if args.key?(:upgrade_disabled)
+        end
+      end
+      
+      # Contains information about a single line from logs.
+      class Line
+        include Google::Apis::Core::Hashable
+      
+        # Text content of the log line.
+        # Corresponds to the JSON property `content`
+        # @return [String]
+        attr_accessor :content
+      
+        # Number of the line.
+        # Corresponds to the JSON property `lineNumber`
+        # @return [Fixnum]
+        attr_accessor :line_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content = args[:content] if args.key?(:content)
+          @line_number = args[:line_number] if args.key?(:line_number)
         end
       end
       
@@ -1103,6 +1292,76 @@ module Google
         end
       end
       
+      # Poll Airflow Command request.
+      class PollAirflowCommandRequest
+        include Google::Apis::Core::Hashable
+      
+        # The unique ID of the command execution.
+        # Corresponds to the JSON property `executionId`
+        # @return [String]
+        attr_accessor :execution_id
+      
+        # Line number from which new logs should be fetched.
+        # Corresponds to the JSON property `nextLineNumber`
+        # @return [Fixnum]
+        attr_accessor :next_line_number
+      
+        # The name of the pod where the command is executed.
+        # Corresponds to the JSON property `pod`
+        # @return [String]
+        attr_accessor :pod
+      
+        # The namespace of the pod where the command is executed.
+        # Corresponds to the JSON property `podNamespace`
+        # @return [String]
+        attr_accessor :pod_namespace
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @execution_id = args[:execution_id] if args.key?(:execution_id)
+          @next_line_number = args[:next_line_number] if args.key?(:next_line_number)
+          @pod = args[:pod] if args.key?(:pod)
+          @pod_namespace = args[:pod_namespace] if args.key?(:pod_namespace)
+        end
+      end
+      
+      # Response to PollAirflowCommandRequest.
+      class PollAirflowCommandResponse
+        include Google::Apis::Core::Hashable
+      
+        # Information about how a command ended.
+        # Corresponds to the JSON property `exitInfo`
+        # @return [Google::Apis::ComposerV1beta1::ExitInfo]
+        attr_accessor :exit_info
+      
+        # Output from the command execution. It may not contain the full output and the
+        # caller may need to poll for more lines.
+        # Corresponds to the JSON property `output`
+        # @return [Array<Google::Apis::ComposerV1beta1::Line>]
+        attr_accessor :output
+      
+        # Whether the command execution has finished and there is no more output.
+        # Corresponds to the JSON property `outputEnd`
+        # @return [Boolean]
+        attr_accessor :output_end
+        alias_method :output_end?, :output_end
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exit_info = args[:exit_info] if args.key?(:exit_info)
+          @output = args[:output] if args.key?(:output)
+          @output_end = args[:output_end] if args.key?(:output_end)
+        end
+      end
+      
       # Configuration options for the private GKE cluster in a Cloud Composer
       # environment.
       class PrivateClusterConfig
@@ -1526,6 +1785,71 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Stop Airflow Command request.
+      class StopAirflowCommandRequest
+        include Google::Apis::Core::Hashable
+      
+        # The unique ID of the command execution.
+        # Corresponds to the JSON property `executionId`
+        # @return [String]
+        attr_accessor :execution_id
+      
+        # If true, the execution is terminated forcefully (SIGKILL). If false, the
+        # execution is stopped gracefully, giving it time for cleanup.
+        # Corresponds to the JSON property `force`
+        # @return [Boolean]
+        attr_accessor :force
+        alias_method :force?, :force
+      
+        # The name of the pod where the command is executed.
+        # Corresponds to the JSON property `pod`
+        # @return [String]
+        attr_accessor :pod
+      
+        # The namespace of the pod where the command is executed.
+        # Corresponds to the JSON property `podNamespace`
+        # @return [String]
+        attr_accessor :pod_namespace
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @execution_id = args[:execution_id] if args.key?(:execution_id)
+          @force = args[:force] if args.key?(:force)
+          @pod = args[:pod] if args.key?(:pod)
+          @pod_namespace = args[:pod_namespace] if args.key?(:pod_namespace)
+        end
+      end
+      
+      # Response to StopAirflowCommandRequest.
+      class StopAirflowCommandResponse
+        include Google::Apis::Core::Hashable
+      
+        # Whether the execution is still running.
+        # Corresponds to the JSON property `isDone`
+        # @return [Boolean]
+        attr_accessor :is_done
+        alias_method :is_done?, :is_done
+      
+        # Output message from stopping execution request.
+        # Corresponds to the JSON property `output`
+        # @return [Array<String>]
+        attr_accessor :output
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @is_done = args[:is_done] if args.key?(:is_done)
+          @output = args[:output] if args.key?(:output)
         end
       end
       

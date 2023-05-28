@@ -58,6 +58,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DatabaseFailoverRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DatabaseFailoverResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Date
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -88,6 +100,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExecuteAirflowCommandRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExecuteAirflowCommandResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExitInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FetchDatabasePropertiesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class IpAllocationPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -95,6 +131,12 @@ module Google
       end
       
       class ImageVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Line
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -166,6 +208,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PollAirflowCommandRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PollAirflowCommandResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PrivateClusterConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -221,6 +275,18 @@ module Google
       end
       
       class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StopAirflowCommandRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StopAirflowCommandResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -310,6 +376,18 @@ module Google
         end
       end
       
+      class DatabaseFailoverRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class DatabaseFailoverResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class Date
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -369,6 +447,7 @@ module Google
       
           property :recovery_config, as: 'recoveryConfig', class: Google::Apis::ComposerV1beta1::RecoveryConfig, decorator: Google::Apis::ComposerV1beta1::RecoveryConfig::Representation
       
+          property :resilience_mode, as: 'resilienceMode'
           property :software_config, as: 'softwareConfig', class: Google::Apis::ComposerV1beta1::SoftwareConfig, decorator: Google::Apis::ComposerV1beta1::SoftwareConfig::Representation
       
           property :web_server_config, as: 'webServerConfig', class: Google::Apis::ComposerV1beta1::WebServerConfig, decorator: Google::Apis::ComposerV1beta1::WebServerConfig::Representation
@@ -377,6 +456,42 @@ module Google
       
           property :workloads_config, as: 'workloadsConfig', class: Google::Apis::ComposerV1beta1::WorkloadsConfig, decorator: Google::Apis::ComposerV1beta1::WorkloadsConfig::Representation
       
+        end
+      end
+      
+      class ExecuteAirflowCommandRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :command, as: 'command'
+          collection :parameters, as: 'parameters'
+          property :subcommand, as: 'subcommand'
+        end
+      end
+      
+      class ExecuteAirflowCommandResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error'
+          property :execution_id, as: 'executionId'
+          property :pod, as: 'pod'
+          property :pod_namespace, as: 'podNamespace'
+        end
+      end
+      
+      class ExitInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error'
+          property :exit_code, as: 'exitCode'
+        end
+      end
+      
+      class FetchDatabasePropertiesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_failover_replica_available, as: 'isFailoverReplicaAvailable'
+          property :primary_gce_zone, as: 'primaryGceZone'
+          property :secondary_gce_zone, as: 'secondaryGceZone'
         end
       end
       
@@ -401,6 +516,14 @@ module Google
       
           collection :supported_python_versions, as: 'supportedPythonVersions'
           property :upgrade_disabled, as: 'upgradeDisabled'
+        end
+      end
+      
+      class Line
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content, as: 'content'
+          property :line_number, as: 'lineNumber'
         end
       end
       
@@ -515,6 +638,27 @@ module Google
         end
       end
       
+      class PollAirflowCommandRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :execution_id, as: 'executionId'
+          property :next_line_number, as: 'nextLineNumber'
+          property :pod, as: 'pod'
+          property :pod_namespace, as: 'podNamespace'
+        end
+      end
+      
+      class PollAirflowCommandResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :exit_info, as: 'exitInfo', class: Google::Apis::ComposerV1beta1::ExitInfo, decorator: Google::Apis::ComposerV1beta1::ExitInfo::Representation
+      
+          collection :output, as: 'output', class: Google::Apis::ComposerV1beta1::Line, decorator: Google::Apis::ComposerV1beta1::Line::Representation
+      
+          property :output_end, as: 'outputEnd'
+        end
+      end
+      
       class PrivateClusterConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -610,6 +754,24 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class StopAirflowCommandRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :execution_id, as: 'executionId'
+          property :force, as: 'force'
+          property :pod, as: 'pod'
+          property :pod_namespace, as: 'podNamespace'
+        end
+      end
+      
+      class StopAirflowCommandResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_done, as: 'isDone'
+          collection :output, as: 'output'
         end
       end
       
