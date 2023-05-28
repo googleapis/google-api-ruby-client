@@ -269,6 +269,38 @@ module Google
         end
       end
       
+      # 
+      class BinarySourceInfo
+        include Google::Apis::Core::Hashable
+      
+        # The binary package. This is significant when the source is different than the
+        # binary itself. Historically if they've differed, we've stored the name of the
+        # source and its version in the package/version fields, but we should also store
+        # the binary package info, as that's what's actually installed. See b/175908657#
+        # comment15.
+        # Corresponds to the JSON property `binaryVersion`
+        # @return [Google::Apis::OndemandscanningV1beta1::PackageVersion]
+        attr_accessor :binary_version
+      
+        # The source package. Similar to the above, this is significant when the source
+        # is different than the binary itself. Since the top-level package/version
+        # fields are based on an if/else, we need a separate field for both binary and
+        # source if we want to know definitively where the data is coming from.
+        # Corresponds to the JSON property `sourceVersion`
+        # @return [Google::Apis::OndemandscanningV1beta1::PackageVersion]
+        attr_accessor :source_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @binary_version = args[:binary_version] if args.key?(:binary_version)
+          @source_version = args[:source_version] if args.key?(:source_version)
+        end
+      end
+      
       # Details of a build occurrence.
       class BuildOccurrence
         include Google::Apis::Core::Hashable
@@ -2016,11 +2048,12 @@ module Google
         # @return [String]
         attr_accessor :architecture
       
-        # The binary package. This is significant when the source is different than the
-        # binary itself. Historically if they've differed, we've stored the name of the
-        # source and its version in the package/version fields, but we should also store
-        # the binary package info, as that's what's actually installed. See b/175908657#
-        # comment15.
+        # A bundle containing the binary and source information.
+        # Corresponds to the JSON property `binarySourceInfo`
+        # @return [Array<Google::Apis::OndemandscanningV1beta1::BinarySourceInfo>]
+        attr_accessor :binary_source_info
+      
+        # DEPRECATED
         # Corresponds to the JSON property `binaryVersion`
         # @return [Google::Apis::OndemandscanningV1beta1::PackageVersion]
         attr_accessor :binary_version
@@ -2082,10 +2115,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :patched_cve
       
-        # The source package. Similar to the above, this is significant when the source
-        # is different than the binary itself. Since the top-level package/version
-        # fields are based on an if/else, we need a separate field for both binary and
-        # source if we want to know definitively where the data is coming from.
+        # DEPRECATED
         # Corresponds to the JSON property `sourceVersion`
         # @return [Google::Apis::OndemandscanningV1beta1::PackageVersion]
         attr_accessor :source_version
@@ -2107,6 +2137,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @architecture = args[:architecture] if args.key?(:architecture)
+          @binary_source_info = args[:binary_source_info] if args.key?(:binary_source_info)
           @binary_version = args[:binary_version] if args.key?(:binary_version)
           @cpe_uri = args[:cpe_uri] if args.key?(:cpe_uri)
           @dependency_chain = args[:dependency_chain] if args.key?(:dependency_chain)
