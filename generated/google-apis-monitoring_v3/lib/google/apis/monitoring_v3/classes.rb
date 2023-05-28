@@ -154,7 +154,10 @@ module Google
         # A short name or phrase used to identify the policy in dashboards,
         # notifications, and incidents. To avoid confusion, don't use the same display
         # name for multiple policies in the same project. The name is limited to 512
-        # Unicode characters.
+        # Unicode characters.The convention for the display_name of a
+        # PrometheusQueryLanguageCondition is "/", where the and should be taken from
+        # the corresponding Prometheus configuration file. This convention is not
+        # enforced. In any case the display_name is not a unique key of the AlertPolicy.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -202,7 +205,10 @@ module Google
         # AlertPolicy objects.The field can contain up to 64 entries. Each key and value
         # is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels
         # and values can contain only lowercase letters, numerals, underscores, and
-        # dashes. Keys must begin with a letter.
+        # dashes. Keys must begin with a letter.Note that Prometheus and are valid
+        # Prometheus label names (https://prometheus.io/docs/concepts/data_model/#metric-
+        # names-and-labels). This means that they cannot be stored as is in user labels,
+        # because Prometheus labels may contain upper-case letters.
         # Corresponds to the JSON property `userLabels`
         # @return [Hash<String,String>]
         attr_accessor :user_labels
