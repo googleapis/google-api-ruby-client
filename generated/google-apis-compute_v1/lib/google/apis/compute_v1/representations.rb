@@ -6233,6 +6233,7 @@ module Google
           property :kind, as: 'kind'
           collection :licenses, as: 'licenses'
           property :mode, as: 'mode'
+          property :saved_state, as: 'savedState'
           property :shielded_instance_initial_state, as: 'shieldedInstanceInitialState', class: Google::Apis::ComputeV1::InitialStateConfig, decorator: Google::Apis::ComputeV1::InitialStateConfig::Representation
       
           property :source, as: 'source'
