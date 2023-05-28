@@ -605,7 +605,7 @@ module Google
         alias_method :allow_missing?, :allow_missing
       
         # Required. The IDs of the assets to delete. A maximum of 1000 assets can be
-        # deleted in a batch. format: projects/`project`/locations/`location`/asset/`
+        # deleted in a batch. Format: projects/`project`/locations/`location`/assets/`
         # name`.
         # Corresponds to the JSON property `names`
         # @return [Array<String>]
