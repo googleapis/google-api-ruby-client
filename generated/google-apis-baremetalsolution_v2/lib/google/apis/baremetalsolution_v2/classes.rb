@@ -1912,6 +1912,19 @@ module Google
         end
       end
       
+      # Response message from resetting a server.
+      class ResetInstanceResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Request for emergency resize Volume.
       class ResizeVolumeRequest
         include Google::Apis::Core::Hashable
@@ -2060,6 +2073,19 @@ module Google
         end
       end
       
+      # Response message from starting a server.
+      class StartInstanceResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The `Status` type defines a logical error model that is suitable for different
       # programming environments, including REST APIs and RPC APIs. It is used by [
       # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
@@ -2101,6 +2127,19 @@ module Google
       
       # Message requesting to stop a server.
       class StopInstanceRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response message from stopping a server.
+      class StopInstanceResponse
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
