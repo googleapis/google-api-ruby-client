@@ -214,7 +214,7 @@ module Google
         # @return [String]
         attr_accessor :reporting_dimension_id
       
-        # State of the ad unit.
+        # Required. State of the ad unit.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
