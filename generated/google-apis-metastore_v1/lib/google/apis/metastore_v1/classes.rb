@@ -668,6 +668,12 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :config_overrides
       
+        # The protocol to use for the metastore service endpoint. If unspecified,
+        # defaults to THRIFT.
+        # Corresponds to the JSON property `endpointProtocol`
+        # @return [String]
+        attr_accessor :endpoint_protocol
+      
         # Configuration information for a Kerberos principal.
         # Corresponds to the JSON property `kerberosConfig`
         # @return [Google::Apis::MetastoreV1::KerberosConfig]
@@ -686,6 +692,7 @@ module Google
         def update!(**args)
           @auxiliary_versions = args[:auxiliary_versions] if args.key?(:auxiliary_versions)
           @config_overrides = args[:config_overrides] if args.key?(:config_overrides)
+          @endpoint_protocol = args[:endpoint_protocol] if args.key?(:endpoint_protocol)
           @kerberos_config = args[:kerberos_config] if args.key?(:kerberos_config)
           @version = args[:version] if args.key?(:version)
         end
