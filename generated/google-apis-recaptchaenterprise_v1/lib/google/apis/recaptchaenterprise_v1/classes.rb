@@ -183,7 +183,8 @@ module Google
         attr_accessor :key_id
       
         # Required. Input only. A private key (downloaded as a text file with a .p8 file
-        # extension) generated for your Apple Developer account.
+        # extension) generated for your Apple Developer account. Ensure that Apple
+        # DeviceCheck is enabled for the private key.
         # Corresponds to the JSON property `privateKey`
         # @return [String]
         attr_accessor :private_key
