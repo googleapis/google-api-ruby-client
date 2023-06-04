@@ -404,6 +404,7 @@ module Google
           property :artifact, :base64 => true, as: 'artifact'
           property :assertion, :base64 => true, as: 'assertion'
           property :challenge, :base64 => true, as: 'challenge'
+          property :limited_use, as: 'limitedUse'
         end
       end
       
@@ -413,6 +414,7 @@ module Google
           property :attestation_statement, :base64 => true, as: 'attestationStatement'
           property :challenge, :base64 => true, as: 'challenge'
           property :key_id, :base64 => true, as: 'keyId'
+          property :limited_use, as: 'limitedUse'
         end
       end
       
@@ -431,6 +433,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :custom_token, as: 'customToken'
+          property :limited_use, as: 'limitedUse'
         end
       end
       
@@ -438,6 +441,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :debug_token, as: 'debugToken'
+          property :limited_use, as: 'limitedUse'
         end
       end
       
@@ -445,12 +449,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :device_token, as: 'deviceToken'
+          property :limited_use, as: 'limitedUse'
         end
       end
       
       class GoogleFirebaseAppcheckV1betaExchangePlayIntegrityTokenRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :limited_use, as: 'limitedUse'
           property :play_integrity_token, as: 'playIntegrityToken'
         end
       end
@@ -458,6 +464,7 @@ module Google
       class GoogleFirebaseAppcheckV1betaExchangeRecaptchaEnterpriseTokenRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :limited_use, as: 'limitedUse'
           property :recaptcha_enterprise_token, as: 'recaptchaEnterpriseToken'
         end
       end
@@ -472,6 +479,7 @@ module Google
       class GoogleFirebaseAppcheckV1betaExchangeRecaptchaV3TokenRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :limited_use, as: 'limitedUse'
           property :recaptcha_v3_token, as: 'recaptchaV3Token'
         end
       end

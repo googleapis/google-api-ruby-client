@@ -84,6 +84,126 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Accepts an App Attest assertion and an artifact previously obtained from
+        # ExchangeAppAttestAttestation and verifies those with Apple. If valid, returns
+        # an AppCheckToken.
+        # @param [String] app
+        #   Required. The relative resource name of the iOS app, in the format: ```
+        #   projects/`project_number`/apps/`app_id` ``` If necessary, the `project_number`
+        #   element can be replaced with the project ID of the Firebase project. Learn
+        #   more about using project identifiers in Google's [AIP 2510](https://google.aip.
+        #   dev/cloud/2510) standard.
+        # @param [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaExchangeAppAttestAssertionRequest] google_firebase_appcheck_v1beta_exchange_app_attest_assertion_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaAppCheckToken] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaAppCheckToken]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def exchange_oauth_client_app_attest_assertion(app, google_firebase_appcheck_v1beta_exchange_app_attest_assertion_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta/{+app}:exchangeAppAttestAssertion', options)
+          command.request_representation = Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaExchangeAppAttestAssertionRequest::Representation
+          command.request_object = google_firebase_appcheck_v1beta_exchange_app_attest_assertion_request_object
+          command.response_representation = Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaAppCheckToken::Representation
+          command.response_class = Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaAppCheckToken
+          command.params['app'] = app unless app.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Accepts an App Attest CBOR attestation and verifies it with Apple using your
+        # preconfigured team and bundle IDs. If valid, returns an attestation artifact
+        # that can later be exchanged for an AppCheckToken using
+        # ExchangeAppAttestAssertion. For convenience and performance, this method's
+        # response object will also contain an AppCheckToken (if the verification is
+        # successful).
+        # @param [String] app
+        #   Required. The relative resource name of the iOS app, in the format: ```
+        #   projects/`project_number`/apps/`app_id` ``` If necessary, the `project_number`
+        #   element can be replaced with the project ID of the Firebase project. Learn
+        #   more about using project identifiers in Google's [AIP 2510](https://google.aip.
+        #   dev/cloud/2510) standard.
+        # @param [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationRequest] google_firebase_appcheck_v1beta_exchange_app_attest_attestation_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def exchange_oauth_client_app_attest_attestation(app, google_firebase_appcheck_v1beta_exchange_app_attest_attestation_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta/{+app}:exchangeAppAttestAttestation', options)
+          command.request_representation = Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationRequest::Representation
+          command.request_object = google_firebase_appcheck_v1beta_exchange_app_attest_attestation_request_object
+          command.response_representation = Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationResponse::Representation
+          command.response_class = Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationResponse
+          command.params['app'] = app unless app.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Generates a challenge that protects the integrity of an immediately following
+        # call to ExchangeAppAttestAttestation or ExchangeAppAttestAssertion. A
+        # challenge should not be reused for multiple calls.
+        # @param [String] app
+        #   Required. The relative resource name of the iOS app, in the format: ```
+        #   projects/`project_number`/apps/`app_id` ``` If necessary, the `project_number`
+        #   element can be replaced with the project ID of the Firebase project. Learn
+        #   more about using project identifiers in Google's [AIP 2510](https://google.aip.
+        #   dev/cloud/2510) standard.
+        # @param [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeRequest] google_firebase_appcheck_v1beta_generate_app_attest_challenge_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def generate_oauth_client_app_attest_challenge(app, google_firebase_appcheck_v1beta_generate_app_attest_challenge_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta/{+app}:generateAppAttestChallenge', options)
+          command.request_representation = Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeRequest::Representation
+          command.request_object = google_firebase_appcheck_v1beta_generate_app_attest_challenge_request_object
+          command.response_representation = Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeResponse::Representation
+          command.response_class = Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeResponse
+          command.params['app'] = app unless app.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Verifies the given App Check token and returns token usage signals that
         # callers may act upon. This method currently only supports App Check tokens
         # exchanged from the following attestation providers: * Play Integrity API * App
