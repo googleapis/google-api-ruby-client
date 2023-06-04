@@ -142,6 +142,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EncryptionKey
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EndpointAttachment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -511,6 +517,8 @@ module Google
           property :bool_value, as: 'boolValue'
           property :int_value, :numeric_string => true, as: 'intValue'
           property :key, as: 'key'
+          property :key_value, as: 'keyValue', class: Google::Apis::ConnectorsV1::EncryptionKey, decorator: Google::Apis::ConnectorsV1::EncryptionKey::Representation
+      
           property :secret_value, as: 'secretValue', class: Google::Apis::ConnectorsV1::Secret, decorator: Google::Apis::ConnectorsV1::Secret::Representation
       
           property :string_value, as: 'stringValue'
@@ -544,6 +552,7 @@ module Google
       
           collection :config_variables, as: 'configVariables', class: Google::Apis::ConnectorsV1::ConfigVariable, decorator: Google::Apis::ConnectorsV1::ConfigVariable::Representation
       
+          property :connection_revision, :numeric_string => true, as: 'connectionRevision'
           property :connector_version, as: 'connectorVersion'
           property :connector_version_launch_stage, as: 'connectorVersionLaunchStage'
           property :create_time, as: 'createTime'
@@ -690,6 +699,14 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class EncryptionKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kms_key_name, as: 'kmsKeyName'
+          property :type, as: 'type'
         end
       end
       
