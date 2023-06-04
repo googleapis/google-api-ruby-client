@@ -28,12 +28,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AssociateLocationRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Attribute
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -95,12 +89,6 @@ module Google
       end
       
       class ChainUri
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ClearLocationAssociationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -329,13 +317,6 @@ module Google
         end
       end
       
-      class AssociateLocationRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :place_id, as: 'placeId'
-        end
-      end
-      
       class Attribute
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -442,12 +423,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :uri, as: 'uri'
-        end
-      end
-      
-      class ClearLocationAssociationRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

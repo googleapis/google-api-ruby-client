@@ -42,25 +42,6 @@ module Google
         end
       end
       
-      # Request message for Locations.AssociateLocationRequest.
-      class AssociateLocationRequest
-        include Google::Apis::Core::Hashable
-      
-        # The association to establish. If not set, it indicates no match.
-        # Corresponds to the JSON property `placeId`
-        # @return [String]
-        attr_accessor :place_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @place_id = args[:place_id] if args.key?(:place_id)
-        end
-      end
-      
       # A location attribute. Attributes provide additional information about a
       # location. The attributes that can be set on a location may vary based on the
       # properties of that location (for example, category). Available attributes are
@@ -432,19 +413,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @uri = args[:uri] if args.key?(:uri)
-        end
-      end
-      
-      # Request message for Locations.ClearLocationAssociationRequest.
-      class ClearLocationAssociationRequest
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
         end
       end
       
