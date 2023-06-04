@@ -1473,6 +1473,16 @@ module Google
       class GoogleCloudDataplexV1DataProfileSpec
         include Google::Apis::Core::Hashable
       
+        # The specification for fields to include or exclude in data profile scan.
+        # Corresponds to the JSON property `excludeFields`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileSpecSelectedFields]
+        attr_accessor :exclude_fields
+      
+        # The specification for fields to include or exclude in data profile scan.
+        # Corresponds to the JSON property `includeFields`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileSpecSelectedFields]
+        attr_accessor :include_fields
+      
         # Optional. A filter applied to all rows in a single DataScan job. The filter
         # needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL
         # syntax. Example: col1 >= 0 AND col2 < 10
@@ -1494,8 +1504,32 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @exclude_fields = args[:exclude_fields] if args.key?(:exclude_fields)
+          @include_fields = args[:include_fields] if args.key?(:include_fields)
           @row_filter = args[:row_filter] if args.key?(:row_filter)
           @sampling_percent = args[:sampling_percent] if args.key?(:sampling_percent)
+        end
+      end
+      
+      # The specification for fields to include or exclude in data profile scan.
+      class GoogleCloudDataplexV1DataProfileSpecSelectedFields
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Expected input is a list of fully qualified names of fields as in
+        # the schema.Only top-level field names for nested fields are supported. For
+        # instance, if 'x' is of nested field type, listing 'x' is supported but 'x.y.z'
+        # is not supported. Here 'y' and 'y.z' are nested fields of 'x'.
+        # Corresponds to the JSON property `fieldNames`
+        # @return [Array<String>]
+        attr_accessor :field_names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field_names = args[:field_names] if args.key?(:field_names)
         end
       end
       
@@ -2894,7 +2928,7 @@ module Google
       end
       
       # Environment represents a user-visible compute infrastructure for analytics
-      # within a lake.
+      # within a lake. LINT.IfChange
       class GoogleCloudDataplexV1Environment
         include Google::Apis::Core::Hashable
       
@@ -3258,6 +3292,11 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
+        # Job execution trigger.
+        # Corresponds to the JSON property `executionTrigger`
+        # @return [String]
+        attr_accessor :execution_trigger
+      
         # The unique id identifying the job.
         # Corresponds to the JSON property `jobId`
         # @return [String]
@@ -3305,6 +3344,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @execution_trigger = args[:execution_trigger] if args.key?(:execution_trigger)
           @job_id = args[:job_id] if args.key?(:job_id)
           @message = args[:message] if args.key?(:message)
           @retries = args[:retries] if args.key?(:retries)
