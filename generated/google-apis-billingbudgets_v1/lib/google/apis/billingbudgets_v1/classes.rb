@@ -205,6 +205,15 @@ module Google
         # @return [Array<String>]
         attr_accessor :projects
       
+        # Optional. A set of folder and organization names of the form `folders/`
+        # folderId`` or `organizations/`organizationId``, specifying that usage from
+        # only this set of folders and organizations should be included in the budget.
+        # If omitted, the report includes all usage for all organizations, regardless of
+        # which organization the usage occurred on.
+        # Corresponds to the JSON property `resourceAncestors`
+        # @return [Array<String>]
+        attr_accessor :resource_ancestors
+      
         # Optional. A set of services of the form `services/`service_id``, specifying
         # that usage from only this set of services should be included in the budget. If
         # omitted, the report includes usage for all the services. The service names are
@@ -235,6 +244,7 @@ module Google
           @custom_period = args[:custom_period] if args.key?(:custom_period)
           @labels = args[:labels] if args.key?(:labels)
           @projects = args[:projects] if args.key?(:projects)
+          @resource_ancestors = args[:resource_ancestors] if args.key?(:resource_ancestors)
           @services = args[:services] if args.key?(:services)
           @subaccounts = args[:subaccounts] if args.key?(:subaccounts)
         end
