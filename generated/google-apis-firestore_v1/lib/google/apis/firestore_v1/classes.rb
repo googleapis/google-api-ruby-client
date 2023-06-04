@@ -1109,6 +1109,16 @@ module Google
         # @return [String]
         attr_accessor :delete_protection_state
       
+        # Output only. The earliest timestamp at which older versions of the data can be
+        # read from the database. See [version_retention_period] above; this field is
+        # populated with `now - version_retention_period`. This value is continuously
+        # updated, and becomes stale the moment it is queried. If you are using this
+        # value to recover data, make sure to account for the time from the moment when
+        # the value is queried to the moment when you initiate the recovery.
+        # Corresponds to the JSON property `earliestVersionTime`
+        # @return [String]
+        attr_accessor :earliest_version_time
+      
         # This checksum is computed by the server based on the value of other fields,
         # and may be sent on update and delete requests to ensure the client has an up-
         # to-date value before proceeding.
@@ -1137,6 +1147,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Whether to enable the PITR feature on this database.
+        # Corresponds to the JSON property `pointInTimeRecoveryEnablement`
+        # @return [String]
+        attr_accessor :point_in_time_recovery_enablement
+      
         # The type of the database. See https://cloud.google.com/datastore/docs/
         # firestore-or-datastore for information about how to choose.
         # Corresponds to the JSON property `type`
@@ -1155,6 +1170,15 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # Output only. The period during which past versions of data are retained in the
+        # database. Any read or query can specify a `read_time` within this window, and
+        # will read the state of the database at that time. If the PITR feature is
+        # enabled, the retention period is 7 days. If unset, the retention period is 1
+        # hour.
+        # Corresponds to the JSON property `versionRetentionPeriod`
+        # @return [String]
+        attr_accessor :version_retention_period
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1165,13 +1189,16 @@ module Google
           @concurrency_mode = args[:concurrency_mode] if args.key?(:concurrency_mode)
           @create_time = args[:create_time] if args.key?(:create_time)
           @delete_protection_state = args[:delete_protection_state] if args.key?(:delete_protection_state)
+          @earliest_version_time = args[:earliest_version_time] if args.key?(:earliest_version_time)
           @etag = args[:etag] if args.key?(:etag)
           @key_prefix = args[:key_prefix] if args.key?(:key_prefix)
           @location_id = args[:location_id] if args.key?(:location_id)
           @name = args[:name] if args.key?(:name)
+          @point_in_time_recovery_enablement = args[:point_in_time_recovery_enablement] if args.key?(:point_in_time_recovery_enablement)
           @type = args[:type] if args.key?(:type)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @version_retention_period = args[:version_retention_period] if args.key?(:version_retention_period)
         end
       end
       
@@ -1269,6 +1296,15 @@ module Google
         # @return [String]
         attr_accessor :output_uri_prefix
       
+        # The timestamp that corresponds to the version of the database to be exported.
+        # The timestamp must be rounded to the minute, in the past, and not older than 1
+        # hour. If specified, then the exported documents will represent a consistent
+        # view of the database at the provided time. Otherwise, there are no guarantees
+        # about the consistency of the exported documents.
+        # Corresponds to the JSON property `snapshotTime`
+        # @return [String]
+        attr_accessor :snapshot_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1278,6 +1314,7 @@ module Google
           @collection_ids = args[:collection_ids] if args.key?(:collection_ids)
           @namespace_ids = args[:namespace_ids] if args.key?(:namespace_ids)
           @output_uri_prefix = args[:output_uri_prefix] if args.key?(:output_uri_prefix)
+          @snapshot_time = args[:snapshot_time] if args.key?(:snapshot_time)
         end
       end
       
