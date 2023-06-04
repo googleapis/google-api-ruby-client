@@ -1742,6 +1742,19 @@ module Google
         end
       end
       
+      # Skips the starting activity
+      class NoActivityIntent
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # An opaque binary blob file to install on the device before the test starts.
       class ObbFile
         include Google::Apis::Core::Hashable
@@ -1998,6 +2011,11 @@ module Google
         # @return [Google::Apis::TestingV1::LauncherActivityIntent]
         attr_accessor :launcher_activity
       
+        # Skips the starting activity
+        # Corresponds to the JSON property `noActivity`
+        # @return [Google::Apis::TestingV1::NoActivityIntent]
+        attr_accessor :no_activity
+      
         # A starting intent specified by an action, uri, and categories.
         # Corresponds to the JSON property `startActivity`
         # @return [Google::Apis::TestingV1::StartActivityIntent]
@@ -2015,6 +2033,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @launcher_activity = args[:launcher_activity] if args.key?(:launcher_activity)
+          @no_activity = args[:no_activity] if args.key?(:no_activity)
           @start_activity = args[:start_activity] if args.key?(:start_activity)
           @timeout = args[:timeout] if args.key?(:timeout)
         end
