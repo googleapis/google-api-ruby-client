@@ -3168,12 +3168,19 @@ module Google
       class GoogleCloudApigeeV1DimensionMetric
         include Google::Apis::Core::Hashable
       
+        # Individual dimension names. E.g. ["dim1_name", "dim2_name"].
+        # Corresponds to the JSON property `individualNames`
+        # @return [Array<String>]
+        attr_accessor :individual_names
+      
         # List of metrics.
         # Corresponds to the JSON property `metrics`
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1Metric>]
         attr_accessor :metrics
       
-        # Name of the dimension.
+        # Comma joined dimension names. E.g. "dim1_name,dim2_name". Deprecated. If name
+        # already has comma before join, we may get wrong splits. Please use
+        # individual_names.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3184,6 +3191,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @individual_names = args[:individual_names] if args.key?(:individual_names)
           @metrics = args[:metrics] if args.key?(:metrics)
           @name = args[:name] if args.key?(:name)
         end
@@ -5837,10 +5845,10 @@ module Google
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AddonsConfig]
         attr_accessor :addons_config
       
-        # Required. DEPRECATED: This field will be deprecated once Apigee supports DRZ.
-        # Primary Google Cloud region for analytics data storage. For valid values, see [
-        # Create an Apigee organization](https://cloud.google.com/apigee/docs/api-
-        # platform/get-started/create-org).
+        # Required. DEPRECATED: This field will eventually be deprecated and replaced
+        # with a differently-named field. Primary Google Cloud region for analytics data
+        # storage. For valid values, see [Create an Apigee organization](https://cloud.
+        # google.com/apigee/docs/api-platform/get-started/create-org).
         # Corresponds to the JSON property `analyticsRegion`
         # @return [String]
         attr_accessor :analytics_region
@@ -6180,6 +6188,164 @@ module Google
         def update!(**args)
           @id = args[:id] if args.key?(:id)
           @results = args[:results] if args.key?(:results)
+        end
+      end
+      
+      # ProfileConfig defines a set of categories and policies which will be used to
+      # compute security score.
+      class GoogleCloudApigeeV1ProfileConfig
+        include Google::Apis::Core::Hashable
+      
+        # List of categories of profile config.
+        # Corresponds to the JSON property `categories`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProfileConfigCategory>]
+        attr_accessor :categories
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @categories = args[:categories] if args.key?(:categories)
+        end
+      end
+      
+      # Checks for abuse, which includes any requests sent to the API for purposes
+      # other than what it is intended for, such as high volumes of requests, data
+      # scraping, and abuse related to authorization.
+      class GoogleCloudApigeeV1ProfileConfigAbuse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # By default, following policies will be included: - JWS - JWT - OAuth -
+      # BasicAuth - APIKey
+      class GoogleCloudApigeeV1ProfileConfigAuthorization
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Checks to see if you have CORS policy in place.
+      class GoogleCloudApigeeV1ProfileConfigCors
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Advanced API Security provides security profile that scores the following
+      # categories.
+      class GoogleCloudApigeeV1ProfileConfigCategory
+        include Google::Apis::Core::Hashable
+      
+        # Checks for abuse, which includes any requests sent to the API for purposes
+        # other than what it is intended for, such as high volumes of requests, data
+        # scraping, and abuse related to authorization.
+        # Corresponds to the JSON property `abuse`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProfileConfigAbuse]
+        attr_accessor :abuse
+      
+        # By default, following policies will be included: - JWS - JWT - OAuth -
+        # BasicAuth - APIKey
+        # Corresponds to the JSON property `authorization`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProfileConfigAuthorization]
+        attr_accessor :authorization
+      
+        # Checks to see if you have CORS policy in place.
+        # Corresponds to the JSON property `cors`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProfileConfigCors]
+        attr_accessor :cors
+      
+        # By default, following policies will be included: - OASValidation -
+        # SOAPMessageValidation
+        # Corresponds to the JSON property `mediation`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProfileConfigMediation]
+        attr_accessor :mediation
+      
+        # Checks to see if you have configured mTLS for the target server.
+        # Corresponds to the JSON property `mtls`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProfileConfigMtls]
+        attr_accessor :mtls
+      
+        # By default, following policies will be included: - XMLThreatProtection -
+        # JSONThreatProtection
+        # Corresponds to the JSON property `threat`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProfileConfigThreat]
+        attr_accessor :threat
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @abuse = args[:abuse] if args.key?(:abuse)
+          @authorization = args[:authorization] if args.key?(:authorization)
+          @cors = args[:cors] if args.key?(:cors)
+          @mediation = args[:mediation] if args.key?(:mediation)
+          @mtls = args[:mtls] if args.key?(:mtls)
+          @threat = args[:threat] if args.key?(:threat)
+        end
+      end
+      
+      # Checks to see if you have configured mTLS for the target server.
+      class GoogleCloudApigeeV1ProfileConfigMtls
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # By default, following policies will be included: - OASValidation -
+      # SOAPMessageValidation
+      class GoogleCloudApigeeV1ProfileConfigMediation
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # By default, following policies will be included: - XMLThreatProtection -
+      # JSONThreatProtection
+      class GoogleCloudApigeeV1ProfileConfigThreat
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -7901,6 +8067,11 @@ module Google
       class GoogleCloudApigeeV1SecurityProfile
         include Google::Apis::Core::Hashable
       
+        # Description of the security profile.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
         # Display name of the security profile.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -7926,6 +8097,12 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # ProfileConfig defines a set of categories and policies which will be used to
+        # compute security score.
+        # Corresponds to the JSON property `profileConfig`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProfileConfig]
+        attr_accessor :profile_config
       
         # Output only. The time when revision was created.
         # Corresponds to the JSON property `revisionCreateTime`
@@ -7960,11 +8137,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @environments = args[:environments] if args.key?(:environments)
           @max_score = args[:max_score] if args.key?(:max_score)
           @min_score = args[:min_score] if args.key?(:min_score)
           @name = args[:name] if args.key?(:name)
+          @profile_config = args[:profile_config] if args.key?(:profile_config)
           @revision_create_time = args[:revision_create_time] if args.key?(:revision_create_time)
           @revision_id = args[:revision_id] if args.key?(:revision_id)
           @revision_publish_time = args[:revision_publish_time] if args.key?(:revision_publish_time)
