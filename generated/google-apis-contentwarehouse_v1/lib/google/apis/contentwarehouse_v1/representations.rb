@@ -5002,6 +5002,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GeostoreTransitStationProtoTransitAgencyAssociationProto
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GeostoreTrustSignalsProto
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -13108,6 +13114,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ShoppingWebentityShoppingAnnotationOfferAvailabilityInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ShoppingWebentityShoppingAnnotationProductRating
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -17624,6 +17636,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
+          property :send_message_suppressed, as: 'sendMessageSuppressed'
         end
       end
       
@@ -18218,12 +18231,14 @@ module Google
       class AssistantApiCoreTypesMessageNotificationNotificationEntry
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :char_count, as: 'charCount'
           property :data_uri, as: 'dataUri'
           property :message_body, as: 'messageBody'
           property :mime_type, as: 'mimeType'
           property :post_time, as: 'postTime'
           property :sender, as: 'sender', class: Google::Apis::ContentwarehouseV1::AssistantApiCoreTypesMessageNotificationPerson, decorator: Google::Apis::ContentwarehouseV1::AssistantApiCoreTypesMessageNotificationPerson::Representation
       
+          property :word_count, as: 'wordCount'
         end
       end
       
@@ -18635,6 +18650,7 @@ module Google
           property :device_model, as: 'deviceModel'
           property :embedder_build_info, as: 'embedderBuildInfo'
           property :initial_app_version, as: 'initialAppVersion'
+          property :is_primary_user, as: 'isPrimaryUser'
           property :mdns_display_name, as: 'mdnsDisplayName'
           property :platform_build, as: 'platformBuild'
           property :virtual_release_channel, as: 'virtualReleaseChannel'
@@ -18999,6 +19015,7 @@ module Google
       
           property :opt_in_status, as: 'optInStatus', class: Google::Apis::ContentwarehouseV1::AssistantApiSettingsDeviceLogsOptIn, decorator: Google::Apis::ContentwarehouseV1::AssistantApiSettingsDeviceLogsOptIn::Representation
       
+          property :payments_enabled, as: 'paymentsEnabled'
           property :personalization_metadata, as: 'personalizationMetadata', class: Google::Apis::ContentwarehouseV1::AssistantApiSettingsPersonalizationMetadata, decorator: Google::Apis::ContentwarehouseV1::AssistantApiSettingsPersonalizationMetadata::Representation
       
           property :polite_mode, as: 'politeMode', class: Google::Apis::ContentwarehouseV1::AssistantApiSettingsPoliteMode, decorator: Google::Apis::ContentwarehouseV1::AssistantApiSettingsPoliteMode::Representation
@@ -19609,6 +19626,7 @@ module Google
           property :launch_keyboard_supported, as: 'launchKeyboardSupported'
           property :lens_supported, as: 'lensSupported'
           property :live_cards_supported, as: 'liveCardsSupported'
+          property :lottie_animation_support, as: 'lottieAnimationSupport'
           property :maps_dialogs_supported, as: 'mapsDialogsSupported'
           property :masquerade_mode_supported, as: 'masqueradeModeSupported'
           property :media_control_support, as: 'mediaControlSupport', class: Google::Apis::ContentwarehouseV1::AssistantApiMediaControlSupport, decorator: Google::Apis::ContentwarehouseV1::AssistantApiMediaControlSupport::Representation
@@ -19620,6 +19638,7 @@ module Google
           property :parental_controls_supported, as: 'parentalControlsSupported'
           property :persistent_display_supported, as: 'persistentDisplaySupported'
           property :privacy_aware_lockscreen_supported, as: 'privacyAwareLockscreenSupported'
+          property :read_messages_tts_tapering_supported, as: 'readMessagesTtsTaperingSupported'
           property :remote_cloud_casting_enabled, as: 'remoteCloudCastingEnabled'
           property :server_generated_feedback_chips_enabled, as: 'serverGeneratedFeedbackChipsEnabled'
           property :sh_lock_screen_supported, as: 'shLockScreenSupported'
@@ -19850,6 +19869,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :max_supported_alarms, as: 'maxSupportedAlarms'
           property :restrict_alarms_to_next_day, as: 'restrictAlarmsToNextDay'
+          property :supports_generic_mutations, as: 'supportsGenericMutations'
           property :supports_stop_action, as: 'supportsStopAction'
         end
       end
@@ -20348,6 +20368,7 @@ module Google
           property :is_media_search_query_subset_of_entity_name_and_artist, as: 'isMediaSearchQuerySubsetOfEntityNameAndArtist'
           property :is_seed_radio, as: 'isSeedRadio'
           property :is_seed_radio_request, as: 'isSeedRadioRequest'
+          property :is_youtube_music_seeking, as: 'isYoutubeMusicSeeking'
           property :media_content_type, as: 'mediaContentType'
           property :msc_rate, as: 'mscRate'
           property :scubed_p_sai_music, as: 'scubedPSaiMusic'
@@ -20370,7 +20391,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :is_in_app_provider, as: 'isInAppProvider'
-          collection :provider_cluster_id_deprecated, as: 'providerClusterIdDeprecated'
           collection :provider_cluster_ids, as: 'providerClusterIds'
           property :provider_id, as: 'providerId', class: Google::Apis::ContentwarehouseV1::AssistantContextProviderId, decorator: Google::Apis::ContentwarehouseV1::AssistantContextProviderId::Representation
       
@@ -20833,6 +20853,7 @@ module Google
           property :is_media_control_intent, as: 'isMediaControlIntent'
           property :is_play_generic_music, as: 'isPlayGenericMusic'
           property :is_podcast_intent, as: 'isPodcastIntent'
+          property :is_tvm_intent, as: 'isTvmIntent'
           property :is_video_intent, as: 'isVideoIntent'
           property :kscorer_rank, as: 'kscorerRank'
           property :laa_features, as: 'laaFeatures', class: Google::Apis::ContentwarehouseV1::AssistantGroundingRankerLaaFeatures, decorator: Google::Apis::ContentwarehouseV1::AssistantGroundingRankerLaaFeatures::Representation
@@ -25257,8 +25278,17 @@ module Google
       class GeostoreTransitStationProto
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :agencies, as: 'agencies', class: Google::Apis::ContentwarehouseV1::GeostoreFeatureIdProto, decorator: Google::Apis::ContentwarehouseV1::GeostoreFeatureIdProto::Representation
+          collection :agency_associations, as: 'agencyAssociations', class: Google::Apis::ContentwarehouseV1::GeostoreTransitStationProtoTransitAgencyAssociationProto, decorator: Google::Apis::ContentwarehouseV1::GeostoreTransitStationProtoTransitAgencyAssociationProto::Representation
       
+        end
+      end
+      
+      class GeostoreTransitStationProtoTransitAgencyAssociationProto
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :agency, as: 'agency', class: Google::Apis::ContentwarehouseV1::GeostoreFeatureIdProto, decorator: Google::Apis::ContentwarehouseV1::GeostoreFeatureIdProto::Representation
+      
+          property :station_code, as: 'stationCode'
         end
       end
       
@@ -26324,6 +26354,7 @@ module Google
           property :custom_weights_metadata, as: 'customWeightsMetadata', class: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1CustomWeightsMetadata, decorator: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1CustomWeightsMetadata::Representation
       
           collection :document_creator_filter, as: 'documentCreatorFilter'
+          collection :document_name_filter, as: 'documentNameFilter'
           collection :document_schema_names, as: 'documentSchemaNames'
           property :file_type_filter, as: 'fileTypeFilter', class: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1FileTypeFilter, decorator: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1FileTypeFilter::Representation
       
@@ -26876,6 +26907,7 @@ module Google
           property :metadata, as: 'metadata', class: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1ResponseMetadata, decorator: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1ResponseMetadata::Representation
       
           property :next_page_token, as: 'nextPageToken'
+          property :question_answer, as: 'questionAnswer'
           property :total_size, as: 'totalSize'
         end
       end
@@ -29967,6 +29999,12 @@ module Google
       
           property :creator, as: 'creator', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
+          property :discover_source, as: 'discoverSource', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :discussion, as: 'discussion', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :document_intent, as: 'documentIntent', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
           property :instant_navboost, as: 'instantNavboost', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
           property :localyp, as: 'localyp', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
@@ -30678,6 +30716,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gibberish_result, as: 'gibberishResult'
+          property :num_gibberish_segments, as: 'numGibberishSegments'
+          property :num_segments_classified, as: 'numSegmentsClassified'
         end
       end
       
@@ -38946,6 +38986,8 @@ module Google
           property :non_displayable_brand_merchant_relationship, as: 'nonDisplayableBrandMerchantRelationship'
           property :non_displayable_currency, as: 'nonDisplayableCurrency'
           property :non_displayable_organic_score_millis, as: 'nonDisplayableOrganicScoreMillis'
+          property :non_displayable_stale_availability, as: 'nonDisplayableStaleAvailability', class: Google::Apis::ContentwarehouseV1::ShoppingWebentityShoppingAnnotationOfferAvailabilityInfo, decorator: Google::Apis::ContentwarehouseV1::ShoppingWebentityShoppingAnnotationOfferAvailabilityInfo::Representation
+      
           property :offer_docid, :numeric_string => true, as: 'offerDocid'
           property :ref_type, as: 'refType'
           property :sori_version_id, as: 'soriVersionId', class: Google::Apis::ContentwarehouseV1::ShoppingWebentityShoppingAnnotationSoriVersionId, decorator: Google::Apis::ContentwarehouseV1::ShoppingWebentityShoppingAnnotationSoriVersionId::Representation
@@ -41378,6 +41420,8 @@ module Google
           property :crowding_attribute, :numeric_string => true, as: 'crowdingAttribute'
           property :distance, as: 'distance'
           property :docid, :base64 => true, as: 'docid'
+          property :gfv, as: 'gfv', class: Google::Apis::ContentwarehouseV1::ResearchScamGenericFeatureVector, decorator: Google::Apis::ContentwarehouseV1::ResearchScamGenericFeatureVector::Representation
+      
           property :metadata, :base64 => true, as: 'metadata'
         end
       end
@@ -42672,6 +42716,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :inferred_image_source, as: 'inferredImageSource'
           property :inferred_image_type, as: 'inferredImageType'
+        end
+      end
+      
+      class ShoppingWebentityShoppingAnnotationOfferAvailabilityInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :availability, as: 'availability'
         end
       end
       
@@ -44060,7 +44111,7 @@ module Google
           property :fare_family_urls, as: 'fareFamilyUrls', class: Google::Apis::ContentwarehouseV1::TravelFlightsNameCatalogProto, decorator: Google::Apis::ContentwarehouseV1::TravelFlightsNameCatalogProto::Representation
       
           collection :fqtv_partner_code, as: 'fqtvPartnerCode'
-          collection :green_fares_info, as: 'greenFaresInfo', class: Google::Apis::ContentwarehouseV1::TravelFlightsAirlineConfigGreenFaresInfo, decorator: Google::Apis::ContentwarehouseV1::TravelFlightsAirlineConfigGreenFaresInfo::Representation
+          property :green_fares_info, as: 'greenFaresInfo', class: Google::Apis::ContentwarehouseV1::TravelFlightsAirlineConfigGreenFaresInfo, decorator: Google::Apis::ContentwarehouseV1::TravelFlightsAirlineConfigGreenFaresInfo::Representation
       
           property :iata_code, as: 'iataCode'
           property :icao_code, as: 'icaoCode'
@@ -46902,6 +46953,7 @@ module Google
           property :document_trust, as: 'documentTrust'
           property :eq_star, as: 'eqStar'
           property :est_relevance, as: 'estRelevance'
+          property :est_sigma_u, as: 'estSigmaU'
           property :flow_output, as: 'flowOutput', class: Google::Apis::ContentwarehouseV1::ImageContentFlowProtoProd, decorator: Google::Apis::ContentwarehouseV1::ImageContentFlowProtoProd::Representation
       
           property :height, as: 'height'
