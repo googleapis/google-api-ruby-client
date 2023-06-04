@@ -429,6 +429,13 @@ module Google
         # @return [String]
         attr_accessor :challenge
       
+        # Forces a short-lived token with a 5 minute TTL. Useful when the client wishes
+        # to impose stricter TTL requirements for this exchange. Default: false.
+        # Corresponds to the JSON property `limitedUse`
+        # @return [Boolean]
+        attr_accessor :limited_use
+        alias_method :limited_use?, :limited_use
+      
         def initialize(**args)
            update!(**args)
         end
@@ -438,6 +445,7 @@ module Google
           @artifact = args[:artifact] if args.key?(:artifact)
           @assertion = args[:assertion] if args.key?(:assertion)
           @challenge = args[:challenge] if args.key?(:challenge)
+          @limited_use = args[:limited_use] if args.key?(:limited_use)
         end
       end
       
@@ -465,6 +473,13 @@ module Google
         # @return [String]
         attr_accessor :key_id
       
+        # Forces a short-lived token with a 5 minute TTL. Useful when the client wishes
+        # to impose stricter TTL requirements for this exchange. Default: false.
+        # Corresponds to the JSON property `limitedUse`
+        # @return [Boolean]
+        attr_accessor :limited_use
+        alias_method :limited_use?, :limited_use
+      
         def initialize(**args)
            update!(**args)
         end
@@ -474,6 +489,7 @@ module Google
           @attestation_statement = args[:attestation_statement] if args.key?(:attestation_statement)
           @challenge = args[:challenge] if args.key?(:challenge)
           @key_id = args[:key_id] if args.key?(:key_id)
+          @limited_use = args[:limited_use] if args.key?(:limited_use)
         end
       end
       
@@ -521,6 +537,13 @@ module Google
         # @return [String]
         attr_accessor :custom_token
       
+        # Forces a short-lived token with a 5 minute TTL. Useful when the client wishes
+        # to impose stricter TTL requirements for this exchange. Default: false.
+        # Corresponds to the JSON property `limitedUse`
+        # @return [Boolean]
+        attr_accessor :limited_use
+        alias_method :limited_use?, :limited_use
+      
         def initialize(**args)
            update!(**args)
         end
@@ -528,6 +551,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @custom_token = args[:custom_token] if args.key?(:custom_token)
+          @limited_use = args[:limited_use] if args.key?(:limited_use)
         end
       end
       
@@ -541,6 +565,13 @@ module Google
         # @return [String]
         attr_accessor :debug_token
       
+        # Forces a short-lived token with a 5 minute TTL. Useful when the client wishes
+        # to impose stricter TTL requirements for this exchange. Default: false.
+        # Corresponds to the JSON property `limitedUse`
+        # @return [Boolean]
+        attr_accessor :limited_use
+        alias_method :limited_use?, :limited_use
+      
         def initialize(**args)
            update!(**args)
         end
@@ -548,6 +579,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @debug_token = args[:debug_token] if args.key?(:debug_token)
+          @limited_use = args[:limited_use] if args.key?(:limited_use)
         end
       end
       
@@ -562,6 +594,13 @@ module Google
         # @return [String]
         attr_accessor :device_token
       
+        # Forces a short-lived token with a 5 minute TTL. Useful when the client wishes
+        # to impose stricter TTL requirements for this exchange. Default: false.
+        # Corresponds to the JSON property `limitedUse`
+        # @return [Boolean]
+        attr_accessor :limited_use
+        alias_method :limited_use?, :limited_use
+      
         def initialize(**args)
            update!(**args)
         end
@@ -569,12 +608,20 @@ module Google
         # Update properties of this object
         def update!(**args)
           @device_token = args[:device_token] if args.key?(:device_token)
+          @limited_use = args[:limited_use] if args.key?(:limited_use)
         end
       end
       
       # Request message for the ExchangePlayIntegrityToken method.
       class GoogleFirebaseAppcheckV1betaExchangePlayIntegrityTokenRequest
         include Google::Apis::Core::Hashable
+      
+        # Forces a short-lived token with a 5 minute TTL. Useful when the client wishes
+        # to impose stricter TTL requirements for this exchange. Default: false.
+        # Corresponds to the JSON property `limitedUse`
+        # @return [Boolean]
+        attr_accessor :limited_use
+        alias_method :limited_use?, :limited_use
       
         # Required. The [integrity verdict response token from Play Integrity](https://
         # developer.android.com/google/play/integrity/verdict#decrypt-verify) issued to
@@ -589,6 +636,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @limited_use = args[:limited_use] if args.key?(:limited_use)
           @play_integrity_token = args[:play_integrity_token] if args.key?(:play_integrity_token)
         end
       end
@@ -596,6 +644,13 @@ module Google
       # Request message for the ExchangeRecaptchaEnterpriseToken method.
       class GoogleFirebaseAppcheckV1betaExchangeRecaptchaEnterpriseTokenRequest
         include Google::Apis::Core::Hashable
+      
+        # Forces a short-lived token with a 5 minute TTL. Useful when the client wishes
+        # to impose stricter TTL requirements for this exchange. Default: false.
+        # Corresponds to the JSON property `limitedUse`
+        # @return [Boolean]
+        attr_accessor :limited_use
+        alias_method :limited_use?, :limited_use
       
         # Required. The reCAPTCHA token as returned by the [reCAPTCHA Enterprise
         # JavaScript API](https://cloud.google.com/recaptcha-enterprise/docs/instrument-
@@ -610,6 +665,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @limited_use = args[:limited_use] if args.key?(:limited_use)
           @recaptcha_enterprise_token = args[:recaptcha_enterprise_token] if args.key?(:recaptcha_enterprise_token)
         end
       end
@@ -638,6 +694,13 @@ module Google
       class GoogleFirebaseAppcheckV1betaExchangeRecaptchaV3TokenRequest
         include Google::Apis::Core::Hashable
       
+        # Forces a short-lived token with a 5 minute TTL. Useful when the client wishes
+        # to impose stricter TTL requirements for this exchange. Default: false.
+        # Corresponds to the JSON property `limitedUse`
+        # @return [Boolean]
+        attr_accessor :limited_use
+        alias_method :limited_use?, :limited_use
+      
         # Required. The reCAPTCHA token as returned by the [reCAPTCHA v3 JavaScript API](
         # https://developers.google.com/recaptcha/docs/v3).
         # Corresponds to the JSON property `recaptchaV3Token`
@@ -650,6 +713,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @limited_use = args[:limited_use] if args.key?(:limited_use)
           @recaptcha_v3_token = args[:recaptcha_v3_token] if args.key?(:recaptcha_v3_token)
         end
       end
