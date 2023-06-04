@@ -154,6 +154,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ExportContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -700,7 +706,6 @@ module Google
           property :kind, as: 'kind'
           property :pitr_timestamp_ms, :numeric_string => true, as: 'pitrTimestampMs'
           property :point_in_time, as: 'pointInTime'
-          property :preferred_zone, as: 'preferredZone'
         end
       end
       
@@ -866,6 +871,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :kms_key_version_name, as: 'kmsKeyVersionName'
+        end
+      end
+      
+      class Empty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -1437,6 +1448,7 @@ module Google
       
           property :skip_verification, as: 'skipVerification'
           property :sync_mode, as: 'syncMode'
+          property :sync_parallel_level, as: 'syncParallelLevel'
         end
       end
       
