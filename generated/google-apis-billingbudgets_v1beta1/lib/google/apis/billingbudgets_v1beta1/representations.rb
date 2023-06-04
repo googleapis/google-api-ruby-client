@@ -169,6 +169,7 @@ module Google
       end
       
           collection :projects, as: 'projects'
+          collection :resource_ancestors, as: 'resourceAncestors'
           collection :services, as: 'services'
           collection :subaccounts, as: 'subaccounts'
         end
