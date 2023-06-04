@@ -119,7 +119,7 @@ module Google
         attr_accessor :local_ids
       
         # If the accounts belong to an Identity Platform tenant, the ID of the tenant.
-        # If the accounts belong to an default Identity Platform project, the field is
+        # If the accounts belong to a default Identity Platform project, the field is
         # not needed.
         # Corresponds to the JSON property `tenantId`
         # @return [String]
@@ -2523,19 +2523,19 @@ module Google
         # that contains the credential (e.g. an ID token or access token for OAuth 2.0
         # IdPs) and the provider ID of the IdP that issued the credential. For example,
         # if the user is signing in to the Google provider using a Google ID token, this
-        # should be set to `id_token=[GOOGLE_ID_TOKEN]&providerId=google.com`, where `[
+        # should be set to id_token`=[GOOGLE_ID_TOKEN]&providerId=google.com`, where `[
         # GOOGLE_ID_TOKEN]` should be replaced with the Google ID token. If the user is
         # signing in to the Facebook provider using a Facebook authentication token,
-        # this should be set to `id_token=[FACEBOOK_AUTHENTICATION_TOKEN]&providerId=
-        # facebook.com&nonce= [NONCE]`, where `[FACEBOOK_AUTHENTICATION_TOKEN]` should
+        # this should be set to id_token`=[FACEBOOK_AUTHENTICATION_TOKEN]&providerId=
+        # facebook. com&nonce= [NONCE]`, where `[FACEBOOK_AUTHENTICATION_TOKEN]` should
         # be replaced with the Facebook authentication token. Nonce is required for
         # validating the token. The request will fail if no nonce is provided. If the
         # user is signing in to the Facebook provider using a Facebook access token,
-        # this should be set to `access_token=[FACEBOOK_ACCESS_TOKEN]&providerId=
-        # facebook.com`, where `[FACEBOOK_ACCESS_TOKEN]` should be replaced with the
+        # this should be set to access_token`=[FACEBOOK_ACCESS_TOKEN]&providerId=
+        # facebook. com`, where `[FACEBOOK_ACCESS_TOKEN]` should be replaced with the
         # Facebook access token. If the user is signing in to the Twitter provider using
-        # a Twitter OAuth 1.0 credential, this should be set to `access_token=[
-        # TWITTER_ACCESS_TOKEN]&oauth_token_secret=[TWITTER_TOKEN_SECRET]&providerId=
+        # a Twitter OAuth 1.0 credential, this should be set to access_token`=[
+        # TWITTER_ACCESS_TOKEN]&oauth_token_secret= [TWITTER_TOKEN_SECRET]&providerId=
         # twitter.com`, where `[TWITTER_ACCESS_TOKEN]` and `[TWITTER_TOKEN_SECRET]`
         # should be replaced with the Twitter OAuth access token and Twitter OAuth token
         # secret respectively.

@@ -1152,7 +1152,7 @@ module Google
         #   project that accounts belong to.
         # @param [String] tenant_id
         #   If the accounts belong to an Identity Platform tenant, the ID of the tenant.
-        #   If the accounts belong to an default Identity Platform project, the field is
+        #   If the accounts belong to a default Identity Platform project, the field is
         #   not needed.
         # @param [Google::Apis::IdentitytoolkitV1::GoogleCloudIdentitytoolkitV1BatchDeleteAccountsRequest] google_cloud_identitytoolkit_v1_batch_delete_accounts_request_object
         # @param [String] fields
