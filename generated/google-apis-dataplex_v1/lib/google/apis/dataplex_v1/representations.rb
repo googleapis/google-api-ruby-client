@@ -244,6 +244,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDataplexV1DataProfileSpecSelectedFields
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDataplexV1DataQualityDimensionResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1305,8 +1311,19 @@ module Google
       class GoogleCloudDataplexV1DataProfileSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :exclude_fields, as: 'excludeFields', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileSpecSelectedFields, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileSpecSelectedFields::Representation
+      
+          property :include_fields, as: 'includeFields', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileSpecSelectedFields, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileSpecSelectedFields::Representation
+      
           property :row_filter, as: 'rowFilter'
           property :sampling_percent, as: 'samplingPercent'
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataProfileSpecSelectedFields
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :field_names, as: 'fieldNames'
         end
       end
       
@@ -1783,6 +1800,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_time, as: 'endTime'
+          property :execution_trigger, as: 'executionTrigger'
           property :job_id, as: 'jobId'
           property :message, as: 'message'
           property :retries, as: 'retries'

@@ -973,6 +973,14 @@ module Google
         #   Required. The resource name of the parent environment: projects/`project`/
         #   locations/`location_id`/dataScans/`data_scan_id` where project refers to a
         #   project_id or project_number and location_id refers to a GCP region.
+        # @param [String] filter
+        #   Optional. An expression for filtering the results of the ListDataScanJobs
+        #   request.If unspecified, all datascan jobs will be returned. Multiple filters
+        #   can be applied (with AND, OR logical operators). Filters are case-sensitive.
+        #   Allowed fields are: start_time end_timestart_time and end_time expect RFC-3339
+        #   formatted strings (e.g. 2018-10-08T18:30:00-07:00).For instance, 'start_time >
+        #   2018-10-08T00:00:00.123456789Z AND end_time < 2018-10-09T00:00:00.123456789Z'
+        #   limits results to DataScanJobs between specified start and end times.
         # @param [Fixnum] page_size
         #   Optional. Maximum number of DataScanJobs to return. The service may return
         #   fewer than this value. If unspecified, at most 10 DataScanJobs will be
@@ -998,11 +1006,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_data_scan_jobs(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_data_scan_jobs(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/jobs', options)
           command.response_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1ListDataScanJobsResponse::Representation
           command.response_class = Google::Apis::DataplexV1::GoogleCloudDataplexV1ListDataScanJobsResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
