@@ -64,7 +64,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AutopilotCompatibilityIssue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AutoprovisioningNodePoolDefaults
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BestEffortProvisioning
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -95,6 +107,12 @@ module Google
       end
       
       class CancelOperationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CheckAutopilotCompatibilityResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -335,6 +353,12 @@ module Google
       end
       
       class Jwk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class K8sBetaApiConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -984,6 +1008,18 @@ module Google
         end
       end
       
+      class AutopilotCompatibilityIssue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :constraint_type, as: 'constraintType'
+          property :description, as: 'description'
+          property :documentation_url, as: 'documentationUrl'
+          property :incompatibility_type, as: 'incompatibilityType'
+          property :last_observation, as: 'lastObservation'
+          collection :subjects, as: 'subjects'
+        end
+      end
+      
       class AutoprovisioningNodePoolDefaults
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1000,6 +1036,14 @@ module Google
       
           property :upgrade_settings, as: 'upgradeSettings', class: Google::Apis::ContainerV1::UpgradeSettings, decorator: Google::Apis::ContainerV1::UpgradeSettings::Representation
       
+        end
+      end
+      
+      class BestEffortProvisioning
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :min_provision_nodes, as: 'minProvisionNodes'
         end
       end
       
@@ -1045,6 +1089,15 @@ module Google
           property :operation_id, as: 'operationId'
           property :project_id, as: 'projectId'
           property :zone, as: 'zone'
+        end
+      end
+      
+      class CheckAutopilotCompatibilityResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :issues, as: 'issues', class: Google::Apis::ContainerV1::AutopilotCompatibilityIssue, decorator: Google::Apis::ContainerV1::AutopilotCompatibilityIssue::Representation
+      
+          property :summary, as: 'summary'
         end
       end
       
@@ -1100,6 +1153,8 @@ module Google
           property :default_max_pods_constraint, as: 'defaultMaxPodsConstraint', class: Google::Apis::ContainerV1::MaxPodsConstraint, decorator: Google::Apis::ContainerV1::MaxPodsConstraint::Representation
       
           property :description, as: 'description'
+          property :enable_k8s_beta_apis, as: 'enableK8sBetaApis', class: Google::Apis::ContainerV1::K8sBetaApiConfig, decorator: Google::Apis::ContainerV1::K8sBetaApiConfig::Representation
+      
           property :enable_kubernetes_alpha, as: 'enableKubernetesAlpha'
           property :enable_tpu, as: 'enableTpu'
           property :endpoint, as: 'endpoint'
@@ -1209,6 +1264,7 @@ module Google
       
           property :desired_dns_config, as: 'desiredDnsConfig', class: Google::Apis::ContainerV1::DnsConfig, decorator: Google::Apis::ContainerV1::DnsConfig::Representation
       
+          property :desired_enable_fqdn_network_policy, as: 'desiredEnableFqdnNetworkPolicy'
           property :desired_enable_private_endpoint, as: 'desiredEnablePrivateEndpoint'
           property :desired_fleet, as: 'desiredFleet', class: Google::Apis::ContainerV1::Fleet, decorator: Google::Apis::ContainerV1::Fleet::Representation
       
@@ -1220,6 +1276,8 @@ module Google
       
           property :desired_image_type, as: 'desiredImageType'
           property :desired_intra_node_visibility_config, as: 'desiredIntraNodeVisibilityConfig', class: Google::Apis::ContainerV1::IntraNodeVisibilityConfig, decorator: Google::Apis::ContainerV1::IntraNodeVisibilityConfig::Representation
+      
+          property :desired_k8s_beta_apis, as: 'desiredK8sBetaApis', class: Google::Apis::ContainerV1::K8sBetaApiConfig, decorator: Google::Apis::ContainerV1::K8sBetaApiConfig::Representation
       
           property :desired_l4ilb_subsetting_config, as: 'desiredL4ilbSubsettingConfig', class: Google::Apis::ContainerV1::IlbSubsettingConfig, decorator: Google::Apis::ContainerV1::IlbSubsettingConfig::Representation
       
@@ -1260,6 +1318,8 @@ module Google
           property :desired_vertical_pod_autoscaling, as: 'desiredVerticalPodAutoscaling', class: Google::Apis::ContainerV1::VerticalPodAutoscaling, decorator: Google::Apis::ContainerV1::VerticalPodAutoscaling::Representation
       
           property :desired_workload_identity_config, as: 'desiredWorkloadIdentityConfig', class: Google::Apis::ContainerV1::WorkloadIdentityConfig, decorator: Google::Apis::ContainerV1::WorkloadIdentityConfig::Representation
+      
+          property :enable_k8s_beta_apis, as: 'enableK8sBetaApis', class: Google::Apis::ContainerV1::K8sBetaApiConfig, decorator: Google::Apis::ContainerV1::K8sBetaApiConfig::Representation
       
           property :etag, as: 'etag'
           property :removed_additional_pod_ranges_config, as: 'removedAdditionalPodRangesConfig', class: Google::Apis::ContainerV1::AdditionalPodRangesConfig, decorator: Google::Apis::ContainerV1::AdditionalPodRangesConfig::Representation
@@ -1563,6 +1623,13 @@ module Google
         end
       end
       
+      class K8sBetaApiConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :enabled_apis, as: 'enabledApis'
+        end
+      end
+      
       class KubernetesDashboard
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1756,6 +1823,7 @@ module Google
       
           property :dns_config, as: 'dnsConfig', class: Google::Apis::ContainerV1::DnsConfig, decorator: Google::Apis::ContainerV1::DnsConfig::Representation
       
+          property :enable_fqdn_network_policy, as: 'enableFqdnNetworkPolicy'
           property :enable_intra_node_visibility, as: 'enableIntraNodeVisibility'
           property :enable_l4ilb_subsetting, as: 'enableL4ilbSubsetting'
           property :gateway_api_config, as: 'gatewayApiConfig', class: Google::Apis::ContainerV1::GatewayApiConfig, decorator: Google::Apis::ContainerV1::GatewayApiConfig::Representation
@@ -1919,6 +1987,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :autoscaling, as: 'autoscaling', class: Google::Apis::ContainerV1::NodePoolAutoscaling, decorator: Google::Apis::ContainerV1::NodePoolAutoscaling::Representation
+      
+          property :best_effort_provisioning, as: 'bestEffortProvisioning', class: Google::Apis::ContainerV1::BestEffortProvisioning, decorator: Google::Apis::ContainerV1::BestEffortProvisioning::Representation
       
           collection :conditions, as: 'conditions', class: Google::Apis::ContainerV1::StatusCondition, decorator: Google::Apis::ContainerV1::StatusCondition::Representation
       
