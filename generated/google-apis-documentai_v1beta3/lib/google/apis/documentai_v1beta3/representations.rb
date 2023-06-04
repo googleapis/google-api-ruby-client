@@ -1138,6 +1138,42 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiV1beta3Dataset
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DatasetDocumentWarehouseConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DatasetGcsManagedConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DatasetSchema
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DatasetSpannerIndexingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DatasetUnmanagedDatasetConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiV1beta3DeleteProcessorMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1474,6 +1510,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiV1beta3EntityTypeMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiV1beta3EvaluateProcessorVersionMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1661,6 +1703,12 @@ module Google
       end
       
       class GoogleCloudDocumentaiV1beta3ProcessorVersionDeprecationInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3PropertyMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3752,6 +3800,59 @@ module Google
         end
       end
       
+      class GoogleCloudDocumentaiV1beta3Dataset
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :document_warehouse_config, as: 'documentWarehouseConfig', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DatasetDocumentWarehouseConfig, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DatasetDocumentWarehouseConfig::Representation
+      
+          property :gcs_managed_config, as: 'gcsManagedConfig', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DatasetGcsManagedConfig, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DatasetGcsManagedConfig::Representation
+      
+          property :name, as: 'name'
+          property :spanner_indexing_config, as: 'spannerIndexingConfig', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DatasetSpannerIndexingConfig, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DatasetSpannerIndexingConfig::Representation
+      
+          property :state, as: 'state'
+          property :unmanaged_dataset_config, as: 'unmanagedDatasetConfig', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DatasetUnmanagedDatasetConfig, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DatasetUnmanagedDatasetConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DatasetDocumentWarehouseConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :collection, as: 'collection'
+          property :schema, as: 'schema'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DatasetGcsManagedConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcs_prefix, as: 'gcsPrefix', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3GcsPrefix, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3GcsPrefix::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DatasetSchema
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :document_schema, as: 'documentSchema', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentSchema, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentSchema::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DatasetSpannerIndexingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DatasetUnmanagedDatasetConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleCloudDocumentaiV1beta3DeleteProcessorMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4261,6 +4362,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :base_types, as: 'baseTypes'
           property :display_name, as: 'displayName'
+          property :entity_type_metadata, as: 'entityTypeMetadata', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3EntityTypeMetadata, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3EntityTypeMetadata::Representation
+      
           property :enum_values, as: 'enumValues', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentSchemaEntityTypeEnumValues, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentSchemaEntityTypeEnumValues::Representation
       
           property :name, as: 'name'
@@ -4281,6 +4384,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :occurrence_type, as: 'occurrenceType'
+          property :property_metadata, as: 'propertyMetadata', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3PropertyMetadata, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3PropertyMetadata::Representation
+      
           property :value_type, as: 'valueType'
         end
       end
@@ -4375,6 +4480,13 @@ module Google
       class GoogleCloudDocumentaiV1beta3EnableProcessorResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3EntityTypeMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :inactive, as: 'inactive'
         end
       end
       
@@ -4700,6 +4812,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :deprecation_time, as: 'deprecationTime'
           property :replacement_processor_version, as: 'replacementProcessorVersion'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3PropertyMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :inactive, as: 'inactive'
         end
       end
       
