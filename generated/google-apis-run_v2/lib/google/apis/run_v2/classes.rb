@@ -142,7 +142,7 @@ module Google
       
       # A single application container. This specifies both the container to run, the
       # command to run in the container and the arguments to supply to it. Note that
-      # additional arguments may be supplied by the system to the container at runtime.
+      # additional arguments can be supplied by the system to the container at runtime.
       class GoogleCloudRunV2Container
         include Google::Apis::Core::Hashable
       
@@ -306,7 +306,7 @@ module Google
       class GoogleCloudRunV2EnvVar
         include Google::Apis::Core::Hashable
       
-        # Required. Name of the environment variable. Must be a C_IDENTIFIER, and mnay
+        # Required. Name of the environment variable. Must be a C_IDENTIFIER, and must
         # not exceed 32768 characters.
         # Corresponds to the JSON property `name`
         # @return [String]
