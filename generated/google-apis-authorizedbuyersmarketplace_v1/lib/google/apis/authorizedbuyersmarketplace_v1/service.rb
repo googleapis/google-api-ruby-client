@@ -60,7 +60,7 @@ module Google
         #   clients, in the format `bidders/`accountId``.
         # @param [String] filter
         #   Optional query string using the [Cloud API list filtering syntax](https://
-        #   developers.google.com/authorized-buyers/apis/guides/v2/list-filters) Supported
+        #   developers.google.com/authorized-buyers/apis/guides/list-filters) Supported
         #   columns for filtering are: * deal.displayName * deal.dealType * deal.
         #   createTime * deal.updateTime * deal.flightStartTime * deal.flightEndTime *
         #   dealServingStatus
@@ -460,11 +460,11 @@ module Google
         #   Required. The name of the buyer. Format: `buyers/`accountId``
         # @param [String] filter
         #   Query string using the [Filtering Syntax](https://developers.google.com/
-        #   authorized-buyers/apis/guides/v2/list-filters) Supported fields for filtering
-        #   are: * partnerClientId Use this field to filter the clients by the
-        #   partnerClientId. For example, if the partnerClientId of the client is "1234",
-        #   the value of this field should be `partnerClientId = "1234"`, in order to get
-        #   only the client whose partnerClientId is "1234" in the response.
+        #   authorized-buyers/apis/guides/list-filters) Supported fields for filtering are:
+        #   * partnerClientId Use this field to filter the clients by the partnerClientId.
+        #   For example, if the partnerClientId of the client is "1234", the value of
+        #   this field should be `partnerClientId = "1234"`, in order to get only the
+        #   client whose partnerClientId is "1234" in the response.
         # @param [Fixnum] page_size
         #   Requested page size. If left blank, a default page size of 500 will be applied.
         # @param [String] page_token
@@ -839,7 +839,7 @@ module Google
         #   clients, in the format `bidders/`accountId``.
         # @param [String] filter
         #   Optional query string using the [Cloud API list filtering syntax](https://
-        #   developers.google.com/authorized-buyers/apis/guides/v2/list-filters) Supported
+        #   developers.google.com/authorized-buyers/apis/guides/list-filters) Supported
         #   columns for filtering are: * deal.displayName * deal.dealType * deal.
         #   createTime * deal.updateTime * deal.flightStartTime * deal.flightEndTime *
         #   dealServingStatus
@@ -1115,8 +1115,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a proposal using its name. The proposal is returned at most recent
-        # revision. revision.
+        # Gets a proposal using its resource name. The proposal is returned at the
+        # latest revision.
         # @param [String] name
         #   Required. Name of the proposal. Format: `buyers/`accountId`/proposals/`
         #   proposalId``
@@ -1147,15 +1147,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists proposals. A filter expression (list filter syntax) may be specified to
-        # filter the results. This will not list finalized versions of proposals that
-        # are being renegotiated; to retrieve these use the finalizedProposals resource.
+        # Lists proposals. A filter expression using [Cloud API list filtering syntax](
+        # https://developers.google.com/authorized-buyers/apis/guides/list-filters) may
+        # be specified to filter the results.
         # @param [String] parent
         #   Required. Parent that owns the collection of proposals Format: `buyers/`
         #   accountId``
         # @param [String] filter
         #   Optional query string using the [Cloud API list filtering syntax](https://
-        #   developers.google.com/authorized-buyers/apis/guides/v2/list-filters) Supported
+        #   developers.google.com/authorized-buyers/apis/guides/list-filters) Supported
         #   columns for filtering are: * displayName * dealType * updateTime * state
         # @param [Fixnum] page_size
         #   Requested page size. The server may return fewer results than requested. If
@@ -1193,12 +1193,12 @@ module Google
         end
         
         # Updates the proposal at the given revision number. If the revision number in
-        # the request is behind the latest from the server, an error message will be
-        # returned. See FieldMask for how to use FieldMask. Only fields specified in the
-        # UpdateProposalRequest.update_mask will be updated; Fields noted as 'Immutable'
-        # or 'Output only' yet specified in the UpdateProposalRequest.update_mask will
-        # be ignored and left unchanged. Updating a private auction proposal is not
-        # allowed and will result in an error.
+        # the request is behind the latest one kept in the server, an error message will
+        # be returned. See FieldMask for how to use FieldMask. Only fields specified in
+        # the UpdateProposalRequest.update_mask will be updated; Fields noted as '
+        # Immutable' or 'Output only' yet specified in the UpdateProposalRequest.
+        # update_mask will be ignored and left unchanged. Updating a private auction
+        # proposal is not allowed and will result in an error.
         # @param [String] name
         #   Immutable. The name of the proposal serving as a unique identifier. Format:
         #   buyers/`accountId`/proposals/`proposalId`
@@ -1479,7 +1479,7 @@ module Google
         #   buyers/`buyerId``
         # @param [String] filter
         #   Optional query string using the [Cloud API list filtering] (https://developers.
-        #   google.com/authorized-buyers/apis/guides/v2/list-filters) syntax.
+        #   google.com/authorized-buyers/apis/guides/list-filters) syntax.
         # @param [Fixnum] page_size
         #   Requested page size. The server may return fewer results than requested. If
         #   requested more than 500, the server will return 500 results per page. If
