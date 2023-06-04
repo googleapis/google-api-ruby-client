@@ -88,12 +88,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # [Developer Preview](https://developers.google.com/workspace/preview): Uploads
-        # an attachment. Requires user [authentication](https://developers.google.com/
-        # chat/api/guides/auth/users). You can upload attachments up to 200 MB. Certain
-        # file types aren't supported. For details, see [File types blocked by Google
-        # Chat](https://support.google.com/chat/answer/7651457?&co=GENIE.Platform%
-        # 3DDesktop#File%20types%20blocked%20in%20Google%20Chat).
+        # Uploads an attachment. For an example, see [Upload media as a file attachment](
+        # https://developers.google.com/chat/api/guides/v1/media-and-attachments/upload).
+        # Requires user [authentication](https://developers.google.com/chat/api/guides/
+        # auth/users) and the `chat.messages` or `chat.messages.create` authorization
+        # scope. You can upload attachments up to 200 MB. Certain file types aren't
+        # supported. For details, see [File types blocked by Google Chat](https://
+        # support.google.com/chat/answer/7651457?&co=GENIE.Platform%3DDesktop#File%
+        # 20types%20blocked%20in%20Google%20Chat).
         # @param [String] parent
         #   Required. Resource name of the Chat space in which the attachment is uploaded.
         #   Format "spaces/`space`".
@@ -137,10 +139,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # [Developer Preview](https://developers.google.com/workspace/preview): Creates
-        # a named space. Spaces grouped by topics or that have guest access aren't
-        # supported. Requires [user authentication](https://developers.google.com/chat/
-        # api/guides/auth/users) and the `chat.spaces.create` or `chat.spaces` scope.
+        # Creates a named space. Spaces grouped by topics or that have guest access aren'
+        # t supported. For an example, see [Create a space](https://developers.google.
+        # com/chat/api/guides/v1/spaces/create). Requires [user authentication](https://
+        # developers.google.com/chat/api/guides/auth/users) and the `chat.spaces.create`
+        # or `chat.spaces` scope.
         # @param [Google::Apis::ChatV1::Space] space_object
         # @param [String] request_id
         #   Optional. A unique identifier for this request. A random UUID is recommended.
@@ -176,12 +179,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # [Developer Preview](https://developers.google.com/workspace/preview): Deletes
-        # a named space. Always performs a cascading delete, which means that the space'
-        # s child resources—like messages posted in the space and memberships in the
-        # space—are also deleted. Requires [user authentication](https://developers.
-        # google.com/chat/api/guides/auth/users) from a user who has permission to
-        # delete the space, and the `chat.delete` scope.
+        # Deletes a named space. Always performs a cascading delete, which means that
+        # the space's child resources—like messages posted in the space and memberships
+        # in the space—are also deleted. For an example, see [Delete a space](https://
+        # developers.google.com/chat/api/guides/v1/spaces/delete). Requires [user
+        # authentication](https://developers.google.com/chat/api/guides/auth/users) from
+        # a user who has permission to delete the space, and the `chat.delete` scope.
         # @param [String] name
         #   Required. Resource name of the space to delete. Format: `spaces/`space``
         # @param [String] fields
@@ -211,16 +214,17 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # [Developer Preview](https://developers.google.com/workspace/preview): Returns
-        # the existing direct message with the specified user. With [user authentication]
-        # (https://developers.google.com/chat/api/guides/auth/users), returns the direct
-        # message space between the specified user and the authenticated user. With [
+        # Returns the existing direct message with the specified user. If no direct
+        # message space is found, returns a `404 NOT_FOUND` error. For an example, see [
+        # Find a direct message](/chat/api/guides/v1/spaces/find-direct-message). With [
+        # user authentication](https://developers.google.com/chat/api/guides/auth/users),
+        # returns the direct message space between the specified user and the
+        # authenticated user. With [service account authentication](https://developers.
+        # google.com/chat/api/guides/auth/service-accounts), returns the direct message
+        # space between the specified user and the calling Chat app. Requires [user
+        # authentication](https://developers.google.com/chat/api/guides/auth/users) or [
         # service account authentication](https://developers.google.com/chat/api/guides/
-        # auth/service-accounts), returns the direct message space between the specified
-        # user and the calling Chat app. If no direct message space is found, returns a `
-        # 404 NOT_FOUND` error. Requires [user authentication](https://developers.google.
-        # com/chat/api/guides/auth/users) or [service account authentication](https://
-        # developers.google.com/chat/api/guides/auth/service-accounts).
+        # auth/service-accounts).
         # @param [String] name
         #   Required. Resource name of the user to find direct message with. Format: `
         #   users/`user``, where ``user`` is either the ``person_id`` for the [person](
@@ -256,14 +260,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns a space. Requires [authentication](https://developers.google.com/chat/
-        # api/guides/auth). Fully supports [service account authentication](https://
-        # developers.google.com/chat/api/guides/auth/service-accounts). Supports [user
-        # authentication](https://developers.google.com/chat/api/guides/auth/users) as
-        # part of the [Google Workspace Developer Preview Program](https://developers.
-        # google.com/workspace/preview), which grants early access to certain features. [
-        # User authentication](https://developers.google.com/chat/api/guides/auth/users)
-        # requires the `chat.spaces` or `chat.spaces.readonly` authorization scope.
+        # Returns details about a space. For an example, see [Get a space](https://
+        # developers.google.com/chat/api/guides/v1/spaces/get). Requires [authentication]
+        # (https://developers.google.com/chat/api/guides/auth). Fully supports [service
+        # account authentication](https://developers.google.com/chat/api/guides/auth/
+        # service-accounts) and [user authentication](https://developers.google.com/chat/
+        # api/guides/auth/users). [User authentication](https://developers.google.com/
+        # chat/api/guides/auth/users) requires the `chat.spaces` or `chat.spaces.
+        # readonly` authorization scope.
         # @param [String] name
         #   Required. Resource name of the space, in the form "spaces/*". Format: `spaces/`
         #   space``
@@ -294,15 +298,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists spaces the caller is a member of. Requires [authentication](https://
-        # developers.google.com/chat/api/guides/auth). Fully supports [service account
-        # authentication](https://developers.google.com/chat/api/guides/auth/service-
-        # accounts). Supports [user authentication](https://developers.google.com/chat/
-        # api/guides/auth/users) as part of the [Google Workspace Developer Preview
-        # Program](https://developers.google.com/workspace/preview), which grants early
-        # access to certain features. [User authentication](https://developers.google.
-        # com/chat/api/guides/auth/users) requires the `chat.spaces` or `chat.spaces.
-        # readonly` authorization scope. Lists spaces visible to the caller or
+        # Lists spaces the caller is a member of. Group chats and DMs aren't listed
+        # until the first message is sent. For an example, see [List spaces](https://
+        # developers.google.com/chat/api/guides/v1/spaces/list). Requires [
+        # authentication](https://developers.google.com/chat/api/guides/auth). Fully
+        # supports [service account authentication](https://developers.google.com/chat/
+        # api/guides/auth/service-accounts) and [user authentication](https://developers.
+        # google.com/chat/api/guides/auth/users) requires the `chat.spaces` or `chat.
+        # spaces.readonly` authorization scope. Lists spaces visible to the caller or
         # authenticated user. Group chats and DMs aren't listed until the first message
         # is sent.
         # @param [String] filter
@@ -318,8 +321,7 @@ module Google
         #   service account authentication](https://developers.google.com/chat/api/guides/
         #   auth/service-accounts), this field is ignored and the query always returns all
         #   spaces. But the Chat API still validates the query syntax with service
-        #   accounts, so invalid queries are still rejected. [Developer Preview](https://
-        #   developers.google.com/workspace/preview).
+        #   accounts, so invalid queries are still rejected.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of spaces to return. The service might return
         #   fewer than this value. If unspecified, at most 100 spaces are returned. The
@@ -359,9 +361,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # [Developer Preview](https://developers.google.com/workspace/preview): Updates
-        # a space. Requires [user authentication](https://developers.google.com/chat/api/
-        # guides/auth/users) and the `chat.spaces` scope.
+        # Updates a space. For an example, see [Update a space](https://developers.
+        # google.com/chat/api/guides/v1/spaces/update). Requires [user authentication](
+        # https://developers.google.com/chat/api/guides/auth/users) and the `chat.spaces`
+        # scope.
         # @param [String] name
         #   Resource name of the space. Format: `spaces/`space``
         # @param [Google::Apis::ChatV1::Space] space_object
@@ -413,31 +416,32 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # [Developer Preview](https://developers.google.com/workspace/preview): Creates
-        # a space and adds specified users to it. The calling user is automatically
-        # added to the space, and shouldn't be specified as a membership in the request.
-        # To specify the human members to add, add memberships with the appropriate `
-        # member.name` in the `SetUpSpaceRequest`. To add a human user, use `users/`user`
-        # `, where ``user`` is either the ``person_id`` for the [person](https://
-        # developers.google.com/people/api/rest/v1/people) from the People API, or the `
-        # id` for the [user](https://developers.google.com/admin-sdk/directory/reference/
-        # rest/v1/users) in the Admin SDK Directory API. For example, if the People API `
-        # Person` `resourceName` is `people/123456789`, you can add the user to the
-        # space by including a membership with `users/123456789` as the `member.name`.
-        # For a space or group chat, if the caller blocks or is blocked by some members,
-        # then those members aren't added to the created space. To create a direct
-        # message (DM) between the calling user and another human user, specify exactly
-        # one membership to represent the human user. If one user blocks the other, the
-        # request fails and the DM isn't created. To create a DM between the calling
-        # user and the calling app, set `Space.singleUserBotDm` to true and don't
-        # specify any memberships. You can only use this method to add app memberships
-        # to DMs. To add the calling app as a member of other space types, use [create
-        # membership](https://developers.google.com/chat/api/reference/rest/v1/spaces.
-        # members/create) If a DM already exists between two users, even when one user
-        # blocks the other at the time a request is made, then the existing DM is
-        # returned. Spaces with threaded replies or guest access aren't supported.
-        # Requires [user authentication](https://developers.google.com/chat/api/guides/
-        # auth/users) and the `chat.spaces.create` or `chat.spaces` scope.
+        # Creates a space and adds specified users to it. The calling user is
+        # automatically added to the space, and shouldn't be specified as a membership
+        # in the request. For an example, see [Set up a space](https://developers.google.
+        # com/chat/api/guides/v1/spaces/set-up). To specify the human members to add,
+        # add memberships with the appropriate `member.name` in the `SetUpSpaceRequest`.
+        # To add a human user, use `users/`user``, where ``user`` is either the ``
+        # person_id`` for the [person](https://developers.google.com/people/api/rest/v1/
+        # people) from the People API, or the `id` for the [user](https://developers.
+        # google.com/admin-sdk/directory/reference/rest/v1/users) in the Admin SDK
+        # Directory API. For example, if the People API `Person` `resourceName` is `
+        # people/123456789`, you can add the user to the space by including a membership
+        # with `users/123456789` as the `member.name`. For a space or group chat, if the
+        # caller blocks or is blocked by some members, then those members aren't added
+        # to the created space. To create a direct message (DM) between the calling user
+        # and another human user, specify exactly one membership to represent the human
+        # user. If one user blocks the other, the request fails and the DM isn't created.
+        # To create a DM between the calling user and the calling app, set `Space.
+        # singleUserBotDm` to `true` and don't specify any memberships. You can only use
+        # this method to set up a DM with the calling app. To add the calling app as a
+        # member of a space or an existing DM between two human users, see [create a
+        # membership](https://developers.google.com/chat/api/guides/v1/members/create).
+        # If a DM already exists between two users, even when one user blocks the other
+        # at the time a request is made, then the existing DM is returned. Spaces with
+        # threaded replies or guest access aren't supported. Requires [user
+        # authentication](https://developers.google.com/chat/api/guides/auth/users) and
+        # the `chat.spaces.create` or `chat.spaces` scope.
         # @param [Google::Apis::ChatV1::SetUpSpaceRequest] set_up_space_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -467,20 +471,25 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # [Developer Preview](https://developers.google.com/workspace/preview): Creates
-        # a human membership or app membership for the calling app. Creating memberships
-        # for other apps isn't supported. Requires [user authentication](https://
-        # developers.google.com/chat/api/guides/auth/users) and the `chat.memberships` (
-        # for human membership) or `chat.memberships.app` (for app membership) scope. To
-        # specify the member to add, set the `membership.member.name` in the `
-        # CreateMembershipRequest`: - To add the calling app to the space, use `users/
-        # app`. - To add a human user, use `users/`user``, where ``user`` is either the `
-        # `person_id`` for the [person](https://developers.google.com/people/api/rest/v1/
-        # people) from the People API, or the `id` for the [user](https://developers.
-        # google.com/admin-sdk/directory/reference/rest/v1/users) in the Directory API.
-        # For example, if the People API `Person` `resourceName` is `people/123456789`,
-        # you can add the user to the space by setting the `membership.member.name` to `
-        # users/123456789`.
+        # Creates a human membership or app membership for the calling app. Creating
+        # memberships for other apps isn't supported. For an example, see [ Create a
+        # membership](https://developers.google.com/chat/api/guides/v1/members/create).
+        # When creating a membership, if the specified member has their auto-accept
+        # policy turned off, then they're invited, and must accept the space invitation
+        # before joining. Otherwise, creating a membership adds the member directly to
+        # the specified space. Requires [user authentication](https://developers.google.
+        # com/chat/api/guides/auth/users) and the `chat.memberships` (for human
+        # membership) or `chat.memberships.app` (for app membership) scope. To specify
+        # the member to add, set the `membership.member.name` in the `
+        # CreateMembershipRequest`: - To add the calling app to a space or a direct
+        # message between two human users, use `users/app`. Unable to add other apps to
+        # the space. - To add a human user, use `users/`user``, where ``user`` is either
+        # the ``person_id`` for the [person](https://developers.google.com/people/api/
+        # rest/v1/people) from the People API, or the `id` for the [user](https://
+        # developers.google.com/admin-sdk/directory/reference/rest/v1/users) in the
+        # Directory API. For example, if the People API `Person` `resourceName` is `
+        # people/123456789`, you can add the user to the space by setting the `
+        # membership.member.name` to `users/123456789`.
         # @param [String] parent
         #   Required. The resource name of the space for which to create the membership.
         #   Format: spaces/`space`
@@ -514,10 +523,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # [Developer Preview](https://developers.google.com/workspace/preview): Deletes
-        # a membership. Requires [user authentication](https://developers.google.com/
-        # chat/api/guides/auth/users) and the `chat.memberships` or `chat.memberships.
-        # app` authorization scope.
+        # Deletes a membership. For an example, see [Delete a membership](https://
+        # developers.google.com/chat/api/guides/v1/members/delete). Requires [user
+        # authentication](https://developers.google.com/chat/api/guides/auth/users) and
+        # the `chat.memberships` or `chat.memberships.app` authorization scope.
         # @param [String] name
         #   Required. Resource name of the membership to delete. Chat apps can delete
         #   human users' or their own memberships. Chat apps can't delete other apps'
@@ -553,15 +562,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns a membership. Requires [authentication](https://developers.google.com/
-        # chat/api/guides/auth/). Fully supports [service account authentication](https:/
-        # /developers.google.com/chat/api/guides/auth/service-accounts). Supports [user
-        # authentication](https://developers.google.com/chat/api/guides/auth/users) as
-        # part of the [Google Workspace Developer Preview Program](https://developers.
-        # google.com/workspace/preview), which grants early access to certain features. [
-        # User authentication](https://developers.google.com/chat/api/guides/auth/users)
-        # requires the `chat.memberships` or `chat.memberships.readonly` authorization
-        # scope.
+        # Returns details about a membership. For an example, see [Get a membership](
+        # https://developers.google.com/chat/api/guides/v1/members/get). Requires [
+        # authentication](https://developers.google.com/chat/api/guides/auth). Fully
+        # supports [service account authentication](https://developers.google.com/chat/
+        # api/guides/auth/service-accounts) and [user authentication](https://developers.
+        # google.com/chat/api/guides/auth/users). [User authentication](https://
+        # developers.google.com/chat/api/guides/auth/users) requires the `chat.
+        # memberships` or `chat.memberships.readonly` authorization scope.
         # @param [String] name
         #   Required. Resource name of the membership to retrieve. Format: `spaces/`space`/
         #   members/`member``
@@ -592,15 +600,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists memberships in a space. Requires [authentication](https://developers.
-        # google.com/chat/api/guides/auth/). Fully supports [service account
-        # authentication](https://developers.google.com/chat/api/guides/auth/service-
-        # accounts). Supports [user authentication](https://developers.google.com/chat/
-        # api/guides/auth/users) as part of the [Google Workspace Developer Preview
-        # Program](https://developers.google.com/workspace/preview), which grants early
-        # access to certain features. [User authentication](https://developers.google.
-        # com/chat/api/guides/auth/users) requires the `chat.memberships` or `chat.
-        # memberships.readonly` authorization scope.
+        # Lists memberships in a space. For an example, see [List memberships](https://
+        # developers.google.com/chat/api/guides/v1/members/list). Listing memberships
+        # with [app authentication](https://developers.google.com/chat/api/guides/auth/
+        # service-accounts) lists memberships in spaces that the Chat app has access to,
+        # but excludes Chat app memberships, including its own. Listing memberships with
+        # [User authentication](https://developers.google.com/chat/api/guides/auth/users)
+        # lists memberships in spaces that the authenticated user has access to.
+        # Requires [authentication](https://developers.google.com/chat/api/guides/auth).
+        # Fully supports [service account authentication](https://developers.google.com/
+        # chat/api/guides/auth/service-accounts) and [user authentication](https://
+        # developers.google.com/chat/api/guides/auth/users). [User authentication](https:
+        # //developers.google.com/chat/api/guides/auth/users) requires the `chat.
+        # memberships` or `chat.memberships.readonly` authorization scope.
         # @param [String] parent
         #   Required. The resource name of the space for which to fetch a membership list.
         #   Format: spaces/`space`
@@ -665,19 +677,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a message. For example usage, see [Create a message](https://
-        # developers.google.com/chat/api/guides/crudl/messages#create_a_message).
-        # Requires [authentication](https://developers.google.com/chat/api/guides/auth).
-        # Fully supports [service account authentication](https://developers.google.com/
-        # chat/api/guides/auth/service-accounts). Supports [user authentication](https://
-        # developers.google.com/chat/api/guides/auth/users) as part of the [Google
-        # Workspace Developer Preview Program](https://developers.google.com/workspace/
-        # preview), which grants early access to certain features. [User authentication](
-        # https://developers.google.com/chat/api/guides/auth/users) requires the `chat.
-        # messages` or `chat.messages.create` authorization scope. Because Chat provides
-        # authentication for [webhooks](https://developers.google.com/chat/how-tos/
-        # webhooks) as part of the URL that's generated when a webhook is registered,
-        # webhooks can create messages without a service account or user authentication.
+        # Creates a message. For an example, see [Create a message](https://developers.
+        # google.com/chat/api/guides/crudl/messages#create_a_message). Requires [
+        # authentication](https://developers.google.com/chat/api/guides/auth). Creating
+        # a text message supports both [user authentication](https://developers.google.
+        # com/chat/api/guides/auth/users) and [app authentication] (https://developers.
+        # google.com/chat/api/guides/auth/service-accounts). [User authentication](https:
+        # //developers.google.com/chat/api/guides/auth/users) requires the `chat.
+        # messages` or `chat.messages.create` authorization scope. Creating a card
+        # message requires [app authentication] (https://developers.google.com/chat/api/
+        # guides/auth/service-accounts) Because Chat provides authentication for [
+        # webhooks](https://developers.google.com/chat/how-tos/webhooks) as part of the
+        # URL that's generated when a webhook is registered, webhooks can create
+        # messages without a service account or user authentication.
         # @param [String] parent
         #   Required. The resource name of the space in which to create a message. Format:
         #   `spaces/`space``
@@ -686,9 +698,15 @@ module Google
         #   Optional. A custom name for a Chat message assigned at creation. Must start
         #   with `client-` and contain only lowercase letters, numbers, and hyphens up to
         #   63 characters in length. Specify this field to get, update, or delete the
-        #   message with the specified value. For example usage, see [Name a created
-        #   message](https://developers.google.com/chat/api/guides/crudl/messages#
-        #   name_a_created_message).
+        #   message with the specified value. Assigning a custom name lets a a Chat app
+        #   recall the message without saving the message `name` from the [response body](/
+        #   chat/api/reference/rest/v1/spaces.messages/get#response-body) returned when
+        #   creating the message. Assigning a custom name doesn't replace the generated `
+        #   name` field, the message's resource name. Instead, it sets the custom name as
+        #   the `clientAssignedMessageId` field, which you can reference while processing
+        #   later operations, like updating or deleting the message. For example usage,
+        #   see [Name a created message](https://developers.google.com/chat/api/guides/
+        #   crudl/messages#name_a_created_message).
         # @param [String] message_reply_option
         #   Optional. Specifies whether a message starts a thread or replies to one. Only
         #   supported in named spaces.
@@ -734,16 +752,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a message. For example usage, see [Delete a message](https://
-        # developers.google.com/chat/api/guides/crudl/messages#delete_a_message).
-        # Requires [authentication](https://developers.google.com/chat/api/guides/auth).
-        # Fully supports [service account authentication](https://developers.google.com/
-        # chat/api/guides/auth/service-accounts). Supports [user authentication](https://
-        # developers.google.com/chat/api/guides/auth/users) as part of the [Google
-        # Workspace Developer Preview Program](https://developers.google.com/workspace/
-        # preview), which grants early access to certain features. [User authentication](
-        # https://developers.google.com/chat/api/guides/auth/users) requires the `chat.
-        # messages` authorization scope.
+        # Deletes a message. For an example, see [Delete a message](https://developers.
+        # google.com/chat/api/guides/v1/messages/delete). Requires [authentication](
+        # https://developers.google.com/chat/api/guides/auth). Fully supports [service
+        # account authentication](https://developers.google.com/chat/api/guides/auth/
+        # service-accounts) and [user authentication](https://developers.google.com/chat/
+        # api/guides/auth/users). [User authentication](https://developers.google.com/
+        # chat/api/guides/auth/users) requires the `chat.messages` authorization scope.
         # @param [String] name
         #   Required. Resource name of the message that you want to delete, in the form `
         #   spaces/*/messages/*` Example: `spaces/AAAAAAAAAAA/messages/BBBBBBBBBBB.
@@ -782,17 +797,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns a message. For example usage, see [Read a message](https://developers.
-        # google.com/chat/api/guides/crudl/messages#read_a_message). Requires [
+        # Returns details about a message. For an example, see [Read a message](https://
+        # developers.google.com/chat/api/guides/v1/messages/get). Requires [
         # authentication](https://developers.google.com/chat/api/guides/auth). Fully
-        # supports [Service account authentication](https://developers.google.com/chat/
-        # api/guides/auth/service-accounts). Supports [user authentication](https://
-        # developers.google.com/chat/api/guides/auth/users) as part of the [Google
-        # Workspace Developer Preview Program](https://developers.google.com/workspace/
-        # preview), which grants early access to certain features. [User authentication](
-        # https://developers.google.com/chat/api/guides/auth/users) requires the `chat.
-        # messages` or `chat.messages.readonly` authorization scope. Note: Might return
-        # a message from a blocked member or space.
+        # supports [service account authentication](https://developers.google.com/chat/
+        # api/guides/auth/service-accounts) and [user authentication](https://developers.
+        # google.com/chat/api/guides/auth/users). [User authentication](https://
+        # developers.google.com/chat/api/guides/auth/users) requires the `chat.messages`
+        # or `chat.messages.readonly` authorization scope. Note: Might return a message
+        # from a blocked member or space.
         # @param [String] name
         #   Required. Resource name of the message to retrieve. Format: `spaces/`space`/
         #   messages/`message`` If the message begins with `client-`, then it has a custom
@@ -827,9 +840,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # [Developer Preview](https://developers.google.com/workspace/preview): Lists
-        # messages in a space that the caller is a member of, including messages from
-        # blocked members and spaces. Requires [user authentication](https://developers.
+        # Lists messages in a space that the caller is a member of, including messages
+        # from blocked members and spaces. For an example, see [List messages](/chat/api/
+        # guides/v1/messages/list). Requires [user authentication](https://developers.
         # google.com/chat/api/guides/auth/users) and the `chat.messages` or `chat.
         # messages.readonly` authorization scope. This method is only supported in
         # spaces that don't allow users from outside the Workspace organization to join.
@@ -905,16 +918,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a message. There's a difference between `patch` and `update` methods.
-        # The `patch` method uses a `patch` request while the `update` method uses a `
-        # put` request. We recommend using the `patch` method. For example usage, see [
-        # Update a message](https://developers.google.com/chat/api/guides/crudl/messages#
-        # update_a_message). Requires [authentication](https://developers.google.com/
-        # chat/api/guides/auth/). Fully supports [service account authentication](https:/
-        # /developers.google.com/chat/api/guides/auth/service-accounts). Supports [user
-        # authentication](https://developers.google.com/chat/api/guides/auth/users) as
-        # part of the [Google Workspace Developer Preview Program](https://developers.
-        # google.com/workspace/preview), which grants early access to certain features. [
+        # Updates a message. There's a difference between the `patch` and `update`
+        # methods. The `patch` method uses a `patch` request while the `update` method
+        # uses a `put` request. We recommend using the `patch` method. For an example,
+        # see [Update a message](https://developers.google.com/chat/api/guides/v1/
+        # messages/update). Requires [authentication](https://developers.google.com/chat/
+        # api/guides/auth). Fully supports [service account authentication](https://
+        # developers.google.com/chat/api/guides/auth/service-accounts) and [user
+        # authentication](https://developers.google.com/chat/api/guides/auth/users). [
         # User authentication](https://developers.google.com/chat/api/guides/auth/users)
         # requires the `chat.messages` authorization scope.
         # @param [String] name
@@ -929,7 +940,9 @@ module Google
         # @param [String] update_mask
         #   Required. The field paths to update. Separate multiple values with commas.
         #   Currently supported field paths: - `text` - `cards` (Requires [service account
-        #   authentication](/chat/api/guides/auth/service-accounts).) - `cards_v2`
+        #   authentication](/chat/api/guides/auth/service-accounts).) - `cards_v2` (
+        #   Requires [service account authentication](/chat/api/guides/auth/service-
+        #   accounts).)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -961,16 +974,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a message. There's a difference between `patch` and `update` methods.
-        # The `patch` method uses a `patch` request while the `update` method uses a `
-        # put` request. We recommend using the `patch` method. For example usage, see [
-        # Update a message](https://developers.google.com/chat/api/guides/crudl/messages#
-        # update_a_message). Requires [authentication](https://developers.google.com/
-        # chat/api/guides/auth/). Fully supports [service account authentication](https:/
-        # /developers.google.com/chat/api/guides/auth/service-accounts). Supports [user
-        # authentication](https://developers.google.com/chat/api/guides/auth/users) as
-        # part of the [Google Workspace Developer Preview Program](https://developers.
-        # google.com/workspace/preview), which grants early access to certain features. [
+        # Updates a message. There's a difference between the `patch` and `update`
+        # methods. The `patch` method uses a `patch` request while the `update` method
+        # uses a `put` request. We recommend using the `patch` method. For an example,
+        # see [Update a message](https://developers.google.com/chat/api/guides/v1/
+        # messages/update). Requires [authentication](https://developers.google.com/chat/
+        # api/guides/auth). Fully supports [service account authentication](https://
+        # developers.google.com/chat/api/guides/auth/service-accounts) and [user
+        # authentication](https://developers.google.com/chat/api/guides/auth/users). [
         # User authentication](https://developers.google.com/chat/api/guides/auth/users)
         # requires the `chat.messages` authorization scope.
         # @param [String] name
@@ -985,7 +996,9 @@ module Google
         # @param [String] update_mask
         #   Required. The field paths to update. Separate multiple values with commas.
         #   Currently supported field paths: - `text` - `cards` (Requires [service account
-        #   authentication](/chat/api/guides/auth/service-accounts).) - `cards_v2`
+        #   authentication](/chat/api/guides/auth/service-accounts).) - `cards_v2` (
+        #   Requires [service account authentication](/chat/api/guides/auth/service-
+        #   accounts).)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1019,8 +1032,10 @@ module Google
         
         # Gets the metadata of a message attachment. The attachment data is fetched
         # using the [media API](https://developers.google.com/chat/api/reference/rest/v1/
-        # media/download). Requires [service account authentication](https://developers.
-        # google.com/chat/api/guides/auth/service-accounts).
+        # media/download). For an example, see [Get a message attachment](https://
+        # developers.google.com/chat/api/guides/v1/media-and-attachments/get). Requires [
+        # service account authentication](https://developers.google.com/chat/api/guides/
+        # auth/service-accounts).
         # @param [String] name
         #   Required. Resource name of the attachment, in the form `spaces/*/messages/*/
         #   attachments/*`.
@@ -1051,11 +1066,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # [Developer Preview](https://developers.google.com/workspace/preview): Creates
-        # a reaction and adds it to a message. Requires [user authentication](https://
-        # developers.google.com/chat/api/guides/auth/users) and the `chat.messages`, `
-        # chat.messages.reactions`, or `chat.messages.reactions.create` scope. Only
-        # unicode emoji are supported.
+        # Creates a reaction and adds it to a message. For an example, see [Create a
+        # reaction](https://developers.google.com/chat/api/guides/v1/reactions/create).
+        # Requires [user authentication](https://developers.google.com/chat/api/guides/
+        # auth/users) and the `chat.messages`, `chat.messages.reactions`, or `chat.
+        # messages.reactions.create` scope. Only unicode emoji are supported.
         # @param [String] parent
         #   Required. The message where the reaction is created. Format: `spaces/`space`/
         #   messages/`message``
@@ -1089,10 +1104,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # [Developer Preview](https://developers.google.com/workspace/preview): Deletes
-        # a reaction to a message. Requires [user authentication](https://developers.
-        # google.com/chat/api/guides/auth/users) and the `chat.messages` or `chat.
-        # messages.reactions` scope.
+        # Deletes a reaction to a message. For an example, see [Delete a reaction](https:
+        # //developers.google.com/chat/api/guides/v1/reactions/delete). Requires [user
+        # authentication](https://developers.google.com/chat/api/guides/auth/users) and
+        # the `chat.messages` or `chat.messages.reactions` scope.
         # @param [String] name
         #   Required. Name of the reaction to delete. Format: `spaces/`space`/messages/`
         #   message`/reactions/`reaction``
@@ -1123,11 +1138,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # [Developer Preview](https://developers.google.com/workspace/preview): Lists
-        # reactions to a message. Requires [user authentication](https://developers.
-        # google.com/chat/api/guides/auth/users) and `chat.messages`, `chat.messages.
-        # readonly`, `chat.messages.reactions`, or `chat.messages.reactions.readonly`
-        # scope.
+        # Lists reactions to a message. For an example, see [List reactions](https://
+        # developers.google.com/chat/api/guides/v1/reactions/list). Requires [user
+        # authentication](https://developers.google.com/chat/api/guides/auth/users) and `
+        # chat.messages`, `chat.messages.readonly`, `chat.messages.reactions`, or `chat.
+        # messages.reactions.readonly` scope.
         # @param [String] parent
         #   Required. The message users reacted to. Format: `spaces/`space`/messages/`
         #   message``

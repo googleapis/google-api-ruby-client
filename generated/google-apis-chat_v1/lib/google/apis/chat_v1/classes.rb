@@ -233,8 +233,7 @@ module Google
       
         # Opaque token containing a reference to an uploaded attachment. Treated by
         # clients as an opaque string and used to create or update Chat messages with
-        # attachments. [Developer Preview](https://developers.google.com/workspace/
-        # preview).
+        # attachments.
         # Corresponds to the JSON property `attachmentUploadToken`
         # @return [String]
         attr_accessor :attachment_upload_token
@@ -634,8 +633,7 @@ module Google
         end
       end
       
-      # Represents a custom emoji. [Developer Preview](https://developers.google.com/
-      # workspace/preview).
+      # Represents a custom emoji.
       class CustomEmoji
         include Google::Apis::Core::Hashable
       
@@ -707,7 +705,7 @@ module Google
       end
       
       # Information about a deleted message. A message is deleted when `delete_time`
-      # is set. [Developer Preview](https://developers.google.com/workspace/preview).
+      # is set.
       class DeletionMetadata
         include Google::Apis::Core::Hashable
       
@@ -917,13 +915,11 @@ module Google
         end
       end
       
-      # An emoji that is used as a reaction to a message. [Developer Preview](https://
-      # developers.google.com/workspace/preview).
+      # An emoji that is used as a reaction to a message.
       class Emoji
         include Google::Apis::Core::Hashable
       
-        # Represents a custom emoji. [Developer Preview](https://developers.google.com/
-        # workspace/preview).
+        # Represents a custom emoji.
         # Corresponds to the JSON property `customEmoji`
         # @return [Google::Apis::ChatV1::CustomEmoji]
         attr_accessor :custom_emoji
@@ -944,13 +940,11 @@ module Google
         end
       end
       
-      # The number of people who reacted to a message with a specific emoji. [
-      # Developer Preview](https://developers.google.com/workspace/preview).
+      # The number of people who reacted to a message with a specific emoji.
       class EmojiReactionSummary
         include Google::Apis::Core::Hashable
       
-        # An emoji that is used as a reaction to a message. [Developer Preview](https://
-        # developers.google.com/workspace/preview).
+        # An emoji that is used as a reaction to a message.
         # Corresponds to the JSON property `emoji`
         # @return [Google::Apis::ChatV1::Emoji]
         attr_accessor :emoji
@@ -1667,7 +1661,7 @@ module Google
       class GoogleAppsCardV1DecoratedText
         include Google::Apis::Core::Hashable
       
-        # The text that appears below `text`. Always truncates.
+        # The text that appears below `text`. Always wraps.
         # Corresponds to the JSON property `bottomLabel`
         # @return [String]
         attr_accessor :bottom_label
@@ -3174,8 +3168,15 @@ module Google
         # A custom name for a Chat message assigned at creation. Must start with `client-
         # ` and contain only lowercase letters, numbers, and hyphens up to 63 characters
         # in length. Specify this field to get, update, or delete the message with the
-        # specified value. For example usage, see [Name a created message](https://
-        # developers.google.com/chat/api/guides/crudl/messages#name_a_created_message).
+        # specified value. Assigning a custom name lets a Chat app recall the message
+        # without saving the message `name` from the [response body](/chat/api/reference/
+        # rest/v1/spaces.messages/get#response-body) returned when creating the message.
+        # Assigning a custom name doesn't replace the generated `name` field, the
+        # message's resource name. Instead, it sets the custom name as the `
+        # clientAssignedMessageId` field, which you can reference while processing later
+        # operations, like updating or deleting the message. For example usage, see [
+        # Name a created message](https://developers.google.com/chat/api/guides/crudl/
+        # messages#name_a_created_message).
         # Corresponds to the JSON property `clientAssignedMessageId`
         # @return [String]
         attr_accessor :client_assigned_message_id
@@ -3185,21 +3186,19 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Output only. The time at which the message was deleted in Google Chat server.
-        # If the message is never deleted, this field is empty. [Developer Preview](
-        # https://developers.google.com/workspace/preview).
+        # Output only. The time at which the message was deleted in Google Chat. If the
+        # message is never deleted, this field is empty.
         # Corresponds to the JSON property `deleteTime`
         # @return [String]
         attr_accessor :delete_time
       
         # Information about a deleted message. A message is deleted when `delete_time`
-        # is set. [Developer Preview](https://developers.google.com/workspace/preview).
+        # is set.
         # Corresponds to the JSON property `deletionMetadata`
         # @return [Google::Apis::ChatV1::DeletionMetadata]
         attr_accessor :deletion_metadata
       
-        # Output only. The list of emoji reaction summaries on the message. [Developer
-        # Preview](https://developers.google.com/workspace/preview).
+        # Output only. The list of emoji reaction summaries on the message.
         # Corresponds to the JSON property `emojiReactionSummaries`
         # @return [Array<Google::Apis::ChatV1::EmojiReactionSummary>]
         attr_accessor :emoji_reaction_summaries
@@ -3341,13 +3340,11 @@ module Google
         end
       end
       
-      # A reaction to a message. [Developer Preview](https://developers.google.com/
-      # workspace/preview).
+      # A reaction to a message.
       class Reaction
         include Google::Apis::Core::Hashable
       
-        # An emoji that is used as a reaction to a message. [Developer Preview](https://
-        # developers.google.com/workspace/preview).
+        # An emoji that is used as a reaction to a message.
         # Corresponds to the JSON property `emoji`
         # @return [Google::Apis::ChatV1::Emoji]
         attr_accessor :emoji
@@ -3407,7 +3404,7 @@ module Google
         end
       end
       
-      # [Developer Preview](https://developers.google.com/workspace/preview).
+      # 
       class SetUpSpaceRequest
         include Google::Apis::Core::Hashable
       
@@ -3555,8 +3552,7 @@ module Google
         # @return [Google::Apis::ChatV1::SpaceDetails]
         attr_accessor :space_details
       
-        # The message history state for messages and threads in this space. [Developer
-        # Preview](https://developers.google.com/workspace/preview).
+        # The message history state for messages and threads in this space.
         # Corresponds to the JSON property `spaceHistoryState`
         # @return [String]
         attr_accessor :space_history_state
@@ -3566,9 +3562,8 @@ module Google
         # @return [String]
         attr_accessor :space_threading_state
       
-        # The type of space. Required when creating or updating a space. Output only for
-        # other usage. [Developer Preview](https://developers.google.com/workspace/
-        # preview).
+        # The type of space. Required when creating a space or updating the space type
+        # of a space. Output only for other usage.
         # Corresponds to the JSON property `spaceType`
         # @return [String]
         attr_accessor :space_type
@@ -3580,8 +3575,7 @@ module Google
         attr_accessor :threaded
         alias_method :threaded?, :threaded
       
-        # Output only. Deprecated: Use `singleUserBotDm` or `spaceType` (developer
-        # preview) instead. The type of a space.
+        # Output only. Deprecated: Use `space_type` instead. The type of a space.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -3826,7 +3820,7 @@ module Google
         end
       end
       
-      # [Developer Preview](https://developers.google.com/workspace/preview).
+      # 
       class UploadAttachmentRequest
         include Google::Apis::Core::Hashable
       
