@@ -943,7 +943,7 @@ module Google
         end
       end
       
-      # Metadata used only in Dynamite backend for uploaded attachments.
+      # Metadata used only in Dynamite backend for uploaded attachments. NEXT ID: 20
       class AppsDynamiteSharedBackendUploadMetadata
         include Google::Apis::Core::Hashable
       
@@ -982,7 +982,7 @@ module Google
         # @return [Google::Apis::CloudsearchV1::DlpScanSummary]
         attr_accessor :dlp_scan_summary
       
-        # The list of experiments this video is enabled for Next tag: 19
+        # The list of experiments this video is enabled for
         # Corresponds to the JSON property `experiment`
         # @return [Array<String>]
         attr_accessor :experiment
@@ -998,6 +998,11 @@ module Google
         # @return [Boolean]
         attr_accessor :is_client_side_transcoded_video
         alias_method :is_client_side_transcoded_video?, :is_client_side_transcoded_video
+      
+        # Metadata for attachments migrated from Hangouts
+        # Corresponds to the JSON property `migratedFromHangoutsMetadata`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedBackendUploadMetadataMigratedFromHangoutsMetadata]
+        attr_accessor :migrated_from_hangouts_metadata
       
         # Dimension for the uploaded attachments.
         # Corresponds to the JSON property `originalDimension`
@@ -1056,6 +1061,7 @@ module Google
           @experiment = args[:experiment] if args.key?(:experiment)
           @group_id = args[:group_id] if args.key?(:group_id)
           @is_client_side_transcoded_video = args[:is_client_side_transcoded_video] if args.key?(:is_client_side_transcoded_video)
+          @migrated_from_hangouts_metadata = args[:migrated_from_hangouts_metadata] if args.key?(:migrated_from_hangouts_metadata)
           @original_dimension = args[:original_dimension] if args.key?(:original_dimension)
           @quote_reply_message_id = args[:quote_reply_message_id] if args.key?(:quote_reply_message_id)
           @sha256 = args[:sha256] if args.key?(:sha256)
@@ -1064,6 +1070,56 @@ module Google
           @video_id = args[:video_id] if args.key?(:video_id)
           @video_thumbnail_blob_id = args[:video_thumbnail_blob_id] if args.key?(:video_thumbnail_blob_id)
           @virus_scan_result = args[:virus_scan_result] if args.key?(:virus_scan_result)
+        end
+      end
+      
+      # Metadata for attachments migrated from Hangouts
+      class AppsDynamiteSharedBackendUploadMetadataMigratedFromHangoutsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `photoId`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedBackendUploadMetadataMigratedFromHangoutsMetadataPhotoId]
+        attr_accessor :photo_id
+      
+        # 
+        # Corresponds to the JSON property `updateTimestampUsec`
+        # @return [Fixnum]
+        attr_accessor :update_timestamp_usec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @photo_id = args[:photo_id] if args.key?(:photo_id)
+          @update_timestamp_usec = args[:update_timestamp_usec] if args.key?(:update_timestamp_usec)
+        end
+      end
+      
+      # 
+      class AppsDynamiteSharedBackendUploadMetadataMigratedFromHangoutsMetadataPhotoId
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `photoId`
+        # @return [Fixnum]
+        attr_accessor :photo_id
+      
+        # 
+        # Corresponds to the JSON property `userId`
+        # @return [Fixnum]
+        attr_accessor :user_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @photo_id = args[:photo_id] if args.key?(:photo_id)
+          @user_id = args[:user_id] if args.key?(:user_id)
         end
       end
       
@@ -1960,9 +2016,11 @@ module Google
       class AppsDynamiteSharedMessageSearchInfo
         include Google::Apis::Core::Hashable
       
-        # An example use case: clients can use this field to highlight matched segments
-        # in message text_body defined in http://google3/apps/dynamite/v1/frontend/api/
-        # message.proto;l=104;rcl=513400736.
+        # Current usage: - DescriptionType=KEYWORD_MATCH is populated in this field to
+        # return metadata for keyword matches, which clients can use to highlight
+        # matched segments in a message's text_body. - DescriptionType=SNIPPET can be
+        # used to return metadata describing how a message's text_body can be broken up
+        # to provide a snippet.
         # Corresponds to the JSON property `matchedSegmentsInTextBody`
         # @return [Array<Google::Apis::CloudsearchV1::AppsDynamiteSharedTextSegmentsWithDescription>]
         attr_accessor :matched_segments_in_text_body
@@ -2717,18 +2775,18 @@ module Google
         attr_accessor :corner_radius
       
         # Represents a color in the RGBA color space. This representation is designed
-        # for simplicity of conversion to/from color representations in various
+        # for simplicity of conversion to and from color representations in various
         # languages over compactness. For example, the fields of this representation can
         # be trivially provided to the constructor of `java.awt.Color` in Java; it can
         # also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha`
         # method in iOS; and, with just a little work, it can be easily formatted into a
-        # CSS `rgba()` string in JavaScript. This reference page doesn't carry
+        # CSS `rgba()` string in JavaScript. This reference page does not have
         # information about the absolute color space that should be used to interpret
-        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+        # the RGB value—for example, sRGB, Adobe RGB, DCI-P3, and BT.2020. By default,
         # applications should assume the sRGB color space. When color equality needs to
         # be decided, implementations, unless documented otherwise, treat two colors as
-        # equal if all their red, green, blue, and alpha values each differ by at most
-        # 1e-5. Example (Java): import com.google.type.Color; // ... public static java.
+        # equal if all their red, green, blue, and alpha values each differ by at most `
+        # 1e-5`. Example (Java): import com.google.type.Color; // ... public static java.
         # awt.Color fromProto(Color protocolor) ` float alpha = protocolor.hasAlpha() ?
         # protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color( protocolor.
         # getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); ` public static
@@ -2793,18 +2851,18 @@ module Google
         attr_accessor :alt_text
       
         # Represents a color in the RGBA color space. This representation is designed
-        # for simplicity of conversion to/from color representations in various
+        # for simplicity of conversion to and from color representations in various
         # languages over compactness. For example, the fields of this representation can
         # be trivially provided to the constructor of `java.awt.Color` in Java; it can
         # also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha`
         # method in iOS; and, with just a little work, it can be easily formatted into a
-        # CSS `rgba()` string in JavaScript. This reference page doesn't carry
+        # CSS `rgba()` string in JavaScript. This reference page does not have
         # information about the absolute color space that should be used to interpret
-        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+        # the RGB value—for example, sRGB, Adobe RGB, DCI-P3, and BT.2020. By default,
         # applications should assume the sRGB color space. When color equality needs to
         # be decided, implementations, unless documented otherwise, treat two colors as
-        # equal if all their red, green, blue, and alpha values each differ by at most
-        # 1e-5. Example (Java): import com.google.type.Color; // ... public static java.
+        # equal if all their red, green, blue, and alpha values each differ by at most `
+        # 1e-5`. Example (Java): import com.google.type.Color; // ... public static java.
         # awt.Color fromProto(Color protocolor) ` float alpha = protocolor.hasAlpha() ?
         # protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color( protocolor.
         # getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); ` public static
@@ -5197,6 +5255,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :supported_uses
       
+        # Determine how uninstall is permitted for this app.
+        # Corresponds to the JSON property `uninstallCapability`
+        # @return [String]
+        attr_accessor :uninstall_capability
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5214,6 +5277,7 @@ module Google
           @support_home_screen = args[:support_home_screen] if args.key?(:support_home_screen)
           @support_urls = args[:support_urls] if args.key?(:support_urls)
           @supported_uses = args[:supported_uses] if args.key?(:supported_uses)
+          @uninstall_capability = args[:uninstall_capability] if args.key?(:uninstall_capability)
         end
       end
       
@@ -6452,18 +6516,18 @@ module Google
       end
       
       # Represents a color in the RGBA color space. This representation is designed
-      # for simplicity of conversion to/from color representations in various
+      # for simplicity of conversion to and from color representations in various
       # languages over compactness. For example, the fields of this representation can
       # be trivially provided to the constructor of `java.awt.Color` in Java; it can
       # also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha`
       # method in iOS; and, with just a little work, it can be easily formatted into a
-      # CSS `rgba()` string in JavaScript. This reference page doesn't carry
+      # CSS `rgba()` string in JavaScript. This reference page does not have
       # information about the absolute color space that should be used to interpret
-      # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+      # the RGB value—for example, sRGB, Adobe RGB, DCI-P3, and BT.2020. By default,
       # applications should assume the sRGB color space. When color equality needs to
       # be decided, implementations, unless documented otherwise, treat two colors as
-      # equal if all their red, green, blue, and alpha values each differ by at most
-      # 1e-5. Example (Java): import com.google.type.Color; // ... public static java.
+      # equal if all their red, green, blue, and alpha values each differ by at most `
+      # 1e-5`. Example (Java): import com.google.type.Color; // ... public static java.
       # awt.Color fromProto(Color protocolor) ` float alpha = protocolor.hasAlpha() ?
       # protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color( protocolor.
       # getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); ` public static
@@ -10018,7 +10082,7 @@ module Google
         end
       end
       
-      # A card is a UI element that can contain UI widgets such as texts, images.
+      # A card is a UI element that can contain UI widgets such as text and images.
       class GoogleChatV1ContextualAddOnMarkupCard
         include Google::Apis::Core::Hashable
       
@@ -10066,7 +10130,7 @@ module Google
         # @return [String]
         attr_accessor :action_label
       
-        # An onclick action (e.g. open a link).
+        # An `onclick` action (for example, open a link).
         # Corresponds to the JSON property `onClick`
         # @return [Google::Apis::CloudsearchV1::GoogleChatV1WidgetMarkupOnClick]
         attr_accessor :on_click
@@ -10086,7 +10150,7 @@ module Google
       class GoogleChatV1ContextualAddOnMarkupCardCardHeader
         include Google::Apis::Core::Hashable
       
-        # The image's type (e.g. square border or circular border).
+        # The image's type (for example, square border or circular border).
         # Corresponds to the JSON property `imageStyle`
         # @return [String]
         attr_accessor :image_style
@@ -10102,8 +10166,8 @@ module Google
         attr_accessor :subtitle
       
         # The title must be specified. The header has a fixed height: if both a title
-        # and subtitle is specified, each will take up 1 line. If only the title is
-        # specified, it will take up both lines.
+        # and subtitle is specified, each takes up one line. If only the title is
+        # specified, it takes up both lines.
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
@@ -10123,18 +10187,21 @@ module Google
       
       # A section contains a collection of widgets that are rendered (vertically) in
       # the order that they are specified. Across all platforms, cards have a narrow
-      # fixed width, so there is currently no need for layout properties (e.g. float).
+      # fixed width, so there's currently no need for layout properties (for example,
+      # float).
       class GoogleChatV1ContextualAddOnMarkupCardSection
         include Google::Apis::Core::Hashable
       
         # The header of the section. Formatted text is supported. For more information
-        # about formatting text, see Formatting text in Google Chat apps and Formatting
-        # text in Google Workspace Add-ons.
+        # about formatting text, see [Formatting text in Google Chat apps](https://
+        # developers.google.com/chat/api/guides/message-formats/cards#
+        # card_text_formatting) and [Formatting text in Google Workspace Add-ons](https:/
+        # /developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
         # Corresponds to the JSON property `header`
         # @return [String]
         attr_accessor :header
       
-        # A section must contain at least 1 widget.
+        # A section must contain at least one widget.
         # Corresponds to the JSON property `widgets`
         # @return [Array<Google::Apis::CloudsearchV1::GoogleChatV1WidgetMarkup>]
         attr_accessor :widgets
@@ -10150,7 +10217,7 @@ module Google
         end
       end
       
-      # A widget is a UI element that presents texts, images, etc.
+      # A widget is a UI element that presents text and images.
       class GoogleChatV1WidgetMarkup
         include Google::Apis::Core::Hashable
       
@@ -10160,20 +10227,22 @@ module Google
         # @return [Array<Google::Apis::CloudsearchV1::GoogleChatV1WidgetMarkupButton>]
         attr_accessor :buttons
       
-        # An image that is specified by a URL and can have an onclick action.
+        # An image that's specified by a URL and can have an `onclick` action.
         # Corresponds to the JSON property `image`
         # @return [Google::Apis::CloudsearchV1::GoogleChatV1WidgetMarkupImage]
         attr_accessor :image
       
-        # A UI element contains a key (label) and a value (content). And this element
-        # may also contain some actions such as onclick button.
+        # A UI element contains a key (label) and a value (content). This element can
+        # also contain some actions such as `onclick` button.
         # Corresponds to the JSON property `keyValue`
         # @return [Google::Apis::CloudsearchV1::GoogleChatV1WidgetMarkupKeyValue]
         attr_accessor :key_value
       
         # A paragraph of text. Formatted text supported. For more information about
-        # formatting text, see Formatting text in Google Chat apps and Formatting text
-        # in Google Workspace Add-ons.
+        # formatting text, see [Formatting text in Google Chat apps](https://developers.
+        # google.com/chat/api/guides/message-formats/cards#card_text_formatting) and [
+        # Formatting text in Google Workspace Add-ons](https://developers.google.com/
+        # apps-script/add-ons/concepts/widgets#text_formatting).
         # Corresponds to the JSON property `textParagraph`
         # @return [Google::Apis::CloudsearchV1::GoogleChatV1WidgetMarkupTextParagraph]
         attr_accessor :text_paragraph
@@ -10195,12 +10264,12 @@ module Google
       class GoogleChatV1WidgetMarkupButton
         include Google::Apis::Core::Hashable
       
-        # An image button with an onclick action.
+        # An image button with an `onclick` action.
         # Corresponds to the JSON property `imageButton`
         # @return [Google::Apis::CloudsearchV1::GoogleChatV1WidgetMarkupImageButton]
         attr_accessor :image_button
       
-        # A button with text and onclick action.
+        # A button with text and `onclick` action.
         # Corresponds to the JSON property `textButton`
         # @return [Google::Apis::CloudsearchV1::GoogleChatV1WidgetMarkupTextButton]
         attr_accessor :text_button
@@ -10217,14 +10286,14 @@ module Google
       end
       
       # A form action describes the behavior when the form is submitted. For example,
-      # an Apps Script can be invoked to handle the form.
+      # you can invoke Apps Script to handle the form.
       class GoogleChatV1WidgetMarkupFormAction
         include Google::Apis::Core::Hashable
       
         # The method name is used to identify which part of the form triggered the form
         # submission. This information is echoed back to the Chat app as part of the
-        # card click event. The same method name can be used for several elements that
-        # trigger a common behavior if desired.
+        # card click event. You can use the same method name for several elements that
+        # trigger a common behavior.
         # Corresponds to the JSON property `actionMethodName`
         # @return [String]
         attr_accessor :action_method_name
@@ -10246,9 +10315,9 @@ module Google
       end
       
       # List of string parameters to supply when the action method is invoked. For
-      # example, consider three snooze buttons: snooze now, snooze 1 day, snooze next
-      # week. You might use action method = snooze(), passing the snooze type and
-      # snooze time in the list of string parameters.
+      # example, consider three snooze buttons: snooze now, snooze one day, snooze
+      # next week. You might use `action method = snooze()`, passing the snooze type
+      # and snooze time in the list of string parameters.
       class GoogleChatV1WidgetMarkupFormActionActionParameter
         include Google::Apis::Core::Hashable
       
@@ -10273,14 +10342,14 @@ module Google
         end
       end
       
-      # An image that is specified by a URL and can have an onclick action.
+      # An image that's specified by a URL and can have an `onclick` action.
       class GoogleChatV1WidgetMarkupImage
         include Google::Apis::Core::Hashable
       
-        # The aspect ratio of this image (width/height). This field allows clients to
-        # reserve the right height for the image while waiting for it to load. It's not
-        # meant to override the native aspect ratio of the image. If unset, the server
-        # fills it by prefetching the image.
+        # The aspect ratio of this image (width and height). This field lets you reserve
+        # the right height for the image while waiting for it to load. It's not meant to
+        # override the built-in aspect ratio of the image. If unset, the server fills it
+        # by prefetching the image.
         # Corresponds to the JSON property `aspectRatio`
         # @return [Float]
         attr_accessor :aspect_ratio
@@ -10290,7 +10359,7 @@ module Google
         # @return [String]
         attr_accessor :image_url
       
-        # An onclick action (e.g. open a link).
+        # An `onclick` action (for example, open a link).
         # Corresponds to the JSON property `onClick`
         # @return [Google::Apis::CloudsearchV1::GoogleChatV1WidgetMarkupOnClick]
         attr_accessor :on_click
@@ -10307,11 +10376,11 @@ module Google
         end
       end
       
-      # An image button with an onclick action.
+      # An image button with an `onclick` action.
       class GoogleChatV1WidgetMarkupImageButton
         include Google::Apis::Core::Hashable
       
-        # The icon specified by an enum that indices to an icon provided by Chat API.
+        # The icon specified by an `enum` that indices to an icon provided by Chat API.
         # Corresponds to the JSON property `icon`
         # @return [String]
         attr_accessor :icon
@@ -10321,13 +10390,13 @@ module Google
         # @return [String]
         attr_accessor :icon_url
       
-        # The name of this image_button which will be used for accessibility. Default
-        # value will be provided if developers don't specify.
+        # The name of this `image_button` that's used for accessibility. Default value
+        # is provided if this name isn't specified.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # An onclick action (e.g. open a link).
+        # An `onclick` action (for example, open a link).
         # Corresponds to the JSON property `onClick`
         # @return [Google::Apis::CloudsearchV1::GoogleChatV1WidgetMarkupOnClick]
         attr_accessor :on_click
@@ -10345,14 +10414,16 @@ module Google
         end
       end
       
-      # A UI element contains a key (label) and a value (content). And this element
-      # may also contain some actions such as onclick button.
+      # A UI element contains a key (label) and a value (content). This element can
+      # also contain some actions such as `onclick` button.
       class GoogleChatV1WidgetMarkupKeyValue
         include Google::Apis::Core::Hashable
       
         # The text of the bottom label. Formatted text supported. For more information
-        # about formatting text, see Formatting text in Google Chat apps and Formatting
-        # text in Google Workspace Add-ons.
+        # about formatting text, see [Formatting text in Google Chat apps](https://
+        # developers.google.com/chat/api/guides/message-formats/cards#
+        # card_text_formatting) and [Formatting text in Google Workspace Add-ons](https:/
+        # /developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
         # Corresponds to the JSON property `bottomLabel`
         # @return [String]
         attr_accessor :bottom_label
@@ -10363,8 +10434,10 @@ module Google
         attr_accessor :button
       
         # The text of the content. Formatted text supported and always required. For
-        # more information about formatting text, see Formatting text in Google Chat
-        # apps and Formatting text in Google Workspace Add-ons.
+        # more information about formatting text, see [Formatting text in Google Chat
+        # apps](https://developers.google.com/chat/api/guides/message-formats/cards#
+        # card_text_formatting) and [Formatting text in Google Workspace Add-ons](https:/
+        # /developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
         # Corresponds to the JSON property `content`
         # @return [String]
         attr_accessor :content
@@ -10375,8 +10448,8 @@ module Google
         attr_accessor :content_multiline
         alias_method :content_multiline?, :content_multiline
       
-        # An enum value that will be replaced by the Chat API with the corresponding
-        # icon image.
+        # An enum value that's replaced by the Chat API with the corresponding icon
+        # image.
         # Corresponds to the JSON property `icon`
         # @return [String]
         attr_accessor :icon
@@ -10386,14 +10459,16 @@ module Google
         # @return [String]
         attr_accessor :icon_url
       
-        # An onclick action (e.g. open a link).
+        # An `onclick` action (for example, open a link).
         # Corresponds to the JSON property `onClick`
         # @return [Google::Apis::CloudsearchV1::GoogleChatV1WidgetMarkupOnClick]
         attr_accessor :on_click
       
         # The text of the top label. Formatted text supported. For more information
-        # about formatting text, see Formatting text in Google Chat apps and Formatting
-        # text in Google Workspace Add-ons.
+        # about formatting text, see [Formatting text in Google Chat apps](https://
+        # developers.google.com/chat/api/guides/message-formats/cards#
+        # card_text_formatting) and [Formatting text in Google Workspace Add-ons](https:/
+        # /developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
         # Corresponds to the JSON property `topLabel`
         # @return [String]
         attr_accessor :top_label
@@ -10415,12 +10490,12 @@ module Google
         end
       end
       
-      # An onclick action (e.g. open a link).
+      # An `onclick` action (for example, open a link).
       class GoogleChatV1WidgetMarkupOnClick
         include Google::Apis::Core::Hashable
       
         # A form action describes the behavior when the form is submitted. For example,
-        # an Apps Script can be invoked to handle the form.
+        # you can invoke Apps Script to handle the form.
         # Corresponds to the JSON property `action`
         # @return [Google::Apis::CloudsearchV1::GoogleChatV1WidgetMarkupFormAction]
         attr_accessor :action
@@ -10460,11 +10535,11 @@ module Google
         end
       end
       
-      # A button with text and onclick action.
+      # A button with text and `onclick` action.
       class GoogleChatV1WidgetMarkupTextButton
         include Google::Apis::Core::Hashable
       
-        # An onclick action (e.g. open a link).
+        # An `onclick` action (for example, open a link).
         # Corresponds to the JSON property `onClick`
         # @return [Google::Apis::CloudsearchV1::GoogleChatV1WidgetMarkupOnClick]
         attr_accessor :on_click
@@ -10486,8 +10561,10 @@ module Google
       end
       
       # A paragraph of text. Formatted text supported. For more information about
-      # formatting text, see Formatting text in Google Chat apps and Formatting text
-      # in Google Workspace Add-ons.
+      # formatting text, see [Formatting text in Google Chat apps](https://developers.
+      # google.com/chat/api/guides/message-formats/cards#card_text_formatting) and [
+      # Formatting text in Google Workspace Add-ons](https://developers.google.com/
+      # apps-script/add-ons/concepts/widgets#text_formatting).
       class GoogleChatV1WidgetMarkupTextParagraph
         include Google::Apis::Core::Hashable
       
@@ -16366,6 +16443,25 @@ module Google
         end
       end
       
+      # Details about a user's query activity.
+      class QueryActivity
+        include Google::Apis::Core::Hashable
+      
+        # User input query to be logged/removed.
+        # Corresponds to the JSON property `query`
+        # @return [String]
+        attr_accessor :query
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @query = args[:query] if args.key?(:query)
+        end
+      end
+      
       # 
       class QueryCountByStatus
         include Google::Apis::Core::Hashable
@@ -17111,6 +17207,46 @@ module Google
         # Update properties of this object
         def update!(**args)
           @references = args[:references] if args.key?(:references)
+        end
+      end
+      
+      # Remove Logged Activity Request.
+      class RemoveActivityRequest
+        include Google::Apis::Core::Hashable
+      
+        # Shared request options for all RPC methods.
+        # Corresponds to the JSON property `requestOptions`
+        # @return [Google::Apis::CloudsearchV1::RequestOptions]
+        attr_accessor :request_options
+      
+        # User's single or bulk query activity. This can be a logging query or deletion
+        # query.
+        # Corresponds to the JSON property `userActivity`
+        # @return [Google::Apis::CloudsearchV1::UserActivity]
+        attr_accessor :user_activity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @request_options = args[:request_options] if args.key?(:request_options)
+          @user_activity = args[:user_activity] if args.key?(:user_activity)
+        end
+      end
+      
+      # Remove Logged Activity Response. will return an empty response for now. Will
+      # be revisited in later phases.
+      class RemoveActivityResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -19293,6 +19429,11 @@ module Google
         # @return [String]
         attr_accessor :suggested_query
       
+        # Suggestion triggered for the current query.
+        # Corresponds to the JSON property `suggestionType`
+        # @return [String]
+        attr_accessor :suggestion_type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -19300,6 +19441,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @suggested_query = args[:suggested_query] if args.key?(:suggested_query)
+          @suggestion_type = args[:suggestion_type] if args.key?(:suggestion_type)
         end
       end
       
@@ -21096,7 +21238,7 @@ module Google
         # @return [String]
         attr_accessor :attachment_token
       
-        # Metadata used only in Dynamite backend for uploaded attachments.
+        # Metadata used only in Dynamite backend for uploaded attachments. NEXT ID: 20
         # Corresponds to the JSON property `backendUploadMetadata`
         # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedBackendUploadMetadata]
         attr_accessor :backend_upload_metadata
@@ -21140,6 +21282,12 @@ module Google
         # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedDlpMetricsMetadata]
         attr_accessor :dlp_metrics_metadata
       
+        # Metadata used to describe search information in a specific component of a chat
+        # message, for example an annotation or an attachment.
+        # Corresponds to the JSON property `internalOnlyComponentSearchInfo`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedMessageComponentSearchInfo]
+        attr_accessor :internal_only_component_search_info
+      
         # The timestamp of the most recent virus scan completed (in microseconds).
         # Corresponds to the JSON property `latestVirusScanTimestamp`
         # @return [Fixnum]
@@ -21181,6 +21329,7 @@ module Google
           @content_name = args[:content_name] if args.key?(:content_name)
           @content_type = args[:content_type] if args.key?(:content_type)
           @dlp_metrics_metadata = args[:dlp_metrics_metadata] if args.key?(:dlp_metrics_metadata)
+          @internal_only_component_search_info = args[:internal_only_component_search_info] if args.key?(:internal_only_component_search_info)
           @latest_virus_scan_timestamp = args[:latest_virus_scan_timestamp] if args.key?(:latest_virus_scan_timestamp)
           @local_id = args[:local_id] if args.key?(:local_id)
           @original_dimension = args[:original_dimension] if args.key?(:original_dimension)
@@ -21414,6 +21563,26 @@ module Google
           @phone_number = args[:phone_number] if args.key?(:phone_number)
           @user_account_state = args[:user_account_state] if args.key?(:user_account_state)
           @user_profile_visibility = args[:user_profile_visibility] if args.key?(:user_profile_visibility)
+        end
+      end
+      
+      # User's single or bulk query activity. This can be a logging query or deletion
+      # query.
+      class UserActivity
+        include Google::Apis::Core::Hashable
+      
+        # Details about a user's query activity.
+        # Corresponds to the JSON property `queryActivity`
+        # @return [Google::Apis::CloudsearchV1::QueryActivity]
+        attr_accessor :query_activity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @query_activity = args[:query_activity] if args.key?(:query_activity)
         end
       end
       

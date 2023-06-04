@@ -178,6 +178,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AppsDynamiteSharedBackendUploadMetadataMigratedFromHangoutsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppsDynamiteSharedBackendUploadMetadataMigratedFromHangoutsMetadataPhotoId
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AppsDynamiteSharedCalendarEventAnnotationData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2626,6 +2638,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class QueryActivity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class QueryCountByStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2741,6 +2759,18 @@ module Google
       end
       
       class References
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RemoveActivityRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RemoveActivityResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3448,6 +3478,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UserActivity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UserDisplayInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3872,6 +3908,8 @@ module Google
           property :group_id, as: 'groupId', class: Google::Apis::CloudsearchV1::GroupId, decorator: Google::Apis::CloudsearchV1::GroupId::Representation
       
           property :is_client_side_transcoded_video, as: 'isClientSideTranscodedVideo'
+          property :migrated_from_hangouts_metadata, as: 'migratedFromHangoutsMetadata', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedBackendUploadMetadataMigratedFromHangoutsMetadata, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedBackendUploadMetadataMigratedFromHangoutsMetadata::Representation
+      
           property :original_dimension, as: 'originalDimension', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedDimension, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedDimension::Representation
       
           property :quote_reply_message_id, as: 'quoteReplyMessageId', class: Google::Apis::CloudsearchV1::MessageId, decorator: Google::Apis::CloudsearchV1::MessageId::Representation
@@ -3882,6 +3920,23 @@ module Google
           property :video_id, as: 'videoId'
           property :video_thumbnail_blob_id, as: 'videoThumbnailBlobId'
           property :virus_scan_result, as: 'virusScanResult'
+        end
+      end
+      
+      class AppsDynamiteSharedBackendUploadMetadataMigratedFromHangoutsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :photo_id, as: 'photoId', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedBackendUploadMetadataMigratedFromHangoutsMetadataPhotoId, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedBackendUploadMetadataMigratedFromHangoutsMetadataPhotoId::Representation
+      
+          property :update_timestamp_usec, :numeric_string => true, as: 'updateTimestampUsec'
+        end
+      end
+      
+      class AppsDynamiteSharedBackendUploadMetadataMigratedFromHangoutsMetadataPhotoId
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :photo_id, :numeric_string => true, as: 'photoId'
+          property :user_id, :numeric_string => true, as: 'userId'
         end
       end
       
@@ -5080,6 +5135,7 @@ module Google
           property :support_urls, as: 'supportUrls', class: Google::Apis::CloudsearchV1::SupportUrls, decorator: Google::Apis::CloudsearchV1::SupportUrls::Representation
       
           collection :supported_uses, as: 'supportedUses'
+          property :uninstall_capability, as: 'uninstallCapability'
         end
       end
       
@@ -8223,6 +8279,13 @@ module Google
         end
       end
       
+      class QueryActivity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :query, as: 'query'
+        end
+      end
+      
       class QueryCountByStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -8420,6 +8483,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :references, as: 'references', class: Google::Apis::CloudsearchV1::Reference, decorator: Google::Apis::CloudsearchV1::Reference::Representation
       
+        end
+      end
+      
+      class RemoveActivityRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :request_options, as: 'requestOptions', class: Google::Apis::CloudsearchV1::RequestOptions, decorator: Google::Apis::CloudsearchV1::RequestOptions::Representation
+      
+          property :user_activity, as: 'userActivity', class: Google::Apis::CloudsearchV1::UserActivity, decorator: Google::Apis::CloudsearchV1::UserActivity::Representation
+      
+        end
+      end
+      
+      class RemoveActivityResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -9050,6 +9129,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :suggested_query, as: 'suggestedQuery'
+          property :suggestion_type, as: 'suggestionType'
         end
       end
       
@@ -9585,6 +9665,8 @@ module Google
           property :content_type, as: 'contentType'
           property :dlp_metrics_metadata, as: 'dlpMetricsMetadata', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedDlpMetricsMetadata, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedDlpMetricsMetadata::Representation
       
+          property :internal_only_component_search_info, as: 'internalOnlyComponentSearchInfo', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedMessageComponentSearchInfo, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedMessageComponentSearchInfo::Representation
+      
           property :latest_virus_scan_timestamp, :numeric_string => true, as: 'latestVirusScanTimestamp'
           property :local_id, as: 'localId'
           property :original_dimension, as: 'originalDimension', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedDimension, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedDimension::Representation
@@ -9642,6 +9724,14 @@ module Google
       
           property :user_account_state, as: 'userAccountState'
           property :user_profile_visibility, as: 'userProfileVisibility'
+        end
+      end
+      
+      class UserActivity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :query_activity, as: 'queryActivity', class: Google::Apis::CloudsearchV1::QueryActivity, decorator: Google::Apis::CloudsearchV1::QueryActivity::Representation
+      
         end
       end
       
