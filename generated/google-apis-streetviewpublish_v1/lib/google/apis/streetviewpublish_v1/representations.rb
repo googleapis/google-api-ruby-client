@@ -434,6 +434,7 @@ module Google
       
           property :sequence_bounds, as: 'sequenceBounds', class: Google::Apis::StreetviewpublishV1::LatLngBounds, decorator: Google::Apis::StreetviewpublishV1::LatLngBounds::Representation
       
+          property :takedown, as: 'takedown'
           property :upload_reference, as: 'uploadReference', class: Google::Apis::StreetviewpublishV1::UploadRef, decorator: Google::Apis::StreetviewpublishV1::UploadRef::Representation
       
           property :upload_time, as: 'uploadTime'
