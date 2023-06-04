@@ -193,6 +193,12 @@ module Google
         # @return [String]
         attr_accessor :project
       
+        # Output only. Overall state of PSC Connections management for this consumer psc
+        # config.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
         def initialize(**args)
            update!(**args)
         end
@@ -202,6 +208,7 @@ module Google
           @disable_global_access = args[:disable_global_access] if args.key?(:disable_global_access)
           @network = args[:network] if args.key?(:network)
           @project = args[:project] if args.key?(:project)
+          @state = args[:state] if args.key?(:state)
         end
       end
       

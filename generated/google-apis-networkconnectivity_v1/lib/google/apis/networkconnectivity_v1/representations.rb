@@ -301,6 +301,7 @@ module Google
           property :disable_global_access, as: 'disableGlobalAccess'
           property :network, as: 'network'
           property :project, as: 'project'
+          property :state, as: 'state'
         end
       end
       
