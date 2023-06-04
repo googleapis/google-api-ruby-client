@@ -1810,7 +1810,7 @@ module Google
         # @return [String]
         attr_accessor :target_language_code
       
-        # Confugures transliteration feature on top of translation.
+        # Configures transliteration feature on top of translation.
         # Corresponds to the JSON property `transliterationConfig`
         # @return [Google::Apis::TranslateV3::TransliterationConfig]
         attr_accessor :transliteration_config
@@ -1906,7 +1906,7 @@ module Google
         end
       end
       
-      # Confugures transliteration feature on top of translation.
+      # Configures transliteration feature on top of translation.
       class TransliterationConfig
         include Google::Apis::Core::Hashable
       
