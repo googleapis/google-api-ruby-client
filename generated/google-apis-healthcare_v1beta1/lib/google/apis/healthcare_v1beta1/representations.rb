@@ -1674,6 +1674,8 @@ module Google
       class EntityMention
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :additional_info, as: 'additionalInfo', class: Google::Apis::HealthcareV1beta1::Feature, decorator: Google::Apis::HealthcareV1beta1::Feature::Representation
+      
           property :certainty_assessment, as: 'certaintyAssessment', class: Google::Apis::HealthcareV1beta1::Feature, decorator: Google::Apis::HealthcareV1beta1::Feature::Representation
       
           property :confidence, as: 'confidence'

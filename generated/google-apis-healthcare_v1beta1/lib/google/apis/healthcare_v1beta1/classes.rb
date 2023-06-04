@@ -1796,6 +1796,16 @@ module Google
       class EntityMention
         include Google::Apis::Core::Hashable
       
+        # Additional information about the entity mention. For example, for an entity
+        # mention of type `DATE` this can be its more specific date types from the
+        # following list: `ADMISSION_DATE`, `CONSULTATION_DATE`, `DISCHARGE_DATE`, `
+        # SERVICE_DATE`, `VISIT_DATE`, `DIAGNOSIS_DATE`, `MED_STARTED_DATE`, `
+        # MED_ENDED_DATE`, `NOTE_DATE`, `PROCEDURE_DATE`, `RADIATION_STARTED_DATE`, `
+        # RADIATION_ENDED_DATE`, `STAGE_DATE`
+        # Corresponds to the JSON property `additionalInfo`
+        # @return [Array<Google::Apis::HealthcareV1beta1::Feature>]
+        attr_accessor :additional_info
+      
         # A feature of an entity mention.
         # Corresponds to the JSON property `certaintyAssessment`
         # @return [Google::Apis::HealthcareV1beta1::Feature]
@@ -1851,6 +1861,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @additional_info = args[:additional_info] if args.key?(:additional_info)
           @certainty_assessment = args[:certainty_assessment] if args.key?(:certainty_assessment)
           @confidence = args[:confidence] if args.key?(:confidence)
           @linked_entities = args[:linked_entities] if args.key?(:linked_entities)
