@@ -1447,6 +1447,12 @@ module Google
         # @return [String]
         attr_accessor :gcs_bucket_path
       
+        # Optional. (Optional) Dataplex task job id, if specified will be used as part
+        # of ImportEntries LRO ID
+        # Corresponds to the JSON property `jobId`
+        # @return [String]
+        attr_accessor :job_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1454,6 +1460,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @gcs_bucket_path = args[:gcs_bucket_path] if args.key?(:gcs_bucket_path)
+          @job_id = args[:job_id] if args.key?(:job_id)
         end
       end
       
