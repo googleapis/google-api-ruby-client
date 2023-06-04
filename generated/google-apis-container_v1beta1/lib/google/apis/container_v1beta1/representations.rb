@@ -64,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AutopilotCompatibilityIssue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AutoprovisioningNodePoolDefaults
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -71,6 +77,12 @@ module Google
       end
       
       class AvailableVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BestEffortProvisioning
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -101,6 +113,12 @@ module Google
       end
       
       class CancelOperationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CheckAutopilotCompatibilityResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -268,6 +286,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GpuDriverInstallationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GpuSharingConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -371,6 +395,12 @@ module Google
       end
       
       class Jwk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class K8sBetaApiConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -766,6 +796,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SecurityPostureConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ServerConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1018,11 +1054,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WorkloadPolicyConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AcceleratorConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :accelerator_count, :numeric_string => true, as: 'acceleratorCount'
           property :accelerator_type, as: 'acceleratorType'
+          property :gpu_driver_installation_config, as: 'gpuDriverInstallationConfig', class: Google::Apis::ContainerV1beta1::GpuDriverInstallationConfig, decorator: Google::Apis::ContainerV1beta1::GpuDriverInstallationConfig::Representation
+      
           property :gpu_partition_size, as: 'gpuPartitionSize'
           property :gpu_sharing_config, as: 'gpuSharingConfig', class: Google::Apis::ContainerV1beta1::GpuSharingConfig, decorator: Google::Apis::ContainerV1beta1::GpuSharingConfig::Representation
       
@@ -1096,6 +1140,20 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
+          property :workload_policy_config, as: 'workloadPolicyConfig', class: Google::Apis::ContainerV1beta1::WorkloadPolicyConfig, decorator: Google::Apis::ContainerV1beta1::WorkloadPolicyConfig::Representation
+      
+        end
+      end
+      
+      class AutopilotCompatibilityIssue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :constraint_type, as: 'constraintType'
+          property :description, as: 'description'
+          property :documentation_url, as: 'documentationUrl'
+          property :incompatibility_type, as: 'incompatibilityType'
+          property :last_observation, as: 'lastObservation'
+          collection :subjects, as: 'subjects'
         end
       end
       
@@ -1123,6 +1181,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :reason, as: 'reason'
           property :version, as: 'version'
+        end
+      end
+      
+      class BestEffortProvisioning
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :min_provision_nodes, as: 'minProvisionNodes'
         end
       end
       
@@ -1168,6 +1234,15 @@ module Google
           property :operation_id, as: 'operationId'
           property :project_id, as: 'projectId'
           property :zone, as: 'zone'
+        end
+      end
+      
+      class CheckAutopilotCompatibilityResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :issues, as: 'issues', class: Google::Apis::ContainerV1beta1::AutopilotCompatibilityIssue, decorator: Google::Apis::ContainerV1beta1::AutopilotCompatibilityIssue::Representation
+      
+          property :summary, as: 'summary'
         end
       end
       
@@ -1225,6 +1300,8 @@ module Google
           property :default_max_pods_constraint, as: 'defaultMaxPodsConstraint', class: Google::Apis::ContainerV1beta1::MaxPodsConstraint, decorator: Google::Apis::ContainerV1beta1::MaxPodsConstraint::Representation
       
           property :description, as: 'description'
+          property :enable_k8s_beta_apis, as: 'enableK8sBetaApis', class: Google::Apis::ContainerV1beta1::K8sBetaApiConfig, decorator: Google::Apis::ContainerV1beta1::K8sBetaApiConfig::Representation
+      
           property :enable_kubernetes_alpha, as: 'enableKubernetesAlpha'
           property :enable_tpu, as: 'enableTpu'
           property :endpoint, as: 'endpoint'
@@ -1291,6 +1368,8 @@ module Google
           hash :resource_labels, as: 'resourceLabels'
           property :resource_usage_export_config, as: 'resourceUsageExportConfig', class: Google::Apis::ContainerV1beta1::ResourceUsageExportConfig, decorator: Google::Apis::ContainerV1beta1::ResourceUsageExportConfig::Representation
       
+          property :security_posture_config, as: 'securityPostureConfig', class: Google::Apis::ContainerV1beta1::SecurityPostureConfig, decorator: Google::Apis::ContainerV1beta1::SecurityPostureConfig::Representation
+      
           property :self_link, as: 'selfLink'
           property :services_ipv4_cidr, as: 'servicesIpv4Cidr'
           property :shielded_nodes, as: 'shieldedNodes', class: Google::Apis::ContainerV1beta1::ShieldedNodes, decorator: Google::Apis::ContainerV1beta1::ShieldedNodes::Representation
@@ -1342,6 +1421,8 @@ module Google
       
           property :desired_authenticator_groups_config, as: 'desiredAuthenticatorGroupsConfig', class: Google::Apis::ContainerV1beta1::AuthenticatorGroupsConfig, decorator: Google::Apis::ContainerV1beta1::AuthenticatorGroupsConfig::Representation
       
+          property :desired_autopilot_workload_policy_config, as: 'desiredAutopilotWorkloadPolicyConfig', class: Google::Apis::ContainerV1beta1::WorkloadPolicyConfig, decorator: Google::Apis::ContainerV1beta1::WorkloadPolicyConfig::Representation
+      
           property :desired_binary_authorization, as: 'desiredBinaryAuthorization', class: Google::Apis::ContainerV1beta1::BinaryAuthorization, decorator: Google::Apis::ContainerV1beta1::BinaryAuthorization::Representation
       
           property :desired_cluster_autoscaling, as: 'desiredClusterAutoscaling', class: Google::Apis::ContainerV1beta1::ClusterAutoscaling, decorator: Google::Apis::ContainerV1beta1::ClusterAutoscaling::Representation
@@ -1357,6 +1438,7 @@ module Google
       
           property :desired_dns_config, as: 'desiredDnsConfig', class: Google::Apis::ContainerV1beta1::DnsConfig, decorator: Google::Apis::ContainerV1beta1::DnsConfig::Representation
       
+          property :desired_enable_fqdn_network_policy, as: 'desiredEnableFqdnNetworkPolicy'
           property :desired_enable_private_endpoint, as: 'desiredEnablePrivateEndpoint'
           property :desired_fleet, as: 'desiredFleet', class: Google::Apis::ContainerV1beta1::Fleet, decorator: Google::Apis::ContainerV1beta1::Fleet::Representation
       
@@ -1368,6 +1450,8 @@ module Google
       
           property :desired_image_type, as: 'desiredImageType'
           property :desired_intra_node_visibility_config, as: 'desiredIntraNodeVisibilityConfig', class: Google::Apis::ContainerV1beta1::IntraNodeVisibilityConfig, decorator: Google::Apis::ContainerV1beta1::IntraNodeVisibilityConfig::Representation
+      
+          property :desired_k8s_beta_apis, as: 'desiredK8sBetaApis', class: Google::Apis::ContainerV1beta1::K8sBetaApiConfig, decorator: Google::Apis::ContainerV1beta1::K8sBetaApiConfig::Representation
       
           property :desired_l4ilb_subsetting_config, as: 'desiredL4ilbSubsettingConfig', class: Google::Apis::ContainerV1beta1::IlbSubsettingConfig, decorator: Google::Apis::ContainerV1beta1::IlbSubsettingConfig::Representation
       
@@ -1406,6 +1490,8 @@ module Google
       
           property :desired_resource_usage_export_config, as: 'desiredResourceUsageExportConfig', class: Google::Apis::ContainerV1beta1::ResourceUsageExportConfig, decorator: Google::Apis::ContainerV1beta1::ResourceUsageExportConfig::Representation
       
+          property :desired_security_posture_config, as: 'desiredSecurityPostureConfig', class: Google::Apis::ContainerV1beta1::SecurityPostureConfig, decorator: Google::Apis::ContainerV1beta1::SecurityPostureConfig::Representation
+      
           property :desired_service_external_ips_config, as: 'desiredServiceExternalIpsConfig', class: Google::Apis::ContainerV1beta1::ServiceExternalIPsConfig, decorator: Google::Apis::ContainerV1beta1::ServiceExternalIPsConfig::Representation
       
           property :desired_shielded_nodes, as: 'desiredShieldedNodes', class: Google::Apis::ContainerV1beta1::ShieldedNodes, decorator: Google::Apis::ContainerV1beta1::ShieldedNodes::Representation
@@ -1420,6 +1506,8 @@ module Google
           property :desired_workload_certificates, as: 'desiredWorkloadCertificates', class: Google::Apis::ContainerV1beta1::WorkloadCertificates, decorator: Google::Apis::ContainerV1beta1::WorkloadCertificates::Representation
       
           property :desired_workload_identity_config, as: 'desiredWorkloadIdentityConfig', class: Google::Apis::ContainerV1beta1::WorkloadIdentityConfig, decorator: Google::Apis::ContainerV1beta1::WorkloadIdentityConfig::Representation
+      
+          property :enable_k8s_beta_apis, as: 'enableK8sBetaApis', class: Google::Apis::ContainerV1beta1::K8sBetaApiConfig, decorator: Google::Apis::ContainerV1beta1::K8sBetaApiConfig::Representation
       
           property :etag, as: 'etag'
           property :removed_additional_pod_ranges_config, as: 'removedAdditionalPodRangesConfig', class: Google::Apis::ContainerV1beta1::AdditionalPodRangesConfig, decorator: Google::Apis::ContainerV1beta1::AdditionalPodRangesConfig::Representation
@@ -1582,6 +1670,13 @@ module Google
           property :membership, as: 'membership'
           property :pre_registered, as: 'preRegistered'
           property :project, as: 'project'
+        end
+      end
+      
+      class GpuDriverInstallationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gpu_driver_version, as: 'gpuDriverVersion'
         end
       end
       
@@ -1752,6 +1847,13 @@ module Google
           property :use, as: 'use'
           property :x, as: 'x'
           property :y, as: 'y'
+        end
+      end
+      
+      class K8sBetaApiConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :enabled_apis, as: 'enabledApis'
         end
       end
       
@@ -1979,6 +2081,7 @@ module Google
       
           property :dns_config, as: 'dnsConfig', class: Google::Apis::ContainerV1beta1::DnsConfig, decorator: Google::Apis::ContainerV1beta1::DnsConfig::Representation
       
+          property :enable_fqdn_network_policy, as: 'enableFqdnNetworkPolicy'
           property :enable_intra_node_visibility, as: 'enableIntraNodeVisibility'
           property :enable_l4ilb_subsetting, as: 'enableL4ilbSubsetting'
           property :gateway_api_config, as: 'gatewayApiConfig', class: Google::Apis::ContainerV1beta1::GatewayApiConfig, decorator: Google::Apis::ContainerV1beta1::GatewayApiConfig::Representation
@@ -2145,6 +2248,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :autoscaling, as: 'autoscaling', class: Google::Apis::ContainerV1beta1::NodePoolAutoscaling, decorator: Google::Apis::ContainerV1beta1::NodePoolAutoscaling::Representation
+      
+          property :best_effort_provisioning, as: 'bestEffortProvisioning', class: Google::Apis::ContainerV1beta1::BestEffortProvisioning, decorator: Google::Apis::ContainerV1beta1::BestEffortProvisioning::Representation
       
           collection :conditions, as: 'conditions', class: Google::Apis::ContainerV1beta1::StatusCondition, decorator: Google::Apis::ContainerV1beta1::StatusCondition::Representation
       
@@ -2432,6 +2537,14 @@ module Google
           property :resource_type_affected, as: 'resourceTypeAffected'
           property :severity, as: 'severity'
           property :suggested_upgrade_target, as: 'suggestedUpgradeTarget'
+        end
+      end
+      
+      class SecurityPostureConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mode, as: 'mode'
+          property :vulnerability_mode, as: 'vulnerabilityMode'
         end
       end
       
@@ -2887,6 +3000,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :mode, as: 'mode'
           property :node_metadata, as: 'nodeMetadata'
+        end
+      end
+      
+      class WorkloadPolicyConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_net_admin, as: 'allowNetAdmin'
         end
       end
     end
