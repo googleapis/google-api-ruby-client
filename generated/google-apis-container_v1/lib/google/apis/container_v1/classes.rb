@@ -260,6 +260,56 @@ module Google
         end
       end
       
+      # AutopilotCompatibilityIssue contains information about a specific
+      # compatibility issue with Autopilot mode.
+      class AutopilotCompatibilityIssue
+        include Google::Apis::Core::Hashable
+      
+        # The constraint type of the issue.
+        # Corresponds to the JSON property `constraintType`
+        # @return [String]
+        attr_accessor :constraint_type
+      
+        # The description of the issue.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # A URL to a public documnetation, which addresses resolving this issue.
+        # Corresponds to the JSON property `documentationUrl`
+        # @return [String]
+        attr_accessor :documentation_url
+      
+        # The incompatibility type of this issue.
+        # Corresponds to the JSON property `incompatibilityType`
+        # @return [String]
+        attr_accessor :incompatibility_type
+      
+        # The last time when this issue was observed.
+        # Corresponds to the JSON property `lastObservation`
+        # @return [String]
+        attr_accessor :last_observation
+      
+        # The name of the resources which are subject to this issue.
+        # Corresponds to the JSON property `subjects`
+        # @return [Array<String>]
+        attr_accessor :subjects
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @constraint_type = args[:constraint_type] if args.key?(:constraint_type)
+          @description = args[:description] if args.key?(:description)
+          @documentation_url = args[:documentation_url] if args.key?(:documentation_url)
+          @incompatibility_type = args[:incompatibility_type] if args.key?(:incompatibility_type)
+          @last_observation = args[:last_observation] if args.key?(:last_observation)
+          @subjects = args[:subjects] if args.key?(:subjects)
+        end
+      end
+      
       # AutoprovisioningNodePoolDefaults contains defaults for a node pool created by
       # NAP.
       class AutoprovisioningNodePoolDefaults
@@ -377,6 +427,36 @@ module Google
           @service_account = args[:service_account] if args.key?(:service_account)
           @shielded_instance_config = args[:shielded_instance_config] if args.key?(:shielded_instance_config)
           @upgrade_settings = args[:upgrade_settings] if args.key?(:upgrade_settings)
+        end
+      end
+      
+      # Best effort provisioning.
+      class BestEffortProvisioning
+        include Google::Apis::Core::Hashable
+      
+        # When this is enabled, cluster/node pool creations will ignore non-fatal errors
+        # like stockout to best provision as many nodes as possible right now and
+        # eventually bring up all target number of nodes
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # Minimum number of nodes to be provisioned to be considered as succeeded, and
+        # the rest of nodes will be provisioned gradually and eventually when stockout
+        # issue has been resolved.
+        # Corresponds to the JSON property `minProvisionNodes`
+        # @return [Fixnum]
+        attr_accessor :min_provision_nodes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @min_provision_nodes = args[:min_provision_nodes] if args.key?(:min_provision_nodes)
         end
       end
       
@@ -540,6 +620,31 @@ module Google
           @operation_id = args[:operation_id] if args.key?(:operation_id)
           @project_id = args[:project_id] if args.key?(:project_id)
           @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # CheckAutopilotCompatibilityResponse has a list of compatibility issues.
+      class CheckAutopilotCompatibilityResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of issues for the given operation.
+        # Corresponds to the JSON property `issues`
+        # @return [Array<Google::Apis::ContainerV1::AutopilotCompatibilityIssue>]
+        attr_accessor :issues
+      
+        # The summary of the autopilot compatibility response.
+        # Corresponds to the JSON property `summary`
+        # @return [String]
+        attr_accessor :summary
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @issues = args[:issues] if args.key?(:issues)
+          @summary = args[:summary] if args.key?(:summary)
         end
       end
       
@@ -710,6 +815,11 @@ module Google
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
+      
+        # K8sBetaAPIConfig , configuration for beta APIs
+        # Corresponds to the JSON property `enableK8sBetaApis`
+        # @return [Google::Apis::ContainerV1::K8sBetaApiConfig]
+        attr_accessor :enable_k8s_beta_apis
       
         # Kubernetes alpha features are enabled on this cluster. This includes alpha API
         # groups (e.g. v1alpha1) and features that may not be production ready in the
@@ -1055,6 +1165,7 @@ module Google
           @database_encryption = args[:database_encryption] if args.key?(:database_encryption)
           @default_max_pods_constraint = args[:default_max_pods_constraint] if args.key?(:default_max_pods_constraint)
           @description = args[:description] if args.key?(:description)
+          @enable_k8s_beta_apis = args[:enable_k8s_beta_apis] if args.key?(:enable_k8s_beta_apis)
           @enable_kubernetes_alpha = args[:enable_kubernetes_alpha] if args.key?(:enable_kubernetes_alpha)
           @enable_tpu = args[:enable_tpu] if args.key?(:enable_tpu)
           @endpoint = args[:endpoint] if args.key?(:endpoint)
@@ -1215,6 +1326,12 @@ module Google
         # @return [Google::Apis::ContainerV1::DnsConfig]
         attr_accessor :desired_dns_config
       
+        # Enable/Disable FQDN Network Policy for the cluster.
+        # Corresponds to the JSON property `desiredEnableFqdnNetworkPolicy`
+        # @return [Boolean]
+        attr_accessor :desired_enable_fqdn_network_policy
+        alias_method :desired_enable_fqdn_network_policy?, :desired_enable_fqdn_network_policy
+      
         # Enable/Disable private endpoint for the cluster's master.
         # Corresponds to the JSON property `desiredEnablePrivateEndpoint`
         # @return [Boolean]
@@ -1254,6 +1371,11 @@ module Google
         # Corresponds to the JSON property `desiredIntraNodeVisibilityConfig`
         # @return [Google::Apis::ContainerV1::IntraNodeVisibilityConfig]
         attr_accessor :desired_intra_node_visibility_config
+      
+        # K8sBetaAPIConfig , configuration for beta APIs
+        # Corresponds to the JSON property `desiredK8sBetaApis`
+        # @return [Google::Apis::ContainerV1::K8sBetaApiConfig]
+        attr_accessor :desired_k8s_beta_apis
       
         # ILBSubsettingConfig contains the desired config of L4 Internal LoadBalancer
         # subsetting on this cluster.
@@ -1418,6 +1540,11 @@ module Google
         # @return [Google::Apis::ContainerV1::WorkloadIdentityConfig]
         attr_accessor :desired_workload_identity_config
       
+        # K8sBetaAPIConfig , configuration for beta APIs
+        # Corresponds to the JSON property `enableK8sBetaApis`
+        # @return [Google::Apis::ContainerV1::K8sBetaApiConfig]
+        attr_accessor :enable_k8s_beta_apis
+      
         # The current etag of the cluster. If an etag is provided and does not match the
         # current etag of the cluster, update will be blocked and an ABORTED error will
         # be returned.
@@ -1447,6 +1574,7 @@ module Google
           @desired_datapath_provider = args[:desired_datapath_provider] if args.key?(:desired_datapath_provider)
           @desired_default_snat_status = args[:desired_default_snat_status] if args.key?(:desired_default_snat_status)
           @desired_dns_config = args[:desired_dns_config] if args.key?(:desired_dns_config)
+          @desired_enable_fqdn_network_policy = args[:desired_enable_fqdn_network_policy] if args.key?(:desired_enable_fqdn_network_policy)
           @desired_enable_private_endpoint = args[:desired_enable_private_endpoint] if args.key?(:desired_enable_private_endpoint)
           @desired_fleet = args[:desired_fleet] if args.key?(:desired_fleet)
           @desired_gateway_api_config = args[:desired_gateway_api_config] if args.key?(:desired_gateway_api_config)
@@ -1454,6 +1582,7 @@ module Google
           @desired_identity_service_config = args[:desired_identity_service_config] if args.key?(:desired_identity_service_config)
           @desired_image_type = args[:desired_image_type] if args.key?(:desired_image_type)
           @desired_intra_node_visibility_config = args[:desired_intra_node_visibility_config] if args.key?(:desired_intra_node_visibility_config)
+          @desired_k8s_beta_apis = args[:desired_k8s_beta_apis] if args.key?(:desired_k8s_beta_apis)
           @desired_l4ilb_subsetting_config = args[:desired_l4ilb_subsetting_config] if args.key?(:desired_l4ilb_subsetting_config)
           @desired_locations = args[:desired_locations] if args.key?(:desired_locations)
           @desired_logging_config = args[:desired_logging_config] if args.key?(:desired_logging_config)
@@ -1478,6 +1607,7 @@ module Google
           @desired_stack_type = args[:desired_stack_type] if args.key?(:desired_stack_type)
           @desired_vertical_pod_autoscaling = args[:desired_vertical_pod_autoscaling] if args.key?(:desired_vertical_pod_autoscaling)
           @desired_workload_identity_config = args[:desired_workload_identity_config] if args.key?(:desired_workload_identity_config)
+          @enable_k8s_beta_apis = args[:enable_k8s_beta_apis] if args.key?(:enable_k8s_beta_apis)
           @etag = args[:etag] if args.key?(:etag)
           @removed_additional_pod_ranges_config = args[:removed_additional_pod_ranges_config] if args.key?(:removed_additional_pod_ranges_config)
         end
@@ -2554,6 +2684,25 @@ module Google
         end
       end
       
+      # K8sBetaAPIConfig , configuration for beta APIs
+      class K8sBetaApiConfig
+        include Google::Apis::Core::Hashable
+      
+        # Enabled k8s beta APIs.
+        # Corresponds to the JSON property `enabledApis`
+        # @return [Array<String>]
+        attr_accessor :enabled_apis
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled_apis = args[:enabled_apis] if args.key?(:enabled_apis)
+        end
+      end
+      
       # Configuration for the Kubernetes Dashboard.
       class KubernetesDashboard
         include Google::Apis::Core::Hashable
@@ -3156,6 +3305,12 @@ module Google
         # @return [Google::Apis::ContainerV1::DnsConfig]
         attr_accessor :dns_config
       
+        # Whether FQDN Network Policy is enabled on this cluster.
+        # Corresponds to the JSON property `enableFqdnNetworkPolicy`
+        # @return [Boolean]
+        attr_accessor :enable_fqdn_network_policy
+        alias_method :enable_fqdn_network_policy?, :enable_fqdn_network_policy
+      
         # Whether Intra-node visibility is enabled for this cluster. This makes same
         # node pod to pod traffic visible for VPC network.
         # Corresponds to the JSON property `enableIntraNodeVisibility`
@@ -3208,6 +3363,7 @@ module Google
           @datapath_provider = args[:datapath_provider] if args.key?(:datapath_provider)
           @default_snat_status = args[:default_snat_status] if args.key?(:default_snat_status)
           @dns_config = args[:dns_config] if args.key?(:dns_config)
+          @enable_fqdn_network_policy = args[:enable_fqdn_network_policy] if args.key?(:enable_fqdn_network_policy)
           @enable_intra_node_visibility = args[:enable_intra_node_visibility] if args.key?(:enable_intra_node_visibility)
           @enable_l4ilb_subsetting = args[:enable_l4ilb_subsetting] if args.key?(:enable_l4ilb_subsetting)
           @gateway_api_config = args[:gateway_api_config] if args.key?(:gateway_api_config)
@@ -3853,6 +4009,11 @@ module Google
         # @return [Google::Apis::ContainerV1::NodePoolAutoscaling]
         attr_accessor :autoscaling
       
+        # Best effort provisioning.
+        # Corresponds to the JSON property `bestEffortProvisioning`
+        # @return [Google::Apis::ContainerV1::BestEffortProvisioning]
+        attr_accessor :best_effort_provisioning
+      
         # Which conditions caused the current node pool state.
         # Corresponds to the JSON property `conditions`
         # @return [Array<Google::Apis::ContainerV1::StatusCondition>]
@@ -4000,6 +4161,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @autoscaling = args[:autoscaling] if args.key?(:autoscaling)
+          @best_effort_provisioning = args[:best_effort_provisioning] if args.key?(:best_effort_provisioning)
           @conditions = args[:conditions] if args.key?(:conditions)
           @config = args[:config] if args.key?(:config)
           @etag = args[:etag] if args.key?(:etag)
