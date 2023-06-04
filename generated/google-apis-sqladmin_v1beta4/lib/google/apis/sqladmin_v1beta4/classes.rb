@@ -143,7 +143,7 @@ module Google
         # @return [String]
         attr_accessor :location
       
-        # (Postgres only) Whether point in time recovery is enabled.
+        # Whether point in time recovery is enabled.
         # Corresponds to the JSON property `pointInTimeRecoveryEnabled`
         # @return [Boolean]
         attr_accessor :point_in_time_recovery_enabled
@@ -472,13 +472,6 @@ module Google
         # @return [String]
         attr_accessor :point_in_time
       
-        # (Point-in-time recovery for PostgreSQL only) Clone to an instance in the
-        # specified zone. If no zone is specified, clone to the same zone as the source
-        # instance.
-        # Corresponds to the JSON property `preferredZone`
-        # @return [String]
-        attr_accessor :preferred_zone
-      
         def initialize(**args)
            update!(**args)
         end
@@ -492,7 +485,6 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @pitr_timestamp_ms = args[:pitr_timestamp_ms] if args.key?(:pitr_timestamp_ms)
           @point_in_time = args[:point_in_time] if args.key?(:point_in_time)
-          @preferred_zone = args[:preferred_zone] if args.key?(:preferred_zone)
         end
       end
       
@@ -1174,6 +1166,22 @@ module Google
         def update!(**args)
           @kind = args[:kind] if args.key?(:kind)
           @kms_key_version_name = args[:kms_key_version_name] if args.key?(:kms_key_version_name)
+        end
+      end
+      
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); `
+      class Empty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -3316,6 +3324,12 @@ module Google
         # @return [String]
         attr_accessor :sync_mode
       
+        # Optional. Parallel level for initial data sync. Currently only applicable for
+        # MySQL.
+        # Corresponds to the JSON property `syncParallelLevel`
+        # @return [String]
+        attr_accessor :sync_parallel_level
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3325,6 +3339,7 @@ module Google
           @mysql_sync_config = args[:mysql_sync_config] if args.key?(:mysql_sync_config)
           @skip_verification = args[:skip_verification] if args.key?(:skip_verification)
           @sync_mode = args[:sync_mode] if args.key?(:sync_mode)
+          @sync_parallel_level = args[:sync_parallel_level] if args.key?(:sync_parallel_level)
         end
       end
       
