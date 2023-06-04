@@ -136,6 +136,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ModerateTextRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ModerateTextResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PartOfSpeech
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -281,6 +293,8 @@ module Google
           collection :entities, as: 'entities', class: Google::Apis::LanguageV1beta2::Entity, decorator: Google::Apis::LanguageV1beta2::Entity::Representation
       
           property :language, as: 'language'
+          collection :moderation_categories, as: 'moderationCategories', class: Google::Apis::LanguageV1beta2::ClassificationCategory, decorator: Google::Apis::LanguageV1beta2::ClassificationCategory::Representation
+      
           collection :sentences, as: 'sentences', class: Google::Apis::LanguageV1beta2::Sentence, decorator: Google::Apis::LanguageV1beta2::Sentence::Representation
       
           collection :tokens, as: 'tokens', class: Google::Apis::LanguageV1beta2::Token, decorator: Google::Apis::LanguageV1beta2::Token::Representation
@@ -379,6 +393,23 @@ module Google
           property :extract_entities, as: 'extractEntities'
           property :extract_entity_sentiment, as: 'extractEntitySentiment'
           property :extract_syntax, as: 'extractSyntax'
+          property :moderate_text, as: 'moderateText'
+        end
+      end
+      
+      class ModerateTextRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :document, as: 'document', class: Google::Apis::LanguageV1beta2::Document, decorator: Google::Apis::LanguageV1beta2::Document::Representation
+      
+        end
+      end
+      
+      class ModerateTextResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :moderation_categories, as: 'moderationCategories', class: Google::Apis::LanguageV1beta2::ClassificationCategory, decorator: Google::Apis::LanguageV1beta2::ClassificationCategory::Representation
+      
         end
       end
       
