@@ -202,6 +202,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ValidateIapAttributeExpressionResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AccessDeniedPageSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -469,6 +475,12 @@ module Google
           collection :cidrs, as: 'cidrs'
           collection :fqdns, as: 'fqdns'
           property :name, as: 'name'
+        end
+      end
+      
+      class ValidateIapAttributeExpressionResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
     end

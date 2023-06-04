@@ -1103,6 +1103,21 @@ module Google
           @name = args[:name] if args.key?(:name)
         end
       end
+      
+      # API requires a return message, but currently all response strings will fit in
+      # the status and public message. In the future, this response can hold AST
+      # validation info.
+      class ValidateIapAttributeExpressionResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
     end
   end
 end
