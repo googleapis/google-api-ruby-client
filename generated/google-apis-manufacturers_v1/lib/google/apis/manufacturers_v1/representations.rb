@@ -187,6 +187,7 @@ module Google
           property :theme, as: 'theme'
           property :title, as: 'title'
           collection :video_link, as: 'videoLink'
+          property :virtual_model_link, as: 'virtualModelLink'
         end
       end
       
