@@ -821,9 +821,9 @@ module Google
         # @return [Array<Google::Apis::RetailV2::GoogleCloudRetailV2CompleteQueryResponseCompletionResult>]
         attr_accessor :completion_results
       
-        # Matched recent searches of this user. The maximum number of recent searches is
-        # 10. This field is a restricted feature. If you want to enable it, contact
-        # Retail Search support. This feature is only available when
+        # Deprecated. Matched recent searches of this user. The maximum number of recent
+        # searches is 10. This field is a restricted feature. If you want to enable it,
+        # contact Retail Search support. This feature is only available when
         # CompleteQueryRequest.visitor_id field is set and UserEvent is imported. The
         # recent searches satisfy the follow rules: * They are ordered from latest to
         # oldest. * They are matched with CompleteQueryRequest.query case insensitively.
