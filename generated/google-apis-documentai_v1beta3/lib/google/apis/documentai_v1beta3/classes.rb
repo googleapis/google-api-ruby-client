@@ -6486,6 +6486,153 @@ module Google
         end
       end
       
+      # A singleton resource under a `Processor` which configs a collection of
+      # documents.
+      class GoogleCloudDocumentaiV1beta3Dataset
+        include Google::Apis::Core::Hashable
+      
+        # Config specific to the Document Warehouse-based implementation.
+        # Corresponds to the JSON property `documentWarehouseConfig`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DatasetDocumentWarehouseConfig]
+        attr_accessor :document_warehouse_config
+      
+        # Config specific to the GCS-based implementation.
+        # Corresponds to the JSON property `gcsManagedConfig`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DatasetGcsManagedConfig]
+        attr_accessor :gcs_managed_config
+      
+        # Dataset resource name. Format: `projects/`project`/locations/`location`/
+        # processors/`processor`/dataset`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Config specific to spanner based indexing.
+        # Corresponds to the JSON property `spannerIndexingConfig`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DatasetSpannerIndexingConfig]
+        attr_accessor :spanner_indexing_config
+      
+        # Required. State of the dataset. Will be ignored when updating dataset.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Config specific to unmanaged config
+        # Corresponds to the JSON property `unmanagedDatasetConfig`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DatasetUnmanagedDatasetConfig]
+        attr_accessor :unmanaged_dataset_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @document_warehouse_config = args[:document_warehouse_config] if args.key?(:document_warehouse_config)
+          @gcs_managed_config = args[:gcs_managed_config] if args.key?(:gcs_managed_config)
+          @name = args[:name] if args.key?(:name)
+          @spanner_indexing_config = args[:spanner_indexing_config] if args.key?(:spanner_indexing_config)
+          @state = args[:state] if args.key?(:state)
+          @unmanaged_dataset_config = args[:unmanaged_dataset_config] if args.key?(:unmanaged_dataset_config)
+        end
+      end
+      
+      # Config specific to the Document Warehouse-based implementation.
+      class GoogleCloudDocumentaiV1beta3DatasetDocumentWarehouseConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The collection in Document Warehouse associated with the dataset.
+        # Corresponds to the JSON property `collection`
+        # @return [String]
+        attr_accessor :collection
+      
+        # Output only. The schema in Document Warehouse associated with the dataset.
+        # Corresponds to the JSON property `schema`
+        # @return [String]
+        attr_accessor :schema
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @collection = args[:collection] if args.key?(:collection)
+          @schema = args[:schema] if args.key?(:schema)
+        end
+      end
+      
+      # Config specific to the GCS-based implementation.
+      class GoogleCloudDocumentaiV1beta3DatasetGcsManagedConfig
+        include Google::Apis::Core::Hashable
+      
+        # Specifies all documents on Cloud Storage with a common prefix.
+        # Corresponds to the JSON property `gcsPrefix`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3GcsPrefix]
+        attr_accessor :gcs_prefix
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcs_prefix = args[:gcs_prefix] if args.key?(:gcs_prefix)
+        end
+      end
+      
+      # Dataset Schema.
+      class GoogleCloudDocumentaiV1beta3DatasetSchema
+        include Google::Apis::Core::Hashable
+      
+        # The schema defines the output of the processed document by a processor.
+        # Corresponds to the JSON property `documentSchema`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentSchema]
+        attr_accessor :document_schema
+      
+        # Dataset schema resource name. Format: `projects/`project`/locations/`location`/
+        # processors/`processor`/dataset/datasetSchema`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @document_schema = args[:document_schema] if args.key?(:document_schema)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Config specific to spanner based indexing.
+      class GoogleCloudDocumentaiV1beta3DatasetSpannerIndexingConfig
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Config specific to unmanaged config
+      class GoogleCloudDocumentaiV1beta3DatasetUnmanagedDatasetConfig
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The long-running operation metadata for the DeleteProcessor method.
       class GoogleCloudDocumentaiV1beta3DeleteProcessorMetadata
         include Google::Apis::Core::Hashable
@@ -8257,6 +8404,11 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Metadata about an entity type.
+        # Corresponds to the JSON property `entityTypeMetadata`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3EntityTypeMetadata]
+        attr_accessor :entity_type_metadata
+      
         # Defines the a list of enum values.
         # Corresponds to the JSON property `enumValues`
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentSchemaEntityTypeEnumValues]
@@ -8287,6 +8439,7 @@ module Google
         def update!(**args)
           @base_types = args[:base_types] if args.key?(:base_types)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @entity_type_metadata = args[:entity_type_metadata] if args.key?(:entity_type_metadata)
           @enum_values = args[:enum_values] if args.key?(:enum_values)
           @name = args[:name] if args.key?(:name)
           @properties = args[:properties] if args.key?(:properties)
@@ -8327,6 +8480,11 @@ module Google
         # @return [String]
         attr_accessor :occurrence_type
       
+        # Metadata about a property.
+        # Corresponds to the JSON property `propertyMetadata`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3PropertyMetadata]
+        attr_accessor :property_metadata
+      
         # A reference to the value type of the property. This type is subject to the
         # same conventions as the `Entity.base_types` field.
         # Corresponds to the JSON property `valueType`
@@ -8341,6 +8499,7 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @occurrence_type = args[:occurrence_type] if args.key?(:occurrence_type)
+          @property_metadata = args[:property_metadata] if args.key?(:property_metadata)
           @value_type = args[:value_type] if args.key?(:value_type)
         end
       end
@@ -8729,6 +8888,26 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Metadata about an entity type.
+      class GoogleCloudDocumentaiV1beta3EntityTypeMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Whether the entity type should be considered as "inactive".
+        # Corresponds to the JSON property `inactive`
+        # @return [Boolean]
+        attr_accessor :inactive
+        alias_method :inactive?, :inactive
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @inactive = args[:inactive] if args.key?(:inactive)
         end
       end
       
@@ -9835,6 +10014,26 @@ module Google
         def update!(**args)
           @deprecation_time = args[:deprecation_time] if args.key?(:deprecation_time)
           @replacement_processor_version = args[:replacement_processor_version] if args.key?(:replacement_processor_version)
+        end
+      end
+      
+      # Metadata about a property.
+      class GoogleCloudDocumentaiV1beta3PropertyMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Whether the property should be considered as "inactive".
+        # Corresponds to the JSON property `inactive`
+        # @return [Boolean]
+        attr_accessor :inactive
+        alias_method :inactive?, :inactive
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @inactive = args[:inactive] if args.key?(:inactive)
         end
       end
       
