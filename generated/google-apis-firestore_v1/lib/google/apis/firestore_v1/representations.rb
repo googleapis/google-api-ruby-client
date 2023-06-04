@@ -916,13 +916,16 @@ module Google
           property :concurrency_mode, as: 'concurrencyMode'
           property :create_time, as: 'createTime'
           property :delete_protection_state, as: 'deleteProtectionState'
+          property :earliest_version_time, as: 'earliestVersionTime'
           property :etag, as: 'etag'
           property :key_prefix, as: 'keyPrefix'
           property :location_id, as: 'locationId'
           property :name, as: 'name'
+          property :point_in_time_recovery_enablement, as: 'pointInTimeRecoveryEnablement'
           property :type, as: 'type'
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
+          property :version_retention_period, as: 'versionRetentionPeriod'
         end
       end
       
@@ -948,6 +951,7 @@ module Google
           collection :collection_ids, as: 'collectionIds'
           collection :namespace_ids, as: 'namespaceIds'
           property :output_uri_prefix, as: 'outputUriPrefix'
+          property :snapshot_time, as: 'snapshotTime'
         end
       end
       
