@@ -262,6 +262,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :video_link
       
+        # Virtual Model (3d) asset link.
+        # Corresponds to the JSON property `virtualModelLink`
+        # @return [String]
+        attr_accessor :virtual_model_link
+      
         def initialize(**args)
            update!(**args)
         end
@@ -307,6 +312,7 @@ module Google
           @theme = args[:theme] if args.key?(:theme)
           @title = args[:title] if args.key?(:title)
           @video_link = args[:video_link] if args.key?(:video_link)
+          @virtual_model_link = args[:virtual_model_link] if args.key?(:virtual_model_link)
         end
       end
       
