@@ -304,6 +304,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NoActivityIntent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ObbFile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -977,6 +983,12 @@ module Google
         end
       end
       
+      class NoActivityIntent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class ObbFile
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1054,6 +1066,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :launcher_activity, as: 'launcherActivity', class: Google::Apis::TestingV1::LauncherActivityIntent, decorator: Google::Apis::TestingV1::LauncherActivityIntent::Representation
+      
+          property :no_activity, as: 'noActivity', class: Google::Apis::TestingV1::NoActivityIntent, decorator: Google::Apis::TestingV1::NoActivityIntent::Representation
       
           property :start_activity, as: 'startActivity', class: Google::Apis::TestingV1::StartActivityIntent, decorator: Google::Apis::TestingV1::StartActivityIntent::Representation
       
