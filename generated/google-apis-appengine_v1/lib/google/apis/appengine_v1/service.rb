@@ -1636,6 +1636,54 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
+        
+        # Recreates the required App Engine features for the specified App Engine
+        # application, for example a Cloud Storage bucket or App Engine service account.
+        # Use this method if you receive an error message about a missing feature, for
+        # example, Error retrieving the App Engine service account. If you have deleted
+        # your App Engine service account, this will not be able to recreate it. Instead,
+        # you should attempt to use the IAM undelete API if possible at https://cloud.
+        # google.com/iam/reference/rest/v1/projects.serviceAccounts/undelete?apix_params=
+        # %7B"name"%3A"projects%2F-%2FserviceAccounts%2Funique_id"%2C"resource"%3A%7B%7D%
+        # 7D . If the deletion was recent, the numeric ID can be found in the Cloud
+        # Console Activity Log.
+        # @param [String] projects_id
+        #   Part of `name`. Name of the application to repair. Example: apps/myapp
+        # @param [String] locations_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] applications_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [Google::Apis::AppengineV1::RepairApplicationRequest] repair_application_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AppengineV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AppengineV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def repair_project_location_application(projects_id, locations_id, applications_id, repair_application_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}:repair', options)
+          command.request_representation = Google::Apis::AppengineV1::RepairApplicationRequest::Representation
+          command.request_object = repair_application_request_object
+          command.response_representation = Google::Apis::AppengineV1::Operation::Representation
+          command.response_class = Google::Apis::AppengineV1::Operation
+          command.params['projectsId'] = projects_id unless projects_id.nil?
+          command.params['locationsId'] = locations_id unless locations_id.nil?
+          command.params['applicationsId'] = applications_id unless applications_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
 
         protected
 
