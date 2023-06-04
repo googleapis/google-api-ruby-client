@@ -302,6 +302,11 @@ module Google
         # @return [String]
         attr_accessor :language
       
+        # Harmful and sensitive categories identified in the input document.
+        # Corresponds to the JSON property `moderationCategories`
+        # @return [Array<Google::Apis::LanguageV1::ClassificationCategory>]
+        attr_accessor :moderation_categories
+      
         # Sentences in the input document. Populated if the user enables
         # AnnotateTextRequest.Features.extract_syntax.
         # Corresponds to the JSON property `sentences`
@@ -324,6 +329,7 @@ module Google
           @document_sentiment = args[:document_sentiment] if args.key?(:document_sentiment)
           @entities = args[:entities] if args.key?(:entities)
           @language = args[:language] if args.key?(:language)
+          @moderation_categories = args[:moderation_categories] if args.key?(:moderation_categories)
           @sentences = args[:sentences] if args.key?(:sentences)
           @tokens = args[:tokens] if args.key?(:tokens)
         end
@@ -630,6 +636,12 @@ module Google
         attr_accessor :extract_syntax
         alias_method :extract_syntax?, :extract_syntax
       
+        # Moderate the document for harmful and sensitive categories.
+        # Corresponds to the JSON property `moderateText`
+        # @return [Boolean]
+        attr_accessor :moderate_text
+        alias_method :moderate_text?, :moderate_text
+      
         def initialize(**args)
            update!(**args)
         end
@@ -642,6 +654,45 @@ module Google
           @extract_entities = args[:extract_entities] if args.key?(:extract_entities)
           @extract_entity_sentiment = args[:extract_entity_sentiment] if args.key?(:extract_entity_sentiment)
           @extract_syntax = args[:extract_syntax] if args.key?(:extract_syntax)
+          @moderate_text = args[:moderate_text] if args.key?(:moderate_text)
+        end
+      end
+      
+      # The document moderation request message.
+      class ModerateTextRequest
+        include Google::Apis::Core::Hashable
+      
+        # Represents the input to API methods.
+        # Corresponds to the JSON property `document`
+        # @return [Google::Apis::LanguageV1::Document]
+        attr_accessor :document
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @document = args[:document] if args.key?(:document)
+        end
+      end
+      
+      # The document moderation response message.
+      class ModerateTextResponse
+        include Google::Apis::Core::Hashable
+      
+        # Harmful and sensitive categories representing the input document.
+        # Corresponds to the JSON property `moderationCategories`
+        # @return [Array<Google::Apis::LanguageV1::ClassificationCategory>]
+        attr_accessor :moderation_categories
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @moderation_categories = args[:moderation_categories] if args.key?(:moderation_categories)
         end
       end
       
