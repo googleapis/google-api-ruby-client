@@ -352,6 +352,11 @@ module Google
         # @return [String]
         attr_accessor :key
       
+        # Encryption Key value.
+        # Corresponds to the JSON property `keyValue`
+        # @return [Google::Apis::ConnectorsV1::EncryptionKey]
+        attr_accessor :key_value
+      
         # Secret provides a reference to entries in Secret Manager.
         # Corresponds to the JSON property `secretValue`
         # @return [Google::Apis::ConnectorsV1::Secret]
@@ -371,6 +376,7 @@ module Google
           @bool_value = args[:bool_value] if args.key?(:bool_value)
           @int_value = args[:int_value] if args.key?(:int_value)
           @key = args[:key] if args.key?(:key)
+          @key_value = args[:key_value] if args.key?(:key_value)
           @secret_value = args[:secret_value] if args.key?(:secret_value)
           @string_value = args[:string_value] if args.key?(:string_value)
         end
@@ -478,6 +484,12 @@ module Google
         # Corresponds to the JSON property `configVariables`
         # @return [Array<Google::Apis::ConnectorsV1::ConfigVariable>]
         attr_accessor :config_variables
+      
+        # Output only. Connection revision. This field is only updated when the
+        # connection is created or updated by User.
+        # Corresponds to the JSON property `connectionRevision`
+        # @return [Fixnum]
+        attr_accessor :connection_revision
       
         # Required. Connector version on which the connection is created. The format is:
         # projects/*/locations/*/providers/*/connectors/*/versions/* Only global
@@ -596,6 +608,7 @@ module Google
         def update!(**args)
           @auth_config = args[:auth_config] if args.key?(:auth_config)
           @config_variables = args[:config_variables] if args.key?(:config_variables)
+          @connection_revision = args[:connection_revision] if args.key?(:connection_revision)
           @connector_version = args[:connector_version] if args.key?(:connector_version)
           @connector_version_launch_stage = args[:connector_version_launch_stage] if args.key?(:connector_version_launch_stage)
           @create_time = args[:create_time] if args.key?(:create_time)
@@ -1085,6 +1098,33 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Encryption Key value.
+      class EncryptionKey
+        include Google::Apis::Core::Hashable
+      
+        # The [KMS key name] with which the content of the Operation is encrypted. The
+        # expected format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`. Will be
+        # empty string if google managed.
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
+        # Type.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
