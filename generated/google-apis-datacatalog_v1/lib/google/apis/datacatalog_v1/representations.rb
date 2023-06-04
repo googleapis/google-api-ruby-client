@@ -1051,6 +1051,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gcs_bucket_path, as: 'gcsBucketPath'
+          property :job_id, as: 'jobId'
         end
       end
       
