@@ -481,6 +481,7 @@ module Google
           hash :auxiliary_versions, as: 'auxiliaryVersions', class: Google::Apis::MetastoreV1::AuxiliaryVersionConfig, decorator: Google::Apis::MetastoreV1::AuxiliaryVersionConfig::Representation
       
           hash :config_overrides, as: 'configOverrides'
+          property :endpoint_protocol, as: 'endpointProtocol'
           property :kerberos_config, as: 'kerberosConfig', class: Google::Apis::MetastoreV1::KerberosConfig, decorator: Google::Apis::MetastoreV1::KerberosConfig::Representation
       
           property :version, as: 'version'
