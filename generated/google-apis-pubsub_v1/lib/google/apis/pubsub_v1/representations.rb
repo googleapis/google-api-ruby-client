@@ -154,6 +154,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NoWrapper
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OidcToken
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -179,6 +185,12 @@ module Google
       end
       
       class Message
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PubsubWrapper
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -516,6 +528,13 @@ module Google
         end
       end
       
+      class NoWrapper
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :write_metadata, as: 'writeMetadata'
+        end
+      end
+      
       class OidcToken
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -560,6 +579,12 @@ module Google
         end
       end
       
+      class PubsubWrapper
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class PullRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -580,7 +605,11 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :attributes, as: 'attributes'
+          property :no_wrapper, as: 'noWrapper', class: Google::Apis::PubsubV1::NoWrapper, decorator: Google::Apis::PubsubV1::NoWrapper::Representation
+      
           property :oidc_token, as: 'oidcToken', class: Google::Apis::PubsubV1::OidcToken, decorator: Google::Apis::PubsubV1::OidcToken::Representation
+      
+          property :pubsub_wrapper, as: 'pubsubWrapper', class: Google::Apis::PubsubV1::PubsubWrapper, decorator: Google::Apis::PubsubV1::PubsubWrapper::Representation
       
           property :push_endpoint, as: 'pushEndpoint'
         end
