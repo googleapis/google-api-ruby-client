@@ -2458,14 +2458,14 @@ module Google
       
         # Number of seconds after the container has started before the probe is
         # initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for
-        # liveness probe is 3600. Maximum value for startup probe is 240. .
+        # liveness probe is 3600. Maximum value for startup probe is 240.
         # Corresponds to the JSON property `initialDelaySeconds`
         # @return [Fixnum]
         attr_accessor :initial_delay_seconds
       
         # How often (in seconds) to perform the probe. Default to 10 seconds. Minimum
         # value is 1. Maximum value for liveness probe is 3600. Maximum value for
-        # startup probe is 240. Must be greater or equal than timeout_seconds. .
+        # startup probe is 240. Must be greater or equal than timeout_seconds.
         # Corresponds to the JSON property `periodSeconds`
         # @return [Fixnum]
         attr_accessor :period_seconds
