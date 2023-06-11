@@ -579,7 +579,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Check if a notebook instance is healthy.
+        # Checks whether a notebook instance is healthy.
         # @param [String] name
         #   Required. Format: `projects/`project_id`/locations/`location`/instances/`
         #   instance_id``
@@ -610,7 +610,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Check if a notebook instance is upgradable.
+        # Checks whether a notebook instance is upgradable.
         # @param [String] notebook_instance
         #   Required. Format: `projects/`project_id`/locations/`location`/instances/`
         #   instance_id``
@@ -1722,7 +1722,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Report and process a runtime event.
+        # Reports and processes a runtime event.
         # @param [String] name
         #   Required. Format: `projects/`project_id`/locations/`location`/runtimes/`
         #   runtime_id``

@@ -23,9 +23,9 @@ module Google
     module NotebooksV1
       
       # Definition of a hardware accelerator. Note that not all combinations of `type`
-      # and `core_count` are valid. Check [GPUs on Compute Engine](https://cloud.
-      # google.com/compute/docs/gpus/#gpus-list) to find a valid combination. TPUs are
-      # not supported.
+      # and `core_count` are valid. See [GPUs on Compute Engine](https://cloud.google.
+      # com/compute/docs/gpus/#gpus-list) to find a valid combination. TPUs are not
+      # supported.
       class AcceleratorConfig
         include Google::Apis::Core::Hashable
       
@@ -605,9 +605,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Definition of a hardware accelerator. Note that not all combinations of `type`
-        # and `core_count` are valid. Check [GPUs on Compute Engine](https://cloud.
-        # google.com/compute/docs/gpus) to find a valid combination. TPUs are not
-        # supported.
+        # and `core_count` are valid. See [GPUs on Compute Engine](https://cloud.google.
+        # com/compute/docs/gpus) to find a valid combination. TPUs are not supported.
         # Corresponds to the JSON property `acceleratorConfig`
         # @return [Google::Apis::NotebooksV1::SchedulerAcceleratorConfig]
         attr_accessor :accelerator_config
@@ -848,9 +847,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Definition of a hardware accelerator. Note that not all combinations of `type`
-        # and `core_count` are valid. Check [GPUs on Compute Engine](https://cloud.
-        # google.com/compute/docs/gpus/#gpus-list) to find a valid combination. TPUs are
-        # not supported.
+        # and `core_count` are valid. See [GPUs on Compute Engine](https://cloud.google.
+        # com/compute/docs/gpus/#gpus-list) to find a valid combination. TPUs are not
+        # supported.
         # Corresponds to the JSON property `acceleratorConfig`
         # @return [Google::Apis::NotebooksV1::AcceleratorConfig]
         attr_accessor :accelerator_config
@@ -985,7 +984,7 @@ module Google
         attr_accessor :no_proxy_access
         alias_method :no_proxy_access?, :no_proxy_access
       
-        # If true, no public IP will be assigned to this instance.
+        # If true, no external IP will be assigned to this instance.
         # Corresponds to the JSON property `noPublicIp`
         # @return [Boolean]
         attr_accessor :no_public_ip
@@ -1034,7 +1033,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :service_account_scopes
       
-        # A set of Shielded Instance options. Check [Images using supported Shielded VM
+        # A set of Shielded Instance options. See [Images using supported Shielded VM
         # features](https://cloud.google.com/compute/docs/instances/modifying-shielded-
         # vm). Not all combinations are valid.
         # Corresponds to the JSON property `shieldedInstanceConfig`
@@ -2249,7 +2248,7 @@ module Google
         end
       end
       
-      # A set of Shielded Instance options. Check [Images using supported Shielded VM
+      # A set of Shielded Instance options. See [Images using supported Shielded VM
       # features](https://cloud.google.com/compute/docs/instances/modifying-shielded-
       # vm). Not all combinations are valid.
       class RuntimeShieldedInstanceConfig
@@ -2484,9 +2483,8 @@ module Google
       end
       
       # Definition of a hardware accelerator. Note that not all combinations of `type`
-      # and `core_count` are valid. Check [GPUs on Compute Engine](https://cloud.
-      # google.com/compute/docs/gpus) to find a valid combination. TPUs are not
-      # supported.
+      # and `core_count` are valid. See [GPUs on Compute Engine](https://cloud.google.
+      # com/compute/docs/gpus) to find a valid combination. TPUs are not supported.
       class SchedulerAcceleratorConfig
         include Google::Apis::Core::Hashable
       
@@ -2561,7 +2559,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. Count of cores of this accelerator. Note that not all combinations
-        # of `type` and `core_count` are valid. Check [GPUs on Compute Engine](https://
+        # of `type` and `core_count` are valid. See [GPUs on Compute Engine](https://
         # cloud.google.com/compute/docs/gpus/#gpus-list) to find a valid combination.
         # TPUs are not supported.
         # Corresponds to the JSON property `coreCount`
@@ -2624,7 +2622,7 @@ module Google
         end
       end
       
-      # A set of Shielded Instance options. Check [Images using supported Shielded VM
+      # A set of Shielded Instance options. See [Images using supported Shielded VM
       # features](https://cloud.google.com/compute/docs/instances/modifying-shielded-
       # vm). Not all combinations are valid.
       class ShieldedInstanceConfig
@@ -2921,7 +2919,7 @@ module Google
       class UpdateShieldedInstanceConfigRequest
         include Google::Apis::Core::Hashable
       
-        # A set of Shielded Instance options. Check [Images using supported Shielded VM
+        # A set of Shielded Instance options. See [Images using supported Shielded VM
         # features](https://cloud.google.com/compute/docs/instances/modifying-shielded-
         # vm). Not all combinations are valid.
         # Corresponds to the JSON property `shieldedInstanceConfig`
@@ -3249,7 +3247,7 @@ module Google
         # @return [String]
         attr_accessor :reserved_ip_range
       
-        # A set of Shielded Instance options. Check [Images using supported Shielded VM
+        # A set of Shielded Instance options. See [Images using supported Shielded VM
         # features](https://cloud.google.com/compute/docs/instances/modifying-shielded-
         # vm). Not all combinations are valid.
         # Corresponds to the JSON property `shieldedInstanceConfig`
