@@ -322,7 +322,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BareMetalNodePoolUpgradePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BareMetalOsEnvironmentConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BareMetalParallelUpgradeConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -413,12 +425,6 @@ module Google
       end
       
       class EnrollBareMetalNodePoolRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class EnrollBareMetalStandaloneNodePoolRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -581,6 +587,12 @@ module Google
       end
       
       class TestIamPermissionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpgradeDependency
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1353,6 +1365,8 @@ module Google
       
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
+          property :upgrade_policy, as: 'upgradePolicy', class: Google::Apis::GkeonpremV1::BareMetalNodePoolUpgradePolicy, decorator: Google::Apis::GkeonpremV1::BareMetalNodePoolUpgradePolicy::Representation
+      
         end
       end
       
@@ -1370,10 +1384,26 @@ module Google
         end
       end
       
+      class BareMetalNodePoolUpgradePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :parallel_upgrade_config, as: 'parallelUpgradeConfig', class: Google::Apis::GkeonpremV1::BareMetalParallelUpgradeConfig, decorator: Google::Apis::GkeonpremV1::BareMetalParallelUpgradeConfig::Representation
+      
+        end
+      end
+      
       class BareMetalOsEnvironmentConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :package_repo_excluded, as: 'packageRepoExcluded'
+        end
+      end
+      
+      class BareMetalParallelUpgradeConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :concurrent_nodes, as: 'concurrentNodes'
+          property :minimum_available_nodes, as: 'minimumAvailableNodes'
         end
       end
       
@@ -1420,6 +1450,8 @@ module Google
       class BareMetalVersionInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dependencies, as: 'dependencies', class: Google::Apis::GkeonpremV1::UpgradeDependency, decorator: Google::Apis::GkeonpremV1::UpgradeDependency::Representation
+      
           property :has_dependencies, as: 'hasDependencies'
           property :version, as: 'version'
         end
@@ -1491,14 +1523,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bare_metal_node_pool_id, as: 'bareMetalNodePoolId'
-          property :validate_only, as: 'validateOnly'
-        end
-      end
-      
-      class EnrollBareMetalStandaloneNodePoolRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :bare_metal_standalone_node_pool_id, as: 'bareMetalStandaloneNodePoolId'
           property :validate_only, as: 'validateOnly'
         end
       end
@@ -1752,6 +1776,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class UpgradeDependency
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :current_version, as: 'currentVersion'
+          property :local_name, as: 'localName'
+          property :resource_name, as: 'resourceName'
+          property :target_version, as: 'targetVersion'
         end
       end
       

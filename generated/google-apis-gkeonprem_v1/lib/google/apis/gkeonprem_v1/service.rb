@@ -505,6 +505,13 @@ module Google
         #   The current etag of the bare metal admin cluster. If an etag is provided and
         #   does not match the current etag of the cluster, deletion will be blocked and
         #   an ABORTED error will be returned.
+        # @param [Boolean] ignore_errors
+        #   If set to true, the unenrollment of a bare metal admin cluster resource will
+        #   succeed even if errors occur during unenrollment. This parameter can be used
+        #   when you want to unenroll admin cluster resource and the on-prem admin cluster
+        #   is disconnected / unreachable. WARNING: Using this parameter when your admin
+        #   cluster still exists may result in a deleted GCP admin cluster but existing
+        #   resourcelink in on-prem admin cluster and membership.
         # @param [Boolean] validate_only
         #   Validate the request without actually doing any updates.
         # @param [String] fields
@@ -524,13 +531,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def unenroll_project_location_bare_metal_admin_cluster(name, allow_missing: nil, etag: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def unenroll_project_location_bare_metal_admin_cluster(name, allow_missing: nil, etag: nil, ignore_errors: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}:unenroll', options)
           command.response_representation = Google::Apis::GkeonpremV1::Operation::Representation
           command.response_class = Google::Apis::GkeonpremV1::Operation
           command.params['name'] = name unless name.nil?
           command.query['allowMissing'] = allow_missing unless allow_missing.nil?
           command.query['etag'] = etag unless etag.nil?
+          command.query['ignoreErrors'] = ignore_errors unless ignore_errors.nil?
           command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1665,43 +1673,6 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Enrolls an existing bare metal standalone node pool to the Anthos On-Prem API
-        # within a given project and location. Through enrollment, an existing
-        # standalone node pool will become Anthos On-Prem API managed. The corresponding
-        # GCP resources will be created.
-        # @param [String] parent
-        #   Required. The parent resource where this node pool will be created. projects/`
-        #   project`/locations/`location`/bareMetalStandaloneClusters/`cluster`
-        # @param [Google::Apis::GkeonpremV1::EnrollBareMetalStandaloneNodePoolRequest] enroll_bare_metal_standalone_node_pool_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::GkeonpremV1::Operation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::GkeonpremV1::Operation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def enroll_bare_metal_standalone_node_pool(parent, enroll_bare_metal_standalone_node_pool_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1/{+parent}/bareMetalStandaloneNodePools:enroll', options)
-          command.request_representation = Google::Apis::GkeonpremV1::EnrollBareMetalStandaloneNodePoolRequest::Representation
-          command.request_object = enroll_bare_metal_standalone_node_pool_request_object
-          command.response_representation = Google::Apis::GkeonpremV1::Operation::Representation
-          command.response_class = Google::Apis::GkeonpremV1::Operation
-          command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
