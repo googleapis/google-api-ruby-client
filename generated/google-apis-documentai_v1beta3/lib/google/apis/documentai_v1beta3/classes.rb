@@ -1999,9 +1999,8 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta3::GoogleRpcStatus]
         attr_accessor :error
       
-        # An IANA published MIME type (also referred to as media type). For more
-        # information, see https://www.iana.org/assignments/media-types/media-types.
-        # xhtml.
+        # An IANA published [media type (MIME type)](https://www.iana.org/assignments/
+        # media-types/media-types.xhtml).
         # Corresponds to the JSON property `mimeType`
         # @return [String]
         attr_accessor :mime_type
@@ -2320,7 +2319,7 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta1DocumentPageImage]
         attr_accessor :image
       
-        # Image Quality Scores for the page image
+        # Image Quality Scores for the page image.
         # Corresponds to the JSON property `imageQualityScores`
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta1DocumentPageImageQualityScores]
         attr_accessor :image_quality_scores
@@ -2541,8 +2540,8 @@ module Google
         # @return [Float]
         attr_accessor :confidence
       
-        # The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information,
-        # see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        # The [BCP-47 language code](https://www.unicode.org/reports/tr35/#
+        # Unicode_locale_identifier), such as `en-US` or `sr-Latn`.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -2672,7 +2671,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :height
       
-        # Encoding mime type for the image.
+        # Encoding [media type (MIME type)](https://www.iana.org/assignments/media-types/
+        # media-types.xhtml) for the image.
         # Corresponds to the JSON property `mimeType`
         # @return [String]
         attr_accessor :mime_type
@@ -2695,7 +2695,7 @@ module Google
         end
       end
       
-      # Image Quality Scores for the page image
+      # Image Quality Scores for the page image.
       class GoogleCloudDocumentaiV1beta1DocumentPageImageQualityScores
         include Google::Apis::Core::Hashable
       
@@ -2704,7 +2704,7 @@ module Google
         # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta1DocumentPageImageQualityScoresDetectedDefect>]
         attr_accessor :detected_defects
       
-        # The overall quality score. Range `[0, 1]` where 1 is perfect quality.
+        # The overall quality score. Range `[0, 1]` where `1` is perfect quality.
         # Corresponds to the JSON property `qualityScore`
         # @return [Float]
         attr_accessor :quality_score
@@ -2724,7 +2724,7 @@ module Google
       class GoogleCloudDocumentaiV1beta1DocumentPageImageQualityScoresDetectedDefect
         include Google::Apis::Core::Hashable
       
-        # Confidence of detected defect. Range `[0, 1]` where 1 indicates strong
+        # Confidence of detected defect. Range `[0, 1]` where `1` indicates strong
         # confidence of that the defect exists.
         # Corresponds to the JSON property `confidence`
         # @return [Float]
@@ -3620,8 +3620,8 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta1DocumentStyleFontSize]
         attr_accessor :font_size
       
-        # Font weight. Possible values are normal, bold, bolder, and lighter. https://
-        # www.w3schools.com/cssref/pr_font_weight.asp
+        # [Font weight](https://www.w3schools.com/cssref/pr_font_weight.asp). Possible
+        # values are `normal`, `bold`, `bolder`, and `lighter`.
         # Corresponds to the JSON property `fontWeight`
         # @return [String]
         attr_accessor :font_weight
@@ -3631,14 +3631,14 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta1DocumentTextAnchor]
         attr_accessor :text_anchor
       
-        # Text decoration. Follows CSS standard. https://www.w3schools.com/cssref/
-        # pr_text_text-decoration.asp
+        # [Text decoration](https://www.w3schools.com/cssref/pr_text_text-decoration.asp)
+        # . Follows CSS standard.
         # Corresponds to the JSON property `textDecoration`
         # @return [String]
         attr_accessor :text_decoration
       
-        # Text style. Possible values are normal, italic, and oblique. https://www.
-        # w3schools.com/cssref/pr_font_font-style.asp
+        # [Text style](https://www.w3schools.com/cssref/pr_font_font-style.asp).
+        # Possible values are `normal`, `italic`, and `oblique`.
         # Corresponds to the JSON property `textStyle`
         # @return [String]
         attr_accessor :text_style
@@ -3669,7 +3669,7 @@ module Google
         # @return [Float]
         attr_accessor :size
       
-        # Unit for the font size. Follows CSS naming (in, px, pt, etc.).
+        # Unit for the font size. Follows CSS naming (`in`, `px`, `pt`, etc.).
         # Corresponds to the JSON property `unit`
         # @return [String]
         attr_accessor :unit
@@ -4110,9 +4110,8 @@ module Google
         # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta2DocumentLabel>]
         attr_accessor :labels
       
-        # An IANA published MIME type (also referred to as media type). For more
-        # information, see https://www.iana.org/assignments/media-types/media-types.
-        # xhtml.
+        # An IANA published [media type (MIME type)](https://www.iana.org/assignments/
+        # media-types/media-types.xhtml).
         # Corresponds to the JSON property `mimeType`
         # @return [String]
         attr_accessor :mime_type
@@ -4469,7 +4468,7 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta2DocumentPageImage]
         attr_accessor :image
       
-        # Image Quality Scores for the page image
+        # Image Quality Scores for the page image.
         # Corresponds to the JSON property `imageQualityScores`
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta2DocumentPageImageQualityScores]
         attr_accessor :image_quality_scores
@@ -4690,8 +4689,8 @@ module Google
         # @return [Float]
         attr_accessor :confidence
       
-        # The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information,
-        # see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        # The [BCP-47 language code](https://www.unicode.org/reports/tr35/#
+        # Unicode_locale_identifier), such as `en-US` or `sr-Latn`.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -4821,7 +4820,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :height
       
-        # Encoding mime type for the image.
+        # Encoding [media type (MIME type)](https://www.iana.org/assignments/media-types/
+        # media-types.xhtml) for the image.
         # Corresponds to the JSON property `mimeType`
         # @return [String]
         attr_accessor :mime_type
@@ -4844,7 +4844,7 @@ module Google
         end
       end
       
-      # Image Quality Scores for the page image
+      # Image Quality Scores for the page image.
       class GoogleCloudDocumentaiV1beta2DocumentPageImageQualityScores
         include Google::Apis::Core::Hashable
       
@@ -4853,7 +4853,7 @@ module Google
         # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta2DocumentPageImageQualityScoresDetectedDefect>]
         attr_accessor :detected_defects
       
-        # The overall quality score. Range `[0, 1]` where 1 is perfect quality.
+        # The overall quality score. Range `[0, 1]` where `1` is perfect quality.
         # Corresponds to the JSON property `qualityScore`
         # @return [Float]
         attr_accessor :quality_score
@@ -4873,7 +4873,7 @@ module Google
       class GoogleCloudDocumentaiV1beta2DocumentPageImageQualityScoresDetectedDefect
         include Google::Apis::Core::Hashable
       
-        # Confidence of detected defect. Range `[0, 1]` where 1 indicates strong
+        # Confidence of detected defect. Range `[0, 1]` where `1` indicates strong
         # confidence of that the defect exists.
         # Corresponds to the JSON property `confidence`
         # @return [Float]
@@ -5769,8 +5769,8 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta2DocumentStyleFontSize]
         attr_accessor :font_size
       
-        # Font weight. Possible values are normal, bold, bolder, and lighter. https://
-        # www.w3schools.com/cssref/pr_font_weight.asp
+        # [Font weight](https://www.w3schools.com/cssref/pr_font_weight.asp). Possible
+        # values are `normal`, `bold`, `bolder`, and `lighter`.
         # Corresponds to the JSON property `fontWeight`
         # @return [String]
         attr_accessor :font_weight
@@ -5780,14 +5780,14 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta2DocumentTextAnchor]
         attr_accessor :text_anchor
       
-        # Text decoration. Follows CSS standard. https://www.w3schools.com/cssref/
-        # pr_text_text-decoration.asp
+        # [Text decoration](https://www.w3schools.com/cssref/pr_text_text-decoration.asp)
+        # . Follows CSS standard.
         # Corresponds to the JSON property `textDecoration`
         # @return [String]
         attr_accessor :text_decoration
       
-        # Text style. Possible values are normal, italic, and oblique. https://www.
-        # w3schools.com/cssref/pr_font_font-style.asp
+        # [Text style](https://www.w3schools.com/cssref/pr_font_font-style.asp).
+        # Possible values are `normal`, `italic`, and `oblique`.
         # Corresponds to the JSON property `textStyle`
         # @return [String]
         attr_accessor :text_style
@@ -5818,7 +5818,7 @@ module Google
         # @return [Float]
         attr_accessor :size
       
-        # Unit for the font size. Follows CSS naming (in, px, pt, etc.).
+        # Unit for the font size. Follows CSS naming (`in`, `px`, `pt`, etc.).
         # Corresponds to the JSON property `unit`
         # @return [String]
         attr_accessor :unit
@@ -6336,8 +6336,8 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ProcessOptions]
         attr_accessor :process_options
       
-        # Whether Human Review feature should be skipped for this request. Default to
-        # false.
+        # Whether Human Review feature should be skipped for this request. Default to `
+        # false`.
         # Corresponds to the JSON property `skipHumanReview`
         # @return [Boolean]
         attr_accessor :skip_human_review
@@ -6367,10 +6367,11 @@ module Google
         # @return [String]
         attr_accessor :gcs_source
       
-        # Media type (MIME type) of the input. If the input is a raw document, refer to [
-        # supported file types](https://cloud.google.com/document-ai/docs/file-types)
-        # for the list of media types. If the input is a Document, the type should be `
-        # application/json`.
+        # An IANA published [media type (MIME type)](https://www.iana.org/assignments/
+        # media-types/media-types.xhtml) of the input. If the input is a raw document,
+        # refer to [supported file types](https://cloud.google.com/document-ai/docs/file-
+        # types) for the list of media types. If the input is a Document, the type
+        # should be `application/json`.
         # Corresponds to the JSON property `mimeType`
         # @return [String]
         attr_accessor :mime_type
@@ -6486,7 +6487,7 @@ module Google
         end
       end
       
-      # A singleton resource under a `Processor` which configs a collection of
+      # A singleton resource under a Processor which configures a collection of
       # documents.
       class GoogleCloudDocumentaiV1beta3Dataset
         include Google::Apis::Core::Hashable
@@ -6798,9 +6799,8 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta3::GoogleRpcStatus]
         attr_accessor :error
       
-        # An IANA published MIME type (also referred to as media type). For more
-        # information, see https://www.iana.org/assignments/media-types/media-types.
-        # xhtml.
+        # An IANA published [media type (MIME type)](https://www.iana.org/assignments/
+        # media-types/media-types.xhtml).
         # Corresponds to the JSON property `mimeType`
         # @return [String]
         attr_accessor :mime_type
@@ -7197,7 +7197,7 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentPageImage]
         attr_accessor :image
       
-        # Image Quality Scores for the page image
+        # Image Quality Scores for the page image.
         # Corresponds to the JSON property `imageQualityScores`
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentPageImageQualityScores]
         attr_accessor :image_quality_scores
@@ -7418,8 +7418,8 @@ module Google
         # @return [Float]
         attr_accessor :confidence
       
-        # The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information,
-        # see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        # The [BCP-47 language code](https://www.unicode.org/reports/tr35/#
+        # Unicode_locale_identifier), such as `en-US` or `sr-Latn`.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -7549,7 +7549,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :height
       
-        # Encoding mime type for the image.
+        # Encoding [media type (MIME type)](https://www.iana.org/assignments/media-types/
+        # media-types.xhtml) for the image.
         # Corresponds to the JSON property `mimeType`
         # @return [String]
         attr_accessor :mime_type
@@ -7572,7 +7573,7 @@ module Google
         end
       end
       
-      # Image Quality Scores for the page image
+      # Image Quality Scores for the page image.
       class GoogleCloudDocumentaiV1beta3DocumentPageImageQualityScores
         include Google::Apis::Core::Hashable
       
@@ -7581,7 +7582,7 @@ module Google
         # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentPageImageQualityScoresDetectedDefect>]
         attr_accessor :detected_defects
       
-        # The overall quality score. Range `[0, 1]` where 1 is perfect quality.
+        # The overall quality score. Range `[0, 1]` where `1` is perfect quality.
         # Corresponds to the JSON property `qualityScore`
         # @return [Float]
         attr_accessor :quality_score
@@ -7601,7 +7602,7 @@ module Google
       class GoogleCloudDocumentaiV1beta3DocumentPageImageQualityScoresDetectedDefect
         include Google::Apis::Core::Hashable
       
-        # Confidence of detected defect. Range `[0, 1]` where 1 indicates strong
+        # Confidence of detected defect. Range `[0, 1]` where `1` indicates strong
         # confidence of that the defect exists.
         # Corresponds to the JSON property `confidence`
         # @return [Float]
@@ -8414,14 +8415,14 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentSchemaEntityTypeEnumValues]
         attr_accessor :enum_values
       
-        # Name of the type. It must be unique within the schema file and cannot be a '
-        # Common Type'. Besides that we use the following naming conventions: - *use `
-        # snake_casing`* - name matching is case-sensitive - Maximum 64 characters. -
-        # Must start with a letter. - Allowed characters: ASCII letters `[a-z0-9_-]`. (
-        # For backward compatibility internal infrastructure and tooling can handle any
-        # ascii character) - The `/` is sometimes used to denote a property of a type.
-        # For example `line_item/amount`. This convention is deprecated, but will still
-        # be honored for backward compatibility.
+        # Name of the type. It must be unique within the schema file and cannot be a "
+        # Common Type". The following naming conventions are used: - Use `snake_casing` -
+        # Name matching is case-sensitive - Maximum 64 characters. - Must start with a
+        # letter. - Allowed characters: ASCII letters `[a-z0-9_-]`. (For backward
+        # compatibility internal infrastructure and tooling can handle any ascii
+        # character) - The `/` is sometimes used to denote a property of a type. For
+        # example `line_item/amount`. This convention is deprecated, but will still be
+        # honored for backward compatibility.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -8515,7 +8516,7 @@ module Google
         attr_accessor :document_allow_multiple_labels
         alias_method :document_allow_multiple_labels?, :document_allow_multiple_labels
       
-        # If true, a `document` entity type can be applied to subdocument ( splitting).
+        # If true, a `document` entity type can be applied to subdocument (splitting).
         # Otherwise, it can only be applied to the entire document (classification).
         # Corresponds to the JSON property `documentSplitter`
         # @return [Boolean]
@@ -8696,8 +8697,8 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentStyleFontSize]
         attr_accessor :font_size
       
-        # Font weight. Possible values are normal, bold, bolder, and lighter. https://
-        # www.w3schools.com/cssref/pr_font_weight.asp
+        # [Font weight](https://www.w3schools.com/cssref/pr_font_weight.asp). Possible
+        # values are `normal`, `bold`, `bolder`, and `lighter`.
         # Corresponds to the JSON property `fontWeight`
         # @return [String]
         attr_accessor :font_weight
@@ -8707,14 +8708,14 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentTextAnchor]
         attr_accessor :text_anchor
       
-        # Text decoration. Follows CSS standard. https://www.w3schools.com/cssref/
-        # pr_text_text-decoration.asp
+        # [Text decoration](https://www.w3schools.com/cssref/pr_text_text-decoration.asp)
+        # . Follows CSS standard.
         # Corresponds to the JSON property `textDecoration`
         # @return [String]
         attr_accessor :text_decoration
       
-        # Text style. Possible values are normal, italic, and oblique. https://www.
-        # w3schools.com/cssref/pr_font_font-style.asp
+        # [Text style](https://www.w3schools.com/cssref/pr_font_font-style.asp).
+        # Possible values are `normal`, `italic`, and `oblique`.
         # Corresponds to the JSON property `textStyle`
         # @return [String]
         attr_accessor :text_style
@@ -8745,7 +8746,7 @@ module Google
         # @return [Float]
         attr_accessor :size
       
-        # Unit for the font size. Follows CSS naming (in, px, pt, etc.).
+        # Unit for the font size. Follows CSS naming (`in`, `px`, `pt`, etc.).
         # Corresponds to the JSON property `unit`
         # @return [String]
         attr_accessor :unit
@@ -9788,8 +9789,8 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # The KMS key used for encryption/decryption in CMEK scenarios. See https://
-        # cloud.google.com/security-key-management.
+        # The [KMS key](https://cloud.google.com/security-key-management) used for
+        # encryption/decryption in CMEK scenarios.
         # Corresponds to the JSON property `kmsKeyName`
         # @return [String]
         attr_accessor :kms_key_name
@@ -9897,7 +9898,8 @@ module Google
       class GoogleCloudDocumentaiV1beta3ProcessorTypeLocationInfo
         include Google::Apis::Core::Hashable
       
-        # The location id, currently must be one of [us, eu].
+        # The location id, refer to [regional and multi-regional support](/document-ai/
+        # docs/regions) for supported locations.
         # Corresponds to the JSON property `locationId`
         # @return [String]
         attr_accessor :location_id
@@ -9913,7 +9915,7 @@ module Google
       end
       
       # A processor version is an implementation of a processor. Each processor can
-      # have multiple versions, pre-trained by Google internally or up-trained by the
+      # have multiple versions, pre-trained by Google internally or uptrained by the
       # customer. At a time, a processor can only have one default version version. So
       # the processor's behavior (when processing documents) is defined by a default
       # version
@@ -9940,7 +9942,7 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentSchema]
         attr_accessor :document_schema
       
-        # Denotes that this ProcessorVersion is managed by google.
+        # Denotes that this `ProcessorVersion` is managed by Google.
         # Corresponds to the JSON property `googleManaged`
         # @return [Boolean]
         attr_accessor :google_managed
@@ -10344,7 +10346,7 @@ module Google
         attr_accessor :input_data
       
         # A processor version is an implementation of a processor. Each processor can
-        # have multiple versions, pre-trained by Google internally or up-trained by the
+        # have multiple versions, pre-trained by Google internally or uptrained by the
         # customer. At a time, a processor can only have one default version version. So
         # the processor's behavior (when processing documents) is defined by a default
         # version
