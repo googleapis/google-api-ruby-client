@@ -727,6 +727,28 @@ module Google
         end
       end
       
+      # Sets the `data` field as the HTTP body for delivery.
+      class NoWrapper
+        include Google::Apis::Core::Hashable
+      
+        # When true, writes the Pub/Sub message metadata to `x-goog-pubsub-:` headers of
+        # the HTTP request. Writes the Pub/Sub message attributes to `:` headers of the
+        # HTTP request.
+        # Corresponds to the JSON property `writeMetadata`
+        # @return [Boolean]
+        attr_accessor :write_metadata
+        alias_method :write_metadata?, :write_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @write_metadata = args[:write_metadata] if args.key?(:write_metadata)
+        end
+      end
+      
       # Contains information needed for generating an [OpenID Connect token](https://
       # developers.google.com/identity/protocols/OpenIDConnect).
       class OidcToken
@@ -952,6 +974,21 @@ module Google
         end
       end
       
+      # The payload to the push endpoint is in the form of the JSON representation of
+      # a PubsubMessage (https://cloud.google.com/pubsub/docs/reference/rpc/google.
+      # pubsub.v1#pubsubmessage).
+      class PubsubWrapper
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Request for the `Pull` method.
       class PullRequest
         include Google::Apis::Core::Hashable
@@ -1030,11 +1067,23 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :attributes
       
+        # Sets the `data` field as the HTTP body for delivery.
+        # Corresponds to the JSON property `noWrapper`
+        # @return [Google::Apis::PubsubV1::NoWrapper]
+        attr_accessor :no_wrapper
+      
         # Contains information needed for generating an [OpenID Connect token](https://
         # developers.google.com/identity/protocols/OpenIDConnect).
         # Corresponds to the JSON property `oidcToken`
         # @return [Google::Apis::PubsubV1::OidcToken]
         attr_accessor :oidc_token
+      
+        # The payload to the push endpoint is in the form of the JSON representation of
+        # a PubsubMessage (https://cloud.google.com/pubsub/docs/reference/rpc/google.
+        # pubsub.v1#pubsubmessage).
+        # Corresponds to the JSON property `pubsubWrapper`
+        # @return [Google::Apis::PubsubV1::PubsubWrapper]
+        attr_accessor :pubsub_wrapper
       
         # A URL locating the endpoint to which messages should be pushed. For example, a
         # Webhook endpoint might use `https://example.com/push`.
@@ -1049,7 +1098,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @attributes = args[:attributes] if args.key?(:attributes)
+          @no_wrapper = args[:no_wrapper] if args.key?(:no_wrapper)
           @oidc_token = args[:oidc_token] if args.key?(:oidc_token)
+          @pubsub_wrapper = args[:pubsub_wrapper] if args.key?(:pubsub_wrapper)
           @push_endpoint = args[:push_endpoint] if args.key?(:push_endpoint)
         end
       end
