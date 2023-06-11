@@ -6757,12 +6757,6 @@ module Google
         # @return [Google::Apis::DisplayvideoV2::InventorySourceStatus]
         attr_accessor :status
       
-        # Immutable. The unique ID of the sub-site property assigned to this inventory
-        # source.
-        # Corresponds to the JSON property `subSitePropertyId`
-        # @return [Fixnum]
-        attr_accessor :sub_site_property_id
-      
         # A time range.
         # Corresponds to the JSON property `timeRange`
         # @return [Google::Apis::DisplayvideoV2::TimeRange]
@@ -6797,7 +6791,6 @@ module Google
           @read_partner_ids = args[:read_partner_ids] if args.key?(:read_partner_ids)
           @read_write_accessors = args[:read_write_accessors] if args.key?(:read_write_accessors)
           @status = args[:status] if args.key?(:status)
-          @sub_site_property_id = args[:sub_site_property_id] if args.key?(:sub_site_property_id)
           @time_range = args[:time_range] if args.key?(:time_range)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
