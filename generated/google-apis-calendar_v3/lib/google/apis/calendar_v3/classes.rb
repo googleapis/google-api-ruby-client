@@ -1845,6 +1845,13 @@ module Google
         # @return [Google::Apis::CalendarV3::EventWorkingLocationProperties::OfficeLocation]
         attr_accessor :office_location
       
+        # Indicates what kind of location this is. Any details will be specified in a
+        # sub-field of the specified name (but which may be missing if empty). Any other
+        # fields will be ignored.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1854,6 +1861,7 @@ module Google
           @custom_location = args[:custom_location] if args.key?(:custom_location)
           @home_office = args[:home_office] if args.key?(:home_office)
           @office_location = args[:office_location] if args.key?(:office_location)
+          @type = args[:type] if args.key?(:type)
         end
         
         # If present, specifies that the user is working from a custom location.
