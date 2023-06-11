@@ -118,6 +118,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConfigManagementConfigSyncError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ConfigManagementConfigSyncState
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -806,6 +812,7 @@ module Google
       
           property :managed, as: 'managed', class: Google::Apis::GkehubV1beta::ConfigManagementManaged, decorator: Google::Apis::GkehubV1beta::ConfigManagementManaged::Representation
       
+          property :metrics_gcp_service_account_email, as: 'metricsGcpServiceAccountEmail'
           property :oci, as: 'oci', class: Google::Apis::GkehubV1beta::ConfigManagementOciConfig, decorator: Google::Apis::GkehubV1beta::ConfigManagementOciConfig::Representation
       
           property :prevent_drift, as: 'preventDrift'
@@ -826,10 +833,19 @@ module Google
         end
       end
       
+      class ConfigManagementConfigSyncError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_message, as: 'errorMessage'
+        end
+      end
+      
       class ConfigManagementConfigSyncState
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :deployment_state, as: 'deploymentState', class: Google::Apis::GkehubV1beta::ConfigManagementConfigSyncDeploymentState, decorator: Google::Apis::GkehubV1beta::ConfigManagementConfigSyncDeploymentState::Representation
+      
+          collection :errors, as: 'errors', class: Google::Apis::GkehubV1beta::ConfigManagementConfigSyncError, decorator: Google::Apis::GkehubV1beta::ConfigManagementConfigSyncError::Representation
       
           property :sync_state, as: 'syncState', class: Google::Apis::GkehubV1beta::ConfigManagementSyncState, decorator: Google::Apis::GkehubV1beta::ConfigManagementSyncState::Representation
       
@@ -940,6 +956,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
+          property :stop_syncing, as: 'stopSyncing'
         end
       end
       
@@ -948,6 +965,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :binauthz, as: 'binauthz', class: Google::Apis::GkehubV1beta::ConfigManagementBinauthzConfig, decorator: Google::Apis::GkehubV1beta::ConfigManagementBinauthzConfig::Representation
       
+          property :cluster, as: 'cluster'
           property :config_sync, as: 'configSync', class: Google::Apis::GkehubV1beta::ConfigManagementConfigSync, decorator: Google::Apis::GkehubV1beta::ConfigManagementConfigSync::Representation
       
           property :hierarchy_controller, as: 'hierarchyController', class: Google::Apis::GkehubV1beta::ConfigManagementHierarchyControllerConfig, decorator: Google::Apis::GkehubV1beta::ConfigManagementHierarchyControllerConfig::Representation
