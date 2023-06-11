@@ -732,6 +732,7 @@ module Google
       class Source
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :git_uri, as: 'gitUri'
           property :repo_source, as: 'repoSource', class: Google::Apis::CloudfunctionsV2alpha::RepoSource, decorator: Google::Apis::CloudfunctionsV2alpha::RepoSource::Representation
       
           property :storage_source, as: 'storageSource', class: Google::Apis::CloudfunctionsV2alpha::StorageSource, decorator: Google::Apis::CloudfunctionsV2alpha::StorageSource::Representation
@@ -742,6 +743,7 @@ module Google
       class SourceProvenance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :git_uri, as: 'gitUri'
           property :resolved_repo_source, as: 'resolvedRepoSource', class: Google::Apis::CloudfunctionsV2alpha::RepoSource, decorator: Google::Apis::CloudfunctionsV2alpha::RepoSource::Representation
       
           property :resolved_storage_source, as: 'resolvedStorageSource', class: Google::Apis::CloudfunctionsV2alpha::StorageSource, decorator: Google::Apis::CloudfunctionsV2alpha::StorageSource::Representation
