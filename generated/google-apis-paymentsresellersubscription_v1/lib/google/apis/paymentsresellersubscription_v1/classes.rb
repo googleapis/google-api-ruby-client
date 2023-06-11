@@ -1058,6 +1058,11 @@ module Google
       class GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload
         include Google::Apis::Core::Hashable
       
+        # Output only. The access expiration time for this line item.
+        # Corresponds to the JSON property `accessEndTime`
+        # @return [String]
+        attr_accessor :access_end_time
+      
         # The list of eligibility_ids which are applicable for the line item.
         # Corresponds to the JSON property `partnerEligibilityIds`
         # @return [Array<String>]
@@ -1069,6 +1074,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @access_end_time = args[:access_end_time] if args.key?(:access_end_time)
           @partner_eligibility_ids = args[:partner_eligibility_ids] if args.key?(:partner_eligibility_ids)
         end
       end
