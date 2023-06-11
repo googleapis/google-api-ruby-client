@@ -38577,6 +38577,11 @@ module Google
         # @return [String]
         attr_accessor :source_instant_snapshot
       
+        # Customer provided encryption key when creating Snapshot from Instant Snapshot.
+        # Corresponds to the JSON property `sourceInstantSnapshotEncryptionKey`
+        # @return [Google::Apis::ComputeBeta::CustomerEncryptionKey]
+        attr_accessor :source_instant_snapshot_encryption_key
+      
         # [Output Only] The unique ID of the instant snapshot used to create this
         # snapshot. This value identifies the exact instant snapshot that was used to
         # create this persistent disk. For example, if you created the persistent disk
@@ -38660,6 +38665,7 @@ module Google
           @source_disk_encryption_key = args[:source_disk_encryption_key] if args.key?(:source_disk_encryption_key)
           @source_disk_id = args[:source_disk_id] if args.key?(:source_disk_id)
           @source_instant_snapshot = args[:source_instant_snapshot] if args.key?(:source_instant_snapshot)
+          @source_instant_snapshot_encryption_key = args[:source_instant_snapshot_encryption_key] if args.key?(:source_instant_snapshot_encryption_key)
           @source_instant_snapshot_id = args[:source_instant_snapshot_id] if args.key?(:source_instant_snapshot_id)
           @source_snapshot_schedule_policy = args[:source_snapshot_schedule_policy] if args.key?(:source_snapshot_schedule_policy)
           @source_snapshot_schedule_policy_id = args[:source_snapshot_schedule_policy_id] if args.key?(:source_snapshot_schedule_policy_id)
