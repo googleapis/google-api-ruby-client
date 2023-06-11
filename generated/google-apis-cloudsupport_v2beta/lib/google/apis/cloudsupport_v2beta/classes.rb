@@ -284,7 +284,9 @@ module Google
       class CaseClassification
         include Google::Apis::Core::Hashable
       
-        # The display name of the classification.
+        # A display name for the classification. The display name is not static and can
+        # change. To uniquely and consistently identify classifications, use the `
+        # CaseClassification.id` field.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
