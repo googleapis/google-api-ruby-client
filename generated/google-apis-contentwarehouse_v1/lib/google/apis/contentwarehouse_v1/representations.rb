@@ -448,6 +448,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AppsPeopleOzExternalMergedpeopleapiContactPromptSettingsInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AppsPeopleOzExternalMergedpeopleapiContactStateInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1186,12 +1192,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AssistantApiAccessControlOutput
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class AssistantApiActionV2SupportedFeatures
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1493,6 +1493,18 @@ module Google
       end
       
       class AssistantApiCoreTypesGovernedRingtoneTaskMetadataRoutineAlarmMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AssistantApiCoreTypesGovernedSurfaceIdentity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AssistantApiCoreTypesGovernedSurfaceVersion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4138,6 +4150,60 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GeostoreCityJsonProto
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GeostoreCityJsonProtoCityObject
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GeostoreCityJsonProtoCityObjectGeometry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GeostoreCityJsonProtoCityObjectGeometryMultiPoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GeostoreCityJsonProtoCityObjectGeometryMultiSurface
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GeostoreCityJsonProtoCityObjectGeometrySolid
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GeostoreCityJsonProtoCityObjectGeometrySurface
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GeostoreCityJsonProtoTransform
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GeostoreCityJsonProtoTransformXyzVector
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GeostoreComposableItemProto
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4151,6 +4217,12 @@ module Google
       end
       
       class GeostoreCrossingStripePatternProto
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GeostoreCurvatureProto
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4373,6 +4445,12 @@ module Google
       end
       
       class GeostoreGeometryComposition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GeostoreGeometryStoreReferenceProto
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4607,6 +4685,12 @@ module Google
       end
       
       class GeostorePhysicalLineProto
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GeostorePointCurvatureProto
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -15991,6 +16075,16 @@ module Google
         end
       end
       
+      class AppsPeopleOzExternalMergedpeopleapiContactPromptSettingsInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :contact_prompt_settings, as: 'contactPromptSettings', class: Google::Apis::ContentwarehouseV1::SocialGraphApiProtoContactPromptSettings, decorator: Google::Apis::ContentwarehouseV1::SocialGraphApiProtoContactPromptSettings::Representation
+      
+          property :metadata, as: 'metadata', class: Google::Apis::ContentwarehouseV1::AppsPeopleOzExternalMergedpeopleapiPersonFieldMetadata, decorator: Google::Apis::ContentwarehouseV1::AppsPeopleOzExternalMergedpeopleapiPersonFieldMetadata::Representation
+      
+        end
+      end
+      
       class AppsPeopleOzExternalMergedpeopleapiContactStateInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -16765,6 +16859,8 @@ module Google
           collection :contact_edit_context_info, as: 'contactEditContextInfo', class: Google::Apis::ContentwarehouseV1::AppsPeopleOzExternalMergedpeopleapiContactEditContextInfo, decorator: Google::Apis::ContentwarehouseV1::AppsPeopleOzExternalMergedpeopleapiContactEditContextInfo::Representation
       
           collection :contact_group_membership, as: 'contactGroupMembership', class: Google::Apis::ContentwarehouseV1::AppsPeopleOzExternalMergedpeopleapiContactGroupMembership, decorator: Google::Apis::ContentwarehouseV1::AppsPeopleOzExternalMergedpeopleapiContactGroupMembership::Representation
+      
+          collection :contact_prompt_settings_info, as: 'contactPromptSettingsInfo', class: Google::Apis::ContentwarehouseV1::AppsPeopleOzExternalMergedpeopleapiContactPromptSettingsInfo, decorator: Google::Apis::ContentwarehouseV1::AppsPeopleOzExternalMergedpeopleapiContactPromptSettingsInfo::Representation
       
           collection :contact_state_info, as: 'contactStateInfo', class: Google::Apis::ContentwarehouseV1::AppsPeopleOzExternalMergedpeopleapiContactStateInfo, decorator: Google::Apis::ContentwarehouseV1::AppsPeopleOzExternalMergedpeopleapiContactStateInfo::Representation
       
@@ -17567,14 +17663,6 @@ module Google
         end
       end
       
-      class AssistantApiAccessControlOutput
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :allow_non_unicorn_user_access_youtube_kids, as: 'allowNonUnicornUserAccessYoutubeKids'
-          property :guest_access_on_youtube, as: 'guestAccessOnYoutube'
-        end
-      end
-      
       class AssistantApiActionV2SupportedFeatures
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -18137,6 +18225,25 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :routine_id, as: 'routineId'
+        end
+      end
+      
+      class AssistantApiCoreTypesGovernedSurfaceIdentity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_id, as: 'deviceId', class: Google::Apis::ContentwarehouseV1::AssistantApiCoreTypesDeviceId, decorator: Google::Apis::ContentwarehouseV1::AssistantApiCoreTypesDeviceId::Representation
+      
+          property :surface_type, as: 'surfaceType'
+          property :surface_version, as: 'surfaceVersion', class: Google::Apis::ContentwarehouseV1::AssistantApiCoreTypesGovernedSurfaceVersion, decorator: Google::Apis::ContentwarehouseV1::AssistantApiCoreTypesGovernedSurfaceVersion::Representation
+      
+        end
+      end
+      
+      class AssistantApiCoreTypesGovernedSurfaceVersion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :major, as: 'major'
+          property :minor, as: 'minor'
         end
       end
       
@@ -18757,8 +18864,6 @@ module Google
       class AssistantApiOutputRestrictions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :access_control_output, as: 'accessControlOutput', class: Google::Apis::ContentwarehouseV1::AssistantApiAccessControlOutput, decorator: Google::Apis::ContentwarehouseV1::AssistantApiAccessControlOutput::Representation
-      
           property :google_photo_content, as: 'googlePhotoContent'
           property :guest_access_output, as: 'guestAccessOutput', class: Google::Apis::ContentwarehouseV1::AssistantApiGuestAccessOutput, decorator: Google::Apis::ContentwarehouseV1::AssistantApiGuestAccessOutput::Representation
       
@@ -19038,7 +19143,6 @@ module Google
           property :time_zone, as: 'timeZone', class: Google::Apis::ContentwarehouseV1::AssistantApiTimeZone, decorator: Google::Apis::ContentwarehouseV1::AssistantApiTimeZone::Representation
       
           property :truncated_local_network_id, as: 'truncatedLocalNetworkId'
-          property :trusted_voice_enabled, as: 'trustedVoiceEnabled'
           property :type, as: 'type'
           property :verbose_tts_for_chromecast_enabled, as: 'verboseTtsForChromecastEnabled'
           property :vm_last_used_coarse_timestamp, as: 'vmLastUsedCoarseTimestamp'
@@ -20246,6 +20350,8 @@ module Google
       
           property :device_targeting_labels, as: 'deviceTargetingLabels', class: Google::Apis::ContentwarehouseV1::AssistantGroundingRankerDeviceTargetingLabels, decorator: Google::Apis::ContentwarehouseV1::AssistantGroundingRankerDeviceTargetingLabels::Representation
       
+          property :surface_identity, as: 'surfaceIdentity', class: Google::Apis::ContentwarehouseV1::AssistantApiCoreTypesGovernedSurfaceIdentity, decorator: Google::Apis::ContentwarehouseV1::AssistantApiCoreTypesGovernedSurfaceIdentity::Representation
+      
         end
       end
       
@@ -20382,6 +20488,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :is_exclusive, as: 'isExclusive'
+          property :podcast_listeners_count, as: 'podcastListenersCount'
+          property :popularity_score, as: 'popularityScore'
           property :scubed_ng3_model_score, as: 'scubedNg3ModelScore'
           property :scubed_tstar_score, as: 'scubedTstarScore'
         end
@@ -20832,7 +20940,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :binding_set_auis, as: 'bindingSetAuis'
+          property :binding_set_invalid_reason, as: 'bindingSetInvalidReason'
           property :binding_set_pauis, as: 'bindingSetPauis'
+          property :binding_set_validity, as: 'bindingSetValidity'
           property :calibrated_parsing_score, as: 'calibratedParsingScore'
           property :deep_media_dominant, as: 'deepMediaDominant'
           property :dominant, as: 'dominant'
@@ -23446,6 +23556,89 @@ module Google
         end
       end
       
+      class GeostoreCityJsonProto
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :city_objects, as: 'cityObjects', class: Google::Apis::ContentwarehouseV1::GeostoreCityJsonProtoCityObject, decorator: Google::Apis::ContentwarehouseV1::GeostoreCityJsonProtoCityObject::Representation
+      
+          property :transform, as: 'transform', class: Google::Apis::ContentwarehouseV1::GeostoreCityJsonProtoTransform, decorator: Google::Apis::ContentwarehouseV1::GeostoreCityJsonProtoTransform::Representation
+      
+          collection :vertex_xyz, as: 'vertexXyz'
+        end
+      end
+      
+      class GeostoreCityJsonProtoCityObject
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :geometries, as: 'geometries', class: Google::Apis::ContentwarehouseV1::GeostoreCityJsonProtoCityObjectGeometry, decorator: Google::Apis::ContentwarehouseV1::GeostoreCityJsonProtoCityObjectGeometry::Representation
+      
+          property :id, as: 'id'
+          property :type, as: 'type'
+        end
+      end
+      
+      class GeostoreCityJsonProtoCityObjectGeometry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :lod, as: 'lod'
+          property :multipoint, as: 'multipoint', class: Google::Apis::ContentwarehouseV1::GeostoreCityJsonProtoCityObjectGeometryMultiPoint, decorator: Google::Apis::ContentwarehouseV1::GeostoreCityJsonProtoCityObjectGeometryMultiPoint::Representation
+      
+          property :multisurface, as: 'multisurface', class: Google::Apis::ContentwarehouseV1::GeostoreCityJsonProtoCityObjectGeometryMultiSurface, decorator: Google::Apis::ContentwarehouseV1::GeostoreCityJsonProtoCityObjectGeometryMultiSurface::Representation
+      
+          property :solid, as: 'solid', class: Google::Apis::ContentwarehouseV1::GeostoreCityJsonProtoCityObjectGeometrySolid, decorator: Google::Apis::ContentwarehouseV1::GeostoreCityJsonProtoCityObjectGeometrySolid::Representation
+      
+        end
+      end
+      
+      class GeostoreCityJsonProtoCityObjectGeometryMultiPoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :x_indices, as: 'xIndices'
+        end
+      end
+      
+      class GeostoreCityJsonProtoCityObjectGeometryMultiSurface
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :surfaces, as: 'surfaces', class: Google::Apis::ContentwarehouseV1::GeostoreCityJsonProtoCityObjectGeometrySurface, decorator: Google::Apis::ContentwarehouseV1::GeostoreCityJsonProtoCityObjectGeometrySurface::Representation
+      
+        end
+      end
+      
+      class GeostoreCityJsonProtoCityObjectGeometrySolid
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :shells, as: 'shells', class: Google::Apis::ContentwarehouseV1::GeostoreCityJsonProtoCityObjectGeometryMultiSurface, decorator: Google::Apis::ContentwarehouseV1::GeostoreCityJsonProtoCityObjectGeometryMultiSurface::Representation
+      
+        end
+      end
+      
+      class GeostoreCityJsonProtoCityObjectGeometrySurface
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :loops, as: 'loops', class: Google::Apis::ContentwarehouseV1::GeostoreCityJsonProtoCityObjectGeometryMultiPoint, decorator: Google::Apis::ContentwarehouseV1::GeostoreCityJsonProtoCityObjectGeometryMultiPoint::Representation
+      
+        end
+      end
+      
+      class GeostoreCityJsonProtoTransform
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :scale, as: 'scale'
+          property :translate, as: 'translate', class: Google::Apis::ContentwarehouseV1::GeostoreCityJsonProtoTransformXyzVector, decorator: Google::Apis::ContentwarehouseV1::GeostoreCityJsonProtoTransformXyzVector::Representation
+      
+        end
+      end
+      
+      class GeostoreCityJsonProtoTransformXyzVector
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :x, as: 'x'
+          property :y, as: 'y'
+          property :z, as: 'z'
+        end
+      end
+      
       class GeostoreComposableItemProto
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -23482,6 +23675,14 @@ module Google
           collection :color, as: 'color', class: Google::Apis::ContentwarehouseV1::GeostorePaintedElementLogicalColorProto, decorator: Google::Apis::ContentwarehouseV1::GeostorePaintedElementLogicalColorProto::Representation
       
           property :stripe_pattern, as: 'stripePattern'
+        end
+      end
+      
+      class GeostoreCurvatureProto
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :point_curvature, as: 'pointCurvature', class: Google::Apis::ContentwarehouseV1::GeostorePointCurvatureProto, decorator: Google::Apis::ContentwarehouseV1::GeostorePointCurvatureProto::Representation
+      
         end
       end
       
@@ -23819,6 +24020,8 @@ module Google
       
           property :future_geometry_for, as: 'futureGeometryFor', class: Google::Apis::ContentwarehouseV1::GeostoreFeatureIdProto, decorator: Google::Apis::ContentwarehouseV1::GeostoreFeatureIdProto::Representation
       
+          property :geometry3d, as: 'geometry3d', class: Google::Apis::ContentwarehouseV1::GeostoreGeometryStoreReferenceProto, decorator: Google::Apis::ContentwarehouseV1::GeostoreGeometryStoreReferenceProto::Representation
+      
           property :geometry_precision_meters, as: 'geometryPrecisionMeters'
           property :geopolitical_geometry, as: 'geopoliticalGeometry', class: Google::Apis::ContentwarehouseV1::GeostoreGeopoliticalGeometryProto, decorator: Google::Apis::ContentwarehouseV1::GeostoreGeopoliticalGeometryProto::Representation
       
@@ -23939,6 +24142,8 @@ module Google
           property :type, as: 'type'
           property :vertical_ordering, as: 'verticalOrdering', class: Google::Apis::ContentwarehouseV1::GeostoreVerticalOrderingProto, decorator: Google::Apis::ContentwarehouseV1::GeostoreVerticalOrderingProto::Representation
       
+          property :visualization_area, as: 'visualizationArea', class: Google::Apis::ContentwarehouseV1::GeostoreGeometryStoreReferenceProto, decorator: Google::Apis::ContentwarehouseV1::GeostoreGeometryStoreReferenceProto::Representation
+      
           property :water_removed_polygon, as: 'waterRemovedPolygon', class: Google::Apis::ContentwarehouseV1::GeostorePolygonProto, decorator: Google::Apis::ContentwarehouseV1::GeostorePolygonProto::Representation
       
           collection :website, as: 'website', class: Google::Apis::ContentwarehouseV1::GeostoreUrlProto, decorator: Google::Apis::ContentwarehouseV1::GeostoreUrlProto::Representation
@@ -23978,6 +24183,8 @@ module Google
       class GeostoreFlowLineProto
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :curvature, as: 'curvature', class: Google::Apis::ContentwarehouseV1::GeostoreCurvatureProto, decorator: Google::Apis::ContentwarehouseV1::GeostoreCurvatureProto::Representation
+      
           property :track, as: 'track', class: Google::Apis::ContentwarehouseV1::GeostoreTrackProto, decorator: Google::Apis::ContentwarehouseV1::GeostoreTrackProto::Representation
       
         end
@@ -24052,6 +24259,16 @@ module Google
       
           collection :includes_geometry_of, as: 'includesGeometryOf', class: Google::Apis::ContentwarehouseV1::GeostoreFeatureIdProto, decorator: Google::Apis::ContentwarehouseV1::GeostoreFeatureIdProto::Representation
       
+        end
+      end
+      
+      class GeostoreGeometryStoreReferenceProto
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :footprint, :base64 => true, as: 'footprint'
+          property :geometry, as: 'geometry', class: Google::Apis::ContentwarehouseV1::GeostoreCityJsonProto, decorator: Google::Apis::ContentwarehouseV1::GeostoreCityJsonProto::Representation
+      
+          property :geometry_id, as: 'geometryId'
         end
       end
       
@@ -24483,6 +24700,15 @@ module Google
       
           property :pattern, as: 'pattern'
           property :physical_line_token, as: 'physicalLineToken'
+        end
+      end
+      
+      class GeostorePointCurvatureProto
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :curvature_status, as: 'curvatureStatus'
+          property :radians_per_meter, as: 'radiansPerMeter'
+          property :start_point_fraction, as: 'startPointFraction'
         end
       end
       
@@ -39858,6 +40084,7 @@ module Google
           property :is_reference_page, as: 'isReferencePage'
           property :local_entity_location_confidence, as: 'localEntityLocationConfidence'
           property :normalized_topicality, as: 'normalizedTopicality'
+          property :profile_url, as: 'profileUrl'
           property :reference_page_scores, as: 'referencePageScores', class: Google::Apis::ContentwarehouseV1::RepositoryWebrefReferencePageScores, decorator: Google::Apis::ContentwarehouseV1::RepositoryWebrefReferencePageScores::Representation
       
           property :relevance_score, as: 'relevanceScore'
@@ -41860,6 +42087,7 @@ module Google
           property :abstract_language, as: 'AbstractLanguage'
           property :abstract_source, as: 'AbstractSource'
           property :abstract_text, as: 'AbstractText'
+          property :abstract_type_from_source, as: 'AbstractTypeFromSource'
           property :alternate_version_id, :numeric_string => true, as: 'AlternateVersionID'
           collection :anchors, as: 'Anchors', class: Google::Apis::ContentwarehouseV1::ScienceCitationAnchor, decorator: Google::Apis::ContentwarehouseV1::ScienceCitationAnchor::Representation
       
@@ -41996,6 +42224,7 @@ module Google
           property :abstract_html_left_over, as: 'AbstractHtmlLeftOver'
           property :abstract_language, as: 'AbstractLanguage'
           property :abstract_text, as: 'AbstractText'
+          property :abstract_type_from_source, as: 'AbstractTypeFromSource'
         end
       end
       
