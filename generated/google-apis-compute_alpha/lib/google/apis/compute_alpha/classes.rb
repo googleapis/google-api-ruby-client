@@ -3078,6 +3078,16 @@ module Google
         # @return [Float]
         attr_accessor :max_utilization
       
+        # This field indicates whether this backend should be fully utilized before
+        # sending traffic to backends with default preference. The possible values are: -
+        # PREFERRED: Backends with this preference level will be filled up to their
+        # capacity limits first, based on RTT. - DEFAULT: If preferred backends don't
+        # have enough capacity, backends in this layer would be used and traffic would
+        # be assigned based on the load balancing algorithm you use. This is the default
+        # Corresponds to the JSON property `preference`
+        # @return [String]
+        attr_accessor :preference
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3096,6 +3106,7 @@ module Google
           @max_rate_per_endpoint = args[:max_rate_per_endpoint] if args.key?(:max_rate_per_endpoint)
           @max_rate_per_instance = args[:max_rate_per_instance] if args.key?(:max_rate_per_instance)
           @max_utilization = args[:max_utilization] if args.key?(:max_utilization)
+          @preference = args[:preference] if args.key?(:preference)
         end
       end
       
@@ -7722,6 +7733,61 @@ module Google
         end
       end
       
+      # 
+      class DiskSettings
+        include Google::Apis::Core::Hashable
+      
+        # An optional parameter for storing the default resource policies that will be
+        # used for the Disks created in the given scope. The Key is a string type,
+        # provided by customers to uniquely identify the default Resource Policy entry.
+        # The Value is a Default ResourcePolicyDetails Object used to represent the
+        # detailed information of the Resource Policy entry.
+        # Corresponds to the JSON property `defaultResourcePolicies`
+        # @return [Hash<String,Google::Apis::ComputeAlpha::DiskSettingsResourcePolicyDetails>]
+        attr_accessor :default_resource_policies
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_resource_policies = args[:default_resource_policies] if args.key?(:default_resource_policies)
+        end
+      end
+      
+      # This is the object for storing the detail information about the Resource
+      # Policy that will be set as default ones for the Disks that is using the
+      # DiskSettings. It contains: - one target Resource Policy referenced by its
+      # Fully-Qualified URL, - [output only] Disk Types that will be excluded from
+      # using this Resource Policy, - Other filtering support (e.g. Label filtering)
+      # for Default Resource Policy can be added here as well
+      class DiskSettingsResourcePolicyDetails
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] A list of Disk Types that will be excluded from applying the
+        # Resource Policy referenced here. If absent, Disks created in any DiskType can
+        # use the referenced default Resource Policy.
+        # Corresponds to the JSON property `excludedDiskTypes`
+        # @return [Array<String>]
+        attr_accessor :excluded_disk_types
+      
+        # The target Resource Policies identified by their Fully-Qualified URL.
+        # Corresponds to the JSON property `resourcePolicy`
+        # @return [String]
+        attr_accessor :resource_policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @excluded_disk_types = args[:excluded_disk_types] if args.key?(:excluded_disk_types)
+          @resource_policy = args[:resource_policy] if args.key?(:resource_policy)
+        end
+      end
+      
       # Represents a Disk Type resource. Google Compute Engine has two Disk Type
       # resources: * [Regional](/compute/docs/reference/rest/alpha/regionDiskTypes) * [
       # Zonal](/compute/docs/reference/rest/alpha/diskTypes) You can choose from a
@@ -8310,27 +8376,6 @@ module Google
         # disks/disk - https://www.googleapis.com/compute/v1/projects/project/regions/
         # region /disks/disk - projects/project/zones/zone/disks/disk - projects/project/
         # regions/region/disks/disk - zones/zone/disks/disk - regions/region/disks/disk
-        # Corresponds to the JSON property `asyncSecondaryDisk`
-        # @return [String]
-        attr_accessor :async_secondary_disk
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @async_secondary_disk = args[:async_secondary_disk] if args.key?(:async_secondary_disk)
-        end
-      end
-      
-      # 
-      class DisksStopAsyncReplicationRequest
-        include Google::Apis::Core::Hashable
-      
-        # [Deprecated] The secondary disk to stop asynchronous replication to. This
-        # field will not be included in the beta or v1 APIs and will be removed from the
-        # alpha API in the near future.
         # Corresponds to the JSON property `asyncSecondaryDisk`
         # @return [String]
         attr_accessor :async_secondary_disk
@@ -26229,6 +26274,13 @@ module Google
         # @return [String]
         attr_accessor :ip_address
       
+        # The IPv6 address assigned to the producer instance network interface. This is
+        # only assigned when the stack types of both the instance network interface and
+        # the consumer subnet are IPv4_IPv6.
+        # Corresponds to the JSON property `ipv6Address`
+        # @return [String]
+        attr_accessor :ipv6_address
+      
         # The project id or number of the interface to which the IP was assigned.
         # Corresponds to the JSON property `projectIdOrNum`
         # @return [String]
@@ -26257,6 +26309,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @ipv6_address = args[:ipv6_address] if args.key?(:ipv6_address)
           @project_id_or_num = args[:project_id_or_num] if args.key?(:project_id_or_num)
           @secondary_ip_cidr_ranges = args[:secondary_ip_cidr_ranges] if args.key?(:secondary_ip_cidr_ranges)
           @status = args[:status] if args.key?(:status)
@@ -32356,6 +32409,37 @@ module Google
         end
       end
       
+      # Model definition of partner_metadata field. To be used in dedicated Partner
+      # Metadata methods and to be inlined in the Instance and InstanceTemplate
+      # resources.
+      class PartnerMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Instance-level hash to be used for optimistic locking.
+        # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :fingerprint
+      
+        # Partner Metadata assigned to the instance. A map from a subdomain to entries
+        # map. Subdomain name must be compliant with RFC1035 definition. The total size
+        # of all keys and values must be less than 2MB. Subdomain 'metadata.compute.
+        # googleapis.com' is reserverd for instance's metadata.
+        # Corresponds to the JSON property `partnerMetadata`
+        # @return [Hash<String,Google::Apis::ComputeAlpha::StructuredEntries>]
+        attr_accessor :partner_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
+          @partner_metadata = args[:partner_metadata] if args.key?(:partner_metadata)
+        end
+      end
+      
       # A matcher for the path portion of the URL. The BackendService from the longest-
       # matched rule will serve the URL. If no rule was matched, the default service
       # is used.
@@ -34743,6 +34827,12 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :dimensions
       
+        # Future quota limit being rolled out. The limit's unit depends on the quota
+        # type or metric.
+        # Corresponds to the JSON property `futureLimit`
+        # @return [Float]
+        attr_accessor :future_limit
+      
         # Current effective quota limit. The limit's unit depends on the quota type or
         # metric.
         # Corresponds to the JSON property `limit`
@@ -34766,6 +34856,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @dimensions = args[:dimensions] if args.key?(:dimensions)
+          @future_limit = args[:future_limit] if args.key?(:future_limit)
           @limit = args[:limit] if args.key?(:limit)
           @limit_name = args[:limit_name] if args.key?(:limit_name)
           @metric_name = args[:metric_name] if args.key?(:metric_name)
@@ -35282,27 +35373,6 @@ module Google
         # disks/disk - https://www.googleapis.com/compute/v1/projects/project/regions/
         # region /disks/disk - projects/project/zones/zone/disks/disk - projects/project/
         # regions/region/disks/disk - zones/zone/disks/disk - regions/region/disks/disk
-        # Corresponds to the JSON property `asyncSecondaryDisk`
-        # @return [String]
-        attr_accessor :async_secondary_disk
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @async_secondary_disk = args[:async_secondary_disk] if args.key?(:async_secondary_disk)
-        end
-      end
-      
-      # 
-      class RegionDisksStopAsyncReplicationRequest
-        include Google::Apis::Core::Hashable
-      
-        # [Deprecated] The secondary disk to stop asynchronous replication to. This
-        # field will not be included in the beta or v1 APIs and will be removed from the
-        # alpha API in the near future.
         # Corresponds to the JSON property `asyncSecondaryDisk`
         # @return [String]
         attr_accessor :async_secondary_disk
@@ -39153,6 +39223,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :asn
       
+        # Explicitly specifies a range of valid BGP Identifiers for this Router. It is
+        # provided as a link-local IPv4 range (from 169.254.0.0/16), of size at least /
+        # 30, even if the BGP sessions are over IPv6. It must not overlap with any IPv4
+        # BGP session ranges. Other vendors commonly call this "router ID".
+        # Corresponds to the JSON property `identifierRange`
+        # @return [String]
+        attr_accessor :identifier_range
+      
         # The interval in seconds between BGP keepalive messages that are sent to the
         # peer. Hold time is three times the interval at which keepalive messages are
         # sent, and the hold time is the maximum number of seconds allowed to elapse
@@ -39174,6 +39252,7 @@ module Google
           @advertised_groups = args[:advertised_groups] if args.key?(:advertised_groups)
           @advertised_ip_ranges = args[:advertised_ip_ranges] if args.key?(:advertised_ip_ranges)
           @asn = args[:asn] if args.key?(:asn)
+          @identifier_range = args[:identifier_range] if args.key?(:identifier_range)
           @keepalive_interval = args[:keepalive_interval] if args.key?(:keepalive_interval)
         end
       end
@@ -39241,6 +39320,13 @@ module Google
         # @return [String]
         attr_accessor :enable
       
+        # Enable IPv4 traffic over BGP Peer. It is enabled by default if the
+        # peerIpAddress is version 4.
+        # Corresponds to the JSON property `enableIpv4`
+        # @return [Boolean]
+        attr_accessor :enable_ipv4
+        alias_method :enable_ipv4?, :enable_ipv4
+      
         # Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
         # Corresponds to the JSON property `enableIpv6`
         # @return [Boolean]
@@ -39257,6 +39343,11 @@ module Google
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
         attr_accessor :ip_address
+      
+        # IPv4 address of the interface inside Google Cloud Platform.
+        # Corresponds to the JSON property `ipv4NexthopAddress`
+        # @return [String]
+        attr_accessor :ipv4_nexthop_address
       
         # IPv6 address of the interface inside Google Cloud Platform.
         # Corresponds to the JSON property `ipv6NexthopAddress`
@@ -39302,6 +39393,11 @@ module Google
         # @return [String]
         attr_accessor :peer_ip_address
       
+        # IPv4 address of the BGP interface outside Google Cloud Platform.
+        # Corresponds to the JSON property `peerIpv4NexthopAddress`
+        # @return [String]
+        attr_accessor :peer_ipv4_nexthop_address
+      
         # IPv6 address of the BGP interface outside Google Cloud Platform.
         # Corresponds to the JSON property `peerIpv6NexthopAddress`
         # @return [String]
@@ -39329,15 +39425,18 @@ module Google
           @custom_learned_ip_ranges = args[:custom_learned_ip_ranges] if args.key?(:custom_learned_ip_ranges)
           @custom_learned_route_priority = args[:custom_learned_route_priority] if args.key?(:custom_learned_route_priority)
           @enable = args[:enable] if args.key?(:enable)
+          @enable_ipv4 = args[:enable_ipv4] if args.key?(:enable_ipv4)
           @enable_ipv6 = args[:enable_ipv6] if args.key?(:enable_ipv6)
           @interface_name = args[:interface_name] if args.key?(:interface_name)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @ipv4_nexthop_address = args[:ipv4_nexthop_address] if args.key?(:ipv4_nexthop_address)
           @ipv6_nexthop_address = args[:ipv6_nexthop_address] if args.key?(:ipv6_nexthop_address)
           @management_type = args[:management_type] if args.key?(:management_type)
           @md5_authentication_key_name = args[:md5_authentication_key_name] if args.key?(:md5_authentication_key_name)
           @name = args[:name] if args.key?(:name)
           @peer_asn = args[:peer_asn] if args.key?(:peer_asn)
           @peer_ip_address = args[:peer_ip_address] if args.key?(:peer_ip_address)
+          @peer_ipv4_nexthop_address = args[:peer_ipv4_nexthop_address] if args.key?(:peer_ipv4_nexthop_address)
           @peer_ipv6_nexthop_address = args[:peer_ipv6_nexthop_address] if args.key?(:peer_ipv6_nexthop_address)
           @router_appliance_instance = args[:router_appliance_instance] if args.key?(:router_appliance_instance)
         end
@@ -39461,6 +39560,11 @@ module Google
         # @return [String]
         attr_accessor :ip_range
       
+        # IP version of this interface.
+        # Corresponds to the JSON property `ipVersion`
+        # @return [String]
+        attr_accessor :ip_version
+      
         # URI of the linked Interconnect attachment. It must be in the same region as
         # the router. Each interface can have one linked resource, which can be a VPN
         # tunnel, an Interconnect attachment, or a virtual machine instance.
@@ -39531,6 +39635,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ip_range = args[:ip_range] if args.key?(:ip_range)
+          @ip_version = args[:ip_version] if args.key?(:ip_version)
           @linked_interconnect_attachment = args[:linked_interconnect_attachment] if args.key?(:linked_interconnect_attachment)
           @linked_vpn_tunnel = args[:linked_vpn_tunnel] if args.key?(:linked_vpn_tunnel)
           @management_type = args[:management_type] if args.key?(:management_type)
@@ -44205,6 +44310,11 @@ module Google
         # @return [String]
         attr_accessor :source_instant_snapshot
       
+        # Customer provided encryption key when creating Snapshot from Instant Snapshot.
+        # Corresponds to the JSON property `sourceInstantSnapshotEncryptionKey`
+        # @return [Google::Apis::ComputeAlpha::CustomerEncryptionKey]
+        attr_accessor :source_instant_snapshot_encryption_key
+      
         # [Output Only] The unique ID of the instant snapshot used to create this
         # snapshot. This value identifies the exact instant snapshot that was used to
         # create this persistent disk. For example, if you created the persistent disk
@@ -44293,6 +44403,7 @@ module Google
           @source_disk_for_recovery_checkpoint = args[:source_disk_for_recovery_checkpoint] if args.key?(:source_disk_for_recovery_checkpoint)
           @source_disk_id = args[:source_disk_id] if args.key?(:source_disk_id)
           @source_instant_snapshot = args[:source_instant_snapshot] if args.key?(:source_instant_snapshot)
+          @source_instant_snapshot_encryption_key = args[:source_instant_snapshot_encryption_key] if args.key?(:source_instant_snapshot_encryption_key)
           @source_instant_snapshot_id = args[:source_instant_snapshot_id] if args.key?(:source_instant_snapshot_id)
           @source_snapshot_schedule_policy = args[:source_snapshot_schedule_policy] if args.key?(:source_snapshot_schedule_policy)
           @source_snapshot_schedule_policy_id = args[:source_snapshot_schedule_policy_id] if args.key?(:source_snapshot_schedule_policy_id)
@@ -45887,6 +45998,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :provisioned_iops
       
+        # Provisioned throughput of the storage pool. Only relevant if the storage pool
+        # type is hyperdisk-balanced or hyperdisk-throughput.
+        # Corresponds to the JSON property `provisionedThroughput`
+        # @return [Fixnum]
+        attr_accessor :provisioned_throughput
+      
         # [Output Only] Contains output only fields.
         # Corresponds to the JSON property `resourceStatus`
         # @return [Google::Apis::ComputeAlpha::StoragePoolResourceStatus]
@@ -45914,6 +46031,16 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # [Output Only] Contains output only fields.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::ComputeAlpha::StoragePoolResourceStatus]
+        attr_accessor :status
+      
+        # Type of the storage pool.
+        # Corresponds to the JSON property `storagePoolType`
+        # @return [String]
+        attr_accessor :storage_pool_type
+      
         # Type of the storage pool
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -45940,11 +46067,14 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @provisioned_iops = args[:provisioned_iops] if args.key?(:provisioned_iops)
+          @provisioned_throughput = args[:provisioned_throughput] if args.key?(:provisioned_throughput)
           @resource_status = args[:resource_status] if args.key?(:resource_status)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @size_gb = args[:size_gb] if args.key?(:size_gb)
           @state = args[:state] if args.key?(:state)
+          @status = args[:status] if args.key?(:status)
+          @storage_pool_type = args[:storage_pool_type] if args.key?(:storage_pool_type)
           @type = args[:type] if args.key?(:type)
           @zone = args[:zone] if args.key?(:zone)
         end
@@ -46080,6 +46210,86 @@ module Google
         end
       end
       
+      # 
+      class StoragePoolDisk
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Instances this disk is attached to.
+        # Corresponds to the JSON property `attachedInstances`
+        # @return [Array<String>]
+        attr_accessor :attached_instances
+      
+        # [Output Only] Creation timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # [Output Only] The URL of the disk.
+        # Corresponds to the JSON property `disk`
+        # @return [String]
+        attr_accessor :disk
+      
+        # [Output Only] The name of the disk.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # [Output Only] The number of IOPS provisioned for the disk.
+        # Corresponds to the JSON property `provisionedIops`
+        # @return [Fixnum]
+        attr_accessor :provisioned_iops
+      
+        # [Output Only] The throughput provisioned for the disk.
+        # Corresponds to the JSON property `provisionedThroughput`
+        # @return [Fixnum]
+        attr_accessor :provisioned_throughput
+      
+        # [Output Only] Resource policies applied to disk for automatic snapshot
+        # creations.
+        # Corresponds to the JSON property `resourcePolicies`
+        # @return [Array<String>]
+        attr_accessor :resource_policies
+      
+        # [Output Only] The disk size, in GB.
+        # Corresponds to the JSON property `sizeGb`
+        # @return [Fixnum]
+        attr_accessor :size_gb
+      
+        # [Output Only] The disk status.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # [Output Only] The disk type.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # [Output Only] Amount of disk space used.
+        # Corresponds to the JSON property `usedBytes`
+        # @return [Fixnum]
+        attr_accessor :used_bytes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attached_instances = args[:attached_instances] if args.key?(:attached_instances)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @disk = args[:disk] if args.key?(:disk)
+          @name = args[:name] if args.key?(:name)
+          @provisioned_iops = args[:provisioned_iops] if args.key?(:provisioned_iops)
+          @provisioned_throughput = args[:provisioned_throughput] if args.key?(:provisioned_throughput)
+          @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
+          @size_gb = args[:size_gb] if args.key?(:size_gb)
+          @status = args[:status] if args.key?(:status)
+          @type = args[:type] if args.key?(:type)
+          @used_bytes = args[:used_bytes] if args.key?(:used_bytes)
+        end
+      end
+      
       # A list of StoragePool resources.
       class StoragePoolList
         include Google::Apis::Core::Hashable
@@ -46160,6 +46370,137 @@ module Google
           # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::StoragePoolList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # 
+      class StoragePoolListDisks
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of StoragePoolDisk resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeAlpha::StoragePoolDisk>]
+        attr_accessor :items
+      
+        # [Output Only] Type of resource. Always compute#storagePoolListDisks for lists
+        # of disks in a storagePool.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Unreachable resources. end_interface:
+        # MixerListResponseWithEtagBuilder
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeAlpha::StoragePoolListDisks::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeAlpha::StoragePoolListDisks::Warning::Datum>]
           attr_accessor :data
         
           # [Output Only] A human-readable description of the warning code.
@@ -46357,6 +46698,26 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # 
+      class StructuredEntries
+        include Google::Apis::Core::Hashable
+      
+        # Map of a partner metadata that belong to the same subdomain. It accepts any
+        # value including google.protobuf.Struct.
+        # Corresponds to the JSON property `entries`
+        # @return [Hash<String,Object>]
+        attr_accessor :entries
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entries = args[:entries] if args.key?(:entries)
         end
       end
       
