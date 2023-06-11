@@ -1165,11 +1165,23 @@ module Google
       class GoogleAppsCloudidentityDevicesV1AndroidAttributes
         include Google::Apis::Core::Hashable
       
+        # Whether the device passes Android CTS compliance.
+        # Corresponds to the JSON property `ctsProfileMatch`
+        # @return [Boolean]
+        attr_accessor :cts_profile_match
+        alias_method :cts_profile_match?, :cts_profile_match
+      
         # Whether applications from unknown sources can be installed on device.
         # Corresponds to the JSON property `enabledUnknownSources`
         # @return [Boolean]
         attr_accessor :enabled_unknown_sources
         alias_method :enabled_unknown_sources?, :enabled_unknown_sources
+      
+        # Whether any potentially harmful apps were detected on the device.
+        # Corresponds to the JSON property `hasPotentiallyHarmfulApps`
+        # @return [Boolean]
+        attr_accessor :has_potentially_harmful_apps
+        alias_method :has_potentially_harmful_apps?, :has_potentially_harmful_apps
       
         # Whether this account is on an owner/primary profile. For phones, only true for
         # owner profiles. Android 4+ devices can have secondary or restricted user
@@ -1192,16 +1204,32 @@ module Google
         attr_accessor :supports_work_profile
         alias_method :supports_work_profile?, :supports_work_profile
       
+        # Whether Android verified boot status is GREEN.
+        # Corresponds to the JSON property `verifiedBoot`
+        # @return [Boolean]
+        attr_accessor :verified_boot
+        alias_method :verified_boot?, :verified_boot
+      
+        # Whether Google Play Protect Verify Apps is enabled.
+        # Corresponds to the JSON property `verifyAppsEnabled`
+        # @return [Boolean]
+        attr_accessor :verify_apps_enabled
+        alias_method :verify_apps_enabled?, :verify_apps_enabled
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @cts_profile_match = args[:cts_profile_match] if args.key?(:cts_profile_match)
           @enabled_unknown_sources = args[:enabled_unknown_sources] if args.key?(:enabled_unknown_sources)
+          @has_potentially_harmful_apps = args[:has_potentially_harmful_apps] if args.key?(:has_potentially_harmful_apps)
           @owner_profile_account = args[:owner_profile_account] if args.key?(:owner_profile_account)
           @ownership_privilege = args[:ownership_privilege] if args.key?(:ownership_privilege)
           @supports_work_profile = args[:supports_work_profile] if args.key?(:supports_work_profile)
+          @verified_boot = args[:verified_boot] if args.key?(:verified_boot)
+          @verify_apps_enabled = args[:verify_apps_enabled] if args.key?(:verify_apps_enabled)
         end
       end
       
