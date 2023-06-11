@@ -2615,6 +2615,95 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Get Zonal Disk Settings.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   Name of the zone for this request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::DiskSettings] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::DiskSettings]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_disk_setting(project, zone, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'projects/{project}/zones/{zone}/diskSettings', options)
+          command.response_representation = Google::Apis::ComputeAlpha::DiskSettings::Representation
+          command.response_class = Google::Apis::ComputeAlpha::DiskSettings
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Patch Zonal Disk Settings
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [Google::Apis::ComputeAlpha::DiskSettings] disk_settings_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, will ignore the
+        #   second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        # @param [String] update_mask
+        #   update_mask indicates fields to be updated as part of this request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_disk_setting(project, zone, disk_settings_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'projects/{project}/zones/{zone}/diskSettings', options)
+          command.request_representation = Google::Apis::ComputeAlpha::DiskSettings::Representation
+          command.request_object = disk_settings_object
+          command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
+          command.response_class = Google::Apis::ComputeAlpha::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Retrieves an aggregated list of disk types.
         # @param [String] project
         #   Project ID for this request.
@@ -3648,7 +3737,6 @@ module Google
         #   The name of the zone for this request.
         # @param [String] disk
         #   The name of the persistent disk.
-        # @param [Google::Apis::ComputeAlpha::DisksStopAsyncReplicationRequest] disks_stop_async_replication_request_object
         # @param [String] request_id
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
@@ -3678,10 +3766,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def stop_disk_async_replication(project, zone, disk, disks_stop_async_replication_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def stop_disk_async_replication(project, zone, disk, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'projects/{project}/zones/{zone}/disks/{disk}/stopAsyncReplication', options)
-          command.request_representation = Google::Apis::ComputeAlpha::DisksStopAsyncReplicationRequest::Representation
-          command.request_object = disks_stop_async_replication_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -13924,6 +14010,48 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets partner metadata of the specified instance and namespaces.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [String] instance
+        #   Name of the instance scoping this request.
+        # @param [String] namespaces
+        #   Comma separated partner metadata namespaces.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::PartnerMetadata] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::PartnerMetadata]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_instance_partner_metadata(project, zone, instance, namespaces: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'projects/{project}/zones/{zone}/instances/{instance}/getPartnerMetadata', options)
+          command.response_representation = Google::Apis::ComputeAlpha::PartnerMetadata::Representation
+          command.response_class = Google::Apis::ComputeAlpha::PartnerMetadata
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['instance'] = instance unless instance.nil?
+          command.query['namespaces'] = namespaces unless namespaces.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Returns the screenshot from the specified instance.
         # @param [String] project
         #   Project ID for this request.
@@ -14344,6 +14472,59 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Patches partner metadata of the specified instance.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [String] instance
+        #   Name of the instance scoping this request.
+        # @param [Google::Apis::ComputeAlpha::PartnerMetadata] partner_metadata_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, will ignore the
+        #   second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_instance_partner_metadata(project, zone, instance, partner_metadata_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/zones/{zone}/instances/{instance}/patchPartnerMetadata', options)
+          command.request_representation = Google::Apis::ComputeAlpha::PartnerMetadata::Representation
+          command.request_object = partner_metadata_object
+          command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
+          command.response_class = Google::Apis::ComputeAlpha::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['instance'] = instance unless instance.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -27901,6 +28082,95 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Get Regional Disk Settings.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region for this request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::DiskSettings] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::DiskSettings]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_region_disk_setting(project, region, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'projects/{project}/regions/{region}/diskSettings', options)
+          command.response_representation = Google::Apis::ComputeAlpha::DiskSettings::Representation
+          command.response_class = Google::Apis::ComputeAlpha::DiskSettings
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Patch Regional Disk Settings
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region for this request.
+        # @param [Google::Apis::ComputeAlpha::DiskSettings] disk_settings_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, will ignore the
+        #   second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        # @param [String] update_mask
+        #   update_mask indicates fields to be updated as part of this request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_region_disk_setting(project, region, disk_settings_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'projects/{project}/regions/{region}/diskSettings', options)
+          command.request_representation = Google::Apis::ComputeAlpha::DiskSettings::Representation
+          command.request_object = disk_settings_object
+          command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
+          command.response_class = Google::Apis::ComputeAlpha::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Returns the specified regional disk type.
         # @param [String] project
         #   Project ID for this request.
@@ -28738,7 +29008,6 @@ module Google
         #   The name of the region for this request.
         # @param [String] disk
         #   The name of the persistent disk.
-        # @param [Google::Apis::ComputeAlpha::RegionDisksStopAsyncReplicationRequest] region_disks_stop_async_replication_request_object
         # @param [String] request_id
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
@@ -28768,10 +29037,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def stop_region_disk_async_replication(project, region, disk, region_disks_stop_async_replication_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def stop_region_disk_async_replication(project, region, disk, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'projects/{project}/regions/{region}/disks/{disk}/stopAsyncReplication', options)
-          command.request_representation = Google::Apis::ComputeAlpha::RegionDisksStopAsyncReplicationRequest::Representation
-          command.request_object = region_disks_stop_async_replication_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -37126,6 +37393,98 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Retrieves the list of Zone resources under the specific region available to
+        # the specified project.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Region for this request.
+        # @param [String] filter
+        #   A filter expression that filters resources listed in the response. Most
+        #   Compute resources support two types of filter expressions: expressions that
+        #   support regular expressions and expressions that follow API improvement
+        #   proposal AIP-160. If you want to use AIP-160, your expression must specify the
+        #   field name, an operator, and the value that you want to use for filtering. The
+        #   value must be a string, a number, or a boolean. The operator must be either `=`
+        #   , `!=`, `>`, `<`, `<=`, `>=` or `:`. For example, if you are filtering Compute
+        #   Engine instances, you can exclude instances named `example-instance` by
+        #   specifying `name != example-instance`. The `:` operator can be used with
+        #   string fields to match substrings. For non-string fields it is equivalent to
+        #   the `=` operator. The `:*` comparison can be used to test whether a key has
+        #   been defined. For example, to find all objects with `owner` label use: ```
+        #   labels.owner:* ``` You can also filter nested fields. For example, you could
+        #   specify `scheduling.automaticRestart = false` to include instances only if
+        #   they are not scheduled for automatic restarts. You can use filtering on nested
+        #   fields to filter based on resource labels. To filter on multiple expressions,
+        #   provide each separate expression within parentheses. For example: ``` (
+        #   scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By
+        #   default, each expression is an `AND` expression. However, you can include `AND`
+        #   and `OR` expressions explicitly. For example: ``` (cpuPlatform = "Intel
+        #   Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true) ``` If you want to use a regular expression, use the `
+        #   eq` (equal) or `ne` (not equal) operator against a single un-parenthesized
+        #   expression with or without quotes or against multiple parenthesized
+        #   expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single
+        #   quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq
+        #   literal) (fieldname2 ne "literal")` The literal value is interpreted as a
+        #   regular expression using Google RE2 library syntax. The literal value must
+        #   match the entire field. For example, to filter for instances that do not end
+        #   with name "instance", you would use `name ne .*instance`.
+        # @param [Fixnum] max_results
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
+        # @param [String] order_by
+        #   Sorts list results by a certain order. By default, results are returned in
+        #   alphanumerical order based on the resource name. You can also sort results in
+        #   descending order based on the creation timestamp using `orderBy="
+        #   creationTimestamp desc"`. This sorts results based on the `creationTimestamp`
+        #   field in reverse chronological order (newest result first). Use this to sort
+        #   resources like operations so that the newest operation is returned first.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
+        # @param [String] page_token
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
+        # @param [Boolean] return_partial_success
+        #   Opt-in for partial success behavior which provides partial results in case of
+        #   failure. The default value is false.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::ZoneList] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::ZoneList]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_region_zones(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'projects/{project}/regions/{region}/zones', options)
+          command.response_representation = Google::Apis::ComputeAlpha::ZoneList::Representation
+          command.response_class = Google::Apis::ComputeAlpha::ZoneList
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Returns the specified Region resource. To decrease latency for this method,
         # you can optionally omit any unneeded information from the response by using a
         # field mask. This practice is especially recommended for unused quota
@@ -42133,6 +42492,100 @@ module Google
           command.response_class = Google::Apis::ComputeAlpha::StoragePoolList
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the disks in a specified storage pool.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [String] storage_pool
+        #   Name of the storage pool to list disks of.
+        # @param [String] filter
+        #   A filter expression that filters resources listed in the response. Most
+        #   Compute resources support two types of filter expressions: expressions that
+        #   support regular expressions and expressions that follow API improvement
+        #   proposal AIP-160. If you want to use AIP-160, your expression must specify the
+        #   field name, an operator, and the value that you want to use for filtering. The
+        #   value must be a string, a number, or a boolean. The operator must be either `=`
+        #   , `!=`, `>`, `<`, `<=`, `>=` or `:`. For example, if you are filtering Compute
+        #   Engine instances, you can exclude instances named `example-instance` by
+        #   specifying `name != example-instance`. The `:` operator can be used with
+        #   string fields to match substrings. For non-string fields it is equivalent to
+        #   the `=` operator. The `:*` comparison can be used to test whether a key has
+        #   been defined. For example, to find all objects with `owner` label use: ```
+        #   labels.owner:* ``` You can also filter nested fields. For example, you could
+        #   specify `scheduling.automaticRestart = false` to include instances only if
+        #   they are not scheduled for automatic restarts. You can use filtering on nested
+        #   fields to filter based on resource labels. To filter on multiple expressions,
+        #   provide each separate expression within parentheses. For example: ``` (
+        #   scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By
+        #   default, each expression is an `AND` expression. However, you can include `AND`
+        #   and `OR` expressions explicitly. For example: ``` (cpuPlatform = "Intel
+        #   Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true) ``` If you want to use a regular expression, use the `
+        #   eq` (equal) or `ne` (not equal) operator against a single un-parenthesized
+        #   expression with or without quotes or against multiple parenthesized
+        #   expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single
+        #   quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq
+        #   literal) (fieldname2 ne "literal")` The literal value is interpreted as a
+        #   regular expression using Google RE2 library syntax. The literal value must
+        #   match the entire field. For example, to filter for instances that do not end
+        #   with name "instance", you would use `name ne .*instance`.
+        # @param [Fixnum] max_results
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
+        # @param [String] order_by
+        #   Sorts list results by a certain order. By default, results are returned in
+        #   alphanumerical order based on the resource name. You can also sort results in
+        #   descending order based on the creation timestamp using `orderBy="
+        #   creationTimestamp desc"`. This sorts results based on the `creationTimestamp`
+        #   field in reverse chronological order (newest result first). Use this to sort
+        #   resources like operations so that the newest operation is returned first.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
+        # @param [String] page_token
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
+        # @param [Boolean] return_partial_success
+        #   Opt-in for partial success behavior which provides partial results in case of
+        #   failure. The default value is false.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::StoragePoolListDisks] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::StoragePoolListDisks]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_storage_pool_disks(project, zone, storage_pool, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'projects/{project}/zones/{zone}/storagePools/{storagePool}/listDisks', options)
+          command.response_representation = Google::Apis::ComputeAlpha::StoragePoolListDisks::Representation
+          command.response_class = Google::Apis::ComputeAlpha::StoragePoolListDisks
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['storagePool'] = storage_pool unless storage_pool.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?

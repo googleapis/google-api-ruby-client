@@ -874,6 +874,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DiskSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DiskSettingsResourcePolicyDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DiskType
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -971,12 +983,6 @@ module Google
       end
       
       class DisksStartAsyncReplicationRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class DisksStopAsyncReplicationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4120,6 +4126,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PartnerMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PathMatcher
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4529,12 +4541,6 @@ module Google
       end
       
       class RegionDisksStartAsyncReplicationRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RegionDisksStopAsyncReplicationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -6052,7 +6058,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StoragePoolDisk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StoragePoolList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StoragePoolListDisks
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
         class Warning
@@ -6090,6 +6120,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StructuredEntries
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -7860,6 +7896,7 @@ module Google
           property :max_rate_per_endpoint, as: 'maxRatePerEndpoint'
           property :max_rate_per_instance, as: 'maxRatePerInstance'
           property :max_utilization, as: 'maxUtilization'
+          property :preference, as: 'preference'
         end
       end
       
@@ -8880,6 +8917,22 @@ module Google
         end
       end
       
+      class DiskSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :default_resource_policies, as: 'defaultResourcePolicies', class: Google::Apis::ComputeAlpha::DiskSettingsResourcePolicyDetails, decorator: Google::Apis::ComputeAlpha::DiskSettingsResourcePolicyDetails::Representation
+      
+        end
+      end
+      
+      class DiskSettingsResourcePolicyDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :excluded_disk_types, as: 'excludedDiskTypes'
+          property :resource_policy, as: 'resourcePolicy'
+        end
+      end
+      
       class DiskType
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -9042,13 +9095,6 @@ module Google
       end
       
       class DisksStartAsyncReplicationRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :async_secondary_disk, as: 'asyncSecondaryDisk'
-        end
-      end
-      
-      class DisksStopAsyncReplicationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :async_secondary_disk, as: 'asyncSecondaryDisk'
@@ -13431,6 +13477,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ip_address, as: 'ipAddress'
+          property :ipv6_address, as: 'ipv6Address'
           property :project_id_or_num, as: 'projectIdOrNum'
           collection :secondary_ip_cidr_ranges, as: 'secondaryIpCidrRanges'
           property :status, as: 'status'
@@ -15005,6 +15052,15 @@ module Google
         end
       end
       
+      class PartnerMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fingerprint, :base64 => true, as: 'fingerprint'
+          hash :partner_metadata, as: 'partnerMetadata', class: Google::Apis::ComputeAlpha::StructuredEntries, decorator: Google::Apis::ComputeAlpha::StructuredEntries::Representation
+      
+        end
+      end
+      
       class PathMatcher
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -15612,6 +15668,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :dimensions, as: 'dimensions'
+          property :future_limit, as: 'futureLimit'
           property :limit, as: 'limit'
           property :limit_name, as: 'limitName'
           property :metric_name, as: 'metricName'
@@ -15761,13 +15818,6 @@ module Google
       end
       
       class RegionDisksStartAsyncReplicationRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :async_secondary_disk, as: 'asyncSecondaryDisk'
-        end
-      end
-      
-      class RegionDisksStopAsyncReplicationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :async_secondary_disk, as: 'asyncSecondaryDisk'
@@ -16821,6 +16871,7 @@ module Google
           collection :advertised_ip_ranges, as: 'advertisedIpRanges', class: Google::Apis::ComputeAlpha::RouterAdvertisedIpRange, decorator: Google::Apis::ComputeAlpha::RouterAdvertisedIpRange::Representation
       
           property :asn, as: 'asn'
+          property :identifier_range, as: 'identifierRange'
           property :keepalive_interval, as: 'keepaliveInterval'
         end
       end
@@ -16839,15 +16890,18 @@ module Google
       
           property :custom_learned_route_priority, as: 'customLearnedRoutePriority'
           property :enable, as: 'enable'
+          property :enable_ipv4, as: 'enableIpv4'
           property :enable_ipv6, as: 'enableIpv6'
           property :interface_name, as: 'interfaceName'
           property :ip_address, as: 'ipAddress'
+          property :ipv4_nexthop_address, as: 'ipv4NexthopAddress'
           property :ipv6_nexthop_address, as: 'ipv6NexthopAddress'
           property :management_type, as: 'managementType'
           property :md5_authentication_key_name, as: 'md5AuthenticationKeyName'
           property :name, as: 'name'
           property :peer_asn, as: 'peerAsn'
           property :peer_ip_address, as: 'peerIpAddress'
+          property :peer_ipv4_nexthop_address, as: 'peerIpv4NexthopAddress'
           property :peer_ipv6_nexthop_address, as: 'peerIpv6NexthopAddress'
           property :router_appliance_instance, as: 'routerApplianceInstance'
         end
@@ -16877,6 +16931,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ip_range, as: 'ipRange'
+          property :ip_version, as: 'ipVersion'
           property :linked_interconnect_attachment, as: 'linkedInterconnectAttachment'
           property :linked_vpn_tunnel, as: 'linkedVpnTunnel'
           property :management_type, as: 'managementType'
@@ -18053,6 +18108,8 @@ module Google
           property :source_disk_for_recovery_checkpoint, as: 'sourceDiskForRecoveryCheckpoint'
           property :source_disk_id, as: 'sourceDiskId'
           property :source_instant_snapshot, as: 'sourceInstantSnapshot'
+          property :source_instant_snapshot_encryption_key, as: 'sourceInstantSnapshotEncryptionKey', class: Google::Apis::ComputeAlpha::CustomerEncryptionKey, decorator: Google::Apis::ComputeAlpha::CustomerEncryptionKey::Representation
+      
           property :source_instant_snapshot_id, as: 'sourceInstantSnapshotId'
           property :source_snapshot_schedule_policy, as: 'sourceSnapshotSchedulePolicy'
           property :source_snapshot_schedule_policy_id, as: 'sourceSnapshotSchedulePolicyId'
@@ -18477,12 +18534,16 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :provisioned_iops, :numeric_string => true, as: 'provisionedIops'
+          property :provisioned_throughput, :numeric_string => true, as: 'provisionedThroughput'
           property :resource_status, as: 'resourceStatus', class: Google::Apis::ComputeAlpha::StoragePoolResourceStatus, decorator: Google::Apis::ComputeAlpha::StoragePoolResourceStatus::Representation
       
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
           property :size_gb, :numeric_string => true, as: 'sizeGb'
           property :state, as: 'state'
+          property :status, as: 'status', class: Google::Apis::ComputeAlpha::StoragePoolResourceStatus, decorator: Google::Apis::ComputeAlpha::StoragePoolResourceStatus::Representation
+      
+          property :storage_pool_type, as: 'storagePoolType'
           property :type, as: 'type'
           property :zone, as: 'zone'
         end
@@ -18522,6 +18583,23 @@ module Google
         end
       end
       
+      class StoragePoolDisk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :attached_instances, as: 'attachedInstances'
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :disk, as: 'disk'
+          property :name, as: 'name'
+          property :provisioned_iops, :numeric_string => true, as: 'provisionedIops'
+          property :provisioned_throughput, :numeric_string => true, as: 'provisionedThroughput'
+          collection :resource_policies, as: 'resourcePolicies'
+          property :size_gb, :numeric_string => true, as: 'sizeGb'
+          property :status, as: 'status'
+          property :type, as: 'type'
+          property :used_bytes, :numeric_string => true, as: 'usedBytes'
+        end
+      end
+      
       class StoragePoolList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -18542,6 +18620,40 @@ module Google
           class Representation < Google::Apis::Core::JsonRepresentation
             property :code, as: 'code'
             collection :data, as: 'data', class: Google::Apis::ComputeAlpha::StoragePoolList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::StoragePoolList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class StoragePoolListDisks
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeAlpha::StoragePoolDisk, decorator: Google::Apis::ComputeAlpha::StoragePoolDisk::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::StoragePoolListDisks::Warning, decorator: Google::Apis::ComputeAlpha::StoragePoolListDisks::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::StoragePoolListDisks::Warning::Datum, decorator: Google::Apis::ComputeAlpha::StoragePoolListDisks::Warning::Datum::Representation
         
             property :message, as: 'message'
           end
@@ -18594,6 +18706,13 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class StructuredEntries
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :entries, as: 'entries'
         end
       end
       
