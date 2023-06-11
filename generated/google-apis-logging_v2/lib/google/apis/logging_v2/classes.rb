@@ -970,10 +970,13 @@ module Google
       class ListLogEntriesRequest
         include Google::Apis::Core::Hashable
       
-        # Optional. Only log entries that match the filter are returned. An empty filter
-        # matches all log entries in the resources listed in resource_names. Referencing
-        # a parent resource that is not listed in resource_names will cause the filter
-        # to return no results. The maximum length of a filter is 20,000 characters.
+        # Optional. A filter that chooses which log entries to return. For more
+        # information, see Logging query language (https://cloud.google.com/logging/docs/
+        # view/logging-query-language).Only log entries that match the filter are
+        # returned. An empty filter matches all log entries in the resources listed in
+        # resource_names. Referencing a parent resource that is not listed in
+        # resource_names will cause the filter to return no results. The maximum length
+        # of a filter is 20,000 characters.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -1970,11 +1973,11 @@ module Google
       
         # Required. The export destination: "storage.googleapis.com/[GCS_BUCKET]" "
         # bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]" "pubsub.
-        # googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]" The sink's
-        # writer_identity, set when the sink is created, must have permission to write
-        # to the destination or else the log entries are not exported. For more
-        # information, see Exporting Logs with Sinks (https://cloud.google.com/logging/
-        # docs/api/tasks/exporting-logs).
+        # googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]" "logging.googleapis.
+        # com/projects/[PROJECT_ID]" The sink's writer_identity, set when the sink is
+        # created, must have permission to write to the destination or else the log
+        # entries are not exported. For more information, see Exporting Logs with Sinks (
+        # https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
         # Corresponds to the JSON property `destination`
         # @return [String]
         attr_accessor :destination
