@@ -105,6 +105,7 @@ module Google
           property :site_isolation_enabled, as: 'siteIsolationEnabled'
           collection :system_dns_servers, as: 'systemDnsServers'
           property :third_party_blocking_enabled, as: 'thirdPartyBlockingEnabled'
+          property :trigger, as: 'trigger'
           property :windows_machine_domain, as: 'windowsMachineDomain'
           property :windows_user_domain, as: 'windowsUserDomain'
         end
@@ -133,8 +134,11 @@ module Google
           property :device_signals, as: 'deviceSignals', class: Google::Apis::VerifiedaccessV2::DeviceSignals, decorator: Google::Apis::VerifiedaccessV2::DeviceSignals::Representation
       
           property :key_trust_level, as: 'keyTrustLevel'
+          property :profile_customer_id, as: 'profileCustomerId'
+          property :profile_key_trust_level, as: 'profileKeyTrustLevel'
           property :signed_public_key_and_challenge, as: 'signedPublicKeyAndChallenge'
           property :virtual_device_id, as: 'virtualDeviceId'
+          property :virtual_profile_id, as: 'virtualProfileId'
         end
       end
     end

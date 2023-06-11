@@ -67,12 +67,14 @@ module Google
         end
       end
       
-      # The device signals as reported by Chrome.
+      # The device signals as reported by Chrome. Unless otherwise specified, signals
+      # are available on all platforms.
       class DeviceSignals
         include Google::Apis::Core::Hashable
       
         # Value of the AllowScreenLock policy on the device. See https://
         # chromeenterprise.google/policies/?policy=AllowScreenLock for more details.
+        # Available on ChromeOS only.
         # Corresponds to the JSON property `allowScreenLock`
         # @return [Boolean]
         attr_accessor :allow_screen_lock
@@ -144,7 +146,8 @@ module Google
         # @return [String]
         attr_accessor :hostname
       
-        # International Mobile Equipment Identity (IMEI) of the device.
+        # International Mobile Equipment Identity (IMEI) of the device. Available on
+        # ChromeOS only.
         # Corresponds to the JSON property `imei`
         # @return [Array<String>]
         attr_accessor :imei
@@ -154,7 +157,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :mac_addresses
       
-        # Mobile Equipment Identifier (MEID) of the device.
+        # Mobile Equipment Identifier (MEID) of the device. Available on ChromeOS only.
         # Corresponds to the JSON property `meid`
         # @return [Array<String>]
         attr_accessor :meid
@@ -214,12 +217,13 @@ module Google
         attr_accessor :screen_lock_secured
       
         # Whether the device's startup software has its Secure Boot feature enabled.
+        # Available on Windows only.
         # Corresponds to the JSON property `secureBootMode`
         # @return [String]
         attr_accessor :secure_boot_mode
       
         # The serial number of the device. On Windows, this represents the BIOS's serial
-        # number.
+        # number. Not available on most Linux distributions.
         # Corresponds to the JSON property `serialNumber`
         # @return [String]
         attr_accessor :serial_number
@@ -240,18 +244,23 @@ module Google
       
         # Whether Chrome is blocking third-party software injection or not. This setting
         # may be controlled by an enterprise policy: https://chromeenterprise.google/
-        # policies/?policy=ThirdPartyBlockingEnabled
+        # policies/?policy=ThirdPartyBlockingEnabled. Available on Windows only.
         # Corresponds to the JSON property `thirdPartyBlockingEnabled`
         # @return [Boolean]
         attr_accessor :third_party_blocking_enabled
         alias_method :third_party_blocking_enabled?, :third_party_blocking_enabled
       
-        # Windows domain that the current machine has joined.
+        # The trigger which generated this set of signals.
+        # Corresponds to the JSON property `trigger`
+        # @return [String]
+        attr_accessor :trigger
+      
+        # Windows domain that the current machine has joined. Available on Windows only.
         # Corresponds to the JSON property `windowsMachineDomain`
         # @return [String]
         attr_accessor :windows_machine_domain
       
-        # Windows domain for the current OS user.
+        # Windows domain for the current OS user. Available on Windows only.
         # Corresponds to the JSON property `windowsUserDomain`
         # @return [String]
         attr_accessor :windows_user_domain
@@ -290,6 +299,7 @@ module Google
           @site_isolation_enabled = args[:site_isolation_enabled] if args.key?(:site_isolation_enabled)
           @system_dns_servers = args[:system_dns_servers] if args.key?(:system_dns_servers)
           @third_party_blocking_enabled = args[:third_party_blocking_enabled] if args.key?(:third_party_blocking_enabled)
+          @trigger = args[:trigger] if args.key?(:trigger)
           @windows_machine_domain = args[:windows_machine_domain] if args.key?(:windows_machine_domain)
           @windows_user_domain = args[:windows_user_domain] if args.key?(:windows_user_domain)
         end
@@ -364,7 +374,8 @@ module Google
         # @return [String]
         attr_accessor :device_signal
       
-        # The device signals as reported by Chrome.
+        # The device signals as reported by Chrome. Unless otherwise specified, signals
+        # are available on all platforms.
         # Corresponds to the JSON property `deviceSignals`
         # @return [Google::Apis::VerifiedaccessV2::DeviceSignals]
         attr_accessor :device_signals
@@ -373,6 +384,18 @@ module Google
         # Corresponds to the JSON property `keyTrustLevel`
         # @return [String]
         attr_accessor :key_trust_level
+      
+        # Unique customer id that this profile belongs to, as defined by the Google
+        # Admin SDK at https://developers.google.com/admin-sdk/directory/v1/guides/
+        # manage-customers
+        # Corresponds to the JSON property `profileCustomerId`
+        # @return [String]
+        attr_accessor :profile_customer_id
+      
+        # Profile attested key trust level.
+        # Corresponds to the JSON property `profileKeyTrustLevel`
+        # @return [String]
+        attr_accessor :profile_key_trust_level
       
         # Certificate Signing Request (in the SPKAC format, base64 encoded) is returned
         # in this field. This field will be set only if device has included CSR in its
@@ -388,6 +411,11 @@ module Google
         # @return [String]
         attr_accessor :virtual_device_id
       
+        # The ID of a profile on the device.
+        # Corresponds to the JSON property `virtualProfileId`
+        # @return [String]
+        attr_accessor :virtual_profile_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -399,8 +427,11 @@ module Google
           @device_signal = args[:device_signal] if args.key?(:device_signal)
           @device_signals = args[:device_signals] if args.key?(:device_signals)
           @key_trust_level = args[:key_trust_level] if args.key?(:key_trust_level)
+          @profile_customer_id = args[:profile_customer_id] if args.key?(:profile_customer_id)
+          @profile_key_trust_level = args[:profile_key_trust_level] if args.key?(:profile_key_trust_level)
           @signed_public_key_and_challenge = args[:signed_public_key_and_challenge] if args.key?(:signed_public_key_and_challenge)
           @virtual_device_id = args[:virtual_device_id] if args.key?(:virtual_device_id)
+          @virtual_profile_id = args[:virtual_profile_id] if args.key?(:virtual_profile_id)
         end
       end
     end
