@@ -37,6 +37,12 @@ module Google
         # @return [String]
         attr_accessor :accelerator_type
       
+        # GPUDriverInstallationConfig specifies the version of GPU driver to be auto
+        # installed.
+        # Corresponds to the JSON property `gpuDriverInstallationConfig`
+        # @return [Google::Apis::ContainerV1::GpuDriverInstallationConfig]
+        attr_accessor :gpu_driver_installation_config
+      
         # Size of partitions to create on the GPU. Valid values are described in the
         # NVIDIA [mig user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-
         # guide/#partitioning).
@@ -58,6 +64,7 @@ module Google
         def update!(**args)
           @accelerator_count = args[:accelerator_count] if args.key?(:accelerator_count)
           @accelerator_type = args[:accelerator_type] if args.key?(:accelerator_type)
+          @gpu_driver_installation_config = args[:gpu_driver_installation_config] if args.key?(:gpu_driver_installation_config)
           @gpu_partition_size = args[:gpu_partition_size] if args.key?(:gpu_partition_size)
           @gpu_sharing_config = args[:gpu_sharing_config] if args.key?(:gpu_sharing_config)
         end
@@ -250,6 +257,12 @@ module Google
         attr_accessor :enabled
         alias_method :enabled?, :enabled
       
+        # WorkloadPolicyConfig is the configuration of workload policy for autopilot
+        # clusters.
+        # Corresponds to the JSON property `workloadPolicyConfig`
+        # @return [Google::Apis::ContainerV1::WorkloadPolicyConfig]
+        attr_accessor :workload_policy_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -257,6 +270,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enabled = args[:enabled] if args.key?(:enabled)
+          @workload_policy_config = args[:workload_policy_config] if args.key?(:workload_policy_config)
         end
       end
       
@@ -1082,6 +1096,12 @@ module Google
         # @return [Google::Apis::ContainerV1::ResourceUsageExportConfig]
         attr_accessor :resource_usage_export_config
       
+        # SecurityPostureConfig defines the flags needed to enable/disable features for
+        # the Security Posture API.
+        # Corresponds to the JSON property `securityPostureConfig`
+        # @return [Google::Apis::ContainerV1::SecurityPostureConfig]
+        attr_accessor :security_posture_config
+      
         # [Output only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -1204,6 +1224,7 @@ module Google
           @release_channel = args[:release_channel] if args.key?(:release_channel)
           @resource_labels = args[:resource_labels] if args.key?(:resource_labels)
           @resource_usage_export_config = args[:resource_usage_export_config] if args.key?(:resource_usage_export_config)
+          @security_posture_config = args[:security_posture_config] if args.key?(:security_posture_config)
           @self_link = args[:self_link] if args.key?(:self_link)
           @services_ipv4_cidr = args[:services_ipv4_cidr] if args.key?(:services_ipv4_cidr)
           @shielded_nodes = args[:shielded_nodes] if args.key?(:shielded_nodes)
@@ -1287,6 +1308,12 @@ module Google
         # Corresponds to the JSON property `desiredAuthenticatorGroupsConfig`
         # @return [Google::Apis::ContainerV1::AuthenticatorGroupsConfig]
         attr_accessor :desired_authenticator_groups_config
+      
+        # WorkloadPolicyConfig is the configuration of workload policy for autopilot
+        # clusters.
+        # Corresponds to the JSON property `desiredAutopilotWorkloadPolicyConfig`
+        # @return [Google::Apis::ContainerV1::WorkloadPolicyConfig]
+        attr_accessor :desired_autopilot_workload_policy_config
       
         # Configuration for Binary Authorization.
         # Corresponds to the JSON property `desiredBinaryAuthorization`
@@ -1511,6 +1538,12 @@ module Google
         # @return [Google::Apis::ContainerV1::ResourceUsageExportConfig]
         attr_accessor :desired_resource_usage_export_config
       
+        # SecurityPostureConfig defines the flags needed to enable/disable features for
+        # the Security Posture API.
+        # Corresponds to the JSON property `desiredSecurityPostureConfig`
+        # @return [Google::Apis::ContainerV1::SecurityPostureConfig]
+        attr_accessor :desired_security_posture_config
+      
         # Config to block services with externalIPs field.
         # Corresponds to the JSON property `desiredServiceExternalIpsConfig`
         # @return [Google::Apis::ContainerV1::ServiceExternalIPsConfig]
@@ -1567,6 +1600,7 @@ module Google
           @additional_pod_ranges_config = args[:additional_pod_ranges_config] if args.key?(:additional_pod_ranges_config)
           @desired_addons_config = args[:desired_addons_config] if args.key?(:desired_addons_config)
           @desired_authenticator_groups_config = args[:desired_authenticator_groups_config] if args.key?(:desired_authenticator_groups_config)
+          @desired_autopilot_workload_policy_config = args[:desired_autopilot_workload_policy_config] if args.key?(:desired_autopilot_workload_policy_config)
           @desired_binary_authorization = args[:desired_binary_authorization] if args.key?(:desired_binary_authorization)
           @desired_cluster_autoscaling = args[:desired_cluster_autoscaling] if args.key?(:desired_cluster_autoscaling)
           @desired_cost_management_config = args[:desired_cost_management_config] if args.key?(:desired_cost_management_config)
@@ -1602,6 +1636,7 @@ module Google
           @desired_private_ipv6_google_access = args[:desired_private_ipv6_google_access] if args.key?(:desired_private_ipv6_google_access)
           @desired_release_channel = args[:desired_release_channel] if args.key?(:desired_release_channel)
           @desired_resource_usage_export_config = args[:desired_resource_usage_export_config] if args.key?(:desired_resource_usage_export_config)
+          @desired_security_posture_config = args[:desired_security_posture_config] if args.key?(:desired_security_posture_config)
           @desired_service_external_ips_config = args[:desired_service_external_ips_config] if args.key?(:desired_service_external_ips_config)
           @desired_shielded_nodes = args[:desired_shielded_nodes] if args.key?(:desired_shielded_nodes)
           @desired_stack_type = args[:desired_stack_type] if args.key?(:desired_stack_type)
@@ -2090,6 +2125,26 @@ module Google
           @membership = args[:membership] if args.key?(:membership)
           @pre_registered = args[:pre_registered] if args.key?(:pre_registered)
           @project = args[:project] if args.key?(:project)
+        end
+      end
+      
+      # GPUDriverInstallationConfig specifies the version of GPU driver to be auto
+      # installed.
+      class GpuDriverInstallationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Mode for how the GPU driver is installed.
+        # Corresponds to the JSON property `gpuDriverVersion`
+        # @return [String]
+        attr_accessor :gpu_driver_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gpu_driver_version = args[:gpu_driver_version] if args.key?(:gpu_driver_version)
         end
       end
       
@@ -5086,6 +5141,32 @@ module Google
         end
       end
       
+      # SecurityPostureConfig defines the flags needed to enable/disable features for
+      # the Security Posture API.
+      class SecurityPostureConfig
+        include Google::Apis::Core::Hashable
+      
+        # Sets which mode to use for Security Posture features.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
+        # Sets which mode to use for vulnerability scanning.
+        # Corresponds to the JSON property `vulnerabilityMode`
+        # @return [String]
+        attr_accessor :vulnerability_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mode = args[:mode] if args.key?(:mode)
+          @vulnerability_mode = args[:vulnerability_mode] if args.key?(:vulnerability_mode)
+        end
+      end
+      
       # Kubernetes Engine service configuration.
       class ServerConfig
         include Google::Apis::Core::Hashable
@@ -6751,6 +6832,27 @@ module Google
         # Update properties of this object
         def update!(**args)
           @mode = args[:mode] if args.key?(:mode)
+        end
+      end
+      
+      # WorkloadPolicyConfig is the configuration of workload policy for autopilot
+      # clusters.
+      class WorkloadPolicyConfig
+        include Google::Apis::Core::Hashable
+      
+        # If true, workloads can use NET_ADMIN capability.
+        # Corresponds to the JSON property `allowNetAdmin`
+        # @return [Boolean]
+        attr_accessor :allow_net_admin
+        alias_method :allow_net_admin?, :allow_net_admin
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_net_admin = args[:allow_net_admin] if args.key?(:allow_net_admin)
         end
       end
     end
