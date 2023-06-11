@@ -558,6 +558,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :new_deployment_display_name, as: 'newDeploymentDisplayName'
           property :new_organization_display_name, as: 'newOrganizationDisplayName'
+          property :organization_id, :numeric_string => true, as: 'organizationId'
         end
       end
       
