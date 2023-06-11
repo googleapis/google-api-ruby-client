@@ -531,6 +531,7 @@ module Google
           property :os_image, as: 'osImage'
           property :private_network, as: 'privateNetwork', class: Google::Apis::BaremetalsolutionV2::NetworkAddress, decorator: Google::Apis::BaremetalsolutionV2::NetworkAddress::Representation
       
+          collection :ssh_key_names, as: 'sshKeyNames'
           property :user_note, as: 'userNote'
         end
       end
