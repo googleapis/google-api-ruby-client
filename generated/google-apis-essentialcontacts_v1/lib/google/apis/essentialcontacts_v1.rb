@@ -28,6 +28,9 @@ module Google
       # Version of the Essential Contacts API this client connects to.
       # This is NOT the gem version.
       VERSION = 'V1'
+
+      # See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.
+      AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
     end
   end
 end
