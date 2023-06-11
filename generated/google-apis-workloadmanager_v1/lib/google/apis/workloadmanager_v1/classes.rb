@@ -60,6 +60,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # The Cloud Storage bucket name for custom rules.
+        # Corresponds to the JSON property `customRulesBucket`
+        # @return [String]
+        attr_accessor :custom_rules_bucket
+      
         # Description of the Evaluation
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -113,6 +118,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @custom_rules_bucket = args[:custom_rules_bucket] if args.key?(:custom_rules_bucket)
           @description = args[:description] if args.key?(:description)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
@@ -724,7 +730,7 @@ module Google
       class ResourceStatus
         include Google::Apis::Core::Hashable
       
-        # the new version of rule id if exists
+        # Historical: Used before 2023-05-22 the new version of rule id if exists
         # Corresponds to the JSON property `rulesNewerVersions`
         # @return [Array<String>]
         attr_accessor :rules_newer_versions
@@ -1121,15 +1127,10 @@ module Google
       class SqlserverValidationValidationDetail
         include Google::Apis::Core::Hashable
       
-        # The pairs of metrics data: field name & field value.
-        # Corresponds to the JSON property `details`
+        # pairs of metrics data: column name & column value.
+        # Corresponds to the JSON property `fields`
         # @return [Hash<String,String>]
-        attr_accessor :details
-      
-        # The instance id where the ValidationDetail is generated from
-        # Corresponds to the JSON property `instanceId`
-        # @return [String]
-        attr_accessor :instance_id
+        attr_accessor :fields
       
         # The Sqlserver system that the validation data is from.
         # Corresponds to the JSON property `type`
@@ -1142,8 +1143,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @details = args[:details] if args.key?(:details)
-          @instance_id = args[:instance_id] if args.key?(:instance_id)
+          @fields = args[:fields] if args.key?(:fields)
           @type = args[:type] if args.key?(:type)
         end
       end
@@ -1227,6 +1227,11 @@ module Google
         # @return [Google::Apis::WorkloadmanagerV1::Insight]
         attr_accessor :insight
       
+        # Optional. The instance id where the insight is generated from
+        # Corresponds to the JSON property `instanceId`
+        # @return [String]
+        attr_accessor :instance_id
+      
         # Optional. An optional request ID to identify requests. Specify a unique
         # request ID so that if you must retry your request, the server will know to
         # ignore the request if it has already been completed. The server will guarantee
@@ -1248,6 +1253,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @insight = args[:insight] if args.key?(:insight)
+          @instance_id = args[:instance_id] if args.key?(:instance_id)
           @request_id = args[:request_id] if args.key?(:request_id)
         end
       end
