@@ -486,6 +486,11 @@ module Google
         # @return [Google::Apis::BaremetalsolutionV2::NetworkAddress]
         attr_accessor :private_network
       
+        # List of names of ssh keys used to provision the instance.
+        # Corresponds to the JSON property `sshKeyNames`
+        # @return [Array<String>]
+        attr_accessor :ssh_key_names
+      
         # User note field, it can be used by customers to add additional information for
         # the BMS Ops team .
         # Corresponds to the JSON property `userNote`
@@ -509,6 +514,7 @@ module Google
           @network_template = args[:network_template] if args.key?(:network_template)
           @os_image = args[:os_image] if args.key?(:os_image)
           @private_network = args[:private_network] if args.key?(:private_network)
+          @ssh_key_names = args[:ssh_key_names] if args.key?(:ssh_key_names)
           @user_note = args[:user_note] if args.key?(:user_note)
         end
       end
