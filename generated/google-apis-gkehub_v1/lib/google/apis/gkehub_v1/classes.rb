@@ -381,9 +381,11 @@ module Google
       
         # Enables the installation of ConfigSync. If set to true, ConfigSync resources
         # will be created and the other ConfigSync fields will be applied if exist. If
-        # set to false, all other ConfigSync fields will be ignored, ConfigSync
-        # resources will be deleted. If omitted, ConfigSync resources will be managed
-        # depends on the presence of git field.
+        # set to false and Managed Config Sync is disabled, all other ConfigSync fields
+        # will be ignored, ConfigSync resources will be deleted. Setting this field to
+        # false while enabling Managed Config Sync is invalid. If omitted, ConfigSync
+        # resources will be managed if: * the git or oci field is present; or * Managed
+        # Config Sync is enabled (i.e., managed.enabled is true).
         # Corresponds to the JSON property `enabled`
         # @return [Boolean]
         attr_accessor :enabled
@@ -398,6 +400,16 @@ module Google
         # Corresponds to the JSON property `managed`
         # @return [Google::Apis::GkehubV1::ConfigManagementManaged]
         attr_accessor :managed
+      
+        # The Email of the GCP Service Account (GSA) used for exporting Config Sync
+        # metrics to Cloud Monitoring and Cloud Monarch when Workload Identity is
+        # enabled. The GSA should have the Monitoring Metric Writer (roles/monitoring.
+        # metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the
+        # namespace `config-management-monitoring` should be binded to the GSA. This
+        # field is required when Managed Config Sync is enabled.
+        # Corresponds to the JSON property `metricsGcpServiceAccountEmail`
+        # @return [String]
+        attr_accessor :metrics_gcp_service_account_email
       
         # OCI repo configuration for a single cluster
         # Corresponds to the JSON property `oci`
@@ -428,6 +440,7 @@ module Google
           @enabled = args[:enabled] if args.key?(:enabled)
           @git = args[:git] if args.key?(:git)
           @managed = args[:managed] if args.key?(:managed)
+          @metrics_gcp_service_account_email = args[:metrics_gcp_service_account_email] if args.key?(:metrics_gcp_service_account_email)
           @oci = args[:oci] if args.key?(:oci)
           @prevent_drift = args[:prevent_drift] if args.key?(:prevent_drift)
           @source_format = args[:source_format] if args.key?(:source_format)
@@ -489,6 +502,25 @@ module Google
         end
       end
       
+      # Errors pertaining to the installation of Config Sync
+      class ConfigManagementConfigSyncError
+        include Google::Apis::Core::Hashable
+      
+        # A string representing the user facing error message
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_message = args[:error_message] if args.key?(:error_message)
+        end
+      end
+      
       # State information for ConfigSync
       class ConfigManagementConfigSyncState
         include Google::Apis::Core::Hashable
@@ -497,6 +529,11 @@ module Google
         # Corresponds to the JSON property `deploymentState`
         # @return [Google::Apis::GkehubV1::ConfigManagementConfigSyncDeploymentState]
         attr_accessor :deployment_state
+      
+        # Errors pertaining to the installation of Config Sync.
+        # Corresponds to the JSON property `errors`
+        # @return [Array<Google::Apis::GkehubV1::ConfigManagementConfigSyncError>]
+        attr_accessor :errors
       
         # State indicating an ACM's progress syncing configurations to a cluster
         # Corresponds to the JSON property `syncState`
@@ -515,6 +552,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @deployment_state = args[:deployment_state] if args.key?(:deployment_state)
+          @errors = args[:errors] if args.key?(:errors)
           @sync_state = args[:sync_state] if args.key?(:sync_state)
           @version = args[:version] if args.key?(:version)
         end
@@ -872,11 +910,19 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Set to true to enable Managed Config Sync. Defaults to false which disables
-        # Managed Config Sync.
+        # Managed Config Sync. Setting this field to true when configSync.enabled is
+        # false is invalid.
         # Corresponds to the JSON property `enabled`
         # @return [Boolean]
         attr_accessor :enabled
         alias_method :enabled?, :enabled
+      
+        # Set to true to stop syncing configs for a single cluster. Default to false. If
+        # set to true, Managed Config Sync will not upgrade Config Sync.
+        # Corresponds to the JSON property `stopSyncing`
+        # @return [Boolean]
+        attr_accessor :stop_syncing
+        alias_method :stop_syncing?, :stop_syncing
       
         def initialize(**args)
            update!(**args)
@@ -885,6 +931,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enabled = args[:enabled] if args.key?(:enabled)
+          @stop_syncing = args[:stop_syncing] if args.key?(:stop_syncing)
         end
       end
       
@@ -892,6 +939,16 @@ module Google
       # parallel the ConfigManagement CR.
       class ConfigManagementMembershipSpec
         include Google::Apis::Core::Hashable
+      
+        # The user-specified cluster name used by Config Sync cluster-name-selector
+        # annotation or ClusterSelector, for applying configs to only a subset of
+        # clusters. Omit this field if the cluster's fleet membership name is used by
+        # Config Sync cluster-name-selector annotation or ClusterSelector. Set this
+        # field if a name different from the cluster's fleet membership name is used by
+        # Config Sync cluster-name-selector annotation or ClusterSelector.
+        # Corresponds to the JSON property `cluster`
+        # @return [String]
+        attr_accessor :cluster
       
         # Configuration for Config Sync
         # Corresponds to the JSON property `configSync`
@@ -919,6 +976,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cluster = args[:cluster] if args.key?(:cluster)
           @config_sync = args[:config_sync] if args.key?(:config_sync)
           @hierarchy_controller = args[:hierarchy_controller] if args.key?(:hierarchy_controller)
           @policy_controller = args[:policy_controller] if args.key?(:policy_controller)
@@ -930,10 +988,8 @@ module Google
       class ConfigManagementMembershipState
         include Google::Apis::Core::Hashable
       
-        # The user-defined name for the cluster used by ClusterSelectors to group
-        # clusters together. This should match Membership's membership_name, unless the
-        # user installed ACM on the cluster manually prior to enabling the ACM hub
-        # feature. Unique within a Anthos Config Management installation.
+        # This field is set to the `cluster_name` field of the Membership Spec if it is
+        # not empty. Otherwise, it is set to the cluster's fleet membership name.
         # Corresponds to the JSON property `clusterName`
         # @return [String]
         attr_accessor :cluster_name
@@ -2604,7 +2660,7 @@ module Google
       end
       
       # MembershipFeatureSpec contains configuration information for a single
-      # Membership.
+      # Membership. NOTE: Please use snake case in your feature name.
       class MembershipFeatureSpec
         include Google::Apis::Core::Hashable
       
