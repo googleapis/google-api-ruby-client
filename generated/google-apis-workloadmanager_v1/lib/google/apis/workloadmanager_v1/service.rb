@@ -622,6 +622,8 @@ module Google
         #   Required. The [project] on which to execute the request. The format is:
         #   projects/`project_id`/locations/`location` Currently, the pre-defined rules
         #   are global available to all projects and all regions
+        # @param [String] custom_rules_bucket
+        #   The Cloud Storage bucket name for custom rules.
         # @param [String] filter
         #   Filter based on primary_category, secondary_category
         # @param [Fixnum] page_size
@@ -646,11 +648,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_rules(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_rules(parent, custom_rules_bucket: nil, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/rules', options)
           command.response_representation = Google::Apis::WorkloadmanagerV1::ListRulesResponse::Representation
           command.response_class = Google::Apis::WorkloadmanagerV1::ListRulesResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['customRulesBucket'] = custom_rules_bucket unless custom_rules_bucket.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
