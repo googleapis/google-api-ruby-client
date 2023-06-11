@@ -340,12 +340,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GroupValue
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Http
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -652,12 +646,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ServiceValue
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class SourceContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -694,12 +682,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class TermsOfService
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Type
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -730,12 +712,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ValueInfo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class AddEnableRulesMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -745,9 +721,8 @@ module Google
       class AddEnableRulesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :added_values, as: 'addedValues'
           property :parent, as: 'parent'
-          collection :values, as: 'values', class: Google::Apis::ServiceusageV1beta1::ValueInfo, decorator: Google::Apis::ServiceusageV1beta1::ValueInfo::Representation
-      
         end
       end
       
@@ -1321,13 +1296,6 @@ module Google
         end
       end
       
-      class GroupValue
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :name, as: 'name'
-        end
-      end
-      
       class Http
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1785,6 +1753,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :parent, as: 'parent'
+          collection :removed_values, as: 'removedValues'
         end
       end
       
@@ -1839,17 +1808,6 @@ module Google
         end
       end
       
-      class ServiceValue
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :dns_address, as: 'dnsAddress'
-          property :name, as: 'name'
-          property :pricing_link, as: 'pricingLink'
-          collection :tos, as: 'tos', class: Google::Apis::ServiceusageV1beta1::TermsOfService, decorator: Google::Apis::ServiceusageV1beta1::TermsOfService::Representation
-      
-        end
-      end
-      
       class SourceContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1899,14 +1857,6 @@ module Google
         end
       end
       
-      class TermsOfService
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :title, as: 'title'
-          property :uri, as: 'uri'
-        end
-      end
-      
       class Type
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1951,19 +1901,6 @@ module Google
           property :allow_unregistered_calls, as: 'allowUnregisteredCalls'
           property :selector, as: 'selector'
           property :skip_service_control, as: 'skipServiceControl'
-        end
-      end
-      
-      class ValueInfo
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :group_value, as: 'groupValue', class: Google::Apis::ServiceusageV1beta1::GroupValue, decorator: Google::Apis::ServiceusageV1beta1::GroupValue::Representation
-      
-          property :learnmore_link, as: 'learnmoreLink'
-          property :service_value, as: 'serviceValue', class: Google::Apis::ServiceusageV1beta1::ServiceValue, decorator: Google::Apis::ServiceusageV1beta1::ServiceValue::Representation
-      
-          property :summary, as: 'summary'
-          property :title, as: 'title'
         end
       end
     end
