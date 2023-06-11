@@ -1130,6 +1130,12 @@ module Google
         # @return [String]
         attr_accessor :new_organization_display_name
       
+        # Optional. If this field is set then a new deployment will be created under the
+        # organization specified by this id.
+        # Corresponds to the JSON property `organizationId`
+        # @return [Fixnum]
+        attr_accessor :organization_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1138,6 +1144,7 @@ module Google
         def update!(**args)
           @new_deployment_display_name = args[:new_deployment_display_name] if args.key?(:new_deployment_display_name)
           @new_organization_display_name = args[:new_organization_display_name] if args.key?(:new_organization_display_name)
+          @organization_id = args[:organization_id] if args.key?(:organization_id)
         end
       end
       
