@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackupReencryptionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackupRetentionSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -293,6 +299,12 @@ module Google
       end
       
       class InstancesListServerCasResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstancesReencryptRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -642,6 +654,14 @@ module Google
         end
       end
       
+      class BackupReencryptionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_limit, as: 'backupLimit'
+          property :backup_type, as: 'backupType'
+        end
+      end
+      
       class BackupRetentionSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -714,6 +734,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :backend_type, as: 'backendType'
           property :database_version, as: 'databaseVersion'
+          property :dns_name, as: 'dnsName'
           collection :ip_addresses, as: 'ipAddresses', class: Google::Apis::SqladminV1::IpMapping, decorator: Google::Apis::SqladminV1::IpMapping::Representation
       
           property :kind, as: 'kind'
@@ -1114,6 +1135,14 @@ module Google
           collection :certs, as: 'certs', class: Google::Apis::SqladminV1::SslCert, decorator: Google::Apis::SqladminV1::SslCert::Representation
       
           property :kind, as: 'kind'
+        end
+      end
+      
+      class InstancesReencryptRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_reencryption_config, as: 'backupReencryptionConfig', class: Google::Apis::SqladminV1::BackupReencryptionConfig, decorator: Google::Apis::SqladminV1::BackupReencryptionConfig::Representation
+      
         end
       end
       
