@@ -698,6 +698,7 @@ module Google
           property :home_office, as: 'homeOffice'
           property :office_location, as: 'officeLocation', class: Google::Apis::CalendarV3::EventWorkingLocationProperties::OfficeLocation, decorator: Google::Apis::CalendarV3::EventWorkingLocationProperties::OfficeLocation::Representation
       
+          property :type, as: 'type'
         end
         
         class CustomLocation
