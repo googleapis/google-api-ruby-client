@@ -1761,6 +1761,88 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets the current configuration of the specified service.
+        # @param [String] projects_id
+        #   Part of `name`. Name of the resource requested. Example: apps/myapp/services/
+        #   default.
+        # @param [String] locations_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] applications_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] services_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AppengineV1beta::Service] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AppengineV1beta::Service]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_application_service(projects_id, locations_id, applications_id, services_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}', options)
+          command.response_representation = Google::Apis::AppengineV1beta::Service::Representation
+          command.response_class = Google::Apis::AppengineV1beta::Service
+          command.params['projectsId'] = projects_id unless projects_id.nil?
+          command.params['locationsId'] = locations_id unless locations_id.nil?
+          command.params['applicationsId'] = applications_id unless applications_id.nil?
+          command.params['servicesId'] = services_id unless services_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all the services in the application.
+        # @param [String] projects_id
+        #   Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+        # @param [String] locations_id
+        #   Part of `parent`. See documentation of `projectsId`.
+        # @param [String] applications_id
+        #   Part of `parent`. See documentation of `projectsId`.
+        # @param [Fixnum] page_size
+        #   Maximum results to return per page.
+        # @param [String] page_token
+        #   Continuation token for fetching the next page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AppengineV1beta::ListServicesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AppengineV1beta::ListServicesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_application_services(projects_id, locations_id, applications_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services', options)
+          command.response_representation = Google::Apis::AppengineV1beta::ListServicesResponse::Representation
+          command.response_class = Google::Apis::AppengineV1beta::ListServicesResponse
+          command.params['projectsId'] = projects_id unless projects_id.nil?
+          command.params['locationsId'] = locations_id unless locations_id.nil?
+          command.params['applicationsId'] = applications_id unless applications_id.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the latest state of a long-running operation. Clients can use this method
         # to poll the operation result at intervals as recommended by the API service.
         # @param [String] projects_id
