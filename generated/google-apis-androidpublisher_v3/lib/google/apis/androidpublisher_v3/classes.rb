@@ -722,6 +722,25 @@ module Google
         end
       end
       
+      # Information related to deferred item replacement.
+      class DeferredItemReplacement
+        include Google::Apis::Core::Hashable
+      
+        # The product_id going to replace the existing product_id.
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @product_id = args[:product_id] if args.key?(:product_id)
+        end
+      end
+      
       # Represents a deobfuscation file.
       class DeobfuscationFile
         include Google::Apis::Core::Hashable
@@ -3947,6 +3966,11 @@ module Google
         # @return [Google::Apis::AndroidpublisherV3::AutoRenewingPlan]
         attr_accessor :auto_renewing_plan
       
+        # Information related to deferred item replacement.
+        # Corresponds to the JSON property `deferredItemReplacement`
+        # @return [Google::Apis::AndroidpublisherV3::DeferredItemReplacement]
+        attr_accessor :deferred_item_replacement
+      
         # Time at which the subscription expired or will expire unless the access is
         # extended (ex. renews).
         # Corresponds to the JSON property `expiryTime`
@@ -3975,6 +3999,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @auto_renewing_plan = args[:auto_renewing_plan] if args.key?(:auto_renewing_plan)
+          @deferred_item_replacement = args[:deferred_item_replacement] if args.key?(:deferred_item_replacement)
           @expiry_time = args[:expiry_time] if args.key?(:expiry_time)
           @offer_details = args[:offer_details] if args.key?(:offer_details)
           @prepaid_plan = args[:prepaid_plan] if args.key?(:prepaid_plan)
