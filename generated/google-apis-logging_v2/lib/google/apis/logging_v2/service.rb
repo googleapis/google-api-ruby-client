@@ -1353,6 +1353,11 @@ module Google
         #   folders/[FOLDER_ID]" For examples:"projects/my-project" "organizations/
         #   123456789"
         # @param [Google::Apis::LoggingV2::LogSink] log_sink_object
+        # @param [String] custom_writer_identity
+        #   Optional. A service account provided by the caller that will be used to write
+        #   the log entries. Must be of format serviceAccount:some@email. This can only be
+        #   specified if writing to a destination outside the sink's project. If not
+        #   specified, a p4 service account will automatically be generated.
         # @param [Boolean] unique_writer_identity
         #   Optional. Determines the kind of IAM identity returned as writer_identity in
         #   the new sink. If this value is omitted or set to false, and if the sink's
@@ -1380,13 +1385,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_billing_account_sink(parent, log_sink_object = nil, unique_writer_identity: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_billing_account_sink(parent, log_sink_object = nil, custom_writer_identity: nil, unique_writer_identity: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v2/{+parent}/sinks', options)
           command.request_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.request_object = log_sink_object
           command.response_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.response_class = Google::Apis::LoggingV2::LogSink
           command.params['parent'] = parent unless parent.nil?
+          command.query['customWriterIdentity'] = custom_writer_identity unless custom_writer_identity.nil?
           command.query['uniqueWriterIdentity'] = unique_writer_identity unless unique_writer_identity.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1514,6 +1520,11 @@ module Google
         #   BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
         #   example:"projects/my-project/sinks/my-sink"
         # @param [Google::Apis::LoggingV2::LogSink] log_sink_object
+        # @param [String] custom_writer_identity
+        #   Optional. A service account provided by the caller that will be used to write
+        #   the log entries. Must be of format serviceAccount:some@email. This can only be
+        #   specified if writing to a destination outside the sink's project. If not
+        #   specified, a p4 service account will automatically be generated.
         # @param [Boolean] unique_writer_identity
         #   Optional. See sinks.create for a description of this field. When updating a
         #   sink, the effect of this field on the value of writer_identity in the updated
@@ -1550,13 +1561,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_billing_account_sink(sink_name, log_sink_object = nil, unique_writer_identity: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_billing_account_sink(sink_name, log_sink_object = nil, custom_writer_identity: nil, unique_writer_identity: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v2/{+sinkName}', options)
           command.request_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.request_object = log_sink_object
           command.response_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.response_class = Google::Apis::LoggingV2::LogSink
           command.params['sinkName'] = sink_name unless sink_name.nil?
+          command.query['customWriterIdentity'] = custom_writer_identity unless custom_writer_identity.nil?
           command.query['uniqueWriterIdentity'] = unique_writer_identity unless unique_writer_identity.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1574,6 +1586,11 @@ module Google
         #   BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
         #   example:"projects/my-project/sinks/my-sink"
         # @param [Google::Apis::LoggingV2::LogSink] log_sink_object
+        # @param [String] custom_writer_identity
+        #   Optional. A service account provided by the caller that will be used to write
+        #   the log entries. Must be of format serviceAccount:some@email. This can only be
+        #   specified if writing to a destination outside the sink's project. If not
+        #   specified, a p4 service account will automatically be generated.
         # @param [Boolean] unique_writer_identity
         #   Optional. See sinks.create for a description of this field. When updating a
         #   sink, the effect of this field on the value of writer_identity in the updated
@@ -1610,13 +1627,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_billing_account_sink(sink_name, log_sink_object = nil, unique_writer_identity: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def update_billing_account_sink(sink_name, log_sink_object = nil, custom_writer_identity: nil, unique_writer_identity: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:put, 'v2/{+sinkName}', options)
           command.request_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.request_object = log_sink_object
           command.response_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.response_class = Google::Apis::LoggingV2::LogSink
           command.params['sinkName'] = sink_name unless sink_name.nil?
+          command.query['customWriterIdentity'] = custom_writer_identity unless custom_writer_identity.nil?
           command.query['uniqueWriterIdentity'] = unique_writer_identity unless unique_writer_identity.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -3300,6 +3318,11 @@ module Google
         #   folders/[FOLDER_ID]" For examples:"projects/my-project" "organizations/
         #   123456789"
         # @param [Google::Apis::LoggingV2::LogSink] log_sink_object
+        # @param [String] custom_writer_identity
+        #   Optional. A service account provided by the caller that will be used to write
+        #   the log entries. Must be of format serviceAccount:some@email. This can only be
+        #   specified if writing to a destination outside the sink's project. If not
+        #   specified, a p4 service account will automatically be generated.
         # @param [Boolean] unique_writer_identity
         #   Optional. Determines the kind of IAM identity returned as writer_identity in
         #   the new sink. If this value is omitted or set to false, and if the sink's
@@ -3327,13 +3350,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_folder_sink(parent, log_sink_object = nil, unique_writer_identity: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_folder_sink(parent, log_sink_object = nil, custom_writer_identity: nil, unique_writer_identity: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v2/{+parent}/sinks', options)
           command.request_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.request_object = log_sink_object
           command.response_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.response_class = Google::Apis::LoggingV2::LogSink
           command.params['parent'] = parent unless parent.nil?
+          command.query['customWriterIdentity'] = custom_writer_identity unless custom_writer_identity.nil?
           command.query['uniqueWriterIdentity'] = unique_writer_identity unless unique_writer_identity.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -3461,6 +3485,11 @@ module Google
         #   BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
         #   example:"projects/my-project/sinks/my-sink"
         # @param [Google::Apis::LoggingV2::LogSink] log_sink_object
+        # @param [String] custom_writer_identity
+        #   Optional. A service account provided by the caller that will be used to write
+        #   the log entries. Must be of format serviceAccount:some@email. This can only be
+        #   specified if writing to a destination outside the sink's project. If not
+        #   specified, a p4 service account will automatically be generated.
         # @param [Boolean] unique_writer_identity
         #   Optional. See sinks.create for a description of this field. When updating a
         #   sink, the effect of this field on the value of writer_identity in the updated
@@ -3497,13 +3526,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_folder_sink(sink_name, log_sink_object = nil, unique_writer_identity: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_folder_sink(sink_name, log_sink_object = nil, custom_writer_identity: nil, unique_writer_identity: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v2/{+sinkName}', options)
           command.request_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.request_object = log_sink_object
           command.response_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.response_class = Google::Apis::LoggingV2::LogSink
           command.params['sinkName'] = sink_name unless sink_name.nil?
+          command.query['customWriterIdentity'] = custom_writer_identity unless custom_writer_identity.nil?
           command.query['uniqueWriterIdentity'] = unique_writer_identity unless unique_writer_identity.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -3521,6 +3551,11 @@ module Google
         #   BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
         #   example:"projects/my-project/sinks/my-sink"
         # @param [Google::Apis::LoggingV2::LogSink] log_sink_object
+        # @param [String] custom_writer_identity
+        #   Optional. A service account provided by the caller that will be used to write
+        #   the log entries. Must be of format serviceAccount:some@email. This can only be
+        #   specified if writing to a destination outside the sink's project. If not
+        #   specified, a p4 service account will automatically be generated.
         # @param [Boolean] unique_writer_identity
         #   Optional. See sinks.create for a description of this field. When updating a
         #   sink, the effect of this field on the value of writer_identity in the updated
@@ -3557,13 +3592,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_folder_sink(sink_name, log_sink_object = nil, unique_writer_identity: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def update_folder_sink(sink_name, log_sink_object = nil, custom_writer_identity: nil, unique_writer_identity: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:put, 'v2/{+sinkName}', options)
           command.request_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.request_object = log_sink_object
           command.response_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.response_class = Google::Apis::LoggingV2::LogSink
           command.params['sinkName'] = sink_name unless sink_name.nil?
+          command.query['customWriterIdentity'] = custom_writer_identity unless custom_writer_identity.nil?
           command.query['uniqueWriterIdentity'] = unique_writer_identity unless unique_writer_identity.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -5978,6 +6014,11 @@ module Google
         #   folders/[FOLDER_ID]" For examples:"projects/my-project" "organizations/
         #   123456789"
         # @param [Google::Apis::LoggingV2::LogSink] log_sink_object
+        # @param [String] custom_writer_identity
+        #   Optional. A service account provided by the caller that will be used to write
+        #   the log entries. Must be of format serviceAccount:some@email. This can only be
+        #   specified if writing to a destination outside the sink's project. If not
+        #   specified, a p4 service account will automatically be generated.
         # @param [Boolean] unique_writer_identity
         #   Optional. Determines the kind of IAM identity returned as writer_identity in
         #   the new sink. If this value is omitted or set to false, and if the sink's
@@ -6005,13 +6046,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_organization_sink(parent, log_sink_object = nil, unique_writer_identity: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_organization_sink(parent, log_sink_object = nil, custom_writer_identity: nil, unique_writer_identity: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v2/{+parent}/sinks', options)
           command.request_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.request_object = log_sink_object
           command.response_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.response_class = Google::Apis::LoggingV2::LogSink
           command.params['parent'] = parent unless parent.nil?
+          command.query['customWriterIdentity'] = custom_writer_identity unless custom_writer_identity.nil?
           command.query['uniqueWriterIdentity'] = unique_writer_identity unless unique_writer_identity.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -6139,6 +6181,11 @@ module Google
         #   BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
         #   example:"projects/my-project/sinks/my-sink"
         # @param [Google::Apis::LoggingV2::LogSink] log_sink_object
+        # @param [String] custom_writer_identity
+        #   Optional. A service account provided by the caller that will be used to write
+        #   the log entries. Must be of format serviceAccount:some@email. This can only be
+        #   specified if writing to a destination outside the sink's project. If not
+        #   specified, a p4 service account will automatically be generated.
         # @param [Boolean] unique_writer_identity
         #   Optional. See sinks.create for a description of this field. When updating a
         #   sink, the effect of this field on the value of writer_identity in the updated
@@ -6175,13 +6222,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_organization_sink(sink_name, log_sink_object = nil, unique_writer_identity: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_organization_sink(sink_name, log_sink_object = nil, custom_writer_identity: nil, unique_writer_identity: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v2/{+sinkName}', options)
           command.request_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.request_object = log_sink_object
           command.response_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.response_class = Google::Apis::LoggingV2::LogSink
           command.params['sinkName'] = sink_name unless sink_name.nil?
+          command.query['customWriterIdentity'] = custom_writer_identity unless custom_writer_identity.nil?
           command.query['uniqueWriterIdentity'] = unique_writer_identity unless unique_writer_identity.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -6199,6 +6247,11 @@ module Google
         #   BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
         #   example:"projects/my-project/sinks/my-sink"
         # @param [Google::Apis::LoggingV2::LogSink] log_sink_object
+        # @param [String] custom_writer_identity
+        #   Optional. A service account provided by the caller that will be used to write
+        #   the log entries. Must be of format serviceAccount:some@email. This can only be
+        #   specified if writing to a destination outside the sink's project. If not
+        #   specified, a p4 service account will automatically be generated.
         # @param [Boolean] unique_writer_identity
         #   Optional. See sinks.create for a description of this field. When updating a
         #   sink, the effect of this field on the value of writer_identity in the updated
@@ -6235,13 +6288,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_organization_sink(sink_name, log_sink_object = nil, unique_writer_identity: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def update_organization_sink(sink_name, log_sink_object = nil, custom_writer_identity: nil, unique_writer_identity: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:put, 'v2/{+sinkName}', options)
           command.request_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.request_object = log_sink_object
           command.response_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.response_class = Google::Apis::LoggingV2::LogSink
           command.params['sinkName'] = sink_name unless sink_name.nil?
+          command.query['customWriterIdentity'] = custom_writer_identity unless custom_writer_identity.nil?
           command.query['uniqueWriterIdentity'] = unique_writer_identity unless unique_writer_identity.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -7727,6 +7781,11 @@ module Google
         #   folders/[FOLDER_ID]" For examples:"projects/my-project" "organizations/
         #   123456789"
         # @param [Google::Apis::LoggingV2::LogSink] log_sink_object
+        # @param [String] custom_writer_identity
+        #   Optional. A service account provided by the caller that will be used to write
+        #   the log entries. Must be of format serviceAccount:some@email. This can only be
+        #   specified if writing to a destination outside the sink's project. If not
+        #   specified, a p4 service account will automatically be generated.
         # @param [Boolean] unique_writer_identity
         #   Optional. Determines the kind of IAM identity returned as writer_identity in
         #   the new sink. If this value is omitted or set to false, and if the sink's
@@ -7754,13 +7813,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_sink(parent, log_sink_object = nil, unique_writer_identity: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_sink(parent, log_sink_object = nil, custom_writer_identity: nil, unique_writer_identity: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v2/{+parent}/sinks', options)
           command.request_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.request_object = log_sink_object
           command.response_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.response_class = Google::Apis::LoggingV2::LogSink
           command.params['parent'] = parent unless parent.nil?
+          command.query['customWriterIdentity'] = custom_writer_identity unless custom_writer_identity.nil?
           command.query['uniqueWriterIdentity'] = unique_writer_identity unless unique_writer_identity.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -7888,6 +7948,11 @@ module Google
         #   BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
         #   example:"projects/my-project/sinks/my-sink"
         # @param [Google::Apis::LoggingV2::LogSink] log_sink_object
+        # @param [String] custom_writer_identity
+        #   Optional. A service account provided by the caller that will be used to write
+        #   the log entries. Must be of format serviceAccount:some@email. This can only be
+        #   specified if writing to a destination outside the sink's project. If not
+        #   specified, a p4 service account will automatically be generated.
         # @param [Boolean] unique_writer_identity
         #   Optional. See sinks.create for a description of this field. When updating a
         #   sink, the effect of this field on the value of writer_identity in the updated
@@ -7924,13 +7989,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_sink(sink_name, log_sink_object = nil, unique_writer_identity: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_project_sink(sink_name, log_sink_object = nil, custom_writer_identity: nil, unique_writer_identity: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v2/{+sinkName}', options)
           command.request_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.request_object = log_sink_object
           command.response_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.response_class = Google::Apis::LoggingV2::LogSink
           command.params['sinkName'] = sink_name unless sink_name.nil?
+          command.query['customWriterIdentity'] = custom_writer_identity unless custom_writer_identity.nil?
           command.query['uniqueWriterIdentity'] = unique_writer_identity unless unique_writer_identity.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -7948,6 +8014,11 @@ module Google
         #   BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
         #   example:"projects/my-project/sinks/my-sink"
         # @param [Google::Apis::LoggingV2::LogSink] log_sink_object
+        # @param [String] custom_writer_identity
+        #   Optional. A service account provided by the caller that will be used to write
+        #   the log entries. Must be of format serviceAccount:some@email. This can only be
+        #   specified if writing to a destination outside the sink's project. If not
+        #   specified, a p4 service account will automatically be generated.
         # @param [Boolean] unique_writer_identity
         #   Optional. See sinks.create for a description of this field. When updating a
         #   sink, the effect of this field on the value of writer_identity in the updated
@@ -7984,13 +8055,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_project_sink(sink_name, log_sink_object = nil, unique_writer_identity: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def update_project_sink(sink_name, log_sink_object = nil, custom_writer_identity: nil, unique_writer_identity: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:put, 'v2/{+sinkName}', options)
           command.request_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.request_object = log_sink_object
           command.response_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.response_class = Google::Apis::LoggingV2::LogSink
           command.params['sinkName'] = sink_name unless sink_name.nil?
+          command.query['customWriterIdentity'] = custom_writer_identity unless custom_writer_identity.nil?
           command.query['uniqueWriterIdentity'] = unique_writer_identity unless unique_writer_identity.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -8008,6 +8080,11 @@ module Google
         #   folders/[FOLDER_ID]" For examples:"projects/my-project" "organizations/
         #   123456789"
         # @param [Google::Apis::LoggingV2::LogSink] log_sink_object
+        # @param [String] custom_writer_identity
+        #   Optional. A service account provided by the caller that will be used to write
+        #   the log entries. Must be of format serviceAccount:some@email. This can only be
+        #   specified if writing to a destination outside the sink's project. If not
+        #   specified, a p4 service account will automatically be generated.
         # @param [Boolean] unique_writer_identity
         #   Optional. Determines the kind of IAM identity returned as writer_identity in
         #   the new sink. If this value is omitted or set to false, and if the sink's
@@ -8035,13 +8112,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_sink(parent, log_sink_object = nil, unique_writer_identity: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_sink(parent, log_sink_object = nil, custom_writer_identity: nil, unique_writer_identity: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v2/{+parent}/sinks', options)
           command.request_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.request_object = log_sink_object
           command.response_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.response_class = Google::Apis::LoggingV2::LogSink
           command.params['parent'] = parent unless parent.nil?
+          command.query['customWriterIdentity'] = custom_writer_identity unless custom_writer_identity.nil?
           command.query['uniqueWriterIdentity'] = unique_writer_identity unless unique_writer_identity.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -8169,6 +8247,11 @@ module Google
         #   BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
         #   example:"projects/my-project/sinks/my-sink"
         # @param [Google::Apis::LoggingV2::LogSink] log_sink_object
+        # @param [String] custom_writer_identity
+        #   Optional. A service account provided by the caller that will be used to write
+        #   the log entries. Must be of format serviceAccount:some@email. This can only be
+        #   specified if writing to a destination outside the sink's project. If not
+        #   specified, a p4 service account will automatically be generated.
         # @param [Boolean] unique_writer_identity
         #   Optional. See sinks.create for a description of this field. When updating a
         #   sink, the effect of this field on the value of writer_identity in the updated
@@ -8205,13 +8288,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_sink(sink_name, log_sink_object = nil, unique_writer_identity: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def update_sink(sink_name, log_sink_object = nil, custom_writer_identity: nil, unique_writer_identity: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:put, 'v2/{+sinkName}', options)
           command.request_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.request_object = log_sink_object
           command.response_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.response_class = Google::Apis::LoggingV2::LogSink
           command.params['sinkName'] = sink_name unless sink_name.nil?
+          command.query['customWriterIdentity'] = custom_writer_identity unless custom_writer_identity.nil?
           command.query['uniqueWriterIdentity'] = unique_writer_identity unless unique_writer_identity.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
