@@ -15675,6 +15675,8 @@ module Google
       
           property :source_disk_id, as: 'sourceDiskId'
           property :source_instant_snapshot, as: 'sourceInstantSnapshot'
+          property :source_instant_snapshot_encryption_key, as: 'sourceInstantSnapshotEncryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
+      
           property :source_instant_snapshot_id, as: 'sourceInstantSnapshotId'
           property :source_snapshot_schedule_policy, as: 'sourceSnapshotSchedulePolicy'
           property :source_snapshot_schedule_policy_id, as: 'sourceSnapshotSchedulePolicyId'
