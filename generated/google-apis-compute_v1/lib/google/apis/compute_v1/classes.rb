@@ -4755,6 +4755,30 @@ module Google
         end
       end
       
+      # A transient resource used in compute.disks.bulkInsert and compute.regionDisks.
+      # bulkInsert. It is only used to process requests and is not persisted.
+      class BulkInsertDiskResource
+        include Google::Apis::Core::Hashable
+      
+        # The URL of the DiskConsistencyGroupPolicy for the group of disks to clone.
+        # This may be a full or partial URL, such as: - https://www.googleapis.com/
+        # compute/v1/projects/project/regions/region /resourcePolicies/resourcePolicy -
+        # projects/project/regions/region/resourcePolicies/resourcePolicy - regions/
+        # region/resourcePolicies/resourcePolicy
+        # Corresponds to the JSON property `sourceConsistencyGroupPolicy`
+        # @return [String]
+        attr_accessor :source_consistency_group_policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @source_consistency_group_policy = args[:source_consistency_group_policy] if args.key?(:source_consistency_group_policy)
+        end
+      end
+      
       # A transient resource used in compute.instances.bulkInsert and compute.
       # regionInstances.bulkInsert . This resource is not persisted anywhere, it is
       # used only for processing the requests.
@@ -7278,6 +7302,55 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # 
+      class DisksStartAsyncReplicationRequest
+        include Google::Apis::Core::Hashable
+      
+        # The secondary disk to start asynchronous replication to. You can provide this
+        # as a partial or full URL to the resource. For example, the following are valid
+        # values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /
+        # disks/disk - https://www.googleapis.com/compute/v1/projects/project/regions/
+        # region /disks/disk - projects/project/zones/zone/disks/disk - projects/project/
+        # regions/region/disks/disk - zones/zone/disks/disk - regions/region/disks/disk
+        # Corresponds to the JSON property `asyncSecondaryDisk`
+        # @return [String]
+        attr_accessor :async_secondary_disk
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @async_secondary_disk = args[:async_secondary_disk] if args.key?(:async_secondary_disk)
+        end
+      end
+      
+      # A transient resource used in compute.disks.stopGroupAsyncReplication and
+      # compute.regionDisks.stopGroupAsyncReplication. It is only used to process
+      # requests and is not persisted.
+      class DisksStopGroupAsyncReplicationResource
+        include Google::Apis::Core::Hashable
+      
+        # The URL of the DiskConsistencyGroupPolicy for the group of disks to stop. This
+        # may be a full or partial URL, such as: - https://www.googleapis.com/compute/v1/
+        # projects/project/regions/region /resourcePolicies/resourcePolicy - projects/
+        # project/regions/region/resourcePolicies/resourcePolicy - regions/region/
+        # resourcePolicies/resourcePolicy
+        # Corresponds to the JSON property `resourcePolicy`
+        # @return [String]
+        attr_accessor :resource_policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_policy = args[:resource_policy] if args.key?(:resource_policy)
         end
       end
       
@@ -28705,6 +28778,30 @@ module Google
         end
       end
       
+      # 
+      class RegionDisksStartAsyncReplicationRequest
+        include Google::Apis::Core::Hashable
+      
+        # The secondary disk to start asynchronous replication to. You can provide this
+        # as a partial or full URL to the resource. For example, the following are valid
+        # values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /
+        # disks/disk - https://www.googleapis.com/compute/v1/projects/project/regions/
+        # region /disks/disk - projects/project/zones/zone/disks/disk - projects/project/
+        # regions/region/disks/disk - zones/zone/disks/disk - regions/region/disks/disk
+        # Corresponds to the JSON property `asyncSecondaryDisk`
+        # @return [String]
+        attr_accessor :async_secondary_disk
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @async_secondary_disk = args[:async_secondary_disk] if args.key?(:async_secondary_disk)
+        end
+      end
+      
       # Contains a list of InstanceGroup resources.
       class RegionInstanceGroupList
         include Google::Apis::Core::Hashable
@@ -30554,6 +30651,11 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Resource policy for disk consistency groups.
+        # Corresponds to the JSON property `diskConsistencyGroupPolicy`
+        # @return [Google::Apis::ComputeV1::ResourcePolicyDiskConsistencyGroupPolicy]
+        attr_accessor :disk_consistency_group_policy
+      
         # A GroupPlacementPolicy specifies resource placement configuration. It
         # specifies the failure bucket separation as well as network locality
         # Corresponds to the JSON property `groupPlacementPolicy`
@@ -30626,6 +30728,7 @@ module Google
         def update!(**args)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
+          @disk_consistency_group_policy = args[:disk_consistency_group_policy] if args.key?(:disk_consistency_group_policy)
           @group_placement_policy = args[:group_placement_policy] if args.key?(:group_placement_policy)
           @id = args[:id] if args.key?(:id)
           @instance_schedule_policy = args[:instance_schedule_policy] if args.key?(:instance_schedule_policy)
@@ -30800,6 +30903,19 @@ module Google
           @days_in_cycle = args[:days_in_cycle] if args.key?(:days_in_cycle)
           @duration = args[:duration] if args.key?(:duration)
           @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Resource policy for disk consistency groups.
+      class ResourcePolicyDiskConsistencyGroupPolicy
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       

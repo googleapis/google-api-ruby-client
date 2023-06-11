@@ -538,6 +538,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BulkInsertDiskResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BulkInsertInstanceResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -858,6 +864,18 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DisksStartAsyncReplicationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DisksStopGroupAsyncReplicationResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -3640,6 +3658,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RegionDisksStartAsyncReplicationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RegionInstanceGroupList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -3983,6 +4007,12 @@ module Google
       end
       
       class ResourcePolicyDailyCycle
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourcePolicyDiskConsistencyGroupPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -6929,6 +6959,13 @@ module Google
         end
       end
       
+      class BulkInsertDiskResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :source_consistency_group_policy, as: 'sourceConsistencyGroupPolicy'
+        end
+      end
+      
       class BulkInsertInstanceResource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -7536,6 +7573,20 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class DisksStartAsyncReplicationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :async_secondary_disk, as: 'asyncSecondaryDisk'
+        end
+      end
+      
+      class DisksStopGroupAsyncReplicationResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource_policy, as: 'resourcePolicy'
         end
       end
       
@@ -12799,6 +12850,13 @@ module Google
         end
       end
       
+      class RegionDisksStartAsyncReplicationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :async_secondary_disk, as: 'asyncSecondaryDisk'
+        end
+      end
+      
       class RegionInstanceGroupList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -13313,6 +13371,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
+          property :disk_consistency_group_policy, as: 'diskConsistencyGroupPolicy', class: Google::Apis::ComputeV1::ResourcePolicyDiskConsistencyGroupPolicy, decorator: Google::Apis::ComputeV1::ResourcePolicyDiskConsistencyGroupPolicy::Representation
+      
           property :group_placement_policy, as: 'groupPlacementPolicy', class: Google::Apis::ComputeV1::ResourcePolicyGroupPlacementPolicy, decorator: Google::Apis::ComputeV1::ResourcePolicyGroupPlacementPolicy::Representation
       
           property :id, :numeric_string => true, as: 'id'
@@ -13370,6 +13430,12 @@ module Google
           property :days_in_cycle, as: 'daysInCycle'
           property :duration, as: 'duration'
           property :start_time, as: 'startTime'
+        end
+      end
+      
+      class ResourcePolicyDiskConsistencyGroupPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
