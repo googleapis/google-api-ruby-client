@@ -210,6 +210,31 @@ module Google
         end
       end
       
+      # Backup Reencryption Config
+      class BackupReencryptionConfig
+        include Google::Apis::Core::Hashable
+      
+        # Backup re-encryption limit
+        # Corresponds to the JSON property `backupLimit`
+        # @return [Fixnum]
+        attr_accessor :backup_limit
+      
+        # Type of backups users want to re-encrypt.
+        # Corresponds to the JSON property `backupType`
+        # @return [String]
+        attr_accessor :backup_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_limit = args[:backup_limit] if args.key?(:backup_limit)
+          @backup_type = args[:backup_type] if args.key?(:backup_type)
+        end
+      end
+      
       # We currently only support backup retention by specifying the number of backups
       # we will retain.
       class BackupRetentionSettings
@@ -511,6 +536,11 @@ module Google
         # @return [String]
         attr_accessor :database_version
       
+        # The dns name of the instance.
+        # Corresponds to the JSON property `dnsName`
+        # @return [String]
+        attr_accessor :dns_name
+      
         # The assigned IP addresses for the instance.
         # Corresponds to the JSON property `ipAddresses`
         # @return [Array<Google::Apis::SqladminV1::IpMapping>]
@@ -540,6 +570,7 @@ module Google
         def update!(**args)
           @backend_type = args[:backend_type] if args.key?(:backend_type)
           @database_version = args[:database_version] if args.key?(:database_version)
+          @dns_name = args[:dns_name] if args.key?(:dns_name)
           @ip_addresses = args[:ip_addresses] if args.key?(:ip_addresses)
           @kind = args[:kind] if args.key?(:kind)
           @region = args[:region] if args.key?(:region)
@@ -1266,16 +1297,14 @@ module Google
           # @return [String]
           attr_accessor :bak_type
         
-          # Whether or not the export will be exeucted with COPY_ONLY, SQL Server only
-          # deprecated as the behavior should default to copy_only = true use
-          # differential_base instead
+          # Deprecated: copy_only is deprecated. Use differential_base instead
           # Corresponds to the JSON property `copyOnly`
           # @return [Boolean]
           attr_accessor :copy_only
           alias_method :copy_only?, :copy_only
         
-          # Whether or not the backup can be use as differential base only non copy only
-          # backup can be served as differential base
+          # Whether or not the backup can be used as a differential base copy_only backup
+          # can not be served as differential base
           # Corresponds to the JSON property `differentialBase`
           # @return [Boolean]
           attr_accessor :differential_base
@@ -2051,6 +2080,25 @@ module Google
           @active_version = args[:active_version] if args.key?(:active_version)
           @certs = args[:certs] if args.key?(:certs)
           @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # Database Instance reencrypt request.
+      class InstancesReencryptRequest
+        include Google::Apis::Core::Hashable
+      
+        # Backup Reencryption Config
+        # Corresponds to the JSON property `backupReencryptionConfig`
+        # @return [Google::Apis::SqladminV1::BackupReencryptionConfig]
+        attr_accessor :backup_reencryption_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_reencryption_config = args[:backup_reencryption_config] if args.key?(:backup_reencryption_config)
         end
       end
       
