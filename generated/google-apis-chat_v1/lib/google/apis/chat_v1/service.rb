@@ -685,11 +685,11 @@ module Google
         # google.com/chat/api/guides/auth/service-accounts). [User authentication](https:
         # //developers.google.com/chat/api/guides/auth/users) requires the `chat.
         # messages` or `chat.messages.create` authorization scope. Creating a card
-        # message requires [app authentication] (https://developers.google.com/chat/api/
-        # guides/auth/service-accounts) Because Chat provides authentication for [
-        # webhooks](https://developers.google.com/chat/how-tos/webhooks) as part of the
-        # URL that's generated when a webhook is registered, webhooks can create
-        # messages without a service account or user authentication.
+        # message only supports and requires [app authentication] (https://developers.
+        # google.com/chat/api/guides/auth/service-accounts). Because Chat provides
+        # authentication for [webhooks](https://developers.google.com/chat/how-tos/
+        # webhooks) as part of the URL that's generated when a webhook is registered,
+        # webhooks can create messages without a service account or user authentication.
         # @param [String] parent
         #   Required. The resource name of the space in which to create a message. Format:
         #   `spaces/`space``
@@ -939,10 +939,10 @@ module Google
         #   name_a_created_message) or the request fails.
         # @param [String] update_mask
         #   Required. The field paths to update. Separate multiple values with commas.
-        #   Currently supported field paths: - `text` - `cards` (Requires [service account
-        #   authentication](/chat/api/guides/auth/service-accounts).) - `cards_v2` (
-        #   Requires [service account authentication](/chat/api/guides/auth/service-
-        #   accounts).)
+        #   Currently supported field paths: - `text` - `attachment` - `cards` (Requires [
+        #   service account authentication](/chat/api/guides/auth/service-accounts).) - `
+        #   cards_v2` (Requires [service account authentication](/chat/api/guides/auth/
+        #   service-accounts).)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -995,10 +995,10 @@ module Google
         #   name_a_created_message) or the request fails.
         # @param [String] update_mask
         #   Required. The field paths to update. Separate multiple values with commas.
-        #   Currently supported field paths: - `text` - `cards` (Requires [service account
-        #   authentication](/chat/api/guides/auth/service-accounts).) - `cards_v2` (
-        #   Requires [service account authentication](/chat/api/guides/auth/service-
-        #   accounts).)
+        #   Currently supported field paths: - `text` - `attachment` - `cards` (Requires [
+        #   service account authentication](/chat/api/guides/auth/service-accounts).) - `
+        #   cards_v2` (Requires [service account authentication](/chat/api/guides/auth/
+        #   service-accounts).)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

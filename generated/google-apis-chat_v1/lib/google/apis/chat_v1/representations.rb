@@ -262,12 +262,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAppsCardV1FooterWidget
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleAppsCardV1Grid
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -921,8 +915,6 @@ module Google
       
           property :secondary_button, as: 'secondaryButton', class: Google::Apis::ChatV1::GoogleAppsCardV1Button, decorator: Google::Apis::ChatV1::GoogleAppsCardV1Button::Representation
       
-          collection :widgets, as: 'widgets', class: Google::Apis::ChatV1::GoogleAppsCardV1FooterWidget, decorator: Google::Apis::ChatV1::GoogleAppsCardV1FooterWidget::Representation
-      
         end
       end
       
@@ -994,22 +986,6 @@ module Google
       class GoogleAppsCardV1Divider
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class GoogleAppsCardV1FooterWidget
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :button_list, as: 'buttonList', class: Google::Apis::ChatV1::GoogleAppsCardV1ButtonList, decorator: Google::Apis::ChatV1::GoogleAppsCardV1ButtonList::Representation
-      
-          property :date_time_picker, as: 'dateTimePicker', class: Google::Apis::ChatV1::GoogleAppsCardV1DateTimePicker, decorator: Google::Apis::ChatV1::GoogleAppsCardV1DateTimePicker::Representation
-      
-          property :decorated_text, as: 'decoratedText', class: Google::Apis::ChatV1::GoogleAppsCardV1DecoratedText, decorator: Google::Apis::ChatV1::GoogleAppsCardV1DecoratedText::Representation
-      
-          property :text_input, as: 'textInput', class: Google::Apis::ChatV1::GoogleAppsCardV1TextInput, decorator: Google::Apis::ChatV1::GoogleAppsCardV1TextInput::Representation
-      
-          property :text_paragraph, as: 'textParagraph', class: Google::Apis::ChatV1::GoogleAppsCardV1TextParagraph, decorator: Google::Apis::ChatV1::GoogleAppsCardV1TextParagraph::Representation
-      
         end
       end
       

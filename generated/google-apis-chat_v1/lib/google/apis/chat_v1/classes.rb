@@ -477,7 +477,7 @@ module Google
       # be trivially provided to the constructor of `java.awt.Color` in Java; it can
       # also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha`
       # method in iOS; and, with just a little work, it can be easily formatted into a
-      # CSS `rgba()` string in JavaScript. This reference page does not have
+      # CSS `rgba()` string in JavaScript. This reference page doesn't have
       # information about the absolute color space that should be used to interpret
       # the RGB value—for example, sRGB, Adobe RGB, DCI-P3, and BT.2020. By default,
       # applications should assume the sRGB color space. When color equality needs to
@@ -1127,7 +1127,7 @@ module Google
         # be trivially provided to the constructor of `java.awt.Color` in Java; it can
         # also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha`
         # method in iOS; and, with just a little work, it can be easily formatted into a
-        # CSS `rgba()` string in JavaScript. This reference page does not have
+        # CSS `rgba()` string in JavaScript. This reference page doesn't have
         # information about the absolute color space that should be used to interpret
         # the RGB value—for example, sRGB, Adobe RGB, DCI-P3, and BT.2020. By default,
         # applications should assume the sRGB color space. When color equality needs to
@@ -1207,7 +1207,7 @@ module Google
         # be trivially provided to the constructor of `java.awt.Color` in Java; it can
         # also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha`
         # method in iOS; and, with just a little work, it can be easily formatted into a
-        # CSS `rgba()` string in JavaScript. This reference page does not have
+        # CSS `rgba()` string in JavaScript. This reference page doesn't have
         # information about the absolute color space that should be used to interpret
         # the RGB value—for example, sRGB, Adobe RGB, DCI-P3, and BT.2020. By default,
         # applications should assume the sRGB color space. When color equality needs to
@@ -1453,12 +1453,6 @@ module Google
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Button]
         attr_accessor :secondary_button
       
-        # A list of widgets included in the card footer. Primary button and secondary
-        # button are rendered below these widgets.
-        # Corresponds to the JSON property `widgets`
-        # @return [Array<Google::Apis::ChatV1::GoogleAppsCardV1FooterWidget>]
-        attr_accessor :widgets
-      
         def initialize(**args)
            update!(**args)
         end
@@ -1467,7 +1461,6 @@ module Google
         def update!(**args)
           @primary_button = args[:primary_button] if args.key?(:primary_button)
           @secondary_button = args[:secondary_button] if args.key?(:secondary_button)
-          @widgets = args[:widgets] if args.key?(:widgets)
         end
       end
       
@@ -1761,64 +1754,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-        end
-      end
-      
-      # The CardFixedFooter can contain a list of these widgets.
-      class GoogleAppsCardV1FooterWidget
-        include Google::Apis::Core::Hashable
-      
-        # A list of buttons layed out horizontally.
-        # Corresponds to the JSON property `buttonList`
-        # @return [Google::Apis::ChatV1::GoogleAppsCardV1ButtonList]
-        attr_accessor :button_list
-      
-        # Lets users input a date, a time, or both a date and a time. Users can input
-        # text or use the picker to select dates and times. If users input an invalid
-        # date or time, the picker shows an error that prompts users to input the
-        # information correctly.
-        # Corresponds to the JSON property `dateTimePicker`
-        # @return [Google::Apis::ChatV1::GoogleAppsCardV1DateTimePicker]
-        attr_accessor :date_time_picker
-      
-        # A widget that displays text with optional decorations such as a label above or
-        # below the text, an icon in front of the text, a selection widget, or a button
-        # after the text.
-        # Corresponds to the JSON property `decoratedText`
-        # @return [Google::Apis::ChatV1::GoogleAppsCardV1DecoratedText]
-        attr_accessor :decorated_text
-      
-        # A field in which users can enter text. Supports suggestions and on-change
-        # actions. Chat apps receive and can process the value of entered text during
-        # form input events. For details about working with form inputs, see [Receive
-        # form data](https://developers.google.com/chat/how-tos/dialogs#
-        # receive_form_data_from_dialogs). When you need to collect undefined or
-        # abstract data from users, use a text input. To collect defined or enumerated
-        # data from users, use the SelectionInput widget.
-        # Corresponds to the JSON property `textInput`
-        # @return [Google::Apis::ChatV1::GoogleAppsCardV1TextInput]
-        attr_accessor :text_input
-      
-        # A paragraph of text that supports formatting. For more information about
-        # formatting text, see [Formatting text in Google Chat apps](https://developers.
-        # google.com/chat/api/guides/message-formats/cards#card_text_formatting) and [
-        # Formatting text in Google Workspace Add-ons](https://developers.google.com/
-        # apps-script/add-ons/concepts/widgets#text_formatting).
-        # Corresponds to the JSON property `textParagraph`
-        # @return [Google::Apis::ChatV1::GoogleAppsCardV1TextParagraph]
-        attr_accessor :text_paragraph
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @button_list = args[:button_list] if args.key?(:button_list)
-          @date_time_picker = args[:date_time_picker] if args.key?(:date_time_picker)
-          @decorated_text = args[:decorated_text] if args.key?(:decorated_text)
-          @text_input = args[:text_input] if args.key?(:text_input)
-          @text_paragraph = args[:text_paragraph] if args.key?(:text_paragraph)
         end
       end
       
@@ -2292,9 +2227,9 @@ module Google
       class GoogleAppsCardV1SelectionItem
         include Google::Apis::Core::Hashable
       
-        # When `true`, more than one item is selected. If more than one item is selected
-        # for radio buttons and dropdown menus, the first selected item is received and
-        # the ones after are ignored.
+        # Whether the item is selected by default. If the selection input only accepts
+        # one value (such as for radio buttons or a dropdown menu), only set this field
+        # for one item.
         # Corresponds to the JSON property `selected`
         # @return [Boolean]
         attr_accessor :selected
@@ -3181,7 +3116,11 @@ module Google
         # @return [String]
         attr_accessor :client_assigned_message_id
       
-        # Output only. The time at which the message was created in Google Chat.
+        # For spaces created in Chat, the time at which the message was created. This
+        # field is output only, except when used in imported spaces. [Developer Preview](
+        # https://developers.google.com/workspace/preview): For imported spaces, set
+        # this field to the historical timestamp at which the message was created in the
+        # source in order to preserve the original creation time.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
