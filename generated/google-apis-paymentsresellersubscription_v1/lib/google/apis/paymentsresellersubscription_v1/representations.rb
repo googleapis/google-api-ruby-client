@@ -520,6 +520,7 @@ module Google
       class GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_end_time, as: 'accessEndTime'
           collection :partner_eligibility_ids, as: 'partnerEligibilityIds'
         end
       end
