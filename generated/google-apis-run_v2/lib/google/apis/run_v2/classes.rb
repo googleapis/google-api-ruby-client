@@ -1719,6 +1719,12 @@ module Google
         # @return [String]
         attr_accessor :creator
       
+        # Custom audiences that can be used in the audience field of ID token for
+        # authenticated requests.
+        # Corresponds to the JSON property `customAudiences`
+        # @return [Array<String>]
+        attr_accessor :custom_audiences
+      
         # Output only. The deletion time.
         # Corresponds to the JSON property `deleteTime`
         # @return [String]
@@ -1898,6 +1904,7 @@ module Google
           @conditions = args[:conditions] if args.key?(:conditions)
           @create_time = args[:create_time] if args.key?(:create_time)
           @creator = args[:creator] if args.key?(:creator)
+          @custom_audiences = args[:custom_audiences] if args.key?(:custom_audiences)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @description = args[:description] if args.key?(:description)
           @etag = args[:etag] if args.key?(:etag)

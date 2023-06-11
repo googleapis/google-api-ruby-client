@@ -717,6 +717,7 @@ module Google
       
           property :create_time, as: 'createTime'
           property :creator, as: 'creator'
+          collection :custom_audiences, as: 'customAudiences'
           property :delete_time, as: 'deleteTime'
           property :description, as: 'description'
           property :etag, as: 'etag'
