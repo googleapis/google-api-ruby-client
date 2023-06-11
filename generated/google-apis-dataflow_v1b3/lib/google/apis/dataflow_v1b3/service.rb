@@ -118,7 +118,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List the jobs of a project across all regions.
+        # List the jobs of a project across all regions. **Note:** This method doesn't
+        # support filtering the list of jobs by name.
         # @param [String] project_id
         #   The project which owns the jobs.
         # @param [String] filter
@@ -127,7 +128,7 @@ module Google
         #   The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/
         #   regional-endpoints) that contains this job.
         # @param [String] name
-        #   Optional. The job name. Optional.
+        #   Optional. The job name.
         # @param [Fixnum] page_size
         #   If there are many jobs, limit response to at most this many. The actual number
         #   of jobs returned will be the lesser of max_responses and an unspecified server-
@@ -311,8 +312,10 @@ module Google
         # recommend using `projects.locations.jobs.list` with a [regional endpoint] (
         # https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). To list
         # the all jobs across all regions, use `projects.jobs.aggregated`. Using `
-        # projects.jobs.list` is not recommended, as you can only get the list of jobs
-        # that are running in `us-central1`.
+        # projects.jobs.list` is not recommended, because you can only get the list of
+        # jobs that are running in `us-central1`. `projects.locations.jobs.list` and `
+        # projects.jobs.list` support filtering the list of jobs by name. Filtering by
+        # name isn't supported by `projects.jobs.aggregated`.
         # @param [String] project_id
         #   The project which owns the jobs.
         # @param [String] filter
@@ -321,7 +324,7 @@ module Google
         #   The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/
         #   regional-endpoints) that contains this job.
         # @param [String] name
-        #   Optional. The job name. Optional.
+        #   Optional. The job name.
         # @param [Fixnum] page_size
         #   If there are many jobs, limit response to at most this many. The actual number
         #   of jobs returned will be the lesser of max_responses and an unspecified server-
@@ -920,8 +923,10 @@ module Google
         # recommend using `projects.locations.jobs.list` with a [regional endpoint] (
         # https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). To list
         # the all jobs across all regions, use `projects.jobs.aggregated`. Using `
-        # projects.jobs.list` is not recommended, as you can only get the list of jobs
-        # that are running in `us-central1`.
+        # projects.jobs.list` is not recommended, because you can only get the list of
+        # jobs that are running in `us-central1`. `projects.locations.jobs.list` and `
+        # projects.jobs.list` support filtering the list of jobs by name. Filtering by
+        # name isn't supported by `projects.jobs.aggregated`.
         # @param [String] project_id
         #   The project which owns the jobs.
         # @param [String] location
@@ -930,7 +935,7 @@ module Google
         # @param [String] filter
         #   The kind of filter to use.
         # @param [String] name
-        #   Optional. The job name. Optional.
+        #   Optional. The job name.
         # @param [Fixnum] page_size
         #   If there are many jobs, limit response to at most this many. The actual number
         #   of jobs returned will be the lesser of max_responses and an unspecified server-
