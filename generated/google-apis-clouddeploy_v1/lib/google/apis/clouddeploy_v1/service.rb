@@ -1329,8 +1329,8 @@ module Google
         #   Required. The name of the `Target` to delete. Format should be projects/`
         #   project_id`/locations/`location_name`/targets/`target_name`.
         # @param [Boolean] allow_missing
-        #   Optional. If set to true, then deleting an already deleted or non-existing
-        #   DeliveryPipeline will succeed.
+        #   Optional. If set to true, then deleting an already deleted or non-existing `
+        #   Target` will succeed.
         # @param [String] etag
         #   Optional. This checksum is computed by the server based on the value of other
         #   fields, and may be sent on update and delete requests to ensure the client has
