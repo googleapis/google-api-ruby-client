@@ -769,10 +769,14 @@ module Google
       class GoogleAppsCloudidentityDevicesV1AndroidAttributes
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cts_profile_match, as: 'ctsProfileMatch'
           property :enabled_unknown_sources, as: 'enabledUnknownSources'
+          property :has_potentially_harmful_apps, as: 'hasPotentiallyHarmfulApps'
           property :owner_profile_account, as: 'ownerProfileAccount'
           property :ownership_privilege, as: 'ownershipPrivilege'
           property :supports_work_profile, as: 'supportsWorkProfile'
+          property :verified_boot, as: 'verifiedBoot'
+          property :verify_apps_enabled, as: 'verifyAppsEnabled'
         end
       end
       
