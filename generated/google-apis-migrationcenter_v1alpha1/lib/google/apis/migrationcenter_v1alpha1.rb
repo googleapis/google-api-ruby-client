@@ -21,7 +21,8 @@ module Google
   module Apis
     # Migration Center API
     #
-    # 
+    # A unified platform that helps you accelerate your end-to-end cloud journey
+    # from your current on-premises or cloud environments to Google Cloud.
     #
     # @see https://cloud.google.com/migration-center
     module MigrationcenterV1alpha1

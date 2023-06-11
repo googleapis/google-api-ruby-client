@@ -22,7 +22,8 @@ module Google
     module MigrationcenterV1alpha1
       # Migration Center API
       #
-      # 
+      # A unified platform that helps you accelerate your end-to-end cloud journey
+      #  from your current on-premises or cloud environments to Google Cloud.
       #
       # @example
       #    require 'google/apis/migrationcenter_v1alpha1'
