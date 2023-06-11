@@ -248,6 +248,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          property :custom_rules_bucket, as: 'customRulesBucket'
           property :description, as: 'description'
           hash :labels, as: 'labels'
           property :name, as: 'name'
@@ -547,8 +548,7 @@ module Google
       class SqlserverValidationValidationDetail
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          hash :details, as: 'details'
-          property :instance_id, as: 'instanceId'
+          hash :fields, as: 'fields'
           property :type, as: 'type'
         end
       end
@@ -576,6 +576,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :insight, as: 'insight', class: Google::Apis::WorkloadmanagerV1::Insight, decorator: Google::Apis::WorkloadmanagerV1::Insight::Representation
       
+          property :instance_id, as: 'instanceId'
           property :request_id, as: 'requestId'
         end
       end
