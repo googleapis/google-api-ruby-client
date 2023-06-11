@@ -653,6 +653,7 @@ module Google
       
           property :service_account_key_name, as: 'serviceAccountKeyName'
           property :service_name, as: 'serviceName'
+          property :user_agent, as: 'userAgent'
           property :user_agent_family, as: 'userAgentFamily'
           property :user_name, as: 'userName'
         end
