@@ -130,6 +130,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HttpEndpoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListChannelConnectionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -297,6 +303,8 @@ module Google
       
           property :gke, as: 'gke', class: Google::Apis::EventarcV1::Gke, decorator: Google::Apis::EventarcV1::Gke::Representation
       
+          property :http_endpoint, as: 'httpEndpoint', class: Google::Apis::EventarcV1::HttpEndpoint, decorator: Google::Apis::EventarcV1::HttpEndpoint::Representation
+      
           property :workflow, as: 'workflow'
         end
       end
@@ -400,6 +408,14 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class HttpEndpoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :forward_dns_requests, as: 'forwardDnsRequests'
+          property :uri, as: 'uri'
         end
       end
       
