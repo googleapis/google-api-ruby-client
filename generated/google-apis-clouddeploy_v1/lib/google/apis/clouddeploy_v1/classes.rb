@@ -2775,6 +2775,14 @@ module Google
         # @return [String]
         attr_accessor :deployment
       
+        # Optional. Whether to disable Pod overprovisioning. If Pod overprovisioning is
+        # disabled then Cloud Deploy will limit the number of total Pods used for the
+        # deployment strategy to the number of Pods the Deployment has on the cluster.
+        # Corresponds to the JSON property `disablePodOverprovisioning`
+        # @return [Boolean]
+        attr_accessor :disable_pod_overprovisioning
+        alias_method :disable_pod_overprovisioning?, :disable_pod_overprovisioning
+      
         # Required. Name of the Kubernetes Service.
         # Corresponds to the JSON property `service`
         # @return [String]
@@ -2787,6 +2795,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @deployment = args[:deployment] if args.key?(:deployment)
+          @disable_pod_overprovisioning = args[:disable_pod_overprovisioning] if args.key?(:disable_pod_overprovisioning)
           @service = args[:service] if args.key?(:service)
         end
       end

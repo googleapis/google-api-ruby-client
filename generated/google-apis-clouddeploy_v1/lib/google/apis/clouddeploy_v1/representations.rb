@@ -1372,6 +1372,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :deployment, as: 'deployment'
+          property :disable_pod_overprovisioning, as: 'disablePodOverprovisioning'
           property :service, as: 'service'
         end
       end
