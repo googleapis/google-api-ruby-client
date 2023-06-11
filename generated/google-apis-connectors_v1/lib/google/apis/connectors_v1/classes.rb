@@ -342,6 +342,11 @@ module Google
         attr_accessor :bool_value
         alias_method :bool_value?, :bool_value
       
+        # Encryption Key value.
+        # Corresponds to the JSON property `encryptionKeyValue`
+        # @return [Google::Apis::ConnectorsV1::EncryptionKey]
+        attr_accessor :encryption_key_value
+      
         # Value is an integer
         # Corresponds to the JSON property `intValue`
         # @return [Fixnum]
@@ -351,11 +356,6 @@ module Google
         # Corresponds to the JSON property `key`
         # @return [String]
         attr_accessor :key
-      
-        # Encryption Key value.
-        # Corresponds to the JSON property `keyValue`
-        # @return [Google::Apis::ConnectorsV1::EncryptionKey]
-        attr_accessor :key_value
       
         # Secret provides a reference to entries in Secret Manager.
         # Corresponds to the JSON property `secretValue`
@@ -374,9 +374,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bool_value = args[:bool_value] if args.key?(:bool_value)
+          @encryption_key_value = args[:encryption_key_value] if args.key?(:encryption_key_value)
           @int_value = args[:int_value] if args.key?(:int_value)
           @key = args[:key] if args.key?(:key)
-          @key_value = args[:key_value] if args.key?(:key_value)
           @secret_value = args[:secret_value] if args.key?(:secret_value)
           @string_value = args[:string_value] if args.key?(:string_value)
         end
@@ -425,8 +425,13 @@ module Google
         attr_accessor :required
         alias_method :required?, :required
       
+        # Struct for representing boolean expressions.
+        # Corresponds to the JSON property `requiredCondition`
+        # @return [Google::Apis::ConnectorsV1::LogicalExpression]
+        attr_accessor :required_condition
+      
         # This configuration defines all the Cloud IAM roles that needs to be granted to
-        # a particular GCP resource for the selected prinicpal like service account.
+        # a particular GCP resource for the selected principal like service account.
         # These configurations will let UI display to customers what IAM roles need to
         # be granted by them. Or these configurations can be used by the UI to render a '
         # grant' button to do the same on behalf of the user.
@@ -464,6 +469,7 @@ module Google
           @is_advanced = args[:is_advanced] if args.key?(:is_advanced)
           @key = args[:key] if args.key?(:key)
           @required = args[:required] if args.key?(:required)
+          @required_condition = args[:required_condition] if args.key?(:required_condition)
           @role_grant = args[:role_grant] if args.key?(:role_grant)
           @state = args[:state] if args.key?(:state)
           @validation_regex = args[:validation_regex] if args.key?(:validation_regex)
@@ -854,7 +860,7 @@ module Google
         attr_accessor :release_version
       
         # This configuration defines all the Cloud IAM roles that needs to be granted to
-        # a particular GCP resource for the selected prinicpal like service account.
+        # a particular GCP resource for the selected principal like service account.
         # These configurations will let UI display to customers what IAM roles need to
         # be granted by them. Or these configurations can be used by the UI to render a '
         # grant' button to do the same on behalf of the user.
@@ -1378,6 +1384,50 @@ module Google
         end
       end
       
+      # Field that needs to be compared.
+      class FieldComparison
+        include Google::Apis::Core::Hashable
+      
+        # Boolean value
+        # Corresponds to the JSON property `boolValue`
+        # @return [Boolean]
+        attr_accessor :bool_value
+        alias_method :bool_value?, :bool_value
+      
+        # Comparator to use for comparing the field value.
+        # Corresponds to the JSON property `comparator`
+        # @return [String]
+        attr_accessor :comparator
+      
+        # Integer value
+        # Corresponds to the JSON property `intValue`
+        # @return [Fixnum]
+        attr_accessor :int_value
+      
+        # Key of the field.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # String value
+        # Corresponds to the JSON property `stringValue`
+        # @return [String]
+        attr_accessor :string_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bool_value = args[:bool_value] if args.key?(:bool_value)
+          @comparator = args[:comparator] if args.key?(:comparator)
+          @int_value = args[:int_value] if args.key?(:int_value)
+          @key = args[:key] if args.key?(:key)
+          @string_value = args[:string_value] if args.key?(:string_value)
+        end
+      end
+      
       # Metadata of an input parameter.
       class InputParameter
         include Google::Apis::Core::Hashable
@@ -1805,6 +1855,37 @@ module Google
         def update!(**args)
           @locked = args[:locked] if args.key?(:locked)
           @reason = args[:reason] if args.key?(:reason)
+        end
+      end
+      
+      # Struct for representing boolean expressions.
+      class LogicalExpression
+        include Google::Apis::Core::Hashable
+      
+        # A list of fields to be compared.
+        # Corresponds to the JSON property `fieldComparisons`
+        # @return [Array<Google::Apis::ConnectorsV1::FieldComparison>]
+        attr_accessor :field_comparisons
+      
+        # A list of nested conditions to be compared.
+        # Corresponds to the JSON property `logicalExpressions`
+        # @return [Array<Google::Apis::ConnectorsV1::LogicalExpression>]
+        attr_accessor :logical_expressions
+      
+        # The logical operator to use between the fields and conditions.
+        # Corresponds to the JSON property `logicalOperator`
+        # @return [String]
+        attr_accessor :logical_operator
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field_comparisons = args[:field_comparisons] if args.key?(:field_comparisons)
+          @logical_expressions = args[:logical_expressions] if args.key?(:logical_expressions)
+          @logical_operator = args[:logical_operator] if args.key?(:logical_operator)
         end
       end
       
@@ -2378,7 +2459,7 @@ module Google
       end
       
       # This configuration defines all the Cloud IAM roles that needs to be granted to
-      # a particular GCP resource for the selected prinicpal like service account.
+      # a particular GCP resource for the selected principal like service account.
       # These configurations will let UI display to customers what IAM roles need to
       # be granted by them. Or these configurations can be used by the UI to render a '
       # grant' button to do the same on behalf of the user.
