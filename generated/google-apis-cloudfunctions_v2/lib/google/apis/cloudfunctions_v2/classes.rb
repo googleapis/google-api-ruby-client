@@ -1926,6 +1926,12 @@ module Google
       class Source
         include Google::Apis::Core::Hashable
       
+        # If provided, get the source from GitHub repository. This option is valid only
+        # for GCF 1st Gen function. Example: https://github.com///blob//
+        # Corresponds to the JSON property `gitUri`
+        # @return [String]
+        attr_accessor :git_uri
+      
         # Location of the source in a Google Cloud Source Repository.
         # Corresponds to the JSON property `repoSource`
         # @return [Google::Apis::CloudfunctionsV2::RepoSource]
@@ -1942,6 +1948,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @git_uri = args[:git_uri] if args.key?(:git_uri)
           @repo_source = args[:repo_source] if args.key?(:repo_source)
           @storage_source = args[:storage_source] if args.key?(:storage_source)
         end
@@ -1951,6 +1958,11 @@ module Google
       # some source was used for this build.
       class SourceProvenance
         include Google::Apis::Core::Hashable
+      
+        # A copy of the build's `source.git_uri`, if exists, with any commits resolved.
+        # Corresponds to the JSON property `gitUri`
+        # @return [String]
+        attr_accessor :git_uri
       
         # Location of the source in a Google Cloud Source Repository.
         # Corresponds to the JSON property `resolvedRepoSource`
@@ -1968,6 +1980,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @git_uri = args[:git_uri] if args.key?(:git_uri)
           @resolved_repo_source = args[:resolved_repo_source] if args.key?(:resolved_repo_source)
           @resolved_storage_source = args[:resolved_storage_source] if args.key?(:resolved_storage_source)
         end
