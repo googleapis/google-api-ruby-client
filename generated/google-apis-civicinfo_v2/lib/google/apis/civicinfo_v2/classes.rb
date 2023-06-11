@@ -652,128 +652,6 @@ module Google
         end
       end
       
-      # A globally unique identifier associated with each feature. We use 128-bit
-      # identifiers so that we have lots of bits available to distinguish between
-      # features. The feature id currently consists of a 64-bit "cell id" that **
-      # sometimes** corresponds to the approximate centroid of the feature, plus a 64-
-      # bit fingerprint of other identifying information. See more on each respective
-      # field in its comments. Feature ids are first assigned when the data is created
-      # in MapFacts. After initial creation of the feature, they are immutable. This
-      # means that the only properties that you should rely on are that they are
-      # unique, and that cell_ids often - but not always - preserve spatial locality.
-      # The degree of locality varies as the feature undergoes geometry changes, and
-      # should not in general be considered a firm guarantee of the location of any
-      # particular feature. In fact, some locationless features have randomized cell
-      # IDs! Consumers of FeatureProtos from Mapfacts are guaranteed that fprints in
-      # the id field of features will be globally unique. Using the fprint allows
-      # consumers who don't need the spatial benefit of cell ids to uniquely identify
-      # features in a 64-bit address space. This property is not guaranteed for other
-      # sources of FeatureProtos.
-      class FeatureIdProto
-        include Google::Apis::Core::Hashable
-      
-        # The S2CellId corresponding to the approximate location of this feature as of
-        # when it was first created. This can be of variable accuracy, ranging from the
-        # exact centroid of the feature at creation, a very large S2 Cell, or even being
-        # completely randomized for locationless features. Cell ids have the nice
-        # property that they follow a space-filling curve over the surface of the earth.
-        # (See s2cellid.h for details.) WARNING: Clients should only use cell IDs to
-        # perform spatial locality optimizations. There is no strict guarantee that the
-        # cell ID of a feature is related to the current geometry of the feature in any
-        # way.
-        # Corresponds to the JSON property `cellId`
-        # @return [Fixnum]
-        attr_accessor :cell_id
-      
-        # A 64-bit fingerprint used to identify features. Most clients should rely on
-        # MapFacts or OneRing to choose fingerprints. If creating new fprints, the
-        # strategy should be chosen so that the chance of collision is remote or non-
-        # existent, and the distribution should be reasonably uniform. For example, if
-        # the source data assigns unique ids to features, then a fingerprint of the
-        # provider name, version, and source id is sufficient.
-        # Corresponds to the JSON property `fprint`
-        # @return [Fixnum]
-        attr_accessor :fprint
-      
-        # This is proto2's version of MessageSet.
-        # Corresponds to the JSON property `temporaryData`
-        # @return [Google::Apis::CivicinfoV2::MessageSet]
-        attr_accessor :temporary_data
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @cell_id = args[:cell_id] if args.key?(:cell_id)
-          @fprint = args[:fprint] if args.key?(:fprint)
-          @temporary_data = args[:temporary_data] if args.key?(:temporary_data)
-        end
-      end
-      
-      # Detailed summary of the result from geocoding an address
-      class GeocodingSummary
-        include Google::Apis::Core::Hashable
-      
-        # Represents the best estimate of whether or not the input address was fully
-        # understood and the address is correctly componentized. Mirrors the same-name
-        # field in geostore.staging.AddressLinkupScoringProto.
-        # Corresponds to the JSON property `addressUnderstood`
-        # @return [Boolean]
-        attr_accessor :address_understood
-        alias_method :address_understood?, :address_understood
-      
-        # A globally unique identifier associated with each feature. We use 128-bit
-        # identifiers so that we have lots of bits available to distinguish between
-        # features. The feature id currently consists of a 64-bit "cell id" that **
-        # sometimes** corresponds to the approximate centroid of the feature, plus a 64-
-        # bit fingerprint of other identifying information. See more on each respective
-        # field in its comments. Feature ids are first assigned when the data is created
-        # in MapFacts. After initial creation of the feature, they are immutable. This
-        # means that the only properties that you should rely on are that they are
-        # unique, and that cell_ids often - but not always - preserve spatial locality.
-        # The degree of locality varies as the feature undergoes geometry changes, and
-        # should not in general be considered a firm guarantee of the location of any
-        # particular feature. In fact, some locationless features have randomized cell
-        # IDs! Consumers of FeatureProtos from Mapfacts are guaranteed that fprints in
-        # the id field of features will be globally unique. Using the fprint allows
-        # consumers who don't need the spatial benefit of cell ids to uniquely identify
-        # features in a 64-bit address space. This property is not guaranteed for other
-        # sources of FeatureProtos.
-        # Corresponds to the JSON property `featureId`
-        # @return [Google::Apis::CivicinfoV2::FeatureIdProto]
-        attr_accessor :feature_id
-      
-        # The feature type for the FeatureProto returned by the geocoder
-        # Corresponds to the JSON property `featureType`
-        # @return [String]
-        attr_accessor :feature_type
-      
-        # Precision of the center point (lat/long) of the geocoded FeatureProto
-        # Corresponds to the JSON property `positionPrecisionMeters`
-        # @return [Float]
-        attr_accessor :position_precision_meters
-      
-        # The query sent to the geocoder
-        # Corresponds to the JSON property `queryString`
-        # @return [String]
-        attr_accessor :query_string
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @address_understood = args[:address_understood] if args.key?(:address_understood)
-          @feature_id = args[:feature_id] if args.key?(:feature_id)
-          @feature_type = args[:feature_type] if args.key?(:feature_type)
-          @position_precision_meters = args[:position_precision_meters] if args.key?(:position_precision_meters)
-          @query_string = args[:query_string] if args.key?(:query_string)
-        end
-      end
-      
       # Describes a political geography.
       class GeographicDivision
         include Google::Apis::Core::Hashable
@@ -811,19 +689,6 @@ module Google
           @also_known_as = args[:also_known_as] if args.key?(:also_known_as)
           @name = args[:name] if args.key?(:name)
           @office_indices = args[:office_indices] if args.key?(:office_indices)
-        end
-      end
-      
-      # This is proto2's version of MessageSet.
-      class MessageSet
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
         end
       end
       
@@ -904,11 +769,6 @@ module Google
         # @return [Array<String>]
         attr_accessor :emails
       
-        # Detailed summary about the official's address's geocoding
-        # Corresponds to the JSON property `geocodingSummaries`
-        # @return [Array<Google::Apis::CivicinfoV2::GeocodingSummary>]
-        attr_accessor :geocoding_summaries
-      
         # The official's name.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -943,7 +803,6 @@ module Google
           @address = args[:address] if args.key?(:address)
           @channels = args[:channels] if args.key?(:channels)
           @emails = args[:emails] if args.key?(:emails)
-          @geocoding_summaries = args[:geocoding_summaries] if args.key?(:geocoding_summaries)
           @name = args[:name] if args.key?(:name)
           @party = args[:party] if args.key?(:party)
           @phones = args[:phones] if args.key?(:phones)

@@ -88,25 +88,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class FeatureIdProto
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GeocodingSummary
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GeographicDivision
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class MessageSet
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -317,40 +299,12 @@ module Google
         end
       end
       
-      class FeatureIdProto
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :cell_id, :numeric_string => true, as: 'cellId'
-          property :fprint, :numeric_string => true, as: 'fprint'
-          property :temporary_data, as: 'temporaryData', class: Google::Apis::CivicinfoV2::MessageSet, decorator: Google::Apis::CivicinfoV2::MessageSet::Representation
-      
-        end
-      end
-      
-      class GeocodingSummary
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :address_understood, as: 'addressUnderstood'
-          property :feature_id, as: 'featureId', class: Google::Apis::CivicinfoV2::FeatureIdProto, decorator: Google::Apis::CivicinfoV2::FeatureIdProto::Representation
-      
-          property :feature_type, as: 'featureType'
-          property :position_precision_meters, as: 'positionPrecisionMeters'
-          property :query_string, as: 'queryString'
-        end
-      end
-      
       class GeographicDivision
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :also_known_as, as: 'alsoKnownAs'
           property :name, as: 'name'
           collection :office_indices, as: 'officeIndices'
-        end
-      end
-      
-      class MessageSet
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -375,8 +329,6 @@ module Google
           collection :channels, as: 'channels', class: Google::Apis::CivicinfoV2::Channel, decorator: Google::Apis::CivicinfoV2::Channel::Representation
       
           collection :emails, as: 'emails'
-          collection :geocoding_summaries, as: 'geocodingSummaries', class: Google::Apis::CivicinfoV2::GeocodingSummary, decorator: Google::Apis::CivicinfoV2::GeocodingSummary::Representation
-      
           property :name, as: 'name'
           property :party, as: 'party'
           collection :phones, as: 'phones'
