@@ -1173,7 +1173,7 @@ module Google
         # Output only. The period during which past versions of data are retained in the
         # database. Any read or query can specify a `read_time` within this window, and
         # will read the state of the database at that time. If the PITR feature is
-        # enabled, the retention period is 7 days. If unset, the retention period is 1
+        # enabled, the retention period is 7 days. Otherwise, the retention period is 1
         # hour.
         # Corresponds to the JSON property `versionRetentionPeriod`
         # @return [String]
