@@ -1631,7 +1631,7 @@ module Google
         #   OR EQUAL TO (>=)` or `LESS THAN OR EQUAL TO (<=)` operators. * All other
         #   fields must use the `EQUALS (=)` operator. Supported fields: * `campaignId` * `
         #   displayName` * `entityStatus` * `budget.budget_segments.date_range.end_date` (
-        #   input in the form of `YYYY-MM-DD`) **Deprecated. Not available after June 8,
+        #   input in the form of `YYYY-MM-DD`) * **Deprecated. Not available after June 21,
         #   2023** * `updateTime` (input in ISO 8601 format, or `YYYY-MM-DDTHH:MM:SSZ`)
         #   Examples: * All insertion orders under a campaign: `campaignId="1234"` * All `
         #   ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED` insertion orders under an
@@ -2233,30 +2233,28 @@ module Google
         #   OR EQUAL TO (<=)` operators. * The `warningMessages` field must use the `HAS (:
         #   )` operator. * All other fields must use the `EQUALS (=)` operator. Supported
         #   fields: * `campaignId` * `displayName` * `entityStatus` * `flight.dateRange.
-        #   endDate` (input formatted as `YYYY-MM-DD`) **Deprecated. Not available after
-        #   June 8, 2023** * `flight.triggerId` * `insertionOrderId` * `lineItemId` * `
-        #   lineItemType` * `targetedChannelId` * `targetedNegativeKeywordListId` * `
-        #   updateTime` (input in ISO 8601 format, or `YYYY-MM-DDTHH:MM:SSZ`) * `
-        #   warningMessages` Examples: * All line items under an insertion order: `
-        #   insertionOrderId="1234"` * All `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED`
-        #   and `LINE_ITEM_TYPE_DISPLAY_DEFAULT` line items under an advertiser: `(
-        #   entityStatus="ENTITY_STATUS_ACTIVE" OR entityStatus="ENTITY_STATUS_PAUSED")
-        #   AND lineItemType="LINE_ITEM_TYPE_DISPLAY_DEFAULT"` * All line items whose
-        #   flight dates end before March 28, 2019: `flight.dateRange.endDate<"2019-03-28"`
-        #   * All line items that have `NO_VALID_CREATIVE` in `warningMessages`: `
-        #   warningMessages:"NO_VALID_CREATIVE"` * All line items with an update time less
-        #   than or equal to 2020-11-04T18:54:47Z (format of ISO 8601): `updateTime<="2020-
-        #   11-04T18:54:47Z"` * All line items with an update time greater than or equal
-        #   to 2020-11-04T18:54:47Z (format of ISO 8601): `updateTime>="2020-11-04T18:54:
-        #   47Z"` * All line items that are using both the specified channel and specified
-        #   negative keyword list in their targeting: `targetedNegativeKeywordListId=789
-        #   AND targetedChannelId=12345` The length of this field should be no more than
-        #   500 characters. Reference our [filter `LIST` requests](/display-video/api/
+        #   endDate` (input formatted as `YYYY-MM-DD`) * **Deprecated. Not available after
+        #   June 21, 2023** * `flight.triggerId` * **Deprecated. Not available after June
+        #   21, 2023** * `insertionOrderId` * `lineItemId` * `lineItemType` * `
+        #   targetedChannelId` * **Deprecated. Not available after June 21, 2023** * `
+        #   targetedNegativeKeywordListId` * **Deprecated. Not available after June 21,
+        #   2023** * `updateTime` (input in ISO 8601 format, or `YYYY-MM-DDTHH:MM:SSZ`) * `
+        #   warningMessages` * **Deprecated. Not available after June 21, 2023** Examples:
+        #   * All line items under an insertion order: `insertionOrderId="1234"` * All `
+        #   ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED` and `
+        #   LINE_ITEM_TYPE_DISPLAY_DEFAULT` line items under an advertiser: `(entityStatus=
+        #   "ENTITY_STATUS_ACTIVE" OR entityStatus="ENTITY_STATUS_PAUSED") AND
+        #   lineItemType="LINE_ITEM_TYPE_DISPLAY_DEFAULT"` * All line items with an update
+        #   time less than or equal to 2020-11-04T18:54:47Z (format of ISO 8601): `
+        #   updateTime<="2020-11-04T18:54:47Z"` * All line items with an update time
+        #   greater than or equal to 2020-11-04T18:54:47Z (format of ISO 8601): `
+        #   updateTime>="2020-11-04T18:54:47Z"` The length of this field should be no more
+        #   than 500 characters. Reference our [filter `LIST` requests](/display-video/api/
         #   guides/how-tos/filters) guide for more information.
         # @param [String] order_by
         #   Field by which to sort the list. Acceptable values are: * `displayName` (
-        #   default) * `entityStatus` * `flight.dateRange.endDate` **Deprecated. Not
-        #   available after June 8, 2023** * `updateTime` The default sorting order is
+        #   default) * `entityStatus` * `flight.dateRange.endDate` * **Deprecated. Not
+        #   available after June 21, 2023** * `updateTime` The default sorting order is
         #   ascending. To specify descending order for a field, a suffix "desc" should be
         #   added to the field name. Example: `displayName desc`.
         # @param [Fixnum] page_size

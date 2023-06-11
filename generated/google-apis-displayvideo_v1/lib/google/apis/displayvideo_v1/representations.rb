@@ -3381,7 +3381,6 @@ module Google
       
           property :status, as: 'status', class: Google::Apis::DisplayvideoV1::InventorySourceStatus, decorator: Google::Apis::DisplayvideoV1::InventorySourceStatus::Representation
       
-          property :sub_site_property_id, :numeric_string => true, as: 'subSitePropertyId'
           property :time_range, as: 'timeRange', class: Google::Apis::DisplayvideoV1::TimeRange, decorator: Google::Apis::DisplayvideoV1::TimeRange::Representation
       
           property :update_time, as: 'updateTime'
