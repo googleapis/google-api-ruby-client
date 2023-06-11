@@ -87,6 +87,11 @@ module Google
         # @return [String]
         attr_accessor :service_name
       
+        # The caller's user agent string associated with the finding.
+        # Corresponds to the JSON property `userAgent`
+        # @return [String]
+        attr_accessor :user_agent
+      
         # Type of user agent associated with the finding. For example, an operating
         # system shell or an embedded or standalone application.
         # Corresponds to the JSON property `userAgentFamily`
@@ -115,6 +120,7 @@ module Google
           @service_account_delegation_info = args[:service_account_delegation_info] if args.key?(:service_account_delegation_info)
           @service_account_key_name = args[:service_account_key_name] if args.key?(:service_account_key_name)
           @service_name = args[:service_name] if args.key?(:service_name)
+          @user_agent = args[:user_agent] if args.key?(:user_agent)
           @user_agent_family = args[:user_agent_family] if args.key?(:user_agent_family)
           @user_name = args[:user_name] if args.key?(:user_name)
         end
