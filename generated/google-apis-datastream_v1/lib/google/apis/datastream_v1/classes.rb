@@ -86,7 +86,7 @@ module Google
         # @return [String]
         attr_accessor :last_start_time
       
-        # Backfill job state.
+        # Output only. Backfill job state.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -2415,7 +2415,7 @@ module Google
         # @return [Array<Google::Apis::DatastreamV1::ValidationMessage>]
         attr_accessor :message
       
-        # Validation execution status.
+        # Output only. Validation execution status.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
