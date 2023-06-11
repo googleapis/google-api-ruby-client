@@ -983,6 +983,35 @@ module Google
         end
       end
       
+      # For display only. Details of a Google Service sending packets to a VPC network.
+      # Although the source IP might be a publicly routable address, some Google
+      # Services use special routes within Google production infrastructure to reach
+      # Compute Engine Instances. https://cloud.google.com/vpc/docs/routes#
+      # special_return_paths
+      class GoogleServiceInfo
+        include Google::Apis::Core::Hashable
+      
+        # Recognized type of a Google Service.
+        # Corresponds to the JSON property `googleServiceType`
+        # @return [String]
+        attr_accessor :google_service_type
+      
+        # Source IP address.
+        # Corresponds to the JSON property `sourceIp`
+        # @return [String]
+        attr_accessor :source_ip
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @google_service_type = args[:google_service_type] if args.key?(:google_service_type)
+          @source_ip = args[:source_ip] if args.key?(:source_ip)
+        end
+      end
+      
       # For display only. Metadata associated with a Compute Engine instance.
       class InstanceInfo
         include Google::Apis::Core::Hashable
@@ -1825,6 +1854,15 @@ module Google
         # @return [Google::Apis::NetworkmanagementV1::GkeMasterInfo]
         attr_accessor :gke_master
       
+        # For display only. Details of a Google Service sending packets to a VPC network.
+        # Although the source IP might be a publicly routable address, some Google
+        # Services use special routes within Google production infrastructure to reach
+        # Compute Engine Instances. https://cloud.google.com/vpc/docs/routes#
+        # special_return_paths
+        # Corresponds to the JSON property `googleService`
+        # @return [Google::Apis::NetworkmanagementV1::GoogleServiceInfo]
+        attr_accessor :google_service
+      
         # For display only. Metadata associated with a Compute Engine instance.
         # Corresponds to the JSON property `instance`
         # @return [Google::Apis::NetworkmanagementV1::InstanceInfo]
@@ -1890,6 +1928,7 @@ module Google
           @forward = args[:forward] if args.key?(:forward)
           @forwarding_rule = args[:forwarding_rule] if args.key?(:forwarding_rule)
           @gke_master = args[:gke_master] if args.key?(:gke_master)
+          @google_service = args[:google_service] if args.key?(:google_service)
           @instance = args[:instance] if args.key?(:instance)
           @load_balancer = args[:load_balancer] if args.key?(:load_balancer)
           @network = args[:network] if args.key?(:network)

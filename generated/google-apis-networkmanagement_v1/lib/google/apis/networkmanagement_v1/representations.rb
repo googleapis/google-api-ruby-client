@@ -160,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleServiceInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -535,6 +541,14 @@ module Google
         end
       end
       
+      class GoogleServiceInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :google_service_type, as: 'googleServiceType'
+          property :source_ip, as: 'sourceIp'
+        end
+      end
+      
       class InstanceInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -740,6 +754,8 @@ module Google
           property :forwarding_rule, as: 'forwardingRule', class: Google::Apis::NetworkmanagementV1::ForwardingRuleInfo, decorator: Google::Apis::NetworkmanagementV1::ForwardingRuleInfo::Representation
       
           property :gke_master, as: 'gkeMaster', class: Google::Apis::NetworkmanagementV1::GkeMasterInfo, decorator: Google::Apis::NetworkmanagementV1::GkeMasterInfo::Representation
+      
+          property :google_service, as: 'googleService', class: Google::Apis::NetworkmanagementV1::GoogleServiceInfo, decorator: Google::Apis::NetworkmanagementV1::GoogleServiceInfo::Representation
       
           property :instance, as: 'instance', class: Google::Apis::NetworkmanagementV1::InstanceInfo, decorator: Google::Apis::NetworkmanagementV1::InstanceInfo::Representation
       
