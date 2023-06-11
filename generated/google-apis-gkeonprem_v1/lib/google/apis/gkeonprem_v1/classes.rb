@@ -1713,6 +1713,11 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # BareMetalNodePoolUpgradePolicy defines the node pool upgrade policy.
+        # Corresponds to the JSON property `upgradePolicy`
+        # @return [Google::Apis::GkeonpremV1::BareMetalNodePoolUpgradePolicy]
+        attr_accessor :upgrade_policy
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1731,6 +1736,7 @@ module Google
           @status = args[:status] if args.key?(:status)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @upgrade_policy = args[:upgrade_policy] if args.key?(:upgrade_policy)
         end
       end
       
@@ -1781,6 +1787,26 @@ module Google
         end
       end
       
+      # BareMetalNodePoolUpgradePolicy defines the node pool upgrade policy.
+      class BareMetalNodePoolUpgradePolicy
+        include Google::Apis::Core::Hashable
+      
+        # BareMetalParallelUpgradeConfig defines the parallel upgrade settings for
+        # worker node pools.
+        # Corresponds to the JSON property `parallelUpgradeConfig`
+        # @return [Google::Apis::GkeonpremV1::BareMetalParallelUpgradeConfig]
+        attr_accessor :parallel_upgrade_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @parallel_upgrade_config = args[:parallel_upgrade_config] if args.key?(:parallel_upgrade_config)
+        end
+      end
+      
       # Specifies operating system settings for cluster provisioning.
       class BareMetalOsEnvironmentConfig
         include Google::Apis::Core::Hashable
@@ -1799,6 +1825,35 @@ module Google
         # Update properties of this object
         def update!(**args)
           @package_repo_excluded = args[:package_repo_excluded] if args.key?(:package_repo_excluded)
+        end
+      end
+      
+      # BareMetalParallelUpgradeConfig defines the parallel upgrade settings for
+      # worker node pools.
+      class BareMetalParallelUpgradeConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The maximum number of nodes that can be upgraded at once. Defaults
+        # to 1.
+        # Corresponds to the JSON property `concurrentNodes`
+        # @return [Fixnum]
+        attr_accessor :concurrent_nodes
+      
+        # The minimum number of nodes that should be healthy and available during an
+        # upgrade. If set to the default value of 0, it is possible that none of the
+        # nodes will be available during an upgrade.
+        # Corresponds to the JSON property `minimumAvailableNodes`
+        # @return [Fixnum]
+        attr_accessor :minimum_available_nodes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @concurrent_nodes = args[:concurrent_nodes] if args.key?(:concurrent_nodes)
+          @minimum_available_nodes = args[:minimum_available_nodes] if args.key?(:minimum_available_nodes)
         end
       end
       
@@ -1918,6 +1973,11 @@ module Google
       class BareMetalVersionInfo
         include Google::Apis::Core::Hashable
       
+        # The list of upgrade dependencies for this version.
+        # Corresponds to the JSON property `dependencies`
+        # @return [Array<Google::Apis::GkeonpremV1::UpgradeDependency>]
+        attr_accessor :dependencies
+      
         # If set, the cluster dependencies (e.g. the admin cluster, other user clusters
         # managed by the same admin cluster, version skew policy, etc) must be upgraded
         # before this version can be installed or upgraded to.
@@ -1937,6 +1997,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @dependencies = args[:dependencies] if args.key?(:dependencies)
           @has_dependencies = args[:has_dependencies] if args.key?(:has_dependencies)
           @version = args[:version] if args.key?(:version)
         end
@@ -2217,35 +2278,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bare_metal_node_pool_id = args[:bare_metal_node_pool_id] if args.key?(:bare_metal_node_pool_id)
-          @validate_only = args[:validate_only] if args.key?(:validate_only)
-        end
-      end
-      
-      # Message for enrolling an existing bare metal standalone node pool to the GKE
-      # on-prem API.
-      class EnrollBareMetalStandaloneNodePoolRequest
-        include Google::Apis::Core::Hashable
-      
-        # User provided OnePlatform identifier that is used as part of the resource name.
-        # This value must be up to 40 characters and follow RFC-1123 (https://tools.
-        # ietf.org/html/rfc1123) format.
-        # Corresponds to the JSON property `bareMetalStandaloneNodePoolId`
-        # @return [String]
-        attr_accessor :bare_metal_standalone_node_pool_id
-      
-        # If set, only validate the request, but do not actually enroll the node pool.
-        # Corresponds to the JSON property `validateOnly`
-        # @return [Boolean]
-        attr_accessor :validate_only
-        alias_method :validate_only?, :validate_only
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @bare_metal_standalone_node_pool_id = args[:bare_metal_standalone_node_pool_id] if args.key?(:bare_metal_standalone_node_pool_id)
           @validate_only = args[:validate_only] if args.key?(:validate_only)
         end
       end
@@ -3233,6 +3265,44 @@ module Google
         # Update properties of this object
         def update!(**args)
           @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
+      # UpgradeDependency represents a dependency when upgrading a resource.
+      class UpgradeDependency
+        include Google::Apis::Core::Hashable
+      
+        # Current version of the dependency e.g. 1.15.0.
+        # Corresponds to the JSON property `currentVersion`
+        # @return [String]
+        attr_accessor :current_version
+      
+        # Local name of the dependency.
+        # Corresponds to the JSON property `localName`
+        # @return [String]
+        attr_accessor :local_name
+      
+        # Resource name of the dependency.
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        # Target version of the dependency e.g. 1.16.1. This is the version the
+        # dependency needs to be upgraded to before a resource can be upgraded.
+        # Corresponds to the JSON property `targetVersion`
+        # @return [String]
+        attr_accessor :target_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @current_version = args[:current_version] if args.key?(:current_version)
+          @local_name = args[:local_name] if args.key?(:local_name)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @target_version = args[:target_version] if args.key?(:target_version)
         end
       end
       
