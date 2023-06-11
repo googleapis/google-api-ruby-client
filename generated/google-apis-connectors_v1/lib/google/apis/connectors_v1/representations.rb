@@ -184,6 +184,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FieldComparison
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InputParameter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -263,6 +269,12 @@ module Google
       end
       
       class LockConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LogicalExpression
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -515,10 +527,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bool_value, as: 'boolValue'
+          property :encryption_key_value, as: 'encryptionKeyValue', class: Google::Apis::ConnectorsV1::EncryptionKey, decorator: Google::Apis::ConnectorsV1::EncryptionKey::Representation
+      
           property :int_value, :numeric_string => true, as: 'intValue'
           property :key, as: 'key'
-          property :key_value, as: 'keyValue', class: Google::Apis::ConnectorsV1::EncryptionKey, decorator: Google::Apis::ConnectorsV1::EncryptionKey::Representation
-      
           property :secret_value, as: 'secretValue', class: Google::Apis::ConnectorsV1::Secret, decorator: Google::Apis::ConnectorsV1::Secret::Representation
       
           property :string_value, as: 'stringValue'
@@ -537,6 +549,8 @@ module Google
           property :is_advanced, as: 'isAdvanced'
           property :key, as: 'key'
           property :required, as: 'required'
+          property :required_condition, as: 'requiredCondition', class: Google::Apis::ConnectorsV1::LogicalExpression, decorator: Google::Apis::ConnectorsV1::LogicalExpression::Representation
+      
           property :role_grant, as: 'roleGrant', class: Google::Apis::ConnectorsV1::RoleGrant, decorator: Google::Apis::ConnectorsV1::RoleGrant::Representation
       
           property :state, as: 'state'
@@ -772,6 +786,17 @@ module Google
         end
       end
       
+      class FieldComparison
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bool_value, as: 'boolValue'
+          property :comparator, as: 'comparator'
+          property :int_value, :numeric_string => true, as: 'intValue'
+          property :key, as: 'key'
+          property :string_value, as: 'stringValue'
+        end
+      end
+      
       class InputParameter
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -903,6 +928,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :locked, as: 'locked'
           property :reason, as: 'reason'
+        end
+      end
+      
+      class LogicalExpression
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :field_comparisons, as: 'fieldComparisons', class: Google::Apis::ConnectorsV1::FieldComparison, decorator: Google::Apis::ConnectorsV1::FieldComparison::Representation
+      
+          collection :logical_expressions, as: 'logicalExpressions', class: Google::Apis::ConnectorsV1::LogicalExpression, decorator: Google::Apis::ConnectorsV1::LogicalExpression::Representation
+      
+          property :logical_operator, as: 'logicalOperator'
         end
       end
       
