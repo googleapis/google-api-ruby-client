@@ -2329,15 +2329,10 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Optional. Google group email to which the PartnerTenant is enabled.
-        # Corresponds to the JSON property `googleGroupEmail`
-        # @return [String]
-        attr_accessor :google_group_email
-      
-        # Optional. Google group ID to which the PartnerTenant is enabled.
-        # Corresponds to the JSON property `googleGroupId`
-        # @return [String]
-        attr_accessor :google_group_id
+        # Message to capture group information
+        # Corresponds to the JSON property `group`
+        # @return [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaGroup]
+        attr_accessor :group
       
         # Output only. Unique resource name of the PartnerTenant. The name is ignored
         # when creating PartnerTenant.
@@ -2363,8 +2358,7 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
-          @google_group_email = args[:google_group_email] if args.key?(:google_group_email)
-          @google_group_id = args[:google_group_id] if args.key?(:google_group_id)
+          @group = args[:group] if args.key?(:group)
           @name = args[:name] if args.key?(:name)
           @partner_metadata = args[:partner_metadata] if args.key?(:partner_metadata)
           @update_time = args[:update_time] if args.key?(:update_time)
