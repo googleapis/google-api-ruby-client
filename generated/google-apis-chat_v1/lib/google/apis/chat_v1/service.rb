@@ -571,8 +571,9 @@ module Google
         # developers.google.com/chat/api/guides/auth/users) requires the `chat.
         # memberships` or `chat.memberships.readonly` authorization scope.
         # @param [String] name
-        #   Required. Resource name of the membership to retrieve. Format: `spaces/`space`/
-        #   members/`member``
+        #   Required. Resource name of the membership to retrieve. To get the app's own
+        #   membership, you can optionally use `spaces/`space`/members/app`. Format: `
+        #   spaces/`space`/members/`member`` or `spaces/`space`/members/app`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

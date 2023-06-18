@@ -724,7 +724,9 @@ module Google
         end
       end
       
-      # Google Chat events.
+      # Google Chat events. To learn how to use events, see [Receive and respond to
+      # Google Chat events](https://developers.google.com/chat/api/guides/message-
+      # formats).
       class DeprecatedEvent
         include Google::Apis::Core::Hashable
       
