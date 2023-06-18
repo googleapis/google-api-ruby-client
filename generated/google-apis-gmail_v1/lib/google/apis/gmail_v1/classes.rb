@@ -1804,6 +1804,12 @@ module Google
         # @return [String]
         attr_accessor :label_filter_action
       
+        # Filtering behavior of labelIds list specified. This field replaces
+        # label_filter_action; if set, label_filter_action is ignored.
+        # Corresponds to the JSON property `labelFilterBehavior`
+        # @return [String]
+        attr_accessor :label_filter_behavior
+      
         # List of label_ids to restrict notifications about. By default, if unspecified,
         # all changes are pushed out. If specified then dictates which labels are
         # required for a push notification to be generated.
@@ -1828,6 +1834,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @label_filter_action = args[:label_filter_action] if args.key?(:label_filter_action)
+          @label_filter_behavior = args[:label_filter_behavior] if args.key?(:label_filter_behavior)
           @label_ids = args[:label_ids] if args.key?(:label_ids)
           @topic_name = args[:topic_name] if args.key?(:topic_name)
         end
