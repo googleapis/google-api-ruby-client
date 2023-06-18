@@ -8009,7 +8009,7 @@ module Google
         # source types. Reload status can be tracked in `latest_reload_status`. If a
         # reload fails, we will keep the document unchanged. If a reload fails with
         # internal errors, the system will try to reload the document on the next day.
-        # If a reload fails with non-retriable errors (e.g. PERMISION_DENIED), the
+        # If a reload fails with non-retriable errors (e.g. PERMISSION_DENIED), the
         # system will not try to reload the document anymore. You need to manually
         # reload the document successfully by calling `ReloadDocument` and clear the
         # errors.
@@ -16651,6 +16651,11 @@ module Google
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1SuggestDialogflowAssistsResponse]
         attr_accessor :suggest_dialogflow_assists_response
       
+        # The response message for Participants.SuggestDialogflowAssists.
+        # Corresponds to the JSON property `suggestEntityExtractionResponse`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1SuggestDialogflowAssistsResponse]
+        attr_accessor :suggest_entity_extraction_response
+      
         # The request message for Participants.SuggestFaqAnswers.
         # Corresponds to the JSON property `suggestFaqAnswersResponse`
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1SuggestFaqAnswersResponse]
@@ -16670,6 +16675,7 @@ module Google
           @error = args[:error] if args.key?(:error)
           @suggest_articles_response = args[:suggest_articles_response] if args.key?(:suggest_articles_response)
           @suggest_dialogflow_assists_response = args[:suggest_dialogflow_assists_response] if args.key?(:suggest_dialogflow_assists_response)
+          @suggest_entity_extraction_response = args[:suggest_entity_extraction_response] if args.key?(:suggest_entity_extraction_response)
           @suggest_faq_answers_response = args[:suggest_faq_answers_response] if args.key?(:suggest_faq_answers_response)
           @suggest_smart_replies_response = args[:suggest_smart_replies_response] if args.key?(:suggest_smart_replies_response)
         end
