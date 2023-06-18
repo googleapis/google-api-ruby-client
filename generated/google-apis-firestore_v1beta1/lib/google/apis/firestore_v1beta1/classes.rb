@@ -779,7 +779,8 @@ module Google
       
         # The total count of documents that match target_id. If different from the count
         # of documents in the client that match, the client must manually determine
-        # which documents no longer match the target.
+        # which documents no longer match the target. The client can use the `
+        # unchanged_names` bloom filter to assist with this determination.
         # Corresponds to the JSON property `count`
         # @return [Fixnum]
         attr_accessor :count
