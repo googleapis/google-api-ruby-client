@@ -13070,6 +13070,8 @@ module Google
         #   Project ID for this request.
         # @param [String] instance_template
         #   The name of the instance template.
+        # @param [String] view
+        #   View of the instance template.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -13089,12 +13091,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_instance_template(project, instance_template, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_instance_template(project, instance_template, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/global/instanceTemplates/{instanceTemplate}', options)
           command.response_representation = Google::Apis::ComputeAlpha::InstanceTemplate::Representation
           command.response_class = Google::Apis::ComputeAlpha::InstanceTemplate
           command.params['project'] = project unless project.nil?
           command.params['instanceTemplate'] = instance_template unless instance_template.nil?
+          command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -13245,6 +13248,8 @@ module Google
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
+        # @param [String] view
+        #   View of the instance template.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -13264,7 +13269,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_instance_templates(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_instance_templates(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/global/instanceTemplates', options)
           command.response_representation = Google::Apis::ComputeAlpha::InstanceTemplateList::Representation
           command.response_class = Google::Apis::ComputeAlpha::InstanceTemplateList
@@ -13274,6 +13279,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -13848,6 +13854,8 @@ module Google
         #   The name of the zone for this request.
         # @param [String] instance
         #   Name of the instance resource to return.
+        # @param [String] view
+        #   View of the instance.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -13867,13 +13875,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_instance(project, zone, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_instance(project, zone, instance, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/zones/{zone}/instances/{instance}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Instance::Representation
           command.response_class = Google::Apis::ComputeAlpha::Instance
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -14344,6 +14353,8 @@ module Google
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
+        # @param [String] view
+        #   View of the instance.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -14363,7 +14374,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_instances(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_instances(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/zones/{zone}/instances', options)
           command.response_representation = Google::Apis::ComputeAlpha::InstanceList::Representation
           command.response_class = Google::Apis::ComputeAlpha::InstanceList
@@ -14374,6 +14385,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -32092,6 +32104,8 @@ module Google
         #   The name of the region for this request.
         # @param [String] instance_template
         #   The name of the instance template.
+        # @param [String] view
+        #   View of the instance template.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -32111,13 +32125,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_region_instance_template(project, region, instance_template, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_region_instance_template(project, region, instance_template, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/instanceTemplates/{instanceTemplate}', options)
           command.response_representation = Google::Apis::ComputeAlpha::InstanceTemplate::Representation
           command.response_class = Google::Apis::ComputeAlpha::InstanceTemplate
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
           command.params['instanceTemplate'] = instance_template unless instance_template.nil?
+          command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -32231,6 +32246,8 @@ module Google
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
+        # @param [String] view
+        #   View of the instance template.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -32250,7 +32267,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_region_instance_templates(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_region_instance_templates(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/instanceTemplates', options)
           command.response_representation = Google::Apis::ComputeAlpha::InstanceTemplateList::Representation
           command.response_class = Google::Apis::ComputeAlpha::InstanceTemplateList
@@ -32261,6 +32278,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
