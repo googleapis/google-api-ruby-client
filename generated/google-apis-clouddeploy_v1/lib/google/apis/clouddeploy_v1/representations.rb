@@ -232,6 +232,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeployParameters
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeploymentJobs
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -894,6 +900,14 @@ module Google
         end
       end
       
+      class DeployParameters
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :match_target_labels, as: 'matchTargetLabels'
+          hash :values, as: 'values'
+        end
+      end
+      
       class DeploymentJobs
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1234,6 +1248,7 @@ module Google
           property :create_time, as: 'createTime'
           property :delivery_pipeline_snapshot, as: 'deliveryPipelineSnapshot', class: Google::Apis::ClouddeployV1::DeliveryPipeline, decorator: Google::Apis::ClouddeployV1::DeliveryPipeline::Representation
       
+          hash :deploy_parameters, as: 'deployParameters'
           property :description, as: 'description'
           property :etag, as: 'etag'
           hash :labels, as: 'labels'
@@ -1410,6 +1425,8 @@ module Google
       class Stage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :deploy_parameters, as: 'deployParameters', class: Google::Apis::ClouddeployV1::DeployParameters, decorator: Google::Apis::ClouddeployV1::DeployParameters::Representation
+      
           collection :profiles, as: 'profiles'
           property :strategy, as: 'strategy', class: Google::Apis::ClouddeployV1::Strategy, decorator: Google::Apis::ClouddeployV1::Strategy::Representation
       
@@ -1450,6 +1467,7 @@ module Google
           property :anthos_cluster, as: 'anthosCluster', class: Google::Apis::ClouddeployV1::AnthosCluster, decorator: Google::Apis::ClouddeployV1::AnthosCluster::Representation
       
           property :create_time, as: 'createTime'
+          hash :deploy_parameters, as: 'deployParameters'
           property :description, as: 'description'
           property :etag, as: 'etag'
           collection :execution_configs, as: 'executionConfigs', class: Google::Apis::ClouddeployV1::ExecutionConfig, decorator: Google::Apis::ClouddeployV1::ExecutionConfig::Representation

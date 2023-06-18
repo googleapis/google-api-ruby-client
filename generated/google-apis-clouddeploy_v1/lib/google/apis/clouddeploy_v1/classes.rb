@@ -963,6 +963,33 @@ module Google
         end
       end
       
+      # DeployParameters contains deploy parameters information.
+      class DeployParameters
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Deploy parameters are applied to targets with match labels. If
+        # unspecified, deploy parameters are applied to all targets (including child
+        # targets of a multi-target).
+        # Corresponds to the JSON property `matchTargetLabels`
+        # @return [Hash<String,String>]
+        attr_accessor :match_target_labels
+      
+        # Required. Values are deploy parameters in key-value pairs.
+        # Corresponds to the JSON property `values`
+        # @return [Hash<String,String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @match_target_labels = args[:match_target_labels] if args.key?(:match_target_labels)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
       # Deployment job composition.
       class DeploymentJobs
         include Google::Apis::Core::Hashable
@@ -2236,6 +2263,11 @@ module Google
         # @return [Google::Apis::ClouddeployV1::DeliveryPipeline]
         attr_accessor :delivery_pipeline_snapshot
       
+        # Optional. The deploy parameters to use for all targets in this release.
+        # Corresponds to the JSON property `deployParameters`
+        # @return [Hash<String,String>]
+        attr_accessor :deploy_parameters
+      
         # Description of the `Release`. Max length is 255 characters.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -2331,6 +2363,7 @@ module Google
           @condition = args[:condition] if args.key?(:condition)
           @create_time = args[:create_time] if args.key?(:create_time)
           @delivery_pipeline_snapshot = args[:delivery_pipeline_snapshot] if args.key?(:delivery_pipeline_snapshot)
+          @deploy_parameters = args[:deploy_parameters] if args.key?(:deploy_parameters)
           @description = args[:description] if args.key?(:description)
           @etag = args[:etag] if args.key?(:etag)
           @labels = args[:labels] if args.key?(:labels)
@@ -2942,6 +2975,11 @@ module Google
       class Stage
         include Google::Apis::Core::Hashable
       
+        # Optional. The deploy parameters to use for the target in this stage.
+        # Corresponds to the JSON property `deployParameters`
+        # @return [Array<Google::Apis::ClouddeployV1::DeployParameters>]
+        attr_accessor :deploy_parameters
+      
         # Skaffold profiles to use when rendering the manifest for this stage's `Target`.
         # Corresponds to the JSON property `profiles`
         # @return [Array<String>]
@@ -2967,6 +3005,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @deploy_parameters = args[:deploy_parameters] if args.key?(:deploy_parameters)
           @profiles = args[:profiles] if args.key?(:profiles)
           @strategy = args[:strategy] if args.key?(:strategy)
           @target_id = args[:target_id] if args.key?(:target_id)
@@ -3079,6 +3118,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Optional. The deploy parameters to use for this target.
+        # Corresponds to the JSON property `deployParameters`
+        # @return [Hash<String,String>]
+        attr_accessor :deploy_parameters
+      
         # Optional. Description of the `Target`. Max length is 255 characters.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -3163,6 +3207,7 @@ module Google
           @annotations = args[:annotations] if args.key?(:annotations)
           @anthos_cluster = args[:anthos_cluster] if args.key?(:anthos_cluster)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @deploy_parameters = args[:deploy_parameters] if args.key?(:deploy_parameters)
           @description = args[:description] if args.key?(:description)
           @etag = args[:etag] if args.key?(:etag)
           @execution_configs = args[:execution_configs] if args.key?(:execution_configs)
