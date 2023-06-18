@@ -1226,7 +1226,7 @@ module Google
         attr_accessor :precinct_id
       
         # The precincts that match this voter's address. Will only be returned for
-        # project IDs which have been whitelisted as "partner projects".
+        # project IDs which have been allowlisted as "partner projects".
         # Corresponds to the JSON property `precincts`
         # @return [Array<Google::Apis::CivicinfoV2::Precinct>]
         attr_accessor :precincts

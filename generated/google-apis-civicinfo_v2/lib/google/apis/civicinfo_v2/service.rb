@@ -84,6 +84,8 @@ module Google
         end
         
         # List of available elections to query.
+        # @param [Boolean] production_data_only
+        #   Whether to include data that has not been allowlisted yet
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -101,10 +103,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def query_election(fields: nil, quota_user: nil, options: nil, &block)
+        def query_election(production_data_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'civicinfo/v2/elections', options)
           command.response_representation = Google::Apis::CivicinfoV2::QueryElectionsResponse::Representation
           command.response_class = Google::Apis::CivicinfoV2::QueryElectionsResponse
+          command.query['productionDataOnly'] = production_data_only unless production_data_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -122,6 +125,10 @@ module Google
         #   otherElections response field.
         # @param [Boolean] official_only
         #   If set to true, only data from official state sources will be returned.
+        # @param [Boolean] production_data_only
+        #   Whether to include data that has not been vetted yet. Should only be made
+        #   available to internal IPs or trusted partners. This is a non-discoverable
+        #   parameter in the One Platform API config.
         # @param [Boolean] return_all_available_data
         #   If set to true, the query will return the success code and include any partial
         #   information when it is unable to determine a matching address or unable to
@@ -143,13 +150,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def query_voter_info(address, election_id: nil, official_only: nil, return_all_available_data: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def query_voter_info(address, election_id: nil, official_only: nil, production_data_only: nil, return_all_available_data: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'civicinfo/v2/voterinfo', options)
           command.response_representation = Google::Apis::CivicinfoV2::VoterInfoResponse::Representation
           command.response_class = Google::Apis::CivicinfoV2::VoterInfoResponse
           command.query['address'] = address unless address.nil?
           command.query['electionId'] = election_id unless election_id.nil?
           command.query['officialOnly'] = official_only unless official_only.nil?
+          command.query['productionDataOnly'] = production_data_only unless production_data_only.nil?
           command.query['returnAllAvailableData'] = return_all_available_data unless return_all_available_data.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
