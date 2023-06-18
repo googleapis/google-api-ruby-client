@@ -776,6 +776,8 @@ module Google
       
           collection :rules, as: 'rules', class: Google::Apis::ServiceconsumermanagementV1beta1::DocumentationRule, decorator: Google::Apis::ServiceconsumermanagementV1beta1::DocumentationRule::Representation
       
+          collection :section_overrides, as: 'sectionOverrides', class: Google::Apis::ServiceconsumermanagementV1beta1::Page, decorator: Google::Apis::ServiceconsumermanagementV1beta1::Page::Representation
+      
           property :service_root_url, as: 'serviceRootUrl'
           property :summary, as: 'summary'
         end
