@@ -19,14 +19,14 @@ require 'google/apis/clouddebugger_v2/gem_version.rb'
 
 module Google
   module Apis
-    # Cloud Debugger API
+    # Cloud Debugger API (Deprecated)
     #
     # Examines the call stack and variables of a running application without
-    # stopping or slowing it down.
+    # stopping or slowing it down. (Deprecated)
     #
     # @see https://cloud.google.com/debugger
     module ClouddebuggerV2
-      # Version of the Cloud Debugger API this client connects to.
+      # Version of the Cloud Debugger API (Deprecated) this client connects to.
       # This is NOT the gem version.
       VERSION = 'V2'
 

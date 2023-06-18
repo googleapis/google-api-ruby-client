@@ -20,10 +20,10 @@ require 'google/apis/errors'
 module Google
   module Apis
     module ClouddebuggerV2
-      # Cloud Debugger API
+      # Cloud Debugger API (Deprecated)
       #
       # Examines the call stack and variables of a running application without
-      #  stopping or slowing it down.
+      #  stopping or slowing it down. (Deprecated)
       #
       # @example
       #    require 'google/apis/clouddebugger_v2'
