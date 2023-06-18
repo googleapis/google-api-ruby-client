@@ -932,6 +932,8 @@ module Google
       
           collection :rules, as: 'rules', class: Google::Apis::ServicenetworkingV1beta::DocumentationRule, decorator: Google::Apis::ServicenetworkingV1beta::DocumentationRule::Representation
       
+          collection :section_overrides, as: 'sectionOverrides', class: Google::Apis::ServicenetworkingV1beta::Page, decorator: Google::Apis::ServicenetworkingV1beta::Page::Representation
+      
           property :service_root_url, as: 'serviceRootUrl'
           property :summary, as: 'summary'
         end
