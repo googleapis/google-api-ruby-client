@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudChannelV1BillableSku
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudChannelV1BillingAccount
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -281,6 +287,18 @@ module Google
       end
       
       class GoogleCloudChannelV1ListReportsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudChannelV1ListSkuGroupBillableSkusResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudChannelV1ListSkuGroupsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -533,6 +551,12 @@ module Google
       end
       
       class GoogleCloudChannelV1Sku
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudChannelV1SkuGroup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -852,6 +876,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :base_entitlement, as: 'baseEntitlement'
+        end
+      end
+      
+      class GoogleCloudChannelV1BillableSku
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :service, as: 'service'
+          property :service_display_name, as: 'serviceDisplayName'
+          property :sku, as: 'sku'
+          property :sku_display_name, as: 'skuDisplayName'
         end
       end
       
@@ -1291,6 +1325,24 @@ module Google
         end
       end
       
+      class GoogleCloudChannelV1ListSkuGroupBillableSkusResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :billable_skus, as: 'billableSkus', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1BillableSku, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1BillableSku::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleCloudChannelV1ListSkuGroupsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :sku_groups, as: 'skuGroups', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1SkuGroup, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1SkuGroup::Representation
+      
+        end
+      end
+      
       class GoogleCloudChannelV1ListSkusResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1719,6 +1771,14 @@ module Google
           property :name, as: 'name'
           property :product, as: 'product', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1Product, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1Product::Representation
       
+        end
+      end
+      
+      class GoogleCloudChannelV1SkuGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
         end
       end
       
