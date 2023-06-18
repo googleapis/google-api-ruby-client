@@ -365,8 +365,8 @@ module Google
         # @return [Google::Apis::GkebackupV1::BackupConfig]
         attr_accessor :backup_config
       
-        # Schedule defines scheduling parameters for automatically creating Backups via
-        # this BackupPlan.
+        # Defines scheduling parameters for automatically creating Backups via this
+        # BackupPlan.
         # Corresponds to the JSON property `backupSchedule`
         # @return [Google::Apis::GkebackupV1::Schedule]
         attr_accessor :backup_schedule
@@ -432,6 +432,19 @@ module Google
         # @return [Google::Apis::GkebackupV1::RetentionPolicy]
         attr_accessor :retention_policy
       
+        # Output only. State of the BackupPlan. This State field reflects the various
+        # stages a BackupPlan can be in during the Create operation. It will be set to "
+        # DEACTIVATED" if the BackupPlan is deactivated on an Update
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Human-readable description of why BackupPlan is in the current `
+        # state`
+        # Corresponds to the JSON property `stateReason`
+        # @return [String]
+        attr_accessor :state_reason
+      
         # Output only. Server generated global unique identifier of [UUID](https://en.
         # wikipedia.org/wiki/Universally_unique_identifier) format.
         # Corresponds to the JSON property `uid`
@@ -460,6 +473,8 @@ module Google
           @name = args[:name] if args.key?(:name)
           @protected_pod_count = args[:protected_pod_count] if args.key?(:protected_pod_count)
           @retention_policy = args[:retention_policy] if args.key?(:retention_policy)
+          @state = args[:state] if args.key?(:state)
+          @state_reason = args[:state_reason] if args.key?(:state_reason)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -598,6 +613,29 @@ module Google
       class ClusterResourceRestoreScope
         include Google::Apis::Core::Hashable
       
+        # If True, all valid cluster-scoped resources will be restored. Mutually
+        # exclusive to any other field in the message.
+        # Corresponds to the JSON property `allGroupKinds`
+        # @return [Boolean]
+        attr_accessor :all_group_kinds
+        alias_method :all_group_kinds?, :all_group_kinds
+      
+        # A list of cluster-scoped resource group kinds to NOT restore from the backup.
+        # If specified, all valid cluster-scoped resources will be restored except for
+        # those specified in the list. Mutually exclusive to any other field in the
+        # message.
+        # Corresponds to the JSON property `excludedGroupKinds`
+        # @return [Array<Google::Apis::GkebackupV1::GroupKind>]
+        attr_accessor :excluded_group_kinds
+      
+        # If True, no cluster-scoped resources will be restored. This has the same
+        # restore scope as if the message is not defined. Mutually exclusive to any
+        # other field in the message.
+        # Corresponds to the JSON property `noGroupKinds`
+        # @return [Boolean]
+        attr_accessor :no_group_kinds
+        alias_method :no_group_kinds?, :no_group_kinds
+      
         # A list of cluster-scoped resource group kinds to restore from the backup. If
         # specified, only the selected resources will be restored. Mutually exclusive to
         # any other field in the message.
@@ -611,6 +649,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @all_group_kinds = args[:all_group_kinds] if args.key?(:all_group_kinds)
+          @excluded_group_kinds = args[:excluded_group_kinds] if args.key?(:excluded_group_kinds)
+          @no_group_kinds = args[:no_group_kinds] if args.key?(:no_group_kinds)
           @selected_group_kinds = args[:selected_group_kinds] if args.key?(:selected_group_kinds)
         end
       end
@@ -1343,6 +1384,50 @@ module Google
         end
       end
       
+      # ResourceFilter specifies matching criteria to limit the scope of a change to a
+      # specific set of kubernetes resources that are selected for restoration from a
+      # backup.
+      class ResourceFilter
+        include Google::Apis::Core::Hashable
+      
+        # (Filtering parameter) Any resource subject to transformation must belong to
+        # one of the listed "types". If this field is not provided, no type filtering
+        # will be performed (all resources of all types matching previous filtering
+        # parameters will be candidates for transformation).
+        # Corresponds to the JSON property `groupKinds`
+        # @return [Array<Google::Apis::GkebackupV1::GroupKind>]
+        attr_accessor :group_kinds
+      
+        # This is a [JSONPath] (https://github.com/json-path/JsonPath/blob/master/README.
+        # md) expression that matches specific fields of candidate resources and it
+        # operates as a filtering parameter (resources that are not matched with this
+        # expression will not be candidates for transformation).
+        # Corresponds to the JSON property `jsonPath`
+        # @return [String]
+        attr_accessor :json_path
+      
+        # (Filtering parameter) Any resource subject to transformation must be contained
+        # within one of the listed Kubernetes Namespace in the Backup. If this field is
+        # not provided, no namespace filtering will be performed (all resources in all
+        # Namespaces, including all cluster-scoped resources, will be candidates for
+        # transformation). To mix cluster-scoped and namespaced resources in the same
+        # rule, use an empty string ("") as one of the target namespaces.
+        # Corresponds to the JSON property `namespaces`
+        # @return [Array<String>]
+        attr_accessor :namespaces
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @group_kinds = args[:group_kinds] if args.key?(:group_kinds)
+          @json_path = args[:json_path] if args.key?(:json_path)
+          @namespaces = args[:namespaces] if args.key?(:namespaces)
+        end
+      end
+      
       # Represents both a request to Restore some portion of a Backup into a target
       # GKE cluster and a record of the restore operation itself. Next id: 18
       class Restore
@@ -1506,12 +1591,24 @@ module Google
         # @return [Google::Apis::GkebackupV1::ClusterResourceRestoreScope]
         attr_accessor :cluster_resource_restore_scope
       
+        # A list of Kubernetes Namespaces
+        # Corresponds to the JSON property `excludedNamespaces`
+        # @return [Google::Apis::GkebackupV1::Namespaces]
+        attr_accessor :excluded_namespaces
+      
         # Defines the behavior for handling the situation where sets of namespaced
         # resources being restored already exist in the target cluster. This MUST be set
         # to a value other than NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED.
         # Corresponds to the JSON property `namespacedResourceRestoreMode`
         # @return [String]
         attr_accessor :namespaced_resource_restore_mode
+      
+        # Do not restore any namespaced resources if set to "True". Specifying this
+        # field to "False" is not allowed.
+        # Corresponds to the JSON property `noNamespaces`
+        # @return [Boolean]
+        attr_accessor :no_namespaces
+        alias_method :no_namespaces?, :no_namespaces
       
         # A list of namespaced Kubernetes resources.
         # Corresponds to the JSON property `selectedApplications`
@@ -1532,6 +1629,15 @@ module Google
         # @return [Array<Google::Apis::GkebackupV1::SubstitutionRule>]
         attr_accessor :substitution_rules
       
+        # A list of transformation rules to be applied against Kubernetes resources as
+        # they are selected for restoration from a Backup. Rules are executed in order
+        # defined - this order matters, as changes made by a rule may impact the
+        # filtering logic of subsequent rules. An empty list means no transformation
+        # will occur.
+        # Corresponds to the JSON property `transformationRules`
+        # @return [Array<Google::Apis::GkebackupV1::TransformationRule>]
+        attr_accessor :transformation_rules
+      
         # Specifies the mechanism to be used to restore volume data. Default:
         # VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED (will be treated as
         # NO_VOLUME_DATA_RESTORATION).
@@ -1548,10 +1654,13 @@ module Google
           @all_namespaces = args[:all_namespaces] if args.key?(:all_namespaces)
           @cluster_resource_conflict_policy = args[:cluster_resource_conflict_policy] if args.key?(:cluster_resource_conflict_policy)
           @cluster_resource_restore_scope = args[:cluster_resource_restore_scope] if args.key?(:cluster_resource_restore_scope)
+          @excluded_namespaces = args[:excluded_namespaces] if args.key?(:excluded_namespaces)
           @namespaced_resource_restore_mode = args[:namespaced_resource_restore_mode] if args.key?(:namespaced_resource_restore_mode)
+          @no_namespaces = args[:no_namespaces] if args.key?(:no_namespaces)
           @selected_applications = args[:selected_applications] if args.key?(:selected_applications)
           @selected_namespaces = args[:selected_namespaces] if args.key?(:selected_namespaces)
           @substitution_rules = args[:substitution_rules] if args.key?(:substitution_rules)
+          @transformation_rules = args[:transformation_rules] if args.key?(:transformation_rules)
           @volume_data_restore_policy = args[:volume_data_restore_policy] if args.key?(:volume_data_restore_policy)
         end
       end
@@ -1614,6 +1723,18 @@ module Google
         # @return [Google::Apis::GkebackupV1::RestoreConfig]
         attr_accessor :restore_config
       
+        # Output only. State of the RestorePlan. This State field reflects the various
+        # stages a RestorePlan can be in during the Create operation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Human-readable description of why RestorePlan is in the current `
+        # state`
+        # Corresponds to the JSON property `stateReason`
+        # @return [String]
+        attr_accessor :state_reason
+      
         # Output only. Server generated global unique identifier of [UUID](https://en.
         # wikipedia.org/wiki/Universally_unique_identifier) format.
         # Corresponds to the JSON property `uid`
@@ -1639,6 +1760,8 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @restore_config = args[:restore_config] if args.key?(:restore_config)
+          @state = args[:state] if args.key?(:state)
+          @state_reason = args[:state_reason] if args.key?(:state_reason)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -1691,15 +1814,16 @@ module Google
         end
       end
       
-      # Schedule defines scheduling parameters for automatically creating Backups via
-      # this BackupPlan.
+      # Defines scheduling parameters for automatically creating Backups via this
+      # BackupPlan.
       class Schedule
         include Google::Apis::Core::Hashable
       
         # A standard [cron](https://wikipedia.com/wiki/cron) string that defines a
-        # repeating schedule for creating Backups via this BackupPlan. If this is
-        # defined, then backup_retain_days must also be defined. Default (empty): no
-        # automatic backup creation will occur.
+        # repeating schedule for creating Backups via this BackupPlan. This is mutually
+        # exclusive with the rpo_config field since at most one schedule can be defined
+        # for a BackupPlan. If this is defined, then backup_retain_days must also be
+        # defined. Default (empty): no automatic backup creation will occur.
         # Corresponds to the JSON property `cronSchedule`
         # @return [String]
         attr_accessor :cron_schedule
@@ -1879,6 +2003,86 @@ module Google
         # Update properties of this object
         def update!(**args)
           @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
+      # A transformation rule to be applied against Kubernetes resources as they are
+      # selected for restoration from a Backup. A rule contains both filtering logic (
+      # which resources are subject to transform) and transformation logic.
+      class TransformationRule
+        include Google::Apis::Core::Hashable
+      
+        # The description is a user specified string description of the transformation
+        # rule.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. A list of transformation rule actions to take against candidate
+        # resources. Actions are executed in order defined - this order matters, as they
+        # could potentially interfere with each other and the first operation could
+        # affect the outcome of the second operation.
+        # Corresponds to the JSON property `fieldActions`
+        # @return [Array<Google::Apis::GkebackupV1::TransformationRuleAction>]
+        attr_accessor :field_actions
+      
+        # ResourceFilter specifies matching criteria to limit the scope of a change to a
+        # specific set of kubernetes resources that are selected for restoration from a
+        # backup.
+        # Corresponds to the JSON property `resourceFilter`
+        # @return [Google::Apis::GkebackupV1::ResourceFilter]
+        attr_accessor :resource_filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @field_actions = args[:field_actions] if args.key?(:field_actions)
+          @resource_filter = args[:resource_filter] if args.key?(:resource_filter)
+        end
+      end
+      
+      # TransformationRuleAction defines a TransformationRule action based on the JSON
+      # Patch RFC (https://www.rfc-editor.org/rfc/rfc6902)
+      class TransformationRuleAction
+        include Google::Apis::Core::Hashable
+      
+        # A string containing a JSON Pointer value that references the location in the
+        # target document to move the value from.
+        # Corresponds to the JSON property `fromPath`
+        # @return [String]
+        attr_accessor :from_path
+      
+        # Required. op specifies the operation to perform.
+        # Corresponds to the JSON property `op`
+        # @return [String]
+        attr_accessor :op
+      
+        # A string containing a JSON-Pointer value that references a location within the
+        # target document where the operation is performed.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        # A string that specifies the desired value in string format to use for
+        # transformation.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @from_path = args[:from_path] if args.key?(:from_path)
+          @op = args[:op] if args.key?(:op)
+          @path = args[:path] if args.key?(:path)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
