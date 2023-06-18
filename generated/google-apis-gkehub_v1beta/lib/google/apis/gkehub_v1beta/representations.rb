@@ -1028,12 +1028,14 @@ module Google
           property :mutation_enabled, as: 'mutationEnabled'
           property :referential_rules_enabled, as: 'referentialRulesEnabled'
           property :template_library_installed, as: 'templateLibraryInstalled'
+          property :update_time, as: 'updateTime'
         end
       end
       
       class ConfigManagementPolicyControllerMigration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :copy_time, as: 'copyTime'
           property :stage, as: 'stage'
         end
       end
@@ -1601,6 +1603,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :bundle_states, as: 'bundleStates', class: Google::Apis::GkehubV1beta::PolicyControllerOnClusterState, decorator: Google::Apis::GkehubV1beta::PolicyControllerOnClusterState::Representation
+      
+          property :referential_sync_config_state, as: 'referentialSyncConfigState', class: Google::Apis::GkehubV1beta::PolicyControllerOnClusterState, decorator: Google::Apis::GkehubV1beta::PolicyControllerOnClusterState::Representation
       
           property :template_library_state, as: 'templateLibraryState', class: Google::Apis::GkehubV1beta::PolicyControllerOnClusterState, decorator: Google::Apis::GkehubV1beta::PolicyControllerOnClusterState::Representation
       

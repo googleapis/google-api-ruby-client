@@ -1235,6 +1235,11 @@ module Google
         attr_accessor :template_library_installed
         alias_method :template_library_installed?, :template_library_installed
       
+        # Output only. Last time this membership spec was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1249,12 +1254,18 @@ module Google
           @mutation_enabled = args[:mutation_enabled] if args.key?(:mutation_enabled)
           @referential_rules_enabled = args[:referential_rules_enabled] if args.key?(:referential_rules_enabled)
           @template_library_installed = args[:template_library_installed] if args.key?(:template_library_installed)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
       # State for the migration of PolicyController from ACM -> PoCo Hub.
       class ConfigManagementPolicyControllerMigration
         include Google::Apis::Core::Hashable
+      
+        # Last time this membership spec was copied to PoCo feature.
+        # Corresponds to the JSON property `copyTime`
+        # @return [String]
+        attr_accessor :copy_time
       
         # Stage of the migration.
         # Corresponds to the JSON property `stage`
@@ -1267,6 +1278,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @copy_time = args[:copy_time] if args.key?(:copy_time)
           @stage = args[:stage] if args.key?(:stage)
         end
       end
@@ -3292,6 +3304,11 @@ module Google
         attr_accessor :bundle_states
       
         # OnClusterState represents the state of a sub-component of Policy Controller.
+        # Corresponds to the JSON property `referentialSyncConfigState`
+        # @return [Google::Apis::GkehubV1beta::PolicyControllerOnClusterState]
+        attr_accessor :referential_sync_config_state
+      
+        # OnClusterState represents the state of a sub-component of Policy Controller.
         # Corresponds to the JSON property `templateLibraryState`
         # @return [Google::Apis::GkehubV1beta::PolicyControllerOnClusterState]
         attr_accessor :template_library_state
@@ -3303,6 +3320,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bundle_states = args[:bundle_states] if args.key?(:bundle_states)
+          @referential_sync_config_state = args[:referential_sync_config_state] if args.key?(:referential_sync_config_state)
           @template_library_state = args[:template_library_state] if args.key?(:template_library_state)
         end
       end
