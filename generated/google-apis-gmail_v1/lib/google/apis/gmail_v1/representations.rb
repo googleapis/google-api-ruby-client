@@ -826,6 +826,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :label_filter_action, as: 'labelFilterAction'
+          property :label_filter_behavior, as: 'labelFilterBehavior'
           collection :label_ids, as: 'labelIds'
           property :topic_name, as: 'topicName'
         end
