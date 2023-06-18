@@ -10741,6 +10741,8 @@ module Google
       
           property :params, as: 'params', class: Google::Apis::ComputeAlpha::InstanceParams, decorator: Google::Apis::ComputeAlpha::InstanceParams::Representation
       
+          hash :partner_metadata, as: 'partnerMetadata', class: Google::Apis::ComputeAlpha::StructuredEntries, decorator: Google::Apis::ComputeAlpha::StructuredEntries::Representation
+      
           property :post_key_revocation_action_type, as: 'postKeyRevocationActionType'
           property :preserved_state_size_gb, :numeric_string => true, as: 'preservedStateSizeGb'
           property :private_ipv6_google_access, as: 'privateIpv6GoogleAccess'
@@ -11716,6 +11718,8 @@ module Google
       
           property :network_performance_config, as: 'networkPerformanceConfig', class: Google::Apis::ComputeAlpha::NetworkPerformanceConfig, decorator: Google::Apis::ComputeAlpha::NetworkPerformanceConfig::Representation
       
+          hash :partner_metadata, as: 'partnerMetadata', class: Google::Apis::ComputeAlpha::StructuredEntries, decorator: Google::Apis::ComputeAlpha::StructuredEntries::Representation
+      
           property :post_key_revocation_action_type, as: 'postKeyRevocationActionType'
           property :private_ipv6_google_access, as: 'privateIpv6GoogleAccess'
           property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::ComputeAlpha::ReservationAffinity, decorator: Google::Apis::ComputeAlpha::ReservationAffinity::Representation
@@ -11758,7 +11762,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :email, as: 'email'
           property :kind, as: 'kind'
-          property :machine_type, as: 'machineType'
           property :zone, as: 'zone'
         end
       end
@@ -15672,6 +15675,7 @@ module Google
           property :limit, as: 'limit'
           property :limit_name, as: 'limitName'
           property :metric_name, as: 'metricName'
+          property :rollout_status, as: 'rolloutStatus'
         end
       end
       

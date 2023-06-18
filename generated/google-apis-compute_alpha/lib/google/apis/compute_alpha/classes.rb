@@ -6649,7 +6649,9 @@ module Google
       
         # The name of the encryption key that is stored in Google Cloud KMS. For example:
         # "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/
-        # cryptoKeys/key
+        # cryptoKeys/key The fully-qualifed key name may be returned for resource GET
+        # requests. For example: "kmsKeyName": "projects/kms_project_id/locations/region/
+        # keyRings/ key_region/cryptoKeys/key /cryptoKeyVersions/1
         # Corresponds to the JSON property `kmsKeyName`
         # @return [String]
         attr_accessor :kms_key_name
@@ -15570,6 +15572,12 @@ module Google
         # @return [Google::Apis::ComputeAlpha::InstanceParams]
         attr_accessor :params
       
+        # Partner Metadata assigned to the instance. A map from a subdomain (namespace)
+        # to entries map.
+        # Corresponds to the JSON property `partnerMetadata`
+        # @return [Hash<String,Google::Apis::ComputeAlpha::StructuredEntries>]
+        attr_accessor :partner_metadata
+      
         # PostKeyRevocationActionType of the instance.
         # Corresponds to the JSON property `postKeyRevocationActionType`
         # @return [String]
@@ -15750,6 +15758,7 @@ module Google
           @network_interfaces = args[:network_interfaces] if args.key?(:network_interfaces)
           @network_performance_config = args[:network_performance_config] if args.key?(:network_performance_config)
           @params = args[:params] if args.key?(:params)
+          @partner_metadata = args[:partner_metadata] if args.key?(:partner_metadata)
           @post_key_revocation_action_type = args[:post_key_revocation_action_type] if args.key?(:post_key_revocation_action_type)
           @preserved_state_size_gb = args[:preserved_state_size_gb] if args.key?(:preserved_state_size_gb)
           @private_ipv6_google_access = args[:private_ipv6_google_access] if args.key?(:private_ipv6_google_access)
@@ -19278,6 +19287,12 @@ module Google
         # @return [Google::Apis::ComputeAlpha::NetworkPerformanceConfig]
         attr_accessor :network_performance_config
       
+        # Partner Metadata assigned to the instance properties. A map from a subdomain (
+        # namespace) to entries map.
+        # Corresponds to the JSON property `partnerMetadata`
+        # @return [Hash<String,Google::Apis::ComputeAlpha::StructuredEntries>]
+        attr_accessor :partner_metadata
+      
         # PostKeyRevocationActionType of the instance.
         # Corresponds to the JSON property `postKeyRevocationActionType`
         # @return [String]
@@ -19368,6 +19383,7 @@ module Google
           @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
           @network_interfaces = args[:network_interfaces] if args.key?(:network_interfaces)
           @network_performance_config = args[:network_performance_config] if args.key?(:network_performance_config)
+          @partner_metadata = args[:partner_metadata] if args.key?(:partner_metadata)
           @post_key_revocation_action_type = args[:post_key_revocation_action_type] if args.key?(:post_key_revocation_action_type)
           @private_ipv6_google_access = args[:private_ipv6_google_access] if args.key?(:private_ipv6_google_access)
           @reservation_affinity = args[:reservation_affinity] if args.key?(:reservation_affinity)
@@ -19446,14 +19462,6 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Partial URL of the machine type resource to use for this instance, in the
-        # format: machineTypes/machine-type. This is either provided by the client or
-        # chosen by the system. For example, the following is a valid partial url to a
-        # predefined machine type: machineTypes/n2-standard-1
-        # Corresponds to the JSON property `machineType`
-        # @return [String]
-        attr_accessor :machine_type
-      
         # [Output Only] URL of the zone where the resource resides You must specify this
         # field as part of the HTTP request URL. It is not settable as a field in the
         # request body.
@@ -19469,7 +19477,6 @@ module Google
         def update!(**args)
           @email = args[:email] if args.key?(:email)
           @kind = args[:kind] if args.key?(:kind)
-          @machine_type = args[:machine_type] if args.key?(:machine_type)
           @zone = args[:zone] if args.key?(:zone)
         end
       end
@@ -34849,6 +34856,11 @@ module Google
         # @return [String]
         attr_accessor :metric_name
       
+        # Rollout status of the future quota limit.
+        # Corresponds to the JSON property `rolloutStatus`
+        # @return [String]
+        attr_accessor :rollout_status
+      
         def initialize(**args)
            update!(**args)
         end
@@ -34860,6 +34872,7 @@ module Google
           @limit = args[:limit] if args.key?(:limit)
           @limit_name = args[:limit_name] if args.key?(:limit_name)
           @metric_name = args[:metric_name] if args.key?(:metric_name)
+          @rollout_status = args[:rollout_status] if args.key?(:rollout_status)
         end
       end
       
@@ -38581,8 +38594,8 @@ module Google
         # @return [String]
         attr_accessor :next_hop_gateway
       
-        # [Output Only] The full resource name of the network connectivity center hub
-        # that should handle matching packets.
+        # [Output Only] The full resource name of the Network Connectivity Center hub
+        # that will handle matching packets.
         # Corresponds to the JSON property `nextHopHub`
         # @return [String]
         attr_accessor :next_hop_hub
@@ -51500,8 +51513,7 @@ module Google
       class UpcomingMaintenance
         include Google::Apis::Core::Hashable
       
-        # Indicates if the maintenance can be customer triggered. From more detail, see
-        # go/sf-ctm-design.
+        # Indicates if the maintenance can be customer triggered.
         # Corresponds to the JSON property `canReschedule`
         # @return [Boolean]
         attr_accessor :can_reschedule
