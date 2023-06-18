@@ -5762,7 +5762,9 @@ module Google
       
         # The name of the encryption key that is stored in Google Cloud KMS. For example:
         # "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/
-        # cryptoKeys/key
+        # cryptoKeys/key The fully-qualifed key name may be returned for resource GET
+        # requests. For example: "kmsKeyName": "projects/kms_project_id/locations/region/
+        # keyRings/ key_region/cryptoKeys/key /cryptoKeyVersions/1
         # Corresponds to the JSON property `kmsKeyName`
         # @return [String]
         attr_accessor :kms_key_name
@@ -13188,6 +13190,16 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
+        # Encrypts suspended data for an instance with a customer-managed encryption key.
+        # If you are creating a new instance, this field will encrypt the local SSD and
+        # in-memory contents of the instance during the suspend operation. If you do not
+        # provide an encryption key when creating the instance, then the local SSD and
+        # in-memory contents will be encrypted using an automatically generated key
+        # during the suspend operation.
+        # Corresponds to the JSON property `instanceEncryptionKey`
+        # @return [Google::Apis::ComputeV1::CustomerEncryptionKey]
+        attr_accessor :instance_encryption_key
+      
         # KeyRevocationActionType of the instance. Supported options are "STOP" and "
         # NONE". The default value is "NONE" if it is not specified.
         # Corresponds to the JSON property `keyRevocationActionType`
@@ -13407,6 +13419,7 @@ module Google
           @guest_accelerators = args[:guest_accelerators] if args.key?(:guest_accelerators)
           @hostname = args[:hostname] if args.key?(:hostname)
           @id = args[:id] if args.key?(:id)
+          @instance_encryption_key = args[:instance_encryption_key] if args.key?(:instance_encryption_key)
           @key_revocation_action_type = args[:key_revocation_action_type] if args.key?(:key_revocation_action_type)
           @kind = args[:kind] if args.key?(:kind)
           @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
@@ -32174,6 +32187,20 @@ module Google
         # @return [Google::Apis::ComputeV1::RouterBgpPeerBfd]
         attr_accessor :bfd
       
+        # A list of user-defined custom learned route IP address ranges for a BGP
+        # session.
+        # Corresponds to the JSON property `customLearnedIpRanges`
+        # @return [Array<Google::Apis::ComputeV1::RouterBgpPeerCustomLearnedIpRange>]
+        attr_accessor :custom_learned_ip_ranges
+      
+        # The user-defined custom learned route priority for a BGP session. This value
+        # is applied to all custom learned route ranges for the session. You can choose
+        # a value from `0` to `65335`. If you don't provide a value, Google Cloud
+        # assigns a priority of `100` to the ranges.
+        # Corresponds to the JSON property `customLearnedRoutePriority`
+        # @return [Fixnum]
+        attr_accessor :custom_learned_route_priority
+      
         # The status of the BGP peer connection. If set to FALSE, any active session
         # with the peer is terminated and all associated routing information is removed.
         # If set to TRUE, the peer connection can be established with routing
@@ -32267,6 +32294,8 @@ module Google
           @advertised_ip_ranges = args[:advertised_ip_ranges] if args.key?(:advertised_ip_ranges)
           @advertised_route_priority = args[:advertised_route_priority] if args.key?(:advertised_route_priority)
           @bfd = args[:bfd] if args.key?(:bfd)
+          @custom_learned_ip_ranges = args[:custom_learned_ip_ranges] if args.key?(:custom_learned_ip_ranges)
+          @custom_learned_route_priority = args[:custom_learned_route_priority] if args.key?(:custom_learned_route_priority)
           @enable = args[:enable] if args.key?(:enable)
           @enable_ipv6 = args[:enable_ipv6] if args.key?(:enable_ipv6)
           @interface_name = args[:interface_name] if args.key?(:interface_name)
@@ -32330,6 +32359,27 @@ module Google
           @min_transmit_interval = args[:min_transmit_interval] if args.key?(:min_transmit_interval)
           @multiplier = args[:multiplier] if args.key?(:multiplier)
           @session_initialization_mode = args[:session_initialization_mode] if args.key?(:session_initialization_mode)
+        end
+      end
+      
+      # 
+      class RouterBgpPeerCustomLearnedIpRange
+        include Google::Apis::Core::Hashable
+      
+        # The custom learned route IP address range. Must be a valid CIDR-formatted
+        # prefix. If an IP address is provided without a subnet mask, it is interpreted
+        # as, for IPv4, a `/32` singular IP address range, and, for IPv6, `/128`.
+        # Corresponds to the JSON property `range`
+        # @return [String]
+        attr_accessor :range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @range = args[:range] if args.key?(:range)
         end
       end
       
