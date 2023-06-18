@@ -1191,8 +1191,8 @@ module Google
         # @param [String] change_offer_purchase_billing_account
         #   Optional. Resource name of the new target Billing Account. Provide this
         #   Billing Account when setting up billing for a trial subscription. Format:
-        #   accounts/`account_id`/billing_accounts/`billing_account_id`. This field is
-        #   only relevant for multi-currency accounts. It should be left empty for single
+        #   accounts/`account_id`/billingAccounts/`billing_account_id`. This field is only
+        #   relevant for multi-currency accounts. It should be left empty for single
         #   currency accounts.
         # @param [String] change_offer_purchase_entitlement
         #   Required. Resource name of the entitlement. Format: accounts/`account_id`/
@@ -1202,7 +1202,7 @@ module Google
         #   or downgrading an entitlement. Format: products/`product_id`/skus/`sku_id`
         # @param [String] create_entitlement_purchase_billing_account
         #   Optional. Billing account that the result should be restricted to. Format:
-        #   accounts/`account_id`/billing_accounts/`billing_account_id`.
+        #   accounts/`account_id`/billingAccounts/`billing_account_id`.
         # @param [String] create_entitlement_purchase_sku
         #   Required. SKU that the result should be restricted to. Format: products/`
         #   product_id`/skus/`sku_id`.
@@ -2508,6 +2508,104 @@ module Google
           command.response_representation = Google::Apis::CloudchannelV1::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::CloudchannelV1::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the Rebilling supported SKU groups the account is authorized to sell.
+        # Reference: https://cloud.google.com/skus/sku-groups Possible Error Codes: *
+        # PERMISSION_DENIED: If the account making the request and the account being
+        # queried are different, or the account doesn't exist. * INTERNAL: Any non-user
+        # error related to technical issues in the backend. In this case, contact Cloud
+        # Channel support. Return Value: If successful, the SkuGroup resources. The data
+        # for each resource is displayed in the alphabetical order of SKU group display
+        # name. The data for each resource is displayed in the ascending order of
+        # SkuGroup.display_name If unsuccessful, returns an error.
+        # @param [String] parent
+        #   Required. The resource name of the account from which to list SKU groups.
+        #   Parent uses the format: accounts/`account`.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of SKU groups to return. The service may return
+        #   fewer than this value. If unspecified, returns a maximum of 1000 SKU groups.
+        #   The maximum value is 1000; values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   Optional. A token identifying a page of results beyond the first page.
+        #   Obtained through ListSkuGroups.next_page_token of the previous
+        #   CloudChannelService.ListSkuGroups call.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudchannelV1::GoogleCloudChannelV1ListSkuGroupsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1ListSkuGroupsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_account_sku_groups(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/skuGroups', options)
+          command.response_representation = Google::Apis::CloudchannelV1::GoogleCloudChannelV1ListSkuGroupsResponse::Representation
+          command.response_class = Google::Apis::CloudchannelV1::GoogleCloudChannelV1ListSkuGroupsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the Billable SKUs in a given SKU group. Possible error codes:
+        # PERMISSION_DENIED: If the account making the request and the account being
+        # queried for are different, or the account doesn't exist. INVALID_ARGUMENT:
+        # Missing or invalid required parameters in the request. INTERNAL: Any non-user
+        # error related to technical issue in the backend. In this case, contact cloud
+        # channel support. Return Value: If successful, the BillableSku resources. The
+        # data for each resource is displayed in the ascending order of: * BillableSku.
+        # service_display_name * BillableSku.sku_display_name If unsuccessful, returns
+        # an error.
+        # @param [String] parent
+        #   Required. Resource name of the SKU group. Format: accounts/`account`/skuGroups/
+        #   `sku_group`.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of SKUs to return. The service may return fewer
+        #   than this value. If unspecified, returns a maximum of 100000 SKUs. The maximum
+        #   value is 100000; values above 100000 will be coerced to 100000.
+        # @param [String] page_token
+        #   Optional. A token identifying a page of results beyond the first page.
+        #   Obtained through ListSkuGroupBillableSkus.next_page_token of the previous
+        #   CloudChannelService.ListSkuGroupBillableSkus call.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudchannelV1::GoogleCloudChannelV1ListSkuGroupBillableSkusResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1ListSkuGroupBillableSkusResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_account_sku_group_billable_skus(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/billableSkus', options)
+          command.response_representation = Google::Apis::CloudchannelV1::GoogleCloudChannelV1ListSkuGroupBillableSkusResponse::Representation
+          command.response_class = Google::Apis::CloudchannelV1::GoogleCloudChannelV1ListSkuGroupBillableSkusResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
