@@ -17848,6 +17848,32 @@ module Google
         end
       end
       
+      # IMPORTANT: It is unsafe to accept this message from an untrusted source, since
+      # it's trivial for an attacker to forge serialized messages that don't fulfill
+      # the type's safety contract -- for example, it could contain attacker
+      # controlled script. A system which receives a SafeHtmlProto implicitly trusts
+      # the producer of the SafeHtmlProto. So, it's generally safe to return this
+      # message in RPC responses, but generally unsafe to accept it in RPC requests.
+      class SafeHtmlProto
+        include Google::Apis::Core::Hashable
+      
+        # IMPORTANT: Never set or read this field, even from tests, it is private. See
+        # documentation at the top of .proto file for programming language packages with
+        # which to create or read this message.
+        # Corresponds to the JSON property `privateDoNotAccessOrElseSafeHtmlWrappedValue`
+        # @return [String]
+        attr_accessor :private_do_not_access_or_else_safe_html_wrapped_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @private_do_not_access_or_else_safe_html_wrapped_value = args[:private_do_not_access_or_else_safe_html_wrapped_value] if args.key?(:private_do_not_access_or_else_safe_html_wrapped_value)
+        end
+      end
+      
       # Message containing a string that is safe to use in URL contexts in DOM APIs
       # and HTML documents, where the URL context does not refer to a resource that
       # loads code.
@@ -19429,6 +19455,16 @@ module Google
         # @return [String]
         attr_accessor :suggested_query
       
+        # IMPORTANT: It is unsafe to accept this message from an untrusted source, since
+        # it's trivial for an attacker to forge serialized messages that don't fulfill
+        # the type's safety contract -- for example, it could contain attacker
+        # controlled script. A system which receives a SafeHtmlProto implicitly trusts
+        # the producer of the SafeHtmlProto. So, it's generally safe to return this
+        # message in RPC responses, but generally unsafe to accept it in RPC requests.
+        # Corresponds to the JSON property `suggestedQueryHtml`
+        # @return [Google::Apis::CloudsearchV1::SafeHtmlProto]
+        attr_accessor :suggested_query_html
+      
         # Suggestion triggered for the current query.
         # Corresponds to the JSON property `suggestionType`
         # @return [String]
@@ -19441,6 +19477,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @suggested_query = args[:suggested_query] if args.key?(:suggested_query)
+          @suggested_query_html = args[:suggested_query_html] if args.key?(:suggested_query_html)
           @suggestion_type = args[:suggestion_type] if args.key?(:suggestion_type)
         end
       end
