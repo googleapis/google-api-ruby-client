@@ -196,6 +196,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResourceFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Restore
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -245,6 +251,18 @@ module Google
       end
       
       class TestIamPermissionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TransformationRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TransformationRuleAction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -348,6 +366,8 @@ module Google
           property :protected_pod_count, as: 'protectedPodCount'
           property :retention_policy, as: 'retentionPolicy', class: Google::Apis::GkebackupV1::RetentionPolicy, decorator: Google::Apis::GkebackupV1::RetentionPolicy::Representation
       
+          property :state, as: 'state'
+          property :state_reason, as: 'stateReason'
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
         end
@@ -377,6 +397,10 @@ module Google
       class ClusterResourceRestoreScope
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :all_group_kinds, as: 'allGroupKinds'
+          collection :excluded_group_kinds, as: 'excludedGroupKinds', class: Google::Apis::GkebackupV1::GroupKind, decorator: Google::Apis::GkebackupV1::GroupKind::Representation
+      
+          property :no_group_kinds, as: 'noGroupKinds'
           collection :selected_group_kinds, as: 'selectedGroupKinds', class: Google::Apis::GkebackupV1::GroupKind, decorator: Google::Apis::GkebackupV1::GroupKind::Representation
       
         end
@@ -574,6 +598,16 @@ module Google
         end
       end
       
+      class ResourceFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :group_kinds, as: 'groupKinds', class: Google::Apis::GkebackupV1::GroupKind, decorator: Google::Apis::GkebackupV1::GroupKind::Representation
+      
+          property :json_path, as: 'jsonPath'
+          collection :namespaces, as: 'namespaces'
+        end
+      end
+      
       class Restore
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -605,12 +639,17 @@ module Google
           property :cluster_resource_conflict_policy, as: 'clusterResourceConflictPolicy'
           property :cluster_resource_restore_scope, as: 'clusterResourceRestoreScope', class: Google::Apis::GkebackupV1::ClusterResourceRestoreScope, decorator: Google::Apis::GkebackupV1::ClusterResourceRestoreScope::Representation
       
+          property :excluded_namespaces, as: 'excludedNamespaces', class: Google::Apis::GkebackupV1::Namespaces, decorator: Google::Apis::GkebackupV1::Namespaces::Representation
+      
           property :namespaced_resource_restore_mode, as: 'namespacedResourceRestoreMode'
+          property :no_namespaces, as: 'noNamespaces'
           property :selected_applications, as: 'selectedApplications', class: Google::Apis::GkebackupV1::NamespacedNames, decorator: Google::Apis::GkebackupV1::NamespacedNames::Representation
       
           property :selected_namespaces, as: 'selectedNamespaces', class: Google::Apis::GkebackupV1::Namespaces, decorator: Google::Apis::GkebackupV1::Namespaces::Representation
       
           collection :substitution_rules, as: 'substitutionRules', class: Google::Apis::GkebackupV1::SubstitutionRule, decorator: Google::Apis::GkebackupV1::SubstitutionRule::Representation
+      
+          collection :transformation_rules, as: 'transformationRules', class: Google::Apis::GkebackupV1::TransformationRule, decorator: Google::Apis::GkebackupV1::TransformationRule::Representation
       
           property :volume_data_restore_policy, as: 'volumeDataRestorePolicy'
         end
@@ -628,6 +667,8 @@ module Google
           property :name, as: 'name'
           property :restore_config, as: 'restoreConfig', class: Google::Apis::GkebackupV1::RestoreConfig, decorator: Google::Apis::GkebackupV1::RestoreConfig::Representation
       
+          property :state, as: 'state'
+          property :state_reason, as: 'stateReason'
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
         end
@@ -682,6 +723,27 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class TransformationRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          collection :field_actions, as: 'fieldActions', class: Google::Apis::GkebackupV1::TransformationRuleAction, decorator: Google::Apis::GkebackupV1::TransformationRuleAction::Representation
+      
+          property :resource_filter, as: 'resourceFilter', class: Google::Apis::GkebackupV1::ResourceFilter, decorator: Google::Apis::GkebackupV1::ResourceFilter::Representation
+      
+        end
+      end
+      
+      class TransformationRuleAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :from_path, as: 'fromPath'
+          property :op, as: 'op'
+          property :path, as: 'path'
+          property :value, as: 'value'
         end
       end
       
