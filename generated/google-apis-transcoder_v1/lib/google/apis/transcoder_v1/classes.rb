@@ -435,6 +435,26 @@ module Google
         end
       end
       
+      # `DASH` manifest configuration.
+      class DashConfig
+        include Google::Apis::Core::Hashable
+      
+        # The segment reference scheme for a `DASH` manifest. The default is `
+        # SEGMENT_LIST`
+        # Corresponds to the JSON property `segmentReferenceScheme`
+        # @return [String]
+        attr_accessor :segment_reference_scheme
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @segment_reference_scheme = args[:segment_reference_scheme] if args.key?(:segment_reference_scheme)
+        end
+      end
+      
       # Deblock preprocessing configuration. **Note:** This configuration is not
       # supported.
       class Deblock
@@ -1329,6 +1349,11 @@ module Google
       class Manifest
         include Google::Apis::Core::Hashable
       
+        # `DASH` manifest configuration.
+        # Corresponds to the JSON property `dash`
+        # @return [Google::Apis::TranscoderV1::DashConfig]
+        attr_accessor :dash
+      
         # The name of the generated file. The default is `manifest` with the extension
         # suffix corresponding to the `Manifest.type`.
         # Corresponds to the JSON property `fileName`
@@ -1354,6 +1379,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @dash = args[:dash] if args.key?(:dash)
           @file_name = args[:file_name] if args.key?(:file_name)
           @mux_streams = args[:mux_streams] if args.key?(:mux_streams)
           @type = args[:type] if args.key?(:type)
