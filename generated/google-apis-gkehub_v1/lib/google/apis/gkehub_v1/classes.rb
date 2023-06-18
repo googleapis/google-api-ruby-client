@@ -1168,6 +1168,11 @@ module Google
         attr_accessor :template_library_installed
         alias_method :template_library_installed?, :template_library_installed
       
+        # Output only. Last time this membership spec was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1182,12 +1187,18 @@ module Google
           @mutation_enabled = args[:mutation_enabled] if args.key?(:mutation_enabled)
           @referential_rules_enabled = args[:referential_rules_enabled] if args.key?(:referential_rules_enabled)
           @template_library_installed = args[:template_library_installed] if args.key?(:template_library_installed)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
       # State for the migration of PolicyController from ACM -> PoCo Hub.
       class ConfigManagementPolicyControllerMigration
         include Google::Apis::Core::Hashable
+      
+        # Last time this membership spec was copied to PoCo feature.
+        # Corresponds to the JSON property `copyTime`
+        # @return [String]
+        attr_accessor :copy_time
       
         # Stage of the migration.
         # Corresponds to the JSON property `stage`
@@ -1200,6 +1211,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @copy_time = args[:copy_time] if args.key?(:copy_time)
           @stage = args[:stage] if args.key?(:stage)
         end
       end
@@ -1659,6 +1671,87 @@ module Google
           @code = args[:code] if args.key?(:code)
           @description = args[:description] if args.key?(:description)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Fleet contains the Fleet-wide metadata and configuration.
+      class Fleet
+        include Google::Apis::Core::Hashable
+      
+        # Output only. When the Fleet was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. When the Fleet was deleted.
+        # Corresponds to the JSON property `deleteTime`
+        # @return [String]
+        attr_accessor :delete_time
+      
+        # Optional. A user-assigned display name of the Fleet. When present, it must be
+        # between 4 to 30 characters. Allowed characters are: lowercase and uppercase
+        # letters, numbers, hyphen, single-quote, double-quote, space, and exclamation
+        # point. Example: `Production Fleet`
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. The full, unique resource name of this fleet in the format of `
+        # projects/`project`/locations/`location`/fleets/`fleet``. Each Google Cloud
+        # project can have at most one fleet resource, named "default".
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # FleetLifecycleState describes the state of a Fleet resource.
+        # Corresponds to the JSON property `state`
+        # @return [Google::Apis::GkehubV1::FleetLifecycleState]
+        attr_accessor :state
+      
+        # Output only. Google-generated UUID for this resource. This is unique across
+        # all Fleet resources. If a Fleet resource is deleted and another resource with
+        # the same name is created, it gets a different uid.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. When the Fleet was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @delete_time = args[:delete_time] if args.key?(:delete_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # FleetLifecycleState describes the state of a Fleet resource.
+      class FleetLifecycleState
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The current state of the Fleet resource.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
         end
       end
       
@@ -2210,6 +2303,33 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @resources = args[:resources] if args.key?(:resources)
+        end
+      end
+      
+      # Response message for the `GkeHub.ListFleetsResponse` method.
+      class ListFleetsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of matching fleets.
+        # Corresponds to the JSON property `fleets`
+        # @return [Array<Google::Apis::GkehubV1::Fleet>]
+        attr_accessor :fleets
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages. The token is only valid for
+        # 1h.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fleets = args[:fleets] if args.key?(:fleets)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
