@@ -445,8 +445,8 @@ module Google
       class GoogleCloudDocumentaiUiv1beta3DocumentId
         include Google::Apis::Core::Hashable
       
-        # Identifies a document uniquely within the scope of a dataset in user managed
-        # Cloud Storage option.
+        # Identifies a document uniquely within the scope of a dataset in the user-
+        # managed Cloud Storage option.
         # Corresponds to the JSON property `gcsManagedDocId`
         # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3DocumentIdGcsManagedDocumentId]
         attr_accessor :gcs_managed_doc_id
@@ -474,8 +474,8 @@ module Google
         end
       end
       
-      # Identifies a document uniquely within the scope of a dataset in user managed
-      # Cloud Storage option.
+      # Identifies a document uniquely within the scope of a dataset in the user-
+      # managed Cloud Storage option.
       class GoogleCloudDocumentaiUiv1beta3DocumentIdGcsManagedDocumentId
         include Google::Apis::Core::Hashable
       
@@ -484,7 +484,7 @@ module Google
         # @return [String]
         attr_accessor :cw_doc_id
       
-        # Required. The Cloud Storage uri where the actual document is stored.
+        # Required. The Cloud Storage URI where the actual document is stored.
         # Corresponds to the JSON property `gcsUri`
         # @return [String]
         attr_accessor :gcs_uri
@@ -2319,7 +2319,7 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentPageImage]
         attr_accessor :image
       
-        # Image Quality Scores for the page image.
+        # Image quality scores for the page image.
         # Corresponds to the JSON property `imageQualityScores`
         # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentPageImageQualityScores]
         attr_accessor :image_quality_scores
@@ -2695,7 +2695,7 @@ module Google
         end
       end
       
-      # Image Quality Scores for the page image.
+      # Image quality scores for the page image.
       class GoogleCloudDocumentaiV1beta1DocumentPageImageQualityScores
         include Google::Apis::Core::Hashable
       
@@ -2725,7 +2725,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Confidence of detected defect. Range `[0, 1]` where `1` indicates strong
-        # confidence of that the defect exists.
+        # confidence that the defect exists.
         # Corresponds to the JSON property `confidence`
         # @return [Float]
         attr_accessor :confidence
@@ -3093,7 +3093,7 @@ module Google
         # be trivially provided to the constructor of `java.awt.Color` in Java; it can
         # also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha`
         # method in iOS; and, with just a little work, it can be easily formatted into a
-        # CSS `rgba()` string in JavaScript. This reference page does not have
+        # CSS `rgba()` string in JavaScript. This reference page doesn't have
         # information about the absolute color space that should be used to interpret
         # the RGB value—for example, sRGB, Adobe RGB, DCI-P3, and BT.2020. By default,
         # applications should assume the sRGB color space. When color equality needs to
@@ -3210,7 +3210,7 @@ module Google
         # be trivially provided to the constructor of `java.awt.Color` in Java; it can
         # also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha`
         # method in iOS; and, with just a little work, it can be easily formatted into a
-        # CSS `rgba()` string in JavaScript. This reference page does not have
+        # CSS `rgba()` string in JavaScript. This reference page doesn't have
         # information about the absolute color space that should be used to interpret
         # the RGB value—for example, sRGB, Adobe RGB, DCI-P3, and BT.2020. By default,
         # applications should assume the sRGB color space. When color equality needs to
@@ -3517,7 +3517,7 @@ module Google
         # be trivially provided to the constructor of `java.awt.Color` in Java; it can
         # also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha`
         # method in iOS; and, with just a little work, it can be easily formatted into a
-        # CSS `rgba()` string in JavaScript. This reference page does not have
+        # CSS `rgba()` string in JavaScript. This reference page doesn't have
         # information about the absolute color space that should be used to interpret
         # the RGB value—for example, sRGB, Adobe RGB, DCI-P3, and BT.2020. By default,
         # applications should assume the sRGB color space. When color equality needs to
@@ -3566,7 +3566,7 @@ module Google
         # be trivially provided to the constructor of `java.awt.Color` in Java; it can
         # also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha`
         # method in iOS; and, with just a little work, it can be easily formatted into a
-        # CSS `rgba()` string in JavaScript. This reference page does not have
+        # CSS `rgba()` string in JavaScript. This reference page doesn't have
         # information about the absolute color space that should be used to interpret
         # the RGB value—for example, sRGB, Adobe RGB, DCI-P3, and BT.2020. By default,
         # applications should assume the sRGB color space. When color equality needs to
@@ -3669,7 +3669,7 @@ module Google
         # @return [Float]
         attr_accessor :size
       
-        # Unit for the font size. Follows CSS naming (`in`, `px`, `pt`, etc.).
+        # Unit for the font size. Follows CSS naming (such as `in`, `px`, and `pt`).
         # Corresponds to the JSON property `unit`
         # @return [String]
         attr_accessor :unit
@@ -4508,7 +4508,7 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentPageImage]
         attr_accessor :image
       
-        # Image Quality Scores for the page image.
+        # Image quality scores for the page image.
         # Corresponds to the JSON property `imageQualityScores`
         # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentPageImageQualityScores]
         attr_accessor :image_quality_scores
@@ -4884,7 +4884,7 @@ module Google
         end
       end
       
-      # Image Quality Scores for the page image.
+      # Image quality scores for the page image.
       class GoogleCloudDocumentaiV1beta2DocumentPageImageQualityScores
         include Google::Apis::Core::Hashable
       
@@ -4914,7 +4914,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Confidence of detected defect. Range `[0, 1]` where `1` indicates strong
-        # confidence of that the defect exists.
+        # confidence that the defect exists.
         # Corresponds to the JSON property `confidence`
         # @return [Float]
         attr_accessor :confidence
@@ -5282,7 +5282,7 @@ module Google
         # be trivially provided to the constructor of `java.awt.Color` in Java; it can
         # also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha`
         # method in iOS; and, with just a little work, it can be easily formatted into a
-        # CSS `rgba()` string in JavaScript. This reference page does not have
+        # CSS `rgba()` string in JavaScript. This reference page doesn't have
         # information about the absolute color space that should be used to interpret
         # the RGB value—for example, sRGB, Adobe RGB, DCI-P3, and BT.2020. By default,
         # applications should assume the sRGB color space. When color equality needs to
@@ -5399,7 +5399,7 @@ module Google
         # be trivially provided to the constructor of `java.awt.Color` in Java; it can
         # also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha`
         # method in iOS; and, with just a little work, it can be easily formatted into a
-        # CSS `rgba()` string in JavaScript. This reference page does not have
+        # CSS `rgba()` string in JavaScript. This reference page doesn't have
         # information about the absolute color space that should be used to interpret
         # the RGB value—for example, sRGB, Adobe RGB, DCI-P3, and BT.2020. By default,
         # applications should assume the sRGB color space. When color equality needs to
@@ -5706,7 +5706,7 @@ module Google
         # be trivially provided to the constructor of `java.awt.Color` in Java; it can
         # also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha`
         # method in iOS; and, with just a little work, it can be easily formatted into a
-        # CSS `rgba()` string in JavaScript. This reference page does not have
+        # CSS `rgba()` string in JavaScript. This reference page doesn't have
         # information about the absolute color space that should be used to interpret
         # the RGB value—for example, sRGB, Adobe RGB, DCI-P3, and BT.2020. By default,
         # applications should assume the sRGB color space. When color equality needs to
@@ -5755,7 +5755,7 @@ module Google
         # be trivially provided to the constructor of `java.awt.Color` in Java; it can
         # also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha`
         # method in iOS; and, with just a little work, it can be easily formatted into a
-        # CSS `rgba()` string in JavaScript. This reference page does not have
+        # CSS `rgba()` string in JavaScript. This reference page doesn't have
         # information about the absolute color space that should be used to interpret
         # the RGB value—for example, sRGB, Adobe RGB, DCI-P3, and BT.2020. By default,
         # applications should assume the sRGB color space. When color equality needs to
@@ -5858,7 +5858,7 @@ module Google
         # @return [Float]
         attr_accessor :size
       
-        # Unit for the font size. Follows CSS naming (`in`, `px`, `pt`, etc.).
+        # Unit for the font size. Follows CSS naming (such as `in`, `px`, and `pt`).
         # Corresponds to the JSON property `unit`
         # @return [String]
         attr_accessor :unit
@@ -7196,7 +7196,7 @@ module Google
       # be trivially provided to the constructor of `java.awt.Color` in Java; it can
       # also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha`
       # method in iOS; and, with just a little work, it can be easily formatted into a
-      # CSS `rgba()` string in JavaScript. This reference page does not have
+      # CSS `rgba()` string in JavaScript. This reference page doesn't have
       # information about the absolute color space that should be used to interpret
       # the RGB value—for example, sRGB, Adobe RGB, DCI-P3, and BT.2020. By default,
       # applications should assume the sRGB color space. When color equality needs to
