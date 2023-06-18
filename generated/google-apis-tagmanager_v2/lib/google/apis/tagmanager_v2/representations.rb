@@ -232,6 +232,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListTransformationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListTriggersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -316,6 +322,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RevertTransformationResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RevertTriggerResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -365,6 +377,12 @@ module Google
       end
       
       class TeardownTag
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Transformation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -532,6 +550,7 @@ module Google
           property :support_gtag_configs, as: 'supportGtagConfigs'
           property :support_tags, as: 'supportTags'
           property :support_templates, as: 'supportTemplates'
+          property :support_transformations, as: 'supportTransformations'
           property :support_triggers, as: 'supportTriggers'
           property :support_user_permissions, as: 'supportUserPermissions'
           property :support_variables, as: 'supportVariables'
@@ -567,6 +586,8 @@ module Google
           collection :tag, as: 'tag', class: Google::Apis::TagmanagerV2::Tag, decorator: Google::Apis::TagmanagerV2::Tag::Representation
       
           property :tag_manager_url, as: 'tagManagerUrl'
+          collection :transformation, as: 'transformation', class: Google::Apis::TagmanagerV2::Transformation, decorator: Google::Apis::TagmanagerV2::Transformation::Representation
+      
           collection :trigger, as: 'trigger', class: Google::Apis::TagmanagerV2::Trigger, decorator: Google::Apis::TagmanagerV2::Trigger::Representation
       
           collection :variable, as: 'variable', class: Google::Apis::TagmanagerV2::Variable, decorator: Google::Apis::TagmanagerV2::Variable::Representation
@@ -666,6 +687,8 @@ module Google
           property :folder, as: 'folder', class: Google::Apis::TagmanagerV2::Folder, decorator: Google::Apis::TagmanagerV2::Folder::Representation
       
           property :tag, as: 'tag', class: Google::Apis::TagmanagerV2::Tag, decorator: Google::Apis::TagmanagerV2::Tag::Representation
+      
+          property :transformation, as: 'transformation', class: Google::Apis::TagmanagerV2::Transformation, decorator: Google::Apis::TagmanagerV2::Transformation::Representation
       
           property :trigger, as: 'trigger', class: Google::Apis::TagmanagerV2::Trigger, decorator: Google::Apis::TagmanagerV2::Trigger::Representation
       
@@ -867,6 +890,15 @@ module Google
         end
       end
       
+      class ListTransformationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :transformation, as: 'transformation', class: Google::Apis::TagmanagerV2::Transformation, decorator: Google::Apis::TagmanagerV2::Transformation::Representation
+      
+        end
+      end
+      
       class ListTriggersResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -994,6 +1026,14 @@ module Google
         end
       end
       
+      class RevertTransformationResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :transformation, as: 'transformation', class: Google::Apis::TagmanagerV2::Transformation, decorator: Google::Apis::TagmanagerV2::Transformation::Representation
+      
+        end
+      end
+      
       class RevertTriggerResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1097,6 +1137,25 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :stop_teardown_on_failure, as: 'stopTeardownOnFailure'
           property :tag_name, as: 'tagName'
+        end
+      end
+      
+      class Transformation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_id, as: 'accountId'
+          property :container_id, as: 'containerId'
+          property :fingerprint, as: 'fingerprint'
+          property :name, as: 'name'
+          property :notes, as: 'notes'
+          collection :parameter, as: 'parameter', class: Google::Apis::TagmanagerV2::Parameter, decorator: Google::Apis::TagmanagerV2::Parameter::Representation
+      
+          property :parent_folder_id, as: 'parentFolderId'
+          property :path, as: 'path'
+          property :tag_manager_url, as: 'tagManagerUrl'
+          property :transformation_id, as: 'transformationId'
+          property :type, as: 'type'
+          property :workspace_id, as: 'workspaceId'
         end
       end
       
