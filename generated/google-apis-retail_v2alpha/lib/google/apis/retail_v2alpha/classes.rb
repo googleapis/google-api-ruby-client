@@ -737,6 +737,74 @@ module Google
         end
       end
       
+      # Metadata related to the progress of the PurgeProducts operation. This will be
+      # returned by the google.longrunning.Operation.metadata field.
+      class GoogleCloudRetailV2PurgeProductsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Count of entries that encountered errors while processing.
+        # Corresponds to the JSON property `failureCount`
+        # @return [Fixnum]
+        attr_accessor :failure_count
+      
+        # Count of entries that were deleted successfully.
+        # Corresponds to the JSON property `successCount`
+        # @return [Fixnum]
+        attr_accessor :success_count
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @failure_count = args[:failure_count] if args.key?(:failure_count)
+          @success_count = args[:success_count] if args.key?(:success_count)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Response of the PurgeProductsRequest. If the long running operation is
+      # successfully done, then this message is returned by the google.longrunning.
+      # Operations.response field.
+      class GoogleCloudRetailV2PurgeProductsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The total count of products purged as a result of the operation.
+        # Corresponds to the JSON property `purgeCount`
+        # @return [Fixnum]
+        attr_accessor :purge_count
+      
+        # A sample of the product names that will be deleted. Only populated if `force`
+        # is set to false. A max of 100 names will be returned and the names are chosen
+        # at random.
+        # Corresponds to the JSON property `purgeSample`
+        # @return [Array<String>]
+        attr_accessor :purge_sample
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @purge_count = args[:purge_count] if args.key?(:purge_count)
+          @purge_sample = args[:purge_sample] if args.key?(:purge_sample)
+        end
+      end
+      
       # Response of the PurgeUserEventsRequest. If the long running operation is
       # successfully done, then this message is returned by the google.longrunning.
       # Operations.response field.
@@ -7630,6 +7698,74 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Metadata related to the progress of the PurgeProducts operation. This will be
+      # returned by the google.longrunning.Operation.metadata field.
+      class GoogleCloudRetailV2betaPurgeProductsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Count of entries that encountered errors while processing.
+        # Corresponds to the JSON property `failureCount`
+        # @return [Fixnum]
+        attr_accessor :failure_count
+      
+        # Count of entries that were deleted successfully.
+        # Corresponds to the JSON property `successCount`
+        # @return [Fixnum]
+        attr_accessor :success_count
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @failure_count = args[:failure_count] if args.key?(:failure_count)
+          @success_count = args[:success_count] if args.key?(:success_count)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Response of the PurgeProductsRequest. If the long running operation is
+      # successfully done, then this message is returned by the google.longrunning.
+      # Operations.response field.
+      class GoogleCloudRetailV2betaPurgeProductsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The total count of products purged as a result of the operation.
+        # Corresponds to the JSON property `purgeCount`
+        # @return [Fixnum]
+        attr_accessor :purge_count
+      
+        # A sample of the product names that will be deleted. Only populated if `force`
+        # is set to false. A max of 100 names will be returned and the names are chosen
+        # at random.
+        # Corresponds to the JSON property `purgeSample`
+        # @return [Array<String>]
+        attr_accessor :purge_sample
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @purge_count = args[:purge_count] if args.key?(:purge_count)
+          @purge_sample = args[:purge_sample] if args.key?(:purge_sample)
         end
       end
       
