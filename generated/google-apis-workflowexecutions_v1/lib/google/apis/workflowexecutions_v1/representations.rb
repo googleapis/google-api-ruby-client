@@ -207,6 +207,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gcp_cloud_events_mode, as: 'GCPCloudEventsMode'
+          property :delivery_attempt, as: 'deliveryAttempt'
           property :message, as: 'message', class: Google::Apis::WorkflowexecutionsV1::PubsubMessage, decorator: Google::Apis::WorkflowexecutionsV1::PubsubMessage::Representation
       
           property :subscription, as: 'subscription'

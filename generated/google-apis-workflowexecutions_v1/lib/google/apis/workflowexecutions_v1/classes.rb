@@ -425,6 +425,13 @@ module Google
         # @return [String]
         attr_accessor :gcp_cloud_events_mode
       
+        # The number of attempts that have been made to deliver this message. This is
+        # set by Pub/Sub for subscriptions that have the "dead letter" feature enabled,
+        # and hence provided here for compatibility, but is ignored by Workflows.
+        # Corresponds to the JSON property `deliveryAttempt`
+        # @return [Fixnum]
+        attr_accessor :delivery_attempt
+      
         # A message that is published by publishers and consumed by subscribers. The
         # message must contain either a non-empty data field or at least one attribute.
         # Note that client libraries represent this object differently depending on the
@@ -449,6 +456,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @gcp_cloud_events_mode = args[:gcp_cloud_events_mode] if args.key?(:gcp_cloud_events_mode)
+          @delivery_attempt = args[:delivery_attempt] if args.key?(:delivery_attempt)
           @message = args[:message] if args.key?(:message)
           @subscription = args[:subscription] if args.key?(:subscription)
         end
