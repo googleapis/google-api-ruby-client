@@ -1004,6 +1004,11 @@ module Google
         # @return [String]
         attr_accessor :post_startup_script
       
+        # PreMigrationCheck checks how feasible a migration from UmN is.
+        # Corresponds to the JSON property `preMigrationCheck`
+        # @return [Google::Apis::NotebooksV1::PreMigrationCheck]
+        attr_accessor :pre_migration_check
+      
         # Output only. The proxy endpoint that is used to access the Jupyter notebook.
         # Corresponds to the JSON property `proxyUri`
         # @return [String]
@@ -1104,6 +1109,7 @@ module Google
           @no_public_ip = args[:no_public_ip] if args.key?(:no_public_ip)
           @no_remove_data_disk = args[:no_remove_data_disk] if args.key?(:no_remove_data_disk)
           @post_startup_script = args[:post_startup_script] if args.key?(:post_startup_script)
+          @pre_migration_check = args[:pre_migration_check] if args.key?(:pre_migration_check)
           @proxy_uri = args[:proxy_uri] if args.key?(:proxy_uri)
           @reservation_affinity = args[:reservation_affinity] if args.key?(:reservation_affinity)
           @service_account = args[:service_account] if args.key?(:service_account)
@@ -1826,6 +1832,31 @@ module Google
           @bindings = args[:bindings] if args.key?(:bindings)
           @etag = args[:etag] if args.key?(:etag)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # PreMigrationCheck checks how feasible a migration from UmN is.
+      class PreMigrationCheck
+        include Google::Apis::Core::Hashable
+      
+        # Message provides a summary or workaround.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Result returns the result of the check.
+        # Corresponds to the JSON property `result`
+        # @return [String]
+        attr_accessor :result
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
+          @result = args[:result] if args.key?(:result)
         end
       end
       

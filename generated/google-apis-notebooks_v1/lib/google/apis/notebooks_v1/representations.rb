@@ -232,6 +232,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PreMigrationCheck
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RefreshRuntimeTokenInternalRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -726,6 +732,8 @@ module Google
           property :no_public_ip, as: 'noPublicIp'
           property :no_remove_data_disk, as: 'noRemoveDataDisk'
           property :post_startup_script, as: 'postStartupScript'
+          property :pre_migration_check, as: 'preMigrationCheck', class: Google::Apis::NotebooksV1::PreMigrationCheck, decorator: Google::Apis::NotebooksV1::PreMigrationCheck::Representation
+      
           property :proxy_uri, as: 'proxyUri'
           property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::NotebooksV1::ReservationAffinity, decorator: Google::Apis::NotebooksV1::ReservationAffinity::Representation
       
@@ -905,6 +913,14 @@ module Google
       
           property :etag, :base64 => true, as: 'etag'
           property :version, as: 'version'
+        end
+      end
+      
+      class PreMigrationCheck
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message'
+          property :result, as: 'result'
         end
       end
       
