@@ -287,10 +287,7 @@ module Google
         attr_accessor :docker_repository
       
         # The name of the function (as defined in source code) that will be executed.
-        # Defaults to the resource name suffix, if not specified. For backward
-        # compatibility, if function with given name is not found, then the system will
-        # try to use function named "function". For Node.js this is name of a function
-        # exported by the module specified in `source_location`.
+        # Defaults to the resource name suffix (ID of the function), if not specified.
         # Corresponds to the JSON property `entryPoint`
         # @return [String]
         attr_accessor :entry_point
@@ -764,8 +761,9 @@ module Google
         attr_accessor :api_version
       
         # Identifies whether the user has requested cancellation of the operation.
-        # Operations that have successfully been cancelled have Operation.error value
-        # with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+        # Operations that have successfully been cancelled have google.longrunning.
+        # Operation.error value with a google.rpc.Status.code of 1, corresponding to `
+        # Code.CANCELLED`.
         # Corresponds to the JSON property `cancelRequested`
         # @return [Boolean]
         attr_accessor :cancel_requested
@@ -933,8 +931,9 @@ module Google
         attr_accessor :api_version
       
         # Identifies whether the user has requested cancellation of the operation.
-        # Operations that have successfully been cancelled have Operation.error value
-        # with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+        # Operations that have successfully been cancelled have google.longrunning.
+        # Operation.error value with a google.rpc.Status.code of 1, corresponding to `
+        # Code.CANCELLED`.
         # Corresponds to the JSON property `cancelRequested`
         # @return [Boolean]
         attr_accessor :cancel_requested
@@ -1102,8 +1101,9 @@ module Google
         attr_accessor :api_version
       
         # Identifies whether the user has requested cancellation of the operation.
-        # Operations that have successfully been cancelled have Operation.error value
-        # with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+        # Operations that have successfully been cancelled have google.longrunning.
+        # Operation.error value with a google.rpc.Status.code of 1, corresponding to `
+        # Code.CANCELLED`.
         # Corresponds to the JSON property `cancelRequested`
         # @return [Boolean]
         attr_accessor :cancel_requested
