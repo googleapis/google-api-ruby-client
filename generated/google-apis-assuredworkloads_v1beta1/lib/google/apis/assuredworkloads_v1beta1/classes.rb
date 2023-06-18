@@ -22,7 +22,7 @@ module Google
   module Apis
     module AssuredworkloadsV1beta1
       
-      # Request for acknowledging the violation Next Id: 4
+      # Request for acknowledging the violation Next Id: 5
       class GoogleCloudAssuredworkloadsV1beta1AcknowledgeViolationRequest
         include Google::Apis::Core::Hashable
       
@@ -706,12 +706,12 @@ module Google
       class GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceStatus
         include Google::Apis::Core::Hashable
       
-        # Count of active Violations which are acknowledged in the Workload.
+        # Number of current orgPolicy violations which are acknowledged.
         # Corresponds to the JSON property `acknowledgedViolationCount`
         # @return [Fixnum]
         attr_accessor :acknowledged_violation_count
       
-        # Count of active Violations which haven't been acknowledged.
+        # Number of current orgPolicy violations which are not acknowledged.
         # Corresponds to the JSON property `activeViolationCount`
         # @return [Fixnum]
         attr_accessor :active_violation_count
