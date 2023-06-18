@@ -2902,6 +2902,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SafeHtmlProto
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SafeUrlProto
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -8695,6 +8701,13 @@ module Google
         end
       end
       
+      class SafeHtmlProto
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :private_do_not_access_or_else_safe_html_wrapped_value, as: 'privateDoNotAccessOrElseSafeHtmlWrappedValue'
+        end
+      end
+      
       class SafeUrlProto
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -9129,6 +9142,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :suggested_query, as: 'suggestedQuery'
+          property :suggested_query_html, as: 'suggestedQueryHtml', class: Google::Apis::CloudsearchV1::SafeHtmlProto, decorator: Google::Apis::CloudsearchV1::SafeHtmlProto::Representation
+      
           property :suggestion_type, as: 'suggestionType'
         end
       end
