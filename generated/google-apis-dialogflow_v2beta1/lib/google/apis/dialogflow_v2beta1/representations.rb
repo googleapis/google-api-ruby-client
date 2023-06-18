@@ -7437,6 +7437,8 @@ module Google
       
           property :suggest_dialogflow_assists_response, as: 'suggestDialogflowAssistsResponse', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SuggestDialogflowAssistsResponse, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SuggestDialogflowAssistsResponse::Representation
       
+          property :suggest_entity_extraction_response, as: 'suggestEntityExtractionResponse', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SuggestDialogflowAssistsResponse, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SuggestDialogflowAssistsResponse::Representation
+      
           property :suggest_faq_answers_response, as: 'suggestFaqAnswersResponse', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SuggestFaqAnswersResponse, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SuggestFaqAnswersResponse::Representation
       
           property :suggest_smart_replies_response, as: 'suggestSmartRepliesResponse', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SuggestSmartRepliesResponse, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SuggestSmartRepliesResponse::Representation
