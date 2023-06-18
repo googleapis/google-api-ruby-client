@@ -628,10 +628,17 @@ module Google
       class ContainerOverride
         include Google::Apis::Core::Hashable
       
-        # Arguments to the entrypoint. Will replace existing args for override.
+        # Arguments to the entrypoint. Will replace existing args for override if
+        # present. Must be empty if `clear_args` is set to true.
         # Corresponds to the JSON property `args`
         # @return [Array<String>]
         attr_accessor :args
+      
+        # Optional. True if the intention is to clear out existing args list.
+        # Corresponds to the JSON property `clearArgs`
+        # @return [Boolean]
+        attr_accessor :clear_args
+        alias_method :clear_args?, :clear_args
       
         # List of environment variables to set in the container. Will be merged with
         # existing env for override.
@@ -651,6 +658,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @args = args[:args] if args.key?(:args)
+          @clear_args = args[:clear_args] if args.key?(:clear_args)
           @env = args[:env] if args.key?(:env)
           @name = args[:name] if args.key?(:name)
         end
@@ -840,8 +848,8 @@ module Google
         # memory limits of all containers in a pod. This field's values are of the '
         # Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-
         # definitions/quantity/. The default is nil which means that the limit is
-        # undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir +
-        # optional
+        # undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#
+        # emptydir
         # Corresponds to the JSON property `sizeLimit`
         # @return [String]
         attr_accessor :size_limit
