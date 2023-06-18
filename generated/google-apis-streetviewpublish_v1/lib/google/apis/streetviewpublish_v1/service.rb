@@ -421,10 +421,11 @@ module Google
         # @param [String] filter
         #   Optional. The filter expression. For example: `imagery_type=SPHERICAL`. The
         #   filters supported are: `imagery_type`, `processing_state`, `min_latitude`, `
-        #   max_latitude`, `min_longitude`, `max_longitude`, and `filename_query`. See
-        #   https://google.aip.dev/160 for more information. Filename queries should sent
-        #   as a Phrase in order to support multiple words and special characters by
-        #   adding escaped quotes. Ex: filename_query="example of a phrase.mp4"
+        #   max_latitude`, `min_longitude`, `max_longitude`, `filename_query`, `
+        #   min_capture_time_seconds`, and `max_capture_time_seconds`. See https://google.
+        #   aip.dev/160 for more information. Filename queries should sent as a Phrase in
+        #   order to support multiple words and special characters by adding escaped
+        #   quotes. Ex: filename_query="example of a phrase.mp4"
         # @param [Fixnum] page_size
         #   Optional. The maximum number of photo sequences to return. `pageSize` must be
         #   non-negative. If `pageSize` is zero or is not provided, the default page size
@@ -589,9 +590,8 @@ module Google
         # @param [String] filter
         #   Optional. The filter expression. For example: `placeId=
         #   ChIJj61dQgK6j4AR4GeTYWZsKWw`. The filters supported are: `placeId`, `
-        #   min_latitude`, `max_latitude`, `min_longitude`, `max_longitude`, '
-        #   min_capture_time_seconds', and 'max_capture_time_seconds'. See https://google.
-        #   aip.dev/160 for more information.
+        #   min_latitude`, `max_latitude`, `min_longitude`, `max_longitude`. See https://
+        #   google.aip.dev/160 for more information.
         # @param [String] language_code
         #   Optional. The BCP-47 language code, such as "en-US" or "sr-Latn". For more
         #   information, see http://www.unicode.org/reports/tr35/#
