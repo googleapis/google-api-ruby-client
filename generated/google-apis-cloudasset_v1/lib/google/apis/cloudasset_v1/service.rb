@@ -656,9 +656,6 @@ module Google
         #   IamPolicyAnalysisQuery.access_selector is specified, the access section of the
         #   result will be determined by the selector, and this flag is not allowed to set.
         #   Default is false.
-        # @param [Boolean] analysis_query_options_include_deny_policy_analysis
-        #   Optional. If true, the response includes deny policy analysis results, and you
-        #   can see which access tuples are denied. Default is false.
         # @param [Boolean] analysis_query_options_output_group_edges
         #   Optional. If true, the result will output the relevant membership
         #   relationships between groups and other groups, and between groups and
@@ -708,7 +705,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def analyze_iam_policy(scope, analysis_query_access_selector_permissions: nil, analysis_query_access_selector_roles: nil, analysis_query_condition_context_access_time: nil, analysis_query_identity_selector_identity: nil, analysis_query_options_analyze_service_account_impersonation: nil, analysis_query_options_expand_groups: nil, analysis_query_options_expand_resources: nil, analysis_query_options_expand_roles: nil, analysis_query_options_include_deny_policy_analysis: nil, analysis_query_options_output_group_edges: nil, analysis_query_options_output_resource_edges: nil, analysis_query_resource_selector_full_resource_name: nil, execution_timeout: nil, saved_analysis_query: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def analyze_iam_policy(scope, analysis_query_access_selector_permissions: nil, analysis_query_access_selector_roles: nil, analysis_query_condition_context_access_time: nil, analysis_query_identity_selector_identity: nil, analysis_query_options_analyze_service_account_impersonation: nil, analysis_query_options_expand_groups: nil, analysis_query_options_expand_resources: nil, analysis_query_options_expand_roles: nil, analysis_query_options_output_group_edges: nil, analysis_query_options_output_resource_edges: nil, analysis_query_resource_selector_full_resource_name: nil, execution_timeout: nil, saved_analysis_query: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+scope}:analyzeIamPolicy', options)
           command.response_representation = Google::Apis::CloudassetV1::AnalyzeIamPolicyResponse::Representation
           command.response_class = Google::Apis::CloudassetV1::AnalyzeIamPolicyResponse
@@ -721,7 +718,6 @@ module Google
           command.query['analysisQuery.options.expandGroups'] = analysis_query_options_expand_groups unless analysis_query_options_expand_groups.nil?
           command.query['analysisQuery.options.expandResources'] = analysis_query_options_expand_resources unless analysis_query_options_expand_resources.nil?
           command.query['analysisQuery.options.expandRoles'] = analysis_query_options_expand_roles unless analysis_query_options_expand_roles.nil?
-          command.query['analysisQuery.options.includeDenyPolicyAnalysis'] = analysis_query_options_include_deny_policy_analysis unless analysis_query_options_include_deny_policy_analysis.nil?
           command.query['analysisQuery.options.outputGroupEdges'] = analysis_query_options_output_group_edges unless analysis_query_options_output_group_edges.nil?
           command.query['analysisQuery.options.outputResourceEdges'] = analysis_query_options_output_resource_edges unless analysis_query_options_output_resource_edges.nil?
           command.query['analysisQuery.resourceSelector.fullResourceName'] = analysis_query_resource_selector_full_resource_name unless analysis_query_resource_selector_full_resource_name.nil?
@@ -1346,19 +1342,19 @@ module Google
         #   Important" as a word in any of the searchable fields and are also located in
         #   the "us-west1" region or the "global" location.
         # @param [String] read_mask
-        #   Optional. A comma-separated list of fields specifying which fields to be
-        #   returned in ResourceSearchResult. Only '*' or combination of top level fields
-        #   can be specified. Field names of both snake_case and camelCase are supported.
-        #   Examples: `"*"`, `"name,location"`, `"name,versionedResources"`. The read_mask
-        #   paths must be valid field paths listed but not limited to (both snake_case and
-        #   camelCase are supported): * name * assetType * project * displayName *
-        #   description * location * tagKeys * tagValues * tagValueIds * labels *
-        #   networkTags * kmsKey (This field is deprecated. Please use the `kmsKeys` field
-        #   to retrieve Cloud KMS key information.) * kmsKeys * createTime * updateTime *
-        #   state * additionalAttributes * versionedResources If read_mask is not
-        #   specified, all fields except versionedResources will be returned. If only '*'
-        #   is specified, all fields including versionedResources will be returned. Any
-        #   invalid field path will trigger INVALID_ARGUMENT error.
+        #   Optional. A comma-separated list of fields that you want returned in the
+        #   results. The following fields are returned by default if not specified: * `
+        #   name` * `assetType` * `project` * `folders` * `organization` * `displayName` *
+        #   `description` * `location` * `labels` * `networkTags` * `kmsKeys` * `
+        #   createTime` * `updateTime` * `state` * `additionalAttributes` * `
+        #   parentFullResourceName` * `parentAssetType` Some fields of large size, such as
+        #   `versionedResources` and `attachedResources`, are not returned by default, but
+        #   you can specify them in the `read_mask` parameter if you want to include them.
+        #   If `"*"` is specified, all [available fields](https://cloud.google.com/asset-
+        #   inventory/docs/reference/rest/v1/TopLevel/searchAllResources#
+        #   resourcesearchresult) are returned. Examples: `"name,location"`, `"name,
+        #   versionedResources"`, `"*"`. Any invalid field path will trigger
+        #   INVALID_ARGUMENT error.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
