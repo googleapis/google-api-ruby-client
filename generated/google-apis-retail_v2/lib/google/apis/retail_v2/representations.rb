@@ -454,6 +454,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2PurgeProductsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2PurgeProductsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2PurgeProductsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2PurgeUserEventsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1169,6 +1187,18 @@ module Google
       end
       
       class GoogleCloudRetailV2betaPurgeMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2betaPurgeProductsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2betaPurgeProductsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2004,6 +2034,32 @@ module Google
       class GoogleCloudRetailV2PurgeMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudRetailV2PurgeProductsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :failure_count, :numeric_string => true, as: 'failureCount'
+          property :success_count, :numeric_string => true, as: 'successCount'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudRetailV2PurgeProductsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filter, as: 'filter'
+          property :force, as: 'force'
+        end
+      end
+      
+      class GoogleCloudRetailV2PurgeProductsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :purge_count, :numeric_string => true, as: 'purgeCount'
+          collection :purge_sample, as: 'purgeSample'
         end
       end
       
@@ -3118,6 +3174,24 @@ module Google
       class GoogleCloudRetailV2betaPurgeMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudRetailV2betaPurgeProductsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :failure_count, :numeric_string => true, as: 'failureCount'
+          property :success_count, :numeric_string => true, as: 'successCount'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudRetailV2betaPurgeProductsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :purge_count, :numeric_string => true, as: 'purgeCount'
+          collection :purge_sample, as: 'purgeSample'
         end
       end
       

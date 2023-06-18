@@ -941,6 +941,48 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Permanently deletes all selected Products under a branch. This process is
+        # asynchronous. If the request is valid, the removal will be enqueued and
+        # processed offline. Depending on the number of Products, this operation could
+        # take hours to complete. Before the operation completes, some Products may
+        # still be returned by ProductService.GetProduct or ProductService.ListProducts.
+        # Depending on the number of Products, this operation could take hours to
+        # complete. To get a sample of Products that would be deleted, set
+        # PurgeProductsRequest.force to false.
+        # @param [String] parent
+        #   Required. The resource name of the branch under which the products are created.
+        #   The format is `projects/$`projectId`/locations/global/catalogs/$`catalogId`/
+        #   branches/$`branchId``
+        # @param [Google::Apis::RetailV2::GoogleCloudRetailV2PurgeProductsRequest] google_cloud_retail_v2_purge_products_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RetailV2::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RetailV2::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def purge_project_location_catalog_branch_product(parent, google_cloud_retail_v2_purge_products_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/products:purge', options)
+          command.request_representation = Google::Apis::RetailV2::GoogleCloudRetailV2PurgeProductsRequest::Representation
+          command.request_object = google_cloud_retail_v2_purge_products_request_object
+          command.response_representation = Google::Apis::RetailV2::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::RetailV2::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # We recommend that you use the ProductService.RemoveLocalInventories method
         # instead of the ProductService.RemoveFulfillmentPlaces method. ProductService.
         # RemoveLocalInventories achieves the same results but provides more fine-
