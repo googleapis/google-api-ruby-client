@@ -301,6 +301,7 @@ module Google
       class Insight
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_id, as: 'instanceId'
           property :sap_discovery, as: 'sapDiscovery', class: Google::Apis::WorkloadmanagerV1::SapDiscovery, decorator: Google::Apis::WorkloadmanagerV1::SapDiscovery::Representation
       
           property :sap_validation, as: 'sapValidation', class: Google::Apis::WorkloadmanagerV1::SapValidation, decorator: Google::Apis::WorkloadmanagerV1::SapValidation::Representation
@@ -576,7 +577,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :insight, as: 'insight', class: Google::Apis::WorkloadmanagerV1::Insight, decorator: Google::Apis::WorkloadmanagerV1::Insight::Representation
       
-          property :instance_id, as: 'instanceId'
           property :request_id, as: 'requestId'
         end
       end
