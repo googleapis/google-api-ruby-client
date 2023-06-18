@@ -88,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DashConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Deblock
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -384,6 +390,13 @@ module Google
         end
       end
       
+      class DashConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :segment_reference_scheme, as: 'segmentReferenceScheme'
+        end
+      end
+      
       class Deblock
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -590,6 +603,8 @@ module Google
       class Manifest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :dash, as: 'dash', class: Google::Apis::TranscoderV1::DashConfig, decorator: Google::Apis::TranscoderV1::DashConfig::Representation
+      
           property :file_name, as: 'fileName'
           collection :mux_streams, as: 'muxStreams'
           property :type, as: 'type'
