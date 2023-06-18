@@ -699,6 +699,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :args, as: 'args'
+          property :clear_args, as: 'clearArgs'
           collection :env, as: 'env', class: Google::Apis::RunV1::EnvVar, decorator: Google::Apis::RunV1::EnvVar::Representation
       
           property :name, as: 'name'
