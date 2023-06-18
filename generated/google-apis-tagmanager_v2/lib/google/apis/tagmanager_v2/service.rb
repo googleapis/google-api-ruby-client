@@ -2587,6 +2587,211 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a GTM Transformation.
+        # @param [String] parent
+        #   GTM Workspace's API relative path. Example: accounts/`account_id`/containers/`
+        #   container_id`/workspaces/`workspace_id`
+        # @param [Google::Apis::TagmanagerV2::Transformation] transformation_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TagmanagerV2::Transformation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TagmanagerV2::Transformation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_account_container_workspace_transformation(parent, transformation_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'tagmanager/v2/{+parent}/transformations', options)
+          command.request_representation = Google::Apis::TagmanagerV2::Transformation::Representation
+          command.request_object = transformation_object
+          command.response_representation = Google::Apis::TagmanagerV2::Transformation::Representation
+          command.response_class = Google::Apis::TagmanagerV2::Transformation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a GTM Transformation.
+        # @param [String] path
+        #   GTM Transformation's API relative path. Example: accounts/`account_id`/
+        #   containers/`container_id`/workspaces/`workspace_id`/transformations/`
+        #   transformation_id`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_account_container_workspace_transformation(path, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'tagmanager/v2/{+path}', options)
+          command.params['path'] = path unless path.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a GTM Transformation.
+        # @param [String] path
+        #   GTM Transformation's API relative path. Example: accounts/`account_id`/
+        #   containers/`container_id`/workspaces/`workspace_id`/transformations/`
+        #   transformation_id`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TagmanagerV2::Transformation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TagmanagerV2::Transformation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_account_container_workspace_transformation(path, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'tagmanager/v2/{+path}', options)
+          command.response_representation = Google::Apis::TagmanagerV2::Transformation::Representation
+          command.response_class = Google::Apis::TagmanagerV2::Transformation
+          command.params['path'] = path unless path.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all GTM Transformations of a GTM container workspace.
+        # @param [String] parent
+        #   GTM Workspace's API relative path. Example: accounts/`account_id`/containers/`
+        #   container_id`/workspaces/`workspace_id`
+        # @param [String] page_token
+        #   Continuation token for fetching the next page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TagmanagerV2::ListTransformationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TagmanagerV2::ListTransformationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_account_container_workspace_transformations(parent, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'tagmanager/v2/{+parent}/transformations', options)
+          command.response_representation = Google::Apis::TagmanagerV2::ListTransformationsResponse::Representation
+          command.response_class = Google::Apis::TagmanagerV2::ListTransformationsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Reverts changes to a GTM Transformation in a GTM Workspace.
+        # @param [String] path
+        #   GTM Transformation's API relative path. Example: accounts/`account_id`/
+        #   containers/`container_id`/workspaces/`workspace_id`/transformations/`
+        #   transformation_id`
+        # @param [String] fingerprint
+        #   When provided, this fingerprint must match the fingerprint of the
+        #   transformation in storage.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TagmanagerV2::RevertTransformationResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TagmanagerV2::RevertTransformationResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def revert_account_container_workspace_transformation(path, fingerprint: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'tagmanager/v2/{+path}:revert', options)
+          command.response_representation = Google::Apis::TagmanagerV2::RevertTransformationResponse::Representation
+          command.response_class = Google::Apis::TagmanagerV2::RevertTransformationResponse
+          command.params['path'] = path unless path.nil?
+          command.query['fingerprint'] = fingerprint unless fingerprint.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a GTM Transformation.
+        # @param [String] path
+        #   GTM Transformation's API relative path. Example: accounts/`account_id`/
+        #   containers/`container_id`/workspaces/`workspace_id`/transformations/`
+        #   transformation_id`
+        # @param [Google::Apis::TagmanagerV2::Transformation] transformation_object
+        # @param [String] fingerprint
+        #   When provided, this fingerprint must match the fingerprint of the
+        #   transformation in storage.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TagmanagerV2::Transformation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TagmanagerV2::Transformation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_account_container_workspace_transformation(path, transformation_object = nil, fingerprint: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:put, 'tagmanager/v2/{+path}', options)
+          command.request_representation = Google::Apis::TagmanagerV2::Transformation::Representation
+          command.request_object = transformation_object
+          command.response_representation = Google::Apis::TagmanagerV2::Transformation::Representation
+          command.response_class = Google::Apis::TagmanagerV2::Transformation
+          command.params['path'] = path unless path.nil?
+          command.query['fingerprint'] = fingerprint unless fingerprint.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a GTM Trigger.
         # @param [String] parent
         #   GTM Workspace's API relative path. Example: accounts/`account_id`/containers/`

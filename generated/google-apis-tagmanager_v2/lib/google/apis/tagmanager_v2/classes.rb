@@ -497,6 +497,12 @@ module Google
         attr_accessor :support_templates
         alias_method :support_templates?, :support_templates
       
+        # Whether this Container supports transformations.
+        # Corresponds to the JSON property `supportTransformations`
+        # @return [Boolean]
+        attr_accessor :support_transformations
+        alias_method :support_transformations?, :support_transformations
+      
         # Whether this Container supports triggers.
         # Corresponds to the JSON property `supportTriggers`
         # @return [Boolean]
@@ -546,6 +552,7 @@ module Google
           @support_gtag_configs = args[:support_gtag_configs] if args.key?(:support_gtag_configs)
           @support_tags = args[:support_tags] if args.key?(:support_tags)
           @support_templates = args[:support_templates] if args.key?(:support_templates)
+          @support_transformations = args[:support_transformations] if args.key?(:support_transformations)
           @support_triggers = args[:support_triggers] if args.key?(:support_triggers)
           @support_user_permissions = args[:support_user_permissions] if args.key?(:support_user_permissions)
           @support_variables = args[:support_variables] if args.key?(:support_variables)
@@ -644,6 +651,11 @@ module Google
         # @return [String]
         attr_accessor :tag_manager_url
       
+        # The transformations in the container that this version was taken from.
+        # Corresponds to the JSON property `transformation`
+        # @return [Array<Google::Apis::TagmanagerV2::Transformation>]
+        attr_accessor :transformation
+      
         # The triggers in the container that this version was taken from.
         # Corresponds to the JSON property `trigger`
         # @return [Array<Google::Apis::TagmanagerV2::Trigger>]
@@ -681,6 +693,7 @@ module Google
           @path = args[:path] if args.key?(:path)
           @tag = args[:tag] if args.key?(:tag)
           @tag_manager_url = args[:tag_manager_url] if args.key?(:tag_manager_url)
+          @transformation = args[:transformation] if args.key?(:transformation)
           @trigger = args[:trigger] if args.key?(:trigger)
           @variable = args[:variable] if args.key?(:variable)
           @zone = args[:zone] if args.key?(:zone)
@@ -1042,6 +1055,11 @@ module Google
         # @return [Google::Apis::TagmanagerV2::Tag]
         attr_accessor :tag
       
+        # Represents a Google Tag Manager Transformation.
+        # Corresponds to the JSON property `transformation`
+        # @return [Google::Apis::TagmanagerV2::Transformation]
+        attr_accessor :transformation
+      
         # Represents a Google Tag Manager Trigger
         # Corresponds to the JSON property `trigger`
         # @return [Google::Apis::TagmanagerV2::Trigger]
@@ -1062,6 +1080,7 @@ module Google
           @client = args[:client] if args.key?(:client)
           @folder = args[:folder] if args.key?(:folder)
           @tag = args[:tag] if args.key?(:tag)
+          @transformation = args[:transformation] if args.key?(:transformation)
           @trigger = args[:trigger] if args.key?(:trigger)
           @variable = args[:variable] if args.key?(:variable)
         end
@@ -1737,6 +1756,31 @@ module Google
         end
       end
       
+      # 
+      class ListTransformationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Continuation token for fetching the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # All GTM Transformations of a GTM Container.
+        # Corresponds to the JSON property `transformation`
+        # @return [Array<Google::Apis::TagmanagerV2::Transformation>]
+        attr_accessor :transformation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @transformation = args[:transformation] if args.key?(:transformation)
+        end
+      end
+      
       # List triggers response.
       class ListTriggersResponse
         include Google::Apis::Core::Hashable
@@ -2120,6 +2164,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @template = args[:template] if args.key?(:template)
+        end
+      end
+      
+      # The result of reverting a transformation in a workspace.
+      class RevertTransformationResponse
+        include Google::Apis::Core::Hashable
+      
+        # Represents a Google Tag Manager Transformation.
+        # Corresponds to the JSON property `transformation`
+        # @return [Google::Apis::TagmanagerV2::Transformation]
+        attr_accessor :transformation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @transformation = args[:transformation] if args.key?(:transformation)
         end
       end
       
@@ -2518,6 +2581,100 @@ module Google
         def update!(**args)
           @stop_teardown_on_failure = args[:stop_teardown_on_failure] if args.key?(:stop_teardown_on_failure)
           @tag_name = args[:tag_name] if args.key?(:tag_name)
+        end
+      end
+      
+      # Represents a Google Tag Manager Transformation.
+      class Transformation
+        include Google::Apis::Core::Hashable
+      
+        # GTM Account ID.
+        # Corresponds to the JSON property `accountId`
+        # @return [String]
+        attr_accessor :account_id
+      
+        # GTM Container ID.
+        # Corresponds to the JSON property `containerId`
+        # @return [String]
+        attr_accessor :container_id
+      
+        # The fingerprint of the GTM Transformation as computed at storage time. This
+        # value is recomputed whenever the transformation is modified.
+        # Corresponds to the JSON property `fingerprint`
+        # @return [String]
+        attr_accessor :fingerprint
+      
+        # Transformation display name. @mutable tagmanager.accounts.containers.
+        # workspaces.transformations.create @mutable tagmanager.accounts.containers.
+        # workspaces.transformations.update
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # User notes on how to apply this transformation in the container. @mutable
+        # tagmanager.accounts.containers.workspaces.transformations.create @mutable
+        # tagmanager.accounts.containers.workspaces.transformations.update
+        # Corresponds to the JSON property `notes`
+        # @return [String]
+        attr_accessor :notes
+      
+        # The transformation's parameters. @mutable tagmanager.accounts.containers.
+        # workspaces.transformations.create @mutable tagmanager.accounts.containers.
+        # workspaces.transformations.update
+        # Corresponds to the JSON property `parameter`
+        # @return [Array<Google::Apis::TagmanagerV2::Parameter>]
+        attr_accessor :parameter
+      
+        # Parent folder id.
+        # Corresponds to the JSON property `parentFolderId`
+        # @return [String]
+        attr_accessor :parent_folder_id
+      
+        # GTM transformation's API relative path.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        # Auto generated link to the tag manager UI
+        # Corresponds to the JSON property `tagManagerUrl`
+        # @return [String]
+        attr_accessor :tag_manager_url
+      
+        # The Transformation ID uniquely identifies the GTM transformation.
+        # Corresponds to the JSON property `transformationId`
+        # @return [String]
+        attr_accessor :transformation_id
+      
+        # Transformation type. @mutable tagmanager.accounts.containers.workspaces.
+        # transformations.create @mutable tagmanager.accounts.containers.workspaces.
+        # transformations.update
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # GTM Workspace ID.
+        # Corresponds to the JSON property `workspaceId`
+        # @return [String]
+        attr_accessor :workspace_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @account_id = args[:account_id] if args.key?(:account_id)
+          @container_id = args[:container_id] if args.key?(:container_id)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
+          @name = args[:name] if args.key?(:name)
+          @notes = args[:notes] if args.key?(:notes)
+          @parameter = args[:parameter] if args.key?(:parameter)
+          @parent_folder_id = args[:parent_folder_id] if args.key?(:parent_folder_id)
+          @path = args[:path] if args.key?(:path)
+          @tag_manager_url = args[:tag_manager_url] if args.key?(:tag_manager_url)
+          @transformation_id = args[:transformation_id] if args.key?(:transformation_id)
+          @type = args[:type] if args.key?(:type)
+          @workspace_id = args[:workspace_id] if args.key?(:workspace_id)
         end
       end
       
