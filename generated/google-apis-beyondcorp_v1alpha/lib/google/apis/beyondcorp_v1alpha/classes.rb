@@ -2207,21 +2207,10 @@ module Google
       class GoogleCloudBeyondcorpPartnerservicesV1alphaListPartnerTenantsResponse
         include Google::Apis::Core::Hashable
       
-        # A token which can be sent as `page_token` to retrieve the next page. If this
-        # field is omitted, there are no subsequent pages.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
         # The list of PartnerTenant objects.
         # Corresponds to the JSON property `partnerTenants`
         # @return [Array<Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerTenant>]
         attr_accessor :partner_tenants
-      
-        # Locations that could not be reached.
-        # Corresponds to the JSON property `unreachable`
-        # @return [Array<String>]
-        attr_accessor :unreachable
       
         def initialize(**args)
            update!(**args)
@@ -2229,9 +2218,26 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @partner_tenants = args[:partner_tenants] if args.key?(:partner_tenants)
-          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Message for response to listing ProxyConfigs.
+      class GoogleCloudBeyondcorpPartnerservicesV1alphaListProxyConfigsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of ProxyConfig objects.
+        # Corresponds to the JSON property `proxyConfigs`
+        # @return [Array<Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaProxyConfig>]
+        attr_accessor :proxy_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @proxy_configs = args[:proxy_configs] if args.key?(:proxy_configs)
         end
       end
       
