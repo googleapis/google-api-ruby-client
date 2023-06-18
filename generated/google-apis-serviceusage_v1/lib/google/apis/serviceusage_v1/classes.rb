@@ -1149,7 +1149,7 @@ module Google
       # documentation: summary: > The Google Calendar API gives access to most
       # calendar features. pages: - name: Overview content: (== include google/foo/
       # overview.md ==) - name: Tutorial content: (== include google/foo/tutorial.md ==
-      # ) subpages; - name: Java content: (== include google/foo/tutorial_java.md ==)
+      # ) subpages: - name: Java content: (== include google/foo/tutorial_java.md ==)
       # rules: - selector: google.calendar.Calendar.Get description: > ... - selector:
       # google.calendar.Calendar.Put description: > ... Documentation is provided in
       # markdown syntax. In addition to standard markdown features, definition lists,
@@ -1199,6 +1199,13 @@ module Google
         # @return [Array<Google::Apis::ServiceusageV1::DocumentationRule>]
         attr_accessor :rules
       
+        # Specifies section and content to override boilerplate content provided by go/
+        # api-docgen. Currently overrides following sections: 1. rest.service.
+        # client_libraries
+        # Corresponds to the JSON property `sectionOverrides`
+        # @return [Array<Google::Apis::ServiceusageV1::Page>]
+        attr_accessor :section_overrides
+      
         # Specifies the service root url if the default one (the service name from the
         # yaml file) is not suitable. This can be seen in any fully specified service
         # urls as well as sections that show a base that other urls are relative to.
@@ -1223,6 +1230,7 @@ module Google
           @overview = args[:overview] if args.key?(:overview)
           @pages = args[:pages] if args.key?(:pages)
           @rules = args[:rules] if args.key?(:rules)
+          @section_overrides = args[:section_overrides] if args.key?(:section_overrides)
           @service_root_url = args[:service_root_url] if args.key?(:service_root_url)
           @summary = args[:summary] if args.key?(:summary)
         end
@@ -1825,7 +1833,7 @@ module Google
         # documentation: summary: > The Google Calendar API gives access to most
         # calendar features. pages: - name: Overview content: (== include google/foo/
         # overview.md ==) - name: Tutorial content: (== include google/foo/tutorial.md ==
-        # ) subpages; - name: Java content: (== include google/foo/tutorial_java.md ==)
+        # ) subpages: - name: Java content: (== include google/foo/tutorial_java.md ==)
         # rules: - selector: google.calendar.Calendar.Get description: > ... - selector:
         # google.calendar.Calendar.Put description: > ... Documentation is provided in
         # markdown syntax. In addition to standard markdown features, definition lists,
@@ -2140,7 +2148,7 @@ module Google
         # documentation: summary: > The Google Calendar API gives access to most
         # calendar features. pages: - name: Overview content: (== include google/foo/
         # overview.md ==) - name: Tutorial content: (== include google/foo/tutorial.md ==
-        # ) subpages; - name: Java content: (== include google/foo/tutorial_java.md ==)
+        # ) subpages: - name: Java content: (== include google/foo/tutorial_java.md ==)
         # rules: - selector: google.calendar.Calendar.Get description: > ... - selector:
         # google.calendar.Calendar.Put description: > ... Documentation is provided in
         # markdown syntax. In addition to standard markdown features, definition lists,
