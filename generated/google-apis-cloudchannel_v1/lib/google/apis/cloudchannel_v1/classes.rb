@@ -98,6 +98,45 @@ module Google
         end
       end
       
+      # Represents the Billable SKU information.
+      class GoogleCloudChannelV1BillableSku
+        include Google::Apis::Core::Hashable
+      
+        # Resource name of Service which contains Repricing SKU. Format: services/`
+        # service`. Example: "services/B7D9-FDCB-15D8".
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        # Unique human readable name for the Service.
+        # Corresponds to the JSON property `serviceDisplayName`
+        # @return [String]
+        attr_accessor :service_display_name
+      
+        # Resource name of Billable SKU. Format: billableSkus/`sku`. Example:
+        # billableSkus/6E1B-6634-470F".
+        # Corresponds to the JSON property `sku`
+        # @return [String]
+        attr_accessor :sku
+      
+        # Unique human readable name for the SKU.
+        # Corresponds to the JSON property `skuDisplayName`
+        # @return [String]
+        attr_accessor :sku_display_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service = args[:service] if args.key?(:service)
+          @service_display_name = args[:service_display_name] if args.key?(:service_display_name)
+          @sku = args[:sku] if args.key?(:sku)
+          @sku_display_name = args[:sku_display_name] if args.key?(:sku_display_name)
+        end
+      end
+      
       # Represents a billing account.
       class GoogleCloudChannelV1BillingAccount
         include Google::Apis::Core::Hashable
@@ -1703,6 +1742,58 @@ module Google
         end
       end
       
+      # Response message for ListSkuGroupBillableSkus.
+      class GoogleCloudChannelV1ListSkuGroupBillableSkusResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of billable SKUs in the requested SKU group.
+        # Corresponds to the JSON property `billableSkus`
+        # @return [Array<Google::Apis::CloudchannelV1::GoogleCloudChannelV1BillableSku>]
+        attr_accessor :billable_skus
+      
+        # A token to retrieve the next page of results. Pass to ListSkuGroupBillableSkus.
+        # page_token to obtain that page.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @billable_skus = args[:billable_skus] if args.key?(:billable_skus)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for ListSkuGroups.
+      class GoogleCloudChannelV1ListSkuGroupsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token to retrieve the next page of results. Pass to ListSkuGroups.page_token
+        # to obtain that page.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of SKU groups requested.
+        # Corresponds to the JSON property `skuGroups`
+        # @return [Array<Google::Apis::CloudchannelV1::GoogleCloudChannelV1SkuGroup>]
+        attr_accessor :sku_groups
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @sku_groups = args[:sku_groups] if args.key?(:sku_groups)
+        end
+      end
+      
       # Response message for ListSkus.
       class GoogleCloudChannelV1ListSkusResponse
         include Google::Apis::Core::Hashable
@@ -1765,7 +1856,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. The Billing Account to look up Offers for. Format: accounts/`
-        # account_id`/billing_accounts/`billing_account_id`. This field is only relevant
+        # account_id`/billingAccounts/`billing_account_id`. This field is only relevant
         # for multi-currency accounts. It should be left empty for single currency
         # accounts.
         # Corresponds to the JSON property `billingAccount`
@@ -3127,6 +3218,32 @@ module Google
           @marketing_info = args[:marketing_info] if args.key?(:marketing_info)
           @name = args[:name] if args.key?(:name)
           @product = args[:product] if args.key?(:product)
+        end
+      end
+      
+      # Represents the SKU group information.
+      class GoogleCloudChannelV1SkuGroup
+        include Google::Apis::Core::Hashable
+      
+        # Unique human readable identifier for the SKU group.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Resource name of SKU group. Format: accounts/`account`/skuGroups/`sku_group`.
+        # Example: "accounts/C01234/skuGroups/3d50fd57-3157-4577-a5a9-a219b8490041".
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
