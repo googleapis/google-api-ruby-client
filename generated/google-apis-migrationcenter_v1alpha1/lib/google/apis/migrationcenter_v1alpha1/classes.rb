@@ -461,7 +461,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Asset performance data samples.
+        # Asset performance data samples. Samples that are older than 40 days are
+        # ignored.
         # Corresponds to the JSON property `performanceSamples`
         # @return [Array<Google::Apis::MigrationcenterV1alpha1::PerformanceSample>]
         attr_accessor :performance_samples
@@ -3196,7 +3197,7 @@ module Google
         # @return [Google::Apis::MigrationcenterV1alpha1::NetworkUsageSample]
         attr_accessor :network
       
-        # Time the sample was collected.
+        # Required. Time the sample was collected.
         # Corresponds to the JSON property `sampleTime`
         # @return [String]
         attr_accessor :sample_time
@@ -3823,10 +3824,20 @@ module Google
         # @return [String]
         attr_accessor :pricing_track
       
+        # A set of findings that applies to assets destined for Sole-Tenant nodes.
+        # Corresponds to the JSON property `soleTenantFinding`
+        # @return [Google::Apis::MigrationcenterV1alpha1::ReportSummarySoleTenantFinding]
+        attr_accessor :sole_tenant_finding
+      
         # Text describing the business priority specified for this Preference Set
         # Corresponds to the JSON property `topPriority`
         # @return [String]
         attr_accessor :top_priority
+      
+        # A set of findings that applies to assets destined for VMWare Engine.
+        # Corresponds to the JSON property `vmwareEngineFinding`
+        # @return [Google::Apis::MigrationcenterV1alpha1::ReportSummaryVmWareEngineFinding]
+        attr_accessor :vmware_engine_finding
       
         def initialize(**args)
            update!(**args)
@@ -3846,7 +3857,9 @@ module Google
           @monthly_cost_total = args[:monthly_cost_total] if args.key?(:monthly_cost_total)
           @preferred_region = args[:preferred_region] if args.key?(:preferred_region)
           @pricing_track = args[:pricing_track] if args.key?(:pricing_track)
+          @sole_tenant_finding = args[:sole_tenant_finding] if args.key?(:sole_tenant_finding)
           @top_priority = args[:top_priority] if args.key?(:top_priority)
+          @vmware_engine_finding = args[:vmware_engine_finding] if args.key?(:vmware_engine_finding)
         end
       end
       
@@ -3970,6 +3983,68 @@ module Google
         end
       end
       
+      # A set of findings that applies to assets destined for Sole-Tenant nodes.
+      class ReportSummarySoleTenantFinding
+        include Google::Apis::Core::Hashable
+      
+        # Count of assets which are allocated
+        # Corresponds to the JSON property `allocatedAssetCount`
+        # @return [Fixnum]
+        attr_accessor :allocated_asset_count
+      
+        # Set of regions in which the assets are allocated
+        # Corresponds to the JSON property `allocatedRegions`
+        # @return [Array<String>]
+        attr_accessor :allocated_regions
+      
+        # Set of per-nodetype allocation records
+        # Corresponds to the JSON property `nodeAllocations`
+        # @return [Array<Google::Apis::MigrationcenterV1alpha1::ReportSummarySoleTenantNodeAllocation>]
+        attr_accessor :node_allocations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allocated_asset_count = args[:allocated_asset_count] if args.key?(:allocated_asset_count)
+          @allocated_regions = args[:allocated_regions] if args.key?(:allocated_regions)
+          @node_allocations = args[:node_allocations] if args.key?(:node_allocations)
+        end
+      end
+      
+      # Represents the assets allocated to a specific Sole-Tenant node type.
+      class ReportSummarySoleTenantNodeAllocation
+        include Google::Apis::Core::Hashable
+      
+        # Count of assets allocated to these nodes
+        # Corresponds to the JSON property `allocatedAssetCount`
+        # @return [Fixnum]
+        attr_accessor :allocated_asset_count
+      
+        # A Sole Tenant node type.
+        # Corresponds to the JSON property `node`
+        # @return [Google::Apis::MigrationcenterV1alpha1::SoleTenantNodeType]
+        attr_accessor :node
+      
+        # Count of this node type to be provisioned
+        # Corresponds to the JSON property `nodeCount`
+        # @return [Fixnum]
+        attr_accessor :node_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allocated_asset_count = args[:allocated_asset_count] if args.key?(:allocated_asset_count)
+          @node = args[:node] if args.key?(:node)
+          @node_count = args[:node_count] if args.key?(:node_count)
+        end
+      end
+      
       # Utilization Chart is a specific type of visualization which displays a metric
       # classified into "Used" and "Free" buckets.
       class ReportSummaryUtilizationChartData
@@ -3993,6 +4068,89 @@ module Google
         def update!(**args)
           @free = args[:free] if args.key?(:free)
           @used = args[:used] if args.key?(:used)
+        end
+      end
+      
+      # A set of findings that applies to assets destined for VMWare Engine.
+      class ReportSummaryVmWareEngineFinding
+        include Google::Apis::Core::Hashable
+      
+        # Count of assets which are allocated
+        # Corresponds to the JSON property `allocatedAssetCount`
+        # @return [Fixnum]
+        attr_accessor :allocated_asset_count
+      
+        # Set of regions in which the assets were allocated
+        # Corresponds to the JSON property `allocatedRegions`
+        # @return [Array<String>]
+        attr_accessor :allocated_regions
+      
+        # Set of per-nodetype allocation records
+        # Corresponds to the JSON property `nodeAllocations`
+        # @return [Array<Google::Apis::MigrationcenterV1alpha1::ReportSummaryVmWareNodeAllocation>]
+        attr_accessor :node_allocations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allocated_asset_count = args[:allocated_asset_count] if args.key?(:allocated_asset_count)
+          @allocated_regions = args[:allocated_regions] if args.key?(:allocated_regions)
+          @node_allocations = args[:node_allocations] if args.key?(:node_allocations)
+        end
+      end
+      
+      # A VMWare Engine Node
+      class ReportSummaryVmWareNode
+        include Google::Apis::Core::Hashable
+      
+        # Code to identify VMware Engine node series, e.g. "ve1-standard-72". Based on
+        # the displayName of cloud.google.com/vmware-engine/docs/reference/rest/v1/
+        # projects.locations.nodeTypes
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+        end
+      end
+      
+      # Represents assets allocated to a specific VMWare Node type.
+      class ReportSummaryVmWareNodeAllocation
+        include Google::Apis::Core::Hashable
+      
+        # Count of assets allocated to these nodes
+        # Corresponds to the JSON property `allocatedAssetCount`
+        # @return [Fixnum]
+        attr_accessor :allocated_asset_count
+      
+        # Count of this node type to be provisioned
+        # Corresponds to the JSON property `nodeCount`
+        # @return [Fixnum]
+        attr_accessor :node_count
+      
+        # A VMWare Engine Node
+        # Corresponds to the JSON property `vmwareNode`
+        # @return [Google::Apis::MigrationcenterV1alpha1::ReportSummaryVmWareNode]
+        attr_accessor :vmware_node
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allocated_asset_count = args[:allocated_asset_count] if args.key?(:allocated_asset_count)
+          @node_count = args[:node_count] if args.key?(:node_count)
+          @vmware_node = args[:vmware_node] if args.key?(:vmware_node)
         end
       end
       
@@ -4252,6 +4410,66 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @preference_set = args[:preference_set] if args.key?(:preference_set)
+        end
+      end
+      
+      # Preferences concerning Sole Tenancy nodes and VMs.
+      class SoleTenancyPreferences
+        include Google::Apis::Core::Hashable
+      
+        # Commitment plan to consider when calculating costs for virtual machine
+        # insights and recommendations. If you are unsure which value to set, a 3 year
+        # commitment plan is often a good value to start with.
+        # Corresponds to the JSON property `commitmentPlan`
+        # @return [String]
+        attr_accessor :commitment_plan
+      
+        # CPU overcommit ratio. Acceptable values are between 1.0 and 2.0 inclusive.
+        # Corresponds to the JSON property `cpuOvercommitRatio`
+        # @return [Float]
+        attr_accessor :cpu_overcommit_ratio
+      
+        # Sole Tenancy nodes maintenance policy.
+        # Corresponds to the JSON property `hostMaintenancePolicy`
+        # @return [String]
+        attr_accessor :host_maintenance_policy
+      
+        # A list of sole tenant node types. An empty list means that all possible node
+        # types will be considered.
+        # Corresponds to the JSON property `nodeTypes`
+        # @return [Array<Google::Apis::MigrationcenterV1alpha1::SoleTenantNodeType>]
+        attr_accessor :node_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @commitment_plan = args[:commitment_plan] if args.key?(:commitment_plan)
+          @cpu_overcommit_ratio = args[:cpu_overcommit_ratio] if args.key?(:cpu_overcommit_ratio)
+          @host_maintenance_policy = args[:host_maintenance_policy] if args.key?(:host_maintenance_policy)
+          @node_types = args[:node_types] if args.key?(:node_types)
+        end
+      end
+      
+      # A Sole Tenant node type.
+      class SoleTenantNodeType
+        include Google::Apis::Core::Hashable
+      
+        # Name of the Sole Tenant node. Consult https://cloud.google.com/compute/docs/
+        # nodes/sole-tenant-nodes
+        # Corresponds to the JSON property `nodeName`
+        # @return [String]
+        attr_accessor :node_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @node_name = args[:node_name] if args.key?(:node_name)
         end
       end
       
@@ -4827,6 +5045,22 @@ module Google
         # @return [String]
         attr_accessor :sizing_optimization_strategy
       
+        # Preferences concerning Sole Tenancy nodes and VMs.
+        # Corresponds to the JSON property `soleTenancyPreferences`
+        # @return [Google::Apis::MigrationcenterV1alpha1::SoleTenancyPreferences]
+        attr_accessor :sole_tenancy_preferences
+      
+        # Target product for assets using this preference set. Specify either target
+        # product or business goal, but not both.
+        # Corresponds to the JSON property `targetProduct`
+        # @return [String]
+        attr_accessor :target_product
+      
+        # The user preferences relating to Google Cloud VMware Engine target platform.
+        # Corresponds to the JSON property `vmwareEnginePreferences`
+        # @return [Google::Apis::MigrationcenterV1alpha1::VmwareEnginePreferences]
+        attr_accessor :vmware_engine_preferences
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4837,6 +5071,9 @@ module Google
           @compute_engine_preferences = args[:compute_engine_preferences] if args.key?(:compute_engine_preferences)
           @region_preferences = args[:region_preferences] if args.key?(:region_preferences)
           @sizing_optimization_strategy = args[:sizing_optimization_strategy] if args.key?(:sizing_optimization_strategy)
+          @sole_tenancy_preferences = args[:sole_tenancy_preferences] if args.key?(:sole_tenancy_preferences)
+          @target_product = args[:target_product] if args.key?(:target_product)
+          @vmware_engine_preferences = args[:vmware_engine_preferences] if args.key?(:vmware_engine_preferences)
         end
       end
       
@@ -4888,6 +5125,52 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # The user preferences relating to Google Cloud VMware Engine target platform.
+      class VmwareEnginePreferences
+        include Google::Apis::Core::Hashable
+      
+        # Commitment plan to consider when calculating costs for virtual machine
+        # insights and recommendations. If you are unsure which value to set, a 3 year
+        # commitment plan is often a good value to start with.
+        # Corresponds to the JSON property `commitmentPlan`
+        # @return [String]
+        attr_accessor :commitment_plan
+      
+        # CPU overcommit ratio. Acceptable values are between 1.0 and 8.0, with 0.1
+        # increment.
+        # Corresponds to the JSON property `cpuOvercommitRatio`
+        # @return [Float]
+        attr_accessor :cpu_overcommit_ratio
+      
+        # Memory overcommit ratio. Acceptable values are 1.0, 1.25, 1.5, 1.75 and 2.0.
+        # Corresponds to the JSON property `memoryOvercommitRatio`
+        # @return [Float]
+        attr_accessor :memory_overcommit_ratio
+      
+        # The Deduplication and Compression ratio is based on the logical (Used Before)
+        # space required to store data before applying deduplication and compression, in
+        # relation to the physical (Used After) space required after applying
+        # deduplication and compression. Specifically, the ratio is the Used Before
+        # space divided by the Used After space. For example, if the Used Before space
+        # is 3 GB, but the physical Used After space is 1 GB, the deduplication and
+        # compression ratio is 3x. Acceptable values are between 1.0 and 4.0.
+        # Corresponds to the JSON property `storageDeduplicationCompressionRatio`
+        # @return [Float]
+        attr_accessor :storage_deduplication_compression_ratio
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @commitment_plan = args[:commitment_plan] if args.key?(:commitment_plan)
+          @cpu_overcommit_ratio = args[:cpu_overcommit_ratio] if args.key?(:cpu_overcommit_ratio)
+          @memory_overcommit_ratio = args[:memory_overcommit_ratio] if args.key?(:memory_overcommit_ratio)
+          @storage_deduplication_compression_ratio = args[:storage_deduplication_compression_ratio] if args.key?(:storage_deduplication_compression_ratio)
         end
       end
       

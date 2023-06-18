@@ -742,7 +742,37 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReportSummarySoleTenantFinding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReportSummarySoleTenantNodeAllocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ReportSummaryUtilizationChartData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReportSummaryVmWareEngineFinding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReportSummaryVmWareNode
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReportSummaryVmWareNodeAllocation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -791,6 +821,18 @@ module Google
       end
       
       class Settings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SoleTenancyPreferences
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SoleTenantNodeType
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -875,6 +917,12 @@ module Google
       end
       
       class VmwareEngineMigrationTarget
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VmwareEnginePreferences
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2063,7 +2111,11 @@ module Google
       
           property :preferred_region, as: 'preferredRegion'
           property :pricing_track, as: 'pricingTrack'
+          property :sole_tenant_finding, as: 'soleTenantFinding', class: Google::Apis::MigrationcenterV1alpha1::ReportSummarySoleTenantFinding, decorator: Google::Apis::MigrationcenterV1alpha1::ReportSummarySoleTenantFinding::Representation
+      
           property :top_priority, as: 'topPriority'
+          property :vmware_engine_finding, as: 'vmwareEngineFinding', class: Google::Apis::MigrationcenterV1alpha1::ReportSummaryVmWareEngineFinding, decorator: Google::Apis::MigrationcenterV1alpha1::ReportSummaryVmWareEngineFinding::Representation
+      
         end
       end
       
@@ -2104,11 +2156,58 @@ module Google
         end
       end
       
+      class ReportSummarySoleTenantFinding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allocated_asset_count, :numeric_string => true, as: 'allocatedAssetCount'
+          collection :allocated_regions, as: 'allocatedRegions'
+          collection :node_allocations, as: 'nodeAllocations', class: Google::Apis::MigrationcenterV1alpha1::ReportSummarySoleTenantNodeAllocation, decorator: Google::Apis::MigrationcenterV1alpha1::ReportSummarySoleTenantNodeAllocation::Representation
+      
+        end
+      end
+      
+      class ReportSummarySoleTenantNodeAllocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allocated_asset_count, :numeric_string => true, as: 'allocatedAssetCount'
+          property :node, as: 'node', class: Google::Apis::MigrationcenterV1alpha1::SoleTenantNodeType, decorator: Google::Apis::MigrationcenterV1alpha1::SoleTenantNodeType::Representation
+      
+          property :node_count, :numeric_string => true, as: 'nodeCount'
+        end
+      end
+      
       class ReportSummaryUtilizationChartData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :free, :numeric_string => true, as: 'free'
           property :used, :numeric_string => true, as: 'used'
+        end
+      end
+      
+      class ReportSummaryVmWareEngineFinding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allocated_asset_count, :numeric_string => true, as: 'allocatedAssetCount'
+          collection :allocated_regions, as: 'allocatedRegions'
+          collection :node_allocations, as: 'nodeAllocations', class: Google::Apis::MigrationcenterV1alpha1::ReportSummaryVmWareNodeAllocation, decorator: Google::Apis::MigrationcenterV1alpha1::ReportSummaryVmWareNodeAllocation::Representation
+      
+        end
+      end
+      
+      class ReportSummaryVmWareNode
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+        end
+      end
+      
+      class ReportSummaryVmWareNodeAllocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allocated_asset_count, :numeric_string => true, as: 'allocatedAssetCount'
+          property :node_count, :numeric_string => true, as: 'nodeCount'
+          property :vmware_node, as: 'vmwareNode', class: Google::Apis::MigrationcenterV1alpha1::ReportSummaryVmWareNode, decorator: Google::Apis::MigrationcenterV1alpha1::ReportSummaryVmWareNode::Representation
+      
         end
       end
       
@@ -2183,6 +2282,24 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :preference_set, as: 'preferenceSet'
+        end
+      end
+      
+      class SoleTenancyPreferences
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :commitment_plan, as: 'commitmentPlan'
+          property :cpu_overcommit_ratio, as: 'cpuOvercommitRatio'
+          property :host_maintenance_policy, as: 'hostMaintenancePolicy'
+          collection :node_types, as: 'nodeTypes', class: Google::Apis::MigrationcenterV1alpha1::SoleTenantNodeType, decorator: Google::Apis::MigrationcenterV1alpha1::SoleTenantNodeType::Representation
+      
+        end
+      end
+      
+      class SoleTenantNodeType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :node_name, as: 'nodeName'
         end
       end
       
@@ -2332,6 +2449,11 @@ module Google
           property :region_preferences, as: 'regionPreferences', class: Google::Apis::MigrationcenterV1alpha1::RegionPreferences, decorator: Google::Apis::MigrationcenterV1alpha1::RegionPreferences::Representation
       
           property :sizing_optimization_strategy, as: 'sizingOptimizationStrategy'
+          property :sole_tenancy_preferences, as: 'soleTenancyPreferences', class: Google::Apis::MigrationcenterV1alpha1::SoleTenancyPreferences, decorator: Google::Apis::MigrationcenterV1alpha1::SoleTenancyPreferences::Representation
+      
+          property :target_product, as: 'targetProduct'
+          property :vmware_engine_preferences, as: 'vmwareEnginePreferences', class: Google::Apis::MigrationcenterV1alpha1::VmwareEnginePreferences, decorator: Google::Apis::MigrationcenterV1alpha1::VmwareEnginePreferences::Representation
+      
         end
       end
       
@@ -2348,6 +2470,16 @@ module Google
       class VmwareEngineMigrationTarget
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class VmwareEnginePreferences
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :commitment_plan, as: 'commitmentPlan'
+          property :cpu_overcommit_ratio, as: 'cpuOvercommitRatio'
+          property :memory_overcommit_ratio, as: 'memoryOvercommitRatio'
+          property :storage_deduplication_compression_ratio, as: 'storageDeduplicationCompressionRatio'
         end
       end
       
