@@ -1,5 +1,9 @@
 # Release history for google-apis-compute_beta
 
+### v0.71.0 (2023-06-18)
+
+* Regenerated from discovery document revision 20230606
+
 ### v0.70.0 (2023-06-11)
 
 * Regenerated from discovery document revision 20230530
