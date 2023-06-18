@@ -358,9 +358,9 @@ module Google
         # Report guide. For more information about the customer report's parameters, see
         # the Customers Usage parameters reference guides.
         # @param [String] date
-        #   Represents the date the usage occurred, based on PST time zone. The timestamp
-        #   is in the [ISO 8601 format](https://en.wikipedia.org/wiki/ISO_8601), `yyyy-mm-
-        #   dd`.
+        #   Represents the date the usage occurred, based on UTC-8:00 (Pacific Standard
+        #   Time). The timestamp is in the [ISO 8601 format](https://en.wikipedia.org/wiki/
+        #   ISO_8601), `yyyy-mm-dd`.
         # @param [String] customer_id
         #   The unique ID of the customer to retrieve data for.
         # @param [String] page_token
@@ -426,8 +426,9 @@ module Google
         #   for a particular `entityType`, see the Entities Usage parameters reference
         #   guides.
         # @param [String] date
-        #   Represents the date the usage occurred. The timestamp is in the ISO 8601
-        #   format, yyyy-mm-dd. We recommend you use your account's time zone for this.
+        #   Represents the date the usage occurred, based on UTC-8:00 (Pacific Standard
+        #   Time). The timestamp is in the [ISO 8601 format](https://en.wikipedia.org/wiki/
+        #   ISO_8601), `yyyy-mm-dd`.
         # @param [String] customer_id
         #   The unique ID of the customer to retrieve data for.
         # @param [String] filters
@@ -513,7 +514,7 @@ module Google
         #   deleted user. For a deleted user, call `users.list` in Directory API with `
         #   showDeleted=true`, then use the returned `ID` as the `userKey`.
         # @param [String] date
-        #   Represents the date the usage occurred, based on GMT-7:00 (Pacific Standard
+        #   Represents the date the usage occurred, based on UTC-8:00 (Pacific Standard
         #   Time). The timestamp is in the [ISO 8601 format](https://en.wikipedia.org/wiki/
         #   ISO_8601), `yyyy-mm-dd`.
         # @param [String] customer_id
