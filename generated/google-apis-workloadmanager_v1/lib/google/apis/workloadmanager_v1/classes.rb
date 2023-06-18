@@ -51,7 +51,7 @@ module Google
         end
       end
       
-      # Message describing Evaluation object
+      # LINT.IfChange Message describing Evaluation object
       class Evaluation
         include Google::Apis::Core::Hashable
       
@@ -101,7 +101,9 @@ module Google
         # @return [Array<String>]
         attr_accessor :rule_versions
       
-        # crontab format schedule for scheduled evaluation, example: 0 */3 * * *
+        # crontab format schedule for scheduled evaluation, currently only support the
+        # following schedule: "0 */1 * * *", "0 */6 * * *", "0 */12 * * *", "0 0 */1 * *"
+        # , "0 0 */7 * *",
         # Corresponds to the JSON property `schedule`
         # @return [String]
         attr_accessor :schedule
@@ -266,7 +268,12 @@ module Google
       class Insight
         include Google::Apis::Core::Hashable
       
-        # The schema of SAP system discovery data.
+        # Required. The instance id where the insight is generated from
+        # Corresponds to the JSON property `instanceId`
+        # @return [String]
+        attr_accessor :instance_id
+      
+        # LINT.IfChange The schema of SAP system discovery data.
         # Corresponds to the JSON property `sapDiscovery`
         # @return [Google::Apis::WorkloadmanagerV1::SapDiscovery]
         attr_accessor :sap_discovery
@@ -294,6 +301,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @instance_id = args[:instance_id] if args.key?(:instance_id)
           @sap_discovery = args[:sap_discovery] if args.key?(:sap_discovery)
           @sap_validation = args[:sap_validation] if args.key?(:sap_validation)
           @sent_time = args[:sent_time] if args.key?(:sent_time)
@@ -865,7 +873,7 @@ module Google
         end
       end
       
-      # The schema of SAP system discovery data.
+      # LINT.IfChange The schema of SAP system discovery data.
       class SapDiscovery
         include Google::Apis::Core::Hashable
       
@@ -1227,11 +1235,6 @@ module Google
         # @return [Google::Apis::WorkloadmanagerV1::Insight]
         attr_accessor :insight
       
-        # Optional. The instance id where the insight is generated from
-        # Corresponds to the JSON property `instanceId`
-        # @return [String]
-        attr_accessor :instance_id
-      
         # Optional. An optional request ID to identify requests. Specify a unique
         # request ID so that if you must retry your request, the server will know to
         # ignore the request if it has already been completed. The server will guarantee
@@ -1253,7 +1256,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @insight = args[:insight] if args.key?(:insight)
-          @instance_id = args[:instance_id] if args.key?(:instance_id)
           @request_id = args[:request_id] if args.key?(:request_id)
         end
       end
