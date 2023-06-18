@@ -293,7 +293,10 @@ module Google
       
         # The unique ID for a classification. Must be specified for case creation. To
         # retrieve valid classification IDs for case creation, use `caseClassifications.
-        # search`.
+        # search`. Classification IDs returned by `caseClassifications.search` are
+        # guaranteed to be valid for at least 6 months. If a given classification is
+        # deactiveated, it will immediately stop being returned. After 6 months, `case.
+        # create` requests using the classification ID will fail.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
