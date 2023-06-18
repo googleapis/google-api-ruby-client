@@ -2368,6 +2368,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AssistantContextProviderSelectionPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AssistantContextProviderSelectionResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AssistantContextProviderVariant
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2579,6 +2591,12 @@ module Google
       end
       
       class AssistantDevicesPlatformProtoUnderstandingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AssistantGroundingProviderProviderSignalResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -18745,7 +18763,6 @@ module Google
       class AssistantApiLoggingOnlyData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :account_index, as: 'accountIndex'
           property :acp_version, as: 'acpVersion'
           property :android_id, :numeric_string => true, as: 'androidId'
           property :app_version, as: 'appVersion'
@@ -18884,7 +18901,6 @@ module Google
           property :android_tv_assistant_settings_source, as: 'androidTvAssistantSettingsSource'
           property :health_and_fitness_proactive, as: 'healthAndFitnessProactive'
           property :photos_proactive, as: 'photosProactive'
-          property :supports_proactive_output, as: 'supportsProactiveOutput'
           property :user_match_proactive, as: 'userMatchProactive'
         end
       end
@@ -19952,6 +19968,25 @@ module Google
         end
       end
       
+      class AssistantContextProviderSelectionPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :policy_action, as: 'policyAction'
+          property :policy_name, as: 'policyName'
+        end
+      end
+      
+      class AssistantContextProviderSelectionResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bucketed_final_score, as: 'bucketedFinalScore'
+          property :final_score, as: 'finalScore'
+          collection :policy_applied, as: 'policyApplied', class: Google::Apis::ContentwarehouseV1::AssistantContextProviderSelectionPolicy, decorator: Google::Apis::ContentwarehouseV1::AssistantContextProviderSelectionPolicy::Representation
+      
+          property :should_prune, as: 'shouldPrune'
+        end
+      end
+      
       class AssistantContextProviderVariant
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -20295,6 +20330,21 @@ module Google
         end
       end
       
+      class AssistantGroundingProviderProviderSignalResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_default_provider, as: 'isDefaultProvider'
+          property :is_foreground_provider, as: 'isForegroundProvider'
+          property :is_in_app_provider, as: 'isInAppProvider'
+          property :is_installed, as: 'isInstalled'
+          property :is_last_used_provider, as: 'isLastUsedProvider'
+          property :is_query_restricted_provider, as: 'isQueryRestrictedProvider'
+          property :provider_selection_result, as: 'providerSelectionResult', class: Google::Apis::ContentwarehouseV1::AssistantContextProviderSelectionResult, decorator: Google::Apis::ContentwarehouseV1::AssistantContextProviderSelectionResult::Representation
+      
+          property :provider_type_signal, as: 'providerTypeSignal'
+        end
+      end
+      
       class AssistantGroundingRankerAssistantInteractionFeatures
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -20498,9 +20548,10 @@ module Google
       class AssistantGroundingRankerProviderGroundingProviderFeatures
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :is_in_app_provider, as: 'isInAppProvider'
           collection :provider_cluster_ids, as: 'providerClusterIds'
           property :provider_id, as: 'providerId', class: Google::Apis::ContentwarehouseV1::AssistantContextProviderId, decorator: Google::Apis::ContentwarehouseV1::AssistantContextProviderId::Representation
+      
+          property :provider_signal_result, as: 'providerSignalResult', class: Google::Apis::ContentwarehouseV1::AssistantGroundingProviderProviderSignalResult, decorator: Google::Apis::ContentwarehouseV1::AssistantGroundingProviderProviderSignalResult::Representation
       
           property :psl_score, as: 'pslScore'
         end
@@ -20963,7 +21014,9 @@ module Google
           property :is_media_control_intent, as: 'isMediaControlIntent'
           property :is_play_generic_music, as: 'isPlayGenericMusic'
           property :is_podcast_intent, as: 'isPodcastIntent'
+          property :is_sage_intent, as: 'isSageIntent'
           property :is_tvm_intent, as: 'isTvmIntent'
+          property :is_valid_smarthome_intent, as: 'isValidSmarthomeIntent'
           property :is_video_intent, as: 'isVideoIntent'
           property :kscorer_rank, as: 'kscorerRank'
           property :laa_features, as: 'laaFeatures', class: Google::Apis::ContentwarehouseV1::AssistantGroundingRankerLaaFeatures, decorator: Google::Apis::ContentwarehouseV1::AssistantGroundingRankerLaaFeatures::Representation
@@ -25009,6 +25062,7 @@ module Google
       
           property :restriction_group, as: 'restrictionGroup', class: Google::Apis::ContentwarehouseV1::GeostoreFeatureIdProto, decorator: Google::Apis::ContentwarehouseV1::GeostoreFeatureIdProto::Representation
       
+          property :restriction_token, as: 'restrictionToken'
           property :schedule, as: 'schedule', class: Google::Apis::ContentwarehouseV1::GeostoreTimeScheduleProto, decorator: Google::Apis::ContentwarehouseV1::GeostoreTimeScheduleProto::Representation
       
           property :scope, as: 'scope'
@@ -26724,6 +26778,7 @@ module Google
           property :access_control_mode, as: 'accessControlMode'
           property :database_type, as: 'databaseType'
           property :document_creator_default_role, as: 'documentCreatorDefaultRole'
+          property :enable_cal_user_email_logging, as: 'enableCalUserEmailLogging'
           property :kms_key, as: 'kmsKey'
         end
       end
@@ -30221,6 +30276,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :accelerated_shopping_signal, as: 'acceleratedShoppingSignal', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
+          property :authentic_site_rank_data, as: 'authenticSiteRankData', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
           property :chrome_counts, as: 'chromeCounts', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
           property :creator, as: 'creator', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
@@ -30231,6 +30288,10 @@ module Google
       
           property :document_intent, as: 'documentIntent', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
+          property :extracted_book_info, as: 'extractedBookInfo', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :instant_chrome_views, as: 'instantChromeViews', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
           property :instant_navboost, as: 'instantNavboost', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
           property :localyp, as: 'localyp', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
@@ -30239,7 +30300,11 @@ module Google
       
           property :navboost, as: 'navboost', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
+          property :predicted_authenticity, as: 'predictedAuthenticity', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
           property :rankembed, as: 'rankembed', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :rosetta_language, as: 'rosettaLanguage', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
           property :universal_facts, as: 'universalFacts', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
@@ -42100,6 +42165,7 @@ module Google
           property :borrowed_fields, as: 'BorrowedFields'
           property :chapter, as: 'Chapter'
           property :citation_source, as: 'CitationSource'
+          property :citation_source_crawl_timestamp, :numeric_string => true, as: 'CitationSourceCrawlTimestamp'
           property :citation_source_url, as: 'CitationSourceUrl'
           property :citation_src, as: 'CitationSrc'
           property :cleared_reason, as: 'ClearedReason'
