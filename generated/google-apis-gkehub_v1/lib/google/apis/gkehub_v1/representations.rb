@@ -286,6 +286,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Fleet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FleetLifecycleState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FleetObservabilityFeatureSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -377,6 +389,12 @@ module Google
       end
       
       class ListFeaturesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListFleetsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -913,12 +931,14 @@ module Google
           property :mutation_enabled, as: 'mutationEnabled'
           property :referential_rules_enabled, as: 'referentialRulesEnabled'
           property :template_library_installed, as: 'templateLibraryInstalled'
+          property :update_time, as: 'updateTime'
         end
       end
       
       class ConfigManagementPolicyControllerMigration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :copy_time, as: 'copyTime'
           property :stage, as: 'stage'
         end
       end
@@ -1045,6 +1065,27 @@ module Google
           property :code, as: 'code'
           property :description, as: 'description'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class Fleet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :delete_time, as: 'deleteTime'
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          property :state, as: 'state', class: Google::Apis::GkehubV1::FleetLifecycleState, decorator: Google::Apis::GkehubV1::FleetLifecycleState::Representation
+      
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class FleetLifecycleState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
         end
       end
       
@@ -1199,6 +1240,15 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :resources, as: 'resources', class: Google::Apis::GkehubV1::Feature, decorator: Google::Apis::GkehubV1::Feature::Representation
       
+        end
+      end
+      
+      class ListFleetsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :fleets, as: 'fleets', class: Google::Apis::GkehubV1::Fleet, decorator: Google::Apis::GkehubV1::Fleet::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
