@@ -4204,6 +4204,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RouterBgpPeerCustomLearnedIpRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RouterInterface
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -8898,6 +8904,8 @@ module Google
       
           property :hostname, as: 'hostname'
           property :id, :numeric_string => true, as: 'id'
+          property :instance_encryption_key, as: 'instanceEncryptionKey', class: Google::Apis::ComputeV1::CustomerEncryptionKey, decorator: Google::Apis::ComputeV1::CustomerEncryptionKey::Representation
+      
           property :key_revocation_action_type, as: 'keyRevocationActionType'
           property :kind, as: 'kind'
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
@@ -13767,6 +13775,9 @@ module Google
           property :advertised_route_priority, as: 'advertisedRoutePriority'
           property :bfd, as: 'bfd', class: Google::Apis::ComputeV1::RouterBgpPeerBfd, decorator: Google::Apis::ComputeV1::RouterBgpPeerBfd::Representation
       
+          collection :custom_learned_ip_ranges, as: 'customLearnedIpRanges', class: Google::Apis::ComputeV1::RouterBgpPeerCustomLearnedIpRange, decorator: Google::Apis::ComputeV1::RouterBgpPeerCustomLearnedIpRange::Representation
+      
+          property :custom_learned_route_priority, as: 'customLearnedRoutePriority'
           property :enable, as: 'enable'
           property :enable_ipv6, as: 'enableIpv6'
           property :interface_name, as: 'interfaceName'
@@ -13789,6 +13800,13 @@ module Google
           property :min_transmit_interval, as: 'minTransmitInterval'
           property :multiplier, as: 'multiplier'
           property :session_initialization_mode, as: 'sessionInitializationMode'
+        end
+      end
+      
+      class RouterBgpPeerCustomLearnedIpRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :range, as: 'range'
         end
       end
       
