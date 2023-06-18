@@ -6032,7 +6032,9 @@ module Google
       
         # The name of the encryption key that is stored in Google Cloud KMS. For example:
         # "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/
-        # cryptoKeys/key
+        # cryptoKeys/key The fully-qualifed key name may be returned for resource GET
+        # requests. For example: "kmsKeyName": "projects/kms_project_id/locations/region/
+        # keyRings/ key_region/cryptoKeys/key /cryptoKeyVersions/1
         # Corresponds to the JSON property `kmsKeyName`
         # @return [String]
         attr_accessor :kms_key_name
@@ -33374,6 +33376,12 @@ module Google
         # @return [String]
         attr_accessor :next_hop_gateway
       
+        # [Output Only] The full resource name of the Network Connectivity Center hub
+        # that will handle matching packets.
+        # Corresponds to the JSON property `nextHopHub`
+        # @return [String]
+        attr_accessor :next_hop_hub
+      
         # The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should
         # handle matching packets or the IP address of the forwarding Rule. For example,
         # the following are all valid URLs: - 10.128.0.56 - https://www.googleapis.com/
@@ -33473,6 +33481,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @next_hop_gateway = args[:next_hop_gateway] if args.key?(:next_hop_gateway)
+          @next_hop_hub = args[:next_hop_hub] if args.key?(:next_hop_hub)
           @next_hop_ilb = args[:next_hop_ilb] if args.key?(:next_hop_ilb)
           @next_hop_instance = args[:next_hop_instance] if args.key?(:next_hop_instance)
           @next_hop_interconnect_attachment = args[:next_hop_interconnect_attachment] if args.key?(:next_hop_interconnect_attachment)

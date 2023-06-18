@@ -14415,6 +14415,7 @@ module Google
           property :name, as: 'name'
           property :network, as: 'network'
           property :next_hop_gateway, as: 'nextHopGateway'
+          property :next_hop_hub, as: 'nextHopHub'
           property :next_hop_ilb, as: 'nextHopIlb'
           property :next_hop_instance, as: 'nextHopInstance'
           property :next_hop_interconnect_attachment, as: 'nextHopInterconnectAttachment'
