@@ -1958,7 +1958,7 @@ module Google
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal]
         attr_accessor :display_video360_advertiser_link_proposal
       
-        # Singleton resource under a WebDataStream, configuring measurement of
+        # Singleton resource under a web DataStream, configuring measurement of
         # additional site interactions and content.
         # Corresponds to the JSON property `enhancedMeasurementSettings`
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings]
@@ -2801,8 +2801,8 @@ module Google
       class GoogleAnalyticsAdminV1alphaDataStreamWebStreamData
         include Google::Apis::Core::Hashable
       
-        # Immutable. Domain name of the web app being measured, or empty. Example: "http:
-        # //www.google.com", "https://www.google.com"
+        # Domain name of the web app being measured, or empty. Example: "http://www.
+        # google.com", "https://www.google.com"
         # Corresponds to the JSON property `defaultUri`
         # @return [String]
         attr_accessor :default_uri
@@ -2813,8 +2813,7 @@ module Google
         # @return [String]
         attr_accessor :firebase_app_id
       
-        # Output only. Analytics "Measurement ID", without the "G-" prefix. Example: "G-
-        # 1A2BCD345E" would just be "1A2BCD345E"
+        # Output only. Analytics Measurement ID. Example: "G-1A2BCD345E"
         # Corresponds to the JSON property `measurementId`
         # @return [String]
         attr_accessor :measurement_id
@@ -3040,7 +3039,7 @@ module Google
         end
       end
       
-      # Singleton resource under a WebDataStream, configuring measurement of
+      # Singleton resource under a web DataStream, configuring measurement of
       # additional site interactions and content.
       class GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings
         include Google::Apis::Core::Hashable
