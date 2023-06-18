@@ -680,7 +680,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the DatasetSchema of a Dataset.
+        # Gets the `DatasetSchema` of a `Dataset`.
         # @param [String] name
         #   Required. The dataset schema resource name. Format: projects/`project`/
         #   locations/`location`/processors/`processor`/dataset/datasetSchema
@@ -714,7 +714,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a DatasetSchema.
+        # Updates a `DatasetSchema`.
         # @param [String] name
         #   Dataset schema resource name. Format: `projects/`project`/locations/`location`/
         #   processors/`processor`/dataset/datasetSchema`
