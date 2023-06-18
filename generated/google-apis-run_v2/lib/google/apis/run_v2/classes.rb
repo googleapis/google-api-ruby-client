@@ -285,8 +285,8 @@ module Google
         # memory limits of all containers in a pod. This field's values are of the '
         # Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-
         # definitions/quantity/. The default is nil which means that the limit is
-        # undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir +
-        # optional
+        # undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#
+        # emptydir
         # Corresponds to the JSON property `sizeLimit`
         # @return [String]
         attr_accessor :size_limit
