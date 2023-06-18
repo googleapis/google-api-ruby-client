@@ -1171,11 +1171,7 @@ module Google
         # contains first and third party audience ids only. The relation between each
         # first and third party audience group is INTERSECTION, and the result is UNION'
         # ed with other audience groups. Repeated groups with same settings will be
-        # ignored. **Warning:** `ACTIVITY_BASED` and `FREQUENCY_CAP` audience types will
-        # be deprecated on **May 20, 2023**. After this date, these audiences will not
-        # be able to be added to resource targeting. Read our [feature deprecation
-        # announcement](/display-video/api/deprecations#features.
-        # first_and_third_party_audience_types) for more information.
+        # ignored.
         # Corresponds to the JSON property `includedFirstAndThirdPartyAudienceGroups`
         # @return [Array<Google::Apis::DisplayvideoV1::FirstAndThirdPartyAudienceGroup>]
         attr_accessor :included_first_and_third_party_audience_groups
