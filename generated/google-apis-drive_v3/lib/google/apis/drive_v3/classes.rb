@@ -316,15 +316,14 @@ module Google
         attr_accessor :kind
       
         # The starting page token for future changes. This will be present only if the
-        # end of the current changes list has been reached.
+        # end of the current changes list has been reached. The page token doesn't
+        # expire.
         # Corresponds to the JSON property `newStartPageToken`
         # @return [String]
         attr_accessor :new_start_page_token
       
         # The page token for the next page of changes. This will be absent if the end of
-        # the changes list has been reached. If the token is rejected for any reason, it
-        # should be discarded, and pagination should be restarted from the first page of
-        # results.
+        # the changes list has been reached. The page token doesn't expire.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -562,7 +561,8 @@ module Google
         # The page token for the next page of comments. This will be absent if the end
         # of the comments list has been reached. If the token is rejected for any reason,
         # it should be discarded, and pagination should be restarted from the first
-        # page of results.
+        # page of results. The page token is typically valid for several hours. However,
+        # if new items are added or removed, your expected results might differ.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -1024,7 +1024,8 @@ module Google
         # The page token for the next page of shared drives. This will be absent if the
         # end of the list has been reached. If the token is rejected for any reason, it
         # should be discarded, and pagination should be restarted from the first page of
-        # results.
+        # results. The page token is typically valid for several hours. However, if new
+        # items are added or removed, your expected results might differ.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -2192,7 +2193,8 @@ module Google
         # The page token for the next page of files. This will be absent if the end of
         # the files list has been reached. If the token is rejected for any reason, it
         # should be discarded, and pagination should be restarted from the first page of
-        # results.
+        # results. The page token is typically valid for several hours. However, if new
+        # items are added or removed, your expected results might differ.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -2423,7 +2425,8 @@ module Google
         # The page token for the next page of labels. This field will be absent if the
         # end of the list has been reached. If the token is rejected for any reason, it
         # should be discarded, and pagination should be restarted from the first page of
-        # results.
+        # results. The page token is typically valid for several hours. However, if new
+        # items are added or removed, your expected results might differ.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -2756,7 +2759,9 @@ module Google
         # The page token for the next page of permissions. This field will be absent if
         # the end of the permissions list has been reached. If the token is rejected for
         # any reason, it should be discarded, and pagination should be restarted from
-        # the first page of results.
+        # the first page of results. The page token is typically valid for several hours.
+        # However, if new items are added or removed, your expected results might
+        # differ.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -2865,7 +2870,8 @@ module Google
         # The page token for the next page of replies. This will be absent if the end of
         # the replies list has been reached. If the token is rejected for any reason, it
         # should be discarded, and pagination should be restarted from the first page of
-        # results.
+        # results. The page token is typically valid for several hours. However, if new
+        # items are added or removed, your expected results might differ.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -3013,7 +3019,8 @@ module Google
         # The page token for the next page of revisions. This will be absent if the end
         # of the revisions list has been reached. If the token is rejected for any
         # reason, it should be discarded, and pagination should be restarted from the
-        # first page of results.
+        # first page of results. The page token is typically valid for several hours.
+        # However, if new items are added or removed, your expected results might differ.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -3046,7 +3053,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The starting page token for listing changes.
+        # The starting page token for listing future changes. The page token doesn't
+        # expire.
         # Corresponds to the JSON property `startPageToken`
         # @return [String]
         attr_accessor :start_page_token
@@ -3443,7 +3451,8 @@ module Google
         # The page token for the next page of Team Drives. This will be absent if the
         # end of the Team Drives list has been reached. If the token is rejected for any
         # reason, it should be discarded, and pagination should be restarted from the
-        # first page of results.
+        # first page of results. The page token is typically valid for several hours.
+        # However, if new items are added or removed, your expected results might differ.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
