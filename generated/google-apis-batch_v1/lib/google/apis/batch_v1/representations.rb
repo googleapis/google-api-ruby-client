@@ -34,13 +34,37 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AgentContainer
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AgentEnvironment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AgentInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AgentKmsEnvMap
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AgentMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AgentScript
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -53,6 +77,18 @@ module Google
       end
       
       class AgentTaskInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AgentTaskRunnable
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AgentTaskSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -356,6 +392,27 @@ module Google
         end
       end
       
+      class AgentContainer
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :commands, as: 'commands'
+          property :entrypoint, as: 'entrypoint'
+          property :image_uri, as: 'imageUri'
+          property :options, as: 'options'
+          collection :volumes, as: 'volumes'
+        end
+      end
+      
+      class AgentEnvironment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :encrypted_variables, as: 'encryptedVariables', class: Google::Apis::BatchV1::AgentKmsEnvMap, decorator: Google::Apis::BatchV1::AgentKmsEnvMap::Representation
+      
+          hash :secret_variables, as: 'secretVariables'
+          hash :variables, as: 'variables'
+        end
+      end
+      
       class AgentInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -365,6 +422,14 @@ module Google
           property :task_group_id, as: 'taskGroupId'
           collection :tasks, as: 'tasks', class: Google::Apis::BatchV1::AgentTaskInfo, decorator: Google::Apis::BatchV1::AgentTaskInfo::Representation
       
+        end
+      end
+      
+      class AgentKmsEnvMap
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cipher_text, as: 'cipherText'
+          property :key_name, as: 'keyName'
         end
       end
       
@@ -383,9 +448,19 @@ module Google
         end
       end
       
+      class AgentScript
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :path, as: 'path'
+          property :text, as: 'text'
+        end
+      end
+      
       class AgentTask
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_task_spec, as: 'agentTaskSpec', class: Google::Apis::BatchV1::AgentTaskSpec, decorator: Google::Apis::BatchV1::AgentTaskSpec::Representation
+      
           property :intended_state, as: 'intendedState'
           property :reached_barrier, :numeric_string => true, as: 'reachedBarrier'
           property :spec, as: 'spec', class: Google::Apis::BatchV1::TaskSpec, decorator: Google::Apis::BatchV1::TaskSpec::Representation
@@ -403,6 +478,33 @@ module Google
           property :runnable, :numeric_string => true, as: 'runnable'
           property :task_id, as: 'taskId'
           property :task_status, as: 'taskStatus', class: Google::Apis::BatchV1::TaskStatus, decorator: Google::Apis::BatchV1::TaskStatus::Representation
+      
+        end
+      end
+      
+      class AgentTaskRunnable
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :always_run, as: 'alwaysRun'
+          property :background, as: 'background'
+          property :container, as: 'container', class: Google::Apis::BatchV1::AgentContainer, decorator: Google::Apis::BatchV1::AgentContainer::Representation
+      
+          property :environment, as: 'environment', class: Google::Apis::BatchV1::AgentEnvironment, decorator: Google::Apis::BatchV1::AgentEnvironment::Representation
+      
+          property :ignore_exit_status, as: 'ignoreExitStatus'
+          property :script, as: 'script', class: Google::Apis::BatchV1::AgentScript, decorator: Google::Apis::BatchV1::AgentScript::Representation
+      
+          property :timeout, as: 'timeout'
+        end
+      end
+      
+      class AgentTaskSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :environment, as: 'environment', class: Google::Apis::BatchV1::AgentEnvironment, decorator: Google::Apis::BatchV1::AgentEnvironment::Representation
+      
+          property :max_run_duration, as: 'maxRunDuration'
+          collection :runnables, as: 'runnables', class: Google::Apis::BatchV1::AgentTaskRunnable, decorator: Google::Apis::BatchV1::AgentTaskRunnable::Representation
       
         end
       end

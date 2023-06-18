@@ -76,6 +76,88 @@ module Google
         end
       end
       
+      # Container runnable representation on the agent side.
+      class AgentContainer
+        include Google::Apis::Core::Hashable
+      
+        # Overrides the `CMD` specified in the container. If there is an ENTRYPOINT (
+        # either in the container image or with the entrypoint field below) then
+        # commands are appended as arguments to the ENTRYPOINT.
+        # Corresponds to the JSON property `commands`
+        # @return [Array<String>]
+        attr_accessor :commands
+      
+        # Overrides the `ENTRYPOINT` specified in the container.
+        # Corresponds to the JSON property `entrypoint`
+        # @return [String]
+        attr_accessor :entrypoint
+      
+        # The URI to pull the container image from.
+        # Corresponds to the JSON property `imageUri`
+        # @return [String]
+        attr_accessor :image_uri
+      
+        # Arbitrary additional options to include in the "docker run" command when
+        # running this container, e.g. "--network host".
+        # Corresponds to the JSON property `options`
+        # @return [String]
+        attr_accessor :options
+      
+        # Volumes to mount (bind mount) from the host machine files or directories into
+        # the container, formatted to match docker run's --volume option, e.g. /foo:/bar,
+        # or /foo:/bar:ro
+        # Corresponds to the JSON property `volumes`
+        # @return [Array<String>]
+        attr_accessor :volumes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @commands = args[:commands] if args.key?(:commands)
+          @entrypoint = args[:entrypoint] if args.key?(:entrypoint)
+          @image_uri = args[:image_uri] if args.key?(:image_uri)
+          @options = args[:options] if args.key?(:options)
+          @volumes = args[:volumes] if args.key?(:volumes)
+        end
+      end
+      
+      # AgentEnvironment is the Environment representation between Agent and CLH
+      # communication. The environment is used in both task level and agent level.
+      class AgentEnvironment
+        include Google::Apis::Core::Hashable
+      
+        # AgentKMSEnvMap contains the encrypted key/value pair to be used in the
+        # environment on the Agent side.
+        # Corresponds to the JSON property `encryptedVariables`
+        # @return [Google::Apis::BatchV1::AgentKmsEnvMap]
+        attr_accessor :encrypted_variables
+      
+        # A map of environment variable names to Secret Manager secret names. The VM
+        # will access the named secrets to set the value of each environment variable.
+        # Corresponds to the JSON property `secretVariables`
+        # @return [Hash<String,String>]
+        attr_accessor :secret_variables
+      
+        # A map of environment variable names to values.
+        # Corresponds to the JSON property `variables`
+        # @return [Hash<String,String>]
+        attr_accessor :variables
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encrypted_variables = args[:encrypted_variables] if args.key?(:encrypted_variables)
+          @secret_variables = args[:secret_variables] if args.key?(:secret_variables)
+          @variables = args[:variables] if args.key?(:variables)
+        end
+      end
+      
       # VM Agent Info.
       class AgentInfo
         include Google::Apis::Core::Hashable
@@ -116,6 +198,32 @@ module Google
           @state = args[:state] if args.key?(:state)
           @task_group_id = args[:task_group_id] if args.key?(:task_group_id)
           @tasks = args[:tasks] if args.key?(:tasks)
+        end
+      end
+      
+      # AgentKMSEnvMap contains the encrypted key/value pair to be used in the
+      # environment on the Agent side.
+      class AgentKmsEnvMap
+        include Google::Apis::Core::Hashable
+      
+        # The value of the cipherText response from the `encrypt` method.
+        # Corresponds to the JSON property `cipherText`
+        # @return [String]
+        attr_accessor :cipher_text
+      
+        # The name of the KMS key that will be used to decrypt the cipher text.
+        # Corresponds to the JSON property `keyName`
+        # @return [String]
+        attr_accessor :key_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cipher_text = args[:cipher_text] if args.key?(:cipher_text)
+          @key_name = args[:key_name] if args.key?(:key_name)
         end
       end
       
@@ -189,10 +297,50 @@ module Google
         end
       end
       
+      # Script runnable representation on the agent side.
+      class AgentScript
+        include Google::Apis::Core::Hashable
+      
+        # Script file path on the host VM. To specify an interpreter, please add a `#!`(
+        # also known as [shebang line](https://en.wikipedia.org/wiki/Shebang_(Unix))) as
+        # the first line of the file.(For example, to execute the script using bash, `#!/
+        # bin/bash` should be the first line of the file. To execute the script using`
+        # Python3`, `#!/usr/bin/env python3` should be the first line of the file.)
+        # Otherwise, the file will by default be excuted by `/bin/sh`.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        # Shell script text. To specify an interpreter, please add a `#!\n` at the
+        # beginning of the text.(For example, to execute the script using bash, `#!/bin/
+        # bash\n` should be added. To execute the script using`Python3`, `#!/usr/bin/env
+        # python3\n` should be added.) Otherwise, the script will by default be excuted
+        # by `/bin/sh`.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @path = args[:path] if args.key?(:path)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
       # TODO(b/182501497) The message needs to be redefined when the Agent API server
       # updates data in storage per the backend design.
       class AgentTask
         include Google::Apis::Core::Hashable
+      
+        # AgentTaskSpec is the user's TaskSpec representation between Agent and CLH
+        # communication.
+        # Corresponds to the JSON property `agentTaskSpec`
+        # @return [Google::Apis::BatchV1::AgentTaskSpec]
+        attr_accessor :agent_task_spec
       
         # The intended state of the task.
         # Corresponds to the JSON property `intendedState`
@@ -230,6 +378,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @agent_task_spec = args[:agent_task_spec] if args.key?(:agent_task_spec)
           @intended_state = args[:intended_state] if args.key?(:intended_state)
           @reached_barrier = args[:reached_barrier] if args.key?(:reached_barrier)
           @spec = args[:spec] if args.key?(:spec)
@@ -268,6 +417,108 @@ module Google
           @runnable = args[:runnable] if args.key?(:runnable)
           @task_id = args[:task_id] if args.key?(:task_id)
           @task_status = args[:task_status] if args.key?(:task_status)
+        end
+      end
+      
+      # AgentTaskRunnable is the Runnable representation between Agent and CLH
+      # communication.
+      class AgentTaskRunnable
+        include Google::Apis::Core::Hashable
+      
+        # By default, after a Runnable fails, no further Runnable are executed. This
+        # flag indicates that this Runnable must be run even if the Task has already
+        # failed. This is useful for Runnables that copy output files off of the VM or
+        # for debugging. The always_run flag does not override the Task's overall
+        # max_run_duration. If the max_run_duration has expired then no further
+        # Runnables will execute, not even always_run Runnables.
+        # Corresponds to the JSON property `alwaysRun`
+        # @return [Boolean]
+        attr_accessor :always_run
+        alias_method :always_run?, :always_run
+      
+        # This flag allows a Runnable to continue running in the background while the
+        # Task executes subsequent Runnables. This is useful to provide services to
+        # other Runnables (or to provide debugging support tools like SSH servers).
+        # Corresponds to the JSON property `background`
+        # @return [Boolean]
+        attr_accessor :background
+        alias_method :background?, :background
+      
+        # Container runnable representation on the agent side.
+        # Corresponds to the JSON property `container`
+        # @return [Google::Apis::BatchV1::AgentContainer]
+        attr_accessor :container
+      
+        # AgentEnvironment is the Environment representation between Agent and CLH
+        # communication. The environment is used in both task level and agent level.
+        # Corresponds to the JSON property `environment`
+        # @return [Google::Apis::BatchV1::AgentEnvironment]
+        attr_accessor :environment
+      
+        # Normally, a non-zero exit status causes the Task to fail. This flag allows
+        # execution of other Runnables to continue instead.
+        # Corresponds to the JSON property `ignoreExitStatus`
+        # @return [Boolean]
+        attr_accessor :ignore_exit_status
+        alias_method :ignore_exit_status?, :ignore_exit_status
+      
+        # Script runnable representation on the agent side.
+        # Corresponds to the JSON property `script`
+        # @return [Google::Apis::BatchV1::AgentScript]
+        attr_accessor :script
+      
+        # Timeout for this Runnable.
+        # Corresponds to the JSON property `timeout`
+        # @return [String]
+        attr_accessor :timeout
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @always_run = args[:always_run] if args.key?(:always_run)
+          @background = args[:background] if args.key?(:background)
+          @container = args[:container] if args.key?(:container)
+          @environment = args[:environment] if args.key?(:environment)
+          @ignore_exit_status = args[:ignore_exit_status] if args.key?(:ignore_exit_status)
+          @script = args[:script] if args.key?(:script)
+          @timeout = args[:timeout] if args.key?(:timeout)
+        end
+      end
+      
+      # AgentTaskSpec is the user's TaskSpec representation between Agent and CLH
+      # communication.
+      class AgentTaskSpec
+        include Google::Apis::Core::Hashable
+      
+        # AgentEnvironment is the Environment representation between Agent and CLH
+        # communication. The environment is used in both task level and agent level.
+        # Corresponds to the JSON property `environment`
+        # @return [Google::Apis::BatchV1::AgentEnvironment]
+        attr_accessor :environment
+      
+        # Maximum duration the task should run. The task will be killed and marked as
+        # FAILED if over this limit.
+        # Corresponds to the JSON property `maxRunDuration`
+        # @return [String]
+        attr_accessor :max_run_duration
+      
+        # AgentTaskRunnable is runanbles that will be executed on the agent.
+        # Corresponds to the JSON property `runnables`
+        # @return [Array<Google::Apis::BatchV1::AgentTaskRunnable>]
+        attr_accessor :runnables
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @environment = args[:environment] if args.key?(:environment)
+          @max_run_duration = args[:max_run_duration] if args.key?(:max_run_duration)
+          @runnables = args[:runnables] if args.key?(:runnables)
         end
       end
       
@@ -551,7 +802,8 @@ module Google
         # projects/`project`/global/images/`image_version` You can also use Batch
         # customized image in short names. The following image values are supported for
         # a boot disk: * "batch-debian": use Batch Debian images. * "batch-centos": use
-        # Batch CentOS images. * "batch-cos": use Batch Container-Optimized images.
+        # Batch CentOS images. * "batch-cos": use Batch Container-Optimized images. * "
+        # batch-hpc-centos": use Batch HPC CentOS images.
         # Corresponds to the JSON property `image`
         # @return [String]
         attr_accessor :image
