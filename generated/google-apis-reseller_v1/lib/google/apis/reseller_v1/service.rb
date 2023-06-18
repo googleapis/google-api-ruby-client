@@ -602,12 +602,23 @@ module Google
         #   as returned by the API) can always be used. We recommend storing the unique
         #   identifier in your systems where applicable.
         # @param [Google::Apis::ResellerV1::Subscription] subscription_object
+        # @param [String] action
+        #   The intented insert action. The usage of this field is governed by certain
+        #   policies which are being developed & tested currently. Hence, these might not
+        #   work as intended. Once this is fully tested & available to consume, we will
+        #   share more information about its usage, limitations and policy documentation.
         # @param [String] customer_auth_token
         #   The `customerAuthToken` query string is required when creating a resold
         #   account that transfers a direct customer's subscription or transfers another
         #   reseller customer's subscription to your reseller management. This is a
         #   hexadecimal authentication token needed to complete the subscription transfer.
         #   For more information, see the administrator help center.
+        # @param [String] source_sku_id
+        #   The sku_id of the existing subscription to be upgraded or downgraded. This is
+        #   required when action is SWITCH. The usage of this field is governed by certain
+        #   policies which are being developed & tested currently. Hence, these might not
+        #   work as intended. Once this is fully tested & available to consume, we will
+        #   share more information about its usage, limitations and policy documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -625,14 +636,16 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_subscription(customer_id, subscription_object = nil, customer_auth_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def insert_subscription(customer_id, subscription_object = nil, action: nil, customer_auth_token: nil, source_sku_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'apps/reseller/v1/customers/{customerId}/subscriptions', options)
           command.request_representation = Google::Apis::ResellerV1::Subscription::Representation
           command.request_object = subscription_object
           command.response_representation = Google::Apis::ResellerV1::Subscription::Representation
           command.response_class = Google::Apis::ResellerV1::Subscription
           command.params['customerId'] = customer_id unless customer_id.nil?
+          command.query['action'] = action unless action.nil?
           command.query['customerAuthToken'] = customer_auth_token unless customer_auth_token.nil?
+          command.query['sourceSkuId'] = source_sku_id unless source_sku_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
