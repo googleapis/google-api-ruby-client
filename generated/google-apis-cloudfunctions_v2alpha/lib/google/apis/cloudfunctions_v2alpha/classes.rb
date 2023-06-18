@@ -638,8 +638,9 @@ module Google
         attr_accessor :api_version
       
         # Identifies whether the user has requested cancellation of the operation.
-        # Operations that have successfully been cancelled have Operation.error value
-        # with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+        # Operations that have successfully been cancelled have google.longrunning.
+        # Operation.error value with a google.rpc.Status.code of 1, corresponding to `
+        # Code.CANCELLED`.
         # Corresponds to the JSON property `cancelRequested`
         # @return [Boolean]
         attr_accessor :cancel_requested
@@ -807,8 +808,9 @@ module Google
         attr_accessor :api_version
       
         # Identifies whether the user has requested cancellation of the operation.
-        # Operations that have successfully been cancelled have Operation.error value
-        # with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+        # Operations that have successfully been cancelled have google.longrunning.
+        # Operation.error value with a google.rpc.Status.code of 1, corresponding to `
+        # Code.CANCELLED`.
         # Corresponds to the JSON property `cancelRequested`
         # @return [Boolean]
         attr_accessor :cancel_requested
@@ -976,8 +978,9 @@ module Google
         attr_accessor :api_version
       
         # Identifies whether the user has requested cancellation of the operation.
-        # Operations that have successfully been cancelled have Operation.error value
-        # with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+        # Operations that have successfully been cancelled have google.longrunning.
+        # Operation.error value with a google.rpc.Status.code of 1, corresponding to `
+        # Code.CANCELLED`.
         # Corresponds to the JSON property `cancelRequested`
         # @return [Boolean]
         attr_accessor :cancel_requested
