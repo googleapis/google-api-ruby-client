@@ -1275,8 +1275,8 @@ module Google
       class GoogleAnalyticsAdminV1betaDataStreamWebStreamData
         include Google::Apis::Core::Hashable
       
-        # Immutable. Domain name of the web app being measured, or empty. Example: "http:
-        # //www.google.com", "https://www.google.com"
+        # Domain name of the web app being measured, or empty. Example: "http://www.
+        # google.com", "https://www.google.com"
         # Corresponds to the JSON property `defaultUri`
         # @return [String]
         attr_accessor :default_uri
@@ -1287,8 +1287,7 @@ module Google
         # @return [String]
         attr_accessor :firebase_app_id
       
-        # Output only. Analytics "Measurement ID", without the "G-" prefix. Example: "G-
-        # 1A2BCD345E" would just be "1A2BCD345E"
+        # Output only. Analytics Measurement ID. Example: "G-1A2BCD345E"
         # Corresponds to the JSON property `measurementId`
         # @return [String]
         attr_accessor :measurement_id
