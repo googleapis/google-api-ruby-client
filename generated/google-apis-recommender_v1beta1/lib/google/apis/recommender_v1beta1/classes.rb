@@ -226,6 +226,27 @@ module Google
         end
       end
       
+      # The type of insight. See google3/googledata/devsite/site-cloud/en/recommender/
+      # docs/insights/insight-types.md for more info.
+      class GoogleCloudRecommenderV1beta1InsightType
+        include Google::Apis::Core::Hashable
+      
+        # The insight_type’s name in format insightTypes/`insight_type` eg: insightTypes/
+        # google.iam.policy.Insight
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Configuration for an InsightType.
       class GoogleCloudRecommenderV1beta1InsightTypeConfig
         include Google::Apis::Core::Hashable
@@ -313,6 +334,32 @@ module Google
         end
       end
       
+      # Response for the `ListInsightTypes` method. Next ID: 3
+      class GoogleCloudRecommenderV1beta1ListInsightTypesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The set of recommenders available
+        # Corresponds to the JSON property `insightTypes`
+        # @return [Array<Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1InsightType>]
+        attr_accessor :insight_types
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @insight_types = args[:insight_types] if args.key?(:insight_types)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response to the `ListInsights` method.
       class GoogleCloudRecommenderV1beta1ListInsightsResponse
         include Google::Apis::Core::Hashable
@@ -362,6 +409,32 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @recommendations = args[:recommendations] if args.key?(:recommendations)
+        end
+      end
+      
+      # Response for the `ListRecommender` method. Next ID: 3
+      class GoogleCloudRecommenderV1beta1ListRecommendersResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The set of recommenders available
+        # Corresponds to the JSON property `recommenders`
+        # @return [Array<Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1RecommenderType>]
+        attr_accessor :recommenders
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @recommenders = args[:recommenders] if args.key?(:recommenders)
         end
       end
       
@@ -867,6 +940,27 @@ module Google
         # Update properties of this object
         def update!(**args)
           @params = args[:params] if args.key?(:params)
+        end
+      end
+      
+      # The type of a recommender. See google3/googledata/devsite/site-cloud/en/
+      # recommender/docs/recommenders.md for more info.
+      class GoogleCloudRecommenderV1beta1RecommenderType
+        include Google::Apis::Core::Hashable
+      
+        # The recommender's name in format RecommenderTypes/`recommender_type` eg:
+        # recommenderTypes/google.iam.policy.Recommender
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
