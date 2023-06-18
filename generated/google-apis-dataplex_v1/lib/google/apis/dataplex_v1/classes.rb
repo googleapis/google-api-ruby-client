@@ -1387,8 +1387,8 @@ module Google
         # below this point. The third quartile (Q3) splits off the highest 25% of data
         # from the lowest 75%. It is known as the upper or 75th empirical quartile, as
         # 75% of the data lies below this point. Here, the quartiles is provided as an
-        # ordered list of quartile values for the scanned data, occurring in order Q1,
-        # median, Q3.
+        # ordered list of approximate quartile values for the scanned data, occurring in
+        # order Q1, median, Q3.
         # Corresponds to the JSON property `quartiles`
         # @return [Array<Fixnum>]
         attr_accessor :quartiles
@@ -2216,6 +2216,12 @@ module Google
       class GoogleCloudDataplexV1DataScanEventDataProfileAppliedConfigs
         include Google::Apis::Core::Hashable
       
+        # Boolean indicating whether a column filter was applied in the DataScan job.
+        # Corresponds to the JSON property `columnFilterApplied`
+        # @return [Boolean]
+        attr_accessor :column_filter_applied
+        alias_method :column_filter_applied?, :column_filter_applied
+      
         # Boolean indicating whether a row filter was applied in the DataScan job.
         # Corresponds to the JSON property `rowFilterApplied`
         # @return [Boolean]
@@ -2235,6 +2241,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @column_filter_applied = args[:column_filter_applied] if args.key?(:column_filter_applied)
           @row_filter_applied = args[:row_filter_applied] if args.key?(:row_filter_applied)
           @sampling_percent = args[:sampling_percent] if args.key?(:sampling_percent)
         end

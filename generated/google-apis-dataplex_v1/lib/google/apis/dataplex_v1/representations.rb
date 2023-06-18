@@ -1515,6 +1515,7 @@ module Google
       class GoogleCloudDataplexV1DataScanEventDataProfileAppliedConfigs
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :column_filter_applied, as: 'columnFilterApplied'
           property :row_filter_applied, as: 'rowFilterApplied'
           property :sampling_percent, as: 'samplingPercent'
         end
