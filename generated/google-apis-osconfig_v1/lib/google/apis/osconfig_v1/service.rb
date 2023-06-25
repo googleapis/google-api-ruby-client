@@ -135,7 +135,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the OS policy asssignment report for the specified Compute Engine VM
+        # Get the OS policy assignment report for the specified Compute Engine VM
         # instance.
         # @param [String] name
         #   Required. API resource name for OS policy assignment report. Format: `/
@@ -171,7 +171,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List OS policy asssignment reports for all Compute Engine VM instances in the
+        # List OS policy assignment reports for all Compute Engine VM instances in the
         # specified zone.
         # @param [String] parent
         #   Required. The parent resource name. Format: `projects/`project`/locations/`
