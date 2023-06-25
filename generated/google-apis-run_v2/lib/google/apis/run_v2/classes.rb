@@ -2494,7 +2494,8 @@ module Google
         # @return [String]
         attr_accessor :connector
       
-        # Traffic VPC egress settings.
+        # Traffic VPC egress settings. If not provided, it defaults to
+        # PRIVATE_RANGES_ONLY.
         # Corresponds to the JSON property `egress`
         # @return [String]
         attr_accessor :egress
