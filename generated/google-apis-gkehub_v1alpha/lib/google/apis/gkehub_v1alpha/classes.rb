@@ -940,11 +940,9 @@ module Google
       
         # Enables the installation of ConfigSync. If set to true, ConfigSync resources
         # will be created and the other ConfigSync fields will be applied if exist. If
-        # set to false and Managed Config Sync is disabled, all other ConfigSync fields
-        # will be ignored, ConfigSync resources will be deleted. Setting this field to
-        # false while enabling Managed Config Sync is invalid. If omitted, ConfigSync
-        # resources will be managed if: * the git or oci field is present; or * Managed
-        # Config Sync is enabled (i.e., managed.enabled is true).
+        # set to false, all other ConfigSync fields will be ignored, ConfigSync
+        # resources will be deleted. If omitted, ConfigSync resources will be managed
+        # depends on the presence of the git or oci field.
         # Corresponds to the JSON property `enabled`
         # @return [Boolean]
         attr_accessor :enabled
@@ -955,17 +953,12 @@ module Google
         # @return [Google::Apis::GkehubV1alpha::ConfigManagementGitConfig]
         attr_accessor :git
       
-        # Configuration for Managed Config Sync.
-        # Corresponds to the JSON property `managed`
-        # @return [Google::Apis::GkehubV1alpha::ConfigManagementManaged]
-        attr_accessor :managed
-      
-        # The Email of the GCP Service Account (GSA) used for exporting Config Sync
-        # metrics to Cloud Monitoring and Cloud Monarch when Workload Identity is
+        # The Email of the Google Cloud Service Account (GSA) used for exporting Config
+        # Sync metrics to Cloud Monitoring and Cloud Monarch when Workload Identity is
         # enabled. The GSA should have the Monitoring Metric Writer (roles/monitoring.
         # metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the
         # namespace `config-management-monitoring` should be binded to the GSA. This
-        # field is required when Managed Config Sync is enabled.
+        # field is required when automatic Feature management is enabled.
         # Corresponds to the JSON property `metricsGcpServiceAccountEmail`
         # @return [String]
         attr_accessor :metrics_gcp_service_account_email
@@ -989,6 +982,14 @@ module Google
         # @return [String]
         attr_accessor :source_format
       
+        # Set to true to stop syncing configs for a single cluster when automatic
+        # Feature management is enabled. Default to false. The field will be ignored
+        # when automatic Feature management is disabled.
+        # Corresponds to the JSON property `stopSyncing`
+        # @return [Boolean]
+        attr_accessor :stop_syncing
+        alias_method :stop_syncing?, :stop_syncing
+      
         def initialize(**args)
            update!(**args)
         end
@@ -998,11 +999,11 @@ module Google
           @allow_vertical_scale = args[:allow_vertical_scale] if args.key?(:allow_vertical_scale)
           @enabled = args[:enabled] if args.key?(:enabled)
           @git = args[:git] if args.key?(:git)
-          @managed = args[:managed] if args.key?(:managed)
           @metrics_gcp_service_account_email = args[:metrics_gcp_service_account_email] if args.key?(:metrics_gcp_service_account_email)
           @oci = args[:oci] if args.key?(:oci)
           @prevent_drift = args[:prevent_drift] if args.key?(:prevent_drift)
           @source_format = args[:source_format] if args.key?(:source_format)
+          @stop_syncing = args[:stop_syncing] if args.key?(:stop_syncing)
         end
       end
       
@@ -1244,7 +1245,7 @@ module Google
       class ConfigManagementGitConfig
         include Google::Apis::Core::Hashable
       
-        # The GCP Service Account Email used for auth when secret_type is
+        # The Google Cloud Service Account Email used for auth when secret_type is
         # gcpServiceAccount.
         # Corresponds to the JSON property `gcpServiceAccountEmail`
         # @return [String]
@@ -1464,36 +1465,6 @@ module Google
         end
       end
       
-      # Configuration for Managed Config Sync.
-      class ConfigManagementManaged
-        include Google::Apis::Core::Hashable
-      
-        # Set to true to enable Managed Config Sync. Defaults to false which disables
-        # Managed Config Sync. Setting this field to true when configSync.enabled is
-        # false is invalid.
-        # Corresponds to the JSON property `enabled`
-        # @return [Boolean]
-        attr_accessor :enabled
-        alias_method :enabled?, :enabled
-      
-        # Set to true to stop syncing configs for a single cluster. Default to false. If
-        # set to true, Managed Config Sync will not upgrade Config Sync.
-        # Corresponds to the JSON property `stopSyncing`
-        # @return [Boolean]
-        attr_accessor :stop_syncing
-        alias_method :stop_syncing?, :stop_syncing
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @enabled = args[:enabled] if args.key?(:enabled)
-          @stop_syncing = args[:stop_syncing] if args.key?(:stop_syncing)
-        end
-      end
-      
       # **Anthos Config Management**: Configuration for a single cluster. Intended to
       # parallel the ConfigManagement CR.
       class ConfigManagementMembershipSpec
@@ -1524,6 +1495,11 @@ module Google
         # @return [Google::Apis::GkehubV1alpha::ConfigManagementHierarchyControllerConfig]
         attr_accessor :hierarchy_controller
       
+        # Enables automatic Feature management.
+        # Corresponds to the JSON property `management`
+        # @return [String]
+        attr_accessor :management
+      
         # Configuration for Policy Controller
         # Corresponds to the JSON property `policyController`
         # @return [Google::Apis::GkehubV1alpha::ConfigManagementPolicyController]
@@ -1544,6 +1520,7 @@ module Google
           @cluster = args[:cluster] if args.key?(:cluster)
           @config_sync = args[:config_sync] if args.key?(:config_sync)
           @hierarchy_controller = args[:hierarchy_controller] if args.key?(:hierarchy_controller)
+          @management = args[:management] if args.key?(:management)
           @policy_controller = args[:policy_controller] if args.key?(:policy_controller)
           @version = args[:version] if args.key?(:version)
         end
@@ -1610,7 +1587,7 @@ module Google
       class ConfigManagementOciConfig
         include Google::Apis::Core::Hashable
       
-        # The GCP Service Account Email used for auth when secret_type is
+        # The Google Cloud Service Account Email used for auth when secret_type is
         # gcpServiceAccount.
         # Corresponds to the JSON property `gcpServiceAccountEmail`
         # @return [String]
@@ -2478,6 +2455,25 @@ module Google
         end
       end
       
+      # Response for GenerateRBACRoleBindingYAML.
+      class GenerateMembershipRbacRoleBindingYamlResponse
+        include Google::Apis::Core::Hashable
+      
+        # a yaml text blob including the RBAC policies.
+        # Corresponds to the JSON property `roleBindingsYaml`
+        # @return [String]
+        attr_accessor :role_bindings_yaml
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @role_bindings_yaml = args[:role_bindings_yaml] if args.key?(:role_bindings_yaml)
+        end
+      end
+      
       # GkeCluster contains information specific to GKE clusters.
       class GkeCluster
         include Google::Apis::Core::Hashable
@@ -3066,6 +3062,33 @@ module Google
         end
       end
       
+      # List of Membership RBACRoleBindings.
+      class ListMembershipRbacRoleBindingsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token to request the next page of resources from the `
+        # ListMembershipRBACRoleBindings` method. The value of an empty string means
+        # that there are no more resources to return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of Membership RBACRoleBindings.
+        # Corresponds to the JSON property `rbacrolebindings`
+        # @return [Array<Google::Apis::GkehubV1alpha::RbacRoleBinding>]
+        attr_accessor :rbacrolebindings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @rbacrolebindings = args[:rbacrolebindings] if args.key?(:rbacrolebindings)
+        end
+      end
+      
       # Response message for the `GkeHub.ListMemberships` method.
       class ListMembershipsResponse
         include Google::Apis::Core::Hashable
@@ -3534,12 +3557,6 @@ module Google
         # @return [Google::Apis::GkehubV1alpha::ConfigManagementMembershipSpec]
         attr_accessor :configmanagement
       
-        # True if value of `feature_spec` was inherited from a fleet-level default.
-        # Corresponds to the JSON property `fleetInherited`
-        # @return [Boolean]
-        attr_accessor :fleet_inherited
-        alias_method :fleet_inherited?, :fleet_inherited
-      
         # **FleetObservability**: The membership-specific input for FleetObservability
         # feature.
         # Corresponds to the JSON property `fleetobservability`
@@ -3555,6 +3572,11 @@ module Google
         # Corresponds to the JSON property `mesh`
         # @return [Google::Apis::GkehubV1alpha::ServiceMeshMembershipSpec]
         attr_accessor :mesh
+      
+        # Origin defines where this MembershipFeatureSpec originated from.
+        # Corresponds to the JSON property `origin`
+        # @return [Google::Apis::GkehubV1alpha::Origin]
+        attr_accessor :origin
       
         # **Policy Controller**: Configuration for a single cluster. Intended to
         # parallel the PolicyController CR.
@@ -3577,10 +3599,10 @@ module Google
           @anthosobservability = args[:anthosobservability] if args.key?(:anthosobservability)
           @cloudbuild = args[:cloudbuild] if args.key?(:cloudbuild)
           @configmanagement = args[:configmanagement] if args.key?(:configmanagement)
-          @fleet_inherited = args[:fleet_inherited] if args.key?(:fleet_inherited)
           @fleetobservability = args[:fleetobservability] if args.key?(:fleetobservability)
           @identityservice = args[:identityservice] if args.key?(:identityservice)
           @mesh = args[:mesh] if args.key?(:mesh)
+          @origin = args[:origin] if args.key?(:origin)
           @policycontroller = args[:policycontroller] if args.key?(:policycontroller)
           @workloadcertificate = args[:workloadcertificate] if args.key?(:workloadcertificate)
         end
@@ -4074,6 +4096,25 @@ module Google
           @status_detail = args[:status_detail] if args.key?(:status_detail)
           @target = args[:target] if args.key?(:target)
           @verb = args[:verb] if args.key?(:verb)
+        end
+      end
+      
+      # Origin defines where this MembershipFeatureSpec originated from.
+      class Origin
+        include Google::Apis::Core::Hashable
+      
+        # Type specifies which type of origin is set.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
