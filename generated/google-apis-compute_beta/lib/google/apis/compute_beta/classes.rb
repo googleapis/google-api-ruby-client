@@ -645,7 +645,7 @@ module Google
         attr_accessor :id
       
         # The IP version that will be used by this address. Valid options are IPV4 or
-        # IPV6. This can only be specified for a global address.
+        # IPV6.
         # Corresponds to the JSON property `ipVersion`
         # @return [String]
         attr_accessor :ip_version
@@ -1714,6 +1714,17 @@ module Google
         # @return [Google::Apis::ComputeBeta::CustomerEncryptionKey]
         attr_accessor :source_image_encryption_key
       
+        # The source instant-snapshot to create this disk. When creating a new instance,
+        # one of initializeParams.sourceSnapshot or initializeParams.
+        # sourceInstantSnapshot initializeParams.sourceImage or disks.source is required
+        # except for local SSD. To create a disk with a snapshot that you created,
+        # specify the snapshot name in the following format: us-central1-a/
+        # instantSnapshots/my-backup If the source instant-snapshot is deleted later,
+        # this field will not be set.
+        # Corresponds to the JSON property `sourceInstantSnapshot`
+        # @return [String]
+        attr_accessor :source_instant_snapshot
+      
         # The source snapshot to create this disk. When creating a new instance, one of
         # initializeParams.sourceSnapshot or initializeParams.sourceImage or disks.
         # source is required except for local SSD. To create a disk with a snapshot that
@@ -1752,6 +1763,7 @@ module Google
           @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
           @source_image = args[:source_image] if args.key?(:source_image)
           @source_image_encryption_key = args[:source_image_encryption_key] if args.key?(:source_image_encryption_key)
+          @source_instant_snapshot = args[:source_instant_snapshot] if args.key?(:source_instant_snapshot)
           @source_snapshot = args[:source_snapshot] if args.key?(:source_snapshot)
           @source_snapshot_encryption_key = args[:source_snapshot_encryption_key] if args.key?(:source_snapshot_encryption_key)
         end
@@ -15047,6 +15059,15 @@ module Google
       class InstanceGroupManagerInstanceLifecyclePolicy
         include Google::Apis::Core::Hashable
       
+        # The action that a MIG performs on a failed or an unhealthy VM. A VM is marked
+        # as unhealthy when the application running on that VM fails a health check.
+        # Valid values are - REPAIR (default): MIG automatically repairs a failed or an
+        # unhealthy VM by recreating it. For more information, see About repairing VMs
+        # in a MIG. - DO_NOTHING: MIG does not repair a failed or an unhealthy VM.
+        # Corresponds to the JSON property `defaultActionOnFailure`
+        # @return [String]
+        attr_accessor :default_action_on_failure
+      
         # A bit indicating whether to forcefully apply the group's latest configuration
         # when repairing a VM. Valid options are: - NO (default): If configuration
         # updates are available, they are not forcefully applied during repair. Instead,
@@ -15062,6 +15083,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @default_action_on_failure = args[:default_action_on_failure] if args.key?(:default_action_on_failure)
           @force_update_on_repair = args[:force_update_on_repair] if args.key?(:force_update_on_repair)
         end
       end
@@ -15394,12 +15416,12 @@ module Google
         attr_accessor :minimal_action
       
         # Most disruptive action that is allowed to be taken on an instance. You can
-        # specify either NONE to forbid any actions, REFRESH to allow actions that do
-        # not need instance restart, RESTART to allow actions that can be applied
-        # without instance replacing or REPLACE to allow all possible actions. If the
-        # Updater determines that the minimal update action needed is more disruptive
-        # than most disruptive allowed action you specify it will not perform the update
-        # at all.
+        # specify either NONE to forbid any actions, REFRESH to avoid restarting the VM
+        # and to limit disruption as much as possible. RESTART to allow actions that can
+        # be applied without instance replacing or REPLACE to allow all possible actions.
+        # If the Updater determines that the minimal update action needed is more
+        # disruptive than most disruptive allowed action you specify it will not perform
+        # the update at all.
         # Corresponds to the JSON property `mostDisruptiveAllowedAction`
         # @return [String]
         attr_accessor :most_disruptive_allowed_action
@@ -15513,20 +15535,22 @@ module Google
       
         # The minimal action that you want to perform on each instance during the update:
         # - REPLACE: At minimum, delete the instance and create it again. - RESTART:
-        # Stop the instance and start it again. - REFRESH: Do not stop the instance. -
-        # NONE: Do not disrupt the instance at all. By default, the minimum action is
-        # NONE. If your update requires a more disruptive action than you set with this
-        # flag, the necessary action is performed to execute the update.
+        # Stop the instance and start it again. - REFRESH: Do not stop the instance and
+        # limit disruption as much as possible. - NONE: Do not disrupt the instance at
+        # all. By default, the minimum action is NONE. If your update requires a more
+        # disruptive action than you set with this flag, the necessary action is
+        # performed to execute the update.
         # Corresponds to the JSON property `minimalAction`
         # @return [String]
         attr_accessor :minimal_action
       
         # The most disruptive action that you want to perform on each instance during
         # the update: - REPLACE: Delete the instance and create it again. - RESTART:
-        # Stop the instance and start it again. - REFRESH: Do not stop the instance. -
-        # NONE: Do not disrupt the instance at all. By default, the most disruptive
-        # allowed action is REPLACE. If your update requires a more disruptive action
-        # than you set with this flag, the update request will fail.
+        # Stop the instance and start it again. - REFRESH: Do not stop the instance and
+        # limit disruption as much as possible. - NONE: Do not disrupt the instance at
+        # all. By default, the most disruptive allowed action is REPLACE. If your update
+        # requires a more disruptive action than you set with this flag, the update
+        # request will fail.
         # Corresponds to the JSON property `mostDisruptiveAllowedAction`
         # @return [String]
         attr_accessor :most_disruptive_allowed_action
@@ -18133,55 +18157,6 @@ module Google
         end
       end
       
-      # 
-      class InstantSnapshotExportParams
-        include Google::Apis::Core::Hashable
-      
-        # An optional base instant snapshot that this resource is compared against. If
-        # not specified, all blocks of this resource are exported. The base instant
-        # snapshot and this resource must be created from the same disk. The base
-        # instant snapshot must be created earlier in time than this resource.
-        # Corresponds to the JSON property `baseInstantSnapshot`
-        # @return [String]
-        attr_accessor :base_instant_snapshot
-      
-        # The name of an existing bucket in Cloud Storage where the changed blocks will
-        # be stored. The Google Service Account must have read and write access to this
-        # bucket. The bucket has to be in the same region as this resource.
-        # Corresponds to the JSON property `bucketName`
-        # @return [String]
-        attr_accessor :bucket_name
-      
-        # Encryption key used to encrypt the instant snapshot.
-        # Corresponds to the JSON property `encryptionKey`
-        # @return [Google::Apis::ComputeBeta::CustomerEncryptionKey]
-        attr_accessor :encryption_key
-      
-        # Name of the output Bigstore object storing the changed blocks. Object name
-        # must be less than 1024 bytes in length.
-        # Corresponds to the JSON property `objectName`
-        # @return [String]
-        attr_accessor :object_name
-      
-        # The format of the output file.
-        # Corresponds to the JSON property `outputType`
-        # @return [String]
-        attr_accessor :output_type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @base_instant_snapshot = args[:base_instant_snapshot] if args.key?(:base_instant_snapshot)
-          @bucket_name = args[:bucket_name] if args.key?(:bucket_name)
-          @encryption_key = args[:encryption_key] if args.key?(:encryption_key)
-          @object_name = args[:object_name] if args.key?(:object_name)
-          @output_type = args[:output_type] if args.key?(:output_type)
-        end
-      end
-      
       # Contains a list of InstantSnapshot resources.
       class InstantSnapshotList
         include Google::Apis::Core::Hashable
@@ -18315,25 +18290,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @storage_size_bytes = args[:storage_size_bytes] if args.key?(:storage_size_bytes)
-        end
-      end
-      
-      # 
-      class InstantSnapshotsExportRequest
-        include Google::Apis::Core::Hashable
-      
-        # Parameters to export the changed blocks.
-        # Corresponds to the JSON property `exportParams`
-        # @return [Google::Apis::ComputeBeta::InstantSnapshotExportParams]
-        attr_accessor :export_params
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @export_params = args[:export_params] if args.key?(:export_params)
         end
       end
       
@@ -29210,7 +29166,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # The IPv4 address to be used for reverse DNS verification.
+        # The address to be used for reverse DNS verification.
         # Corresponds to the JSON property `dnsVerificationIp`
         # @return [String]
         attr_accessor :dns_verification_ip
@@ -29232,7 +29188,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
-        # The IPv4 address range, in CIDR format, represented by this public advertised
+        # The address range, in CIDR format, represented by this public advertised
         # prefix.
         # Corresponds to the JSON property `ipCidrRange`
         # @return [String]
@@ -30880,20 +30836,22 @@ module Google
       
         # The minimal action that you want to perform on each instance during the update:
         # - REPLACE: At minimum, delete the instance and create it again. - RESTART:
-        # Stop the instance and start it again. - REFRESH: Do not stop the instance. -
-        # NONE: Do not disrupt the instance at all. By default, the minimum action is
-        # NONE. If your update requires a more disruptive action than you set with this
-        # flag, the necessary action is performed to execute the update.
+        # Stop the instance and start it again. - REFRESH: Do not stop the instance and
+        # limit disruption as much as possible. - NONE: Do not disrupt the instance at
+        # all. By default, the minimum action is NONE. If your update requires a more
+        # disruptive action than you set with this flag, the necessary action is
+        # performed to execute the update.
         # Corresponds to the JSON property `minimalAction`
         # @return [String]
         attr_accessor :minimal_action
       
         # The most disruptive action that you want to perform on each instance during
         # the update: - REPLACE: Delete the instance and create it again. - RESTART:
-        # Stop the instance and start it again. - REFRESH: Do not stop the instance. -
-        # NONE: Do not disrupt the instance at all. By default, the most disruptive
-        # allowed action is REPLACE. If your update requires a more disruptive action
-        # than you set with this flag, the update request will fail.
+        # Stop the instance and start it again. - REFRESH: Do not stop the instance and
+        # limit disruption as much as possible. - NONE: Do not disrupt the instance at
+        # all. By default, the most disruptive allowed action is REPLACE. If your update
+        # requires a more disruptive action than you set with this flag, the update
+        # request will fail.
         # Corresponds to the JSON property `mostDisruptiveAllowedAction`
         # @return [String]
         attr_accessor :most_disruptive_allowed_action
@@ -31423,25 +31381,6 @@ module Google
         def update!(**args)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @named_ports = args[:named_ports] if args.key?(:named_ports)
-        end
-      end
-      
-      # 
-      class RegionInstantSnapshotsExportRequest
-        include Google::Apis::Core::Hashable
-      
-        # Parameters to export the changed blocks.
-        # Corresponds to the JSON property `exportParams`
-        # @return [Google::Apis::ComputeBeta::InstantSnapshotExportParams]
-        attr_accessor :export_params
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @export_params = args[:export_params] if args.key?(:export_params)
         end
       end
       
@@ -38472,6 +38411,13 @@ module Google
         attr_accessor :guest_flush
         alias_method :guest_flush?, :guest_flush
       
+        # [Output Only] A list of features to enable on the guest operating system.
+        # Applicable only for bootable images. Read Enabling guest operating system
+        # features to see a list of available options.
+        # Corresponds to the JSON property `guestOsFeatures`
+        # @return [Array<Google::Apis::ComputeBeta::GuestOsFeature>]
+        attr_accessor :guest_os_features
+      
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
@@ -38658,6 +38604,7 @@ module Google
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @download_bytes = args[:download_bytes] if args.key?(:download_bytes)
           @guest_flush = args[:guest_flush] if args.key?(:guest_flush)
+          @guest_os_features = args[:guest_os_features] if args.key?(:guest_os_features)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)

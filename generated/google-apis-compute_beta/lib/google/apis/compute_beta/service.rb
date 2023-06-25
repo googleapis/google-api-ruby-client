@@ -15019,60 +15019,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Export the changed blocks between two instant snapshots to a customer's bucket
-        # in the user specified format.
-        # @param [String] project
-        #   Project ID for this request.
-        # @param [String] zone
-        #   The name of the zone for this request.
-        # @param [String] instant_snapshot
-        #   Name of the instant snapshot to export.
-        # @param [Google::Apis::ComputeBeta::InstantSnapshotsExportRequest] instant_snapshots_export_request_object
-        # @param [String] request_id
-        #   An optional request ID to identify requests. Specify a unique request ID so
-        #   that if you must retry your request, the server will know to ignore the
-        #   request if it has already been completed. For example, consider a situation
-        #   where you make an initial request and the request times out. If you make the
-        #   request again with the same request ID, the server can check if original
-        #   operation with the same request ID was received, and if so, will ignore the
-        #   second request. This prevents clients from accidentally creating duplicate
-        #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] user_ip
-        #   Legacy name for parameter that has been superseded by `quotaUser`.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ComputeBeta::Operation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def export_instant_snapshot(project, zone, instant_snapshot, instant_snapshots_export_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, 'projects/{project}/zones/{zone}/instantSnapshots/{instantSnapshot}/export', options)
-          command.request_representation = Google::Apis::ComputeBeta::InstantSnapshotsExportRequest::Representation
-          command.request_object = instant_snapshots_export_request_object
-          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
-          command.response_class = Google::Apis::ComputeBeta::Operation
-          command.params['project'] = project unless project.nil?
-          command.params['zone'] = zone unless zone.nil?
-          command.params['instantSnapshot'] = instant_snapshot unless instant_snapshot.nil?
-          command.query['requestId'] = request_id unless request_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Returns the specified InstantSnapshot resource in the specified zone.
         # @param [String] project
         #   Project ID for this request.
@@ -29512,60 +29458,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Export the changed blocks between two instant snapshots to a customer's bucket
-        # in the user specified format.
-        # @param [String] project
-        #   Project ID for this request.
-        # @param [String] region
-        #   The name of the zone for this request.
-        # @param [String] instant_snapshot
-        #   Name of the instant snapshot to export.
-        # @param [Google::Apis::ComputeBeta::RegionInstantSnapshotsExportRequest] region_instant_snapshots_export_request_object
-        # @param [String] request_id
-        #   An optional request ID to identify requests. Specify a unique request ID so
-        #   that if you must retry your request, the server will know to ignore the
-        #   request if it has already been completed. For example, consider a situation
-        #   where you make an initial request and the request times out. If you make the
-        #   request again with the same request ID, the server can check if original
-        #   operation with the same request ID was received, and if so, will ignore the
-        #   second request. This prevents clients from accidentally creating duplicate
-        #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] user_ip
-        #   Legacy name for parameter that has been superseded by `quotaUser`.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ComputeBeta::Operation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def export_region_instant_snapshot(project, region, instant_snapshot, region_instant_snapshots_export_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, 'projects/{project}/regions/{region}/instantSnapshots/{instantSnapshot}/export', options)
-          command.request_representation = Google::Apis::ComputeBeta::RegionInstantSnapshotsExportRequest::Representation
-          command.request_object = region_instant_snapshots_export_request_object
-          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
-          command.response_class = Google::Apis::ComputeBeta::Operation
-          command.params['project'] = project unless project.nil?
-          command.params['region'] = region unless region.nil?
-          command.params['instantSnapshot'] = instant_snapshot unless instant_snapshot.nil?
-          command.query['requestId'] = request_id unless request_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Returns the specified InstantSnapshot resource in the specified region.
         # @param [String] project
         #   Project ID for this request.
@@ -31867,6 +31759,8 @@ module Google
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
         #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        # @param [String] update_mask
+        #   Indicates fields to be cleared as part of this request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -31886,7 +31780,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_region_security_policy(project, region, security_policy, security_policy_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_region_security_policy(project, region, security_policy, security_policy_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:patch, 'projects/{project}/regions/{region}/securityPolicies/{securityPolicy}', options)
           command.request_representation = Google::Apis::ComputeBeta::SecurityPolicy::Representation
           command.request_object = security_policy_object
@@ -31896,6 +31790,7 @@ module Google
           command.params['region'] = region unless region.nil?
           command.params['securityPolicy'] = security_policy unless security_policy.nil?
           command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -31913,6 +31808,8 @@ module Google
         # @param [Google::Apis::ComputeBeta::SecurityPolicyRule] security_policy_rule_object
         # @param [Fixnum] priority
         #   The priority of the rule to patch.
+        # @param [String] update_mask
+        #   Indicates fields to be cleared as part of this request.
         # @param [Boolean] validate_only
         #   If true, the request will not be committed.
         # @param [String] fields
@@ -31934,7 +31831,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_region_security_policy_rule(project, region, security_policy, security_policy_rule_object = nil, priority: nil, validate_only: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_region_security_policy_rule(project, region, security_policy, security_policy_rule_object = nil, priority: nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'projects/{project}/regions/{region}/securityPolicies/{securityPolicy}/patchRule', options)
           command.request_representation = Google::Apis::ComputeBeta::SecurityPolicyRule::Representation
           command.request_object = security_policy_rule_object
@@ -31944,6 +31841,7 @@ module Google
           command.params['region'] = region unless region.nil?
           command.params['securityPolicy'] = security_policy unless security_policy.nil?
           command.query['priority'] = priority unless priority.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -36811,6 +36709,8 @@ module Google
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
         #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        # @param [String] update_mask
+        #   Indicates fields to be cleared as part of this request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -36830,7 +36730,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_security_policy(project, security_policy, security_policy_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_security_policy(project, security_policy, security_policy_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:patch, 'projects/{project}/global/securityPolicies/{securityPolicy}', options)
           command.request_representation = Google::Apis::ComputeBeta::SecurityPolicy::Representation
           command.request_object = security_policy_object
@@ -36839,6 +36739,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['securityPolicy'] = security_policy unless security_policy.nil?
           command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

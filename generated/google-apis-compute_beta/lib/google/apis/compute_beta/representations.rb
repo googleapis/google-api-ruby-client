@@ -2212,12 +2212,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class InstantSnapshotExportParams
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class InstantSnapshotList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -2237,12 +2231,6 @@ module Google
       end
       
       class InstantSnapshotResourceStatus
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class InstantSnapshotsExportRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4043,12 +4031,6 @@ module Google
       end
       
       class RegionInstanceGroupsSetNamedPortsRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RegionInstantSnapshotsExportRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -6650,6 +6632,7 @@ module Google
           property :source_image, as: 'sourceImage'
           property :source_image_encryption_key, as: 'sourceImageEncryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
       
+          property :source_instant_snapshot, as: 'sourceInstantSnapshot'
           property :source_snapshot, as: 'sourceSnapshot'
           property :source_snapshot_encryption_key, as: 'sourceSnapshotEncryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
       
@@ -9638,6 +9621,7 @@ module Google
       class InstanceGroupManagerInstanceLifecyclePolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_action_on_failure, as: 'defaultActionOnFailure'
           property :force_update_on_repair, as: 'forceUpdateOnRepair'
         end
       end
@@ -10499,18 +10483,6 @@ module Google
         end
       end
       
-      class InstantSnapshotExportParams
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :base_instant_snapshot, as: 'baseInstantSnapshot'
-          property :bucket_name, as: 'bucketName'
-          property :encryption_key, as: 'encryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
-      
-          property :object_name, as: 'objectName'
-          property :output_type, as: 'outputType'
-        end
-      end
-      
       class InstantSnapshotList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -10547,14 +10519,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :storage_size_bytes, :numeric_string => true, as: 'storageSizeBytes'
-        end
-      end
-      
-      class InstantSnapshotsExportRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :export_params, as: 'exportParams', class: Google::Apis::ComputeBeta::InstantSnapshotExportParams, decorator: Google::Apis::ComputeBeta::InstantSnapshotExportParams::Representation
-      
         end
       end
       
@@ -13879,14 +13843,6 @@ module Google
         end
       end
       
-      class RegionInstantSnapshotsExportRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :export_params, as: 'exportParams', class: Google::Apis::ComputeBeta::InstantSnapshotExportParams, decorator: Google::Apis::ComputeBeta::InstantSnapshotExportParams::Representation
-      
-        end
-      end
-      
       class RegionList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -15658,6 +15614,8 @@ module Google
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
           property :download_bytes, :numeric_string => true, as: 'downloadBytes'
           property :guest_flush, as: 'guestFlush'
+          collection :guest_os_features, as: 'guestOsFeatures', class: Google::Apis::ComputeBeta::GuestOsFeature, decorator: Google::Apis::ComputeBeta::GuestOsFeature::Representation
+      
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
