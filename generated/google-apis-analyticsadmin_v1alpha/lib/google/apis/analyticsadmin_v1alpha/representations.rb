@@ -1200,6 +1200,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :acquisition_conversion_event_lookback_window, as: 'acquisitionConversionEventLookbackWindow'
+          property :ads_web_conversion_data_export_scope, as: 'adsWebConversionDataExportScope'
           property :name, as: 'name'
           property :other_conversion_event_lookback_window, as: 'otherConversionEventLookbackWindow'
           property :reporting_attribution_model, as: 'reportingAttributionModel'

@@ -845,6 +845,11 @@ module Google
         # @return [String]
         attr_accessor :acquisition_conversion_event_lookback_window
       
+        # Required. The Conversion Export Scope for data exported to linked Ads Accounts.
+        # Corresponds to the JSON property `adsWebConversionDataExportScope`
+        # @return [String]
+        attr_accessor :ads_web_conversion_data_export_scope
+      
         # Output only. Resource name of this attribution settings resource. Format:
         # properties/`property_id`/attributionSettings Example: "properties/1000/
         # attributionSettings"
@@ -873,6 +878,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @acquisition_conversion_event_lookback_window = args[:acquisition_conversion_event_lookback_window] if args.key?(:acquisition_conversion_event_lookback_window)
+          @ads_web_conversion_data_export_scope = args[:ads_web_conversion_data_export_scope] if args.key?(:ads_web_conversion_data_export_scope)
           @name = args[:name] if args.key?(:name)
           @other_conversion_event_lookback_window = args[:other_conversion_event_lookback_window] if args.key?(:other_conversion_event_lookback_window)
           @reporting_attribution_model = args[:reporting_attribution_model] if args.key?(:reporting_attribution_model)
