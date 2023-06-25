@@ -2670,7 +2670,7 @@ module Google
         attr_accessor :deidentify_template
       
         # The fully-qualified DLP inspect template resource name. Format: `projects/`
-        # project`/inspectTemplates/`template``
+        # project`/locations/`location`/inspectTemplates/`template``
         # Corresponds to the JSON property `inspectTemplate`
         # @return [String]
         attr_accessor :inspect_template
@@ -5324,7 +5324,7 @@ module Google
         attr_accessor :deidentify_template
       
         # The fully-qualified DLP inspect template resource name. Format: `projects/`
-        # project`/inspectTemplates/`template``
+        # project`/locations/`location`/inspectTemplates/`template``
         # Corresponds to the JSON property `inspectTemplate`
         # @return [String]
         attr_accessor :inspect_template
