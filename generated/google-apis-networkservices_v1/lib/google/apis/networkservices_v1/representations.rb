@@ -1021,6 +1021,7 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :service, as: 'service'
+          property :service_id, as: 'serviceId'
           property :update_time, as: 'updateTime'
         end
       end
