@@ -3989,6 +3989,7 @@ module Google
           property :agent_uri, as: 'agentUri'
           property :data_format, as: 'dataFormat'
           property :environment, as: 'environment'
+          property :include_bigquery_export_settings, as: 'includeBigqueryExportSettings'
         end
       end
       
@@ -4624,6 +4625,7 @@ module Google
           hash :payload, as: 'payload'
           collection :session_entity_types, as: 'sessionEntityTypes', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SessionEntityType, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SessionEntityType::Representation
       
+          property :session_ttl, as: 'sessionTtl'
           property :time_zone, as: 'timeZone'
           hash :webhook_headers, as: 'webhookHeaders'
         end
