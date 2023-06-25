@@ -190,6 +190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ComputeStorageDescriptor
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CpuUsageSample
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1186,6 +1192,16 @@ module Google
           property :memory_mb, as: 'memoryMb'
           property :physical_core_count, as: 'physicalCoreCount'
           property :series, as: 'series'
+          collection :storage, as: 'storage', class: Google::Apis::MigrationcenterV1alpha1::ComputeStorageDescriptor, decorator: Google::Apis::MigrationcenterV1alpha1::ComputeStorageDescriptor::Representation
+      
+        end
+      end
+      
+      class ComputeStorageDescriptor
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :size_gb, as: 'sizeGb'
+          property :type, as: 'type'
         end
       end
       
