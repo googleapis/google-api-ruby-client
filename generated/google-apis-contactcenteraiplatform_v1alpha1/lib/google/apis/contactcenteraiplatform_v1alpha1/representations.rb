@@ -28,6 +28,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AuthenticationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BasicAuthConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -47,6 +59,12 @@ module Google
       end
       
       class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudCommonOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -106,6 +124,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SamlConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -123,6 +147,24 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :family_name, as: 'familyName'
           property :given_name, as: 'givenName'
+        end
+      end
+      
+      class AuthenticationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :basic_auth_setting, as: 'basicAuthSetting', class: Google::Apis::ContactcenteraiplatformV1alpha1::BasicAuthConfig, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::BasicAuthConfig::Representation
+      
+          property :name, as: 'name'
+          property :saml_setting, as: 'samlSetting', class: Google::Apis::ContactcenteraiplatformV1alpha1::SamlConfig, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::SamlConfig::Representation
+      
+        end
+      end
+      
+      class BasicAuthConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
         end
       end
       
@@ -168,6 +210,19 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudCommonOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          property :cancel_requested, as: 'cancelRequested'
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :status_detail, as: 'statusDetail'
+          property :target, as: 'target'
+          property :verb, as: 'verb'
         end
       end
       
@@ -260,6 +315,16 @@ module Google
           property :entity_id, as: 'entityId'
           property :sso_uri, as: 'ssoUri'
           property :user_email, as: 'userEmail'
+        end
+      end
+      
+      class SamlConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cert, as: 'cert'
+          property :email_mapping, as: 'emailMapping'
+          property :entity_id, as: 'entityId'
+          property :login_uri, as: 'loginUri'
         end
       end
       
