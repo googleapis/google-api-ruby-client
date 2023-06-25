@@ -94,6 +94,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DataCacheConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Database
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -741,6 +747,13 @@ module Google
           property :region, as: 'region'
           property :server_ca_cert, as: 'serverCaCert', class: Google::Apis::SqladminV1beta4::SslCert, decorator: Google::Apis::SqladminV1beta4::SslCert::Representation
       
+        end
+      end
+      
+      class DataCacheConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_cache_enabled, as: 'dataCacheEnabled'
         end
       end
       
@@ -1398,6 +1411,8 @@ module Google
           property :collation, as: 'collation'
           property :connector_enforcement, as: 'connectorEnforcement'
           property :crash_safe_replication_enabled, as: 'crashSafeReplicationEnabled'
+          property :data_cache_config, as: 'dataCacheConfig', class: Google::Apis::SqladminV1beta4::DataCacheConfig, decorator: Google::Apis::SqladminV1beta4::DataCacheConfig::Representation
+      
           property :data_disk_size_gb, :numeric_string => true, as: 'dataDiskSizeGb'
           property :data_disk_type, as: 'dataDiskType'
           collection :database_flags, as: 'databaseFlags', class: Google::Apis::SqladminV1beta4::DatabaseFlags, decorator: Google::Apis::SqladminV1beta4::DatabaseFlags::Representation
@@ -1406,6 +1421,7 @@ module Google
           property :deletion_protection_enabled, as: 'deletionProtectionEnabled'
           collection :deny_maintenance_periods, as: 'denyMaintenancePeriods', class: Google::Apis::SqladminV1beta4::DenyMaintenancePeriod, decorator: Google::Apis::SqladminV1beta4::DenyMaintenancePeriod::Representation
       
+          property :edition, as: 'edition'
           property :insights_config, as: 'insightsConfig', class: Google::Apis::SqladminV1beta4::InsightsConfig, decorator: Google::Apis::SqladminV1beta4::InsightsConfig::Representation
       
           property :ip_configuration, as: 'ipConfiguration', class: Google::Apis::SqladminV1beta4::IpConfiguration, decorator: Google::Apis::SqladminV1beta4::IpConfiguration::Representation
