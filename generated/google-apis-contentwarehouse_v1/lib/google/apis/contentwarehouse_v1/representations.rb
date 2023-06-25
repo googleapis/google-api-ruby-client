@@ -2458,6 +2458,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AssistantDevicesPlatformProtoExecutionWaitCapability
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AssistantDevicesPlatformProtoInlinedActionCapability
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3047,6 +3053,12 @@ module Google
       end
       
       class AssistantVerticalsHomeautomationProtoHomeAutomationMetaDataSupportedTraits
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AssistantVerticalsHomeautomationProtoMatterUniqueId
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5825,6 +5837,12 @@ module Google
       end
       
       class GoogleCloudContentwarehouseV1ProcessorInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContentwarehouseV1ProjectStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -20106,6 +20124,12 @@ module Google
         end
       end
       
+      class AssistantDevicesPlatformProtoExecutionWaitCapability
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class AssistantDevicesPlatformProtoInlinedActionCapability
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -20277,6 +20301,8 @@ module Google
           property :device_modify_setting, as: 'deviceModifySetting', class: Google::Apis::ContentwarehouseV1::AssistantDevicesPlatformProtoDeviceModifySettingCapability, decorator: Google::Apis::ContentwarehouseV1::AssistantDevicesPlatformProtoDeviceModifySettingCapability::Representation
       
           property :device_take_photo, as: 'deviceTakePhoto', class: Google::Apis::ContentwarehouseV1::AssistantDevicesPlatformProtoDeviceTakePhotoCapability, decorator: Google::Apis::ContentwarehouseV1::AssistantDevicesPlatformProtoDeviceTakePhotoCapability::Representation
+      
+          property :execution_wait, as: 'executionWait', class: Google::Apis::ContentwarehouseV1::AssistantDevicesPlatformProtoExecutionWaitCapability, decorator: Google::Apis::ContentwarehouseV1::AssistantDevicesPlatformProtoExecutionWaitCapability::Representation
       
           property :media_next, as: 'mediaNext', class: Google::Apis::ContentwarehouseV1::AssistantDevicesPlatformProtoMediaNextCapability, decorator: Google::Apis::ContentwarehouseV1::AssistantDevicesPlatformProtoMediaNextCapability::Representation
       
@@ -20723,6 +20749,7 @@ module Google
           property :device_model_id, as: 'deviceModelId'
           property :distance, as: 'distance'
           property :eliminating_lumos_processor, as: 'eliminatingLumosProcessor'
+          property :home_structure_id, as: 'homeStructureId'
           property :is_remote, as: 'isRemote'
           property :is_tethered, as: 'isTethered'
           property :media_capabilities, as: 'mediaCapabilities', class: Google::Apis::ContentwarehouseV1::AssistantLogsMediaCapabilities, decorator: Google::Apis::ContentwarehouseV1::AssistantLogsMediaCapabilities::Representation
@@ -21254,6 +21281,8 @@ module Google
           collection :group_ids, as: 'groupIds'
           property :hash_value, as: 'hashValue'
           property :lanscan_opted_in, as: 'lanscanOptedIn'
+          property :matter_unique_id, as: 'matterUniqueId', class: Google::Apis::ContentwarehouseV1::AssistantVerticalsHomeautomationProtoMatterUniqueId, decorator: Google::Apis::ContentwarehouseV1::AssistantVerticalsHomeautomationProtoMatterUniqueId::Representation
+      
           property :model_name, as: 'modelName'
           property :notification_enabled_by_user, as: 'notificationEnabledByUser'
           property :notification_supported_by_agent, as: 'notificationSupportedByAgent'
@@ -21304,6 +21333,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :traits, as: 'traits'
+        end
+      end
+      
+      class AssistantVerticalsHomeautomationProtoMatterUniqueId
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :product_id, as: 'productId'
+          property :unique_id, as: 'uniqueId'
+          property :vendor_id, as: 'vendorId'
         end
       end
       
@@ -26916,6 +26954,18 @@ module Google
         end
       end
       
+      class GoogleCloudContentwarehouseV1ProjectStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_control_mode, as: 'accessControlMode'
+          property :database_type, as: 'databaseType'
+          property :document_creator_default_role, as: 'documentCreatorDefaultRole'
+          property :location, as: 'location'
+          property :qa_enabled, as: 'qaEnabled'
+          property :state, as: 'state'
+        end
+      end
+      
       class GoogleCloudContentwarehouseV1Property
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -30276,11 +30326,63 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :accelerated_shopping_signal, as: 'acceleratedShoppingSignal', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
+          property :ads_adsai_magic_apfel_apfel_region_finder_annotation, as: 'adsAdsaiMagicApfelApfelRegionFinderAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :ads_adsai_magic_magic_page_type_annotation, as: 'adsAdsaiMagicMagicPageTypeAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :ads_shopping_webpx_raw_shopping_annotation, as: 'adsShoppingWebpxRawShoppingAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :amphtml_signed_exchange_error_details, as: 'amphtmlSignedExchangeErrorDetails', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :amphtml_signed_exchange_validation_payload, as: 'amphtmlSignedExchangeValidationPayload', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :analytics_siteid_analytics_property_annotation, as: 'analyticsSiteidAnalyticsPropertyAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :analytics_siteid_analytics_rendered_output, as: 'analyticsSiteidAnalyticsRenderedOutput', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
           property :authentic_site_rank_data, as: 'authenticSiteRankData', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :babel_encoder_babel_encodings, as: 'babelEncoderBabelEncodings', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :badurls_badurls_force_selection_signal, as: 'badurlsBadurlsForceSelectionSignal', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :boilerplate_annotations, as: 'boilerplateAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :boilerplate_visible_bytes_estimates, as: 'boilerplateVisibleBytesEstimates', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
           property :chrome_counts, as: 'chromeCounts', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
+          property :commerce_dataquality_organic_crawled_seller_data, as: 'commerceDataqualityOrganicCrawledSellerData', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :commerce_dataquality_organic_shopping_annotation_signal, as: 'commerceDataqualityOrganicShoppingAnnotationSignal', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :commerce_dataquality_organic_shopping_site_quality, as: 'commerceDataqualityOrganicShoppingSiteQuality', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :commonsense_queriosity_goldmine_qna_annotations, as: 'commonsenseQueriosityGoldmineQnaAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :commonsense_scored_compound_reference_annotation, as: 'commonsenseScoredCompoundReferenceAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :commonsense_stone_soup_proto_raffia_instructions_seq, as: 'commonsenseStoneSoupProtoRaffiaInstructionsSeq', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :contra_content_review_annotations, as: 'contraContentReviewAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :contra_curated_content, as: 'contraCuratedContent', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :country_country_attachment, as: 'countryCountryAttachment', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :crawzall_signal, as: 'crawzallSignal', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
           property :creator, as: 'creator', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :datacommons_datacommons_triples_signal, as: 'datacommonsDatacommonsTriplesSignal', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :date_annotation_tags, as: 'dateAnnotationTags', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :date_annotations, as: 'dateAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :date_range_annotations, as: 'dateRangeAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :date_time_annotations, as: 'dateTimeAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
           property :discover_source, as: 'discoverSource', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
@@ -30288,29 +30390,999 @@ module Google
       
           property :document_intent, as: 'documentIntent', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
+          property :dots_garamond_signal, as: 'dotsGaramondSignal', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :dots_newsstand_signal, as: 'dotsNewsstandSignal', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :email_address_annotations, as: 'emailAddressAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
           property :extracted_book_info, as: 'extractedBookInfo', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :fatcat_compact_doc_classification, as: 'fatcatCompactDocClassification', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :fatcat_site_verticals_annotation, as: 'fatcatSiteVerticalsAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :firstseen, as: 'firstseen', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :fonts_analysis_annotator_fonts_annotation, as: 'fontsAnalysisAnnotatorFontsAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :forum_ranking_forum_posts_safe_search_annotation, as: 'forumRankingForumPostsSafeSearchAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :foundation_splinter_signal, as: 'foundationSplinterSignal', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :freshbox_freshbox_article_annotation, as: 'freshboxFreshboxArticleAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :geo_point_annotations, as: 'geoPointAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :geo_point_resolution, as: 'geoPointResolution', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :geostore_address_proto, as: 'geostoreAddressProto', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :i2e_v2_image_entities_infos, as: 'i2eV2ImageEntitiesInfos', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :image_content_annotation_labels, as: 'imageContentAnnotationLabels', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :image_content_color_search_color_detection_results, as: 'imageContentColorSearchColorDetectionResults', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :image_data_list, as: 'imageDataList', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :image_extra_image_extra_terms, as: 'imageExtraImageExtraTerms', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :image_monetization_featured_document_properties, as: 'imageMonetizationFeaturedDocumentProperties', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :image_mustang_favicon_info, as: 'imageMustangFaviconInfo', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :image_mustang_websearch_image_snippet_response, as: 'imageMustangWebsearchImageSnippetResponse', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :image_quality_labelmaker_doc_media_labels, as: 'imageQualityLabelmakerDocMediaLabels', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :image_quality_landing_page_proto_landing_page_salient_text_set, as: 'imageQualityLandingPageProtoLandingPageSalientTextSet', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :image_quality_layout_document, as: 'imageQualityLayoutDocument', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :image_quality_richdata_proto_image_anchor, as: 'imageQualityRichdataProtoImageAnchor', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :image_quality_richdata_proto_richdata, as: 'imageQualityRichdataProtoRichdata', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :image_quality_salient_terms_image_query_smearing_list, as: 'imageQualitySalientTermsImageQuerySmearingList', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :image_quality_salient_terms_image_salient_term_set_map, as: 'imageQualitySalientTermsImageSalientTermSetMap', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :image_quality_sensitive_face_skin_tone_signals, as: 'imageQualitySensitiveFaceSkinToneSignals', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :image_quality_sensitive_media_or_people_entities, as: 'imageQualitySensitiveMediaOrPeopleEntities', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :image_repository_geolocation, as: 'imageRepositoryGeolocation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :image_repository_picasa_geo_data, as: 'imageRepositoryPicasaGeoData', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :image_search_rejected_image_info_list, as: 'imageSearchRejectedImageInfoList', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :image_stock_stock_image_annotation, as: 'imageStockStockImageAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_annotations_annotation_meta, as: 'indexingAnnotationsAnnotationMeta', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_annotations_app_market_app_market_annotation, as: 'indexingAnnotationsAppMarketAppMarketAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_annotations_apps_cache_colon_annotation, as: 'indexingAnnotationsAppsCacheColonAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_annotations_apps_doc_restrictions_doc_preview_restrictions_annotation, as: 'indexingAnnotationsAppsDocRestrictionsDocPreviewRestrictionsAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_annotations_automobile_vin_annotator_automobile_vin_annotations, as: 'indexingAnnotationsAutomobileVinAnnotatorAutomobileVinAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_annotations_canonical_url, as: 'indexingAnnotationsCanonicalUrl', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_annotations_clean_text_proto, as: 'indexingAnnotationsCleanTextProto', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_annotations_collections_doc_collections, as: 'indexingAnnotationsCollectionsDocCollections', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_annotations_comment_block_groups, as: 'indexingAnnotationsCommentBlockGroups', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_annotations_dataset_model_annotation, as: 'indexingAnnotationsDatasetModelAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_annotations_dates_date_times, as: 'indexingAnnotationsDatesDateTimes', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_annotations_doc_importance, as: 'indexingAnnotationsDocImportance', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_annotations_doc_restrictions_in_doc_restrictions_annotation, as: 'indexingAnnotationsDocRestrictionsInDocRestrictionsAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_annotations_entity_page, as: 'indexingAnnotationsEntityPage', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_annotations_feedback_set, as: 'indexingAnnotationsFeedbackSet', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_annotations_i_bert_embedding_annotation, as: 'indexingAnnotationsIBertEmbeddingAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_annotations_image_repository_image_license_info_annotation, as: 'indexingAnnotationsImageRepositoryImageLicenseInfoAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_annotations_pcu_amp_error, as: 'indexingAnnotationsPcuAmpError', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_annotations_pcu_signed_exchange_info, as: 'indexingAnnotationsPcuSignedExchangeInfo', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_annotations_person_person_annotation, as: 'indexingAnnotationsPersonPersonAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_annotations_sdu_page_type_annotation, as: 'indexingAnnotationsSduPageTypeAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_annotations_social_links_social_links_annotation, as: 'indexingAnnotationsSocialLinksSocialLinksAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_annotations_subscribewithgoogle_swg_annotation, as: 'indexingAnnotationsSubscribewithgoogleSwgAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_annotations_twitter_embedded_tweets_annotation, as: 'indexingAnnotationsTwitterEmbeddedTweetsAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_annotations_typed_number_typed_number_annotations, as: 'indexingAnnotationsTypedNumberTypedNumberAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_annotations_wa_passages_query_to_passage_annotations, as: 'indexingAnnotationsWaPassagesQueryToPassageAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_annotations_wa_passages_trimmed_query_to_passage_annotations, as: 'indexingAnnotationsWaPassagesTrimmedQueryToPassageAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_apps_affiliated_instant_app_info, as: 'indexingAppsAffiliatedInstantAppInfo', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_apps_merged_app_info_annotation, as: 'indexingAppsMergedAppInfoAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_badpages_bad_page_parse_result, as: 'indexingBadpagesBadPageParseResult', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_badpages_collapser_info, as: 'indexingBadpagesCollapserInfo', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_badpages_index_selection_removal, as: 'indexingBadpagesIndexSelectionRemoval', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_badpages_login_page_result, as: 'indexingBadpagesLoginPageResult', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_badpages_unified_model_features, as: 'indexingBadpagesUnifiedModelFeatures', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_bering_publisher_on_page_ads_annotation, as: 'indexingBeringPublisherOnPageAdsAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_centerpiece_center_piece_annotations, as: 'indexingCenterpieceCenterPieceAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_centerpiece_centerpiece_checksums, as: 'indexingCenterpieceCenterpieceChecksums', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_centerpiece_component_learning_source, as: 'indexingCenterpieceComponentLearningSource', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_centerpiece_section_title_annotations, as: 'indexingCenterpieceSectionTitleAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_converter_content_generation_info, as: 'indexingConverterContentGenerationInfo', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_converter_content_parser_results, as: 'indexingConverterContentParserResults', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_converter_file_meta_info, as: 'indexingConverterFileMetaInfo', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_converter_link_rel_outlinks, as: 'indexingConverterLinkRelOutlinks', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_converter_meta_detectors_results_proto, as: 'indexingConverterMetaDetectorsResultsProto', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_converter_pdf_file_meta_info, as: 'indexingConverterPdfFileMetaInfo', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_converter_pdf_page_annotations, as: 'indexingConverterPdfPageAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_custom_corpus_cdm_annotations, as: 'indexingCustomCorpusCdmAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_deepweb_store_list_annotation, as: 'indexingDeepwebStoreListAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_docjoiner_serving_time_cluster_ids, as: 'indexingDocjoinerServingTimeClusterIds', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_docjoiner_wiki_info, as: 'indexingDocjoinerWikiInfo', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_docskeleton_repeated_pattern_repeated_pattern_annotation, as: 'indexingDocskeletonRepeatedPatternRepeatedPatternAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_dups_localized_localized_cluster, as: 'indexingDupsLocalizedLocalizedCluster', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_fresh_scheduler_fresh_scheduler_double_instant_extension, as: 'indexingFreshSchedulerFreshSchedulerDoubleInstantExtension', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_fresh_scheduler_outlink_discovery_historical_hubs_signal, as: 'indexingFreshSchedulerOutlinkDiscoveryHistoricalHubsSignal', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_images_related_image_signal, as: 'indexingImagesRelatedImageSignal', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_instant_active_cluster_scorer_signal, as: 'indexingInstantActiveClusterScorerSignal', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_instant_base_reindex_whitelist_data, as: 'indexingInstantBaseReindexWhitelistData', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_instant_cluster_scorer_article, as: 'indexingInstantClusterScorerArticle', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_instant_cluster_scorer_signal, as: 'indexingInstantClusterScorerSignal', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_instant_historical_content_signals, as: 'indexingInstantHistoricalContentSignals', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_instant_news_highly_cited_document_signal, as: 'indexingInstantNewsHighlyCitedDocumentSignal', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_instant_news_images_info, as: 'indexingInstantNewsImagesInfo', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_instant_signal_source_tags_extension, as: 'indexingInstantSignalSourceTagsExtension', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_lattice_lattice_annotations, as: 'indexingLatticeLatticeAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_metrics_url_indexing_props, as: 'indexingMetricsUrlIndexingProps', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_ml_dom_node_segments, as: 'indexingMlDomNodeSegments', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_ml_entity_infoboxes, as: 'indexingMlEntityInfoboxes', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_ml_page_structure, as: 'indexingMlPageStructure', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_ml_semantic_article, as: 'indexingMlSemanticArticle', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_ml_shopping_universe_annotation, as: 'indexingMlShoppingUniverseAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_ml_vertical_vertical_classification_result, as: 'indexingMlVerticalVerticalClassificationResult', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_ml_vertical_vertical_classification_v2, as: 'indexingMlVerticalVerticalClassificationV2', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_mobile_client_dependent_info, as: 'indexingMobileClientDependentInfo', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_mobile_interstitials_proto_desktop_interstitials, as: 'indexingMobileInterstitialsProtoDesktopInterstitials', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_mobile_obelix_info, as: 'indexingMobileObelixInfo', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_mobile_smartphone_content_annotations, as: 'indexingMobileSmartphoneContentAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_mobile_smartphone_pattern_classification, as: 'indexingMobileSmartphonePatternClassification', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_mobile_speed_page_speed_field_data, as: 'indexingMobileSpeedPageSpeedFieldData', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_plusone_plus_one_signal, as: 'indexingPlusonePlusOneSignal', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_plusone_social_score_signal, as: 'indexingPlusoneSocialScoreSignal', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_raffia_data_recovery_info, as: 'indexingRaffiaDataRecoveryInfo', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_raffia_indexing_intermediate, as: 'indexingRaffiaIndexingIntermediate', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_raffia_media_processing_metadata, as: 'indexingRaffiaMediaProcessingMetadata', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_raffia_overlay_c_doc_attachment, as: 'indexingRaffiaOverlayCDocAttachment', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_selection_acquisition_metadata_attachment, as: 'indexingSelectionAcquisitionMetadataAttachment', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_selection_double_indexing_extension, as: 'indexingSelectionDoubleIndexingExtension', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_selection_fast_serving_push, as: 'indexingSelectionFastServingPush', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_selection_freshdocs_passthrough_extension, as: 'indexingSelectionFreshdocsPassthroughExtension', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_selection_image_image_selection_attachment, as: 'indexingSelectionImageImageSelectionAttachment', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_selection_language_extension, as: 'indexingSelectionLanguageExtension', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_selection_prior_scorer_parameter_set, as: 'indexingSelectionPriorScorerParameterSet', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_selection_processing_priority_extension, as: 'indexingSelectionProcessingPriorityExtension', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_selection_proto_base_promotion_info, as: 'indexingSelectionProtoBasePromotionInfo', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_selection_tensor_flow_extension, as: 'indexingSelectionTensorFlowExtension', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_signal_aggregator_url_pattern_signals, as: 'indexingSignalAggregatorUrlPatternSignals', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_signals_accumulated_online_signals, as: 'indexingSignalsAccumulatedOnlineSignals', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_signals_impressions_per_day_container, as: 'indexingSignalsImpressionsPerDayContainer', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_social_counts_social_widgets_indicator, as: 'indexingSocialCountsSocialWidgetsIndicator', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_speech_goldmine_podcast_annotation, as: 'indexingSpeechGoldminePodcastAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_speech_speech_page_properties_proto, as: 'indexingSpeechSpeechPagePropertiesProto', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_thirdparty_third_party_inputs, as: 'indexingThirdpartyThirdPartyInputs', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_ugc_page_param_info, as: 'indexingUgcPageParamInfo', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_union_key_data, as: 'indexingUnionKeyData', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_url_pattern_url_tree_url_pattern_annotations, as: 'indexingUrlPatternUrlTreeUrlPatternAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_videos_video_anchor_source_info, as: 'indexingVideosVideoAnchorSourceInfo', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_videos_video_playlist_anchor_signal, as: 'indexingVideosVideoPlaylistAnchorSignal', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :indexing_web_channels_web_channel_annotations, as: 'indexingWebChannelsWebChannelAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :infoextraction_pinpoint_pinpoint_annotation_signal, as: 'infoextractionPinpointPinpointAnnotationSignal', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :infoextraction_pinpoint_pinpoint_signal, as: 'infoextractionPinpointPinpointSignal', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
           property :instant_chrome_views, as: 'instantChromeViews', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
           property :instant_navboost, as: 'instantNavboost', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
+          property :knowledge_graph_acquisition_feeds_quotes_quotes_annotation, as: 'knowledgeGraphAcquisitionFeedsQuotesQuotesAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mining_facts_document_signals, as: 'knowledgeMiningFactsDocumentSignals', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mining_facts_fact_evaluation_signals, as: 'knowledgeMiningFactsFactEvaluationSignals', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mining_facts_html_table_signal, as: 'knowledgeMiningFactsHtmlTableSignal', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mining_facts_kats_signals, as: 'knowledgeMiningFactsKatsSignals', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mining_facts_localized_fact, as: 'knowledgeMiningFactsLocalizedFact', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mining_facts_object_annotations_signal, as: 'knowledgeMiningFactsObjectAnnotationsSignal', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mining_facts_product_composition_signal, as: 'knowledgeMiningFactsProductCompositionSignal', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mining_facts_serving_data, as: 'knowledgeMiningFactsServingData', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mining_facts_shopping_signals, as: 'knowledgeMiningFactsShoppingSignals', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mining_facts_structured_snippets_signal, as: 'knowledgeMiningFactsStructuredSnippetsSignal', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mining_facts_udr_extra_fact_data, as: 'knowledgeMiningFactsUdrExtraFactData', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mining_facts_udr_extra_fact_mention_data, as: 'knowledgeMiningFactsUdrExtraFactMentionData', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mining_facts_universal_fact_metadata, as: 'knowledgeMiningFactsUniversalFactMetadata', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mining_facts_universal_fact_scores, as: 'knowledgeMiningFactsUniversalFactScores', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mining_facts_universal_table_signal, as: 'knowledgeMiningFactsUniversalTableSignal', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mining_facts_web_kv_site_group_signal, as: 'knowledgeMiningFactsWebKvSiteGroupSignal', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mining_shopping_browseonomy_data, as: 'knowledgeMiningShoppingBrowseonomyData', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mining_shopping_twd_model_versions, as: 'knowledgeMiningShoppingTwdModelVersions', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_story_teaser_annotation, as: 'knowledgeMumStoryTeaserAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_storytime_stamp_engagement_annotation, as: 'knowledgeMumStorytimeStampEngagementAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_mum_storytime_stamp_quality_annotation, as: 'knowledgeMumStorytimeStampQualityAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_tables_table_internal_data, as: 'knowledgeTablesTableInternalData', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_tables_universal_table_annotations, as: 'knowledgeTablesUniversalTableAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_tasks_universal_task_annotation, as: 'knowledgeTasksUniversalTaskAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :knowledge_tpf_howtodo_howto_video_annotation, as: 'knowledgeTpfHowtodoHowtoVideoAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :lang_id_lang_reasoner_document_languages, as: 'langIdLangReasonerDocumentLanguages', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :lens_vsai_datasets, as: 'lensVsaiDatasets', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :localsearch_authority_site_annotation, as: 'localsearchAuthoritySiteAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
           property :localyp, as: 'localyp', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :maps_synthetics_geo_doc_fetch_key, as: 'mapsSyntheticsGeoDocFetchKey', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :measurement_annotations, as: 'measurementAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :metaweb_extraction_document_evidence, as: 'metawebExtractionDocumentEvidence', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
           property :modern_format_content, as: 'modernFormatContent', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
+          property :nav_boost_document, as: 'navBoostDocument', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
           property :navboost, as: 'navboost', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :news_annotations_content_annotations, as: 'newsAnnotationsContentAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :news_corpus_hub_page_annotations, as: 'newsCorpusHubPageAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :news_corpus_leaf_page_annotation, as: 'newsCorpusLeafPageAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :news_corpus_news_aggregate_signal, as: 'newsCorpusNewsAggregateSignal', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :news_corpus_news_corpus_annotation, as: 'newsCorpusNewsCorpusAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :news_corpus_news_corpus_root_annotation, as: 'newsCorpusNewsCorpusRootAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :news_corpus_news_corpus_status_annotation, as: 'newsCorpusNewsCorpusStatusAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :news_corpus_newsiness_annotation, as: 'newsCorpusNewsinessAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :news_corpus_position_rank_annotations, as: 'newsCorpusPositionRankAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :news_crawl_filter_news_link_crawl_signal, as: 'newsCrawlFilterNewsLinkCrawlSignal', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :news_extraction_news_pbe_annotations, as: 'newsExtractionNewsPbeAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :news_nar_indexing_metadata, as: 'newsNarIndexingMetadata', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :news_nar_row, as: 'newsNarRow', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :news_nar_row_container, as: 'newsNarRowContainer', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :news_near_dups_info, as: 'newsNearDupsInfo', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :news_newroman_indexing_new_roman_signal, as: 'newsNewromanIndexingNewRomanSignal', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :news_news_article_checksum, as: 'newsNewsArticleChecksum', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :news_news_classifications, as: 'newsNewsClassifications', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :news_news_content_signals, as: 'newsNewsContentSignals', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :news_news_for_education_reading_statistics, as: 'newsNewsForEducationReadingStatistics', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :news_videos_news_anchor_source_info, as: 'newsVideosNewsAnchorSourceInfo', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :news_videos_news_video_annotation_signals, as: 'newsVideosNewsVideoAnnotationSignals', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :nlp_atc_clara_annotation, as: 'nlpAtcClaraAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :nlp_saft_document, as: 'nlpSaftDocument', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :nlp_saft_nlx_doc_annotator_migration, as: 'nlpSaftNlxDocAnnotatorMigration', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :nlp_saft_rodin_classification, as: 'nlpSaftRodinClassification', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :nlp_sentiment_sentiment_annotation, as: 'nlpSentimentSentimentAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :nlx_doc_annotation, as: 'nlxDocAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :noindexed_image_data_list, as: 'noindexedImageDataList', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :number_annotations, as: 'numberAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :ocean_librarian_book_metadata, as: 'oceanLibrarianBookMetadata', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :ocean_librarian_populator_data, as: 'oceanLibrarianPopulatorData', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :ocean_librarian_populator_page_data, as: 'oceanLibrarianPopulatorPageData', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :ocean_metadata_all_item_specific_bibdatas, as: 'oceanMetadataAllItemSpecificBibdatas', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :ocean_metadata_availability_info_component, as: 'oceanMetadataAvailabilityInfoComponent', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :ocean_metadata_availability_snapshot, as: 'oceanMetadataAvailabilitySnapshot', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :ocean_metadata_availability_snapshot_holder, as: 'oceanMetadataAvailabilitySnapshotHolder', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :ocean_metadata_bibkey_component, as: 'oceanMetadataBibkeyComponent', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :ocean_metadata_cluster_horizontal_reference, as: 'oceanMetadataClusterHorizontalReference', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :ocean_metadata_cluster_record, as: 'oceanMetadataClusterRecord', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :ocean_metadata_cluster_volumes, as: 'oceanMetadataClusterVolumes', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :ocean_metadata_clustering_series_series_info, as: 'oceanMetadataClusteringSeriesSeriesInfo', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :ocean_metadata_clustering_tome_horizontal_link_descriptor, as: 'oceanMetadataClusteringTomeHorizontalLinkDescriptor', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :ocean_metadata_contributor_links, as: 'oceanMetadataContributorLinks', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :ocean_metadata_item_specific_bibdata_component, as: 'oceanMetadataItemSpecificBibdataComponent', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :ocean_metadata_kg_topic_links, as: 'oceanMetadataKgTopicLinks', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :ocean_metadata_language_info_component, as: 'oceanMetadataLanguageInfoComponent', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :ocean_metadata_material_info_component, as: 'oceanMetadataMaterialInfoComponent', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :ocean_metadata_parsed_access_terms, as: 'oceanMetadataParsedAccessTerms', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :ocean_metadata_parsed_su_doc, as: 'oceanMetadataParsedSuDoc', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :ocean_metadata_patent_publication_details, as: 'oceanMetadataPatentPublicationDetails', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :ocean_metadata_physical_measurements_component, as: 'oceanMetadataPhysicalMeasurementsComponent', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :ocean_metadata_public_domain_info, as: 'oceanMetadataPublicDomainInfo', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :ocean_metadata_publication_details_component, as: 'oceanMetadataPublicationDetailsComponent', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :ocean_metadata_rights_component, as: 'oceanMetadataRightsComponent', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :ocean_metadata_series_info_component, as: 'oceanMetadataSeriesInfoComponent', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :ocean_metadata_tome_details_component, as: 'oceanMetadataTomeDetailsComponent', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :ocean_metadata_tome_members_component, as: 'oceanMetadataTomeMembersComponent', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :ocean_metadata_tome_price_info, as: 'oceanMetadataTomePriceInfo', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :ocean_reviews_for_work, as: 'oceanReviewsForWork', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :ocean_rights_opt_out_request, as: 'oceanRightsOptOutRequest', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :official_pages_query_set, as: 'officialPagesQuerySet', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :per_doc_langid_data, as: 'perDocLangidData', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :personalization_game_webevents_consolidated_events, as: 'personalizationGameWebeventsConsolidatedEvents', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :personalization_game_webevents_event, as: 'personalizationGameWebeventsEvent', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :personalization_game_webevents_events, as: 'personalizationGameWebeventsEvents', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :photos_geo_annotation, as: 'photosGeoAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
           property :predicted_authenticity, as: 'predictedAuthenticity', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
+          property :price_annotations, as: 'priceAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_anchors_outdegree_outdegree_info, as: 'qualityAnchorsOutdegreeOutdegreeInfo', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_anima_liveweb_liveweb_attachment, as: 'qualityAnimaLivewebLivewebAttachment', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_anima_routines_routines_properties_proto, as: 'qualityAnimaRoutinesRoutinesPropertiesProto', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_authority_topic_embeddings, as: 'qualityAuthorityTopicEmbeddings', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_authorship_author_annotations, as: 'qualityAuthorshipAuthorAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_breadcrumbs_breadcrumb_annotations, as: 'qualityBreadcrumbsBreadcrumbAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_calypso_apps_link, as: 'qualityCalypsoAppsLink', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_chard_document, as: 'qualityChardDocument', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_chard_predicted_query_fringe_score, as: 'qualityChardPredictedQueryFringeScore', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_chard_predicted_xlq, as: 'qualityChardPredictedXlq', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_contra_selected_attributions, as: 'qualityContraSelectedAttributions', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_copia_firefly_site_info, as: 'qualityCopiaFireflySiteInfo', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_discover_ugc_scat_scat_embedding_annotation, as: 'qualityDiscoverUgcScatScatEmbeddingAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_dni_newsstand_pcu, as: 'qualityDniNewsstandPcu', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_dni_pcu_auxiliary_data, as: 'qualityDniPcuAuxiliaryData', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_dni_pcu_meta_annotation, as: 'qualityDniPcuMetaAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_dni_pcu_parsed_data, as: 'qualityDniPcuParsedData', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_dni_pcu_raw_data, as: 'qualityDniPcuRawData', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_explore_queryable_feed_ecs_annotation, as: 'qualityExploreQueryableFeedEcsAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_explore_queryable_feed_hashtag_annotation, as: 'qualityExploreQueryableFeedHashtagAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_explore_queryable_feed_hashtag_list_annotation, as: 'qualityExploreQueryableFeedHashtagListAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_explore_queryable_feed_topic_feed_scoring_signals, as: 'qualityExploreQueryableFeedTopicFeedScoringSignals', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_freshness_abacus_instant_negative_clicks_info, as: 'qualityFreshnessAbacusInstantNegativeClicksInfo', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_fringe_fringe_query_prior, as: 'qualityFringeFringeQueryPrior', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_geo_brainloc_goldmine_brainloc_annotation, as: 'qualityGeoBrainlocGoldmineBrainlocAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_geo_logloc_goldmine_document_location_annotation, as: 'qualityGeoLoglocGoldmineDocumentLocationAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_historical_content_age, as: 'qualityHistoricalContentAge', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_horizon_proto_horizon_embeddings, as: 'qualityHorizonProtoHorizonEmbeddings', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_horizon_record_info_annotation, as: 'qualityHorizonRecordInfoAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_improv_doc_to_queries, as: 'qualityImprovDocToQueries', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_improv_improv_anchors, as: 'qualityImprovImprovAnchors', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_lisztomania_document, as: 'qualityLisztomaniaDocument', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_navboost_craps_craps_data, as: 'qualityNavboostCrapsCrapsData', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_navboost_craps_craps_pattern_signal, as: 'qualityNavboostCrapsCrapsPatternSignal', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_negative_clicks_negative_clicks_info, as: 'qualityNegativeClicksNegativeClicksInfo', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_nlq_structured_search_annotation_analysis_automatic_extraction_annotations, as: 'qualityNlqStructuredSearchAnnotationAnalysisAutomaticExtractionAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_nlq_structured_search_listing_pages_listing_page_annotations, as: 'qualityNlqStructuredSearchListingPagesListingPageAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_nsr_doki_annotation, as: 'qualityNsrDokiAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_nsr_nsr_data, as: 'qualityNsrNsrData', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_nsr_nsr_sitechunks_annotation, as: 'qualityNsrNsrSitechunksAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_nsr_pairwiseq_pairwise_q_data, as: 'qualityNsrPairwiseqPairwiseQData', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_nsr_pq_data, as: 'qualityNsrPqData', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_nsr_site_authority, as: 'qualityNsrSiteAuthority', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_nsr_uv_sitechunks_annotation, as: 'qualityNsrUvSitechunksAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_orbit_asteroid_belt_intermediate_document_intent_scores, as: 'qualityOrbitAsteroidBeltIntermediateDocumentIntentScores', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_pagemaster_pagemaster_annotations, as: 'qualityPagemasterPagemasterAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_panoptic_indexing_discover_corpus_annotation, as: 'qualityPanopticIndexingDiscoverCorpusAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_panoptic_indexing_discover_document_signal, as: 'qualityPanopticIndexingDiscoverDocumentSignal', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_panoptic_indexing_panoptic_annotation, as: 'qualityPanopticIndexingPanopticAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_panoptic_storytime_annotation, as: 'qualityPanopticStorytimeAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_panoptic_storytime_scoring_signals, as: 'qualityPanopticStorytimeScoringSignals', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_panoptic_voice_ugc_annotation, as: 'qualityPanopticVoiceUgcAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_peoplesearch_namedetector_name_occurrence_annotations, as: 'qualityPeoplesearchNamedetectorNameOccurrenceAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_popfeeds_chrome_background_annotation, as: 'qualityPopfeedsChromeBackgroundAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_popfeeds_hub_data_annotations, as: 'qualityPopfeedsHubDataAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_popfeeds_url_prediction_annotations, as: 'qualityPopfeedsUrlPredictionAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_popfeeds_url_source_annotations, as: 'qualityPopfeedsUrlSourceAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_pricedetector_kefir_price_annotations, as: 'qualityPricedetectorKefirPriceAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_pricedetector_product_block_annotations, as: 'qualityPricedetectorProductBlockAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_prose_json_ld_annotation, as: 'qualityProseJsonLdAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_prose_thumbnail_selection, as: 'qualityProseThumbnailSelection', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_q2_quality_boost, as: 'qualityQ2QualityBoost', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_q2_site_quality_features, as: 'qualityQ2SiteQualityFeatures', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_realtime_boost_realtime_boost_event, as: 'qualityRealtimeBoostRealtimeBoostEvent', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_realtime_boost_realtime_boost_response, as: 'qualityRealtimeBoostRealtimeBoostResponse', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_realtime_boost_seismograph_event_annotations, as: 'qualityRealtimeBoostSeismographEventAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_realtime_realtime_result_info, as: 'qualityRealtimeRealtimeResultInfo', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_realtime_rt_fact_annotations, as: 'qualityRealtimeRtFactAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_result_filtering_indexing_cluster_annotations, as: 'qualityResultFilteringIndexingClusterAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_richsnippets_apps_protos_application_information_attachment, as: 'qualityRichsnippetsAppsProtosApplicationInformationAttachment', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_rodin_rodin_site_signal, as: 'qualityRodinRodinSiteSignal', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_salient_countries_salient_country_set, as: 'qualitySalientCountriesSalientCountrySet', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_salient_structures_salient_structure_set, as: 'qualitySalientStructuresSalientStructureSet', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_salient_stuff_salient_stuff_set, as: 'qualitySalientStuffSalientStuffSet', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_salient_terms_query_smearing_model, as: 'qualitySalientTermsQuerySmearingModel', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_salient_terms_salient_term_set, as: 'qualitySalientTermsSalientTermSet', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_searchoversite_annotator_structured_results_annotation, as: 'qualitySearchoversiteAnnotatorStructuredResultsAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_sherlock_knex_annotation, as: 'qualitySherlockKnexAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_shopping_product_review, as: 'qualityShoppingProductReview', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_shopping_product_review_page, as: 'qualityShoppingProductReviewPage', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_shopping_shopping_product_review_annotation, as: 'qualityShoppingShoppingProductReviewAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_similarpages_related_info_signal, as: 'qualitySimilarpagesRelatedInfoSignal', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_sitemap_document, as: 'qualitySitemapDocument', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_sitemap_third_party_carousels_item_lists, as: 'qualitySitemapThirdPartyCarouselsItemLists', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_sixface_sixface_url_data, as: 'qualitySixfaceSixfaceUrlData', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_snippets_hidden_text_hidden_span_annotations, as: 'qualitySnippetsHiddenTextHiddenSpanAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_snippets_list_snippets_annotations, as: 'qualitySnippetsListSnippetsAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_snippets_metadescription_duplicate_meta_site_signal, as: 'qualitySnippetsMetadescriptionDuplicateMetaSiteSignal', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_snippets_snippet_spans_info, as: 'qualitySnippetsSnippetSpansInfo', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_sos_goldmine_sos_annotation, as: 'qualitySosGoldmineSosAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_summary_summary, as: 'qualitySummarySummary', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_tangram_information_types, as: 'qualityTangramInformationTypes', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_timebased_time_sensitivity_time_sensitivity_annotation, as: 'qualityTimebasedTimeSensitivityTimeSensitivityAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_titles_alternative_titles_info, as: 'qualityTitlesAlternativeTitlesInfo', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_titles_sitelinks_target_title_info, as: 'qualityTitlesSitelinksTargetTitleInfo', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_twiddler_domain_classification, as: 'qualityTwiddlerDomainClassification', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_views_answers_answer_annotation_info, as: 'qualityViewsAnswersAnswerAnnotationInfo', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_visualweb_visual_web_annotation, as: 'qualityVisualwebVisualWebAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_visualweb_visual_web_models_annotation, as: 'qualityVisualwebVisualWebModelsAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_webanswers_alt_title_saft_doc, as: 'qualityWebanswersAltTitleSaftDoc', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_webanswers_transcript_annotations, as: 'qualityWebanswersTranscriptAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_webfeeder_doc_embedding, as: 'qualityWebfeederDocEmbedding', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :quality_webshine_doc_resources, as: 'qualityWebshineDocResources', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :rank_boost_doc_attachment, as: 'rankBoostDocAttachment', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
           property :rankembed, as: 'rankembed', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :relative_date_annotations, as: 'relativeDateAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_annotations_address_annotations, as: 'repositoryAnnotationsAddressAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_annotations_amenities_amenities_annotations, as: 'repositoryAnnotationsAmenitiesAmenitiesAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_annotations_crawzall_annotations, as: 'repositoryAnnotationsCrawzallAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_annotations_discussion_thread_discussion_view_proto, as: 'repositoryAnnotationsDiscussionThreadDiscussionViewProto', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_annotations_licensed_resources, as: 'repositoryAnnotationsLicensedResources', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_annotations_list_filter_annotations, as: 'repositoryAnnotationsListFilterAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_annotations_list_summary_annotations, as: 'repositoryAnnotationsListSummaryAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_annotations_microdata_microdata_annotations, as: 'repositoryAnnotationsMicrodataMicrodataAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_annotations_microformats_hproduct, as: 'repositoryAnnotationsMicroformatsHproduct', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_annotations_microformats_microformat_annotations, as: 'repositoryAnnotationsMicroformatsMicroformatAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_annotations_phone_type_phone_type_annotations, as: 'repositoryAnnotationsPhoneTypePhoneTypeAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_annotations_rdfa_rdfa_annotations, as: 'repositoryAnnotationsRdfaRdfaAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_annotations_rodin_article_annotation, as: 'repositoryAnnotationsRodinArticleAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_annotations_section_heading_annotations, as: 'repositoryAnnotationsSectionHeadingAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_annotations_snippet_segment_snippet_segment_annotations, as: 'repositoryAnnotationsSnippetSegmentSnippetSegmentAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_annotations_spore_authority_signal, as: 'repositoryAnnotationsSporeAuthoritySignal', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_annotations_spore_deeplink_annotations, as: 'repositoryAnnotationsSporeDeeplinkAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_annotations_spore_extractor_topic_annotations, as: 'repositoryAnnotationsSporeExtractorTopicAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_annotations_spore_extractor_triple_annotations, as: 'repositoryAnnotationsSporeExtractorTripleAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_annotations_spore_spore_etl_annotation, as: 'repositoryAnnotationsSporeSporeEtlAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_annotations_spore_spore_etl_input_annotations, as: 'repositoryAnnotationsSporeSporeEtlInputAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_annotations_storehours_store_hours_annotations, as: 'repositoryAnnotationsStorehoursStoreHoursAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_annotations_verse_annotations, as: 'repositoryAnnotationsVerseAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_annotations_webanswers_context_item_annotations, as: 'repositoryAnnotationsWebanswersContextItemAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_protium_encyclojoins_encyclo_join, as: 'repositoryProtiumEncyclojoinsEncycloJoin', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_protium_goldmine_triplification_result, as: 'repositoryProtiumGoldmineTriplificationResult', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_protium_goldmine_type_assertion_output, as: 'repositoryProtiumGoldmineTypeAssertionOutput', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_protium_webkv_web_kv, as: 'repositoryProtiumWebkvWebKv', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_protium_wikia_wikia_info, as: 'repositoryProtiumWikiaWikiaInfo', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_updater_index_selection_attachment, as: 'repositoryUpdaterIndexSelectionAttachment', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_webref_entity_join, as: 'repositoryWebrefEntityJoin', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_webref_experimental_webref_entities_attachment, as: 'repositoryWebrefExperimentalWebrefEntitiesAttachment', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_webref_graph_mention, as: 'repositoryWebrefGraphMention', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_webref_juggernaut_indices, as: 'repositoryWebrefJuggernautIndices', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_webref_page_classification_anchor_signals_set, as: 'repositoryWebrefPageClassificationAnchorSignalsSet', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_webref_page_classification_signals_set, as: 'repositoryWebrefPageClassificationSignalsSet', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_webref_pianno_document_intents, as: 'repositoryWebrefPiannoDocumentIntents', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_webref_pianno_tv_season_episode, as: 'repositoryWebrefPiannoTvSeasonEpisode', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_webref_preprocessing_reference_page_candidate_list, as: 'repositoryWebrefPreprocessingReferencePageCandidateList', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_webref_reconcile_response, as: 'repositoryWebrefReconcileResponse', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_webref_refcon_juggler_reference_page_mappings, as: 'repositoryWebrefRefconJugglerReferencePageMappings', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_webref_reference_pages_classifier_scored_page, as: 'repositoryWebrefReferencePagesClassifierScoredPage', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_webref_salient_entity_set, as: 'repositoryWebrefSalientEntitySet', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_webref_undermerged_entities, as: 'repositoryWebrefUndermergedEntities', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_webref_universal_embedding_retrieval_debug, as: 'repositoryWebrefUniversalEmbeddingRetrievalDebug', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_webref_webit_intermediary_mids, as: 'repositoryWebrefWebitIntermediaryMids', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_webref_webit_scope_fprint, as: 'repositoryWebrefWebitScopeFprint', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_webref_webit_scope_signals, as: 'repositoryWebrefWebitScopeSignals', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_webref_webit_triple_signals, as: 'repositoryWebrefWebitTripleSignals', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_webref_webref_entities, as: 'repositoryWebrefWebrefEntities', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_webref_webref_status, as: 'repositoryWebrefWebrefStatus', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_webtables_data_table_annotations, as: 'repositoryWebtablesDataTableAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_webtables_data_table_mid_annotation, as: 'repositoryWebtablesDataTableMidAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_webtables_translation_message, as: 'repositoryWebtablesTranslationMessage', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_wikipedia_alias_list, as: 'repositoryWikipediaAliasList', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_wikipedia_annotator_wikipedia_page_component_annotations, as: 'repositoryWikipediaAnnotatorWikipediaPageComponentAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_wikipedia_sentence_compression_annotation, as: 'repositoryWikipediaSentenceCompressionAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_wikipedia_wiki_join, as: 'repositoryWikipediaWikiJoin', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_wikipedia_wiki_mapper_triple_set, as: 'repositoryWikipediaWikiMapperTripleSet', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_wikipedia_wikibase_entity, as: 'repositoryWikipediaWikibaseEntity', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_wikipedia_wikidata_org_triple_set, as: 'repositoryWikipediaWikidataOrgTripleSet', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :repository_wikipedia_wikitrust_wiki_trust_info, as: 'repositoryWikipediaWikitrustWikiTrustInfo', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :research_coauthor_opinion_annotations, as: 'researchCoauthorOpinionAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :research_structured_data_inadvertent_anchor_score_annotation, as: 'researchStructuredDataInadvertentAnchorScoreAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :research_structured_data_knowledge_exploration_annotations, as: 'researchStructuredDataKnowledgeExplorationAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :research_structured_data_news_embedding_annotations, as: 'researchStructuredDataNewsEmbeddingAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :richsnippets_data_object, as: 'richsnippetsDataObject', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :richsnippets_feed_page_map, as: 'richsnippetsFeedPageMap', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :richsnippets_page_map, as: 'richsnippetsPageMap', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :richsnippets_page_map_annotations, as: 'richsnippetsPageMapAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :richsnippets_schema_thing, as: 'richsnippetsSchemaThing', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
           property :rosetta_language, as: 'rosettaLanguage', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
+          property :safesearch_page_classifier_output, as: 'safesearchPageClassifierOutput', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :safesearch_safe_search_internal_page_signals, as: 'safesearchSafeSearchInternalPageSignals', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :science_index_signal, as: 'scienceIndexSignal', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :search_engagement_highlight_shared_highlight_signal, as: 'searchEngagementHighlightSharedHighlightSignal', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :searchar_search_ar_pipeline_signal, as: 'searcharSearchArPipelineSignal', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :shopping_quality_shopping_site_classifier, as: 'shoppingQualityShoppingSiteClassifier', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :shopping_quality_shopping_site_classifier_shopfab, as: 'shoppingQualityShoppingSiteClassifierShopfab', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :shopping_webentity_shopping_annotation, as: 'shoppingWebentityShoppingAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :sitemaps_sitemaps_signals, as: 'sitemapsSitemapsSignals', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :smearing_smeared_terms, as: 'smearingSmearedTerms', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :social_personalization_knex_annotation, as: 'socialPersonalizationKnexAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :spam_brain_spam_brain_data, as: 'spamBrainSpamBrainData', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :spam_brain_spam_brain_page_classifier_annotation, as: 'spamBrainSpamBrainPageClassifierAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :spam_content_anchor_dist, as: 'spamContentAnchorDist', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :spam_content_authentic_authentic_text_annotation, as: 'spamContentAuthenticAuthenticTextAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :spam_content_image_map_pb, as: 'spamContentImageMapPb', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :spam_content_site_age_stats, as: 'spamContentSiteAgeStats', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :spam_cookbook_cookbook_annotations, as: 'spamCookbookCookbookAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :spam_cookbook_cookbook_sitechunk_annotations, as: 'spamCookbookCookbookSitechunkAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :spam_fatping_index_feed, as: 'spamFatpingIndexFeed', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :spam_godcluster_aff_id_annotation, as: 'spamGodclusterAffIdAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :spam_godcluster_server_header_annotation, as: 'spamGodclusterServerHeaderAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :spam_googlebombs_googlebombs_annotation, as: 'spamGooglebombsGooglebombsAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :spam_hacked_sites_doc_spam_info, as: 'spamHackedSitesDocSpamInfo', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :spam_hacked_sites_gpgb_gpgb_ngram_stats, as: 'spamHackedSitesGpgbGpgbNgramStats', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :spam_hacked_sites_word_frequencies, as: 'spamHackedSitesWordFrequencies', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :spam_js_js_info, as: 'spamJsJsInfo', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :spam_scam_scamness, as: 'spamScamScamness', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :spam_scam_unauthoritative_site, as: 'spamScamUnauthoritativeSite', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :spam_tokens_spam_tokens_annotation, as: 'spamTokensSpamTokensAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :table_talk_stride_offer_page_price_annotation, as: 'tableTalkStrideOfferPagePriceAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :tasks_taba_taba_doc_signals, as: 'tasksTabaTabaDocSignals', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :telephone_number_annotations, as: 'telephoneNumberAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :time_annotation_tags, as: 'timeAnnotationTags', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :time_annotations, as: 'timeAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :time_range_annotations, as: 'timeRangeAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :travel_assistant_travel_doc_classification, as: 'travelAssistantTravelDocClassification', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :udr_converter_document_shopping_data, as: 'udrConverterDocumentShoppingData', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :udr_converter_offer, as: 'udrConverterOffer', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :udr_converter_product_block_data, as: 'udrConverterProductBlockData', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :udr_proto_detailed_entity_scores, as: 'udrProtoDetailedEntityScores', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :udr_proto_overlay, as: 'udrProtoOverlay', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :udr_proto_webref_mention, as: 'udrProtoWebrefMention', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
           property :universal_facts, as: 'universalFacts', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :unwanted_image_data_list, as: 'unwantedImageDataList', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :uri_annotations, as: 'uriAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :util_status_proto, as: 'utilStatusProto', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :verticals_discussion_discussion_annotation_tag, as: 'verticalsDiscussionDiscussionAnnotationTag', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :video_crawl_automated_audio_extraction_signals, as: 'videoCrawlAutomatedAudioExtractionSignals', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :video_crawl_automated_extraction_signals, as: 'videoCrawlAutomatedExtractionSignals', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :video_crawl_domain_video_click_data, as: 'videoCrawlDomainVideoClickData', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :video_crawl_video_click_data, as: 'videoCrawlVideoClickData', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :video_crawl_video_salient_term_set, as: 'videoCrawlVideoSalientTermSet', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :video_crawl_video_scoring_signals, as: 'videoCrawlVideoScoringSignals', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :video_crawl_watch_page_pattern_classification, as: 'videoCrawlWatchPagePatternClassification', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :video_crawl_youtube_embed_signal, as: 'videoCrawlYoutubeEmbedSignal', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
           property :video_scoring_signal, as: 'videoScoringSignal', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
+          property :video_web_gallery, as: 'videoWebGallery', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :video_youtube_live_cardio_cardio_stats, as: 'videoYoutubeLiveCardioCardioStats', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
           property :volt, as: 'volt', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :watchpage_language_watch_page_language_result, as: 'watchpageLanguageWatchPageLanguageResult', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :websitetools_feeds_annotations_feed_content_annotations, as: 'websitetoolsFeedsAnnotationsFeedContentAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :websitetools_feeds_linked_feed_linked_feed, as: 'websitetoolsFeedsLinkedFeedLinkedFeed', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :websitetools_feeds_podcast_podcast_signals, as: 'websitetoolsFeedsPodcastPodcastSignals', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :websitetools_feeds_spore_feeds_spore_triples, as: 'websitetoolsFeedsSporeFeedsSporeTriples', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :whatshapp_stride_extractions, as: 'whatshappStrideExtractions', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :youtube_alexandria_youtube_body, as: 'youtubeAlexandriaYoutubeBody', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :youtube_alexandria_youtube_signal, as: 'youtubeAlexandriaYoutubeSignal', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
         end
       end
@@ -37693,8 +38765,6 @@ module Google
       class PornFlagData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :coclick_brain_scores, as: 'coclickBrainScores', class: Google::Apis::ContentwarehouseV1::ImageSafesearchContentBrainPornAnnotation, decorator: Google::Apis::ContentwarehouseV1::ImageSafesearchContentBrainPornAnnotation::Representation
-      
           property :csai_score, as: 'csaiScore'
           collection :debug_info, as: 'debugInfo', class: Google::Apis::ContentwarehouseV1::ImagePornDebugInfo, decorator: Google::Apis::ContentwarehouseV1::ImagePornDebugInfo::Representation
       
@@ -41276,7 +42346,9 @@ module Google
       
           property :source_snapshot_type, as: 'sourceSnapshotType'
           property :url, as: 'url'
-          property :webref_outlinks, as: 'webrefOutlinks', class: Google::Apis::ContentwarehouseV1::Proto2BridgeMessageSet, decorator: Google::Apis::ContentwarehouseV1::Proto2BridgeMessageSet::Representation
+          property :webref_outlink_infos, as: 'webrefOutlinkInfos', class: Google::Apis::ContentwarehouseV1::RepositoryWebrefWebrefOutlinkInfos, decorator: Google::Apis::ContentwarehouseV1::RepositoryWebrefWebrefOutlinkInfos::Representation
+      
+          property :webref_outlinks_legacy, as: 'webrefOutlinksLegacy', class: Google::Apis::ContentwarehouseV1::Proto2BridgeMessageSet, decorator: Google::Apis::ContentwarehouseV1::Proto2BridgeMessageSet::Representation
       
         end
       end
