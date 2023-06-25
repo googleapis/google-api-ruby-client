@@ -184,6 +184,7 @@ module Google
           property :state_error, as: 'stateError', class: Google::Apis::WorkflowsV1::StateError, decorator: Google::Apis::WorkflowsV1::StateError::Representation
       
           property :update_time, as: 'updateTime'
+          hash :user_env_vars, as: 'userEnvVars'
         end
       end
     end
