@@ -382,6 +382,7 @@ module Google
           property :kms_key_name, as: 'kmsKeyName'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :service_config, as: 'serviceConfig', class: Google::Apis::CloudfunctionsV2::ServiceConfig, decorator: Google::Apis::CloudfunctionsV2::ServiceConfig::Representation
       
           property :state, as: 'state'
