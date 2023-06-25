@@ -3404,6 +3404,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :custom_metadata
       
+        # Optional. The options shown when ENUM ParameterType is specified.
+        # Corresponds to the JSON property `enumOptions`
+        # @return [Array<Google::Apis::DataflowV1b3::ParameterMetadataEnumOption>]
+        attr_accessor :enum_options
+      
         # Optional. Specifies a group name for this parameter to be rendered under.
         # Group header text will be rendered exactly as specified in this field. Only
         # considered when parent_name is NOT provided.
@@ -3464,6 +3469,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @custom_metadata = args[:custom_metadata] if args.key?(:custom_metadata)
+          @enum_options = args[:enum_options] if args.key?(:enum_options)
           @group_name = args[:group_name] if args.key?(:group_name)
           @help_text = args[:help_text] if args.key?(:help_text)
           @is_optional = args[:is_optional] if args.key?(:is_optional)
@@ -3473,6 +3479,37 @@ module Google
           @parent_name = args[:parent_name] if args.key?(:parent_name)
           @parent_trigger_values = args[:parent_trigger_values] if args.key?(:parent_trigger_values)
           @regexes = args[:regexes] if args.key?(:regexes)
+        end
+      end
+      
+      # ParameterMetadataEnumOption specifies the option shown in the enum form.
+      class ParameterMetadataEnumOption
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The description to display for the enum option.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. The label to display for the enum option.
+        # Corresponds to the JSON property `label`
+        # @return [String]
+        attr_accessor :label
+      
+        # Required. The value of the enum option.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @label = args[:label] if args.key?(:label)
+          @value = args[:value] if args.key?(:value)
         end
       end
       

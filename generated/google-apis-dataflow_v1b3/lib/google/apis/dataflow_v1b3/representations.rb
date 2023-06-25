@@ -508,6 +508,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ParameterMetadataEnumOption
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PartialGroupByKeyInstruction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1947,6 +1953,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :custom_metadata, as: 'customMetadata'
+          collection :enum_options, as: 'enumOptions', class: Google::Apis::DataflowV1b3::ParameterMetadataEnumOption, decorator: Google::Apis::DataflowV1b3::ParameterMetadataEnumOption::Representation
+      
           property :group_name, as: 'groupName'
           property :help_text, as: 'helpText'
           property :is_optional, as: 'isOptional'
@@ -1956,6 +1964,15 @@ module Google
           property :parent_name, as: 'parentName'
           collection :parent_trigger_values, as: 'parentTriggerValues'
           collection :regexes, as: 'regexes'
+        end
+      end
+      
+      class ParameterMetadataEnumOption
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :label, as: 'label'
+          property :value, as: 'value'
         end
       end
       
