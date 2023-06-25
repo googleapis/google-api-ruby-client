@@ -1,5 +1,9 @@
 # Release history for google-apis-gkeonprem_v1
 
+### v0.5.0 (2023-06-25)
+
+* Regenerated from discovery document revision 20230620
+
 ### v0.4.0 (2023-06-11)
 
 * Regenerated from discovery document revision 20230607
