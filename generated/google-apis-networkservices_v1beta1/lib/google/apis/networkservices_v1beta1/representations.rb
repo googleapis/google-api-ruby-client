@@ -292,6 +292,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListServiceLbPoliciesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListTcpRoutesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -347,6 +353,24 @@ module Google
       end
       
       class ServiceBinding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServiceLbPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServiceLbPolicyAutoCapacityDrain
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServiceLbPolicyFailoverConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -917,6 +941,15 @@ module Google
         end
       end
       
+      class ListServiceLbPoliciesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :service_lb_policies, as: 'serviceLbPolicies', class: Google::Apis::NetworkservicesV1beta1::ServiceLbPolicy, decorator: Google::Apis::NetworkservicesV1beta1::ServiceLbPolicy::Representation
+      
+        end
+      end
+      
       class ListTcpRoutesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1021,7 +1054,38 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :service, as: 'service'
+          property :service_id, as: 'serviceId'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class ServiceLbPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_capacity_drain, as: 'autoCapacityDrain', class: Google::Apis::NetworkservicesV1beta1::ServiceLbPolicyAutoCapacityDrain, decorator: Google::Apis::NetworkservicesV1beta1::ServiceLbPolicyAutoCapacityDrain::Representation
+      
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :failover_config, as: 'failoverConfig', class: Google::Apis::NetworkservicesV1beta1::ServiceLbPolicyFailoverConfig, decorator: Google::Apis::NetworkservicesV1beta1::ServiceLbPolicyFailoverConfig::Representation
+      
+          hash :labels, as: 'labels'
+          property :load_balancing_algorithm, as: 'loadBalancingAlgorithm'
+          property :name, as: 'name'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class ServiceLbPolicyAutoCapacityDrain
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable, as: 'enable'
+        end
+      end
+      
+      class ServiceLbPolicyFailoverConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :failover_health_threshold, as: 'failoverHealthThreshold'
         end
       end
       
