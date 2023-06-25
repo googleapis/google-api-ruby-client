@@ -1717,6 +1717,12 @@ module Google
         # @return [String]
         attr_accessor :environment
       
+        # Optional. Whether to include BigQuery Export setting.
+        # Corresponds to the JSON property `includeBigqueryExportSettings`
+        # @return [Boolean]
+        attr_accessor :include_bigquery_export_settings
+        alias_method :include_bigquery_export_settings?, :include_bigquery_export_settings
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1726,6 +1732,7 @@ module Google
           @agent_uri = args[:agent_uri] if args.key?(:agent_uri)
           @data_format = args[:data_format] if args.key?(:data_format)
           @environment = args[:environment] if args.key?(:environment)
+          @include_bigquery_export_settings = args[:include_bigquery_export_settings] if args.key?(:include_bigquery_export_settings)
         end
       end
       
@@ -4058,6 +4065,13 @@ module Google
         # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3SessionEntityType>]
         attr_accessor :session_entity_types
       
+        # Optional. Sets Dialogflow session life time. By default, a Dialogflow session
+        # remains active and its data is stored for 30 minutes after the last request is
+        # sent for the session. This value should be no longer than 1 day.
+        # Corresponds to the JSON property `sessionTtl`
+        # @return [String]
+        attr_accessor :session_ttl
+      
         # The time zone of this conversational query from the [time zone database](https:
         # //www.iana.org/time-zones), e.g., America/New_York, Europe/Paris. If not
         # provided, the time zone specified in the agent is used.
@@ -4092,6 +4106,7 @@ module Google
           @parameters = args[:parameters] if args.key?(:parameters)
           @payload = args[:payload] if args.key?(:payload)
           @session_entity_types = args[:session_entity_types] if args.key?(:session_entity_types)
+          @session_ttl = args[:session_ttl] if args.key?(:session_ttl)
           @time_zone = args[:time_zone] if args.key?(:time_zone)
           @webhook_headers = args[:webhook_headers] if args.key?(:webhook_headers)
         end
