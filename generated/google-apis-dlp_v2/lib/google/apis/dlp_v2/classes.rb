@@ -948,6 +948,145 @@ module Google
         end
       end
       
+      # The profile for a scanned column within a table.
+      class GooglePrivacyDlpV2ColumnDataProfile
+        include Google::Apis::Core::Hashable
+      
+        # The name of the column.
+        # Corresponds to the JSON property `column`
+        # @return [String]
+        attr_accessor :column
+      
+        # The infoType details for this column.
+        # Corresponds to the JSON property `columnInfoType`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InfoTypeSummary]
+        attr_accessor :column_info_type
+      
+        # The data type of a given column.
+        # Corresponds to the JSON property `columnType`
+        # @return [String]
+        attr_accessor :column_type
+      
+        # Score is a summary of all elements in the data profile. A higher number means
+        # more risk.
+        # Corresponds to the JSON property `dataRiskLevel`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DataRiskLevel]
+        attr_accessor :data_risk_level
+      
+        # The BigQuery dataset ID.
+        # Corresponds to the JSON property `datasetId`
+        # @return [String]
+        attr_accessor :dataset_id
+      
+        # The BigQuery location where the dataset's data is stored. See https://cloud.
+        # google.com/bigquery/docs/locations for supported locations.
+        # Corresponds to the JSON property `datasetLocation`
+        # @return [String]
+        attr_accessor :dataset_location
+      
+        # The Google Cloud project ID that owns the BigQuery dataset.
+        # Corresponds to the JSON property `datasetProjectId`
+        # @return [String]
+        attr_accessor :dataset_project_id
+      
+        # Approximate percentage of entries being null in the column.
+        # Corresponds to the JSON property `estimatedNullPercentage`
+        # @return [String]
+        attr_accessor :estimated_null_percentage
+      
+        # Approximate uniqueness of the column.
+        # Corresponds to the JSON property `estimatedUniquenessScore`
+        # @return [String]
+        attr_accessor :estimated_uniqueness_score
+      
+        # The likelihood that this column contains free-form text. A value close to 1
+        # may indicate the column is likely to contain free-form or natural language
+        # text. Range in 0-1.
+        # Corresponds to the JSON property `freeTextScore`
+        # @return [Float]
+        attr_accessor :free_text_score
+      
+        # The name of the profile.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Other types found within this column. List will be un-ordered.
+        # Corresponds to the JSON property `otherMatches`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2OtherInfoTypeSummary>]
+        attr_accessor :other_matches
+      
+        # Indicates if a policy tag has been applied to the column.
+        # Corresponds to the JSON property `policyState`
+        # @return [String]
+        attr_accessor :policy_state
+      
+        # The last time the profile was generated.
+        # Corresponds to the JSON property `profileLastGenerated`
+        # @return [String]
+        attr_accessor :profile_last_generated
+      
+        # Success or error status from the most recent profile generation attempt. May
+        # be empty if the profile is still being generated.
+        # Corresponds to the JSON property `profileStatus`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ProfileStatus]
+        attr_accessor :profile_status
+      
+        # Score is calculated from of all elements in the data profile. A higher level
+        # means the data is more sensitive.
+        # Corresponds to the JSON property `sensitivityScore`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2SensitivityScore]
+        attr_accessor :sensitivity_score
+      
+        # State of a profile.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The resource name to the table data profile.
+        # Corresponds to the JSON property `tableDataProfile`
+        # @return [String]
+        attr_accessor :table_data_profile
+      
+        # The resource name of the table this column is within.
+        # Corresponds to the JSON property `tableFullResource`
+        # @return [String]
+        attr_accessor :table_full_resource
+      
+        # The BigQuery table ID.
+        # Corresponds to the JSON property `tableId`
+        # @return [String]
+        attr_accessor :table_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @column = args[:column] if args.key?(:column)
+          @column_info_type = args[:column_info_type] if args.key?(:column_info_type)
+          @column_type = args[:column_type] if args.key?(:column_type)
+          @data_risk_level = args[:data_risk_level] if args.key?(:data_risk_level)
+          @dataset_id = args[:dataset_id] if args.key?(:dataset_id)
+          @dataset_location = args[:dataset_location] if args.key?(:dataset_location)
+          @dataset_project_id = args[:dataset_project_id] if args.key?(:dataset_project_id)
+          @estimated_null_percentage = args[:estimated_null_percentage] if args.key?(:estimated_null_percentage)
+          @estimated_uniqueness_score = args[:estimated_uniqueness_score] if args.key?(:estimated_uniqueness_score)
+          @free_text_score = args[:free_text_score] if args.key?(:free_text_score)
+          @name = args[:name] if args.key?(:name)
+          @other_matches = args[:other_matches] if args.key?(:other_matches)
+          @policy_state = args[:policy_state] if args.key?(:policy_state)
+          @profile_last_generated = args[:profile_last_generated] if args.key?(:profile_last_generated)
+          @profile_status = args[:profile_status] if args.key?(:profile_status)
+          @sensitivity_score = args[:sensitivity_score] if args.key?(:sensitivity_score)
+          @state = args[:state] if args.key?(:state)
+          @table_data_profile = args[:table_data_profile] if args.key?(:table_data_profile)
+          @table_full_resource = args[:table_full_resource] if args.key?(:table_full_resource)
+          @table_id = args[:table_id] if args.key?(:table_id)
+        end
+      end
+      
       # The field type of `value` and `field` do not need to match to be considered
       # equal, but not all comparisons are possible. EQUAL_TO and NOT_EQUAL_TO attempt
       # to compare even with incompatible types, but all other comparisons are invalid
@@ -1655,6 +1794,32 @@ module Google
         def update!(**args)
           @export_data = args[:export_data] if args.key?(:export_data)
           @pub_sub_notification = args[:pub_sub_notification] if args.key?(:pub_sub_notification)
+        end
+      end
+      
+      # The schema of data to be saved to the BigQuery when the `DataProfileAction` is
+      # enabled.
+      class GooglePrivacyDlpV2DataProfileBigQueryRowSchema
+        include Google::Apis::Core::Hashable
+      
+        # The profile for a scanned column within a table.
+        # Corresponds to the JSON property `columnProfile`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ColumnDataProfile]
+        attr_accessor :column_profile
+      
+        # The profile for a scanned table.
+        # Corresponds to the JSON property `tableProfile`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2TableDataProfile]
+        attr_accessor :table_profile
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @column_profile = args[:column_profile] if args.key?(:column_profile)
+          @table_profile = args[:table_profile] if args.key?(:table_profile)
         end
       end
       

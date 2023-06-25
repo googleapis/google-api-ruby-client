@@ -178,6 +178,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2ColumnDataProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2Condition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -269,6 +275,12 @@ module Google
       end
       
       class GooglePrivacyDlpV2DataProfileAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2DataProfileBigQueryRowSchema
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1665,6 +1677,37 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2ColumnDataProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :column, as: 'column'
+          property :column_info_type, as: 'columnInfoType', class: Google::Apis::DlpV2::GooglePrivacyDlpV2InfoTypeSummary, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2InfoTypeSummary::Representation
+      
+          property :column_type, as: 'columnType'
+          property :data_risk_level, as: 'dataRiskLevel', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DataRiskLevel, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DataRiskLevel::Representation
+      
+          property :dataset_id, as: 'datasetId'
+          property :dataset_location, as: 'datasetLocation'
+          property :dataset_project_id, as: 'datasetProjectId'
+          property :estimated_null_percentage, as: 'estimatedNullPercentage'
+          property :estimated_uniqueness_score, as: 'estimatedUniquenessScore'
+          property :free_text_score, as: 'freeTextScore'
+          property :name, as: 'name'
+          collection :other_matches, as: 'otherMatches', class: Google::Apis::DlpV2::GooglePrivacyDlpV2OtherInfoTypeSummary, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2OtherInfoTypeSummary::Representation
+      
+          property :policy_state, as: 'policyState'
+          property :profile_last_generated, as: 'profileLastGenerated'
+          property :profile_status, as: 'profileStatus', class: Google::Apis::DlpV2::GooglePrivacyDlpV2ProfileStatus, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2ProfileStatus::Representation
+      
+          property :sensitivity_score, as: 'sensitivityScore', class: Google::Apis::DlpV2::GooglePrivacyDlpV2SensitivityScore, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2SensitivityScore::Representation
+      
+          property :state, as: 'state'
+          property :table_data_profile, as: 'tableDataProfile'
+          property :table_full_resource, as: 'tableFullResource'
+          property :table_id, as: 'tableId'
+        end
+      end
+      
       class GooglePrivacyDlpV2Condition
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1852,6 +1895,16 @@ module Google
           property :export_data, as: 'exportData', class: Google::Apis::DlpV2::GooglePrivacyDlpV2Export, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2Export::Representation
       
           property :pub_sub_notification, as: 'pubSubNotification', class: Google::Apis::DlpV2::GooglePrivacyDlpV2PubSubNotification, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2PubSubNotification::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2DataProfileBigQueryRowSchema
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :column_profile, as: 'columnProfile', class: Google::Apis::DlpV2::GooglePrivacyDlpV2ColumnDataProfile, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2ColumnDataProfile::Representation
+      
+          property :table_profile, as: 'tableProfile', class: Google::Apis::DlpV2::GooglePrivacyDlpV2TableDataProfile, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2TableDataProfile::Representation
       
         end
       end
