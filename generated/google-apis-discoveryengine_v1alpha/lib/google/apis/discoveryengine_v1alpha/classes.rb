@@ -754,14 +754,14 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaDocumentInfo
         include Google::Apis::Core::Hashable
       
-        # Required. The Document resource ID.
+        # The Document resource ID.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # Required. The Document resource full name, of the form: `projects/`project_id`/
-        # locations/`location`/collections/`collection_id`/dataStores/`data_store_id`/
-        # branches/`branch_id`/documents/`document_id``
+        # The Document resource full name, of the form: `projects/`project_id`/locations/
+        # `location`/collections/`collection_id`/dataStores/`data_store_id`/branches/`
+        # branch_id`/documents/`document_id``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -780,7 +780,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :quantity
       
-        # Required. The Document url - only allowed for DataStores with content_config
+        # The Document url - only allowed for DataStores with content_config
         # PUBLIC_WEBSITE.
         # Corresponds to the JSON property `uri`
         # @return [String]
@@ -811,8 +811,10 @@ module Google
         # ID set to the first 128 bits of SHA256(URI) encoded as a hex string. * `custom`
         # : One custom data JSON per row in arbitrary format that conforms the defined
         # Schema of the data store. This can only be used by the GENERIC Data Store
-        # vertical. Supported values for user even imports: * `user_event` (default):
-        # One JSON UserEvent per line.
+        # vertical. * `csv`: A CSV file with header conforming the defined Schema of the
+        # data store. Each entry after the header will be imported as a Document. This
+        # can only be used by the GENERIC Data Store vertical. Supported values for user
+        # even imports: * `user_event` (default): One JSON UserEvent per line.
         # Corresponds to the JSON property `dataSchema`
         # @return [String]
         attr_accessor :data_schema
@@ -888,8 +890,8 @@ module Google
         # If unset or set to `false`, Document.ids have to be specified using id_field,
         # otherwises, documents without IDs will fail to be imported. Only set this
         # field when using GcsSource or BigQuerySource, and when GcsSource.data_schema
-        # or BigQuerySource.data_schema is `custom`. Otherwise, an INVALID_ARGUMENT
-        # error is thrown.
+        # or BigQuerySource.data_schema is `custom` or `csv`. Otherwise, an
+        # INVALID_ARGUMENT error is thrown.
         # Corresponds to the JSON property `autoGenerateIds`
         # @return [Boolean]
         attr_accessor :auto_generate_ids
@@ -1400,6 +1402,106 @@ module Google
         def update!(**args)
           @purge_count = args[:purge_count] if args.key?(:purge_count)
           @purge_sample = args[:purge_sample] if args.key?(:purge_sample)
+        end
+      end
+      
+      # Metadata related to the progress of the PurgeUserEvents operation. This will
+      # be returned by the google.longrunning.Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1alphaPurgeUserEventsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Count of entries that encountered errors while processing.
+        # Corresponds to the JSON property `failureCount`
+        # @return [Fixnum]
+        attr_accessor :failure_count
+      
+        # Count of entries that were deleted successfully.
+        # Corresponds to the JSON property `successCount`
+        # @return [Fixnum]
+        attr_accessor :success_count
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @failure_count = args[:failure_count] if args.key?(:failure_count)
+          @success_count = args[:success_count] if args.key?(:success_count)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Request message for PurgeUserEvents method.
+      class GoogleCloudDiscoveryengineV1alphaPurgeUserEventsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The filter string to specify the events to be deleted with a length
+        # limit of 5,000 characters. The eligible fields for filtering are: * `eventType`
+        # : Double quoted UserEvent.event_type string. * `eventTime`: in ISO 8601 "zulu"
+        # format. * `userPseudoId`: Double quoted string. Specifying this will delete
+        # all events associated with a visitor. * `userId`: Double quoted string.
+        # Specifying this will delete all events associated with a user. Examples: *
+        # Deleting all events in a time range: `eventTime > "2012-04-23T18:25:43.511Z"
+        # eventTime < "2012-04-23T18:30:43.511Z"` * Deleting specific eventType: `
+        # eventType = "search"` * Deleting all events for a specific visitor: `
+        # userPseudoId = "visitor1024"` * Deleting all events inside a DataStore: `*`
+        # The filtering fields are assumed to have an implicit AND.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # The `force` field is currently not supported. Purge user event requests will
+        # permanently delete all purgeable events. Once the development is complete: If `
+        # force` is set to false, the method will return the expected purge count
+        # without deleting any user events. This field will default to false if not
+        # included in the request.
+        # Corresponds to the JSON property `force`
+        # @return [Boolean]
+        attr_accessor :force
+        alias_method :force?, :force
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filter = args[:filter] if args.key?(:filter)
+          @force = args[:force] if args.key?(:force)
+        end
+      end
+      
+      # Response of the PurgeUserEventsRequest. If the long running operation is
+      # successfully done, then this message is returned by the google.longrunning.
+      # Operations.response field.
+      class GoogleCloudDiscoveryengineV1alphaPurgeUserEventsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The total count of events purged as a result of the operation.
+        # Corresponds to the JSON property `purgeCount`
+        # @return [Fixnum]
+        attr_accessor :purge_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @purge_count = args[:purge_count] if args.key?(:purge_count)
         end
       end
       
