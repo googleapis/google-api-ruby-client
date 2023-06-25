@@ -503,6 +503,11 @@ module Google
         # @return [String]
         attr_accessor :database_version
       
+        # Optional. The edition of the given Cloud SQL instance.
+        # Corresponds to the JSON property `edition`
+        # @return [String]
+        attr_accessor :edition
+      
         # IP Management configuration.
         # Corresponds to the JSON property `ipConfig`
         # @return [Google::Apis::DatamigrationV1::SqlIpConfig]
@@ -576,6 +581,7 @@ module Google
           @data_disk_type = args[:data_disk_type] if args.key?(:data_disk_type)
           @database_flags = args[:database_flags] if args.key?(:database_flags)
           @database_version = args[:database_version] if args.key?(:database_version)
+          @edition = args[:edition] if args.key?(:edition)
           @ip_config = args[:ip_config] if args.key?(:ip_config)
           @root_password = args[:root_password] if args.key?(:root_password)
           @root_password_set = args[:root_password_set] if args.key?(:root_password_set)
@@ -1596,6 +1602,49 @@ module Google
           @vm_creation_config = args[:vm_creation_config] if args.key?(:vm_creation_config)
           @vm_port = args[:vm_port] if args.key?(:vm_port)
           @vm_selection_config = args[:vm_selection_config] if args.key?(:vm_selection_config)
+        end
+      end
+      
+      # Request message for 'GenerateTcpProxyScript' request.
+      class GenerateTcpProxyScriptRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The type of the Compute instance that will host the proxy.
+        # Corresponds to the JSON property `vmMachineType`
+        # @return [String]
+        attr_accessor :vm_machine_type
+      
+        # Required. The name of the Compute instance that will host the proxy.
+        # Corresponds to the JSON property `vmName`
+        # @return [String]
+        attr_accessor :vm_name
+      
+        # Required. The name of the subnet the Compute instance will use for private
+        # connectivity. Must be supplied in the form of projects/`project`/regions/`
+        # region`/subnetworks/`subnetwork`. Note: the region for the subnet must match
+        # the Compute instance region.
+        # Corresponds to the JSON property `vmSubnet`
+        # @return [String]
+        attr_accessor :vm_subnet
+      
+        # Optional. The Google Cloud Platform zone to create the VM in. The fully
+        # qualified name of the zone must be specified, including the region name, for
+        # example "us-central1-b". If not specified, uses the "-b" zone of the
+        # destination Connection Profile's region.
+        # Corresponds to the JSON property `vmZone`
+        # @return [String]
+        attr_accessor :vm_zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @vm_machine_type = args[:vm_machine_type] if args.key?(:vm_machine_type)
+          @vm_name = args[:vm_name] if args.key?(:vm_name)
+          @vm_subnet = args[:vm_subnet] if args.key?(:vm_subnet)
+          @vm_zone = args[:vm_zone] if args.key?(:vm_zone)
         end
       end
       
@@ -3482,6 +3531,25 @@ module Google
           @custom_features = args[:custom_features] if args.key?(:custom_features)
           @indices = args[:indices] if args.key?(:indices)
           @triggers = args[:triggers] if args.key?(:triggers)
+        end
+      end
+      
+      # Response message for 'GenerateTcpProxyScript' request.
+      class TcpProxyScript
+        include Google::Apis::Core::Hashable
+      
+        # The TCP Proxy configuration script.
+        # Corresponds to the JSON property `script`
+        # @return [String]
+        attr_accessor :script
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @script = args[:script] if args.key?(:script)
         end
       end
       
