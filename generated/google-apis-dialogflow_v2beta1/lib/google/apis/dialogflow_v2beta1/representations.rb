@@ -5536,6 +5536,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :agent, as: 'agent'
+          property :session_ttl, as: 'sessionTtl'
         end
       end
       
@@ -7299,6 +7300,8 @@ module Google
       class GoogleCloudDialogflowV2beta1SuggestConversationSummaryRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :assist_query_params, as: 'assistQueryParams', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1AssistQueryParameters, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1AssistQueryParameters::Representation
+      
           property :context_size, as: 'contextSize'
           property :latest_message, as: 'latestMessage'
         end

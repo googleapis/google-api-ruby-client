@@ -9812,6 +9812,13 @@ module Google
         # @return [String]
         attr_accessor :agent
       
+        # Optional. Sets Dialogflow CX session life time. By default, a Dialogflow CX
+        # session remains active and its data is stored for 30 minutes after the last
+        # request is sent for the session. This value should be no longer than 1 day.
+        # Corresponds to the JSON property `sessionTtl`
+        # @return [String]
+        attr_accessor :session_ttl
+      
         def initialize(**args)
            update!(**args)
         end
@@ -9819,6 +9826,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @agent = args[:agent] if args.key?(:agent)
+          @session_ttl = args[:session_ttl] if args.key?(:session_ttl)
         end
       end
       
@@ -16227,6 +16235,11 @@ module Google
       class GoogleCloudDialogflowV2beta1SuggestConversationSummaryRequest
         include Google::Apis::Core::Hashable
       
+        # Represents the parameters of human assist query.
+        # Corresponds to the JSON property `assistQueryParams`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1AssistQueryParameters]
+        attr_accessor :assist_query_params
+      
         # Max number of messages prior to and including [latest_message] to use as
         # context when compiling the suggestion. By default 500 and at most 1000.
         # Corresponds to the JSON property `contextSize`
@@ -16246,6 +16259,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @assist_query_params = args[:assist_query_params] if args.key?(:assist_query_params)
           @context_size = args[:context_size] if args.key?(:context_size)
           @latest_message = args[:latest_message] if args.key?(:latest_message)
         end
