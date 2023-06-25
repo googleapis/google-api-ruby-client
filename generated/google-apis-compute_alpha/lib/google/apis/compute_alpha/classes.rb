@@ -665,7 +665,7 @@ module Google
         attr_accessor :id
       
         # The IP version that will be used by this address. Valid options are IPV4 or
-        # IPV6. This can only be specified for a global address.
+        # IPV6.
         # Corresponds to the JSON property `ipVersion`
         # @return [String]
         attr_accessor :ip_version
@@ -10943,6 +10943,32 @@ module Google
       class FutureReservation
         include Google::Apis::Core::Hashable
       
+        # Future timestamp when the FR auto-created reservations will be deleted by GCE.
+        # Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.
+        # txt">RFC3339 value.
+        # Corresponds to the JSON property `autoCreatedReservationsDeleteTime`
+        # @return [String]
+        attr_accessor :auto_created_reservations_delete_time
+      
+        # A Duration represents a fixed-length span of time represented as a count of
+        # seconds and fractions of seconds at nanosecond resolution. It is independent
+        # of any calendar and concepts like "day" or "month". Range is approximately 10,
+        # 000 years.
+        # Corresponds to the JSON property `autoCreatedReservationsDuration`
+        # @return [Google::Apis::ComputeAlpha::Duration]
+        attr_accessor :auto_created_reservations_duration
+      
+        # Setting for enabling or disabling automatic deletion for auto-created
+        # reservation. If omitted or set to true, auto-created reservations will be
+        # deleted at Future Reservation's end time (default) or at user's defined
+        # timestamp if any of the [auto_created_reservations_delete_time,
+        # auto_created_reservations_duration] values is specified. For keeping auto-
+        # created reservation indefinitely, this value should be set to false.
+        # Corresponds to the JSON property `autoDeleteAutoCreatedReservations`
+        # @return [Boolean]
+        attr_accessor :auto_delete_auto_created_reservations
+        alias_method :auto_delete_auto_created_reservations?, :auto_delete_auto_created_reservations
+      
         # [Output Only] The creation timestamp for this future reservation in RFC3339
         # text format.
         # Corresponds to the JSON property `creationTimestamp`
@@ -11032,6 +11058,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @auto_created_reservations_delete_time = args[:auto_created_reservations_delete_time] if args.key?(:auto_created_reservations_delete_time)
+          @auto_created_reservations_duration = args[:auto_created_reservations_duration] if args.key?(:auto_created_reservations_duration)
+          @auto_delete_auto_created_reservations = args[:auto_delete_auto_created_reservations] if args.key?(:auto_delete_auto_created_reservations)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @id = args[:id] if args.key?(:id)
@@ -16994,7 +17023,11 @@ module Google
       class InstanceGroupManagerInstanceLifecyclePolicy
         include Google::Apis::Core::Hashable
       
-        # Defines behaviour for all instance or failures
+        # The action that a MIG performs on a failed or an unhealthy VM. A VM is marked
+        # as unhealthy when the application running on that VM fails a health check.
+        # Valid values are - REPAIR (default): MIG automatically repairs a failed or an
+        # unhealthy VM by recreating it. For more information, see About repairing VMs
+        # in a MIG. - DO_NOTHING: MIG does not repair a failed or an unhealthy VM.
         # Corresponds to the JSON property `defaultActionOnFailure`
         # @return [String]
         attr_accessor :default_action_on_failure
@@ -17751,12 +17784,12 @@ module Google
         attr_accessor :minimal_action
       
         # Most disruptive action that is allowed to be taken on an instance. You can
-        # specify either NONE to forbid any actions, REFRESH to allow actions that do
-        # not need instance restart, RESTART to allow actions that can be applied
-        # without instance replacing or REPLACE to allow all possible actions. If the
-        # Updater determines that the minimal update action needed is more disruptive
-        # than most disruptive allowed action you specify it will not perform the update
-        # at all.
+        # specify either NONE to forbid any actions, REFRESH to avoid restarting the VM
+        # and to limit disruption as much as possible. RESTART to allow actions that can
+        # be applied without instance replacing or REPLACE to allow all possible actions.
+        # If the Updater determines that the minimal update action needed is more
+        # disruptive than most disruptive allowed action you specify it will not perform
+        # the update at all.
         # Corresponds to the JSON property `mostDisruptiveAllowedAction`
         # @return [String]
         attr_accessor :most_disruptive_allowed_action
@@ -17883,20 +17916,22 @@ module Google
       
         # The minimal action that you want to perform on each instance during the update:
         # - REPLACE: At minimum, delete the instance and create it again. - RESTART:
-        # Stop the instance and start it again. - REFRESH: Do not stop the instance. -
-        # NONE: Do not disrupt the instance at all. By default, the minimum action is
-        # NONE. If your update requires a more disruptive action than you set with this
-        # flag, the necessary action is performed to execute the update.
+        # Stop the instance and start it again. - REFRESH: Do not stop the instance and
+        # limit disruption as much as possible. - NONE: Do not disrupt the instance at
+        # all. By default, the minimum action is NONE. If your update requires a more
+        # disruptive action than you set with this flag, the necessary action is
+        # performed to execute the update.
         # Corresponds to the JSON property `minimalAction`
         # @return [String]
         attr_accessor :minimal_action
       
         # The most disruptive action that you want to perform on each instance during
         # the update: - REPLACE: Delete the instance and create it again. - RESTART:
-        # Stop the instance and start it again. - REFRESH: Do not stop the instance. -
-        # NONE: Do not disrupt the instance at all. By default, the most disruptive
-        # allowed action is REPLACE. If your update requires a more disruptive action
-        # than you set with this flag, the update request will fail.
+        # Stop the instance and start it again. - REFRESH: Do not stop the instance and
+        # limit disruption as much as possible. - NONE: Do not disrupt the instance at
+        # all. By default, the most disruptive allowed action is REPLACE. If your update
+        # requires a more disruptive action than you set with this flag, the update
+        # request will fail.
         # Corresponds to the JSON property `mostDisruptiveAllowedAction`
         # @return [String]
         attr_accessor :most_disruptive_allowed_action
@@ -33370,7 +33405,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # The IPv4 address to be used for reverse DNS verification.
+        # The address to be used for reverse DNS verification.
         # Corresponds to the JSON property `dnsVerificationIp`
         # @return [String]
         attr_accessor :dns_verification_ip
@@ -33392,7 +33427,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
-        # The IPv4 address range, in CIDR format, represented by this public advertised
+        # The address range, in CIDR format, represented by this public advertised
         # prefix.
         # Corresponds to the JSON property `ipCidrRange`
         # @return [String]
@@ -35742,20 +35777,22 @@ module Google
       
         # The minimal action that you want to perform on each instance during the update:
         # - REPLACE: At minimum, delete the instance and create it again. - RESTART:
-        # Stop the instance and start it again. - REFRESH: Do not stop the instance. -
-        # NONE: Do not disrupt the instance at all. By default, the minimum action is
-        # NONE. If your update requires a more disruptive action than you set with this
-        # flag, the necessary action is performed to execute the update.
+        # Stop the instance and start it again. - REFRESH: Do not stop the instance and
+        # limit disruption as much as possible. - NONE: Do not disrupt the instance at
+        # all. By default, the minimum action is NONE. If your update requires a more
+        # disruptive action than you set with this flag, the necessary action is
+        # performed to execute the update.
         # Corresponds to the JSON property `minimalAction`
         # @return [String]
         attr_accessor :minimal_action
       
         # The most disruptive action that you want to perform on each instance during
         # the update: - REPLACE: Delete the instance and create it again. - RESTART:
-        # Stop the instance and start it again. - REFRESH: Do not stop the instance. -
-        # NONE: Do not disrupt the instance at all. By default, the most disruptive
-        # allowed action is REPLACE. If your update requires a more disruptive action
-        # than you set with this flag, the update request will fail.
+        # Stop the instance and start it again. - REFRESH: Do not stop the instance and
+        # limit disruption as much as possible. - NONE: Do not disrupt the instance at
+        # all. By default, the most disruptive allowed action is REPLACE. If your update
+        # requires a more disruptive action than you set with this flag, the update
+        # request will fail.
         # Corresponds to the JSON property `mostDisruptiveAllowedAction`
         # @return [String]
         attr_accessor :most_disruptive_allowed_action
@@ -36825,6 +36862,20 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
+        # A Duration represents a fixed-length span of time represented as a count of
+        # seconds and fractions of seconds at nanosecond resolution. It is independent
+        # of any calendar and concepts like "day" or "month". Range is approximately 10,
+        # 000 years.
+        # Corresponds to the JSON property `deleteAfterDuration`
+        # @return [Google::Apis::ComputeAlpha::Duration]
+        attr_accessor :delete_after_duration
+      
+        # Absolute time in future when the reservation will be auto-deleted by GCE.
+        # Timestamp is represented in RFC3339 text format.
+        # Corresponds to the JSON property `deleteAtTime`
+        # @return [String]
+        attr_accessor :delete_at_time
+      
         # An optional description of this resource. Provide this property when you
         # create the resource.
         # Corresponds to the JSON property `description`
@@ -36921,6 +36972,8 @@ module Google
           @aggregate_reservation = args[:aggregate_reservation] if args.key?(:aggregate_reservation)
           @commitment = args[:commitment] if args.key?(:commitment)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @delete_after_duration = args[:delete_after_duration] if args.key?(:delete_after_duration)
+          @delete_at_time = args[:delete_at_time] if args.key?(:delete_at_time)
           @description = args[:description] if args.key?(:description)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
@@ -43400,6 +43453,11 @@ module Google
       class ServiceAttachmentConnectedEndpoint
         include Google::Apis::Core::Hashable
       
+        # The url of the consumer network.
+        # Corresponds to the JSON property `consumerNetwork`
+        # @return [String]
+        attr_accessor :consumer_network
+      
         # The url of a connected endpoint.
         # Corresponds to the JSON property `endpoint`
         # @return [String]
@@ -43421,6 +43479,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @consumer_network = args[:consumer_network] if args.key?(:consumer_network)
           @endpoint = args[:endpoint] if args.key?(:endpoint)
           @psc_connection_id = args[:psc_connection_id] if args.key?(:psc_connection_id)
           @status = args[:status] if args.key?(:status)

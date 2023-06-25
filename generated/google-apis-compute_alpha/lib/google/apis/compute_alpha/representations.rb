@@ -9653,6 +9653,10 @@ module Google
       class FutureReservation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_created_reservations_delete_time, as: 'autoCreatedReservationsDeleteTime'
+          property :auto_created_reservations_duration, as: 'autoCreatedReservationsDuration', class: Google::Apis::ComputeAlpha::Duration, decorator: Google::Apis::ComputeAlpha::Duration::Representation
+      
+          property :auto_delete_auto_created_reservations, as: 'autoDeleteAutoCreatedReservations'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :id, :numeric_string => true, as: 'id'
@@ -16239,6 +16243,9 @@ module Google
       
           property :commitment, as: 'commitment'
           property :creation_timestamp, as: 'creationTimestamp'
+          property :delete_after_duration, as: 'deleteAfterDuration', class: Google::Apis::ComputeAlpha::Duration, decorator: Google::Apis::ComputeAlpha::Duration::Representation
+      
+          property :delete_at_time, as: 'deleteAtTime'
           property :description, as: 'description'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
@@ -17860,6 +17867,7 @@ module Google
       class ServiceAttachmentConnectedEndpoint
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :consumer_network, as: 'consumerNetwork'
           property :endpoint, as: 'endpoint'
           property :psc_connection_id, :numeric_string => true, as: 'pscConnectionId'
           property :status, as: 'status'
