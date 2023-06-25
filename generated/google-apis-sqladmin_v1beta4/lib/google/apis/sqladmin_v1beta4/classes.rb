@@ -578,6 +578,26 @@ module Google
         end
       end
       
+      # Data cache configurations.
+      class DataCacheConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether data cache is enabled for the instance.
+        # Corresponds to the JSON property `dataCacheEnabled`
+        # @return [Boolean]
+        attr_accessor :data_cache_enabled
+        alias_method :data_cache_enabled?, :data_cache_enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_cache_enabled = args[:data_cache_enabled] if args.key?(:data_cache_enabled)
+        end
+      end
+      
       # Represents a SQL database on the Cloud SQL instance.
       class Database
         include Google::Apis::Core::Hashable
@@ -3070,6 +3090,11 @@ module Google
         attr_accessor :crash_safe_replication_enabled
         alias_method :crash_safe_replication_enabled?, :crash_safe_replication_enabled
       
+        # Data cache configurations.
+        # Corresponds to the JSON property `dataCacheConfig`
+        # @return [Google::Apis::SqladminV1beta4::DataCacheConfig]
+        attr_accessor :data_cache_config
+      
         # The size of data disk, in GB. The data disk size minimum is 10GB.
         # Corresponds to the JSON property `dataDiskSizeGb`
         # @return [Fixnum]
@@ -3103,6 +3128,11 @@ module Google
         # Corresponds to the JSON property `denyMaintenancePeriods`
         # @return [Array<Google::Apis::SqladminV1beta4::DenyMaintenancePeriod>]
         attr_accessor :deny_maintenance_periods
+      
+        # Optional. The edition of the instance.
+        # Corresponds to the JSON property `edition`
+        # @return [String]
+        attr_accessor :edition
       
         # Insights configuration. This specifies when Cloud SQL Insights feature is
         # enabled and optional configuration.
@@ -3209,12 +3239,14 @@ module Google
           @collation = args[:collation] if args.key?(:collation)
           @connector_enforcement = args[:connector_enforcement] if args.key?(:connector_enforcement)
           @crash_safe_replication_enabled = args[:crash_safe_replication_enabled] if args.key?(:crash_safe_replication_enabled)
+          @data_cache_config = args[:data_cache_config] if args.key?(:data_cache_config)
           @data_disk_size_gb = args[:data_disk_size_gb] if args.key?(:data_disk_size_gb)
           @data_disk_type = args[:data_disk_type] if args.key?(:data_disk_type)
           @database_flags = args[:database_flags] if args.key?(:database_flags)
           @database_replication_enabled = args[:database_replication_enabled] if args.key?(:database_replication_enabled)
           @deletion_protection_enabled = args[:deletion_protection_enabled] if args.key?(:deletion_protection_enabled)
           @deny_maintenance_periods = args[:deny_maintenance_periods] if args.key?(:deny_maintenance_periods)
+          @edition = args[:edition] if args.key?(:edition)
           @insights_config = args[:insights_config] if args.key?(:insights_config)
           @ip_configuration = args[:ip_configuration] if args.key?(:ip_configuration)
           @kind = args[:kind] if args.key?(:kind)
