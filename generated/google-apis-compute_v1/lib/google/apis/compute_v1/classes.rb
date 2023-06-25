@@ -592,7 +592,7 @@ module Google
         attr_accessor :id
       
         # The IP version that will be used by this address. Valid options are IPV4 or
-        # IPV6. This can only be specified for a global address.
+        # IPV6.
         # Corresponds to the JSON property `ipVersion`
         # @return [String]
         attr_accessor :ip_version
@@ -14734,12 +14734,12 @@ module Google
         attr_accessor :minimal_action
       
         # Most disruptive action that is allowed to be taken on an instance. You can
-        # specify either NONE to forbid any actions, REFRESH to allow actions that do
-        # not need instance restart, RESTART to allow actions that can be applied
-        # without instance replacing or REPLACE to allow all possible actions. If the
-        # Updater determines that the minimal update action needed is more disruptive
-        # than most disruptive allowed action you specify it will not perform the update
-        # at all.
+        # specify either NONE to forbid any actions, REFRESH to avoid restarting the VM
+        # and to limit disruption as much as possible. RESTART to allow actions that can
+        # be applied without instance replacing or REPLACE to allow all possible actions.
+        # If the Updater determines that the minimal update action needed is more
+        # disruptive than most disruptive allowed action you specify it will not perform
+        # the update at all.
         # Corresponds to the JSON property `mostDisruptiveAllowedAction`
         # @return [String]
         attr_accessor :most_disruptive_allowed_action
@@ -14852,20 +14852,22 @@ module Google
       
         # The minimal action that you want to perform on each instance during the update:
         # - REPLACE: At minimum, delete the instance and create it again. - RESTART:
-        # Stop the instance and start it again. - REFRESH: Do not stop the instance. -
-        # NONE: Do not disrupt the instance at all. By default, the minimum action is
-        # NONE. If your update requires a more disruptive action than you set with this
-        # flag, the necessary action is performed to execute the update.
+        # Stop the instance and start it again. - REFRESH: Do not stop the instance and
+        # limit disruption as much as possible. - NONE: Do not disrupt the instance at
+        # all. By default, the minimum action is NONE. If your update requires a more
+        # disruptive action than you set with this flag, the necessary action is
+        # performed to execute the update.
         # Corresponds to the JSON property `minimalAction`
         # @return [String]
         attr_accessor :minimal_action
       
         # The most disruptive action that you want to perform on each instance during
         # the update: - REPLACE: Delete the instance and create it again. - RESTART:
-        # Stop the instance and start it again. - REFRESH: Do not stop the instance. -
-        # NONE: Do not disrupt the instance at all. By default, the most disruptive
-        # allowed action is REPLACE. If your update requires a more disruptive action
-        # than you set with this flag, the update request will fail.
+        # Stop the instance and start it again. - REFRESH: Do not stop the instance and
+        # limit disruption as much as possible. - NONE: Do not disrupt the instance at
+        # all. By default, the most disruptive allowed action is REPLACE. If your update
+        # requires a more disruptive action than you set with this flag, the update
+        # request will fail.
         # Corresponds to the JSON property `mostDisruptiveAllowedAction`
         # @return [String]
         attr_accessor :most_disruptive_allowed_action
@@ -27500,7 +27502,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # The IPv4 address to be used for reverse DNS verification.
+        # The address to be used for reverse DNS verification.
         # Corresponds to the JSON property `dnsVerificationIp`
         # @return [String]
         attr_accessor :dns_verification_ip
@@ -27522,7 +27524,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
-        # The IPv4 address range, in CIDR format, represented by this public advertised
+        # The address range, in CIDR format, represented by this public advertised
         # prefix.
         # Corresponds to the JSON property `ipCidrRange`
         # @return [String]
@@ -29151,20 +29153,22 @@ module Google
       
         # The minimal action that you want to perform on each instance during the update:
         # - REPLACE: At minimum, delete the instance and create it again. - RESTART:
-        # Stop the instance and start it again. - REFRESH: Do not stop the instance. -
-        # NONE: Do not disrupt the instance at all. By default, the minimum action is
-        # NONE. If your update requires a more disruptive action than you set with this
-        # flag, the necessary action is performed to execute the update.
+        # Stop the instance and start it again. - REFRESH: Do not stop the instance and
+        # limit disruption as much as possible. - NONE: Do not disrupt the instance at
+        # all. By default, the minimum action is NONE. If your update requires a more
+        # disruptive action than you set with this flag, the necessary action is
+        # performed to execute the update.
         # Corresponds to the JSON property `minimalAction`
         # @return [String]
         attr_accessor :minimal_action
       
         # The most disruptive action that you want to perform on each instance during
         # the update: - REPLACE: Delete the instance and create it again. - RESTART:
-        # Stop the instance and start it again. - REFRESH: Do not stop the instance. -
-        # NONE: Do not disrupt the instance at all. By default, the most disruptive
-        # allowed action is REPLACE. If your update requires a more disruptive action
-        # than you set with this flag, the update request will fail.
+        # Stop the instance and start it again. - REFRESH: Do not stop the instance and
+        # limit disruption as much as possible. - NONE: Do not disrupt the instance at
+        # all. By default, the most disruptive allowed action is REPLACE. If your update
+        # requires a more disruptive action than you set with this flag, the update
+        # request will fail.
         # Corresponds to the JSON property `mostDisruptiveAllowedAction`
         # @return [String]
         attr_accessor :most_disruptive_allowed_action
