@@ -804,6 +804,11 @@ module Google
         # @return [String]
         attr_accessor :series
       
+        # Compute Engine storage. Never empty.
+        # Corresponds to the JSON property `storage`
+        # @return [Array<Google::Apis::MigrationcenterV1alpha1::ComputeStorageDescriptor>]
+        attr_accessor :storage
+      
         def initialize(**args)
            update!(**args)
         end
@@ -815,6 +820,32 @@ module Google
           @memory_mb = args[:memory_mb] if args.key?(:memory_mb)
           @physical_core_count = args[:physical_core_count] if args.key?(:physical_core_count)
           @series = args[:series] if args.key?(:series)
+          @storage = args[:storage] if args.key?(:storage)
+        end
+      end
+      
+      # Compute Engine storage option descriptor.
+      class ComputeStorageDescriptor
+        include Google::Apis::Core::Hashable
+      
+        # Disk size in GiB.
+        # Corresponds to the JSON property `sizeGb`
+        # @return [Fixnum]
+        attr_accessor :size_gb
+      
+        # Disk type backing the storage.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @size_gb = args[:size_gb] if args.key?(:size_gb)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
