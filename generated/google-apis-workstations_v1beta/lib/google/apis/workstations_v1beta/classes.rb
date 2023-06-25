@@ -234,7 +234,7 @@ module Google
         # container-images). If using a private image, the `host.gceInstance.
         # serviceAccount` field must be specified in the workstation configuration and
         # must have permission to pull the specified image. Otherwise, the image must be
-        # publicly accessible.s
+        # publicly accessible.
         # Corresponds to the JSON property `image`
         # @return [String]
         attr_accessor :image
@@ -405,6 +405,12 @@ module Google
         attr_accessor :disable_public_ip_addresses
         alias_method :disable_public_ip_addresses?, :disable_public_ip_addresses
       
+        # Whether to enable nested virtualization on instances.
+        # Corresponds to the JSON property `enableNestedVirtualization`
+        # @return [Boolean]
+        attr_accessor :enable_nested_virtualization
+        alias_method :enable_nested_virtualization?, :enable_nested_virtualization
+      
         # The type of machine to use for VM instances—for example, `e2-standard-4`. For
         # more information about machine types that Cloud Workstations supports, see the
         # list of [available machine types](https://cloud.google.com/workstations/docs/
@@ -464,6 +470,7 @@ module Google
           @boot_disk_size_gb = args[:boot_disk_size_gb] if args.key?(:boot_disk_size_gb)
           @confidential_instance_config = args[:confidential_instance_config] if args.key?(:confidential_instance_config)
           @disable_public_ip_addresses = args[:disable_public_ip_addresses] if args.key?(:disable_public_ip_addresses)
+          @enable_nested_virtualization = args[:enable_nested_virtualization] if args.key?(:enable_nested_virtualization)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @pool_size = args[:pool_size] if args.key?(:pool_size)
           @pooled_instances = args[:pooled_instances] if args.key?(:pooled_instances)
@@ -1592,9 +1599,8 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Output only. Whether this resource is in degraded mode, in which case it may
-        # require user action to restore full functionality. Details can be found in the
-        # `conditions` field.
+        # Output only. Whether this resource is degraded, in which case it may require
+        # user action to restore full functionality. See also the `conditions` field.
         # Corresponds to the JSON property `degraded`
         # @return [Boolean]
         attr_accessor :degraded
