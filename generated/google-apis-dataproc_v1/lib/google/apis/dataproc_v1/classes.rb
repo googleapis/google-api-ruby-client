@@ -1313,9 +1313,9 @@ module Google
         # batch workload. Minimum value is 10 minutes; maximum value is 14 days (see
         # JSON representation of Duration (https://developers.google.com/protocol-
         # buffers/docs/proto3#json)). Defaults to 4 hours if not set. If both ttl and
-        # idle_ttl are specified, the conditions are treated as OR conditions: the
-        # workload will be terminated when it has been idle for idle_ttl or when ttl has
-        # been exceed, whichever occurs first.
+        # idle_ttl are specified for an interactive session, the conditions are treated
+        # as OR conditions: the workload will be terminated when it has been idle for
+        # idle_ttl or when ttl has been exceeded, whichever occurs first.
         # Corresponds to the JSON property `idleTtl`
         # @return [String]
         attr_accessor :idle_ttl
@@ -1361,12 +1361,13 @@ module Google
         # waiting for ongoing work to finish. If ttl is not specified for a batch
         # workload, the workload will be allowed to run until it exits naturally (or
         # runs forever without exiting). If ttl is not specified for an interactive
-        # session, it defaults to 24h. Minimum value is 10 minutes; maximum value is 14
-        # days (see JSON representation of Duration (https://developers.google.com/
-        # protocol-buffers/docs/proto3#json)). If both ttl and idle_ttl are specified (
-        # for an interactive session), the conditions are treated as OR conditions: the
-        # workload will be terminated when it has been idle for idle_ttl or when ttl has
-        # been exceeded, whichever occurs first.
+        # session, it defaults to 24h. If ttl is not specified for a batch that uses 2.1+
+        # runtime version, it defaults to 4h. Minimum value is 10 minutes; maximum
+        # value is 14 days (see JSON representation of Duration (https://developers.
+        # google.com/protocol-buffers/docs/proto3#json)). If both ttl and idle_ttl are
+        # specified (for an interactive session), the conditions are treated as OR
+        # conditions: the workload will be terminated when it has been idle for idle_ttl
+        # or when ttl has been exceeded, whichever occurs first.
         # Corresponds to the JSON property `ttl`
         # @return [String]
         attr_accessor :ttl
@@ -2924,7 +2925,7 @@ module Google
       class ListBatchesResponse
         include Google::Apis::Core::Hashable
       
-        # The batches from the specified collection.
+        # Output only. The batches from the specified collection.
         # Corresponds to the JSON property `batches`
         # @return [Array<Google::Apis::DataprocV1::Batch>]
         attr_accessor :batches
