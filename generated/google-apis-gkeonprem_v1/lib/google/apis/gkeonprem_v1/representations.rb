@@ -2063,6 +2063,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :datastore, as: 'datastore'
+          property :storage_policy_name, as: 'storagePolicyName'
         end
       end
       
@@ -2253,6 +2254,7 @@ module Google
           property :datastore, as: 'datastore'
           property :folder, as: 'folder'
           property :resource_pool, as: 'resourcePool'
+          property :storage_policy_name, as: 'storagePolicyName'
         end
       end
       
@@ -2277,6 +2279,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :datastore, as: 'datastore'
+          property :storage_policy_name, as: 'storagePolicyName'
           collection :tags, as: 'tags', class: Google::Apis::GkeonpremV1::VmwareVsphereTag, decorator: Google::Apis::GkeonpremV1::VmwareVsphereTag::Representation
       
         end

@@ -2187,9 +2187,8 @@ module Google
       
         # User provided OnePlatform identifier that is used as part of the resource name.
         # This must be unique among all GKE on-prem clusters within a project and
-        # location and will return a 409 if the cluster already exists. This value must
-        # be up to 40 characters and follow RFC-1123 (https://tools.ietf.org/html/
-        # rfc1123) format.
+        # location and will return a 409 if the cluster already exists. (https://tools.
+        # ietf.org/html/rfc1123) format.
         # Corresponds to the JSON property `bareMetalAdminClusterId`
         # @return [String]
         attr_accessor :bare_metal_admin_cluster_id
@@ -2225,19 +2224,18 @@ module Google
       
         # User provided OnePlatform identifier that is used as part of the resource name.
         # This must be unique among all bare metal clusters within a project and
-        # location and will return a 409 if the cluster already exists. This value must
-        # be up to 40 characters and follow RFC-1123 (https://tools.ietf.org/html/
-        # rfc1123) format.
+        # location and will return a 409 if the cluster already exists. (https://tools.
+        # ietf.org/html/rfc1123) format.
         # Corresponds to the JSON property `bareMetalClusterId`
         # @return [String]
         attr_accessor :bare_metal_cluster_id
       
-        # The object name of the bare metal cluster custom resource on the associated
-        # admin cluster. This field is used to support conflicting resource names when
-        # enrolling existing clusters to the API. When not provided, this field will
-        # resolve to the bare_metal_cluster_id. Otherwise, it must match the object name
-        # of the bare metal cluster custom resource. It is not modifiable outside /
-        # beyond the enrollment operation.
+        # Optional. The object name of the bare metal cluster custom resource on the
+        # associated admin cluster. This field is used to support conflicting resource
+        # names when enrolling existing clusters to the API. When not provided, this
+        # field will resolve to the bare_metal_cluster_id. Otherwise, it must match the
+        # object name of the bare metal cluster custom resource. It is not modifiable
+        # outside / beyond the enrollment operation.
         # Corresponds to the JSON property `localName`
         # @return [String]
         attr_accessor :local_name
@@ -2259,8 +2257,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # User provided OnePlatform identifier that is used as part of the resource name.
-        # This value must be up to 40 characters and follow RFC-1123 (https://tools.
-        # ietf.org/html/rfc1123) format.
+        # (https://tools.ietf.org/html/rfc1123) format.
         # Corresponds to the JSON property `bareMetalNodePoolId`
         # @return [String]
         attr_accessor :bare_metal_node_pool_id
@@ -2294,9 +2291,8 @@ module Google
       
         # User provided OnePlatform identifier that is used as part of the resource name.
         # This must be unique among all GKE on-prem clusters within a project and
-        # location and will return a 409 if the cluster already exists. This value must
-        # be up to 40 characters and follow RFC-1123 (https://tools.ietf.org/html/
-        # rfc1123) format.
+        # location and will return a 409 if the cluster already exists. (https://tools.
+        # ietf.org/html/rfc1123) format.
         # Corresponds to the JSON property `vmwareAdminClusterId`
         # @return [String]
         attr_accessor :vmware_admin_cluster_id
@@ -2324,10 +2320,10 @@ module Google
         # @return [String]
         attr_accessor :admin_cluster_membership
       
-        # The object name of the VMware OnPremUserCluster custom resource on the
-        # associated admin cluster. This field is used to support conflicting resource
-        # names when enrolling existing clusters to the API. When not provided, this
-        # field will resolve to the vmware_cluster_id. Otherwise, it must match the
+        # Optional. The object name of the VMware OnPremUserCluster custom resource on
+        # the associated admin cluster. This field is used to support conflicting
+        # resource names when enrolling existing clusters to the API. When not provided,
+        # this field will resolve to the vmware_cluster_id. Otherwise, it must match the
         # object name of the VMware OnPremUserCluster custom resource. It is not
         # modifiable outside / beyond the enrollment operation.
         # Corresponds to the JSON property `localName`
@@ -2342,9 +2338,8 @@ module Google
       
         # User provided OnePlatform identifier that is used as part of the resource name.
         # This must be unique among all GKE on-prem clusters within a project and
-        # location and will return a 409 if the cluster already exists. This value must
-        # be up to 40 characters and follow RFC-1123 (https://tools.ietf.org/html/
-        # rfc1123) format.
+        # location and will return a 409 if the cluster already exists. (https://tools.
+        # ietf.org/html/rfc1123) format.
         # Corresponds to the JSON property `vmwareClusterId`
         # @return [String]
         attr_accessor :vmware_cluster_id
@@ -4332,6 +4327,11 @@ module Google
         # @return [String]
         attr_accessor :datastore
       
+        # The Vsphere storage policy used by the control plane Node.
+        # Corresponds to the JSON property `storagePolicyName`
+        # @return [String]
+        attr_accessor :storage_policy_name
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4339,6 +4339,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @datastore = args[:datastore] if args.key?(:datastore)
+          @storage_policy_name = args[:storage_policy_name] if args.key?(:storage_policy_name)
         end
       end
       
@@ -5031,6 +5032,11 @@ module Google
         # @return [String]
         attr_accessor :resource_pool
       
+        # The name of the vCenter storage policy for the user cluster.
+        # Corresponds to the JSON property `storagePolicyName`
+        # @return [String]
+        attr_accessor :storage_policy_name
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5044,6 +5050,7 @@ module Google
           @datastore = args[:datastore] if args.key?(:datastore)
           @folder = args[:folder] if args.key?(:folder)
           @resource_pool = args[:resource_pool] if args.key?(:resource_pool)
+          @storage_policy_name = args[:storage_policy_name] if args.key?(:storage_policy_name)
         end
       end
       
@@ -5119,6 +5126,11 @@ module Google
         # @return [String]
         attr_accessor :datastore
       
+        # The name of the vCenter storage policy. Inherited from the user cluster.
+        # Corresponds to the JSON property `storagePolicyName`
+        # @return [String]
+        attr_accessor :storage_policy_name
+      
         # Tags to apply to VMs.
         # Corresponds to the JSON property `tags`
         # @return [Array<Google::Apis::GkeonpremV1::VmwareVsphereTag>]
@@ -5131,6 +5143,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @datastore = args[:datastore] if args.key?(:datastore)
+          @storage_policy_name = args[:storage_policy_name] if args.key?(:storage_policy_name)
           @tags = args[:tags] if args.key?(:tags)
         end
       end
