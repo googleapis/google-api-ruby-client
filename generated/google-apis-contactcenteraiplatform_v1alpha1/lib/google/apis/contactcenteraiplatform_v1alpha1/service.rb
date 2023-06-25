@@ -275,6 +275,38 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # 
+        # @param [String] name
+        #   Required. The name of the AuthenticationConfig resource. Format: projects/`
+        #   project`/locations/`location`/contactCenters/`contact_center`/authentication-
+        #   config
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContactcenteraiplatformV1alpha1::AuthenticationConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContactcenteraiplatformV1alpha1::AuthenticationConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_contact_center_authentication_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha1/{+name}', options)
+          command.response_representation = Google::Apis::ContactcenteraiplatformV1alpha1::AuthenticationConfig::Representation
+          command.response_class = Google::Apis::ContactcenteraiplatformV1alpha1::AuthenticationConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists ContactCenters in a given project and location.
         # @param [String] parent
         #   Required. Parent value for ListContactCentersRequest
@@ -364,6 +396,44 @@ module Google
           command.response_class = Google::Apis::ContactcenteraiplatformV1alpha1::Operation
           command.params['name'] = name unless name.nil?
           command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # 
+        # @param [String] name
+        #   Name of authentication config. Format: projects/`project`/locations/`location`/
+        #   contactCenters/`contact_center`/authentication-config
+        # @param [Google::Apis::ContactcenteraiplatformV1alpha1::AuthenticationConfig] authentication_config_object
+        # @param [String] update_mask
+        #   Required. Indicates which fields in the provided authentication config to
+        #   update. Must be specified and non-empty.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContactcenteraiplatformV1alpha1::AuthenticationConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContactcenteraiplatformV1alpha1::AuthenticationConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_project_location_contact_center_authentication_config(name, authentication_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1alpha1/{+name}', options)
+          command.request_representation = Google::Apis::ContactcenteraiplatformV1alpha1::AuthenticationConfig::Representation
+          command.request_object = authentication_config_object
+          command.response_representation = Google::Apis::ContactcenteraiplatformV1alpha1::AuthenticationConfig::Representation
+          command.response_class = Google::Apis::ContactcenteraiplatformV1alpha1::AuthenticationConfig
+          command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
