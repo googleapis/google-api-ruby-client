@@ -473,6 +473,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Describes the Service being deployed. Currently Supported : Cloud Run (fully
         # managed).
         # Corresponds to the JSON property `serviceConfig`
@@ -512,6 +518,7 @@ module Google
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @service_config = args[:service_config] if args.key?(:service_config)
           @state = args[:state] if args.key?(:state)
           @state_messages = args[:state_messages] if args.key?(:state_messages)
