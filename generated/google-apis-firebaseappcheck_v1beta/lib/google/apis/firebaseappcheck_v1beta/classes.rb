@@ -1178,7 +1178,8 @@ module Google
         # the `service_id` element must be a supported service ID. Currently, the
         # following service IDs are supported: * `firebasestorage.googleapis.com` (Cloud
         # Storage for Firebase) * `firebasedatabase.googleapis.com` (Firebase Realtime
-        # Database) * `firestore.googleapis.com` (Cloud Firestore)
+        # Database) * `firestore.googleapis.com` (Cloud Firestore) * `identitytoolkit.
+        # googleapis.com` (Firebase Authentication with Identity Platform)
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
