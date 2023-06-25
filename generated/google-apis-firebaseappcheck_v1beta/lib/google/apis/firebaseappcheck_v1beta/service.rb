@@ -1742,7 +1742,8 @@ module Google
         #   service_id` element must be a supported service ID. Currently, the following
         #   service IDs are supported: * `firebasestorage.googleapis.com` (Cloud Storage
         #   for Firebase) * `firebasedatabase.googleapis.com` (Firebase Realtime Database)
-        #   * `firestore.googleapis.com` (Cloud Firestore)
+        #   * `firestore.googleapis.com` (Cloud Firestore) * `identitytoolkit.googleapis.
+        #   com` (Firebase Authentication with Identity Platform)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1823,7 +1824,8 @@ module Google
         #   the `service_id` element must be a supported service ID. Currently, the
         #   following service IDs are supported: * `firebasestorage.googleapis.com` (Cloud
         #   Storage for Firebase) * `firebasedatabase.googleapis.com` (Firebase Realtime
-        #   Database) * `firestore.googleapis.com` (Cloud Firestore)
+        #   Database) * `firestore.googleapis.com` (Cloud Firestore) * `identitytoolkit.
+        #   googleapis.com` (Firebase Authentication with Identity Platform)
         # @param [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaService] google_firebase_appcheck_v1beta_service_object
         # @param [String] update_mask
         #   Required. A comma-separated list of names of fields in the Service to update.
