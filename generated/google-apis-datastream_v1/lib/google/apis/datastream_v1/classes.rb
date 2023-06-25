@@ -2017,7 +2017,8 @@ module Google
       class SingleTargetDataset
         include Google::Apis::Core::Hashable
       
-        # The dataset ID of the target dataset.
+        # The dataset ID of the target dataset. DatasetIds allowed characters: https://
+        # cloud.google.com/bigquery/docs/reference/rest/v2/datasets#datasetreference.
         # Corresponds to the JSON property `datasetId`
         # @return [String]
         attr_accessor :dataset_id
