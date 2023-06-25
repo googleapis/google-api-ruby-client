@@ -422,8 +422,8 @@ module Google
         #   will be considered for update. If the FieldMask is not empty and
         #   RequestedJobState is none/empty, The fields specified in the update mask will
         #   be the only ones considered for update. If both RequestedJobState and
-        #   update_mask are specified, we will first handle RequestedJobState and then the
-        #   update_mask fields.
+        #   update_mask are specified, an error will be returned as we cannot update both
+        #   state and mask.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1036,8 +1036,8 @@ module Google
         #   will be considered for update. If the FieldMask is not empty and
         #   RequestedJobState is none/empty, The fields specified in the update mask will
         #   be the only ones considered for update. If both RequestedJobState and
-        #   update_mask are specified, we will first handle RequestedJobState and then the
-        #   update_mask fields.
+        #   update_mask are specified, an error will be returned as we cannot update both
+        #   state and mask.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
