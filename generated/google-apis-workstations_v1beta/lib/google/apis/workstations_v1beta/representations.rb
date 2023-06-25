@@ -331,6 +331,7 @@ module Google
           property :confidential_instance_config, as: 'confidentialInstanceConfig', class: Google::Apis::WorkstationsV1beta::GceConfidentialInstanceConfig, decorator: Google::Apis::WorkstationsV1beta::GceConfidentialInstanceConfig::Representation
       
           property :disable_public_ip_addresses, as: 'disablePublicIpAddresses'
+          property :enable_nested_virtualization, as: 'enableNestedVirtualization'
           property :machine_type, as: 'machineType'
           property :pool_size, as: 'poolSize'
           property :pooled_instances, as: 'pooledInstances'
