@@ -441,10 +441,10 @@ module Google
       class Gateway
         include Google::Apis::Core::Hashable
       
-        # Optional. Zero or one IPv4-address on which the Gateway will receive the
-        # traffic. When no address is provided, an IP from the subnetwork is allocated
-        # This field only applies to gateways of type 'SECURE_WEB_GATEWAY'. Gateways of
-        # type 'OPEN_MESH' listen on 0.0.0.0.
+        # Optional. Zero or one IPv4 or IPv6 address on which the Gateway will receive
+        # the traffic. When no address is provided, an IP from the subnetwork is
+        # allocated This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+        # Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6.
         # Corresponds to the JSON property `addresses`
         # @return [Array<String>]
         attr_accessor :addresses
@@ -495,7 +495,7 @@ module Google
         # Required. One or more port numbers (1-65535), on which the Gateway will
         # receive traffic. The proxy binds to the specified ports. Gateways of type '
         # SECURE_WEB_GATEWAY' are limited to 1 port. Gateways of type 'OPEN_MESH' listen
-        # on 0.0.0.0 and support multiple ports.
+        # on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
         # Corresponds to the JSON property `ports`
         # @return [Array<Fixnum>]
         attr_accessor :ports
@@ -2418,6 +2418,14 @@ module Google
         # @return [String]
         attr_accessor :service
       
+        # Output only. The unique identifier of the Service Directory Service against
+        # which the Service Binding resource is validated. This is populated when the
+        # Service Binding resource is used in another resource (like Backend Service).
+        # This is of the UUID4 format.
+        # Corresponds to the JSON property `serviceId`
+        # @return [String]
+        attr_accessor :service_id
+      
         # Output only. The timestamp when the resource was updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -2434,6 +2442,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @service = args[:service] if args.key?(:service)
+          @service_id = args[:service_id] if args.key?(:service_id)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
