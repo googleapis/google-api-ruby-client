@@ -1304,6 +1304,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :count, :numeric_string => true, as: 'count'
+          property :ratio, as: 'ratio'
           property :value, as: 'value'
         end
       end
@@ -1352,8 +1353,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :column, as: 'column'
+          property :description, as: 'description'
           property :dimension, as: 'dimension'
           property :ignore_null, as: 'ignoreNull'
+          property :name, as: 'name'
           property :non_null_expectation, as: 'nonNullExpectation', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleNonNullExpectation, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleNonNullExpectation::Representation
       
           property :range_expectation, as: 'rangeExpectation', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleRangeExpectation, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleRangeExpectation::Representation
