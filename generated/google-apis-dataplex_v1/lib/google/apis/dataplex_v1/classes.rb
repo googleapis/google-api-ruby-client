@@ -1284,10 +1284,10 @@ module Google
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfo]
         attr_accessor :string_profile
       
-        # The list of top N non-null values and number of times they occur in the
-        # scanned data. N is 10 or equal to the number of distinct values in the field,
-        # whichever is smaller. Not available for complex non-groupable field type
-        # RECORD and fields with REPEATABLE mode.
+        # The list of top N non-null values, frequency and ratio with which they occur
+        # in the scanned data. N is 10 or equal to the number of distinct values in the
+        # field, whichever is smaller. Not available for complex non-groupable field
+        # type RECORD and fields with REPEATABLE mode.
         # Corresponds to the JSON property `topNValues`
         # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue>]
         attr_accessor :top_n_values
@@ -1453,6 +1453,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :count
       
+        # Ratio of the corresponding value in the field against the total number of rows
+        # in the scanned data.
+        # Corresponds to the JSON property `ratio`
+        # @return [Float]
+        attr_accessor :ratio
+      
         # String value of a top N non-null value.
         # Corresponds to the JSON property `value`
         # @return [String]
@@ -1465,6 +1471,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @count = args[:count] if args.key?(:count)
+          @ratio = args[:ratio] if args.key?(:ratio)
           @value = args[:value] if args.key?(:value)
         end
       end
@@ -1607,6 +1614,11 @@ module Google
         # @return [String]
         attr_accessor :column
       
+        # Optional. Description of the rule. The maximum length is 1,024 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
         # Required. The dimension a rule belongs to. Results are also aggregated at the
         # dimension level. Supported dimensions are "COMPLETENESS", "ACCURACY", "
         # CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"
@@ -1616,11 +1628,18 @@ module Google
       
         # Optional. Rows with null values will automatically fail a rule, unless
         # ignore_null is true. In that case, such null rows are trivially considered
-        # passing.Only applicable to ColumnMap rules.
+        # passing.This field is only valid for row-level type rules.
         # Corresponds to the JSON property `ignoreNull`
         # @return [Boolean]
         attr_accessor :ignore_null
         alias_method :ignore_null?, :ignore_null
+      
+        # Optional. A mutable name for the rule. The name must contain only letters (a-z,
+        # A-Z), numbers (0-9), or hyphens (-). The maximum length is 63 characters.
+        # Must start with a letter. Must end with a number or a letter.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
       
         # Evaluates whether each column value is null.
         # Corresponds to the JSON property `nonNullExpectation`
@@ -1663,7 +1682,8 @@ module Google
         attr_accessor :table_condition_expectation
       
         # Optional. The minimum ratio of passing_rows / total_rows required to pass this
-        # rule, with a range of 0.0, 1.0.0 indicates default value (i.e. 1.0).
+        # rule, with a range of 0.0, 1.0.0 indicates default value (i.e. 1.0).This field
+        # is only valid for row-level type rules.
         # Corresponds to the JSON property `threshold`
         # @return [Float]
         attr_accessor :threshold
@@ -1680,8 +1700,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @column = args[:column] if args.key?(:column)
+          @description = args[:description] if args.key?(:description)
           @dimension = args[:dimension] if args.key?(:dimension)
           @ignore_null = args[:ignore_null] if args.key?(:ignore_null)
+          @name = args[:name] if args.key?(:name)
           @non_null_expectation = args[:non_null_expectation] if args.key?(:non_null_expectation)
           @range_expectation = args[:range_expectation] if args.key?(:range_expectation)
           @regex_expectation = args[:regex_expectation] if args.key?(:regex_expectation)
@@ -1775,16 +1797,16 @@ module Google
       class GoogleCloudDataplexV1DataQualityRuleResult
         include Google::Apis::Core::Hashable
       
-        # The number of rows a rule was evaluated against. This field is only valid for
-        # ColumnMap type rules.Evaluated count can be configured to either include all
+        # The number of rows a rule was evaluated against.This field is only valid for
+        # row-level type rules.Evaluated count can be configured to either include all
         # rows (default) - with null rows automatically failing rule evaluation, or
         # exclude null rows from the evaluated_count, by setting ignore_nulls = true.
         # Corresponds to the JSON property `evaluatedCount`
         # @return [Fixnum]
         attr_accessor :evaluated_count
       
-        # The query to find rows that did not pass this rule. Only applies to ColumnMap
-        # and RowCondition rules.
+        # The query to find rows that did not pass this rule.This field is only valid
+        # for row-level type rules.
         # Corresponds to the JSON property `failingRowsQuery`
         # @return [String]
         attr_accessor :failing_rows_query
@@ -1794,8 +1816,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :null_count
       
-        # The ratio of passed_count / evaluated_count. This field is only valid for
-        # ColumnMap type rules.
+        # The ratio of passed_count / evaluated_count.This field is only valid for row-
+        # level type rules.
         # Corresponds to the JSON property `passRatio`
         # @return [Float]
         attr_accessor :pass_ratio
@@ -1806,8 +1828,8 @@ module Google
         attr_accessor :passed
         alias_method :passed?, :passed
       
-        # The number of rows which passed a rule evaluation. This field is only valid
-        # for ColumnMap type rules.
+        # The number of rows which passed a rule evaluation.This field is only valid for
+        # row-level type rules.
         # Corresponds to the JSON property `passedCount`
         # @return [Fixnum]
         attr_accessor :passed_count
