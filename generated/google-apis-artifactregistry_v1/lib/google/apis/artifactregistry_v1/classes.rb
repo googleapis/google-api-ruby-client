@@ -360,6 +360,44 @@ module Google
         end
       end
       
+      # GoModule represents a Go module.
+      class GoModule
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time when the Go module is created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The resource name of a Go module.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The time when the Go module is updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # The version of the Go module. Must be a valid canonical version as defined in
+        # https://go.dev/ref/mod#glos-canonical-version.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
       # A detailed representation of a GooGet artifact.
       class GoogetArtifact
         include Google::Apis::Core::Hashable
@@ -2004,6 +2042,52 @@ module Google
         # Update properties of this object
         def update!(**args)
           @apt_artifacts = args[:apt_artifacts] if args.key?(:apt_artifacts)
+        end
+      end
+      
+      # The response to upload a Go module.
+      class UploadGoModuleMediaResponse
+        include Google::Apis::Core::Hashable
+      
+        # This resource represents a long-running operation that is the result of a
+        # network API call.
+        # Corresponds to the JSON property `operation`
+        # @return [Google::Apis::ArtifactregistryV1::Operation]
+        attr_accessor :operation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @operation = args[:operation] if args.key?(:operation)
+        end
+      end
+      
+      # The operation metadata for uploading go modules.
+      class UploadGoModuleMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The request to upload a Go module.
+      class UploadGoModuleRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
