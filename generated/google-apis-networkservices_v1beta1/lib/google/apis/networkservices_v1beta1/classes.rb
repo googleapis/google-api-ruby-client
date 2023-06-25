@@ -376,10 +376,10 @@ module Google
       class Gateway
         include Google::Apis::Core::Hashable
       
-        # Optional. Zero or one IPv4-address on which the Gateway will receive the
-        # traffic. When no address is provided, an IP from the subnetwork is allocated
-        # This field only applies to gateways of type 'SECURE_WEB_GATEWAY'. Gateways of
-        # type 'OPEN_MESH' listen on 0.0.0.0.
+        # Optional. Zero or one IPv4 or IPv6 address on which the Gateway will receive
+        # the traffic. When no address is provided, an IP from the subnetwork is
+        # allocated This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+        # Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6.
         # Corresponds to the JSON property `addresses`
         # @return [Array<String>]
         attr_accessor :addresses
@@ -430,7 +430,7 @@ module Google
         # Required. One or more port numbers (1-65535), on which the Gateway will
         # receive traffic. The proxy binds to the specified ports. Gateways of type '
         # SECURE_WEB_GATEWAY' are limited to 1 port. Gateways of type 'OPEN_MESH' listen
-        # on 0.0.0.0 and support multiple ports.
+        # on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
         # Corresponds to the JSON property `ports`
         # @return [Array<Fixnum>]
         attr_accessor :ports
@@ -1942,6 +1942,33 @@ module Google
         end
       end
       
+      # Response returned by the ListServiceLbPolicies method.
+      class ListServiceLbPoliciesResponse
+        include Google::Apis::Core::Hashable
+      
+        # If there might be more results than those appearing in this response, then `
+        # next_page_token` is included. To get the next set of results, call this method
+        # again using the value of `next_page_token` as `page_token`.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of ServiceLbPolicy resources.
+        # Corresponds to the JSON property `serviceLbPolicies`
+        # @return [Array<Google::Apis::NetworkservicesV1beta1::ServiceLbPolicy>]
+        attr_accessor :service_lb_policies
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @service_lb_policies = args[:service_lb_policies] if args.key?(:service_lb_policies)
+        end
+      end
+      
       # Response returned by the ListTcpRoutes method.
       class ListTcpRoutesResponse
         include Google::Apis::Core::Hashable
@@ -2418,6 +2445,14 @@ module Google
         # @return [String]
         attr_accessor :service
       
+        # Output only. The unique identifier of the Service Directory Service against
+        # which the Service Binding resource is validated. This is populated when the
+        # Service Binding resource is used in another resource (like Backend Service).
+        # This is of the UUID4 format.
+        # Corresponds to the JSON property `serviceId`
+        # @return [String]
+        attr_accessor :service_id
+      
         # Output only. The timestamp when the resource was updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -2434,7 +2469,123 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @service = args[:service] if args.key?(:service)
+          @service_id = args[:service_id] if args.key?(:service_id)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # ServiceLbPolicy holds global load balancing and traffic distribution
+      # configuration that can be applied to a BackendService.
+      class ServiceLbPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Option to specify if an unhealthy IG/NEG should be considered for global load
+        # balancing and traffic routing.
+        # Corresponds to the JSON property `autoCapacityDrain`
+        # @return [Google::Apis::NetworkservicesV1beta1::ServiceLbPolicyAutoCapacityDrain]
+        attr_accessor :auto_capacity_drain
+      
+        # Output only. The timestamp when this resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. A free-text description of the resource. Max length 1024 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Option to specify health based failover behavior. This is not related to
+        # Network load balancer FailoverPolicy.
+        # Corresponds to the JSON property `failoverConfig`
+        # @return [Google::Apis::NetworkservicesV1beta1::ServiceLbPolicyFailoverConfig]
+        attr_accessor :failover_config
+      
+        # Optional. Set of label tags associated with the ServiceLbPolicy resource.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Optional. The type of load balancing algorithm to be used. The default
+        # behavior is WATERFALL_BY_REGION.
+        # Corresponds to the JSON property `loadBalancingAlgorithm`
+        # @return [String]
+        attr_accessor :load_balancing_algorithm
+      
+        # Required. Name of the ServiceLbPolicy resource. It matches pattern `projects/`
+        # project`/locations/`location`/serviceLbPolicies/`service_lb_policy_name``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The timestamp when this resource was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_capacity_drain = args[:auto_capacity_drain] if args.key?(:auto_capacity_drain)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @failover_config = args[:failover_config] if args.key?(:failover_config)
+          @labels = args[:labels] if args.key?(:labels)
+          @load_balancing_algorithm = args[:load_balancing_algorithm] if args.key?(:load_balancing_algorithm)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Option to specify if an unhealthy IG/NEG should be considered for global load
+      # balancing and traffic routing.
+      class ServiceLbPolicyAutoCapacityDrain
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If set to 'True', an unhealthy IG/NEG will be set as drained. - An
+        # IG/NEG is considered unhealthy if less than 25% of the instances/endpoints in
+        # the IG/NEG are healthy. - This option will never result in draining more than
+        # 50% of the configured IGs/NEGs for the Backend Service.
+        # Corresponds to the JSON property `enable`
+        # @return [Boolean]
+        attr_accessor :enable
+        alias_method :enable?, :enable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable = args[:enable] if args.key?(:enable)
+        end
+      end
+      
+      # Option to specify health based failover behavior. This is not related to
+      # Network load balancer FailoverPolicy.
+      class ServiceLbPolicyFailoverConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The percentage threshold that a load balancer will begin to send
+        # traffic to failover backends. If the percentage of endpoints in a MIG/NEG is
+        # smaller than this value, traffic would be sent to failover backends if
+        # possible. This field should be set to a value between 1 and 99. The default
+        # value is 50 for Global external HTTP(S) load balancer (classic) and Proxyless
+        # service mesh, and 70 for others.
+        # Corresponds to the JSON property `failoverHealthThreshold`
+        # @return [Fixnum]
+        attr_accessor :failover_health_threshold
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @failover_health_threshold = args[:failover_health_threshold] if args.key?(:failover_health_threshold)
         end
       end
       
