@@ -1284,13 +1284,13 @@ module Google
         #   - "focusTime"
         #   - "outOfOffice"This parameter can be repeated multiple times to return events
         #   of different types. Currently, this is the only allowed value for this field:
-        #   - ["default", "focusTime", "outOfOffice"] This value will be the default.
+        #   - ["default", "focusTime", "outOfOffice"] This value is the default.
         #   If you're enrolled in the Working Location developer preview program, in
         #   addition to the default value above you can also set the "workingLocation"
         #   event type:
         #   - ["default", "focusTime", "outOfOffice", "workingLocation"]
-        #   - ["workingLocation"] Additional combinations of these 4 event types will be
-        #   made available in later releases. Developer Preview.
+        #   - ["workingLocation"] Additional combinations of these four event types will
+        #   be made available in later releases. Developer Preview.
         # @param [String] i_cal_uid
         #   Specifies an event ID in the iCalendar format to be provided in the response.
         #   Optional. Use this if you want to search for an event by its iCalendar ID.
@@ -1680,13 +1680,13 @@ module Google
         #   - "focusTime"
         #   - "outOfOffice"This parameter can be repeated multiple times to return events
         #   of different types. Currently, this is the only allowed value for this field:
-        #   - ["default", "focusTime", "outOfOffice"] This value will be the default.
+        #   - ["default", "focusTime", "outOfOffice"] This value is the default.
         #   If you're enrolled in the Working Location developer preview program, in
         #   addition to the default value above you can also set the "workingLocation"
         #   event type:
         #   - ["default", "focusTime", "outOfOffice", "workingLocation"]
-        #   - ["workingLocation"] Additional combinations of these 4 event types will be
-        #   made available in later releases. Developer Preview.
+        #   - ["workingLocation"] Additional combinations of these four event types will
+        #   be made available in later releases. Developer Preview.
         # @param [String] i_cal_uid
         #   Specifies an event ID in the iCalendar format to be provided in the response.
         #   Optional. Use this if you want to search for an event by its iCalendar ID.

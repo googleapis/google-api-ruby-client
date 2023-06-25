@@ -1334,7 +1334,7 @@ module Google
         # @return [String]
         attr_accessor :visibility
       
-        # Developer Preview: Working Location event data. Read-only.
+        # Working Location event data. Read-only. Developer Preview.
         # Corresponds to the JSON property `workingLocationProperties`
         # @return [Google::Apis::CalendarV3::EventWorkingLocationProperties]
         attr_accessor :working_location_properties
@@ -1845,9 +1845,9 @@ module Google
         # @return [Google::Apis::CalendarV3::EventWorkingLocationProperties::OfficeLocation]
         attr_accessor :office_location
       
-        # Indicates what kind of location this is. Any details will be specified in a
-        # sub-field of the specified name (but which may be missing if empty). Any other
-        # fields will be ignored.
+        # Indicates what kind of location this is. Any details are specified in a sub-
+        # field of the specified name (but which may be missing if empty). Any other
+        # fields are ignored.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
