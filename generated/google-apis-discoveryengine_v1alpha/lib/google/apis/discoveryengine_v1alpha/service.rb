@@ -731,6 +731,44 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Deletes permanently all user events specified by the filter provided.
+        # Depending on the number of events specified by the filter, this operation
+        # could take hours or days to complete. To test a filter, use the list command
+        # first.
+        # @param [String] parent
+        #   Required. The resource name of the catalog under which the events are created.
+        #   The format is `projects/$`projectId`/locations/global/collections/`$
+        #   collectionId`/dataStores/$`dataStoreId``
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaPurgeUserEventsRequest] google_cloud_discoveryengine_v1alpha_purge_user_events_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def purge_project_location_collection_data_store_user_event(parent, google_cloud_discoveryengine_v1alpha_purge_user_events_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+parent}/userEvents:purge', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaPurgeUserEventsRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1alpha_purge_user_events_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Writes a single user event.
         # @param [String] parent
         #   Required. The parent DataStore resource name, such as `projects/`project`/
@@ -1510,6 +1548,44 @@ module Google
           command = make_simple_command(:post, 'v1alpha/{+parent}/userEvents:import', options)
           command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaImportUserEventsRequest::Representation
           command.request_object = google_cloud_discoveryengine_v1alpha_import_user_events_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes permanently all user events specified by the filter provided.
+        # Depending on the number of events specified by the filter, this operation
+        # could take hours or days to complete. To test a filter, use the list command
+        # first.
+        # @param [String] parent
+        #   Required. The resource name of the catalog under which the events are created.
+        #   The format is `projects/$`projectId`/locations/global/collections/`$
+        #   collectionId`/dataStores/$`dataStoreId``
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaPurgeUserEventsRequest] google_cloud_discoveryengine_v1alpha_purge_user_events_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def purge_project_location_data_store_user_event(parent, google_cloud_discoveryengine_v1alpha_purge_user_events_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+parent}/userEvents:purge', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaPurgeUserEventsRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1alpha_purge_user_events_request_object
           command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation
           command.params['parent'] = parent unless parent.nil?
