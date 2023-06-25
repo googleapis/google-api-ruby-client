@@ -735,7 +735,9 @@ module Google
         # @return [String]
         attr_accessor :default_branch
       
-        # Output only. Indicates the status of the Git access token.
+        # Output only. Deprecated: The field does not contain any token status
+        # information. Instead use https://cloud.google.com/dataform/reference/rest/
+        # v1beta1/projects.locations.repositories/computeAccessTokenStatus
         # Corresponds to the JSON property `tokenStatus`
         # @return [String]
         attr_accessor :token_status
@@ -2272,8 +2274,8 @@ module Google
       class WorkflowInvocation
         include Google::Apis::Core::Hashable
       
-        # Immutable. The name of the compilation result to compile. Must be in the
-        # format `projects/*/locations/*/repositories/*/compilationResults/*`.
+        # Immutable. The name of the compilation result to use for this invocation. Must
+        # be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
         # Corresponds to the JSON property `compilationResult`
         # @return [String]
         attr_accessor :compilation_result
