@@ -952,6 +952,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiV1TrainProcessorVersionRequestCustomDocumentExtractionOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiV1TrainProcessorVersionRequestInputData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3329,12 +3335,21 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :base_processor_version, as: 'baseProcessorVersion'
+          property :custom_document_extraction_options, as: 'customDocumentExtractionOptions', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1TrainProcessorVersionRequestCustomDocumentExtractionOptions, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1TrainProcessorVersionRequestCustomDocumentExtractionOptions::Representation
+      
           property :document_schema, as: 'documentSchema', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentSchema, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentSchema::Representation
       
           property :input_data, as: 'inputData', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1TrainProcessorVersionRequestInputData, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1TrainProcessorVersionRequestInputData::Representation
       
           property :processor_version, as: 'processorVersion', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1ProcessorVersion, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1ProcessorVersion::Representation
       
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1TrainProcessorVersionRequestCustomDocumentExtractionOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :training_method, as: 'trainingMethod'
         end
       end
       
