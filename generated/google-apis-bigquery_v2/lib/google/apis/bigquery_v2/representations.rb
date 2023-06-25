@@ -1721,6 +1721,7 @@ module Google
           property :csv_options, as: 'csvOptions', class: Google::Apis::BigqueryV2::CsvOptions, decorator: Google::Apis::BigqueryV2::CsvOptions::Representation
       
           collection :decimal_target_types, as: 'decimalTargetTypes'
+          property :file_set_spec_type, as: 'fileSetSpecType'
           property :google_sheets_options, as: 'googleSheetsOptions', class: Google::Apis::BigqueryV2::GoogleSheetsOptions, decorator: Google::Apis::BigqueryV2::GoogleSheetsOptions::Representation
       
           property :hive_partitioning_options, as: 'hivePartitioningOptions', class: Google::Apis::BigqueryV2::HivePartitioningOptions, decorator: Google::Apis::BigqueryV2::HivePartitioningOptions::Representation
@@ -2038,6 +2039,7 @@ module Google
       
           property :encoding, as: 'encoding'
           property :field_delimiter, as: 'fieldDelimiter'
+          property :file_set_spec_type, as: 'fileSetSpecType'
           property :hive_partitioning_options, as: 'hivePartitioningOptions', class: Google::Apis::BigqueryV2::HivePartitioningOptions, decorator: Google::Apis::BigqueryV2::HivePartitioningOptions::Representation
       
           property :ignore_unknown_values, as: 'ignoreUnknownValues'
@@ -3244,7 +3246,6 @@ module Google
           property :num_parallel_tree, :numeric_string => true, as: 'numParallelTree'
           property :num_trials, :numeric_string => true, as: 'numTrials'
           property :optimization_strategy, as: 'optimizationStrategy'
-          property :preserve_input_structs, as: 'preserveInputStructs'
           property :sampled_shapley_num_paths, :numeric_string => true, as: 'sampledShapleyNumPaths'
           property :subsample, as: 'subsample'
           property :tf_version, as: 'tfVersion'

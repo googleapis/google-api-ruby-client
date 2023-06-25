@@ -2676,6 +2676,14 @@ module Google
         # @return [Array<String>]
         attr_accessor :decimal_target_types
       
+        # [Optional] Specifies how source URIs are interpreted for constructing the file
+        # set to load. By default source URIs are expanded against the underlying
+        # storage. Other options include specifying manifest files. Only applicable to
+        # object storage systems.
+        # Corresponds to the JSON property `fileSetSpecType`
+        # @return [String]
+        attr_accessor :file_set_spec_type
+      
         # [Optional] Additional options if sourceFormat is set to GOOGLE_SHEETS.
         # Corresponds to the JSON property `googleSheetsOptions`
         # @return [Google::Apis::BigqueryV2::GoogleSheetsOptions]
@@ -2781,6 +2789,7 @@ module Google
           @connection_id = args[:connection_id] if args.key?(:connection_id)
           @csv_options = args[:csv_options] if args.key?(:csv_options)
           @decimal_target_types = args[:decimal_target_types] if args.key?(:decimal_target_types)
+          @file_set_spec_type = args[:file_set_spec_type] if args.key?(:file_set_spec_type)
           @google_sheets_options = args[:google_sheets_options] if args.key?(:google_sheets_options)
           @hive_partitioning_options = args[:hive_partitioning_options] if args.key?(:hive_partitioning_options)
           @ignore_unknown_values = args[:ignore_unknown_values] if args.key?(:ignore_unknown_values)
@@ -3900,6 +3909,14 @@ module Google
         # @return [String]
         attr_accessor :field_delimiter
       
+        # [Optional] Specifies how source URIs are interpreted for constructing the file
+        # set to load. By default source URIs are expanded against the underlying
+        # storage. Other options include specifying manifest files. Only applicable to
+        # object storage systems.
+        # Corresponds to the JSON property `fileSetSpecType`
+        # @return [String]
+        attr_accessor :file_set_spec_type
+      
         # [Optional] Options to configure hive partitioning support.
         # Corresponds to the JSON property `hivePartitioningOptions`
         # @return [Google::Apis::BigqueryV2::HivePartitioningOptions]
@@ -4090,6 +4107,7 @@ module Google
           @destination_table_properties = args[:destination_table_properties] if args.key?(:destination_table_properties)
           @encoding = args[:encoding] if args.key?(:encoding)
           @field_delimiter = args[:field_delimiter] if args.key?(:field_delimiter)
+          @file_set_spec_type = args[:file_set_spec_type] if args.key?(:file_set_spec_type)
           @hive_partitioning_options = args[:hive_partitioning_options] if args.key?(:hive_partitioning_options)
           @ignore_unknown_values = args[:ignore_unknown_values] if args.key?(:ignore_unknown_values)
           @json_extension = args[:json_extension] if args.key?(:json_extension)
@@ -8834,14 +8852,6 @@ module Google
         # @return [String]
         attr_accessor :optimization_strategy
       
-        # Whether to preserve the input structs in output feature names. Suppose there
-        # is a struct A with field b. When false (default), the output feature name is
-        # A_b. When true, the output feature name is A.b.
-        # Corresponds to the JSON property `preserveInputStructs`
-        # @return [Boolean]
-        attr_accessor :preserve_input_structs
-        alias_method :preserve_input_structs?, :preserve_input_structs
-      
         # Number of paths for the sampled Shapley explain method.
         # Corresponds to the JSON property `sampledShapleyNumPaths`
         # @return [Fixnum]
@@ -8978,7 +8988,6 @@ module Google
           @num_parallel_tree = args[:num_parallel_tree] if args.key?(:num_parallel_tree)
           @num_trials = args[:num_trials] if args.key?(:num_trials)
           @optimization_strategy = args[:optimization_strategy] if args.key?(:optimization_strategy)
-          @preserve_input_structs = args[:preserve_input_structs] if args.key?(:preserve_input_structs)
           @sampled_shapley_num_paths = args[:sampled_shapley_num_paths] if args.key?(:sampled_shapley_num_paths)
           @subsample = args[:subsample] if args.key?(:subsample)
           @tf_version = args[:tf_version] if args.key?(:tf_version)
