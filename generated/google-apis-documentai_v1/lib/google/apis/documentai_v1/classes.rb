@@ -5002,6 +5002,12 @@ module Google
         # @return [String]
         attr_accessor :base_processor_version
       
+        # Options to control the training of the Custom Document Extraction (CDE)
+        # Processor.
+        # Corresponds to the JSON property `customDocumentExtractionOptions`
+        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1TrainProcessorVersionRequestCustomDocumentExtractionOptions]
+        attr_accessor :custom_document_extraction_options
+      
         # The schema defines the output of the processed document by a processor.
         # Corresponds to the JSON property `documentSchema`
         # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentSchema]
@@ -5027,9 +5033,30 @@ module Google
         # Update properties of this object
         def update!(**args)
           @base_processor_version = args[:base_processor_version] if args.key?(:base_processor_version)
+          @custom_document_extraction_options = args[:custom_document_extraction_options] if args.key?(:custom_document_extraction_options)
           @document_schema = args[:document_schema] if args.key?(:document_schema)
           @input_data = args[:input_data] if args.key?(:input_data)
           @processor_version = args[:processor_version] if args.key?(:processor_version)
+        end
+      end
+      
+      # Options to control the training of the Custom Document Extraction (CDE)
+      # Processor.
+      class GoogleCloudDocumentaiV1TrainProcessorVersionRequestCustomDocumentExtractionOptions
+        include Google::Apis::Core::Hashable
+      
+        # Training method to use for CDE training.
+        # Corresponds to the JSON property `trainingMethod`
+        # @return [String]
+        attr_accessor :training_method
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @training_method = args[:training_method] if args.key?(:training_method)
         end
       end
       
