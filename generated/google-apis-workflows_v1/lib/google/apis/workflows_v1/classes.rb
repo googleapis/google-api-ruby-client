@@ -429,6 +429,14 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # Optional. User-defined environment variables associated with this workflow
+        # revision. This map has a maximum length of 20. Each string can take up to
+        # 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “
+        # WORKFLOWS".
+        # Corresponds to the JSON property `userEnvVars`
+        # @return [Hash<String,String>]
+        attr_accessor :user_env_vars
+      
         def initialize(**args)
            update!(**args)
         end
@@ -448,6 +456,7 @@ module Google
           @state = args[:state] if args.key?(:state)
           @state_error = args[:state_error] if args.key?(:state_error)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @user_env_vars = args[:user_env_vars] if args.key?(:user_env_vars)
         end
       end
     end
