@@ -22,6 +22,12 @@ module Google
   module Apis
     module NetworkconnectivityV1
       
+      class AcceptSpokeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuditConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -112,7 +118,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LinkedVpcNetwork
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LinkedVpnTunnels
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListHubSpokesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -131,6 +149,18 @@ module Google
       end
       
       class ListLocationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListRouteTablesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListRoutesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -178,6 +208,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NextHopVpcNetwork
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -203,6 +239,24 @@ module Google
       end
       
       class PscConnection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RejectSpokeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Route
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RouteTable
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -256,6 +310,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SpokeStateCount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SpokeStateReasonCount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SpokeSummary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SpokeTypeCount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StateReason
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TestIamPermissionsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -266,6 +350,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AcceptSpokeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :request_id, as: 'requestId'
+        end
       end
       
       class AuditConfig
@@ -381,7 +472,10 @@ module Google
           property :description, as: 'description'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          collection :route_tables, as: 'routeTables'
           collection :routing_vpcs, as: 'routingVpcs', class: Google::Apis::NetworkconnectivityV1::RoutingVpc, decorator: Google::Apis::NetworkconnectivityV1::RoutingVpc::Representation
+      
+          property :spoke_summary, as: 'spokeSummary', class: Google::Apis::NetworkconnectivityV1::SpokeSummary, decorator: Google::Apis::NetworkconnectivityV1::SpokeSummary::Representation
       
           property :state, as: 'state'
           property :unique_id, as: 'uniqueId'
@@ -427,12 +521,30 @@ module Google
         end
       end
       
+      class LinkedVpcNetwork
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :exclude_export_ranges, as: 'excludeExportRanges'
+          property :uri, as: 'uri'
+        end
+      end
+      
       class LinkedVpnTunnels
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :site_to_site_data_transfer, as: 'siteToSiteDataTransfer'
           collection :uris, as: 'uris'
           property :vpc_network, as: 'vpcNetwork'
+        end
+      end
+      
+      class ListHubSpokesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :spokes, as: 'spokes', class: Google::Apis::NetworkconnectivityV1::Spoke, decorator: Google::Apis::NetworkconnectivityV1::Spoke::Representation
+      
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -462,6 +574,26 @@ module Google
           collection :locations, as: 'locations', class: Google::Apis::NetworkconnectivityV1::Location, decorator: Google::Apis::NetworkconnectivityV1::Location::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListRouteTablesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :route_tables, as: 'routeTables', class: Google::Apis::NetworkconnectivityV1::RouteTable, decorator: Google::Apis::NetworkconnectivityV1::RouteTable::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListRoutesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :routes, as: 'routes', class: Google::Apis::NetworkconnectivityV1::Route, decorator: Google::Apis::NetworkconnectivityV1::Route::Representation
+      
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -533,6 +665,13 @@ module Google
         end
       end
       
+      class NextHopVpcNetwork
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :uri, as: 'uri'
+        end
+      end
+      
       class OperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -588,6 +727,46 @@ module Google
         end
       end
       
+      class RejectSpokeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :details, as: 'details'
+          property :request_id, as: 'requestId'
+        end
+      end
+      
+      class Route
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :ip_cidr_range, as: 'ipCidrRange'
+          hash :labels, as: 'labels'
+          property :location, as: 'location'
+          property :name, as: 'name'
+          property :next_hop_vpc_network, as: 'nextHopVpcNetwork', class: Google::Apis::NetworkconnectivityV1::NextHopVpcNetwork, decorator: Google::Apis::NetworkconnectivityV1::NextHopVpcNetwork::Representation
+      
+          property :spoke, as: 'spoke'
+          property :state, as: 'state'
+          property :type, as: 'type'
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class RouteTable
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :state, as: 'state'
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class RouterApplianceInstance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -609,6 +788,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :description, as: 'description'
+          property :etag, as: 'etag'
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :service_class, as: 'serviceClass'
@@ -626,6 +806,7 @@ module Google
       
           property :create_time, as: 'createTime'
           property :description, as: 'description'
+          property :etag, as: 'etag'
           property :infrastructure, as: 'infrastructure'
           hash :labels, as: 'labels'
           property :name, as: 'name'
@@ -643,6 +824,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :description, as: 'description'
+          property :etag, as: 'etag'
           property :infrastructure, as: 'infrastructure'
           hash :labels, as: 'labels'
           property :name, as: 'name'
@@ -661,6 +843,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :description, as: 'description'
+          property :etag, as: 'etag'
           property :expire_time, as: 'expireTime'
           hash :labels, as: 'labels'
           property :name, as: 'name'
@@ -690,12 +873,62 @@ module Google
       
           property :linked_router_appliance_instances, as: 'linkedRouterApplianceInstances', class: Google::Apis::NetworkconnectivityV1::LinkedRouterApplianceInstances, decorator: Google::Apis::NetworkconnectivityV1::LinkedRouterApplianceInstances::Representation
       
+          property :linked_vpc_network, as: 'linkedVpcNetwork', class: Google::Apis::NetworkconnectivityV1::LinkedVpcNetwork, decorator: Google::Apis::NetworkconnectivityV1::LinkedVpcNetwork::Representation
+      
           property :linked_vpn_tunnels, as: 'linkedVpnTunnels', class: Google::Apis::NetworkconnectivityV1::LinkedVpnTunnels, decorator: Google::Apis::NetworkconnectivityV1::LinkedVpnTunnels::Representation
       
           property :name, as: 'name'
+          collection :reasons, as: 'reasons', class: Google::Apis::NetworkconnectivityV1::StateReason, decorator: Google::Apis::NetworkconnectivityV1::StateReason::Representation
+      
+          property :spoke_type, as: 'spokeType'
           property :state, as: 'state'
           property :unique_id, as: 'uniqueId'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class SpokeStateCount
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :count, :numeric_string => true, as: 'count'
+          property :state, as: 'state'
+        end
+      end
+      
+      class SpokeStateReasonCount
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :count, :numeric_string => true, as: 'count'
+          property :state_reason_code, as: 'stateReasonCode'
+        end
+      end
+      
+      class SpokeSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :spoke_state_counts, as: 'spokeStateCounts', class: Google::Apis::NetworkconnectivityV1::SpokeStateCount, decorator: Google::Apis::NetworkconnectivityV1::SpokeStateCount::Representation
+      
+          collection :spoke_state_reason_counts, as: 'spokeStateReasonCounts', class: Google::Apis::NetworkconnectivityV1::SpokeStateReasonCount, decorator: Google::Apis::NetworkconnectivityV1::SpokeStateReasonCount::Representation
+      
+          collection :spoke_type_counts, as: 'spokeTypeCounts', class: Google::Apis::NetworkconnectivityV1::SpokeTypeCount, decorator: Google::Apis::NetworkconnectivityV1::SpokeTypeCount::Representation
+      
+        end
+      end
+      
+      class SpokeTypeCount
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :count, :numeric_string => true, as: 'count'
+          property :spoke_type, as: 'spokeType'
+        end
+      end
+      
+      class StateReason
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :message, as: 'message'
+          property :user_details, as: 'userDetails'
         end
       end
       

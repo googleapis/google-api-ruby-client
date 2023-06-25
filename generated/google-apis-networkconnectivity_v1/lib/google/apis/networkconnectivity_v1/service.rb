@@ -331,6 +331,62 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Lists the Network Connectivity Center spokes associated with a specified hub
+        # and location. The list includes both spokes that are attached to the hub and
+        # spokes that have been proposed but not yet accepted.
+        # @param [String] name
+        #   Required. The name of the hub.
+        # @param [String] filter
+        #   An expression that filters the list of results.
+        # @param [String] order_by
+        #   Sort the results by name or create_time.
+        # @param [Fixnum] page_size
+        #   The maximum number of results to return per page.
+        # @param [String] page_token
+        #   The page token.
+        # @param [Array<String>, String] spoke_locations
+        #   A list of locations. Specify one of the following: `[global]`, a single region
+        #   (for example, `[us-central1]`), or a combination of values (for example, `[
+        #   global, us-central1, us-west1]`). If the spoke_locations field is populated,
+        #   the list of results includes only spokes in the specified location. If the
+        #   spoke_locations field is not populated, the list of results includes spokes in
+        #   all locations.
+        # @param [String] view
+        #   The view of the spoke to return. The view you use determines which spoke
+        #   fields are included in the response.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkconnectivityV1::ListHubSpokesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkconnectivityV1::ListHubSpokesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_global_hub_spokes(name, filter: nil, order_by: nil, page_size: nil, page_token: nil, spoke_locations: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:listSpokes', options)
+          command.response_representation = Google::Apis::NetworkconnectivityV1::ListHubSpokesResponse::Representation
+          command.response_class = Google::Apis::NetworkconnectivityV1::ListHubSpokesResponse
+          command.params['name'] = name unless name.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['spokeLocations'] = spoke_locations unless spoke_locations.nil?
+          command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Updates the description and/or labels of a Network Connectivity Center hub.
         # @param [String] name
         #   Immutable. The name of the hub. Hub names must be unique. They use the
@@ -577,6 +633,150 @@ module Google
           command.response_representation = Google::Apis::NetworkconnectivityV1::TestIamPermissionsResponse::Representation
           command.response_class = Google::Apis::NetworkconnectivityV1::TestIamPermissionsResponse
           command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details about a Network Connectivity Center route table.
+        # @param [String] name
+        #   Required. The name of the route table resource.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkconnectivityV1::RouteTable] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkconnectivityV1::RouteTable]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_global_hub_route_table(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::NetworkconnectivityV1::RouteTable::Representation
+          command.response_class = Google::Apis::NetworkconnectivityV1::RouteTable
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists route tables in a given project.
+        # @param [String] parent
+        #   Required. The parent resource's name.
+        # @param [String] filter
+        #   An expression that filters the list of results.
+        # @param [String] order_by
+        #   Sort the results by a certain order.
+        # @param [Fixnum] page_size
+        #   The maximum number of results to return per page.
+        # @param [String] page_token
+        #   The page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkconnectivityV1::ListRouteTablesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkconnectivityV1::ListRouteTablesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_global_hub_route_tables(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/routeTables', options)
+          command.response_representation = Google::Apis::NetworkconnectivityV1::ListRouteTablesResponse::Representation
+          command.response_class = Google::Apis::NetworkconnectivityV1::ListRouteTablesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details about the specified route.
+        # @param [String] name
+        #   Required. The name of the route resource.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkconnectivityV1::Route] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkconnectivityV1::Route]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_global_hub_route_table_route(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::NetworkconnectivityV1::Route::Representation
+          command.response_class = Google::Apis::NetworkconnectivityV1::Route
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists routes in a given project.
+        # @param [String] parent
+        #   Required. The parent resource's name.
+        # @param [String] filter
+        #   An expression that filters the list of results.
+        # @param [String] order_by
+        #   Sort the results by a certain order.
+        # @param [Fixnum] page_size
+        #   The maximum number of results to return per page.
+        # @param [String] page_token
+        #   The page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkconnectivityV1::ListRoutesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkconnectivityV1::ListRoutesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_global_hub_route_table_routes(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/routes', options)
+          command.response_representation = Google::Apis::NetworkconnectivityV1::ListRoutesResponse::Representation
+          command.response_class = Google::Apis::NetworkconnectivityV1::ListRoutesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1068,6 +1268,9 @@ module Google
         # Deletes a single ServiceClass.
         # @param [String] name
         #   Required. The name of the ServiceClass to delete.
+        # @param [String] etag
+        #   Optional. The etag is computed by the server, and may be sent on update and
+        #   delete requests to ensure the client has an up-to-date value before proceeding.
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
         #   request ID so that if you must retry your request, the server will know to
@@ -1096,11 +1299,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_service_class(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_project_location_service_class(name, etag: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
+          command.query['etag'] = etag unless etag.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1407,6 +1611,9 @@ module Google
         # Deletes a single ServiceConnectionMap.
         # @param [String] name
         #   Required. The name of the ServiceConnectionMap to delete.
+        # @param [String] etag
+        #   Optional. The etag is computed by the server, and may be sent on update and
+        #   delete requests to ensure the client has an up-to-date value before proceeding.
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
         #   request ID so that if you must retry your request, the server will know to
@@ -1435,11 +1642,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_service_connection_map(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_project_location_service_connection_map(name, etag: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
+          command.query['etag'] = etag unless etag.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1746,6 +1954,9 @@ module Google
         # Deletes a single ServiceConnectionPolicy.
         # @param [String] name
         #   Required. The name of the ServiceConnectionPolicy to delete.
+        # @param [String] etag
+        #   Optional. The etag is computed by the server, and may be sent on update and
+        #   delete requests to ensure the client has an up-to-date value before proceeding.
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
         #   request ID so that if you must retry your request, the server will know to
@@ -1774,11 +1985,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_service_connection_policy(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_project_location_service_connection_policy(name, etag: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
+          command.query['etag'] = etag unless etag.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -2085,6 +2297,9 @@ module Google
         # Deletes a single ServiceConnectionToken.
         # @param [String] name
         #   Required. The name of the ServiceConnectionToken to delete.
+        # @param [String] etag
+        #   Optional. The etag is computed by the server, and may be sent on update and
+        #   delete requests to ensure the client has an up-to-date value before proceeding.
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
         #   request ID so that if you must retry your request, the server will know to
@@ -2113,11 +2328,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_service_connection_token(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_project_location_service_connection_token(name, etag: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
+          command.query['etag'] = etag unless etag.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -2191,6 +2407,39 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Accepts a proposal to attach a Network Connectivity Center spoke to the hub.
+        # @param [String] name
+        #   Required. The name of the spoke to accept.
+        # @param [Google::Apis::NetworkconnectivityV1::AcceptSpokeRequest] accept_spoke_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def accept_spoke(name, accept_spoke_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:accept', options)
+          command.request_representation = Google::Apis::NetworkconnectivityV1::AcceptSpokeRequest::Representation
+          command.request_object = accept_spoke_request_object
+          command.response_representation = Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2456,6 +2705,41 @@ module Google
           command.params['name'] = name unless name.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Does one of the following: * Rejects a proposal to attach a Network
+        # Connectivity Center spoke to the hub. * Rejects and removes a previously
+        # attached spoke from the hub.
+        # @param [String] name
+        #   Required. The name of the spoke to reject.
+        # @param [Google::Apis::NetworkconnectivityV1::RejectSpokeRequest] reject_spoke_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def reject_spoke(name, reject_spoke_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:reject', options)
+          command.request_representation = Google::Apis::NetworkconnectivityV1::RejectSpokeRequest::Representation
+          command.request_object = reject_spoke_request_object
+          command.response_representation = Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

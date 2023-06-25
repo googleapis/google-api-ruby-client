@@ -22,6 +22,35 @@ module Google
   module Apis
     module NetworkconnectivityV1
       
+      # The request for HubService.AcceptSpoke.
+      class AcceptSpokeRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A unique request ID (optional). If you specify this ID, you can use
+        # it in cases when you need to retry your request. When you need to retry, this
+        # ID lets the server know that it can ignore the request if it has already been
+        # completed. The server guarantees that for at least 60 minutes after the first
+        # request. For example, consider a situation where you make an initial request
+        # and the request times out. If you make the request again with the same request
+        # ID, the server can check to see whether the original operation was received.
+        # If it was, the server ignores the second request. This behavior prevents
+        # clients from mistakenly creating duplicate commitments. The request ID must be
+        # a valid UUID, with the exception that zero UUID is not supported (00000000-
+        # 0000-0000-0000-000000000000).
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @request_id = args[:request_id] if args.key?(:request_id)
+        end
+      end
+      
       # Specifies the audit configuration for a service. The configuration determines
       # which permission types are logged, and what identities, if any, are exempted
       # from logging. An AuditConfig must have one or more AuditLogConfigs. If there
@@ -539,12 +568,28 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. The route tables that belong to this hub. They use the following
+        # form: `projects/`project_number`/locations/global/hubs/`hub_id`/routeTables/`
+        # route_table_id`` This field is read-only. Network Connectivity Center
+        # automatically populates it based on the route tables nested under the hub.
+        # Corresponds to the JSON property `routeTables`
+        # @return [Array<String>]
+        attr_accessor :route_tables
+      
         # The VPC networks associated with this hub's spokes. This field is read-only.
         # Network Connectivity Center automatically populates it based on the set of
         # spokes attached to the hub.
         # Corresponds to the JSON property `routingVpcs`
         # @return [Array<Google::Apis::NetworkconnectivityV1::RoutingVpc>]
         attr_accessor :routing_vpcs
+      
+        # Summarizes information about the spokes associated with a hub. The summary
+        # includes a count of spokes according to type and according to state. If any
+        # spokes are inactive, the summary also lists the reasons they are inactive,
+        # including a count for each reason.
+        # Corresponds to the JSON property `spokeSummary`
+        # @return [Google::Apis::NetworkconnectivityV1::SpokeSummary]
+        attr_accessor :spoke_summary
       
         # Output only. The current lifecycle state of this hub.
         # Corresponds to the JSON property `state`
@@ -573,7 +618,9 @@ module Google
           @description = args[:description] if args.key?(:description)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @route_tables = args[:route_tables] if args.key?(:route_tables)
           @routing_vpcs = args[:routing_vpcs] if args.key?(:routing_vpcs)
+          @spoke_summary = args[:spoke_summary] if args.key?(:spoke_summary)
           @state = args[:state] if args.key?(:state)
           @unique_id = args[:unique_id] if args.key?(:unique_id)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -769,6 +816,31 @@ module Google
         end
       end
       
+      # An existing VPC network.
+      class LinkedVpcNetwork
+        include Google::Apis::Core::Hashable
+      
+        # Optional. IP Ranges encompassing the subnets to be excluded from peering.
+        # Corresponds to the JSON property `excludeExportRanges`
+        # @return [Array<String>]
+        attr_accessor :exclude_export_ranges
+      
+        # Required. The URI of the VPC network resource
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exclude_export_ranges = args[:exclude_export_ranges] if args.key?(:exclude_export_ranges)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
       # A collection of Cloud VPN tunnel resources. These resources should be
       # redundant HA VPN tunnels that all advertise the same prefixes to Google Cloud.
       # Alternatively, in a passive/active configuration, all tunnels should be
@@ -804,6 +876,40 @@ module Google
           @site_to_site_data_transfer = args[:site_to_site_data_transfer] if args.key?(:site_to_site_data_transfer)
           @uris = args[:uris] if args.key?(:uris)
           @vpc_network = args[:vpc_network] if args.key?(:vpc_network)
+        end
+      end
+      
+      # The response for HubService.ListHubSpokes.
+      class ListHubSpokesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The token for the next page of the response. To see more results, use this
+        # value as the page_token for your next request. If this value is empty, there
+        # are no more results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The requested spokes. The spoke fields can be partially populated based on the
+        # `view` field in the request message.
+        # Corresponds to the JSON property `spokes`
+        # @return [Array<Google::Apis::NetworkconnectivityV1::Spoke>]
+        attr_accessor :spokes
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @spokes = args[:spokes] if args.key?(:spokes)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -894,6 +1000,72 @@ module Google
         def update!(**args)
           @locations = args[:locations] if args.key?(:locations)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response for HubService.ListRouteTables method.
+      class ListRouteTablesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The token for the next page of the response. To see more results, use this
+        # value as the page_token for your next request. If this value is empty, there
+        # are no more results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The requested route tables.
+        # Corresponds to the JSON property `routeTables`
+        # @return [Array<Google::Apis::NetworkconnectivityV1::RouteTable>]
+        attr_accessor :route_tables
+      
+        # Hubs that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @route_tables = args[:route_tables] if args.key?(:route_tables)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response for HubService.ListRoutes method.
+      class ListRoutesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The token for the next page of the response. To see more results, use this
+        # value as the page_token for your next request. If this value is empty, there
+        # are no more results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The requested routes.
+        # Corresponds to the JSON property `routes`
+        # @return [Array<Google::Apis::NetworkconnectivityV1::Route>]
+        attr_accessor :routes
+      
+        # RouteTables that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @routes = args[:routes] if args.key?(:routes)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -1124,6 +1296,25 @@ module Google
         end
       end
       
+      # 
+      class NextHopVpcNetwork
+        include Google::Apis::Core::Hashable
+      
+        # The URI of the VPC network resource
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
       # Represents the metadata of the long-running operation.
       class OperationMetadata
         include Google::Apis::Core::Hashable
@@ -1303,7 +1494,7 @@ module Google
       class PscConfig
         include Google::Apis::Core::Hashable
       
-        # Max number of PSC connections for this policy.
+        # Optional. Max number of PSC connections for this policy.
         # Corresponds to the JSON property `limit`
         # @return [Fixnum]
         attr_accessor :limit
@@ -1392,6 +1583,199 @@ module Google
         end
       end
       
+      # The request for HubService.RejectSpoke.
+      class RejectSpokeRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Additional Details behind the rejection
+        # Corresponds to the JSON property `details`
+        # @return [String]
+        attr_accessor :details
+      
+        # Optional. A unique request ID (optional). If you specify this ID, you can use
+        # it in cases when you need to retry your request. When you need to retry, this
+        # ID lets the server know that it can ignore the request if it has already been
+        # completed. The server guarantees that for at least 60 minutes after the first
+        # request. For example, consider a situation where you make an initial request
+        # and the request times out. If you make the request again with the same request
+        # ID, the server can check to see whether the original operation was received.
+        # If it was, the server ignores the second request. This behavior prevents
+        # clients from mistakenly creating duplicate commitments. The request ID must be
+        # a valid UUID, with the exception that zero UUID is not supported (00000000-
+        # 0000-0000-0000-000000000000).
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @details = args[:details] if args.key?(:details)
+          @request_id = args[:request_id] if args.key?(:request_id)
+        end
+      end
+      
+      # A route defines a path from VM instances within a spoke to a specific
+      # destination resource. Only VPC spokes have routes.
+      class Route
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time the route was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # An optional description of the route.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The destination IP address range.
+        # Corresponds to the JSON property `ipCidrRange`
+        # @return [String]
+        attr_accessor :ip_cidr_range
+      
+        # Optional labels in key:value format. For more information about labels, see [
+        # Requirements for labels](https://cloud.google.com/resource-manager/docs/
+        # creating-managing-labels#requirements).
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. The location of the route. Uses the following form: "projects/`
+        # project`/locations/`location`" Example: projects/1234/locations/us-central1
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # Immutable. The name of the route. Route names must be unique. They use the
+        # following form: `projects/`project_number`/locations/global/hubs/`hub`/
+        # routeTables/`route_table_id`/routes/`route_id``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Immutable. The destination VPC network for packets on this route.
+        # Corresponds to the JSON property `nextHopVpcNetwork`
+        # @return [Google::Apis::NetworkconnectivityV1::NextHopVpcNetwork]
+        attr_accessor :next_hop_vpc_network
+      
+        # Immutable. The spoke that this route leads to. Example: projects/12345/
+        # locations/global/spokes/SPOKE
+        # Corresponds to the JSON property `spoke`
+        # @return [String]
+        attr_accessor :spoke
+      
+        # Output only. The current lifecycle state of the route.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The route's type. Its type is determined by the properties of its
+        # IP address range.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Output only. The Google-generated UUID for the route. This value is unique
+        # across all Network Connectivity Center route resources. If a route is deleted
+        # and another with the same name is created, the new route is assigned a
+        # different unique_id.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. The time the route was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
+          @labels = args[:labels] if args.key?(:labels)
+          @location = args[:location] if args.key?(:location)
+          @name = args[:name] if args.key?(:name)
+          @next_hop_vpc_network = args[:next_hop_vpc_network] if args.key?(:next_hop_vpc_network)
+          @spoke = args[:spoke] if args.key?(:spoke)
+          @state = args[:state] if args.key?(:state)
+          @type = args[:type] if args.key?(:type)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # 
+      class RouteTable
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time the route table was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # An optional description of the route table.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional labels in key:value format. For more information about labels, see [
+        # Requirements for labels](https://cloud.google.com/resource-manager/docs/
+        # creating-managing-labels#requirements).
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Immutable. The name of the route table. Route Table names must be unique. They
+        # use the following form: `projects/`project_number`/locations/global/hubs/`hub`/
+        # routeTables/`route_table_id``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The current lifecycle state of this route table.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The Google-generated UUID for the route table. This value is
+        # unique across all route table resources. If a route table is deleted and
+        # another with the same name is created, the new route table is assigned a
+        # different unique_id.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. The time the route table was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # A router appliance instance is a Compute Engine virtual machine (VM) instance
       # that acts as a BGP speaker. A router appliance instance is specified by the
       # URI of the VM and the internal IP address of one of the VM's network
@@ -1451,7 +1835,7 @@ module Google
         end
       end
       
-      # The ServiceClass resource. Next id: 8
+      # The ServiceClass resource. Next id: 9
       class ServiceClass
         include Google::Apis::Core::Hashable
       
@@ -1464,6 +1848,12 @@ module Google
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
+      
+        # Optional. The etag is computed by the server, and may be sent on update and
+        # delete requests to ensure the client has an up-to-date value before proceeding.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
       
         # User-defined labels.
         # Corresponds to the JSON property `labels`
@@ -1501,6 +1891,7 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
+          @etag = args[:etag] if args.key?(:etag)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @service_class = args[:service_class] if args.key?(:service_class)
@@ -1509,7 +1900,7 @@ module Google
         end
       end
       
-      # The ServiceConnectionMap resource. Next id: 14
+      # The ServiceConnectionMap resource. Next id: 15
       class ServiceConnectionMap
         include Google::Apis::Core::Hashable
       
@@ -1532,6 +1923,12 @@ module Google
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
+      
+        # Optional. The etag is computed by the server, and may be sent on update and
+        # delete requests to ensure the client has an up-to-date value before proceeding.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
       
         # Output only. The infrastructure used for connections between consumers/
         # producers.
@@ -1589,6 +1986,7 @@ module Google
           @consumer_psc_connections = args[:consumer_psc_connections] if args.key?(:consumer_psc_connections)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
+          @etag = args[:etag] if args.key?(:etag)
           @infrastructure = args[:infrastructure] if args.key?(:infrastructure)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
@@ -1600,7 +1998,7 @@ module Google
         end
       end
       
-      # The ServiceConnectionPolicy resource. Next id: 11
+      # The ServiceConnectionPolicy resource. Next id: 12
       class ServiceConnectionPolicy
         include Google::Apis::Core::Hashable
       
@@ -1613,6 +2011,12 @@ module Google
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
+      
+        # Optional. The etag is computed by the server, and may be sent on update and
+        # delete requests to ensure the client has an up-to-date value before proceeding.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
       
         # Output only. The type of underlying resources used to create the connection.
         # Corresponds to the JSON property `infrastructure`
@@ -1671,6 +2075,7 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
+          @etag = args[:etag] if args.key?(:etag)
           @infrastructure = args[:infrastructure] if args.key?(:infrastructure)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
@@ -1682,7 +2087,7 @@ module Google
         end
       end
       
-      # The ServiceConnectionToken resource. Next id: 9
+      # The ServiceConnectionToken resource. Next id: 10
       class ServiceConnectionToken
         include Google::Apis::Core::Hashable
       
@@ -1695,6 +2100,12 @@ module Google
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
+      
+        # Optional. The etag is computed by the server, and may be sent on update and
+        # delete requests to ensure the client has an up-to-date value before proceeding.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
       
         # Output only. The time to which this token is valid.
         # Corresponds to the JSON property `expireTime`
@@ -1737,6 +2148,7 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
+          @etag = args[:etag] if args.key?(:etag)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
@@ -1845,6 +2257,11 @@ module Google
         # @return [Google::Apis::NetworkconnectivityV1::LinkedRouterApplianceInstances]
         attr_accessor :linked_router_appliance_instances
       
+        # An existing VPC network.
+        # Corresponds to the JSON property `linkedVpcNetwork`
+        # @return [Google::Apis::NetworkconnectivityV1::LinkedVpcNetwork]
+        attr_accessor :linked_vpc_network
+      
         # A collection of Cloud VPN tunnel resources. These resources should be
         # redundant HA VPN tunnels that all advertise the same prefixes to Google Cloud.
         # Alternatively, in a passive/active configuration, all tunnels should be
@@ -1859,6 +2276,16 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Output only. The reasons for current state of the spoke.
+        # Corresponds to the JSON property `reasons`
+        # @return [Array<Google::Apis::NetworkconnectivityV1::StateReason>]
+        attr_accessor :reasons
+      
+        # Output only. The type of resource associated with the spoke.
+        # Corresponds to the JSON property `spokeType`
+        # @return [String]
+        attr_accessor :spoke_type
       
         # Output only. The current lifecycle state of this spoke.
         # Corresponds to the JSON property `state`
@@ -1889,11 +2316,162 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @linked_interconnect_attachments = args[:linked_interconnect_attachments] if args.key?(:linked_interconnect_attachments)
           @linked_router_appliance_instances = args[:linked_router_appliance_instances] if args.key?(:linked_router_appliance_instances)
+          @linked_vpc_network = args[:linked_vpc_network] if args.key?(:linked_vpc_network)
           @linked_vpn_tunnels = args[:linked_vpn_tunnels] if args.key?(:linked_vpn_tunnels)
           @name = args[:name] if args.key?(:name)
+          @reasons = args[:reasons] if args.key?(:reasons)
+          @spoke_type = args[:spoke_type] if args.key?(:spoke_type)
           @state = args[:state] if args.key?(:state)
           @unique_id = args[:unique_id] if args.key?(:unique_id)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The number of spokes that are in a particular state and associated with a
+      # given hub.
+      class SpokeStateCount
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The total number of spokes that are in this state and associated
+        # with a given hub.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        # Output only. The state of the spokes.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @count = args[:count] if args.key?(:count)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # The number of spokes in the hub that are inactive for this reason.
+      class SpokeStateReasonCount
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The total number of spokes that are inactive for a particular
+        # reason and associated with a given hub.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        # Output only. The reason that a spoke is inactive.
+        # Corresponds to the JSON property `stateReasonCode`
+        # @return [String]
+        attr_accessor :state_reason_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @count = args[:count] if args.key?(:count)
+          @state_reason_code = args[:state_reason_code] if args.key?(:state_reason_code)
+        end
+      end
+      
+      # Summarizes information about the spokes associated with a hub. The summary
+      # includes a count of spokes according to type and according to state. If any
+      # spokes are inactive, the summary also lists the reasons they are inactive,
+      # including a count for each reason.
+      class SpokeSummary
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Counts the number of spokes that are in each state and associated
+        # with a given hub.
+        # Corresponds to the JSON property `spokeStateCounts`
+        # @return [Array<Google::Apis::NetworkconnectivityV1::SpokeStateCount>]
+        attr_accessor :spoke_state_counts
+      
+        # Output only. Counts the number of spokes that are inactive for each possible
+        # reason and associated with a given hub.
+        # Corresponds to the JSON property `spokeStateReasonCounts`
+        # @return [Array<Google::Apis::NetworkconnectivityV1::SpokeStateReasonCount>]
+        attr_accessor :spoke_state_reason_counts
+      
+        # Output only. Counts the number of spokes of each type that are associated with
+        # a specific hub.
+        # Corresponds to the JSON property `spokeTypeCounts`
+        # @return [Array<Google::Apis::NetworkconnectivityV1::SpokeTypeCount>]
+        attr_accessor :spoke_type_counts
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @spoke_state_counts = args[:spoke_state_counts] if args.key?(:spoke_state_counts)
+          @spoke_state_reason_counts = args[:spoke_state_reason_counts] if args.key?(:spoke_state_reason_counts)
+          @spoke_type_counts = args[:spoke_type_counts] if args.key?(:spoke_type_counts)
+        end
+      end
+      
+      # The number of spokes of a given type that are associated with a specific hub.
+      # The type indicates what kind of resource is associated with the spoke.
+      class SpokeTypeCount
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The total number of spokes of this type that are associated with
+        # the hub.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        # Output only. The type of the spokes.
+        # Corresponds to the JSON property `spokeType`
+        # @return [String]
+        attr_accessor :spoke_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @count = args[:count] if args.key?(:count)
+          @spoke_type = args[:spoke_type] if args.key?(:spoke_type)
+        end
+      end
+      
+      # The reason a spoke is inactive.
+      class StateReason
+        include Google::Apis::Core::Hashable
+      
+        # The code associated with this reason.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # Human-readable details about this reason.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Additional information provided by the user in the RejectSpoke call.
+        # Corresponds to the JSON property `userDetails`
+        # @return [String]
+        attr_accessor :user_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @message = args[:message] if args.key?(:message)
+          @user_details = args[:user_details] if args.key?(:user_details)
         end
       end
       
