@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AttachedGif
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Attachment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -604,6 +610,13 @@ module Google
           property :type, as: 'type'
           property :user_mention, as: 'userMention', class: Google::Apis::ChatV1::UserMentionMetadata, decorator: Google::Apis::ChatV1::UserMentionMetadata::Representation
       
+        end
+      end
+      
+      class AttachedGif
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :uri, as: 'uri'
         end
       end
       
@@ -1330,6 +1343,8 @@ module Google
           collection :annotations, as: 'annotations', class: Google::Apis::ChatV1::Annotation, decorator: Google::Apis::ChatV1::Annotation::Representation
       
           property :argument_text, as: 'argumentText'
+          collection :attached_gifs, as: 'attachedGifs', class: Google::Apis::ChatV1::AttachedGif, decorator: Google::Apis::ChatV1::AttachedGif::Representation
+      
           collection :attachment, as: 'attachment', class: Google::Apis::ChatV1::Attachment, decorator: Google::Apis::ChatV1::Attachment::Representation
       
           collection :cards, as: 'cards', class: Google::Apis::ChatV1::Card, decorator: Google::Apis::ChatV1::Card::Representation

@@ -160,6 +160,25 @@ module Google
         end
       end
       
+      # A GIF image that's specified by a URL.
+      class AttachedGif
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The URL that hosts the GIF image.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
       # An attachment in Google Chat.
       class Attachment
         include Google::Apis::Core::Hashable
@@ -3076,6 +3095,11 @@ module Google
         # @return [String]
         attr_accessor :argument_text
       
+        # Output only. GIF images that are attached to the message.
+        # Corresponds to the JSON property `attachedGifs`
+        # @return [Array<Google::Apis::ChatV1::AttachedGif>]
+        attr_accessor :attached_gifs
+      
         # User-uploaded attachment.
         # Corresponds to the JSON property `attachment`
         # @return [Array<Google::Apis::ChatV1::Attachment>]
@@ -3215,6 +3239,7 @@ module Google
           @action_response = args[:action_response] if args.key?(:action_response)
           @annotations = args[:annotations] if args.key?(:annotations)
           @argument_text = args[:argument_text] if args.key?(:argument_text)
+          @attached_gifs = args[:attached_gifs] if args.key?(:attached_gifs)
           @attachment = args[:attachment] if args.key?(:attachment)
           @cards = args[:cards] if args.key?(:cards)
           @cards_v2 = args[:cards_v2] if args.key?(:cards_v2)

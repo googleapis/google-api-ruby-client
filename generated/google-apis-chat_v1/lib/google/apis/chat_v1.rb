@@ -36,6 +36,9 @@ module Google
       # Delete conversations and spaces & remove access to associated files in Google Chat
       AUTH_CHAT_DELETE = 'https://www.googleapis.com/auth/chat.delete'
 
+      # Import spaces, messages, and memberships into Google Chat.
+      AUTH_CHAT_IMPORT = 'https://www.googleapis.com/auth/chat.import'
+
       # View, add, and remove members from conversations in Google Chat
       AUTH_CHAT_MEMBERSHIPS = 'https://www.googleapis.com/auth/chat.memberships'
 
