@@ -232,6 +232,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GenerateTcpProxyScriptRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudClouddmsV1OperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -520,6 +526,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TcpProxyScript
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TestIamPermissionsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -697,6 +709,7 @@ module Google
           property :data_disk_type, as: 'dataDiskType'
           hash :database_flags, as: 'databaseFlags'
           property :database_version, as: 'databaseVersion'
+          property :edition, as: 'edition'
           property :ip_config, as: 'ipConfig', class: Google::Apis::DatamigrationV1::SqlIpConfig, decorator: Google::Apis::DatamigrationV1::SqlIpConfig::Representation
       
           property :root_password, as: 'rootPassword'
@@ -977,6 +990,16 @@ module Google
           property :vm_port, as: 'vmPort'
           property :vm_selection_config, as: 'vmSelectionConfig', class: Google::Apis::DatamigrationV1::VmSelectionConfig, decorator: Google::Apis::DatamigrationV1::VmSelectionConfig::Representation
       
+        end
+      end
+      
+      class GenerateTcpProxyScriptRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :vm_machine_type, as: 'vmMachineType'
+          property :vm_name, as: 'vmName'
+          property :vm_subnet, as: 'vmSubnet'
+          property :vm_zone, as: 'vmZone'
         end
       end
       
@@ -1469,6 +1492,13 @@ module Google
       
           collection :triggers, as: 'triggers', class: Google::Apis::DatamigrationV1::TriggerEntity, decorator: Google::Apis::DatamigrationV1::TriggerEntity::Representation
       
+        end
+      end
+      
+      class TcpProxyScript
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :script, as: 'script'
         end
       end
       

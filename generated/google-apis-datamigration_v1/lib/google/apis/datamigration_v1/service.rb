@@ -659,6 +659,9 @@ module Google
         # Deletes a single conversion workspace.
         # @param [String] name
         #   Required. Name of the conversion workspace resource to delete.
+        # @param [Boolean] force
+        #   Force delete the conversion workspace, even if there's a running migration
+        #   that is using the workspace.
         # @param [String] request_id
         #   A unique ID used to identify the request. If the server receives two requests
         #   with the same ID, then the second request is ignored. It is recommended to
@@ -682,11 +685,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_conversion_workspace(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_project_location_conversion_workspace(name, force: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::DatamigrationV1::Operation::Representation
           command.response_class = Google::Apis::DatamigrationV1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['force'] = force unless force.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1299,6 +1303,40 @@ module Google
           command.request_object = generate_ssh_script_request_object
           command.response_representation = Google::Apis::DatamigrationV1::SshScript::Representation
           command.response_class = Google::Apis::DatamigrationV1::SshScript
+          command.params['migrationJob'] = migration_job unless migration_job.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Generate a TCP Proxy configuration script to configure a cloud-hosted VM
+        # running a TCP Proxy.
+        # @param [String] migration_job
+        #   Name of the migration job resource to generate the TCP Proxy script.
+        # @param [Google::Apis::DatamigrationV1::GenerateTcpProxyScriptRequest] generate_tcp_proxy_script_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatamigrationV1::TcpProxyScript] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatamigrationV1::TcpProxyScript]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def generate_migration_job_tcp_proxy_script(migration_job, generate_tcp_proxy_script_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+migrationJob}:generateTcpProxyScript', options)
+          command.request_representation = Google::Apis::DatamigrationV1::GenerateTcpProxyScriptRequest::Representation
+          command.request_object = generate_tcp_proxy_script_request_object
+          command.response_representation = Google::Apis::DatamigrationV1::TcpProxyScript::Representation
+          command.response_class = Google::Apis::DatamigrationV1::TcpProxyScript
           command.params['migrationJob'] = migration_job unless migration_job.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
