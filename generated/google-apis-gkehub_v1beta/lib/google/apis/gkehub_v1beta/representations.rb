@@ -190,12 +190,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ConfigManagementManaged
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ConfigManagementMembershipSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -340,6 +334,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GenerateMembershipRbacRoleBindingYamlResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleRpcStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -401,6 +401,12 @@ module Google
       end
       
       class ListMembershipBindingsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListMembershipRbacRoleBindingsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -497,6 +503,12 @@ module Google
       end
       
       class OperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Origin
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -810,13 +822,12 @@ module Google
           property :enabled, as: 'enabled'
           property :git, as: 'git', class: Google::Apis::GkehubV1beta::ConfigManagementGitConfig, decorator: Google::Apis::GkehubV1beta::ConfigManagementGitConfig::Representation
       
-          property :managed, as: 'managed', class: Google::Apis::GkehubV1beta::ConfigManagementManaged, decorator: Google::Apis::GkehubV1beta::ConfigManagementManaged::Representation
-      
           property :metrics_gcp_service_account_email, as: 'metricsGcpServiceAccountEmail'
           property :oci, as: 'oci', class: Google::Apis::GkehubV1beta::ConfigManagementOciConfig, decorator: Google::Apis::GkehubV1beta::ConfigManagementOciConfig::Representation
       
           property :prevent_drift, as: 'preventDrift'
           property :source_format, as: 'sourceFormat'
+          property :stop_syncing, as: 'stopSyncing'
         end
       end
       
@@ -952,14 +963,6 @@ module Google
         end
       end
       
-      class ConfigManagementManaged
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :enabled, as: 'enabled'
-          property :stop_syncing, as: 'stopSyncing'
-        end
-      end
-      
       class ConfigManagementMembershipSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -970,6 +973,7 @@ module Google
       
           property :hierarchy_controller, as: 'hierarchyController', class: Google::Apis::GkehubV1beta::ConfigManagementHierarchyControllerConfig, decorator: Google::Apis::GkehubV1beta::ConfigManagementHierarchyControllerConfig::Representation
       
+          property :management, as: 'management'
           property :policy_controller, as: 'policyController', class: Google::Apis::GkehubV1beta::ConfigManagementPolicyController, decorator: Google::Apis::GkehubV1beta::ConfigManagementPolicyController::Representation
       
           property :version, as: 'version'
@@ -1213,6 +1217,13 @@ module Google
         end
       end
       
+      class GenerateMembershipRbacRoleBindingYamlResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :role_bindings_yaml, as: 'roleBindingsYaml'
+        end
+      end
+      
       class GoogleRpcStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1329,6 +1340,15 @@ module Google
         end
       end
       
+      class ListMembershipRbacRoleBindingsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :rbacrolebindings, as: 'rbacrolebindings', class: Google::Apis::GkehubV1beta::RbacRoleBinding, decorator: Google::Apis::GkehubV1beta::RbacRoleBinding::Representation
+      
+        end
+      end
+      
       class ListNamespacesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1407,12 +1427,13 @@ module Google
       
           property :configmanagement, as: 'configmanagement', class: Google::Apis::GkehubV1beta::ConfigManagementMembershipSpec, decorator: Google::Apis::GkehubV1beta::ConfigManagementMembershipSpec::Representation
       
-          property :fleet_inherited, as: 'fleetInherited'
           property :fleetobservability, as: 'fleetobservability', class: Google::Apis::GkehubV1beta::FleetObservabilityMembershipSpec, decorator: Google::Apis::GkehubV1beta::FleetObservabilityMembershipSpec::Representation
       
           property :identityservice, as: 'identityservice', class: Google::Apis::GkehubV1beta::IdentityServiceMembershipSpec, decorator: Google::Apis::GkehubV1beta::IdentityServiceMembershipSpec::Representation
       
           property :mesh, as: 'mesh', class: Google::Apis::GkehubV1beta::ServiceMeshMembershipSpec, decorator: Google::Apis::GkehubV1beta::ServiceMeshMembershipSpec::Representation
+      
+          property :origin, as: 'origin', class: Google::Apis::GkehubV1beta::Origin, decorator: Google::Apis::GkehubV1beta::Origin::Representation
       
           property :policycontroller, as: 'policycontroller', class: Google::Apis::GkehubV1beta::PolicyControllerMembershipSpec, decorator: Google::Apis::GkehubV1beta::PolicyControllerMembershipSpec::Representation
       
@@ -1508,6 +1529,13 @@ module Google
           property :status_detail, as: 'statusDetail'
           property :target, as: 'target'
           property :verb, as: 'verb'
+        end
+      end
+      
+      class Origin
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
         end
       end
       
