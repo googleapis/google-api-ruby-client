@@ -1397,6 +1397,25 @@ module Google
         end
       end
       
+      # Configuration of all network bandwidth tiers
+      class ClusterNetworkPerformanceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the total network bandwidth tier for the NodePool.
+        # Corresponds to the JSON property `totalEgressBandwidthTier`
+        # @return [String]
+        attr_accessor :total_egress_bandwidth_tier
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @total_egress_bandwidth_tier = args[:total_egress_bandwidth_tier] if args.key?(:total_egress_bandwidth_tier)
+        end
+      end
+      
       # Telemetry integration for the cluster.
       class ClusterTelemetry
         include Google::Apis::Core::Hashable
@@ -1613,6 +1632,11 @@ module Google
         # @return [String]
         attr_accessor :desired_monitoring_service
       
+        # Configuration of all network bandwidth tiers
+        # Corresponds to the JSON property `desiredNetworkPerformanceConfig`
+        # @return [Google::Apis::ContainerV1beta1::ClusterNetworkPerformanceConfig]
+        attr_accessor :desired_network_performance_config
+      
         # Collection of Compute Engine network tags that can be applied to a node's
         # underlying VM instance. (See `tags` field in [`NodeConfig`](/kubernetes-engine/
         # docs/reference/rest/v1/NodeConfig)).
@@ -1794,6 +1818,7 @@ module Google
           @desired_mesh_certificates = args[:desired_mesh_certificates] if args.key?(:desired_mesh_certificates)
           @desired_monitoring_config = args[:desired_monitoring_config] if args.key?(:desired_monitoring_config)
           @desired_monitoring_service = args[:desired_monitoring_service] if args.key?(:desired_monitoring_service)
+          @desired_network_performance_config = args[:desired_network_performance_config] if args.key?(:desired_network_performance_config)
           @desired_node_pool_auto_config_network_tags = args[:desired_node_pool_auto_config_network_tags] if args.key?(:desired_node_pool_auto_config_network_tags)
           @desired_node_pool_autoscaling = args[:desired_node_pool_autoscaling] if args.key?(:desired_node_pool_autoscaling)
           @desired_node_pool_id = args[:desired_node_pool_id] if args.key?(:desired_node_pool_id)
@@ -3794,6 +3819,11 @@ module Google
         # @return [String]
         attr_accessor :network
       
+        # Configuration of all network bandwidth tiers
+        # Corresponds to the JSON property `networkPerformanceConfig`
+        # @return [Google::Apis::ContainerV1beta1::ClusterNetworkPerformanceConfig]
+        attr_accessor :network_performance_config
+      
         # The desired state of IPv6 connectivity to Google Services. By default, no
         # private IPv6 access to or from Google Services (all access will be via IPv4)
         # Corresponds to the JSON property `privateIpv6GoogleAccess`
@@ -3826,6 +3856,7 @@ module Google
           @enable_l4ilb_subsetting = args[:enable_l4ilb_subsetting] if args.key?(:enable_l4ilb_subsetting)
           @gateway_api_config = args[:gateway_api_config] if args.key?(:gateway_api_config)
           @network = args[:network] if args.key?(:network)
+          @network_performance_config = args[:network_performance_config] if args.key?(:network_performance_config)
           @private_ipv6_google_access = args[:private_ipv6_google_access] if args.key?(:private_ipv6_google_access)
           @service_external_ips_config = args[:service_external_ips_config] if args.key?(:service_external_ips_config)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
@@ -4135,7 +4166,7 @@ module Google
         attr_accessor :oauth_scopes
       
         # Whether the nodes are created as preemptible VM instances. See: https://cloud.
-        # google.com/compute/docs/instances/preemptible for more inforamtion about
+        # google.com/compute/docs/instances/preemptible for more information about
         # preemptible VM instances.
         # Corresponds to the JSON property `preemptible`
         # @return [Boolean]
