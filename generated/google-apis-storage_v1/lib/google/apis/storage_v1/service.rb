@@ -1191,7 +1191,8 @@ module Google
         #   Name of a bucket.
         # @param [String] object
         #   Name of the object. For information about how to URL encode object names to be
-        #   path safe, see Encoding URI Path Parts.
+        #   path safe, see [Encoding URI Path Parts](http://cloud/storage/docs/request-
+        #   endpoints#encoding).
         # @param [String] entity
         #   The entity holding the permission. Can be user-userId, user-emailAddress,
         #   group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers.
@@ -1237,7 +1238,8 @@ module Google
         #   Name of a bucket.
         # @param [String] object
         #   Name of the object. For information about how to URL encode object names to be
-        #   path safe, see Encoding URI Path Parts.
+        #   path safe, see [Encoding URI Path Parts](http://cloud/storage/docs/request-
+        #   endpoints#encoding).
         # @param [String] entity
         #   The entity holding the permission. Can be user-userId, user-emailAddress,
         #   group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers.
@@ -1285,7 +1287,8 @@ module Google
         #   Name of a bucket.
         # @param [String] object
         #   Name of the object. For information about how to URL encode object names to be
-        #   path safe, see Encoding URI Path Parts.
+        #   path safe, see [Encoding URI Path Parts](http://cloud/storage/docs/request-
+        #   endpoints#encoding).
         # @param [Google::Apis::StorageV1::ObjectAccessControl] object_access_control_object
         # @param [Fixnum] generation
         #   If present, selects a specific revision of this object (as opposed to the
@@ -1332,7 +1335,8 @@ module Google
         #   Name of a bucket.
         # @param [String] object
         #   Name of the object. For information about how to URL encode object names to be
-        #   path safe, see Encoding URI Path Parts.
+        #   path safe, see [Encoding URI Path Parts](http://cloud/storage/docs/request-
+        #   endpoints#encoding).
         # @param [Fixnum] generation
         #   If present, selects a specific revision of this object (as opposed to the
         #   latest version, the default).
@@ -1376,7 +1380,8 @@ module Google
         #   Name of a bucket.
         # @param [String] object
         #   Name of the object. For information about how to URL encode object names to be
-        #   path safe, see Encoding URI Path Parts.
+        #   path safe, see [Encoding URI Path Parts](http://cloud/storage/docs/request-
+        #   endpoints#encoding).
         # @param [String] entity
         #   The entity holding the permission. Can be user-userId, user-emailAddress,
         #   group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers.
@@ -1427,7 +1432,8 @@ module Google
         #   Name of a bucket.
         # @param [String] object
         #   Name of the object. For information about how to URL encode object names to be
-        #   path safe, see Encoding URI Path Parts.
+        #   path safe, see [Encoding URI Path Parts](http://cloud/storage/docs/request-
+        #   endpoints#encoding).
         # @param [String] entity
         #   The entity holding the permission. Can be user-userId, user-emailAddress,
         #   group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers.
@@ -1479,7 +1485,8 @@ module Google
         #   stored in this bucket.
         # @param [String] destination_object
         #   Name of the new object. For information about how to URL encode object names
-        #   to be path safe, see Encoding URI Path Parts.
+        #   to be path safe, see [Encoding URI Path Parts](http://cloud/storage/docs/
+        #   request-endpoints#encoding).
         # @param [Google::Apis::StorageV1::ComposeRequest] compose_request_object
         # @param [String] destination_predefined_acl
         #   Apply a predefined set of access controls to the destination object.
@@ -1539,11 +1546,13 @@ module Google
         #   Name of the bucket in which to find the source object.
         # @param [String] source_object
         #   Name of the source object. For information about how to URL encode object
-        #   names to be path safe, see Encoding URI Path Parts.
+        #   names to be path safe, see [Encoding URI Path Parts](http://cloud/storage/docs/
+        #   request-endpoints#encoding).
         # @param [String] destination_bucket
         #   Name of the bucket in which to store the new object. Overrides the provided
         #   object metadata's bucket value, if any.For information about how to URL encode
-        #   object names to be path safe, see Encoding URI Path Parts.
+        #   object names to be path safe, see [Encoding URI Path Parts](http://cloud/
+        #   storage/docs/request-endpoints#encoding).
         # @param [String] destination_object
         #   Name of the new object. Required when the object metadata is not otherwise
         #   provided. Overrides the object metadata's name value, if any.
@@ -1643,7 +1652,8 @@ module Google
         #   Name of the bucket in which the object resides.
         # @param [String] object
         #   Name of the object. For information about how to URL encode object names to be
-        #   path safe, see Encoding URI Path Parts.
+        #   path safe, see [Encoding URI Path Parts](http://cloud/storage/docs/request-
+        #   endpoints#encoding).
         # @param [Fixnum] generation
         #   If present, permanently deletes a specific revision of this object (as opposed
         #   to the latest version, the default).
@@ -1704,7 +1714,8 @@ module Google
         #   Name of the bucket in which the object resides.
         # @param [String] object
         #   Name of the object. For information about how to URL encode object names to be
-        #   path safe, see Encoding URI Path Parts.
+        #   path safe, see [Encoding URI Path Parts](http://cloud/storage/docs/request-
+        #   endpoints#encoding).
         # @param [Fixnum] generation
         #   If present, selects a specific revision of this object (as opposed to the
         #   latest version, the default).
@@ -1778,7 +1789,8 @@ module Google
         #   Name of the bucket in which the object resides.
         # @param [String] object
         #   Name of the object. For information about how to URL encode object names to be
-        #   path safe, see Encoding URI Path Parts.
+        #   path safe, see [Encoding URI Path Parts](http://cloud/storage/docs/request-
+        #   endpoints#encoding).
         # @param [Fixnum] generation
         #   If present, selects a specific revision of this object (as opposed to the
         #   latest version, the default).
@@ -1849,8 +1861,8 @@ module Google
         # @param [String] name
         #   Name of the object. Required when the object metadata is not otherwise
         #   provided. Overrides the object metadata's name value, if any. For information
-        #   about how to URL encode object names to be path safe, see Encoding URI Path
-        #   Parts.
+        #   about how to URL encode object names to be path safe, see [Encoding URI Path
+        #   Parts](http://cloud/storage/docs/request-endpoints#encoding).
         # @param [String] predefined_acl
         #   Apply a predefined set of access controls to this object.
         # @param [String] projection
@@ -1996,7 +2008,8 @@ module Google
         #   Name of the bucket in which the object resides.
         # @param [String] object
         #   Name of the object. For information about how to URL encode object names to be
-        #   path safe, see Encoding URI Path Parts.
+        #   path safe, see [Encoding URI Path Parts](http://cloud/storage/docs/request-
+        #   endpoints#encoding).
         # @param [Google::Apis::StorageV1::Object] object_object
         # @param [Fixnum] generation
         #   If present, selects a specific revision of this object (as opposed to the
@@ -2069,15 +2082,16 @@ module Google
         #   Name of the bucket in which to find the source object.
         # @param [String] source_object
         #   Name of the source object. For information about how to URL encode object
-        #   names to be path safe, see Encoding URI Path Parts.
+        #   names to be path safe, see [Encoding URI Path Parts](http://cloud/storage/docs/
+        #   request-endpoints#encoding).
         # @param [String] destination_bucket
         #   Name of the bucket in which to store the new object. Overrides the provided
         #   object metadata's bucket value, if any.
         # @param [String] destination_object
         #   Name of the new object. Required when the object metadata is not otherwise
         #   provided. Overrides the object metadata's name value, if any. For information
-        #   about how to URL encode object names to be path safe, see Encoding URI Path
-        #   Parts.
+        #   about how to URL encode object names to be path safe, see [Encoding URI Path
+        #   Parts](http://cloud/storage/docs/request-endpoints#encoding).
         # @param [Google::Apis::StorageV1::Object] object_object
         # @param [String] destination_kms_key_name
         #   Resource name of the Cloud KMS key, of the form projects/my-project/locations/
@@ -2188,7 +2202,8 @@ module Google
         #   Name of the bucket in which the object resides.
         # @param [String] object
         #   Name of the object. For information about how to URL encode object names to be
-        #   path safe, see Encoding URI Path Parts.
+        #   path safe, see [Encoding URI Path Parts](http://cloud/storage/docs/request-
+        #   endpoints#encoding).
         # @param [Google::Apis::StorageV1::Policy] policy_object
         # @param [Fixnum] generation
         #   If present, selects a specific revision of this object (as opposed to the
@@ -2236,7 +2251,8 @@ module Google
         #   Name of the bucket in which the object resides.
         # @param [String] object
         #   Name of the object. For information about how to URL encode object names to be
-        #   path safe, see Encoding URI Path Parts.
+        #   path safe, see [Encoding URI Path Parts](http://cloud/storage/docs/request-
+        #   endpoints#encoding).
         # @param [Array<String>, String] permissions
         #   Permissions to test.
         # @param [Fixnum] generation
@@ -2283,7 +2299,8 @@ module Google
         #   Name of the bucket in which the object resides.
         # @param [String] object
         #   Name of the object. For information about how to URL encode object names to be
-        #   path safe, see Encoding URI Path Parts.
+        #   path safe, see [Encoding URI Path Parts](http://cloud/storage/docs/request-
+        #   endpoints#encoding).
         # @param [Google::Apis::StorageV1::Object] object_object
         # @param [Fixnum] generation
         #   If present, selects a specific revision of this object (as opposed to the
