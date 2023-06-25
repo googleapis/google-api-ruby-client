@@ -1,0 +1,7 @@
+{
+    "api_id": "checks:v1alpha",
+    "name_pretty": "Checks API",
+    "distribution_name": "google-apis-checks_v1alpha",
+    "language": "ruby",
+    "library_type": "REST"
+}
