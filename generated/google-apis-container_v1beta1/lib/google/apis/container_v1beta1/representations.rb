@@ -154,6 +154,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ClusterNetworkPerformanceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ClusterTelemetry
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1405,6 +1411,13 @@ module Google
         end
       end
       
+      class ClusterNetworkPerformanceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :total_egress_bandwidth_tier, as: 'totalEgressBandwidthTier'
+        end
+      end
+      
       class ClusterTelemetry
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1469,6 +1482,8 @@ module Google
           property :desired_monitoring_config, as: 'desiredMonitoringConfig', class: Google::Apis::ContainerV1beta1::MonitoringConfig, decorator: Google::Apis::ContainerV1beta1::MonitoringConfig::Representation
       
           property :desired_monitoring_service, as: 'desiredMonitoringService'
+          property :desired_network_performance_config, as: 'desiredNetworkPerformanceConfig', class: Google::Apis::ContainerV1beta1::ClusterNetworkPerformanceConfig, decorator: Google::Apis::ContainerV1beta1::ClusterNetworkPerformanceConfig::Representation
+      
           property :desired_node_pool_auto_config_network_tags, as: 'desiredNodePoolAutoConfigNetworkTags', class: Google::Apis::ContainerV1beta1::NetworkTags, decorator: Google::Apis::ContainerV1beta1::NetworkTags::Representation
       
           property :desired_node_pool_autoscaling, as: 'desiredNodePoolAutoscaling', class: Google::Apis::ContainerV1beta1::NodePoolAutoscaling, decorator: Google::Apis::ContainerV1beta1::NodePoolAutoscaling::Representation
@@ -2087,6 +2102,8 @@ module Google
           property :gateway_api_config, as: 'gatewayApiConfig', class: Google::Apis::ContainerV1beta1::GatewayApiConfig, decorator: Google::Apis::ContainerV1beta1::GatewayApiConfig::Representation
       
           property :network, as: 'network'
+          property :network_performance_config, as: 'networkPerformanceConfig', class: Google::Apis::ContainerV1beta1::ClusterNetworkPerformanceConfig, decorator: Google::Apis::ContainerV1beta1::ClusterNetworkPerformanceConfig::Representation
+      
           property :private_ipv6_google_access, as: 'privateIpv6GoogleAccess'
           property :service_external_ips_config, as: 'serviceExternalIpsConfig', class: Google::Apis::ContainerV1beta1::ServiceExternalIPsConfig, decorator: Google::Apis::ContainerV1beta1::ServiceExternalIPsConfig::Representation
       
