@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoModule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogetArtifact
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -388,6 +394,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UploadGoModuleMediaResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UploadGoModuleMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UploadGoModuleRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UploadGoogetArtifactMediaResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -554,6 +578,16 @@ module Google
           property :expression, as: 'expression'
           property :location, as: 'location'
           property :title, as: 'title'
+        end
+      end
+      
+      class GoModule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :name, as: 'name'
+          property :update_time, as: 'updateTime'
+          property :version, as: 'version'
         end
       end
       
@@ -1038,6 +1072,26 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :apt_artifacts, as: 'aptArtifacts', class: Google::Apis::ArtifactregistryV1::AptArtifact, decorator: Google::Apis::ArtifactregistryV1::AptArtifact::Representation
       
+        end
+      end
+      
+      class UploadGoModuleMediaResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :operation, as: 'operation', class: Google::Apis::ArtifactregistryV1::Operation, decorator: Google::Apis::ArtifactregistryV1::Operation::Representation
+      
+        end
+      end
+      
+      class UploadGoModuleMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class UploadGoModuleRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
