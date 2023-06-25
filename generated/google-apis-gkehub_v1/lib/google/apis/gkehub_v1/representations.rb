@@ -172,12 +172,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ConfigManagementManaged
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ConfigManagementMembershipSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -514,6 +508,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Origin
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Policy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -717,13 +717,12 @@ module Google
           property :enabled, as: 'enabled'
           property :git, as: 'git', class: Google::Apis::GkehubV1::ConfigManagementGitConfig, decorator: Google::Apis::GkehubV1::ConfigManagementGitConfig::Representation
       
-          property :managed, as: 'managed', class: Google::Apis::GkehubV1::ConfigManagementManaged, decorator: Google::Apis::GkehubV1::ConfigManagementManaged::Representation
-      
           property :metrics_gcp_service_account_email, as: 'metricsGcpServiceAccountEmail'
           property :oci, as: 'oci', class: Google::Apis::GkehubV1::ConfigManagementOciConfig, decorator: Google::Apis::GkehubV1::ConfigManagementOciConfig::Representation
       
           property :prevent_drift, as: 'preventDrift'
           property :source_format, as: 'sourceFormat'
+          property :stop_syncing, as: 'stopSyncing'
         end
       end
       
@@ -859,14 +858,6 @@ module Google
         end
       end
       
-      class ConfigManagementManaged
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :enabled, as: 'enabled'
-          property :stop_syncing, as: 'stopSyncing'
-        end
-      end
-      
       class ConfigManagementMembershipSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -875,6 +866,7 @@ module Google
       
           property :hierarchy_controller, as: 'hierarchyController', class: Google::Apis::GkehubV1::ConfigManagementHierarchyControllerConfig, decorator: Google::Apis::GkehubV1::ConfigManagementHierarchyControllerConfig::Representation
       
+          property :management, as: 'management'
           property :policy_controller, as: 'policyController', class: Google::Apis::GkehubV1::ConfigManagementPolicyController, decorator: Google::Apis::GkehubV1::ConfigManagementPolicyController::Representation
       
           property :version, as: 'version'
@@ -1380,12 +1372,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :configmanagement, as: 'configmanagement', class: Google::Apis::GkehubV1::ConfigManagementMembershipSpec, decorator: Google::Apis::GkehubV1::ConfigManagementMembershipSpec::Representation
       
-          property :fleet_inherited, as: 'fleetInherited'
           property :fleetobservability, as: 'fleetobservability', class: Google::Apis::GkehubV1::FleetObservabilityMembershipSpec, decorator: Google::Apis::GkehubV1::FleetObservabilityMembershipSpec::Representation
       
           property :identityservice, as: 'identityservice', class: Google::Apis::GkehubV1::IdentityServiceMembershipSpec, decorator: Google::Apis::GkehubV1::IdentityServiceMembershipSpec::Representation
       
           property :mesh, as: 'mesh', class: Google::Apis::GkehubV1::ServiceMeshMembershipSpec, decorator: Google::Apis::GkehubV1::ServiceMeshMembershipSpec::Representation
+      
+          property :origin, as: 'origin', class: Google::Apis::GkehubV1::Origin, decorator: Google::Apis::GkehubV1::Origin::Representation
       
         end
       end
@@ -1473,6 +1466,13 @@ module Google
           property :status_detail, as: 'statusDetail'
           property :target, as: 'target'
           property :verb, as: 'verb'
+        end
+      end
+      
+      class Origin
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
         end
       end
       
