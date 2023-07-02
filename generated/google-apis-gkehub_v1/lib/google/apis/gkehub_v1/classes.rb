@@ -1732,9 +1732,19 @@ module Google
         end
       end
       
-      # **Fleet Observability**: The Hub-wide input for the FleetObservability feature.
-      class FleetObservabilityFeatureSpec
+      # All error details of the fleet observability feature.
+      class FleetObservabilityFeatureError
         include Google::Apis::Core::Hashable
+      
+        # The code of the error.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # A human-readable description of the current status.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
       
         def initialize(**args)
            update!(**args)
@@ -1742,6 +1752,27 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @description = args[:description] if args.key?(:description)
+        end
+      end
+      
+      # **Fleet Observability**: The Hub-wide input for the FleetObservability feature.
+      class FleetObservabilityFeatureSpec
+        include Google::Apis::Core::Hashable
+      
+        # LoggingConfig defines the configuration for different types of logs.
+        # Corresponds to the JSON property `loggingConfig`
+        # @return [Google::Apis::GkehubV1::FleetObservabilityLoggingConfig]
+        attr_accessor :logging_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @logging_config = args[:logging_config] if args.key?(:logging_config)
         end
       end
       
@@ -1749,12 +1780,119 @@ module Google
       class FleetObservabilityFeatureState
         include Google::Apis::Core::Hashable
       
+        # Feature state for logging feature.
+        # Corresponds to the JSON property `logging`
+        # @return [Google::Apis::GkehubV1::FleetObservabilityFleetObservabilityLoggingState]
+        attr_accessor :logging
+      
+        # Feature state for monitoring feature.
+        # Corresponds to the JSON property `monitoring`
+        # @return [Google::Apis::GkehubV1::FleetObservabilityFleetObservabilityMonitoringState]
+        attr_accessor :monitoring
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @logging = args[:logging] if args.key?(:logging)
+          @monitoring = args[:monitoring] if args.key?(:monitoring)
+        end
+      end
+      
+      # Base state for fleet observability feature.
+      class FleetObservabilityFleetObservabilityBaseFeatureState
+        include Google::Apis::Core::Hashable
+      
+        # The high-level, machine-readable status of this Feature.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # Errors after reconciling the monitoring and logging feature if the code is not
+        # OK.
+        # Corresponds to the JSON property `errors`
+        # @return [Array<Google::Apis::GkehubV1::FleetObservabilityFeatureError>]
+        attr_accessor :errors
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @errors = args[:errors] if args.key?(:errors)
+        end
+      end
+      
+      # Feature state for logging feature.
+      class FleetObservabilityFleetObservabilityLoggingState
+        include Google::Apis::Core::Hashable
+      
+        # Base state for fleet observability feature.
+        # Corresponds to the JSON property `defaultLog`
+        # @return [Google::Apis::GkehubV1::FleetObservabilityFleetObservabilityBaseFeatureState]
+        attr_accessor :default_log
+      
+        # Base state for fleet observability feature.
+        # Corresponds to the JSON property `scopeLog`
+        # @return [Google::Apis::GkehubV1::FleetObservabilityFleetObservabilityBaseFeatureState]
+        attr_accessor :scope_log
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_log = args[:default_log] if args.key?(:default_log)
+          @scope_log = args[:scope_log] if args.key?(:scope_log)
+        end
+      end
+      
+      # Feature state for monitoring feature.
+      class FleetObservabilityFleetObservabilityMonitoringState
+        include Google::Apis::Core::Hashable
+      
+        # Base state for fleet observability feature.
+        # Corresponds to the JSON property `state`
+        # @return [Google::Apis::GkehubV1::FleetObservabilityFleetObservabilityBaseFeatureState]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # LoggingConfig defines the configuration for different types of logs.
+      class FleetObservabilityLoggingConfig
+        include Google::Apis::Core::Hashable
+      
+        # RoutingConfig configures the behaviour of fleet logging feature.
+        # Corresponds to the JSON property `defaultConfig`
+        # @return [Google::Apis::GkehubV1::FleetObservabilityRoutingConfig]
+        attr_accessor :default_config
+      
+        # RoutingConfig configures the behaviour of fleet logging feature.
+        # Corresponds to the JSON property `fleetScopeLogsConfig`
+        # @return [Google::Apis::GkehubV1::FleetObservabilityRoutingConfig]
+        attr_accessor :fleet_scope_logs_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_config = args[:default_config] if args.key?(:default_config)
+          @fleet_scope_logs_config = args[:fleet_scope_logs_config] if args.key?(:fleet_scope_logs_config)
         end
       end
       
@@ -1783,6 +1921,25 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # RoutingConfig configures the behaviour of fleet logging feature.
+      class FleetObservabilityRoutingConfig
+        include Google::Apis::Core::Hashable
+      
+        # mode configures the logs routing mode.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mode = args[:mode] if args.key?(:mode)
         end
       end
       
