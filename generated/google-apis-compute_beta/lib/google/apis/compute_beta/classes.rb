@@ -2846,6 +2846,16 @@ module Google
         # @return [Float]
         attr_accessor :max_utilization
       
+        # This field indicates whether this backend should be fully utilized before
+        # sending traffic to backends with default preference. The possible values are: -
+        # PREFERRED: Backends with this preference level will be filled up to their
+        # capacity limits first, based on RTT. - DEFAULT: If preferred backends don't
+        # have enough capacity, backends in this layer would be used and traffic would
+        # be assigned based on the load balancing algorithm you use. This is the default
+        # Corresponds to the JSON property `preference`
+        # @return [String]
+        attr_accessor :preference
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2864,6 +2874,7 @@ module Google
           @max_rate_per_endpoint = args[:max_rate_per_endpoint] if args.key?(:max_rate_per_endpoint)
           @max_rate_per_instance = args[:max_rate_per_instance] if args.key?(:max_rate_per_instance)
           @max_utilization = args[:max_utilization] if args.key?(:max_utilization)
+          @preference = args[:preference] if args.key?(:preference)
         end
       end
       
@@ -3611,6 +3622,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :service_bindings
       
+        # URL to networkservices.ServiceLbPolicy resource. Can only be set if load
+        # balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or
+        # INTERNAL_SELF_MANAGED and the scope is global.
+        # Corresponds to the JSON property `serviceLbPolicy`
+        # @return [String]
+        attr_accessor :service_lb_policy
+      
         # Type of session affinity to use. The default is NONE. Only NONE and
         # HEADER_FIELD are supported when the backend service is referenced by a URL map
         # that is bound to target gRPC proxy that has validateForProxyless field set to
@@ -3682,6 +3700,7 @@ module Google
           @security_settings = args[:security_settings] if args.key?(:security_settings)
           @self_link = args[:self_link] if args.key?(:self_link)
           @service_bindings = args[:service_bindings] if args.key?(:service_bindings)
+          @service_lb_policy = args[:service_lb_policy] if args.key?(:service_lb_policy)
           @session_affinity = args[:session_affinity] if args.key?(:session_affinity)
           @subsetting = args[:subsetting] if args.key?(:subsetting)
           @timeout_sec = args[:timeout_sec] if args.key?(:timeout_sec)
@@ -5034,6 +5053,50 @@ module Google
         def update!(**args)
           @hostname = args[:hostname] if args.key?(:hostname)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # 
+      class BulkInsertOperationStatus
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Count of VMs successfully created so far.
+        # Corresponds to the JSON property `createdVmCount`
+        # @return [Fixnum]
+        attr_accessor :created_vm_count
+      
+        # [Output Only] Count of VMs that got deleted during rollback.
+        # Corresponds to the JSON property `deletedVmCount`
+        # @return [Fixnum]
+        attr_accessor :deleted_vm_count
+      
+        # [Output Only] Count of VMs that started creating but encountered an error.
+        # Corresponds to the JSON property `failedToCreateVmCount`
+        # @return [Fixnum]
+        attr_accessor :failed_to_create_vm_count
+      
+        # [Output Only] Creation status of BulkInsert operation - information if the
+        # flow is rolling forward or rolling back.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # [Output Only] Count of VMs originally planned to be created.
+        # Corresponds to the JSON property `targetVmCount`
+        # @return [Fixnum]
+        attr_accessor :target_vm_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @created_vm_count = args[:created_vm_count] if args.key?(:created_vm_count)
+          @deleted_vm_count = args[:deleted_vm_count] if args.key?(:deleted_vm_count)
+          @failed_to_create_vm_count = args[:failed_to_create_vm_count] if args.key?(:failed_to_create_vm_count)
+          @status = args[:status] if args.key?(:status)
+          @target_vm_count = args[:target_vm_count] if args.key?(:target_vm_count)
         end
       end
       
@@ -9498,9 +9561,12 @@ module Google
         alias_method :all_ports?, :all_ports
       
         # This field is used along with the backend_service field for internal load
-        # balancing or with the target field for internal TargetInstance. If the field
-        # is set to TRUE, clients can access ILB from all regions. Otherwise only allows
-        # access from clients in the same region as the internal load balancer.
+        # balancing or with the target field for internal TargetInstance. If set to true,
+        # clients can access the Internal TCP/UDP Load Balancer, Internal HTTP(S) and
+        # TCP Proxy Load Balancer from all regions. If false, only allows access from
+        # the local region the load balancer is located at. Note that for
+        # INTERNAL_MANAGED forwarding rules, this field cannot be changed after the
+        # forwarding rule is created.
         # Corresponds to the JSON property `allowGlobalAccess`
         # @return [Boolean]
         attr_accessor :allow_global_access
@@ -17445,6 +17511,26 @@ module Google
         # Update properties of this object
         def update!(**args)
           @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
+        end
+      end
+      
+      # 
+      class InstancesBulkInsertOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Status information per location (location name is key). Example key: zones/us-
+        # central1-a
+        # Corresponds to the JSON property `perLocationStatus`
+        # @return [Hash<String,Google::Apis::ComputeBeta::BulkInsertOperationStatus>]
+        attr_accessor :per_location_status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @per_location_status = args[:per_location_status] if args.key?(:per_location_status)
         end
       end
       
@@ -27018,6 +27104,11 @@ module Google
         # @return [String]
         attr_accessor :insert_time
       
+        # 
+        # Corresponds to the JSON property `instancesBulkInsertOperationMetadata`
+        # @return [Google::Apis::ComputeBeta::InstancesBulkInsertOperationMetadata]
+        attr_accessor :instances_bulk_insert_operation_metadata
+      
         # [Output Only] Type of the resource. Always `compute#operation` for Operation
         # resources.
         # Corresponds to the JSON property `kind`
@@ -27124,6 +27215,7 @@ module Google
           @http_error_status_code = args[:http_error_status_code] if args.key?(:http_error_status_code)
           @id = args[:id] if args.key?(:id)
           @insert_time = args[:insert_time] if args.key?(:insert_time)
+          @instances_bulk_insert_operation_metadata = args[:instances_bulk_insert_operation_metadata] if args.key?(:instances_bulk_insert_operation_metadata)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @operation_group_id = args[:operation_group_id] if args.key?(:operation_group_id)
@@ -29458,7 +29550,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
-        # The IPv4 address range, in CIDR format, represented by this public delegated
+        # The IP address range, in CIDR format, represented by this public delegated
         # prefix.
         # Corresponds to the JSON property `ipCidrRange`
         # @return [String]
@@ -29801,8 +29893,8 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # The IPv4 address range, in CIDR format, represented by this sub public
-        # delegated prefix.
+        # The IP address range, in CIDR format, represented by this sub public delegated
+        # prefix.
         # Corresponds to the JSON property `ipCidrRange`
         # @return [String]
         attr_accessor :ip_cidr_range
