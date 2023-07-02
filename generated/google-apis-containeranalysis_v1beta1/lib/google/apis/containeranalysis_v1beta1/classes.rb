@@ -484,6 +484,74 @@ module Google
         end
       end
       
+      # 
+      class BuildDefinition
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `buildType`
+        # @return [String]
+        attr_accessor :build_type
+      
+        # 
+        # Corresponds to the JSON property `externalParameters`
+        # @return [Hash<String,Object>]
+        attr_accessor :external_parameters
+      
+        # 
+        # Corresponds to the JSON property `internalParameters`
+        # @return [Hash<String,Object>]
+        attr_accessor :internal_parameters
+      
+        # 
+        # Corresponds to the JSON property `resolvedDependencies`
+        # @return [Array<Google::Apis::ContaineranalysisV1beta1::ResourceDescriptor>]
+        attr_accessor :resolved_dependencies
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @build_type = args[:build_type] if args.key?(:build_type)
+          @external_parameters = args[:external_parameters] if args.key?(:external_parameters)
+          @internal_parameters = args[:internal_parameters] if args.key?(:internal_parameters)
+          @resolved_dependencies = args[:resolved_dependencies] if args.key?(:resolved_dependencies)
+        end
+      end
+      
+      # 
+      class BuildMetadata
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `finishedOn`
+        # @return [String]
+        attr_accessor :finished_on
+      
+        # 
+        # Corresponds to the JSON property `invocationId`
+        # @return [String]
+        attr_accessor :invocation_id
+      
+        # 
+        # Corresponds to the JSON property `startedOn`
+        # @return [String]
+        attr_accessor :started_on
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @finished_on = args[:finished_on] if args.key?(:finished_on)
+          @invocation_id = args[:invocation_id] if args.key?(:invocation_id)
+          @started_on = args[:started_on] if args.key?(:started_on)
+        end
+      end
+      
       # Provenance of a build. Contains all information needed to verify the full
       # details about the build from source to completion.
       class BuildProvenance
@@ -3219,6 +3287,39 @@ module Google
         end
       end
       
+      # The request to a call of ExportSBOM
+      class ExportSbomRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The response from a call to ExportSBOM
+      class ExportSbomResponse
+        include Google::Apis::Core::Hashable
+      
+        # The id of the discovery occurrence that can be used to track the progression
+        # of the SBOM export.
+        # Corresponds to the JSON property `discoveryOccurrenceId`
+        # @return [String]
+        attr_accessor :discovery_occurrence_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @discovery_occurrence_id = args[:discovery_occurrence_id] if args.key?(:discovery_occurrence_id)
+        end
+      end
+      
       # Represents a textual expression in the Common Expression Language (CEL) syntax.
       # CEL is a C-like expression language. The syntax and semantics of CEL are
       # documented at https://github.com/google/cel-spec. Example (Comparison): title:
@@ -3707,6 +3808,13 @@ module Google
       class GrafeasV1beta1BuildDetails
         include Google::Apis::Core::Hashable
       
+        # Keep in sync with schema at https://github.com/slsa-framework/slsa/blob/main/
+        # docs/provenance/schema/v1/provenance.proto Builder renamed to
+        # ProvenanceBuilder because of Java conflicts.
+        # Corresponds to the JSON property `inTotoSlsaProvenanceV1`
+        # @return [Google::Apis::ContaineranalysisV1beta1::InTotoSlsaProvenanceV1]
+        attr_accessor :in_toto_slsa_provenance_v1
+      
         # Provenance of a build. Contains all information needed to verify the full
         # details about the build from source to completion.
         # Corresponds to the JSON property `provenance`
@@ -3731,6 +3839,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @in_toto_slsa_provenance_v1 = args[:in_toto_slsa_provenance_v1] if args.key?(:in_toto_slsa_provenance_v1)
           @provenance = args[:provenance] if args.key?(:provenance)
           @provenance_bytes = args[:provenance_bytes] if args.key?(:provenance_bytes)
         end
@@ -4097,6 +4206,33 @@ module Google
           @signing_keys = args[:signing_keys] if args.key?(:signing_keys)
           @step_name = args[:step_name] if args.key?(:step_name)
           @threshold = args[:threshold] if args.key?(:threshold)
+        end
+      end
+      
+      # Keep in sync with schema at https://github.com/slsa-framework/slsa/blob/main/
+      # docs/provenance/schema/v1/provenance.proto Builder renamed to
+      # ProvenanceBuilder because of Java conflicts.
+      class InTotoSlsaProvenanceV1
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `buildDefinition`
+        # @return [Google::Apis::ContaineranalysisV1beta1::BuildDefinition]
+        attr_accessor :build_definition
+      
+        # 
+        # Corresponds to the JSON property `runDetails`
+        # @return [Google::Apis::ContaineranalysisV1beta1::RunDetails]
+        attr_accessor :run_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @build_definition = args[:build_definition] if args.key?(:build_definition)
+          @run_details = args[:run_details] if args.key?(:run_details)
         end
       end
       
@@ -5352,6 +5488,37 @@ module Google
         end
       end
       
+      # 
+      class ProvenanceBuilder
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `builderDependencies`
+        # @return [Array<Google::Apis::ContaineranalysisV1beta1::ResourceDescriptor>]
+        attr_accessor :builder_dependencies
+      
+        # 
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # 
+        # Corresponds to the JSON property `version`
+        # @return [Hash<String,String>]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @builder_dependencies = args[:builder_dependencies] if args.key?(:builder_dependencies)
+          @id = args[:id] if args.key?(:id)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
       # Publisher contains information about the publisher of this Note.
       class Publisher
         include Google::Apis::Core::Hashable
@@ -5563,6 +5730,93 @@ module Google
           @content_hash = args[:content_hash] if args.key?(:content_hash)
           @name = args[:name] if args.key?(:name)
           @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # 
+      class ResourceDescriptor
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `annotations`
+        # @return [Hash<String,Object>]
+        attr_accessor :annotations
+      
+        # 
+        # Corresponds to the JSON property `content`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :content
+      
+        # 
+        # Corresponds to the JSON property `digest`
+        # @return [Hash<String,String>]
+        attr_accessor :digest
+      
+        # 
+        # Corresponds to the JSON property `downloadLocation`
+        # @return [String]
+        attr_accessor :download_location
+      
+        # 
+        # Corresponds to the JSON property `mediaType`
+        # @return [String]
+        attr_accessor :media_type
+      
+        # 
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # 
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
+          @content = args[:content] if args.key?(:content)
+          @digest = args[:digest] if args.key?(:digest)
+          @download_location = args[:download_location] if args.key?(:download_location)
+          @media_type = args[:media_type] if args.key?(:media_type)
+          @name = args[:name] if args.key?(:name)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # 
+      class RunDetails
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `builder`
+        # @return [Google::Apis::ContaineranalysisV1beta1::ProvenanceBuilder]
+        attr_accessor :builder
+      
+        # 
+        # Corresponds to the JSON property `byproducts`
+        # @return [Array<Google::Apis::ContaineranalysisV1beta1::ResourceDescriptor>]
+        attr_accessor :byproducts
+      
+        # 
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::ContaineranalysisV1beta1::BuildMetadata]
+        attr_accessor :metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @builder = args[:builder] if args.key?(:builder)
+          @byproducts = args[:byproducts] if args.key?(:byproducts)
+          @metadata = args[:metadata] if args.key?(:metadata)
         end
       end
       
