@@ -284,7 +284,6 @@ module Google
           property :exception_audit_log_link, as: 'exceptionAuditLogLink'
           property :name, as: 'name'
           property :non_compliant_org_policy, as: 'nonCompliantOrgPolicy'
-          property :org_policy_constraint, as: 'orgPolicyConstraint'
           property :remediation, as: 'remediation', class: Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1ViolationRemediation, decorator: Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1ViolationRemediation::Representation
       
           property :resolve_time, as: 'resolveTime'
