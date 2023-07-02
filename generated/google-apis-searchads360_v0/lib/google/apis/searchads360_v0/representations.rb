@@ -130,6 +130,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAdsSearchads360V0CommonMobileAppAsset
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAdsSearchads360V0CommonPercentCpc
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -424,6 +430,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAdsSearchads360V0ResourcesAsset
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesAssetSet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAdsSearchads360V0ResourcesBiddingStrategy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -557,6 +575,12 @@ module Google
       end
       
       class GoogleAdsSearchads360V0ServicesCustomColumnHeader
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V0ServicesListAccessibleCustomersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -797,6 +821,14 @@ module Google
         end
       end
       
+      class GoogleAdsSearchads360V0CommonMobileAppAsset
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_id, as: 'appId'
+          property :app_store, as: 'appStore'
+        end
+      end
+      
       class GoogleAdsSearchads360V0CommonPercentCpc
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -865,6 +897,7 @@ module Google
       class GoogleAdsSearchads360V0CommonSegments
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :ad_network_type, as: 'adNetworkType'
           property :conversion_action, as: 'conversionAction'
           property :conversion_action_category, as: 'conversionActionCategory'
           property :conversion_action_name, as: 'conversionActionName'
@@ -1002,6 +1035,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :authentication_error, as: 'authenticationError'
           property :authorization_error, as: 'authorizationError'
+          property :custom_column_error, as: 'customColumnError'
           property :date_error, as: 'dateError'
           property :date_range_error, as: 'dateRangeError'
           property :distinct_error, as: 'distinctError'
@@ -1303,6 +1337,31 @@ module Google
       class GoogleAdsSearchads360V0ResourcesAgeRangeView
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource_name, as: 'resourceName'
+        end
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesAsset
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_time, as: 'creationTime'
+          property :engine_status, as: 'engineStatus'
+          collection :final_urls, as: 'finalUrls'
+          property :id, :numeric_string => true, as: 'id'
+          property :last_modified_time, as: 'lastModifiedTime'
+          property :mobile_app_asset, as: 'mobileAppAsset', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonMobileAppAsset, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonMobileAppAsset::Representation
+      
+          property :resource_name, as: 'resourceName'
+          property :status, as: 'status'
+          property :tracking_url_template, as: 'trackingUrlTemplate'
+          property :type, as: 'type'
+        end
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesAssetSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, :numeric_string => true, as: 'id'
           property :resource_name, as: 'resourceName'
         end
       end
@@ -1676,6 +1735,13 @@ module Google
         end
       end
       
+      class GoogleAdsSearchads360V0ServicesListAccessibleCustomersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :resource_names, as: 'resourceNames'
+        end
+      end
+      
       class GoogleAdsSearchads360V0ServicesListCustomColumnsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1704,6 +1770,10 @@ module Google
           property :ad_group_label, as: 'adGroupLabel', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupLabel, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupLabel::Representation
       
           property :age_range_view, as: 'ageRangeView', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAgeRangeView, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAgeRangeView::Representation
+      
+          property :asset, as: 'asset', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAsset, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAsset::Representation
+      
+          property :asset_set, as: 'assetSet', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAssetSet, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAssetSet::Representation
       
           property :bidding_strategy, as: 'biddingStrategy', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesBiddingStrategy, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesBiddingStrategy::Representation
       

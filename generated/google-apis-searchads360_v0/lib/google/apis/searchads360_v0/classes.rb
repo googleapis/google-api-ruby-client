@@ -937,6 +937,33 @@ module Google
         end
       end
       
+      # An asset representing a mobile app.
+      class GoogleAdsSearchads360V0CommonMobileAppAsset
+        include Google::Apis::Core::Hashable
+      
+        # Required. A string that uniquely identifies a mobile application. It should
+        # just contain the platform native id, like "com.android.ebay" for Android or "
+        # 12345689" for iOS.
+        # Corresponds to the JSON property `appId`
+        # @return [String]
+        attr_accessor :app_id
+      
+        # Required. The application store that distributes this specific app.
+        # Corresponds to the JSON property `appStore`
+        # @return [String]
+        attr_accessor :app_store
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_id = args[:app_id] if args.key?(:app_id)
+          @app_store = args[:app_store] if args.key?(:app_store)
+        end
+      end
+      
       # A bidding strategy where bids are a fraction of the advertised price for some
       # good or service.
       class GoogleAdsSearchads360V0CommonPercentCpc
@@ -1178,6 +1205,11 @@ module Google
       class GoogleAdsSearchads360V0CommonSegments
         include Google::Apis::Core::Hashable
       
+        # Ad network type.
+        # Corresponds to the JSON property `adNetworkType`
+        # @return [String]
+        attr_accessor :ad_network_type
+      
         # Resource name of the conversion action.
         # Corresponds to the JSON property `conversionAction`
         # @return [String]
@@ -1243,6 +1275,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ad_network_type = args[:ad_network_type] if args.key?(:ad_network_type)
           @conversion_action = args[:conversion_action] if args.key?(:conversion_action)
           @conversion_action_category = args[:conversion_action_category] if args.key?(:conversion_action_category)
           @conversion_action_name = args[:conversion_action_name] if args.key?(:conversion_action_name)
@@ -1689,6 +1722,11 @@ module Google
         # @return [String]
         attr_accessor :authorization_error
       
+        # The reasons for the custom column error
+        # Corresponds to the JSON property `customColumnError`
+        # @return [String]
+        attr_accessor :custom_column_error
+      
         # The reasons for the date error
         # Corresponds to the JSON property `dateError`
         # @return [String]
@@ -1742,6 +1780,7 @@ module Google
         def update!(**args)
           @authentication_error = args[:authentication_error] if args.key?(:authentication_error)
           @authorization_error = args[:authorization_error] if args.key?(:authorization_error)
+          @custom_column_error = args[:custom_column_error] if args.key?(:custom_column_error)
           @date_error = args[:date_error] if args.key?(:date_error)
           @date_range_error = args[:date_range_error] if args.key?(:date_range_error)
           @distinct_error = args[:distinct_error] if args.key?(:distinct_error)
@@ -2881,6 +2920,112 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+        end
+      end
+      
+      # Asset is a part of an ad which can be shared across multiple ads. It can be an
+      # image (ImageAsset), a video (YoutubeVideoAsset), etc. Assets are immutable and
+      # cannot be removed. To stop an asset from serving, remove the asset from the
+      # entity that is using it.
+      class GoogleAdsSearchads360V0ResourcesAsset
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The timestamp when this asset was created. The timestamp is in
+        # the customer's time zone and in "yyyy-MM-dd HH:mm:ss" format.
+        # Corresponds to the JSON property `creationTime`
+        # @return [String]
+        attr_accessor :creation_time
+      
+        # Output only. The Engine Status for an asset.
+        # Corresponds to the JSON property `engineStatus`
+        # @return [String]
+        attr_accessor :engine_status
+      
+        # A list of possible final URLs after all cross domain redirects.
+        # Corresponds to the JSON property `finalUrls`
+        # @return [Array<String>]
+        attr_accessor :final_urls
+      
+        # Output only. The ID of the asset.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # Output only. The datetime when this asset was last modified. The datetime is
+        # in the customer's time zone and in "yyyy-MM-dd HH:mm:ss.ssssss" format.
+        # Corresponds to the JSON property `lastModifiedTime`
+        # @return [String]
+        attr_accessor :last_modified_time
+      
+        # An asset representing a mobile app.
+        # Corresponds to the JSON property `mobileAppAsset`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonMobileAppAsset]
+        attr_accessor :mobile_app_asset
+      
+        # Immutable. The resource name of the asset. Asset resource names have the form:
+        # `customers/`customer_id`/assets/`asset_id``
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        # Output only. The status of the asset.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # URL template for constructing a tracking URL.
+        # Corresponds to the JSON property `trackingUrlTemplate`
+        # @return [String]
+        attr_accessor :tracking_url_template
+      
+        # Output only. Type of the asset.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creation_time = args[:creation_time] if args.key?(:creation_time)
+          @engine_status = args[:engine_status] if args.key?(:engine_status)
+          @final_urls = args[:final_urls] if args.key?(:final_urls)
+          @id = args[:id] if args.key?(:id)
+          @last_modified_time = args[:last_modified_time] if args.key?(:last_modified_time)
+          @mobile_app_asset = args[:mobile_app_asset] if args.key?(:mobile_app_asset)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @status = args[:status] if args.key?(:status)
+          @tracking_url_template = args[:tracking_url_template] if args.key?(:tracking_url_template)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # An asset set representing a collection of assets. Use AssetSetAsset to link an
+      # asset to the asset set.
+      class GoogleAdsSearchads360V0ResourcesAssetSet
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The ID of the asset set.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # Immutable. The resource name of the asset set. Asset set resource names have
+        # the form: `customers/`customer_id`/assetSets/`asset_set_id``
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
         end
       end
@@ -4512,6 +4657,26 @@ module Google
         end
       end
       
+      # Response message for CustomerService.ListAccessibleCustomers.
+      class GoogleAdsSearchads360V0ServicesListAccessibleCustomersResponse
+        include Google::Apis::Core::Hashable
+      
+        # Resource name of customers directly accessible by the user authenticating the
+        # call.
+        # Corresponds to the JSON property `resourceNames`
+        # @return [Array<String>]
+        attr_accessor :resource_names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_names = args[:resource_names] if args.key?(:resource_names)
+        end
+      end
+      
       # Response message for fetching all custom columns associated with a customer.
       class GoogleAdsSearchads360V0ServicesListCustomColumnsResponse
         include Google::Apis::Core::Hashable
@@ -4581,6 +4746,20 @@ module Google
         # Corresponds to the JSON property `ageRangeView`
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAgeRangeView]
         attr_accessor :age_range_view
+      
+        # Asset is a part of an ad which can be shared across multiple ads. It can be an
+        # image (ImageAsset), a video (YoutubeVideoAsset), etc. Assets are immutable and
+        # cannot be removed. To stop an asset from serving, remove the asset from the
+        # entity that is using it.
+        # Corresponds to the JSON property `asset`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAsset]
+        attr_accessor :asset
+      
+        # An asset set representing a collection of assets. Use AssetSetAsset to link an
+        # asset to the asset set.
+        # Corresponds to the JSON property `assetSet`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAssetSet]
+        attr_accessor :asset_set
       
         # A bidding strategy.
         # Corresponds to the JSON property `biddingStrategy`
@@ -4707,6 +4886,8 @@ module Google
           @ad_group_criterion_label = args[:ad_group_criterion_label] if args.key?(:ad_group_criterion_label)
           @ad_group_label = args[:ad_group_label] if args.key?(:ad_group_label)
           @age_range_view = args[:age_range_view] if args.key?(:age_range_view)
+          @asset = args[:asset] if args.key?(:asset)
+          @asset_set = args[:asset_set] if args.key?(:asset_set)
           @bidding_strategy = args[:bidding_strategy] if args.key?(:bidding_strategy)
           @campaign = args[:campaign] if args.key?(:campaign)
           @campaign_audience_view = args[:campaign_audience_view] if args.key?(:campaign_audience_view)
