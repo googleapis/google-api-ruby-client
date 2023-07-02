@@ -707,11 +707,11 @@ module Google
         #   Required. The name of the project in which to list snapshots. Format is `
         #   projects/`project-id``.
         # @param [Fixnum] page_size
-        #   Maximum number of snapshots to return.
+        #   Optional. Maximum number of snapshots to return.
         # @param [String] page_token
-        #   The value returned by the last `ListSnapshotsResponse`; indicates that this is
-        #   a continuation of a prior `ListSnapshots` call, and that the system should
-        #   return the next page of data.
+        #   Optional. The value returned by the last `ListSnapshotsResponse`; indicates
+        #   that this is a continuation of a prior `ListSnapshots` call, and that the
+        #   system should return the next page of data.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -746,7 +746,7 @@ module Google
         # message acknowledgments in bulk. That is, you can set the acknowledgment state
         # of messages in an existing subscription to the state captured by a snapshot.
         # @param [String] name
-        #   The name of the snapshot.
+        #   Optional. The name of the snapshot.
         # @param [Google::Apis::PubsubV1::UpdateSnapshotRequest] update_snapshot_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1087,11 +1087,11 @@ module Google
         #   Required. The name of the project in which to list subscriptions. Format is `
         #   projects/`project-id``.
         # @param [Fixnum] page_size
-        #   Maximum number of subscriptions to return.
+        #   Optional. Maximum number of subscriptions to return.
         # @param [String] page_token
-        #   The value returned by the last `ListSubscriptionsResponse`; indicates that
-        #   this is a continuation of a prior `ListSubscriptions` call, and that the
-        #   system should return the next page of data.
+        #   Optional. The value returned by the last `ListSubscriptionsResponse`;
+        #   indicates that this is a continuation of a prior `ListSubscriptions` call, and
+        #   that the system should return the next page of data.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1539,11 +1539,11 @@ module Google
         #   Required. The name of the project in which to list topics. Format is `projects/
         #   `project-id``.
         # @param [Fixnum] page_size
-        #   Maximum number of topics to return.
+        #   Optional. Maximum number of topics to return.
         # @param [String] page_token
-        #   The value returned by the last `ListTopicsResponse`; indicates that this is a
-        #   continuation of a prior `ListTopics` call, and that the system should return
-        #   the next page of data.
+        #   Optional. The value returned by the last `ListTopicsResponse`; indicates that
+        #   this is a continuation of a prior `ListTopics` call, and that the system
+        #   should return the next page of data.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1731,11 +1731,11 @@ module Google
         #   Required. The name of the topic that snapshots are attached to. Format is `
         #   projects/`project`/topics/`topic``.
         # @param [Fixnum] page_size
-        #   Maximum number of snapshot names to return.
+        #   Optional. Maximum number of snapshot names to return.
         # @param [String] page_token
-        #   The value returned by the last `ListTopicSnapshotsResponse`; indicates that
-        #   this is a continuation of a prior `ListTopicSnapshots` call, and that the
-        #   system should return the next page of data.
+        #   Optional. The value returned by the last `ListTopicSnapshotsResponse`;
+        #   indicates that this is a continuation of a prior `ListTopicSnapshots` call,
+        #   and that the system should return the next page of data.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1770,11 +1770,11 @@ module Google
         #   Required. The name of the topic that subscriptions are attached to. Format is `
         #   projects/`project`/topics/`topic``.
         # @param [Fixnum] page_size
-        #   Maximum number of subscription names to return.
+        #   Optional. Maximum number of subscription names to return.
         # @param [String] page_token
-        #   The value returned by the last `ListTopicSubscriptionsResponse`; indicates
-        #   that this is a continuation of a prior `ListTopicSubscriptions` call, and that
-        #   the system should return the next page of data.
+        #   Optional. The value returned by the last `ListTopicSubscriptionsResponse`;
+        #   indicates that this is a continuation of a prior `ListTopicSubscriptions` call,
+        #   and that the system should return the next page of data.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
