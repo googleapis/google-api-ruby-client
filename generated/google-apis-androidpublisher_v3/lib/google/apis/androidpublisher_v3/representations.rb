@@ -22,6 +22,18 @@ module Google
   module Apis
     module AndroidpublisherV3
       
+      class Abi
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AbiTargeting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AcquisitionTargetingRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -47,6 +59,24 @@ module Google
       end
       
       class ApkBinary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ApkDescription
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ApkSet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ApkTargeting
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -83,6 +113,18 @@ module Google
       end
       
       class ArchiveSubscriptionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AssetModuleMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AssetSliceSet
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -203,6 +245,18 @@ module Google
       end
       
       class DeveloperInitiatedCancellation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeviceFeature
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeviceFeatureTargeting
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -412,6 +466,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LanguageTargeting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListDeviceTierConfigsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -472,7 +532,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ModuleMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ModuleTargeting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Money
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MultiAbi
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MultiAbiTargeting
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -652,6 +736,48 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ScreenDensity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ScreenDensityTargeting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SdkVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SdkVersionTargeting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SplitApkMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SplitApkVariant
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StandaloneApkMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SubscribeWithGoogleInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -772,6 +898,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TargetingInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TargetingRuleScope
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -785,6 +917,18 @@ module Google
       end
       
       class Testers
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TextureCompressionFormat
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TextureCompressionFormatTargeting
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -850,6 +994,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UserCountriesTargeting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UserCountrySet
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -874,6 +1024,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VariantTargeting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VoidedPurchase
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -884,6 +1040,23 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Abi
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alias, as: 'alias'
+        end
+      end
+      
+      class AbiTargeting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :alternatives, as: 'alternatives', class: Google::Apis::AndroidpublisherV3::Abi, decorator: Google::Apis::AndroidpublisherV3::Abi::Representation
+      
+          collection :value, as: 'value', class: Google::Apis::AndroidpublisherV3::Abi, decorator: Google::Apis::AndroidpublisherV3::Abi::Representation
+      
+        end
       end
       
       class AcquisitionTargetingRule
@@ -920,6 +1093,51 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :sha1, as: 'sha1'
           property :sha256, as: 'sha256'
+        end
+      end
+      
+      class ApkDescription
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :asset_slice_metadata, as: 'assetSliceMetadata', class: Google::Apis::AndroidpublisherV3::SplitApkMetadata, decorator: Google::Apis::AndroidpublisherV3::SplitApkMetadata::Representation
+      
+          property :instant_apk_metadata, as: 'instantApkMetadata', class: Google::Apis::AndroidpublisherV3::SplitApkMetadata, decorator: Google::Apis::AndroidpublisherV3::SplitApkMetadata::Representation
+      
+          property :path, as: 'path'
+          property :split_apk_metadata, as: 'splitApkMetadata', class: Google::Apis::AndroidpublisherV3::SplitApkMetadata, decorator: Google::Apis::AndroidpublisherV3::SplitApkMetadata::Representation
+      
+          property :standalone_apk_metadata, as: 'standaloneApkMetadata', class: Google::Apis::AndroidpublisherV3::StandaloneApkMetadata, decorator: Google::Apis::AndroidpublisherV3::StandaloneApkMetadata::Representation
+      
+          property :targeting, as: 'targeting', class: Google::Apis::AndroidpublisherV3::ApkTargeting, decorator: Google::Apis::AndroidpublisherV3::ApkTargeting::Representation
+      
+        end
+      end
+      
+      class ApkSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :apk_description, as: 'apkDescription', class: Google::Apis::AndroidpublisherV3::ApkDescription, decorator: Google::Apis::AndroidpublisherV3::ApkDescription::Representation
+      
+          property :module_metadata, as: 'moduleMetadata', class: Google::Apis::AndroidpublisherV3::ModuleMetadata, decorator: Google::Apis::AndroidpublisherV3::ModuleMetadata::Representation
+      
+        end
+      end
+      
+      class ApkTargeting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :abi_targeting, as: 'abiTargeting', class: Google::Apis::AndroidpublisherV3::AbiTargeting, decorator: Google::Apis::AndroidpublisherV3::AbiTargeting::Representation
+      
+          property :language_targeting, as: 'languageTargeting', class: Google::Apis::AndroidpublisherV3::LanguageTargeting, decorator: Google::Apis::AndroidpublisherV3::LanguageTargeting::Representation
+      
+          property :multi_abi_targeting, as: 'multiAbiTargeting', class: Google::Apis::AndroidpublisherV3::MultiAbiTargeting, decorator: Google::Apis::AndroidpublisherV3::MultiAbiTargeting::Representation
+      
+          property :screen_density_targeting, as: 'screenDensityTargeting', class: Google::Apis::AndroidpublisherV3::ScreenDensityTargeting, decorator: Google::Apis::AndroidpublisherV3::ScreenDensityTargeting::Representation
+      
+          property :sdk_version_targeting, as: 'sdkVersionTargeting', class: Google::Apis::AndroidpublisherV3::SdkVersionTargeting, decorator: Google::Apis::AndroidpublisherV3::SdkVersionTargeting::Representation
+      
+          property :texture_compression_format_targeting, as: 'textureCompressionFormatTargeting', class: Google::Apis::AndroidpublisherV3::TextureCompressionFormatTargeting, decorator: Google::Apis::AndroidpublisherV3::TextureCompressionFormatTargeting::Representation
+      
         end
       end
       
@@ -969,6 +1187,24 @@ module Google
       class ArchiveSubscriptionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class AssetModuleMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :delivery_type, as: 'deliveryType'
+          property :name, as: 'name'
+        end
+      end
+      
+      class AssetSliceSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :apk_description, as: 'apkDescription', class: Google::Apis::AndroidpublisherV3::ApkDescription, decorator: Google::Apis::AndroidpublisherV3::ApkDescription::Representation
+      
+          property :asset_module_metadata, as: 'assetModuleMetadata', class: Google::Apis::AndroidpublisherV3::AssetModuleMetadata, decorator: Google::Apis::AndroidpublisherV3::AssetModuleMetadata::Representation
+      
         end
       end
       
@@ -1154,6 +1390,22 @@ module Google
       class DeveloperInitiatedCancellation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class DeviceFeature
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :feature_name, as: 'featureName'
+          property :feature_version, as: 'featureVersion'
+        end
+      end
+      
+      class DeviceFeatureTargeting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :required_feature, as: 'requiredFeature', class: Google::Apis::AndroidpublisherV3::DeviceFeature, decorator: Google::Apis::AndroidpublisherV3::DeviceFeature::Representation
+      
         end
       end
       
@@ -1373,6 +1625,8 @@ module Google
       
           property :generated_universal_apk, as: 'generatedUniversalApk', class: Google::Apis::AndroidpublisherV3::GeneratedUniversalApk, decorator: Google::Apis::AndroidpublisherV3::GeneratedUniversalApk::Representation
       
+          property :targeting_info, as: 'targetingInfo', class: Google::Apis::AndroidpublisherV3::TargetingInfo, decorator: Google::Apis::AndroidpublisherV3::TargetingInfo::Representation
+      
         end
       end
       
@@ -1519,6 +1773,14 @@ module Google
         end
       end
       
+      class LanguageTargeting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :alternatives, as: 'alternatives'
+          collection :value, as: 'value'
+        end
+      end
+      
       class ListDeviceTierConfigsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1608,12 +1870,54 @@ module Google
         end
       end
       
+      class ModuleMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :delivery_type, as: 'deliveryType'
+          collection :dependencies, as: 'dependencies'
+          property :module_type, as: 'moduleType'
+          property :name, as: 'name'
+          property :targeting, as: 'targeting', class: Google::Apis::AndroidpublisherV3::ModuleTargeting, decorator: Google::Apis::AndroidpublisherV3::ModuleTargeting::Representation
+      
+        end
+      end
+      
+      class ModuleTargeting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :device_feature_targeting, as: 'deviceFeatureTargeting', class: Google::Apis::AndroidpublisherV3::DeviceFeatureTargeting, decorator: Google::Apis::AndroidpublisherV3::DeviceFeatureTargeting::Representation
+      
+          property :sdk_version_targeting, as: 'sdkVersionTargeting', class: Google::Apis::AndroidpublisherV3::SdkVersionTargeting, decorator: Google::Apis::AndroidpublisherV3::SdkVersionTargeting::Representation
+      
+          property :user_countries_targeting, as: 'userCountriesTargeting', class: Google::Apis::AndroidpublisherV3::UserCountriesTargeting, decorator: Google::Apis::AndroidpublisherV3::UserCountriesTargeting::Representation
+      
+        end
+      end
+      
       class Money
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :currency_code, as: 'currencyCode'
           property :nanos, as: 'nanos'
           property :units, :numeric_string => true, as: 'units'
+        end
+      end
+      
+      class MultiAbi
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :abi, as: 'abi', class: Google::Apis::AndroidpublisherV3::Abi, decorator: Google::Apis::AndroidpublisherV3::Abi::Representation
+      
+        end
+      end
+      
+      class MultiAbiTargeting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :alternatives, as: 'alternatives', class: Google::Apis::AndroidpublisherV3::MultiAbi, decorator: Google::Apis::AndroidpublisherV3::MultiAbi::Representation
+      
+          collection :value, as: 'value', class: Google::Apis::AndroidpublisherV3::MultiAbi, decorator: Google::Apis::AndroidpublisherV3::MultiAbi::Representation
+      
         end
       end
       
@@ -1881,6 +2185,67 @@ module Google
         end
       end
       
+      class ScreenDensity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :density_alias, as: 'densityAlias'
+          property :density_dpi, as: 'densityDpi'
+        end
+      end
+      
+      class ScreenDensityTargeting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :alternatives, as: 'alternatives', class: Google::Apis::AndroidpublisherV3::ScreenDensity, decorator: Google::Apis::AndroidpublisherV3::ScreenDensity::Representation
+      
+          collection :value, as: 'value', class: Google::Apis::AndroidpublisherV3::ScreenDensity, decorator: Google::Apis::AndroidpublisherV3::ScreenDensity::Representation
+      
+        end
+      end
+      
+      class SdkVersion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :min, as: 'min'
+        end
+      end
+      
+      class SdkVersionTargeting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :alternatives, as: 'alternatives', class: Google::Apis::AndroidpublisherV3::SdkVersion, decorator: Google::Apis::AndroidpublisherV3::SdkVersion::Representation
+      
+          collection :value, as: 'value', class: Google::Apis::AndroidpublisherV3::SdkVersion, decorator: Google::Apis::AndroidpublisherV3::SdkVersion::Representation
+      
+        end
+      end
+      
+      class SplitApkMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_master_split, as: 'isMasterSplit'
+          property :split_id, as: 'splitId'
+        end
+      end
+      
+      class SplitApkVariant
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :apk_set, as: 'apkSet', class: Google::Apis::AndroidpublisherV3::ApkSet, decorator: Google::Apis::AndroidpublisherV3::ApkSet::Representation
+      
+          property :targeting, as: 'targeting', class: Google::Apis::AndroidpublisherV3::VariantTargeting, decorator: Google::Apis::AndroidpublisherV3::VariantTargeting::Representation
+      
+          property :variant_number, as: 'variantNumber'
+        end
+      end
+      
+      class StandaloneApkMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :fused_module_name, as: 'fusedModuleName'
+        end
+      end
+      
       class SubscribeWithGoogleInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2127,6 +2492,17 @@ module Google
         end
       end
       
+      class TargetingInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :asset_slice_set, as: 'assetSliceSet', class: Google::Apis::AndroidpublisherV3::AssetSliceSet, decorator: Google::Apis::AndroidpublisherV3::AssetSliceSet::Representation
+      
+          property :package_name, as: 'packageName'
+          collection :variant, as: 'variant', class: Google::Apis::AndroidpublisherV3::SplitApkVariant, decorator: Google::Apis::AndroidpublisherV3::SplitApkVariant::Representation
+      
+        end
+      end
+      
       class TargetingRuleScope
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2144,6 +2520,23 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :google_groups, as: 'googleGroups'
+        end
+      end
+      
+      class TextureCompressionFormat
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alias, as: 'alias'
+        end
+      end
+      
+      class TextureCompressionFormatTargeting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :alternatives, as: 'alternatives', class: Google::Apis::AndroidpublisherV3::TextureCompressionFormat, decorator: Google::Apis::AndroidpublisherV3::TextureCompressionFormat::Representation
+      
+          collection :value, as: 'value', class: Google::Apis::AndroidpublisherV3::TextureCompressionFormat, decorator: Google::Apis::AndroidpublisherV3::TextureCompressionFormat::Representation
+      
         end
       end
       
@@ -2257,6 +2650,14 @@ module Google
         end
       end
       
+      class UserCountriesTargeting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :country_codes, as: 'countryCodes'
+          property :exclude, as: 'exclude'
+        end
+      end
+      
       class UserCountrySet
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2288,6 +2689,22 @@ module Google
           property :device_spec, as: 'deviceSpec', class: Google::Apis::AndroidpublisherV3::DeviceSpec, decorator: Google::Apis::AndroidpublisherV3::DeviceSpec::Representation
       
           property :variant_id, as: 'variantId'
+        end
+      end
+      
+      class VariantTargeting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :abi_targeting, as: 'abiTargeting', class: Google::Apis::AndroidpublisherV3::AbiTargeting, decorator: Google::Apis::AndroidpublisherV3::AbiTargeting::Representation
+      
+          property :multi_abi_targeting, as: 'multiAbiTargeting', class: Google::Apis::AndroidpublisherV3::MultiAbiTargeting, decorator: Google::Apis::AndroidpublisherV3::MultiAbiTargeting::Representation
+      
+          property :screen_density_targeting, as: 'screenDensityTargeting', class: Google::Apis::AndroidpublisherV3::ScreenDensityTargeting, decorator: Google::Apis::AndroidpublisherV3::ScreenDensityTargeting::Representation
+      
+          property :sdk_version_targeting, as: 'sdkVersionTargeting', class: Google::Apis::AndroidpublisherV3::SdkVersionTargeting, decorator: Google::Apis::AndroidpublisherV3::SdkVersionTargeting::Representation
+      
+          property :texture_compression_format_targeting, as: 'textureCompressionFormatTargeting', class: Google::Apis::AndroidpublisherV3::TextureCompressionFormatTargeting, decorator: Google::Apis::AndroidpublisherV3::TextureCompressionFormatTargeting::Representation
+      
         end
       end
       

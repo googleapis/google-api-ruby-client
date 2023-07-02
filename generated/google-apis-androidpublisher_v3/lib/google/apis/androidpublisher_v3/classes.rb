@@ -22,6 +22,51 @@ module Google
   module Apis
     module AndroidpublisherV3
       
+      # Represents an Abi.
+      class Abi
+        include Google::Apis::Core::Hashable
+      
+        # Alias for an abi.
+        # Corresponds to the JSON property `alias`
+        # @return [String]
+        attr_accessor :alias
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alias = args[:alias] if args.key?(:alias)
+        end
+      end
+      
+      # Targeting based on Abi.
+      class AbiTargeting
+        include Google::Apis::Core::Hashable
+      
+        # Targeting of other sibling directories that were in the Bundle. For main
+        # splits this is targeting of other main splits.
+        # Corresponds to the JSON property `alternatives`
+        # @return [Array<Google::Apis::AndroidpublisherV3::Abi>]
+        attr_accessor :alternatives
+      
+        # Value of an abi.
+        # Corresponds to the JSON property `value`
+        # @return [Array<Google::Apis::AndroidpublisherV3::Abi>]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alternatives = args[:alternatives] if args.key?(:alternatives)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # Represents a targeting rule of the form: User never had `scope` before.
       class AcquisitionTargetingRule
         include Google::Apis::Core::Hashable
@@ -117,6 +162,130 @@ module Google
         def update!(**args)
           @sha1 = args[:sha1] if args.key?(:sha1)
           @sha256 = args[:sha256] if args.key?(:sha256)
+        end
+      end
+      
+      # Description of the created apks.
+      class ApkDescription
+        include Google::Apis::Core::Hashable
+      
+        # Holds data specific to Split APKs.
+        # Corresponds to the JSON property `assetSliceMetadata`
+        # @return [Google::Apis::AndroidpublisherV3::SplitApkMetadata]
+        attr_accessor :asset_slice_metadata
+      
+        # Holds data specific to Split APKs.
+        # Corresponds to the JSON property `instantApkMetadata`
+        # @return [Google::Apis::AndroidpublisherV3::SplitApkMetadata]
+        attr_accessor :instant_apk_metadata
+      
+        # Path of the Apk, will be in the following format: .apk where DownloadId is the
+        # ID used to download the apk using GeneratedApks.Download API.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        # Holds data specific to Split APKs.
+        # Corresponds to the JSON property `splitApkMetadata`
+        # @return [Google::Apis::AndroidpublisherV3::SplitApkMetadata]
+        attr_accessor :split_apk_metadata
+      
+        # Holds data specific to Standalone APKs.
+        # Corresponds to the JSON property `standaloneApkMetadata`
+        # @return [Google::Apis::AndroidpublisherV3::StandaloneApkMetadata]
+        attr_accessor :standalone_apk_metadata
+      
+        # Represents a set of apk-level targetings.
+        # Corresponds to the JSON property `targeting`
+        # @return [Google::Apis::AndroidpublisherV3::ApkTargeting]
+        attr_accessor :targeting
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @asset_slice_metadata = args[:asset_slice_metadata] if args.key?(:asset_slice_metadata)
+          @instant_apk_metadata = args[:instant_apk_metadata] if args.key?(:instant_apk_metadata)
+          @path = args[:path] if args.key?(:path)
+          @split_apk_metadata = args[:split_apk_metadata] if args.key?(:split_apk_metadata)
+          @standalone_apk_metadata = args[:standalone_apk_metadata] if args.key?(:standalone_apk_metadata)
+          @targeting = args[:targeting] if args.key?(:targeting)
+        end
+      end
+      
+      # A set of apks representing a module.
+      class ApkSet
+        include Google::Apis::Core::Hashable
+      
+        # Description of the generated apks.
+        # Corresponds to the JSON property `apkDescription`
+        # @return [Array<Google::Apis::AndroidpublisherV3::ApkDescription>]
+        attr_accessor :apk_description
+      
+        # Metadata of a module.
+        # Corresponds to the JSON property `moduleMetadata`
+        # @return [Google::Apis::AndroidpublisherV3::ModuleMetadata]
+        attr_accessor :module_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @apk_description = args[:apk_description] if args.key?(:apk_description)
+          @module_metadata = args[:module_metadata] if args.key?(:module_metadata)
+        end
+      end
+      
+      # Represents a set of apk-level targetings.
+      class ApkTargeting
+        include Google::Apis::Core::Hashable
+      
+        # Targeting based on Abi.
+        # Corresponds to the JSON property `abiTargeting`
+        # @return [Google::Apis::AndroidpublisherV3::AbiTargeting]
+        attr_accessor :abi_targeting
+      
+        # Targeting based on language.
+        # Corresponds to the JSON property `languageTargeting`
+        # @return [Google::Apis::AndroidpublisherV3::LanguageTargeting]
+        attr_accessor :language_targeting
+      
+        # Targeting based on multiple abis.
+        # Corresponds to the JSON property `multiAbiTargeting`
+        # @return [Google::Apis::AndroidpublisherV3::MultiAbiTargeting]
+        attr_accessor :multi_abi_targeting
+      
+        # Targeting based on screen density.
+        # Corresponds to the JSON property `screenDensityTargeting`
+        # @return [Google::Apis::AndroidpublisherV3::ScreenDensityTargeting]
+        attr_accessor :screen_density_targeting
+      
+        # Targeting based on sdk version.
+        # Corresponds to the JSON property `sdkVersionTargeting`
+        # @return [Google::Apis::AndroidpublisherV3::SdkVersionTargeting]
+        attr_accessor :sdk_version_targeting
+      
+        # Targeting by a texture compression format.
+        # Corresponds to the JSON property `textureCompressionFormatTargeting`
+        # @return [Google::Apis::AndroidpublisherV3::TextureCompressionFormatTargeting]
+        attr_accessor :texture_compression_format_targeting
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @abi_targeting = args[:abi_targeting] if args.key?(:abi_targeting)
+          @language_targeting = args[:language_targeting] if args.key?(:language_targeting)
+          @multi_abi_targeting = args[:multi_abi_targeting] if args.key?(:multi_abi_targeting)
+          @screen_density_targeting = args[:screen_density_targeting] if args.key?(:screen_density_targeting)
+          @sdk_version_targeting = args[:sdk_version_targeting] if args.key?(:sdk_version_targeting)
+          @texture_compression_format_targeting = args[:texture_compression_format_targeting] if args.key?(:texture_compression_format_targeting)
         end
       end
       
@@ -262,6 +431,56 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Metadata of an asset module.
+      class AssetModuleMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Indicates the delivery type for persistent install.
+        # Corresponds to the JSON property `deliveryType`
+        # @return [String]
+        attr_accessor :delivery_type
+      
+        # Module name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @delivery_type = args[:delivery_type] if args.key?(:delivery_type)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Set of asset slices belonging to a single asset module.
+      class AssetSliceSet
+        include Google::Apis::Core::Hashable
+      
+        # Asset slices.
+        # Corresponds to the JSON property `apkDescription`
+        # @return [Array<Google::Apis::AndroidpublisherV3::ApkDescription>]
+        attr_accessor :apk_description
+      
+        # Metadata of an asset module.
+        # Corresponds to the JSON property `assetModuleMetadata`
+        # @return [Google::Apis::AndroidpublisherV3::AssetModuleMetadata]
+        attr_accessor :asset_module_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @apk_description = args[:apk_description] if args.key?(:apk_description)
+          @asset_module_metadata = args[:asset_module_metadata] if args.key?(:asset_module_metadata)
         end
       end
       
@@ -817,6 +1036,51 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Represents a device feature.
+      class DeviceFeature
+        include Google::Apis::Core::Hashable
+      
+        # Name of the feature.
+        # Corresponds to the JSON property `featureName`
+        # @return [String]
+        attr_accessor :feature_name
+      
+        # The feature version specified by android:glEsVersion or android:version in in
+        # the AndroidManifest.
+        # Corresponds to the JSON property `featureVersion`
+        # @return [Fixnum]
+        attr_accessor :feature_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @feature_name = args[:feature_name] if args.key?(:feature_name)
+          @feature_version = args[:feature_version] if args.key?(:feature_version)
+        end
+      end
+      
+      # Targeting for a device feature.
+      class DeviceFeatureTargeting
+        include Google::Apis::Core::Hashable
+      
+        # Represents a device feature.
+        # Corresponds to the JSON property `requiredFeature`
+        # @return [Google::Apis::AndroidpublisherV3::DeviceFeature]
+        attr_accessor :required_feature
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @required_feature = args[:required_feature] if args.key?(:required_feature)
         end
       end
       
@@ -1565,6 +1829,11 @@ module Google
         # @return [Google::Apis::AndroidpublisherV3::GeneratedUniversalApk]
         attr_accessor :generated_universal_apk
       
+        # Targeting information about the generated apks.
+        # Corresponds to the JSON property `targetingInfo`
+        # @return [Google::Apis::AndroidpublisherV3::TargetingInfo]
+        attr_accessor :targeting_info
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1576,6 +1845,7 @@ module Google
           @generated_split_apks = args[:generated_split_apks] if args.key?(:generated_split_apks)
           @generated_standalone_apks = args[:generated_standalone_apks] if args.key?(:generated_standalone_apks)
           @generated_universal_apk = args[:generated_universal_apk] if args.key?(:generated_universal_apk)
+          @targeting_info = args[:targeting_info] if args.key?(:targeting_info)
         end
       end
       
@@ -2083,6 +2353,31 @@ module Google
         end
       end
       
+      # Targeting based on language.
+      class LanguageTargeting
+        include Google::Apis::Core::Hashable
+      
+        # Alternative languages.
+        # Corresponds to the JSON property `alternatives`
+        # @return [Array<String>]
+        attr_accessor :alternatives
+      
+        # ISO-639: 2 or 3 letter language code.
+        # Corresponds to the JSON property `value`
+        # @return [Array<String>]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alternatives = args[:alternatives] if args.key?(:alternatives)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # Response listing existing device tier configs.
       class ListDeviceTierConfigsResponse
         include Google::Apis::Core::Hashable
@@ -2354,6 +2649,81 @@ module Google
         end
       end
       
+      # Metadata of a module.
+      class ModuleMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Indicates the delivery type (e.g. on-demand) of the module.
+        # Corresponds to the JSON property `deliveryType`
+        # @return [String]
+        attr_accessor :delivery_type
+      
+        # Names of the modules that this module directly depends on. Each module
+        # implicitly depends on the base module.
+        # Corresponds to the JSON property `dependencies`
+        # @return [Array<String>]
+        attr_accessor :dependencies
+      
+        # Indicates the type of this feature module.
+        # Corresponds to the JSON property `moduleType`
+        # @return [String]
+        attr_accessor :module_type
+      
+        # Module name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Targeting on the module level.
+        # Corresponds to the JSON property `targeting`
+        # @return [Google::Apis::AndroidpublisherV3::ModuleTargeting]
+        attr_accessor :targeting
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @delivery_type = args[:delivery_type] if args.key?(:delivery_type)
+          @dependencies = args[:dependencies] if args.key?(:dependencies)
+          @module_type = args[:module_type] if args.key?(:module_type)
+          @name = args[:name] if args.key?(:name)
+          @targeting = args[:targeting] if args.key?(:targeting)
+        end
+      end
+      
+      # Targeting on the module level.
+      class ModuleTargeting
+        include Google::Apis::Core::Hashable
+      
+        # Targeting for device features.
+        # Corresponds to the JSON property `deviceFeatureTargeting`
+        # @return [Array<Google::Apis::AndroidpublisherV3::DeviceFeatureTargeting>]
+        attr_accessor :device_feature_targeting
+      
+        # Targeting based on sdk version.
+        # Corresponds to the JSON property `sdkVersionTargeting`
+        # @return [Google::Apis::AndroidpublisherV3::SdkVersionTargeting]
+        attr_accessor :sdk_version_targeting
+      
+        # Describes an inclusive/exclusive list of country codes that module targets.
+        # Corresponds to the JSON property `userCountriesTargeting`
+        # @return [Google::Apis::AndroidpublisherV3::UserCountriesTargeting]
+        attr_accessor :user_countries_targeting
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_feature_targeting = args[:device_feature_targeting] if args.key?(:device_feature_targeting)
+          @sdk_version_targeting = args[:sdk_version_targeting] if args.key?(:sdk_version_targeting)
+          @user_countries_targeting = args[:user_countries_targeting] if args.key?(:user_countries_targeting)
+        end
+      end
+      
       # Represents an amount of money with its currency type.
       class Money
         include Google::Apis::Core::Hashable
@@ -2387,6 +2757,51 @@ module Google
           @currency_code = args[:currency_code] if args.key?(:currency_code)
           @nanos = args[:nanos] if args.key?(:nanos)
           @units = args[:units] if args.key?(:units)
+        end
+      end
+      
+      # Represents a list of apis.
+      class MultiAbi
+        include Google::Apis::Core::Hashable
+      
+        # A list of targeted ABIs, as represented by the Android Platform
+        # Corresponds to the JSON property `abi`
+        # @return [Array<Google::Apis::AndroidpublisherV3::Abi>]
+        attr_accessor :abi
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @abi = args[:abi] if args.key?(:abi)
+        end
+      end
+      
+      # Targeting based on multiple abis.
+      class MultiAbiTargeting
+        include Google::Apis::Core::Hashable
+      
+        # Targeting of other sibling directories that were in the Bundle. For main
+        # splits this is targeting of other main splits.
+        # Corresponds to the JSON property `alternatives`
+        # @return [Array<Google::Apis::AndroidpublisherV3::MultiAbi>]
+        attr_accessor :alternatives
+      
+        # Value of a multi abi.
+        # Corresponds to the JSON property `value`
+        # @return [Array<Google::Apis::AndroidpublisherV3::MultiAbi>]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alternatives = args[:alternatives] if args.key?(:alternatives)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -3288,6 +3703,181 @@ module Google
         # Update properties of this object
         def update!(**args)
           @result = args[:result] if args.key?(:result)
+        end
+      end
+      
+      # Represents a screen density.
+      class ScreenDensity
+        include Google::Apis::Core::Hashable
+      
+        # Alias for a screen density.
+        # Corresponds to the JSON property `densityAlias`
+        # @return [String]
+        attr_accessor :density_alias
+      
+        # Value for density dpi.
+        # Corresponds to the JSON property `densityDpi`
+        # @return [Fixnum]
+        attr_accessor :density_dpi
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @density_alias = args[:density_alias] if args.key?(:density_alias)
+          @density_dpi = args[:density_dpi] if args.key?(:density_dpi)
+        end
+      end
+      
+      # Targeting based on screen density.
+      class ScreenDensityTargeting
+        include Google::Apis::Core::Hashable
+      
+        # Targeting of other sibling directories that were in the Bundle. For main
+        # splits this is targeting of other main splits.
+        # Corresponds to the JSON property `alternatives`
+        # @return [Array<Google::Apis::AndroidpublisherV3::ScreenDensity>]
+        attr_accessor :alternatives
+      
+        # Value of a screen density.
+        # Corresponds to the JSON property `value`
+        # @return [Array<Google::Apis::AndroidpublisherV3::ScreenDensity>]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alternatives = args[:alternatives] if args.key?(:alternatives)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Represents an sdk version.
+      class SdkVersion
+        include Google::Apis::Core::Hashable
+      
+        # Inclusive minimum value of an sdk version.
+        # Corresponds to the JSON property `min`
+        # @return [Fixnum]
+        attr_accessor :min
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @min = args[:min] if args.key?(:min)
+        end
+      end
+      
+      # Targeting based on sdk version.
+      class SdkVersionTargeting
+        include Google::Apis::Core::Hashable
+      
+        # Targeting of other sibling directories that were in the Bundle. For main
+        # splits this is targeting of other main splits.
+        # Corresponds to the JSON property `alternatives`
+        # @return [Array<Google::Apis::AndroidpublisherV3::SdkVersion>]
+        attr_accessor :alternatives
+      
+        # Value of an sdk version.
+        # Corresponds to the JSON property `value`
+        # @return [Array<Google::Apis::AndroidpublisherV3::SdkVersion>]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alternatives = args[:alternatives] if args.key?(:alternatives)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Holds data specific to Split APKs.
+      class SplitApkMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Indicates whether this APK is the main split of the module.
+        # Corresponds to the JSON property `isMasterSplit`
+        # @return [Boolean]
+        attr_accessor :is_master_split
+        alias_method :is_master_split?, :is_master_split
+      
+        # Id of the split.
+        # Corresponds to the JSON property `splitId`
+        # @return [String]
+        attr_accessor :split_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @is_master_split = args[:is_master_split] if args.key?(:is_master_split)
+          @split_id = args[:split_id] if args.key?(:split_id)
+        end
+      end
+      
+      # Variant is a group of APKs that covers a part of the device configuration
+      # space. APKs from multiple variants are never combined on one device.
+      class SplitApkVariant
+        include Google::Apis::Core::Hashable
+      
+        # Set of APKs, one set per module.
+        # Corresponds to the JSON property `apkSet`
+        # @return [Array<Google::Apis::AndroidpublisherV3::ApkSet>]
+        attr_accessor :apk_set
+      
+        # Targeting on the level of variants.
+        # Corresponds to the JSON property `targeting`
+        # @return [Google::Apis::AndroidpublisherV3::VariantTargeting]
+        attr_accessor :targeting
+      
+        # Number of the variant, starting at 0 (unless overridden). A device will
+        # receive APKs from the first variant that matches the device configuration,
+        # with higher variant numbers having priority over lower variant numbers.
+        # Corresponds to the JSON property `variantNumber`
+        # @return [Fixnum]
+        attr_accessor :variant_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @apk_set = args[:apk_set] if args.key?(:apk_set)
+          @targeting = args[:targeting] if args.key?(:targeting)
+          @variant_number = args[:variant_number] if args.key?(:variant_number)
+        end
+      end
+      
+      # Holds data specific to Standalone APKs.
+      class StandaloneApkMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Names of the modules fused in this standalone APK.
+        # Corresponds to the JSON property `fusedModuleName`
+        # @return [Array<String>]
+        attr_accessor :fused_module_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fused_module_name = args[:fused_module_name] if args.key?(:fused_module_name)
         end
       end
       
@@ -4250,6 +4840,37 @@ module Google
         end
       end
       
+      # Targeting information about the generated apks.
+      class TargetingInfo
+        include Google::Apis::Core::Hashable
+      
+        # List of created asset slices.
+        # Corresponds to the JSON property `assetSliceSet`
+        # @return [Array<Google::Apis::AndroidpublisherV3::AssetSliceSet>]
+        attr_accessor :asset_slice_set
+      
+        # The package name of this app.
+        # Corresponds to the JSON property `packageName`
+        # @return [String]
+        attr_accessor :package_name
+      
+        # List of the created variants.
+        # Corresponds to the JSON property `variant`
+        # @return [Array<Google::Apis::AndroidpublisherV3::SplitApkVariant>]
+        attr_accessor :variant
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @asset_slice_set = args[:asset_slice_set] if args.key?(:asset_slice_set)
+          @package_name = args[:package_name] if args.key?(:package_name)
+          @variant = args[:variant] if args.key?(:variant)
+        end
+      end
+      
       # Defines the scope of subscriptions which a targeting rule can match to target
       # offers to users based on past or current entitlement.
       class TargetingRuleScope
@@ -4302,6 +4923,50 @@ module Google
         # Update properties of this object
         def update!(**args)
           @google_groups = args[:google_groups] if args.key?(:google_groups)
+        end
+      end
+      
+      # Represents texture compression format.
+      class TextureCompressionFormat
+        include Google::Apis::Core::Hashable
+      
+        # Alias for texture compression format.
+        # Corresponds to the JSON property `alias`
+        # @return [String]
+        attr_accessor :alias
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alias = args[:alias] if args.key?(:alias)
+        end
+      end
+      
+      # Targeting by a texture compression format.
+      class TextureCompressionFormatTargeting
+        include Google::Apis::Core::Hashable
+      
+        # List of alternative TCFs (TCFs targeted by the sibling splits).
+        # Corresponds to the JSON property `alternatives`
+        # @return [Array<Google::Apis::AndroidpublisherV3::TextureCompressionFormat>]
+        attr_accessor :alternatives
+      
+        # The list of targeted TCFs. Should not be empty.
+        # Corresponds to the JSON property `value`
+        # @return [Array<Google::Apis::AndroidpublisherV3::TextureCompressionFormat>]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alternatives = args[:alternatives] if args.key?(:alternatives)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -4738,6 +5403,32 @@ module Google
         end
       end
       
+      # Describes an inclusive/exclusive list of country codes that module targets.
+      class UserCountriesTargeting
+        include Google::Apis::Core::Hashable
+      
+        # List of country codes in the two-letter CLDR territory format.
+        # Corresponds to the JSON property `countryCodes`
+        # @return [Array<String>]
+        attr_accessor :country_codes
+      
+        # Indicates if the list above is exclusive.
+        # Corresponds to the JSON property `exclude`
+        # @return [Boolean]
+        attr_accessor :exclude
+        alias_method :exclude?, :exclude
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @country_codes = args[:country_codes] if args.key?(:country_codes)
+          @exclude = args[:exclude] if args.key?(:exclude)
+        end
+      end
+      
       # A set of user countries. A country set determines what variation of app
       # content gets served to a specific location.
       class UserCountrySet
@@ -4840,6 +5531,49 @@ module Google
         def update!(**args)
           @device_spec = args[:device_spec] if args.key?(:device_spec)
           @variant_id = args[:variant_id] if args.key?(:variant_id)
+        end
+      end
+      
+      # Targeting on the level of variants.
+      class VariantTargeting
+        include Google::Apis::Core::Hashable
+      
+        # Targeting based on Abi.
+        # Corresponds to the JSON property `abiTargeting`
+        # @return [Google::Apis::AndroidpublisherV3::AbiTargeting]
+        attr_accessor :abi_targeting
+      
+        # Targeting based on multiple abis.
+        # Corresponds to the JSON property `multiAbiTargeting`
+        # @return [Google::Apis::AndroidpublisherV3::MultiAbiTargeting]
+        attr_accessor :multi_abi_targeting
+      
+        # Targeting based on screen density.
+        # Corresponds to the JSON property `screenDensityTargeting`
+        # @return [Google::Apis::AndroidpublisherV3::ScreenDensityTargeting]
+        attr_accessor :screen_density_targeting
+      
+        # Targeting based on sdk version.
+        # Corresponds to the JSON property `sdkVersionTargeting`
+        # @return [Google::Apis::AndroidpublisherV3::SdkVersionTargeting]
+        attr_accessor :sdk_version_targeting
+      
+        # Targeting by a texture compression format.
+        # Corresponds to the JSON property `textureCompressionFormatTargeting`
+        # @return [Google::Apis::AndroidpublisherV3::TextureCompressionFormatTargeting]
+        attr_accessor :texture_compression_format_targeting
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @abi_targeting = args[:abi_targeting] if args.key?(:abi_targeting)
+          @multi_abi_targeting = args[:multi_abi_targeting] if args.key?(:multi_abi_targeting)
+          @screen_density_targeting = args[:screen_density_targeting] if args.key?(:screen_density_targeting)
+          @sdk_version_targeting = args[:sdk_version_targeting] if args.key?(:sdk_version_targeting)
+          @texture_compression_format_targeting = args[:texture_compression_format_targeting] if args.key?(:texture_compression_format_targeting)
         end
       end
       
