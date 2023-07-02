@@ -412,6 +412,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FleetObservabilityFeatureError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FleetObservabilityFeatureSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -419,6 +425,24 @@ module Google
       end
       
       class FleetObservabilityFeatureState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FleetObservabilityFleetObservabilityBaseFeatureState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FleetObservabilityFleetObservabilityLoggingState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FleetObservabilityFleetObservabilityMonitoringState
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1599,6 +1623,14 @@ module Google
         end
       end
       
+      class FleetObservabilityFeatureError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :description, as: 'description'
+        end
+      end
+      
       class FleetObservabilityFeatureSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1610,6 +1642,37 @@ module Google
       class FleetObservabilityFeatureState
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :logging, as: 'logging', class: Google::Apis::GkehubV1alpha::FleetObservabilityFleetObservabilityLoggingState, decorator: Google::Apis::GkehubV1alpha::FleetObservabilityFleetObservabilityLoggingState::Representation
+      
+          property :monitoring, as: 'monitoring', class: Google::Apis::GkehubV1alpha::FleetObservabilityFleetObservabilityMonitoringState, decorator: Google::Apis::GkehubV1alpha::FleetObservabilityFleetObservabilityMonitoringState::Representation
+      
+        end
+      end
+      
+      class FleetObservabilityFleetObservabilityBaseFeatureState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          collection :errors, as: 'errors', class: Google::Apis::GkehubV1alpha::FleetObservabilityFeatureError, decorator: Google::Apis::GkehubV1alpha::FleetObservabilityFeatureError::Representation
+      
+        end
+      end
+      
+      class FleetObservabilityFleetObservabilityLoggingState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_log, as: 'defaultLog', class: Google::Apis::GkehubV1alpha::FleetObservabilityFleetObservabilityBaseFeatureState, decorator: Google::Apis::GkehubV1alpha::FleetObservabilityFleetObservabilityBaseFeatureState::Representation
+      
+          property :scope_log, as: 'scopeLog', class: Google::Apis::GkehubV1alpha::FleetObservabilityFleetObservabilityBaseFeatureState, decorator: Google::Apis::GkehubV1alpha::FleetObservabilityFleetObservabilityBaseFeatureState::Representation
+      
+        end
+      end
+      
+      class FleetObservabilityFleetObservabilityMonitoringState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :state, as: 'state', class: Google::Apis::GkehubV1alpha::FleetObservabilityFleetObservabilityBaseFeatureState, decorator: Google::Apis::GkehubV1alpha::FleetObservabilityFleetObservabilityBaseFeatureState::Representation
+      
         end
       end
       
@@ -2124,7 +2187,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :exempted_namespaces, as: 'exemptedNamespaces'
-          property :management, as: 'management'
         end
       end
       
@@ -2144,8 +2206,6 @@ module Google
           property :policy_content, as: 'policyContent', class: Google::Apis::GkehubV1alpha::PolicyControllerPolicyContentSpec, decorator: Google::Apis::GkehubV1alpha::PolicyControllerPolicyContentSpec::Representation
       
           property :referential_rules_enabled, as: 'referentialRulesEnabled'
-          property :template_library_config, as: 'templateLibraryConfig', class: Google::Apis::GkehubV1alpha::PolicyControllerTemplateLibraryConfig, decorator: Google::Apis::GkehubV1alpha::PolicyControllerTemplateLibraryConfig::Representation
-      
         end
       end
       
@@ -2162,8 +2222,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :component_states, as: 'componentStates', class: Google::Apis::GkehubV1alpha::PolicyControllerOnClusterState, decorator: Google::Apis::GkehubV1alpha::PolicyControllerOnClusterState::Representation
-      
-          hash :content_states, as: 'contentStates', class: Google::Apis::GkehubV1alpha::PolicyControllerOnClusterState, decorator: Google::Apis::GkehubV1alpha::PolicyControllerOnClusterState::Representation
       
           property :policy_content_state, as: 'policyContentState', class: Google::Apis::GkehubV1alpha::PolicyControllerPolicyContentState, decorator: Google::Apis::GkehubV1alpha::PolicyControllerPolicyContentState::Representation
       
@@ -2213,6 +2271,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :container_resources, as: 'containerResources', class: Google::Apis::GkehubV1alpha::PolicyControllerResourceRequirements, decorator: Google::Apis::GkehubV1alpha::PolicyControllerResourceRequirements::Representation
       
+          property :pod_affinity, as: 'podAffinity'
           property :pod_anti_affinity, as: 'podAntiAffinity'
           collection :pod_tolerations, as: 'podTolerations', class: Google::Apis::GkehubV1alpha::PolicyControllerToleration, decorator: Google::Apis::GkehubV1alpha::PolicyControllerToleration::Representation
       
@@ -2241,7 +2300,6 @@ module Google
       class PolicyControllerTemplateLibraryConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :included, as: 'included'
           property :installation, as: 'installation'
         end
       end
