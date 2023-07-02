@@ -706,8 +706,8 @@ module Google
         #   name` field, the message's resource name. Instead, it sets the custom name as
         #   the `clientAssignedMessageId` field, which you can reference while processing
         #   later operations, like updating or deleting the message. For example usage,
-        #   see [Name a created message](https://developers.google.com/chat/api/guides/
-        #   crudl/messages#name_a_created_message).
+        #   see [Name a created message](https://developers.google.com/chat/api/guides/v1/
+        #   messages/create#name_a_created_message).
         # @param [String] message_reply_option
         #   Optional. Specifies whether a message starts a thread or replies to one. Only
         #   supported in named spaces.
@@ -813,7 +813,7 @@ module Google
         #   name assigned by a Chat app that created it with the Chat REST API. That Chat
         #   app (but not others) can pass the custom name to get, update, or delete the
         #   message. To learn more, see [create and name a message] (https://developers.
-        #   google.com/chat/api/guides/crudl/messages#name_a_created_message).
+        #   google.com/chat/api/guides/v1/messages/create#name_a_created_message).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -936,7 +936,7 @@ module Google
         # @param [Boolean] allow_missing
         #   Optional. If `true` and the message isn't found, a new message is created and `
         #   updateMask` is ignored. The specified message ID must be [client-assigned](
-        #   https://developers.google.com/chat/api/guides/crudl/messages#
+        #   https://developers.google.com/chat/api/guides/v1/messages/create#
         #   name_a_created_message) or the request fails.
         # @param [String] update_mask
         #   Required. The field paths to update. Separate multiple values with commas.
@@ -992,7 +992,7 @@ module Google
         # @param [Boolean] allow_missing
         #   Optional. If `true` and the message isn't found, a new message is created and `
         #   updateMask` is ignored. The specified message ID must be [client-assigned](
-        #   https://developers.google.com/chat/api/guides/crudl/messages#
+        #   https://developers.google.com/chat/api/guides/v1/messages/create#
         #   name_a_created_message) or the request fails.
         # @param [String] update_mask
         #   Required. The field paths to update. Separate multiple values with commas.

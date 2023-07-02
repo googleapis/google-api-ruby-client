@@ -3136,8 +3136,8 @@ module Google
         # message's resource name. Instead, it sets the custom name as the `
         # clientAssignedMessageId` field, which you can reference while processing later
         # operations, like updating or deleting the message. For example usage, see [
-        # Name a created message](https://developers.google.com/chat/api/guides/crudl/
-        # messages#name_a_created_message).
+        # Name a created message](https://developers.google.com/chat/api/guides/v1/
+        # messages/create#name_a_created_message).
         # Corresponds to the JSON property `clientAssignedMessageId`
         # @return [String]
         attr_accessor :client_assigned_message_id
