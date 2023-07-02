@@ -1334,7 +1334,7 @@ module Google
         # @return [String]
         attr_accessor :visibility
       
-        # Working Location event data. Read-only. Developer Preview.
+        # Working Location event data. Developer Preview.
         # Corresponds to the JSON property `workingLocationProperties`
         # @return [Google::Apis::CalendarV3::EventWorkingLocationProperties]
         attr_accessor :working_location_properties
