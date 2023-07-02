@@ -742,6 +742,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RangeInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RecurringTimeWindow
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1083,6 +1089,8 @@ module Google
       class AdditionalPodRangesConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :pod_range_info, as: 'podRangeInfo', class: Google::Apis::ContainerV1beta1::RangeInfo, decorator: Google::Apis::ContainerV1beta1::RangeInfo::Representation
+      
           collection :pod_range_names, as: 'podRangeNames'
         end
       end
@@ -1170,6 +1178,7 @@ module Google
           property :disk_size_gb, as: 'diskSizeGb'
           property :disk_type, as: 'diskType'
           property :image_type, as: 'imageType'
+          property :insecure_kubelet_readonly_port_enabled, as: 'insecureKubeletReadonlyPortEnabled'
           property :management, as: 'management', class: Google::Apis::ContainerV1beta1::NodeManagement, decorator: Google::Apis::ContainerV1beta1::NodeManagement::Representation
       
           property :min_cpu_platform, as: 'minCpuPlatform'
@@ -1810,6 +1819,7 @@ module Google
           property :cluster_ipv4_cidr_block, as: 'clusterIpv4CidrBlock'
           property :cluster_secondary_range_name, as: 'clusterSecondaryRangeName'
           property :create_subnetwork, as: 'createSubnetwork'
+          property :default_pod_ipv4_range_utilization, as: 'defaultPodIpv4RangeUtilization'
           property :ipv6_access_type, as: 'ipv6AccessType'
           property :node_ipv4_cidr, as: 'nodeIpv4Cidr'
           property :node_ipv4_cidr_block, as: 'nodeIpv4CidrBlock'
@@ -2226,6 +2236,7 @@ module Google
           property :cpu_cfs_quota, as: 'cpuCfsQuota'
           property :cpu_cfs_quota_period, as: 'cpuCfsQuotaPeriod'
           property :cpu_manager_policy, as: 'cpuManagerPolicy'
+          property :insecure_kubelet_readonly_port_enabled, as: 'insecureKubeletReadonlyPortEnabled'
           property :pod_pids_limit, :numeric_string => true, as: 'podPidsLimit'
         end
       end
@@ -2257,6 +2268,7 @@ module Google
           property :pod_cidr_overprovision_config, as: 'podCidrOverprovisionConfig', class: Google::Apis::ContainerV1beta1::PodCidrOverprovisionConfig, decorator: Google::Apis::ContainerV1beta1::PodCidrOverprovisionConfig::Representation
       
           property :pod_ipv4_cidr_block, as: 'podIpv4CidrBlock'
+          property :pod_ipv4_range_utilization, as: 'podIpv4RangeUtilization'
           property :pod_range, as: 'podRange'
         end
       end
@@ -2399,6 +2411,7 @@ module Google
       class PlacementPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :tpu_topology, as: 'tpuTopology'
           property :type, as: 'type'
         end
       end
@@ -2455,6 +2468,14 @@ module Google
           property :filter, as: 'filter', class: Google::Apis::ContainerV1beta1::Filter, decorator: Google::Apis::ContainerV1beta1::Filter::Representation
       
           property :topic, as: 'topic'
+        end
+      end
+      
+      class RangeInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :range_name, as: 'rangeName'
+          property :utilization, as: 'utilization'
         end
       end
       

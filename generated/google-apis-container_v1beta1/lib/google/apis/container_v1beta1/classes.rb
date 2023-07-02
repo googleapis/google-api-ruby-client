@@ -81,6 +81,11 @@ module Google
       class AdditionalPodRangesConfig
         include Google::Apis::Core::Hashable
       
+        # Output only. [Output only] Information for additional pod range.
+        # Corresponds to the JSON property `podRangeInfo`
+        # @return [Array<Google::Apis::ContainerV1beta1::RangeInfo>]
+        attr_accessor :pod_range_info
+      
         # Name for pod secondary ipv4 range which has the actual range defined ahead.
         # Corresponds to the JSON property `podRangeNames`
         # @return [Array<String>]
@@ -92,6 +97,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @pod_range_info = args[:pod_range_info] if args.key?(:pod_range_info)
           @pod_range_names = args[:pod_range_names] if args.key?(:pod_range_names)
         end
       end
@@ -380,6 +386,12 @@ module Google
         # @return [String]
         attr_accessor :image_type
       
+        # Enable or disable Kubelet read only port.
+        # Corresponds to the JSON property `insecureKubeletReadonlyPortEnabled`
+        # @return [Boolean]
+        attr_accessor :insecure_kubelet_readonly_port_enabled
+        alias_method :insecure_kubelet_readonly_port_enabled?, :insecure_kubelet_readonly_port_enabled
+      
         # NodeManagement defines the set of node management services turned on for the
         # node pool.
         # Corresponds to the JSON property `management`
@@ -455,6 +467,7 @@ module Google
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @disk_type = args[:disk_type] if args.key?(:disk_type)
           @image_type = args[:image_type] if args.key?(:image_type)
+          @insecure_kubelet_readonly_port_enabled = args[:insecure_kubelet_readonly_port_enabled] if args.key?(:insecure_kubelet_readonly_port_enabled)
           @management = args[:management] if args.key?(:management)
           @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
           @oauth_scopes = args[:oauth_scopes] if args.key?(:oauth_scopes)
@@ -2805,6 +2818,13 @@ module Google
         attr_accessor :create_subnetwork
         alias_method :create_subnetwork?, :create_subnetwork
       
+        # Output only. [Output only] The utilization of the cluster default IPv4 range
+        # for pod. The ratio is Usage/[Total number of IPs in the secondary range],
+        # Usage=numNodes*numZones*podIPsPerNode.
+        # Corresponds to the JSON property `defaultPodIpv4RangeUtilization`
+        # @return [Float]
+        attr_accessor :default_pod_ipv4_range_utilization
+      
         # The ipv6 access type (internal or external) when create_subnetwork is true
         # Corresponds to the JSON property `ipv6AccessType`
         # @return [String]
@@ -2920,6 +2940,7 @@ module Google
           @cluster_ipv4_cidr_block = args[:cluster_ipv4_cidr_block] if args.key?(:cluster_ipv4_cidr_block)
           @cluster_secondary_range_name = args[:cluster_secondary_range_name] if args.key?(:cluster_secondary_range_name)
           @create_subnetwork = args[:create_subnetwork] if args.key?(:create_subnetwork)
+          @default_pod_ipv4_range_utilization = args[:default_pod_ipv4_range_utilization] if args.key?(:default_pod_ipv4_range_utilization)
           @ipv6_access_type = args[:ipv6_access_type] if args.key?(:ipv6_access_type)
           @node_ipv4_cidr = args[:node_ipv4_cidr] if args.key?(:node_ipv4_cidr)
           @node_ipv4_cidr_block = args[:node_ipv4_cidr_block] if args.key?(:node_ipv4_cidr_block)
@@ -4347,6 +4368,12 @@ module Google
         # @return [String]
         attr_accessor :cpu_manager_policy
       
+        # Enable or disable Kubelet read only port.
+        # Corresponds to the JSON property `insecureKubeletReadonlyPortEnabled`
+        # @return [Boolean]
+        attr_accessor :insecure_kubelet_readonly_port_enabled
+        alias_method :insecure_kubelet_readonly_port_enabled?, :insecure_kubelet_readonly_port_enabled
+      
         # Set the Pod PID limits. See https://kubernetes.io/docs/concepts/policy/pid-
         # limiting/#pod-pid-limits Controls the maximum number of processes allowed to
         # run in a pod. The value must be greater than or equal to 1024 and less than
@@ -4364,6 +4391,7 @@ module Google
           @cpu_cfs_quota = args[:cpu_cfs_quota] if args.key?(:cpu_cfs_quota)
           @cpu_cfs_quota_period = args[:cpu_cfs_quota_period] if args.key?(:cpu_cfs_quota_period)
           @cpu_manager_policy = args[:cpu_manager_policy] if args.key?(:cpu_manager_policy)
+          @insecure_kubelet_readonly_port_enabled = args[:insecure_kubelet_readonly_port_enabled] if args.key?(:insecure_kubelet_readonly_port_enabled)
           @pod_pids_limit = args[:pod_pids_limit] if args.key?(:pod_pids_limit)
         end
       end
@@ -4467,6 +4495,13 @@ module Google
         # @return [String]
         attr_accessor :pod_ipv4_cidr_block
       
+        # Output only. [Output only] The utilization of the IPv4 range for pod. The
+        # ratio is Usage/[Total number of IPs in the secondary range], Usage=numNodes*
+        # numZones*podIPsPerNode.
+        # Corresponds to the JSON property `podIpv4RangeUtilization`
+        # @return [Float]
+        attr_accessor :pod_ipv4_range_utilization
+      
         # The ID of the secondary range for pod IPs. If `create_pod_range` is true, this
         # ID is used for the new range. If `create_pod_range` is false, uses an existing
         # secondary range with this ID. Only applicable if `ip_allocation_policy.
@@ -4487,6 +4522,7 @@ module Google
           @network_performance_config = args[:network_performance_config] if args.key?(:network_performance_config)
           @pod_cidr_overprovision_config = args[:pod_cidr_overprovision_config] if args.key?(:pod_cidr_overprovision_config)
           @pod_ipv4_cidr_block = args[:pod_ipv4_cidr_block] if args.key?(:pod_ipv4_cidr_block)
+          @pod_ipv4_range_utilization = args[:pod_ipv4_range_utilization] if args.key?(:pod_ipv4_range_utilization)
           @pod_range = args[:pod_range] if args.key?(:pod_range)
         end
       end
@@ -5048,6 +5084,12 @@ module Google
       class PlacementPolicy
         include Google::Apis::Core::Hashable
       
+        # TPU placement topology for pod slice node pool. https://cloud.google.com/tpu/
+        # docs/types-topologies#tpu_topologies
+        # Corresponds to the JSON property `tpuTopology`
+        # @return [String]
+        attr_accessor :tpu_topology
+      
         # The type of placement.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -5059,6 +5101,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @tpu_topology = args[:tpu_topology] if args.key?(:tpu_topology)
           @type = args[:type] if args.key?(:type)
         end
       end
@@ -5254,6 +5297,31 @@ module Google
           @enabled = args[:enabled] if args.key?(:enabled)
           @filter = args[:filter] if args.key?(:filter)
           @topic = args[:topic] if args.key?(:topic)
+        end
+      end
+      
+      # RangeInfo contains the range name and the range utilization by this cluster.
+      class RangeInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. [Output only] Name of a range.
+        # Corresponds to the JSON property `rangeName`
+        # @return [String]
+        attr_accessor :range_name
+      
+        # Output only. [Output only] The utilization of the range.
+        # Corresponds to the JSON property `utilization`
+        # @return [Float]
+        attr_accessor :utilization
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @range_name = args[:range_name] if args.key?(:range_name)
+          @utilization = args[:utilization] if args.key?(:utilization)
         end
       end
       
