@@ -75,6 +75,27 @@ module Google
         end
       end
       
+      # Response for [CheckHasProvisionedDeployment]. [spectrum.sas.portal.v1alpha1.
+      # Provisioning.CheckHasProvisionedDeployment].
+      class SasPortalCheckHasProvisionedDeploymentResponse
+        include Google::Apis::Core::Hashable
+      
+        # Whether a SAS deployment for the authentication context exists.
+        # Corresponds to the JSON property `hasProvisionedDeployment`
+        # @return [Boolean]
+        attr_accessor :has_provisioned_deployment
+        alias_method :has_provisioned_deployment?, :has_provisioned_deployment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @has_provisioned_deployment = args[:has_provisioned_deployment] if args.key?(:has_provisioned_deployment)
+        end
+      end
+      
       # Request for CreateSignedDevice.
       class SasPortalCreateSignedDeviceRequest
         include Google::Apis::Core::Hashable
@@ -169,6 +190,31 @@ module Google
           @frns = args[:frns] if args.key?(:frns)
           @name = args[:name] if args.key?(:name)
           @sas_user_ids = args[:sas_user_ids] if args.key?(:sas_user_ids)
+        end
+      end
+      
+      # Association between a gcp project and a SAS user id.
+      class SasPortalDeploymentAssociation
+        include Google::Apis::Core::Hashable
+      
+        # GCP project id of the associated project.
+        # Corresponds to the JSON property `gcpProjectId`
+        # @return [String]
+        attr_accessor :gcp_project_id
+      
+        # User id of the deployment.
+        # Corresponds to the JSON property `userId`
+        # @return [String]
+        attr_accessor :user_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcp_project_id = args[:gcp_project_id] if args.key?(:gcp_project_id)
+          @user_id = args[:user_id] if args.key?(:user_id)
         end
       end
       
@@ -879,6 +925,68 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @nodes = args[:nodes] if args.key?(:nodes)
+        end
+      end
+      
+      # Long-running operation metadata message returned by the MigrateOrganization.
+      class SasPortalMigrateOrganizationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Current operation state
+        # Corresponds to the JSON property `operationState`
+        # @return [String]
+        attr_accessor :operation_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @operation_state = args[:operation_state] if args.key?(:operation_state)
+        end
+      end
+      
+      # Request for [MigrateOrganization]. [spectrum.sas.portal.v1alpha1.Provisioning.
+      # MigrateOrganization]. GCP Project, Organization Info, and caller's GAIA ID
+      # should be retrieved from the RPC handler, and used to check authorization on
+      # SAS Portal organization and to create GCP Projects.
+      class SasPortalMigrateOrganizationRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Id of the SAS organization to be migrated.
+        # Corresponds to the JSON property `organizationId`
+        # @return [Fixnum]
+        attr_accessor :organization_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @organization_id = args[:organization_id] if args.key?(:organization_id)
+        end
+      end
+      
+      # Response for [MigrateOrganization]. [spectrum.sas.portal.v1alpha1.Provisioning.
+      # MigrateOrganization].
+      class SasPortalMigrateOrganizationResponse
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A list of deployment association that were created for the migration,
+        # or current associations if they already exist.
+        # Corresponds to the JSON property `deploymentAssociation`
+        # @return [Array<Google::Apis::SasportalV1alpha1::SasPortalDeploymentAssociation>]
+        attr_accessor :deployment_association
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deployment_association = args[:deployment_association] if args.key?(:deployment_association)
         end
       end
       
