@@ -332,6 +332,8 @@ module Google
         # @param [String] page_token
         #   A token identifying the page of results to return. If unspecified, the first
         #   page is retrieved.
+        # @param [String] parent
+        #   The fully qualified name of parent resource to search cases under.
         # @param [String] query
         #   An expression written in filter language. A query uses the following fields
         #   with the operators equals (`=`) and `AND`: - `organization`: An organization
@@ -370,12 +372,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def search_cases(page_size: nil, page_token: nil, query: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def search_cases(page_size: nil, page_token: nil, parent: nil, query: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2beta/cases:search', options)
           command.response_representation = Google::Apis::CloudsupportV2beta::SearchCasesResponse::Representation
           command.response_class = Google::Apis::CloudsupportV2beta::SearchCasesResponse
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['parent'] = parent unless parent.nil?
           command.query['query'] = query unless query.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
