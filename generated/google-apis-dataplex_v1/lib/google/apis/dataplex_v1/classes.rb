@@ -2181,6 +2181,11 @@ module Google
         # @return [String]
         attr_accessor :message
       
+        # Post scan actions result for data scan job.
+        # Corresponds to the JSON property `postScanActionsResult`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanEventPostScanActionsResult]
+        attr_accessor :post_scan_actions_result
+      
         # The scope of the data scan (e.g. full, incremental).
         # Corresponds to the JSON property `scope`
         # @return [String]
@@ -2225,6 +2230,7 @@ module Google
           @end_time = args[:end_time] if args.key?(:end_time)
           @job_id = args[:job_id] if args.key?(:job_id)
           @message = args[:message] if args.key?(:message)
+          @post_scan_actions_result = args[:post_scan_actions_result] if args.key?(:post_scan_actions_result)
           @scope = args[:scope] if args.key?(:scope)
           @spec_version = args[:spec_version] if args.key?(:spec_version)
           @start_time = args[:start_time] if args.key?(:start_time)
@@ -2347,6 +2353,50 @@ module Google
           @dimension_passed = args[:dimension_passed] if args.key?(:dimension_passed)
           @passed = args[:passed] if args.key?(:passed)
           @row_count = args[:row_count] if args.key?(:row_count)
+        end
+      end
+      
+      # Post scan actions result for data scan job.
+      class GoogleCloudDataplexV1DataScanEventPostScanActionsResult
+        include Google::Apis::Core::Hashable
+      
+        # The result of BigQuery export post scan action.
+        # Corresponds to the JSON property `bigqueryExportResult`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanEventPostScanActionsResultBigQueryExportResult]
+        attr_accessor :bigquery_export_result
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bigquery_export_result = args[:bigquery_export_result] if args.key?(:bigquery_export_result)
+        end
+      end
+      
+      # The result of BigQuery export post scan action.
+      class GoogleCloudDataplexV1DataScanEventPostScanActionsResultBigQueryExportResult
+        include Google::Apis::Core::Hashable
+      
+        # Additional information about the BigQuery exporting.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Execution state for the BigQuery exporting.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
+          @state = args[:state] if args.key?(:state)
         end
       end
       

@@ -364,6 +364,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDataplexV1DataScanEventPostScanActionsResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataScanEventPostScanActionsResultBigQueryExportResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDataplexV1DataScanExecutionSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1506,6 +1518,8 @@ module Google
           property :end_time, as: 'endTime'
           property :job_id, as: 'jobId'
           property :message, as: 'message'
+          property :post_scan_actions_result, as: 'postScanActionsResult', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanEventPostScanActionsResult, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanEventPostScanActionsResult::Representation
+      
           property :scope, as: 'scope'
           property :spec_version, as: 'specVersion'
           property :start_time, as: 'startTime'
@@ -1545,6 +1559,22 @@ module Google
           hash :dimension_passed, as: 'dimensionPassed'
           property :passed, as: 'passed'
           property :row_count, :numeric_string => true, as: 'rowCount'
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataScanEventPostScanActionsResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bigquery_export_result, as: 'bigqueryExportResult', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanEventPostScanActionsResultBigQueryExportResult, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanEventPostScanActionsResultBigQueryExportResult::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataScanEventPostScanActionsResultBigQueryExportResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message'
+          property :state, as: 'state'
         end
       end
       
