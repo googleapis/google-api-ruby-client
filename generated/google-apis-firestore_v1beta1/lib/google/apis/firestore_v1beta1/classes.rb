@@ -951,6 +951,49 @@ module Google
         end
       end
       
+      # Metadata for the long-running operation from the RestoreDatabase request.
+      class GoogleFirestoreAdminV1RestoreDatabaseMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The name of the backup restoring from.
+        # Corresponds to the JSON property `backup`
+        # @return [String]
+        attr_accessor :backup
+      
+        # The name of the database being restored to.
+        # Corresponds to the JSON property `database`
+        # @return [String]
+        attr_accessor :database
+      
+        # The time the restore finished, unset for ongoing restores.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The operation state of the restore.
+        # Corresponds to the JSON property `operationState`
+        # @return [String]
+        attr_accessor :operation_state
+      
+        # The time the restore was started.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup = args[:backup] if args.key?(:backup)
+          @database = args[:database] if args.key?(:database)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @operation_state = args[:operation_state] if args.key?(:operation_state)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
       # Metadata related to the update database operation.
       class GoogleFirestoreAdminV1UpdateDatabaseMetadata
         include Google::Apis::Core::Hashable
@@ -1838,6 +1881,8 @@ module Google
       end
       
       # Options for a transaction that can be used to read and write documents.
+      # Firestore does not allow 3rd party auth requests to create read-write.
+      # transactions.
       class ReadWrite
         include Google::Apis::Core::Hashable
       
@@ -2322,6 +2367,8 @@ module Google
         attr_accessor :read_only
       
         # Options for a transaction that can be used to read and write documents.
+        # Firestore does not allow 3rd party auth requests to create read-write.
+        # transactions.
         # Corresponds to the JSON property `readWrite`
         # @return [Google::Apis::FirestoreV1beta1::ReadWrite]
         attr_accessor :read_write
