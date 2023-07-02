@@ -1,0 +1,7 @@
+{
+    "api_id": "cloudsupport:v2",
+    "name_pretty": "Google Cloud Support API",
+    "distribution_name": "google-apis-cloudsupport_v2",
+    "language": "ruby",
+    "library_type": "REST"
+}
