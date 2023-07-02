@@ -2748,6 +2748,43 @@ module Google
         end
       end
       
+      # Progress metric is (string, int|float|string) pair.
+      class Metric
+        include Google::Apis::Core::Hashable
+      
+        # For metrics with floating point value.
+        # Corresponds to the JSON property `doubleValue`
+        # @return [Float]
+        attr_accessor :double_value
+      
+        # For metrics with integer value.
+        # Corresponds to the JSON property `intValue`
+        # @return [Fixnum]
+        attr_accessor :int_value
+      
+        # Required. The metric name.
+        # Corresponds to the JSON property `metric`
+        # @return [String]
+        attr_accessor :metric
+      
+        # For metrics with custom values (ratios, visual progress, etc.).
+        # Corresponds to the JSON property `stringValue`
+        # @return [String]
+        attr_accessor :string_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @double_value = args[:double_value] if args.key?(:double_value)
+          @int_value = args[:int_value] if args.key?(:int_value)
+          @metric = args[:metric] if args.key?(:metric)
+          @string_value = args[:string_value] if args.key?(:string_value)
+        end
+      end
+      
       # NodeTaint applied to every Kubernetes node in a node pool. Kubernetes taints
       # can be used together with tolerations to control how workloads are scheduled
       # to your nodes. Node taints are permanent.
@@ -2870,6 +2907,11 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
+        # Information about operation progress. LINT.IfChange
+        # Corresponds to the JSON property `progress`
+        # @return [Google::Apis::GkeonpremV1::OperationProgress]
+        attr_accessor :progress
+      
         # Output only. Identifies whether the user has requested cancellation of the
         # operation. Operations that have successfully been cancelled have [Operation.
         # error] value with a [google.rpc.Status.code] of 1, corresponding to `Code.
@@ -2909,11 +2951,74 @@ module Google
           @control_plane_disconnected = args[:control_plane_disconnected] if args.key?(:control_plane_disconnected)
           @create_time = args[:create_time] if args.key?(:create_time)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @progress = args[:progress] if args.key?(:progress)
           @requested_cancellation = args[:requested_cancellation] if args.key?(:requested_cancellation)
           @status_message = args[:status_message] if args.key?(:status_message)
           @target = args[:target] if args.key?(:target)
           @type = args[:type] if args.key?(:type)
           @verb = args[:verb] if args.key?(:verb)
+        end
+      end
+      
+      # Information about operation progress. LINT.IfChange
+      class OperationProgress
+        include Google::Apis::Core::Hashable
+      
+        # The stages of the operation.
+        # Corresponds to the JSON property `stages`
+        # @return [Array<Google::Apis::GkeonpremV1::OperationStage>]
+        attr_accessor :stages
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @stages = args[:stages] if args.key?(:stages)
+        end
+      end
+      
+      # Information about a particular stage of an operation.
+      class OperationStage
+        include Google::Apis::Core::Hashable
+      
+        # Time the stage ended.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Progress metric bundle.
+        # Corresponds to the JSON property `metrics`
+        # @return [Array<Google::Apis::GkeonpremV1::Metric>]
+        attr_accessor :metrics
+      
+        # The high-level stage of the operation.
+        # Corresponds to the JSON property `stage`
+        # @return [String]
+        attr_accessor :stage
+      
+        # Time the stage started.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Output only. State of the stage.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @metrics = args[:metrics] if args.key?(:metrics)
+          @stage = args[:stage] if args.key?(:stage)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
