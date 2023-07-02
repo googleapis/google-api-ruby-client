@@ -3887,9 +3887,8 @@ module Google
         attr_accessor :service_bindings
       
         # URL to networkservices.ServiceLbPolicy resource. Can only be set if load
-        # balancing scheme is EXTERNAL, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED. If
-        # used with a backend service, must reference a global policy. If used with a
-        # regional backend service, must reference a regional policy.
+        # balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or
+        # INTERNAL_SELF_MANAGED and the scope is global.
         # Corresponds to the JSON property `serviceLbPolicy`
         # @return [String]
         attr_accessor :service_lb_policy
@@ -10222,9 +10221,12 @@ module Google
         alias_method :all_ports?, :all_ports
       
         # This field is used along with the backend_service field for internal load
-        # balancing or with the target field for internal TargetInstance. If the field
-        # is set to TRUE, clients can access ILB from all regions. Otherwise only allows
-        # access from clients in the same region as the internal load balancer.
+        # balancing or with the target field for internal TargetInstance. If set to true,
+        # clients can access the Internal TCP/UDP Load Balancer, Internal HTTP(S) and
+        # TCP Proxy Load Balancer from all regions. If false, only allows access from
+        # the local region the load balancer is located at. Note that for
+        # INTERNAL_MANAGED forwarding rules, this field cannot be changed after the
+        # forwarding rule is created.
         # Corresponds to the JSON property `allowGlobalAccess`
         # @return [Boolean]
         attr_accessor :allow_global_access
@@ -16658,6 +16660,14 @@ module Google
         attr_accessor :creating_atomically
       
         # [Output Only] The number of instances that the managed instance group will
+        # attempt to create in bulk. If the desired count of instances cannot be created,
+        # entire batch will be deleted and the group will decrease its targetSize value
+        # accordingly.
+        # Corresponds to the JSON property `creatingInBulk`
+        # @return [Fixnum]
+        attr_accessor :creating_in_bulk
+      
+        # [Output Only] The number of instances that the managed instance group will
         # attempt to create. The group attempts to create each instance only once. If
         # the group fails to create any of these instances, it decreases the group's
         # targetSize value accordingly.
@@ -16744,6 +16754,7 @@ module Google
           @abandoning = args[:abandoning] if args.key?(:abandoning)
           @creating = args[:creating] if args.key?(:creating)
           @creating_atomically = args[:creating_atomically] if args.key?(:creating_atomically)
+          @creating_in_bulk = args[:creating_in_bulk] if args.key?(:creating_in_bulk)
           @creating_without_retries = args[:creating_without_retries] if args.key?(:creating_without_retries)
           @deleting = args[:deleting] if args.key?(:deleting)
           @none = args[:none] if args.key?(:none)
@@ -17973,6 +17984,13 @@ module Google
       class InstanceGroupManagersDeleteInstancesRequest
         include Google::Apis::Core::Hashable
       
+        # The list of instance names to delete. Queued instances do not have URL and can
+        # be deleted only by name. You cannot specify both URLs and names in a single
+        # request.
+        # Corresponds to the JSON property `instanceNames`
+        # @return [Array<String>]
+        attr_accessor :instance_names
+      
         # The URLs of one or more instances to delete. This can be a full URL or a
         # partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME]. Queued instances
         # do not have URL and can be deleted only by name. One cannot specify both URLs
@@ -17999,6 +18017,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @instance_names = args[:instance_names] if args.key?(:instance_names)
           @instances = args[:instances] if args.key?(:instances)
           @skip_instances_on_validation_error = args[:skip_instances_on_validation_error] if args.key?(:skip_instances_on_validation_error)
         end
@@ -33714,7 +33733,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
-        # The IPv4 address range, in CIDR format, represented by this public delegated
+        # The IP address range, in CIDR format, represented by this public delegated
         # prefix.
         # Corresponds to the JSON property `ipCidrRange`
         # @return [String]
@@ -34063,8 +34082,8 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # The IPv4 address range, in CIDR format, represented by this sub public
-        # delegated prefix.
+        # The IP address range, in CIDR format, represented by this sub public delegated
+        # prefix.
         # Corresponds to the JSON property `ipCidrRange`
         # @return [String]
         attr_accessor :ip_cidr_range
