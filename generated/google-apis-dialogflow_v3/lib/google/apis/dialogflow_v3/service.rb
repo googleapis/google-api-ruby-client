@@ -3741,7 +3741,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Fetches a list of results for a given test case.
+        # Fetches the list of run results for the given test case. A maximum of 100
+        # results are kept for each test case.
         # @param [String] parent
         #   Required. The test case to list results for. Format: `projects//locations//
         #   agents// testCases/`. Specify a `-` as a wildcard for TestCase ID to list
