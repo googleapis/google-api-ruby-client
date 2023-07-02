@@ -1131,14 +1131,33 @@ module Google
         end
       end
       
+      # Message containing collected data names and values.
+      class SqlserverValidationDetails
+        include Google::Apis::Core::Hashable
+      
+        # Required. Collected data is in format.
+        # Corresponds to the JSON property `fields`
+        # @return [Hash<String,String>]
+        attr_accessor :fields
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fields = args[:fields] if args.key?(:fields)
+        end
+      end
+      
       # Message describing the Sqlserver validation metrics.
       class SqlserverValidationValidationDetail
         include Google::Apis::Core::Hashable
       
-        # pairs of metrics data: column name & column value.
-        # Corresponds to the JSON property `fields`
-        # @return [Hash<String,String>]
-        attr_accessor :fields
+        # Required. Details wraps map that represents collected data names and values.
+        # Corresponds to the JSON property `details`
+        # @return [Array<Google::Apis::WorkloadmanagerV1::SqlserverValidationDetails>]
+        attr_accessor :details
       
         # The Sqlserver system that the validation data is from.
         # Corresponds to the JSON property `type`
@@ -1151,7 +1170,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @fields = args[:fields] if args.key?(:fields)
+          @details = args[:details] if args.key?(:details)
           @type = args[:type] if args.key?(:type)
         end
       end
