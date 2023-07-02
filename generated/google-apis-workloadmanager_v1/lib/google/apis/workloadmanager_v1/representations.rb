@@ -202,6 +202,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SqlserverValidationDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SqlserverValidationValidationDetail
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -546,10 +552,18 @@ module Google
         end
       end
       
-      class SqlserverValidationValidationDetail
+      class SqlserverValidationDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :fields, as: 'fields'
+        end
+      end
+      
+      class SqlserverValidationValidationDetail
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :details, as: 'details', class: Google::Apis::WorkloadmanagerV1::SqlserverValidationDetails, decorator: Google::Apis::WorkloadmanagerV1::SqlserverValidationDetails::Representation
+      
           property :type, as: 'type'
         end
       end
