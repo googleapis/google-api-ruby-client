@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Aes128Encryption
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Animation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -76,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Clearkey
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Color
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -112,6 +124,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DrmSystems
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EditAtom
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -125,6 +143,18 @@ module Google
       end
       
       class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Encryption
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Fairplay
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -190,6 +220,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MpegCommonEncryption
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MuxStream
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -220,6 +256,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Playready
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PreprocessingConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -227,6 +269,18 @@ module Google
       end
       
       class PubsubDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SampleAesEncryption
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecretManagerSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -274,6 +328,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Widevine
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class YadifConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -284,6 +344,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :start_time_offset, as: 'startTimeOffset'
+        end
+      end
+      
+      class Aes128Encryption
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -371,6 +437,12 @@ module Google
         end
       end
       
+      class Clearkey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class Color
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -423,6 +495,20 @@ module Google
         end
       end
       
+      class DrmSystems
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :clearkey, as: 'clearkey', class: Google::Apis::TranscoderV1::Clearkey, decorator: Google::Apis::TranscoderV1::Clearkey::Representation
+      
+          property :fairplay, as: 'fairplay', class: Google::Apis::TranscoderV1::Fairplay, decorator: Google::Apis::TranscoderV1::Fairplay::Representation
+      
+          property :playready, as: 'playready', class: Google::Apis::TranscoderV1::Playready, decorator: Google::Apis::TranscoderV1::Playready::Representation
+      
+          property :widevine, as: 'widevine', class: Google::Apis::TranscoderV1::Widevine, decorator: Google::Apis::TranscoderV1::Widevine::Representation
+      
+        end
+      end
+      
       class EditAtom
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -447,6 +533,29 @@ module Google
       end
       
       class Empty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Encryption
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aes128, as: 'aes128', class: Google::Apis::TranscoderV1::Aes128Encryption, decorator: Google::Apis::TranscoderV1::Aes128Encryption::Representation
+      
+          property :drm_systems, as: 'drmSystems', class: Google::Apis::TranscoderV1::DrmSystems, decorator: Google::Apis::TranscoderV1::DrmSystems::Representation
+      
+          property :id, as: 'id'
+          property :mpeg_cenc, as: 'mpegCenc', class: Google::Apis::TranscoderV1::MpegCommonEncryption, decorator: Google::Apis::TranscoderV1::MpegCommonEncryption::Representation
+      
+          property :sample_aes, as: 'sampleAes', class: Google::Apis::TranscoderV1::SampleAesEncryption, decorator: Google::Apis::TranscoderV1::SampleAesEncryption::Representation
+      
+          property :secret_manager_key_source, as: 'secretManagerKeySource', class: Google::Apis::TranscoderV1::SecretManagerSource, decorator: Google::Apis::TranscoderV1::SecretManagerSource::Representation
+      
+        end
+      end
+      
+      class Fairplay
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -526,6 +635,7 @@ module Google
       class Job
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :batch_mode_priority, as: 'batchModePriority'
           property :config, as: 'config', class: Google::Apis::TranscoderV1::JobConfig, decorator: Google::Apis::TranscoderV1::JobConfig::Representation
       
           property :create_time, as: 'createTime'
@@ -536,6 +646,7 @@ module Google
           hash :labels, as: 'labels'
           property :mode, as: 'mode'
           property :name, as: 'name'
+          property :optimization, as: 'optimization'
           property :output_uri, as: 'outputUri'
           property :start_time, as: 'startTime'
           property :state, as: 'state'
@@ -552,6 +663,8 @@ module Google
           collection :edit_list, as: 'editList', class: Google::Apis::TranscoderV1::EditAtom, decorator: Google::Apis::TranscoderV1::EditAtom::Representation
       
           collection :elementary_streams, as: 'elementaryStreams', class: Google::Apis::TranscoderV1::ElementaryStream, decorator: Google::Apis::TranscoderV1::ElementaryStream::Representation
+      
+          collection :encryptions, as: 'encryptions', class: Google::Apis::TranscoderV1::Encryption, decorator: Google::Apis::TranscoderV1::Encryption::Representation
       
           collection :inputs, as: 'inputs', class: Google::Apis::TranscoderV1::Input, decorator: Google::Apis::TranscoderV1::Input::Representation
       
@@ -611,11 +724,19 @@ module Google
         end
       end
       
+      class MpegCommonEncryption
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :scheme, as: 'scheme'
+        end
+      end
+      
       class MuxStream
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :container, as: 'container'
           collection :elementary_streams, as: 'elementaryStreams'
+          property :encryption_id, as: 'encryptionId'
           property :file_name, as: 'fileName'
           property :key, as: 'key'
           property :segment_settings, as: 'segmentSettings', class: Google::Apis::TranscoderV1::SegmentSettings, decorator: Google::Apis::TranscoderV1::SegmentSettings::Representation
@@ -658,6 +779,12 @@ module Google
         end
       end
       
+      class Playready
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class PreprocessingConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -682,6 +809,19 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :topic, as: 'topic'
+        end
+      end
+      
+      class SampleAesEncryption
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class SecretManagerSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :secret_version, as: 'secretVersion'
         end
       end
       
@@ -764,6 +904,12 @@ module Google
           property :profile, as: 'profile'
           property :rate_control_mode, as: 'rateControlMode'
           property :width_pixels, as: 'widthPixels'
+        end
+      end
+      
+      class Widevine
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

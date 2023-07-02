@@ -42,6 +42,19 @@ module Google
         end
       end
       
+      # Configuration for AES-128 encryption.
+      class Aes128Encryption
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Animation types.
       class Animation
         include Google::Apis::Core::Hashable
@@ -359,6 +372,19 @@ module Google
         end
       end
       
+      # Clearkey configuration.
+      class Clearkey
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Color preprocessing configuration. **Note:** This configuration is not
       # supported.
       class Color
@@ -536,6 +562,43 @@ module Google
         end
       end
       
+      # Defines configuration for DRM systems in use.
+      class DrmSystems
+        include Google::Apis::Core::Hashable
+      
+        # Clearkey configuration.
+        # Corresponds to the JSON property `clearkey`
+        # @return [Google::Apis::TranscoderV1::Clearkey]
+        attr_accessor :clearkey
+      
+        # Fairplay configuration.
+        # Corresponds to the JSON property `fairplay`
+        # @return [Google::Apis::TranscoderV1::Fairplay]
+        attr_accessor :fairplay
+      
+        # Playready configuration.
+        # Corresponds to the JSON property `playready`
+        # @return [Google::Apis::TranscoderV1::Playready]
+        attr_accessor :playready
+      
+        # Widevine configuration.
+        # Corresponds to the JSON property `widevine`
+        # @return [Google::Apis::TranscoderV1::Widevine]
+        attr_accessor :widevine
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @clearkey = args[:clearkey] if args.key?(:clearkey)
+          @fairplay = args[:fairplay] if args.key?(:fairplay)
+          @playready = args[:playready] if args.key?(:playready)
+          @widevine = args[:widevine] if args.key?(:widevine)
+        end
+      end
+      
       # Edit atom.
       class EditAtom
         include Google::Apis::Core::Hashable
@@ -621,6 +684,68 @@ module Google
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
       # protobuf.Empty) returns (google.protobuf.Empty); `
       class Empty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Encryption settings.
+      class Encryption
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for AES-128 encryption.
+        # Corresponds to the JSON property `aes128`
+        # @return [Google::Apis::TranscoderV1::Aes128Encryption]
+        attr_accessor :aes128
+      
+        # Defines configuration for DRM systems in use.
+        # Corresponds to the JSON property `drmSystems`
+        # @return [Google::Apis::TranscoderV1::DrmSystems]
+        attr_accessor :drm_systems
+      
+        # Required. Identifier for this set of encryption options.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Configuration for MPEG Common Encryption (MPEG-CENC).
+        # Corresponds to the JSON property `mpegCenc`
+        # @return [Google::Apis::TranscoderV1::MpegCommonEncryption]
+        attr_accessor :mpeg_cenc
+      
+        # Configuration for SAMPLE-AES encryption.
+        # Corresponds to the JSON property `sampleAes`
+        # @return [Google::Apis::TranscoderV1::SampleAesEncryption]
+        attr_accessor :sample_aes
+      
+        # Configuration for secrets stored in Google Secret Manager.
+        # Corresponds to the JSON property `secretManagerKeySource`
+        # @return [Google::Apis::TranscoderV1::SecretManagerSource]
+        attr_accessor :secret_manager_key_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aes128 = args[:aes128] if args.key?(:aes128)
+          @drm_systems = args[:drm_systems] if args.key?(:drm_systems)
+          @id = args[:id] if args.key?(:id)
+          @mpeg_cenc = args[:mpeg_cenc] if args.key?(:mpeg_cenc)
+          @sample_aes = args[:sample_aes] if args.key?(:sample_aes)
+          @secret_manager_key_source = args[:secret_manager_key_source] if args.key?(:secret_manager_key_source)
+        end
+      end
+      
+      # Fairplay configuration.
+      class Fairplay
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -1067,6 +1192,13 @@ module Google
       class Job
         include Google::Apis::Core::Hashable
       
+        # The processing priority of a batch job. This field can only be set for batch
+        # mode jobs, and the default value is 0. This value cannot be negative. Higher
+        # values correspond to higher priorities for the job.
+        # Corresponds to the JSON property `batchModePriority`
+        # @return [Fixnum]
+        attr_accessor :batch_mode_priority
+      
         # Job configuration
         # Corresponds to the JSON property `config`
         # @return [Google::Apis::TranscoderV1::JobConfig]
@@ -1119,6 +1251,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. The optimization strategy of the job. The default is `AUTODETECT`.
+        # Corresponds to the JSON property `optimization`
+        # @return [String]
+        attr_accessor :optimization
+      
         # Input only. Specify the `output_uri` to populate an empty `Job.config.output.
         # uri` or `JobTemplate.config.output.uri` when using template. URI for the
         # output file(s). For example, `gs://my-bucket/outputs/`. See [Supported input
@@ -1158,6 +1295,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @batch_mode_priority = args[:batch_mode_priority] if args.key?(:batch_mode_priority)
           @config = args[:config] if args.key?(:config)
           @create_time = args[:create_time] if args.key?(:create_time)
           @end_time = args[:end_time] if args.key?(:end_time)
@@ -1166,6 +1304,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @mode = args[:mode] if args.key?(:mode)
           @name = args[:name] if args.key?(:name)
+          @optimization = args[:optimization] if args.key?(:optimization)
           @output_uri = args[:output_uri] if args.key?(:output_uri)
           @start_time = args[:start_time] if args.key?(:start_time)
           @state = args[:state] if args.key?(:state)
@@ -1194,6 +1333,13 @@ module Google
         # Corresponds to the JSON property `elementaryStreams`
         # @return [Array<Google::Apis::TranscoderV1::ElementaryStream>]
         attr_accessor :elementary_streams
+      
+        # List of encryption configurations for the content. Each configuration has an
+        # ID. Specify this ID in the MuxStream.encryption_id field to indicate the
+        # configuration to use for that `MuxStream` output.
+        # Corresponds to the JSON property `encryptions`
+        # @return [Array<Google::Apis::TranscoderV1::Encryption>]
+        attr_accessor :encryptions
       
         # List of input assets stored in Cloud Storage.
         # Corresponds to the JSON property `inputs`
@@ -1240,6 +1386,7 @@ module Google
           @ad_breaks = args[:ad_breaks] if args.key?(:ad_breaks)
           @edit_list = args[:edit_list] if args.key?(:edit_list)
           @elementary_streams = args[:elementary_streams] if args.key?(:elementary_streams)
+          @encryptions = args[:encryptions] if args.key?(:encryptions)
           @inputs = args[:inputs] if args.key?(:inputs)
           @manifests = args[:manifests] if args.key?(:manifests)
           @mux_streams = args[:mux_streams] if args.key?(:mux_streams)
@@ -1386,6 +1533,26 @@ module Google
         end
       end
       
+      # Configuration for MPEG Common Encryption (MPEG-CENC).
+      class MpegCommonEncryption
+        include Google::Apis::Core::Hashable
+      
+        # Required. Specify the encryption scheme. Supported encryption schemes: - `cenc`
+        # - `cbcs`
+        # Corresponds to the JSON property `scheme`
+        # @return [String]
+        attr_accessor :scheme
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @scheme = args[:scheme] if args.key?(:scheme)
+        end
+      end
+      
       # Multiplexing settings for output stream.
       class MuxStream
         include Google::Apis::Core::Hashable
@@ -1402,6 +1569,12 @@ module Google
         # Corresponds to the JSON property `elementaryStreams`
         # @return [Array<String>]
         attr_accessor :elementary_streams
+      
+        # Identifier of the encryption configuration to use. If omitted, output will be
+        # unencrypted.
+        # Corresponds to the JSON property `encryptionId`
+        # @return [String]
+        attr_accessor :encryption_id
       
         # The name of the generated file. The default is `MuxStream.key` with the
         # extension suffix corresponding to the `MuxStream.container`. Individual
@@ -1430,6 +1603,7 @@ module Google
         def update!(**args)
           @container = args[:container] if args.key?(:container)
           @elementary_streams = args[:elementary_streams] if args.key?(:elementary_streams)
+          @encryption_id = args[:encryption_id] if args.key?(:encryption_id)
           @file_name = args[:file_name] if args.key?(:file_name)
           @key = args[:key] if args.key?(:key)
           @segment_settings = args[:segment_settings] if args.key?(:segment_settings)
@@ -1546,6 +1720,19 @@ module Google
         end
       end
       
+      # Playready configuration.
+      class Playready
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Preprocessing configurations.
       class PreprocessingConfig
         include Google::Apis::Core::Hashable
@@ -1623,6 +1810,41 @@ module Google
         # Update properties of this object
         def update!(**args)
           @topic = args[:topic] if args.key?(:topic)
+        end
+      end
+      
+      # Configuration for SAMPLE-AES encryption.
+      class SampleAesEncryption
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Configuration for secrets stored in Google Secret Manager.
+      class SecretManagerSource
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the Secret Version containing the encryption key in the
+        # following format: `projects/`project`/secrets/`secret_id`/versions/`
+        # version_number`` Note that only numbered versions are supported. Aliases like "
+        # latest" are not supported.
+        # Corresponds to the JSON property `secretVersion`
+        # @return [String]
+        attr_accessor :secret_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @secret_version = args[:secret_version] if args.key?(:secret_version)
         end
       end
       
@@ -2005,6 +2227,19 @@ module Google
           @profile = args[:profile] if args.key?(:profile)
           @rate_control_mode = args[:rate_control_mode] if args.key?(:rate_control_mode)
           @width_pixels = args[:width_pixels] if args.key?(:width_pixels)
+        end
+      end
+      
+      # Widevine configuration.
+      class Widevine
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
