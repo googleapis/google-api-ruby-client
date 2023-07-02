@@ -497,6 +497,13 @@ module Google
         # @return [String]
         attr_accessor :point_in_time
       
+        # Optional. (Point-in-time recovery for PostgreSQL only) Clone to an instance in
+        # the specified zone. If no zone is specified, clone to the same zone as the
+        # source instance.
+        # Corresponds to the JSON property `preferredZone`
+        # @return [String]
+        attr_accessor :preferred_zone
+      
         def initialize(**args)
            update!(**args)
         end
@@ -510,6 +517,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @pitr_timestamp_ms = args[:pitr_timestamp_ms] if args.key?(:pitr_timestamp_ms)
           @point_in_time = args[:point_in_time] if args.key?(:point_in_time)
+          @preferred_zone = args[:preferred_zone] if args.key?(:preferred_zone)
         end
       end
       
@@ -3348,6 +3356,31 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @message = args[:message] if args.key?(:message)
           @minimal_target_size_gb = args[:minimal_target_size_gb] if args.key?(:minimal_target_size_gb)
+        end
+      end
+      
+      # Instance get latest recovery time response.
+      class SqlInstancesGetLatestRecoveryTimeResponse
+        include Google::Apis::Core::Hashable
+      
+        # This is always `sql#getLatestRecoveryTime`.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Timestamp, identifies the latest recovery time of the source instance.
+        # Corresponds to the JSON property `latestRecoveryTime`
+        # @return [String]
+        attr_accessor :latest_recovery_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @latest_recovery_time = args[:latest_recovery_time] if args.key?(:latest_recovery_time)
         end
       end
       
