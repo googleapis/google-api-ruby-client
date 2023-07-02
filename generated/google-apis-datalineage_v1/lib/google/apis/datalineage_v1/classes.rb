@@ -157,7 +157,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Optional. The beginning of the transformation which resulted in this lineage
+        # Required. The beginning of the transformation which resulted in this lineage
         # event. For streaming scenarios, it should be the beginning of the period from
         # which the lineage is being reported.
         # Corresponds to the JSON property `startTime`
