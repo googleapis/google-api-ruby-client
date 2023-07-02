@@ -648,7 +648,6 @@ module Google
           property :branch_name, as: 'branchName'
           property :commit_sha, as: 'commitSha'
           property :dir, as: 'dir'
-          property :invert_regex, as: 'invertRegex'
           property :project_id, as: 'projectId'
           property :repo_name, as: 'repoName'
           property :tag_name, as: 'tagName'
