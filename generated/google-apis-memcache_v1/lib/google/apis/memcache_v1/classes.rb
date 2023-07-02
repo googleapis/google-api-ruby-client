@@ -857,6 +857,13 @@ module Google
         # @return [Google::Apis::MemcacheV1::MemcacheParameters]
         attr_accessor :parameters
       
+        # Optional. Contains the id of allocated IP address ranges associated with the
+        # private service access connection for example, "test-default" associated with
+        # IP range 10.0.0.0/29.
+        # Corresponds to the JSON property `reservedIpRangeId`
+        # @return [Array<String>]
+        attr_accessor :reserved_ip_range_id
+      
         # Output only. The state of this Memcached instance.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -895,6 +902,7 @@ module Google
           @node_config = args[:node_config] if args.key?(:node_config)
           @node_count = args[:node_count] if args.key?(:node_count)
           @parameters = args[:parameters] if args.key?(:parameters)
+          @reserved_ip_range_id = args[:reserved_ip_range_id] if args.key?(:reserved_ip_range_id)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
           @zones = args[:zones] if args.key?(:zones)
