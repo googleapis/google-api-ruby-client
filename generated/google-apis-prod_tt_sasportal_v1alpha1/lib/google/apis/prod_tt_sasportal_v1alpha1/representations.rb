@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SasPortalCheckHasProvisionedDeploymentResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SasPortalCreateSignedDeviceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -47,6 +53,12 @@ module Google
       end
       
       class SasPortalDeployment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SasPortalDeploymentAssociation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -149,6 +161,24 @@ module Google
       end
       
       class SasPortalListNodesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SasPortalMigrateOrganizationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SasPortalMigrateOrganizationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SasPortalMigrateOrganizationResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -273,6 +303,13 @@ module Google
         end
       end
       
+      class SasPortalCheckHasProvisionedDeploymentResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :has_provisioned_deployment, as: 'hasProvisionedDeployment'
+        end
+      end
+      
       class SasPortalCreateSignedDeviceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -297,6 +334,14 @@ module Google
           collection :frns, as: 'frns'
           property :name, as: 'name'
           collection :sas_user_ids, as: 'sasUserIds'
+        end
+      end
+      
+      class SasPortalDeploymentAssociation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcp_project_id, as: 'gcpProjectId'
+          property :user_id, as: 'userId'
         end
       end
       
@@ -487,6 +532,28 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :nodes, as: 'nodes', class: Google::Apis::ProdTtSasportalV1alpha1::SasPortalNode, decorator: Google::Apis::ProdTtSasportalV1alpha1::SasPortalNode::Representation
+      
+        end
+      end
+      
+      class SasPortalMigrateOrganizationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :operation_state, as: 'operationState'
+        end
+      end
+      
+      class SasPortalMigrateOrganizationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :organization_id, :numeric_string => true, as: 'organizationId'
+        end
+      end
+      
+      class SasPortalMigrateOrganizationResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :deployment_association, as: 'deploymentAssociation', class: Google::Apis::ProdTtSasportalV1alpha1::SasPortalDeploymentAssociation, decorator: Google::Apis::ProdTtSasportalV1alpha1::SasPortalDeploymentAssociation::Representation
       
         end
       end
