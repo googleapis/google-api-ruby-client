@@ -2163,6 +2163,16 @@ module Google
         # @return [Fixnum]
         attr_accessor :issue_count
       
+        # Language of the model.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # Type of the model.
+        # Corresponds to the JSON property `modelType`
+        # @return [String]
+        attr_accessor :model_type
+      
         # Immutable. The resource name of the issue model. Format: projects/`project`/
         # locations/`location`/issueModels/`issue_model`
         # Corresponds to the JSON property `name`
@@ -2194,6 +2204,8 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @input_data_config = args[:input_data_config] if args.key?(:input_data_config)
           @issue_count = args[:issue_count] if args.key?(:issue_count)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @model_type = args[:model_type] if args.key?(:model_type)
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
           @training_stats = args[:training_stats] if args.key?(:training_stats)
@@ -5125,6 +5137,16 @@ module Google
         # @return [Fixnum]
         attr_accessor :issue_count
       
+        # Language of the model.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # Type of the model.
+        # Corresponds to the JSON property `modelType`
+        # @return [String]
+        attr_accessor :model_type
+      
         # Immutable. The resource name of the issue model. Format: projects/`project`/
         # locations/`location`/issueModels/`issue_model`
         # Corresponds to the JSON property `name`
@@ -5156,6 +5178,8 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @input_data_config = args[:input_data_config] if args.key?(:input_data_config)
           @issue_count = args[:issue_count] if args.key?(:issue_count)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @model_type = args[:model_type] if args.key?(:model_type)
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
           @training_stats = args[:training_stats] if args.key?(:training_stats)
