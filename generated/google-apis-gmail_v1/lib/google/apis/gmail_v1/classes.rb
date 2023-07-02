@@ -1799,13 +1799,15 @@ module Google
       class WatchRequest
         include Google::Apis::Core::Hashable
       
-        # Filtering behavior of labelIds list specified.
+        # Filtering behavior of `labelIds list` specified. This field is deprecated
+        # because it caused incorrect behavior in some cases; use `label_filter_behavior`
+        # instead.
         # Corresponds to the JSON property `labelFilterAction`
         # @return [String]
         attr_accessor :label_filter_action
       
-        # Filtering behavior of labelIds list specified. This field replaces
-        # label_filter_action; if set, label_filter_action is ignored.
+        # Filtering behavior of `labelIds list` specified. This field replaces `
+        # label_filter_action`; if set, `label_filter_action` is ignored.
         # Corresponds to the JSON property `labelFilterBehavior`
         # @return [String]
         attr_accessor :label_filter_behavior
