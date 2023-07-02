@@ -93,6 +93,33 @@ module Google
         end
       end
       
+      # The request to delete multiple versions across a repository.
+      class BatchDeleteVersionsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The names of the versions to delete. A maximum of 10000 versions can
+        # be deleted in a batch.
+        # Corresponds to the JSON property `names`
+        # @return [Array<String>]
+        attr_accessor :names
+      
+        # If true, the request is performed without deleting data, following AIP-163.
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @names = args[:names] if args.key?(:names)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
+        end
+      end
+      
       # Associates `members`, or principals, with a `role`.
       class Binding
         include Google::Apis::Core::Hashable
@@ -166,6 +193,129 @@ module Google
           @condition = args[:condition] if args.key?(:condition)
           @members = args[:members] if args.key?(:members)
           @role = args[:role] if args.key?(:role)
+        end
+      end
+      
+      # Artifact policy configuration for repository cleanup policies.
+      class CleanupPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Policy action.
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # CleanupPolicyCondition is a set of conditions attached to a CleanupPolicy. If
+        # multiple entries are set, all must be satisfied for the condition to be
+        # satisfied.
+        # Corresponds to the JSON property `condition`
+        # @return [Google::Apis::ArtifactregistryV1::CleanupPolicyCondition]
+        attr_accessor :condition
+      
+        # The user-provided ID of the cleanup policy.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # CleanupPolicyMostRecentVersions is an alternate condition of a CleanupPolicy
+        # for retaining a minimum number of versions.
+        # Corresponds to the JSON property `mostRecentVersions`
+        # @return [Google::Apis::ArtifactregistryV1::CleanupPolicyMostRecentVersions]
+        attr_accessor :most_recent_versions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @condition = args[:condition] if args.key?(:condition)
+          @id = args[:id] if args.key?(:id)
+          @most_recent_versions = args[:most_recent_versions] if args.key?(:most_recent_versions)
+        end
+      end
+      
+      # CleanupPolicyCondition is a set of conditions attached to a CleanupPolicy. If
+      # multiple entries are set, all must be satisfied for the condition to be
+      # satisfied.
+      class CleanupPolicyCondition
+        include Google::Apis::Core::Hashable
+      
+        # Match versions newer than a duration.
+        # Corresponds to the JSON property `newerThan`
+        # @return [String]
+        attr_accessor :newer_than
+      
+        # Match versions older than a duration.
+        # Corresponds to the JSON property `olderThan`
+        # @return [String]
+        attr_accessor :older_than
+      
+        # Match versions by package prefix. Applied on any prefix match.
+        # Corresponds to the JSON property `packageNamePrefixes`
+        # @return [Array<String>]
+        attr_accessor :package_name_prefixes
+      
+        # Match versions by tag prefix. Applied on any prefix match.
+        # Corresponds to the JSON property `tagPrefixes`
+        # @return [Array<String>]
+        attr_accessor :tag_prefixes
+      
+        # Match versions by tag status.
+        # Corresponds to the JSON property `tagState`
+        # @return [String]
+        attr_accessor :tag_state
+      
+        # DEPRECATED: Use older_than.
+        # Corresponds to the JSON property `versionAge`
+        # @return [String]
+        attr_accessor :version_age
+      
+        # Match versions by version name prefix. Applied on any prefix match.
+        # Corresponds to the JSON property `versionNamePrefixes`
+        # @return [Array<String>]
+        attr_accessor :version_name_prefixes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @newer_than = args[:newer_than] if args.key?(:newer_than)
+          @older_than = args[:older_than] if args.key?(:older_than)
+          @package_name_prefixes = args[:package_name_prefixes] if args.key?(:package_name_prefixes)
+          @tag_prefixes = args[:tag_prefixes] if args.key?(:tag_prefixes)
+          @tag_state = args[:tag_state] if args.key?(:tag_state)
+          @version_age = args[:version_age] if args.key?(:version_age)
+          @version_name_prefixes = args[:version_name_prefixes] if args.key?(:version_name_prefixes)
+        end
+      end
+      
+      # CleanupPolicyMostRecentVersions is an alternate condition of a CleanupPolicy
+      # for retaining a minimum number of versions.
+      class CleanupPolicyMostRecentVersions
+        include Google::Apis::Core::Hashable
+      
+        # Minimum number of versions to keep.
+        # Corresponds to the JSON property `keepCount`
+        # @return [Fixnum]
+        attr_accessor :keep_count
+      
+        # List of package name prefixes that will apply this rule.
+        # Corresponds to the JSON property `packageNamePrefixes`
+        # @return [Array<String>]
+        attr_accessor :package_name_prefixes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @keep_count = args[:keep_count] if args.key?(:keep_count)
+          @package_name_prefixes = args[:package_name_prefixes] if args.key?(:package_name_prefixes)
         end
       end
       
@@ -1719,6 +1869,21 @@ module Google
       class Repository
         include Google::Apis::Core::Hashable
       
+        # Optional. Cleanup policies for this repository. Cleanup policies indicate when
+        # certain package versions can be automatically deleted. Map keys are policy IDs
+        # supplied by users during policy creation. They must unique within a repository
+        # and be under 128 characters in length.
+        # Corresponds to the JSON property `cleanupPolicies`
+        # @return [Hash<String,Google::Apis::ArtifactregistryV1::CleanupPolicy>]
+        attr_accessor :cleanup_policies
+      
+        # Optional. If true, the cleanup pipeline is prevented from deleting versions in
+        # this repository.
+        # Corresponds to the JSON property `cleanupPolicyDryRun`
+        # @return [Boolean]
+        attr_accessor :cleanup_policy_dry_run
+        alias_method :cleanup_policy_dry_run?, :cleanup_policy_dry_run
+      
         # Output only. The time when the repository was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -1807,6 +1972,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cleanup_policies = args[:cleanup_policies] if args.key?(:cleanup_policies)
+          @cleanup_policy_dry_run = args[:cleanup_policy_dry_run] if args.key?(:cleanup_policy_dry_run)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @docker_config = args[:docker_config] if args.key?(:docker_config)
