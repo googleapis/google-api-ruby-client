@@ -1868,6 +1868,623 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates an AppGroup. Once created, user can register apps under the AppGroup
+        # to obtain secret key and password. At creation time, the AppGroup's state is
+        # set as `active`. The attribute `Attribute` with key `attribute_name` as `
+        # __apigee_reserved__developer_details` can be used to store developers and
+        # their roles. The JSON format expected is: [ ` "developer_id":"", "roles":[ "" ]
+        # ` ] and is dealt in base64encoded format. Etag will be available in attribute
+        # `Attribute` with key `attribute_name` as `
+        # __apigee_reserved__developer_details_etag` for that AppGroup.
+        # @param [String] parent
+        #   Required. Name of the Apigee organization in which the AppGroup is created.
+        #   Use the following structure in your request: `organizations/`org``.
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroup] google_cloud_apigee_v1_app_group_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroup] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroup]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_appgroup(parent, google_cloud_apigee_v1_app_group_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/appgroups', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroup::Representation
+          command.request_object = google_cloud_apigee_v1_app_group_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroup::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroup
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an AppGroup. All app and API keys associations with the AppGroup are
+        # also removed. **Warning**: This API will permanently delete the AppGroup and
+        # related artifacts. **Note**: The delete operation is asynchronous. The
+        # AppGroup app is deleted immediately, but its associated resources, such as
+        # apps and API keys, may take anywhere from a few seconds to a few minutes to be
+        # deleted.
+        # @param [String] name
+        #   Required. Name of the AppGroup. Use the following structure in your request: `
+        #   organizations/`org`/appgroups/`app_group_name``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroup] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroup]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_organization_appgroup(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroup::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroup
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the AppGroup details for the provided AppGroup name in the request URI.
+        # @param [String] name
+        #   Required. Name of the AppGroup. Use the following structure in your request: `
+        #   organizations/`org`/appgroups/`app_group_name``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroup] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroup]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_appgroup(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroup::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroup
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all AppGroups in an organization. A maximum of 1000 AppGroups are
+        # returned in the response if PageSize is not specified, or if the PageSize is
+        # greater than 1000.
+        # @param [String] parent
+        #   Required. Name of the Apigee organization. Use the following structure in your
+        #   request: `organizations/`org``.
+        # @param [String] filter
+        #   The filter expression to be used to get the list of AppGroups, where filtering
+        #   can be done on name, correlationID or channelID of the app group. Example:
+        #   filter = "name = foobar"
+        # @param [Fixnum] page_size
+        #   Count of AppGroups a single page can have in the response. If unspecified, at
+        #   most 1000 AppGroups will be returned. The maximum value is 1000; values above
+        #   1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   The starting index record for listing the AppGroups.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListAppGroupsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListAppGroupsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_appgroups(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/appgroups', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListAppGroupsResponse::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListAppGroupsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an appGroup. This API replaces the existing appGroup details with
+        # those specified in the request. Include or exclude any existing details that
+        # you want to retain or delete, respectively. Note that the state of the
+        # AppGroup should be updated using `action`, and not via AppGroup. The custom
+        # attribute limit is 1000, and is how `__apigee_reserved__developer_details` can
+        # be updated. **Note**: OAuth access tokens and Key Management Service (KMS)
+        # entities (apps, developers, and API products) are cached for 180 seconds (
+        # current default). Any custom attributes associated with these entities are
+        # cached for at least 180 seconds after the entity is accessed at runtime.
+        # Therefore, an `ExpiresIn` element on the OAuthV2 policy won't be able to
+        # expire an access token in less than 180 seconds.
+        # @param [String] name
+        #   Required. Name of the AppGroup. Use the following structure in your request: `
+        #   organizations/`org`/appgroups/`app_group_name``
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroup] google_cloud_apigee_v1_app_group_object
+        # @param [String] action
+        #   Activate or de-activate the appGroup by setting the action as `active` or `
+        #   inactive`. The `Content-Type` header must be set to `application/octet-stream`,
+        #   with empty body.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroup] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroup]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_organization_appgroup(name, google_cloud_apigee_v1_app_group_object = nil, action: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:put, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroup::Representation
+          command.request_object = google_cloud_apigee_v1_app_group_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroup::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroup
+          command.params['name'] = name unless name.nil?
+          command.query['action'] = action unless action.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates an app and associates it with an AppGroup. This API associates the
+        # AppGroup app with the specified API product and auto-generates an API key for
+        # the app to use in calls to API proxies inside that API product. The `name` is
+        # the unique ID of the app that you can use in API calls.
+        # @param [String] parent
+        #   Required. Name of the AppGroup. Use the following structure in your request: `
+        #   organizations/`org`/appgroups/`app_group_name``
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupApp] google_cloud_apigee_v1_app_group_app_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupApp] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupApp]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_appgroup_app(parent, google_cloud_apigee_v1_app_group_app_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/apps', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupApp::Representation
+          command.request_object = google_cloud_apigee_v1_app_group_app_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupApp::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupApp
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an AppGroup app. **Note**: The delete operation is asynchronous. The
+        # AppGroup app is deleted immediately, but its associated resources, such as app
+        # keys or access tokens, may take anywhere from a few seconds to a few minutes
+        # to be deleted.
+        # @param [String] name
+        #   Required. Name of the AppGroup app. Use the following structure in your
+        #   request: `organizations/`org`/appgroups/`app_group_name`/apps/`app``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupApp] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupApp]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_organization_appgroup_app(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupApp::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupApp
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the details for an AppGroup app.
+        # @param [String] name
+        #   Required. Name of the AppGroup app. Use the following structure in your
+        #   request: `organizations/`org`/appgroups/`app_group_name`/apps/`app``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupApp] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupApp]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_appgroup_app(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupApp::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupApp
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all apps created by an AppGroup in an Apigee organization. Optionally,
+        # you can request an expanded view of the AppGroup apps. Lists all AppGroupApps
+        # in an AppGroup. A maximum of 1000 AppGroup apps are returned in the response
+        # if PageSize is not specified, or if the PageSize is greater than 1000.
+        # @param [String] parent
+        #   Required. Name of the AppGroup. Use the following structure in your request: `
+        #   organizations/`org`/appgroups/`app_group_name``
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number entries to return. If unspecified, at most 1000
+        #   entries will be returned.
+        # @param [String] page_token
+        #   Optional. Page token. If provides, must be a valid AppGroup app returned from
+        #   a previous call that can be used to retrieve the next page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListAppGroupAppsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListAppGroupAppsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_appgroup_apps(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/apps', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListAppGroupAppsResponse::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListAppGroupAppsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the details for an AppGroup app. In addition, you can add an API
+        # product to an AppGroup app and automatically generate an API key for the app
+        # to use when calling APIs in the API product. If you want to use an existing
+        # API key for the API product, add the API product to the API key using the
+        # UpdateAppGroupAppKey API. Using this API, you cannot update the app name, as
+        # it is the primary key used to identify the app and cannot be changed. This API
+        # replaces the existing attributes with those specified in the request. Include
+        # or exclude any existing attributes that you want to retain or delete,
+        # respectively.
+        # @param [String] name
+        #   Required. Name of the AppGroup app. Use the following structure in your
+        #   request: `organizations/`org`/appgroups/`app_group_name`/apps/`app``
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupApp] google_cloud_apigee_v1_app_group_app_object
+        # @param [String] action
+        #   Approve or revoke the consumer key by setting this value to `approve` or `
+        #   revoke`. The `Content-Type` header must be set to `application/octet-stream`,
+        #   with empty body.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupApp] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupApp]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_organization_appgroup_app(name, google_cloud_apigee_v1_app_group_app_object = nil, action: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:put, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupApp::Representation
+          command.request_object = google_cloud_apigee_v1_app_group_app_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupApp::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupApp
+          command.params['name'] = name unless name.nil?
+          command.query['action'] = action unless action.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a custom consumer key and secret for a AppGroup app. This is
+        # particularly useful if you want to migrate existing consumer keys and secrets
+        # to Apigee from another system. Consumer keys and secrets can contain letters,
+        # numbers, underscores, and hyphens. No other special characters are allowed. To
+        # avoid service disruptions, a consumer key and secret should not exceed 2 KBs
+        # each. **Note**: When creating the consumer key and secret, an association to
+        # API products will not be made. Therefore, you should not specify the
+        # associated API products in your request. Instead, use the
+        # ProductizeAppGroupAppKey API to make the association after the consumer key
+        # and secret are created. If a consumer key and secret already exist, you can
+        # keep them or delete them using the DeleteAppGroupAppKey API.
+        # @param [String] parent
+        #   Required. Parent of the AppGroup app key. Use the following structure in your
+        #   request: `organizations/`org`/appgroups/`app_group_name`/apps/`app`/keys`
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupAppKey] google_cloud_apigee_v1_app_group_app_key_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupAppKey] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupAppKey]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_appgroup_app_key(parent, google_cloud_apigee_v1_app_group_app_key_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/keys', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupAppKey::Representation
+          command.request_object = google_cloud_apigee_v1_app_group_app_key_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupAppKey::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupAppKey
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an app's consumer key and removes all API products associated with the
+        # app. After the consumer key is deleted, it cannot be used to access any APIs.
+        # @param [String] name
+        #   Required. Name of the AppGroup app key. Use the following structure in your
+        #   request: `organizations/`org`/appgroups/`app_group_name`/apps/`app`/keys/`key``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupAppKey] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupAppKey]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_organization_appgroup_app_key(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupAppKey::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupAppKey
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details for a consumer key for a AppGroup app, including the key and
+        # secret value, associated API products, and other information.
+        # @param [String] name
+        #   Required. Name of the AppGroup app key. Use the following structure in your
+        #   request: `organizations/`org`/appgroups/`app_group_name`/apps/`app`/keys/`key``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupAppKey] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupAppKey]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_appgroup_app_key(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupAppKey::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupAppKey
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Adds an API product to an AppGroupAppKey, enabling the app that holds the key
+        # to access the API resources bundled in the API product. In addition, you can
+        # add attributes to the AppGroupAppKey. This API replaces the existing
+        # attributes with those specified in the request. Include or exclude any
+        # existing attributes that you want to retain or delete, respectively. You can
+        # use the same key to access all API products associated with the app.
+        # @param [String] name
+        #   Required. Name of the AppGroup app key. Use the following structure in your
+        #   request: `organizations/`org`/appgroups/`app_group_name`/apps/`app`/keys/`key``
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1UpdateAppGroupAppKeyRequest] google_cloud_apigee_v1_update_app_group_app_key_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupAppKey] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupAppKey]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_organization_appgroup_app_key_app_group_app_key(name, google_cloud_apigee_v1_update_app_group_app_key_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1UpdateAppGroupAppKeyRequest::Representation
+          command.request_object = google_cloud_apigee_v1_update_app_group_app_key_request_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupAppKey::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupAppKey
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Removes an API product from an app's consumer key. After the API product is
+        # removed, the app cannot access the API resources defined in that API product. *
+        # *Note**: The consumer key is not removed, only its association with the API
+        # product.
+        # @param [String] name
+        #   Required. Parent of the AppGroup app key. Use the following structure in your
+        #   request: `organizations/`org`/appgroups/`app_group_name`/apps/`app`/keys/`key`/
+        #   apiproducts/`apiproduct``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupAppKey] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupAppKey]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_organization_appgroup_app_key_apiproduct(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupAppKey::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupAppKey
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Approves or revokes the consumer key for an API product. After a consumer key
+        # is approved, the app can use it to access APIs. A consumer key that is revoked
+        # or pending cannot be used to access an API. Any access tokens associated with
+        # a revoked consumer key will remain active. However, Apigee checks the status
+        # of the consumer key and if set to `revoked` will not allow access to the API.
+        # @param [String] name
+        #   Required. Name of the API product in the developer app key in the following
+        #   format: `organizations/`org`/appgroups/`app_group_name`/apps/`app`/keys/`key`/
+        #   apiproducts/`apiproduct``
+        # @param [String] action
+        #   Approve or revoke the consumer key by setting this value to `approve` or `
+        #   revoke` respectively. The `Content-Type` header, if set, must be set to `
+        #   application/octet-stream`, with empty body.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_organization_appgroup_app_key_apiproduct_app_group_app_key_api_product(name, action: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['action'] = action unless action.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the app profile for the specified app ID.
         # @param [String] name
         #   Required. App ID in the following format: `organizations/`org`/apps/`app``
@@ -1906,11 +2523,16 @@ module Google
         # @param [String] api_product
         #   API product.
         # @param [String] apptype
-        #   Optional. Filter by the type of the app. Valid values are `company` or `
-        #   developer`. Defaults to `developer`.
+        #   Optional. 'apptype' is no longer available. Use a 'filter' instead.
         # @param [Boolean] expand
         #   Optional. Flag that specifies whether to return an expanded list of apps for
         #   the organization. Defaults to `false`.
+        # @param [String] filter
+        #   Optional. The filter expression to be used to get the list of apps, where
+        #   filtering can be done on developerEmail, apiProduct, consumerKey, status,
+        #   appId, appName and appType. Examples: "developerEmail=foo@bar.com", "appType=
+        #   AppGroup", or "appType=Developer" "filter" is supported from ver 1.10.0 and
+        #   above.
         # @param [String] ids
         #   Optional. Comma-separated list of app IDs on which to filter.
         # @param [Boolean] include_cred
@@ -1918,6 +2540,13 @@ module Google
         # @param [String] key_status
         #   Optional. Key status of the app. Valid values include `approved` or `revoked`.
         #   Defaults to `approved`.
+        # @param [Fixnum] page_size
+        #   Optional. Count of apps a single page can have in the response. If unspecified,
+        #   at most 100 apps will be returned. The maximum value is 100; values above 100
+        #   will be coerced to 100. "page_size" is supported from ver 1.10.0 and above.
+        # @param [String] page_token
+        #   Optional. The starting index record for listing the developers. "page_token"
+        #   is supported from ver 1.10.0 and above.
         # @param [Fixnum] rows
         #   Optional. Maximum number of app IDs to return. Defaults to 10000.
         # @param [String] start_key
@@ -1942,7 +2571,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_organization_apps(parent, api_product: nil, apptype: nil, expand: nil, ids: nil, include_cred: nil, key_status: nil, rows: nil, start_key: nil, status: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_organization_apps(parent, api_product: nil, apptype: nil, expand: nil, filter: nil, ids: nil, include_cred: nil, key_status: nil, page_size: nil, page_token: nil, rows: nil, start_key: nil, status: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/apps', options)
           command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListAppsResponse::Representation
           command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListAppsResponse
@@ -1950,9 +2579,12 @@ module Google
           command.query['apiProduct'] = api_product unless api_product.nil?
           command.query['apptype'] = apptype unless apptype.nil?
           command.query['expand'] = expand unless expand.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['ids'] = ids unless ids.nil?
           command.query['includeCred'] = include_cred unless include_cred.nil?
           command.query['keyStatus'] = key_status unless key_status.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['rows'] = rows unless rows.nil?
           command.query['startKey'] = start_key unless start_key.nil?
           command.query['status'] = status unless status.nil?
@@ -3018,7 +3650,9 @@ module Google
         # associated API products in your request. Instead, use the
         # UpdateDeveloperAppKey API to make the association after the consumer key and
         # secret are created. If a consumer key and secret already exist, you can keep
-        # them or delete them using the DeleteDeveloperAppKey API.
+        # them or delete them using the DeleteDeveloperAppKey API. **Note**: All keys
+        # start out with status=approved, even if status=revoked is passed when the key
+        # is created. To revoke a key, use the UpdateDeveloperAppKey API.
         # @param [String] parent
         #   Parent of the developer app key. Use the following structure in your request: `
         #   organizations/`org`/developers/`developer_email`/apps`
@@ -3288,7 +3922,9 @@ module Google
         # associated API products in your request. Instead, use the
         # UpdateDeveloperAppKey API to make the association after the consumer key and
         # secret are created. If a consumer key and secret already exist, you can keep
-        # them or delete them using the DeleteDeveloperAppKey API.
+        # them or delete them using the DeleteDeveloperAppKey API. **Note**: All keys
+        # start out with status=approved, even if status=revoked is passed when the key
+        # is created. To revoke a key, use the UpdateDeveloperAppKey API.
         # @param [String] parent
         #   Parent of the developer app key. Use the following structure in your request: `
         #   organizations/`org`/developers/`developer_email`/apps`
