@@ -276,8 +276,8 @@ module Google
         end
       end
       
-      # Metadata related to the progress of the ImportDocuments operation. This will
-      # be returned by the google.longrunning.Operation.metadata field.
+      # Metadata related to the progress of the ImportDocuments operation. This is
+      # returned by the google.longrunning.Operation.metadata field.
       class GoogleCloudDiscoveryengineV1ImportDocumentsMetadata
         include Google::Apis::Core::Hashable
       
@@ -347,7 +347,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Cloud Storage prefix for import errors. This must be an empty, existing Cloud
-        # Storage directory. Import errors will be written to sharded files in this
+        # Storage directory. Import errors are written to sharded files in this
         # directory, one per line, as a JSON-encoded `google.rpc.Status` message.
         # Corresponds to the JSON property `gcsPrefix`
         # @return [String]
@@ -363,8 +363,8 @@ module Google
         end
       end
       
-      # Metadata related to the progress of the Import operation. This will be
-      # returned by the google.longrunning.Operation.metadata field.
+      # Metadata related to the progress of the Import operation. This is returned by
+      # the google.longrunning.Operation.metadata field.
       class GoogleCloudDiscoveryengineV1ImportUserEventsMetadata
         include Google::Apis::Core::Hashable
       
@@ -572,7 +572,7 @@ module Google
         # values for document imports: * `document` (default): One Document format per
         # row. Each document must have a valid Document.id and one of Document.json_data
         # or Document.struct_data. * `custom`: One custom data per row in arbitrary
-        # format that conforms the defined Schema of the data store. This can only be
+        # format that conforms to the defined Schema of the data store. This can only be
         # used by the GENERIC Data Store vertical.
         # Corresponds to the JSON property `dataSchema`
         # @return [String]
@@ -636,13 +636,13 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaCompletionInfo
         include Google::Apis::Core::Hashable
       
-        # End user selected CompleteQueryResponse.CompletionResult.suggestion position,
+        # End user selected CompleteQueryResponse.QuerySuggestion.suggestion position,
         # starting from 0.
         # Corresponds to the JSON property `selectedPosition`
         # @return [Fixnum]
         attr_accessor :selected_position
       
-        # End user selected CompleteQueryResponse.CompletionResult.suggestion.
+        # End user selected CompleteQueryResponse.QuerySuggestion.suggestion.
         # Corresponds to the JSON property `selectedSuggestion`
         # @return [String]
         attr_accessor :selected_suggestion
@@ -704,7 +704,7 @@ module Google
         attr_accessor :id
       
         # The JSON string representation of the document. It should conform to the
-        # registered Schema.schema or an `INVALID_ARGUMENT` error is thrown.
+        # registered Schema or an `INVALID_ARGUMENT` error is thrown.
         # Corresponds to the JSON property `jsonData`
         # @return [String]
         attr_accessor :json_data
@@ -730,7 +730,7 @@ module Google
         attr_accessor :schema_id
       
         # The structured JSON data for the document. It should conform to the registered
-        # Schema.schema or an `INVALID_ARGUMENT` error is thrown.
+        # Schema or an `INVALID_ARGUMENT` error is thrown.
         # Corresponds to the JSON property `structData`
         # @return [Hash<String,Object>]
         attr_accessor :struct_data
@@ -780,8 +780,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :quantity
       
-        # The Document url - only allowed for DataStores with content_config
-        # PUBLIC_WEBSITE.
+        # The Document URI - only allowed for website data stores.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -807,14 +806,14 @@ module Google
         # The schema to use when parsing the data from the source. Supported values for
         # document imports: * `document` (default): One JSON Document per line. Each
         # document must have a valid Document.id. * `content`: Unstructured data (e.g.
-        # PDF, HTML). Each file matched by `input_uris` will become a document, with the
-        # ID set to the first 128 bits of SHA256(URI) encoded as a hex string. * `custom`
-        # : One custom data JSON per row in arbitrary format that conforms the defined
-        # Schema of the data store. This can only be used by the GENERIC Data Store
-        # vertical. * `csv`: A CSV file with header conforming the defined Schema of the
-        # data store. Each entry after the header will be imported as a Document. This
-        # can only be used by the GENERIC Data Store vertical. Supported values for user
-        # even imports: * `user_event` (default): One JSON UserEvent per line.
+        # PDF, HTML). Each file matched by `input_uris` becomes a document, with the ID
+        # set to the first 128 bits of SHA256(URI) encoded as a hex string. * `custom`:
+        # One custom data JSON per row in arbitrary format that conforms to the defined
+        # Schema of the data store. This can only be used by Gen App Builder. * `csv`: A
+        # CSV file with header conforming to the defined Schema of the data store. Each
+        # entry after the header is imported as a Document. This can only be used by Gen
+        # App Builder. Supported values for user even imports: * `user_event` (default):
+        # One JSON UserEvent per line.
         # Corresponds to the JSON property `dataSchema`
         # @return [String]
         attr_accessor :data_schema
@@ -840,8 +839,8 @@ module Google
         end
       end
       
-      # Metadata related to the progress of the ImportDocuments operation. This will
-      # be returned by the google.longrunning.Operation.metadata field.
+      # Metadata related to the progress of the ImportDocuments operation. This is
+      # returned by the google.longrunning.Operation.metadata field.
       class GoogleCloudDiscoveryengineV1alphaImportDocumentsMetadata
         include Google::Apis::Core::Hashable
       
@@ -888,9 +887,9 @@ module Google
         # payload, where IDs may not be consistent during multiple imports. In which
         # case ReconciliationMode.FULL is highly recommended to avoid duplicate contents.
         # If unset or set to `false`, Document.ids have to be specified using id_field,
-        # otherwises, documents without IDs will fail to be imported. Only set this
-        # field when using GcsSource or BigQuerySource, and when GcsSource.data_schema
-        # or BigQuerySource.data_schema is `custom` or `csv`. Otherwise, an
+        # otherwise, documents without IDs fail to be imported. Only set this field when
+        # using GcsSource or BigQuerySource, and when GcsSource.data_schema or
+        # BigQuerySource.data_schema is `custom` or `csv`. Otherwise, an
         # INVALID_ARGUMENT error is thrown.
         # Corresponds to the JSON property `autoGenerateIds`
         # @return [Boolean]
@@ -916,15 +915,15 @@ module Google
         # IDs of the documents. For GcsSource it is the key of the JSON field. For
         # instance, `my_id` for JSON ``"my_id": "some_uuid"``. For BigQuerySource it is
         # the column name of the BigQuery table where the unique ids are stored. The
-        # values of the JSON field or the BigQuery column will be used as the Document.
-        # ids. The JSON field or the BigQuery column must be of string type, and the
-        # values must be set as valid strings conform to [RFC-1034](https://tools.ietf.
-        # org/html/rfc1034) with 1-63 characters. Otherwise, documents without valid IDs
-        # will fail to be imported. Only set this field when using GcsSource or
-        # BigQuerySource, and when GcsSource.data_schema or BigQuerySource.data_schema
-        # is `custom`. And only set this field when auto_generate_ids is unset or set as
-        # `false`. Otherwise, an INVALID_ARGUMENT error is thrown. If it is unset, a
-        # default value `_id` is used when importing from the allowed data sources.
+        # values of the JSON field or the BigQuery column are used as the Document.ids.
+        # The JSON field or the BigQuery column must be of string type, and the values
+        # must be set as valid strings conform to [RFC-1034](https://tools.ietf.org/html/
+        # rfc1034) with 1-63 characters. Otherwise, documents without valid IDs fail to
+        # be imported. Only set this field when using GcsSource or BigQuerySource, and
+        # when GcsSource.data_schema or BigQuerySource.data_schema is `custom`. And only
+        # set this field when auto_generate_ids is unset or set as `false`. Otherwise,
+        # an INVALID_ARGUMENT error is thrown. If it is unset, a default value `_id` is
+        # used when importing from the allowed data sources.
         # Corresponds to the JSON property `idField`
         # @return [String]
         attr_accessor :id_field
@@ -1008,7 +1007,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Cloud Storage prefix for import errors. This must be an empty, existing Cloud
-        # Storage directory. Import errors will be written to sharded files in this
+        # Storage directory. Import errors are written to sharded files in this
         # directory, one per line, as a JSON-encoded `google.rpc.Status` message.
         # Corresponds to the JSON property `gcsPrefix`
         # @return [String]
@@ -1024,8 +1023,8 @@ module Google
         end
       end
       
-      # Metadata related to the progress of the Import operation. This will be
-      # returned by the google.longrunning.Operation.metadata field.
+      # Metadata related to the progress of the Import operation. This is returned by
+      # the google.longrunning.Operation.metadata field.
       class GoogleCloudDiscoveryengineV1alphaImportUserEventsMetadata
         include Google::Apis::Core::Hashable
       
@@ -1223,10 +1222,10 @@ module Google
         # path of category, use '>' sign to separate different hierarchies. If '>' is
         # part of the category name, please replace it with other character(s). Category
         # pages include special pages such as sales or promotions. For instance, a
-        # special sale page may have the category hierarchy: "pageCategory" : "Sales >
-        # 2017 Black Friday Deals". Required for `view-category-page` events. Other
-        # event types should not set this field. Otherwise, an INVALID_ARGUMENT error is
-        # returned.
+        # special sale page may have the category hierarchy: `"pageCategory" : "Sales >
+        # 2017 Black Friday Deals"`. Required for `view-category-page` events. Other
+        # event types should not set this field. Otherwise, an `INVALID_ARGUMENT` error
+        # is returned.
         # Corresponds to the JSON property `pageCategory`
         # @return [String]
         attr_accessor :page_category
@@ -1234,10 +1233,10 @@ module Google
         # A unique ID of a web page view. This should be kept the same for all user
         # events triggered from the same pageview. For example, an item detail page view
         # could trigger multiple events as the user is browsing the page. The `
-        # pageViewId` property should be kept the same for all these events so that they
-        # can be grouped together properly. When using the client side event reporting
-        # with JavaScript pixel and Google Tag Manager, this value is filled in
-        # automatically.
+        # pageview_id` property should be kept the same for all these events so that
+        # they can be grouped together properly. When using the client side event
+        # reporting with JavaScript pixel and Google Tag Manager, this value is filled
+        # in automatically.
         # Corresponds to the JSON property `pageviewId`
         # @return [String]
         attr_accessor :pageview_id
@@ -1709,28 +1708,29 @@ module Google
       
         # An integer that specifies the current offset for pagination (the 0-indexed
         # starting location, amongst the products deemed by the API as relevant). See
-        # SearchRequest.offset for definition. If this field is negative, an
-        # INVALID_ARGUMENT is returned. This can only be set for `search` events. Other
-        # event types should not set this field. Otherwise, an INVALID_ARGUMENT error is
-        # returned.
+        # SearchRequest.offset for definition. If this field is negative, an `
+        # INVALID_ARGUMENT` is returned. This can only be set for `search` events. Other
+        # event types should not set this field. Otherwise, an `INVALID_ARGUMENT` error
+        # is returned.
         # Corresponds to the JSON property `offset`
         # @return [Fixnum]
         attr_accessor :offset
       
         # The order in which products are returned, if applicable. See SearchRequest.
         # order_by for definition and syntax. The value must be a UTF-8 encoded string
-        # with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error
-        # is returned. This can only be set for `search` events. Other event types
-        # should not set this field. Otherwise, an INVALID_ARGUMENT error is returned.
+        # with a length limit of 1,000 characters. Otherwise, an `INVALID_ARGUMENT`
+        # error is returned. This can only be set for `search` events. Other event types
+        # should not set this field. Otherwise, an `INVALID_ARGUMENT` error is returned.
         # Corresponds to the JSON property `orderBy`
         # @return [String]
         attr_accessor :order_by
       
         # The user's search query. See SearchRequest.query for definition. The value
         # must be a UTF-8 encoded string with a length limit of 5,000 characters.
-        # Otherwise, an INVALID_ARGUMENT error is returned. At least one of search_query
-        # or PageInfo.page_category is required for `search` events. Other event types
-        # should not set this field. Otherwise, an INVALID_ARGUMENT error is returned.
+        # Otherwise, an `INVALID_ARGUMENT` error is returned. At least one of
+        # search_query or PageInfo.page_category is required for `search` events. Other
+        # event types should not set this field. Otherwise, an `INVALID_ARGUMENT` error
+        # is returned.
         # Corresponds to the JSON property `searchQuery`
         # @return [String]
         attr_accessor :search_query
@@ -1751,12 +1751,12 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaTargetSite
         include Google::Apis::Core::Hashable
       
-        # Input only. If set to false, an uri_pattern will be generated to include all
-        # pages whose address contains the provided_uri_pattern. If set to true, an
-        # uri_pattern will be generated to try to be an exact match of the
+        # Input only. If set to false, a uri_pattern is generated to include all pages
+        # whose address contains the provided_uri_pattern. If set to true, an
+        # uri_pattern is generated to try to be an exact match of the
         # provided_uri_pattern or just the specific page if the provided_uri_pattern is
-        # a specific one. provided_uri_pattern will always be normalized to generate the
-        # uri pattern to be used by the search engine.
+        # a specific one. provided_uri_pattern is always normalized to generate the URI
+        # pattern to be used by the search engine.
         # Corresponds to the JSON property `exactMatch`
         # @return [Boolean]
         attr_accessor :exact_match
@@ -1775,7 +1775,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Required. Input only. The user provided uri pattern from which the `
+        # Required. Input only. The user provided URI pattern from which the `
         # generated_uri_pattern` is generated.
         # Corresponds to the JSON property `providedUriPattern`
         # @return [String]
@@ -1885,7 +1885,7 @@ module Google
         # values are not allowed. Each value must be a UTF-8 encoded string with a
         # length limit of 256 characters. * For number attributes, at most 400 values
         # are allowed. For product recommendations, an example of extra user information
-        # is ` traffic_channel`, which is how a user arrives at the site. Users can
+        # is `traffic_channel`, which is how a user arrives at the site. Users can
         # arrive at the site by coming to the site directly, coming through Google
         # search, or in other ways.
         # Corresponds to the JSON property `attributes`
@@ -1895,17 +1895,16 @@ module Google
         # Token to attribute an API response to user action(s) to trigger the event.
         # Highly recommended for user events that are the result of
         # RecommendationService.Recommend. This field enables accurate attribution of
-        # recommendation model performance. The value must be one of: * PredictResponse.
-        # attribution_token for events that are the result of RecommendationService.
-        # Recommend. * SearchResponse.attribution_token for events that are the result
-        # of SearchService.Search. * CompleteQueryResponse.attribution_token for events
-        # that are the result of CompletionService.CompleteQuery. This token enables us
-        # to accurately attribute page view or conversion completion back to the event
-        # and the particular predict response containing this clicked/purchased product.
-        # If user clicks on product K in the recommendation results, pass
-        # PredictResponse.attribution_token as a URL parameter to product K's page. When
-        # recording events on product K's page, log the PredictResponse.
-        # attribution_token to this field.
+        # recommendation model performance. The value must be one of: *
+        # RecommendResponse.attribution_token for events that are the result of
+        # RecommendationService.Recommend. * SearchResponse.attribution_token for events
+        # that are the result of SearchService.Search. This token enables us to
+        # accurately attribute page view or conversion completion back to the event and
+        # the particular predict response containing this clicked/purchased product. If
+        # user clicks on product K in the recommendation results, pass RecommendResponse.
+        # attribution_token as a URL parameter to product K's page. When recording
+        # events on product K's page, log the RecommendResponse.attribution_token to
+        # this field.
         # Corresponds to the JSON property `attributionToken`
         # @return [String]
         attr_accessor :attribution_token
@@ -1964,7 +1963,7 @@ module Google
         # RecommendationService.RecommendRequest, this field may be populated directly
         # from RecommendationService.RecommendRequest.filter conforming to https://
         # google.aip.dev/160#filtering. The value must be a UTF-8 encoded string with a
-        # length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is
+        # length limit of 1,000 characters. Otherwise, an `INVALID_ARGUMENT` error is
         # returned.
         # Corresponds to the JSON property `filter`
         # @return [String]
@@ -2029,7 +2028,7 @@ module Google
         # visitor log in/out of the website. Do not set the field to the same fixed ID
         # for different users. This mixes the event history of those users together,
         # which results in degraded model quality. The field must be a UTF-8 encoded
-        # string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT
+        # string with a length limit of 128 characters. Otherwise, an `INVALID_ARGUMENT`
         # error is returned. The field should not contain PII or user-data. We recommend
         # to use Google Analytics [Client ID](https://developers.google.com/analytics/
         # devguides/collection/analyticsjs/field-reference#clientId) for this field.
@@ -2068,12 +2067,11 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaUserInfo
         include Google::Apis::Core::Hashable
       
-        # User agent as included in the HTTP header. Required for getting SearchResponse.
-        # sponsored_results. The field must be a UTF-8 encoded string with a length
-        # limit of 1,000 characters. Otherwise, an `INVALID_ARGUMENT` error is returned.
-        # This should not be set when using the client side event reporting with GTM or
-        # JavaScript tag in UserEventService.CollectUserEvent or if UserEvent.
-        # direct_user_request is set.
+        # User agent as included in the HTTP header. The field must be a UTF-8 encoded
+        # string with a length limit of 1,000 characters. Otherwise, an `
+        # INVALID_ARGUMENT` error is returned. This should not be set when using the
+        # client side event reporting with GTM or JavaScript tag in UserEventService.
+        # CollectUserEvent or if UserEvent.direct_user_request is set.
         # Corresponds to the JSON property `userAgent`
         # @return [String]
         attr_accessor :user_agent
@@ -2099,8 +2097,8 @@ module Google
         end
       end
       
-      # Metadata related to the progress of the ImportDocuments operation. This will
-      # be returned by the google.longrunning.Operation.metadata field.
+      # Metadata related to the progress of the ImportDocuments operation. This is
+      # returned by the google.longrunning.Operation.metadata field.
       class GoogleCloudDiscoveryengineV1betaImportDocumentsMetadata
         include Google::Apis::Core::Hashable
       
@@ -2170,7 +2168,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Cloud Storage prefix for import errors. This must be an empty, existing Cloud
-        # Storage directory. Import errors will be written to sharded files in this
+        # Storage directory. Import errors are written to sharded files in this
         # directory, one per line, as a JSON-encoded `google.rpc.Status` message.
         # Corresponds to the JSON property `gcsPrefix`
         # @return [String]
@@ -2186,8 +2184,8 @@ module Google
         end
       end
       
-      # Metadata related to the progress of the Import operation. This will be
-      # returned by the google.longrunning.Operation.metadata field.
+      # Metadata related to the progress of the Import operation. This is returned by
+      # the google.longrunning.Operation.metadata field.
       class GoogleCloudDiscoveryengineV1betaImportUserEventsMetadata
         include Google::Apis::Core::Hashable
       
