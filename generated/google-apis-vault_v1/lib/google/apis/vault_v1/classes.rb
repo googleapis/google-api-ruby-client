@@ -264,10 +264,10 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The name of the Cloud Storage bucket for the export file. You can use this
-        # value in the [Cloud Storage JSON or XML APIs](https://cloud.google.com/storage/
-        # docs/apis), but not to list the bucket contents. Instead, you can [get
-        # individual export files](https://cloud.google.com/storage/docs/json_api/v1/
-        # objects/get) by object name.
+        # value in the Cloud Storage [JSON API](https://cloud.google.com/storage/docs/
+        # json_api) or [XML API](https://cloud.google.com/storage/docs/xml-api), but not
+        # to list the bucket contents. Instead, you can [get individual export files](
+        # https://cloud.google.com/storage/docs/json_api/v1/objects/get) by object name.
         # Corresponds to the JSON property `bucketName`
         # @return [String]
         attr_accessor :bucket_name
@@ -278,8 +278,8 @@ module Google
         attr_accessor :md5_hash
       
         # The name of the Cloud Storage object for the export file. You can use this
-        # value in the [Cloud Storage JSON or XML APIs](https://cloud.google.com/storage/
-        # docs/apis).
+        # value in the Cloud Storage [JSON API](https://cloud.google.com/storage/docs/
+        # json_api) or [XML API](https://cloud.google.com/storage/docs/xml-api).
         # Corresponds to the JSON property `objectName`
         # @return [String]
         attr_accessor :object_name
