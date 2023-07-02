@@ -50,6 +50,36 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Returns resource names of customers directly accessible by the user
+        # authenticating the call. List of thrown errors: [AuthenticationError]() [
+        # AuthorizationError]() [HeaderError]() [InternalError]() [QuotaError]() [
+        # RequestError]()
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ServicesListAccessibleCustomersResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ServicesListAccessibleCustomersResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_customer_accessible_customers(fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v0/customers:listAccessibleCustomers', options)
+          command.response_representation = Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ServicesListAccessibleCustomersResponse::Representation
+          command.response_class = Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ServicesListAccessibleCustomersResponse
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Returns the requested custom column in full detail.
         # @param [String] resource_name
         #   Required. The resource name of the custom column to fetch.
