@@ -34,7 +34,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BatchDeleteVersionsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Binding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CleanupPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CleanupPolicyCondition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CleanupPolicyMostRecentVersions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -527,6 +551,14 @@ module Google
         end
       end
       
+      class BatchDeleteVersionsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :names, as: 'names'
+          property :validate_only, as: 'validateOnly'
+        end
+      end
+      
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -534,6 +566,39 @@ module Google
       
           collection :members, as: 'members'
           property :role, as: 'role'
+        end
+      end
+      
+      class CleanupPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          property :condition, as: 'condition', class: Google::Apis::ArtifactregistryV1::CleanupPolicyCondition, decorator: Google::Apis::ArtifactregistryV1::CleanupPolicyCondition::Representation
+      
+          property :id, as: 'id'
+          property :most_recent_versions, as: 'mostRecentVersions', class: Google::Apis::ArtifactregistryV1::CleanupPolicyMostRecentVersions, decorator: Google::Apis::ArtifactregistryV1::CleanupPolicyMostRecentVersions::Representation
+      
+        end
+      end
+      
+      class CleanupPolicyCondition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :newer_than, as: 'newerThan'
+          property :older_than, as: 'olderThan'
+          collection :package_name_prefixes, as: 'packageNamePrefixes'
+          collection :tag_prefixes, as: 'tagPrefixes'
+          property :tag_state, as: 'tagState'
+          property :version_age, as: 'versionAge'
+          collection :version_name_prefixes, as: 'versionNamePrefixes'
+        end
+      end
+      
+      class CleanupPolicyMostRecentVersions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :keep_count, as: 'keepCount'
+          collection :package_name_prefixes, as: 'packageNamePrefixes'
         end
       end
       
@@ -987,6 +1052,9 @@ module Google
       class Repository
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :cleanup_policies, as: 'cleanupPolicies', class: Google::Apis::ArtifactregistryV1::CleanupPolicy, decorator: Google::Apis::ArtifactregistryV1::CleanupPolicy::Representation
+      
+          property :cleanup_policy_dry_run, as: 'cleanupPolicyDryRun'
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :docker_config, as: 'dockerConfig', class: Google::Apis::ArtifactregistryV1::DockerRepositoryConfig, decorator: Google::Apis::ArtifactregistryV1::DockerRepositoryConfig::Representation
