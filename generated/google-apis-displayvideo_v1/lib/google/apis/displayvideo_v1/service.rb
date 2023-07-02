@@ -1626,15 +1626,12 @@ module Google
         #   expressions are made up of one or more restrictions. * Restrictions can be
         #   combined by `AND` or `OR` logical operators. A sequence of restrictions
         #   implicitly uses `AND`. * A restriction has the form of ``field` `operator` `
-        #   value``. * The `budget.budget_segments.date_range.end_date` field must use the
-        #   `LESS THAN (<)` operator. * The `updateTime` field must use the `GREATER THAN
-        #   OR EQUAL TO (>=)` or `LESS THAN OR EQUAL TO (<=)` operators. * All other
-        #   fields must use the `EQUALS (=)` operator. Supported fields: * `campaignId` * `
-        #   displayName` * `entityStatus` * `budget.budget_segments.date_range.end_date` (
-        #   input in the form of `YYYY-MM-DD`) * **Deprecated. Not available after June 21,
-        #   2023** * `updateTime` (input in ISO 8601 format, or `YYYY-MM-DDTHH:MM:SSZ`)
-        #   Examples: * All insertion orders under a campaign: `campaignId="1234"` * All `
-        #   ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED` insertion orders under an
+        #   value``. * The `updateTime` field must use the `GREATER THAN OR EQUAL TO (>=)`
+        #   or `LESS THAN OR EQUAL TO (<=)` operators. * All other fields must use the `
+        #   EQUALS (=)` operator. Supported fields: * `campaignId` * `displayName` * `
+        #   entityStatus` * `updateTime` (input in ISO 8601 format, or `YYYY-MM-DDTHH:MM:
+        #   SSZ`) Examples: * All insertion orders under a campaign: `campaignId="1234"` *
+        #   All `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED` insertion orders under an
         #   advertiser: `(entityStatus="ENTITY_STATUS_ACTIVE" OR entityStatus="
         #   ENTITY_STATUS_PAUSED")` * All insertion orders with an update time less than
         #   or equal to 2020-11-04T18:54:47Z (format of ISO 8601): `updateTime<="2020-11-
@@ -2228,33 +2225,24 @@ module Google
         #   are made up of one or more restrictions. * Restrictions can be combined by `
         #   AND` or `OR` logical operators. A sequence of restrictions implicitly uses `
         #   AND`. * A restriction has the form of ``field` `operator` `value``. * The `
-        #   flight.dateRange.endDate` field must use the `LESS THAN (<)` operator. * The `
         #   updateTime` field must use the `GREATER THAN OR EQUAL TO (>=)` or `LESS THAN
-        #   OR EQUAL TO (<=)` operators. * The `warningMessages` field must use the `HAS (:
-        #   )` operator. * All other fields must use the `EQUALS (=)` operator. Supported
-        #   fields: * `campaignId` * `displayName` * `entityStatus` * `flight.dateRange.
-        #   endDate` (input formatted as `YYYY-MM-DD`) * **Deprecated. Not available after
-        #   June 21, 2023** * `flight.triggerId` * **Deprecated. Not available after June
-        #   21, 2023** * `insertionOrderId` * `lineItemId` * `lineItemType` * `
-        #   targetedChannelId` * **Deprecated. Not available after June 21, 2023** * `
-        #   targetedNegativeKeywordListId` * **Deprecated. Not available after June 21,
-        #   2023** * `updateTime` (input in ISO 8601 format, or `YYYY-MM-DDTHH:MM:SSZ`) * `
-        #   warningMessages` * **Deprecated. Not available after June 21, 2023** Examples:
-        #   * All line items under an insertion order: `insertionOrderId="1234"` * All `
-        #   ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED` and `
-        #   LINE_ITEM_TYPE_DISPLAY_DEFAULT` line items under an advertiser: `(entityStatus=
-        #   "ENTITY_STATUS_ACTIVE" OR entityStatus="ENTITY_STATUS_PAUSED") AND
-        #   lineItemType="LINE_ITEM_TYPE_DISPLAY_DEFAULT"` * All line items with an update
-        #   time less than or equal to 2020-11-04T18:54:47Z (format of ISO 8601): `
-        #   updateTime<="2020-11-04T18:54:47Z"` * All line items with an update time
-        #   greater than or equal to 2020-11-04T18:54:47Z (format of ISO 8601): `
-        #   updateTime>="2020-11-04T18:54:47Z"` The length of this field should be no more
-        #   than 500 characters. Reference our [filter `LIST` requests](/display-video/api/
-        #   guides/how-tos/filters) guide for more information.
+        #   OR EQUAL TO (<=)` operators. * All other fields must use the `EQUALS (=)`
+        #   operator. Supported fields: * `campaignId` * `displayName` * `entityStatus` * `
+        #   insertionOrderId` * `lineItemId` * `lineItemType` * `updateTime` (input in ISO
+        #   8601 format, or `YYYY-MM-DDTHH:MM:SSZ`) Examples: * All line items under an
+        #   insertion order: `insertionOrderId="1234"` * All `ENTITY_STATUS_ACTIVE` or `
+        #   ENTITY_STATUS_PAUSED` and `LINE_ITEM_TYPE_DISPLAY_DEFAULT` line items under an
+        #   advertiser: `(entityStatus="ENTITY_STATUS_ACTIVE" OR entityStatus="
+        #   ENTITY_STATUS_PAUSED") AND lineItemType="LINE_ITEM_TYPE_DISPLAY_DEFAULT"` *
+        #   All line items with an update time less than or equal to 2020-11-04T18:54:47Z (
+        #   format of ISO 8601): `updateTime<="2020-11-04T18:54:47Z"` * All line items
+        #   with an update time greater than or equal to 2020-11-04T18:54:47Z (format of
+        #   ISO 8601): `updateTime>="2020-11-04T18:54:47Z"` The length of this field
+        #   should be no more than 500 characters. Reference our [filter `LIST` requests](/
+        #   display-video/api/guides/how-tos/filters) guide for more information.
         # @param [String] order_by
         #   Field by which to sort the list. Acceptable values are: * `displayName` (
-        #   default) * `entityStatus` * `flight.dateRange.endDate` * **Deprecated. Not
-        #   available after June 21, 2023** * `updateTime` The default sorting order is
+        #   default) * `entityStatus` * `updateTime` The default sorting order is
         #   ascending. To specify descending order for a field, a suffix "desc" should be
         #   added to the field name. Example: `displayName desc`.
         # @param [Fixnum] page_size
@@ -5458,6 +5446,9 @@ module Google
         # Gets an inventory source.
         # @param [Fixnum] inventory_source_id
         #   Required. The ID of the inventory source to fetch.
+        # @param [Fixnum] advertiser_id
+        #   Optional. The advertiser_id is optional, when it is provided, the advertiser
+        #   access is used.
         # @param [Fixnum] partner_id
         #   Required. The ID of the DV360 partner to which the fetched inventory source is
         #   permissioned.
@@ -5478,11 +5469,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_inventory_source(inventory_source_id, partner_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_inventory_source(inventory_source_id, advertiser_id: nil, partner_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/inventorySources/{+inventorySourceId}', options)
           command.response_representation = Google::Apis::DisplayvideoV1::InventorySource::Representation
           command.response_class = Google::Apis::DisplayvideoV1::InventorySource
           command.params['inventorySourceId'] = inventory_source_id unless inventory_source_id.nil?
+          command.query['advertiserId'] = advertiser_id unless advertiser_id.nil?
           command.query['partnerId'] = partner_id unless partner_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
