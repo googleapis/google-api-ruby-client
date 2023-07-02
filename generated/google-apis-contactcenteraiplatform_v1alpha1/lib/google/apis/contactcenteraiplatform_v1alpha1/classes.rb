@@ -112,7 +112,7 @@ module Google
         end
       end
       
-      # Message describing ContactCenter object Next ID: 14
+      # Message describing ContactCenter object Next ID: 15
       class ContactCenter
         include Google::Apis::Core::Hashable
       
@@ -148,6 +148,11 @@ module Google
         # Corresponds to the JSON property `instanceConfig`
         # @return [Google::Apis::ContactcenteraiplatformV1alpha1::InstanceConfig]
         attr_accessor :instance_config
+      
+        # Immutable. The KMS key name to encrypt the user input (`ContactCenter`).
+        # Corresponds to the JSON property `kmsKey`
+        # @return [String]
+        attr_accessor :kms_key
       
         # Labels as key value pairs
         # Corresponds to the JSON property `labels`
@@ -196,6 +201,7 @@ module Google
           @customer_domain_prefix = args[:customer_domain_prefix] if args.key?(:customer_domain_prefix)
           @display_name = args[:display_name] if args.key?(:display_name)
           @instance_config = args[:instance_config] if args.key?(:instance_config)
+          @kms_key = args[:kms_key] if args.key?(:kms_key)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @saml_params = args[:saml_params] if args.key?(:saml_params)
@@ -532,7 +538,7 @@ module Google
         # @return [String]
         attr_accessor :api_version
       
-        # Message describing ContactCenter object Next ID: 14
+        # Message describing ContactCenter object Next ID: 15
         # Corresponds to the JSON property `contactCenter`
         # @return [Google::Apis::ContactcenteraiplatformV1alpha1::ContactCenter]
         attr_accessor :contact_center
