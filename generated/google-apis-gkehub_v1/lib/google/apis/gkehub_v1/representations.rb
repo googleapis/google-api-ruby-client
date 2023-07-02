@@ -292,6 +292,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FleetObservabilityFeatureError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FleetObservabilityFeatureSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -304,6 +310,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FleetObservabilityFleetObservabilityBaseFeatureState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FleetObservabilityFleetObservabilityLoggingState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FleetObservabilityFleetObservabilityMonitoringState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FleetObservabilityLoggingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FleetObservabilityMembershipSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -311,6 +341,12 @@ module Google
       end
       
       class FleetObservabilityMembershipState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FleetObservabilityRoutingConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1081,15 +1117,66 @@ module Google
         end
       end
       
+      class FleetObservabilityFeatureError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :description, as: 'description'
+        end
+      end
+      
       class FleetObservabilityFeatureSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :logging_config, as: 'loggingConfig', class: Google::Apis::GkehubV1::FleetObservabilityLoggingConfig, decorator: Google::Apis::GkehubV1::FleetObservabilityLoggingConfig::Representation
+      
         end
       end
       
       class FleetObservabilityFeatureState
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :logging, as: 'logging', class: Google::Apis::GkehubV1::FleetObservabilityFleetObservabilityLoggingState, decorator: Google::Apis::GkehubV1::FleetObservabilityFleetObservabilityLoggingState::Representation
+      
+          property :monitoring, as: 'monitoring', class: Google::Apis::GkehubV1::FleetObservabilityFleetObservabilityMonitoringState, decorator: Google::Apis::GkehubV1::FleetObservabilityFleetObservabilityMonitoringState::Representation
+      
+        end
+      end
+      
+      class FleetObservabilityFleetObservabilityBaseFeatureState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          collection :errors, as: 'errors', class: Google::Apis::GkehubV1::FleetObservabilityFeatureError, decorator: Google::Apis::GkehubV1::FleetObservabilityFeatureError::Representation
+      
+        end
+      end
+      
+      class FleetObservabilityFleetObservabilityLoggingState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_log, as: 'defaultLog', class: Google::Apis::GkehubV1::FleetObservabilityFleetObservabilityBaseFeatureState, decorator: Google::Apis::GkehubV1::FleetObservabilityFleetObservabilityBaseFeatureState::Representation
+      
+          property :scope_log, as: 'scopeLog', class: Google::Apis::GkehubV1::FleetObservabilityFleetObservabilityBaseFeatureState, decorator: Google::Apis::GkehubV1::FleetObservabilityFleetObservabilityBaseFeatureState::Representation
+      
+        end
+      end
+      
+      class FleetObservabilityFleetObservabilityMonitoringState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :state, as: 'state', class: Google::Apis::GkehubV1::FleetObservabilityFleetObservabilityBaseFeatureState, decorator: Google::Apis::GkehubV1::FleetObservabilityFleetObservabilityBaseFeatureState::Representation
+      
+        end
+      end
+      
+      class FleetObservabilityLoggingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_config, as: 'defaultConfig', class: Google::Apis::GkehubV1::FleetObservabilityRoutingConfig, decorator: Google::Apis::GkehubV1::FleetObservabilityRoutingConfig::Representation
+      
+          property :fleet_scope_logs_config, as: 'fleetScopeLogsConfig', class: Google::Apis::GkehubV1::FleetObservabilityRoutingConfig, decorator: Google::Apis::GkehubV1::FleetObservabilityRoutingConfig::Representation
+      
         end
       end
       
@@ -1102,6 +1189,13 @@ module Google
       class FleetObservabilityMembershipState
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class FleetObservabilityRoutingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mode, as: 'mode'
         end
       end
       
