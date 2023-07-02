@@ -148,6 +148,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ClusterNetworkPerformanceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ClusterUpdate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -293,6 +299,12 @@ module Google
       end
       
       class GcpFilestoreCsiDriverConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GcsFuseCsiDriverConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -659,6 +671,12 @@ module Google
       end
       
       class PubSub
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RangeInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -968,6 +986,8 @@ module Google
       class AdditionalPodRangesConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :pod_range_info, as: 'podRangeInfo', class: Google::Apis::ContainerV1::RangeInfo, decorator: Google::Apis::ContainerV1::RangeInfo::Representation
+      
           collection :pod_range_names, as: 'podRangeNames'
         end
       end
@@ -984,6 +1004,8 @@ module Google
           property :gce_persistent_disk_csi_driver_config, as: 'gcePersistentDiskCsiDriverConfig', class: Google::Apis::ContainerV1::GcePersistentDiskCsiDriverConfig, decorator: Google::Apis::ContainerV1::GcePersistentDiskCsiDriverConfig::Representation
       
           property :gcp_filestore_csi_driver_config, as: 'gcpFilestoreCsiDriverConfig', class: Google::Apis::ContainerV1::GcpFilestoreCsiDriverConfig, decorator: Google::Apis::ContainerV1::GcpFilestoreCsiDriverConfig::Representation
+      
+          property :gcs_fuse_csi_driver_config, as: 'gcsFuseCsiDriverConfig', class: Google::Apis::ContainerV1::GcsFuseCsiDriverConfig, decorator: Google::Apis::ContainerV1::GcsFuseCsiDriverConfig::Representation
       
           property :gke_backup_agent_config, as: 'gkeBackupAgentConfig', class: Google::Apis::ContainerV1::GkeBackupAgentConfig, decorator: Google::Apis::ContainerV1::GkeBackupAgentConfig::Representation
       
@@ -1049,6 +1071,7 @@ module Google
           property :disk_size_gb, as: 'diskSizeGb'
           property :disk_type, as: 'diskType'
           property :image_type, as: 'imageType'
+          property :insecure_kubelet_readonly_port_enabled, as: 'insecureKubeletReadonlyPortEnabled'
           property :management, as: 'management', class: Google::Apis::ContainerV1::NodeManagement, decorator: Google::Apis::ContainerV1::NodeManagement::Representation
       
           property :min_cpu_platform, as: 'minCpuPlatform'
@@ -1266,6 +1289,13 @@ module Google
         end
       end
       
+      class ClusterNetworkPerformanceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :total_egress_bandwidth_tier, as: 'totalEgressBandwidthTier'
+        end
+      end
+      
       class ClusterUpdate
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1319,6 +1349,8 @@ module Google
           property :desired_monitoring_config, as: 'desiredMonitoringConfig', class: Google::Apis::ContainerV1::MonitoringConfig, decorator: Google::Apis::ContainerV1::MonitoringConfig::Representation
       
           property :desired_monitoring_service, as: 'desiredMonitoringService'
+          property :desired_network_performance_config, as: 'desiredNetworkPerformanceConfig', class: Google::Apis::ContainerV1::ClusterNetworkPerformanceConfig, decorator: Google::Apis::ContainerV1::ClusterNetworkPerformanceConfig::Representation
+      
           property :desired_node_pool_auto_config_network_tags, as: 'desiredNodePoolAutoConfigNetworkTags', class: Google::Apis::ContainerV1::NetworkTags, decorator: Google::Apis::ContainerV1::NetworkTags::Representation
       
           property :desired_node_pool_autoscaling, as: 'desiredNodePoolAutoscaling', class: Google::Apis::ContainerV1::NodePoolAutoscaling, decorator: Google::Apis::ContainerV1::NodePoolAutoscaling::Representation
@@ -1540,6 +1572,13 @@ module Google
         end
       end
       
+      class GcsFuseCsiDriverConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
       class GetJsonWebKeysResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1611,6 +1650,7 @@ module Google
           property :cluster_ipv4_cidr_block, as: 'clusterIpv4CidrBlock'
           property :cluster_secondary_range_name, as: 'clusterSecondaryRangeName'
           property :create_subnetwork, as: 'createSubnetwork'
+          property :default_pod_ipv4_range_utilization, as: 'defaultPodIpv4RangeUtilization'
           property :ipv6_access_type, as: 'ipv6AccessType'
           property :node_ipv4_cidr, as: 'nodeIpv4Cidr'
           property :node_ipv4_cidr_block, as: 'nodeIpv4CidrBlock'
@@ -1864,6 +1904,8 @@ module Google
           property :gateway_api_config, as: 'gatewayApiConfig', class: Google::Apis::ContainerV1::GatewayApiConfig, decorator: Google::Apis::ContainerV1::GatewayApiConfig::Representation
       
           property :network, as: 'network'
+          property :network_performance_config, as: 'networkPerformanceConfig', class: Google::Apis::ContainerV1::ClusterNetworkPerformanceConfig, decorator: Google::Apis::ContainerV1::ClusterNetworkPerformanceConfig::Representation
+      
           property :private_ipv6_google_access, as: 'privateIpv6GoogleAccess'
           property :service_external_ips_config, as: 'serviceExternalIpsConfig', class: Google::Apis::ContainerV1::ServiceExternalIPsConfig, decorator: Google::Apis::ContainerV1::ServiceExternalIPsConfig::Representation
       
@@ -1983,6 +2025,7 @@ module Google
           property :cpu_cfs_quota, as: 'cpuCfsQuota'
           property :cpu_cfs_quota_period, as: 'cpuCfsQuotaPeriod'
           property :cpu_manager_policy, as: 'cpuManagerPolicy'
+          property :insecure_kubelet_readonly_port_enabled, as: 'insecureKubeletReadonlyPortEnabled'
           property :pod_pids_limit, :numeric_string => true, as: 'podPidsLimit'
         end
       end
@@ -2014,6 +2057,7 @@ module Google
           property :pod_cidr_overprovision_config, as: 'podCidrOverprovisionConfig', class: Google::Apis::ContainerV1::PodCidrOverprovisionConfig, decorator: Google::Apis::ContainerV1::PodCidrOverprovisionConfig::Representation
       
           property :pod_ipv4_cidr_block, as: 'podIpv4CidrBlock'
+          property :pod_ipv4_range_utilization, as: 'podIpv4RangeUtilization'
           property :pod_range, as: 'podRange'
         end
       end
@@ -2196,6 +2240,14 @@ module Google
           property :filter, as: 'filter', class: Google::Apis::ContainerV1::Filter, decorator: Google::Apis::ContainerV1::Filter::Representation
       
           property :topic, as: 'topic'
+        end
+      end
+      
+      class RangeInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :range_name, as: 'rangeName'
+          property :utilization, as: 'utilization'
         end
       end
       

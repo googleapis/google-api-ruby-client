@@ -75,6 +75,11 @@ module Google
       class AdditionalPodRangesConfig
         include Google::Apis::Core::Hashable
       
+        # Output only. [Output only] Information for additional pod range.
+        # Corresponds to the JSON property `podRangeInfo`
+        # @return [Array<Google::Apis::ContainerV1::RangeInfo>]
+        attr_accessor :pod_range_info
+      
         # Name for pod secondary ipv4 range which has the actual range defined ahead.
         # Corresponds to the JSON property `podRangeNames`
         # @return [Array<String>]
@@ -86,6 +91,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @pod_range_info = args[:pod_range_info] if args.key?(:pod_range_info)
           @pod_range_names = args[:pod_range_names] if args.key?(:pod_range_names)
         end
       end
@@ -119,6 +125,11 @@ module Google
         # Corresponds to the JSON property `gcpFilestoreCsiDriverConfig`
         # @return [Google::Apis::ContainerV1::GcpFilestoreCsiDriverConfig]
         attr_accessor :gcp_filestore_csi_driver_config
+      
+        # Configuration for the Cloud Storage Fuse CSI driver.
+        # Corresponds to the JSON property `gcsFuseCsiDriverConfig`
+        # @return [Google::Apis::ContainerV1::GcsFuseCsiDriverConfig]
+        attr_accessor :gcs_fuse_csi_driver_config
       
         # Configuration for the Backup for GKE Agent.
         # Corresponds to the JSON property `gkeBackupAgentConfig`
@@ -161,6 +172,7 @@ module Google
           @dns_cache_config = args[:dns_cache_config] if args.key?(:dns_cache_config)
           @gce_persistent_disk_csi_driver_config = args[:gce_persistent_disk_csi_driver_config] if args.key?(:gce_persistent_disk_csi_driver_config)
           @gcp_filestore_csi_driver_config = args[:gcp_filestore_csi_driver_config] if args.key?(:gcp_filestore_csi_driver_config)
+          @gcs_fuse_csi_driver_config = args[:gcs_fuse_csi_driver_config] if args.key?(:gcs_fuse_csi_driver_config)
           @gke_backup_agent_config = args[:gke_backup_agent_config] if args.key?(:gke_backup_agent_config)
           @horizontal_pod_autoscaling = args[:horizontal_pod_autoscaling] if args.key?(:horizontal_pod_autoscaling)
           @http_load_balancing = args[:http_load_balancing] if args.key?(:http_load_balancing)
@@ -356,6 +368,12 @@ module Google
         # @return [String]
         attr_accessor :image_type
       
+        # Enable or disable Kubelet read only port.
+        # Corresponds to the JSON property `insecureKubeletReadonlyPortEnabled`
+        # @return [Boolean]
+        attr_accessor :insecure_kubelet_readonly_port_enabled
+        alias_method :insecure_kubelet_readonly_port_enabled?, :insecure_kubelet_readonly_port_enabled
+      
         # NodeManagement defines the set of node management services turned on for the
         # node pool.
         # Corresponds to the JSON property `management`
@@ -435,6 +453,7 @@ module Google
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @disk_type = args[:disk_type] if args.key?(:disk_type)
           @image_type = args[:image_type] if args.key?(:image_type)
+          @insecure_kubelet_readonly_port_enabled = args[:insecure_kubelet_readonly_port_enabled] if args.key?(:insecure_kubelet_readonly_port_enabled)
           @management = args[:management] if args.key?(:management)
           @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
           @oauth_scopes = args[:oauth_scopes] if args.key?(:oauth_scopes)
@@ -1287,6 +1306,25 @@ module Google
         end
       end
       
+      # Configuration of network bandwidth tiers
+      class ClusterNetworkPerformanceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the total network bandwidth tier for NodePools in the cluster.
+        # Corresponds to the JSON property `totalEgressBandwidthTier`
+        # @return [String]
+        attr_accessor :total_egress_bandwidth_tier
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @total_egress_bandwidth_tier = args[:total_egress_bandwidth_tier] if args.key?(:total_egress_bandwidth_tier)
+        end
+      end
+      
       # ClusterUpdate describes an update to the cluster. Exactly one update can be
       # applied to a cluster with each request, so at most one field can be provided.
       class ClusterUpdate
@@ -1475,6 +1513,11 @@ module Google
         # @return [String]
         attr_accessor :desired_monitoring_service
       
+        # Configuration of network bandwidth tiers
+        # Corresponds to the JSON property `desiredNetworkPerformanceConfig`
+        # @return [Google::Apis::ContainerV1::ClusterNetworkPerformanceConfig]
+        attr_accessor :desired_network_performance_config
+      
         # Collection of Compute Engine network tags that can be applied to a node's
         # underlying VM instance.
         # Corresponds to the JSON property `desiredNodePoolAutoConfigNetworkTags`
@@ -1626,6 +1669,7 @@ module Google
           @desired_mesh_certificates = args[:desired_mesh_certificates] if args.key?(:desired_mesh_certificates)
           @desired_monitoring_config = args[:desired_monitoring_config] if args.key?(:desired_monitoring_config)
           @desired_monitoring_service = args[:desired_monitoring_service] if args.key?(:desired_monitoring_service)
+          @desired_network_performance_config = args[:desired_network_performance_config] if args.key?(:desired_network_performance_config)
           @desired_node_pool_auto_config_network_tags = args[:desired_node_pool_auto_config_network_tags] if args.key?(:desired_node_pool_auto_config_network_tags)
           @desired_node_pool_autoscaling = args[:desired_node_pool_autoscaling] if args.key?(:desired_node_pool_autoscaling)
           @desired_node_pool_id = args[:desired_node_pool_id] if args.key?(:desired_node_pool_id)
@@ -2254,6 +2298,26 @@ module Google
         end
       end
       
+      # Configuration for the Cloud Storage Fuse CSI driver.
+      class GcsFuseCsiDriverConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether the Cloud Storage Fuse CSI driver is enabled for this cluster.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
       # GetJSONWebKeysResponse is a valid JSON Web Key Set as specififed in rfc 7517
       class GetJsonWebKeysResponse
         include Google::Apis::Core::Hashable
@@ -2500,6 +2564,13 @@ module Google
         attr_accessor :create_subnetwork
         alias_method :create_subnetwork?, :create_subnetwork
       
+        # Output only. [Output only] The utilization of the cluster default IPv4 range
+        # for pod. The ratio is Usage/[Total number of IPs in the secondary range],
+        # Usage=numNodes*numZones*podIPsPerNode.
+        # Corresponds to the JSON property `defaultPodIpv4RangeUtilization`
+        # @return [Float]
+        attr_accessor :default_pod_ipv4_range_utilization
+      
         # The ipv6 access type (internal or external) when create_subnetwork is true
         # Corresponds to the JSON property `ipv6AccessType`
         # @return [String]
@@ -2613,6 +2684,7 @@ module Google
           @cluster_ipv4_cidr_block = args[:cluster_ipv4_cidr_block] if args.key?(:cluster_ipv4_cidr_block)
           @cluster_secondary_range_name = args[:cluster_secondary_range_name] if args.key?(:cluster_secondary_range_name)
           @create_subnetwork = args[:create_subnetwork] if args.key?(:create_subnetwork)
+          @default_pod_ipv4_range_utilization = args[:default_pod_ipv4_range_utilization] if args.key?(:default_pod_ipv4_range_utilization)
           @ipv6_access_type = args[:ipv6_access_type] if args.key?(:ipv6_access_type)
           @node_ipv4_cidr = args[:node_ipv4_cidr] if args.key?(:node_ipv4_cidr)
           @node_ipv4_cidr_block = args[:node_ipv4_cidr_block] if args.key?(:node_ipv4_cidr_block)
@@ -3391,6 +3463,11 @@ module Google
         # @return [String]
         attr_accessor :network
       
+        # Configuration of network bandwidth tiers
+        # Corresponds to the JSON property `networkPerformanceConfig`
+        # @return [Google::Apis::ContainerV1::ClusterNetworkPerformanceConfig]
+        attr_accessor :network_performance_config
+      
         # The desired state of IPv6 connectivity to Google Services. By default, no
         # private IPv6 access to or from Google Services (all access will be via IPv4)
         # Corresponds to the JSON property `privateIpv6GoogleAccess`
@@ -3423,6 +3500,7 @@ module Google
           @enable_l4ilb_subsetting = args[:enable_l4ilb_subsetting] if args.key?(:enable_l4ilb_subsetting)
           @gateway_api_config = args[:gateway_api_config] if args.key?(:gateway_api_config)
           @network = args[:network] if args.key?(:network)
+          @network_performance_config = args[:network_performance_config] if args.key?(:network_performance_config)
           @private_ipv6_google_access = args[:private_ipv6_google_access] if args.key?(:private_ipv6_google_access)
           @service_external_ips_config = args[:service_external_ips_config] if args.key?(:service_external_ips_config)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
@@ -3900,6 +3978,12 @@ module Google
         # @return [String]
         attr_accessor :cpu_manager_policy
       
+        # Enable or disable Kubelet read only port.
+        # Corresponds to the JSON property `insecureKubeletReadonlyPortEnabled`
+        # @return [Boolean]
+        attr_accessor :insecure_kubelet_readonly_port_enabled
+        alias_method :insecure_kubelet_readonly_port_enabled?, :insecure_kubelet_readonly_port_enabled
+      
         # Set the Pod PID limits. See https://kubernetes.io/docs/concepts/policy/pid-
         # limiting/#pod-pid-limits Controls the maximum number of processes allowed to
         # run in a pod. The value must be greater than or equal to 1024 and less than
@@ -3917,6 +4001,7 @@ module Google
           @cpu_cfs_quota = args[:cpu_cfs_quota] if args.key?(:cpu_cfs_quota)
           @cpu_cfs_quota_period = args[:cpu_cfs_quota_period] if args.key?(:cpu_cfs_quota_period)
           @cpu_manager_policy = args[:cpu_manager_policy] if args.key?(:cpu_manager_policy)
+          @insecure_kubelet_readonly_port_enabled = args[:insecure_kubelet_readonly_port_enabled] if args.key?(:insecure_kubelet_readonly_port_enabled)
           @pod_pids_limit = args[:pod_pids_limit] if args.key?(:pod_pids_limit)
         end
       end
@@ -4025,6 +4110,13 @@ module Google
         # @return [String]
         attr_accessor :pod_ipv4_cidr_block
       
+        # Output only. [Output only] The utilization of the IPv4 range for pod. The
+        # ratio is Usage/[Total number of IPs in the secondary range], Usage=numNodes*
+        # numZones*podIPsPerNode.
+        # Corresponds to the JSON property `podIpv4RangeUtilization`
+        # @return [Float]
+        attr_accessor :pod_ipv4_range_utilization
+      
         # The ID of the secondary range for pod IPs. If `create_pod_range` is true, this
         # ID is used for the new range. If `create_pod_range` is false, uses an existing
         # secondary range with this ID. Only applicable if `ip_allocation_policy.
@@ -4045,6 +4137,7 @@ module Google
           @network_performance_config = args[:network_performance_config] if args.key?(:network_performance_config)
           @pod_cidr_overprovision_config = args[:pod_cidr_overprovision_config] if args.key?(:pod_cidr_overprovision_config)
           @pod_ipv4_cidr_block = args[:pod_ipv4_cidr_block] if args.key?(:pod_ipv4_cidr_block)
+          @pod_ipv4_range_utilization = args[:pod_ipv4_range_utilization] if args.key?(:pod_ipv4_range_utilization)
           @pod_range = args[:pod_range] if args.key?(:pod_range)
         end
       end
@@ -4764,6 +4857,31 @@ module Google
           @enabled = args[:enabled] if args.key?(:enabled)
           @filter = args[:filter] if args.key?(:filter)
           @topic = args[:topic] if args.key?(:topic)
+        end
+      end
+      
+      # RangeInfo contains the range name and the range utilization by this cluster.
+      class RangeInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. [Output only] Name of a range.
+        # Corresponds to the JSON property `rangeName`
+        # @return [String]
+        attr_accessor :range_name
+      
+        # Output only. [Output only] The utilization of the range.
+        # Corresponds to the JSON property `utilization`
+        # @return [Float]
+        attr_accessor :utilization
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @range_name = args[:range_name] if args.key?(:range_name)
+          @utilization = args[:utilization] if args.key?(:utilization)
         end
       end
       
