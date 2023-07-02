@@ -2920,6 +2920,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AssistantPfrDeviceRdMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AssistantPfrSmartHomeIntentMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AssistantPrefulfillmentRankerPrefulfillmentSignals
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -13240,6 +13252,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ShoppingWebentityShoppingAnnotationProductImage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ShoppingWebentityShoppingAnnotationProductRating
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -15921,6 +15939,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :app_unique_id, as: 'appUniqueId'
+          property :contact_info_source, as: 'contactInfoSource'
           property :display_app_unique_id, as: 'displayAppUniqueId'
           property :label, as: 'label'
           property :mimetype, as: 'mimetype'
@@ -16070,8 +16089,6 @@ module Google
       class AppsPeopleOzExternalMergedpeopleapiConnectionReminder
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :contact_prompt_settings, as: 'contactPromptSettings', class: Google::Apis::ContentwarehouseV1::SocialGraphApiProtoContactPromptSettings, decorator: Google::Apis::ContentwarehouseV1::SocialGraphApiProtoContactPromptSettings::Representation
-      
           property :metadata, as: 'metadata', class: Google::Apis::ContentwarehouseV1::AppsPeopleOzExternalMergedpeopleapiPersonFieldMetadata, decorator: Google::Apis::ContentwarehouseV1::AppsPeopleOzExternalMergedpeopleapiPersonFieldMetadata::Representation
       
           collection :prompt, as: 'prompt', class: Google::Apis::ContentwarehouseV1::SocialGraphApiProtoPrompt, decorator: Google::Apis::ContentwarehouseV1::SocialGraphApiProtoPrompt::Representation
@@ -18269,6 +18286,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :device_id, as: 'deviceId', class: Google::Apis::ContentwarehouseV1::AssistantApiCoreTypesDeviceId, decorator: Google::Apis::ContentwarehouseV1::AssistantApiCoreTypesDeviceId::Representation
       
+          property :legacy_surface_type, as: 'legacySurfaceType'
           property :surface_type, as: 'surfaceType'
           property :surface_version, as: 'surfaceVersion', class: Google::Apis::ContentwarehouseV1::AssistantApiCoreTypesGovernedSurfaceVersion, decorator: Google::Apis::ContentwarehouseV1::AssistantApiCoreTypesGovernedSurfaceVersion::Representation
       
@@ -21014,6 +21032,29 @@ module Google
         end
       end
       
+      class AssistantPfrDeviceRdMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_name, as: 'deviceName'
+          collection :device_types, as: 'deviceTypes'
+          property :effective_arg_span_length, as: 'effectiveArgSpanLength'
+          property :has_ambiguous_resolutions, as: 'hasAmbiguousResolutions'
+          property :has_resolved_device_id, as: 'hasResolvedDeviceId'
+          property :room_name, as: 'roomName'
+        end
+      end
+      
+      class AssistantPfrSmartHomeIntentMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :device_rd_metadata, as: 'deviceRdMetadata', class: Google::Apis::ContentwarehouseV1::AssistantPfrDeviceRdMetadata, decorator: Google::Apis::ContentwarehouseV1::AssistantPfrDeviceRdMetadata::Representation
+      
+          property :intent_name, as: 'intentName'
+          property :is_exact_match, as: 'isExactMatch'
+          property :is_grounded, as: 'isGrounded'
+        end
+      end
+      
       class AssistantPrefulfillmentRankerPrefulfillmentSignals
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -21038,8 +21079,10 @@ module Google
           property :intent_name_pauis, as: 'intentNamePauis'
           property :is_feasible, as: 'isFeasible'
           property :is_fully_grounded, as: 'isFullyGrounded'
+          property :is_high_confidence_podcast_intent, as: 'isHighConfidencePodcastIntent'
           property :is_media_control_intent, as: 'isMediaControlIntent'
           property :is_play_generic_music, as: 'isPlayGenericMusic'
+          property :is_podcast_generic_intent, as: 'isPodcastGenericIntent'
           property :is_podcast_intent, as: 'isPodcastIntent'
           property :is_sage_intent, as: 'isSageIntent'
           property :is_tvm_intent, as: 'isTvmIntent'
@@ -21065,6 +21108,8 @@ module Google
           property :predicted_intent_confidence, as: 'predictedIntentConfidence'
           property :ranker_name, as: 'rankerName'
           property :search_dispatch, as: 'searchDispatch'
+          property :smarthome_intent_metadata, as: 'smarthomeIntentMetadata', class: Google::Apis::ContentwarehouseV1::AssistantPfrSmartHomeIntentMetadata, decorator: Google::Apis::ContentwarehouseV1::AssistantPfrSmartHomeIntentMetadata::Representation
+      
           property :sub_intent_type, as: 'subIntentType'
           property :top_hypothesis_confidence, as: 'topHypothesisConfidence'
           property :vertical_confidence_score, as: 'verticalConfidenceScore'
@@ -22777,6 +22822,7 @@ module Google
           property :encoding_quality, as: 'encodingQuality'
           property :encoding_type, as: 'encodingType'
           property :height, as: 'height'
+          property :image_blob_id, as: 'imageBlobId'
           property :image_bytes, :base64 => true, as: 'imageBytes'
           property :image_string, as: 'imageString'
           property :width, as: 'width'
@@ -26694,6 +26740,8 @@ module Google
           property :delete_time, as: 'deleteTime'
           property :display_name, as: 'displayName'
           property :document_is_folder, as: 'documentIsFolder'
+          property :document_is_legal_hold_folder, as: 'documentIsLegalHoldFolder'
+          property :document_is_retention_folder, as: 'documentIsRetentionFolder'
           property :document_name, as: 'documentName'
           property :snippet, as: 'snippet'
           property :update_time, as: 'updateTime'
@@ -40391,6 +40439,8 @@ module Google
           property :brand_entity_id, :numeric_string => true, as: 'brandEntityId'
           property :catalog_id, :numeric_string => true, as: 'catalogId'
           property :global_product_cluster_id, :numeric_string => true, as: 'globalProductClusterId'
+          collection :images, as: 'images', class: Google::Apis::ContentwarehouseV1::ShoppingWebentityShoppingAnnotationProductImage, decorator: Google::Apis::ContentwarehouseV1::ShoppingWebentityShoppingAnnotationProductImage::Representation
+      
           property :locale, as: 'locale', class: Google::Apis::ContentwarehouseV1::QualityShoppingShoppingAttachmentLocale, decorator: Google::Apis::ContentwarehouseV1::QualityShoppingShoppingAttachmentLocale::Representation
       
           collection :moka_facet, as: 'mokaFacet', class: Google::Apis::ContentwarehouseV1::QualityShoppingShoppingAttachmentMokaFacetValue, decorator: Google::Apis::ContentwarehouseV1::QualityShoppingShoppingAttachmentMokaFacetValue::Representation
@@ -43062,6 +43112,7 @@ module Google
       
           property :version_embedding_fields_hash, :numeric_string => true, as: 'versionEmbeddingFieldsHash'
           collection :version_embedding_vector, as: 'versionEmbeddingVector'
+          property :versions_simhash, :numeric_string => true, as: 'versionsSimhash'
         end
       end
       
@@ -44090,6 +44141,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :availability, as: 'availability'
+        end
+      end
+      
+      class ShoppingWebentityShoppingAnnotationProductImage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :image_docid, :numeric_string => true, as: 'imageDocid'
+          property :product_image_type, as: 'productImageType'
         end
       end
       
@@ -48490,6 +48549,7 @@ module Google
           property :entitlement_id, as: 'entitlementId'
           property :price_in_micros, :numeric_string => true, as: 'priceInMicros'
           property :super_vod_item_id, as: 'superVodItemId'
+          property :transaction_id, as: 'transactionId'
           property :version, as: 'version'
         end
       end
