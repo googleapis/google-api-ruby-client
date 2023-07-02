@@ -10982,6 +10982,7 @@ module Google
           property :abandoning, as: 'abandoning'
           property :creating, as: 'creating'
           property :creating_atomically, as: 'creatingAtomically'
+          property :creating_in_bulk, as: 'creatingInBulk'
           property :creating_without_retries, as: 'creatingWithoutRetries'
           property :deleting, as: 'deleting'
           property :none, as: 'none'
@@ -11326,6 +11327,7 @@ module Google
       class InstanceGroupManagersDeleteInstancesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instance_names, as: 'instanceNames'
           collection :instances, as: 'instances'
           property :skip_instances_on_validation_error, as: 'skipInstancesOnValidationError'
         end
