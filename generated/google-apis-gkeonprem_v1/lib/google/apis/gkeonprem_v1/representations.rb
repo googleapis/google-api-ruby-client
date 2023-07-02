@@ -514,6 +514,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Metric
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NodeTaint
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -527,6 +533,18 @@ module Google
       end
       
       class OperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OperationProgress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OperationStage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1658,6 +1676,16 @@ module Google
         end
       end
       
+      class Metric
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :double_value, as: 'doubleValue'
+          property :int_value, :numeric_string => true, as: 'intValue'
+          property :metric, as: 'metric'
+          property :string_value, as: 'stringValue'
+        end
+      end
+      
       class NodeTaint
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1686,11 +1714,33 @@ module Google
           property :control_plane_disconnected, as: 'controlPlaneDisconnected'
           property :create_time, as: 'createTime'
           property :end_time, as: 'endTime'
+          property :progress, as: 'progress', class: Google::Apis::GkeonpremV1::OperationProgress, decorator: Google::Apis::GkeonpremV1::OperationProgress::Representation
+      
           property :requested_cancellation, as: 'requestedCancellation'
           property :status_message, as: 'statusMessage'
           property :target, as: 'target'
           property :type, as: 'type'
           property :verb, as: 'verb'
+        end
+      end
+      
+      class OperationProgress
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :stages, as: 'stages', class: Google::Apis::GkeonpremV1::OperationStage, decorator: Google::Apis::GkeonpremV1::OperationStage::Representation
+      
+        end
+      end
+      
+      class OperationStage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          collection :metrics, as: 'metrics', class: Google::Apis::GkeonpremV1::Metric, decorator: Google::Apis::GkeonpremV1::Metric::Representation
+      
+          property :stage, as: 'stage'
+          property :start_time, as: 'startTime'
+          property :state, as: 'state'
         end
       end
       
