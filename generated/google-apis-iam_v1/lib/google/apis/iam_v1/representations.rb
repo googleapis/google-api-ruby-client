@@ -142,6 +142,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleIamAdminV1WorkforcePoolProviderOidcClientSecret
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -643,15 +655,34 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :client_id, as: 'clientId'
+          property :client_secret, as: 'clientSecret', class: Google::Apis::IamV1::GoogleIamAdminV1WorkforcePoolProviderOidcClientSecret, decorator: Google::Apis::IamV1::GoogleIamAdminV1WorkforcePoolProviderOidcClientSecret::Representation
+      
           property :issuer_uri, as: 'issuerUri'
           property :web_sso_config, as: 'webSsoConfig', class: Google::Apis::IamV1::GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig, decorator: Google::Apis::IamV1::GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig::Representation
       
         end
       end
       
+      class GoogleIamAdminV1WorkforcePoolProviderOidcClientSecret
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :value, as: 'value', class: Google::Apis::IamV1::GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValue, decorator: Google::Apis::IamV1::GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValue::Representation
+      
+        end
+      end
+      
+      class GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :plain_text, as: 'plainText'
+          property :thumbprint, as: 'thumbprint'
+        end
+      end
+      
       class GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :additional_scopes, as: 'additionalScopes'
           property :assertion_claims_behavior, as: 'assertionClaimsBehavior'
           property :response_type, as: 'responseType'
         end
@@ -1139,6 +1170,7 @@ module Google
           property :description, as: 'description'
           property :disabled, as: 'disabled'
           property :display_name, as: 'displayName'
+          property :identity_mode, as: 'identityMode'
           property :name, as: 'name'
           property :state, as: 'state'
         end

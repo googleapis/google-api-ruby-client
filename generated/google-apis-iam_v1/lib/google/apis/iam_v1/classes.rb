@@ -571,6 +571,11 @@ module Google
         # @return [String]
         attr_accessor :client_id
       
+        # Representation of a client secret configured for the OIDC provider.
+        # Corresponds to the JSON property `clientSecret`
+        # @return [Google::Apis::IamV1::GoogleIamAdminV1WorkforcePoolProviderOidcClientSecret]
+        attr_accessor :client_secret
+      
         # Required. The OIDC issuer URI. Must be a valid URI using the 'https' scheme.
         # Corresponds to the JSON property `issuerUri`
         # @return [String]
@@ -588,14 +593,69 @@ module Google
         # Update properties of this object
         def update!(**args)
           @client_id = args[:client_id] if args.key?(:client_id)
+          @client_secret = args[:client_secret] if args.key?(:client_secret)
           @issuer_uri = args[:issuer_uri] if args.key?(:issuer_uri)
           @web_sso_config = args[:web_sso_config] if args.key?(:web_sso_config)
+        end
+      end
+      
+      # Representation of a client secret configured for the OIDC provider.
+      class GoogleIamAdminV1WorkforcePoolProviderOidcClientSecret
+        include Google::Apis::Core::Hashable
+      
+        # Representation of the value of the client secret.
+        # Corresponds to the JSON property `value`
+        # @return [Google::Apis::IamV1::GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValue]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Representation of the value of the client secret.
+      class GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValue
+        include Google::Apis::Core::Hashable
+      
+        # Input only. The plain text of the client secret value. For security reasons,
+        # this field is only used for input and will never be populated in any response.
+        # Corresponds to the JSON property `plainText`
+        # @return [String]
+        attr_accessor :plain_text
+      
+        # Output only. A thumbprint to represent the current client secret value.
+        # Corresponds to the JSON property `thumbprint`
+        # @return [String]
+        attr_accessor :thumbprint
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @plain_text = args[:plain_text] if args.key?(:plain_text)
+          @thumbprint = args[:thumbprint] if args.key?(:thumbprint)
         end
       end
       
       # Configuration for web single sign-on for the OIDC provider.
       class GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig
         include Google::Apis::Core::Hashable
+      
+        # Additional scopes to request for in the OIDC authentication request on top of
+        # scopes requested by default. By default, the `openid`, `profile` and `email`
+        # scopes that are supported by the identity provider are requested. Each
+        # additional scope may be at most 256 characters. A maximum of 10 additional
+        # scopes may be configured.
+        # Corresponds to the JSON property `additionalScopes`
+        # @return [Array<String>]
+        attr_accessor :additional_scopes
       
         # Required. The behavior for how OIDC Claims are included in the `assertion`
         # object used for attribute mapping and attribute condition.
@@ -615,6 +675,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @additional_scopes = args[:additional_scopes] if args.key?(:additional_scopes)
           @assertion_claims_behavior = args[:assertion_claims_behavior] if args.key?(:assertion_claims_behavior)
           @response_type = args[:response_type] if args.key?(:response_type)
         end
@@ -1588,11 +1649,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :included_permissions
       
-        # The name of the role. When Role is used in CreateRole, the role name must not
-        # be set. When Role is used in output and other input such as UpdateRole, the
-        # role name is the complete path, e.g., roles/logging.viewer for predefined
-        # roles and organizations/`ORGANIZATION_ID`/roles/logging.viewer for custom
-        # roles.
+        # The name of the role. When `Role` is used in `CreateRole`, the role name must
+        # not be set. When `Role` is used in output and other input such as `UpdateRole`,
+        # the role name is the complete path. For example, `roles/logging.viewer` for
+        # predefined roles, `organizations/`ORGANIZATION_ID`/roles/my-role` for
+        # organization-level custom roles, and `projects/`PROJECT_ID`/roles/my-role` for
+        # project-level custom roles.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2510,6 +2572,11 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Immutable. The identity mode of the pool.
+        # Corresponds to the JSON property `identityMode`
+        # @return [String]
+        attr_accessor :identity_mode
+      
         # Output only. The resource name of the pool.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -2529,6 +2596,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @disabled = args[:disabled] if args.key?(:disabled)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @identity_mode = args[:identity_mode] if args.key?(:identity_mode)
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
         end
