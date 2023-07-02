@@ -412,6 +412,28 @@ module Google
         end
       end
       
+      # Change stream configuration.
+      class ChangeStreamConfig
+        include Google::Apis::Core::Hashable
+      
+        # How long the change stream should be retained. Change stream data older than
+        # the retention period will not be returned when reading the change stream from
+        # the table. Values must be at least 1 day and at most 7 days, and will be
+        # truncated to microsecond granularity.
+        # Corresponds to the JSON property `retentionPeriod`
+        # @return [String]
+        attr_accessor :retention_period
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @retention_period = args[:retention_period] if args.key?(:retention_period)
+        end
+      end
+      
       # Request message for google.bigtable.admin.v2.BigtableTableAdmin.
       # CheckConsistency
       class CheckConsistencyRequest
@@ -2328,6 +2350,11 @@ module Google
       class Table
         include Google::Apis::Core::Hashable
       
+        # Change stream configuration.
+        # Corresponds to the JSON property `changeStreamConfig`
+        # @return [Google::Apis::BigtableadminV2::ChangeStreamConfig]
+        attr_accessor :change_stream_config
+      
         # Output only. Map from cluster ID to per-cluster table state. If it could not
         # be determined whether or not the table has data in a particular cluster (for
         # example, if its zone is unavailable), then there will be an entry for the
@@ -2388,6 +2415,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @change_stream_config = args[:change_stream_config] if args.key?(:change_stream_config)
           @cluster_states = args[:cluster_states] if args.key?(:cluster_states)
           @column_families = args[:column_families] if args.key?(:column_families)
           @deletion_protection = args[:deletion_protection] if args.key?(:deletion_protection)
