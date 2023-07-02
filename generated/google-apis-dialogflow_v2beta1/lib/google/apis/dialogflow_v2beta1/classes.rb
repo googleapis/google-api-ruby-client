@@ -11968,7 +11968,8 @@ module Google
         attr_accessor :conversation_process_config
       
         # Automatically iterates all participants and tries to compile suggestions.
-        # Supported features: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST.
+        # Supported features: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST,
+        # ENTITY_EXTRACTION.
         # Corresponds to the JSON property `enableEventBasedSuggestion`
         # @return [Boolean]
         attr_accessor :enable_event_based_suggestion
@@ -12031,7 +12032,8 @@ module Google
         # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings]
         attr_accessor :context_filter_settings
       
-        # Dialogflow source setting. Supported feature: DIALOGFLOW_ASSIST.
+        # Dialogflow source setting. Supported feature: DIALOGFLOW_ASSIST,
+        # ENTITY_EXTRACTION.
         # Corresponds to the JSON property `dialogflowQuerySource`
         # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource]
         attr_accessor :dialogflow_query_source
@@ -12103,7 +12105,8 @@ module Google
         end
       end
       
-      # Dialogflow source setting. Supported feature: DIALOGFLOW_ASSIST.
+      # Dialogflow source setting. Supported feature: DIALOGFLOW_ASSIST,
+      # ENTITY_EXTRACTION.
       class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource
         include Google::Apis::Core::Hashable
       
