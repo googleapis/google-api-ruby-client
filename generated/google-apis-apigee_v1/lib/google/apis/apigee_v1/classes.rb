@@ -115,6 +115,33 @@ module Google
         end
       end
       
+      # APIProductAssociation has the API product and its administrative state
+      # association.
+      class GoogleCloudApigeeV1ApiProductAssociation
+        include Google::Apis::Core::Hashable
+      
+        # API product to be associated with the credential.
+        # Corresponds to the JSON property `apiproduct`
+        # @return [String]
+        attr_accessor :apiproduct
+      
+        # The API product credential associated status. Valid values are `approved` or `
+        # revoked`.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @apiproduct = args[:apiproduct] if args.key?(:apiproduct)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
       # 
       class GoogleCloudApigeeV1Access
         include Google::Apis::Core::Hashable
@@ -995,6 +1022,11 @@ module Google
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiProductRef>]
         attr_accessor :api_products
       
+        # Name of the AppGroup
+        # Corresponds to the JSON property `appGroup`
+        # @return [String]
+        attr_accessor :app_group
+      
         # ID of the app.
         # Corresponds to the JSON property `appId`
         # @return [String]
@@ -1026,6 +1058,11 @@ module Google
         # Corresponds to the JSON property `credentials`
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1Credential>]
         attr_accessor :credentials
+      
+        # Email of the developer.
+        # Corresponds to the JSON property `developerEmail`
+        # @return [String]
+        attr_accessor :developer_email
       
         # ID of the developer.
         # Corresponds to the JSON property `developerId`
@@ -1067,16 +1104,263 @@ module Google
         # Update properties of this object
         def update!(**args)
           @api_products = args[:api_products] if args.key?(:api_products)
+          @app_group = args[:app_group] if args.key?(:app_group)
           @app_id = args[:app_id] if args.key?(:app_id)
           @attributes = args[:attributes] if args.key?(:attributes)
           @callback_url = args[:callback_url] if args.key?(:callback_url)
           @company_name = args[:company_name] if args.key?(:company_name)
           @created_at = args[:created_at] if args.key?(:created_at)
           @credentials = args[:credentials] if args.key?(:credentials)
+          @developer_email = args[:developer_email] if args.key?(:developer_email)
           @developer_id = args[:developer_id] if args.key?(:developer_id)
           @key_expires_in = args[:key_expires_in] if args.key?(:key_expires_in)
           @last_modified_at = args[:last_modified_at] if args.key?(:last_modified_at)
           @name = args[:name] if args.key?(:name)
+          @scopes = args[:scopes] if args.key?(:scopes)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # AppGroup contains the request/response fields representing the logical
+      # grouping of apps. Note that appgroup_id, create_time and update_time cannot be
+      # changed by the user, and gets updated by the system. The name and the
+      # organization once provided cannot be edited subsequently.
+      class GoogleCloudApigeeV1AppGroup
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Internal identifier that cannot be edited
+        # Corresponds to the JSON property `appGroupId`
+        # @return [String]
+        attr_accessor :app_group_id
+      
+        # A list of attributes
+        # Corresponds to the JSON property `attributes`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute>]
+        attr_accessor :attributes
+      
+        # channel identifier identifies the owner maintaing this grouping.
+        # Corresponds to the JSON property `channelId`
+        # @return [String]
+        attr_accessor :channel_id
+      
+        # A reference to the associated storefront/marketplace.
+        # Corresponds to the JSON property `channelUri`
+        # @return [String]
+        attr_accessor :channel_uri
+      
+        # Output only. Created time as milliseconds since epoch.
+        # Corresponds to the JSON property `createdAt`
+        # @return [Fixnum]
+        attr_accessor :created_at
+      
+        # app group name displayed in the UI
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. Modified time as milliseconds since epoch.
+        # Corresponds to the JSON property `lastModifiedAt`
+        # @return [Fixnum]
+        attr_accessor :last_modified_at
+      
+        # Immutable. Name of the AppGroup. Characters you can use in the name are
+        # restricted to: A-Z0-9._\-$ %.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Immutable. the org the app group is created
+        # Corresponds to the JSON property `organization`
+        # @return [String]
+        attr_accessor :organization
+      
+        # Valid values are `active` or `inactive`. Note that the status of the AppGroup
+        # should be updated via UpdateAppGroupRequest by setting the action as `active`
+        # or `inactive`.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_group_id = args[:app_group_id] if args.key?(:app_group_id)
+          @attributes = args[:attributes] if args.key?(:attributes)
+          @channel_id = args[:channel_id] if args.key?(:channel_id)
+          @channel_uri = args[:channel_uri] if args.key?(:channel_uri)
+          @created_at = args[:created_at] if args.key?(:created_at)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @last_modified_at = args[:last_modified_at] if args.key?(:last_modified_at)
+          @name = args[:name] if args.key?(:name)
+          @organization = args[:organization] if args.key?(:organization)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # Response for [GetAppGroupApp].[AppGroupApps.GetAppGroupApp], [
+      # CreateAppGroupAppRequest].[AppGroupApp.CreateAppGroupAppRequest] and [
+      # DeleteAppGroupApp].[AppGroupApp.DeleteAppGroupApp]
+      class GoogleCloudApigeeV1AppGroupApp
+        include Google::Apis::Core::Hashable
+      
+        # List of API products associated with the AppGroup app.
+        # Corresponds to the JSON property `apiProducts`
+        # @return [Array<String>]
+        attr_accessor :api_products
+      
+        # Immutable. Name of the parent AppGroup whose resource name format is of syntax
+        # (organizations/*/appgroups/*).
+        # Corresponds to the JSON property `appGroup`
+        # @return [String]
+        attr_accessor :app_group
+      
+        # Immutable. ID of the AppGroup app.
+        # Corresponds to the JSON property `appId`
+        # @return [String]
+        attr_accessor :app_id
+      
+        # List of attributes for the AppGroup app.
+        # Corresponds to the JSON property `attributes`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute>]
+        attr_accessor :attributes
+      
+        # Callback URL used by OAuth 2.0 authorization servers to communicate
+        # authorization codes back to AppGroup apps.
+        # Corresponds to the JSON property `callbackUrl`
+        # @return [String]
+        attr_accessor :callback_url
+      
+        # Output only. Time the AppGroup app was created in milliseconds since epoch.
+        # Corresponds to the JSON property `createdAt`
+        # @return [Fixnum]
+        attr_accessor :created_at
+      
+        # Output only. Set of credentials for the AppGroup app consisting of the
+        # consumer key/secret pairs associated with the API products.
+        # Corresponds to the JSON property `credentials`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1Credential>]
+        attr_accessor :credentials
+      
+        # Immutable. Expiration time, in seconds, for the consumer key that is generated
+        # for the AppGroup app. If not set or left to the default value of `-1`, the API
+        # key never expires. The expiration time can't be updated after it is set.
+        # Corresponds to the JSON property `keyExpiresIn`
+        # @return [Fixnum]
+        attr_accessor :key_expires_in
+      
+        # Output only. Time the AppGroup app was modified in milliseconds since epoch.
+        # Corresponds to the JSON property `lastModifiedAt`
+        # @return [Fixnum]
+        attr_accessor :last_modified_at
+      
+        # Immutable. Name of the AppGroup app whose resource name format is of syntax (
+        # organizations/*/appgroups/*/apps/*).
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Scopes to apply to the AppGroup app. The specified scopes must already exist
+        # for the API product that you associate with the AppGroup app.
+        # Corresponds to the JSON property `scopes`
+        # @return [Array<String>]
+        attr_accessor :scopes
+      
+        # Status of the App. Valid values include `approved` or `revoked`.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_products = args[:api_products] if args.key?(:api_products)
+          @app_group = args[:app_group] if args.key?(:app_group)
+          @app_id = args[:app_id] if args.key?(:app_id)
+          @attributes = args[:attributes] if args.key?(:attributes)
+          @callback_url = args[:callback_url] if args.key?(:callback_url)
+          @created_at = args[:created_at] if args.key?(:created_at)
+          @credentials = args[:credentials] if args.key?(:credentials)
+          @key_expires_in = args[:key_expires_in] if args.key?(:key_expires_in)
+          @last_modified_at = args[:last_modified_at] if args.key?(:last_modified_at)
+          @name = args[:name] if args.key?(:name)
+          @scopes = args[:scopes] if args.key?(:scopes)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # AppGroupAppKey contains all the information associated with the credentials.
+      class GoogleCloudApigeeV1AppGroupAppKey
+        include Google::Apis::Core::Hashable
+      
+        # Output only. List of API products and its status for which the credential can
+        # be used. **Note**: Use UpdateAppGroupAppKeyApiProductRequest API to make the
+        # association after the consumer key and secret are created.
+        # Corresponds to the JSON property `apiProducts`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiProductAssociation>]
+        attr_accessor :api_products
+      
+        # List of attributes associated with the credential.
+        # Corresponds to the JSON property `attributes`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute>]
+        attr_accessor :attributes
+      
+        # Immutable. Consumer key.
+        # Corresponds to the JSON property `consumerKey`
+        # @return [String]
+        attr_accessor :consumer_key
+      
+        # Secret key.
+        # Corresponds to the JSON property `consumerSecret`
+        # @return [String]
+        attr_accessor :consumer_secret
+      
+        # Output only. Time the AppGroup app expires in milliseconds since epoch.
+        # Corresponds to the JSON property `expiresAt`
+        # @return [Fixnum]
+        attr_accessor :expires_at
+      
+        # Immutable. Expiration time, in seconds, for the consumer key. If not set or
+        # left to the default value of `-1`, the API key never expires. The expiration
+        # time can't be updated after it is set.
+        # Corresponds to the JSON property `expiresInSeconds`
+        # @return [Fixnum]
+        attr_accessor :expires_in_seconds
+      
+        # Output only. Time the AppGroup app was created in milliseconds since epoch.
+        # Corresponds to the JSON property `issuedAt`
+        # @return [Fixnum]
+        attr_accessor :issued_at
+      
+        # Scopes to apply to the app. The specified scope names must already be defined
+        # for the API product that you associate with the app.
+        # Corresponds to the JSON property `scopes`
+        # @return [Array<String>]
+        attr_accessor :scopes
+      
+        # Status of the credential. Valid values include `approved` or `revoked`.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_products = args[:api_products] if args.key?(:api_products)
+          @attributes = args[:attributes] if args.key?(:attributes)
+          @consumer_key = args[:consumer_key] if args.key?(:consumer_key)
+          @consumer_secret = args[:consumer_secret] if args.key?(:consumer_secret)
+          @expires_at = args[:expires_at] if args.key?(:expires_at)
+          @expires_in_seconds = args[:expires_in_seconds] if args.key?(:expires_in_seconds)
+          @issued_at = args[:issued_at] if args.key?(:issued_at)
           @scopes = args[:scopes] if args.key?(:scopes)
           @status = args[:status] if args.key?(:status)
         end
@@ -4709,6 +4993,65 @@ module Google
         end
       end
       
+      # Response for ListAppGroupApps
+      class GoogleCloudApigeeV1ListAppGroupAppsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of AppGroup apps and their credentials.
+        # Corresponds to the JSON property `appGroupApps`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupApp>]
+        attr_accessor :app_group_apps
+      
+        # Token that can be sent as `next_page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_group_apps = args[:app_group_apps] if args.key?(:app_group_apps)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # ListAppGroupsResponse contains the 0 or more AppGroups, along with the
+      # optional page token and the total count of apps.
+      class GoogleCloudApigeeV1ListAppGroupsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of AppGroups.
+        # Corresponds to the JSON property `appGroups`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroup>]
+        attr_accessor :app_groups
+      
+        # Token that can be sent as `next_page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Total count of AppGroups.
+        # Corresponds to the JSON property `totalSize`
+        # @return [Fixnum]
+        attr_accessor :total_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_groups = args[:app_groups] if args.key?(:app_groups)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @total_size = args[:total_size] if args.key?(:total_size)
+        end
+      end
+      
       # 
       class GoogleCloudApigeeV1ListAppsResponse
         include Google::Apis::Core::Hashable
@@ -4718,6 +5061,17 @@ module Google
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1App>]
         attr_accessor :app
       
+        # Token that can be sent as `next_page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Total count of Apps.
+        # Corresponds to the JSON property `totalSize`
+        # @return [Fixnum]
+        attr_accessor :total_size
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4725,6 +5079,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @app = args[:app] if args.key?(:app)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @total_size = args[:total_size] if args.key?(:total_size)
         end
       end
       
@@ -6188,164 +6544,6 @@ module Google
         def update!(**args)
           @id = args[:id] if args.key?(:id)
           @results = args[:results] if args.key?(:results)
-        end
-      end
-      
-      # ProfileConfig defines a set of categories and policies which will be used to
-      # compute security score.
-      class GoogleCloudApigeeV1ProfileConfig
-        include Google::Apis::Core::Hashable
-      
-        # List of categories of profile config.
-        # Corresponds to the JSON property `categories`
-        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProfileConfigCategory>]
-        attr_accessor :categories
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @categories = args[:categories] if args.key?(:categories)
-        end
-      end
-      
-      # Checks for abuse, which includes any requests sent to the API for purposes
-      # other than what it is intended for, such as high volumes of requests, data
-      # scraping, and abuse related to authorization.
-      class GoogleCloudApigeeV1ProfileConfigAbuse
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # By default, following policies will be included: - JWS - JWT - OAuth -
-      # BasicAuth - APIKey
-      class GoogleCloudApigeeV1ProfileConfigAuthorization
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # Checks to see if you have CORS policy in place.
-      class GoogleCloudApigeeV1ProfileConfigCors
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # Advanced API Security provides security profile that scores the following
-      # categories.
-      class GoogleCloudApigeeV1ProfileConfigCategory
-        include Google::Apis::Core::Hashable
-      
-        # Checks for abuse, which includes any requests sent to the API for purposes
-        # other than what it is intended for, such as high volumes of requests, data
-        # scraping, and abuse related to authorization.
-        # Corresponds to the JSON property `abuse`
-        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProfileConfigAbuse]
-        attr_accessor :abuse
-      
-        # By default, following policies will be included: - JWS - JWT - OAuth -
-        # BasicAuth - APIKey
-        # Corresponds to the JSON property `authorization`
-        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProfileConfigAuthorization]
-        attr_accessor :authorization
-      
-        # Checks to see if you have CORS policy in place.
-        # Corresponds to the JSON property `cors`
-        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProfileConfigCors]
-        attr_accessor :cors
-      
-        # By default, following policies will be included: - OASValidation -
-        # SOAPMessageValidation
-        # Corresponds to the JSON property `mediation`
-        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProfileConfigMediation]
-        attr_accessor :mediation
-      
-        # Checks to see if you have configured mTLS for the target server.
-        # Corresponds to the JSON property `mtls`
-        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProfileConfigMtls]
-        attr_accessor :mtls
-      
-        # By default, following policies will be included: - XMLThreatProtection -
-        # JSONThreatProtection
-        # Corresponds to the JSON property `threat`
-        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProfileConfigThreat]
-        attr_accessor :threat
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @abuse = args[:abuse] if args.key?(:abuse)
-          @authorization = args[:authorization] if args.key?(:authorization)
-          @cors = args[:cors] if args.key?(:cors)
-          @mediation = args[:mediation] if args.key?(:mediation)
-          @mtls = args[:mtls] if args.key?(:mtls)
-          @threat = args[:threat] if args.key?(:threat)
-        end
-      end
-      
-      # Checks to see if you have configured mTLS for the target server.
-      class GoogleCloudApigeeV1ProfileConfigMtls
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # By default, following policies will be included: - OASValidation -
-      # SOAPMessageValidation
-      class GoogleCloudApigeeV1ProfileConfigMediation
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # By default, following policies will be included: - XMLThreatProtection -
-      # JSONThreatProtection
-      class GoogleCloudApigeeV1ProfileConfigThreat
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
         end
       end
       
@@ -8098,12 +8296,6 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # ProfileConfig defines a set of categories and policies which will be used to
-        # compute security score.
-        # Corresponds to the JSON property `profileConfig`
-        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProfileConfig]
-        attr_accessor :profile_config
-      
         # Output only. The time when revision was created.
         # Corresponds to the JSON property `revisionCreateTime`
         # @return [String]
@@ -8143,7 +8335,6 @@ module Google
           @max_score = args[:max_score] if args.key?(:max_score)
           @min_score = args[:min_score] if args.key?(:min_score)
           @name = args[:name] if args.key?(:name)
-          @profile_config = args[:profile_config] if args.key?(:profile_config)
           @revision_create_time = args[:revision_create_time] if args.key?(:revision_create_time)
           @revision_id = args[:revision_id] if args.key?(:revision_id)
           @revision_publish_time = args[:revision_publish_time] if args.key?(:revision_publish_time)
@@ -9403,6 +9594,41 @@ module Google
         def update!(**args)
           @sampler = args[:sampler] if args.key?(:sampler)
           @sampling_rate = args[:sampling_rate] if args.key?(:sampling_rate)
+        end
+      end
+      
+      # Request for UpdateAppGroupAppKey
+      class GoogleCloudApigeeV1UpdateAppGroupAppKeyRequest
+        include Google::Apis::Core::Hashable
+      
+        # Approve or revoke the consumer key by setting this value to `approve` or `
+        # revoke` respectively. The `Content-Type` header, if set, must be set to `
+        # application/octet-stream`, with empty body.
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # The list of API products that will be associated with the credential. This
+        # list will be appended to the existing list of associated API Products for this
+        # App Key. Duplicates will be ignored.
+        # Corresponds to the JSON property `apiProducts`
+        # @return [Array<String>]
+        attr_accessor :api_products
+      
+        # AppGroupAppKey contains all the information associated with the credentials.
+        # Corresponds to the JSON property `appGroupAppKey`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupAppKey]
+        attr_accessor :app_group_app_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @api_products = args[:api_products] if args.key?(:api_products)
+          @app_group_app_key = args[:app_group_app_key] if args.key?(:app_group_app_key)
         end
       end
       

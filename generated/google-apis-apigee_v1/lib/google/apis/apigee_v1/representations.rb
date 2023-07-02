@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1ApiProductAssociation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1Access
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -149,6 +155,24 @@ module Google
       end
       
       class GoogleCloudApigeeV1App
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1AppGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1AppGroupApp
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1AppGroupAppKey
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -652,6 +676,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1ListAppGroupAppsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1ListAppGroupsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1ListAppsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -929,54 +965,6 @@ module Google
       end
       
       class GoogleCloudApigeeV1Point
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudApigeeV1ProfileConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudApigeeV1ProfileConfigAbuse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudApigeeV1ProfileConfigAuthorization
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudApigeeV1ProfileConfigCors
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudApigeeV1ProfileConfigCategory
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudApigeeV1ProfileConfigMtls
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudApigeeV1ProfileConfigMediation
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudApigeeV1ProfileConfigThreat
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1396,6 +1384,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1UpdateAppGroupAppKeyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1UpdateError
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1520,6 +1514,14 @@ module Google
           property :content_type, as: 'contentType'
           property :data, :base64 => true, as: 'data'
           collection :extensions, as: 'extensions'
+        end
+      end
+      
+      class GoogleCloudApigeeV1ApiProductAssociation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :apiproduct, as: 'apiproduct'
+          property :status, as: 'status'
         end
       end
       
@@ -1743,6 +1745,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :api_products, as: 'apiProducts', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiProductRef, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiProductRef::Representation
       
+          property :app_group, as: 'appGroup'
           property :app_id, as: 'appId'
           collection :attributes, as: 'attributes', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute::Representation
       
@@ -1751,10 +1754,65 @@ module Google
           property :created_at, :numeric_string => true, as: 'createdAt'
           collection :credentials, as: 'credentials', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Credential, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Credential::Representation
       
+          property :developer_email, as: 'developerEmail'
           property :developer_id, as: 'developerId'
           property :key_expires_in, :numeric_string => true, as: 'keyExpiresIn'
           property :last_modified_at, :numeric_string => true, as: 'lastModifiedAt'
           property :name, as: 'name'
+          collection :scopes, as: 'scopes'
+          property :status, as: 'status'
+        end
+      end
+      
+      class GoogleCloudApigeeV1AppGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_group_id, as: 'appGroupId'
+          collection :attributes, as: 'attributes', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute::Representation
+      
+          property :channel_id, as: 'channelId'
+          property :channel_uri, as: 'channelUri'
+          property :created_at, :numeric_string => true, as: 'createdAt'
+          property :display_name, as: 'displayName'
+          property :last_modified_at, :numeric_string => true, as: 'lastModifiedAt'
+          property :name, as: 'name'
+          property :organization, as: 'organization'
+          property :status, as: 'status'
+        end
+      end
+      
+      class GoogleCloudApigeeV1AppGroupApp
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :api_products, as: 'apiProducts'
+          property :app_group, as: 'appGroup'
+          property :app_id, as: 'appId'
+          collection :attributes, as: 'attributes', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute::Representation
+      
+          property :callback_url, as: 'callbackUrl'
+          property :created_at, :numeric_string => true, as: 'createdAt'
+          collection :credentials, as: 'credentials', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Credential, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Credential::Representation
+      
+          property :key_expires_in, :numeric_string => true, as: 'keyExpiresIn'
+          property :last_modified_at, :numeric_string => true, as: 'lastModifiedAt'
+          property :name, as: 'name'
+          collection :scopes, as: 'scopes'
+          property :status, as: 'status'
+        end
+      end
+      
+      class GoogleCloudApigeeV1AppGroupAppKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :api_products, as: 'apiProducts', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiProductAssociation, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiProductAssociation::Representation
+      
+          collection :attributes, as: 'attributes', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute::Representation
+      
+          property :consumer_key, as: 'consumerKey'
+          property :consumer_secret, as: 'consumerSecret'
+          property :expires_at, :numeric_string => true, as: 'expiresAt'
+          property :expires_in_seconds, :numeric_string => true, as: 'expiresInSeconds'
+          property :issued_at, :numeric_string => true, as: 'issuedAt'
           collection :scopes, as: 'scopes'
           property :status, as: 'status'
         end
@@ -2696,11 +2754,32 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1ListAppGroupAppsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :app_group_apps, as: 'appGroupApps', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupApp, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupApp::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleCloudApigeeV1ListAppGroupsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :app_groups, as: 'appGroups', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroup, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroup::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          property :total_size, as: 'totalSize'
+        end
+      end
+      
       class GoogleCloudApigeeV1ListAppsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :app, as: 'app', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1App, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1App::Representation
       
+          property :next_page_token, as: 'nextPageToken'
+          property :total_size, as: 'totalSize'
         end
       end
       
@@ -3139,68 +3218,6 @@ module Google
           property :id, as: 'id'
           collection :results, as: 'results', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Result, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Result::Representation
       
-        end
-      end
-      
-      class GoogleCloudApigeeV1ProfileConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :categories, as: 'categories', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProfileConfigCategory, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProfileConfigCategory::Representation
-      
-        end
-      end
-      
-      class GoogleCloudApigeeV1ProfileConfigAbuse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class GoogleCloudApigeeV1ProfileConfigAuthorization
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class GoogleCloudApigeeV1ProfileConfigCors
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class GoogleCloudApigeeV1ProfileConfigCategory
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :abuse, as: 'abuse', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProfileConfigAbuse, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProfileConfigAbuse::Representation
-      
-          property :authorization, as: 'authorization', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProfileConfigAuthorization, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProfileConfigAuthorization::Representation
-      
-          property :cors, as: 'cors', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProfileConfigCors, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProfileConfigCors::Representation
-      
-          property :mediation, as: 'mediation', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProfileConfigMediation, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProfileConfigMediation::Representation
-      
-          property :mtls, as: 'mtls', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProfileConfigMtls, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProfileConfigMtls::Representation
-      
-          property :threat, as: 'threat', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProfileConfigThreat, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProfileConfigThreat::Representation
-      
-        end
-      end
-      
-      class GoogleCloudApigeeV1ProfileConfigMtls
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class GoogleCloudApigeeV1ProfileConfigMediation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class GoogleCloudApigeeV1ProfileConfigThreat
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -3663,8 +3680,6 @@ module Google
           property :max_score, as: 'maxScore'
           property :min_score, as: 'minScore'
           property :name, as: 'name'
-          property :profile_config, as: 'profileConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProfileConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProfileConfig::Representation
-      
           property :revision_create_time, as: 'revisionCreateTime'
           property :revision_id, :numeric_string => true, as: 'revisionId'
           property :revision_publish_time, as: 'revisionPublishTime'
@@ -3989,6 +4004,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :sampler, as: 'sampler'
           property :sampling_rate, as: 'samplingRate'
+        end
+      end
+      
+      class GoogleCloudApigeeV1UpdateAppGroupAppKeyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          collection :api_products, as: 'apiProducts'
+          property :app_group_app_key, as: 'appGroupAppKey', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupAppKey, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupAppKey::Representation
+      
         end
       end
       
