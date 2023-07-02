@@ -568,6 +568,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BulkInsertOperationStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BundledLocalSsds
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2087,6 +2093,12 @@ module Google
       end
       
       class InstancesAddResourcePoliciesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstancesBulkInsertOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -6882,6 +6894,7 @@ module Google
           property :max_rate_per_endpoint, as: 'maxRatePerEndpoint'
           property :max_rate_per_instance, as: 'maxRatePerInstance'
           property :max_utilization, as: 'maxUtilization'
+          property :preference, as: 'preference'
         end
       end
       
@@ -7033,6 +7046,7 @@ module Google
       
           property :self_link, as: 'selfLink'
           collection :service_bindings, as: 'serviceBindings'
+          property :service_lb_policy, as: 'serviceLbPolicy'
           property :session_affinity, as: 'sessionAffinity'
           property :subsetting, as: 'subsetting', class: Google::Apis::ComputeBeta::Subsetting, decorator: Google::Apis::ComputeBeta::Subsetting::Representation
       
@@ -7341,6 +7355,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :hostname, as: 'hostname'
           property :name, as: 'name'
+        end
+      end
+      
+      class BulkInsertOperationStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :created_vm_count, as: 'createdVmCount'
+          property :deleted_vm_count, as: 'deletedVmCount'
+          property :failed_to_create_vm_count, as: 'failedToCreateVmCount'
+          property :status, as: 'status'
+          property :target_vm_count, as: 'targetVmCount'
         end
       end
       
@@ -10285,6 +10310,14 @@ module Google
         end
       end
       
+      class InstancesBulkInsertOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :per_location_status, as: 'perLocationStatus', class: Google::Apis::ComputeBeta::BulkInsertOperationStatus, decorator: Google::Apis::ComputeBeta::BulkInsertOperationStatus::Representation
+      
+        end
+      end
+      
       class InstancesGetEffectiveFirewallsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -12703,6 +12736,8 @@ module Google
           property :http_error_status_code, as: 'httpErrorStatusCode'
           property :id, :numeric_string => true, as: 'id'
           property :insert_time, as: 'insertTime'
+          property :instances_bulk_insert_operation_metadata, as: 'instancesBulkInsertOperationMetadata', class: Google::Apis::ComputeBeta::InstancesBulkInsertOperationMetadata, decorator: Google::Apis::ComputeBeta::InstancesBulkInsertOperationMetadata::Representation
+      
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :operation_group_id, as: 'operationGroupId'
