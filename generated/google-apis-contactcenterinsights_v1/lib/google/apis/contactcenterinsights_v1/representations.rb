@@ -1642,6 +1642,8 @@ module Google
           property :input_data_config, as: 'inputDataConfig', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig::Representation
       
           property :issue_count, :numeric_string => true, as: 'issueCount'
+          property :language_code, as: 'languageCode'
+          property :model_type, as: 'modelType'
           property :name, as: 'name'
           property :state, as: 'state'
           property :training_stats, as: 'trainingStats', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1IssueModelLabelStats, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1IssueModelLabelStats::Representation
@@ -2516,6 +2518,8 @@ module Google
           property :input_data_config, as: 'inputDataConfig', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1IssueModelInputDataConfig, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1IssueModelInputDataConfig::Representation
       
           property :issue_count, :numeric_string => true, as: 'issueCount'
+          property :language_code, as: 'languageCode'
+          property :model_type, as: 'modelType'
           property :name, as: 'name'
           property :state, as: 'state'
           property :training_stats, as: 'trainingStats', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1IssueModelLabelStats, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1IssueModelLabelStats::Representation
