@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ChangeStreamConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CheckConsistencyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -552,6 +558,13 @@ module Google
       
           collection :members, as: 'members'
           property :role, as: 'role'
+        end
+      end
+      
+      class ChangeStreamConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :retention_period, as: 'retentionPeriod'
         end
       end
       
@@ -1080,6 +1093,8 @@ module Google
       class Table
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :change_stream_config, as: 'changeStreamConfig', class: Google::Apis::BigtableadminV2::ChangeStreamConfig, decorator: Google::Apis::BigtableadminV2::ChangeStreamConfig::Representation
+      
           hash :cluster_states, as: 'clusterStates', class: Google::Apis::BigtableadminV2::ClusterState, decorator: Google::Apis::BigtableadminV2::ClusterState::Representation
       
           hash :column_families, as: 'columnFamilies', class: Google::Apis::BigtableadminV2::ColumnFamily, decorator: Google::Apis::BigtableadminV2::ColumnFamily::Representation
