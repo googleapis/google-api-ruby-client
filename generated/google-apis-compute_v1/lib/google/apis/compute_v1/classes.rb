@@ -9095,9 +9095,12 @@ module Google
         alias_method :all_ports?, :all_ports
       
         # This field is used along with the backend_service field for internal load
-        # balancing or with the target field for internal TargetInstance. If the field
-        # is set to TRUE, clients can access ILB from all regions. Otherwise only allows
-        # access from clients in the same region as the internal load balancer.
+        # balancing or with the target field for internal TargetInstance. If set to true,
+        # clients can access the Internal TCP/UDP Load Balancer, Internal HTTP(S) and
+        # TCP Proxy Load Balancer from all regions. If false, only allows access from
+        # the local region the load balancer is located at. Note that for
+        # INTERNAL_MANAGED forwarding rules, this field cannot be changed after the
+        # forwarding rule is created.
         # Corresponds to the JSON property `allowGlobalAccess`
         # @return [Boolean]
         attr_accessor :allow_global_access
@@ -27794,7 +27797,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
-        # The IPv4 address range, in CIDR format, represented by this public delegated
+        # The IP address range, in CIDR format, represented by this public delegated
         # prefix.
         # Corresponds to the JSON property `ipCidrRange`
         # @return [String]
@@ -28137,8 +28140,8 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # The IPv4 address range, in CIDR format, represented by this sub public
-        # delegated prefix.
+        # The IP address range, in CIDR format, represented by this sub public delegated
+        # prefix.
         # Corresponds to the JSON property `ipCidrRange`
         # @return [String]
         attr_accessor :ip_cidr_range
@@ -31512,6 +31515,12 @@ module Google
         # @return [String]
         attr_accessor :next_hop_gateway
       
+        # [Output Only] The full resource name of the Network Connectivity Center hub
+        # that will handle matching packets.
+        # Corresponds to the JSON property `nextHopHub`
+        # @return [String]
+        attr_accessor :next_hop_hub
+      
         # The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should
         # handle matching packets or the IP address of the forwarding Rule. For example,
         # the following are all valid URLs: - 10.128.0.56 - https://www.googleapis.com/
@@ -31604,6 +31613,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @next_hop_gateway = args[:next_hop_gateway] if args.key?(:next_hop_gateway)
+          @next_hop_hub = args[:next_hop_hub] if args.key?(:next_hop_hub)
           @next_hop_ilb = args[:next_hop_ilb] if args.key?(:next_hop_ilb)
           @next_hop_instance = args[:next_hop_instance] if args.key?(:next_hop_instance)
           @next_hop_ip = args[:next_hop_ip] if args.key?(:next_hop_ip)
@@ -32633,6 +32643,12 @@ module Google
       class RouterNat
         include Google::Apis::Core::Hashable
       
+        # The network tier to use when automatically reserving IP addresses. Must be one
+        # of: PREMIUM, STANDARD. If not specified, PREMIUM tier will be used.
+        # Corresponds to the JSON property `autoNetworkTier`
+        # @return [String]
+        attr_accessor :auto_network_tier
+      
         # A list of URLs of the IP resources to be drained. These IPs must be valid
         # static external IPs that have been assigned to the NAT. These IPs should be
         # used for updating/patching a NAT only.
@@ -32766,6 +32782,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @auto_network_tier = args[:auto_network_tier] if args.key?(:auto_network_tier)
           @drain_nat_ips = args[:drain_nat_ips] if args.key?(:drain_nat_ips)
           @enable_dynamic_port_allocation = args[:enable_dynamic_port_allocation] if args.key?(:enable_dynamic_port_allocation)
           @enable_endpoint_independent_mapping = args[:enable_endpoint_independent_mapping] if args.key?(:enable_endpoint_independent_mapping)
@@ -38724,6 +38741,16 @@ module Google
         # @return [String]
         attr_accessor :fingerprint
       
+        # Specifies how long to keep a connection open, after completing a response,
+        # while there is no matching traffic (in seconds). If an HTTP keep-alive is not
+        # specified, a default value (610 seconds) will be used. For Global external
+        # HTTP(S) load balancer, the minimum allowed value is 5 seconds and the maximum
+        # allowed value is 1200 seconds. For Global external HTTP(S) load balancer (
+        # classic), this option is not available publicly.
+        # Corresponds to the JSON property `httpKeepAliveTimeoutSec`
+        # @return [Fixnum]
+        attr_accessor :http_keep_alive_timeout_sec
+      
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
@@ -38785,6 +38812,7 @@ module Google
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
+          @http_keep_alive_timeout_sec = args[:http_keep_alive_timeout_sec] if args.key?(:http_keep_alive_timeout_sec)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
@@ -39173,6 +39201,16 @@ module Google
         # @return [String]
         attr_accessor :fingerprint
       
+        # Specifies how long to keep a connection open, after completing a response,
+        # while there is no matching traffic (in seconds). If an HTTP keep-alive is not
+        # specified, a default value (610 seconds) will be used. For Global external
+        # HTTP(S) load balancer, the minimum allowed value is 5 seconds and the maximum
+        # allowed value is 1200 seconds. For Global external HTTP(S) load balancer (
+        # classic), this option is not available publicly.
+        # Corresponds to the JSON property `httpKeepAliveTimeoutSec`
+        # @return [Fixnum]
+        attr_accessor :http_keep_alive_timeout_sec
+      
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
@@ -39278,6 +39316,7 @@ module Google
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
+          @http_keep_alive_timeout_sec = args[:http_keep_alive_timeout_sec] if args.key?(:http_keep_alive_timeout_sec)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
