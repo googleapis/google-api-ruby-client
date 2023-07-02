@@ -1,0 +1,7 @@
+{
+    "api_id": "blockchainnodeengine:v1",
+    "name_pretty": "Blockchain Node Engine API",
+    "distribution_name": "google-apis-blockchainnodeengine_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
