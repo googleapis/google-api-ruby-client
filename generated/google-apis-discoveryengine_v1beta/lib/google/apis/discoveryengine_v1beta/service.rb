@@ -205,8 +205,8 @@ module Google
         #   Required. The parent branch resource name, such as `projects/`project`/
         #   locations/`location`/collections/`collection`/dataStores/`data_store`/branches/
         #   `branch``. Use `default_branch` as the branch ID, to list documents under the
-        #   default branch. If the caller does not have permission to list Documentss
-        #   under this branch, regardless of whether or not this branch exists, a `
+        #   default branch. If the caller does not have permission to list Documents under
+        #   this branch, regardless of whether or not this branch exists, a `
         #   PERMISSION_DENIED` error is returned.
         # @param [Fixnum] page_size
         #   Maximum number of Documents to return. If unspecified, defaults to 100. The
@@ -646,7 +646,7 @@ module Google
         end
         
         # Writes a single user event from the browser. This uses a GET request to due to
-        # browser restriction of POST-ing to a 3rd party domain. This method is used
+        # browser restriction of POST-ing to a third-party domain. This method is used
         # only by the Discovery Engine API JavaScript pixel and Google Tag Manager.
         # Users should not call this method directly.
         # @param [String] parent
@@ -659,7 +659,7 @@ module Google
         # @param [String] uri
         #   The URL including cgi-parameters but excluding the hash fragment with a length
         #   limit of 5,000 characters. This is often more useful than the referer URL,
-        #   because many browsers only send the domain for 3rd party requests.
+        #   because many browsers only send the domain for third-party requests.
         # @param [String] user_event
         #   Required. URL encoded UserEvent proto with a length limit of 2,000,000
         #   characters.
@@ -1063,8 +1063,8 @@ module Google
         #   Required. The parent branch resource name, such as `projects/`project`/
         #   locations/`location`/collections/`collection`/dataStores/`data_store`/branches/
         #   `branch``. Use `default_branch` as the branch ID, to list documents under the
-        #   default branch. If the caller does not have permission to list Documentss
-        #   under this branch, regardless of whether or not this branch exists, a `
+        #   default branch. If the caller does not have permission to list Documents under
+        #   this branch, regardless of whether or not this branch exists, a `
         #   PERMISSION_DENIED` error is returned.
         # @param [Fixnum] page_size
         #   Maximum number of Documents to return. If unspecified, defaults to 100. The
@@ -1433,7 +1433,7 @@ module Google
         end
         
         # Writes a single user event from the browser. This uses a GET request to due to
-        # browser restriction of POST-ing to a 3rd party domain. This method is used
+        # browser restriction of POST-ing to a third-party domain. This method is used
         # only by the Discovery Engine API JavaScript pixel and Google Tag Manager.
         # Users should not call this method directly.
         # @param [String] parent
@@ -1446,7 +1446,7 @@ module Google
         # @param [String] uri
         #   The URL including cgi-parameters but excluding the hash fragment with a length
         #   limit of 5,000 characters. This is often more useful than the referer URL,
-        #   because many browsers only send the domain for 3rd party requests.
+        #   because many browsers only send the domain for third-party requests.
         # @param [String] user_event
         #   Required. URL encoded UserEvent proto with a length limit of 2,000,000
         #   characters.
