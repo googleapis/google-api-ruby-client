@@ -2330,6 +2330,31 @@ module Google
         end
       end
       
+      # All error details of the fleet observability feature.
+      class FleetObservabilityFeatureError
+        include Google::Apis::Core::Hashable
+      
+        # The code of the error.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # A human-readable description of the current status.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @description = args[:description] if args.key?(:description)
+        end
+      end
+      
       # **Fleet Observability**: The Hub-wide input for the FleetObservability feature.
       class FleetObservabilityFeatureSpec
         include Google::Apis::Core::Hashable
@@ -2353,12 +2378,94 @@ module Google
       class FleetObservabilityFeatureState
         include Google::Apis::Core::Hashable
       
+        # Feature state for logging feature.
+        # Corresponds to the JSON property `logging`
+        # @return [Google::Apis::GkehubV1alpha::FleetObservabilityFleetObservabilityLoggingState]
+        attr_accessor :logging
+      
+        # Feature state for monitoring feature.
+        # Corresponds to the JSON property `monitoring`
+        # @return [Google::Apis::GkehubV1alpha::FleetObservabilityFleetObservabilityMonitoringState]
+        attr_accessor :monitoring
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @logging = args[:logging] if args.key?(:logging)
+          @monitoring = args[:monitoring] if args.key?(:monitoring)
+        end
+      end
+      
+      # Base state for fleet observability feature.
+      class FleetObservabilityFleetObservabilityBaseFeatureState
+        include Google::Apis::Core::Hashable
+      
+        # The high-level, machine-readable status of this Feature.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # Errors after reconciling the monitoring and logging feature if the code is not
+        # OK.
+        # Corresponds to the JSON property `errors`
+        # @return [Array<Google::Apis::GkehubV1alpha::FleetObservabilityFeatureError>]
+        attr_accessor :errors
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @errors = args[:errors] if args.key?(:errors)
+        end
+      end
+      
+      # Feature state for logging feature.
+      class FleetObservabilityFleetObservabilityLoggingState
+        include Google::Apis::Core::Hashable
+      
+        # Base state for fleet observability feature.
+        # Corresponds to the JSON property `defaultLog`
+        # @return [Google::Apis::GkehubV1alpha::FleetObservabilityFleetObservabilityBaseFeatureState]
+        attr_accessor :default_log
+      
+        # Base state for fleet observability feature.
+        # Corresponds to the JSON property `scopeLog`
+        # @return [Google::Apis::GkehubV1alpha::FleetObservabilityFleetObservabilityBaseFeatureState]
+        attr_accessor :scope_log
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_log = args[:default_log] if args.key?(:default_log)
+          @scope_log = args[:scope_log] if args.key?(:scope_log)
+        end
+      end
+      
+      # Feature state for monitoring feature.
+      class FleetObservabilityFleetObservabilityMonitoringState
+        include Google::Apis::Core::Hashable
+      
+        # Base state for fleet observability feature.
+        # Corresponds to the JSON property `state`
+        # @return [Google::Apis::GkehubV1alpha::FleetObservabilityFleetObservabilityBaseFeatureState]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -4218,15 +4325,10 @@ module Google
       class PolicyControllerBundleInstallSpec
         include Google::Apis::Core::Hashable
       
-        # the set of namespaces to be exempted from the bundle
+        # The set of namespaces to be exempted from the bundle.
         # Corresponds to the JSON property `exemptedNamespaces`
         # @return [Array<String>]
         attr_accessor :exempted_namespaces
-      
-        # Management specifies how the bundle will be managed by the controller.
-        # Corresponds to the JSON property `management`
-        # @return [String]
-        attr_accessor :management
       
         def initialize(**args)
            update!(**args)
@@ -4235,7 +4337,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @exempted_namespaces = args[:exempted_namespaces] if args.key?(:exempted_namespaces)
-          @management = args[:management] if args.key?(:management)
         end
       end
       
@@ -4306,11 +4407,6 @@ module Google
         attr_accessor :referential_rules_enabled
         alias_method :referential_rules_enabled?, :referential_rules_enabled
       
-        # The config specifying which default library templates to install.
-        # Corresponds to the JSON property `templateLibraryConfig`
-        # @return [Google::Apis::GkehubV1alpha::PolicyControllerTemplateLibraryConfig]
-        attr_accessor :template_library_config
-      
         def initialize(**args)
            update!(**args)
         end
@@ -4327,7 +4423,6 @@ module Google
           @mutation_enabled = args[:mutation_enabled] if args.key?(:mutation_enabled)
           @policy_content = args[:policy_content] if args.key?(:policy_content)
           @referential_rules_enabled = args[:referential_rules_enabled] if args.key?(:referential_rules_enabled)
-          @template_library_config = args[:template_library_config] if args.key?(:template_library_config)
         end
       end
       
@@ -4367,12 +4462,6 @@ module Google
         # @return [Hash<String,Google::Apis::GkehubV1alpha::PolicyControllerOnClusterState>]
         attr_accessor :component_states
       
-        # The state of the template library and any bundles included in the chosen
-        # version of the manifest
-        # Corresponds to the JSON property `contentStates`
-        # @return [Hash<String,Google::Apis::GkehubV1alpha::PolicyControllerOnClusterState>]
-        attr_accessor :content_states
-      
         # The state of the policy controller policy content
         # Corresponds to the JSON property `policyContentState`
         # @return [Google::Apis::GkehubV1alpha::PolicyControllerPolicyContentState]
@@ -4391,7 +4480,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @component_states = args[:component_states] if args.key?(:component_states)
-          @content_states = args[:content_states] if args.key?(:content_states)
           @policy_content_state = args[:policy_content_state] if args.key?(:policy_content_state)
           @state = args[:state] if args.key?(:state)
         end
@@ -4512,6 +4600,11 @@ module Google
         # @return [Google::Apis::GkehubV1alpha::PolicyControllerResourceRequirements]
         attr_accessor :container_resources
       
+        # Pod affinity configuration.
+        # Corresponds to the JSON property `podAffinity`
+        # @return [String]
+        attr_accessor :pod_affinity
+      
         # Pod anti-affinity enablement.
         # Corresponds to the JSON property `podAntiAffinity`
         # @return [Boolean]
@@ -4535,6 +4628,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @container_resources = args[:container_resources] if args.key?(:container_resources)
+          @pod_affinity = args[:pod_affinity] if args.key?(:pod_affinity)
           @pod_anti_affinity = args[:pod_anti_affinity] if args.key?(:pod_anti_affinity)
           @pod_tolerations = args[:pod_tolerations] if args.key?(:pod_tolerations)
           @replica_count = args[:replica_count] if args.key?(:replica_count)
@@ -4595,12 +4689,6 @@ module Google
       class PolicyControllerTemplateLibraryConfig
         include Google::Apis::Core::Hashable
       
-        # Whether the standard template library should be installed or not.
-        # Corresponds to the JSON property `included`
-        # @return [Boolean]
-        attr_accessor :included
-        alias_method :included?, :included
-      
         # Configures the manner in which the template library is installed on the
         # cluster.
         # Corresponds to the JSON property `installation`
@@ -4613,7 +4701,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @included = args[:included] if args.key?(:included)
           @installation = args[:installation] if args.key?(:installation)
         end
       end
