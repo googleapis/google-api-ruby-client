@@ -363,11 +363,6 @@ module Google
         # @return [Google::Apis::EventarcV1::Gke]
         attr_accessor :gke
       
-        # Represents a HTTP endpoint destination.
-        # Corresponds to the JSON property `httpEndpoint`
-        # @return [Google::Apis::EventarcV1::HttpEndpoint]
-        attr_accessor :http_endpoint
-      
         # The resource name of the Workflow whose Executions are triggered by the events.
         # The Workflow resource should be deployed in the same project as the trigger.
         # Format: `projects/`project`/locations/`location`/workflows/`workflow``
@@ -384,7 +379,6 @@ module Google
           @cloud_function = args[:cloud_function] if args.key?(:cloud_function)
           @cloud_run = args[:cloud_run] if args.key?(:cloud_run)
           @gke = args[:gke] if args.key?(:gke)
-          @http_endpoint = args[:http_endpoint] if args.key?(:http_endpoint)
           @workflow = args[:workflow] if args.key?(:workflow)
         end
       end
@@ -803,40 +797,6 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
-        end
-      end
-      
-      # Represents a HTTP endpoint destination.
-      class HttpEndpoint
-        include Google::Apis::Core::Hashable
-      
-        # Optional. Forwards DNS requests to the VPC specified by network config to
-        # resolve the HTTP endpoint. Default to false. If set to true, Eventarc will
-        # create a peering zone to the consumer VPC and forward DNS requests. See: https:
-        # //cloud.google.com/dns/docs/zones/zones-overview#peering_zones Enable this if
-        # the URI uses an internal DNS name or a private Cloud DNS zone.
-        # Corresponds to the JSON property `forwardDnsRequests`
-        # @return [Boolean]
-        attr_accessor :forward_dns_requests
-        alias_method :forward_dns_requests?, :forward_dns_requests
-      
-        # Required. The URI of the HTTP enpdoint. The value must be a RFC2396 URI string.
-        # Examples: `http://10.10.10.8:80/route`, `http://svc.us-central1.p.local:8080/`
-        # . Only HTTP and HTTPS protocols are supported. The host can be either a static
-        # IP addressable from the VPC specified by the network config, or an internal
-        # DNS hostname of the service resolvable via Cloud DNS.
-        # Corresponds to the JSON property `uri`
-        # @return [String]
-        attr_accessor :uri
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @forward_dns_requests = args[:forward_dns_requests] if args.key?(:forward_dns_requests)
-          @uri = args[:uri] if args.key?(:uri)
         end
       end
       
