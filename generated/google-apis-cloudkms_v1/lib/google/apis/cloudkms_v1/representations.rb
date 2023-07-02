@@ -274,6 +274,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RawDecryptRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RawDecryptResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RawEncryptRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RawEncryptResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RestoreCryptoKeyVersionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -763,6 +787,59 @@ module Google
           property :pem, as: 'pem'
           property :pem_crc32c, :numeric_string => true, as: 'pemCrc32c'
           property :protection_level, as: 'protectionLevel'
+        end
+      end
+      
+      class RawDecryptRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :additional_authenticated_data, :base64 => true, as: 'additionalAuthenticatedData'
+          property :additional_authenticated_data_crc32c, :numeric_string => true, as: 'additionalAuthenticatedDataCrc32c'
+          property :ciphertext, :base64 => true, as: 'ciphertext'
+          property :ciphertext_crc32c, :numeric_string => true, as: 'ciphertextCrc32c'
+          property :initialization_vector, :base64 => true, as: 'initializationVector'
+          property :initialization_vector_crc32c, :numeric_string => true, as: 'initializationVectorCrc32c'
+          property :tag_length, as: 'tagLength'
+        end
+      end
+      
+      class RawDecryptResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :plaintext, :base64 => true, as: 'plaintext'
+          property :plaintext_crc32c, :numeric_string => true, as: 'plaintextCrc32c'
+          property :protection_level, as: 'protectionLevel'
+          property :verified_additional_authenticated_data_crc32c, as: 'verifiedAdditionalAuthenticatedDataCrc32c'
+          property :verified_ciphertext_crc32c, as: 'verifiedCiphertextCrc32c'
+          property :verified_initialization_vector_crc32c, as: 'verifiedInitializationVectorCrc32c'
+        end
+      end
+      
+      class RawEncryptRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :additional_authenticated_data, :base64 => true, as: 'additionalAuthenticatedData'
+          property :additional_authenticated_data_crc32c, :numeric_string => true, as: 'additionalAuthenticatedDataCrc32c'
+          property :initialization_vector, :base64 => true, as: 'initializationVector'
+          property :initialization_vector_crc32c, :numeric_string => true, as: 'initializationVectorCrc32c'
+          property :plaintext, :base64 => true, as: 'plaintext'
+          property :plaintext_crc32c, :numeric_string => true, as: 'plaintextCrc32c'
+        end
+      end
+      
+      class RawEncryptResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ciphertext, :base64 => true, as: 'ciphertext'
+          property :ciphertext_crc32c, :numeric_string => true, as: 'ciphertextCrc32c'
+          property :initialization_vector, :base64 => true, as: 'initializationVector'
+          property :initialization_vector_crc32c, :numeric_string => true, as: 'initializationVectorCrc32c'
+          property :name, as: 'name'
+          property :protection_level, as: 'protectionLevel'
+          property :tag_length, as: 'tagLength'
+          property :verified_additional_authenticated_data_crc32c, as: 'verifiedAdditionalAuthenticatedDataCrc32c'
+          property :verified_initialization_vector_crc32c, as: 'verifiedInitializationVectorCrc32c'
+          property :verified_plaintext_crc32c, as: 'verifiedPlaintextCrc32c'
         end
       end
       

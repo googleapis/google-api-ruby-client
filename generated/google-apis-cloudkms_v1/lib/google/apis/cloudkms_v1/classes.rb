@@ -2170,6 +2170,394 @@ module Google
         end
       end
       
+      # Request message for KeyManagementService.RawDecrypt.
+      class RawDecryptRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Optional data that must match the data originally supplied in
+        # RawEncryptRequest.additional_authenticated_data.
+        # Corresponds to the JSON property `additionalAuthenticatedData`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :additional_authenticated_data
+      
+        # Optional. An optional CRC32C checksum of the RawDecryptRequest.
+        # additional_authenticated_data. If specified, KeyManagementService will verify
+        # the integrity of the received additional_authenticated_data using this
+        # checksum. KeyManagementService will report an error if the checksum
+        # verification fails. If you receive a checksum error, your client should verify
+        # that CRC32C(additional_authenticated_data) is equal to
+        # additional_authenticated_data_crc32c, and if so, perform a limited number of
+        # retries. A persistent mismatch may indicate an issue in your computation of
+        # the CRC32C checksum. Note: This field is defined as int64 for reasons of
+        # compatibility across different languages. However, it is a non-negative
+        # integer, which will never exceed 2^32-1, and can be safely downconverted to
+        # uint32 in languages that support this type.
+        # Corresponds to the JSON property `additionalAuthenticatedDataCrc32c`
+        # @return [Fixnum]
+        attr_accessor :additional_authenticated_data_crc32c
+      
+        # Required. The encrypted data originally returned in RawEncryptResponse.
+        # ciphertext.
+        # Corresponds to the JSON property `ciphertext`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :ciphertext
+      
+        # Optional. An optional CRC32C checksum of the RawDecryptRequest.ciphertext. If
+        # specified, KeyManagementService will verify the integrity of the received
+        # ciphertext using this checksum. KeyManagementService will report an error if
+        # the checksum verification fails. If you receive a checksum error, your client
+        # should verify that CRC32C(ciphertext) is equal to ciphertext_crc32c, and if so,
+        # perform a limited number of retries. A persistent mismatch may indicate an
+        # issue in your computation of the CRC32C checksum. Note: This field is defined
+        # as int64 for reasons of compatibility across different languages. However, it
+        # is a non-negative integer, which will never exceed 2^32-1, and can be safely
+        # downconverted to uint32 in languages that support this type.
+        # Corresponds to the JSON property `ciphertextCrc32c`
+        # @return [Fixnum]
+        attr_accessor :ciphertext_crc32c
+      
+        # Required. The initialization vector (IV) used during encryption, which must
+        # match the data originally provided in RawEncryptResponse.initialization_vector.
+        # Corresponds to the JSON property `initializationVector`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :initialization_vector
+      
+        # Optional. An optional CRC32C checksum of the RawDecryptRequest.
+        # initialization_vector. If specified, KeyManagementService will verify the
+        # integrity of the received initialization_vector using this checksum.
+        # KeyManagementService will report an error if the checksum verification fails.
+        # If you receive a checksum error, your client should verify that CRC32C(
+        # initialization_vector) is equal to initialization_vector_crc32c, and if so,
+        # perform a limited number of retries. A persistent mismatch may indicate an
+        # issue in your computation of the CRC32C checksum. Note: This field is defined
+        # as int64 for reasons of compatibility across different languages. However, it
+        # is a non-negative integer, which will never exceed 2^32-1, and can be safely
+        # downconverted to uint32 in languages that support this type.
+        # Corresponds to the JSON property `initializationVectorCrc32c`
+        # @return [Fixnum]
+        attr_accessor :initialization_vector_crc32c
+      
+        # The length of the authentication tag that is appended to the end of the
+        # ciphertext. If unspecified (0), the default value for the key's algorithm will
+        # be used (for AES-GCM, the default value is 16).
+        # Corresponds to the JSON property `tagLength`
+        # @return [Fixnum]
+        attr_accessor :tag_length
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_authenticated_data = args[:additional_authenticated_data] if args.key?(:additional_authenticated_data)
+          @additional_authenticated_data_crc32c = args[:additional_authenticated_data_crc32c] if args.key?(:additional_authenticated_data_crc32c)
+          @ciphertext = args[:ciphertext] if args.key?(:ciphertext)
+          @ciphertext_crc32c = args[:ciphertext_crc32c] if args.key?(:ciphertext_crc32c)
+          @initialization_vector = args[:initialization_vector] if args.key?(:initialization_vector)
+          @initialization_vector_crc32c = args[:initialization_vector_crc32c] if args.key?(:initialization_vector_crc32c)
+          @tag_length = args[:tag_length] if args.key?(:tag_length)
+        end
+      end
+      
+      # Response message for KeyManagementService.RawDecrypt.
+      class RawDecryptResponse
+        include Google::Apis::Core::Hashable
+      
+        # The decrypted data.
+        # Corresponds to the JSON property `plaintext`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :plaintext
+      
+        # Integrity verification field. A CRC32C checksum of the returned
+        # RawDecryptResponse.plaintext. An integrity check of plaintext can be performed
+        # by computing the CRC32C checksum of plaintext and comparing your results to
+        # this field. Discard the response in case of non-matching checksum values, and
+        # perform a limited number of retries. A persistent mismatch may indicate an
+        # issue in your computation of the CRC32C checksum. Note: receiving this
+        # response message indicates that KeyManagementService is able to successfully
+        # decrypt the ciphertext. Note: This field is defined as int64 for reasons of
+        # compatibility across different languages. However, it is a non-negative
+        # integer, which will never exceed 2^32-1, and can be safely downconverted to
+        # uint32 in languages that support this type.
+        # Corresponds to the JSON property `plaintextCrc32c`
+        # @return [Fixnum]
+        attr_accessor :plaintext_crc32c
+      
+        # The ProtectionLevel of the CryptoKeyVersion used in decryption.
+        # Corresponds to the JSON property `protectionLevel`
+        # @return [String]
+        attr_accessor :protection_level
+      
+        # Integrity verification field. A flag indicating whether RawDecryptRequest.
+        # additional_authenticated_data_crc32c was received by KeyManagementService and
+        # used for the integrity verification of additional_authenticated_data. A false
+        # value of this field indicates either that // RawDecryptRequest.
+        # additional_authenticated_data_crc32c was left unset or that it was not
+        # delivered to KeyManagementService. If you've set RawDecryptRequest.
+        # additional_authenticated_data_crc32c but this field is still false, discard
+        # the response and perform a limited number of retries.
+        # Corresponds to the JSON property `verifiedAdditionalAuthenticatedDataCrc32c`
+        # @return [Boolean]
+        attr_accessor :verified_additional_authenticated_data_crc32c
+        alias_method :verified_additional_authenticated_data_crc32c?, :verified_additional_authenticated_data_crc32c
+      
+        # Integrity verification field. A flag indicating whether RawDecryptRequest.
+        # ciphertext_crc32c was received by KeyManagementService and used for the
+        # integrity verification of the ciphertext. A false value of this field
+        # indicates either that RawDecryptRequest.ciphertext_crc32c was left unset or
+        # that it was not delivered to KeyManagementService. If you've set
+        # RawDecryptRequest.ciphertext_crc32c but this field is still false, discard the
+        # response and perform a limited number of retries.
+        # Corresponds to the JSON property `verifiedCiphertextCrc32c`
+        # @return [Boolean]
+        attr_accessor :verified_ciphertext_crc32c
+        alias_method :verified_ciphertext_crc32c?, :verified_ciphertext_crc32c
+      
+        # Integrity verification field. A flag indicating whether RawDecryptRequest.
+        # initialization_vector_crc32c was received by KeyManagementService and used for
+        # the integrity verification of initialization_vector. A false value of this
+        # field indicates either that RawDecryptRequest.initialization_vector_crc32c was
+        # left unset or that it was not delivered to KeyManagementService. If you've set
+        # RawDecryptRequest.initialization_vector_crc32c but this field is still false,
+        # discard the response and perform a limited number of retries.
+        # Corresponds to the JSON property `verifiedInitializationVectorCrc32c`
+        # @return [Boolean]
+        attr_accessor :verified_initialization_vector_crc32c
+        alias_method :verified_initialization_vector_crc32c?, :verified_initialization_vector_crc32c
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @plaintext = args[:plaintext] if args.key?(:plaintext)
+          @plaintext_crc32c = args[:plaintext_crc32c] if args.key?(:plaintext_crc32c)
+          @protection_level = args[:protection_level] if args.key?(:protection_level)
+          @verified_additional_authenticated_data_crc32c = args[:verified_additional_authenticated_data_crc32c] if args.key?(:verified_additional_authenticated_data_crc32c)
+          @verified_ciphertext_crc32c = args[:verified_ciphertext_crc32c] if args.key?(:verified_ciphertext_crc32c)
+          @verified_initialization_vector_crc32c = args[:verified_initialization_vector_crc32c] if args.key?(:verified_initialization_vector_crc32c)
+        end
+      end
+      
+      # Request message for KeyManagementService.RawEncrypt.
+      class RawEncryptRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Optional data that, if specified, must also be provided during
+        # decryption through RawDecryptRequest.additional_authenticated_data. This field
+        # may only be used in conjunction with an algorithm that accepts additional
+        # authenticated data (for example, AES-GCM). The maximum size depends on the key
+        # version's protection_level. For SOFTWARE keys, the plaintext must be no larger
+        # than 64KiB. For HSM keys, the combined length of the plaintext and
+        # additional_authenticated_data fields must be no larger than 8KiB.
+        # Corresponds to the JSON property `additionalAuthenticatedData`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :additional_authenticated_data
+      
+        # Optional. An optional CRC32C checksum of the RawEncryptRequest.
+        # additional_authenticated_data. If specified, KeyManagementService will verify
+        # the integrity of the received additional_authenticated_data using this
+        # checksum. KeyManagementService will report an error if the checksum
+        # verification fails. If you receive a checksum error, your client should verify
+        # that CRC32C(additional_authenticated_data) is equal to
+        # additional_authenticated_data_crc32c, and if so, perform a limited number of
+        # retries. A persistent mismatch may indicate an issue in your computation of
+        # the CRC32C checksum. Note: This field is defined as int64 for reasons of
+        # compatibility across different languages. However, it is a non-negative
+        # integer, which will never exceed 2^32-1, and can be safely downconverted to
+        # uint32 in languages that support this type.
+        # Corresponds to the JSON property `additionalAuthenticatedDataCrc32c`
+        # @return [Fixnum]
+        attr_accessor :additional_authenticated_data_crc32c
+      
+        # Optional. A customer-supplied initialization vector that will be used for
+        # encryption. If it is not provided for AES-CBC and AES-CTR, one will be
+        # generated. It will be returned in RawEncryptResponse.initialization_vector.
+        # Corresponds to the JSON property `initializationVector`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :initialization_vector
+      
+        # Optional. An optional CRC32C checksum of the RawEncryptRequest.
+        # initialization_vector. If specified, KeyManagementService will verify the
+        # integrity of the received initialization_vector using this checksum.
+        # KeyManagementService will report an error if the checksum verification fails.
+        # If you receive a checksum error, your client should verify that CRC32C(
+        # initialization_vector) is equal to initialization_vector_crc32c, and if so,
+        # perform a limited number of retries. A persistent mismatch may indicate an
+        # issue in your computation of the CRC32C checksum. Note: This field is defined
+        # as int64 for reasons of compatibility across different languages. However, it
+        # is a non-negative integer, which will never exceed 2^32-1, and can be safely
+        # downconverted to uint32 in languages that support this type.
+        # Corresponds to the JSON property `initializationVectorCrc32c`
+        # @return [Fixnum]
+        attr_accessor :initialization_vector_crc32c
+      
+        # Required. The data to encrypt. Must be no larger than 64KiB. The maximum size
+        # depends on the key version's protection_level. For SOFTWARE keys, the
+        # plaintext must be no larger than 64KiB. For HSM keys, the combined length of
+        # the plaintext and additional_authenticated_data fields must be no larger than
+        # 8KiB.
+        # Corresponds to the JSON property `plaintext`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :plaintext
+      
+        # Optional. An optional CRC32C checksum of the RawEncryptRequest.plaintext. If
+        # specified, KeyManagementService will verify the integrity of the received
+        # plaintext using this checksum. KeyManagementService will report an error if
+        # the checksum verification fails. If you receive a checksum error, your client
+        # should verify that CRC32C(plaintext) is equal to plaintext_crc32c, and if so,
+        # perform a limited number of retries. A persistent mismatch may indicate an
+        # issue in your computation of the CRC32C checksum. Note: This field is defined
+        # as int64 for reasons of compatibility across different languages. However, it
+        # is a non-negative integer, which will never exceed 2^32-1, and can be safely
+        # downconverted to uint32 in languages that support this type.
+        # Corresponds to the JSON property `plaintextCrc32c`
+        # @return [Fixnum]
+        attr_accessor :plaintext_crc32c
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_authenticated_data = args[:additional_authenticated_data] if args.key?(:additional_authenticated_data)
+          @additional_authenticated_data_crc32c = args[:additional_authenticated_data_crc32c] if args.key?(:additional_authenticated_data_crc32c)
+          @initialization_vector = args[:initialization_vector] if args.key?(:initialization_vector)
+          @initialization_vector_crc32c = args[:initialization_vector_crc32c] if args.key?(:initialization_vector_crc32c)
+          @plaintext = args[:plaintext] if args.key?(:plaintext)
+          @plaintext_crc32c = args[:plaintext_crc32c] if args.key?(:plaintext_crc32c)
+        end
+      end
+      
+      # Response message for KeyManagementService.RawEncrypt.
+      class RawEncryptResponse
+        include Google::Apis::Core::Hashable
+      
+        # The encrypted data. In the case of AES-GCM, the authentication tag is the
+        # tag_length bytes at the end of this field.
+        # Corresponds to the JSON property `ciphertext`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :ciphertext
+      
+        # Integrity verification field. A CRC32C checksum of the returned
+        # RawEncryptResponse.ciphertext. An integrity check of ciphertext can be
+        # performed by computing the CRC32C checksum of ciphertext and comparing your
+        # results to this field. Discard the response in case of non-matching checksum
+        # values, and perform a limited number of retries. A persistent mismatch may
+        # indicate an issue in your computation of the CRC32C checksum. Note: This field
+        # is defined as int64 for reasons of compatibility across different languages.
+        # However, it is a non-negative integer, which will never exceed 2^32-1, and can
+        # be safely downconverted to uint32 in languages that support this type.
+        # Corresponds to the JSON property `ciphertextCrc32c`
+        # @return [Fixnum]
+        attr_accessor :ciphertext_crc32c
+      
+        # The initialization vector (IV) generated by the service during encryption.
+        # This value must be stored and provided in RawDecryptRequest.
+        # initialization_vector at decryption time.
+        # Corresponds to the JSON property `initializationVector`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :initialization_vector
+      
+        # Integrity verification field. A CRC32C checksum of the returned
+        # RawEncryptResponse.initialization_vector. An integrity check of
+        # initialization_vector can be performed by computing the CRC32C checksum of
+        # initialization_vector and comparing your results to this field. Discard the
+        # response in case of non-matching checksum values, and perform a limited number
+        # of retries. A persistent mismatch may indicate an issue in your computation of
+        # the CRC32C checksum. Note: This field is defined as int64 for reasons of
+        # compatibility across different languages. However, it is a non-negative
+        # integer, which will never exceed 2^32-1, and can be safely downconverted to
+        # uint32 in languages that support this type.
+        # Corresponds to the JSON property `initializationVectorCrc32c`
+        # @return [Fixnum]
+        attr_accessor :initialization_vector_crc32c
+      
+        # The resource name of the CryptoKeyVersion used in encryption. Check this field
+        # to verify that the intended resource was used for encryption.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The ProtectionLevel of the CryptoKeyVersion used in encryption.
+        # Corresponds to the JSON property `protectionLevel`
+        # @return [String]
+        attr_accessor :protection_level
+      
+        # The length of the authentication tag that is appended to the end of the
+        # ciphertext.
+        # Corresponds to the JSON property `tagLength`
+        # @return [Fixnum]
+        attr_accessor :tag_length
+      
+        # Integrity verification field. A flag indicating whether RawEncryptRequest.
+        # additional_authenticated_data_crc32c was received by KeyManagementService and
+        # used for the integrity verification of additional_authenticated_data. A false
+        # value of this field indicates either that // RawEncryptRequest.
+        # additional_authenticated_data_crc32c was left unset or that it was not
+        # delivered to KeyManagementService. If you've set RawEncryptRequest.
+        # additional_authenticated_data_crc32c but this field is still false, discard
+        # the response and perform a limited number of retries.
+        # Corresponds to the JSON property `verifiedAdditionalAuthenticatedDataCrc32c`
+        # @return [Boolean]
+        attr_accessor :verified_additional_authenticated_data_crc32c
+        alias_method :verified_additional_authenticated_data_crc32c?, :verified_additional_authenticated_data_crc32c
+      
+        # Integrity verification field. A flag indicating whether RawEncryptRequest.
+        # initialization_vector_crc32c was received by KeyManagementService and used for
+        # the integrity verification of initialization_vector. A false value of this
+        # field indicates either that RawEncryptRequest.initialization_vector_crc32c was
+        # left unset or that it was not delivered to KeyManagementService. If you've set
+        # RawEncryptRequest.initialization_vector_crc32c but this field is still false,
+        # discard the response and perform a limited number of retries.
+        # Corresponds to the JSON property `verifiedInitializationVectorCrc32c`
+        # @return [Boolean]
+        attr_accessor :verified_initialization_vector_crc32c
+        alias_method :verified_initialization_vector_crc32c?, :verified_initialization_vector_crc32c
+      
+        # Integrity verification field. A flag indicating whether RawEncryptRequest.
+        # plaintext_crc32c was received by KeyManagementService and used for the
+        # integrity verification of the plaintext. A false value of this field indicates
+        # either that RawEncryptRequest.plaintext_crc32c was left unset or that it was
+        # not delivered to KeyManagementService. If you've set RawEncryptRequest.
+        # plaintext_crc32c but this field is still false, discard the response and
+        # perform a limited number of retries.
+        # Corresponds to the JSON property `verifiedPlaintextCrc32c`
+        # @return [Boolean]
+        attr_accessor :verified_plaintext_crc32c
+        alias_method :verified_plaintext_crc32c?, :verified_plaintext_crc32c
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ciphertext = args[:ciphertext] if args.key?(:ciphertext)
+          @ciphertext_crc32c = args[:ciphertext_crc32c] if args.key?(:ciphertext_crc32c)
+          @initialization_vector = args[:initialization_vector] if args.key?(:initialization_vector)
+          @initialization_vector_crc32c = args[:initialization_vector_crc32c] if args.key?(:initialization_vector_crc32c)
+          @name = args[:name] if args.key?(:name)
+          @protection_level = args[:protection_level] if args.key?(:protection_level)
+          @tag_length = args[:tag_length] if args.key?(:tag_length)
+          @verified_additional_authenticated_data_crc32c = args[:verified_additional_authenticated_data_crc32c] if args.key?(:verified_additional_authenticated_data_crc32c)
+          @verified_initialization_vector_crc32c = args[:verified_initialization_vector_crc32c] if args.key?(:verified_initialization_vector_crc32c)
+          @verified_plaintext_crc32c = args[:verified_plaintext_crc32c] if args.key?(:verified_plaintext_crc32c)
+        end
+      end
+      
       # Request message for KeyManagementService.RestoreCryptoKeyVersion.
       class RestoreCryptoKeyVersionRequest
         include Google::Apis::Core::Hashable
