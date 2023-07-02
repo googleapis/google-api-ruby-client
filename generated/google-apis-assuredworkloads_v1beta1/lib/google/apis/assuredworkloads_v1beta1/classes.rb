@@ -278,12 +278,6 @@ module Google
         # @return [String]
         attr_accessor :non_compliant_org_policy
       
-        # Output only. Immutable. The org-policy-constraint that was incorrectly changed,
-        # which resulted in this violation.
-        # Corresponds to the JSON property `orgPolicyConstraint`
-        # @return [String]
-        attr_accessor :org_policy_constraint
-      
         # Represents remediation guidance to resolve compliance violation for
         # AssuredWorkload
         # Corresponds to the JSON property `remediation`
@@ -321,7 +315,6 @@ module Google
           @exception_audit_log_link = args[:exception_audit_log_link] if args.key?(:exception_audit_log_link)
           @name = args[:name] if args.key?(:name)
           @non_compliant_org_policy = args[:non_compliant_org_policy] if args.key?(:non_compliant_org_policy)
-          @org_policy_constraint = args[:org_policy_constraint] if args.key?(:org_policy_constraint)
           @remediation = args[:remediation] if args.key?(:remediation)
           @resolve_time = args[:resolve_time] if args.key?(:resolve_time)
           @state = args[:state] if args.key?(:state)
