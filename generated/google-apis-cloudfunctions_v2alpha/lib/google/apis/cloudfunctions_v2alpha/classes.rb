@@ -1522,12 +1522,6 @@ module Google
         # @return [String]
         attr_accessor :dir
       
-        # Only trigger a build if the revision regex does NOT match the revision regex.
-        # Corresponds to the JSON property `invertRegex`
-        # @return [Boolean]
-        attr_accessor :invert_regex
-        alias_method :invert_regex?, :invert_regex
-      
         # ID of the project that owns the Cloud Source Repository. If omitted, the
         # project ID requesting the build is assumed.
         # Corresponds to the JSON property `projectId`
@@ -1555,7 +1549,6 @@ module Google
           @branch_name = args[:branch_name] if args.key?(:branch_name)
           @commit_sha = args[:commit_sha] if args.key?(:commit_sha)
           @dir = args[:dir] if args.key?(:dir)
-          @invert_regex = args[:invert_regex] if args.key?(:invert_regex)
           @project_id = args[:project_id] if args.key?(:project_id)
           @repo_name = args[:repo_name] if args.key?(:repo_name)
           @tag_name = args[:tag_name] if args.key?(:tag_name)
