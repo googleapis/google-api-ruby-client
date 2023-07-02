@@ -472,6 +472,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SqlInstancesGetLatestRecoveryTimeResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SqlInstancesRescheduleMaintenanceRequestBody
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -732,6 +738,7 @@ module Google
           property :kind, as: 'kind'
           property :pitr_timestamp_ms, :numeric_string => true, as: 'pitrTimestampMs'
           property :point_in_time, as: 'pointInTime'
+          property :preferred_zone, as: 'preferredZone'
         end
       end
       
@@ -1469,6 +1476,14 @@ module Google
           property :kind, as: 'kind'
           property :message, as: 'message'
           property :minimal_target_size_gb, :numeric_string => true, as: 'minimalTargetSizeGb'
+        end
+      end
+      
+      class SqlInstancesGetLatestRecoveryTimeResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :latest_recovery_time, as: 'latestRecoveryTime'
         end
       end
       
