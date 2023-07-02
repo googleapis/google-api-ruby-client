@@ -185,25 +185,6 @@ module Google
         end
       end
       
-      # Response with all provisioning settings.
-      class FetchInstanceProvisioningSettingsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The OS images available.
-        # Corresponds to the JSON property `images`
-        # @return [Array<Google::Apis::BaremetalsolutionV2::OsImage>]
-        attr_accessor :images
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @images = args[:images] if args.key?(:images)
-        end
-      end
-      
       # Each logical interface represents a logical abstraction of the underlying
       # physical interface (for eg. bond, nic) of the instance. Each logical interface
       # can effectively map to multiple network-IP pairs and still be mapped to one
@@ -237,40 +218,6 @@ module Google
           @interface_index = args[:interface_index] if args.key?(:interface_index)
           @logical_network_interfaces = args[:logical_network_interfaces] if args.key?(:logical_network_interfaces)
           @name = args[:name] if args.key?(:name)
-        end
-      end
-      
-      # Logical interface.
-      class GoogleCloudBaremetalsolutionV2ServerNetworkTemplateLogicalInterface
-        include Google::Apis::Core::Hashable
-      
-        # Interface name. This is not a globally unique identifier. Name is unique only
-        # inside the ServerNetworkTemplate. This is of syntax or and forms part of the
-        # network template name.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # If true, interface must have network connected.
-        # Corresponds to the JSON property `required`
-        # @return [Boolean]
-        attr_accessor :required
-        alias_method :required?, :required
-      
-        # Interface type.
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @name = args[:name] if args.key?(:name)
-          @required = args[:required] if args.key?(:required)
-          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -1535,50 +1482,6 @@ module Google
         end
       end
       
-      # Operation System image.
-      class OsImage
-        include Google::Apis::Core::Hashable
-      
-        # Instance types this image is applicable to. [Available types](https://cloud.
-        # google.com/bare-metal/docs/bms-planning#server_configurations)
-        # Corresponds to the JSON property `applicableInstanceTypes`
-        # @return [Array<String>]
-        attr_accessor :applicable_instance_types
-      
-        # OS Image code.
-        # Corresponds to the JSON property `code`
-        # @return [String]
-        attr_accessor :code
-      
-        # OS Image description.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # Output only. OS Image's unique name.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Network templates that can be used with this OS Image.
-        # Corresponds to the JSON property `supportedNetworkTemplates`
-        # @return [Array<Google::Apis::BaremetalsolutionV2::ServerNetworkTemplate>]
-        attr_accessor :supported_network_templates
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @applicable_instance_types = args[:applicable_instance_types] if args.key?(:applicable_instance_types)
-          @code = args[:code] if args.key?(:code)
-          @description = args[:description] if args.key?(:description)
-          @name = args[:name] if args.key?(:name)
-          @supported_network_templates = args[:supported_network_templates] if args.key?(:supported_network_templates)
-        end
-      end
-      
       # This resource represents a long-running operation that is the result of a
       # network API call.
       class Operation
@@ -1986,40 +1889,6 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @public_key = args[:public_key] if args.key?(:public_key)
-        end
-      end
-      
-      # Network template.
-      class ServerNetworkTemplate
-        include Google::Apis::Core::Hashable
-      
-        # Instance types this template is applicable to.
-        # Corresponds to the JSON property `applicableInstanceTypes`
-        # @return [Array<String>]
-        attr_accessor :applicable_instance_types
-      
-        # Logical interfaces.
-        # Corresponds to the JSON property `logicalInterfaces`
-        # @return [Array<Google::Apis::BaremetalsolutionV2::GoogleCloudBaremetalsolutionV2ServerNetworkTemplateLogicalInterface>]
-        attr_accessor :logical_interfaces
-      
-        # Output only. Template's unique name. The full resource name follows the
-        # pattern: `projects/`project`/locations/`location`/serverNetworkTemplate/`
-        # server_network_template`` Generally, the `server_network_template` follows the
-        # syntax of "bond" or "nic".
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @applicable_instance_types = args[:applicable_instance_types] if args.key?(:applicable_instance_types)
-          @logical_interfaces = args[:logical_interfaces] if args.key?(:logical_interfaces)
-          @name = args[:name] if args.key?(:name)
         end
       end
       

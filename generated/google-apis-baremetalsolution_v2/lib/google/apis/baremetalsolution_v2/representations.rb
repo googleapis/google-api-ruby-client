@@ -64,19 +64,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class FetchInstanceProvisioningSettingsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudBaremetalsolutionV2LogicalInterface
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudBaremetalsolutionV2ServerNetworkTemplateLogicalInterface
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -238,12 +226,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class OsImage
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -317,12 +299,6 @@ module Google
       end
       
       class SshKey
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ServerNetworkTemplate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -458,14 +434,6 @@ module Google
         end
       end
       
-      class FetchInstanceProvisioningSettingsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :images, as: 'images', class: Google::Apis::BaremetalsolutionV2::OsImage, decorator: Google::Apis::BaremetalsolutionV2::OsImage::Representation
-      
-        end
-      end
-      
       class GoogleCloudBaremetalsolutionV2LogicalInterface
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -473,15 +441,6 @@ module Google
           collection :logical_network_interfaces, as: 'logicalNetworkInterfaces', class: Google::Apis::BaremetalsolutionV2::LogicalNetworkInterface, decorator: Google::Apis::BaremetalsolutionV2::LogicalNetworkInterface::Representation
       
           property :name, as: 'name'
-        end
-      end
-      
-      class GoogleCloudBaremetalsolutionV2ServerNetworkTemplateLogicalInterface
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :name, as: 'name'
-          property :required, as: 'required'
-          property :type, as: 'type'
         end
       end
       
@@ -807,18 +766,6 @@ module Google
         end
       end
       
-      class OsImage
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :applicable_instance_types, as: 'applicableInstanceTypes'
-          property :code, as: 'code'
-          property :description, as: 'description'
-          property :name, as: 'name'
-          collection :supported_network_templates, as: 'supportedNetworkTemplates', class: Google::Apis::BaremetalsolutionV2::ServerNetworkTemplate, decorator: Google::Apis::BaremetalsolutionV2::ServerNetworkTemplate::Representation
-      
-        end
-      end
-      
       class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -935,16 +882,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :public_key, as: 'publicKey'
-        end
-      end
-      
-      class ServerNetworkTemplate
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :applicable_instance_types, as: 'applicableInstanceTypes'
-          collection :logical_interfaces, as: 'logicalInterfaces', class: Google::Apis::BaremetalsolutionV2::GoogleCloudBaremetalsolutionV2ServerNetworkTemplateLogicalInterface, decorator: Google::Apis::BaremetalsolutionV2::GoogleCloudBaremetalsolutionV2ServerNetworkTemplateLogicalInterface::Representation
-      
-          property :name, as: 'name'
         end
       end
       
