@@ -422,10 +422,10 @@ module Google
         #   Optional. The filter expression. For example: `imagery_type=SPHERICAL`. The
         #   filters supported are: `imagery_type`, `processing_state`, `min_latitude`, `
         #   max_latitude`, `min_longitude`, `max_longitude`, `filename_query`, `
-        #   min_capture_time_seconds`, `max_capture_time_seconds`, and `takedown`. See
-        #   https://google.aip.dev/160 for more information. Filename queries should sent
-        #   as a Phrase in order to support multiple words and special characters by
-        #   adding escaped quotes. Ex: filename_query="example of a phrase.mp4"
+        #   min_capture_time_seconds`, `max_capture_time_seconds. See https://google.aip.
+        #   dev/160 for more information. Filename queries should sent as a Phrase in
+        #   order to support multiple words and special characters by adding escaped
+        #   quotes. Ex: filename_query="example of a phrase.mp4"
         # @param [Fixnum] page_size
         #   Optional. The maximum number of photo sequences to return. `pageSize` must be
         #   non-negative. If `pageSize` is zero or is not provided, the default page size
