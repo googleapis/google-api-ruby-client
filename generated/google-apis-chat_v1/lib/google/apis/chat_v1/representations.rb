@@ -460,6 +460,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class QuotedMessageMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Reaction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1363,6 +1369,8 @@ module Google
           property :matched_url, as: 'matchedUrl', class: Google::Apis::ChatV1::MatchedUrl, decorator: Google::Apis::ChatV1::MatchedUrl::Representation
       
           property :name, as: 'name'
+          property :quoted_message_metadata, as: 'quotedMessageMetadata', class: Google::Apis::ChatV1::QuotedMessageMetadata, decorator: Google::Apis::ChatV1::QuotedMessageMetadata::Representation
+      
           property :sender, as: 'sender', class: Google::Apis::ChatV1::User, decorator: Google::Apis::ChatV1::User::Representation
       
           property :slash_command, as: 'slashCommand', class: Google::Apis::ChatV1::SlashCommand, decorator: Google::Apis::ChatV1::SlashCommand::Representation
@@ -1390,6 +1398,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :url, as: 'url'
+        end
+      end
+      
+      class QuotedMessageMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :last_update_time, as: 'lastUpdateTime'
+          property :name, as: 'name'
         end
       end
       

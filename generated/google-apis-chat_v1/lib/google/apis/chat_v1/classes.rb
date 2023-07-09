@@ -3193,6 +3193,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Information about a quoted message.
+        # Corresponds to the JSON property `quotedMessageMetadata`
+        # @return [Google::Apis::ChatV1::QuotedMessageMetadata]
+        attr_accessor :quoted_message_metadata
+      
         # A user in Google Chat.
         # Corresponds to the JSON property `sender`
         # @return [Google::Apis::ChatV1::User]
@@ -3252,6 +3257,7 @@ module Google
           @last_update_time = args[:last_update_time] if args.key?(:last_update_time)
           @matched_url = args[:matched_url] if args.key?(:matched_url)
           @name = args[:name] if args.key?(:name)
+          @quoted_message_metadata = args[:quoted_message_metadata] if args.key?(:quoted_message_metadata)
           @sender = args[:sender] if args.key?(:sender)
           @slash_command = args[:slash_command] if args.key?(:slash_command)
           @space = args[:space] if args.key?(:space)
@@ -3303,6 +3309,33 @@ module Google
         # Update properties of this object
         def update!(**args)
           @url = args[:url] if args.key?(:url)
+        end
+      end
+      
+      # Information about a quoted message.
+      class QuotedMessageMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The timestamp when the quoted message was created or when the
+        # quoted message was last updated.
+        # Corresponds to the JSON property `lastUpdateTime`
+        # @return [String]
+        attr_accessor :last_update_time
+      
+        # Output only. Resource name of the quoted message. Format: `spaces/`space`/
+        # messages/`message``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @last_update_time = args[:last_update_time] if args.key?(:last_update_time)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
