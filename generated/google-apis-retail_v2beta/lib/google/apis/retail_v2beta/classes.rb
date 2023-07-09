@@ -1140,6 +1140,45 @@ module Google
         end
       end
       
+      # Metadata related to the EnrollSolution method. This will be returned by the
+      # google.longrunning.Operation.metadata field.
+      class GoogleCloudRetailV2alphaEnrollSolutionMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response for EnrollSolution method.
+      class GoogleCloudRetailV2alphaEnrollSolutionResponse
+        include Google::Apis::Core::Hashable
+      
+        # Retail API solution that the project has enrolled.
+        # Corresponds to the JSON property `enrolledSolution`
+        # @return [String]
+        attr_accessor :enrolled_solution
+      
+        # Search solution use case that the project has enrolled.
+        # Corresponds to the JSON property `searchSolutionUseCase`
+        # @return [String]
+        attr_accessor :search_solution_use_case
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enrolled_solution = args[:enrolled_solution] if args.key?(:enrolled_solution)
+          @search_solution_use_case = args[:search_solution_use_case] if args.key?(:search_solution_use_case)
+        end
+      end
+      
       # Configuration of destination for Export related errors.
       class GoogleCloudRetailV2alphaExportErrorsConfig
         include Google::Apis::Core::Hashable
