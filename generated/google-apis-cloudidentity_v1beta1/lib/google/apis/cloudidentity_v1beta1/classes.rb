@@ -1616,6 +1616,11 @@ module Google
         # @return [String]
         attr_accessor :encryption_state
       
+        # Host name of the device.
+        # Corresponds to the JSON property `hostname`
+        # @return [String]
+        attr_accessor :hostname
+      
         # Output only. IMEI number of device if GSM device; empty otherwise.
         # Corresponds to the JSON property `imei`
         # @return [String]
@@ -1721,6 +1726,7 @@ module Google
           @enabled_developer_options = args[:enabled_developer_options] if args.key?(:enabled_developer_options)
           @enabled_usb_debugging = args[:enabled_usb_debugging] if args.key?(:enabled_usb_debugging)
           @encryption_state = args[:encryption_state] if args.key?(:encryption_state)
+          @hostname = args[:hostname] if args.key?(:hostname)
           @imei = args[:imei] if args.key?(:imei)
           @kernel_version = args[:kernel_version] if args.key?(:kernel_version)
           @last_sync_time = args[:last_sync_time] if args.key?(:last_sync_time)
