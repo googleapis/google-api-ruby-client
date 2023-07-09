@@ -619,6 +619,12 @@ module Google
       class EnableMigrationRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. Period after which the migration would be auto disabled. If
+        # unspecified, a default timeout of 48h is used.
+        # Corresponds to the JSON property `enableDuration`
+        # @return [String]
+        attr_accessor :enable_duration
+      
         # Required. List of the on-prem domains to be migrated.
         # Corresponds to the JSON property `migratingDomains`
         # @return [Array<Google::Apis::ManagedidentitiesV1alpha1::OnPremDomainDetails>]
@@ -630,6 +636,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @enable_duration = args[:enable_duration] if args.key?(:enable_duration)
           @migrating_domains = args[:migrating_domains] if args.key?(:migrating_domains)
         end
       end
