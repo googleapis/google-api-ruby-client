@@ -3072,6 +3072,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :agent_content, :base64 => true, as: 'agentContent'
           property :agent_uri, as: 'agentUri'
+          property :commit_sha, as: 'commitSha'
         end
       end
       
@@ -3916,6 +3917,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :agent_content, :base64 => true, as: 'agentContent'
           property :agent_uri, as: 'agentUri'
+          property :commit_sha, as: 'commitSha'
         end
       end
       
