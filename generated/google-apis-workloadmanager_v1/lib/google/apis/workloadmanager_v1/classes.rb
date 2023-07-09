@@ -1007,12 +1007,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :related_resources
       
-        # ComputeInstance, ComputeDisk, VPC, Bare Metal server, etc.
+        # Required. ComputeInstance, ComputeDisk, VPC, Bare Metal server, etc.
         # Corresponds to the JSON property `resourceKind`
         # @return [String]
         attr_accessor :resource_kind
       
-        # The type of this resource.
+        # Required. The type of this resource.
         # Corresponds to the JSON property `resourceType`
         # @return [String]
         attr_accessor :resource_type
@@ -1115,6 +1115,18 @@ module Google
         # @return [String]
         attr_accessor :agent_version
       
+        # Required. The instance_name of the instance that the Insight data comes from.
+        # According to https://linter.aip.dev/122/name-suffix: field names should not
+        # use the _name suffix unless the field would be ambiguous without it.
+        # Corresponds to the JSON property `instance`
+        # @return [String]
+        attr_accessor :instance
+      
+        # Required. The project_id of the cloud project that the Insight data comes from.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
         # A list of SqlServer validation metrics data.
         # Corresponds to the JSON property `validationDetails`
         # @return [Array<Google::Apis::WorkloadmanagerV1::SqlserverValidationValidationDetail>]
@@ -1127,6 +1139,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @agent_version = args[:agent_version] if args.key?(:agent_version)
+          @instance = args[:instance] if args.key?(:instance)
+          @project_id = args[:project_id] if args.key?(:project_id)
           @validation_details = args[:validation_details] if args.key?(:validation_details)
         end
       end

@@ -22,7 +22,9 @@ module Google
     module WorkloadmanagerV1
       # Workload Manager API
       #
-      # 
+      # Workload Manager is a service that provides tooling for enterprise workloads
+      #  to automate the deployment and validation of your workloads against best
+      #  practices and recommendations.
       #
       # @example
       #    require 'google/apis/workloadmanager_v1'

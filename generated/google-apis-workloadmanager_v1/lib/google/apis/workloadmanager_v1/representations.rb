@@ -547,6 +547,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :agent_version, as: 'agentVersion'
+          property :instance, as: 'instance'
+          property :project_id, as: 'projectId'
           collection :validation_details, as: 'validationDetails', class: Google::Apis::WorkloadmanagerV1::SqlserverValidationValidationDetail, decorator: Google::Apis::WorkloadmanagerV1::SqlserverValidationValidationDetail::Representation
       
         end
