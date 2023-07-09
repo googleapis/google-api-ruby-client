@@ -103,13 +103,76 @@ module Google
       class ApplyConversionWorkspaceRequest
         include Google::Apis::Core::Hashable
       
-        # Fully qualified (Uri) name of the destination connection profile.
+        # Optional. Specifies whether the conversion workspace is to be committed
+        # automatically after the apply.
+        # Corresponds to the JSON property `autoCommit`
+        # @return [Boolean]
+        attr_accessor :auto_commit
+        alias_method :auto_commit?, :auto_commit
+      
+        # Optional. Fully qualified (Uri) name of the destination connection profile.
         # Corresponds to the JSON property `connectionProfile`
         # @return [String]
         attr_accessor :connection_profile
       
+        # Optional. Only validates the apply process, but doesn't change the destination
+        # database. Only works for PostgreSQL destination connection profile.
+        # Corresponds to the JSON property `dryRun`
+        # @return [Boolean]
+        attr_accessor :dry_run
+        alias_method :dry_run?, :dry_run
+      
         # Filter which entities to apply. Leaving this field empty will apply all of the
         # entities. Supports Google AIP 160 based filtering.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_commit = args[:auto_commit] if args.key?(:auto_commit)
+          @connection_profile = args[:connection_profile] if args.key?(:connection_profile)
+          @dry_run = args[:dry_run] if args.key?(:dry_run)
+          @filter = args[:filter] if args.key?(:filter)
+        end
+      end
+      
+      # Apply a hash function on the value.
+      class ApplyHash
+        include Google::Apis::Core::Hashable
+      
+        # A generic empty message that you can re-use to avoid defining duplicated empty
+        # messages in your APIs. A typical example is to use it as the request or the
+        # response type of an API method. For instance: service Foo ` rpc Bar(google.
+        # protobuf.Empty) returns (google.protobuf.Empty); `
+        # Corresponds to the JSON property `uuidFromBytes`
+        # @return [Google::Apis::DatamigrationV1::Empty]
+        attr_accessor :uuid_from_bytes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uuid_from_bytes = args[:uuid_from_bytes] if args.key?(:uuid_from_bytes)
+        end
+      end
+      
+      # Details regarding an Apply background job.
+      class ApplyJobDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The connection profile which was used for the apply job.
+        # Corresponds to the JSON property `connectionProfile`
+        # @return [String]
+        attr_accessor :connection_profile
+      
+        # Output only. AIP-160 based filter used to specify the entities to apply
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -125,19 +188,14 @@ module Google
         end
       end
       
-      # Details regarding an Apply background job.
-      class ApplyJobDetails
+      # Set to a specific value (value is converted to fit the target data type)
+      class AssignSpecificValue
         include Google::Apis::Core::Hashable
       
-        # The connection profile which was used for the apply job.
-        # Corresponds to the JSON property `connectionProfile`
+        # Required. Specific value to be assigned
+        # Corresponds to the JSON property `value`
         # @return [String]
-        attr_accessor :connection_profile
-      
-        # AIP-160 based filter used to specify the entities to apply
-        # Corresponds to the JSON property `filter`
-        # @return [String]
-        attr_accessor :filter
+        attr_accessor :value
       
         def initialize(**args)
            update!(**args)
@@ -145,8 +203,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @connection_profile = args[:connection_profile] if args.key?(:connection_profile)
-          @filter = args[:filter] if args.key?(:filter)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -230,13 +287,14 @@ module Google
         # @return [Google::Apis::DatamigrationV1::ApplyJobDetails]
         attr_accessor :apply_job_details
       
-        # Job completion comment, such as how many entities were seeded, how many
-        # warnings were found during conversion, and similar information.
+        # Output only. Job completion comment, such as how many entities were seeded,
+        # how many warnings were found during conversion, and similar information.
         # Corresponds to the JSON property `completionComment`
         # @return [String]
         attr_accessor :completion_comment
       
-        # Job completion state, i.e. the final state after the job completed.
+        # Output only. Job completion state, i.e. the final state after the job
+        # completed.
         # Corresponds to the JSON property `completionState`
         # @return [String]
         attr_accessor :completion_state
@@ -266,8 +324,8 @@ module Google
         # @return [String]
         attr_accessor :job_type
       
-        # Whether the client requested the conversion workspace to be committed after a
-        # successful completion of the job.
+        # Output only. Whether the client requested the conversion workspace to be
+        # committed after a successful completion of the job.
         # Corresponds to the JSON property `requestAutocommit`
         # @return [Boolean]
         attr_accessor :request_autocommit
@@ -740,6 +798,46 @@ module Google
         end
       end
       
+      # Options to configure rule type ConditionalColumnSetValue. The rule is used to
+      # transform the data which is being replicated/migrated. The rule filter field
+      # can refer to one or more entities. The rule scope can be one of: Column.
+      class ConditionalColumnSetValue
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Custom engine specific features.
+        # Corresponds to the JSON property `customFeatures`
+        # @return [Hash<String,Object>]
+        attr_accessor :custom_features
+      
+        # Filter for fixed point number data types such as NUMERIC/NUMBER
+        # Corresponds to the JSON property `sourceNumericFilter`
+        # @return [Google::Apis::DatamigrationV1::SourceNumericFilter]
+        attr_accessor :source_numeric_filter
+      
+        # Filter for text-based data types like varchar.
+        # Corresponds to the JSON property `sourceTextFilter`
+        # @return [Google::Apis::DatamigrationV1::SourceTextFilter]
+        attr_accessor :source_text_filter
+      
+        # Description of data transformation during migration as part of the
+        # ConditionalColumnSetValue.
+        # Corresponds to the JSON property `valueTransformation`
+        # @return [Google::Apis::DatamigrationV1::ValueTransformation]
+        attr_accessor :value_transformation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_features = args[:custom_features] if args.key?(:custom_features)
+          @source_numeric_filter = args[:source_numeric_filter] if args.key?(:source_numeric_filter)
+          @source_text_filter = args[:source_text_filter] if args.key?(:source_text_filter)
+          @value_transformation = args[:value_transformation] if args.key?(:value_transformation)
+        end
+      end
+      
       # A connection profile definition.
       class ConnectionProfile
         include Google::Apis::Core::Hashable
@@ -925,14 +1023,14 @@ module Google
         # @return [Google::Apis::DatamigrationV1::DatabaseEngineInfo]
         attr_accessor :destination
       
-        # The display name for the workspace.
+        # Optional. The display name for the workspace.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # A generic list of settings for the workspace. The settings are database pair
-        # dependant and can indicate default behavior for the mapping rules engine or
-        # turn on or off specific features. Such examples can be:
+        # Optional. A generic list of settings for the workspace. The settings are
+        # database pair dependant and can indicate default behavior for the mapping
+        # rules engine or turn on or off specific features. Such examples can be:
         # convert_foreign_key_to_interleave=true, skip_triggers=false,
         # ignore_non_table_synonyms=true
         # Corresponds to the JSON property `globalSettings`
@@ -1020,15 +1118,23 @@ module Google
       class ConvertConversionWorkspaceRequest
         include Google::Apis::Core::Hashable
       
-        # Specifies whether the conversion workspace is to be committed automatically
-        # after the conversion.
+        # Optional. Specifies whether the conversion workspace is to be committed
+        # automatically after the conversion.
         # Corresponds to the JSON property `autoCommit`
         # @return [Boolean]
         attr_accessor :auto_commit
         alias_method :auto_commit?, :auto_commit
       
-        # Filter the entities to convert. Leaving this field empty will convert all of
-        # the entities. Supports Google AIP-160 style filtering.
+        # Optional. Automatically convert the full entity path for each entity specified
+        # by the filter. For example, if the filter specifies a table, that table schema
+        # (and database if there is one) will also be converted.
+        # Corresponds to the JSON property `convertFullPath`
+        # @return [Boolean]
+        attr_accessor :convert_full_path
+        alias_method :convert_full_path?, :convert_full_path
+      
+        # Optional. Filter the entities to convert. Leaving this field empty will
+        # convert all of the entities. Supports Google AIP-160 style filtering.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -1040,6 +1146,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @auto_commit = args[:auto_commit] if args.key?(:auto_commit)
+          @convert_full_path = args[:convert_full_path] if args.key?(:convert_full_path)
           @filter = args[:filter] if args.key?(:filter)
         end
       end
@@ -1048,7 +1155,7 @@ module Google
       class ConvertJobDetails
         include Google::Apis::Core::Hashable
       
-        # AIP-160 based filter used to specify the entities to convert
+        # Output only. AIP-160 based filter used to specify the entities to convert
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -1060,6 +1167,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @filter = args[:filter] if args.key?(:filter)
+        end
+      end
+      
+      # Options to configure rule type ConvertROWIDToColumn. The rule is used to add
+      # column rowid to destination tables based on an Oracle rowid function/property.
+      # The rule filter field can refer to one or more entities. The rule scope can be
+      # one of: Table. This rule requires additional filter to be specified beyond the
+      # basic rule filter field, which is whether or not to work on tables which
+      # already have a primary key defined.
+      class ConvertRowIdToColumn
+        include Google::Apis::Core::Hashable
+      
+        # Required. Only work on tables without primary key defined
+        # Corresponds to the JSON property `onlyIfNoPrimaryKey`
+        # @return [Boolean]
+        attr_accessor :only_if_no_primary_key
+        alias_method :only_if_no_primary_key?, :only_if_no_primary_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @only_if_no_primary_key = args[:only_if_no_primary_key] if args.key?(:only_if_no_primary_key)
         end
       end
       
@@ -1094,6 +1226,11 @@ module Google
       class DatabaseEntity
         include Google::Apis::Core::Hashable
       
+        # DatabaseInstance acts as a parent entity to other database entities.
+        # Corresponds to the JSON property `database`
+        # @return [Google::Apis::DatamigrationV1::DatabaseInstanceEntity]
+        attr_accessor :database
+      
         # Function's parent is a schema.
         # Corresponds to the JSON property `databaseFunction`
         # @return [Google::Apis::DatamigrationV1::FunctionEntity]
@@ -1104,10 +1241,22 @@ module Google
         # @return [Google::Apis::DatamigrationV1::PackageEntity]
         attr_accessor :database_package
       
+        # Details about the entity DDL script. Multiple DDL scripts are provided for
+        # child entities such as a table entity will have one DDL for the table with
+        # additional DDLs for each index, constraint and such.
+        # Corresponds to the JSON property `entityDdl`
+        # @return [Array<Google::Apis::DatamigrationV1::EntityDdl>]
+        attr_accessor :entity_ddl
+      
         # The type of the database entity (table, view, index, ...).
         # Corresponds to the JSON property `entityType`
         # @return [String]
         attr_accessor :entity_type
+      
+        # Details about the various issues found for the entity.
+        # Corresponds to the JSON property `issues`
+        # @return [Array<Google::Apis::DatamigrationV1::EntityIssue>]
+        attr_accessor :issues
       
         # Details about entity mappings. For source tree entities, this holds the draft
         # entities which were generated by the mapping rules. For draft tree entities,
@@ -1116,6 +1265,11 @@ module Google
         # Corresponds to the JSON property `mappings`
         # @return [Array<Google::Apis::DatamigrationV1::EntityMapping>]
         attr_accessor :mappings
+      
+        # MaterializedView's parent is a schema.
+        # Corresponds to the JSON property `materializedView`
+        # @return [Google::Apis::DatamigrationV1::MaterializedViewEntity]
+        attr_accessor :materialized_view
       
         # The full name of the parent entity (e.g. schema name).
         # Corresponds to the JSON property `parentEntity`
@@ -1161,6 +1315,11 @@ module Google
         # @return [String]
         attr_accessor :tree
       
+        # UDT's parent is a schema.
+        # Corresponds to the JSON property `udt`
+        # @return [Google::Apis::DatamigrationV1::UdtEntity]
+        attr_accessor :udt
+      
         # View's parent is a schema.
         # Corresponds to the JSON property `view`
         # @return [Google::Apis::DatamigrationV1::ViewEntity]
@@ -1172,10 +1331,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @database = args[:database] if args.key?(:database)
           @database_function = args[:database_function] if args.key?(:database_function)
           @database_package = args[:database_package] if args.key?(:database_package)
+          @entity_ddl = args[:entity_ddl] if args.key?(:entity_ddl)
           @entity_type = args[:entity_type] if args.key?(:entity_type)
+          @issues = args[:issues] if args.key?(:issues)
           @mappings = args[:mappings] if args.key?(:mappings)
+          @materialized_view = args[:materialized_view] if args.key?(:materialized_view)
           @parent_entity = args[:parent_entity] if args.key?(:parent_entity)
           @schema = args[:schema] if args.key?(:schema)
           @sequence = args[:sequence] if args.key?(:sequence)
@@ -1184,7 +1347,27 @@ module Google
           @synonym = args[:synonym] if args.key?(:synonym)
           @table = args[:table] if args.key?(:table)
           @tree = args[:tree] if args.key?(:tree)
+          @udt = args[:udt] if args.key?(:udt)
           @view = args[:view] if args.key?(:view)
+        end
+      end
+      
+      # DatabaseInstance acts as a parent entity to other database entities.
+      class DatabaseInstanceEntity
+        include Google::Apis::Core::Hashable
+      
+        # Custom engine specific features.
+        # Corresponds to the JSON property `customFeatures`
+        # @return [Hash<String,Object>]
+        attr_accessor :custom_features
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_features = args[:custom_features] if args.key?(:custom_features)
         end
       end
       
@@ -1255,6 +1438,32 @@ module Google
         def update!(**args)
           @database_entities = args[:database_entities] if args.key?(:database_entities)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Filter based on relation between source value and compare value of type double
+      # in ConditionalColumnSetValue
+      class DoubleComparisonFilter
+        include Google::Apis::Core::Hashable
+      
+        # Required. Double compare value to be used
+        # Corresponds to the JSON property `value`
+        # @return [Float]
+        attr_accessor :value
+      
+        # Required. Relation between source value and compare value
+        # Corresponds to the JSON property `valueComparison`
+        # @return [String]
+        attr_accessor :value_comparison
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @value = args[:value] if args.key?(:value)
+          @value_comparison = args[:value_comparison] if args.key?(:value_comparison)
         end
       end
       
@@ -1340,6 +1549,110 @@ module Google
         end
       end
       
+      # A single DDL statement for a specific entity
+      class EntityDdl
+        include Google::Apis::Core::Hashable
+      
+        # The actual ddl code.
+        # Corresponds to the JSON property `ddl`
+        # @return [String]
+        attr_accessor :ddl
+      
+        # Type of DDL (Create, Alter).
+        # Corresponds to the JSON property `ddlType`
+        # @return [String]
+        attr_accessor :ddl_type
+      
+        # The name of the database entity the ddl refers to.
+        # Corresponds to the JSON property `entity`
+        # @return [String]
+        attr_accessor :entity
+      
+        # The entity type (if the DDL is for a sub entity).
+        # Corresponds to the JSON property `entityType`
+        # @return [String]
+        attr_accessor :entity_type
+      
+        # EntityIssues found for this ddl.
+        # Corresponds to the JSON property `issueId`
+        # @return [Array<String>]
+        attr_accessor :issue_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ddl = args[:ddl] if args.key?(:ddl)
+          @ddl_type = args[:ddl_type] if args.key?(:ddl_type)
+          @entity = args[:entity] if args.key?(:entity)
+          @entity_type = args[:entity_type] if args.key?(:entity_type)
+          @issue_id = args[:issue_id] if args.key?(:issue_id)
+        end
+      end
+      
+      # Issue related to the entity.
+      class EntityIssue
+        include Google::Apis::Core::Hashable
+      
+        # Error/Warning code
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # The ddl which caused the issue, if relevant.
+        # Corresponds to the JSON property `ddl`
+        # @return [String]
+        attr_accessor :ddl
+      
+        # The entity type (if the DDL is for a sub entity).
+        # Corresponds to the JSON property `entityType`
+        # @return [String]
+        attr_accessor :entity_type
+      
+        # Unique Issue ID.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Issue detailed message
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Issue position.
+        # Corresponds to the JSON property `position`
+        # @return [Google::Apis::DatamigrationV1::Position]
+        attr_accessor :position
+      
+        # Severity of the issue
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        # The type of the issue.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @ddl = args[:ddl] if args.key?(:ddl)
+          @entity_type = args[:entity_type] if args.key?(:entity_type)
+          @id = args[:id] if args.key?(:id)
+          @message = args[:message] if args.key?(:message)
+          @position = args[:position] if args.key?(:position)
+          @severity = args[:severity] if args.key?(:severity)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # Details of the mappings of a database entity.
       class EntityMapping
         include Google::Apis::Core::Hashable
@@ -1420,6 +1733,28 @@ module Google
         end
       end
       
+      # Options to configure rule type EntityMove. The rule is used to move an entity
+      # to a new schema. The rule filter field can refer to one or more entities. The
+      # rule scope can be one of: Table, Column, Constraint, Index, View, Function,
+      # Stored Procedure, Materialized View, Sequence, UDT
+      class EntityMove
+        include Google::Apis::Core::Hashable
+      
+        # Required. The new schema
+        # Corresponds to the JSON property `newSchema`
+        # @return [String]
+        attr_accessor :new_schema
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @new_schema = args[:new_schema] if args.key?(:new_schema)
+        end
+      end
+      
       # Represents a textual expression in the Common Expression Language (CEL) syntax.
       # CEL is a C-like expression language. The syntax and semantics of CEL are
       # documented at https://github.com/google/cel-spec. Example (Comparison): title:
@@ -1497,6 +1832,34 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @static_ips = args[:static_ips] if args.key?(:static_ips)
+        end
+      end
+      
+      # Options to configure rule type FilterTableColumns. The rule is used to filter
+      # the list of columns to include or exclude from a table. The rule filter field
+      # can refer to one entity. The rule scope can be: Table Only one of the two
+      # lists can be specified for the rule.
+      class FilterTableColumns
+        include Google::Apis::Core::Hashable
+      
+        # Optional. List of columns to be excluded for a particular table.
+        # Corresponds to the JSON property `excludeColumns`
+        # @return [Array<String>]
+        attr_accessor :exclude_columns
+      
+        # Optional. List of columns to be included for a particular table.
+        # Corresponds to the JSON property `includeColumns`
+        # @return [Array<String>]
+        attr_accessor :include_columns
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exclude_columns = args[:exclude_columns] if args.key?(:exclude_columns)
+          @include_columns = args[:include_columns] if args.key?(:include_columns)
         end
       end
       
@@ -1711,19 +2074,19 @@ module Google
       class ImportMappingRulesRequest
         include Google::Apis::Core::Hashable
       
-        # Should the conversion workspace be committed automatically after the import
-        # operation.
+        # Required. Should the conversion workspace be committed automatically after the
+        # import operation.
         # Corresponds to the JSON property `autoCommit`
         # @return [Boolean]
         attr_accessor :auto_commit
         alias_method :auto_commit?, :auto_commit
       
-        # One or more rules files.
+        # Required. One or more rules files.
         # Corresponds to the JSON property `rulesFiles`
         # @return [Array<Google::Apis::DatamigrationV1::RulesFile>]
         attr_accessor :rules_files
       
-        # The format of the rules content file.
+        # Required. The format of the rules content file.
         # Corresponds to the JSON property `rulesFormat`
         # @return [String]
         attr_accessor :rules_format
@@ -1744,12 +2107,12 @@ module Google
       class ImportRulesJobDetails
         include Google::Apis::Core::Hashable
       
-        # The requested file format.
+        # Output only. The requested file format.
         # Corresponds to the JSON property `fileFormat`
         # @return [String]
         attr_accessor :file_format
       
-        # File names used for the import rules job.
+        # Output only. File names used for the import rules job.
         # Corresponds to the JSON property `files`
         # @return [Array<String>]
         attr_accessor :files
@@ -1808,6 +2171,32 @@ module Google
           @table_columns = args[:table_columns] if args.key?(:table_columns)
           @type = args[:type] if args.key?(:type)
           @unique = args[:unique] if args.key?(:unique)
+        end
+      end
+      
+      # Filter based on relation between source value and compare value of type
+      # integer in ConditionalColumnSetValue
+      class IntComparisonFilter
+        include Google::Apis::Core::Hashable
+      
+        # Required. Integer compare value to be used
+        # Corresponds to the JSON property `value`
+        # @return [Fixnum]
+        attr_accessor :value
+      
+        # Required. Relation between source value and compare value
+        # Corresponds to the JSON property `valueComparison`
+        # @return [String]
+        attr_accessor :value_comparison
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @value = args[:value] if args.key?(:value)
+          @value_comparison = args[:value_comparison] if args.key?(:value_comparison)
         end
       end
       
@@ -1896,6 +2285,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @locations = args[:locations] if args.key?(:locations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for 'ListMappingRulesRequest' request.
+      class ListMappingRulesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of conversion workspace mapping rules.
+        # Corresponds to the JSON property `mappingRules`
+        # @return [Array<Google::Apis::DatamigrationV1::MappingRule>]
+        attr_accessor :mapping_rules
+      
+        # A token which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mapping_rules = args[:mapping_rules] if args.key?(:mapping_rules)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
@@ -2052,6 +2467,255 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cpu_count = args[:cpu_count] if args.key?(:cpu_count)
+        end
+      end
+      
+      # Definition of a transformation that is to be applied to a group of entities in
+      # the source schema. Several such transformations can be applied to an entity
+      # sequentially to define the corresponding entity in the target schema.
+      class MappingRule
+        include Google::Apis::Core::Hashable
+      
+        # Options to configure rule type ConditionalColumnSetValue. The rule is used to
+        # transform the data which is being replicated/migrated. The rule filter field
+        # can refer to one or more entities. The rule scope can be one of: Column.
+        # Corresponds to the JSON property `conditionalColumnSetValue`
+        # @return [Google::Apis::DatamigrationV1::ConditionalColumnSetValue]
+        attr_accessor :conditional_column_set_value
+      
+        # Options to configure rule type ConvertROWIDToColumn. The rule is used to add
+        # column rowid to destination tables based on an Oracle rowid function/property.
+        # The rule filter field can refer to one or more entities. The rule scope can be
+        # one of: Table. This rule requires additional filter to be specified beyond the
+        # basic rule filter field, which is whether or not to work on tables which
+        # already have a primary key defined.
+        # Corresponds to the JSON property `convertRowidColumn`
+        # @return [Google::Apis::DatamigrationV1::ConvertRowIdToColumn]
+        attr_accessor :convert_rowid_column
+      
+        # Optional. A human readable name
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Options to configure rule type EntityMove. The rule is used to move an entity
+        # to a new schema. The rule filter field can refer to one or more entities. The
+        # rule scope can be one of: Table, Column, Constraint, Index, View, Function,
+        # Stored Procedure, Materialized View, Sequence, UDT
+        # Corresponds to the JSON property `entityMove`
+        # @return [Google::Apis::DatamigrationV1::EntityMove]
+        attr_accessor :entity_move
+      
+        # A filter defining the entities that a mapping rule should be applied to. When
+        # more than one field is specified, the rule is applied only to entities which
+        # match all the fields.
+        # Corresponds to the JSON property `filter`
+        # @return [Google::Apis::DatamigrationV1::MappingRuleFilter]
+        attr_accessor :filter
+      
+        # Options to configure rule type FilterTableColumns. The rule is used to filter
+        # the list of columns to include or exclude from a table. The rule filter field
+        # can refer to one entity. The rule scope can be: Table Only one of the two
+        # lists can be specified for the rule.
+        # Corresponds to the JSON property `filterTableColumns`
+        # @return [Google::Apis::DatamigrationV1::FilterTableColumns]
+        attr_accessor :filter_table_columns
+      
+        # Options to configure rule type MultiColumnDatatypeChange. The rule is used to
+        # change the data type and associated properties of multiple columns at once.
+        # The rule filter field can refer to one or more entities. The rule scope can be
+        # one of:Column. This rule requires additional filters to be specified beyond
+        # the basic rule filter field, which is the source data type, but the rule
+        # supports additional filtering capabilities such as the minimum and maximum
+        # field length. All additional filters which are specified are required to be
+        # met in order for the rule to be applied (logical AND between the fields).
+        # Corresponds to the JSON property `multiColumnDataTypeChange`
+        # @return [Google::Apis::DatamigrationV1::MultiColumnDatatypeChange]
+        attr_accessor :multi_column_data_type_change
+      
+        # Options to configure rule type MultiEntityRename. The rule is used to rename
+        # multiple entities. The rule filter field can refer to one or more entities.
+        # The rule scope can be one of: Database, Schema, Table, Column, Constraint,
+        # Index, View, Function, Stored Procedure, Materialized View, Sequence, UDT
+        # Corresponds to the JSON property `multiEntityRename`
+        # @return [Google::Apis::DatamigrationV1::MultiEntityRename]
+        attr_accessor :multi_entity_rename
+      
+        # Full name of the mapping rule resource, in the form of: projects/`project`/
+        # locations/`location`/conversionWorkspaces/`set`/mappingRule/`rule`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The timestamp that the revision was created.
+        # Corresponds to the JSON property `revisionCreateTime`
+        # @return [String]
+        attr_accessor :revision_create_time
+      
+        # Output only. The revision ID of the mapping rule. A new revision is committed
+        # whenever the mapping rule is changed in any way. The format is an 8-character
+        # hexadecimal string.
+        # Corresponds to the JSON property `revisionId`
+        # @return [String]
+        attr_accessor :revision_id
+      
+        # Required. The order in which the rule is applied. Lower order rules are
+        # applied before higher value rules so they may end up being overridden.
+        # Corresponds to the JSON property `ruleOrder`
+        # @return [Fixnum]
+        attr_accessor :rule_order
+      
+        # Required. The rule scope
+        # Corresponds to the JSON property `ruleScope`
+        # @return [String]
+        attr_accessor :rule_scope
+      
+        # Options to configure rule type SetTablePrimaryKey. The rule is used to specify
+        # the columns and name to configure/alter the primary key of a table. The rule
+        # filter field can refer to one entity. The rule scope can be one of: Table.
+        # Corresponds to the JSON property `setTablePrimaryKey`
+        # @return [Google::Apis::DatamigrationV1::SetTablePrimaryKey]
+        attr_accessor :set_table_primary_key
+      
+        # Options to configure rule type SingleColumnChange. The rule is used to change
+        # the properties of a column. The rule filter field can refer to one entity. The
+        # rule scope can be one of: Column. When using this rule, if a field is not
+        # specified than the destination column's configuration will be the same as the
+        # one in the source column..
+        # Corresponds to the JSON property `singleColumnChange`
+        # @return [Google::Apis::DatamigrationV1::SingleColumnChange]
+        attr_accessor :single_column_change
+      
+        # Options to configure rule type SingleEntityRename. The rule is used to rename
+        # an entity. The rule filter field can refer to only one entity. The rule scope
+        # can be one of: Database, Schema, Table, Column, Constraint, Index, View,
+        # Function, Stored Procedure, Materialized View, Sequence, UDT, Synonym
+        # Corresponds to the JSON property `singleEntityRename`
+        # @return [Google::Apis::DatamigrationV1::SingleEntityRename]
+        attr_accessor :single_entity_rename
+      
+        # Options to configure rule type SinglePackageChange. The rule is used to alter
+        # the sql code for a package entities. The rule filter field can refer to one
+        # entity. The rule scope can be: Package
+        # Corresponds to the JSON property `singlePackageChange`
+        # @return [Google::Apis::DatamigrationV1::SinglePackageChange]
+        attr_accessor :single_package_change
+      
+        # Options to configure rule type SourceSqlChange. The rule is used to alter the
+        # sql code for database entities. The rule filter field can refer to one entity.
+        # The rule scope can be: StoredProcedure, Function, Trigger, View
+        # Corresponds to the JSON property `sourceSqlChange`
+        # @return [Google::Apis::DatamigrationV1::SourceSqlChange]
+        attr_accessor :source_sql_change
+      
+        # Optional. The mapping rule state
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conditional_column_set_value = args[:conditional_column_set_value] if args.key?(:conditional_column_set_value)
+          @convert_rowid_column = args[:convert_rowid_column] if args.key?(:convert_rowid_column)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @entity_move = args[:entity_move] if args.key?(:entity_move)
+          @filter = args[:filter] if args.key?(:filter)
+          @filter_table_columns = args[:filter_table_columns] if args.key?(:filter_table_columns)
+          @multi_column_data_type_change = args[:multi_column_data_type_change] if args.key?(:multi_column_data_type_change)
+          @multi_entity_rename = args[:multi_entity_rename] if args.key?(:multi_entity_rename)
+          @name = args[:name] if args.key?(:name)
+          @revision_create_time = args[:revision_create_time] if args.key?(:revision_create_time)
+          @revision_id = args[:revision_id] if args.key?(:revision_id)
+          @rule_order = args[:rule_order] if args.key?(:rule_order)
+          @rule_scope = args[:rule_scope] if args.key?(:rule_scope)
+          @set_table_primary_key = args[:set_table_primary_key] if args.key?(:set_table_primary_key)
+          @single_column_change = args[:single_column_change] if args.key?(:single_column_change)
+          @single_entity_rename = args[:single_entity_rename] if args.key?(:single_entity_rename)
+          @single_package_change = args[:single_package_change] if args.key?(:single_package_change)
+          @source_sql_change = args[:source_sql_change] if args.key?(:source_sql_change)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # A filter defining the entities that a mapping rule should be applied to. When
+      # more than one field is specified, the rule is applied only to entities which
+      # match all the fields.
+      class MappingRuleFilter
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The rule should be applied to specific entities defined by their
+        # fully qualified names.
+        # Corresponds to the JSON property `entities`
+        # @return [Array<String>]
+        attr_accessor :entities
+      
+        # Optional. The rule should be applied to entities whose non-qualified name
+        # contains the given string.
+        # Corresponds to the JSON property `entityNameContains`
+        # @return [String]
+        attr_accessor :entity_name_contains
+      
+        # Optional. The rule should be applied to entities whose non-qualified name
+        # starts with the given prefix.
+        # Corresponds to the JSON property `entityNamePrefix`
+        # @return [String]
+        attr_accessor :entity_name_prefix
+      
+        # Optional. The rule should be applied to entities whose non-qualified name ends
+        # with the given suffix.
+        # Corresponds to the JSON property `entityNameSuffix`
+        # @return [String]
+        attr_accessor :entity_name_suffix
+      
+        # Optional. The rule should be applied to entities whose parent entity (fully
+        # qualified name) matches the given value. For example, if the rule applies to a
+        # table entity, the expected value should be a schema (schema). If the rule
+        # applies to a column or index entity, the expected value can be either a schema
+        # (schema) or a table (schema.table)
+        # Corresponds to the JSON property `parentEntity`
+        # @return [String]
+        attr_accessor :parent_entity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entities = args[:entities] if args.key?(:entities)
+          @entity_name_contains = args[:entity_name_contains] if args.key?(:entity_name_contains)
+          @entity_name_prefix = args[:entity_name_prefix] if args.key?(:entity_name_prefix)
+          @entity_name_suffix = args[:entity_name_suffix] if args.key?(:entity_name_suffix)
+          @parent_entity = args[:parent_entity] if args.key?(:parent_entity)
+        end
+      end
+      
+      # MaterializedView's parent is a schema.
+      class MaterializedViewEntity
+        include Google::Apis::Core::Hashable
+      
+        # Custom engine specific features.
+        # Corresponds to the JSON property `customFeatures`
+        # @return [Hash<String,Object>]
+        attr_accessor :custom_features
+      
+        # The SQL code which creates the view.
+        # Corresponds to the JSON property `sqlCode`
+        # @return [String]
+        attr_accessor :sql_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_features = args[:custom_features] if args.key?(:custom_features)
+          @sql_code = args[:sql_code] if args.key?(:sql_code)
         end
       end
       
@@ -2271,6 +2935,119 @@ module Google
           @error_code = args[:error_code] if args.key?(:error_code)
           @error_detail_message = args[:error_detail_message] if args.key?(:error_detail_message)
           @error_message = args[:error_message] if args.key?(:error_message)
+        end
+      end
+      
+      # Options to configure rule type MultiColumnDatatypeChange. The rule is used to
+      # change the data type and associated properties of multiple columns at once.
+      # The rule filter field can refer to one or more entities. The rule scope can be
+      # one of:Column. This rule requires additional filters to be specified beyond
+      # the basic rule filter field, which is the source data type, but the rule
+      # supports additional filtering capabilities such as the minimum and maximum
+      # field length. All additional filters which are specified are required to be
+      # met in order for the rule to be applied (logical AND between the fields).
+      class MultiColumnDatatypeChange
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Custom engine specific features.
+        # Corresponds to the JSON property `customFeatures`
+        # @return [Hash<String,Object>]
+        attr_accessor :custom_features
+      
+        # Required. New data type.
+        # Corresponds to the JSON property `newDataType`
+        # @return [String]
+        attr_accessor :new_data_type
+      
+        # Optional. Column fractional seconds precision - used only for timestamp based
+        # datatypes - if not specified and relevant uses the source column fractional
+        # seconds precision.
+        # Corresponds to the JSON property `overrideFractionalSecondsPrecision`
+        # @return [Fixnum]
+        attr_accessor :override_fractional_seconds_precision
+      
+        # Optional. Column length - e.g. varchar (50) - if not specified and relevant
+        # uses the source column length.
+        # Corresponds to the JSON property `overrideLength`
+        # @return [Fixnum]
+        attr_accessor :override_length
+      
+        # Optional. Column precision - when relevant - if not specified and relevant
+        # uses the source column precision.
+        # Corresponds to the JSON property `overridePrecision`
+        # @return [Fixnum]
+        attr_accessor :override_precision
+      
+        # Optional. Column scale - when relevant - if not specified and relevant uses
+        # the source column scale.
+        # Corresponds to the JSON property `overrideScale`
+        # @return [Fixnum]
+        attr_accessor :override_scale
+      
+        # Required. Filter on source data type.
+        # Corresponds to the JSON property `sourceDataTypeFilter`
+        # @return [String]
+        attr_accessor :source_data_type_filter
+      
+        # Filter for fixed point number data types such as NUMERIC/NUMBER
+        # Corresponds to the JSON property `sourceNumericFilter`
+        # @return [Google::Apis::DatamigrationV1::SourceNumericFilter]
+        attr_accessor :source_numeric_filter
+      
+        # Filter for text-based data types like varchar.
+        # Corresponds to the JSON property `sourceTextFilter`
+        # @return [Google::Apis::DatamigrationV1::SourceTextFilter]
+        attr_accessor :source_text_filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_features = args[:custom_features] if args.key?(:custom_features)
+          @new_data_type = args[:new_data_type] if args.key?(:new_data_type)
+          @override_fractional_seconds_precision = args[:override_fractional_seconds_precision] if args.key?(:override_fractional_seconds_precision)
+          @override_length = args[:override_length] if args.key?(:override_length)
+          @override_precision = args[:override_precision] if args.key?(:override_precision)
+          @override_scale = args[:override_scale] if args.key?(:override_scale)
+          @source_data_type_filter = args[:source_data_type_filter] if args.key?(:source_data_type_filter)
+          @source_numeric_filter = args[:source_numeric_filter] if args.key?(:source_numeric_filter)
+          @source_text_filter = args[:source_text_filter] if args.key?(:source_text_filter)
+        end
+      end
+      
+      # Options to configure rule type MultiEntityRename. The rule is used to rename
+      # multiple entities. The rule filter field can refer to one or more entities.
+      # The rule scope can be one of: Database, Schema, Table, Column, Constraint,
+      # Index, View, Function, Stored Procedure, Materialized View, Sequence, UDT
+      class MultiEntityRename
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The pattern used to generate the new entity's name. This pattern
+        # must include the characters '`name`', which will be replaced with the name of
+        # the original entity. For example, the pattern 't_`name`' for an entity name
+        # jobs would be converted to 't_jobs'. If unspecified, the default value for
+        # this field is '`name`'
+        # Corresponds to the JSON property `newNamePattern`
+        # @return [String]
+        attr_accessor :new_name_pattern
+      
+        # Optional. Additional transformation that can be done on the source entity name
+        # before it is being used by the new_name_pattern, for example lower case. If no
+        # transformation is desired, use NO_TRANSFORMATION
+        # Corresponds to the JSON property `sourceNameTransformation`
+        # @return [String]
+        attr_accessor :source_name_transformation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @new_name_pattern = args[:new_name_pattern] if args.key?(:new_name_pattern)
+          @source_name_transformation = args[:source_name_transformation] if args.key?(:source_name_transformation)
         end
       end
       
@@ -2599,6 +3376,43 @@ module Google
           @bindings = args[:bindings] if args.key?(:bindings)
           @etag = args[:etag] if args.key?(:etag)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Issue position.
+      class Position
+        include Google::Apis::Core::Hashable
+      
+        # Issue column number
+        # Corresponds to the JSON property `column`
+        # @return [Fixnum]
+        attr_accessor :column
+      
+        # Issue length
+        # Corresponds to the JSON property `length`
+        # @return [Fixnum]
+        attr_accessor :length
+      
+        # Issue line number
+        # Corresponds to the JSON property `line`
+        # @return [Fixnum]
+        attr_accessor :line
+      
+        # Issue offset
+        # Corresponds to the JSON property `offset`
+        # @return [Fixnum]
+        attr_accessor :offset
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @column = args[:column] if args.key?(:column)
+          @length = args[:length] if args.key?(:length)
+          @line = args[:line] if args.key?(:line)
+          @offset = args[:offset] if args.key?(:offset)
         end
       end
       
@@ -2942,17 +3756,38 @@ module Google
         end
       end
       
+      # This allows the data to change scale, for example if the source is 2 digits
+      # after the decimal point, specify round to scale value = 2. If for example the
+      # value needs to be converted to an integer, use round to scale value = 0.
+      class RoundToScale
+        include Google::Apis::Core::Hashable
+      
+        # Required. Scale value to be used
+        # Corresponds to the JSON property `scale`
+        # @return [Fixnum]
+        attr_accessor :scale
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @scale = args[:scale] if args.key?(:scale)
+        end
+      end
+      
       # Details of a single rules file.
       class RulesFile
         include Google::Apis::Core::Hashable
       
-        # The text content of the rules that needs to be converted.
+        # Required. The text content of the rules that needs to be converted.
         # Corresponds to the JSON property `rulesContent`
         # @return [String]
         attr_accessor :rules_content
       
-        # The filename of the rules that needs to be converted. The filename is used
-        # mainly so that future logs of the import rules job contain it, and can
+        # Required. The filename of the rules that needs to be converted. The filename
+        # is used mainly so that future logs of the import rules job contain it, and can
         # therefore be searched by it.
         # Corresponds to the JSON property `rulesSourceFilename`
         # @return [String]
@@ -3022,12 +3857,12 @@ module Google
         attr_accessor :auto_commit
         alias_method :auto_commit?, :auto_commit
       
-        # Fully qualified (Uri) name of the destination connection profile.
+        # Optional. Fully qualified (Uri) name of the destination connection profile.
         # Corresponds to the JSON property `destinationConnectionProfile`
         # @return [String]
         attr_accessor :destination_connection_profile
       
-        # Fully qualified (Uri) name of the source connection profile.
+        # Optional. Fully qualified (Uri) name of the source connection profile.
         # Corresponds to the JSON property `sourceConnectionProfile`
         # @return [String]
         attr_accessor :source_connection_profile
@@ -3048,7 +3883,7 @@ module Google
       class SeedJobDetails
         include Google::Apis::Core::Hashable
       
-        # The connection profile which was used for the seed job.
+        # Output only. The connection profile which was used for the seed job.
         # Corresponds to the JSON property `connectionProfile`
         # @return [String]
         attr_accessor :connection_profile
@@ -3175,6 +4010,291 @@ module Google
         def update!(**args)
           @policy = args[:policy] if args.key?(:policy)
           @update_mask = args[:update_mask] if args.key?(:update_mask)
+        end
+      end
+      
+      # Options to configure rule type SetTablePrimaryKey. The rule is used to specify
+      # the columns and name to configure/alter the primary key of a table. The rule
+      # filter field can refer to one entity. The rule scope can be one of: Table.
+      class SetTablePrimaryKey
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Name for the primary key
+        # Corresponds to the JSON property `primaryKey`
+        # @return [String]
+        attr_accessor :primary_key
+      
+        # Required. List of column names for the primary key
+        # Corresponds to the JSON property `primaryKeyColumns`
+        # @return [Array<String>]
+        attr_accessor :primary_key_columns
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @primary_key = args[:primary_key] if args.key?(:primary_key)
+          @primary_key_columns = args[:primary_key_columns] if args.key?(:primary_key_columns)
+        end
+      end
+      
+      # Options to configure rule type SingleColumnChange. The rule is used to change
+      # the properties of a column. The rule filter field can refer to one entity. The
+      # rule scope can be one of: Column. When using this rule, if a field is not
+      # specified than the destination column's configuration will be the same as the
+      # one in the source column..
+      class SingleColumnChange
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Is the column of array type.
+        # Corresponds to the JSON property `array`
+        # @return [Boolean]
+        attr_accessor :array
+        alias_method :array?, :array
+      
+        # Optional. The length of the array, only relevant if the column type is an
+        # array.
+        # Corresponds to the JSON property `arrayLength`
+        # @return [Fixnum]
+        attr_accessor :array_length
+      
+        # Optional. Is the column auto-generated/identity.
+        # Corresponds to the JSON property `autoGenerated`
+        # @return [Boolean]
+        attr_accessor :auto_generated
+        alias_method :auto_generated?, :auto_generated
+      
+        # Optional. Charset override - instead of table level charset.
+        # Corresponds to the JSON property `charset`
+        # @return [String]
+        attr_accessor :charset
+      
+        # Optional. Collation override - instead of table level collation.
+        # Corresponds to the JSON property `collation`
+        # @return [String]
+        attr_accessor :collation
+      
+        # Optional. Comment associated with the column.
+        # Corresponds to the JSON property `comment`
+        # @return [String]
+        attr_accessor :comment
+      
+        # Optional. Custom engine specific features.
+        # Corresponds to the JSON property `customFeatures`
+        # @return [Hash<String,Object>]
+        attr_accessor :custom_features
+      
+        # Optional. Column data type name.
+        # Corresponds to the JSON property `dataType`
+        # @return [String]
+        attr_accessor :data_type
+      
+        # Optional. Column fractional seconds precision - e.g. 2 as in timestamp (2) -
+        # when relevant.
+        # Corresponds to the JSON property `fractionalSecondsPrecision`
+        # @return [Fixnum]
+        attr_accessor :fractional_seconds_precision
+      
+        # Optional. Column length - e.g. 50 as in varchar (50) - when relevant.
+        # Corresponds to the JSON property `length`
+        # @return [Fixnum]
+        attr_accessor :length
+      
+        # Optional. Is the column nullable.
+        # Corresponds to the JSON property `nullable`
+        # @return [Boolean]
+        attr_accessor :nullable
+        alias_method :nullable?, :nullable
+      
+        # Optional. Column precision - e.g. 8 as in double (8,2) - when relevant.
+        # Corresponds to the JSON property `precision`
+        # @return [Fixnum]
+        attr_accessor :precision
+      
+        # Optional. Column scale - e.g. 2 as in double (8,2) - when relevant.
+        # Corresponds to the JSON property `scale`
+        # @return [Fixnum]
+        attr_accessor :scale
+      
+        # Optional. Specifies the list of values allowed in the column.
+        # Corresponds to the JSON property `setValues`
+        # @return [Array<String>]
+        attr_accessor :set_values
+      
+        # Optional. Is the column a UDT (User-defined Type).
+        # Corresponds to the JSON property `udt`
+        # @return [Boolean]
+        attr_accessor :udt
+        alias_method :udt?, :udt
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @array = args[:array] if args.key?(:array)
+          @array_length = args[:array_length] if args.key?(:array_length)
+          @auto_generated = args[:auto_generated] if args.key?(:auto_generated)
+          @charset = args[:charset] if args.key?(:charset)
+          @collation = args[:collation] if args.key?(:collation)
+          @comment = args[:comment] if args.key?(:comment)
+          @custom_features = args[:custom_features] if args.key?(:custom_features)
+          @data_type = args[:data_type] if args.key?(:data_type)
+          @fractional_seconds_precision = args[:fractional_seconds_precision] if args.key?(:fractional_seconds_precision)
+          @length = args[:length] if args.key?(:length)
+          @nullable = args[:nullable] if args.key?(:nullable)
+          @precision = args[:precision] if args.key?(:precision)
+          @scale = args[:scale] if args.key?(:scale)
+          @set_values = args[:set_values] if args.key?(:set_values)
+          @udt = args[:udt] if args.key?(:udt)
+        end
+      end
+      
+      # Options to configure rule type SingleEntityRename. The rule is used to rename
+      # an entity. The rule filter field can refer to only one entity. The rule scope
+      # can be one of: Database, Schema, Table, Column, Constraint, Index, View,
+      # Function, Stored Procedure, Materialized View, Sequence, UDT, Synonym
+      class SingleEntityRename
+        include Google::Apis::Core::Hashable
+      
+        # Required. The new name of the destination entity
+        # Corresponds to the JSON property `newName`
+        # @return [String]
+        attr_accessor :new_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @new_name = args[:new_name] if args.key?(:new_name)
+        end
+      end
+      
+      # Options to configure rule type SinglePackageChange. The rule is used to alter
+      # the sql code for a package entities. The rule filter field can refer to one
+      # entity. The rule scope can be: Package
+      class SinglePackageChange
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Sql code for package body
+        # Corresponds to the JSON property `packageBody`
+        # @return [String]
+        attr_accessor :package_body
+      
+        # Optional. Sql code for package description
+        # Corresponds to the JSON property `packageDescription`
+        # @return [String]
+        attr_accessor :package_description
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @package_body = args[:package_body] if args.key?(:package_body)
+          @package_description = args[:package_description] if args.key?(:package_description)
+        end
+      end
+      
+      # Filter for fixed point number data types such as NUMERIC/NUMBER
+      class SourceNumericFilter
+        include Google::Apis::Core::Hashable
+      
+        # Required. Enum to set the option defining the datatypes numeric filter has to
+        # be applied to
+        # Corresponds to the JSON property `numericFilterOption`
+        # @return [String]
+        attr_accessor :numeric_filter_option
+      
+        # Optional. The filter will match columns with precision smaller than or equal
+        # to this number.
+        # Corresponds to the JSON property `sourceMaxPrecisionFilter`
+        # @return [Fixnum]
+        attr_accessor :source_max_precision_filter
+      
+        # Optional. The filter will match columns with scale smaller than or equal to
+        # this number.
+        # Corresponds to the JSON property `sourceMaxScaleFilter`
+        # @return [Fixnum]
+        attr_accessor :source_max_scale_filter
+      
+        # Optional. The filter will match columns with precision greater than or equal
+        # to this number.
+        # Corresponds to the JSON property `sourceMinPrecisionFilter`
+        # @return [Fixnum]
+        attr_accessor :source_min_precision_filter
+      
+        # Optional. The filter will match columns with scale greater than or equal to
+        # this number.
+        # Corresponds to the JSON property `sourceMinScaleFilter`
+        # @return [Fixnum]
+        attr_accessor :source_min_scale_filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @numeric_filter_option = args[:numeric_filter_option] if args.key?(:numeric_filter_option)
+          @source_max_precision_filter = args[:source_max_precision_filter] if args.key?(:source_max_precision_filter)
+          @source_max_scale_filter = args[:source_max_scale_filter] if args.key?(:source_max_scale_filter)
+          @source_min_precision_filter = args[:source_min_precision_filter] if args.key?(:source_min_precision_filter)
+          @source_min_scale_filter = args[:source_min_scale_filter] if args.key?(:source_min_scale_filter)
+        end
+      end
+      
+      # Options to configure rule type SourceSqlChange. The rule is used to alter the
+      # sql code for database entities. The rule filter field can refer to one entity.
+      # The rule scope can be: StoredProcedure, Function, Trigger, View
+      class SourceSqlChange
+        include Google::Apis::Core::Hashable
+      
+        # Required. Sql code for source (stored procedure, function, trigger or view)
+        # Corresponds to the JSON property `sqlCode`
+        # @return [String]
+        attr_accessor :sql_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sql_code = args[:sql_code] if args.key?(:sql_code)
+        end
+      end
+      
+      # Filter for text-based data types like varchar.
+      class SourceTextFilter
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The filter will match columns with length smaller than or equal to
+        # this number.
+        # Corresponds to the JSON property `sourceMaxLengthFilter`
+        # @return [Fixnum]
+        attr_accessor :source_max_length_filter
+      
+        # Optional. The filter will match columns with length greater than or equal to
+        # this number.
+        # Corresponds to the JSON property `sourceMinLengthFilter`
+        # @return [Fixnum]
+        attr_accessor :source_min_length_filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @source_max_length_filter = args[:source_max_length_filter] if args.key?(:source_max_length_filter)
+          @source_min_length_filter = args[:source_min_length_filter] if args.key?(:source_min_length_filter)
         end
       end
       
@@ -3638,6 +4758,37 @@ module Google
         end
       end
       
+      # UDT's parent is a schema.
+      class UdtEntity
+        include Google::Apis::Core::Hashable
+      
+        # Custom engine specific features.
+        # Corresponds to the JSON property `customFeatures`
+        # @return [Hash<String,Object>]
+        attr_accessor :custom_features
+      
+        # The SQL code which creates the udt body.
+        # Corresponds to the JSON property `udtBody`
+        # @return [String]
+        attr_accessor :udt_body
+      
+        # The SQL code which creates the udt.
+        # Corresponds to the JSON property `udtSqlCode`
+        # @return [String]
+        attr_accessor :udt_sql_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_features = args[:custom_features] if args.key?(:custom_features)
+          @udt_body = args[:udt_body] if args.key?(:udt_body)
+          @udt_sql_code = args[:udt_sql_code] if args.key?(:udt_sql_code)
+        end
+      end
+      
       # The username/password for a database user. Used for specifying initial users
       # at cluster creation time.
       class UserPassword
@@ -3671,9 +4822,26 @@ module Google
         end
       end
       
-      # Request message for 'VerifyMigrationJob' request.
-      class VerifyMigrationJobRequest
+      # A list of values to filter by in ConditionalColumnSetValue
+      class ValueListFilter
         include Google::Apis::Core::Hashable
+      
+        # Required. Whether to ignore case when filtering by values. Defaults to false
+        # Corresponds to the JSON property `ignoreCase`
+        # @return [Boolean]
+        attr_accessor :ignore_case
+        alias_method :ignore_case?, :ignore_case
+      
+        # Required. Indicates whether the filter matches rows with values that are
+        # present in the list or those with values not present in it.
+        # Corresponds to the JSON property `valuePresentList`
+        # @return [String]
+        attr_accessor :value_present_list
+      
+        # Required. The list to be used to filter by
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
       
         def initialize(**args)
            update!(**args)
@@ -3681,6 +4849,125 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ignore_case = args[:ignore_case] if args.key?(:ignore_case)
+          @value_present_list = args[:value_present_list] if args.key?(:value_present_list)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # Description of data transformation during migration as part of the
+      # ConditionalColumnSetValue.
+      class ValueTransformation
+        include Google::Apis::Core::Hashable
+      
+        # Apply a hash function on the value.
+        # Corresponds to the JSON property `applyHash`
+        # @return [Google::Apis::DatamigrationV1::ApplyHash]
+        attr_accessor :apply_hash
+      
+        # A generic empty message that you can re-use to avoid defining duplicated empty
+        # messages in your APIs. A typical example is to use it as the request or the
+        # response type of an API method. For instance: service Foo ` rpc Bar(google.
+        # protobuf.Empty) returns (google.protobuf.Empty); `
+        # Corresponds to the JSON property `assignMaxValue`
+        # @return [Google::Apis::DatamigrationV1::Empty]
+        attr_accessor :assign_max_value
+      
+        # A generic empty message that you can re-use to avoid defining duplicated empty
+        # messages in your APIs. A typical example is to use it as the request or the
+        # response type of an API method. For instance: service Foo ` rpc Bar(google.
+        # protobuf.Empty) returns (google.protobuf.Empty); `
+        # Corresponds to the JSON property `assignMinValue`
+        # @return [Google::Apis::DatamigrationV1::Empty]
+        attr_accessor :assign_min_value
+      
+        # A generic empty message that you can re-use to avoid defining duplicated empty
+        # messages in your APIs. A typical example is to use it as the request or the
+        # response type of an API method. For instance: service Foo ` rpc Bar(google.
+        # protobuf.Empty) returns (google.protobuf.Empty); `
+        # Corresponds to the JSON property `assignNull`
+        # @return [Google::Apis::DatamigrationV1::Empty]
+        attr_accessor :assign_null
+      
+        # Set to a specific value (value is converted to fit the target data type)
+        # Corresponds to the JSON property `assignSpecificValue`
+        # @return [Google::Apis::DatamigrationV1::AssignSpecificValue]
+        attr_accessor :assign_specific_value
+      
+        # Filter based on relation between source value and compare value of type double
+        # in ConditionalColumnSetValue
+        # Corresponds to the JSON property `doubleComparison`
+        # @return [Google::Apis::DatamigrationV1::DoubleComparisonFilter]
+        attr_accessor :double_comparison
+      
+        # Filter based on relation between source value and compare value of type
+        # integer in ConditionalColumnSetValue
+        # Corresponds to the JSON property `intComparison`
+        # @return [Google::Apis::DatamigrationV1::IntComparisonFilter]
+        attr_accessor :int_comparison
+      
+        # A generic empty message that you can re-use to avoid defining duplicated empty
+        # messages in your APIs. A typical example is to use it as the request or the
+        # response type of an API method. For instance: service Foo ` rpc Bar(google.
+        # protobuf.Empty) returns (google.protobuf.Empty); `
+        # Corresponds to the JSON property `isNull`
+        # @return [Google::Apis::DatamigrationV1::Empty]
+        attr_accessor :is_null
+      
+        # This allows the data to change scale, for example if the source is 2 digits
+        # after the decimal point, specify round to scale value = 2. If for example the
+        # value needs to be converted to an integer, use round to scale value = 0.
+        # Corresponds to the JSON property `roundScale`
+        # @return [Google::Apis::DatamigrationV1::RoundToScale]
+        attr_accessor :round_scale
+      
+        # A list of values to filter by in ConditionalColumnSetValue
+        # Corresponds to the JSON property `valueList`
+        # @return [Google::Apis::DatamigrationV1::ValueListFilter]
+        attr_accessor :value_list
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @apply_hash = args[:apply_hash] if args.key?(:apply_hash)
+          @assign_max_value = args[:assign_max_value] if args.key?(:assign_max_value)
+          @assign_min_value = args[:assign_min_value] if args.key?(:assign_min_value)
+          @assign_null = args[:assign_null] if args.key?(:assign_null)
+          @assign_specific_value = args[:assign_specific_value] if args.key?(:assign_specific_value)
+          @double_comparison = args[:double_comparison] if args.key?(:double_comparison)
+          @int_comparison = args[:int_comparison] if args.key?(:int_comparison)
+          @is_null = args[:is_null] if args.key?(:is_null)
+          @round_scale = args[:round_scale] if args.key?(:round_scale)
+          @value_list = args[:value_list] if args.key?(:value_list)
+        end
+      end
+      
+      # Request message for 'VerifyMigrationJob' request.
+      class VerifyMigrationJobRequest
+        include Google::Apis::Core::Hashable
+      
+        # Represents a Database Migration Service migration job object.
+        # Corresponds to the JSON property `migrationJob`
+        # @return [Google::Apis::DatamigrationV1::MigrationJob]
+        attr_accessor :migration_job
+      
+        # Optional. Field mask is used to specify the changed fields to be verified. It
+        # will not update the migration job.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @migration_job = args[:migration_job] if args.key?(:migration_job)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
         end
       end
       
