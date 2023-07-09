@@ -400,6 +400,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudHealthcareV1DicomStreamConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudHealthcareV1FhirBigQueryDestination
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -665,6 +671,12 @@ module Google
       end
       
       class ProgressCounter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PubsubDestination
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1149,6 +1161,8 @@ module Google
           property :name, as: 'name'
           property :notification_config, as: 'notificationConfig', class: Google::Apis::HealthcareV1::NotificationConfig, decorator: Google::Apis::HealthcareV1::NotificationConfig::Representation
       
+          collection :stream_configs, as: 'streamConfigs', class: Google::Apis::HealthcareV1::GoogleCloudHealthcareV1DicomStreamConfig, decorator: Google::Apis::HealthcareV1::GoogleCloudHealthcareV1DicomStreamConfig::Representation
+      
         end
       end
       
@@ -1238,7 +1252,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_time, as: 'endTime'
+          property :filter, as: 'filter'
           property :gcs_destination, as: 'gcsDestination', class: Google::Apis::HealthcareV1::GcsDestination, decorator: Google::Apis::HealthcareV1::GcsDestination::Representation
+      
+          property :pubsub_destination, as: 'pubsubDestination', class: Google::Apis::HealthcareV1::PubsubDestination, decorator: Google::Apis::HealthcareV1::PubsubDestination::Representation
       
           property :start_time, as: 'startTime'
         end
@@ -1437,6 +1454,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :uri, as: 'uri'
+        end
+      end
+      
+      class GoogleCloudHealthcareV1DicomStreamConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bigquery_destination, as: 'bigqueryDestination', class: Google::Apis::HealthcareV1::GoogleCloudHealthcareV1DicomBigQueryDestination, decorator: Google::Apis::HealthcareV1::GoogleCloudHealthcareV1DicomBigQueryDestination::Representation
+      
         end
       end
       
@@ -1783,6 +1808,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :pubsub_topic, as: 'pubsubTopic'
+          property :send_for_bulk_import, as: 'sendForBulkImport'
         end
       end
       
@@ -1856,6 +1882,13 @@ module Google
           property :failure, :numeric_string => true, as: 'failure'
           property :pending, :numeric_string => true, as: 'pending'
           property :success, :numeric_string => true, as: 'success'
+        end
+      end
+      
+      class PubsubDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :pubsub_topic, as: 'pubsubTopic'
         end
       end
       
