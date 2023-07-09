@@ -322,6 +322,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDataplexV1DataQualityScanRuleResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDataplexV1DataQualitySpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1461,6 +1467,24 @@ module Google
       class GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataQualityScanRuleResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :column, as: 'column'
+          property :data_source, as: 'dataSource'
+          property :evaluated_row_count, :numeric_string => true, as: 'evaluatedRowCount'
+          property :evalution_type, as: 'evalutionType'
+          property :job_id, as: 'jobId'
+          property :null_row_count, :numeric_string => true, as: 'nullRowCount'
+          property :passed_row_count, :numeric_string => true, as: 'passedRowCount'
+          property :result, as: 'result'
+          property :rule_dimension, as: 'ruleDimension'
+          property :rule_name, as: 'ruleName'
+          property :rule_type, as: 'ruleType'
+          property :threshold_percent, as: 'thresholdPercent'
         end
       end
       
