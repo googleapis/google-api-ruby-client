@@ -51,6 +51,105 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Enrolls retail API solution for the project. Recommendation solution is
+        # enrolled by default when your project enables Retail API. You don't need to
+        # call this API for the recommendation solution.
+        # @param [String] project
+        #   Required. Full resource name of parent. Format: `projects/`
+        #   project_number_or_id``
+        # @param [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaEnrollSolutionRequest] google_cloud_retail_v2alpha_enroll_solution_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RetailV2alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RetailV2alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def enroll_project_solution(project, google_cloud_retail_v2alpha_enroll_solution_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2alpha/{+project}:enrollSolution', options)
+          command.request_representation = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaEnrollSolutionRequest::Representation
+          command.request_object = google_cloud_retail_v2alpha_enroll_solution_request_object
+          command.response_representation = Google::Apis::RetailV2alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::RetailV2alpha::GoogleLongrunningOperation
+          command.params['project'] = project unless project.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the project. Throws NOT_FOUND if the project wasn't initialized for
+        # Retail API Service.
+        # @param [String] name
+        #   Required. Full resource name of the project. Format: `projects/`
+        #   project_number_or_id`/retailProject`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaProject] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaProject]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_retail_project(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2alpha/{+name}', options)
+          command.response_representation = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaProject::Representation
+          command.response_class = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaProject
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all the retail API solutions the project has enrolled.
+        # @param [String] parent
+        #   Required. Full resource name of parent. Format: `projects/`
+        #   project_number_or_id``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaListEnrolledSolutionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaListEnrolledSolutionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_enrolled_solutions(parent, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2alpha/{+parent}:enrolledSolutions', options)
+          command.response_representation = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaListEnrolledSolutionsResponse::Representation
+          command.response_class = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaListEnrolledSolutionsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Completes the specified prefix with keyword suggestions. This feature is only
         # available for users who have Retail Search enabled. Enable Retail Search on
         # Cloud Console before using this feature.
@@ -2674,6 +2773,42 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Accepts service terms for this project. By making requests to this API, you
+        # agree to the terms of service linked below. https://cloud.google.com/retail/
+        # data-use-terms
+        # @param [String] project
+        #   Required. Full resource name of the project. Format: `projects/`
+        #   project_number_or_id`/retailProject`
+        # @param [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaAcceptTermsRequest] google_cloud_retail_v2alpha_accept_terms_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaProject] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaProject]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def accept_project_retail_project_terms(project, google_cloud_retail_v2alpha_accept_terms_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2alpha/{+project}:acceptTerms', options)
+          command.request_representation = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaAcceptTermsRequest::Representation
+          command.request_object = google_cloud_retail_v2alpha_accept_terms_request_object
+          command.response_representation = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaProject::Representation
+          command.response_class = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaProject
+          command.params['project'] = project unless project.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

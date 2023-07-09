@@ -238,6 +238,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2alphaAcceptTermsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2alphaAddCatalogAttributeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -424,6 +430,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2alphaEnrollSolutionMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2alphaEnrollSolutionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2alphaEnrollSolutionResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2alphaExperimentInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -551,6 +575,12 @@ module Google
       end
       
       class GoogleCloudRetailV2alphaListControlsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2alphaListEnrolledSolutionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -725,6 +755,12 @@ module Google
       end
       
       class GoogleCloudRetailV2alphaProductLevelConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2alphaProject
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1643,6 +1679,12 @@ module Google
         end
       end
       
+      class GoogleCloudRetailV2alphaAcceptTermsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleCloudRetailV2alphaAddCatalogAttributeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1934,6 +1976,28 @@ module Google
         end
       end
       
+      class GoogleCloudRetailV2alphaEnrollSolutionMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudRetailV2alphaEnrollSolutionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :search_solution_use_case, as: 'searchSolutionUseCase'
+          property :solution, as: 'solution'
+        end
+      end
+      
+      class GoogleCloudRetailV2alphaEnrollSolutionResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enrolled_solution, as: 'enrolledSolution'
+          property :search_solution_use_case, as: 'searchSolutionUseCase'
+        end
+      end
+      
       class GoogleCloudRetailV2alphaExperimentInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2141,6 +2205,13 @@ module Google
           collection :controls, as: 'controls', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaControl, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaControl::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleCloudRetailV2alphaListEnrolledSolutionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :enrolled_solutions, as: 'enrolledSolutions'
         end
       end
       
@@ -2478,6 +2549,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ingestion_product_type, as: 'ingestionProductType'
           property :merchant_center_product_id_field, as: 'merchantCenterProductIdField'
+        end
+      end
+      
+      class GoogleCloudRetailV2alphaProject
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :enrolled_solutions, as: 'enrolledSolutions'
+          property :name, as: 'name'
         end
       end
       
