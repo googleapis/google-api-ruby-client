@@ -223,6 +223,7 @@ module Google
       
         # Optional. User-provided suffix for Cloud Storage filename. See the [object
         # naming requirements](https://cloud.google.com/storage/docs/objects#naming).
+        # Must not end in "/".
         # Corresponds to the JSON property `filenameSuffix`
         # @return [String]
         attr_accessor :filename_suffix
