@@ -56,8 +56,10 @@ module Google
         # @param [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1Database] google_firestore_admin_v1_database_object
         # @param [String] database_id
         #   Required. The ID to use for the database, which will become the final
-        #   component of the database's resource name. The value must be set to "(default)"
-        #   .
+        #   component of the database's resource name. This value should be 4-63
+        #   characters. Valid characters are /a-z-/ with first character a letter and the
+        #   last a letter or a number. Must not be UUID-like /[0-9a-f]`8`(-[0-9a-f]`4`)`3`-
+        #   [0-9a-f]`12`/. "(default)" database id is also valid.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
