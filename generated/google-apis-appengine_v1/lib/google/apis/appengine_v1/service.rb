@@ -56,9 +56,6 @@ module Google
         # applications, see Managing Projects, Applications, and Billing (https://cloud.
         # google.com/appengine/docs/standard/python/console/).
         # @param [Google::Apis::AppengineV1::Application] application_object
-        # @param [String] parent
-        #   The project and location in which the application should be created, specified
-        #   in the format projects/*/locations/*
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -76,13 +73,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_app(application_object = nil, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_app(application_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/apps', options)
           command.request_representation = Google::Apis::AppengineV1::Application::Representation
           command.request_object = application_object
           command.response_representation = Google::Apis::AppengineV1::Operation::Representation
           command.response_class = Google::Apis::AppengineV1::Operation
-          command.query['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1552,214 +1548,6 @@ module Google
           command.params['appsId'] = apps_id unless apps_id.nil?
           command.params['servicesId'] = services_id unless services_id.nil?
           command.params['versionsId'] = versions_id unless versions_id.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Creates an App Engine application for a Google Cloud Platform project.
-        # Required fields: id - The ID of the target Cloud Platform project. location -
-        # The region (https://cloud.google.com/appengine/docs/locations) where you want
-        # the App Engine application located.For more information about App Engine
-        # applications, see Managing Projects, Applications, and Billing (https://cloud.
-        # google.com/appengine/docs/standard/python/console/).
-        # @param [String] projects_id
-        #   Part of `parent`. The project and location in which the application should be
-        #   created, specified in the format projects/*/locations/*
-        # @param [String] locations_id
-        #   Part of `parent`. See documentation of `projectsId`.
-        # @param [Google::Apis::AppengineV1::Application] application_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AppengineV1::Operation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AppengineV1::Operation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_application(projects_id, locations_id, application_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1/projects/{projectsId}/locations/{locationsId}/applications', options)
-          command.request_representation = Google::Apis::AppengineV1::Application::Representation
-          command.request_object = application_object
-          command.response_representation = Google::Apis::AppengineV1::Operation::Representation
-          command.response_class = Google::Apis::AppengineV1::Operation
-          command.params['projectsId'] = projects_id unless projects_id.nil?
-          command.params['locationsId'] = locations_id unless locations_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Gets information about an application.
-        # @param [String] projects_id
-        #   Part of `name`. Name of the Application resource to get. Example: apps/myapp.
-        # @param [String] locations_id
-        #   Part of `name`. See documentation of `projectsId`.
-        # @param [String] applications_id
-        #   Part of `name`. See documentation of `projectsId`.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AppengineV1::Application] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AppengineV1::Application]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_application(projects_id, locations_id, applications_id, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}', options)
-          command.response_representation = Google::Apis::AppengineV1::Application::Representation
-          command.response_class = Google::Apis::AppengineV1::Application
-          command.params['projectsId'] = projects_id unless projects_id.nil?
-          command.params['locationsId'] = locations_id unless locations_id.nil?
-          command.params['applicationsId'] = applications_id unless applications_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Recreates the required App Engine features for the specified App Engine
-        # application, for example a Cloud Storage bucket or App Engine service account.
-        # Use this method if you receive an error message about a missing feature, for
-        # example, Error retrieving the App Engine service account. If you have deleted
-        # your App Engine service account, this will not be able to recreate it. Instead,
-        # you should attempt to use the IAM undelete API if possible at https://cloud.
-        # google.com/iam/reference/rest/v1/projects.serviceAccounts/undelete?apix_params=
-        # %7B"name"%3A"projects%2F-%2FserviceAccounts%2Funique_id"%2C"resource"%3A%7B%7D%
-        # 7D . If the deletion was recent, the numeric ID can be found in the Cloud
-        # Console Activity Log.
-        # @param [String] projects_id
-        #   Part of `name`. Name of the application to repair. Example: apps/myapp
-        # @param [String] locations_id
-        #   Part of `name`. See documentation of `projectsId`.
-        # @param [String] applications_id
-        #   Part of `name`. See documentation of `projectsId`.
-        # @param [Google::Apis::AppengineV1::RepairApplicationRequest] repair_application_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AppengineV1::Operation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AppengineV1::Operation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def repair_project_location_application(projects_id, locations_id, applications_id, repair_application_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}:repair', options)
-          command.request_representation = Google::Apis::AppengineV1::RepairApplicationRequest::Representation
-          command.request_object = repair_application_request_object
-          command.response_representation = Google::Apis::AppengineV1::Operation::Representation
-          command.response_class = Google::Apis::AppengineV1::Operation
-          command.params['projectsId'] = projects_id unless projects_id.nil?
-          command.params['locationsId'] = locations_id unless locations_id.nil?
-          command.params['applicationsId'] = applications_id unless applications_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Gets the current configuration of the specified service.
-        # @param [String] projects_id
-        #   Part of `name`. Name of the resource requested. Example: apps/myapp/services/
-        #   default.
-        # @param [String] locations_id
-        #   Part of `name`. See documentation of `projectsId`.
-        # @param [String] applications_id
-        #   Part of `name`. See documentation of `projectsId`.
-        # @param [String] services_id
-        #   Part of `name`. See documentation of `projectsId`.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AppengineV1::Service] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AppengineV1::Service]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_application_service(projects_id, locations_id, applications_id, services_id, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}', options)
-          command.response_representation = Google::Apis::AppengineV1::Service::Representation
-          command.response_class = Google::Apis::AppengineV1::Service
-          command.params['projectsId'] = projects_id unless projects_id.nil?
-          command.params['locationsId'] = locations_id unless locations_id.nil?
-          command.params['applicationsId'] = applications_id unless applications_id.nil?
-          command.params['servicesId'] = services_id unless services_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Lists all the services in the application.
-        # @param [String] projects_id
-        #   Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
-        # @param [String] locations_id
-        #   Part of `parent`. See documentation of `projectsId`.
-        # @param [String] applications_id
-        #   Part of `parent`. See documentation of `projectsId`.
-        # @param [Fixnum] page_size
-        #   Maximum results to return per page.
-        # @param [String] page_token
-        #   Continuation token for fetching the next page of results.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AppengineV1::ListServicesResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AppengineV1::ListServicesResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_application_services(projects_id, locations_id, applications_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services', options)
-          command.response_representation = Google::Apis::AppengineV1::ListServicesResponse::Representation
-          command.response_class = Google::Apis::AppengineV1::ListServicesResponse
-          command.params['projectsId'] = projects_id unless projects_id.nil?
-          command.params['locationsId'] = locations_id unless locations_id.nil?
-          command.params['applicationsId'] = applications_id unless applications_id.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
