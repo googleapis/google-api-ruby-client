@@ -573,7 +573,7 @@ module Google
         # row. Each document must have a valid Document.id and one of Document.json_data
         # or Document.struct_data. * `custom`: One custom data per row in arbitrary
         # format that conforms to the defined Schema of the data store. This can only be
-        # used by the GENERIC Data Store vertical.
+        # used by Gen App Builder.
         # Corresponds to the JSON property `dataSchema`
         # @return [String]
         attr_accessor :data_schema
