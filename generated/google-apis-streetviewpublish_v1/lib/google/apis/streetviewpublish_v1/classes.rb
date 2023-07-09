@@ -789,12 +789,6 @@ module Google
         # @return [Google::Apis::StreetviewpublishV1::LatLngBounds]
         attr_accessor :sequence_bounds
       
-        # Output only. Set if a Photo within the PhotoSequence contains a takedown.
-        # Corresponds to the JSON property `takedown`
-        # @return [Boolean]
-        attr_accessor :takedown
-        alias_method :takedown?, :takedown
-      
         # Upload reference for media files.
         # Corresponds to the JSON property `uploadReference`
         # @return [Google::Apis::StreetviewpublishV1::UploadRef]
@@ -829,7 +823,6 @@ module Google
           @processing_state = args[:processing_state] if args.key?(:processing_state)
           @raw_gps_timeline = args[:raw_gps_timeline] if args.key?(:raw_gps_timeline)
           @sequence_bounds = args[:sequence_bounds] if args.key?(:sequence_bounds)
-          @takedown = args[:takedown] if args.key?(:takedown)
           @upload_reference = args[:upload_reference] if args.key?(:upload_reference)
           @upload_time = args[:upload_time] if args.key?(:upload_time)
           @view_count = args[:view_count] if args.key?(:view_count)
