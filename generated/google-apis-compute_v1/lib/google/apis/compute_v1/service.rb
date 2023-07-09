@@ -21070,7 +21070,8 @@ module Google
         # behavior. For more information, see the [known issue](/compute/docs/
         # troubleshooting/known-issues#
         # ving_vms_or_disks_using_the_moveinstance_api_or_the_causes_unexpected_behavior)
-        # .
+        # . [Deprecated] This method is deprecated. See [moving instance across zones](/
+        # compute/docs/instances/moving-instance-across-zones) instead.
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeV1::MoveInstanceRequest] move_instance_request_object
