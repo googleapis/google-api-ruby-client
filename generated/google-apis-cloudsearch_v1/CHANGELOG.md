@@ -1,5 +1,9 @@
 # Release history for google-apis-cloudsearch_v1
 
+### v0.54.0 (2023-07-09)
+
+* Regenerated from discovery document revision 20230628
+
 ### v0.53.0 (2023-06-25)
 
 * Regenerated from discovery document revision 20230614
