@@ -653,7 +653,8 @@ module Google
       class GoogleCloudDialogflowCxV3ExportAgentResponse
         include Google::Apis::Core::Hashable
       
-        # Uncompressed raw byte content for agent.
+        # Uncompressed raw byte content for agent. This field is populated if none of `
+        # agent_uri` and `git_destination` are specified in ExportAgentRequest.
         # Corresponds to the JSON property `agentContent`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -665,6 +666,12 @@ module Google
         # @return [String]
         attr_accessor :agent_uri
       
+        # Commit SHA of the git push. This field is populated if `git_destination` are
+        # specified in ExportAgentRequest.
+        # Corresponds to the JSON property `commitSha`
+        # @return [String]
+        attr_accessor :commit_sha
+      
         def initialize(**args)
            update!(**args)
         end
@@ -673,6 +680,7 @@ module Google
         def update!(**args)
           @agent_content = args[:agent_content] if args.key?(:agent_content)
           @agent_uri = args[:agent_uri] if args.key?(:agent_uri)
+          @commit_sha = args[:commit_sha] if args.key?(:commit_sha)
         end
       end
       
@@ -3730,7 +3738,8 @@ module Google
       class GoogleCloudDialogflowCxV3beta1ExportAgentResponse
         include Google::Apis::Core::Hashable
       
-        # Uncompressed raw byte content for agent.
+        # Uncompressed raw byte content for agent. This field is populated if none of `
+        # agent_uri` and `git_destination` are specified in ExportAgentRequest.
         # Corresponds to the JSON property `agentContent`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -3742,6 +3751,12 @@ module Google
         # @return [String]
         attr_accessor :agent_uri
       
+        # Commit SHA of the git push. This field is populated if `git_destination` are
+        # specified in ExportAgentRequest.
+        # Corresponds to the JSON property `commitSha`
+        # @return [String]
+        attr_accessor :commit_sha
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3750,6 +3765,7 @@ module Google
         def update!(**args)
           @agent_content = args[:agent_content] if args.key?(:agent_content)
           @agent_uri = args[:agent_uri] if args.key?(:agent_uri)
+          @commit_sha = args[:commit_sha] if args.key?(:commit_sha)
         end
       end
       
