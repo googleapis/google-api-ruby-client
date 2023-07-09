@@ -3170,6 +3170,7 @@ module Google
           property :created_at, :numeric_string => true, as: 'createdAt'
           property :customer_name, as: 'customerName'
           property :description, as: 'description'
+          property :disable_vpc_peering, as: 'disableVpcPeering'
           property :display_name, as: 'displayName'
           collection :environments, as: 'environments'
           property :expires_at, :numeric_string => true, as: 'expiresAt'
@@ -3242,6 +3243,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :analytics_region, as: 'analyticsRegion'
           property :authorized_network, as: 'authorizedNetwork'
+          property :disable_vpc_peering, as: 'disableVpcPeering'
           property :runtime_location, as: 'runtimeLocation'
         end
       end
