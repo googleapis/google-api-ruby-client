@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AdvancedDatapathObservabilityConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AdvancedMachineFeatures
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1127,6 +1133,14 @@ module Google
         end
       end
       
+      class AdvancedDatapathObservabilityConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_metrics, as: 'enableMetrics'
+          property :relay_mode, as: 'relayMode'
+        end
+      end
+      
       class AdvancedMachineFeatures
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2091,6 +2105,8 @@ module Google
       class MonitoringConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :advanced_datapath_observability_config, as: 'advancedDatapathObservabilityConfig', class: Google::Apis::ContainerV1beta1::AdvancedDatapathObservabilityConfig, decorator: Google::Apis::ContainerV1beta1::AdvancedDatapathObservabilityConfig::Representation
+      
           property :component_config, as: 'componentConfig', class: Google::Apis::ContainerV1beta1::MonitoringComponentConfig, decorator: Google::Apis::ContainerV1beta1::MonitoringComponentConfig::Representation
       
           property :managed_prometheus_config, as: 'managedPrometheusConfig', class: Google::Apis::ContainerV1beta1::ManagedPrometheusConfig, decorator: Google::Apis::ContainerV1beta1::ManagedPrometheusConfig::Representation
