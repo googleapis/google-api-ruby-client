@@ -226,8 +226,7 @@ module Google
         end
       end
       
-      # The type of insight. See google3/googledata/devsite/site-cloud/en/recommender/
-      # docs/insights/insight-types.md for more info.
+      # The type of insight.
       class GoogleCloudRecommenderV1beta1InsightType
         include Google::Apis::Core::Hashable
       
@@ -943,8 +942,7 @@ module Google
         end
       end
       
-      # The type of a recommender. See google3/googledata/devsite/site-cloud/en/
-      # recommender/docs/recommenders.md for more info.
+      # The type of a recommender.
       class GoogleCloudRecommenderV1beta1RecommenderType
         include Google::Apis::Core::Hashable
       
