@@ -4666,8 +4666,8 @@ module Google
         # @return [Google::Apis::CloudassetV1::TimeWindow]
         attr_accessor :read_time_window
       
-        # Optional. A SQL statement that's compatible with [BigQuery Standard SQL](http:/
-        # /cloud/bigquery/docs/reference/standard-sql/enabling-standard-sql).
+        # Optional. A SQL statement that's compatible with [BigQuery SQL](https://cloud.
+        # google.com/bigquery/docs/introduction-sql).
         # Corresponds to the JSON property `statement`
         # @return [String]
         attr_accessor :statement
