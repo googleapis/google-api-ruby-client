@@ -1719,8 +1719,10 @@ module Google
         # @return [String]
         attr_accessor :creator
       
-        # Custom audiences that can be used in the audience field of ID token for
-        # authenticated requests.
+        # One or more custom audiences that you want this service to support. Specify
+        # each custom audience as the full URL in a string. The custom audiences are
+        # encoded in the token and used to authenticate requests. For more information,
+        # see https://cloud.google.com/run/docs/configuring/custom-audiences.
         # Corresponds to the JSON property `customAudiences`
         # @return [Array<String>]
         attr_accessor :custom_audiences
