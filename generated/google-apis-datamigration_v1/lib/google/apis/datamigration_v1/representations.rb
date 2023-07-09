@@ -40,7 +40,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ApplyHash
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ApplyJobDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AssignSpecificValue
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -100,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConditionalColumnSetValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ConnectionProfile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -136,6 +154,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConvertRowIdToColumn
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DatabaseEngineInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -143,6 +167,12 @@ module Google
       end
       
       class DatabaseEntity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DatabaseInstanceEntity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -161,6 +191,12 @@ module Google
       end
       
       class DescribeDatabaseEntitiesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DoubleComparisonFilter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -190,6 +226,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EntityDdl
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EntityIssue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EntityMapping
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -202,6 +250,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EntityMove
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Expr
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -209,6 +263,12 @@ module Google
       end
       
       class FetchStaticIpsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FilterTableColumns
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -262,6 +322,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IntComparisonFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListConnectionProfilesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -275,6 +341,12 @@ module Google
       end
       
       class ListLocationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListMappingRulesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -310,6 +382,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MappingRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MappingRuleFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MaterializedViewEntity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MigrationJob
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -317,6 +407,18 @@ module Google
       end
       
       class MigrationJobVerificationError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MultiColumnDatatypeChange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MultiEntityRename
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -347,6 +449,12 @@ module Google
       end
       
       class Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Position
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -412,6 +520,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RoundToScale
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RulesFile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -449,6 +563,48 @@ module Google
       end
       
       class SetIamPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SetTablePrimaryKey
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SingleColumnChange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SingleEntityRename
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SinglePackageChange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SourceNumericFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SourceSqlChange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SourceTextFilter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -550,7 +706,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UdtEntity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UserPassword
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ValueListFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ValueTransformation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -618,8 +792,18 @@ module Google
       class ApplyConversionWorkspaceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_commit, as: 'autoCommit'
           property :connection_profile, as: 'connectionProfile'
+          property :dry_run, as: 'dryRun'
           property :filter, as: 'filter'
+        end
+      end
+      
+      class ApplyHash
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :uuid_from_bytes, as: 'uuidFromBytes', class: Google::Apis::DatamigrationV1::Empty, decorator: Google::Apis::DatamigrationV1::Empty::Representation
+      
         end
       end
       
@@ -628,6 +812,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :connection_profile, as: 'connectionProfile'
           property :filter, as: 'filter'
+        end
+      end
+      
+      class AssignSpecificValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :value, as: 'value'
         end
       end
       
@@ -754,6 +945,19 @@ module Google
         end
       end
       
+      class ConditionalColumnSetValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :custom_features, as: 'customFeatures'
+          property :source_numeric_filter, as: 'sourceNumericFilter', class: Google::Apis::DatamigrationV1::SourceNumericFilter, decorator: Google::Apis::DatamigrationV1::SourceNumericFilter::Representation
+      
+          property :source_text_filter, as: 'sourceTextFilter', class: Google::Apis::DatamigrationV1::SourceTextFilter, decorator: Google::Apis::DatamigrationV1::SourceTextFilter::Representation
+      
+          property :value_transformation, as: 'valueTransformation', class: Google::Apis::DatamigrationV1::ValueTransformation, decorator: Google::Apis::DatamigrationV1::ValueTransformation::Representation
+      
+        end
+      end
+      
       class ConnectionProfile
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -822,6 +1026,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_commit, as: 'autoCommit'
+          property :convert_full_path, as: 'convertFullPath'
           property :filter, as: 'filter'
         end
       end
@@ -830,6 +1035,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :filter, as: 'filter'
+        end
+      end
+      
+      class ConvertRowIdToColumn
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :only_if_no_primary_key, as: 'onlyIfNoPrimaryKey'
         end
       end
       
@@ -844,12 +1056,20 @@ module Google
       class DatabaseEntity
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :database, as: 'database', class: Google::Apis::DatamigrationV1::DatabaseInstanceEntity, decorator: Google::Apis::DatamigrationV1::DatabaseInstanceEntity::Representation
+      
           property :database_function, as: 'databaseFunction', class: Google::Apis::DatamigrationV1::FunctionEntity, decorator: Google::Apis::DatamigrationV1::FunctionEntity::Representation
       
           property :database_package, as: 'databasePackage', class: Google::Apis::DatamigrationV1::PackageEntity, decorator: Google::Apis::DatamigrationV1::PackageEntity::Representation
       
+          collection :entity_ddl, as: 'entityDdl', class: Google::Apis::DatamigrationV1::EntityDdl, decorator: Google::Apis::DatamigrationV1::EntityDdl::Representation
+      
           property :entity_type, as: 'entityType'
+          collection :issues, as: 'issues', class: Google::Apis::DatamigrationV1::EntityIssue, decorator: Google::Apis::DatamigrationV1::EntityIssue::Representation
+      
           collection :mappings, as: 'mappings', class: Google::Apis::DatamigrationV1::EntityMapping, decorator: Google::Apis::DatamigrationV1::EntityMapping::Representation
+      
+          property :materialized_view, as: 'materializedView', class: Google::Apis::DatamigrationV1::MaterializedViewEntity, decorator: Google::Apis::DatamigrationV1::MaterializedViewEntity::Representation
       
           property :parent_entity, as: 'parentEntity'
           property :schema, as: 'schema', class: Google::Apis::DatamigrationV1::SchemaEntity, decorator: Google::Apis::DatamigrationV1::SchemaEntity::Representation
@@ -864,8 +1084,17 @@ module Google
           property :table, as: 'table', class: Google::Apis::DatamigrationV1::TableEntity, decorator: Google::Apis::DatamigrationV1::TableEntity::Representation
       
           property :tree, as: 'tree'
+          property :udt, as: 'udt', class: Google::Apis::DatamigrationV1::UdtEntity, decorator: Google::Apis::DatamigrationV1::UdtEntity::Representation
+      
           property :view, as: 'view', class: Google::Apis::DatamigrationV1::ViewEntity, decorator: Google::Apis::DatamigrationV1::ViewEntity::Representation
       
+        end
+      end
+      
+      class DatabaseInstanceEntity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :custom_features, as: 'customFeatures'
         end
       end
       
@@ -891,6 +1120,14 @@ module Google
           collection :database_entities, as: 'databaseEntities', class: Google::Apis::DatamigrationV1::DatabaseEntity, decorator: Google::Apis::DatamigrationV1::DatabaseEntity::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class DoubleComparisonFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :value, as: 'value'
+          property :value_comparison, as: 'valueComparison'
         end
       end
       
@@ -923,6 +1160,32 @@ module Google
         end
       end
       
+      class EntityDdl
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ddl, as: 'ddl'
+          property :ddl_type, as: 'ddlType'
+          property :entity, as: 'entity'
+          property :entity_type, as: 'entityType'
+          collection :issue_id, as: 'issueId'
+        end
+      end
+      
+      class EntityIssue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :ddl, as: 'ddl'
+          property :entity_type, as: 'entityType'
+          property :id, as: 'id'
+          property :message, as: 'message'
+          property :position, as: 'position', class: Google::Apis::DatamigrationV1::Position, decorator: Google::Apis::DatamigrationV1::Position::Representation
+      
+          property :severity, as: 'severity'
+          property :type, as: 'type'
+        end
+      end
+      
       class EntityMapping
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -944,6 +1207,13 @@ module Google
         end
       end
       
+      class EntityMove
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :new_schema, as: 'newSchema'
+        end
+      end
+      
       class Expr
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -959,6 +1229,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :static_ips, as: 'staticIps'
+        end
+      end
+      
+      class FilterTableColumns
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :exclude_columns, as: 'excludeColumns'
+          collection :include_columns, as: 'includeColumns'
         end
       end
       
@@ -1045,6 +1323,14 @@ module Google
         end
       end
       
+      class IntComparisonFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :value, :numeric_string => true, as: 'value'
+          property :value_comparison, as: 'valueComparison'
+        end
+      end
+      
       class ListConnectionProfilesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1069,6 +1355,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :locations, as: 'locations', class: Google::Apis::DatamigrationV1::Location, decorator: Google::Apis::DatamigrationV1::Location::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListMappingRulesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :mapping_rules, as: 'mappingRules', class: Google::Apis::DatamigrationV1::MappingRule, decorator: Google::Apis::DatamigrationV1::MappingRule::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
@@ -1121,6 +1416,62 @@ module Google
         end
       end
       
+      class MappingRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conditional_column_set_value, as: 'conditionalColumnSetValue', class: Google::Apis::DatamigrationV1::ConditionalColumnSetValue, decorator: Google::Apis::DatamigrationV1::ConditionalColumnSetValue::Representation
+      
+          property :convert_rowid_column, as: 'convertRowidColumn', class: Google::Apis::DatamigrationV1::ConvertRowIdToColumn, decorator: Google::Apis::DatamigrationV1::ConvertRowIdToColumn::Representation
+      
+          property :display_name, as: 'displayName'
+          property :entity_move, as: 'entityMove', class: Google::Apis::DatamigrationV1::EntityMove, decorator: Google::Apis::DatamigrationV1::EntityMove::Representation
+      
+          property :filter, as: 'filter', class: Google::Apis::DatamigrationV1::MappingRuleFilter, decorator: Google::Apis::DatamigrationV1::MappingRuleFilter::Representation
+      
+          property :filter_table_columns, as: 'filterTableColumns', class: Google::Apis::DatamigrationV1::FilterTableColumns, decorator: Google::Apis::DatamigrationV1::FilterTableColumns::Representation
+      
+          property :multi_column_data_type_change, as: 'multiColumnDataTypeChange', class: Google::Apis::DatamigrationV1::MultiColumnDatatypeChange, decorator: Google::Apis::DatamigrationV1::MultiColumnDatatypeChange::Representation
+      
+          property :multi_entity_rename, as: 'multiEntityRename', class: Google::Apis::DatamigrationV1::MultiEntityRename, decorator: Google::Apis::DatamigrationV1::MultiEntityRename::Representation
+      
+          property :name, as: 'name'
+          property :revision_create_time, as: 'revisionCreateTime'
+          property :revision_id, as: 'revisionId'
+          property :rule_order, :numeric_string => true, as: 'ruleOrder'
+          property :rule_scope, as: 'ruleScope'
+          property :set_table_primary_key, as: 'setTablePrimaryKey', class: Google::Apis::DatamigrationV1::SetTablePrimaryKey, decorator: Google::Apis::DatamigrationV1::SetTablePrimaryKey::Representation
+      
+          property :single_column_change, as: 'singleColumnChange', class: Google::Apis::DatamigrationV1::SingleColumnChange, decorator: Google::Apis::DatamigrationV1::SingleColumnChange::Representation
+      
+          property :single_entity_rename, as: 'singleEntityRename', class: Google::Apis::DatamigrationV1::SingleEntityRename, decorator: Google::Apis::DatamigrationV1::SingleEntityRename::Representation
+      
+          property :single_package_change, as: 'singlePackageChange', class: Google::Apis::DatamigrationV1::SinglePackageChange, decorator: Google::Apis::DatamigrationV1::SinglePackageChange::Representation
+      
+          property :source_sql_change, as: 'sourceSqlChange', class: Google::Apis::DatamigrationV1::SourceSqlChange, decorator: Google::Apis::DatamigrationV1::SourceSqlChange::Representation
+      
+          property :state, as: 'state'
+        end
+      end
+      
+      class MappingRuleFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :entities, as: 'entities'
+          property :entity_name_contains, as: 'entityNameContains'
+          property :entity_name_prefix, as: 'entityNamePrefix'
+          property :entity_name_suffix, as: 'entityNameSuffix'
+          property :parent_entity, as: 'parentEntity'
+        end
+      end
+      
+      class MaterializedViewEntity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :custom_features, as: 'customFeatures'
+          property :sql_code, as: 'sqlCode'
+        end
+      end
+      
       class MigrationJob
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1164,6 +1515,31 @@ module Google
           property :error_code, as: 'errorCode'
           property :error_detail_message, as: 'errorDetailMessage'
           property :error_message, as: 'errorMessage'
+        end
+      end
+      
+      class MultiColumnDatatypeChange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :custom_features, as: 'customFeatures'
+          property :new_data_type, as: 'newDataType'
+          property :override_fractional_seconds_precision, as: 'overrideFractionalSecondsPrecision'
+          property :override_length, :numeric_string => true, as: 'overrideLength'
+          property :override_precision, as: 'overridePrecision'
+          property :override_scale, as: 'overrideScale'
+          property :source_data_type_filter, as: 'sourceDataTypeFilter'
+          property :source_numeric_filter, as: 'sourceNumericFilter', class: Google::Apis::DatamigrationV1::SourceNumericFilter, decorator: Google::Apis::DatamigrationV1::SourceNumericFilter::Representation
+      
+          property :source_text_filter, as: 'sourceTextFilter', class: Google::Apis::DatamigrationV1::SourceTextFilter, decorator: Google::Apis::DatamigrationV1::SourceTextFilter::Representation
+      
+        end
+      end
+      
+      class MultiEntityRename
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :new_name_pattern, as: 'newNamePattern'
+          property :source_name_transformation, as: 'sourceNameTransformation'
         end
       end
       
@@ -1231,6 +1607,16 @@ module Google
       
           property :etag, :base64 => true, as: 'etag'
           property :version, as: 'version'
+        end
+      end
+      
+      class Position
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :column, as: 'column'
+          property :length, as: 'length'
+          property :line, as: 'line'
+          property :offset, as: 'offset'
         end
       end
       
@@ -1329,6 +1715,13 @@ module Google
         end
       end
       
+      class RoundToScale
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :scale, as: 'scale'
+        end
+      end
+      
       class RulesFile
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1387,6 +1780,76 @@ module Google
           property :policy, as: 'policy', class: Google::Apis::DatamigrationV1::Policy, decorator: Google::Apis::DatamigrationV1::Policy::Representation
       
           property :update_mask, as: 'updateMask'
+        end
+      end
+      
+      class SetTablePrimaryKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :primary_key, as: 'primaryKey'
+          collection :primary_key_columns, as: 'primaryKeyColumns'
+        end
+      end
+      
+      class SingleColumnChange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :array, as: 'array'
+          property :array_length, as: 'arrayLength'
+          property :auto_generated, as: 'autoGenerated'
+          property :charset, as: 'charset'
+          property :collation, as: 'collation'
+          property :comment, as: 'comment'
+          hash :custom_features, as: 'customFeatures'
+          property :data_type, as: 'dataType'
+          property :fractional_seconds_precision, as: 'fractionalSecondsPrecision'
+          property :length, :numeric_string => true, as: 'length'
+          property :nullable, as: 'nullable'
+          property :precision, as: 'precision'
+          property :scale, as: 'scale'
+          collection :set_values, as: 'setValues'
+          property :udt, as: 'udt'
+        end
+      end
+      
+      class SingleEntityRename
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :new_name, as: 'newName'
+        end
+      end
+      
+      class SinglePackageChange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :package_body, as: 'packageBody'
+          property :package_description, as: 'packageDescription'
+        end
+      end
+      
+      class SourceNumericFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :numeric_filter_option, as: 'numericFilterOption'
+          property :source_max_precision_filter, as: 'sourceMaxPrecisionFilter'
+          property :source_max_scale_filter, as: 'sourceMaxScaleFilter'
+          property :source_min_precision_filter, as: 'sourceMinPrecisionFilter'
+          property :source_min_scale_filter, as: 'sourceMinScaleFilter'
+        end
+      end
+      
+      class SourceSqlChange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :sql_code, as: 'sqlCode'
+        end
+      end
+      
+      class SourceTextFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :source_max_length_filter, :numeric_string => true, as: 'sourceMaxLengthFilter'
+          property :source_min_length_filter, :numeric_string => true, as: 'sourceMinLengthFilter'
         end
       end
       
@@ -1527,6 +1990,15 @@ module Google
         end
       end
       
+      class UdtEntity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :custom_features, as: 'customFeatures'
+          property :udt_body, as: 'udtBody'
+          property :udt_sql_code, as: 'udtSqlCode'
+        end
+      end
+      
       class UserPassword
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1536,9 +2008,47 @@ module Google
         end
       end
       
+      class ValueListFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ignore_case, as: 'ignoreCase'
+          property :value_present_list, as: 'valuePresentList'
+          collection :values, as: 'values'
+        end
+      end
+      
+      class ValueTransformation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :apply_hash, as: 'applyHash', class: Google::Apis::DatamigrationV1::ApplyHash, decorator: Google::Apis::DatamigrationV1::ApplyHash::Representation
+      
+          property :assign_max_value, as: 'assignMaxValue', class: Google::Apis::DatamigrationV1::Empty, decorator: Google::Apis::DatamigrationV1::Empty::Representation
+      
+          property :assign_min_value, as: 'assignMinValue', class: Google::Apis::DatamigrationV1::Empty, decorator: Google::Apis::DatamigrationV1::Empty::Representation
+      
+          property :assign_null, as: 'assignNull', class: Google::Apis::DatamigrationV1::Empty, decorator: Google::Apis::DatamigrationV1::Empty::Representation
+      
+          property :assign_specific_value, as: 'assignSpecificValue', class: Google::Apis::DatamigrationV1::AssignSpecificValue, decorator: Google::Apis::DatamigrationV1::AssignSpecificValue::Representation
+      
+          property :double_comparison, as: 'doubleComparison', class: Google::Apis::DatamigrationV1::DoubleComparisonFilter, decorator: Google::Apis::DatamigrationV1::DoubleComparisonFilter::Representation
+      
+          property :int_comparison, as: 'intComparison', class: Google::Apis::DatamigrationV1::IntComparisonFilter, decorator: Google::Apis::DatamigrationV1::IntComparisonFilter::Representation
+      
+          property :is_null, as: 'isNull', class: Google::Apis::DatamigrationV1::Empty, decorator: Google::Apis::DatamigrationV1::Empty::Representation
+      
+          property :round_scale, as: 'roundScale', class: Google::Apis::DatamigrationV1::RoundToScale, decorator: Google::Apis::DatamigrationV1::RoundToScale::Representation
+      
+          property :value_list, as: 'valueList', class: Google::Apis::DatamigrationV1::ValueListFilter, decorator: Google::Apis::DatamigrationV1::ValueListFilter::Representation
+      
+        end
+      end
+      
       class VerifyMigrationJobRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :migration_job, as: 'migrationJob', class: Google::Apis::DatamigrationV1::MigrationJob, decorator: Google::Apis::DatamigrationV1::MigrationJob::Representation
+      
+          property :update_mask, as: 'updateMask'
         end
       end
       

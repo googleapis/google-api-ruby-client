@@ -742,24 +742,26 @@ module Google
         #   are described. Must be in the form of: projects/`project`/locations/`location`/
         #   conversionWorkspaces/`conversion_workspace`.
         # @param [String] commit_id
-        #   Request a specific commit ID. If not specified, the entities from the latest
-        #   commit are returned.
+        #   Optional. Request a specific commit ID. If not specified, the entities from
+        #   the latest commit are returned.
         # @param [String] filter
-        #   Filter the returned entities based on AIP-160 standard.
+        #   Optional. Filter the returned entities based on AIP-160 standard.
         # @param [Fixnum] page_size
-        #   The maximum number of entities to return. The service may return fewer
-        #   entities than the value specifies.
+        #   Optional. The maximum number of entities to return. The service may return
+        #   fewer entities than the value specifies.
         # @param [String] page_token
-        #   The nextPageToken value received in the previous call to conversionWorkspace.
-        #   describeDatabaseEntities, used in the subsequent request to retrieve the next
-        #   page of results. On first call this should be left blank. When paginating, all
-        #   other parameters provided to conversionWorkspace.describeDatabaseEntities must
-        #   match the call that provided the page token.
+        #   Optional. The nextPageToken value received in the previous call to
+        #   conversionWorkspace.describeDatabaseEntities, used in the subsequent request
+        #   to retrieve the next page of results. On first call this should be left blank.
+        #   When paginating, all other parameters provided to conversionWorkspace.
+        #   describeDatabaseEntities must match the call that provided the page token.
         # @param [String] tree
-        #   The tree to fetch.
+        #   Required. The tree to fetch.
         # @param [Boolean] uncommitted
-        #   Whether to retrieve the latest committed version of the entities or the latest
-        #   version. This field is ignored if a specific commit_id is specified.
+        #   Optional. Whether to retrieve the latest committed version of the entities or
+        #   the latest version. This field is ignored if a specific commit_id is specified.
+        # @param [String] view
+        #   Optional. Results view based on AIP-157
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -777,7 +779,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def describe_project_location_conversion_workspace_database_entities(conversion_workspace, commit_id: nil, filter: nil, page_size: nil, page_token: nil, tree: nil, uncommitted: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def describe_project_location_conversion_workspace_database_entities(conversion_workspace, commit_id: nil, filter: nil, page_size: nil, page_token: nil, tree: nil, uncommitted: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+conversionWorkspace}:describeDatabaseEntities', options)
           command.response_representation = Google::Apis::DatamigrationV1::DescribeDatabaseEntitiesResponse::Representation
           command.response_class = Google::Apis::DatamigrationV1::DescribeDatabaseEntitiesResponse
@@ -788,6 +790,7 @@ module Google
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['tree'] = tree unless tree.nil?
           command.query['uncommitted'] = uncommitted unless uncommitted.nil?
+          command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1155,6 +1158,119 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new mapping rule for a given conversion workspace.
+        # @param [String] parent
+        #   Required. The parent which owns this collection of mapping rules.
+        # @param [Google::Apis::DatamigrationV1::MappingRule] mapping_rule_object
+        # @param [String] mapping_rule_id
+        #   Required. The ID of the rule to create.
+        # @param [String] request_id
+        #   A unique ID used to identify the request. If the server receives two requests
+        #   with the same ID, then the second request is ignored. It is recommended to
+        #   always set this value to a UUID. The ID must contain only letters (a-z, A-Z),
+        #   numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
+        #   characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatamigrationV1::MappingRule] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatamigrationV1::MappingRule]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_conversion_workspace_mapping_rule(parent, mapping_rule_object = nil, mapping_rule_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/mappingRules', options)
+          command.request_representation = Google::Apis::DatamigrationV1::MappingRule::Representation
+          command.request_object = mapping_rule_object
+          command.response_representation = Google::Apis::DatamigrationV1::MappingRule::Representation
+          command.response_class = Google::Apis::DatamigrationV1::MappingRule
+          command.params['parent'] = parent unless parent.nil?
+          command.query['mappingRuleId'] = mapping_rule_id unless mapping_rule_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a single mapping rule.
+        # @param [String] name
+        #   Required. Name of the mapping rule resource to delete.
+        # @param [String] request_id
+        #   Optional. A unique ID used to identify the request. If the server receives two
+        #   requests with the same ID, then the second request is ignored. It is
+        #   recommended to always set this value to a UUID. The ID must contain only
+        #   letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The
+        #   maximum length is 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatamigrationV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatamigrationV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_conversion_workspace_mapping_rule(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DatamigrationV1::Empty::Representation
+          command.response_class = Google::Apis::DatamigrationV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the details of a mapping rule.
+        # @param [String] name
+        #   Required. Name of the mapping rule resource to get. Example:
+        #   conversionWorkspaces/123/mappingRules/rule123 In order to retrieve a previous
+        #   revision of the mapping rule, also provide the revision ID. Example:
+        #   conversionWorkspace/123/mappingRules/rule123@c7cfa2a8c7cfa2a8c7cfa2a8c7cfa2a8
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatamigrationV1::MappingRule] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatamigrationV1::MappingRule]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_conversion_workspace_mapping_rule(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DatamigrationV1::MappingRule::Representation
+          command.response_class = Google::Apis::DatamigrationV1::MappingRule
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Imports the mapping rules for a given conversion workspace. Supports various
         # formats of external rules files.
         # @param [String] parent
@@ -1191,6 +1307,48 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Lists the mapping rules for a specific conversion workspace.
+        # @param [String] parent
+        #   Required. Name of the conversion workspace resource whose mapping rules are
+        #   listed in the form of: projects/`project`/locations/`location`/
+        #   conversionWorkspaces/`conversion_workspace`.
+        # @param [Fixnum] page_size
+        #   The maximum number of rules to return. The service may return fewer than this
+        #   value.
+        # @param [String] page_token
+        #   The nextPageToken value received in the previous call to mappingRules.list,
+        #   used in the subsequent request to retrieve the next page of results. On first
+        #   call this should be left blank. When paginating, all other parameters provided
+        #   to mappingRules.list must match the call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatamigrationV1::ListMappingRulesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatamigrationV1::ListMappingRulesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_conversion_workspace_mapping_rules(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/mappingRules', options)
+          command.response_representation = Google::Apis::DatamigrationV1::ListMappingRulesResponse::Representation
+          command.response_class = Google::Apis::DatamigrationV1::ListMappingRulesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a new migration job in a given project and location.
         # @param [String] parent
         #   Required. The parent which owns this collection of migration jobs.
@@ -1198,11 +1356,11 @@ module Google
         # @param [String] migration_job_id
         #   Required. The ID of the instance to create.
         # @param [String] request_id
-        #   A unique ID used to identify the request. If the server receives two requests
-        #   with the same ID, then the second request is ignored. It is recommended to
-        #   always set this value to a UUID. The ID must contain only letters (a-z, A-Z),
-        #   numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
-        #   characters.
+        #   Optional. A unique ID used to identify the request. If the server receives two
+        #   requests with the same ID, then the second request is ignored. It is
+        #   recommended to always set this value to a UUID. The ID must contain only
+        #   letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The
+        #   maximum length is 40 characters.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
