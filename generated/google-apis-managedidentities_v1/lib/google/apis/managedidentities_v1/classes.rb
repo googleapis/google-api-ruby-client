@@ -233,6 +233,46 @@ module Google
         end
       end
       
+      # CheckMigrationPermissionRequest is the request message for
+      # CheckMigrationPermission method.
+      class CheckMigrationPermissionRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # CheckMigrationPermissionResponse is the response message for
+      # CheckMigrationPermission method.
+      class CheckMigrationPermissionResponse
+        include Google::Apis::Core::Hashable
+      
+        # The state of SID filtering of all the domains which has trust established.
+        # Corresponds to the JSON property `onpremDomains`
+        # @return [Array<Google::Apis::ManagedidentitiesV1::OnPremDomainSidDetails>]
+        attr_accessor :onprem_domains
+      
+        # The state of DomainMigration.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @onprem_domains = args[:onprem_domains] if args.key?(:onprem_domains)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # Time window specified for daily operations.
       class DailyCycle
         include Google::Apis::Core::Hashable
@@ -1670,6 +1710,32 @@ module Google
         def update!(**args)
           @disable_sid_filtering = args[:disable_sid_filtering] if args.key?(:disable_sid_filtering)
           @domain_name = args[:domain_name] if args.key?(:domain_name)
+        end
+      end
+      
+      # OnPremDomainDetails is the message which contains details of on-prem domain
+      # which is trusted and needs to be migrated.
+      class OnPremDomainSidDetails
+        include Google::Apis::Core::Hashable
+      
+        # FQDN of the on-prem domain being migrated.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Current SID filtering state.
+        # Corresponds to the JSON property `sidFilteringState`
+        # @return [String]
+        attr_accessor :sid_filtering_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @sid_filtering_state = args[:sid_filtering_state] if args.key?(:sid_filtering_state)
         end
       end
       

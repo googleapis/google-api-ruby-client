@@ -52,6 +52,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CheckMigrationPermissionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CheckMigrationPermissionResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DailyCycle
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -262,6 +274,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OnPremDomainSidDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -422,6 +440,21 @@ module Google
           property :subject, as: 'subject'
           collection :subject_alternative_name, as: 'subjectAlternativeName'
           property :thumbprint, as: 'thumbprint'
+        end
+      end
+      
+      class CheckMigrationPermissionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class CheckMigrationPermissionResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :onprem_domains, as: 'onpremDomains', class: Google::Apis::ManagedidentitiesV1::OnPremDomainSidDetails, decorator: Google::Apis::ManagedidentitiesV1::OnPremDomainSidDetails::Representation
+      
+          property :state, as: 'state'
         end
       end
       
@@ -786,6 +819,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :disable_sid_filtering, as: 'disableSidFiltering'
           property :domain_name, as: 'domainName'
+        end
+      end
+      
+      class OnPremDomainSidDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :sid_filtering_state, as: 'sidFilteringState'
         end
       end
       
