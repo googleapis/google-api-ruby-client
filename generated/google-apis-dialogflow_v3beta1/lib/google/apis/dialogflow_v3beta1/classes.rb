@@ -653,7 +653,8 @@ module Google
       class GoogleCloudDialogflowCxV3ExportAgentResponse
         include Google::Apis::Core::Hashable
       
-        # Uncompressed raw byte content for agent.
+        # Uncompressed raw byte content for agent. This field is populated if none of `
+        # agent_uri` and `git_destination` are specified in ExportAgentRequest.
         # Corresponds to the JSON property `agentContent`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -665,6 +666,12 @@ module Google
         # @return [String]
         attr_accessor :agent_uri
       
+        # Commit SHA of the git push. This field is populated if `git_destination` are
+        # specified in ExportAgentRequest.
+        # Corresponds to the JSON property `commitSha`
+        # @return [String]
+        attr_accessor :commit_sha
+      
         def initialize(**args)
            update!(**args)
         end
@@ -673,6 +680,7 @@ module Google
         def update!(**args)
           @agent_content = args[:agent_content] if args.key?(:agent_content)
           @agent_uri = args[:agent_uri] if args.key?(:agent_uri)
+          @commit_sha = args[:commit_sha] if args.key?(:commit_sha)
         end
       end
       
@@ -3218,6 +3226,11 @@ module Google
         attr_accessor :enable_stackdriver_logging
         alias_method :enable_stackdriver_logging?, :enable_stackdriver_logging
       
+        # Settings for connecting to Git repository for an agent.
+        # Corresponds to the JSON property `gitIntegrationSettings`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettings]
+        attr_accessor :git_integration_settings
+      
         # Indicates whether the agent is locked for changes. If the agent is locked,
         # modifications to the agent will be rejected except for RestoreAgent.
         # Corresponds to the JSON property `locked`
@@ -3280,6 +3293,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @enable_spell_correction = args[:enable_spell_correction] if args.key?(:enable_spell_correction)
           @enable_stackdriver_logging = args[:enable_stackdriver_logging] if args.key?(:enable_stackdriver_logging)
+          @git_integration_settings = args[:git_integration_settings] if args.key?(:git_integration_settings)
           @locked = args[:locked] if args.key?(:locked)
           @name = args[:name] if args.key?(:name)
           @security_settings = args[:security_settings] if args.key?(:security_settings)
@@ -3288,6 +3302,68 @@ module Google
           @supported_language_codes = args[:supported_language_codes] if args.key?(:supported_language_codes)
           @text_to_speech_settings = args[:text_to_speech_settings] if args.key?(:text_to_speech_settings)
           @time_zone = args[:time_zone] if args.key?(:time_zone)
+        end
+      end
+      
+      # Settings for connecting to Git repository for an agent.
+      class GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettings
+        include Google::Apis::Core::Hashable
+      
+        # Settings of integration with GitHub.
+        # Corresponds to the JSON property `githubSettings`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGithubSettings]
+        attr_accessor :github_settings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @github_settings = args[:github_settings] if args.key?(:github_settings)
+        end
+      end
+      
+      # Settings of integration with GitHub.
+      class GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGithubSettings
+        include Google::Apis::Core::Hashable
+      
+        # The access token used to authenticate the access to the GitHub repository.
+        # Corresponds to the JSON property `accessToken`
+        # @return [String]
+        attr_accessor :access_token
+      
+        # A list of branches configured to be used from Dialogflow.
+        # Corresponds to the JSON property `branches`
+        # @return [Array<String>]
+        attr_accessor :branches
+      
+        # The unique repository display name for the GitHub repository.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The GitHub repository URI related to the agent.
+        # Corresponds to the JSON property `repositoryUri`
+        # @return [String]
+        attr_accessor :repository_uri
+      
+        # The branch of GitHub repository tracked for this agent.
+        # Corresponds to the JSON property `trackingBranch`
+        # @return [String]
+        attr_accessor :tracking_branch
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_token = args[:access_token] if args.key?(:access_token)
+          @branches = args[:branches] if args.key?(:branches)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @repository_uri = args[:repository_uri] if args.key?(:repository_uri)
+          @tracking_branch = args[:tracking_branch] if args.key?(:tracking_branch)
         end
       end
       
@@ -4794,6 +4870,11 @@ module Google
         # @return [String]
         attr_accessor :environment
       
+        # Settings for exporting to a git branch.
+        # Corresponds to the JSON property `gitDestination`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ExportAgentRequestGitDestination]
+        attr_accessor :git_destination
+      
         # Optional. Whether to include BigQuery Export setting.
         # Corresponds to the JSON property `includeBigqueryExportSettings`
         # @return [Boolean]
@@ -4809,7 +4890,33 @@ module Google
           @agent_uri = args[:agent_uri] if args.key?(:agent_uri)
           @data_format = args[:data_format] if args.key?(:data_format)
           @environment = args[:environment] if args.key?(:environment)
+          @git_destination = args[:git_destination] if args.key?(:git_destination)
           @include_bigquery_export_settings = args[:include_bigquery_export_settings] if args.key?(:include_bigquery_export_settings)
+        end
+      end
+      
+      # Settings for exporting to a git branch.
+      class GoogleCloudDialogflowCxV3beta1ExportAgentRequestGitDestination
+        include Google::Apis::Core::Hashable
+      
+        # Commit message for the git push.
+        # Corresponds to the JSON property `commitMessage`
+        # @return [String]
+        attr_accessor :commit_message
+      
+        # Tracking branch for the git push.
+        # Corresponds to the JSON property `trackingBranch`
+        # @return [String]
+        attr_accessor :tracking_branch
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @commit_message = args[:commit_message] if args.key?(:commit_message)
+          @tracking_branch = args[:tracking_branch] if args.key?(:tracking_branch)
         end
       end
       
@@ -4817,7 +4924,8 @@ module Google
       class GoogleCloudDialogflowCxV3beta1ExportAgentResponse
         include Google::Apis::Core::Hashable
       
-        # Uncompressed raw byte content for agent.
+        # Uncompressed raw byte content for agent. This field is populated if none of `
+        # agent_uri` and `git_destination` are specified in ExportAgentRequest.
         # Corresponds to the JSON property `agentContent`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -4829,6 +4937,12 @@ module Google
         # @return [String]
         attr_accessor :agent_uri
       
+        # Commit SHA of the git push. This field is populated if `git_destination` are
+        # specified in ExportAgentRequest.
+        # Corresponds to the JSON property `commitSha`
+        # @return [String]
+        attr_accessor :commit_sha
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4837,6 +4951,7 @@ module Google
         def update!(**args)
           @agent_content = args[:agent_content] if args.key?(:agent_content)
           @agent_uri = args[:agent_uri] if args.key?(:agent_uri)
+          @commit_sha = args[:commit_sha] if args.key?(:commit_sha)
         end
       end
       
@@ -7754,6 +7869,11 @@ module Google
         # @return [String]
         attr_accessor :agent_uri
       
+        # Settings for restoring from a git branch
+        # Corresponds to the JSON property `gitSource`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1RestoreAgentRequestGitSource]
+        attr_accessor :git_source
+      
         # Agent restore mode. If not specified, `KEEP` is assumed.
         # Corresponds to the JSON property `restoreOption`
         # @return [String]
@@ -7767,7 +7887,27 @@ module Google
         def update!(**args)
           @agent_content = args[:agent_content] if args.key?(:agent_content)
           @agent_uri = args[:agent_uri] if args.key?(:agent_uri)
+          @git_source = args[:git_source] if args.key?(:git_source)
           @restore_option = args[:restore_option] if args.key?(:restore_option)
+        end
+      end
+      
+      # Settings for restoring from a git branch
+      class GoogleCloudDialogflowCxV3beta1RestoreAgentRequestGitSource
+        include Google::Apis::Core::Hashable
+      
+        # tracking branch for the git pull
+        # Corresponds to the JSON property `trackingBranch`
+        # @return [String]
+        attr_accessor :tracking_branch
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tracking_branch = args[:tracking_branch] if args.key?(:tracking_branch)
         end
       end
       
