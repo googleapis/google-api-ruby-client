@@ -538,6 +538,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PrometheusQueryLanguageCondition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class QueryTimeSeriesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -891,6 +897,8 @@ module Google
       
           property :condition_monitoring_query_language, as: 'conditionMonitoringQueryLanguage', class: Google::Apis::MonitoringV3::MonitoringQueryLanguageCondition, decorator: Google::Apis::MonitoringV3::MonitoringQueryLanguageCondition::Representation
       
+          property :condition_prometheus_query_language, as: 'conditionPrometheusQueryLanguage', class: Google::Apis::MonitoringV3::PrometheusQueryLanguageCondition, decorator: Google::Apis::MonitoringV3::PrometheusQueryLanguageCondition::Representation
+      
           property :condition_threshold, as: 'conditionThreshold', class: Google::Apis::MonitoringV3::MetricThreshold, decorator: Google::Apis::MonitoringV3::MetricThreshold::Representation
       
           property :display_name, as: 'displayName'
@@ -990,6 +998,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :content, as: 'content'
           property :mime_type, as: 'mimeType'
+          property :subject, as: 'subject'
         end
       end
       
@@ -1581,6 +1590,18 @@ module Google
       
           collection :values, as: 'values', class: Google::Apis::MonitoringV3::TypedValue, decorator: Google::Apis::MonitoringV3::TypedValue::Representation
       
+        end
+      end
+      
+      class PrometheusQueryLanguageCondition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alert_rule, as: 'alertRule'
+          property :duration, as: 'duration'
+          property :evaluation_interval, as: 'evaluationInterval'
+          hash :labels, as: 'labels'
+          property :query, as: 'query'
+          property :rule_group, as: 'ruleGroup'
         end
       end
       
