@@ -181,6 +181,33 @@ module Google
         end
       end
       
+      # AdvancedDatapathObservabilityConfig specifies configuration of observability
+      # features of advanced datapath.
+      class AdvancedDatapathObservabilityConfig
+        include Google::Apis::Core::Hashable
+      
+        # Expose flow metrics on nodes
+        # Corresponds to the JSON property `enableMetrics`
+        # @return [Boolean]
+        attr_accessor :enable_metrics
+        alias_method :enable_metrics?, :enable_metrics
+      
+        # Method used to make Relay available
+        # Corresponds to the JSON property `relayMode`
+        # @return [String]
+        attr_accessor :relay_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_metrics = args[:enable_metrics] if args.key?(:enable_metrics)
+          @relay_mode = args[:relay_mode] if args.key?(:relay_mode)
+        end
+      end
+      
       # Specifies options for controlling advanced machine features.
       class AdvancedMachineFeatures
         include Google::Apis::Core::Hashable
@@ -2565,7 +2592,7 @@ module Google
         alias_method :create_subnetwork?, :create_subnetwork
       
         # Output only. [Output only] The utilization of the cluster default IPv4 range
-        # for pod. The ratio is Usage/[Total number of IPs in the secondary range],
+        # for the pod. The ratio is Usage/[Total number of IPs in the secondary range],
         # Usage=numNodes*numZones*podIPsPerNode.
         # Corresponds to the JSON property `defaultPodIpv4RangeUtilization`
         # @return [Float]
@@ -3389,6 +3416,12 @@ module Google
       class MonitoringConfig
         include Google::Apis::Core::Hashable
       
+        # AdvancedDatapathObservabilityConfig specifies configuration of observability
+        # features of advanced datapath.
+        # Corresponds to the JSON property `advancedDatapathObservabilityConfig`
+        # @return [Google::Apis::ContainerV1::AdvancedDatapathObservabilityConfig]
+        attr_accessor :advanced_datapath_observability_config
+      
         # MonitoringComponentConfig is cluster monitoring component configuration.
         # Corresponds to the JSON property `componentConfig`
         # @return [Google::Apis::ContainerV1::MonitoringComponentConfig]
@@ -3406,6 +3439,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @advanced_datapath_observability_config = args[:advanced_datapath_observability_config] if args.key?(:advanced_datapath_observability_config)
           @component_config = args[:component_config] if args.key?(:component_config)
           @managed_prometheus_config = args[:managed_prometheus_config] if args.key?(:managed_prometheus_config)
         end
@@ -4110,7 +4144,7 @@ module Google
         # @return [String]
         attr_accessor :pod_ipv4_cidr_block
       
-        # Output only. [Output only] The utilization of the IPv4 range for pod. The
+        # Output only. [Output only] The utilization of the IPv4 range for the pod. The
         # ratio is Usage/[Total number of IPs in the secondary range], Usage=numNodes*
         # numZones*podIPsPerNode.
         # Corresponds to the JSON property `podIpv4RangeUtilization`
