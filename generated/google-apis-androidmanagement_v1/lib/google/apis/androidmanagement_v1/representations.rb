@@ -226,6 +226,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeviceRadioState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeviceSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -890,6 +896,7 @@ module Google
           property :package_sha256_hash, as: 'packageSha256Hash'
           collection :signing_key_cert_fingerprints, as: 'signingKeyCertFingerprints'
           property :state, as: 'state'
+          property :user_facing_type, as: 'userFacingType'
           property :version_code, as: 'versionCode'
           property :version_name, as: 'versionName'
         end
@@ -1123,7 +1130,17 @@ module Google
       class DeviceConnectivityManagement
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :configure_wifi, as: 'configureWifi'
+          property :tethering_settings, as: 'tetheringSettings'
           property :usb_data_access, as: 'usbDataAccess'
+          property :wifi_direct_settings, as: 'wifiDirectSettings'
+        end
+      end
+      
+      class DeviceRadioState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :wifi_state, as: 'wifiState'
         end
       end
       
@@ -1701,6 +1718,8 @@ module Google
           property :device_connectivity_management, as: 'deviceConnectivityManagement', class: Google::Apis::AndroidmanagementV1::DeviceConnectivityManagement, decorator: Google::Apis::AndroidmanagementV1::DeviceConnectivityManagement::Representation
       
           property :device_owner_lock_screen_info, as: 'deviceOwnerLockScreenInfo', class: Google::Apis::AndroidmanagementV1::UserFacingMessage, decorator: Google::Apis::AndroidmanagementV1::UserFacingMessage::Representation
+      
+          property :device_radio_state, as: 'deviceRadioState', class: Google::Apis::AndroidmanagementV1::DeviceRadioState, decorator: Google::Apis::AndroidmanagementV1::DeviceRadioState::Representation
       
           property :encryption_policy, as: 'encryptionPolicy'
           property :ensure_verify_apps_enabled, as: 'ensureVerifyAppsEnabled'

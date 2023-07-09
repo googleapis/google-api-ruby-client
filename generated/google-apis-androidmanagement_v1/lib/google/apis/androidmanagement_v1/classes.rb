@@ -726,6 +726,11 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Whether the app is user facing.
+        # Corresponds to the JSON property `userFacingType`
+        # @return [String]
+        attr_accessor :user_facing_type
+      
         # The app version code, which can be used to determine whether one version is
         # more recent than another.
         # Corresponds to the JSON property `versionCode`
@@ -752,6 +757,7 @@ module Google
           @package_sha256_hash = args[:package_sha256_hash] if args.key?(:package_sha256_hash)
           @signing_key_cert_fingerprints = args[:signing_key_cert_fingerprints] if args.key?(:signing_key_cert_fingerprints)
           @state = args[:state] if args.key?(:state)
+          @user_facing_type = args[:user_facing_type] if args.key?(:user_facing_type)
           @version_code = args[:version_code] if args.key?(:version_code)
           @version_name = args[:version_name] if args.key?(:version_name)
         end
@@ -1683,11 +1689,29 @@ module Google
       class DeviceConnectivityManagement
         include Google::Apis::Core::Hashable
       
+        # Controls Wi-Fi configuring privileges. Based on the option set, user will have
+        # either full or limited or no control in configuring Wi-Fi networks.
+        # Corresponds to the JSON property `configureWifi`
+        # @return [String]
+        attr_accessor :configure_wifi
+      
+        # Controls tethering settings. Based on the value set, the user is partially or
+        # fully disallowed from using different forms of tethering.
+        # Corresponds to the JSON property `tetheringSettings`
+        # @return [String]
+        attr_accessor :tethering_settings
+      
         # Controls what files and/or data can be transferred via USB. Supported only on
         # company-owned devices.
         # Corresponds to the JSON property `usbDataAccess`
         # @return [String]
         attr_accessor :usb_data_access
+      
+        # Controls configuring and using Wi-Fi direct settings. Supported on company-
+        # owned devices running Android 13 and above.
+        # Corresponds to the JSON property `wifiDirectSettings`
+        # @return [String]
+        attr_accessor :wifi_direct_settings
       
         def initialize(**args)
            update!(**args)
@@ -1695,7 +1719,29 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @configure_wifi = args[:configure_wifi] if args.key?(:configure_wifi)
+          @tethering_settings = args[:tethering_settings] if args.key?(:tethering_settings)
           @usb_data_access = args[:usb_data_access] if args.key?(:usb_data_access)
+          @wifi_direct_settings = args[:wifi_direct_settings] if args.key?(:wifi_direct_settings)
+        end
+      end
+      
+      # Controls for device radio settings.
+      class DeviceRadioState
+        include Google::Apis::Core::Hashable
+      
+        # Controls current state of Wi-Fi and if user can change its state.
+        # Corresponds to the JSON property `wifiState`
+        # @return [String]
+        attr_accessor :wifi_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @wifi_state = args[:wifi_state] if args.key?(:wifi_state)
         end
       end
       
@@ -3922,6 +3968,11 @@ module Google
         # @return [Google::Apis::AndroidmanagementV1::UserFacingMessage]
         attr_accessor :device_owner_lock_screen_info
       
+        # Controls for device radio settings.
+        # Corresponds to the JSON property `deviceRadioState`
+        # @return [Google::Apis::AndroidmanagementV1::DeviceRadioState]
+        attr_accessor :device_radio_state
+      
         # Whether encryption is enabled
         # Corresponds to the JSON property `encryptionPolicy`
         # @return [String]
@@ -4054,7 +4105,10 @@ module Google
         # in the last policy and the device boots into an app in lock task mode, or the
         # user is otherwise unable to reach device settings.Note: Setting
         # wifiConfigDisabled to true will override this setting under specific
-        # circumstances. Please see wifiConfigDisabled for further details.
+        # circumstances. Please see wifiConfigDisabled for further details. Setting
+        # configureWifi to DISALLOW_CONFIGURING_WIFI will override this setting under
+        # specific circumstances. Please see DISALLOW_CONFIGURING_WIFI for further
+        # details.
         # Corresponds to the JSON property `networkEscapeHatchEnabled`
         # @return [Boolean]
         attr_accessor :network_escape_hatch_enabled
@@ -4251,7 +4305,9 @@ module Google
         # @return [Google::Apis::AndroidmanagementV1::SystemUpdate]
         attr_accessor :system_update
       
-        # Whether configuring tethering and portable hotspots is disabled.
+        # Whether configuring tethering and portable hotspots is disabled. If
+        # tetheringSettings is set to anything other than TETHERING_SETTINGS_UNSPECIFIED,
+        # this setting is ignored.
         # Corresponds to the JSON property `tetheringConfigDisabled`
         # @return [Boolean]
         attr_accessor :tethering_config_disabled
@@ -4311,10 +4367,11 @@ module Google
         # setting this to true removes all configured networks and retains only the
         # networks configured using openNetworkConfiguration. For work profiles on
         # company-owned devices, existing configured networks are not affected and the
-        # user is not allowed to add, remove, or modify Wi-Fi networks. Note: If a
-        # network connection can't be made at boot time and configuring Wi-Fi is
-        # disabled then network escape hatch will be shown in order to refresh the
-        # device policy (see networkEscapeHatchEnabled).
+        # user is not allowed to add, remove, or modify Wi-Fi networks. If configureWifi
+        # is set to anything other than CONFIGURE_WIFI_UNSPECIFIED, this setting is
+        # ignored. Note: If a network connection can't be made at boot time and
+        # configuring Wi-Fi is disabled then network escape hatch will be shown in order
+        # to refresh the device policy (see networkEscapeHatchEnabled).
         # Corresponds to the JSON property `wifiConfigDisabled`
         # @return [Boolean]
         attr_accessor :wifi_config_disabled
@@ -4359,6 +4416,7 @@ module Google
           @default_permission_policy = args[:default_permission_policy] if args.key?(:default_permission_policy)
           @device_connectivity_management = args[:device_connectivity_management] if args.key?(:device_connectivity_management)
           @device_owner_lock_screen_info = args[:device_owner_lock_screen_info] if args.key?(:device_owner_lock_screen_info)
+          @device_radio_state = args[:device_radio_state] if args.key?(:device_radio_state)
           @encryption_policy = args[:encryption_policy] if args.key?(:encryption_policy)
           @ensure_verify_apps_enabled = args[:ensure_verify_apps_enabled] if args.key?(:ensure_verify_apps_enabled)
           @factory_reset_disabled = args[:factory_reset_disabled] if args.key?(:factory_reset_disabled)
