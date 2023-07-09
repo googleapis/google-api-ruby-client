@@ -40,6 +40,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3AgentGitIntegrationSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3AgentValidationResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -287,6 +299,12 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3ExportAgentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3ExportAgentRequestGitDestination
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -761,6 +779,12 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3RestoreAgentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3RestoreAgentRequestGitSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2709,6 +2733,8 @@ module Google
           property :display_name, as: 'displayName'
           property :enable_spell_correction, as: 'enableSpellCorrection'
           property :enable_stackdriver_logging, as: 'enableStackdriverLogging'
+          property :git_integration_settings, as: 'gitIntegrationSettings', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3AgentGitIntegrationSettings, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3AgentGitIntegrationSettings::Representation
+      
           property :locked, as: 'locked'
           property :name, as: 'name'
           property :security_settings, as: 'securitySettings'
@@ -2719,6 +2745,25 @@ module Google
           property :text_to_speech_settings, as: 'textToSpeechSettings', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3TextToSpeechSettings, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3TextToSpeechSettings::Representation
       
           property :time_zone, as: 'timeZone'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3AgentGitIntegrationSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :github_settings, as: 'githubSettings', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_token, as: 'accessToken'
+          collection :branches, as: 'branches'
+          property :display_name, as: 'displayName'
+          property :repository_uri, as: 'repositoryUri'
+          property :tracking_branch, as: 'trackingBranch'
         end
       end
       
@@ -3145,7 +3190,17 @@ module Google
           property :agent_uri, as: 'agentUri'
           property :data_format, as: 'dataFormat'
           property :environment, as: 'environment'
+          property :git_destination, as: 'gitDestination', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ExportAgentRequestGitDestination, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ExportAgentRequestGitDestination::Representation
+      
           property :include_bigquery_export_settings, as: 'includeBigqueryExportSettings'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3ExportAgentRequestGitDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :commit_message, as: 'commitMessage'
+          property :tracking_branch, as: 'trackingBranch'
         end
       end
       
@@ -3154,6 +3209,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :agent_content, :base64 => true, as: 'agentContent'
           property :agent_uri, as: 'agentUri'
+          property :commit_sha, as: 'commitSha'
         end
       end
       
@@ -3930,7 +3986,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :agent_content, :base64 => true, as: 'agentContent'
           property :agent_uri, as: 'agentUri'
+          property :git_source, as: 'gitSource', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3RestoreAgentRequestGitSource, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3RestoreAgentRequestGitSource::Representation
+      
           property :restore_option, as: 'restoreOption'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3RestoreAgentRequestGitSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :tracking_branch, as: 'trackingBranch'
         end
       end
       
@@ -4684,6 +4749,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :agent_content, :base64 => true, as: 'agentContent'
           property :agent_uri, as: 'agentUri'
+          property :commit_sha, as: 'commitSha'
         end
       end
       
