@@ -6291,6 +6291,21 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Optional. Flag that specifies whether the VPC Peering through Private Google
+        # Access should be disabled between the consumer network and Apigee. Valid only
+        # when RuntimeType is set to CLOUD. Required if an authorizedNetwork on the
+        # consumer project is not provided, in which case the flag should be set to true.
+        # The value must be set before the creation of any Apigee runtime instance and
+        # can be updated only when there are no runtime instances. **Note:** Apigee will
+        # be deprecating the vpc peering model that requires you to provide '
+        # authorizedNetwork', by making the non-peering model as the default way of
+        # provisioning Apigee organization in future. So, this will be a temporary flag
+        # to enable the transition. Not supported for Apigee hybrid.
+        # Corresponds to the JSON property `disableVpcPeering`
+        # @return [Boolean]
+        attr_accessor :disable_vpc_peering
+        alias_method :disable_vpc_peering?, :disable_vpc_peering
+      
         # Display name for the Apigee organization. Unused, but reserved for future use.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -6389,6 +6404,7 @@ module Google
           @created_at = args[:created_at] if args.key?(:created_at)
           @customer_name = args[:customer_name] if args.key?(:customer_name)
           @description = args[:description] if args.key?(:description)
+          @disable_vpc_peering = args[:disable_vpc_peering] if args.key?(:disable_vpc_peering)
           @display_name = args[:display_name] if args.key?(:display_name)
           @environments = args[:environments] if args.key?(:environments)
           @expires_at = args[:expires_at] if args.key?(:expires_at)
@@ -6616,6 +6632,21 @@ module Google
         # @return [String]
         attr_accessor :authorized_network
       
+        # Optional. Flag that specifies whether the VPC Peering through Private Google
+        # Access should be disabled between the consumer network and Apigee. Required if
+        # an authorizedNetwork on the consumer project is not provided, in which case
+        # the flag should be set to true. The value must be set before the creation of
+        # any Apigee runtime instance and can be updated only when there are no runtime
+        # instances. **Note:** Apigee will be deprecating the vpc peering model that
+        # requires you to provide 'authorizedNetwork', by making the non-peering model
+        # as the default way of provisioning Apigee organization in future. So, this
+        # will be a temporary flag to enable the transition. Not supported for Apigee
+        # hybrid.
+        # Corresponds to the JSON property `disableVpcPeering`
+        # @return [Boolean]
+        attr_accessor :disable_vpc_peering
+        alias_method :disable_vpc_peering?, :disable_vpc_peering
+      
         # Cloud Platform location for the runtime instance. Defaults to zone `us-west1-a`
         # . If a region is provided, `EVAL` organizations will use the region for
         # automatically selecting a zone for the runtime instance.
@@ -6631,6 +6662,7 @@ module Google
         def update!(**args)
           @analytics_region = args[:analytics_region] if args.key?(:analytics_region)
           @authorized_network = args[:authorized_network] if args.key?(:authorized_network)
+          @disable_vpc_peering = args[:disable_vpc_peering] if args.key?(:disable_vpc_peering)
           @runtime_location = args[:runtime_location] if args.key?(:runtime_location)
         end
       end
