@@ -5428,6 +5428,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SecurityPolicyAdvancedOptionsConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5826,6 +5832,24 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SnapshotSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SnapshotSettingsStorageLocationSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SnapshotSettingsStorageLocationSettingsStorageLocationPreference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -10599,6 +10623,7 @@ module Google
       
           property :description, as: 'description'
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
+          property :enable_confidential_compute, as: 'enableConfidentialCompute'
           property :family, as: 'family'
           collection :guest_os_features, as: 'guestOsFeatures', class: Google::Apis::ComputeAlpha::GuestOsFeature, decorator: Google::Apis::ComputeAlpha::GuestOsFeature::Representation
       
@@ -11222,6 +11247,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :initial_delay_sec, as: 'initialDelaySec'
+          property :mode, as: 'mode'
         end
       end
       
@@ -11767,6 +11793,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :email, as: 'email'
+          property :fingerprint, :base64 => true, as: 'fingerprint'
           property :kind, as: 'kind'
           property :zone, as: 'zone'
         end
@@ -17437,6 +17464,19 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable, as: 'enable'
           property :rule_visibility, as: 'ruleVisibility'
+          collection :threshold_configs, as: 'thresholdConfigs', class: Google::Apis::ComputeAlpha::SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig, decorator: Google::Apis::ComputeAlpha::SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig::Representation
+      
+        end
+      end
+      
+      class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_deploy_confidence_threshold, as: 'autoDeployConfidenceThreshold'
+          property :auto_deploy_expiration_sec, as: 'autoDeployExpirationSec'
+          property :auto_deploy_impacted_baseline_threshold, as: 'autoDeployImpactedBaselineThreshold'
+          property :auto_deploy_load_threshold, as: 'autoDeployLoadThreshold'
+          property :name, as: 'name'
         end
       end
       
@@ -18167,6 +18207,30 @@ module Google
         end
       end
       
+      class SnapshotSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :storage_location, as: 'storageLocation', class: Google::Apis::ComputeAlpha::SnapshotSettingsStorageLocationSettings, decorator: Google::Apis::ComputeAlpha::SnapshotSettingsStorageLocationSettings::Representation
+      
+        end
+      end
+      
+      class SnapshotSettingsStorageLocationSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :locations, as: 'locations', class: Google::Apis::ComputeAlpha::SnapshotSettingsStorageLocationSettingsStorageLocationPreference, decorator: Google::Apis::ComputeAlpha::SnapshotSettingsStorageLocationSettingsStorageLocationPreference::Representation
+      
+          property :policy, as: 'policy'
+        end
+      end
+      
+      class SnapshotSettingsStorageLocationSettingsStorageLocationPreference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
       class SourceDiskEncryptionKey
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -18692,6 +18756,7 @@ module Google
           property :number_of_disks, :numeric_string => true, as: 'numberOfDisks'
           property :used_bytes, :numeric_string => true, as: 'usedBytes'
           property :used_reduced_bytes, :numeric_string => true, as: 'usedReducedBytes'
+          property :used_throughput, :numeric_string => true, as: 'usedThroughput'
         end
       end
       
