@@ -826,6 +826,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2alphaEnrollSolutionMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2alphaEnrollSolutionResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2alphaExportErrorsConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2630,6 +2642,20 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :model, as: 'model'
+        end
+      end
+      
+      class GoogleCloudRetailV2alphaEnrollSolutionMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudRetailV2alphaEnrollSolutionResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enrolled_solution, as: 'enrolledSolution'
+          property :search_solution_use_case, as: 'searchSolutionUseCase'
         end
       end
       
