@@ -1648,6 +1648,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceGroupManagerInstanceLifecyclePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceGroupManagerList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -9104,6 +9110,8 @@ module Google
           property :fingerprint, :base64 => true, as: 'fingerprint'
           property :id, :numeric_string => true, as: 'id'
           property :instance_group, as: 'instanceGroup'
+          property :instance_lifecycle_policy, as: 'instanceLifecyclePolicy', class: Google::Apis::ComputeV1::InstanceGroupManagerInstanceLifecyclePolicy, decorator: Google::Apis::ComputeV1::InstanceGroupManagerInstanceLifecyclePolicy::Representation
+      
           property :instance_template, as: 'instanceTemplate'
           property :kind, as: 'kind'
           property :list_managed_instances_results, as: 'listManagedInstancesResults'
@@ -9183,6 +9191,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :health_check, as: 'healthCheck'
           property :initial_delay_sec, as: 'initialDelaySec'
+        end
+      end
+      
+      class InstanceGroupManagerInstanceLifecyclePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :force_update_on_repair, as: 'forceUpdateOnRepair'
         end
       end
       

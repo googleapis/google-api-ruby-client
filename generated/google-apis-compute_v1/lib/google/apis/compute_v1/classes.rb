@@ -14068,6 +14068,11 @@ module Google
         # @return [String]
         attr_accessor :instance_group
       
+        # The repair policy for this managed instance group.
+        # Corresponds to the JSON property `instanceLifecyclePolicy`
+        # @return [Google::Apis::ComputeV1::InstanceGroupManagerInstanceLifecyclePolicy]
+        attr_accessor :instance_lifecycle_policy
+      
         # The URL of the instance template that is specified for this managed instance
         # group. The group uses this template to create all new instances in the managed
         # instance group. The templates for existing instances in the group do not
@@ -14174,6 +14179,7 @@ module Google
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @id = args[:id] if args.key?(:id)
           @instance_group = args[:instance_group] if args.key?(:instance_group)
+          @instance_lifecycle_policy = args[:instance_lifecycle_policy] if args.key?(:instance_lifecycle_policy)
           @instance_template = args[:instance_template] if args.key?(:instance_template)
           @kind = args[:kind] if args.key?(:kind)
           @list_managed_instances_results = args[:list_managed_instances_results] if args.key?(:list_managed_instances_results)
@@ -14458,6 +14464,29 @@ module Google
         def update!(**args)
           @health_check = args[:health_check] if args.key?(:health_check)
           @initial_delay_sec = args[:initial_delay_sec] if args.key?(:initial_delay_sec)
+        end
+      end
+      
+      # 
+      class InstanceGroupManagerInstanceLifecyclePolicy
+        include Google::Apis::Core::Hashable
+      
+        # A bit indicating whether to forcefully apply the group's latest configuration
+        # when repairing a VM. Valid options are: - NO (default): If configuration
+        # updates are available, they are not forcefully applied during repair. Instead,
+        # configuration updates are applied according to the group's update policy. -
+        # YES: If configuration updates are available, they are applied during repair.
+        # Corresponds to the JSON property `forceUpdateOnRepair`
+        # @return [String]
+        attr_accessor :force_update_on_repair
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @force_update_on_repair = args[:force_update_on_repair] if args.key?(:force_update_on_repair)
         end
       end
       
@@ -18121,8 +18150,9 @@ module Google
         end
       end
       
-      # Diagnostics information about interconnect, contains detailed and current
-      # technical information about Google's side of the connection.
+      # Diagnostics information about the Interconnect connection, which contains
+      # detailed and current technical information about Google's side of the
+      # connection.
       class InterconnectDiagnostics
         include Google::Apis::Core::Hashable
       
@@ -19159,8 +19189,9 @@ module Google
       class InterconnectsGetDiagnosticsResponse
         include Google::Apis::Core::Hashable
       
-        # Diagnostics information about interconnect, contains detailed and current
-        # technical information about Google's side of the connection.
+        # Diagnostics information about the Interconnect connection, which contains
+        # detailed and current technical information about Google's side of the
+        # connection.
         # Corresponds to the JSON property `result`
         # @return [Google::Apis::ComputeV1::InterconnectDiagnostics]
         attr_accessor :result
@@ -26111,45 +26142,38 @@ module Google
         # @return [Google::Apis::ComputeV1::Duration]
         attr_accessor :base_ejection_time
       
-        # Number of errors before a host is ejected from the connection pool. When the
-        # backend host is accessed over HTTP, a 5xx return code qualifies as an error.
-        # Defaults to 5. Not supported when the backend service is referenced by a URL
-        # map that is bound to target gRPC proxy that has validateForProxyless field set
-        # to true.
+        # Number of consecutive errors before a backend endpoint is ejected from the
+        # load balancing pool. When the backend endpoint is accessed over HTTP, a 5xx
+        # return code qualifies as an error. Defaults to 5.
         # Corresponds to the JSON property `consecutiveErrors`
         # @return [Fixnum]
         attr_accessor :consecutive_errors
       
         # The number of consecutive gateway failures (502, 503, 504 status or connection
         # errors that are mapped to one of those status codes) before a consecutive
-        # gateway failure ejection occurs. Defaults to 3. Not supported when the backend
-        # service is referenced by a URL map that is bound to target gRPC proxy that has
-        # validateForProxyless field set to true.
+        # gateway failure ejection occurs. Defaults to 3.
         # Corresponds to the JSON property `consecutiveGatewayFailure`
         # @return [Fixnum]
         attr_accessor :consecutive_gateway_failure
       
-        # The percentage chance that a host will be actually ejected when an outlier
+        # The percentage chance that a backend endpoint will be ejected when an outlier
         # status is detected through consecutive 5xx. This setting can be used to
-        # disable ejection or to ramp it up slowly. Defaults to 0. Not supported when
-        # the backend service is referenced by a URL map that is bound to target gRPC
-        # proxy that has validateForProxyless field set to true.
+        # disable ejection or to ramp it up slowly. Defaults to 0.
         # Corresponds to the JSON property `enforcingConsecutiveErrors`
         # @return [Fixnum]
         attr_accessor :enforcing_consecutive_errors
       
-        # The percentage chance that a host will be actually ejected when an outlier
+        # The percentage chance that a backend endpoint will be ejected when an outlier
         # status is detected through consecutive gateway failures. This setting can be
-        # used to disable ejection or to ramp it up slowly. Defaults to 100. Not
-        # supported when the backend service is referenced by a URL map that is bound to
-        # target gRPC proxy that has validateForProxyless field set to true.
+        # used to disable ejection or to ramp it up slowly. Defaults to 100.
         # Corresponds to the JSON property `enforcingConsecutiveGatewayFailure`
         # @return [Fixnum]
         attr_accessor :enforcing_consecutive_gateway_failure
       
-        # The percentage chance that a host will be actually ejected when an outlier
+        # The percentage chance that a backend endpoint will be ejected when an outlier
         # status is detected through success rate statistics. This setting can be used
-        # to disable ejection or to ramp it up slowly. Defaults to 100.
+        # to disable ejection or to ramp it up slowly. Defaults to 100. Not supported
+        # when the backend service uses Serverless NEG.
         # Corresponds to the JSON property `enforcingSuccessRate`
         # @return [Fixnum]
         attr_accessor :enforcing_success_rate
@@ -26162,25 +26186,29 @@ module Google
         # @return [Google::Apis::ComputeV1::Duration]
         attr_accessor :interval
       
-        # Maximum percentage of hosts in the load balancing pool for the backend service
-        # that can be ejected. Defaults to 50%.
+        # Maximum percentage of backend endpoints in the load balancing pool for the
+        # backend service that can be ejected if the ejection conditions are met.
+        # Defaults to 50%.
         # Corresponds to the JSON property `maxEjectionPercent`
         # @return [Fixnum]
         attr_accessor :max_ejection_percent
       
-        # The number of hosts in a cluster that must have enough request volume to
-        # detect success rate outliers. If the number of hosts is less than this setting,
-        # outlier detection via success rate statistics is not performed for any host
-        # in the cluster. Defaults to 5.
+        # The number of backend endpoints in the load balancing pool that must have
+        # enough request volume to detect success rate outliers. If the number of
+        # backend endpoints is fewer than this setting, outlier detection via success
+        # rate statistics is not performed for any backend endpoint in the load
+        # balancing pool. Defaults to 5. Not supported when the backend service uses
+        # Serverless NEG.
         # Corresponds to the JSON property `successRateMinimumHosts`
         # @return [Fixnum]
         attr_accessor :success_rate_minimum_hosts
       
         # The minimum number of total requests that must be collected in one interval (
-        # as defined by the interval duration above) to include this host in success
-        # rate based outlier detection. If the volume is lower than this setting,
-        # outlier detection via success rate statistics is not performed for that host.
-        # Defaults to 100.
+        # as defined by the interval duration above) to include this backend endpoint in
+        # success rate based outlier detection. If the volume is lower than this setting,
+        # outlier detection via success rate statistics is not performed for that
+        # backend endpoint. Defaults to 100. Not supported when the backend service uses
+        # Serverless NEG.
         # Corresponds to the JSON property `successRateRequestVolume`
         # @return [Fixnum]
         attr_accessor :success_rate_request_volume
@@ -26188,9 +26216,10 @@ module Google
         # This factor is used to determine the ejection threshold for success rate
         # outlier ejection. The ejection threshold is the difference between the mean
         # success rate, and the product of this factor and the standard deviation of the
-        # mean success rate: mean - (stdev * success_rate_stdev_factor). This factor is
+        # mean success rate: mean - (stdev * successRateStdevFactor). This factor is
         # divided by a thousand to get a double. That is, if the desired factor is 1.9,
-        # the runtime value should be 1900. Defaults to 1900.
+        # the runtime value should be 1900. Defaults to 1900. Not supported when the
+        # backend service uses Serverless NEG.
         # Corresponds to the JSON property `successRateStdevFactor`
         # @return [Fixnum]
         attr_accessor :success_rate_stdev_factor
