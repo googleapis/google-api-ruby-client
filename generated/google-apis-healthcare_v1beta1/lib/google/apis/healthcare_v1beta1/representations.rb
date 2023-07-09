@@ -934,6 +934,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PubsubDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class QueryAccessibleDataRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1781,7 +1787,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_time, as: 'endTime'
+          property :filter, as: 'filter'
           property :gcs_destination, as: 'gcsDestination', class: Google::Apis::HealthcareV1beta1::GcsDestination, decorator: Google::Apis::HealthcareV1beta1::GcsDestination::Representation
+      
+          property :pubsub_destination, as: 'pubsubDestination', class: Google::Apis::HealthcareV1beta1::PubsubDestination, decorator: Google::Apis::HealthcareV1beta1::PubsubDestination::Representation
       
           property :start_time, as: 'startTime'
         end
@@ -2589,6 +2598,13 @@ module Google
           property :failure, :numeric_string => true, as: 'failure'
           property :pending, :numeric_string => true, as: 'pending'
           property :success, :numeric_string => true, as: 'success'
+        end
+      end
+      
+      class PubsubDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :pubsub_topic, as: 'pubsubTopic'
         end
       end
       
