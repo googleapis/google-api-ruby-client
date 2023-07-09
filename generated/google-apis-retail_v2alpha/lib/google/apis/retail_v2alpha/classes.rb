@@ -1008,6 +1008,19 @@ module Google
         end
       end
       
+      # Request for AcceptTerms method.
+      class GoogleCloudRetailV2alphaAcceptTermsRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Request for CatalogService.AddCatalogAttribute method.
       class GoogleCloudRetailV2alphaAddCatalogAttributeRequest
         include Google::Apis::Core::Hashable
@@ -2166,6 +2179,72 @@ module Google
         end
       end
       
+      # Metadata related to the EnrollSolution method. This will be returned by the
+      # google.longrunning.Operation.metadata field.
+      class GoogleCloudRetailV2alphaEnrollSolutionMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Request for EnrollSolution method.
+      class GoogleCloudRetailV2alphaEnrollSolutionRequest
+        include Google::Apis::Core::Hashable
+      
+        # Solution use case to enroll. Currently settable for Browse to enroll. It
+        # should be only set when [solution] is set as SolutionType.SOLUTION_TYPE_SEARCH
+        # or an INVALID_ARGUMENT error is thrown.
+        # Corresponds to the JSON property `searchSolutionUseCase`
+        # @return [String]
+        attr_accessor :search_solution_use_case
+      
+        # Required. Solution to enroll.
+        # Corresponds to the JSON property `solution`
+        # @return [String]
+        attr_accessor :solution
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @search_solution_use_case = args[:search_solution_use_case] if args.key?(:search_solution_use_case)
+          @solution = args[:solution] if args.key?(:solution)
+        end
+      end
+      
+      # Response for EnrollSolution method.
+      class GoogleCloudRetailV2alphaEnrollSolutionResponse
+        include Google::Apis::Core::Hashable
+      
+        # Retail API solution that the project has enrolled.
+        # Corresponds to the JSON property `enrolledSolution`
+        # @return [String]
+        attr_accessor :enrolled_solution
+      
+        # Search solution use case that the project has enrolled.
+        # Corresponds to the JSON property `searchSolutionUseCase`
+        # @return [String]
+        attr_accessor :search_solution_use_case
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enrolled_solution = args[:enrolled_solution] if args.key?(:enrolled_solution)
+          @search_solution_use_case = args[:search_solution_use_case] if args.key?(:search_solution_use_case)
+        end
+      end
+      
       # Metadata for active A/B testing Experiment.
       class GoogleCloudRetailV2alphaExperimentInfo
         include Google::Apis::Core::Hashable
@@ -2875,6 +2954,25 @@ module Google
         def update!(**args)
           @controls = args[:controls] if args.key?(:controls)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response for ListEnrolledSolutions method.
+      class GoogleCloudRetailV2alphaListEnrolledSolutionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Retail API solutions that the project has enrolled.
+        # Corresponds to the JSON property `enrolledSolutions`
+        # @return [Array<String>]
+        attr_accessor :enrolled_solutions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enrolled_solutions = args[:enrolled_solutions] if args.key?(:enrolled_solutions)
         end
       end
       
@@ -4415,6 +4513,32 @@ module Google
         def update!(**args)
           @ingestion_product_type = args[:ingestion_product_type] if args.key?(:ingestion_product_type)
           @merchant_center_product_id_field = args[:merchant_center_product_id_field] if args.key?(:merchant_center_product_id_field)
+        end
+      end
+      
+      # Metadata that describes a Cloud Retail Project.
+      class GoogleCloudRetailV2alphaProject
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Retail API solutions that the project has enrolled.
+        # Corresponds to the JSON property `enrolledSolutions`
+        # @return [Array<String>]
+        attr_accessor :enrolled_solutions
+      
+        # Output only. Full resource name of the retail project, such as `projects/`
+        # project_id_or_number`/retailProject`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enrolled_solutions = args[:enrolled_solutions] if args.key?(:enrolled_solutions)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
