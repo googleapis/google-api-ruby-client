@@ -1981,6 +1981,94 @@ module Google
         end
       end
       
+      # Information about the result of a data quality rule for data quality scan. The
+      # monitored resource is 'DataScan'.
+      class GoogleCloudDataplexV1DataQualityScanRuleResult
+        include Google::Apis::Core::Hashable
+      
+        # The column which this rule is evaluated against.
+        # Corresponds to the JSON property `column`
+        # @return [String]
+        attr_accessor :column
+      
+        # The data source of the data scan (e.g. BigQuery table name).
+        # Corresponds to the JSON property `dataSource`
+        # @return [String]
+        attr_accessor :data_source
+      
+        # The number of rows evaluated against the data quality rule. This field is only
+        # valid for rules of PER_ROW evaluation type.
+        # Corresponds to the JSON property `evaluatedRowCount`
+        # @return [Fixnum]
+        attr_accessor :evaluated_row_count
+      
+        # The evaluation type of the data quality rule.
+        # Corresponds to the JSON property `evalutionType`
+        # @return [String]
+        attr_accessor :evalution_type
+      
+        # Identifier of the specific data scan job this log entry is for.
+        # Corresponds to the JSON property `jobId`
+        # @return [String]
+        attr_accessor :job_id
+      
+        # The number of rows with null values in the specified column.
+        # Corresponds to the JSON property `nullRowCount`
+        # @return [Fixnum]
+        attr_accessor :null_row_count
+      
+        # The number of rows which passed a rule evaluation. This field is only valid
+        # for rules of PER_ROW evaluation type.
+        # Corresponds to the JSON property `passedRowCount`
+        # @return [Fixnum]
+        attr_accessor :passed_row_count
+      
+        # The result of the data quality rule.
+        # Corresponds to the JSON property `result`
+        # @return [String]
+        attr_accessor :result
+      
+        # The dimension of the data quality rule.
+        # Corresponds to the JSON property `ruleDimension`
+        # @return [String]
+        attr_accessor :rule_dimension
+      
+        # The name of the data quality rule.
+        # Corresponds to the JSON property `ruleName`
+        # @return [String]
+        attr_accessor :rule_name
+      
+        # The type of the data quality rule.
+        # Corresponds to the JSON property `ruleType`
+        # @return [String]
+        attr_accessor :rule_type
+      
+        # The passing threshold (0.0, 100.0) of the data quality rule.
+        # Corresponds to the JSON property `thresholdPercent`
+        # @return [Float]
+        attr_accessor :threshold_percent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @column = args[:column] if args.key?(:column)
+          @data_source = args[:data_source] if args.key?(:data_source)
+          @evaluated_row_count = args[:evaluated_row_count] if args.key?(:evaluated_row_count)
+          @evalution_type = args[:evalution_type] if args.key?(:evalution_type)
+          @job_id = args[:job_id] if args.key?(:job_id)
+          @null_row_count = args[:null_row_count] if args.key?(:null_row_count)
+          @passed_row_count = args[:passed_row_count] if args.key?(:passed_row_count)
+          @result = args[:result] if args.key?(:result)
+          @rule_dimension = args[:rule_dimension] if args.key?(:rule_dimension)
+          @rule_name = args[:rule_name] if args.key?(:rule_name)
+          @rule_type = args[:rule_type] if args.key?(:rule_type)
+          @threshold_percent = args[:threshold_percent] if args.key?(:threshold_percent)
+        end
+      end
+      
       # DataQualityScan related setting.
       class GoogleCloudDataplexV1DataQualitySpec
         include Google::Apis::Core::Hashable
@@ -3007,7 +3095,7 @@ module Google
       end
       
       # Environment represents a user-visible compute infrastructure for analytics
-      # within a lake. LINT.IfChange
+      # within a lake.
       class GoogleCloudDataplexV1Environment
         include Google::Apis::Core::Hashable
       
