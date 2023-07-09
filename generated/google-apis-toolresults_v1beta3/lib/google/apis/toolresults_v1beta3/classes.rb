@@ -740,7 +740,7 @@ module Google
       # represent: - a mobile test executed across a range of device configurations -
       # a jenkins job with a build step followed by a test step The maximum size of an
       # execution message is 1 MiB. An Execution can be updated until its state is set
-      # to COMPLETE at which point it becomes immutable. Next tag: 17
+      # to COMPLETE at which point it becomes immutable.
       class Execution
         include Google::Apis::Core::Hashable
       
@@ -2748,7 +2748,7 @@ module Google
       # xml log + the service parses the xml logs and returns a TestExecutionStep with
       # updated TestResult(s). - user update the status of TestExecutionStep with id
       # 100 to COMPLETE A Step can be updated until its state is set to COMPLETE at
-      # which points it becomes immutable. Next tag: 27
+      # which points it becomes immutable.
       class Step
         include Google::Apis::Core::Hashable
       
