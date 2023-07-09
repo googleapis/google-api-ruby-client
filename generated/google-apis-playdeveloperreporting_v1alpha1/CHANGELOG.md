@@ -1,5 +1,9 @@
 # Release history for google-apis-playdeveloperreporting_v1alpha1
 
+### v0.21.0 (2023-07-09)
+
+* Regenerated from discovery document revision 20230701
+
 ### v0.20.0 (2023-05-21)
 
 * Regenerated from discovery document revision 20230516
