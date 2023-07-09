@@ -100,7 +100,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConnectorInfraConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ConnectorVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConnectorVersionInfraConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -148,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EndPoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EndpointAttachment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -155,6 +173,60 @@ module Google
       end
       
       class EnumOption
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EventSubscription
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EventSubscriptionDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EventSubscriptionStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EventType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EventingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EventingConfigTemplate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EventingDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EventingRuntimeData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EventingStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -185,6 +257,12 @@ module Google
       end
       
       class FieldComparison
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Header
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -221,6 +299,18 @@ module Google
       end
       
       class ListEndpointAttachmentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListEventSubscriptionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListEventTypesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -340,6 +430,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RepairEventingRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Resource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -347,6 +443,12 @@ module Google
       end
       
       class ResultMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RetryEventSubscriptionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -568,12 +670,19 @@ module Google
       
           property :connection_revision, :numeric_string => true, as: 'connectionRevision'
           property :connector_version, as: 'connectorVersion'
+          property :connector_version_infra_config, as: 'connectorVersionInfraConfig', class: Google::Apis::ConnectorsV1::ConnectorVersionInfraConfig, decorator: Google::Apis::ConnectorsV1::ConnectorVersionInfraConfig::Representation
+      
           property :connector_version_launch_stage, as: 'connectorVersionLaunchStage'
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           collection :destination_configs, as: 'destinationConfigs', class: Google::Apis::ConnectorsV1::DestinationConfig, decorator: Google::Apis::ConnectorsV1::DestinationConfig::Representation
       
           property :envoy_image_location, as: 'envoyImageLocation'
+          property :eventing_config, as: 'eventingConfig', class: Google::Apis::ConnectorsV1::EventingConfig, decorator: Google::Apis::ConnectorsV1::EventingConfig::Representation
+      
+          property :eventing_enablement_type, as: 'eventingEnablementType'
+          property :eventing_runtime_data, as: 'eventingRuntimeData', class: Google::Apis::ConnectorsV1::EventingRuntimeData, decorator: Google::Apis::ConnectorsV1::EventingRuntimeData::Representation
+      
           property :image_location, as: 'imageLocation'
           hash :labels, as: 'labels'
           property :lock_config, as: 'lockConfig', class: Google::Apis::ConnectorsV1::LockConfig, decorator: Google::Apis::ConnectorsV1::LockConfig::Representation
@@ -623,12 +732,21 @@ module Google
           property :description, as: 'description'
           property :display_name, as: 'displayName'
           property :documentation_uri, as: 'documentationUri'
+          property :eventing_details, as: 'eventingDetails', class: Google::Apis::ConnectorsV1::EventingDetails, decorator: Google::Apis::ConnectorsV1::EventingDetails::Representation
+      
           property :external_uri, as: 'externalUri'
           hash :labels, as: 'labels'
           property :launch_stage, as: 'launchStage'
           property :name, as: 'name'
           property :update_time, as: 'updateTime'
           property :web_assets_location, as: 'webAssetsLocation'
+        end
+      end
+      
+      class ConnectorInfraConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ratelimit_threshold, :numeric_string => true, as: 'ratelimitThreshold'
         end
       end
       
@@ -639,11 +757,15 @@ module Google
       
           collection :config_variable_templates, as: 'configVariableTemplates', class: Google::Apis::ConnectorsV1::ConfigVariableTemplate, decorator: Google::Apis::ConnectorsV1::ConfigVariableTemplate::Representation
       
+          property :connector_infra_config, as: 'connectorInfraConfig', class: Google::Apis::ConnectorsV1::ConnectorInfraConfig, decorator: Google::Apis::ConnectorsV1::ConnectorInfraConfig::Representation
+      
           property :create_time, as: 'createTime'
           collection :destination_config_templates, as: 'destinationConfigTemplates', class: Google::Apis::ConnectorsV1::DestinationConfigTemplate, decorator: Google::Apis::ConnectorsV1::DestinationConfigTemplate::Representation
       
           property :display_name, as: 'displayName'
           property :egress_control_config, as: 'egressControlConfig', class: Google::Apis::ConnectorsV1::EgressControlConfig, decorator: Google::Apis::ConnectorsV1::EgressControlConfig::Representation
+      
+          property :eventing_config_template, as: 'eventingConfigTemplate', class: Google::Apis::ConnectorsV1::EventingConfigTemplate, decorator: Google::Apis::ConnectorsV1::EventingConfigTemplate::Representation
       
           hash :labels, as: 'labels'
           property :launch_stage, as: 'launchStage'
@@ -658,6 +780,13 @@ module Google
           property :supported_runtime_features, as: 'supportedRuntimeFeatures', class: Google::Apis::ConnectorsV1::SupportedRuntimeFeatures, decorator: Google::Apis::ConnectorsV1::SupportedRuntimeFeatures::Representation
       
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class ConnectorVersionInfraConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ratelimit_threshold, :numeric_string => true, as: 'ratelimitThreshold'
         end
       end
       
@@ -724,6 +853,15 @@ module Google
         end
       end
       
+      class EndPoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :endpoint_uri, as: 'endpointUri'
+          collection :headers, as: 'headers', class: Google::Apis::ConnectorsV1::Header, decorator: Google::Apis::ConnectorsV1::Header::Representation
+      
+        end
+      end
+      
       class EndpointAttachment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -742,6 +880,117 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
           property :id, as: 'id'
+        end
+      end
+      
+      class EventSubscription
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :destinations, as: 'destinations', class: Google::Apis::ConnectorsV1::EventSubscriptionDestination, decorator: Google::Apis::ConnectorsV1::EventSubscriptionDestination::Representation
+      
+          property :event_type_id, as: 'eventTypeId'
+          property :name, as: 'name'
+          property :status, as: 'status', class: Google::Apis::ConnectorsV1::EventSubscriptionStatus, decorator: Google::Apis::ConnectorsV1::EventSubscriptionStatus::Representation
+      
+          property :subscriber, as: 'subscriber'
+          property :subscriber_link, as: 'subscriberLink'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class EventSubscriptionDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :endpoint, as: 'endpoint', class: Google::Apis::ConnectorsV1::EndPoint, decorator: Google::Apis::ConnectorsV1::EndPoint::Representation
+      
+          property :service_account, as: 'serviceAccount'
+          property :type, as: 'type'
+        end
+      end
+      
+      class EventSubscriptionStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :state, as: 'state'
+        end
+      end
+      
+      class EventType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :enriched_event_payload_schema, as: 'enrichedEventPayloadSchema'
+          property :entity_type, as: 'entityType'
+          property :event_payload_schema, as: 'eventPayloadSchema'
+          property :event_type_id, as: 'eventTypeId'
+          property :id_path, as: 'idPath'
+          property :name, as: 'name'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class EventingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :additional_variables, as: 'additionalVariables', class: Google::Apis::ConnectorsV1::ConfigVariable, decorator: Google::Apis::ConnectorsV1::ConfigVariable::Representation
+      
+          property :auth_config, as: 'authConfig', class: Google::Apis::ConnectorsV1::AuthConfig, decorator: Google::Apis::ConnectorsV1::AuthConfig::Representation
+      
+          property :encryption_key, as: 'encryptionKey', class: Google::Apis::ConnectorsV1::ConfigVariable, decorator: Google::Apis::ConnectorsV1::ConfigVariable::Representation
+      
+          property :enrichment_enabled, as: 'enrichmentEnabled'
+          property :registration_destination_config, as: 'registrationDestinationConfig', class: Google::Apis::ConnectorsV1::DestinationConfig, decorator: Google::Apis::ConnectorsV1::DestinationConfig::Representation
+      
+        end
+      end
+      
+      class EventingConfigTemplate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :additional_variables, as: 'additionalVariables', class: Google::Apis::ConnectorsV1::ConfigVariableTemplate, decorator: Google::Apis::ConnectorsV1::ConfigVariableTemplate::Representation
+      
+          collection :auth_config_templates, as: 'authConfigTemplates', class: Google::Apis::ConnectorsV1::AuthConfigTemplate, decorator: Google::Apis::ConnectorsV1::AuthConfigTemplate::Representation
+      
+          property :auto_refresh, as: 'autoRefresh'
+          property :auto_registration_supported, as: 'autoRegistrationSupported'
+          property :encryption_key_template, as: 'encryptionKeyTemplate', class: Google::Apis::ConnectorsV1::ConfigVariableTemplate, decorator: Google::Apis::ConnectorsV1::ConfigVariableTemplate::Representation
+      
+          property :enrichment_supported, as: 'enrichmentSupported'
+          property :is_eventing_supported, as: 'isEventingSupported'
+          property :registration_destination_config, as: 'registrationDestinationConfig', class: Google::Apis::ConnectorsV1::DestinationConfigTemplate, decorator: Google::Apis::ConnectorsV1::DestinationConfigTemplate::Representation
+      
+        end
+      end
+      
+      class EventingDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_event_types, as: 'customEventTypes'
+          property :description, as: 'description'
+          property :documentation_link, as: 'documentationLink'
+          property :icon_location, as: 'iconLocation'
+          property :launch_stage, as: 'launchStage'
+          property :name, as: 'name'
+          collection :search_tags, as: 'searchTags'
+        end
+      end
+      
+      class EventingRuntimeData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :events_listener_endpoint, as: 'eventsListenerEndpoint'
+          property :status, as: 'status', class: Google::Apis::ConnectorsV1::EventingStatus, decorator: Google::Apis::ConnectorsV1::EventingStatus::Representation
+      
+        end
+      end
+      
+      class EventingStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :state, as: 'state'
         end
       end
       
@@ -794,6 +1043,14 @@ module Google
           property :int_value, :numeric_string => true, as: 'intValue'
           property :key, as: 'key'
           property :string_value, as: 'stringValue'
+        end
+      end
+      
+      class Header
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :value, as: 'value'
         end
       end
       
@@ -854,6 +1111,25 @@ module Google
       
           property :next_page_token, as: 'nextPageToken'
           collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListEventSubscriptionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :event_subscriptions, as: 'eventSubscriptions', class: Google::Apis::ConnectorsV1::EventSubscription, decorator: Google::Apis::ConnectorsV1::EventSubscription::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListEventTypesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :event_types, as: 'eventTypes', class: Google::Apis::ConnectorsV1::EventType, decorator: Google::Apis::ConnectorsV1::EventType::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -1057,6 +1333,12 @@ module Google
         end
       end
       
+      class RepairEventingRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class Resource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1071,6 +1353,12 @@ module Google
           property :data_type, as: 'dataType'
           property :description, as: 'description'
           property :field, as: 'field'
+        end
+      end
+      
+      class RetryEventSubscriptionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

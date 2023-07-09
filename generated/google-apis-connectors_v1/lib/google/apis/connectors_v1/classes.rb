@@ -504,6 +504,12 @@ module Google
         # @return [String]
         attr_accessor :connector_version
       
+        # This cofiguration provides infra configs like rate limit threshold which need
+        # to be configurable for every connector version
+        # Corresponds to the JSON property `connectorVersionInfraConfig`
+        # @return [Google::Apis::ConnectorsV1::ConnectorVersionInfraConfig]
+        attr_accessor :connector_version_infra_config
+      
         # Output only. Flag to mark the version indicating the launch stage.
         # Corresponds to the JSON property `connectorVersionLaunchStage`
         # @return [String]
@@ -530,6 +536,22 @@ module Google
         # Corresponds to the JSON property `envoyImageLocation`
         # @return [String]
         attr_accessor :envoy_image_location
+      
+        # Eventing Configuration of a connection
+        # Corresponds to the JSON property `eventingConfig`
+        # @return [Google::Apis::ConnectorsV1::EventingConfig]
+        attr_accessor :eventing_config
+      
+        # Optional. Eventing enablement type. Will be nil if eventing is not enabled.
+        # Corresponds to the JSON property `eventingEnablementType`
+        # @return [String]
+        attr_accessor :eventing_enablement_type
+      
+        # Eventing runtime data has the details related to eventing managed by the
+        # system.
+        # Corresponds to the JSON property `eventingRuntimeData`
+        # @return [Google::Apis::ConnectorsV1::EventingRuntimeData]
+        attr_accessor :eventing_runtime_data
       
         # Output only. GCR location where the runtime image is stored. formatted like:
         # gcr.io/`bucketName`/`imageName`
@@ -616,11 +638,15 @@ module Google
           @config_variables = args[:config_variables] if args.key?(:config_variables)
           @connection_revision = args[:connection_revision] if args.key?(:connection_revision)
           @connector_version = args[:connector_version] if args.key?(:connector_version)
+          @connector_version_infra_config = args[:connector_version_infra_config] if args.key?(:connector_version_infra_config)
           @connector_version_launch_stage = args[:connector_version_launch_stage] if args.key?(:connector_version_launch_stage)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @destination_configs = args[:destination_configs] if args.key?(:destination_configs)
           @envoy_image_location = args[:envoy_image_location] if args.key?(:envoy_image_location)
+          @eventing_config = args[:eventing_config] if args.key?(:eventing_config)
+          @eventing_enablement_type = args[:eventing_enablement_type] if args.key?(:eventing_enablement_type)
+          @eventing_runtime_data = args[:eventing_runtime_data] if args.key?(:eventing_runtime_data)
           @image_location = args[:image_location] if args.key?(:image_location)
           @labels = args[:labels] if args.key?(:labels)
           @lock_config = args[:lock_config] if args.key?(:lock_config)
@@ -745,6 +771,11 @@ module Google
         # @return [String]
         attr_accessor :documentation_uri
       
+        # Eventing Details message.
+        # Corresponds to the JSON property `eventingDetails`
+        # @return [Google::Apis::ConnectorsV1::EventingDetails]
+        attr_accessor :eventing_details
+      
         # Output only. Link to external page.
         # Corresponds to the JSON property `externalUri`
         # @return [String]
@@ -789,12 +820,33 @@ module Google
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @documentation_uri = args[:documentation_uri] if args.key?(:documentation_uri)
+          @eventing_details = args[:eventing_details] if args.key?(:eventing_details)
           @external_uri = args[:external_uri] if args.key?(:external_uri)
           @labels = args[:labels] if args.key?(:labels)
           @launch_stage = args[:launch_stage] if args.key?(:launch_stage)
           @name = args[:name] if args.key?(:name)
           @update_time = args[:update_time] if args.key?(:update_time)
           @web_assets_location = args[:web_assets_location] if args.key?(:web_assets_location)
+        end
+      end
+      
+      # This cofiguration provides infra configs like rate limit threshold which need
+      # to be configurable for every connector version
+      class ConnectorInfraConfig
+        include Google::Apis::Core::Hashable
+      
+        # Max QPS supported by the connector version before throttling of requests.
+        # Corresponds to the JSON property `ratelimitThreshold`
+        # @return [Fixnum]
+        attr_accessor :ratelimit_threshold
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ratelimit_threshold = args[:ratelimit_threshold] if args.key?(:ratelimit_threshold)
         end
       end
       
@@ -811,6 +863,12 @@ module Google
         # Corresponds to the JSON property `configVariableTemplates`
         # @return [Array<Google::Apis::ConnectorsV1::ConfigVariableTemplate>]
         attr_accessor :config_variable_templates
+      
+        # This cofiguration provides infra configs like rate limit threshold which need
+        # to be configurable for every connector version
+        # Corresponds to the JSON property `connectorInfraConfig`
+        # @return [Google::Apis::ConnectorsV1::ConnectorInfraConfig]
+        attr_accessor :connector_infra_config
       
         # Output only. Created time.
         # Corresponds to the JSON property `createTime`
@@ -834,6 +892,11 @@ module Google
         # Corresponds to the JSON property `egressControlConfig`
         # @return [Google::Apis::ConnectorsV1::EgressControlConfig]
         attr_accessor :egress_control_config
+      
+        # Eventing Config details of a connector version.
+        # Corresponds to the JSON property `eventingConfigTemplate`
+        # @return [Google::Apis::ConnectorsV1::EventingConfigTemplate]
+        attr_accessor :eventing_config_template
       
         # Output only. Resource labels to represent user-provided metadata. Refer to
         # cloud documentation on labels for more details. https://cloud.google.com/
@@ -899,10 +962,12 @@ module Google
         def update!(**args)
           @auth_config_templates = args[:auth_config_templates] if args.key?(:auth_config_templates)
           @config_variable_templates = args[:config_variable_templates] if args.key?(:config_variable_templates)
+          @connector_infra_config = args[:connector_infra_config] if args.key?(:connector_infra_config)
           @create_time = args[:create_time] if args.key?(:create_time)
           @destination_config_templates = args[:destination_config_templates] if args.key?(:destination_config_templates)
           @display_name = args[:display_name] if args.key?(:display_name)
           @egress_control_config = args[:egress_control_config] if args.key?(:egress_control_config)
+          @eventing_config_template = args[:eventing_config_template] if args.key?(:eventing_config_template)
           @labels = args[:labels] if args.key?(:labels)
           @launch_stage = args[:launch_stage] if args.key?(:launch_stage)
           @name = args[:name] if args.key?(:name)
@@ -912,6 +977,27 @@ module Google
           @ssl_config_template = args[:ssl_config_template] if args.key?(:ssl_config_template)
           @supported_runtime_features = args[:supported_runtime_features] if args.key?(:supported_runtime_features)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # This cofiguration provides infra configs like rate limit threshold which need
+      # to be configurable for every connector version
+      class ConnectorVersionInfraConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Max QPS supported by the connector version before throttling of
+        # requests.
+        # Corresponds to the JSON property `ratelimitThreshold`
+        # @return [Fixnum]
+        attr_accessor :ratelimit_threshold
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ratelimit_threshold = args[:ratelimit_threshold] if args.key?(:ratelimit_threshold)
         end
       end
       
@@ -1134,6 +1220,31 @@ module Google
         end
       end
       
+      # Endpoint message includes details of the Destination endpoint.
+      class EndPoint
+        include Google::Apis::Core::Hashable
+      
+        # The URI of the Endpoint.
+        # Corresponds to the JSON property `endpointUri`
+        # @return [String]
+        attr_accessor :endpoint_uri
+      
+        # List of Header to be added to the Endpoint.
+        # Corresponds to the JSON property `headers`
+        # @return [Array<Google::Apis::ConnectorsV1::Header>]
+        attr_accessor :headers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @endpoint_uri = args[:endpoint_uri] if args.key?(:endpoint_uri)
+          @headers = args[:headers] if args.key?(:headers)
+        end
+      end
+      
       # represents the Connector's Endpoint Attachment resource
       class EndpointAttachment
         include Google::Apis::Core::Hashable
@@ -1214,6 +1325,411 @@ module Google
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
           @id = args[:id] if args.key?(:id)
+        end
+      end
+      
+      # represents the Connector's EventSubscription resource
+      class EventSubscription
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Created time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Message for EventSubscription Destination to act on receiving an event
+        # Corresponds to the JSON property `destinations`
+        # @return [Google::Apis::ConnectorsV1::EventSubscriptionDestination]
+        attr_accessor :destinations
+      
+        # Optional. Event type id of the event of current EventSubscription.
+        # Corresponds to the JSON property `eventTypeId`
+        # @return [String]
+        attr_accessor :event_type_id
+      
+        # Required. Resource name of the EventSubscription. Format: projects/`project`/
+        # locations/`location`/connections/`connection`/eventSubscriptions/`
+        # event_subscription`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # EventSubscription Status denotes the status of the EventSubscription resource.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::ConnectorsV1::EventSubscriptionStatus]
+        attr_accessor :status
+      
+        # Optional. name of the Subscriber for the current EventSubscription.
+        # Corresponds to the JSON property `subscriber`
+        # @return [String]
+        attr_accessor :subscriber
+      
+        # Optional. Link for Subscriber of the current EventSubscription.
+        # Corresponds to the JSON property `subscriberLink`
+        # @return [String]
+        attr_accessor :subscriber_link
+      
+        # Output only. Updated time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @destinations = args[:destinations] if args.key?(:destinations)
+          @event_type_id = args[:event_type_id] if args.key?(:event_type_id)
+          @name = args[:name] if args.key?(:name)
+          @status = args[:status] if args.key?(:status)
+          @subscriber = args[:subscriber] if args.key?(:subscriber)
+          @subscriber_link = args[:subscriber_link] if args.key?(:subscriber_link)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Message for EventSubscription Destination to act on receiving an event
+      class EventSubscriptionDestination
+        include Google::Apis::Core::Hashable
+      
+        # Endpoint message includes details of the Destination endpoint.
+        # Corresponds to the JSON property `endpoint`
+        # @return [Google::Apis::ConnectorsV1::EndPoint]
+        attr_accessor :endpoint
+      
+        # Service account needed for runtime plane to trigger IP workflow.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
+        # type of the destination
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @endpoint = args[:endpoint] if args.key?(:endpoint)
+          @service_account = args[:service_account] if args.key?(:service_account)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # EventSubscription Status denotes the status of the EventSubscription resource.
+      class EventSubscriptionStatus
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Description of the state.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. State of Event Subscription resource.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # EventType includes fields.
+      class EventType
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Created time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. Schema of the event payload after enriched. Will be null if read
+        # before send is not supported.
+        # Corresponds to the JSON property `enrichedEventPayloadSchema`
+        # @return [String]
+        attr_accessor :enriched_event_payload_schema
+      
+        # Output only. Runtime entity type name. Will be null if entity type map is not
+        # available. Used for read before send feature.
+        # Corresponds to the JSON property `entityType`
+        # @return [String]
+        attr_accessor :entity_type
+      
+        # Output only. Schema of webhook event payload.
+        # Corresponds to the JSON property `eventPayloadSchema`
+        # @return [String]
+        attr_accessor :event_payload_schema
+      
+        # Output only. Event type id. Example: `ticket.created`.
+        # Corresponds to the JSON property `eventTypeId`
+        # @return [String]
+        attr_accessor :event_type_id
+      
+        # Output only. Id path denotes the path of id in webhook payload.
+        # Corresponds to the JSON property `idPath`
+        # @return [String]
+        attr_accessor :id_path
+      
+        # Output only. Resource name of the eventtype. Format: projects/`project`/
+        # locations/`location`/providers/`provider`/connectors/`connector`/versions/`
+        # version`/eventtypes/`eventtype` Only global location is supported for
+        # Connector resource.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Updated time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @enriched_event_payload_schema = args[:enriched_event_payload_schema] if args.key?(:enriched_event_payload_schema)
+          @entity_type = args[:entity_type] if args.key?(:entity_type)
+          @event_payload_schema = args[:event_payload_schema] if args.key?(:event_payload_schema)
+          @event_type_id = args[:event_type_id] if args.key?(:event_type_id)
+          @id_path = args[:id_path] if args.key?(:id_path)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Eventing Configuration of a connection
+      class EventingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Additional eventing related field values
+        # Corresponds to the JSON property `additionalVariables`
+        # @return [Array<Google::Apis::ConnectorsV1::ConfigVariable>]
+        attr_accessor :additional_variables
+      
+        # AuthConfig defines details of a authentication type.
+        # Corresponds to the JSON property `authConfig`
+        # @return [Google::Apis::ConnectorsV1::AuthConfig]
+        attr_accessor :auth_config
+      
+        # ConfigVariable represents a configuration variable present in a Connection. or
+        # AuthConfig.
+        # Corresponds to the JSON property `encryptionKey`
+        # @return [Google::Apis::ConnectorsV1::ConfigVariable]
+        attr_accessor :encryption_key
+      
+        # Enrichment Enabled.
+        # Corresponds to the JSON property `enrichmentEnabled`
+        # @return [Boolean]
+        attr_accessor :enrichment_enabled
+        alias_method :enrichment_enabled?, :enrichment_enabled
+      
+        # Define the Connectors target endpoint.
+        # Corresponds to the JSON property `registrationDestinationConfig`
+        # @return [Google::Apis::ConnectorsV1::DestinationConfig]
+        attr_accessor :registration_destination_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_variables = args[:additional_variables] if args.key?(:additional_variables)
+          @auth_config = args[:auth_config] if args.key?(:auth_config)
+          @encryption_key = args[:encryption_key] if args.key?(:encryption_key)
+          @enrichment_enabled = args[:enrichment_enabled] if args.key?(:enrichment_enabled)
+          @registration_destination_config = args[:registration_destination_config] if args.key?(:registration_destination_config)
+        end
+      end
+      
+      # Eventing Config details of a connector version.
+      class EventingConfigTemplate
+        include Google::Apis::Core::Hashable
+      
+        # Additional fields that need to be rendered.
+        # Corresponds to the JSON property `additionalVariables`
+        # @return [Array<Google::Apis::ConnectorsV1::ConfigVariableTemplate>]
+        attr_accessor :additional_variables
+      
+        # AuthConfigTemplates represents the auth values for the webhook adapter.
+        # Corresponds to the JSON property `authConfigTemplates`
+        # @return [Array<Google::Apis::ConnectorsV1::AuthConfigTemplate>]
+        attr_accessor :auth_config_templates
+      
+        # Auto refresh to extend webhook life.
+        # Corresponds to the JSON property `autoRefresh`
+        # @return [Boolean]
+        attr_accessor :auto_refresh
+        alias_method :auto_refresh?, :auto_refresh
+      
+        # Auto Registration supported.
+        # Corresponds to the JSON property `autoRegistrationSupported`
+        # @return [Boolean]
+        attr_accessor :auto_registration_supported
+        alias_method :auto_registration_supported?, :auto_registration_supported
+      
+        # ConfigVariableTemplate provides metadata about a `ConfigVariable` that is used
+        # in a Connection.
+        # Corresponds to the JSON property `encryptionKeyTemplate`
+        # @return [Google::Apis::ConnectorsV1::ConfigVariableTemplate]
+        attr_accessor :encryption_key_template
+      
+        # Enrichment Supported.
+        # Corresponds to the JSON property `enrichmentSupported`
+        # @return [Boolean]
+        attr_accessor :enrichment_supported
+        alias_method :enrichment_supported?, :enrichment_supported
+      
+        # Is Eventing Supported.
+        # Corresponds to the JSON property `isEventingSupported`
+        # @return [Boolean]
+        attr_accessor :is_eventing_supported
+        alias_method :is_eventing_supported?, :is_eventing_supported
+      
+        # DestinationConfigTemplate defines required destinations supported by the
+        # Connector.
+        # Corresponds to the JSON property `registrationDestinationConfig`
+        # @return [Google::Apis::ConnectorsV1::DestinationConfigTemplate]
+        attr_accessor :registration_destination_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_variables = args[:additional_variables] if args.key?(:additional_variables)
+          @auth_config_templates = args[:auth_config_templates] if args.key?(:auth_config_templates)
+          @auto_refresh = args[:auto_refresh] if args.key?(:auto_refresh)
+          @auto_registration_supported = args[:auto_registration_supported] if args.key?(:auto_registration_supported)
+          @encryption_key_template = args[:encryption_key_template] if args.key?(:encryption_key_template)
+          @enrichment_supported = args[:enrichment_supported] if args.key?(:enrichment_supported)
+          @is_eventing_supported = args[:is_eventing_supported] if args.key?(:is_eventing_supported)
+          @registration_destination_config = args[:registration_destination_config] if args.key?(:registration_destination_config)
+        end
+      end
+      
+      # Eventing Details message.
+      class EventingDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Custom Event Types.
+        # Corresponds to the JSON property `customEventTypes`
+        # @return [Boolean]
+        attr_accessor :custom_event_types
+        alias_method :custom_event_types?, :custom_event_types
+      
+        # Output only. Description.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. Link to public documentation.
+        # Corresponds to the JSON property `documentationLink`
+        # @return [String]
+        attr_accessor :documentation_link
+      
+        # Output only. Cloud storage location of the icon.
+        # Corresponds to the JSON property `iconLocation`
+        # @return [String]
+        attr_accessor :icon_location
+      
+        # Output only. Eventing Launch Stage.
+        # Corresponds to the JSON property `launchStage`
+        # @return [String]
+        attr_accessor :launch_stage
+      
+        # Output only. Name of the Eventing trigger.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Array of search keywords.
+        # Corresponds to the JSON property `searchTags`
+        # @return [Array<String>]
+        attr_accessor :search_tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_event_types = args[:custom_event_types] if args.key?(:custom_event_types)
+          @description = args[:description] if args.key?(:description)
+          @documentation_link = args[:documentation_link] if args.key?(:documentation_link)
+          @icon_location = args[:icon_location] if args.key?(:icon_location)
+          @launch_stage = args[:launch_stage] if args.key?(:launch_stage)
+          @name = args[:name] if args.key?(:name)
+          @search_tags = args[:search_tags] if args.key?(:search_tags)
+        end
+      end
+      
+      # Eventing runtime data has the details related to eventing managed by the
+      # system.
+      class EventingRuntimeData
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Events listener endpoint. The value will populated after
+        # provisioning the events listener.
+        # Corresponds to the JSON property `eventsListenerEndpoint`
+        # @return [String]
+        attr_accessor :events_listener_endpoint
+      
+        # EventingStatus indicates the state of eventing.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::ConnectorsV1::EventingStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @events_listener_endpoint = args[:events_listener_endpoint] if args.key?(:events_listener_endpoint)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # EventingStatus indicates the state of eventing.
+      class EventingStatus
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Description of error if State is set to "ERROR".
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. State.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -1428,6 +1944,31 @@ module Google
         end
       end
       
+      # Header details for a given header to be added to Endpoint.
+      class Header
+        include Google::Apis::Core::Hashable
+      
+        # Key of Header.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Value of Header.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # Metadata of an input parameter.
       class InputParameter
         include Google::Apis::Core::Hashable
@@ -1625,6 +2166,62 @@ module Google
           @endpoint_attachments = args[:endpoint_attachments] if args.key?(:endpoint_attachments)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response message for ConnectorsService.ListEventSubscriptions
+      class ListEventSubscriptionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Subscriptions.
+        # Corresponds to the JSON property `eventSubscriptions`
+        # @return [Array<Google::Apis::ConnectorsV1::EventSubscription>]
+        attr_accessor :event_subscriptions
+      
+        # Next page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event_subscriptions = args[:event_subscriptions] if args.key?(:event_subscriptions)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response message for Connectors.ListEventTypes.
+      class ListEventTypesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of connector versions.
+        # Corresponds to the JSON property `eventTypes`
+        # @return [Array<Google::Apis::ConnectorsV1::EventType>]
+        attr_accessor :event_types
+      
+        # Next page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event_types = args[:event_types] if args.key?(:event_types)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -2400,6 +2997,19 @@ module Google
         end
       end
       
+      # Request message for ConnectorsService.RepairEventing
+      class RepairEventingRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Resource definition
       class Resource
         include Google::Apis::Core::Hashable
@@ -2455,6 +3065,19 @@ module Google
           @data_type = args[:data_type] if args.key?(:data_type)
           @description = args[:description] if args.key?(:description)
           @field = args[:field] if args.key?(:field)
+        end
+      end
+      
+      # Request message for ConnectorsService.RefreshEventSubscription
+      class RetryEventSubscriptionRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       

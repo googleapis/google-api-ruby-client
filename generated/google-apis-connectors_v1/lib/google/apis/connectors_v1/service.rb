@@ -420,6 +420,39 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # RepaiEventing tries to repair eventing related event subscriptions.
+        # @param [String] name
+        #   Required. Resource name of the form: `projects/*/locations/*/connections/*`
+        # @param [Google::Apis::ConnectorsV1::RepairEventingRequest] repair_eventing_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ConnectorsV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ConnectorsV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def repair_connection_eventing(name, repair_eventing_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:repairEventing', options)
+          command.request_representation = Google::Apis::ConnectorsV1::RepairEventingRequest::Representation
+          command.request_object = repair_eventing_request_object
+          command.response_representation = Google::Apis::ConnectorsV1::Operation::Representation
+          command.response_class = Google::Apis::ConnectorsV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Sets the access control policy on the specified resource. Replaces any
         # existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `
         # PERMISSION_DENIED` errors.
@@ -522,6 +555,225 @@ module Google
           command = make_simple_command(:post, 'v1/{+name}:refresh', options)
           command.request_representation = Google::Apis::ConnectorsV1::RefreshConnectionSchemaMetadataRequest::Representation
           command.request_object = refresh_connection_schema_metadata_request_object
+          command.response_representation = Google::Apis::ConnectorsV1::Operation::Representation
+          command.response_class = Google::Apis::ConnectorsV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new EventSubscription in a given project,location and connection.
+        # @param [String] parent
+        #   Required. Parent resource of the EventSubscription, of the form: `projects/*/
+        #   locations/*/connections/*`
+        # @param [Google::Apis::ConnectorsV1::EventSubscription] event_subscription_object
+        # @param [String] event_subscription_id
+        #   Required. Identifier to assign to the Event Subscription. Must be unique
+        #   within scope of the parent resource.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ConnectorsV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ConnectorsV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_connection_event_subscription(parent, event_subscription_object = nil, event_subscription_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/eventSubscriptions', options)
+          command.request_representation = Google::Apis::ConnectorsV1::EventSubscription::Representation
+          command.request_object = event_subscription_object
+          command.response_representation = Google::Apis::ConnectorsV1::Operation::Representation
+          command.response_class = Google::Apis::ConnectorsV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['eventSubscriptionId'] = event_subscription_id unless event_subscription_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a single EventSubscription.
+        # @param [String] name
+        #   Required. Resource name of the form: `projects/*/locations/*/connections/*/
+        #   eventsubscriptions/*`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ConnectorsV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ConnectorsV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_connection_event_subscription(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ConnectorsV1::Operation::Representation
+          command.response_class = Google::Apis::ConnectorsV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single EventSubscription.
+        # @param [String] name
+        #   Required. Resource name of the form: `projects/*/locations/*/connections/*/
+        #   eventSubscriptions/*`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ConnectorsV1::EventSubscription] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ConnectorsV1::EventSubscription]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_connection_event_subscription(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ConnectorsV1::EventSubscription::Representation
+          command.response_class = Google::Apis::ConnectorsV1::EventSubscription
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List EventSubscriptions in a given project,location and connection.
+        # @param [String] parent
+        #   Required. Parent resource of the EventSubscription, of the form: `projects/*/
+        #   locations/*/connections/*`
+        # @param [String] filter
+        #   Filter. https://g3doc.corp.google.com/cloud/control2/g3doc/dev/apihosting/
+        #   list_filtering.md#filtering.
+        # @param [String] order_by
+        #   Order by parameters.
+        # @param [Fixnum] page_size
+        #   Page size.
+        # @param [String] page_token
+        #   Page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ConnectorsV1::ListEventSubscriptionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ConnectorsV1::ListEventSubscriptionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_connection_event_subscriptions(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/eventSubscriptions', options)
+          command.response_representation = Google::Apis::ConnectorsV1::ListEventSubscriptionsResponse::Representation
+          command.response_class = Google::Apis::ConnectorsV1::ListEventSubscriptionsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the parameters of a single EventSubscription.
+        # @param [String] name
+        #   Required. Resource name of the EventSubscription. Format: projects/`project`/
+        #   locations/`location`/connections/`connection`/eventSubscriptions/`
+        #   event_subscription`
+        # @param [Google::Apis::ConnectorsV1::EventSubscription] event_subscription_object
+        # @param [String] update_mask
+        #   Required. The list of fields to update. Fields are specified relative to the
+        #   Subscription. A field will be overwritten if it is in the mask. You can modify
+        #   only the fields listed below. To update the EventSubscription details: * `
+        #   serviceAccount`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ConnectorsV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ConnectorsV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_connection_event_subscription(name, event_subscription_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ConnectorsV1::EventSubscription::Representation
+          command.request_object = event_subscription_object
+          command.response_representation = Google::Apis::ConnectorsV1::Operation::Representation
+          command.response_class = Google::Apis::ConnectorsV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # RetryEventSubscription retries the registration of Subscription.
+        # @param [String] name
+        #   Required. Resource name of the form: `projects/*/locations/*/connections/*/
+        #   eventSubscriptions/*`
+        # @param [Google::Apis::ConnectorsV1::RetryEventSubscriptionRequest] retry_event_subscription_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ConnectorsV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ConnectorsV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def retry_event_subscription(name, retry_event_subscription_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:retry', options)
+          command.request_representation = Google::Apis::ConnectorsV1::RetryEventSubscriptionRequest::Representation
+          command.request_object = retry_event_subscription_request_object
           command.response_representation = Google::Apis::ConnectorsV1::Operation::Representation
           command.response_class = Google::Apis::ConnectorsV1::Operation
           command.params['name'] = name unless name.nil?
@@ -824,6 +1076,43 @@ module Google
           command.response_representation = Google::Apis::ConnectorsV1::Settings::Representation
           command.response_class = Google::Apis::ConnectorsV1::Settings
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update the global settings of a project.
+        # @param [String] name
+        #   Output only. Resource name of the Connection. Format: projects/`project`/
+        #   locations/global/settings`
+        # @param [Google::Apis::ConnectorsV1::Settings] settings_object
+        # @param [String] update_mask
+        #   Required. The list of fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ConnectorsV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ConnectorsV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_project_location_global_settings(name, settings_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ConnectorsV1::Settings::Representation
+          command.request_object = settings_object
+          command.response_representation = Google::Apis::ConnectorsV1::Operation::Representation
+          command.response_class = Google::Apis::ConnectorsV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1491,6 +1780,76 @@ module Google
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single event type.
+        # @param [String] name
+        #   Required. Resource name of the form: `projects/*/locations/*/providers/*/
+        #   connectors/*/versions/*/eventtypes/*` Only global location is supported for
+        #   EventType resource.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ConnectorsV1::EventType] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ConnectorsV1::EventType]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_provider_connector_version_eventtype(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ConnectorsV1::EventType::Representation
+          command.response_class = Google::Apis::ConnectorsV1::EventType
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists Event Types in a given Connector Version.
+        # @param [String] parent
+        #   Required. Parent resource of the connectors, of the form: `projects/*/
+        #   locations/*/providers/*/connectors/*/versions/*` Only global location is
+        #   supported for EventType resource.
+        # @param [Fixnum] page_size
+        #   Page size.
+        # @param [String] page_token
+        #   Page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ConnectorsV1::ListEventTypesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ConnectorsV1::ListEventTypesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_provider_connector_version_eventtypes(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/eventtypes', options)
+          command.response_representation = Google::Apis::ConnectorsV1::ListEventTypesResponse::Representation
+          command.response_class = Google::Apis::ConnectorsV1::ListEventTypesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
