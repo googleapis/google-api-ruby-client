@@ -550,6 +550,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGithubSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3beta1AgentValidationResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -797,6 +809,12 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3beta1ExportAgentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ExportAgentRequestGitDestination
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1271,6 +1289,12 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3beta1RestoreAgentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1RestoreAgentRequestGitSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2874,6 +2898,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :agent_content, :base64 => true, as: 'agentContent'
           property :agent_uri, as: 'agentUri'
+          property :commit_sha, as: 'commitSha'
         end
       end
       
@@ -3553,6 +3578,8 @@ module Google
           property :display_name, as: 'displayName'
           property :enable_spell_correction, as: 'enableSpellCorrection'
           property :enable_stackdriver_logging, as: 'enableStackdriverLogging'
+          property :git_integration_settings, as: 'gitIntegrationSettings', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettings, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettings::Representation
+      
           property :locked, as: 'locked'
           property :name, as: 'name'
           property :security_settings, as: 'securitySettings'
@@ -3563,6 +3590,25 @@ module Google
           property :text_to_speech_settings, as: 'textToSpeechSettings', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TextToSpeechSettings, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TextToSpeechSettings::Representation
       
           property :time_zone, as: 'timeZone'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :github_settings, as: 'githubSettings', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGithubSettings, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGithubSettings::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGithubSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_token, as: 'accessToken'
+          collection :branches, as: 'branches'
+          property :display_name, as: 'displayName'
+          property :repository_uri, as: 'repositoryUri'
+          property :tracking_branch, as: 'trackingBranch'
         end
       end
       
@@ -3989,7 +4035,17 @@ module Google
           property :agent_uri, as: 'agentUri'
           property :data_format, as: 'dataFormat'
           property :environment, as: 'environment'
+          property :git_destination, as: 'gitDestination', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ExportAgentRequestGitDestination, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ExportAgentRequestGitDestination::Representation
+      
           property :include_bigquery_export_settings, as: 'includeBigqueryExportSettings'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ExportAgentRequestGitDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :commit_message, as: 'commitMessage'
+          property :tracking_branch, as: 'trackingBranch'
         end
       end
       
@@ -3998,6 +4054,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :agent_content, :base64 => true, as: 'agentContent'
           property :agent_uri, as: 'agentUri'
+          property :commit_sha, as: 'commitSha'
         end
       end
       
@@ -4774,7 +4831,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :agent_content, :base64 => true, as: 'agentContent'
           property :agent_uri, as: 'agentUri'
+          property :git_source, as: 'gitSource', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1RestoreAgentRequestGitSource, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1RestoreAgentRequestGitSource::Representation
+      
           property :restore_option, as: 'restoreOption'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1RestoreAgentRequestGitSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :tracking_branch, as: 'trackingBranch'
         end
       end
       
