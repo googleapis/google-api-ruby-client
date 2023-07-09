@@ -1141,6 +1141,7 @@ module Google
           property :enabled_developer_options, as: 'enabledDeveloperOptions'
           property :enabled_usb_debugging, as: 'enabledUsbDebugging'
           property :encryption_state, as: 'encryptionState'
+          property :hostname, as: 'hostname'
           property :imei, as: 'imei'
           property :kernel_version, as: 'kernelVersion'
           property :last_sync_time, as: 'lastSyncTime'
