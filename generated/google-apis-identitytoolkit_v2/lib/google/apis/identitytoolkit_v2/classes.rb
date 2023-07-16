@@ -2417,6 +2417,17 @@ module Google
         # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2CustomStrengthOptions]
         attr_accessor :custom_strength_options
       
+        # Output only. Which enforcement mode to use for the password policy.
+        # Corresponds to the JSON property `enforcementState`
+        # @return [String]
+        attr_accessor :enforcement_state
+      
+        # Users must have a password compliant with the password policy to sign-in.
+        # Corresponds to the JSON property `forceUpgradeOnSignin`
+        # @return [Boolean]
+        attr_accessor :force_upgrade_on_signin
+        alias_method :force_upgrade_on_signin?, :force_upgrade_on_signin
+      
         # Output only. schema version number for the password policy
         # Corresponds to the JSON property `schemaVersion`
         # @return [Fixnum]
@@ -2430,6 +2441,8 @@ module Google
         def update!(**args)
           @allowed_non_alphanumeric_characters = args[:allowed_non_alphanumeric_characters] if args.key?(:allowed_non_alphanumeric_characters)
           @custom_strength_options = args[:custom_strength_options] if args.key?(:custom_strength_options)
+          @enforcement_state = args[:enforcement_state] if args.key?(:enforcement_state)
+          @force_upgrade_on_signin = args[:force_upgrade_on_signin] if args.key?(:force_upgrade_on_signin)
           @schema_version = args[:schema_version] if args.key?(:schema_version)
         end
       end
