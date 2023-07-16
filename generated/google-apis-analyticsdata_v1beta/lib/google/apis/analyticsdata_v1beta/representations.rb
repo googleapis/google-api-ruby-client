@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AudienceListMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BatchRunPivotReportsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -351,6 +357,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :metric_name, as: 'metricName'
           collection :restricted_metric_types, as: 'restrictedMetricTypes'
+        end
+      end
+      
+      class AudienceListMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
