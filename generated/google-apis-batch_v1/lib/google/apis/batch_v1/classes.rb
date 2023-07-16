@@ -31,6 +31,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :count
       
+        # Optional. The NVIDIA GPU driver version that should be installed for this type.
+        # You can define the specific driver version such as "470.103.01", following
+        # the driver version requirements in https://cloud.google.com/compute/docs/gpus/
+        # install-drivers-gpu#minimum-driver. Batch will install the specific
+        # accelerator driver if qualified.
+        # Corresponds to the JSON property `driverVersion`
+        # @return [String]
+        attr_accessor :driver_version
+      
         # Deprecated: please use instances[0].install_gpu_drivers instead.
         # Corresponds to the JSON property `installGpuDrivers`
         # @return [Boolean]
@@ -50,6 +59,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @count = args[:count] if args.key?(:count)
+          @driver_version = args[:driver_version] if args.key?(:driver_version)
           @install_gpu_drivers = args[:install_gpu_drivers] if args.key?(:install_gpu_drivers)
           @type = args[:type] if args.key?(:type)
         end
@@ -162,7 +172,7 @@ module Google
       class AgentInfo
         include Google::Apis::Core::Hashable
       
-        # The assigned Job ID
+        # Optional. The assigned Job ID
         # Corresponds to the JSON property `jobId`
         # @return [String]
         attr_accessor :job_id
@@ -796,14 +806,14 @@ module Google
         # @return [String]
         attr_accessor :disk_interface
       
-        # Name of a public or custom image used as the data source. For example, the
-        # following are all valid URLs: * Specify the image by its family name: projects/
-        # `project`/global/images/family/`image_family` * Specify the image version:
-        # projects/`project`/global/images/`image_version` You can also use Batch
-        # customized image in short names. The following image values are supported for
-        # a boot disk: * "batch-debian": use Batch Debian images. * "batch-centos": use
-        # Batch CentOS images. * "batch-cos": use Batch Container-Optimized images. * "
-        # batch-hpc-centos": use Batch HPC CentOS images.
+        # Name of an image used as the data source. For example, the following are all
+        # valid URLs: * Specify the image by its family name: projects/project/global/
+        # images/family/image_family * Specify the image version: projects/project/
+        # global/images/image_version You can also use Batch customized image in short
+        # names. The following image values are supported for a boot disk: * `batch-
+        # debian`: use Batch Debian images. * `batch-centos`: use Batch CentOS images. *
+        # `batch-cos`: use Batch Container-Optimized images. * `batch-hpc-centos`: use
+        # Batch HPC CentOS images.
         # Corresponds to the JSON property `image`
         # @return [String]
         attr_accessor :image
@@ -976,7 +986,12 @@ module Google
       
         # Set this field true if users want Batch to help fetch drivers from a third
         # party location and install them for GPUs specified in policy.accelerators or
-        # instance_template on their behalf. Default is false.
+        # instance_template on their behalf. Default is false. For Container-Optimized
+        # Image cases, Batch will install the accelerator driver following milestones of
+        # https://cloud.google.com/container-optimized-os/docs/release-notes. For non
+        # Container-Optimized Image cases, following https://github.com/
+        # GoogleCloudPlatform/compute-gpu-installation/blob/main/linux/
+        # install_gpu_driver.py.
         # Corresponds to the JSON property `installGpuDrivers`
         # @return [Boolean]
         attr_accessor :install_gpu_drivers
@@ -1529,9 +1544,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The URL of an existing network resource. You can specify the network as a full
-        # or partial URL. For example, the following are all valid URLs: * https://www.
-        # googleapis.com/compute/v1/projects/`project`/global/networks/`network` *
-        # projects/`project`/global/networks/`network` * global/networks/`network`
+        # or partial URL. For example, the following are all valid URLs: https://www.
+        # googleapis.com/compute/v1/projects/project/global/networks/network projects/
+        # project/global/networks/network global/networks/network
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -1548,9 +1563,9 @@ module Google
       
         # The URL of an existing subnetwork resource in the network. You can specify the
         # subnetwork as a full or partial URL. For example, the following are all valid
-        # URLs: * https://www.googleapis.com/compute/v1/projects/`project`/regions/`
-        # region`/subnetworks/`subnetwork` * projects/`project`/regions/`region`/
-        # subnetworks/`subnetwork` * regions/`region`/subnetworks/`subnetwork`
+        # URLs: https://www.googleapis.com/compute/v1/projects/project/regions/region/
+        # subnetworks/subnetwork projects/project/regions/region/subnetworks/subnetwork
+        # regions/region/subnetworks/subnetwork
         # Corresponds to the JSON property `subnetwork`
         # @return [String]
         attr_accessor :subnetwork
