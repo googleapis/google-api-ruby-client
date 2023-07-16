@@ -470,6 +470,11 @@ module Google
         # @return [Array<Google::Apis::GkehubV1alpha::ClusterUpgradeScopeGkeUpgradeState>]
         attr_accessor :state
       
+        # Upgrade state. It will eventually replace `state`.
+        # Corresponds to the JSON property `upgradeState`
+        # @return [Array<Google::Apis::GkehubV1alpha::ClusterUpgradeGkeUpgradeState>]
+        attr_accessor :upgrade_state
+      
         def initialize(**args)
            update!(**args)
         end
@@ -478,6 +483,7 @@ module Google
         def update!(**args)
           @conditions = args[:conditions] if args.key?(:conditions)
           @state = args[:state] if args.key?(:state)
+          @upgrade_state = args[:upgrade_state] if args.key?(:upgrade_state)
         end
       end
       
@@ -504,6 +510,37 @@ module Google
         # Update properties of this object
         def update!(**args)
           @post_conditions = args[:post_conditions] if args.key?(:post_conditions)
+          @upgrade = args[:upgrade] if args.key?(:upgrade)
+        end
+      end
+      
+      # GKEUpgradeState is a GKEUpgrade and its state at the scope and fleet level.
+      class ClusterUpgradeGkeUpgradeState
+        include Google::Apis::Core::Hashable
+      
+        # Number of GKE clusters in each status code.
+        # Corresponds to the JSON property `stats`
+        # @return [Hash<String,Fixnum>]
+        attr_accessor :stats
+      
+        # UpgradeStatus provides status information for each upgrade.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::GkehubV1alpha::ClusterUpgradeUpgradeStatus]
+        attr_accessor :status
+      
+        # GKEUpgrade represents a GKE provided upgrade, e.g., control plane upgrade.
+        # Corresponds to the JSON property `upgrade`
+        # @return [Google::Apis::GkehubV1alpha::ClusterUpgradeGkeUpgrade]
+        attr_accessor :upgrade
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @stats = args[:stats] if args.key?(:stats)
+          @status = args[:status] if args.key?(:status)
           @upgrade = args[:upgrade] if args.key?(:upgrade)
         end
       end
@@ -2271,6 +2308,11 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Optional. Labels for this Fleet.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # Output only. The full, unique resource name of this fleet in the format of `
         # projects/`project`/locations/`location`/fleets/`fleet``. Each Google Cloud
         # project can have at most one fleet resource, named "default".
@@ -2304,6 +2346,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
           @uid = args[:uid] if args.key?(:uid)
@@ -2726,6 +2769,11 @@ module Google
         # @return [String]
         attr_accessor :tenant
       
+        # Optional. Claim in the AzureAD ID Token that holds the user details.
+        # Corresponds to the JSON property `userClaim`
+        # @return [String]
+        attr_accessor :user_claim
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2737,6 +2785,7 @@ module Google
           @encrypted_client_secret = args[:encrypted_client_secret] if args.key?(:encrypted_client_secret)
           @kubectl_redirect_uri = args[:kubectl_redirect_uri] if args.key?(:kubectl_redirect_uri)
           @tenant = args[:tenant] if args.key?(:tenant)
+          @user_claim = args[:user_claim] if args.key?(:user_claim)
         end
       end
       
@@ -3512,6 +3561,11 @@ module Google
         attr_accessor :fleet
         alias_method :fleet?, :fleet
       
+        # Optional. Labels for this MembershipBinding.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # The resource name for the membershipbinding itself `projects/`project`/
         # locations/`location`/memberships/`membership`/bindings/`membershipbinding``
         # Corresponds to the JSON property `name`
@@ -3549,6 +3603,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @fleet = args[:fleet] if args.key?(:fleet)
+          @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @scope = args[:scope] if args.key?(:scope)
           @state = args[:state] if args.key?(:state)
@@ -3979,6 +4034,11 @@ module Google
         # @return [String]
         attr_accessor :delete_time
       
+        # Optional. Labels for this Namespace.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # The resource name for the namespace `projects/`project`/locations/`location`/
         # namespaces/`namespace``
         # Corresponds to the JSON property `name`
@@ -4015,6 +4075,7 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
+          @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @scope = args[:scope] if args.key?(:scope)
           @state = args[:state] if args.key?(:state)
@@ -4761,6 +4822,11 @@ module Google
         # @return [String]
         attr_accessor :group
       
+        # Optional. Labels for this RBACRolebinding.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # The resource name for the rbacrolebinding `projects/`project`/locations/`
         # location`/namespaces/`namespace`/rbacrolebindings/`rbacrolebinding`` or `
         # projects/`project`/locations/`location`/memberships/`membership`/
@@ -4807,6 +4873,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @group = args[:group] if args.key?(:group)
+          @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @role = args[:role] if args.key?(:role)
           @state = args[:state] if args.key?(:state)
@@ -4942,6 +5009,11 @@ module Google
         # @return [String]
         attr_accessor :delete_time
       
+        # Optional. Labels for this Scope.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # The resource name for the scope `projects/`project`/locations/`location`/
         # scopes/`scope``
         # Corresponds to the JSON property `name`
@@ -4974,6 +5046,7 @@ module Google
           @all_memberships = args[:all_memberships] if args.key?(:all_memberships)
           @create_time = args[:create_time] if args.key?(:create_time)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
+          @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
           @uid = args[:uid] if args.key?(:uid)
