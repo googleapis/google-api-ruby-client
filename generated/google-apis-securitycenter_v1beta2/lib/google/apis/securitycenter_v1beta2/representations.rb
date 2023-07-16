@@ -605,6 +605,7 @@ module Google
           property :name, as: 'name'
           property :query, as: 'query'
           property :user_name, as: 'userName'
+          property :version, as: 'version'
         end
       end
       
