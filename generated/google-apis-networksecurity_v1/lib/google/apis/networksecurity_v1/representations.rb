@@ -726,8 +726,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ca_pool, as: 'caPool'
           property :create_time, as: 'createTime'
+          collection :custom_tls_features, as: 'customTlsFeatures'
           property :description, as: 'description'
+          property :exclude_public_ca_set, as: 'excludePublicCaSet'
+          property :min_tls_version, as: 'minTlsVersion'
           property :name, as: 'name'
+          property :tls_feature_profile, as: 'tlsFeatureProfile'
+          property :trust_config, as: 'trustConfig'
           property :update_time, as: 'updateTime'
         end
       end

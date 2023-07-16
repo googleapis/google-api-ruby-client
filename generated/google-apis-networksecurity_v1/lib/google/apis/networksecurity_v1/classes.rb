@@ -1766,10 +1766,43 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Optional. List of custom TLS cipher suites selected. This field is valid only
+        # if the selected tls_feature_profile is CUSTOM. The compute.SslPoliciesService.
+        # ListAvailableFeatures method returns the set of features that can be specified
+        # in this list. Note that Secure Web Proxy does not yet honor this field.
+        # Corresponds to the JSON property `customTlsFeatures`
+        # @return [Array<String>]
+        attr_accessor :custom_tls_features
+      
         # Optional. Free-text description of the resource.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
+      
+        # Optional. If FALSE (the default), use our default set of public CAs in
+        # addition to any CAs specified in trust_config. These public CAs are currently
+        # based on the Mozilla Root Program and are subject to change over time. If TRUE,
+        # do not accept our default set of public CAs. Only CAs specified in
+        # trust_config will be accepted. This defaults to FALSE (use public CAs in
+        # addition to trust_config) for backwards compatibility, but trusting public
+        # root CAs is *not recommended* unless the traffic in question is outbound to
+        # public web servers. When possible, prefer setting this to "false" and
+        # explicitly specifying trusted CAs and certificates in a TrustConfig. Note that
+        # Secure Web Proxy does not yet honor this field.
+        # Corresponds to the JSON property `excludePublicCaSet`
+        # @return [Boolean]
+        attr_accessor :exclude_public_ca_set
+        alias_method :exclude_public_ca_set?, :exclude_public_ca_set
+      
+        # Optional. Minimum TLS version that the firewall should use when negotiating
+        # connections with both clients and servers. If this is not set, then the
+        # default value is to allow the broadest set of clients and servers (TLS 1.0 or
+        # higher). Setting this to more restrictive values may improve security, but may
+        # also prevent the firewall from connecting to some clients or servers. Note
+        # that Secure Web Proxy does not yet honor this field.
+        # Corresponds to the JSON property `minTlsVersion`
+        # @return [String]
+        attr_accessor :min_tls_version
       
         # Required. Name of the resource. Name is of the form projects/`project`/
         # locations/`location`/tlsInspectionPolicies/`tls_inspection_policy`
@@ -1778,6 +1811,25 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Optional. The selected Profile. If this is not set, then the default value is
+        # to allow the broadest set of clients and servers ("PROFILE_COMPATIBLE").
+        # Setting this to more restrictive values may improve security, but may also
+        # prevent the TLS inspection proxy from connecting to some clients or servers.
+        # Note that Secure Web Proxy does not yet honor this field.
+        # Corresponds to the JSON property `tlsFeatureProfile`
+        # @return [String]
+        attr_accessor :tls_feature_profile
+      
+        # Optional. A TrustConfig resource used when making a connection to the TLS
+        # server. This is a relative resource path following the form "projects/`project`
+        # /locations/`location`/trustConfigs/`trust_config`". This is necessary to
+        # intercept TLS connections to servers with certificates signed by a private CA
+        # or self-signed certificates. Note that Secure Web Proxy does not yet honor
+        # this field.
+        # Corresponds to the JSON property `trustConfig`
+        # @return [String]
+        attr_accessor :trust_config
       
         # Output only. The timestamp when the resource was updated.
         # Corresponds to the JSON property `updateTime`
@@ -1792,8 +1844,13 @@ module Google
         def update!(**args)
           @ca_pool = args[:ca_pool] if args.key?(:ca_pool)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @custom_tls_features = args[:custom_tls_features] if args.key?(:custom_tls_features)
           @description = args[:description] if args.key?(:description)
+          @exclude_public_ca_set = args[:exclude_public_ca_set] if args.key?(:exclude_public_ca_set)
+          @min_tls_version = args[:min_tls_version] if args.key?(:min_tls_version)
           @name = args[:name] if args.key?(:name)
+          @tls_feature_profile = args[:tls_feature_profile] if args.key?(:tls_feature_profile)
+          @trust_config = args[:trust_config] if args.key?(:trust_config)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
