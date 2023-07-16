@@ -960,6 +960,13 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :metadata
       
+        # Output only. Bool indicating whether this notebook has been migrated to a
+        # Workbench Instance
+        # Corresponds to the JSON property `migrated`
+        # @return [Boolean]
+        attr_accessor :migrated
+        alias_method :migrated?, :migrated
+      
         # Output only. The name of this notebook instance. Format: `projects/`project_id`
         # /locations/`location`/instances/`instance_id``
         # Corresponds to the JSON property `name`
@@ -1102,6 +1109,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @metadata = args[:metadata] if args.key?(:metadata)
+          @migrated = args[:migrated] if args.key?(:migrated)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @nic_type = args[:nic_type] if args.key?(:nic_type)
@@ -2123,6 +2131,13 @@ module Google
         # @return [Google::Apis::NotebooksV1::RuntimeMetrics]
         attr_accessor :metrics
       
+        # Output only. Bool indicating whether this notebook has been migrated to a
+        # Workbench Instance
+        # Corresponds to the JSON property `migrated`
+        # @return [Boolean]
+        attr_accessor :migrated
+        alias_method :migrated?, :migrated
+      
         # Output only. The resource name of the runtime. Format: `projects/`project`/
         # locations/`location`/runtimes/`runtimeId``
         # Corresponds to the JSON property `name`
@@ -2163,6 +2178,7 @@ module Google
           @health_state = args[:health_state] if args.key?(:health_state)
           @labels = args[:labels] if args.key?(:labels)
           @metrics = args[:metrics] if args.key?(:metrics)
+          @migrated = args[:migrated] if args.key?(:migrated)
           @name = args[:name] if args.key?(:name)
           @software_config = args[:software_config] if args.key?(:software_config)
           @state = args[:state] if args.key?(:state)
