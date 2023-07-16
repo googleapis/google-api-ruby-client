@@ -461,6 +461,7 @@ module Google
           property :cloud_run_revision, as: 'cloudRunRevision', class: Google::Apis::NetworkmanagementV1::CloudRunRevisionEndpoint, decorator: Google::Apis::NetworkmanagementV1::CloudRunRevisionEndpoint::Representation
       
           property :cloud_sql_instance, as: 'cloudSqlInstance'
+          property :forwarding_rule, as: 'forwardingRule'
           property :gke_master_cluster, as: 'gkeMasterCluster'
           property :instance, as: 'instance'
           property :ip_address, as: 'ipAddress'
