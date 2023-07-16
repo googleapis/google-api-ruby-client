@@ -4882,6 +4882,19 @@ module Google
         end
       end
       
+      # Metadata for the `UpdateConsumerPolicy` method.
+      class UpdateConsumerPolicyMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Configuration controlling usage of a service.
       class Usage
         include Google::Apis::Core::Hashable
