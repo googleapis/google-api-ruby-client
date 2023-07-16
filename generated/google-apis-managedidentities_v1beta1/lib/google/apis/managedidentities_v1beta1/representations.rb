@@ -548,6 +548,7 @@ module Google
       class EnableMigrationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_duration, as: 'enableDuration'
           collection :migrating_domains, as: 'migratingDomains', class: Google::Apis::ManagedidentitiesV1beta1::OnPremDomainDetails, decorator: Google::Apis::ManagedidentitiesV1beta1::OnPremDomainDetails::Representation
       
         end
