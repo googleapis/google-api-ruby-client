@@ -5407,7 +5407,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :expiration_time
       
-        # Output only. Input feature columns that were used to train this model.
+        # Output only. Input feature columns for the model inference. If the model is
+        # trained with TRANSFORM clause, these are the input of the TRANSFORM clause.
         # Corresponds to the JSON property `featureColumns`
         # @return [Array<Google::Apis::BigqueryV2::StandardSqlField>]
         attr_accessor :feature_columns
@@ -8533,6 +8534,11 @@ module Google
       class TrainingOptions
         include Google::Apis::Core::Hashable
       
+        # Activation function of the neural nets.
+        # Corresponds to the JSON property `activationFn`
+        # @return [String]
+        attr_accessor :activation_fn
+      
         # If true, detect step changes and make data adjustment in the input time series.
         # Corresponds to the JSON property `adjustStepChanges`
         # @return [Boolean]
@@ -8562,6 +8568,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :auto_arima_min_order
       
+        # Whether to calculate class weights automatically based on the popularity of
+        # each label.
+        # Corresponds to the JSON property `autoClassWeights`
+        # @return [Boolean]
+        attr_accessor :auto_class_weights
+        alias_method :auto_class_weights?, :auto_class_weights
+      
         # Batch size for dnn models.
         # Corresponds to the JSON property `batchSize`
         # @return [Fixnum]
@@ -8571,6 +8584,11 @@ module Google
         # Corresponds to the JSON property `boosterType`
         # @return [String]
         attr_accessor :booster_type
+      
+        # Budget in hours for AutoML training.
+        # Corresponds to the JSON property `budgetHours`
+        # @return [Float]
+        attr_accessor :budget_hours
       
         # Whether or not p-value test should be computed for this model. Only available
         # for linear and logistic regression models.
@@ -8675,6 +8693,12 @@ module Google
         # @return [String]
         attr_accessor :feedback_type
       
+        # Whether the model should include intercept during model training.
+        # Corresponds to the JSON property `fitIntercept`
+        # @return [Boolean]
+        attr_accessor :fit_intercept
+        alias_method :fit_intercept?, :fit_intercept
+      
         # Hidden units for dnn models.
         # Corresponds to the JSON property `hiddenUnits`
         # @return [Array<Fixnum>]
@@ -8739,6 +8763,11 @@ module Google
         # Corresponds to the JSON property `kmeansInitializationMethod`
         # @return [String]
         attr_accessor :kmeans_initialization_method
+      
+        # L1 regularization coefficient to activations.
+        # Corresponds to the JSON property `l1RegActivation`
+        # @return [Float]
+        attr_accessor :l1_reg_activation
       
         # L1 regularization coefficient.
         # Corresponds to the JSON property `l1Regularization`
@@ -8815,6 +8844,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :min_tree_child_weight
       
+        # The model registry.
+        # Corresponds to the JSON property `modelRegistry`
+        # @return [String]
+        attr_accessor :model_registry
+      
         # Google Cloud Storage URI from which the model was imported. Only applicable
         # for imported models.
         # Corresponds to the JSON property `modelUri`
@@ -8842,6 +8876,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :num_parallel_tree
       
+        # Number of principal components to keep in the PCA model. Must be <= the number
+        # of features.
+        # Corresponds to the JSON property `numPrincipalComponents`
+        # @return [Fixnum]
+        attr_accessor :num_principal_components
+      
         # Number of trials to run this hyperparameter tuning job.
         # Corresponds to the JSON property `numTrials`
         # @return [Fixnum]
@@ -8852,10 +8892,39 @@ module Google
         # @return [String]
         attr_accessor :optimization_strategy
       
+        # Optimizer used for training the neural nets.
+        # Corresponds to the JSON property `optimizer`
+        # @return [String]
+        attr_accessor :optimizer
+      
+        # The minimum ratio of cumulative explained variance that needs to be given by
+        # the PCA model.
+        # Corresponds to the JSON property `pcaExplainedVarianceRatio`
+        # @return [Float]
+        attr_accessor :pca_explained_variance_ratio
+      
+        # The solver for PCA.
+        # Corresponds to the JSON property `pcaSolver`
+        # @return [String]
+        attr_accessor :pca_solver
+      
         # Number of paths for the sampled Shapley explain method.
         # Corresponds to the JSON property `sampledShapleyNumPaths`
         # @return [Fixnum]
         attr_accessor :sampled_shapley_num_paths
+      
+        # If true, scale the feature values by dividing the feature standard deviation.
+        # Currently only apply to PCA.
+        # Corresponds to the JSON property `scaleFeatures`
+        # @return [Boolean]
+        attr_accessor :scale_features
+        alias_method :scale_features?, :scale_features
+      
+        # Whether to standardize numerical features. Default to true.
+        # Corresponds to the JSON property `standardizeFeatures`
+        # @return [Boolean]
+        attr_accessor :standardize_features
+        alias_method :standardize_features?, :standardize_features
       
         # Subsample fraction of the training data to grow tree to prevent overfitting
         # for boosted tree models.
@@ -8909,6 +8978,12 @@ module Google
         # @return [String]
         attr_accessor :user_column
       
+        # The version aliases to apply in Vertex AI model registry. Always overwrite if
+        # the version aliases exists in a existing model.
+        # Corresponds to the JSON property `vertexAiModelVersionAliases`
+        # @return [Array<String>]
+        attr_accessor :vertex_ai_model_version_aliases
+      
         # Hyperparameter for matrix factoration when implicit feedback type is specified.
         # Corresponds to the JSON property `walsAlpha`
         # @return [Float]
@@ -8931,13 +9006,16 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @activation_fn = args[:activation_fn] if args.key?(:activation_fn)
           @adjust_step_changes = args[:adjust_step_changes] if args.key?(:adjust_step_changes)
           @approx_global_feature_contrib = args[:approx_global_feature_contrib] if args.key?(:approx_global_feature_contrib)
           @auto_arima = args[:auto_arima] if args.key?(:auto_arima)
           @auto_arima_max_order = args[:auto_arima_max_order] if args.key?(:auto_arima_max_order)
           @auto_arima_min_order = args[:auto_arima_min_order] if args.key?(:auto_arima_min_order)
+          @auto_class_weights = args[:auto_class_weights] if args.key?(:auto_class_weights)
           @batch_size = args[:batch_size] if args.key?(:batch_size)
           @booster_type = args[:booster_type] if args.key?(:booster_type)
+          @budget_hours = args[:budget_hours] if args.key?(:budget_hours)
           @calculate_p_values = args[:calculate_p_values] if args.key?(:calculate_p_values)
           @clean_spikes_and_dips = args[:clean_spikes_and_dips] if args.key?(:clean_spikes_and_dips)
           @color_space = args[:color_space] if args.key?(:color_space)
@@ -8955,6 +9033,7 @@ module Google
           @early_stop = args[:early_stop] if args.key?(:early_stop)
           @enable_global_explain = args[:enable_global_explain] if args.key?(:enable_global_explain)
           @feedback_type = args[:feedback_type] if args.key?(:feedback_type)
+          @fit_intercept = args[:fit_intercept] if args.key?(:fit_intercept)
           @hidden_units = args[:hidden_units] if args.key?(:hidden_units)
           @holiday_region = args[:holiday_region] if args.key?(:holiday_region)
           @horizon = args[:horizon] if args.key?(:horizon)
@@ -8967,6 +9046,7 @@ module Google
           @item_column = args[:item_column] if args.key?(:item_column)
           @kmeans_initialization_column = args[:kmeans_initialization_column] if args.key?(:kmeans_initialization_column)
           @kmeans_initialization_method = args[:kmeans_initialization_method] if args.key?(:kmeans_initialization_method)
+          @l1_reg_activation = args[:l1_reg_activation] if args.key?(:l1_reg_activation)
           @l1_regularization = args[:l1_regularization] if args.key?(:l1_regularization)
           @l2_regularization = args[:l2_regularization] if args.key?(:l2_regularization)
           @label_class_weights = args[:label_class_weights] if args.key?(:label_class_weights)
@@ -8981,14 +9061,21 @@ module Google
           @min_split_loss = args[:min_split_loss] if args.key?(:min_split_loss)
           @min_time_series_length = args[:min_time_series_length] if args.key?(:min_time_series_length)
           @min_tree_child_weight = args[:min_tree_child_weight] if args.key?(:min_tree_child_weight)
+          @model_registry = args[:model_registry] if args.key?(:model_registry)
           @model_uri = args[:model_uri] if args.key?(:model_uri)
           @non_seasonal_order = args[:non_seasonal_order] if args.key?(:non_seasonal_order)
           @num_clusters = args[:num_clusters] if args.key?(:num_clusters)
           @num_factors = args[:num_factors] if args.key?(:num_factors)
           @num_parallel_tree = args[:num_parallel_tree] if args.key?(:num_parallel_tree)
+          @num_principal_components = args[:num_principal_components] if args.key?(:num_principal_components)
           @num_trials = args[:num_trials] if args.key?(:num_trials)
           @optimization_strategy = args[:optimization_strategy] if args.key?(:optimization_strategy)
+          @optimizer = args[:optimizer] if args.key?(:optimizer)
+          @pca_explained_variance_ratio = args[:pca_explained_variance_ratio] if args.key?(:pca_explained_variance_ratio)
+          @pca_solver = args[:pca_solver] if args.key?(:pca_solver)
           @sampled_shapley_num_paths = args[:sampled_shapley_num_paths] if args.key?(:sampled_shapley_num_paths)
+          @scale_features = args[:scale_features] if args.key?(:scale_features)
+          @standardize_features = args[:standardize_features] if args.key?(:standardize_features)
           @subsample = args[:subsample] if args.key?(:subsample)
           @tf_version = args[:tf_version] if args.key?(:tf_version)
           @time_series_data_column = args[:time_series_data_column] if args.key?(:time_series_data_column)
@@ -8999,6 +9086,7 @@ module Google
           @tree_method = args[:tree_method] if args.key?(:tree_method)
           @trend_smoothing_window_size = args[:trend_smoothing_window_size] if args.key?(:trend_smoothing_window_size)
           @user_column = args[:user_column] if args.key?(:user_column)
+          @vertex_ai_model_version_aliases = args[:vertex_ai_model_version_aliases] if args.key?(:vertex_ai_model_version_aliases)
           @wals_alpha = args[:wals_alpha] if args.key?(:wals_alpha)
           @warm_start = args[:warm_start] if args.key?(:warm_start)
           @xgboost_version = args[:xgboost_version] if args.key?(:xgboost_version)
