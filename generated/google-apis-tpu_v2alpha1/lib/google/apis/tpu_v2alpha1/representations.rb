@@ -280,6 +280,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Spot
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StartNodeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -650,6 +656,8 @@ module Google
           property :queueing_policy, as: 'queueingPolicy', class: Google::Apis::TpuV2alpha1::QueueingPolicy, decorator: Google::Apis::TpuV2alpha1::QueueingPolicy::Representation
       
           property :reservation_name, as: 'reservationName'
+          property :spot, as: 'spot', class: Google::Apis::TpuV2alpha1::Spot, decorator: Google::Apis::TpuV2alpha1::Spot::Representation
+      
           property :state, as: 'state', class: Google::Apis::TpuV2alpha1::QueuedResourceState, decorator: Google::Apis::TpuV2alpha1::QueuedResourceState::Representation
       
           property :tpu, as: 'tpu', class: Google::Apis::TpuV2alpha1::Tpu, decorator: Google::Apis::TpuV2alpha1::Tpu::Representation
@@ -734,6 +742,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :worker_ids, as: 'workerIds'
+        end
+      end
+      
+      class Spot
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
