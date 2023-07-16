@@ -405,11 +405,13 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           hash :labels, as: 'labels'
           hash :metadata, as: 'metadata'
+          property :multislice_node, as: 'multisliceNode'
           property :name, as: 'name'
           property :network_config, as: 'networkConfig', class: Google::Apis::TpuV2::NetworkConfig, decorator: Google::Apis::TpuV2::NetworkConfig::Representation
       
           collection :network_endpoints, as: 'networkEndpoints', class: Google::Apis::TpuV2::NetworkEndpoint, decorator: Google::Apis::TpuV2::NetworkEndpoint::Representation
       
+          property :queued_resource, as: 'queuedResource'
           property :runtime_version, as: 'runtimeVersion'
           property :scheduling_config, as: 'schedulingConfig', class: Google::Apis::TpuV2::SchedulingConfig, decorator: Google::Apis::TpuV2::SchedulingConfig::Representation
       
