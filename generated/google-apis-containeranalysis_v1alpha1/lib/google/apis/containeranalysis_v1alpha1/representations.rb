@@ -808,6 +808,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SbomStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SbomReferenceIntotoPayload
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1738,6 +1744,8 @@ module Google
           property :last_scan_time, as: 'lastScanTime'
           property :operation, as: 'operation', class: Google::Apis::ContaineranalysisV1alpha1::Operation, decorator: Google::Apis::ContaineranalysisV1alpha1::Operation::Representation
       
+          property :sbom_status, as: 'sbomStatus', class: Google::Apis::ContaineranalysisV1alpha1::SbomStatus, decorator: Google::Apis::ContaineranalysisV1alpha1::SbomStatus::Representation
+      
         end
       end
       
@@ -2493,6 +2501,14 @@ module Google
           property :payload_type, as: 'payloadType'
           collection :signatures, as: 'signatures', class: Google::Apis::ContaineranalysisV1alpha1::EnvelopeSignature, decorator: Google::Apis::ContaineranalysisV1alpha1::EnvelopeSignature::Representation
       
+        end
+      end
+      
+      class SbomStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error'
+          property :sbom_state, as: 'sbomState'
         end
       end
       
