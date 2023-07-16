@@ -813,6 +813,11 @@ module Google
         # @return [String]
         attr_accessor :input_gcs_source
       
+        # Document Identifier.
+        # Corresponds to the JSON property `outputDocumentId`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3DocumentId]
+        attr_accessor :output_document_id
+      
         # The output_gcs_destination of the processed document if it was successful,
         # otherwise empty.
         # Corresponds to the JSON property `outputGcsDestination`
@@ -836,6 +841,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @input_gcs_source = args[:input_gcs_source] if args.key?(:input_gcs_source)
+          @output_document_id = args[:output_document_id] if args.key?(:output_document_id)
           @output_gcs_destination = args[:output_gcs_destination] if args.key?(:output_gcs_destination)
           @status = args[:status] if args.key?(:status)
         end
@@ -1060,6 +1066,26 @@ module Google
       class GoogleCloudDocumentaiUiv1beta3SampleDocumentsResponse
         include Google::Apis::Core::Hashable
       
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `sampleTestStatus`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleRpcStatus]
+        attr_accessor :sample_test_status
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `sampleTrainingStatus`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleRpcStatus]
+        attr_accessor :sample_training_status
+      
         # The result of the sampling process.
         # Corresponds to the JSON property `selectedDocuments`
         # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3SampleDocumentsResponseSelectedDocument>]
@@ -1071,6 +1097,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @sample_test_status = args[:sample_test_status] if args.key?(:sample_test_status)
+          @sample_training_status = args[:sample_training_status] if args.key?(:sample_training_status)
           @selected_documents = args[:selected_documents] if args.key?(:selected_documents)
         end
       end
@@ -6183,6 +6211,151 @@ module Google
         end
       end
       
+      # Dataset documents that the batch operation will be applied to.
+      class GoogleCloudDocumentaiV1beta3BatchDatasetDocuments
+        include Google::Apis::Core::Hashable
+      
+        # A filter matching the documents. Follows the same format and restriction as [
+        # google.cloud.documentai.master.ListDocumentsRequest.filter].
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # List of individual DocumentIds.
+        # Corresponds to the JSON property `individualDocumentIds`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3BatchDatasetDocumentsIndividualDocumentIds]
+        attr_accessor :individual_document_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filter = args[:filter] if args.key?(:filter)
+          @individual_document_ids = args[:individual_document_ids] if args.key?(:individual_document_ids)
+        end
+      end
+      
+      # List of individual DocumentIds.
+      class GoogleCloudDocumentaiV1beta3BatchDatasetDocumentsIndividualDocumentIds
+        include Google::Apis::Core::Hashable
+      
+        # Required. List of Document IDs indicating where the actual documents are
+        # stored.
+        # Corresponds to the JSON property `documentIds`
+        # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentId>]
+        attr_accessor :document_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @document_ids = args[:document_ids] if args.key?(:document_ids)
+        end
+      end
+      
+      # 
+      class GoogleCloudDocumentaiV1beta3BatchDeleteDocumentsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The common metadata for long running operations.
+        # Corresponds to the JSON property `commonMetadata`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3CommonOperationMetadata]
+        attr_accessor :common_metadata
+      
+        # Total number of documents that failed to be deleted in storage.
+        # Corresponds to the JSON property `errorDocumentCount`
+        # @return [Fixnum]
+        attr_accessor :error_document_count
+      
+        # The list of response details of each document.
+        # Corresponds to the JSON property `individualBatchDeleteStatuses`
+        # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3BatchDeleteDocumentsMetadataIndividualBatchDeleteStatus>]
+        attr_accessor :individual_batch_delete_statuses
+      
+        # Total number of documents deleting from dataset.
+        # Corresponds to the JSON property `totalDocumentCount`
+        # @return [Fixnum]
+        attr_accessor :total_document_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+          @error_document_count = args[:error_document_count] if args.key?(:error_document_count)
+          @individual_batch_delete_statuses = args[:individual_batch_delete_statuses] if args.key?(:individual_batch_delete_statuses)
+          @total_document_count = args[:total_document_count] if args.key?(:total_document_count)
+        end
+      end
+      
+      # The status of each individual document in the batch delete process.
+      class GoogleCloudDocumentaiV1beta3BatchDeleteDocumentsMetadataIndividualBatchDeleteStatus
+        include Google::Apis::Core::Hashable
+      
+        # Document Identifier.
+        # Corresponds to the JSON property `documentId`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentId]
+        attr_accessor :document_id
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleRpcStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @document_id = args[:document_id] if args.key?(:document_id)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # 
+      class GoogleCloudDocumentaiV1beta3BatchDeleteDocumentsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Dataset documents that the batch operation will be applied to.
+        # Corresponds to the JSON property `datasetDocuments`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3BatchDatasetDocuments]
+        attr_accessor :dataset_documents
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataset_documents = args[:dataset_documents] if args.key?(:dataset_documents)
+        end
+      end
+      
+      # Response of the delete documents operation.
+      class GoogleCloudDocumentaiV1beta3BatchDeleteDocumentsResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The common config to specify a set of documents used as input.
       class GoogleCloudDocumentaiV1beta3BatchDocumentsInputConfig
         include Google::Apis::Core::Hashable
@@ -7080,6 +7253,85 @@ module Google
           @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
           @relation = args[:relation] if args.key?(:relation)
           @subject_id = args[:subject_id] if args.key?(:subject_id)
+        end
+      end
+      
+      # Document Identifier.
+      class GoogleCloudDocumentaiV1beta3DocumentId
+        include Google::Apis::Core::Hashable
+      
+        # Identifies a document uniquely within the scope of a dataset in the user-
+        # managed Cloud Storage option.
+        # Corresponds to the JSON property `gcsManagedDocId`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentIdGcsManagedDocumentId]
+        attr_accessor :gcs_managed_doc_id
+      
+        # The revision reference specifies which revision on the document to read.
+        # Corresponds to the JSON property `revisionRef`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3RevisionRef]
+        attr_accessor :revision_ref
+      
+        # Identifies a document uniquely within the scope of a dataset in unmanaged
+        # option.
+        # Corresponds to the JSON property `unmanagedDocId`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentIdUnmanagedDocumentId]
+        attr_accessor :unmanaged_doc_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcs_managed_doc_id = args[:gcs_managed_doc_id] if args.key?(:gcs_managed_doc_id)
+          @revision_ref = args[:revision_ref] if args.key?(:revision_ref)
+          @unmanaged_doc_id = args[:unmanaged_doc_id] if args.key?(:unmanaged_doc_id)
+        end
+      end
+      
+      # Identifies a document uniquely within the scope of a dataset in the user-
+      # managed Cloud Storage option.
+      class GoogleCloudDocumentaiV1beta3DocumentIdGcsManagedDocumentId
+        include Google::Apis::Core::Hashable
+      
+        # Id of the document (indexed) managed by Content Warehouse.
+        # Corresponds to the JSON property `cwDocId`
+        # @return [String]
+        attr_accessor :cw_doc_id
+      
+        # Required. The Cloud Storage URI where the actual document is stored.
+        # Corresponds to the JSON property `gcsUri`
+        # @return [String]
+        attr_accessor :gcs_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cw_doc_id = args[:cw_doc_id] if args.key?(:cw_doc_id)
+          @gcs_uri = args[:gcs_uri] if args.key?(:gcs_uri)
+        end
+      end
+      
+      # Identifies a document uniquely within the scope of a dataset in unmanaged
+      # option.
+      class GoogleCloudDocumentaiV1beta3DocumentIdUnmanagedDocumentId
+        include Google::Apis::Core::Hashable
+      
+        # Required. The id of the document.
+        # Corresponds to the JSON property `docId`
+        # @return [String]
+        attr_accessor :doc_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @doc_id = args[:doc_id] if args.key?(:doc_id)
         end
       end
       
@@ -9346,6 +9598,28 @@ module Google
         end
       end
       
+      # 
+      class GoogleCloudDocumentaiV1beta3GetDocumentResponse
+        include Google::Apis::Core::Hashable
+      
+        # Document represents the canonical document resource in Document AI. It is an
+        # interchange format that provides insights into documents and allows for
+        # collaboration between users and Document AI to iterate and optimize for
+        # quality.
+        # Corresponds to the JSON property `document`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3Document]
+        attr_accessor :document
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @document = args[:document] if args.key?(:document)
+        end
+      end
+      
       # The status of human review on a processed document.
       class GoogleCloudDocumentaiV1beta3HumanReviewStatus
         include Google::Apis::Core::Hashable
@@ -9377,6 +9651,193 @@ module Google
           @human_review_operation = args[:human_review_operation] if args.key?(:human_review_operation)
           @state = args[:state] if args.key?(:state)
           @state_message = args[:state_message] if args.key?(:state_message)
+        end
+      end
+      
+      # Metadata of the import document operation.
+      class GoogleCloudDocumentaiV1beta3ImportDocumentsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The common metadata for long running operations.
+        # Corresponds to the JSON property `commonMetadata`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3CommonOperationMetadata]
+        attr_accessor :common_metadata
+      
+        # Validation statuses of the batch documents import config.
+        # Corresponds to the JSON property `importConfigValidationResults`
+        # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ImportDocumentsMetadataImportConfigValidationResult>]
+        attr_accessor :import_config_validation_results
+      
+        # The list of response details of each document.
+        # Corresponds to the JSON property `individualImportStatuses`
+        # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ImportDocumentsMetadataIndividualImportStatus>]
+        attr_accessor :individual_import_statuses
+      
+        # Total number of the documents that are qualified for importing.
+        # Corresponds to the JSON property `totalDocumentCount`
+        # @return [Fixnum]
+        attr_accessor :total_document_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+          @import_config_validation_results = args[:import_config_validation_results] if args.key?(:import_config_validation_results)
+          @individual_import_statuses = args[:individual_import_statuses] if args.key?(:individual_import_statuses)
+          @total_document_count = args[:total_document_count] if args.key?(:total_document_count)
+        end
+      end
+      
+      # The validation status of each import config. Status is set to errors if there
+      # is no documents to import in the import_config, or OK if the operation will
+      # try to proceed at least one document.
+      class GoogleCloudDocumentaiV1beta3ImportDocumentsMetadataImportConfigValidationResult
+        include Google::Apis::Core::Hashable
+      
+        # The source Cloud Storage URI specified in the import config.
+        # Corresponds to the JSON property `inputGcsSource`
+        # @return [String]
+        attr_accessor :input_gcs_source
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleRpcStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @input_gcs_source = args[:input_gcs_source] if args.key?(:input_gcs_source)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # The status of each individual document in the import process.
+      class GoogleCloudDocumentaiV1beta3ImportDocumentsMetadataIndividualImportStatus
+        include Google::Apis::Core::Hashable
+      
+        # The source Cloud Storage URI of the document.
+        # Corresponds to the JSON property `inputGcsSource`
+        # @return [String]
+        attr_accessor :input_gcs_source
+      
+        # Document Identifier.
+        # Corresponds to the JSON property `outputDocumentId`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentId]
+        attr_accessor :output_document_id
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleRpcStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @input_gcs_source = args[:input_gcs_source] if args.key?(:input_gcs_source)
+          @output_document_id = args[:output_document_id] if args.key?(:output_document_id)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # 
+      class GoogleCloudDocumentaiV1beta3ImportDocumentsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The Cloud Storage uri containing raw documents that must be imported.
+        # Corresponds to the JSON property `batchDocumentsImportConfigs`
+        # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ImportDocumentsRequestBatchDocumentsImportConfig>]
+        attr_accessor :batch_documents_import_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @batch_documents_import_configs = args[:batch_documents_import_configs] if args.key?(:batch_documents_import_configs)
+        end
+      end
+      
+      # Config for importing documents. Each batch can have its own dataset split type.
+      class GoogleCloudDocumentaiV1beta3ImportDocumentsRequestBatchDocumentsImportConfig
+        include Google::Apis::Core::Hashable
+      
+        # The config for auto-split.
+        # Corresponds to the JSON property `autoSplitConfig`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ImportDocumentsRequestBatchDocumentsImportConfigAutoSplitConfig]
+        attr_accessor :auto_split_config
+      
+        # The common config to specify a set of documents used as input.
+        # Corresponds to the JSON property `batchInputConfig`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3BatchDocumentsInputConfig]
+        attr_accessor :batch_input_config
+      
+        # Target dataset split where the documents must be stored.
+        # Corresponds to the JSON property `datasetSplit`
+        # @return [String]
+        attr_accessor :dataset_split
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_split_config = args[:auto_split_config] if args.key?(:auto_split_config)
+          @batch_input_config = args[:batch_input_config] if args.key?(:batch_input_config)
+          @dataset_split = args[:dataset_split] if args.key?(:dataset_split)
+        end
+      end
+      
+      # The config for auto-split.
+      class GoogleCloudDocumentaiV1beta3ImportDocumentsRequestBatchDocumentsImportConfigAutoSplitConfig
+        include Google::Apis::Core::Hashable
+      
+        # Ratio of training dataset split.
+        # Corresponds to the JSON property `trainingSplitRatio`
+        # @return [Float]
+        attr_accessor :training_split_ratio
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @training_split_ratio = args[:training_split_ratio] if args.key?(:training_split_ratio)
+        end
+      end
+      
+      # Response of the import document operation.
+      class GoogleCloudDocumentaiV1beta3ImportDocumentsResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -9693,6 +10154,11 @@ module Google
         # @return [String]
         attr_accessor :field_mask
       
+        # Specifies a document stored on Cloud Storage.
+        # Corresponds to the JSON property `gcsDocument`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3GcsDocument]
+        attr_accessor :gcs_document
+      
         # Document represents the canonical document resource in Document AI. It is an
         # interchange format that provides insights into documents and allows for
         # collaboration between users and Document AI to iterate and optimize for
@@ -9725,6 +10191,7 @@ module Google
         def update!(**args)
           @document = args[:document] if args.key?(:document)
           @field_mask = args[:field_mask] if args.key?(:field_mask)
+          @gcs_document = args[:gcs_document] if args.key?(:gcs_document)
           @inline_document = args[:inline_document] if args.key?(:inline_document)
           @process_options = args[:process_options] if args.key?(:process_options)
           @raw_document = args[:raw_document] if args.key?(:raw_document)
@@ -10195,6 +10662,39 @@ module Google
         end
       end
       
+      # The revision reference specifies which revision on the document to read.
+      class GoogleCloudDocumentaiV1beta3RevisionRef
+        include Google::Apis::Core::Hashable
+      
+        # Reads the revision generated by the processor version. The format takes the
+        # full resource name of processor version. `projects/`project`/locations/`
+        # location`/processors/`processor`/processorVersions/`processorVersion``
+        # Corresponds to the JSON property `latestProcessorVersion`
+        # @return [String]
+        attr_accessor :latest_processor_version
+      
+        # Reads the revision by the predefined case.
+        # Corresponds to the JSON property `revisionCase`
+        # @return [String]
+        attr_accessor :revision_case
+      
+        # Reads the revision given by the id.
+        # Corresponds to the JSON property `revisionId`
+        # @return [String]
+        attr_accessor :revision_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @latest_processor_version = args[:latest_processor_version] if args.key?(:latest_processor_version)
+          @revision_case = args[:revision_case] if args.key?(:revision_case)
+          @revision_id = args[:revision_id] if args.key?(:revision_id)
+        end
+      end
+      
       # The long-running operation metadata for the SetDefaultProcessorVersion method.
       class GoogleCloudDocumentaiV1beta3SetDefaultProcessorVersionMetadata
         include Google::Apis::Core::Hashable
@@ -10477,6 +10977,25 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # 
+      class GoogleCloudDocumentaiV1beta3UpdateDatasetOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The common metadata for long running operations.
+        # Corresponds to the JSON property `commonMetadata`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3CommonOperationMetadata]
+        attr_accessor :common_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
         end
       end
       
