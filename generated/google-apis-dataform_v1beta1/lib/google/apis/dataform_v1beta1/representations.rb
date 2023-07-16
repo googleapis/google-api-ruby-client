@@ -691,6 +691,7 @@ module Google
           collection :included_tags, as: 'includedTags'
           collection :included_targets, as: 'includedTargets', class: Google::Apis::DataformV1beta1::Target, decorator: Google::Apis::DataformV1beta1::Target::Representation
       
+          property :service_account, as: 'serviceAccount'
           property :transitive_dependencies_included, as: 'transitiveDependenciesIncluded'
           property :transitive_dependents_included, as: 'transitiveDependentsIncluded'
         end
@@ -973,6 +974,7 @@ module Google
       
           property :name, as: 'name'
           property :npmrc_environment_variables_secret_version, as: 'npmrcEnvironmentVariablesSecretVersion'
+          property :service_account, as: 'serviceAccount'
           property :workspace_compilation_overrides, as: 'workspaceCompilationOverrides', class: Google::Apis::DataformV1beta1::WorkspaceCompilationOverrides, decorator: Google::Apis::DataformV1beta1::WorkspaceCompilationOverrides::Representation
       
         end
