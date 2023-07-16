@@ -3123,6 +3123,11 @@ module Google
         # @return [String]
         attr_accessor :last_scan_time
       
+        # The status of an SBOM generation.
+        # Corresponds to the JSON property `sbomStatus`
+        # @return [Google::Apis::ContaineranalysisV1::SbomStatus]
+        attr_accessor :sbom_status
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3137,6 +3142,7 @@ module Google
           @continuous_analysis = args[:continuous_analysis] if args.key?(:continuous_analysis)
           @cpe = args[:cpe] if args.key?(:cpe)
           @last_scan_time = args[:last_scan_time] if args.key?(:last_scan_time)
+          @sbom_status = args[:sbom_status] if args.key?(:sbom_status)
         end
       end
       
@@ -5258,6 +5264,32 @@ module Google
           @payload = args[:payload] if args.key?(:payload)
           @payload_type = args[:payload_type] if args.key?(:payload_type)
           @signatures = args[:signatures] if args.key?(:signatures)
+        end
+      end
+      
+      # The status of an SBOM generation.
+      class SbomStatus
+        include Google::Apis::Core::Hashable
+      
+        # If there was an error generating an SBOM, this will indicate what that error
+        # was.
+        # Corresponds to the JSON property `error`
+        # @return [String]
+        attr_accessor :error
+      
+        # The progress of the SBOM generation.
+        # Corresponds to the JSON property `sbomState`
+        # @return [String]
+        attr_accessor :sbom_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error = args[:error] if args.key?(:error)
+          @sbom_state = args[:sbom_state] if args.key?(:sbom_state)
         end
       end
       
