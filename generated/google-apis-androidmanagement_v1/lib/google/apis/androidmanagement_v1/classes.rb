@@ -4581,6 +4581,68 @@ module Google
         end
       end
       
+      # Information about a device that is available during setup.
+      class ProvisioningInfo
+        include Google::Apis::Core::Hashable
+      
+        # The API level of the Android platform version running on the device.
+        # Corresponds to the JSON property `apiLevel`
+        # @return [Fixnum]
+        attr_accessor :api_level
+      
+        # The email address of the authenticated user (only present for Google Account
+        # provisioning method).
+        # Corresponds to the JSON property `authenticatedUserEmail`
+        # @return [String]
+        attr_accessor :authenticated_user_email
+      
+        # Brand of the device. For example, Google.
+        # Corresponds to the JSON property `brand`
+        # @return [String]
+        attr_accessor :brand
+      
+        # The name of the enterprise in the form enterprises/`enterprise`.
+        # Corresponds to the JSON property `enterprise`
+        # @return [String]
+        attr_accessor :enterprise
+      
+        # The management mode of the device or profile.
+        # Corresponds to the JSON property `managementMode`
+        # @return [String]
+        attr_accessor :management_mode
+      
+        # The model of the device. For example, Asus Nexus 7.
+        # Corresponds to the JSON property `model`
+        # @return [String]
+        attr_accessor :model
+      
+        # The name of this resource in the form provisioningInfo/`provisioning_info`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Ownership of the managed device.
+        # Corresponds to the JSON property `ownership`
+        # @return [String]
+        attr_accessor :ownership
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_level = args[:api_level] if args.key?(:api_level)
+          @authenticated_user_email = args[:authenticated_user_email] if args.key?(:authenticated_user_email)
+          @brand = args[:brand] if args.key?(:brand)
+          @enterprise = args[:enterprise] if args.key?(:enterprise)
+          @management_mode = args[:management_mode] if args.key?(:management_mode)
+          @model = args[:model] if args.key?(:model)
+          @name = args[:name] if args.key?(:name)
+          @ownership = args[:ownership] if args.key?(:ownership)
+        end
+      end
+      
       # Configuration info for an HTTP proxy. For a direct proxy, set the host, port,
       # and excluded_hosts fields. For a PAC script proxy, set the pac_uri field.
       class ProxyInfo

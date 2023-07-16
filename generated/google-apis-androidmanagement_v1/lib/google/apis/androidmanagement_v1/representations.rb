@@ -592,6 +592,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ProvisioningInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ProxyInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1829,6 +1835,20 @@ module Google
           property :battery_level, as: 'batteryLevel'
           property :create_time, as: 'createTime'
           property :event_type, as: 'eventType'
+        end
+      end
+      
+      class ProvisioningInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_level, as: 'apiLevel'
+          property :authenticated_user_email, as: 'authenticatedUserEmail'
+          property :brand, as: 'brand'
+          property :enterprise, as: 'enterprise'
+          property :management_mode, as: 'managementMode'
+          property :model, as: 'model'
+          property :name, as: 'name'
+          property :ownership, as: 'ownership'
         end
       end
       
