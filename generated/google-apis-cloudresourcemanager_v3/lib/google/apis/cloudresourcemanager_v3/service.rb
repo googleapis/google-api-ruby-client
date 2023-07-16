@@ -2046,7 +2046,8 @@ module Google
         #   Optional. A pagination token returned from a previous call to `ListTagValues`
         #   that indicates where this listing should continue from.
         # @param [String] parent
-        #   Required.
+        #   Required. Resource name for the parent of the TagValues to be listed, in the
+        #   format `tagKeys/123` or `tagValues/123`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
