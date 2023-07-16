@@ -70,6 +70,65 @@ module Google
         end
       end
       
+      # AdditionalNodeNetworkConfig is the configuration for additional node networks
+      # within the NodeNetworkConfig message
+      class AdditionalNodeNetworkConfig
+        include Google::Apis::Core::Hashable
+      
+        # Name of the VPC where the additional interface belongs
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # Name of the subnetwork where the additional interface belongs
+        # Corresponds to the JSON property `subnetwork`
+        # @return [String]
+        attr_accessor :subnetwork
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network = args[:network] if args.key?(:network)
+          @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
+        end
+      end
+      
+      # AdditionalPodNetworkConfig is the configuration for additional pod networks
+      # within the NodeNetworkConfig message
+      class AdditionalPodNetworkConfig
+        include Google::Apis::Core::Hashable
+      
+        # Constraints applied to pods.
+        # Corresponds to the JSON property `maxPodsPerNode`
+        # @return [Google::Apis::ContainerV1::MaxPodsConstraint]
+        attr_accessor :max_pods_per_node
+      
+        # The name of the secondary range on the subnet which provides IP address for
+        # this pod range
+        # Corresponds to the JSON property `secondaryPodRange`
+        # @return [String]
+        attr_accessor :secondary_pod_range
+      
+        # Name of the subnetwork where the additional pod network belongs
+        # Corresponds to the JSON property `subnetwork`
+        # @return [String]
+        attr_accessor :subnetwork
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_pods_per_node = args[:max_pods_per_node] if args.key?(:max_pods_per_node)
+          @secondary_pod_range = args[:secondary_pod_range] if args.key?(:secondary_pod_range)
+          @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
+        end
+      end
+      
       # AdditionalPodRangesConfig is the configuration for additional pod secondary
       # ranges supporting the ClusterUpdate message.
       class AdditionalPodRangesConfig
@@ -3485,6 +3544,12 @@ module Google
         attr_accessor :enable_l4ilb_subsetting
         alias_method :enable_l4ilb_subsetting?, :enable_l4ilb_subsetting
       
+        # Whether multi-networking is enabled for this cluster.
+        # Corresponds to the JSON property `enableMultiNetworking`
+        # @return [Boolean]
+        attr_accessor :enable_multi_networking
+        alias_method :enable_multi_networking?, :enable_multi_networking
+      
         # GatewayAPIConfig contains the desired config of Gateway API on this cluster.
         # Corresponds to the JSON property `gatewayApiConfig`
         # @return [Google::Apis::ContainerV1::GatewayApiConfig]
@@ -3532,6 +3597,7 @@ module Google
           @enable_fqdn_network_policy = args[:enable_fqdn_network_policy] if args.key?(:enable_fqdn_network_policy)
           @enable_intra_node_visibility = args[:enable_intra_node_visibility] if args.key?(:enable_intra_node_visibility)
           @enable_l4ilb_subsetting = args[:enable_l4ilb_subsetting] if args.key?(:enable_l4ilb_subsetting)
+          @enable_multi_networking = args[:enable_multi_networking] if args.key?(:enable_multi_networking)
           @gateway_api_config = args[:gateway_api_config] if args.key?(:gateway_api_config)
           @network = args[:network] if args.key?(:network)
           @network_performance_config = args[:network_performance_config] if args.key?(:network_performance_config)
@@ -4104,6 +4170,18 @@ module Google
       class NodeNetworkConfig
         include Google::Apis::Core::Hashable
       
+        # We specify the additional node networks for this node pool using this list.
+        # Each node network corresponds to an additional interface
+        # Corresponds to the JSON property `additionalNodeNetworkConfigs`
+        # @return [Array<Google::Apis::ContainerV1::AdditionalNodeNetworkConfig>]
+        attr_accessor :additional_node_network_configs
+      
+        # We specify the additional pod networks for this node pool using this list.
+        # Each pod network corresponds to an additional alias IP range for the node
+        # Corresponds to the JSON property `additionalPodNetworkConfigs`
+        # @return [Array<Google::Apis::ContainerV1::AdditionalPodNetworkConfig>]
+        attr_accessor :additional_pod_network_configs
+      
         # Input only. Whether to create a new range for pod IPs in this node pool.
         # Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are
         # not specified. If neither `create_pod_range` or `pod_range` are specified, the
@@ -4166,6 +4244,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @additional_node_network_configs = args[:additional_node_network_configs] if args.key?(:additional_node_network_configs)
+          @additional_pod_network_configs = args[:additional_pod_network_configs] if args.key?(:additional_pod_network_configs)
           @create_pod_range = args[:create_pod_range] if args.key?(:create_pod_range)
           @enable_private_nodes = args[:enable_private_nodes] if args.key?(:enable_private_nodes)
           @network_performance_config = args[:network_performance_config] if args.key?(:network_performance_config)
@@ -4733,6 +4813,13 @@ module Google
       class PlacementPolicy
         include Google::Apis::Core::Hashable
       
+        # If set, refers to the name of a custom resource policy supplied by the user.
+        # The resource policy must be in the same project and region as the node pool.
+        # If not found, InvalidArgument error is returned.
+        # Corresponds to the JSON property `policyName`
+        # @return [String]
+        attr_accessor :policy_name
+      
         # The type of placement.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -4744,6 +4831,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @policy_name = args[:policy_name] if args.key?(:policy_name)
           @type = args[:type] if args.key?(:type)
         end
       end
