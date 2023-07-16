@@ -838,6 +838,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SbomStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SbomReferenceIntotoPayload
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -863,6 +869,12 @@ module Google
       end
       
       class SigningKey
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SlsaProvenanceV1
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1712,6 +1724,8 @@ module Google
       
           property :continuous_analysis, as: 'continuousAnalysis'
           property :last_analysis_time, as: 'lastAnalysisTime'
+          property :sbom_status, as: 'sbomStatus', class: Google::Apis::ContaineranalysisV1beta1::SbomStatus, decorator: Google::Apis::ContaineranalysisV1beta1::SbomStatus::Representation
+      
         end
       end
       
@@ -2058,9 +2072,11 @@ module Google
       class InTotoSlsaProvenanceV1
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :build_definition, as: 'buildDefinition', class: Google::Apis::ContaineranalysisV1beta1::BuildDefinition, decorator: Google::Apis::ContaineranalysisV1beta1::BuildDefinition::Representation
+          property :_type, as: '_type'
+          property :predicate, as: 'predicate', class: Google::Apis::ContaineranalysisV1beta1::SlsaProvenanceV1, decorator: Google::Apis::ContaineranalysisV1beta1::SlsaProvenanceV1::Representation
       
-          property :run_details, as: 'runDetails', class: Google::Apis::ContaineranalysisV1beta1::RunDetails, decorator: Google::Apis::ContaineranalysisV1beta1::RunDetails::Representation
+          property :predicate_type, as: 'predicateType'
+          collection :subject, as: 'subject', class: Google::Apis::ContaineranalysisV1beta1::Subject, decorator: Google::Apis::ContaineranalysisV1beta1::Subject::Representation
       
         end
       end
@@ -2497,6 +2513,14 @@ module Google
         end
       end
       
+      class SbomStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error'
+          property :sbom_state, as: 'sbomState'
+        end
+      end
+      
       class SbomReferenceIntotoPayload
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2542,6 +2566,16 @@ module Google
           property :key_scheme, as: 'keyScheme'
           property :key_type, as: 'keyType'
           property :public_key_value, as: 'publicKeyValue'
+        end
+      end
+      
+      class SlsaProvenanceV1
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :build_definition, as: 'buildDefinition', class: Google::Apis::ContaineranalysisV1beta1::BuildDefinition, decorator: Google::Apis::ContaineranalysisV1beta1::BuildDefinition::Representation
+      
+          property :run_details, as: 'runDetails', class: Google::Apis::ContaineranalysisV1beta1::RunDetails, decorator: Google::Apis::ContaineranalysisV1beta1::RunDetails::Representation
+      
         end
       end
       

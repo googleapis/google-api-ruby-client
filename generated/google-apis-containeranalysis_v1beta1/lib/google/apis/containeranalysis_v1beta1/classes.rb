@@ -2998,6 +2998,11 @@ module Google
         # @return [String]
         attr_accessor :last_analysis_time
       
+        # The status of an SBOM generation.
+        # Corresponds to the JSON property `sbomStatus`
+        # @return [Google::Apis::ContaineranalysisV1beta1::SbomStatus]
+        attr_accessor :sbom_status
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3010,6 +3015,7 @@ module Google
           @analysis_status_error = args[:analysis_status_error] if args.key?(:analysis_status_error)
           @continuous_analysis = args[:continuous_analysis] if args.key?(:continuous_analysis)
           @last_analysis_time = args[:last_analysis_time] if args.key?(:last_analysis_time)
+          @sbom_status = args[:sbom_status] if args.key?(:sbom_status)
         end
       end
       
@@ -3304,8 +3310,9 @@ module Google
       class ExportSbomResponse
         include Google::Apis::Core::Hashable
       
-        # The id of the discovery occurrence that can be used to track the progression
-        # of the SBOM export.
+        # The name of the discovery occurrence in the form "projects/`project_id`/
+        # occurrences/`OCCURRENCE_ID` It can be used to track the progression of the
+        # SBOM export.
         # Corresponds to the JSON property `discoveryOccurrenceId`
         # @return [String]
         attr_accessor :discovery_occurrence_id
@@ -3808,9 +3815,7 @@ module Google
       class GrafeasV1beta1BuildDetails
         include Google::Apis::Core::Hashable
       
-        # Keep in sync with schema at https://github.com/slsa-framework/slsa/blob/main/
-        # docs/provenance/schema/v1/provenance.proto Builder renamed to
-        # ProvenanceBuilder because of Java conflicts.
+        # 
         # Corresponds to the JSON property `inTotoSlsaProvenanceV1`
         # @return [Google::Apis::ContaineranalysisV1beta1::InTotoSlsaProvenanceV1]
         attr_accessor :in_toto_slsa_provenance_v1
@@ -4209,21 +4214,32 @@ module Google
         end
       end
       
-      # Keep in sync with schema at https://github.com/slsa-framework/slsa/blob/main/
-      # docs/provenance/schema/v1/provenance.proto Builder renamed to
-      # ProvenanceBuilder because of Java conflicts.
+      # 
       class InTotoSlsaProvenanceV1
         include Google::Apis::Core::Hashable
       
-        # 
-        # Corresponds to the JSON property `buildDefinition`
-        # @return [Google::Apis::ContaineranalysisV1beta1::BuildDefinition]
-        attr_accessor :build_definition
+        # InToto spec defined at https://github.com/in-toto/attestation/tree/main/spec#
+        # statement
+        # Corresponds to the JSON property `_type`
+        # @return [String]
+        attr_accessor :_type
+      
+        # Keep in sync with schema at https://github.com/slsa-framework/slsa/blob/main/
+        # docs/provenance/schema/v1/provenance.proto Builder renamed to
+        # ProvenanceBuilder because of Java conflicts.
+        # Corresponds to the JSON property `predicate`
+        # @return [Google::Apis::ContaineranalysisV1beta1::SlsaProvenanceV1]
+        attr_accessor :predicate
       
         # 
-        # Corresponds to the JSON property `runDetails`
-        # @return [Google::Apis::ContaineranalysisV1beta1::RunDetails]
-        attr_accessor :run_details
+        # Corresponds to the JSON property `predicateType`
+        # @return [String]
+        attr_accessor :predicate_type
+      
+        # 
+        # Corresponds to the JSON property `subject`
+        # @return [Array<Google::Apis::ContaineranalysisV1beta1::Subject>]
+        attr_accessor :subject
       
         def initialize(**args)
            update!(**args)
@@ -4231,8 +4247,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @build_definition = args[:build_definition] if args.key?(:build_definition)
-          @run_details = args[:run_details] if args.key?(:run_details)
+          @_type = args[:_type] if args.key?(:_type)
+          @predicate = args[:predicate] if args.key?(:predicate)
+          @predicate_type = args[:predicate_type] if args.key?(:predicate_type)
+          @subject = args[:subject] if args.key?(:subject)
         end
       end
       
@@ -5882,6 +5900,32 @@ module Google
         end
       end
       
+      # The status of an SBOM generation.
+      class SbomStatus
+        include Google::Apis::Core::Hashable
+      
+        # If there was an error generating an SBOM, this will indicate what that error
+        # was.
+        # Corresponds to the JSON property `error`
+        # @return [String]
+        attr_accessor :error
+      
+        # The progress of the SBOM generation.
+        # Corresponds to the JSON property `sbomState`
+        # @return [String]
+        attr_accessor :sbom_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error = args[:error] if args.key?(:error)
+          @sbom_state = args[:sbom_state] if args.key?(:sbom_state)
+        end
+      end
+      
       # The actual payload that contains the SBOM Reference data. The payload follows
       # the intoto statement specification. See https://github.com/in-toto/attestation/
       # blob/main/spec/v1.0/statement.md for more details.
@@ -6101,6 +6145,33 @@ module Google
           @key_scheme = args[:key_scheme] if args.key?(:key_scheme)
           @key_type = args[:key_type] if args.key?(:key_type)
           @public_key_value = args[:public_key_value] if args.key?(:public_key_value)
+        end
+      end
+      
+      # Keep in sync with schema at https://github.com/slsa-framework/slsa/blob/main/
+      # docs/provenance/schema/v1/provenance.proto Builder renamed to
+      # ProvenanceBuilder because of Java conflicts.
+      class SlsaProvenanceV1
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `buildDefinition`
+        # @return [Google::Apis::ContaineranalysisV1beta1::BuildDefinition]
+        attr_accessor :build_definition
+      
+        # 
+        # Corresponds to the JSON property `runDetails`
+        # @return [Google::Apis::ContaineranalysisV1beta1::RunDetails]
+        attr_accessor :run_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @build_definition = args[:build_definition] if args.key?(:build_definition)
+          @run_details = args[:run_details] if args.key?(:run_details)
         end
       end
       
