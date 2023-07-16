@@ -609,6 +609,16 @@ module Google
         # @return [String]
         attr_accessor :cloud_sql_instance
       
+        # A forwarding rule and its corresponding IP address represent the frontend
+        # configuration of a Google Cloud load balancer. Forwarding rules are also used
+        # for protocol forwarding, Private Service Connect and other network services to
+        # provide forwarding information in the control plane. Format: projects/`project`
+        # /global/forwardingRules/`id` or projects/`project`/regions/`region`/
+        # forwardingRules/`id`
+        # Corresponds to the JSON property `forwardingRule`
+        # @return [String]
+        attr_accessor :forwarding_rule
+      
         # A cluster URI for [Google Kubernetes Engine master](https://cloud.google.com/
         # kubernetes-engine/docs/concepts/cluster-architecture).
         # Corresponds to the JSON property `gkeMasterCluster`
@@ -665,6 +675,7 @@ module Google
           @cloud_function = args[:cloud_function] if args.key?(:cloud_function)
           @cloud_run_revision = args[:cloud_run_revision] if args.key?(:cloud_run_revision)
           @cloud_sql_instance = args[:cloud_sql_instance] if args.key?(:cloud_sql_instance)
+          @forwarding_rule = args[:forwarding_rule] if args.key?(:forwarding_rule)
           @gke_master_cluster = args[:gke_master_cluster] if args.key?(:gke_master_cluster)
           @instance = args[:instance] if args.key?(:instance)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
