@@ -1102,6 +1102,7 @@ module Google
           property :create_time, as: 'createTime'
           property :delete_time, as: 'deleteTime'
           property :display_name, as: 'displayName'
+          hash :labels, as: 'labels'
           property :name, as: 'name'
           property :state, as: 'state', class: Google::Apis::GkehubV1::FleetLifecycleState, decorator: Google::Apis::GkehubV1::FleetLifecycleState::Representation
       
@@ -1246,6 +1247,7 @@ module Google
           property :encrypted_client_secret, :base64 => true, as: 'encryptedClientSecret'
           property :kubectl_redirect_uri, as: 'kubectlRedirectUri'
           property :tenant, as: 'tenant'
+          property :user_claim, as: 'userClaim'
         end
       end
       
@@ -1424,6 +1426,7 @@ module Google
           property :create_time, as: 'createTime'
           property :delete_time, as: 'deleteTime'
           property :fleet, as: 'fleet'
+          hash :labels, as: 'labels'
           property :name, as: 'name'
           property :scope, as: 'scope'
           property :state, as: 'state', class: Google::Apis::GkehubV1::MembershipBindingLifecycleState, decorator: Google::Apis::GkehubV1::MembershipBindingLifecycleState::Representation
@@ -1605,6 +1608,7 @@ module Google
           property :all_memberships, as: 'allMemberships'
           property :create_time, as: 'createTime'
           property :delete_time, as: 'deleteTime'
+          hash :labels, as: 'labels'
           property :name, as: 'name'
           property :state, as: 'state', class: Google::Apis::GkehubV1::ScopeLifecycleState, decorator: Google::Apis::GkehubV1::ScopeLifecycleState::Representation
       
