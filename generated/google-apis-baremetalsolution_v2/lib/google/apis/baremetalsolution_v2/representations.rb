@@ -961,6 +961,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
+          property :interconnect_attachment, as: 'interconnectAttachment'
           property :pairing_key, as: 'pairingKey'
           property :peer_ip, as: 'peerIp'
           property :peer_vlan_id, :numeric_string => true, as: 'peerVlanId'
