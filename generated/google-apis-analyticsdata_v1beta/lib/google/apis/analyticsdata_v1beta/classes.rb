@@ -47,6 +47,19 @@ module Google
         end
       end
       
+      # This metadata is currently blank.
+      class AudienceListMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The batch request containing multiple pivot report requests.
       class BatchRunPivotReportsRequest
         include Google::Apis::Core::Hashable
