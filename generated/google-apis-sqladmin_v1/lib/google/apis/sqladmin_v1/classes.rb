@@ -1753,6 +1753,18 @@ module Google
           attr_accessor :recovery_only
           alias_method :recovery_only?, :recovery_only
         
+          # Optional. StopAt keyword for transaction log import, Applies to Cloud SQL for
+          # SQL Server only
+          # Corresponds to the JSON property `stopAt`
+          # @return [String]
+          attr_accessor :stop_at
+        
+          # Optional. StopAtMark keyword for transaction log import, Applies to Cloud SQL
+          # for SQL Server only
+          # Corresponds to the JSON property `stopAtMark`
+          # @return [String]
+          attr_accessor :stop_at_mark
+        
           # Whether or not the backup set being restored is striped. Applies only to Cloud
           # SQL for SQL Server.
           # Corresponds to the JSON property `striped`
@@ -1770,6 +1782,8 @@ module Google
             @encryption_options = args[:encryption_options] if args.key?(:encryption_options)
             @no_recovery = args[:no_recovery] if args.key?(:no_recovery)
             @recovery_only = args[:recovery_only] if args.key?(:recovery_only)
+            @stop_at = args[:stop_at] if args.key?(:stop_at)
+            @stop_at_mark = args[:stop_at_mark] if args.key?(:stop_at_mark)
             @striped = args[:striped] if args.key?(:striped)
           end
           
