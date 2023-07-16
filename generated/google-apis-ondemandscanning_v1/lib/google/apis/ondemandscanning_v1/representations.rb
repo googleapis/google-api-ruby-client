@@ -82,6 +82,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BuildDefinition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BuildMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BuildOccurrence
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -268,6 +280,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InTotoSlsaProvenanceV1
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InTotoStatement
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -388,6 +406,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ProvenanceBuilder
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Recipe
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -412,7 +436,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResourceDescriptor
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RunDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SbomReferenceOccurrence
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SbomStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -455,6 +497,12 @@ module Google
       end
       
       class SlsaProvenance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SlsaProvenanceV1
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -617,9 +665,31 @@ module Google
         end
       end
       
+      class BuildDefinition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :build_type, as: 'buildType'
+          hash :external_parameters, as: 'externalParameters'
+          hash :internal_parameters, as: 'internalParameters'
+          collection :resolved_dependencies, as: 'resolvedDependencies', class: Google::Apis::OndemandscanningV1::ResourceDescriptor, decorator: Google::Apis::OndemandscanningV1::ResourceDescriptor::Representation
+      
+        end
+      end
+      
+      class BuildMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :finished_on, as: 'finishedOn'
+          property :invocation_id, as: 'invocationId'
+          property :started_on, as: 'startedOn'
+        end
+      end
+      
       class BuildOccurrence
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :in_toto_slsa_provenance_v1, as: 'inTotoSlsaProvenanceV1', class: Google::Apis::OndemandscanningV1::InTotoSlsaProvenanceV1, decorator: Google::Apis::OndemandscanningV1::InTotoSlsaProvenanceV1::Representation
+      
           property :intoto_provenance, as: 'intotoProvenance', class: Google::Apis::OndemandscanningV1::InTotoProvenance, decorator: Google::Apis::OndemandscanningV1::InTotoProvenance::Representation
       
           property :intoto_statement, as: 'intotoStatement', class: Google::Apis::OndemandscanningV1::InTotoStatement, decorator: Google::Apis::OndemandscanningV1::InTotoStatement::Representation
@@ -763,6 +833,8 @@ module Google
           property :continuous_analysis, as: 'continuousAnalysis'
           property :cpe, as: 'cpe'
           property :last_scan_time, as: 'lastScanTime'
+          property :sbom_status, as: 'sbomStatus', class: Google::Apis::OndemandscanningV1::SbomStatus, decorator: Google::Apis::OndemandscanningV1::SbomStatus::Representation
+      
         end
       end
       
@@ -932,6 +1004,18 @@ module Google
           property :metadata, as: 'metadata', class: Google::Apis::OndemandscanningV1::Metadata, decorator: Google::Apis::OndemandscanningV1::Metadata::Representation
       
           property :recipe, as: 'recipe', class: Google::Apis::OndemandscanningV1::Recipe, decorator: Google::Apis::OndemandscanningV1::Recipe::Representation
+      
+        end
+      end
+      
+      class InTotoSlsaProvenanceV1
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :_type, as: '_type'
+          property :predicate, as: 'predicate', class: Google::Apis::OndemandscanningV1::SlsaProvenanceV1, decorator: Google::Apis::OndemandscanningV1::SlsaProvenanceV1::Representation
+      
+          property :predicate_type, as: 'predicateType'
+          collection :subject, as: 'subject', class: Google::Apis::OndemandscanningV1::Subject, decorator: Google::Apis::OndemandscanningV1::Subject::Representation
       
         end
       end
@@ -1184,6 +1268,16 @@ module Google
         end
       end
       
+      class ProvenanceBuilder
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :builder_dependencies, as: 'builderDependencies', class: Google::Apis::OndemandscanningV1::ResourceDescriptor, decorator: Google::Apis::OndemandscanningV1::ResourceDescriptor::Representation
+      
+          property :id, as: 'id'
+          hash :version, as: 'version'
+        end
+      end
+      
       class Recipe
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1222,6 +1316,31 @@ module Google
         end
       end
       
+      class ResourceDescriptor
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :annotations, as: 'annotations'
+          property :content, :base64 => true, as: 'content'
+          hash :digest, as: 'digest'
+          property :download_location, as: 'downloadLocation'
+          property :media_type, as: 'mediaType'
+          property :name, as: 'name'
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class RunDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :builder, as: 'builder', class: Google::Apis::OndemandscanningV1::ProvenanceBuilder, decorator: Google::Apis::OndemandscanningV1::ProvenanceBuilder::Representation
+      
+          collection :byproducts, as: 'byproducts', class: Google::Apis::OndemandscanningV1::ResourceDescriptor, decorator: Google::Apis::OndemandscanningV1::ResourceDescriptor::Representation
+      
+          property :metadata, as: 'metadata', class: Google::Apis::OndemandscanningV1::BuildMetadata, decorator: Google::Apis::OndemandscanningV1::BuildMetadata::Representation
+      
+        end
+      end
+      
       class SbomReferenceOccurrence
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1230,6 +1349,14 @@ module Google
           property :payload_type, as: 'payloadType'
           collection :signatures, as: 'signatures', class: Google::Apis::OndemandscanningV1::EnvelopeSignature, decorator: Google::Apis::OndemandscanningV1::EnvelopeSignature::Representation
       
+        end
+      end
+      
+      class SbomStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error'
+          property :sbom_state, as: 'sbomState'
         end
       end
       
@@ -1301,6 +1428,16 @@ module Google
           property :metadata, as: 'metadata', class: Google::Apis::OndemandscanningV1::SlsaMetadata, decorator: Google::Apis::OndemandscanningV1::SlsaMetadata::Representation
       
           property :recipe, as: 'recipe', class: Google::Apis::OndemandscanningV1::SlsaRecipe, decorator: Google::Apis::OndemandscanningV1::SlsaRecipe::Representation
+      
+        end
+      end
+      
+      class SlsaProvenanceV1
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :build_definition, as: 'buildDefinition', class: Google::Apis::OndemandscanningV1::BuildDefinition, decorator: Google::Apis::OndemandscanningV1::BuildDefinition::Representation
+      
+          property :run_details, as: 'runDetails', class: Google::Apis::OndemandscanningV1::RunDetails, decorator: Google::Apis::OndemandscanningV1::RunDetails::Representation
       
         end
       end
