@@ -6229,6 +6229,11 @@ module Google
       class PlaylistStatus
         include Google::Apis::Core::Hashable
       
+        # 
+        # Corresponds to the JSON property `podcastStatus`
+        # @return [String]
+        attr_accessor :podcast_status
+      
         # The playlist's privacy status.
         # Corresponds to the JSON property `privacyStatus`
         # @return [String]
@@ -6240,6 +6245,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @podcast_status = args[:podcast_status] if args.key?(:podcast_status)
           @privacy_status = args[:privacy_status] if args.key?(:privacy_status)
         end
       end
