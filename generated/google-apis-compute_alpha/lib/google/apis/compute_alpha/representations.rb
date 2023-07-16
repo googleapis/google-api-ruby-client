@@ -4252,6 +4252,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ProjectsSetManagedProtectionTierRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PublicAdvertisedPrefix
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -15264,6 +15270,7 @@ module Google
           collection :enabled_features, as: 'enabledFeatures'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
+          property :managed_protection_tier, as: 'managedProtectionTier'
           property :name, as: 'name'
           collection :quotas, as: 'quotas', class: Google::Apis::ComputeAlpha::Quota, decorator: Google::Apis::ComputeAlpha::Quota::Representation
       
@@ -15320,6 +15327,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :email, as: 'email'
+        end
+      end
+      
+      class ProjectsSetManagedProtectionTierRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :managed_protection_tier, as: 'managedProtectionTier'
         end
       end
       

@@ -3137,7 +3137,7 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
-        # Headers that the HTTP/S load balancer should add to proxied responses.
+        # Headers that the Application Load Balancer should add to proxied responses.
         # Corresponds to the JSON property `customResponseHeaders`
         # @return [Array<String>]
         attr_accessor :custom_response_headers
@@ -17824,11 +17824,9 @@ module Google
         # @return [String]
         attr_accessor :replacement_method
       
-        # The type of update process. You can specify either PROACTIVE so that the
-        # instance group manager proactively executes actions in order to bring
-        # instances to their target versions or OPPORTUNISTIC so that no action is
-        # proactively executed but the update will be performed as part of other actions
-        # (for example, resizes or recreateInstances calls).
+        # The type of update process. You can specify either PROACTIVE so that the MIG
+        # automatically updates VMs to the latest configurations or OPPORTUNISTIC so
+        # that you can select the VMs that you want to update.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -33232,6 +33230,13 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # [Output Only] The Cloud Armor Managed Protection (CAMP) tier for this project.
+        # It can be one of the following values: CA_STANDARD, CAMP_PLUS_MONTHLY. If this
+        # field is not specified, it is assumed to be CA_STANDARD.
+        # Corresponds to the JSON property `managedProtectionTier`
+        # @return [String]
+        attr_accessor :managed_protection_tier
+      
         # The project ID. For example: my-example-project. Use the project ID to make
         # requests to Compute Engine.
         # Corresponds to the JSON property `name`
@@ -33280,6 +33285,7 @@ module Google
           @enabled_features = args[:enabled_features] if args.key?(:enabled_features)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
+          @managed_protection_tier = args[:managed_protection_tier] if args.key?(:managed_protection_tier)
           @name = args[:name] if args.key?(:name)
           @quotas = args[:quotas] if args.key?(:quotas)
           @self_link = args[:self_link] if args.key?(:self_link)
@@ -33431,6 +33437,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @email = args[:email] if args.key?(:email)
+        end
+      end
+      
+      # 
+      class ProjectsSetManagedProtectionTierRequest
+        include Google::Apis::Core::Hashable
+      
+        # Managed protection tier to be set.
+        # Corresponds to the JSON property `managedProtectionTier`
+        # @return [String]
+        attr_accessor :managed_protection_tier
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @managed_protection_tier = args[:managed_protection_tier] if args.key?(:managed_protection_tier)
         end
       end
       
