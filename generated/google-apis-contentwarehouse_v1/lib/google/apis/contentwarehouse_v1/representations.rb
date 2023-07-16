@@ -2596,6 +2596,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AssistantDevicesPlatformProtoTtsOutputCapability
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AssistantDevicesPlatformProtoUnderstandingConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2651,6 +2657,12 @@ module Google
       end
       
       class AssistantGroundingRankerDeviceTargetingLabels
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AssistantGroundingRankerEndpointGroundingProviderFeatures
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -7108,6 +7120,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ImageRepositoryFrameIdentifierMultiThumbnailVariant
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ImageRepositoryFrameIdentifierPreviewFrameZeroVariant
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -9575,6 +9593,12 @@ module Google
       end
       
       class NlpSemanticParsingLocalEvChargingStationConnectorConstraint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NlpSemanticParsingLocalEvChargingStationPaymentConstraint
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -12424,6 +12448,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RepositoryWebrefSimplifiedForwardingDup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RepositoryWebrefSubSegmentIndex
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -12827,6 +12857,18 @@ module Google
       end
       
       class SafesearchVideoContentSignals
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SafesearchVideoContentSignalsMultiLabelClassificationInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SafesearchVideoContentSignalsMultiLabelOutput
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -20161,6 +20203,8 @@ module Google
           property :supports_multi_response, as: 'supportsMultiResponse'
           property :timer, as: 'timer', class: Google::Apis::ContentwarehouseV1::AssistantDevicesPlatformProtoTimerCapability, decorator: Google::Apis::ContentwarehouseV1::AssistantDevicesPlatformProtoTimerCapability::Representation
       
+          property :tts_output, as: 'ttsOutput', class: Google::Apis::ContentwarehouseV1::AssistantDevicesPlatformProtoTtsOutputCapability, decorator: Google::Apis::ContentwarehouseV1::AssistantDevicesPlatformProtoTtsOutputCapability::Representation
+      
         end
       end
       
@@ -20367,6 +20411,13 @@ module Google
         end
       end
       
+      class AssistantDevicesPlatformProtoTtsOutputCapability
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :supports_structured_tts, as: 'supportsStructuredTts'
+        end
+      end
+      
       class AssistantDevicesPlatformProtoUnderstandingConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -20484,12 +20535,21 @@ module Google
         end
       end
       
+      class AssistantGroundingRankerEndpointGroundingProviderFeatures
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_user_confirmed, as: 'isUserConfirmed'
+        end
+      end
+      
       class AssistantGroundingRankerGroundingProviderFeatures
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :contact_grounding_provider_features, as: 'contactGroundingProviderFeatures', class: Google::Apis::ContentwarehouseV1::AssistantGroundingRankerContactGroundingProviderFeatures, decorator: Google::Apis::ContentwarehouseV1::AssistantGroundingRankerContactGroundingProviderFeatures::Representation
       
           property :device_grounding_provider_features, as: 'deviceGroundingProviderFeatures', class: Google::Apis::ContentwarehouseV1::AssistantGroundingRankerDeviceGroundingProviderFeatures, decorator: Google::Apis::ContentwarehouseV1::AssistantGroundingRankerDeviceGroundingProviderFeatures::Representation
+      
+          property :endpoint_grounding_provider_features, as: 'endpointGroundingProviderFeatures', class: Google::Apis::ContentwarehouseV1::AssistantGroundingRankerEndpointGroundingProviderFeatures, decorator: Google::Apis::ContentwarehouseV1::AssistantGroundingRankerEndpointGroundingProviderFeatures::Representation
       
           property :media_grounding_provider_features, as: 'mediaGroundingProviderFeatures', class: Google::Apis::ContentwarehouseV1::AssistantGroundingRankerMediaGroundingProviderFeatures, decorator: Google::Apis::ContentwarehouseV1::AssistantGroundingRankerMediaGroundingProviderFeatures::Representation
       
@@ -20566,6 +20626,7 @@ module Google
           property :has_type_semantic_edge, as: 'hasTypeSemanticEdge'
           property :is_cast_video, as: 'isCastVideo'
           property :is_media_search_query_subset_of_entity_name_and_artist, as: 'isMediaSearchQuerySubsetOfEntityNameAndArtist'
+          property :is_most_recent_song_album_ambiguous, as: 'isMostRecentSongAlbumAmbiguous'
           property :is_seed_radio, as: 'isSeedRadio'
           property :is_seed_radio_request, as: 'isSeedRadioRequest'
           property :is_youtube_music_seeking, as: 'isYoutubeMusicSeeking'
@@ -22819,6 +22880,7 @@ module Google
       class DrishtiVesperEncodedThumbnail
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :byte_size, :numeric_string => true, as: 'byteSize'
           property :encoding_quality, as: 'encodingQuality'
           property :encoding_type, as: 'encodingType'
           property :height, as: 'height'
@@ -25198,6 +25260,7 @@ module Google
           property :major_position, as: 'majorPosition'
           property :minor_position, as: 'minorPosition'
           property :route_direction, as: 'routeDirection'
+          property :semantic_type, as: 'semanticType'
           property :text, as: 'text', class: Google::Apis::ContentwarehouseV1::GeostoreNameProto, decorator: Google::Apis::ContentwarehouseV1::GeostoreNameProto::Representation
       
           property :type, as: 'type'
@@ -26372,6 +26435,7 @@ module Google
       
           property :timer_state, as: 'timerState', class: Google::Apis::ContentwarehouseV1::GoogleAssistantEmbeddedV1Timers, decorator: Google::Apis::ContentwarehouseV1::GoogleAssistantEmbeddedV1Timers::Representation
       
+          collection :unavailable_settings, as: 'unavailableSettings'
         end
       end
       
@@ -26417,6 +26481,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :alarm_id, as: 'alarmId'
+          property :alarm_source, as: 'alarmSource'
           property :date_pattern, as: 'datePattern', class: Google::Apis::ContentwarehouseV1::GoogleTypeDate, decorator: Google::Apis::ContentwarehouseV1::GoogleTypeDate::Representation
       
           property :label, as: 'label'
@@ -29649,11 +29714,19 @@ module Google
       class ImageRepositoryFrameIdentifier
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :multi_thumbnail_variant, as: 'multiThumbnailVariant', class: Google::Apis::ContentwarehouseV1::ImageRepositoryFrameIdentifierMultiThumbnailVariant, decorator: Google::Apis::ContentwarehouseV1::ImageRepositoryFrameIdentifierMultiThumbnailVariant::Representation
+      
           property :preview_frame_zero_variant, as: 'previewFrameZeroVariant', class: Google::Apis::ContentwarehouseV1::ImageRepositoryFrameIdentifierPreviewFrameZeroVariant, decorator: Google::Apis::ContentwarehouseV1::ImageRepositoryFrameIdentifierPreviewFrameZeroVariant::Representation
       
           property :thumbnail_variant, as: 'thumbnailVariant', class: Google::Apis::ContentwarehouseV1::ImageRepositoryFrameIdentifierThumbnailVariant, decorator: Google::Apis::ContentwarehouseV1::ImageRepositoryFrameIdentifierThumbnailVariant::Representation
       
           property :timestamp_ms, as: 'timestampMs'
+        end
+      end
+      
+      class ImageRepositoryFrameIdentifierMultiThumbnailVariant
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -31369,6 +31442,8 @@ module Google
           property :time_range_annotations, as: 'timeRangeAnnotations', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
           property :travel_assistant_travel_doc_classification, as: 'travelAssistantTravelDocClassification', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :ucp_signal, as: 'ucpSignal', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
           property :udr_converter_document_shopping_data, as: 'udrConverterDocumentShoppingData', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
@@ -35708,6 +35783,13 @@ module Google
         end
       end
       
+      class NlpSemanticParsingLocalEvChargingStationPaymentConstraint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :payment_network_mid, as: 'paymentNetworkMid'
+        end
+      end
+      
       class NlpSemanticParsingLocalEvChargingStationSpeedConstraint
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -35890,6 +35972,8 @@ module Google
           property :cuisine, as: 'cuisine', class: Google::Apis::ContentwarehouseV1::NlpSemanticParsingLocalCuisineConstraint, decorator: Google::Apis::ContentwarehouseV1::NlpSemanticParsingLocalCuisineConstraint::Representation
       
           property :evcs_connector_constraint, as: 'evcsConnectorConstraint', class: Google::Apis::ContentwarehouseV1::NlpSemanticParsingLocalEvChargingStationConnectorConstraint, decorator: Google::Apis::ContentwarehouseV1::NlpSemanticParsingLocalEvChargingStationConnectorConstraint::Representation
+      
+          property :evcs_payment_constraint, as: 'evcsPaymentConstraint', class: Google::Apis::ContentwarehouseV1::NlpSemanticParsingLocalEvChargingStationPaymentConstraint, decorator: Google::Apis::ContentwarehouseV1::NlpSemanticParsingLocalEvChargingStationPaymentConstraint::Representation
       
           property :evcs_speed_constraint, as: 'evcsSpeedConstraint', class: Google::Apis::ContentwarehouseV1::NlpSemanticParsingLocalEvChargingStationSpeedConstraint, decorator: Google::Apis::ContentwarehouseV1::NlpSemanticParsingLocalEvChargingStationSpeedConstraint::Representation
       
@@ -38813,7 +38897,6 @@ module Google
       class PornFlagData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :csai_score, as: 'csaiScore'
           collection :debug_info, as: 'debugInfo', class: Google::Apis::ContentwarehouseV1::ImagePornDebugInfo, decorator: Google::Apis::ContentwarehouseV1::ImagePornDebugInfo::Representation
       
           property :final_offensive_score, as: 'finalOffensiveScore'
@@ -39409,7 +39492,6 @@ module Google
       class QualityDniExtendedNewsPreviews
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :country_code, as: 'countryCode'
           collection :desnippeted_country_code, as: 'desnippetedCountryCode'
           property :policy_criteria_base64, as: 'policyCriteriaBase64'
           property :status, as: 'status'
@@ -39422,6 +39504,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :encoded_calibrated_fringe_site_prior_score, as: 'encodedCalibratedFringeSitePriorScore'
           property :encoded_chard_xlq_hoax_prediction, as: 'encodedChardXlqHoaxPrediction'
+          property :encoded_chard_xlq_translated_prediction, as: 'encodedChardXlqTranslatedPrediction'
           property :encoded_chard_xlq_ymyl_prediction, as: 'encodedChardXlqYmylPrediction'
           property :encoded_document_fringe_vulnerability, as: 'encodedDocumentFringeVulnerability'
           property :encoded_entity_prior_score, as: 'encodedEntityPriorScore'
@@ -40187,6 +40270,7 @@ module Google
       class QualityRankembedMustangMustangRankEmbedInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :additional_fixed_point_encodings, as: 'additionalFixedPointEncodings'
           property :compressed_document_embedding, as: 'compressedDocumentEmbedding', class: Google::Apis::ContentwarehouseV1::QualityRankembedMustangMustangRankEmbedInfoCompressedEmbedding, decorator: Google::Apis::ContentwarehouseV1::QualityRankembedMustangMustangRankEmbedInfoCompressedEmbedding::Representation
       
           property :fixed_point_encoding, :base64 => true, as: 'fixedPointEncoding'
@@ -41789,7 +41873,6 @@ module Google
           property :latent_entity, as: 'latentEntity'
           property :mdvc, as: 'mdvc'
           property :property, as: 'property'
-          property :resolution, as: 'resolution'
         end
       end
       
@@ -42390,6 +42473,8 @@ module Google
       
           property :document_mention_spans, as: 'documentMentionSpans', class: Google::Apis::ContentwarehouseV1::RepositoryWebrefRefconDocumentMentionSpans, decorator: Google::Apis::ContentwarehouseV1::RepositoryWebrefRefconDocumentMentionSpans::Representation
       
+          collection :forwarding_dups, as: 'forwardingDups', class: Google::Apis::ContentwarehouseV1::RepositoryWebrefSimplifiedForwardingDup, decorator: Google::Apis::ContentwarehouseV1::RepositoryWebrefSimplifiedForwardingDup::Representation
+      
           property :matching_metadata, as: 'matchingMetadata', class: Google::Apis::ContentwarehouseV1::RepositoryWebrefPreprocessingUrlMatchingMetadata, decorator: Google::Apis::ContentwarehouseV1::RepositoryWebrefPreprocessingUrlMatchingMetadata::Representation
       
           property :refcon_document_metadata, as: 'refconDocumentMetadata', class: Google::Apis::ContentwarehouseV1::RepositoryWebrefRefconRefconDocumentMetadata, decorator: Google::Apis::ContentwarehouseV1::RepositoryWebrefRefconRefconDocumentMetadata::Representation
@@ -42400,6 +42485,13 @@ module Google
       
           property :webref_outlinks_legacy, as: 'webrefOutlinksLegacy', class: Google::Apis::ContentwarehouseV1::Proto2BridgeMessageSet, decorator: Google::Apis::ContentwarehouseV1::Proto2BridgeMessageSet::Representation
       
+        end
+      end
+      
+      class RepositoryWebrefSimplifiedForwardingDup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :url, as: 'url'
         end
       end
       
@@ -43257,11 +43349,33 @@ module Google
       class SafesearchVideoContentSignals
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :internal_multi_label_classification, as: 'internalMultiLabelClassification', class: Google::Apis::ContentwarehouseV1::SafesearchVideoContentSignalsMultiLabelClassificationInfo, decorator: Google::Apis::ContentwarehouseV1::SafesearchVideoContentSignalsMultiLabelClassificationInfo::Representation
+      
           property :is_abuse_with_high_confidence, as: 'isAbuseWithHighConfidence'
           hash :scores, as: 'scores'
           property :version_tag, as: 'versionTag'
           property :video_classifier_output, as: 'videoClassifierOutput', class: Google::Apis::ContentwarehouseV1::SafesearchVideoClassifierOutput, decorator: Google::Apis::ContentwarehouseV1::SafesearchVideoClassifierOutput::Representation
       
+        end
+      end
+      
+      class SafesearchVideoContentSignalsMultiLabelClassificationInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :frame_features_present, as: 'frameFeaturesPresent'
+          property :output, as: 'output', class: Google::Apis::ContentwarehouseV1::SafesearchVideoContentSignalsMultiLabelOutput, decorator: Google::Apis::ContentwarehouseV1::SafesearchVideoContentSignalsMultiLabelOutput::Representation
+      
+        end
+      end
+      
+      class SafesearchVideoContentSignalsMultiLabelOutput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :age_indeterminate, as: 'ageIndeterminate'
+          property :csam, as: 'csam'
+          property :porn, as: 'porn'
+          property :racy, as: 'racy'
+          property :violence, as: 'violence'
         end
       end
       
@@ -44628,6 +44742,7 @@ module Google
       class SocialGraphApiProtoLimitedProfileSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :android_messages, as: 'androidMessages'
           property :disable_reason, as: 'disableReason'
           property :gpay_oobe, as: 'gpayOobe'
           property :last_update_time, as: 'lastUpdateTime'
