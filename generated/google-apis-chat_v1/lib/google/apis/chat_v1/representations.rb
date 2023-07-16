@@ -100,6 +100,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ChatClientDataSourceMarkup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Color
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -316,6 +322,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAppsCardV1PlatformDataSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAppsCardV1Section
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -371,6 +383,12 @@ module Google
       end
       
       class GoogleAppsCardV1Widgets
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HostAppDataSourceMarkup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -497,6 +515,12 @@ module Google
       end
       
       class Space
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SpaceDataSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -711,6 +735,14 @@ module Google
         end
       end
       
+      class ChatClientDataSourceMarkup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :space_data_source, as: 'spaceDataSource', class: Google::Apis::ChatV1::SpaceDataSource, decorator: Google::Apis::ChatV1::SpaceDataSource::Representation
+      
+        end
+      end
+      
       class Color
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -913,6 +945,7 @@ module Google
           property :name, as: 'name'
           property :peek_card_header, as: 'peekCardHeader', class: Google::Apis::ChatV1::GoogleAppsCardV1CardHeader, decorator: Google::Apis::ChatV1::GoogleAppsCardV1CardHeader::Representation
       
+          property :section_divider_style, as: 'sectionDividerStyle'
           collection :sections, as: 'sections', class: Google::Apis::ChatV1::GoogleAppsCardV1Section, decorator: Google::Apis::ChatV1::GoogleAppsCardV1Section::Representation
       
         end
@@ -1097,6 +1130,15 @@ module Google
         end
       end
       
+      class GoogleAppsCardV1PlatformDataSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :common_data_source, as: 'commonDataSource'
+          property :host_app_data_source, as: 'hostAppDataSource', class: Google::Apis::ChatV1::HostAppDataSourceMarkup, decorator: Google::Apis::ChatV1::HostAppDataSourceMarkup::Representation
+      
+        end
+      end
+      
       class GoogleAppsCardV1Section
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1111,11 +1153,17 @@ module Google
       class GoogleAppsCardV1SelectionInput
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :external_data_source, as: 'externalDataSource', class: Google::Apis::ChatV1::GoogleAppsCardV1Action, decorator: Google::Apis::ChatV1::GoogleAppsCardV1Action::Representation
+      
           collection :items, as: 'items', class: Google::Apis::ChatV1::GoogleAppsCardV1SelectionItem, decorator: Google::Apis::ChatV1::GoogleAppsCardV1SelectionItem::Representation
       
           property :label, as: 'label'
+          property :multi_select_max_selected_items, as: 'multiSelectMaxSelectedItems'
+          property :multi_select_min_query_length, as: 'multiSelectMinQueryLength'
           property :name, as: 'name'
           property :on_change_action, as: 'onChangeAction', class: Google::Apis::ChatV1::GoogleAppsCardV1Action, decorator: Google::Apis::ChatV1::GoogleAppsCardV1Action::Representation
+      
+          property :platform_data_source, as: 'platformDataSource', class: Google::Apis::ChatV1::GoogleAppsCardV1PlatformDataSource, decorator: Google::Apis::ChatV1::GoogleAppsCardV1PlatformDataSource::Representation
       
           property :type, as: 'type'
         end
@@ -1124,7 +1172,9 @@ module Google
       class GoogleAppsCardV1SelectionItem
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :bottom_text, as: 'bottomText'
           property :selected, as: 'selected'
+          property :start_icon_uri, as: 'startIconUri'
           property :text, as: 'text'
           property :value, as: 'value'
         end
@@ -1224,6 +1274,14 @@ module Google
           property :text_input, as: 'textInput', class: Google::Apis::ChatV1::GoogleAppsCardV1TextInput, decorator: Google::Apis::ChatV1::GoogleAppsCardV1TextInput::Representation
       
           property :text_paragraph, as: 'textParagraph', class: Google::Apis::ChatV1::GoogleAppsCardV1TextParagraph, decorator: Google::Apis::ChatV1::GoogleAppsCardV1TextParagraph::Representation
+      
+        end
+      end
+      
+      class HostAppDataSourceMarkup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :chat_data_source, as: 'chatDataSource', class: Google::Apis::ChatV1::ChatClientDataSourceMarkup, decorator: Google::Apis::ChatV1::ChatClientDataSourceMarkup::Representation
       
         end
       end
@@ -1473,6 +1531,13 @@ module Google
           property :space_type, as: 'spaceType'
           property :threaded, as: 'threaded'
           property :type, as: 'type'
+        end
+      end
+      
+      class SpaceDataSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_to_current_space, as: 'defaultToCurrentSpace'
         end
       end
       

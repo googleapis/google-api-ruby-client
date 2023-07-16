@@ -490,6 +490,29 @@ module Google
         end
       end
       
+      # Chat apps only. For a `SelectionInput` widget that uses a multi-select menu, a
+      # data source from Google Chat. For example, a list of Google Chat spaces of
+      # which the user is a member. [Developer Preview](https://developers.google.com/
+      # workspace/preview).
+      class ChatClientDataSourceMarkup
+        include Google::Apis::Core::Hashable
+      
+        # A data source representing a Google Chat space. Format: spaces/`space` [
+        # Developer Preview](https://developers.google.com/workspace/preview).
+        # Corresponds to the JSON property `spaceDataSource`
+        # @return [Google::Apis::ChatV1::SpaceDataSource]
+        attr_accessor :space_data_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @space_data_source = args[:space_data_source] if args.key?(:space_data_source)
+        end
+      end
+      
       # Represents a color in the RGBA color space. This representation is designed
       # for simplicity of conversion to and from color representations in various
       # languages over compactness. For example, the fields of this representation can
@@ -1401,6 +1424,11 @@ module Google
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1CardHeader]
         attr_accessor :peek_card_header
       
+        # The divider style between sections.
+        # Corresponds to the JSON property `sectionDividerStyle`
+        # @return [String]
+        attr_accessor :section_divider_style
+      
         # Contains a collection of widgets. Each section has its own, optional header.
         # Sections are visually separated by a line divider.
         # Corresponds to the JSON property `sections`
@@ -1419,6 +1447,7 @@ module Google
           @header = args[:header] if args.key?(:header)
           @name = args[:name] if args.key?(:name)
           @peek_card_header = args[:peek_card_header] if args.key?(:peek_card_header)
+          @section_divider_style = args[:section_divider_style] if args.key?(:section_divider_style)
           @sections = args[:sections] if args.key?(:sections)
         end
       end
@@ -2131,6 +2160,40 @@ module Google
         end
       end
       
+      # Chat apps only. For a `SelectionInput` widget that uses a multi-select menu,
+      # the data from a [Google Workspace host application](https://developers.google.
+      # com/chat/api/reference/rest/v1/HostApp). Used to populate the items in the
+      # multi-select menu. [Developer Preview](https://developers.google.com/workspace/
+      # preview).
+      class GoogleAppsCardV1PlatformDataSource
+        include Google::Apis::Core::Hashable
+      
+        # For a `SelectionInput` widget that uses a multi-select menu, a data source
+        # shared by all Google Workspace host applications, such as users in a Google
+        # Workspace organization. [Developer Preview](https://developers.google.com/
+        # workspace/preview).
+        # Corresponds to the JSON property `commonDataSource`
+        # @return [String]
+        attr_accessor :common_data_source
+      
+        # Chat apps only. For a `SelectionInput` widget that uses a multi-select menu, a
+        # data source from a Google Workspace host application. [Developer Preview](
+        # https://developers.google.com/workspace/preview).
+        # Corresponds to the JSON property `hostAppDataSource`
+        # @return [Google::Apis::ChatV1::HostAppDataSourceMarkup]
+        attr_accessor :host_app_data_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_data_source = args[:common_data_source] if args.key?(:common_data_source)
+          @host_app_data_source = args[:host_app_data_source] if args.key?(:host_app_data_source)
+        end
+      end
+      
       # A section contains a collection of widgets that are rendered vertically in the
       # order that they're specified.
       class GoogleAppsCardV1Section
@@ -2193,6 +2256,13 @@ module Google
       class GoogleAppsCardV1SelectionInput
         include Google::Apis::Core::Hashable
       
+        # An action that describes the behavior when the form is submitted. For example,
+        # you can invoke an Apps Script script to handle the form. If the action is
+        # triggered, the form values are sent to the server.
+        # Corresponds to the JSON property `externalDataSource`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1Action]
+        attr_accessor :external_data_source
+      
         # An array of selectable items. For example, an array of radio buttons or
         # checkboxes. Supports up to 100 items.
         # Corresponds to the JSON property `items`
@@ -2206,6 +2276,22 @@ module Google
         # Corresponds to the JSON property `label`
         # @return [String]
         attr_accessor :label
+      
+        # For multi-select menus, the maximum number of items that a user can select.
+        # Minimum value is 1 item. If unspecified, set to 3 items. [Developer Preview](
+        # https://developers.google.com/workspace/preview).
+        # Corresponds to the JSON property `multiSelectMaxSelectedItems`
+        # @return [Fixnum]
+        attr_accessor :multi_select_max_selected_items
+      
+        # For multi-select menus, the number of text characters that a user inputs
+        # before the Chat app queries autocomplete and displays suggested items on the
+        # card. If unspecified, set to 0 characters for static data sources and 3
+        # characters for external data sources. [Developer Preview](https://developers.
+        # google.com/workspace/preview).
+        # Corresponds to the JSON property `multiSelectMinQueryLength`
+        # @return [Fixnum]
+        attr_accessor :multi_select_min_query_length
       
         # The name that identifies the selection input in a form input event. For
         # details about working with form inputs, see [Receive form data](https://
@@ -2221,6 +2307,15 @@ module Google
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Action]
         attr_accessor :on_change_action
       
+        # Chat apps only. For a `SelectionInput` widget that uses a multi-select menu,
+        # the data from a [Google Workspace host application](https://developers.google.
+        # com/chat/api/reference/rest/v1/HostApp). Used to populate the items in the
+        # multi-select menu. [Developer Preview](https://developers.google.com/workspace/
+        # preview).
+        # Corresponds to the JSON property `platformDataSource`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1PlatformDataSource]
+        attr_accessor :platform_data_source
+      
         # The type of items that are displayed to users in a `SelectionInput` widget.
         # Selection types support different types of interactions. For example, users
         # can select one or more checkboxes, but they can only select one value from a
@@ -2235,10 +2330,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @external_data_source = args[:external_data_source] if args.key?(:external_data_source)
           @items = args[:items] if args.key?(:items)
           @label = args[:label] if args.key?(:label)
+          @multi_select_max_selected_items = args[:multi_select_max_selected_items] if args.key?(:multi_select_max_selected_items)
+          @multi_select_min_query_length = args[:multi_select_min_query_length] if args.key?(:multi_select_min_query_length)
           @name = args[:name] if args.key?(:name)
           @on_change_action = args[:on_change_action] if args.key?(:on_change_action)
+          @platform_data_source = args[:platform_data_source] if args.key?(:platform_data_source)
           @type = args[:type] if args.key?(:type)
         end
       end
@@ -2248,6 +2347,13 @@ module Google
       class GoogleAppsCardV1SelectionItem
         include Google::Apis::Core::Hashable
       
+        # For multi-select menus, a text description or label that's displayed below the
+        # item's `text` field. [Developer Preview](https://developers.google.com/
+        # workspace/preview).
+        # Corresponds to the JSON property `bottomText`
+        # @return [String]
+        attr_accessor :bottom_text
+      
         # Whether the item is selected by default. If the selection input only accepts
         # one value (such as for radio buttons or a dropdown menu), only set this field
         # for one item.
@@ -2255,6 +2361,14 @@ module Google
         # @return [Boolean]
         attr_accessor :selected
         alias_method :selected?, :selected
+      
+        # For multi-select menus, the URL for the icon displayed next to the item's `
+        # text` field. Supports PNG and JPEG files. Must be an `HTTPS` URL. For example,
+        # `https://developers.google.com/chat/images/quickstart-app-avatar.png`. [
+        # Developer Preview](https://developers.google.com/workspace/preview).
+        # Corresponds to the JSON property `startIconUri`
+        # @return [String]
+        attr_accessor :start_icon_uri
       
         # The text that identifies or describes the item to users.
         # Corresponds to the JSON property `text`
@@ -2275,7 +2389,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @bottom_text = args[:bottom_text] if args.key?(:bottom_text)
           @selected = args[:selected] if args.key?(:selected)
+          @start_icon_uri = args[:start_icon_uri] if args.key?(:start_icon_uri)
           @text = args[:text] if args.key?(:text)
           @value = args[:value] if args.key?(:value)
         end
@@ -2694,6 +2810,30 @@ module Google
           @selection_input = args[:selection_input] if args.key?(:selection_input)
           @text_input = args[:text_input] if args.key?(:text_input)
           @text_paragraph = args[:text_paragraph] if args.key?(:text_paragraph)
+        end
+      end
+      
+      # Chat apps only. For a `SelectionInput` widget that uses a multi-select menu, a
+      # data source from a Google Workspace host application. [Developer Preview](
+      # https://developers.google.com/workspace/preview).
+      class HostAppDataSourceMarkup
+        include Google::Apis::Core::Hashable
+      
+        # Chat apps only. For a `SelectionInput` widget that uses a multi-select menu, a
+        # data source from Google Chat. For example, a list of Google Chat spaces of
+        # which the user is a member. [Developer Preview](https://developers.google.com/
+        # workspace/preview).
+        # Corresponds to the JSON property `chatDataSource`
+        # @return [Google::Apis::ChatV1::ChatClientDataSourceMarkup]
+        attr_accessor :chat_data_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @chat_data_source = args[:chat_data_source] if args.key?(:chat_data_source)
         end
       end
       
@@ -3595,6 +3735,29 @@ module Google
           @space_type = args[:space_type] if args.key?(:space_type)
           @threaded = args[:threaded] if args.key?(:threaded)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # A data source representing a Google Chat space. Format: spaces/`space` [
+      # Developer Preview](https://developers.google.com/workspace/preview).
+      class SpaceDataSource
+        include Google::Apis::Core::Hashable
+      
+        # When `true`, uses the card's Google Chat space as the default selection. The
+        # default value is `false`. [Developer Preview](https://developers.google.com/
+        # workspace/preview).
+        # Corresponds to the JSON property `defaultToCurrentSpace`
+        # @return [Boolean]
+        attr_accessor :default_to_current_space
+        alias_method :default_to_current_space?, :default_to_current_space
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_to_current_space = args[:default_to_current_space] if args.key?(:default_to_current_space)
         end
       end
       
