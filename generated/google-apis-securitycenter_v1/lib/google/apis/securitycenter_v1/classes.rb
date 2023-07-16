@@ -823,10 +823,7 @@ module Google
       # might not have the [full resource name](https://google.aip.dev/122#full-
       # resource-names) populated because these resource types, such as Cloud SQL
       # databases, are not yet supported by Cloud Asset Inventory. In these cases only
-      # the display name is provided. Some database resources may not have the [full
-      # resource name](https://google.aip.dev/122#full-resource-names) populated
-      # because these resource types are not yet supported by Cloud Asset Inventory (e.
-      # g. Cloud SQL databases). In these cases only the display name will be provided.
+      # the display name is provided.
       class Database
         include Google::Apis::Core::Hashable
       
@@ -841,9 +838,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :grantees
       
-        # The [full resource name](https://google.aip.dev/122#full-resource-names) of
-        # the database that the user connected to, if it is supported by Cloud Asset
-        # Inventory.
+        # Some database resources may not have the [full resource name](https://google.
+        # aip.dev/122#full-resource-names) populated because these resource types are
+        # not yet supported by Cloud Asset Inventory (e.g. Cloud SQL databases). In
+        # these cases only the display name will be provided. The [full resource name](
+        # https://google.aip.dev/122#full-resource-names) of the database that the user
+        # connected to, if it is supported by Cloud Asset Inventory.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -859,6 +859,12 @@ module Google
         # @return [String]
         attr_accessor :user_name
       
+        # The version of the database, for example, POSTGRES_14. See [the complete list](
+        # https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/SqlDatabaseVersion).
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
         def initialize(**args)
            update!(**args)
         end
@@ -870,6 +876,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @query = args[:query] if args.key?(:query)
           @user_name = args[:user_name] if args.key?(:user_name)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -1186,10 +1193,7 @@ module Google
         # might not have the [full resource name](https://google.aip.dev/122#full-
         # resource-names) populated because these resource types, such as Cloud SQL
         # databases, are not yet supported by Cloud Asset Inventory. In these cases only
-        # the display name is provided. Some database resources may not have the [full
-        # resource name](https://google.aip.dev/122#full-resource-names) populated
-        # because these resource types are not yet supported by Cloud Asset Inventory (e.
-        # g. Cloud SQL databases). In these cases only the display name will be provided.
+        # the display name is provided.
         # Corresponds to the JSON property `database`
         # @return [Google::Apis::SecuritycenterV1::Database]
         attr_accessor :database
