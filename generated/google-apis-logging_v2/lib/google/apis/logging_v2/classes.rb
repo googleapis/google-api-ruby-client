@@ -208,16 +208,16 @@ module Google
         # projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]"
         # For example:"projects/my-project/locations/us-central1/keyRings/my-ring/
         # cryptoKeys/my-key"To enable CMEK for the Log Router, set this field to a valid
-        # kms_key_name for which the associated service account has the required
-        # cloudkms.cryptoKeyEncrypterDecrypter roles assigned for the key.The Cloud KMS
-        # key used by the Log Router can be updated by changing the kms_key_name to a
-        # new valid key name or disabled by setting the key name to an empty string.
-        # Encryption operations that are in progress will be completed with the key that
-        # was in use when they started. Decryption operations will be completed using
-        # the key that was used at the time of encryption unless access to that key has
-        # been revoked.To disable CMEK for the Log Router, set this field to an empty
-        # string.See Enabling CMEK for Log Router (https://cloud.google.com/logging/docs/
-        # routing/managed-encryption) for more information.
+        # kms_key_name for which the associated service account has the needed cloudkms.
+        # cryptoKeyEncrypterDecrypter roles assigned for the key.The Cloud KMS key used
+        # by the Log Router can be updated by changing the kms_key_name to a new valid
+        # key name or disabled by setting the key name to an empty string. Encryption
+        # operations that are in progress will be completed with the key that was in use
+        # when they started. Decryption operations will be completed using the key that
+        # was used at the time of encryption unless access to that key has been revoked.
+        # To disable CMEK for the Log Router, set this field to an empty string.See
+        # Enabling CMEK for Log Router (https://cloud.google.com/logging/docs/routing/
+        # managed-encryption) for more information.
         # Corresponds to the JSON property `kmsKeyName`
         # @return [String]
         attr_accessor :kms_key_name
@@ -2832,9 +2832,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Optional. The Cloud region that will be used for _Default and _Required log
-        # buckets for newly created projects and folders. For example europe-west1. This
-        # setting does not affect the location of custom log buckets.
+        # Optional. The storage location that Cloud Logging will use to create new
+        # resources when a location is needed but not explicitly provided. The use cases
+        # includes: The location of _Default and _Required log bucket for newly created
+        # projects and folders.Example value: europe-west1.Note: this setting does not
+        # affect the location of resources where a location is explicitly provided when
+        # created, such as custom log buckets.
         # Corresponds to the JSON property `storageLocation`
         # @return [String]
         attr_accessor :storage_location
