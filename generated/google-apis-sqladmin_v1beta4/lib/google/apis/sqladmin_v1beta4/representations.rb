@@ -1050,6 +1050,8 @@ module Google
         
             property :no_recovery, as: 'noRecovery'
             property :recovery_only, as: 'recoveryOnly'
+            property :stop_at, as: 'stopAt'
+            property :stop_at_mark, as: 'stopAtMark'
             property :striped, as: 'striped'
           end
           
