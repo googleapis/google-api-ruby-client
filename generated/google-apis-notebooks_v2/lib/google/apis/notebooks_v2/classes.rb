@@ -22,6 +22,34 @@ module Google
   module Apis
     module NotebooksV2
       
+      # An accelerator configuration for a VM instance Definition of a hardware
+      # accelerator. Note that there is no check on `type` and `core_count`
+      # combinations. TPUs are not supported. See [GPUs on Compute Engine](https://
+      # cloud.google.com/compute/docs/gpus/#gpus-list) to find a valid combination.
+      class AcceleratorConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Count of cores of this accelerator.
+        # Corresponds to the JSON property `coreCount`
+        # @return [Fixnum]
+        attr_accessor :core_count
+      
+        # Optional. Type of this accelerator.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @core_count = args[:core_count] if args.key?(:core_count)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # Associates `members`, or principals, with a `role`.
       class Binding
         include Google::Apis::Core::Hashable
@@ -98,6 +126,49 @@ module Google
         end
       end
       
+      # The definition of a boot disk.
+      class BootDisk
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Input only. Disk encryption method used on the boot and data disks,
+        # defaults to GMEK.
+        # Corresponds to the JSON property `diskEncryption`
+        # @return [String]
+        attr_accessor :disk_encryption
+      
+        # Optional. The size of the boot disk in GB attached to this instance, up to a
+        # maximum of 64000 GB (64 TB). If not specified, this defaults to the
+        # recommended value of 150GB.
+        # Corresponds to the JSON property `diskSizeGb`
+        # @return [Fixnum]
+        attr_accessor :disk_size_gb
+      
+        # Optional. Indicates the type of the disk.
+        # Corresponds to the JSON property `diskType`
+        # @return [String]
+        attr_accessor :disk_type
+      
+        # Optional. Input only. The KMS key used to encrypt the disks, only applicable
+        # if disk_encryption is CMEK. Format: `projects/`project_id`/locations/`location`
+        # /keyRings/`key_ring_id`/cryptoKeys/`key_id`` Learn more about using your own
+        # encryption keys.
+        # Corresponds to the JSON property `kmsKey`
+        # @return [String]
+        attr_accessor :kms_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disk_encryption = args[:disk_encryption] if args.key?(:disk_encryption)
+          @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
+          @disk_type = args[:disk_type] if args.key?(:disk_type)
+          @kms_key = args[:kms_key] if args.key?(:kms_key)
+        end
+      end
+      
       # The request message for Operations.CancelOperation.
       class CancelOperationRequest
         include Google::Apis::Core::Hashable
@@ -108,6 +179,191 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Response for checking if a notebook instance is upgradeable.
+      class CheckInstanceUpgradabilityResponse
+        include Google::Apis::Core::Hashable
+      
+        # The new image self link this instance will be upgraded to if calling the
+        # upgrade endpoint. This field will only be populated if field upgradeable is
+        # true.
+        # Corresponds to the JSON property `upgradeImage`
+        # @return [String]
+        attr_accessor :upgrade_image
+      
+        # Additional information about upgrade.
+        # Corresponds to the JSON property `upgradeInfo`
+        # @return [String]
+        attr_accessor :upgrade_info
+      
+        # The version this instance will be upgraded to if calling the upgrade endpoint.
+        # This field will only be populated if field upgradeable is true.
+        # Corresponds to the JSON property `upgradeVersion`
+        # @return [String]
+        attr_accessor :upgrade_version
+      
+        # If an instance is upgradeable.
+        # Corresponds to the JSON property `upgradeable`
+        # @return [Boolean]
+        attr_accessor :upgradeable
+        alias_method :upgradeable?, :upgradeable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @upgrade_image = args[:upgrade_image] if args.key?(:upgrade_image)
+          @upgrade_info = args[:upgrade_info] if args.key?(:upgrade_info)
+          @upgrade_version = args[:upgrade_version] if args.key?(:upgrade_version)
+          @upgradeable = args[:upgradeable] if args.key?(:upgradeable)
+        end
+      end
+      
+      # Definition of a container image for starting a notebook instance with the
+      # environment installed in a container.
+      class ContainerImage
+        include Google::Apis::Core::Hashable
+      
+        # Required. The path to the container image repository. For example: `gcr.io/`
+        # project_id`/`image_name``
+        # Corresponds to the JSON property `repository`
+        # @return [String]
+        attr_accessor :repository
+      
+        # Optional. The tag of the container image. If not specified, this defaults to
+        # the latest tag.
+        # Corresponds to the JSON property `tag`
+        # @return [String]
+        attr_accessor :tag
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @repository = args[:repository] if args.key?(:repository)
+          @tag = args[:tag] if args.key?(:tag)
+        end
+      end
+      
+      # An instance-attached disk resource.
+      class DataDisk
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Input only. Disk encryption method used on the boot and data disks,
+        # defaults to GMEK.
+        # Corresponds to the JSON property `diskEncryption`
+        # @return [String]
+        attr_accessor :disk_encryption
+      
+        # Optional. The size of the disk in GB attached to this VM instance, up to a
+        # maximum of 64000 GB (64 TB). If not specified, this defaults to 100.
+        # Corresponds to the JSON property `diskSizeGb`
+        # @return [Fixnum]
+        attr_accessor :disk_size_gb
+      
+        # Optional. Input only. Indicates the type of the disk.
+        # Corresponds to the JSON property `diskType`
+        # @return [String]
+        attr_accessor :disk_type
+      
+        # Optional. Input only. The KMS key used to encrypt the disks, only applicable
+        # if disk_encryption is CMEK. Format: `projects/`project_id`/locations/`location`
+        # /keyRings/`key_ring_id`/cryptoKeys/`key_id`` Learn more about using your own
+        # encryption keys.
+        # Corresponds to the JSON property `kmsKey`
+        # @return [String]
+        attr_accessor :kms_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disk_encryption = args[:disk_encryption] if args.key?(:disk_encryption)
+          @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
+          @disk_type = args[:disk_type] if args.key?(:disk_type)
+          @kms_key = args[:kms_key] if args.key?(:kms_key)
+        end
+      end
+      
+      # Request for creating a notebook instance diagnostic file.
+      class DiagnoseInstanceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Defines flags that are used to run the diagnostic tool
+        # Corresponds to the JSON property `diagnosticConfig`
+        # @return [Google::Apis::NotebooksV2::DiagnosticConfig]
+        attr_accessor :diagnostic_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @diagnostic_config = args[:diagnostic_config] if args.key?(:diagnostic_config)
+        end
+      end
+      
+      # Defines flags that are used to run the diagnostic tool
+      class DiagnosticConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Enables flag to copy all `/home/jupyter` folder contents
+        # Corresponds to the JSON property `enableCopyHomeFilesFlag`
+        # @return [Boolean]
+        attr_accessor :enable_copy_home_files_flag
+        alias_method :enable_copy_home_files_flag?, :enable_copy_home_files_flag
+      
+        # Optional. Enables flag to capture packets from the instance for 30 seconds
+        # Corresponds to the JSON property `enablePacketCaptureFlag`
+        # @return [Boolean]
+        attr_accessor :enable_packet_capture_flag
+        alias_method :enable_packet_capture_flag?, :enable_packet_capture_flag
+      
+        # Optional. Enables flag to repair service for instance
+        # Corresponds to the JSON property `enableRepairFlag`
+        # @return [Boolean]
+        attr_accessor :enable_repair_flag
+        alias_method :enable_repair_flag?, :enable_repair_flag
+      
+        # Required. User Cloud Storage bucket location (REQUIRED). Must be formatted
+        # with path prefix (`gs://$GCS_BUCKET`). Permissions: User Managed Notebooks: -
+        # storage.buckets.writer: Must be given to the project's service account
+        # attached to VM. Google Managed Notebooks: - storage.buckets.writer: Must be
+        # given to the project's service account or user credentials attached to VM
+        # depending on authentication mode. Cloud Storage bucket Log file will be
+        # written to `gs://$GCS_BUCKET/$RELATIVE_PATH/$VM_DATE_$TIME.tar.gz`
+        # Corresponds to the JSON property `gcsBucket`
+        # @return [String]
+        attr_accessor :gcs_bucket
+      
+        # Optional. Defines the relative storage path in the Cloud Storage bucket where
+        # the diagnostic logs will be written: Default path will be the root directory
+        # of the Cloud Storage bucket (`gs://$GCS_BUCKET/$DATE_$TIME.tar.gz`) Example of
+        # full path where Log file will be written: `gs://$GCS_BUCKET/$RELATIVE_PATH/`
+        # Corresponds to the JSON property `relativePath`
+        # @return [String]
+        attr_accessor :relative_path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_copy_home_files_flag = args[:enable_copy_home_files_flag] if args.key?(:enable_copy_home_files_flag)
+          @enable_packet_capture_flag = args[:enable_packet_capture_flag] if args.key?(:enable_packet_capture_flag)
+          @enable_repair_flag = args[:enable_repair_flag] if args.key?(:enable_repair_flag)
+          @gcs_bucket = args[:gcs_bucket] if args.key?(:gcs_bucket)
+          @relative_path = args[:relative_path] if args.key?(:relative_path)
         end
       end
       
@@ -124,6 +380,37 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # The definition of an Event for a managed / semi-managed notebook instance.
+      class Event
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Event details. This field is used to pass event information.
+        # Corresponds to the JSON property `details`
+        # @return [Hash<String,String>]
+        attr_accessor :details
+      
+        # Optional. Event report time.
+        # Corresponds to the JSON property `reportTime`
+        # @return [String]
+        attr_accessor :report_time
+      
+        # Optional. Event type.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @details = args[:details] if args.key?(:details)
+          @report_time = args[:report_time] if args.key?(:report_time)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -178,6 +465,289 @@ module Google
           @expression = args[:expression] if args.key?(:expression)
           @location = args[:location] if args.key?(:location)
           @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # A GPU driver configuration
+      class GpuDriverConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Specify a custom Cloud Storage path where the GPU driver is stored.
+        # If not specified, we'll automatically choose from official GPU drivers.
+        # Corresponds to the JSON property `customGpuDriverPath`
+        # @return [String]
+        attr_accessor :custom_gpu_driver_path
+      
+        # Optional. Whether the end user authorizes Google Cloud to install GPU driver
+        # on this VM instance. If this field is empty or set to false, the GPU driver
+        # won't be installed. Only applicable to instances with GPUs.
+        # Corresponds to the JSON property `enableGpuDriver`
+        # @return [Boolean]
+        attr_accessor :enable_gpu_driver
+        alias_method :enable_gpu_driver?, :enable_gpu_driver
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_gpu_driver_path = args[:custom_gpu_driver_path] if args.key?(:custom_gpu_driver_path)
+          @enable_gpu_driver = args[:enable_gpu_driver] if args.key?(:enable_gpu_driver)
+        end
+      end
+      
+      # The definition of how to configure a VM instance outside of Resources and
+      # Identity.
+      class GceSetup
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The hardware accelerators used on this instance. If you use
+        # accelerators, make sure that your configuration has [enough vCPUs and memory
+        # to support the `machine_type` you have selected](https://cloud.google.com/
+        # compute/docs/gpus/#gpus-list). Currently supports only one accelerator
+        # configuration.
+        # Corresponds to the JSON property `acceleratorConfigs`
+        # @return [Array<Google::Apis::NotebooksV2::AcceleratorConfig>]
+        attr_accessor :accelerator_configs
+      
+        # The definition of a boot disk.
+        # Corresponds to the JSON property `bootDisk`
+        # @return [Google::Apis::NotebooksV2::BootDisk]
+        attr_accessor :boot_disk
+      
+        # Definition of a container image for starting a notebook instance with the
+        # environment installed in a container.
+        # Corresponds to the JSON property `containerImage`
+        # @return [Google::Apis::NotebooksV2::ContainerImage]
+        attr_accessor :container_image
+      
+        # Optional. Data disks attached to the VM instance. Currently supports only one
+        # data disk.
+        # Corresponds to the JSON property `dataDisks`
+        # @return [Array<Google::Apis::NotebooksV2::DataDisk>]
+        attr_accessor :data_disks
+      
+        # Optional. If true, no external IP will be assigned to this VM instance.
+        # Corresponds to the JSON property `disablePublicIp`
+        # @return [Boolean]
+        attr_accessor :disable_public_ip
+        alias_method :disable_public_ip?, :disable_public_ip
+      
+        # Optional. Flag to enable ip forwarding or not, default false/off. https://
+        # cloud.google.com/vpc/docs/using-routes#canipforward
+        # Corresponds to the JSON property `enableIpForwarding`
+        # @return [Boolean]
+        attr_accessor :enable_ip_forwarding
+        alias_method :enable_ip_forwarding?, :enable_ip_forwarding
+      
+        # A GPU driver configuration
+        # Corresponds to the JSON property `gpuDriverConfig`
+        # @return [Google::Apis::NotebooksV2::GpuDriverConfig]
+        attr_accessor :gpu_driver_config
+      
+        # Optional. The machine type of the VM instance. https://cloud.google.com/
+        # compute/docs/machine-resource
+        # Corresponds to the JSON property `machineType`
+        # @return [String]
+        attr_accessor :machine_type
+      
+        # Optional. Custom metadata to apply to this instance.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,String>]
+        attr_accessor :metadata
+      
+        # Optional. The network interfaces for the VM. Supports only one interface.
+        # Corresponds to the JSON property `networkInterfaces`
+        # @return [Array<Google::Apis::NotebooksV2::NetworkInterface>]
+        attr_accessor :network_interfaces
+      
+        # Optional. The service account that serves as an identity for the VM instance.
+        # Currently supports only one service account.
+        # Corresponds to the JSON property `serviceAccounts`
+        # @return [Array<Google::Apis::NotebooksV2::ServiceAccount>]
+        attr_accessor :service_accounts
+      
+        # A set of Shielded Instance options. See [Images using supported Shielded VM
+        # features](https://cloud.google.com/compute/docs/instances/modifying-shielded-
+        # vm). Not all combinations are valid.
+        # Corresponds to the JSON property `shieldedInstanceConfig`
+        # @return [Google::Apis::NotebooksV2::ShieldedInstanceConfig]
+        attr_accessor :shielded_instance_config
+      
+        # Optional. The Compute Engine tags to add to runtime (see [Tagging instances](
+        # https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
+        # Corresponds to the JSON property `tags`
+        # @return [Array<String>]
+        attr_accessor :tags
+      
+        # Definition of a custom Compute Engine virtual machine image for starting a
+        # notebook instance with the environment installed directly on the VM.
+        # Corresponds to the JSON property `vmImage`
+        # @return [Google::Apis::NotebooksV2::VmImage]
+        attr_accessor :vm_image
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @accelerator_configs = args[:accelerator_configs] if args.key?(:accelerator_configs)
+          @boot_disk = args[:boot_disk] if args.key?(:boot_disk)
+          @container_image = args[:container_image] if args.key?(:container_image)
+          @data_disks = args[:data_disks] if args.key?(:data_disks)
+          @disable_public_ip = args[:disable_public_ip] if args.key?(:disable_public_ip)
+          @enable_ip_forwarding = args[:enable_ip_forwarding] if args.key?(:enable_ip_forwarding)
+          @gpu_driver_config = args[:gpu_driver_config] if args.key?(:gpu_driver_config)
+          @machine_type = args[:machine_type] if args.key?(:machine_type)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @network_interfaces = args[:network_interfaces] if args.key?(:network_interfaces)
+          @service_accounts = args[:service_accounts] if args.key?(:service_accounts)
+          @shielded_instance_config = args[:shielded_instance_config] if args.key?(:shielded_instance_config)
+          @tags = args[:tags] if args.key?(:tags)
+          @vm_image = args[:vm_image] if args.key?(:vm_image)
+        end
+      end
+      
+      # The definition of a notebook instance.
+      class Instance
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Instance creation time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. Email address of entity that sent original CreateInstance request.
+        # Corresponds to the JSON property `creator`
+        # @return [String]
+        attr_accessor :creator
+      
+        # Optional. If true, the notebook instance will not register with the proxy.
+        # Corresponds to the JSON property `disableProxyAccess`
+        # @return [Boolean]
+        attr_accessor :disable_proxy_access
+        alias_method :disable_proxy_access?, :disable_proxy_access
+      
+        # The definition of how to configure a VM instance outside of Resources and
+        # Identity.
+        # Corresponds to the JSON property `gceSetup`
+        # @return [Google::Apis::NotebooksV2::GceSetup]
+        attr_accessor :gce_setup
+      
+        # Output only. Additional information about instance health. Example: healthInfo"
+        # : ` "docker_proxy_agent_status": "1", "docker_status": "1", "
+        # jupyterlab_api_status": "-1", "jupyterlab_status": "-1", "updated": "2020-10-
+        # 18 09:40:03.573409" `
+        # Corresponds to the JSON property `healthInfo`
+        # @return [Hash<String,String>]
+        attr_accessor :health_info
+      
+        # Output only. Instance health_state.
+        # Corresponds to the JSON property `healthState`
+        # @return [String]
+        attr_accessor :health_state
+      
+        # Output only. Unique ID of the resource.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Optional. Input only. The owner of this instance after creation. Format: `
+        # alias@example.com` Currently supports one owner only. If not specified, all of
+        # the service account users of your VM instance's service account can use the
+        # instance.
+        # Corresponds to the JSON property `instanceOwners`
+        # @return [Array<String>]
+        attr_accessor :instance_owners
+      
+        # Optional. Labels to apply to this instance. These can be later modified by the
+        # UpdateInstance method.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. The name of this notebook instance. Format: `projects/`project_id`
+        # /locations/`location`/instances/`instance_id``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The proxy endpoint that is used to access the Jupyter notebook.
+        # Corresponds to the JSON property `proxyUri`
+        # @return [String]
+        attr_accessor :proxy_uri
+      
+        # Output only. The state of this instance.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Instance update time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Output only. The upgrade history of this instance.
+        # Corresponds to the JSON property `upgradeHistory`
+        # @return [Array<Google::Apis::NotebooksV2::UpgradeHistoryEntry>]
+        attr_accessor :upgrade_history
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @creator = args[:creator] if args.key?(:creator)
+          @disable_proxy_access = args[:disable_proxy_access] if args.key?(:disable_proxy_access)
+          @gce_setup = args[:gce_setup] if args.key?(:gce_setup)
+          @health_info = args[:health_info] if args.key?(:health_info)
+          @health_state = args[:health_state] if args.key?(:health_state)
+          @id = args[:id] if args.key?(:id)
+          @instance_owners = args[:instance_owners] if args.key?(:instance_owners)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @proxy_uri = args[:proxy_uri] if args.key?(:proxy_uri)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @upgrade_history = args[:upgrade_history] if args.key?(:upgrade_history)
+        end
+      end
+      
+      # Response for listing notebook instances.
+      class ListInstancesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of returned instances.
+        # Corresponds to the JSON property `instances`
+        # @return [Array<Google::Apis::NotebooksV2::Instance>]
+        attr_accessor :instances
+      
+        # Page token that can be used to continue listing from the last result in the
+        # next list call.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached. For example, ['us-west1-a', 'us-central1-
+        # b']. A ListInstancesResponse will only contain either instances or
+        # unreachables,
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instances = args[:instances] if args.key?(:instances)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -275,6 +845,40 @@ module Google
           @location_id = args[:location_id] if args.key?(:location_id)
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # The definition of a network interface resource attached to a VM.
+      class NetworkInterface
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The name of the VPC that this VM instance is in. Format: `projects/`
+        # project_id`/global/networks/`network_id``
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # Optional. The type of vNIC to be used on this interface. This may be gVNIC or
+        # VirtioNet.
+        # Corresponds to the JSON property `nicType`
+        # @return [String]
+        attr_accessor :nic_type
+      
+        # Optional. The name of the subnet that this VM instance is in. Format: `
+        # projects/`project_id`/regions/`region`/subnetworks/`subnetwork_id``
+        # Corresponds to the JSON property `subnet`
+        # @return [String]
+        attr_accessor :subnet
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network = args[:network] if args.key?(:network)
+          @nic_type = args[:nic_type] if args.key?(:nic_type)
+          @subnet = args[:subnet] if args.key?(:subnet)
         end
       end
       
@@ -493,6 +1097,97 @@ module Google
         end
       end
       
+      # Request for notebook instances to report information to Notebooks API.
+      class ReportInstanceInfoSystemRequest
+        include Google::Apis::Core::Hashable
+      
+        # The definition of an Event for a managed / semi-managed notebook instance.
+        # Corresponds to the JSON property `event`
+        # @return [Google::Apis::NotebooksV2::Event]
+        attr_accessor :event
+      
+        # Required. The VM hardware token for authenticating the VM. https://cloud.
+        # google.com/compute/docs/instances/verifying-instance-identity
+        # Corresponds to the JSON property `vmId`
+        # @return [String]
+        attr_accessor :vm_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event = args[:event] if args.key?(:event)
+          @vm_id = args[:vm_id] if args.key?(:vm_id)
+        end
+      end
+      
+      # Request for resetting a notebook instance
+      class ResetInstanceRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Request for rollbacking a notebook instance
+      class RollbackInstanceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Output only. Revision Id
+        # Corresponds to the JSON property `revisionId`
+        # @return [String]
+        attr_accessor :revision_id
+      
+        # Required. The snapshot for rollback. Example: "projects/test-project/global/
+        # snapshots/krwlzipynril".
+        # Corresponds to the JSON property `targetSnapshot`
+        # @return [String]
+        attr_accessor :target_snapshot
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @revision_id = args[:revision_id] if args.key?(:revision_id)
+          @target_snapshot = args[:target_snapshot] if args.key?(:target_snapshot)
+        end
+      end
+      
+      # A service account that acts as an identity.
+      class ServiceAccount
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Email address of the service account.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        # Output only. The list of scopes to be made available for this service account.
+        # Set by the CLH to https://www.googleapis.com/auth/cloud-platform
+        # Corresponds to the JSON property `scopes`
+        # @return [Array<String>]
+        attr_accessor :scopes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @email = args[:email] if args.key?(:email)
+          @scopes = args[:scopes] if args.key?(:scopes)
+        end
+      end
+      
       # Request message for `SetIamPolicy` method.
       class SetIamPolicyRequest
         include Google::Apis::Core::Hashable
@@ -538,6 +1233,63 @@ module Google
         end
       end
       
+      # A set of Shielded Instance options. See [Images using supported Shielded VM
+      # features](https://cloud.google.com/compute/docs/instances/modifying-shielded-
+      # vm). Not all combinations are valid.
+      class ShieldedInstanceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Defines whether the VM instance has integrity monitoring enabled.
+        # Enables monitoring and attestation of the boot integrity of the VM instance.
+        # The attestation is performed against the integrity policy baseline. This
+        # baseline is initially derived from the implicitly trusted boot image when the
+        # VM instance is created. Enabled by default.
+        # Corresponds to the JSON property `enableIntegrityMonitoring`
+        # @return [Boolean]
+        attr_accessor :enable_integrity_monitoring
+        alias_method :enable_integrity_monitoring?, :enable_integrity_monitoring
+      
+        # Optional. Defines whether the VM instance has Secure Boot enabled. Secure Boot
+        # helps ensure that the system only runs authentic software by verifying the
+        # digital signature of all boot components, and halting the boot process if
+        # signature verification fails. Disabled by default.
+        # Corresponds to the JSON property `enableSecureBoot`
+        # @return [Boolean]
+        attr_accessor :enable_secure_boot
+        alias_method :enable_secure_boot?, :enable_secure_boot
+      
+        # Optional. Defines whether the VM instance has the vTPM enabled. Enabled by
+        # default.
+        # Corresponds to the JSON property `enableVtpm`
+        # @return [Boolean]
+        attr_accessor :enable_vtpm
+        alias_method :enable_vtpm?, :enable_vtpm
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_integrity_monitoring = args[:enable_integrity_monitoring] if args.key?(:enable_integrity_monitoring)
+          @enable_secure_boot = args[:enable_secure_boot] if args.key?(:enable_secure_boot)
+          @enable_vtpm = args[:enable_vtpm] if args.key?(:enable_vtpm)
+        end
+      end
+      
+      # Request for starting a notebook instance
+      class StartInstanceRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The `Status` type defines a logical error model that is suitable for different
       # programming environments, including REST APIs and RPC APIs. It is used by [
       # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
@@ -574,6 +1326,19 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Request for stopping a notebook instance
+      class StopInstanceRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -614,6 +1379,141 @@ module Google
         # Update properties of this object
         def update!(**args)
           @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
+      # The entry of VM image upgrade history.
+      class UpgradeHistoryEntry
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Action. Rolloback or Upgrade.
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # Optional. The container image before this instance upgrade.
+        # Corresponds to the JSON property `containerImage`
+        # @return [String]
+        attr_accessor :container_image
+      
+        # Immutable. The time that this instance upgrade history entry is created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. The framework of this notebook instance.
+        # Corresponds to the JSON property `framework`
+        # @return [String]
+        attr_accessor :framework
+      
+        # Optional. The snapshot of the boot disk of this notebook instance before
+        # upgrade.
+        # Corresponds to the JSON property `snapshot`
+        # @return [String]
+        attr_accessor :snapshot
+      
+        # Output only. The state of this instance upgrade history entry.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Optional. Target VM Version, like m63.
+        # Corresponds to the JSON property `targetVersion`
+        # @return [String]
+        attr_accessor :target_version
+      
+        # Optional. The version of the notebook instance before this upgrade.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        # Optional. The VM image before this instance upgrade.
+        # Corresponds to the JSON property `vmImage`
+        # @return [String]
+        attr_accessor :vm_image
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @container_image = args[:container_image] if args.key?(:container_image)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @framework = args[:framework] if args.key?(:framework)
+          @snapshot = args[:snapshot] if args.key?(:snapshot)
+          @state = args[:state] if args.key?(:state)
+          @target_version = args[:target_version] if args.key?(:target_version)
+          @version = args[:version] if args.key?(:version)
+          @vm_image = args[:vm_image] if args.key?(:vm_image)
+        end
+      end
+      
+      # Request for upgrading a notebook instance
+      class UpgradeInstanceRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Request for upgrading a notebook instance from within the VM
+      class UpgradeInstanceSystemRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The VM hardware token for authenticating the VM. https://cloud.
+        # google.com/compute/docs/instances/verifying-instance-identity
+        # Corresponds to the JSON property `vmId`
+        # @return [String]
+        attr_accessor :vm_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @vm_id = args[:vm_id] if args.key?(:vm_id)
+        end
+      end
+      
+      # Definition of a custom Compute Engine virtual machine image for starting a
+      # notebook instance with the environment installed directly on the VM.
+      class VmImage
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Use this VM image family to find the image; the newest image in this
+        # family will be used.
+        # Corresponds to the JSON property `family`
+        # @return [String]
+        attr_accessor :family
+      
+        # Optional. Use VM image name to find the image.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. The name of the Google Cloud project that this VM image belongs to.
+        # Format: ``project_id``
+        # Corresponds to the JSON property `project`
+        # @return [String]
+        attr_accessor :project
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @family = args[:family] if args.key?(:family)
+          @name = args[:name] if args.key?(:name)
+          @project = args[:project] if args.key?(:project)
         end
       end
     end
