@@ -6332,7 +6332,9 @@ module Google
         # @return [Google::Apis::DisplayvideoV2::BiddingStrategy]
         attr_accessor :bid_strategy
       
-        # Immutable. The billable outcome of the insertion order.
+        # Immutable. The billable outcome of the insertion order. Outcome based buying
+        # will be deprecated on **August 1, 2023**. Read more on our [Announced
+        # Deprecations page](/display-video/api/deprecations#features.obb).
         # Corresponds to the JSON property `billableOutcome`
         # @return [String]
         attr_accessor :billable_outcome
