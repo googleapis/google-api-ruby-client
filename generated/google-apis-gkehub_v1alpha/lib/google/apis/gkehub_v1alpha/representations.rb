@@ -118,6 +118,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ClusterUpgradeGkeUpgradeState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ClusterUpgradeIgnoredMembership
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1085,6 +1091,8 @@ module Google
       
           collection :state, as: 'state', class: Google::Apis::GkehubV1alpha::ClusterUpgradeScopeGkeUpgradeState, decorator: Google::Apis::GkehubV1alpha::ClusterUpgradeScopeGkeUpgradeState::Representation
       
+          collection :upgrade_state, as: 'upgradeState', class: Google::Apis::GkehubV1alpha::ClusterUpgradeGkeUpgradeState, decorator: Google::Apis::GkehubV1alpha::ClusterUpgradeGkeUpgradeState::Representation
+      
         end
       end
       
@@ -1092,6 +1100,17 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :post_conditions, as: 'postConditions', class: Google::Apis::GkehubV1alpha::ClusterUpgradePostConditions, decorator: Google::Apis::GkehubV1alpha::ClusterUpgradePostConditions::Representation
+      
+          property :upgrade, as: 'upgrade', class: Google::Apis::GkehubV1alpha::ClusterUpgradeGkeUpgrade, decorator: Google::Apis::GkehubV1alpha::ClusterUpgradeGkeUpgrade::Representation
+      
+        end
+      end
+      
+      class ClusterUpgradeGkeUpgradeState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :stats, as: 'stats'
+          property :status, as: 'status', class: Google::Apis::GkehubV1alpha::ClusterUpgradeUpgradeStatus, decorator: Google::Apis::GkehubV1alpha::ClusterUpgradeUpgradeStatus::Representation
       
           property :upgrade, as: 'upgrade', class: Google::Apis::GkehubV1alpha::ClusterUpgradeGkeUpgrade, decorator: Google::Apis::GkehubV1alpha::ClusterUpgradeGkeUpgrade::Representation
       
@@ -1608,6 +1627,7 @@ module Google
           property :create_time, as: 'createTime'
           property :delete_time, as: 'deleteTime'
           property :display_name, as: 'displayName'
+          hash :labels, as: 'labels'
           property :name, as: 'name'
           property :state, as: 'state', class: Google::Apis::GkehubV1alpha::FleetLifecycleState, decorator: Google::Apis::GkehubV1alpha::FleetLifecycleState::Representation
       
@@ -1759,6 +1779,7 @@ module Google
           property :encrypted_client_secret, :base64 => true, as: 'encryptedClientSecret'
           property :kubectl_redirect_uri, as: 'kubectlRedirectUri'
           property :tenant, as: 'tenant'
+          property :user_claim, as: 'userClaim'
         end
       end
       
@@ -1974,6 +1995,7 @@ module Google
           property :create_time, as: 'createTime'
           property :delete_time, as: 'deleteTime'
           property :fleet, as: 'fleet'
+          hash :labels, as: 'labels'
           property :name, as: 'name'
           property :scope, as: 'scope'
           property :state, as: 'state', class: Google::Apis::GkehubV1alpha::MembershipBindingLifecycleState, decorator: Google::Apis::GkehubV1alpha::MembershipBindingLifecycleState::Representation
@@ -2113,6 +2135,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :delete_time, as: 'deleteTime'
+          hash :labels, as: 'labels'
           property :name, as: 'name'
           property :scope, as: 'scope'
           property :state, as: 'state', class: Google::Apis::GkehubV1alpha::NamespaceLifecycleState, decorator: Google::Apis::GkehubV1alpha::NamespaceLifecycleState::Representation
@@ -2320,6 +2343,7 @@ module Google
           property :create_time, as: 'createTime'
           property :delete_time, as: 'deleteTime'
           property :group, as: 'group'
+          hash :labels, as: 'labels'
           property :name, as: 'name'
           property :role, as: 'role', class: Google::Apis::GkehubV1alpha::Role, decorator: Google::Apis::GkehubV1alpha::Role::Representation
       
@@ -2368,6 +2392,7 @@ module Google
           property :all_memberships, as: 'allMemberships'
           property :create_time, as: 'createTime'
           property :delete_time, as: 'deleteTime'
+          hash :labels, as: 'labels'
           property :name, as: 'name'
           property :state, as: 'state', class: Google::Apis::GkehubV1alpha::ScopeLifecycleState, decorator: Google::Apis::GkehubV1alpha::ScopeLifecycleState::Representation
       
