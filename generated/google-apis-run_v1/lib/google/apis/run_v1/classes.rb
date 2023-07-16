@@ -837,7 +837,7 @@ module Google
       
         # The medium on which the data is stored. The default is "" which means to use
         # the node's default medium. Must be an empty string (default) or Memory. More
-        # info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir +optional
+        # info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir
         # Corresponds to the JSON property `medium`
         # @return [String]
         attr_accessor :medium
