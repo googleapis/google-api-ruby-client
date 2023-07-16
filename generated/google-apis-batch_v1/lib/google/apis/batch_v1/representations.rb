@@ -380,6 +380,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :count, :numeric_string => true, as: 'count'
+          property :driver_version, as: 'driverVersion'
           property :install_gpu_drivers, as: 'installGpuDrivers'
           property :type, as: 'type'
         end
