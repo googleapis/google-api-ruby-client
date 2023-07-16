@@ -1351,9 +1351,10 @@ module Google
         #   - sharedExtendedProperty
         #   - timeMin
         #   - timeMax
-        #   - updatedMin If the syncToken expires, the server will respond with a 410 GONE
-        #   response code and the client should clear its storage and perform a full
-        #   synchronization without any syncToken.
+        #   - updatedMin All other query parameters should be the same as for the initial
+        #   synchronization to avoid undefined behavior. If the syncToken expires, the
+        #   server will respond with a 410 GONE response code and the client should clear
+        #   its storage and perform a full synchronization without any syncToken.
         #   Learn more about incremental synchronization.
         #   Optional. The default is to return all entries.
         # @param [DateTime] time_max
@@ -1747,9 +1748,10 @@ module Google
         #   - sharedExtendedProperty
         #   - timeMin
         #   - timeMax
-        #   - updatedMin If the syncToken expires, the server will respond with a 410 GONE
-        #   response code and the client should clear its storage and perform a full
-        #   synchronization without any syncToken.
+        #   - updatedMin All other query parameters should be the same as for the initial
+        #   synchronization to avoid undefined behavior. If the syncToken expires, the
+        #   server will respond with a 410 GONE response code and the client should clear
+        #   its storage and perform a full synchronization without any syncToken.
         #   Learn more about incremental synchronization.
         #   Optional. The default is to return all entries.
         # @param [DateTime] time_max
