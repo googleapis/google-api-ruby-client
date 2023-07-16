@@ -3772,6 +3772,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ProjectsSetManagedProtectionTierRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PublicAdvertisedPrefix
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -13486,6 +13492,7 @@ module Google
           collection :enabled_features, as: 'enabledFeatures'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
+          property :managed_protection_tier, as: 'managedProtectionTier'
           property :name, as: 'name'
           collection :quotas, as: 'quotas', class: Google::Apis::ComputeBeta::Quota, decorator: Google::Apis::ComputeBeta::Quota::Representation
       
@@ -13534,6 +13541,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :network_tier, as: 'networkTier'
+        end
+      end
+      
+      class ProjectsSetManagedProtectionTierRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :managed_protection_tier, as: 'managedProtectionTier'
         end
       end
       
@@ -13739,9 +13753,11 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :dimensions, as: 'dimensions'
+          property :future_limit, as: 'futureLimit'
           property :limit, as: 'limit'
           property :limit_name, as: 'limitName'
           property :metric_name, as: 'metricName'
+          property :rollout_status, as: 'rolloutStatus'
         end
       end
       
@@ -15189,6 +15205,8 @@ module Google
           property :automatic_restart, as: 'automaticRestart'
           property :host_error_timeout_seconds, as: 'hostErrorTimeoutSeconds'
           property :instance_termination_action, as: 'instanceTerminationAction'
+          property :local_ssd_recovery_timeout, as: 'localSsdRecoveryTimeout', class: Google::Apis::ComputeBeta::Duration, decorator: Google::Apis::ComputeBeta::Duration::Representation
+      
           property :location_hint, as: 'locationHint'
           property :maintenance_freeze_duration_hours, as: 'maintenanceFreezeDurationHours'
           property :maintenance_interval, as: 'maintenanceInterval'
@@ -15757,6 +15775,7 @@ module Google
       class ServiceAttachmentConnectedEndpoint
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :consumer_network, as: 'consumerNetwork'
           property :endpoint, as: 'endpoint'
           property :psc_connection_id, :numeric_string => true, as: 'pscConnectionId'
           property :status, as: 'status'

@@ -2912,7 +2912,7 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
-        # Headers that the HTTP/S load balancer should add to proxied responses.
+        # Headers that the Application Load Balancer should add to proxied responses.
         # Corresponds to the JSON property `customResponseHeaders`
         # @return [Array<String>]
         attr_accessor :custom_response_headers
@@ -15857,11 +15857,9 @@ module Google
         # @return [String]
         attr_accessor :replacement_method
       
-        # The type of update process. You can specify either PROACTIVE so that the
-        # instance group manager proactively executes actions in order to bring
-        # instances to their target versions or OPPORTUNISTIC so that no action is
-        # proactively executed but the update will be performed as part of other actions
-        # (for example, resizes or recreateInstances calls).
+        # The type of update process. You can specify either PROACTIVE so that the MIG
+        # automatically updates VMs to the latest configurations or OPPORTUNISTIC so
+        # that you can select the VMs that you want to update.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -29678,6 +29676,13 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # [Output Only] The Cloud Armor Managed Protection (CAMP) tier for this project.
+        # It can be one of the following values: CA_STANDARD, CAMP_PLUS_MONTHLY. If this
+        # field is not specified, it is assumed to be CA_STANDARD.
+        # Corresponds to the JSON property `managedProtectionTier`
+        # @return [String]
+        attr_accessor :managed_protection_tier
+      
         # The project ID. For example: my-example-project. Use the project ID to make
         # requests to Compute Engine.
         # Corresponds to the JSON property `name`
@@ -29726,6 +29731,7 @@ module Google
           @enabled_features = args[:enabled_features] if args.key?(:enabled_features)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
+          @managed_protection_tier = args[:managed_protection_tier] if args.key?(:managed_protection_tier)
           @name = args[:name] if args.key?(:name)
           @quotas = args[:quotas] if args.key?(:quotas)
           @self_link = args[:self_link] if args.key?(:self_link)
@@ -29847,6 +29853,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @network_tier = args[:network_tier] if args.key?(:network_tier)
+        end
+      end
+      
+      # 
+      class ProjectsSetManagedProtectionTierRequest
+        include Google::Apis::Core::Hashable
+      
+        # Managed protection tier to be set.
+        # Corresponds to the JSON property `managedProtectionTier`
+        # @return [String]
+        attr_accessor :managed_protection_tier
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @managed_protection_tier = args[:managed_protection_tier] if args.key?(:managed_protection_tier)
         end
       end
       
@@ -30685,6 +30710,12 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :dimensions
       
+        # Future quota limit being rolled out. The limit's unit depends on the quota
+        # type or metric.
+        # Corresponds to the JSON property `futureLimit`
+        # @return [Float]
+        attr_accessor :future_limit
+      
         # Current effective quota limit. The limit's unit depends on the quota type or
         # metric.
         # Corresponds to the JSON property `limit`
@@ -30701,6 +30732,11 @@ module Google
         # @return [String]
         attr_accessor :metric_name
       
+        # Rollout status of the future quota limit.
+        # Corresponds to the JSON property `rolloutStatus`
+        # @return [String]
+        attr_accessor :rollout_status
+      
         def initialize(**args)
            update!(**args)
         end
@@ -30708,9 +30744,11 @@ module Google
         # Update properties of this object
         def update!(**args)
           @dimensions = args[:dimensions] if args.key?(:dimensions)
+          @future_limit = args[:future_limit] if args.key?(:future_limit)
           @limit = args[:limit] if args.key?(:limit)
           @limit_name = args[:limit_name] if args.key?(:limit_name)
           @metric_name = args[:metric_name] if args.key?(:metric_name)
+          @rollout_status = args[:rollout_status] if args.key?(:rollout_status)
         end
       end
       
@@ -36294,6 +36332,14 @@ module Google
         # @return [String]
         attr_accessor :instance_termination_action
       
+        # A Duration represents a fixed-length span of time represented as a count of
+        # seconds and fractions of seconds at nanosecond resolution. It is independent
+        # of any calendar and concepts like "day" or "month". Range is approximately 10,
+        # 000 years.
+        # Corresponds to the JSON property `localSsdRecoveryTimeout`
+        # @return [Google::Apis::ComputeBeta::Duration]
+        attr_accessor :local_ssd_recovery_timeout
+      
         # An opaque location hint used to place the instance close to other resources.
         # This field is for use by internal tools that use the public API.
         # Corresponds to the JSON property `locationHint`
@@ -36370,6 +36416,7 @@ module Google
           @automatic_restart = args[:automatic_restart] if args.key?(:automatic_restart)
           @host_error_timeout_seconds = args[:host_error_timeout_seconds] if args.key?(:host_error_timeout_seconds)
           @instance_termination_action = args[:instance_termination_action] if args.key?(:instance_termination_action)
+          @local_ssd_recovery_timeout = args[:local_ssd_recovery_timeout] if args.key?(:local_ssd_recovery_timeout)
           @location_hint = args[:location_hint] if args.key?(:location_hint)
           @maintenance_freeze_duration_hours = args[:maintenance_freeze_duration_hours] if args.key?(:maintenance_freeze_duration_hours)
           @maintenance_interval = args[:maintenance_interval] if args.key?(:maintenance_interval)
@@ -38585,6 +38632,11 @@ module Google
       class ServiceAttachmentConnectedEndpoint
         include Google::Apis::Core::Hashable
       
+        # The url of the consumer network.
+        # Corresponds to the JSON property `consumerNetwork`
+        # @return [String]
+        attr_accessor :consumer_network
+      
         # The url of a connected endpoint.
         # Corresponds to the JSON property `endpoint`
         # @return [String]
@@ -38606,6 +38658,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @consumer_network = args[:consumer_network] if args.key?(:consumer_network)
           @endpoint = args[:endpoint] if args.key?(:endpoint)
           @psc_connection_id = args[:psc_connection_id] if args.key?(:psc_connection_id)
           @status = args[:status] if args.key?(:status)
