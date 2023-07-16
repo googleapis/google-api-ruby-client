@@ -2116,6 +2116,13 @@ module Google
         # @return [String]
         attr_accessor :id
       
+        # Optional. The name of the vlan attachment within vrf. This is of the form
+        # projects/`project_number`/regions/`region`/interconnectAttachments/`
+        # interconnect_attachment`
+        # Corresponds to the JSON property `interconnectAttachment`
+        # @return [String]
+        attr_accessor :interconnect_attachment
+      
         # Input only. Pairing key.
         # Corresponds to the JSON property `pairingKey`
         # @return [String]
@@ -2148,6 +2155,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @id = args[:id] if args.key?(:id)
+          @interconnect_attachment = args[:interconnect_attachment] if args.key?(:interconnect_attachment)
           @pairing_key = args[:pairing_key] if args.key?(:pairing_key)
           @peer_ip = args[:peer_ip] if args.key?(:peer_ip)
           @peer_vlan_id = args[:peer_vlan_id] if args.key?(:peer_vlan_id)
