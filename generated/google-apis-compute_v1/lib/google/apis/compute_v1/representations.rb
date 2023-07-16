@@ -12745,9 +12745,11 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :dimensions, as: 'dimensions'
+          property :future_limit, as: 'futureLimit'
           property :limit, as: 'limit'
           property :limit_name, as: 'limitName'
           property :metric_name, as: 'metricName'
+          property :rollout_status, as: 'rolloutStatus'
         end
       end
       
@@ -14132,6 +14134,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :automatic_restart, as: 'automaticRestart'
           property :instance_termination_action, as: 'instanceTerminationAction'
+          property :local_ssd_recovery_timeout, as: 'localSsdRecoveryTimeout', class: Google::Apis::ComputeV1::Duration, decorator: Google::Apis::ComputeV1::Duration::Representation
+      
           property :location_hint, as: 'locationHint'
           property :min_node_cpus, as: 'minNodeCpus'
           collection :node_affinities, as: 'nodeAffinities', class: Google::Apis::ComputeV1::SchedulingNodeAffinity, decorator: Google::Apis::ComputeV1::SchedulingNodeAffinity::Representation
@@ -14577,6 +14581,7 @@ module Google
       class ServiceAttachmentConnectedEndpoint
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :consumer_network, as: 'consumerNetwork'
           property :endpoint, as: 'endpoint'
           property :psc_connection_id, :numeric_string => true, as: 'pscConnectionId'
           property :status, as: 'status'

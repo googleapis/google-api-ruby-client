@@ -2742,7 +2742,7 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
-        # Headers that the HTTP/S load balancer should add to proxied responses.
+        # Headers that the Application Load Balancer should add to proxied responses.
         # Corresponds to the JSON property `customResponseHeaders`
         # @return [Array<String>]
         attr_accessor :custom_response_headers
@@ -14781,11 +14781,9 @@ module Google
         # @return [String]
         attr_accessor :replacement_method
       
-        # The type of update process. You can specify either PROACTIVE so that the
-        # instance group manager proactively executes actions in order to bring
-        # instances to their target versions or OPPORTUNISTIC so that no action is
-        # proactively executed but the update will be performed as part of other actions
-        # (for example, resizes or recreateInstances calls).
+        # The type of update process. You can specify either PROACTIVE so that the MIG
+        # automatically updates VMs to the latest configurations or OPPORTUNISTIC so
+        # that you can select the VMs that you want to update.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -28352,6 +28350,12 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :dimensions
       
+        # Future quota limit being rolled out. The limit's unit depends on the quota
+        # type or metric.
+        # Corresponds to the JSON property `futureLimit`
+        # @return [Float]
+        attr_accessor :future_limit
+      
         # Current effective quota limit. The limit's unit depends on the quota type or
         # metric.
         # Corresponds to the JSON property `limit`
@@ -28368,6 +28372,11 @@ module Google
         # @return [String]
         attr_accessor :metric_name
       
+        # Rollout status of the future quota limit.
+        # Corresponds to the JSON property `rolloutStatus`
+        # @return [String]
+        attr_accessor :rollout_status
+      
         def initialize(**args)
            update!(**args)
         end
@@ -28375,9 +28384,11 @@ module Google
         # Update properties of this object
         def update!(**args)
           @dimensions = args[:dimensions] if args.key?(:dimensions)
+          @future_limit = args[:future_limit] if args.key?(:future_limit)
           @limit = args[:limit] if args.key?(:limit)
           @limit_name = args[:limit_name] if args.key?(:limit_name)
           @metric_name = args[:metric_name] if args.key?(:metric_name)
+          @rollout_status = args[:rollout_status] if args.key?(:rollout_status)
         end
       end
       
@@ -33745,6 +33756,14 @@ module Google
         # @return [String]
         attr_accessor :instance_termination_action
       
+        # A Duration represents a fixed-length span of time represented as a count of
+        # seconds and fractions of seconds at nanosecond resolution. It is independent
+        # of any calendar and concepts like "day" or "month". Range is approximately 10,
+        # 000 years.
+        # Corresponds to the JSON property `localSsdRecoveryTimeout`
+        # @return [Google::Apis::ComputeV1::Duration]
+        attr_accessor :local_ssd_recovery_timeout
+      
         # An opaque location hint used to place the instance close to other resources.
         # This field is for use by internal tools that use the public API.
         # Corresponds to the JSON property `locationHint`
@@ -33793,6 +33812,7 @@ module Google
         def update!(**args)
           @automatic_restart = args[:automatic_restart] if args.key?(:automatic_restart)
           @instance_termination_action = args[:instance_termination_action] if args.key?(:instance_termination_action)
+          @local_ssd_recovery_timeout = args[:local_ssd_recovery_timeout] if args.key?(:local_ssd_recovery_timeout)
           @location_hint = args[:location_hint] if args.key?(:location_hint)
           @min_node_cpus = args[:min_node_cpus] if args.key?(:min_node_cpus)
           @node_affinities = args[:node_affinities] if args.key?(:node_affinities)
@@ -35495,6 +35515,11 @@ module Google
       class ServiceAttachmentConnectedEndpoint
         include Google::Apis::Core::Hashable
       
+        # The url of the consumer network.
+        # Corresponds to the JSON property `consumerNetwork`
+        # @return [String]
+        attr_accessor :consumer_network
+      
         # The url of a connected endpoint.
         # Corresponds to the JSON property `endpoint`
         # @return [String]
@@ -35516,6 +35541,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @consumer_network = args[:consumer_network] if args.key?(:consumer_network)
           @endpoint = args[:endpoint] if args.key?(:endpoint)
           @psc_connection_id = args[:psc_connection_id] if args.key?(:psc_connection_id)
           @status = args[:status] if args.key?(:status)
