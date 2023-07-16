@@ -725,6 +725,7 @@ module Google
           hash :labels, as: 'labels'
           property :machine_type, as: 'machineType'
           hash :metadata, as: 'metadata'
+          property :migrated, as: 'migrated'
           property :name, as: 'name'
           property :network, as: 'network'
           property :nic_type, as: 'nicType'
@@ -1011,6 +1012,7 @@ module Google
           hash :labels, as: 'labels'
           property :metrics, as: 'metrics', class: Google::Apis::NotebooksV1::RuntimeMetrics, decorator: Google::Apis::NotebooksV1::RuntimeMetrics::Representation
       
+          property :migrated, as: 'migrated'
           property :name, as: 'name'
           property :software_config, as: 'softwareConfig', class: Google::Apis::NotebooksV1::RuntimeSoftwareConfig, decorator: Google::Apis::NotebooksV1::RuntimeSoftwareConfig::Representation
       
