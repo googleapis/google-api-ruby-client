@@ -4432,11 +4432,6 @@ module Google
         # @return [String]
         attr_accessor :datastore
       
-        # The Vsphere storage policy used by the control plane Node.
-        # Corresponds to the JSON property `storagePolicyName`
-        # @return [String]
-        attr_accessor :storage_policy_name
-      
         def initialize(**args)
            update!(**args)
         end
@@ -4444,7 +4439,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @datastore = args[:datastore] if args.key?(:datastore)
-          @storage_policy_name = args[:storage_policy_name] if args.key?(:storage_policy_name)
         end
       end
       
@@ -5137,11 +5131,6 @@ module Google
         # @return [String]
         attr_accessor :resource_pool
       
-        # The name of the vCenter storage policy for the user cluster.
-        # Corresponds to the JSON property `storagePolicyName`
-        # @return [String]
-        attr_accessor :storage_policy_name
-      
         def initialize(**args)
            update!(**args)
         end
@@ -5155,7 +5144,6 @@ module Google
           @datastore = args[:datastore] if args.key?(:datastore)
           @folder = args[:folder] if args.key?(:folder)
           @resource_pool = args[:resource_pool] if args.key?(:resource_pool)
-          @storage_policy_name = args[:storage_policy_name] if args.key?(:storage_policy_name)
         end
       end
       
@@ -5231,11 +5219,6 @@ module Google
         # @return [String]
         attr_accessor :datastore
       
-        # The name of the vCenter storage policy. Inherited from the user cluster.
-        # Corresponds to the JSON property `storagePolicyName`
-        # @return [String]
-        attr_accessor :storage_policy_name
-      
         # Tags to apply to VMs.
         # Corresponds to the JSON property `tags`
         # @return [Array<Google::Apis::GkeonpremV1::VmwareVsphereTag>]
@@ -5248,7 +5231,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @datastore = args[:datastore] if args.key?(:datastore)
-          @storage_policy_name = args[:storage_policy_name] if args.key?(:storage_policy_name)
           @tags = args[:tags] if args.key?(:tags)
         end
       end
