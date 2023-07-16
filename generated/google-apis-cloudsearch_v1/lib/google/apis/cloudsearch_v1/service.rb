@@ -869,9 +869,9 @@ module Google
         end
         
         # Provides functionality to remove logged activity for a user. Currently to be
-        # used only for dynamite 1p clients **Note:** This API requires a standard end
-        # user account to execute. A service account can't perform Remove Activity
-        # requests directly; to use a service account to perform queries, set up [Google
+        # used only for Chat 1p clients **Note:** This API requires a standard end user
+        # account to execute. A service account can't perform Remove Activity requests
+        # directly; to use a service account to perform queries, set up [Google
         # Workspace domain-wide delegation of authority](https://developers.google.com/
         # cloud-search/docs/guides/delegation/).
         # @param [Google::Apis::CloudsearchV1::RemoveActivityRequest] remove_activity_request_object
