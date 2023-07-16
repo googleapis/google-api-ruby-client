@@ -438,6 +438,135 @@ module Google
         end
       end
       
+      # Message describing Endpoint object
+      class FirewallEndpoint
+        include Google::Apis::Core::Hashable
+      
+        # Output only. List of networks that are associated with this endpoint in the
+        # local zone. This is a projection of the FirewallEndpointAssociations pointing
+        # at this endpoint. A network will only appear in this list after traffic
+        # routing is fully configured. Format: projects/`project`/global/networks/`name`.
+        # Corresponds to the JSON property `associatedNetworks`
+        # @return [Array<String>]
+        attr_accessor :associated_networks
+      
+        # Output only. Create time stamp
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Labels as key value pairs
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. name of resource
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Whether reconciling is in progress, recommended per https://
+        # google.aip.dev/128.
+        # Corresponds to the JSON property `reconciling`
+        # @return [Boolean]
+        attr_accessor :reconciling
+        alias_method :reconciling?, :reconciling
+      
+        # Output only. Current state of the endpoint.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Update time stamp
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @associated_networks = args[:associated_networks] if args.key?(:associated_networks)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @reconciling = args[:reconciling] if args.key?(:reconciling)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Message describing Association object
+      class FirewallEndpointAssociation
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Create time stamp
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Required. The URL of the FirewallEndpoint that is being associated.
+        # Corresponds to the JSON property `firewallEndpoint`
+        # @return [String]
+        attr_accessor :firewall_endpoint
+      
+        # Labels as key value pairs
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. name of resource
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. The URL of the network that is being associated.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # Output only. Whether reconciling is in progress, recommended per https://
+        # google.aip.dev/128.
+        # Corresponds to the JSON property `reconciling`
+        # @return [Boolean]
+        attr_accessor :reconciling
+        alias_method :reconciling?, :reconciling
+      
+        # Output only. Current state of the association.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Optional. The URL of the TlsInspectionPolicy that is being associated.
+        # Corresponds to the JSON property `tlsInspectionPolicy`
+        # @return [String]
+        attr_accessor :tls_inspection_policy
+      
+        # Output only. Update time stamp
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @firewall_endpoint = args[:firewall_endpoint] if args.key?(:firewall_endpoint)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @network = args[:network] if args.key?(:network)
+          @reconciling = args[:reconciling] if args.key?(:reconciling)
+          @state = args[:state] if args.key?(:state)
+          @tls_inspection_policy = args[:tls_inspection_policy] if args.key?(:tls_inspection_policy)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # The GatewaySecurityPolicy resource contains a collection of
       # GatewaySecurityPolicyRules and associated metadata.
       class GatewaySecurityPolicy
@@ -1115,6 +1244,68 @@ module Google
         end
       end
       
+      # Message for response to listing Associations
+      class ListFirewallEndpointAssociationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of Association
+        # Corresponds to the JSON property `firewallEndpointAssociations`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::FirewallEndpointAssociation>]
+        attr_accessor :firewall_endpoint_associations
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @firewall_endpoint_associations = args[:firewall_endpoint_associations] if args.key?(:firewall_endpoint_associations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Message for response to listing Endpoints
+      class ListFirewallEndpointsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of Endpoint
+        # Corresponds to the JSON property `firewallEndpoints`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::FirewallEndpoint>]
+        attr_accessor :firewall_endpoints
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @firewall_endpoints = args[:firewall_endpoints] if args.key?(:firewall_endpoints)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # Response returned by the ListGatewaySecurityPolicies method.
       class ListGatewaySecurityPoliciesResponse
         include Google::Apis::Core::Hashable
@@ -1766,10 +1957,43 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Optional. List of custom TLS cipher suites selected. This field is valid only
+        # if the selected tls_feature_profile is CUSTOM. The compute.SslPoliciesService.
+        # ListAvailableFeatures method returns the set of features that can be specified
+        # in this list. Note that Secure Web Proxy does not yet honor this field.
+        # Corresponds to the JSON property `customTlsFeatures`
+        # @return [Array<String>]
+        attr_accessor :custom_tls_features
+      
         # Optional. Free-text description of the resource.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
+      
+        # Optional. If FALSE (the default), use our default set of public CAs in
+        # addition to any CAs specified in trust_config. These public CAs are currently
+        # based on the Mozilla Root Program and are subject to change over time. If TRUE,
+        # do not accept our default set of public CAs. Only CAs specified in
+        # trust_config will be accepted. This defaults to FALSE (use public CAs in
+        # addition to trust_config) for backwards compatibility, but trusting public
+        # root CAs is *not recommended* unless the traffic in question is outbound to
+        # public web servers. When possible, prefer setting this to "false" and
+        # explicitly specifying trusted CAs and certificates in a TrustConfig. Note that
+        # Secure Web Proxy does not yet honor this field.
+        # Corresponds to the JSON property `excludePublicCaSet`
+        # @return [Boolean]
+        attr_accessor :exclude_public_ca_set
+        alias_method :exclude_public_ca_set?, :exclude_public_ca_set
+      
+        # Optional. Minimum TLS version that the firewall should use when negotiating
+        # connections with both clients and servers. If this is not set, then the
+        # default value is to allow the broadest set of clients and servers (TLS 1.0 or
+        # higher). Setting this to more restrictive values may improve security, but may
+        # also prevent the firewall from connecting to some clients or servers. Note
+        # that Secure Web Proxy does not yet honor this field.
+        # Corresponds to the JSON property `minTlsVersion`
+        # @return [String]
+        attr_accessor :min_tls_version
       
         # Required. Name of the resource. Name is of the form projects/`project`/
         # locations/`location`/tlsInspectionPolicies/`tls_inspection_policy`
@@ -1778,6 +2002,25 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Optional. The selected Profile. If this is not set, then the default value is
+        # to allow the broadest set of clients and servers ("PROFILE_COMPATIBLE").
+        # Setting this to more restrictive values may improve security, but may also
+        # prevent the TLS inspection proxy from connecting to some clients or servers.
+        # Note that Secure Web Proxy does not yet honor this field.
+        # Corresponds to the JSON property `tlsFeatureProfile`
+        # @return [String]
+        attr_accessor :tls_feature_profile
+      
+        # Optional. A TrustConfig resource used when making a connection to the TLS
+        # server. This is a relative resource path following the form "projects/`project`
+        # /locations/`location`/trustConfigs/`trust_config`". This is necessary to
+        # intercept TLS connections to servers with certificates signed by a private CA
+        # or self-signed certificates. Note that Secure Web Proxy does not yet honor
+        # this field.
+        # Corresponds to the JSON property `trustConfig`
+        # @return [String]
+        attr_accessor :trust_config
       
         # Output only. The timestamp when the resource was updated.
         # Corresponds to the JSON property `updateTime`
@@ -1792,8 +2035,13 @@ module Google
         def update!(**args)
           @ca_pool = args[:ca_pool] if args.key?(:ca_pool)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @custom_tls_features = args[:custom_tls_features] if args.key?(:custom_tls_features)
           @description = args[:description] if args.key?(:description)
+          @exclude_public_ca_set = args[:exclude_public_ca_set] if args.key?(:exclude_public_ca_set)
+          @min_tls_version = args[:min_tls_version] if args.key?(:min_tls_version)
           @name = args[:name] if args.key?(:name)
+          @tls_feature_profile = args[:tls_feature_profile] if args.key?(:tls_feature_profile)
+          @trust_config = args[:trust_config] if args.key?(:trust_config)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end

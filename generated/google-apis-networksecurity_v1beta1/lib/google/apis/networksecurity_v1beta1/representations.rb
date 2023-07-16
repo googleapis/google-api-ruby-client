@@ -82,6 +82,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FirewallEndpoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FirewallEndpointAssociation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GatewaySecurityPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -179,6 +191,18 @@ module Google
       end
       
       class ListClientTlsPoliciesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListFirewallEndpointAssociationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListFirewallEndpointsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -399,6 +423,34 @@ module Google
         end
       end
       
+      class FirewallEndpoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :associated_networks, as: 'associatedNetworks'
+          property :create_time, as: 'createTime'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :reconciling, as: 'reconciling'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class FirewallEndpointAssociation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :firewall_endpoint, as: 'firewallEndpoint'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :network, as: 'network'
+          property :reconciling, as: 'reconciling'
+          property :state, as: 'state'
+          property :tls_inspection_policy, as: 'tlsInspectionPolicy'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class GatewaySecurityPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -554,6 +606,26 @@ module Google
           collection :client_tls_policies, as: 'clientTlsPolicies', class: Google::Apis::NetworksecurityV1beta1::ClientTlsPolicy, decorator: Google::Apis::NetworksecurityV1beta1::ClientTlsPolicy::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListFirewallEndpointAssociationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :firewall_endpoint_associations, as: 'firewallEndpointAssociations', class: Google::Apis::NetworksecurityV1beta1::FirewallEndpointAssociation, decorator: Google::Apis::NetworksecurityV1beta1::FirewallEndpointAssociation::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListFirewallEndpointsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :firewall_endpoints, as: 'firewallEndpoints', class: Google::Apis::NetworksecurityV1beta1::FirewallEndpoint, decorator: Google::Apis::NetworksecurityV1beta1::FirewallEndpoint::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -726,8 +798,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ca_pool, as: 'caPool'
           property :create_time, as: 'createTime'
+          collection :custom_tls_features, as: 'customTlsFeatures'
           property :description, as: 'description'
+          property :exclude_public_ca_set, as: 'excludePublicCaSet'
+          property :min_tls_version, as: 'minTlsVersion'
           property :name, as: 'name'
+          property :tls_feature_profile, as: 'tlsFeatureProfile'
+          property :trust_config, as: 'trustConfig'
           property :update_time, as: 'updateTime'
         end
       end
