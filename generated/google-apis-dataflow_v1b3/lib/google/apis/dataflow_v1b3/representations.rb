@@ -2125,6 +2125,7 @@ module Google
           collection :additional_experiments, as: 'additionalExperiments'
           hash :additional_user_labels, as: 'additionalUserLabels'
           property :bypass_temp_dir_validation, as: 'bypassTempDirValidation'
+          property :disk_size_gb, as: 'diskSizeGb'
           property :enable_streaming_engine, as: 'enableStreamingEngine'
           property :ip_configuration, as: 'ipConfiguration'
           property :kms_key_name, as: 'kmsKeyName'

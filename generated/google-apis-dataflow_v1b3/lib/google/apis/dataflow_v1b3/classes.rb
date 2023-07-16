@@ -4030,6 +4030,12 @@ module Google
         attr_accessor :bypass_temp_dir_validation
         alias_method :bypass_temp_dir_validation?, :bypass_temp_dir_validation
       
+        # Optional. The disk size, in gigabytes, to use on each remote Compute Engine
+        # worker instance.
+        # Corresponds to the JSON property `diskSizeGb`
+        # @return [Fixnum]
+        attr_accessor :disk_size_gb
+      
         # Optional. Whether to enable Streaming Engine for the job.
         # Corresponds to the JSON property `enableStreamingEngine`
         # @return [Boolean]
@@ -4127,6 +4133,7 @@ module Google
           @additional_experiments = args[:additional_experiments] if args.key?(:additional_experiments)
           @additional_user_labels = args[:additional_user_labels] if args.key?(:additional_user_labels)
           @bypass_temp_dir_validation = args[:bypass_temp_dir_validation] if args.key?(:bypass_temp_dir_validation)
+          @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @enable_streaming_engine = args[:enable_streaming_engine] if args.key?(:enable_streaming_engine)
           @ip_configuration = args[:ip_configuration] if args.key?(:ip_configuration)
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
