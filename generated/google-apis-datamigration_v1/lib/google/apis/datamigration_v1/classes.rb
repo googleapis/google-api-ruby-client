@@ -4458,12 +4458,20 @@ module Google
       class StartMigrationJobRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. Start the migration job without running prior configuration
+        # verification. Defaults to `false`.
+        # Corresponds to the JSON property `skipValidation`
+        # @return [Boolean]
+        attr_accessor :skip_validation
+        alias_method :skip_validation?, :skip_validation
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @skip_validation = args[:skip_validation] if args.key?(:skip_validation)
         end
       end
       
