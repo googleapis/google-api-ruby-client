@@ -28,6 +28,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AdditionalNodeNetworkConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AdditionalPodNetworkConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AdditionalPodRangesConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -359,6 +371,12 @@ module Google
       end
       
       class HorizontalPodAutoscaling
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HostMaintenancePolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1092,6 +1110,24 @@ module Google
         end
       end
       
+      class AdditionalNodeNetworkConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :network, as: 'network'
+          property :subnetwork, as: 'subnetwork'
+        end
+      end
+      
+      class AdditionalPodNetworkConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_pods_per_node, as: 'maxPodsPerNode', class: Google::Apis::ContainerV1beta1::MaxPodsConstraint, decorator: Google::Apis::ContainerV1beta1::MaxPodsConstraint::Representation
+      
+          property :secondary_pod_range, as: 'secondaryPodRange'
+          property :subnetwork, as: 'subnetwork'
+        end
+      end
+      
       class AdditionalPodRangesConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1482,6 +1518,8 @@ module Google
       
           property :desired_gcfs_config, as: 'desiredGcfsConfig', class: Google::Apis::ContainerV1beta1::GcfsConfig, decorator: Google::Apis::ContainerV1beta1::GcfsConfig::Representation
       
+          property :desired_host_maintenance_policy, as: 'desiredHostMaintenancePolicy', class: Google::Apis::ContainerV1beta1::HostMaintenancePolicy, decorator: Google::Apis::ContainerV1beta1::HostMaintenancePolicy::Representation
+      
           property :desired_identity_service_config, as: 'desiredIdentityServiceConfig', class: Google::Apis::ContainerV1beta1::IdentityServiceConfig, decorator: Google::Apis::ContainerV1beta1::IdentityServiceConfig::Representation
       
           property :desired_image_type, as: 'desiredImageType'
@@ -1797,6 +1835,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :disabled, as: 'disabled'
+        end
+      end
+      
+      class HostMaintenancePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :maintenance_interval, as: 'maintenanceInterval'
         end
       end
       
@@ -2125,6 +2170,7 @@ module Google
           property :enable_fqdn_network_policy, as: 'enableFqdnNetworkPolicy'
           property :enable_intra_node_visibility, as: 'enableIntraNodeVisibility'
           property :enable_l4ilb_subsetting, as: 'enableL4ilbSubsetting'
+          property :enable_multi_networking, as: 'enableMultiNetworking'
           property :gateway_api_config, as: 'gatewayApiConfig', class: Google::Apis::ContainerV1beta1::GatewayApiConfig, decorator: Google::Apis::ContainerV1beta1::GatewayApiConfig::Representation
       
           property :network, as: 'network'
@@ -2198,6 +2244,8 @@ module Google
       
           property :gvnic, as: 'gvnic', class: Google::Apis::ContainerV1beta1::VirtualNic, decorator: Google::Apis::ContainerV1beta1::VirtualNic::Representation
       
+          property :host_maintenance_policy, as: 'hostMaintenancePolicy', class: Google::Apis::ContainerV1beta1::HostMaintenancePolicy, decorator: Google::Apis::ContainerV1beta1::HostMaintenancePolicy::Representation
+      
           property :image_type, as: 'imageType'
           property :kubelet_config, as: 'kubeletConfig', class: Google::Apis::ContainerV1beta1::NodeKubeletConfig, decorator: Google::Apis::ContainerV1beta1::NodeKubeletConfig::Representation
       
@@ -2241,6 +2289,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gcfs_config, as: 'gcfsConfig', class: Google::Apis::ContainerV1beta1::GcfsConfig, decorator: Google::Apis::ContainerV1beta1::GcfsConfig::Representation
       
+          property :host_maintenance_policy, as: 'hostMaintenancePolicy', class: Google::Apis::ContainerV1beta1::HostMaintenancePolicy, decorator: Google::Apis::ContainerV1beta1::HostMaintenancePolicy::Representation
+      
           property :logging_config, as: 'loggingConfig', class: Google::Apis::ContainerV1beta1::NodePoolLoggingConfig, decorator: Google::Apis::ContainerV1beta1::NodePoolLoggingConfig::Representation
       
         end
@@ -2277,6 +2327,10 @@ module Google
       class NodeNetworkConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :additional_node_network_configs, as: 'additionalNodeNetworkConfigs', class: Google::Apis::ContainerV1beta1::AdditionalNodeNetworkConfig, decorator: Google::Apis::ContainerV1beta1::AdditionalNodeNetworkConfig::Representation
+      
+          collection :additional_pod_network_configs, as: 'additionalPodNetworkConfigs', class: Google::Apis::ContainerV1beta1::AdditionalPodNetworkConfig, decorator: Google::Apis::ContainerV1beta1::AdditionalPodNetworkConfig::Representation
+      
           property :create_pod_range, as: 'createPodRange'
           property :enable_private_nodes, as: 'enablePrivateNodes'
           property :network_performance_config, as: 'networkPerformanceConfig', class: Google::Apis::ContainerV1beta1::NetworkPerformanceConfig, decorator: Google::Apis::ContainerV1beta1::NetworkPerformanceConfig::Representation
@@ -2427,6 +2481,7 @@ module Google
       class PlacementPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :policy_name, as: 'policyName'
           property :tpu_topology, as: 'tpuTopology'
           property :type, as: 'type'
         end
