@@ -1105,6 +1105,11 @@ module Google
         # @return [String]
         attr_accessor :reservation_name
       
+        # Spot tier definition.
+        # Corresponds to the JSON property `spot`
+        # @return [Google::Apis::TpuV2alpha1::Spot]
+        attr_accessor :spot
+      
         # QueuedResourceState defines the details of the QueuedResource request.
         # Corresponds to the JSON property `state`
         # @return [Google::Apis::TpuV2alpha1::QueuedResourceState]
@@ -1126,6 +1131,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @queueing_policy = args[:queueing_policy] if args.key?(:queueing_policy)
           @reservation_name = args[:reservation_name] if args.key?(:reservation_name)
+          @spot = args[:spot] if args.key?(:spot)
           @state = args[:state] if args.key?(:state)
           @tpu = args[:tpu] if args.key?(:tpu)
         end
@@ -1383,6 +1389,19 @@ module Google
         # Update properties of this object
         def update!(**args)
           @worker_ids = args[:worker_ids] if args.key?(:worker_ids)
+        end
+      end
+      
+      # Spot tier definition.
+      class Spot
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
