@@ -1128,6 +1128,7 @@ module Google
           property :description, as: 'description'
           property :disabled, as: 'disabled'
           property :display_name, as: 'displayName'
+          property :expire_time, as: 'expireTime'
           property :name, as: 'name'
           property :parent, as: 'parent'
           property :session_duration, as: 'sessionDuration'
@@ -1143,6 +1144,7 @@ module Google
           property :description, as: 'description'
           property :disabled, as: 'disabled'
           property :display_name, as: 'displayName'
+          property :expire_time, as: 'expireTime'
           property :name, as: 'name'
           property :oidc, as: 'oidc', class: Google::Apis::IamV1::GoogleIamAdminV1WorkforcePoolProviderOidc, decorator: Google::Apis::IamV1::GoogleIamAdminV1WorkforcePoolProviderOidc::Representation
       
@@ -1170,7 +1172,7 @@ module Google
           property :description, as: 'description'
           property :disabled, as: 'disabled'
           property :display_name, as: 'displayName'
-          property :identity_mode, as: 'identityMode'
+          property :expire_time, as: 'expireTime'
           property :name, as: 'name'
           property :state, as: 'state'
         end
@@ -1192,6 +1194,7 @@ module Google
           property :description, as: 'description'
           property :disabled, as: 'disabled'
           property :display_name, as: 'displayName'
+          property :expire_time, as: 'expireTime'
           property :name, as: 'name'
           property :oidc, as: 'oidc', class: Google::Apis::IamV1::Oidc, decorator: Google::Apis::IamV1::Oidc::Representation
       

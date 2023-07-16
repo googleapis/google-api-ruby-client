@@ -664,7 +664,8 @@ module Google
         attr_accessor :assertion_claims_behavior
       
         # Required. The Response Type to request for in the OIDC Authorization Request
-        # for web sign-in.
+        # for web sign-in. The `CODE` Response Type is recommended to avoid the Implicit
+        # Flow, for security reasons.
         # Corresponds to the JSON property `responseType`
         # @return [String]
         attr_accessor :response_type
@@ -2341,6 +2342,12 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Output only. Time after which the workforce pool will be permanently purged
+        # and cannot be recovered.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
         # Output only. The resource name of the pool. Format: `locations/`location`/
         # workforcePools/`workforce_pool_id``
         # Corresponds to the JSON property `name`
@@ -2376,6 +2383,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @disabled = args[:disabled] if args.key?(:disabled)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
           @name = args[:name] if args.key?(:name)
           @parent = args[:parent] if args.key?(:parent)
           @session_duration = args[:session_duration] if args.key?(:session_duration)
@@ -2463,6 +2471,12 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Output only. Time after which the workload pool provider will be permanently
+        # purged and cannot be recovered.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
         # Output only. The resource name of the provider. Format: `locations/`location`/
         # workforcePools/`workforce_pool_id`/providers/`provider_id``
         # Corresponds to the JSON property `name`
@@ -2495,6 +2509,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @disabled = args[:disabled] if args.key?(:disabled)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
           @name = args[:name] if args.key?(:name)
           @oidc = args[:oidc] if args.key?(:oidc)
           @saml = args[:saml] if args.key?(:saml)
@@ -2572,10 +2587,11 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Immutable. The identity mode of the pool.
-        # Corresponds to the JSON property `identityMode`
+        # Output only. Time after which the workload identity pool will be permanently
+        # purged and cannot be recovered.
+        # Corresponds to the JSON property `expireTime`
         # @return [String]
-        attr_accessor :identity_mode
+        attr_accessor :expire_time
       
         # Output only. The resource name of the pool.
         # Corresponds to the JSON property `name`
@@ -2596,7 +2612,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @disabled = args[:disabled] if args.key?(:disabled)
           @display_name = args[:display_name] if args.key?(:display_name)
-          @identity_mode = args[:identity_mode] if args.key?(:identity_mode)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
         end
@@ -2698,6 +2714,12 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Output only. Time after which the workload identity pool provider will be
+        # permanently purged and cannot be recovered.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
         # Output only. The resource name of the provider.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -2730,6 +2752,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @disabled = args[:disabled] if args.key?(:disabled)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
           @name = args[:name] if args.key?(:name)
           @oidc = args[:oidc] if args.key?(:oidc)
           @saml = args[:saml] if args.key?(:saml)
