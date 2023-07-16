@@ -61,7 +61,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # the accelerator type.
+        # The accelerator type.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -568,7 +568,7 @@ module Google
         # @return [Google::Apis::TpuV2::AcceleratorConfig]
         attr_accessor :accelerator_config
       
-        # Required. The type of hardware accelerators associated with this node.
+        # Optional. The type of hardware accelerators associated with this node.
         # Corresponds to the JSON property `acceleratorType`
         # @return [String]
         attr_accessor :accelerator_type
@@ -631,6 +631,12 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :metadata
       
+        # Output only. Whether the Node belongs to a Multislice group.
+        # Corresponds to the JSON property `multisliceNode`
+        # @return [Boolean]
+        attr_accessor :multislice_node
+        alias_method :multislice_node?, :multislice_node
+      
         # Output only. Immutable. The name of the TPU.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -647,6 +653,11 @@ module Google
         # Corresponds to the JSON property `networkEndpoints`
         # @return [Array<Google::Apis::TpuV2::NetworkEndpoint>]
         attr_accessor :network_endpoints
+      
+        # Output only. The qualified name of the QueuedResource that requested this Node.
+        # Corresponds to the JSON property `queuedResource`
+        # @return [String]
+        attr_accessor :queued_resource
       
         # Required. The runtime version running in the Node.
         # Corresponds to the JSON property `runtimeVersion`
@@ -702,9 +713,11 @@ module Google
           @id = args[:id] if args.key?(:id)
           @labels = args[:labels] if args.key?(:labels)
           @metadata = args[:metadata] if args.key?(:metadata)
+          @multislice_node = args[:multislice_node] if args.key?(:multislice_node)
           @name = args[:name] if args.key?(:name)
           @network_config = args[:network_config] if args.key?(:network_config)
           @network_endpoints = args[:network_endpoints] if args.key?(:network_endpoints)
+          @queued_resource = args[:queued_resource] if args.key?(:queued_resource)
           @runtime_version = args[:runtime_version] if args.key?(:runtime_version)
           @scheduling_config = args[:scheduling_config] if args.key?(:scheduling_config)
           @service_account = args[:service_account] if args.key?(:service_account)
