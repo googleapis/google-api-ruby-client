@@ -892,6 +892,11 @@ module Google
         # @return [Array<Google::Apis::DataformV1beta1::Target>]
         attr_accessor :included_targets
       
+        # Optional. The service account to run workflow invocations under.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
         # Optional. When set to true, transitive dependencies of included actions will
         # be executed.
         # Corresponds to the JSON property `transitiveDependenciesIncluded`
@@ -915,6 +920,7 @@ module Google
           @fully_refresh_incremental_tables_enabled = args[:fully_refresh_incremental_tables_enabled] if args.key?(:fully_refresh_incremental_tables_enabled)
           @included_tags = args[:included_tags] if args.key?(:included_tags)
           @included_targets = args[:included_targets] if args.key?(:included_targets)
+          @service_account = args[:service_account] if args.key?(:service_account)
           @transitive_dependencies_included = args[:transitive_dependencies_included] if args.key?(:transitive_dependencies_included)
           @transitive_dependents_included = args[:transitive_dependents_included] if args.key?(:transitive_dependents_included)
         end
@@ -1903,6 +1909,11 @@ module Google
         # @return [String]
         attr_accessor :npmrc_environment_variables_secret_version
       
+        # Optional. The service account to run workflow invocations under.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
         # Configures workspace compilation overrides for a repository. Primarily used by
         # the UI (`console.cloud.google.com`). `schema_suffix` and `table_prefix` can
         # have a special expression - `$`workspaceName``, which refers to the workspace
@@ -1924,6 +1935,7 @@ module Google
           @git_remote_settings = args[:git_remote_settings] if args.key?(:git_remote_settings)
           @name = args[:name] if args.key?(:name)
           @npmrc_environment_variables_secret_version = args[:npmrc_environment_variables_secret_version] if args.key?(:npmrc_environment_variables_secret_version)
+          @service_account = args[:service_account] if args.key?(:service_account)
           @workspace_compilation_overrides = args[:workspace_compilation_overrides] if args.key?(:workspace_compilation_overrides)
         end
       end
