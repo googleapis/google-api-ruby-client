@@ -1297,6 +1297,8 @@ module Google
           collection :allowed_non_alphanumeric_characters, as: 'allowedNonAlphanumericCharacters'
           property :custom_strength_options, as: 'customStrengthOptions', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2CustomStrengthOptions, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2CustomStrengthOptions::Representation
       
+          property :enforcement_state, as: 'enforcementState'
+          property :force_upgrade_on_signin, as: 'forceUpgradeOnSignin'
           property :schema_version, as: 'schemaVersion'
         end
       end
