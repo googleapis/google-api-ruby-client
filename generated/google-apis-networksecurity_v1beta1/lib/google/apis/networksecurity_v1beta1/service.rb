@@ -408,6 +408,223 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new FirewallEndpoint in a given project and location.
+        # @param [String] parent
+        #   Required. Value for parent.
+        # @param [Google::Apis::NetworksecurityV1beta1::FirewallEndpoint] firewall_endpoint_object
+        # @param [String] firewall_endpoint_id
+        #   Required. Id of the requesting object. If auto-generating Id server-side,
+        #   remove this field and firewall_endpoint_id from the method_signature of Create
+        #   RPC.
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore the request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes since the first request. For example, consider a
+        #   situation where you make an initial request and the request times out. If you
+        #   make the request again with the same request ID, the server can check if
+        #   original operation with the same request ID was received, and if so, will
+        #   ignore the second request. This prevents clients from accidentally creating
+        #   duplicate commitments. The request ID must be a valid UUID with the exception
+        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworksecurityV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworksecurityV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_location_firewall_endpoint(parent, firewall_endpoint_object = nil, firewall_endpoint_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/firewallEndpoints', options)
+          command.request_representation = Google::Apis::NetworksecurityV1beta1::FirewallEndpoint::Representation
+          command.request_object = firewall_endpoint_object
+          command.response_representation = Google::Apis::NetworksecurityV1beta1::Operation::Representation
+          command.response_class = Google::Apis::NetworksecurityV1beta1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['firewallEndpointId'] = firewall_endpoint_id unless firewall_endpoint_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a single Endpoint.
+        # @param [String] name
+        #   Required. Name of the resource
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore the request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes after the first request. For example, consider a
+        #   situation where you make an initial request and the request times out. If you
+        #   make the request again with the same request ID, the server can check if
+        #   original operation with the same request ID was received, and if so, will
+        #   ignore the second request. This prevents clients from accidentally creating
+        #   duplicate commitments. The request ID must be a valid UUID with the exception
+        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworksecurityV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworksecurityV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_organization_location_firewall_endpoint(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::NetworksecurityV1beta1::Operation::Representation
+          command.response_class = Google::Apis::NetworksecurityV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single Endpoint.
+        # @param [String] name
+        #   Required. Name of the resource
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworksecurityV1beta1::FirewallEndpoint] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworksecurityV1beta1::FirewallEndpoint]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_location_firewall_endpoint(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::NetworksecurityV1beta1::FirewallEndpoint::Representation
+          command.response_class = Google::Apis::NetworksecurityV1beta1::FirewallEndpoint
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists FirewallEndpoints in a given project and location.
+        # @param [String] parent
+        #   Required. Parent value for ListEndpointsRequest
+        # @param [String] filter
+        #   Filtering results
+        # @param [String] order_by
+        #   Hint for how to order the results
+        # @param [Fixnum] page_size
+        #   Requested page size. Server may return fewer items than requested. If
+        #   unspecified, server will pick an appropriate default.
+        # @param [String] page_token
+        #   A token identifying a page of results the server should return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworksecurityV1beta1::ListFirewallEndpointsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworksecurityV1beta1::ListFirewallEndpointsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_location_firewall_endpoints(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/firewallEndpoints', options)
+          command.response_representation = Google::Apis::NetworksecurityV1beta1::ListFirewallEndpointsResponse::Representation
+          command.response_class = Google::Apis::NetworksecurityV1beta1::ListFirewallEndpointsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update a single Endpoint.
+        # @param [String] name
+        #   Output only. name of resource
+        # @param [Google::Apis::NetworksecurityV1beta1::FirewallEndpoint] firewall_endpoint_object
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore the request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes since the first request. For example, consider a
+        #   situation where you make an initial request and the request times out. If you
+        #   make the request again with the same request ID, the server can check if
+        #   original operation with the same request ID was received, and if so, will
+        #   ignore the second request. This prevents clients from accidentally creating
+        #   duplicate commitments. The request ID must be a valid UUID with the exception
+        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] update_mask
+        #   Required. Field mask is used to specify the fields to be overwritten in the
+        #   Endpoint resource by the update. The fields specified in the update_mask are
+        #   relative to the resource, not the full request. A field will be overwritten if
+        #   it is in the mask. If the user does not provide a mask then all fields will be
+        #   overwritten.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworksecurityV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworksecurityV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_organization_location_firewall_endpoint(name, firewall_endpoint_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command.request_representation = Google::Apis::NetworksecurityV1beta1::FirewallEndpoint::Representation
+          command.request_object = firewall_endpoint_object
+          command.response_representation = Google::Apis::NetworksecurityV1beta1::Operation::Representation
+          command.response_class = Google::Apis::NetworksecurityV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Starts asynchronous cancellation on a long-running operation. The server makes
         # a best effort to cancel the operation, but success is not guaranteed. If the
         # server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
@@ -1705,6 +1922,223 @@ module Google
           command.response_representation = Google::Apis::NetworksecurityV1beta1::GoogleIamV1TestIamPermissionsResponse::Representation
           command.response_class = Google::Apis::NetworksecurityV1beta1::GoogleIamV1TestIamPermissionsResponse
           command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new FirewallEndpointAssociation in a given project and location.
+        # @param [String] parent
+        #   Required. Value for parent.
+        # @param [Google::Apis::NetworksecurityV1beta1::FirewallEndpointAssociation] firewall_endpoint_association_object
+        # @param [String] firewall_endpoint_association_id
+        #   Required. Id of the requesting object. If auto-generating Id server-side,
+        #   remove this field and firewall_endpoint_association_id from the
+        #   method_signature of Create RPC.
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore the request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes since the first request. For example, consider a
+        #   situation where you make an initial request and the request times out. If you
+        #   make the request again with the same request ID, the server can check if
+        #   original operation with the same request ID was received, and if so, will
+        #   ignore the second request. This prevents clients from accidentally creating
+        #   duplicate commitments. The request ID must be a valid UUID with the exception
+        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworksecurityV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworksecurityV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_firewall_endpoint_association(parent, firewall_endpoint_association_object = nil, firewall_endpoint_association_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/firewallEndpointAssociations', options)
+          command.request_representation = Google::Apis::NetworksecurityV1beta1::FirewallEndpointAssociation::Representation
+          command.request_object = firewall_endpoint_association_object
+          command.response_representation = Google::Apis::NetworksecurityV1beta1::Operation::Representation
+          command.response_class = Google::Apis::NetworksecurityV1beta1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['firewallEndpointAssociationId'] = firewall_endpoint_association_id unless firewall_endpoint_association_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a single FirewallEndpointAssociation.
+        # @param [String] name
+        #   Required. Name of the resource
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore the request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes after the first request. For example, consider a
+        #   situation where you make an initial request and the request times out. If you
+        #   make the request again with the same request ID, the server can check if
+        #   original operation with the same request ID was received, and if so, will
+        #   ignore the second request. This prevents clients from accidentally creating
+        #   duplicate commitments. The request ID must be a valid UUID with the exception
+        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworksecurityV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworksecurityV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_firewall_endpoint_association(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::NetworksecurityV1beta1::Operation::Representation
+          command.response_class = Google::Apis::NetworksecurityV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single FirewallEndpointAssociation.
+        # @param [String] name
+        #   Required. Name of the resource
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworksecurityV1beta1::FirewallEndpointAssociation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworksecurityV1beta1::FirewallEndpointAssociation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_firewall_endpoint_association(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::NetworksecurityV1beta1::FirewallEndpointAssociation::Representation
+          command.response_class = Google::Apis::NetworksecurityV1beta1::FirewallEndpointAssociation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists Associations in a given project and location.
+        # @param [String] parent
+        #   Required. Parent value for ListAssociationsRequest
+        # @param [String] filter
+        #   Filtering results
+        # @param [String] order_by
+        #   Hint for how to order the results
+        # @param [Fixnum] page_size
+        #   Requested page size. Server may return fewer items than requested. If
+        #   unspecified, server will pick an appropriate default.
+        # @param [String] page_token
+        #   A token identifying a page of results the server should return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworksecurityV1beta1::ListFirewallEndpointAssociationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworksecurityV1beta1::ListFirewallEndpointAssociationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_firewall_endpoint_associations(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/firewallEndpointAssociations', options)
+          command.response_representation = Google::Apis::NetworksecurityV1beta1::ListFirewallEndpointAssociationsResponse::Representation
+          command.response_class = Google::Apis::NetworksecurityV1beta1::ListFirewallEndpointAssociationsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update a single FirewallEndpointAssociation.
+        # @param [String] name
+        #   Output only. name of resource
+        # @param [Google::Apis::NetworksecurityV1beta1::FirewallEndpointAssociation] firewall_endpoint_association_object
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore the request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes since the first request. For example, consider a
+        #   situation where you make an initial request and the request times out. If you
+        #   make the request again with the same request ID, the server can check if
+        #   original operation with the same request ID was received, and if so, will
+        #   ignore the second request. This prevents clients from accidentally creating
+        #   duplicate commitments. The request ID must be a valid UUID with the exception
+        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] update_mask
+        #   Required. Field mask is used to specify the fields to be overwritten in the
+        #   Association resource by the update. The fields specified in the update_mask
+        #   are relative to the resource, not the full request. A field will be
+        #   overwritten if it is in the mask. If the user does not provide a mask then all
+        #   fields will be overwritten.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworksecurityV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworksecurityV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_firewall_endpoint_association(name, firewall_endpoint_association_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command.request_representation = Google::Apis::NetworksecurityV1beta1::FirewallEndpointAssociation::Representation
+          command.request_object = firewall_endpoint_association_object
+          command.response_representation = Google::Apis::NetworksecurityV1beta1::Operation::Representation
+          command.response_class = Google::Apis::NetworksecurityV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
