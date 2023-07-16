@@ -461,8 +461,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Asset performance data samples. Samples that are older than 40 days are
-        # ignored.
+        # Asset performance data samples. Samples that are from more than 40 days ago or
+        # after tomorrow are ignored.
         # Corresponds to the JSON property `performanceSamples`
         # @return [Array<Google::Apis::MigrationcenterV1alpha1::PerformanceSample>]
         attr_accessor :performance_samples
@@ -3228,7 +3228,7 @@ module Google
         # @return [Google::Apis::MigrationcenterV1alpha1::NetworkUsageSample]
         attr_accessor :network
       
-        # Required. Time the sample was collected.
+        # Time the sample was collected.
         # Corresponds to the JSON property `sampleTime`
         # @return [String]
         attr_accessor :sample_time
