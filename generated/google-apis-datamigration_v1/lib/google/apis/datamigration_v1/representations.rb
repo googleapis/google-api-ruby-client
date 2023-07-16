@@ -1895,6 +1895,7 @@ module Google
       class StartMigrationJobRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :skip_validation, as: 'skipValidation'
         end
       end
       
