@@ -1183,6 +1183,7 @@ module Google
           property :create_time, as: 'createTime'
           property :delete_time, as: 'deleteTime'
           property :display_name, as: 'displayName'
+          hash :labels, as: 'labels'
           property :name, as: 'name'
           property :state, as: 'state', class: Google::Apis::GkehubV1beta::FleetLifecycleState, decorator: Google::Apis::GkehubV1beta::FleetLifecycleState::Representation
       
@@ -1318,6 +1319,7 @@ module Google
           property :encrypted_client_secret, :base64 => true, as: 'encryptedClientSecret'
           property :kubectl_redirect_uri, as: 'kubectlRedirectUri'
           property :tenant, as: 'tenant'
+          property :user_claim, as: 'userClaim'
         end
       end
       
@@ -1465,6 +1467,7 @@ module Google
           property :create_time, as: 'createTime'
           property :delete_time, as: 'deleteTime'
           property :fleet, as: 'fleet'
+          hash :labels, as: 'labels'
           property :name, as: 'name'
           property :scope, as: 'scope'
           property :state, as: 'state', class: Google::Apis::GkehubV1beta::MembershipBindingLifecycleState, decorator: Google::Apis::GkehubV1beta::MembershipBindingLifecycleState::Representation
@@ -1554,6 +1557,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :delete_time, as: 'deleteTime'
+          hash :labels, as: 'labels'
           property :name, as: 'name'
           property :scope, as: 'scope'
           property :state, as: 'state', class: Google::Apis::GkehubV1beta::NamespaceLifecycleState, decorator: Google::Apis::GkehubV1beta::NamespaceLifecycleState::Representation
@@ -1751,6 +1755,7 @@ module Google
           property :create_time, as: 'createTime'
           property :delete_time, as: 'deleteTime'
           property :group, as: 'group'
+          hash :labels, as: 'labels'
           property :name, as: 'name'
           property :role, as: 'role', class: Google::Apis::GkehubV1beta::Role, decorator: Google::Apis::GkehubV1beta::Role::Representation
       
@@ -1782,6 +1787,7 @@ module Google
           property :all_memberships, as: 'allMemberships'
           property :create_time, as: 'createTime'
           property :delete_time, as: 'deleteTime'
+          hash :labels, as: 'labels'
           property :name, as: 'name'
           property :state, as: 'state', class: Google::Apis::GkehubV1beta::ScopeLifecycleState, decorator: Google::Apis::GkehubV1beta::ScopeLifecycleState::Representation
       
