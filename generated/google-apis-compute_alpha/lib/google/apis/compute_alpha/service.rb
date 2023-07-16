@@ -25715,6 +25715,56 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Sets the Cloud Armor Managed Protection (CAMP) tier of the project. To set
+        # PLUS or above the billing account of the project must be subscribed to Managed
+        # Protection Plus. See Subscribing to Managed Protection Plus for more
+        # information.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [Google::Apis::ComputeAlpha::ProjectsSetManagedProtectionTierRequest] projects_set_managed_protection_tier_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, will ignore the
+        #   second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_project_managed_protection_tier(project, projects_set_managed_protection_tier_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/setManagedProtectionTier', options)
+          command.request_representation = Google::Apis::ComputeAlpha::ProjectsSetManagedProtectionTierRequest::Representation
+          command.request_object = projects_set_managed_protection_tier_request_object
+          command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
+          command.response_class = Google::Apis::ComputeAlpha::Operation
+          command.params['project'] = project unless project.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Enables the usage export feature and sets the usage export bucket where
         # reports are stored. If you provide an empty request body using this method,
         # the usage export feature will be disabled.
@@ -35084,9 +35134,9 @@ module Google
         end
         
         # Patches the specified policy with the data included in the request. To clear
-        # fields in the rule, leave the fields empty and specify them in the updateMask.
-        # This cannot be used to be update the rules in the policy. Please use the per
-        # rule methods like addRule, patchRule, and removeRule instead.
+        # fields in the policy, leave the fields empty and specify them in the
+        # updateMask. This cannot be used to be update the rules in the policy. Please
+        # use the per rule methods like addRule, patchRule, and removeRule instead.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -40176,9 +40226,9 @@ module Google
         end
         
         # Patches the specified policy with the data included in the request. To clear
-        # fields in the rule, leave the fields empty and specify them in the updateMask.
-        # This cannot be used to be update the rules in the policy. Please use the per
-        # rule methods like addRule, patchRule, and removeRule instead.
+        # fields in the policy, leave the fields empty and specify them in the
+        # updateMask. This cannot be used to be update the rules in the policy. Please
+        # use the per rule methods like addRule, patchRule, and removeRule instead.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] security_policy
@@ -40233,7 +40283,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Patches a rule at the specified priority.
+        # Patches a rule at the specified priority. To clear fields in the rule, leave
+        # the fields empty and specify them in the updateMask.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] security_policy
