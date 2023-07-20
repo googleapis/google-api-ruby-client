@@ -1,5 +1,11 @@
 # Release History
 
+### 0.11.1 (2023-07-20)
+
+#### Documentation
+
+* Document send_timeout_sec and fix up some types ([#14907](https://github.com/googleapis/google-api-ruby-client/issues/14907)) 
+
 ### 0.11.0 (2023-02-08)
 
 #### Features
