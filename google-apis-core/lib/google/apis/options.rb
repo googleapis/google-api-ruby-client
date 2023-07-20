@@ -54,9 +54,11 @@ module Google
       # @!attribute [rw] log_http_requests
       #   @return [Boolean] True if raw HTTP requests should be logged
       # @!attribute [rw] open_timeout_sec
-      #   @return [Fixnum] How long, in seconds, before failed connections time out
+      #   @return [Integer] How long, in seconds, before failed connections time out
+      # @!attribute [rw] send_timeout_sec
+      #   @return [Integer] How long, in seconds, before sending data times out
       # @!attribute [rw] read_timeout_sec
-      #   @return [Fixnum] How long, in seconds, before requests time out
+      #   @return [Integer] How long, in seconds, before receiving data times out
       # @!attribute [rw] transparent_gzip_decompression
       # @return [Boolean] True if gzip compression needs to be enabled
       # Get the default options
@@ -71,15 +73,15 @@ module Google
       # @!attribute [rw] authorization
       #   @return [Signet::OAuth2::Client, #apply(Hash)] OAuth2 credentials.
       # @!attribute [rw] retries
-      #   @return [Fixnum] Number of times to retry requests on server error.
+      #   @return [Integer] Number of times to retry requests on server error.
       # @!attribute [rw] max_elapsed_time
-      #   @return [Fixnum] Total time in seconds that requests are allowed to keep being retried.
+      #   @return [Integer] Total time in seconds that requests are allowed to keep being retried.
       # @!attribute [rw] base_interval
       #   @return [Float] The initial interval in seconds between tries.
       # @!attribute [rw] max_interval
-      #   @return [Fixnum] The maximum interval in seconds that any individual retry can reach.
+      #   @return [Integer] The maximum interval in seconds that any individual retry can reach.
       # @!attribute [rw] multiplier
-      #   @return [rw] Each successive interval grows by this factor. A multipler of 1.5 means the next interval 
+      #   @return [Numeric] Each successive interval grows by this factor. A multipler of 1.5 means the next interval 
       #              will be 1.5x the current interval.
       # @!attribute [rw] header
       #   @return [Hash<String,String>] Additional HTTP headers to include in requests.
@@ -90,7 +92,7 @@ module Google
       # @!attribute [rw] skip_deserialization
       #   @return [Boolean] True if response should be returned in raw form instead of deserialized.
       # @!attribute [rw] api_format_version
-      #   @return [Fixnum] Version of the error format to request/expect.
+      #   @return [Integer] Version of the error format to request/expect.
       # @!attribute [rw] use_opencensus
       #   @return [Boolean] Whether OpenCensus spans should be generated for requests. Default is true.
       # @!attribute [rw] quota_project
