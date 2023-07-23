@@ -670,6 +670,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VmwareAdminHaControlPlaneConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VmwareAdminLoadBalancerConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -689,6 +695,12 @@ module Google
       end
       
       class VmwareAdminNetworkConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VmwareAdminSeesawConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1938,6 +1950,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cpus, :numeric_string => true, as: 'cpus'
           property :memory, :numeric_string => true, as: 'memory'
+          property :replicas, :numeric_string => true, as: 'replicas'
         end
       end
       
@@ -1950,6 +1963,14 @@ module Google
         end
       end
       
+      class VmwareAdminHaControlPlaneConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :control_plane_ip_block, as: 'controlPlaneIpBlock', class: Google::Apis::GkeonpremV1::VmwareIpBlock, decorator: Google::Apis::GkeonpremV1::VmwareIpBlock::Representation
+      
+        end
+      end
+      
       class VmwareAdminLoadBalancerConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1958,6 +1979,8 @@ module Google
           property :manual_lb_config, as: 'manualLbConfig', class: Google::Apis::GkeonpremV1::VmwareAdminManualLbConfig, decorator: Google::Apis::GkeonpremV1::VmwareAdminManualLbConfig::Representation
       
           property :metal_lb_config, as: 'metalLbConfig', class: Google::Apis::GkeonpremV1::VmwareAdminMetalLbConfig, decorator: Google::Apis::GkeonpremV1::VmwareAdminMetalLbConfig::Representation
+      
+          property :seesaw_config, as: 'seesawConfig', class: Google::Apis::GkeonpremV1::VmwareAdminSeesawConfig, decorator: Google::Apis::GkeonpremV1::VmwareAdminSeesawConfig::Representation
       
           property :vip_config, as: 'vipConfig', class: Google::Apis::GkeonpremV1::VmwareAdminVipConfig, decorator: Google::Apis::GkeonpremV1::VmwareAdminVipConfig::Representation
       
@@ -1986,6 +2009,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dhcp_ip_config, as: 'dhcpIpConfig', class: Google::Apis::GkeonpremV1::VmwareDhcpIpConfig, decorator: Google::Apis::GkeonpremV1::VmwareDhcpIpConfig::Representation
       
+          property :ha_control_plane_config, as: 'haControlPlaneConfig', class: Google::Apis::GkeonpremV1::VmwareAdminHaControlPlaneConfig, decorator: Google::Apis::GkeonpremV1::VmwareAdminHaControlPlaneConfig::Representation
+      
           property :host_config, as: 'hostConfig', class: Google::Apis::GkeonpremV1::VmwareHostConfig, decorator: Google::Apis::GkeonpremV1::VmwareHostConfig::Representation
       
           collection :pod_address_cidr_blocks, as: 'podAddressCidrBlocks'
@@ -1993,6 +2018,18 @@ module Google
           property :static_ip_config, as: 'staticIpConfig', class: Google::Apis::GkeonpremV1::VmwareStaticIpConfig, decorator: Google::Apis::GkeonpremV1::VmwareStaticIpConfig::Representation
       
           property :vcenter_network, as: 'vcenterNetwork'
+        end
+      end
+      
+      class VmwareAdminSeesawConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_ha, as: 'enableHa'
+          property :group, as: 'group'
+          collection :ip_blocks, as: 'ipBlocks', class: Google::Apis::GkeonpremV1::VmwareIpBlock, decorator: Google::Apis::GkeonpremV1::VmwareIpBlock::Representation
+      
+          property :master_ip, as: 'masterIp'
+          collection :vms, as: 'vms'
         end
       end
       

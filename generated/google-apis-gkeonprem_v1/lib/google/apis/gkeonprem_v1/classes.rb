@@ -1833,8 +1833,7 @@ module Google
       class BareMetalParallelUpgradeConfig
         include Google::Apis::Core::Hashable
       
-        # Required. The maximum number of nodes that can be upgraded at once. Defaults
-        # to 1.
+        # The maximum number of nodes that can be upgraded at once.
         # Corresponds to the JSON property `concurrentNodes`
         # @return [Fixnum]
         attr_accessor :concurrent_nodes
@@ -3782,6 +3781,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :memory
       
+        # The number of control plane nodes for this VMware admin cluster. (default: 1
+        # replica).
+        # Corresponds to the JSON property `replicas`
+        # @return [Fixnum]
+        attr_accessor :replicas
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3790,6 +3795,7 @@ module Google
         def update!(**args)
           @cpus = args[:cpus] if args.key?(:cpus)
           @memory = args[:memory] if args.key?(:memory)
+          @replicas = args[:replicas] if args.key?(:replicas)
         end
       end
       
@@ -3826,6 +3832,25 @@ module Google
         end
       end
       
+      # Specifies HA admin control plane config.
+      class VmwareAdminHaControlPlaneConfig
+        include Google::Apis::Core::Hashable
+      
+        # Represents a collection of IP addresses to assign to nodes.
+        # Corresponds to the JSON property `controlPlaneIpBlock`
+        # @return [Google::Apis::GkeonpremV1::VmwareIpBlock]
+        attr_accessor :control_plane_ip_block
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @control_plane_ip_block = args[:control_plane_ip_block] if args.key?(:control_plane_ip_block)
+        end
+      end
+      
       # VmwareAdminLoadBalancerConfig contains load balancer configuration for VMware
       # admin cluster.
       class VmwareAdminLoadBalancerConfig
@@ -3848,6 +3873,26 @@ module Google
         # @return [Google::Apis::GkeonpremV1::VmwareAdminMetalLbConfig]
         attr_accessor :metal_lb_config
       
+        # VmwareSeesawConfig represents configuration parameters for an already existing
+        # Seesaw load balancer. IMPORTANT: Please note that the Anthos On-Prem API will
+        # not generate or update Seesaw configurations it can only bind a pre-existing
+        # configuration to a new user cluster. IMPORTANT: When attempting to create a
+        # user cluster with a pre-existing Seesaw load balancer you will need to follow
+        # some preparation steps before calling the 'CreateVmwareCluster' API method.
+        # First you will need to create the user cluster's namespace via kubectl. The
+        # namespace will need to use the following naming convention : -gke-onprem-mgmt
+        # or -gke-onprem-mgmt depending on whether you used the 'VmwareCluster.
+        # local_name' to disambiguate collisions; for more context see the documentation
+        # of 'VmwareCluster.local_name'. Once the namespace is created you will need to
+        # create a secret resource via kubectl. This secret will contain copies of your
+        # Seesaw credentials. The Secret must be called 'user-cluster-creds' and contain
+        # Seesaw's SSH and Cert credentials. The credentials must be keyed with the
+        # following names: 'seesaw-ssh-private-key', 'seesaw-ssh-public-key', 'seesaw-
+        # ssh-ca-key', 'seesaw-ssh-ca-cert'.
+        # Corresponds to the JSON property `seesawConfig`
+        # @return [Google::Apis::GkeonpremV1::VmwareAdminSeesawConfig]
+        attr_accessor :seesaw_config
+      
         # VmwareAdminVipConfig for VMware load balancer configurations.
         # Corresponds to the JSON property `vipConfig`
         # @return [Google::Apis::GkeonpremV1::VmwareAdminVipConfig]
@@ -3862,6 +3907,7 @@ module Google
           @f5_config = args[:f5_config] if args.key?(:f5_config)
           @manual_lb_config = args[:manual_lb_config] if args.key?(:manual_lb_config)
           @metal_lb_config = args[:metal_lb_config] if args.key?(:metal_lb_config)
+          @seesaw_config = args[:seesaw_config] if args.key?(:seesaw_config)
           @vip_config = args[:vip_config] if args.key?(:vip_config)
         end
       end
@@ -3938,6 +3984,11 @@ module Google
         # @return [Google::Apis::GkeonpremV1::VmwareDhcpIpConfig]
         attr_accessor :dhcp_ip_config
       
+        # Specifies HA admin control plane config.
+        # Corresponds to the JSON property `haControlPlaneConfig`
+        # @return [Google::Apis::GkeonpremV1::VmwareAdminHaControlPlaneConfig]
+        attr_accessor :ha_control_plane_config
+      
         # Represents the common parameters for all the hosts irrespective of their IP
         # address.
         # Corresponds to the JSON property `hostConfig`
@@ -3976,11 +4027,73 @@ module Google
         # Update properties of this object
         def update!(**args)
           @dhcp_ip_config = args[:dhcp_ip_config] if args.key?(:dhcp_ip_config)
+          @ha_control_plane_config = args[:ha_control_plane_config] if args.key?(:ha_control_plane_config)
           @host_config = args[:host_config] if args.key?(:host_config)
           @pod_address_cidr_blocks = args[:pod_address_cidr_blocks] if args.key?(:pod_address_cidr_blocks)
           @service_address_cidr_blocks = args[:service_address_cidr_blocks] if args.key?(:service_address_cidr_blocks)
           @static_ip_config = args[:static_ip_config] if args.key?(:static_ip_config)
           @vcenter_network = args[:vcenter_network] if args.key?(:vcenter_network)
+        end
+      end
+      
+      # VmwareSeesawConfig represents configuration parameters for an already existing
+      # Seesaw load balancer. IMPORTANT: Please note that the Anthos On-Prem API will
+      # not generate or update Seesaw configurations it can only bind a pre-existing
+      # configuration to a new user cluster. IMPORTANT: When attempting to create a
+      # user cluster with a pre-existing Seesaw load balancer you will need to follow
+      # some preparation steps before calling the 'CreateVmwareCluster' API method.
+      # First you will need to create the user cluster's namespace via kubectl. The
+      # namespace will need to use the following naming convention : -gke-onprem-mgmt
+      # or -gke-onprem-mgmt depending on whether you used the 'VmwareCluster.
+      # local_name' to disambiguate collisions; for more context see the documentation
+      # of 'VmwareCluster.local_name'. Once the namespace is created you will need to
+      # create a secret resource via kubectl. This secret will contain copies of your
+      # Seesaw credentials. The Secret must be called 'user-cluster-creds' and contain
+      # Seesaw's SSH and Cert credentials. The credentials must be keyed with the
+      # following names: 'seesaw-ssh-private-key', 'seesaw-ssh-public-key', 'seesaw-
+      # ssh-ca-key', 'seesaw-ssh-ca-cert'.
+      class VmwareAdminSeesawConfig
+        include Google::Apis::Core::Hashable
+      
+        # Enable two load balancer VMs to achieve a highly-available Seesaw load
+        # balancer.
+        # Corresponds to the JSON property `enableHa`
+        # @return [Boolean]
+        attr_accessor :enable_ha
+        alias_method :enable_ha?, :enable_ha
+      
+        # In general the following format should be used for the Seesaw group name:
+        # seesaw-for-[cluster_name].
+        # Corresponds to the JSON property `group`
+        # @return [String]
+        attr_accessor :group
+      
+        # The IP Blocks to be used by the Seesaw load balancer
+        # Corresponds to the JSON property `ipBlocks`
+        # @return [Array<Google::Apis::GkeonpremV1::VmwareIpBlock>]
+        attr_accessor :ip_blocks
+      
+        # MasterIP is the IP announced by the master of Seesaw group.
+        # Corresponds to the JSON property `masterIp`
+        # @return [String]
+        attr_accessor :master_ip
+      
+        # Names of the VMs created for this Seesaw group.
+        # Corresponds to the JSON property `vms`
+        # @return [Array<String>]
+        attr_accessor :vms
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_ha = args[:enable_ha] if args.key?(:enable_ha)
+          @group = args[:group] if args.key?(:group)
+          @ip_blocks = args[:ip_blocks] if args.key?(:ip_blocks)
+          @master_ip = args[:master_ip] if args.key?(:master_ip)
+          @vms = args[:vms] if args.key?(:vms)
         end
       end
       
