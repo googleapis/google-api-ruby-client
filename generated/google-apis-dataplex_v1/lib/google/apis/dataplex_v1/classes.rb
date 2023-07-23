@@ -2225,9 +2225,14 @@ module Google
       end
       
       # These messages contain information about the execution of a datascan. The
-      # monitored resource is 'DataScan'
+      # monitored resource is 'DataScan' Next ID: 13
       class GoogleCloudDataplexV1DataScanEvent
         include Google::Apis::Core::Hashable
+      
+        # The time when the data scan job was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
       
         # Data profile result for data scan job.
         # Corresponds to the JSON property `dataProfile`
@@ -2310,6 +2315,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
           @data_profile = args[:data_profile] if args.key?(:data_profile)
           @data_profile_configs = args[:data_profile_configs] if args.key?(:data_profile_configs)
           @data_quality = args[:data_quality] if args.key?(:data_quality)
