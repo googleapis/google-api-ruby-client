@@ -916,6 +916,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiV1RawDocuments
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiV1ReviewDocumentOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2419,6 +2425,8 @@ module Google
       
           property :gcs_prefix, as: 'gcsPrefix', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1GcsPrefix, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1GcsPrefix::Representation
       
+          property :raw_documents, as: 'rawDocuments', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1RawDocuments, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1RawDocuments::Representation
+      
         end
       end
       
@@ -3419,6 +3427,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :content, :base64 => true, as: 'content'
           property :mime_type, as: 'mimeType'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1RawDocuments
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :documents, as: 'documents', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1RawDocument, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1RawDocument::Representation
+      
         end
       end
       
