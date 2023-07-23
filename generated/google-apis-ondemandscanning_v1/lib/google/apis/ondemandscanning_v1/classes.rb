@@ -3513,7 +3513,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking
-        # number for the vulnerability.
+        # number for the vulnerability. Deprecated: Use vulnerability_id instead to
+        # denote CVEs.
         # Corresponds to the JSON property `cve`
         # @return [String]
         attr_accessor :cve
@@ -3552,6 +3553,12 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # The vulnerability identifier for this Assessment. Will hold one of common
+        # identifiers e.g. CVE, GHSA etc.
+        # Corresponds to the JSON property `vulnerabilityId`
+        # @return [String]
+        attr_accessor :vulnerability_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3565,6 +3572,7 @@ module Google
           @related_uris = args[:related_uris] if args.key?(:related_uris)
           @remediations = args[:remediations] if args.key?(:remediations)
           @state = args[:state] if args.key?(:state)
+          @vulnerability_id = args[:vulnerability_id] if args.key?(:vulnerability_id)
         end
       end
       
