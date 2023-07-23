@@ -34,13 +34,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CancelOperationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Date
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LastUpdatedDate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListOperationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -70,7 +88,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PrivacyPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WaitOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -99,12 +129,24 @@ module Google
         end
       end
       
+      class CancelOperationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class Date
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :day, as: 'day'
           property :month, as: 'month'
           property :year, as: 'year'
+        end
+      end
+      
+      class Empty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -116,6 +158,15 @@ module Google
       
           property :start_offset, :numeric_string => true, as: 'startOffset'
           property :text_content, as: 'textContent'
+        end
+      end
+      
+      class ListOperationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :operations, as: 'operations', class: Google::Apis::ChecksV1alpha::Operation, decorator: Google::Apis::ChecksV1alpha::Operation::Representation
+      
         end
       end
       
@@ -164,12 +215,30 @@ module Google
         end
       end
       
+      class PrivacyPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :html_content, as: 'htmlContent'
+          property :name, as: 'name'
+          property :privacy_policy_uri, as: 'privacyPolicyUri'
+          property :score, as: 'score'
+          property :website_uri, as: 'websiteUri'
+        end
+      end
+      
       class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class WaitOperationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :timeout, as: 'timeout'
         end
       end
     end
