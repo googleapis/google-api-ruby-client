@@ -1176,6 +1176,11 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Output only. The initiator of the QueuedResources's current state.
+        # Corresponds to the JSON property `stateInitiator`
+        # @return [String]
+        attr_accessor :state_initiator
+      
         # Further data for the suspended state.
         # Corresponds to the JSON property `suspendedData`
         # @return [Google::Apis::TpuV2alpha1::SuspendedData]
@@ -1199,6 +1204,7 @@ module Google
           @failed_data = args[:failed_data] if args.key?(:failed_data)
           @provisioning_data = args[:provisioning_data] if args.key?(:provisioning_data)
           @state = args[:state] if args.key?(:state)
+          @state_initiator = args[:state_initiator] if args.key?(:state_initiator)
           @suspended_data = args[:suspended_data] if args.key?(:suspended_data)
           @suspending_data = args[:suspending_data] if args.key?(:suspending_data)
         end
