@@ -1054,6 +1054,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TransformColumn
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UserDefinedFunctionResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2408,6 +2414,8 @@ module Google
       
           collection :training_runs, as: 'trainingRuns', class: Google::Apis::BigqueryV2::TrainingRun, decorator: Google::Apis::BigqueryV2::TrainingRun::Representation
       
+          collection :transform_columns, as: 'transformColumns', class: Google::Apis::BigqueryV2::TransformColumn, decorator: Google::Apis::BigqueryV2::TransformColumn::Representation
+      
         end
       end
       
@@ -3302,6 +3310,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :transaction_id, as: 'transactionId'
+        end
+      end
+      
+      class TransformColumn
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :transform_sql, as: 'transformSql'
+          property :type, as: 'type', class: Google::Apis::BigqueryV2::StandardSqlDataType, decorator: Google::Apis::BigqueryV2::StandardSqlDataType::Representation
+      
         end
       end
       
