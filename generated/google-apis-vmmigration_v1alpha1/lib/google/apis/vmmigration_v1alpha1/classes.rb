@@ -522,6 +522,12 @@ module Google
       class CloneJob
         include Google::Apis::Core::Hashable
       
+        # ComputeEngineDisksTargetDetails is a collection of created Persistent Disks
+        # details.
+        # Corresponds to the JSON property `computeEngineDisksTargetDetails`
+        # @return [Google::Apis::VmmigrationV1alpha1::ComputeEngineDisksTargetDetails]
+        attr_accessor :compute_engine_disks_target_details
+      
         # ComputeEngineTargetDetails is a collection of details for creating a VM in a
         # target Compute Engine project.
         # Corresponds to the JSON property `computeEngineTargetDetails`
@@ -587,6 +593,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @compute_engine_disks_target_details = args[:compute_engine_disks_target_details] if args.key?(:compute_engine_disks_target_details)
           @compute_engine_target_details = args[:compute_engine_target_details] if args.key?(:compute_engine_target_details)
           @compute_engine_vm_details = args[:compute_engine_vm_details] if args.key?(:compute_engine_vm_details)
           @create_time = args[:create_time] if args.key?(:create_time)
@@ -640,6 +647,59 @@ module Google
           @instantiating_migrated_vm = args[:instantiating_migrated_vm] if args.key?(:instantiating_migrated_vm)
           @preparing_vm_disks = args[:preparing_vm_disks] if args.key?(:preparing_vm_disks)
           @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # ComputeEngineDisksTargetDefaults is a collection of details for creating
+      # Persistent Disks in a target Compute Engine project.
+      class ComputeEngineDisksTargetDefaults
+        include Google::Apis::Core::Hashable
+      
+        # The details of each Persistent Disk to create.
+        # Corresponds to the JSON property `disks`
+        # @return [Array<Google::Apis::VmmigrationV1alpha1::PersistentDiskDefaults>]
+        attr_accessor :disks
+      
+        # The full path of the resource of type TargetProject which represents the
+        # Compute Engine project in which to create the Persistent Disks.
+        # Corresponds to the JSON property `targetProject`
+        # @return [String]
+        attr_accessor :target_project
+      
+        # The zone in which to create the Persistent Disks.
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disks = args[:disks] if args.key?(:disks)
+          @target_project = args[:target_project] if args.key?(:target_project)
+          @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # ComputeEngineDisksTargetDetails is a collection of created Persistent Disks
+      # details.
+      class ComputeEngineDisksTargetDetails
+        include Google::Apis::Core::Hashable
+      
+        # The details of each created Persistent Disk.
+        # Corresponds to the JSON property `disks`
+        # @return [Array<Google::Apis::VmmigrationV1alpha1::PersistentDisk>]
+        attr_accessor :disks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disks = args[:disks] if args.key?(:disks)
         end
       end
       
@@ -970,6 +1030,12 @@ module Google
       class CutoverJob
         include Google::Apis::Core::Hashable
       
+        # ComputeEngineDisksTargetDetails is a collection of created Persistent Disks
+        # details.
+        # Corresponds to the JSON property `computeEngineDisksTargetDetails`
+        # @return [Google::Apis::VmmigrationV1alpha1::ComputeEngineDisksTargetDetails]
+        attr_accessor :compute_engine_disks_target_details
+      
         # ComputeEngineTargetDetails is a collection of details for creating a VM in a
         # target Compute Engine project.
         # Corresponds to the JSON property `computeEngineTargetDetails`
@@ -1051,6 +1117,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @compute_engine_disks_target_details = args[:compute_engine_disks_target_details] if args.key?(:compute_engine_disks_target_details)
           @compute_engine_target_details = args[:compute_engine_target_details] if args.key?(:compute_engine_target_details)
           @compute_engine_vm_details = args[:compute_engine_vm_details] if args.key?(:compute_engine_vm_details)
           @create_time = args[:create_time] if args.key?(:create_time)
@@ -1369,6 +1436,11 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Immutable. The target type of this group.
+        # Corresponds to the JSON property `migrationTargetType`
+        # @return [String]
+        attr_accessor :migration_target_type
+      
         # Output only. The Group name.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -1388,6 +1460,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @migration_target_type = args[:migration_target_type] if args.key?(:migration_target_type)
           @name = args[:name] if args.key?(:name)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -1866,6 +1939,12 @@ module Google
         # @return [Google::Apis::VmmigrationV1alpha1::AwsSourceVmDetails]
         attr_accessor :aws_source_vm_details
       
+        # ComputeEngineDisksTargetDefaults is a collection of details for creating
+        # Persistent Disks in a target Compute Engine project.
+        # Corresponds to the JSON property `computeEngineDisksTargetDefaults`
+        # @return [Google::Apis::VmmigrationV1alpha1::ComputeEngineDisksTargetDefaults]
+        attr_accessor :compute_engine_disks_target_defaults
+      
         # ComputeEngineTargetDefaults is a collection of details for creating a VM in a
         # target Compute Engine project.
         # Corresponds to the JSON property `computeEngineTargetDefaults`
@@ -1998,6 +2077,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @aws_source_vm_details = args[:aws_source_vm_details] if args.key?(:aws_source_vm_details)
+          @compute_engine_disks_target_defaults = args[:compute_engine_disks_target_defaults] if args.key?(:compute_engine_disks_target_defaults)
           @compute_engine_target_defaults = args[:compute_engine_target_defaults] if args.key?(:compute_engine_target_defaults)
           @compute_engine_vm_defaults = args[:compute_engine_vm_defaults] if args.key?(:compute_engine_vm_defaults)
           @create_time = args[:create_time] if args.key?(:create_time)
@@ -2286,6 +2366,68 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Details of a created Persistent Disk.
+      class PersistentDisk
+        include Google::Apis::Core::Hashable
+      
+        # The URI of the Persistent Disk.
+        # Corresponds to the JSON property `diskUri`
+        # @return [String]
+        attr_accessor :disk_uri
+      
+        # The ordinal number of the source VM disk.
+        # Corresponds to the JSON property `sourceDiskNumber`
+        # @return [Fixnum]
+        attr_accessor :source_disk_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disk_uri = args[:disk_uri] if args.key?(:disk_uri)
+          @source_disk_number = args[:source_disk_number] if args.key?(:source_disk_number)
+        end
+      end
+      
+      # Details for creation of a Persistent Disk.
+      class PersistentDiskDefaults
+        include Google::Apis::Core::Hashable
+      
+        # A map of labels to associate with the Persistent Disk.
+        # Corresponds to the JSON property `additionalLabels`
+        # @return [Hash<String,String>]
+        attr_accessor :additional_labels
+      
+        # Optional. The name of the Persistent Disk to create.
+        # Corresponds to the JSON property `diskName`
+        # @return [String]
+        attr_accessor :disk_name
+      
+        # The disk type to use.
+        # Corresponds to the JSON property `diskType`
+        # @return [String]
+        attr_accessor :disk_type
+      
+        # The ordinal number of the source VM disk.
+        # Corresponds to the JSON property `sourceDiskNumber`
+        # @return [Fixnum]
+        attr_accessor :source_disk_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_labels = args[:additional_labels] if args.key?(:additional_labels)
+          @disk_name = args[:disk_name] if args.key?(:disk_name)
+          @disk_type = args[:disk_type] if args.key?(:disk_type)
+          @source_disk_number = args[:source_disk_number] if args.key?(:source_disk_number)
         end
       end
       
