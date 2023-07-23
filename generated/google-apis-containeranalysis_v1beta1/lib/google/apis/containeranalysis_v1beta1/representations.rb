@@ -1022,6 +1022,7 @@ module Google
       
           property :short_description, as: 'shortDescription'
           property :state, as: 'state'
+          property :vulnerability_id, as: 'vulnerabilityId'
         end
       end
       
@@ -2668,6 +2669,7 @@ module Google
           collection :remediations, as: 'remediations', class: Google::Apis::ContaineranalysisV1beta1::Remediation, decorator: Google::Apis::ContaineranalysisV1beta1::Remediation::Representation
       
           property :state, as: 'state'
+          property :vulnerability_id, as: 'vulnerabilityId'
         end
       end
       
