@@ -142,6 +142,12 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # The vulnerability identifier for this Assessment. Will hold one of common
+        # identifiers e.g. CVE, GHSA etc.
+        # Corresponds to the JSON property `vulnerabilityId`
+        # @return [String]
+        attr_accessor :vulnerability_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -156,6 +162,7 @@ module Google
           @remediations = args[:remediations] if args.key?(:remediations)
           @short_description = args[:short_description] if args.key?(:short_description)
           @state = args[:state] if args.key?(:state)
+          @vulnerability_id = args[:vulnerability_id] if args.key?(:vulnerability_id)
         end
       end
       
@@ -348,9 +355,53 @@ module Google
         end
       end
       
+      # 
+      class BuildDefinition
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `buildType`
+        # @return [String]
+        attr_accessor :build_type
+      
+        # 
+        # Corresponds to the JSON property `externalParameters`
+        # @return [Hash<String,Object>]
+        attr_accessor :external_parameters
+      
+        # 
+        # Corresponds to the JSON property `internalParameters`
+        # @return [Hash<String,Object>]
+        attr_accessor :internal_parameters
+      
+        # 
+        # Corresponds to the JSON property `resolvedDependencies`
+        # @return [Array<Google::Apis::ContaineranalysisV1alpha1::ResourceDescriptor>]
+        attr_accessor :resolved_dependencies
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @build_type = args[:build_type] if args.key?(:build_type)
+          @external_parameters = args[:external_parameters] if args.key?(:external_parameters)
+          @internal_parameters = args[:internal_parameters] if args.key?(:internal_parameters)
+          @resolved_dependencies = args[:resolved_dependencies] if args.key?(:resolved_dependencies)
+        end
+      end
+      
       # Message encapsulating build provenance details.
       class BuildDetails
         include Google::Apis::Core::Hashable
+      
+        # In-Toto Slsa Provenance V1 represents a slsa provenance meeting the slsa spec,
+        # wrapped in an in-toto statement. This allows for direct jsonification of a to-
+        # spec in-toto slsa statement with a to-spec slsa provenance.
+        # Corresponds to the JSON property `inTotoSlsaProvenanceV1`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::InTotoSlsaProvenanceV1]
+        attr_accessor :in_toto_slsa_provenance_v1
       
         # Deprecated. See InTotoStatement for the replacement. In-toto Provenance
         # representation as defined in spec.
@@ -389,10 +440,42 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @in_toto_slsa_provenance_v1 = args[:in_toto_slsa_provenance_v1] if args.key?(:in_toto_slsa_provenance_v1)
           @intoto_provenance = args[:intoto_provenance] if args.key?(:intoto_provenance)
           @intoto_statement = args[:intoto_statement] if args.key?(:intoto_statement)
           @provenance = args[:provenance] if args.key?(:provenance)
           @provenance_bytes = args[:provenance_bytes] if args.key?(:provenance_bytes)
+        end
+      end
+      
+      # 
+      class BuildMetadata
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `finishedOn`
+        # @return [String]
+        attr_accessor :finished_on
+      
+        # 
+        # Corresponds to the JSON property `invocationId`
+        # @return [String]
+        attr_accessor :invocation_id
+      
+        # 
+        # Corresponds to the JSON property `startedOn`
+        # @return [String]
+        attr_accessor :started_on
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @finished_on = args[:finished_on] if args.key?(:finished_on)
+          @invocation_id = args[:invocation_id] if args.key?(:invocation_id)
+          @started_on = args[:started_on] if args.key?(:started_on)
         end
       end
       
@@ -4174,6 +4257,46 @@ module Google
         end
       end
       
+      # 
+      class InTotoSlsaProvenanceV1
+        include Google::Apis::Core::Hashable
+      
+        # InToto spec defined at https://github.com/in-toto/attestation/tree/main/spec#
+        # statement
+        # Corresponds to the JSON property `_type`
+        # @return [String]
+        attr_accessor :_type
+      
+        # Keep in sync with schema at https://github.com/slsa-framework/slsa/blob/main/
+        # docs/provenance/schema/v1/provenance.proto Builder renamed to
+        # ProvenanceBuilder because of Java conflicts.
+        # Corresponds to the JSON property `predicate`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::SlsaProvenanceV1]
+        attr_accessor :predicate
+      
+        # 
+        # Corresponds to the JSON property `predicateType`
+        # @return [String]
+        attr_accessor :predicate_type
+      
+        # 
+        # Corresponds to the JSON property `subject`
+        # @return [Array<Google::Apis::ContaineranalysisV1alpha1::Subject>]
+        attr_accessor :subject
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @_type = args[:_type] if args.key?(:_type)
+          @predicate = args[:predicate] if args.key?(:predicate)
+          @predicate_type = args[:predicate_type] if args.key?(:predicate_type)
+          @subject = args[:subject] if args.key?(:subject)
+        end
+      end
+      
       # Spec defined at https://github.com/in-toto/attestation/tree/main/spec#
       # statement The serialized InTotoStatement will be stored as Envelope.payload.
       # Envelope.payloadType is always "application/vnd.in-toto+json".
@@ -5568,6 +5691,37 @@ module Google
         end
       end
       
+      # 
+      class ProvenanceBuilder
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `builderDependencies`
+        # @return [Array<Google::Apis::ContaineranalysisV1alpha1::ResourceDescriptor>]
+        attr_accessor :builder_dependencies
+      
+        # 
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # 
+        # Corresponds to the JSON property `version`
+        # @return [Hash<String,String>]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @builder_dependencies = args[:builder_dependencies] if args.key?(:builder_dependencies)
+          @id = args[:id] if args.key?(:id)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
       # Publisher contains information about the publisher of this Note.
       class Publisher
         include Google::Apis::Core::Hashable
@@ -5854,6 +6008,93 @@ module Google
           @content_hash = args[:content_hash] if args.key?(:content_hash)
           @name = args[:name] if args.key?(:name)
           @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # 
+      class ResourceDescriptor
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `annotations`
+        # @return [Hash<String,Object>]
+        attr_accessor :annotations
+      
+        # 
+        # Corresponds to the JSON property `content`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :content
+      
+        # 
+        # Corresponds to the JSON property `digest`
+        # @return [Hash<String,String>]
+        attr_accessor :digest
+      
+        # 
+        # Corresponds to the JSON property `downloadLocation`
+        # @return [String]
+        attr_accessor :download_location
+      
+        # 
+        # Corresponds to the JSON property `mediaType`
+        # @return [String]
+        attr_accessor :media_type
+      
+        # 
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # 
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
+          @content = args[:content] if args.key?(:content)
+          @digest = args[:digest] if args.key?(:digest)
+          @download_location = args[:download_location] if args.key?(:download_location)
+          @media_type = args[:media_type] if args.key?(:media_type)
+          @name = args[:name] if args.key?(:name)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # 
+      class RunDetails
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `builder`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::ProvenanceBuilder]
+        attr_accessor :builder
+      
+        # 
+        # Corresponds to the JSON property `byproducts`
+        # @return [Array<Google::Apis::ContaineranalysisV1alpha1::ResourceDescriptor>]
+        attr_accessor :byproducts
+      
+        # 
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::BuildMetadata]
+        attr_accessor :metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @builder = args[:builder] if args.key?(:builder)
+          @byproducts = args[:byproducts] if args.key?(:byproducts)
+          @metadata = args[:metadata] if args.key?(:metadata)
         end
       end
       
@@ -6279,6 +6520,33 @@ module Google
           @materials = args[:materials] if args.key?(:materials)
           @metadata = args[:metadata] if args.key?(:metadata)
           @recipe = args[:recipe] if args.key?(:recipe)
+        end
+      end
+      
+      # Keep in sync with schema at https://github.com/slsa-framework/slsa/blob/main/
+      # docs/provenance/schema/v1/provenance.proto Builder renamed to
+      # ProvenanceBuilder because of Java conflicts.
+      class SlsaProvenanceV1
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `buildDefinition`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::BuildDefinition]
+        attr_accessor :build_definition
+      
+        # 
+        # Corresponds to the JSON property `runDetails`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::RunDetails]
+        attr_accessor :run_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @build_definition = args[:build_definition] if args.key?(:build_definition)
+          @run_details = args[:run_details] if args.key?(:run_details)
         end
       end
       
@@ -6879,6 +7147,12 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # The vulnerability identifier for this Assessment. Will hold one of common
+        # identifiers e.g. CVE, GHSA etc.
+        # Corresponds to the JSON property `vulnerabilityId`
+        # @return [String]
+        attr_accessor :vulnerability_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -6892,6 +7166,7 @@ module Google
           @related_uris = args[:related_uris] if args.key?(:related_uris)
           @remediations = args[:remediations] if args.key?(:remediations)
           @state = args[:state] if args.key?(:state)
+          @vulnerability_id = args[:vulnerability_id] if args.key?(:vulnerability_id)
         end
       end
       
