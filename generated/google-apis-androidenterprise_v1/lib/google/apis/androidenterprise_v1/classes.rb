@@ -473,6 +473,12 @@ module Google
         attr_accessor :is_production
         alias_method :is_production?, :is_production
       
+        # The SDK version this app targets, as specified in the manifest of the APK. See
+        # http://developer.android.com/guide/topics/manifest/uses-sdk-element.html
+        # Corresponds to the JSON property `targetSdkVersion`
+        # @return [Fixnum]
+        attr_accessor :target_sdk_version
+      
         # Deprecated, use trackId instead.
         # Corresponds to the JSON property `track`
         # @return [String]
@@ -504,6 +510,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @is_production = args[:is_production] if args.key?(:is_production)
+          @target_sdk_version = args[:target_sdk_version] if args.key?(:target_sdk_version)
           @track = args[:track] if args.key?(:track)
           @track_id = args[:track_id] if args.key?(:track_id)
           @version_code = args[:version_code] if args.key?(:version_code)
