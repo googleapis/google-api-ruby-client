@@ -5485,6 +5485,13 @@ module Google
         # @return [Array<Google::Apis::BigqueryV2::TrainingRun>]
         attr_accessor :training_runs
       
+        # Output only. This field will be populated if a TRANSFORM clause was used to
+        # train a model. TRANSFORM clause (if used) takes feature_columns as input and
+        # outputs transform_columns. transform_columns then are used to train the model.
+        # Corresponds to the JSON property `transformColumns`
+        # @return [Array<Google::Apis::BigqueryV2::TransformColumn>]
+        attr_accessor :transform_columns
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5511,6 +5518,7 @@ module Google
           @optimal_trial_ids = args[:optimal_trial_ids] if args.key?(:optimal_trial_ids)
           @remote_model_info = args[:remote_model_info] if args.key?(:remote_model_info)
           @training_runs = args[:training_runs] if args.key?(:training_runs)
+          @transform_columns = args[:transform_columns] if args.key?(:transform_columns)
         end
       end
       
@@ -9188,6 +9196,42 @@ module Google
         # Update properties of this object
         def update!(**args)
           @transaction_id = args[:transaction_id] if args.key?(:transaction_id)
+        end
+      end
+      
+      # Information about a single transform column.
+      class TransformColumn
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Name of the column.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The SQL expression used in the column transform.
+        # Corresponds to the JSON property `transformSql`
+        # @return [String]
+        attr_accessor :transform_sql
+      
+        # The data type of a variable such as a function argument. Examples include: *
+        # INT64: ``"typeKind": "INT64"`` * ARRAY: ` "typeKind": "ARRAY", "
+        # arrayElementType": `"typeKind": "STRING"` ` * STRUCT>: ` "typeKind": "STRUCT",
+        # "structType": ` "fields": [ ` "name": "x", "type": `"typeKind": "STRING"` `, `
+        # "name": "y", "type": ` "typeKind": "ARRAY", "arrayElementType": `"typeKind": "
+        # DATE"` ` ` ] ` `
+        # Corresponds to the JSON property `type`
+        # @return [Google::Apis::BigqueryV2::StandardSqlDataType]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @transform_sql = args[:transform_sql] if args.key?(:transform_sql)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
