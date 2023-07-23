@@ -921,15 +921,15 @@ module Google
       class SapDiscoveryComponent
         include Google::Apis::Core::Hashable
       
-        # The component is a SAP application.
-        # Corresponds to the JSON property `applicationType`
-        # @return [String]
-        attr_accessor :application_type
+        # A set of properties describing an SAP Application layer.
+        # Corresponds to the JSON property `applicationProperties`
+        # @return [Google::Apis::WorkloadmanagerV1::SapDiscoveryComponentApplicationProperties]
+        attr_accessor :application_properties
       
-        # The component is a SAP database.
-        # Corresponds to the JSON property `databaseType`
-        # @return [String]
-        attr_accessor :database_type
+        # A set of properties describing an SAP Database layer.
+        # Corresponds to the JSON property `databaseProperties`
+        # @return [Google::Apis::WorkloadmanagerV1::SapDiscoveryComponentDatabaseProperties]
+        attr_accessor :database_properties
       
         # Pantheon Project in which the resources reside.
         # Corresponds to the JSON property `hostProject`
@@ -953,11 +953,75 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @application_type = args[:application_type] if args.key?(:application_type)
-          @database_type = args[:database_type] if args.key?(:database_type)
+          @application_properties = args[:application_properties] if args.key?(:application_properties)
+          @database_properties = args[:database_properties] if args.key?(:database_properties)
           @host_project = args[:host_project] if args.key?(:host_project)
           @resources = args[:resources] if args.key?(:resources)
           @sid = args[:sid] if args.key?(:sid)
+        end
+      end
+      
+      # A set of properties describing an SAP Application layer.
+      class SapDiscoveryComponentApplicationProperties
+        include Google::Apis::Core::Hashable
+      
+        # Required. Type of the application. Netweaver, etc.
+        # Corresponds to the JSON property `applicationType`
+        # @return [String]
+        attr_accessor :application_type
+      
+        # Required. Resource URI of the recognized ASCS host of the application.
+        # Corresponds to the JSON property `ascsUri`
+        # @return [String]
+        attr_accessor :ascs_uri
+      
+        # Optional. Resource URI of the recognized shared NFS of the application. May be
+        # empty if the application server has only a single node.
+        # Corresponds to the JSON property `nfsUri`
+        # @return [String]
+        attr_accessor :nfs_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @application_type = args[:application_type] if args.key?(:application_type)
+          @ascs_uri = args[:ascs_uri] if args.key?(:ascs_uri)
+          @nfs_uri = args[:nfs_uri] if args.key?(:nfs_uri)
+        end
+      end
+      
+      # A set of properties describing an SAP Database layer.
+      class SapDiscoveryComponentDatabaseProperties
+        include Google::Apis::Core::Hashable
+      
+        # Required. Type of the database. HANA, DB2, etc.
+        # Corresponds to the JSON property `databaseType`
+        # @return [String]
+        attr_accessor :database_type
+      
+        # Required. URI of the recognized primary instance of the database.
+        # Corresponds to the JSON property `primaryInstanceUri`
+        # @return [String]
+        attr_accessor :primary_instance_uri
+      
+        # Optional. URI of the recognized shared NFS of the database. May be empty if
+        # the database has only a single node.
+        # Corresponds to the JSON property `sharedNfsUri`
+        # @return [String]
+        attr_accessor :shared_nfs_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @database_type = args[:database_type] if args.key?(:database_type)
+          @primary_instance_uri = args[:primary_instance_uri] if args.key?(:primary_instance_uri)
+          @shared_nfs_uri = args[:shared_nfs_uri] if args.key?(:shared_nfs_uri)
         end
       end
       
