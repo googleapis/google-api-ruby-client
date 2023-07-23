@@ -947,6 +947,7 @@ module Google
       
           property :progress_documents, as: 'progressDocuments', class: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1Progress, decorator: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1Progress::Representation
       
+          property :snapshot_time, as: 'snapshotTime'
           property :start_time, as: 'startTime'
         end
       end

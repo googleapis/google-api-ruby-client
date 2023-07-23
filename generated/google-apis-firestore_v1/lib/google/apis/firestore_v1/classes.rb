@@ -122,8 +122,9 @@ module Google
         # @return [Google::Apis::FirestoreV1::TransactionOptions]
         attr_accessor :new_transaction
       
-        # Reads documents as they were at the given time. This may not be older than 270
-        # seconds.
+        # Reads documents as they were at the given time. This must be a microsecond
+        # precision timestamp within the past one hour, or if Point-in-Time Recovery is
+        # enabled, can additionally be a whole minute timestamp within the past 7 days.
         # Corresponds to the JSON property `readTime`
         # @return [String]
         attr_accessor :read_time
@@ -1246,6 +1247,13 @@ module Google
         # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1Progress]
         attr_accessor :progress_documents
       
+        # The timestamp that corresponds to the version of the database that is being
+        # exported. If unspecified, there are no guarantees about the consistency of the
+        # documents being exported.
+        # Corresponds to the JSON property `snapshotTime`
+        # @return [String]
+        attr_accessor :snapshot_time
+      
         # The time this operation started.
         # Corresponds to the JSON property `startTime`
         # @return [String]
@@ -1264,6 +1272,7 @@ module Google
           @output_uri_prefix = args[:output_uri_prefix] if args.key?(:output_uri_prefix)
           @progress_bytes = args[:progress_bytes] if args.key?(:progress_bytes)
           @progress_documents = args[:progress_documents] if args.key?(:progress_documents)
+          @snapshot_time = args[:snapshot_time] if args.key?(:snapshot_time)
           @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
@@ -2268,8 +2277,9 @@ module Google
         # @return [String]
         attr_accessor :page_token
       
-        # Reads documents as they were at the given time. This may not be older than 270
-        # seconds.
+        # Reads documents as they were at the given time. This must be a microsecond
+        # precision timestamp within the past one hour, or if Point-in-Time Recovery is
+        # enabled, can additionally be a whole minute timestamp within the past 7 days.
         # Corresponds to the JSON property `readTime`
         # @return [String]
         attr_accessor :read_time
@@ -2576,8 +2586,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :partition_count
       
-        # Reads documents as they were at the given time. This may not be older than 270
-        # seconds.
+        # Reads documents as they were at the given time. This must be a microsecond
+        # precision timestamp within the past one hour, or if Point-in-Time Recovery is
+        # enabled, can additionally be a whole minute timestamp within the past 7 days.
         # Corresponds to the JSON property `readTime`
         # @return [String]
         attr_accessor :read_time
@@ -2717,7 +2728,9 @@ module Google
       class ReadOnly
         include Google::Apis::Core::Hashable
       
-        # Reads documents at the given time. This may not be older than 60 seconds.
+        # Reads documents at the given time. This must be a microsecond precision
+        # timestamp within the past one hour, or if Point-in-Time Recovery is enabled,
+        # can additionally be a whole minute timestamp within the past 7 days.
         # Corresponds to the JSON property `readTime`
         # @return [String]
         attr_accessor :read_time
@@ -2783,8 +2796,9 @@ module Google
         # @return [Google::Apis::FirestoreV1::TransactionOptions]
         attr_accessor :new_transaction
       
-        # Executes the query at the given timestamp. Requires: * Cannot be more than 270
-        # seconds in the past.
+        # Executes the query at the given timestamp. This must be a microsecond
+        # precision timestamp within the past one hour, or if Point-in-Time Recovery is
+        # enabled, can additionally be a whole minute timestamp within the past 7 days.
         # Corresponds to the JSON property `readTime`
         # @return [String]
         attr_accessor :read_time
@@ -2862,8 +2876,9 @@ module Google
         # @return [Google::Apis::FirestoreV1::TransactionOptions]
         attr_accessor :new_transaction
       
-        # Reads documents as they were at the given time. This may not be older than 270
-        # seconds.
+        # Reads documents as they were at the given time. This must be a microsecond
+        # precision timestamp within the past one hour, or if Point-in-Time Recovery is
+        # enabled, can additionally be a whole minute timestamp within the past 7 days.
         # Corresponds to the JSON property `readTime`
         # @return [String]
         attr_accessor :read_time
