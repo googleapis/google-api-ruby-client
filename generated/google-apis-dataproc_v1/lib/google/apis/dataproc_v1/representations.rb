@@ -208,6 +208,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FlinkJob
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GceClusterConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1126,6 +1132,20 @@ module Google
         end
       end
       
+      class FlinkJob
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :args, as: 'args'
+          collection :jar_file_uris, as: 'jarFileUris'
+          property :logging_config, as: 'loggingConfig', class: Google::Apis::DataprocV1::LoggingConfig, decorator: Google::Apis::DataprocV1::LoggingConfig::Representation
+      
+          property :main_class, as: 'mainClass'
+          property :main_jar_file_uri, as: 'mainJarFileUri'
+          hash :properties, as: 'properties'
+          property :savepoint_uri, as: 'savepointUri'
+        end
+      end
+      
       class GceClusterConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1334,6 +1354,8 @@ module Google
           property :driver_control_files_uri, as: 'driverControlFilesUri'
           property :driver_output_resource_uri, as: 'driverOutputResourceUri'
           property :driver_scheduling_config, as: 'driverSchedulingConfig', class: Google::Apis::DataprocV1::DriverSchedulingConfig, decorator: Google::Apis::DataprocV1::DriverSchedulingConfig::Representation
+      
+          property :flink_job, as: 'flinkJob', class: Google::Apis::DataprocV1::FlinkJob, decorator: Google::Apis::DataprocV1::FlinkJob::Representation
       
           property :hadoop_job, as: 'hadoopJob', class: Google::Apis::DataprocV1::HadoopJob, decorator: Google::Apis::DataprocV1::HadoopJob::Representation
       
@@ -2048,7 +2070,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :milli_dcu, :numeric_string => true, as: 'milliDcu'
+          property :milli_dcu_premium, :numeric_string => true, as: 'milliDcuPremium'
           property :shuffle_storage_gb, :numeric_string => true, as: 'shuffleStorageGb'
+          property :shuffle_storage_gb_premium, :numeric_string => true, as: 'shuffleStorageGbPremium'
           property :snapshot_time, as: 'snapshotTime'
         end
       end

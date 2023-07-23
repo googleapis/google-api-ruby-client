@@ -404,8 +404,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the batch workload resource. If the batch is not in terminal state,
-        # the delete fails and the response returns FAILED_PRECONDITION.
+        # Deletes the batch workload resource. If the batch is not in a CANCELLED,
+        # SUCCEEDED or FAILED State, the delete operation fails and the response returns
+        # FAILED_PRECONDITION.
         # @param [String] name
         #   Required. The fully qualified name of the batch to retrieve in the format "
         #   projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID"
