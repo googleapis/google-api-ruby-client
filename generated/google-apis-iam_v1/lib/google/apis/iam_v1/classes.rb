@@ -376,7 +376,7 @@ module Google
         # https://cloud.google.com/iam/help/service-accounts/overview). When you create
         # a service account, you specify the project ID that owns the service account,
         # as well as a name that must be unique within the project. IAM uses these
-        # values to create an email address that identifies the service //
+        # values to create an email address that identifies the service account. //
         # Corresponds to the JSON property `serviceAccount`
         # @return [Google::Apis::IamV1::ServiceAccount]
         attr_accessor :service_account
@@ -1227,7 +1227,7 @@ module Google
         # https://cloud.google.com/iam/help/service-accounts/overview). When you create
         # a service account, you specify the project ID that owns the service account,
         # as well as a name that must be unique within the project. IAM uses these
-        # values to create an email address that identifies the service //
+        # values to create an email address that identifies the service account. //
         # Corresponds to the JSON property `serviceAccount`
         # @return [Google::Apis::IamV1::ServiceAccount]
         attr_accessor :service_account
@@ -1725,7 +1725,7 @@ module Google
       # https://cloud.google.com/iam/help/service-accounts/overview). When you create
       # a service account, you specify the project ID that owns the service account,
       # as well as a name that must be unique within the project. IAM uses these
-      # values to create an email address that identifies the service //
+      # values to create an email address that identifies the service account. //
       class ServiceAccount
         include Google::Apis::Core::Hashable
       
@@ -2190,7 +2190,7 @@ module Google
         # https://cloud.google.com/iam/help/service-accounts/overview). When you create
         # a service account, you specify the project ID that owns the service account,
         # as well as a name that must be unique within the project. IAM uses these
-        # values to create an email address that identifies the service //
+        # values to create an email address that identifies the service account. //
         # Corresponds to the JSON property `restoredAccount`
         # @return [Google::Apis::IamV1::ServiceAccount]
         attr_accessor :restored_account
