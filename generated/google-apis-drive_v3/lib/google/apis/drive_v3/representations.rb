@@ -473,6 +473,7 @@ module Google
       class ContentRestriction
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :owner_restricted, as: 'ownerRestricted'
           property :read_only, as: 'readOnly'
           property :reason, as: 'reason'
           property :restricting_user, as: 'restrictingUser', class: Google::Apis::DriveV3::User, decorator: Google::Apis::DriveV3::User::Representation
@@ -667,7 +668,9 @@ module Google
             property :can_list_children, as: 'canListChildren'
             property :can_modify_content, as: 'canModifyContent'
             property :can_modify_content_restriction, as: 'canModifyContentRestriction'
+            property :can_modify_editor_content_restriction, as: 'canModifyEditorContentRestriction'
             property :can_modify_labels, as: 'canModifyLabels'
+            property :can_modify_owner_content_restriction, as: 'canModifyOwnerContentRestriction'
             property :can_move_children_out_of_drive, as: 'canMoveChildrenOutOfDrive'
             property :can_move_children_out_of_team_drive, as: 'canMoveChildrenOutOfTeamDrive'
             property :can_move_children_within_drive, as: 'canMoveChildrenWithinDrive'
@@ -683,6 +686,7 @@ module Google
             property :can_read_revisions, as: 'canReadRevisions'
             property :can_read_team_drive, as: 'canReadTeamDrive'
             property :can_remove_children, as: 'canRemoveChildren'
+            property :can_remove_content_restriction, as: 'canRemoveContentRestriction'
             property :can_remove_my_drive_parent, as: 'canRemoveMyDriveParent'
             property :can_rename, as: 'canRename'
             property :can_share, as: 'canShare'
