@@ -1985,7 +1985,6 @@ module Google
       class GoogleCloudRetailV2alphaEnrollSolutionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :search_solution_use_case, as: 'searchSolutionUseCase'
           property :solution, as: 'solution'
         end
       end

@@ -2197,13 +2197,6 @@ module Google
       class GoogleCloudRetailV2alphaEnrollSolutionRequest
         include Google::Apis::Core::Hashable
       
-        # Solution use case to enroll. Currently settable for Browse to enroll. It
-        # should be only set when [solution] is set as SolutionType.SOLUTION_TYPE_SEARCH
-        # or an INVALID_ARGUMENT error is thrown.
-        # Corresponds to the JSON property `searchSolutionUseCase`
-        # @return [String]
-        attr_accessor :search_solution_use_case
-      
         # Required. Solution to enroll.
         # Corresponds to the JSON property `solution`
         # @return [String]
@@ -2215,7 +2208,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @search_solution_use_case = args[:search_solution_use_case] if args.key?(:search_solution_use_case)
           @solution = args[:solution] if args.key?(:solution)
         end
       end
@@ -4055,11 +4047,11 @@ module Google
         attr_accessor :available_time
       
         # The brands of the product. A maximum of 30 brands are allowed unless
-        # overridden via pantheon UI. Each brand must be a UTF-8 encoded string with a
-        # length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is
-        # returned. Corresponding properties: Google Merchant Center property [brand](
-        # https://support.google.com/merchants/answer/6324351). Schema.org property [
-        # Product.brand](https://schema.org/brand).
+        # overridden through the Google Cloud console. Each brand must be a UTF-8
+        # encoded string with a length limit of 1,000 characters. Otherwise, an
+        # INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant
+        # Center property [brand](https://support.google.com/merchants/answer/6324351).
+        # Schema.org property [Product.brand](https://schema.org/brand).
         # Corresponds to the JSON property `brands`
         # @return [Array<String>]
         attr_accessor :brands
