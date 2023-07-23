@@ -166,6 +166,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SapDiscoveryComponentApplicationProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SapDiscoveryComponentDatabaseProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SapDiscoveryMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -490,12 +502,32 @@ module Google
       class SapDiscoveryComponent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :application_type, as: 'applicationType'
-          property :database_type, as: 'databaseType'
+          property :application_properties, as: 'applicationProperties', class: Google::Apis::WorkloadmanagerV1::SapDiscoveryComponentApplicationProperties, decorator: Google::Apis::WorkloadmanagerV1::SapDiscoveryComponentApplicationProperties::Representation
+      
+          property :database_properties, as: 'databaseProperties', class: Google::Apis::WorkloadmanagerV1::SapDiscoveryComponentDatabaseProperties, decorator: Google::Apis::WorkloadmanagerV1::SapDiscoveryComponentDatabaseProperties::Representation
+      
           property :host_project, as: 'hostProject'
           collection :resources, as: 'resources', class: Google::Apis::WorkloadmanagerV1::SapDiscoveryResource, decorator: Google::Apis::WorkloadmanagerV1::SapDiscoveryResource::Representation
       
           property :sid, as: 'sid'
+        end
+      end
+      
+      class SapDiscoveryComponentApplicationProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :application_type, as: 'applicationType'
+          property :ascs_uri, as: 'ascsUri'
+          property :nfs_uri, as: 'nfsUri'
+        end
+      end
+      
+      class SapDiscoveryComponentDatabaseProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :database_type, as: 'databaseType'
+          property :primary_instance_uri, as: 'primaryInstanceUri'
+          property :shared_nfs_uri, as: 'sharedNfsUri'
         end
       end
       
