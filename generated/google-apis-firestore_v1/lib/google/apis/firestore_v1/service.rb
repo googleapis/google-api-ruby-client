@@ -1025,8 +1025,10 @@ module Google
         #   The list of field paths in the mask. See Document.fields for a field path
         #   syntax reference.
         # @param [String] read_time
-        #   Reads the version of the document at the given time. This may not be older
-        #   than 270 seconds.
+        #   Reads the version of the document at the given time. This must be a
+        #   microsecond precision timestamp within the past one hour, or if Point-in-Time
+        #   Recovery is enabled, can additionally be a whole minute timestamp within the
+        #   past 7 days.
         # @param [String] transaction
         #   Reads the document in a transaction.
         # @param [String] fields
@@ -1087,7 +1089,9 @@ module Google
         #   parameters (with the exception of `page_size`) must match the values set in
         #   the request that generated the page token.
         # @param [String] read_time
-        #   Perform the read at the provided time. This may not be older than 270 seconds.
+        #   Perform the read at the provided time. This must be a microsecond precision
+        #   timestamp within the past one hour, or if Point-in-Time Recovery is enabled,
+        #   can additionally be a whole minute timestamp within the past 7 days.
         # @param [Boolean] show_missing
         #   If the list should show missing documents. A document is missing if it does
         #   not exist, but there are sub-documents nested underneath it. When true, such
@@ -1194,7 +1198,9 @@ module Google
         #   parameters (with the exception of `page_size`) must match the values set in
         #   the request that generated the page token.
         # @param [String] read_time
-        #   Perform the read at the provided time. This may not be older than 270 seconds.
+        #   Perform the read at the provided time. This must be a microsecond precision
+        #   timestamp within the past one hour, or if Point-in-Time Recovery is enabled,
+        #   can additionally be a whole minute timestamp within the past 7 days.
         # @param [Boolean] show_missing
         #   If the list should show missing documents. A document is missing if it does
         #   not exist, but there are sub-documents nested underneath it. When true, such
