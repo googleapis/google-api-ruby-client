@@ -1,5 +1,9 @@
 # Release history for google-apis-cloudfunctions_v2beta
 
+### v0.31.0 (2023-07-23)
+
+* Regenerated from discovery document revision 20230713
+
 ### v0.30.0 (2023-07-02)
 
 * Regenerated from discovery document revision 20230622
