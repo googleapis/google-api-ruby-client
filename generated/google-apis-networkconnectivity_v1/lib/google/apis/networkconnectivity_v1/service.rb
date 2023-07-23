@@ -129,17 +129,17 @@ module Google
         # @param [String] hub_id
         #   Required. A unique identifier for the hub.
         # @param [String] request_id
-        #   Optional. A unique request ID (optional). If you specify this ID, you can use
-        #   it in cases when you need to retry your request. When you need to retry, this
-        #   ID lets the server know that it can ignore the request if it has already been
-        #   completed. The server guarantees that for at least 60 minutes after the first
-        #   request. For example, consider a situation where you make an initial request
-        #   and the request times out. If you make the request again with the same request
-        #   ID, the server can check to see whether the original operation was received.
-        #   If it was, the server ignores the second request. This behavior prevents
-        #   clients from mistakenly creating duplicate commitments. The request ID must be
-        #   a valid UUID, with the exception that zero UUID is not supported (00000000-
-        #   0000-0000-0000-000000000000).
+        #   Optional. A request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. The server guarantees that a request
+        #   doesn't result in creation of duplicate commitments for at least 60 minutes.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check to see whether the original operation was received. If it was,
+        #   the server ignores the second request. This behavior prevents clients from
+        #   mistakenly creating duplicate commitments. The request ID must be a valid UUID,
+        #   with the exception that zero UUID is not supported (00000000-0000-0000-0000-
+        #   000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -175,17 +175,17 @@ module Google
         # @param [String] name
         #   Required. The name of the hub to delete.
         # @param [String] request_id
-        #   Optional. A unique request ID (optional). If you specify this ID, you can use
-        #   it in cases when you need to retry your request. When you need to retry, this
-        #   ID lets the server know that it can ignore the request if it has already been
-        #   completed. The server guarantees that for at least 60 minutes after the first
-        #   request. For example, consider a situation where you make an initial request
-        #   and the request times out. If you make the request again with the same request
-        #   ID, the server can check to see whether the original operation was received.
-        #   If it was, the server ignores the second request. This behavior prevents
-        #   clients from mistakenly creating duplicate commitments. The request ID must be
-        #   a valid UUID, with the exception that zero UUID is not supported (00000000-
-        #   0000-0000-0000-000000000000).
+        #   Optional. A request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. The server guarantees that a request
+        #   doesn't result in creation of duplicate commitments for at least 60 minutes.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check to see whether the original operation was received. If it was,
+        #   the server ignores the second request. This behavior prevents clients from
+        #   mistakenly creating duplicate commitments. The request ID must be a valid UUID,
+        #   with the exception that zero UUID is not supported (00000000-0000-0000-0000-
+        #   000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -352,7 +352,7 @@ module Google
         #   spoke_locations field is not populated, the list of results includes spokes in
         #   all locations.
         # @param [String] view
-        #   The view of the spoke to return. The view you use determines which spoke
+        #   The view of the spoke to return. The view that you use determines which spoke
         #   fields are included in the response.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -393,17 +393,17 @@ module Google
         #   following form: `projects/`project_number`/locations/global/hubs/`hub_id``
         # @param [Google::Apis::NetworkconnectivityV1::Hub] hub_object
         # @param [String] request_id
-        #   Optional. A unique request ID (optional). If you specify this ID, you can use
-        #   it in cases when you need to retry your request. When you need to retry, this
-        #   ID lets the server know that it can ignore the request if it has already been
-        #   completed. The server guarantees that for at least 60 minutes after the first
-        #   request. For example, consider a situation where you make an initial request
-        #   and the request times out. If you make the request again with the same request
-        #   ID, the server can check to see whether the original operation was received.
-        #   If it was, the server ignores the second request. This behavior prevents
-        #   clients from mistakenly creating duplicate commitments. The request ID must be
-        #   a valid UUID, with the exception that zero UUID is not supported (00000000-
-        #   0000-0000-0000-000000000000).
+        #   Optional. A request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. The server guarantees that a request
+        #   doesn't result in creation of duplicate commitments for at least 60 minutes.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check to see whether the original operation was received. If it was,
+        #   the server ignores the second request. This behavior prevents clients from
+        #   mistakenly creating duplicate commitments. The request ID must be a valid UUID,
+        #   with the exception that zero UUID is not supported (00000000-0000-0000-0000-
+        #   000000000000).
         # @param [String] update_mask
         #   Optional. In the case of an update to an existing hub, field mask is used to
         #   specify the fields to be overwritten. The fields specified in the update_mask
@@ -2450,17 +2450,17 @@ module Google
         #   Required. The parent resource.
         # @param [Google::Apis::NetworkconnectivityV1::Spoke] spoke_object
         # @param [String] request_id
-        #   Optional. A unique request ID (optional). If you specify this ID, you can use
-        #   it in cases when you need to retry your request. When you need to retry, this
-        #   ID lets the server know that it can ignore the request if it has already been
-        #   completed. The server guarantees that for at least 60 minutes after the first
-        #   request. For example, consider a situation where you make an initial request
-        #   and the request times out. If you make the request again with the same request
-        #   ID, the server can check to see whether the original operation was received.
-        #   If it was, the server ignores the second request. This behavior prevents
-        #   clients from mistakenly creating duplicate commitments. The request ID must be
-        #   a valid UUID, with the exception that zero UUID is not supported (00000000-
-        #   0000-0000-0000-000000000000).
+        #   Optional. A request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. The server guarantees that a request
+        #   doesn't result in creation of duplicate commitments for at least 60 minutes.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check to see whether the original operation was received. If it was,
+        #   the server ignores the second request. This behavior prevents clients from
+        #   mistakenly creating duplicate commitments. The request ID must be a valid UUID,
+        #   with the exception that zero UUID is not supported (00000000-0000-0000-0000-
+        #   000000000000).
         # @param [String] spoke_id
         #   Required. Unique id for the spoke to create.
         # @param [String] fields
@@ -2498,17 +2498,17 @@ module Google
         # @param [String] name
         #   Required. The name of the spoke to delete.
         # @param [String] request_id
-        #   Optional. A unique request ID (optional). If you specify this ID, you can use
-        #   it in cases when you need to retry your request. When you need to retry, this
-        #   ID lets the server know that it can ignore the request if it has already been
-        #   completed. The server guarantees that for at least 60 minutes after the first
-        #   request. For example, consider a situation where you make an initial request
-        #   and the request times out. If you make the request again with the same request
-        #   ID, the server can check to see whether the original operation was received.
-        #   If it was, the server ignores the second request. This behavior prevents
-        #   clients from mistakenly creating duplicate commitments. The request ID must be
-        #   a valid UUID, with the exception that zero UUID is not supported (00000000-
-        #   0000-0000-0000-000000000000).
+        #   Optional. A request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. The server guarantees that a request
+        #   doesn't result in creation of duplicate commitments for at least 60 minutes.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check to see whether the original operation was received. If it was,
+        #   the server ignores the second request. This behavior prevents clients from
+        #   mistakenly creating duplicate commitments. The request ID must be a valid UUID,
+        #   with the exception that zero UUID is not supported (00000000-0000-0000-0000-
+        #   000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2662,17 +2662,17 @@ module Google
         #   `
         # @param [Google::Apis::NetworkconnectivityV1::Spoke] spoke_object
         # @param [String] request_id
-        #   Optional. A unique request ID (optional). If you specify this ID, you can use
-        #   it in cases when you need to retry your request. When you need to retry, this
-        #   ID lets the server know that it can ignore the request if it has already been
-        #   completed. The server guarantees that for at least 60 minutes after the first
-        #   request. For example, consider a situation where you make an initial request
-        #   and the request times out. If you make the request again with the same request
-        #   ID, the server can check to see whether the original operation was received.
-        #   If it was, the server ignores the second request. This behavior prevents
-        #   clients from mistakenly creating duplicate commitments. The request ID must be
-        #   a valid UUID, with the exception that zero UUID is not supported (00000000-
-        #   0000-0000-0000-000000000000).
+        #   Optional. A request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. The server guarantees that a request
+        #   doesn't result in creation of duplicate commitments for at least 60 minutes.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check to see whether the original operation was received. If it was,
+        #   the server ignores the second request. This behavior prevents clients from
+        #   mistakenly creating duplicate commitments. The request ID must be a valid UUID,
+        #   with the exception that zero UUID is not supported (00000000-0000-0000-0000-
+        #   000000000000).
         # @param [String] update_mask
         #   Optional. In the case of an update to an existing spoke, field mask is used to
         #   specify the fields to be overwritten. The fields specified in the update_mask
@@ -2710,9 +2710,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Does one of the following: * Rejects a proposal to attach a Network
-        # Connectivity Center spoke to the hub. * Rejects and removes a previously
-        # attached spoke from the hub.
+        # Rejects a Network Connectivity Center spoke from being attached to the hub. If
+        # the spoke was previously in the `ACTIVE` state, it transitions to the `
+        # INACTIVE` state and is no longer able to connect to other spokes that are
+        # attached to the hub.
         # @param [String] name
         #   Required. The name of the spoke to reject.
         # @param [Google::Apis::NetworkconnectivityV1::RejectSpokeRequest] reject_spoke_request_object
