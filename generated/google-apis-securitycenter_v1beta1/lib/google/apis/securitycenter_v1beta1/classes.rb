@@ -619,6 +619,11 @@ module Google
       class Container
         include Google::Apis::Core::Hashable
       
+        # The time that the container was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
         # Optional container image ID, if provided by the container runtime. Uniquely
         # identifies the container image launched using a container image digest.
         # Corresponds to the JSON property `imageId`
@@ -647,6 +652,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
           @image_id = args[:image_id] if args.key?(:image_id)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
