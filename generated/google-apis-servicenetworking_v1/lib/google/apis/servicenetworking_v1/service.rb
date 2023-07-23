@@ -695,6 +695,44 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # * Service producers can use this method to retrieve a list of available DNS
+        # zones in the shared producer host project and the matching peering zones in
+        # the consumer project. *
+        # @param [String] parent
+        #   Required. Parent resource identifying the connection which owns this
+        #   collection of DNS zones in the format services/`service`/projects/`project`/
+        #   global/networks/`network` Service: The service that is managing connectivity
+        #   for the service producer's organization. For Google services that support this
+        #   functionality, this value is `servicenetworking.googleapis.com`. Projects: the
+        #   consumer project containing the consumer network. Network: The consumer
+        #   network accessible from the tenant project.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ServicenetworkingV1::ListDnsZonesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ServicenetworkingV1::ListDnsZonesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_service_dns_zones(parent, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/dnsZones:list', options)
+          command.response_representation = Google::Apis::ServicenetworkingV1::ListDnsZonesResponse::Representation
+          command.response_class = Google::Apis::ServicenetworkingV1::ListDnsZonesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Service producers can use this method to remove private DNS zones in the
         # shared producer host project and matching peering zones in the consumer
         # project.

@@ -256,6 +256,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DnsZonePair
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Documentation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -305,6 +311,12 @@ module Google
       end
       
       class Field
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FieldPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -370,6 +382,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListDnsZonesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListOperationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -407,6 +425,12 @@ module Google
       end
       
       class MethodProp
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MethodPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1023,6 +1047,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :environment, as: 'environment'
+          collection :method_policies, as: 'methodPolicies', class: Google::Apis::ServicenetworkingV1::MethodPolicy, decorator: Google::Apis::ServicenetworkingV1::MethodPolicy::Representation
+      
         end
       end
       
@@ -1100,6 +1126,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dns_suffix, as: 'dnsSuffix'
           property :name, as: 'name'
+        end
+      end
+      
+      class DnsZonePair
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consumer_peering_zone, as: 'consumerPeeringZone', class: Google::Apis::ServicenetworkingV1::DnsZone, decorator: Google::Apis::ServicenetworkingV1::DnsZone::Representation
+      
+          property :producer_private_zone, as: 'producerPrivateZone', class: Google::Apis::ServicenetworkingV1::DnsZone, decorator: Google::Apis::ServicenetworkingV1::DnsZone::Representation
+      
         end
       end
       
@@ -1207,6 +1243,15 @@ module Google
         end
       end
       
+      class FieldPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource_permission, as: 'resourcePermission'
+          property :resource_type, as: 'resourceType'
+          property :selector, as: 'selector'
+        end
+      end
+      
       class GoSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1308,6 +1353,14 @@ module Google
         end
       end
       
+      class ListDnsZonesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dns_zone_pairs, as: 'dnsZonePairs', class: Google::Apis::ServicenetworkingV1::DnsZonePair, decorator: Google::Apis::ServicenetworkingV1::DnsZonePair::Representation
+      
+        end
+      end
+      
       class ListOperationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1375,6 +1428,15 @@ module Google
           property :response_streaming, as: 'responseStreaming'
           property :response_type_url, as: 'responseTypeUrl'
           property :syntax, as: 'syntax'
+        end
+      end
+      
+      class MethodPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :request_policies, as: 'requestPolicies', class: Google::Apis::ServicenetworkingV1::FieldPolicy, decorator: Google::Apis::ServicenetworkingV1::FieldPolicy::Representation
+      
+          property :selector, as: 'selector'
         end
       end
       
