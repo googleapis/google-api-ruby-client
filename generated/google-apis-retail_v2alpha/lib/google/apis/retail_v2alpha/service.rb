@@ -51,9 +51,10 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Enrolls retail API solution for the project. Recommendation solution is
-        # enrolled by default when your project enables Retail API. You don't need to
-        # call this API for the recommendation solution.
+        # The method enrolls a solution of type Retail Search into a project. The
+        # Recommendations AI solution type is enrolled by default when your project
+        # enables Retail API, so you don't need to call the enrollSolution method for
+        # recommendations.
         # @param [String] project
         #   Required. Full resource name of parent. Format: `projects/`
         #   project_number_or_id``
@@ -87,8 +88,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the project. Throws NOT_FOUND if the project wasn't initialized for
-        # Retail API Service.
+        # Gets the project. Throws `NOT_FOUND` if the project wasn't initialized for the
+        # Retail API service.
         # @param [String] name
         #   Required. Full resource name of the project. Format: `projects/`
         #   project_number_or_id`/retailProject`
