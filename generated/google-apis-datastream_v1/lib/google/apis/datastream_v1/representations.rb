@@ -761,7 +761,9 @@ module Google
           property :length, as: 'length'
           property :nullable, as: 'nullable'
           property :ordinal_position, as: 'ordinalPosition'
+          property :precision, as: 'precision'
           property :primary_key, as: 'primaryKey'
+          property :scale, as: 'scale'
         end
       end
       

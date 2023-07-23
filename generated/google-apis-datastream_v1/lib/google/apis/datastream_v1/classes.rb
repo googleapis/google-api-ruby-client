@@ -980,11 +980,21 @@ module Google
         # @return [Fixnum]
         attr_accessor :ordinal_position
       
+        # Column precision.
+        # Corresponds to the JSON property `precision`
+        # @return [Fixnum]
+        attr_accessor :precision
+      
         # Whether or not the column represents a primary key.
         # Corresponds to the JSON property `primaryKey`
         # @return [Boolean]
         attr_accessor :primary_key
         alias_method :primary_key?, :primary_key
+      
+        # Column scale.
+        # Corresponds to the JSON property `scale`
+        # @return [Fixnum]
+        attr_accessor :scale
       
         def initialize(**args)
            update!(**args)
@@ -998,7 +1008,9 @@ module Google
           @length = args[:length] if args.key?(:length)
           @nullable = args[:nullable] if args.key?(:nullable)
           @ordinal_position = args[:ordinal_position] if args.key?(:ordinal_position)
+          @precision = args[:precision] if args.key?(:precision)
           @primary_key = args[:primary_key] if args.key?(:primary_key)
+          @scale = args[:scale] if args.key?(:scale)
         end
       end
       
