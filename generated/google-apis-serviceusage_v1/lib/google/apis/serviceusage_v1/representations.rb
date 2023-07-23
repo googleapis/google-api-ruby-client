@@ -286,6 +286,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FieldPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GetServiceIdentityMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -443,6 +449,12 @@ module Google
       end
       
       class MethodProp
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MethodPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -906,6 +918,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :environment, as: 'environment'
+          collection :method_policies, as: 'methodPolicies', class: Google::Apis::ServiceusageV1::MethodPolicy, decorator: Google::Apis::ServiceusageV1::MethodPolicy::Representation
+      
         end
       end
       
@@ -1096,6 +1110,15 @@ module Google
       
           property :packed, as: 'packed'
           property :type_url, as: 'typeUrl'
+        end
+      end
+      
+      class FieldPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource_permission, as: 'resourcePermission'
+          property :resource_type, as: 'resourceType'
+          property :selector, as: 'selector'
         end
       end
       
@@ -1404,6 +1427,15 @@ module Google
           property :response_streaming, as: 'responseStreaming'
           property :response_type_url, as: 'responseTypeUrl'
           property :syntax, as: 'syntax'
+        end
+      end
+      
+      class MethodPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :request_policies, as: 'requestPolicies', class: Google::Apis::ServiceusageV1::FieldPolicy, decorator: Google::Apis::ServiceusageV1::FieldPolicy::Representation
+      
+          property :selector, as: 'selector'
         end
       end
       
