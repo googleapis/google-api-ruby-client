@@ -389,7 +389,8 @@ module Google
         #   Required. You can modify only the fields listed below. To lock/unlock a
         #   connection: * `lock_config` To suspend/resume a connection: * `suspended` To
         #   update the connection details: * `description` * `labels` * `connector_version`
-        #   * `config_variables` * `auth_config` * `destination_configs` * `node_config`
+        #   * `config_variables` * `auth_config` * `destination_configs` * `node_config` *
+        #   `log_config` * `ssl_config` * `eventing_enablement_type` * `eventing_config`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
