@@ -1322,6 +1322,7 @@ module Google
       class GoogleCloudDatacatalogV1SearchCatalogRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :admin_search, as: 'adminSearch'
           property :order_by, as: 'orderBy'
           property :page_size, as: 'pageSize'
           property :page_token, as: 'pageToken'
