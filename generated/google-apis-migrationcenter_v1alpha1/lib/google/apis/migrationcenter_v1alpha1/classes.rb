@@ -3228,7 +3228,7 @@ module Google
         # @return [Google::Apis::MigrationcenterV1alpha1::NetworkUsageSample]
         attr_accessor :network
       
-        # Time the sample was collected.
+        # Time the sample was collected. If omitted, the frame report time will be used.
         # Corresponds to the JSON property `sampleTime`
         # @return [String]
         attr_accessor :sample_time
