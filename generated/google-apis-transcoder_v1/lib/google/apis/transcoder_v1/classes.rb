@@ -59,7 +59,7 @@ module Google
       class Animation
         include Google::Apis::Core::Hashable
       
-        # End previous overlay animation from the video. Without AnimationEnd, the
+        # End previous overlay animation from the video. Without `AnimationEnd`, the
         # overlay object will keep the state of previous animation until the end of the
         # video.
         # Corresponds to the JSON property `animationEnd`
@@ -88,7 +88,7 @@ module Google
         end
       end
       
-      # End previous overlay animation from the video. Without AnimationEnd, the
+      # End previous overlay animation from the video. Without `AnimationEnd`, the
       # overlay object will keep the state of previous animation until the end of the
       # video.
       class AnimationEnd
@@ -213,12 +213,12 @@ module Google
         end
       end
       
-      # The mapping for the `Job.edit_list` atoms with audio `EditAtom.inputs`.
+      # The mapping for the JobConfig.edit_list atoms with audio EditAtom.inputs.
       class AudioMapping
         include Google::Apis::Core::Hashable
       
-        # Required. The `EditAtom.key` that references the atom with audio inputs in the
-        # `Job.edit_list`.
+        # Required. The EditAtom.key that references the atom with audio inputs in the
+        # JobConfig.edit_list.
         # Corresponds to the JSON property `atomKey`
         # @return [String]
         attr_accessor :atom_key
@@ -234,7 +234,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :input_channel
       
-        # Required. The `Input.key` that identifies the input file.
+        # Required. The Input.key that identifies the input file.
         # Corresponds to the JSON property `inputKey`
         # @return [String]
         attr_accessor :input_key
@@ -307,7 +307,7 @@ module Google
         # @return [String]
         attr_accessor :language_code
       
-        # The mapping for the `Job.edit_list` atoms with audio `EditAtom.inputs`.
+        # The mapping for the JobConfig.edit_list atoms with audio EditAtom.inputs.
         # Corresponds to the JSON property `mapping`
         # @return [Array<Google::Apis::TranscoderV1::AudioMapping>]
         attr_accessor :mapping
@@ -466,7 +466,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The segment reference scheme for a `DASH` manifest. The default is `
-        # SEGMENT_LIST`
+        # SEGMENT_LIST`.
         # Corresponds to the JSON property `segmentReferenceScheme`
         # @return [String]
         attr_accessor :segment_reference_scheme
@@ -610,8 +610,8 @@ module Google
         # @return [String]
         attr_accessor :end_time_offset
       
-        # List of `Input.key`s identifying files that should be used in this atom. The
-        # listed `inputs` must have the same timeline.
+        # List of Input.key values identifying files that should be used in this atom.
+        # The listed `inputs` must have the same timeline.
         # Corresponds to the JSON property `inputs`
         # @return [Array<String>]
         attr_accessor :inputs
@@ -776,7 +776,7 @@ module Google
         attr_accessor :aq_strength
       
         # The number of consecutive B-frames. Must be greater than or equal to zero.
-        # Must be less than `VideoStream.gop_frame_count` if set. The default is 0.
+        # Must be less than H264CodecSettings.gop_frame_count if set. The default is 0.
         # Corresponds to the JSON property `bFrameCount`
         # @return [Fixnum]
         attr_accessor :b_frame_count
@@ -800,8 +800,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :crf_level
       
-        # Use two-pass encoding strategy to achieve better video quality. `VideoStream.
-        # rate_control_mode` must be `vbr`. The default is `false`.
+        # Use two-pass encoding strategy to achieve better video quality.
+        # H264CodecSettings.rate_control_mode must be `vbr`. The default is `false`.
         # Corresponds to the JSON property `enableTwoPass`
         # @return [Boolean]
         attr_accessor :enable_two_pass
@@ -874,8 +874,8 @@ module Google
         # @return [String]
         attr_accessor :profile
       
-        # Specify the `rate_control_mode`. The default is `vbr`. Supported rate control
-        # modes: - `vbr` - variable bitrate - `crf` - constant rate factor
+        # Specify the mode. The default is `vbr`. Supported rate control modes: - `vbr` -
+        # variable bitrate - `crf` - constant rate factor
         # Corresponds to the JSON property `rateControlMode`
         # @return [String]
         attr_accessor :rate_control_mode
@@ -889,13 +889,14 @@ module Google
         attr_accessor :tune
       
         # Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be
-        # greater than zero. The default is equal to 90% of `VideoStream.vbv_size_bits`.
+        # greater than zero. The default is equal to 90% of H264CodecSettings.
+        # vbv_size_bits.
         # Corresponds to the JSON property `vbvFullnessBits`
         # @return [Fixnum]
         attr_accessor :vbv_fullness_bits
       
         # Size of the Video Buffering Verifier (VBV) buffer in bits. Must be greater
-        # than zero. The default is equal to `VideoStream.bitrate_bps`.
+        # than zero. The default is equal to H264CodecSettings.bitrate_bps.
         # Corresponds to the JSON property `vbvSizeBits`
         # @return [Fixnum]
         attr_accessor :vbv_size_bits
@@ -959,7 +960,7 @@ module Google
         attr_accessor :aq_strength
       
         # The number of consecutive B-frames. Must be greater than or equal to zero.
-        # Must be less than `VideoStream.gop_frame_count` if set. The default is 0.
+        # Must be less than H265CodecSettings.gop_frame_count if set. The default is 0.
         # Corresponds to the JSON property `bFrameCount`
         # @return [Fixnum]
         attr_accessor :b_frame_count
@@ -983,8 +984,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :crf_level
       
-        # Use two-pass encoding strategy to achieve better video quality. `VideoStream.
-        # rate_control_mode` must be `vbr`. The default is `false`.
+        # Use two-pass encoding strategy to achieve better video quality.
+        # H265CodecSettings.rate_control_mode must be `vbr`. The default is `false`.
         # Corresponds to the JSON property `enableTwoPass`
         # @return [Boolean]
         attr_accessor :enable_two_pass
@@ -1054,8 +1055,8 @@ module Google
         # @return [String]
         attr_accessor :profile
       
-        # Specify the `rate_control_mode`. The default is `vbr`. Supported rate control
-        # modes: - `vbr` - variable bitrate - `crf` - constant rate factor
+        # Specify the mode. The default is `vbr`. Supported rate control modes: - `vbr` -
+        # variable bitrate - `crf` - constant rate factor
         # Corresponds to the JSON property `rateControlMode`
         # @return [String]
         attr_accessor :rate_control_mode
@@ -1069,7 +1070,8 @@ module Google
         attr_accessor :tune
       
         # Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be
-        # greater than zero. The default is equal to 90% of `VideoStream.vbv_size_bits`.
+        # greater than zero. The default is equal to 90% of H265CodecSettings.
+        # vbv_size_bits.
         # Corresponds to the JSON property `vbvFullnessBits`
         # @return [Fixnum]
         attr_accessor :vbv_fullness_bits
@@ -1169,7 +1171,7 @@ module Google
       
         # URI of the media. Input files must be at least 5 seconds in duration and
         # stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). If empty,
-        # the value is populated from `Job.input_uri`. See [Supported input and output
+        # the value is populated from Job.input_uri. See [Supported input and output
         # formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-
         # output-formats).
         # Corresponds to the JSON property `uri`
@@ -1193,7 +1195,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The processing priority of a batch job. This field can only be set for batch
-        # mode jobs, and the default value is 0. This value cannot be negative. Higher
+        # mode jobs. The default value is 0. This value cannot be negative. Higher
         # values correspond to higher priorities for the job.
         # Corresponds to the JSON property `batchModePriority`
         # @return [Fixnum]
@@ -1323,7 +1325,7 @@ module Google
         # @return [Array<Google::Apis::TranscoderV1::AdBreak>]
         attr_accessor :ad_breaks
       
-        # List of `Edit atom`s. Defines the ultimate timeline of the resulting file or
+        # List of edit atoms. Defines the ultimate timeline of the resulting file or
         # manifest.
         # Corresponds to the JSON property `editList`
         # @return [Array<Google::Apis::TranscoderV1::EditAtom>]
@@ -1502,15 +1504,14 @@ module Google
         attr_accessor :dash
       
         # The name of the generated file. The default is `manifest` with the extension
-        # suffix corresponding to the `Manifest.type`.
+        # suffix corresponding to the Manifest.type.
         # Corresponds to the JSON property `fileName`
         # @return [String]
         attr_accessor :file_name
       
-        # Required. List of user given `MuxStream.key`s that should appear in this
-        # manifest. When `Manifest.type` is `HLS`, a media manifest with name `MuxStream.
-        # key` and `.m3u8` extension is generated for each element of the `Manifest.
-        # mux_streams`.
+        # Required. List of user supplied MuxStream.key values that should appear in
+        # this manifest. When Manifest.type is `HLS`, a media manifest with name
+        # MuxStream.key and `.m3u8` extension is generated for each element in this list.
         # Corresponds to the JSON property `muxStreams`
         # @return [Array<String>]
         attr_accessor :mux_streams
@@ -1565,7 +1566,7 @@ module Google
         # @return [String]
         attr_accessor :container
       
-        # List of `ElementaryStream.key`s multiplexed in this stream.
+        # List of ElementaryStream.key values multiplexed in this stream.
         # Corresponds to the JSON property `elementaryStreams`
         # @return [Array<String>]
         attr_accessor :elementary_streams
@@ -1576,16 +1577,15 @@ module Google
         # @return [String]
         attr_accessor :encryption_id
       
-        # The name of the generated file. The default is `MuxStream.key` with the
-        # extension suffix corresponding to the `MuxStream.container`. Individual
-        # segments also have an incremental 10-digit zero-padded suffix starting from 0
-        # before the extension, such as `mux_stream0000000123.ts`.
+        # The name of the generated file. The default is MuxStream.key with the
+        # extension suffix corresponding to the MuxStream.container. Individual segments
+        # also have an incremental 10-digit zero-padded suffix starting from 0 before
+        # the extension, such as `mux_stream0000000123.ts`.
         # Corresponds to the JSON property `fileName`
         # @return [String]
         attr_accessor :file_name
       
-        # A unique key for this multiplexed stream. HLS media manifests will be named `
-        # MuxStream.key` with the `.m3u8` extension suffix.
+        # A unique key for this multiplexed stream.
         # Corresponds to the JSON property `key`
         # @return [String]
         attr_accessor :key
@@ -1640,7 +1640,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # URI for the output file(s). For example, `gs://my-bucket/outputs/`. If empty,
-        # the value is populated from `Job.output_uri`. See [Supported input and output
+        # the value is populated from Job.output_uri. See [Supported input and output
         # formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-
         # output-formats).
         # Corresponds to the JSON property `uri`
@@ -1661,7 +1661,7 @@ module Google
       class Overlay
         include Google::Apis::Core::Hashable
       
-        # List of Animations. The list should be chronological, without any time overlap.
+        # List of animations. The list should be chronological, without any time overlap.
         # Corresponds to the JSON property `animations`
         # @return [Array<Google::Apis::TranscoderV1::Animation>]
         attr_accessor :animations
@@ -2020,17 +2020,17 @@ module Google
         end
       end
       
-      # The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.
+      # The mapping for the JobConfig.edit_list atoms with text EditAtom.inputs.
       class TextMapping
         include Google::Apis::Core::Hashable
       
-        # Required. The `EditAtom.key` that references atom with text inputs in the `Job.
-        # edit_list`.
+        # Required. The EditAtom.key that references atom with text inputs in the
+        # JobConfig.edit_list.
         # Corresponds to the JSON property `atomKey`
         # @return [String]
         attr_accessor :atom_key
       
-        # Required. The `Input.key` that identifies the input file.
+        # Required. The Input.key that identifies the input file.
         # Corresponds to the JSON property `inputKey`
         # @return [String]
         attr_accessor :input_key
@@ -2075,7 +2075,7 @@ module Google
         # @return [String]
         attr_accessor :language_code
       
-        # The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.
+        # The mapping for the JobConfig.edit_list atoms with text EditAtom.inputs.
         # Corresponds to the JSON property `mapping`
         # @return [Array<Google::Apis::TranscoderV1::TextMapping>]
         attr_accessor :mapping
@@ -2194,8 +2194,8 @@ module Google
         # @return [String]
         attr_accessor :profile
       
-        # Specify the `rate_control_mode`. The default is `vbr`. Supported rate control
-        # modes: - `vbr` - variable bitrate
+        # Specify the mode. The default is `vbr`. Supported rate control modes: - `vbr` -
+        # variable bitrate
         # Corresponds to the JSON property `rateControlMode`
         # @return [String]
         attr_accessor :rate_control_mode
