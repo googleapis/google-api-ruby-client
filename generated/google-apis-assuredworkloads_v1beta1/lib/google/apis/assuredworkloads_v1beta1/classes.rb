@@ -516,11 +516,6 @@ module Google
         # @return [Array<String>]
         attr_accessor :compliant_but_disallowed_services
       
-        # Controls enabled to the user associated with this workload
-        # Corresponds to the JSON property `controls`
-        # @return [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControls]
-        attr_accessor :controls
-      
         # Output only. Immutable. The Workload creation timestamp.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -645,7 +640,6 @@ module Google
           @compliance_regime = args[:compliance_regime] if args.key?(:compliance_regime)
           @compliance_status = args[:compliance_status] if args.key?(:compliance_status)
           @compliant_but_disallowed_services = args[:compliant_but_disallowed_services] if args.key?(:compliant_but_disallowed_services)
-          @controls = args[:controls] if args.key?(:controls)
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @ekm_provisioning_response = args[:ekm_provisioning_response] if args.key?(:ekm_provisioning_response)
@@ -684,51 +678,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @kms_settings = args[:kms_settings] if args.key?(:kms_settings)
-        end
-      end
-      
-      # Controls enabled to the user associated with this workload
-      class GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControls
-        include Google::Apis::Core::Hashable
-      
-        # Output only. Org policies currently applied by this Assured Workload
-        # Corresponds to the JSON property `appliedOrgPolicies`
-        # @return [Array<Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControl>]
-        attr_accessor :applied_org_policies
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @applied_org_policies = args[:applied_org_policies] if args.key?(:applied_org_policies)
-        end
-      end
-      
-      # An org policy control applied by Assured Workloads
-      class GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControl
-        include Google::Apis::Core::Hashable
-      
-        # Output only. Constraint name of the org policy control Example: constraints/
-        # gcp.resourcelocations
-        # Corresponds to the JSON property `constraint`
-        # @return [String]
-        attr_accessor :constraint
-      
-        # Output only. Org policy version
-        # Corresponds to the JSON property `version`
-        # @return [Fixnum]
-        attr_accessor :version
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @constraint = args[:constraint] if args.key?(:constraint)
-          @version = args[:version] if args.key?(:version)
         end
       end
       
