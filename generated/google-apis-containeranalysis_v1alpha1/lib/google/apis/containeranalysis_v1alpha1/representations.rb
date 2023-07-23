@@ -70,7 +70,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BuildDefinition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BuildDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BuildMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -610,6 +622,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InTotoSlsaProvenanceV1
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InTotoStatement
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -748,6 +766,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ProvenanceBuilder
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Publisher
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -791,6 +815,18 @@ module Google
       end
       
       class Resource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourceDescriptor
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RunDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -863,6 +899,12 @@ module Google
       end
       
       class SlsaProvenance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SlsaProvenanceV1
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1025,6 +1067,7 @@ module Google
       
           property :short_description, as: 'shortDescription'
           property :state, as: 'state'
+          property :vulnerability_id, as: 'vulnerabilityId'
         end
       end
       
@@ -1070,9 +1113,22 @@ module Google
         end
       end
       
+      class BuildDefinition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :build_type, as: 'buildType'
+          hash :external_parameters, as: 'externalParameters'
+          hash :internal_parameters, as: 'internalParameters'
+          collection :resolved_dependencies, as: 'resolvedDependencies', class: Google::Apis::ContaineranalysisV1alpha1::ResourceDescriptor, decorator: Google::Apis::ContaineranalysisV1alpha1::ResourceDescriptor::Representation
+      
+        end
+      end
+      
       class BuildDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :in_toto_slsa_provenance_v1, as: 'inTotoSlsaProvenanceV1', class: Google::Apis::ContaineranalysisV1alpha1::InTotoSlsaProvenanceV1, decorator: Google::Apis::ContaineranalysisV1alpha1::InTotoSlsaProvenanceV1::Representation
+      
           property :intoto_provenance, as: 'intotoProvenance', class: Google::Apis::ContaineranalysisV1alpha1::InTotoProvenance, decorator: Google::Apis::ContaineranalysisV1alpha1::InTotoProvenance::Representation
       
           property :intoto_statement, as: 'intotoStatement', class: Google::Apis::ContaineranalysisV1alpha1::InTotoStatement, decorator: Google::Apis::ContaineranalysisV1alpha1::InTotoStatement::Representation
@@ -1080,6 +1136,15 @@ module Google
           property :provenance, as: 'provenance', class: Google::Apis::ContaineranalysisV1alpha1::BuildProvenance, decorator: Google::Apis::ContaineranalysisV1alpha1::BuildProvenance::Representation
       
           property :provenance_bytes, as: 'provenanceBytes'
+        end
+      end
+      
+      class BuildMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :finished_on, as: 'finishedOn'
+          property :invocation_id, as: 'invocationId'
+          property :started_on, as: 'startedOn'
         end
       end
       
@@ -2067,6 +2132,18 @@ module Google
         end
       end
       
+      class InTotoSlsaProvenanceV1
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :_type, as: '_type'
+          property :predicate, as: 'predicate', class: Google::Apis::ContaineranalysisV1alpha1::SlsaProvenanceV1, decorator: Google::Apis::ContaineranalysisV1alpha1::SlsaProvenanceV1::Representation
+      
+          property :predicate_type, as: 'predicateType'
+          collection :subject, as: 'subject', class: Google::Apis::ContaineranalysisV1alpha1::Subject, decorator: Google::Apis::ContaineranalysisV1alpha1::Subject::Representation
+      
+        end
+      end
+      
       class InTotoStatement
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2409,6 +2486,16 @@ module Google
         end
       end
       
+      class ProvenanceBuilder
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :builder_dependencies, as: 'builderDependencies', class: Google::Apis::ContaineranalysisV1alpha1::ResourceDescriptor, decorator: Google::Apis::ContaineranalysisV1alpha1::ResourceDescriptor::Representation
+      
+          property :id, as: 'id'
+          hash :version, as: 'version'
+        end
+      end
+      
       class Publisher
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2482,6 +2569,31 @@ module Google
       
           property :name, as: 'name'
           property :uri, as: 'uri'
+        end
+      end
+      
+      class ResourceDescriptor
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :annotations, as: 'annotations'
+          property :content, :base64 => true, as: 'content'
+          hash :digest, as: 'digest'
+          property :download_location, as: 'downloadLocation'
+          property :media_type, as: 'mediaType'
+          property :name, as: 'name'
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class RunDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :builder, as: 'builder', class: Google::Apis::ContaineranalysisV1alpha1::ProvenanceBuilder, decorator: Google::Apis::ContaineranalysisV1alpha1::ProvenanceBuilder::Representation
+      
+          collection :byproducts, as: 'byproducts', class: Google::Apis::ContaineranalysisV1alpha1::ResourceDescriptor, decorator: Google::Apis::ContaineranalysisV1alpha1::ResourceDescriptor::Representation
+      
+          property :metadata, as: 'metadata', class: Google::Apis::ContaineranalysisV1alpha1::BuildMetadata, decorator: Google::Apis::ContaineranalysisV1alpha1::BuildMetadata::Representation
+      
         end
       end
       
@@ -2599,6 +2711,16 @@ module Google
           property :metadata, as: 'metadata', class: Google::Apis::ContaineranalysisV1alpha1::SlsaMetadata, decorator: Google::Apis::ContaineranalysisV1alpha1::SlsaMetadata::Representation
       
           property :recipe, as: 'recipe', class: Google::Apis::ContaineranalysisV1alpha1::SlsaRecipe, decorator: Google::Apis::ContaineranalysisV1alpha1::SlsaRecipe::Representation
+      
+        end
+      end
+      
+      class SlsaProvenanceV1
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :build_definition, as: 'buildDefinition', class: Google::Apis::ContaineranalysisV1alpha1::BuildDefinition, decorator: Google::Apis::ContaineranalysisV1alpha1::BuildDefinition::Representation
+      
+          property :run_details, as: 'runDetails', class: Google::Apis::ContaineranalysisV1alpha1::RunDetails, decorator: Google::Apis::ContaineranalysisV1alpha1::RunDetails::Representation
       
         end
       end
@@ -2769,6 +2891,7 @@ module Google
           collection :remediations, as: 'remediations', class: Google::Apis::ContaineranalysisV1alpha1::Remediation, decorator: Google::Apis::ContaineranalysisV1alpha1::Remediation::Representation
       
           property :state, as: 'state'
+          property :vulnerability_id, as: 'vulnerabilityId'
         end
       end
       
