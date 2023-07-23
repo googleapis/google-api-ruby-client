@@ -3905,6 +3905,7 @@ module Google
           hash :payload, as: 'payload'
           property :play_audio, as: 'playAudio', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ResponseMessagePlayAudio, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ResponseMessagePlayAudio::Representation
       
+          property :response_type, as: 'responseType'
           property :telephony_transfer_call, as: 'telephonyTransferCall', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall::Representation
       
           property :text, as: 'text', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ResponseMessageText, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ResponseMessageText::Representation
