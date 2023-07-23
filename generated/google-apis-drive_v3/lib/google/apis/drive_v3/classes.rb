@@ -583,6 +583,14 @@ module Google
       class ContentRestriction
         include Google::Apis::Core::Hashable
       
+        # Whether the content restriction can only be modified or removed by a user who
+        # owns the file. For files in shared drives, any user with `organizer`
+        # capabilities can modify or remove this content restriction.
+        # Corresponds to the JSON property `ownerRestricted`
+        # @return [Boolean]
+        attr_accessor :owner_restricted
+        alias_method :owner_restricted?, :owner_restricted
+      
         # Whether the content of the file is read-only. If a file is read-only, a new
         # revision of the file may not be added, comments may not be added or modified,
         # and the title of the file may not be modified.
@@ -620,6 +628,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @owner_restricted = args[:owner_restricted] if args.key?(:owner_restricted)
           @read_only = args[:read_only] if args.key?(:read_only)
           @reason = args[:reason] if args.key?(:reason)
           @restricting_user = args[:restricting_user] if args.key?(:restricting_user)
@@ -1615,18 +1624,32 @@ module Google
           attr_accessor :can_modify_content
           alias_method :can_modify_content?, :can_modify_content
         
-          # Output only. Whether the current user can modify restrictions on content of
-          # this file.
+          # Deprecated: Output only. Use one of `canModifyEditorContentRestriction`, `
+          # canModifyOwnerContentRestriction` or `canRemoveContentRestriction`.
           # Corresponds to the JSON property `canModifyContentRestriction`
           # @return [Boolean]
           attr_accessor :can_modify_content_restriction
           alias_method :can_modify_content_restriction?, :can_modify_content_restriction
+        
+          # Output only. Whether the current user can add or modify content restrictions
+          # on the file which are editor restricted.
+          # Corresponds to the JSON property `canModifyEditorContentRestriction`
+          # @return [Boolean]
+          attr_accessor :can_modify_editor_content_restriction
+          alias_method :can_modify_editor_content_restriction?, :can_modify_editor_content_restriction
         
           # Output only. Whether the current user can modify the labels on the file.
           # Corresponds to the JSON property `canModifyLabels`
           # @return [Boolean]
           attr_accessor :can_modify_labels
           alias_method :can_modify_labels?, :can_modify_labels
+        
+          # Output only. Whether the current user can add or modify content restrictions
+          # which are owner restricted.
+          # Corresponds to the JSON property `canModifyOwnerContentRestriction`
+          # @return [Boolean]
+          attr_accessor :can_modify_owner_content_restriction
+          alias_method :can_modify_owner_content_restriction?, :can_modify_owner_content_restriction
         
           # Output only. Whether the current user can move children of this folder outside
           # of the shared drive. This is false when the item is not a folder. Only
@@ -1733,6 +1756,13 @@ module Google
           attr_accessor :can_remove_children
           alias_method :can_remove_children?, :can_remove_children
         
+          # Output only. Whether there is a content restriction on the file that can be
+          # removed by the current user.
+          # Corresponds to the JSON property `canRemoveContentRestriction`
+          # @return [Boolean]
+          attr_accessor :can_remove_content_restriction
+          alias_method :can_remove_content_restriction?, :can_remove_content_restriction
+        
           # Output only. Whether the current user can remove a parent from the item
           # without adding another parent in the same request. Not populated for shared
           # drive files.
@@ -1796,7 +1826,9 @@ module Google
             @can_list_children = args[:can_list_children] if args.key?(:can_list_children)
             @can_modify_content = args[:can_modify_content] if args.key?(:can_modify_content)
             @can_modify_content_restriction = args[:can_modify_content_restriction] if args.key?(:can_modify_content_restriction)
+            @can_modify_editor_content_restriction = args[:can_modify_editor_content_restriction] if args.key?(:can_modify_editor_content_restriction)
             @can_modify_labels = args[:can_modify_labels] if args.key?(:can_modify_labels)
+            @can_modify_owner_content_restriction = args[:can_modify_owner_content_restriction] if args.key?(:can_modify_owner_content_restriction)
             @can_move_children_out_of_drive = args[:can_move_children_out_of_drive] if args.key?(:can_move_children_out_of_drive)
             @can_move_children_out_of_team_drive = args[:can_move_children_out_of_team_drive] if args.key?(:can_move_children_out_of_team_drive)
             @can_move_children_within_drive = args[:can_move_children_within_drive] if args.key?(:can_move_children_within_drive)
@@ -1812,6 +1844,7 @@ module Google
             @can_read_revisions = args[:can_read_revisions] if args.key?(:can_read_revisions)
             @can_read_team_drive = args[:can_read_team_drive] if args.key?(:can_read_team_drive)
             @can_remove_children = args[:can_remove_children] if args.key?(:can_remove_children)
+            @can_remove_content_restriction = args[:can_remove_content_restriction] if args.key?(:can_remove_content_restriction)
             @can_remove_my_drive_parent = args[:can_remove_my_drive_parent] if args.key?(:can_remove_my_drive_parent)
             @can_rename = args[:can_rename] if args.key?(:can_rename)
             @can_share = args[:can_share] if args.key?(:can_share)
