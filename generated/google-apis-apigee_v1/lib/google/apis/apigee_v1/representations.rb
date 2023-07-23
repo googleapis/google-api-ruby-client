@@ -586,6 +586,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1GrpcOperationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1GrpcOperationGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1IngressConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1654,6 +1666,8 @@ module Google
           collection :environments, as: 'environments'
           property :graphql_operation_group, as: 'graphqlOperationGroup', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1GraphQlOperationGroup, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1GraphQlOperationGroup::Representation
       
+          property :grpc_operation_group, as: 'grpcOperationGroup', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1GrpcOperationGroup, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1GrpcOperationGroup::Representation
+      
           property :last_modified_at, :numeric_string => true, as: 'lastModifiedAt'
           property :name, as: 'name'
           property :operation_group, as: 'operationGroup', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1OperationGroup, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1OperationGroup::Representation
@@ -2391,6 +2405,7 @@ module Google
           property :description, as: 'description'
           property :display_name, as: 'displayName'
           property :forward_proxy_uri, as: 'forwardProxyUri'
+          property :has_attached_flow_hooks, as: 'hasAttachedFlowHooks'
           property :last_modified_at, :numeric_string => true, as: 'lastModifiedAt'
           property :name, as: 'name'
           property :node_config, as: 'nodeConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1NodeConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1NodeConfig::Representation
@@ -2603,6 +2618,27 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :operation_config_type, as: 'operationConfigType'
           collection :operation_configs, as: 'operationConfigs', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1GraphQlOperationConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1GraphQlOperationConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApigeeV1GrpcOperationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_source, as: 'apiSource'
+          collection :attributes, as: 'attributes', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute::Representation
+      
+          collection :methods_prop, as: 'methods'
+          property :quota, as: 'quota', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Quota, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Quota::Representation
+      
+          property :service, as: 'service'
+        end
+      end
+      
+      class GoogleCloudApigeeV1GrpcOperationGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :operation_configs, as: 'operationConfigs', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1GrpcOperationConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1GrpcOperationConfig::Representation
       
         end
       end

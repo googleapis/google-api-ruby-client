@@ -589,6 +589,12 @@ module Google
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1GraphQlOperationGroup]
         attr_accessor :graphql_operation_group
       
+        # List of gRPC operation configuration details associated with Apigee API
+        # proxies.
+        # Corresponds to the JSON property `grpcOperationGroup`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1GrpcOperationGroup]
+        attr_accessor :grpc_operation_group
+      
         # Response only. Modified time of this environment as milliseconds since epoch.
         # Corresponds to the JSON property `lastModifiedAt`
         # @return [Fixnum]
@@ -669,6 +675,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @environments = args[:environments] if args.key?(:environments)
           @graphql_operation_group = args[:graphql_operation_group] if args.key?(:graphql_operation_group)
+          @grpc_operation_group = args[:grpc_operation_group] if args.key?(:grpc_operation_group)
           @last_modified_at = args[:last_modified_at] if args.key?(:last_modified_at)
           @name = args[:name] if args.key?(:name)
           @operation_group = args[:operation_group] if args.key?(:operation_group)
@@ -3638,6 +3645,12 @@ module Google
         # @return [String]
         attr_accessor :forward_proxy_uri
       
+        # 
+        # Corresponds to the JSON property `hasAttachedFlowHooks`
+        # @return [Boolean]
+        attr_accessor :has_attached_flow_hooks
+        alias_method :has_attached_flow_hooks?, :has_attached_flow_hooks
+      
         # Output only. Last modification time of this environment as milliseconds since
         # epoch.
         # Corresponds to the JSON property `lastModifiedAt`
@@ -3680,6 +3693,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @forward_proxy_uri = args[:forward_proxy_uri] if args.key?(:forward_proxy_uri)
+          @has_attached_flow_hooks = args[:has_attached_flow_hooks] if args.key?(:has_attached_flow_hooks)
           @last_modified_at = args[:last_modified_at] if args.key?(:last_modified_at)
           @name = args[:name] if args.key?(:name)
           @node_config = args[:node_config] if args.key?(:node_config)
@@ -4454,6 +4468,81 @@ module Google
         # Update properties of this object
         def update!(**args)
           @operation_config_type = args[:operation_config_type] if args.key?(:operation_config_type)
+          @operation_configs = args[:operation_configs] if args.key?(:operation_configs)
+        end
+      end
+      
+      # Binds the resources in a proxy or remote service with the gRPC operation and
+      # its associated quota enforcement.
+      class GoogleCloudApigeeV1GrpcOperationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Name of the API proxy with which the gRPC operation and quota are
+        # associated.
+        # Corresponds to the JSON property `apiSource`
+        # @return [String]
+        attr_accessor :api_source
+      
+        # Custom attributes associated with the operation.
+        # Corresponds to the JSON property `attributes`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute>]
+        attr_accessor :attributes
+      
+        # List of unqualified gRPC method names for the proxy to which quota will be
+        # applied. If this field is empty, the Quota will apply to all operations on the
+        # gRPC service defined on the proxy. Example: Given a proxy that is configured
+        # to serve com.petstore.PetService, the methods com.petstore.PetService.ListPets
+        # and com.petstore.PetService.GetPet would be specified here as simply ["
+        # ListPets", "GetPet"].
+        # Corresponds to the JSON property `methods`
+        # @return [Array<String>]
+        attr_accessor :methods_prop
+      
+        # Quota contains the essential parameters needed that can be applied on the
+        # resources, methods, API source combination associated with this API product.
+        # While Quota is optional, setting it prevents requests from exceeding the
+        # provisioned parameters.
+        # Corresponds to the JSON property `quota`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Quota]
+        attr_accessor :quota
+      
+        # Required. gRPC Service name associated to be associated with the API proxy, on
+        # which quota rules can be applied upon.
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_source = args[:api_source] if args.key?(:api_source)
+          @attributes = args[:attributes] if args.key?(:attributes)
+          @methods_prop = args[:methods_prop] if args.key?(:methods_prop)
+          @quota = args[:quota] if args.key?(:quota)
+          @service = args[:service] if args.key?(:service)
+        end
+      end
+      
+      # List of gRPC operation configuration details associated with Apigee API
+      # proxies.
+      class GoogleCloudApigeeV1GrpcOperationGroup
+        include Google::Apis::Core::Hashable
+      
+        # Required. List of operation configurations for either Apigee API proxies that
+        # are associated with this API product.
+        # Corresponds to the JSON property `operationConfigs`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1GrpcOperationConfig>]
+        attr_accessor :operation_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @operation_configs = args[:operation_configs] if args.key?(:operation_configs)
         end
       end
