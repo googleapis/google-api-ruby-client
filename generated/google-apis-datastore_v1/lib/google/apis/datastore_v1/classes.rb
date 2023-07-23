@@ -2111,7 +2111,9 @@ module Google
       class ReadOnly
         include Google::Apis::Core::Hashable
       
-        # Reads entities at the given time. This may not be older than 60 seconds.
+        # Reads entities at the given time. This must be a microsecond precision
+        # timestamp within the past one hour, or if Point-in-Time Recovery is enabled,
+        # can additionally be a whole minute timestamp within the past 7 days.
         # Corresponds to the JSON property `readTime`
         # @return [String]
         attr_accessor :read_time
@@ -2142,8 +2144,10 @@ module Google
         # @return [String]
         attr_accessor :read_consistency
       
-        # Reads entities as they were at the given time. This may not be older than 270
-        # seconds. This value is only supported for Cloud Firestore in Datastore mode.
+        # Reads entities as they were at the given time. This value is only supported
+        # for Cloud Firestore in Datastore mode. This must be a microsecond precision
+        # timestamp within the past one hour, or if Point-in-Time Recovery is enabled,
+        # can additionally be a whole minute timestamp within the past 7 days.
         # Corresponds to the JSON property `readTime`
         # @return [String]
         attr_accessor :read_time
