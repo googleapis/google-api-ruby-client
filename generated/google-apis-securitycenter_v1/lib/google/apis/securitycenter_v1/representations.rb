@@ -789,6 +789,7 @@ module Google
       class Container
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
           property :image_id, as: 'imageId'
           collection :labels, as: 'labels', class: Google::Apis::SecuritycenterV1::Label, decorator: Google::Apis::SecuritycenterV1::Label::Representation
       
