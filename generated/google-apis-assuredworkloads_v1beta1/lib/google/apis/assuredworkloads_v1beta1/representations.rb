@@ -118,18 +118,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControls
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControl
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -357,8 +345,6 @@ module Google
           property :compliance_status, as: 'complianceStatus', class: Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceStatus, decorator: Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceStatus::Representation
       
           collection :compliant_but_disallowed_services, as: 'compliantButDisallowedServices'
-          property :controls, as: 'controls', class: Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControls, decorator: Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControls::Representation
-      
           property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
           property :ekm_provisioning_response, as: 'ekmProvisioningResponse', class: Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponse, decorator: Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponse::Representation
@@ -395,22 +381,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kms_settings, as: 'kmsSettings', class: Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1WorkloadKmsSettings, decorator: Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1WorkloadKmsSettings::Representation
       
-        end
-      end
-      
-      class GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControls
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :applied_org_policies, as: 'appliedOrgPolicies', class: Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControl, decorator: Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControl::Representation
-      
-        end
-      end
-      
-      class GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControl
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :constraint, as: 'constraint'
-          property :version, as: 'version'
         end
       end
       
