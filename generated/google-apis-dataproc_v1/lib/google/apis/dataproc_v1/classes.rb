@@ -1308,14 +1308,15 @@ module Google
       class ExecutionConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. The duration to keep the session alive while it's idling. Exceeding
-        # this threshold causes the session to terminate. This field cannot be set on a
-        # batch workload. Minimum value is 10 minutes; maximum value is 14 days (see
-        # JSON representation of Duration (https://developers.google.com/protocol-
-        # buffers/docs/proto3#json)). Defaults to 4 hours if not set. If both ttl and
-        # idle_ttl are specified for an interactive session, the conditions are treated
-        # as OR conditions: the workload will be terminated when it has been idle for
-        # idle_ttl or when ttl has been exceeded, whichever occurs first.
+        # Optional. Applies to sessions only. The duration to keep the session alive
+        # while it's idling. Exceeding this threshold causes the session to terminate.
+        # This field cannot be set on a batch workload. Minimum value is 10 minutes;
+        # maximum value is 14 days (see JSON representation of Duration (https://
+        # developers.google.com/protocol-buffers/docs/proto3#json)). Defaults to 4 hours
+        # if not set. If both ttl and idle_ttl are specified for an interactive session,
+        # the conditions are treated as OR conditions: the workload will be terminated
+        # when it has been idle for idle_ttl or when ttl has been exceeded, whichever
+        # occurs first.
         # Corresponds to the JSON property `idleTtl`
         # @return [String]
         attr_accessor :idle_ttl
@@ -1443,6 +1444,70 @@ module Google
         end
       end
       
+      # A Dataproc job for running Apache Flink (https://flink.apache.org/)
+      # applications on YARN.
+      class FlinkJob
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The arguments to pass to the driver. Do not include arguments, such
+        # as --conf, that can be set as job properties, since a collision may occur that
+        # causes an incorrect job submission.
+        # Corresponds to the JSON property `args`
+        # @return [Array<String>]
+        attr_accessor :args
+      
+        # Optional. HCFS URIs of jar files to add to the CLASSPATHs of the Flink driver
+        # and tasks.
+        # Corresponds to the JSON property `jarFileUris`
+        # @return [Array<String>]
+        attr_accessor :jar_file_uris
+      
+        # The runtime logging config of the job.
+        # Corresponds to the JSON property `loggingConfig`
+        # @return [Google::Apis::DataprocV1::LoggingConfig]
+        attr_accessor :logging_config
+      
+        # The name of the driver's main class. The jar file that contains the class must
+        # be in the default CLASSPATH or specified in jar_file_uris.
+        # Corresponds to the JSON property `mainClass`
+        # @return [String]
+        attr_accessor :main_class
+      
+        # The HCFS URI of the jar file that contains the main class.
+        # Corresponds to the JSON property `mainJarFileUri`
+        # @return [String]
+        attr_accessor :main_jar_file_uri
+      
+        # Optional. A mapping of property names to values, used to configure Flink.
+        # Properties that conflict with values set by the Dataproc API may beoverwritten.
+        # Can include properties set in/etc/flink/conf/flink-defaults.conf and classes
+        # in user code.
+        # Corresponds to the JSON property `properties`
+        # @return [Hash<String,String>]
+        attr_accessor :properties
+      
+        # Optional. HCFS URI of the savepoint which contains the last saved progress for
+        # this job
+        # Corresponds to the JSON property `savepointUri`
+        # @return [String]
+        attr_accessor :savepoint_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @args = args[:args] if args.key?(:args)
+          @jar_file_uris = args[:jar_file_uris] if args.key?(:jar_file_uris)
+          @logging_config = args[:logging_config] if args.key?(:logging_config)
+          @main_class = args[:main_class] if args.key?(:main_class)
+          @main_jar_file_uri = args[:main_jar_file_uri] if args.key?(:main_jar_file_uri)
+          @properties = args[:properties] if args.key?(:properties)
+          @savepoint_uri = args[:savepoint_uri] if args.key?(:savepoint_uri)
+        end
+      end
+      
       # Common config settings for resources of Compute Engine cluster instances,
       # applicable to all instances in the cluster.
       class GceClusterConfig
@@ -1465,9 +1530,9 @@ module Google
         attr_accessor :internal_ip_only
         alias_method :internal_ip_only?, :internal_ip_only
       
-        # The Compute Engine metadata entries to add to all instances (see Project and
-        # instance metadata (https://cloud.google.com/compute/docs/storing-retrieving-
-        # metadata#project_and_instance_metadata)).
+        # Optional. The Compute Engine metadata entries to add to all instances (see
+        # Project and instance metadata (https://cloud.google.com/compute/docs/storing-
+        # retrieving-metadata#project_and_instance_metadata)).
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,String>]
         attr_accessor :metadata
@@ -2350,6 +2415,12 @@ module Google
         # @return [Google::Apis::DataprocV1::DriverSchedulingConfig]
         attr_accessor :driver_scheduling_config
       
+        # A Dataproc job for running Apache Flink (https://flink.apache.org/)
+        # applications on YARN.
+        # Corresponds to the JSON property `flinkJob`
+        # @return [Google::Apis::DataprocV1::FlinkJob]
+        attr_accessor :flink_job
+      
         # A Dataproc job for running Apache Hadoop MapReduce (https://hadoop.apache.org/
         # docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/
         # MapReduceTutorial.html) jobs on Apache Hadoop YARN (https://hadoop.apache.org/
@@ -2468,6 +2539,7 @@ module Google
           @driver_control_files_uri = args[:driver_control_files_uri] if args.key?(:driver_control_files_uri)
           @driver_output_resource_uri = args[:driver_output_resource_uri] if args.key?(:driver_output_resource_uri)
           @driver_scheduling_config = args[:driver_scheduling_config] if args.key?(:driver_scheduling_config)
+          @flink_job = args[:flink_job] if args.key?(:flink_job)
           @hadoop_job = args[:hadoop_job] if args.key?(:hadoop_job)
           @hive_job = args[:hive_job] if args.key?(:hive_job)
           @job_uuid = args[:job_uuid] if args.key?(:job_uuid)
@@ -4217,7 +4289,7 @@ module Google
         # @return [Google::Apis::DataprocV1::UsageMetrics]
         attr_accessor :approximate_usage
       
-        # The usage snaphot represents the resources consumed by a workload at a
+        # The usage snapshot represents the resources consumed by a workload at a
         # specified time.
         # Corresponds to the JSON property `currentUsage`
         # @return [Google::Apis::DataprocV1::UsageSnapshot]
@@ -5228,7 +5300,7 @@ module Google
         end
       end
       
-      # The usage snaphot represents the resources consumed by a workload at a
+      # The usage snapshot represents the resources consumed by a workload at a
       # specified time.
       class UsageSnapshot
         include Google::Apis::Core::Hashable
@@ -5239,11 +5311,25 @@ module Google
         # @return [Fixnum]
         attr_accessor :milli_dcu
       
+        # Optional. Milli (one-thousandth) Dataproc Compute Units (DCUs) charged at
+        # premium tier (see Dataproc Serverless pricing (https://cloud.google.com/
+        # dataproc-serverless/pricing)).
+        # Corresponds to the JSON property `milliDcuPremium`
+        # @return [Fixnum]
+        attr_accessor :milli_dcu_premium
+      
         # Optional. Shuffle Storage in gigabytes (GB). (see Dataproc Serverless pricing (
         # https://cloud.google.com/dataproc-serverless/pricing))
         # Corresponds to the JSON property `shuffleStorageGb`
         # @return [Fixnum]
         attr_accessor :shuffle_storage_gb
+      
+        # Optional. Shuffle Storage in gigabytes (GB) charged at premium tier. (see
+        # Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/
+        # pricing))
+        # Corresponds to the JSON property `shuffleStorageGbPremium`
+        # @return [Fixnum]
+        attr_accessor :shuffle_storage_gb_premium
       
         # Optional. The timestamp of the usage snapshot.
         # Corresponds to the JSON property `snapshotTime`
@@ -5257,7 +5343,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @milli_dcu = args[:milli_dcu] if args.key?(:milli_dcu)
+          @milli_dcu_premium = args[:milli_dcu_premium] if args.key?(:milli_dcu_premium)
           @shuffle_storage_gb = args[:shuffle_storage_gb] if args.key?(:shuffle_storage_gb)
+          @shuffle_storage_gb_premium = args[:shuffle_storage_gb_premium] if args.key?(:shuffle_storage_gb_premium)
           @snapshot_time = args[:snapshot_time] if args.key?(:snapshot_time)
         end
       end
