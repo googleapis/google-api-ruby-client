@@ -631,14 +631,15 @@ module Google
         #   role = "ROLE_MEMBER" ``` Invalid queries are rejected by the server with an `
         #   INVALID_ARGUMENT` error.
         # @param [Fixnum] page_size
-        #   The maximum number of memberships to return. The service might return fewer
-        #   than this value. If unspecified, at most 100 memberships are returned. The
-        #   maximum value is 1,000. If you use a value more than 1,000, it's automatically
-        #   changed to 1,000. Negative values return an `INVALID_ARGUMENT` error.
+        #   Optional. The maximum number of memberships to return. The service might
+        #   return fewer than this value. If unspecified, at most 100 memberships are
+        #   returned. The maximum value is 1,000. If you use a value more than 1,000, it's
+        #   automatically changed to 1,000. Negative values return an `INVALID_ARGUMENT`
+        #   error.
         # @param [String] page_token
-        #   A page token, received from a previous call to list memberships. Provide this
-        #   parameter to retrieve the subsequent page. When paginating, all other
-        #   parameters provided should match the call that provided the page token.
+        #   Optional. A page token, received from a previous call to list memberships.
+        #   Provide this parameter to retrieve the subsequent page. When paginating, all
+        #   other parameters provided should match the call that provided the page token.
         #   Passing different values to the other parameters might lead to unexpected
         #   results.
         # @param [Boolean] show_invited
