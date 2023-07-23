@@ -82,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CloudFunctionV2Target
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CloudRun
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -628,6 +634,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SyntheticMonitorTarget
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TcpCheck
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -821,6 +833,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :service, as: 'service'
+        end
+      end
+      
+      class CloudFunctionV2Target
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_run_revision, as: 'cloudRunRevision', class: Google::Apis::MonitoringV3::MonitoredResource, decorator: Google::Apis::MonitoringV3::MonitoredResource::Representation
+      
+          property :name, as: 'name'
         end
       end
       
@@ -1761,6 +1782,14 @@ module Google
         end
       end
       
+      class SyntheticMonitorTarget
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_function_v2, as: 'cloudFunctionV2', class: Google::Apis::MonitoringV3::CloudFunctionV2Target, decorator: Google::Apis::MonitoringV3::CloudFunctionV2Target::Representation
+      
+        end
+      end
+      
       class TcpCheck
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1886,6 +1915,8 @@ module Google
           property :resource_group, as: 'resourceGroup', class: Google::Apis::MonitoringV3::ResourceGroup, decorator: Google::Apis::MonitoringV3::ResourceGroup::Representation
       
           collection :selected_regions, as: 'selectedRegions'
+          property :synthetic_monitor, as: 'syntheticMonitor', class: Google::Apis::MonitoringV3::SyntheticMonitorTarget, decorator: Google::Apis::MonitoringV3::SyntheticMonitorTarget::Representation
+      
           property :tcp_check, as: 'tcpCheck', class: Google::Apis::MonitoringV3::TcpCheck, decorator: Google::Apis::MonitoringV3::TcpCheck::Representation
       
           property :timeout, as: 'timeout'

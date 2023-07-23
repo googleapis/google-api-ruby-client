@@ -155,9 +155,10 @@ module Google
         # notifications, and incidents. To avoid confusion, don't use the same display
         # name for multiple policies in the same project. The name is limited to 512
         # Unicode characters.The convention for the display_name of a
-        # PrometheusQueryLanguageCondition is "/", where the and should be taken from
-        # the corresponding Prometheus configuration file. This convention is not
-        # enforced. In any case the display_name is not a unique key of the AlertPolicy.
+        # PrometheusQueryLanguageCondition is "`rule group name`/`alert name`", where
+        # the `rule group name` and `alert name` should be taken from the corresponding
+        # Prometheus configuration file. This convention is not enforced. In any case
+        # the display_name is not a unique key of the AlertPolicy.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -205,10 +206,11 @@ module Google
         # AlertPolicy objects.The field can contain up to 64 entries. Each key and value
         # is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels
         # and values can contain only lowercase letters, numerals, underscores, and
-        # dashes. Keys must begin with a letter.Note that Prometheus and are valid
-        # Prometheus label names (https://prometheus.io/docs/concepts/data_model/#metric-
-        # names-and-labels). This means that they cannot be stored as is in user labels,
-        # because Prometheus labels may contain upper-case letters.
+        # dashes. Keys must begin with a letter.Note that Prometheus `rule group name`
+        # and `alert name` are valid Prometheus label names (https://prometheus.io/docs/
+        # concepts/data_model/#metric-names-and-labels). This means that they cannot be
+        # stored as-is in user labels, because Prometheus labels may contain upper-case
+        # letters.
         # Corresponds to the JSON property `userLabels`
         # @return [Hash<String,String>]
         attr_accessor :user_labels
@@ -504,6 +506,41 @@ module Google
         # Update properties of this object
         def update!(**args)
           @service = args[:service] if args.key?(:service)
+        end
+      end
+      
+      # A Synthetic Monitor deployed to a Cloud Functions V2 instance.
+      class CloudFunctionV2Target
+        include Google::Apis::Core::Hashable
+      
+        # An object representing a resource that can be used for monitoring, logging,
+        # billing, or other purposes. Examples include virtual machine instances,
+        # databases, and storage devices such as disks. The type field identifies a
+        # MonitoredResourceDescriptor object that describes the resource's schema.
+        # Information in the labels field identifies the actual resource and its
+        # attributes according to the schema. For example, a particular Compute Engine
+        # VM instance could be represented by the following object, because the
+        # MonitoredResourceDescriptor for "gce_instance" has labels "project_id", "
+        # instance_id" and "zone": ` "type": "gce_instance", "labels": ` "project_id": "
+        # my-project", "instance_id": "12345678901234", "zone": "us-central1-a" ``
+        # Corresponds to the JSON property `cloudRunRevision`
+        # @return [Google::Apis::MonitoringV3::MonitoredResource]
+        attr_accessor :cloud_run_revision
+      
+        # Required. Fully qualified GCFv2 resource name i.e. projects/`project`/
+        # locations/`location`/functions/`function` Required.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_run_revision = args[:cloud_run_revision] if args.key?(:cloud_run_revision)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -4422,6 +4459,25 @@ module Google
         end
       end
       
+      # Describes a Synthetic Monitor to be invoked by Uptime.
+      class SyntheticMonitorTarget
+        include Google::Apis::Core::Hashable
+      
+        # A Synthetic Monitor deployed to a Cloud Functions V2 instance.
+        # Corresponds to the JSON property `cloudFunctionV2`
+        # @return [Google::Apis::MonitoringV3::CloudFunctionV2Target]
+        attr_accessor :cloud_function_v2
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_function_v2 = args[:cloud_function_v2] if args.key?(:cloud_function_v2)
+        end
+      end
+      
       # Information required for a TCP Uptime check request.
       class TcpCheck
         include Google::Apis::Core::Hashable
@@ -4943,6 +4999,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :selected_regions
       
+        # Describes a Synthetic Monitor to be invoked by Uptime.
+        # Corresponds to the JSON property `syntheticMonitor`
+        # @return [Google::Apis::MonitoringV3::SyntheticMonitorTarget]
+        attr_accessor :synthetic_monitor
+      
         # Information required for a TCP Uptime check request.
         # Corresponds to the JSON property `tcpCheck`
         # @return [Google::Apis::MonitoringV3::TcpCheck]
@@ -4980,6 +5041,7 @@ module Google
           @period = args[:period] if args.key?(:period)
           @resource_group = args[:resource_group] if args.key?(:resource_group)
           @selected_regions = args[:selected_regions] if args.key?(:selected_regions)
+          @synthetic_monitor = args[:synthetic_monitor] if args.key?(:synthetic_monitor)
           @tcp_check = args[:tcp_check] if args.key?(:tcp_check)
           @timeout = args[:timeout] if args.key?(:timeout)
           @user_labels = args[:user_labels] if args.key?(:user_labels)
