@@ -26,17 +26,17 @@ module Google
       class AcceptSpokeRequest
         include Google::Apis::Core::Hashable
       
-        # Optional. A unique request ID (optional). If you specify this ID, you can use
-        # it in cases when you need to retry your request. When you need to retry, this
-        # ID lets the server know that it can ignore the request if it has already been
-        # completed. The server guarantees that for at least 60 minutes after the first
-        # request. For example, consider a situation where you make an initial request
-        # and the request times out. If you make the request again with the same request
-        # ID, the server can check to see whether the original operation was received.
-        # If it was, the server ignores the second request. This behavior prevents
-        # clients from mistakenly creating duplicate commitments. The request ID must be
-        # a valid UUID, with the exception that zero UUID is not supported (00000000-
-        # 0000-0000-0000-000000000000).
+        # Optional. A request ID to identify requests. Specify a unique request ID so
+        # that if you must retry your request, the server will know to ignore the
+        # request if it has already been completed. The server guarantees that a request
+        # doesn't result in creation of duplicate commitments for at least 60 minutes.
+        # For example, consider a situation where you make an initial request and the
+        # request times out. If you make the request again with the same request ID, the
+        # server can check to see whether the original operation was received. If it was,
+        # the server ignores the second request. This behavior prevents clients from
+        # mistakenly creating duplicate commitments. The request ID must be a valid UUID,
+        # with the exception that zero UUID is not supported (00000000-0000-0000-0000-
+        # 000000000000).
         # Corresponds to the JSON property `requestId`
         # @return [String]
         attr_accessor :request_id
@@ -820,12 +820,12 @@ module Google
       class LinkedVpcNetwork
         include Google::Apis::Core::Hashable
       
-        # Optional. IP Ranges encompassing the subnets to be excluded from peering.
+        # Optional. IP ranges encompassing the subnets to be excluded from peering.
         # Corresponds to the JSON property `excludeExportRanges`
         # @return [Array<String>]
         attr_accessor :exclude_export_ranges
       
-        # Required. The URI of the VPC network resource
+        # Required. The URI of the VPC network resource.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -1587,22 +1587,23 @@ module Google
       class RejectSpokeRequest
         include Google::Apis::Core::Hashable
       
-        # Optional. Additional Details behind the rejection
+        # Optional. Additional information provided by the hub administrator in the `
+        # RejectSpoke` call.
         # Corresponds to the JSON property `details`
         # @return [String]
         attr_accessor :details
       
-        # Optional. A unique request ID (optional). If you specify this ID, you can use
-        # it in cases when you need to retry your request. When you need to retry, this
-        # ID lets the server know that it can ignore the request if it has already been
-        # completed. The server guarantees that for at least 60 minutes after the first
-        # request. For example, consider a situation where you make an initial request
-        # and the request times out. If you make the request again with the same request
-        # ID, the server can check to see whether the original operation was received.
-        # If it was, the server ignores the second request. This behavior prevents
-        # clients from mistakenly creating duplicate commitments. The request ID must be
-        # a valid UUID, with the exception that zero UUID is not supported (00000000-
-        # 0000-0000-0000-000000000000).
+        # Optional. A request ID to identify requests. Specify a unique request ID so
+        # that if you must retry your request, the server will know to ignore the
+        # request if it has already been completed. The server guarantees that a request
+        # doesn't result in creation of duplicate commitments for at least 60 minutes.
+        # For example, consider a situation where you make an initial request and the
+        # request times out. If you make the request again with the same request ID, the
+        # server can check to see whether the original operation was received. If it was,
+        # the server ignores the second request. This behavior prevents clients from
+        # mistakenly creating duplicate commitments. The request ID must be a valid UUID,
+        # with the exception that zero UUID is not supported (00000000-0000-0000-0000-
+        # 000000000000).
         # Corresponds to the JSON property `requestId`
         # @return [String]
         attr_accessor :request_id
@@ -1651,8 +1652,8 @@ module Google
         # @return [String]
         attr_accessor :location
       
-        # Immutable. The name of the route. Route names must be unique. They use the
-        # following form: `projects/`project_number`/locations/global/hubs/`hub`/
+        # Immutable. The name of the route. Route names must be unique. Route names use
+        # the following form: `projects/`project_number`/locations/global/hubs/`hub`/
         # routeTables/`route_table_id`/routes/`route_id``
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -1683,7 +1684,7 @@ module Google
         # Output only. The Google-generated UUID for the route. This value is unique
         # across all Network Connectivity Center route resources. If a route is deleted
         # and another with the same name is created, the new route is assigned a
-        # different unique_id.
+        # different `uid`.
         # Corresponds to the JSON property `uid`
         # @return [String]
         attr_accessor :uid
@@ -1735,7 +1736,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Immutable. The name of the route table. Route Table names must be unique. They
+        # Immutable. The name of the route table. Route table names must be unique. They
         # use the following form: `projects/`project_number`/locations/global/hubs/`hub`/
         # routeTables/`route_table_id``
         # Corresponds to the JSON property `name`
@@ -1750,7 +1751,7 @@ module Google
         # Output only. The Google-generated UUID for the route table. This value is
         # unique across all route table resources. If a route table is deleted and
         # another with the same name is created, the new route table is assigned a
-        # different unique_id.
+        # different `uid`.
         # Corresponds to the JSON property `uid`
         # @return [String]
         attr_accessor :uid
@@ -2277,7 +2278,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Output only. The reasons for current state of the spoke.
+        # Output only. The reasons for current state of the spoke. Only present when the
+        # spoke is in the `INACTIVE` state.
         # Corresponds to the JSON property `reasons`
         # @return [Array<Google::Apis::NetworkconnectivityV1::StateReason>]
         attr_accessor :reasons
@@ -2294,7 +2296,7 @@ module Google
       
         # Output only. The Google-generated UUID for the spoke. This value is unique
         # across all spoke resources. If a spoke is deleted and another with the same
-        # name is created, the new spoke is assigned a different unique_id.
+        # name is created, the new spoke is assigned a different `unique_id`.
         # Corresponds to the JSON property `uniqueId`
         # @return [String]
         attr_accessor :unique_id
