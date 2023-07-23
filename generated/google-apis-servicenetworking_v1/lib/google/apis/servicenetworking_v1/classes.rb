@@ -1279,6 +1279,11 @@ module Google
         # @return [String]
         attr_accessor :environment
       
+        # Defines policies applying to the API methods of the service.
+        # Corresponds to the JSON property `methodPolicies`
+        # @return [Array<Google::Apis::ServicenetworkingV1::MethodPolicy>]
+        attr_accessor :method_policies
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1286,6 +1291,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @environment = args[:environment] if args.key?(:environment)
+          @method_policies = args[:method_policies] if args.key?(:method_policies)
         end
       end
       
@@ -1526,6 +1532,31 @@ module Google
         def update!(**args)
           @dns_suffix = args[:dns_suffix] if args.key?(:dns_suffix)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # * Represents a pair of private and peering DNS zone resources. *
+      class DnsZonePair
+        include Google::Apis::Core::Hashable
+      
+        # Represents a DNS zone resource.
+        # Corresponds to the JSON property `consumerPeeringZone`
+        # @return [Google::Apis::ServicenetworkingV1::DnsZone]
+        attr_accessor :consumer_peering_zone
+      
+        # Represents a DNS zone resource.
+        # Corresponds to the JSON property `producerPrivateZone`
+        # @return [Google::Apis::ServicenetworkingV1::DnsZone]
+        attr_accessor :producer_private_zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consumer_peering_zone = args[:consumer_peering_zone] if args.key?(:consumer_peering_zone)
+          @producer_private_zone = args[:producer_private_zone] if args.key?(:producer_private_zone)
         end
       end
       
@@ -1976,6 +2007,50 @@ module Google
           @options = args[:options] if args.key?(:options)
           @packed = args[:packed] if args.key?(:packed)
           @type_url = args[:type_url] if args.key?(:type_url)
+        end
+      end
+      
+      # Google API Policy Annotation This message defines a simple API policy
+      # annotation that can be used to annotate API request and response message
+      # fields with applicable policies. One field may have multiple applicable
+      # policies that must all be satisfied before a request can be processed. This
+      # policy annotation is used to generate the overall policy that will be used for
+      # automatic runtime policy enforcement and documentation generation.
+      class FieldPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the required permission(s) for the resource referred to by the field.
+        # It requires the field contains a valid resource reference, and the request
+        # must pass the permission checks to proceed. For example, "resourcemanager.
+        # projects.get".
+        # Corresponds to the JSON property `resourcePermission`
+        # @return [String]
+        attr_accessor :resource_permission
+      
+        # Specifies the resource type for the resource referred to by the field.
+        # Corresponds to the JSON property `resourceType`
+        # @return [String]
+        attr_accessor :resource_type
+      
+        # Selects one or more request or response message fields to apply this `
+        # FieldPolicy`. When a `FieldPolicy` is used in proto annotation, the selector
+        # must be left as empty. The service config generator will automatically fill
+        # the correct value. When a `FieldPolicy` is used in service config, the
+        # selector must be a comma-separated string with valid request or response field
+        # paths, such as "foo.bar" or "foo.bar,foo.baz".
+        # Corresponds to the JSON property `selector`
+        # @return [String]
+        attr_accessor :selector
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_permission = args[:resource_permission] if args.key?(:resource_permission)
+          @resource_type = args[:resource_type] if args.key?(:resource_type)
+          @selector = args[:selector] if args.key?(:selector)
         end
       end
       
@@ -2497,6 +2572,27 @@ module Google
         end
       end
       
+      # Represents all DNS zones in the shared producer host project and the matching
+      # peering zones in the consumer project.
+      class ListDnsZonesResponse
+        include Google::Apis::Core::Hashable
+      
+        # All pairs of private DNS zones in the shared producer host project and the
+        # matching peering zones in the consumer project..
+        # Corresponds to the JSON property `dnsZonePairs`
+        # @return [Array<Google::Apis::ServicenetworkingV1::DnsZonePair>]
+        attr_accessor :dns_zone_pairs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dns_zone_pairs = args[:dns_zone_pairs] if args.key?(:dns_zone_pairs)
+        end
+      end
+      
       # The response message for Operations.ListOperations.
       class ListOperationsResponse
         include Google::Apis::Core::Hashable
@@ -2752,6 +2848,34 @@ module Google
           @response_streaming = args[:response_streaming] if args.key?(:response_streaming)
           @response_type_url = args[:response_type_url] if args.key?(:response_type_url)
           @syntax = args[:syntax] if args.key?(:syntax)
+        end
+      end
+      
+      # Defines policies applying to an RPC method.
+      class MethodPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Policies that are applicable to the request message.
+        # Corresponds to the JSON property `requestPolicies`
+        # @return [Array<Google::Apis::ServicenetworkingV1::FieldPolicy>]
+        attr_accessor :request_policies
+      
+        # Selects a method to which these policies should be enforced, for example, "
+        # google.pubsub.v1.Subscriber.CreateSubscription". Refer to selector for syntax
+        # details. NOTE: This field must not be set in the proto annotation. It will be
+        # automatically filled by the service config compiler .
+        # Corresponds to the JSON property `selector`
+        # @return [String]
+        attr_accessor :selector
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @request_policies = args[:request_policies] if args.key?(:request_policies)
+          @selector = args[:selector] if args.key?(:selector)
         end
       end
       
