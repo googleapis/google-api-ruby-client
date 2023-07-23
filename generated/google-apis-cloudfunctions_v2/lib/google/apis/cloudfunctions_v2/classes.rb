@@ -235,6 +235,12 @@ module Google
         # @return [Google::Apis::CloudfunctionsV2::SourceProvenance]
         attr_accessor :source_provenance
       
+        # An identifier for Firebase function sources. Disclaimer: This field is only
+        # supported for Firebase function deployments.
+        # Corresponds to the JSON property `sourceToken`
+        # @return [String]
+        attr_accessor :source_token
+      
         # Name of the Cloud Build Custom Worker Pool that should be used to build the
         # function. The format of this field is `projects/`project`/locations/`region`/
         # workerPools/`workerPool`` where `project` and `region` are the project id and
@@ -261,6 +267,7 @@ module Google
           @runtime = args[:runtime] if args.key?(:runtime)
           @source = args[:source] if args.key?(:source)
           @source_provenance = args[:source_provenance] if args.key?(:source_provenance)
+          @source_token = args[:source_token] if args.key?(:source_token)
           @worker_pool = args[:worker_pool] if args.key?(:worker_pool)
         end
       end
@@ -668,6 +675,12 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :request_resource
       
+        # An identifier for Firebase function sources. Disclaimer: This field is only
+        # supported for Firebase function deployments.
+        # Corresponds to the JSON property `sourceToken`
+        # @return [String]
+        attr_accessor :source_token
+      
         # Mechanism for reporting in-progress stages
         # Corresponds to the JSON property `stages`
         # @return [Array<Google::Apis::CloudfunctionsV2::GoogleCloudFunctionsV2Stage>]
@@ -699,6 +712,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @end_time = args[:end_time] if args.key?(:end_time)
           @request_resource = args[:request_resource] if args.key?(:request_resource)
+          @source_token = args[:source_token] if args.key?(:source_token)
           @stages = args[:stages] if args.key?(:stages)
           @status_detail = args[:status_detail] if args.key?(:status_detail)
           @target = args[:target] if args.key?(:target)
@@ -838,6 +852,12 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :request_resource
       
+        # An identifier for Firebase function sources. Disclaimer: This field is only
+        # supported for Firebase function deployments.
+        # Corresponds to the JSON property `sourceToken`
+        # @return [String]
+        attr_accessor :source_token
+      
         # Mechanism for reporting in-progress stages
         # Corresponds to the JSON property `stages`
         # @return [Array<Google::Apis::CloudfunctionsV2::GoogleCloudFunctionsV2alphaStage>]
@@ -869,6 +889,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @end_time = args[:end_time] if args.key?(:end_time)
           @request_resource = args[:request_resource] if args.key?(:request_resource)
+          @source_token = args[:source_token] if args.key?(:source_token)
           @stages = args[:stages] if args.key?(:stages)
           @status_detail = args[:status_detail] if args.key?(:status_detail)
           @target = args[:target] if args.key?(:target)
@@ -1008,6 +1029,12 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :request_resource
       
+        # An identifier for Firebase function sources. Disclaimer: This field is only
+        # supported for Firebase function deployments.
+        # Corresponds to the JSON property `sourceToken`
+        # @return [String]
+        attr_accessor :source_token
+      
         # Mechanism for reporting in-progress stages
         # Corresponds to the JSON property `stages`
         # @return [Array<Google::Apis::CloudfunctionsV2::GoogleCloudFunctionsV2betaStage>]
@@ -1039,6 +1066,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @end_time = args[:end_time] if args.key?(:end_time)
           @request_resource = args[:request_resource] if args.key?(:request_resource)
+          @source_token = args[:source_token] if args.key?(:source_token)
           @stages = args[:stages] if args.key?(:stages)
           @status_detail = args[:status_detail] if args.key?(:status_detail)
           @target = args[:target] if args.key?(:target)
