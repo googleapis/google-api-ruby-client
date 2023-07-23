@@ -666,7 +666,7 @@ module Google
         # @return [String]
         attr_accessor :agent_uri
       
-        # Commit SHA of the git push. This field is populated if `git_destination` are
+        # Commit SHA of the git push. This field is populated if `git_destination` is
         # specified in ExportAgentRequest.
         # Corresponds to the JSON property `commitSha`
         # @return [String]
@@ -1836,6 +1836,11 @@ module Google
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3ResponseMessagePlayAudio]
         attr_accessor :play_audio
       
+        # Response type.
+        # Corresponds to the JSON property `responseType`
+        # @return [String]
+        attr_accessor :response_type
+      
         # Represents the signal that telles the client to transfer the phone call
         # connected to the agent to a third-party endpoint.
         # Corresponds to the JSON property `telephonyTransferCall`
@@ -1861,6 +1866,7 @@ module Google
           @output_audio_text = args[:output_audio_text] if args.key?(:output_audio_text)
           @payload = args[:payload] if args.key?(:payload)
           @play_audio = args[:play_audio] if args.key?(:play_audio)
+          @response_type = args[:response_type] if args.key?(:response_type)
           @telephony_transfer_call = args[:telephony_transfer_call] if args.key?(:telephony_transfer_call)
           @text = args[:text] if args.key?(:text)
         end
@@ -3348,7 +3354,7 @@ module Google
         # @return [String]
         attr_accessor :repository_uri
       
-        # The branch of GitHub repository tracked for this agent.
+        # The branch of the GitHub repository tracked for this agent.
         # Corresponds to the JSON property `trackingBranch`
         # @return [String]
         attr_accessor :tracking_branch
@@ -4937,7 +4943,7 @@ module Google
         # @return [String]
         attr_accessor :agent_uri
       
-        # Commit SHA of the git push. This field is populated if `git_destination` are
+        # Commit SHA of the git push. This field is populated if `git_destination` is
         # specified in ExportAgentRequest.
         # Corresponds to the JSON property `commitSha`
         # @return [String]
@@ -10149,7 +10155,7 @@ module Google
         # Required. The unique identifier of the context. Format: `projects//agent/
         # sessions//contexts/`, or `projects//agent/environments//users//sessions//
         # contexts/`. The `Context ID` is always converted to lowercase, may only
-        # contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `
+        # contain characters in `a-zA-Z0-9_-%` and may be at most 250 bytes long. If `
         # Environment ID` is not specified, we assume default 'draft' environment. If `
         # User ID` is not specified, we assume default '-' user. The following context
         # names are reserved for internal use by Dialogflow. You should not use these
@@ -10162,12 +10168,12 @@ module Google
         # Optional. The collection of parameters associated with this context. Depending
         # on your protocol or client library language, this is a map, associative array,
         # symbol table, dictionary, or JSON object composed of a collection of (MapKey,
-        # MapValue) pairs: - MapKey type: string - MapKey value: parameter name -
-        # MapValue type: - If parameter's entity type is a composite entity: map - Else:
-        # depending on parameter value type, could be one of string, number, boolean,
-        # null, list or map - MapValue value: - If parameter's entity type is a
-        # composite entity: map from composite entity property names to property values -
-        # Else: parameter value
+        # MapValue) pairs: * MapKey type: string * MapKey value: parameter name *
+        # MapValue type: If parameter's entity type is a composite entity then use map,
+        # otherwise, depending on the parameter value type, it could be one of string,
+        # number, boolean, null, list or map. * MapValue value: If parameter's entity
+        # type is a composite entity then use map from composite entity property names
+        # to property values, otherwise, use parameter value.
         # Corresponds to the JSON property `parameters`
         # @return [Hash<String,Object>]
         attr_accessor :parameters
@@ -10570,12 +10576,12 @@ module Google
         # The collection of parameters associated with the event. Depending on your
         # protocol or client library language, this is a map, associative array, symbol
         # table, dictionary, or JSON object composed of a collection of (MapKey,
-        # MapValue) pairs: - MapKey type: string - MapKey value: parameter name -
-        # MapValue type: - If parameter's entity type is a composite entity: map - Else:
-        # depending on parameter value type, could be one of string, number, boolean,
-        # null, list or map - MapValue value: - If parameter's entity type is a
-        # composite entity: map from composite entity property names to property values -
-        # Else: parameter value
+        # MapValue) pairs: * MapKey type: string * MapKey value: parameter name *
+        # MapValue type: If parameter's entity type is a composite entity then use map,
+        # otherwise, depending on the parameter value type, it could be one of string,
+        # number, boolean, null, list or map. * MapValue value: If parameter's entity
+        # type is a composite entity then use map from composite entity property names
+        # to property values, otherwise, use parameter value.
         # Corresponds to the JSON property `parameters`
         # @return [Hash<String,Object>]
         attr_accessor :parameters
@@ -10696,8 +10702,8 @@ module Google
       class GoogleCloudDialogflowV2GcsDestination
         include Google::Apis::Core::Hashable
       
-        # The Google Cloud Storage URIs for the output. A URI is of the form: gs://
-        # bucket/object-prefix-or-name Whether a prefix or name is used depends on the
+        # The Google Cloud Storage URIs for the output. A URI is of the form: `gs://
+        # bucket/object-prefix-or-name` Whether a prefix or name is used depends on the
         # use case. The requesting user must have "write-permission" to the bucket.
         # Corresponds to the JSON property `uri`
         # @return [String]
@@ -12356,12 +12362,13 @@ module Google
       
         # The collection of extracted parameters. Depending on your protocol or client
         # library language, this is a map, associative array, symbol table, dictionary,
-        # or JSON object composed of a collection of (MapKey, MapValue) pairs: - MapKey
-        # type: string - MapKey value: parameter name - MapValue type: - If parameter's
-        # entity type is a composite entity: map - Else: depending on parameter value
-        # type, could be one of string, number, boolean, null, list or map - MapValue
-        # value: - If parameter's entity type is a composite entity: map from composite
-        # entity property names to property values - Else: parameter value
+        # or JSON object composed of a collection of (MapKey, MapValue) pairs: * MapKey
+        # type: string * MapKey value: parameter name * MapValue type: If parameter's
+        # entity type is a composite entity then use map, otherwise, depending on the
+        # parameter value type, it could be one of string, number, boolean, null, list
+        # or map. * MapValue value: If parameter's entity type is a composite entity
+        # then use map from composite entity property names to property values,
+        # otherwise, use parameter value.
         # Corresponds to the JSON property `parameters`
         # @return [Hash<String,Object>]
         attr_accessor :parameters
@@ -13117,7 +13124,7 @@ module Google
         # /agent/sessions//contexts/`, - `projects//locations//agent/sessions//contexts/`
         # , - `projects//agent/environments//users//sessions//contexts/`, - `projects//
         # locations//agent/environments//users//sessions//contexts/`, The `Context ID`
-        # is always converted to lowercase, may only contain characters in a-zA-Z0-9_-%
+        # is always converted to lowercase, may only contain characters in `a-zA-Z0-9_-%`
         # and may be at most 250 bytes long. If `Environment ID` is not specified, we
         # assume default 'draft' environment. If `User ID` is not specified, we assume
         # default '-' user. The following context names are reserved for internal use by
@@ -13130,12 +13137,12 @@ module Google
         # Optional. The collection of parameters associated with this context. Depending
         # on your protocol or client library language, this is a map, associative array,
         # symbol table, dictionary, or JSON object composed of a collection of (MapKey,
-        # MapValue) pairs: - MapKey type: string - MapKey value: parameter name -
-        # MapValue type: - If parameter's entity type is a composite entity: map - Else:
-        # depending on parameter value type, could be one of string, number, boolean,
-        # null, list or map - MapValue value: - If parameter's entity type is a
-        # composite entity: map from composite entity property names to property values -
-        # Else: parameter value
+        # MapValue) pairs: * MapKey type: string * MapKey value: parameter name *
+        # MapValue type: If parameter's entity type is a composite entity then use map,
+        # otherwise, depending on the parameter value type, it could be one of string,
+        # number, boolean, null, list or map. * MapValue value: If parameter's entity
+        # type is a composite entity then use map from composite entity property names
+        # to property values, otherwise, use parameter value.
         # Corresponds to the JSON property `parameters`
         # @return [Hash<String,Object>]
         attr_accessor :parameters
@@ -13346,12 +13353,12 @@ module Google
         # The collection of parameters associated with the event. Depending on your
         # protocol or client library language, this is a map, associative array, symbol
         # table, dictionary, or JSON object composed of a collection of (MapKey,
-        # MapValue) pairs: - MapKey type: string - MapKey value: parameter name -
-        # MapValue type: - If parameter's entity type is a composite entity: map - Else:
-        # depending on parameter value type, could be one of string, number, boolean,
-        # null, list or map - MapValue value: - If parameter's entity type is a
-        # composite entity: map from composite entity property names to property values -
-        # Else: parameter value
+        # MapValue) pairs: * MapKey type: string * MapKey value: parameter name *
+        # MapValue type: If parameter's entity type is a composite entity then use map,
+        # otherwise, depending on the parameter value type, it could be one of string,
+        # number, boolean, null, list or map. * MapValue value: If parameter's entity
+        # type is a composite entity then use map from composite entity property names
+        # to property values, otherwise, use parameter value.
         # Corresponds to the JSON property `parameters`
         # @return [Hash<String,Object>]
         attr_accessor :parameters
@@ -13472,8 +13479,8 @@ module Google
       class GoogleCloudDialogflowV2beta1GcsDestination
         include Google::Apis::Core::Hashable
       
-        # Required. The Google Cloud Storage URIs for the output. A URI is of the form:
-        # gs://bucket/object-prefix-or-name Whether a prefix or name is used depends on
+        # Required. The Google Cloud Storage URIs for the output. A URI is of the form: `
+        # gs://bucket/object-prefix-or-name` Whether a prefix or name is used depends on
         # the use case. The requesting user must have "write-permission" to the bucket.
         # Corresponds to the JSON property `uri`
         # @return [String]
@@ -15640,12 +15647,13 @@ module Google
       
         # The collection of extracted parameters. Depending on your protocol or client
         # library language, this is a map, associative array, symbol table, dictionary,
-        # or JSON object composed of a collection of (MapKey, MapValue) pairs: - MapKey
-        # type: string - MapKey value: parameter name - MapValue type: - If parameter's
-        # entity type is a composite entity: map - Else: depending on parameter value
-        # type, could be one of string, number, boolean, null, list or map - MapValue
-        # value: - If parameter's entity type is a composite entity: map from composite
-        # entity property names to property values - Else: parameter value
+        # or JSON object composed of a collection of (MapKey, MapValue) pairs: * MapKey
+        # type: string * MapKey value: parameter name * MapValue type: If parameter's
+        # entity type is a composite entity then use map, otherwise, depending on the
+        # parameter value type, it could be one of string, number, boolean, null, list
+        # or map. * MapValue value: If parameter's entity type is a composite entity
+        # then use map from composite entity property names to property values,
+        # otherwise, use parameter value.
         # Corresponds to the JSON property `parameters`
         # @return [Hash<String,Object>]
         attr_accessor :parameters
