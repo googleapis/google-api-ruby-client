@@ -3404,6 +3404,14 @@ module Google
         # @return [String]
         attr_accessor :oldest_allowed_price_version_time
       
+        # Optional. The behavior the caller wants users to see when there is a price
+        # increase during migration. If left unset, the behavior defaults to
+        # PRICE_INCREASE_TYPE_OPT_IN. Note that the first opt-out price increase
+        # migration for each app must be initiated in Play Console.
+        # Corresponds to the JSON property `priceIncreaseType`
+        # @return [String]
+        attr_accessor :price_increase_type
+      
         # Required. Region code this configuration applies to, as defined by ISO 3166-2,
         # e.g. "US".
         # Corresponds to the JSON property `regionCode`
@@ -3417,6 +3425,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @oldest_allowed_price_version_time = args[:oldest_allowed_price_version_time] if args.key?(:oldest_allowed_price_version_time)
+          @price_increase_type = args[:price_increase_type] if args.key?(:price_increase_type)
           @region_code = args[:region_code] if args.key?(:region_code)
         end
       end

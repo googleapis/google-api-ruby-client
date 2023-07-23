@@ -2093,6 +2093,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :oldest_allowed_price_version_time, as: 'oldestAllowedPriceVersionTime'
+          property :price_increase_type, as: 'priceIncreaseType'
           property :region_code, as: 'regionCode'
         end
       end
