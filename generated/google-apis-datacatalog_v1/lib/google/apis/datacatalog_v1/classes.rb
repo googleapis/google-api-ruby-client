@@ -2258,6 +2258,16 @@ module Google
       class GoogleCloudDatacatalogV1SearchCatalogRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. If set, use searchAll permission granted on organizations from `
+        # include_org_ids` and projects from `include_project_ids` instead of the fine
+        # grained per resource permissions when filtering the search results. The only
+        # allowed `order_by` criteria for admin_search mode is `default`. Using this
+        # flags guarantees a full recall of the search results.
+        # Corresponds to the JSON property `adminSearch`
+        # @return [Boolean]
+        attr_accessor :admin_search
+        alias_method :admin_search?, :admin_search
+      
         # Specifies the order of results. Currently supported case-sensitive values are:
         # * `relevance` that can only be descending * `last_modified_timestamp [asc|desc]
         # ` with descending (`desc`) as default * `default` that can only be descending
@@ -2307,6 +2317,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @admin_search = args[:admin_search] if args.key?(:admin_search)
           @order_by = args[:order_by] if args.key?(:order_by)
           @page_size = args[:page_size] if args.key?(:page_size)
           @page_token = args[:page_token] if args.key?(:page_token)
