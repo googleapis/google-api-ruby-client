@@ -92,6 +92,19 @@ module Google
         end
       end
       
+      # The request message for Operations.CancelOperation.
+      class CancelOperationRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Represents a whole or partial calendar date, such as a birthday. The time of
       # day and time zone are either specified elsewhere or are insignificant. The
       # date is relative to the Gregorian Calendar. This can represent one of the
@@ -130,6 +143,22 @@ module Google
           @day = args[:day] if args.key?(:day)
           @month = args[:month] if args.key?(:month)
           @year = args[:year] if args.key?(:year)
+        end
+      end
+      
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); `
+      class Empty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -176,6 +205,31 @@ module Google
           @last_updated_date = args[:last_updated_date] if args.key?(:last_updated_date)
           @start_offset = args[:start_offset] if args.key?(:start_offset)
           @text_content = args[:text_content] if args.key?(:text_content)
+        end
+      end
+      
+      # The response message for Operations.ListOperations.
+      class ListOperationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The standard List next-page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of operations that matches the specified filter in the request.
+        # Corresponds to the JSON property `operations`
+        # @return [Array<Google::Apis::ChecksV1alpha::Operation>]
+        attr_accessor :operations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @operations = args[:operations] if args.key?(:operations)
         end
       end
       
@@ -380,6 +434,50 @@ module Google
         end
       end
       
+      # Privacy policy.
+      class PrivacyPolicy
+        include Google::Apis::Core::Hashable
+      
+        # HTML content for the privacy policy page.
+        # Corresponds to the JSON property `htmlContent`
+        # @return [String]
+        attr_accessor :html_content
+      
+        # Resource name. Example: projects/123/privacyPolicies/456
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # URI of the privacy policy corresponding to this resource.
+        # Corresponds to the JSON property `privacyPolicyUri`
+        # @return [String]
+        attr_accessor :privacy_policy_uri
+      
+        # Confidence that the privacy policy URI is indeed from a privacy policy.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        # URI of the original website used to find this privacy policy. Only populated
+        # for resources created by the FindPrivacyPolicy API.
+        # Corresponds to the JSON property `websiteUri`
+        # @return [String]
+        attr_accessor :website_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @html_content = args[:html_content] if args.key?(:html_content)
+          @name = args[:name] if args.key?(:name)
+          @privacy_policy_uri = args[:privacy_policy_uri] if args.key?(:privacy_policy_uri)
+          @score = args[:score] if args.key?(:score)
+          @website_uri = args[:website_uri] if args.key?(:website_uri)
+        end
+      end
+      
       # The `Status` type defines a logical error model that is suitable for different
       # programming environments, including REST APIs and RPC APIs. It is used by [
       # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
@@ -416,6 +514,27 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # The request message for Operations.WaitOperation.
+      class WaitOperationRequest
+        include Google::Apis::Core::Hashable
+      
+        # The maximum duration to wait before timing out. If left blank, the wait will
+        # be at most the time permitted by the underlying HTTP/RPC protocol. If RPC
+        # context deadline is also specified, the shorter one will be used.
+        # Corresponds to the JSON property `timeout`
+        # @return [String]
+        attr_accessor :timeout
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @timeout = args[:timeout] if args.key?(:timeout)
         end
       end
     end
