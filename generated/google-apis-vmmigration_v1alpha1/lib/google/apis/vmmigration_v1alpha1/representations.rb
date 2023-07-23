@@ -124,6 +124,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ComputeEngineDisksTargetDefaults
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ComputeEngineDisksTargetDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ComputeEngineTargetDefaults
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -329,6 +341,18 @@ module Google
       end
       
       class PauseMigrationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PersistentDisk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PersistentDiskDefaults
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -626,6 +650,8 @@ module Google
       class CloneJob
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :compute_engine_disks_target_details, as: 'computeEngineDisksTargetDetails', class: Google::Apis::VmmigrationV1alpha1::ComputeEngineDisksTargetDetails, decorator: Google::Apis::VmmigrationV1alpha1::ComputeEngineDisksTargetDetails::Representation
+      
           property :compute_engine_target_details, as: 'computeEngineTargetDetails', class: Google::Apis::VmmigrationV1alpha1::ComputeEngineTargetDetails, decorator: Google::Apis::VmmigrationV1alpha1::ComputeEngineTargetDetails::Representation
       
           property :compute_engine_vm_details, as: 'computeEngineVmDetails', class: Google::Apis::VmmigrationV1alpha1::TargetVmDetails, decorator: Google::Apis::VmmigrationV1alpha1::TargetVmDetails::Representation
@@ -655,6 +681,24 @@ module Google
           property :preparing_vm_disks, as: 'preparingVmDisks', class: Google::Apis::VmmigrationV1alpha1::PreparingVmDisksStep, decorator: Google::Apis::VmmigrationV1alpha1::PreparingVmDisksStep::Representation
       
           property :start_time, as: 'startTime'
+        end
+      end
+      
+      class ComputeEngineDisksTargetDefaults
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :disks, as: 'disks', class: Google::Apis::VmmigrationV1alpha1::PersistentDiskDefaults, decorator: Google::Apis::VmmigrationV1alpha1::PersistentDiskDefaults::Representation
+      
+          property :target_project, as: 'targetProject'
+          property :zone, as: 'zone'
+        end
+      end
+      
+      class ComputeEngineDisksTargetDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :disks, as: 'disks', class: Google::Apis::VmmigrationV1alpha1::PersistentDisk, decorator: Google::Apis::VmmigrationV1alpha1::PersistentDisk::Representation
+      
         end
       end
       
@@ -734,6 +778,8 @@ module Google
       class CutoverJob
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :compute_engine_disks_target_details, as: 'computeEngineDisksTargetDetails', class: Google::Apis::VmmigrationV1alpha1::ComputeEngineDisksTargetDetails, decorator: Google::Apis::VmmigrationV1alpha1::ComputeEngineDisksTargetDetails::Representation
+      
           property :compute_engine_target_details, as: 'computeEngineTargetDetails', class: Google::Apis::VmmigrationV1alpha1::ComputeEngineTargetDetails, decorator: Google::Apis::VmmigrationV1alpha1::ComputeEngineTargetDetails::Representation
       
           property :compute_engine_vm_details, as: 'computeEngineVmDetails', class: Google::Apis::VmmigrationV1alpha1::TargetVmDetails, decorator: Google::Apis::VmmigrationV1alpha1::TargetVmDetails::Representation
@@ -840,6 +886,7 @@ module Google
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :display_name, as: 'displayName'
+          property :migration_target_type, as: 'migrationTargetType'
           property :name, as: 'name'
           property :update_time, as: 'updateTime'
         end
@@ -997,6 +1044,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :aws_source_vm_details, as: 'awsSourceVmDetails', class: Google::Apis::VmmigrationV1alpha1::AwsSourceVmDetails, decorator: Google::Apis::VmmigrationV1alpha1::AwsSourceVmDetails::Representation
       
+          property :compute_engine_disks_target_defaults, as: 'computeEngineDisksTargetDefaults', class: Google::Apis::VmmigrationV1alpha1::ComputeEngineDisksTargetDefaults, decorator: Google::Apis::VmmigrationV1alpha1::ComputeEngineDisksTargetDefaults::Representation
+      
           property :compute_engine_target_defaults, as: 'computeEngineTargetDefaults', class: Google::Apis::VmmigrationV1alpha1::ComputeEngineTargetDefaults, decorator: Google::Apis::VmmigrationV1alpha1::ComputeEngineTargetDefaults::Representation
       
           property :compute_engine_vm_defaults, as: 'computeEngineVmDefaults', class: Google::Apis::VmmigrationV1alpha1::TargetVmDetails, decorator: Google::Apis::VmmigrationV1alpha1::TargetVmDetails::Representation
@@ -1098,6 +1147,24 @@ module Google
       class PauseMigrationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class PersistentDisk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disk_uri, as: 'diskUri'
+          property :source_disk_number, as: 'sourceDiskNumber'
+        end
+      end
+      
+      class PersistentDiskDefaults
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :additional_labels, as: 'additionalLabels'
+          property :disk_name, as: 'diskName'
+          property :disk_type, as: 'diskType'
+          property :source_disk_number, as: 'sourceDiskNumber'
         end
       end
       
