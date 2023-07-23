@@ -433,6 +433,7 @@ module Google
           property :create_time, as: 'createTime'
           property :end_time, as: 'endTime'
           hash :request_resource, as: 'requestResource'
+          property :source_token, as: 'sourceToken'
           collection :stages, as: 'stages', class: Google::Apis::CloudfunctionsV1::GoogleCloudFunctionsV2Stage, decorator: Google::Apis::CloudfunctionsV1::GoogleCloudFunctionsV2Stage::Representation
       
           property :status_detail, as: 'statusDetail'
@@ -478,6 +479,7 @@ module Google
           property :create_time, as: 'createTime'
           property :end_time, as: 'endTime'
           hash :request_resource, as: 'requestResource'
+          property :source_token, as: 'sourceToken'
           collection :stages, as: 'stages', class: Google::Apis::CloudfunctionsV1::GoogleCloudFunctionsV2alphaStage, decorator: Google::Apis::CloudfunctionsV1::GoogleCloudFunctionsV2alphaStage::Representation
       
           property :status_detail, as: 'statusDetail'
@@ -523,6 +525,7 @@ module Google
           property :create_time, as: 'createTime'
           property :end_time, as: 'endTime'
           hash :request_resource, as: 'requestResource'
+          property :source_token, as: 'sourceToken'
           collection :stages, as: 'stages', class: Google::Apis::CloudfunctionsV1::GoogleCloudFunctionsV2betaStage, decorator: Google::Apis::CloudfunctionsV1::GoogleCloudFunctionsV2betaStage::Representation
       
           property :status_detail, as: 'statusDetail'
