@@ -6370,6 +6370,11 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3GcsPrefix]
         attr_accessor :gcs_prefix
       
+        # Specifies a set of raw documents.
+        # Corresponds to the JSON property `rawDocuments`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3RawDocuments]
+        attr_accessor :raw_documents
+      
         def initialize(**args)
            update!(**args)
         end
@@ -6378,6 +6383,7 @@ module Google
         def update!(**args)
           @gcs_documents = args[:gcs_documents] if args.key?(:gcs_documents)
           @gcs_prefix = args[:gcs_prefix] if args.key?(:gcs_prefix)
+          @raw_documents = args[:raw_documents] if args.key?(:raw_documents)
         end
       end
       
@@ -10407,7 +10413,7 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentSchema]
         attr_accessor :document_schema
       
-        # Denotes that this `ProcessorVersion` is managed by Google.
+        # Output only. Denotes that this `ProcessorVersion` is managed by Google.
         # Corresponds to the JSON property `googleManaged`
         # @return [Boolean]
         attr_accessor :google_managed
@@ -10527,6 +10533,25 @@ module Google
         def update!(**args)
           @content = args[:content] if args.key?(:content)
           @mime_type = args[:mime_type] if args.key?(:mime_type)
+        end
+      end
+      
+      # Specifies a set of raw documents.
+      class GoogleCloudDocumentaiV1beta3RawDocuments
+        include Google::Apis::Core::Hashable
+      
+        # Specifies raw document content and mime type.
+        # Corresponds to the JSON property `documents`
+        # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3RawDocument>]
+        attr_accessor :documents
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @documents = args[:documents] if args.key?(:documents)
         end
       end
       
