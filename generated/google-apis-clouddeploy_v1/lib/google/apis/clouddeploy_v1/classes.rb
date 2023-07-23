@@ -1163,6 +1163,13 @@ module Google
         # @return [String]
         attr_accessor :http_route
       
+        # Optional. The time to wait for route updates to propagate. The maximum
+        # configurable time is 3 hours, in seconds format. If unspecified, there is no
+        # wait time.
+        # Corresponds to the JSON property `routeUpdateWaitTime`
+        # @return [String]
+        attr_accessor :route_update_wait_time
+      
         # Required. Name of the Kubernetes Service.
         # Corresponds to the JSON property `service`
         # @return [String]
@@ -1176,6 +1183,7 @@ module Google
         def update!(**args)
           @deployment = args[:deployment] if args.key?(:deployment)
           @http_route = args[:http_route] if args.key?(:http_route)
+          @route_update_wait_time = args[:route_update_wait_time] if args.key?(:route_update_wait_time)
           @service = args[:service] if args.key?(:service)
         end
       end

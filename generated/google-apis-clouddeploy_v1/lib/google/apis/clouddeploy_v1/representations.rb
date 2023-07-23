@@ -954,6 +954,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :deployment, as: 'deployment'
           property :http_route, as: 'httpRoute'
+          property :route_update_wait_time, as: 'routeUpdateWaitTime'
           property :service, as: 'service'
         end
       end
