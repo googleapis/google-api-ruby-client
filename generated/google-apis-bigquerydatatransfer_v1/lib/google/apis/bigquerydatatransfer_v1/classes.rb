@@ -637,8 +637,9 @@ module Google
       class StartManualTransferRunsRequest
         include Google::Apis::Core::Hashable
       
-        # Specific run_time for a transfer run to be started. The requested_run_time
-        # must not be in the future.
+        # A run_time timestamp for historical data files or reports that are scheduled
+        # to be transferred by the scheduled transfer run. requested_run_time must be a
+        # past time and cannot include future time values.
         # Corresponds to the JSON property `requestedRunTime`
         # @return [String]
         attr_accessor :requested_run_time
