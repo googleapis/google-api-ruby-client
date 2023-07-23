@@ -681,6 +681,7 @@ module Google
           property :provisioning_data, as: 'provisioningData', class: Google::Apis::TpuV2alpha1::ProvisioningData, decorator: Google::Apis::TpuV2alpha1::ProvisioningData::Representation
       
           property :state, as: 'state'
+          property :state_initiator, as: 'stateInitiator'
           property :suspended_data, as: 'suspendedData', class: Google::Apis::TpuV2alpha1::SuspendedData, decorator: Google::Apis::TpuV2alpha1::SuspendedData::Representation
       
           property :suspending_data, as: 'suspendingData', class: Google::Apis::TpuV2alpha1::SuspendingData, decorator: Google::Apis::TpuV2alpha1::SuspendingData::Representation
