@@ -3727,7 +3727,7 @@ module Google
         #   measurementProtocolSecrets/`measurementProtocolSecret`
         # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret] google_analytics_admin_v1alpha_measurement_protocol_secret_object
         # @param [String] update_mask
-        #   The list of fields to be updated. Omitted fields will not be updated.
+        #   Required. The list of fields to be updated. Omitted fields will not be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
