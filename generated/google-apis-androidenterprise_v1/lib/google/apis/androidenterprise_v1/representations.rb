@@ -684,6 +684,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :is_production, as: 'isProduction'
+          property :target_sdk_version, as: 'targetSdkVersion'
           property :track, as: 'track'
           collection :track_id, as: 'trackId'
           property :version_code, as: 'versionCode'
