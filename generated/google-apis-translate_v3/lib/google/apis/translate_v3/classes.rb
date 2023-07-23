@@ -72,6 +72,12 @@ module Google
         # @return [String]
         attr_accessor :customized_attribution
       
+        # Optional. If true, enable auto rotation correction in DVS.
+        # Corresponds to the JSON property `enableRotationCorrection`
+        # @return [Boolean]
+        attr_accessor :enable_rotation_correction
+        alias_method :enable_rotation_correction?, :enable_rotation_correction
+      
         # Optional. If true, use the text removal server to remove the shadow text on
         # background image for native pdf translation. Shadow removal feature can only
         # be enabled when is_translate_native_pdf_only: false && pdf_native_only: false
@@ -134,6 +140,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @customized_attribution = args[:customized_attribution] if args.key?(:customized_attribution)
+          @enable_rotation_correction = args[:enable_rotation_correction] if args.key?(:enable_rotation_correction)
           @enable_shadow_removal_native_pdf = args[:enable_shadow_removal_native_pdf] if args.key?(:enable_shadow_removal_native_pdf)
           @format_conversions = args[:format_conversions] if args.key?(:format_conversions)
           @glossaries = args[:glossaries] if args.key?(:glossaries)
