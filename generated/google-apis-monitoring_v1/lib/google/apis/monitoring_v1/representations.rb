@@ -136,12 +136,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListLabelsRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ListMetricsScopesByMonitoredProjectResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -209,6 +203,12 @@ module Google
       end
       
       class QueryInstantRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QueryLabelsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -532,15 +532,6 @@ module Google
         end
       end
       
-      class ListLabelsRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :end, as: 'end'
-          property :match, as: 'match'
-          property :start, as: 'start'
-        end
-      end
-      
       class ListMetricsScopesByMonitoredProjectResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -646,6 +637,15 @@ module Google
           property :query, as: 'query'
           property :time, as: 'time'
           property :timeout, as: 'timeout'
+        end
+      end
+      
+      class QueryLabelsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end, as: 'end'
+          property :match, as: 'match'
+          property :start, as: 'start'
         end
       end
       

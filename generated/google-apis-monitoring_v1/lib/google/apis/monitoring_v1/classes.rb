@@ -725,41 +725,6 @@ module Google
         end
       end
       
-      # ListLabelsRequest holds all parameters of the Prometheus upstream API for
-      # returning a list of label names.
-      class ListLabelsRequest
-        include Google::Apis::Core::Hashable
-      
-        # The end time to evaluate the query for. Either floating point UNIX seconds or
-        # RFC3339 formatted timestamp.
-        # Corresponds to the JSON property `end`
-        # @return [String]
-        attr_accessor :end
-      
-        # A list of matchers encoded in the Prometheus label matcher format to constrain
-        # the values to series that satisfy them.
-        # Corresponds to the JSON property `match`
-        # @return [String]
-        attr_accessor :match
-      
-        # The start time to evaluate the query for. Either floating point UNIX seconds
-        # or RFC3339 formatted timestamp.
-        # Corresponds to the JSON property `start`
-        # @return [String]
-        attr_accessor :start
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @end = args[:end] if args.key?(:end)
-          @match = args[:match] if args.key?(:match)
-          @start = args[:start] if args.key?(:start)
-        end
-      end
-      
       # Response for the ListMetricsScopesByMonitoredProject method.
       class ListMetricsScopesByMonitoredProjectResponse
         include Google::Apis::Core::Hashable
@@ -1181,6 +1146,41 @@ module Google
           @query = args[:query] if args.key?(:query)
           @time = args[:time] if args.key?(:time)
           @timeout = args[:timeout] if args.key?(:timeout)
+        end
+      end
+      
+      # QueryLabelsRequest holds all parameters of the Prometheus upstream API for
+      # returning a list of label names.
+      class QueryLabelsRequest
+        include Google::Apis::Core::Hashable
+      
+        # The end time to evaluate the query for. Either floating point UNIX seconds or
+        # RFC3339 formatted timestamp.
+        # Corresponds to the JSON property `end`
+        # @return [String]
+        attr_accessor :end
+      
+        # A list of matchers encoded in the Prometheus label matcher format to constrain
+        # the values to series that satisfy them.
+        # Corresponds to the JSON property `match`
+        # @return [String]
+        attr_accessor :match
+      
+        # The start time to evaluate the query for. Either floating point UNIX seconds
+        # or RFC3339 formatted timestamp.
+        # Corresponds to the JSON property `start`
+        # @return [String]
+        attr_accessor :start
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end = args[:end] if args.key?(:end)
+          @match = args[:match] if args.key?(:match)
+          @start = args[:start] if args.key?(:start)
         end
       end
       
