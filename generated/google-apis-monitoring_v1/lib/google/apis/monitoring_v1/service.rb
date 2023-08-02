@@ -416,7 +416,7 @@ module Google
         #   PROJECT_ID_OR_NUMBER.
         # @param [String] location
         #   Location of the resource information. Has to be "global" now.
-        # @param [Google::Apis::MonitoringV1::ListLabelsRequest] list_labels_request_object
+        # @param [Google::Apis::MonitoringV1::QueryLabelsRequest] query_labels_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -434,10 +434,10 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def labels_project_location_prometheu_api_v1(name, location, list_labels_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def labels_project_location_prometheu_api_v1(name, location, query_labels_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+name}/location/{location}/prometheus/api/v1/labels', options)
-          command.request_representation = Google::Apis::MonitoringV1::ListLabelsRequest::Representation
-          command.request_object = list_labels_request_object
+          command.request_representation = Google::Apis::MonitoringV1::QueryLabelsRequest::Representation
+          command.request_object = query_labels_request_object
           command.response_representation = Google::Apis::MonitoringV1::HttpBody::Representation
           command.response_class = Google::Apis::MonitoringV1::HttpBody
           command.params['name'] = name unless name.nil?
@@ -646,54 +646,6 @@ module Google
           command.params['name'] = name unless name.nil?
           command.params['location'] = location unless location.nil?
           command.params['label'] = label unless label.nil?
-          command.query['end'] = end_ unless end_.nil?
-          command.query['match'] = match unless match.nil?
-          command.query['start'] = start unless start.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Lists labels for metrics.
-        # @param [String] name
-        #   The workspace on which to execute the request. It is not part of the open
-        #   source API but used as a request path prefix to distinguish different virtual
-        #   Prometheus instances of Google Prometheus Engine. The format is: projects/
-        #   PROJECT_ID_OR_NUMBER.
-        # @param [String] location
-        #   Location of the resource information. Has to be "global" now.
-        # @param [String] end_
-        #   The end time to evaluate the query for. Either floating point UNIX seconds or
-        #   RFC3339 formatted timestamp.
-        # @param [String] match
-        #   A list of matchers encoded in the Prometheus label matcher format to constrain
-        #   the values to series that satisfy them.
-        # @param [String] start
-        #   The start time to evaluate the query for. Either floating point UNIX seconds
-        #   or RFC3339 formatted timestamp.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MonitoringV1::HttpBody] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::MonitoringV1::HttpBody]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_prometheu_api_v1_labels(name, location, end_: nil, match: nil, start: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1/{+name}/location/{location}/prometheus/api/v1/labels', options)
-          command.response_representation = Google::Apis::MonitoringV1::HttpBody::Representation
-          command.response_class = Google::Apis::MonitoringV1::HttpBody
-          command.params['name'] = name unless name.nil?
-          command.params['location'] = location unless location.nil?
           command.query['end'] = end_ unless end_.nil?
           command.query['match'] = match unless match.nil?
           command.query['start'] = start unless start.nil?
