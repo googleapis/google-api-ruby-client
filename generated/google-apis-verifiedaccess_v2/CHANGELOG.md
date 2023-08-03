@@ -1,5 +1,9 @@
 # Release history for google-apis-verifiedaccess_v2
 
+### v0.11.0 (2023-08-03)
+
+* Regenerated from discovery document revision 20230718
+
 ### v0.10.0 (2023-06-11)
 
 * Regenerated from discovery document revision 20230530
