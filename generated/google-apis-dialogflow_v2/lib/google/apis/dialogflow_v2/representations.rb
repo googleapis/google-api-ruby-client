@@ -6151,6 +6151,7 @@ module Google
           property :geo_location, as: 'geoLocation', class: Google::Apis::DialogflowV2::GoogleTypeLatLng, decorator: Google::Apis::DialogflowV2::GoogleTypeLatLng::Representation
       
           hash :payload, as: 'payload'
+          property :platform, as: 'platform'
           property :reset_contexts, as: 'resetContexts'
           property :sentiment_analysis_request_config, as: 'sentimentAnalysisRequestConfig', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SentimentAnalysisRequestConfig, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SentimentAnalysisRequestConfig::Representation
       
