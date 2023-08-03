@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module ClouddeployV1
-      # Google Cloud Deploy API
+      # Cloud Deploy API
       #
       # 
       #

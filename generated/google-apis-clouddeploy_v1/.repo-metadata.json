@@ -1,6 +1,6 @@
 {
     "api_id": "clouddeploy:v1",
-    "name_pretty": "Google Cloud Deploy API",
+    "name_pretty": "Cloud Deploy API",
     "distribution_name": "google-apis-clouddeploy_v1",
     "language": "ruby",
     "library_type": "REST"
