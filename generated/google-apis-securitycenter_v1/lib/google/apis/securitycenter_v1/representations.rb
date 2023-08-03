@@ -112,6 +112,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CustomModuleValidationError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomModuleValidationErrors
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Cve
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -143,6 +155,12 @@ module Google
       end
       
       class EnvironmentVariable
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EventThreatDetectionCustomModule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -424,6 +442,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListEventThreatDetectionCustomModulesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListFindingsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -515,6 +539,12 @@ module Google
       end
       
       class Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Position
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -623,6 +653,18 @@ module Google
       end
       
       class TestIamPermissionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ValidateEventThreatDetectionCustomModuleRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ValidateEventThreatDetectionCustomModuleResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -798,6 +840,26 @@ module Google
         end
       end
       
+      class CustomModuleValidationError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :end, as: 'end', class: Google::Apis::SecuritycenterV1::Position, decorator: Google::Apis::SecuritycenterV1::Position::Representation
+      
+          property :field_path, as: 'fieldPath'
+          property :start, as: 'start', class: Google::Apis::SecuritycenterV1::Position, decorator: Google::Apis::SecuritycenterV1::Position::Representation
+      
+        end
+      end
+      
+      class CustomModuleValidationErrors
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :errors, as: 'errors', class: Google::Apis::SecuritycenterV1::CustomModuleValidationError, decorator: Google::Apis::SecuritycenterV1::CustomModuleValidationError::Representation
+      
+        end
+      end
+      
       class Cve
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -856,6 +918,20 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :val, as: 'val'
+        end
+      end
+      
+      class EventThreatDetectionCustomModule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :config, as: 'config'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :enablement_state, as: 'enablementState'
+          property :last_editor, as: 'lastEditor'
+          property :name, as: 'name'
+          property :type, as: 'type'
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -1391,6 +1467,15 @@ module Google
         end
       end
       
+      class ListEventThreatDetectionCustomModulesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :event_threat_detection_custom_modules, as: 'eventThreatDetectionCustomModules', class: Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule, decorator: Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListFindingsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1549,6 +1634,14 @@ module Google
       
           property :etag, :base64 => true, as: 'etag'
           property :version, as: 'version'
+        end
+      end
+      
+      class Position
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :column_number, as: 'columnNumber'
+          property :line_number, as: 'lineNumber'
         end
       end
       
@@ -1723,6 +1816,22 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class ValidateEventThreatDetectionCustomModuleRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :raw_text, as: 'rawText'
+          property :type, as: 'type'
+        end
+      end
+      
+      class ValidateEventThreatDetectionCustomModuleResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :errors, as: 'errors', class: Google::Apis::SecuritycenterV1::CustomModuleValidationErrors, decorator: Google::Apis::SecuritycenterV1::CustomModuleValidationErrors::Representation
+      
         end
       end
       

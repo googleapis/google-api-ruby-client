@@ -443,6 +443,235 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Validates the given Event Threat Detection Custom Module.
+        # @param [String] parent
+        #   Required. Resource name of the parent to validate the Custom Module under. Its
+        #   format is: * "organizations/`organization`/eventThreatDetectionSettings". * "
+        #   folders/`folder`/eventThreatDetectionSettings". * "projects/`project`/
+        #   eventThreatDetectionSettings".
+        # @param [Google::Apis::SecuritycenterV1::ValidateEventThreatDetectionCustomModuleRequest] validate_event_threat_detection_custom_module_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::ValidateEventThreatDetectionCustomModuleResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::ValidateEventThreatDetectionCustomModuleResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def validate_folder_event_threat_detection_setting_custom_module(parent, validate_event_threat_detection_custom_module_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}:validateCustomModule', options)
+          command.request_representation = Google::Apis::SecuritycenterV1::ValidateEventThreatDetectionCustomModuleRequest::Representation
+          command.request_object = validate_event_threat_detection_custom_module_request_object
+          command.response_representation = Google::Apis::SecuritycenterV1::ValidateEventThreatDetectionCustomModuleResponse::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::ValidateEventThreatDetectionCustomModuleResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates an ETD custom module at the given level. Creating a module has a side-
+        # effect of creating modules at all descendants.
+        # @param [String] parent
+        #   Required. The new custom module's parent. Its format is: * "organizations/`
+        #   organization`/eventThreatDetectionSettings". * "folders/`folder`/
+        #   eventThreatDetectionSettings". * "projects/`project`/
+        #   eventThreatDetectionSettings".
+        # @param [Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule] event_threat_detection_custom_module_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_folder_event_threat_detection_setting_custom_module(parent, event_threat_detection_custom_module_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/customModules', options)
+          command.request_representation = Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule::Representation
+          command.request_object = event_threat_detection_custom_module_object
+          command.response_representation = Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an ETD custom module. Deletion at resident level also deletes modules
+        # at all descendants. Deletion at any other level is not supported.
+        # @param [String] name
+        #   Required. Name of the custom module to delete. Its format is: * "organizations/
+        #   `organization`/eventThreatDetectionSettings/customModules/`module`". * "
+        #   folders/`folder`/eventThreatDetectionSettings/customModules/`module`". * "
+        #   projects/`project`/eventThreatDetectionSettings/customModules/`module`".
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_folder_event_threat_detection_setting_custom_module(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::SecuritycenterV1::Empty::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets an ETD custom module. Retrieves the module at the given level.
+        # @param [String] name
+        #   Required. Name of the custom module to get. Its format is: * "organizations/`
+        #   organization`/eventThreatDetectionSettings/customModules/`module`". * "folders/
+        #   `folder`/eventThreatDetectionSettings/customModules/`module`". * "projects/`
+        #   project`/eventThreatDetectionSettings/customModules/`module`".
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_folder_event_threat_detection_setting_custom_module(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists ETD custom modules. Retrieve all resident and inherited modules at the
+        # given level (no descendants).
+        # @param [String] parent
+        #   Required. Name of the parent to list custom modules. Its format is: * "
+        #   organizations/`organization`/eventThreatDetectionSettings". * "folders/`folder`
+        #   /eventThreatDetectionSettings". * "projects/`project`/
+        #   eventThreatDetectionSettings".
+        # @param [Fixnum] page_size
+        #   The maximum number of modules to return. The service may return fewer than
+        #   this value. If unspecified, at most 10 configs will be returned. The maximum
+        #   value is 1000; values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   A page token, received from a previous `ListEventThreatDetectionCustomModules`
+        #   call. Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListEventThreatDetectionCustomModules` must match the
+        #   call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::ListEventThreatDetectionCustomModulesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::ListEventThreatDetectionCustomModulesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_folder_event_threat_detection_setting_custom_modules(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/customModules', options)
+          command.response_representation = Google::Apis::SecuritycenterV1::ListEventThreatDetectionCustomModulesResponse::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::ListEventThreatDetectionCustomModulesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an ETD custom module at the given level. All config fields can be
+        # updated when updating the module at resident level. Only enablement state can
+        # be updated when updating the module at inherited levels. Updating the module
+        # has a side-effect that it updates all descendants that are inherited from this
+        # module.
+        # @param [String] name
+        #   Immutable. The resource name of the Event Threat Detection custom module. Its
+        #   format is: * "organizations/`organization`/eventThreatDetectionSettings/
+        #   customModules/`module`". * "folders/`folder`/eventThreatDetectionSettings/
+        #   customModules/`module`". * "projects/`project`/eventThreatDetectionSettings/
+        #   customModules/`module`".
+        # @param [Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule] event_threat_detection_custom_module_object
+        # @param [String] update_mask
+        #   The list of fields to be updated. If empty all mutable fields will be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_folder_event_threat_detection_setting_custom_module(name, event_threat_detection_custom_module_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule::Representation
+          command.request_object = event_threat_detection_custom_module_object
+          command.response_representation = Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Kicks off an LRO to bulk mute findings for a parent based on a filter. The
         # parent can be either an organization, folder or project. The findings matched
         # by the filter will be muted after the LRO is done.
@@ -2063,6 +2292,235 @@ module Google
           command.request_object = google_cloud_securitycenter_v1_big_query_export_object
           command.response_representation = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport::Representation
           command.response_class = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Validates the given Event Threat Detection Custom Module.
+        # @param [String] parent
+        #   Required. Resource name of the parent to validate the Custom Module under. Its
+        #   format is: * "organizations/`organization`/eventThreatDetectionSettings". * "
+        #   folders/`folder`/eventThreatDetectionSettings". * "projects/`project`/
+        #   eventThreatDetectionSettings".
+        # @param [Google::Apis::SecuritycenterV1::ValidateEventThreatDetectionCustomModuleRequest] validate_event_threat_detection_custom_module_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::ValidateEventThreatDetectionCustomModuleResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::ValidateEventThreatDetectionCustomModuleResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def validate_organization_event_threat_detection_setting_custom_module(parent, validate_event_threat_detection_custom_module_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}:validateCustomModule', options)
+          command.request_representation = Google::Apis::SecuritycenterV1::ValidateEventThreatDetectionCustomModuleRequest::Representation
+          command.request_object = validate_event_threat_detection_custom_module_request_object
+          command.response_representation = Google::Apis::SecuritycenterV1::ValidateEventThreatDetectionCustomModuleResponse::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::ValidateEventThreatDetectionCustomModuleResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates an ETD custom module at the given level. Creating a module has a side-
+        # effect of creating modules at all descendants.
+        # @param [String] parent
+        #   Required. The new custom module's parent. Its format is: * "organizations/`
+        #   organization`/eventThreatDetectionSettings". * "folders/`folder`/
+        #   eventThreatDetectionSettings". * "projects/`project`/
+        #   eventThreatDetectionSettings".
+        # @param [Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule] event_threat_detection_custom_module_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_event_threat_detection_setting_custom_module(parent, event_threat_detection_custom_module_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/customModules', options)
+          command.request_representation = Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule::Representation
+          command.request_object = event_threat_detection_custom_module_object
+          command.response_representation = Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an ETD custom module. Deletion at resident level also deletes modules
+        # at all descendants. Deletion at any other level is not supported.
+        # @param [String] name
+        #   Required. Name of the custom module to delete. Its format is: * "organizations/
+        #   `organization`/eventThreatDetectionSettings/customModules/`module`". * "
+        #   folders/`folder`/eventThreatDetectionSettings/customModules/`module`". * "
+        #   projects/`project`/eventThreatDetectionSettings/customModules/`module`".
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_organization_event_threat_detection_setting_custom_module(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::SecuritycenterV1::Empty::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets an ETD custom module. Retrieves the module at the given level.
+        # @param [String] name
+        #   Required. Name of the custom module to get. Its format is: * "organizations/`
+        #   organization`/eventThreatDetectionSettings/customModules/`module`". * "folders/
+        #   `folder`/eventThreatDetectionSettings/customModules/`module`". * "projects/`
+        #   project`/eventThreatDetectionSettings/customModules/`module`".
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_event_threat_detection_setting_custom_module(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists ETD custom modules. Retrieve all resident and inherited modules at the
+        # given level (no descendants).
+        # @param [String] parent
+        #   Required. Name of the parent to list custom modules. Its format is: * "
+        #   organizations/`organization`/eventThreatDetectionSettings". * "folders/`folder`
+        #   /eventThreatDetectionSettings". * "projects/`project`/
+        #   eventThreatDetectionSettings".
+        # @param [Fixnum] page_size
+        #   The maximum number of modules to return. The service may return fewer than
+        #   this value. If unspecified, at most 10 configs will be returned. The maximum
+        #   value is 1000; values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   A page token, received from a previous `ListEventThreatDetectionCustomModules`
+        #   call. Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListEventThreatDetectionCustomModules` must match the
+        #   call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::ListEventThreatDetectionCustomModulesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::ListEventThreatDetectionCustomModulesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_event_threat_detection_setting_custom_modules(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/customModules', options)
+          command.response_representation = Google::Apis::SecuritycenterV1::ListEventThreatDetectionCustomModulesResponse::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::ListEventThreatDetectionCustomModulesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an ETD custom module at the given level. All config fields can be
+        # updated when updating the module at resident level. Only enablement state can
+        # be updated when updating the module at inherited levels. Updating the module
+        # has a side-effect that it updates all descendants that are inherited from this
+        # module.
+        # @param [String] name
+        #   Immutable. The resource name of the Event Threat Detection custom module. Its
+        #   format is: * "organizations/`organization`/eventThreatDetectionSettings/
+        #   customModules/`module`". * "folders/`folder`/eventThreatDetectionSettings/
+        #   customModules/`module`". * "projects/`project`/eventThreatDetectionSettings/
+        #   customModules/`module`".
+        # @param [Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule] event_threat_detection_custom_module_object
+        # @param [String] update_mask
+        #   The list of fields to be updated. If empty all mutable fields will be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_organization_event_threat_detection_setting_custom_module(name, event_threat_detection_custom_module_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule::Representation
+          command.request_object = event_threat_detection_custom_module_object
+          command.response_representation = Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -3974,6 +4432,235 @@ module Google
           command.request_object = google_cloud_securitycenter_v1_big_query_export_object
           command.response_representation = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport::Representation
           command.response_class = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Validates the given Event Threat Detection Custom Module.
+        # @param [String] parent
+        #   Required. Resource name of the parent to validate the Custom Module under. Its
+        #   format is: * "organizations/`organization`/eventThreatDetectionSettings". * "
+        #   folders/`folder`/eventThreatDetectionSettings". * "projects/`project`/
+        #   eventThreatDetectionSettings".
+        # @param [Google::Apis::SecuritycenterV1::ValidateEventThreatDetectionCustomModuleRequest] validate_event_threat_detection_custom_module_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::ValidateEventThreatDetectionCustomModuleResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::ValidateEventThreatDetectionCustomModuleResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def validate_project_event_threat_detection_setting_custom_module(parent, validate_event_threat_detection_custom_module_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}:validateCustomModule', options)
+          command.request_representation = Google::Apis::SecuritycenterV1::ValidateEventThreatDetectionCustomModuleRequest::Representation
+          command.request_object = validate_event_threat_detection_custom_module_request_object
+          command.response_representation = Google::Apis::SecuritycenterV1::ValidateEventThreatDetectionCustomModuleResponse::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::ValidateEventThreatDetectionCustomModuleResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates an ETD custom module at the given level. Creating a module has a side-
+        # effect of creating modules at all descendants.
+        # @param [String] parent
+        #   Required. The new custom module's parent. Its format is: * "organizations/`
+        #   organization`/eventThreatDetectionSettings". * "folders/`folder`/
+        #   eventThreatDetectionSettings". * "projects/`project`/
+        #   eventThreatDetectionSettings".
+        # @param [Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule] event_threat_detection_custom_module_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_event_threat_detection_setting_custom_module(parent, event_threat_detection_custom_module_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/customModules', options)
+          command.request_representation = Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule::Representation
+          command.request_object = event_threat_detection_custom_module_object
+          command.response_representation = Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an ETD custom module. Deletion at resident level also deletes modules
+        # at all descendants. Deletion at any other level is not supported.
+        # @param [String] name
+        #   Required. Name of the custom module to delete. Its format is: * "organizations/
+        #   `organization`/eventThreatDetectionSettings/customModules/`module`". * "
+        #   folders/`folder`/eventThreatDetectionSettings/customModules/`module`". * "
+        #   projects/`project`/eventThreatDetectionSettings/customModules/`module`".
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_event_threat_detection_setting_custom_module(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::SecuritycenterV1::Empty::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets an ETD custom module. Retrieves the module at the given level.
+        # @param [String] name
+        #   Required. Name of the custom module to get. Its format is: * "organizations/`
+        #   organization`/eventThreatDetectionSettings/customModules/`module`". * "folders/
+        #   `folder`/eventThreatDetectionSettings/customModules/`module`". * "projects/`
+        #   project`/eventThreatDetectionSettings/customModules/`module`".
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_event_threat_detection_setting_custom_module(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists ETD custom modules. Retrieve all resident and inherited modules at the
+        # given level (no descendants).
+        # @param [String] parent
+        #   Required. Name of the parent to list custom modules. Its format is: * "
+        #   organizations/`organization`/eventThreatDetectionSettings". * "folders/`folder`
+        #   /eventThreatDetectionSettings". * "projects/`project`/
+        #   eventThreatDetectionSettings".
+        # @param [Fixnum] page_size
+        #   The maximum number of modules to return. The service may return fewer than
+        #   this value. If unspecified, at most 10 configs will be returned. The maximum
+        #   value is 1000; values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   A page token, received from a previous `ListEventThreatDetectionCustomModules`
+        #   call. Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListEventThreatDetectionCustomModules` must match the
+        #   call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::ListEventThreatDetectionCustomModulesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::ListEventThreatDetectionCustomModulesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_event_threat_detection_setting_custom_modules(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/customModules', options)
+          command.response_representation = Google::Apis::SecuritycenterV1::ListEventThreatDetectionCustomModulesResponse::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::ListEventThreatDetectionCustomModulesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an ETD custom module at the given level. All config fields can be
+        # updated when updating the module at resident level. Only enablement state can
+        # be updated when updating the module at inherited levels. Updating the module
+        # has a side-effect that it updates all descendants that are inherited from this
+        # module.
+        # @param [String] name
+        #   Immutable. The resource name of the Event Threat Detection custom module. Its
+        #   format is: * "organizations/`organization`/eventThreatDetectionSettings/
+        #   customModules/`module`". * "folders/`folder`/eventThreatDetectionSettings/
+        #   customModules/`module`". * "projects/`project`/eventThreatDetectionSettings/
+        #   customModules/`module`".
+        # @param [Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule] event_threat_detection_custom_module_object
+        # @param [String] update_mask
+        #   The list of fields to be updated. If empty all mutable fields will be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_event_threat_detection_setting_custom_module(name, event_threat_detection_custom_module_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule::Representation
+          command.request_object = event_threat_detection_custom_module_object
+          command.response_representation = Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?

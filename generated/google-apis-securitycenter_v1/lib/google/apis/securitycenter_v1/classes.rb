@@ -706,6 +706,65 @@ module Google
         end
       end
       
+      # An error encountered while validating the uploaded configuration of an Event
+      # Threat Detection Custom Module.
+      class CustomModuleValidationError
+        include Google::Apis::Core::Hashable
+      
+        # A description of the error, suitable for human consumption. Required.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # A position in the uploaded text version of a module.
+        # Corresponds to the JSON property `end`
+        # @return [Google::Apis::SecuritycenterV1::Position]
+        attr_accessor :end
+      
+        # The path, in RFC 8901 JSON Pointer format, to the field that failed validation.
+        # This may be left empty if no specific field is affected.
+        # Corresponds to the JSON property `fieldPath`
+        # @return [String]
+        attr_accessor :field_path
+      
+        # A position in the uploaded text version of a module.
+        # Corresponds to the JSON property `start`
+        # @return [Google::Apis::SecuritycenterV1::Position]
+        attr_accessor :start
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @end = args[:end] if args.key?(:end)
+          @field_path = args[:field_path] if args.key?(:field_path)
+          @start = args[:start] if args.key?(:start)
+        end
+      end
+      
+      # A list of zero or more errors encountered while validating the uploaded
+      # configuration of an Event Threat Detection Custom Module.
+      class CustomModuleValidationErrors
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `errors`
+        # @return [Array<Google::Apis::SecuritycenterV1::CustomModuleValidationError>]
+        attr_accessor :errors
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @errors = args[:errors] if args.key?(:errors)
+        end
+      end
+      
       # CVE stands for Common Vulnerabilities and Exposures. More information: https://
       # cve.mitre.org
       class Cve
@@ -950,6 +1009,75 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @val = args[:val] if args.key?(:val)
+        end
+      end
+      
+      # Represents an instance of an Event Threat Detection custom module, including
+      # its full module name, display name, enablement state, and last updated time.
+      # You can create a custom module at the organization level only.
+      class EventThreatDetectionCustomModule
+        include Google::Apis::Core::Hashable
+      
+        # Config for the module. For the resident module, its config value is defined at
+        # this level. For the inherited module, its config value is inherited from the
+        # ancestor module.
+        # Corresponds to the JSON property `config`
+        # @return [Hash<String,Object>]
+        attr_accessor :config
+      
+        # The description for the module.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The human readable name to be displayed for the module.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The state of enablement for the module at the given level of the hierarchy.
+        # Corresponds to the JSON property `enablementState`
+        # @return [String]
+        attr_accessor :enablement_state
+      
+        # Output only. The editor the module was last updated by.
+        # Corresponds to the JSON property `lastEditor`
+        # @return [String]
+        attr_accessor :last_editor
+      
+        # Immutable. The resource name of the Event Threat Detection custom module. Its
+        # format is: * "organizations/`organization`/eventThreatDetectionSettings/
+        # customModules/`module`". * "folders/`folder`/eventThreatDetectionSettings/
+        # customModules/`module`". * "projects/`project`/eventThreatDetectionSettings/
+        # customModules/`module`".
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Type for the module. e.g. CONFIGURABLE_BAD_IP.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Output only. The time the module was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @config = args[:config] if args.key?(:config)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @enablement_state = args[:enablement_state] if args.key?(:enablement_state)
+          @last_editor = args[:last_editor] if args.key?(:last_editor)
+          @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -3233,6 +3361,32 @@ module Google
         end
       end
       
+      # Response for listing EventThreatDetectionCustomModules.
+      class ListEventThreatDetectionCustomModulesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Custom modules belonging to the requested parent.
+        # Corresponds to the JSON property `eventThreatDetectionCustomModules`
+        # @return [Array<Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule>]
+        attr_accessor :event_threat_detection_custom_modules
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event_threat_detection_custom_modules = args[:event_threat_detection_custom_modules] if args.key?(:event_threat_detection_custom_modules)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response message for listing findings.
       class ListFindingsResponse
         include Google::Apis::Core::Hashable
@@ -3835,6 +3989,31 @@ module Google
           @bindings = args[:bindings] if args.key?(:bindings)
           @etag = args[:etag] if args.key?(:etag)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # A position in the uploaded text version of a module.
+      class Position
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `columnNumber`
+        # @return [Fixnum]
+        attr_accessor :column_number
+      
+        # 
+        # Corresponds to the JSON property `lineNumber`
+        # @return [Fixnum]
+        attr_accessor :line_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @column_number = args[:column_number] if args.key?(:column_number)
+          @line_number = args[:line_number] if args.key?(:line_number)
         end
       end
       
@@ -4514,6 +4693,52 @@ module Google
         # Update properties of this object
         def update!(**args)
           @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
+      # Request to validate an EventThreatDetectionCustomModule.
+      class ValidateEventThreatDetectionCustomModuleRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The raw text of the module's contents. Used to generate error
+        # messages.
+        # Corresponds to the JSON property `rawText`
+        # @return [String]
+        attr_accessor :raw_text
+      
+        # Required. The type of the module (e.g. CONFIGURABLE_BAD_IP).
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @raw_text = args[:raw_text] if args.key?(:raw_text)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Response to validating an Event Threat Detection Custom Module.
+      class ValidateEventThreatDetectionCustomModuleResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of zero or more errors encountered while validating the uploaded
+        # configuration of an Event Threat Detection Custom Module.
+        # Corresponds to the JSON property `errors`
+        # @return [Google::Apis::SecuritycenterV1::CustomModuleValidationErrors]
+        attr_accessor :errors
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @errors = args[:errors] if args.key?(:errors)
         end
       end
       
