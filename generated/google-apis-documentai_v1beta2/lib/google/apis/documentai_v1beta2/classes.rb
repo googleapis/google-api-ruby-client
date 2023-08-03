@@ -772,9 +772,9 @@ module Google
         end
       end
       
-      # The validation status of each import config. Status is set to errors if there
-      # is no documents to import in the import_config, or OK if the operation will
-      # try to proceed at least one document.
+      # The validation status of each import config. Status is set to an error if
+      # there are no documents to import in the `import_config`, or `OK` if the
+      # operation will try to proceed with at least one document.
       class GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadataImportConfigValidationResult
         include Google::Apis::Core::Hashable
       
@@ -7161,9 +7161,9 @@ module Google
         end
       end
       
-      # The validation status of each import config. Status is set to errors if there
-      # is no documents to import in the import_config, or OK if the operation will
-      # try to proceed at least one document.
+      # The validation status of each import config. Status is set to an error if
+      # there are no documents to import in the `import_config`, or `OK` if the
+      # operation will try to proceed with at least one document.
       class GoogleCloudDocumentaiV1beta3ImportDocumentsMetadataImportConfigValidationResult
         include Google::Apis::Core::Hashable
       
