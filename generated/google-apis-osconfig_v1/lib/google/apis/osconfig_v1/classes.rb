@@ -1225,6 +1225,11 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # OSPolicy fingerprint (checksum)
+        # Corresponds to the JSON property `fingerprint`
+        # @return [String]
+        attr_accessor :fingerprint
+      
         # Required. The id of the OS policy with the following restrictions: * Must
         # contain only lowercase letters, numbers, and hyphens. * Must start with a
         # letter. * Must be between 1-63 characters. * Must end with a number or a
@@ -1256,6 +1261,7 @@ module Google
         def update!(**args)
           @allow_no_resource_group_match = args[:allow_no_resource_group_match] if args.key?(:allow_no_resource_group_match)
           @description = args[:description] if args.key?(:description)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @id = args[:id] if args.key?(:id)
           @mode = args[:mode] if args.key?(:mode)
           @resource_groups = args[:resource_groups] if args.key?(:resource_groups)
