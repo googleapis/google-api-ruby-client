@@ -196,6 +196,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDataplexV1DataProfileResultPostScanActionsResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDataplexV1DataProfileResultProfile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -244,6 +256,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDataplexV1DataProfileSpecPostScanActions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDataplexV1DataProfileSpecSelectedFields
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -257,6 +281,18 @@ module Google
       end
       
       class GoogleCloudDataplexV1DataQualityResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataQualityResultPostScanActionsResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -329,6 +365,18 @@ module Google
       end
       
       class GoogleCloudDataplexV1DataQualitySpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataQualitySpecPostScanActions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1244,11 +1292,29 @@ module Google
       class GoogleCloudDataplexV1DataProfileResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :post_scan_actions_result, as: 'postScanActionsResult', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResultPostScanActionsResult, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResultPostScanActionsResult::Representation
+      
           property :profile, as: 'profile', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResultProfile, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResultProfile::Representation
       
           property :row_count, :numeric_string => true, as: 'rowCount'
           property :scanned_data, as: 'scannedData', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1ScannedData, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1ScannedData::Representation
       
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataProfileResultPostScanActionsResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bigquery_export_result, as: 'bigqueryExportResult', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message'
+          property :state, as: 'state'
         end
       end
       
@@ -1334,8 +1400,25 @@ module Google
       
           property :include_fields, as: 'includeFields', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileSpecSelectedFields, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileSpecSelectedFields::Representation
       
+          property :post_scan_actions, as: 'postScanActions', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileSpecPostScanActions, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileSpecPostScanActions::Representation
+      
           property :row_filter, as: 'rowFilter'
           property :sampling_percent, as: 'samplingPercent'
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataProfileSpecPostScanActions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bigquery_export, as: 'bigqueryExport', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :results_table, as: 'resultsTable'
         end
       end
       
@@ -1359,11 +1442,29 @@ module Google
           collection :dimensions, as: 'dimensions', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityDimensionResult, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityDimensionResult::Representation
       
           property :passed, as: 'passed'
+          property :post_scan_actions_result, as: 'postScanActionsResult', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityResultPostScanActionsResult, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityResultPostScanActionsResult::Representation
+      
           property :row_count, :numeric_string => true, as: 'rowCount'
           collection :rules, as: 'rules', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleResult, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleResult::Representation
       
           property :scanned_data, as: 'scannedData', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1ScannedData, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1ScannedData::Representation
       
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataQualityResultPostScanActionsResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bigquery_export_result, as: 'bigqueryExportResult', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message'
+          property :state, as: 'state'
         end
       end
       
@@ -1491,10 +1592,27 @@ module Google
       class GoogleCloudDataplexV1DataQualitySpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :post_scan_actions, as: 'postScanActions', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualitySpecPostScanActions, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualitySpecPostScanActions::Representation
+      
           property :row_filter, as: 'rowFilter'
           collection :rules, as: 'rules', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRule, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRule::Representation
       
           property :sampling_percent, as: 'samplingPercent'
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataQualitySpecPostScanActions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bigquery_export, as: 'bigqueryExport', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :results_table, as: 'resultsTable'
         end
       end
       
@@ -1653,6 +1771,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :attribute_count, as: 'attributeCount'
+          property :class_count, as: 'classCount'
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :display_name, as: 'displayName'
