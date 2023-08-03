@@ -304,6 +304,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudBeyondcorpPartnerservicesV1alphaListBrowserDlpRulesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudBeyondcorpPartnerservicesV1alphaListPartnerTenantsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1099,6 +1105,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :email, as: 'email'
           property :id, as: 'id'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpPartnerservicesV1alphaListBrowserDlpRulesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :browser_dlp_rules, as: 'browserDlpRules', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaBrowserDlpRule, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaBrowserDlpRule::Representation
+      
         end
       end
       

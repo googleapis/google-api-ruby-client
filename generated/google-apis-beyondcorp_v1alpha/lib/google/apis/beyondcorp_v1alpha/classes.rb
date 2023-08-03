@@ -1902,6 +1902,25 @@ module Google
         end
       end
       
+      # Message for response to listing BrowserDlpRules.
+      class GoogleCloudBeyondcorpPartnerservicesV1alphaListBrowserDlpRulesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of ProxyConfig objects.
+        # Corresponds to the JSON property `browserDlpRules`
+        # @return [Array<Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaBrowserDlpRule>]
+        attr_accessor :browser_dlp_rules
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @browser_dlp_rules = args[:browser_dlp_rules] if args.key?(:browser_dlp_rules)
+        end
+      end
+      
       # Message for response to listing PartnerTenants.
       class GoogleCloudBeyondcorpPartnerservicesV1alphaListPartnerTenantsResponse
         include Google::Apis::Core::Hashable
