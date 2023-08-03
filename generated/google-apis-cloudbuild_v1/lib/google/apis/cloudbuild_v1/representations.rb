@@ -911,6 +911,7 @@ module Google
       class BuildOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :automap_substitutions, as: 'automapSubstitutions'
           property :default_logs_bucket_behavior, as: 'defaultLogsBucketBehavior'
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
           property :dynamic_substitutions, as: 'dynamicSubstitutions'
@@ -936,6 +937,7 @@ module Google
           collection :allow_exit_codes, as: 'allowExitCodes'
           property :allow_failure, as: 'allowFailure'
           collection :args, as: 'args'
+          property :automap_substitutions, as: 'automapSubstitutions'
           property :dir, as: 'dir'
           property :entrypoint, as: 'entrypoint'
           collection :env, as: 'env'
