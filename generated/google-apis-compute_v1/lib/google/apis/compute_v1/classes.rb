@@ -22,6 +22,52 @@ module Google
   module Apis
     module ComputeV1
       
+      # Contains the configurations necessary to generate a signature for access to
+      # private storage buckets that support Signature Version 4 for authentication.
+      # The service name for generating the authentication header will always default
+      # to 's3'.
+      class Awsv4Signature
+        include Google::Apis::Core::Hashable
+      
+        # The access key used for s3 bucket authentication. Required for updating or
+        # creating a backend that uses AWS v4 signature authentication, but will not be
+        # returned as part of the configuration when queried with a REST API GET request.
+        # @InputOnly
+        # Corresponds to the JSON property `accessKey`
+        # @return [String]
+        attr_accessor :access_key
+      
+        # The identifier of an access key used for s3 bucket authentication.
+        # Corresponds to the JSON property `accessKeyId`
+        # @return [String]
+        attr_accessor :access_key_id
+      
+        # The optional version identifier for the access key. You can use this to keep
+        # track of different iterations of your access key.
+        # Corresponds to the JSON property `accessKeyVersion`
+        # @return [String]
+        attr_accessor :access_key_version
+      
+        # The name of the cloud region of your origin. This is a free-form field with
+        # the name of the region your cloud uses to host your origin. For example, "us-
+        # east-1" for AWS or "us-ashburn-1" for OCI.
+        # Corresponds to the JSON property `originRegion`
+        # @return [String]
+        attr_accessor :origin_region
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_key = args[:access_key] if args.key?(:access_key)
+          @access_key_id = args[:access_key_id] if args.key?(:access_key_id)
+          @access_key_version = args[:access_key_version] if args.key?(:access_key_version)
+          @origin_region = args[:origin_region] if args.key?(:origin_region)
+        end
+      end
+      
       # A specification of the type and number of accelerator cards attached to the
       # instance.
       class AcceleratorConfig
@@ -1565,8 +1611,7 @@ module Google
       
         # Required for each regional disk associated with the instance. Specify the URLs
         # of the zones where the disk should be replicated to. You must provide exactly
-        # two replica zones, and one zone must be the same as the instance zone. You can'
-        # t use this option with boot disks.
+        # two replica zones, and one zone must be the same as the instance zone.
         # Corresponds to the JSON property `replicaZones`
         # @return [Array<String>]
         attr_accessor :replica_zones
@@ -9259,7 +9304,7 @@ module Google
       
         # This is used in PSC consumer ForwardingRule to control whether it should try
         # to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this
-        # field.
+        # field. Once set, this field is not mutable.
         # Corresponds to the JSON property `noAutomateDnsZone`
         # @return [Boolean]
         attr_accessor :no_automate_dns_zone
@@ -9375,6 +9420,7 @@ module Google
         # API bundle: - vpc-sc - APIs that support VPC Service Controls. - all-apis -
         # All supported Google APIs. - For Private Service Connect forwarding rules that
         # forward traffic to managed services, the target must be a service attachment.
+        # The target is not mutable once set as a service attachment.
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
@@ -25537,6 +25583,12 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] If the operation is for projects.setCommonInstanceMetadata, this
+        # field will contain information on all underlying zonal actions and their state.
+        # Corresponds to the JSON property `setCommonInstanceMetadataOperationMetadata`
+        # @return [Google::Apis::ComputeV1::SetCommonInstanceMetadataOperationMetadata]
+        attr_accessor :set_common_instance_metadata_operation_metadata
+      
         # [Output Only] The time that this operation was started by the server. This
         # value is in RFC3339 text format.
         # Corresponds to the JSON property `startTime`
@@ -25569,7 +25621,7 @@ module Google
         attr_accessor :target_link
       
         # [Output Only] User who requested the operation, for example: `user@example.com`
-        # .
+        # or `alice_smith_identifier (global/workforcePools/example-com-us-employees)`.
         # Corresponds to the JSON property `user`
         # @return [String]
         attr_accessor :user
@@ -25608,6 +25660,7 @@ module Google
           @progress = args[:progress] if args.key?(:progress)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @set_common_instance_metadata_operation_metadata = args[:set_common_instance_metadata_operation_metadata] if args.key?(:set_common_instance_metadata_operation_metadata)
           @start_time = args[:start_time] if args.key?(:start_time)
           @status = args[:status] if args.key?(:status)
           @status_message = args[:status_message] if args.key?(:status_message)
@@ -34333,6 +34386,12 @@ module Google
         # @return [String]
         attr_accessor :rule_visibility
       
+        # Configuration options for layer7 adaptive protection for various customizable
+        # thresholds.
+        # Corresponds to the JSON property `thresholdConfigs`
+        # @return [Array<Google::Apis::ComputeV1::SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig>]
+        attr_accessor :threshold_configs
+      
         def initialize(**args)
            update!(**args)
         end
@@ -34341,6 +34400,51 @@ module Google
         def update!(**args)
           @enable = args[:enable] if args.key?(:enable)
           @rule_visibility = args[:rule_visibility] if args.key?(:rule_visibility)
+          @threshold_configs = args[:threshold_configs] if args.key?(:threshold_configs)
+        end
+      end
+      
+      # 
+      class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `autoDeployConfidenceThreshold`
+        # @return [Float]
+        attr_accessor :auto_deploy_confidence_threshold
+      
+        # 
+        # Corresponds to the JSON property `autoDeployExpirationSec`
+        # @return [Fixnum]
+        attr_accessor :auto_deploy_expiration_sec
+      
+        # 
+        # Corresponds to the JSON property `autoDeployImpactedBaselineThreshold`
+        # @return [Float]
+        attr_accessor :auto_deploy_impacted_baseline_threshold
+      
+        # 
+        # Corresponds to the JSON property `autoDeployLoadThreshold`
+        # @return [Float]
+        attr_accessor :auto_deploy_load_threshold
+      
+        # The name must be 1-63 characters long, and comply with RFC1035. The name must
+        # be unique within the security policy.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_deploy_confidence_threshold = args[:auto_deploy_confidence_threshold] if args.key?(:auto_deploy_confidence_threshold)
+          @auto_deploy_expiration_sec = args[:auto_deploy_expiration_sec] if args.key?(:auto_deploy_expiration_sec)
+          @auto_deploy_impacted_baseline_threshold = args[:auto_deploy_impacted_baseline_threshold] if args.key?(:auto_deploy_impacted_baseline_threshold)
+          @auto_deploy_load_threshold = args[:auto_deploy_load_threshold] if args.key?(:auto_deploy_load_threshold)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -35090,6 +35194,14 @@ module Google
       class SecuritySettings
         include Google::Apis::Core::Hashable
       
+        # Contains the configurations necessary to generate a signature for access to
+        # private storage buckets that support Signature Version 4 for authentication.
+        # The service name for generating the authentication header will always default
+        # to 's3'.
+        # Corresponds to the JSON property `awsV4Authentication`
+        # @return [Google::Apis::ComputeV1::Awsv4Signature]
+        attr_accessor :aws_v4_authentication
+      
         # Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that
         # describes how clients should authenticate with this service's backends.
         # clientTlsPolicy only applies to a global BackendService with the
@@ -35121,6 +35233,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @aws_v4_authentication = args[:aws_v4_authentication] if args.key?(:aws_v4_authentication)
           @client_tls_policy = args[:client_tls_policy] if args.key?(:client_tls_policy)
           @subject_alt_names = args[:subject_alt_names] if args.key?(:subject_alt_names)
         end
@@ -35785,6 +35898,63 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # 
+      class SetCommonInstanceMetadataOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] The client operation id.
+        # Corresponds to the JSON property `clientOperationId`
+        # @return [String]
+        attr_accessor :client_operation_id
+      
+        # [Output Only] Status information per location (location name is key). Example
+        # key: zones/us-central1-a
+        # Corresponds to the JSON property `perLocationOperations`
+        # @return [Hash<String,Google::Apis::ComputeV1::SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo>]
+        attr_accessor :per_location_operations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_operation_id = args[:client_operation_id] if args.key?(:client_operation_id)
+          @per_location_operations = args[:per_location_operations] if args.key?(:per_location_operations)
+        end
+      end
+      
+      # 
+      class SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo
+        include Google::Apis::Core::Hashable
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::ComputeV1::Status]
+        attr_accessor :error
+      
+        # [Output Only] Status of the action, which can be one of the following: `
+        # PROPAGATING`, `PROPAGATED`, `ABANDONED`, `FAILED`, or `DONE`.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error = args[:error] if args.key?(:error)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -37632,6 +37802,45 @@ module Google
         # Update properties of this object
         def update!(**args)
           @auto_delete = args[:auto_delete] if args.key?(:auto_delete)
+        end
+      end
+      
+      # The `Status` type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by [
+      # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+      # data: error code, error message, and error details. You can find out more
+      # about this error model and how to work with it in the [API Design Guide](https:
+      # //cloud.google.com/apis/design/errors).
+      class Status
+        include Google::Apis::Core::Hashable
+      
+        # The status code, which should be an enum value of google.rpc.Code.
+        # Corresponds to the JSON property `code`
+        # @return [Fixnum]
+        attr_accessor :code
+      
+        # A list of messages that carry the error details. There is a common set of
+        # message types for APIs to use.
+        # Corresponds to the JSON property `details`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :details
+      
+        # A developer-facing error message, which should be in English. Any user-facing
+        # error message should be localized and sent in the google.rpc.Status.details
+        # field, or localized by the client.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @details = args[:details] if args.key?(:details)
+          @message = args[:message] if args.key?(:message)
         end
       end
       

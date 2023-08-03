@@ -22,6 +22,12 @@ module Google
   module Apis
     module ComputeV1
       
+      class Awsv4Signature
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AcceleratorConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4444,6 +4450,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SecurityPolicyAdvancedOptionsConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4656,6 +4668,18 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SetCommonInstanceMetadataOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -4913,6 +4937,12 @@ module Google
       end
       
       class StatefulPolicyPreservedStateDiskDevice
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5936,6 +5966,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Awsv4Signature
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_key, as: 'accessKey'
+          property :access_key_id, as: 'accessKeyId'
+          property :access_key_version, as: 'accessKeyVersion'
+          property :origin_region, as: 'originRegion'
+        end
       end
       
       class AcceleratorConfig
@@ -12043,6 +12083,8 @@ module Google
           property :progress, as: 'progress'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
+          property :set_common_instance_metadata_operation_metadata, as: 'setCommonInstanceMetadataOperationMetadata', class: Google::Apis::ComputeV1::SetCommonInstanceMetadataOperationMetadata, decorator: Google::Apis::ComputeV1::SetCommonInstanceMetadataOperationMetadata::Representation
+      
           property :start_time, as: 'startTime'
           property :status, as: 'status'
           property :status_message, as: 'statusMessage'
@@ -14281,6 +14323,19 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable, as: 'enable'
           property :rule_visibility, as: 'ruleVisibility'
+          collection :threshold_configs, as: 'thresholdConfigs', class: Google::Apis::ComputeV1::SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig, decorator: Google::Apis::ComputeV1::SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig::Representation
+      
+        end
+      end
+      
+      class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_deploy_confidence_threshold, as: 'autoDeployConfidenceThreshold'
+          property :auto_deploy_expiration_sec, as: 'autoDeployExpirationSec'
+          property :auto_deploy_impacted_baseline_threshold, as: 'autoDeployImpactedBaselineThreshold'
+          property :auto_deploy_load_threshold, as: 'autoDeployLoadThreshold'
+          property :name, as: 'name'
         end
       end
       
@@ -14486,6 +14541,8 @@ module Google
       class SecuritySettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :aws_v4_authentication, as: 'awsV4Authentication', class: Google::Apis::ComputeV1::Awsv4Signature, decorator: Google::Apis::ComputeV1::Awsv4Signature::Representation
+      
           property :client_tls_policy, as: 'clientTlsPolicy'
           collection :subject_alt_names, as: 'subjectAltNames'
         end
@@ -14654,6 +14711,24 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class SetCommonInstanceMetadataOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_operation_id, as: 'clientOperationId'
+          hash :per_location_operations, as: 'perLocationOperations', class: Google::Apis::ComputeV1::SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo, decorator: Google::Apis::ComputeV1::SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo::Representation
+      
+        end
+      end
+      
+      class SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error', class: Google::Apis::ComputeV1::Status, decorator: Google::Apis::ComputeV1::Status::Representation
+      
+          property :state, as: 'state'
         end
       end
       
@@ -15127,6 +15202,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_delete, as: 'autoDelete'
+        end
+      end
+      
+      class Status
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          collection :details, as: 'details'
+          property :message, as: 'message'
         end
       end
       
