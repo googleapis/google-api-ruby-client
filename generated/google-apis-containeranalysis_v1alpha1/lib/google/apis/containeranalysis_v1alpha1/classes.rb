@@ -623,7 +623,7 @@ module Google
         end
       end
       
-      # A step in the build pipeline. Next ID: 20
+      # A step in the build pipeline. Next ID: 21
       class BuildStep
         include Google::Apis::Core::Hashable
       
@@ -651,6 +651,13 @@ module Google
         # Corresponds to the JSON property `args`
         # @return [Array<String>]
         attr_accessor :args
+      
+        # Option to include built-in and custom substitutions as env variables for this
+        # build step. This option will override the global option in BuildOption.
+        # Corresponds to the JSON property `automapSubstitutions`
+        # @return [Boolean]
+        attr_accessor :automap_substitutions
+        alias_method :automap_substitutions?, :automap_substitutions
       
         # Working directory to use when running this step's container. If this value is
         # a relative path, it is relative to the build's working directory. If this
@@ -765,6 +772,7 @@ module Google
           @allow_exit_codes = args[:allow_exit_codes] if args.key?(:allow_exit_codes)
           @allow_failure = args[:allow_failure] if args.key?(:allow_failure)
           @args = args[:args] if args.key?(:args)
+          @automap_substitutions = args[:automap_substitutions] if args.key?(:automap_substitutions)
           @dir = args[:dir] if args.key?(:dir)
           @entrypoint = args[:entrypoint] if args.key?(:entrypoint)
           @env = args[:env] if args.key?(:env)
@@ -1706,6 +1714,13 @@ module Google
       class ContaineranalysisGoogleDevtoolsCloudbuildV1BuildOptions
         include Google::Apis::Core::Hashable
       
+        # Option to include built-in and custom substitutions as env variables for all
+        # build steps.
+        # Corresponds to the JSON property `automapSubstitutions`
+        # @return [Boolean]
+        attr_accessor :automap_substitutions
+        alias_method :automap_substitutions?, :automap_substitutions
+      
         # Optional. Option to specify how default logs buckets are setup.
         # Corresponds to the JSON property `defaultLogsBucketBehavior`
         # @return [String]
@@ -1806,6 +1821,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @automap_substitutions = args[:automap_substitutions] if args.key?(:automap_substitutions)
           @default_logs_bucket_behavior = args[:default_logs_bucket_behavior] if args.key?(:default_logs_bucket_behavior)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @dynamic_substitutions = args[:dynamic_substitutions] if args.key?(:dynamic_substitutions)
@@ -1874,6 +1890,13 @@ module Google
         # Corresponds to the JSON property `args`
         # @return [Array<String>]
         attr_accessor :args
+      
+        # Option to include built-in and custom substitutions as env variables for this
+        # build step. This option will override the global option in BuildOption.
+        # Corresponds to the JSON property `automapSubstitutions`
+        # @return [Boolean]
+        attr_accessor :automap_substitutions
+        alias_method :automap_substitutions?, :automap_substitutions
       
         # Working directory to use when running this step's container. If this value is
         # a relative path, it is relative to the build's working directory. If this
@@ -1988,6 +2011,7 @@ module Google
           @allow_exit_codes = args[:allow_exit_codes] if args.key?(:allow_exit_codes)
           @allow_failure = args[:allow_failure] if args.key?(:allow_failure)
           @args = args[:args] if args.key?(:args)
+          @automap_substitutions = args[:automap_substitutions] if args.key?(:automap_substitutions)
           @dir = args[:dir] if args.key?(:dir)
           @entrypoint = args[:entrypoint] if args.key?(:entrypoint)
           @env = args[:env] if args.key?(:env)
