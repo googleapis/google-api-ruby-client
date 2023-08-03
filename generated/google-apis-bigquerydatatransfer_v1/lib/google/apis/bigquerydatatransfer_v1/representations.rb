@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EncryptionConfiguration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EnrollDataSourcesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -240,6 +246,13 @@ module Google
         end
       end
       
+      class EncryptionConfiguration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kms_key_name, as: 'kmsKeyName'
+        end
+      end
+      
       class EnrollDataSourcesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -372,6 +385,8 @@ module Google
           property :disabled, as: 'disabled'
           property :display_name, as: 'displayName'
           property :email_preferences, as: 'emailPreferences', class: Google::Apis::BigquerydatatransferV1::EmailPreferences, decorator: Google::Apis::BigquerydatatransferV1::EmailPreferences::Representation
+      
+          property :encryption_configuration, as: 'encryptionConfiguration', class: Google::Apis::BigquerydatatransferV1::EncryptionConfiguration, decorator: Google::Apis::BigquerydatatransferV1::EncryptionConfiguration::Representation
       
           property :name, as: 'name'
           property :next_run_time, as: 'nextRunTime'

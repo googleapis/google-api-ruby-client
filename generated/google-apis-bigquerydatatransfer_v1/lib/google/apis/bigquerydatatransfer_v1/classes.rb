@@ -345,6 +345,25 @@ module Google
         end
       end
       
+      # Represents the encryption configuration for a transfer.
+      class EncryptionConfiguration
+        include Google::Apis::Core::Hashable
+      
+        # The name of the KMS key used for encrypting BigQuery data.
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
+        end
+      end
+      
       # A request to enroll a set of data sources so they are visible in the BigQuery
       # UI's `Transfer` tab.
       class EnrollDataSourcesRequest
@@ -804,6 +823,11 @@ module Google
         # @return [Google::Apis::BigquerydatatransferV1::EmailPreferences]
         attr_accessor :email_preferences
       
+        # Represents the encryption configuration for a transfer.
+        # Corresponds to the JSON property `encryptionConfiguration`
+        # @return [Google::Apis::BigquerydatatransferV1::EncryptionConfiguration]
+        attr_accessor :encryption_configuration
+      
         # The resource name of the transfer config. Transfer config names have the form `
         # projects/`project_id`/locations/`region`/transferConfigs/`config_id``. Where `
         # config_id` is usually a uuid, even though it is not guaranteed or required.
@@ -883,6 +907,7 @@ module Google
           @disabled = args[:disabled] if args.key?(:disabled)
           @display_name = args[:display_name] if args.key?(:display_name)
           @email_preferences = args[:email_preferences] if args.key?(:email_preferences)
+          @encryption_configuration = args[:encryption_configuration] if args.key?(:encryption_configuration)
           @name = args[:name] if args.key?(:name)
           @next_run_time = args[:next_run_time] if args.key?(:next_run_time)
           @notification_pubsub_topic = args[:notification_pubsub_topic] if args.key?(:notification_pubsub_topic)
