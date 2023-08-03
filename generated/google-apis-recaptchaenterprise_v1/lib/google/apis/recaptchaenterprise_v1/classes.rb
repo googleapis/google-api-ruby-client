@@ -709,8 +709,8 @@ module Google
         # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict]
         attr_accessor :stolen_instrument_verdict
       
-        # Probability (0-1) of this transaction being fraudulent. Summarizes the
-        # combined risk of attack vectors below.
+        # Probability of this transaction being fraudulent. Summarizes the combined risk
+        # of attack vectors below. Values are from 0.0 (lowest) to 1.0 (highest).
         # Corresponds to the JSON property `transactionRisk`
         # @return [Float]
         attr_accessor :transaction_risk
@@ -732,8 +732,8 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict
         include Google::Apis::Core::Hashable
       
-        # Probability (0-1) of this transaction attempt being executed in a behaviorally
-        # trustworthy way.
+        # Probability of this transaction attempt being executed in a behaviorally
+        # trustworthy way. Values are from 0.0 (lowest) to 1.0 (highest).
         # Corresponds to the JSON property `trust`
         # @return [Float]
         attr_accessor :trust_prop
@@ -753,8 +753,8 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict
         include Google::Apis::Core::Hashable
       
-        # Probability (0-1) of this transaction attempt being part of a card testing
-        # attack.
+        # Probability of this transaction attempt being part of a card testing attack.
+        # Values are from 0.0 (lowest) to 1.0 (highest).
         # Corresponds to the JSON property `risk`
         # @return [Float]
         attr_accessor :risk
@@ -774,7 +774,8 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict
         include Google::Apis::Core::Hashable
       
-        # Probability (0-1) of this transaction being executed with a stolen instrument.
+        # Probability of this transaction being executed with a stolen instrument.
+        # Values are from 0.0 (lowest) to 1.0 (highest).
         # Corresponds to the JSON property `risk`
         # @return [Float]
         attr_accessor :risk
