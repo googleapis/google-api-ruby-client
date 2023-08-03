@@ -669,8 +669,7 @@ module Google
         #   Required. Parent resource of the EventSubscription, of the form: `projects/*/
         #   locations/*/connections/*`
         # @param [String] filter
-        #   Filter. https://g3doc.corp.google.com/cloud/control2/g3doc/dev/apihosting/
-        #   list_filtering.md#filtering.
+        #   Filter.
         # @param [String] order_by
         #   Order by parameters.
         # @param [Fixnum] page_size
@@ -972,8 +971,7 @@ module Google
         #   Required. Parent resource od the EndpointAttachment, of the form: `projects/*/
         #   locations/*`
         # @param [String] filter
-        #   Filter. https://g3doc.corp.google.com/cloud/control2/g3doc/dev/apihosting/
-        #   list_filtering.md#filtering.
+        #   Filter.
         # @param [String] order_by
         #   Order by parameters.
         # @param [Fixnum] page_size
@@ -1224,8 +1222,7 @@ module Google
         #   Required. Parent resource of the Managed Zone, of the form: `projects/*/
         #   locations/global`
         # @param [String] filter
-        #   Filter. https://g3doc.corp.google.com/cloud/control2/g3doc/dev/apihosting/
-        #   list_filtering.md#filtering.
+        #   Filter.
         # @param [String] order_by
         #   Order by parameters.
         # @param [Fixnum] page_size

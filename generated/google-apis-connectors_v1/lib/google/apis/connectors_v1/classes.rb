@@ -206,8 +206,8 @@ module Google
       class AuthorizationCodeLink
         include Google::Apis::Core::Hashable
       
-        # The client ID assigned to the GCP Connectors OAuth app for the connector data
-        # source.
+        # The client ID assigned to the Google Cloud Connectors OAuth app for the
+        # connector data source.
         # Corresponds to the JSON property `clientId`
         # @return [String]
         attr_accessor :client_id
@@ -218,8 +218,8 @@ module Google
         attr_accessor :enable_pkce
         alias_method :enable_pkce?, :enable_pkce
       
-        # The scopes for which the user will authorize GCP Connectors on the connector
-        # data source.
+        # The scopes for which the user will authorize Google Cloud Connectors on the
+        # connector data source.
         # Corresponds to the JSON property `scopes`
         # @return [Array<String>]
         attr_accessor :scopes
@@ -431,10 +431,10 @@ module Google
         attr_accessor :required_condition
       
         # This configuration defines all the Cloud IAM roles that needs to be granted to
-        # a particular GCP resource for the selected principal like service account.
-        # These configurations will let UI display to customers what IAM roles need to
-        # be granted by them. Or these configurations can be used by the UI to render a '
-        # grant' button to do the same on behalf of the user.
+        # a particular Google Cloud resource for the selected principal like service
+        # account. These configurations will let UI display to customers what IAM roles
+        # need to be granted by them. Or these configurations can be used by the UI to
+        # render a 'grant' button to do the same on behalf of the user.
         # Corresponds to the JSON property `roleGrant`
         # @return [Google::Apis::ConnectorsV1::RoleGrant]
         attr_accessor :role_grant
@@ -588,7 +588,8 @@ module Google
         # @return [Google::Apis::ConnectorsV1::NodeConfig]
         attr_accessor :node_config
       
-        # Optional. Service account needed for runtime plane to access GCP resources.
+        # Optional. Service account needed for runtime plane to access Google Cloud
+        # resources.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
         attr_accessor :service_account
@@ -923,10 +924,10 @@ module Google
         attr_accessor :release_version
       
         # This configuration defines all the Cloud IAM roles that needs to be granted to
-        # a particular GCP resource for the selected principal like service account.
-        # These configurations will let UI display to customers what IAM roles need to
-        # be granted by them. Or these configurations can be used by the UI to render a '
-        # grant' button to do the same on behalf of the user.
+        # a particular Google Cloud resource for the selected principal like service
+        # account. These configurations will let UI display to customers what IAM roles
+        # need to be granted by them. Or these configurations can be used by the UI to
+        # render a 'grant' button to do the same on behalf of the user.
         # Corresponds to the JSON property `roleGrant`
         # @return [Google::Apis::ConnectorsV1::RoleGrant]
         attr_accessor :role_grant
@@ -941,10 +942,7 @@ module Google
         # @return [Google::Apis::ConnectorsV1::SslConfigTemplate]
         attr_accessor :ssl_config_template
       
-        # Supported runtime features of a connector version. This is passed to the
-        # management layer to add a new connector version by the connector developer.
-        # Details about how this proto is passed to the management layer is covered in
-        # this doc - go/runtime-manifest.
+        # Supported runtime features of a connector version.
         # Corresponds to the JSON property `supportedRuntimeFeatures`
         # @return [Google::Apis::ConnectorsV1::SupportedRuntimeFeatures]
         attr_accessor :supported_runtime_features
@@ -3014,9 +3012,9 @@ module Google
       class Resource
         include Google::Apis::Core::Hashable
       
-        # Template to uniquely represent a GCP resource in a format IAM expects This is
-        # a template that can have references to other values provided in the config
-        # variable template.
+        # Template to uniquely represent a Google Cloud resource in a format IAM expects
+        # This is a template that can have references to other values provided in the
+        # config variable template.
         # Corresponds to the JSON property `pathTemplate`
         # @return [String]
         attr_accessor :path_template
@@ -3082,10 +3080,10 @@ module Google
       end
       
       # This configuration defines all the Cloud IAM roles that needs to be granted to
-      # a particular GCP resource for the selected principal like service account.
-      # These configurations will let UI display to customers what IAM roles need to
-      # be granted by them. Or these configurations can be used by the UI to render a '
-      # grant' button to do the same on behalf of the user.
+      # a particular Google Cloud resource for the selected principal like service
+      # account. These configurations will let UI display to customers what IAM roles
+      # need to be granted by them. Or these configurations can be used by the UI to
+      # render a 'grant' button to do the same on behalf of the user.
       class RoleGrant
         include Google::Apis::Core::Hashable
       
@@ -3590,10 +3588,7 @@ module Google
         end
       end
       
-      # Supported runtime features of a connector version. This is passed to the
-      # management layer to add a new connector version by the connector developer.
-      # Details about how this proto is passed to the management layer is covered in
-      # this doc - go/runtime-manifest.
+      # Supported runtime features of a connector version.
       class SupportedRuntimeFeatures
         include Google::Apis::Core::Hashable
       
