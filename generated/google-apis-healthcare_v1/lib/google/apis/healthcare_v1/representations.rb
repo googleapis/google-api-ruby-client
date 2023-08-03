@@ -868,6 +868,7 @@ module Google
       class AnalyzeEntitiesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :alternative_output_format, as: 'alternativeOutputFormat'
           property :document_content, as: 'documentContent'
           collection :licensed_vocabularies, as: 'licensedVocabularies'
         end
@@ -880,6 +881,7 @@ module Google
       
           collection :entity_mentions, as: 'entityMentions', class: Google::Apis::HealthcareV1::EntityMention, decorator: Google::Apis::HealthcareV1::EntityMention::Representation
       
+          property :fhir_bundle, as: 'fhirBundle'
           collection :relationships, as: 'relationships', class: Google::Apis::HealthcareV1::EntityMentionRelationship, decorator: Google::Apis::HealthcareV1::EntityMentionRelationship::Representation
       
         end
