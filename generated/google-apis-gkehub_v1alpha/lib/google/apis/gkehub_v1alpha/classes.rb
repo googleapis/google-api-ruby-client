@@ -994,7 +994,7 @@ module Google
         # Sync metrics to Cloud Monitoring and Cloud Monarch when Workload Identity is
         # enabled. The GSA should have the Monitoring Metric Writer (roles/monitoring.
         # metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the
-        # namespace `config-management-monitoring` should be binded to the GSA. This
+        # namespace `config-management-monitoring` should be bound to the GSA. This
         # field is required when automatic Feature management is enabled.
         # Corresponds to the JSON property `metricsGcpServiceAccountEmail`
         # @return [String]
@@ -2769,11 +2769,6 @@ module Google
         # @return [String]
         attr_accessor :tenant
       
-        # Optional. Claim in the AzureAD ID Token that holds the user details.
-        # Corresponds to the JSON property `userClaim`
-        # @return [String]
-        attr_accessor :user_claim
-      
         def initialize(**args)
            update!(**args)
         end
@@ -2785,7 +2780,6 @@ module Google
           @encrypted_client_secret = args[:encrypted_client_secret] if args.key?(:encrypted_client_secret)
           @kubectl_redirect_uri = args[:kubectl_redirect_uri] if args.key?(:kubectl_redirect_uri)
           @tenant = args[:tenant] if args.key?(:tenant)
-          @user_claim = args[:user_claim] if args.key?(:user_claim)
         end
       end
       
