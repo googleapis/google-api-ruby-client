@@ -1344,9 +1344,9 @@ module Google
         end
         
         # Creates a sink that exports specified log entries to a destination. The export
-        # of newly-ingested log entries begins immediately, unless the sink's
-        # writer_identity is not permitted to write to the destination. A sink can
-        # export log entries only from the resource owning the sink.
+        # begins upon ingress, unless the sink's writer_identity is not permitted to
+        # write to the destination. A sink can export log entries only from the resource
+        # owning the sink.
         # @param [String] parent
         #   Required. The resource in which to create the sink: "projects/[PROJECT_ID]" "
         #   organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "
@@ -1705,7 +1705,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Streaming read of log entries as they are ingested. Until the stream is
+        # Streaming read of log entries as they are received. Until the stream is
         # terminated, it will continue reading logs.
         # @param [Google::Apis::LoggingV2::TailLogEntriesRequest] tail_log_entries_request_object
         # @param [String] fields
@@ -3310,9 +3310,9 @@ module Google
         end
         
         # Creates a sink that exports specified log entries to a destination. The export
-        # of newly-ingested log entries begins immediately, unless the sink's
-        # writer_identity is not permitted to write to the destination. A sink can
-        # export log entries only from the resource owning the sink.
+        # begins upon ingress, unless the sink's writer_identity is not permitted to
+        # write to the destination. A sink can export log entries only from the resource
+        # owning the sink.
         # @param [String] parent
         #   Required. The resource in which to create the sink: "projects/[PROJECT_ID]" "
         #   organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "
@@ -6007,9 +6007,9 @@ module Google
         end
         
         # Creates a sink that exports specified log entries to a destination. The export
-        # of newly-ingested log entries begins immediately, unless the sink's
-        # writer_identity is not permitted to write to the destination. A sink can
-        # export log entries only from the resource owning the sink.
+        # begins upon ingress, unless the sink's writer_identity is not permitted to
+        # write to the destination. A sink can export log entries only from the resource
+        # owning the sink.
         # @param [String] parent
         #   Required. The resource in which to create the sink: "projects/[PROJECT_ID]" "
         #   organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "
@@ -7775,9 +7775,9 @@ module Google
         end
         
         # Creates a sink that exports specified log entries to a destination. The export
-        # of newly-ingested log entries begins immediately, unless the sink's
-        # writer_identity is not permitted to write to the destination. A sink can
-        # export log entries only from the resource owning the sink.
+        # begins upon ingress, unless the sink's writer_identity is not permitted to
+        # write to the destination. A sink can export log entries only from the resource
+        # owning the sink.
         # @param [String] parent
         #   Required. The resource in which to create the sink: "projects/[PROJECT_ID]" "
         #   organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "
@@ -8075,9 +8075,9 @@ module Google
         end
         
         # Creates a sink that exports specified log entries to a destination. The export
-        # of newly-ingested log entries begins immediately, unless the sink's
-        # writer_identity is not permitted to write to the destination. A sink can
-        # export log entries only from the resource owning the sink.
+        # begins upon ingress, unless the sink's writer_identity is not permitted to
+        # write to the destination. A sink can export log entries only from the resource
+        # owning the sink.
         # @param [String] parent
         #   Required. The resource in which to create the sink: "projects/[PROJECT_ID]" "
         #   organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "
