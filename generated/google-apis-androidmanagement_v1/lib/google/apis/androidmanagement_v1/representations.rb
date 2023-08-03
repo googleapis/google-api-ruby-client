@@ -1146,6 +1146,7 @@ module Google
       class DeviceRadioState
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :airplane_mode_state, as: 'airplaneModeState'
           property :wifi_state, as: 'wifiState'
         end
       end
