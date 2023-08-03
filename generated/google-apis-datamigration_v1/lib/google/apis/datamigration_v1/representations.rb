@@ -448,6 +448,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PerformanceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Policy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1493,6 +1499,8 @@ module Google
           property :filter, as: 'filter'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :performance_config, as: 'performanceConfig', class: Google::Apis::DatamigrationV1::PerformanceConfig, decorator: Google::Apis::DatamigrationV1::PerformanceConfig::Representation
+      
           property :phase, as: 'phase'
           property :reverse_ssh_connectivity, as: 'reverseSshConnectivity', class: Google::Apis::DatamigrationV1::ReverseSshConnectivity, decorator: Google::Apis::DatamigrationV1::ReverseSshConnectivity::Representation
       
@@ -1595,6 +1603,13 @@ module Google
           hash :custom_features, as: 'customFeatures'
           property :package_body, as: 'packageBody'
           property :package_sql_code, as: 'packageSqlCode'
+        end
+      end
+      
+      class PerformanceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dump_parallel_level, as: 'dumpParallelLevel'
         end
       end
       

@@ -2817,6 +2817,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Performance configuration definition.
+        # Corresponds to the JSON property `performanceConfig`
+        # @return [Google::Apis::DatamigrationV1::PerformanceConfig]
+        attr_accessor :performance_config
+      
         # Output only. The current migration job phase.
         # Corresponds to the JSON property `phase`
         # @return [String]
@@ -2894,6 +2899,7 @@ module Google
           @filter = args[:filter] if args.key?(:filter)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @performance_config = args[:performance_config] if args.key?(:performance_config)
           @phase = args[:phase] if args.key?(:phase)
           @reverse_ssh_connectivity = args[:reverse_ssh_connectivity] if args.key?(:reverse_ssh_connectivity)
           @source = args[:source] if args.key?(:source)
@@ -3281,6 +3287,25 @@ module Google
           @custom_features = args[:custom_features] if args.key?(:custom_features)
           @package_body = args[:package_body] if args.key?(:package_body)
           @package_sql_code = args[:package_sql_code] if args.key?(:package_sql_code)
+        end
+      end
+      
+      # Performance configuration definition.
+      class PerformanceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Initial dump parallelism level.
+        # Corresponds to the JSON property `dumpParallelLevel`
+        # @return [String]
+        attr_accessor :dump_parallel_level
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dump_parallel_level = args[:dump_parallel_level] if args.key?(:dump_parallel_level)
         end
       end
       
