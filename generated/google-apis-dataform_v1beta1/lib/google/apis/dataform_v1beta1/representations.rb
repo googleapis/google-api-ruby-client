@@ -64,6 +64,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CommitLogEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CommitMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CommitRepositoryChangesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CommitWorkspaceChangesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -95,6 +113,12 @@ module Google
       end
       
       class Declaration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeleteFile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -137,6 +161,18 @@ module Google
       end
       
       class FetchRemoteBranchesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FetchRepositoryHistoryResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FileOperation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -304,6 +340,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class QueryRepositoryDirectoryContentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class QueryWorkflowInvocationActionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -311,6 +353,12 @@ module Google
       end
       
       class ReadFileResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReadRepositoryFileResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -436,6 +484,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WriteFile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WriteFileRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -517,6 +571,37 @@ module Google
         end
       end
       
+      class CommitLogEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :author, as: 'author', class: Google::Apis::DataformV1beta1::CommitAuthor, decorator: Google::Apis::DataformV1beta1::CommitAuthor::Representation
+      
+          property :commit_message, as: 'commitMessage'
+          property :commit_sha, as: 'commitSha'
+          property :commit_time, as: 'commitTime'
+        end
+      end
+      
+      class CommitMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :author, as: 'author', class: Google::Apis::DataformV1beta1::CommitAuthor, decorator: Google::Apis::DataformV1beta1::CommitAuthor::Representation
+      
+          property :commit_message, as: 'commitMessage'
+        end
+      end
+      
+      class CommitRepositoryChangesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :commit_metadata, as: 'commitMetadata', class: Google::Apis::DataformV1beta1::CommitMetadata, decorator: Google::Apis::DataformV1beta1::CommitMetadata::Representation
+      
+          hash :file_operations, as: 'fileOperations', class: Google::Apis::DataformV1beta1::FileOperation, decorator: Google::Apis::DataformV1beta1::FileOperation::Representation
+      
+          property :required_head_commit_sha, as: 'requiredHeadCommitSha'
+        end
+      end
+      
       class CommitWorkspaceChangesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -588,6 +673,12 @@ module Google
         end
       end
       
+      class DeleteFile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class DirectoryEntry
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -639,6 +730,25 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :branches, as: 'branches'
+        end
+      end
+      
+      class FetchRepositoryHistoryResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :commits, as: 'commits', class: Google::Apis::DataformV1beta1::CommitLogEntry, decorator: Google::Apis::DataformV1beta1::CommitLogEntry::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class FileOperation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :delete_file, as: 'deleteFile', class: Google::Apis::DataformV1beta1::DeleteFile, decorator: Google::Apis::DataformV1beta1::DeleteFile::Representation
+      
+          property :write_file, as: 'writeFile', class: Google::Apis::DataformV1beta1::WriteFile, decorator: Google::Apis::DataformV1beta1::WriteFile::Representation
+      
         end
       end
       
@@ -889,6 +999,15 @@ module Google
         end
       end
       
+      class QueryRepositoryDirectoryContentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :directory_entries, as: 'directoryEntries', class: Google::Apis::DataformV1beta1::DirectoryEntry, decorator: Google::Apis::DataformV1beta1::DirectoryEntry::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class QueryWorkflowInvocationActionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -902,6 +1021,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :file_contents, :base64 => true, as: 'fileContents'
+        end
+      end
+      
+      class ReadRepositoryFileResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :contents, :base64 => true, as: 'contents'
         end
       end
       
@@ -970,11 +1096,14 @@ module Google
       class Repository
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
           property :git_remote_settings, as: 'gitRemoteSettings', class: Google::Apis::DataformV1beta1::GitRemoteSettings, decorator: Google::Apis::DataformV1beta1::GitRemoteSettings::Representation
       
+          hash :labels, as: 'labels'
           property :name, as: 'name'
           property :npmrc_environment_variables_secret_version, as: 'npmrcEnvironmentVariablesSecretVersion'
           property :service_account, as: 'serviceAccount'
+          property :set_authenticated_user_admin, as: 'setAuthenticatedUserAdmin'
           property :workspace_compilation_overrides, as: 'workspaceCompilationOverrides', class: Google::Apis::DataformV1beta1::WorkspaceCompilationOverrides, decorator: Google::Apis::DataformV1beta1::WorkspaceCompilationOverrides::Representation
       
         end
@@ -1113,6 +1242,13 @@ module Google
           property :default_database, as: 'defaultDatabase'
           property :schema_suffix, as: 'schemaSuffix'
           property :table_prefix, as: 'tablePrefix'
+        end
+      end
+      
+      class WriteFile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :contents, :base64 => true, as: 'contents'
         end
       end
       
