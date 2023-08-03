@@ -1522,6 +1522,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :admin_installed, as: 'adminInstalled'
           property :display_name, as: 'displayName'
+          property :external_user_allowed, as: 'externalUserAllowed'
           property :name, as: 'name'
           property :single_user_bot_dm, as: 'singleUserBotDm'
           property :space_details, as: 'spaceDetails', class: Google::Apis::ChatV1::SpaceDetails, decorator: Google::Apis::ChatV1::SpaceDetails::Representation
