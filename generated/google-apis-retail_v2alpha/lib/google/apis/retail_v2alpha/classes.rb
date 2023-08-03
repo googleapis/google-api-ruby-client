@@ -2221,11 +2221,6 @@ module Google
         # @return [String]
         attr_accessor :enrolled_solution
       
-        # Search solution use case that the project has enrolled.
-        # Corresponds to the JSON property `searchSolutionUseCase`
-        # @return [String]
-        attr_accessor :search_solution_use_case
-      
         def initialize(**args)
            update!(**args)
         end
@@ -2233,7 +2228,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enrolled_solution = args[:enrolled_solution] if args.key?(:enrolled_solution)
-          @search_solution_use_case = args[:search_solution_use_case] if args.key?(:search_solution_use_case)
         end
       end
       

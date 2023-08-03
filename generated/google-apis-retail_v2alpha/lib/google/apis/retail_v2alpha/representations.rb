@@ -1993,7 +1993,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enrolled_solution, as: 'enrolledSolution'
-          property :search_solution_use_case, as: 'searchSolutionUseCase'
         end
       end
       
