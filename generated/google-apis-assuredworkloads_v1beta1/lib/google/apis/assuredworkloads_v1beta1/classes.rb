@@ -283,6 +283,12 @@ module Google
         # @return [String]
         attr_accessor :non_compliant_org_policy
       
+        # Output only. Immutable. The org-policy-constraint that was incorrectly changed,
+        # which resulted in this violation.
+        # Corresponds to the JSON property `orgPolicyConstraint`
+        # @return [String]
+        attr_accessor :org_policy_constraint
+      
         # Represents remediation guidance to resolve compliance violation for
         # AssuredWorkload
         # Corresponds to the JSON property `remediation`
@@ -321,6 +327,7 @@ module Google
           @exception_contexts = args[:exception_contexts] if args.key?(:exception_contexts)
           @name = args[:name] if args.key?(:name)
           @non_compliant_org_policy = args[:non_compliant_org_policy] if args.key?(:non_compliant_org_policy)
+          @org_policy_constraint = args[:org_policy_constraint] if args.key?(:org_policy_constraint)
           @remediation = args[:remediation] if args.key?(:remediation)
           @resolve_time = args[:resolve_time] if args.key?(:resolve_time)
           @state = args[:state] if args.key?(:state)
@@ -839,6 +846,12 @@ module Google
         attr_accessor :remediate_folder_violations
         alias_method :remediate_folder_violations?, :remediate_folder_violations
       
+        # Optional. Allow partner to view access approval logs.
+        # Corresponds to the JSON property `serviceAccessApprover`
+        # @return [Boolean]
+        attr_accessor :service_access_approver
+        alias_method :service_access_approver?, :service_access_approver
+      
         def initialize(**args)
            update!(**args)
         end
@@ -847,6 +860,7 @@ module Google
         def update!(**args)
           @data_logs_viewer = args[:data_logs_viewer] if args.key?(:data_logs_viewer)
           @remediate_folder_violations = args[:remediate_folder_violations] if args.key?(:remediate_folder_violations)
+          @service_access_approver = args[:service_access_approver] if args.key?(:service_access_approver)
         end
       end
       
