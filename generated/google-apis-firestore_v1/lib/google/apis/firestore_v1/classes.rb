@@ -1037,8 +1037,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # At what relative time in the future, compared to the creation time of the
-        # backup should the backup be deleted, i.e. keep backups for 7 days.
+        # At what relative time in the future, compared to its creation time, the backup
+        # should be deleted, e.g. keep backups for 7 days.
         # Corresponds to the JSON property `retention`
         # @return [String]
         attr_accessor :retention
