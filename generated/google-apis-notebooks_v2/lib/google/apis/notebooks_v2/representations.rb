@@ -317,6 +317,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :diagnostic_config, as: 'diagnosticConfig', class: Google::Apis::NotebooksV2::DiagnosticConfig, decorator: Google::Apis::NotebooksV2::DiagnosticConfig::Representation
       
+          property :timeout_minutes, as: 'timeoutMinutes'
         end
       end
       
