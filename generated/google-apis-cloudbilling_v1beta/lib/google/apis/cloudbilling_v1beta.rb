@@ -24,7 +24,7 @@ module Google
     # Allows developers to manage billing for their Google Cloud Platform projects
     # programmatically.
     #
-    # @see https://cloud.google.com/billing/
+    # @see https://cloud.google.com/billing/docs/apis
     module CloudbillingV1beta
       # Version of the Cloud Billing API this client connects to.
       # This is NOT the gem version.
