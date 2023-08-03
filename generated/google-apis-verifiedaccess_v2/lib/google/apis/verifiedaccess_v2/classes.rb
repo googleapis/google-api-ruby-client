@@ -356,6 +356,11 @@ module Google
       class VerifyChallengeResponseResult
         include Google::Apis::Core::Hashable
       
+        # Attested device ID (ADID).
+        # Corresponds to the JSON property `attestedDeviceId`
+        # @return [String]
+        attr_accessor :attested_device_id
+      
         # Unique customer id that this device belongs to, as defined by the Google Admin
         # SDK at https://developers.google.com/admin-sdk/directory/v1/guides/manage-
         # customers
@@ -422,6 +427,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @attested_device_id = args[:attested_device_id] if args.key?(:attested_device_id)
           @customer_id = args[:customer_id] if args.key?(:customer_id)
           @device_permanent_id = args[:device_permanent_id] if args.key?(:device_permanent_id)
           @device_signal = args[:device_signal] if args.key?(:device_signal)

@@ -128,6 +128,7 @@ module Google
       class VerifyChallengeResponseResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :attested_device_id, as: 'attestedDeviceId'
           property :customer_id, as: 'customerId'
           property :device_permanent_id, as: 'devicePermanentId'
           property :device_signal, as: 'deviceSignal'
