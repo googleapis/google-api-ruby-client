@@ -64,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CdcStrategy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ConnectionProfile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -196,6 +202,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MostRecentStartPosition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MysqlColumn
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -203,6 +215,12 @@ module Google
       end
       
       class MysqlDatabase
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MysqlLogPosition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -239,6 +257,12 @@ module Google
       end
       
       class MysqlTable
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NextAvailableStartPosition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -358,6 +382,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RunStreamRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SingleTargetDataset
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -377,6 +407,12 @@ module Google
       end
       
       class SourceObjectIdentifier
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SpecificStartPosition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -516,6 +552,18 @@ module Google
       class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class CdcStrategy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :most_recent_start_position, as: 'mostRecentStartPosition', class: Google::Apis::DatastreamV1::MostRecentStartPosition, decorator: Google::Apis::DatastreamV1::MostRecentStartPosition::Representation
+      
+          property :next_available_start_position, as: 'nextAvailableStartPosition', class: Google::Apis::DatastreamV1::NextAvailableStartPosition, decorator: Google::Apis::DatastreamV1::NextAvailableStartPosition::Representation
+      
+          property :specific_start_position, as: 'specificStartPosition', class: Google::Apis::DatastreamV1::SpecificStartPosition, decorator: Google::Apis::DatastreamV1::SpecificStartPosition::Representation
+      
         end
       end
       
@@ -752,6 +800,12 @@ module Google
         end
       end
       
+      class MostRecentStartPosition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class MysqlColumn
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -773,6 +827,14 @@ module Google
           property :database, as: 'database'
           collection :mysql_tables, as: 'mysqlTables', class: Google::Apis::DatastreamV1::MysqlTable, decorator: Google::Apis::DatastreamV1::MysqlTable::Representation
       
+        end
+      end
+      
+      class MysqlLogPosition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :log_file, as: 'logFile'
+          property :log_position, as: 'logPosition'
         end
       end
       
@@ -834,6 +896,12 @@ module Google
           collection :mysql_columns, as: 'mysqlColumns', class: Google::Apis::DatastreamV1::MysqlColumn, decorator: Google::Apis::DatastreamV1::MysqlColumn::Representation
       
           property :table, as: 'table'
+        end
+      end
+      
+      class NextAvailableStartPosition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -1049,6 +1117,14 @@ module Google
         end
       end
       
+      class RunStreamRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cdc_strategy, as: 'cdcStrategy', class: Google::Apis::DatastreamV1::CdcStrategy, decorator: Google::Apis::DatastreamV1::CdcStrategy::Representation
+      
+        end
+      end
+      
       class SingleTargetDataset
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1085,6 +1161,14 @@ module Google
           property :oracle_identifier, as: 'oracleIdentifier', class: Google::Apis::DatastreamV1::OracleObjectIdentifier, decorator: Google::Apis::DatastreamV1::OracleObjectIdentifier::Representation
       
           property :postgresql_identifier, as: 'postgresqlIdentifier', class: Google::Apis::DatastreamV1::PostgresqlObjectIdentifier, decorator: Google::Apis::DatastreamV1::PostgresqlObjectIdentifier::Representation
+      
+        end
+      end
+      
+      class SpecificStartPosition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mysql_log_position, as: 'mysqlLogPosition', class: Google::Apis::DatastreamV1::MysqlLogPosition, decorator: Google::Apis::DatastreamV1::MysqlLogPosition::Representation
       
         end
       end

@@ -184,6 +184,38 @@ module Google
         end
       end
       
+      # The strategy that the stream uses for CDC replication.
+      class CdcStrategy
+        include Google::Apis::Core::Hashable
+      
+        # CDC strategy to start replicating from the most recent position in the source.
+        # Corresponds to the JSON property `mostRecentStartPosition`
+        # @return [Google::Apis::DatastreamV1::MostRecentStartPosition]
+        attr_accessor :most_recent_start_position
+      
+        # CDC strategy to resume replication from the next available position in the
+        # source.
+        # Corresponds to the JSON property `nextAvailableStartPosition`
+        # @return [Google::Apis::DatastreamV1::NextAvailableStartPosition]
+        attr_accessor :next_available_start_position
+      
+        # CDC strategy to start replicating from a specific position in the source.
+        # Corresponds to the JSON property `specificStartPosition`
+        # @return [Google::Apis::DatastreamV1::SpecificStartPosition]
+        attr_accessor :specific_start_position
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @most_recent_start_position = args[:most_recent_start_position] if args.key?(:most_recent_start_position)
+          @next_available_start_position = args[:next_available_start_position] if args.key?(:next_available_start_position)
+          @specific_start_position = args[:specific_start_position] if args.key?(:specific_start_position)
+        end
+      end
+      
       # A set of reusable connection configurations to be used as a source or
       # destination for a stream.
       class ConnectionProfile
@@ -944,6 +976,19 @@ module Google
         end
       end
       
+      # CDC strategy to start replicating from the most recent position in the source.
+      class MostRecentStartPosition
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # MySQL Column.
       class MysqlColumn
         include Google::Apis::Core::Hashable
@@ -1036,6 +1081,31 @@ module Google
         def update!(**args)
           @database = args[:database] if args.key?(:database)
           @mysql_tables = args[:mysql_tables] if args.key?(:mysql_tables)
+        end
+      end
+      
+      # MySQL log position
+      class MysqlLogPosition
+        include Google::Apis::Core::Hashable
+      
+        # The binary log file name.
+        # Corresponds to the JSON property `logFile`
+        # @return [String]
+        attr_accessor :log_file
+      
+        # The position within the binary log file. Default is head of file.
+        # Corresponds to the JSON property `logPosition`
+        # @return [Fixnum]
+        attr_accessor :log_position
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @log_file = args[:log_file] if args.key?(:log_file)
+          @log_position = args[:log_position] if args.key?(:log_position)
         end
       end
       
@@ -1245,6 +1315,20 @@ module Google
         def update!(**args)
           @mysql_columns = args[:mysql_columns] if args.key?(:mysql_columns)
           @table = args[:table] if args.key?(:table)
+        end
+      end
+      
+      # CDC strategy to resume replication from the next available position in the
+      # source.
+      class NextAvailableStartPosition
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -2025,6 +2109,25 @@ module Google
         end
       end
       
+      # Request message for running a stream.
+      class RunStreamRequest
+        include Google::Apis::Core::Hashable
+      
+        # The strategy that the stream uses for CDC replication.
+        # Corresponds to the JSON property `cdcStrategy`
+        # @return [Google::Apis::DatastreamV1::CdcStrategy]
+        attr_accessor :cdc_strategy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cdc_strategy = args[:cdc_strategy] if args.key?(:cdc_strategy)
+        end
+      end
+      
       # A single target dataset to which all data will be streamed.
       class SingleTargetDataset
         include Google::Apis::Core::Hashable
@@ -2131,6 +2234,25 @@ module Google
           @mysql_identifier = args[:mysql_identifier] if args.key?(:mysql_identifier)
           @oracle_identifier = args[:oracle_identifier] if args.key?(:oracle_identifier)
           @postgresql_identifier = args[:postgresql_identifier] if args.key?(:postgresql_identifier)
+        end
+      end
+      
+      # CDC strategy to start replicating from a specific position in the source.
+      class SpecificStartPosition
+        include Google::Apis::Core::Hashable
+      
+        # MySQL log position
+        # Corresponds to the JSON property `mysqlLogPosition`
+        # @return [Google::Apis::DatastreamV1::MysqlLogPosition]
+        attr_accessor :mysql_log_position
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mysql_log_position = args[:mysql_log_position] if args.key?(:mysql_log_position)
         end
       end
       
