@@ -772,9 +772,9 @@ module Google
         end
       end
       
-      # The validation status of each import config. Status is set to errors if there
-      # is no documents to import in the import_config, or OK if the operation will
-      # try to proceed at least one document.
+      # The validation status of each import config. Status is set to an error if
+      # there are no documents to import in the `import_config`, or `OK` if the
+      # operation will try to proceed with at least one document.
       class GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadataImportConfigValidationResult
         include Google::Apis::Core::Hashable
       
@@ -1393,11 +1393,6 @@ module Google
         # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1GcsPrefix]
         attr_accessor :gcs_prefix
       
-        # Specifies a set of raw documents.
-        # Corresponds to the JSON property `rawDocuments`
-        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1RawDocuments]
-        attr_accessor :raw_documents
-      
         def initialize(**args)
            update!(**args)
         end
@@ -1406,7 +1401,6 @@ module Google
         def update!(**args)
           @gcs_documents = args[:gcs_documents] if args.key?(:gcs_documents)
           @gcs_prefix = args[:gcs_prefix] if args.key?(:gcs_prefix)
-          @raw_documents = args[:raw_documents] if args.key?(:raw_documents)
         end
       end
       
@@ -4684,6 +4678,11 @@ module Google
         # @return [String]
         attr_accessor :process_endpoint
       
+        # Output only. The processor version aliases.
+        # Corresponds to the JSON property `processorVersionAliases`
+        # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1ProcessorVersionAlias>]
+        attr_accessor :processor_version_aliases
+      
         # Output only. The state of the processor.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -4707,6 +4706,7 @@ module Google
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @name = args[:name] if args.key?(:name)
           @process_endpoint = args[:process_endpoint] if args.key?(:process_endpoint)
+          @processor_version_aliases = args[:processor_version_aliases] if args.key?(:processor_version_aliases)
           @state = args[:state] if args.key?(:state)
           @type = args[:type] if args.key?(:type)
         end
@@ -4870,6 +4870,31 @@ module Google
         end
       end
       
+      # Contains the alias and the aliased resource name of processor version.
+      class GoogleCloudDocumentaiV1ProcessorVersionAlias
+        include Google::Apis::Core::Hashable
+      
+        # The alias in the form of `processor_version` resource name.
+        # Corresponds to the JSON property `alias`
+        # @return [String]
+        attr_accessor :alias
+      
+        # The resource name of aliased processor version.
+        # Corresponds to the JSON property `processorVersion`
+        # @return [String]
+        attr_accessor :processor_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alias = args[:alias] if args.key?(:alias)
+          @processor_version = args[:processor_version] if args.key?(:processor_version)
+        end
+      end
+      
       # Information about the upcoming deprecation of this processor version.
       class GoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo
         include Google::Apis::Core::Hashable
@@ -4905,6 +4930,13 @@ module Google
         # @return [String]
         attr_accessor :content
       
+        # The display name of the document, it supports all Unicode characters except
+        # the following: `*`, `?`, `[`, `]`, `%`, ```, ```,`'`, `\"`, `,` `~`, `=` and `:
+        # ` are reserved. If not specified, a default ID will be generated.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
         # An IANA MIME type (RFC6838) indicating the nature and format of the content.
         # Corresponds to the JSON property `mimeType`
         # @return [String]
@@ -4917,26 +4949,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @content = args[:content] if args.key?(:content)
+          @display_name = args[:display_name] if args.key?(:display_name)
           @mime_type = args[:mime_type] if args.key?(:mime_type)
-        end
-      end
-      
-      # Specifies a set of raw documents.
-      class GoogleCloudDocumentaiV1RawDocuments
-        include Google::Apis::Core::Hashable
-      
-        # Specifies raw document content and mime type.
-        # Corresponds to the JSON property `documents`
-        # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1RawDocument>]
-        attr_accessor :documents
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @documents = args[:documents] if args.key?(:documents)
         end
       end
       
@@ -10313,9 +10327,9 @@ module Google
         end
       end
       
-      # The validation status of each import config. Status is set to errors if there
-      # is no documents to import in the import_config, or OK if the operation will
-      # try to proceed at least one document.
+      # The validation status of each import config. Status is set to an error if
+      # there are no documents to import in the `import_config`, or `OK` if the
+      # operation will try to proceed with at least one document.
       class GoogleCloudDocumentaiV1beta3ImportDocumentsMetadataImportConfigValidationResult
         include Google::Apis::Core::Hashable
       
