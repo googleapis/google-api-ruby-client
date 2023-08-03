@@ -1715,6 +1715,7 @@ module Google
           property :description, as: 'description'
           property :display_name, as: 'displayName'
           hash :entity_meta_data_as_properties, as: 'entityMetaDataAsProperties'
+          property :has_extensible_policy, as: 'hasExtensiblePolicy'
           collection :integration_endpoints, as: 'integrationEndpoints'
           property :last_modified_at, :numeric_string => true, as: 'lastModifiedAt'
           property :name, as: 'name'
@@ -2185,6 +2186,7 @@ module Google
       
           collection :pods, as: 'pods', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1PodStatus, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1PodStatus::Representation
       
+          property :proxy_deployment_type, as: 'proxyDeploymentType'
           property :revision, as: 'revision'
           collection :route_conflicts, as: 'routeConflicts', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict::Representation
       
@@ -2413,6 +2415,7 @@ module Google
           property :properties, as: 'properties', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Properties, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Properties::Representation
       
           property :state, as: 'state'
+          property :type, as: 'type'
         end
       end
       

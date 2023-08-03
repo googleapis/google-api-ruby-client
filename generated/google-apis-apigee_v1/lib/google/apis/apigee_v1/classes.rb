@@ -819,6 +819,13 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :entity_meta_data_as_properties
       
+        # Output only. This field will be marked as true if revision contains any
+        # policies marked as extensible.
+        # Corresponds to the JSON property `hasExtensiblePolicy`
+        # @return [Boolean]
+        attr_accessor :has_extensible_policy
+        alias_method :has_extensible_policy?, :has_extensible_policy
+      
         # List of IntegrationEndpoints in the '/integration-endpoints' directory of the
         # API proxy. This is a 'manifest' setting designed to provide visibility into
         # the contents of the API proxy.
@@ -927,6 +934,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @entity_meta_data_as_properties = args[:entity_meta_data_as_properties] if args.key?(:entity_meta_data_as_properties)
+          @has_extensible_policy = args[:has_extensible_policy] if args.key?(:has_extensible_policy)
           @integration_endpoints = args[:integration_endpoints] if args.key?(:integration_endpoints)
           @last_modified_at = args[:last_modified_at] if args.key?(:last_modified_at)
           @name = args[:name] if args.key?(:name)
@@ -2748,6 +2756,14 @@ module Google
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1PodStatus>]
         attr_accessor :pods
       
+        # Output only. The type of the deployment (standard or extensible) Deployed
+        # proxy revision will be marked as extensible in following 2 cases. 1. The
+        # deployed proxy revision uses extensible policies. 2. If a environment supports
+        # flowhooks and flow hook is configured.
+        # Corresponds to the JSON property `proxyDeploymentType`
+        # @return [String]
+        attr_accessor :proxy_deployment_type
+      
         # API proxy revision.
         # Corresponds to the JSON property `revision`
         # @return [String]
@@ -2787,6 +2803,7 @@ module Google
           @errors = args[:errors] if args.key?(:errors)
           @instances = args[:instances] if args.key?(:instances)
           @pods = args[:pods] if args.key?(:pods)
+          @proxy_deployment_type = args[:proxy_deployment_type] if args.key?(:proxy_deployment_type)
           @revision = args[:revision] if args.key?(:revision)
           @route_conflicts = args[:route_conflicts] if args.key?(:route_conflicts)
           @service_account = args[:service_account] if args.key?(:service_account)
@@ -3681,6 +3698,11 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Optional. EnvironmentType selected for the environment.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3699,6 +3721,7 @@ module Google
           @node_config = args[:node_config] if args.key?(:node_config)
           @properties = args[:properties] if args.key?(:properties)
           @state = args[:state] if args.key?(:state)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
