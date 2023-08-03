@@ -731,14 +731,13 @@ module Google
         end
       end
       
-      # A `DeliveryPipeline` resource in the Google Cloud Deploy API. A `
-      # DeliveryPipeline` defines a pipeline through which a Skaffold configuration
-      # can progress.
+      # A `DeliveryPipeline` resource in the Cloud Deploy API. A `DeliveryPipeline`
+      # defines a pipeline through which a Skaffold configuration can progress.
       class DeliveryPipeline
         include Google::Apis::Core::Hashable
       
         # User annotations. These attributes can only be set and used by the user, and
-        # not by Google Cloud Deploy.
+        # not by Cloud Deploy.
         # Corresponds to the JSON property `annotations`
         # @return [Hash<String,String>]
         attr_accessor :annotations
@@ -765,13 +764,13 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Labels are attributes that can be set and used by both the user and by Google
-        # Cloud Deploy. Labels must meet the following constraints: * Keys and values
-        # can contain only lowercase letters, numeric characters, underscores, and
-        # dashes. * All characters must use UTF-8 encoding, and international characters
-        # are allowed. * Keys must start with a lowercase letter or international
-        # character. * Each resource is limited to a maximum of 64 labels. Both keys and
-        # values are additionally constrained to be <= 128 bytes.
+        # Labels are attributes that can be set and used by both the user and by Cloud
+        # Deploy. Labels must meet the following constraints: * Keys and values can
+        # contain only lowercase letters, numeric characters, underscores, and dashes. *
+        # All characters must use UTF-8 encoding, and international characters are
+        # allowed. * Keys must start with a lowercase letter or international character.
+        # * Each resource is limited to a maximum of 64 labels. Both keys and values are
+        # additionally constrained to be <= 128 bytes.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -1321,8 +1320,8 @@ module Google
         end
       end
       
-      # A `JobRun` resource in the Google Cloud Deploy API. A `JobRun` contains
-      # information of a single `Rollout` job evaluation.
+      # A `JobRun` resource in the Cloud Deploy API. A `JobRun` contains information
+      # of a single `Rollout` job evaluation.
       class JobRun
         include Google::Apis::Core::Hashable
       
@@ -2231,8 +2230,8 @@ module Google
         end
       end
       
-      # A `Release` resource in the Google Cloud Deploy API. A `Release` defines a
-      # specific Skaffold configuration instance that can be deployed.
+      # A `Release` resource in the Cloud Deploy API. A `Release` defines a specific
+      # Skaffold configuration instance that can be deployed.
       class Release
         include Google::Apis::Core::Hashable
       
@@ -2243,8 +2242,8 @@ module Google
         alias_method :abandoned?, :abandoned
       
         # User annotations. These attributes can only be set and used by the user, and
-        # not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for
-        # more details such as format and size limitations.
+        # not by Cloud Deploy. See https://google.aip.dev/128#annotations for more
+        # details such as format and size limitations.
         # Corresponds to the JSON property `annotations`
         # @return [Hash<String,String>]
         attr_accessor :annotations
@@ -2264,9 +2263,8 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # A `DeliveryPipeline` resource in the Google Cloud Deploy API. A `
-        # DeliveryPipeline` defines a pipeline through which a Skaffold configuration
-        # can progress.
+        # A `DeliveryPipeline` resource in the Cloud Deploy API. A `DeliveryPipeline`
+        # defines a pipeline through which a Skaffold configuration can progress.
         # Corresponds to the JSON property `deliveryPipelineSnapshot`
         # @return [Google::Apis::ClouddeployV1::DeliveryPipeline]
         attr_accessor :delivery_pipeline_snapshot
@@ -2288,13 +2286,13 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Labels are attributes that can be set and used by both the user and by Google
-        # Cloud Deploy. Labels must meet the following constraints: * Keys and values
-        # can contain only lowercase letters, numeric characters, underscores, and
-        # dashes. * All characters must use UTF-8 encoding, and international characters
-        # are allowed. * Keys must start with a lowercase letter or international
-        # character. * Each resource is limited to a maximum of 64 labels. Both keys and
-        # values are additionally constrained to be <= 128 bytes.
+        # Labels are attributes that can be set and used by both the user and by Cloud
+        # Deploy. Labels must meet the following constraints: * Keys and values can
+        # contain only lowercase letters, numeric characters, underscores, and dashes. *
+        # All characters must use UTF-8 encoding, and international characters are
+        # allowed. * Keys must start with a lowercase letter or international character.
+        # * Each resource is limited to a maximum of 64 labels. Both keys and values are
+        # additionally constrained to be <= 128 bytes.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -2331,8 +2329,8 @@ module Google
         attr_accessor :skaffold_config_uri
       
         # The Skaffold version to use when operating on this release, such as "1.20.0".
-        # Not all versions are valid; Google Cloud Deploy supports a specific set of
-        # versions. If unset, the most recent supported Skaffold version will be used.
+        # Not all versions are valid; Cloud Deploy supports a specific set of versions.
+        # If unset, the most recent supported Skaffold version will be used.
         # Corresponds to the JSON property `skaffoldVersion`
         # @return [String]
         attr_accessor :skaffold_version
@@ -2558,14 +2556,14 @@ module Google
         end
       end
       
-      # A `Rollout` resource in the Google Cloud Deploy API. A `Rollout` contains
-      # information around a specific deployment to a `Target`.
+      # A `Rollout` resource in the Cloud Deploy API. A `Rollout` contains information
+      # around a specific deployment to a `Target`.
       class Rollout
         include Google::Apis::Core::Hashable
       
         # User annotations. These attributes can only be set and used by the user, and
-        # not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for
-        # more details such as format and size limitations.
+        # not by Cloud Deploy. See https://google.aip.dev/128#annotations for more
+        # details such as format and size limitations.
         # Corresponds to the JSON property `annotations`
         # @return [Hash<String,String>]
         attr_accessor :annotations
@@ -2637,13 +2635,13 @@ module Google
         # @return [String]
         attr_accessor :failure_reason
       
-        # Labels are attributes that can be set and used by both the user and by Google
-        # Cloud Deploy. Labels must meet the following constraints: * Keys and values
-        # can contain only lowercase letters, numeric characters, underscores, and
-        # dashes. * All characters must use UTF-8 encoding, and international characters
-        # are allowed. * Keys must start with a lowercase letter or international
-        # character. * Each resource is limited to a maximum of 64 labels. Both keys and
-        # values are additionally constrained to be <= 128 bytes.
+        # Labels are attributes that can be set and used by both the user and by Cloud
+        # Deploy. Labels must meet the following constraints: * Keys and values can
+        # contain only lowercase letters, numeric characters, underscores, and dashes. *
+        # All characters must use UTF-8 encoding, and international characters are
+        # allowed. * Keys must start with a lowercase letter or international character.
+        # * Each resource is limited to a maximum of 64 labels. Both keys and values are
+        # additionally constrained to be <= 128 bytes.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -3104,14 +3102,14 @@ module Google
         end
       end
       
-      # A `Target` resource in the Google Cloud Deploy API. A `Target` defines a
-      # location to which a Skaffold configuration can be deployed.
+      # A `Target` resource in the Cloud Deploy API. A `Target` defines a location to
+      # which a Skaffold configuration can be deployed.
       class Target
         include Google::Apis::Core::Hashable
       
         # Optional. User annotations. These attributes can only be set and used by the
-        # user, and not by Google Cloud Deploy. See https://google.aip.dev/128#
-        # annotations for more details such as format and size limitations.
+        # user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for
+        # more details such as format and size limitations.
         # Corresponds to the JSON property `annotations`
         # @return [Hash<String,String>]
         attr_accessor :annotations
@@ -3159,12 +3157,12 @@ module Google
         attr_accessor :gke
       
         # Optional. Labels are attributes that can be set and used by both the user and
-        # by Google Cloud Deploy. Labels must meet the following constraints: * Keys and
-        # values can contain only lowercase letters, numeric characters, underscores,
-        # and dashes. * All characters must use UTF-8 encoding, and international
-        # characters are allowed. * Keys must start with a lowercase letter or
-        # international character. * Each resource is limited to a maximum of 64 labels.
-        # Both keys and values are additionally constrained to be <= 128 bytes.
+        # by Cloud Deploy. Labels must meet the following constraints: * Keys and values
+        # can contain only lowercase letters, numeric characters, underscores, and
+        # dashes. * All characters must use UTF-8 encoding, and international characters
+        # are allowed. * Keys must start with a lowercase letter or international
+        # character. * Each resource is limited to a maximum of 64 labels. Both keys and
+        # values are additionally constrained to be <= 128 bytes.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels

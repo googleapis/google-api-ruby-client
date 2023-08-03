@@ -19,13 +19,13 @@ require 'google/apis/clouddeploy_v1/gem_version.rb'
 
 module Google
   module Apis
-    # Google Cloud Deploy API
+    # Cloud Deploy API
     #
     # 
     #
     # @see https://cloud.google.com/deploy/
     module ClouddeployV1
-      # Version of the Google Cloud Deploy API this client connects to.
+      # Version of the Cloud Deploy API this client connects to.
       # This is NOT the gem version.
       VERSION = 'V1'
 
