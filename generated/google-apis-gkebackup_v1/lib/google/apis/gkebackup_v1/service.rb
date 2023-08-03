@@ -202,8 +202,8 @@ module Google
         #   Required. Fully qualified BackupPlan name. Format: `projects/*/locations/*/
         #   backupPlans/*`
         # @param [String] etag
-        #   If provided, this value must match the current value of the target BackupPlan'
-        #   s etag field or the request is rejected.
+        #   Optional. If provided, this value must match the current value of the target
+        #   BackupPlan's etag field or the request is rejected.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -313,19 +313,20 @@ module Google
         #   Required. The location that contains the BackupPlans to list. Format: `
         #   projects/*/locations/*`
         # @param [String] filter
-        #   Field match expression used to filter the results.
+        #   Optional. Field match expression used to filter the results.
         # @param [String] order_by
-        #   Field by which to sort the results.
+        #   Optional. Field by which to sort the results.
         # @param [Fixnum] page_size
-        #   The target number of results to return in a single response. If not specified,
-        #   a default value will be chosen by the service. Note that the response may
-        #   inclue a partial list and a caller should only rely on the response's
-        #   next_page_token to determine if there are more instances left to be queried.
+        #   Optional. The target number of results to return in a single response. If not
+        #   specified, a default value will be chosen by the service. Note that the
+        #   response may include a partial list and a caller should only rely on the
+        #   response's next_page_token to determine if there are more instances left to be
+        #   queried.
         # @param [String] page_token
-        #   The value of next_page_token received from a previous `ListBackupPlans` call.
-        #   Provide this to retrieve the subsequent page in a multi-page list of results.
-        #   When paginating, all other parameters provided to `ListBackupPlans` must match
-        #   the call that provided the page token.
+        #   Optional. The value of next_page_token received from a previous `
+        #   ListBackupPlans` call. Provide this to retrieve the subsequent page in a multi-
+        #   page list of results. When paginating, all other parameters provided to `
+        #   ListBackupPlans` must match the call that provided the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -363,10 +364,10 @@ module Google
         #   locations/*/backupPlans/*`
         # @param [Google::Apis::GkebackupV1::BackupPlan] backup_plan_object
         # @param [String] update_mask
-        #   This is used to specify the fields to be overwritten in the BackupPlan
-        #   targeted for update. The values for each of these updated fields will be taken
-        #   from the `backup_plan` provided with this request. Field names are relative to
-        #   the root of the resource (e.g., `description`, `backup_config.
+        #   Optional. This is used to specify the fields to be overwritten in the
+        #   BackupPlan targeted for update. The values for each of these updated fields
+        #   will be taken from the `backup_plan` provided with this request. Field names
+        #   are relative to the root of the resource (e.g., `description`, `backup_config.
         #   include_volume_data`, etc.) If no `update_mask` is provided, all fields in `
         #   backup_plan` will be written to the target BackupPlan resource. Note that
         #   OUTPUT_ONLY and IMMUTABLE fields in `backup_plan` are ignored and are not used
@@ -483,11 +484,11 @@ module Google
         #   /locations/*/backupPlans/*`
         # @param [Google::Apis::GkebackupV1::Backup] backup_object
         # @param [String] backup_id
-        #   The client-provided short name for the Backup resource. This name must: - be
-        #   between 1 and 63 characters long (inclusive) - consist of only lower-case
-        #   ASCII letters, numbers, and dashes - start with a lower-case letter - end with
-        #   a lower-case letter or number - be unique within the set of Backups in this
-        #   BackupPlan
+        #   Optional. The client-provided short name for the Backup resource. This name
+        #   must: - be between 1 and 63 characters long (inclusive) - consist of only
+        #   lower-case ASCII letters, numbers, and dashes - start with a lower-case letter
+        #   - end with a lower-case letter or number - be unique within the set of Backups
+        #   in this BackupPlan
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -523,11 +524,12 @@ module Google
         #   Required. Name of the Backup resource. Format: `projects/*/locations/*/
         #   backupPlans/*/backups/*`
         # @param [String] etag
-        #   If provided, this value must match the current value of the target Backup's
-        #   etag field or the request is rejected.
+        #   Optional. If provided, this value must match the current value of the target
+        #   Backup's etag field or the request is rejected.
         # @param [Boolean] force
-        #   If set to true, any VolumeBackups below this Backup will also be deleted.
-        #   Otherwise, the request will only succeed if the Backup has no VolumeBackups.
+        #   Optional. If set to true, any VolumeBackups below this Backup will also be
+        #   deleted. Otherwise, the request will only succeed if the Backup has no
+        #   VolumeBackups.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -638,19 +640,20 @@ module Google
         #   Required. The BackupPlan that contains the Backups to list. Format: `projects/*
         #   /locations/*/backupPlans/*`
         # @param [String] filter
-        #   Field match expression used to filter the results.
+        #   Optional. Field match expression used to filter the results.
         # @param [String] order_by
-        #   Field by which to sort the results.
+        #   Optional. Field by which to sort the results.
         # @param [Fixnum] page_size
-        #   The target number of results to return in a single response. If not specified,
-        #   a default value will be chosen by the service. Note that the response may
-        #   inclue a partial list and a caller should only rely on the response's
-        #   next_page_token to determine if there are more instances left to be queried.
+        #   Optional. The target number of results to return in a single response. If not
+        #   specified, a default value will be chosen by the service. Note that the
+        #   response may include a partial list and a caller should only rely on the
+        #   response's next_page_token to determine if there are more instances left to be
+        #   queried.
         # @param [String] page_token
-        #   The value of next_page_token received from a previous `ListBackups` call.
-        #   Provide this to retrieve the subsequent page in a multi-page list of results.
-        #   When paginating, all other parameters provided to `ListBackups` must match the
-        #   call that provided the page token.
+        #   Optional. The value of next_page_token received from a previous `ListBackups`
+        #   call. Provide this to retrieve the subsequent page in a multi-page list of
+        #   results. When paginating, all other parameters provided to `ListBackups` must
+        #   match the call that provided the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -688,12 +691,13 @@ module Google
         #   backupPlans/*/backups/*`
         # @param [Google::Apis::GkebackupV1::Backup] backup_object
         # @param [String] update_mask
-        #   This is used to specify the fields to be overwritten in the Backup targeted
-        #   for update. The values for each of these updated fields will be taken from the
-        #   `backup_plan` provided with this request. Field names are relative to the root
-        #   of the resource. If no `update_mask` is provided, all fields in `backup` will
-        #   be written to the target Backup resource. Note that OUTPUT_ONLY and IMMUTABLE
-        #   fields in `backup` are ignored and are not used to update the target Backup.
+        #   Optional. This is used to specify the fields to be overwritten in the Backup
+        #   targeted for update. The values for each of these updated fields will be taken
+        #   from the `backup_plan` provided with this request. Field names are relative to
+        #   the root of the resource. If no `update_mask` is provided, all fields in `
+        #   backup` will be written to the target Backup resource. Note that OUTPUT_ONLY
+        #   and IMMUTABLE fields in `backup` are ignored and are not used to update the
+        #   target Backup.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -881,19 +885,20 @@ module Google
         #   Required. The Backup that contains the VolumeBackups to list. Format: `
         #   projects/*/locations/*/backupPlans/*/backups/*`
         # @param [String] filter
-        #   Field match expression used to filter the results.
+        #   Optional. Field match expression used to filter the results.
         # @param [String] order_by
-        #   Field by which to sort the results.
+        #   Optional. Field by which to sort the results.
         # @param [Fixnum] page_size
-        #   The target number of results to return in a single response. If not specified,
-        #   a default value will be chosen by the service. Note that the response may
-        #   inclue a partial list and a caller should only rely on the response's
-        #   next_page_token to determine if there are more instances left to be queried.
+        #   Optional. The target number of results to return in a single response. If not
+        #   specified, a default value will be chosen by the service. Note that the
+        #   response may include a partial list and a caller should only rely on the
+        #   response's next_page_token to determine if there are more instances left to be
+        #   queried.
         # @param [String] page_token
-        #   The value of next_page_token received from a previous `ListVolumeBackups` call.
-        #   Provide this to retrieve the subsequent page in a multi-page list of results.
-        #   When paginating, all other parameters provided to `ListVolumeBackups` must
-        #   match the call that provided the page token.
+        #   Optional. The value of next_page_token received from a previous `
+        #   ListVolumeBackups` call. Provide this to retrieve the subsequent page in a
+        #   multi-page list of results. When paginating, all other parameters provided to `
+        #   ListVolumeBackups` must match the call that provided the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1158,11 +1163,12 @@ module Google
         #   Required. Fully qualified RestorePlan name. Format: `projects/*/locations/*/
         #   restorePlans/*`
         # @param [String] etag
-        #   If provided, this value must match the current value of the target RestorePlan'
-        #   s etag field or the request is rejected.
+        #   Optional. If provided, this value must match the current value of the target
+        #   RestorePlan's etag field or the request is rejected.
         # @param [Boolean] force
-        #   If set to true, any Restores below this RestorePlan will also be deleted.
-        #   Otherwise, the request will only succeed if the RestorePlan has no Restores.
+        #   Optional. If set to true, any Restores below this RestorePlan will also be
+        #   deleted. Otherwise, the request will only succeed if the RestorePlan has no
+        #   Restores.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1273,19 +1279,20 @@ module Google
         #   Required. The location that contains the RestorePlans to list. Format: `
         #   projects/*/locations/*`
         # @param [String] filter
-        #   Field match expression used to filter the results.
+        #   Optional. Field match expression used to filter the results.
         # @param [String] order_by
-        #   Field by which to sort the results.
+        #   Optional. Field by which to sort the results.
         # @param [Fixnum] page_size
-        #   The target number of results to return in a single response. If not specified,
-        #   a default value will be chosen by the service. Note that the response may
-        #   inclue a partial list and a caller should only rely on the response's
-        #   next_page_token to determine if there are more instances left to be queried.
+        #   Optional. The target number of results to return in a single response. If not
+        #   specified, a default value will be chosen by the service. Note that the
+        #   response may include a partial list and a caller should only rely on the
+        #   response's next_page_token to determine if there are more instances left to be
+        #   queried.
         # @param [String] page_token
-        #   The value of next_page_token received from a previous `ListRestorePlans` call.
-        #   Provide this to retrieve the subsequent page in a multi-page list of results.
-        #   When paginating, all other parameters provided to `ListRestorePlans` must
-        #   match the call that provided the page token.
+        #   Optional. The value of next_page_token received from a previous `
+        #   ListRestorePlans` call. Provide this to retrieve the subsequent page in a
+        #   multi-page list of results. When paginating, all other parameters provided to `
+        #   ListRestorePlans` must match the call that provided the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1323,13 +1330,13 @@ module Google
         #   locations/*/restorePlans/*`.
         # @param [Google::Apis::GkebackupV1::RestorePlan] restore_plan_object
         # @param [String] update_mask
-        #   This is used to specify the fields to be overwritten in the RestorePlan
-        #   targeted for update. The values for each of these updated fields will be taken
-        #   from the `restore_plan` provided with this request. Field names are relative
-        #   to the root of the resource. If no `update_mask` is provided, all fields in `
-        #   restore_plan` will be written to the target RestorePlan resource. Note that
-        #   OUTPUT_ONLY and IMMUTABLE fields in `restore_plan` are ignored and are not
-        #   used to update the target RestorePlan.
+        #   Optional. This is used to specify the fields to be overwritten in the
+        #   RestorePlan targeted for update. The values for each of these updated fields
+        #   will be taken from the `restore_plan` provided with this request. Field names
+        #   are relative to the root of the resource. If no `update_mask` is provided, all
+        #   fields in `restore_plan` will be written to the target RestorePlan resource.
+        #   Note that OUTPUT_ONLY and IMMUTABLE fields in `restore_plan` are ignored and
+        #   are not used to update the target RestorePlan.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1482,11 +1489,12 @@ module Google
         #   Required. Full name of the Restore Format: `projects/*/locations/*/
         #   restorePlans/*/restores/*`
         # @param [String] etag
-        #   If provided, this value must match the current value of the target Restore's
-        #   etag field or the request is rejected.
+        #   Optional. If provided, this value must match the current value of the target
+        #   Restore's etag field or the request is rejected.
         # @param [Boolean] force
-        #   If set to true, any VolumeRestores below this restore will also be deleted.
-        #   Otherwise, the request will only succeed if the restore has no VolumeRestores.
+        #   Optional. If set to true, any VolumeRestores below this restore will also be
+        #   deleted. Otherwise, the request will only succeed if the restore has no
+        #   VolumeRestores.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1597,19 +1605,20 @@ module Google
         #   Required. The RestorePlan that contains the Restores to list. Format: `
         #   projects/*/locations/*/restorePlans/*`
         # @param [String] filter
-        #   Field match expression used to filter the results.
+        #   Optional. Field match expression used to filter the results.
         # @param [String] order_by
-        #   Field by which to sort the results.
+        #   Optional. Field by which to sort the results.
         # @param [Fixnum] page_size
-        #   The target number of results to return in a single response. If not specified,
-        #   a default value will be chosen by the service. Note that the response may
-        #   inclue a partial list and a caller should only rely on the response's
-        #   next_page_token to determine if there are more instances left to be queried.
+        #   Optional. The target number of results to return in a single response. If not
+        #   specified, a default value will be chosen by the service. Note that the
+        #   response may include a partial list and a caller should only rely on the
+        #   response's next_page_token to determine if there are more instances left to be
+        #   queried.
         # @param [String] page_token
-        #   The value of next_page_token received from a previous `ListRestores` call.
-        #   Provide this to retrieve the subsequent page in a multi-page list of results.
-        #   When paginating, all other parameters provided to `ListRestores` must match
-        #   the call that provided the page token.
+        #   Optional. The value of next_page_token received from a previous `ListRestores`
+        #   call. Provide this to retrieve the subsequent page in a multi-page list of
+        #   results. When paginating, all other parameters provided to `ListRestores` must
+        #   match the call that provided the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1647,12 +1656,13 @@ module Google
         #   locations/*/restorePlans/*/restores/*`
         # @param [Google::Apis::GkebackupV1::Restore] restore_object
         # @param [String] update_mask
-        #   This is used to specify the fields to be overwritten in the Restore targeted
-        #   for update. The values for each of these updated fields will be taken from the
-        #   `restore` provided with this request. Field names are relative to the root of
-        #   the resource. If no `update_mask` is provided, all fields in `restore` will be
-        #   written to the target Restore resource. Note that OUTPUT_ONLY and IMMUTABLE
-        #   fields in `restore` are ignored and are not used to update the target Restore.
+        #   Optional. This is used to specify the fields to be overwritten in the Restore
+        #   targeted for update. The values for each of these updated fields will be taken
+        #   from the `restore` provided with this request. Field names are relative to the
+        #   root of the resource. If no `update_mask` is provided, all fields in `restore`
+        #   will be written to the target Restore resource. Note that OUTPUT_ONLY and
+        #   IMMUTABLE fields in `restore` are ignored and are not used to update the
+        #   target Restore.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1840,19 +1850,20 @@ module Google
         #   Required. The Restore that contains the VolumeRestores to list. Format: `
         #   projects/*/locations/*/restorePlans/*/restores/*`
         # @param [String] filter
-        #   Field match expression used to filter the results.
+        #   Optional. Field match expression used to filter the results.
         # @param [String] order_by
-        #   Field by which to sort the results.
+        #   Optional. Field by which to sort the results.
         # @param [Fixnum] page_size
-        #   The target number of results to return in a single response. If not specified,
-        #   a default value will be chosen by the service. Note that the response may
-        #   inclue a partial list and a caller should only rely on the response's
-        #   next_page_token to determine if there are more instances left to be queried.
+        #   Optional. The target number of results to return in a single response. If not
+        #   specified, a default value will be chosen by the service. Note that the
+        #   response may include a partial list and a caller should only rely on the
+        #   response's next_page_token to determine if there are more instances left to be
+        #   queried.
         # @param [String] page_token
-        #   The value of next_page_token received from a previous `ListVolumeRestores`
-        #   call. Provide this to retrieve the subsequent page in a multi-page list of
-        #   results. When paginating, all other parameters provided to `ListVolumeRestores`
-        #   must match the call that provided the page token.
+        #   Optional. The value of next_page_token received from a previous `
+        #   ListVolumeRestores` call. Provide this to retrieve the subsequent page in a
+        #   multi-page list of results. When paginating, all other parameters provided to `
+        #   ListVolumeRestores` must match the call that provided the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
