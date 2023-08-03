@@ -559,6 +559,12 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # Whether PSC connectivity is enabled for this instance.
+        # Corresponds to the JSON property `pscEnabled`
+        # @return [Boolean]
+        attr_accessor :psc_enabled
+        alias_method :psc_enabled?, :psc_enabled
+      
         # The cloud region for the instance. For example, `us-central1`, `europe-west1`.
         # The region cannot be changed after instance creation.
         # Corresponds to the JSON property `region`
@@ -581,6 +587,7 @@ module Google
           @dns_name = args[:dns_name] if args.key?(:dns_name)
           @ip_addresses = args[:ip_addresses] if args.key?(:ip_addresses)
           @kind = args[:kind] if args.key?(:kind)
+          @psc_enabled = args[:psc_enabled] if args.key?(:psc_enabled)
           @region = args[:region] if args.key?(:region)
           @server_ca_cert = args[:server_ca_cert] if args.key?(:server_ca_cert)
         end
@@ -762,6 +769,11 @@ module Google
         # @return [Google::Apis::SqladminV1::DiskEncryptionStatus]
         attr_accessor :disk_encryption_status
       
+        # Output only. The dns name of the instance.
+        # Corresponds to the JSON property `dnsName`
+        # @return [String]
+        attr_accessor :dns_name
+      
         # This field is deprecated and will be removed from a future version of the API.
         # Use the `settings.settingsVersion` field instead.
         # Corresponds to the JSON property `etag`
@@ -837,6 +849,11 @@ module Google
         # Corresponds to the JSON property `project`
         # @return [String]
         attr_accessor :project
+      
+        # Output only. The link to service attachment of PSC instance.
+        # Corresponds to the JSON property `pscServiceAttachmentLink`
+        # @return [String]
+        attr_accessor :psc_service_attachment_link
       
         # The geographical region. Can be: * `us-central` (`FIRST_GEN` instances only) *
         # `us-central1` (`SECOND_GEN` instances only) * `asia-east1` or `europe-west1`.
@@ -927,6 +944,7 @@ module Google
           @database_version = args[:database_version] if args.key?(:database_version)
           @disk_encryption_configuration = args[:disk_encryption_configuration] if args.key?(:disk_encryption_configuration)
           @disk_encryption_status = args[:disk_encryption_status] if args.key?(:disk_encryption_status)
+          @dns_name = args[:dns_name] if args.key?(:dns_name)
           @etag = args[:etag] if args.key?(:etag)
           @failover_replica = args[:failover_replica] if args.key?(:failover_replica)
           @gce_zone = args[:gce_zone] if args.key?(:gce_zone)
@@ -941,6 +959,7 @@ module Google
           @on_premises_configuration = args[:on_premises_configuration] if args.key?(:on_premises_configuration)
           @out_of_disk_report = args[:out_of_disk_report] if args.key?(:out_of_disk_report)
           @project = args[:project] if args.key?(:project)
+          @psc_service_attachment_link = args[:psc_service_attachment_link] if args.key?(:psc_service_attachment_link)
           @region = args[:region] if args.key?(:region)
           @replica_configuration = args[:replica_configuration] if args.key?(:replica_configuration)
           @replica_names = args[:replica_names] if args.key?(:replica_names)
@@ -2243,6 +2262,11 @@ module Google
         # @return [String]
         attr_accessor :private_network
       
+        # PSC settings for a Cloud SQL instance.
+        # Corresponds to the JSON property `pscConfig`
+        # @return [Google::Apis::SqladminV1::PscConfig]
+        attr_accessor :psc_config
+      
         # Whether SSL connections over IP are enforced or not.
         # Corresponds to the JSON property `requireSsl`
         # @return [Boolean]
@@ -2260,6 +2284,7 @@ module Google
           @enable_private_path_for_google_cloud_services = args[:enable_private_path_for_google_cloud_services] if args.key?(:enable_private_path_for_google_cloud_services)
           @ipv4_enabled = args[:ipv4_enabled] if args.key?(:ipv4_enabled)
           @private_network = args[:private_network] if args.key?(:private_network)
+          @psc_config = args[:psc_config] if args.key?(:psc_config)
           @require_ssl = args[:require_ssl] if args.key?(:require_ssl)
         end
       end
@@ -2914,6 +2939,35 @@ module Google
         # Update properties of this object
         def update!(**args)
           @target_size_gb = args[:target_size_gb] if args.key?(:target_size_gb)
+        end
+      end
+      
+      # PSC settings for a Cloud SQL instance.
+      class PscConfig
+        include Google::Apis::Core::Hashable
+      
+        # List of consumer projects that are allow-listed for PSC connections to this
+        # instance. This instance can be connected to with PSC from any network in these
+        # projects. Each consumer project in this list may be represented by a project
+        # number (numeric) or by a project id (alphanumeric).
+        # Corresponds to the JSON property `allowedConsumerProjects`
+        # @return [Array<String>]
+        attr_accessor :allowed_consumer_projects
+      
+        # Whether PSC connectivity is enabled for this instance.
+        # Corresponds to the JSON property `pscEnabled`
+        # @return [Boolean]
+        attr_accessor :psc_enabled
+        alias_method :psc_enabled?, :psc_enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowed_consumer_projects = args[:allowed_consumer_projects] if args.key?(:allowed_consumer_projects)
+          @psc_enabled = args[:psc_enabled] if args.key?(:psc_enabled)
         end
       end
       
