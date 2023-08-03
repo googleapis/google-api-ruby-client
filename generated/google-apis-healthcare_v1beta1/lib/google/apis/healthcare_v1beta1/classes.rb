@@ -140,6 +140,12 @@ module Google
       class AnalyzeEntitiesRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. Alternative output format to be generated based on the results of
+        # analysis.
+        # Corresponds to the JSON property `alternativeOutputFormat`
+        # @return [String]
+        attr_accessor :alternative_output_format
+      
         # document_content is a document to be annotated.
         # Corresponds to the JSON property `documentContent`
         # @return [String]
@@ -157,6 +163,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @alternative_output_format = args[:alternative_output_format] if args.key?(:alternative_output_format)
           @document_content = args[:document_content] if args.key?(:document_content)
           @licensed_vocabularies = args[:licensed_vocabularies] if args.key?(:licensed_vocabularies)
         end
@@ -178,6 +185,12 @@ module Google
         # @return [Array<Google::Apis::HealthcareV1beta1::EntityMention>]
         attr_accessor :entity_mentions
       
+        # The FHIR bundle ([`R4`](http://hl7.org/fhir/R4/bundle.html)) that includes all
+        # the entities, the entity mentions, and the relationships in JSON format.
+        # Corresponds to the JSON property `fhirBundle`
+        # @return [String]
+        attr_accessor :fhir_bundle
+      
         # relationships contains all the binary relationships that were identified
         # between entity mentions within the provided document.
         # Corresponds to the JSON property `relationships`
@@ -192,6 +205,7 @@ module Google
         def update!(**args)
           @entities = args[:entities] if args.key?(:entities)
           @entity_mentions = args[:entity_mentions] if args.key?(:entity_mentions)
+          @fhir_bundle = args[:fhir_bundle] if args.key?(:fhir_bundle)
           @relationships = args[:relationships] if args.key?(:relationships)
         end
       end
@@ -1346,9 +1360,7 @@ module Google
         # Ensures in-flight data remains in the region of origin during de-
         # identification. Using this option results in a significant reduction of
         # throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME`
-        # infoTypes. If the deprecated [`DicomConfig`](google.cloud.healthcare.v1beta1.
-        # deidentify.DeidentifyConfig.dicom_config) or [`FhirConfig`](google.cloud.
-        # healthcare.v1beta1.deidentify.DeidentifyConfig.fhir_config) are used, then `
+        # infoTypes. If the deprecated `DicomConfig` or `FhirConfig` are used, then `
         # LOCATION` must be excluded within `TextConfig`, and must also be excluded
         # within `ImageConfig` if image redaction is required.
         # Corresponds to the JSON property `useRegionalDataProcessing`
