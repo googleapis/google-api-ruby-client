@@ -424,6 +424,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PscConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ReplicaConfiguration
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -751,6 +757,7 @@ module Google
           collection :ip_addresses, as: 'ipAddresses', class: Google::Apis::SqladminV1::IpMapping, decorator: Google::Apis::SqladminV1::IpMapping::Representation
       
           property :kind, as: 'kind'
+          property :psc_enabled, as: 'pscEnabled'
           property :region, as: 'region'
           property :server_ca_cert, as: 'serverCaCert', class: Google::Apis::SqladminV1::SslCert, decorator: Google::Apis::SqladminV1::SslCert::Representation
       
@@ -802,6 +809,7 @@ module Google
       
           property :disk_encryption_status, as: 'diskEncryptionStatus', class: Google::Apis::SqladminV1::DiskEncryptionStatus, decorator: Google::Apis::SqladminV1::DiskEncryptionStatus::Representation
       
+          property :dns_name, as: 'dnsName'
           property :etag, as: 'etag'
           property :failover_replica, as: 'failoverReplica', class: Google::Apis::SqladminV1::DatabaseInstance::FailoverReplica, decorator: Google::Apis::SqladminV1::DatabaseInstance::FailoverReplica::Representation
       
@@ -820,6 +828,7 @@ module Google
           property :out_of_disk_report, as: 'outOfDiskReport', class: Google::Apis::SqladminV1::SqlOutOfDiskReport, decorator: Google::Apis::SqladminV1::SqlOutOfDiskReport::Representation
       
           property :project, as: 'project'
+          property :psc_service_attachment_link, as: 'pscServiceAttachmentLink'
           property :region, as: 'region'
           property :replica_configuration, as: 'replicaConfiguration', class: Google::Apis::SqladminV1::ReplicaConfiguration, decorator: Google::Apis::SqladminV1::ReplicaConfiguration::Representation
       
@@ -1201,6 +1210,8 @@ module Google
           property :enable_private_path_for_google_cloud_services, as: 'enablePrivatePathForGoogleCloudServices'
           property :ipv4_enabled, as: 'ipv4Enabled'
           property :private_network, as: 'privateNetwork'
+          property :psc_config, as: 'pscConfig', class: Google::Apis::SqladminV1::PscConfig, decorator: Google::Apis::SqladminV1::PscConfig::Representation
+      
           property :require_ssl, as: 'requireSsl'
         end
       end
@@ -1366,6 +1377,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :target_size_gb, :numeric_string => true, as: 'targetSizeGb'
+        end
+      end
+      
+      class PscConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_consumer_projects, as: 'allowedConsumerProjects'
+          property :psc_enabled, as: 'pscEnabled'
         end
       end
       
