@@ -9118,18 +9118,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class NlpLoggingQRewriteClientCallPathInfo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class NlpLoggingQusClientCallPathInfo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class NlpMeaningMeaningRemodeling
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -11290,18 +11278,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class QualityQrewriteCandidateId
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class QualityQrewriteCandidateIdField
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class QualityQrewriteContactCalendarName
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -11548,6 +11524,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class QualityTimebasedDateReliability
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class QualityTimebasedLastSignificantUpdate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -11561,6 +11543,12 @@ module Google
       end
       
       class QualityTimebasedPageType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QualityTimebasedPetacatDateReliability
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -18582,6 +18570,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :android_intent_capabilities, as: 'androidIntentCapabilities', class: Google::Apis::ContentwarehouseV1::AssistantApiAndroidIntentCapabilities, decorator: Google::Apis::ContentwarehouseV1::AssistantApiAndroidIntentCapabilities::Representation
       
+          property :assistant_capability, as: 'assistantCapability'
           property :audio_input, as: 'audioInput', class: Google::Apis::ContentwarehouseV1::AssistantApiAudioInput, decorator: Google::Apis::ContentwarehouseV1::AssistantApiAudioInput::Representation
       
           property :audio_output, as: 'audioOutput', class: Google::Apis::ContentwarehouseV1::AssistantApiAudioOutput, decorator: Google::Apis::ContentwarehouseV1::AssistantApiAudioOutput::Representation
@@ -19837,6 +19826,7 @@ module Google
           property :persistent_display_supported, as: 'persistentDisplaySupported'
           property :privacy_aware_lockscreen_supported, as: 'privacyAwareLockscreenSupported'
           property :read_messages_tts_tapering_supported, as: 'readMessagesTtsTaperingSupported'
+          property :read_notification_summarization_supported, as: 'readNotificationSummarizationSupported'
           property :remote_cloud_casting_enabled, as: 'remoteCloudCastingEnabled'
           property :server_generated_feedback_chips_enabled, as: 'serverGeneratedFeedbackChipsEnabled'
           property :sh_lock_screen_supported, as: 'shLockScreenSupported'
@@ -20515,6 +20505,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :device_model_id, as: 'deviceModelId'
           property :is_owned_by_speaker, as: 'isOwnedBySpeaker'
+          property :surface_type, as: 'surfaceType'
         end
       end
       
@@ -26746,6 +26737,7 @@ module Google
           property :disposition_time, as: 'dispositionTime'
           property :document_schema_name, as: 'documentSchemaName'
           property :inline_raw_document, :base64 => true, as: 'inlineRawDocument'
+          property :legal_hold, as: 'legalHold'
           property :name, as: 'name'
           property :plain_text, as: 'plainText'
           collection :properties, as: 'properties', class: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1Property, decorator: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1Property::Representation
@@ -30002,11 +29994,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :child_score, as: 'childScore'
           property :csai_score, as: 'csaiScore'
+          property :csam_a1_score, as: 'csamA1Score'
+          property :csam_age_indeterminate_score, as: 'csamAgeIndeterminateScore'
           property :iu_inappropriate_score, as: 'iuInappropriateScore'
           property :medical_score, as: 'medicalScore'
           property :pedo_score, as: 'pedoScore'
           property :porn_score, as: 'pornScore'
           property :racy_score, as: 'racyScore'
+          property :semantic_sexualization_score, as: 'semanticSexualizationScore'
           property :spoof_score, as: 'spoofScore'
           property :version, as: 'version'
           property :violence_score, as: 'violenceScore'
@@ -30580,6 +30575,8 @@ module Google
           property :image_search_rejected_image_info_list, as: 'imageSearchRejectedImageInfoList', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
           property :image_stock_stock_image_annotation, as: 'imageStockStockImageAnnotation', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
+          property :imageembed, as: 'imageembed', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
           property :indexing_annotations_annotation_meta, as: 'indexingAnnotationsAnnotationMeta', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
@@ -32959,8 +32956,6 @@ module Google
           property :calibrated_parsing_score, as: 'calibratedParsingScore'
           property :effective_arg_span_length, as: 'effectiveArgSpanLength'
           property :in_query_max_effective_arg_span_length, as: 'inQueryMaxEffectiveArgSpanLength'
-          property :qrewrite_call_path_info, as: 'qrewriteCallPathInfo', class: Google::Apis::ContentwarehouseV1::NlpLoggingQRewriteClientCallPathInfo, decorator: Google::Apis::ContentwarehouseV1::NlpLoggingQRewriteClientCallPathInfo::Representation
-      
           property :qrewrite_call_path_info_fingerprint, :numeric_string => true, as: 'qrewriteCallPathInfoFingerprint'
           property :source, as: 'source'
         end
@@ -34678,27 +34673,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
-        end
-      end
-      
-      class NlpLoggingQRewriteClientCallPathInfo
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :qrewrite_candidate_id, as: 'qrewriteCandidateId', class: Google::Apis::ContentwarehouseV1::QualityQrewriteCandidateId, decorator: Google::Apis::ContentwarehouseV1::QualityQrewriteCandidateId::Representation
-      
-          property :qus_candidate_id, as: 'qusCandidateId', class: Google::Apis::ContentwarehouseV1::QualityQrewriteCandidateId, decorator: Google::Apis::ContentwarehouseV1::QualityQrewriteCandidateId::Representation
-      
-          property :qus_client_call_path_info, as: 'qusClientCallPathInfo', class: Google::Apis::ContentwarehouseV1::NlpLoggingQusClientCallPathInfo, decorator: Google::Apis::ContentwarehouseV1::NlpLoggingQusClientCallPathInfo::Representation
-      
-          property :qus_phase, as: 'qusPhase'
-        end
-      end
-      
-      class NlpLoggingQusClientCallPathInfo
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :rewriter_type, as: 'rewriterType'
-          property :temporary_ace_tag, :numeric_string => true, as: 'temporaryAceTag'
         end
       end
       
@@ -40173,22 +40147,6 @@ module Google
         end
       end
       
-      class QualityQrewriteCandidateId
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :field, as: 'field', class: Google::Apis::ContentwarehouseV1::QualityQrewriteCandidateIdField, decorator: Google::Apis::ContentwarehouseV1::QualityQrewriteCandidateIdField::Representation
-      
-        end
-      end
-      
-      class QualityQrewriteCandidateIdField
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :index, as: 'index'
-          property :type, as: 'type'
-        end
-      end
-      
       class QualityQrewriteContactCalendarName
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -40724,12 +40682,24 @@ module Google
         end
       end
       
+      class QualityTimebasedDateReliability
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :petacat_scores, as: 'petacatScores', class: Google::Apis::ContentwarehouseV1::QualityTimebasedPetacatDateReliability, decorator: Google::Apis::ContentwarehouseV1::QualityTimebasedPetacatDateReliability::Representation
+      
+          property :unreliable_dates_score, as: 'unreliableDatesScore'
+          property :unreliable_dates_score_exposure_adjusted, as: 'unreliableDatesScoreExposureAdjusted'
+        end
+      end
+      
       class QualityTimebasedLastSignificantUpdate
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :adjustment_info, as: 'adjustmentInfo', class: Google::Apis::ContentwarehouseV1::QualityTimebasedLastSignificantUpdateAdjustments, decorator: Google::Apis::ContentwarehouseV1::QualityTimebasedLastSignificantUpdateAdjustments::Representation
       
           property :date, :numeric_string => true, as: 'date'
+          property :date_reliability_info, as: 'dateReliabilityInfo', class: Google::Apis::ContentwarehouseV1::QualityTimebasedDateReliability, decorator: Google::Apis::ContentwarehouseV1::QualityTimebasedDateReliability::Representation
+      
           property :source, as: 'source'
         end
       end
@@ -40751,6 +40721,19 @@ module Google
           property :is_forum_page, as: 'isForumPage'
           property :is_page_with_fresh_repeated_dates, as: 'isPageWithFreshRepeatedDates'
           property :is_qna_page, as: 'isQnaPage'
+        end
+      end
+      
+      class QualityTimebasedPetacatDateReliability
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :contentage_reliability, as: 'contentageReliability'
+          property :date_exposure, as: 'dateExposure'
+          property :date_exposure_score, as: 'dateExposureScore'
+          property :date_vs_contentage_distribution_skew, as: 'dateVsContentageDistributionSkew'
+          property :is_forum_qna_social_media_probability, as: 'isForumQnaSocialMediaProbability'
+          property :petacat_id, as: 'petacatId'
+          property :unreliable_dates_score, as: 'unreliableDatesScore'
         end
       end
       
@@ -41680,6 +41663,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :provenance, as: 'provenance'
           property :score, as: 'score'
+          property :type_fprint, :numeric_string => true, as: 'typeFprint'
           property :type_mid, :numeric_string => true, as: 'typeMid'
           property :type_name, as: 'typeName'
         end
@@ -43162,6 +43146,7 @@ module Google
           property :fingerprint, :numeric_string => true, as: 'fingerprint'
           collection :funder, as: 'funder', class: Google::Apis::ContentwarehouseV1::ResearchScienceSearchOrganization, decorator: Google::Apis::ContentwarehouseV1::ResearchScienceSearchOrganization::Representation
       
+          property :has_croissant_format, as: 'hasCroissantFormat'
           property :has_table_summaries, as: 'hasTableSummaries'
           property :id, as: 'id'
           collection :identifier_from_source, as: 'identifierFromSource'
@@ -46143,6 +46128,7 @@ module Google
           property :cache_hit_type, as: 'cacheHitType'
           property :cdn_provider, as: 'cdnProvider'
           property :concurrent_stream_num, :numeric_string => true, as: 'concurrentStreamNum'
+          property :credential_id, as: 'credentialId'
           property :dependent_fetch_type, as: 'dependentFetchType'
           property :download_file_name, as: 'downloadFileName'
           property :http_version, as: 'httpVersion'
