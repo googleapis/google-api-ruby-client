@@ -7067,6 +7067,7 @@ module Google
       
           collection :knowledge_base_names, as: 'knowledgeBaseNames'
           hash :payload, as: 'payload'
+          property :platform, as: 'platform'
           property :reset_contexts, as: 'resetContexts'
           property :sentiment_analysis_request_config, as: 'sentimentAnalysisRequestConfig', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SentimentAnalysisRequestConfig, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SentimentAnalysisRequestConfig::Representation
       
