@@ -3675,6 +3675,13 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Immutable. Whether this space permits any Google Chat user as a member. Input
+        # when creating a space. For existing spaces, this field is output only.
+        # Corresponds to the JSON property `externalUserAllowed`
+        # @return [Boolean]
+        attr_accessor :external_user_allowed
+        alias_method :external_user_allowed?, :external_user_allowed
+      
         # Resource name of the space. Format: `spaces/`space``
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -3727,6 +3734,7 @@ module Google
         def update!(**args)
           @admin_installed = args[:admin_installed] if args.key?(:admin_installed)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @external_user_allowed = args[:external_user_allowed] if args.key?(:external_user_allowed)
           @name = args[:name] if args.key?(:name)
           @single_user_bot_dm = args[:single_user_bot_dm] if args.key?(:single_user_bot_dm)
           @space_details = args[:space_details] if args.key?(:space_details)
