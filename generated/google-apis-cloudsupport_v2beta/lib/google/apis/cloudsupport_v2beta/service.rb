@@ -54,10 +54,13 @@ module Google
         # classications are hierarchical, with each classification containing all levels
         # of the hierarchy, separated by `" > "`. For example `"Technical Issue >
         # Compute > Compute Engine"`. Classification IDs returned by `
-        # caseClassifications.search` are guaranteed to be valid for at least 6 months.
-        # If a given classification is deactiveated, it will immediately stop being
-        # returned. After 6 months, `case.create` requests using the classification ID
-        # will fail.
+        # caseClassifications.search` are guaranteed to be valid for at least six months.
+        # If a given classification is deactivated, it immediately stops being returned.
+        # After six months, `case.create` requests using the classification ID will
+        # fail. Here is an example of calling this endpoint using cURL: ```shell curl \ -
+        # -header "Authorization: Bearer $(gcloud auth print-access-token)" \ 'https://
+        # cloudsupport.googleapis.com/v2/caseClassifications:search?query=display_name:"*
+        # Compute%20Engine*"' ```
         # @param [Fixnum] page_size
         #   The maximum number of cases fetched with each request.
         # @param [String] page_token
@@ -96,7 +99,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Close the specified case.
+        # Close the specified case. Here is an example of calling this endpoint using
+        # cURL: ```shell case="projects/some-project/cases/43595344" curl \ --request
+        # POST \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \ "
+        # https://cloudsupport.googleapis.com/v2/$case:close" ```
         # @param [String] name
         #   Required. The fully qualified name of the case resource to be closed.
         # @param [Google::Apis::CloudsupportV2beta::CloseCaseRequest] close_case_request_object
@@ -131,7 +137,16 @@ module Google
         
         # Create a new case and associate it with the given Google Cloud Resource. The
         # case object must have the following fields set: `display_name`, `description`,
-        # `classification`, and `priority`.
+        # `classification`, and `priority`. Here is an example of calling this endpoint
+        # using cURL: ```shell parent="projects/some-project" curl \ --request POST \ --
+        # header "Authorization: Bearer $(gcloud auth print-access-token)" \ --header '
+        # Content-Type: application/json' \ --data '` "display_name": "Test case created
+        # by me.", "description": "a random test case, feel free to close", "
+        # classification": ` "id": "
+        # 1BT1M2T31DHNMENPO6KS36CPJ786L2TBFEHGN6NPI64R3CDHN8880G08I1H3MURR7DHII0GRCDTQM8"
+        # `, "time_zone": "-07:00", "subscriber_email_addresses": [ "foo@domain.com", "
+        # bar@domain.com" ], "testCase": true, "priority": "P3" `' \ "https://
+        # cloudsupport.googleapis.com/v2/$parent/cases" ```
         # @param [String] parent
         #   Required. The name of the Google Cloud Resource under which the case should be
         #   created.
@@ -165,11 +180,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Escalate a case. Escalating a case will initiate the Google Cloud Support
+        # Escalate a case. Escalating a case initiates the Google Cloud Support
         # escalation management process. This operation is only available to certain
-        # Customer Care tiers. Go to https://cloud.google.com/support and look for '
-        # Technical support escalations' in the feature list to find out which tiers are
-        # able to perform escalations.
+        # Customer Care support services. Go to https://cloud.google.com/support and
+        # look for 'Technical support escalations' in the feature list to find out which
+        # support services let you perform escalations. Here is an example of calling
+        # this endpoint using cURL: ```shell case="projects/some-project/cases/43595344"
+        # curl \ --request POST \ --header "Authorization: Bearer $(gcloud auth print-
+        # access-token)" \ --header "Content-Type: application/json" \ --data '` "
+        # escalation": ` "reason": "BUSINESS_IMPACT", "justification": "This is a test
+        # escalation." ` `' \ "https://cloudsupport.googleapis.com/v2/$case:escalate" ```
         # @param [String] name
         #   Required. The fully qualified name of the Case resource to be escalated.
         # @param [Google::Apis::CloudsupportV2beta::EscalateCaseRequest] escalate_case_request_object
@@ -202,7 +222,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieve the specified case.
+        # Retrieve the specified case. Here is an example of calling this endpoint using
+        # cURL: ```shell case="projects/some-project/cases/16033687" curl \ --header "
+        # Authorization: Bearer $(gcloud auth print-access-token)" \ "https://
+        # cloudsupport.googleapis.com/v2/$case" ```
         # @param [String] name
         #   Required. The fully qualified name of a case to be retrieved.
         # @param [String] fields
@@ -233,9 +256,12 @@ module Google
         end
         
         # Retrieve all cases under the specified parent. Note: Listing cases under an
-        # Organization returns only the cases directly parented by that organization. To
+        # organization returns only the cases directly parented by that organization. To
         # retrieve all cases under an organization, including cases parented by projects
-        # under that organization, use `cases.search`.
+        # under that organization, use `cases.search`. Here is an example of calling
+        # this endpoint using cURL: ```shell parent="projects/some-project" curl \ --
+        # header "Authorization: Bearer $(gcloud auth print-access-token)" \ "https://
+        # cloudsupport.googleapis.com/v2/$parent/cases" ```
         # @param [String] parent
         #   Required. The fully qualified name of parent resource to list cases under.
         # @param [String] filter
@@ -283,7 +309,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update the specified case. Only a subset of fields can be updated.
+        # Update the specified case. Only a subset of fields can be updated. Here is an
+        # example of calling this endpoint using cURL: ```shell case="projects/some-
+        # project/cases/43595344" curl \ --request PATCH \ --header "Authorization:
+        # Bearer $(gcloud auth print-access-token)" \ --header "Content-Type:
+        # application/json" \ --data '` "priority": "P1" `' \ "https://cloudsupport.
+        # googleapis.com/v2/$case?updateMask=priority" ```
         # @param [String] name
         #   The resource name for the case.
         # @param [Google::Apis::CloudsupportV2beta::Case] case_object
@@ -325,7 +356,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Search cases using the specified query.
+        # Search cases using the specified query. Here is an example of calling this
+        # endpoint using cURL: ```shell parent="projects/some-project" curl \ --header "
+        # Authorization: Bearer $(gcloud auth print-access-token)" \ "https://
+        # cloudsupport.googleapis.com/v2/$parent/cases:search" ```
         # @param [Fixnum] page_size
         #   The maximum number of cases fetched with each request. The default page size
         #   is 10.
@@ -385,7 +419,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieve all attachments associated with a support case.
+        # Retrieve all attachments associated with a support case. Here is an example of
+        # calling this endpoint using cURL: ```shell case="projects/some-project/cases/
+        # 23598314" curl \ --header "Authorization: Bearer $(gcloud auth print-access-
+        # token)" \ "https://cloudsupport.googleapis.com/v2/$case/attachments" ```
         # @param [String] parent
         #   Required. The resource name of Case object for which attachments should be
         #   listed.
@@ -425,7 +462,11 @@ module Google
         end
         
         # Add a new comment to the specified Case. The comment object must have the
-        # following fields set: body.
+        # following fields set: body. Here is an example of calling this endpoint using
+        # cURL: ```shell case="projects/some-project/cases/43591344" curl \ --request
+        # POST \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \ --
+        # header 'Content-Type: application/json' \ --data '` "body": "This is a test
+        # comment." `' \ "https://cloudsupport.googleapis.com/v2/$case/comments" ```
         # @param [String] parent
         #   Required. The resource name of Case to which this comment should be added.
         # @param [Google::Apis::CloudsupportV2beta::Comment] comment_object
@@ -458,7 +499,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieve all Comments associated with the Case object.
+        # Retrieve all comments associated with the Case object. Here is an example of
+        # calling this endpoint using cURL: ```shell case="projects/cloud-support-qa-
+        # premium/cases/43595344" curl \ --header "Authorization: Bearer $(gcloud auth
+        # print-access-token)" \ "https://cloudsupport.googleapis.com/v2/$case/comments"
+        # ```
         # @param [String] parent
         #   Required. The resource name of Case object for which comments should be listed.
         # @param [Fixnum] page_size
@@ -496,7 +541,11 @@ module Google
         end
         
         # Download a file attachment on a case. Note: HTTP requests must append "?alt=
-        # media" to the URL.
+        # media" to the URL. Here is an example of calling this endpoint using cURL: ```
+        # shell name="projects/some-project/cases/43594844/attachments/
+        # 0674M00000WijAnZAJ" curl \ --header "Authorization: Bearer $(gcloud auth print-
+        # access-token)" \ "https://cloudsupport.googleapis.com/v2/$name:download?alt=
+        # media" ```
         # @param [String] name
         #   The resource name of the attachment to be downloaded.
         # @param [String] fields
@@ -534,7 +583,13 @@ module Google
         end
         
         # Create a file attachment on a case or Cloud resource. The attachment object
-        # must have the following fields set: filename.
+        # must have the following fields set: filename. Here is an example of calling
+        # this endpoint using cURL: ```shell echo "This text is in a file I'm uploading
+        # using CSAPI." \ > "./example_file.txt" case="projects/some-project/cases/
+        # 43594844" curl \ --header "Authorization: Bearer $(gcloud auth print-access-
+        # token)" \ --data-binary @"./example_file.txt" \ "https://cloudsupport.
+        # googleapis.com/upload/v2beta/$case/attachments?attachment.filename=
+        # uploaded_via_curl.txt" ```
         # @param [String] parent
         #   Required. The resource name of the case (or case parent) to which the
         #   attachment should be attached.
