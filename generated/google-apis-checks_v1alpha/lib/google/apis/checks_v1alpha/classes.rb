@@ -162,6 +162,25 @@ module Google
         end
       end
       
+      # Request message for `FindPrivacyPolicy`.
+      class FindPrivacyPolicyRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. URI for the website from where to find the privacy policy.
+        # Corresponds to the JSON property `websiteUri`
+        # @return [String]
+        attr_accessor :website_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @website_uri = args[:website_uri] if args.key?(:website_uri)
+        end
+      end
+      
       # Information about the date when the privacy policy was last updated.
       class LastUpdatedDate
         include Google::Apis::Core::Hashable
@@ -230,6 +249,32 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+        end
+      end
+      
+      # Response message for `ListPrivacyPolicies`.
+      class ListPrivacyPoliciesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The pagination token to retrieve the next page of results. If the value is an
+        # empty string, it means there are no further results for the request.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The privacy policies.
+        # Corresponds to the JSON property `privacyPolicies`
+        # @return [Array<Google::Apis::ChecksV1alpha::PrivacyPolicy>]
+        attr_accessor :privacy_policies
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @privacy_policies = args[:privacy_policies] if args.key?(:privacy_policies)
         end
       end
       
