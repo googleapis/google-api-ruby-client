@@ -88,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleRpcErrorInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleRpcStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -401,6 +407,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :error, as: 'error', class: Google::Apis::NetworkconnectivityV1::GoogleRpcStatus, decorator: Google::Apis::NetworkconnectivityV1::GoogleRpcStatus::Representation
       
+          property :error_info, as: 'errorInfo', class: Google::Apis::NetworkconnectivityV1::GoogleRpcErrorInfo, decorator: Google::Apis::NetworkconnectivityV1::GoogleRpcErrorInfo::Representation
+      
           property :error_type, as: 'errorType'
           property :forwarding_rule, as: 'forwardingRule'
           property :gce_operation, as: 'gceOperation'
@@ -453,6 +461,15 @@ module Google
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
           hash :response, as: 'response'
+        end
+      end
+      
+      class GoogleRpcErrorInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :domain, as: 'domain'
+          hash :metadata, as: 'metadata'
+          property :reason, as: 'reason'
         end
       end
       
@@ -720,6 +737,8 @@ module Google
           property :consumer_target_project, as: 'consumerTargetProject'
           property :error, as: 'error', class: Google::Apis::NetworkconnectivityV1::GoogleRpcStatus, decorator: Google::Apis::NetworkconnectivityV1::GoogleRpcStatus::Representation
       
+          property :error_info, as: 'errorInfo', class: Google::Apis::NetworkconnectivityV1::GoogleRpcErrorInfo, decorator: Google::Apis::NetworkconnectivityV1::GoogleRpcErrorInfo::Representation
+      
           property :error_type, as: 'errorType'
           property :gce_operation, as: 'gceOperation'
           property :psc_connection_id, as: 'pscConnectionId'
@@ -792,7 +811,6 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :service_class, as: 'serviceClass'
-          collection :service_connection_maps, as: 'serviceConnectionMaps'
           property :update_time, as: 'updateTime'
         end
       end
