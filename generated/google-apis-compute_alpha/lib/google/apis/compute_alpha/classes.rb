@@ -1807,8 +1807,7 @@ module Google
       
         # Required for each regional disk associated with the instance. Specify the URLs
         # of the zones where the disk should be replicated to. You must provide exactly
-        # two replica zones, and one zone must be the same as the instance zone. You can'
-        # t use this option with boot disks.
+        # two replica zones, and one zone must be the same as the instance zone.
         # Corresponds to the JSON property `replicaZones`
         # @return [Array<String>]
         attr_accessor :replica_zones
@@ -3921,6 +3920,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :timeout_sec
       
+        # 
+        # Corresponds to the JSON property `usedBys`
+        # @return [Array<Google::Apis::ComputeAlpha::BackendServiceUsedBy>]
+        attr_accessor :used_bys
+      
         # The network scope of the backends that can be added to the backend service.
         # This field can be either GLOBAL_VPC_NETWORK or REGIONAL_VPC_NETWORK. A backend
         # service with the VPC scope set to GLOBAL_VPC_NETWORK is only allowed to have
@@ -3981,6 +3985,7 @@ module Google
           @session_affinity = args[:session_affinity] if args.key?(:session_affinity)
           @subsetting = args[:subsetting] if args.key?(:subsetting)
           @timeout_sec = args[:timeout_sec] if args.key?(:timeout_sec)
+          @used_bys = args[:used_bys] if args.key?(:used_bys)
           @vpc_network_scope = args[:vpc_network_scope] if args.key?(:vpc_network_scope)
         end
       end
@@ -4670,6 +4675,118 @@ module Google
         end
       end
       
+      # Contains a list of usable BackendService resources.
+      class BackendServiceListUsable
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # [Output Only] Type of resource. Always compute#usableBackendServiceList for
+        # lists of usable backend services.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeAlpha::BackendServiceListUsable::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeAlpha::BackendServiceListUsable::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
       # Container for either a built-in LB policy supported by gRPC or Envoy or a
       # custom one implemented by the end user.
       class BackendServiceLocalityLoadBalancingPolicyConfig
@@ -4828,6 +4945,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @backend_service = args[:backend_service] if args.key?(:backend_service)
+        end
+      end
+      
+      # 
+      class BackendServiceUsedBy
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `reference`
+        # @return [String]
+        attr_accessor :reference
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reference = args[:reference] if args.key?(:reference)
         end
       end
       
@@ -6806,6 +6942,16 @@ module Google
       class Disk
         include Google::Apis::Core::Hashable
       
+        # The access mode of the disk. - READ_WRITE_SINGLE: The default AccessMode,
+        # means the disk can be attached to single instance in RW mode. -
+        # READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple
+        # instances in RW mode. - READ_ONLY_MANY: The AccessMode means the disk can be
+        # attached to multiple instances in RO mode. The AccessMode is only valid for
+        # Hyperdisk disk types.
+        # Corresponds to the JSON property `accessMode`
+        # @return [String]
+        attr_accessor :access_mode
+      
         # The architecture of the disk. Valid values are ARM64 or X86_64.
         # Corresponds to the JSON property `architecture`
         # @return [String]
@@ -7214,6 +7360,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @access_mode = args[:access_mode] if args.key?(:access_mode)
           @architecture = args[:architecture] if args.key?(:architecture)
           @async_primary_disk = args[:async_primary_disk] if args.key?(:async_primary_disk)
           @async_secondary_disks = args[:async_secondary_disks] if args.key?(:async_secondary_disks)
@@ -10283,6 +10430,17 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
+        # Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP in
+        # IPV6_FORWARDING_RULE_CREATION mode. Use one of the following formats to
+        # specify a sub-PDP when creating an IPv6 NetLB forwarding rule using BYOIP:
+        # Full resource URL, as in https://www.googleapis.com/compute/v1/projects/
+        # project_id/regions/region/publicDelegatedPrefixes/sub-pdp-name Partial URL, as
+        # in: - projects/project_id/regions/region/publicDelegatedPrefixes/sub-pdp-name -
+        # regions/region/publicDelegatedPrefixes/sub-pdp-name
+        # Corresponds to the JSON property `ipCollection`
+        # @return [String]
+        attr_accessor :ip_collection
+      
         # The IP Version that will be used by this forwarding rule. Valid options are
         # IPV4 or IPV6.
         # Corresponds to the JSON property `ipVersion`
@@ -10385,7 +10543,7 @@ module Google
       
         # This is used in PSC consumer ForwardingRule to control whether it should try
         # to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this
-        # field.
+        # field. Once set, this field is not mutable.
         # Corresponds to the JSON property `noAutomateDnsZone`
         # @return [Boolean]
         attr_accessor :no_automate_dns_zone
@@ -10506,6 +10664,7 @@ module Google
         # API bundle: - vpc-sc - APIs that support VPC Service Controls. - all-apis -
         # All supported Google APIs. - For Private Service Connect forwarding rules that
         # forward traffic to managed services, the target must be a service attachment.
+        # The target is not mutable once set as a service attachment.
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
@@ -10527,6 +10686,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @id = args[:id] if args.key?(:id)
+          @ip_collection = args[:ip_collection] if args.key?(:ip_collection)
           @ip_version = args[:ip_version] if args.key?(:ip_version)
           @is_mirroring_collector = args[:is_mirroring_collector] if args.key?(:is_mirroring_collector)
           @kind = args[:kind] if args.key?(:kind)
@@ -11117,7 +11277,7 @@ module Google
       class FutureReservationStatus
         include Google::Apis::Core::Hashable
       
-        # The current status of the requested amendment.
+        # [Output Only] The current status of the requested amendment.
         # Corresponds to the JSON property `amendmentStatus`
         # @return [String]
         attr_accessor :amendment_status
@@ -11179,7 +11339,8 @@ module Google
       class FutureReservationStatusLastKnownGoodState
         include Google::Apis::Core::Hashable
       
-        # The description of the FutureReservation before an amendment was requested.
+        # [Output Only] The description of the FutureReservation before an amendment was
+        # requested.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -11189,12 +11350,20 @@ module Google
         # @return [Google::Apis::ComputeAlpha::FutureReservationStatusLastKnownGoodStateFutureReservationSpecs]
         attr_accessor :future_reservation_specs
       
-        # The name prefix of the Future Reservation before an amendment was requested.
+        # [Output Only] The lock time of the FutureReservation before an amendment was
+        # requested.
+        # Corresponds to the JSON property `lockTime`
+        # @return [String]
+        attr_accessor :lock_time
+      
+        # [Output Only] The name prefix of the Future Reservation before an amendment
+        # was requested.
         # Corresponds to the JSON property `namePrefix`
         # @return [String]
         attr_accessor :name_prefix
       
-        # The status of the last known good state for the Future Reservation.
+        # [Output Only] The status of the last known good state for the Future
+        # Reservation.
         # Corresponds to the JSON property `procurementStatus`
         # @return [String]
         attr_accessor :procurement_status
@@ -11207,6 +11376,7 @@ module Google
         def update!(**args)
           @description = args[:description] if args.key?(:description)
           @future_reservation_specs = args[:future_reservation_specs] if args.key?(:future_reservation_specs)
+          @lock_time = args[:lock_time] if args.key?(:lock_time)
           @name_prefix = args[:name_prefix] if args.key?(:name_prefix)
           @procurement_status = args[:procurement_status] if args.key?(:procurement_status)
         end
@@ -11221,12 +11391,13 @@ module Google
         # @return [Google::Apis::ComputeAlpha::ShareSettings]
         attr_accessor :share_settings
       
-        # The previous instance related properties of the Future Reservation.
+        # [Output Only] The previous instance related properties of the Future
+        # Reservation.
         # Corresponds to the JSON property `specificSkuProperties`
         # @return [Google::Apis::ComputeAlpha::FutureReservationSpecificSkuProperties]
         attr_accessor :specific_sku_properties
       
-        # The previous time window of the Future Reservation.
+        # [Output Only] The previous time window of the Future Reservation.
         # Corresponds to the JSON property `timeWindow`
         # @return [Google::Apis::ComputeAlpha::FutureReservationTimeWindow]
         attr_accessor :time_window
@@ -19540,6 +19711,12 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # The metadata key/value pairs assigned to all the instances in the
+        # corresponding scope.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::ComputeAlpha::InstanceSettingsMetadata]
+        attr_accessor :metadata
+      
         # [Output Only] URL of the zone where the resource resides You must specify this
         # field as part of the HTTP request URL. It is not settable as a field in the
         # request body.
@@ -19556,7 +19733,34 @@ module Google
           @email = args[:email] if args.key?(:email)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @kind = args[:kind] if args.key?(:kind)
+          @metadata = args[:metadata] if args.key?(:metadata)
           @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # 
+      class InstanceSettingsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Type of the resource. Always compute#metadata for metadata.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # A metadata key/value map. The total size of all keys and values must be less
+        # than 512KB.
+        # Corresponds to the JSON property `metadatas`
+        # @return [Hash<String,String>]
+        attr_accessor :metadatas
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @metadatas = args[:metadatas] if args.key?(:metadatas)
         end
       end
       
@@ -31055,8 +31259,8 @@ module Google
         # @return [String]
         attr_accessor :self_link_with_id
       
-        # Encapsulates partial completion metadata for SetCommonInstanceMetadata. Will
-        # be propagated on Operation.metadata.
+        # [Output Only] If the operation is for projects.setCommonInstanceMetadata, this
+        # field will contain information on all underlying zonal actions and their state.
         # Corresponds to the JSON property `setCommonInstanceMetadataOperationMetadata`
         # @return [Google::Apis::ComputeAlpha::SetCommonInstanceMetadataOperationMetadata]
         attr_accessor :set_common_instance_metadata_operation_metadata
@@ -31093,7 +31297,7 @@ module Google
         attr_accessor :target_link
       
         # [Output Only] User who requested the operation, for example: `user@example.com`
-        # .
+        # or `alice_smith_identifier (global/workforcePools/example-com-us-employees)`.
         # Corresponds to the JSON property `user`
         # @return [String]
         attr_accessor :user
@@ -33757,6 +33961,13 @@ module Google
       class PublicDelegatedPrefix
         include Google::Apis::Core::Hashable
       
+        # The allocatable prefix length supported by this public delegated prefix. This
+        # field is optional and cannot be set for prefixes in DELEGATION mode. It cannot
+        # be set for IPv4 prefixes either, and it always defaults to 32.
+        # Corresponds to the JSON property `allocatablePrefixLength`
+        # @return [Fixnum]
+        attr_accessor :allocatable_prefix_length
+      
         # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
         # @return [String]
@@ -33802,6 +34013,11 @@ module Google
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
+      
+        # The public delegated prefix mode for IPv6 only.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
       
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
@@ -33859,6 +34075,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @allocatable_prefix_length = args[:allocatable_prefix_length] if args.key?(:allocatable_prefix_length)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
@@ -33866,6 +34083,7 @@ module Google
           @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
           @is_live_migration = args[:is_live_migration] if args.key?(:is_live_migration)
           @kind = args[:kind] if args.key?(:kind)
+          @mode = args[:mode] if args.key?(:mode)
           @name = args[:name] if args.key?(:name)
           @parent_prefix = args[:parent_prefix] if args.key?(:parent_prefix)
           @public_delegated_sub_prefixs = args[:public_delegated_sub_prefixs] if args.key?(:public_delegated_sub_prefixs)
@@ -34123,6 +34341,11 @@ module Google
       class PublicDelegatedPrefixPublicDelegatedSubPrefix
         include Google::Apis::Core::Hashable
       
+        # The allocatable prefix length supported by this PublicDelegatedSubPrefix.
+        # Corresponds to the JSON property `allocatablePrefixLength`
+        # @return [Fixnum]
+        attr_accessor :allocatable_prefix_length
+      
         # Name of the project scoping this PublicDelegatedSubPrefix.
         # Corresponds to the JSON property `delegateeProject`
         # @return [String]
@@ -34147,6 +34370,11 @@ module Google
         attr_accessor :is_address
         alias_method :is_address?, :is_address
       
+        # The PublicDelegatedSubPrefix mode for IPv6 only.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
         # The name of the sub public delegated prefix.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -34169,10 +34397,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @allocatable_prefix_length = args[:allocatable_prefix_length] if args.key?(:allocatable_prefix_length)
           @delegatee_project = args[:delegatee_project] if args.key?(:delegatee_project)
           @description = args[:description] if args.key?(:description)
           @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
           @is_address = args[:is_address] if args.key?(:is_address)
+          @mode = args[:mode] if args.key?(:mode)
           @name = args[:name] if args.key?(:name)
           @region = args[:region] if args.key?(:region)
           @status = args[:status] if args.key?(:status)
@@ -43890,17 +44120,17 @@ module Google
         end
       end
       
-      # Encapsulates partial completion metadata for SetCommonInstanceMetadata. Will
-      # be propagated on Operation.metadata.
+      # 
       class SetCommonInstanceMetadataOperationMetadata
         include Google::Apis::Core::Hashable
       
-        # 
+        # [Output Only] The client operation id.
         # Corresponds to the JSON property `clientOperationId`
         # @return [String]
         attr_accessor :client_operation_id
       
-        # 
+        # [Output Only] Status information per location (location name is key). Example
+        # key: zones/us-central1-a
         # Corresponds to the JSON property `perLocationOperations`
         # @return [Hash<String,Google::Apis::ComputeAlpha::SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo>]
         attr_accessor :per_location_operations
@@ -43930,7 +44160,8 @@ module Google
         # @return [Google::Apis::ComputeAlpha::Status]
         attr_accessor :error
       
-        # 
+        # [Output Only] Status of the action, which can be one of the following: `
+        # PROPAGATING`, `PROPAGATED`, `ABANDONED`, `FAILED`, or `DONE`.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
