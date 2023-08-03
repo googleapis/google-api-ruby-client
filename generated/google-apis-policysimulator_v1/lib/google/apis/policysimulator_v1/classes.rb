@@ -22,6 +22,329 @@ module Google
   module Apis
     module PolicysimulatorV1
       
+      # Similar to PolicySpec but with an extra 'launch' field for launch reference.
+      # The PolicySpec here is specific for dry-run/darklaunch.
+      class GoogleCloudOrgpolicyV2AlternatePolicySpec
+        include Google::Apis::Core::Hashable
+      
+        # Reference to the launch that will be used while audit logging and to control
+        # the launch. Should be set only in the alternate policy.
+        # Corresponds to the JSON property `launch`
+        # @return [String]
+        attr_accessor :launch
+      
+        # Defines a Google Cloud policy specification which is used to specify
+        # constraints for configurations of Google Cloud resources.
+        # Corresponds to the JSON property `spec`
+        # @return [Google::Apis::PolicysimulatorV1::GoogleCloudOrgpolicyV2PolicySpec]
+        attr_accessor :spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @launch = args[:launch] if args.key?(:launch)
+          @spec = args[:spec] if args.key?(:spec)
+        end
+      end
+      
+      # A custom constraint defined by customers which can *only* be applied to the
+      # given resource types and organization. By creating a custom constraint,
+      # customers can apply policies of this custom constraint. *Creating a custom
+      # constraint itself does NOT apply any policy enforcement*.
+      class GoogleCloudOrgpolicyV2CustomConstraint
+        include Google::Apis::Core::Hashable
+      
+        # Allow or deny type.
+        # Corresponds to the JSON property `actionType`
+        # @return [String]
+        attr_accessor :action_type
+      
+        # Org policy condition/expression. For example: `resource.instanceName.matches("[
+        # production|test]_.*_(\d)+")'` or, `resource.management.auto_upgrade == true`
+        # The max length of the condition is 1000 characters.
+        # Corresponds to the JSON property `condition`
+        # @return [String]
+        attr_accessor :condition
+      
+        # Detailed information about this custom policy constraint. The max length of
+        # the description is 2000 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # One line display name for the UI. The max length of the display_name is 200
+        # characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # All the operations being applied for this constraint.
+        # Corresponds to the JSON property `methodTypes`
+        # @return [Array<String>]
+        attr_accessor :method_types
+      
+        # Immutable. Name of the constraint. This is unique within the organization.
+        # Format of the name should be * `organizations/`organization_id`/
+        # customConstraints/`custom_constraint_id`` Example: `organizations/123/
+        # customConstraints/custom.createOnlyE2TypeVms` The max length is 70 characters
+        # and the minimum length is 1. Note that the prefix `organizations/`
+        # organization_id`/customConstraints/` is not counted.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Immutable. The resource instance type on which this policy applies. Format
+        # will be of the form : `/` Example: * `compute.googleapis.com/Instance`.
+        # Corresponds to the JSON property `resourceTypes`
+        # @return [Array<String>]
+        attr_accessor :resource_types
+      
+        # Output only. The last time this custom constraint was updated. This represents
+        # the last time that the `CreateCustomConstraint` or `UpdateCustomConstraint`
+        # RPC was called
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action_type = args[:action_type] if args.key?(:action_type)
+          @condition = args[:condition] if args.key?(:condition)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @method_types = args[:method_types] if args.key?(:method_types)
+          @name = args[:name] if args.key?(:name)
+          @resource_types = args[:resource_types] if args.key?(:resource_types)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Defines an organization policy which is used to specify constraints for
+      # configurations of Google Cloud resources.
+      class GoogleCloudOrgpolicyV2Policy
+        include Google::Apis::Core::Hashable
+      
+        # Similar to PolicySpec but with an extra 'launch' field for launch reference.
+        # The PolicySpec here is specific for dry-run/darklaunch.
+        # Corresponds to the JSON property `alternate`
+        # @return [Google::Apis::PolicysimulatorV1::GoogleCloudOrgpolicyV2AlternatePolicySpec]
+        attr_accessor :alternate
+      
+        # Defines a Google Cloud policy specification which is used to specify
+        # constraints for configurations of Google Cloud resources.
+        # Corresponds to the JSON property `dryRunSpec`
+        # @return [Google::Apis::PolicysimulatorV1::GoogleCloudOrgpolicyV2PolicySpec]
+        attr_accessor :dry_run_spec
+      
+        # Immutable. The resource name of the policy. Must be one of the following forms,
+        # where constraint_name is the name of the constraint which this policy
+        # configures: * `projects/`project_number`/policies/`constraint_name`` * `
+        # folders/`folder_id`/policies/`constraint_name`` * `organizations/`
+        # organization_id`/policies/`constraint_name`` For example, "projects/123/
+        # policies/compute.disableSerialPortAccess". Note: `projects/`project_id`/
+        # policies/`constraint_name`` is also an acceptable name for API requests, but
+        # responses will return the name using the equivalent project number.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Defines a Google Cloud policy specification which is used to specify
+        # constraints for configurations of Google Cloud resources.
+        # Corresponds to the JSON property `spec`
+        # @return [Google::Apis::PolicysimulatorV1::GoogleCloudOrgpolicyV2PolicySpec]
+        attr_accessor :spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alternate = args[:alternate] if args.key?(:alternate)
+          @dry_run_spec = args[:dry_run_spec] if args.key?(:dry_run_spec)
+          @name = args[:name] if args.key?(:name)
+          @spec = args[:spec] if args.key?(:spec)
+        end
+      end
+      
+      # Defines a Google Cloud policy specification which is used to specify
+      # constraints for configurations of Google Cloud resources.
+      class GoogleCloudOrgpolicyV2PolicySpec
+        include Google::Apis::Core::Hashable
+      
+        # An opaque tag indicating the current version of the policy, used for
+        # concurrency control. This field is ignored if used in a `CreatePolicy` request.
+        # When the policy` is returned from either a `GetPolicy` or a `ListPolicies`
+        # request, this `etag` indicates the version of the current policy to use when
+        # executing a read-modify-write loop. When the policy is returned from a `
+        # GetEffectivePolicy` request, the `etag` will be unset.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Determines the inheritance behavior for this policy. If `inherit_from_parent`
+        # is true, policy rules set higher up in the hierarchy (up to the closest root)
+        # are inherited and present in the effective policy. If it is false, then no
+        # rules are inherited, and this policy becomes the new root for evaluation. This
+        # field can be set only for policies which configure list constraints.
+        # Corresponds to the JSON property `inheritFromParent`
+        # @return [Boolean]
+        attr_accessor :inherit_from_parent
+        alias_method :inherit_from_parent?, :inherit_from_parent
+      
+        # Ignores policies set above this resource and restores the `constraint_default`
+        # enforcement behavior of the specific constraint at this resource. This field
+        # can be set in policies for either list or boolean constraints. If set, `rules`
+        # must be empty and `inherit_from_parent` must be set to false.
+        # Corresponds to the JSON property `reset`
+        # @return [Boolean]
+        attr_accessor :reset
+        alias_method :reset?, :reset
+      
+        # In policies for boolean constraints, the following requirements apply: - There
+        # must be one and only one policy rule where condition is unset. - Boolean
+        # policy rules with conditions must set `enforced` to the opposite of the policy
+        # rule without a condition. - During policy evaluation, policy rules with
+        # conditions that are true for a target resource take precedence.
+        # Corresponds to the JSON property `rules`
+        # @return [Array<Google::Apis::PolicysimulatorV1::GoogleCloudOrgpolicyV2PolicySpecPolicyRule>]
+        attr_accessor :rules
+      
+        # Output only. The time stamp this was previously updated. This represents the
+        # last time a call to `CreatePolicy` or `UpdatePolicy` was made for that policy.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @inherit_from_parent = args[:inherit_from_parent] if args.key?(:inherit_from_parent)
+          @reset = args[:reset] if args.key?(:reset)
+          @rules = args[:rules] if args.key?(:rules)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # A rule used to express this policy.
+      class GoogleCloudOrgpolicyV2PolicySpecPolicyRule
+        include Google::Apis::Core::Hashable
+      
+        # Setting this to true means that all values are allowed. This field can be set
+        # only in policies for list constraints.
+        # Corresponds to the JSON property `allowAll`
+        # @return [Boolean]
+        attr_accessor :allow_all
+        alias_method :allow_all?, :allow_all
+      
+        # Represents a textual expression in the Common Expression Language (CEL) syntax.
+        # CEL is a C-like expression language. The syntax and semantics of CEL are
+        # documented at https://github.com/google/cel-spec. Example (Comparison): title:
+        # "Summary size limit" description: "Determines if a summary is less than 100
+        # chars" expression: "document.summary.size() < 100" Example (Equality): title: "
+        # Requestor is owner" description: "Determines if requestor is the document
+        # owner" expression: "document.owner == request.auth.claims.email" Example (
+        # Logic): title: "Public documents" description: "Determine whether the document
+        # should be publicly visible" expression: "document.type != 'private' &&
+        # document.type != 'internal'" Example (Data Manipulation): title: "Notification
+        # string" description: "Create a notification string with a timestamp."
+        # expression: "'New message received at ' + string(document.create_time)" The
+        # exact variables and functions that may be referenced within an expression are
+        # determined by the service that evaluates it. See the service documentation for
+        # additional information.
+        # Corresponds to the JSON property `condition`
+        # @return [Google::Apis::PolicysimulatorV1::GoogleTypeExpr]
+        attr_accessor :condition
+      
+        # Setting this to true means that all values are denied. This field can be set
+        # only in policies for list constraints.
+        # Corresponds to the JSON property `denyAll`
+        # @return [Boolean]
+        attr_accessor :deny_all
+        alias_method :deny_all?, :deny_all
+      
+        # If `true`, then the policy is enforced. If `false`, then any configuration is
+        # acceptable. This field can be set only in policies for boolean constraints.
+        # Corresponds to the JSON property `enforce`
+        # @return [Boolean]
+        attr_accessor :enforce
+        alias_method :enforce?, :enforce
+      
+        # A message that holds specific allowed and denied values. This message can
+        # define specific values and subtrees of the Resource Manager resource hierarchy
+        # (`Organizations`, `Folders`, `Projects`) that are allowed or denied. This is
+        # achieved by using the `under:` and optional `is:` prefixes. The `under:`
+        # prefix is used to denote resource subtree values. The `is:` prefix is used to
+        # denote specific values, and is required only if the value contains a ":".
+        # Values prefixed with "is:" are treated the same as values with no prefix.
+        # Ancestry subtrees must be in one of the following formats: - "projects/", e.g.
+        # "projects/tokyo-rain-123" - "folders/", e.g. "folders/1234" - "organizations/",
+        # e.g. "organizations/1234" The `supports_under` field of the associated `
+        # Constraint` defines whether ancestry prefixes can be used.
+        # Corresponds to the JSON property `values`
+        # @return [Google::Apis::PolicysimulatorV1::GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_all = args[:allow_all] if args.key?(:allow_all)
+          @condition = args[:condition] if args.key?(:condition)
+          @deny_all = args[:deny_all] if args.key?(:deny_all)
+          @enforce = args[:enforce] if args.key?(:enforce)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # A message that holds specific allowed and denied values. This message can
+      # define specific values and subtrees of the Resource Manager resource hierarchy
+      # (`Organizations`, `Folders`, `Projects`) that are allowed or denied. This is
+      # achieved by using the `under:` and optional `is:` prefixes. The `under:`
+      # prefix is used to denote resource subtree values. The `is:` prefix is used to
+      # denote specific values, and is required only if the value contains a ":".
+      # Values prefixed with "is:" are treated the same as values with no prefix.
+      # Ancestry subtrees must be in one of the following formats: - "projects/", e.g.
+      # "projects/tokyo-rain-123" - "folders/", e.g. "folders/1234" - "organizations/",
+      # e.g. "organizations/1234" The `supports_under` field of the associated `
+      # Constraint` defines whether ancestry prefixes can be used.
+      class GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues
+        include Google::Apis::Core::Hashable
+      
+        # List of values allowed at this resource.
+        # Corresponds to the JSON property `allowedValues`
+        # @return [Array<String>]
+        attr_accessor :allowed_values
+      
+        # List of values denied at this resource.
+        # Corresponds to the JSON property `deniedValues`
+        # @return [Array<String>]
+        attr_accessor :denied_values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowed_values = args[:allowed_values] if args.key?(:allowed_values)
+          @denied_values = args[:denied_values] if args.key?(:denied_values)
+        end
+      end
+      
       # A summary and comparison of the principal's access under the current (baseline)
       # policies and the proposed (simulated) policies for a single access tuple.
       class GoogleCloudPolicysimulatorV1AccessStateDiff
@@ -609,6 +932,484 @@ module Google
           @newest_date = args[:newest_date] if args.key?(:newest_date)
           @oldest_date = args[:oldest_date] if args.key?(:oldest_date)
           @unchanged_count = args[:unchanged_count] if args.key?(:unchanged_count)
+        end
+      end
+      
+      # GenerateOrgPolicyViolationsPreviewOperationMetadata is metadata about an
+      # OrgPolicyViolationsPreview generations operation.
+      class GoogleCloudPolicysimulatorV1alphaGenerateOrgPolicyViolationsPreviewOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Time when the request was received.
+        # Corresponds to the JSON property `requestTime`
+        # @return [String]
+        attr_accessor :request_time
+      
+        # Total number of resources that need scanning. Should equal resource_scanned +
+        # resources_pending
+        # Corresponds to the JSON property `resourcesFound`
+        # @return [Fixnum]
+        attr_accessor :resources_found
+      
+        # Number of resources still to scan.
+        # Corresponds to the JSON property `resourcesPending`
+        # @return [Fixnum]
+        attr_accessor :resources_pending
+      
+        # Number of resources already scanned.
+        # Corresponds to the JSON property `resourcesScanned`
+        # @return [Fixnum]
+        attr_accessor :resources_scanned
+      
+        # Time when the request started processing, i.e. when the state was set to
+        # RUNNING.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # The current state of the operation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @request_time = args[:request_time] if args.key?(:request_time)
+          @resources_found = args[:resources_found] if args.key?(:resources_found)
+          @resources_pending = args[:resources_pending] if args.key?(:resources_pending)
+          @resources_scanned = args[:resources_scanned] if args.key?(:resources_scanned)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # The proposed changes to OrgPolicy.
+      class GoogleCloudPolicysimulatorV1alphaOrgPolicyOverlay
+        include Google::Apis::Core::Hashable
+      
+        # The OrgPolicy CustomConstraint changes to preview violations for. Any existing
+        # CustomConstraints with the same name will be overridden in the simulation.
+        # That is, violations will be determined as if all custom constraints in the
+        # overlay were instantiated.
+        # Corresponds to the JSON property `customConstraints`
+        # @return [Array<Google::Apis::PolicysimulatorV1::GoogleCloudPolicysimulatorV1alphaOrgPolicyOverlayCustomConstraintOverlay>]
+        attr_accessor :custom_constraints
+      
+        # The OrgPolicy changes to preview violations for. Any existing OrgPolicies with
+        # the same name will be overridden in the simulation. That is, violations will
+        # be determined as if all policies in the overlay were created or updated.
+        # Corresponds to the JSON property `policies`
+        # @return [Array<Google::Apis::PolicysimulatorV1::GoogleCloudPolicysimulatorV1alphaOrgPolicyOverlayPolicyOverlay>]
+        attr_accessor :policies
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_constraints = args[:custom_constraints] if args.key?(:custom_constraints)
+          @policies = args[:policies] if args.key?(:policies)
+        end
+      end
+      
+      # A change to an OrgPolicy custom constraint.
+      class GoogleCloudPolicysimulatorV1alphaOrgPolicyOverlayCustomConstraintOverlay
+        include Google::Apis::Core::Hashable
+      
+        # A custom constraint defined by customers which can *only* be applied to the
+        # given resource types and organization. By creating a custom constraint,
+        # customers can apply policies of this custom constraint. *Creating a custom
+        # constraint itself does NOT apply any policy enforcement*.
+        # Corresponds to the JSON property `customConstraint`
+        # @return [Google::Apis::PolicysimulatorV1::GoogleCloudOrgpolicyV2CustomConstraint]
+        attr_accessor :custom_constraint
+      
+        # Resource the constraint is attached to. Example: "organization/987654"
+        # Corresponds to the JSON property `customConstraintParent`
+        # @return [String]
+        attr_accessor :custom_constraint_parent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_constraint = args[:custom_constraint] if args.key?(:custom_constraint)
+          @custom_constraint_parent = args[:custom_constraint_parent] if args.key?(:custom_constraint_parent)
+        end
+      end
+      
+      # A change to an OrgPolicy.
+      class GoogleCloudPolicysimulatorV1alphaOrgPolicyOverlayPolicyOverlay
+        include Google::Apis::Core::Hashable
+      
+        # Defines an organization policy which is used to specify constraints for
+        # configurations of Google Cloud resources.
+        # Corresponds to the JSON property `policy`
+        # @return [Google::Apis::PolicysimulatorV1::GoogleCloudOrgpolicyV2Policy]
+        attr_accessor :policy
+      
+        # The parent of the policy we are attaching to. Example: "projects/123456"
+        # Corresponds to the JSON property `policyParent`
+        # @return [String]
+        attr_accessor :policy_parent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy = args[:policy] if args.key?(:policy)
+          @policy_parent = args[:policy_parent] if args.key?(:policy_parent)
+        end
+      end
+      
+      # OrgPolicyViolationsPreview is a resource providing a preview of the violations
+      # that will exist if an OrgPolicy change is made. The list of violations are
+      # modeled as child resources and retrieved via a ListOrgPolicyViolations API
+      # call. There are potentially more OrgPolicyViolations than could fit in an
+      # embedded field. Thus, the use of a child resource instead of a field.
+      class GoogleCloudPolicysimulatorV1alphaOrgPolicyViolationsPreview
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The resource name of the `OrgPolicyViolationsPreview`. It has the
+        # following format: `organizations/`organization`/locations/`location`/
+        # orgPolicyViolationsPreviews/`orgPolicyViolationsPreview`` Example: `
+        # organizations/my-example-org/locations/global/orgPolicyViolationsPreviews/
+        # 506a5f7f`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The proposed changes to OrgPolicy.
+        # Corresponds to the JSON property `overlay`
+        # @return [Google::Apis::PolicysimulatorV1::GoogleCloudPolicysimulatorV1alphaOrgPolicyOverlay]
+        attr_accessor :overlay
+      
+        # A summary of the state of all resources scanned for compliance with the
+        # changed OrgPolicy.
+        # Corresponds to the JSON property `resourceCounts`
+        # @return [Google::Apis::PolicysimulatorV1::GoogleCloudPolicysimulatorV1alphaOrgPolicyViolationsPreviewResourceCounts]
+        attr_accessor :resource_counts
+      
+        # Output only. The state of the `OrgPolicyViolationsPreview`.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The number of OrgPolicyViolations in this `
+        # OrgPolicyViolationsPreview`. This count may differ from `resource_summary.
+        # noncompliant_count` because each OrgPolicyViolation is specific to a resource *
+        # *and** constraint. If there are multiple constraints being evaluated (i.e.
+        # multiple policies in the overlay), a single resource may violate multiple
+        # constraints.
+        # Corresponds to the JSON property `violationsCount`
+        # @return [Fixnum]
+        attr_accessor :violations_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @overlay = args[:overlay] if args.key?(:overlay)
+          @resource_counts = args[:resource_counts] if args.key?(:resource_counts)
+          @state = args[:state] if args.key?(:state)
+          @violations_count = args[:violations_count] if args.key?(:violations_count)
+        end
+      end
+      
+      # A summary of the state of all resources scanned for compliance with the
+      # changed OrgPolicy.
+      class GoogleCloudPolicysimulatorV1alphaOrgPolicyViolationsPreviewResourceCounts
+        include Google::Apis::Core::Hashable
+      
+        # Number of scanned resources with zero violations.
+        # Corresponds to the JSON property `compliant`
+        # @return [Fixnum]
+        attr_accessor :compliant
+      
+        # Number of resources that returned an error when scanned.
+        # Corresponds to the JSON property `errors`
+        # @return [Fixnum]
+        attr_accessor :errors
+      
+        # Number of scanned resources with at least one violation.
+        # Corresponds to the JSON property `noncompliant`
+        # @return [Fixnum]
+        attr_accessor :noncompliant
+      
+        # Number of resources checked for compliance. Must equal: unenforced +
+        # noncompliant + compliant + error
+        # Corresponds to the JSON property `scanned`
+        # @return [Fixnum]
+        attr_accessor :scanned
+      
+        # Number of resources where the constraint was not enforced, i.e. the Policy set
+        # `enforced: false` for that resource.
+        # Corresponds to the JSON property `unenforced`
+        # @return [Fixnum]
+        attr_accessor :unenforced
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @compliant = args[:compliant] if args.key?(:compliant)
+          @errors = args[:errors] if args.key?(:errors)
+          @noncompliant = args[:noncompliant] if args.key?(:noncompliant)
+          @scanned = args[:scanned] if args.key?(:scanned)
+          @unenforced = args[:unenforced] if args.key?(:unenforced)
+        end
+      end
+      
+      # GenerateOrgPolicyViolationsPreviewOperationMetadata is metadata about an
+      # OrgPolicyViolationsPreview generations operation.
+      class GoogleCloudPolicysimulatorV1betaGenerateOrgPolicyViolationsPreviewOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Time when the request was received.
+        # Corresponds to the JSON property `requestTime`
+        # @return [String]
+        attr_accessor :request_time
+      
+        # Total number of resources that need scanning. Should equal resource_scanned +
+        # resources_pending
+        # Corresponds to the JSON property `resourcesFound`
+        # @return [Fixnum]
+        attr_accessor :resources_found
+      
+        # Number of resources still to scan.
+        # Corresponds to the JSON property `resourcesPending`
+        # @return [Fixnum]
+        attr_accessor :resources_pending
+      
+        # Number of resources already scanned.
+        # Corresponds to the JSON property `resourcesScanned`
+        # @return [Fixnum]
+        attr_accessor :resources_scanned
+      
+        # Time when the request started processing, i.e. when the state was set to
+        # RUNNING.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # The current state of the operation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @request_time = args[:request_time] if args.key?(:request_time)
+          @resources_found = args[:resources_found] if args.key?(:resources_found)
+          @resources_pending = args[:resources_pending] if args.key?(:resources_pending)
+          @resources_scanned = args[:resources_scanned] if args.key?(:resources_scanned)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # The proposed changes to OrgPolicy.
+      class GoogleCloudPolicysimulatorV1betaOrgPolicyOverlay
+        include Google::Apis::Core::Hashable
+      
+        # The OrgPolicy CustomConstraint changes to preview violations for. Any existing
+        # CustomConstraints with the same name will be overridden in the simulation.
+        # That is, violations will be determined as if all custom constraints in the
+        # overlay were instantiated.
+        # Corresponds to the JSON property `customConstraints`
+        # @return [Array<Google::Apis::PolicysimulatorV1::GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlay>]
+        attr_accessor :custom_constraints
+      
+        # The OrgPolicy changes to preview violations for. Any existing OrgPolicies with
+        # the same name will be overridden in the simulation. That is, violations will
+        # be determined as if all policies in the overlay were created or updated.
+        # Corresponds to the JSON property `policies`
+        # @return [Array<Google::Apis::PolicysimulatorV1::GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlay>]
+        attr_accessor :policies
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_constraints = args[:custom_constraints] if args.key?(:custom_constraints)
+          @policies = args[:policies] if args.key?(:policies)
+        end
+      end
+      
+      # A change to an OrgPolicy custom constraint.
+      class GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlay
+        include Google::Apis::Core::Hashable
+      
+        # A custom constraint defined by customers which can *only* be applied to the
+        # given resource types and organization. By creating a custom constraint,
+        # customers can apply policies of this custom constraint. *Creating a custom
+        # constraint itself does NOT apply any policy enforcement*.
+        # Corresponds to the JSON property `customConstraint`
+        # @return [Google::Apis::PolicysimulatorV1::GoogleCloudOrgpolicyV2CustomConstraint]
+        attr_accessor :custom_constraint
+      
+        # Resource the constraint is attached to. Example: "organization/987654"
+        # Corresponds to the JSON property `customConstraintParent`
+        # @return [String]
+        attr_accessor :custom_constraint_parent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_constraint = args[:custom_constraint] if args.key?(:custom_constraint)
+          @custom_constraint_parent = args[:custom_constraint_parent] if args.key?(:custom_constraint_parent)
+        end
+      end
+      
+      # A change to an OrgPolicy.
+      class GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlay
+        include Google::Apis::Core::Hashable
+      
+        # Defines an organization policy which is used to specify constraints for
+        # configurations of Google Cloud resources.
+        # Corresponds to the JSON property `policy`
+        # @return [Google::Apis::PolicysimulatorV1::GoogleCloudOrgpolicyV2Policy]
+        attr_accessor :policy
+      
+        # The parent of the policy we are attaching to. Example: "projects/123456"
+        # Corresponds to the JSON property `policyParent`
+        # @return [String]
+        attr_accessor :policy_parent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy = args[:policy] if args.key?(:policy)
+          @policy_parent = args[:policy_parent] if args.key?(:policy_parent)
+        end
+      end
+      
+      # OrgPolicyViolationsPreview is a resource providing a preview of the violations
+      # that will exist if an OrgPolicy change is made. The list of violations are
+      # modeled as child resources and retrieved via a ListOrgPolicyViolations API
+      # call. There are potentially more OrgPolicyViolations than could fit in an
+      # embedded field. Thus, the use of a child resource instead of a field.
+      class GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreview
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The resource name of the `OrgPolicyViolationsPreview`. It has the
+        # following format: `organizations/`organization`/locations/`location`/
+        # orgPolicyViolationsPreviews/`orgPolicyViolationsPreview`` Example: `
+        # organizations/my-example-org/locations/global/orgPolicyViolationsPreviews/
+        # 506a5f7f`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The proposed changes to OrgPolicy.
+        # Corresponds to the JSON property `overlay`
+        # @return [Google::Apis::PolicysimulatorV1::GoogleCloudPolicysimulatorV1betaOrgPolicyOverlay]
+        attr_accessor :overlay
+      
+        # A summary of the state of all resources scanned for compliance with the
+        # changed OrgPolicy.
+        # Corresponds to the JSON property `resourceCounts`
+        # @return [Google::Apis::PolicysimulatorV1::GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewResourceCounts]
+        attr_accessor :resource_counts
+      
+        # Output only. The state of the `OrgPolicyViolationsPreview`.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The number of OrgPolicyViolations in this `
+        # OrgPolicyViolationsPreview`. This count may differ from `resource_summary.
+        # noncompliant_count` because each OrgPolicyViolation is specific to a resource *
+        # *and** constraint. If there are multiple constraints being evaluated (i.e.
+        # multiple policies in the overlay), a single resource may violate multiple
+        # constraints.
+        # Corresponds to the JSON property `violationsCount`
+        # @return [Fixnum]
+        attr_accessor :violations_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @overlay = args[:overlay] if args.key?(:overlay)
+          @resource_counts = args[:resource_counts] if args.key?(:resource_counts)
+          @state = args[:state] if args.key?(:state)
+          @violations_count = args[:violations_count] if args.key?(:violations_count)
+        end
+      end
+      
+      # A summary of the state of all resources scanned for compliance with the
+      # changed OrgPolicy.
+      class GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewResourceCounts
+        include Google::Apis::Core::Hashable
+      
+        # Number of scanned resources with zero violations.
+        # Corresponds to the JSON property `compliant`
+        # @return [Fixnum]
+        attr_accessor :compliant
+      
+        # Number of resources that returned an error when scanned.
+        # Corresponds to the JSON property `errors`
+        # @return [Fixnum]
+        attr_accessor :errors
+      
+        # Number of scanned resources with at least one violation.
+        # Corresponds to the JSON property `noncompliant`
+        # @return [Fixnum]
+        attr_accessor :noncompliant
+      
+        # Number of resources checked for compliance. Must equal: unenforced +
+        # noncompliant + compliant + error
+        # Corresponds to the JSON property `scanned`
+        # @return [Fixnum]
+        attr_accessor :scanned
+      
+        # Number of resources where the constraint was not enforced, i.e. the Policy set
+        # `enforced: false` for that resource.
+        # Corresponds to the JSON property `unenforced`
+        # @return [Fixnum]
+        attr_accessor :unenforced
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @compliant = args[:compliant] if args.key?(:compliant)
+          @errors = args[:errors] if args.key?(:errors)
+          @noncompliant = args[:noncompliant] if args.key?(:noncompliant)
+          @scanned = args[:scanned] if args.key?(:scanned)
+          @unenforced = args[:unenforced] if args.key?(:unenforced)
         end
       end
       
