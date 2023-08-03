@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FindPrivacyPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LastUpdatedDate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -59,6 +65,12 @@ module Google
       end
       
       class ListOperationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListPrivacyPoliciesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -150,6 +162,13 @@ module Google
         end
       end
       
+      class FindPrivacyPolicyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :website_uri, as: 'websiteUri'
+        end
+      end
+      
       class LastUpdatedDate
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -166,6 +185,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::ChecksV1alpha::Operation, decorator: Google::Apis::ChecksV1alpha::Operation::Representation
+      
+        end
+      end
+      
+      class ListPrivacyPoliciesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :privacy_policies, as: 'privacyPolicies', class: Google::Apis::ChecksV1alpha::PrivacyPolicy, decorator: Google::Apis::ChecksV1alpha::PrivacyPolicy::Representation
       
         end
       end
