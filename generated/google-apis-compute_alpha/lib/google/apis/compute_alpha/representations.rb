@@ -514,6 +514,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackendServiceListUsable
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackendServiceLocalityLoadBalancingPolicyConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -539,6 +557,12 @@ module Google
       end
       
       class BackendServiceReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackendServiceUsedBy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2351,6 +2375,12 @@ module Google
       end
       
       class InstanceSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceSettingsMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -8086,6 +8116,8 @@ module Google
           property :subsetting, as: 'subsetting', class: Google::Apis::ComputeAlpha::Subsetting, decorator: Google::Apis::ComputeAlpha::Subsetting::Representation
       
           property :timeout_sec, as: 'timeoutSec'
+          collection :used_bys, as: 'usedBys', class: Google::Apis::ComputeAlpha::BackendServiceUsedBy, decorator: Google::Apis::ComputeAlpha::BackendServiceUsedBy::Representation
+      
           property :vpc_network_scope, as: 'vpcNetworkScope'
         end
       end
@@ -8241,6 +8273,36 @@ module Google
         end
       end
       
+      class BackendServiceListUsable
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::BackendServiceListUsable::Warning, decorator: Google::Apis::ComputeAlpha::BackendServiceListUsable::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::BackendServiceListUsable::Warning::Datum, decorator: Google::Apis::ComputeAlpha::BackendServiceListUsable::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
       class BackendServiceLocalityLoadBalancingPolicyConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -8281,6 +8343,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :backend_service, as: 'backendService'
+        end
+      end
+      
+      class BackendServiceUsedBy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :reference, as: 'reference'
         end
       end
       
@@ -8755,6 +8824,7 @@ module Google
       class Disk
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_mode, as: 'accessMode'
           property :architecture, as: 'architecture'
           property :async_primary_disk, as: 'asyncPrimaryDisk', class: Google::Apis::ComputeAlpha::DiskAsyncReplication, decorator: Google::Apis::ComputeAlpha::DiskAsyncReplication::Representation
       
@@ -9542,6 +9612,7 @@ module Google
           property :description, as: 'description'
           property :fingerprint, :base64 => true, as: 'fingerprint'
           property :id, :numeric_string => true, as: 'id'
+          property :ip_collection, as: 'ipCollection'
           property :ip_version, as: 'ipVersion'
           property :is_mirroring_collector, as: 'isMirroringCollector'
           property :kind, as: 'kind'
@@ -9739,6 +9810,7 @@ module Google
           property :description, as: 'description'
           property :future_reservation_specs, as: 'futureReservationSpecs', class: Google::Apis::ComputeAlpha::FutureReservationStatusLastKnownGoodStateFutureReservationSpecs, decorator: Google::Apis::ComputeAlpha::FutureReservationStatusLastKnownGoodStateFutureReservationSpecs::Representation
       
+          property :lock_time, as: 'lockTime'
           property :name_prefix, as: 'namePrefix'
           property :procurement_status, as: 'procurementStatus'
         end
@@ -11801,7 +11873,17 @@ module Google
           property :email, as: 'email'
           property :fingerprint, :base64 => true, as: 'fingerprint'
           property :kind, as: 'kind'
+          property :metadata, as: 'metadata', class: Google::Apis::ComputeAlpha::InstanceSettingsMetadata, decorator: Google::Apis::ComputeAlpha::InstanceSettingsMetadata::Representation
+      
           property :zone, as: 'zone'
+        end
+      end
+      
+      class InstanceSettingsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          hash :metadatas, as: 'metadatas'
         end
       end
       
@@ -15404,6 +15486,7 @@ module Google
       class PublicDelegatedPrefix
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :allocatable_prefix_length, as: 'allocatablePrefixLength'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :fingerprint, :base64 => true, as: 'fingerprint'
@@ -15411,6 +15494,7 @@ module Google
           property :ip_cidr_range, as: 'ipCidrRange'
           property :is_live_migration, as: 'isLiveMigration'
           property :kind, as: 'kind'
+          property :mode, as: 'mode'
           property :name, as: 'name'
           property :parent_prefix, as: 'parentPrefix'
           collection :public_delegated_sub_prefixs, as: 'publicDelegatedSubPrefixs', class: Google::Apis::ComputeAlpha::PublicDelegatedPrefixPublicDelegatedSubPrefix, decorator: Google::Apis::ComputeAlpha::PublicDelegatedPrefixPublicDelegatedSubPrefix::Representation
@@ -15490,10 +15574,12 @@ module Google
       class PublicDelegatedPrefixPublicDelegatedSubPrefix
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :allocatable_prefix_length, as: 'allocatablePrefixLength'
           property :delegatee_project, as: 'delegateeProject'
           property :description, as: 'description'
           property :ip_cidr_range, as: 'ipCidrRange'
           property :is_address, as: 'isAddress'
+          property :mode, as: 'mode'
           property :name, as: 'name'
           property :region, as: 'region'
           property :status, as: 'status'
