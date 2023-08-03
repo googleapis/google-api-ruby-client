@@ -1152,16 +1152,19 @@ module Google
       class JobNotification
         include Google::Apis::Core::Hashable
       
-        # Message details. Describe the attribute that a message should have. Without
-        # specified message attributes, no message will be sent by default.
+        # Message details. Describe the conditions under which messages will be sent. If
+        # no attribute is defined, no message will be sent by default. One message
+        # should specify either the job or the task level attributes, but not both. For
+        # example, job level: JOB_STATE_CHANGED and/or a specified new_job_state; task
+        # level: TASK_STATE_CHANGED and/or a specified new_task_state.
         # Corresponds to the JSON property `message`
         # @return [Google::Apis::BatchV1::Message]
         attr_accessor :message
       
         # The Pub/Sub topic where notifications like the job state changes will be
-        # published. This topic exist in the same project as the job and billings will
-        # be charged to this project. If not specified, no Pub/Sub messages will be sent.
-        # Topic format: `projects/`project`/topics/`topic``.
+        # published. The topic must exist in the same project as the job and billings
+        # will be charged to this project. If not specified, no Pub/Sub messages will be
+        # sent. Topic format: `projects/`project`/topics/`topic``.
         # Corresponds to the JSON property `pubsubTopic`
         # @return [String]
         attr_accessor :pubsub_topic
@@ -1482,8 +1485,11 @@ module Google
         end
       end
       
-      # Message details. Describe the attribute that a message should have. Without
-      # specified message attributes, no message will be sent by default.
+      # Message details. Describe the conditions under which messages will be sent. If
+      # no attribute is defined, no message will be sent by default. One message
+      # should specify either the job or the task level attributes, but not both. For
+      # example, job level: JOB_STATE_CHANGED and/or a specified new_job_state; task
+      # level: TASK_STATE_CHANGED and/or a specified new_task_state.
       class Message
         include Google::Apis::Core::Hashable
       
