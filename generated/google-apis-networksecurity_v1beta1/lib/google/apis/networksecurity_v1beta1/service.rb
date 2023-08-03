@@ -769,6 +769,382 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new SecurityProfileGroup in a given organization and location.
+        # @param [String] parent
+        #   Required. The parent resource of the SecurityProfileGroup. Must be in the
+        #   format `projects|organizations/*/locations/`location``.
+        # @param [Google::Apis::NetworksecurityV1beta1::SecurityProfileGroup] security_profile_group_object
+        # @param [String] security_profile_group_id
+        #   Required. Short name of the SecurityProfileGroup resource to be created. This
+        #   value should be 1-63 characters long, containing only letters, numbers,
+        #   hyphens, and underscores, and should not start with a number. E.g. "
+        #   security_profile_group1".
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworksecurityV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworksecurityV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_location_security_profile_group(parent, security_profile_group_object = nil, security_profile_group_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/securityProfileGroups', options)
+          command.request_representation = Google::Apis::NetworksecurityV1beta1::SecurityProfileGroup::Representation
+          command.request_object = security_profile_group_object
+          command.response_representation = Google::Apis::NetworksecurityV1beta1::Operation::Representation
+          command.response_class = Google::Apis::NetworksecurityV1beta1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['securityProfileGroupId'] = security_profile_group_id unless security_profile_group_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a single SecurityProfileGroup.
+        # @param [String] name
+        #   Required. A name of the SecurityProfileGroup to delete. Must be in the format `
+        #   projects|organizations/*/locations/`location`/securityProfileGroups/`
+        #   security_profile_group``.
+        # @param [String] etag
+        #   Optional. If client provided etag is out of date, delete will return
+        #   FAILED_PRECONDITION error.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworksecurityV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworksecurityV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_organization_location_security_profile_group(name, etag: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::NetworksecurityV1beta1::Operation::Representation
+          command.response_class = Google::Apis::NetworksecurityV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['etag'] = etag unless etag.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single SecurityProfileGroup.
+        # @param [String] name
+        #   Required. A name of the SecurityProfileGroup to get. Must be in the format `
+        #   projects|organizations/*/locations/`location`/securityProfileGroups/`
+        #   security_profile_group``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworksecurityV1beta1::SecurityProfileGroup] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworksecurityV1beta1::SecurityProfileGroup]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_location_security_profile_group(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::NetworksecurityV1beta1::SecurityProfileGroup::Representation
+          command.response_class = Google::Apis::NetworksecurityV1beta1::SecurityProfileGroup
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists SecurityProfileGroups in a given organization and location.
+        # @param [String] parent
+        #   Required. The project or organization and location from which the
+        #   SecurityProfileGroups should be listed, specified in the format `projects|
+        #   organizations/*/locations/`location``.
+        # @param [Fixnum] page_size
+        #   Maximum number of SecurityProfileGroups to return per call.
+        # @param [String] page_token
+        #   The value returned by the last `ListSecurityProfileGroupsResponse` Indicates
+        #   that this is a continuation of a prior `ListSecurityProfileGroups` call, and
+        #   that the system should return the next page of data.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworksecurityV1beta1::ListSecurityProfileGroupsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworksecurityV1beta1::ListSecurityProfileGroupsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_location_security_profile_groups(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/securityProfileGroups', options)
+          command.response_representation = Google::Apis::NetworksecurityV1beta1::ListSecurityProfileGroupsResponse::Representation
+          command.response_class = Google::Apis::NetworksecurityV1beta1::ListSecurityProfileGroupsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the parameters of a single SecurityProfileGroup.
+        # @param [String] name
+        #   Immutable. Name of the SecurityProfileGroup resource. It matches pattern `
+        #   projects|organizations/*/locations/`location`/securityProfileGroups/`
+        #   security_profile_group``.
+        # @param [Google::Apis::NetworksecurityV1beta1::SecurityProfileGroup] security_profile_group_object
+        # @param [String] update_mask
+        #   Required. Field mask is used to specify the fields to be overwritten in the
+        #   SecurityProfileGroup resource by the update. The fields specified in the
+        #   update_mask are relative to the resource, not the full request. A field will
+        #   be overwritten if it is in the mask.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworksecurityV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworksecurityV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_organization_location_security_profile_group(name, security_profile_group_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command.request_representation = Google::Apis::NetworksecurityV1beta1::SecurityProfileGroup::Representation
+          command.request_object = security_profile_group_object
+          command.response_representation = Google::Apis::NetworksecurityV1beta1::Operation::Representation
+          command.response_class = Google::Apis::NetworksecurityV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new SecurityProfile in a given organization and location.
+        # @param [String] parent
+        #   Required. The parent resource of the SecurityProfile. Must be in the format `
+        #   projects|organizations/*/locations/`location``.
+        # @param [Google::Apis::NetworksecurityV1beta1::SecurityProfile] security_profile_object
+        # @param [String] security_profile_id
+        #   Required. Short name of the SecurityProfile resource to be created. This value
+        #   should be 1-63 characters long, containing only letters, numbers, hyphens, and
+        #   underscores, and should not start with a number. E.g. "security_profile1".
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworksecurityV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworksecurityV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_location_security_profile(parent, security_profile_object = nil, security_profile_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/securityProfiles', options)
+          command.request_representation = Google::Apis::NetworksecurityV1beta1::SecurityProfile::Representation
+          command.request_object = security_profile_object
+          command.response_representation = Google::Apis::NetworksecurityV1beta1::Operation::Representation
+          command.response_class = Google::Apis::NetworksecurityV1beta1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['securityProfileId'] = security_profile_id unless security_profile_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a single SecurityProfile.
+        # @param [String] name
+        #   Required. A name of the SecurityProfile to delete. Must be in the format `
+        #   projects|organizations/*/locations/`location`/securityProfiles/`
+        #   security_profile_id``.
+        # @param [String] etag
+        #   Optional. If client provided etag is out of date, delete will return
+        #   FAILED_PRECONDITION error.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworksecurityV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworksecurityV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_organization_location_security_profile(name, etag: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::NetworksecurityV1beta1::Operation::Representation
+          command.response_class = Google::Apis::NetworksecurityV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['etag'] = etag unless etag.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single SecurityProfile.
+        # @param [String] name
+        #   Required. A name of the SecurityProfile to get. Must be in the format `
+        #   projects|organizations/*/locations/`location`/securityProfiles/`
+        #   security_profile_id``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworksecurityV1beta1::SecurityProfile] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworksecurityV1beta1::SecurityProfile]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_location_security_profile(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::NetworksecurityV1beta1::SecurityProfile::Representation
+          command.response_class = Google::Apis::NetworksecurityV1beta1::SecurityProfile
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists SecurityProfiles in a given organization and location.
+        # @param [String] parent
+        #   Required. The project or organization and location from which the
+        #   SecurityProfiles should be listed, specified in the format `projects|
+        #   organizations/*/locations/`location``.
+        # @param [Fixnum] page_size
+        #   Maximum number of SecurityProfiles to return per call.
+        # @param [String] page_token
+        #   The value returned by the last `ListSecurityProfilesResponse` Indicates that
+        #   this is a continuation of a prior `ListSecurityProfiles` call, and that the
+        #   system should return the next page of data.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworksecurityV1beta1::ListSecurityProfilesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworksecurityV1beta1::ListSecurityProfilesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_location_security_profiles(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/securityProfiles', options)
+          command.response_representation = Google::Apis::NetworksecurityV1beta1::ListSecurityProfilesResponse::Representation
+          command.response_class = Google::Apis::NetworksecurityV1beta1::ListSecurityProfilesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the parameters of a single SecurityProfile.
+        # @param [String] name
+        #   Immutable. Name of the SecurityProfile resource. It matches pattern `projects|
+        #   organizations/*/locations/`location`/securityProfiles/`security_profile``.
+        # @param [Google::Apis::NetworksecurityV1beta1::SecurityProfile] security_profile_object
+        # @param [String] update_mask
+        #   Required. Field mask is used to specify the fields to be overwritten in the
+        #   SecurityProfile resource by the update. The fields specified in the
+        #   update_mask are relative to the resource, not the full request. A field will
+        #   be overwritten if it is in the mask.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworksecurityV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworksecurityV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_organization_location_security_profile(name, security_profile_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command.request_representation = Google::Apis::NetworksecurityV1beta1::SecurityProfile::Representation
+          command.request_object = security_profile_object
+          command.response_representation = Google::Apis::NetworksecurityV1beta1::Operation::Representation
+          command.response_class = Google::Apis::NetworksecurityV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets information about a location.
         # @param [String] name
         #   Resource name for the location.

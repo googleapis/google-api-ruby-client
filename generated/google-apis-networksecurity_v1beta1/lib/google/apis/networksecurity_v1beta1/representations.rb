@@ -232,6 +232,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListSecurityProfileGroupsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListSecurityProfilesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListServerTlsPoliciesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -286,7 +298,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SecurityProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityProfileGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ServerTlsPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SeverityOverride
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -299,6 +329,18 @@ module Google
       end
       
       class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ThreatOverride
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ThreatPreventionProfile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -667,6 +709,24 @@ module Google
         end
       end
       
+      class ListSecurityProfileGroupsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :security_profile_groups, as: 'securityProfileGroups', class: Google::Apis::NetworksecurityV1beta1::SecurityProfileGroup, decorator: Google::Apis::NetworksecurityV1beta1::SecurityProfileGroup::Representation
+      
+        end
+      end
+      
+      class ListSecurityProfilesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :security_profiles, as: 'securityProfiles', class: Google::Apis::NetworksecurityV1beta1::SecurityProfile, decorator: Google::Apis::NetworksecurityV1beta1::SecurityProfile::Representation
+      
+        end
+      end
+      
       class ListServerTlsPoliciesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -760,6 +820,34 @@ module Google
         end
       end
       
+      class SecurityProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :etag, as: 'etag'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :threat_prevention_profile, as: 'threatPreventionProfile', class: Google::Apis::NetworksecurityV1beta1::ThreatPreventionProfile, decorator: Google::Apis::NetworksecurityV1beta1::ThreatPreventionProfile::Representation
+      
+          property :type, as: 'type'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class SecurityProfileGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :etag, as: 'etag'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :threat_prevention_profile, as: 'threatPreventionProfile'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class ServerTlsPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -773,6 +861,14 @@ module Google
           property :server_certificate, as: 'serverCertificate', class: Google::Apis::NetworksecurityV1beta1::GoogleCloudNetworksecurityV1beta1CertificateProvider, decorator: Google::Apis::NetworksecurityV1beta1::GoogleCloudNetworksecurityV1beta1CertificateProvider::Representation
       
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class SeverityOverride
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          property :severity, as: 'severity'
         end
       end
       
@@ -790,6 +886,25 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class ThreatOverride
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          property :threat_id, as: 'threatId'
+          property :type, as: 'type'
+        end
+      end
+      
+      class ThreatPreventionProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :severity_overrides, as: 'severityOverrides', class: Google::Apis::NetworksecurityV1beta1::SeverityOverride, decorator: Google::Apis::NetworksecurityV1beta1::SeverityOverride::Representation
+      
+          collection :threat_overrides, as: 'threatOverrides', class: Google::Apis::NetworksecurityV1beta1::ThreatOverride, decorator: Google::Apis::NetworksecurityV1beta1::ThreatOverride::Representation
+      
         end
       end
       

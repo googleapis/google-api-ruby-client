@@ -1422,6 +1422,60 @@ module Google
         end
       end
       
+      # Response returned by the ListSecurityProfileGroups method.
+      class ListSecurityProfileGroupsResponse
+        include Google::Apis::Core::Hashable
+      
+        # If there might be more results than those appearing in this response, then `
+        # next_page_token` is included. To get the next set of results, call this method
+        # again using the value of `next_page_token` as `page_token`.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of SecurityProfileGroups resources.
+        # Corresponds to the JSON property `securityProfileGroups`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::SecurityProfileGroup>]
+        attr_accessor :security_profile_groups
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @security_profile_groups = args[:security_profile_groups] if args.key?(:security_profile_groups)
+        end
+      end
+      
+      # Response returned by the ListSecurityProfiles method.
+      class ListSecurityProfilesResponse
+        include Google::Apis::Core::Hashable
+      
+        # If there might be more results than those appearing in this response, then `
+        # next_page_token` is included. To get the next set of results, call this method
+        # again using the value of `next_page_token` as `page_token`.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of SecurityProfile resources.
+        # Corresponds to the JSON property `securityProfiles`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::SecurityProfile>]
+        attr_accessor :security_profiles
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @security_profiles = args[:security_profiles] if args.key?(:security_profiles)
+        end
+      end
+      
       # Response returned by the ListServerTlsPolicies method.
       class ListServerTlsPoliciesResponse
         include Google::Apis::Core::Hashable
@@ -1788,6 +1842,134 @@ module Google
         end
       end
       
+      # SecurityProfile is a resource that defines the behavior for one of many
+      # ProfileTypes. Next ID: 9
+      class SecurityProfile
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Resource creation timestamp.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. An optional description of the profile. Max length 512 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. This checksum is computed by the server based on the value of
+        # other fields, and may be sent on update and delete requests to ensure the
+        # client has an up-to-date value before proceeding.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Optional. Labels as key value pairs.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Immutable. Name of the SecurityProfile resource. It matches pattern `projects|
+        # organizations/*/locations/`location`/securityProfiles/`security_profile``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # ThreatPreventionProfile defines an action for specific threat signatures or
+        # severity levels.
+        # Corresponds to the JSON property `threatPreventionProfile`
+        # @return [Google::Apis::NetworksecurityV1beta1::ThreatPreventionProfile]
+        attr_accessor :threat_prevention_profile
+      
+        # Immutable. The single ProfileType that the SecurityProfile resource configures.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Output only. Last resource update timestamp.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @etag = args[:etag] if args.key?(:etag)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @threat_prevention_profile = args[:threat_prevention_profile] if args.key?(:threat_prevention_profile)
+          @type = args[:type] if args.key?(:type)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # SecurityProfileGroup is a resource that defines the behavior for various
+      # ProfileTypes. Next ID: 8
+      class SecurityProfileGroup
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Resource creation timestamp.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. An optional description of the profile group. Max length 2048
+        # characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. This checksum is computed by the server based on the value of
+        # other fields, and may be sent on update and delete requests to ensure the
+        # client has an up-to-date value before proceeding.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Optional. Labels as key value pairs.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Immutable. Name of the SecurityProfileGroup resource. It matches pattern `
+        # projects|organizations/*/locations/`location`/securityProfileGroups/`
+        # security_profile_group``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Reference to a SecurityProfile with the threat prevention
+        # configuration for the SecurityProfileGroup.
+        # Corresponds to the JSON property `threatPreventionProfile`
+        # @return [String]
+        attr_accessor :threat_prevention_profile
+      
+        # Output only. Last resource update timestamp.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @etag = args[:etag] if args.key?(:etag)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @threat_prevention_profile = args[:threat_prevention_profile] if args.key?(:threat_prevention_profile)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # ServerTlsPolicy is a resource that specifies how a server should authenticate
       # incoming requests. This resource itself does not affect configuration unless
       # it is attached to a target HTTPS proxy or endpoint config selector resource.
@@ -1867,6 +2049,31 @@ module Google
         end
       end
       
+      # Defines what action to take for a specific severity match.
+      class SeverityOverride
+        include Google::Apis::Core::Hashable
+      
+        # Required. Threat action override.
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # Required. Severity level to match.
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @severity = args[:severity] if args.key?(:severity)
+        end
+      end
+      
       # Specification of traffic source attributes.
       class Source
         include Google::Apis::Core::Hashable
@@ -1937,6 +2144,66 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Defines what action to take for a specific threat_id match.
+      class ThreatOverride
+        include Google::Apis::Core::Hashable
+      
+        # Required. Threat action override. For some threat types, only a subset of
+        # actions applies.
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # Required. Vendor-specific ID of a threat to override.
+        # Corresponds to the JSON property `threatId`
+        # @return [String]
+        attr_accessor :threat_id
+      
+        # Output only. Type of the threat (read only).
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @threat_id = args[:threat_id] if args.key?(:threat_id)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # ThreatPreventionProfile defines an action for specific threat signatures or
+      # severity levels.
+      class ThreatPreventionProfile
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Configuration for overriding threats actions by severity match.
+        # Corresponds to the JSON property `severityOverrides`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::SeverityOverride>]
+        attr_accessor :severity_overrides
+      
+        # Optional. Configuration for overriding threats actions by threat_id match. If
+        # a threat is matched both by configuration provided in severity_overrides and
+        # threat_overrides, the threat_overrides action is applied.
+        # Corresponds to the JSON property `threatOverrides`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::ThreatOverride>]
+        attr_accessor :threat_overrides
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @severity_overrides = args[:severity_overrides] if args.key?(:severity_overrides)
+          @threat_overrides = args[:threat_overrides] if args.key?(:threat_overrides)
         end
       end
       
