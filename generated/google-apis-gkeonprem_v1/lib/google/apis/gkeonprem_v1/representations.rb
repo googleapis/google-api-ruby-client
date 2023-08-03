@@ -190,6 +190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BareMetalClusterUpgradePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BareMetalControlPlaneConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1188,6 +1194,8 @@ module Google
       
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
+          property :upgrade_policy, as: 'upgradePolicy', class: Google::Apis::GkeonpremV1::BareMetalClusterUpgradePolicy, decorator: Google::Apis::GkeonpremV1::BareMetalClusterUpgradePolicy::Representation
+      
           property :validation_check, as: 'validationCheck', class: Google::Apis::GkeonpremV1::ValidationCheck, decorator: Google::Apis::GkeonpremV1::ValidationCheck::Representation
       
         end
@@ -1197,6 +1205,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable_application_logs, as: 'enableApplicationLogs'
+        end
+      end
+      
+      class BareMetalClusterUpgradePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :policy, as: 'policy'
         end
       end
       
@@ -2364,6 +2379,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :datastore, as: 'datastore'
+          collection :host_groups, as: 'hostGroups'
           collection :tags, as: 'tags', class: Google::Apis::GkeonpremV1::VmwareVsphereTag, decorator: Google::Apis::GkeonpremV1::VmwareVsphereTag::Representation
       
         end
