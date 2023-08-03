@@ -62,7 +62,7 @@ module Google
         alias_method :use_partitioned_tables?, :use_partitioned_tables
       
         # Output only. True if new timestamp column based partitioning is in use, false
-        # if legacy ingestion-time partitioning is in use.All new sinks will have this
+        # if legacy ingress-time partitioning is in use.All new sinks will have this
         # field set true and will use timestamp column based partitioning. If
         # use_partitioned_tables is false, this value has no meaning and will be false.
         # Legacy sinks using partitioned tables will have this field set to false.
@@ -1460,7 +1460,7 @@ module Google
         # characters long and can only include the following characters: upper and lower
         # case alphanumeric characters, forward-slash, underscore, hyphen, and period.
         # For backward compatibility, if log_name begins with a forward-slash, such as /
-        # projects/..., then the log entry is ingested as usual, but the forward-slash
+        # projects/..., then the log entry is processed as usual, but the forward-slash
         # is removed. Listing the log entry will not show the leading slash and
         # filtering for a log name with a leading slash will never return any results.
         # Corresponds to the JSON property `logName`
@@ -1564,7 +1564,7 @@ module Google
         # log entries must have timestamps that don't exceed the logs retention period (
         # https://cloud.google.com/logging/quotas#logs_retention_periods) in the past,
         # and that don't exceed 24 hours in the future. Log entries outside those time
-        # boundaries aren't ingested by Logging.
+        # boundaries are rejected by Logging.
         # Corresponds to the JSON property `timestamp`
         # @return [String]
         attr_accessor :timestamp
@@ -1974,10 +1974,12 @@ module Google
         # Required. The export destination: "storage.googleapis.com/[GCS_BUCKET]" "
         # bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]" "pubsub.
         # googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]" "logging.googleapis.
-        # com/projects/[PROJECT_ID]" The sink's writer_identity, set when the sink is
-        # created, must have permission to write to the destination or else the log
-        # entries are not exported. For more information, see Exporting Logs with Sinks (
-        # https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
+        # com/projects/[PROJECT_ID]" "logging.googleapis.com/projects/[PROJECT_ID]/
+        # locations/[LOCATION_ID]/buckets/[BUCKET_ID]" The sink's writer_identity, set
+        # when the sink is created, must have permission to write to the destination or
+        # else the log entries are not exported. For more information, see Exporting
+        # Logs with Sinks (https://cloud.google.com/logging/docs/api/tasks/exporting-
+        # logs).
         # Corresponds to the JSON property `destination`
         # @return [String]
         attr_accessor :destination
@@ -2785,7 +2787,7 @@ module Google
       
         # Optional. If set to true, the _Default sink in newly created projects and
         # folders will created in a disabled state. This can be used to automatically
-        # disable log ingestion if there is already an aggregated sink configured in the
+        # disable log storage if there is already an aggregated sink configured in the
         # hierarchy. The _Default sink can be re-enabled manually if needed.
         # Corresponds to the JSON property `disableDefaultSink`
         # @return [Boolean]
