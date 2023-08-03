@@ -140,8 +140,8 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Minimum age for this Backup (in days). If this field is set to a non-zero
-        # value, the Backup will be "locked" against deletion (either manual or
+        # Optional. Minimum age for this Backup (in days). If this field is set to a non-
+        # zero value, the Backup will be "locked" against deletion (either manual or
         # automatic deletion) for the number of days provided (measured from the
         # creation time of the Backup). MUST be an integer value between 0-90 (inclusive)
         # . Defaults to parent BackupPlan's backup_delete_lock_days setting and may only
@@ -156,7 +156,7 @@ module Google
         # @return [String]
         attr_accessor :delete_lock_expire_time
       
-        # User specified descriptive string for this Backup.
+        # Optional. User specified descriptive string for this Backup.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -178,7 +178,7 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # A set of custom labels supplied by user.
+        # Optional. A set of custom labels supplied by user.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -207,11 +207,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :resource_count
       
-        # The age (in days) after which this Backup will be automatically deleted. Must
-        # be an integer value >= 0: - If 0, no automatic deletion will occur for this
-        # Backup. - If not 0, this must be >= delete_lock_days and <= 365. Once a Backup
-        # is created, this value may only be increased. Defaults to the parent
-        # BackupPlan's backup_retain_days value.
+        # Optional. The age (in days) after which this Backup will be automatically
+        # deleted. Must be an integer value >= 0: - If 0, no automatic deletion will
+        # occur for this Backup. - If not 0, this must be >= delete_lock_days and <= 365.
+        # Once a Backup is created, this value may only be increased. Defaults to the
+        # parent BackupPlan's backup_retain_days value.
         # Corresponds to the JSON property `retainDays`
         # @return [Fixnum]
         attr_accessor :retain_days
@@ -317,15 +317,15 @@ module Google
         # @return [Google::Apis::GkebackupV1::EncryptionKey]
         attr_accessor :encryption_key
       
-        # This flag specifies whether Kubernetes Secret resources should be included
-        # when they fall into the scope of Backups. Default: False
+        # Optional. This flag specifies whether Kubernetes Secret resources should be
+        # included when they fall into the scope of Backups. Default: False
         # Corresponds to the JSON property `includeSecrets`
         # @return [Boolean]
         attr_accessor :include_secrets
         alias_method :include_secrets?, :include_secrets
       
-        # This flag specifies whether volume data should be backed up when PVCs are
-        # included in the scope of a Backup. Default: False
+        # Optional. This flag specifies whether volume data should be backed up when
+        # PVCs are included in the scope of a Backup. Default: False
         # Corresponds to the JSON property `includeVolumeData`
         # @return [Boolean]
         attr_accessor :include_volume_data
@@ -383,17 +383,17 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # This flag indicates whether this BackupPlan has been deactivated. Setting this
-        # field to True locks the BackupPlan such that no further updates will be
-        # allowed (except deletes), including the deactivated field itself. It also
-        # prevents any new Backups from being created via this BackupPlan (including
-        # scheduled Backups). Default: False
+        # Optional. This flag indicates whether this BackupPlan has been deactivated.
+        # Setting this field to True locks the BackupPlan such that no further updates
+        # will be allowed (except deletes), including the deactivated field itself. It
+        # also prevents any new Backups from being created via this BackupPlan (
+        # including scheduled Backups). Default: False
         # Corresponds to the JSON property `deactivated`
         # @return [Boolean]
         attr_accessor :deactivated
         alias_method :deactivated?, :deactivated
       
-        # User specified descriptive string for this BackupPlan.
+        # Optional. User specified descriptive string for this BackupPlan.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -410,7 +410,7 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # A set of custom labels supplied by user.
+        # Optional. A set of custom labels supplied by user.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -560,29 +560,29 @@ module Google
       class ClusterMetadata
         include Google::Apis::Core::Hashable
       
-        # Anthos version
+        # Output only. Anthos version
         # Corresponds to the JSON property `anthosVersion`
         # @return [String]
         attr_accessor :anthos_version
       
-        # A list of the Backup for GKE CRD versions found in the cluster.
+        # Output only. A list of the Backup for GKE CRD versions found in the cluster.
         # Corresponds to the JSON property `backupCrdVersions`
         # @return [Hash<String,String>]
         attr_accessor :backup_crd_versions
       
-        # The source cluster from which this Backup was created. Valid formats: - `
-        # projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*` This is
-        # inherited from the parent BackupPlan's cluster field.
+        # Output only. The source cluster from which this Backup was created. Valid
+        # formats: - `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*
+        # ` This is inherited from the parent BackupPlan's cluster field.
         # Corresponds to the JSON property `cluster`
         # @return [String]
         attr_accessor :cluster
       
-        # GKE version
+        # Output only. GKE version
         # Corresponds to the JSON property `gkeVersion`
         # @return [String]
         attr_accessor :gke_version
       
-        # The Kubernetes server version of the source cluster.
+        # Output only. The Kubernetes server version of the source cluster.
         # Corresponds to the JSON property `k8sVersion`
         # @return [String]
         attr_accessor :k8s_version
@@ -613,32 +613,32 @@ module Google
       class ClusterResourceRestoreScope
         include Google::Apis::Core::Hashable
       
-        # If True, all valid cluster-scoped resources will be restored. Mutually
-        # exclusive to any other field in the message.
+        # Optional. If True, all valid cluster-scoped resources will be restored.
+        # Mutually exclusive to any other field in the message.
         # Corresponds to the JSON property `allGroupKinds`
         # @return [Boolean]
         attr_accessor :all_group_kinds
         alias_method :all_group_kinds?, :all_group_kinds
       
-        # A list of cluster-scoped resource group kinds to NOT restore from the backup.
-        # If specified, all valid cluster-scoped resources will be restored except for
-        # those specified in the list. Mutually exclusive to any other field in the
-        # message.
+        # Optional. A list of cluster-scoped resource group kinds to NOT restore from
+        # the backup. If specified, all valid cluster-scoped resources will be restored
+        # except for those specified in the list. Mutually exclusive to any other field
+        # in the message.
         # Corresponds to the JSON property `excludedGroupKinds`
         # @return [Array<Google::Apis::GkebackupV1::GroupKind>]
         attr_accessor :excluded_group_kinds
       
-        # If True, no cluster-scoped resources will be restored. This has the same
-        # restore scope as if the message is not defined. Mutually exclusive to any
+        # Optional. If True, no cluster-scoped resources will be restored. This has the
+        # same restore scope as if the message is not defined. Mutually exclusive to any
         # other field in the message.
         # Corresponds to the JSON property `noGroupKinds`
         # @return [Boolean]
         attr_accessor :no_group_kinds
         alias_method :no_group_kinds?, :no_group_kinds
       
-        # A list of cluster-scoped resource group kinds to restore from the backup. If
-        # specified, only the selected resources will be restored. Mutually exclusive to
-        # any other field in the message.
+        # Optional. A list of cluster-scoped resource group kinds to restore from the
+        # backup. If specified, only the selected resources will be restored. Mutually
+        # exclusive to any other field in the message.
         # Corresponds to the JSON property `selectedGroupKinds`
         # @return [Array<Google::Apis::GkebackupV1::GroupKind>]
         attr_accessor :selected_group_kinds
@@ -677,8 +677,8 @@ module Google
       class EncryptionKey
         include Google::Apis::Core::Hashable
       
-        # Google Cloud KMS encryption key. Format: `projects/*/locations/*/keyRings/*/
-        # cryptoKeys/*`
+        # Optional. Google Cloud KMS encryption key. Format: `projects/*/locations/*/
+        # keyRings/*/cryptoKeys/*`
         # Corresponds to the JSON property `gcpKmsEncryptionKey`
         # @return [String]
         attr_accessor :gcp_kms_encryption_key
@@ -892,14 +892,14 @@ module Google
       class GroupKind
         include Google::Apis::Core::Hashable
       
-        # API group string of a Kubernetes resource, e.g. "apiextensions.k8s.io", "
-        # storage.k8s.io", etc. Note: use empty string for core API group
+        # Optional. API group string of a Kubernetes resource, e.g. "apiextensions.k8s.
+        # io", "storage.k8s.io", etc. Note: use empty string for core API group
         # Corresponds to the JSON property `resourceGroup`
         # @return [String]
         attr_accessor :resource_group
       
-        # Kind of a Kubernetes resource, e.g. "CustomResourceDefinition", "StorageClass",
-        # etc.
+        # Optional. Kind of a Kubernetes resource, e.g. "CustomResourceDefinition", "
+        # StorageClass", etc.
         # Corresponds to the JSON property `resourceKind`
         # @return [String]
         attr_accessor :resource_kind
@@ -1171,12 +1171,12 @@ module Google
       class NamespacedName
         include Google::Apis::Core::Hashable
       
-        # The name of the Kubernetes resource.
+        # Optional. The name of the Kubernetes resource.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The Namespace of the Kubernetes resource.
+        # Optional. The Namespace of the Kubernetes resource.
         # Corresponds to the JSON property `namespace`
         # @return [String]
         attr_accessor :namespace
@@ -1196,7 +1196,7 @@ module Google
       class NamespacedNames
         include Google::Apis::Core::Hashable
       
-        # A list of namespaced Kubernetes resources.
+        # Optional. A list of namespaced Kubernetes resources.
         # Corresponds to the JSON property `namespacedNames`
         # @return [Array<Google::Apis::GkebackupV1::NamespacedName>]
         attr_accessor :namespaced_names
@@ -1215,7 +1215,7 @@ module Google
       class Namespaces
         include Google::Apis::Core::Hashable
       
-        # A list of Kubernetes Namespaces
+        # Optional. A list of Kubernetes Namespaces
         # Corresponds to the JSON property `namespaces`
         # @return [Array<String>]
         attr_accessor :namespaces
@@ -1390,28 +1390,28 @@ module Google
       class ResourceFilter
         include Google::Apis::Core::Hashable
       
-        # (Filtering parameter) Any resource subject to transformation must belong to
-        # one of the listed "types". If this field is not provided, no type filtering
-        # will be performed (all resources of all types matching previous filtering
-        # parameters will be candidates for transformation).
+        # Optional. (Filtering parameter) Any resource subject to transformation must
+        # belong to one of the listed "types". If this field is not provided, no type
+        # filtering will be performed (all resources of all types matching previous
+        # filtering parameters will be candidates for transformation).
         # Corresponds to the JSON property `groupKinds`
         # @return [Array<Google::Apis::GkebackupV1::GroupKind>]
         attr_accessor :group_kinds
       
-        # This is a [JSONPath] (https://github.com/json-path/JsonPath/blob/master/README.
-        # md) expression that matches specific fields of candidate resources and it
-        # operates as a filtering parameter (resources that are not matched with this
-        # expression will not be candidates for transformation).
+        # Optional. This is a [JSONPath] (https://github.com/json-path/JsonPath/blob/
+        # master/README.md) expression that matches specific fields of candidate
+        # resources and it operates as a filtering parameter (resources that are not
+        # matched with this expression will not be candidates for transformation).
         # Corresponds to the JSON property `jsonPath`
         # @return [String]
         attr_accessor :json_path
       
-        # (Filtering parameter) Any resource subject to transformation must be contained
-        # within one of the listed Kubernetes Namespace in the Backup. If this field is
-        # not provided, no namespace filtering will be performed (all resources in all
-        # Namespaces, including all cluster-scoped resources, will be candidates for
-        # transformation). To mix cluster-scoped and namespaced resources in the same
-        # rule, use an empty string ("") as one of the target namespaces.
+        # Optional. (Filtering parameter) Any resource subject to transformation must be
+        # contained within one of the listed Kubernetes Namespace in the Backup. If this
+        # field is not provided, no namespace filtering will be performed (all resources
+        # in all Namespaces, including all cluster-scoped resources, will be candidates
+        # for transformation). To mix cluster-scoped and namespaced resources in the
+        # same rule, use an empty string ("") as one of the target namespaces.
         # Corresponds to the JSON property `namespaces`
         # @return [Array<String>]
         attr_accessor :namespaces
@@ -1570,9 +1570,9 @@ module Google
         attr_accessor :all_namespaces
         alias_method :all_namespaces?, :all_namespaces
       
-        # Defines the behavior for handling the situation where cluster-scoped resources
-        # being restored already exist in the target cluster. This MUST be set to a
-        # value other than CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED if
+        # Optional. Defines the behavior for handling the situation where cluster-scoped
+        # resources being restored already exist in the target cluster. This MUST be set
+        # to a value other than CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED if
         # cluster_resource_restore_scope is not empty.
         # Corresponds to the JSON property `clusterResourceConflictPolicy`
         # @return [String]
@@ -1596,9 +1596,9 @@ module Google
         # @return [Google::Apis::GkebackupV1::Namespaces]
         attr_accessor :excluded_namespaces
       
-        # Defines the behavior for handling the situation where sets of namespaced
-        # resources being restored already exist in the target cluster. This MUST be set
-        # to a value other than NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED.
+        # Optional. Defines the behavior for handling the situation where sets of
+        # namespaced resources being restored already exist in the target cluster. This
+        # MUST be set to a value other than NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED.
         # Corresponds to the JSON property `namespacedResourceRestoreMode`
         # @return [String]
         attr_accessor :namespaced_resource_restore_mode
@@ -1620,25 +1620,25 @@ module Google
         # @return [Google::Apis::GkebackupV1::Namespaces]
         attr_accessor :selected_namespaces
       
-        # A list of transformation rules to be applied against Kubernetes resources as
-        # they are selected for restoration from a Backup. Rules are executed in order
-        # defined - this order matters, as changes made by a rule may impact the
-        # filtering logic of subsequent rules. An empty list means no substitution will
-        # occur.
+        # Optional. A list of transformation rules to be applied against Kubernetes
+        # resources as they are selected for restoration from a Backup. Rules are
+        # executed in order defined - this order matters, as changes made by a rule may
+        # impact the filtering logic of subsequent rules. An empty list means no
+        # substitution will occur.
         # Corresponds to the JSON property `substitutionRules`
         # @return [Array<Google::Apis::GkebackupV1::SubstitutionRule>]
         attr_accessor :substitution_rules
       
-        # A list of transformation rules to be applied against Kubernetes resources as
-        # they are selected for restoration from a Backup. Rules are executed in order
-        # defined - this order matters, as changes made by a rule may impact the
-        # filtering logic of subsequent rules. An empty list means no transformation
-        # will occur.
+        # Optional. A list of transformation rules to be applied against Kubernetes
+        # resources as they are selected for restoration from a Backup. Rules are
+        # executed in order defined - this order matters, as changes made by a rule may
+        # impact the filtering logic of subsequent rules. An empty list means no
+        # transformation will occur.
         # Corresponds to the JSON property `transformationRules`
         # @return [Array<Google::Apis::GkebackupV1::TransformationRule>]
         attr_accessor :transformation_rules
       
-        # Specifies the mechanism to be used to restore volume data. Default:
+        # Optional. Specifies the mechanism to be used to restore volume data. Default:
         # VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED (will be treated as
         # NO_VOLUME_DATA_RESTORATION).
         # Corresponds to the JSON property `volumeDataRestorePolicy`
@@ -1690,7 +1690,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # User specified descriptive string for this RestorePlan.
+        # Optional. User specified descriptive string for this RestorePlan.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -1707,7 +1707,7 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # A set of custom labels supplied by user.
+        # Optional. A set of custom labels supplied by user.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -1771,32 +1771,33 @@ module Google
       class RetentionPolicy
         include Google::Apis::Core::Hashable
       
-        # Minimum age for Backups created via this BackupPlan (in days). This field MUST
-        # be an integer value between 0-90 (inclusive). A Backup created under this
-        # BackupPlan will NOT be deletable until it reaches Backup's (create_time +
-        # backup_delete_lock_days). Updating this field of a BackupPlan does NOT affect
-        # existing Backups under it. Backups created AFTER a successful update will
-        # inherit the new value. Default: 0 (no delete blocking)
+        # Optional. Minimum age for Backups created via this BackupPlan (in days). This
+        # field MUST be an integer value between 0-90 (inclusive). A Backup created
+        # under this BackupPlan will NOT be deletable until it reaches Backup's (
+        # create_time + backup_delete_lock_days). Updating this field of a BackupPlan
+        # does NOT affect existing Backups under it. Backups created AFTER a successful
+        # update will inherit the new value. Default: 0 (no delete blocking)
         # Corresponds to the JSON property `backupDeleteLockDays`
         # @return [Fixnum]
         attr_accessor :backup_delete_lock_days
       
-        # The default maximum age of a Backup created via this BackupPlan. This field
-        # MUST be an integer value >= 0 and <= 365. If specified, a Backup created under
-        # this BackupPlan will be automatically deleted after its age reaches (
-        # create_time + backup_retain_days). If not specified, Backups created under
-        # this BackupPlan will NOT be subject to automatic deletion. Updating this field
-        # does NOT affect existing Backups under it. Backups created AFTER a successful
-        # update will automatically pick up the new value. NOTE: backup_retain_days must
-        # be >= backup_delete_lock_days. If cron_schedule is defined, then this must be <
-        # = 360 * the creation interval. Default: 0 (no automatic deletion)
+        # Optional. The default maximum age of a Backup created via this BackupPlan.
+        # This field MUST be an integer value >= 0 and <= 365. If specified, a Backup
+        # created under this BackupPlan will be automatically deleted after its age
+        # reaches (create_time + backup_retain_days). If not specified, Backups created
+        # under this BackupPlan will NOT be subject to automatic deletion. Updating this
+        # field does NOT affect existing Backups under it. Backups created AFTER a
+        # successful update will automatically pick up the new value. NOTE:
+        # backup_retain_days must be >= backup_delete_lock_days. If cron_schedule is
+        # defined, then this must be <= 360 * the creation interval. Default: 0 (no
+        # automatic deletion)
         # Corresponds to the JSON property `backupRetainDays`
         # @return [Fixnum]
         attr_accessor :backup_retain_days
       
-        # This flag denotes whether the retention policy of this BackupPlan is locked.
-        # If set to True, no further update is allowed on this policy, including the `
-        # locked` field itself. Default: False
+        # Optional. This flag denotes whether the retention policy of this BackupPlan is
+        # locked. If set to True, no further update is allowed on this policy, including
+        # the `locked` field itself. Default: False
         # Corresponds to the JSON property `locked`
         # @return [Boolean]
         attr_accessor :locked
@@ -1819,17 +1820,17 @@ module Google
       class Schedule
         include Google::Apis::Core::Hashable
       
-        # A standard [cron](https://wikipedia.com/wiki/cron) string that defines a
-        # repeating schedule for creating Backups via this BackupPlan. This is mutually
-        # exclusive with the rpo_config field since at most one schedule can be defined
-        # for a BackupPlan. If this is defined, then backup_retain_days must also be
-        # defined. Default (empty): no automatic backup creation will occur.
+        # Optional. A standard [cron](https://wikipedia.com/wiki/cron) string that
+        # defines a repeating schedule for creating Backups via this BackupPlan. This is
+        # mutually exclusive with the rpo_config field since at most one schedule can be
+        # defined for a BackupPlan. If this is defined, then backup_retain_days must
+        # also be defined. Default (empty): no automatic backup creation will occur.
         # Corresponds to the JSON property `cronSchedule`
         # @return [String]
         attr_accessor :cron_schedule
       
-        # This flag denotes whether automatic Backup creation is paused for this
-        # BackupPlan. Default: False
+        # Optional. This flag denotes whether automatic Backup creation is paused for
+        # this BackupPlan. Default: False
         # Corresponds to the JSON property `paused`
         # @return [Boolean]
         attr_accessor :paused
@@ -1905,29 +1906,29 @@ module Google
       class SubstitutionRule
         include Google::Apis::Core::Hashable
       
-        # This is the new value to set for any fields that pass the filtering and
-        # selection criteria. To remove a value from a Kubernetes resource, either leave
-        # this field unspecified, or set it to the empty string ("").
+        # Optional. This is the new value to set for any fields that pass the filtering
+        # and selection criteria. To remove a value from a Kubernetes resource, either
+        # leave this field unspecified, or set it to the empty string ("").
         # Corresponds to the JSON property `newValue`
         # @return [String]
         attr_accessor :new_value
       
-        # (Filtering parameter) This is a [regular expression] (https://en.wikipedia.org/
-        # wiki/Regular_expression) that is compared against the fields matched by the
-        # target_json_path expression (and must also have passed the previous filters).
-        # Substitution will not be performed against fields whose value does not match
-        # this expression. If this field is NOT specified, then ALL fields matched by
-        # the target_json_path expression will undergo substitution. Note that an empty (
-        # e.g., "", rather than unspecified) value for this field will only match empty
-        # fields.
+        # Optional. (Filtering parameter) This is a [regular expression] (https://en.
+        # wikipedia.org/wiki/Regular_expression) that is compared against the fields
+        # matched by the target_json_path expression (and must also have passed the
+        # previous filters). Substitution will not be performed against fields whose
+        # value does not match this expression. If this field is NOT specified, then ALL
+        # fields matched by the target_json_path expression will undergo substitution.
+        # Note that an empty (e.g., "", rather than unspecified) value for this field
+        # will only match empty fields.
         # Corresponds to the JSON property `originalValuePattern`
         # @return [String]
         attr_accessor :original_value_pattern
       
-        # (Filtering parameter) Any resource subject to substitution must belong to one
-        # of the listed "types". If this field is not provided, no type filtering will
-        # be performed (all resources of all types matching previous filtering
-        # parameters will be candidates for substitution).
+        # Optional. (Filtering parameter) Any resource subject to substitution must
+        # belong to one of the listed "types". If this field is not provided, no type
+        # filtering will be performed (all resources of all types matching previous
+        # filtering parameters will be candidates for substitution).
         # Corresponds to the JSON property `targetGroupKinds`
         # @return [Array<Google::Apis::GkebackupV1::GroupKind>]
         attr_accessor :target_group_kinds
@@ -1942,12 +1943,12 @@ module Google
         # @return [String]
         attr_accessor :target_json_path
       
-        # (Filtering parameter) Any resource subject to substitution must be contained
-        # within one of the listed Kubernetes Namespace in the Backup. If this field is
-        # not provided, no namespace filtering will be performed (all resources in all
-        # Namespaces, including all cluster-scoped resources, will be candidates for
-        # substitution). To mix cluster-scoped and namespaced resources in the same rule,
-        # use an empty string ("") as one of the target namespaces.
+        # Optional. (Filtering parameter) Any resource subject to substitution must be
+        # contained within one of the listed Kubernetes Namespace in the Backup. If this
+        # field is not provided, no namespace filtering will be performed (all resources
+        # in all Namespaces, including all cluster-scoped resources, will be candidates
+        # for substitution). To mix cluster-scoped and namespaced resources in the same
+        # rule, use an empty string ("") as one of the target namespaces.
         # Corresponds to the JSON property `targetNamespaces`
         # @return [Array<String>]
         attr_accessor :target_namespaces
@@ -2012,8 +2013,8 @@ module Google
       class TransformationRule
         include Google::Apis::Core::Hashable
       
-        # The description is a user specified string description of the transformation
-        # rule.
+        # Optional. The description is a user specified string description of the
+        # transformation rule.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -2050,8 +2051,8 @@ module Google
       class TransformationRuleAction
         include Google::Apis::Core::Hashable
       
-        # A string containing a JSON Pointer value that references the location in the
-        # target document to move the value from.
+        # Optional. A string containing a JSON Pointer value that references the
+        # location in the target document to move the value from.
         # Corresponds to the JSON property `fromPath`
         # @return [String]
         attr_accessor :from_path
@@ -2061,14 +2062,14 @@ module Google
         # @return [String]
         attr_accessor :op
       
-        # A string containing a JSON-Pointer value that references a location within the
-        # target document where the operation is performed.
+        # Optional. A string containing a JSON-Pointer value that references a location
+        # within the target document where the operation is performed.
         # Corresponds to the JSON property `path`
         # @return [String]
         attr_accessor :path
       
-        # A string that specifies the desired value in string format to use for
-        # transformation.
+        # Optional. A string that specifies the desired value in string format to use
+        # for transformation.
         # Corresponds to the JSON property `value`
         # @return [String]
         attr_accessor :value
