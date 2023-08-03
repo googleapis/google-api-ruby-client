@@ -643,7 +643,9 @@ module Google
         # one used by the script.
         # @param [String] script_id
         #   The script ID of the script to be executed. Find the script ID on the **
-        #   Project settings** page under "IDs."
+        #   Project settings** page under "IDs." As multiple executable APIs can be
+        #   deployed in new IDE for same script, this field should be populated with
+        #   DeploymentID generated while deploying in new IDE instead of script ID.
         # @param [Google::Apis::ScriptV1::ExecutionRequest] execution_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
