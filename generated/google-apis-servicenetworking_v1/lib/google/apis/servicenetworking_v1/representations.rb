@@ -322,6 +322,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GetDnsZoneResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -377,6 +383,12 @@ module Google
       end
       
       class ListConnectionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListDnsRecordSetsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1252,6 +1264,16 @@ module Google
         end
       end
       
+      class GetDnsZoneResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consumer_peering_zone, as: 'consumerPeeringZone', class: Google::Apis::ServicenetworkingV1::DnsZone, decorator: Google::Apis::ServicenetworkingV1::DnsZone::Representation
+      
+          property :producer_private_zone, as: 'producerPrivateZone', class: Google::Apis::ServicenetworkingV1::DnsZone, decorator: Google::Apis::ServicenetworkingV1::DnsZone::Representation
+      
+        end
+      end
+      
       class GoSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1349,6 +1371,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :connections, as: 'connections', class: Google::Apis::ServicenetworkingV1::Connection, decorator: Google::Apis::ServicenetworkingV1::Connection::Representation
+      
+        end
+      end
+      
+      class ListDnsRecordSetsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dns_record_sets, as: 'dnsRecordSets', class: Google::Apis::ServicenetworkingV1::DnsRecordSet, decorator: Google::Apis::ServicenetworkingV1::DnsRecordSet::Representation
       
         end
       end
