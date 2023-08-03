@@ -280,6 +280,7 @@ module Google
       
           property :name, as: 'name'
           property :non_compliant_org_policy, as: 'nonCompliantOrgPolicy'
+          property :org_policy_constraint, as: 'orgPolicyConstraint'
           property :remediation, as: 'remediation', class: Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1ViolationRemediation, decorator: Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1ViolationRemediation::Representation
       
           property :resolve_time, as: 'resolveTime'
@@ -438,6 +439,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data_logs_viewer, as: 'dataLogsViewer'
           property :remediate_folder_violations, as: 'remediateFolderViolations'
+          property :service_access_approver, as: 'serviceAccessApprover'
         end
       end
       
