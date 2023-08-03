@@ -887,6 +887,11 @@ module Google
         # @return [String]
         attr_accessor :device_id
       
+        # Output only. Device license type.
+        # Corresponds to the JSON property `deviceLicenseType`
+        # @return [String]
+        attr_accessor :device_license_type
+      
         # Reports of disk space and other info about mounted/connected volumes.
         # Corresponds to the JSON property `diskVolumeReports`
         # @return [Array<Google::Apis::AdminDirectoryV1::ChromeOsDevice::DiskVolumeReport>]
@@ -1103,6 +1108,7 @@ module Google
           @deprovision_reason = args[:deprovision_reason] if args.key?(:deprovision_reason)
           @device_files = args[:device_files] if args.key?(:device_files)
           @device_id = args[:device_id] if args.key?(:device_id)
+          @device_license_type = args[:device_license_type] if args.key?(:device_license_type)
           @disk_volume_reports = args[:disk_volume_reports] if args.key?(:disk_volume_reports)
           @dock_mac_address = args[:dock_mac_address] if args.key?(:dock_mac_address)
           @etag = args[:etag] if args.key?(:etag)

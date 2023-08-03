@@ -934,6 +934,7 @@ module Google
           collection :device_files, as: 'deviceFiles', class: Google::Apis::AdminDirectoryV1::ChromeOsDevice::DeviceFile, decorator: Google::Apis::AdminDirectoryV1::ChromeOsDevice::DeviceFile::Representation
       
           property :device_id, as: 'deviceId'
+          property :device_license_type, as: 'deviceLicenseType'
           collection :disk_volume_reports, as: 'diskVolumeReports', class: Google::Apis::AdminDirectoryV1::ChromeOsDevice::DiskVolumeReport, decorator: Google::Apis::AdminDirectoryV1::ChromeOsDevice::DiskVolumeReport::Representation
       
           property :dock_mac_address, as: 'dockMacAddress'
