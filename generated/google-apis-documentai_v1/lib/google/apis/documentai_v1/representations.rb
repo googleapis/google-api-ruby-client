@@ -904,6 +904,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiV1ProcessorVersionAlias
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -911,12 +917,6 @@ module Google
       end
       
       class GoogleCloudDocumentaiV1RawDocument
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDocumentaiV1RawDocuments
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2425,8 +2425,6 @@ module Google
       
           property :gcs_prefix, as: 'gcsPrefix', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1GcsPrefix, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1GcsPrefix::Representation
       
-          property :raw_documents, as: 'rawDocuments', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1RawDocuments, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1RawDocuments::Representation
-      
         end
       end
       
@@ -3369,6 +3367,8 @@ module Google
           property :kms_key_name, as: 'kmsKeyName'
           property :name, as: 'name'
           property :process_endpoint, as: 'processEndpoint'
+          collection :processor_version_aliases, as: 'processorVersionAliases', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1ProcessorVersionAlias, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1ProcessorVersionAlias::Representation
+      
           property :state, as: 'state'
           property :type, as: 'type'
         end
@@ -3414,6 +3414,14 @@ module Google
         end
       end
       
+      class GoogleCloudDocumentaiV1ProcessorVersionAlias
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alias, as: 'alias'
+          property :processor_version, as: 'processorVersion'
+        end
+      end
+      
       class GoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3426,15 +3434,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :content, :base64 => true, as: 'content'
+          property :display_name, as: 'displayName'
           property :mime_type, as: 'mimeType'
-        end
-      end
-      
-      class GoogleCloudDocumentaiV1RawDocuments
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :documents, as: 'documents', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1RawDocument, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1RawDocument::Representation
-      
         end
       end
       
