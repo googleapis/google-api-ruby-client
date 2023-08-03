@@ -31,7 +31,7 @@ module Google
       #    Cloudbilling = Google::Apis::CloudbillingV1 # Alias the module
       #    service = Cloudbilling::CloudbillingService.new
       #
-      # @see https://cloud.google.com/billing/
+      # @see https://cloud.google.com/billing/docs/apis
       class CloudbillingService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
