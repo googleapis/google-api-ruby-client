@@ -1031,6 +1031,11 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # BareMetalClusterUpgradePolicy defines the cluster upgrade policy.
+        # Corresponds to the JSON property `upgradePolicy`
+        # @return [Google::Apis::GkeonpremV1::BareMetalClusterUpgradePolicy]
+        attr_accessor :upgrade_policy
+      
         # ValidationCheck represents the result of preflight check.
         # Corresponds to the JSON property `validationCheck`
         # @return [Google::Apis::GkeonpremV1::ValidationCheck]
@@ -1071,6 +1076,7 @@ module Google
           @storage = args[:storage] if args.key?(:storage)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @upgrade_policy = args[:upgrade_policy] if args.key?(:upgrade_policy)
           @validation_check = args[:validation_check] if args.key?(:validation_check)
         end
       end
@@ -1093,6 +1099,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enable_application_logs = args[:enable_application_logs] if args.key?(:enable_application_logs)
+        end
+      end
+      
+      # BareMetalClusterUpgradePolicy defines the cluster upgrade policy.
+      class BareMetalClusterUpgradePolicy
+        include Google::Apis::Core::Hashable
+      
+        # Specifies which upgrade policy to use.
+        # Corresponds to the JSON property `policy`
+        # @return [String]
+        attr_accessor :policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy = args[:policy] if args.key?(:policy)
         end
       end
       
@@ -5332,6 +5357,11 @@ module Google
         # @return [String]
         attr_accessor :datastore
       
+        # Vsphere host groups to apply to all VMs in the node pool
+        # Corresponds to the JSON property `hostGroups`
+        # @return [Array<String>]
+        attr_accessor :host_groups
+      
         # Tags to apply to VMs.
         # Corresponds to the JSON property `tags`
         # @return [Array<Google::Apis::GkeonpremV1::VmwareVsphereTag>]
@@ -5344,6 +5374,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @datastore = args[:datastore] if args.key?(:datastore)
+          @host_groups = args[:host_groups] if args.key?(:host_groups)
           @tags = args[:tags] if args.key?(:tags)
         end
       end
