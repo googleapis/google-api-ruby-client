@@ -15353,6 +15353,13 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :payload
       
+        # The platform of the virtual agent response messages. If not empty, only emits
+        # messages from this platform in the response. Valid values are the enum names
+        # of platform.
+        # Corresponds to the JSON property `platform`
+        # @return [String]
+        attr_accessor :platform
+      
         # Specifies whether to delete all contexts in the current session before the new
         # ones are activated.
         # Corresponds to the JSON property `resetContexts`
@@ -15409,6 +15416,7 @@ module Google
           @geo_location = args[:geo_location] if args.key?(:geo_location)
           @knowledge_base_names = args[:knowledge_base_names] if args.key?(:knowledge_base_names)
           @payload = args[:payload] if args.key?(:payload)
+          @platform = args[:platform] if args.key?(:platform)
           @reset_contexts = args[:reset_contexts] if args.key?(:reset_contexts)
           @sentiment_analysis_request_config = args[:sentiment_analysis_request_config] if args.key?(:sentiment_analysis_request_config)
           @session_entity_types = args[:session_entity_types] if args.key?(:session_entity_types)
