@@ -1165,6 +1165,11 @@ module Google
       class GoogleCloudDataplexV1DataProfileResult
         include Google::Apis::Core::Hashable
       
+        # The result of post scan actions of DataProfileScan job.
+        # Corresponds to the JSON property `postScanActionsResult`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResultPostScanActionsResult]
+        attr_accessor :post_scan_actions_result
+      
         # Contains name, type, mode and field type specific profile information.
         # Corresponds to the JSON property `profile`
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResultProfile]
@@ -1186,9 +1191,54 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @post_scan_actions_result = args[:post_scan_actions_result] if args.key?(:post_scan_actions_result)
           @profile = args[:profile] if args.key?(:profile)
           @row_count = args[:row_count] if args.key?(:row_count)
           @scanned_data = args[:scanned_data] if args.key?(:scanned_data)
+        end
+      end
+      
+      # The result of post scan actions of DataProfileScan job.
+      class GoogleCloudDataplexV1DataProfileResultPostScanActionsResult
+        include Google::Apis::Core::Hashable
+      
+        # The result of BigQuery export post scan action.
+        # Corresponds to the JSON property `bigqueryExportResult`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult]
+        attr_accessor :bigquery_export_result
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bigquery_export_result = args[:bigquery_export_result] if args.key?(:bigquery_export_result)
+        end
+      end
+      
+      # The result of BigQuery export post scan action.
+      class GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Additional information about the BigQuery exporting.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Output only. Execution state for the BigQuery exporting.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -1490,6 +1540,11 @@ module Google
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileSpecSelectedFields]
         attr_accessor :include_fields
       
+        # The configuration of post scan actions of DataProfileScan job.
+        # Corresponds to the JSON property `postScanActions`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileSpecPostScanActions]
+        attr_accessor :post_scan_actions
+      
         # Optional. A filter applied to all rows in a single DataScan job. The filter
         # needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL
         # syntax. Example: col1 >= 0 AND col2 < 10
@@ -1513,8 +1568,48 @@ module Google
         def update!(**args)
           @exclude_fields = args[:exclude_fields] if args.key?(:exclude_fields)
           @include_fields = args[:include_fields] if args.key?(:include_fields)
+          @post_scan_actions = args[:post_scan_actions] if args.key?(:post_scan_actions)
           @row_filter = args[:row_filter] if args.key?(:row_filter)
           @sampling_percent = args[:sampling_percent] if args.key?(:sampling_percent)
+        end
+      end
+      
+      # The configuration of post scan actions of DataProfileScan job.
+      class GoogleCloudDataplexV1DataProfileSpecPostScanActions
+        include Google::Apis::Core::Hashable
+      
+        # The configuration of BigQuery export post scan action.
+        # Corresponds to the JSON property `bigqueryExport`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport]
+        attr_accessor :bigquery_export
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bigquery_export = args[:bigquery_export] if args.key?(:bigquery_export)
+        end
+      end
+      
+      # The configuration of BigQuery export post scan action.
+      class GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The BigQuery table to export DataProfileScan results to. Format:
+        # projects/`project`/datasets/`dataset`/tables/`table`
+        # Corresponds to the JSON property `resultsTable`
+        # @return [String]
+        attr_accessor :results_table
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @results_table = args[:results_table] if args.key?(:results_table)
         end
       end
       
@@ -1576,6 +1671,11 @@ module Google
         attr_accessor :passed
         alias_method :passed?, :passed
       
+        # The result of post scan actions of DataQualityScan job.
+        # Corresponds to the JSON property `postScanActionsResult`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityResultPostScanActionsResult]
+        attr_accessor :post_scan_actions_result
+      
         # The count of rows processed.
         # Corresponds to the JSON property `rowCount`
         # @return [Fixnum]
@@ -1599,9 +1699,54 @@ module Google
         def update!(**args)
           @dimensions = args[:dimensions] if args.key?(:dimensions)
           @passed = args[:passed] if args.key?(:passed)
+          @post_scan_actions_result = args[:post_scan_actions_result] if args.key?(:post_scan_actions_result)
           @row_count = args[:row_count] if args.key?(:row_count)
           @rules = args[:rules] if args.key?(:rules)
           @scanned_data = args[:scanned_data] if args.key?(:scanned_data)
+        end
+      end
+      
+      # The result of post scan actions of DataQualityScan job.
+      class GoogleCloudDataplexV1DataQualityResultPostScanActionsResult
+        include Google::Apis::Core::Hashable
+      
+        # The result of BigQuery export post scan action.
+        # Corresponds to the JSON property `bigqueryExportResult`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult]
+        attr_accessor :bigquery_export_result
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bigquery_export_result = args[:bigquery_export_result] if args.key?(:bigquery_export_result)
+        end
+      end
+      
+      # The result of BigQuery export post scan action.
+      class GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Additional information about the BigQuery exporting.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Output only. Execution state for the BigQuery exporting.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -2073,6 +2218,11 @@ module Google
       class GoogleCloudDataplexV1DataQualitySpec
         include Google::Apis::Core::Hashable
       
+        # The configuration of post scan actions of DataQualityScan.
+        # Corresponds to the JSON property `postScanActions`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualitySpecPostScanActions]
+        attr_accessor :post_scan_actions
+      
         # Optional. A filter applied to all rows in a single DataScan job. The filter
         # needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL
         # syntax. Example: col1 >= 0 AND col2 < 10
@@ -2100,9 +2250,49 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @post_scan_actions = args[:post_scan_actions] if args.key?(:post_scan_actions)
           @row_filter = args[:row_filter] if args.key?(:row_filter)
           @rules = args[:rules] if args.key?(:rules)
           @sampling_percent = args[:sampling_percent] if args.key?(:sampling_percent)
+        end
+      end
+      
+      # The configuration of post scan actions of DataQualityScan.
+      class GoogleCloudDataplexV1DataQualitySpecPostScanActions
+        include Google::Apis::Core::Hashable
+      
+        # The configuration of BigQuery export post scan action.
+        # Corresponds to the JSON property `bigqueryExport`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport]
+        attr_accessor :bigquery_export
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bigquery_export = args[:bigquery_export] if args.key?(:bigquery_export)
+        end
+      end
+      
+      # The configuration of BigQuery export post scan action.
+      class GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The BigQuery table to export DataQualityScan results to. Format:
+        # projects/`project`/datasets/`dataset`/tables/`table`
+        # Corresponds to the JSON property `resultsTable`
+        # @return [String]
+        attr_accessor :results_table
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @results_table = args[:results_table] if args.key?(:results_table)
         end
       end
       
@@ -2670,6 +2860,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :attribute_count
       
+        # Output only. The number of classes in the DataTaxonomy.
+        # Corresponds to the JSON property `classCount`
+        # @return [Fixnum]
+        attr_accessor :class_count
+      
         # Output only. The time when the DataTaxonomy was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -2723,6 +2918,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @attribute_count = args[:attribute_count] if args.key?(:attribute_count)
+          @class_count = args[:class_count] if args.key?(:class_count)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
