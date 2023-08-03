@@ -607,6 +607,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enforcement_mode, as: 'enforcementMode'
           property :name, as: 'name'
+          property :update_time, as: 'updateTime'
         end
       end
       
