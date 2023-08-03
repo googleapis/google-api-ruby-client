@@ -1184,6 +1184,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Timestamp when this service configuration object was most
+        # recently updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1192,6 +1198,7 @@ module Google
         def update!(**args)
           @enforcement_mode = args[:enforcement_mode] if args.key?(:enforcement_mode)
           @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
