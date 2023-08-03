@@ -1730,6 +1730,11 @@ module Google
       class DeviceRadioState
         include Google::Apis::Core::Hashable
       
+        # Controls whether airplane mode can be toggled by the user or not
+        # Corresponds to the JSON property `airplaneModeState`
+        # @return [String]
+        attr_accessor :airplane_mode_state
+      
         # Controls current state of Wi-Fi and if user can change its state.
         # Corresponds to the JSON property `wifiState`
         # @return [String]
@@ -1741,6 +1746,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @airplane_mode_state = args[:airplane_mode_state] if args.key?(:airplane_mode_state)
           @wifi_state = args[:wifi_state] if args.key?(:wifi_state)
         end
       end
